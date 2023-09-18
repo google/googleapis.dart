@@ -39,6 +39,13 @@
     "name": "photoslibrary",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230802",
+    "rootUrl": "https://photoslibrary.googleapis.com/",
+    "servicePath": "",
+    "title": "Photos Library API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -116,7 +123,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "albums": {
             "methods": {
@@ -639,8 +645,6 @@
             }
         }
     },
-    "revision": "20220912",
-    "rootUrl": "https://photoslibrary.googleapis.com/",
     "schemas": {
         "AddEnrichmentToAlbumRequest": {
             "description": "Request to add an enrichment to a specific album at a specific position.",
@@ -1017,7 +1021,7 @@
             "type": "object"
         },
         "DateFilter": {
-            "description": "This filter defines the allowed dates or date ranges for the media returned. It's possible to pick a set of specific dates and a set of date ranges.",
+            "description": "This filter defines the allowed dates or date ranges for the media returned. It's possible to pick a set of specific dates and a set of date ranges. Media items uploaded without metadata specifying the date the media item was captured will not be returned in queries using date filters. Google Photos server upload time is not used as a fallback in this case.",
             "id": "DateFilter",
             "properties": {
                 "dates": {
@@ -1422,7 +1426,7 @@
                     "description": "If an error occurred during the creation of this media item, this field is populated with information related to the error. For details regarding this field, see Status."
                 },
                 "uploadToken": {
-                    "description": "The upload token used to create this new media item.",
+                    "description": "The upload token used to create this new (simple) media item. Only populated if the media item is simple and required a single upload token.",
                     "type": "string"
                 }
             },
@@ -1678,9 +1682,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Photos Library API",
-    "version": "v1",
-    "version_module": true
+    }
 }

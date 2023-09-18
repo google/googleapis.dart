@@ -3,6 +3,8 @@
 // BSD-style license that can be found in the LICENSE file.
 
 @TestOn('browser')
+library;
+
 import 'package:googleapis_auth/auth_browser.dart' as auth;
 import 'package:googleapis_auth/src/oauth2_flows/implicit.dart' as impl;
 import 'package:test/test.dart';
@@ -16,6 +18,7 @@ void main() {
     final clientId = auth.ClientId('foo_client', 'foo_secret');
     final scopes = ['scope1', 'scope2'];
 
+    // ignore: deprecated_member_use_from_same_package
     final flow = await auth.createImplicitBrowserFlow(clientId, scopes);
     final result = await flow.runHybridFlow(force: false, immediate: true);
     final credentials = result.credentials;

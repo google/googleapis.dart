@@ -2,19 +2,19 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud Asset API - v1
 ///
-/// The cloud asset API manages the history and inventory of cloud resources.
+/// The Cloud Asset API manages the history and inventory of Google Cloud
+/// resources.
 ///
 /// For more information, see
 /// <https://cloud.google.com/asset-inventory/docs/quickstart>
@@ -27,7 +27,7 @@
 /// - [OperationsResource]
 /// - [SavedQueriesResource]
 /// - [V1Resource]
-library cloudasset.v1;
+library cloudasset_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -36,14 +36,14 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-/// The cloud asset API manages the history and inventory of cloud resources.
+/// The Cloud Asset API manages the history and inventory of Google Cloud
+/// resources.
 class CloudAssetApi {
   /// See, edit, configure, and delete your Google Cloud data and see the email
   /// address for your Google Account.
@@ -105,9 +105,8 @@ class AssetsResource {
   /// - "CONTENT_TYPE_UNSPECIFIED" : Unspecified content type.
   /// - "RESOURCE" : Resource metadata.
   /// - "IAM_POLICY" : The actual IAM policy set on a resource.
-  /// - "ORG_POLICY" : The Cloud Organization Policy set on an asset.
-  /// - "ACCESS_POLICY" : The Cloud Access context manager Policy set on an
-  /// asset.
+  /// - "ORG_POLICY" : The organization policy set on an asset.
+  /// - "ACCESS_POLICY" : The Access Context Manager policy set on an asset.
   /// - "OS_INVENTORY" : The runtime OS Inventory information.
   /// - "RELATIONSHIP" : The related resources.
   ///
@@ -255,7 +254,7 @@ class FeedsResource {
   /// [parent] - Required. The name of the project/folder/organization where
   /// this feed should be created in. It can only be an organization number
   /// (such as "organizations/123"), a folder number (such as "folders/123"), a
-  /// project ID (such as "projects/my-project-id")", or a project number (such
+  /// project ID (such as "projects/my-project-id"), or a project number (such
   /// as "projects/12345").
   /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
   ///
@@ -507,14 +506,14 @@ class SavedQueriesResource {
   /// [parent] - Required. The name of the project/folder/organization where
   /// this saved_query should be created in. It can only be an organization
   /// number (such as "organizations/123"), a folder number (such as
-  /// "folders/123"), a project ID (such as "projects/my-project-id")", or a
+  /// "folders/123"), a project ID (such as "projects/my-project-id"), or a
   /// project number (such as "projects/12345").
   /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
   ///
   /// [savedQueryId] - Required. The ID to use for the saved query, which must
   /// be unique in the specified parent. It will become the final component of
   /// the saved query's resource name. This value should be 4-63 characters, and
-  /// valid characters are /a-z-/. Notice that this field is required in the
+  /// valid characters are `a-z-`. Notice that this field is required in the
   /// saved query creation, and the `name` field of the `saved_query` will be
   /// ignored.
   ///
@@ -785,20 +784,20 @@ class V1Resource {
   /// true, the response will include access analysis from identities to
   /// resources via service account impersonation. This is a very expensive
   /// operation, because many derived queries will be executed. We highly
-  /// recommend you use AssetService.AnalyzeIamPolicyLongrunning rpc instead.
+  /// recommend you use AssetService.AnalyzeIamPolicyLongrunning RPC instead.
   /// For example, if the request analyzes for which resources user A has
   /// permission P, and there's an IAM policy states user A has
   /// iam.serviceAccounts.getAccessToken permission to a service account SA, and
   /// there's another IAM policy states service account SA has permission P to a
-  /// GCP folder F, then user A potentially has access to the GCP folder F. And
-  /// those advanced analysis results will be included in
+  /// Google Cloud folder F, then user A potentially has access to the Google
+  /// Cloud folder F. And those advanced analysis results will be included in
   /// AnalyzeIamPolicyResponse.service_account_impersonation_analysis. Another
-  /// example, if the request analyzes for who has permission P to a GCP folder
-  /// F, and there's an IAM policy states user A has iam.serviceAccounts.actAs
-  /// permission to a service account SA, and there's another IAM policy states
-  /// service account SA has permission P to the GCP folder F, then user A
-  /// potentially has access to the GCP folder F. And those advanced analysis
-  /// results will be included in
+  /// example, if the request analyzes for who has permission P to a Google
+  /// Cloud folder F, and there's an IAM policy states user A has
+  /// iam.serviceAccounts.actAs permission to a service account SA, and there's
+  /// another IAM policy states service account SA has permission P to the
+  /// Google Cloud folder F, then user A potentially has access to the Google
+  /// Cloud folder F. And those advanced analysis results will be included in
   /// AnalyzeIamPolicyResponse.service_account_impersonation_analysis. Only the
   /// following permissions are considered in this analysis: *
   /// `iam.serviceAccounts.actAs` * `iam.serviceAccounts.signBlob` *
@@ -818,17 +817,17 @@ class V1Resource {
   /// section of the result will expand any resource attached to an IAM policy
   /// to include resources lower in the resource hierarchy. For example, if the
   /// request analyzes for which resources user A has permission P, and the
-  /// results include an IAM policy with P on a GCP folder, the results will
-  /// also include resources in that folder with permission P. If true and
+  /// results include an IAM policy with P on a Google Cloud folder, the results
+  /// will also include resources in that folder with permission P. If true and
   /// IamPolicyAnalysisQuery.resource_selector is specified, the resource
   /// section of the result will expand the specified resource to include
   /// resources lower in the resource hierarchy. Only project or lower resources
-  /// are supported. Folder and organization resource cannot be used together
+  /// are supported. Folder and organization resources cannot be used together
   /// with this option. For example, if the request analyzes for which users
-  /// have permission P on a GCP project with this option enabled, the results
-  /// will include all users who have permission P on that project or any lower
-  /// resource. If true, the default max expansion per resource is 1000 for
-  /// AssetService.AnalyzeIamPolicy\]\[\] and 100000 for
+  /// have permission P on a Google Cloud project with this option enabled, the
+  /// results will include all users who have permission P on that project or
+  /// any lower resource. If true, the default max expansion per resource is
+  /// 1000 for AssetService.AnalyzeIamPolicy\]\[\] and 100000 for
   /// AssetService.AnalyzeIamPolicyLongrunning\]\[\]. Default is false.
   ///
   /// [analysisQuery_options_expandRoles] - Optional. If true, the access
@@ -1029,16 +1028,16 @@ class V1Resource {
   /// Request parameters:
   ///
   /// [resource] - Required. Name of the resource to perform the analysis
-  /// against. Only GCP Project are supported as of today. Hence, this can only
-  /// be Project ID (such as "projects/my-project-id") or a Project Number (such
-  /// as "projects/12345").
+  /// against. Only Google Cloud projects are supported as of today. Hence, this
+  /// can only be a project ID (such as "projects/my-project-id") or a project
+  /// number (such as "projects/12345").
   /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
   ///
-  /// [destinationParent] - Required. Name of the GCP Folder or Organization to
-  /// reparent the target resource. The analysis will be performed against
-  /// hypothetically moving the resource to this specified desitination parent.
-  /// This can only be a Folder number (such as "folders/123") or an
-  /// Organization number (such as "organizations/123").
+  /// [destinationParent] - Required. Name of the Google Cloud folder or
+  /// organization to reparent the target resource. The analysis will be
+  /// performed against hypothetically moving the resource to this specified
+  /// desitination parent. This can only be a folder number (such as
+  /// "folders/123") or an organization number (such as "organizations/123").
   ///
   /// [view] - Analysis view indicating what information should be included in
   /// the analysis response. If unspecified, the default view is FULL.
@@ -1083,6 +1082,222 @@ class V1Resource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Analyzes organization policies under a scope.
+  ///
+  /// Request parameters:
+  ///
+  /// [scope] - Required. The organization to scope the request. Only
+  /// organization policies within the scope will be analyzed. *
+  /// organizations/{ORGANIZATION_NUMBER} (e.g., "organizations/123456")
+  /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
+  ///
+  /// [constraint] - Required. The name of the constraint to analyze
+  /// organization policies for. The response only contains analyzed
+  /// organization policies for the provided constraint.
+  ///
+  /// [filter] - The expression to filter
+  /// AnalyzeOrgPoliciesResponse.org_policy_results. The only supported field is
+  /// `consolidated_policy.attached_resource`, and the only supported operator
+  /// is `=`. Example:
+  /// consolidated_policy.attached_resource="//cloudresourcemanager.googleapis.com/folders/001"
+  /// will return the org policy results of"folders/001".
+  ///
+  /// [pageSize] - The maximum number of items to return per page. If
+  /// unspecified, AnalyzeOrgPoliciesResponse.org_policy_results will contain 20
+  /// items with a maximum of 200.
+  ///
+  /// [pageToken] - The pagination token to retrieve the next page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AnalyzeOrgPoliciesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AnalyzeOrgPoliciesResponse> analyzeOrgPolicies(
+    core.String scope, {
+    core.String? constraint,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (constraint != null) 'constraint': [constraint],
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$scope') + ':analyzeOrgPolicies';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AnalyzeOrgPoliciesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Analyzes organization policies governed assets (Google Cloud resources or
+  /// policies) under a scope.
+  ///
+  /// This RPC supports custom constraints and the following 10 canned
+  /// constraints: * storage.uniformBucketLevelAccess *
+  /// iam.disableServiceAccountKeyCreation * iam.allowedPolicyMemberDomains *
+  /// compute.vmExternalIpAccess * appengine.enforceServiceAccountActAsCheck *
+  /// gcp.resourceLocations * compute.trustedImageProjects *
+  /// compute.skipDefaultNetworkCreation * compute.requireOsLogin *
+  /// compute.disableNestedVirtualization This RPC only returns either resources
+  /// of types supported by
+  /// [searchable asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types#searchable_asset_types),
+  /// or IAM policies.
+  ///
+  /// Request parameters:
+  ///
+  /// [scope] - Required. The organization to scope the request. Only
+  /// organization policies within the scope will be analyzed. The output assets
+  /// will also be limited to the ones governed by those in-scope organization
+  /// policies. * organizations/{ORGANIZATION_NUMBER} (e.g.,
+  /// "organizations/123456")
+  /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
+  ///
+  /// [constraint] - Required. The name of the constraint to analyze governed
+  /// assets for. The analysis only contains analyzed organization policies for
+  /// the provided constraint.
+  ///
+  /// [filter] - The expression to filter the governed assets in result. The
+  /// only supported fields for governed resources are
+  /// `governed_resource.project` and `governed_resource.folders`. The only
+  /// supported fields for governed iam policies are
+  /// `governed_iam_policy.project` and `governed_iam_policy.folders`. The only
+  /// supported operator is `=`. Example 1:
+  /// governed_resource.project="projects/12345678" filter will return all
+  /// governed resources under projects/12345678 including the project ifself,
+  /// if applicable. Example 2: governed_iam_policy.folders="folders/12345678"
+  /// filter will return all governed iam policies under folders/12345678, if
+  /// applicable.
+  ///
+  /// [pageSize] - The maximum number of items to return per page. If
+  /// unspecified, AnalyzeOrgPolicyGovernedAssetsResponse.governed_assets will
+  /// contain 100 items with a maximum of 200.
+  ///
+  /// [pageToken] - The pagination token to retrieve the next page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AnalyzeOrgPolicyGovernedAssetsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AnalyzeOrgPolicyGovernedAssetsResponse>
+      analyzeOrgPolicyGovernedAssets(
+    core.String scope, {
+    core.String? constraint,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (constraint != null) 'constraint': [constraint],
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$scope') +
+        ':analyzeOrgPolicyGovernedAssets';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AnalyzeOrgPolicyGovernedAssetsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Analyzes organization policies governed containers (projects, folders or
+  /// organization) under a scope.
+  ///
+  /// Request parameters:
+  ///
+  /// [scope] - Required. The organization to scope the request. Only
+  /// organization policies within the scope will be analyzed. The output
+  /// containers will also be limited to the ones governed by those in-scope
+  /// organization policies. * organizations/{ORGANIZATION_NUMBER} (e.g.,
+  /// "organizations/123456")
+  /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
+  ///
+  /// [constraint] - Required. The name of the constraint to analyze governed
+  /// containers for. The analysis only contains organization policies for the
+  /// provided constraint.
+  ///
+  /// [filter] - The expression to filter the governed containers in result. The
+  /// only supported field is `parent`, and the only supported operator is `=`.
+  /// Example: parent="//cloudresourcemanager.googleapis.com/folders/001" will
+  /// return all containers under "folders/001".
+  ///
+  /// [pageSize] - The maximum number of items to return per page. If
+  /// unspecified,
+  /// AnalyzeOrgPolicyGovernedContainersResponse.governed_containers will
+  /// contain 100 items with a maximum of 200.
+  ///
+  /// [pageToken] - The pagination token to retrieve the next page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AnalyzeOrgPolicyGovernedContainersResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AnalyzeOrgPolicyGovernedContainersResponse>
+      analyzeOrgPolicyGovernedContainers(
+    core.String scope, {
+    core.String? constraint,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (constraint != null) 'constraint': [constraint],
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$scope') +
+        ':analyzeOrgPolicyGovernedContainers';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AnalyzeOrgPolicyGovernedContainersResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Batch gets the update history of assets that overlap a time window.
   ///
   /// For IAM_POLICY content, this API outputs history when the asset and its
@@ -1111,9 +1326,8 @@ class V1Resource {
   /// - "CONTENT_TYPE_UNSPECIFIED" : Unspecified content type.
   /// - "RESOURCE" : Resource metadata.
   /// - "IAM_POLICY" : The actual IAM policy set on a resource.
-  /// - "ORG_POLICY" : The Cloud Organization Policy set on an asset.
-  /// - "ACCESS_POLICY" : The Cloud Access context manager Policy set on an
-  /// asset.
+  /// - "ORG_POLICY" : The organization policy set on an asset.
+  /// - "ACCESS_POLICY" : The Access Context Manager policy set on an asset.
   /// - "OS_INVENTORY" : The runtime OS Inventory information.
   /// - "RELATIONSHIP" : The related resources.
   ///
@@ -1230,6 +1444,60 @@ class V1Resource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Issue a job that queries assets using a SQL statement compatible with
+  /// [BigQuery SQL](https://cloud.google.com/bigquery/docs/introduction-sql).
+  ///
+  /// If the query execution finishes within timeout and there's no pagination,
+  /// the full query results will be returned in the `QueryAssetsResponse`.
+  /// Otherwise, full query results can be obtained by issuing extra requests
+  /// with the `job_reference` from the a previous `QueryAssets` call. Note, the
+  /// query result has approximately 10 GB limitation enforced by
+  /// [BigQuery](https://cloud.google.com/bigquery/docs/best-practices-performance-output).
+  /// Queries return larger results will result in errors.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The relative name of the root asset. This can only be
+  /// an organization number (such as "organizations/123"), a project ID (such
+  /// as "projects/my-project-id"), or a project number (such as
+  /// "projects/12345"), or a folder number (such as "folders/123"). Only assets
+  /// belonging to the `parent` will be returned.
+  /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [QueryAssetsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<QueryAssetsResponse> queryAssets(
+    QueryAssetsRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + ':queryAssets';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return QueryAssetsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Searches all IAM policies within the specified scope, such as a project,
   /// folder, or organization.
   ///
@@ -1271,10 +1539,10 @@ class V1Resource {
   /// non-primitive fields (e.g., `policy`) are not supported.
   ///
   /// [pageSize] - Optional. The page size for search result pagination. Page
-  /// size is capped at 500 even if a larger value is given. If set to zero,
-  /// server will pick an appropriate default. Returned results may be fewer
-  /// than requested. When this happens, there could be more results as long as
-  /// `next_page_token` is returned.
+  /// size is capped at 500 even if a larger value is given. If set to zero or a
+  /// negative value, server will pick an appropriate default. Returned results
+  /// may be fewer than requested. When this happens, there could be more
+  /// results as long as `next_page_token` is returned.
   ///
   /// [pageToken] - Optional. If present, retrieve the next batch of results
   /// from the preceding call to this method. `page_token` must be the value of
@@ -1285,10 +1553,10 @@ class V1Resource {
   /// [how to construct a query](https://cloud.google.com/asset-inventory/docs/searching-iam-policies#how_to_construct_a_query)
   /// for more information. If not specified or empty, it will search all the
   /// IAM policies within the specified `scope`. Note that the query string is
-  /// compared against each Cloud IAM policy binding, including its principals,
-  /// roles, and Cloud IAM conditions. The returned Cloud IAM policies will only
-  /// contain the bindings that match your query. To learn more about the IAM
-  /// policy structure, see the
+  /// compared against each IAM policy binding, including its principals, roles,
+  /// and IAM conditions. The returned IAM policies will only contain the
+  /// bindings that match your query. To learn more about the IAM policy
+  /// structure, see the
   /// [IAM policy documentation](https://cloud.google.com/iam/help/allow-policies/structure).
   /// Examples: * `policy:amy@gmail.com` to find IAM policy bindings that
   /// specify user "amy@gmail.com". * `policy:roles/compute.admin` to find IAM
@@ -1355,7 +1623,7 @@ class V1Resource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Searches all Cloud resources within the specified scope, such as a
+  /// Searches all Google Cloud resources within the specified scope, such as a
   /// project, folder, or organization.
   ///
   /// The caller must be granted the `cloudasset.assets.searchAllResources`
@@ -1391,17 +1659,17 @@ class V1Resource {
   /// after the field name to indicate descending order. Redundant space
   /// characters are ignored. Example: "location DESC, name". Only singular
   /// primitive fields in the response are sortable: * name * assetType *
-  /// project * displayName * description * location * kmsKey * createTime *
-  /// updateTime * state * parentFullResourceName * parentAssetType All the
-  /// other fields such as repeated fields (e.g., `networkTags`), map fields
-  /// (e.g., `labels`) and struct fields (e.g., `additionalAttributes`) are not
+  /// project * displayName * description * location * createTime * updateTime *
+  /// state * parentFullResourceName * parentAssetType All the other fields such
+  /// as repeated fields (e.g., `networkTags`, `kmsKeys`), map fields (e.g.,
+  /// `labels`) and struct fields (e.g., `additionalAttributes`) are not
   /// supported.
   ///
   /// [pageSize] - Optional. The page size for search result pagination. Page
-  /// size is capped at 500 even if a larger value is given. If set to zero,
-  /// server will pick an appropriate default. Returned results may be fewer
-  /// than requested. When this happens, there could be more results as long as
-  /// `next_page_token` is returned.
+  /// size is capped at 500 even if a larger value is given. If set to zero or a
+  /// negative value, server will pick an appropriate default. Returned results
+  /// may be fewer than requested. When this happens, there could be more
+  /// results as long as `next_page_token` is returned.
   ///
   /// [pageToken] - Optional. If present, then retrieve the next batch of
   /// results from the preceding call to this method. `page_token` must be the
@@ -1412,52 +1680,57 @@ class V1Resource {
   /// [how to construct a query](https://cloud.google.com/asset-inventory/docs/searching-resources#how_to_construct_a_query)
   /// for more information. If not specified or empty, it will search all the
   /// resources within the specified `scope`. Examples: * `name:Important` to
-  /// find Cloud resources whose name contains "Important" as a word. *
-  /// `name=Important` to find the Cloud resource whose name is exactly
-  /// "Important". * `displayName:Impor*` to find Cloud resources whose display
-  /// name contains "Impor" as a prefix of any word in the field. *
-  /// `location:us-west*` to find Cloud resources whose location contains both
-  /// "us" and "west" as prefixes. * `labels:prod` to find Cloud resources whose
-  /// labels contain "prod" as a key or value. * `labels.env:prod` to find Cloud
-  /// resources that have a label "env" and its value is "prod". *
-  /// `labels.env:*` to find Cloud resources that have a label "env". *
-  /// `kmsKey:key` to find Cloud resources encrypted with a customer-managed
-  /// encryption key whose name contains the word "key". *
-  /// `relationships:instance-group-1` to find Cloud resources that have
-  /// relationships with "instance-group-1" in the related resource name. *
-  /// `relationships:INSTANCE_TO_INSTANCEGROUP` to find compute instances that
-  /// have relationships of type "INSTANCE_TO_INSTANCEGROUP". *
-  /// `relationships.INSTANCE_TO_INSTANCEGROUP:instance-group-1` to find compute
-  /// instances that have relationships with "instance-group-1" in the compute
-  /// instance group resource name, for relationship type
-  /// "INSTANCE_TO_INSTANCEGROUP". * `state:ACTIVE` to find Cloud resources
-  /// whose state contains "ACTIVE" as a word. * `NOT state:ACTIVE` to find
-  /// Cloud resources whose state doesn't contain "ACTIVE" as a word. *
-  /// `createTime<1609459200` to find Cloud resources that were created before
-  /// "2021-01-01 00:00:00 UTC". 1609459200 is the epoch timestamp of
-  /// "2021-01-01 00:00:00 UTC" in seconds. * `updateTime>1609459200` to find
-  /// Cloud resources that were updated after "2021-01-01 00:00:00 UTC".
-  /// 1609459200 is the epoch timestamp of "2021-01-01 00:00:00 UTC" in seconds.
-  /// * `Important` to find Cloud resources that contain "Important" as a word
-  /// in any of the searchable fields. * `Impor*` to find Cloud resources that
-  /// contain "Impor" as a prefix of any word in any of the searchable fields. *
-  /// `Important location:(us-west1 OR global)` to find Cloud resources that
-  /// contain "Important" as a word in any of the searchable fields and are also
-  /// located in the "us-west1" region or the "global" location.
+  /// find Google Cloud resources whose name contains "Important" as a word. *
+  /// `name=Important` to find the Google Cloud resource whose name is exactly
+  /// "Important". * `displayName:Impor*` to find Google Cloud resources whose
+  /// display name contains "Impor" as a prefix of any word in the field. *
+  /// `location:us-west*` to find Google Cloud resources whose location contains
+  /// both "us" and "west" as prefixes. * `labels:prod` to find Google Cloud
+  /// resources whose labels contain "prod" as a key or value. *
+  /// `labels.env:prod` to find Google Cloud resources that have a label "env"
+  /// and its value is "prod". * `labels.env:*` to find Google Cloud resources
+  /// that have a label "env". * `kmsKey:key` to find Google Cloud resources
+  /// encrypted with a customer-managed encryption key whose name contains "key"
+  /// as a word. This field is deprecated. Please use the `kmsKeys` field to
+  /// retrieve Cloud KMS key information. * `kmsKeys:key` to find Google Cloud
+  /// resources encrypted with customer-managed encryption keys whose name
+  /// contains the word "key". * `relationships:instance-group-1` to find Google
+  /// Cloud resources that have relationships with "instance-group-1" in the
+  /// related resource name. * `relationships:INSTANCE_TO_INSTANCEGROUP` to find
+  /// Compute Engine instances that have relationships of type
+  /// "INSTANCE_TO_INSTANCEGROUP". *
+  /// `relationships.INSTANCE_TO_INSTANCEGROUP:instance-group-1` to find Compute
+  /// Engine instances that have relationships with "instance-group-1" in the
+  /// Compute Engine instance group resource name, for relationship type
+  /// "INSTANCE_TO_INSTANCEGROUP". * `state:ACTIVE` to find Google Cloud
+  /// resources whose state contains "ACTIVE" as a word. * `NOT state:ACTIVE` to
+  /// find Google Cloud resources whose state doesn't contain "ACTIVE" as a
+  /// word. * `createTime<1609459200` to find Google Cloud resources that were
+  /// created before "2021-01-01 00:00:00 UTC". 1609459200 is the epoch
+  /// timestamp of "2021-01-01 00:00:00 UTC" in seconds. *
+  /// `updateTime>1609459200` to find Google Cloud resources that were updated
+  /// after "2021-01-01 00:00:00 UTC". 1609459200 is the epoch timestamp of
+  /// "2021-01-01 00:00:00 UTC" in seconds. * `Important` to find Google Cloud
+  /// resources that contain "Important" as a word in any of the searchable
+  /// fields. * `Impor*` to find Google Cloud resources that contain "Impor" as
+  /// a prefix of any word in any of the searchable fields. * `Important
+  /// location:(us-west1 OR global)` to find Google Cloud resources that contain
+  /// "Important" as a word in any of the searchable fields and are also located
+  /// in the "us-west1" region or the "global" location.
   ///
-  /// [readMask] - Optional. A comma-separated list of fields specifying which
-  /// fields to be returned in ResourceSearchResult. Only '*' or combination of
-  /// top level fields can be specified. Field names of both snake_case and
-  /// camelCase are supported. Examples: `"*"`, `"name,location"`,
-  /// `"name,versionedResources"`. The read_mask paths must be valid field paths
-  /// listed but not limited to (both snake_case and camelCase are supported): *
-  /// name * assetType * project * displayName * description * location *
-  /// tagKeys * tagValues * tagValueIds * labels * networkTags * kmsKey *
-  /// createTime * updateTime * state * additionalAttributes *
-  /// versionedResources If read_mask is not specified, all fields except
-  /// versionedResources will be returned. If only '*' is specified, all fields
-  /// including versionedResources will be returned. Any invalid field path will
-  /// trigger INVALID_ARGUMENT error.
+  /// [readMask] - Optional. A comma-separated list of fields that you want
+  /// returned in the results. The following fields are returned by default if
+  /// not specified: * `name` * `assetType` * `project` * `folders` *
+  /// `organization` * `displayName` * `description` * `location` * `labels` *
+  /// `networkTags` * `kmsKeys` * `createTime` * `updateTime` * `state` *
+  /// `additionalAttributes` * `parentFullResourceName` * `parentAssetType` Some
+  /// fields of large size, such as `versionedResources` and
+  /// `attachedResources`, are not returned by default, but you can specify them
+  /// in the `read_mask` parameter if you want to include them. If `"*"` is
+  /// specified, all
+  /// [available fields](https://cloud.google.com/asset-inventory/docs/reference/rest/v1/TopLevel/searchAllResources#resourcesearchresult)
+  /// are returned. Examples: `"name,location"`, `"name,versionedResources"`,
+  /// `"*"`. Any invalid field path will trigger INVALID_ARGUMENT error.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1653,7 +1926,7 @@ class AnalyzeMoveResponse {
   /// The list of analyses returned from performing the intended resource move
   /// analysis.
   ///
-  /// The analysis is grouped by different Cloud services.
+  /// The analysis is grouped by different Google Cloud services.
   core.List<MoveAnalysis>? moveAnalysis;
 
   AnalyzeMoveResponse({
@@ -1675,14 +1948,260 @@ class AnalyzeMoveResponse {
       };
 }
 
+/// The response message for AssetService.AnalyzeOrgPolicies.
+class AnalyzeOrgPoliciesResponse {
+  /// The definition of the constraint in the request.
+  AnalyzerOrgPolicyConstraint? constraint;
+
+  /// The page token to fetch the next page for
+  /// AnalyzeOrgPoliciesResponse.org_policy_results.
+  core.String? nextPageToken;
+
+  /// The organization policies under the AnalyzeOrgPoliciesRequest.scope with
+  /// the AnalyzeOrgPoliciesRequest.constraint.
+  core.List<OrgPolicyResult>? orgPolicyResults;
+
+  AnalyzeOrgPoliciesResponse({
+    this.constraint,
+    this.nextPageToken,
+    this.orgPolicyResults,
+  });
+
+  AnalyzeOrgPoliciesResponse.fromJson(core.Map json_)
+      : this(
+          constraint: json_.containsKey('constraint')
+              ? AnalyzerOrgPolicyConstraint.fromJson(
+                  json_['constraint'] as core.Map<core.String, core.dynamic>)
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          orgPolicyResults: json_.containsKey('orgPolicyResults')
+              ? (json_['orgPolicyResults'] as core.List)
+                  .map((value) => OrgPolicyResult.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (constraint != null) 'constraint': constraint!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (orgPolicyResults != null) 'orgPolicyResults': orgPolicyResults!,
+      };
+}
+
+/// The response message for AssetService.AnalyzeOrgPolicyGovernedAssets.
+class AnalyzeOrgPolicyGovernedAssetsResponse {
+  /// The definition of the constraint in the request.
+  AnalyzerOrgPolicyConstraint? constraint;
+
+  /// The list of the analyzed governed assets.
+  core.List<
+          GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedAsset>?
+      governedAssets;
+
+  /// The page token to fetch the next page for
+  /// AnalyzeOrgPolicyGovernedAssetsResponse.governed_assets.
+  core.String? nextPageToken;
+
+  AnalyzeOrgPolicyGovernedAssetsResponse({
+    this.constraint,
+    this.governedAssets,
+    this.nextPageToken,
+  });
+
+  AnalyzeOrgPolicyGovernedAssetsResponse.fromJson(core.Map json_)
+      : this(
+          constraint: json_.containsKey('constraint')
+              ? AnalyzerOrgPolicyConstraint.fromJson(
+                  json_['constraint'] as core.Map<core.String, core.dynamic>)
+              : null,
+          governedAssets: json_.containsKey('governedAssets')
+              ? (json_['governedAssets'] as core.List)
+                  .map((value) =>
+                      GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedAsset
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (constraint != null) 'constraint': constraint!,
+        if (governedAssets != null) 'governedAssets': governedAssets!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// The response message for AssetService.AnalyzeOrgPolicyGovernedContainers.
+class AnalyzeOrgPolicyGovernedContainersResponse {
+  /// The definition of the constraint in the request.
+  AnalyzerOrgPolicyConstraint? constraint;
+
+  /// The list of the analyzed governed containers.
+  core.List<GoogleCloudAssetV1GovernedContainer>? governedContainers;
+
+  /// The page token to fetch the next page for
+  /// AnalyzeOrgPolicyGovernedContainersResponse.governed_containers.
+  core.String? nextPageToken;
+
+  AnalyzeOrgPolicyGovernedContainersResponse({
+    this.constraint,
+    this.governedContainers,
+    this.nextPageToken,
+  });
+
+  AnalyzeOrgPolicyGovernedContainersResponse.fromJson(core.Map json_)
+      : this(
+          constraint: json_.containsKey('constraint')
+              ? AnalyzerOrgPolicyConstraint.fromJson(
+                  json_['constraint'] as core.Map<core.String, core.dynamic>)
+              : null,
+          governedContainers: json_.containsKey('governedContainers')
+              ? (json_['governedContainers'] as core.List)
+                  .map((value) => GoogleCloudAssetV1GovernedContainer.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (constraint != null) 'constraint': constraint!,
+        if (governedContainers != null)
+          'governedContainers': governedContainers!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// This organization policy message is a modified version of the one defined in
+/// the Organization Policy system.
+///
+/// This message contains several fields defined in the original organization
+/// policy with some new fields for analysis purpose.
+class AnalyzerOrgPolicy {
+  /// The
+  /// [full resource name](https://cloud.google.com/asset-inventory/docs/resource-name-format)
+  /// of an organization/folder/project resource where this organization policy
+  /// applies to.
+  ///
+  /// For any user defined org policies, this field has the same value as the
+  /// \[attached_resource\] field. Only for default policy, this field has the
+  /// different value.
+  core.String? appliedResource;
+
+  /// The
+  /// [full resource name](https://cloud.google.com/asset-inventory/docs/resource-name-format)
+  /// of an organization/folder/project resource where this organization policy
+  /// is set.
+  ///
+  /// Notice that some type of constraints are defined with default policy. This
+  /// field will be empty for them.
+  core.String? attachedResource;
+
+  /// If `inherit_from_parent` is true, Rules set higher up in the hierarchy (up
+  /// to the closest root) are inherited and present in the effective policy.
+  ///
+  /// If it is false, then no rules are inherited, and this policy becomes the
+  /// effective root for evaluation.
+  core.bool? inheritFromParent;
+
+  /// Ignores policies set above this resource and restores the default behavior
+  /// of the constraint at this resource.
+  ///
+  /// This field can be set in policies for either list or boolean constraints.
+  /// If set, `rules` must be empty and `inherit_from_parent` must be set to
+  /// false.
+  core.bool? reset;
+
+  /// List of rules for this organization policy.
+  core.List<GoogleCloudAssetV1Rule>? rules;
+
+  AnalyzerOrgPolicy({
+    this.appliedResource,
+    this.attachedResource,
+    this.inheritFromParent,
+    this.reset,
+    this.rules,
+  });
+
+  AnalyzerOrgPolicy.fromJson(core.Map json_)
+      : this(
+          appliedResource: json_.containsKey('appliedResource')
+              ? json_['appliedResource'] as core.String
+              : null,
+          attachedResource: json_.containsKey('attachedResource')
+              ? json_['attachedResource'] as core.String
+              : null,
+          inheritFromParent: json_.containsKey('inheritFromParent')
+              ? json_['inheritFromParent'] as core.bool
+              : null,
+          reset:
+              json_.containsKey('reset') ? json_['reset'] as core.bool : null,
+          rules: json_.containsKey('rules')
+              ? (json_['rules'] as core.List)
+                  .map((value) => GoogleCloudAssetV1Rule.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (appliedResource != null) 'appliedResource': appliedResource!,
+        if (attachedResource != null) 'attachedResource': attachedResource!,
+        if (inheritFromParent != null) 'inheritFromParent': inheritFromParent!,
+        if (reset != null) 'reset': reset!,
+        if (rules != null) 'rules': rules!,
+      };
+}
+
+/// The organization policy constraint definition.
+class AnalyzerOrgPolicyConstraint {
+  /// The definition of the custom constraint.
+  GoogleCloudAssetV1CustomConstraint? customConstraint;
+
+  /// The definition of the canned constraint defined by Google.
+  GoogleCloudAssetV1Constraint? googleDefinedConstraint;
+
+  AnalyzerOrgPolicyConstraint({
+    this.customConstraint,
+    this.googleDefinedConstraint,
+  });
+
+  AnalyzerOrgPolicyConstraint.fromJson(core.Map json_)
+      : this(
+          customConstraint: json_.containsKey('customConstraint')
+              ? GoogleCloudAssetV1CustomConstraint.fromJson(
+                  json_['customConstraint']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          googleDefinedConstraint: json_.containsKey('googleDefinedConstraint')
+              ? GoogleCloudAssetV1Constraint.fromJson(
+                  json_['googleDefinedConstraint']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (customConstraint != null) 'customConstraint': customConstraint!,
+        if (googleDefinedConstraint != null)
+          'googleDefinedConstraint': googleDefinedConstraint!,
+      };
+}
+
 /// An asset in Google Cloud.
 ///
 /// An asset can be any resource in the Google Cloud
 /// [resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy),
 /// a resource outside the Google Cloud resource hierarchy (such as Google
-/// Kubernetes Engine clusters and objects), or a policy (e.g. Cloud IAM
-/// policy), or a relationship (e.g. an INSTANCE_TO_INSTANCEGROUP relationship).
-/// See
+/// Kubernetes Engine clusters and objects), or a policy (e.g. IAM policy), or a
+/// relationship (e.g. an INSTANCE_TO_INSTANCEGROUP relationship). See
 /// [Supported asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types)
 /// for more information.
 class Asset {
@@ -1711,14 +2230,14 @@ class Asset {
   /// for more information.
   core.String? assetType;
 
-  /// A representation of the Cloud IAM policy set on a Google Cloud resource.
+  /// A representation of the IAM policy set on a Google Cloud resource.
   ///
-  /// There can be a maximum of one Cloud IAM policy set on any given resource.
-  /// In addition, Cloud IAM policies inherit their granted access scope from
-  /// any policies set on parent resources in the resource hierarchy. Therefore,
-  /// the effectively policy is the union of both the policy set on this
-  /// resource and each policy set on all of the resource's ancestry resource
-  /// levels in the hierarchy. See
+  /// There can be a maximum of one IAM policy set on any given resource. In
+  /// addition, IAM policies inherit their granted access scope from any
+  /// policies set on parent resources in the resource hierarchy. Therefore, the
+  /// effectively policy is the union of both the policy set on this resource
+  /// and each policy set on all of the resource's ancestry resource levels in
+  /// the hierarchy. See
   /// [this topic](https://cloud.google.com/iam/help/allow-policies/inheritance)
   /// for more information.
   Policy? iamPolicy;
@@ -1756,6 +2275,9 @@ class Asset {
   /// one type of relationship.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   RelatedAssets? relatedAssets;
 
   /// A representation of the resource.
@@ -2154,7 +2676,9 @@ class Binding {
   /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
   /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
-  /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
+  /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
+  /// (primary) that represents all the users of that domain. For example,
+  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
   /// An email address (plus unique identifier) representing a user that has
   /// been recently deleted. For example,
   /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
@@ -2170,9 +2694,7 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
-  /// that represents all the users of that domain. For example, `google.com` or
-  /// `example.com`.
+  /// the role in the binding.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
@@ -2386,10 +2908,10 @@ class Explanation {
               ? (json_['matchedPermissions']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     Permissions.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -2426,9 +2948,8 @@ class ExportAssetsRequest {
   /// - "CONTENT_TYPE_UNSPECIFIED" : Unspecified content type.
   /// - "RESOURCE" : Resource metadata.
   /// - "IAM_POLICY" : The actual IAM policy set on a resource.
-  /// - "ORG_POLICY" : The Cloud Organization Policy set on an asset.
-  /// - "ACCESS_POLICY" : The Cloud Access context manager Policy set on an
-  /// asset.
+  /// - "ORG_POLICY" : The organization policy set on an asset.
+  /// - "ACCESS_POLICY" : The Access Context Manager policy set on an asset.
   /// - "OS_INVENTORY" : The runtime OS Inventory information.
   /// - "RELATIONSHIP" : The related resources.
   core.String? contentType;
@@ -2568,9 +3089,8 @@ class Feed {
   /// - "CONTENT_TYPE_UNSPECIFIED" : Unspecified content type.
   /// - "RESOURCE" : Resource metadata.
   /// - "IAM_POLICY" : The actual IAM policy set on a resource.
-  /// - "ORG_POLICY" : The Cloud Organization Policy set on an asset.
-  /// - "ACCESS_POLICY" : The Cloud Access context manager Policy set on an
-  /// asset.
+  /// - "ORG_POLICY" : The organization policy set on an asset.
+  /// - "ACCESS_POLICY" : The Access Context Manager policy set on an asset.
   /// - "OS_INVENTORY" : The runtime OS Inventory information.
   /// - "RELATIONSHIP" : The related resources.
   core.String? contentType;
@@ -2684,9 +3204,9 @@ class FeedOutputConfig {
 
 /// A Cloud Storage location.
 class GcsDestination {
-  /// The uri of the Cloud Storage object.
+  /// The URI of the Cloud Storage object.
   ///
-  /// It's the same uri that is used by gsutil. Example:
+  /// It's the same URI that is used by gsutil. Example:
   /// "gs://bucket_name/object_name". See
   /// [Viewing and Editing Object Metadata](https://cloud.google.com/storage/docs/viewing-editing-metadata)
   /// for more information. If the specified Cloud Storage object already exists
@@ -2695,9 +3215,9 @@ class GcsDestination {
   /// overwritten with the exported result.
   core.String? uri;
 
-  /// The uri prefix of all generated Cloud Storage objects.
+  /// The URI prefix of all generated Cloud Storage objects.
   ///
-  /// Example: "gs://bucket_name/object_name_prefix". Each object uri is in
+  /// Example: "gs://bucket_name/object_name_prefix". Each object URI is in
   /// format: "gs://bucket_name/object_name_prefix// and only contains assets
   /// for that type. starts from 0. Example:
   /// "gs://bucket_name/object_name_prefix/compute.googleapis.com/Disk/0" is the
@@ -2838,6 +3358,225 @@ class GoogleCloudAssetV1AccessControlList {
       };
 }
 
+/// Represents a Google Cloud asset(resource or IAM policy) governed by the
+/// organization policies of the
+/// AnalyzeOrgPolicyGovernedAssetsRequest.constraint.
+class GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedAsset {
+  /// The consolidated policy for the analyzed asset.
+  ///
+  /// The consolidated policy is computed by merging and evaluating
+  /// AnalyzeOrgPolicyGovernedAssetsResponse.GovernedAsset.policy_bundle. The
+  /// evaluation will respect the organization policy
+  /// [hierarchy rules](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-hierarchy).
+  AnalyzerOrgPolicy? consolidatedPolicy;
+
+  /// An IAM policy governed by the organization policies of the
+  /// AnalyzeOrgPolicyGovernedAssetsRequest.constraint.
+  GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedIamPolicy?
+      governedIamPolicy;
+
+  /// A Google Cloud resource governed by the organization policies of the
+  /// AnalyzeOrgPolicyGovernedAssetsRequest.constraint.
+  GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedResource?
+      governedResource;
+
+  /// The ordered list of all organization policies from the
+  /// AnalyzeOrgPoliciesResponse.OrgPolicyResult.consolidated_policy.attached_resource
+  /// to the scope specified in the request.
+  ///
+  /// If the constraint is defined with default policy, it will also appear in
+  /// the list.
+  core.List<AnalyzerOrgPolicy>? policyBundle;
+
+  GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedAsset({
+    this.consolidatedPolicy,
+    this.governedIamPolicy,
+    this.governedResource,
+    this.policyBundle,
+  });
+
+  GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedAsset.fromJson(
+      core.Map json_)
+      : this(
+          consolidatedPolicy: json_.containsKey('consolidatedPolicy')
+              ? AnalyzerOrgPolicy.fromJson(json_['consolidatedPolicy']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          governedIamPolicy: json_.containsKey('governedIamPolicy')
+              ? GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedIamPolicy
+                  .fromJson(json_['governedIamPolicy']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          governedResource: json_.containsKey('governedResource')
+              ? GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedResource
+                  .fromJson(json_['governedResource']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          policyBundle: json_.containsKey('policyBundle')
+              ? (json_['policyBundle'] as core.List)
+                  .map((value) => AnalyzerOrgPolicy.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (consolidatedPolicy != null)
+          'consolidatedPolicy': consolidatedPolicy!,
+        if (governedIamPolicy != null) 'governedIamPolicy': governedIamPolicy!,
+        if (governedResource != null) 'governedResource': governedResource!,
+        if (policyBundle != null) 'policyBundle': policyBundle!,
+      };
+}
+
+/// The IAM policies governed by the organization policies of the
+/// AnalyzeOrgPolicyGovernedAssetsRequest.constraint.
+class GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedIamPolicy {
+  /// The full resource name of the resource on which this IAM policy is set.
+  ///
+  /// Example:
+  /// `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`.
+  /// See
+  /// [Cloud Asset Inventory Resource Name Format](https://cloud.google.com/asset-inventory/docs/resource-name-format)
+  /// for more information.
+  core.String? attachedResource;
+
+  /// The folder(s) that this IAM policy belongs to, in the format of
+  /// folders/{FOLDER_NUMBER}.
+  ///
+  /// This field is available when the IAM policy belongs (directly or
+  /// cascadingly) to one or more folders.
+  core.List<core.String>? folders;
+
+  /// The organization that this IAM policy belongs to, in the format of
+  /// organizations/{ORGANIZATION_NUMBER}.
+  ///
+  /// This field is available when the IAM policy belongs (directly or
+  /// cascadingly) to an organization.
+  core.String? organization;
+
+  /// The IAM policy directly set on the given resource.
+  Policy? policy;
+
+  /// The project that this IAM policy belongs to, in the format of
+  /// projects/{PROJECT_NUMBER}.
+  ///
+  /// This field is available when the IAM policy belongs to a project.
+  core.String? project;
+
+  GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedIamPolicy({
+    this.attachedResource,
+    this.folders,
+    this.organization,
+    this.policy,
+    this.project,
+  });
+
+  GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedIamPolicy.fromJson(
+      core.Map json_)
+      : this(
+          attachedResource: json_.containsKey('attachedResource')
+              ? json_['attachedResource'] as core.String
+              : null,
+          folders: json_.containsKey('folders')
+              ? (json_['folders'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          organization: json_.containsKey('organization')
+              ? json_['organization'] as core.String
+              : null,
+          policy: json_.containsKey('policy')
+              ? Policy.fromJson(
+                  json_['policy'] as core.Map<core.String, core.dynamic>)
+              : null,
+          project: json_.containsKey('project')
+              ? json_['project'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attachedResource != null) 'attachedResource': attachedResource!,
+        if (folders != null) 'folders': folders!,
+        if (organization != null) 'organization': organization!,
+        if (policy != null) 'policy': policy!,
+        if (project != null) 'project': project!,
+      };
+}
+
+/// The Google Cloud resources governed by the organization policies of the
+/// AnalyzeOrgPolicyGovernedAssetsRequest.constraint.
+class GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedResource {
+  /// The folder(s) that this resource belongs to, in the format of
+  /// folders/{FOLDER_NUMBER}.
+  ///
+  /// This field is available when the resource belongs (directly or
+  /// cascadingly) to one or more folders.
+  core.List<core.String>? folders;
+
+  /// The
+  /// [full resource name](https://cloud.google.com/asset-inventory/docs/resource-name-format)
+  /// of the Google Cloud resource.
+  core.String? fullResourceName;
+
+  /// The organization that this resource belongs to, in the format of
+  /// organizations/{ORGANIZATION_NUMBER}.
+  ///
+  /// This field is available when the resource belongs (directly or
+  /// cascadingly) to an organization.
+  core.String? organization;
+
+  /// The
+  /// [full resource name](https://cloud.google.com/asset-inventory/docs/resource-name-format)
+  /// of the parent of
+  /// AnalyzeOrgPolicyGovernedAssetsResponse.GovernedResource.full_resource_name.
+  core.String? parent;
+
+  /// The project that this resource belongs to, in the format of
+  /// projects/{PROJECT_NUMBER}.
+  ///
+  /// This field is available when the resource belongs to a project.
+  core.String? project;
+
+  GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedResource({
+    this.folders,
+    this.fullResourceName,
+    this.organization,
+    this.parent,
+    this.project,
+  });
+
+  GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedResource.fromJson(
+      core.Map json_)
+      : this(
+          folders: json_.containsKey('folders')
+              ? (json_['folders'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          fullResourceName: json_.containsKey('fullResourceName')
+              ? json_['fullResourceName'] as core.String
+              : null,
+          organization: json_.containsKey('organization')
+              ? json_['organization'] as core.String
+              : null,
+          parent: json_.containsKey('parent')
+              ? json_['parent'] as core.String
+              : null,
+          project: json_.containsKey('project')
+              ? json_['project'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (folders != null) 'folders': folders!,
+        if (fullResourceName != null) 'fullResourceName': fullResourceName!,
+        if (organization != null) 'organization': organization!,
+        if (parent != null) 'parent': parent!,
+        if (project != null) 'project': project!,
+      };
+}
+
 /// A BigQuery destination.
 class GoogleCloudAssetV1BigQueryDestination {
   /// The BigQuery dataset in format "projects/projectId/datasets/datasetId", to
@@ -2918,6 +3657,173 @@ class GoogleCloudAssetV1BigQueryDestination {
       };
 }
 
+/// A `Constraint` that is either enforced or not.
+///
+/// For example a constraint `constraints/compute.disableSerialPortAccess`. If
+/// it is enforced on a VM instance, serial port connections will not be opened
+/// to that instance.
+typedef GoogleCloudAssetV1BooleanConstraint = $Empty;
+
+/// The definition of a constraint.
+class GoogleCloudAssetV1Constraint {
+  /// Defines this constraint as being a BooleanConstraint.
+  GoogleCloudAssetV1BooleanConstraint? booleanConstraint;
+
+  /// The evaluation behavior of this constraint in the absence of 'Policy'.
+  /// Possible string values are:
+  /// - "CONSTRAINT_DEFAULT_UNSPECIFIED" : This is only used for distinguishing
+  /// unset values and should never be used.
+  /// - "ALLOW" : Indicate that all values are allowed for list constraints.
+  /// Indicate that enforcement is off for boolean constraints.
+  /// - "DENY" : Indicate that all values are denied for list constraints.
+  /// Indicate that enforcement is on for boolean constraints.
+  core.String? constraintDefault;
+
+  /// Detailed description of what this `Constraint` controls as well as how and
+  /// where it is enforced.
+  core.String? description;
+
+  /// The human readable name of the constraint.
+  core.String? displayName;
+
+  /// Defines this constraint as being a ListConstraint.
+  GoogleCloudAssetV1ListConstraint? listConstraint;
+
+  /// The unique name of the constraint.
+  ///
+  /// Format of the name should be * `constraints/{constraint_name}` For
+  /// example, `constraints/compute.disableSerialPortAccess`.
+  core.String? name;
+
+  GoogleCloudAssetV1Constraint({
+    this.booleanConstraint,
+    this.constraintDefault,
+    this.description,
+    this.displayName,
+    this.listConstraint,
+    this.name,
+  });
+
+  GoogleCloudAssetV1Constraint.fromJson(core.Map json_)
+      : this(
+          booleanConstraint: json_.containsKey('booleanConstraint')
+              ? GoogleCloudAssetV1BooleanConstraint.fromJson(
+                  json_['booleanConstraint']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          constraintDefault: json_.containsKey('constraintDefault')
+              ? json_['constraintDefault'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          listConstraint: json_.containsKey('listConstraint')
+              ? GoogleCloudAssetV1ListConstraint.fromJson(
+                  json_['listConstraint']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (booleanConstraint != null) 'booleanConstraint': booleanConstraint!,
+        if (constraintDefault != null) 'constraintDefault': constraintDefault!,
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (listConstraint != null) 'listConstraint': listConstraint!,
+        if (name != null) 'name': name!,
+      };
+}
+
+/// The definition of a custom constraint.
+class GoogleCloudAssetV1CustomConstraint {
+  /// Allow or deny type.
+  /// Possible string values are:
+  /// - "ACTION_TYPE_UNSPECIFIED" : Unspecified. Will results in user error.
+  /// - "ALLOW" : Allowed action type.
+  /// - "DENY" : Deny action type.
+  core.String? actionType;
+
+  /// Organization Policy condition/expression.
+  ///
+  /// For example:
+  /// `resource.instanceName.matches("[production|test]_.*_(\d)+")'` or,
+  /// `resource.management.auto_upgrade == true`
+  core.String? condition;
+
+  /// Detailed information about this custom policy constraint.
+  core.String? description;
+
+  /// One line display name for the UI.
+  core.String? displayName;
+
+  /// All the operations being applied for this constraint.
+  core.List<core.String>? methodTypes;
+
+  /// Name of the constraint.
+  ///
+  /// This is unique within the organization. Format of the name should be *
+  /// `organizations/{organization_id}/customConstraints/{custom_constraint_id}`
+  /// Example : "organizations/123/customConstraints/custom.createOnlyE2TypeVms"
+  core.String? name;
+
+  /// The Resource Instance type on which this policy applies to.
+  ///
+  /// Format will be of the form : "/" Example: *
+  /// `compute.googleapis.com/Instance`.
+  core.List<core.String>? resourceTypes;
+
+  GoogleCloudAssetV1CustomConstraint({
+    this.actionType,
+    this.condition,
+    this.description,
+    this.displayName,
+    this.methodTypes,
+    this.name,
+    this.resourceTypes,
+  });
+
+  GoogleCloudAssetV1CustomConstraint.fromJson(core.Map json_)
+      : this(
+          actionType: json_.containsKey('actionType')
+              ? json_['actionType'] as core.String
+              : null,
+          condition: json_.containsKey('condition')
+              ? json_['condition'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          methodTypes: json_.containsKey('methodTypes')
+              ? (json_['methodTypes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          resourceTypes: json_.containsKey('resourceTypes')
+              ? (json_['resourceTypes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (actionType != null) 'actionType': actionType!,
+        if (condition != null) 'condition': condition!,
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (methodTypes != null) 'methodTypes': methodTypes!,
+        if (name != null) 'name': name!,
+        if (resourceTypes != null) 'resourceTypes': resourceTypes!,
+      };
+}
+
 /// A directional edge.
 class GoogleCloudAssetV1Edge {
   /// The source node of the edge.
@@ -2955,9 +3861,9 @@ class GoogleCloudAssetV1Edge {
 
 /// A Cloud Storage location.
 class GoogleCloudAssetV1GcsDestination {
-  /// The uri of the Cloud Storage object.
+  /// The URI of the Cloud Storage object.
   ///
-  /// It's the same uri that is used by gsutil. Example:
+  /// It's the same URI that is used by gsutil. Example:
   /// "gs://bucket_name/object_name". See
   /// [Viewing and Editing Object Metadata](https://cloud.google.com/storage/docs/viewing-editing-metadata)
   /// for more information. If the specified Cloud Storage object already exists
@@ -2982,16 +3888,83 @@ class GoogleCloudAssetV1GcsDestination {
       };
 }
 
+/// The organization/folder/project resource governed by organization policies
+/// of AnalyzeOrgPolicyGovernedContainersRequest.constraint.
+class GoogleCloudAssetV1GovernedContainer {
+  /// The consolidated organization policy for the analyzed resource.
+  ///
+  /// The consolidated organization policy is computed by merging and evaluating
+  /// AnalyzeOrgPolicyGovernedContainersResponse.GovernedContainer.policy_bundle.
+  /// The evaluation will respect the organization policy
+  /// [hierarchy rules](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-hierarchy).
+  AnalyzerOrgPolicy? consolidatedPolicy;
+
+  /// The
+  /// [full resource name](https://cloud.google.com/asset-inventory/docs/resource-name-format)
+  /// of an organization/folder/project resource.
+  core.String? fullResourceName;
+
+  /// The
+  /// [full resource name](https://cloud.google.com/asset-inventory/docs/resource-name-format)
+  /// of the parent of
+  /// AnalyzeOrgPolicyGovernedContainersResponse.GovernedContainer.full_resource_name.
+  core.String? parent;
+
+  /// The ordered list of all organization policies from the
+  /// AnalyzeOrgPoliciesResponse.OrgPolicyResult.consolidated_policy.attached_resource.
+  ///
+  /// to the scope specified in the request. If the constraint is defined with
+  /// default policy, it will also appear in the list.
+  core.List<AnalyzerOrgPolicy>? policyBundle;
+
+  GoogleCloudAssetV1GovernedContainer({
+    this.consolidatedPolicy,
+    this.fullResourceName,
+    this.parent,
+    this.policyBundle,
+  });
+
+  GoogleCloudAssetV1GovernedContainer.fromJson(core.Map json_)
+      : this(
+          consolidatedPolicy: json_.containsKey('consolidatedPolicy')
+              ? AnalyzerOrgPolicy.fromJson(json_['consolidatedPolicy']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          fullResourceName: json_.containsKey('fullResourceName')
+              ? json_['fullResourceName'] as core.String
+              : null,
+          parent: json_.containsKey('parent')
+              ? json_['parent'] as core.String
+              : null,
+          policyBundle: json_.containsKey('policyBundle')
+              ? (json_['policyBundle'] as core.List)
+                  .map((value) => AnalyzerOrgPolicy.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (consolidatedPolicy != null)
+          'consolidatedPolicy': consolidatedPolicy!,
+        if (fullResourceName != null) 'fullResourceName': fullResourceName!,
+        if (parent != null) 'parent': parent!,
+        if (policyBundle != null) 'policyBundle': policyBundle!,
+      };
+}
+
 /// An identity under analysis.
 class GoogleCloudAssetV1Identity {
   /// The analysis state of this identity.
   IamPolicyAnalysisState? analysisState;
 
-  /// The identity name in any form of members appear in
-  /// [IAM policy binding](https://cloud.google.com/iam/reference/rest/v1/Binding),
-  /// such as: - user:foo@google.com - group:group1@google.com -
+  /// The identity of members, formatted as appear in an
+  /// [IAM policy binding](https://cloud.google.com/iam/reference/rest/v1/Binding).
+  ///
+  /// For example, they might be formatted like the following: -
+  /// user:foo@google.com - group:group1@google.com -
   /// serviceAccount:s1@prj1.iam.gserviceaccount.com -
-  /// projectOwner:some_project_id - domain:google.com - allUsers - etc.
+  /// projectOwner:some_project_id - domain:google.com - allUsers
   core.String? name;
 
   GoogleCloudAssetV1Identity({
@@ -3057,6 +4030,97 @@ class GoogleCloudAssetV1IdentityList {
       };
 }
 
+/// A `Constraint` that allows or disallows a list of string values, which are
+/// configured by an organization's policy administrator with a `Policy`.
+class GoogleCloudAssetV1ListConstraint {
+  /// Indicates whether values grouped into categories can be used in
+  /// `Policy.allowed_values` and `Policy.denied_values`.
+  ///
+  /// For example, `"in:Python"` would match any value in the 'Python' group.
+  core.bool? supportsIn;
+
+  /// Indicates whether subtrees of Cloud Resource Manager resource hierarchy
+  /// can be used in `Policy.allowed_values` and `Policy.denied_values`.
+  ///
+  /// For example, `"under:folders/123"` would match any resource under the
+  /// 'folders/123' folder.
+  core.bool? supportsUnder;
+
+  GoogleCloudAssetV1ListConstraint({
+    this.supportsIn,
+    this.supportsUnder,
+  });
+
+  GoogleCloudAssetV1ListConstraint.fromJson(core.Map json_)
+      : this(
+          supportsIn: json_.containsKey('supportsIn')
+              ? json_['supportsIn'] as core.bool
+              : null,
+          supportsUnder: json_.containsKey('supportsUnder')
+              ? json_['supportsUnder'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (supportsIn != null) 'supportsIn': supportsIn!,
+        if (supportsUnder != null) 'supportsUnder': supportsUnder!,
+      };
+}
+
+/// BigQuery destination.
+class GoogleCloudAssetV1QueryAssetsOutputConfigBigQueryDestination {
+  /// The BigQuery dataset where the query results will be saved.
+  ///
+  /// It has the format of "projects/{projectId}/datasets/{datasetId}".
+  ///
+  /// Required.
+  core.String? dataset;
+
+  /// The BigQuery table where the query results will be saved.
+  ///
+  /// If this table does not exist, a new table with the given name will be
+  /// created.
+  ///
+  /// Required.
+  core.String? table;
+
+  /// Specifies the action that occurs if the destination table or partition
+  /// already exists.
+  ///
+  /// The following values are supported: * WRITE_TRUNCATE: If the table or
+  /// partition already exists, BigQuery overwrites the entire table or all the
+  /// partitions data. * WRITE_APPEND: If the table or partition already exists,
+  /// BigQuery appends the data to the table or the latest partition. *
+  /// WRITE_EMPTY: If the table already exists and contains data, a 'duplicate'
+  /// error is returned in the job result. The default value is WRITE_EMPTY.
+  core.String? writeDisposition;
+
+  GoogleCloudAssetV1QueryAssetsOutputConfigBigQueryDestination({
+    this.dataset,
+    this.table,
+    this.writeDisposition,
+  });
+
+  GoogleCloudAssetV1QueryAssetsOutputConfigBigQueryDestination.fromJson(
+      core.Map json_)
+      : this(
+          dataset: json_.containsKey('dataset')
+              ? json_['dataset'] as core.String
+              : null,
+          table:
+              json_.containsKey('table') ? json_['table'] as core.String : null,
+          writeDisposition: json_.containsKey('writeDisposition')
+              ? json_['writeDisposition'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataset != null) 'dataset': dataset!,
+        if (table != null) 'table': table!,
+        if (writeDisposition != null) 'writeDisposition': writeDisposition!,
+      };
+}
+
 /// A Google Cloud resource under analysis.
 class GoogleCloudAssetV1Resource {
   /// The analysis state of this resource.
@@ -3087,6 +4151,78 @@ class GoogleCloudAssetV1Resource {
         if (fullResourceName != null) 'fullResourceName': fullResourceName!,
       };
 }
+
+/// This rule message is a customized version of the one defined in the
+/// Organization Policy system.
+///
+/// In addition to the fields defined in the original organization policy, it
+/// contains additional field(s) under specific circumstances to support
+/// analysis results.
+class GoogleCloudAssetV1Rule {
+  /// Setting this to true means that all values are allowed.
+  ///
+  /// This field can be set only in Policies for list constraints.
+  core.bool? allowAll;
+
+  /// The evaluating condition for this rule.
+  Expr? condition;
+
+  /// Setting this to true means that all values are denied.
+  ///
+  /// This field can be set only in Policies for list constraints.
+  core.bool? denyAll;
+
+  /// If `true`, then the `Policy` is enforced.
+  ///
+  /// If `false`, then any configuration is acceptable. This field can be set
+  /// only in Policies for boolean constraints.
+  core.bool? enforce;
+
+  /// List of values to be used for this PolicyRule.
+  ///
+  /// This field can be set only in Policies for list constraints.
+  GoogleCloudAssetV1StringValues? values;
+
+  GoogleCloudAssetV1Rule({
+    this.allowAll,
+    this.condition,
+    this.denyAll,
+    this.enforce,
+    this.values,
+  });
+
+  GoogleCloudAssetV1Rule.fromJson(core.Map json_)
+      : this(
+          allowAll: json_.containsKey('allowAll')
+              ? json_['allowAll'] as core.bool
+              : null,
+          condition: json_.containsKey('condition')
+              ? Expr.fromJson(
+                  json_['condition'] as core.Map<core.String, core.dynamic>)
+              : null,
+          denyAll: json_.containsKey('denyAll')
+              ? json_['denyAll'] as core.bool
+              : null,
+          enforce: json_.containsKey('enforce')
+              ? json_['enforce'] as core.bool
+              : null,
+          values: json_.containsKey('values')
+              ? GoogleCloudAssetV1StringValues.fromJson(
+                  json_['values'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allowAll != null) 'allowAll': allowAll!,
+        if (condition != null) 'condition': condition!,
+        if (denyAll != null) 'denyAll': denyAll!,
+        if (enforce != null) 'enforce': enforce!,
+        if (values != null) 'values': values!,
+      };
+}
+
+/// The string values for the list constraints.
+typedef GoogleCloudAssetV1StringValues = $StringValues;
 
 /// Used in `policy_type` to specify how `boolean_policy` will behave at this
 /// resource.
@@ -3242,14 +4378,12 @@ class GoogleIdentityAccesscontextmanagerV1AccessLevel {
   /// Does not affect behavior.
   core.String? description;
 
-  /// Resource name for the Access Level.
+  /// Resource name for the `AccessLevel`.
   ///
-  /// The `short_name` component must begin with a letter and only include
-  /// alphanumeric and '_'. Format:
-  /// `accessPolicies/{access_policy}/accessLevels/{access_level}`. The maximum
-  /// length of the `access_level` component is 50 characters.
-  ///
-  /// Required.
+  /// Format: `accessPolicies/{access_policy}/accessLevels/{access_level}`. The
+  /// `access_level` component must begin with a letter, followed by
+  /// alphanumeric characters or `_`. Its maximum length is 50 characters. After
+  /// you create an `AccessLevel`, you cannot change its `name`.
   core.String? name;
 
   /// Human readable title.
@@ -3423,9 +4557,9 @@ class GoogleIdentityAccesscontextmanagerV1Condition {
 
   /// Whether to negate the Condition.
   ///
-  /// If true, the Condition becomes a NAND over its non-empty fields, each
-  /// field must be false for the Condition overall to be satisfied. Defaults to
-  /// false.
+  /// If true, the Condition becomes a NAND over its non-empty fields. Any
+  /// non-empty field criteria evaluating to false will result in the Condition
+  /// to be satisfied. Defaults to false.
   core.bool? negate;
 
   /// The request must originate from one of the provided countries/regions.
@@ -3895,34 +5029,35 @@ typedef GoogleIdentityAccesscontextmanagerV1OsConstraint = $OsConstraint;
 /// outside of the `ServicePerimeter`, the request will be blocked. Otherwise
 /// the request is allowed. There are two types of Service Perimeter - Regular
 /// and Bridge. Regular Service Perimeters cannot overlap, a single Google Cloud
-/// project can only belong to a single regular Service Perimeter. Service
-/// Perimeter Bridges can contain only Google Cloud projects as members, a
-/// single Google Cloud project may belong to multiple Service Perimeter
-/// Bridges.
+/// project or VPC network can only belong to a single regular Service
+/// Perimeter. Service Perimeter Bridges can contain only Google Cloud projects
+/// as members, a single Google Cloud project may belong to multiple Service
+/// Perimeter Bridges.
 class GoogleIdentityAccesscontextmanagerV1ServicePerimeter {
   /// Description of the `ServicePerimeter` and its use.
   ///
   /// Does not affect behavior.
   core.String? description;
 
-  /// Resource name for the ServicePerimeter.
+  /// Resource name for the `ServicePerimeter`.
   ///
-  /// The `short_name` component must begin with a letter and only include
-  /// alphanumeric and '_'. Format:
-  /// `accessPolicies/{access_policy}/servicePerimeters/{service_perimeter}`
-  ///
-  /// Required.
+  /// Format:
+  /// `accessPolicies/{access_policy}/servicePerimeters/{service_perimeter}`.
+  /// The `service_perimeter` component must begin with a letter, followed by
+  /// alphanumeric characters or `_`. After you create a `ServicePerimeter`, you
+  /// cannot change its `name`.
   core.String? name;
 
   /// Perimeter type indicator.
   ///
-  /// A single project is allowed to be a member of single regular perimeter,
-  /// but multiple service perimeter bridges. A project cannot be a included in
-  /// a perimeter bridge without being included in regular perimeter. For
-  /// perimeter bridges, the restricted service list as well as access level
-  /// lists must be empty.
+  /// A single project or VPC network is allowed to be a member of single
+  /// regular perimeter, but multiple service perimeter bridges. A project
+  /// cannot be a included in a perimeter bridge without being included in
+  /// regular perimeter. For perimeter bridges, the restricted service list as
+  /// well as access level lists must be empty.
   /// Possible string values are:
-  /// - "PERIMETER_TYPE_REGULAR" : Regular Perimeter.
+  /// - "PERIMETER_TYPE_REGULAR" : Regular Perimeter. When no value is
+  /// specified, the perimeter uses this type.
   /// - "PERIMETER_TYPE_BRIDGE" : Perimeter Bridge.
   core.String? perimeterType;
 
@@ -4037,7 +5172,9 @@ class GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig {
 
   /// A list of Google Cloud resources that are inside of the service perimeter.
   ///
-  /// Currently only projects are allowed. Format: `projects/{project_number}`
+  /// Currently only projects and VPCs are allowed. Project format:
+  /// `projects/{project_number}` VPC network format:
+  /// `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`.
   core.List<core.String>? resources;
 
   /// Google Cloud services that are subject to the Service Perimeter
@@ -4309,7 +5446,7 @@ class IamPolicyAnalysisResult {
   /// finished.
   core.bool? fullyExplored;
 
-  /// The Cloud IAM policy binding under analysis.
+  /// The IAM policy binding under analysis.
   Binding? iamBinding;
 
   /// The identity list derived from members of the iam_binding that match or
@@ -4517,8 +5654,8 @@ class IamPolicySearchResult {
   /// `policy.role.permissions:compute.instances.create`
   Policy? policy;
 
-  /// The project that the associated GCP resource belongs to, in the form of
-  /// projects/{PROJECT_NUMBER}.
+  /// The project that the associated Google Cloud resource belongs to, in the
+  /// form of projects/{PROJECT_NUMBER}.
   ///
   /// If an IAM policy is set on a resource (like VM instance, Cloud Storage
   /// bucket), the project field will indicate the project that contains the
@@ -4660,9 +5797,9 @@ class Inventory {
       : this(
           items: json_.containsKey('items')
               ? (json_['items'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    Item.fromJson(item as core.Map<core.String, core.dynamic>),
+                    Item.fromJson(value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -4868,7 +6005,7 @@ class MoveAnalysis {
 
   /// The user friendly display name of the analysis.
   ///
-  /// E.g. IAM, Organization Policy etc.
+  /// E.g. IAM, organization policy etc.
   core.String? displayName;
 
   /// Description of error encountered when performing the analysis.
@@ -5046,20 +6183,20 @@ class Options {
   ///
   /// This is a very expensive operation, because many derived queries will be
   /// executed. We highly recommend you use
-  /// AssetService.AnalyzeIamPolicyLongrunning rpc instead. For example, if the
+  /// AssetService.AnalyzeIamPolicyLongrunning RPC instead. For example, if the
   /// request analyzes for which resources user A has permission P, and there's
   /// an IAM policy states user A has iam.serviceAccounts.getAccessToken
   /// permission to a service account SA, and there's another IAM policy states
-  /// service account SA has permission P to a GCP folder F, then user A
-  /// potentially has access to the GCP folder F. And those advanced analysis
-  /// results will be included in
+  /// service account SA has permission P to a Google Cloud folder F, then user
+  /// A potentially has access to the Google Cloud folder F. And those advanced
+  /// analysis results will be included in
   /// AnalyzeIamPolicyResponse.service_account_impersonation_analysis. Another
-  /// example, if the request analyzes for who has permission P to a GCP folder
-  /// F, and there's an IAM policy states user A has iam.serviceAccounts.actAs
-  /// permission to a service account SA, and there's another IAM policy states
-  /// service account SA has permission P to the GCP folder F, then user A
-  /// potentially has access to the GCP folder F. And those advanced analysis
-  /// results will be included in
+  /// example, if the request analyzes for who has permission P to a Google
+  /// Cloud folder F, and there's an IAM policy states user A has
+  /// iam.serviceAccounts.actAs permission to a service account SA, and there's
+  /// another IAM policy states service account SA has permission P to the
+  /// Google Cloud folder F, then user A potentially has access to the Google
+  /// Cloud folder F. And those advanced analysis results will be included in
   /// AnalyzeIamPolicyResponse.service_account_impersonation_analysis. Only the
   /// following permissions are considered in this analysis: *
   /// `iam.serviceAccounts.actAs` * `iam.serviceAccounts.signBlob` *
@@ -5086,18 +6223,19 @@ class Options {
   /// policy to include resources lower in the resource hierarchy.
   ///
   /// For example, if the request analyzes for which resources user A has
-  /// permission P, and the results include an IAM policy with P on a GCP
-  /// folder, the results will also include resources in that folder with
+  /// permission P, and the results include an IAM policy with P on a Google
+  /// Cloud folder, the results will also include resources in that folder with
   /// permission P. If true and IamPolicyAnalysisQuery.resource_selector is
   /// specified, the resource section of the result will expand the specified
   /// resource to include resources lower in the resource hierarchy. Only
-  /// project or lower resources are supported. Folder and organization resource
-  /// cannot be used together with this option. For example, if the request
-  /// analyzes for which users have permission P on a GCP project with this
-  /// option enabled, the results will include all users who have permission P
-  /// on that project or any lower resource. If true, the default max expansion
-  /// per resource is 1000 for AssetService.AnalyzeIamPolicy\]\[\] and 100000
-  /// for AssetService.AnalyzeIamPolicyLongrunning\]\[\]. Default is false.
+  /// project or lower resources are supported. Folder and organization
+  /// resources cannot be used together with this option. For example, if the
+  /// request analyzes for which users have permission P on a Google Cloud
+  /// project with this option enabled, the results will include all users who
+  /// have permission P on that project or any lower resource. If true, the
+  /// default max expansion per resource is 1000 for
+  /// AssetService.AnalyzeIamPolicy\]\[\] and 100000 for
+  /// AssetService.AnalyzeIamPolicyLongrunning\]\[\]. Default is false.
   ///
   /// Optional.
   core.bool? expandResources;
@@ -5170,6 +6308,49 @@ class Options {
         if (outputGroupEdges != null) 'outputGroupEdges': outputGroupEdges!,
         if (outputResourceEdges != null)
           'outputResourceEdges': outputResourceEdges!,
+      };
+}
+
+/// The organization policy result to the query.
+class OrgPolicyResult {
+  /// The consolidated organization policy for the analyzed resource.
+  ///
+  /// The consolidated organization policy is computed by merging and evaluating
+  /// AnalyzeOrgPoliciesResponse.policy_bundle. The evaluation will respect the
+  /// organization policy
+  /// [hierarchy rules](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-hierarchy).
+  AnalyzerOrgPolicy? consolidatedPolicy;
+
+  /// The ordered list of all organization policies from the
+  /// AnalyzeOrgPoliciesResponse.OrgPolicyResult.consolidated_policy.attached_resource.
+  ///
+  /// to the scope specified in the request. If the constraint is defined with
+  /// default policy, it will also appear in the list.
+  core.List<AnalyzerOrgPolicy>? policyBundle;
+
+  OrgPolicyResult({
+    this.consolidatedPolicy,
+    this.policyBundle,
+  });
+
+  OrgPolicyResult.fromJson(core.Map json_)
+      : this(
+          consolidatedPolicy: json_.containsKey('consolidatedPolicy')
+              ? AnalyzerOrgPolicy.fromJson(json_['consolidatedPolicy']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          policyBundle: json_.containsKey('policyBundle')
+              ? (json_['policyBundle'] as core.List)
+                  .map((value) => AnalyzerOrgPolicy.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (consolidatedPolicy != null)
+          'consolidatedPolicy': consolidatedPolicy!,
+        if (policyBundle != null) 'policyBundle': policyBundle!,
       };
 }
 
@@ -5442,11 +6623,220 @@ class PubsubDestination {
       };
 }
 
+/// Output configuration query assets.
+class QueryAssetsOutputConfig {
+  /// BigQuery destination where the query results will be saved.
+  GoogleCloudAssetV1QueryAssetsOutputConfigBigQueryDestination?
+      bigqueryDestination;
+
+  QueryAssetsOutputConfig({
+    this.bigqueryDestination,
+  });
+
+  QueryAssetsOutputConfig.fromJson(core.Map json_)
+      : this(
+          bigqueryDestination: json_.containsKey('bigqueryDestination')
+              ? GoogleCloudAssetV1QueryAssetsOutputConfigBigQueryDestination
+                  .fromJson(json_['bigqueryDestination']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bigqueryDestination != null)
+          'bigqueryDestination': bigqueryDestination!,
+      };
+}
+
+/// QueryAssets request.
+class QueryAssetsRequest {
+  /// Reference to the query job, which is from the `QueryAssetsResponse` of
+  /// previous `QueryAssets` call.
+  ///
+  /// Optional.
+  core.String? jobReference;
+
+  /// Destination where the query results will be saved.
+  ///
+  /// When this field is specified, the query results won't be saved in the
+  /// \[QueryAssetsResponse.query_result\]. Instead
+  /// \[QueryAssetsResponse.output_config\] will be set. Meanwhile,
+  /// \[QueryAssetsResponse.job_reference\] will be set and can be used to check
+  /// the status of the query job when passed to a following \[QueryAssets\] API
+  /// call.
+  ///
+  /// Optional.
+  QueryAssetsOutputConfig? outputConfig;
+
+  /// The maximum number of rows to return in the results.
+  ///
+  /// Responses are limited to 10 MB and 1000 rows. By default, the maximum row
+  /// count is 1000. When the byte or row count limit is reached, the rest of
+  /// the query results will be paginated. The field will be ignored when
+  /// \[output_config\] is specified.
+  ///
+  /// Optional.
+  core.int? pageSize;
+
+  /// A page token received from previous `QueryAssets`.
+  ///
+  /// The field will be ignored when \[output_config\] is specified.
+  ///
+  /// Optional.
+  core.String? pageToken;
+
+  /// Queries cloud assets as they appeared at the specified point in time.
+  ///
+  /// Optional.
+  core.String? readTime;
+
+  /// \[start_time\] is required.
+  ///
+  /// \[start_time\] must be less than \[end_time\] Defaults \[end_time\] to now
+  /// if \[start_time\] is set and \[end_time\] isn't. Maximum permitted time
+  /// range is 7 days.
+  ///
+  /// Optional.
+  TimeWindow? readTimeWindow;
+
+  /// A SQL statement that's compatible with
+  /// [BigQuery SQL](https://cloud.google.com/bigquery/docs/introduction-sql).
+  ///
+  /// Optional.
+  core.String? statement;
+
+  /// Specifies the maximum amount of time that the client is willing to wait
+  /// for the query to complete.
+  ///
+  /// By default, this limit is 5 min for the first query, and 1 minute for the
+  /// following queries. If the query is complete, the `done` field in the
+  /// `QueryAssetsResponse` is true, otherwise false. Like BigQuery
+  /// [jobs.query API](https://cloud.google.com/bigquery/docs/reference/rest/v2/jobs/query#queryrequest)
+  /// The call is not guaranteed to wait for the specified timeout; it typically
+  /// returns after around 200 seconds (200,000 milliseconds), even if the query
+  /// is not complete. The field will be ignored when \[output_config\] is
+  /// specified.
+  ///
+  /// Optional.
+  core.String? timeout;
+
+  QueryAssetsRequest({
+    this.jobReference,
+    this.outputConfig,
+    this.pageSize,
+    this.pageToken,
+    this.readTime,
+    this.readTimeWindow,
+    this.statement,
+    this.timeout,
+  });
+
+  QueryAssetsRequest.fromJson(core.Map json_)
+      : this(
+          jobReference: json_.containsKey('jobReference')
+              ? json_['jobReference'] as core.String
+              : null,
+          outputConfig: json_.containsKey('outputConfig')
+              ? QueryAssetsOutputConfig.fromJson(
+                  json_['outputConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          pageSize: json_.containsKey('pageSize')
+              ? json_['pageSize'] as core.int
+              : null,
+          pageToken: json_.containsKey('pageToken')
+              ? json_['pageToken'] as core.String
+              : null,
+          readTime: json_.containsKey('readTime')
+              ? json_['readTime'] as core.String
+              : null,
+          readTimeWindow: json_.containsKey('readTimeWindow')
+              ? TimeWindow.fromJson(json_['readTimeWindow']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          statement: json_.containsKey('statement')
+              ? json_['statement'] as core.String
+              : null,
+          timeout: json_.containsKey('timeout')
+              ? json_['timeout'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (jobReference != null) 'jobReference': jobReference!,
+        if (outputConfig != null) 'outputConfig': outputConfig!,
+        if (pageSize != null) 'pageSize': pageSize!,
+        if (pageToken != null) 'pageToken': pageToken!,
+        if (readTime != null) 'readTime': readTime!,
+        if (readTimeWindow != null) 'readTimeWindow': readTimeWindow!,
+        if (statement != null) 'statement': statement!,
+        if (timeout != null) 'timeout': timeout!,
+      };
+}
+
+/// QueryAssets response.
+class QueryAssetsResponse {
+  /// The query response, which can be either an `error` or a valid `response`.
+  ///
+  /// If `done` == `false` and the query result is being saved in a output, the
+  /// output_config field will be set. If `done` == `true`, exactly one of
+  /// `error`, `query_result` or `output_config` will be set.
+  core.bool? done;
+
+  /// Error status.
+  Status? error;
+
+  /// Reference to a query job.
+  core.String? jobReference;
+
+  /// Output configuration which indicates instead of being returned in API
+  /// response on the fly, the query result will be saved in a specific output.
+  QueryAssetsOutputConfig? outputConfig;
+
+  /// Result of the query.
+  QueryResult? queryResult;
+
+  QueryAssetsResponse({
+    this.done,
+    this.error,
+    this.jobReference,
+    this.outputConfig,
+    this.queryResult,
+  });
+
+  QueryAssetsResponse.fromJson(core.Map json_)
+      : this(
+          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          error: json_.containsKey('error')
+              ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          jobReference: json_.containsKey('jobReference')
+              ? json_['jobReference'] as core.String
+              : null,
+          outputConfig: json_.containsKey('outputConfig')
+              ? QueryAssetsOutputConfig.fromJson(
+                  json_['outputConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          queryResult: json_.containsKey('queryResult')
+              ? QueryResult.fromJson(
+                  json_['queryResult'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!,
+        if (jobReference != null) 'jobReference': jobReference!,
+        if (outputConfig != null) 'outputConfig': outputConfig!,
+        if (queryResult != null) 'queryResult': queryResult!,
+      };
+}
+
 /// The query content.
 class QueryContent {
   /// An IAM Policy Analysis query, which could be used in the
-  /// AssetService.AnalyzeIamPolicy rpc or the
-  /// AssetService.AnalyzeIamPolicyLongrunning rpc.
+  /// AssetService.AnalyzeIamPolicy RPC or the
+  /// AssetService.AnalyzeIamPolicyLongrunning RPC.
   IamPolicyAnalysisQuery? iamPolicyAnalysisQuery;
 
   QueryContent({
@@ -5467,14 +6857,68 @@ class QueryContent {
       };
 }
 
+/// Execution results of the query.
+///
+/// The result is formatted as rows represented by BigQuery compatible
+/// \[schema\]. When pagination is necessary, it will contains the page token to
+/// retrieve the results of following pages.
+class QueryResult {
+  /// Token to retrieve the next page of the results.
+  core.String? nextPageToken;
+
+  /// Each row hold a query result in the format of `Struct`.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.List<core.Map<core.String, core.Object?>>? rows;
+
+  /// Describes the format of the \[rows\].
+  TableSchema? schema;
+
+  /// Total rows of the whole query results.
+  core.String? totalRows;
+
+  QueryResult({
+    this.nextPageToken,
+    this.rows,
+    this.schema,
+    this.totalRows,
+  });
+
+  QueryResult.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          rows: json_.containsKey('rows')
+              ? (json_['rows'] as core.List)
+                  .map((value) => value as core.Map<core.String, core.dynamic>)
+                  .toList()
+              : null,
+          schema: json_.containsKey('schema')
+              ? TableSchema.fromJson(
+                  json_['schema'] as core.Map<core.String, core.dynamic>)
+              : null,
+          totalRows: json_.containsKey('totalRows')
+              ? json_['totalRows'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (rows != null) 'rows': rows!,
+        if (schema != null) 'schema': schema!,
+        if (totalRows != null) 'totalRows': totalRows!,
+      };
+}
+
 /// An asset identifier in Google Cloud which contains its name, type and
 /// ancestors.
 ///
 /// An asset can be any resource in the Google Cloud
 /// [resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy),
 /// a resource outside the Google Cloud resource hierarchy (such as Google
-/// Kubernetes Engine clusters and objects), or a policy (e.g. Cloud IAM
-/// policy). See
+/// Kubernetes Engine clusters and objects), or a policy (e.g. IAM policy). See
 /// [Supported asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types)
 /// for more information.
 class RelatedAsset {
@@ -5727,7 +7171,7 @@ class Resource {
   /// [Resource Names](https://cloud.google.com/apis/design/resource_names#full_resource_name)
   /// for more information. For Google Cloud assets, this value is the parent
   /// resource defined in the
-  /// [Cloud IAM policy hierarchy](https://cloud.google.com/iam/docs/overview#policy_hierarchy).
+  /// [IAM policy hierarchy](https://cloud.google.com/iam/docs/overview#policy_hierarchy).
   /// Example: `//cloudresourcemanager.googleapis.com/projects/my_project_123`
   /// For third-party assets, this field may be set differently.
   core.String? parent;
@@ -5793,20 +7237,20 @@ class Resource {
 
 /// A result of Resource Search, containing information of a cloud resource.
 ///
-/// Next ID: 31
+/// Next ID: 34
 class ResourceSearchResult {
   /// The additional searchable attributes of this resource.
   ///
   /// The attributes may vary from one resource type to another. Examples:
   /// `projectId` for Project, `dnsName` for DNS ManagedZone. This field
   /// contains a subset of the resource metadata fields that are returned by the
-  /// List or Get APIs provided by the corresponding GCP service (e.g., Compute
-  /// Engine). see
+  /// List or Get APIs provided by the corresponding Google Cloud service (e.g.,
+  /// Compute Engine). see
   /// [API references and supported searchable attributes](https://cloud.google.com/asset-inventory/docs/supported-asset-types#searchable_asset_types)
   /// to see which fields are included. You can search values of these fields
   /// through free text search. However, you should not consume the field
-  /// programically as the field names and values may change as the GCP service
-  /// updates to a new incompatible API version. To search against the
+  /// programically as the field names and values may change as the Google Cloud
+  /// service updates to a new incompatible API version. To search against the
   /// `additional_attributes`: * Use a free text query to match the attributes
   /// values. Example: to search `additional_attributes = { dnsName: "foobar"
   /// }`, you can issue a query `foobar`.
@@ -5871,15 +7315,33 @@ class ResourceSearchResult {
   /// [CryptoKeyVersion](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions)
   /// name.
   ///
-  /// This field is available only when the resource's Protobuf contains it. To
-  /// search against the `kms_key`: * Use a field query. Example: `kmsKey:key` *
-  /// Use a free text query. Example: `key`
+  /// This field only presents for the purpose of backward compatibility. Please
+  /// use the `kms_keys` field to retrieve Cloud KMS key information. This field
+  /// is available only when the resource's Protobuf contains it and will only
+  /// be populated for
+  /// [these resource types](https://cloud.google.com/asset-inventory/docs/legacy-field-names#resource_types_with_the_to_be_deprecated_kmskey_field)
+  /// for backward compatible purposes. To search against the `kms_key`: * Use a
+  /// field query. Example: `kmsKey:key` * Use a free text query. Example: `key`
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? kmsKey;
+
+  /// The Cloud KMS
+  /// [CryptoKey](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys)
+  /// names or
+  /// [CryptoKeyVersion](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions)
+  /// names.
+  ///
+  /// This field is available only when the resource's Protobuf contains it. To
+  /// search against the `kms_keys`: * Use a field query. Example: `kmsKeys:key`
+  /// * Use a free text query. Example: `key`
+  core.List<core.String>? kmsKeys;
 
   /// Labels associated with this resource.
   ///
   /// See
-  /// [Labelling and grouping GCP resources](https://cloud.google.com/blog/products/gcp/labelling-and-grouping-your-google-cloud-platform-resources)
+  /// [Labelling and grouping Google Cloud resources](https://cloud.google.com/blog/products/gcp/labelling-and-grouping-your-google-cloud-platform-resources)
   /// for more information. This field is available only when the resource's
   /// Protobuf contains it. To search against the `labels`: * Use a field query:
   /// - query on any label's key or value. Example: `labels:prod` - query by a
@@ -5908,9 +7370,9 @@ class ResourceSearchResult {
 
   /// Network tags associated with this resource.
   ///
-  /// Like labels, network tags are a type of annotations used to group GCP
-  /// resources. See
-  /// [Labelling GCP resources](https://cloud.google.com/blog/products/gcp/labelling-and-grouping-your-google-cloud-platform-resources)
+  /// Like labels, network tags are a type of annotations used to group Google
+  /// Cloud resources. See
+  /// [Labelling Google Cloud resources](https://cloud.google.com/blog/products/gcp/labelling-and-grouping-your-google-cloud-platform-resources)
   /// for more information. This field is available only when the resource's
   /// Protobuf contains it. To search against the `network_tags`: * Use a field
   /// query. Example: `networkTags:internal` * Use a free text query. Example:
@@ -5967,8 +7429,8 @@ class ResourceSearchResult {
   /// PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED,
   /// REPAIRING, and TERMINATED. See `status` definition in
   /// [API Reference](https://cloud.google.com/compute/docs/reference/rest/v1/instances).
-  /// If the resource is a project provided by Cloud Resource Manager, its state
-  /// will include LIFECYCLE_STATE_UNSPECIFIED, ACTIVE, DELETE_REQUESTED and
+  /// If the resource is a project provided by Resource Manager, its state will
+  /// include LIFECYCLE_STATE_UNSPECIFIED, ACTIVE, DELETE_REQUESTED and
   /// DELETE_IN_PROGRESS. See `lifecycleState` definition in
   /// [API Reference](https://cloud.google.com/resource-manager/reference/rest/v1/projects).
   /// To search against the `state`: * Use a field query. Example:
@@ -5985,8 +7447,7 @@ class ResourceSearchResult {
   /// TagValue IDs, in the format of tagValues/{TAG_VALUE_ID}.
   ///
   /// To search against the `tagValueIds`: * Use a field query. Example: -
-  /// `tagValueIds:"456"` - `tagValueIds="tagValues/456"` * Use a free text
-  /// query. Example: - `456`
+  /// `tagValueIds="tagValues/456"`
   core.List<core.String>? tagValueIds;
 
   /// TagValue namespaced names, in the format of
@@ -6027,6 +7488,7 @@ class ResourceSearchResult {
     this.displayName,
     this.folders,
     this.kmsKey,
+    this.kmsKeys,
     this.labels,
     this.location,
     this.name,
@@ -6076,11 +7538,16 @@ class ResourceSearchResult {
           kmsKey: json_.containsKey('kmsKey')
               ? json_['kmsKey'] as core.String
               : null,
+          kmsKeys: json_.containsKey('kmsKeys')
+              ? (json_['kmsKeys'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -6108,10 +7575,10 @@ class ResourceSearchResult {
           relationships: json_.containsKey('relationships')
               ? (json_['relationships'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     RelatedResources.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -6153,6 +7620,7 @@ class ResourceSearchResult {
         if (displayName != null) 'displayName': displayName!,
         if (folders != null) 'folders': folders!,
         if (kmsKey != null) 'kmsKey': kmsKey!,
+        if (kmsKeys != null) 'kmsKeys': kmsKeys!,
         if (labels != null) 'labels': labels!,
         if (location != null) 'location': location!,
         if (name != null) 'name': name!,
@@ -6273,9 +7741,9 @@ class SavedQuery {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -6307,7 +7775,7 @@ class SearchAllIamPoliciesResponse {
   /// the `page_token`.
   core.String? nextPageToken;
 
-  /// A list of IamPolicy that match the search query.
+  /// A list of IAM policies that match the search query.
   ///
   /// Related information such as the associated resource is returned along with
   /// the policy.
@@ -6500,6 +7968,84 @@ class SoftwarePackage {
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef Status = $Status;
+
+/// A field in TableSchema.
+class TableFieldSchema {
+  /// The field name.
+  ///
+  /// The name must contain only letters (a-z, A-Z), numbers (0-9), or
+  /// underscores (_), and must start with a letter or underscore. The maximum
+  /// length is 128 characters.
+  core.String? field;
+
+  /// Describes the nested schema fields if the type property is set to RECORD.
+  core.List<TableFieldSchema>? fields;
+
+  /// The field mode.
+  ///
+  /// Possible values include NULLABLE, REQUIRED and REPEATED. The default value
+  /// is NULLABLE.
+  core.String? mode;
+
+  /// The field data type.
+  ///
+  /// Possible values include * STRING * BYTES * INTEGER * FLOAT * BOOLEAN *
+  /// TIMESTAMP * DATE * TIME * DATETIME * GEOGRAPHY, * NUMERIC, * BIGNUMERIC, *
+  /// RECORD (where RECORD indicates that the field contains a nested schema).
+  core.String? type;
+
+  TableFieldSchema({
+    this.field,
+    this.fields,
+    this.mode,
+    this.type,
+  });
+
+  TableFieldSchema.fromJson(core.Map json_)
+      : this(
+          field:
+              json_.containsKey('field') ? json_['field'] as core.String : null,
+          fields: json_.containsKey('fields')
+              ? (json_['fields'] as core.List)
+                  .map((value) => TableFieldSchema.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          mode: json_.containsKey('mode') ? json_['mode'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (field != null) 'field': field!,
+        if (fields != null) 'fields': fields!,
+        if (mode != null) 'mode': mode!,
+        if (type != null) 'type': type!,
+      };
+}
+
+/// BigQuery Compatible table schema.
+class TableSchema {
+  /// Describes the fields in a table.
+  core.List<TableFieldSchema>? fields;
+
+  TableSchema({
+    this.fields,
+  });
+
+  TableSchema.fromJson(core.Map json_)
+      : this(
+          fields: json_.containsKey('fields')
+              ? (json_['fields'] as core.List)
+                  .map((value) => TableFieldSchema.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fields != null) 'fields': fields!,
+      };
+}
 
 /// An asset in Google Cloud and its temporal metadata, including the time
 /// window when it was observed and its status during that window.

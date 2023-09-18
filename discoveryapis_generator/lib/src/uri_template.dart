@@ -2,8 +2,6 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-library discoveryapis_generator.uri_template;
-
 import 'dart_api_library.dart';
 import 'namer.dart';
 import 'utils.dart';

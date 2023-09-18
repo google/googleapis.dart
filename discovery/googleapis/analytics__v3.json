@@ -42,6 +42,12 @@
     "name": "analytics",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20190807",
+    "rootUrl": "https://analytics.googleapis.com/",
+    "servicePath": "analytics/v3/",
+    "title": "Google Analytics API",
+    "version": "v3",
     "parameters": {
         "alt": {
             "default": "json",
@@ -87,7 +93,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "data": {
             "resources": {
@@ -3805,8 +3810,6 @@
             }
         }
     },
-    "revision": "20190807",
-    "rootUrl": "https://analytics.googleapis.com/",
     "schemas": {
         "Account": {
             "description": "JSON template for Analytics account entry.",
@@ -7452,8 +7455,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "analytics/v3/",
-    "title": "Google Analytics API",
-    "version": "v3"
+    }
 }

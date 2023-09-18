@@ -75,6 +75,12 @@
     "name": "script",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230708",
+    "rootUrl": "https://script.googleapis.com/",
+    "servicePath": "",
+    "title": "Apps Script API",
+    "version": "v1",
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -152,7 +158,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "processes": {
             "methods": {
@@ -885,8 +890,6 @@
             }
         }
     },
-    "revision": "20220904",
-    "rootUrl": "https://script.googleapis.com/",
     "schemas": {
         "Content": {
             "description": "The Content resource.",
@@ -1310,6 +1313,20 @@
                 },
                 "projectName": {
                     "description": "Name of the script being executed.",
+                    "type": "string"
+                },
+                "runtimeVersion": {
+                    "description": "Which version of maestro to use to execute the script.",
+                    "enum": [
+                        "RUNTIME_VERSION_UNSPECIFIED",
+                        "DEPRECATED_ES5",
+                        "V8"
+                    ],
+                    "enumDescriptions": [
+                        "Runtime version unset / unknown.",
+                        "Legacy rhino version of the Apps script runtime",
+                        "Current default V8 version of the apps script runtime."
+                    ],
                     "type": "string"
                 },
                 "startTime": {
@@ -1771,8 +1788,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Apps Script API",
-    "version": "v1"
+    }
 }

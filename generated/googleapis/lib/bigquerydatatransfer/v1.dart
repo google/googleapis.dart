@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// BigQuery Data Transfer API - v1
@@ -31,7 +30,7 @@
 ///   - [ProjectsTransferConfigsResource]
 ///     - [ProjectsTransferConfigsRunsResource]
 ///       - [ProjectsTransferConfigsRunsTransferLogsResource]
-library bigquerydatatransfer.v1;
+library bigquerydatatransfer_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -40,7 +39,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -591,15 +589,13 @@ class ProjectsLocationsTransferConfigsResource {
   /// `transferConfig.dataSourceId` is 'youtube_channel' and new credentials are
   /// needed, as indicated by `CheckValidCreds`. In order to obtain
   /// authorization_code, make a request to the following URL:
-  /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?
-  /// client_id=client_id&scope=data_source_scopes
-  /// &redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=authorization_code *
-  /// The client_id is the OAuth client_id of the a data source as returned by
+  /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=authorization_code&client_id=client_id&scope=data_source_scopes
+  /// * The client_id is the OAuth client_id of the a data source as returned by
   /// ListDataSources method. * data_source_scopes are the scopes returned by
   /// ListDataSources method. Note that this should not be set when
   /// `service_account_name` is used to create the transfer config.
   ///
-  /// [serviceAccountName] - Optional service account name. If this field is
+  /// [serviceAccountName] - Optional service account email. If this field is
   /// set, the transfer config will be created with this service account's
   /// credentials. It requires that the requesting user calling this API has
   /// permissions to act as this service account. Note that not all data sources
@@ -611,10 +607,8 @@ class ProjectsLocationsTransferConfigsResource {
   /// `transferConfig.dataSourceId` is not 'youtube_channel' and new credentials
   /// are needed, as indicated by `CheckValidCreds`. In order to obtain version
   /// info, make a request to the following URL:
-  /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?
-  /// client_id=client_id&scope=data_source_scopes
-  /// &redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=version_info * The
-  /// client_id is the OAuth client_id of the a data source as returned by
+  /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=version_info&client_id=client_id&scope=data_source_scopes
+  /// * The client_id is the OAuth client_id of the a data source as returned by
   /// ListDataSources method. * data_source_scopes are the scopes returned by
   /// ListDataSources method. Note that this should not be set when
   /// `service_account_name` is used to create the transfer config.
@@ -813,15 +807,13 @@ class ProjectsLocationsTransferConfigsResource {
   /// `transferConfig.dataSourceId` is 'youtube_channel' and new credentials are
   /// needed, as indicated by `CheckValidCreds`. In order to obtain
   /// authorization_code, make a request to the following URL:
-  /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?
-  /// client_id=client_id&scope=data_source_scopes
-  /// &redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=authorization_code *
-  /// The client_id is the OAuth client_id of the a data source as returned by
+  /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=authorization_code&client_id=client_id&scope=data_source_scopes
+  /// * The client_id is the OAuth client_id of the a data source as returned by
   /// ListDataSources method. * data_source_scopes are the scopes returned by
   /// ListDataSources method. Note that this should not be set when
   /// `service_account_name` is used to update the transfer config.
   ///
-  /// [serviceAccountName] - Optional service account name. If this field is
+  /// [serviceAccountName] - Optional service account email. If this field is
   /// set, the transfer config will be created with this service account's
   /// credentials. It requires that the requesting user calling this API has
   /// permissions to act as this service account. Note that not all data sources
@@ -836,10 +828,8 @@ class ProjectsLocationsTransferConfigsResource {
   /// `transferConfig.dataSourceId` is not 'youtube_channel' and new credentials
   /// are needed, as indicated by `CheckValidCreds`. In order to obtain version
   /// info, make a request to the following URL:
-  /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?
-  /// client_id=client_id&scope=data_source_scopes
-  /// &redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=version_info * The
-  /// client_id is the OAuth client_id of the a data source as returned by
+  /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=version_info&client_id=client_id&scope=data_source_scopes
+  /// * The client_id is the OAuth client_id of the a data source as returned by
   /// ListDataSources method. * data_source_scopes are the scopes returned by
   /// ListDataSources method. Note that this should not be set when
   /// `service_account_name` is used to update the transfer config.
@@ -911,6 +901,9 @@ class ProjectsLocationsTransferConfigsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<ScheduleTransferRunsResponse> scheduleRuns(
     ScheduleTransferRunsRequest request,
     core.String parent, {
@@ -1227,15 +1220,13 @@ class ProjectsTransferConfigsResource {
   /// `transferConfig.dataSourceId` is 'youtube_channel' and new credentials are
   /// needed, as indicated by `CheckValidCreds`. In order to obtain
   /// authorization_code, make a request to the following URL:
-  /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?
-  /// client_id=client_id&scope=data_source_scopes
-  /// &redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=authorization_code *
-  /// The client_id is the OAuth client_id of the a data source as returned by
+  /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=authorization_code&client_id=client_id&scope=data_source_scopes
+  /// * The client_id is the OAuth client_id of the a data source as returned by
   /// ListDataSources method. * data_source_scopes are the scopes returned by
   /// ListDataSources method. Note that this should not be set when
   /// `service_account_name` is used to create the transfer config.
   ///
-  /// [serviceAccountName] - Optional service account name. If this field is
+  /// [serviceAccountName] - Optional service account email. If this field is
   /// set, the transfer config will be created with this service account's
   /// credentials. It requires that the requesting user calling this API has
   /// permissions to act as this service account. Note that not all data sources
@@ -1247,10 +1238,8 @@ class ProjectsTransferConfigsResource {
   /// `transferConfig.dataSourceId` is not 'youtube_channel' and new credentials
   /// are needed, as indicated by `CheckValidCreds`. In order to obtain version
   /// info, make a request to the following URL:
-  /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?
-  /// client_id=client_id&scope=data_source_scopes
-  /// &redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=version_info * The
-  /// client_id is the OAuth client_id of the a data source as returned by
+  /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=version_info&client_id=client_id&scope=data_source_scopes
+  /// * The client_id is the OAuth client_id of the a data source as returned by
   /// ListDataSources method. * data_source_scopes are the scopes returned by
   /// ListDataSources method. Note that this should not be set when
   /// `service_account_name` is used to create the transfer config.
@@ -1446,15 +1435,13 @@ class ProjectsTransferConfigsResource {
   /// `transferConfig.dataSourceId` is 'youtube_channel' and new credentials are
   /// needed, as indicated by `CheckValidCreds`. In order to obtain
   /// authorization_code, make a request to the following URL:
-  /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?
-  /// client_id=client_id&scope=data_source_scopes
-  /// &redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=authorization_code *
-  /// The client_id is the OAuth client_id of the a data source as returned by
+  /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=authorization_code&client_id=client_id&scope=data_source_scopes
+  /// * The client_id is the OAuth client_id of the a data source as returned by
   /// ListDataSources method. * data_source_scopes are the scopes returned by
   /// ListDataSources method. Note that this should not be set when
   /// `service_account_name` is used to update the transfer config.
   ///
-  /// [serviceAccountName] - Optional service account name. If this field is
+  /// [serviceAccountName] - Optional service account email. If this field is
   /// set, the transfer config will be created with this service account's
   /// credentials. It requires that the requesting user calling this API has
   /// permissions to act as this service account. Note that not all data sources
@@ -1469,10 +1456,8 @@ class ProjectsTransferConfigsResource {
   /// `transferConfig.dataSourceId` is not 'youtube_channel' and new credentials
   /// are needed, as indicated by `CheckValidCreds`. In order to obtain version
   /// info, make a request to the following URL:
-  /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?
-  /// client_id=client_id&scope=data_source_scopes
-  /// &redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=version_info * The
-  /// client_id is the OAuth client_id of the a data source as returned by
+  /// https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=version_info&client_id=client_id&scope=data_source_scopes
+  /// * The client_id is the OAuth client_id of the a data source as returned by
   /// ListDataSources method. * data_source_scopes are the scopes returned by
   /// ListDataSources method. Note that this should not be set when
   /// `service_account_name` is used to update the transfer config.
@@ -1543,6 +1528,9 @@ class ProjectsTransferConfigsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<ScheduleTransferRunsResponse> scheduleRuns(
     ScheduleTransferRunsRequest request,
     core.String parent, {
@@ -1943,6 +1931,9 @@ class DataSource {
   /// This field has no effect.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? supportsMultipleTransfers;
 
   /// This field has no effect.
@@ -1954,6 +1945,9 @@ class DataSource {
   /// - "BATCH" : Batch data transfer.
   /// - "STREAMING" : Streaming data transfer. Streaming data source currently
   /// doesn't support multiple transfer configs per project.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? transferType;
 
   /// The number of seconds to wait for an update from the data source before
@@ -2095,7 +2089,7 @@ class DataSourceParameter {
   /// Cannot be changed after initial creation.
   core.bool? immutable;
 
-  /// For integer and double values specifies maxminum allowed value.
+  /// For integer and double values specifies maximum allowed value.
   core.double? maxValue;
 
   /// For integer and double values specifies minimum allowed value.
@@ -2127,6 +2121,7 @@ class DataSourceParameter {
   /// - "BOOLEAN" : Boolean parameter.
   /// - "RECORD" : Deprecated. This field has no effect.
   /// - "PLUS_PAGE" : Page ID for a Google+ Page.
+  /// - "LIST" : List of strings parameter.
   core.String? type;
 
   /// Description of the requirements for this field, in case the user input
@@ -2264,6 +2259,27 @@ class EmailPreferences {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
+
+/// Represents the encryption configuration for a transfer.
+class EncryptionConfiguration {
+  /// The name of the KMS key used for encrypting BigQuery data.
+  core.String? kmsKeyName;
+
+  EncryptionConfiguration({
+    this.kmsKeyName,
+  });
+
+  EncryptionConfiguration.fromJson(core.Map json_)
+      : this(
+          kmsKeyName: json_.containsKey('kmsKeyName')
+              ? json_['kmsKeyName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
+      };
+}
 
 /// A request to enroll a set of data sources so they are visible in the
 /// BigQuery UI's `Transfer` tab.
@@ -2481,7 +2497,7 @@ class ListTransferRunsResponse {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
+/// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
 /// Options customizing the data transfer schedule.
@@ -2599,12 +2615,18 @@ class ScheduleTransferRunsResponse {
 
 /// A request to start manual transfer runs.
 class StartManualTransferRunsRequest {
-  /// Specific run_time for a transfer run to be started.
+  /// A run_time timestamp for historical data files or reports that are
+  /// scheduled to be transferred by the scheduled transfer run.
   ///
-  /// The requested_run_time must not be in the future.
+  /// requested_run_time must be a past time and cannot include future time
+  /// values.
   core.String? requestedRunTime;
 
-  /// Time range for the transfer runs that should be started.
+  /// A time_range start and end timestamp for historical data files or reports
+  /// that are scheduled to be transferred by the scheduled transfer run.
+  ///
+  /// requested_time_range must be a past time and cannot include future time
+  /// values.
   TimeRange? requestedTimeRange;
 
   StartManualTransferRunsRequest({
@@ -2744,6 +2766,15 @@ class TransferConfig {
   /// email address of the user who owns this transfer config.
   EmailPreferences? emailPreferences;
 
+  /// The encryption configuration part.
+  ///
+  /// Currently, it is only used for the optional KMS key name. The BigQuery
+  /// service account of your project must be granted permissions to use the
+  /// key. Read methods will return the key name applied in effect. Write
+  /// methods will apply the key if it is present, or otherwise try to apply
+  /// project default keys if it is absent.
+  EncryptionConfiguration? encryptionConfiguration;
+
   /// The resource name of the transfer config.
   ///
   /// Transfer config names have the form
@@ -2831,6 +2862,7 @@ class TransferConfig {
     this.disabled,
     this.displayName,
     this.emailPreferences,
+    this.encryptionConfiguration,
     this.name,
     this.nextRunTime,
     this.notificationPubsubTopic,
@@ -2866,6 +2898,11 @@ class TransferConfig {
           emailPreferences: json_.containsKey('emailPreferences')
               ? EmailPreferences.fromJson(json_['emailPreferences']
                   as core.Map<core.String, core.dynamic>)
+              : null,
+          encryptionConfiguration: json_.containsKey('encryptionConfiguration')
+              ? EncryptionConfiguration.fromJson(
+                  json_['encryptionConfiguration']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           nextRunTime: json_.containsKey('nextRunTime')
@@ -2908,6 +2945,8 @@ class TransferConfig {
         if (disabled != null) 'disabled': disabled!,
         if (displayName != null) 'displayName': displayName!,
         if (emailPreferences != null) 'emailPreferences': emailPreferences!,
+        if (encryptionConfiguration != null)
+          'encryptionConfiguration': encryptionConfiguration!,
         if (name != null) 'name': name!,
         if (nextRunTime != null) 'nextRunTime': nextRunTime!,
         if (notificationPubsubTopic != null)

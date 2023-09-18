@@ -1,8 +1,6 @@
 // ignore_for_file: camel_case_types
-// ignore_for_file: cascade_invocations
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_const_declarations
@@ -12,8 +10,9 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unreachable_from_main
 // ignore_for_file: unused_local_variable
 
 import 'dart:async' as async;
@@ -64,6 +63,7 @@ api.GoogleCloudOrgpolicyV2Constraint buildGoogleCloudOrgpolicyV2Constraint() {
     o.displayName = 'foo';
     o.listConstraint = buildGoogleCloudOrgpolicyV2ConstraintListConstraint();
     o.name = 'foo';
+    o.supportsDryRun = true;
   }
   buildCounterGoogleCloudOrgpolicyV2Constraint--;
   return o;
@@ -92,6 +92,7 @@ void checkGoogleCloudOrgpolicyV2Constraint(
       o.name!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.supportsDryRun!, unittest.isTrue);
   }
   buildCounterGoogleCloudOrgpolicyV2Constraint--;
 }
@@ -340,6 +341,7 @@ api.GoogleCloudOrgpolicyV2Policy buildGoogleCloudOrgpolicyV2Policy() {
   buildCounterGoogleCloudOrgpolicyV2Policy++;
   if (buildCounterGoogleCloudOrgpolicyV2Policy < 3) {
     o.alternate = buildGoogleCloudOrgpolicyV2AlternatePolicySpec();
+    o.dryRunSpec = buildGoogleCloudOrgpolicyV2PolicySpec();
     o.name = 'foo';
     o.spec = buildGoogleCloudOrgpolicyV2PolicySpec();
   }
@@ -351,6 +353,7 @@ void checkGoogleCloudOrgpolicyV2Policy(api.GoogleCloudOrgpolicyV2Policy o) {
   buildCounterGoogleCloudOrgpolicyV2Policy++;
   if (buildCounterGoogleCloudOrgpolicyV2Policy < 3) {
     checkGoogleCloudOrgpolicyV2AlternatePolicySpec(o.alternate!);
+    checkGoogleCloudOrgpolicyV2PolicySpec(o.dryRunSpec!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -701,7 +704,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -717,7 +720,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -773,7 +776,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudOrgpolicyV2Policy(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -789,7 +792,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -827,7 +830,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -843,7 +846,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -879,7 +882,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -895,7 +898,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -932,7 +935,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -948,7 +951,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -988,7 +991,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1004,7 +1007,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -1052,13 +1055,14 @@ void main() {
       final res = api.OrgPolicyApi(mock).folders.policies;
       final arg_request = buildGoogleCloudOrgpolicyV2Policy();
       final arg_name = 'foo';
+      final arg_updateMask = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj = api.GoogleCloudOrgpolicyV2Policy.fromJson(
             json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudOrgpolicyV2Policy(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1074,7 +1078,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -1090,6 +1094,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['updateMask']!.first,
+          unittest.equals(arg_updateMask),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -1100,8 +1108,8 @@ void main() {
         final resp = convert.json.encode(buildGoogleCloudOrgpolicyV2Policy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      final response =
-          await res.patch(arg_request, arg_name, $fields: arg_$fields);
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
       checkGoogleCloudOrgpolicyV2Policy(
           response as api.GoogleCloudOrgpolicyV2Policy);
     });
@@ -1116,7 +1124,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1132,7 +1140,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -1188,7 +1196,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudOrgpolicyV2CustomConstraint(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1204,7 +1212,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -1243,7 +1251,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1259,7 +1267,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -1295,7 +1303,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1311,7 +1319,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -1351,7 +1359,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1367,7 +1375,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -1421,7 +1429,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudOrgpolicyV2CustomConstraint(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1437,7 +1445,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -1483,7 +1491,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudOrgpolicyV2Policy(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1499,7 +1507,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -1537,7 +1545,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1553,7 +1561,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -1589,7 +1597,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1605,7 +1613,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -1642,7 +1650,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1658,7 +1666,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -1698,7 +1706,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1714,7 +1722,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -1762,13 +1770,14 @@ void main() {
       final res = api.OrgPolicyApi(mock).organizations.policies;
       final arg_request = buildGoogleCloudOrgpolicyV2Policy();
       final arg_name = 'foo';
+      final arg_updateMask = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj = api.GoogleCloudOrgpolicyV2Policy.fromJson(
             json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudOrgpolicyV2Policy(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1784,7 +1793,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -1800,6 +1809,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['updateMask']!.first,
+          unittest.equals(arg_updateMask),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -1810,8 +1823,8 @@ void main() {
         final resp = convert.json.encode(buildGoogleCloudOrgpolicyV2Policy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      final response =
-          await res.patch(arg_request, arg_name, $fields: arg_$fields);
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
       checkGoogleCloudOrgpolicyV2Policy(
           response as api.GoogleCloudOrgpolicyV2Policy);
     });
@@ -1826,7 +1839,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1842,7 +1855,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -1898,7 +1911,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudOrgpolicyV2Policy(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1914,7 +1927,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -1952,7 +1965,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1968,7 +1981,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2004,7 +2017,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2020,7 +2033,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2057,7 +2070,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2073,7 +2086,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2113,7 +2126,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2129,7 +2142,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2177,13 +2190,14 @@ void main() {
       final res = api.OrgPolicyApi(mock).projects.policies;
       final arg_request = buildGoogleCloudOrgpolicyV2Policy();
       final arg_name = 'foo';
+      final arg_updateMask = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj = api.GoogleCloudOrgpolicyV2Policy.fromJson(
             json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudOrgpolicyV2Policy(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2199,7 +2213,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2215,6 +2229,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['updateMask']!.first,
+          unittest.equals(arg_updateMask),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -2225,8 +2243,8 @@ void main() {
         final resp = convert.json.encode(buildGoogleCloudOrgpolicyV2Policy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      final response =
-          await res.patch(arg_request, arg_name, $fields: arg_$fields);
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
       checkGoogleCloudOrgpolicyV2Policy(
           response as api.GoogleCloudOrgpolicyV2Policy);
     });

@@ -1,8 +1,6 @@
 // ignore_for_file: camel_case_types
-// ignore_for_file: cascade_invocations
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_const_declarations
@@ -12,8 +10,9 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unreachable_from_main
 // ignore_for_file: unused_local_variable
 
 import 'dart:async' as async;
@@ -746,7 +745,7 @@ void main() {
       final arg_customerId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -767,7 +766,7 @@ void main() {
           unittest.equals('$arg_customerId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -808,7 +807,7 @@ void main() {
             api.Customer.fromJson(json as core.Map<core.String, core.dynamic>);
         checkCustomer(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -823,7 +822,7 @@ void main() {
         );
         pathOffset += 26;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -869,7 +868,7 @@ void main() {
             api.Customer.fromJson(json as core.Map<core.String, core.dynamic>);
         checkCustomer(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -890,7 +889,7 @@ void main() {
           unittest.equals('$arg_customerId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -932,7 +931,7 @@ void main() {
             api.Customer.fromJson(json as core.Map<core.String, core.dynamic>);
         checkCustomer(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -953,7 +952,7 @@ void main() {
           unittest.equals('$arg_customerId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -991,7 +990,7 @@ void main() {
       final res = api.ResellerApi(mock).resellernotify;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1006,7 +1005,7 @@ void main() {
         );
         pathOffset += 47;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -1044,7 +1043,7 @@ void main() {
       final arg_serviceAccountEmailAddress = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1059,7 +1058,7 @@ void main() {
         );
         pathOffset += 40;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -1101,7 +1100,7 @@ void main() {
       final arg_serviceAccountEmailAddress = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1116,7 +1115,7 @@ void main() {
         );
         pathOffset += 42;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -1161,7 +1160,7 @@ void main() {
       final arg_subscriptionId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1204,7 +1203,7 @@ void main() {
         );
         pathOffset += 9;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -1247,7 +1246,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkChangePlanRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1290,7 +1289,7 @@ void main() {
         );
         pathOffset += 11;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -1334,7 +1333,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkRenewalSettings(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1377,7 +1376,7 @@ void main() {
         );
         pathOffset += 22;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -1421,7 +1420,7 @@ void main() {
             api.Seats.fromJson(json as core.Map<core.String, core.dynamic>);
         checkSeats(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1464,7 +1463,7 @@ void main() {
         );
         pathOffset += 12;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -1504,7 +1503,7 @@ void main() {
       final arg_deletionType = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1539,7 +1538,7 @@ void main() {
           unittest.equals('$arg_subscriptionId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -1580,7 +1579,7 @@ void main() {
       final arg_subscriptionId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1615,7 +1614,7 @@ void main() {
           unittest.equals('$arg_subscriptionId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -1651,14 +1650,16 @@ void main() {
       final res = api.ResellerApi(mock).subscriptions;
       final arg_request = buildSubscription();
       final arg_customerId = 'foo';
+      final arg_action = 'foo';
       final arg_customerAuthToken = 'foo';
+      final arg_sourceSkuId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj = api.Subscription.fromJson(
             json as core.Map<core.String, core.dynamic>);
         checkSubscription(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1687,7 +1688,7 @@ void main() {
         );
         pathOffset += 14;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -1703,8 +1704,16 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['action']!.first,
+          unittest.equals(arg_action),
+        );
+        unittest.expect(
           queryMap['customerAuthToken']!.first,
           unittest.equals(arg_customerAuthToken),
+        );
+        unittest.expect(
+          queryMap['sourceSkuId']!.first,
+          unittest.equals(arg_sourceSkuId),
         );
         unittest.expect(
           queryMap['fields']!.first,
@@ -1718,7 +1727,10 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.insert(arg_request, arg_customerId,
-          customerAuthToken: arg_customerAuthToken, $fields: arg_$fields);
+          action: arg_action,
+          customerAuthToken: arg_customerAuthToken,
+          sourceSkuId: arg_sourceSkuId,
+          $fields: arg_$fields);
       checkSubscription(response as api.Subscription);
     });
 
@@ -1732,7 +1744,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1747,7 +1759,7 @@ void main() {
         );
         pathOffset += 30;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -1810,7 +1822,7 @@ void main() {
       final arg_subscriptionId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1853,7 +1865,7 @@ void main() {
         );
         pathOffset += 17;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -1892,7 +1904,7 @@ void main() {
       final arg_subscriptionId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1935,7 +1947,7 @@ void main() {
         );
         pathOffset += 8;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>

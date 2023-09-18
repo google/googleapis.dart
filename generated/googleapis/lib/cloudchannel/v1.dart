@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud Channel API - v1
@@ -30,10 +29,14 @@
 ///     - [AccountsCustomersCustomerRepricingConfigsResource]
 ///     - [AccountsCustomersEntitlementsResource]
 ///   - [AccountsOffersResource]
+///   - [AccountsReportJobsResource]
+///   - [AccountsReportsResource]
+///   - [AccountsSkuGroupsResource]
+///     - [AccountsSkuGroupsBillableSkusResource]
 /// - [OperationsResource]
 /// - [ProductsResource]
 ///   - [ProductsSkusResource]
-library cloudchannel.v1;
+library cloudchannel_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -42,7 +45,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -55,6 +57,10 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 class CloudchannelApi {
   /// Manage users on your domain
   static const appsOrderScope = 'https://www.googleapis.com/auth/apps.order';
+
+  /// View usage reports for your G Suite domain
+  static const appsReportsUsageReadonlyScope =
+      'https://www.googleapis.com/auth/apps.reports.usage.readonly';
 
   final commons.ApiRequester _requester;
 
@@ -77,6 +83,11 @@ class AccountsResource {
   AccountsCustomersResource get customers =>
       AccountsCustomersResource(_requester);
   AccountsOffersResource get offers => AccountsOffersResource(_requester);
+  AccountsReportJobsResource get reportJobs =>
+      AccountsReportJobsResource(_requester);
+  AccountsReportsResource get reports => AccountsReportsResource(_requester);
+  AccountsSkuGroupsResource get skuGroups =>
+      AccountsSkuGroupsResource(_requester);
 
   AccountsResource(commons.ApiRequester client) : _requester = client;
 
@@ -204,9 +215,11 @@ class AccountsResource {
   /// The customer doesn't belong to the reseller and has no auth token. * The
   /// customer provided incorrect reseller information when generating auth
   /// token. * The reseller account making the request is different from the
-  /// reseller account in the query. * INVALID_ARGUMENT: Required request
-  /// parameters are missing or invalid. Return value: List of TransferableOffer
-  /// for the given customer and SKU.
+  /// reseller account in the query. * The reseller is not authorized to
+  /// transact on this Product. See
+  /// https://support.google.com/channelservices/answer/9759265 *
+  /// INVALID_ARGUMENT: Required request parameters are missing or invalid.
+  /// Return value: List of TransferableOffer for the given customer and SKU.
   ///
   /// [request] - The metadata request object.
   ///
@@ -684,14 +697,16 @@ class AccountsChannelPartnerLinksChannelPartnerRepricingConfigsResource {
   /// should not be used for regular business cases. * The new config will not
   /// modify exports used with other configs. Changes to the config may be
   /// immediate, but may take up to 24 hours. * There is a limit of ten configs
-  /// for any ChannelPartner or RepricingConfig.effective_invoice_month. * The
-  /// contained ChannelPartnerRepricingConfig.repricing_config vaule must be
-  /// different from the value used in the current config for a ChannelPartner.
-  /// Possible Error Codes: * PERMISSION_DENIED: If the account making the
-  /// request and the account being queried are different. * INVALID_ARGUMENT:
-  /// Missing or invalid required parameters in the request. Also displays if
-  /// the updated config is for the current month or past months. * NOT_FOUND:
-  /// The ChannelPartnerRepricingConfig specified does not exist or is not
+  /// for any ChannelPartner or
+  /// RepricingConfig.EntitlementGranularity.entitlement, for any
+  /// RepricingConfig.effective_invoice_month. * The contained
+  /// ChannelPartnerRepricingConfig.repricing_config value must be different
+  /// from the value used in the current config for a ChannelPartner. Possible
+  /// Error Codes: * PERMISSION_DENIED: If the account making the request and
+  /// the account being queried are different. * INVALID_ARGUMENT: Missing or
+  /// invalid required parameters in the request. Also displays if the updated
+  /// config is for the current month or past months. * NOT_FOUND: The
+  /// ChannelPartnerRepricingConfig specified does not exist or is not
   /// associated with the given account. * INTERNAL: Any non-user error related
   /// to technical issues in the backend. In this case, contact Cloud Channel
   /// support. Return Value: If successful, the updated
@@ -843,7 +858,7 @@ class AccountsChannelPartnerLinksChannelPartnerRepricingConfigsResource {
   /// to technical issues in the backend. In this case, contact Cloud Channel
   /// support. Return Value: If successful, the ChannelPartnerRepricingConfig
   /// resources. The data for each resource is displayed in the ascending order
-  /// of: * channel partner ID * RepricingConfig.effective_invoice_month *
+  /// of: * Channel Partner ID * RepricingConfig.effective_invoice_month *
   /// ChannelPartnerRepricingConfig.update_time If unsuccessful, returns an
   /// error.
   ///
@@ -983,8 +998,10 @@ class AccountsChannelPartnerLinksCustomersResource {
 
   /// Creates a new Customer resource under the reseller or distributor account.
   ///
-  /// Possible error codes: * PERMISSION_DENIED: The reseller account making the
-  /// request is different from the reseller account in the API request. *
+  /// Possible error codes: * PERMISSION_DENIED: * The reseller account making
+  /// the request is different from the reseller account in the API request. *
+  /// You are not authorized to create a customer. See
+  /// https://support.google.com/channelservices/answer/9759265 *
   /// INVALID_ARGUMENT: * Required request parameters are missing or invalid. *
   /// Domain field value doesn't match the primary email domain. Return value:
   /// The newly created Customer resource.
@@ -1121,12 +1138,14 @@ class AccountsChannelPartnerLinksCustomersResource {
   ///
   /// If a linked Customer already exists and overwrite_if_exists is true, it
   /// will update that Customer's data. Possible error codes: *
-  /// PERMISSION_DENIED: The reseller account making the request is different
-  /// from the reseller account in the API request. * NOT_FOUND: Cloud Identity
-  /// doesn't exist or was deleted. * INVALID_ARGUMENT: Required parameters are
-  /// missing, or the auth_token is expired or invalid. * ALREADY_EXISTS: A
-  /// customer already exists and has conflicting critical fields. Requires an
-  /// overwrite. Return value: The Customer.
+  /// PERMISSION_DENIED: * The reseller account making the request is different
+  /// from the reseller account in the API request. * You are not authorized to
+  /// import the customer. See
+  /// https://support.google.com/channelservices/answer/9759265 * NOT_FOUND:
+  /// Cloud Identity doesn't exist or was deleted. * INVALID_ARGUMENT: Required
+  /// parameters are missing, or the auth_token is expired or invalid. *
+  /// ALREADY_EXISTS: A customer already exists and has conflicting critical
+  /// fields. Requires an overwrite. Return value: The Customer.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1298,8 +1317,10 @@ class AccountsCustomersResource {
 
   /// Creates a new Customer resource under the reseller or distributor account.
   ///
-  /// Possible error codes: * PERMISSION_DENIED: The reseller account making the
-  /// request is different from the reseller account in the API request. *
+  /// Possible error codes: * PERMISSION_DENIED: * The reseller account making
+  /// the request is different from the reseller account in the API request. *
+  /// You are not authorized to create a customer. See
+  /// https://support.google.com/channelservices/answer/9759265 *
   /// INVALID_ARGUMENT: * Required request parameters are missing or invalid. *
   /// Domain field value doesn't match the primary email domain. Return value:
   /// The newly created Customer resource.
@@ -1434,12 +1455,14 @@ class AccountsCustomersResource {
   ///
   /// If a linked Customer already exists and overwrite_if_exists is true, it
   /// will update that Customer's data. Possible error codes: *
-  /// PERMISSION_DENIED: The reseller account making the request is different
-  /// from the reseller account in the API request. * NOT_FOUND: Cloud Identity
-  /// doesn't exist or was deleted. * INVALID_ARGUMENT: Required parameters are
-  /// missing, or the auth_token is expired or invalid. * ALREADY_EXISTS: A
-  /// customer already exists and has conflicting critical fields. Requires an
-  /// overwrite. Return value: The Customer.
+  /// PERMISSION_DENIED: * The reseller account making the request is different
+  /// from the reseller account in the API request. * You are not authorized to
+  /// import the customer. See
+  /// https://support.google.com/channelservices/answer/9759265 * NOT_FOUND:
+  /// Cloud Identity doesn't exist or was deleted. * INVALID_ARGUMENT: Required
+  /// parameters are missing, or the auth_token is expired or invalid. *
+  /// ALREADY_EXISTS: A customer already exists and has conflicting critical
+  /// fields. Requires an overwrite. Return value: The Customer.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1547,7 +1570,9 @@ class AccountsCustomersResource {
   /// Lists the following: * Offers that you can purchase for a customer.
   ///
   /// * Offers that you can change for an entitlement. Possible error codes: *
-  /// PERMISSION_DENIED: The customer doesn't belong to the reseller *
+  /// PERMISSION_DENIED: * The customer doesn't belong to the reseller * The
+  /// reseller is not authorized to transact on this Product. See
+  /// https://support.google.com/channelservices/answer/9759265 *
   /// INVALID_ARGUMENT: Required request parameters are missing or invalid.
   ///
   /// Request parameters:
@@ -1556,6 +1581,13 @@ class AccountsCustomersResource {
   /// for. Format: accounts/{account_id}/customers/{customer_id}.
   /// Value must have pattern `^accounts/\[^/\]+/customers/\[^/\]+$`.
   ///
+  /// [changeOfferPurchase_billingAccount] - Optional. Resource name of the new
+  /// target Billing Account. Provide this Billing Account when setting up
+  /// billing for a trial subscription. Format:
+  /// accounts/{account_id}/billingAccounts/{billing_account_id}. This field is
+  /// only relevant for multi-currency accounts. It should be left empty for
+  /// single currency accounts.
+  ///
   /// [changeOfferPurchase_entitlement] - Required. Resource name of the
   /// entitlement. Format:
   /// accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}
@@ -1563,6 +1595,10 @@ class AccountsCustomersResource {
   /// [changeOfferPurchase_newSku] - Optional. Resource name of the new target
   /// SKU. Provide this SKU when upgrading or downgrading an entitlement.
   /// Format: products/{product_id}/skus/{sku_id}
+  ///
+  /// [createEntitlementPurchase_billingAccount] - Optional. Billing account
+  /// that the result should be restricted to. Format:
+  /// accounts/{account_id}/billingAccounts/{billing_account_id}.
   ///
   /// [createEntitlementPurchase_sku] - Required. SKU that the result should be
   /// restricted to. Format: products/{product_id}/skus/{sku_id}.
@@ -1591,8 +1627,10 @@ class AccountsCustomersResource {
   async.Future<GoogleCloudChannelV1ListPurchasableOffersResponse>
       listPurchasableOffers(
     core.String customer, {
+    core.String? changeOfferPurchase_billingAccount,
     core.String? changeOfferPurchase_entitlement,
     core.String? changeOfferPurchase_newSku,
+    core.String? createEntitlementPurchase_billingAccount,
     core.String? createEntitlementPurchase_sku,
     core.String? languageCode,
     core.int? pageSize,
@@ -1600,10 +1638,18 @@ class AccountsCustomersResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (changeOfferPurchase_billingAccount != null)
+        'changeOfferPurchase.billingAccount': [
+          changeOfferPurchase_billingAccount
+        ],
       if (changeOfferPurchase_entitlement != null)
         'changeOfferPurchase.entitlement': [changeOfferPurchase_entitlement],
       if (changeOfferPurchase_newSku != null)
         'changeOfferPurchase.newSku': [changeOfferPurchase_newSku],
+      if (createEntitlementPurchase_billingAccount != null)
+        'createEntitlementPurchase.billingAccount': [
+          createEntitlementPurchase_billingAccount
+        ],
       if (createEntitlementPurchase_sku != null)
         'createEntitlementPurchase.sku': [createEntitlementPurchase_sku],
       if (languageCode != null) 'languageCode': [languageCode],
@@ -1766,17 +1812,19 @@ class AccountsCustomersResource {
   /// Creates a Cloud Identity for the given customer using the customer's
   /// information, or the information provided here.
   ///
-  /// Possible error codes: * PERMISSION_DENIED: The customer doesn't belong to
-  /// the reseller. * INVALID_ARGUMENT: Required request parameters are missing
-  /// or invalid. * NOT_FOUND: The customer was not found. * ALREADY_EXISTS: The
-  /// customer's primary email already exists. Retry after changing the
-  /// customer's primary contact email. * INTERNAL: Any non-user error related
-  /// to a technical issue in the backend. Contact Cloud Channel support. *
-  /// UNKNOWN: Any non-user error related to a technical issue in the backend.
-  /// Contact Cloud Channel support. Return value: The ID of a long-running
-  /// operation. To get the results of the operation, call the GetOperation
-  /// method of CloudChannelOperationsService. The Operation metadata contains
-  /// an instance of OperationMetadata.
+  /// Possible error codes: * PERMISSION_DENIED: * The customer doesn't belong
+  /// to the reseller. * You are not authorized to provision cloud identity id.
+  /// See https://support.google.com/channelservices/answer/9759265 *
+  /// INVALID_ARGUMENT: Required request parameters are missing or invalid. *
+  /// NOT_FOUND: The customer was not found. * ALREADY_EXISTS: The customer's
+  /// primary email already exists. Retry after changing the customer's primary
+  /// contact email. * INTERNAL: Any non-user error related to a technical issue
+  /// in the backend. Contact Cloud Channel support. * UNKNOWN: Any non-user
+  /// error related to a technical issue in the backend. Contact Cloud Channel
+  /// support. Return value: The ID of a long-running operation. To get the
+  /// results of the operation, call the GetOperation method of
+  /// CloudChannelOperationsService. The Operation metadata contains an instance
+  /// of OperationMetadata.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1819,23 +1867,79 @@ class AccountsCustomersResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Transfers customer entitlements to new reseller.
+  /// Lists the billing accounts that are eligible to purchase particular SKUs
+  /// for a given customer.
   ///
   /// Possible error codes: * PERMISSION_DENIED: The customer doesn't belong to
   /// the reseller. * INVALID_ARGUMENT: Required request parameters are missing
-  /// or invalid. * NOT_FOUND: The customer or offer resource was not found. *
-  /// ALREADY_EXISTS: The SKU was already transferred for the customer. *
-  /// CONDITION_NOT_MET or FAILED_PRECONDITION: * The SKU requires domain
-  /// verification to transfer, but the domain is not verified. * An Add-On SKU
-  /// (example, Vault or Drive) is missing the pre-requisite SKU (example, G
-  /// Suite Basic). * (Developer accounts only) Reseller and resold domain must
-  /// meet the following naming requirements: * Domain names must start with
-  /// goog-test. * Domain names must include the reseller domain. * Specify all
-  /// transferring entitlements. * INTERNAL: Any non-user error related to a
-  /// technical issue in the backend. Contact Cloud Channel support. * UNKNOWN:
-  /// Any non-user error related to a technical issue in the backend. Contact
-  /// Cloud Channel support. Return value: The ID of a long-running operation.
-  /// To get the results of the operation, call the GetOperation method of
+  /// or invalid. Return value: Based on the provided list of SKUs, returns a
+  /// list of SKU groups that must be purchased using the same billing account
+  /// and the billing accounts eligible to purchase each SKU group.
+  ///
+  /// Request parameters:
+  ///
+  /// [customer] - Required. The resource name of the customer to list eligible
+  /// billing accounts for. Format:
+  /// accounts/{account_id}/customers/{customer_id}.
+  /// Value must have pattern `^accounts/\[^/\]+/customers/\[^/\]+$`.
+  ///
+  /// [skus] - Required. List of SKUs to list eligible billing accounts for. At
+  /// least one SKU is required. Format: products/{product_id}/skus/{sku_id}.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudChannelV1QueryEligibleBillingAccountsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudChannelV1QueryEligibleBillingAccountsResponse>
+      queryEligibleBillingAccounts(
+    core.String customer, {
+    core.List<core.String>? skus,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (skus != null) 'skus': skus,
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$customer') +
+        ':queryEligibleBillingAccounts';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudChannelV1QueryEligibleBillingAccountsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Transfers customer entitlements to new reseller.
+  ///
+  /// Possible error codes: * PERMISSION_DENIED: * The customer doesn't belong
+  /// to the reseller. * The reseller is not authorized to transact on this
+  /// Product. See https://support.google.com/channelservices/answer/9759265 *
+  /// INVALID_ARGUMENT: Required request parameters are missing or invalid. *
+  /// NOT_FOUND: The customer or offer resource was not found. * ALREADY_EXISTS:
+  /// The SKU was already transferred for the customer. * CONDITION_NOT_MET or
+  /// FAILED_PRECONDITION: * The SKU requires domain verification to transfer,
+  /// but the domain is not verified. * An Add-On SKU (example, Vault or Drive)
+  /// is missing the pre-requisite SKU (example, G Suite Basic). * (Developer
+  /// accounts only) Reseller and resold domain must meet the following naming
+  /// requirements: * Domain names must start with goog-test. * Domain names
+  /// must include the reseller domain. * Specify all transferring entitlements.
+  /// * INTERNAL: Any non-user error related to a technical issue in the
+  /// backend. Contact Cloud Channel support. * UNKNOWN: Any non-user error
+  /// related to a technical issue in the backend. Contact Cloud Channel
+  /// support. Return value: The ID of a long-running operation. To get the
+  /// results of the operation, call the GetOperation method of
   /// CloudChannelOperationsService. The Operation metadata will contain an
   /// instance of OperationMetadata.
   ///
@@ -1964,9 +2068,9 @@ class AccountsCustomersCustomerRepricingConfigsResource {
   /// for regular business cases. * The new config will not modify exports used
   /// with other configs. Changes to the config may be immediate, but may take
   /// up to 24 hours. * There is a limit of ten configs for any
-  /// RepricingConfig.EntitlementGranularity.entitlement or
+  /// RepricingConfig.EntitlementGranularity.entitlement, for any
   /// RepricingConfig.effective_invoice_month. * The contained
-  /// CustomerRepricingConfig.repricing_config vaule must be different from the
+  /// CustomerRepricingConfig.repricing_config value must be different from the
   /// value used in the current config for a
   /// RepricingConfig.EntitlementGranularity.entitlement. Possible Error Codes:
   /// * PERMISSION_DENIED: If the account making the request and the account
@@ -2124,7 +2228,7 @@ class AccountsCustomersCustomerRepricingConfigsResource {
   /// the given account. * INTERNAL: Any non-user error related to technical
   /// issues in the backend. In this case, contact Cloud Channel support. Return
   /// Value: If successful, the CustomerRepricingConfig resources. The data for
-  /// each resource is displayed in the ascending order of: * customer ID *
+  /// each resource is displayed in the ascending order of: * Customer ID *
   /// RepricingConfig.EntitlementGranularity.entitlement *
   /// RepricingConfig.effective_invoice_month *
   /// CustomerRepricingConfig.update_time If unsuccessful, returns an error.
@@ -2554,27 +2658,29 @@ class AccountsCustomersEntitlementsResource {
 
   /// Creates an entitlement for a customer.
   ///
-  /// Possible error codes: * PERMISSION_DENIED: The customer doesn't belong to
-  /// the reseller. * INVALID_ARGUMENT: * Required request parameters are
-  /// missing or invalid. * There is already a customer entitlement for a SKU
-  /// from the same product family. * INVALID_VALUE: Make sure the OfferId is
-  /// valid. If it is, contact Google Channel support for further
-  /// troubleshooting. * NOT_FOUND: The customer or offer resource was not
-  /// found. * ALREADY_EXISTS: * The SKU was already purchased for the customer.
-  /// * The customer's primary email already exists. Retry after changing the
-  /// customer's primary contact email. * CONDITION_NOT_MET or
-  /// FAILED_PRECONDITION: * The domain required for purchasing a SKU has not
-  /// been verified. * A pre-requisite SKU required to purchase an Add-On SKU is
-  /// missing. For example, Google Workspace Business Starter is required to
-  /// purchase Vault or Drive. * (Developer accounts only) Reseller and resold
-  /// domain must meet the following naming requirements: * Domain names must
-  /// start with goog-test. * Domain names must include the reseller domain. *
-  /// INTERNAL: Any non-user error related to a technical issue in the backend.
-  /// Contact Cloud Channel support. * UNKNOWN: Any non-user error related to a
-  /// technical issue in the backend. Contact Cloud Channel support. Return
-  /// value: The ID of a long-running operation. To get the results of the
-  /// operation, call the GetOperation method of CloudChannelOperationsService.
-  /// The Operation metadata will contain an instance of OperationMetadata.
+  /// Possible error codes: * PERMISSION_DENIED: * The customer doesn't belong
+  /// to the reseller. * The reseller is not authorized to transact on this
+  /// Product. See https://support.google.com/channelservices/answer/9759265 *
+  /// INVALID_ARGUMENT: * Required request parameters are missing or invalid. *
+  /// There is already a customer entitlement for a SKU from the same product
+  /// family. * INVALID_VALUE: Make sure the OfferId is valid. If it is, contact
+  /// Google Channel support for further troubleshooting. * NOT_FOUND: The
+  /// customer or offer resource was not found. * ALREADY_EXISTS: * The SKU was
+  /// already purchased for the customer. * The customer's primary email already
+  /// exists. Retry after changing the customer's primary contact email. *
+  /// CONDITION_NOT_MET or FAILED_PRECONDITION: * The domain required for
+  /// purchasing a SKU has not been verified. * A pre-requisite SKU required to
+  /// purchase an Add-On SKU is missing. For example, Google Workspace Business
+  /// Starter is required to purchase Vault or Drive. * (Developer accounts
+  /// only) Reseller and resold domain must meet the following naming
+  /// requirements: * Domain names must start with goog-test. * Domain names
+  /// must include the reseller domain. * INTERNAL: Any non-user error related
+  /// to a technical issue in the backend. Contact Cloud Channel support. *
+  /// UNKNOWN: Any non-user error related to a technical issue in the backend.
+  /// Contact Cloud Channel support. Return value: The ID of a long-running
+  /// operation. To get the results of the operation, call the GetOperation
+  /// method of CloudChannelOperationsService. The Operation metadata will
+  /// contain an instance of OperationMetadata.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2712,6 +2818,78 @@ class AccountsCustomersEntitlementsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudChannelV1ListEntitlementsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List entitlement history.
+  ///
+  /// Possible error codes: * PERMISSION_DENIED: The reseller account making the
+  /// request and the provided reseller account are different. *
+  /// INVALID_ARGUMENT: Missing or invalid required fields in the request. *
+  /// NOT_FOUND: The parent resource doesn't exist. Usually the result of an
+  /// invalid name parameter. * INTERNAL: Any non-user error related to a
+  /// technical issue in the backend. In this case, contact CloudChannel
+  /// support. * UNKNOWN: Any non-user error related to a technical issue in the
+  /// backend. In this case, contact Cloud Channel support. Return value: List
+  /// of EntitlementChanges.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the entitlement for which to
+  /// list entitlement changes. The `-` wildcard may be used to match
+  /// entitlements across a customer. Formats: *
+  /// accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}
+  /// * accounts/{account_id}/customers/{customer_id}/entitlements/-
+  /// Value must have pattern
+  /// `^accounts/\[^/\]+/customers/\[^/\]+/entitlements/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filters applied to the list results.
+  ///
+  /// [pageSize] - Optional. The maximum number of entitlement changes to
+  /// return. The service may return fewer than this value. If unspecified,
+  /// returns at most 10 entitlement changes. The maximum value is 50; the
+  /// server will coerce values above 50.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// CloudChannelService.ListEntitlementChanges call. Provide this to retrieve
+  /// the subsequent page. When paginating, all other parameters provided to
+  /// CloudChannelService.ListEntitlementChanges must match the call that
+  /// provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudChannelV1ListEntitlementChangesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudChannelV1ListEntitlementChangesResponse>
+      listEntitlementChanges(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + ':listEntitlementChanges';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudChannelV1ListEntitlementChangesResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 
@@ -2906,6 +3084,11 @@ class AccountsOffersResource {
   /// [pageToken] - Optional. A token for a page of results other than the first
   /// page.
   ///
+  /// [showFutureOffers] - Optional. A boolean flag that determines if a
+  /// response returns future offers 30 days from now. If the show_future_offers
+  /// is true, the response will only contain offers that are scheduled to be
+  /// available 30 days from now.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2922,6 +3105,7 @@ class AccountsOffersResource {
     core.String? languageCode,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? showFutureOffers,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -2929,6 +3113,7 @@ class AccountsOffersResource {
       if (languageCode != null) 'languageCode': [languageCode],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (showFutureOffers != null) 'showFutureOffers': ['${showFutureOffers}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -2940,6 +3125,314 @@ class AccountsOffersResource {
       queryParams: queryParams_,
     );
     return GoogleCloudChannelV1ListOffersResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class AccountsReportJobsResource {
+  final commons.ApiRequester _requester;
+
+  AccountsReportJobsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Retrieves data generated by CloudChannelReportsService.RunReportJob.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [reportJob] - Required. The report job created by
+  /// CloudChannelReportsService.RunReportJob. Report_job uses the format:
+  /// accounts/{account_id}/reportJobs/{report_job_id}
+  /// Value must have pattern `^accounts/\[^/\]+/reportJobs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudChannelV1FetchReportResultsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudChannelV1FetchReportResultsResponse>
+      fetchReportResults(
+    GoogleCloudChannelV1FetchReportResultsRequest request,
+    core.String reportJob, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$reportJob') + ':fetchReportResults';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudChannelV1FetchReportResultsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class AccountsReportsResource {
+  final commons.ApiRequester _requester;
+
+  AccountsReportsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Lists the reports that RunReportJob can run.
+  ///
+  /// These reports include an ID, a description, and the list of columns that
+  /// will be in the result.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the partner account to list
+  /// available reports for. Parent uses the format: accounts/{account_id}
+  /// Value must have pattern `^accounts/\[^/\]+$`.
+  ///
+  /// [languageCode] - Optional. The BCP-47 language code, such as "en-US". If
+  /// specified, the response is localized to the corresponding language code if
+  /// the original data sources support it. Default is "en-US".
+  ///
+  /// [pageSize] - Optional. Requested page size of the report. The server might
+  /// return fewer results than requested. If unspecified, returns 20 reports.
+  /// The maximum value is 100.
+  ///
+  /// [pageToken] - Optional. A token that specifies a page of results beyond
+  /// the first page. Obtained through ListReportsResponse.next_page_token of
+  /// the previous CloudChannelReportsService.ListReports call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudChannelV1ListReportsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudChannelV1ListReportsResponse> list(
+    core.String parent, {
+    core.String? languageCode,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (languageCode != null) 'languageCode': [languageCode],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/reports';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudChannelV1ListReportsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Begins generation of data for a given report.
+  ///
+  /// The report identifier is a UID (for example, `613bf59q`). Possible error
+  /// codes: * PERMISSION_DENIED: The user doesn't have access to this report. *
+  /// INVALID_ARGUMENT: Required request parameters are missing or invalid. *
+  /// NOT_FOUND: The report identifier was not found. * INTERNAL: Any non-user
+  /// error related to a technical issue in the backend. Contact Cloud Channel
+  /// support. * UNKNOWN: Any non-user error related to a technical issue in the
+  /// backend. Contact Cloud Channel support. Return value: The ID of a
+  /// long-running operation. To get the results of the operation, call the
+  /// GetOperation method of CloudChannelOperationsService. The Operation
+  /// metadata contains an instance of OperationMetadata. To get the results of
+  /// report generation, call CloudChannelReportsService.FetchReportResults with
+  /// the RunReportJobResponse.report_job.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The report's resource name. Specifies the account and
+  /// report used to generate report data. The report_id identifier is a UID
+  /// (for example, `613bf59q`). Name uses the format:
+  /// accounts/{account_id}/reports/{report_id}
+  /// Value must have pattern `^accounts/\[^/\]+/reports/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> run(
+    GoogleCloudChannelV1RunReportJobRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':run';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class AccountsSkuGroupsResource {
+  final commons.ApiRequester _requester;
+
+  AccountsSkuGroupsBillableSkusResource get billableSkus =>
+      AccountsSkuGroupsBillableSkusResource(_requester);
+
+  AccountsSkuGroupsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Lists the Rebilling supported SKU groups the account is authorized to
+  /// sell.
+  ///
+  /// Reference: https://cloud.google.com/skus/sku-groups Possible Error Codes:
+  /// * PERMISSION_DENIED: If the account making the request and the account
+  /// being queried are different, or the account doesn't exist. * INTERNAL: Any
+  /// non-user error related to technical issues in the backend. In this case,
+  /// contact Cloud Channel support. Return Value: If successful, the SkuGroup
+  /// resources. The data for each resource is displayed in the alphabetical
+  /// order of SKU group display name. The data for each resource is displayed
+  /// in the ascending order of SkuGroup.display_name If unsuccessful, returns
+  /// an error.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the account from which to list
+  /// SKU groups. Parent uses the format: accounts/{account}.
+  /// Value must have pattern `^accounts/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of SKU groups to return. The
+  /// service may return fewer than this value. If unspecified, returns a
+  /// maximum of 1000 SKU groups. The maximum value is 1000; values above 1000
+  /// will be coerced to 1000.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results beyond the
+  /// first page. Obtained through ListSkuGroups.next_page_token of the previous
+  /// CloudChannelService.ListSkuGroups call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudChannelV1ListSkuGroupsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudChannelV1ListSkuGroupsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/skuGroups';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudChannelV1ListSkuGroupsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class AccountsSkuGroupsBillableSkusResource {
+  final commons.ApiRequester _requester;
+
+  AccountsSkuGroupsBillableSkusResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists the Billable SKUs in a given SKU group.
+  ///
+  /// Possible error codes: PERMISSION_DENIED: If the account making the request
+  /// and the account being queried for are different, or the account doesn't
+  /// exist. INVALID_ARGUMENT: Missing or invalid required parameters in the
+  /// request. INTERNAL: Any non-user error related to technical issue in the
+  /// backend. In this case, contact cloud channel support. Return Value: If
+  /// successful, the BillableSku resources. The data for each resource is
+  /// displayed in the ascending order of: * BillableSku.service_display_name *
+  /// BillableSku.sku_display_name If unsuccessful, returns an error.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Resource name of the SKU group. Format:
+  /// accounts/{account}/skuGroups/{sku_group}.
+  /// Value must have pattern `^accounts/\[^/\]+/skuGroups/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of SKUs to return. The service
+  /// may return fewer than this value. If unspecified, returns a maximum of
+  /// 100000 SKUs. The maximum value is 100000; values above 100000 will be
+  /// coerced to 100000.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results beyond the
+  /// first page. Obtained through ListSkuGroupBillableSkus.next_page_token of
+  /// the previous CloudChannelService.ListSkuGroupBillableSkus call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudChannelV1ListSkuGroupBillableSkusResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudChannelV1ListSkuGroupBillableSkusResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/billableSkus';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudChannelV1ListSkuGroupBillableSkusResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -3081,13 +3574,6 @@ class OperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -3330,11 +3816,152 @@ class GoogleCloudChannelV1AssociationInfo {
       };
 }
 
+/// Represents the Billable SKU information.
+class GoogleCloudChannelV1BillableSku {
+  /// Resource name of Service which contains Repricing SKU.
+  ///
+  /// Format: services/{service}. Example: "services/B7D9-FDCB-15D8".
+  core.String? service;
+
+  /// Unique human readable name for the Service.
+  core.String? serviceDisplayName;
+
+  /// Resource name of Billable SKU.
+  ///
+  /// Format: billableSkus/{sku}. Example: billableSkus/6E1B-6634-470F".
+  core.String? sku;
+
+  /// Unique human readable name for the SKU.
+  core.String? skuDisplayName;
+
+  GoogleCloudChannelV1BillableSku({
+    this.service,
+    this.serviceDisplayName,
+    this.sku,
+    this.skuDisplayName,
+  });
+
+  GoogleCloudChannelV1BillableSku.fromJson(core.Map json_)
+      : this(
+          service: json_.containsKey('service')
+              ? json_['service'] as core.String
+              : null,
+          serviceDisplayName: json_.containsKey('serviceDisplayName')
+              ? json_['serviceDisplayName'] as core.String
+              : null,
+          sku: json_.containsKey('sku') ? json_['sku'] as core.String : null,
+          skuDisplayName: json_.containsKey('skuDisplayName')
+              ? json_['skuDisplayName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (service != null) 'service': service!,
+        if (serviceDisplayName != null)
+          'serviceDisplayName': serviceDisplayName!,
+        if (sku != null) 'sku': sku!,
+        if (skuDisplayName != null) 'skuDisplayName': skuDisplayName!,
+      };
+}
+
+/// Represents a billing account.
+class GoogleCloudChannelV1BillingAccount {
+  /// The time when this billing account was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The 3-letter currency code defined in ISO 4217.
+  ///
+  /// Output only.
+  core.String? currencyCode;
+
+  /// Display name of the billing account.
+  core.String? displayName;
+
+  /// Resource name of the billing account.
+  ///
+  /// Format: accounts/{account_id}/billingAccounts/{billing_account_id}.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The CLDR region code.
+  ///
+  /// Output only.
+  core.String? regionCode;
+
+  GoogleCloudChannelV1BillingAccount({
+    this.createTime,
+    this.currencyCode,
+    this.displayName,
+    this.name,
+    this.regionCode,
+  });
+
+  GoogleCloudChannelV1BillingAccount.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          currencyCode: json_.containsKey('currencyCode')
+              ? json_['currencyCode'] as core.String
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          regionCode: json_.containsKey('regionCode')
+              ? json_['regionCode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (currencyCode != null) 'currencyCode': currencyCode!,
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
+        if (regionCode != null) 'regionCode': regionCode!,
+      };
+}
+
+/// Represents a billing account that can be used to make a purchase.
+class GoogleCloudChannelV1BillingAccountPurchaseInfo {
+  /// The billing account resource.
+  GoogleCloudChannelV1BillingAccount? billingAccount;
+
+  GoogleCloudChannelV1BillingAccountPurchaseInfo({
+    this.billingAccount,
+  });
+
+  GoogleCloudChannelV1BillingAccountPurchaseInfo.fromJson(core.Map json_)
+      : this(
+          billingAccount: json_.containsKey('billingAccount')
+              ? GoogleCloudChannelV1BillingAccount.fromJson(
+                  json_['billingAccount']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (billingAccount != null) 'billingAccount': billingAccount!,
+      };
+}
+
 /// Request message for CloudChannelService.CancelEntitlement.
 typedef GoogleCloudChannelV1CancelEntitlementRequest = $Request01;
 
 /// Request message for CloudChannelService.ChangeOffer.
 class GoogleCloudChannelV1ChangeOfferRequest {
+  /// The billing account resource name that is used to pay for this entitlement
+  /// when setting up billing on a trial subscription.
+  ///
+  /// This field is only relevant for multi-currency accounts. It should be left
+  /// empty for single currency accounts.
+  ///
+  /// Optional.
+  core.String? billingAccount;
+
   /// New Offer.
   ///
   /// Format: accounts/{account_id}/offers/{offer_id}.
@@ -3369,6 +3996,7 @@ class GoogleCloudChannelV1ChangeOfferRequest {
   core.String? requestId;
 
   GoogleCloudChannelV1ChangeOfferRequest({
+    this.billingAccount,
     this.offer,
     this.parameters,
     this.purchaseOrderId,
@@ -3377,6 +4005,9 @@ class GoogleCloudChannelV1ChangeOfferRequest {
 
   GoogleCloudChannelV1ChangeOfferRequest.fromJson(core.Map json_)
       : this(
+          billingAccount: json_.containsKey('billingAccount')
+              ? json_['billingAccount'] as core.String
+              : null,
           offer:
               json_.containsKey('offer') ? json_['offer'] as core.String : null,
           parameters: json_.containsKey('parameters')
@@ -3394,6 +4025,7 @@ class GoogleCloudChannelV1ChangeOfferRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (billingAccount != null) 'billingAccount': billingAccount!,
         if (offer != null) 'offer': offer!,
         if (parameters != null) 'parameters': parameters!,
         if (purchaseOrderId != null) 'purchaseOrderId': purchaseOrderId!,
@@ -3858,6 +4490,58 @@ class GoogleCloudChannelV1CloudIdentityInfo {
       };
 }
 
+/// The definition of a report column.
+///
+/// Specifies the data properties in the corresponding position of the report
+/// rows.
+class GoogleCloudChannelV1Column {
+  /// The unique name of the column (for example, customer_domain,
+  /// channel_partner, customer_cost).
+  ///
+  /// You can use column IDs in RunReportJobRequest.filter. To see all reports
+  /// and their columns, call CloudChannelReportsService.ListReports.
+  core.String? columnId;
+
+  /// The type of the values for this column.
+  /// Possible string values are:
+  /// - "DATA_TYPE_UNSPECIFIED" : Not used.
+  /// - "STRING" : ReportValues for this column will use string_value.
+  /// - "INT" : ReportValues for this column will use int_value.
+  /// - "DECIMAL" : ReportValues for this column will use decimal_value.
+  /// - "MONEY" : ReportValues for this column will use money_value.
+  /// - "DATE" : ReportValues for this column will use date_value.
+  /// - "DATE_TIME" : ReportValues for this column will use date_time_value.
+  core.String? dataType;
+
+  /// The column's display name.
+  core.String? displayName;
+
+  GoogleCloudChannelV1Column({
+    this.columnId,
+    this.dataType,
+    this.displayName,
+  });
+
+  GoogleCloudChannelV1Column.fromJson(core.Map json_)
+      : this(
+          columnId: json_.containsKey('columnId')
+              ? json_['columnId'] as core.String
+              : null,
+          dataType: json_.containsKey('dataType')
+              ? json_['dataType'] as core.String
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (columnId != null) 'columnId': columnId!,
+        if (dataType != null) 'dataType': dataType!,
+        if (displayName != null) 'displayName': displayName!,
+      };
+}
+
 /// Commitment settings for commitment-based offers.
 class GoogleCloudChannelV1CommitmentSettings {
   /// Commitment end timestamp.
@@ -3900,6 +4584,62 @@ class GoogleCloudChannelV1CommitmentSettings {
         if (endTime != null) 'endTime': endTime!,
         if (renewalSettings != null) 'renewalSettings': renewalSettings!,
         if (startTime != null) 'startTime': startTime!,
+      };
+}
+
+/// Specifies the override to conditionally apply.
+class GoogleCloudChannelV1ConditionalOverride {
+  /// Information about the applied override's adjustment.
+  ///
+  /// Required.
+  GoogleCloudChannelV1RepricingAdjustment? adjustment;
+
+  /// The RebillingBasis to use for the applied override.
+  ///
+  /// Shows the relative cost based on your repricing costs.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "REBILLING_BASIS_UNSPECIFIED" : Not used.
+  /// - "COST_AT_LIST" : Use the list cost, also known as the MSRP.
+  /// - "DIRECT_CUSTOMER_COST" : Pass through all discounts except the Reseller
+  /// Program Discount. If this is the default cost base and no adjustments are
+  /// specified, the output cost will be exactly what the customer would see if
+  /// they viewed the bill in the Google Cloud Console.
+  core.String? rebillingBasis;
+
+  /// Specifies the condition which, if met, will apply the override.
+  ///
+  /// Required.
+  GoogleCloudChannelV1RepricingCondition? repricingCondition;
+
+  GoogleCloudChannelV1ConditionalOverride({
+    this.adjustment,
+    this.rebillingBasis,
+    this.repricingCondition,
+  });
+
+  GoogleCloudChannelV1ConditionalOverride.fromJson(core.Map json_)
+      : this(
+          adjustment: json_.containsKey('adjustment')
+              ? GoogleCloudChannelV1RepricingAdjustment.fromJson(
+                  json_['adjustment'] as core.Map<core.String, core.dynamic>)
+              : null,
+          rebillingBasis: json_.containsKey('rebillingBasis')
+              ? json_['rebillingBasis'] as core.String
+              : null,
+          repricingCondition: json_.containsKey('repricingCondition')
+              ? GoogleCloudChannelV1RepricingCondition.fromJson(
+                  json_['repricingCondition']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (adjustment != null) 'adjustment': adjustment!,
+        if (rebillingBasis != null) 'rebillingBasis': rebillingBasis!,
+        if (repricingCondition != null)
+          'repricingCondition': repricingCondition!,
       };
 }
 
@@ -4069,6 +4809,13 @@ class GoogleCloudChannelV1Customer {
   /// Output only.
   GoogleCloudChannelV1CloudIdentityInfo? cloudIdentityInfo;
 
+  /// External CRM ID for the customer.
+  ///
+  /// Populated only if a CRM ID exists for this customer.
+  ///
+  /// Optional.
+  core.String? correlationId;
+
   /// Time when the customer was created.
   ///
   /// Output only.
@@ -4123,6 +4870,7 @@ class GoogleCloudChannelV1Customer {
     this.channelPartnerId,
     this.cloudIdentityId,
     this.cloudIdentityInfo,
+    this.correlationId,
     this.createTime,
     this.domain,
     this.languageCode,
@@ -4148,6 +4896,9 @@ class GoogleCloudChannelV1Customer {
               ? GoogleCloudChannelV1CloudIdentityInfo.fromJson(
                   json_['cloudIdentityInfo']
                       as core.Map<core.String, core.dynamic>)
+              : null,
+          correlationId: json_.containsKey('correlationId')
+              ? json_['correlationId'] as core.String
               : null,
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
@@ -4181,6 +4932,7 @@ class GoogleCloudChannelV1Customer {
         if (channelPartnerId != null) 'channelPartnerId': channelPartnerId!,
         if (cloudIdentityId != null) 'cloudIdentityId': cloudIdentityId!,
         if (cloudIdentityInfo != null) 'cloudIdentityInfo': cloudIdentityInfo!,
+        if (correlationId != null) 'correlationId': correlationId!,
         if (createTime != null) 'createTime': createTime!,
         if (domain != null) 'domain': domain!,
         if (languageCode != null) 'languageCode': languageCode!,
@@ -4290,6 +5042,72 @@ class GoogleCloudChannelV1CustomerRepricingConfig {
       };
 }
 
+/// A representation of usage or invoice date ranges.
+class GoogleCloudChannelV1DateRange {
+  /// The latest invoice date (inclusive).
+  ///
+  /// If this value is not the last day of a month, this will move it forward to
+  /// the last day of the given month.
+  GoogleTypeDate? invoiceEndDate;
+
+  /// The earliest invoice date (inclusive).
+  ///
+  /// If this value is not the first day of a month, this will move it back to
+  /// the first day of the given month.
+  GoogleTypeDate? invoiceStartDate;
+
+  /// The latest usage date time (exclusive).
+  ///
+  /// If you use time groupings (daily, weekly, etc), each group uses midnight
+  /// to midnight (Pacific time). The usage end date is rounded down to include
+  /// all usage from the specified date. We recommend that clients pass
+  /// `usage_start_date_time` in Pacific time.
+  GoogleTypeDateTime? usageEndDateTime;
+
+  /// The earliest usage date time (inclusive).
+  ///
+  /// If you use time groupings (daily, weekly, etc), each group uses midnight
+  /// to midnight (Pacific time). The usage start date is rounded down to
+  /// include all usage from the specified date. We recommend that clients pass
+  /// `usage_start_date_time` in Pacific time.
+  GoogleTypeDateTime? usageStartDateTime;
+
+  GoogleCloudChannelV1DateRange({
+    this.invoiceEndDate,
+    this.invoiceStartDate,
+    this.usageEndDateTime,
+    this.usageStartDateTime,
+  });
+
+  GoogleCloudChannelV1DateRange.fromJson(core.Map json_)
+      : this(
+          invoiceEndDate: json_.containsKey('invoiceEndDate')
+              ? GoogleTypeDate.fromJson(json_['invoiceEndDate']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          invoiceStartDate: json_.containsKey('invoiceStartDate')
+              ? GoogleTypeDate.fromJson(json_['invoiceStartDate']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          usageEndDateTime: json_.containsKey('usageEndDateTime')
+              ? GoogleTypeDateTime.fromJson(json_['usageEndDateTime']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          usageStartDateTime: json_.containsKey('usageStartDateTime')
+              ? GoogleTypeDateTime.fromJson(json_['usageStartDateTime']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (invoiceEndDate != null) 'invoiceEndDate': invoiceEndDate!,
+        if (invoiceStartDate != null) 'invoiceStartDate': invoiceStartDate!,
+        if (usageEndDateTime != null) 'usageEndDateTime': usageEndDateTime!,
+        if (usageStartDateTime != null)
+          'usageStartDateTime': usageStartDateTime!,
+      };
+}
+
 /// Required Edu Attributes
 class GoogleCloudChannelV1EduData {
   /// Size of the institute.
@@ -4345,6 +5163,12 @@ class GoogleCloudChannelV1Entitlement {
   /// Association information to other entitlements.
   GoogleCloudChannelV1AssociationInfo? associationInfo;
 
+  /// The billing account resource name that is used to pay for this
+  /// entitlement.
+  ///
+  /// Optional.
+  core.String? billingAccount;
+
   /// Commitment settings for a commitment-based Offer.
   ///
   /// Required for commitment based offers.
@@ -4371,10 +5195,14 @@ class GoogleCloudChannelV1Entitlement {
   /// Extended entitlement parameters.
   ///
   /// When creating an entitlement, valid parameter names and values are defined
-  /// in the Offer.parameter_definitions. The response may include the following
-  /// output-only Parameters: - assigned_units: The number of licenses assigned
-  /// to users. - max_units: The maximum assignable units for a flexible offer.
-  /// - num_units: The total commitment for commitment-based offers.
+  /// in the Offer.parameter_definitions. For Google Workspace, the following
+  /// Parameters may be accepted as input: - max_units: The maximum assignable
+  /// units for a flexible offer OR - num_units: The total commitment for
+  /// commitment-based offers The response may additionally include the
+  /// following output-only Parameters: - assigned_units: The number of licenses
+  /// assigned to users. For Google Cloud billing subaccounts, the following
+  /// Parameter may be accepted as input: - display_name: The display name of
+  /// the billing subaccount.
   core.List<GoogleCloudChannelV1Parameter>? parameters;
 
   /// Service provisioning details for the entitlement.
@@ -4418,6 +5246,7 @@ class GoogleCloudChannelV1Entitlement {
 
   GoogleCloudChannelV1Entitlement({
     this.associationInfo,
+    this.billingAccount,
     this.commitmentSettings,
     this.createTime,
     this.name,
@@ -4437,6 +5266,9 @@ class GoogleCloudChannelV1Entitlement {
               ? GoogleCloudChannelV1AssociationInfo.fromJson(
                   json_['associationInfo']
                       as core.Map<core.String, core.dynamic>)
+              : null,
+          billingAccount: json_.containsKey('billingAccount')
+              ? json_['billingAccount'] as core.String
               : null,
           commitmentSettings: json_.containsKey('commitmentSettings')
               ? GoogleCloudChannelV1CommitmentSettings.fromJson(
@@ -4482,6 +5314,7 @@ class GoogleCloudChannelV1Entitlement {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (associationInfo != null) 'associationInfo': associationInfo!,
+        if (billingAccount != null) 'billingAccount': billingAccount!,
         if (commitmentSettings != null)
           'commitmentSettings': commitmentSettings!,
         if (createTime != null) 'createTime': createTime!,
@@ -4495,6 +5328,291 @@ class GoogleCloudChannelV1Entitlement {
         if (suspensionReasons != null) 'suspensionReasons': suspensionReasons!,
         if (trialSettings != null) 'trialSettings': trialSettings!,
         if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// Change event entry for Entitlement order history
+class GoogleCloudChannelV1EntitlementChange {
+  /// The Entitlement's activation reason
+  /// Possible string values are:
+  /// - "ACTIVATION_REASON_UNSPECIFIED" : Not used.
+  /// - "RESELLER_REVOKED_SUSPENSION" : Reseller reactivated a suspended
+  /// Entitlement.
+  /// - "CUSTOMER_ACCEPTED_PENDING_TOS" : Customer accepted pending terms of
+  /// service.
+  /// - "RENEWAL_SETTINGS_CHANGED" : Reseller updated the renewal settings on an
+  /// entitlement that was suspended due to cancellation, and this update
+  /// reactivated the entitlement.
+  /// - "OTHER_ACTIVATION_REASON" : Other reasons (Activated temporarily for
+  /// cancellation, added a payment plan to a trial entitlement, etc.)
+  core.String? activationReason;
+
+  /// Cancellation reason for the Entitlement.
+  /// Possible string values are:
+  /// - "CANCELLATION_REASON_UNSPECIFIED" : Not used.
+  /// - "SERVICE_TERMINATED" : Reseller triggered a cancellation of the service.
+  /// - "RELATIONSHIP_ENDED" : Relationship between the reseller and customer
+  /// has ended due to a transfer.
+  /// - "PARTIAL_TRANSFER" : Entitlement transferred away from reseller while
+  /// still keeping other entitlement(s) with the reseller.
+  core.String? cancellationReason;
+
+  /// The change action type.
+  /// Possible string values are:
+  /// - "CHANGE_TYPE_UNSPECIFIED" : Not used.
+  /// - "CREATED" : New Entitlement was created.
+  /// - "PRICE_PLAN_SWITCHED" : Price plan associated with an Entitlement was
+  /// changed.
+  /// - "COMMITMENT_CHANGED" : Number of seats committed for a commitment
+  /// Entitlement was changed.
+  /// - "RENEWED" : An annual Entitlement was renewed.
+  /// - "SUSPENDED" : Entitlement was suspended.
+  /// - "ACTIVATED" : Entitlement was activated.
+  /// - "CANCELLED" : Entitlement was cancelled.
+  /// - "SKU_CHANGED" : Entitlement was upgraded or downgraded for ex. from
+  /// Google Workspace Business Standard to Google Workspace Business Plus.
+  /// - "RENEWAL_SETTING_CHANGED" : The settings for renewal of an Entitlement
+  /// have changed.
+  /// - "PAID_SUBSCRIPTION_STARTED" : Use for Google Workspace subscription.
+  /// Either a trial was converted to a paid subscription or a new subscription
+  /// with no trial is created.
+  /// - "LICENSE_CAP_CHANGED" : License cap was changed for the entitlement.
+  /// - "SUSPENSION_DETAILS_CHANGED" : The suspension details have changed (but
+  /// it is still suspended).
+  /// - "TRIAL_END_DATE_EXTENDED" : The trial end date was extended.
+  /// - "TRIAL_STARTED" : Entitlement started trial.
+  core.String? changeType;
+
+  /// The submitted time of the change.
+  core.String? createTime;
+
+  /// Resource name of an entitlement in the form:
+  /// accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}
+  ///
+  /// Required.
+  core.String? entitlement;
+
+  /// Resource name of the Offer at the time of change.
+  ///
+  /// Takes the form: accounts/{account_id}/offers/{offer_id}.
+  ///
+  /// Required.
+  core.String? offer;
+
+  /// Human-readable identifier that shows what operator made a change.
+  ///
+  /// When the operator_type is RESELLER, this is the user's email address. For
+  /// all other operator types, this is empty.
+  core.String? operator;
+
+  /// Operator type responsible for the change.
+  /// Possible string values are:
+  /// - "OPERATOR_TYPE_UNSPECIFIED" : Not used.
+  /// - "CUSTOMER_SERVICE_REPRESENTATIVE" : Customer service representative.
+  /// - "SYSTEM" : System auto job.
+  /// - "CUSTOMER" : Customer user.
+  /// - "RESELLER" : Reseller user.
+  core.String? operatorType;
+
+  /// e.g. purchase_number change reason, entered by CRS.
+  core.String? otherChangeReason;
+
+  /// Extended parameters, such as: purchase_order_number, gcp_details;
+  /// internal_correlation_id, long_running_operation_id, order_id; etc.
+  core.List<GoogleCloudChannelV1Parameter>? parameters;
+
+  /// Service provisioned for an Entitlement.
+  GoogleCloudChannelV1ProvisionedService? provisionedService;
+
+  /// Suspension reason for the Entitlement.
+  /// Possible string values are:
+  /// - "SUSPENSION_REASON_UNSPECIFIED" : Not used.
+  /// - "RESELLER_INITIATED" : Entitlement was manually suspended by the
+  /// Reseller.
+  /// - "TRIAL_ENDED" : Trial ended.
+  /// - "RENEWAL_WITH_TYPE_CANCEL" : Entitlement renewal was canceled.
+  /// - "PENDING_TOS_ACCEPTANCE" : Entitlement was automatically suspended on
+  /// creation for pending ToS acceptance on customer.
+  /// - "OTHER" : Other reasons (internal reasons, abuse, etc.).
+  core.String? suspensionReason;
+
+  GoogleCloudChannelV1EntitlementChange({
+    this.activationReason,
+    this.cancellationReason,
+    this.changeType,
+    this.createTime,
+    this.entitlement,
+    this.offer,
+    this.operator,
+    this.operatorType,
+    this.otherChangeReason,
+    this.parameters,
+    this.provisionedService,
+    this.suspensionReason,
+  });
+
+  GoogleCloudChannelV1EntitlementChange.fromJson(core.Map json_)
+      : this(
+          activationReason: json_.containsKey('activationReason')
+              ? json_['activationReason'] as core.String
+              : null,
+          cancellationReason: json_.containsKey('cancellationReason')
+              ? json_['cancellationReason'] as core.String
+              : null,
+          changeType: json_.containsKey('changeType')
+              ? json_['changeType'] as core.String
+              : null,
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          entitlement: json_.containsKey('entitlement')
+              ? json_['entitlement'] as core.String
+              : null,
+          offer:
+              json_.containsKey('offer') ? json_['offer'] as core.String : null,
+          operator: json_.containsKey('operator')
+              ? json_['operator'] as core.String
+              : null,
+          operatorType: json_.containsKey('operatorType')
+              ? json_['operatorType'] as core.String
+              : null,
+          otherChangeReason: json_.containsKey('otherChangeReason')
+              ? json_['otherChangeReason'] as core.String
+              : null,
+          parameters: json_.containsKey('parameters')
+              ? (json_['parameters'] as core.List)
+                  .map((value) => GoogleCloudChannelV1Parameter.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          provisionedService: json_.containsKey('provisionedService')
+              ? GoogleCloudChannelV1ProvisionedService.fromJson(
+                  json_['provisionedService']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          suspensionReason: json_.containsKey('suspensionReason')
+              ? json_['suspensionReason'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (activationReason != null) 'activationReason': activationReason!,
+        if (cancellationReason != null)
+          'cancellationReason': cancellationReason!,
+        if (changeType != null) 'changeType': changeType!,
+        if (createTime != null) 'createTime': createTime!,
+        if (entitlement != null) 'entitlement': entitlement!,
+        if (offer != null) 'offer': offer!,
+        if (operator != null) 'operator': operator!,
+        if (operatorType != null) 'operatorType': operatorType!,
+        if (otherChangeReason != null) 'otherChangeReason': otherChangeReason!,
+        if (parameters != null) 'parameters': parameters!,
+        if (provisionedService != null)
+          'provisionedService': provisionedService!,
+        if (suspensionReason != null) 'suspensionReason': suspensionReason!,
+      };
+}
+
+/// Request message for CloudChannelReportsService.FetchReportResults.
+class GoogleCloudChannelV1FetchReportResultsRequest {
+  /// Requested page size of the report.
+  ///
+  /// The server may return fewer results than requested. If you don't specify a
+  /// page size, the server uses a sensible default (may change over time). The
+  /// maximum value is 30,000; the server will change larger values to 30,000.
+  ///
+  /// Optional.
+  core.int? pageSize;
+
+  /// A token that specifies a page of results beyond the first page.
+  ///
+  /// Obtained through FetchReportResultsResponse.next_page_token of the
+  /// previous CloudChannelReportsService.FetchReportResults call.
+  ///
+  /// Optional.
+  core.String? pageToken;
+
+  /// List of keys specifying which report partitions to return.
+  ///
+  /// If empty, returns all partitions.
+  ///
+  /// Optional.
+  core.List<core.String>? partitionKeys;
+
+  GoogleCloudChannelV1FetchReportResultsRequest({
+    this.pageSize,
+    this.pageToken,
+    this.partitionKeys,
+  });
+
+  GoogleCloudChannelV1FetchReportResultsRequest.fromJson(core.Map json_)
+      : this(
+          pageSize: json_.containsKey('pageSize')
+              ? json_['pageSize'] as core.int
+              : null,
+          pageToken: json_.containsKey('pageToken')
+              ? json_['pageToken'] as core.String
+              : null,
+          partitionKeys: json_.containsKey('partitionKeys')
+              ? (json_['partitionKeys'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (pageSize != null) 'pageSize': pageSize!,
+        if (pageToken != null) 'pageToken': pageToken!,
+        if (partitionKeys != null) 'partitionKeys': partitionKeys!,
+      };
+}
+
+/// Response message for CloudChannelReportsService.FetchReportResults.
+///
+/// Contains a tabular representation of the report results.
+class GoogleCloudChannelV1FetchReportResultsResponse {
+  /// Pass this token to FetchReportResultsRequest.page_token to retrieve the
+  /// next page of results.
+  core.String? nextPageToken;
+
+  /// The metadata for the report results (display name, columns, row count, and
+  /// date ranges).
+  GoogleCloudChannelV1ReportResultsMetadata? reportMetadata;
+
+  /// The report's lists of values.
+  ///
+  /// Each row follows the settings and ordering of the columns from
+  /// `report_metadata`.
+  core.List<GoogleCloudChannelV1Row>? rows;
+
+  GoogleCloudChannelV1FetchReportResultsResponse({
+    this.nextPageToken,
+    this.reportMetadata,
+    this.rows,
+  });
+
+  GoogleCloudChannelV1FetchReportResultsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          reportMetadata: json_.containsKey('reportMetadata')
+              ? GoogleCloudChannelV1ReportResultsMetadata.fromJson(
+                  json_['reportMetadata']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          rows: json_.containsKey('rows')
+              ? (json_['rows'] as core.List)
+                  .map((value) => GoogleCloudChannelV1Row.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (reportMetadata != null) 'reportMetadata': reportMetadata!,
+        if (rows != null) 'rows': rows!,
       };
 }
 
@@ -4737,6 +5855,40 @@ class GoogleCloudChannelV1ListCustomersResponse {
       };
 }
 
+/// Response message for CloudChannelService.ListEntitlementChanges
+class GoogleCloudChannelV1ListEntitlementChangesResponse {
+  /// The list of entitlement changes.
+  core.List<GoogleCloudChannelV1EntitlementChange>? entitlementChanges;
+
+  /// A token to list the next page of results.
+  core.String? nextPageToken;
+
+  GoogleCloudChannelV1ListEntitlementChangesResponse({
+    this.entitlementChanges,
+    this.nextPageToken,
+  });
+
+  GoogleCloudChannelV1ListEntitlementChangesResponse.fromJson(core.Map json_)
+      : this(
+          entitlementChanges: json_.containsKey('entitlementChanges')
+              ? (json_['entitlementChanges'] as core.List)
+                  .map((value) =>
+                      GoogleCloudChannelV1EntitlementChange.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (entitlementChanges != null)
+          'entitlementChanges': entitlementChanges!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
 /// Response message for CloudChannelService.ListEntitlements.
 class GoogleCloudChannelV1ListEntitlementsResponse {
   /// The reseller customer's entitlements.
@@ -4899,6 +6051,107 @@ class GoogleCloudChannelV1ListPurchasableSkusResponse {
       };
 }
 
+/// Response message for CloudChannelReportsService.ListReports.
+class GoogleCloudChannelV1ListReportsResponse {
+  /// Pass this token to FetchReportResultsRequest.page_token to retrieve the
+  /// next page of results.
+  core.String? nextPageToken;
+
+  /// The reports available to the partner.
+  core.List<GoogleCloudChannelV1Report>? reports;
+
+  GoogleCloudChannelV1ListReportsResponse({
+    this.nextPageToken,
+    this.reports,
+  });
+
+  GoogleCloudChannelV1ListReportsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          reports: json_.containsKey('reports')
+              ? (json_['reports'] as core.List)
+                  .map((value) => GoogleCloudChannelV1Report.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (reports != null) 'reports': reports!,
+      };
+}
+
+/// Response message for ListSkuGroupBillableSkus.
+class GoogleCloudChannelV1ListSkuGroupBillableSkusResponse {
+  /// The list of billable SKUs in the requested SKU group.
+  core.List<GoogleCloudChannelV1BillableSku>? billableSkus;
+
+  /// A token to retrieve the next page of results.
+  ///
+  /// Pass to ListSkuGroupBillableSkus.page_token to obtain that page.
+  core.String? nextPageToken;
+
+  GoogleCloudChannelV1ListSkuGroupBillableSkusResponse({
+    this.billableSkus,
+    this.nextPageToken,
+  });
+
+  GoogleCloudChannelV1ListSkuGroupBillableSkusResponse.fromJson(core.Map json_)
+      : this(
+          billableSkus: json_.containsKey('billableSkus')
+              ? (json_['billableSkus'] as core.List)
+                  .map((value) => GoogleCloudChannelV1BillableSku.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (billableSkus != null) 'billableSkus': billableSkus!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Response message for ListSkuGroups.
+class GoogleCloudChannelV1ListSkuGroupsResponse {
+  /// A token to retrieve the next page of results.
+  ///
+  /// Pass to ListSkuGroups.page_token to obtain that page.
+  core.String? nextPageToken;
+
+  /// The list of SKU groups requested.
+  core.List<GoogleCloudChannelV1SkuGroup>? skuGroups;
+
+  GoogleCloudChannelV1ListSkuGroupsResponse({
+    this.nextPageToken,
+    this.skuGroups,
+  });
+
+  GoogleCloudChannelV1ListSkuGroupsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          skuGroups: json_.containsKey('skuGroups')
+              ? (json_['skuGroups'] as core.List)
+                  .map((value) => GoogleCloudChannelV1SkuGroup.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (skuGroups != null) 'skuGroups': skuGroups!,
+      };
+}
+
 /// Response message for ListSkus.
 class GoogleCloudChannelV1ListSkusResponse {
   /// A token to retrieve the next page of results.
@@ -4973,6 +6226,15 @@ class GoogleCloudChannelV1ListSubscribersResponse {
 
 /// Request message for CloudChannelService.ListTransferableOffers
 class GoogleCloudChannelV1ListTransferableOffersRequest {
+  /// The Billing Account to look up Offers for.
+  ///
+  /// Format: accounts/{account_id}/billingAccounts/{billing_account_id}. This
+  /// field is only relevant for multi-currency accounts. It should be left
+  /// empty for single currency accounts.
+  ///
+  /// Optional.
+  core.String? billingAccount;
+
   /// Customer's Cloud Identity ID
   core.String? cloudIdentityId;
 
@@ -5007,6 +6269,7 @@ class GoogleCloudChannelV1ListTransferableOffersRequest {
   core.String? sku;
 
   GoogleCloudChannelV1ListTransferableOffersRequest({
+    this.billingAccount,
     this.cloudIdentityId,
     this.customerName,
     this.languageCode,
@@ -5017,6 +6280,9 @@ class GoogleCloudChannelV1ListTransferableOffersRequest {
 
   GoogleCloudChannelV1ListTransferableOffersRequest.fromJson(core.Map json_)
       : this(
+          billingAccount: json_.containsKey('billingAccount')
+              ? json_['billingAccount'] as core.String
+              : null,
           cloudIdentityId: json_.containsKey('cloudIdentityId')
               ? json_['cloudIdentityId'] as core.String
               : null,
@@ -5036,6 +6302,7 @@ class GoogleCloudChannelV1ListTransferableOffersRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (billingAccount != null) 'billingAccount': billingAccount!,
         if (cloudIdentityId != null) 'cloudIdentityId': cloudIdentityId!,
         if (customerName != null) 'customerName': customerName!,
         if (languageCode != null) 'languageCode': languageCode!,
@@ -5282,6 +6549,9 @@ class GoogleCloudChannelV1Offer {
   /// Constraints on transacting the Offer.
   GoogleCloudChannelV1Constraints? constraints;
 
+  /// The deal code of the offer to get a special promotion or discount.
+  core.String? dealCode;
+
   /// End of the Offer validity time.
   ///
   /// Output only.
@@ -5312,6 +6582,7 @@ class GoogleCloudChannelV1Offer {
 
   GoogleCloudChannelV1Offer({
     this.constraints,
+    this.dealCode,
     this.endTime,
     this.marketingInfo,
     this.name,
@@ -5327,6 +6598,9 @@ class GoogleCloudChannelV1Offer {
           constraints: json_.containsKey('constraints')
               ? GoogleCloudChannelV1Constraints.fromJson(
                   json_['constraints'] as core.Map<core.String, core.dynamic>)
+              : null,
+          dealCode: json_.containsKey('dealCode')
+              ? json_['dealCode'] as core.String
               : null,
           endTime: json_.containsKey('endTime')
               ? json_['endTime'] as core.String
@@ -5364,6 +6638,7 @@ class GoogleCloudChannelV1Offer {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (constraints != null) 'constraints': constraints!,
+        if (dealCode != null) 'dealCode': dealCode!,
         if (endTime != null) 'endTime': endTime!,
         if (marketingInfo != null) 'marketingInfo': marketingInfo!,
         if (name != null) 'name': name!,
@@ -5454,6 +6729,7 @@ class GoogleCloudChannelV1ParameterDefinition {
   /// - "INT64" : Int64 type.
   /// - "STRING" : String type.
   /// - "DOUBLE" : Double type.
+  /// - "BOOLEAN" : Boolean type.
   core.String? parameterType;
 
   GoogleCloudChannelV1ParameterDefinition({
@@ -5565,7 +6841,7 @@ class GoogleCloudChannelV1Period {
 class GoogleCloudChannelV1Plan {
   /// Reseller Billing account to charge after an offer transaction.
   ///
-  /// Only present for Google Cloud Platform offers.
+  /// Only present for Google Cloud offers.
   core.String? billingAccount;
 
   /// Describes how frequently the reseller will be billed, such as once per
@@ -5705,13 +6981,12 @@ class GoogleCloudChannelV1PriceByResource {
   /// - "GB" : GB (used for storage SKUs).
   /// - "LICENSED_USER" : Active licensed users(for Voice SKUs).
   /// - "MINUTES" : Voice usage.
-  /// - "IAAS_USAGE" : For IaaS SKUs like Google Cloud Platform, monetization is
-  /// based on usage accrued on your billing account irrespective of the type of
+  /// - "IAAS_USAGE" : For IaaS SKUs like Google Cloud, monetization is based on
+  /// usage accrued on your billing account irrespective of the type of
   /// monetizable resource. This enum represents an aggregated
   /// resource/container for all usage SKUs on a billing account. Currently,
-  /// only applicable to Google Cloud Platform.
-  /// - "SUBSCRIPTION" : For Google Cloud Platform subscriptions like Anthos or
-  /// SAP.
+  /// only applicable to Google Cloud.
+  /// - "SUBSCRIPTION" : For Google Cloud subscriptions like Anthos or SAP.
   core.String? resourceType;
 
   GoogleCloudChannelV1PriceByResource({
@@ -5937,7 +7212,7 @@ class GoogleCloudChannelV1ProvisionedService {
   /// Provisioning ID of the entitlement.
   ///
   /// For Google Workspace, this is the underlying Subscription ID. For Google
-  /// Cloud Platform, this is the Billing Account ID of the billing subaccount."
+  /// Cloud, this is the Billing Account ID of the billing subaccount.
   ///
   /// Output only.
   core.String? provisioningId;
@@ -6017,6 +7292,35 @@ class GoogleCloudChannelV1PurchasableSku {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (sku != null) 'sku': sku!,
+      };
+}
+
+/// Response message for QueryEligibleBillingAccounts.
+class GoogleCloudChannelV1QueryEligibleBillingAccountsResponse {
+  /// List of SKU purchase groups where each group represents a set of SKUs that
+  /// must be purchased using the same billing account.
+  ///
+  /// Each SKU from \[QueryEligibleBillingAccountsRequest.skus\] will appear in
+  /// exactly one SKU group.
+  core.List<GoogleCloudChannelV1SkuPurchaseGroup>? skuPurchaseGroups;
+
+  GoogleCloudChannelV1QueryEligibleBillingAccountsResponse({
+    this.skuPurchaseGroups,
+  });
+
+  GoogleCloudChannelV1QueryEligibleBillingAccountsResponse.fromJson(
+      core.Map json_)
+      : this(
+          skuPurchaseGroups: json_.containsKey('skuPurchaseGroups')
+              ? (json_['skuPurchaseGroups'] as core.List)
+                  .map((value) => GoogleCloudChannelV1SkuPurchaseGroup.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (skuPurchaseGroups != null) 'skuPurchaseGroups': skuPurchaseGroups!,
       };
 }
 
@@ -6118,6 +7422,189 @@ class GoogleCloudChannelV1RenewalSettings {
       };
 }
 
+/// The ID and description of a report that was used to generate report data.
+///
+/// For example, "Google Cloud Daily Spend", "Google Workspace License
+/// Activity", etc.
+class GoogleCloudChannelV1Report {
+  /// The list of columns included in the report.
+  ///
+  /// This defines the schema of the report results.
+  core.List<GoogleCloudChannelV1Column>? columns;
+
+  /// A description of other aspects of the report, such as the products it
+  /// supports.
+  core.String? description;
+
+  /// A human-readable name for this report.
+  core.String? displayName;
+
+  /// The report's resource name.
+  ///
+  /// Specifies the account and report used to generate report data. The
+  /// report_id identifier is a UID (for example, `613bf59q`). Name uses the
+  /// format: accounts/{account_id}/reports/{report_id}
+  ///
+  /// Required.
+  core.String? name;
+
+  GoogleCloudChannelV1Report({
+    this.columns,
+    this.description,
+    this.displayName,
+    this.name,
+  });
+
+  GoogleCloudChannelV1Report.fromJson(core.Map json_)
+      : this(
+          columns: json_.containsKey('columns')
+              ? (json_['columns'] as core.List)
+                  .map((value) => GoogleCloudChannelV1Column.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (columns != null) 'columns': columns!,
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
+      };
+}
+
+/// The features describing the data.
+///
+/// Returned by CloudChannelReportsService.RunReportJob and
+/// CloudChannelReportsService.FetchReportResults.
+class GoogleCloudChannelV1ReportResultsMetadata {
+  /// The date range of reported usage.
+  GoogleCloudChannelV1DateRange? dateRange;
+
+  /// The usage dates immediately preceding `date_range` with the same duration.
+  ///
+  /// Use this to calculate trending usage and costs. This is only populated if
+  /// you request trending data. For example, if `date_range` is July 1-15,
+  /// `preceding_date_range` will be June 16-30.
+  GoogleCloudChannelV1DateRange? precedingDateRange;
+
+  /// Details of the completed report.
+  GoogleCloudChannelV1Report? report;
+
+  /// The total number of rows of data in the final report.
+  core.String? rowCount;
+
+  GoogleCloudChannelV1ReportResultsMetadata({
+    this.dateRange,
+    this.precedingDateRange,
+    this.report,
+    this.rowCount,
+  });
+
+  GoogleCloudChannelV1ReportResultsMetadata.fromJson(core.Map json_)
+      : this(
+          dateRange: json_.containsKey('dateRange')
+              ? GoogleCloudChannelV1DateRange.fromJson(
+                  json_['dateRange'] as core.Map<core.String, core.dynamic>)
+              : null,
+          precedingDateRange: json_.containsKey('precedingDateRange')
+              ? GoogleCloudChannelV1DateRange.fromJson(
+                  json_['precedingDateRange']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          report: json_.containsKey('report')
+              ? GoogleCloudChannelV1Report.fromJson(
+                  json_['report'] as core.Map<core.String, core.dynamic>)
+              : null,
+          rowCount: json_.containsKey('rowCount')
+              ? json_['rowCount'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dateRange != null) 'dateRange': dateRange!,
+        if (precedingDateRange != null)
+          'precedingDateRange': precedingDateRange!,
+        if (report != null) 'report': report!,
+        if (rowCount != null) 'rowCount': rowCount!,
+      };
+}
+
+/// A single report value.
+class GoogleCloudChannelV1ReportValue {
+  /// A value of type `google.type.DateTime` (year, month, day, hour, minute,
+  /// second, and UTC offset or timezone.)
+  GoogleTypeDateTime? dateTimeValue;
+
+  /// A value of type `google.type.Date` (year, month, day).
+  GoogleTypeDate? dateValue;
+
+  /// A value of type `google.type.Decimal`, representing non-integer numeric
+  /// values.
+  GoogleTypeDecimal? decimalValue;
+
+  /// A value of type `int`.
+  core.String? intValue;
+
+  /// A value of type `google.type.Money` (currency code, whole units, decimal
+  /// units).
+  GoogleTypeMoney? moneyValue;
+
+  /// A value of type `string`.
+  core.String? stringValue;
+
+  GoogleCloudChannelV1ReportValue({
+    this.dateTimeValue,
+    this.dateValue,
+    this.decimalValue,
+    this.intValue,
+    this.moneyValue,
+    this.stringValue,
+  });
+
+  GoogleCloudChannelV1ReportValue.fromJson(core.Map json_)
+      : this(
+          dateTimeValue: json_.containsKey('dateTimeValue')
+              ? GoogleTypeDateTime.fromJson(
+                  json_['dateTimeValue'] as core.Map<core.String, core.dynamic>)
+              : null,
+          dateValue: json_.containsKey('dateValue')
+              ? GoogleTypeDate.fromJson(
+                  json_['dateValue'] as core.Map<core.String, core.dynamic>)
+              : null,
+          decimalValue: json_.containsKey('decimalValue')
+              ? GoogleTypeDecimal.fromJson(
+                  json_['decimalValue'] as core.Map<core.String, core.dynamic>)
+              : null,
+          intValue: json_.containsKey('intValue')
+              ? json_['intValue'] as core.String
+              : null,
+          moneyValue: json_.containsKey('moneyValue')
+              ? GoogleTypeMoney.fromJson(
+                  json_['moneyValue'] as core.Map<core.String, core.dynamic>)
+              : null,
+          stringValue: json_.containsKey('stringValue')
+              ? json_['stringValue'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dateTimeValue != null) 'dateTimeValue': dateTimeValue!,
+        if (dateValue != null) 'dateValue': dateValue!,
+        if (decimalValue != null) 'decimalValue': decimalValue!,
+        if (intValue != null) 'intValue': intValue!,
+        if (moneyValue != null) 'moneyValue': moneyValue!,
+        if (stringValue != null) 'stringValue': stringValue!,
+      };
+}
+
 /// A type that represents the various adjustments you can apply to a bill.
 class GoogleCloudChannelV1RepricingAdjustment {
   /// Flat markup or markdown on an entire bill.
@@ -6142,6 +7629,30 @@ class GoogleCloudChannelV1RepricingAdjustment {
       };
 }
 
+/// Represents the various repricing conditions you can use for a conditional
+/// override.
+class GoogleCloudChannelV1RepricingCondition {
+  /// SKU Group condition for override.
+  GoogleCloudChannelV1SkuGroupCondition? skuGroupCondition;
+
+  GoogleCloudChannelV1RepricingCondition({
+    this.skuGroupCondition,
+  });
+
+  GoogleCloudChannelV1RepricingCondition.fromJson(core.Map json_)
+      : this(
+          skuGroupCondition: json_.containsKey('skuGroupCondition')
+              ? GoogleCloudChannelV1SkuGroupCondition.fromJson(
+                  json_['skuGroupCondition']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (skuGroupCondition != null) 'skuGroupCondition': skuGroupCondition!,
+      };
+}
+
 /// Configuration for repricing a Google bill over a period of time.
 class GoogleCloudChannelV1RepricingConfig {
   /// Information about the adjustment.
@@ -6151,9 +7662,16 @@ class GoogleCloudChannelV1RepricingConfig {
 
   /// Applies the repricing configuration at the channel partner level.
   ///
-  /// This is the only supported value for ChannelPartnerRepricingConfig.
+  /// Only ChannelPartnerRepricingConfig supports this value.
   GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity?
       channelPartnerGranularity;
+
+  /// The conditional overrides to apply for this configuration.
+  ///
+  /// If you list multiple overrides, only the first valid override is used. If
+  /// you don't list any overrides, the API uses the normal adjustment and
+  /// rebilling basis.
+  core.List<GoogleCloudChannelV1ConditionalOverride>? conditionalOverrides;
 
   /// The YearMonth when these adjustments activate.
   ///
@@ -6165,7 +7683,12 @@ class GoogleCloudChannelV1RepricingConfig {
 
   /// Applies the repricing configuration at the entitlement level.
   ///
-  /// This is the only supported value for CustomerRepricingConfig.
+  /// Note: If a ChannelPartnerRepricingConfig using
+  /// RepricingConfig.EntitlementGranularity becomes effective, then no existing
+  /// or future RepricingConfig.ChannelPartnerGranularity will apply to the
+  /// RepricingConfig.EntitlementGranularity.entitlement. This is the
+  /// recommended value for both CustomerRepricingConfig and
+  /// ChannelPartnerRepricingConfig.
   GoogleCloudChannelV1RepricingConfigEntitlementGranularity?
       entitlementGranularity;
 
@@ -6186,6 +7709,7 @@ class GoogleCloudChannelV1RepricingConfig {
   GoogleCloudChannelV1RepricingConfig({
     this.adjustment,
     this.channelPartnerGranularity,
+    this.conditionalOverrides,
     this.effectiveInvoiceMonth,
     this.entitlementGranularity,
     this.rebillingBasis,
@@ -6203,6 +7727,13 @@ class GoogleCloudChannelV1RepricingConfig {
                       .fromJson(json_['channelPartnerGranularity']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          conditionalOverrides: json_.containsKey('conditionalOverrides')
+              ? (json_['conditionalOverrides'] as core.List)
+                  .map((value) =>
+                      GoogleCloudChannelV1ConditionalOverride.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           effectiveInvoiceMonth: json_.containsKey('effectiveInvoiceMonth')
               ? GoogleTypeDate.fromJson(json_['effectiveInvoiceMonth']
                   as core.Map<core.String, core.dynamic>)
@@ -6221,6 +7752,8 @@ class GoogleCloudChannelV1RepricingConfig {
         if (adjustment != null) 'adjustment': adjustment!,
         if (channelPartnerGranularity != null)
           'channelPartnerGranularity': channelPartnerGranularity!,
+        if (conditionalOverrides != null)
+          'conditionalOverrides': conditionalOverrides!,
         if (effectiveInvoiceMonth != null)
           'effectiveInvoiceMonth': effectiveInvoiceMonth!,
         if (entitlementGranularity != null)
@@ -6257,6 +7790,94 @@ class GoogleCloudChannelV1RepricingConfigEntitlementGranularity {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (entitlement != null) 'entitlement': entitlement!,
+      };
+}
+
+/// A row of report values.
+class GoogleCloudChannelV1Row {
+  /// The key for the partition this row belongs to.
+  ///
+  /// This field is empty if the report is not partitioned.
+  core.String? partitionKey;
+
+  /// The list of values in the row.
+  core.List<GoogleCloudChannelV1ReportValue>? values;
+
+  GoogleCloudChannelV1Row({
+    this.partitionKey,
+    this.values,
+  });
+
+  GoogleCloudChannelV1Row.fromJson(core.Map json_)
+      : this(
+          partitionKey: json_.containsKey('partitionKey')
+              ? json_['partitionKey'] as core.String
+              : null,
+          values: json_.containsKey('values')
+              ? (json_['values'] as core.List)
+                  .map((value) => GoogleCloudChannelV1ReportValue.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (partitionKey != null) 'partitionKey': partitionKey!,
+        if (values != null) 'values': values!,
+      };
+}
+
+/// Request message for CloudChannelReportsService.RunReportJob.
+class GoogleCloudChannelV1RunReportJobRequest {
+  /// The range of usage or invoice dates to include in the result.
+  ///
+  /// Optional.
+  GoogleCloudChannelV1DateRange? dateRange;
+
+  /// A structured string that defines conditions on dimension columns to
+  /// restrict the report output.
+  ///
+  /// Filters support logical operators (AND, OR, NOT) and conditional operators
+  /// (=, !=, \<, \>, \<=, and \>=) using `column_id` as keys. For example:
+  /// `(customer:"accounts/C123abc/customers/S456def" OR
+  /// customer:"accounts/C123abc/customers/S789ghi") AND invoice_start_date.year
+  /// >= 2022`
+  ///
+  /// Optional.
+  core.String? filter;
+
+  /// The BCP-47 language code, such as "en-US".
+  ///
+  /// If specified, the response is localized to the corresponding language code
+  /// if the original data sources support it. Default is "en-US".
+  ///
+  /// Optional.
+  core.String? languageCode;
+
+  GoogleCloudChannelV1RunReportJobRequest({
+    this.dateRange,
+    this.filter,
+    this.languageCode,
+  });
+
+  GoogleCloudChannelV1RunReportJobRequest.fromJson(core.Map json_)
+      : this(
+          dateRange: json_.containsKey('dateRange')
+              ? GoogleCloudChannelV1DateRange.fromJson(
+                  json_['dateRange'] as core.Map<core.String, core.dynamic>)
+              : null,
+          filter: json_.containsKey('filter')
+              ? json_['filter'] as core.String
+              : null,
+          languageCode: json_.containsKey('languageCode')
+              ? json_['languageCode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dateRange != null) 'dateRange': dateRange!,
+        if (filter != null) 'filter': filter!,
+        if (languageCode != null) 'languageCode': languageCode!,
       };
 }
 
@@ -6303,6 +7924,103 @@ class GoogleCloudChannelV1Sku {
       };
 }
 
+/// Represents the SKU group information.
+class GoogleCloudChannelV1SkuGroup {
+  /// Unique human readable identifier for the SKU group.
+  core.String? displayName;
+
+  /// Resource name of SKU group.
+  ///
+  /// Format: accounts/{account}/skuGroups/{sku_group}. Example:
+  /// "accounts/C01234/skuGroups/3d50fd57-3157-4577-a5a9-a219b8490041".
+  core.String? name;
+
+  GoogleCloudChannelV1SkuGroup({
+    this.displayName,
+    this.name,
+  });
+
+  GoogleCloudChannelV1SkuGroup.fromJson(core.Map json_)
+      : this(
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
+      };
+}
+
+/// A condition that applies the override if a line item SKU is found in the SKU
+/// group.
+class GoogleCloudChannelV1SkuGroupCondition {
+  /// Specifies a SKU group (https://cloud.google.com/skus/sku-groups).
+  ///
+  /// Resource name of SKU group. Format:
+  /// accounts/{account}/skuGroups/{sku_group}. Example:
+  /// "accounts/C01234/skuGroups/3d50fd57-3157-4577-a5a9-a219b8490041".
+  core.String? skuGroup;
+
+  GoogleCloudChannelV1SkuGroupCondition({
+    this.skuGroup,
+  });
+
+  GoogleCloudChannelV1SkuGroupCondition.fromJson(core.Map json_)
+      : this(
+          skuGroup: json_.containsKey('skuGroup')
+              ? json_['skuGroup'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (skuGroup != null) 'skuGroup': skuGroup!,
+      };
+}
+
+/// Represents a set of SKUs that must be purchased using the same billing
+/// account.
+class GoogleCloudChannelV1SkuPurchaseGroup {
+  /// List of billing accounts that are eligible to purhcase these SKUs.
+  core.List<GoogleCloudChannelV1BillingAccountPurchaseInfo>?
+      billingAccountPurchaseInfos;
+
+  /// Resource names of the SKUs included in this group.
+  ///
+  /// Format: products/{product_id}/skus/{sku_id}.
+  core.List<core.String>? skus;
+
+  GoogleCloudChannelV1SkuPurchaseGroup({
+    this.billingAccountPurchaseInfos,
+    this.skus,
+  });
+
+  GoogleCloudChannelV1SkuPurchaseGroup.fromJson(core.Map json_)
+      : this(
+          billingAccountPurchaseInfos: json_
+                  .containsKey('billingAccountPurchaseInfos')
+              ? (json_['billingAccountPurchaseInfos'] as core.List)
+                  .map((value) =>
+                      GoogleCloudChannelV1BillingAccountPurchaseInfo.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          skus: json_.containsKey('skus')
+              ? (json_['skus'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (billingAccountPurchaseInfos != null)
+          'billingAccountPurchaseInfos': billingAccountPurchaseInfos!,
+        if (skus != null) 'skus': skus!,
+      };
+}
+
 /// Request message for CloudChannelService.StartPaidService.
 typedef GoogleCloudChannelV1StartPaidServiceRequest = $Request01;
 
@@ -6321,6 +8039,9 @@ class GoogleCloudChannelV1TransferEligibility {
   /// transferring the SKU.
   /// - "SKU_NOT_ELIGIBLE" : Reseller not eligible to sell the SKU.
   /// - "SKU_SUSPENDED" : SKU subscription is suspended
+  /// - "CHANNEL_PARTNER_NOT_AUTHORIZED_FOR_SKU" : The reseller is not
+  /// authorized to transact on this Product. See
+  /// https://support.google.com/channelservices/answer/9759265
   core.String? ineligibilityReason;
 
   /// Whether reseller is eligible to transfer the SKU.
@@ -6765,7 +8486,7 @@ class GoogleLongrunningOperation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -6840,6 +8561,131 @@ typedef GoogleRpcStatus = $Status;
 /// google.protobuf.Timestamp
 typedef GoogleTypeDate = $Date;
 
+/// Represents civil time (or occasionally physical time).
+///
+/// This type can represent a civil time in one of a few possible ways: * When
+/// utc_offset is set and time_zone is unset: a civil time on a calendar day
+/// with a particular offset from UTC. * When time_zone is set and utc_offset is
+/// unset: a civil time on a calendar day in a particular time zone. * When
+/// neither time_zone nor utc_offset is set: a civil time on a calendar day in
+/// local time. The date is relative to the Proleptic Gregorian Calendar. If
+/// year, month, or day are 0, the DateTime is considered not to have a specific
+/// year, month, or day respectively. This type may also be used to represent a
+/// physical time if all the date and time fields are set and either case of the
+/// `time_offset` oneof is set. Consider using `Timestamp` message for physical
+/// time instead. If your use case also would like to store the user's timezone,
+/// that can be done in another field. This type is more flexible than some
+/// applications may want. Make sure to document and validate your application's
+/// limitations.
+class GoogleTypeDateTime {
+  /// Day of month.
+  ///
+  /// Must be from 1 to 31 and valid for the year and month, or 0 if specifying
+  /// a datetime without a day.
+  ///
+  /// Optional.
+  core.int? day;
+
+  /// Hours of day in 24 hour format.
+  ///
+  /// Should be from 0 to 23, defaults to 0 (midnight). An API may choose to
+  /// allow the value "24:00:00" for scenarios like business closing time.
+  ///
+  /// Optional.
+  core.int? hours;
+
+  /// Minutes of hour of day.
+  ///
+  /// Must be from 0 to 59, defaults to 0.
+  ///
+  /// Optional.
+  core.int? minutes;
+
+  /// Month of year.
+  ///
+  /// Must be from 1 to 12, or 0 if specifying a datetime without a month.
+  ///
+  /// Optional.
+  core.int? month;
+
+  /// Fractions of seconds in nanoseconds.
+  ///
+  /// Must be from 0 to 999,999,999, defaults to 0.
+  ///
+  /// Optional.
+  core.int? nanos;
+
+  /// Seconds of minutes of the time.
+  ///
+  /// Must normally be from 0 to 59, defaults to 0. An API may allow the value
+  /// 60 if it allows leap-seconds.
+  ///
+  /// Optional.
+  core.int? seconds;
+
+  /// Time zone.
+  GoogleTypeTimeZone? timeZone;
+
+  /// UTC offset.
+  ///
+  /// Must be whole seconds, between -18 hours and +18 hours. For example, a UTC
+  /// offset of -4:00 would be represented as { seconds: -14400 }.
+  core.String? utcOffset;
+
+  /// Year of date.
+  ///
+  /// Must be from 1 to 9999, or 0 if specifying a datetime without a year.
+  ///
+  /// Optional.
+  core.int? year;
+
+  GoogleTypeDateTime({
+    this.day,
+    this.hours,
+    this.minutes,
+    this.month,
+    this.nanos,
+    this.seconds,
+    this.timeZone,
+    this.utcOffset,
+    this.year,
+  });
+
+  GoogleTypeDateTime.fromJson(core.Map json_)
+      : this(
+          day: json_.containsKey('day') ? json_['day'] as core.int : null,
+          hours: json_.containsKey('hours') ? json_['hours'] as core.int : null,
+          minutes: json_.containsKey('minutes')
+              ? json_['minutes'] as core.int
+              : null,
+          month: json_.containsKey('month') ? json_['month'] as core.int : null,
+          nanos: json_.containsKey('nanos') ? json_['nanos'] as core.int : null,
+          seconds: json_.containsKey('seconds')
+              ? json_['seconds'] as core.int
+              : null,
+          timeZone: json_.containsKey('timeZone')
+              ? GoogleTypeTimeZone.fromJson(
+                  json_['timeZone'] as core.Map<core.String, core.dynamic>)
+              : null,
+          utcOffset: json_.containsKey('utcOffset')
+              ? json_['utcOffset'] as core.String
+              : null,
+          year: json_.containsKey('year') ? json_['year'] as core.int : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (day != null) 'day': day!,
+        if (hours != null) 'hours': hours!,
+        if (minutes != null) 'minutes': minutes!,
+        if (month != null) 'month': month!,
+        if (nanos != null) 'nanos': nanos!,
+        if (seconds != null) 'seconds': seconds!,
+        if (timeZone != null) 'timeZone': timeZone!,
+        if (utcOffset != null) 'utcOffset': utcOffset!,
+        if (year != null) 'year': year!,
+      };
+}
+
 /// A representation of a decimal value, such as 2.5.
 ///
 /// Clients may convert values into language-native decimal formats, such as
@@ -6852,38 +8698,40 @@ class GoogleTypeDecimal {
   /// The string representation consists of an optional sign, `+` (`U+002B`) or
   /// `-` (`U+002D`), followed by a sequence of zero or more decimal digits
   /// ("the integer"), optionally followed by a fraction, optionally followed by
-  /// an exponent. The fraction consists of a decimal point followed by zero or
-  /// more decimal digits. The string must contain at least one digit in either
-  /// the integer or the fraction. The number formed by the sign, the integer
-  /// and the fraction is referred to as the significand. The exponent consists
-  /// of the character `e` (`U+0065`) or `E` (`U+0045`) followed by one or more
-  /// decimal digits. Services **should** normalize decimal values before
-  /// storing them by: - Removing an explicitly-provided `+` sign (`+2.5` -\>
-  /// `2.5`). - Replacing a zero-length integer value with `0` (`.5` -\> `0.5`).
-  /// - Coercing the exponent character to lower-case (`2.5E8` -\> `2.5e8`). -
-  /// Removing an explicitly-provided zero exponent (`2.5e0` -\> `2.5`).
-  /// Services **may** perform additional normalization based on its own needs
-  /// and the internal decimal implementation selected, such as shifting the
-  /// decimal point and exponent value together (example: `2.5e-1` \<-\>
-  /// `0.25`). Additionally, services **may** preserve trailing zeroes in the
-  /// fraction to indicate increased precision, but are not required to do so.
-  /// Note that only the `.` character is supported to divide the integer and
-  /// the fraction; `,` **should not** be supported regardless of locale.
+  /// an exponent. An empty string **should** be interpreted as `0`. The
+  /// fraction consists of a decimal point followed by zero or more decimal
+  /// digits. The string must contain at least one digit in either the integer
+  /// or the fraction. The number formed by the sign, the integer and the
+  /// fraction is referred to as the significand. The exponent consists of the
+  /// character `e` (`U+0065`) or `E` (`U+0045`) followed by one or more decimal
+  /// digits. Services **should** normalize decimal values before storing them
+  /// by: - Removing an explicitly-provided `+` sign (`+2.5` -\> `2.5`). -
+  /// Replacing a zero-length integer value with `0` (`.5` -\> `0.5`). -
+  /// Coercing the exponent character to upper-case, with explicit sign (`2.5e8`
+  /// -\> `2.5E+8`). - Removing an explicitly-provided zero exponent (`2.5E0`
+  /// -\> `2.5`). Services **may** perform additional normalization based on its
+  /// own needs and the internal decimal implementation selected, such as
+  /// shifting the decimal point and exponent value together (example: `2.5E-1`
+  /// \<-\> `0.25`). Additionally, services **may** preserve trailing zeroes in
+  /// the fraction to indicate increased precision, but are not required to do
+  /// so. Note that only the `.` character is supported to divide the integer
+  /// and the fraction; `,` **should not** be supported regardless of locale.
   /// Additionally, thousand separators **should not** be supported. If a
   /// service does support them, values **must** be normalized. The ENBF grammar
-  /// is: DecimalString = \[Sign\] Significand \[Exponent\]; Sign = '+' | '-';
-  /// Significand = Digits '.' | \[Digits\] '.' Digits; Exponent = ('e' | 'E')
-  /// \[Sign\] Digits; Digits = { '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7'
-  /// | '8' | '9' }; Services **should** clearly document the range of supported
-  /// values, the maximum supported precision (total number of digits), and, if
-  /// applicable, the scale (number of digits after the decimal point), as well
-  /// as how it behaves when receiving out-of-bounds values. Services **may**
-  /// choose to accept values passed as input even when the value has a higher
-  /// precision or scale than the service supports, and **should** round the
-  /// value to fit the supported scale. Alternatively, the service **may** error
-  /// with `400 Bad Request` (`INVALID_ARGUMENT` in gRPC) if precision would be
-  /// lost. Services **should** error with `400 Bad Request` (`INVALID_ARGUMENT`
-  /// in gRPC) if the service receives a value outside of the supported range.
+  /// is: DecimalString = '' | \[Sign\] Significand \[Exponent\]; Sign = '+' |
+  /// '-'; Significand = Digits '.' | \[Digits\] '.' Digits; Exponent = ('e' |
+  /// 'E') \[Sign\] Digits; Digits = { '0' | '1' | '2' | '3' | '4' | '5' | '6' |
+  /// '7' | '8' | '9' }; Services **should** clearly document the range of
+  /// supported values, the maximum supported precision (total number of
+  /// digits), and, if applicable, the scale (number of digits after the decimal
+  /// point), as well as how it behaves when receiving out-of-bounds values.
+  /// Services **may** choose to accept values passed as input even when the
+  /// value has a higher precision or scale than the service supports, and
+  /// **should** round the value to fit the supported scale. Alternatively, the
+  /// service **may** error with `400 Bad Request` (`INVALID_ARGUMENT` in gRPC)
+  /// if precision would be lost. Services **should** error with `400 Bad
+  /// Request` (`INVALID_ARGUMENT` in gRPC) if the service receives a value
+  /// outside of the supported range.
   core.String? value;
 
   GoogleTypeDecimal({
@@ -6917,3 +8765,7 @@ typedef GoogleTypeMoney = $Money;
 /// field is used. For more guidance on how to use this schema, please see:
 /// https://support.google.com/business/answer/6397478
 typedef GoogleTypePostalAddress = $PostalAddress;
+
+/// Represents a time zone from the
+/// [IANA Time Zone Database](https://www.iana.org/time-zones).
+typedef GoogleTypeTimeZone = $TimeZone;

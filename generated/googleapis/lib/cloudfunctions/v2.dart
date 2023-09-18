@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud Functions API - v2
@@ -25,7 +24,7 @@
 ///     - [ProjectsLocationsFunctionsResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsRuntimesResource]
-library cloudfunctions.v2;
+library cloudfunctions_v2;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -34,7 +33,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -446,7 +444,10 @@ class ProjectsLocationsFunctionsResource {
   /// comma separated list of fields. The default sorting oder is ascending. See
   /// https://google.aip.dev/132#ordering.
   ///
-  /// [pageSize] - Maximum number of functions to return per call.
+  /// [pageSize] - Maximum number of functions to return per call. The largest
+  /// allowed page_size is 1,000, if the page_size is omitted or specified as
+  /// greater than 1,000 then it will be replaced as 1,000. The size of the list
+  /// response can be less than specified when used with filters.
   ///
   /// [pageToken] - The value returned by the last `ListFunctionsResponse`;
   /// indicates that this is a continuation of a prior `ListFunctions` call, and
@@ -684,13 +685,6 @@ class ProjectsLocationsOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -885,7 +879,9 @@ class Binding {
   /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
   /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
-  /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
+  /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
+  /// (primary) that represents all the users of that domain. For example,
+  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
   /// An email address (plus unique identifier) representing a user that has
   /// been recently deleted. For example,
   /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
@@ -901,9 +897,7 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
-  /// that represents all the users of that domain. For example, `google.com` or
-  /// `example.com`.
+  /// the role in the binding.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
@@ -946,6 +940,24 @@ class BuildConfig {
   /// Output only.
   core.String? build;
 
+  /// Docker Registry to use for this deployment.
+  ///
+  /// This configuration is only applicable to 1st Gen functions, 2nd Gen
+  /// functions can only use Artifact Registry. If `docker_repository` field is
+  /// specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If
+  /// unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may
+  /// be overridden by the backend for eligible deployments.
+  /// Possible string values are:
+  /// - "DOCKER_REGISTRY_UNSPECIFIED" : Unspecified.
+  /// - "CONTAINER_REGISTRY" : Docker images will be stored in multi-regional
+  /// Container Registry repositories named `gcf`.
+  /// - "ARTIFACT_REGISTRY" : Docker images will be stored in regional Artifact
+  /// Registry repositories. By default, GCF will create and use repositories
+  /// named `gcf-artifacts` in every region in which a function is deployed. But
+  /// the repository to use can also be specified by the user using the
+  /// `docker_repository` field.
+  core.String? dockerRegistry;
+
   /// User managed repository created in Artifact Registry optionally with a
   /// customer managed encryption key.
   ///
@@ -956,8 +968,6 @@ class BuildConfig {
   /// `projects/{project}/locations/{location}/repositories/{repository}`.
   /// Cross-project repositories are not supported. Cross-location repositories
   /// are not supported. Repository format must be 'DOCKER'.
-  ///
-  /// Optional.
   core.String? dockerRepository;
 
   /// The name of the function (as defined in source code) that will be
@@ -988,6 +998,12 @@ class BuildConfig {
   /// Output only.
   SourceProvenance? sourceProvenance;
 
+  /// An identifier for Firebase function sources.
+  ///
+  /// Disclaimer: This field is only supported for Firebase function
+  /// deployments.
+  core.String? sourceToken;
+
   /// Name of the Cloud Build Custom Worker Pool that should be used to build
   /// the function.
   ///
@@ -1004,12 +1020,14 @@ class BuildConfig {
 
   BuildConfig({
     this.build,
+    this.dockerRegistry,
     this.dockerRepository,
     this.entryPoint,
     this.environmentVariables,
     this.runtime,
     this.source,
     this.sourceProvenance,
+    this.sourceToken,
     this.workerPool,
   });
 
@@ -1017,6 +1035,9 @@ class BuildConfig {
       : this(
           build:
               json_.containsKey('build') ? json_['build'] as core.String : null,
+          dockerRegistry: json_.containsKey('dockerRegistry')
+              ? json_['dockerRegistry'] as core.String
+              : null,
           dockerRepository: json_.containsKey('dockerRepository')
               ? json_['dockerRepository'] as core.String
               : null,
@@ -1027,9 +1048,9 @@ class BuildConfig {
               ? (json_['environmentVariables']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -1044,6 +1065,9 @@ class BuildConfig {
               ? SourceProvenance.fromJson(json_['sourceProvenance']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          sourceToken: json_.containsKey('sourceToken')
+              ? json_['sourceToken'] as core.String
+              : null,
           workerPool: json_.containsKey('workerPool')
               ? json_['workerPool'] as core.String
               : null,
@@ -1051,6 +1075,7 @@ class BuildConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (build != null) 'build': build!,
+        if (dockerRegistry != null) 'dockerRegistry': dockerRegistry!,
         if (dockerRepository != null) 'dockerRepository': dockerRepository!,
         if (entryPoint != null) 'entryPoint': entryPoint!,
         if (environmentVariables != null)
@@ -1058,6 +1083,7 @@ class BuildConfig {
         if (runtime != null) 'runtime': runtime!,
         if (source != null) 'source': source!,
         if (sourceProvenance != null) 'sourceProvenance': sourceProvenance!,
+        if (sourceToken != null) 'sourceToken': sourceToken!,
         if (workerPool != null) 'workerPool': workerPool!,
       };
 }
@@ -1262,7 +1288,7 @@ class Function_ {
   /// User-provided description of a function.
   core.String? description;
 
-  /// Describe whether the function is gen1 or gen2.
+  /// Describe whether the function is 1st Gen or 2nd Gen.
   /// Possible string values are:
   /// - "ENVIRONMENT_UNSPECIFIED" : Unspecified
   /// - "GEN_1" : Gen 1
@@ -1273,6 +1299,13 @@ class Function_ {
   /// response to a condition in another service.
   EventTrigger? eventTrigger;
 
+  /// \[Preview\] Resource name of a KMS crypto key (managed by the user) used
+  /// to encrypt/decrypt function resources.
+  ///
+  /// It must match the pattern
+  /// `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+  core.String? kmsKeyName;
+
   /// Labels associated with this Cloud Function.
   core.Map<core.String, core.String>? labels;
 
@@ -1281,6 +1314,11 @@ class Function_ {
   /// Function names must be unique globally and match pattern `projects / *
   /// /locations / * /functions / * `
   core.String? name;
+
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzs;
 
   /// Describes the Service being deployed.
   ///
@@ -1311,17 +1349,25 @@ class Function_ {
   /// Output only.
   core.String? updateTime;
 
+  /// The deployed url for the function.
+  ///
+  /// Output only.
+  core.String? url;
+
   Function_({
     this.buildConfig,
     this.description,
     this.environment,
     this.eventTrigger,
+    this.kmsKeyName,
     this.labels,
     this.name,
+    this.satisfiesPzs,
     this.serviceConfig,
     this.state,
     this.stateMessages,
     this.updateTime,
+    this.url,
   });
 
   Function_.fromJson(core.Map json_)
@@ -1340,15 +1386,21 @@ class Function_ {
               ? EventTrigger.fromJson(
                   json_['eventTrigger'] as core.Map<core.String, core.dynamic>)
               : null,
+          kmsKeyName: json_.containsKey('kmsKeyName')
+              ? json_['kmsKeyName'] as core.String
+              : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          satisfiesPzs: json_.containsKey('satisfiesPzs')
+              ? json_['satisfiesPzs'] as core.bool
+              : null,
           serviceConfig: json_.containsKey('serviceConfig')
               ? ServiceConfig.fromJson(
                   json_['serviceConfig'] as core.Map<core.String, core.dynamic>)
@@ -1364,6 +1416,7 @@ class Function_ {
           updateTime: json_.containsKey('updateTime')
               ? json_['updateTime'] as core.String
               : null,
+          url: json_.containsKey('url') ? json_['url'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1371,12 +1424,15 @@ class Function_ {
         if (description != null) 'description': description!,
         if (environment != null) 'environment': environment!,
         if (eventTrigger != null) 'eventTrigger': eventTrigger!,
+        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (serviceConfig != null) 'serviceConfig': serviceConfig!,
         if (state != null) 'state': state!,
         if (stateMessages != null) 'stateMessages': stateMessages!,
         if (updateTime != null) 'updateTime': updateTime!,
+        if (url != null) 'url': url!,
       };
 }
 
@@ -1387,7 +1443,38 @@ typedef GenerateDownloadUrlRequest = $Empty;
 typedef GenerateDownloadUrlResponse = $GenerateDownloadUrlResponse;
 
 /// Request of `GenerateSourceUploadUrl` method.
-typedef GenerateUploadUrlRequest = $Empty;
+class GenerateUploadUrlRequest {
+  /// \[Preview\] Resource name of a KMS crypto key (managed by the user) used
+  /// to encrypt/decrypt function source code objects in intermediate Cloud
+  /// Storage buckets.
+  ///
+  /// When you generate an upload url and upload your source code, it gets
+  /// copied to an intermediate Cloud Storage bucket. The source code is then
+  /// copied to a versioned directory in the sources bucket in the consumer
+  /// project during the function deployment. It must match the pattern
+  /// `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+  /// The Google Cloud Functions service account
+  /// (service-{project_number}@gcf-admin-robot.iam.gserviceaccount.com) must be
+  /// granted the role 'Cloud KMS CryptoKey Encrypter/Decrypter
+  /// (roles/cloudkms.cryptoKeyEncrypterDecrypter)' on the
+  /// Key/KeyRing/Project/Organization (least access preferred).
+  core.String? kmsKeyName;
+
+  GenerateUploadUrlRequest({
+    this.kmsKeyName,
+  });
+
+  GenerateUploadUrlRequest.fromJson(core.Map json_)
+      : this(
+          kmsKeyName: json_.containsKey('kmsKeyName')
+              ? json_['kmsKeyName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
+      };
+}
 
 /// Response of `GenerateSourceUploadUrl` method.
 class GenerateUploadUrlResponse {
@@ -1601,7 +1688,7 @@ class ListRuntimesResponse {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
+/// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
 /// This resource represents a long-running operation that is the result of a
@@ -1819,10 +1906,6 @@ class RepoSource {
   /// helloworld (no leading slash allowed)
   core.String? dir;
 
-  /// Only trigger a build if the revision regex does NOT match the revision
-  /// regex.
-  core.bool? invertRegex;
-
   /// ID of the project that owns the Cloud Source Repository.
   ///
   /// If omitted, the project ID requesting the build is assumed.
@@ -1841,7 +1924,6 @@ class RepoSource {
     this.branchName,
     this.commitSha,
     this.dir,
-    this.invertRegex,
     this.projectId,
     this.repoName,
     this.tagName,
@@ -1856,9 +1938,6 @@ class RepoSource {
               ? json_['commitSha'] as core.String
               : null,
           dir: json_.containsKey('dir') ? json_['dir'] as core.String : null,
-          invertRegex: json_.containsKey('invertRegex')
-              ? json_['invertRegex'] as core.bool
-              : null,
           projectId: json_.containsKey('projectId')
               ? json_['projectId'] as core.String
               : null,
@@ -1874,7 +1953,6 @@ class RepoSource {
         if (branchName != null) 'branchName': branchName!,
         if (commitSha != null) 'commitSha': commitSha!,
         if (dir != null) 'dir': dir!,
-        if (invertRegex != null) 'invertRegex': invertRegex!,
         if (projectId != null) 'projectId': projectId!,
         if (repoName != null) 'repoName': repoName!,
         if (tagName != null) 'tagName': tagName!,
@@ -2111,6 +2189,14 @@ class ServiceConfig {
   /// serving 100% of traffic.
   core.bool? allTrafficOnLatestRevision;
 
+  /// \[Preview\] The number of CPUs used in a single container instance.
+  ///
+  /// Default value is calculated from available memory. Supports the same
+  /// values as Cloud Run, see
+  /// https://cloud.google.com/run/docs/reference/rest/v1/Container#resourcerequirements
+  /// Example: "1" indicates 1 vCPU
+  core.String? availableCpu;
+
   /// The amount of memory available for a function.
   ///
   /// Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no unit is
@@ -2145,6 +2231,12 @@ class ServiceConfig {
   /// Guide for more details.
   core.int? maxInstanceCount;
 
+  /// \[Preview\] Sets the maximum number of concurrent requests that each
+  /// instance can receive.
+  ///
+  /// Defaults to 1.
+  core.int? maxInstanceRequestConcurrency;
+
   /// The limit on the minimum number of function instances that may coexist at
   /// a given time.
   ///
@@ -2166,6 +2258,21 @@ class ServiceConfig {
 
   /// Secret volumes configuration.
   core.List<SecretVolume>? secretVolumes;
+
+  /// Security level configure whether the function only accepts https.
+  ///
+  /// This configuration is only applicable to 1st Gen functions with Http
+  /// trigger. By default https is optional for 1st Gen functions; 2nd Gen
+  /// functions are https ONLY.
+  /// Possible string values are:
+  /// - "SECURITY_LEVEL_UNSPECIFIED" : Unspecified.
+  /// - "SECURE_ALWAYS" : Requests for a URL that match this handler that do not
+  /// use HTTPS are automatically redirected to the HTTPS URL with the same
+  /// path. Query parameters are reserved for the redirect.
+  /// - "SECURE_OPTIONAL" : Both HTTP and HTTPS requests with URLs that match
+  /// the handler succeed without redirects. The application can examine the
+  /// request to determine which protocol was used and respond accordingly.
+  core.String? securityLevel;
 
   /// Name of the service associated with a Function.
   ///
@@ -2211,14 +2318,17 @@ class ServiceConfig {
 
   ServiceConfig({
     this.allTrafficOnLatestRevision,
+    this.availableCpu,
     this.availableMemory,
     this.environmentVariables,
     this.ingressSettings,
     this.maxInstanceCount,
+    this.maxInstanceRequestConcurrency,
     this.minInstanceCount,
     this.revision,
     this.secretEnvironmentVariables,
     this.secretVolumes,
+    this.securityLevel,
     this.service,
     this.serviceAccountEmail,
     this.timeoutSeconds,
@@ -2233,6 +2343,9 @@ class ServiceConfig {
               json_.containsKey('allTrafficOnLatestRevision')
                   ? json_['allTrafficOnLatestRevision'] as core.bool
                   : null,
+          availableCpu: json_.containsKey('availableCpu')
+              ? json_['availableCpu'] as core.String
+              : null,
           availableMemory: json_.containsKey('availableMemory')
               ? json_['availableMemory'] as core.String
               : null,
@@ -2240,9 +2353,9 @@ class ServiceConfig {
               ? (json_['environmentVariables']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -2252,6 +2365,10 @@ class ServiceConfig {
           maxInstanceCount: json_.containsKey('maxInstanceCount')
               ? json_['maxInstanceCount'] as core.int
               : null,
+          maxInstanceRequestConcurrency:
+              json_.containsKey('maxInstanceRequestConcurrency')
+                  ? json_['maxInstanceRequestConcurrency'] as core.int
+                  : null,
           minInstanceCount: json_.containsKey('minInstanceCount')
               ? json_['minInstanceCount'] as core.int
               : null,
@@ -2270,6 +2387,9 @@ class ServiceConfig {
                   .map((value) => SecretVolume.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
+              : null,
+          securityLevel: json_.containsKey('securityLevel')
+              ? json_['securityLevel'] as core.String
               : null,
           service: json_.containsKey('service')
               ? json_['service'] as core.String
@@ -2293,16 +2413,20 @@ class ServiceConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (allTrafficOnLatestRevision != null)
           'allTrafficOnLatestRevision': allTrafficOnLatestRevision!,
+        if (availableCpu != null) 'availableCpu': availableCpu!,
         if (availableMemory != null) 'availableMemory': availableMemory!,
         if (environmentVariables != null)
           'environmentVariables': environmentVariables!,
         if (ingressSettings != null) 'ingressSettings': ingressSettings!,
         if (maxInstanceCount != null) 'maxInstanceCount': maxInstanceCount!,
+        if (maxInstanceRequestConcurrency != null)
+          'maxInstanceRequestConcurrency': maxInstanceRequestConcurrency!,
         if (minInstanceCount != null) 'minInstanceCount': minInstanceCount!,
         if (revision != null) 'revision': revision!,
         if (secretEnvironmentVariables != null)
           'secretEnvironmentVariables': secretEnvironmentVariables!,
         if (secretVolumes != null) 'secretVolumes': secretVolumes!,
+        if (securityLevel != null) 'securityLevel': securityLevel!,
         if (service != null) 'service': service!,
         if (serviceAccountEmail != null)
           'serviceAccountEmail': serviceAccountEmail!,
@@ -2353,6 +2477,12 @@ class SetIamPolicyRequest {
 
 /// The location of the function source code.
 class Source {
+  /// If provided, get the source from GitHub repository.
+  ///
+  /// This option is valid only for GCF 1st Gen function. Example:
+  /// https://github.com///blob//
+  core.String? gitUri;
+
   /// If provided, get the source from this location in a Cloud Source
   /// Repository.
   RepoSource? repoSource;
@@ -2361,12 +2491,16 @@ class Source {
   StorageSource? storageSource;
 
   Source({
+    this.gitUri,
     this.repoSource,
     this.storageSource,
   });
 
   Source.fromJson(core.Map json_)
       : this(
+          gitUri: json_.containsKey('gitUri')
+              ? json_['gitUri'] as core.String
+              : null,
           repoSource: json_.containsKey('repoSource')
               ? RepoSource.fromJson(
                   json_['repoSource'] as core.Map<core.String, core.dynamic>)
@@ -2378,6 +2512,7 @@ class Source {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (gitUri != null) 'gitUri': gitUri!,
         if (repoSource != null) 'repoSource': repoSource!,
         if (storageSource != null) 'storageSource': storageSource!,
       };
@@ -2388,6 +2523,10 @@ class Source {
 /// Ways to find the original source, or verify that some source was used for
 /// this build.
 class SourceProvenance {
+  /// A copy of the build's `source.git_uri`, if exists, with any commits
+  /// resolved.
+  core.String? gitUri;
+
   /// A copy of the build's `source.repo_source`, if exists, with any revisions
   /// resolved.
   RepoSource? resolvedRepoSource;
@@ -2397,12 +2536,16 @@ class SourceProvenance {
   StorageSource? resolvedStorageSource;
 
   SourceProvenance({
+    this.gitUri,
     this.resolvedRepoSource,
     this.resolvedStorageSource,
   });
 
   SourceProvenance.fromJson(core.Map json_)
       : this(
+          gitUri: json_.containsKey('gitUri')
+              ? json_['gitUri'] as core.String
+              : null,
           resolvedRepoSource: json_.containsKey('resolvedRepoSource')
               ? RepoSource.fromJson(json_['resolvedRepoSource']
                   as core.Map<core.String, core.dynamic>)
@@ -2414,6 +2557,7 @@ class SourceProvenance {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (gitUri != null) 'gitUri': gitUri!,
         if (resolvedRepoSource != null)
           'resolvedRepoSource': resolvedRepoSource!,
         if (resolvedStorageSource != null)

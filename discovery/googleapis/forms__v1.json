@@ -39,6 +39,13 @@
     "name": "forms",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230727",
+    "rootUrl": "https://forms.googleapis.com/",
+    "servicePath": "",
+    "title": "Google Forms API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -116,7 +123,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "forms": {
             "methods": {
@@ -421,8 +427,6 @@
             }
         }
     },
-    "revision": "20220908",
-    "rootUrl": "https://forms.googleapis.com/",
     "schemas": {
         "Answer": {
             "description": "The submitted answer for a question.",
@@ -1610,9 +1614,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Google Forms API",
-    "version": "v1",
-    "version_module": true
+    }
 }

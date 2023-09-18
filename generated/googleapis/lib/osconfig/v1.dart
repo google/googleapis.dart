@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// OS Config API - v1
@@ -34,7 +33,7 @@
 ///   - [ProjectsPatchDeploymentsResource]
 ///   - [ProjectsPatchJobsResource]
 ///     - [ProjectsPatchJobsInstanceDetailsResource]
-library osconfig.v1;
+library osconfig_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -43,7 +42,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -252,7 +250,7 @@ class ProjectsLocationsInstancesOsPolicyAssignmentsReportsResource {
       commons.ApiRequester client)
       : _requester = client;
 
-  /// Get the OS policy asssignment report for the specified Compute Engine VM
+  /// Get the OS policy assignment report for the specified Compute Engine VM
   /// instance.
   ///
   /// Request parameters:
@@ -296,7 +294,7 @@ class ProjectsLocationsInstancesOsPolicyAssignmentsReportsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// List OS policy asssignment reports for all Compute Engine VM instances in
+  /// List OS policy assignment reports for all Compute Engine VM instances in
   /// the specified zone.
   ///
   /// Request parameters:
@@ -505,7 +503,8 @@ class ProjectsLocationsOsPolicyAssignmentsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource name in the form:
-  /// projects/{project}/locations/{location}
+  /// projects/{project}/locations/{location}. Note: Specify the zone of your
+  /// VMs as the location.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [osPolicyAssignmentId] - Required. The logical name of the OS policy
@@ -2006,10 +2005,10 @@ class Inventory {
       : this(
           items: json_.containsKey('items')
               ? (json_['items'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     InventoryItem.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -2740,6 +2739,9 @@ class OSPolicy {
   /// Length of the description is limited to 1024 characters.
   core.String? description;
 
+  /// OSPolicy fingerprint (checksum)
+  core.String? fingerprint;
+
   /// The id of the OS policy with the following restrictions: * Must contain
   /// only lowercase letters, numbers, and hyphens.
   ///
@@ -2775,6 +2777,7 @@ class OSPolicy {
   OSPolicy({
     this.allowNoResourceGroupMatch,
     this.description,
+    this.fingerprint,
     this.id,
     this.mode,
     this.resourceGroups,
@@ -2788,6 +2791,9 @@ class OSPolicy {
                   : null,
           description: json_.containsKey('description')
               ? json_['description'] as core.String
+              : null,
+          fingerprint: json_.containsKey('fingerprint')
+              ? json_['fingerprint'] as core.String
               : null,
           id: json_.containsKey('id') ? json_['id'] as core.String : null,
           mode: json_.containsKey('mode') ? json_['mode'] as core.String : null,
@@ -2803,6 +2809,7 @@ class OSPolicy {
         if (allowNoResourceGroupMatch != null)
           'allowNoResourceGroupMatch': allowNoResourceGroupMatch!,
         if (description != null) 'description': description!,
+        if (fingerprint != null) 'fingerprint': fingerprint!,
         if (id != null) 'id': id!,
         if (mode != null) 'mode': mode!,
         if (resourceGroups != null) 'resourceGroups': resourceGroups!,
@@ -2815,7 +2822,8 @@ class OSPolicy {
 /// An OS policy is used to define the desired state configuration for a Compute
 /// Engine VM instance through a set of configuration resources that provide
 /// capabilities such as installing or removing software packages, or executing
-/// a script. For more information, see
+/// a script. For more information about the OS policy resource definitions and
+/// examples, see
 /// [OS policy and OS policy assignment](https://cloud.google.com/compute/docs/os-configuration-management/working-with-os-policies).
 class OSPolicyAssignment {
   /// Indicates that this revision has been successfully rolled out in this zone
@@ -3049,7 +3057,7 @@ class OSPolicyAssignmentInstanceFilter {
 }
 
 /// VM inventory details.
-typedef OSPolicyAssignmentInstanceFilterInventory = $Shared05;
+typedef OSPolicyAssignmentInstanceFilterInventory = $Shared06;
 
 /// Message representing label set.
 ///
@@ -3073,9 +3081,9 @@ class OSPolicyAssignmentLabelSet {
       : this(
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -3445,7 +3453,7 @@ class OSPolicyAssignmentRollout {
 }
 
 /// Filtering criteria to select VMs based on inventory details.
-typedef OSPolicyInventoryFilter = $Shared05;
+typedef OSPolicyInventoryFilter = $Shared06;
 
 /// An OS policy resource is used to define the desired state configuration and
 /// provides a specific functionality like installing/removing packages,
@@ -3604,7 +3612,7 @@ class OSPolicyResourceExecResourceExec {
 
   /// An inline script.
   ///
-  /// The size of the script is limited to 1024 characters.
+  /// The size of the script is limited to 32KiB.
   core.String? script;
 
   OSPolicyResourceExecResourceExec({
@@ -3774,7 +3782,7 @@ class OSPolicyResourceFileRemote {
 class OSPolicyResourceFileResource {
   /// A a file with this content.
   ///
-  /// The size of the content is limited to 1024 characters.
+  /// The size of the content is limited to 32KiB.
   core.String? content;
 
   /// A remote or local source.
@@ -4440,7 +4448,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -4862,9 +4870,9 @@ class PatchInstanceFilterGroupLabel {
       : this(
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -4879,7 +4887,7 @@ class PatchInstanceFilterGroupLabel {
 /// completed.
 ///
 /// Instance details are not included in the job. To paginate through instance
-/// details, use ListPatchJobInstanceDetails. For more information about patch
+/// details, use `ListPatchJobInstanceDetails`. For more information about patch
 /// jobs, see
 /// [Creating patch jobs](https://cloud.google.com/compute/docs/os-patch-management/create-patch-job).
 class PatchJob {
@@ -5543,6 +5551,9 @@ class VulnerabilityReportVulnerability {
   /// these values might not display in VM inventory. If there is no available
   /// fix, the field is empty. The `inventory_item` value specifies the latest
   /// `SoftwarePackage` available to the VM that fixes the vulnerability.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<core.String>? availableInventoryItemIds;
 
   /// The timestamp for when the vulnerability was first detected.
@@ -5558,6 +5569,9 @@ class VulnerabilityReportVulnerability {
   /// the vulnerability report was not updated after the VM inventory update,
   /// these values might not display in VM inventory. For some distros, this
   /// field may be empty.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<core.String>? installedInventoryItemIds;
 
   /// List of items affected by the vulnerability.

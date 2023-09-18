@@ -24,6 +24,13 @@
     "name": "apigeeregistry",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230127",
+    "rootUrl": "https://apigeeregistry.googleapis.com/",
+    "servicePath": "",
+    "title": "Apigee Registry API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "projects": {
             "resources": {
@@ -913,6 +919,11 @@
                                                 "name"
                                             ],
                                             "parameters": {
+                                                "filter": {
+                                                    "description": "An expression that can be used to filter the list. Filters use the Common Expression Language and can refer to all message fields.",
+                                                    "location": "query",
+                                                    "type": "string"
+                                                },
                                                 "name": {
                                                     "description": "Required. The name of the deployment to list revisions for.",
                                                     "location": "path",
@@ -2044,6 +2055,11 @@
                                                         "name"
                                                     ],
                                                     "parameters": {
+                                                        "filter": {
+                                                            "description": "An expression that can be used to filter the list. Filters use the Common Expression Language and can refer to all message fields.",
+                                                            "location": "query",
+                                                            "type": "string"
+                                                        },
                                                         "name": {
                                                             "description": "Required. The name of the spec to list revisions for.",
                                                             "location": "path",
@@ -3169,8 +3185,6 @@
             }
         }
     },
-    "revision": "20220831",
-    "rootUrl": "https://apigeeregistry.googleapis.com/",
     "schemas": {
         "Api": {
             "description": "A top-level description of an API. Produced by producers and are commitments to provide services.",
@@ -3213,11 +3227,11 @@
                     "type": "string"
                 },
                 "recommendedDeployment": {
-                    "description": "The recommended deployment of the API. Format: `apis/{api}/deployments/{deployment}`",
+                    "description": "The recommended deployment of the API. Format: `projects/{project}/locations/{location}/apis/{api}/deployments/{deployment}`",
                     "type": "string"
                 },
                 "recommendedVersion": {
-                    "description": "The recommended version of the API. Format: `apis/{api}/versions/{version}`",
+                    "description": "The recommended version of the API. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}`",
                     "type": "string"
                 },
                 "updateTime": {
@@ -3245,7 +3259,7 @@
                     "type": "object"
                 },
                 "apiSpecRevision": {
-                    "description": "The full resource name (including revision ID) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: `apis/{api}/deployments/{deployment}`",
+                    "description": "The full resource name (including revision ID) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec@revision}`",
                     "type": "string"
                 },
                 "createTime": {
@@ -3421,6 +3435,10 @@
                     "description": "Resource name.",
                     "type": "string"
                 },
+                "primarySpec": {
+                    "description": "The primary spec for this version. Format: projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec}",
+                    "type": "string"
+                },
                 "state": {
                     "description": "A user-definable description of the lifecycle phase of this API version. Format: free-form, but we expect single words that describe API maturity, e.g., \"CONCEPT\", \"DESIGN\", \"DEVELOPMENT\", \"STAGING\", \"PRODUCTION\", \"DEPRECATED\", \"RETIRED\".",
                     "type": "string"
@@ -3438,6 +3456,13 @@
             "description": "Artifacts of resources. Artifacts are unique (single-value) per resource and are used to store metadata that is too large or numerous to be stored directly on the resource. Since artifacts are stored separately from parent resources, they should generally be used for metadata that is needed infrequently, i.e., not for display in primary views of the resource but perhaps displayed or downloaded upon request. The `ListArtifacts` method allows artifacts to be quickly enumerated and checked for presence without downloading their (potentially-large) contents.",
             "id": "Artifact",
             "properties": {
+                "annotations": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Annotations attach non-identifying metadata to resources. Annotation keys and values are less restricted than those of labels, but should be generally used for small values of broad interest. Larger, topic- specific metadata should be stored in Artifacts.",
+                    "type": "object"
+                },
                 "contents": {
                     "description": "Input only. The contents of the artifact. Provided by API callers when artifacts are created or replaced. To access the contents of an artifact, use GetArtifactContents.",
                     "format": "byte",
@@ -3453,6 +3478,13 @@
                     "description": "Output only. A SHA-256 hash of the artifact's contents. If the artifact is gzipped, this is the hash of the uncompressed artifact.",
                     "readOnly": true,
                     "type": "string"
+                },
+                "labels": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with \"registry.googleapis.com/\" and cannot be changed.",
+                    "type": "object"
                 },
                 "mimeType": {
                     "description": "A content type specifier for the artifact. Content type specifiers are Media Types (https://en.wikipedia.org/wiki/Media_type) with a possible \"schema\" parameter that specifies a schema for the stored information. Content types can specify compression. Currently only GZip compression is supported (indicated with \"+gzip\").",
@@ -3486,7 +3518,7 @@
                     "description": "The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies)."
                 },
                 "members": {
-                    "description": "Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. ",
+                    "description": "Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.",
                     "items": {
                         "type": "string"
                     },
@@ -3494,6 +3526,29 @@
                 },
                 "role": {
                     "description": "Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Build": {
+            "description": "Build information of the Instance if it's in `ACTIVE` state.",
+            "id": "Build",
+            "properties": {
+                "commitId": {
+                    "description": "Output only. Commit ID of the latest commit in the build.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "commitTime": {
+                    "description": "Output only. Commit time of the latest commit in the build.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "repo": {
+                    "description": "Output only. Path of the open source repository: github.com/apigee/registry.",
+                    "readOnly": true,
                     "type": "string"
                 }
             },
@@ -3581,6 +3636,11 @@
             "description": "An Instance represents the instance resources of the Registry. Currently, only one instance is allowed for each project.",
             "id": "Instance",
             "properties": {
+                "build": {
+                    "$ref": "Build",
+                    "description": "Output only. Build info of the Instance if it's in `ACTIVE` state.",
+                    "readOnly": true
+                },
                 "config": {
                     "$ref": "Config",
                     "description": "Required. Config of the Instance."
@@ -4034,9 +4094,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Apigee Registry API",
-    "version": "v1",
-    "version_module": true
+    }
 }

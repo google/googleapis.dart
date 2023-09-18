@@ -14,6 +14,13 @@
     "name": "kgsearch",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230729",
+    "rootUrl": "https://kgsearch.googleapis.com/",
+    "servicePath": "",
+    "title": "Knowledge Graph Search API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -91,7 +98,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "entities": {
             "methods": {
@@ -150,8 +156,6 @@
             }
         }
     },
-    "revision": "20220910",
-    "rootUrl": "https://kgsearch.googleapis.com/",
     "schemas": {
         "SearchResponse": {
             "description": "Response message includes the context and a list of matching results which contain the detail of associated entities.",
@@ -175,9 +179,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Knowledge Graph Search API",
-    "version": "v1",
-    "version_module": true
+    }
 }

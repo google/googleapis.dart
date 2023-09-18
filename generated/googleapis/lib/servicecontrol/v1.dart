@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Service Control API - v1
@@ -22,7 +21,7 @@
 /// Create an instance of [ServiceControlApi] to access these resources:
 ///
 /// - [ServicesResource]
-library servicecontrol.v1;
+library servicecontrol_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -31,7 +30,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -427,10 +425,10 @@ class Attributes {
           attributeMap: json_.containsKey('attributeMap')
               ? (json_['attributeMap'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     AttributeValue.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -517,6 +515,13 @@ class CheckError {
   /// should not be used to reject client requests.
   /// - "LOCATION_POLICY_BACKEND_UNAVAILABLE" : Backend server for evaluating
   /// location policy is unavailable.
+  /// - "INJECTED_ERROR" : Part of the project of fault injection:
+  /// go/chemist-slo-validation. To distinguish between artificially injected
+  /// errors and organic ones, this value will be exported for the
+  /// per_service_check_error_count streamz.
+  /// http://google3/apiserving/servicecontrol/server/controller_service.cc;l=196
+  /// Rpcinjectz2 works by injecting errors early in the rpc life cycle, before
+  /// any of the chemist business logic runs.
   core.String? code;
 
   /// Free-form text providing details on the error cause of the error.
@@ -1368,9 +1373,9 @@ class LogEntry {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -1600,9 +1605,9 @@ class MetricValue {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -1700,6 +1705,7 @@ class Operation {
   /// additional validation logic. It should only be used during the onboarding
   /// process. It is only available to Google internal services, and the service
   /// must be approved by chemist-dev@google.com in order to use this level.
+  /// - "PROMOTED" : Used internally by Chemist.
   core.String? importance;
 
   /// Labels describing the operation.
@@ -1806,9 +1812,9 @@ class Operation {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -1852,9 +1858,9 @@ class Operation {
           userLabels: json_.containsKey('userLabels')
               ? (json_['userLabels'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -1961,6 +1967,9 @@ class QuotaInfo {
   /// For QuotaGroup-based quota, this is QuotaGroup.name For QuotaLimit-based
   /// quota, this is QuotaLimit.name See: google.api.Quota Deprecated: Use
   /// quota_metrics to get per quota group limit exceeded status.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<core.String>? limitExceeded;
 
   /// Map of quota group name to the actual number of tokens consumed.
@@ -2003,9 +2012,9 @@ class QuotaInfo {
           quotaConsumed: json_.containsKey('quotaConsumed')
               ? (json_['quotaConsumed'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.int,
+                    value as core.int,
                   ),
                 )
               : null,
@@ -2111,9 +2120,9 @@ class QuotaOperation {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -2156,8 +2165,6 @@ class QuotaProperties {
   /// not fail and available quota goes down to zero but it returns error.
   /// - "CHECK" : Does not change any available quota. Only checks if there is
   /// enough quota. No lock is placed on the checked tokens neither.
-  /// - "RELEASE" : DEPRECATED: Increases available quota by the operation cost
-  /// specified for the operation.
   core.String? quotaMode;
 
   QuotaProperties({
@@ -2303,6 +2310,9 @@ class ReportResponse {
 
 /// Describes a resource associated with this operation.
 class ResourceInfo {
+  /// The resource permission required for this request.
+  core.String? permission;
+
   /// The identifier of the parent of this resource instance.
   ///
   /// Must be in one of the following formats: - `projects/` - `folders/` -
@@ -2322,6 +2332,7 @@ class ResourceInfo {
   core.String? resourceName;
 
   ResourceInfo({
+    this.permission,
     this.resourceContainer,
     this.resourceLocation,
     this.resourceName,
@@ -2329,6 +2340,9 @@ class ResourceInfo {
 
   ResourceInfo.fromJson(core.Map json_)
       : this(
+          permission: json_.containsKey('permission')
+              ? json_['permission'] as core.String
+              : null,
           resourceContainer: json_.containsKey('resourceContainer')
               ? json_['resourceContainer'] as core.String
               : null,
@@ -2341,6 +2355,7 @@ class ResourceInfo {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (permission != null) 'permission': permission!,
         if (resourceContainer != null) 'resourceContainer': resourceContainer!,
         if (resourceLocation != null) 'resourceLocation': resourceLocation!,
         if (resourceName != null) 'resourceName': resourceName!,

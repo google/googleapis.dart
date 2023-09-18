@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Calendar API - v3
@@ -29,7 +28,7 @@
 /// - [EventsResource]
 /// - [FreebusyResource]
 /// - [SettingsResource]
-library calendar.v3;
+library calendar_v3;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -38,8 +37,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
-import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -1552,6 +1549,21 @@ class EventsResource {
   /// if no real email address is available (i.e. a generated, non-working value
   /// will be provided).
   ///
+  /// [eventTypes] - Event types to return. Optional. Possible values are:
+  /// - "default"
+  /// - "focusTime"
+  /// - "outOfOffice"This parameter can be repeated multiple times to return
+  /// events of different types. Currently, this is the only allowed value for
+  /// this field:
+  /// - \["default", "focusTime", "outOfOffice"\] This value is the default.
+  ///
+  /// If you're enrolled in the Working Location developer preview program, in
+  /// addition to the default value above you can also set the "workingLocation"
+  /// event type:
+  /// - \["default", "focusTime", "outOfOffice", "workingLocation"\]
+  /// - \["workingLocation"\] Additional combinations of these four event types
+  /// will be made available in later releases. Developer Preview.
+  ///
   /// [iCalUID] - Specifies an event ID in the iCalendar format to be provided
   /// in the response. Optional. Use this if you want to search for an event by
   /// its iCalendar ID.
@@ -1622,9 +1634,11 @@ class EventsResource {
   /// - sharedExtendedProperty
   /// - timeMin
   /// - timeMax
-  /// - updatedMin If the syncToken expires, the server will respond with a 410
-  /// GONE response code and the client should clear its storage and perform a
-  /// full synchronization without any syncToken.
+  /// - updatedMin All other query parameters should be the same as for the
+  /// initial synchronization to avoid undefined behavior. If the syncToken
+  /// expires, the server will respond with a 410 GONE response code and the
+  /// client should clear its storage and perform a full synchronization without
+  /// any syncToken.
   /// Learn more about incremental synchronization.
   /// Optional. The default is to return all entries.
   ///
@@ -1663,6 +1677,7 @@ class EventsResource {
   async.Future<Events> list(
     core.String calendarId, {
     core.bool? alwaysIncludeEmail,
+    core.List<core.String>? eventTypes,
     core.String? iCalUID,
     core.int? maxAttendees,
     core.int? maxResults,
@@ -1684,6 +1699,7 @@ class EventsResource {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (alwaysIncludeEmail != null)
         'alwaysIncludeEmail': ['${alwaysIncludeEmail}'],
+      if (eventTypes != null) 'eventTypes': eventTypes,
       if (iCalUID != null) 'iCalUID': [iCalUID],
       if (maxAttendees != null) 'maxAttendees': ['${maxAttendees}'],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
@@ -2058,6 +2074,21 @@ class EventsResource {
   /// if no real email address is available (i.e. a generated, non-working value
   /// will be provided).
   ///
+  /// [eventTypes] - Event types to return. Optional. Possible values are:
+  /// - "default"
+  /// - "focusTime"
+  /// - "outOfOffice"This parameter can be repeated multiple times to return
+  /// events of different types. Currently, this is the only allowed value for
+  /// this field:
+  /// - \["default", "focusTime", "outOfOffice"\] This value is the default.
+  ///
+  /// If you're enrolled in the Working Location developer preview program, in
+  /// addition to the default value above you can also set the "workingLocation"
+  /// event type:
+  /// - \["default", "focusTime", "outOfOffice", "workingLocation"\]
+  /// - \["workingLocation"\] Additional combinations of these four event types
+  /// will be made available in later releases. Developer Preview.
+  ///
   /// [iCalUID] - Specifies an event ID in the iCalendar format to be provided
   /// in the response. Optional. Use this if you want to search for an event by
   /// its iCalendar ID.
@@ -2128,9 +2159,11 @@ class EventsResource {
   /// - sharedExtendedProperty
   /// - timeMin
   /// - timeMax
-  /// - updatedMin If the syncToken expires, the server will respond with a 410
-  /// GONE response code and the client should clear its storage and perform a
-  /// full synchronization without any syncToken.
+  /// - updatedMin All other query parameters should be the same as for the
+  /// initial synchronization to avoid undefined behavior. If the syncToken
+  /// expires, the server will respond with a 410 GONE response code and the
+  /// client should clear its storage and perform a full synchronization without
+  /// any syncToken.
   /// Learn more about incremental synchronization.
   /// Optional. The default is to return all entries.
   ///
@@ -2170,6 +2203,7 @@ class EventsResource {
     Channel request,
     core.String calendarId, {
     core.bool? alwaysIncludeEmail,
+    core.List<core.String>? eventTypes,
     core.String? iCalUID,
     core.int? maxAttendees,
     core.int? maxResults,
@@ -2192,6 +2226,7 @@ class EventsResource {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (alwaysIncludeEmail != null)
         'alwaysIncludeEmail': ['${alwaysIncludeEmail}'],
+      if (eventTypes != null) 'eventTypes': eventTypes,
       if (iCalUID != null) 'iCalUID': [iCalUID],
       if (maxAttendees != null) 'maxAttendees': ['${maxAttendees}'],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
@@ -2990,7 +3025,111 @@ class CalendarNotification {
       };
 }
 
-typedef Channel = $Channel;
+class Channel {
+  /// The address where notifications are delivered for this channel.
+  core.String? address;
+
+  /// Date and time of notification channel expiration, expressed as a Unix
+  /// timestamp, in milliseconds.
+  ///
+  /// Optional.
+  core.String? expiration;
+
+  /// A UUID or similar unique string that identifies this channel.
+  core.String? id;
+
+  /// Identifies this as a notification channel used to watch for changes to a
+  /// resource, which is "api#channel".
+  core.String? kind;
+
+  /// Additional parameters controlling delivery channel behavior.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? params;
+
+  /// A Boolean value to indicate whether payload is wanted.
+  ///
+  /// Optional.
+  core.bool? payload;
+
+  /// An opaque ID that identifies the resource being watched on this channel.
+  ///
+  /// Stable across different API versions.
+  core.String? resourceId;
+
+  /// A version-specific identifier for the watched resource.
+  core.String? resourceUri;
+
+  /// An arbitrary string delivered to the target address with each notification
+  /// delivered over this channel.
+  ///
+  /// Optional.
+  core.String? token;
+
+  /// The type of delivery mechanism used for this channel.
+  ///
+  /// Valid values are "web_hook" (or "webhook"). Both values refer to a channel
+  /// where Http requests are used to deliver messages.
+  core.String? type;
+
+  Channel({
+    this.address,
+    this.expiration,
+    this.id,
+    this.kind,
+    this.params,
+    this.payload,
+    this.resourceId,
+    this.resourceUri,
+    this.token,
+    this.type,
+  });
+
+  Channel.fromJson(core.Map json_)
+      : this(
+          address: json_.containsKey('address')
+              ? json_['address'] as core.String
+              : null,
+          expiration: json_.containsKey('expiration')
+              ? json_['expiration'] as core.String
+              : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          params: json_.containsKey('params')
+              ? (json_['params'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          payload: json_.containsKey('payload')
+              ? json_['payload'] as core.bool
+              : null,
+          resourceId: json_.containsKey('resourceId')
+              ? json_['resourceId'] as core.String
+              : null,
+          resourceUri: json_.containsKey('resourceUri')
+              ? json_['resourceUri'] as core.String
+              : null,
+          token:
+              json_.containsKey('token') ? json_['token'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (address != null) 'address': address!,
+        if (expiration != null) 'expiration': expiration!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (params != null) 'params': params!,
+        if (payload != null) 'payload': payload!,
+        if (resourceId != null) 'resourceId': resourceId!,
+        if (resourceUri != null) 'resourceUri': resourceUri!,
+        if (token != null) 'token': token!,
+        if (type != null) 'type': type!,
+      };
+}
 
 class ColorDefinition {
   /// The background color associated with this color definition.
@@ -3055,19 +3194,19 @@ class Colors {
       : this(
           calendar: json_.containsKey('calendar')
               ? (json_['calendar'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     ColorDefinition.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
           event: json_.containsKey('event')
               ? (json_['event'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     ColorDefinition.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -3225,9 +3364,9 @@ class ConferenceParametersAddOnParameters {
           parameters: json_.containsKey('parameters')
               ? (json_['parameters'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -3666,17 +3805,17 @@ class EventExtendedProperties {
       : this(
           private: json_.containsKey('private')
               ? (json_['private'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
           shared: json_.containsKey('shared')
               ? (json_['shared'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -3759,9 +3898,9 @@ class EventGadget {
           preferences: json_.containsKey('preferences')
               ? (json_['preferences'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -3977,6 +4116,7 @@ class Event {
   /// - "default" - A regular event or not further specified.
   /// - "outOfOffice" - An out-of-office event.
   /// - "focusTime" - A focus-time event.
+  /// - "workingLocation" - A working location event. Developer Preview.
   core.String? eventType;
 
   /// Extended properties of the event.
@@ -4176,6 +4316,11 @@ class Event {
   /// compatibility reasons.
   core.String? visibility;
 
+  /// Working Location event data.
+  ///
+  /// Developer Preview.
+  EventWorkingLocationProperties? workingLocationProperties;
+
   Event({
     this.anyoneCanAddSelf,
     this.attachments,
@@ -4216,6 +4361,7 @@ class Event {
     this.transparency,
     this.updated,
     this.visibility,
+    this.workingLocationProperties,
   });
 
   Event.fromJson(core.Map json_)
@@ -4348,6 +4494,12 @@ class Event {
           visibility: json_.containsKey('visibility')
               ? json_['visibility'] as core.String
               : null,
+          workingLocationProperties:
+              json_.containsKey('workingLocationProperties')
+                  ? EventWorkingLocationProperties.fromJson(
+                      json_['workingLocationProperties']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4394,6 +4546,8 @@ class Event {
         if (transparency != null) 'transparency': transparency!,
         if (updated != null) 'updated': updated!.toUtc().toIso8601String(),
         if (visibility != null) 'visibility': visibility!,
+        if (workingLocationProperties != null)
+          'workingLocationProperties': workingLocationProperties!,
       };
 }
 
@@ -4656,6 +4810,132 @@ class EventReminder {
   core.Map<core.String, core.dynamic> toJson() => {
         if (method != null) 'method': method!,
         if (minutes != null) 'minutes': minutes!,
+      };
+}
+
+/// If present, specifies that the user is working from a custom location.
+class EventWorkingLocationPropertiesCustomLocation {
+  /// An optional extra label for additional information.
+  core.String? label;
+
+  EventWorkingLocationPropertiesCustomLocation({
+    this.label,
+  });
+
+  EventWorkingLocationPropertiesCustomLocation.fromJson(core.Map json_)
+      : this(
+          label:
+              json_.containsKey('label') ? json_['label'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (label != null) 'label': label!,
+      };
+}
+
+/// If present, specifies that the user is working from an office.
+class EventWorkingLocationPropertiesOfficeLocation {
+  /// An optional building identifier.
+  ///
+  /// This should reference a building ID in the organization's Resources
+  /// database.
+  core.String? buildingId;
+
+  /// An optional arbitrary desk identifier.
+  core.String? deskId;
+
+  /// An optional arbitrary floor identifier.
+  core.String? floorId;
+
+  /// An optional arbitrary floor section identifier.
+  core.String? floorSectionId;
+
+  /// An optional extra label for additional information.
+  core.String? label;
+
+  EventWorkingLocationPropertiesOfficeLocation({
+    this.buildingId,
+    this.deskId,
+    this.floorId,
+    this.floorSectionId,
+    this.label,
+  });
+
+  EventWorkingLocationPropertiesOfficeLocation.fromJson(core.Map json_)
+      : this(
+          buildingId: json_.containsKey('buildingId')
+              ? json_['buildingId'] as core.String
+              : null,
+          deskId: json_.containsKey('deskId')
+              ? json_['deskId'] as core.String
+              : null,
+          floorId: json_.containsKey('floorId')
+              ? json_['floorId'] as core.String
+              : null,
+          floorSectionId: json_.containsKey('floorSectionId')
+              ? json_['floorSectionId'] as core.String
+              : null,
+          label:
+              json_.containsKey('label') ? json_['label'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (buildingId != null) 'buildingId': buildingId!,
+        if (deskId != null) 'deskId': deskId!,
+        if (floorId != null) 'floorId': floorId!,
+        if (floorSectionId != null) 'floorSectionId': floorSectionId!,
+        if (label != null) 'label': label!,
+      };
+}
+
+class EventWorkingLocationProperties {
+  /// If present, specifies that the user is working from a custom location.
+  EventWorkingLocationPropertiesCustomLocation? customLocation;
+
+  /// If present, specifies that the user is working at home.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Object? homeOffice;
+
+  /// If present, specifies that the user is working from an office.
+  EventWorkingLocationPropertiesOfficeLocation? officeLocation;
+
+  /// Indicates what kind of location this is.
+  ///
+  /// Any details are specified in a sub-field of the specified name (but which
+  /// may be missing if empty). Any other fields are ignored.
+  core.String? type;
+
+  EventWorkingLocationProperties({
+    this.customLocation,
+    this.homeOffice,
+    this.officeLocation,
+    this.type,
+  });
+
+  EventWorkingLocationProperties.fromJson(core.Map json_)
+      : this(
+          customLocation: json_.containsKey('customLocation')
+              ? EventWorkingLocationPropertiesCustomLocation.fromJson(
+                  json_['customLocation']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          homeOffice:
+              json_.containsKey('homeOffice') ? json_['homeOffice'] : null,
+          officeLocation: json_.containsKey('officeLocation')
+              ? EventWorkingLocationPropertiesOfficeLocation.fromJson(
+                  json_['officeLocation']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (customLocation != null) 'customLocation': customLocation!,
+        if (homeOffice != null) 'homeOffice': homeOffice!,
+        if (officeLocation != null) 'officeLocation': officeLocation!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -4977,19 +5257,19 @@ class FreeBusyResponse {
       : this(
           calendars: json_.containsKey('calendars')
               ? (json_['calendars'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     FreeBusyCalendar.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
           groups: json_.containsKey('groups')
               ? (json_['groups'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     FreeBusyGroup.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,

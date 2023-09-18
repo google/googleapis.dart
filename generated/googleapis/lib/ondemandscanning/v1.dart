@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// On-Demand Scanning API - v1
@@ -26,7 +25,7 @@
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsScansResource]
 ///       - [ProjectsLocationsScansVulnerabilitiesResource]
-library ondemandscanning.v1;
+library ondemandscanning_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -35,7 +34,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -213,13 +211,6 @@ class ProjectsLocationsOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -444,6 +435,9 @@ class AnalyzePackagesRequestV1 {
   /// renamed.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? includeOsvData;
 
   /// The packages to analyze.
@@ -558,8 +552,113 @@ class AttestationOccurrence {
       };
 }
 
+class BinarySourceInfo {
+  /// The binary package.
+  ///
+  /// This is significant when the source is different than the binary itself.
+  /// Historically if they've differed, we've stored the name of the source and
+  /// its version in the package/version fields, but we should also store the
+  /// binary package info, as that's what's actually installed. See
+  /// b/175908657#comment15.
+  PackageVersion? binaryVersion;
+
+  /// The source package.
+  ///
+  /// Similar to the above, this is significant when the source is different
+  /// than the binary itself. Since the top-level package/version fields are
+  /// based on an if/else, we need a separate field for both binary and source
+  /// if we want to know definitively where the data is coming from.
+  PackageVersion? sourceVersion;
+
+  BinarySourceInfo({
+    this.binaryVersion,
+    this.sourceVersion,
+  });
+
+  BinarySourceInfo.fromJson(core.Map json_)
+      : this(
+          binaryVersion: json_.containsKey('binaryVersion')
+              ? PackageVersion.fromJson(
+                  json_['binaryVersion'] as core.Map<core.String, core.dynamic>)
+              : null,
+          sourceVersion: json_.containsKey('sourceVersion')
+              ? PackageVersion.fromJson(
+                  json_['sourceVersion'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (binaryVersion != null) 'binaryVersion': binaryVersion!,
+        if (sourceVersion != null) 'sourceVersion': sourceVersion!,
+      };
+}
+
+class BuildDefinition {
+  core.String? buildType;
+
+  ///
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? externalParameters;
+
+  ///
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? internalParameters;
+  core.List<ResourceDescriptor>? resolvedDependencies;
+
+  BuildDefinition({
+    this.buildType,
+    this.externalParameters,
+    this.internalParameters,
+    this.resolvedDependencies,
+  });
+
+  BuildDefinition.fromJson(core.Map json_)
+      : this(
+          buildType: json_.containsKey('buildType')
+              ? json_['buildType'] as core.String
+              : null,
+          externalParameters: json_.containsKey('externalParameters')
+              ? json_['externalParameters']
+                  as core.Map<core.String, core.dynamic>
+              : null,
+          internalParameters: json_.containsKey('internalParameters')
+              ? json_['internalParameters']
+                  as core.Map<core.String, core.dynamic>
+              : null,
+          resolvedDependencies: json_.containsKey('resolvedDependencies')
+              ? (json_['resolvedDependencies'] as core.List)
+                  .map((value) => ResourceDescriptor.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (buildType != null) 'buildType': buildType!,
+        if (externalParameters != null)
+          'externalParameters': externalParameters!,
+        if (internalParameters != null)
+          'internalParameters': internalParameters!,
+        if (resolvedDependencies != null)
+          'resolvedDependencies': resolvedDependencies!,
+      };
+}
+
+typedef BuildMetadata = $BuildMetadata;
+
 /// Details of a build occurrence.
 class BuildOccurrence {
+  /// In-Toto Slsa Provenance V1 represents a slsa provenance meeting the slsa
+  /// spec, wrapped in an in-toto statement.
+  ///
+  /// This allows for direct jsonification of a to-spec in-toto slsa statement
+  /// with a to-spec slsa provenance.
+  InTotoSlsaProvenanceV1? inTotoSlsaProvenanceV1;
+
   /// See InTotoStatement for the replacement.
   ///
   /// In-toto Provenance representation as defined in spec.
@@ -590,6 +689,7 @@ class BuildOccurrence {
   core.String? provenanceBytes;
 
   BuildOccurrence({
+    this.inTotoSlsaProvenanceV1,
     this.intotoProvenance,
     this.intotoStatement,
     this.provenance,
@@ -598,6 +698,10 @@ class BuildOccurrence {
 
   BuildOccurrence.fromJson(core.Map json_)
       : this(
+          inTotoSlsaProvenanceV1: json_.containsKey('inTotoSlsaProvenanceV1')
+              ? InTotoSlsaProvenanceV1.fromJson(json_['inTotoSlsaProvenanceV1']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           intotoProvenance: json_.containsKey('intotoProvenance')
               ? InTotoProvenance.fromJson(json_['intotoProvenance']
                   as core.Map<core.String, core.dynamic>)
@@ -616,6 +720,8 @@ class BuildOccurrence {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (inTotoSlsaProvenanceV1 != null)
+          'inTotoSlsaProvenanceV1': inTotoSlsaProvenanceV1!,
         if (intotoProvenance != null) 'intotoProvenance': intotoProvenance!,
         if (intotoStatement != null) 'intotoStatement': intotoStatement!,
         if (provenance != null) 'provenance': provenance!,
@@ -696,9 +802,9 @@ class BuildProvenance {
           buildOptions: json_.containsKey('buildOptions')
               ? (json_['buildOptions'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -903,7 +1009,7 @@ class DiscoveryOccurrence {
   /// - "PENDING" : Resource is known but no action has been taken yet.
   /// - "SCANNING" : Resource is being analyzed.
   /// - "FINISHED_SUCCESS" : Analysis has finished successfully.
-  /// - "COMPLETE" : Analysis has completed
+  /// - "COMPLETE" : Analysis has completed.
   /// - "FINISHED_FAILED" : Analysis has finished unsuccessfully, the analysis
   /// itself is in a bad state.
   /// - "FINISHED_UNSUPPORTED" : The resource is known not to be supported.
@@ -933,6 +1039,9 @@ class DiscoveryOccurrence {
   /// The last time this resource was scanned.
   core.String? lastScanTime;
 
+  /// The status of an SBOM generation.
+  SBOMStatus? sbomStatus;
+
   DiscoveryOccurrence({
     this.analysisCompleted,
     this.analysisError,
@@ -942,6 +1051,7 @@ class DiscoveryOccurrence {
     this.continuousAnalysis,
     this.cpe,
     this.lastScanTime,
+    this.sbomStatus,
   });
 
   DiscoveryOccurrence.fromJson(core.Map json_)
@@ -973,6 +1083,10 @@ class DiscoveryOccurrence {
           lastScanTime: json_.containsKey('lastScanTime')
               ? json_['lastScanTime'] as core.String
               : null,
+          sbomStatus: json_.containsKey('sbomStatus')
+              ? SBOMStatus.fromJson(
+                  json_['sbomStatus'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -986,6 +1100,7 @@ class DiscoveryOccurrence {
           'continuousAnalysis': continuousAnalysis!,
         if (cpe != null) 'cpe': cpe!,
         if (lastScanTime != null) 'lastScanTime': lastScanTime!,
+        if (sbomStatus != null) 'sbomStatus': sbomStatus!,
       };
 }
 
@@ -1361,6 +1476,48 @@ class InTotoProvenance {
       };
 }
 
+class InTotoSlsaProvenanceV1 {
+  /// InToto spec defined at
+  /// https://github.com/in-toto/attestation/tree/main/spec#statement
+  core.String? P_type;
+  SlsaProvenanceV1? predicate;
+  core.String? predicateType;
+  core.List<Subject>? subject;
+
+  InTotoSlsaProvenanceV1({
+    this.P_type,
+    this.predicate,
+    this.predicateType,
+    this.subject,
+  });
+
+  InTotoSlsaProvenanceV1.fromJson(core.Map json_)
+      : this(
+          P_type:
+              json_.containsKey('_type') ? json_['_type'] as core.String : null,
+          predicate: json_.containsKey('predicate')
+              ? SlsaProvenanceV1.fromJson(
+                  json_['predicate'] as core.Map<core.String, core.dynamic>)
+              : null,
+          predicateType: json_.containsKey('predicateType')
+              ? json_['predicateType'] as core.String
+              : null,
+          subject: json_.containsKey('subject')
+              ? (json_['subject'] as core.List)
+                  .map((value) => Subject.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (P_type != null) '_type': P_type!,
+        if (predicate != null) 'predicate': predicate!,
+        if (predicateType != null) 'predicateType': predicateType!,
+        if (subject != null) 'subject': subject!,
+      };
+}
+
 /// Spec defined at
 /// https://github.com/in-toto/attestation/tree/main/spec#statement The
 /// serialized InTotoStatement will be stored as Envelope.payload.
@@ -1424,6 +1581,9 @@ class InTotoStatement {
       };
 }
 
+/// Justification provides the justification when the state of the assessment if
+/// NOT_AFFECTED.
+typedef Justification = $Justification;
 typedef Jwt = $Jwt;
 
 /// Indicates a language package available between this package and the
@@ -1568,6 +1728,27 @@ class Location {
       };
 }
 
+class Maintainer {
+  core.String? kind;
+  core.String? name;
+
+  Maintainer({
+    this.kind,
+    this.name,
+  });
+
+  Maintainer.fromJson(core.Map json_)
+      : this(
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+      };
+}
+
 typedef Material = $Material;
 
 /// Other properties of the build.
@@ -1687,6 +1868,8 @@ class Occurrence {
   /// - "UPGRADE" : This represents an available package upgrade.
   /// - "COMPLIANCE" : This represents a Compliance Note
   /// - "DSSE_ATTESTATION" : This represents a DSSE attestation Note
+  /// - "VULNERABILITY_ASSESSMENT" : This represents a Vulnerability Assessment.
+  /// - "SBOM_REFERENCE" : This represents an SBOM Reference.
   core.String? kind;
 
   /// The name of the occurrence in the form of
@@ -1717,6 +1900,9 @@ class Occurrence {
   /// Required. Immutable.
   core.String? resourceUri;
 
+  /// Describes a specific SBOM reference occurrences.
+  SBOMReferenceOccurrence? sbomReference;
+
   /// The time this occurrence was last updated.
   ///
   /// Output only.
@@ -1744,6 +1930,7 @@ class Occurrence {
     this.package,
     this.remediation,
     this.resourceUri,
+    this.sbomReference,
     this.updateTime,
     this.upgrade,
     this.vulnerability,
@@ -1801,6 +1988,10 @@ class Occurrence {
           resourceUri: json_.containsKey('resourceUri')
               ? json_['resourceUri'] as core.String
               : null,
+          sbomReference: json_.containsKey('sbomReference')
+              ? SBOMReferenceOccurrence.fromJson(
+                  json_['sbomReference'] as core.Map<core.String, core.dynamic>)
+              : null,
           updateTime: json_.containsKey('updateTime')
               ? json_['updateTime'] as core.String
               : null,
@@ -1830,6 +2021,7 @@ class Occurrence {
         if (package != null) 'package': package!,
         if (remediation != null) 'remediation': remediation!,
         if (resourceUri != null) 'resourceUri': resourceUri!,
+        if (sbomReference != null) 'sbomReference': sbomReference!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (upgrade != null) 'upgrade': upgrade!,
         if (vulnerability != null) 'vulnerability': vulnerability!,
@@ -1913,6 +2105,15 @@ class Operation {
 }
 
 class PackageData {
+  /// The architecture of the package.
+  core.String? architecture;
+
+  /// A bundle containing the binary and source information.
+  core.List<BinarySourceInfo>? binarySourceInfo;
+
+  /// DEPRECATED
+  PackageVersion? binaryVersion;
+
   /// The cpe_uri in [cpe format](https://cpe.mitre.org/specification/) in which
   /// the vulnerability may manifest.
   ///
@@ -1935,12 +2136,14 @@ class PackageData {
   /// This field will be unset for non Maven packages.
   core.String? hashDigest;
 
-  /// The OS affected by a vulnerability This field is deprecated and the
-  /// information is in cpe_uri
+  /// The maintainer of the package.
+  Maintainer? maintainer;
+
+  /// The OS affected by a vulnerability Used to generate the cpe_uri for OS
+  /// packages
   core.String? os;
 
-  /// The version of the OS This field is deprecated and the information is in
-  /// cpe_uri
+  /// The version of the OS Used to generate the cpe_uri for OS packages
   core.String? osVersion;
 
   /// The package being analysed for vulnerabilities
@@ -1953,32 +2156,55 @@ class PackageData {
   /// - "MAVEN" : Java packages from Maven.
   /// - "GO" : Go third-party packages.
   /// - "GO_STDLIB" : Go toolchain + standard library packages.
+  /// - "PYPI" : Python packages.
+  /// - "NPM" : NPM packages.
   core.String? packageType;
 
   /// CVEs that this package is no longer vulnerable to
   /// go/drydock-dd-custom-binary-scanning
   core.List<core.String>? patchedCve;
+
+  /// DEPRECATED
+  PackageVersion? sourceVersion;
   core.String? unused;
 
   /// The version of the package being analysed
   core.String? version;
 
   PackageData({
+    this.architecture,
+    this.binarySourceInfo,
+    this.binaryVersion,
     this.cpeUri,
     this.dependencyChain,
     this.fileLocation,
     this.hashDigest,
+    this.maintainer,
     this.os,
     this.osVersion,
     this.package,
     this.packageType,
     this.patchedCve,
+    this.sourceVersion,
     this.unused,
     this.version,
   });
 
   PackageData.fromJson(core.Map json_)
       : this(
+          architecture: json_.containsKey('architecture')
+              ? json_['architecture'] as core.String
+              : null,
+          binarySourceInfo: json_.containsKey('binarySourceInfo')
+              ? (json_['binarySourceInfo'] as core.List)
+                  .map((value) => BinarySourceInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          binaryVersion: json_.containsKey('binaryVersion')
+              ? PackageVersion.fromJson(
+                  json_['binaryVersion'] as core.Map<core.String, core.dynamic>)
+              : null,
           cpeUri: json_.containsKey('cpeUri')
               ? json_['cpeUri'] as core.String
               : null,
@@ -1997,6 +2223,10 @@ class PackageData {
           hashDigest: json_.containsKey('hashDigest')
               ? json_['hashDigest'] as core.String
               : null,
+          maintainer: json_.containsKey('maintainer')
+              ? Maintainer.fromJson(
+                  json_['maintainer'] as core.Map<core.String, core.dynamic>)
+              : null,
           os: json_.containsKey('os') ? json_['os'] as core.String : null,
           osVersion: json_.containsKey('osVersion')
               ? json_['osVersion'] as core.String
@@ -2012,6 +2242,10 @@ class PackageData {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          sourceVersion: json_.containsKey('sourceVersion')
+              ? PackageVersion.fromJson(
+                  json_['sourceVersion'] as core.Map<core.String, core.dynamic>)
+              : null,
           unused: json_.containsKey('unused')
               ? json_['unused'] as core.String
               : null,
@@ -2021,15 +2255,20 @@ class PackageData {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (architecture != null) 'architecture': architecture!,
+        if (binarySourceInfo != null) 'binarySourceInfo': binarySourceInfo!,
+        if (binaryVersion != null) 'binaryVersion': binaryVersion!,
         if (cpeUri != null) 'cpeUri': cpeUri!,
         if (dependencyChain != null) 'dependencyChain': dependencyChain!,
         if (fileLocation != null) 'fileLocation': fileLocation!,
         if (hashDigest != null) 'hashDigest': hashDigest!,
+        if (maintainer != null) 'maintainer': maintainer!,
         if (os != null) 'os': os!,
         if (osVersion != null) 'osVersion': osVersion!,
         if (package != null) 'package': package!,
         if (packageType != null) 'packageType': packageType!,
         if (patchedCve != null) 'patchedCve': patchedCve!,
+        if (sourceVersion != null) 'sourceVersion': sourceVersion!,
         if (unused != null) 'unused': unused!,
         if (version != null) 'version': version!,
       };
@@ -2258,9 +2497,70 @@ class PackageOccurrence {
       };
 }
 
+class PackageVersion {
+  core.String? name;
+  core.String? version;
+
+  PackageVersion({
+    this.name,
+    this.version,
+  });
+
+  PackageVersion.fromJson(core.Map json_)
+      : this(
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          version: json_.containsKey('version')
+              ? json_['version'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (version != null) 'version': version!,
+      };
+}
+
 /// Selects a repo using a Google Cloud Platform project ID (e.g.,
 /// winged-cargo-31) and a repo name within that project.
 typedef ProjectRepoId = $ProjectRepoId;
+
+class ProvenanceBuilder {
+  core.List<ResourceDescriptor>? builderDependencies;
+  core.String? id;
+  core.Map<core.String, core.String>? version;
+
+  ProvenanceBuilder({
+    this.builderDependencies,
+    this.id,
+    this.version,
+  });
+
+  ProvenanceBuilder.fromJson(core.Map json_)
+      : this(
+          builderDependencies: json_.containsKey('builderDependencies')
+              ? (json_['builderDependencies'] as core.List)
+                  .map((value) => ResourceDescriptor.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          version: json_.containsKey('version')
+              ? (json_['version'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (builderDependencies != null)
+          'builderDependencies': builderDependencies!,
+        if (id != null) 'id': id!,
+        if (version != null) 'version': version!,
+      };
+}
 
 /// Steps taken to build the artifact.
 ///
@@ -2270,6 +2570,51 @@ typedef Recipe = $Recipe;
 
 /// Metadata for any related URL information.
 typedef RelatedUrl = $RelatedUrl;
+
+/// Specifies details on how to handle (and presumably, fix) a vulnerability.
+class Remediation {
+  /// Contains a comprehensive human-readable discussion of the remediation.
+  core.String? details;
+
+  /// The type of remediation that can be applied.
+  /// Possible string values are:
+  /// - "REMEDIATION_TYPE_UNSPECIFIED" : No remediation type specified.
+  /// - "MITIGATION" : A MITIGATION is available.
+  /// - "NO_FIX_PLANNED" : No fix is planned.
+  /// - "NONE_AVAILABLE" : Not available.
+  /// - "VENDOR_FIX" : A vendor fix is available.
+  /// - "WORKAROUND" : A workaround is available.
+  core.String? remediationType;
+
+  /// Contains the URL where to obtain the remediation.
+  RelatedUrl? remediationUri;
+
+  Remediation({
+    this.details,
+    this.remediationType,
+    this.remediationUri,
+  });
+
+  Remediation.fromJson(core.Map json_)
+      : this(
+          details: json_.containsKey('details')
+              ? json_['details'] as core.String
+              : null,
+          remediationType: json_.containsKey('remediationType')
+              ? json_['remediationType'] as core.String
+              : null,
+          remediationUri: json_.containsKey('remediationUri')
+              ? RelatedUrl.fromJson(json_['remediationUri']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (details != null) 'details': details!,
+        if (remediationType != null) 'remediationType': remediationType!,
+        if (remediationUri != null) 'remediationUri': remediationUri!,
+      };
+}
 
 /// A unique identifier for a Cloud Repo.
 class RepoId {
@@ -2298,6 +2643,155 @@ class RepoId {
         if (uid != null) 'uid': uid!,
       };
 }
+
+typedef ResourceDescriptor = $ResourceDescriptor;
+
+class RunDetails {
+  ProvenanceBuilder? builder;
+  core.List<ResourceDescriptor>? byproducts;
+  BuildMetadata? metadata;
+
+  RunDetails({
+    this.builder,
+    this.byproducts,
+    this.metadata,
+  });
+
+  RunDetails.fromJson(core.Map json_)
+      : this(
+          builder: json_.containsKey('builder')
+              ? ProvenanceBuilder.fromJson(
+                  json_['builder'] as core.Map<core.String, core.dynamic>)
+              : null,
+          byproducts: json_.containsKey('byproducts')
+              ? (json_['byproducts'] as core.List)
+                  .map((value) => ResourceDescriptor.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          metadata: json_.containsKey('metadata')
+              ? BuildMetadata.fromJson(
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (builder != null) 'builder': builder!,
+        if (byproducts != null) 'byproducts': byproducts!,
+        if (metadata != null) 'metadata': metadata!,
+      };
+}
+
+/// The occurrence representing an SBOM reference as applied to a specific
+/// resource.
+///
+/// The occurrence follows the DSSE specification. See
+/// https://github.com/secure-systems-lab/dsse/blob/master/envelope.md for more
+/// details.
+class SBOMReferenceOccurrence {
+  /// The actual payload that contains the SBOM reference data.
+  SbomReferenceIntotoPayload? payload;
+
+  /// The kind of payload that SbomReferenceIntotoPayload takes.
+  ///
+  /// Since it's in the intoto format, this value is expected to be
+  /// 'application/vnd.in-toto+json'.
+  core.String? payloadType;
+
+  /// The signatures over the payload.
+  core.List<EnvelopeSignature>? signatures;
+
+  SBOMReferenceOccurrence({
+    this.payload,
+    this.payloadType,
+    this.signatures,
+  });
+
+  SBOMReferenceOccurrence.fromJson(core.Map json_)
+      : this(
+          payload: json_.containsKey('payload')
+              ? SbomReferenceIntotoPayload.fromJson(
+                  json_['payload'] as core.Map<core.String, core.dynamic>)
+              : null,
+          payloadType: json_.containsKey('payloadType')
+              ? json_['payloadType'] as core.String
+              : null,
+          signatures: json_.containsKey('signatures')
+              ? (json_['signatures'] as core.List)
+                  .map((value) => EnvelopeSignature.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (payload != null) 'payload': payload!,
+        if (payloadType != null) 'payloadType': payloadType!,
+        if (signatures != null) 'signatures': signatures!,
+      };
+}
+
+/// The status of an SBOM generation.
+typedef SBOMStatus = $SBOMStatus;
+
+/// The actual payload that contains the SBOM Reference data.
+///
+/// The payload follows the intoto statement specification. See
+/// https://github.com/in-toto/attestation/blob/main/spec/v1.0/statement.md for
+/// more details.
+class SbomReferenceIntotoPayload {
+  /// Identifier for the schema of the Statement.
+  core.String? P_type;
+
+  /// Additional parameters of the Predicate.
+  ///
+  /// Includes the actual data about the SBOM.
+  SbomReferenceIntotoPredicate? predicate;
+
+  /// URI identifying the type of the Predicate.
+  core.String? predicateType;
+
+  /// Set of software artifacts that the attestation applies to.
+  ///
+  /// Each element represents a single software artifact.
+  core.List<Subject>? subject;
+
+  SbomReferenceIntotoPayload({
+    this.P_type,
+    this.predicate,
+    this.predicateType,
+    this.subject,
+  });
+
+  SbomReferenceIntotoPayload.fromJson(core.Map json_)
+      : this(
+          P_type:
+              json_.containsKey('_type') ? json_['_type'] as core.String : null,
+          predicate: json_.containsKey('predicate')
+              ? SbomReferenceIntotoPredicate.fromJson(
+                  json_['predicate'] as core.Map<core.String, core.dynamic>)
+              : null,
+          predicateType: json_.containsKey('predicateType')
+              ? json_['predicateType'] as core.String
+              : null,
+          subject: json_.containsKey('subject')
+              ? (json_['subject'] as core.List)
+                  .map((value) => Subject.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (P_type != null) '_type': P_type!,
+        if (predicate != null) 'predicate': predicate!,
+        if (predicateType != null) 'predicateType': predicateType!,
+        if (subject != null) 'subject': subject!,
+      };
+}
+
+/// A predicate which describes the SBOM being referenced.
+typedef SbomReferenceIntotoPredicate = $SbomReferenceIntotoPredicate;
 
 /// Verifiers (e.g. Kritis implementations) MUST verify signatures with respect
 /// to the trust anchors defined in policy (e.g. a Kritis policy).
@@ -2440,6 +2934,36 @@ class SlsaProvenance {
       };
 }
 
+/// Keep in sync with schema at
+/// https://github.com/slsa-framework/slsa/blob/main/docs/provenance/schema/v1/provenance.proto
+/// Builder renamed to ProvenanceBuilder because of Java conflicts.
+class SlsaProvenanceV1 {
+  BuildDefinition? buildDefinition;
+  RunDetails? runDetails;
+
+  SlsaProvenanceV1({
+    this.buildDefinition,
+    this.runDetails,
+  });
+
+  SlsaProvenanceV1.fromJson(core.Map json_)
+      : this(
+          buildDefinition: json_.containsKey('buildDefinition')
+              ? BuildDefinition.fromJson(json_['buildDefinition']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          runDetails: json_.containsKey('runDetails')
+              ? RunDetails.fromJson(
+                  json_['runDetails'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (buildDefinition != null) 'buildDefinition': buildDefinition!,
+        if (runDetails != null) 'runDetails': runDetails!,
+      };
+}
+
 /// See full explanation of fields at slsa.dev/provenance/v0.2.
 class SlsaProvenanceZeroTwo {
   ///
@@ -2558,10 +3082,10 @@ class Source {
           fileHashes: json_.containsKey('fileHashes')
               ? (json_['fileHashes'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     FileHashes.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -2617,9 +3141,9 @@ class SourceContext {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -2717,6 +3241,113 @@ class UpgradeOccurrence {
 /// Version contains structured information about the version of a package.
 typedef Version = $Version;
 
+/// VexAssessment provides all publisher provided Vex information that is
+/// related to this vulnerability.
+class VexAssessment {
+  /// Holds the MITRE standard Common Vulnerabilities and Exposures (CVE)
+  /// tracking number for the vulnerability.
+  ///
+  /// Deprecated: Use vulnerability_id instead to denote CVEs.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.String? cve;
+
+  /// Contains information about the impact of this vulnerability, this will
+  /// change with time.
+  core.List<core.String>? impacts;
+
+  /// Justification provides the justification when the state of the assessment
+  /// if NOT_AFFECTED.
+  Justification? justification;
+
+  /// The VulnerabilityAssessment note from which this VexAssessment was
+  /// generated.
+  ///
+  /// This will be of the form: `projects/[PROJECT_ID]/notes/[NOTE_ID]`.
+  core.String? noteName;
+
+  /// Holds a list of references associated with this vulnerability item and
+  /// assessment.
+  core.List<RelatedUrl>? relatedUris;
+
+  /// Specifies details on how to handle (and presumably, fix) a vulnerability.
+  core.List<Remediation>? remediations;
+
+  /// Provides the state of this Vulnerability assessment.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : No state is specified.
+  /// - "AFFECTED" : This product is known to be affected by this vulnerability.
+  /// - "NOT_AFFECTED" : This product is known to be not affected by this
+  /// vulnerability.
+  /// - "FIXED" : This product contains a fix for this vulnerability.
+  /// - "UNDER_INVESTIGATION" : It is not known yet whether these versions are
+  /// or are not affected by the vulnerability. However, it is still under
+  /// investigation.
+  core.String? state;
+
+  /// The vulnerability identifier for this Assessment.
+  ///
+  /// Will hold one of common identifiers e.g. CVE, GHSA etc.
+  core.String? vulnerabilityId;
+
+  VexAssessment({
+    this.cve,
+    this.impacts,
+    this.justification,
+    this.noteName,
+    this.relatedUris,
+    this.remediations,
+    this.state,
+    this.vulnerabilityId,
+  });
+
+  VexAssessment.fromJson(core.Map json_)
+      : this(
+          cve: json_.containsKey('cve') ? json_['cve'] as core.String : null,
+          impacts: json_.containsKey('impacts')
+              ? (json_['impacts'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          justification: json_.containsKey('justification')
+              ? Justification.fromJson(
+                  json_['justification'] as core.Map<core.String, core.dynamic>)
+              : null,
+          noteName: json_.containsKey('noteName')
+              ? json_['noteName'] as core.String
+              : null,
+          relatedUris: json_.containsKey('relatedUris')
+              ? (json_['relatedUris'] as core.List)
+                  .map((value) => RelatedUrl.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          remediations: json_.containsKey('remediations')
+              ? (json_['remediations'] as core.List)
+                  .map((value) => Remediation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          vulnerabilityId: json_.containsKey('vulnerabilityId')
+              ? json_['vulnerabilityId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cve != null) 'cve': cve!,
+        if (impacts != null) 'impacts': impacts!,
+        if (justification != null) 'justification': justification!,
+        if (noteName != null) 'noteName': noteName!,
+        if (relatedUris != null) 'relatedUris': relatedUris!,
+        if (remediations != null) 'remediations': remediations!,
+        if (state != null) 'state': state!,
+        if (vulnerabilityId != null) 'vulnerabilityId': vulnerabilityId!,
+      };
+}
+
 /// An occurrence of a severity vulnerability on a resource.
 class VulnerabilityOccurrence {
   /// The CVSS score of this vulnerability.
@@ -2726,6 +3357,18 @@ class VulnerabilityOccurrence {
   ///
   /// Output only.
   core.double? cvssScore;
+
+  /// The cvss v2 score for the vulnerability.
+  CVSS? cvssV2;
+
+  /// CVSS version used to populate cvss_score and severity.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CVSS_VERSION_UNSPECIFIED"
+  /// - "CVSS_VERSION_2"
+  /// - "CVSS_VERSION_3"
+  core.String? cvssVersion;
 
   /// The cvss v3 score for the vulnerability.
   CVSS? cvssv3;
@@ -2790,9 +3433,12 @@ class VulnerabilityOccurrence {
   /// The type of package; whether native or non native (e.g., ruby gems,
   /// node.js packages, etc.).
   core.String? type;
+  VexAssessment? vexAssessment;
 
   VulnerabilityOccurrence({
     this.cvssScore,
+    this.cvssV2,
+    this.cvssVersion,
     this.cvssv3,
     this.effectiveSeverity,
     this.fixAvailable,
@@ -2802,12 +3448,20 @@ class VulnerabilityOccurrence {
     this.severity,
     this.shortDescription,
     this.type,
+    this.vexAssessment,
   });
 
   VulnerabilityOccurrence.fromJson(core.Map json_)
       : this(
           cvssScore: json_.containsKey('cvssScore')
               ? (json_['cvssScore'] as core.num).toDouble()
+              : null,
+          cvssV2: json_.containsKey('cvssV2')
+              ? CVSS.fromJson(
+                  json_['cvssV2'] as core.Map<core.String, core.dynamic>)
+              : null,
+          cvssVersion: json_.containsKey('cvssVersion')
+              ? json_['cvssVersion'] as core.String
               : null,
           cvssv3: json_.containsKey('cvssv3')
               ? CVSS.fromJson(
@@ -2841,10 +3495,16 @@ class VulnerabilityOccurrence {
               ? json_['shortDescription'] as core.String
               : null,
           type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          vexAssessment: json_.containsKey('vexAssessment')
+              ? VexAssessment.fromJson(
+                  json_['vexAssessment'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cvssScore != null) 'cvssScore': cvssScore!,
+        if (cvssV2 != null) 'cvssV2': cvssV2!,
+        if (cvssVersion != null) 'cvssVersion': cvssVersion!,
         if (cvssv3 != null) 'cvssv3': cvssv3!,
         if (effectiveSeverity != null) 'effectiveSeverity': effectiveSeverity!,
         if (fixAvailable != null) 'fixAvailable': fixAvailable!,
@@ -2854,6 +3514,7 @@ class VulnerabilityOccurrence {
         if (severity != null) 'severity': severity!,
         if (shortDescription != null) 'shortDescription': shortDescription!,
         if (type != null) 'type': type!,
+        if (vexAssessment != null) 'vexAssessment': vexAssessment!,
       };
 }
 

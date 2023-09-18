@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// App Engine Admin API - v1
@@ -32,7 +31,7 @@
 ///   - [AppsServicesResource]
 ///     - [AppsServicesVersionsResource]
 ///       - [AppsServicesVersionsInstancesResource]
-library appengine.v1;
+library appengine_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -41,7 +40,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -1277,14 +1275,7 @@ class AppsOperationsResource {
 
   /// Lists operations that match the specified filter in the request.
   ///
-  /// If the server doesn't support this method, it returns UNIMPLEMENTED.NOTE:
-  /// the name binding allows API services to override the binding to use
-  /// different resource name schemes, such as users / * /operations. To
-  /// override the binding, API services can add a binding such as
-  /// "/v1/{name=users / * }/operations" to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
+  /// If the server doesn't support this method, it returns UNIMPLEMENTED.
   ///
   /// Request parameters:
   ///
@@ -2188,6 +2179,8 @@ class Application {
   ///
   /// This bucket is associated with the application and can be used by the
   /// gcloud deployment commands.@OutputOnly
+  ///
+  /// Output only.
   core.String? codeBucket;
 
   /// The type of the Cloud Firestore or Cloud Datastore database associated
@@ -2201,6 +2194,8 @@ class Application {
 
   /// Google Cloud Storage bucket that can be used by this application to store
   /// content.@OutputOnly
+  ///
+  /// Output only.
   core.String? defaultBucket;
 
   /// Cookie expiration policy for this application.
@@ -2208,6 +2203,8 @@ class Application {
 
   /// Hostname used to reach this application, as resolved by App
   /// Engine.@OutputOnly
+  ///
+  /// Output only.
   core.String? defaultHostname;
 
   /// HTTP path dispatch rules for requests to the application that do not
@@ -2221,6 +2218,8 @@ class Application {
 
   /// The Google Container Registry domain used for storing managed build docker
   /// images for this application.
+  ///
+  /// Output only.
   core.String? gcrDomain;
   IdentityAwareProxy? iap;
 
@@ -2242,6 +2241,8 @@ class Application {
   /// Full path to the Application resource in the API.
   ///
   /// Example: apps/myapp.@OutputOnly
+  ///
+  /// Output only.
   core.String? name;
 
   /// The service account associated with the application.
@@ -2476,8 +2477,8 @@ class AuthorizedCertificate {
 
 /// A domain that a user has been authorized to administer.
 ///
-/// To authorize use of a domain, verify ownership via Webmaster Central
-/// (https://www.google.com/webmasters/verification/home).
+/// To authorize use of a domain, verify ownership via Search Console
+/// (https://search.google.com/search-console/welcome).
 class AuthorizedDomain {
   /// Fully qualified domain name of the domain authorized for use.
   ///
@@ -2937,10 +2938,10 @@ class Deployment {
               : null,
           files: json_.containsKey('files')
               ? (json_['files'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     FileInfo.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -3361,6 +3362,35 @@ class FirewallRule {
       };
 }
 
+/// Runtime settings for the App Engine flexible environment.
+class FlexibleRuntimeSettings {
+  /// The operating system of the application runtime.
+  core.String? operatingSystem;
+
+  /// The runtime version of an App Engine flexible application.
+  core.String? runtimeVersion;
+
+  FlexibleRuntimeSettings({
+    this.operatingSystem,
+    this.runtimeVersion,
+  });
+
+  FlexibleRuntimeSettings.fromJson(core.Map json_)
+      : this(
+          operatingSystem: json_.containsKey('operatingSystem')
+              ? json_['operatingSystem'] as core.String
+              : null,
+          runtimeVersion: json_.containsKey('runtimeVersion')
+              ? json_['runtimeVersion'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (operatingSystem != null) 'operatingSystem': operatingSystem!,
+        if (runtimeVersion != null) 'runtimeVersion': runtimeVersion!,
+      };
+}
+
 /// Health checking configuration for VM instances.
 ///
 /// Unhealthy instances are killed and replaced with new instances. Only
@@ -3456,6 +3486,8 @@ class IdentityAwareProxy {
   core.String? oauth2ClientSecret;
 
   /// Hex-encoded SHA-256 hash of the client secret.@OutputOnly
+  ///
+  /// Output only.
   core.String? oauth2ClientSecretSha256;
 
   IdentityAwareProxy({
@@ -4093,7 +4125,7 @@ class LivenessCheck {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
+/// A resource that represents a Google Cloud location.
 typedef Location = $Location01;
 
 /// A certificate managed by App Engine.
@@ -4704,9 +4736,9 @@ class Service {
           id: json_.containsKey('id') ? json_['id'] as core.String : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -4909,9 +4941,9 @@ class StaticFilesHandler {
           httpHeaders: json_.containsKey('httpHeaders')
               ? (json_['httpHeaders'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -4991,9 +5023,9 @@ class TrafficSplit {
           allocations: json_.containsKey('allocations')
               ? (json_['allocations'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    (item as core.num).toDouble(),
+                    (value as core.num).toDouble(),
                   ),
                 )
               : null,
@@ -5265,6 +5297,9 @@ class Version {
   /// set.
   core.List<ErrorHandler>? errorHandlers;
 
+  /// Settings for App Engine flexible runtimes.
+  FlexibleRuntimeSettings? flexibleRuntimeSettings;
+
   /// An ordered list of URL-matching patterns that should be applied to
   /// incoming requests.
   ///
@@ -5416,6 +5451,7 @@ class Version {
     this.env,
     this.envVariables,
     this.errorHandlers,
+    this.flexibleRuntimeSettings,
     this.handlers,
     this.healthCheck,
     this.id,
@@ -5462,9 +5498,9 @@ class Version {
           betaSettings: json_.containsKey('betaSettings')
               ? (json_['betaSettings'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -5472,9 +5508,9 @@ class Version {
               ? (json_['buildEnvVariables']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -5506,9 +5542,9 @@ class Version {
           envVariables: json_.containsKey('envVariables')
               ? (json_['envVariables'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -5517,6 +5553,11 @@ class Version {
                   .map((value) => ErrorHandler.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
+              : null,
+          flexibleRuntimeSettings: json_.containsKey('flexibleRuntimeSettings')
+              ? FlexibleRuntimeSettings.fromJson(
+                  json_['flexibleRuntimeSettings']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           handlers: json_.containsKey('handlers')
               ? (json_['handlers'] as core.List)
@@ -5622,6 +5663,8 @@ class Version {
         if (env != null) 'env': env!,
         if (envVariables != null) 'envVariables': envVariables!,
         if (errorHandlers != null) 'errorHandlers': errorHandlers!,
+        if (flexibleRuntimeSettings != null)
+          'flexibleRuntimeSettings': flexibleRuntimeSettings!,
         if (handlers != null) 'handlers': handlers!,
         if (healthCheck != null) 'healthCheck': healthCheck!,
         if (id != null) 'id': id!,

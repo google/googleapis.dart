@@ -23,8 +23,12 @@ class _Server {
 
   _Server(this._server);
 
-  late final serverUri =
-      Uri.http('${_server.address.host}:${_server.port}', '');
+  late final serverUri = Uri.http(
+    '${_server.address.host}:${_server.port}',
+    // Dart 3 change that can't be fixed while we support Dart 2.x
+    // ignore: avoid_redundant_argument_values
+    '',
+  );
 
   late final serverRedirectUri =
       serverUri.replace(pathSegments: [_redirectPath]).toString();
@@ -125,7 +129,7 @@ class _Server {
   }
 }
 
-class CacheEntry extends Comparable<CacheEntry> {
+class CacheEntry implements Comparable<CacheEntry> {
   final DateTime created;
   final String codeVerifier;
   final String state;

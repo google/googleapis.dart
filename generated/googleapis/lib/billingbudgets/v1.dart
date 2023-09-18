@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud Billing Budget API - v1
@@ -24,7 +23,7 @@
 ///
 /// - [BillingAccountsResource]
 ///   - [BillingAccountsBudgetsResource]
-library billingbudgets.v1;
+library billingbudgets_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -33,7 +32,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -572,11 +570,22 @@ class GoogleCloudBillingBudgetsV1Filter {
   /// from only this set of projects should be included in the budget.
   ///
   /// If omitted, the report includes all usage for the billing account,
-  /// regardless of which project the usage occurred on. Only zero or one
-  /// project can be specified currently.
+  /// regardless of which project the usage occurred on.
   ///
   /// Optional.
   core.List<core.String>? projects;
+
+  /// A set of folder and organization names of the form `folders/{folderId}` or
+  /// `organizations/{organizationId}`, specifying that usage from only this set
+  /// of folders and organizations should be included in the budget.
+  ///
+  /// If omitted, the budget includes all usage that the billing account pays
+  /// for. If the folder or organization contains projects that are paid for by
+  /// a different Cloud Billing account, the budget *doesn't* apply to those
+  /// projects.
+  ///
+  /// Optional.
+  core.List<core.String>? resourceAncestors;
 
   /// A set of services of the form `services/{service_id}`, specifying that
   /// usage from only this set of services should be included in the budget.
@@ -606,6 +615,7 @@ class GoogleCloudBillingBudgetsV1Filter {
     this.customPeriod,
     this.labels,
     this.projects,
+    this.resourceAncestors,
     this.services,
     this.subaccounts,
   });
@@ -629,14 +639,19 @@ class GoogleCloudBillingBudgetsV1Filter {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.List,
+                    value as core.List,
                   ),
                 )
               : null,
           projects: json_.containsKey('projects')
               ? (json_['projects'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          resourceAncestors: json_.containsKey('resourceAncestors')
+              ? (json_['resourceAncestors'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
@@ -660,6 +675,7 @@ class GoogleCloudBillingBudgetsV1Filter {
         if (customPeriod != null) 'customPeriod': customPeriod!,
         if (labels != null) 'labels': labels!,
         if (projects != null) 'projects': projects!,
+        if (resourceAncestors != null) 'resourceAncestors': resourceAncestors!,
         if (services != null) 'services': services!,
         if (subaccounts != null) 'subaccounts': subaccounts!,
       };

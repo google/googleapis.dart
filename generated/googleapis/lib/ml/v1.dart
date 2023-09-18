@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// AI Platform Training & Prediction API - v1
@@ -30,7 +29,7 @@
 ///   - [ProjectsModelsResource]
 ///     - [ProjectsModelsVersionsResource]
 ///   - [ProjectsOperationsResource]
-library ml.v1;
+library ml_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -39,7 +38,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -2190,13 +2188,6 @@ class ProjectsOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -2833,6 +2824,7 @@ class GoogleCloudMlV1AcceleratorConfig {
   /// - "TPU_V3" : TPU v3.
   /// - "TPU_V2_POD" : TPU v2 POD.
   /// - "TPU_V3_POD" : TPU v3 POD.
+  /// - "TPU_V4_POD" : TPU v4 POD.
   core.String? type;
 
   GoogleCloudMlV1AcceleratorConfig({
@@ -3345,36 +3337,7 @@ class GoogleCloudMlV1ContainerSpec {
 }
 
 /// Represents the config of disk options.
-class GoogleCloudMlV1DiskConfig {
-  /// Size in GB of the boot disk (default is 100GB).
-  core.int? bootDiskSizeGb;
-
-  /// Type of the boot disk (default is "pd-ssd").
-  ///
-  /// Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or
-  /// "pd-standard" (Persistent Disk Hard Disk Drive).
-  core.String? bootDiskType;
-
-  GoogleCloudMlV1DiskConfig({
-    this.bootDiskSizeGb,
-    this.bootDiskType,
-  });
-
-  GoogleCloudMlV1DiskConfig.fromJson(core.Map json_)
-      : this(
-          bootDiskSizeGb: json_.containsKey('bootDiskSizeGb')
-              ? json_['bootDiskSizeGb'] as core.int
-              : null,
-          bootDiskType: json_.containsKey('bootDiskType')
-              ? json_['bootDiskType'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (bootDiskSizeGb != null) 'bootDiskSizeGb': bootDiskSizeGb!,
-        if (bootDiskType != null) 'bootDiskType': bootDiskType!,
-      };
-}
+typedef GoogleCloudMlV1DiskConfig = $Shared02;
 
 /// Represents a custom encryption key configuration that can be applied to a
 /// resource.
@@ -3680,9 +3643,9 @@ class GoogleCloudMlV1HyperparameterOutput {
               ? (json_['hyperparameters']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -3700,9 +3663,9 @@ class GoogleCloudMlV1HyperparameterOutput {
           webAccessUris: json_.containsKey('webAccessUris')
               ? (json_['webAccessUris'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -4003,9 +3966,9 @@ class GoogleCloudMlV1Job {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -4507,9 +4470,9 @@ class GoogleCloudMlV1Model {
           etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -5988,9 +5951,9 @@ class GoogleCloudMlV1TrainingOutput {
           webAccessUris: json_.containsKey('webAccessUris')
               ? (json_['webAccessUris'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -6501,9 +6464,9 @@ class GoogleCloudMlV1Version {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -6682,7 +6645,9 @@ class GoogleIamV1Binding {
   /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
   /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
-  /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
+  /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
+  /// (primary) that represents all the users of that domain. For example,
+  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
   /// An email address (plus unique identifier) representing a user that has
   /// been recently deleted. For example,
   /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
@@ -6698,9 +6663,7 @@ class GoogleIamV1Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
-  /// that represents all the users of that domain. For example, `google.com` or
-  /// `example.com`.
+  /// the role in the binding.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.

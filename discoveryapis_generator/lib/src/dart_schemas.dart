@@ -67,13 +67,20 @@ class DartClassProperty {
   final Comment comment;
   final DartSchemaType type;
   final String jsonName;
+  final bool deprecated;
 
   // If this property is a base64 encoded bytes, this identifier will represent
   // the name used for a setter/getter.
   final Identifier? byteArrayAccessor;
 
-  DartClassProperty(this.name, this.comment, this.type, this.jsonName,
-      {this.byteArrayAccessor});
+  DartClassProperty(
+    this.name,
+    this.comment,
+    this.type,
+    this.jsonName, {
+    this.byteArrayAccessor,
+    required this.deprecated,
+  });
 }
 
 /// Parses all schemas in [description] and returns a [DartSchemaTypeDB].
@@ -175,7 +182,10 @@ DartSchemaTypeDB parseSchemas(
         // subclasses.
         final map = <String?, DartSchemaType>{};
         for (var mapItem in schema.variant!.map!) {
-          map[mapItem.typeValue] = DartSchemaForwardRef(imports, mapItem.P_ref);
+          if (mapItem.P_ref != null) {
+            map[mapItem.typeValue] =
+                DartSchemaForwardRef(imports, mapItem.P_ref!);
+          }
         }
         final classId = namer.schemaClass(className);
         return db.register(AbstractVariantType(
@@ -205,8 +215,13 @@ DartSchemaTypeDB parseSchemas(
                   classScope.newIdentifier('${jsonPName}AsBytes');
             }
             final property = DartClassProperty(
-                propertyName, comment, propertyType, jsonPName,
-                byteArrayAccessor: byteArrayAccessor);
+              propertyName,
+              comment,
+              propertyType,
+              jsonPName,
+              byteArrayAccessor: byteArrayAccessor,
+              deprecated: value.deprecated ?? false,
+            );
             properties.add(property);
           });
         }
@@ -232,7 +247,7 @@ DartSchemaTypeDB parseSchemas(
     } else if (schema.P_ref != null) {
       // This is a forward or backward reference, it will be resolved in
       // another pass following the parsing.
-      return db.register(DartSchemaForwardRef(imports, schema.P_ref));
+      return db.register(DartSchemaForwardRef(imports, schema.P_ref!));
     } else {
       return parsePrimitive(imports, db, schema);
     }

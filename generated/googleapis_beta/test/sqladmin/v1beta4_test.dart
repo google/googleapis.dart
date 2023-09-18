@@ -1,8 +1,6 @@
 // ignore_for_file: camel_case_types
-// ignore_for_file: cascade_invocations
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_const_declarations
@@ -12,8 +10,9 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unreachable_from_main
 // ignore_for_file: unused_local_variable
 
 import 'dart:async' as async;
@@ -61,6 +60,28 @@ void checkAclEntry(api.AclEntry o) {
     );
   }
   buildCounterAclEntry--;
+}
+
+core.int buildCounterAdvancedMachineFeatures = 0;
+api.AdvancedMachineFeatures buildAdvancedMachineFeatures() {
+  final o = api.AdvancedMachineFeatures();
+  buildCounterAdvancedMachineFeatures++;
+  if (buildCounterAdvancedMachineFeatures < 3) {
+    o.threadsPerCore = 42;
+  }
+  buildCounterAdvancedMachineFeatures--;
+  return o;
+}
+
+void checkAdvancedMachineFeatures(api.AdvancedMachineFeatures o) {
+  buildCounterAdvancedMachineFeatures++;
+  if (buildCounterAdvancedMachineFeatures < 3) {
+    unittest.expect(
+      o.threadsPerCore!,
+      unittest.equals(42),
+    );
+  }
+  buildCounterAdvancedMachineFeatures--;
 }
 
 core.int buildCounterApiWarning = 0;
@@ -167,6 +188,33 @@ void checkBackupContext(api.BackupContext o) {
     );
   }
   buildCounterBackupContext--;
+}
+
+core.int buildCounterBackupReencryptionConfig = 0;
+api.BackupReencryptionConfig buildBackupReencryptionConfig() {
+  final o = api.BackupReencryptionConfig();
+  buildCounterBackupReencryptionConfig++;
+  if (buildCounterBackupReencryptionConfig < 3) {
+    o.backupLimit = 42;
+    o.backupType = 'foo';
+  }
+  buildCounterBackupReencryptionConfig--;
+  return o;
+}
+
+void checkBackupReencryptionConfig(api.BackupReencryptionConfig o) {
+  buildCounterBackupReencryptionConfig++;
+  if (buildCounterBackupReencryptionConfig < 3) {
+    unittest.expect(
+      o.backupLimit!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.backupType!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterBackupReencryptionConfig--;
 }
 
 core.int buildCounterBackupRetentionSettings = 0;
@@ -390,6 +438,7 @@ api.CloneContext buildCloneContext() {
     o.kind = 'foo';
     o.pitrTimestampMs = 'foo';
     o.pointInTime = 'foo';
+    o.preferredZone = 'foo';
   }
   buildCounterCloneContext--;
   return o;
@@ -420,6 +469,10 @@ void checkCloneContext(api.CloneContext o) {
       o.pointInTime!,
       unittest.equals('foo'),
     );
+    unittest.expect(
+      o.preferredZone!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterCloneContext--;
 }
@@ -442,8 +495,10 @@ api.ConnectSettings buildConnectSettings() {
   if (buildCounterConnectSettings < 3) {
     o.backendType = 'foo';
     o.databaseVersion = 'foo';
+    o.dnsName = 'foo';
     o.ipAddresses = buildUnnamed2();
     o.kind = 'foo';
+    o.pscEnabled = true;
     o.region = 'foo';
     o.serverCaCert = buildSslCert();
   }
@@ -462,11 +517,16 @@ void checkConnectSettings(api.ConnectSettings o) {
       o.databaseVersion!,
       unittest.equals('foo'),
     );
+    unittest.expect(
+      o.dnsName!,
+      unittest.equals('foo'),
+    );
     checkUnnamed2(o.ipAddresses!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.pscEnabled!, unittest.isTrue);
     unittest.expect(
       o.region!,
       unittest.equals('foo'),
@@ -474,6 +534,25 @@ void checkConnectSettings(api.ConnectSettings o) {
     checkSslCert(o.serverCaCert!);
   }
   buildCounterConnectSettings--;
+}
+
+core.int buildCounterDataCacheConfig = 0;
+api.DataCacheConfig buildDataCacheConfig() {
+  final o = api.DataCacheConfig();
+  buildCounterDataCacheConfig++;
+  if (buildCounterDataCacheConfig < 3) {
+    o.dataCacheEnabled = true;
+  }
+  buildCounterDataCacheConfig--;
+  return o;
+}
+
+void checkDataCacheConfig(api.DataCacheConfig o) {
+  buildCounterDataCacheConfig++;
+  if (buildCounterDataCacheConfig < 3) {
+    unittest.expect(o.dataCacheEnabled!, unittest.isTrue);
+  }
+  buildCounterDataCacheConfig--;
 }
 
 core.int buildCounterDatabase = 0;
@@ -663,6 +742,7 @@ api.DatabaseInstance buildDatabaseInstance() {
     o.databaseVersion = 'foo';
     o.diskEncryptionConfiguration = buildDiskEncryptionConfiguration();
     o.diskEncryptionStatus = buildDiskEncryptionStatus();
+    o.dnsName = 'foo';
     o.etag = 'foo';
     o.failoverReplica = buildDatabaseInstanceFailoverReplica();
     o.gceZone = 'foo';
@@ -677,6 +757,7 @@ api.DatabaseInstance buildDatabaseInstance() {
     o.onPremisesConfiguration = buildOnPremisesConfiguration();
     o.outOfDiskReport = buildSqlOutOfDiskReport();
     o.project = 'foo';
+    o.pscServiceAttachmentLink = 'foo';
     o.region = 'foo';
     o.replicaConfiguration = buildReplicaConfiguration();
     o.replicaNames = buildUnnamed5();
@@ -726,6 +807,10 @@ void checkDatabaseInstance(api.DatabaseInstance o) {
     checkDiskEncryptionConfiguration(o.diskEncryptionConfiguration!);
     checkDiskEncryptionStatus(o.diskEncryptionStatus!);
     unittest.expect(
+      o.dnsName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.etag!,
       unittest.equals('foo'),
     );
@@ -767,6 +852,10 @@ void checkDatabaseInstance(api.DatabaseInstance o) {
     checkSqlOutOfDiskReport(o.outOfDiskReport!);
     unittest.expect(
       o.project!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.pscServiceAttachmentLink!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -1031,6 +1120,54 @@ void checkDiskEncryptionStatus(api.DiskEncryptionStatus o) {
   buildCounterDiskEncryptionStatus--;
 }
 
+core.int buildCounterEmpty = 0;
+api.Empty buildEmpty() {
+  final o = api.Empty();
+  buildCounterEmpty++;
+  if (buildCounterEmpty < 3) {}
+  buildCounterEmpty--;
+  return o;
+}
+
+void checkEmpty(api.Empty o) {
+  buildCounterEmpty++;
+  if (buildCounterEmpty < 3) {}
+  buildCounterEmpty--;
+}
+
+core.int buildCounterExportContextBakExportOptions = 0;
+api.ExportContextBakExportOptions buildExportContextBakExportOptions() {
+  final o = api.ExportContextBakExportOptions();
+  buildCounterExportContextBakExportOptions++;
+  if (buildCounterExportContextBakExportOptions < 3) {
+    o.bakType = 'foo';
+    o.copyOnly = true;
+    o.differentialBase = true;
+    o.stripeCount = 42;
+    o.striped = true;
+  }
+  buildCounterExportContextBakExportOptions--;
+  return o;
+}
+
+void checkExportContextBakExportOptions(api.ExportContextBakExportOptions o) {
+  buildCounterExportContextBakExportOptions++;
+  if (buildCounterExportContextBakExportOptions < 3) {
+    unittest.expect(
+      o.bakType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.copyOnly!, unittest.isTrue);
+    unittest.expect(o.differentialBase!, unittest.isTrue);
+    unittest.expect(
+      o.stripeCount!,
+      unittest.equals(42),
+    );
+    unittest.expect(o.striped!, unittest.isTrue);
+  }
+  buildCounterExportContextBakExportOptions--;
+}
+
 core.int buildCounterExportContextCsvExportOptions = 0;
 api.ExportContextCsvExportOptions buildExportContextCsvExportOptions() {
   final o = api.ExportContextCsvExportOptions();
@@ -1160,6 +1297,7 @@ api.ExportContext buildExportContext() {
   final o = api.ExportContext();
   buildCounterExportContext++;
   if (buildCounterExportContext < 3) {
+    o.bakExportOptions = buildExportContextBakExportOptions();
     o.csvExportOptions = buildExportContextCsvExportOptions();
     o.databases = buildUnnamed8();
     o.fileType = 'foo';
@@ -1175,6 +1313,7 @@ api.ExportContext buildExportContext() {
 void checkExportContext(api.ExportContext o) {
   buildCounterExportContext++;
   if (buildCounterExportContext < 3) {
+    checkExportContextBakExportOptions(o.bakExportOptions!);
     checkExportContextCsvExportOptions(o.csvExportOptions!);
     checkUnnamed8(o.databases!);
     unittest.expect(
@@ -1455,7 +1594,13 @@ api.ImportContextBakImportOptions buildImportContextBakImportOptions() {
   final o = api.ImportContextBakImportOptions();
   buildCounterImportContextBakImportOptions++;
   if (buildCounterImportContextBakImportOptions < 3) {
+    o.bakType = 'foo';
     o.encryptionOptions = buildImportContextBakImportOptionsEncryptionOptions();
+    o.noRecovery = true;
+    o.recoveryOnly = true;
+    o.stopAt = 'foo';
+    o.stopAtMark = 'foo';
+    o.striped = true;
   }
   buildCounterImportContextBakImportOptions--;
   return o;
@@ -1464,7 +1609,22 @@ api.ImportContextBakImportOptions buildImportContextBakImportOptions() {
 void checkImportContextBakImportOptions(api.ImportContextBakImportOptions o) {
   buildCounterImportContextBakImportOptions++;
   if (buildCounterImportContextBakImportOptions < 3) {
+    unittest.expect(
+      o.bakType!,
+      unittest.equals('foo'),
+    );
     checkImportContextBakImportOptionsEncryptionOptions(o.encryptionOptions!);
+    unittest.expect(o.noRecovery!, unittest.isTrue);
+    unittest.expect(o.recoveryOnly!, unittest.isTrue);
+    unittest.expect(
+      o.stopAt!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.stopAtMark!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.striped!, unittest.isTrue);
   }
   buildCounterImportContextBakImportOptions--;
 }
@@ -1829,6 +1989,25 @@ void checkInstancesListServerCasResponse(api.InstancesListServerCasResponse o) {
   buildCounterInstancesListServerCasResponse--;
 }
 
+core.int buildCounterInstancesReencryptRequest = 0;
+api.InstancesReencryptRequest buildInstancesReencryptRequest() {
+  final o = api.InstancesReencryptRequest();
+  buildCounterInstancesReencryptRequest++;
+  if (buildCounterInstancesReencryptRequest < 3) {
+    o.backupReencryptionConfig = buildBackupReencryptionConfig();
+  }
+  buildCounterInstancesReencryptRequest--;
+  return o;
+}
+
+void checkInstancesReencryptRequest(api.InstancesReencryptRequest o) {
+  buildCounterInstancesReencryptRequest++;
+  if (buildCounterInstancesReencryptRequest < 3) {
+    checkBackupReencryptionConfig(o.backupReencryptionConfig!);
+  }
+  buildCounterInstancesReencryptRequest--;
+}
+
 core.int buildCounterInstancesRestoreBackupRequest = 0;
 api.InstancesRestoreBackupRequest buildInstancesRestoreBackupRequest() {
   final o = api.InstancesRestoreBackupRequest();
@@ -1904,8 +2083,10 @@ api.IpConfiguration buildIpConfiguration() {
   if (buildCounterIpConfiguration < 3) {
     o.allocatedIpRange = 'foo';
     o.authorizedNetworks = buildUnnamed18();
+    o.enablePrivatePathForGoogleCloudServices = true;
     o.ipv4Enabled = true;
     o.privateNetwork = 'foo';
+    o.pscConfig = buildPscConfig();
     o.requireSsl = true;
   }
   buildCounterIpConfiguration--;
@@ -1920,11 +2101,14 @@ void checkIpConfiguration(api.IpConfiguration o) {
       unittest.equals('foo'),
     );
     checkUnnamed18(o.authorizedNetworks!);
+    unittest.expect(
+        o.enablePrivatePathForGoogleCloudServices!, unittest.isTrue);
     unittest.expect(o.ipv4Enabled!, unittest.isTrue);
     unittest.expect(
       o.privateNetwork!,
       unittest.equals('foo'),
     );
+    checkPscConfig(o.pscConfig!);
     unittest.expect(o.requireSsl!, unittest.isTrue);
   }
   buildCounterIpConfiguration--;
@@ -2451,6 +2635,66 @@ void checkPasswordValidationPolicy(api.PasswordValidationPolicy o) {
   buildCounterPasswordValidationPolicy--;
 }
 
+core.int buildCounterPerformDiskShrinkContext = 0;
+api.PerformDiskShrinkContext buildPerformDiskShrinkContext() {
+  final o = api.PerformDiskShrinkContext();
+  buildCounterPerformDiskShrinkContext++;
+  if (buildCounterPerformDiskShrinkContext < 3) {
+    o.targetSizeGb = 'foo';
+  }
+  buildCounterPerformDiskShrinkContext--;
+  return o;
+}
+
+void checkPerformDiskShrinkContext(api.PerformDiskShrinkContext o) {
+  buildCounterPerformDiskShrinkContext++;
+  if (buildCounterPerformDiskShrinkContext < 3) {
+    unittest.expect(
+      o.targetSizeGb!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterPerformDiskShrinkContext--;
+}
+
+core.List<core.String> buildUnnamed22() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed22(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterPscConfig = 0;
+api.PscConfig buildPscConfig() {
+  final o = api.PscConfig();
+  buildCounterPscConfig++;
+  if (buildCounterPscConfig < 3) {
+    o.allowedConsumerProjects = buildUnnamed22();
+    o.pscEnabled = true;
+  }
+  buildCounterPscConfig--;
+  return o;
+}
+
+void checkPscConfig(api.PscConfig o) {
+  buildCounterPscConfig++;
+  if (buildCounterPscConfig < 3) {
+    checkUnnamed22(o.allowedConsumerProjects!);
+    unittest.expect(o.pscEnabled!, unittest.isTrue);
+  }
+  buildCounterPscConfig--;
+}
+
 core.int buildCounterReplicaConfiguration = 0;
 api.ReplicaConfiguration buildReplicaConfiguration() {
   final o = api.ReplicaConfiguration();
@@ -2568,12 +2812,12 @@ void checkRotateServerCaContext(api.RotateServerCaContext o) {
   buildCounterRotateServerCaContext--;
 }
 
-core.List<core.String> buildUnnamed22() => [
+core.List<core.String> buildUnnamed23() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed22(core.List<core.String> o) {
+void checkUnnamed23(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2585,34 +2829,34 @@ void checkUnnamed22(core.List<core.String> o) {
   );
 }
 
-core.List<api.DatabaseFlags> buildUnnamed23() => [
+core.List<api.DatabaseFlags> buildUnnamed24() => [
       buildDatabaseFlags(),
       buildDatabaseFlags(),
     ];
 
-void checkUnnamed23(core.List<api.DatabaseFlags> o) {
+void checkUnnamed24(core.List<api.DatabaseFlags> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDatabaseFlags(o[0]);
   checkDatabaseFlags(o[1]);
 }
 
-core.List<api.DenyMaintenancePeriod> buildUnnamed24() => [
+core.List<api.DenyMaintenancePeriod> buildUnnamed25() => [
       buildDenyMaintenancePeriod(),
       buildDenyMaintenancePeriod(),
     ];
 
-void checkUnnamed24(core.List<api.DenyMaintenancePeriod> o) {
+void checkUnnamed25(core.List<api.DenyMaintenancePeriod> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDenyMaintenancePeriod(o[0]);
   checkDenyMaintenancePeriod(o[1]);
 }
 
-core.Map<core.String, core.String> buildUnnamed25() => {
+core.Map<core.String, core.String> buildUnnamed26() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed25(core.Map<core.String, core.String> o) {
+void checkUnnamed26(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -2631,18 +2875,21 @@ api.Settings buildSettings() {
   if (buildCounterSettings < 3) {
     o.activationPolicy = 'foo';
     o.activeDirectoryConfig = buildSqlActiveDirectoryConfig();
-    o.authorizedGaeApplications = buildUnnamed22();
+    o.advancedMachineFeatures = buildAdvancedMachineFeatures();
+    o.authorizedGaeApplications = buildUnnamed23();
     o.availabilityType = 'foo';
     o.backupConfiguration = buildBackupConfiguration();
     o.collation = 'foo';
     o.connectorEnforcement = 'foo';
     o.crashSafeReplicationEnabled = true;
+    o.dataCacheConfig = buildDataCacheConfig();
     o.dataDiskSizeGb = 'foo';
     o.dataDiskType = 'foo';
-    o.databaseFlags = buildUnnamed23();
+    o.databaseFlags = buildUnnamed24();
     o.databaseReplicationEnabled = true;
     o.deletionProtectionEnabled = true;
-    o.denyMaintenancePeriods = buildUnnamed24();
+    o.denyMaintenancePeriods = buildUnnamed25();
+    o.edition = 'foo';
     o.insightsConfig = buildInsightsConfig();
     o.ipConfiguration = buildIpConfiguration();
     o.kind = 'foo';
@@ -2657,7 +2904,7 @@ api.Settings buildSettings() {
     o.storageAutoResizeLimit = 'foo';
     o.tier = 'foo';
     o.timeZone = 'foo';
-    o.userLabels = buildUnnamed25();
+    o.userLabels = buildUnnamed26();
   }
   buildCounterSettings--;
   return o;
@@ -2671,7 +2918,8 @@ void checkSettings(api.Settings o) {
       unittest.equals('foo'),
     );
     checkSqlActiveDirectoryConfig(o.activeDirectoryConfig!);
-    checkUnnamed22(o.authorizedGaeApplications!);
+    checkAdvancedMachineFeatures(o.advancedMachineFeatures!);
+    checkUnnamed23(o.authorizedGaeApplications!);
     unittest.expect(
       o.availabilityType!,
       unittest.equals('foo'),
@@ -2686,6 +2934,7 @@ void checkSettings(api.Settings o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.crashSafeReplicationEnabled!, unittest.isTrue);
+    checkDataCacheConfig(o.dataCacheConfig!);
     unittest.expect(
       o.dataDiskSizeGb!,
       unittest.equals('foo'),
@@ -2694,10 +2943,14 @@ void checkSettings(api.Settings o) {
       o.dataDiskType!,
       unittest.equals('foo'),
     );
-    checkUnnamed23(o.databaseFlags!);
+    checkUnnamed24(o.databaseFlags!);
     unittest.expect(o.databaseReplicationEnabled!, unittest.isTrue);
     unittest.expect(o.deletionProtectionEnabled!, unittest.isTrue);
-    checkUnnamed24(o.denyMaintenancePeriods!);
+    checkUnnamed25(o.denyMaintenancePeriods!);
+    unittest.expect(
+      o.edition!,
+      unittest.equals('foo'),
+    );
     checkInsightsConfig(o.insightsConfig!);
     checkIpConfiguration(o.ipConfiguration!);
     unittest.expect(
@@ -2733,7 +2986,7 @@ void checkSettings(api.Settings o) {
       o.timeZone!,
       unittest.equals('foo'),
     );
-    checkUnnamed25(o.userLabels!);
+    checkUnnamed26(o.userLabels!);
   }
   buildCounterSettings--;
 }
@@ -2797,6 +3050,69 @@ void checkSqlExternalSyncSettingError(api.SqlExternalSyncSettingError o) {
   buildCounterSqlExternalSyncSettingError--;
 }
 
+core.int buildCounterSqlInstancesGetDiskShrinkConfigResponse = 0;
+api.SqlInstancesGetDiskShrinkConfigResponse
+    buildSqlInstancesGetDiskShrinkConfigResponse() {
+  final o = api.SqlInstancesGetDiskShrinkConfigResponse();
+  buildCounterSqlInstancesGetDiskShrinkConfigResponse++;
+  if (buildCounterSqlInstancesGetDiskShrinkConfigResponse < 3) {
+    o.kind = 'foo';
+    o.message = 'foo';
+    o.minimalTargetSizeGb = 'foo';
+  }
+  buildCounterSqlInstancesGetDiskShrinkConfigResponse--;
+  return o;
+}
+
+void checkSqlInstancesGetDiskShrinkConfigResponse(
+    api.SqlInstancesGetDiskShrinkConfigResponse o) {
+  buildCounterSqlInstancesGetDiskShrinkConfigResponse++;
+  if (buildCounterSqlInstancesGetDiskShrinkConfigResponse < 3) {
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.message!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.minimalTargetSizeGb!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterSqlInstancesGetDiskShrinkConfigResponse--;
+}
+
+core.int buildCounterSqlInstancesGetLatestRecoveryTimeResponse = 0;
+api.SqlInstancesGetLatestRecoveryTimeResponse
+    buildSqlInstancesGetLatestRecoveryTimeResponse() {
+  final o = api.SqlInstancesGetLatestRecoveryTimeResponse();
+  buildCounterSqlInstancesGetLatestRecoveryTimeResponse++;
+  if (buildCounterSqlInstancesGetLatestRecoveryTimeResponse < 3) {
+    o.kind = 'foo';
+    o.latestRecoveryTime = 'foo';
+  }
+  buildCounterSqlInstancesGetLatestRecoveryTimeResponse--;
+  return o;
+}
+
+void checkSqlInstancesGetLatestRecoveryTimeResponse(
+    api.SqlInstancesGetLatestRecoveryTimeResponse o) {
+  buildCounterSqlInstancesGetLatestRecoveryTimeResponse++;
+  if (buildCounterSqlInstancesGetLatestRecoveryTimeResponse < 3) {
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.latestRecoveryTime!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterSqlInstancesGetLatestRecoveryTimeResponse--;
+}
+
 core.int buildCounterSqlInstancesRescheduleMaintenanceRequestBody = 0;
 api.SqlInstancesRescheduleMaintenanceRequestBody
     buildSqlInstancesRescheduleMaintenanceRequestBody() {
@@ -2818,6 +3134,23 @@ void checkSqlInstancesRescheduleMaintenanceRequestBody(
   buildCounterSqlInstancesRescheduleMaintenanceRequestBody--;
 }
 
+core.int buildCounterSqlInstancesResetReplicaSizeRequest = 0;
+api.SqlInstancesResetReplicaSizeRequest
+    buildSqlInstancesResetReplicaSizeRequest() {
+  final o = api.SqlInstancesResetReplicaSizeRequest();
+  buildCounterSqlInstancesResetReplicaSizeRequest++;
+  if (buildCounterSqlInstancesResetReplicaSizeRequest < 3) {}
+  buildCounterSqlInstancesResetReplicaSizeRequest--;
+  return o;
+}
+
+void checkSqlInstancesResetReplicaSizeRequest(
+    api.SqlInstancesResetReplicaSizeRequest o) {
+  buildCounterSqlInstancesResetReplicaSizeRequest++;
+  if (buildCounterSqlInstancesResetReplicaSizeRequest < 3) {}
+  buildCounterSqlInstancesResetReplicaSizeRequest--;
+}
+
 core.int buildCounterSqlInstancesStartExternalSyncRequest = 0;
 api.SqlInstancesStartExternalSyncRequest
     buildSqlInstancesStartExternalSyncRequest() {
@@ -2827,6 +3160,7 @@ api.SqlInstancesStartExternalSyncRequest
     o.mysqlSyncConfig = buildMySqlSyncConfig();
     o.skipVerification = true;
     o.syncMode = 'foo';
+    o.syncParallelLevel = 'foo';
   }
   buildCounterSqlInstancesStartExternalSyncRequest--;
   return o;
@@ -2840,6 +3174,10 @@ void checkSqlInstancesStartExternalSyncRequest(
     unittest.expect(o.skipVerification!, unittest.isTrue);
     unittest.expect(
       o.syncMode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.syncParallelLevel!,
       unittest.equals('foo'),
     );
   }
@@ -2876,17 +3214,6 @@ void checkSqlInstancesVerifyExternalSyncSettingsRequest(
   buildCounterSqlInstancesVerifyExternalSyncSettingsRequest--;
 }
 
-core.List<api.SqlExternalSyncSettingError> buildUnnamed26() => [
-      buildSqlExternalSyncSettingError(),
-      buildSqlExternalSyncSettingError(),
-    ];
-
-void checkUnnamed26(core.List<api.SqlExternalSyncSettingError> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkSqlExternalSyncSettingError(o[0]);
-  checkSqlExternalSyncSettingError(o[1]);
-}
-
 core.List<api.SqlExternalSyncSettingError> buildUnnamed27() => [
       buildSqlExternalSyncSettingError(),
       buildSqlExternalSyncSettingError(),
@@ -2898,15 +3225,26 @@ void checkUnnamed27(core.List<api.SqlExternalSyncSettingError> o) {
   checkSqlExternalSyncSettingError(o[1]);
 }
 
+core.List<api.SqlExternalSyncSettingError> buildUnnamed28() => [
+      buildSqlExternalSyncSettingError(),
+      buildSqlExternalSyncSettingError(),
+    ];
+
+void checkUnnamed28(core.List<api.SqlExternalSyncSettingError> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkSqlExternalSyncSettingError(o[0]);
+  checkSqlExternalSyncSettingError(o[1]);
+}
+
 core.int buildCounterSqlInstancesVerifyExternalSyncSettingsResponse = 0;
 api.SqlInstancesVerifyExternalSyncSettingsResponse
     buildSqlInstancesVerifyExternalSyncSettingsResponse() {
   final o = api.SqlInstancesVerifyExternalSyncSettingsResponse();
   buildCounterSqlInstancesVerifyExternalSyncSettingsResponse++;
   if (buildCounterSqlInstancesVerifyExternalSyncSettingsResponse < 3) {
-    o.errors = buildUnnamed26();
+    o.errors = buildUnnamed27();
     o.kind = 'foo';
-    o.warnings = buildUnnamed27();
+    o.warnings = buildUnnamed28();
   }
   buildCounterSqlInstancesVerifyExternalSyncSettingsResponse--;
   return o;
@@ -2916,12 +3254,12 @@ void checkSqlInstancesVerifyExternalSyncSettingsResponse(
     api.SqlInstancesVerifyExternalSyncSettingsResponse o) {
   buildCounterSqlInstancesVerifyExternalSyncSettingsResponse++;
   if (buildCounterSqlInstancesVerifyExternalSyncSettingsResponse < 3) {
-    checkUnnamed26(o.errors!);
+    checkUnnamed27(o.errors!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed27(o.warnings!);
+    checkUnnamed28(o.warnings!);
   }
   buildCounterSqlInstancesVerifyExternalSyncSettingsResponse--;
 }
@@ -3048,12 +3386,12 @@ void checkSqlServerDatabaseDetails(api.SqlServerDatabaseDetails o) {
   buildCounterSqlServerDatabaseDetails--;
 }
 
-core.List<core.String> buildUnnamed28() => [
+core.List<core.String> buildUnnamed29() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed28(core.List<core.String> o) {
+void checkUnnamed29(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -3071,7 +3409,7 @@ api.SqlServerUserDetails buildSqlServerUserDetails() {
   buildCounterSqlServerUserDetails++;
   if (buildCounterSqlServerUserDetails < 3) {
     o.disabled = true;
-    o.serverRoles = buildUnnamed28();
+    o.serverRoles = buildUnnamed29();
   }
   buildCounterSqlServerUserDetails--;
   return o;
@@ -3081,7 +3419,7 @@ void checkSqlServerUserDetails(api.SqlServerUserDetails o) {
   buildCounterSqlServerUserDetails++;
   if (buildCounterSqlServerUserDetails < 3) {
     unittest.expect(o.disabled!, unittest.isTrue);
-    checkUnnamed28(o.serverRoles!);
+    checkUnnamed29(o.serverRoles!);
   }
   buildCounterSqlServerUserDetails--;
 }
@@ -3249,12 +3587,12 @@ void checkSslCertsInsertResponse(api.SslCertsInsertResponse o) {
   buildCounterSslCertsInsertResponse--;
 }
 
-core.List<api.SslCert> buildUnnamed29() => [
+core.List<api.SslCert> buildUnnamed30() => [
       buildSslCert(),
       buildSslCert(),
     ];
 
-void checkUnnamed29(core.List<api.SslCert> o) {
+void checkUnnamed30(core.List<api.SslCert> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSslCert(o[0]);
   checkSslCert(o[1]);
@@ -3265,7 +3603,7 @@ api.SslCertsListResponse buildSslCertsListResponse() {
   final o = api.SslCertsListResponse();
   buildCounterSslCertsListResponse++;
   if (buildCounterSslCertsListResponse < 3) {
-    o.items = buildUnnamed29();
+    o.items = buildUnnamed30();
     o.kind = 'foo';
   }
   buildCounterSslCertsListResponse--;
@@ -3275,7 +3613,7 @@ api.SslCertsListResponse buildSslCertsListResponse() {
 void checkSslCertsListResponse(api.SslCertsListResponse o) {
   buildCounterSslCertsListResponse++;
   if (buildCounterSslCertsListResponse < 3) {
-    checkUnnamed29(o.items!);
+    checkUnnamed30(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -3311,12 +3649,12 @@ void checkSyncFlags(api.SyncFlags o) {
   buildCounterSyncFlags--;
 }
 
-core.List<core.String> buildUnnamed30() => [
+core.List<core.String> buildUnnamed31() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed30(core.List<core.String> o) {
+void checkUnnamed31(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -3336,7 +3674,7 @@ api.Tier buildTier() {
     o.DiskQuota = 'foo';
     o.RAM = 'foo';
     o.kind = 'foo';
-    o.region = buildUnnamed30();
+    o.region = buildUnnamed31();
     o.tier = 'foo';
   }
   buildCounterTier--;
@@ -3358,7 +3696,7 @@ void checkTier(api.Tier o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed30(o.region!);
+    checkUnnamed31(o.region!);
     unittest.expect(
       o.tier!,
       unittest.equals('foo'),
@@ -3367,12 +3705,12 @@ void checkTier(api.Tier o) {
   buildCounterTier--;
 }
 
-core.List<api.Tier> buildUnnamed31() => [
+core.List<api.Tier> buildUnnamed32() => [
       buildTier(),
       buildTier(),
     ];
 
-void checkUnnamed31(core.List<api.Tier> o) {
+void checkUnnamed32(core.List<api.Tier> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTier(o[0]);
   checkTier(o[1]);
@@ -3383,7 +3721,7 @@ api.TiersListResponse buildTiersListResponse() {
   final o = api.TiersListResponse();
   buildCounterTiersListResponse++;
   if (buildCounterTiersListResponse < 3) {
-    o.items = buildUnnamed31();
+    o.items = buildUnnamed32();
     o.kind = 'foo';
   }
   buildCounterTiersListResponse--;
@@ -3393,7 +3731,7 @@ api.TiersListResponse buildTiersListResponse() {
 void checkTiersListResponse(api.TiersListResponse o) {
   buildCounterTiersListResponse++;
   if (buildCounterTiersListResponse < 3) {
-    checkUnnamed31(o.items!);
+    checkUnnamed32(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -3528,12 +3866,12 @@ void checkUserPasswordValidationPolicy(api.UserPasswordValidationPolicy o) {
   buildCounterUserPasswordValidationPolicy--;
 }
 
-core.List<api.User> buildUnnamed32() => [
+core.List<api.User> buildUnnamed33() => [
       buildUser(),
       buildUser(),
     ];
 
-void checkUnnamed32(core.List<api.User> o) {
+void checkUnnamed33(core.List<api.User> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUser(o[0]);
   checkUser(o[1]);
@@ -3544,7 +3882,7 @@ api.UsersListResponse buildUsersListResponse() {
   final o = api.UsersListResponse();
   buildCounterUsersListResponse++;
   if (buildCounterUsersListResponse < 3) {
-    o.items = buildUnnamed32();
+    o.items = buildUnnamed33();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
   }
@@ -3555,7 +3893,7 @@ api.UsersListResponse buildUsersListResponse() {
 void checkUsersListResponse(api.UsersListResponse o) {
   buildCounterUsersListResponse++;
   if (buildCounterUsersListResponse < 3) {
-    checkUnnamed32(o.items!);
+    checkUnnamed33(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -3576,6 +3914,16 @@ void main() {
       final od =
           api.AclEntry.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkAclEntry(od);
+    });
+  });
+
+  unittest.group('obj-schema-AdvancedMachineFeatures', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAdvancedMachineFeatures();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AdvancedMachineFeatures.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAdvancedMachineFeatures(od);
     });
   });
 
@@ -3606,6 +3954,16 @@ void main() {
       final od = api.BackupContext.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkBackupContext(od);
+    });
+  });
+
+  unittest.group('obj-schema-BackupReencryptionConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildBackupReencryptionConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BackupReencryptionConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkBackupReencryptionConfig(od);
     });
   });
 
@@ -3666,6 +4024,16 @@ void main() {
       final od = api.ConnectSettings.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkConnectSettings(od);
+    });
+  });
+
+  unittest.group('obj-schema-DataCacheConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDataCacheConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DataCacheConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkDataCacheConfig(od);
     });
   });
 
@@ -3776,6 +4144,26 @@ void main() {
       final od = api.DiskEncryptionStatus.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkDiskEncryptionStatus(od);
+    });
+  });
+
+  unittest.group('obj-schema-Empty', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildEmpty();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Empty.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkEmpty(od);
+    });
+  });
+
+  unittest.group('obj-schema-ExportContextBakExportOptions', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildExportContextBakExportOptions();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ExportContextBakExportOptions.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkExportContextBakExportOptions(od);
     });
   });
 
@@ -4001,6 +4389,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-InstancesReencryptRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildInstancesReencryptRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.InstancesReencryptRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkInstancesReencryptRequest(od);
+    });
+  });
+
   unittest.group('obj-schema-InstancesRestoreBackupRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildInstancesRestoreBackupRequest();
@@ -4161,6 +4559,26 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-PerformDiskShrinkContext', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPerformDiskShrinkContext();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PerformDiskShrinkContext.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkPerformDiskShrinkContext(od);
+    });
+  });
+
+  unittest.group('obj-schema-PscConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPscConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.PscConfig.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkPscConfig(od);
+    });
+  });
+
   unittest.group('obj-schema-ReplicaConfiguration', () {
     unittest.test('to-json--from-json', () async {
       final o = buildReplicaConfiguration();
@@ -4231,6 +4649,26 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-SqlInstancesGetDiskShrinkConfigResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSqlInstancesGetDiskShrinkConfigResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SqlInstancesGetDiskShrinkConfigResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSqlInstancesGetDiskShrinkConfigResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-SqlInstancesGetLatestRecoveryTimeResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSqlInstancesGetLatestRecoveryTimeResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SqlInstancesGetLatestRecoveryTimeResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSqlInstancesGetLatestRecoveryTimeResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-SqlInstancesRescheduleMaintenanceRequestBody', () {
     unittest.test('to-json--from-json', () async {
       final o = buildSqlInstancesRescheduleMaintenanceRequestBody();
@@ -4238,6 +4676,16 @@ void main() {
       final od = api.SqlInstancesRescheduleMaintenanceRequestBody.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkSqlInstancesRescheduleMaintenanceRequestBody(od);
+    });
+  });
+
+  unittest.group('obj-schema-SqlInstancesResetReplicaSizeRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSqlInstancesResetReplicaSizeRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SqlInstancesResetReplicaSizeRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSqlInstancesResetReplicaSizeRequest(od);
     });
   });
 
@@ -4462,7 +4910,7 @@ void main() {
       final arg_id = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4511,7 +4959,7 @@ void main() {
           unittest.equals('$arg_id'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4550,7 +4998,7 @@ void main() {
       final arg_id = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4599,7 +5047,7 @@ void main() {
           unittest.equals('$arg_id'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4642,7 +5090,7 @@ void main() {
             api.BackupRun.fromJson(json as core.Map<core.String, core.dynamic>);
         checkBackupRun(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4685,7 +5133,7 @@ void main() {
         );
         pathOffset += 11;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4725,7 +5173,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4768,7 +5216,7 @@ void main() {
         );
         pathOffset += 11;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4823,7 +5271,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGenerateEphemeralCertRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4866,7 +5314,7 @@ void main() {
         );
         pathOffset += 22;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4907,7 +5355,7 @@ void main() {
       final arg_readTime = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4950,7 +5398,7 @@ void main() {
         );
         pathOffset += 16;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4995,7 +5443,7 @@ void main() {
       final arg_database = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -5044,7 +5492,7 @@ void main() {
           unittest.equals('$arg_database'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -5083,7 +5531,7 @@ void main() {
       final arg_database = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -5132,7 +5580,7 @@ void main() {
           unittest.equals('$arg_database'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -5175,7 +5623,7 @@ void main() {
             api.Database.fromJson(json as core.Map<core.String, core.dynamic>);
         checkDatabase(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -5218,7 +5666,7 @@ void main() {
         );
         pathOffset += 10;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -5256,7 +5704,7 @@ void main() {
       final arg_instance = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -5299,7 +5747,7 @@ void main() {
         );
         pathOffset += 10;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -5343,7 +5791,7 @@ void main() {
             api.Database.fromJson(json as core.Map<core.String, core.dynamic>);
         checkDatabase(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -5392,7 +5840,7 @@ void main() {
           unittest.equals('$arg_database'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -5437,7 +5885,7 @@ void main() {
             api.Database.fromJson(json as core.Map<core.String, core.dynamic>);
         checkDatabase(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -5486,7 +5934,7 @@ void main() {
           unittest.equals('$arg_database'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -5526,7 +5974,7 @@ void main() {
       final arg_databaseVersion = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -5541,7 +5989,7 @@ void main() {
         );
         pathOffset += 17;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -5585,7 +6033,7 @@ void main() {
       final arg_instance = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -5628,7 +6076,7 @@ void main() {
         );
         pathOffset += 12;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -5671,7 +6119,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkInstancesCloneRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -5714,7 +6162,7 @@ void main() {
         );
         pathOffset += 6;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -5752,7 +6200,7 @@ void main() {
       final arg_instance = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -5787,7 +6235,7 @@ void main() {
           unittest.equals('$arg_instance'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -5830,7 +6278,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkInstancesDemoteMasterRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -5873,7 +6321,7 @@ void main() {
         );
         pathOffset += 13;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -5917,7 +6365,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkInstancesExportRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -5960,7 +6408,7 @@ void main() {
         );
         pathOffset += 7;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -6003,7 +6451,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkInstancesFailoverRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -6046,7 +6494,7 @@ void main() {
         );
         pathOffset += 9;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -6085,7 +6533,7 @@ void main() {
       final arg_instance = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -6120,7 +6568,7 @@ void main() {
           unittest.equals('$arg_instance'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -6163,7 +6611,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkInstancesImportRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -6206,7 +6654,7 @@ void main() {
         );
         pathOffset += 7;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -6248,7 +6696,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkDatabaseInstance(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -6277,7 +6725,7 @@ void main() {
         );
         pathOffset += 10;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -6317,7 +6765,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -6346,7 +6794,7 @@ void main() {
         );
         pathOffset += 10;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -6399,7 +6847,7 @@ void main() {
       final arg_instance = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -6442,7 +6890,7 @@ void main() {
         );
         pathOffset += 14;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -6486,7 +6934,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkDatabaseInstance(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -6521,7 +6969,7 @@ void main() {
           unittest.equals('$arg_instance'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -6559,7 +7007,7 @@ void main() {
       final arg_instance = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -6602,7 +7050,7 @@ void main() {
         );
         pathOffset += 15;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -6633,6 +7081,93 @@ void main() {
       checkOperation(response as api.Operation);
     });
 
+    unittest.test('method--reencrypt', () async {
+      final mock = HttpServerMock();
+      final res = api.SQLAdminApi(mock).instances;
+      final arg_request = buildInstancesReencryptRequest();
+      final arg_project = 'foo';
+      final arg_instance = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.InstancesReencryptRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkInstancesReencryptRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 21),
+          unittest.equals('sql/v1beta4/projects/'),
+        );
+        pathOffset += 21;
+        index = path.indexOf('/instances/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_project'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals('/instances/'),
+        );
+        pathOffset += 11;
+        index = path.indexOf('/reencrypt', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_instance'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 10),
+          unittest.equals('/reencrypt'),
+        );
+        pathOffset += 10;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.reencrypt(
+          arg_request, arg_project, arg_instance,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
     unittest.test('method--resetSslConfig', () async {
       final mock = HttpServerMock();
       final res = api.SQLAdminApi(mock).instances;
@@ -6640,7 +7175,7 @@ void main() {
       final arg_instance = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -6683,7 +7218,7 @@ void main() {
         );
         pathOffset += 15;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -6721,7 +7256,7 @@ void main() {
       final arg_instance = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -6764,7 +7299,7 @@ void main() {
         );
         pathOffset += 8;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -6807,7 +7342,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkInstancesRestoreBackupRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -6850,7 +7385,7 @@ void main() {
         );
         pathOffset += 14;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -6894,7 +7429,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkInstancesRotateServerCaRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -6937,7 +7472,7 @@ void main() {
         );
         pathOffset += 15;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -6976,7 +7511,7 @@ void main() {
       final arg_instance = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -7019,7 +7554,7 @@ void main() {
         );
         pathOffset += 13;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -7057,7 +7592,7 @@ void main() {
       final arg_instance = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -7100,7 +7635,7 @@ void main() {
         );
         pathOffset += 12;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -7143,7 +7678,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkInstancesTruncateLogRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -7186,7 +7721,7 @@ void main() {
         );
         pathOffset += 12;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -7230,7 +7765,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkDatabaseInstance(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -7265,7 +7800,7 @@ void main() {
           unittest.equals('$arg_instance'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -7298,6 +7833,87 @@ void main() {
   });
 
   unittest.group('resource-OperationsResource', () {
+    unittest.test('method--cancel', () async {
+      final mock = HttpServerMock();
+      final res = api.SQLAdminApi(mock).operations;
+      final arg_project = 'foo';
+      final arg_operation = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 21),
+          unittest.equals('sql/v1beta4/projects/'),
+        );
+        pathOffset += 21;
+        index = path.indexOf('/operations/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_project'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 12),
+          unittest.equals('/operations/'),
+        );
+        pathOffset += 12;
+        index = path.indexOf('/cancel', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_operation'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 7),
+          unittest.equals('/cancel'),
+        );
+        pathOffset += 7;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildEmpty());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.cancel(arg_project, arg_operation, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
+    });
+
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
       final res = api.SQLAdminApi(mock).operations;
@@ -7305,7 +7921,7 @@ void main() {
       final arg_operation = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -7340,7 +7956,7 @@ void main() {
           unittest.equals('$arg_operation'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -7380,7 +7996,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -7409,7 +8025,7 @@ void main() {
         );
         pathOffset += 11;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -7457,6 +8073,260 @@ void main() {
   });
 
   unittest.group('resource-ProjectsInstancesResource', () {
+    unittest.test('method--getDiskShrinkConfig', () async {
+      final mock = HttpServerMock();
+      final res = api.SQLAdminApi(mock).projects.instances;
+      final arg_project = 'foo';
+      final arg_instance = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 21),
+          unittest.equals('sql/v1beta4/projects/'),
+        );
+        pathOffset += 21;
+        index = path.indexOf('/instances/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_project'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals('/instances/'),
+        );
+        pathOffset += 11;
+        index = path.indexOf('/getDiskShrinkConfig', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_instance'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 20),
+          unittest.equals('/getDiskShrinkConfig'),
+        );
+        pathOffset += 20;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildSqlInstancesGetDiskShrinkConfigResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.getDiskShrinkConfig(arg_project, arg_instance,
+          $fields: arg_$fields);
+      checkSqlInstancesGetDiskShrinkConfigResponse(
+          response as api.SqlInstancesGetDiskShrinkConfigResponse);
+    });
+
+    unittest.test('method--getLatestRecoveryTime', () async {
+      final mock = HttpServerMock();
+      final res = api.SQLAdminApi(mock).projects.instances;
+      final arg_project = 'foo';
+      final arg_instance = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 21),
+          unittest.equals('sql/v1beta4/projects/'),
+        );
+        pathOffset += 21;
+        index = path.indexOf('/instances/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_project'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals('/instances/'),
+        );
+        pathOffset += 11;
+        index = path.indexOf('/getLatestRecoveryTime', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_instance'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 22),
+          unittest.equals('/getLatestRecoveryTime'),
+        );
+        pathOffset += 22;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildSqlInstancesGetLatestRecoveryTimeResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.getLatestRecoveryTime(
+          arg_project, arg_instance,
+          $fields: arg_$fields);
+      checkSqlInstancesGetLatestRecoveryTimeResponse(
+          response as api.SqlInstancesGetLatestRecoveryTimeResponse);
+    });
+
+    unittest.test('method--performDiskShrink', () async {
+      final mock = HttpServerMock();
+      final res = api.SQLAdminApi(mock).projects.instances;
+      final arg_request = buildPerformDiskShrinkContext();
+      final arg_project = 'foo';
+      final arg_instance = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.PerformDiskShrinkContext.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkPerformDiskShrinkContext(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 21),
+          unittest.equals('sql/v1beta4/projects/'),
+        );
+        pathOffset += 21;
+        index = path.indexOf('/instances/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_project'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals('/instances/'),
+        );
+        pathOffset += 11;
+        index = path.indexOf('/performDiskShrink', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_instance'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 18),
+          unittest.equals('/performDiskShrink'),
+        );
+        pathOffset += 18;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.performDiskShrink(
+          arg_request, arg_project, arg_instance,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
     unittest.test('method--rescheduleMaintenance', () async {
       final mock = HttpServerMock();
       final res = api.SQLAdminApi(mock).projects.instances;
@@ -7469,7 +8339,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkSqlInstancesRescheduleMaintenanceRequestBody(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -7512,7 +8382,7 @@ void main() {
         );
         pathOffset += 22;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -7544,6 +8414,93 @@ void main() {
       checkOperation(response as api.Operation);
     });
 
+    unittest.test('method--resetReplicaSize', () async {
+      final mock = HttpServerMock();
+      final res = api.SQLAdminApi(mock).projects.instances;
+      final arg_request = buildSqlInstancesResetReplicaSizeRequest();
+      final arg_project = 'foo';
+      final arg_instance = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.SqlInstancesResetReplicaSizeRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSqlInstancesResetReplicaSizeRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 21),
+          unittest.equals('sql/v1beta4/projects/'),
+        );
+        pathOffset += 21;
+        index = path.indexOf('/instances/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_project'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals('/instances/'),
+        );
+        pathOffset += 11;
+        index = path.indexOf('/resetReplicaSize', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_instance'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 17),
+          unittest.equals('/resetReplicaSize'),
+        );
+        pathOffset += 17;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.resetReplicaSize(
+          arg_request, arg_project, arg_instance,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
     unittest.test('method--startExternalSync', () async {
       final mock = HttpServerMock();
       final res = api.SQLAdminApi(mock).projects.instances;
@@ -7556,7 +8513,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkSqlInstancesStartExternalSyncRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -7599,7 +8556,7 @@ void main() {
         );
         pathOffset += 18;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -7643,7 +8600,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkSqlInstancesVerifyExternalSyncSettingsRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -7686,7 +8643,7 @@ void main() {
         );
         pathOffset += 27;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -7734,7 +8691,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkSslCertsCreateEphemeralRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -7777,7 +8734,7 @@ void main() {
         );
         pathOffset += 16;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -7817,7 +8774,7 @@ void main() {
       final arg_sha1Fingerprint = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -7866,7 +8823,7 @@ void main() {
           unittest.equals('$arg_sha1Fingerprint'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -7906,7 +8863,7 @@ void main() {
       final arg_sha1Fingerprint = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -7955,7 +8912,7 @@ void main() {
           unittest.equals('$arg_sha1Fingerprint'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -7999,7 +8956,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkSslCertsInsertRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -8042,7 +8999,7 @@ void main() {
         );
         pathOffset += 9;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -8080,7 +9037,7 @@ void main() {
       final arg_instance = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -8123,7 +9080,7 @@ void main() {
         );
         pathOffset += 9;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -8162,7 +9119,7 @@ void main() {
       final arg_project = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -8191,7 +9148,7 @@ void main() {
         );
         pathOffset += 6;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -8232,7 +9189,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -8275,7 +9232,7 @@ void main() {
         );
         pathOffset += 6;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -8320,9 +9277,10 @@ void main() {
       final arg_project = 'foo';
       final arg_instance = 'foo';
       final arg_name = 'foo';
+      final arg_host = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -8371,7 +9329,7 @@ void main() {
           unittest.equals('$arg_name'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -8387,6 +9345,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['host']!.first,
+          unittest.equals(arg_host),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -8398,7 +9360,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_project, arg_instance, arg_name,
-          $fields: arg_$fields);
+          host: arg_host, $fields: arg_$fields);
       checkUser(response as api.User);
     });
 
@@ -8414,7 +9376,7 @@ void main() {
             api.User.fromJson(json as core.Map<core.String, core.dynamic>);
         checkUser(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -8457,7 +9419,7 @@ void main() {
         );
         pathOffset += 6;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -8495,7 +9457,7 @@ void main() {
       final arg_instance = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -8538,7 +9500,7 @@ void main() {
         );
         pathOffset += 6;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -8583,7 +9545,7 @@ void main() {
             api.User.fromJson(json as core.Map<core.String, core.dynamic>);
         checkUser(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -8626,7 +9588,7 @@ void main() {
         );
         pathOffset += 6;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>

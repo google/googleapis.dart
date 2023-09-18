@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud Spanner API - v1
@@ -22,6 +21,7 @@
 /// Create an instance of [SpannerApi] to access these resources:
 ///
 /// - [ProjectsResource]
+///   - [ProjectsInstanceConfigOperationsResource]
 ///   - [ProjectsInstanceConfigsResource]
 ///     - [ProjectsInstanceConfigsOperationsResource]
 ///   - [ProjectsInstancesResource]
@@ -33,9 +33,11 @@
 ///       - [ProjectsInstancesDatabasesDatabaseRolesResource]
 ///       - [ProjectsInstancesDatabasesOperationsResource]
 ///       - [ProjectsInstancesDatabasesSessionsResource]
+///     - [ProjectsInstancesInstancePartitionsResource]
+///       - [ProjectsInstancesInstancePartitionsOperationsResource]
 ///     - [ProjectsInstancesOperationsResource]
 /// - [ScansResource]
-library spanner.v1;
+library spanner_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -44,7 +46,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -82,12 +83,108 @@ class SpannerApi {
 class ProjectsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsInstanceConfigOperationsResource get instanceConfigOperations =>
+      ProjectsInstanceConfigOperationsResource(_requester);
   ProjectsInstanceConfigsResource get instanceConfigs =>
       ProjectsInstanceConfigsResource(_requester);
   ProjectsInstancesResource get instances =>
       ProjectsInstancesResource(_requester);
 
   ProjectsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsInstanceConfigOperationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsInstanceConfigOperationsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists the user-managed instance config long-running operations in the
+  /// given project.
+  ///
+  /// An instance config operation has a name of the form
+  /// `projects//instanceConfigs//operations/`. The long-running operation
+  /// metadata field type `metadata.type_url` describes the type of the
+  /// metadata. Operations returned include those that have
+  /// completed/failed/canceled within the last 7 days, and pending operations.
+  /// Operations returned are ordered by `operation.metadata.value.start_time`
+  /// in descending order starting from the most recently started operation.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project of the instance config operations. Values
+  /// are of the form `projects/`.
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [filter] - An expression that filters the list of returned operations. A
+  /// filter expression consists of a field name, a comparison operator, and a
+  /// value for filtering. The value must be a string, a number, or a boolean.
+  /// The comparison operator must be one of: `<`, `>`, `<=`, `>=`, `!=`, `=`,
+  /// or `:`. Colon `:` is the contains operator. Filter rules are not case
+  /// sensitive. The following fields in the Operation are eligible for
+  /// filtering: * `name` - The name of the long-running operation * `done` -
+  /// False if the operation is in progress, else true. * `metadata.@type` - the
+  /// type of metadata. For example, the type string for
+  /// CreateInstanceConfigMetadata is
+  /// `type.googleapis.com/google.spanner.admin.instance.v1.CreateInstanceConfigMetadata`.
+  /// * `metadata.` - any field in metadata.value. `metadata.@type` must be
+  /// specified first, if filtering on metadata fields. * `error` - Error
+  /// associated with the long-running operation. * `response.@type` - the type
+  /// of response. * `response.` - any field in response.value. You can combine
+  /// multiple expressions by enclosing each expression in parentheses. By
+  /// default, expressions are combined with AND logic. However, you can specify
+  /// AND, OR, and NOT logic explicitly. Here are a few examples: * `done:true`
+  /// - The operation is complete. * `(metadata.@type=` \
+  /// `type.googleapis.com/google.spanner.admin.instance.v1.CreateInstanceConfigMetadata)
+  /// AND` \ `(metadata.instance_config.name:custom-config) AND` \
+  /// `(metadata.progress.start_time < \"2021-03-28T14:50:00Z\") AND` \
+  /// `(error:*)` - Return operations where: * The operation's metadata type is
+  /// CreateInstanceConfigMetadata. * The instance config name contains
+  /// "custom-config". * The operation started before 2021-03-28T14:50:00Z. *
+  /// The operation resulted in an error.
+  ///
+  /// [pageSize] - Number of operations to be returned in the response. If 0 or
+  /// less, defaults to the server's maximum allowed page size.
+  ///
+  /// [pageToken] - If non-empty, `page_token` should contain a next_page_token
+  /// from a previous ListInstanceConfigOperationsResponse to the same `parent`
+  /// and with the same `filter`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListInstanceConfigOperationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListInstanceConfigOperationsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/instanceConfigOperations';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListInstanceConfigOperationsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsInstanceConfigsResource {
@@ -98,6 +195,121 @@ class ProjectsInstanceConfigsResource {
 
   ProjectsInstanceConfigsResource(commons.ApiRequester client)
       : _requester = client;
+
+  /// Creates an instance config and begins preparing it to be used.
+  ///
+  /// The returned long-running operation can be used to track the progress of
+  /// preparing the new instance config. The instance config name is assigned by
+  /// the caller. If the named instance config already exists,
+  /// `CreateInstanceConfig` returns `ALREADY_EXISTS`. Immediately after the
+  /// request returns: * The instance config is readable via the API, with all
+  /// requested attributes. The instance config's reconciling field is set to
+  /// true. Its state is `CREATING`. While the operation is pending: *
+  /// Cancelling the operation renders the instance config immediately
+  /// unreadable via the API. * Except for deleting the creating resource, all
+  /// other attempts to modify the instance config are rejected. Upon completion
+  /// of the returned operation: * Instances can be created using the instance
+  /// configuration. * The instance config's reconciling field becomes false.
+  /// Its state becomes `READY`. The returned long-running operation will have a
+  /// name of the format `/operations/` and can be used to track creation of the
+  /// instance config. The metadata field type is CreateInstanceConfigMetadata.
+  /// The response field type is InstanceConfig, if successful. Authorization
+  /// requires `spanner.instanceConfigs.create` permission on the resource
+  /// parent.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the project in which to create the
+  /// instance config. Values are of the form `projects/`.
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    CreateInstanceConfigRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/instanceConfigs';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes the instance config.
+  ///
+  /// Deletion is only allowed when no instances are using the configuration. If
+  /// any instances are using the config, returns `FAILED_PRECONDITION`. Only
+  /// user managed configurations can be deleted. Authorization requires
+  /// `spanner.instanceConfigs.delete` permission on the resource name.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the instance configuration to be deleted.
+  /// Values are of the form `projects//instanceConfigs/`
+  /// Value must have pattern `^projects/\[^/\]+/instanceConfigs/\[^/\]+$`.
+  ///
+  /// [etag] - Used for optimistic concurrency control as a way to help prevent
+  /// simultaneous deletes of an instance config from overwriting each other. If
+  /// not empty, the API only deletes the instance config when the etag provided
+  /// matches the current status of the requested instance config. Otherwise,
+  /// deletes the instance config without checking the current status of the
+  /// requested instance config.
+  ///
+  /// [validateOnly] - An option to validate, but not actually execute, a
+  /// request, and provide the same response.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? etag,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (etag != null) 'etag': [etag],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 
   /// Gets information about a particular instance configuration.
   ///
@@ -182,6 +394,66 @@ class ProjectsInstanceConfigsResource {
     );
     return ListInstanceConfigsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an instance config.
+  ///
+  /// The returned long-running operation can be used to track the progress of
+  /// updating the instance. If the named instance config does not exist,
+  /// returns `NOT_FOUND`. Only user managed configurations can be updated.
+  /// Immediately after the request returns: * The instance config's reconciling
+  /// field is set to true. While the operation is pending: * Cancelling the
+  /// operation sets its metadata's cancel_time. The operation is guaranteed to
+  /// succeed at undoing all changes, after which point it terminates with a
+  /// `CANCELLED` status. * All other attempts to modify the instance config are
+  /// rejected. * Reading the instance config via the API continues to give the
+  /// pre-request values. Upon completion of the returned operation: * Creating
+  /// instances using the instance configuration uses the new values. * The
+  /// instance config's new values are readable via the API. * The instance
+  /// config's reconciling field becomes false. The returned long-running
+  /// operation will have a name of the format `/operations/` and can be used to
+  /// track the instance config modification. The metadata field type is
+  /// UpdateInstanceConfigMetadata. The response field type is InstanceConfig,
+  /// if successful. Authorization requires `spanner.instanceConfigs.update`
+  /// permission on the resource name.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - A unique identifier for the instance configuration. Values are of
+  /// the form `projects//instanceConfigs/a-z*`.
+  /// Value must have pattern `^projects/\[^/\]+/instanceConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    UpdateInstanceConfigRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -318,13 +590,6 @@ class ProjectsInstanceConfigsOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -385,6 +650,8 @@ class ProjectsInstancesResource {
       ProjectsInstancesDatabaseOperationsResource(_requester);
   ProjectsInstancesDatabasesResource get databases =>
       ProjectsInstancesDatabasesResource(_requester);
+  ProjectsInstancesInstancePartitionsResource get instancePartitions =>
+      ProjectsInstancesInstancePartitionsResource(_requester);
   ProjectsInstancesOperationsResource get operations =>
       ProjectsInstancesOperationsResource(_requester);
 
@@ -933,8 +1200,8 @@ class ProjectsInstancesBackupsResource {
   /// copying of the backup. The operation is associated with the destination
   /// backup. The metadata field type is CopyBackupMetadata. The response field
   /// type is Backup, if successful. Cancelling the returned operation will stop
-  /// the copying and delete the backup. Concurrent CopyBackup requests can run
-  /// on the same source backup.
+  /// the copying and delete the destination backup. Concurrent CopyBackup
+  /// requests can run on the same source backup.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1544,13 +1811,6 @@ class ProjectsInstancesBackupsOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -2027,6 +2287,72 @@ class ProjectsInstancesDatabasesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Updates a Cloud Spanner database.
+  ///
+  /// The returned long-running operation can be used to track the progress of
+  /// updating the database. If the named database does not exist, returns
+  /// `NOT_FOUND`. While the operation is pending: * The database's reconciling
+  /// field is set to true. * Cancelling the operation is best-effort. If the
+  /// cancellation succeeds, the operation metadata's cancel_time is set, the
+  /// updates are reverted, and the operation terminates with a `CANCELLED`
+  /// status. * New UpdateDatabase requests will return a `FAILED_PRECONDITION`
+  /// error until the pending operation is done (returns successfully or with
+  /// error). * Reading the database via the API continues to give the
+  /// pre-request values. Upon completion of the returned operation: * The new
+  /// values are in effect and readable via the API. * The database's
+  /// reconciling field becomes false. The returned long-running operation will
+  /// have a name of the format `projects//instances//databases//operations/`
+  /// and can be used to track the database modification. The metadata field
+  /// type is UpdateDatabaseMetadata. The response field type is Database, if
+  /// successful.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the database. Values are of the form
+  /// `projects//instances//databases/`, where `` is as specified in the `CREATE
+  /// DATABASE` statement. This name can be passed to other API methods to
+  /// identify the database.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/databases/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The list of fields to update. Currently, only
+  /// `enable_drop_protection` field can be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    Database request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Create a new database by restoring from a completed backup.
   ///
   /// The new database must be in the same project and in an instance with the
@@ -2472,13 +2798,6 @@ class ProjectsInstancesDatabasesOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -3268,6 +3587,199 @@ class ProjectsInstancesDatabasesSessionsResource {
   }
 }
 
+class ProjectsInstancesInstancePartitionsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsInstancesInstancePartitionsOperationsResource get operations =>
+      ProjectsInstancesInstancePartitionsOperationsResource(_requester);
+
+  ProjectsInstancesInstancePartitionsResource(commons.ApiRequester client)
+      : _requester = client;
+}
+
+class ProjectsInstancesInstancePartitionsOperationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsInstancesInstancePartitionsOperationsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Starts asynchronous cancellation on a long-running operation.
+  ///
+  /// The server makes a best effort to cancel the operation, but success is not
+  /// guaranteed. If the server doesn't support this method, it returns
+  /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
+  /// or other methods to check whether the cancellation succeeded or whether
+  /// the operation completed despite cancellation. On successful cancellation,
+  /// the operation is not deleted; instead, it becomes an operation with an
+  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
+  /// `Code.CANCELLED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be cancelled.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/instancePartitions/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> cancel(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a long-running operation.
+  ///
+  /// This method indicates that the client is no longer interested in the
+  /// operation result. It does not cancel the operation. If the server doesn't
+  /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be deleted.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/instancePartitions/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/instancePartitions/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists operations that match the specified filter in the request.
+  ///
+  /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation's parent resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/instancePartitions/\[^/\]+/operations$`.
+  ///
+  /// [filter] - The standard list filter.
+  ///
+  /// [pageSize] - The standard list page size.
+  ///
+  /// [pageToken] - The standard list page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListOperationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListOperationsResponse> list(
+    core.String name, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListOperationsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsInstancesOperationsResource {
   final commons.ApiRequester _requester;
 
@@ -3401,13 +3913,6 @@ class ProjectsInstancesOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -3550,13 +4055,11 @@ class Backup {
   /// Possible string values are:
   /// - "DATABASE_DIALECT_UNSPECIFIED" : Default value. This value will create a
   /// database with the GOOGLE_STANDARD_SQL dialect.
-  /// - "GOOGLE_STANDARD_SQL" : Google standard SQL.
+  /// - "GOOGLE_STANDARD_SQL" : GoogleSQL supported SQL.
   /// - "POSTGRESQL" : PostgreSQL supported SQL.
   core.String? databaseDialect;
 
   /// The encryption information for the backup.
-  ///
-  /// .
   ///
   /// Output only.
   EncryptionInfo? encryptionInfo;
@@ -3878,16 +4381,20 @@ class Binding {
   /// identifier that represents anyone who is on the internet; with or without
   /// a Google account. * `allAuthenticatedUsers`: A special identifier that
   /// represents anyone who is authenticated with a Google account or a service
-  /// account. * `user:{emailid}`: An email address that represents a specific
-  /// Google account. For example, `alice@example.com` . *
-  /// `serviceAccount:{emailid}`: An email address that represents a Google
-  /// service account. For example, `my-other-app@appspot.gserviceaccount.com`.
-  /// * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`:
-  /// An identifier for a
+  /// account. Does not include identities that come from external identity
+  /// providers (IdPs) through identity federation. * `user:{emailid}`: An email
+  /// address that represents a specific Google account. For example,
+  /// `alice@example.com` . * `serviceAccount:{emailid}`: An email address that
+  /// represents a Google service account. For example,
+  /// `my-other-app@appspot.gserviceaccount.com`. *
+  /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An
+  /// identifier for a
   /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
   /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
-  /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
+  /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
+  /// (primary) that represents all the users of that domain. For example,
+  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
   /// An email address (plus unique identifier) representing a user that has
   /// been recently deleted. For example,
   /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
@@ -3903,9 +4410,7 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
-  /// that represents all the users of that domain. For example, `google.com` or
-  /// `example.com`.
+  /// the role in the binding.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
@@ -4194,7 +4699,8 @@ class CopyBackupEncryptionConfig {
   /// be using the same Cloud KMS key as the source backup.
   /// - "GOOGLE_DEFAULT_ENCRYPTION" : Use Google default encryption.
   /// - "CUSTOMER_MANAGED_ENCRYPTION" : Use customer managed encryption. If
-  /// specified, `kms_key_name` must contain a valid Cloud KMS key.
+  /// specified, either `kms_key_name` or `kms_key_names` must contain valid
+  /// Cloud KMS key(s).
   core.String? encryptionType;
 
   /// The Cloud KMS key that will be used to protect the backup.
@@ -4317,7 +4823,7 @@ class CreateDatabaseRequest {
   /// Possible string values are:
   /// - "DATABASE_DIALECT_UNSPECIFIED" : Default value. This value will create a
   /// database with the GOOGLE_STANDARD_SQL dialect.
-  /// - "GOOGLE_STANDARD_SQL" : Google standard SQL.
+  /// - "GOOGLE_STANDARD_SQL" : GoogleSQL supported SQL.
   /// - "POSTGRESQL" : PostgreSQL supported SQL.
   core.String? databaseDialect;
 
@@ -4338,11 +4844,35 @@ class CreateDatabaseRequest {
   /// Optional.
   core.List<core.String>? extraStatements;
 
+  /// Proto descriptors used by CREATE/ALTER PROTO BUNDLE statements in
+  /// 'extra_statements' above.
+  ///
+  /// Contains a protobuf-serialized
+  /// [google.protobuf.FileDescriptorSet](https://github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/descriptor.proto).
+  /// To generate it, [install](https://grpc.io/docs/protoc-installation/) and
+  /// run `protoc` with --include_imports and --descriptor_set_out. For example,
+  /// to generate for moon/shot/app.proto, run """ $protoc
+  /// --proto_path=/app_path --proto_path=/lib_path \ --include_imports \
+  /// --descriptor_set_out=descriptors.data \ moon/shot/app.proto """ For more
+  /// details, see protobuffer
+  /// [self description](https://developers.google.com/protocol-buffers/docs/techniques#self-description).
+  ///
+  /// Optional.
+  core.String? protoDescriptors;
+  core.List<core.int> get protoDescriptorsAsBytes =>
+      convert.base64.decode(protoDescriptors!);
+
+  set protoDescriptorsAsBytes(core.List<core.int> bytes_) {
+    protoDescriptors =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
   CreateDatabaseRequest({
     this.createStatement,
     this.databaseDialect,
     this.encryptionConfig,
     this.extraStatements,
+    this.protoDescriptors,
   });
 
   CreateDatabaseRequest.fromJson(core.Map json_)
@@ -4362,6 +4892,9 @@ class CreateDatabaseRequest {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          protoDescriptors: json_.containsKey('protoDescriptors')
+              ? json_['protoDescriptors'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4369,6 +4902,58 @@ class CreateDatabaseRequest {
         if (databaseDialect != null) 'databaseDialect': databaseDialect!,
         if (encryptionConfig != null) 'encryptionConfig': encryptionConfig!,
         if (extraStatements != null) 'extraStatements': extraStatements!,
+        if (protoDescriptors != null) 'protoDescriptors': protoDescriptors!,
+      };
+}
+
+/// The request for CreateInstanceConfigRequest.
+class CreateInstanceConfigRequest {
+  /// The InstanceConfig proto of the configuration to create.
+  ///
+  /// instance_config.name must be `/instanceConfigs/`.
+  /// instance_config.base_config must be a Google managed configuration name,
+  /// e.g. /instanceConfigs/us-east1, /instanceConfigs/nam3.
+  ///
+  /// Required.
+  InstanceConfig? instanceConfig;
+
+  /// The ID of the instance config to create.
+  ///
+  /// Valid identifiers are of the form `custom-[-a-z0-9]*[a-z0-9]` and must be
+  /// between 2 and 64 characters in length. The `custom-` prefix is required to
+  /// avoid name conflicts with Google managed configurations.
+  ///
+  /// Required.
+  core.String? instanceConfigId;
+
+  /// An option to validate, but not actually execute, a request, and provide
+  /// the same response.
+  core.bool? validateOnly;
+
+  CreateInstanceConfigRequest({
+    this.instanceConfig,
+    this.instanceConfigId,
+    this.validateOnly,
+  });
+
+  CreateInstanceConfigRequest.fromJson(core.Map json_)
+      : this(
+          instanceConfig: json_.containsKey('instanceConfig')
+              ? InstanceConfig.fromJson(json_['instanceConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          instanceConfigId: json_.containsKey('instanceConfigId')
+              ? json_['instanceConfigId'] as core.String
+              : null,
+          validateOnly: json_.containsKey('validateOnly')
+              ? json_['validateOnly'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (instanceConfig != null) 'instanceConfig': instanceConfig!,
+        if (instanceConfigId != null) 'instanceConfigId': instanceConfigId!,
+        if (validateOnly != null) 'validateOnly': validateOnly!,
       };
 }
 
@@ -4448,7 +5033,7 @@ class Database {
   /// Possible string values are:
   /// - "DATABASE_DIALECT_UNSPECIFIED" : Default value. This value will create a
   /// database with the GOOGLE_STANDARD_SQL dialect.
-  /// - "GOOGLE_STANDARD_SQL" : Google standard SQL.
+  /// - "GOOGLE_STANDARD_SQL" : GoogleSQL supported SQL.
   /// - "POSTGRESQL" : PostgreSQL supported SQL.
   core.String? databaseDialect;
 
@@ -4470,6 +5055,12 @@ class Database {
   ///
   /// Output only.
   core.String? earliestVersionTime;
+
+  /// Whether drop protection is enabled for this database.
+  ///
+  /// Defaults to false, if not set. For more details, please see how to
+  /// [prevent accidental database deletion](https://cloud.google.com/spanner/docs/prevent-database-deletion).
+  core.bool? enableDropProtection;
 
   /// For databases that are using customer managed encryption, this field
   /// contains the encryption configuration for the database.
@@ -4501,6 +5092,13 @@ class Database {
   ///
   /// Required.
   core.String? name;
+
+  /// If true, the database is being updated.
+  ///
+  /// If false, there are no ongoing update operations for the database.
+  ///
+  /// Output only.
+  core.bool? reconciling;
 
   /// Applicable only for restored databases.
   ///
@@ -4539,9 +5137,11 @@ class Database {
     this.databaseDialect,
     this.defaultLeader,
     this.earliestVersionTime,
+    this.enableDropProtection,
     this.encryptionConfig,
     this.encryptionInfo,
     this.name,
+    this.reconciling,
     this.restoreInfo,
     this.state,
     this.versionRetentionPeriod,
@@ -4561,6 +5161,9 @@ class Database {
           earliestVersionTime: json_.containsKey('earliestVersionTime')
               ? json_['earliestVersionTime'] as core.String
               : null,
+          enableDropProtection: json_.containsKey('enableDropProtection')
+              ? json_['enableDropProtection'] as core.bool
+              : null,
           encryptionConfig: json_.containsKey('encryptionConfig')
               ? EncryptionConfig.fromJson(json_['encryptionConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -4572,6 +5175,9 @@ class Database {
                   .toList()
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          reconciling: json_.containsKey('reconciling')
+              ? json_['reconciling'] as core.bool
+              : null,
           restoreInfo: json_.containsKey('restoreInfo')
               ? RestoreInfo.fromJson(
                   json_['restoreInfo'] as core.Map<core.String, core.dynamic>)
@@ -4589,9 +5195,12 @@ class Database {
         if (defaultLeader != null) 'defaultLeader': defaultLeader!,
         if (earliestVersionTime != null)
           'earliestVersionTime': earliestVersionTime!,
+        if (enableDropProtection != null)
+          'enableDropProtection': enableDropProtection!,
         if (encryptionConfig != null) 'encryptionConfig': encryptionConfig!,
         if (encryptionInfo != null) 'encryptionInfo': encryptionInfo!,
         if (name != null) 'name': name!,
+        if (reconciling != null) 'reconciling': reconciling!,
         if (restoreInfo != null) 'restoreInfo': restoreInfo!,
         if (state != null) 'state': state!,
         if (versionRetentionPeriod != null)
@@ -4982,6 +5591,13 @@ class ExecuteBatchDmlResponse {
 
 /// The request for ExecuteSql and ExecuteStreamingSql.
 class ExecuteSqlRequest {
+  /// If this is for a partitioned query and this field is set to `true`, the
+  /// request is executed with Spanner Data Boost independent compute resources.
+  ///
+  /// If the field is set to `true` but the request does not set
+  /// `partition_token`, the API returns an `INVALID_ARGUMENT` error.
+  core.bool? dataBoostEnabled;
+
   /// It is not always possible for Cloud Spanner to infer the right SQL type
   /// from a JSON value.
   ///
@@ -5083,6 +5699,7 @@ class ExecuteSqlRequest {
   TransactionSelector? transaction;
 
   ExecuteSqlRequest({
+    this.dataBoostEnabled,
     this.paramTypes,
     this.params,
     this.partitionToken,
@@ -5097,12 +5714,15 @@ class ExecuteSqlRequest {
 
   ExecuteSqlRequest.fromJson(core.Map json_)
       : this(
+          dataBoostEnabled: json_.containsKey('dataBoostEnabled')
+              ? json_['dataBoostEnabled'] as core.bool
+              : null,
           paramTypes: json_.containsKey('paramTypes')
               ? (json_['paramTypes'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    Type.fromJson(item as core.Map<core.String, core.dynamic>),
+                    Type.fromJson(value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -5136,6 +5756,7 @@ class ExecuteSqlRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (dataBoostEnabled != null) 'dataBoostEnabled': dataBoostEnabled!,
         if (paramTypes != null) 'paramTypes': paramTypes!,
         if (params != null) 'params': params!,
         if (partitionToken != null) 'partitionToken': partitionToken!,
@@ -5264,16 +5885,35 @@ class FreeInstanceMetadata {
 
 /// The response for GetDatabaseDdl.
 class GetDatabaseDdlResponse {
+  /// Proto descriptors stored in the database.
+  ///
+  /// Contains a protobuf-serialized
+  /// [google.protobuf.FileDescriptorSet](https://github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/descriptor.proto).
+  /// For more details, see protobuffer
+  /// [self description](https://developers.google.com/protocol-buffers/docs/techniques#self-description).
+  core.String? protoDescriptors;
+  core.List<core.int> get protoDescriptorsAsBytes =>
+      convert.base64.decode(protoDescriptors!);
+
+  set protoDescriptorsAsBytes(core.List<core.int> bytes_) {
+    protoDescriptors =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
   /// A list of formatted DDL statements defining the schema of the database
   /// specified in the request.
   core.List<core.String>? statements;
 
   GetDatabaseDdlResponse({
+    this.protoDescriptors,
     this.statements,
   });
 
   GetDatabaseDdlResponse.fromJson(core.Map json_)
       : this(
+          protoDescriptors: json_.containsKey('protoDescriptors')
+              ? json_['protoDescriptors'] as core.String
+              : null,
           statements: json_.containsKey('statements')
               ? (json_['statements'] as core.List)
                   .map((value) => value as core.String)
@@ -5282,6 +5922,7 @@ class GetDatabaseDdlResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (protoDescriptors != null) 'protoDescriptors': protoDescriptors!,
         if (statements != null) 'statements': statements!,
       };
 }
@@ -5331,9 +5972,9 @@ class IndexedHotKey {
           sparseHotKeys: json_.containsKey('sparseHotKeys')
               ? (json_['sparseHotKeys'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.int,
+                    value as core.int,
                   ),
                 )
               : null,
@@ -5360,10 +6001,10 @@ class IndexedKeyRangeInfos {
           keyRangeInfos: json_.containsKey('keyRangeInfos')
               ? (json_['keyRangeInfos'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     KeyRangeInfos.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -5448,8 +6089,9 @@ class Instance {
   /// The number of nodes allocated to this instance.
   ///
   /// At most one of either node_count or processing_units should be present in
-  /// the message. This may be zero in API responses for instances that are not
-  /// yet in state `READY`. See
+  /// the message. Users can set the node_count field to specify the target
+  /// number of nodes allocated to the instance. This may be zero in API
+  /// responses for instances that are not yet in state `READY`. See
   /// [the documentation](https://cloud.google.com/spanner/docs/compute-capacity)
   /// for more information about nodes and processing units.
   core.int? nodeCount;
@@ -5457,8 +6099,9 @@ class Instance {
   /// The number of processing units allocated to this instance.
   ///
   /// At most one of processing_units or node_count should be present in the
-  /// message. This may be zero in API responses for instances that are not yet
-  /// in state `READY`. See
+  /// message. Users can set the processing_units field to specify the target
+  /// number of processing units allocated to the instance. This may be zero in
+  /// API responses for instances that are not yet in state `READY`. See
   /// [the documentation](https://cloud.google.com/spanner/docs/compute-capacity)
   /// for more information about nodes and processing units.
   core.int? processingUnits;
@@ -5522,9 +6165,9 @@ class Instance {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -5564,8 +6207,38 @@ class Instance {
 /// Configurations define the geographic placement of nodes and their
 /// replication.
 class InstanceConfig {
+  /// Base configuration name, e.g. projects//instanceConfigs/nam3, based on
+  /// which this configuration is created.
+  ///
+  /// Only set for user managed configurations. `base_config` must refer to a
+  /// configuration of type GOOGLE_MANAGED in the same project as this
+  /// configuration.
+  core.String? baseConfig;
+
+  /// Whether this instance config is a Google or User Managed Configuration.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Unspecified.
+  /// - "GOOGLE_MANAGED" : Google managed configuration.
+  /// - "USER_MANAGED" : User managed configuration.
+  core.String? configType;
+
   /// The name of this instance configuration as it appears in UIs.
   core.String? displayName;
+
+  /// etag is used for optimistic concurrency control as a way to help prevent
+  /// simultaneous updates of a instance config from overwriting each other.
+  ///
+  /// It is strongly suggested that systems make use of the etag in the
+  /// read-modify-write cycle to perform instance config updates in order to
+  /// avoid race conditions: An etag is returned in the response which contains
+  /// instance configs, and systems are expected to put that etag in the request
+  /// to update instance config to ensure that their change will be applied to
+  /// the same version of the instance config. If no etag is provided in the
+  /// call to update instance config, then the existing instance config is
+  /// overwritten blindly.
+  core.String? etag;
 
   /// Describes whether free instances are available to be created in this
   /// instance config.
@@ -5584,6 +6257,27 @@ class InstanceConfig {
   /// of free instances.
   core.String? freeInstanceAvailability;
 
+  /// Cloud Labels are a flexible and lightweight mechanism for organizing cloud
+  /// resources into groups that reflect a customer's organizational needs and
+  /// deployment strategies.
+  ///
+  /// Cloud Labels can be used to filter collections of resources. They can be
+  /// used to control how resource metrics are aggregated. And they can be used
+  /// as arguments to policy management rules (e.g. route, firewall, load
+  /// balancing, etc.). * Label keys must be between 1 and 63 characters long
+  /// and must conform to the following regular expression: `a-z{0,62}`. * Label
+  /// values must be between 0 and 63 characters long and must conform to the
+  /// regular expression `[a-z0-9_-]{0,63}`. * No more than 64 labels can be
+  /// associated with a given resource. See https://goo.gl/xmQnxf for more
+  /// information on and examples of labels. If you plan to use labels in your
+  /// own code, please note that additional characters may be allowed in the
+  /// future. Therefore, you are advised to use an internal label
+  /// representation, such as JSON, which doesn't rely upon specific characters
+  /// being disallowed. For example, representing labels as the string: name +
+  /// "_" + value would prove problematic if we were to allow "_" in a future
+  /// release.
+  core.Map<core.String, core.String>? labels;
+
   /// Allowed values of the "default_leader" schema option for databases in
   /// instances that use this instance configuration.
   core.List<core.String>? leaderOptions;
@@ -5593,48 +6287,115 @@ class InstanceConfig {
   /// Values are of the form `projects//instanceConfigs/a-z*`.
   core.String? name;
 
+  /// The available optional replicas to choose from for user managed
+  /// configurations.
+  ///
+  /// Populated for Google managed configurations.
+  ///
+  /// Output only.
+  core.List<ReplicaInfo>? optionalReplicas;
+
+  /// If true, the instance config is being created or updated.
+  ///
+  /// If false, there are no ongoing operations for the instance config.
+  ///
+  /// Output only.
+  core.bool? reconciling;
+
   /// The geographic placement of nodes in this instance configuration and their
   /// replication properties.
   core.List<ReplicaInfo>? replicas;
 
+  /// The current instance config state.
+  ///
+  /// Applicable only for USER_MANAGED configs.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Not specified.
+  /// - "CREATING" : The instance config is still being created.
+  /// - "READY" : The instance config is fully created and ready to be used to
+  /// create instances.
+  core.String? state;
+
   InstanceConfig({
+    this.baseConfig,
+    this.configType,
     this.displayName,
+    this.etag,
     this.freeInstanceAvailability,
+    this.labels,
     this.leaderOptions,
     this.name,
+    this.optionalReplicas,
+    this.reconciling,
     this.replicas,
+    this.state,
   });
 
   InstanceConfig.fromJson(core.Map json_)
       : this(
+          baseConfig: json_.containsKey('baseConfig')
+              ? json_['baseConfig'] as core.String
+              : null,
+          configType: json_.containsKey('configType')
+              ? json_['configType'] as core.String
+              : null,
           displayName: json_.containsKey('displayName')
               ? json_['displayName'] as core.String
               : null,
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
           freeInstanceAvailability:
               json_.containsKey('freeInstanceAvailability')
                   ? json_['freeInstanceAvailability'] as core.String
                   : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
           leaderOptions: json_.containsKey('leaderOptions')
               ? (json_['leaderOptions'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          optionalReplicas: json_.containsKey('optionalReplicas')
+              ? (json_['optionalReplicas'] as core.List)
+                  .map((value) => ReplicaInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          reconciling: json_.containsKey('reconciling')
+              ? json_['reconciling'] as core.bool
+              : null,
           replicas: json_.containsKey('replicas')
               ? (json_['replicas'] as core.List)
                   .map((value) => ReplicaInfo.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (baseConfig != null) 'baseConfig': baseConfig!,
+        if (configType != null) 'configType': configType!,
         if (displayName != null) 'displayName': displayName!,
+        if (etag != null) 'etag': etag!,
         if (freeInstanceAvailability != null)
           'freeInstanceAvailability': freeInstanceAvailability!,
+        if (labels != null) 'labels': labels!,
         if (leaderOptions != null) 'leaderOptions': leaderOptions!,
         if (name != null) 'name': name!,
+        if (optionalReplicas != null) 'optionalReplicas': optionalReplicas!,
+        if (reconciling != null) 'reconciling': reconciling!,
         if (replicas != null) 'replicas': replicas!,
+        if (state != null) 'state': state!,
       };
 }
 
@@ -6104,6 +6865,43 @@ class ListDatabasesResponse {
       };
 }
 
+/// The response for ListInstanceConfigOperations.
+class ListInstanceConfigOperationsResponse {
+  /// `next_page_token` can be sent in a subsequent ListInstanceConfigOperations
+  /// call to fetch more of the matching metadata.
+  core.String? nextPageToken;
+
+  /// The list of matching instance config long-running operations.
+  ///
+  /// Each operation's name will be prefixed by the instance config's name. The
+  /// operation's metadata field type `metadata.type_url` describes the type of
+  /// the metadata.
+  core.List<Operation>? operations;
+
+  ListInstanceConfigOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+  });
+
+  ListInstanceConfigOperationsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          operations: json_.containsKey('operations')
+              ? (json_['operations'] as core.List)
+                  .map((value) => Operation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (operations != null) 'operations': operations!,
+      };
+}
+
 /// The response for ListInstanceConfigs.
 class ListInstanceConfigsResponse {
   /// The list of requested instance configurations.
@@ -6311,9 +7109,9 @@ class LocalizedString {
       : this(
           args: json_.containsKey('args')
               ? (json_['args'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -6422,10 +7220,10 @@ class Metric {
           indexedHotKeys: json_.containsKey('indexedHotKeys')
               ? (json_['indexedHotKeys'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     IndexedHotKey.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -6433,10 +7231,10 @@ class Metric {
               ? (json_['indexedKeyRangeInfos']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     IndexedKeyRangeInfos.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -6929,9 +7727,9 @@ class PartitionQueryRequest {
           paramTypes: json_.containsKey('paramTypes')
               ? (json_['paramTypes'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    Type.fromJson(item as core.Map<core.String, core.dynamic>),
+                    Type.fromJson(value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -7520,6 +8318,13 @@ class ReadRequest {
   /// Required.
   core.List<core.String>? columns;
 
+  /// If this is for a partitioned read and this field is set to `true`, the
+  /// request is executed with Spanner Data Boost independent compute resources.
+  ///
+  /// If the field is set to `true` but the request does not set
+  /// `partition_token`, the API returns an `INVALID_ARGUMENT` error.
+  core.bool? dataBoostEnabled;
+
   /// If non-empty, the name of an index on table.
   ///
   /// This index is used instead of the table primary key when interpreting
@@ -7593,6 +8398,7 @@ class ReadRequest {
 
   ReadRequest({
     this.columns,
+    this.dataBoostEnabled,
     this.index,
     this.keySet,
     this.limit,
@@ -7609,6 +8415,9 @@ class ReadRequest {
               ? (json_['columns'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
+              : null,
+          dataBoostEnabled: json_.containsKey('dataBoostEnabled')
+              ? json_['dataBoostEnabled'] as core.bool
               : null,
           index:
               json_.containsKey('index') ? json_['index'] as core.String : null,
@@ -7638,6 +8447,7 @@ class ReadRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (columns != null) 'columns': columns!,
+        if (dataBoostEnabled != null) 'dataBoostEnabled': dataBoostEnabled!,
         if (index != null) 'index': index!,
         if (keySet != null) 'keySet': keySet!,
         if (limit != null) 'limit': limit!,
@@ -7652,7 +8462,34 @@ class ReadRequest {
 /// Message type to initiate a read-write transaction.
 ///
 /// Currently this transaction type has no options.
-typedef ReadWrite = $Empty;
+class ReadWrite {
+  /// Read lock mode for the transaction.
+  /// Possible string values are:
+  /// - "READ_LOCK_MODE_UNSPECIFIED" : Default value. If the value is not
+  /// specified, the pessimistic read lock is used.
+  /// - "PESSIMISTIC" : Pessimistic lock mode. Read locks are acquired
+  /// immediately on read.
+  /// - "OPTIMISTIC" : Optimistic lock mode. Locks for reads within the
+  /// transaction are not acquired on read. Instead the locks are acquired on a
+  /// commit to validate that read/queried data has not changed since the
+  /// transaction started.
+  core.String? readLockMode;
+
+  ReadWrite({
+    this.readLockMode,
+  });
+
+  ReadWrite.fromJson(core.Map json_)
+      : this(
+          readLockMode: json_.containsKey('readLockMode')
+              ? json_['readLockMode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (readLockMode != null) 'readLockMode': readLockMode!,
+      };
+}
 
 class ReplicaInfo {
   /// If true, this location is designated as the default leader location where
@@ -7972,9 +8809,20 @@ class ResultSetMetadata {
   /// information about the new transaction is yielded here.
   Transaction? transaction;
 
+  /// A SQL query can be parameterized.
+  ///
+  /// In PLAN mode, these parameters can be undeclared. This indicates the field
+  /// names and types for those undeclared parameters in the SQL query. For
+  /// example, a SQL query like `"SELECT * FROM Users where UserId = @userId and
+  /// UserName = @userName "` could return a `undeclared_parameters` value like:
+  /// "fields": \[ { "name": "UserId", "type": { "code": "INT64" } }, { "name":
+  /// "UserName", "type": { "code": "STRING" } }, \]
+  StructType? undeclaredParameters;
+
   ResultSetMetadata({
     this.rowType,
     this.transaction,
+    this.undeclaredParameters,
   });
 
   ResultSetMetadata.fromJson(core.Map json_)
@@ -7987,11 +8835,17 @@ class ResultSetMetadata {
               ? Transaction.fromJson(
                   json_['transaction'] as core.Map<core.String, core.dynamic>)
               : null,
+          undeclaredParameters: json_.containsKey('undeclaredParameters')
+              ? StructType.fromJson(json_['undeclaredParameters']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (rowType != null) 'rowType': rowType!,
         if (transaction != null) 'transaction': transaction!,
+        if (undeclaredParameters != null)
+          'undeclaredParameters': undeclaredParameters!,
       };
 }
 
@@ -8241,9 +9095,9 @@ class Session {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -8314,9 +9168,9 @@ class ShortRepresentation {
           subqueries: json_.containsKey('subqueries')
               ? (json_['subqueries'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.int,
+                    value as core.int,
                   ),
                 )
               : null,
@@ -8369,9 +9223,9 @@ class Statement {
           paramTypes: json_.containsKey('paramTypes')
               ? (json_['paramTypes'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    Type.fromJson(item as core.Map<core.String, core.dynamic>),
+                    Type.fromJson(value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -8838,7 +9692,14 @@ class Type {
   /// the first key is preserved. - Members of a JSON object are not guaranteed
   /// to have their order preserved. - JSON array elements will have their order
   /// preserved.
+  /// - "PROTO" : Encoded as a base64-encoded `string`, as described in RFC
+  /// 4648, section 4.
+  /// - "ENUM" : Encoded as `string`, in decimal format.
   core.String? code;
+
+  /// If code == PROTO or code == ENUM, then `proto_type_fqn` is the fully
+  /// qualified name of the proto type representing the proto/enum definition.
+  core.String? protoTypeFqn;
 
   /// If code == STRUCT, then `struct_type` provides type information for the
   /// struct's fields.
@@ -8859,11 +9720,17 @@ class Type {
   /// values of this type should be treated as PostgreSQL NUMERIC values.
   /// Currently this annotation is always needed for NUMERIC when a client
   /// interacts with PostgreSQL-enabled Spanner databases.
+  /// - "PG_JSONB" : PostgreSQL compatible JSONB type. This annotation needs to
+  /// be applied to Type instances having JSON type code to specify that values
+  /// of this type should be treated as PostgreSQL JSONB values. Currently this
+  /// annotation is always needed for JSON when a client interacts with
+  /// PostgreSQL-enabled Spanner databases.
   core.String? typeAnnotation;
 
   Type({
     this.arrayElementType,
     this.code,
+    this.protoTypeFqn,
     this.structType,
     this.typeAnnotation,
   });
@@ -8875,6 +9742,9 @@ class Type {
                   as core.Map<core.String, core.dynamic>)
               : null,
           code: json_.containsKey('code') ? json_['code'] as core.String : null,
+          protoTypeFqn: json_.containsKey('protoTypeFqn')
+              ? json_['protoTypeFqn'] as core.String
+              : null,
           structType: json_.containsKey('structType')
               ? StructType.fromJson(
                   json_['structType'] as core.Map<core.String, core.dynamic>)
@@ -8887,6 +9757,7 @@ class Type {
   core.Map<core.String, core.dynamic> toJson() => {
         if (arrayElementType != null) 'arrayElementType': arrayElementType!,
         if (code != null) 'code': code!,
+        if (protoTypeFqn != null) 'protoTypeFqn': protoTypeFqn!,
         if (structType != null) 'structType': structType!,
         if (typeAnnotation != null) 'typeAnnotation': typeAnnotation!,
       };
@@ -8921,6 +9792,28 @@ class UpdateDatabaseDdlRequest {
   /// returns `ALREADY_EXISTS`.
   core.String? operationId;
 
+  /// Proto descriptors used by CREATE/ALTER PROTO BUNDLE statements.
+  ///
+  /// Contains a protobuf-serialized
+  /// [google.protobuf.FileDescriptorSet](https://github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/descriptor.proto).
+  /// To generate it, [install](https://grpc.io/docs/protoc-installation/) and
+  /// run `protoc` with --include_imports and --descriptor_set_out. For example,
+  /// to generate for moon/shot/app.proto, run """ $protoc
+  /// --proto_path=/app_path --proto_path=/lib_path \ --include_imports \
+  /// --descriptor_set_out=descriptors.data \ moon/shot/app.proto """ For more
+  /// details, see protobuffer
+  /// [self description](https://developers.google.com/protocol-buffers/docs/techniques#self-description).
+  ///
+  /// Optional.
+  core.String? protoDescriptors;
+  core.List<core.int> get protoDescriptorsAsBytes =>
+      convert.base64.decode(protoDescriptors!);
+
+  set protoDescriptorsAsBytes(core.List<core.int> bytes_) {
+    protoDescriptors =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
   /// DDL statements to be applied to the database.
   ///
   /// Required.
@@ -8928,6 +9821,7 @@ class UpdateDatabaseDdlRequest {
 
   UpdateDatabaseDdlRequest({
     this.operationId,
+    this.protoDescriptors,
     this.statements,
   });
 
@@ -8935,6 +9829,9 @@ class UpdateDatabaseDdlRequest {
       : this(
           operationId: json_.containsKey('operationId')
               ? json_['operationId'] as core.String
+              : null,
+          protoDescriptors: json_.containsKey('protoDescriptors')
+              ? json_['protoDescriptors'] as core.String
               : null,
           statements: json_.containsKey('statements')
               ? (json_['statements'] as core.List)
@@ -8945,7 +9842,59 @@ class UpdateDatabaseDdlRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (operationId != null) 'operationId': operationId!,
+        if (protoDescriptors != null) 'protoDescriptors': protoDescriptors!,
         if (statements != null) 'statements': statements!,
+      };
+}
+
+/// The request for UpdateInstanceConfigRequest.
+class UpdateInstanceConfigRequest {
+  /// The user instance config to update, which must always include the instance
+  /// config name.
+  ///
+  /// Otherwise, only fields mentioned in update_mask need be included. To
+  /// prevent conflicts of concurrent updates, etag can be used.
+  ///
+  /// Required.
+  InstanceConfig? instanceConfig;
+
+  /// A mask specifying which fields in InstanceConfig should be updated.
+  ///
+  /// The field mask must always be specified; this prevents any future fields
+  /// in InstanceConfig from being erased accidentally by clients that do not
+  /// know about them. Only display_name and labels can be updated.
+  ///
+  /// Required.
+  core.String? updateMask;
+
+  /// An option to validate, but not actually execute, a request, and provide
+  /// the same response.
+  core.bool? validateOnly;
+
+  UpdateInstanceConfigRequest({
+    this.instanceConfig,
+    this.updateMask,
+    this.validateOnly,
+  });
+
+  UpdateInstanceConfigRequest.fromJson(core.Map json_)
+      : this(
+          instanceConfig: json_.containsKey('instanceConfig')
+              ? InstanceConfig.fromJson(json_['instanceConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          updateMask: json_.containsKey('updateMask')
+              ? json_['updateMask'] as core.String
+              : null,
+          validateOnly: json_.containsKey('validateOnly')
+              ? json_['validateOnly'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (instanceConfig != null) 'instanceConfig': instanceConfig!,
+        if (updateMask != null) 'updateMask': updateMask!,
+        if (validateOnly != null) 'validateOnly': validateOnly!,
       };
 }
 

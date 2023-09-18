@@ -15,6 +15,13 @@
     "name": "customsearch",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230806",
+    "rootUrl": "https://customsearch.googleapis.com/",
+    "servicePath": "",
+    "title": "Custom Search API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -92,7 +99,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "cse": {
             "methods": {
@@ -319,6 +325,13 @@
                                 "high",
                                 "medium",
                                 "off"
+                            ],
+                            "enumDeprecated": [
+                                false,
+                                false,
+                                true,
+                                true,
+                                false
                             ],
                             "enumDescriptions": [
                                 "SafeSearch mode unspecified. (Falls back to engine's configuration.)",
@@ -608,6 +621,13 @@
                                         "medium",
                                         "off"
                                     ],
+                                    "enumDeprecated": [
+                                        false,
+                                        false,
+                                        true,
+                                        true,
+                                        false
+                                    ],
                                     "enumDescriptions": [
                                         "SafeSearch mode unspecified. (Falls back to engine's configuration.)",
                                         "Turn SafeSearch on.",
@@ -673,8 +693,6 @@
             }
         }
     },
-    "revision": "20220910",
-    "rootUrl": "https://customsearch.googleapis.com/",
     "schemas": {
         "Promotion": {
             "description": "Promotion result.",
@@ -781,7 +799,7 @@
                     "description": "Image belonging to a custom search result.",
                     "properties": {
                         "byteSize": {
-                            "description": "The size of the image, in pixels.",
+                            "description": "The size of the image, in bytes.",
                             "format": "int32",
                             "type": "integer"
                         },
@@ -1433,9 +1451,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Custom Search API",
-    "version": "v1",
-    "version_module": true
+    }
 }

@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud Datastore API - v1
@@ -24,7 +23,7 @@
 /// - [ProjectsResource]
 ///   - [ProjectsIndexesResource]
 ///   - [ProjectsOperationsResource]
-library datastore.v1;
+library datastore_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -33,7 +32,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -423,6 +421,49 @@ class ProjectsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Runs an aggregation query.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - Required. The ID of the project against which to make the
+  /// request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RunAggregationQueryResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RunAggregationQueryResponse> runAggregationQuery(
+    RunAggregationQueryRequest request,
+    core.String projectId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/projects/' +
+        commons.escapeVariable('$projectId') +
+        ':runAggregationQuery';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return RunAggregationQueryResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Queries for entities.
   ///
   /// [request] - The metadata request object.
@@ -795,13 +836,6 @@ class ProjectsOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -848,6 +882,195 @@ class ProjectsOperationsResource {
     return GoogleLongrunningListOperationsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
+}
+
+/// Defines an aggregation that produces a single result.
+class Aggregation {
+  /// Optional name of the property to store the result of the aggregation.
+  ///
+  /// If not provided, Datastore will pick a default name following the format
+  /// `property_`. For example: ``` AGGREGATE COUNT_UP_TO(1) AS count_up_to_1,
+  /// COUNT_UP_TO(2), COUNT_UP_TO(3) AS count_up_to_3, COUNT(*) OVER ( ... );
+  /// ``` becomes: ``` AGGREGATE COUNT_UP_TO(1) AS count_up_to_1, COUNT_UP_TO(2)
+  /// AS property_1, COUNT_UP_TO(3) AS count_up_to_3, COUNT(*) AS property_2
+  /// OVER ( ... ); ``` Requires: * Must be unique across all aggregation
+  /// aliases. * Conform to entity property name limitations.
+  ///
+  /// Optional.
+  core.String? alias;
+
+  /// Average aggregator.
+  Avg? avg;
+
+  /// Count aggregator.
+  Count? count;
+
+  /// Sum aggregator.
+  Sum? sum;
+
+  Aggregation({
+    this.alias,
+    this.avg,
+    this.count,
+    this.sum,
+  });
+
+  Aggregation.fromJson(core.Map json_)
+      : this(
+          alias:
+              json_.containsKey('alias') ? json_['alias'] as core.String : null,
+          avg: json_.containsKey('avg')
+              ? Avg.fromJson(
+                  json_['avg'] as core.Map<core.String, core.dynamic>)
+              : null,
+          count: json_.containsKey('count')
+              ? Count.fromJson(
+                  json_['count'] as core.Map<core.String, core.dynamic>)
+              : null,
+          sum: json_.containsKey('sum')
+              ? Sum.fromJson(
+                  json_['sum'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (alias != null) 'alias': alias!,
+        if (avg != null) 'avg': avg!,
+        if (count != null) 'count': count!,
+        if (sum != null) 'sum': sum!,
+      };
+}
+
+/// Datastore query for running an aggregation over a Query.
+class AggregationQuery {
+  /// Series of aggregations to apply over the results of the `nested_query`.
+  ///
+  /// Requires: * A minimum of one and maximum of five aggregations per query.
+  ///
+  /// Optional.
+  core.List<Aggregation>? aggregations;
+
+  /// Nested query for aggregation
+  Query? nestedQuery;
+
+  AggregationQuery({
+    this.aggregations,
+    this.nestedQuery,
+  });
+
+  AggregationQuery.fromJson(core.Map json_)
+      : this(
+          aggregations: json_.containsKey('aggregations')
+              ? (json_['aggregations'] as core.List)
+                  .map((value) => Aggregation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nestedQuery: json_.containsKey('nestedQuery')
+              ? Query.fromJson(
+                  json_['nestedQuery'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (aggregations != null) 'aggregations': aggregations!,
+        if (nestedQuery != null) 'nestedQuery': nestedQuery!,
+      };
+}
+
+/// The result of a single bucket from a Datastore aggregation query.
+///
+/// The keys of `aggregate_properties` are the same for all results in an
+/// aggregation query, unlike entity queries which can have different fields
+/// present for each result.
+class AggregationResult {
+  /// The result of the aggregation functions, ex: `COUNT(*) AS total_entities`.
+  ///
+  /// The key is the alias assigned to the aggregation function on input and the
+  /// size of this map equals the number of aggregation functions in the query.
+  core.Map<core.String, Value>? aggregateProperties;
+
+  AggregationResult({
+    this.aggregateProperties,
+  });
+
+  AggregationResult.fromJson(core.Map json_)
+      : this(
+          aggregateProperties: json_.containsKey('aggregateProperties')
+              ? (json_['aggregateProperties']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    Value.fromJson(
+                        value as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (aggregateProperties != null)
+          'aggregateProperties': aggregateProperties!,
+      };
+}
+
+/// A batch of aggregation results produced by an aggregation query.
+class AggregationResultBatch {
+  /// The aggregation results for this batch.
+  core.List<AggregationResult>? aggregationResults;
+
+  /// The state of the query after the current batch.
+  ///
+  /// Only COUNT(*) aggregations are supported in the initial launch. Therefore,
+  /// expected result type is limited to `NO_MORE_RESULTS`.
+  /// Possible string values are:
+  /// - "MORE_RESULTS_TYPE_UNSPECIFIED" : Unspecified. This value is never used.
+  /// - "NOT_FINISHED" : There may be additional batches to fetch from this
+  /// query.
+  /// - "MORE_RESULTS_AFTER_LIMIT" : The query is finished, but there may be
+  /// more results after the limit.
+  /// - "MORE_RESULTS_AFTER_CURSOR" : The query is finished, but there may be
+  /// more results after the end cursor.
+  /// - "NO_MORE_RESULTS" : The query is finished, and there are no more
+  /// results.
+  core.String? moreResults;
+
+  /// Read timestamp this batch was returned from.
+  ///
+  /// In a single transaction, subsequent query result batches for the same
+  /// query can have a greater timestamp. Each batch's read timestamp is valid
+  /// for all preceding batches.
+  core.String? readTime;
+
+  AggregationResultBatch({
+    this.aggregationResults,
+    this.moreResults,
+    this.readTime,
+  });
+
+  AggregationResultBatch.fromJson(core.Map json_)
+      : this(
+          aggregationResults: json_.containsKey('aggregationResults')
+              ? (json_['aggregationResults'] as core.List)
+                  .map((value) => AggregationResult.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          moreResults: json_.containsKey('moreResults')
+              ? json_['moreResults'] as core.String
+              : null,
+          readTime: json_.containsKey('readTime')
+              ? json_['readTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (aggregationResults != null)
+          'aggregationResults': aggregationResults!,
+        if (moreResults != null) 'moreResults': moreResults!,
+        if (readTime != null) 'readTime': readTime!,
+      };
 }
 
 /// The request for Datastore.AllocateIds.
@@ -938,6 +1161,33 @@ class ArrayValue {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (values != null) 'values': values!,
+      };
+}
+
+/// Average of the values of the requested property.
+///
+/// * Only numeric values will be aggregated. All non-numeric values including
+/// `NULL` are skipped. * If the aggregated values contain `NaN`, returns `NaN`.
+/// * If the aggregated value set is empty, returns `NULL`. * Always returns the
+/// result as a double.
+class Avg {
+  /// The property to aggregate on.
+  PropertyReference? property;
+
+  Avg({
+    this.property,
+  });
+
+  Avg.fromJson(core.Map json_)
+      : this(
+          property: json_.containsKey('property')
+              ? PropertyReference.fromJson(
+                  json_['property'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (property != null) 'property': property!,
       };
 }
 
@@ -1033,6 +1283,12 @@ class CommitRequest {
   /// no two mutations may affect a single entity.
   core.List<Mutation>? mutations;
 
+  /// Options for beginning a new transaction for this request.
+  ///
+  /// The transaction is committed when the request completes. If specified,
+  /// TransactionOptions.mode must be TransactionOptions.ReadWrite.
+  TransactionOptions? singleUseTransaction;
+
   /// The identifier of the transaction associated with the commit.
   ///
   /// A transaction identifier is returned by a call to
@@ -1050,6 +1306,7 @@ class CommitRequest {
     this.databaseId,
     this.mode,
     this.mutations,
+    this.singleUseTransaction,
     this.transaction,
   });
 
@@ -1065,6 +1322,10 @@ class CommitRequest {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          singleUseTransaction: json_.containsKey('singleUseTransaction')
+              ? TransactionOptions.fromJson(json_['singleUseTransaction']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           transaction: json_.containsKey('transaction')
               ? json_['transaction'] as core.String
               : null,
@@ -1074,6 +1335,8 @@ class CommitRequest {
         if (databaseId != null) 'databaseId': databaseId!,
         if (mode != null) 'mode': mode!,
         if (mutations != null) 'mutations': mutations!,
+        if (singleUseTransaction != null)
+          'singleUseTransaction': singleUseTransaction!,
         if (transaction != null) 'transaction': transaction!,
       };
 }
@@ -1135,6 +1398,8 @@ class CompositeFilter {
   /// - "OPERATOR_UNSPECIFIED" : Unspecified. This value must not be used.
   /// - "AND" : The results are required to satisfy each of the combined
   /// filters.
+  /// - "OR" : Documents are required to satisfy at least one of the combined
+  /// filters.
   core.String? op;
 
   CompositeFilter({
@@ -1159,6 +1424,36 @@ class CompositeFilter {
       };
 }
 
+/// Count of entities that match the query.
+///
+/// The `COUNT(*)` aggregation function operates on the entire entity so it does
+/// not require a field reference.
+class Count {
+  /// Optional constraint on the maximum number of entities to count.
+  ///
+  /// This provides a way to set an upper bound on the number of entities to
+  /// scan, limiting latency, and cost. Unspecified is interpreted as no bound.
+  /// If a zero value is provided, a count result of zero should always be
+  /// expected. High-Level Example: ``` AGGREGATE COUNT_UP_TO(1000) OVER (
+  /// SELECT * FROM k ); ``` Requires: * Must be non-negative when present.
+  ///
+  /// Optional.
+  core.String? upTo;
+
+  Count({
+    this.upTo,
+  });
+
+  Count.fromJson(core.Map json_)
+      : this(
+          upTo: json_.containsKey('upTo') ? json_['upTo'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (upTo != null) 'upTo': upTo!,
+      };
+}
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
 ///
@@ -1169,8 +1464,7 @@ typedef Empty = $Empty;
 
 /// A Datastore data object.
 ///
-/// An entity is limited to 1 megabyte when stored. That _roughly_ corresponds
-/// to a limit of 1 megabyte for the serialized form of this message.
+/// Must not exceed 1 MiB - 4 bytes.
 class Entity {
   /// The entity's key.
   ///
@@ -1183,8 +1477,8 @@ class Entity {
   ///
   /// The map's keys are property names. A property name matching regex `__.*__`
   /// is reserved. A reserved property name is forbidden in certain documented
-  /// contexts. The name must not contain more than 500 characters. The name
-  /// cannot be `""`.
+  /// contexts. The map keys, represented as UTF-8, must not exceed 1,500 bytes
+  /// and cannot be empty.
   core.Map<core.String, Value>? properties;
 
   Entity({
@@ -1201,9 +1495,10 @@ class Entity {
           properties: json_.containsKey('properties')
               ? (json_['properties'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    Value.fromJson(item as core.Map<core.String, core.dynamic>),
+                    Value.fromJson(
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -1217,6 +1512,12 @@ class Entity {
 
 /// The result of fetching an entity from Datastore.
 class EntityResult {
+  /// The time at which the entity was created.
+  ///
+  /// This field is set for `FULL` entity results. If this entity is missing,
+  /// this field will not be set.
+  core.String? createTime;
+
   /// A cursor that points to the position after the result entity.
   ///
   /// Set only when the `EntityResult` is part of a `QueryResultBatch` message.
@@ -1247,6 +1548,7 @@ class EntityResult {
   core.String? version;
 
   EntityResult({
+    this.createTime,
     this.cursor,
     this.entity,
     this.updateTime,
@@ -1255,6 +1557,9 @@ class EntityResult {
 
   EntityResult.fromJson(core.Map json_)
       : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
           cursor: json_.containsKey('cursor')
               ? json_['cursor'] as core.String
               : null,
@@ -1271,6 +1576,7 @@ class EntityResult {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
         if (cursor != null) 'cursor': cursor!,
         if (entity != null) 'entity': entity!,
         if (updateTime != null) 'updateTime': updateTime!,
@@ -1397,9 +1703,9 @@ class GoogleDatastoreAdminV1ExportEntitiesRequest {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -1462,9 +1768,9 @@ class GoogleDatastoreAdminV1ImportEntitiesRequest {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -1797,10 +2103,10 @@ class GqlQuery {
           namedBindings: json_.containsKey('namedBindings')
               ? (json_['namedBindings'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     GqlQueryParameter.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -1994,11 +2300,26 @@ class LookupResponse {
   /// The time at which these entities were read or found missing.
   core.String? readTime;
 
+  /// The identifier of the transaction that was started as part of this Lookup
+  /// request.
+  ///
+  /// Set only when ReadOptions.new_transaction was set in
+  /// LookupRequest.read_options.
+  core.String? transaction;
+  core.List<core.int> get transactionAsBytes =>
+      convert.base64.decode(transaction!);
+
+  set transactionAsBytes(core.List<core.int> bytes_) {
+    transaction =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
   LookupResponse({
     this.deferred,
     this.found,
     this.missing,
     this.readTime,
+    this.transaction,
   });
 
   LookupResponse.fromJson(core.Map json_)
@@ -2024,6 +2345,9 @@ class LookupResponse {
           readTime: json_.containsKey('readTime')
               ? json_['readTime'] as core.String
               : null,
+          transaction: json_.containsKey('transaction')
+              ? json_['transaction'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2031,6 +2355,7 @@ class LookupResponse {
         if (found != null) 'found': found!,
         if (missing != null) 'missing': missing!,
         if (readTime != null) 'readTime': readTime!,
+        if (transaction != null) 'transaction': transaction!,
       };
 }
 
@@ -2124,6 +2449,11 @@ class MutationResult {
   /// mutation.
   core.bool? conflictDetected;
 
+  /// The create time of the entity.
+  ///
+  /// This field will not be set after a 'delete'.
+  core.String? createTime;
+
   /// The automatically allocated key.
   ///
   /// Set only when the mutation allocated a key.
@@ -2146,6 +2476,7 @@ class MutationResult {
 
   MutationResult({
     this.conflictDetected,
+    this.createTime,
     this.key,
     this.updateTime,
     this.version,
@@ -2155,6 +2486,9 @@ class MutationResult {
       : this(
           conflictDetected: json_.containsKey('conflictDetected')
               ? json_['conflictDetected'] as core.bool
+              : null,
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
           key: json_.containsKey('key')
               ? Key.fromJson(
@@ -2170,6 +2504,7 @@ class MutationResult {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (conflictDetected != null) 'conflictDetected': conflictDetected!,
+        if (createTime != null) 'createTime': createTime!,
         if (key != null) 'key': key!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (version != null) 'version': version!,
@@ -2308,17 +2643,18 @@ class PropertyFilter {
   /// `order_by`.
   /// - "EQUAL" : The given `property` is equal to the given `value`.
   /// - "IN" : The given `property` is equal to at least one value in the given
-  /// array. Requires: * That `value` is a non-empty `ArrayValue` with at most
-  /// 10 values. * No other `IN` or `NOT_IN` is in the same query.
+  /// array. Requires: * That `value` is a non-empty `ArrayValue`, subject to
+  /// disjunction limits. * No `NOT_IN` is in the same query.
   /// - "NOT_EQUAL" : The given `property` is not equal to the given `value`.
   /// Requires: * No other `NOT_EQUAL` or `NOT_IN` is in the same query. * That
   /// `property` comes first in the `order_by`.
   /// - "HAS_ANCESTOR" : Limit the result set to the given entity and its
-  /// descendants. Requires: * That `value` is an entity key.
+  /// descendants. Requires: * That `value` is an entity key. * All evaluated
+  /// disjunctions must have the same `HAS_ANCESTOR` filter.
   /// - "NOT_IN" : The value of the `property` is not in the given array.
   /// Requires: * That `value` is a non-empty `ArrayValue` with at most 10
-  /// values. * No other `IN`, `NOT_IN`, `NOT_EQUAL` is in the same query. *
-  /// That `field` comes first in the `order_by`.
+  /// values. * No other `OR`, `IN`, `NOT_IN`, `NOT_EQUAL` is in the same query.
+  /// * That `field` comes first in the `order_by`.
   core.String? op;
 
   /// The property to filter by.
@@ -2416,7 +2752,8 @@ class Query {
   ///
   /// The query results will contain the first result for each distinct
   /// combination of values for the given properties (if empty, all results are
-  /// returned).
+  /// returned). Requires: * If `order` is specified, the set of distinct on
+  /// properties must appear before the non-distinct on properties in `order`.
   core.List<PropertyReference>? distinctOn;
 
   /// An ending point for the query results.
@@ -2669,7 +3006,9 @@ class QueryResultBatch {
 class ReadOnly {
   /// Reads entities at the given time.
   ///
-  /// This may not be older than 60 seconds.
+  /// This must be a microsecond precision timestamp within the past one hour,
+  /// or if Point-in-Time Recovery is enabled, can additionally be a whole
+  /// minute timestamp within the past 7 days.
   core.String? readTime;
 
   ReadOnly({
@@ -2690,6 +3029,13 @@ class ReadOnly {
 
 /// The options shared by read requests.
 class ReadOptions {
+  /// Options for beginning a new transaction for this request.
+  ///
+  /// The new transaction identifier will be returned in the corresponding
+  /// response as either LookupResponse.transaction or
+  /// RunQueryResponse.transaction.
+  TransactionOptions? newTransaction;
+
   /// The non-transactional read consistency to use.
   /// Possible string values are:
   /// - "READ_CONSISTENCY_UNSPECIFIED" : Unspecified. This value must not be
@@ -2700,8 +3046,10 @@ class ReadOptions {
 
   /// Reads entities as they were at the given time.
   ///
-  /// This may not be older than 270 seconds. This value is only supported for
-  /// Cloud Firestore in Datastore mode.
+  /// This value is only supported for Cloud Firestore in Datastore mode. This
+  /// must be a microsecond precision timestamp within the past one hour, or if
+  /// Point-in-Time Recovery is enabled, can additionally be a whole minute
+  /// timestamp within the past 7 days.
   core.String? readTime;
 
   /// The identifier of the transaction in which to read.
@@ -2718,6 +3066,7 @@ class ReadOptions {
   }
 
   ReadOptions({
+    this.newTransaction,
     this.readConsistency,
     this.readTime,
     this.transaction,
@@ -2725,6 +3074,10 @@ class ReadOptions {
 
   ReadOptions.fromJson(core.Map json_)
       : this(
+          newTransaction: json_.containsKey('newTransaction')
+              ? TransactionOptions.fromJson(json_['newTransaction']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           readConsistency: json_.containsKey('readConsistency')
               ? json_['readConsistency'] as core.String
               : null,
@@ -2737,6 +3090,7 @@ class ReadOptions {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (newTransaction != null) 'newTransaction': newTransaction!,
         if (readConsistency != null) 'readConsistency': readConsistency!,
         if (readTime != null) 'readTime': readTime!,
         if (transaction != null) 'transaction': transaction!,
@@ -2860,6 +3214,123 @@ class RollbackRequest {
 /// (an empty message).
 typedef RollbackResponse = $Empty;
 
+/// The request for Datastore.RunAggregationQuery.
+class RunAggregationQueryRequest {
+  /// The query to run.
+  AggregationQuery? aggregationQuery;
+
+  /// The ID of the database against which to make the request.
+  ///
+  /// '(default)' is not allowed; please use empty string '' to refer the
+  /// default database.
+  core.String? databaseId;
+
+  /// The GQL query to run.
+  ///
+  /// This query must be an aggregation query.
+  GqlQuery? gqlQuery;
+
+  /// Entities are partitioned into subsets, identified by a partition ID.
+  ///
+  /// Queries are scoped to a single partition. This partition ID is normalized
+  /// with the standard default context partition ID.
+  PartitionId? partitionId;
+
+  /// The options for this query.
+  ReadOptions? readOptions;
+
+  RunAggregationQueryRequest({
+    this.aggregationQuery,
+    this.databaseId,
+    this.gqlQuery,
+    this.partitionId,
+    this.readOptions,
+  });
+
+  RunAggregationQueryRequest.fromJson(core.Map json_)
+      : this(
+          aggregationQuery: json_.containsKey('aggregationQuery')
+              ? AggregationQuery.fromJson(json_['aggregationQuery']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          databaseId: json_.containsKey('databaseId')
+              ? json_['databaseId'] as core.String
+              : null,
+          gqlQuery: json_.containsKey('gqlQuery')
+              ? GqlQuery.fromJson(
+                  json_['gqlQuery'] as core.Map<core.String, core.dynamic>)
+              : null,
+          partitionId: json_.containsKey('partitionId')
+              ? PartitionId.fromJson(
+                  json_['partitionId'] as core.Map<core.String, core.dynamic>)
+              : null,
+          readOptions: json_.containsKey('readOptions')
+              ? ReadOptions.fromJson(
+                  json_['readOptions'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (aggregationQuery != null) 'aggregationQuery': aggregationQuery!,
+        if (databaseId != null) 'databaseId': databaseId!,
+        if (gqlQuery != null) 'gqlQuery': gqlQuery!,
+        if (partitionId != null) 'partitionId': partitionId!,
+        if (readOptions != null) 'readOptions': readOptions!,
+      };
+}
+
+/// The response for Datastore.RunAggregationQuery.
+class RunAggregationQueryResponse {
+  /// A batch of aggregation results.
+  ///
+  /// Always present.
+  AggregationResultBatch? batch;
+
+  /// The parsed form of the `GqlQuery` from the request, if it was set.
+  AggregationQuery? query;
+
+  /// The identifier of the transaction that was started as part of this
+  /// RunAggregationQuery request.
+  ///
+  /// Set only when ReadOptions.new_transaction was set in
+  /// RunAggregationQueryRequest.read_options.
+  core.String? transaction;
+  core.List<core.int> get transactionAsBytes =>
+      convert.base64.decode(transaction!);
+
+  set transactionAsBytes(core.List<core.int> bytes_) {
+    transaction =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  RunAggregationQueryResponse({
+    this.batch,
+    this.query,
+    this.transaction,
+  });
+
+  RunAggregationQueryResponse.fromJson(core.Map json_)
+      : this(
+          batch: json_.containsKey('batch')
+              ? AggregationResultBatch.fromJson(
+                  json_['batch'] as core.Map<core.String, core.dynamic>)
+              : null,
+          query: json_.containsKey('query')
+              ? AggregationQuery.fromJson(
+                  json_['query'] as core.Map<core.String, core.dynamic>)
+              : null,
+          transaction: json_.containsKey('transaction')
+              ? json_['transaction'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (batch != null) 'batch': batch!,
+        if (query != null) 'query': query!,
+        if (transaction != null) 'transaction': transaction!,
+      };
+}
+
 /// The request for Datastore.RunQuery.
 class RunQueryRequest {
   /// The ID of the database against which to make the request.
@@ -2933,9 +3404,24 @@ class RunQueryResponse {
   /// The parsed form of the `GqlQuery` from the request, if it was set.
   Query? query;
 
+  /// The identifier of the transaction that was started as part of this
+  /// RunQuery request.
+  ///
+  /// Set only when ReadOptions.new_transaction was set in
+  /// RunQueryRequest.read_options.
+  core.String? transaction;
+  core.List<core.int> get transactionAsBytes =>
+      convert.base64.decode(transaction!);
+
+  set transactionAsBytes(core.List<core.int> bytes_) {
+    transaction =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
   RunQueryResponse({
     this.batch,
     this.query,
+    this.transaction,
   });
 
   RunQueryResponse.fromJson(core.Map json_)
@@ -2948,11 +3434,15 @@ class RunQueryResponse {
               ? Query.fromJson(
                   json_['query'] as core.Map<core.String, core.dynamic>)
               : null,
+          transaction: json_.containsKey('transaction')
+              ? json_['transaction'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (batch != null) 'batch': batch!,
         if (query != null) 'query': query!,
+        if (transaction != null) 'transaction': transaction!,
       };
 }
 
@@ -2964,6 +3454,41 @@ class RunQueryResponse {
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef Status = $Status;
+
+/// Sum of the values of the requested property.
+///
+/// * Only numeric values will be aggregated. All non-numeric values including
+/// `NULL` are skipped. * If the aggregated values contain `NaN`, returns `NaN`.
+/// * If the aggregated value set is empty, returns 0. * Returns a 64-bit
+/// integer if the sum result is an integer value and does not overflow.
+/// Otherwise, the result is returned as a double. Note that even if all the
+/// aggregated values are integers, the result is returned as a double if it
+/// cannot fit within a 64-bit signed integer. When this occurs, the returned
+/// value will lose precision. * When underflow occurs, floating-point
+/// aggregation is non-deterministic. This means that running the same query
+/// repeatedly without any changes to the underlying values could produce
+/// slightly different results each time. In those cases, values should be
+/// stored as integers over floating-point numbers.
+class Sum {
+  /// The property to aggregate on.
+  PropertyReference? property;
+
+  Sum({
+    this.property,
+  });
+
+  Sum.fromJson(core.Map json_)
+      : this(
+          property: json_.containsKey('property')
+              ? PropertyReference.fromJson(
+                  json_['property'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (property != null) 'property': property!,
+      };
+}
 
 /// Options for beginning a new transaction.
 ///

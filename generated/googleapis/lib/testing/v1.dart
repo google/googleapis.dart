@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud Testing API - v1
@@ -25,7 +24,7 @@
 /// - [ProjectsResource]
 ///   - [ProjectsTestMatricesResource]
 /// - [TestEnvironmentCatalogResource]
-library testing.v1;
+library testing_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -34,7 +33,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -179,10 +177,13 @@ class ProjectsTestMatricesResource {
   /// Creates and runs a matrix of tests according to the given specifications.
   ///
   /// Unsupported environments will be returned in the state UNSUPPORTED. A test
-  /// matrix is limited to use at most 2000 devices in parallel. May return any
-  /// of the following canonical error codes: - PERMISSION_DENIED - if the user
-  /// is not authorized to write to project - INVALID_ARGUMENT - if the request
-  /// is malformed or if the matrix tries to use too many simultaneous devices.
+  /// matrix is limited to use at most 2000 devices in parallel. The returned
+  /// matrix will not yet contain the executions that will be created for this
+  /// matrix. Execution creation happens later on and will require a call to
+  /// GetTestMatrix. May return any of the following canonical error codes: -
+  /// PERMISSION_DENIED - if the user is not authorized to write to project -
+  /// INVALID_ARGUMENT - if the request is malformed or if the matrix tries to
+  /// use too many simultaneous devices.
   ///
   /// [request] - The metadata request object.
   ///
@@ -229,8 +230,12 @@ class ProjectsTestMatricesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Checks the status of a test matrix.
+  /// Checks the status of a test matrix and the executions once they are
+  /// created.
   ///
+  /// The test matrix will contain the list of test executions to run if and
+  /// only if the resultStorage.toolResultsExecution fields have been populated.
+  /// Note: Flaky test executions may be added to the matrix at a later stage.
   /// May return any of the following canonical error codes: - PERMISSION_DENIED
   /// - if the user is not authorized to read project - INVALID_ARGUMENT - if
   /// the request is malformed - NOT_FOUND - if the Test Matrix does not exist
@@ -743,6 +748,9 @@ class AndroidModel {
   /// Examples: "Nexus 5", "Galaxy S5".
   core.String? name;
 
+  /// Version-specific information of an Android model.
+  core.List<PerAndroidVersionInfo>? perVersionInfo;
+
   /// Screen density in DPI.
   ///
   /// This corresponds to ro.sf.lcd_density
@@ -783,6 +791,7 @@ class AndroidModel {
     this.lowFpsVideoRecording,
     this.manufacturer,
     this.name,
+    this.perVersionInfo,
     this.screenDensity,
     this.screenX,
     this.screenY,
@@ -811,6 +820,12 @@ class AndroidModel {
               ? json_['manufacturer'] as core.String
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          perVersionInfo: json_.containsKey('perVersionInfo')
+              ? (json_['perVersionInfo'] as core.List)
+                  .map((value) => PerAndroidVersionInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           screenDensity: json_.containsKey('screenDensity')
               ? json_['screenDensity'] as core.int
               : null,
@@ -850,6 +865,7 @@ class AndroidModel {
           'lowFpsVideoRecording': lowFpsVideoRecording!,
         if (manufacturer != null) 'manufacturer': manufacturer!,
         if (name != null) 'name': name!,
+        if (perVersionInfo != null) 'perVersionInfo': perVersionInfo!,
         if (screenDensity != null) 'screenDensity': screenDensity!,
         if (screenX != null) 'screenX': screenX!,
         if (screenY != null) 'screenY': screenY!,
@@ -882,11 +898,17 @@ class AndroidRoboTest {
   ///
   /// Needs to be at least 2 to make Robo explore the app beyond the first
   /// activity. Default is 50.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.int? maxDepth;
 
   /// The max number of steps Robo can execute.
   ///
   /// Default is no limit.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.int? maxSteps;
 
   /// A set of directives Robo should apply during the crawl.
@@ -1242,14 +1264,23 @@ class ApkManifest {
   /// Maximum API level on which the application is designed to run.
   core.int? maxSdkVersion;
 
+  /// Meta-data tags defined in the manifest.
+  core.List<Metadata>? metadata;
+
   /// Minimum API level required for the application to run.
   core.int? minSdkVersion;
 
   /// Full Java-style package name for this application, e.g. "com.example.foo".
   core.String? packageName;
 
+  /// Services contained in the tag.
+  core.List<Service>? services;
+
   /// Specifies the API Level on which the application is designed to run.
   core.int? targetSdkVersion;
+
+  /// Feature usage tags defined in the manifest.
+  core.List<UsesFeature>? usesFeature;
 
   /// Permissions declared to be used by the application
   core.List<core.String>? usesPermission;
@@ -1264,9 +1295,12 @@ class ApkManifest {
     this.applicationLabel,
     this.intentFilters,
     this.maxSdkVersion,
+    this.metadata,
     this.minSdkVersion,
     this.packageName,
+    this.services,
     this.targetSdkVersion,
+    this.usesFeature,
     this.usesPermission,
     this.versionCode,
     this.versionName,
@@ -1286,14 +1320,32 @@ class ApkManifest {
           maxSdkVersion: json_.containsKey('maxSdkVersion')
               ? json_['maxSdkVersion'] as core.int
               : null,
+          metadata: json_.containsKey('metadata')
+              ? (json_['metadata'] as core.List)
+                  .map((value) => Metadata.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           minSdkVersion: json_.containsKey('minSdkVersion')
               ? json_['minSdkVersion'] as core.int
               : null,
           packageName: json_.containsKey('packageName')
               ? json_['packageName'] as core.String
               : null,
+          services: json_.containsKey('services')
+              ? (json_['services'] as core.List)
+                  .map((value) => Service.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           targetSdkVersion: json_.containsKey('targetSdkVersion')
               ? json_['targetSdkVersion'] as core.int
+              : null,
+          usesFeature: json_.containsKey('usesFeature')
+              ? (json_['usesFeature'] as core.List)
+                  .map((value) => UsesFeature.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
               : null,
           usesPermission: json_.containsKey('usesPermission')
               ? (json_['usesPermission'] as core.List)
@@ -1312,9 +1364,12 @@ class ApkManifest {
         if (applicationLabel != null) 'applicationLabel': applicationLabel!,
         if (intentFilters != null) 'intentFilters': intentFilters!,
         if (maxSdkVersion != null) 'maxSdkVersion': maxSdkVersion!,
+        if (metadata != null) 'metadata': metadata!,
         if (minSdkVersion != null) 'minSdkVersion': minSdkVersion!,
         if (packageName != null) 'packageName': packageName!,
+        if (services != null) 'services': services!,
         if (targetSdkVersion != null) 'targetSdkVersion': targetSdkVersion!,
+        if (usesFeature != null) 'usesFeature': usesFeature!,
         if (usesPermission != null) 'usesPermission': usesPermission!,
         if (versionCode != null) 'versionCode': versionCode!,
         if (versionName != null) 'versionName': versionName!,
@@ -2040,6 +2095,9 @@ class IosModel {
   /// Examples: "iPhone 4s", "iPad Mini 2".
   core.String? name;
 
+  /// Version-specific information of an iOS model.
+  core.List<PerIosVersionInfo>? perVersionInfo;
+
   /// Screen density in DPI.
   core.int? screenDensity;
 
@@ -2062,6 +2120,7 @@ class IosModel {
     this.formFactor,
     this.id,
     this.name,
+    this.perVersionInfo,
     this.screenDensity,
     this.screenX,
     this.screenY,
@@ -2081,6 +2140,12 @@ class IosModel {
               : null,
           id: json_.containsKey('id') ? json_['id'] as core.String : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          perVersionInfo: json_.containsKey('perVersionInfo')
+              ? (json_['perVersionInfo'] as core.List)
+                  .map((value) => PerIosVersionInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           screenDensity: json_.containsKey('screenDensity')
               ? json_['screenDensity'] as core.int
               : null,
@@ -2108,6 +2173,7 @@ class IosModel {
         if (formFactor != null) 'formFactor': formFactor!,
         if (id != null) 'id': id!,
         if (name != null) 'name': name!,
+        if (perVersionInfo != null) 'perVersionInfo': perVersionInfo!,
         if (screenDensity != null) 'screenDensity': screenDensity!,
         if (screenX != null) 'screenX': screenX!,
         if (screenY != null) 'screenY': screenY!,
@@ -2478,7 +2544,7 @@ class ManualSharding {
   /// You must specify at least one shard if this field is present. When you
   /// select one or more physical devices, the number of repeated
   /// test_targets_for_shard must be \<= 50. When you select one or more ARM
-  /// virtual devices, it must be \<= 50. When you select only x86 virtual
+  /// virtual devices, it must be \<= 100. When you select only x86 virtual
   /// devices, it must be \<= 500.
   ///
   /// Required.
@@ -2501,6 +2567,34 @@ class ManualSharding {
   core.Map<core.String, core.dynamic> toJson() => {
         if (testTargetsForShard != null)
           'testTargetsForShard': testTargetsForShard!,
+      };
+}
+
+/// A tag within a manifest.
+///
+/// https://developer.android.com/guide/topics/manifest/meta-data-element.html
+class Metadata {
+  /// The android:name value
+  core.String? name;
+
+  /// The android:value value
+  core.String? value;
+
+  Metadata({
+    this.name,
+    this.value,
+  });
+
+  Metadata.fromJson(core.Map json_)
+      : this(
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          value:
+              json_.containsKey('value') ? json_['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -2561,6 +2655,9 @@ class NetworkConfigurationCatalog {
         if (configurations != null) 'configurations': configurations!,
       };
 }
+
+/// Skips the starting activity
+typedef NoActivityIntent = $Empty;
 
 /// An opaque binary blob file to install on the device before the test starts.
 class ObbFile {
@@ -2639,6 +2736,114 @@ class Orientation {
       };
 }
 
+/// A version-specific information of an Android model.
+class PerAndroidVersionInfo {
+  /// The number of online devices for an Android version.
+  /// Possible string values are:
+  /// - "DEVICE_CAPACITY_UNSPECIFIED" : The value of device capacity is unknown
+  /// or unset.
+  /// - "DEVICE_CAPACITY_HIGH" : Devices that are high in capacity (The lab has
+  /// a large number of these devices). These devices are generally suggested
+  /// for running a large number of simultaneous tests (e.g. more than 100
+  /// tests). Please note that high capacity devices do not guarantee short wait
+  /// times due to several factors: 1. Traffic (how heavily they are used at any
+  /// given moment) 2. High capacity devices are prioritized for certain usages,
+  /// which may cause user tests to be slower than selecting other similar
+  /// device types.
+  /// - "DEVICE_CAPACITY_MEDIUM" : Devices that are medium in capacity (The lab
+  /// has a decent number of these devices, though not as many as high capacity
+  /// devices). These devices are suitable for fewer test runs (e.g. fewer than
+  /// 100 tests) and only for low shard counts (e.g. less than 10 shards).
+  /// - "DEVICE_CAPACITY_LOW" : Devices that are low in capacity (The lab has a
+  /// small number of these devices). These devices may be used if users need to
+  /// test on this specific device model and version. Please note that due to
+  /// low capacity, the tests may take much longer to finish, especially if a
+  /// large number of tests are invoked at once. These devices are not suitable
+  /// for test sharding.
+  /// - "DEVICE_CAPACITY_NONE" : Devices that are completely missing from the
+  /// lab. These devices are unavailable either temporarily or permanently and
+  /// should not be requested. If the device is also marked as deprecated, this
+  /// state is very likely permanent.
+  core.String? deviceCapacity;
+
+  /// An Android version.
+  core.String? versionId;
+
+  PerAndroidVersionInfo({
+    this.deviceCapacity,
+    this.versionId,
+  });
+
+  PerAndroidVersionInfo.fromJson(core.Map json_)
+      : this(
+          deviceCapacity: json_.containsKey('deviceCapacity')
+              ? json_['deviceCapacity'] as core.String
+              : null,
+          versionId: json_.containsKey('versionId')
+              ? json_['versionId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deviceCapacity != null) 'deviceCapacity': deviceCapacity!,
+        if (versionId != null) 'versionId': versionId!,
+      };
+}
+
+/// A version-specific information of an iOS model.
+class PerIosVersionInfo {
+  /// The number of online devices for an iOS version.
+  /// Possible string values are:
+  /// - "DEVICE_CAPACITY_UNSPECIFIED" : The value of device capacity is unknown
+  /// or unset.
+  /// - "DEVICE_CAPACITY_HIGH" : Devices that are high in capacity (The lab has
+  /// a large number of these devices). These devices are generally suggested
+  /// for running a large number of simultaneous tests (e.g. more than 100
+  /// tests). Please note that high capacity devices do not guarantee short wait
+  /// times due to several factors: 1. Traffic (how heavily they are used at any
+  /// given moment) 2. High capacity devices are prioritized for certain usages,
+  /// which may cause user tests to be slower than selecting other similar
+  /// device types.
+  /// - "DEVICE_CAPACITY_MEDIUM" : Devices that are medium in capacity (The lab
+  /// has a decent number of these devices, though not as many as high capacity
+  /// devices). These devices are suitable for fewer test runs (e.g. fewer than
+  /// 100 tests) and only for low shard counts (e.g. less than 10 shards).
+  /// - "DEVICE_CAPACITY_LOW" : Devices that are low in capacity (The lab has a
+  /// small number of these devices). These devices may be used if users need to
+  /// test on this specific device model and version. Please note that due to
+  /// low capacity, the tests may take much longer to finish, especially if a
+  /// large number of tests are invoked at once. These devices are not suitable
+  /// for test sharding.
+  /// - "DEVICE_CAPACITY_NONE" : Devices that are completely missing from the
+  /// lab. These devices are unavailable either temporarily or permanently and
+  /// should not be requested. If the device is also marked as deprecated, this
+  /// state is very likely permanent.
+  core.String? deviceCapacity;
+
+  /// An iOS version.
+  core.String? versionId;
+
+  PerIosVersionInfo({
+    this.deviceCapacity,
+    this.versionId,
+  });
+
+  PerIosVersionInfo.fromJson(core.Map json_)
+      : this(
+          deviceCapacity: json_.containsKey('deviceCapacity')
+              ? json_['deviceCapacity'] as core.String
+              : null,
+          versionId: json_.containsKey('versionId')
+              ? json_['versionId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deviceCapacity != null) 'deviceCapacity': deviceCapacity!,
+        if (versionId != null) 'versionId': versionId!,
+      };
+}
+
 /// The currently provided software environment on the devices under test.
 class ProvidedSoftwareCatalog {
   /// A string representing the current version of AndroidX Test Orchestrator
@@ -2653,6 +2858,9 @@ class ProvidedSoftwareCatalog {
   /// A string representing the current version of Android Test Orchestrator
   /// that is used in the environment. The package is available at
   /// https://maven.google.com/web/index.html#com.android.support.test:orchestrator.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? orchestratorVersion;
 
   ProvidedSoftwareCatalog({
@@ -2845,6 +3053,9 @@ class RoboStartingIntent {
   /// An intent that starts the main launcher activity.
   LauncherActivityIntent? launcherActivity;
 
+  /// Skips the starting activity
+  NoActivityIntent? noActivity;
+
   /// An intent that starts an activity with specific details.
   StartActivityIntent? startActivity;
 
@@ -2853,6 +3064,7 @@ class RoboStartingIntent {
 
   RoboStartingIntent({
     this.launcherActivity,
+    this.noActivity,
     this.startActivity,
     this.timeout,
   });
@@ -2862,6 +3074,10 @@ class RoboStartingIntent {
           launcherActivity: json_.containsKey('launcherActivity')
               ? LauncherActivityIntent.fromJson(json_['launcherActivity']
                   as core.Map<core.String, core.dynamic>)
+              : null,
+          noActivity: json_.containsKey('noActivity')
+              ? NoActivityIntent.fromJson(
+                  json_['noActivity'] as core.Map<core.String, core.dynamic>)
               : null,
           startActivity: json_.containsKey('startActivity')
               ? StartActivityIntent.fromJson(
@@ -2874,8 +3090,41 @@ class RoboStartingIntent {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (launcherActivity != null) 'launcherActivity': launcherActivity!,
+        if (noActivity != null) 'noActivity': noActivity!,
         if (startActivity != null) 'startActivity': startActivity!,
         if (timeout != null) 'timeout': timeout!,
+      };
+}
+
+/// The section of an tag.
+///
+/// https://developer.android.com/guide/topics/manifest/service-element
+class Service {
+  /// Intent filters in the service
+  core.List<IntentFilter>? intentFilter;
+
+  /// The android:name value
+  core.String? name;
+
+  Service({
+    this.intentFilter,
+    this.name,
+  });
+
+  Service.fromJson(core.Map json_)
+      : this(
+          intentFilter: json_.containsKey('intentFilter')
+              ? (json_['intentFilter'] as core.List)
+                  .map((value) => IntentFilter.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (intentFilter != null) 'intentFilter': intentFilter!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -2883,6 +3132,12 @@ class RoboStartingIntent {
 ///
 /// Output only.
 class Shard {
+  /// The estimated shard duration based on previous test case timing records,
+  /// if available.
+  ///
+  /// Output only.
+  core.String? estimatedShardDuration;
+
   /// The total number of shards.
   ///
   /// Output only.
@@ -2901,6 +3156,7 @@ class Shard {
   TestTargetsForShard? testTargetsForShard;
 
   Shard({
+    this.estimatedShardDuration,
     this.numShards,
     this.shardIndex,
     this.testTargetsForShard,
@@ -2908,6 +3164,9 @@ class Shard {
 
   Shard.fromJson(core.Map json_)
       : this(
+          estimatedShardDuration: json_.containsKey('estimatedShardDuration')
+              ? json_['estimatedShardDuration'] as core.String
+              : null,
           numShards: json_.containsKey('numShards')
               ? json_['numShards'] as core.int
               : null,
@@ -2921,6 +3180,8 @@ class Shard {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (estimatedShardDuration != null)
+          'estimatedShardDuration': estimatedShardDuration!,
         if (numShards != null) 'numShards': numShards!,
         if (shardIndex != null) 'shardIndex': shardIndex!,
         if (testTargetsForShard != null)
@@ -2934,11 +3195,15 @@ class ShardingOption {
   /// methods.
   ManualSharding? manualSharding;
 
+  /// Shards test based on previous test case timing records.
+  SmartSharding? smartSharding;
+
   /// Uniformly shards test cases given a total number of shards.
   UniformSharding? uniformSharding;
 
   ShardingOption({
     this.manualSharding,
+    this.smartSharding,
     this.uniformSharding,
   });
 
@@ -2948,6 +3213,10 @@ class ShardingOption {
               ? ManualSharding.fromJson(json_['manualSharding']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          smartSharding: json_.containsKey('smartSharding')
+              ? SmartSharding.fromJson(
+                  json_['smartSharding'] as core.Map<core.String, core.dynamic>)
+              : null,
           uniformSharding: json_.containsKey('uniformSharding')
               ? UniformSharding.fromJson(json_['uniformSharding']
                   as core.Map<core.String, core.dynamic>)
@@ -2956,7 +3225,57 @@ class ShardingOption {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (manualSharding != null) 'manualSharding': manualSharding!,
+        if (smartSharding != null) 'smartSharding': smartSharding!,
         if (uniformSharding != null) 'uniformSharding': uniformSharding!,
+      };
+}
+
+/// Shards test based on previous test case timing records.
+class SmartSharding {
+  /// The amount of time tests within a shard should take.
+  ///
+  /// Default: 300 seconds (5 minutes). The minimum allowed: 120 seconds (2
+  /// minutes). The shard count is dynamically set based on time, up to the
+  /// maximum shard limit (described below). To guarantee at least one test case
+  /// for each shard, the number of shards will not exceed the number of test
+  /// cases. Shard duration will be exceeded if: - The maximum shard limit is
+  /// reached and there is more calculated test time remaining to allocate into
+  /// shards. - Any individual test is estimated to be longer than the targeted
+  /// shard duration. Shard duration is not guaranteed because smart sharding
+  /// uses test case history and default durations which may not be accurate.
+  /// The rules for finding the test case timing records are: - If the service
+  /// has processed a test case in the last 30 days, the record of the latest
+  /// successful test case will be used. - For new test cases, the average
+  /// duration of other known test cases will be used. - If there are no
+  /// previous test case timing records available, the default test case
+  /// duration is 15 seconds. Because the actual shard duration can exceed the
+  /// targeted shard duration, we recommend that you set the targeted value at
+  /// least 5 minutes less than the maximum allowed test timeout (45 minutes for
+  /// physical devices and 60 minutes for virtual), or that you use the custom
+  /// test timeout value that you set. This approach avoids cancelling the shard
+  /// before all tests can finish. Note that there is a limit for maximum number
+  /// of shards. When you select one or more physical devices, the number of
+  /// shards must be \<= 50. When you select one or more ARM virtual devices, it
+  /// must be \<= 100. When you select only x86 virtual devices, it must be \<=
+  /// 500. To guarantee at least one test case for per shard, the number of
+  /// shards will not exceed the number of test cases. Each shard created counts
+  /// toward daily test quota.
+  core.String? targetedShardDuration;
+
+  SmartSharding({
+    this.targetedShardDuration,
+  });
+
+  SmartSharding.fromJson(core.Map json_)
+      : this(
+          targetedShardDuration: json_.containsKey('targetedShardDuration')
+              ? json_['targetedShardDuration'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (targetedShardDuration != null)
+          'targetedShardDuration': targetedShardDuration!,
       };
 }
 
@@ -3003,6 +3322,9 @@ class SystraceSetup {
   /// Systrace duration in seconds.
   ///
   /// Should be between 1 and 30 seconds. 0 disables systrace.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.int? durationSeconds;
 
   SystraceSetup({
@@ -3321,8 +3643,8 @@ class TestMatrix {
   /// AndroidJUnitRunner version 1.1 or higher. Orchestrator can be disabled by
   /// using DO_NOT_USE_ORCHESTRATOR OrchestratorOption.
   /// - "NO_TEST_RUNNER_CLASS" : The test APK does not contain the test runner
-  /// class specified by user or in the manifest file. This can be caused by
-  /// either of the following reasons: - the user provided a runner class name
+  /// class specified by the user or in the manifest file. This can be caused by
+  /// one of the following reasons: - the user provided a runner class name
   /// that's incorrect, or - the test runner isn't built into the test APK
   /// (might be in the app APK instead).
   /// - "NO_LAUNCHER_ACTIVITY" : A main launcher activity could not be found.
@@ -3372,6 +3694,14 @@ class TestMatrix {
   /// access the APK file.
   /// - "INVALID_APK_PREVIEW_SDK" : APK is built for a preview SDK which is
   /// unsupported
+  /// - "MATRIX_TOO_LARGE" : The matrix expanded to contain too many executions.
+  /// - "TEST_QUOTA_EXCEEDED" : Not enough test quota to run the executions in
+  /// this matrix.
+  /// - "SERVICE_NOT_ACTIVATED" : A required cloud service api is not activated.
+  /// See:
+  /// https://firebase.google.com/docs/test-lab/android/continuous#requirements
+  /// - "UNKNOWN_PERMISSION_ERROR" : There was an unknown permission issue
+  /// running this test.
   core.String? invalidMatrixDetails;
 
   /// The overall outcome of the test.
@@ -3384,7 +3714,7 @@ class TestMatrix {
   /// - "SUCCESS" : The test matrix run was successful, for instance: - All the
   /// test cases passed. - Robo did not detect a crash of the application under
   /// test.
-  /// - "FAILURE" : A run failed, for instance: - One or more test case failed.
+  /// - "FAILURE" : A run failed, for instance: - One or more test cases failed.
   /// - A test timed out. - The application under test crashed.
   /// - "INCONCLUSIVE" : Something unexpected happened. The run should still be
   /// considered unsuccessful but this is likely a transient problem and
@@ -3573,13 +3903,14 @@ class TestSetup {
   /// TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.
   core.String? networkProfile;
 
-  /// Deprecated: Systrace uses Python 2 which has been sunset 2020-01-01.
+  /// Systrace configuration for the run.
   ///
-  /// Support of Systrace may stop at any time, at which point no Systrace file
-  /// will be provided in the results. Systrace configuration for the run. If
-  /// set a systrace will be taken, starting on test start and lasting for the
-  /// configured duration. The systrace file thus obtained is put in the results
-  /// bucket together with the other artifacts from the run.
+  /// Deprecated: Systrace used Python 2 which was sunsetted on 2020-01-01.
+  /// Systrace is no longer supported in the Cloud Testing API, and no Systrace
+  /// file will be provided in the results.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   SystraceSetup? systrace;
 
   TestSetup({
@@ -3990,7 +4321,7 @@ class UniformSharding {
   /// This must always be a positive number that is no greater than the total
   /// number of test cases. When you select one or more physical devices, the
   /// number of shards must be \<= 50. When you select one or more ARM virtual
-  /// devices, it must be \<= 50. When you select only x86 virtual devices, it
+  /// devices, it must be \<= 100. When you select only x86 virtual devices, it
   /// must be \<= 500.
   ///
   /// Required.
@@ -4009,6 +4340,35 @@ class UniformSharding {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (numShards != null) 'numShards': numShards!,
+      };
+}
+
+/// A tag within a manifest.
+///
+/// https://developer.android.com/guide/topics/manifest/uses-feature-element.html
+class UsesFeature {
+  /// The android:required value
+  core.bool? isRequired;
+
+  /// The android:name value
+  core.String? name;
+
+  UsesFeature({
+    this.isRequired,
+    this.name,
+  });
+
+  UsesFeature.fromJson(core.Map json_)
+      : this(
+          isRequired: json_.containsKey('isRequired')
+              ? json_['isRequired'] as core.bool
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (isRequired != null) 'isRequired': isRequired!,
+        if (name != null) 'name': name!,
       };
 }
 

@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Service Usage API - v1
@@ -24,7 +23,7 @@
 ///
 /// - [OperationsResource]
 /// - [ServicesResource]
-library serviceusage.v1;
+library serviceusage_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -33,7 +32,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -204,13 +202,6 @@ class OperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -587,6 +578,7 @@ class Api {
   /// Possible string values are:
   /// - "SYNTAX_PROTO2" : Syntax `proto2`.
   /// - "SYNTAX_PROTO3" : Syntax `proto3`.
+  /// - "SYNTAX_EDITIONS" : Syntax `editions`.
   core.String? syntax;
 
   /// A version string for this interface.
@@ -980,7 +972,7 @@ class DisableServiceRequest {
 /// Example: documentation: summary: \> The Google Calendar API gives access to
 /// most calendar features. pages: - name: Overview content: (== include
 /// google/foo/overview.md ==) - name: Tutorial content: (== include
-/// google/foo/tutorial.md ==) subpages; - name: Java content: (== include
+/// google/foo/tutorial.md ==) subpages: - name: Java content: (== include
 /// google/foo/tutorial_java.md ==) rules: - selector:
 /// google.calendar.Calendar.Get description: \> ... - selector:
 /// google.calendar.Calendar.Put description: \> ... Documentation is provided
@@ -1025,6 +1017,12 @@ class Documentation {
   /// **NOTE:** All service configuration rules follow "last one wins" order.
   core.List<DocumentationRule>? rules;
 
+  /// Specifies section and content to override boilerplate content provided by
+  /// go/api-docgen.
+  ///
+  /// Currently overrides following sections: 1. rest.service.client_libraries
+  core.List<Page>? sectionOverrides;
+
   /// Specifies the service root url if the default one (the service name from
   /// the yaml file) is not suitable.
   ///
@@ -1044,6 +1042,7 @@ class Documentation {
     this.overview,
     this.pages,
     this.rules,
+    this.sectionOverrides,
     this.serviceRootUrl,
     this.summary,
   });
@@ -1068,6 +1067,12 @@ class Documentation {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          sectionOverrides: json_.containsKey('sectionOverrides')
+              ? (json_['sectionOverrides'] as core.List)
+                  .map((value) => Page.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           serviceRootUrl: json_.containsKey('serviceRootUrl')
               ? json_['serviceRootUrl'] as core.String
               : null,
@@ -1082,6 +1087,7 @@ class Documentation {
         if (overview != null) 'overview': overview!,
         if (pages != null) 'pages': pages!,
         if (rules != null) 'rules': rules!,
+        if (sectionOverrides != null) 'sectionOverrides': sectionOverrides!,
         if (serviceRootUrl != null) 'serviceRootUrl': serviceRootUrl!,
         if (summary != null) 'summary': summary!,
       };
@@ -1391,6 +1397,7 @@ class Method {
   /// Possible string values are:
   /// - "SYNTAX_PROTO2" : Syntax `proto2`.
   /// - "SYNTAX_PROTO3" : Syntax `proto3`.
+  /// - "SYNTAX_EDITIONS" : Syntax `editions`.
   core.String? syntax;
 
   Method({
@@ -1467,7 +1474,7 @@ typedef MetricRule = $MetricRule;
 /// mixin construct implies that all methods in `AccessControl` are also
 /// declared with same name and request/response types in `Storage`. A
 /// documentation generator or annotation processor will see the effective
-/// `Storage.GetAcl` method after inheriting documentation and annotations as
+/// `Storage.GetAcl` method after inherting documentation and annotations as
 /// follows: service Storage { // Get the underlying ACL object. rpc
 /// GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get =
 /// "/v2/{resource=**}:getAcl"; } ... } Note how the version in the path pattern
@@ -1737,7 +1744,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard

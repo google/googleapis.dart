@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Payments Reseller Subscription API - v1
@@ -24,7 +23,7 @@
 ///   - [PartnersProductsResource]
 ///   - [PartnersPromotionsResource]
 ///   - [PartnersSubscriptionsResource]
-library paymentsresellersubscription.v1;
+library paymentsresellersubscription_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -33,7 +32,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -423,10 +421,11 @@ class PartnersSubscriptionsResource {
         .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Used by partners to extend a subscription service for their customers on
-  /// an ongoing basis for the subscription to remain active and renewable.
+  /// \[Opt-in only\] Most partners should be on auto-extend by default.
   ///
-  /// It should be called directly by the partner using service accounts.
+  /// Used by partners to extend a subscription service for their customers on
+  /// an ongoing basis for the subscription to remain active and renewable. It
+  /// should be called directly by the partner using service accounts.
   ///
   /// [request] - The metadata request object.
   ///
@@ -656,10 +655,12 @@ class GoogleCloudPaymentsResellerSubscriptionV1Amount {
 }
 
 class GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionRequest {
-  /// If true, the subscription will be cancelled immediately.
+  /// If true, Google will cancel the subscription immediately, and may or may
+  /// not (based on the contract) issue a prorated refund for the remainder of
+  /// the billing cycle.
   ///
-  /// Otherwise, the subscription will be cancelled at renewal_time, and
-  /// therefore no prorated refund will be issued for the rest of the cycle.
+  /// Otherwise, Google defers the cancelation at renewal_time, and will not
+  /// issue a refund.
   ///
   /// Optional.
   core.bool? cancelImmediately;
@@ -676,6 +677,9 @@ class GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionRequest {
   /// not use in Cancel API. Cancellation due to upgrade or downgrade.
   /// - "CANCELLATION_REASON_USER_DELINQUENCY" : Cancellation due to user
   /// delinquency
+  /// - "CANCELLATION_REASON_SYSTEM_ERROR" : Cancellation due to an
+  /// unrecoverable system error.
+  /// - "CANCELLATION_REASON_SYSTEM_CANCEL" : Cancellation by a system.
   /// - "CANCELLATION_REASON_OTHER" : Other reason.
   core.String? cancellationReason;
 
@@ -1010,6 +1014,75 @@ class GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsResponse {
       };
 }
 
+/// Payload specific to Google One products.
+class GoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload {
+  /// Campaign attributed to sales of this subscription.
+  core.List<core.String>? campaigns;
+
+  /// The type of offering the subscription was sold by the partner.
+  ///
+  /// e.g. VAS.
+  /// Possible string values are:
+  /// - "OFFERING_UNSPECIFIED" : The type of partner offering is unspecified.
+  /// - "OFFERING_VAS_BUNDLE" : Google One product purchased as a Value added
+  /// service in addition to existing partner's products. Customer pays
+  /// additional amount for Google One product.
+  /// - "OFFERING_VAS_STANDALONE" : Google One product purchased by itself by
+  /// customer as a value add service. Customer pays additional amount for
+  /// Google One product.
+  /// - "OFFERING_HARD_BUNDLE" : Product purchased as part of a hard bundle
+  /// where Google One was included with the bundle. Google One pricing is
+  /// included in the bundle.
+  /// - "OFFERING_SOFT_BUNDLE" : Purchased as part of a bundle where Google One
+  /// was provided as an option. Google One pricing is included in the bundle.
+  core.String? offering;
+
+  /// The type of sales channel through which the subscription was sold.
+  /// Possible string values are:
+  /// - "CHANNEL_UNSPECIFIED" : The channel type is unspecified.
+  /// - "CHANNEL_RETAIL" : Sold at store.
+  /// - "CHANNEL_ONLINE_WEB" : Sold through partner website.
+  /// - "CHANNEL_ONLINE_ANDROID_APP" : Sold through partner android app.
+  /// - "CHANNEL_ONLINE_IOS_APP" : Sold through partner iOS app.
+  core.String? salesChannel;
+
+  /// The identifier for the partner store where the subscription was sold.
+  core.String? storeId;
+
+  GoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload({
+    this.campaigns,
+    this.offering,
+    this.salesChannel,
+    this.storeId,
+  });
+
+  GoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload.fromJson(
+      core.Map json_)
+      : this(
+          campaigns: json_.containsKey('campaigns')
+              ? (json_['campaigns'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          offering: json_.containsKey('offering')
+              ? json_['offering'] as core.String
+              : null,
+          salesChannel: json_.containsKey('salesChannel')
+              ? json_['salesChannel'] as core.String
+              : null,
+          storeId: json_.containsKey('storeId')
+              ? json_['storeId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (campaigns != null) 'campaigns': campaigns!,
+        if (offering != null) 'offering': offering!,
+        if (salesChannel != null) 'salesChannel': salesChannel!,
+        if (storeId != null) 'storeId': storeId!,
+      };
+}
+
 class GoogleCloudPaymentsResellerSubscriptionV1ListProductsResponse {
   /// A token, which can be sent as `page_token` to retrieve the next page.
   ///
@@ -1193,6 +1266,42 @@ class GoogleCloudPaymentsResellerSubscriptionV1Product {
         if (subscriptionBillingCycleDuration != null)
           'subscriptionBillingCycleDuration': subscriptionBillingCycleDuration!,
         if (titles != null) 'titles': titles!,
+      };
+}
+
+/// Specifies product specific payload.
+class GoogleCloudPaymentsResellerSubscriptionV1ProductPayload {
+  /// Product-specific payloads.
+  ///
+  /// Payload specific to Google One products.
+  GoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload? googleOnePayload;
+
+  /// Payload specific to Youtube products.
+  GoogleCloudPaymentsResellerSubscriptionV1YoutubePayload? youtubePayload;
+
+  GoogleCloudPaymentsResellerSubscriptionV1ProductPayload({
+    this.googleOnePayload,
+    this.youtubePayload,
+  });
+
+  GoogleCloudPaymentsResellerSubscriptionV1ProductPayload.fromJson(
+      core.Map json_)
+      : this(
+          googleOnePayload: json_.containsKey('googleOnePayload')
+              ? GoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload
+                  .fromJson(json_['googleOnePayload']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          youtubePayload: json_.containsKey('youtubePayload')
+              ? GoogleCloudPaymentsResellerSubscriptionV1YoutubePayload
+                  .fromJson(json_['youtubePayload']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (googleOnePayload != null) 'googleOnePayload': googleOnePayload!,
+        if (youtubePayload != null) 'youtubePayload': youtubePayload!,
       };
 }
 
@@ -1418,10 +1527,18 @@ class GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetai
   /// Output only.
   core.int? recurrenceCount;
 
+  /// 2-letter ISO region code where the product is available in.
+  ///
+  /// Ex. "US".
+  ///
+  /// Output only.
+  core.String? regionCode;
+
   GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec({
     this.discountAmount,
     this.discountRatioMicros,
     this.recurrenceCount,
+    this.regionCode,
   });
 
   GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec.fromJson(
@@ -1438,6 +1555,9 @@ class GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetai
           recurrenceCount: json_.containsKey('recurrenceCount')
               ? json_['recurrenceCount'] as core.int
               : null,
+          regionCode: json_.containsKey('regionCode')
+              ? json_['regionCode'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1445,6 +1565,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetai
         if (discountRatioMicros != null)
           'discountRatioMicros': discountRatioMicros!,
         if (recurrenceCount != null) 'recurrenceCount': recurrenceCount!,
+        if (regionCode != null) 'regionCode': regionCode!,
       };
 }
 
@@ -1564,7 +1685,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1Subscription {
   /// Required. Resource name that identifies the purchased products. The format
   /// will be 'partners/{partner_id}/products/{product_id}'.
   ///
-  /// Required.
+  /// Optional.
   core.List<core.String>? products;
 
   /// Subscription-level promotions.
@@ -1622,11 +1743,15 @@ class GoogleCloudPaymentsResellerSubscriptionV1Subscription {
   /// - "STATE_CREATED" : The subscription is created, a state before it is
   /// moved to STATE_ACTIVE.
   /// - "STATE_ACTIVE" : The subscription is active.
-  /// - "STATE_CANCELLED" : The subscription is cancelled.
-  /// - "STATE_IN_GRACE_PERIOD" : The subscription has not been extended by the
-  /// partner after the end of current cycle.
+  /// - "STATE_CANCELLED" : The subscription is cancelled. This is the final
+  /// state of the subscription, as it can no longer be modified or reactivated.
+  /// - "STATE_IN_GRACE_PERIOD" : The subscription is in grace period. It can
+  /// happen: 1) in manual extend mode, the subscription is not extended by the
+  /// partner at the end of current cycle. 2) for outbound authorization enabled
+  /// partners, a renewal purchase order is rejected.
   /// - "STATE_CANCEL_AT_END_OF_CYCLE" : The subscription is waiting to be
   /// cancelled by the next recurrence cycle.
+  /// - "STATE_SUSPENDED" : The subscription is suspended.
   core.String? state;
 
   /// System generated timestamp when the subscription is most recently updated.
@@ -1780,6 +1905,9 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionCancellationDetails {
   /// not use in Cancel API. Cancellation due to upgrade or downgrade.
   /// - "CANCELLATION_REASON_USER_DELINQUENCY" : Cancellation due to user
   /// delinquency
+  /// - "CANCELLATION_REASON_SYSTEM_ERROR" : Cancellation due to an
+  /// unrecoverable system error.
+  /// - "CANCELLATION_REASON_SYSTEM_CANCEL" : Cancellation by a system.
   /// - "CANCELLATION_REASON_OTHER" : Other reason.
   core.String? reason;
 
@@ -1801,15 +1929,22 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionCancellationDetails {
 }
 
 /// Individual line item definition of a subscription.
-///
-/// Next id: 8
 class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem {
+  /// The price of the product/service in this line item.
+  ///
+  /// The amount could be the wholesale price, or it can include a cost of sale
+  /// based on the contract.
+  ///
+  /// Output only.
+  GoogleCloudPaymentsResellerSubscriptionV1Amount? amount;
+
   /// Description of this line item.
   ///
   /// Output only.
   core.String? description;
 
-  /// It is set only if the line item has its own free trial applied.
+  /// The free trial end time will be populated after the line item is
+  /// successfully processed.
   ///
   /// End time of the line item free trial period, in ISO 8061 format. For
   /// example, "2019-08-31T17:28:54.564Z". It will be set the same as createTime
@@ -1817,6 +1952,11 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem {
   ///
   /// Output only.
   core.String? lineItemFreeTrialEndTime;
+
+  /// A unique index of the subscription line item.
+  ///
+  /// Output only.
+  core.int? lineItemIndex;
 
   /// The promotions applied on the line item.
   ///
@@ -1841,6 +1981,11 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem {
   /// Required.
   core.String? product;
 
+  /// Product specific payload for this line item.
+  ///
+  /// Optional.
+  GoogleCloudPaymentsResellerSubscriptionV1ProductPayload? productPayload;
+
   /// The recurrence type of the line item.
   ///
   /// Output only.
@@ -1858,7 +2003,9 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem {
   /// Output only.
   /// Possible string values are:
   /// - "LINE_ITEM_STATE_UNSPECIFIED" : Unspecified state.
-  /// - "LINE_ITEM_STATE_ACTIVE" : The line item is in ACTIVE state.
+  /// - "LINE_ITEM_STATE_ACTIVE" : The line item is in ACTIVE state. If the
+  /// subscription is cancelled or suspended, the line item will not be charged
+  /// even if the line item is active.
   /// - "LINE_ITEM_STATE_INACTIVE" : The line item is in INACTIVE state.
   /// - "LINE_ITEM_STATE_NEW" : The line item is new, and is not activated or
   /// charged yet.
@@ -1866,15 +2013,23 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem {
   /// to be charged. If a free trial applies to the line item, the line item is
   /// pending a prorated charge at the end of the free trial period, as
   /// indicated by `line_item_free_trial_end_time`.
-  /// - "LINE_ITEM_STATE_DEACTIVATING" : The line item is being deactivated.
+  /// - "LINE_ITEM_STATE_DEACTIVATING" : The line item is being deactivated, and
+  /// a prorated refund in being processed.
+  /// - "LINE_ITEM_STATE_WAITING_TO_DEACTIVATE" : The line item is scheduled to
+  /// be deactivated at the end of the current cycle.
+  /// - "LINE_ITEM_STATE_OFF_CYCLE_CHARGING" : Line item is being charged
+  /// off-cycle.
   core.String? state;
 
   GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem({
+    this.amount,
     this.description,
     this.lineItemFreeTrialEndTime,
+    this.lineItemIndex,
     this.lineItemPromotionSpecs,
     this.oneTimeRecurrenceDetails,
     this.product,
+    this.productPayload,
     this.recurrenceType,
     this.state,
   });
@@ -1882,6 +2037,10 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem {
   GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem.fromJson(
       core.Map json_)
       : this(
+          amount: json_.containsKey('amount')
+              ? GoogleCloudPaymentsResellerSubscriptionV1Amount.fromJson(
+                  json_['amount'] as core.Map<core.String, core.dynamic>)
+              : null,
           description: json_.containsKey('description')
               ? json_['description'] as core.String
               : null,
@@ -1889,6 +2048,9 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem {
               json_.containsKey('lineItemFreeTrialEndTime')
                   ? json_['lineItemFreeTrialEndTime'] as core.String
                   : null,
+          lineItemIndex: json_.containsKey('lineItemIndex')
+              ? json_['lineItemIndex'] as core.int
+              : null,
           lineItemPromotionSpecs: json_.containsKey('lineItemPromotionSpecs')
               ? (json_['lineItemPromotionSpecs'] as core.List)
                   .map((value) =>
@@ -1906,6 +2068,11 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem {
           product: json_.containsKey('product')
               ? json_['product'] as core.String
               : null,
+          productPayload: json_.containsKey('productPayload')
+              ? GoogleCloudPaymentsResellerSubscriptionV1ProductPayload
+                  .fromJson(json_['productPayload']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           recurrenceType: json_.containsKey('recurrenceType')
               ? json_['recurrenceType'] as core.String
               : null,
@@ -1914,14 +2081,17 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (amount != null) 'amount': amount!,
         if (description != null) 'description': description!,
         if (lineItemFreeTrialEndTime != null)
           'lineItemFreeTrialEndTime': lineItemFreeTrialEndTime!,
+        if (lineItemIndex != null) 'lineItemIndex': lineItemIndex!,
         if (lineItemPromotionSpecs != null)
           'lineItemPromotionSpecs': lineItemPromotionSpecs!,
         if (oneTimeRecurrenceDetails != null)
           'oneTimeRecurrenceDetails': oneTimeRecurrenceDetails!,
         if (product != null) 'product': product!,
+        if (productPayload != null) 'productPayload': productPayload!,
         if (recurrenceType != null) 'recurrenceType': recurrenceType!,
         if (state != null) 'state': state!,
       };
@@ -2090,32 +2260,40 @@ class GoogleCloudPaymentsResellerSubscriptionV1UndoCancelSubscriptionResponse {
       };
 }
 
-/// Localized variant of a text in a particular language.
-class GoogleTypeLocalizedText {
-  /// The text's BCP-47 language code, such as "en-US" or "sr-Latn".
+/// Payload specific to Youtube products.
+class GoogleCloudPaymentsResellerSubscriptionV1YoutubePayload {
+  /// The access expiration time for this line item.
   ///
-  /// For more information, see
-  /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
-  core.String? languageCode;
+  /// Output only.
+  core.String? accessEndTime;
 
-  /// Localized string in the language corresponding to \`language_code' below.
-  core.String? text;
+  /// The list of eligibility_ids which are applicable for the line item.
+  core.List<core.String>? partnerEligibilityIds;
 
-  GoogleTypeLocalizedText({
-    this.languageCode,
-    this.text,
+  GoogleCloudPaymentsResellerSubscriptionV1YoutubePayload({
+    this.accessEndTime,
+    this.partnerEligibilityIds,
   });
 
-  GoogleTypeLocalizedText.fromJson(core.Map json_)
+  GoogleCloudPaymentsResellerSubscriptionV1YoutubePayload.fromJson(
+      core.Map json_)
       : this(
-          languageCode: json_.containsKey('languageCode')
-              ? json_['languageCode'] as core.String
+          accessEndTime: json_.containsKey('accessEndTime')
+              ? json_['accessEndTime'] as core.String
               : null,
-          text: json_.containsKey('text') ? json_['text'] as core.String : null,
+          partnerEligibilityIds: json_.containsKey('partnerEligibilityIds')
+              ? (json_['partnerEligibilityIds'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (languageCode != null) 'languageCode': languageCode!,
-        if (text != null) 'text': text!,
+        if (accessEndTime != null) 'accessEndTime': accessEndTime!,
+        if (partnerEligibilityIds != null)
+          'partnerEligibilityIds': partnerEligibilityIds!,
       };
 }
+
+/// Localized variant of a text in a particular language.
+typedef GoogleTypeLocalizedText = $GoogleTypeLocalizedText;

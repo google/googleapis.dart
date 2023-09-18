@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud Monitoring API - v3
@@ -33,12 +32,13 @@
 ///   - [ProjectsMonitoredResourceDescriptorsResource]
 ///   - [ProjectsNotificationChannelDescriptorsResource]
 ///   - [ProjectsNotificationChannelsResource]
+///   - [ProjectsSnoozesResource]
 ///   - [ProjectsTimeSeriesResource]
 ///   - [ProjectsUptimeCheckConfigsResource]
 /// - [ServicesResource]
 ///   - [ServicesServiceLevelObjectivesResource]
 /// - [UptimeCheckIpsResource]
-library monitoring.v3;
+library monitoring_v3;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -47,7 +47,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -1192,6 +1191,7 @@ class ProjectsResource {
           ProjectsNotificationChannelDescriptorsResource(_requester);
   ProjectsNotificationChannelsResource get notificationChannels =>
       ProjectsNotificationChannelsResource(_requester);
+  ProjectsSnoozesResource get snoozes => ProjectsSnoozesResource(_requester);
   ProjectsTimeSeriesResource get timeSeries =>
       ProjectsTimeSeriesResource(_requester);
   ProjectsUptimeCheckConfigsResource get uptimeCheckConfigs =>
@@ -1206,7 +1206,11 @@ class ProjectsAlertPoliciesResource {
   ProjectsAlertPoliciesResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a new alerting policy.
+  /// Creates a new alerting policy.Design your application to single-thread API
+  /// calls that modify the state of alerting policies in a single project.
+  ///
+  /// This includes calls to CreateAlertPolicy, DeleteAlertPolicy and
+  /// UpdateAlertPolicy.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1257,7 +1261,11 @@ class ProjectsAlertPoliciesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deletes an alerting policy.
+  /// Deletes an alerting policy.Design your application to single-thread API
+  /// calls that modify the state of alerting policies in a single project.
+  ///
+  /// This includes calls to CreateAlertPolicy, DeleteAlertPolicy and
+  /// UpdateAlertPolicy.
   ///
   /// Request parameters:
   ///
@@ -1403,7 +1411,10 @@ class ProjectsAlertPoliciesResource {
   ///
   /// You can either replace the entire policy with a new one or replace only
   /// certain fields in the current alerting policy by specifying the fields to
-  /// be updated via updateMask. Returns the updated alerting policy.
+  /// be updated via updateMask. Returns the updated alerting policy.Design your
+  /// application to single-thread API calls that modify the state of alerting
+  /// policies in a single project. This includes calls to CreateAlertPolicy,
+  /// DeleteAlertPolicy and UpdateAlertPolicy.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2013,7 +2024,8 @@ class ProjectsMetricDescriptorsResource {
   /// starts_with("custom.googleapis.com/")
   ///
   /// [pageSize] - A positive number that is the maximum number of results to
-  /// return.
+  /// return. The default and maximum value is 10,000. If a page_size \<= 0 or
+  /// \> 10,000 is submitted, will instead return a maximum of 10,000 results.
   ///
   /// [pageToken] - If this field is not empty then it must contain the
   /// nextPageToken value returned by a previous call to this method. Using this
@@ -2278,7 +2290,12 @@ class ProjectsNotificationChannelsResource {
       : _requester = client;
 
   /// Creates a new notification channel, representing a single notification
-  /// endpoint such as an email address, SMS number, or PagerDuty service.
+  /// endpoint such as an email address, SMS number, or PagerDuty service.Design
+  /// your application to single-thread API calls that modify the state of
+  /// notification channels in a single project.
+  ///
+  /// This includes calls to CreateNotificationChannel,
+  /// DeleteNotificationChannel and UpdateNotificationChannel.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2325,7 +2342,12 @@ class ProjectsNotificationChannelsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deletes a notification channel.
+  /// Deletes a notification channel.Design your application to single-thread
+  /// API calls that modify the state of notification channels in a single
+  /// project.
+  ///
+  /// This includes calls to CreateNotificationChannel,
+  /// DeleteNotificationChannel and UpdateNotificationChannel.
   ///
   /// Request parameters:
   ///
@@ -2479,6 +2501,9 @@ class ProjectsNotificationChannelsResource {
 
   /// Lists the notification channels that have been created for the project.
   ///
+  /// To list the types of notification channels that are supported, use the
+  /// ListNotificationChannelDescriptors method.
+  ///
   /// Request parameters:
   ///
   /// [name] - Required. The project
@@ -2547,7 +2572,11 @@ class ProjectsNotificationChannelsResource {
 
   /// Updates a notification channel.
   ///
-  /// Fields not specified in the field mask remain unchanged.
+  /// Fields not specified in the field mask remain unchanged.Design your
+  /// application to single-thread API calls that modify the state of
+  /// notification channels in a single project. This includes calls to
+  /// CreateNotificationChannel, DeleteNotificationChannel and
+  /// UpdateNotificationChannel.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2679,6 +2708,213 @@ class ProjectsNotificationChannelsResource {
     );
     return NotificationChannel.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsSnoozesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsSnoozesResource(commons.ApiRequester client) : _requester = client;
+
+  /// Creates a Snooze that will prevent alerts, which match the provided
+  /// criteria, from being opened.
+  ///
+  /// The Snooze applies for a specific time interval.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project
+  /// (https://cloud.google.com/monitoring/api/v3#project_name) in which a
+  /// Snooze should be created. The format is: projects/\[PROJECT_ID_OR_NUMBER\]
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Snooze].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Snooze> create(
+    Snooze request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$parent') + '/snoozes';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Snooze.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves a Snooze by name.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The ID of the Snooze to retrieve. The format is:
+  /// projects/\[PROJECT_ID_OR_NUMBER\]/snoozes/\[SNOOZE_ID\]
+  /// Value must have pattern `^projects/\[^/\]+/snoozes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Snooze].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Snooze> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Snooze.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists the Snoozes associated with a project.
+  ///
+  /// Can optionally pass in filter, which specifies predicates to match
+  /// Snoozes.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project
+  /// (https://cloud.google.com/monitoring/api/v3#project_name) whose Snoozes
+  /// should be listed. The format is: projects/\[PROJECT_ID_OR_NUMBER\]
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Optional filter to restrict results to the given
+  /// criteria. The following fields are supported. interval.start_time
+  /// interval.end_timeFor example: ``` interval.start_time >
+  /// "2022-03-11T00:00:00-08:00" AND interval.end_time <
+  /// "2022-03-12T00:00:00-08:00" ```
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return for a
+  /// single query. The server may further constrain the maximum number of
+  /// results returned in a single page. The value should be in the range 1,
+  /// 1000. If the value given is outside this range, the server will decide the
+  /// number of results to be returned.
+  ///
+  /// [pageToken] - Optional. The next_page_token from a previous call to
+  /// ListSnoozesRequest to get the next page of results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListSnoozesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListSnoozesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$parent') + '/snoozes';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListSnoozesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a Snooze, identified by its name, with the parameters in the given
+  /// Snooze object.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the Snooze. The format is:
+  /// projects/\[PROJECT_ID_OR_NUMBER\]/snoozes/\[SNOOZE_ID\] The ID of the
+  /// Snooze will be generated by the system.
+  /// Value must have pattern `^projects/\[^/\]+/snoozes/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The fields to update.For each field listed in
+  /// update_mask: If the Snooze object supplied in the UpdateSnoozeRequest has
+  /// a value for that field, the value of the field in the existing Snooze will
+  /// be set to the value of the field in the supplied Snooze. If the field does
+  /// not have a value in the supplied Snooze, the field in the existing Snooze
+  /// is set to its default value.Fields not listed retain their existing
+  /// value.The following are the field names that are accepted in update_mask:
+  /// display_name interval.start_time interval.end_timeThat said, the start
+  /// time and end time of the Snooze determines which fields can legally be
+  /// updated. Before attempting an update, users should consult the
+  /// documentation for UpdateSnoozeRequest, which talks about which fields can
+  /// be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Snooze].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Snooze> patch(
+    Snooze request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Snooze.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4471,7 +4707,8 @@ class AlertPolicy {
   /// If the combined conditions evaluate to true, then an incident is created.
   /// A policy can have from one to six conditions. If
   /// condition_time_series_query_language is present, it must be the only
-  /// condition.
+  /// condition. If condition_monitoring_query_language is present, it must be
+  /// the only condition.
   core.List<Condition>? conditions;
 
   /// A read-only record of the creation of the alerting policy.
@@ -4483,7 +4720,12 @@ class AlertPolicy {
   /// notifications, and incidents.
   ///
   /// To avoid confusion, don't use the same display name for multiple policies
-  /// in the same project. The name is limited to 512 Unicode characters.
+  /// in the same project. The name is limited to 512 Unicode characters.The
+  /// convention for the display_name of a PrometheusQueryLanguageCondition is
+  /// "{rule group name}/{alert name}", where the {rule group name} and {alert
+  /// name} should be taken from the corresponding Prometheus configuration
+  /// file. This convention is not enforced. In any case the display_name is not
+  /// a unique key of the AlertPolicy.
   core.String? displayName;
 
   /// Documentation that is included with notifications and incidents related to
@@ -4533,13 +4775,18 @@ class AlertPolicy {
   ///
   /// Each key and value is limited to 63 Unicode characters or 128 bytes,
   /// whichever is smaller. Labels and values can contain only lowercase
-  /// letters, numerals, underscores, and dashes. Keys must begin with a letter.
+  /// letters, numerals, underscores, and dashes. Keys must begin with a
+  /// letter.Note that Prometheus {rule group name} and {alert name} are valid
+  /// Prometheus label names
+  /// (https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels).
+  /// This means that they cannot be stored as-is in user labels, because
+  /// Prometheus labels may contain upper-case letters.
   core.Map<core.String, core.String>? userLabels;
 
   /// Read-only description of how the alert policy is invalid.
   ///
-  /// OK if the alert policy is valid. If not OK, the alert policy will not
-  /// generate incidents.
+  /// This field is only set when the alert policy is invalid. An invalid alert
+  /// policy will not generate incidents.
   Status? validity;
 
   AlertPolicy({
@@ -4599,9 +4846,9 @@ class AlertPolicy {
           userLabels: json_.containsKey('userLabels')
               ? (json_['userLabels'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -4635,12 +4882,16 @@ class AlertStrategy {
   /// incidents will close
   core.String? autoClose;
 
+  /// Control how notifications will be sent out, on a per-channel basis.
+  core.List<NotificationChannelStrategy>? notificationChannelStrategy;
+
   /// Required for alert policies with a LogMatch condition.This limit is not
   /// implemented for alert policies that are not log-based.
   NotificationRateLimit? notificationRateLimit;
 
   AlertStrategy({
     this.autoClose,
+    this.notificationChannelStrategy,
     this.notificationRateLimit,
   });
 
@@ -4649,6 +4900,13 @@ class AlertStrategy {
           autoClose: json_.containsKey('autoClose')
               ? json_['autoClose'] as core.String
               : null,
+          notificationChannelStrategy:
+              json_.containsKey('notificationChannelStrategy')
+                  ? (json_['notificationChannelStrategy'] as core.List)
+                      .map((value) => NotificationChannelStrategy.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
           notificationRateLimit: json_.containsKey('notificationRateLimit')
               ? NotificationRateLimit.fromJson(json_['notificationRateLimit']
                   as core.Map<core.String, core.dynamic>)
@@ -4657,6 +4915,8 @@ class AlertStrategy {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (autoClose != null) 'autoClose': autoClose!,
+        if (notificationChannelStrategy != null)
+          'notificationChannelStrategy': notificationChannelStrategy!,
         if (notificationRateLimit != null)
           'notificationRateLimit': notificationRateLimit!,
       };
@@ -4721,6 +4981,52 @@ class BasicAuthentication {
   core.Map<core.String, core.dynamic> toJson() => {
         if (password != null) 'password': password!,
         if (username != null) 'username': username!,
+      };
+}
+
+/// A well-known service type, defined by its service type and service labels.
+///
+/// Documentation and examples here
+/// (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
+class BasicService {
+  /// Labels that specify the resource that emits the monitoring data which is
+  /// used for SLO reporting of this Service.
+  ///
+  /// Documentation and valid values for given service types here
+  /// (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
+  core.Map<core.String, core.String>? serviceLabels;
+
+  /// The type of service that this basic service defines, e.g. APP_ENGINE
+  /// service type.
+  ///
+  /// Documentation and valid values here
+  /// (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
+  core.String? serviceType;
+
+  BasicService({
+    this.serviceLabels,
+    this.serviceType,
+  });
+
+  BasicService.fromJson(core.Map json_)
+      : this(
+          serviceLabels: json_.containsKey('serviceLabels')
+              ? (json_['serviceLabels'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          serviceType: json_.containsKey('serviceType')
+              ? json_['serviceType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (serviceLabels != null) 'serviceLabels': serviceLabels!,
+        if (serviceType != null) 'serviceType': serviceType!,
       };
 }
 
@@ -4888,6 +5194,42 @@ class CloudEndpoints {
       };
 }
 
+/// A Synthetic Monitor deployed to a Cloud Functions V2 instance.
+class CloudFunctionV2Target {
+  /// The cloud_run_revision Monitored Resource associated with the GCFv2.
+  ///
+  /// The Synthetic Monitor execution results (metrics, logs, and spans) are
+  /// reported against this Monitored Resource. This field is output only.
+  ///
+  /// Output only.
+  MonitoredResource? cloudRunRevision;
+
+  /// Fully qualified GCFv2 resource name i.e.
+  /// projects/{project}/locations/{location}/functions/{function} Required.
+  ///
+  /// Required.
+  core.String? name;
+
+  CloudFunctionV2Target({
+    this.cloudRunRevision,
+    this.name,
+  });
+
+  CloudFunctionV2Target.fromJson(core.Map json_)
+      : this(
+          cloudRunRevision: json_.containsKey('cloudRunRevision')
+              ? MonitoredResource.fromJson(json_['cloudRunRevision']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cloudRunRevision != null) 'cloudRunRevision': cloudRunRevision!,
+        if (name != null) 'name': name!,
+      };
+}
+
 /// Cloud Run service.
 ///
 /// Learn more at https://cloud.google.com/run.
@@ -5041,10 +5383,10 @@ class CollectdPayload {
               : null,
           metadata: json_.containsKey('metadata')
               ? (json_['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     TypedValue.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -5223,6 +5565,9 @@ class Condition {
   /// A condition that uses the Monitoring Query Language to define alerts.
   MonitoringQueryLanguageCondition? conditionMonitoringQueryLanguage;
 
+  /// A condition that uses the Prometheus query language to define alerts.
+  PrometheusQueryLanguageCondition? conditionPrometheusQueryLanguage;
+
   /// A condition that compares a time series against a threshold.
   MetricThreshold? conditionThreshold;
 
@@ -5255,6 +5600,7 @@ class Condition {
     this.conditionAbsent,
     this.conditionMatchedLog,
     this.conditionMonitoringQueryLanguage,
+    this.conditionPrometheusQueryLanguage,
     this.conditionThreshold,
     this.displayName,
     this.name,
@@ -5276,6 +5622,12 @@ class Condition {
                       json_['conditionMonitoringQueryLanguage']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          conditionPrometheusQueryLanguage:
+              json_.containsKey('conditionPrometheusQueryLanguage')
+                  ? PrometheusQueryLanguageCondition.fromJson(
+                      json_['conditionPrometheusQueryLanguage']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           conditionThreshold: json_.containsKey('conditionThreshold')
               ? MetricThreshold.fromJson(json_['conditionThreshold']
                   as core.Map<core.String, core.dynamic>)
@@ -5292,6 +5644,8 @@ class Condition {
           'conditionMatchedLog': conditionMatchedLog!,
         if (conditionMonitoringQueryLanguage != null)
           'conditionMonitoringQueryLanguage': conditionMonitoringQueryLanguage!,
+        if (conditionPrometheusQueryLanguage != null)
+          'conditionPrometheusQueryLanguage': conditionPrometheusQueryLanguage!,
         if (conditionThreshold != null)
           'conditionThreshold': conditionThreshold!,
         if (displayName != null) 'displayName': displayName!,
@@ -5534,9 +5888,40 @@ class CreateTimeSeriesSummary {
       };
 }
 
-/// Custom view of service telemetry.
+/// Criteria specific to the AlertPolicys that this Snooze applies to.
 ///
-/// Currently a place-holder pending final design.
+/// The Snooze will suppress alerts that come from one of the AlertPolicys whose
+/// names are supplied.
+class Criteria {
+  /// The specific AlertPolicy names for the alert that should be snoozed.
+  ///
+  /// The format is:
+  /// projects/\[PROJECT_ID_OR_NUMBER\]/alertPolicies/\[POLICY_ID\] There is a
+  /// limit of 16 policies per snooze. This limit is checked during snooze
+  /// creation.
+  core.List<core.String>? policies;
+
+  Criteria({
+    this.policies,
+  });
+
+  Criteria.fromJson(core.Map json_)
+      : this(
+          policies: json_.containsKey('policies')
+              ? (json_['policies'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (policies != null) 'policies': policies!,
+      };
+}
+
+/// Use a custom service to designate a service that you want to monitor when
+/// none of the other service types (like App Engine, Cloud Run, or a GKE type)
+/// matches your intended service.
 typedef Custom = $Empty;
 
 /// Distribution contains summary statistics for a population of values.
@@ -5695,7 +6080,7 @@ class DistributionCut {
 
 /// A content string and a MIME type that describes the content string's format.
 class Documentation {
-  /// The text of the documentation, interpreted according to mime_type.
+  /// The body of the documentation, interpreted according to mime_type.
   ///
   /// The content may not exceed 8,192 Unicode characters and may not exceed
   /// more than 10,240 bytes when encoded in UTF-8 format, whichever is smaller.
@@ -5709,9 +6094,26 @@ class Documentation {
   /// (https://en.wikipedia.org/wiki/Markdown) for more information.
   core.String? mimeType;
 
+  /// The subject line of the notification.
+  ///
+  /// The subject line may not exceed 10,240 bytes. In notifications generated
+  /// by this policy, the contents of the subject line after variable expansion
+  /// will be truncated to 255 bytes or shorter at the latest UTF-8 character
+  /// boundary. The 255-byte limit is recommended by this thread
+  /// (https://stackoverflow.com/questions/1592291/what-is-the-email-subject-length-limit).
+  /// It is both the limit imposed by some third-party ticketing products and it
+  /// is common to define textual fields in databases as VARCHAR(255).The
+  /// contents of the subject line can be templatized by using variables
+  /// (https://cloud.google.com/monitoring/alerts/doc-variables). If this field
+  /// is missing or empty, a default subject line will be generated.
+  ///
+  /// Optional.
+  core.String? subject;
+
   Documentation({
     this.content,
     this.mimeType,
+    this.subject,
   });
 
   Documentation.fromJson(core.Map json_)
@@ -5722,11 +6124,15 @@ class Documentation {
           mimeType: json_.containsKey('mimeType')
               ? json_['mimeType'] as core.String
               : null,
+          subject: json_.containsKey('subject')
+              ? json_['subject'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (content != null) 'content': content!,
         if (mimeType != null) 'mimeType': mimeType!,
+        if (subject != null) 'subject': subject!,
       };
 }
 
@@ -5841,9 +6247,38 @@ typedef Explicit = $Explicit;
 /// Each bucket represents a constant relative uncertainty on a specific value
 /// in the bucket.There are num_finite_buckets + 2 (= N) buckets. Bucket i has
 /// the following boundaries:Upper bound (0 \<= i \< N-1): scale *
-/// (growth_factor ^ i). Lower bound (1 \<= i \< N): scale * (growth_factor ^ (i
+/// (growth_factor ^ i).Lower bound (1 \<= i \< N): scale * (growth_factor ^ (i
 /// - 1)).
 typedef Exponential = $Exponential;
+
+/// Options used when forecasting the time series and testing the predicted
+/// value against the threshold.
+class ForecastOptions {
+  /// The length of time into the future to forecast whether a time series will
+  /// violate the threshold.
+  ///
+  /// If the predicted value is found to violate the threshold, and the
+  /// violation is observed in all forecasts made for the configured duration,
+  /// then the time series is considered to be failing.
+  ///
+  /// Required.
+  core.String? forecastHorizon;
+
+  ForecastOptions({
+    this.forecastHorizon,
+  });
+
+  ForecastOptions.fromJson(core.Map json_)
+      : this(
+          forecastHorizon: json_.containsKey('forecastHorizon')
+              ? json_['forecastHorizon'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (forecastHorizon != null) 'forecastHorizon': forecastHorizon!,
+      };
+}
 
 /// The GetNotificationChannelVerificationCode request.
 class GetNotificationChannelVerificationCodeRequest {
@@ -6259,7 +6694,18 @@ class HttpCheck {
   /// - "TYPE_UNSPECIFIED" : No content type specified.
   /// - "URL_ENCODED" : body is in URL-encoded form. Equivalent to setting the
   /// Content-Type to application/x-www-form-urlencoded in the HTTP request.
+  /// - "USER_PROVIDED" : body is in custom_content_type form. Equivalent to
+  /// setting the Content-Type to the contents of custom_content_type in the
+  /// HTTP request.
   core.String? contentType;
+
+  /// A user provided content type header to use for the check.
+  ///
+  /// The invalid configurations outlined in the content_type field apply to
+  /// custom_content_type, as well as the following: 1. content_type is
+  /// URL_ENCODED and custom_content_type is set. 2. content_type is
+  /// USER_PROVIDED and custom_content_type is not set.
+  core.String? customContentType;
 
   /// The list of headers to send as part of the Uptime check request.
   ///
@@ -6324,6 +6770,7 @@ class HttpCheck {
     this.authInfo,
     this.body,
     this.contentType,
+    this.customContentType,
     this.headers,
     this.maskHeaders,
     this.path,
@@ -6351,11 +6798,14 @@ class HttpCheck {
           contentType: json_.containsKey('contentType')
               ? json_['contentType'] as core.String
               : null,
+          customContentType: json_.containsKey('customContentType')
+              ? json_['customContentType'] as core.String
+              : null,
           headers: json_.containsKey('headers')
               ? (json_['headers'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -6384,6 +6834,7 @@ class HttpCheck {
         if (authInfo != null) 'authInfo': authInfo!,
         if (body != null) 'body': body!,
         if (contentType != null) 'contentType': contentType!,
+        if (customContentType != null) 'customContentType': customContentType!,
         if (headers != null) 'headers': headers!,
         if (maskHeaders != null) 'maskHeaders': maskHeaders!,
         if (path != null) 'path': path!,
@@ -6687,8 +7138,8 @@ class LatencyCriteria {
 ///
 /// Each bucket represents a constant absolute uncertainty on the specific value
 /// in the bucket.There are num_finite_buckets + 2 (= N) buckets. Bucket i has
-/// the following boundaries:Upper bound (0 \<= i \< N-1): offset + (width * i).
-/// Lower bound (1 \<= i \< N): offset + (width * (i - 1)).
+/// the following boundaries:Upper bound (0 \<= i \< N-1): offset + (width *
+/// i).Lower bound (1 \<= i \< N): offset + (width * (i - 1)).
 typedef Linear = $Linear;
 
 /// The protocol for the ListAlertPolicies response.
@@ -7052,6 +7503,42 @@ class ListServicesResponse {
       };
 }
 
+/// The results of a successful ListSnoozes call, containing the matching
+/// Snoozes.
+class ListSnoozesResponse {
+  /// Page token for repeated calls to ListSnoozes, to fetch additional pages of
+  /// results.
+  ///
+  /// If this is empty or missing, there are no more pages.
+  core.String? nextPageToken;
+
+  /// Snoozes matching this list call.
+  core.List<Snooze>? snoozes;
+
+  ListSnoozesResponse({
+    this.nextPageToken,
+    this.snoozes,
+  });
+
+  ListSnoozesResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          snoozes: json_.containsKey('snoozes')
+              ? (json_['snoozes'] as core.List)
+                  .map((value) => Snooze.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (snoozes != null) 'snoozes': snoozes!,
+      };
+}
+
 /// The ListTimeSeries response.
 class ListTimeSeriesResponse {
   /// Query execution errors that may have caused the time series data returned
@@ -7242,9 +7729,9 @@ class LogMatch {
               ? (json_['labelExtractors']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -7325,9 +7812,9 @@ class Metric {
       : this(
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -7797,6 +8284,14 @@ class MetricThreshold {
   /// Required.
   core.String? filter;
 
+  /// When this field is present, the MetricThreshold condition forecasts
+  /// whether the time series is predicted to violate the threshold within the
+  /// forecast_horizon.
+  ///
+  /// When this field is not set, the MetricThreshold tests the current value of
+  /// the timeseries against the threshold.
+  ForecastOptions? forecastOptions;
+
   /// A value against which to compare the time series.
   core.double? thresholdValue;
 
@@ -7817,6 +8312,7 @@ class MetricThreshold {
     this.duration,
     this.evaluationMissingData,
     this.filter,
+    this.forecastOptions,
     this.thresholdValue,
     this.trigger,
   });
@@ -7850,6 +8346,10 @@ class MetricThreshold {
           filter: json_.containsKey('filter')
               ? json_['filter'] as core.String
               : null,
+          forecastOptions: json_.containsKey('forecastOptions')
+              ? ForecastOptions.fromJson(json_['forecastOptions']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           thresholdValue: json_.containsKey('thresholdValue')
               ? (json_['thresholdValue'] as core.num).toDouble()
               : null,
@@ -7869,6 +8369,7 @@ class MetricThreshold {
         if (evaluationMissingData != null)
           'evaluationMissingData': evaluationMissingData!,
         if (filter != null) 'filter': filter!,
+        if (forecastOptions != null) 'forecastOptions': forecastOptions!,
         if (thresholdValue != null) 'thresholdValue': thresholdValue!,
         if (trigger != null) 'trigger': trigger!,
       };
@@ -7916,9 +8417,9 @@ class MonitoredResource {
       : this(
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -8298,9 +8799,9 @@ class NotificationChannel {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -8315,9 +8816,9 @@ class NotificationChannel {
           userLabels: json_.containsKey('userLabels')
               ? (json_['userLabels'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -8407,6 +8908,9 @@ class NotificationChannelDescriptor {
 
   /// The tiers that support this notification channel; the project service tier
   /// must be one of the supported_tiers.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<core.String>? supportedTiers;
 
   /// The type of notification channel, such as "email" and "sms".
@@ -8460,6 +8964,46 @@ class NotificationChannelDescriptor {
         if (name != null) 'name': name!,
         if (supportedTiers != null) 'supportedTiers': supportedTiers!,
         if (type != null) 'type': type!,
+      };
+}
+
+/// Control over how the notification channels in notification_channels are
+/// notified when this alert fires, on a per-channel basis.
+class NotificationChannelStrategy {
+  /// The full REST resource name for the notification channels that these
+  /// settings apply to.
+  ///
+  /// Each of these correspond to the name field in one of the
+  /// NotificationChannel objects referenced in the notification_channels field
+  /// of this AlertPolicy. The format is:
+  /// projects/\[PROJECT_ID_OR_NUMBER\]/notificationChannels/\[CHANNEL_ID\]
+  core.List<core.String>? notificationChannelNames;
+
+  /// The frequency at which to send reminder notifications for open incidents.
+  core.String? renotifyInterval;
+
+  NotificationChannelStrategy({
+    this.notificationChannelNames,
+    this.renotifyInterval,
+  });
+
+  NotificationChannelStrategy.fromJson(core.Map json_)
+      : this(
+          notificationChannelNames:
+              json_.containsKey('notificationChannelNames')
+                  ? (json_['notificationChannelNames'] as core.List)
+                      .map((value) => value as core.String)
+                      .toList()
+                  : null,
+          renotifyInterval: json_.containsKey('renotifyInterval')
+              ? json_['renotifyInterval'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (notificationChannelNames != null)
+          'notificationChannelNames': notificationChannelNames!,
+        if (renotifyInterval != null) 'renotifyInterval': renotifyInterval!,
       };
 }
 
@@ -8625,6 +9169,147 @@ class PointData {
   core.Map<core.String, core.dynamic> toJson() => {
         if (timeInterval != null) 'timeInterval': timeInterval!,
         if (values != null) 'values': values!,
+      };
+}
+
+/// A condition type that allows alert policies to be defined using Prometheus
+/// Query Language (PromQL)
+/// (https://prometheus.io/docs/prometheus/latest/querying/basics/).The
+/// PrometheusQueryLanguageCondition message contains information from a
+/// Prometheus alerting rule and its associated rule group.A Prometheus alerting
+/// rule is described here
+/// (https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/).
+///
+/// The semantics of a Prometheus alerting rule is described here
+/// (https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/#rule).A
+/// Prometheus rule group is described here
+/// (https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/).
+/// The semantics of a Prometheus rule group is described here
+/// (https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/#rule_group).Because
+/// Cloud Alerting has no representation of a Prometheus rule group resource, we
+/// must embed the information of the parent rule group inside each of the
+/// conditions that refer to it. We must also update the contents of all
+/// Prometheus alerts in case the information of their rule group changes.The
+/// PrometheusQueryLanguageCondition protocol buffer combines the information of
+/// the corresponding rule group and alerting rule. The structure of the
+/// PrometheusQueryLanguageCondition protocol buffer does NOT mimic the
+/// structure of the Prometheus rule group and alerting rule YAML declarations.
+/// The PrometheusQueryLanguageCondition protocol buffer may change in the
+/// future to support future rule group and/or alerting rule features. There are
+/// no new such features at the present time (2023-06-26).
+class PrometheusQueryLanguageCondition {
+  /// The alerting rule name of this alert in the corresponding Prometheus
+  /// configuration file.Some external tools may require this field to be
+  /// populated correctly in order to refer to the original Prometheus
+  /// configuration file.
+  ///
+  /// The rule group name and the alert name are necessary to update the
+  /// relevant AlertPolicies in case the definition of the rule group changes in
+  /// the future.This field is optional. If this field is not empty, then it
+  /// must be a valid Prometheus label name
+  /// (https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels).
+  ///
+  /// Optional.
+  core.String? alertRule;
+
+  /// Alerts are considered firing once their PromQL expression was evaluated to
+  /// be "true" for this long.
+  ///
+  /// Alerts whose PromQL expression was not evaluated to be "true" for long
+  /// enough are considered pending. The default value is zero. Must be zero or
+  /// positive.
+  ///
+  /// Optional.
+  core.String? duration;
+
+  /// How often this rule should be evaluated.
+  ///
+  /// Must be a positive multiple of 30 seconds or missing. The default value is
+  /// 30 seconds. If this PrometheusQueryLanguageCondition was generated from a
+  /// Prometheus alerting rule, then this value should be taken from the
+  /// enclosing rule group.
+  ///
+  /// Required.
+  core.String? evaluationInterval;
+
+  /// Labels to add to or overwrite in the PromQL query result.
+  ///
+  /// Label names must be valid
+  /// (https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels).
+  /// Label values can be templatized by using variables
+  /// (https://cloud.google.com/monitoring/alerts/doc-variables). The only
+  /// available variable names are the names of the labels in the PromQL result,
+  /// including "__name__" and "value". "labels" may be empty.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// The PromQL expression to evaluate.
+  ///
+  /// Every evaluation cycle this expression is evaluated at the current time,
+  /// and all resultant time series become pending/firing alerts. This field
+  /// must not be empty.
+  ///
+  /// Required.
+  core.String? query;
+
+  /// The rule group name of this alert in the corresponding Prometheus
+  /// configuration file.Some external tools may require this field to be
+  /// populated correctly in order to refer to the original Prometheus
+  /// configuration file.
+  ///
+  /// The rule group name and the alert name are necessary to update the
+  /// relevant AlertPolicies in case the definition of the rule group changes in
+  /// the future.This field is optional. If this field is not empty, then it
+  /// must be a valid Prometheus label name
+  /// (https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels).
+  ///
+  /// Optional.
+  core.String? ruleGroup;
+
+  PrometheusQueryLanguageCondition({
+    this.alertRule,
+    this.duration,
+    this.evaluationInterval,
+    this.labels,
+    this.query,
+    this.ruleGroup,
+  });
+
+  PrometheusQueryLanguageCondition.fromJson(core.Map json_)
+      : this(
+          alertRule: json_.containsKey('alertRule')
+              ? json_['alertRule'] as core.String
+              : null,
+          duration: json_.containsKey('duration')
+              ? json_['duration'] as core.String
+              : null,
+          evaluationInterval: json_.containsKey('evaluationInterval')
+              ? json_['evaluationInterval'] as core.String
+              : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          query:
+              json_.containsKey('query') ? json_['query'] as core.String : null,
+          ruleGroup: json_.containsKey('ruleGroup')
+              ? json_['ruleGroup'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (alertRule != null) 'alertRule': alertRule!,
+        if (duration != null) 'duration': duration!,
+        if (evaluationInterval != null)
+          'evaluationInterval': evaluationInterval!,
+        if (labels != null) 'labels': labels!,
+        if (query != null) 'query': query!,
+        if (ruleGroup != null) 'ruleGroup': ruleGroup!,
       };
 }
 
@@ -8892,6 +9577,13 @@ class Service {
   /// Type used for App Engine services.
   AppEngine? appEngine;
 
+  /// Message that contains the service type and service labels of this service
+  /// if it is a basic service.
+  ///
+  /// Documentation and examples here
+  /// (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
+  BasicService? basicService;
+
   /// Type used for Cloud Endpoints services.
   CloudEndpoints? cloudEndpoints;
 
@@ -8944,6 +9636,7 @@ class Service {
 
   Service({
     this.appEngine,
+    this.basicService,
     this.cloudEndpoints,
     this.cloudRun,
     this.clusterIstio,
@@ -8964,6 +9657,10 @@ class Service {
           appEngine: json_.containsKey('appEngine')
               ? AppEngine.fromJson(
                   json_['appEngine'] as core.Map<core.String, core.dynamic>)
+              : null,
+          basicService: json_.containsKey('basicService')
+              ? BasicService.fromJson(
+                  json_['basicService'] as core.Map<core.String, core.dynamic>)
               : null,
           cloudEndpoints: json_.containsKey('cloudEndpoints')
               ? CloudEndpoints.fromJson(json_['cloudEndpoints']
@@ -9012,9 +9709,9 @@ class Service {
           userLabels: json_.containsKey('userLabels')
               ? (json_['userLabels'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -9022,6 +9719,7 @@ class Service {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (appEngine != null) 'appEngine': appEngine!,
+        if (basicService != null) 'basicService': basicService!,
         if (cloudEndpoints != null) 'cloudEndpoints': cloudEndpoints!,
         if (cloudRun != null) 'cloudRun': cloudRun!,
         if (clusterIstio != null) 'clusterIstio': clusterIstio!,
@@ -9185,9 +9883,9 @@ class ServiceLevelObjective {
           userLabels: json_.containsKey('userLabels')
               ? (json_['userLabels'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -9205,6 +9903,76 @@ class ServiceLevelObjective {
       };
 }
 
+/// A Snooze will prevent any alerts from being opened, and close any that are
+/// already open.
+///
+/// The Snooze will work on alerts that match the criteria defined in the
+/// Snooze. The Snooze will be active from interval.start_time through
+/// interval.end_time.
+class Snooze {
+  /// This defines the criteria for applying the Snooze.
+  ///
+  /// See Criteria for more information.
+  ///
+  /// Required.
+  Criteria? criteria;
+
+  /// A display name for the Snooze.
+  ///
+  /// This can be, at most, 512 unicode characters.
+  ///
+  /// Required.
+  core.String? displayName;
+
+  /// The Snooze will be active from interval.start_time through
+  /// interval.end_time.
+  ///
+  /// interval.start_time cannot be in the past. There is a 15 second clock skew
+  /// to account for the time it takes for a request to reach the API from the
+  /// UI.
+  ///
+  /// Required.
+  TimeInterval? interval;
+
+  /// The name of the Snooze.
+  ///
+  /// The format is: projects/\[PROJECT_ID_OR_NUMBER\]/snoozes/\[SNOOZE_ID\] The
+  /// ID of the Snooze will be generated by the system.
+  ///
+  /// Required.
+  core.String? name;
+
+  Snooze({
+    this.criteria,
+    this.displayName,
+    this.interval,
+    this.name,
+  });
+
+  Snooze.fromJson(core.Map json_)
+      : this(
+          criteria: json_.containsKey('criteria')
+              ? Criteria.fromJson(
+                  json_['criteria'] as core.Map<core.String, core.dynamic>)
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          interval: json_.containsKey('interval')
+              ? TimeInterval.fromJson(
+                  json_['interval'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (criteria != null) 'criteria': criteria!,
+        if (displayName != null) 'displayName': displayName!,
+        if (interval != null) 'interval': interval!,
+        if (name != null) 'name': name!,
+      };
+}
+
 /// The Status type defines a logical error model that is suitable for different
 /// programming environments, including REST APIs and RPC APIs.
 ///
@@ -9213,6 +9981,28 @@ class ServiceLevelObjective {
 /// find out more about this error model and how to work with it in the API
 /// Design Guide (https://cloud.google.com/apis/design/errors).
 typedef Status = $Status;
+
+/// Describes a Synthetic Monitor to be invoked by Uptime.
+class SyntheticMonitorTarget {
+  /// Target a Synthetic Monitor GCFv2 instance.
+  CloudFunctionV2Target? cloudFunctionV2;
+
+  SyntheticMonitorTarget({
+    this.cloudFunctionV2,
+  });
+
+  SyntheticMonitorTarget.fromJson(core.Map json_)
+      : this(
+          cloudFunctionV2: json_.containsKey('cloudFunctionV2')
+              ? CloudFunctionV2Target.fromJson(json_['cloudFunctionV2']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cloudFunctionV2 != null) 'cloudFunctionV2': cloudFunctionV2!,
+      };
+}
 
 /// Information required for a TCP Uptime check request.
 class TcpCheck {
@@ -9732,6 +10522,9 @@ class UptimeCheckConfig {
   /// If is_internal is true and this list is empty, the check will egress from
   /// all the InternalCheckers configured for the project that owns this
   /// UptimeCheckConfig.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<InternalChecker>? internalCheckers;
 
   /// If this is true, then checks are made only from the 'internal_checkers'.
@@ -9739,6 +10532,9 @@ class UptimeCheckConfig {
   /// If it is false, then checks are made only from the 'selected_regions'. It
   /// is an error to provide 'selected_regions' when is_internal is true, or to
   /// provide 'internal_checkers' when is_internal is false.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? isInternal;
 
   /// The monitored resource (https://cloud.google.com/monitoring/api/resources)
@@ -9776,6 +10572,9 @@ class UptimeCheckConfig {
   /// checks running from all available regions.
   core.List<core.String>? selectedRegions;
 
+  /// Specifies a Synthetic Monitor to invoke.
+  SyntheticMonitorTarget? syntheticMonitor;
+
   /// Contains information needed to make a TCP check.
   TcpCheck? tcpCheck;
 
@@ -9805,6 +10604,7 @@ class UptimeCheckConfig {
     this.period,
     this.resourceGroup,
     this.selectedRegions,
+    this.syntheticMonitor,
     this.tcpCheck,
     this.timeout,
     this.userLabels,
@@ -9854,6 +10654,10 @@ class UptimeCheckConfig {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          syntheticMonitor: json_.containsKey('syntheticMonitor')
+              ? SyntheticMonitorTarget.fromJson(json_['syntheticMonitor']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           tcpCheck: json_.containsKey('tcpCheck')
               ? TcpCheck.fromJson(
                   json_['tcpCheck'] as core.Map<core.String, core.dynamic>)
@@ -9864,9 +10668,9 @@ class UptimeCheckConfig {
           userLabels: json_.containsKey('userLabels')
               ? (json_['userLabels'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -9884,6 +10688,7 @@ class UptimeCheckConfig {
         if (period != null) 'period': period!,
         if (resourceGroup != null) 'resourceGroup': resourceGroup!,
         if (selectedRegions != null) 'selectedRegions': selectedRegions!,
+        if (syntheticMonitor != null) 'syntheticMonitor': syntheticMonitor!,
         if (tcpCheck != null) 'tcpCheck': tcpCheck!,
         if (timeout != null) 'timeout': timeout!,
         if (userLabels != null) 'userLabels': userLabels!,
@@ -9918,6 +10723,12 @@ class UptimeCheckIp {
   /// continent of South America.
   /// - "ASIA_PACIFIC" : Allows checks to run from locations within the Asia
   /// Pacific area (ex: Singapore).
+  /// - "USA_OREGON" : Allows checks to run from locations within the western
+  /// United States of America
+  /// - "USA_IOWA" : Allows checks to run from locations within the central
+  /// United States of America
+  /// - "USA_VIRGINIA" : Allows checks to run from locations within the eastern
+  /// United States of America
   core.String? region;
 
   UptimeCheckIp({

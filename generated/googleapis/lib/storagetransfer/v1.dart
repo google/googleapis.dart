@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Storage Transfer API - v1
@@ -26,7 +25,7 @@
 ///   - [ProjectsAgentPoolsResource]
 /// - [TransferJobsResource]
 /// - [TransferOperationsResource]
-library storagetransfer.v1;
+library storagetransfer_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -35,7 +34,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -580,10 +578,10 @@ class TransferJobsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Attempts to start a new TransferOperation for the current TransferJob.
+  /// Starts a new operation for the specified transfer job.
   ///
-  /// A TransferJob has a maximum of one active TransferOperation. If this
-  /// method is called while a TransferOperation is active, an error will be
+  /// A `TransferJob` has a maximum of one active `TransferOperation`. If this
+  /// method is called while a `TransferOperation` is active, an error is
   /// returned.
   ///
   /// [request] - The metadata request object.
@@ -1049,6 +1047,21 @@ class AwsS3Data {
   /// Required.
   core.String? bucketName;
 
+  /// The Resource name of a secret in Secret Manager.
+  ///
+  /// The Azure SAS token must be stored in Secret Manager in JSON format: {
+  /// "sas_token" : "SAS_TOKEN" } GoogleServiceAccount must be granted
+  /// `roles/secretmanager.secretAccessor` for the resource. See \[Configure
+  /// access to a source: Microsoft Azure Blob
+  /// Storage\](https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager)
+  /// for more information. If `credentials_secret` is specified, do not specify
+  /// azure_credentials. This feature is in
+  /// [preview](https://cloud.google.com/terms/service-terms#1). Format:
+  /// `projects/{project_number}/secrets/{secret_name}`
+  ///
+  /// Optional.
+  core.String? credentialsSecret;
+
   /// Root path to transfer objects.
   ///
   /// Must be an empty string or full path name that ends with a '/'. This field
@@ -1069,6 +1082,7 @@ class AwsS3Data {
   AwsS3Data({
     this.awsAccessKey,
     this.bucketName,
+    this.credentialsSecret,
     this.path,
     this.roleArn,
   });
@@ -1082,6 +1096,9 @@ class AwsS3Data {
           bucketName: json_.containsKey('bucketName')
               ? json_['bucketName'] as core.String
               : null,
+          credentialsSecret: json_.containsKey('credentialsSecret')
+              ? json_['credentialsSecret'] as core.String
+              : null,
           path: json_.containsKey('path') ? json_['path'] as core.String : null,
           roleArn: json_.containsKey('roleArn')
               ? json_['roleArn'] as core.String
@@ -1091,6 +1108,7 @@ class AwsS3Data {
   core.Map<core.String, core.dynamic> toJson() => {
         if (awsAccessKey != null) 'awsAccessKey': awsAccessKey!,
         if (bucketName != null) 'bucketName': bucketName!,
+        if (credentialsSecret != null) 'credentialsSecret': credentialsSecret!,
         if (path != null) 'path': path!,
         if (roleArn != null) 'roleArn': roleArn!,
       };
@@ -1118,6 +1136,21 @@ class AzureBlobStorageData {
   /// Required.
   core.String? container;
 
+  /// The Resource name of a secret in Secret Manager.
+  ///
+  /// The Azure SAS token must be stored in Secret Manager in JSON format: {
+  /// "sas_token" : "SAS_TOKEN" } GoogleServiceAccount must be granted
+  /// `roles/secretmanager.secretAccessor` for the resource. See \[Configure
+  /// access to a source: Microsoft Azure Blob
+  /// Storage\](https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager)
+  /// for more information. If `credentials_secret` is specified, do not specify
+  /// azure_credentials. This feature is in
+  /// [preview](https://cloud.google.com/terms/service-terms#1). Format:
+  /// `projects/{project_number}/secrets/{secret_name}`
+  ///
+  /// Optional.
+  core.String? credentialsSecret;
+
   /// Root path to transfer objects.
   ///
   /// Must be an empty string or full path name that ends with a '/'. This field
@@ -1133,6 +1166,7 @@ class AzureBlobStorageData {
   AzureBlobStorageData({
     this.azureCredentials,
     this.container,
+    this.credentialsSecret,
     this.path,
     this.storageAccount,
   });
@@ -1146,6 +1180,9 @@ class AzureBlobStorageData {
           container: json_.containsKey('container')
               ? json_['container'] as core.String
               : null,
+          credentialsSecret: json_.containsKey('credentialsSecret')
+              ? json_['credentialsSecret'] as core.String
+              : null,
           path: json_.containsKey('path') ? json_['path'] as core.String : null,
           storageAccount: json_.containsKey('storageAccount')
               ? json_['storageAccount'] as core.String
@@ -1155,6 +1192,7 @@ class AzureBlobStorageData {
   core.Map<core.String, core.dynamic> toJson() => {
         if (azureCredentials != null) 'azureCredentials': azureCredentials!,
         if (container != null) 'container': container!,
+        if (credentialsSecret != null) 'credentialsSecret': credentialsSecret!,
         if (path != null) 'path': path!,
         if (storageAccount != null) 'storageAccount': storageAccount!,
       };
@@ -1233,6 +1271,58 @@ typedef Date = $Date;
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
+
+/// Specifies the Event-driven transfer options.
+///
+/// Event-driven transfers listen to an event stream to transfer updated files.
+class EventStream {
+  /// Specifies the data and time at which Storage Transfer Service stops
+  /// listening for events from this stream.
+  ///
+  /// After this time, any transfers in progress will complete, but no new
+  /// transfers are initiated.
+  core.String? eventStreamExpirationTime;
+
+  /// Specifies the date and time that Storage Transfer Service starts listening
+  /// for events from this stream.
+  ///
+  /// If no start time is specified or start time is in the past, Storage
+  /// Transfer Service starts listening immediately.
+  core.String? eventStreamStartTime;
+
+  /// Specifies a unique name of the resource such as AWS SQS ARN in the form
+  /// 'arn:aws:sqs:region:account_id:queue_name', or Pub/Sub subscription
+  /// resource name in the form 'projects/{project}/subscriptions/{sub}'.
+  ///
+  /// Required.
+  core.String? name;
+
+  EventStream({
+    this.eventStreamExpirationTime,
+    this.eventStreamStartTime,
+    this.name,
+  });
+
+  EventStream.fromJson(core.Map json_)
+      : this(
+          eventStreamExpirationTime:
+              json_.containsKey('eventStreamExpirationTime')
+                  ? json_['eventStreamExpirationTime'] as core.String
+                  : null,
+          eventStreamStartTime: json_.containsKey('eventStreamStartTime')
+              ? json_['eventStreamStartTime'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (eventStreamExpirationTime != null)
+          'eventStreamExpirationTime': eventStreamExpirationTime!,
+        if (eventStreamStartTime != null)
+          'eventStreamStartTime': eventStreamStartTime!,
+        if (name != null) 'name': name!,
+      };
+}
 
 /// In a GcsData resource, an object's name is the Cloud Storage object's name
 /// and its "last modification time" refers to the object's `updated` property
@@ -1572,6 +1662,8 @@ class MetadataOptions {
   /// bucket's default storage class.
   /// - "STORAGE_CLASS_PRESERVE" : Preserve the object's original storage class.
   /// This is only supported for transfers from Google Cloud Storage buckets.
+  /// REGIONAL and MULTI_REGIONAL storage classes will be mapped to STANDARD to
+  /// ensure they can be written to the destination bucket.
   /// - "STORAGE_CLASS_STANDARD" : Set the storage class to STANDARD.
   /// - "STORAGE_CLASS_NEARLINE" : Set the storage class to NEARLINE.
   /// - "STORAGE_CLASS_COLDLINE" : Set the storage class to COLDLINE.
@@ -2212,6 +2304,12 @@ class TransferJob {
   /// Its max length is 1024 bytes when Unicode-encoded.
   core.String? description;
 
+  /// Specifies the event stream for the transfer job for event-driven
+  /// transfers.
+  ///
+  /// When EventStream is specified, the Schedule fields are ignored.
+  EventStream? eventStream;
+
   /// The time that the transfer job was last modified.
   ///
   /// Output only.
@@ -2282,6 +2380,7 @@ class TransferJob {
     this.creationTime,
     this.deletionTime,
     this.description,
+    this.eventStream,
     this.lastModificationTime,
     this.latestOperationName,
     this.loggingConfig,
@@ -2303,6 +2402,10 @@ class TransferJob {
               : null,
           description: json_.containsKey('description')
               ? json_['description'] as core.String
+              : null,
+          eventStream: json_.containsKey('eventStream')
+              ? EventStream.fromJson(
+                  json_['eventStream'] as core.Map<core.String, core.dynamic>)
               : null,
           lastModificationTime: json_.containsKey('lastModificationTime')
               ? json_['lastModificationTime'] as core.String
@@ -2339,6 +2442,7 @@ class TransferJob {
         if (creationTime != null) 'creationTime': creationTime!,
         if (deletionTime != null) 'deletionTime': deletionTime!,
         if (description != null) 'description': description!,
+        if (eventStream != null) 'eventStream': eventStream!,
         if (lastModificationTime != null)
           'lastModificationTime': lastModificationTime!,
         if (latestOperationName != null)
@@ -2481,7 +2585,12 @@ class TransferSpec {
   /// A Cloud Storage data source.
   GcsData? gcsDataSource;
 
-  /// Cloud Storage intermediate data location.
+  /// For transfers between file systems, specifies a Cloud Storage bucket to be
+  /// used as an intermediate location through which to transfer data.
+  ///
+  /// See
+  /// [Transfer data between file systems](https://cloud.google.com/storage-transfer/docs/file-to-file)
+  /// for more information.
   GcsData? gcsIntermediateDataLocation;
 
   /// An HTTP URL data source.

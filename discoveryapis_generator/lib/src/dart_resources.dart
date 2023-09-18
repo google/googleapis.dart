@@ -4,8 +4,6 @@
 
 // ignore_for_file: missing_whitespace_between_adjacent_strings
 
-library discoveryapis_generator.dart_resources;
-
 import 'dart:collection';
 
 import 'dart_api_library.dart';
@@ -94,6 +92,7 @@ class DartResourceMethod {
   final Map<String, UriTemplate>? mediaUploadPatterns;
 
   final bool enableDataWrapper;
+  final bool deprecated;
 
   DartResourceMethod(
     this.imports,
@@ -110,10 +109,11 @@ class DartResourceMethod {
     this.mediaUploadResumable,
     this.mediaDownload,
     this.mediaUploadPatterns,
-    this.enableDataWrapper,
-  );
+    this.enableDataWrapper, {
+    required this.deprecated,
+  });
 
-  String get signature {
+  String get _signature {
     final parameterString = StringBuffer();
 
     // If a request object was defined, it is always the first parameter.
@@ -408,7 +408,10 @@ $urlPatternCode
 
     final methodString = StringBuffer();
     methodString.write(methodComment.asDartDoc(2));
-    methodString.writeln('  $signature async {');
+    if (deprecated) {
+      methodString.writeln(imports.deprecatedMsg);
+    }
+    methodString.writeln('  $_signature async {');
 
     methodString.write(
       '''
@@ -430,6 +433,7 @@ class DartResourceClass {
 
   final List<Identifier> subResourceIdentifiers;
   final List<DartResourceClass> subResources;
+  final bool deprecated;
 
   DartResourceClass(
     this.imports,
@@ -437,8 +441,9 @@ class DartResourceClass {
     this.comment,
     this.methods,
     this.subResourceIdentifiers,
-    this.subResources,
-  );
+    this.subResources, {
+    required this.deprecated,
+  });
 
   String get preamble => '';
 
@@ -472,6 +477,9 @@ class DartResourceClass {
   String getClassDefinition() {
     final str = StringBuffer();
     str.write(comment.asDartDoc(0));
+    if (deprecated) {
+      str.writeln(imports.deprecatedMsg);
+    }
     str.writeln('class $className {');
     str.write(preamble);
     str.writeln('  final ${imports.commons}.ApiRequester _requester;');
@@ -497,8 +505,9 @@ class DartApiClass extends DartResourceClass {
     super.subResources,
     this.rootUrl,
     this.servicePath,
-    this.scopes,
-  );
+    this.scopes, {
+    required super.deprecated,
+  });
 
   @override
   String get preamble {
@@ -625,7 +634,7 @@ DartResourceMethod _parseMethod(
     return Comment(sb.toString());
   }
 
-  DartSchemaType getValidReference(String? ref) =>
+  DartSchemaType getValidReference(String ref) =>
       DartSchemaForwardRef(imports, ref).resolve(db);
 
   // Enqueue positional parameters with a given order first.
@@ -672,8 +681,8 @@ DartResourceMethod _parseMethod(
 
   // Check if we have a request object, if so parse it's type.
   MethodParameter? dartRequestParameter;
-  if (method.request != null) {
-    final type = getValidReference(method.request!.P_ref);
+  if (method.request != null && method.request!.P_ref != null) {
+    final type = getValidReference(method.request!.P_ref!);
     final requestName = parameterScope.newIdentifier('request');
     final comment = Comment('The metadata request object.');
     dartRequestParameter =
@@ -681,8 +690,8 @@ DartResourceMethod _parseMethod(
   }
 
   DartSchemaType? dartResponseType;
-  if (method.response != null) {
-    dartResponseType = getValidReference(method.response!.P_ref);
+  if (method.response != null && method.response!.P_ref != null) {
+    dartResponseType = getValidReference(method.response!.P_ref!);
   }
 
   final comment = Comment.header(method.description, true);
@@ -735,6 +744,7 @@ DartResourceMethod _parseMethod(
     makeBoolean(method.supportsMediaDownload),
     mediaUploadPatterns,
     enableDataWrapper ?? false,
+    deprecated: method.deprecated ?? false,
   );
 }
 
@@ -746,8 +756,9 @@ DartResourceClass _parseResource(
   String? resourceDescription,
   Map<String, RestMethod>? methods,
   Map<String, RestResource>? subResources,
-  String parentName,
-) {
+  String parentName, {
+  required bool deprecated,
+}) {
   final topLevel = parentName.isEmpty;
 
   final namer = imports.namer;
@@ -792,6 +803,7 @@ DartResourceClass _parseResource(
         resource!.methods,
         resource.resources,
         className.preferredName!,
+        deprecated: resource.deprecated ?? false,
       );
       dartSubResourceIdentifiers.add(instanceName);
       dartSubResource.add(dartResource);
@@ -870,6 +882,7 @@ DartResourceClass _parseResource(
       rootUrl,
       restPath,
       scopes,
+      deprecated: deprecated,
     );
   } else {
     return DartResourceClass(
@@ -879,6 +892,7 @@ DartResourceClass _parseResource(
       dartMethods,
       dartSubResourceIdentifiers,
       dartSubResource,
+      deprecated: deprecated,
     );
   }
 }
@@ -908,6 +922,7 @@ DartApiClass parseResources(
     description.methods,
     description.resources,
     '',
+    deprecated: false,
   ) as DartApiClass;
 }
 

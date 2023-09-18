@@ -1,8 +1,6 @@
 // ignore_for_file: camel_case_types
-// ignore_for_file: cascade_invocations
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_const_declarations
@@ -12,8 +10,9 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unreachable_from_main
 // ignore_for_file: unused_local_variable
 
 import 'dart:async' as async;
@@ -545,6 +544,7 @@ api.GoogleFirebaseAppcheckV1betaExchangeAppAttestAssertionRequest
     o.artifact = 'foo';
     o.assertion = 'foo';
     o.challenge = 'foo';
+    o.limitedUse = true;
   }
   buildCounterGoogleFirebaseAppcheckV1betaExchangeAppAttestAssertionRequest--;
   return o;
@@ -567,6 +567,7 @@ void checkGoogleFirebaseAppcheckV1betaExchangeAppAttestAssertionRequest(
       o.challenge!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.limitedUse!, unittest.isTrue);
   }
   buildCounterGoogleFirebaseAppcheckV1betaExchangeAppAttestAssertionRequest--;
 }
@@ -584,6 +585,7 @@ api.GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationRequest
     o.attestationStatement = 'foo';
     o.challenge = 'foo';
     o.keyId = 'foo';
+    o.limitedUse = true;
   }
   buildCounterGoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationRequest--;
   return o;
@@ -606,6 +608,7 @@ void checkGoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationRequest(
       o.keyId!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.limitedUse!, unittest.isTrue);
   }
   buildCounterGoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationRequest--;
 }
@@ -652,6 +655,7 @@ api.GoogleFirebaseAppcheckV1betaExchangeCustomTokenRequest
   buildCounterGoogleFirebaseAppcheckV1betaExchangeCustomTokenRequest++;
   if (buildCounterGoogleFirebaseAppcheckV1betaExchangeCustomTokenRequest < 3) {
     o.customToken = 'foo';
+    o.limitedUse = true;
   }
   buildCounterGoogleFirebaseAppcheckV1betaExchangeCustomTokenRequest--;
   return o;
@@ -665,6 +669,7 @@ void checkGoogleFirebaseAppcheckV1betaExchangeCustomTokenRequest(
       o.customToken!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.limitedUse!, unittest.isTrue);
   }
   buildCounterGoogleFirebaseAppcheckV1betaExchangeCustomTokenRequest--;
 }
@@ -676,6 +681,7 @@ api.GoogleFirebaseAppcheckV1betaExchangeDebugTokenRequest
   buildCounterGoogleFirebaseAppcheckV1betaExchangeDebugTokenRequest++;
   if (buildCounterGoogleFirebaseAppcheckV1betaExchangeDebugTokenRequest < 3) {
     o.debugToken = 'foo';
+    o.limitedUse = true;
   }
   buildCounterGoogleFirebaseAppcheckV1betaExchangeDebugTokenRequest--;
   return o;
@@ -689,6 +695,7 @@ void checkGoogleFirebaseAppcheckV1betaExchangeDebugTokenRequest(
       o.debugToken!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.limitedUse!, unittest.isTrue);
   }
   buildCounterGoogleFirebaseAppcheckV1betaExchangeDebugTokenRequest--;
 }
@@ -702,6 +709,7 @@ api.GoogleFirebaseAppcheckV1betaExchangeDeviceCheckTokenRequest
   if (buildCounterGoogleFirebaseAppcheckV1betaExchangeDeviceCheckTokenRequest <
       3) {
     o.deviceToken = 'foo';
+    o.limitedUse = true;
   }
   buildCounterGoogleFirebaseAppcheckV1betaExchangeDeviceCheckTokenRequest--;
   return o;
@@ -716,6 +724,7 @@ void checkGoogleFirebaseAppcheckV1betaExchangeDeviceCheckTokenRequest(
       o.deviceToken!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.limitedUse!, unittest.isTrue);
   }
   buildCounterGoogleFirebaseAppcheckV1betaExchangeDeviceCheckTokenRequest--;
 }
@@ -729,6 +738,7 @@ api.GoogleFirebaseAppcheckV1betaExchangePlayIntegrityTokenRequest
   buildCounterGoogleFirebaseAppcheckV1betaExchangePlayIntegrityTokenRequest++;
   if (buildCounterGoogleFirebaseAppcheckV1betaExchangePlayIntegrityTokenRequest <
       3) {
+    o.limitedUse = true;
     o.playIntegrityToken = 'foo';
   }
   buildCounterGoogleFirebaseAppcheckV1betaExchangePlayIntegrityTokenRequest--;
@@ -740,6 +750,7 @@ void checkGoogleFirebaseAppcheckV1betaExchangePlayIntegrityTokenRequest(
   buildCounterGoogleFirebaseAppcheckV1betaExchangePlayIntegrityTokenRequest++;
   if (buildCounterGoogleFirebaseAppcheckV1betaExchangePlayIntegrityTokenRequest <
       3) {
+    unittest.expect(o.limitedUse!, unittest.isTrue);
     unittest.expect(
       o.playIntegrityToken!,
       unittest.equals('foo'),
@@ -758,6 +769,7 @@ api.GoogleFirebaseAppcheckV1betaExchangeRecaptchaEnterpriseTokenRequest
   buildCounterGoogleFirebaseAppcheckV1betaExchangeRecaptchaEnterpriseTokenRequest++;
   if (buildCounterGoogleFirebaseAppcheckV1betaExchangeRecaptchaEnterpriseTokenRequest <
       3) {
+    o.limitedUse = true;
     o.recaptchaEnterpriseToken = 'foo';
   }
   buildCounterGoogleFirebaseAppcheckV1betaExchangeRecaptchaEnterpriseTokenRequest--;
@@ -769,6 +781,7 @@ void checkGoogleFirebaseAppcheckV1betaExchangeRecaptchaEnterpriseTokenRequest(
   buildCounterGoogleFirebaseAppcheckV1betaExchangeRecaptchaEnterpriseTokenRequest++;
   if (buildCounterGoogleFirebaseAppcheckV1betaExchangeRecaptchaEnterpriseTokenRequest <
       3) {
+    unittest.expect(o.limitedUse!, unittest.isTrue);
     unittest.expect(
       o.recaptchaEnterpriseToken!,
       unittest.equals('foo'),
@@ -812,6 +825,7 @@ api.GoogleFirebaseAppcheckV1betaExchangeRecaptchaV3TokenRequest
   buildCounterGoogleFirebaseAppcheckV1betaExchangeRecaptchaV3TokenRequest++;
   if (buildCounterGoogleFirebaseAppcheckV1betaExchangeRecaptchaV3TokenRequest <
       3) {
+    o.limitedUse = true;
     o.recaptchaV3Token = 'foo';
   }
   buildCounterGoogleFirebaseAppcheckV1betaExchangeRecaptchaV3TokenRequest--;
@@ -823,6 +837,7 @@ void checkGoogleFirebaseAppcheckV1betaExchangeRecaptchaV3TokenRequest(
   buildCounterGoogleFirebaseAppcheckV1betaExchangeRecaptchaV3TokenRequest++;
   if (buildCounterGoogleFirebaseAppcheckV1betaExchangeRecaptchaV3TokenRequest <
       3) {
+    unittest.expect(o.limitedUse!, unittest.isTrue);
     unittest.expect(
       o.recaptchaV3Token!,
       unittest.equals('foo'),
@@ -1295,7 +1310,9 @@ api.GoogleFirebaseAppcheckV1betaService
   buildCounterGoogleFirebaseAppcheckV1betaService++;
   if (buildCounterGoogleFirebaseAppcheckV1betaService < 3) {
     o.enforcementMode = 'foo';
+    o.etag = 'foo';
     o.name = 'foo';
+    o.updateTime = 'foo';
   }
   buildCounterGoogleFirebaseAppcheckV1betaService--;
   return o;
@@ -1310,7 +1327,15 @@ void checkGoogleFirebaseAppcheckV1betaService(
       unittest.equals('foo'),
     );
     unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.updateTime!,
       unittest.equals('foo'),
     );
   }
@@ -1341,6 +1366,52 @@ void checkGoogleFirebaseAppcheckV1betaUpdateServiceRequest(
     );
   }
   buildCounterGoogleFirebaseAppcheckV1betaUpdateServiceRequest--;
+}
+
+core.int buildCounterGoogleFirebaseAppcheckV1betaVerifyAppCheckTokenRequest = 0;
+api.GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenRequest
+    buildGoogleFirebaseAppcheckV1betaVerifyAppCheckTokenRequest() {
+  final o = api.GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenRequest();
+  buildCounterGoogleFirebaseAppcheckV1betaVerifyAppCheckTokenRequest++;
+  if (buildCounterGoogleFirebaseAppcheckV1betaVerifyAppCheckTokenRequest < 3) {
+    o.appCheckToken = 'foo';
+  }
+  buildCounterGoogleFirebaseAppcheckV1betaVerifyAppCheckTokenRequest--;
+  return o;
+}
+
+void checkGoogleFirebaseAppcheckV1betaVerifyAppCheckTokenRequest(
+    api.GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenRequest o) {
+  buildCounterGoogleFirebaseAppcheckV1betaVerifyAppCheckTokenRequest++;
+  if (buildCounterGoogleFirebaseAppcheckV1betaVerifyAppCheckTokenRequest < 3) {
+    unittest.expect(
+      o.appCheckToken!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleFirebaseAppcheckV1betaVerifyAppCheckTokenRequest--;
+}
+
+core.int buildCounterGoogleFirebaseAppcheckV1betaVerifyAppCheckTokenResponse =
+    0;
+api.GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenResponse
+    buildGoogleFirebaseAppcheckV1betaVerifyAppCheckTokenResponse() {
+  final o = api.GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenResponse();
+  buildCounterGoogleFirebaseAppcheckV1betaVerifyAppCheckTokenResponse++;
+  if (buildCounterGoogleFirebaseAppcheckV1betaVerifyAppCheckTokenResponse < 3) {
+    o.alreadyConsumed = true;
+  }
+  buildCounterGoogleFirebaseAppcheckV1betaVerifyAppCheckTokenResponse--;
+  return o;
+}
+
+void checkGoogleFirebaseAppcheckV1betaVerifyAppCheckTokenResponse(
+    api.GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenResponse o) {
+  buildCounterGoogleFirebaseAppcheckV1betaVerifyAppCheckTokenResponse++;
+  if (buildCounterGoogleFirebaseAppcheckV1betaVerifyAppCheckTokenResponse < 3) {
+    unittest.expect(o.alreadyConsumed!, unittest.isTrue);
+  }
+  buildCounterGoogleFirebaseAppcheckV1betaVerifyAppCheckTokenResponse--;
 }
 
 core.int buildCounterGoogleProtobufEmpty = 0;
@@ -1977,6 +2048,30 @@ void main() {
     });
   });
 
+  unittest.group(
+      'obj-schema-GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleFirebaseAppcheckV1betaVerifyAppCheckTokenRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenRequest.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleFirebaseAppcheckV1betaVerifyAppCheckTokenRequest(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleFirebaseAppcheckV1betaVerifyAppCheckTokenResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleFirebaseAppcheckV1betaVerifyAppCheckTokenResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-GoogleProtobufEmpty', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleProtobufEmpty();
@@ -1994,7 +2089,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2010,7 +2105,7 @@ void main() {
         pathOffset += 7;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2043,10 +2138,10 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsAppsResource', () {
+  unittest.group('resource-OauthClientsResource', () {
     unittest.test('method--exchangeAppAttestAssertion', () async {
       final mock = HttpServerMock();
-      final res = api.FirebaseappcheckApi(mock).projects.apps;
+      final res = api.FirebaseappcheckApi(mock).oauthClients;
       final arg_request =
           buildGoogleFirebaseAppcheckV1betaExchangeAppAttestAssertionRequest();
       final arg_app = 'foo';
@@ -2057,7 +2152,7 @@ void main() {
                 .fromJson(json as core.Map<core.String, core.dynamic>);
         checkGoogleFirebaseAppcheckV1betaExchangeAppAttestAssertionRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2073,7 +2168,265 @@ void main() {
         pathOffset += 7;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildGoogleFirebaseAppcheckV1betaAppCheckToken());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.exchangeAppAttestAssertion(
+          arg_request, arg_app,
+          $fields: arg_$fields);
+      checkGoogleFirebaseAppcheckV1betaAppCheckToken(
+          response as api.GoogleFirebaseAppcheckV1betaAppCheckToken);
+    });
+
+    unittest.test('method--exchangeAppAttestAttestation', () async {
+      final mock = HttpServerMock();
+      final res = api.FirebaseappcheckApi(mock).oauthClients;
+      final arg_request =
+          buildGoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationRequest();
+      final arg_app = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj =
+            api.GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationRequest
+                .fromJson(json as core.Map<core.String, core.dynamic>);
+        checkGoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationRequest(
+            obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 7),
+          unittest.equals('v1beta/'),
+        );
+        pathOffset += 7;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(
+            buildGoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.exchangeAppAttestAttestation(
+          arg_request, arg_app,
+          $fields: arg_$fields);
+      checkGoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationResponse(
+          response as api
+              .GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationResponse);
+    });
+
+    unittest.test('method--generateAppAttestChallenge', () async {
+      final mock = HttpServerMock();
+      final res = api.FirebaseappcheckApi(mock).oauthClients;
+      final arg_request =
+          buildGoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeRequest();
+      final arg_app = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj =
+            api.GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeRequest
+                .fromJson(json as core.Map<core.String, core.dynamic>);
+        checkGoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 7),
+          unittest.equals('v1beta/'),
+        );
+        pathOffset += 7;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(
+            buildGoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.generateAppAttestChallenge(
+          arg_request, arg_app,
+          $fields: arg_$fields);
+      checkGoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeResponse(
+          response as api
+              .GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeResponse);
+    });
+  });
+
+  unittest.group('resource-ProjectsResource', () {
+    unittest.test('method--verifyAppCheckToken', () async {
+      final mock = HttpServerMock();
+      final res = api.FirebaseappcheckApi(mock).projects;
+      final arg_request =
+          buildGoogleFirebaseAppcheckV1betaVerifyAppCheckTokenRequest();
+      final arg_project = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj =
+            api.GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenRequest.fromJson(
+                json as core.Map<core.String, core.dynamic>);
+        checkGoogleFirebaseAppcheckV1betaVerifyAppCheckTokenRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 7),
+          unittest.equals('v1beta/'),
+        );
+        pathOffset += 7;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(
+            buildGoogleFirebaseAppcheckV1betaVerifyAppCheckTokenResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.verifyAppCheckToken(arg_request, arg_project,
+          $fields: arg_$fields);
+      checkGoogleFirebaseAppcheckV1betaVerifyAppCheckTokenResponse(response
+          as api.GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenResponse);
+    });
+  });
+
+  unittest.group('resource-ProjectsAppsResource', () {
+    unittest.test('method--exchangeAppAttestAssertion', () async {
+      final mock = HttpServerMock();
+      final res = api.FirebaseappcheckApi(mock).projects.apps;
+      final arg_request =
+          buildGoogleFirebaseAppcheckV1betaExchangeAppAttestAssertionRequest();
+      final arg_app = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj =
+            api.GoogleFirebaseAppcheckV1betaExchangeAppAttestAssertionRequest
+                .fromJson(json as core.Map<core.String, core.dynamic>);
+        checkGoogleFirebaseAppcheckV1betaExchangeAppAttestAssertionRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 7),
+          unittest.equals('v1beta/'),
+        );
+        pathOffset += 7;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2121,7 +2474,7 @@ void main() {
         checkGoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationRequest(
             obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2137,7 +2490,7 @@ void main() {
         pathOffset += 7;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2185,7 +2538,7 @@ void main() {
                 json as core.Map<core.String, core.dynamic>);
         checkGoogleFirebaseAppcheckV1betaExchangeCustomTokenRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2201,7 +2554,7 @@ void main() {
         pathOffset += 7;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2247,7 +2600,7 @@ void main() {
                 json as core.Map<core.String, core.dynamic>);
         checkGoogleFirebaseAppcheckV1betaExchangeDebugTokenRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2263,7 +2616,7 @@ void main() {
         pathOffset += 7;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2309,7 +2662,7 @@ void main() {
                 .fromJson(json as core.Map<core.String, core.dynamic>);
         checkGoogleFirebaseAppcheckV1betaExchangeDeviceCheckTokenRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2325,7 +2678,7 @@ void main() {
         pathOffset += 7;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2371,7 +2724,7 @@ void main() {
                 .fromJson(json as core.Map<core.String, core.dynamic>);
         checkGoogleFirebaseAppcheckV1betaExchangePlayIntegrityTokenRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2387,7 +2740,7 @@ void main() {
         pathOffset += 7;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2435,7 +2788,7 @@ void main() {
         checkGoogleFirebaseAppcheckV1betaExchangeRecaptchaEnterpriseTokenRequest(
             obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2451,7 +2804,7 @@ void main() {
         pathOffset += 7;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2498,7 +2851,7 @@ void main() {
                 .fromJson(json as core.Map<core.String, core.dynamic>);
         checkGoogleFirebaseAppcheckV1betaExchangeRecaptchaTokenRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2514,7 +2867,7 @@ void main() {
         pathOffset += 7;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2560,7 +2913,7 @@ void main() {
                 .fromJson(json as core.Map<core.String, core.dynamic>);
         checkGoogleFirebaseAppcheckV1betaExchangeRecaptchaV3TokenRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2576,7 +2929,7 @@ void main() {
         pathOffset += 7;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2622,7 +2975,7 @@ void main() {
                 .fromJson(json as core.Map<core.String, core.dynamic>);
         checkGoogleFirebaseAppcheckV1betaExchangeSafetyNetTokenRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2638,7 +2991,7 @@ void main() {
         pathOffset += 7;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2684,7 +3037,7 @@ void main() {
                 .fromJson(json as core.Map<core.String, core.dynamic>);
         checkGoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2700,7 +3053,7 @@ void main() {
         pathOffset += 7;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2749,7 +3102,7 @@ void main() {
         checkGoogleFirebaseAppcheckV1betaGeneratePlayIntegrityChallengeRequest(
             obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2765,7 +3118,7 @@ void main() {
         pathOffset += 7;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2809,7 +3162,7 @@ void main() {
       final arg_names = buildUnnamed12();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2825,7 +3178,7 @@ void main() {
         pathOffset += 7;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2868,7 +3221,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2884,7 +3237,7 @@ void main() {
         pathOffset += 7;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2928,7 +3281,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleFirebaseAppcheckV1betaAppAttestConfig(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2944,7 +3297,7 @@ void main() {
         pathOffset += 7;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2994,7 +3347,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleFirebaseAppcheckV1betaDebugToken(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3010,7 +3363,7 @@ void main() {
         pathOffset += 7;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3049,7 +3402,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3065,7 +3418,7 @@ void main() {
         pathOffset += 7;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3101,7 +3454,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3117,7 +3470,7 @@ void main() {
         pathOffset += 7;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3157,7 +3510,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3173,7 +3526,7 @@ void main() {
         pathOffset += 7;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3228,7 +3581,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleFirebaseAppcheckV1betaDebugToken(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3244,7 +3597,7 @@ void main() {
         pathOffset += 7;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3290,7 +3643,7 @@ void main() {
       final arg_names = buildUnnamed13();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3306,7 +3659,7 @@ void main() {
         pathOffset += 7;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3350,7 +3703,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3366,7 +3719,7 @@ void main() {
         pathOffset += 7;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3410,7 +3763,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleFirebaseAppcheckV1betaDeviceCheckConfig(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3426,7 +3779,7 @@ void main() {
         pathOffset += 7;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3473,7 +3826,7 @@ void main() {
       final arg_names = buildUnnamed14();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3489,7 +3842,7 @@ void main() {
         pathOffset += 7;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3534,7 +3887,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3550,7 +3903,7 @@ void main() {
         pathOffset += 7;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3597,7 +3950,7 @@ void main() {
                 json as core.Map<core.String, core.dynamic>);
         checkGoogleFirebaseAppcheckV1betaPlayIntegrityConfig(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3613,7 +3966,7 @@ void main() {
         pathOffset += 7;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3659,7 +4012,7 @@ void main() {
       final arg_names = buildUnnamed15();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3675,7 +4028,7 @@ void main() {
         pathOffset += 7;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3718,7 +4071,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3734,7 +4087,7 @@ void main() {
         pathOffset += 7;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3778,7 +4131,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleFirebaseAppcheckV1betaRecaptchaConfig(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3794,7 +4147,7 @@ void main() {
         pathOffset += 7;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3841,7 +4194,7 @@ void main() {
       final arg_names = buildUnnamed16();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3857,7 +4210,7 @@ void main() {
         pathOffset += 7;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3902,7 +4255,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3918,7 +4271,7 @@ void main() {
         pathOffset += 7;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3965,7 +4318,7 @@ void main() {
                 json as core.Map<core.String, core.dynamic>);
         checkGoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3981,7 +4334,7 @@ void main() {
         pathOffset += 7;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4027,7 +4380,7 @@ void main() {
       final arg_names = buildUnnamed17();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4043,7 +4396,7 @@ void main() {
         pathOffset += 7;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4087,7 +4440,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4103,7 +4456,7 @@ void main() {
         pathOffset += 7;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4147,7 +4500,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleFirebaseAppcheckV1betaRecaptchaV3Config(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4163,7 +4516,7 @@ void main() {
         pathOffset += 7;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4209,7 +4562,7 @@ void main() {
       final arg_names = buildUnnamed18();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4225,7 +4578,7 @@ void main() {
         pathOffset += 7;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4268,7 +4621,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4284,7 +4637,7 @@ void main() {
         pathOffset += 7;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4328,7 +4681,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleFirebaseAppcheckV1betaSafetyNetConfig(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4344,7 +4697,7 @@ void main() {
         pathOffset += 7;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4396,7 +4749,7 @@ void main() {
                 json as core.Map<core.String, core.dynamic>);
         checkGoogleFirebaseAppcheckV1betaBatchUpdateServicesRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4412,7 +4765,7 @@ void main() {
         pathOffset += 7;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4451,7 +4804,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4467,7 +4820,7 @@ void main() {
         pathOffset += 7;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4507,7 +4860,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4523,7 +4876,7 @@ void main() {
         pathOffset += 7;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4578,7 +4931,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleFirebaseAppcheckV1betaService(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4594,7 +4947,7 @@ void main() {
         pathOffset += 7;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>

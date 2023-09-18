@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud IDS API - v1
@@ -28,7 +27,7 @@
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsEndpointsResource]
 ///     - [ProjectsLocationsOperationsResource]
-library ids.v1;
+library ids_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -37,7 +36,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -199,7 +197,7 @@ class ProjectsLocationsEndpointsResource {
   /// unique request ID so that if you must retry your request, the server will
   /// know to ignore the request if it has already been completed. The server
   /// will guarantee that for at least 60 minutes since the first request. For
-  /// example, consider a situation where you make an initial request and t he
+  /// example, consider a situation where you make an initial request and the
   /// request times out. If you make the request again with the same request ID,
   /// the server can check if original operation with the same request ID was
   /// received, and if so, will ignore the second request. This prevents clients
@@ -254,7 +252,7 @@ class ProjectsLocationsEndpointsResource {
   /// unique request ID so that if you must retry your request, the server will
   /// know to ignore the request if it has already been completed. The server
   /// will guarantee that for at least 60 minutes after the first request. For
-  /// example, consider a situation where you make an initial request and t he
+  /// example, consider a situation where you make an initial request and the
   /// request times out. If you make the request again with the same request ID,
   /// the server can check if original operation with the same request ID was
   /// received, and if so, will ignore the second request. This prevents clients
@@ -442,6 +440,69 @@ class ProjectsLocationsEndpointsResource {
     );
     return ListEndpointsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the parameters of a single Endpoint.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. The name of the endpoint.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/endpoints/\[^/\]+$`.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed. The server
+  /// will guarantee that for at least 60 minutes since the first request. For
+  /// example, consider a situation where you make an initial request and the
+  /// request times out. If you make the request again with the same request ID,
+  /// the server can check if original operation with the same request ID was
+  /// received, and if so, will ignore the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - Field mask is used to specify the fields to be overwritten
+  /// in the Endpoint resource by the update. The fields specified in the
+  /// update_mask are relative to the resource, not the full request. A field
+  /// will be overwritten if it is in the mask. If the user does not provide a
+  /// mask then all fields will be overwritten.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    Endpoint request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -681,13 +742,6 @@ class ProjectsLocationsOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -825,7 +879,9 @@ class Binding {
   /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
   /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
-  /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
+  /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
+  /// (primary) that represents all the users of that domain. For example,
+  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
   /// An email address (plus unique identifier) representing a user that has
   /// been recently deleted. For example,
   /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
@@ -841,9 +897,7 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
-  /// that represents all the users of that domain. For example, `google.com` or
-  /// `example.com`.
+  /// the role in the binding.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
@@ -949,6 +1003,9 @@ class Endpoint {
   /// - "UPDATING" : Being updated.
   core.String? state;
 
+  /// List of threat IDs to be excepted from generating alerts.
+  core.List<core.String>? threatExceptions;
+
   /// Whether the endpoint should report traffic logs in addition to threat
   /// logs.
   core.bool? trafficLogs;
@@ -968,6 +1025,7 @@ class Endpoint {
     this.network,
     this.severity,
     this.state,
+    this.threatExceptions,
     this.trafficLogs,
     this.updateTime,
   });
@@ -988,9 +1046,9 @@ class Endpoint {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -1003,6 +1061,11 @@ class Endpoint {
               : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
+          threatExceptions: json_.containsKey('threatExceptions')
+              ? (json_['threatExceptions'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           trafficLogs: json_.containsKey('trafficLogs')
               ? json_['trafficLogs'] as core.bool
               : null,
@@ -1022,6 +1085,7 @@ class Endpoint {
         if (network != null) 'network': network!,
         if (severity != null) 'severity': severity!,
         if (state != null) 'state': state!,
+        if (threatExceptions != null) 'threatExceptions': threatExceptions!,
         if (trafficLogs != null) 'trafficLogs': trafficLogs!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
@@ -1154,7 +1218,7 @@ class ListOperationsResponse {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
+/// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
 /// This resource represents a long-running operation that is the result of a

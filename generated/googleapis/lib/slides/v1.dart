@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Google Slides API - v1
@@ -22,7 +21,7 @@
 ///
 /// - [PresentationsResource]
 ///   - [PresentationsPagesResource]
-library slides.v1;
+library slides_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -31,7 +30,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -709,11 +707,11 @@ class CreateImageRequest {
   ///
   /// When the aspect ratio of the provided size does not match the image aspect
   /// ratio, the image is scaled and centered with respect to the size in order
-  /// to maintain aspect ratio. The provided transform is applied after this
+  /// to maintain the aspect ratio. The provided transform is applied after this
   /// operation. The PageElementProperties.size property is optional. If you
   /// don't specify the size, the default size of the image is used. The
   /// PageElementProperties.transform property is optional. If you don't specify
-  /// a transform, the image will be placed at the top left corner of the page.
+  /// a transform, the image will be placed at the top-left corner of the page.
   PageElementProperties? elementProperties;
 
   /// A user-supplied object ID.
@@ -729,10 +727,11 @@ class CreateImageRequest {
   /// The image URL.
   ///
   /// The image is fetched once at insertion time and a copy is stored for
-  /// display inside the presentation. Images must be less than 50MB in size,
-  /// cannot exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF
-  /// format. The provided URL can be at most 2 kB in length. The URL itself is
-  /// saved with the image, and exposed via the Image.source_url field.
+  /// display inside the presentation. Images must be less than 50 MB in size,
+  /// can't exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF
+  /// formats. The provided URL must be publicly accessible and up to 2 KB in
+  /// length. The URL is saved with the image, and exposed through the
+  /// Image.source_url field.
   core.String? url;
 
   CreateImageRequest({
@@ -812,6 +811,9 @@ class CreateLineRequest {
   /// the default category when one is not specified.
   /// - "BENT" : Bent connectors, including bent connector 2 to 5.
   /// - "CURVED" : Curved connectors, including curved connector 2 to 5.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? lineCategory;
 
   /// A user-supplied object ID.
@@ -2013,9 +2015,9 @@ class DuplicateObjectRequest {
               : null,
           objectIds: json_.containsKey('objectIds')
               ? (json_['objectIds'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -2967,10 +2969,10 @@ class List {
           nestingLevel: json_.containsKey('nestingLevel')
               ? (json_['nestingLevel'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     NestingLevel.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -4270,6 +4272,9 @@ class ReplaceAllShapesWithImageRequest {
   /// - "CENTER_CROP" : Scales and centers the image to fill the bounds of the
   /// original shape. The image may be cropped in order to fill the shape. The
   /// rendered size of the image will be the same as that of the original shape.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? replaceMethod;
 
   ReplaceAllShapesWithImageRequest({
@@ -6604,9 +6609,9 @@ class TextContent {
       : this(
           lists: json_.containsKey('lists')
               ? (json_['lists'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    List.fromJson(item as core.Map<core.String, core.dynamic>),
+                    List.fromJson(value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,

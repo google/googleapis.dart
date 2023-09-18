@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Firebase Remote Config API - v1
@@ -27,7 +26,7 @@
 /// - [ProjectsResource]
 ///   - [ProjectsNamespacesResource]
 ///   - [ProjectsRemoteConfigResource]
-library firebaseremoteconfig.v1;
+library firebaseremoteconfig_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -36,8 +35,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
-import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -269,14 +266,14 @@ class ProjectsRemoteConfigResource {
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
-  /// Completes with a [HttpBody].
+  /// Completes with a [Response].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<HttpBody> downloadDefaults(
+  async.Future<Response> downloadDefaults(
     core.String project, {
     core.String? format,
     core.String? $fields,
@@ -295,7 +292,7 @@ class ProjectsRemoteConfigResource {
       'GET',
       queryParams: queryParams_,
     );
-    return HttpBody.fromJson(response_ as core.Map<core.String, core.dynamic>);
+    return response_ as core.Map<core.String, core.dynamic>;
   }
 
   /// Get a list of Remote Config template versions that have been published,
@@ -423,7 +420,9 @@ class ProjectsRemoteConfigResource {
 class ExperimentDescription {
   /// The Firebase A/B Testing experiment ID.
   ///
-  /// A string of max length 22 characters.
+  /// A string of max length 22 characters. Format: _exp_ This is referred to as
+  /// the tracking id and is different from the experiment id which is used
+  /// internally by ABT.
   core.String? experimentId;
 
   /// When the experiment was started.
@@ -607,9 +606,9 @@ class FetchRemoteConfigRequest {
               ? (json_['analyticsUserProperties']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -719,9 +718,9 @@ class FetchRemoteConfigResponse {
               : null,
           entries: json_.containsKey('entries')
               ? (json_['entries'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -735,10 +734,10 @@ class FetchRemoteConfigResponse {
               ? (json_['personalizationMetadata']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     PersonalizationMetadata.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -760,26 +759,6 @@ class FetchRemoteConfigResponse {
         if (templateVersion != null) 'templateVersion': templateVersion!,
       };
 }
-
-/// Message that represents an arbitrary HTTP body.
-///
-/// It should only be used for payload formats that can't be represented as
-/// JSON, such as raw binary or an HTML page. This message can be used both in
-/// streaming and non-streaming API methods in the request as well as the
-/// response. It can be used as a top-level request field, which is convenient
-/// if one wants to extract parameters from either the URL or HTTP template into
-/// the request fields and also want access to the raw HTTP body. Example:
-/// message GetResourceRequest { // A unique request id. string request_id = 1;
-/// // The raw HTTP body is bound to this field. google.api.HttpBody http_body =
-/// 2; } service ResourceService { rpc GetResource(GetResourceRequest) returns
-/// (google.api.HttpBody); rpc UpdateResource(google.api.HttpBody) returns
-/// (google.protobuf.Empty); } Example with streaming methods: service
-/// CaldavService { rpc GetCalendar(stream google.api.HttpBody) returns (stream
-/// google.api.HttpBody); rpc UpdateCalendar(stream google.api.HttpBody) returns
-/// (stream google.api.HttpBody); } Use of this type only changes how the
-/// request and response bodies are handled, all other features will continue to
-/// work unchanged.
-typedef HttpBody = $HttpBody;
 
 /// Contains a paginated list of versions of the RemoteConfig.
 class ListVersionsResponse {
@@ -963,20 +942,20 @@ class RemoteConfig {
               ? (json_['parameterGroups']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     RemoteConfigParameterGroup.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
           parameters: json_.containsKey('parameters')
               ? (json_['parameters'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     RemoteConfigParameter.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -1110,10 +1089,10 @@ class RemoteConfigParameter {
               ? (json_['conditionalValues']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     RemoteConfigParameterValue.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -1171,10 +1150,10 @@ class RemoteConfigParameterGroup {
           parameters: json_.containsKey('parameters')
               ? (json_['parameters'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     RemoteConfigParameter.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -1266,6 +1245,11 @@ class RemoteConfigUser {
         if (name != null) 'name': name!,
       };
 }
+
+/// The values in the configuration.
+///
+/// Properties of the object. Contains field @type with type URL.
+typedef Response = core.Map<core.String, core.Object?>;
 
 /// Replace the published Remote Config template with an earlier version.
 class RollbackRemoteConfigRequest {

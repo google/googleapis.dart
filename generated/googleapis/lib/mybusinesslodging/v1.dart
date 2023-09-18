@@ -2,20 +2,20 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// My Business Lodging API - v1
 ///
 /// The My Business Lodging API enables managing lodging business information on
-/// Google.
+/// Google. Note - If you have a quota of 0 after enabling the API, please
+/// request for GBP API access.
 ///
 /// For more information, see <https://developers.google.com/my-business/>
 ///
@@ -23,7 +23,7 @@
 ///
 /// - [LocationsResource]
 ///   - [LocationsLodgingResource]
-library mybusinesslodging.v1;
+library mybusinesslodging_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -32,7 +32,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -41,6 +40,9 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// The My Business Lodging API enables managing lodging business information on
 /// Google.
+///
+/// Note - If you have a quota of 0 after enabling the API, please request for
+/// GBP API access.
 class MyBusinessLodgingApi {
   final commons.ApiRequester _requester;
 
@@ -159,7 +161,7 @@ class LocationsLodgingResource {
   /// Request parameters:
   ///
   /// [name] - Required. Google identifier for this location in the form:
-  /// `accounts/{account_id}/locations/{location_id}/lodging`
+  /// `locations/{location_id}/lodging`
   /// Value must have pattern `^locations/\[^/\]+/lodging$`.
   ///
   /// [readMask] - Required. The specific fields to return. Use "*" to include
@@ -1682,6 +1684,24 @@ class Families {
   /// the day of the week.
   core.String? kidsClubException;
 
+  /// Kids friendly.
+  ///
+  /// The hotel has one or more special features for families with children,
+  /// such as reduced rates, child-sized beds, kids' club, babysitting service,
+  /// or suitable place to play on premises.
+  core.bool? kidsFriendly;
+
+  /// Kids friendly exception.
+  /// Possible string values are:
+  /// - "EXCEPTION_UNSPECIFIED" : Default unspecified exception. Use this only
+  /// if a more specific exception does not match.
+  /// - "UNDER_CONSTRUCTION" : Amenity or service is unavailable due to ongoing
+  /// work orders.
+  /// - "DEPENDENT_ON_SEASON" : Amenity or service availability is seasonal.
+  /// - "DEPENDENT_ON_DAY_OF_WEEK" : Amenity or service availability depends on
+  /// the day of the week.
+  core.String? kidsFriendlyException;
+
   Families({
     this.babysitting,
     this.babysittingException,
@@ -1689,6 +1709,8 @@ class Families {
     this.kidsActivitiesException,
     this.kidsClub,
     this.kidsClubException,
+    this.kidsFriendly,
+    this.kidsFriendlyException,
   });
 
   Families.fromJson(core.Map json_)
@@ -1711,6 +1733,12 @@ class Families {
           kidsClubException: json_.containsKey('kidsClubException')
               ? json_['kidsClubException'] as core.String
               : null,
+          kidsFriendly: json_.containsKey('kidsFriendly')
+              ? json_['kidsFriendly'] as core.bool
+              : null,
+          kidsFriendlyException: json_.containsKey('kidsFriendlyException')
+              ? json_['kidsFriendlyException'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1722,6 +1750,9 @@ class Families {
           'kidsActivitiesException': kidsActivitiesException!,
         if (kidsClub != null) 'kidsClub': kidsClub!,
         if (kidsClubException != null) 'kidsClubException': kidsClubException!,
+        if (kidsFriendly != null) 'kidsFriendly': kidsFriendly!,
+        if (kidsFriendlyException != null)
+          'kidsFriendlyException': kidsFriendlyException!,
       };
 }
 
@@ -7318,6 +7349,9 @@ class SustainabilityCertifications {
   core.List<EcoCertification>? ecoCertifications;
 
   /// LEED certification.
+  ///
+  /// Deprecated: this field is no longer populated. LEED certification status
+  /// is now provided directly by USGBC.
   /// Possible string values are:
   /// - "LEED_CERTIFICATION_UNSPECIFIED" : Default LeedCertification. Do not
   /// use.
@@ -7326,9 +7360,15 @@ class SustainabilityCertifications {
   /// - "LEED_SILVER" : LEED Silver.
   /// - "LEED_GOLD" : LEED Gold.
   /// - "LEED_PLATINUM" : LEED Platinum.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? leedCertification;
 
   /// LEED certification exception.
+  ///
+  /// Deprecated: this field is no longer populated. LEED certification status
+  /// is now provided directly by USGBC.
   /// Possible string values are:
   /// - "EXCEPTION_UNSPECIFIED" : Default unspecified exception. Use this only
   /// if a more specific exception does not match.
@@ -7337,6 +7377,9 @@ class SustainabilityCertifications {
   /// - "DEPENDENT_ON_SEASON" : Amenity or service availability is seasonal.
   /// - "DEPENDENT_ON_DAY_OF_WEEK" : Amenity or service availability depends on
   /// the day of the week.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? leedCertificationException;
 
   SustainabilityCertifications({

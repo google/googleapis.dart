@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud Run Admin API - v2
@@ -31,7 +30,7 @@
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsServicesResource]
 ///       - [ProjectsLocationsServicesRevisionsResource]
-library run.v2;
+library run_v2;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -40,7 +39,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -101,14 +99,15 @@ class ProjectsLocationsJobsResource {
   ProjectsLocationsJobsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Create a Job.
+  /// Creates a Job.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The location and project in which this Job should be
-  /// created. Format: projects/{projectnumber}/locations/{location}
+  /// created. Format: projects/{project}/locations/{location}, where {project}
+  /// can be project id or number.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [jobId] - Required. The unique identifier for the Job. The name of the job
@@ -159,17 +158,13 @@ class ProjectsLocationsJobsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The full name of the Job. Format:
-  /// projects/{projectnumber}/locations/{location}/jobs/{job}
+  /// projects/{project}/locations/{location}/jobs/{job}, where {project} can be
+  /// project id or number.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/jobs/\[^/\]+$`.
   ///
   /// [etag] - A system-generated fingerprint for this version of the resource.
   /// May be used to detect modification conflict during updates.
-  ///
-  /// [force] - If set to true, the Job and its Executions will be deleted no
-  /// matter whether any Executions are still running or not. If set to false or
-  /// unset, the Job and its Executions can only be deleted if there are no
-  /// running Executions. Any running Execution will fail the deletion.
   ///
   /// [validateOnly] - Indicates that the request should be validated without
   /// actually deleting any resources.
@@ -187,13 +182,11 @@ class ProjectsLocationsJobsResource {
   async.Future<GoogleLongrunningOperation> delete(
     core.String name, {
     core.String? etag,
-    core.bool? force,
     core.bool? validateOnly,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (etag != null) 'etag': [etag],
-      if (force != null) 'force': ['${force}'],
       if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
       if ($fields != null) 'fields': [$fields],
     };
@@ -214,7 +207,8 @@ class ProjectsLocationsJobsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The full name of the Job. Format:
-  /// projects/{projectnumber}/locations/{location}/jobs/{job}
+  /// projects/{project}/locations/{location}/jobs/{job}, where {project} can be
+  /// project id or number.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/jobs/\[^/\]+$`.
   ///
@@ -247,7 +241,7 @@ class ProjectsLocationsJobsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Get the IAM Access Control policy currently in effect for the given Job.
+  /// Gets the IAM Access Control policy currently in effect for the given Job.
   ///
   /// This result does not include any inherited policies.
   ///
@@ -304,12 +298,13 @@ class ProjectsLocationsJobsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// List Jobs.
+  /// Lists Jobs.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The location and project to list resources on.
-  /// Format: projects/{projectnumber}/locations/{location}
+  /// Format: projects/{project}/locations/{location}, where {project} can be
+  /// project id or number.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - Maximum number of Jobs to return in this call.
@@ -417,7 +412,8 @@ class ProjectsLocationsJobsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The full name of the Job. Format:
-  /// projects/{projectnumber}/locations/{location}/jobs/{job}
+  /// projects/{project}/locations/{location}/jobs/{job}, where {project} can be
+  /// project id or number.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/jobs/\[^/\]+$`.
   ///
@@ -558,12 +554,13 @@ class ProjectsLocationsJobsExecutionsResource {
   ProjectsLocationsJobsExecutionsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Delete an Execution.
+  /// Deletes an Execution.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. The name of the Execution to delete. Format:
-  /// projects/{project}/locations/{location}/jobs/{job}/executions/{execution}
+  /// projects/{project}/locations/{location}/jobs/{job}/executions/{execution},
+  /// where {project} can be project id or number.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/jobs/\[^/\]+/executions/\[^/\]+$`.
   ///
@@ -606,12 +603,13 @@ class ProjectsLocationsJobsExecutionsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets information about a Execution.
+  /// Gets information about an Execution.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. The full name of the Execution. Format:
-  /// projects/{project}/locations/{location}/jobs/{job}/executions/{execution}
+  /// projects/{project}/locations/{location}/jobs/{job}/executions/{execution},
+  /// where {project} can be project id or number.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/jobs/\[^/\]+/executions/\[^/\]+$`.
   ///
@@ -644,13 +642,14 @@ class ProjectsLocationsJobsExecutionsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// List Executions from a Job.
+  /// Lists Executions from a Job.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The Execution from which the Executions should be
   /// listed. To list all Executions across Jobs, use "-" instead of Job name.
-  /// Format: projects/{project}/locations/{location}/jobs/{job}
+  /// Format: projects/{project}/locations/{location}/jobs/{job}, where
+  /// {project} can be project id or number.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/jobs/\[^/\]+$`.
   ///
@@ -742,7 +741,7 @@ class ProjectsLocationsJobsExecutionsTasksResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// List Tasks from an Execution of a Job.
+  /// Lists Tasks from an Execution of a Job.
   ///
   /// Request parameters:
   ///
@@ -887,13 +886,6 @@ class ProjectsLocationsOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -947,6 +939,57 @@ class ProjectsLocationsOperationsResource {
     return GoogleLongrunningListOperationsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
+
+  /// Waits until the specified long-running operation is done or reaches at
+  /// most a specified timeout, returning the latest state.
+  ///
+  /// If the operation is already done, the latest state is immediately
+  /// returned. If the timeout specified is greater than the default HTTP/RPC
+  /// timeout, the HTTP/RPC timeout is used. If the server does not support this
+  /// method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method
+  /// is on a best-effort basis. It may return the latest state before the
+  /// specified timeout (including immediately), meaning even an immediate
+  /// response is no guarantee that the operation is done.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to wait on.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> wait(
+    GoogleLongrunningWaitOperationRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':wait';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsServicesResource {
@@ -965,13 +1008,15 @@ class ProjectsLocationsServicesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The location and project in which this service should
-  /// be created. Format: projects/{projectnumber}/locations/{location} Only
-  /// lowercase, digits, and hyphens; must begin with letter, and may not end
-  /// with hyphen; must contain fewer than 50 characters.
+  /// be created. Format: projects/{project}/locations/{location}, where
+  /// {project} can be project id or number. Only lowercase characters, digits,
+  /// and hyphens.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [serviceId] - Required. The unique identifier for the Service. The name of
-  /// the service becomes {parent}/services/{service_id}.
+  /// [serviceId] - Required. The unique identifier for the Service. It must
+  /// begin with letter, and cannot end with hyphen; must contain fewer than 50
+  /// characters. The name of the service becomes
+  /// {parent}/services/{service_id}.
   ///
   /// [validateOnly] - Indicates that the request should be validated and
   /// default values populated, without persisting the request or creating any
@@ -1021,7 +1066,8 @@ class ProjectsLocationsServicesResource {
   /// Request parameters:
   ///
   /// [name] - Required. The full name of the Service. Format:
-  /// projects/{projectnumber}/locations/{location}/services/{service}
+  /// projects/{project}/locations/{location}/services/{service}, where
+  /// {project} can be project id or number.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
   ///
@@ -1069,7 +1115,8 @@ class ProjectsLocationsServicesResource {
   /// Request parameters:
   ///
   /// [name] - Required. The full name of the Service. Format:
-  /// projects/{projectnumber}/locations/{location}/services/{service}
+  /// projects/{project}/locations/{location}/services/{service}, where
+  /// {project} can be project id or number.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
   ///
@@ -1102,7 +1149,7 @@ class ProjectsLocationsServicesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Get the IAM Access Control policy currently in effect for the given Cloud
+  /// Gets the IAM Access Control policy currently in effect for the given Cloud
   /// Run Service.
   ///
   /// This result does not include any inherited policies.
@@ -1160,13 +1207,14 @@ class ProjectsLocationsServicesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// List Services.
+  /// Lists Services.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The location and project to list resources on.
-  /// Location must be a valid GCP region, and may not be the "-" wildcard.
-  /// Format: projects/{projectnumber}/locations/{location}
+  /// Location must be a valid Google Cloud region, and cannot be the "-"
+  /// wildcard. Format: projects/{project}/locations/{location}, where {project}
+  /// can be project id or number.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - Maximum number of Services to return in this call.
@@ -1226,8 +1274,8 @@ class ProjectsLocationsServicesResource {
   /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
   ///
   /// [allowMissing] - If set to true, and if the Service does not exist, it
-  /// will create a new one. Caller must have both create and update permissions
-  /// for this call if this is set to true.
+  /// will create a new one. The caller must have 'run.services.create'
+  /// permissions if this is set to true and the Service does not exist.
   ///
   /// [validateOnly] - Indicates that the request should be validated and
   /// default values populated, without persisting the request or updating any
@@ -1371,7 +1419,7 @@ class ProjectsLocationsServicesRevisionsResource {
   ProjectsLocationsServicesRevisionsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Delete a Revision.
+  /// Deletes a Revision.
   ///
   /// Request parameters:
   ///
@@ -1457,7 +1505,7 @@ class ProjectsLocationsServicesRevisionsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// List Revisions from a given Service, or from a given location.
+  /// Lists Revisions from a given Service, or from a given location.
   ///
   /// Request parameters:
   ///
@@ -1548,7 +1596,11 @@ class GoogleCloudRunV2BinaryAuthorization {
       };
 }
 
-/// Represents a specific Cloud SQL instance.
+/// Represents a set of Cloud SQL instances.
+///
+/// Each one will be available under /cloudsql/\[instance\]. Visit
+/// https://cloud.google.com/sql/docs/mysql/connect-run for more information on
+/// how to connect Cloud SQL and Cloud Run.
 class GoogleCloudRunV2CloudSqlInstance {
   /// The Cloud SQL instance connection names, as can be found in
   /// https://console.cloud.google.com/sql/instances.
@@ -1587,6 +1639,8 @@ class GoogleCloudRunV2Condition {
   /// attempt failed due to the user container exiting with a non-zero exit
   /// code.
   /// - "CANCELLED" : The execution was cancelled by users.
+  /// - "CANCELLING" : The execution is in the process of being cancelled.
+  /// - "DELETED" : The execution was deleted.
   core.String? executionReason;
 
   /// Last time the condition transitioned from one status to another.
@@ -1643,6 +1697,8 @@ class GoogleCloudRunV2Condition {
   /// contain this value.
   /// - "HEALTH_CHECK_SKIPPED" : A revision's container has no port specified
   /// since the revision is of a manually scaled service with 0 instance count
+  /// - "MIN_INSTANCES_WARMING" : A revision with min_instance_count \> 0 was
+  /// created and is waiting for enough instances to begin a traffic migration.
   core.String? revisionReason;
 
   /// How to interpret failures of this condition, one of Error, Warning, Info
@@ -1727,42 +1783,39 @@ class GoogleCloudRunV2Condition {
 ///
 /// This specifies both the container to run, the command to run in the
 /// container and the arguments to supply to it. Note that additional arguments
-/// may be supplied by the system to the container at runtime.
+/// can be supplied by the system to the container at runtime.
 class GoogleCloudRunV2Container {
   /// Arguments to the entrypoint.
   ///
-  /// The docker image's CMD is used if this is not provided. Variable
-  /// references $(VAR_NAME) are expanded using the container's environment. If
-  /// a variable cannot be resolved, the reference in the input string will be
-  /// unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie:
-  /// $$(VAR_NAME). Escaped references will never be expanded, regardless of
-  /// whether the variable exists or not. More info:
-  /// https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+  /// The docker image's CMD is used if this is not provided.
   core.List<core.String>? args;
 
   /// Entrypoint array.
   ///
   /// Not executed within a shell. The docker image's ENTRYPOINT is used if this
-  /// is not provided. Variable references $(VAR_NAME) are expanded using the
-  /// container's environment. If a variable cannot be resolved, the reference
-  /// in the input string will be unchanged. The $(VAR_NAME) syntax can be
-  /// escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never
-  /// be expanded, regardless of whether the variable exists or not. More info:
-  /// https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+  /// is not provided.
   core.List<core.String>? command;
+
+  /// Names of the containers that must start before this container.
+  core.List<core.String>? dependsOn;
 
   /// List of environment variables to set in the container.
   core.List<GoogleCloudRunV2EnvVar>? env;
 
-  /// URL of the Container image in Google Container Registry or Google Artifact
-  /// Registry.
+  /// Name of the container image in Dockerhub, Google Artifact Registry, or
+  /// Google Container Registry.
   ///
-  /// More info: https://kubernetes.io/docs/concepts/containers/images
+  /// If the host is not provided, Dockerhub is assumed.
   ///
   /// Required.
   core.String? image;
 
-  /// Name of the container specified as a DNS_LABEL.
+  /// Periodic probe of container liveness.
+  ///
+  /// Container will be restarted if the probe fails.
+  GoogleCloudRunV2Probe? livenessProbe;
+
+  /// Name of the container specified as a DNS_LABEL (RFC 1123).
   core.String? name;
 
   /// List of ports to expose from the container.
@@ -1774,10 +1827,14 @@ class GoogleCloudRunV2Container {
   core.List<GoogleCloudRunV2ContainerPort>? ports;
 
   /// Compute Resource requirements by this container.
-  ///
-  /// More info:
-  /// https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
   GoogleCloudRunV2ResourceRequirements? resources;
+
+  /// Startup probe of application within the container.
+  ///
+  /// All other probes are disabled if a startup probe is provided, until it
+  /// succeeds. Container will not be added to service endpoints if the probe
+  /// fails.
+  GoogleCloudRunV2Probe? startupProbe;
 
   /// Volume to mount into the container's filesystem.
   core.List<GoogleCloudRunV2VolumeMount>? volumeMounts;
@@ -1791,11 +1848,14 @@ class GoogleCloudRunV2Container {
   GoogleCloudRunV2Container({
     this.args,
     this.command,
+    this.dependsOn,
     this.env,
     this.image,
+    this.livenessProbe,
     this.name,
     this.ports,
     this.resources,
+    this.startupProbe,
     this.volumeMounts,
     this.workingDir,
   });
@@ -1812,6 +1872,11 @@ class GoogleCloudRunV2Container {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          dependsOn: json_.containsKey('dependsOn')
+              ? (json_['dependsOn'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           env: json_.containsKey('env')
               ? (json_['env'] as core.List)
                   .map((value) => GoogleCloudRunV2EnvVar.fromJson(
@@ -1820,6 +1885,10 @@ class GoogleCloudRunV2Container {
               : null,
           image:
               json_.containsKey('image') ? json_['image'] as core.String : null,
+          livenessProbe: json_.containsKey('livenessProbe')
+              ? GoogleCloudRunV2Probe.fromJson(
+                  json_['livenessProbe'] as core.Map<core.String, core.dynamic>)
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           ports: json_.containsKey('ports')
               ? (json_['ports'] as core.List)
@@ -1830,6 +1899,10 @@ class GoogleCloudRunV2Container {
           resources: json_.containsKey('resources')
               ? GoogleCloudRunV2ResourceRequirements.fromJson(
                   json_['resources'] as core.Map<core.String, core.dynamic>)
+              : null,
+          startupProbe: json_.containsKey('startupProbe')
+              ? GoogleCloudRunV2Probe.fromJson(
+                  json_['startupProbe'] as core.Map<core.String, core.dynamic>)
               : null,
           volumeMounts: json_.containsKey('volumeMounts')
               ? (json_['volumeMounts'] as core.List)
@@ -1845,11 +1918,14 @@ class GoogleCloudRunV2Container {
   core.Map<core.String, core.dynamic> toJson() => {
         if (args != null) 'args': args!,
         if (command != null) 'command': command!,
+        if (dependsOn != null) 'dependsOn': dependsOn!,
         if (env != null) 'env': env!,
         if (image != null) 'image': image!,
+        if (livenessProbe != null) 'livenessProbe': livenessProbe!,
         if (name != null) 'name': name!,
         if (ports != null) 'ports': ports!,
         if (resources != null) 'resources': resources!,
+        if (startupProbe != null) 'startupProbe': startupProbe!,
         if (volumeMounts != null) 'volumeMounts': volumeMounts!,
         if (workingDir != null) 'workingDir': workingDir!,
       };
@@ -1886,11 +1962,58 @@ class GoogleCloudRunV2ContainerPort {
       };
 }
 
+/// In memory (tmpfs) ephemeral storage.
+///
+/// It is ephemeral in the sense that when the sandbox is taken down, the data
+/// is destroyed with it (it does not persist across sandbox runs).
+class GoogleCloudRunV2EmptyDirVolumeSource {
+  /// The medium on which the data is stored.
+  ///
+  /// Acceptable values today is only MEMORY or none. When none, the default
+  /// will currently be backed by memory but could change over time. +optional
+  /// Possible string values are:
+  /// - "MEDIUM_UNSPECIFIED" : When not specified, falls back to the default
+  /// implementation which is currently in memory (this may change over time).
+  /// - "MEMORY" : Explicitly set the EmptyDir to be in memory. Uses tmpfs.
+  core.String? medium;
+
+  /// Limit on the storage usable by this EmptyDir volume.
+  ///
+  /// The size limit is also applicable for memory medium. The maximum usage on
+  /// memory medium EmptyDir would be the minimum value between the SizeLimit
+  /// specified here and the sum of memory limits of all containers. The default
+  /// is nil which means that the limit is undefined. More info:
+  /// https://cloud.google.com/run/docs/configuring/in-memory-volumes#configure-volume.
+  /// Info in Kubernetes:
+  /// https://kubernetes.io/docs/concepts/storage/volumes/#emptydir
+  core.String? sizeLimit;
+
+  GoogleCloudRunV2EmptyDirVolumeSource({
+    this.medium,
+    this.sizeLimit,
+  });
+
+  GoogleCloudRunV2EmptyDirVolumeSource.fromJson(core.Map json_)
+      : this(
+          medium: json_.containsKey('medium')
+              ? json_['medium'] as core.String
+              : null,
+          sizeLimit: json_.containsKey('sizeLimit')
+              ? json_['sizeLimit'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (medium != null) 'medium': medium!,
+        if (sizeLimit != null) 'sizeLimit': sizeLimit!,
+      };
+}
+
 /// EnvVar represents an environment variable present in a Container.
 class GoogleCloudRunV2EnvVar {
   /// Name of the environment variable.
   ///
-  /// Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
+  /// Must be a C_IDENTIFIER, and must not exceed 32768 characters.
   ///
   /// Required.
   core.String? name;
@@ -1960,8 +2083,18 @@ class GoogleCloudRunV2EnvVarSource {
 /// A execution an immutable resource that references a container image which is
 /// run to completion.
 class GoogleCloudRunV2Execution {
-  /// KRM-style annotations for the resource.
+  /// Unstructured key value map that may be set by external tools to store and
+  /// arbitrary metadata.
+  ///
+  /// They are not queryable and should be preserved when modifying objects.
+  ///
+  /// Output only.
   core.Map<core.String, core.String>? annotations;
+
+  /// The number of tasks which reached phase Cancelled.
+  ///
+  /// Output only.
+  core.int? cancelledCount;
 
   /// Represents time when the execution was completed.
   ///
@@ -2024,24 +2157,26 @@ class GoogleCloudRunV2Execution {
   /// Output only.
   core.String? job;
 
-  /// KRM-style labels for the resource.
+  /// Unstructured key value map that can be used to organize and categorize
+  /// objects.
   ///
   /// User-provided labels are shared with Google's billing system, so they can
   /// be used to filter, or break down billing charges by team, component,
   /// environment, state, etc. For more information, visit
   /// https://cloud.google.com/resource-manager/docs/creating-managing-labels or
-  /// https://cloud.google.com/run/docs/configuring/labels Cloud Run will
-  /// populate some labels with 'run.googleapis.com' or 'serving.knative.dev'
-  /// namespaces. Those labels are read-only, and user changes will not be
-  /// preserved.
+  /// https://cloud.google.com/run/docs/configuring/labels
+  ///
+  /// Output only.
   core.Map<core.String, core.String>? labels;
 
-  /// Set the launch stage to a preview stage on write to allow use of preview
-  /// features in that stage.
-  ///
-  /// On read, describes whether the resource uses preview features. Launch
-  /// Stages are defined at
+  /// The least stable launch stage needed to create this resource, as defined
+  /// by
   /// [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages).
+  ///
+  /// Cloud Run supports `ALPHA`, `BETA`, and `GA`. Note that this value might
+  /// not be what was used as input. For example, if ALPHA was provided as input
+  /// in the parent resource, but only BETA and GA-level features are were, this
+  /// field will be BETA.
   /// Possible string values are:
   /// - "LAUNCH_STAGE_UNSPECIFIED" : Do not use this default value.
   /// - "UNIMPLEMENTED" : The feature is not yet implemented. Users can not use
@@ -2076,6 +2211,11 @@ class GoogleCloudRunV2Execution {
   /// documentation.
   core.String? launchStage;
 
+  /// URI where logs for this execution can be found in Cloud Console.
+  ///
+  /// Output only.
+  core.String? logUri;
+
   /// The unique name of this Execution.
   ///
   /// Output only.
@@ -2095,8 +2235,7 @@ class GoogleCloudRunV2Execution {
   /// Must be \<= task_count. The actual number of tasks running in steady state
   /// will be less than this number when ((.spec.task_count -
   /// .status.successful) \< .spec.parallelism), i.e. when the work left to do
-  /// is less than max parallelism. More info:
-  /// https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+  /// is less than max parallelism.
   ///
   /// Output only.
   core.int? parallelism;
@@ -2109,10 +2248,20 @@ class GoogleCloudRunV2Execution {
   /// Output only.
   core.bool? reconciling;
 
+  /// The number of tasks which have retried at least once.
+  ///
+  /// Output only.
+  core.int? retriedCount;
+
   /// The number of actively running tasks.
   ///
   /// Output only.
   core.int? runningCount;
+
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzs;
 
   /// Represents time when the execution started to run.
   ///
@@ -2130,13 +2279,12 @@ class GoogleCloudRunV2Execution {
   /// Specifies the desired number of tasks the execution should run.
   ///
   /// Setting to 1 means that parallelism is limited to 1 and the success of
-  /// that task signals the success of the execution. More info:
-  /// https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+  /// that task signals the success of the execution.
   ///
   /// Output only.
   core.int? taskCount;
 
-  /// Describes the task(s) that will be created when executing an execution.
+  /// The template used to create tasks for this execution.
   ///
   /// Output only.
   GoogleCloudRunV2TaskTemplate? template;
@@ -2156,6 +2304,7 @@ class GoogleCloudRunV2Execution {
 
   GoogleCloudRunV2Execution({
     this.annotations,
+    this.cancelledCount,
     this.completionTime,
     this.conditions,
     this.createTime,
@@ -2167,11 +2316,14 @@ class GoogleCloudRunV2Execution {
     this.job,
     this.labels,
     this.launchStage,
+    this.logUri,
     this.name,
     this.observedGeneration,
     this.parallelism,
     this.reconciling,
+    this.retriedCount,
     this.runningCount,
+    this.satisfiesPzs,
     this.startTime,
     this.succeededCount,
     this.taskCount,
@@ -2185,11 +2337,14 @@ class GoogleCloudRunV2Execution {
           annotations: json_.containsKey('annotations')
               ? (json_['annotations'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
+              : null,
+          cancelledCount: json_.containsKey('cancelledCount')
+              ? json_['cancelledCount'] as core.int
               : null,
           completionTime: json_.containsKey('completionTime')
               ? json_['completionTime'] as core.String
@@ -2219,14 +2374,17 @@ class GoogleCloudRunV2Execution {
           job: json_.containsKey('job') ? json_['job'] as core.String : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
           launchStage: json_.containsKey('launchStage')
               ? json_['launchStage'] as core.String
+              : null,
+          logUri: json_.containsKey('logUri')
+              ? json_['logUri'] as core.String
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           observedGeneration: json_.containsKey('observedGeneration')
@@ -2238,8 +2396,14 @@ class GoogleCloudRunV2Execution {
           reconciling: json_.containsKey('reconciling')
               ? json_['reconciling'] as core.bool
               : null,
+          retriedCount: json_.containsKey('retriedCount')
+              ? json_['retriedCount'] as core.int
+              : null,
           runningCount: json_.containsKey('runningCount')
               ? json_['runningCount'] as core.int
+              : null,
+          satisfiesPzs: json_.containsKey('satisfiesPzs')
+              ? json_['satisfiesPzs'] as core.bool
               : null,
           startTime: json_.containsKey('startTime')
               ? json_['startTime'] as core.String
@@ -2262,6 +2426,7 @@ class GoogleCloudRunV2Execution {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (annotations != null) 'annotations': annotations!,
+        if (cancelledCount != null) 'cancelledCount': cancelledCount!,
         if (completionTime != null) 'completionTime': completionTime!,
         if (conditions != null) 'conditions': conditions!,
         if (createTime != null) 'createTime': createTime!,
@@ -2273,12 +2438,15 @@ class GoogleCloudRunV2Execution {
         if (job != null) 'job': job!,
         if (labels != null) 'labels': labels!,
         if (launchStage != null) 'launchStage': launchStage!,
+        if (logUri != null) 'logUri': logUri!,
         if (name != null) 'name': name!,
         if (observedGeneration != null)
           'observedGeneration': observedGeneration!,
         if (parallelism != null) 'parallelism': parallelism!,
         if (reconciling != null) 'reconciling': reconciling!,
+        if (retriedCount != null) 'retriedCount': retriedCount!,
         if (runningCount != null) 'runningCount': runningCount!,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (startTime != null) 'startTime': startTime!,
         if (succeededCount != null) 'succeededCount': succeededCount!,
         if (taskCount != null) 'taskCount': taskCount!,
@@ -2329,10 +2497,30 @@ class GoogleCloudRunV2ExecutionReference {
 /// ExecutionTemplate describes the data an execution should have when created
 /// from a template.
 class GoogleCloudRunV2ExecutionTemplate {
-  /// KRM-style annotations for the resource.
+  /// Unstructured key value map that may be set by external tools to store and
+  /// arbitrary metadata.
+  ///
+  /// They are not queryable and should be preserved when modifying objects.
+  /// Cloud Run API v2 does not support annotations with `run.googleapis.com`,
+  /// `cloud.googleapis.com`, `serving.knative.dev`, or
+  /// `autoscaling.knative.dev` namespaces, and they will be rejected. All
+  /// system annotations in v1 now have a corresponding field in v2
+  /// ExecutionTemplate. This field follows Kubernetes annotations' namespacing,
+  /// limits, and rules.
   core.Map<core.String, core.String>? annotations;
 
-  /// KRM-style labels for the resource.
+  /// Unstructured key value map that can be used to organize and categorize
+  /// objects.
+  ///
+  /// User-provided labels are shared with Google's billing system, so they can
+  /// be used to filter, or break down billing charges by team, component,
+  /// environment, state, etc. For more information, visit
+  /// https://cloud.google.com/resource-manager/docs/creating-managing-labels or
+  /// https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2
+  /// does not support labels with `run.googleapis.com`, `cloud.googleapis.com`,
+  /// `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they
+  /// will be rejected. All system labels in v1 now have a corresponding field
+  /// in v2 ExecutionTemplate.
   core.Map<core.String, core.String>? labels;
 
   /// Specifies the maximum desired number of tasks the execution should run at
@@ -2348,8 +2536,7 @@ class GoogleCloudRunV2ExecutionTemplate {
   /// Specifies the desired number of tasks the execution should run.
   ///
   /// Setting to 1 means that parallelism is limited to 1 and the success of
-  /// that task signals the success of the execution. More info:
-  /// https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+  /// that task signals the success of the execution. Defaults to 1.
   core.int? taskCount;
 
   /// Describes the task(s) that will be created when executing an execution.
@@ -2370,17 +2557,17 @@ class GoogleCloudRunV2ExecutionTemplate {
           annotations: json_.containsKey('annotations')
               ? (json_['annotations'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -2405,19 +2592,100 @@ class GoogleCloudRunV2ExecutionTemplate {
       };
 }
 
-/// Job represents the configuration of a single job.
-///
-/// A job an immutable resource that references a container image which is run
-/// to completion.
-class GoogleCloudRunV2Job {
-  /// KRM-style annotations for the resource.
+/// GRPCAction describes an action involving a GRPC port.
+class GoogleCloudRunV2GRPCAction {
+  /// Port number of the gRPC service.
   ///
+  /// Number must be in the range 1 to 65535. If not specified, defaults to the
+  /// exposed port of the container, which is the value of
+  /// container.ports\[0\].containerPort.
+  core.int? port;
+
+  /// Service is the name of the service to place in the gRPC HealthCheckRequest
+  /// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+  ///
+  /// If this is not specified, the default behavior is defined by gRPC.
+  core.String? service;
+
+  GoogleCloudRunV2GRPCAction({
+    this.port,
+    this.service,
+  });
+
+  GoogleCloudRunV2GRPCAction.fromJson(core.Map json_)
+      : this(
+          port: json_.containsKey('port') ? json_['port'] as core.int : null,
+          service: json_.containsKey('service')
+              ? json_['service'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (port != null) 'port': port!,
+        if (service != null) 'service': service!,
+      };
+}
+
+/// HTTPGetAction describes an action based on HTTP Get requests.
+class GoogleCloudRunV2HTTPGetAction {
+  /// Custom headers to set in the request.
+  ///
+  /// HTTP allows repeated headers.
+  core.List<GoogleCloudRunV2HTTPHeader>? httpHeaders;
+
+  /// Path to access on the HTTP server.
+  ///
+  /// Defaults to '/'.
+  core.String? path;
+
+  /// Port number to access on the container.
+  ///
+  /// Must be in the range 1 to 65535. If not specified, defaults to the exposed
+  /// port of the container, which is the value of
+  /// container.ports\[0\].containerPort.
+  core.int? port;
+
+  GoogleCloudRunV2HTTPGetAction({
+    this.httpHeaders,
+    this.path,
+    this.port,
+  });
+
+  GoogleCloudRunV2HTTPGetAction.fromJson(core.Map json_)
+      : this(
+          httpHeaders: json_.containsKey('httpHeaders')
+              ? (json_['httpHeaders'] as core.List)
+                  .map((value) => GoogleCloudRunV2HTTPHeader.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          path: json_.containsKey('path') ? json_['path'] as core.String : null,
+          port: json_.containsKey('port') ? json_['port'] as core.int : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (httpHeaders != null) 'httpHeaders': httpHeaders!,
+        if (path != null) 'path': path!,
+        if (port != null) 'port': port!,
+      };
+}
+
+/// HTTPHeader describes a custom header to be used in HTTP probes
+typedef GoogleCloudRunV2HTTPHeader = $HTTPHeader;
+
+/// Job represents the configuration of a single job, which references a
+/// container image that is run to completion.
+class GoogleCloudRunV2Job {
   /// Unstructured key value map that may be set by external tools to store and
-  /// arbitrary metadata. They are not queryable and should be preserved when
-  /// modifying objects. Cloud Run will populate some annotations using
-  /// 'run.googleapis.com' or 'serving.knative.dev' namespaces. This field
-  /// follows Kubernetes annotations' namespacing, limits, and rules. More info:
-  /// https://kubernetes.io/docs/user-guide/annotations
+  /// arbitrary metadata.
+  ///
+  /// They are not queryable and should be preserved when modifying objects.
+  /// Cloud Run API v2 does not support annotations with `run.googleapis.com`,
+  /// `cloud.googleapis.com`, `serving.knative.dev`, or
+  /// `autoscaling.knative.dev` namespaces, and they will be rejected on new
+  /// resources. All system annotations in v1 now have a corresponding field in
+  /// v2 Job. This field follows Kubernetes annotations' namespacing, limits,
+  /// and rules.
   core.Map<core.String, core.String>? annotations;
 
   /// Settings for the Binary Authorization feature.
@@ -2477,16 +2745,18 @@ class GoogleCloudRunV2Job {
   /// Output only.
   core.String? generation;
 
-  /// KRM-style labels for the resource.
+  /// Unstructured key value map that can be used to organize and categorize
+  /// objects.
   ///
   /// User-provided labels are shared with Google's billing system, so they can
   /// be used to filter, or break down billing charges by team, component,
   /// environment, state, etc. For more information, visit
   /// https://cloud.google.com/resource-manager/docs/creating-managing-labels or
-  /// https://cloud.google.com/run/docs/configuring/labels Cloud Run will
-  /// populate some labels with 'run.googleapis.com' or 'serving.knative.dev'
-  /// namespaces. Those labels are read-only, and user changes will not be
-  /// preserved.
+  /// https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2
+  /// does not support labels with `run.googleapis.com`, `cloud.googleapis.com`,
+  /// `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they
+  /// will be rejected. All system labels in v1 now have a corresponding field
+  /// in v2 Job.
   core.Map<core.String, core.String>? labels;
 
   /// Email address of the last authenticated modifier.
@@ -2503,7 +2773,11 @@ class GoogleCloudRunV2Job {
   /// [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages).
   ///
   /// Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA
-  /// is assumed.
+  /// is assumed. Set the launch stage to a preview stage on input to allow use
+  /// of preview features in that stage. On read (or output), describes whether
+  /// the resource uses preview features. For example, if ALPHA is provided as
+  /// input, but only BETA and GA-level features are used, this field will be
+  /// BETA on output.
   /// Possible string values are:
   /// - "LAUNCH_STAGE_UNSPECIFIED" : Do not use this default value.
   /// - "UNIMPLEMENTED" : The feature is not yet implemented. Users can not use
@@ -2573,6 +2847,11 @@ class GoogleCloudRunV2Job {
   /// Output only.
   core.bool? reconciling;
 
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzs;
+
   /// The template used to create executions for this Job.
   ///
   /// Required.
@@ -2617,6 +2896,7 @@ class GoogleCloudRunV2Job {
     this.name,
     this.observedGeneration,
     this.reconciling,
+    this.satisfiesPzs,
     this.template,
     this.terminalCondition,
     this.uid,
@@ -2628,9 +2908,9 @@ class GoogleCloudRunV2Job {
           annotations: json_.containsKey('annotations')
               ? (json_['annotations'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -2672,9 +2952,9 @@ class GoogleCloudRunV2Job {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -2695,6 +2975,9 @@ class GoogleCloudRunV2Job {
               : null,
           reconciling: json_.containsKey('reconciling')
               ? json_['reconciling'] as core.bool
+              : null,
+          satisfiesPzs: json_.containsKey('satisfiesPzs')
+              ? json_['satisfiesPzs'] as core.bool
               : null,
           template: json_.containsKey('template')
               ? GoogleCloudRunV2ExecutionTemplate.fromJson(
@@ -2733,6 +3016,7 @@ class GoogleCloudRunV2Job {
         if (observedGeneration != null)
           'observedGeneration': observedGeneration!,
         if (reconciling != null) 'reconciling': reconciling!,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (template != null) 'template': template!,
         if (terminalCondition != null) 'terminalCondition': terminalCondition!,
         if (uid != null) 'uid': uid!,
@@ -2910,22 +3194,123 @@ class GoogleCloudRunV2ListTasksResponse {
       };
 }
 
+/// Probe describes a health check to be performed against a container to
+/// determine whether it is alive or ready to receive traffic.
+class GoogleCloudRunV2Probe {
+  /// Minimum consecutive failures for the probe to be considered failed after
+  /// having succeeded.
+  ///
+  /// Defaults to 3. Minimum value is 1.
+  core.int? failureThreshold;
+
+  /// GRPC specifies an action involving a gRPC port.
+  ///
+  /// Exactly one of httpGet, tcpSocket, or grpc must be specified.
+  GoogleCloudRunV2GRPCAction? grpc;
+
+  /// HTTPGet specifies the http request to perform.
+  ///
+  /// Exactly one of httpGet, tcpSocket, or grpc must be specified.
+  GoogleCloudRunV2HTTPGetAction? httpGet;
+
+  /// Number of seconds after the container has started before the probe is
+  /// initiated.
+  ///
+  /// Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness
+  /// probe is 3600. Maximum value for startup probe is 240.
+  core.int? initialDelaySeconds;
+
+  /// How often (in seconds) to perform the probe.
+  ///
+  /// Default to 10 seconds. Minimum value is 1. Maximum value for liveness
+  /// probe is 3600. Maximum value for startup probe is 240. Must be greater or
+  /// equal than timeout_seconds.
+  core.int? periodSeconds;
+
+  /// TCPSocket specifies an action involving a TCP port.
+  ///
+  /// Exactly one of httpGet, tcpSocket, or grpc must be specified.
+  GoogleCloudRunV2TCPSocketAction? tcpSocket;
+
+  /// Number of seconds after which the probe times out.
+  ///
+  /// Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be
+  /// smaller than period_seconds.
+  core.int? timeoutSeconds;
+
+  GoogleCloudRunV2Probe({
+    this.failureThreshold,
+    this.grpc,
+    this.httpGet,
+    this.initialDelaySeconds,
+    this.periodSeconds,
+    this.tcpSocket,
+    this.timeoutSeconds,
+  });
+
+  GoogleCloudRunV2Probe.fromJson(core.Map json_)
+      : this(
+          failureThreshold: json_.containsKey('failureThreshold')
+              ? json_['failureThreshold'] as core.int
+              : null,
+          grpc: json_.containsKey('grpc')
+              ? GoogleCloudRunV2GRPCAction.fromJson(
+                  json_['grpc'] as core.Map<core.String, core.dynamic>)
+              : null,
+          httpGet: json_.containsKey('httpGet')
+              ? GoogleCloudRunV2HTTPGetAction.fromJson(
+                  json_['httpGet'] as core.Map<core.String, core.dynamic>)
+              : null,
+          initialDelaySeconds: json_.containsKey('initialDelaySeconds')
+              ? json_['initialDelaySeconds'] as core.int
+              : null,
+          periodSeconds: json_.containsKey('periodSeconds')
+              ? json_['periodSeconds'] as core.int
+              : null,
+          tcpSocket: json_.containsKey('tcpSocket')
+              ? GoogleCloudRunV2TCPSocketAction.fromJson(
+                  json_['tcpSocket'] as core.Map<core.String, core.dynamic>)
+              : null,
+          timeoutSeconds: json_.containsKey('timeoutSeconds')
+              ? json_['timeoutSeconds'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (failureThreshold != null) 'failureThreshold': failureThreshold!,
+        if (grpc != null) 'grpc': grpc!,
+        if (httpGet != null) 'httpGet': httpGet!,
+        if (initialDelaySeconds != null)
+          'initialDelaySeconds': initialDelaySeconds!,
+        if (periodSeconds != null) 'periodSeconds': periodSeconds!,
+        if (tcpSocket != null) 'tcpSocket': tcpSocket!,
+        if (timeoutSeconds != null) 'timeoutSeconds': timeoutSeconds!,
+      };
+}
+
 /// ResourceRequirements describes the compute resource requirements.
 class GoogleCloudRunV2ResourceRequirements {
   /// Determines whether CPU should be throttled or not outside of requests.
   core.bool? cpuIdle;
 
-  /// Only memory and CPU are supported.
+  /// Only ´memory´ and 'cpu' are supported.
   ///
-  /// Note: The only supported values for CPU are '1', '2', and '4'. Setting 4
-  /// CPU requires at least 2Gi of memory. The values of the map is string form
-  /// of the 'quantity' k8s type:
-  /// https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+  /// Notes: * The only supported values for CPU are '1', '2', '4', and '8'.
+  /// Setting 4 CPU requires at least 2Gi of memory. For more information, go to
+  /// https://cloud.google.com/run/docs/configuring/cpu. * For supported
+  /// 'memory' values and syntax, go to
+  /// https://cloud.google.com/run/docs/configuring/memory-limits
   core.Map<core.String, core.String>? limits;
+
+  /// Determines whether CPU should be boosted on startup of a new container
+  /// instance above the requested CPU threshold, this can help reduce
+  /// cold-start latency.
+  core.bool? startupCpuBoost;
 
   GoogleCloudRunV2ResourceRequirements({
     this.cpuIdle,
     this.limits,
+    this.startupCpuBoost,
   });
 
   GoogleCloudRunV2ResourceRequirements.fromJson(core.Map json_)
@@ -2935,17 +3320,21 @@ class GoogleCloudRunV2ResourceRequirements {
               : null,
           limits: json_.containsKey('limits')
               ? (json_['limits'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
+              : null,
+          startupCpuBoost: json_.containsKey('startupCpuBoost')
+              ? json_['startupCpuBoost'] as core.bool
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cpuIdle != null) 'cpuIdle': cpuIdle!,
         if (limits != null) 'limits': limits!,
+        if (startupCpuBoost != null) 'startupCpuBoost': startupCpuBoost!,
       };
 }
 
@@ -2954,7 +3343,12 @@ class GoogleCloudRunV2ResourceRequirements {
 /// A Revision references a container image. Revisions are only created by
 /// updates to its parent Service.
 class GoogleCloudRunV2Revision {
-  /// KRM-style annotations for the resource.
+  /// Unstructured key value map that may be set by external tools to store and
+  /// arbitrary metadata.
+  ///
+  /// They are not queryable and should be preserved when modifying objects.
+  ///
+  /// Output only.
   core.Map<core.String, core.String>? annotations;
 
   /// The Condition of this Revision, containing its readiness status, and
@@ -2986,6 +3380,20 @@ class GoogleCloudRunV2Revision {
   /// https://cloud.google.com/run/docs/securing/using-cmek
   core.String? encryptionKey;
 
+  /// The action to take if the encryption key is revoked.
+  /// Possible string values are:
+  /// - "ENCRYPTION_KEY_REVOCATION_ACTION_UNSPECIFIED" : Unspecified
+  /// - "PREVENT_NEW" : Prevents the creation of new instances.
+  /// - "SHUTDOWN" : Shuts down existing instances, and prevents creation of new
+  /// ones.
+  core.String? encryptionKeyRevocationAction;
+
+  /// If encryption_key_revocation_action is SHUTDOWN, the duration before
+  /// shutting down all instances.
+  ///
+  /// The minimum increment is 1 hour.
+  core.String? encryptionKeyShutdownDuration;
+
   /// A system-generated fingerprint for this version of the resource.
   ///
   /// May be used to detect modification conflict during updates.
@@ -3014,24 +3422,26 @@ class GoogleCloudRunV2Revision {
   /// Output only.
   core.String? generation;
 
-  /// KRM-style labels for the resource.
+  /// Unstructured key value map that can be used to organize and categorize
+  /// objects.
   ///
   /// User-provided labels are shared with Google's billing system, so they can
   /// be used to filter, or break down billing charges by team, component,
   /// environment, state, etc. For more information, visit
   /// https://cloud.google.com/resource-manager/docs/creating-managing-labels or
-  /// https://cloud.google.com/run/docs/configuring/labels Cloud Run will
-  /// populate some labels with 'run.googleapis.com' or 'serving.knative.dev'
-  /// namespaces. Those labels are read-only, and user changes will not be
-  /// preserved.
+  /// https://cloud.google.com/run/docs/configuring/labels.
+  ///
+  /// Output only.
   core.Map<core.String, core.String>? labels;
 
-  /// Set the launch stage to a preview stage on write to allow use of preview
-  /// features in that stage.
-  ///
-  /// On read, describes whether the resource uses preview features. Launch
-  /// Stages are defined at
+  /// The least stable launch stage needed to create this resource, as defined
+  /// by
   /// [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages).
+  ///
+  /// Cloud Run supports `ALPHA`, `BETA`, and `GA`. Note that this value might
+  /// not be what was used as input. For example, if ALPHA was provided as input
+  /// in the parent resource, but only BETA and GA-level features are were, this
+  /// field will be BETA.
   /// Possible string values are:
   /// - "LAUNCH_STAGE_UNSPECIFIED" : Do not use this default value.
   /// - "UNIMPLEMENTED" : The feature is not yet implemented. Users can not use
@@ -3096,6 +3506,11 @@ class GoogleCloudRunV2Revision {
   /// Output only.
   core.bool? reconciling;
 
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzs;
+
   /// Scaling settings for this revision.
   GoogleCloudRunV2RevisionScaling? scaling;
 
@@ -3110,6 +3525,9 @@ class GoogleCloudRunV2Revision {
   /// The service account represents the identity of the running revision, and
   /// determines what permissions the revision has.
   core.String? serviceAccount;
+
+  /// Enable session affinity.
+  core.bool? sessionAffinity;
 
   /// Max allowed time for an instance to respond to a request.
   core.String? timeout;
@@ -3143,6 +3561,8 @@ class GoogleCloudRunV2Revision {
     this.createTime,
     this.deleteTime,
     this.encryptionKey,
+    this.encryptionKeyRevocationAction,
+    this.encryptionKeyShutdownDuration,
     this.etag,
     this.executionEnvironment,
     this.expireTime,
@@ -3154,9 +3574,11 @@ class GoogleCloudRunV2Revision {
     this.name,
     this.observedGeneration,
     this.reconciling,
+    this.satisfiesPzs,
     this.scaling,
     this.service,
     this.serviceAccount,
+    this.sessionAffinity,
     this.timeout,
     this.uid,
     this.updateTime,
@@ -3169,9 +3591,9 @@ class GoogleCloudRunV2Revision {
           annotations: json_.containsKey('annotations')
               ? (json_['annotations'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -3196,6 +3618,14 @@ class GoogleCloudRunV2Revision {
           encryptionKey: json_.containsKey('encryptionKey')
               ? json_['encryptionKey'] as core.String
               : null,
+          encryptionKeyRevocationAction:
+              json_.containsKey('encryptionKeyRevocationAction')
+                  ? json_['encryptionKeyRevocationAction'] as core.String
+                  : null,
+          encryptionKeyShutdownDuration:
+              json_.containsKey('encryptionKeyShutdownDuration')
+                  ? json_['encryptionKeyShutdownDuration'] as core.String
+                  : null,
           etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
           executionEnvironment: json_.containsKey('executionEnvironment')
               ? json_['executionEnvironment'] as core.String
@@ -3208,9 +3638,9 @@ class GoogleCloudRunV2Revision {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -3231,6 +3661,9 @@ class GoogleCloudRunV2Revision {
           reconciling: json_.containsKey('reconciling')
               ? json_['reconciling'] as core.bool
               : null,
+          satisfiesPzs: json_.containsKey('satisfiesPzs')
+              ? json_['satisfiesPzs'] as core.bool
+              : null,
           scaling: json_.containsKey('scaling')
               ? GoogleCloudRunV2RevisionScaling.fromJson(
                   json_['scaling'] as core.Map<core.String, core.dynamic>)
@@ -3240,6 +3673,9 @@ class GoogleCloudRunV2Revision {
               : null,
           serviceAccount: json_.containsKey('serviceAccount')
               ? json_['serviceAccount'] as core.String
+              : null,
+          sessionAffinity: json_.containsKey('sessionAffinity')
+              ? json_['sessionAffinity'] as core.bool
               : null,
           timeout: json_.containsKey('timeout')
               ? json_['timeout'] as core.String
@@ -3267,6 +3703,10 @@ class GoogleCloudRunV2Revision {
         if (createTime != null) 'createTime': createTime!,
         if (deleteTime != null) 'deleteTime': deleteTime!,
         if (encryptionKey != null) 'encryptionKey': encryptionKey!,
+        if (encryptionKeyRevocationAction != null)
+          'encryptionKeyRevocationAction': encryptionKeyRevocationAction!,
+        if (encryptionKeyShutdownDuration != null)
+          'encryptionKeyShutdownDuration': encryptionKeyShutdownDuration!,
         if (etag != null) 'etag': etag!,
         if (executionEnvironment != null)
           'executionEnvironment': executionEnvironment!,
@@ -3281,9 +3721,11 @@ class GoogleCloudRunV2Revision {
         if (observedGeneration != null)
           'observedGeneration': observedGeneration!,
         if (reconciling != null) 'reconciling': reconciling!,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (scaling != null) 'scaling': scaling!,
         if (service != null) 'service': service!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
+        if (sessionAffinity != null) 'sessionAffinity': sessionAffinity!,
         if (timeout != null) 'timeout': timeout!,
         if (uid != null) 'uid': uid!,
         if (updateTime != null) 'updateTime': updateTime!,
@@ -3324,7 +3766,16 @@ class GoogleCloudRunV2RevisionScaling {
 /// RevisionTemplate describes the data a revision should have when created from
 /// a template.
 class GoogleCloudRunV2RevisionTemplate {
-  /// KRM-style annotations for the resource.
+  /// Unstructured key value map that may be set by external tools to store and
+  /// arbitrary metadata.
+  ///
+  /// They are not queryable and should be preserved when modifying objects.
+  /// Cloud Run API v2 does not support annotations with `run.googleapis.com`,
+  /// `cloud.googleapis.com`, `serving.knative.dev`, or
+  /// `autoscaling.knative.dev` namespaces, and they will be rejected. All
+  /// system annotations in v1 now have a corresponding field in v2
+  /// RevisionTemplate. This field follows Kubernetes annotations' namespacing,
+  /// limits, and rules.
   core.Map<core.String, core.String>? annotations;
 
   /// Holds the single container that defines the unit of execution for this
@@ -3345,7 +3796,18 @@ class GoogleCloudRunV2RevisionTemplate {
   /// - "EXECUTION_ENVIRONMENT_GEN2" : Uses Second Generation environment.
   core.String? executionEnvironment;
 
-  /// KRM-style labels for the resource.
+  /// Unstructured key value map that can be used to organize and categorize
+  /// objects.
+  ///
+  /// User-provided labels are shared with Google's billing system, so they can
+  /// be used to filter, or break down billing charges by team, component,
+  /// environment, state, etc. For more information, visit
+  /// https://cloud.google.com/resource-manager/docs/creating-managing-labels or
+  /// https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2
+  /// does not support labels with `run.googleapis.com`, `cloud.googleapis.com`,
+  /// `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they
+  /// will be rejected. All system labels in v1 now have a corresponding field
+  /// in v2 RevisionTemplate.
   core.Map<core.String, core.String>? labels;
 
   /// Sets the maximum number of requests that each serving instance can
@@ -3369,6 +3831,9 @@ class GoogleCloudRunV2RevisionTemplate {
   /// revision will use the project's default service account.
   core.String? serviceAccount;
 
+  /// Enable session affinity.
+  core.bool? sessionAffinity;
+
   /// Max allowed time for an instance to respond to a request.
   core.String? timeout;
 
@@ -3391,6 +3856,7 @@ class GoogleCloudRunV2RevisionTemplate {
     this.revision,
     this.scaling,
     this.serviceAccount,
+    this.sessionAffinity,
     this.timeout,
     this.volumes,
     this.vpcAccess,
@@ -3401,9 +3867,9 @@ class GoogleCloudRunV2RevisionTemplate {
           annotations: json_.containsKey('annotations')
               ? (json_['annotations'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -3421,9 +3887,9 @@ class GoogleCloudRunV2RevisionTemplate {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -3440,6 +3906,9 @@ class GoogleCloudRunV2RevisionTemplate {
               : null,
           serviceAccount: json_.containsKey('serviceAccount')
               ? json_['serviceAccount'] as core.String
+              : null,
+          sessionAffinity: json_.containsKey('sessionAffinity')
+              ? json_['sessionAffinity'] as core.bool
               : null,
           timeout: json_.containsKey('timeout')
               ? json_['timeout'] as core.String
@@ -3468,6 +3937,7 @@ class GoogleCloudRunV2RevisionTemplate {
         if (revision != null) 'revision': revision!,
         if (scaling != null) 'scaling': scaling!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
+        if (sessionAffinity != null) 'sessionAffinity': sessionAffinity!,
         if (timeout != null) 'timeout': timeout!,
         if (volumes != null) 'volumes': volumes!,
         if (vpcAccess != null) 'vpcAccess': vpcAccess!,
@@ -3517,7 +3987,8 @@ class GoogleCloudRunV2SecretKeySelector {
 
   /// The Cloud Secret Manager secret version.
   ///
-  /// Can be 'latest' for the latest value or an integer for a specific version.
+  /// Can be 'latest' for the latest version, an integer for a specific version,
+  /// or a version alias.
   core.String? version;
 
   GoogleCloudRunV2SecretKeySelector({
@@ -3619,10 +4090,12 @@ class GoogleCloudRunV2Service {
   /// arbitrary metadata.
   ///
   /// They are not queryable and should be preserved when modifying objects.
-  /// Cloud Run will populate some annotations using 'run.googleapis.com' or
-  /// 'serving.knative.dev' namespaces. This field follows Kubernetes
-  /// annotations' namespacing, limits, and rules. More info:
-  /// https://kubernetes.io/docs/user-guide/annotations
+  /// Cloud Run API v2 does not support annotations with `run.googleapis.com`,
+  /// `cloud.googleapis.com`, `serving.knative.dev`, or
+  /// `autoscaling.knative.dev` namespaces, and they will be rejected in new
+  /// resources. All system annotations in v1 now have a corresponding field in
+  /// v2 Service. This field follows Kubernetes annotations' namespacing,
+  /// limits, and rules.
   core.Map<core.String, core.String>? annotations;
 
   /// Settings for the Binary Authorization feature.
@@ -3652,6 +4125,14 @@ class GoogleCloudRunV2Service {
   ///
   /// Output only.
   core.String? creator;
+
+  /// One or more custom audiences that you want this service to support.
+  ///
+  /// Specify each custom audience as the full URL in a string. The custom
+  /// audiences are encoded in the token and used to authenticate requests. For
+  /// more information, see
+  /// https://cloud.google.com/run/docs/configuring/custom-audiences.
+  core.List<core.String>? customAudiences;
 
   /// The deletion time.
   ///
@@ -3697,17 +4178,18 @@ class GoogleCloudRunV2Service {
   /// Cloud Load Balancer traffic is allowed.
   core.String? ingress;
 
-  /// Map of string keys and values that can be used to organize and categorize
+  /// Unstructured key value map that can be used to organize and categorize
   /// objects.
   ///
   /// User-provided labels are shared with Google's billing system, so they can
   /// be used to filter, or break down billing charges by team, component,
   /// environment, state, etc. For more information, visit
   /// https://cloud.google.com/resource-manager/docs/creating-managing-labels or
-  /// https://cloud.google.com/run/docs/configuring/labels Cloud Run will
-  /// populate some labels with 'run.googleapis.com' or 'serving.knative.dev'
-  /// namespaces. Those labels are read-only, and user changes will not be
-  /// preserved.
+  /// https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2
+  /// does not support labels with `run.googleapis.com`, `cloud.googleapis.com`,
+  /// `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they
+  /// will be rejected. All system labels in v1 now have a corresponding field
+  /// in v2 Service.
   core.Map<core.String, core.String>? labels;
 
   /// Email address of the last authenticated modifier.
@@ -3735,7 +4217,11 @@ class GoogleCloudRunV2Service {
   /// [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages).
   ///
   /// Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA
-  /// is assumed.
+  /// is assumed. Set the launch stage to a preview stage on input to allow use
+  /// of preview features in that stage. On read (or output), describes whether
+  /// the resource uses preview features. For example, if ALPHA is provided as
+  /// input, but only BETA and GA-level features are used, this field will be
+  /// BETA on output.
   /// Possible string values are:
   /// - "LAUNCH_STAGE_UNSPECIFIED" : Do not use this default value.
   /// - "UNIMPLEMENTED" : The feature is not yet implemented. Users can not use
@@ -3810,6 +4296,11 @@ class GoogleCloudRunV2Service {
   /// Output only.
   core.bool? reconciling;
 
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzs;
+
   /// The template used to create revisions for this Service.
   ///
   /// Required.
@@ -3865,6 +4356,7 @@ class GoogleCloudRunV2Service {
     this.conditions,
     this.createTime,
     this.creator,
+    this.customAudiences,
     this.deleteTime,
     this.description,
     this.etag,
@@ -3879,6 +4371,7 @@ class GoogleCloudRunV2Service {
     this.name,
     this.observedGeneration,
     this.reconciling,
+    this.satisfiesPzs,
     this.template,
     this.terminalCondition,
     this.traffic,
@@ -3893,9 +4386,9 @@ class GoogleCloudRunV2Service {
           annotations: json_.containsKey('annotations')
               ? (json_['annotations'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -3922,6 +4415,11 @@ class GoogleCloudRunV2Service {
           creator: json_.containsKey('creator')
               ? json_['creator'] as core.String
               : null,
+          customAudiences: json_.containsKey('customAudiences')
+              ? (json_['customAudiences'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           deleteTime: json_.containsKey('deleteTime')
               ? json_['deleteTime'] as core.String
               : null,
@@ -3940,9 +4438,9 @@ class GoogleCloudRunV2Service {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -3964,6 +4462,9 @@ class GoogleCloudRunV2Service {
               : null,
           reconciling: json_.containsKey('reconciling')
               ? json_['reconciling'] as core.bool
+              : null,
+          satisfiesPzs: json_.containsKey('satisfiesPzs')
+              ? json_['satisfiesPzs'] as core.bool
               : null,
           template: json_.containsKey('template')
               ? GoogleCloudRunV2RevisionTemplate.fromJson(
@@ -4001,6 +4502,7 @@ class GoogleCloudRunV2Service {
         if (conditions != null) 'conditions': conditions!,
         if (createTime != null) 'createTime': createTime!,
         if (creator != null) 'creator': creator!,
+        if (customAudiences != null) 'customAudiences': customAudiences!,
         if (deleteTime != null) 'deleteTime': deleteTime!,
         if (description != null) 'description': description!,
         if (etag != null) 'etag': etag!,
@@ -4018,6 +4520,7 @@ class GoogleCloudRunV2Service {
         if (observedGeneration != null)
           'observedGeneration': observedGeneration!,
         if (reconciling != null) 'reconciling': reconciling!,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (template != null) 'template': template!,
         if (terminalCondition != null) 'terminalCondition': terminalCondition!,
         if (traffic != null) 'traffic': traffic!,
@@ -4028,9 +4531,37 @@ class GoogleCloudRunV2Service {
       };
 }
 
+/// TCPSocketAction describes an action based on opening a socket
+class GoogleCloudRunV2TCPSocketAction {
+  /// Port number to access on the container.
+  ///
+  /// Must be in the range 1 to 65535. If not specified, defaults to the exposed
+  /// port of the container, which is the value of
+  /// container.ports\[0\].containerPort.
+  core.int? port;
+
+  GoogleCloudRunV2TCPSocketAction({
+    this.port,
+  });
+
+  GoogleCloudRunV2TCPSocketAction.fromJson(core.Map json_)
+      : this(
+          port: json_.containsKey('port') ? json_['port'] as core.int : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (port != null) 'port': port!,
+      };
+}
+
 /// Task represents a single run of a container to completion.
 class GoogleCloudRunV2Task {
-  /// KRM-style annotations for the resource.
+  /// Unstructured key value map that may be set by external tools to store and
+  /// arbitrary metadata.
+  ///
+  /// They are not queryable and should be preserved when modifying objects.
+  ///
+  /// Output only.
   core.Map<core.String, core.String>? annotations;
 
   /// Represents time when the Task was completed.
@@ -4118,16 +4649,16 @@ class GoogleCloudRunV2Task {
   /// Output only.
   core.String? job;
 
-  /// KRM-style labels for the resource.
+  /// Unstructured key value map that can be used to organize and categorize
+  /// objects.
   ///
   /// User-provided labels are shared with Google's billing system, so they can
   /// be used to filter, or break down billing charges by team, component,
   /// environment, state, etc. For more information, visit
   /// https://cloud.google.com/resource-manager/docs/creating-managing-labels or
-  /// https://cloud.google.com/run/docs/configuring/labels Cloud Run will
-  /// populate some labels with 'run.googleapis.com' or 'serving.knative.dev'
-  /// namespaces. Those labels are read-only, and user changes will not be
-  /// preserved.
+  /// https://cloud.google.com/run/docs/configuring/labels
+  ///
+  /// Output only.
   core.Map<core.String, core.String>? labels;
 
   /// Result of the last attempt of this Task.
@@ -4135,45 +4666,10 @@ class GoogleCloudRunV2Task {
   /// Output only.
   GoogleCloudRunV2TaskAttemptResult? lastAttemptResult;
 
-  /// Set the launch stage to a preview stage on write to allow use of preview
-  /// features in that stage.
+  /// URI where logs for this execution can be found in Cloud Console.
   ///
-  /// On read, describes whether the resource uses preview features. Launch
-  /// Stages are defined at
-  /// [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages).
-  /// Possible string values are:
-  /// - "LAUNCH_STAGE_UNSPECIFIED" : Do not use this default value.
-  /// - "UNIMPLEMENTED" : The feature is not yet implemented. Users can not use
-  /// it.
-  /// - "PRELAUNCH" : Prelaunch features are hidden from users and are only
-  /// visible internally.
-  /// - "EARLY_ACCESS" : Early Access features are limited to a closed group of
-  /// testers. To use these features, you must sign up in advance and sign a
-  /// Trusted Tester agreement (which includes confidentiality provisions).
-  /// These features may be unstable, changed in backward-incompatible ways, and
-  /// are not guaranteed to be released.
-  /// - "ALPHA" : Alpha is a limited availability test for releases before they
-  /// are cleared for widespread use. By Alpha, all significant design issues
-  /// are resolved and we are in the process of verifying functionality. Alpha
-  /// customers need to apply for access, agree to applicable terms, and have
-  /// their projects allowlisted. Alpha releases don't have to be feature
-  /// complete, no SLAs are provided, and there are no technical support
-  /// obligations, but they will be far enough along that customers can actually
-  /// use them in test environments or for limited-use tests -- just like they
-  /// would in normal production cases.
-  /// - "BETA" : Beta is the point at which we are ready to open a release for
-  /// any customer to use. There are no SLA or technical support obligations in
-  /// a Beta release. Products will be complete from a feature perspective, but
-  /// may have some open outstanding issues. Beta releases are suitable for
-  /// limited production use cases.
-  /// - "GA" : GA features are open to all developers and are considered stable
-  /// and fully qualified for production use.
-  /// - "DEPRECATED" : Deprecated features are scheduled to be shut down and
-  /// removed. For more information, see the "Deprecation Policy" section of our
-  /// [Terms of Service](https://cloud.google.com/terms/) and the
-  /// [Google Cloud Platform Subject to the Deprecation Policy](https://cloud.google.com/terms/deprecation)
-  /// documentation.
-  core.String? launchStage;
+  /// Output only.
+  core.String? logUri;
 
   /// Number of retries allowed per Task, before marking this Task failed.
   core.int? maxRetries;
@@ -4205,6 +4701,11 @@ class GoogleCloudRunV2Task {
   ///
   /// Output only.
   core.int? retried;
+
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzs;
 
   /// Email address of the IAM service account associated with the Task of a
   /// Job.
@@ -4270,12 +4771,13 @@ class GoogleCloudRunV2Task {
     this.job,
     this.labels,
     this.lastAttemptResult,
-    this.launchStage,
+    this.logUri,
     this.maxRetries,
     this.name,
     this.observedGeneration,
     this.reconciling,
     this.retried,
+    this.satisfiesPzs,
     this.serviceAccount,
     this.startTime,
     this.timeout,
@@ -4290,9 +4792,9 @@ class GoogleCloudRunV2Task {
           annotations: json_.containsKey('annotations')
               ? (json_['annotations'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -4337,9 +4839,9 @@ class GoogleCloudRunV2Task {
           job: json_.containsKey('job') ? json_['job'] as core.String : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -4348,8 +4850,8 @@ class GoogleCloudRunV2Task {
                   json_['lastAttemptResult']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          launchStage: json_.containsKey('launchStage')
-              ? json_['launchStage'] as core.String
+          logUri: json_.containsKey('logUri')
+              ? json_['logUri'] as core.String
               : null,
           maxRetries: json_.containsKey('maxRetries')
               ? json_['maxRetries'] as core.int
@@ -4363,6 +4865,9 @@ class GoogleCloudRunV2Task {
               : null,
           retried: json_.containsKey('retried')
               ? json_['retried'] as core.int
+              : null,
+          satisfiesPzs: json_.containsKey('satisfiesPzs')
+              ? json_['satisfiesPzs'] as core.bool
               : null,
           serviceAccount: json_.containsKey('serviceAccount')
               ? json_['serviceAccount'] as core.String
@@ -4407,13 +4912,14 @@ class GoogleCloudRunV2Task {
         if (job != null) 'job': job!,
         if (labels != null) 'labels': labels!,
         if (lastAttemptResult != null) 'lastAttemptResult': lastAttemptResult!,
-        if (launchStage != null) 'launchStage': launchStage!,
+        if (logUri != null) 'logUri': logUri!,
         if (maxRetries != null) 'maxRetries': maxRetries!,
         if (name != null) 'name': name!,
         if (observedGeneration != null)
           'observedGeneration': observedGeneration!,
         if (reconciling != null) 'reconciling': reconciling!,
         if (retried != null) 'retried': retried!,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
         if (startTime != null) 'startTime': startTime!,
         if (timeout != null) 'timeout': timeout!,
@@ -4485,6 +4991,8 @@ class GoogleCloudRunV2TaskTemplate {
   core.String? executionEnvironment;
 
   /// Number of retries allowed per Task, before marking this Task failed.
+  ///
+  /// Defaults to 3.
   core.int? maxRetries;
 
   /// Email address of the IAM service account associated with the Task of a
@@ -4499,7 +5007,7 @@ class GoogleCloudRunV2TaskTemplate {
   /// actively try to mark it failed and kill associated containers.
   ///
   /// This applies per attempt of a task, meaning each retry can run for the
-  /// full timeout.
+  /// full timeout. Defaults to 600 seconds.
   core.String? timeout;
 
   /// A list of Volumes to make available to containers.
@@ -4703,7 +5211,8 @@ class GoogleCloudRunV2VersionToPath {
 
   /// The Cloud Secret Manager secret version.
   ///
-  /// Can be 'latest' for the latest value or an integer for a specific version.
+  /// Can be 'latest' for the latest value, or an integer or a secret alias for
+  /// a specific version.
   core.String? version;
 
   GoogleCloudRunV2VersionToPath({
@@ -4737,18 +5246,20 @@ class GoogleCloudRunV2Volume {
   /// information on how to connect Cloud SQL and Cloud Run.
   GoogleCloudRunV2CloudSqlInstance? cloudSqlInstance;
 
+  /// Ephemeral storage used as a shared volume.
+  GoogleCloudRunV2EmptyDirVolumeSource? emptyDir;
+
   /// Volume's name.
   ///
   /// Required.
   core.String? name;
 
   /// Secret represents a secret that should populate this volume.
-  ///
-  /// More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
   GoogleCloudRunV2SecretVolumeSource? secret;
 
   GoogleCloudRunV2Volume({
     this.cloudSqlInstance,
+    this.emptyDir,
     this.name,
     this.secret,
   });
@@ -4760,6 +5271,10 @@ class GoogleCloudRunV2Volume {
                   json_['cloudSqlInstance']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          emptyDir: json_.containsKey('emptyDir')
+              ? GoogleCloudRunV2EmptyDirVolumeSource.fromJson(
+                  json_['emptyDir'] as core.Map<core.String, core.dynamic>)
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           secret: json_.containsKey('secret')
               ? GoogleCloudRunV2SecretVolumeSource.fromJson(
@@ -4769,6 +5284,7 @@ class GoogleCloudRunV2Volume {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cloudSqlInstance != null) 'cloudSqlInstance': cloudSqlInstance!,
+        if (emptyDir != null) 'emptyDir': emptyDir!,
         if (name != null) 'name': name!,
         if (secret != null) 'secret': secret!,
       };
@@ -4819,10 +5335,13 @@ class GoogleCloudRunV2VolumeMount {
 class GoogleCloudRunV2VpcAccess {
   /// VPC Access connector name.
   ///
-  /// Format: projects/{project}/locations/{location}/connectors/{connector}
+  /// Format: projects/{project}/locations/{location}/connectors/{connector},
+  /// where {project} can be project id or number.
   core.String? connector;
 
   /// Traffic VPC egress settings.
+  ///
+  /// If not provided, it defaults to PRIVATE_RANGES_ONLY.
   /// Possible string values are:
   /// - "VPC_EGRESS_UNSPECIFIED" : Unspecified
   /// - "ALL_TRAFFIC" : All outbound traffic is routed through the VPC
@@ -4941,7 +5460,9 @@ class GoogleIamV1Binding {
   /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
   /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
-  /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
+  /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
+  /// (primary) that represents all the users of that domain. For example,
+  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
   /// An email address (plus unique identifier) representing a user that has
   /// been recently deleted. For example,
   /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
@@ -4957,9 +5478,7 @@ class GoogleIamV1Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
-  /// that represents all the users of that domain. For example, `google.com` or
-  /// `example.com`.
+  /// the role in the binding.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
@@ -5265,6 +5784,9 @@ class GoogleLongrunningOperation {
         if (response != null) 'response': response!,
       };
 }
+
+/// The request message for Operations.WaitOperation.
+typedef GoogleLongrunningWaitOperationRequest = $WaitOperationRequest;
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.

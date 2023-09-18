@@ -2,17 +2,16 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
-/// Stackdriver Profiler API - v2
+/// Cloud Profiler API - v2
 ///
 /// Manages continuous profiling information.
 ///
@@ -22,7 +21,7 @@
 ///
 /// - [ProjectsResource]
 ///   - [ProjectsProfilesResource]
-library cloudprofiler.v2;
+library cloudprofiler_v2;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -229,13 +228,9 @@ class ProjectsProfilesResource {
 /// profile of one of these types needs to be collected.
 class CreateProfileRequest {
   /// Deployment details.
-  ///
-  /// Required.
   Deployment? deployment;
 
   /// One or more profile types that the agent is capable of providing.
-  ///
-  /// Required.
   core.List<core.String>? profileType;
 
   CreateProfileRequest({
@@ -300,9 +295,9 @@ class Deployment {
       : this(
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -401,9 +396,9 @@ class Profile {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,

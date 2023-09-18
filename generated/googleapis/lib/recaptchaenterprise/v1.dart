@@ -2,17 +2,19 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// reCAPTCHA Enterprise API - v1
+///
+/// Help protect your website from fraudulent activity, spam, and abuse without
+/// creating friction.
 ///
 /// For more information, see <https://cloud.google.com/recaptcha-enterprise/>
 ///
@@ -20,11 +22,12 @@
 ///
 /// - [ProjectsResource]
 ///   - [ProjectsAssessmentsResource]
+///   - [ProjectsFirewallpoliciesResource]
 ///   - [ProjectsKeysResource]
 ///   - [ProjectsRelatedaccountgroupmembershipsResource]
 ///   - [ProjectsRelatedaccountgroupsResource]
 ///     - [ProjectsRelatedaccountgroupsMembershipsResource]
-library recaptchaenterprise.v1;
+library recaptchaenterprise_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -33,13 +36,14 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
+/// Help protect your website from fraudulent activity, spam, and abuse without
+/// creating friction.
 class RecaptchaEnterpriseApi {
   /// See, edit, configure, and delete your Google Cloud data and see the email
   /// address for your Google Account.
@@ -62,6 +66,8 @@ class ProjectsResource {
 
   ProjectsAssessmentsResource get assessments =>
       ProjectsAssessmentsResource(_requester);
+  ProjectsFirewallpoliciesResource get firewallpolicies =>
+      ProjectsFirewallpoliciesResource(_requester);
   ProjectsKeysResource get keys => ProjectsKeysResource(_requester);
   ProjectsRelatedaccountgroupmembershipsResource
       get relatedaccountgroupmemberships =>
@@ -162,6 +168,228 @@ class ProjectsAssessmentsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRecaptchaenterpriseV1Assessment.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsFirewallpoliciesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsFirewallpoliciesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new FirewallPolicy, specifying conditions at which reCAPTCHA
+  /// Enterprise actions can be executed.
+  ///
+  /// A project may have a maximum of 1000 policies.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the project this policy will apply to, in
+  /// the format "projects/{project}".
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRecaptchaenterpriseV1FirewallPolicy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRecaptchaenterpriseV1FirewallPolicy> create(
+    GoogleCloudRecaptchaenterpriseV1FirewallPolicy request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/firewallpolicies';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudRecaptchaenterpriseV1FirewallPolicy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes the specified firewall policy.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the policy to be deleted, in the format
+  /// "projects/{project}/firewallpolicies/{firewallpolicy}".
+  /// Value must have pattern `^projects/\[^/\]+/firewallpolicies/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the specified firewall policy.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the requested policy, in the format
+  /// "projects/{project}/firewallpolicies/{firewallpolicy}".
+  /// Value must have pattern `^projects/\[^/\]+/firewallpolicies/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRecaptchaenterpriseV1FirewallPolicy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRecaptchaenterpriseV1FirewallPolicy> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudRecaptchaenterpriseV1FirewallPolicy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the list of all firewall policies that belong to a project.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the project to list the policies for, in
+  /// the format "projects/{project}".
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of policies to return. Default
+  /// is 10. Max limit is 1000.
+  ///
+  /// [pageToken] - Optional. The next_page_token value returned from a
+  /// previous. ListFirewallPoliciesRequest, if any.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse>
+      list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/firewallpolicies';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the specified firewall policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name for the FirewallPolicy in the format
+  /// "projects/{project}/firewallpolicies/{firewallpolicy}".
+  /// Value must have pattern `^projects/\[^/\]+/firewallpolicies/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. The mask to control which fields of the policy
+  /// get updated. If the mask is not present, all fields will be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRecaptchaenterpriseV1FirewallPolicy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRecaptchaenterpriseV1FirewallPolicy> patch(
+    GoogleCloudRecaptchaenterpriseV1FirewallPolicy request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudRecaptchaenterpriseV1FirewallPolicy.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -377,8 +605,8 @@ class ProjectsKeysResource {
   ///
   /// Once a key is migrated, it can be used from either product. SiteVerify
   /// requests are billed as CreateAssessment calls. You must be authenticated
-  /// as one of the current owners of the reCAPTCHA Site Key, and your user must
-  /// have the reCAPTCHA Enterprise Admin IAM role in the destination project.
+  /// as one of the current owners of the reCAPTCHA Key, and your user must have
+  /// the reCAPTCHA Enterprise Admin IAM role in the destination project.
   ///
   /// [request] - The metadata request object.
   ///
@@ -718,6 +946,92 @@ class GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment {
       };
 }
 
+/// Information about account verification, used for identity verification.
+class GoogleCloudRecaptchaenterpriseV1AccountVerificationInfo {
+  /// Endpoints that can be used for identity verification.
+  core.List<GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfo>?
+      endpoints;
+
+  /// Language code preference for the verification message, set as a IETF BCP
+  /// 47 language code.
+  core.String? languageCode;
+
+  /// Result of the latest account verification challenge.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "RESULT_UNSPECIFIED" : No information about the latest account
+  /// verification.
+  /// - "SUCCESS_USER_VERIFIED" : The user was successfully verified. This means
+  /// the account verification challenge was successfully completed.
+  /// - "ERROR_USER_NOT_VERIFIED" : The user failed the verification challenge.
+  /// - "ERROR_SITE_ONBOARDING_INCOMPLETE" : The site is not properly onboarded
+  /// to use the account verification feature.
+  /// - "ERROR_RECIPIENT_NOT_ALLOWED" : The recipient is not allowed for account
+  /// verification. This can occur during integration but should not occur in
+  /// production.
+  /// - "ERROR_RECIPIENT_ABUSE_LIMIT_EXHAUSTED" : The recipient has already been
+  /// sent too many verification codes in a short amount of time.
+  /// - "ERROR_CRITICAL_INTERNAL" : The verification flow could not be completed
+  /// due to a critical internal error.
+  /// - "ERROR_CUSTOMER_QUOTA_EXHAUSTED" : The client has exceeded their two
+  /// factor request quota for this period of time.
+  /// - "ERROR_VERIFICATION_BYPASSED" : The request cannot be processed at the
+  /// time because of an incident. This bypass can be restricted to a
+  /// problematic destination email domain, a customer, or could affect the
+  /// entire service.
+  /// - "ERROR_VERDICT_MISMATCH" : The request parameters do not match with the
+  /// token provided and cannot be processed.
+  core.String? latestVerificationResult;
+
+  /// Username of the account that is being verified.
+  ///
+  /// Deprecated. Customers should now provide the hashed account ID field in
+  /// Event.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.String? username;
+
+  GoogleCloudRecaptchaenterpriseV1AccountVerificationInfo({
+    this.endpoints,
+    this.languageCode,
+    this.latestVerificationResult,
+    this.username,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1AccountVerificationInfo.fromJson(
+      core.Map json_)
+      : this(
+          endpoints: json_.containsKey('endpoints')
+              ? (json_['endpoints'] as core.List)
+                  .map((value) =>
+                      GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfo
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          languageCode: json_.containsKey('languageCode')
+              ? json_['languageCode'] as core.String
+              : null,
+          latestVerificationResult:
+              json_.containsKey('latestVerificationResult')
+                  ? json_['latestVerificationResult'] as core.String
+                  : null,
+          username: json_.containsKey('username')
+              ? json_['username'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endpoints != null) 'endpoints': endpoints!,
+        if (languageCode != null) 'languageCode': languageCode!,
+        if (latestVerificationResult != null)
+          'latestVerificationResult': latestVerificationResult!,
+        if (username != null) 'username': username!,
+      };
+}
+
 /// Settings specific to keys that can be used by Android apps.
 class GoogleCloudRecaptchaenterpriseV1AndroidKeySettings {
   /// If set to true, allowed_package_names are not enforced.
@@ -728,9 +1042,14 @@ class GoogleCloudRecaptchaenterpriseV1AndroidKeySettings {
   /// Example: 'com.companyname.appname'
   core.List<core.String>? allowedPackageNames;
 
+  /// Set to true for keys that are used in an Android application that is
+  /// available for download in app stores in addition to the Google Play Store.
+  core.bool? supportNonGoogleAppStoreDistribution;
+
   GoogleCloudRecaptchaenterpriseV1AndroidKeySettings({
     this.allowAllPackageNames,
     this.allowedPackageNames,
+    this.supportNonGoogleAppStoreDistribution,
   });
 
   GoogleCloudRecaptchaenterpriseV1AndroidKeySettings.fromJson(core.Map json_)
@@ -743,6 +1062,10 @@ class GoogleCloudRecaptchaenterpriseV1AndroidKeySettings {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          supportNonGoogleAppStoreDistribution:
+              json_.containsKey('supportNonGoogleAppStoreDistribution')
+                  ? json_['supportNonGoogleAppStoreDistribution'] as core.bool
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -750,6 +1073,9 @@ class GoogleCloudRecaptchaenterpriseV1AndroidKeySettings {
           'allowAllPackageNames': allowAllPackageNames!,
         if (allowedPackageNames != null)
           'allowedPackageNames': allowedPackageNames!,
+        if (supportNonGoogleAppStoreDistribution != null)
+          'supportNonGoogleAppStoreDistribution':
+              supportNonGoogleAppStoreDistribution!,
       };
 }
 
@@ -798,10 +1124,17 @@ class GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest {
   /// Optional.
   core.List<core.String>? reasons;
 
+  /// If the assessment is part of a payment transaction, provide details on
+  /// payment lifecycle events that occur in the transaction.
+  ///
+  /// Optional.
+  GoogleCloudRecaptchaenterpriseV1TransactionEvent? transactionEvent;
+
   GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest({
     this.annotation,
     this.hashedAccountId,
     this.reasons,
+    this.transactionEvent,
   });
 
   GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest.fromJson(
@@ -818,27 +1151,96 @@ class GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          transactionEvent: json_.containsKey('transactionEvent')
+              ? GoogleCloudRecaptchaenterpriseV1TransactionEvent.fromJson(
+                  json_['transactionEvent']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (annotation != null) 'annotation': annotation!,
         if (hashedAccountId != null) 'hashedAccountId': hashedAccountId!,
         if (reasons != null) 'reasons': reasons!,
+        if (transactionEvent != null) 'transactionEvent': transactionEvent!,
       };
 }
 
 /// Empty response for AnnotateAssessment.
 typedef GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentResponse = $Empty;
 
-/// A recaptcha assessment resource.
+/// Contains fields that are required to perform Apple-specific integrity
+/// checks.
+class GoogleCloudRecaptchaenterpriseV1AppleDeveloperId {
+  /// The Apple developer key ID (10-character string).
+  ///
+  /// Required.
+  core.String? keyId;
+
+  /// Input only.
+  ///
+  /// A private key (downloaded as a text file with a .p8 file extension)
+  /// generated for your Apple Developer account. Ensure that Apple DeviceCheck
+  /// is enabled for the private key.
+  ///
+  /// Required.
+  core.String? privateKey;
+
+  /// The Apple team ID (10-character string) owning the provisioning profile
+  /// used to build your application.
+  ///
+  /// Required.
+  core.String? teamId;
+
+  GoogleCloudRecaptchaenterpriseV1AppleDeveloperId({
+    this.keyId,
+    this.privateKey,
+    this.teamId,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1AppleDeveloperId.fromJson(core.Map json_)
+      : this(
+          keyId:
+              json_.containsKey('keyId') ? json_['keyId'] as core.String : null,
+          privateKey: json_.containsKey('privateKey')
+              ? json_['privateKey'] as core.String
+              : null,
+          teamId: json_.containsKey('teamId')
+              ? json_['teamId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (keyId != null) 'keyId': keyId!,
+        if (privateKey != null) 'privateKey': privateKey!,
+        if (teamId != null) 'teamId': teamId!,
+      };
+}
+
+/// A reCAPTCHA Enterprise assessment resource.
 class GoogleCloudRecaptchaenterpriseV1Assessment {
   /// Assessment returned by account defender when a hashed_account_id is
   /// provided.
   GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessment?
       accountDefenderAssessment;
 
+  /// Account verification information for identity verification.
+  ///
+  /// The assessment event must include a token and site key to use this
+  /// feature.
+  GoogleCloudRecaptchaenterpriseV1AccountVerificationInfo? accountVerification;
+
   /// The event being assessed.
   GoogleCloudRecaptchaenterpriseV1Event? event;
+
+  /// Assessment returned when firewall policies belonging to the project are
+  /// evaluated using the field firewall_policy_evaluation.
+  GoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment?
+      firewallPolicyAssessment;
+
+  /// Assessment returned by Fraud Prevention when TransactionData is provided.
+  GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment?
+      fraudPreventionAssessment;
 
   /// The resource name for the Assessment in the format
   /// "projects/{project}/assessments/{assessment}".
@@ -863,7 +1265,10 @@ class GoogleCloudRecaptchaenterpriseV1Assessment {
 
   GoogleCloudRecaptchaenterpriseV1Assessment({
     this.accountDefenderAssessment,
+    this.accountVerification,
     this.event,
+    this.firewallPolicyAssessment,
+    this.fraudPreventionAssessment,
     this.name,
     this.privatePasswordLeakVerification,
     this.riskAnalysis,
@@ -878,10 +1283,27 @@ class GoogleCloudRecaptchaenterpriseV1Assessment {
                       .fromJson(json_['accountDefenderAssessment']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          accountVerification: json_.containsKey('accountVerification')
+              ? GoogleCloudRecaptchaenterpriseV1AccountVerificationInfo
+                  .fromJson(json_['accountVerification']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           event: json_.containsKey('event')
               ? GoogleCloudRecaptchaenterpriseV1Event.fromJson(
                   json_['event'] as core.Map<core.String, core.dynamic>)
               : null,
+          firewallPolicyAssessment:
+              json_.containsKey('firewallPolicyAssessment')
+                  ? GoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment
+                      .fromJson(json_['firewallPolicyAssessment']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          fraudPreventionAssessment:
+              json_.containsKey('fraudPreventionAssessment')
+                  ? GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment
+                      .fromJson(json_['fraudPreventionAssessment']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           privatePasswordLeakVerification: json_
                   .containsKey('privatePasswordLeakVerification')
@@ -903,7 +1325,13 @@ class GoogleCloudRecaptchaenterpriseV1Assessment {
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountDefenderAssessment != null)
           'accountDefenderAssessment': accountDefenderAssessment!,
+        if (accountVerification != null)
+          'accountVerification': accountVerification!,
         if (event != null) 'event': event!,
+        if (firewallPolicyAssessment != null)
+          'firewallPolicyAssessment': firewallPolicyAssessment!,
+        if (fraudPreventionAssessment != null)
+          'fraudPreventionAssessment': fraudPreventionAssessment!,
         if (name != null) 'name': name!,
         if (privatePasswordLeakVerification != null)
           'privatePasswordLeakVerification': privatePasswordLeakVerification!,
@@ -963,6 +1391,62 @@ class GoogleCloudRecaptchaenterpriseV1ChallengeMetrics {
       };
 }
 
+/// Information about a verification endpoint that can be used for 2FA.
+class GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfo {
+  /// Email address for which to trigger a verification request.
+  core.String? emailAddress;
+
+  /// Timestamp of the last successful verification for the endpoint, if any.
+  ///
+  /// Output only.
+  core.String? lastVerificationTime;
+
+  /// Phone number for which to trigger a verification request.
+  ///
+  /// Should be given in E.164 format.
+  core.String? phoneNumber;
+
+  /// Token to provide to the client to trigger endpoint verification.
+  ///
+  /// It must be used within 15 minutes.
+  ///
+  /// Output only.
+  core.String? requestToken;
+
+  GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfo({
+    this.emailAddress,
+    this.lastVerificationTime,
+    this.phoneNumber,
+    this.requestToken,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfo.fromJson(
+      core.Map json_)
+      : this(
+          emailAddress: json_.containsKey('emailAddress')
+              ? json_['emailAddress'] as core.String
+              : null,
+          lastVerificationTime: json_.containsKey('lastVerificationTime')
+              ? json_['lastVerificationTime'] as core.String
+              : null,
+          phoneNumber: json_.containsKey('phoneNumber')
+              ? json_['phoneNumber'] as core.String
+              : null,
+          requestToken: json_.containsKey('requestToken')
+              ? json_['requestToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (emailAddress != null) 'emailAddress': emailAddress!,
+        if (lastVerificationTime != null)
+          'lastVerificationTime': lastVerificationTime!,
+        if (phoneNumber != null) 'phoneNumber': phoneNumber!,
+        if (requestToken != null) 'requestToken': requestToken!,
+      };
+}
+
+/// The event being assessed.
 class GoogleCloudRecaptchaenterpriseV1Event {
   /// The expected action for this type of event.
   ///
@@ -971,6 +1455,22 @@ class GoogleCloudRecaptchaenterpriseV1Event {
   ///
   /// Optional.
   core.String? expectedAction;
+
+  /// Flag for a reCAPTCHA express request for an assessment without a token.
+  ///
+  /// If enabled, `site_key` must reference a SCORE key with WAF feature set to
+  /// EXPRESS.
+  ///
+  /// Optional.
+  core.bool? express;
+
+  /// Flag for enabling firewall policy config assessment.
+  ///
+  /// If this flag is enabled, the firewall policy will be evaluated and a
+  /// suggested firewall action will be returned in the response.
+  ///
+  /// Optional.
+  core.bool? firewallPolicyEvaluation;
 
   /// Unique stable hashed user identifier for the request.
   ///
@@ -986,17 +1486,40 @@ class GoogleCloudRecaptchaenterpriseV1Event {
         convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// The site key that was used to invoke reCAPTCHA on your site and generate
-  /// the token.
+  /// HTTP header information about the request.
+  ///
+  /// Optional.
+  core.List<core.String>? headers;
+
+  /// Optional JA3 fingerprint for SSL clients.
+  ///
+  /// Optional.
+  core.String? ja3;
+
+  /// The URI resource the user requested that triggered an assessment.
+  ///
+  /// Optional.
+  core.String? requestedUri;
+
+  /// The site key that was used to invoke reCAPTCHA Enterprise on your site and
+  /// generate the token.
   ///
   /// Optional.
   core.String? siteKey;
 
-  /// The user response token provided by the reCAPTCHA client-side integration
-  /// on your site.
+  /// The user response token provided by the reCAPTCHA Enterprise client-side
+  /// integration on your site.
   ///
   /// Optional.
   core.String? token;
+
+  /// Data describing a payment transaction to be assessed.
+  ///
+  /// Sending this data enables reCAPTCHA Enterprise Fraud Prevention and the
+  /// FraudPreventionAssessment component in the response.
+  ///
+  /// Optional.
+  GoogleCloudRecaptchaenterpriseV1TransactionData? transactionData;
 
   /// The user agent present in the request from the user's device related to
   /// this event.
@@ -1010,13 +1533,28 @@ class GoogleCloudRecaptchaenterpriseV1Event {
   /// Optional.
   core.String? userIpAddress;
 
+  /// Flag for running WAF token assessment.
+  ///
+  /// If enabled, the token must be specified, and have been created by a
+  /// WAF-enabled key.
+  ///
+  /// Optional.
+  core.bool? wafTokenAssessment;
+
   GoogleCloudRecaptchaenterpriseV1Event({
     this.expectedAction,
+    this.express,
+    this.firewallPolicyEvaluation,
     this.hashedAccountId,
+    this.headers,
+    this.ja3,
+    this.requestedUri,
     this.siteKey,
     this.token,
+    this.transactionData,
     this.userAgent,
     this.userIpAddress,
+    this.wafTokenAssessment,
   });
 
   GoogleCloudRecaptchaenterpriseV1Event.fromJson(core.Map json_)
@@ -1024,29 +1562,450 @@ class GoogleCloudRecaptchaenterpriseV1Event {
           expectedAction: json_.containsKey('expectedAction')
               ? json_['expectedAction'] as core.String
               : null,
+          express: json_.containsKey('express')
+              ? json_['express'] as core.bool
+              : null,
+          firewallPolicyEvaluation:
+              json_.containsKey('firewallPolicyEvaluation')
+                  ? json_['firewallPolicyEvaluation'] as core.bool
+                  : null,
           hashedAccountId: json_.containsKey('hashedAccountId')
               ? json_['hashedAccountId'] as core.String
+              : null,
+          headers: json_.containsKey('headers')
+              ? (json_['headers'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          ja3: json_.containsKey('ja3') ? json_['ja3'] as core.String : null,
+          requestedUri: json_.containsKey('requestedUri')
+              ? json_['requestedUri'] as core.String
               : null,
           siteKey: json_.containsKey('siteKey')
               ? json_['siteKey'] as core.String
               : null,
           token:
               json_.containsKey('token') ? json_['token'] as core.String : null,
+          transactionData: json_.containsKey('transactionData')
+              ? GoogleCloudRecaptchaenterpriseV1TransactionData.fromJson(
+                  json_['transactionData']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           userAgent: json_.containsKey('userAgent')
               ? json_['userAgent'] as core.String
               : null,
           userIpAddress: json_.containsKey('userIpAddress')
               ? json_['userIpAddress'] as core.String
               : null,
+          wafTokenAssessment: json_.containsKey('wafTokenAssessment')
+              ? json_['wafTokenAssessment'] as core.bool
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (expectedAction != null) 'expectedAction': expectedAction!,
+        if (express != null) 'express': express!,
+        if (firewallPolicyEvaluation != null)
+          'firewallPolicyEvaluation': firewallPolicyEvaluation!,
         if (hashedAccountId != null) 'hashedAccountId': hashedAccountId!,
+        if (headers != null) 'headers': headers!,
+        if (ja3 != null) 'ja3': ja3!,
+        if (requestedUri != null) 'requestedUri': requestedUri!,
         if (siteKey != null) 'siteKey': siteKey!,
         if (token != null) 'token': token!,
+        if (transactionData != null) 'transactionData': transactionData!,
         if (userAgent != null) 'userAgent': userAgent!,
         if (userIpAddress != null) 'userIpAddress': userIpAddress!,
+        if (wafTokenAssessment != null)
+          'wafTokenAssessment': wafTokenAssessment!,
+      };
+}
+
+/// An individual action.
+///
+/// Each action represents what to do if a policy matches.
+class GoogleCloudRecaptchaenterpriseV1FirewallAction {
+  /// The user request did not match any policy and should be allowed access to
+  /// the requested resource.
+  GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction? allow;
+
+  /// This action will deny access to a given page.
+  ///
+  /// The user will get an HTTP error code.
+  GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction? block;
+
+  /// This action will redirect the request to a ReCaptcha interstitial to
+  /// attach a token.
+  GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction? redirect;
+
+  /// This action will set a custom header but allow the request to continue to
+  /// the customer backend.
+  GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction? setHeader;
+
+  /// This action will transparently serve a different page to an offending
+  /// user.
+  GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction? substitute;
+
+  GoogleCloudRecaptchaenterpriseV1FirewallAction({
+    this.allow,
+    this.block,
+    this.redirect,
+    this.setHeader,
+    this.substitute,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1FirewallAction.fromJson(core.Map json_)
+      : this(
+          allow: json_.containsKey('allow')
+              ? GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction
+                  .fromJson(
+                      json_['allow'] as core.Map<core.String, core.dynamic>)
+              : null,
+          block: json_.containsKey('block')
+              ? GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction
+                  .fromJson(
+                      json_['block'] as core.Map<core.String, core.dynamic>)
+              : null,
+          redirect: json_.containsKey('redirect')
+              ? GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction
+                  .fromJson(
+                      json_['redirect'] as core.Map<core.String, core.dynamic>)
+              : null,
+          setHeader: json_.containsKey('setHeader')
+              ? GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction
+                  .fromJson(
+                      json_['setHeader'] as core.Map<core.String, core.dynamic>)
+              : null,
+          substitute: json_.containsKey('substitute')
+              ? GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction
+                  .fromJson(json_['substitute']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allow != null) 'allow': allow!,
+        if (block != null) 'block': block!,
+        if (redirect != null) 'redirect': redirect!,
+        if (setHeader != null) 'setHeader': setHeader!,
+        if (substitute != null) 'substitute': substitute!,
+      };
+}
+
+/// An allow action continues processing a request unimpeded.
+typedef GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction = $Empty;
+
+/// A block action serves an HTTP error code a prevents the request from hitting
+/// the backend.
+typedef GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction = $Empty;
+
+/// A redirect action returns a 307 (temporary redirect) response, pointing the
+/// user to a ReCaptcha interstitial page to attach a token.
+typedef GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction = $Empty;
+
+/// A set header action sets a header and forwards the request to the backend.
+///
+/// This can be used to trigger custom protection implemented on the backend.
+class GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction {
+  /// The header key to set in the request to the backend server.
+  core.String? key;
+
+  /// The header value to set in the request to the backend server.
+  core.String? value;
+
+  GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction({
+    this.key,
+    this.value,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction.fromJson(
+      core.Map json_)
+      : this(
+          key: json_.containsKey('key') ? json_['key'] as core.String : null,
+          value:
+              json_.containsKey('value') ? json_['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (key != null) 'key': key!,
+        if (value != null) 'value': value!,
+      };
+}
+
+/// A substitute action transparently serves a different page than the one
+/// requested.
+class GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction {
+  /// The address to redirect to.
+  ///
+  /// The target is a relative path in the current host. Example:
+  /// "/blog/404.html".
+  core.String? path;
+
+  GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction({
+    this.path,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction.fromJson(
+      core.Map json_)
+      : this(
+          path: json_.containsKey('path') ? json_['path'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (path != null) 'path': path!,
+      };
+}
+
+/// A FirewallPolicy represents a single matching pattern and resulting actions
+/// to take.
+class GoogleCloudRecaptchaenterpriseV1FirewallPolicy {
+  /// The actions that the caller should take regarding user access.
+  ///
+  /// There should be at most one terminal action. A terminal action is any
+  /// action that forces a response, such as AllowAction, BlockAction or
+  /// SubstituteAction. Zero or more non-terminal actions such as SetHeader
+  /// might be specified. A single policy can contain up to 16 actions.
+  core.List<GoogleCloudRecaptchaenterpriseV1FirewallAction>? actions;
+
+  /// A CEL (Common Expression Language) conditional expression that specifies
+  /// if this policy applies to an incoming user request.
+  ///
+  /// If this condition evaluates to true and the requested path matched the
+  /// path pattern, the associated actions should be executed by the caller. The
+  /// condition string is checked for CEL syntax correctness on creation. For
+  /// more information, see the [CEL spec](https://github.com/google/cel-spec)
+  /// and its
+  /// [language definition](https://github.com/google/cel-spec/blob/master/doc/langdef.md).
+  /// A condition has a max length of 500 characters.
+  core.String? condition;
+
+  /// A description of what this policy aims to achieve, for convenience
+  /// purposes.
+  ///
+  /// The description can at most include 256 UTF-8 characters.
+  core.String? description;
+
+  /// The resource name for the FirewallPolicy in the format
+  /// "projects/{project}/firewallpolicies/{firewallpolicy}".
+  core.String? name;
+
+  /// The path for which this policy applies, specified as a glob pattern.
+  ///
+  /// For more information on glob, see the
+  /// [manual page](https://man7.org/linux/man-pages/man7/glob.7.html). A path
+  /// has a max length of 200 characters.
+  core.String? path;
+
+  GoogleCloudRecaptchaenterpriseV1FirewallPolicy({
+    this.actions,
+    this.condition,
+    this.description,
+    this.name,
+    this.path,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1FirewallPolicy.fromJson(core.Map json_)
+      : this(
+          actions: json_.containsKey('actions')
+              ? (json_['actions'] as core.List)
+                  .map((value) =>
+                      GoogleCloudRecaptchaenterpriseV1FirewallAction.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          condition: json_.containsKey('condition')
+              ? json_['condition'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          path: json_.containsKey('path') ? json_['path'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (actions != null) 'actions': actions!,
+        if (condition != null) 'condition': condition!,
+        if (description != null) 'description': description!,
+        if (name != null) 'name': name!,
+        if (path != null) 'path': path!,
+      };
+}
+
+/// Policy config assessment.
+class GoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment {
+  /// If the processing of a policy config fails, an error will be populated and
+  /// the firewall_policy will be left empty.
+  GoogleRpcStatus? error;
+
+  /// The policy that matched the request.
+  ///
+  /// If more than one policy may match, this is the first match. If no policy
+  /// matches the incoming request, the policy field will be left empty.
+  ///
+  /// Output only.
+  GoogleCloudRecaptchaenterpriseV1FirewallPolicy? firewallPolicy;
+
+  GoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment({
+    this.error,
+    this.firewallPolicy,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1FirewallPolicyAssessment.fromJson(
+      core.Map json_)
+      : this(
+          error: json_.containsKey('error')
+              ? GoogleRpcStatus.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          firewallPolicy: json_.containsKey('firewallPolicy')
+              ? GoogleCloudRecaptchaenterpriseV1FirewallPolicy.fromJson(
+                  json_['firewallPolicy']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (error != null) 'error': error!,
+        if (firewallPolicy != null) 'firewallPolicy': firewallPolicy!,
+      };
+}
+
+/// Assessment for Fraud Prevention.
+class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment {
+  /// Assessment of this transaction for behavioral trust.
+  GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict?
+      behavioralTrustVerdict;
+
+  /// Assessment of this transaction for risk of being part of a card testing
+  /// attack.
+  GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict?
+      cardTestingVerdict;
+
+  /// Assessment of this transaction for risk of a stolen instrument.
+  GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict?
+      stolenInstrumentVerdict;
+
+  /// Probability of this transaction being fraudulent.
+  ///
+  /// Summarizes the combined risk of attack vectors below. Values are from 0.0
+  /// (lowest) to 1.0 (highest).
+  core.double? transactionRisk;
+
+  GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment({
+    this.behavioralTrustVerdict,
+    this.cardTestingVerdict,
+    this.stolenInstrumentVerdict,
+    this.transactionRisk,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment.fromJson(
+      core.Map json_)
+      : this(
+          behavioralTrustVerdict: json_.containsKey('behavioralTrustVerdict')
+              ? GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict
+                  .fromJson(json_['behavioralTrustVerdict']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          cardTestingVerdict: json_.containsKey('cardTestingVerdict')
+              ? GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict
+                  .fromJson(json_['cardTestingVerdict']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          stolenInstrumentVerdict: json_.containsKey('stolenInstrumentVerdict')
+              ? GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict
+                  .fromJson(json_['stolenInstrumentVerdict']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          transactionRisk: json_.containsKey('transactionRisk')
+              ? (json_['transactionRisk'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (behavioralTrustVerdict != null)
+          'behavioralTrustVerdict': behavioralTrustVerdict!,
+        if (cardTestingVerdict != null)
+          'cardTestingVerdict': cardTestingVerdict!,
+        if (stolenInstrumentVerdict != null)
+          'stolenInstrumentVerdict': stolenInstrumentVerdict!,
+        if (transactionRisk != null) 'transactionRisk': transactionRisk!,
+      };
+}
+
+/// Information about behavioral trust of the transaction.
+class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict {
+  /// Probability of this transaction attempt being executed in a behaviorally
+  /// trustworthy way.
+  ///
+  /// Values are from 0.0 (lowest) to 1.0 (highest).
+  core.double? trust;
+
+  GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict({
+    this.trust,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict.fromJson(
+      core.Map json_)
+      : this(
+          trust: json_.containsKey('trust')
+              ? (json_['trust'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (trust != null) 'trust': trust!,
+      };
+}
+
+/// Information about card testing fraud, where an adversary is testing
+/// fraudulently obtained cards or brute forcing their details.
+class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict {
+  /// Probability of this transaction attempt being part of a card testing
+  /// attack.
+  ///
+  /// Values are from 0.0 (lowest) to 1.0 (highest).
+  core.double? risk;
+
+  GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict({
+    this.risk,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict.fromJson(
+      core.Map json_)
+      : this(
+          risk: json_.containsKey('risk')
+              ? (json_['risk'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (risk != null) 'risk': risk!,
+      };
+}
+
+/// Information about stolen instrument fraud, where the user is not the
+/// legitimate owner of the instrument being used for the purchase.
+class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict {
+  /// Probability of this transaction being executed with a stolen instrument.
+  ///
+  /// Values are from 0.0 (lowest) to 1.0 (highest).
+  core.double? risk;
+
+  GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict({
+    this.risk,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict.fromJson(
+      core.Map json_)
+      : this(
+          risk: json_.containsKey('risk')
+              ? (json_['risk'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (risk != null) 'risk': risk!,
       };
 }
 
@@ -1060,9 +2019,19 @@ class GoogleCloudRecaptchaenterpriseV1IOSKeySettings {
   /// Example: 'com.companyname.productname.appname'
   core.List<core.String>? allowedBundleIds;
 
+  /// Apple Developer account details for the app that is protected by the
+  /// reCAPTCHA Key.
+  ///
+  /// reCAPTCHA Enterprise leverages platform-specific checks like Apple App
+  /// Attest and Apple DeviceCheck to protect your app from abuse. Providing
+  /// these fields allows reCAPTCHA Enterprise to get a better assessment of the
+  /// integrity of your app.
+  GoogleCloudRecaptchaenterpriseV1AppleDeveloperId? appleDeveloperId;
+
   GoogleCloudRecaptchaenterpriseV1IOSKeySettings({
     this.allowAllBundleIds,
     this.allowedBundleIds,
+    this.appleDeveloperId,
   });
 
   GoogleCloudRecaptchaenterpriseV1IOSKeySettings.fromJson(core.Map json_)
@@ -1075,11 +2044,17 @@ class GoogleCloudRecaptchaenterpriseV1IOSKeySettings {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          appleDeveloperId: json_.containsKey('appleDeveloperId')
+              ? GoogleCloudRecaptchaenterpriseV1AppleDeveloperId.fromJson(
+                  json_['appleDeveloperId']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowAllBundleIds != null) 'allowAllBundleIds': allowAllBundleIds!,
         if (allowedBundleIds != null) 'allowedBundleIds': allowedBundleIds!,
+        if (appleDeveloperId != null) 'appleDeveloperId': appleDeveloperId!,
       };
 }
 
@@ -1089,7 +2064,9 @@ class GoogleCloudRecaptchaenterpriseV1Key {
   /// Settings for keys that can be used by Android apps.
   GoogleCloudRecaptchaenterpriseV1AndroidKeySettings? androidSettings;
 
-  /// The timestamp corresponding to the creation of this Key.
+  /// The timestamp corresponding to the creation of this key.
+  ///
+  /// Output only.
   core.String? createTime;
 
   /// Human-readable display name of this key.
@@ -1147,9 +2124,9 @@ class GoogleCloudRecaptchaenterpriseV1Key {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -1179,6 +2156,42 @@ class GoogleCloudRecaptchaenterpriseV1Key {
         if (testingOptions != null) 'testingOptions': testingOptions!,
         if (wafSettings != null) 'wafSettings': wafSettings!,
         if (webSettings != null) 'webSettings': webSettings!,
+      };
+}
+
+/// Response to request to list firewall policies belonging to a key.
+class GoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse {
+  /// Policy details.
+  core.List<GoogleCloudRecaptchaenterpriseV1FirewallPolicy>? firewallPolicies;
+
+  /// Token to retrieve the next page of results.
+  ///
+  /// It is set to empty if no policies remain in results.
+  core.String? nextPageToken;
+
+  GoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse({
+    this.firewallPolicies,
+    this.nextPageToken,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse.fromJson(
+      core.Map json_)
+      : this(
+          firewallPolicies: json_.containsKey('firewallPolicies')
+              ? (json_['firewallPolicies'] as core.List)
+                  .map((value) =>
+                      GoogleCloudRecaptchaenterpriseV1FirewallPolicy.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (firewallPolicies != null) 'firewallPolicies': firewallPolicies!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -1357,7 +2370,35 @@ class GoogleCloudRecaptchaenterpriseV1Metrics {
 }
 
 /// The migrate key request message.
-typedef GoogleCloudRecaptchaenterpriseV1MigrateKeyRequest = $Empty;
+class GoogleCloudRecaptchaenterpriseV1MigrateKeyRequest {
+  /// If true, skips the billing check.
+  ///
+  /// A reCAPTCHA Enterprise key or migrated key behaves differently than a
+  /// reCAPTCHA (non-Enterprise version) key when you reach a quota limit (see
+  /// https://cloud.google.com/recaptcha-enterprise/quotas#quota_limit). To
+  /// avoid any disruption of your usage, we check that a billing account is
+  /// present. If your usage of reCAPTCHA is under the free quota, you can
+  /// safely skip the billing check and proceed with the migration. See
+  /// https://cloud.google.com/recaptcha-enterprise/docs/billing-information.
+  ///
+  /// Optional.
+  core.bool? skipBillingCheck;
+
+  GoogleCloudRecaptchaenterpriseV1MigrateKeyRequest({
+    this.skipBillingCheck,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1MigrateKeyRequest.fromJson(core.Map json_)
+      : this(
+          skipBillingCheck: json_.containsKey('skipBillingCheck')
+              ? json_['skipBillingCheck'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (skipBillingCheck != null) 'skipBillingCheck': skipBillingCheck!,
+      };
+}
 
 /// Private password leak verification info.
 class GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification {
@@ -1548,6 +2589,11 @@ class GoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse {
 
 /// Risk analysis result for an event.
 class GoogleCloudRecaptchaenterpriseV1RiskAnalysis {
+  /// Extended verdict reasons to be used for experimentation only.
+  ///
+  /// The set of possible reasons is subject to change.
+  core.List<core.String>? extendedVerdictReasons;
+
   /// Reasons contributing to the risk analysis verdict.
   core.List<core.String>? reasons;
 
@@ -1558,12 +2604,18 @@ class GoogleCloudRecaptchaenterpriseV1RiskAnalysis {
   core.double? score;
 
   GoogleCloudRecaptchaenterpriseV1RiskAnalysis({
+    this.extendedVerdictReasons,
     this.reasons,
     this.score,
   });
 
   GoogleCloudRecaptchaenterpriseV1RiskAnalysis.fromJson(core.Map json_)
       : this(
+          extendedVerdictReasons: json_.containsKey('extendedVerdictReasons')
+              ? (json_['extendedVerdictReasons'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           reasons: json_.containsKey('reasons')
               ? (json_['reasons'] as core.List)
                   .map((value) => value as core.String)
@@ -1575,6 +2627,8 @@ class GoogleCloudRecaptchaenterpriseV1RiskAnalysis {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (extendedVerdictReasons != null)
+          'extendedVerdictReasons': extendedVerdictReasons!,
         if (reasons != null) 'reasons': reasons!,
         if (score != null) 'score': score!,
       };
@@ -1597,9 +2651,9 @@ class GoogleCloudRecaptchaenterpriseV1ScoreDistribution {
           scoreBuckets: json_.containsKey('scoreBuckets')
               ? (json_['scoreBuckets'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -1615,7 +2669,7 @@ class GoogleCloudRecaptchaenterpriseV1ScoreMetrics {
   /// Action-based metrics.
   ///
   /// The map key is the action name which specified by the site owners at time
-  /// of the "execute" client-side call. Populated only for SCORE keys.
+  /// of the "execute" client-side call.
   core.Map<core.String, GoogleCloudRecaptchaenterpriseV1ScoreDistribution>?
       actionMetrics;
 
@@ -1632,10 +2686,10 @@ class GoogleCloudRecaptchaenterpriseV1ScoreMetrics {
           actionMetrics: json_.containsKey('actionMetrics')
               ? (json_['actionMetrics'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     GoogleCloudRecaptchaenterpriseV1ScoreDistribution.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -1654,7 +2708,7 @@ class GoogleCloudRecaptchaenterpriseV1ScoreMetrics {
 
 /// The request message to search related account group memberships.
 class GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRequest {
-  /// The unique stable hashed user identifier we should search connections to.
+  /// The unique stable hashed user identifier used to search connections.
   ///
   /// The identifier should correspond to a `hashed_account_id` provided in a
   /// previous `CreateAssessment` or `AnnotateAssessment` call.
@@ -1797,14 +2851,19 @@ class GoogleCloudRecaptchaenterpriseV1TestingOptions {
       };
 }
 
+/// Properties of the provided event token.
 class GoogleCloudRecaptchaenterpriseV1TokenProperties {
   /// Action name provided at token generation.
   core.String? action;
 
+  /// The name of the Android package with which the token was generated
+  /// (Android keys only).
+  core.String? androidPackageName;
+
   /// The timestamp corresponding to the generation of the token.
   core.String? createTime;
 
-  /// The hostname of the page on which the token was generated.
+  /// The hostname of the page on which the token was generated (Web keys only).
   core.String? hostname;
 
   /// Reason associated with the response when valid = false.
@@ -1819,6 +2878,10 @@ class GoogleCloudRecaptchaenterpriseV1TokenProperties {
   /// on the browser. Could easily be simulated by an attacker.
   core.String? invalidReason;
 
+  /// The ID of the iOS bundle with which the token was generated (iOS keys
+  /// only).
+  core.String? iosBundleId;
+
   /// Whether the provided user response token is valid.
   ///
   /// When valid = false, the reason could be specified in invalid_reason or it
@@ -1829,9 +2892,11 @@ class GoogleCloudRecaptchaenterpriseV1TokenProperties {
 
   GoogleCloudRecaptchaenterpriseV1TokenProperties({
     this.action,
+    this.androidPackageName,
     this.createTime,
     this.hostname,
     this.invalidReason,
+    this.iosBundleId,
     this.valid,
   });
 
@@ -1839,6 +2904,9 @@ class GoogleCloudRecaptchaenterpriseV1TokenProperties {
       : this(
           action: json_.containsKey('action')
               ? json_['action'] as core.String
+              : null,
+          androidPackageName: json_.containsKey('androidPackageName')
+              ? json_['androidPackageName'] as core.String
               : null,
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
@@ -1849,16 +2917,521 @@ class GoogleCloudRecaptchaenterpriseV1TokenProperties {
           invalidReason: json_.containsKey('invalidReason')
               ? json_['invalidReason'] as core.String
               : null,
+          iosBundleId: json_.containsKey('iosBundleId')
+              ? json_['iosBundleId'] as core.String
+              : null,
           valid:
               json_.containsKey('valid') ? json_['valid'] as core.bool : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (action != null) 'action': action!,
+        if (androidPackageName != null)
+          'androidPackageName': androidPackageName!,
         if (createTime != null) 'createTime': createTime!,
         if (hostname != null) 'hostname': hostname!,
         if (invalidReason != null) 'invalidReason': invalidReason!,
+        if (iosBundleId != null) 'iosBundleId': iosBundleId!,
         if (valid != null) 'valid': valid!,
+      };
+}
+
+/// Transaction data associated with a payment protected by reCAPTCHA
+/// Enterprise.
+///
+/// All fields are optional.
+class GoogleCloudRecaptchaenterpriseV1TransactionData {
+  /// Address associated with the payment method when applicable.
+  GoogleCloudRecaptchaenterpriseV1TransactionDataAddress? billingAddress;
+
+  /// The Bank Identification Number - generally the first 6 or 8 digits of the
+  /// card.
+  core.String? cardBin;
+
+  /// The last four digits of the card.
+  core.String? cardLastFour;
+
+  /// The currency code in ISO-4217 format.
+  core.String? currencyCode;
+
+  /// Information about the payment gateway's response to the transaction.
+  GoogleCloudRecaptchaenterpriseV1TransactionDataGatewayInfo? gatewayInfo;
+
+  /// Items purchased in this transaction.
+  core.List<GoogleCloudRecaptchaenterpriseV1TransactionDataItem>? items;
+
+  /// Information about the user or users fulfilling the transaction.
+  core.List<GoogleCloudRecaptchaenterpriseV1TransactionDataUser>? merchants;
+
+  /// The payment method for the transaction.
+  ///
+  /// The allowed values are: * credit-card * debit-card * gift-card *
+  /// processor-{name} (If a third-party is used, for example, processor-paypal)
+  /// * custom-{name} (If an alternative method is used, for example,
+  /// custom-crypto)
+  core.String? paymentMethod;
+
+  /// Destination address if this transaction involves shipping a physical item.
+  GoogleCloudRecaptchaenterpriseV1TransactionDataAddress? shippingAddress;
+
+  /// The value of shipping in the specified currency.
+  ///
+  /// 0 for free or no shipping.
+  core.double? shippingValue;
+
+  /// Unique identifier for the transaction.
+  ///
+  /// This custom identifier can be used to reference this transaction in the
+  /// future, for example, labeling a refund or chargeback event. Two attempts
+  /// at the same transaction should use the same transaction id.
+  core.String? transactionId;
+
+  /// Information about the user paying/initiating the transaction.
+  GoogleCloudRecaptchaenterpriseV1TransactionDataUser? user;
+
+  /// The decimal value of the transaction in the specified currency.
+  core.double? value;
+
+  GoogleCloudRecaptchaenterpriseV1TransactionData({
+    this.billingAddress,
+    this.cardBin,
+    this.cardLastFour,
+    this.currencyCode,
+    this.gatewayInfo,
+    this.items,
+    this.merchants,
+    this.paymentMethod,
+    this.shippingAddress,
+    this.shippingValue,
+    this.transactionId,
+    this.user,
+    this.value,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1TransactionData.fromJson(core.Map json_)
+      : this(
+          billingAddress: json_.containsKey('billingAddress')
+              ? GoogleCloudRecaptchaenterpriseV1TransactionDataAddress.fromJson(
+                  json_['billingAddress']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          cardBin: json_.containsKey('cardBin')
+              ? json_['cardBin'] as core.String
+              : null,
+          cardLastFour: json_.containsKey('cardLastFour')
+              ? json_['cardLastFour'] as core.String
+              : null,
+          currencyCode: json_.containsKey('currencyCode')
+              ? json_['currencyCode'] as core.String
+              : null,
+          gatewayInfo: json_.containsKey('gatewayInfo')
+              ? GoogleCloudRecaptchaenterpriseV1TransactionDataGatewayInfo
+                  .fromJson(json_['gatewayInfo']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          items: json_.containsKey('items')
+              ? (json_['items'] as core.List)
+                  .map((value) =>
+                      GoogleCloudRecaptchaenterpriseV1TransactionDataItem
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          merchants: json_.containsKey('merchants')
+              ? (json_['merchants'] as core.List)
+                  .map((value) =>
+                      GoogleCloudRecaptchaenterpriseV1TransactionDataUser
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          paymentMethod: json_.containsKey('paymentMethod')
+              ? json_['paymentMethod'] as core.String
+              : null,
+          shippingAddress: json_.containsKey('shippingAddress')
+              ? GoogleCloudRecaptchaenterpriseV1TransactionDataAddress.fromJson(
+                  json_['shippingAddress']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          shippingValue: json_.containsKey('shippingValue')
+              ? (json_['shippingValue'] as core.num).toDouble()
+              : null,
+          transactionId: json_.containsKey('transactionId')
+              ? json_['transactionId'] as core.String
+              : null,
+          user: json_.containsKey('user')
+              ? GoogleCloudRecaptchaenterpriseV1TransactionDataUser.fromJson(
+                  json_['user'] as core.Map<core.String, core.dynamic>)
+              : null,
+          value: json_.containsKey('value')
+              ? (json_['value'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (billingAddress != null) 'billingAddress': billingAddress!,
+        if (cardBin != null) 'cardBin': cardBin!,
+        if (cardLastFour != null) 'cardLastFour': cardLastFour!,
+        if (currencyCode != null) 'currencyCode': currencyCode!,
+        if (gatewayInfo != null) 'gatewayInfo': gatewayInfo!,
+        if (items != null) 'items': items!,
+        if (merchants != null) 'merchants': merchants!,
+        if (paymentMethod != null) 'paymentMethod': paymentMethod!,
+        if (shippingAddress != null) 'shippingAddress': shippingAddress!,
+        if (shippingValue != null) 'shippingValue': shippingValue!,
+        if (transactionId != null) 'transactionId': transactionId!,
+        if (user != null) 'user': user!,
+        if (value != null) 'value': value!,
+      };
+}
+
+/// Structured address format for billing and shipping addresses.
+class GoogleCloudRecaptchaenterpriseV1TransactionDataAddress {
+  /// The first lines of the address.
+  ///
+  /// The first line generally contains the street name and number, and further
+  /// lines may include information such as an apartment number.
+  core.List<core.String>? address;
+
+  /// The state, province, or otherwise administrative area of the address.
+  core.String? administrativeArea;
+
+  /// The town/city of the address.
+  core.String? locality;
+
+  /// The postal or ZIP code of the address.
+  core.String? postalCode;
+
+  /// The recipient name, potentially including information such as "care of".
+  core.String? recipient;
+
+  /// The CLDR country/region of the address.
+  core.String? regionCode;
+
+  GoogleCloudRecaptchaenterpriseV1TransactionDataAddress({
+    this.address,
+    this.administrativeArea,
+    this.locality,
+    this.postalCode,
+    this.recipient,
+    this.regionCode,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1TransactionDataAddress.fromJson(
+      core.Map json_)
+      : this(
+          address: json_.containsKey('address')
+              ? (json_['address'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          administrativeArea: json_.containsKey('administrativeArea')
+              ? json_['administrativeArea'] as core.String
+              : null,
+          locality: json_.containsKey('locality')
+              ? json_['locality'] as core.String
+              : null,
+          postalCode: json_.containsKey('postalCode')
+              ? json_['postalCode'] as core.String
+              : null,
+          recipient: json_.containsKey('recipient')
+              ? json_['recipient'] as core.String
+              : null,
+          regionCode: json_.containsKey('regionCode')
+              ? json_['regionCode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (address != null) 'address': address!,
+        if (administrativeArea != null)
+          'administrativeArea': administrativeArea!,
+        if (locality != null) 'locality': locality!,
+        if (postalCode != null) 'postalCode': postalCode!,
+        if (recipient != null) 'recipient': recipient!,
+        if (regionCode != null) 'regionCode': regionCode!,
+      };
+}
+
+/// Details about the transaction from the gateway.
+class GoogleCloudRecaptchaenterpriseV1TransactionDataGatewayInfo {
+  /// AVS response code from the gateway (available only when reCAPTCHA
+  /// Enterprise is called after authorization).
+  core.String? avsResponseCode;
+
+  /// CVV response code from the gateway (available only when reCAPTCHA
+  /// Enterprise is called after authorization).
+  core.String? cvvResponseCode;
+
+  /// Gateway response code describing the state of the transaction.
+  core.String? gatewayResponseCode;
+
+  /// Name of the gateway service (for example, stripe, square, paypal).
+  core.String? name;
+
+  GoogleCloudRecaptchaenterpriseV1TransactionDataGatewayInfo({
+    this.avsResponseCode,
+    this.cvvResponseCode,
+    this.gatewayResponseCode,
+    this.name,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1TransactionDataGatewayInfo.fromJson(
+      core.Map json_)
+      : this(
+          avsResponseCode: json_.containsKey('avsResponseCode')
+              ? json_['avsResponseCode'] as core.String
+              : null,
+          cvvResponseCode: json_.containsKey('cvvResponseCode')
+              ? json_['cvvResponseCode'] as core.String
+              : null,
+          gatewayResponseCode: json_.containsKey('gatewayResponseCode')
+              ? json_['gatewayResponseCode'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (avsResponseCode != null) 'avsResponseCode': avsResponseCode!,
+        if (cvvResponseCode != null) 'cvvResponseCode': cvvResponseCode!,
+        if (gatewayResponseCode != null)
+          'gatewayResponseCode': gatewayResponseCode!,
+        if (name != null) 'name': name!,
+      };
+}
+
+/// Line items being purchased in this transaction.
+class GoogleCloudRecaptchaenterpriseV1TransactionDataItem {
+  /// When a merchant is specified, its corresponding account_id.
+  ///
+  /// Necessary to populate marketplace-style transactions.
+  core.String? merchantAccountId;
+
+  /// The full name of the item.
+  core.String? name;
+
+  /// The quantity of this item that is being purchased.
+  core.String? quantity;
+
+  /// The value per item that the user is paying, in the transaction currency,
+  /// after discounts.
+  core.double? value;
+
+  GoogleCloudRecaptchaenterpriseV1TransactionDataItem({
+    this.merchantAccountId,
+    this.name,
+    this.quantity,
+    this.value,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1TransactionDataItem.fromJson(core.Map json_)
+      : this(
+          merchantAccountId: json_.containsKey('merchantAccountId')
+              ? json_['merchantAccountId'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          quantity: json_.containsKey('quantity')
+              ? json_['quantity'] as core.String
+              : null,
+          value: json_.containsKey('value')
+              ? (json_['value'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (merchantAccountId != null) 'merchantAccountId': merchantAccountId!,
+        if (name != null) 'name': name!,
+        if (quantity != null) 'quantity': quantity!,
+        if (value != null) 'value': value!,
+      };
+}
+
+/// Details about a user's account involved in the transaction.
+class GoogleCloudRecaptchaenterpriseV1TransactionDataUser {
+  /// Unique account identifier for this user.
+  ///
+  /// If using account defender, this should match the hashed_account_id field.
+  /// Otherwise, a unique and persistent identifier for this account.
+  core.String? accountId;
+
+  /// The epoch milliseconds of the user's account creation.
+  core.String? creationMs;
+
+  /// The email address of the user.
+  core.String? email;
+
+  /// Whether the email has been verified to be accessible by the user (OTP or
+  /// similar).
+  core.bool? emailVerified;
+
+  /// The phone number of the user, with country code.
+  core.String? phoneNumber;
+
+  /// Whether the phone number has been verified to be accessible by the user
+  /// (OTP or similar).
+  core.bool? phoneVerified;
+
+  GoogleCloudRecaptchaenterpriseV1TransactionDataUser({
+    this.accountId,
+    this.creationMs,
+    this.email,
+    this.emailVerified,
+    this.phoneNumber,
+    this.phoneVerified,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1TransactionDataUser.fromJson(core.Map json_)
+      : this(
+          accountId: json_.containsKey('accountId')
+              ? json_['accountId'] as core.String
+              : null,
+          creationMs: json_.containsKey('creationMs')
+              ? json_['creationMs'] as core.String
+              : null,
+          email:
+              json_.containsKey('email') ? json_['email'] as core.String : null,
+          emailVerified: json_.containsKey('emailVerified')
+              ? json_['emailVerified'] as core.bool
+              : null,
+          phoneNumber: json_.containsKey('phoneNumber')
+              ? json_['phoneNumber'] as core.String
+              : null,
+          phoneVerified: json_.containsKey('phoneVerified')
+              ? json_['phoneVerified'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (creationMs != null) 'creationMs': creationMs!,
+        if (email != null) 'email': email!,
+        if (emailVerified != null) 'emailVerified': emailVerified!,
+        if (phoneNumber != null) 'phoneNumber': phoneNumber!,
+        if (phoneVerified != null) 'phoneVerified': phoneVerified!,
+      };
+}
+
+/// Describes an event in the lifecycle of a payment transaction.
+class GoogleCloudRecaptchaenterpriseV1TransactionEvent {
+  /// Timestamp when this transaction event occurred; otherwise assumed to be
+  /// the time of the API call.
+  ///
+  /// Optional.
+  core.String? eventTime;
+
+  /// The type of this transaction event.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "TRANSACTION_EVENT_TYPE_UNSPECIFIED" : Default, unspecified event type.
+  /// - "MERCHANT_APPROVE" : Indicates that the transaction is approved by the
+  /// merchant. The accompanying reasons can include terms such as 'INHOUSE',
+  /// 'ACCERTIFY', 'CYBERSOURCE', or 'MANUAL_REVIEW'.
+  /// - "MERCHANT_DENY" : Indicates that the transaction is denied and concluded
+  /// due to risks detected by the merchant. The accompanying reasons can
+  /// include terms such as 'INHOUSE', 'ACCERTIFY', 'CYBERSOURCE', or
+  /// 'MANUAL_REVIEW'.
+  /// - "MANUAL_REVIEW" : Indicates that the transaction is being evaluated by a
+  /// human, due to suspicion or risk.
+  /// - "AUTHORIZATION" : Indicates that the authorization attempt with the card
+  /// issuer succeeded.
+  /// - "AUTHORIZATION_DECLINE" : Indicates that the authorization attempt with
+  /// the card issuer failed. The accompanying reasons can include Visa's '54'
+  /// indicating that the card is expired, or '82' indicating that the CVV is
+  /// incorrect.
+  /// - "PAYMENT_CAPTURE" : Indicates that the transaction is completed because
+  /// the funds were settled.
+  /// - "PAYMENT_CAPTURE_DECLINE" : Indicates that the transaction could not be
+  /// completed because the funds were not settled.
+  /// - "CANCEL" : Indicates that the transaction has been canceled. Specify the
+  /// reason for the cancellation. For example, 'INSUFFICIENT_INVENTORY'.
+  /// - "CHARGEBACK_INQUIRY" : Indicates that the merchant has received a
+  /// chargeback inquiry due to fraud for the transaction, requesting additional
+  /// information before a fraud chargeback is officially issued and a formal
+  /// chargeback notification is sent.
+  /// - "CHARGEBACK_ALERT" : Indicates that the merchant has received a
+  /// chargeback alert due to fraud for the transaction. The process of
+  /// resolving the dispute without involving the payment network is started.
+  /// - "FRAUD_NOTIFICATION" : Indicates that a fraud notification is issued for
+  /// the transaction, sent by the payment instrument's issuing bank because the
+  /// transaction appears to be fraudulent. We recommend including TC40 or SAFE
+  /// data in the `reason` field for this event type. For partial chargebacks,
+  /// we recommend that you include an amount in the `value` field.
+  /// - "CHARGEBACK" : Indicates that the merchant is informed by the payment
+  /// network that the transaction has entered the chargeback process due to
+  /// fraud. Reason code examples include Discover's '6005' and '6041'. For
+  /// partial chargebacks, we recommend that you include an amount in the
+  /// `value` field.
+  /// - "CHARGEBACK_REPRESENTMENT" : Indicates that the transaction has entered
+  /// the chargeback process due to fraud, and that the merchant has chosen to
+  /// enter representment. Reason examples include Discover's '6005' and '6041'.
+  /// For partial chargebacks, we recommend that you include an amount in the
+  /// `value` field.
+  /// - "CHARGEBACK_REVERSE" : Indicates that the transaction has had a fraud
+  /// chargeback which was illegitimate and was reversed as a result. For
+  /// partial chargebacks, we recommend that you include an amount in the
+  /// `value` field.
+  /// - "REFUND_REQUEST" : Indicates that the merchant has received a refund for
+  /// a completed transaction. For partial refunds, we recommend that you
+  /// include an amount in the `value` field. Reason example: 'TAX_EXEMPT'
+  /// (partial refund of exempt tax)
+  /// - "REFUND_DECLINE" : Indicates that the merchant has received a refund
+  /// request for this transaction, but that they have declined it. For partial
+  /// refunds, we recommend that you include an amount in the `value` field.
+  /// Reason example: 'TAX_EXEMPT' (partial refund of exempt tax)
+  /// - "REFUND" : Indicates that the completed transaction was refunded by the
+  /// merchant. For partial refunds, we recommend that you include an amount in
+  /// the `value` field. Reason example: 'TAX_EXEMPT' (partial refund of exempt
+  /// tax)
+  /// - "REFUND_REVERSE" : Indicates that the completed transaction was refunded
+  /// by the merchant, and that this refund was reversed. For partial refunds,
+  /// we recommend that you include an amount in the `value` field.
+  core.String? eventType;
+
+  /// The reason or standardized code that corresponds with this transaction
+  /// event, if one exists.
+  ///
+  /// For example, a CHARGEBACK event with code 6005.
+  ///
+  /// Optional.
+  core.String? reason;
+
+  /// The value that corresponds with this transaction event, if one exists.
+  ///
+  /// For example, a refund event where $5.00 was refunded. Currency is obtained
+  /// from the original transaction data.
+  ///
+  /// Optional.
+  core.double? value;
+
+  GoogleCloudRecaptchaenterpriseV1TransactionEvent({
+    this.eventTime,
+    this.eventType,
+    this.reason,
+    this.value,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1TransactionEvent.fromJson(core.Map json_)
+      : this(
+          eventTime: json_.containsKey('eventTime')
+              ? json_['eventTime'] as core.String
+              : null,
+          eventType: json_.containsKey('eventType')
+              ? json_['eventType'] as core.String
+              : null,
+          reason: json_.containsKey('reason')
+              ? json_['reason'] as core.String
+              : null,
+          value: json_.containsKey('value')
+              ? (json_['value'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (eventTime != null) 'eventTime': eventTime!,
+        if (eventType != null) 'eventType': eventType!,
+        if (reason != null) 'reason': reason!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -1874,6 +3447,8 @@ class GoogleCloudRecaptchaenterpriseV1WafSettings {
   /// - "SESSION_TOKEN" : Use reCAPTCHA session-tokens to protect the whole user
   /// session on the site's domain.
   /// - "ACTION_TOKEN" : Use reCAPTCHA action-tokens to protect user actions.
+  /// - "EXPRESS" : Use reCAPTCHA WAF express protection to protect any content
+  /// other than web pages, like APIs and IoT devices.
   core.String? wafFeature;
 
   /// The WAF service that uses this key.
@@ -1882,6 +3457,7 @@ class GoogleCloudRecaptchaenterpriseV1WafSettings {
   /// Possible string values are:
   /// - "WAF_SERVICE_UNSPECIFIED" : Undefined WAF
   /// - "CA" : Cloud Armor
+  /// - "FASTLY" : Fastly
   core.String? wafService;
 
   GoogleCloudRecaptchaenterpriseV1WafSettings({
@@ -1998,3 +3574,12 @@ class GoogleCloudRecaptchaenterpriseV1WebKeySettings {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); }
 typedef GoogleProtobufEmpty = $Empty;
+
+/// The `Status` type defines a logical error model that is suitable for
+/// different programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
+/// contains three pieces of data: error code, error message, and error details.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
+typedef GoogleRpcStatus = $Status;

@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Dataflow API - v1b3
@@ -34,11 +33,10 @@
 ///       - [ProjectsLocationsJobsStagesResource]
 ///       - [ProjectsLocationsJobsWorkItemsResource]
 ///     - [ProjectsLocationsSnapshotsResource]
-///     - [ProjectsLocationsSqlResource]
 ///     - [ProjectsLocationsTemplatesResource]
 ///   - [ProjectsSnapshotsResource]
 ///   - [ProjectsTemplatesResource]
-library dataflow.v1b3;
+library dataflow_v1b3;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -47,7 +45,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -197,6 +194,8 @@ class ProjectsJobsResource {
 
   /// List the jobs of a project across all regions.
   ///
+  /// **Note:** This method doesn't support filtering the list of jobs by name.
+  ///
   /// Request parameters:
   ///
   /// [projectId] - The project which owns the jobs.
@@ -217,6 +216,8 @@ class ProjectsJobsResource {
   /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// that contains this job.
   ///
+  /// [name] - Optional. The job name.
+  ///
   /// [pageSize] - If there are many jobs, limit response to at most this many.
   /// The actual number of jobs returned will be the lesser of max_responses and
   /// an unspecified server-defined limit.
@@ -233,7 +234,12 @@ class ProjectsJobsResource {
   /// - "JOB_VIEW_SUMMARY" : Request summary information only: Project ID, Job
   /// ID, job name, job type, job status, start/end time, and Cloud SDK version
   /// details.
-  /// - "JOB_VIEW_ALL" : Request all information available for this job.
+  /// - "JOB_VIEW_ALL" : Request all information available for this job. When
+  /// the job is in `JOB_STATE_PENDING`, the job has been created but is not yet
+  /// running, and not all job information is available. For complete job
+  /// information, wait until the job in is `JOB_STATE_RUNNING`. For more
+  /// information, see
+  /// [JobState](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#jobstate).
   /// - "JOB_VIEW_DESCRIPTION" : Request summary info and limited job
   /// description data for steps, labels and environment.
   ///
@@ -251,6 +257,7 @@ class ProjectsJobsResource {
     core.String projectId, {
     core.String? filter,
     core.String? location,
+    core.String? name,
     core.int? pageSize,
     core.String? pageToken,
     core.String? view,
@@ -259,6 +266,7 @@ class ProjectsJobsResource {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (location != null) 'location': [location],
+      if (name != null) 'name': [name],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (view != null) 'view': [view],
@@ -308,7 +316,12 @@ class ProjectsJobsResource {
   /// - "JOB_VIEW_SUMMARY" : Request summary information only: Project ID, Job
   /// ID, job name, job type, job status, start/end time, and Cloud SDK version
   /// details.
-  /// - "JOB_VIEW_ALL" : Request all information available for this job.
+  /// - "JOB_VIEW_ALL" : Request all information available for this job. When
+  /// the job is in `JOB_STATE_PENDING`, the job has been created but is not yet
+  /// running, and not all job information is available. For complete job
+  /// information, wait until the job in is `JOB_STATE_RUNNING`. For more
+  /// information, see
+  /// [JobState](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#jobstate).
   /// - "JOB_VIEW_DESCRIPTION" : Request summary info and limited job
   /// description data for steps, labels and environment.
   ///
@@ -377,7 +390,12 @@ class ProjectsJobsResource {
   /// - "JOB_VIEW_SUMMARY" : Request summary information only: Project ID, Job
   /// ID, job name, job type, job status, start/end time, and Cloud SDK version
   /// details.
-  /// - "JOB_VIEW_ALL" : Request all information available for this job.
+  /// - "JOB_VIEW_ALL" : Request all information available for this job. When
+  /// the job is in `JOB_STATE_PENDING`, the job has been created but is not yet
+  /// running, and not all job information is available. For complete job
+  /// information, wait until the job in is `JOB_STATE_RUNNING`. For more
+  /// information, see
+  /// [JobState](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#jobstate).
   /// - "JOB_VIEW_DESCRIPTION" : Request summary info and limited job
   /// description data for steps, labels and environment.
   ///
@@ -482,8 +500,11 @@ class ProjectsJobsResource {
   /// `projects.locations.jobs.list` with a
   /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
   /// To list the all jobs across all regions, use `projects.jobs.aggregated`.
-  /// Using `projects.jobs.list` is not recommended, as you can only get the
-  /// list of jobs that are running in `us-central1`.
+  /// Using `projects.jobs.list` is not recommended, because you can only get
+  /// the list of jobs that are running in `us-central1`.
+  /// `projects.locations.jobs.list` and `projects.jobs.list` support filtering
+  /// the list of jobs by name. Filtering by name isn't supported by
+  /// `projects.jobs.aggregated`.
   ///
   /// Request parameters:
   ///
@@ -505,6 +526,8 @@ class ProjectsJobsResource {
   /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// that contains this job.
   ///
+  /// [name] - Optional. The job name.
+  ///
   /// [pageSize] - If there are many jobs, limit response to at most this many.
   /// The actual number of jobs returned will be the lesser of max_responses and
   /// an unspecified server-defined limit.
@@ -521,7 +544,12 @@ class ProjectsJobsResource {
   /// - "JOB_VIEW_SUMMARY" : Request summary information only: Project ID, Job
   /// ID, job name, job type, job status, start/end time, and Cloud SDK version
   /// details.
-  /// - "JOB_VIEW_ALL" : Request all information available for this job.
+  /// - "JOB_VIEW_ALL" : Request all information available for this job. When
+  /// the job is in `JOB_STATE_PENDING`, the job has been created but is not yet
+  /// running, and not all job information is available. For complete job
+  /// information, wait until the job in is `JOB_STATE_RUNNING`. For more
+  /// information, see
+  /// [JobState](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#jobstate).
   /// - "JOB_VIEW_DESCRIPTION" : Request summary info and limited job
   /// description data for steps, labels and environment.
   ///
@@ -539,6 +567,7 @@ class ProjectsJobsResource {
     core.String projectId, {
     core.String? filter,
     core.String? location,
+    core.String? name,
     core.int? pageSize,
     core.String? pageToken,
     core.String? view,
@@ -547,6 +576,7 @@ class ProjectsJobsResource {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (location != null) 'location': [location],
+      if (name != null) 'name': [name],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (view != null) 'view': [view],
@@ -632,6 +662,13 @@ class ProjectsJobsResource {
   /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// that contains this job.
   ///
+  /// [updateMask] - The list of fields to update relative to Job. If empty,
+  /// only RequestedJobState will be considered for update. If the FieldMask is
+  /// not empty and RequestedJobState is none/empty, The fields specified in the
+  /// update mask will be the only ones considered for update. If both
+  /// RequestedJobState and update_mask are specified, an error will be returned
+  /// as we cannot update both state and mask.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -647,11 +684,13 @@ class ProjectsJobsResource {
     core.String projectId,
     core.String jobId, {
     core.String? location,
+    core.String? updateMask,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       if (location != null) 'location': [location],
+      if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -995,8 +1034,6 @@ class ProjectsLocationsResource {
       ProjectsLocationsJobsResource(_requester);
   ProjectsLocationsSnapshotsResource get snapshots =>
       ProjectsLocationsSnapshotsResource(_requester);
-  ProjectsLocationsSqlResource get sql =>
-      ProjectsLocationsSqlResource(_requester);
   ProjectsLocationsTemplatesResource get templates =>
       ProjectsLocationsTemplatesResource(_requester);
 
@@ -1156,7 +1193,12 @@ class ProjectsLocationsJobsResource {
   /// - "JOB_VIEW_SUMMARY" : Request summary information only: Project ID, Job
   /// ID, job name, job type, job status, start/end time, and Cloud SDK version
   /// details.
-  /// - "JOB_VIEW_ALL" : Request all information available for this job.
+  /// - "JOB_VIEW_ALL" : Request all information available for this job. When
+  /// the job is in `JOB_STATE_PENDING`, the job has been created but is not yet
+  /// running, and not all job information is available. For complete job
+  /// information, wait until the job in is `JOB_STATE_RUNNING`. For more
+  /// information, see
+  /// [JobState](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#jobstate).
   /// - "JOB_VIEW_DESCRIPTION" : Request summary info and limited job
   /// description data for steps, labels and environment.
   ///
@@ -1227,7 +1269,12 @@ class ProjectsLocationsJobsResource {
   /// - "JOB_VIEW_SUMMARY" : Request summary information only: Project ID, Job
   /// ID, job name, job type, job status, start/end time, and Cloud SDK version
   /// details.
-  /// - "JOB_VIEW_ALL" : Request all information available for this job.
+  /// - "JOB_VIEW_ALL" : Request all information available for this job. When
+  /// the job is in `JOB_STATE_PENDING`, the job has been created but is not yet
+  /// running, and not all job information is available. For complete job
+  /// information, wait until the job in is `JOB_STATE_RUNNING`. For more
+  /// information, see
+  /// [JobState](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#jobstate).
   /// - "JOB_VIEW_DESCRIPTION" : Request summary info and limited job
   /// description data for steps, labels and environment.
   ///
@@ -1397,8 +1444,11 @@ class ProjectsLocationsJobsResource {
   /// `projects.locations.jobs.list` with a
   /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
   /// To list the all jobs across all regions, use `projects.jobs.aggregated`.
-  /// Using `projects.jobs.list` is not recommended, as you can only get the
-  /// list of jobs that are running in `us-central1`.
+  /// Using `projects.jobs.list` is not recommended, because you can only get
+  /// the list of jobs that are running in `us-central1`.
+  /// `projects.locations.jobs.list` and `projects.jobs.list` support filtering
+  /// the list of jobs by name. Filtering by name isn't supported by
+  /// `projects.jobs.aggregated`.
   ///
   /// Request parameters:
   ///
@@ -1420,6 +1470,8 @@ class ProjectsLocationsJobsResource {
   /// - "ACTIVE" : Filters the jobs that are running ordered on the creation
   /// timestamp.
   ///
+  /// [name] - Optional. The job name.
+  ///
   /// [pageSize] - If there are many jobs, limit response to at most this many.
   /// The actual number of jobs returned will be the lesser of max_responses and
   /// an unspecified server-defined limit.
@@ -1436,7 +1488,12 @@ class ProjectsLocationsJobsResource {
   /// - "JOB_VIEW_SUMMARY" : Request summary information only: Project ID, Job
   /// ID, job name, job type, job status, start/end time, and Cloud SDK version
   /// details.
-  /// - "JOB_VIEW_ALL" : Request all information available for this job.
+  /// - "JOB_VIEW_ALL" : Request all information available for this job. When
+  /// the job is in `JOB_STATE_PENDING`, the job has been created but is not yet
+  /// running, and not all job information is available. For complete job
+  /// information, wait until the job in is `JOB_STATE_RUNNING`. For more
+  /// information, see
+  /// [JobState](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#jobstate).
   /// - "JOB_VIEW_DESCRIPTION" : Request summary info and limited job
   /// description data for steps, labels and environment.
   ///
@@ -1454,6 +1511,7 @@ class ProjectsLocationsJobsResource {
     core.String projectId,
     core.String location, {
     core.String? filter,
+    core.String? name,
     core.int? pageSize,
     core.String? pageToken,
     core.String? view,
@@ -1461,6 +1519,7 @@ class ProjectsLocationsJobsResource {
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
+      if (name != null) 'name': [name],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (view != null) 'view': [view],
@@ -1554,6 +1613,13 @@ class ProjectsLocationsJobsResource {
   ///
   /// [jobId] - The job ID.
   ///
+  /// [updateMask] - The list of fields to update relative to Job. If empty,
+  /// only RequestedJobState will be considered for update. If the FieldMask is
+  /// not empty and RequestedJobState is none/empty, The fields specified in the
+  /// update mask will be the only ones considered for update. If both
+  /// RequestedJobState and update_mask are specified, an error will be returned
+  /// as we cannot update both state and mask.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1569,10 +1635,12 @@ class ProjectsLocationsJobsResource {
     core.String projectId,
     core.String location,
     core.String jobId, {
+    core.String? updateMask,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -2223,66 +2291,6 @@ class ProjectsLocationsSnapshotsResource {
   }
 }
 
-class ProjectsLocationsSqlResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsSqlResource(commons.ApiRequester client)
-      : _requester = client;
-
-  /// Validates a GoogleSQL query for Cloud Dataflow syntax.
-  ///
-  /// Will always confirm the given query parses correctly, and if able to look
-  /// up schema information from DataCatalog, will validate that the query
-  /// analyzes properly as well.
-  ///
-  /// Request parameters:
-  ///
-  /// [projectId] - Required. The ID of the Cloud Platform project that the job
-  /// belongs to.
-  ///
-  /// [location] - The
-  /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
-  /// to which to direct the request.
-  ///
-  /// [query] - The sql query to validate.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ValidateResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ValidateResponse> validate(
-    core.String projectId,
-    core.String location, {
-    core.String? query,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (query != null) 'query': [query],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1b3/projects/' +
-        commons.escapeVariable('$projectId') +
-        '/locations/' +
-        commons.escapeVariable('$location') +
-        '/sql:validate';
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return ValidateResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-}
-
 class ProjectsLocationsTemplatesResource {
   final commons.ApiRequester _requester;
 
@@ -2747,12 +2755,21 @@ class ProjectsTemplatesResource {
 /// ApproximateSplitRequest.
 class ApproximateProgress {
   /// Obsolete.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.double? percentComplete;
 
   /// Obsolete.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Position? position;
 
   /// Obsolete.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? remainingTime;
 
   ApproximateProgress({
@@ -3817,9 +3834,9 @@ class CreateJobFromTemplateRequest {
           parameters: json_.containsKey('parameters')
               ? (json_['parameters'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -3892,6 +3909,128 @@ class DataDiskAssignment {
       };
 }
 
+/// Configuration options for sampling elements.
+class DataSamplingConfig {
+  /// List of given sampling behaviors to enable.
+  ///
+  /// For example, specifying behaviors = \[ALWAYS_ON\] samples in-flight
+  /// elements but does not sample exceptions. Can be used to specify multiple
+  /// behaviors like, behaviors = \[ALWAYS_ON, EXCEPTIONS\] for specifying
+  /// periodic sampling and exception sampling. If DISABLED is in the list, then
+  /// sampling will be disabled and ignore the other given behaviors. Ordering
+  /// does not matter.
+  core.List<core.String>? behaviors;
+
+  DataSamplingConfig({
+    this.behaviors,
+  });
+
+  DataSamplingConfig.fromJson(core.Map json_)
+      : this(
+          behaviors: json_.containsKey('behaviors')
+              ? (json_['behaviors'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (behaviors != null) 'behaviors': behaviors!,
+      };
+}
+
+/// Contains per-worker telemetry about the data sampling feature.
+class DataSamplingReport {
+  /// Delta of bytes written to file from previous report.
+  ///
+  /// Optional.
+  core.String? bytesWrittenDelta;
+
+  /// Delta of bytes sampled from previous report.
+  ///
+  /// Optional.
+  core.String? elementsSampledBytes;
+
+  /// Delta of number of elements sampled from previous report.
+  ///
+  /// Optional.
+  core.String? elementsSampledCount;
+
+  /// Delta of number of samples taken from user code exceptions from previous
+  /// report.
+  ///
+  /// Optional.
+  core.String? exceptionsSampledCount;
+
+  /// Delta of number of PCollections sampled from previous report.
+  ///
+  /// Optional.
+  core.String? pcollectionsSampledCount;
+
+  /// Delta of errors counts from persisting the samples from previous report.
+  ///
+  /// Optional.
+  core.String? persistenceErrorsCount;
+
+  /// Delta of errors counts from retrieving, or translating the samples from
+  /// previous report.
+  ///
+  /// Optional.
+  core.String? translationErrorsCount;
+
+  DataSamplingReport({
+    this.bytesWrittenDelta,
+    this.elementsSampledBytes,
+    this.elementsSampledCount,
+    this.exceptionsSampledCount,
+    this.pcollectionsSampledCount,
+    this.persistenceErrorsCount,
+    this.translationErrorsCount,
+  });
+
+  DataSamplingReport.fromJson(core.Map json_)
+      : this(
+          bytesWrittenDelta: json_.containsKey('bytesWrittenDelta')
+              ? json_['bytesWrittenDelta'] as core.String
+              : null,
+          elementsSampledBytes: json_.containsKey('elementsSampledBytes')
+              ? json_['elementsSampledBytes'] as core.String
+              : null,
+          elementsSampledCount: json_.containsKey('elementsSampledCount')
+              ? json_['elementsSampledCount'] as core.String
+              : null,
+          exceptionsSampledCount: json_.containsKey('exceptionsSampledCount')
+              ? json_['exceptionsSampledCount'] as core.String
+              : null,
+          pcollectionsSampledCount:
+              json_.containsKey('pcollectionsSampledCount')
+                  ? json_['pcollectionsSampledCount'] as core.String
+                  : null,
+          persistenceErrorsCount: json_.containsKey('persistenceErrorsCount')
+              ? json_['persistenceErrorsCount'] as core.String
+              : null,
+          translationErrorsCount: json_.containsKey('translationErrorsCount')
+              ? json_['translationErrorsCount'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bytesWrittenDelta != null) 'bytesWrittenDelta': bytesWrittenDelta!,
+        if (elementsSampledBytes != null)
+          'elementsSampledBytes': elementsSampledBytes!,
+        if (elementsSampledCount != null)
+          'elementsSampledCount': elementsSampledCount!,
+        if (exceptionsSampledCount != null)
+          'exceptionsSampledCount': exceptionsSampledCount!,
+        if (pcollectionsSampledCount != null)
+          'pcollectionsSampledCount': pcollectionsSampledCount!,
+        if (persistenceErrorsCount != null)
+          'persistenceErrorsCount': persistenceErrorsCount!,
+        if (translationErrorsCount != null)
+          'translationErrorsCount': translationErrorsCount!,
+      };
+}
+
 /// Metadata for a Datastore connector used by the job.
 class DatastoreIODetails {
   /// Namespace used in the connection.
@@ -3923,22 +4062,31 @@ class DatastoreIODetails {
 
 /// Describes any options that have an effect on the debugging of pipelines.
 class DebugOptions {
+  /// Configuration options for sampling elements from a running pipeline.
+  DataSamplingConfig? dataSampling;
+
   /// When true, enables the logging of the literal hot key to the user's Cloud
   /// Logging.
   core.bool? enableHotKeyLogging;
 
   DebugOptions({
+    this.dataSampling,
     this.enableHotKeyLogging,
   });
 
   DebugOptions.fromJson(core.Map json_)
       : this(
+          dataSampling: json_.containsKey('dataSampling')
+              ? DataSamplingConfig.fromJson(
+                  json_['dataSampling'] as core.Map<core.String, core.dynamic>)
+              : null,
           enableHotKeyLogging: json_.containsKey('enableHotKeyLogging')
               ? json_['enableHotKeyLogging'] as core.bool
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (dataSampling != null) 'dataSampling': dataSampling!,
         if (enableHotKeyLogging != null)
           'enableHotKeyLogging': enableHotKeyLogging!,
       };
@@ -4352,6 +4500,12 @@ class Environment {
   /// bucket.storage.googleapis.com/{object}
   core.String? tempStoragePrefix;
 
+  /// Whether the job uses the new streaming engine billing model based on
+  /// resource usage.
+  ///
+  /// Output only.
+  core.bool? useStreamingEngineResourceBasedBilling;
+
   /// A description of the process that generated the request.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
@@ -4401,6 +4555,7 @@ class Environment {
     this.serviceOptions,
     this.shuffleMode,
     this.tempStoragePrefix,
+    this.useStreamingEngineResourceBasedBilling,
     this.userAgent,
     this.version,
     this.workerPools,
@@ -4455,6 +4610,10 @@ class Environment {
           tempStoragePrefix: json_.containsKey('tempStoragePrefix')
               ? json_['tempStoragePrefix'] as core.String
               : null,
+          useStreamingEngineResourceBasedBilling:
+              json_.containsKey('useStreamingEngineResourceBasedBilling')
+                  ? json_['useStreamingEngineResourceBasedBilling'] as core.bool
+                  : null,
           userAgent: json_.containsKey('userAgent')
               ? json_['userAgent'] as core.Map<core.String, core.dynamic>
               : null,
@@ -4493,6 +4652,9 @@ class Environment {
         if (serviceOptions != null) 'serviceOptions': serviceOptions!,
         if (shuffleMode != null) 'shuffleMode': shuffleMode!,
         if (tempStoragePrefix != null) 'tempStoragePrefix': tempStoragePrefix!,
+        if (useStreamingEngineResourceBasedBilling != null)
+          'useStreamingEngineResourceBasedBilling':
+              useStreamingEngineResourceBasedBilling!,
         if (userAgent != null) 'userAgent': userAgent!,
         if (version != null) 'version': version!,
         if (workerPools != null) 'workerPools': workerPools!,
@@ -4939,9 +5101,9 @@ class FlexTemplateRuntimeEnvironment {
               ? (json_['additionalUserLabels']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -5278,10 +5440,10 @@ class HotKeyDebuggingInfo {
               ? (json_['detectedHotKeys']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     HotKeyInfo.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -5768,6 +5930,12 @@ class Job {
   /// please reach out to Cloud support team if you are interested.
   core.String? requestedState;
 
+  /// This field may ONLY be modified at runtime using the projects.jobs.update
+  /// method to adjust job behavior.
+  ///
+  /// This field has no effect when specified at job creation.
+  RuntimeUpdatableParams? runtimeUpdatableParams;
+
   /// Reserved for future use.
   ///
   /// This field is set only in responses from the server; it is ignored if it
@@ -5837,6 +6005,7 @@ class Job {
     this.replaceJobId,
     this.replacedByJobId,
     this.requestedState,
+    this.runtimeUpdatableParams,
     this.satisfiesPzs,
     this.stageStates,
     this.startTime,
@@ -5879,9 +6048,9 @@ class Job {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -5904,6 +6073,10 @@ class Job {
               : null,
           requestedState: json_.containsKey('requestedState')
               ? json_['requestedState'] as core.String
+              : null,
+          runtimeUpdatableParams: json_.containsKey('runtimeUpdatableParams')
+              ? RuntimeUpdatableParams.fromJson(json_['runtimeUpdatableParams']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           satisfiesPzs: json_.containsKey('satisfiesPzs')
               ? json_['satisfiesPzs'] as core.bool
@@ -5935,9 +6108,9 @@ class Job {
               ? (json_['transformNameMapping']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -5964,6 +6137,8 @@ class Job {
         if (replaceJobId != null) 'replaceJobId': replaceJobId!,
         if (replacedByJobId != null) 'replacedByJobId': replacedByJobId!,
         if (requestedState != null) 'requestedState': requestedState!,
+        if (runtimeUpdatableParams != null)
+          'runtimeUpdatableParams': runtimeUpdatableParams!,
         if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (stageStates != null) 'stageStates': stageStates!,
         if (startTime != null) 'startTime': startTime!,
@@ -6025,10 +6200,10 @@ class JobExecutionInfo {
       : this(
           stages: json_.containsKey('stages')
               ? (json_['stages'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     JobExecutionStageInfo.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -6156,6 +6331,9 @@ class JobMetadata {
   /// Identification of a Spanner source used in the Dataflow job.
   core.List<SpannerIODetails>? spannerDetails;
 
+  /// List of display properties to help UI filter jobs.
+  core.Map<core.String, core.String>? userDisplayProperties;
+
   JobMetadata({
     this.bigTableDetails,
     this.bigqueryDetails,
@@ -6164,6 +6342,7 @@ class JobMetadata {
     this.pubsubDetails,
     this.sdkVersion,
     this.spannerDetails,
+    this.userDisplayProperties,
   });
 
   JobMetadata.fromJson(core.Map json_)
@@ -6208,6 +6387,16 @@ class JobMetadata {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          userDisplayProperties: json_.containsKey('userDisplayProperties')
+              ? (json_['userDisplayProperties']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6218,6 +6407,8 @@ class JobMetadata {
         if (pubsubDetails != null) 'pubsubDetails': pubsubDetails!,
         if (sdkVersion != null) 'sdkVersion': sdkVersion!,
         if (spannerDetails != null) 'spannerDetails': spannerDetails!,
+        if (userDisplayProperties != null)
+          'userDisplayProperties': userDisplayProperties!,
       };
 }
 
@@ -6225,6 +6416,8 @@ class JobMetadata {
 /// of a Dataflow job.
 ///
 /// Metrics correspond to user-defined and system-defined metrics in the job.
+/// For more information, see
+/// [Dataflow job metrics](https://cloud.google.com/dataflow/docs/guides/using-monitoring-intf).
 /// This resource captures only the most recent values of each metric;
 /// time-series data can be queried for them (under the same metric names) from
 /// Cloud Monitoring.
@@ -6321,6 +6514,9 @@ class KeyRangeLocation {
   /// directory in the worker local filesystem.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? deprecatedPersistentDirectory;
 
   /// The end (exclusive) of the key range.
@@ -6436,18 +6632,18 @@ class LaunchFlexTemplateParameter {
           launchOptions: json_.containsKey('launchOptions')
               ? (json_['launchOptions'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
           parameters: json_.containsKey('parameters')
               ? (json_['parameters'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -6455,9 +6651,9 @@ class LaunchFlexTemplateParameter {
               ? (json_['transformNameMappings']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -6586,9 +6782,9 @@ class LaunchTemplateParameters {
           parameters: json_.containsKey('parameters')
               ? (json_['parameters'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -6596,9 +6792,9 @@ class LaunchTemplateParameters {
               ? (json_['transformNameMapping']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -7053,9 +7249,9 @@ class MetricStructuredName {
       : this(
           context: json_.containsKey('context')
               ? (json_['context'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -7525,6 +7721,19 @@ class ParameterMetadata {
   /// Optional.
   core.Map<core.String, core.String>? customMetadata;
 
+  /// The options shown when ENUM ParameterType is specified.
+  ///
+  /// Optional.
+  core.List<ParameterMetadataEnumOption>? enumOptions;
+
+  /// Specifies a group name for this parameter to be rendered under.
+  ///
+  /// Group header text will be rendered exactly as specified in this field.
+  /// Only considered when parent_name is NOT provided.
+  ///
+  /// Optional.
+  core.String? groupName;
+
   /// The help text to display for the parameter.
   ///
   /// Required.
@@ -7569,7 +7778,37 @@ class ParameterMetadata {
   /// write to.
   /// - "PUBSUB_TOPIC" : The parameter specifies a Pub/Sub Topic.
   /// - "PUBSUB_SUBSCRIPTION" : The parameter specifies a Pub/Sub Subscription.
+  /// - "BIGQUERY_TABLE" : The parameter specifies a BigQuery table.
+  /// - "JAVASCRIPT_UDF_FILE" : The parameter specifies a JavaScript UDF in
+  /// Cloud Storage.
+  /// - "SERVICE_ACCOUNT" : The parameter specifies a Service Account email.
+  /// - "MACHINE_TYPE" : The parameter specifies a Machine Type.
+  /// - "KMS_KEY_NAME" : The parameter specifies a KMS Key name.
+  /// - "WORKER_REGION" : The parameter specifies a Worker Region.
+  /// - "WORKER_ZONE" : The parameter specifies a Worker Zone.
+  /// - "BOOLEAN" : The parameter specifies a boolean input.
+  /// - "ENUM" : The parameter specifies an enum input.
+  /// - "NUMBER" : The parameter specifies a number input.
   core.String? paramType;
+
+  /// Specifies the name of the parent parameter.
+  ///
+  /// Used in conjunction with 'parent_trigger_values' to make this parameter
+  /// conditional (will only be rendered conditionally). Should be mappable to a
+  /// ParameterMetadata.name field.
+  ///
+  /// Optional.
+  core.String? parentName;
+
+  /// The value(s) of the 'parent_name' parameter which will trigger this
+  /// parameter to be shown.
+  ///
+  /// If left empty, ANY non-empty value in parent_name will trigger this
+  /// parameter to be shown. Only considered when this parameter is conditional
+  /// (when 'parent_name' has been provided).
+  ///
+  /// Optional.
+  core.List<core.String>? parentTriggerValues;
 
   /// Regexes that the parameter must match.
   ///
@@ -7578,11 +7817,15 @@ class ParameterMetadata {
 
   ParameterMetadata({
     this.customMetadata,
+    this.enumOptions,
+    this.groupName,
     this.helpText,
     this.isOptional,
     this.label,
     this.name,
     this.paramType,
+    this.parentName,
+    this.parentTriggerValues,
     this.regexes,
   });
 
@@ -7591,11 +7834,20 @@ class ParameterMetadata {
           customMetadata: json_.containsKey('customMetadata')
               ? (json_['customMetadata'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
+              : null,
+          enumOptions: json_.containsKey('enumOptions')
+              ? (json_['enumOptions'] as core.List)
+                  .map((value) => ParameterMetadataEnumOption.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          groupName: json_.containsKey('groupName')
+              ? json_['groupName'] as core.String
               : null,
           helpText: json_.containsKey('helpText')
               ? json_['helpText'] as core.String
@@ -7609,6 +7861,14 @@ class ParameterMetadata {
           paramType: json_.containsKey('paramType')
               ? json_['paramType'] as core.String
               : null,
+          parentName: json_.containsKey('parentName')
+              ? json_['parentName'] as core.String
+              : null,
+          parentTriggerValues: json_.containsKey('parentTriggerValues')
+              ? (json_['parentTriggerValues'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           regexes: json_.containsKey('regexes')
               ? (json_['regexes'] as core.List)
                   .map((value) => value as core.String)
@@ -7618,12 +7878,58 @@ class ParameterMetadata {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (customMetadata != null) 'customMetadata': customMetadata!,
+        if (enumOptions != null) 'enumOptions': enumOptions!,
+        if (groupName != null) 'groupName': groupName!,
         if (helpText != null) 'helpText': helpText!,
         if (isOptional != null) 'isOptional': isOptional!,
         if (label != null) 'label': label!,
         if (name != null) 'name': name!,
         if (paramType != null) 'paramType': paramType!,
+        if (parentName != null) 'parentName': parentName!,
+        if (parentTriggerValues != null)
+          'parentTriggerValues': parentTriggerValues!,
         if (regexes != null) 'regexes': regexes!,
+      };
+}
+
+/// ParameterMetadataEnumOption specifies the option shown in the enum form.
+class ParameterMetadataEnumOption {
+  /// The description to display for the enum option.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// The label to display for the enum option.
+  ///
+  /// Optional.
+  core.String? label;
+
+  /// The value of the enum option.
+  ///
+  /// Required.
+  core.String? value;
+
+  ParameterMetadataEnumOption({
+    this.description,
+    this.label,
+    this.value,
+  });
+
+  ParameterMetadataEnumOption.fromJson(core.Map json_)
+      : this(
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          label:
+              json_.containsKey('label') ? json_['label'] as core.String : null,
+          value:
+              json_.containsKey('value') ? json_['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (label != null) 'label': label!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -7724,10 +8030,15 @@ class PipelineDescription {
   /// them.
   core.List<TransformSummary>? originalPipelineTransform;
 
+  /// A hash value of the submitted pipeline portable graph step names if
+  /// exists.
+  core.String? stepNamesHash;
+
   PipelineDescription({
     this.displayData,
     this.executionPipelineStage,
     this.originalPipelineTransform,
+    this.stepNamesHash,
   });
 
   PipelineDescription.fromJson(core.Map json_)
@@ -7751,6 +8062,9 @@ class PipelineDescription {
                           value as core.Map<core.String, core.dynamic>))
                       .toList()
                   : null,
+          stepNamesHash: json_.containsKey('stepNamesHash')
+              ? json_['stepNamesHash'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7759,6 +8073,7 @@ class PipelineDescription {
           'executionPipelineStage': executionPipelineStage!,
         if (originalPipelineTransform != null)
           'originalPipelineTransform': originalPipelineTransform!,
+        if (stepNamesHash != null) 'stepNamesHash': stepNamesHash!,
       };
 }
 
@@ -7921,6 +8236,9 @@ class PubsubLocation {
   /// Indicates whether the pipeline allows late-arriving data.
   core.bool? dropLateData;
 
+  /// If true, then this location represents dynamic topics.
+  core.bool? dynamicDestinations;
+
   /// If set, contains a pubsub label from which to extract record ids.
   ///
   /// If left empty, record deduplication will be strictly best effort.
@@ -7947,6 +8265,7 @@ class PubsubLocation {
 
   PubsubLocation({
     this.dropLateData,
+    this.dynamicDestinations,
     this.idLabel,
     this.subscription,
     this.timestampLabel,
@@ -7959,6 +8278,9 @@ class PubsubLocation {
       : this(
           dropLateData: json_.containsKey('dropLateData')
               ? json_['dropLateData'] as core.bool
+              : null,
+          dynamicDestinations: json_.containsKey('dynamicDestinations')
+              ? json_['dynamicDestinations'] as core.bool
               : null,
           idLabel: json_.containsKey('idLabel')
               ? json_['idLabel'] as core.String
@@ -7981,6 +8303,8 @@ class PubsubLocation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dropLateData != null) 'dropLateData': dropLateData!,
+        if (dynamicDestinations != null)
+          'dynamicDestinations': dynamicDestinations!,
         if (idLabel != null) 'idLabel': idLabel!,
         if (subscription != null) 'subscription': subscription!,
         if (timestampLabel != null) 'timestampLabel': timestampLabel!,
@@ -8025,29 +8349,6 @@ class PubsubSnapshotMetadata {
         if (expireTime != null) 'expireTime': expireTime!,
         if (snapshotName != null) 'snapshotName': snapshotName!,
         if (topicName != null) 'topicName': topicName!,
-      };
-}
-
-/// Information about a validated query.
-class QueryInfo {
-  /// Includes an entry for each satisfied QueryProperty.
-  core.List<core.String>? queryProperty;
-
-  QueryInfo({
-    this.queryProperty,
-  });
-
-  QueryInfo.fromJson(core.Map json_)
-      : this(
-          queryProperty: json_.containsKey('queryProperty')
-              ? (json_['queryProperty'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (queryProperty != null) 'queryProperty': queryProperty!,
       };
 }
 
@@ -8247,10 +8548,10 @@ class ResourceUtilizationReport {
           containers: json_.containsKey('containers')
               ? (json_['containers'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     ResourceUtilizationReport.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -8282,6 +8583,8 @@ typedef ResourceUtilizationReportResponse = $Empty;
 class RuntimeEnvironment {
   /// Additional experiment flags for the job, specified with the
   /// `--experiments` option.
+  ///
+  /// Optional.
   core.List<core.String>? additionalExperiments;
 
   /// Additional user labels to be specified for the job.
@@ -8290,17 +8593,31 @@ class RuntimeEnvironment {
   /// [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
   /// page. An object containing a list of "key": value pairs. Example: {
   /// "name": "wrench", "mass": "1kg", "count": "3" }.
+  ///
+  /// Optional.
   core.Map<core.String, core.String>? additionalUserLabels;
 
   /// Whether to bypass the safety checks for the job's temporary directory.
   ///
   /// Use with caution.
+  ///
+  /// Optional.
   core.bool? bypassTempDirValidation;
 
+  /// The disk size, in gigabytes, to use on each remote Compute Engine worker
+  /// instance.
+  ///
+  /// Optional.
+  core.int? diskSizeGb;
+
   /// Whether to enable Streaming Engine for the job.
+  ///
+  /// Optional.
   core.bool? enableStreamingEngine;
 
   /// Configuration for VM IPs.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "WORKER_IP_UNSPECIFIED" : The configuration is unknown, or unspecified.
   /// - "WORKER_IP_PUBLIC" : Workers should have public IP addresses.
@@ -8310,26 +8627,42 @@ class RuntimeEnvironment {
   /// Name for the Cloud KMS key for the job.
   ///
   /// Key format is: projects//locations//keyRings//cryptoKeys/
+  ///
+  /// Optional.
   core.String? kmsKeyName;
 
   /// The machine type to use for the job.
   ///
   /// Defaults to the value from the template if not specified.
+  ///
+  /// Optional.
   core.String? machineType;
 
   /// The maximum number of Google Compute Engine instances to be made available
   /// to your pipeline during execution, from 1 to 1000.
+  ///
+  /// The default value is 1.
+  ///
+  /// Optional.
   core.int? maxWorkers;
 
   /// Network to which VMs will be assigned.
   ///
   /// If empty or unspecified, the service will use the network "default".
+  ///
+  /// Optional.
   core.String? network;
 
   /// The initial number of Google Compute Engine instances for the job.
+  ///
+  /// The default value is 11.
+  ///
+  /// Optional.
   core.int? numWorkers;
 
   /// The email address of the service account to run the job as.
+  ///
+  /// Optional.
   core.String? serviceAccountEmail;
 
   /// Subnetwork to which VMs will be assigned, if desired.
@@ -8339,11 +8672,15 @@ class RuntimeEnvironment {
   /// "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK"
   /// or "regions/REGION/subnetworks/SUBNETWORK". If the subnetwork is located
   /// in a Shared VPC network, you must use the complete URL.
+  ///
+  /// Optional.
   core.String? subnetwork;
 
   /// The Cloud Storage path to use for temporary files.
   ///
   /// Must be a valid Cloud Storage URL, beginning with `gs://`.
+  ///
+  /// Required.
   core.String? tempLocation;
 
   /// The Compute Engine region
@@ -8352,6 +8689,8 @@ class RuntimeEnvironment {
   ///
   /// Mutually exclusive with worker_zone. If neither worker_region nor
   /// worker_zone is specified, default to the control plane's region.
+  ///
+  /// Required.
   core.String? workerRegion;
 
   /// The Compute Engine zone
@@ -8362,6 +8701,8 @@ class RuntimeEnvironment {
   /// worker_zone is specified, a zone in the control plane's region is chosen
   /// based on available capacity. If both `worker_zone` and `zone` are set,
   /// `worker_zone` takes precedence.
+  ///
+  /// Optional.
   core.String? workerZone;
 
   /// The Compute Engine
@@ -8369,12 +8710,15 @@ class RuntimeEnvironment {
   /// for launching worker instances to run your pipeline.
   ///
   /// In the future, worker_zone will take precedence.
+  ///
+  /// Optional.
   core.String? zone;
 
   RuntimeEnvironment({
     this.additionalExperiments,
     this.additionalUserLabels,
     this.bypassTempDirValidation,
+    this.diskSizeGb,
     this.enableStreamingEngine,
     this.ipConfiguration,
     this.kmsKeyName,
@@ -8401,14 +8745,17 @@ class RuntimeEnvironment {
               ? (json_['additionalUserLabels']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
           bypassTempDirValidation: json_.containsKey('bypassTempDirValidation')
               ? json_['bypassTempDirValidation'] as core.bool
+              : null,
+          diskSizeGb: json_.containsKey('diskSizeGb')
+              ? json_['diskSizeGb'] as core.int
               : null,
           enableStreamingEngine: json_.containsKey('enableStreamingEngine')
               ? json_['enableStreamingEngine'] as core.bool
@@ -8456,6 +8803,7 @@ class RuntimeEnvironment {
           'additionalUserLabels': additionalUserLabels!,
         if (bypassTempDirValidation != null)
           'bypassTempDirValidation': bypassTempDirValidation!,
+        if (diskSizeGb != null) 'diskSizeGb': diskSizeGb!,
         if (enableStreamingEngine != null)
           'enableStreamingEngine': enableStreamingEngine!,
         if (ipConfiguration != null) 'ipConfiguration': ipConfiguration!,
@@ -8507,6 +8855,42 @@ class RuntimeMetadata {
       };
 }
 
+/// Additional job parameters that can only be updated during runtime using the
+/// projects.jobs.update method.
+///
+/// These fields have no effect when specified during job creation.
+class RuntimeUpdatableParams {
+  /// The maximum number of workers to cap autoscaling at.
+  ///
+  /// This field is currently only supported for Streaming Engine jobs.
+  core.int? maxNumWorkers;
+
+  /// The minimum number of workers to scale down to.
+  ///
+  /// This field is currently only supported for Streaming Engine jobs.
+  core.int? minNumWorkers;
+
+  RuntimeUpdatableParams({
+    this.maxNumWorkers,
+    this.minNumWorkers,
+  });
+
+  RuntimeUpdatableParams.fromJson(core.Map json_)
+      : this(
+          maxNumWorkers: json_.containsKey('maxNumWorkers')
+              ? json_['maxNumWorkers'] as core.int
+              : null,
+          minNumWorkers: json_.containsKey('minNumWorkers')
+              ? json_['minNumWorkers'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (maxNumWorkers != null) 'maxNumWorkers': maxNumWorkers!,
+        if (minNumWorkers != null) 'minNumWorkers': minNumWorkers!,
+      };
+}
+
 /// SDK Information.
 class SDKInfo {
   /// The SDK Language.
@@ -8542,6 +8926,61 @@ class SDKInfo {
   core.Map<core.String, core.dynamic> toJson() => {
         if (language != null) 'language': language!,
         if (version != null) 'version': version!,
+      };
+}
+
+/// A bug found in the Dataflow SDK.
+class SdkBug {
+  /// How severe the SDK bug is.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "SEVERITY_UNSPECIFIED" : A bug of unknown severity.
+  /// - "NOTICE" : A minor bug that that may reduce reliability or performance
+  /// for some jobs. Impact will be minimal or non-existent for most jobs.
+  /// - "WARNING" : A bug that has some likelihood of causing performance
+  /// degradation, data loss, or job failures.
+  /// - "SEVERE" : A bug with extremely significant impact. Jobs may fail
+  /// erroneously, performance may be severely degraded, and data loss may be
+  /// very likely.
+  core.String? severity;
+
+  /// Describes the impact of this SDK bug.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Unknown issue with this SDK.
+  /// - "GENERAL" : Catch-all for SDK bugs that don't fit in the below
+  /// categories.
+  /// - "PERFORMANCE" : Using this version of the SDK may result in degraded
+  /// performance.
+  /// - "DATALOSS" : Using this version of the SDK may cause data loss.
+  core.String? type;
+
+  /// Link to more information on the bug.
+  ///
+  /// Output only.
+  core.String? uri;
+
+  SdkBug({
+    this.severity,
+    this.type,
+    this.uri,
+  });
+
+  SdkBug.fromJson(core.Map json_)
+      : this(
+          severity: json_.containsKey('severity')
+              ? json_['severity'] as core.String
+              : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (severity != null) 'severity': severity!,
+        if (type != null) 'type': type!,
+        if (uri != null) 'uri': uri!,
       };
 }
 
@@ -8605,6 +9044,11 @@ class SdkHarnessContainerImage {
 
 /// The version of the SDK used to run the job.
 class SdkVersion {
+  /// Known bugs found in this SDK version.
+  ///
+  /// Output only.
+  core.List<SdkBug>? bugs;
+
   /// The support status for this SDK version.
   /// Possible string values are:
   /// - "UNKNOWN" : Cloud Dataflow is unaware of this version.
@@ -8624,6 +9068,7 @@ class SdkVersion {
   core.String? versionDisplayName;
 
   SdkVersion({
+    this.bugs,
     this.sdkSupportStatus,
     this.version,
     this.versionDisplayName,
@@ -8631,6 +9076,12 @@ class SdkVersion {
 
   SdkVersion.fromJson(core.Map json_)
       : this(
+          bugs: json_.containsKey('bugs')
+              ? (json_['bugs'] as core.List)
+                  .map((value) => SdkBug.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           sdkSupportStatus: json_.containsKey('sdkSupportStatus')
               ? json_['sdkSupportStatus'] as core.String
               : null,
@@ -8643,6 +9094,7 @@ class SdkVersion {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (bugs != null) 'bugs': bugs!,
         if (sdkSupportStatus != null) 'sdkSupportStatus': sdkSupportStatus!,
         if (version != null) 'version': version!,
         if (versionDisplayName != null)
@@ -9471,6 +9923,9 @@ class SourceSplitOptions {
   core.String? desiredBundleSizeBytes;
 
   /// DEPRECATED in favor of desired_bundle_size_bytes.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? desiredShardSizeBytes;
 
   SourceSplitOptions({
@@ -9563,6 +10018,9 @@ class SourceSplitResponse {
   core.String? outcome;
 
   /// DEPRECATED in favor of bundles.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<SourceSplitShard>? shards;
 
   SourceSplitResponse({
@@ -9911,15 +10369,16 @@ typedef Status = $Status;
 ///
 /// A job consists of multiple steps, each of which performs some specific
 /// operation as part of the overall job. Data is typically passed from one step
-/// to another as part of the job. Here's an example of a sequence of steps
-/// which together implement a Map-Reduce job: * Read a collection of data from
-/// some source, parsing the collection's elements. * Validate the elements. *
-/// Apply a user-defined function to map each element to some value and extract
-/// an element-specific key value. * Group elements with the same key into a
-/// single element with that key, transforming a multiply-keyed collection into
-/// a uniquely-keyed collection. * Write the elements out to some data sink.
-/// Note that the Cloud Dataflow service may be used to run many different types
-/// of jobs, not just Map-Reduce.
+/// to another as part of the job. **Note:** The properties of this object are
+/// not stable and might change. Here's an example of a sequence of steps which
+/// together implement a Map-Reduce job: * Read a collection of data from some
+/// source, parsing the collection's elements. * Validate the elements. * Apply
+/// a user-defined function to map each element to some value and extract an
+/// element-specific key value. * Group elements with the same key into a single
+/// element with that key, transforming a multiply-keyed collection into a
+/// uniquely-keyed collection. * Write the elements out to some data sink. Note
+/// that the Cloud Dataflow service may be used to run many different types of
+/// jobs, not just Map-Reduce.
 class Step {
   /// The kind of step in the Cloud Dataflow job.
   core.String? kind;
@@ -9958,6 +10417,38 @@ class Step {
         if (kind != null) 'kind': kind!,
         if (name != null) 'name': name!,
         if (properties != null) 'properties': properties!,
+      };
+}
+
+/// Information for a straggler.
+class Straggler {
+  /// Batch straggler identification and debugging information.
+  StragglerInfo? batchStraggler;
+
+  /// Streaming straggler identification and debugging information.
+  StreamingStragglerInfo? streamingStraggler;
+
+  Straggler({
+    this.batchStraggler,
+    this.streamingStraggler,
+  });
+
+  Straggler.fromJson(core.Map json_)
+      : this(
+          batchStraggler: json_.containsKey('batchStraggler')
+              ? StragglerInfo.fromJson(json_['batchStraggler']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          streamingStraggler: json_.containsKey('streamingStraggler')
+              ? StreamingStragglerInfo.fromJson(json_['streamingStraggler']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (batchStraggler != null) 'batchStraggler': batchStraggler!,
+        if (streamingStraggler != null)
+          'streamingStraggler': streamingStraggler!,
       };
 }
 
@@ -10006,10 +10497,10 @@ class StragglerInfo {
       : this(
           causes: json_.containsKey('causes')
               ? (json_['causes'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     StragglerDebuggingInfo.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -10026,6 +10517,9 @@ class StragglerInfo {
 
 /// Summarized straggler identification details.
 class StragglerSummary {
+  /// The most recent stragglers.
+  core.List<Straggler>? recentStragglers;
+
   /// Aggregated counts of straggler causes, keyed by the string representation
   /// of the StragglerCause enum.
   core.Map<core.String, core.String>? stragglerCauseCount;
@@ -10034,19 +10528,26 @@ class StragglerSummary {
   core.String? totalStragglerCount;
 
   StragglerSummary({
+    this.recentStragglers,
     this.stragglerCauseCount,
     this.totalStragglerCount,
   });
 
   StragglerSummary.fromJson(core.Map json_)
       : this(
+          recentStragglers: json_.containsKey('recentStragglers')
+              ? (json_['recentStragglers'] as core.List)
+                  .map((value) => Straggler.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           stragglerCauseCount: json_.containsKey('stragglerCauseCount')
               ? (json_['stragglerCauseCount']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -10056,6 +10557,7 @@ class StragglerSummary {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (recentStragglers != null) 'recentStragglers': recentStragglers!,
         if (stragglerCauseCount != null)
           'stragglerCauseCount': stragglerCauseCount!,
         if (totalStragglerCount != null)
@@ -10194,9 +10696,9 @@ class StreamingComputationConfig {
                   ? (json_['transformUserNameToStateFamily']
                           as core.Map<core.String, core.dynamic>)
                       .map(
-                      (key, item) => core.MapEntry(
+                      (key, value) => core.MapEntry(
                         key,
-                        item as core.String,
+                        value as core.String,
                       ),
                     )
                   : null,
@@ -10359,9 +10861,9 @@ class StreamingConfigTask {
                   ? (json_['userStepToStateFamilyNameMap']
                           as core.Map<core.String, core.dynamic>)
                       .map(
-                      (key, item) => core.MapEntry(
+                      (key, value) => core.MapEntry(
                         key,
-                        item as core.String,
+                        value as core.String,
                       ),
                     )
                   : null,
@@ -10496,6 +10998,60 @@ class StreamingStageLocation {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (streamId != null) 'streamId': streamId!,
+      };
+}
+
+/// Information useful for streaming straggler identification and debugging.
+class StreamingStragglerInfo {
+  /// The event-time watermark lag at the time of the straggler detection.
+  core.String? dataWatermarkLag;
+
+  /// End time of this straggler.
+  core.String? endTime;
+
+  /// Start time of this straggler.
+  core.String? startTime;
+
+  /// The system watermark lag at the time of the straggler detection.
+  core.String? systemWatermarkLag;
+
+  /// Name of the worker where the straggler was detected.
+  core.String? workerName;
+
+  StreamingStragglerInfo({
+    this.dataWatermarkLag,
+    this.endTime,
+    this.startTime,
+    this.systemWatermarkLag,
+    this.workerName,
+  });
+
+  StreamingStragglerInfo.fromJson(core.Map json_)
+      : this(
+          dataWatermarkLag: json_.containsKey('dataWatermarkLag')
+              ? json_['dataWatermarkLag'] as core.String
+              : null,
+          endTime: json_.containsKey('endTime')
+              ? json_['endTime'] as core.String
+              : null,
+          startTime: json_.containsKey('startTime')
+              ? json_['startTime'] as core.String
+              : null,
+          systemWatermarkLag: json_.containsKey('systemWatermarkLag')
+              ? json_['systemWatermarkLag'] as core.String
+              : null,
+          workerName: json_.containsKey('workerName')
+              ? json_['workerName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataWatermarkLag != null) 'dataWatermarkLag': dataWatermarkLag!,
+        if (endTime != null) 'endTime': endTime!,
+        if (startTime != null) 'startTime': startTime!,
+        if (systemWatermarkLag != null)
+          'systemWatermarkLag': systemWatermarkLag!,
+        if (workerName != null) 'workerName': workerName!,
       };
 }
 
@@ -10852,9 +11408,9 @@ class TopologyConfig {
                   ? (json_['userStageToComputationNameMap']
                           as core.Map<core.String, core.dynamic>)
                       .map(
-                      (key, item) => core.MapEntry(
+                      (key, value) => core.MapEntry(
                         key,
-                        item as core.String,
+                        value as core.String,
                       ),
                     )
                   : null,
@@ -10945,38 +11501,6 @@ class TransformSummary {
         if (name != null) 'name': name!,
         if (outputCollectionName != null)
           'outputCollectionName': outputCollectionName!,
-      };
-}
-
-/// Response to the validation request.
-class ValidateResponse {
-  /// Will be empty if validation succeeds.
-  core.String? errorMessage;
-
-  /// Information about the validated query.
-  ///
-  /// Not defined if validation fails.
-  QueryInfo? queryInfo;
-
-  ValidateResponse({
-    this.errorMessage,
-    this.queryInfo,
-  });
-
-  ValidateResponse.fromJson(core.Map json_)
-      : this(
-          errorMessage: json_.containsKey('errorMessage')
-              ? json_['errorMessage'] as core.String
-              : null,
-          queryInfo: json_.containsKey('queryInfo')
-              ? QueryInfo.fromJson(
-                  json_['queryInfo'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (errorMessage != null) 'errorMessage': errorMessage!,
-        if (queryInfo != null) 'queryInfo': queryInfo!,
       };
 }
 
@@ -11270,9 +11794,15 @@ class WorkItemServiceState {
   ApproximateSplitRequest? splitRequest;
 
   /// DEPRECATED in favor of split_request.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   ApproximateProgress? suggestedStopPoint;
 
   /// Obsolete, always empty.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Position? suggestedStopPosition;
 
   WorkItemServiceState({
@@ -11366,9 +11896,15 @@ class WorkItemStatus {
   core.List<Status>? errors;
 
   /// DEPRECATED in favor of counter_updates.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<MetricUpdate>? metricUpdates;
 
   /// DEPRECATED in favor of reported_progress.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   ApproximateProgress? progress;
 
   /// The report index.
@@ -11391,6 +11927,9 @@ class WorkItemStatus {
   core.String? requestedLeaseDuration;
 
   /// DEPRECATED in favor of dynamic_source_split.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   SourceFork? sourceFork;
 
   /// If the work item represented a SourceOperationRequest, and the work is
@@ -11726,9 +12265,9 @@ class WorkerLifecycleEvent {
               json_.containsKey('event') ? json_['event'] as core.String : null,
           metadata: json_.containsKey('metadata')
               ? (json_['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -11744,6 +12283,11 @@ class WorkerLifecycleEvent {
 
 /// WorkerMessage provides information to the backend about a worker.
 class WorkerMessage {
+  /// Contains metrics related to go/dataflow-data-sampling-telemetry.
+  ///
+  /// Optional.
+  DataSamplingReport? dataSamplingReport;
+
   /// Labels are used to group WorkerMessages.
   ///
   /// For example, a worker_message about a particular container might have the
@@ -11772,7 +12316,11 @@ class WorkerMessage {
   /// Shutdown notice by workers.
   WorkerShutdownNotice? workerShutdownNotice;
 
+  /// Thread scaling information reported by workers.
+  WorkerThreadScalingReport? workerThreadScalingReport;
+
   WorkerMessage({
+    this.dataSamplingReport,
     this.labels,
     this.time,
     this.workerHealthReport,
@@ -11780,15 +12328,20 @@ class WorkerMessage {
     this.workerMessageCode,
     this.workerMetrics,
     this.workerShutdownNotice,
+    this.workerThreadScalingReport,
   });
 
   WorkerMessage.fromJson(core.Map json_)
       : this(
+          dataSamplingReport: json_.containsKey('dataSamplingReport')
+              ? DataSamplingReport.fromJson(json_['dataSamplingReport']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -11813,9 +12366,17 @@ class WorkerMessage {
               ? WorkerShutdownNotice.fromJson(json_['workerShutdownNotice']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          workerThreadScalingReport:
+              json_.containsKey('workerThreadScalingReport')
+                  ? WorkerThreadScalingReport.fromJson(
+                      json_['workerThreadScalingReport']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (dataSamplingReport != null)
+          'dataSamplingReport': dataSamplingReport!,
         if (labels != null) 'labels': labels!,
         if (time != null) 'time': time!,
         if (workerHealthReport != null)
@@ -11826,6 +12387,8 @@ class WorkerMessage {
         if (workerMetrics != null) 'workerMetrics': workerMetrics!,
         if (workerShutdownNotice != null)
           'workerShutdownNotice': workerShutdownNotice!,
+        if (workerThreadScalingReport != null)
+          'workerThreadScalingReport': workerThreadScalingReport!,
       };
 }
 
@@ -11896,10 +12459,14 @@ class WorkerMessageResponse {
   /// Service's response to shutdown notice (currently empty).
   WorkerShutdownNoticeResponse? workerShutdownNoticeResponse;
 
+  /// Service's thread scaling recommendation for workers.
+  WorkerThreadScalingReportResponse? workerThreadScalingReportResponse;
+
   WorkerMessageResponse({
     this.workerHealthReportResponse,
     this.workerMetricsResponse,
     this.workerShutdownNoticeResponse,
+    this.workerThreadScalingReportResponse,
   });
 
   WorkerMessageResponse.fromJson(core.Map json_)
@@ -11921,6 +12488,12 @@ class WorkerMessageResponse {
                       json_['workerShutdownNoticeResponse']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          workerThreadScalingReportResponse:
+              json_.containsKey('workerThreadScalingReportResponse')
+                  ? WorkerThreadScalingReportResponse.fromJson(
+                      json_['workerThreadScalingReportResponse']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -11930,6 +12503,9 @@ class WorkerMessageResponse {
           'workerMetricsResponse': workerMetricsResponse!,
         if (workerShutdownNoticeResponse != null)
           'workerShutdownNoticeResponse': workerShutdownNoticeResponse!,
+        if (workerThreadScalingReportResponse != null)
+          'workerThreadScalingReportResponse':
+              workerThreadScalingReportResponse!,
       };
 }
 
@@ -12140,9 +12716,9 @@ class WorkerPool {
               : null,
           metadata: json_.containsKey('metadata')
               ? (json_['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -12326,6 +12902,50 @@ class WorkerShutdownNotice {
 
 /// Service-side response to WorkerMessage issuing shutdown notice.
 typedef WorkerShutdownNoticeResponse = $Empty;
+
+/// Contains information about the thread scaling information of a worker.
+class WorkerThreadScalingReport {
+  /// Current number of active threads in a worker.
+  core.int? currentThreadCount;
+
+  WorkerThreadScalingReport({
+    this.currentThreadCount,
+  });
+
+  WorkerThreadScalingReport.fromJson(core.Map json_)
+      : this(
+          currentThreadCount: json_.containsKey('currentThreadCount')
+              ? json_['currentThreadCount'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (currentThreadCount != null)
+          'currentThreadCount': currentThreadCount!,
+      };
+}
+
+/// Contains the thread scaling recommendation for a worker from the backend.
+class WorkerThreadScalingReportResponse {
+  /// Recommended number of threads for a worker.
+  core.int? recommendedThreadCount;
+
+  WorkerThreadScalingReportResponse({
+    this.recommendedThreadCount,
+  });
+
+  WorkerThreadScalingReportResponse.fromJson(core.Map json_)
+      : this(
+          recommendedThreadCount: json_.containsKey('recommendedThreadCount')
+              ? json_['recommendedThreadCount'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (recommendedThreadCount != null)
+          'recommendedThreadCount': recommendedThreadCount!,
+      };
+}
 
 /// An instruction that writes records.
 ///

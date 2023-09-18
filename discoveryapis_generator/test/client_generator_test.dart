@@ -33,7 +33,8 @@ void main() {
       final pubspecFile = File(p.join(dataPath, 'pubspec.yaml'));
       pubspecFile.copySync(p.join(outputDir.path, 'pubspec.yaml'));
       // Generate the client stubs.
-      final results = generateApiFiles(inputPath, outputDir.path);
+      final results =
+          generateApiFiles(inputPath, outputDir.path, updatePubspec: true);
       expect(results.length, 2, reason: 'But got `$results`');
       expect(results[0].success, isTrue);
       expect(results[1].info, isTrue);
@@ -54,16 +55,19 @@ void main() {
       final libDir = Directory(p.join(outputDir.path, 'lib'))..createSync();
       final messageFile = File(p.join(libDir.path, 'messages.dart'));
       // Build import map
-      final importUri = p.toUri(messageFile.path);
+      final importUri = p.toUri(messageFile.path).toString();
+      const importItems = {
+        'ToyResponse',
+        'ToyResourceResponse',
+        'NestedResponse',
+        'ToyMapResponse',
+        'ToyRequest',
+        'ToyAgeRequest',
+        'ToyAgeRequest2',
+        'Empty',
+      };
       final importMap = {
-        'ToyResponse': importUri.toString(),
-        'ToyResourceResponse': importUri.toString(),
-        'NestedResponse': importUri.toString(),
-        'ToyMapResponse': importUri.toString(),
-        'ToyRequest': importUri.toString(),
-        'ToyAgeRequest': importUri.toString(),
-        'ToyAgeRequest2': importUri.toString(),
-        'Empty': importUri.toString(),
+        for (var item in importItems) item: importUri,
       };
       final description =
           File(p.join(dataPath, 'rest', 'toyapi.json')).readAsStringSync();

@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud Tool Results API - v1beta3
@@ -31,7 +30,7 @@
 /// - [ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResource]
 ///         - [ProjectsHistoriesExecutionsStepsTestCasesResource]
 ///         - [ProjectsHistoriesExecutionsStepsThumbnailsResource]
-library toolresults.v1beta3;
+library toolresults_v1beta3;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -40,7 +39,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -1191,7 +1189,7 @@ class ProjectsHistoriesExecutionsStepsResource {
   /// May return any of the following canonical error codes: - PERMISSION_DENIED
   /// - if the user is not authorized to write project - INVALID_ARGUMENT - if
   /// the request is malformed - FAILED_PRECONDITION - if the requested state
-  /// transition is illegal, e.g try to upload a duplicate xml file or a file
+  /// transition is illegal, e.g. try to upload a duplicate xml file or a file
   /// too large. - NOT_FOUND - if the containing Execution does not exist
   ///
   /// [request] - The metadata request object.
@@ -4607,13 +4605,13 @@ typedef Status = $Status;
 /// instance two steps might have the same start time if some operations are
 /// done in parallel). Here is an example, let's consider that we have a
 /// continuous build is executing a test runner for each iteration. The workflow
-/// would look like: - user creates a Execution with id 1 - user creates an
+/// would look like: - user creates a Execution with id 1 - user creates a
 /// TestExecutionStep with id 100 for Execution 1 - user update
 /// TestExecutionStep with id 100 to add a raw xml log + the service parses the
 /// xml logs and returns a TestExecutionStep with updated TestResult(s). - user
 /// update the status of TestExecutionStep with id 100 to COMPLETE A Step can be
 /// updated until its state is set to COMPLETE at which points it becomes
-/// immutable. Next tag: 27
+/// immutable.
 class Step {
   /// The time when the step status was set to complete.
   ///
@@ -5318,6 +5316,9 @@ class TestIssue {
   core.String? severity;
 
   /// Deprecated in favor of stack trace fields inside specific warnings.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   StackTrace? stackTrace;
 
   /// Type of issue.
@@ -5370,6 +5371,7 @@ class TestIssue {
   /// - "logcatCollectionError" : Problems detected while collecting logcat
   /// - "detectedAppSplashScreen" : Robo detected a splash screen provided by
   /// app (vs. Android OS splash screen).
+  /// - "assetIssue" : There was an issue with the assets in this test.
   core.String? type;
 
   /// Warning message with additional details of the issue.

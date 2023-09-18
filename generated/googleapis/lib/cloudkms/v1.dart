@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud Key Management Service (KMS) API - v1
@@ -23,12 +22,13 @@
 ///
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsEkmConfigResource]
 ///     - [ProjectsLocationsEkmConnectionsResource]
 ///     - [ProjectsLocationsKeyRingsResource]
 ///       - [ProjectsLocationsKeyRingsCryptoKeysResource]
 ///         - [ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource]
 ///       - [ProjectsLocationsKeyRingsImportJobsResource]
-library cloudkms.v1;
+library cloudkms_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -37,7 +37,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -79,6 +78,8 @@ class ProjectsResource {
 class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsEkmConfigResource get ekmConfig =>
+      ProjectsLocationsEkmConfigResource(_requester);
   ProjectsLocationsEkmConnectionsResource get ekmConnections =>
       ProjectsLocationsEkmConnectionsResource(_requester);
   ProjectsLocationsKeyRingsResource get keyRings =>
@@ -165,6 +166,41 @@ class ProjectsLocationsResource {
     return Location.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Returns the EkmConfig singleton resource for a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the EkmConfig to get.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/ekmConfig$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [EkmConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<EkmConfig> getEkmConfig(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return EkmConfig.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Lists information about the supported locations for this service.
   ///
   /// Request parameters:
@@ -214,6 +250,210 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the EkmConfig singleton resource for a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. The resource name for the EkmConfig in the format
+  /// `projects / * /locations / * /ekmConfig`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/ekmConfig$`.
+  ///
+  /// [updateMask] - Required. List of fields to be updated in this request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [EkmConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<EkmConfig> updateEkmConfig(
+    EkmConfig request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return EkmConfig.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsEkmConfigResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsEkmConfigResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/ekmConfig$`.
+  ///
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy. Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected. Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset. The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1. To learn which resources support
+  /// conditions in their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+    core.String resource, {
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (options_requestedPolicyVersion != null)
+        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
+  /// and `PERMISSION_DENIED` errors.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/ekmConfig$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+    SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a `NOT_FOUND` error. Note: This operation is designed to
+  /// be used for building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/ekmConfig$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestIamPermissionsResponse> testIamPermissions(
+    TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return TestIamPermissionsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -570,6 +810,48 @@ class ProjectsLocationsEkmConnectionsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Verifies that Cloud KMS can successfully connect to the external key
+  /// manager specified by an EkmConnection.
+  ///
+  /// If there is an error connecting to the EKM, this method returns a
+  /// FAILED_PRECONDITION status containing structured information as described
+  /// at https://cloud.google.com/kms/docs/reference/ekm_errors.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the EkmConnection to verify.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/ekmConnections/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [VerifyConnectivityResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<VerifyConnectivityResponse> verifyConnectivity(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':verifyConnectivity';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return VerifyConnectivityResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -1930,6 +2212,98 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Decrypts data that was originally encrypted using a raw cryptographic
+  /// mechanism.
+  ///
+  /// The CryptoKey.purpose must be RAW_ENCRYPT_DECRYPT.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the CryptoKeyVersion to use for
+  /// decryption.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/keyRings/\[^/\]+/cryptoKeys/\[^/\]+/cryptoKeyVersions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RawDecryptResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RawDecryptResponse> rawDecrypt(
+    RawDecryptRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':rawDecrypt';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return RawDecryptResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Encrypts data using portable cryptographic primitives.
+  ///
+  /// Most users should choose Encrypt and Decrypt rather than their raw
+  /// counterparts. The CryptoKey.purpose must be RAW_ENCRYPT_DECRYPT.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the CryptoKeyVersion to use for
+  /// encryption.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/keyRings/\[^/\]+/cryptoKeys/\[^/\]+/cryptoKeyVersions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RawEncryptResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RawEncryptResponse> rawEncrypt(
+    RawEncryptRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':rawEncrypt';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return RawEncryptResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Restore a CryptoKeyVersion in the DESTROY_SCHEDULED state.
   ///
   /// Upon restoration of the CryptoKeyVersion, state will be set to DISABLED,
@@ -2699,7 +3073,9 @@ class Binding {
   /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
   /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
-  /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
+  /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
+  /// (primary) that represents all the users of that domain. For example,
+  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
   /// An email address (plus unique identifier) representing a user that has
   /// been recently deleted. For example,
   /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
@@ -2715,9 +3091,7 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
-  /// that represents all the users of that domain. For example, `google.com` or
-  /// `example.com`.
+  /// the role in the binding.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
@@ -2883,48 +3257,7 @@ class Certificate {
 ///
 /// Certificates in chains are PEM-encoded and are ordered based on
 /// https://tools.ietf.org/html/rfc5246#section-7.4.2.
-class CertificateChains {
-  /// Cavium certificate chain corresponding to the attestation.
-  core.List<core.String>? caviumCerts;
-
-  /// Google card certificate chain corresponding to the attestation.
-  core.List<core.String>? googleCardCerts;
-
-  /// Google partition certificate chain corresponding to the attestation.
-  core.List<core.String>? googlePartitionCerts;
-
-  CertificateChains({
-    this.caviumCerts,
-    this.googleCardCerts,
-    this.googlePartitionCerts,
-  });
-
-  CertificateChains.fromJson(core.Map json_)
-      : this(
-          caviumCerts: json_.containsKey('caviumCerts')
-              ? (json_['caviumCerts'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          googleCardCerts: json_.containsKey('googleCardCerts')
-              ? (json_['googleCardCerts'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          googlePartitionCerts: json_.containsKey('googlePartitionCerts')
-              ? (json_['googlePartitionCerts'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (caviumCerts != null) 'caviumCerts': caviumCerts!,
-        if (googleCardCerts != null) 'googleCardCerts': googleCardCerts!,
-        if (googlePartitionCerts != null)
-          'googlePartitionCerts': googlePartitionCerts!,
-      };
-}
+typedef CertificateChains = $CertificateChains;
 
 /// A CryptoKey represents a logical key that can be used for cryptographic
 /// operations.
@@ -3004,6 +3337,10 @@ class CryptoKey {
   /// AsymmetricSign and GetPublicKey.
   /// - "ASYMMETRIC_DECRYPT" : CryptoKeys with this purpose may be used with
   /// AsymmetricDecrypt and GetPublicKey.
+  /// - "RAW_ENCRYPT_DECRYPT" : CryptoKeys with this purpose may be used with
+  /// RawEncrypt and RawDecrypt. This purpose is meant to be used for
+  /// interoperable symmetric encryption and does not support automatic
+  /// CryptoKey rotation.
   /// - "MAC" : CryptoKeys with this purpose may be used with MacSign.
   core.String? purpose;
 
@@ -3053,9 +3390,9 @@ class CryptoKey {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -3110,6 +3447,12 @@ class CryptoKeyVersion {
   /// Possible string values are:
   /// - "CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED" : Not specified.
   /// - "GOOGLE_SYMMETRIC_ENCRYPTION" : Creates symmetric encryption keys.
+  /// - "AES_128_GCM" : AES-GCM (Galois Counter Mode) using 128-bit keys.
+  /// - "AES_256_GCM" : AES-GCM (Galois Counter Mode) using 256-bit keys.
+  /// - "AES_128_CBC" : AES-CBC (Cipher Block Chaining Mode) using 128-bit keys.
+  /// - "AES_256_CBC" : AES-CBC (Cipher Block Chaining Mode) using 256-bit keys.
+  /// - "AES_128_CTR" : AES-CTR (Counter Mode) using 128-bit keys.
+  /// - "AES_256_CTR" : AES-CTR (Counter Mode) using 256-bit keys.
   /// - "RSA_SIGN_PSS_2048_SHA256" : RSASSA-PSS 2048 bit key with a SHA256
   /// digest.
   /// - "RSA_SIGN_PSS_3072_SHA256" : RSASSA-PSS 3072 bit key with a SHA256
@@ -3147,12 +3490,20 @@ class CryptoKeyVersion {
   /// - "RSA_DECRYPT_OAEP_4096_SHA1" : RSAES-OAEP 4096 bit key with a SHA1
   /// digest.
   /// - "EC_SIGN_P256_SHA256" : ECDSA on the NIST P-256 curve with a SHA256
-  /// digest.
+  /// digest. Other hash functions can also be used:
+  /// https://cloud.google.com/kms/docs/create-validate-signatures#ecdsa_support_for_other_hash_algorithms
   /// - "EC_SIGN_P384_SHA384" : ECDSA on the NIST P-384 curve with a SHA384
-  /// digest.
+  /// digest. Other hash functions can also be used:
+  /// https://cloud.google.com/kms/docs/create-validate-signatures#ecdsa_support_for_other_hash_algorithms
   /// - "EC_SIGN_SECP256K1_SHA256" : ECDSA on the non-NIST secp256k1 curve. This
-  /// curve is only supported for HSM protection level.
+  /// curve is only supported for HSM protection level. Other hash functions can
+  /// also be used:
+  /// https://cloud.google.com/kms/docs/create-validate-signatures#ecdsa_support_for_other_hash_algorithms
   /// - "HMAC_SHA256" : HMAC-SHA256 signing with a 256 bit key.
+  /// - "HMAC_SHA1" : HMAC-SHA1 signing with a 160 bit key.
+  /// - "HMAC_SHA384" : HMAC-SHA384 signing with a 384 bit key.
+  /// - "HMAC_SHA512" : HMAC-SHA512 signing with a 512 bit key.
+  /// - "HMAC_SHA224" : HMAC-SHA224 signing with a 224 bit key.
   /// - "EXTERNAL_SYMMETRIC_ENCRYPTION" : Algorithm representing symmetric
   /// encryption by an external key manager.
   core.String? algorithm;
@@ -3186,6 +3537,13 @@ class CryptoKeyVersion {
   /// Output only.
   core.String? destroyTime;
 
+  /// The root cause of the most recent external destruction failure.
+  ///
+  /// Only present if state is EXTERNAL_DESTRUCTION_FAILED.
+  ///
+  /// Output only.
+  core.String? externalDestructionFailureReason;
+
   /// ExternalProtectionLevelOptions stores a group of additional fields for
   /// configuring a CryptoKeyVersion that are specific to the EXTERNAL
   /// protection level and EXTERNAL_VPC protection levels.
@@ -3195,6 +3553,13 @@ class CryptoKeyVersion {
   ///
   /// Output only.
   core.String? generateTime;
+
+  /// The root cause of the most recent generation failure.
+  ///
+  /// Only present if state is GENERATION_FAILED.
+  ///
+  /// Output only.
+  core.String? generationFailureReason;
 
   /// The root cause of the most recent import failure.
   ///
@@ -3265,6 +3630,17 @@ class CryptoKeyVersion {
   /// be used, enabled, disabled, or destroyed. The submitted key material has
   /// been discarded. Additional details can be found in
   /// CryptoKeyVersion.import_failure_reason.
+  /// - "GENERATION_FAILED" : This version was not generated successfully. It
+  /// may not be used, enabled, disabled, or destroyed. Additional details can
+  /// be found in CryptoKeyVersion.generation_failure_reason.
+  /// - "PENDING_EXTERNAL_DESTRUCTION" : This version was destroyed, and it may
+  /// not be used or enabled again. Cloud KMS is waiting for the corresponding
+  /// key material residing in an external key manager to be destroyed.
+  /// - "EXTERNAL_DESTRUCTION_FAILED" : This version was destroyed, and it may
+  /// not be used or enabled again. However, Cloud KMS could not confirm that
+  /// the corresponding key material residing in an external key manager was
+  /// destroyed. Additional details can be found in
+  /// CryptoKeyVersion.external_destruction_failure_reason.
   core.String? state;
 
   CryptoKeyVersion({
@@ -3273,8 +3649,10 @@ class CryptoKeyVersion {
     this.createTime,
     this.destroyEventTime,
     this.destroyTime,
+    this.externalDestructionFailureReason,
     this.externalProtectionLevelOptions,
     this.generateTime,
+    this.generationFailureReason,
     this.importFailureReason,
     this.importJob,
     this.importTime,
@@ -3302,6 +3680,10 @@ class CryptoKeyVersion {
           destroyTime: json_.containsKey('destroyTime')
               ? json_['destroyTime'] as core.String
               : null,
+          externalDestructionFailureReason:
+              json_.containsKey('externalDestructionFailureReason')
+                  ? json_['externalDestructionFailureReason'] as core.String
+                  : null,
           externalProtectionLevelOptions:
               json_.containsKey('externalProtectionLevelOptions')
                   ? ExternalProtectionLevelOptions.fromJson(
@@ -3310,6 +3692,9 @@ class CryptoKeyVersion {
                   : null,
           generateTime: json_.containsKey('generateTime')
               ? json_['generateTime'] as core.String
+              : null,
+          generationFailureReason: json_.containsKey('generationFailureReason')
+              ? json_['generationFailureReason'] as core.String
               : null,
           importFailureReason: json_.containsKey('importFailureReason')
               ? json_['importFailureReason'] as core.String
@@ -3337,9 +3722,13 @@ class CryptoKeyVersion {
         if (createTime != null) 'createTime': createTime!,
         if (destroyEventTime != null) 'destroyEventTime': destroyEventTime!,
         if (destroyTime != null) 'destroyTime': destroyTime!,
+        if (externalDestructionFailureReason != null)
+          'externalDestructionFailureReason': externalDestructionFailureReason!,
         if (externalProtectionLevelOptions != null)
           'externalProtectionLevelOptions': externalProtectionLevelOptions!,
         if (generateTime != null) 'generateTime': generateTime!,
+        if (generationFailureReason != null)
+          'generationFailureReason': generationFailureReason!,
         if (importFailureReason != null)
           'importFailureReason': importFailureReason!,
         if (importJob != null) 'importJob': importJob!,
@@ -3354,96 +3743,7 @@ class CryptoKeyVersion {
 /// A CryptoKeyVersionTemplate specifies the properties to use when creating a
 /// new CryptoKeyVersion, either manually with CreateCryptoKeyVersion or
 /// automatically as a result of auto-rotation.
-class CryptoKeyVersionTemplate {
-  /// Algorithm to use when creating a CryptoKeyVersion based on this template.
-  ///
-  /// For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if
-  /// both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED" : Not specified.
-  /// - "GOOGLE_SYMMETRIC_ENCRYPTION" : Creates symmetric encryption keys.
-  /// - "RSA_SIGN_PSS_2048_SHA256" : RSASSA-PSS 2048 bit key with a SHA256
-  /// digest.
-  /// - "RSA_SIGN_PSS_3072_SHA256" : RSASSA-PSS 3072 bit key with a SHA256
-  /// digest.
-  /// - "RSA_SIGN_PSS_4096_SHA256" : RSASSA-PSS 4096 bit key with a SHA256
-  /// digest.
-  /// - "RSA_SIGN_PSS_4096_SHA512" : RSASSA-PSS 4096 bit key with a SHA512
-  /// digest.
-  /// - "RSA_SIGN_PKCS1_2048_SHA256" : RSASSA-PKCS1-v1_5 with a 2048 bit key and
-  /// a SHA256 digest.
-  /// - "RSA_SIGN_PKCS1_3072_SHA256" : RSASSA-PKCS1-v1_5 with a 3072 bit key and
-  /// a SHA256 digest.
-  /// - "RSA_SIGN_PKCS1_4096_SHA256" : RSASSA-PKCS1-v1_5 with a 4096 bit key and
-  /// a SHA256 digest.
-  /// - "RSA_SIGN_PKCS1_4096_SHA512" : RSASSA-PKCS1-v1_5 with a 4096 bit key and
-  /// a SHA512 digest.
-  /// - "RSA_SIGN_RAW_PKCS1_2048" : RSASSA-PKCS1-v1_5 signing without encoding,
-  /// with a 2048 bit key.
-  /// - "RSA_SIGN_RAW_PKCS1_3072" : RSASSA-PKCS1-v1_5 signing without encoding,
-  /// with a 3072 bit key.
-  /// - "RSA_SIGN_RAW_PKCS1_4096" : RSASSA-PKCS1-v1_5 signing without encoding,
-  /// with a 4096 bit key.
-  /// - "RSA_DECRYPT_OAEP_2048_SHA256" : RSAES-OAEP 2048 bit key with a SHA256
-  /// digest.
-  /// - "RSA_DECRYPT_OAEP_3072_SHA256" : RSAES-OAEP 3072 bit key with a SHA256
-  /// digest.
-  /// - "RSA_DECRYPT_OAEP_4096_SHA256" : RSAES-OAEP 4096 bit key with a SHA256
-  /// digest.
-  /// - "RSA_DECRYPT_OAEP_4096_SHA512" : RSAES-OAEP 4096 bit key with a SHA512
-  /// digest.
-  /// - "RSA_DECRYPT_OAEP_2048_SHA1" : RSAES-OAEP 2048 bit key with a SHA1
-  /// digest.
-  /// - "RSA_DECRYPT_OAEP_3072_SHA1" : RSAES-OAEP 3072 bit key with a SHA1
-  /// digest.
-  /// - "RSA_DECRYPT_OAEP_4096_SHA1" : RSAES-OAEP 4096 bit key with a SHA1
-  /// digest.
-  /// - "EC_SIGN_P256_SHA256" : ECDSA on the NIST P-256 curve with a SHA256
-  /// digest.
-  /// - "EC_SIGN_P384_SHA384" : ECDSA on the NIST P-384 curve with a SHA384
-  /// digest.
-  /// - "EC_SIGN_SECP256K1_SHA256" : ECDSA on the non-NIST secp256k1 curve. This
-  /// curve is only supported for HSM protection level.
-  /// - "HMAC_SHA256" : HMAC-SHA256 signing with a 256 bit key.
-  /// - "EXTERNAL_SYMMETRIC_ENCRYPTION" : Algorithm representing symmetric
-  /// encryption by an external key manager.
-  core.String? algorithm;
-
-  /// ProtectionLevel to use when creating a CryptoKeyVersion based on this
-  /// template.
-  ///
-  /// Immutable. Defaults to SOFTWARE.
-  /// Possible string values are:
-  /// - "PROTECTION_LEVEL_UNSPECIFIED" : Not specified.
-  /// - "SOFTWARE" : Crypto operations are performed in software.
-  /// - "HSM" : Crypto operations are performed in a Hardware Security Module.
-  /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
-  /// - "EXTERNAL_VPC" : Crypto operations are performed in an EKM-over-VPC
-  /// backend.
-  core.String? protectionLevel;
-
-  CryptoKeyVersionTemplate({
-    this.algorithm,
-    this.protectionLevel,
-  });
-
-  CryptoKeyVersionTemplate.fromJson(core.Map json_)
-      : this(
-          algorithm: json_.containsKey('algorithm')
-              ? json_['algorithm'] as core.String
-              : null,
-          protectionLevel: json_.containsKey('protectionLevel')
-              ? json_['protectionLevel'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (algorithm != null) 'algorithm': algorithm!,
-        if (protectionLevel != null) 'protectionLevel': protectionLevel!,
-      };
-}
+typedef CryptoKeyVersionTemplate = $CryptoKeyVersionTemplate;
 
 /// Request message for KeyManagementService.Decrypt.
 class DecryptRequest {
@@ -3671,6 +3971,43 @@ class Digest {
       };
 }
 
+/// An EkmConfig is a singleton resource that represents configuration
+/// parameters that apply to all CryptoKeys and CryptoKeyVersions with a
+/// ProtectionLevel of EXTERNAL_VPC in a given project and location.
+class EkmConfig {
+  /// Resource name of the default EkmConnection.
+  ///
+  /// Setting this field to the empty string removes the default.
+  ///
+  /// Optional.
+  core.String? defaultEkmConnection;
+
+  /// The resource name for the EkmConfig in the format `projects / * /locations
+  /// / * /ekmConfig`.
+  ///
+  /// Output only.
+  core.String? name;
+
+  EkmConfig({
+    this.defaultEkmConnection,
+    this.name,
+  });
+
+  EkmConfig.fromJson(core.Map json_)
+      : this(
+          defaultEkmConnection: json_.containsKey('defaultEkmConnection')
+              ? json_['defaultEkmConnection'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (defaultEkmConnection != null)
+          'defaultEkmConnection': defaultEkmConnection!,
+        if (name != null) 'name': name!,
+      };
+}
+
 /// An EkmConnection represents an individual EKM connection.
 ///
 /// It can be used for creating CryptoKeys and CryptoKeyVersions with a
@@ -3682,12 +4019,42 @@ class EkmConnection {
   /// Output only.
   core.String? createTime;
 
-  /// This checksum is computed by the server based on the value of other
-  /// fields, and may be sent on update requests to ensure the client has an
-  /// up-to-date value before proceeding.
+  /// Identifies the EKM Crypto Space that this EkmConnection maps to.
+  ///
+  /// Note: This field is required if KeyManagementMode is CLOUD_KMS.
+  ///
+  /// Optional.
+  core.String? cryptoSpacePath;
+
+  /// Etag of the currently stored EkmConnection.
   ///
   /// Optional.
   core.String? etag;
+
+  /// Describes who can perform control plane operations on the EKM.
+  ///
+  /// If unset, this defaults to MANUAL.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "KEY_MANAGEMENT_MODE_UNSPECIFIED" : Not specified.
+  /// - "MANUAL" : EKM-side key management operations on CryptoKeys created with
+  /// this EkmConnection must be initiated from the EKM directly and cannot be
+  /// performed from Cloud KMS. This means that: * When creating a
+  /// CryptoKeyVersion associated with this EkmConnection, the caller must
+  /// supply the key path of pre-existing external key material that will be
+  /// linked to the CryptoKeyVersion. * Destruction of external key material
+  /// cannot be requested via the Cloud KMS API and must be performed directly
+  /// in the EKM. * Automatic rotation of key material is not supported.
+  /// - "CLOUD_KMS" : All CryptoKeys created with this EkmConnection use
+  /// EKM-side key management operations initiated from Cloud KMS. This means
+  /// that: * When a CryptoKeyVersion associated with this EkmConnection is
+  /// created, the EKM automatically generates new key material and a new key
+  /// path. The caller cannot supply the key path of pre-existing external key
+  /// material. * Destruction of external key material associated with this
+  /// EkmConnection can be requested by calling DestroyCryptoKeyVersion. *
+  /// Automatic rotation of key material is supported.
+  core.String? keyManagementMode;
 
   /// The resource name for the EkmConnection in the format `projects / *
   /// /locations / * /ekmConnections / * `.
@@ -3703,7 +4070,9 @@ class EkmConnection {
 
   EkmConnection({
     this.createTime,
+    this.cryptoSpacePath,
     this.etag,
+    this.keyManagementMode,
     this.name,
     this.serviceResolvers,
   });
@@ -3713,7 +4082,13 @@ class EkmConnection {
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
               : null,
+          cryptoSpacePath: json_.containsKey('cryptoSpacePath')
+              ? json_['cryptoSpacePath'] as core.String
+              : null,
           etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          keyManagementMode: json_.containsKey('keyManagementMode')
+              ? json_['keyManagementMode'] as core.String
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           serviceResolvers: json_.containsKey('serviceResolvers')
               ? (json_['serviceResolvers'] as core.List)
@@ -3725,7 +4100,9 @@ class EkmConnection {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
+        if (cryptoSpacePath != null) 'cryptoSpacePath': cryptoSpacePath!,
         if (etag != null) 'etag': etag!,
+        if (keyManagementMode != null) 'keyManagementMode': keyManagementMode!,
         if (name != null) 'name': name!,
         if (serviceResolvers != null) 'serviceResolvers': serviceResolvers!,
       };
@@ -3970,37 +4347,7 @@ typedef Expr = $Expr;
 /// ExternalProtectionLevelOptions stores a group of additional fields for
 /// configuring a CryptoKeyVersion that are specific to the EXTERNAL protection
 /// level and EXTERNAL_VPC protection levels.
-class ExternalProtectionLevelOptions {
-  /// The path to the external key material on the EKM when using EkmConnection
-  /// e.g., "v0/my/key".
-  ///
-  /// Set this field instead of external_key_uri when using an EkmConnection.
-  core.String? ekmConnectionKeyPath;
-
-  /// The URI for an external resource that this CryptoKeyVersion represents.
-  core.String? externalKeyUri;
-
-  ExternalProtectionLevelOptions({
-    this.ekmConnectionKeyPath,
-    this.externalKeyUri,
-  });
-
-  ExternalProtectionLevelOptions.fromJson(core.Map json_)
-      : this(
-          ekmConnectionKeyPath: json_.containsKey('ekmConnectionKeyPath')
-              ? json_['ekmConnectionKeyPath'] as core.String
-              : null,
-          externalKeyUri: json_.containsKey('externalKeyUri')
-              ? json_['externalKeyUri'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (ekmConnectionKeyPath != null)
-          'ekmConnectionKeyPath': ekmConnectionKeyPath!,
-        if (externalKeyUri != null) 'externalKeyUri': externalKeyUri!,
-      };
-}
+typedef ExternalProtectionLevelOptions = $ExternalProtectionLevelOptions;
 
 /// Request message for KeyManagementService.GenerateRandomBytes.
 class GenerateRandomBytesRequest {
@@ -4097,6 +4444,12 @@ class ImportCryptoKeyVersionRequest {
   /// Possible string values are:
   /// - "CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED" : Not specified.
   /// - "GOOGLE_SYMMETRIC_ENCRYPTION" : Creates symmetric encryption keys.
+  /// - "AES_128_GCM" : AES-GCM (Galois Counter Mode) using 128-bit keys.
+  /// - "AES_256_GCM" : AES-GCM (Galois Counter Mode) using 256-bit keys.
+  /// - "AES_128_CBC" : AES-CBC (Cipher Block Chaining Mode) using 128-bit keys.
+  /// - "AES_256_CBC" : AES-CBC (Cipher Block Chaining Mode) using 256-bit keys.
+  /// - "AES_128_CTR" : AES-CTR (Counter Mode) using 128-bit keys.
+  /// - "AES_256_CTR" : AES-CTR (Counter Mode) using 256-bit keys.
   /// - "RSA_SIGN_PSS_2048_SHA256" : RSASSA-PSS 2048 bit key with a SHA256
   /// digest.
   /// - "RSA_SIGN_PSS_3072_SHA256" : RSASSA-PSS 3072 bit key with a SHA256
@@ -4134,12 +4487,20 @@ class ImportCryptoKeyVersionRequest {
   /// - "RSA_DECRYPT_OAEP_4096_SHA1" : RSAES-OAEP 4096 bit key with a SHA1
   /// digest.
   /// - "EC_SIGN_P256_SHA256" : ECDSA on the NIST P-256 curve with a SHA256
-  /// digest.
+  /// digest. Other hash functions can also be used:
+  /// https://cloud.google.com/kms/docs/create-validate-signatures#ecdsa_support_for_other_hash_algorithms
   /// - "EC_SIGN_P384_SHA384" : ECDSA on the NIST P-384 curve with a SHA384
-  /// digest.
+  /// digest. Other hash functions can also be used:
+  /// https://cloud.google.com/kms/docs/create-validate-signatures#ecdsa_support_for_other_hash_algorithms
   /// - "EC_SIGN_SECP256K1_SHA256" : ECDSA on the non-NIST secp256k1 curve. This
-  /// curve is only supported for HSM protection level.
+  /// curve is only supported for HSM protection level. Other hash functions can
+  /// also be used:
+  /// https://cloud.google.com/kms/docs/create-validate-signatures#ecdsa_support_for_other_hash_algorithms
   /// - "HMAC_SHA256" : HMAC-SHA256 signing with a 256 bit key.
+  /// - "HMAC_SHA1" : HMAC-SHA1 signing with a 160 bit key.
+  /// - "HMAC_SHA384" : HMAC-SHA384 signing with a 384 bit key.
+  /// - "HMAC_SHA512" : HMAC-SHA512 signing with a 512 bit key.
+  /// - "HMAC_SHA224" : HMAC-SHA224 signing with a 224 bit key.
   /// - "EXTERNAL_SYMMETRIC_ENCRYPTION" : Algorithm representing symmetric
   /// encryption by an external key manager.
   core.String? algorithm;
@@ -4779,7 +5140,7 @@ class ListLocationsResponse {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
+/// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
 /// Request message for KeyManagementService.MacSign.
@@ -5225,6 +5586,12 @@ class PublicKey {
   /// Possible string values are:
   /// - "CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED" : Not specified.
   /// - "GOOGLE_SYMMETRIC_ENCRYPTION" : Creates symmetric encryption keys.
+  /// - "AES_128_GCM" : AES-GCM (Galois Counter Mode) using 128-bit keys.
+  /// - "AES_256_GCM" : AES-GCM (Galois Counter Mode) using 256-bit keys.
+  /// - "AES_128_CBC" : AES-CBC (Cipher Block Chaining Mode) using 128-bit keys.
+  /// - "AES_256_CBC" : AES-CBC (Cipher Block Chaining Mode) using 256-bit keys.
+  /// - "AES_128_CTR" : AES-CTR (Counter Mode) using 128-bit keys.
+  /// - "AES_256_CTR" : AES-CTR (Counter Mode) using 256-bit keys.
   /// - "RSA_SIGN_PSS_2048_SHA256" : RSASSA-PSS 2048 bit key with a SHA256
   /// digest.
   /// - "RSA_SIGN_PSS_3072_SHA256" : RSASSA-PSS 3072 bit key with a SHA256
@@ -5262,12 +5629,20 @@ class PublicKey {
   /// - "RSA_DECRYPT_OAEP_4096_SHA1" : RSAES-OAEP 4096 bit key with a SHA1
   /// digest.
   /// - "EC_SIGN_P256_SHA256" : ECDSA on the NIST P-256 curve with a SHA256
-  /// digest.
+  /// digest. Other hash functions can also be used:
+  /// https://cloud.google.com/kms/docs/create-validate-signatures#ecdsa_support_for_other_hash_algorithms
   /// - "EC_SIGN_P384_SHA384" : ECDSA on the NIST P-384 curve with a SHA384
-  /// digest.
+  /// digest. Other hash functions can also be used:
+  /// https://cloud.google.com/kms/docs/create-validate-signatures#ecdsa_support_for_other_hash_algorithms
   /// - "EC_SIGN_SECP256K1_SHA256" : ECDSA on the non-NIST secp256k1 curve. This
-  /// curve is only supported for HSM protection level.
+  /// curve is only supported for HSM protection level. Other hash functions can
+  /// also be used:
+  /// https://cloud.google.com/kms/docs/create-validate-signatures#ecdsa_support_for_other_hash_algorithms
   /// - "HMAC_SHA256" : HMAC-SHA256 signing with a 256 bit key.
+  /// - "HMAC_SHA1" : HMAC-SHA1 signing with a 160 bit key.
+  /// - "HMAC_SHA384" : HMAC-SHA384 signing with a 384 bit key.
+  /// - "HMAC_SHA512" : HMAC-SHA512 signing with a 512 bit key.
+  /// - "HMAC_SHA224" : HMAC-SHA224 signing with a 224 bit key.
   /// - "EXTERNAL_SYMMETRIC_ENCRYPTION" : Algorithm representing symmetric
   /// encryption by an external key manager.
   core.String? algorithm;
@@ -5339,6 +5714,613 @@ class PublicKey {
         if (pem != null) 'pem': pem!,
         if (pemCrc32c != null) 'pemCrc32c': pemCrc32c!,
         if (protectionLevel != null) 'protectionLevel': protectionLevel!,
+      };
+}
+
+/// Request message for KeyManagementService.RawDecrypt.
+class RawDecryptRequest {
+  /// Optional data that must match the data originally supplied in
+  /// RawEncryptRequest.additional_authenticated_data.
+  ///
+  /// Optional.
+  core.String? additionalAuthenticatedData;
+  core.List<core.int> get additionalAuthenticatedDataAsBytes =>
+      convert.base64.decode(additionalAuthenticatedData!);
+
+  set additionalAuthenticatedDataAsBytes(core.List<core.int> bytes_) {
+    additionalAuthenticatedData =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// An optional CRC32C checksum of the
+  /// RawDecryptRequest.additional_authenticated_data.
+  ///
+  /// If specified, KeyManagementService will verify the integrity of the
+  /// received additional_authenticated_data using this checksum.
+  /// KeyManagementService will report an error if the checksum verification
+  /// fails. If you receive a checksum error, your client should verify that
+  /// CRC32C(additional_authenticated_data) is equal to
+  /// additional_authenticated_data_crc32c, and if so, perform a limited number
+  /// of retries. A persistent mismatch may indicate an issue in your
+  /// computation of the CRC32C checksum. Note: This field is defined as int64
+  /// for reasons of compatibility across different languages. However, it is a
+  /// non-negative integer, which will never exceed 2^32-1, and can be safely
+  /// downconverted to uint32 in languages that support this type.
+  ///
+  /// Optional.
+  core.String? additionalAuthenticatedDataCrc32c;
+
+  /// The encrypted data originally returned in RawEncryptResponse.ciphertext.
+  ///
+  /// Required.
+  core.String? ciphertext;
+  core.List<core.int> get ciphertextAsBytes =>
+      convert.base64.decode(ciphertext!);
+
+  set ciphertextAsBytes(core.List<core.int> bytes_) {
+    ciphertext =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// An optional CRC32C checksum of the RawDecryptRequest.ciphertext.
+  ///
+  /// If specified, KeyManagementService will verify the integrity of the
+  /// received ciphertext using this checksum. KeyManagementService will report
+  /// an error if the checksum verification fails. If you receive a checksum
+  /// error, your client should verify that CRC32C(ciphertext) is equal to
+  /// ciphertext_crc32c, and if so, perform a limited number of retries. A
+  /// persistent mismatch may indicate an issue in your computation of the
+  /// CRC32C checksum. Note: This field is defined as int64 for reasons of
+  /// compatibility across different languages. However, it is a non-negative
+  /// integer, which will never exceed 2^32-1, and can be safely downconverted
+  /// to uint32 in languages that support this type.
+  ///
+  /// Optional.
+  core.String? ciphertextCrc32c;
+
+  /// The initialization vector (IV) used during encryption, which must match
+  /// the data originally provided in RawEncryptResponse.initialization_vector.
+  ///
+  /// Required.
+  core.String? initializationVector;
+  core.List<core.int> get initializationVectorAsBytes =>
+      convert.base64.decode(initializationVector!);
+
+  set initializationVectorAsBytes(core.List<core.int> bytes_) {
+    initializationVector =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// An optional CRC32C checksum of the
+  /// RawDecryptRequest.initialization_vector.
+  ///
+  /// If specified, KeyManagementService will verify the integrity of the
+  /// received initialization_vector using this checksum. KeyManagementService
+  /// will report an error if the checksum verification fails. If you receive a
+  /// checksum error, your client should verify that
+  /// CRC32C(initialization_vector) is equal to initialization_vector_crc32c,
+  /// and if so, perform a limited number of retries. A persistent mismatch may
+  /// indicate an issue in your computation of the CRC32C checksum. Note: This
+  /// field is defined as int64 for reasons of compatibility across different
+  /// languages. However, it is a non-negative integer, which will never exceed
+  /// 2^32-1, and can be safely downconverted to uint32 in languages that
+  /// support this type.
+  ///
+  /// Optional.
+  core.String? initializationVectorCrc32c;
+
+  /// The length of the authentication tag that is appended to the end of the
+  /// ciphertext.
+  ///
+  /// If unspecified (0), the default value for the key's algorithm will be used
+  /// (for AES-GCM, the default value is 16).
+  core.int? tagLength;
+
+  RawDecryptRequest({
+    this.additionalAuthenticatedData,
+    this.additionalAuthenticatedDataCrc32c,
+    this.ciphertext,
+    this.ciphertextCrc32c,
+    this.initializationVector,
+    this.initializationVectorCrc32c,
+    this.tagLength,
+  });
+
+  RawDecryptRequest.fromJson(core.Map json_)
+      : this(
+          additionalAuthenticatedData:
+              json_.containsKey('additionalAuthenticatedData')
+                  ? json_['additionalAuthenticatedData'] as core.String
+                  : null,
+          additionalAuthenticatedDataCrc32c:
+              json_.containsKey('additionalAuthenticatedDataCrc32c')
+                  ? json_['additionalAuthenticatedDataCrc32c'] as core.String
+                  : null,
+          ciphertext: json_.containsKey('ciphertext')
+              ? json_['ciphertext'] as core.String
+              : null,
+          ciphertextCrc32c: json_.containsKey('ciphertextCrc32c')
+              ? json_['ciphertextCrc32c'] as core.String
+              : null,
+          initializationVector: json_.containsKey('initializationVector')
+              ? json_['initializationVector'] as core.String
+              : null,
+          initializationVectorCrc32c:
+              json_.containsKey('initializationVectorCrc32c')
+                  ? json_['initializationVectorCrc32c'] as core.String
+                  : null,
+          tagLength: json_.containsKey('tagLength')
+              ? json_['tagLength'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (additionalAuthenticatedData != null)
+          'additionalAuthenticatedData': additionalAuthenticatedData!,
+        if (additionalAuthenticatedDataCrc32c != null)
+          'additionalAuthenticatedDataCrc32c':
+              additionalAuthenticatedDataCrc32c!,
+        if (ciphertext != null) 'ciphertext': ciphertext!,
+        if (ciphertextCrc32c != null) 'ciphertextCrc32c': ciphertextCrc32c!,
+        if (initializationVector != null)
+          'initializationVector': initializationVector!,
+        if (initializationVectorCrc32c != null)
+          'initializationVectorCrc32c': initializationVectorCrc32c!,
+        if (tagLength != null) 'tagLength': tagLength!,
+      };
+}
+
+/// Response message for KeyManagementService.RawDecrypt.
+class RawDecryptResponse {
+  /// The decrypted data.
+  core.String? plaintext;
+  core.List<core.int> get plaintextAsBytes => convert.base64.decode(plaintext!);
+
+  set plaintextAsBytes(core.List<core.int> bytes_) {
+    plaintext =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// Integrity verification field.
+  ///
+  /// A CRC32C checksum of the returned RawDecryptResponse.plaintext. An
+  /// integrity check of plaintext can be performed by computing the CRC32C
+  /// checksum of plaintext and comparing your results to this field. Discard
+  /// the response in case of non-matching checksum values, and perform a
+  /// limited number of retries. A persistent mismatch may indicate an issue in
+  /// your computation of the CRC32C checksum. Note: receiving this response
+  /// message indicates that KeyManagementService is able to successfully
+  /// decrypt the ciphertext. Note: This field is defined as int64 for reasons
+  /// of compatibility across different languages. However, it is a non-negative
+  /// integer, which will never exceed 2^32-1, and can be safely downconverted
+  /// to uint32 in languages that support this type.
+  core.String? plaintextCrc32c;
+
+  /// The ProtectionLevel of the CryptoKeyVersion used in decryption.
+  /// Possible string values are:
+  /// - "PROTECTION_LEVEL_UNSPECIFIED" : Not specified.
+  /// - "SOFTWARE" : Crypto operations are performed in software.
+  /// - "HSM" : Crypto operations are performed in a Hardware Security Module.
+  /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
+  /// - "EXTERNAL_VPC" : Crypto operations are performed in an EKM-over-VPC
+  /// backend.
+  core.String? protectionLevel;
+
+  /// Integrity verification field.
+  ///
+  /// A flag indicating whether
+  /// RawDecryptRequest.additional_authenticated_data_crc32c was received by
+  /// KeyManagementService and used for the integrity verification of
+  /// additional_authenticated_data. A false value of this field indicates
+  /// either that // RawDecryptRequest.additional_authenticated_data_crc32c was
+  /// left unset or that it was not delivered to KeyManagementService. If you've
+  /// set RawDecryptRequest.additional_authenticated_data_crc32c but this field
+  /// is still false, discard the response and perform a limited number of
+  /// retries.
+  core.bool? verifiedAdditionalAuthenticatedDataCrc32c;
+
+  /// Integrity verification field.
+  ///
+  /// A flag indicating whether RawDecryptRequest.ciphertext_crc32c was received
+  /// by KeyManagementService and used for the integrity verification of the
+  /// ciphertext. A false value of this field indicates either that
+  /// RawDecryptRequest.ciphertext_crc32c was left unset or that it was not
+  /// delivered to KeyManagementService. If you've set
+  /// RawDecryptRequest.ciphertext_crc32c but this field is still false, discard
+  /// the response and perform a limited number of retries.
+  core.bool? verifiedCiphertextCrc32c;
+
+  /// Integrity verification field.
+  ///
+  /// A flag indicating whether RawDecryptRequest.initialization_vector_crc32c
+  /// was received by KeyManagementService and used for the integrity
+  /// verification of initialization_vector. A false value of this field
+  /// indicates either that RawDecryptRequest.initialization_vector_crc32c was
+  /// left unset or that it was not delivered to KeyManagementService. If you've
+  /// set RawDecryptRequest.initialization_vector_crc32c but this field is still
+  /// false, discard the response and perform a limited number of retries.
+  core.bool? verifiedInitializationVectorCrc32c;
+
+  RawDecryptResponse({
+    this.plaintext,
+    this.plaintextCrc32c,
+    this.protectionLevel,
+    this.verifiedAdditionalAuthenticatedDataCrc32c,
+    this.verifiedCiphertextCrc32c,
+    this.verifiedInitializationVectorCrc32c,
+  });
+
+  RawDecryptResponse.fromJson(core.Map json_)
+      : this(
+          plaintext: json_.containsKey('plaintext')
+              ? json_['plaintext'] as core.String
+              : null,
+          plaintextCrc32c: json_.containsKey('plaintextCrc32c')
+              ? json_['plaintextCrc32c'] as core.String
+              : null,
+          protectionLevel: json_.containsKey('protectionLevel')
+              ? json_['protectionLevel'] as core.String
+              : null,
+          verifiedAdditionalAuthenticatedDataCrc32c: json_
+                  .containsKey('verifiedAdditionalAuthenticatedDataCrc32c')
+              ? json_['verifiedAdditionalAuthenticatedDataCrc32c'] as core.bool
+              : null,
+          verifiedCiphertextCrc32c:
+              json_.containsKey('verifiedCiphertextCrc32c')
+                  ? json_['verifiedCiphertextCrc32c'] as core.bool
+                  : null,
+          verifiedInitializationVectorCrc32c:
+              json_.containsKey('verifiedInitializationVectorCrc32c')
+                  ? json_['verifiedInitializationVectorCrc32c'] as core.bool
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (plaintext != null) 'plaintext': plaintext!,
+        if (plaintextCrc32c != null) 'plaintextCrc32c': plaintextCrc32c!,
+        if (protectionLevel != null) 'protectionLevel': protectionLevel!,
+        if (verifiedAdditionalAuthenticatedDataCrc32c != null)
+          'verifiedAdditionalAuthenticatedDataCrc32c':
+              verifiedAdditionalAuthenticatedDataCrc32c!,
+        if (verifiedCiphertextCrc32c != null)
+          'verifiedCiphertextCrc32c': verifiedCiphertextCrc32c!,
+        if (verifiedInitializationVectorCrc32c != null)
+          'verifiedInitializationVectorCrc32c':
+              verifiedInitializationVectorCrc32c!,
+      };
+}
+
+/// Request message for KeyManagementService.RawEncrypt.
+class RawEncryptRequest {
+  /// Optional data that, if specified, must also be provided during decryption
+  /// through RawDecryptRequest.additional_authenticated_data.
+  ///
+  /// This field may only be used in conjunction with an algorithm that accepts
+  /// additional authenticated data (for example, AES-GCM). The maximum size
+  /// depends on the key version's protection_level. For SOFTWARE keys, the
+  /// plaintext must be no larger than 64KiB. For HSM keys, the combined length
+  /// of the plaintext and additional_authenticated_data fields must be no
+  /// larger than 8KiB.
+  ///
+  /// Optional.
+  core.String? additionalAuthenticatedData;
+  core.List<core.int> get additionalAuthenticatedDataAsBytes =>
+      convert.base64.decode(additionalAuthenticatedData!);
+
+  set additionalAuthenticatedDataAsBytes(core.List<core.int> bytes_) {
+    additionalAuthenticatedData =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// An optional CRC32C checksum of the
+  /// RawEncryptRequest.additional_authenticated_data.
+  ///
+  /// If specified, KeyManagementService will verify the integrity of the
+  /// received additional_authenticated_data using this checksum.
+  /// KeyManagementService will report an error if the checksum verification
+  /// fails. If you receive a checksum error, your client should verify that
+  /// CRC32C(additional_authenticated_data) is equal to
+  /// additional_authenticated_data_crc32c, and if so, perform a limited number
+  /// of retries. A persistent mismatch may indicate an issue in your
+  /// computation of the CRC32C checksum. Note: This field is defined as int64
+  /// for reasons of compatibility across different languages. However, it is a
+  /// non-negative integer, which will never exceed 2^32-1, and can be safely
+  /// downconverted to uint32 in languages that support this type.
+  ///
+  /// Optional.
+  core.String? additionalAuthenticatedDataCrc32c;
+
+  /// A customer-supplied initialization vector that will be used for
+  /// encryption.
+  ///
+  /// If it is not provided for AES-CBC and AES-CTR, one will be generated. It
+  /// will be returned in RawEncryptResponse.initialization_vector.
+  ///
+  /// Optional.
+  core.String? initializationVector;
+  core.List<core.int> get initializationVectorAsBytes =>
+      convert.base64.decode(initializationVector!);
+
+  set initializationVectorAsBytes(core.List<core.int> bytes_) {
+    initializationVector =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// An optional CRC32C checksum of the
+  /// RawEncryptRequest.initialization_vector.
+  ///
+  /// If specified, KeyManagementService will verify the integrity of the
+  /// received initialization_vector using this checksum. KeyManagementService
+  /// will report an error if the checksum verification fails. If you receive a
+  /// checksum error, your client should verify that
+  /// CRC32C(initialization_vector) is equal to initialization_vector_crc32c,
+  /// and if so, perform a limited number of retries. A persistent mismatch may
+  /// indicate an issue in your computation of the CRC32C checksum. Note: This
+  /// field is defined as int64 for reasons of compatibility across different
+  /// languages. However, it is a non-negative integer, which will never exceed
+  /// 2^32-1, and can be safely downconverted to uint32 in languages that
+  /// support this type.
+  ///
+  /// Optional.
+  core.String? initializationVectorCrc32c;
+
+  /// The data to encrypt.
+  ///
+  /// Must be no larger than 64KiB. The maximum size depends on the key
+  /// version's protection_level. For SOFTWARE keys, the plaintext must be no
+  /// larger than 64KiB. For HSM keys, the combined length of the plaintext and
+  /// additional_authenticated_data fields must be no larger than 8KiB.
+  ///
+  /// Required.
+  core.String? plaintext;
+  core.List<core.int> get plaintextAsBytes => convert.base64.decode(plaintext!);
+
+  set plaintextAsBytes(core.List<core.int> bytes_) {
+    plaintext =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// An optional CRC32C checksum of the RawEncryptRequest.plaintext.
+  ///
+  /// If specified, KeyManagementService will verify the integrity of the
+  /// received plaintext using this checksum. KeyManagementService will report
+  /// an error if the checksum verification fails. If you receive a checksum
+  /// error, your client should verify that CRC32C(plaintext) is equal to
+  /// plaintext_crc32c, and if so, perform a limited number of retries. A
+  /// persistent mismatch may indicate an issue in your computation of the
+  /// CRC32C checksum. Note: This field is defined as int64 for reasons of
+  /// compatibility across different languages. However, it is a non-negative
+  /// integer, which will never exceed 2^32-1, and can be safely downconverted
+  /// to uint32 in languages that support this type.
+  ///
+  /// Optional.
+  core.String? plaintextCrc32c;
+
+  RawEncryptRequest({
+    this.additionalAuthenticatedData,
+    this.additionalAuthenticatedDataCrc32c,
+    this.initializationVector,
+    this.initializationVectorCrc32c,
+    this.plaintext,
+    this.plaintextCrc32c,
+  });
+
+  RawEncryptRequest.fromJson(core.Map json_)
+      : this(
+          additionalAuthenticatedData:
+              json_.containsKey('additionalAuthenticatedData')
+                  ? json_['additionalAuthenticatedData'] as core.String
+                  : null,
+          additionalAuthenticatedDataCrc32c:
+              json_.containsKey('additionalAuthenticatedDataCrc32c')
+                  ? json_['additionalAuthenticatedDataCrc32c'] as core.String
+                  : null,
+          initializationVector: json_.containsKey('initializationVector')
+              ? json_['initializationVector'] as core.String
+              : null,
+          initializationVectorCrc32c:
+              json_.containsKey('initializationVectorCrc32c')
+                  ? json_['initializationVectorCrc32c'] as core.String
+                  : null,
+          plaintext: json_.containsKey('plaintext')
+              ? json_['plaintext'] as core.String
+              : null,
+          plaintextCrc32c: json_.containsKey('plaintextCrc32c')
+              ? json_['plaintextCrc32c'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (additionalAuthenticatedData != null)
+          'additionalAuthenticatedData': additionalAuthenticatedData!,
+        if (additionalAuthenticatedDataCrc32c != null)
+          'additionalAuthenticatedDataCrc32c':
+              additionalAuthenticatedDataCrc32c!,
+        if (initializationVector != null)
+          'initializationVector': initializationVector!,
+        if (initializationVectorCrc32c != null)
+          'initializationVectorCrc32c': initializationVectorCrc32c!,
+        if (plaintext != null) 'plaintext': plaintext!,
+        if (plaintextCrc32c != null) 'plaintextCrc32c': plaintextCrc32c!,
+      };
+}
+
+/// Response message for KeyManagementService.RawEncrypt.
+class RawEncryptResponse {
+  /// The encrypted data.
+  ///
+  /// In the case of AES-GCM, the authentication tag is the tag_length bytes at
+  /// the end of this field.
+  core.String? ciphertext;
+  core.List<core.int> get ciphertextAsBytes =>
+      convert.base64.decode(ciphertext!);
+
+  set ciphertextAsBytes(core.List<core.int> bytes_) {
+    ciphertext =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// Integrity verification field.
+  ///
+  /// A CRC32C checksum of the returned RawEncryptResponse.ciphertext. An
+  /// integrity check of ciphertext can be performed by computing the CRC32C
+  /// checksum of ciphertext and comparing your results to this field. Discard
+  /// the response in case of non-matching checksum values, and perform a
+  /// limited number of retries. A persistent mismatch may indicate an issue in
+  /// your computation of the CRC32C checksum. Note: This field is defined as
+  /// int64 for reasons of compatibility across different languages. However, it
+  /// is a non-negative integer, which will never exceed 2^32-1, and can be
+  /// safely downconverted to uint32 in languages that support this type.
+  core.String? ciphertextCrc32c;
+
+  /// The initialization vector (IV) generated by the service during encryption.
+  ///
+  /// This value must be stored and provided in
+  /// RawDecryptRequest.initialization_vector at decryption time.
+  core.String? initializationVector;
+  core.List<core.int> get initializationVectorAsBytes =>
+      convert.base64.decode(initializationVector!);
+
+  set initializationVectorAsBytes(core.List<core.int> bytes_) {
+    initializationVector =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// Integrity verification field.
+  ///
+  /// A CRC32C checksum of the returned
+  /// RawEncryptResponse.initialization_vector. An integrity check of
+  /// initialization_vector can be performed by computing the CRC32C checksum of
+  /// initialization_vector and comparing your results to this field. Discard
+  /// the response in case of non-matching checksum values, and perform a
+  /// limited number of retries. A persistent mismatch may indicate an issue in
+  /// your computation of the CRC32C checksum. Note: This field is defined as
+  /// int64 for reasons of compatibility across different languages. However, it
+  /// is a non-negative integer, which will never exceed 2^32-1, and can be
+  /// safely downconverted to uint32 in languages that support this type.
+  core.String? initializationVectorCrc32c;
+
+  /// The resource name of the CryptoKeyVersion used in encryption.
+  ///
+  /// Check this field to verify that the intended resource was used for
+  /// encryption.
+  core.String? name;
+
+  /// The ProtectionLevel of the CryptoKeyVersion used in encryption.
+  /// Possible string values are:
+  /// - "PROTECTION_LEVEL_UNSPECIFIED" : Not specified.
+  /// - "SOFTWARE" : Crypto operations are performed in software.
+  /// - "HSM" : Crypto operations are performed in a Hardware Security Module.
+  /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
+  /// - "EXTERNAL_VPC" : Crypto operations are performed in an EKM-over-VPC
+  /// backend.
+  core.String? protectionLevel;
+
+  /// The length of the authentication tag that is appended to the end of the
+  /// ciphertext.
+  core.int? tagLength;
+
+  /// Integrity verification field.
+  ///
+  /// A flag indicating whether
+  /// RawEncryptRequest.additional_authenticated_data_crc32c was received by
+  /// KeyManagementService and used for the integrity verification of
+  /// additional_authenticated_data. A false value of this field indicates
+  /// either that // RawEncryptRequest.additional_authenticated_data_crc32c was
+  /// left unset or that it was not delivered to KeyManagementService. If you've
+  /// set RawEncryptRequest.additional_authenticated_data_crc32c but this field
+  /// is still false, discard the response and perform a limited number of
+  /// retries.
+  core.bool? verifiedAdditionalAuthenticatedDataCrc32c;
+
+  /// Integrity verification field.
+  ///
+  /// A flag indicating whether RawEncryptRequest.initialization_vector_crc32c
+  /// was received by KeyManagementService and used for the integrity
+  /// verification of initialization_vector. A false value of this field
+  /// indicates either that RawEncryptRequest.initialization_vector_crc32c was
+  /// left unset or that it was not delivered to KeyManagementService. If you've
+  /// set RawEncryptRequest.initialization_vector_crc32c but this field is still
+  /// false, discard the response and perform a limited number of retries.
+  core.bool? verifiedInitializationVectorCrc32c;
+
+  /// Integrity verification field.
+  ///
+  /// A flag indicating whether RawEncryptRequest.plaintext_crc32c was received
+  /// by KeyManagementService and used for the integrity verification of the
+  /// plaintext. A false value of this field indicates either that
+  /// RawEncryptRequest.plaintext_crc32c was left unset or that it was not
+  /// delivered to KeyManagementService. If you've set
+  /// RawEncryptRequest.plaintext_crc32c but this field is still false, discard
+  /// the response and perform a limited number of retries.
+  core.bool? verifiedPlaintextCrc32c;
+
+  RawEncryptResponse({
+    this.ciphertext,
+    this.ciphertextCrc32c,
+    this.initializationVector,
+    this.initializationVectorCrc32c,
+    this.name,
+    this.protectionLevel,
+    this.tagLength,
+    this.verifiedAdditionalAuthenticatedDataCrc32c,
+    this.verifiedInitializationVectorCrc32c,
+    this.verifiedPlaintextCrc32c,
+  });
+
+  RawEncryptResponse.fromJson(core.Map json_)
+      : this(
+          ciphertext: json_.containsKey('ciphertext')
+              ? json_['ciphertext'] as core.String
+              : null,
+          ciphertextCrc32c: json_.containsKey('ciphertextCrc32c')
+              ? json_['ciphertextCrc32c'] as core.String
+              : null,
+          initializationVector: json_.containsKey('initializationVector')
+              ? json_['initializationVector'] as core.String
+              : null,
+          initializationVectorCrc32c:
+              json_.containsKey('initializationVectorCrc32c')
+                  ? json_['initializationVectorCrc32c'] as core.String
+                  : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          protectionLevel: json_.containsKey('protectionLevel')
+              ? json_['protectionLevel'] as core.String
+              : null,
+          tagLength: json_.containsKey('tagLength')
+              ? json_['tagLength'] as core.int
+              : null,
+          verifiedAdditionalAuthenticatedDataCrc32c: json_
+                  .containsKey('verifiedAdditionalAuthenticatedDataCrc32c')
+              ? json_['verifiedAdditionalAuthenticatedDataCrc32c'] as core.bool
+              : null,
+          verifiedInitializationVectorCrc32c:
+              json_.containsKey('verifiedInitializationVectorCrc32c')
+                  ? json_['verifiedInitializationVectorCrc32c'] as core.bool
+                  : null,
+          verifiedPlaintextCrc32c: json_.containsKey('verifiedPlaintextCrc32c')
+              ? json_['verifiedPlaintextCrc32c'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (ciphertext != null) 'ciphertext': ciphertext!,
+        if (ciphertextCrc32c != null) 'ciphertextCrc32c': ciphertextCrc32c!,
+        if (initializationVector != null)
+          'initializationVector': initializationVector!,
+        if (initializationVectorCrc32c != null)
+          'initializationVectorCrc32c': initializationVectorCrc32c!,
+        if (name != null) 'name': name!,
+        if (protectionLevel != null) 'protectionLevel': protectionLevel!,
+        if (tagLength != null) 'tagLength': tagLength!,
+        if (verifiedAdditionalAuthenticatedDataCrc32c != null)
+          'verifiedAdditionalAuthenticatedDataCrc32c':
+              verifiedAdditionalAuthenticatedDataCrc32c!,
+        if (verifiedInitializationVectorCrc32c != null)
+          'verifiedInitializationVectorCrc32c':
+              verifiedInitializationVectorCrc32c!,
+        if (verifiedPlaintextCrc32c != null)
+          'verifiedPlaintextCrc32c': verifiedPlaintextCrc32c!,
       };
 }
 
@@ -5480,6 +6462,9 @@ class UpdateCryptoKeyPrimaryVersionRequest {
           'cryptoKeyVersionId': cryptoKeyVersionId!,
       };
 }
+
+/// Response message for EkmService.VerifyConnectivity.
+typedef VerifyConnectivityResponse = $Empty;
 
 /// The public key component of the wrapping key.
 ///

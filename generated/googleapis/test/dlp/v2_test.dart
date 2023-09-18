@@ -1,8 +1,6 @@
 // ignore_for_file: camel_case_types
-// ignore_for_file: cascade_invocations
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_const_declarations
@@ -12,8 +10,9 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unreachable_from_main
 // ignore_for_file: unused_local_variable
 
 import 'dart:async' as async;
@@ -57,6 +56,26 @@ void checkGooglePrivacyDlpV2Action(api.GooglePrivacyDlpV2Action o) {
     checkGooglePrivacyDlpV2SaveFindings(o.saveFindings!);
   }
   buildCounterGooglePrivacyDlpV2Action--;
+}
+
+core.int buildCounterGooglePrivacyDlpV2ActionDetails = 0;
+api.GooglePrivacyDlpV2ActionDetails buildGooglePrivacyDlpV2ActionDetails() {
+  final o = api.GooglePrivacyDlpV2ActionDetails();
+  buildCounterGooglePrivacyDlpV2ActionDetails++;
+  if (buildCounterGooglePrivacyDlpV2ActionDetails < 3) {
+    o.deidentifyDetails = buildGooglePrivacyDlpV2DeidentifyDataSourceDetails();
+  }
+  buildCounterGooglePrivacyDlpV2ActionDetails--;
+  return o;
+}
+
+void checkGooglePrivacyDlpV2ActionDetails(
+    api.GooglePrivacyDlpV2ActionDetails o) {
+  buildCounterGooglePrivacyDlpV2ActionDetails++;
+  if (buildCounterGooglePrivacyDlpV2ActionDetails < 3) {
+    checkGooglePrivacyDlpV2DeidentifyDataSourceDetails(o.deidentifyDetails!);
+  }
+  buildCounterGooglePrivacyDlpV2ActionDetails--;
 }
 
 core.int buildCounterGooglePrivacyDlpV2ActivateJobTriggerRequest = 0;
@@ -1313,6 +1332,7 @@ api.GooglePrivacyDlpV2CustomInfoType buildGooglePrivacyDlpV2CustomInfoType() {
     o.infoType = buildGooglePrivacyDlpV2InfoType();
     o.likelihood = 'foo';
     o.regex = buildGooglePrivacyDlpV2Regex();
+    o.sensitivityScore = buildGooglePrivacyDlpV2SensitivityScore();
     o.storedType = buildGooglePrivacyDlpV2StoredType();
     o.surrogateType = buildGooglePrivacyDlpV2SurrogateType();
   }
@@ -1336,6 +1356,7 @@ void checkGooglePrivacyDlpV2CustomInfoType(
       unittest.equals('foo'),
     );
     checkGooglePrivacyDlpV2Regex(o.regex!);
+    checkGooglePrivacyDlpV2SensitivityScore(o.sensitivityScore!);
     checkGooglePrivacyDlpV2StoredType(o.storedType!);
     checkGooglePrivacyDlpV2SurrogateType(o.surrogateType!);
   }
@@ -1582,6 +1603,63 @@ void checkGooglePrivacyDlpV2DeidentifyContentResponse(
     checkGooglePrivacyDlpV2TransformationOverview(o.overview!);
   }
   buildCounterGooglePrivacyDlpV2DeidentifyContentResponse--;
+}
+
+core.int buildCounterGooglePrivacyDlpV2DeidentifyDataSourceDetails = 0;
+api.GooglePrivacyDlpV2DeidentifyDataSourceDetails
+    buildGooglePrivacyDlpV2DeidentifyDataSourceDetails() {
+  final o = api.GooglePrivacyDlpV2DeidentifyDataSourceDetails();
+  buildCounterGooglePrivacyDlpV2DeidentifyDataSourceDetails++;
+  if (buildCounterGooglePrivacyDlpV2DeidentifyDataSourceDetails < 3) {
+    o.deidentifyStats = buildGooglePrivacyDlpV2DeidentifyDataSourceStats();
+    o.requestedOptions = buildGooglePrivacyDlpV2RequestedDeidentifyOptions();
+  }
+  buildCounterGooglePrivacyDlpV2DeidentifyDataSourceDetails--;
+  return o;
+}
+
+void checkGooglePrivacyDlpV2DeidentifyDataSourceDetails(
+    api.GooglePrivacyDlpV2DeidentifyDataSourceDetails o) {
+  buildCounterGooglePrivacyDlpV2DeidentifyDataSourceDetails++;
+  if (buildCounterGooglePrivacyDlpV2DeidentifyDataSourceDetails < 3) {
+    checkGooglePrivacyDlpV2DeidentifyDataSourceStats(o.deidentifyStats!);
+    checkGooglePrivacyDlpV2RequestedDeidentifyOptions(o.requestedOptions!);
+  }
+  buildCounterGooglePrivacyDlpV2DeidentifyDataSourceDetails--;
+}
+
+core.int buildCounterGooglePrivacyDlpV2DeidentifyDataSourceStats = 0;
+api.GooglePrivacyDlpV2DeidentifyDataSourceStats
+    buildGooglePrivacyDlpV2DeidentifyDataSourceStats() {
+  final o = api.GooglePrivacyDlpV2DeidentifyDataSourceStats();
+  buildCounterGooglePrivacyDlpV2DeidentifyDataSourceStats++;
+  if (buildCounterGooglePrivacyDlpV2DeidentifyDataSourceStats < 3) {
+    o.transformationCount = 'foo';
+    o.transformationErrorCount = 'foo';
+    o.transformedBytes = 'foo';
+  }
+  buildCounterGooglePrivacyDlpV2DeidentifyDataSourceStats--;
+  return o;
+}
+
+void checkGooglePrivacyDlpV2DeidentifyDataSourceStats(
+    api.GooglePrivacyDlpV2DeidentifyDataSourceStats o) {
+  buildCounterGooglePrivacyDlpV2DeidentifyDataSourceStats++;
+  if (buildCounterGooglePrivacyDlpV2DeidentifyDataSourceStats < 3) {
+    unittest.expect(
+      o.transformationCount!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.transformationErrorCount!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.transformedBytes!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGooglePrivacyDlpV2DeidentifyDataSourceStats--;
 }
 
 core.int buildCounterGooglePrivacyDlpV2DeidentifyTemplate = 0;
@@ -1849,12 +1927,23 @@ void checkGooglePrivacyDlpV2Dictionary(api.GooglePrivacyDlpV2Dictionary o) {
   buildCounterGooglePrivacyDlpV2Dictionary--;
 }
 
-core.List<api.GooglePrivacyDlpV2Error> buildUnnamed19() => [
+core.List<api.GooglePrivacyDlpV2ActionDetails> buildUnnamed19() => [
+      buildGooglePrivacyDlpV2ActionDetails(),
+      buildGooglePrivacyDlpV2ActionDetails(),
+    ];
+
+void checkUnnamed19(core.List<api.GooglePrivacyDlpV2ActionDetails> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGooglePrivacyDlpV2ActionDetails(o[0]);
+  checkGooglePrivacyDlpV2ActionDetails(o[1]);
+}
+
+core.List<api.GooglePrivacyDlpV2Error> buildUnnamed20() => [
       buildGooglePrivacyDlpV2Error(),
       buildGooglePrivacyDlpV2Error(),
     ];
 
-void checkUnnamed19(core.List<api.GooglePrivacyDlpV2Error> o) {
+void checkUnnamed20(core.List<api.GooglePrivacyDlpV2Error> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2Error(o[0]);
   checkGooglePrivacyDlpV2Error(o[1]);
@@ -1865,9 +1954,10 @@ api.GooglePrivacyDlpV2DlpJob buildGooglePrivacyDlpV2DlpJob() {
   final o = api.GooglePrivacyDlpV2DlpJob();
   buildCounterGooglePrivacyDlpV2DlpJob++;
   if (buildCounterGooglePrivacyDlpV2DlpJob < 3) {
+    o.actionDetails = buildUnnamed19();
     o.createTime = 'foo';
     o.endTime = 'foo';
-    o.errors = buildUnnamed19();
+    o.errors = buildUnnamed20();
     o.inspectDetails = buildGooglePrivacyDlpV2InspectDataSourceDetails();
     o.jobTriggerName = 'foo';
     o.name = 'foo';
@@ -1883,6 +1973,7 @@ api.GooglePrivacyDlpV2DlpJob buildGooglePrivacyDlpV2DlpJob() {
 void checkGooglePrivacyDlpV2DlpJob(api.GooglePrivacyDlpV2DlpJob o) {
   buildCounterGooglePrivacyDlpV2DlpJob++;
   if (buildCounterGooglePrivacyDlpV2DlpJob < 3) {
+    checkUnnamed19(o.actionDetails!);
     unittest.expect(
       o.createTime!,
       unittest.equals('foo'),
@@ -1891,7 +1982,7 @@ void checkGooglePrivacyDlpV2DlpJob(api.GooglePrivacyDlpV2DlpJob o) {
       o.endTime!,
       unittest.equals('foo'),
     );
-    checkUnnamed19(o.errors!);
+    checkUnnamed20(o.errors!);
     checkGooglePrivacyDlpV2InspectDataSourceDetails(o.inspectDetails!);
     unittest.expect(
       o.jobTriggerName!,
@@ -1961,12 +2052,12 @@ void checkGooglePrivacyDlpV2EntityId(api.GooglePrivacyDlpV2EntityId o) {
   buildCounterGooglePrivacyDlpV2EntityId--;
 }
 
-core.List<core.String> buildUnnamed20() => [
+core.List<core.String> buildUnnamed21() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed20(core.List<core.String> o) {
+void checkUnnamed21(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1984,7 +2075,7 @@ api.GooglePrivacyDlpV2Error buildGooglePrivacyDlpV2Error() {
   buildCounterGooglePrivacyDlpV2Error++;
   if (buildCounterGooglePrivacyDlpV2Error < 3) {
     o.details = buildGoogleRpcStatus();
-    o.timestamps = buildUnnamed20();
+    o.timestamps = buildUnnamed21();
   }
   buildCounterGooglePrivacyDlpV2Error--;
   return o;
@@ -1994,17 +2085,40 @@ void checkGooglePrivacyDlpV2Error(api.GooglePrivacyDlpV2Error o) {
   buildCounterGooglePrivacyDlpV2Error++;
   if (buildCounterGooglePrivacyDlpV2Error < 3) {
     checkGoogleRpcStatus(o.details!);
-    checkUnnamed20(o.timestamps!);
+    checkUnnamed21(o.timestamps!);
   }
   buildCounterGooglePrivacyDlpV2Error--;
 }
 
-core.List<api.GooglePrivacyDlpV2InfoType> buildUnnamed21() => [
+core.int buildCounterGooglePrivacyDlpV2ExcludeByHotword = 0;
+api.GooglePrivacyDlpV2ExcludeByHotword
+    buildGooglePrivacyDlpV2ExcludeByHotword() {
+  final o = api.GooglePrivacyDlpV2ExcludeByHotword();
+  buildCounterGooglePrivacyDlpV2ExcludeByHotword++;
+  if (buildCounterGooglePrivacyDlpV2ExcludeByHotword < 3) {
+    o.hotwordRegex = buildGooglePrivacyDlpV2Regex();
+    o.proximity = buildGooglePrivacyDlpV2Proximity();
+  }
+  buildCounterGooglePrivacyDlpV2ExcludeByHotword--;
+  return o;
+}
+
+void checkGooglePrivacyDlpV2ExcludeByHotword(
+    api.GooglePrivacyDlpV2ExcludeByHotword o) {
+  buildCounterGooglePrivacyDlpV2ExcludeByHotword++;
+  if (buildCounterGooglePrivacyDlpV2ExcludeByHotword < 3) {
+    checkGooglePrivacyDlpV2Regex(o.hotwordRegex!);
+    checkGooglePrivacyDlpV2Proximity(o.proximity!);
+  }
+  buildCounterGooglePrivacyDlpV2ExcludeByHotword--;
+}
+
+core.List<api.GooglePrivacyDlpV2InfoType> buildUnnamed22() => [
       buildGooglePrivacyDlpV2InfoType(),
       buildGooglePrivacyDlpV2InfoType(),
     ];
 
-void checkUnnamed21(core.List<api.GooglePrivacyDlpV2InfoType> o) {
+void checkUnnamed22(core.List<api.GooglePrivacyDlpV2InfoType> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2InfoType(o[0]);
   checkGooglePrivacyDlpV2InfoType(o[1]);
@@ -2016,7 +2130,7 @@ api.GooglePrivacyDlpV2ExcludeInfoTypes
   final o = api.GooglePrivacyDlpV2ExcludeInfoTypes();
   buildCounterGooglePrivacyDlpV2ExcludeInfoTypes++;
   if (buildCounterGooglePrivacyDlpV2ExcludeInfoTypes < 3) {
-    o.infoTypes = buildUnnamed21();
+    o.infoTypes = buildUnnamed22();
   }
   buildCounterGooglePrivacyDlpV2ExcludeInfoTypes--;
   return o;
@@ -2026,7 +2140,7 @@ void checkGooglePrivacyDlpV2ExcludeInfoTypes(
     api.GooglePrivacyDlpV2ExcludeInfoTypes o) {
   buildCounterGooglePrivacyDlpV2ExcludeInfoTypes++;
   if (buildCounterGooglePrivacyDlpV2ExcludeInfoTypes < 3) {
-    checkUnnamed21(o.infoTypes!);
+    checkUnnamed22(o.infoTypes!);
   }
   buildCounterGooglePrivacyDlpV2ExcludeInfoTypes--;
 }
@@ -2037,6 +2151,7 @@ api.GooglePrivacyDlpV2ExclusionRule buildGooglePrivacyDlpV2ExclusionRule() {
   buildCounterGooglePrivacyDlpV2ExclusionRule++;
   if (buildCounterGooglePrivacyDlpV2ExclusionRule < 3) {
     o.dictionary = buildGooglePrivacyDlpV2Dictionary();
+    o.excludeByHotword = buildGooglePrivacyDlpV2ExcludeByHotword();
     o.excludeInfoTypes = buildGooglePrivacyDlpV2ExcludeInfoTypes();
     o.matchingType = 'foo';
     o.regex = buildGooglePrivacyDlpV2Regex();
@@ -2050,6 +2165,7 @@ void checkGooglePrivacyDlpV2ExclusionRule(
   buildCounterGooglePrivacyDlpV2ExclusionRule++;
   if (buildCounterGooglePrivacyDlpV2ExclusionRule < 3) {
     checkGooglePrivacyDlpV2Dictionary(o.dictionary!);
+    checkGooglePrivacyDlpV2ExcludeByHotword(o.excludeByHotword!);
     checkGooglePrivacyDlpV2ExcludeInfoTypes(o.excludeInfoTypes!);
     unittest.expect(
       o.matchingType!,
@@ -2106,12 +2222,12 @@ void checkGooglePrivacyDlpV2FieldId(api.GooglePrivacyDlpV2FieldId o) {
   buildCounterGooglePrivacyDlpV2FieldId--;
 }
 
-core.List<api.GooglePrivacyDlpV2FieldId> buildUnnamed22() => [
+core.List<api.GooglePrivacyDlpV2FieldId> buildUnnamed23() => [
       buildGooglePrivacyDlpV2FieldId(),
       buildGooglePrivacyDlpV2FieldId(),
     ];
 
-void checkUnnamed22(core.List<api.GooglePrivacyDlpV2FieldId> o) {
+void checkUnnamed23(core.List<api.GooglePrivacyDlpV2FieldId> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2FieldId(o[0]);
   checkGooglePrivacyDlpV2FieldId(o[1]);
@@ -2124,7 +2240,7 @@ api.GooglePrivacyDlpV2FieldTransformation
   buildCounterGooglePrivacyDlpV2FieldTransformation++;
   if (buildCounterGooglePrivacyDlpV2FieldTransformation < 3) {
     o.condition = buildGooglePrivacyDlpV2RecordCondition();
-    o.fields = buildUnnamed22();
+    o.fields = buildUnnamed23();
     o.infoTypeTransformations =
         buildGooglePrivacyDlpV2InfoTypeTransformations();
     o.primitiveTransformation =
@@ -2139,7 +2255,7 @@ void checkGooglePrivacyDlpV2FieldTransformation(
   buildCounterGooglePrivacyDlpV2FieldTransformation++;
   if (buildCounterGooglePrivacyDlpV2FieldTransformation < 3) {
     checkGooglePrivacyDlpV2RecordCondition(o.condition!);
-    checkUnnamed22(o.fields!);
+    checkUnnamed23(o.fields!);
     checkGooglePrivacyDlpV2InfoTypeTransformations(o.infoTypeTransformations!);
     checkGooglePrivacyDlpV2PrimitiveTransformation(o.primitiveTransformation!);
   }
@@ -2170,12 +2286,12 @@ void checkGooglePrivacyDlpV2FileSet(api.GooglePrivacyDlpV2FileSet o) {
   buildCounterGooglePrivacyDlpV2FileSet--;
 }
 
-core.Map<core.String, core.String> buildUnnamed23() => {
+core.Map<core.String, core.String> buildUnnamed24() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed23(core.Map<core.String, core.String> o) {
+void checkUnnamed24(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -2197,7 +2313,7 @@ api.GooglePrivacyDlpV2Finding buildGooglePrivacyDlpV2Finding() {
     o.infoType = buildGooglePrivacyDlpV2InfoType();
     o.jobCreateTime = 'foo';
     o.jobName = 'foo';
-    o.labels = buildUnnamed23();
+    o.labels = buildUnnamed24();
     o.likelihood = 'foo';
     o.location = buildGooglePrivacyDlpV2Location();
     o.name = 'foo';
@@ -2230,7 +2346,7 @@ void checkGooglePrivacyDlpV2Finding(api.GooglePrivacyDlpV2Finding o) {
       o.jobName!,
       unittest.equals('foo'),
     );
-    checkUnnamed23(o.labels!);
+    checkUnnamed24(o.labels!);
     unittest.expect(
       o.likelihood!,
       unittest.equals('foo'),
@@ -2257,12 +2373,12 @@ void checkGooglePrivacyDlpV2Finding(api.GooglePrivacyDlpV2Finding o) {
   buildCounterGooglePrivacyDlpV2Finding--;
 }
 
-core.List<api.GooglePrivacyDlpV2InfoTypeLimit> buildUnnamed24() => [
+core.List<api.GooglePrivacyDlpV2InfoTypeLimit> buildUnnamed25() => [
       buildGooglePrivacyDlpV2InfoTypeLimit(),
       buildGooglePrivacyDlpV2InfoTypeLimit(),
     ];
 
-void checkUnnamed24(core.List<api.GooglePrivacyDlpV2InfoTypeLimit> o) {
+void checkUnnamed25(core.List<api.GooglePrivacyDlpV2InfoTypeLimit> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2InfoTypeLimit(o[0]);
   checkGooglePrivacyDlpV2InfoTypeLimit(o[1]);
@@ -2273,7 +2389,7 @@ api.GooglePrivacyDlpV2FindingLimits buildGooglePrivacyDlpV2FindingLimits() {
   final o = api.GooglePrivacyDlpV2FindingLimits();
   buildCounterGooglePrivacyDlpV2FindingLimits++;
   if (buildCounterGooglePrivacyDlpV2FindingLimits < 3) {
-    o.maxFindingsPerInfoType = buildUnnamed24();
+    o.maxFindingsPerInfoType = buildUnnamed25();
     o.maxFindingsPerItem = 42;
     o.maxFindingsPerRequest = 42;
   }
@@ -2285,7 +2401,7 @@ void checkGooglePrivacyDlpV2FindingLimits(
     api.GooglePrivacyDlpV2FindingLimits o) {
   buildCounterGooglePrivacyDlpV2FindingLimits++;
   if (buildCounterGooglePrivacyDlpV2FindingLimits < 3) {
-    checkUnnamed24(o.maxFindingsPerInfoType!);
+    checkUnnamed25(o.maxFindingsPerInfoType!);
     unittest.expect(
       o.maxFindingsPerItem!,
       unittest.equals(42),
@@ -2389,12 +2505,12 @@ void checkGooglePrivacyDlpV2HybridContentItem(
   buildCounterGooglePrivacyDlpV2HybridContentItem--;
 }
 
-core.Map<core.String, core.String> buildUnnamed25() => {
+core.Map<core.String, core.String> buildUnnamed26() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed25(core.Map<core.String, core.String> o) {
+void checkUnnamed26(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -2414,7 +2530,7 @@ api.GooglePrivacyDlpV2HybridFindingDetails
   if (buildCounterGooglePrivacyDlpV2HybridFindingDetails < 3) {
     o.containerDetails = buildGooglePrivacyDlpV2Container();
     o.fileOffset = 'foo';
-    o.labels = buildUnnamed25();
+    o.labels = buildUnnamed26();
     o.rowOffset = 'foo';
     o.tableOptions = buildGooglePrivacyDlpV2TableOptions();
   }
@@ -2431,7 +2547,7 @@ void checkGooglePrivacyDlpV2HybridFindingDetails(
       o.fileOffset!,
       unittest.equals('foo'),
     );
-    checkUnnamed25(o.labels!);
+    checkUnnamed26(o.labels!);
     unittest.expect(
       o.rowOffset!,
       unittest.equals('foo'),
@@ -2534,12 +2650,12 @@ void checkGooglePrivacyDlpV2HybridInspectStatistics(
   buildCounterGooglePrivacyDlpV2HybridInspectStatistics--;
 }
 
-core.Map<core.String, core.String> buildUnnamed26() => {
+core.Map<core.String, core.String> buildUnnamed27() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed26(core.Map<core.String, core.String> o) {
+void checkUnnamed27(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -2551,12 +2667,12 @@ void checkUnnamed26(core.Map<core.String, core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed27() => [
+core.List<core.String> buildUnnamed28() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed27(core.List<core.String> o) {
+void checkUnnamed28(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2574,8 +2690,8 @@ api.GooglePrivacyDlpV2HybridOptions buildGooglePrivacyDlpV2HybridOptions() {
   buildCounterGooglePrivacyDlpV2HybridOptions++;
   if (buildCounterGooglePrivacyDlpV2HybridOptions < 3) {
     o.description = 'foo';
-    o.labels = buildUnnamed26();
-    o.requiredFindingLabelKeys = buildUnnamed27();
+    o.labels = buildUnnamed27();
+    o.requiredFindingLabelKeys = buildUnnamed28();
     o.tableOptions = buildGooglePrivacyDlpV2TableOptions();
   }
   buildCounterGooglePrivacyDlpV2HybridOptions--;
@@ -2590,19 +2706,19 @@ void checkGooglePrivacyDlpV2HybridOptions(
       o.description!,
       unittest.equals('foo'),
     );
-    checkUnnamed26(o.labels!);
-    checkUnnamed27(o.requiredFindingLabelKeys!);
+    checkUnnamed27(o.labels!);
+    checkUnnamed28(o.requiredFindingLabelKeys!);
     checkGooglePrivacyDlpV2TableOptions(o.tableOptions!);
   }
   buildCounterGooglePrivacyDlpV2HybridOptions--;
 }
 
-core.List<api.GooglePrivacyDlpV2BoundingBox> buildUnnamed28() => [
+core.List<api.GooglePrivacyDlpV2BoundingBox> buildUnnamed29() => [
       buildGooglePrivacyDlpV2BoundingBox(),
       buildGooglePrivacyDlpV2BoundingBox(),
     ];
 
-void checkUnnamed28(core.List<api.GooglePrivacyDlpV2BoundingBox> o) {
+void checkUnnamed29(core.List<api.GooglePrivacyDlpV2BoundingBox> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2BoundingBox(o[0]);
   checkGooglePrivacyDlpV2BoundingBox(o[1]);
@@ -2613,7 +2729,7 @@ api.GooglePrivacyDlpV2ImageLocation buildGooglePrivacyDlpV2ImageLocation() {
   final o = api.GooglePrivacyDlpV2ImageLocation();
   buildCounterGooglePrivacyDlpV2ImageLocation++;
   if (buildCounterGooglePrivacyDlpV2ImageLocation < 3) {
-    o.boundingBoxes = buildUnnamed28();
+    o.boundingBoxes = buildUnnamed29();
   }
   buildCounterGooglePrivacyDlpV2ImageLocation--;
   return o;
@@ -2623,7 +2739,7 @@ void checkGooglePrivacyDlpV2ImageLocation(
     api.GooglePrivacyDlpV2ImageLocation o) {
   buildCounterGooglePrivacyDlpV2ImageLocation++;
   if (buildCounterGooglePrivacyDlpV2ImageLocation < 3) {
-    checkUnnamed28(o.boundingBoxes!);
+    checkUnnamed29(o.boundingBoxes!);
   }
   buildCounterGooglePrivacyDlpV2ImageLocation--;
 }
@@ -2680,12 +2796,12 @@ void checkGooglePrivacyDlpV2ImageTransformation(
   buildCounterGooglePrivacyDlpV2ImageTransformation--;
 }
 
-core.List<api.GooglePrivacyDlpV2ImageTransformation> buildUnnamed29() => [
+core.List<api.GooglePrivacyDlpV2ImageTransformation> buildUnnamed30() => [
       buildGooglePrivacyDlpV2ImageTransformation(),
       buildGooglePrivacyDlpV2ImageTransformation(),
     ];
 
-void checkUnnamed29(core.List<api.GooglePrivacyDlpV2ImageTransformation> o) {
+void checkUnnamed30(core.List<api.GooglePrivacyDlpV2ImageTransformation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2ImageTransformation(o[0]);
   checkGooglePrivacyDlpV2ImageTransformation(o[1]);
@@ -2697,7 +2813,7 @@ api.GooglePrivacyDlpV2ImageTransformations
   final o = api.GooglePrivacyDlpV2ImageTransformations();
   buildCounterGooglePrivacyDlpV2ImageTransformations++;
   if (buildCounterGooglePrivacyDlpV2ImageTransformations < 3) {
-    o.transforms = buildUnnamed29();
+    o.transforms = buildUnnamed30();
   }
   buildCounterGooglePrivacyDlpV2ImageTransformations--;
   return o;
@@ -2707,7 +2823,7 @@ void checkGooglePrivacyDlpV2ImageTransformations(
     api.GooglePrivacyDlpV2ImageTransformations o) {
   buildCounterGooglePrivacyDlpV2ImageTransformations++;
   if (buildCounterGooglePrivacyDlpV2ImageTransformations < 3) {
-    checkUnnamed29(o.transforms!);
+    checkUnnamed30(o.transforms!);
   }
   buildCounterGooglePrivacyDlpV2ImageTransformations--;
 }
@@ -2718,6 +2834,7 @@ api.GooglePrivacyDlpV2InfoType buildGooglePrivacyDlpV2InfoType() {
   buildCounterGooglePrivacyDlpV2InfoType++;
   if (buildCounterGooglePrivacyDlpV2InfoType < 3) {
     o.name = 'foo';
+    o.sensitivityScore = buildGooglePrivacyDlpV2SensitivityScore();
     o.version = 'foo';
   }
   buildCounterGooglePrivacyDlpV2InfoType--;
@@ -2731,6 +2848,7 @@ void checkGooglePrivacyDlpV2InfoType(api.GooglePrivacyDlpV2InfoType o) {
       o.name!,
       unittest.equals('foo'),
     );
+    checkGooglePrivacyDlpV2SensitivityScore(o.sensitivityScore!);
     unittest.expect(
       o.version!,
       unittest.equals('foo'),
@@ -2773,23 +2891,23 @@ void checkGooglePrivacyDlpV2InfoTypeCategory(
   buildCounterGooglePrivacyDlpV2InfoTypeCategory--;
 }
 
-core.List<api.GooglePrivacyDlpV2InfoTypeCategory> buildUnnamed30() => [
+core.List<api.GooglePrivacyDlpV2InfoTypeCategory> buildUnnamed31() => [
       buildGooglePrivacyDlpV2InfoTypeCategory(),
       buildGooglePrivacyDlpV2InfoTypeCategory(),
     ];
 
-void checkUnnamed30(core.List<api.GooglePrivacyDlpV2InfoTypeCategory> o) {
+void checkUnnamed31(core.List<api.GooglePrivacyDlpV2InfoTypeCategory> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2InfoTypeCategory(o[0]);
   checkGooglePrivacyDlpV2InfoTypeCategory(o[1]);
 }
 
-core.List<core.String> buildUnnamed31() => [
+core.List<core.String> buildUnnamed32() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed31(core.List<core.String> o) {
+void checkUnnamed32(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2801,12 +2919,12 @@ void checkUnnamed31(core.List<core.String> o) {
   );
 }
 
-core.List<api.GooglePrivacyDlpV2VersionDescription> buildUnnamed32() => [
+core.List<api.GooglePrivacyDlpV2VersionDescription> buildUnnamed33() => [
       buildGooglePrivacyDlpV2VersionDescription(),
       buildGooglePrivacyDlpV2VersionDescription(),
     ];
 
-void checkUnnamed32(core.List<api.GooglePrivacyDlpV2VersionDescription> o) {
+void checkUnnamed33(core.List<api.GooglePrivacyDlpV2VersionDescription> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2VersionDescription(o[0]);
   checkGooglePrivacyDlpV2VersionDescription(o[1]);
@@ -2818,12 +2936,13 @@ api.GooglePrivacyDlpV2InfoTypeDescription
   final o = api.GooglePrivacyDlpV2InfoTypeDescription();
   buildCounterGooglePrivacyDlpV2InfoTypeDescription++;
   if (buildCounterGooglePrivacyDlpV2InfoTypeDescription < 3) {
-    o.categories = buildUnnamed30();
+    o.categories = buildUnnamed31();
     o.description = 'foo';
     o.displayName = 'foo';
     o.name = 'foo';
-    o.supportedBy = buildUnnamed31();
-    o.versions = buildUnnamed32();
+    o.sensitivityScore = buildGooglePrivacyDlpV2SensitivityScore();
+    o.supportedBy = buildUnnamed32();
+    o.versions = buildUnnamed33();
   }
   buildCounterGooglePrivacyDlpV2InfoTypeDescription--;
   return o;
@@ -2833,7 +2952,7 @@ void checkGooglePrivacyDlpV2InfoTypeDescription(
     api.GooglePrivacyDlpV2InfoTypeDescription o) {
   buildCounterGooglePrivacyDlpV2InfoTypeDescription++;
   if (buildCounterGooglePrivacyDlpV2InfoTypeDescription < 3) {
-    checkUnnamed30(o.categories!);
+    checkUnnamed31(o.categories!);
     unittest.expect(
       o.description!,
       unittest.equals('foo'),
@@ -2846,8 +2965,9 @@ void checkGooglePrivacyDlpV2InfoTypeDescription(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed31(o.supportedBy!);
-    checkUnnamed32(o.versions!);
+    checkGooglePrivacyDlpV2SensitivityScore(o.sensitivityScore!);
+    checkUnnamed32(o.supportedBy!);
+    checkUnnamed33(o.versions!);
   }
   buildCounterGooglePrivacyDlpV2InfoTypeDescription--;
 }
@@ -2902,12 +3022,12 @@ void checkGooglePrivacyDlpV2InfoTypeStats(
   buildCounterGooglePrivacyDlpV2InfoTypeStats--;
 }
 
-core.List<api.GooglePrivacyDlpV2InfoType> buildUnnamed33() => [
+core.List<api.GooglePrivacyDlpV2InfoType> buildUnnamed34() => [
       buildGooglePrivacyDlpV2InfoType(),
       buildGooglePrivacyDlpV2InfoType(),
     ];
 
-void checkUnnamed33(core.List<api.GooglePrivacyDlpV2InfoType> o) {
+void checkUnnamed34(core.List<api.GooglePrivacyDlpV2InfoType> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2InfoType(o[0]);
   checkGooglePrivacyDlpV2InfoType(o[1]);
@@ -2919,7 +3039,7 @@ api.GooglePrivacyDlpV2InfoTypeTransformation
   final o = api.GooglePrivacyDlpV2InfoTypeTransformation();
   buildCounterGooglePrivacyDlpV2InfoTypeTransformation++;
   if (buildCounterGooglePrivacyDlpV2InfoTypeTransformation < 3) {
-    o.infoTypes = buildUnnamed33();
+    o.infoTypes = buildUnnamed34();
     o.primitiveTransformation =
         buildGooglePrivacyDlpV2PrimitiveTransformation();
   }
@@ -2931,18 +3051,18 @@ void checkGooglePrivacyDlpV2InfoTypeTransformation(
     api.GooglePrivacyDlpV2InfoTypeTransformation o) {
   buildCounterGooglePrivacyDlpV2InfoTypeTransformation++;
   if (buildCounterGooglePrivacyDlpV2InfoTypeTransformation < 3) {
-    checkUnnamed33(o.infoTypes!);
+    checkUnnamed34(o.infoTypes!);
     checkGooglePrivacyDlpV2PrimitiveTransformation(o.primitiveTransformation!);
   }
   buildCounterGooglePrivacyDlpV2InfoTypeTransformation--;
 }
 
-core.List<api.GooglePrivacyDlpV2InfoTypeTransformation> buildUnnamed34() => [
+core.List<api.GooglePrivacyDlpV2InfoTypeTransformation> buildUnnamed35() => [
       buildGooglePrivacyDlpV2InfoTypeTransformation(),
       buildGooglePrivacyDlpV2InfoTypeTransformation(),
     ];
 
-void checkUnnamed34(core.List<api.GooglePrivacyDlpV2InfoTypeTransformation> o) {
+void checkUnnamed35(core.List<api.GooglePrivacyDlpV2InfoTypeTransformation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2InfoTypeTransformation(o[0]);
   checkGooglePrivacyDlpV2InfoTypeTransformation(o[1]);
@@ -2954,7 +3074,7 @@ api.GooglePrivacyDlpV2InfoTypeTransformations
   final o = api.GooglePrivacyDlpV2InfoTypeTransformations();
   buildCounterGooglePrivacyDlpV2InfoTypeTransformations++;
   if (buildCounterGooglePrivacyDlpV2InfoTypeTransformations < 3) {
-    o.transformations = buildUnnamed34();
+    o.transformations = buildUnnamed35();
   }
   buildCounterGooglePrivacyDlpV2InfoTypeTransformations--;
   return o;
@@ -2964,17 +3084,17 @@ void checkGooglePrivacyDlpV2InfoTypeTransformations(
     api.GooglePrivacyDlpV2InfoTypeTransformations o) {
   buildCounterGooglePrivacyDlpV2InfoTypeTransformations++;
   if (buildCounterGooglePrivacyDlpV2InfoTypeTransformations < 3) {
-    checkUnnamed34(o.transformations!);
+    checkUnnamed35(o.transformations!);
   }
   buildCounterGooglePrivacyDlpV2InfoTypeTransformations--;
 }
 
-core.List<core.String> buildUnnamed35() => [
+core.List<core.String> buildUnnamed36() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed35(core.List<core.String> o) {
+void checkUnnamed36(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2986,34 +3106,34 @@ void checkUnnamed35(core.List<core.String> o) {
   );
 }
 
-core.List<api.GooglePrivacyDlpV2CustomInfoType> buildUnnamed36() => [
+core.List<api.GooglePrivacyDlpV2CustomInfoType> buildUnnamed37() => [
       buildGooglePrivacyDlpV2CustomInfoType(),
       buildGooglePrivacyDlpV2CustomInfoType(),
     ];
 
-void checkUnnamed36(core.List<api.GooglePrivacyDlpV2CustomInfoType> o) {
+void checkUnnamed37(core.List<api.GooglePrivacyDlpV2CustomInfoType> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2CustomInfoType(o[0]);
   checkGooglePrivacyDlpV2CustomInfoType(o[1]);
 }
 
-core.List<api.GooglePrivacyDlpV2InfoType> buildUnnamed37() => [
+core.List<api.GooglePrivacyDlpV2InfoType> buildUnnamed38() => [
       buildGooglePrivacyDlpV2InfoType(),
       buildGooglePrivacyDlpV2InfoType(),
     ];
 
-void checkUnnamed37(core.List<api.GooglePrivacyDlpV2InfoType> o) {
+void checkUnnamed38(core.List<api.GooglePrivacyDlpV2InfoType> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2InfoType(o[0]);
   checkGooglePrivacyDlpV2InfoType(o[1]);
 }
 
-core.List<api.GooglePrivacyDlpV2InspectionRuleSet> buildUnnamed38() => [
+core.List<api.GooglePrivacyDlpV2InspectionRuleSet> buildUnnamed39() => [
       buildGooglePrivacyDlpV2InspectionRuleSet(),
       buildGooglePrivacyDlpV2InspectionRuleSet(),
     ];
 
-void checkUnnamed38(core.List<api.GooglePrivacyDlpV2InspectionRuleSet> o) {
+void checkUnnamed39(core.List<api.GooglePrivacyDlpV2InspectionRuleSet> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2InspectionRuleSet(o[0]);
   checkGooglePrivacyDlpV2InspectionRuleSet(o[1]);
@@ -3024,14 +3144,14 @@ api.GooglePrivacyDlpV2InspectConfig buildGooglePrivacyDlpV2InspectConfig() {
   final o = api.GooglePrivacyDlpV2InspectConfig();
   buildCounterGooglePrivacyDlpV2InspectConfig++;
   if (buildCounterGooglePrivacyDlpV2InspectConfig < 3) {
-    o.contentOptions = buildUnnamed35();
-    o.customInfoTypes = buildUnnamed36();
+    o.contentOptions = buildUnnamed36();
+    o.customInfoTypes = buildUnnamed37();
     o.excludeInfoTypes = true;
     o.includeQuote = true;
-    o.infoTypes = buildUnnamed37();
+    o.infoTypes = buildUnnamed38();
     o.limits = buildGooglePrivacyDlpV2FindingLimits();
     o.minLikelihood = 'foo';
-    o.ruleSet = buildUnnamed38();
+    o.ruleSet = buildUnnamed39();
   }
   buildCounterGooglePrivacyDlpV2InspectConfig--;
   return o;
@@ -3041,17 +3161,17 @@ void checkGooglePrivacyDlpV2InspectConfig(
     api.GooglePrivacyDlpV2InspectConfig o) {
   buildCounterGooglePrivacyDlpV2InspectConfig++;
   if (buildCounterGooglePrivacyDlpV2InspectConfig < 3) {
-    checkUnnamed35(o.contentOptions!);
-    checkUnnamed36(o.customInfoTypes!);
+    checkUnnamed36(o.contentOptions!);
+    checkUnnamed37(o.customInfoTypes!);
     unittest.expect(o.excludeInfoTypes!, unittest.isTrue);
     unittest.expect(o.includeQuote!, unittest.isTrue);
-    checkUnnamed37(o.infoTypes!);
+    checkUnnamed38(o.infoTypes!);
     checkGooglePrivacyDlpV2FindingLimits(o.limits!);
     unittest.expect(
       o.minLikelihood!,
       unittest.equals('foo'),
     );
-    checkUnnamed38(o.ruleSet!);
+    checkUnnamed39(o.ruleSet!);
   }
   buildCounterGooglePrivacyDlpV2InspectConfig--;
 }
@@ -3133,12 +3253,12 @@ void checkGooglePrivacyDlpV2InspectDataSourceDetails(
   buildCounterGooglePrivacyDlpV2InspectDataSourceDetails--;
 }
 
-core.List<api.GooglePrivacyDlpV2Action> buildUnnamed39() => [
+core.List<api.GooglePrivacyDlpV2Action> buildUnnamed40() => [
       buildGooglePrivacyDlpV2Action(),
       buildGooglePrivacyDlpV2Action(),
     ];
 
-void checkUnnamed39(core.List<api.GooglePrivacyDlpV2Action> o) {
+void checkUnnamed40(core.List<api.GooglePrivacyDlpV2Action> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2Action(o[0]);
   checkGooglePrivacyDlpV2Action(o[1]);
@@ -3150,7 +3270,7 @@ api.GooglePrivacyDlpV2InspectJobConfig
   final o = api.GooglePrivacyDlpV2InspectJobConfig();
   buildCounterGooglePrivacyDlpV2InspectJobConfig++;
   if (buildCounterGooglePrivacyDlpV2InspectJobConfig < 3) {
-    o.actions = buildUnnamed39();
+    o.actions = buildUnnamed40();
     o.inspectConfig = buildGooglePrivacyDlpV2InspectConfig();
     o.inspectTemplateName = 'foo';
     o.storageConfig = buildGooglePrivacyDlpV2StorageConfig();
@@ -3163,7 +3283,7 @@ void checkGooglePrivacyDlpV2InspectJobConfig(
     api.GooglePrivacyDlpV2InspectJobConfig o) {
   buildCounterGooglePrivacyDlpV2InspectJobConfig++;
   if (buildCounterGooglePrivacyDlpV2InspectJobConfig < 3) {
-    checkUnnamed39(o.actions!);
+    checkUnnamed40(o.actions!);
     checkGooglePrivacyDlpV2InspectConfig(o.inspectConfig!);
     unittest.expect(
       o.inspectTemplateName!,
@@ -3174,12 +3294,12 @@ void checkGooglePrivacyDlpV2InspectJobConfig(
   buildCounterGooglePrivacyDlpV2InspectJobConfig--;
 }
 
-core.List<api.GooglePrivacyDlpV2Finding> buildUnnamed40() => [
+core.List<api.GooglePrivacyDlpV2Finding> buildUnnamed41() => [
       buildGooglePrivacyDlpV2Finding(),
       buildGooglePrivacyDlpV2Finding(),
     ];
 
-void checkUnnamed40(core.List<api.GooglePrivacyDlpV2Finding> o) {
+void checkUnnamed41(core.List<api.GooglePrivacyDlpV2Finding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2Finding(o[0]);
   checkGooglePrivacyDlpV2Finding(o[1]);
@@ -3190,7 +3310,7 @@ api.GooglePrivacyDlpV2InspectResult buildGooglePrivacyDlpV2InspectResult() {
   final o = api.GooglePrivacyDlpV2InspectResult();
   buildCounterGooglePrivacyDlpV2InspectResult++;
   if (buildCounterGooglePrivacyDlpV2InspectResult < 3) {
-    o.findings = buildUnnamed40();
+    o.findings = buildUnnamed41();
     o.findingsTruncated = true;
   }
   buildCounterGooglePrivacyDlpV2InspectResult--;
@@ -3201,7 +3321,7 @@ void checkGooglePrivacyDlpV2InspectResult(
     api.GooglePrivacyDlpV2InspectResult o) {
   buildCounterGooglePrivacyDlpV2InspectResult++;
   if (buildCounterGooglePrivacyDlpV2InspectResult < 3) {
-    checkUnnamed40(o.findings!);
+    checkUnnamed41(o.findings!);
     unittest.expect(o.findingsTruncated!, unittest.isTrue);
   }
   buildCounterGooglePrivacyDlpV2InspectResult--;
@@ -3274,23 +3394,23 @@ void checkGooglePrivacyDlpV2InspectionRule(
   buildCounterGooglePrivacyDlpV2InspectionRule--;
 }
 
-core.List<api.GooglePrivacyDlpV2InfoType> buildUnnamed41() => [
+core.List<api.GooglePrivacyDlpV2InfoType> buildUnnamed42() => [
       buildGooglePrivacyDlpV2InfoType(),
       buildGooglePrivacyDlpV2InfoType(),
     ];
 
-void checkUnnamed41(core.List<api.GooglePrivacyDlpV2InfoType> o) {
+void checkUnnamed42(core.List<api.GooglePrivacyDlpV2InfoType> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2InfoType(o[0]);
   checkGooglePrivacyDlpV2InfoType(o[1]);
 }
 
-core.List<api.GooglePrivacyDlpV2InspectionRule> buildUnnamed42() => [
+core.List<api.GooglePrivacyDlpV2InspectionRule> buildUnnamed43() => [
       buildGooglePrivacyDlpV2InspectionRule(),
       buildGooglePrivacyDlpV2InspectionRule(),
     ];
 
-void checkUnnamed42(core.List<api.GooglePrivacyDlpV2InspectionRule> o) {
+void checkUnnamed43(core.List<api.GooglePrivacyDlpV2InspectionRule> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2InspectionRule(o[0]);
   checkGooglePrivacyDlpV2InspectionRule(o[1]);
@@ -3302,8 +3422,8 @@ api.GooglePrivacyDlpV2InspectionRuleSet
   final o = api.GooglePrivacyDlpV2InspectionRuleSet();
   buildCounterGooglePrivacyDlpV2InspectionRuleSet++;
   if (buildCounterGooglePrivacyDlpV2InspectionRuleSet < 3) {
-    o.infoTypes = buildUnnamed41();
-    o.rules = buildUnnamed42();
+    o.infoTypes = buildUnnamed42();
+    o.rules = buildUnnamed43();
   }
   buildCounterGooglePrivacyDlpV2InspectionRuleSet--;
   return o;
@@ -3313,8 +3433,8 @@ void checkGooglePrivacyDlpV2InspectionRuleSet(
     api.GooglePrivacyDlpV2InspectionRuleSet o) {
   buildCounterGooglePrivacyDlpV2InspectionRuleSet++;
   if (buildCounterGooglePrivacyDlpV2InspectionRuleSet < 3) {
-    checkUnnamed41(o.infoTypes!);
-    checkUnnamed42(o.rules!);
+    checkUnnamed42(o.infoTypes!);
+    checkUnnamed43(o.rules!);
   }
   buildCounterGooglePrivacyDlpV2InspectionRuleSet--;
 }
@@ -3336,23 +3456,23 @@ void checkGooglePrivacyDlpV2JobNotificationEmails(
   buildCounterGooglePrivacyDlpV2JobNotificationEmails--;
 }
 
-core.List<api.GooglePrivacyDlpV2Error> buildUnnamed43() => [
+core.List<api.GooglePrivacyDlpV2Error> buildUnnamed44() => [
       buildGooglePrivacyDlpV2Error(),
       buildGooglePrivacyDlpV2Error(),
     ];
 
-void checkUnnamed43(core.List<api.GooglePrivacyDlpV2Error> o) {
+void checkUnnamed44(core.List<api.GooglePrivacyDlpV2Error> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2Error(o[0]);
   checkGooglePrivacyDlpV2Error(o[1]);
 }
 
-core.List<api.GooglePrivacyDlpV2Trigger> buildUnnamed44() => [
+core.List<api.GooglePrivacyDlpV2Trigger> buildUnnamed45() => [
       buildGooglePrivacyDlpV2Trigger(),
       buildGooglePrivacyDlpV2Trigger(),
     ];
 
-void checkUnnamed44(core.List<api.GooglePrivacyDlpV2Trigger> o) {
+void checkUnnamed45(core.List<api.GooglePrivacyDlpV2Trigger> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2Trigger(o[0]);
   checkGooglePrivacyDlpV2Trigger(o[1]);
@@ -3366,12 +3486,12 @@ api.GooglePrivacyDlpV2JobTrigger buildGooglePrivacyDlpV2JobTrigger() {
     o.createTime = 'foo';
     o.description = 'foo';
     o.displayName = 'foo';
-    o.errors = buildUnnamed43();
+    o.errors = buildUnnamed44();
     o.inspectJob = buildGooglePrivacyDlpV2InspectJobConfig();
     o.lastRunTime = 'foo';
     o.name = 'foo';
     o.status = 'foo';
-    o.triggers = buildUnnamed44();
+    o.triggers = buildUnnamed45();
     o.updateTime = 'foo';
   }
   buildCounterGooglePrivacyDlpV2JobTrigger--;
@@ -3393,7 +3513,7 @@ void checkGooglePrivacyDlpV2JobTrigger(api.GooglePrivacyDlpV2JobTrigger o) {
       o.displayName!,
       unittest.equals('foo'),
     );
-    checkUnnamed43(o.errors!);
+    checkUnnamed44(o.errors!);
     checkGooglePrivacyDlpV2InspectJobConfig(o.inspectJob!);
     unittest.expect(
       o.lastRunTime!,
@@ -3407,7 +3527,7 @@ void checkGooglePrivacyDlpV2JobTrigger(api.GooglePrivacyDlpV2JobTrigger o) {
       o.status!,
       unittest.equals('foo'),
     );
-    checkUnnamed44(o.triggers!);
+    checkUnnamed45(o.triggers!);
     unittest.expect(
       o.updateTime!,
       unittest.equals('foo'),
@@ -3416,12 +3536,12 @@ void checkGooglePrivacyDlpV2JobTrigger(api.GooglePrivacyDlpV2JobTrigger o) {
   buildCounterGooglePrivacyDlpV2JobTrigger--;
 }
 
-core.List<api.GooglePrivacyDlpV2FieldId> buildUnnamed45() => [
+core.List<api.GooglePrivacyDlpV2FieldId> buildUnnamed46() => [
       buildGooglePrivacyDlpV2FieldId(),
       buildGooglePrivacyDlpV2FieldId(),
     ];
 
-void checkUnnamed45(core.List<api.GooglePrivacyDlpV2FieldId> o) {
+void checkUnnamed46(core.List<api.GooglePrivacyDlpV2FieldId> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2FieldId(o[0]);
   checkGooglePrivacyDlpV2FieldId(o[1]);
@@ -3434,7 +3554,7 @@ api.GooglePrivacyDlpV2KAnonymityConfig
   buildCounterGooglePrivacyDlpV2KAnonymityConfig++;
   if (buildCounterGooglePrivacyDlpV2KAnonymityConfig < 3) {
     o.entityId = buildGooglePrivacyDlpV2EntityId();
-    o.quasiIds = buildUnnamed45();
+    o.quasiIds = buildUnnamed46();
   }
   buildCounterGooglePrivacyDlpV2KAnonymityConfig--;
   return o;
@@ -3445,17 +3565,17 @@ void checkGooglePrivacyDlpV2KAnonymityConfig(
   buildCounterGooglePrivacyDlpV2KAnonymityConfig++;
   if (buildCounterGooglePrivacyDlpV2KAnonymityConfig < 3) {
     checkGooglePrivacyDlpV2EntityId(o.entityId!);
-    checkUnnamed45(o.quasiIds!);
+    checkUnnamed46(o.quasiIds!);
   }
   buildCounterGooglePrivacyDlpV2KAnonymityConfig--;
 }
 
-core.List<api.GooglePrivacyDlpV2Value> buildUnnamed46() => [
+core.List<api.GooglePrivacyDlpV2Value> buildUnnamed47() => [
       buildGooglePrivacyDlpV2Value(),
       buildGooglePrivacyDlpV2Value(),
     ];
 
-void checkUnnamed46(core.List<api.GooglePrivacyDlpV2Value> o) {
+void checkUnnamed47(core.List<api.GooglePrivacyDlpV2Value> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2Value(o[0]);
   checkGooglePrivacyDlpV2Value(o[1]);
@@ -3468,7 +3588,7 @@ api.GooglePrivacyDlpV2KAnonymityEquivalenceClass
   buildCounterGooglePrivacyDlpV2KAnonymityEquivalenceClass++;
   if (buildCounterGooglePrivacyDlpV2KAnonymityEquivalenceClass < 3) {
     o.equivalenceClassSize = 'foo';
-    o.quasiIdsValues = buildUnnamed46();
+    o.quasiIdsValues = buildUnnamed47();
   }
   buildCounterGooglePrivacyDlpV2KAnonymityEquivalenceClass--;
   return o;
@@ -3482,18 +3602,18 @@ void checkGooglePrivacyDlpV2KAnonymityEquivalenceClass(
       o.equivalenceClassSize!,
       unittest.equals('foo'),
     );
-    checkUnnamed46(o.quasiIdsValues!);
+    checkUnnamed47(o.quasiIdsValues!);
   }
   buildCounterGooglePrivacyDlpV2KAnonymityEquivalenceClass--;
 }
 
-core.List<api.GooglePrivacyDlpV2KAnonymityEquivalenceClass> buildUnnamed47() =>
+core.List<api.GooglePrivacyDlpV2KAnonymityEquivalenceClass> buildUnnamed48() =>
     [
       buildGooglePrivacyDlpV2KAnonymityEquivalenceClass(),
       buildGooglePrivacyDlpV2KAnonymityEquivalenceClass(),
     ];
 
-void checkUnnamed47(
+void checkUnnamed48(
     core.List<api.GooglePrivacyDlpV2KAnonymityEquivalenceClass> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2KAnonymityEquivalenceClass(o[0]);
@@ -3508,7 +3628,7 @@ api.GooglePrivacyDlpV2KAnonymityHistogramBucket
   if (buildCounterGooglePrivacyDlpV2KAnonymityHistogramBucket < 3) {
     o.bucketSize = 'foo';
     o.bucketValueCount = 'foo';
-    o.bucketValues = buildUnnamed47();
+    o.bucketValues = buildUnnamed48();
     o.equivalenceClassSizeLowerBound = 'foo';
     o.equivalenceClassSizeUpperBound = 'foo';
   }
@@ -3528,7 +3648,7 @@ void checkGooglePrivacyDlpV2KAnonymityHistogramBucket(
       o.bucketValueCount!,
       unittest.equals('foo'),
     );
-    checkUnnamed47(o.bucketValues!);
+    checkUnnamed48(o.bucketValues!);
     unittest.expect(
       o.equivalenceClassSizeLowerBound!,
       unittest.equals('foo'),
@@ -3541,12 +3661,12 @@ void checkGooglePrivacyDlpV2KAnonymityHistogramBucket(
   buildCounterGooglePrivacyDlpV2KAnonymityHistogramBucket--;
 }
 
-core.List<api.GooglePrivacyDlpV2KAnonymityHistogramBucket> buildUnnamed48() => [
+core.List<api.GooglePrivacyDlpV2KAnonymityHistogramBucket> buildUnnamed49() => [
       buildGooglePrivacyDlpV2KAnonymityHistogramBucket(),
       buildGooglePrivacyDlpV2KAnonymityHistogramBucket(),
     ];
 
-void checkUnnamed48(
+void checkUnnamed49(
     core.List<api.GooglePrivacyDlpV2KAnonymityHistogramBucket> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2KAnonymityHistogramBucket(o[0]);
@@ -3559,7 +3679,7 @@ api.GooglePrivacyDlpV2KAnonymityResult
   final o = api.GooglePrivacyDlpV2KAnonymityResult();
   buildCounterGooglePrivacyDlpV2KAnonymityResult++;
   if (buildCounterGooglePrivacyDlpV2KAnonymityResult < 3) {
-    o.equivalenceClassHistogramBuckets = buildUnnamed48();
+    o.equivalenceClassHistogramBuckets = buildUnnamed49();
   }
   buildCounterGooglePrivacyDlpV2KAnonymityResult--;
   return o;
@@ -3569,28 +3689,28 @@ void checkGooglePrivacyDlpV2KAnonymityResult(
     api.GooglePrivacyDlpV2KAnonymityResult o) {
   buildCounterGooglePrivacyDlpV2KAnonymityResult++;
   if (buildCounterGooglePrivacyDlpV2KAnonymityResult < 3) {
-    checkUnnamed48(o.equivalenceClassHistogramBuckets!);
+    checkUnnamed49(o.equivalenceClassHistogramBuckets!);
   }
   buildCounterGooglePrivacyDlpV2KAnonymityResult--;
 }
 
-core.List<api.GooglePrivacyDlpV2AuxiliaryTable> buildUnnamed49() => [
+core.List<api.GooglePrivacyDlpV2AuxiliaryTable> buildUnnamed50() => [
       buildGooglePrivacyDlpV2AuxiliaryTable(),
       buildGooglePrivacyDlpV2AuxiliaryTable(),
     ];
 
-void checkUnnamed49(core.List<api.GooglePrivacyDlpV2AuxiliaryTable> o) {
+void checkUnnamed50(core.List<api.GooglePrivacyDlpV2AuxiliaryTable> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2AuxiliaryTable(o[0]);
   checkGooglePrivacyDlpV2AuxiliaryTable(o[1]);
 }
 
-core.List<api.GooglePrivacyDlpV2TaggedField> buildUnnamed50() => [
+core.List<api.GooglePrivacyDlpV2TaggedField> buildUnnamed51() => [
       buildGooglePrivacyDlpV2TaggedField(),
       buildGooglePrivacyDlpV2TaggedField(),
     ];
 
-void checkUnnamed50(core.List<api.GooglePrivacyDlpV2TaggedField> o) {
+void checkUnnamed51(core.List<api.GooglePrivacyDlpV2TaggedField> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2TaggedField(o[0]);
   checkGooglePrivacyDlpV2TaggedField(o[1]);
@@ -3602,8 +3722,8 @@ api.GooglePrivacyDlpV2KMapEstimationConfig
   final o = api.GooglePrivacyDlpV2KMapEstimationConfig();
   buildCounterGooglePrivacyDlpV2KMapEstimationConfig++;
   if (buildCounterGooglePrivacyDlpV2KMapEstimationConfig < 3) {
-    o.auxiliaryTables = buildUnnamed49();
-    o.quasiIds = buildUnnamed50();
+    o.auxiliaryTables = buildUnnamed50();
+    o.quasiIds = buildUnnamed51();
     o.regionCode = 'foo';
   }
   buildCounterGooglePrivacyDlpV2KMapEstimationConfig--;
@@ -3614,8 +3734,8 @@ void checkGooglePrivacyDlpV2KMapEstimationConfig(
     api.GooglePrivacyDlpV2KMapEstimationConfig o) {
   buildCounterGooglePrivacyDlpV2KMapEstimationConfig++;
   if (buildCounterGooglePrivacyDlpV2KMapEstimationConfig < 3) {
-    checkUnnamed49(o.auxiliaryTables!);
-    checkUnnamed50(o.quasiIds!);
+    checkUnnamed50(o.auxiliaryTables!);
+    checkUnnamed51(o.quasiIds!);
     unittest.expect(
       o.regionCode!,
       unittest.equals('foo'),
@@ -3624,13 +3744,13 @@ void checkGooglePrivacyDlpV2KMapEstimationConfig(
   buildCounterGooglePrivacyDlpV2KMapEstimationConfig--;
 }
 
-core.List<api.GooglePrivacyDlpV2KMapEstimationQuasiIdValues> buildUnnamed51() =>
+core.List<api.GooglePrivacyDlpV2KMapEstimationQuasiIdValues> buildUnnamed52() =>
     [
       buildGooglePrivacyDlpV2KMapEstimationQuasiIdValues(),
       buildGooglePrivacyDlpV2KMapEstimationQuasiIdValues(),
     ];
 
-void checkUnnamed51(
+void checkUnnamed52(
     core.List<api.GooglePrivacyDlpV2KMapEstimationQuasiIdValues> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2KMapEstimationQuasiIdValues(o[0]);
@@ -3645,7 +3765,7 @@ api.GooglePrivacyDlpV2KMapEstimationHistogramBucket
   if (buildCounterGooglePrivacyDlpV2KMapEstimationHistogramBucket < 3) {
     o.bucketSize = 'foo';
     o.bucketValueCount = 'foo';
-    o.bucketValues = buildUnnamed51();
+    o.bucketValues = buildUnnamed52();
     o.maxAnonymity = 'foo';
     o.minAnonymity = 'foo';
   }
@@ -3665,7 +3785,7 @@ void checkGooglePrivacyDlpV2KMapEstimationHistogramBucket(
       o.bucketValueCount!,
       unittest.equals('foo'),
     );
-    checkUnnamed51(o.bucketValues!);
+    checkUnnamed52(o.bucketValues!);
     unittest.expect(
       o.maxAnonymity!,
       unittest.equals('foo'),
@@ -3678,12 +3798,12 @@ void checkGooglePrivacyDlpV2KMapEstimationHistogramBucket(
   buildCounterGooglePrivacyDlpV2KMapEstimationHistogramBucket--;
 }
 
-core.List<api.GooglePrivacyDlpV2Value> buildUnnamed52() => [
+core.List<api.GooglePrivacyDlpV2Value> buildUnnamed53() => [
       buildGooglePrivacyDlpV2Value(),
       buildGooglePrivacyDlpV2Value(),
     ];
 
-void checkUnnamed52(core.List<api.GooglePrivacyDlpV2Value> o) {
+void checkUnnamed53(core.List<api.GooglePrivacyDlpV2Value> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2Value(o[0]);
   checkGooglePrivacyDlpV2Value(o[1]);
@@ -3696,7 +3816,7 @@ api.GooglePrivacyDlpV2KMapEstimationQuasiIdValues
   buildCounterGooglePrivacyDlpV2KMapEstimationQuasiIdValues++;
   if (buildCounterGooglePrivacyDlpV2KMapEstimationQuasiIdValues < 3) {
     o.estimatedAnonymity = 'foo';
-    o.quasiIdsValues = buildUnnamed52();
+    o.quasiIdsValues = buildUnnamed53();
   }
   buildCounterGooglePrivacyDlpV2KMapEstimationQuasiIdValues--;
   return o;
@@ -3710,18 +3830,18 @@ void checkGooglePrivacyDlpV2KMapEstimationQuasiIdValues(
       o.estimatedAnonymity!,
       unittest.equals('foo'),
     );
-    checkUnnamed52(o.quasiIdsValues!);
+    checkUnnamed53(o.quasiIdsValues!);
   }
   buildCounterGooglePrivacyDlpV2KMapEstimationQuasiIdValues--;
 }
 
 core.List<api.GooglePrivacyDlpV2KMapEstimationHistogramBucket>
-    buildUnnamed53() => [
+    buildUnnamed54() => [
           buildGooglePrivacyDlpV2KMapEstimationHistogramBucket(),
           buildGooglePrivacyDlpV2KMapEstimationHistogramBucket(),
         ];
 
-void checkUnnamed53(
+void checkUnnamed54(
     core.List<api.GooglePrivacyDlpV2KMapEstimationHistogramBucket> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2KMapEstimationHistogramBucket(o[0]);
@@ -3734,7 +3854,7 @@ api.GooglePrivacyDlpV2KMapEstimationResult
   final o = api.GooglePrivacyDlpV2KMapEstimationResult();
   buildCounterGooglePrivacyDlpV2KMapEstimationResult++;
   if (buildCounterGooglePrivacyDlpV2KMapEstimationResult < 3) {
-    o.kMapEstimationHistogram = buildUnnamed53();
+    o.kMapEstimationHistogram = buildUnnamed54();
   }
   buildCounterGooglePrivacyDlpV2KMapEstimationResult--;
   return o;
@@ -3744,17 +3864,17 @@ void checkGooglePrivacyDlpV2KMapEstimationResult(
     api.GooglePrivacyDlpV2KMapEstimationResult o) {
   buildCounterGooglePrivacyDlpV2KMapEstimationResult++;
   if (buildCounterGooglePrivacyDlpV2KMapEstimationResult < 3) {
-    checkUnnamed53(o.kMapEstimationHistogram!);
+    checkUnnamed54(o.kMapEstimationHistogram!);
   }
   buildCounterGooglePrivacyDlpV2KMapEstimationResult--;
 }
 
-core.List<api.GooglePrivacyDlpV2PathElement> buildUnnamed54() => [
+core.List<api.GooglePrivacyDlpV2PathElement> buildUnnamed55() => [
       buildGooglePrivacyDlpV2PathElement(),
       buildGooglePrivacyDlpV2PathElement(),
     ];
 
-void checkUnnamed54(core.List<api.GooglePrivacyDlpV2PathElement> o) {
+void checkUnnamed55(core.List<api.GooglePrivacyDlpV2PathElement> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2PathElement(o[0]);
   checkGooglePrivacyDlpV2PathElement(o[1]);
@@ -3766,7 +3886,7 @@ api.GooglePrivacyDlpV2Key buildGooglePrivacyDlpV2Key() {
   buildCounterGooglePrivacyDlpV2Key++;
   if (buildCounterGooglePrivacyDlpV2Key < 3) {
     o.partitionId = buildGooglePrivacyDlpV2PartitionId();
-    o.path = buildUnnamed54();
+    o.path = buildUnnamed55();
   }
   buildCounterGooglePrivacyDlpV2Key--;
   return o;
@@ -3776,7 +3896,7 @@ void checkGooglePrivacyDlpV2Key(api.GooglePrivacyDlpV2Key o) {
   buildCounterGooglePrivacyDlpV2Key++;
   if (buildCounterGooglePrivacyDlpV2Key < 3) {
     checkGooglePrivacyDlpV2PartitionId(o.partitionId!);
-    checkUnnamed54(o.path!);
+    checkUnnamed55(o.path!);
   }
   buildCounterGooglePrivacyDlpV2Key--;
 }
@@ -3833,12 +3953,12 @@ void checkGooglePrivacyDlpV2KmsWrappedCryptoKey(
   buildCounterGooglePrivacyDlpV2KmsWrappedCryptoKey--;
 }
 
-core.List<api.GooglePrivacyDlpV2FieldId> buildUnnamed55() => [
+core.List<api.GooglePrivacyDlpV2FieldId> buildUnnamed56() => [
       buildGooglePrivacyDlpV2FieldId(),
       buildGooglePrivacyDlpV2FieldId(),
     ];
 
-void checkUnnamed55(core.List<api.GooglePrivacyDlpV2FieldId> o) {
+void checkUnnamed56(core.List<api.GooglePrivacyDlpV2FieldId> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2FieldId(o[0]);
   checkGooglePrivacyDlpV2FieldId(o[1]);
@@ -3850,7 +3970,7 @@ api.GooglePrivacyDlpV2LDiversityConfig
   final o = api.GooglePrivacyDlpV2LDiversityConfig();
   buildCounterGooglePrivacyDlpV2LDiversityConfig++;
   if (buildCounterGooglePrivacyDlpV2LDiversityConfig < 3) {
-    o.quasiIds = buildUnnamed55();
+    o.quasiIds = buildUnnamed56();
     o.sensitiveAttribute = buildGooglePrivacyDlpV2FieldId();
   }
   buildCounterGooglePrivacyDlpV2LDiversityConfig--;
@@ -3861,29 +3981,29 @@ void checkGooglePrivacyDlpV2LDiversityConfig(
     api.GooglePrivacyDlpV2LDiversityConfig o) {
   buildCounterGooglePrivacyDlpV2LDiversityConfig++;
   if (buildCounterGooglePrivacyDlpV2LDiversityConfig < 3) {
-    checkUnnamed55(o.quasiIds!);
+    checkUnnamed56(o.quasiIds!);
     checkGooglePrivacyDlpV2FieldId(o.sensitiveAttribute!);
   }
   buildCounterGooglePrivacyDlpV2LDiversityConfig--;
 }
 
-core.List<api.GooglePrivacyDlpV2Value> buildUnnamed56() => [
+core.List<api.GooglePrivacyDlpV2Value> buildUnnamed57() => [
       buildGooglePrivacyDlpV2Value(),
       buildGooglePrivacyDlpV2Value(),
     ];
 
-void checkUnnamed56(core.List<api.GooglePrivacyDlpV2Value> o) {
+void checkUnnamed57(core.List<api.GooglePrivacyDlpV2Value> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2Value(o[0]);
   checkGooglePrivacyDlpV2Value(o[1]);
 }
 
-core.List<api.GooglePrivacyDlpV2ValueFrequency> buildUnnamed57() => [
+core.List<api.GooglePrivacyDlpV2ValueFrequency> buildUnnamed58() => [
       buildGooglePrivacyDlpV2ValueFrequency(),
       buildGooglePrivacyDlpV2ValueFrequency(),
     ];
 
-void checkUnnamed57(core.List<api.GooglePrivacyDlpV2ValueFrequency> o) {
+void checkUnnamed58(core.List<api.GooglePrivacyDlpV2ValueFrequency> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2ValueFrequency(o[0]);
   checkGooglePrivacyDlpV2ValueFrequency(o[1]);
@@ -3897,8 +4017,8 @@ api.GooglePrivacyDlpV2LDiversityEquivalenceClass
   if (buildCounterGooglePrivacyDlpV2LDiversityEquivalenceClass < 3) {
     o.equivalenceClassSize = 'foo';
     o.numDistinctSensitiveValues = 'foo';
-    o.quasiIdsValues = buildUnnamed56();
-    o.topSensitiveValues = buildUnnamed57();
+    o.quasiIdsValues = buildUnnamed57();
+    o.topSensitiveValues = buildUnnamed58();
   }
   buildCounterGooglePrivacyDlpV2LDiversityEquivalenceClass--;
   return o;
@@ -3916,19 +4036,19 @@ void checkGooglePrivacyDlpV2LDiversityEquivalenceClass(
       o.numDistinctSensitiveValues!,
       unittest.equals('foo'),
     );
-    checkUnnamed56(o.quasiIdsValues!);
-    checkUnnamed57(o.topSensitiveValues!);
+    checkUnnamed57(o.quasiIdsValues!);
+    checkUnnamed58(o.topSensitiveValues!);
   }
   buildCounterGooglePrivacyDlpV2LDiversityEquivalenceClass--;
 }
 
-core.List<api.GooglePrivacyDlpV2LDiversityEquivalenceClass> buildUnnamed58() =>
+core.List<api.GooglePrivacyDlpV2LDiversityEquivalenceClass> buildUnnamed59() =>
     [
       buildGooglePrivacyDlpV2LDiversityEquivalenceClass(),
       buildGooglePrivacyDlpV2LDiversityEquivalenceClass(),
     ];
 
-void checkUnnamed58(
+void checkUnnamed59(
     core.List<api.GooglePrivacyDlpV2LDiversityEquivalenceClass> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2LDiversityEquivalenceClass(o[0]);
@@ -3943,7 +4063,7 @@ api.GooglePrivacyDlpV2LDiversityHistogramBucket
   if (buildCounterGooglePrivacyDlpV2LDiversityHistogramBucket < 3) {
     o.bucketSize = 'foo';
     o.bucketValueCount = 'foo';
-    o.bucketValues = buildUnnamed58();
+    o.bucketValues = buildUnnamed59();
     o.sensitiveValueFrequencyLowerBound = 'foo';
     o.sensitiveValueFrequencyUpperBound = 'foo';
   }
@@ -3963,7 +4083,7 @@ void checkGooglePrivacyDlpV2LDiversityHistogramBucket(
       o.bucketValueCount!,
       unittest.equals('foo'),
     );
-    checkUnnamed58(o.bucketValues!);
+    checkUnnamed59(o.bucketValues!);
     unittest.expect(
       o.sensitiveValueFrequencyLowerBound!,
       unittest.equals('foo'),
@@ -3976,12 +4096,12 @@ void checkGooglePrivacyDlpV2LDiversityHistogramBucket(
   buildCounterGooglePrivacyDlpV2LDiversityHistogramBucket--;
 }
 
-core.List<api.GooglePrivacyDlpV2LDiversityHistogramBucket> buildUnnamed59() => [
+core.List<api.GooglePrivacyDlpV2LDiversityHistogramBucket> buildUnnamed60() => [
       buildGooglePrivacyDlpV2LDiversityHistogramBucket(),
       buildGooglePrivacyDlpV2LDiversityHistogramBucket(),
     ];
 
-void checkUnnamed59(
+void checkUnnamed60(
     core.List<api.GooglePrivacyDlpV2LDiversityHistogramBucket> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2LDiversityHistogramBucket(o[0]);
@@ -3994,7 +4114,7 @@ api.GooglePrivacyDlpV2LDiversityResult
   final o = api.GooglePrivacyDlpV2LDiversityResult();
   buildCounterGooglePrivacyDlpV2LDiversityResult++;
   if (buildCounterGooglePrivacyDlpV2LDiversityResult < 3) {
-    o.sensitiveValueFrequencyHistogramBuckets = buildUnnamed59();
+    o.sensitiveValueFrequencyHistogramBuckets = buildUnnamed60();
   }
   buildCounterGooglePrivacyDlpV2LDiversityResult--;
   return o;
@@ -4004,7 +4124,7 @@ void checkGooglePrivacyDlpV2LDiversityResult(
     api.GooglePrivacyDlpV2LDiversityResult o) {
   buildCounterGooglePrivacyDlpV2LDiversityResult++;
   if (buildCounterGooglePrivacyDlpV2LDiversityResult < 3) {
-    checkUnnamed59(o.sensitiveValueFrequencyHistogramBuckets!);
+    checkUnnamed60(o.sensitiveValueFrequencyHistogramBuckets!);
   }
   buildCounterGooglePrivacyDlpV2LDiversityResult--;
 }
@@ -4104,12 +4224,12 @@ void checkGooglePrivacyDlpV2LikelihoodAdjustment(
   buildCounterGooglePrivacyDlpV2LikelihoodAdjustment--;
 }
 
-core.List<api.GooglePrivacyDlpV2DeidentifyTemplate> buildUnnamed60() => [
+core.List<api.GooglePrivacyDlpV2DeidentifyTemplate> buildUnnamed61() => [
       buildGooglePrivacyDlpV2DeidentifyTemplate(),
       buildGooglePrivacyDlpV2DeidentifyTemplate(),
     ];
 
-void checkUnnamed60(core.List<api.GooglePrivacyDlpV2DeidentifyTemplate> o) {
+void checkUnnamed61(core.List<api.GooglePrivacyDlpV2DeidentifyTemplate> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2DeidentifyTemplate(o[0]);
   checkGooglePrivacyDlpV2DeidentifyTemplate(o[1]);
@@ -4121,7 +4241,7 @@ api.GooglePrivacyDlpV2ListDeidentifyTemplatesResponse
   final o = api.GooglePrivacyDlpV2ListDeidentifyTemplatesResponse();
   buildCounterGooglePrivacyDlpV2ListDeidentifyTemplatesResponse++;
   if (buildCounterGooglePrivacyDlpV2ListDeidentifyTemplatesResponse < 3) {
-    o.deidentifyTemplates = buildUnnamed60();
+    o.deidentifyTemplates = buildUnnamed61();
     o.nextPageToken = 'foo';
   }
   buildCounterGooglePrivacyDlpV2ListDeidentifyTemplatesResponse--;
@@ -4132,7 +4252,7 @@ void checkGooglePrivacyDlpV2ListDeidentifyTemplatesResponse(
     api.GooglePrivacyDlpV2ListDeidentifyTemplatesResponse o) {
   buildCounterGooglePrivacyDlpV2ListDeidentifyTemplatesResponse++;
   if (buildCounterGooglePrivacyDlpV2ListDeidentifyTemplatesResponse < 3) {
-    checkUnnamed60(o.deidentifyTemplates!);
+    checkUnnamed61(o.deidentifyTemplates!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -4141,12 +4261,12 @@ void checkGooglePrivacyDlpV2ListDeidentifyTemplatesResponse(
   buildCounterGooglePrivacyDlpV2ListDeidentifyTemplatesResponse--;
 }
 
-core.List<api.GooglePrivacyDlpV2DlpJob> buildUnnamed61() => [
+core.List<api.GooglePrivacyDlpV2DlpJob> buildUnnamed62() => [
       buildGooglePrivacyDlpV2DlpJob(),
       buildGooglePrivacyDlpV2DlpJob(),
     ];
 
-void checkUnnamed61(core.List<api.GooglePrivacyDlpV2DlpJob> o) {
+void checkUnnamed62(core.List<api.GooglePrivacyDlpV2DlpJob> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2DlpJob(o[0]);
   checkGooglePrivacyDlpV2DlpJob(o[1]);
@@ -4158,7 +4278,7 @@ api.GooglePrivacyDlpV2ListDlpJobsResponse
   final o = api.GooglePrivacyDlpV2ListDlpJobsResponse();
   buildCounterGooglePrivacyDlpV2ListDlpJobsResponse++;
   if (buildCounterGooglePrivacyDlpV2ListDlpJobsResponse < 3) {
-    o.jobs = buildUnnamed61();
+    o.jobs = buildUnnamed62();
     o.nextPageToken = 'foo';
   }
   buildCounterGooglePrivacyDlpV2ListDlpJobsResponse--;
@@ -4169,7 +4289,7 @@ void checkGooglePrivacyDlpV2ListDlpJobsResponse(
     api.GooglePrivacyDlpV2ListDlpJobsResponse o) {
   buildCounterGooglePrivacyDlpV2ListDlpJobsResponse++;
   if (buildCounterGooglePrivacyDlpV2ListDlpJobsResponse < 3) {
-    checkUnnamed61(o.jobs!);
+    checkUnnamed62(o.jobs!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -4178,12 +4298,12 @@ void checkGooglePrivacyDlpV2ListDlpJobsResponse(
   buildCounterGooglePrivacyDlpV2ListDlpJobsResponse--;
 }
 
-core.List<api.GooglePrivacyDlpV2InfoTypeDescription> buildUnnamed62() => [
+core.List<api.GooglePrivacyDlpV2InfoTypeDescription> buildUnnamed63() => [
       buildGooglePrivacyDlpV2InfoTypeDescription(),
       buildGooglePrivacyDlpV2InfoTypeDescription(),
     ];
 
-void checkUnnamed62(core.List<api.GooglePrivacyDlpV2InfoTypeDescription> o) {
+void checkUnnamed63(core.List<api.GooglePrivacyDlpV2InfoTypeDescription> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2InfoTypeDescription(o[0]);
   checkGooglePrivacyDlpV2InfoTypeDescription(o[1]);
@@ -4195,7 +4315,7 @@ api.GooglePrivacyDlpV2ListInfoTypesResponse
   final o = api.GooglePrivacyDlpV2ListInfoTypesResponse();
   buildCounterGooglePrivacyDlpV2ListInfoTypesResponse++;
   if (buildCounterGooglePrivacyDlpV2ListInfoTypesResponse < 3) {
-    o.infoTypes = buildUnnamed62();
+    o.infoTypes = buildUnnamed63();
   }
   buildCounterGooglePrivacyDlpV2ListInfoTypesResponse--;
   return o;
@@ -4205,17 +4325,17 @@ void checkGooglePrivacyDlpV2ListInfoTypesResponse(
     api.GooglePrivacyDlpV2ListInfoTypesResponse o) {
   buildCounterGooglePrivacyDlpV2ListInfoTypesResponse++;
   if (buildCounterGooglePrivacyDlpV2ListInfoTypesResponse < 3) {
-    checkUnnamed62(o.infoTypes!);
+    checkUnnamed63(o.infoTypes!);
   }
   buildCounterGooglePrivacyDlpV2ListInfoTypesResponse--;
 }
 
-core.List<api.GooglePrivacyDlpV2InspectTemplate> buildUnnamed63() => [
+core.List<api.GooglePrivacyDlpV2InspectTemplate> buildUnnamed64() => [
       buildGooglePrivacyDlpV2InspectTemplate(),
       buildGooglePrivacyDlpV2InspectTemplate(),
     ];
 
-void checkUnnamed63(core.List<api.GooglePrivacyDlpV2InspectTemplate> o) {
+void checkUnnamed64(core.List<api.GooglePrivacyDlpV2InspectTemplate> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2InspectTemplate(o[0]);
   checkGooglePrivacyDlpV2InspectTemplate(o[1]);
@@ -4227,7 +4347,7 @@ api.GooglePrivacyDlpV2ListInspectTemplatesResponse
   final o = api.GooglePrivacyDlpV2ListInspectTemplatesResponse();
   buildCounterGooglePrivacyDlpV2ListInspectTemplatesResponse++;
   if (buildCounterGooglePrivacyDlpV2ListInspectTemplatesResponse < 3) {
-    o.inspectTemplates = buildUnnamed63();
+    o.inspectTemplates = buildUnnamed64();
     o.nextPageToken = 'foo';
   }
   buildCounterGooglePrivacyDlpV2ListInspectTemplatesResponse--;
@@ -4238,7 +4358,7 @@ void checkGooglePrivacyDlpV2ListInspectTemplatesResponse(
     api.GooglePrivacyDlpV2ListInspectTemplatesResponse o) {
   buildCounterGooglePrivacyDlpV2ListInspectTemplatesResponse++;
   if (buildCounterGooglePrivacyDlpV2ListInspectTemplatesResponse < 3) {
-    checkUnnamed63(o.inspectTemplates!);
+    checkUnnamed64(o.inspectTemplates!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -4247,12 +4367,12 @@ void checkGooglePrivacyDlpV2ListInspectTemplatesResponse(
   buildCounterGooglePrivacyDlpV2ListInspectTemplatesResponse--;
 }
 
-core.List<api.GooglePrivacyDlpV2JobTrigger> buildUnnamed64() => [
+core.List<api.GooglePrivacyDlpV2JobTrigger> buildUnnamed65() => [
       buildGooglePrivacyDlpV2JobTrigger(),
       buildGooglePrivacyDlpV2JobTrigger(),
     ];
 
-void checkUnnamed64(core.List<api.GooglePrivacyDlpV2JobTrigger> o) {
+void checkUnnamed65(core.List<api.GooglePrivacyDlpV2JobTrigger> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2JobTrigger(o[0]);
   checkGooglePrivacyDlpV2JobTrigger(o[1]);
@@ -4264,7 +4384,7 @@ api.GooglePrivacyDlpV2ListJobTriggersResponse
   final o = api.GooglePrivacyDlpV2ListJobTriggersResponse();
   buildCounterGooglePrivacyDlpV2ListJobTriggersResponse++;
   if (buildCounterGooglePrivacyDlpV2ListJobTriggersResponse < 3) {
-    o.jobTriggers = buildUnnamed64();
+    o.jobTriggers = buildUnnamed65();
     o.nextPageToken = 'foo';
   }
   buildCounterGooglePrivacyDlpV2ListJobTriggersResponse--;
@@ -4275,7 +4395,7 @@ void checkGooglePrivacyDlpV2ListJobTriggersResponse(
     api.GooglePrivacyDlpV2ListJobTriggersResponse o) {
   buildCounterGooglePrivacyDlpV2ListJobTriggersResponse++;
   if (buildCounterGooglePrivacyDlpV2ListJobTriggersResponse < 3) {
-    checkUnnamed64(o.jobTriggers!);
+    checkUnnamed65(o.jobTriggers!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -4284,12 +4404,12 @@ void checkGooglePrivacyDlpV2ListJobTriggersResponse(
   buildCounterGooglePrivacyDlpV2ListJobTriggersResponse--;
 }
 
-core.List<api.GooglePrivacyDlpV2StoredInfoType> buildUnnamed65() => [
+core.List<api.GooglePrivacyDlpV2StoredInfoType> buildUnnamed66() => [
       buildGooglePrivacyDlpV2StoredInfoType(),
       buildGooglePrivacyDlpV2StoredInfoType(),
     ];
 
-void checkUnnamed65(core.List<api.GooglePrivacyDlpV2StoredInfoType> o) {
+void checkUnnamed66(core.List<api.GooglePrivacyDlpV2StoredInfoType> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2StoredInfoType(o[0]);
   checkGooglePrivacyDlpV2StoredInfoType(o[1]);
@@ -4302,7 +4422,7 @@ api.GooglePrivacyDlpV2ListStoredInfoTypesResponse
   buildCounterGooglePrivacyDlpV2ListStoredInfoTypesResponse++;
   if (buildCounterGooglePrivacyDlpV2ListStoredInfoTypesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.storedInfoTypes = buildUnnamed65();
+    o.storedInfoTypes = buildUnnamed66();
   }
   buildCounterGooglePrivacyDlpV2ListStoredInfoTypesResponse--;
   return o;
@@ -4316,17 +4436,17 @@ void checkGooglePrivacyDlpV2ListStoredInfoTypesResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed65(o.storedInfoTypes!);
+    checkUnnamed66(o.storedInfoTypes!);
   }
   buildCounterGooglePrivacyDlpV2ListStoredInfoTypesResponse--;
 }
 
-core.List<api.GooglePrivacyDlpV2ContentLocation> buildUnnamed66() => [
+core.List<api.GooglePrivacyDlpV2ContentLocation> buildUnnamed67() => [
       buildGooglePrivacyDlpV2ContentLocation(),
       buildGooglePrivacyDlpV2ContentLocation(),
     ];
 
-void checkUnnamed66(core.List<api.GooglePrivacyDlpV2ContentLocation> o) {
+void checkUnnamed67(core.List<api.GooglePrivacyDlpV2ContentLocation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2ContentLocation(o[0]);
   checkGooglePrivacyDlpV2ContentLocation(o[1]);
@@ -4340,7 +4460,7 @@ api.GooglePrivacyDlpV2Location buildGooglePrivacyDlpV2Location() {
     o.byteRange = buildGooglePrivacyDlpV2Range();
     o.codepointRange = buildGooglePrivacyDlpV2Range();
     o.container = buildGooglePrivacyDlpV2Container();
-    o.contentLocations = buildUnnamed66();
+    o.contentLocations = buildUnnamed67();
   }
   buildCounterGooglePrivacyDlpV2Location--;
   return o;
@@ -4352,7 +4472,7 @@ void checkGooglePrivacyDlpV2Location(api.GooglePrivacyDlpV2Location o) {
     checkGooglePrivacyDlpV2Range(o.byteRange!);
     checkGooglePrivacyDlpV2Range(o.codepointRange!);
     checkGooglePrivacyDlpV2Container(o.container!);
-    checkUnnamed66(o.contentLocations!);
+    checkUnnamed67(o.contentLocations!);
   }
   buildCounterGooglePrivacyDlpV2Location--;
 }
@@ -4419,12 +4539,12 @@ void checkGooglePrivacyDlpV2NumericalStatsConfig(
   buildCounterGooglePrivacyDlpV2NumericalStatsConfig--;
 }
 
-core.List<api.GooglePrivacyDlpV2Value> buildUnnamed67() => [
+core.List<api.GooglePrivacyDlpV2Value> buildUnnamed68() => [
       buildGooglePrivacyDlpV2Value(),
       buildGooglePrivacyDlpV2Value(),
     ];
 
-void checkUnnamed67(core.List<api.GooglePrivacyDlpV2Value> o) {
+void checkUnnamed68(core.List<api.GooglePrivacyDlpV2Value> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2Value(o[0]);
   checkGooglePrivacyDlpV2Value(o[1]);
@@ -4438,7 +4558,7 @@ api.GooglePrivacyDlpV2NumericalStatsResult
   if (buildCounterGooglePrivacyDlpV2NumericalStatsResult < 3) {
     o.maxValue = buildGooglePrivacyDlpV2Value();
     o.minValue = buildGooglePrivacyDlpV2Value();
-    o.quantileValues = buildUnnamed67();
+    o.quantileValues = buildUnnamed68();
   }
   buildCounterGooglePrivacyDlpV2NumericalStatsResult--;
   return o;
@@ -4450,7 +4570,7 @@ void checkGooglePrivacyDlpV2NumericalStatsResult(
   if (buildCounterGooglePrivacyDlpV2NumericalStatsResult < 3) {
     checkGooglePrivacyDlpV2Value(o.maxValue!);
     checkGooglePrivacyDlpV2Value(o.minValue!);
-    checkUnnamed67(o.quantileValues!);
+    checkUnnamed68(o.quantileValues!);
   }
   buildCounterGooglePrivacyDlpV2NumericalStatsResult--;
 }
@@ -4869,12 +4989,12 @@ void checkGooglePrivacyDlpV2RecordCondition(
   buildCounterGooglePrivacyDlpV2RecordCondition--;
 }
 
-core.List<core.String> buildUnnamed68() => [
+core.List<core.String> buildUnnamed69() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed68(core.List<core.String> o) {
+void checkUnnamed69(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -4893,7 +5013,7 @@ api.GooglePrivacyDlpV2RecordKey buildGooglePrivacyDlpV2RecordKey() {
   if (buildCounterGooglePrivacyDlpV2RecordKey < 3) {
     o.bigQueryKey = buildGooglePrivacyDlpV2BigQueryKey();
     o.datastoreKey = buildGooglePrivacyDlpV2DatastoreKey();
-    o.idValues = buildUnnamed68();
+    o.idValues = buildUnnamed69();
   }
   buildCounterGooglePrivacyDlpV2RecordKey--;
   return o;
@@ -4904,7 +5024,7 @@ void checkGooglePrivacyDlpV2RecordKey(api.GooglePrivacyDlpV2RecordKey o) {
   if (buildCounterGooglePrivacyDlpV2RecordKey < 3) {
     checkGooglePrivacyDlpV2BigQueryKey(o.bigQueryKey!);
     checkGooglePrivacyDlpV2DatastoreKey(o.datastoreKey!);
-    checkUnnamed68(o.idValues!);
+    checkUnnamed69(o.idValues!);
   }
   buildCounterGooglePrivacyDlpV2RecordKey--;
 }
@@ -4954,23 +5074,23 @@ void checkGooglePrivacyDlpV2RecordSuppression(
   buildCounterGooglePrivacyDlpV2RecordSuppression--;
 }
 
-core.List<api.GooglePrivacyDlpV2FieldTransformation> buildUnnamed69() => [
+core.List<api.GooglePrivacyDlpV2FieldTransformation> buildUnnamed70() => [
       buildGooglePrivacyDlpV2FieldTransformation(),
       buildGooglePrivacyDlpV2FieldTransformation(),
     ];
 
-void checkUnnamed69(core.List<api.GooglePrivacyDlpV2FieldTransformation> o) {
+void checkUnnamed70(core.List<api.GooglePrivacyDlpV2FieldTransformation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2FieldTransformation(o[0]);
   checkGooglePrivacyDlpV2FieldTransformation(o[1]);
 }
 
-core.List<api.GooglePrivacyDlpV2RecordSuppression> buildUnnamed70() => [
+core.List<api.GooglePrivacyDlpV2RecordSuppression> buildUnnamed71() => [
       buildGooglePrivacyDlpV2RecordSuppression(),
       buildGooglePrivacyDlpV2RecordSuppression(),
     ];
 
-void checkUnnamed70(core.List<api.GooglePrivacyDlpV2RecordSuppression> o) {
+void checkUnnamed71(core.List<api.GooglePrivacyDlpV2RecordSuppression> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2RecordSuppression(o[0]);
   checkGooglePrivacyDlpV2RecordSuppression(o[1]);
@@ -4982,8 +5102,8 @@ api.GooglePrivacyDlpV2RecordTransformations
   final o = api.GooglePrivacyDlpV2RecordTransformations();
   buildCounterGooglePrivacyDlpV2RecordTransformations++;
   if (buildCounterGooglePrivacyDlpV2RecordTransformations < 3) {
-    o.fieldTransformations = buildUnnamed69();
-    o.recordSuppressions = buildUnnamed70();
+    o.fieldTransformations = buildUnnamed70();
+    o.recordSuppressions = buildUnnamed71();
   }
   buildCounterGooglePrivacyDlpV2RecordTransformations--;
   return o;
@@ -4993,8 +5113,8 @@ void checkGooglePrivacyDlpV2RecordTransformations(
     api.GooglePrivacyDlpV2RecordTransformations o) {
   buildCounterGooglePrivacyDlpV2RecordTransformations++;
   if (buildCounterGooglePrivacyDlpV2RecordTransformations < 3) {
-    checkUnnamed69(o.fieldTransformations!);
-    checkUnnamed70(o.recordSuppressions!);
+    checkUnnamed70(o.fieldTransformations!);
+    checkUnnamed71(o.recordSuppressions!);
   }
   buildCounterGooglePrivacyDlpV2RecordTransformations--;
 }
@@ -5014,12 +5134,12 @@ void checkGooglePrivacyDlpV2RedactConfig(api.GooglePrivacyDlpV2RedactConfig o) {
   buildCounterGooglePrivacyDlpV2RedactConfig--;
 }
 
-core.List<api.GooglePrivacyDlpV2ImageRedactionConfig> buildUnnamed71() => [
+core.List<api.GooglePrivacyDlpV2ImageRedactionConfig> buildUnnamed72() => [
       buildGooglePrivacyDlpV2ImageRedactionConfig(),
       buildGooglePrivacyDlpV2ImageRedactionConfig(),
     ];
 
-void checkUnnamed71(core.List<api.GooglePrivacyDlpV2ImageRedactionConfig> o) {
+void checkUnnamed72(core.List<api.GooglePrivacyDlpV2ImageRedactionConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2ImageRedactionConfig(o[0]);
   checkGooglePrivacyDlpV2ImageRedactionConfig(o[1]);
@@ -5032,7 +5152,7 @@ api.GooglePrivacyDlpV2RedactImageRequest
   buildCounterGooglePrivacyDlpV2RedactImageRequest++;
   if (buildCounterGooglePrivacyDlpV2RedactImageRequest < 3) {
     o.byteItem = buildGooglePrivacyDlpV2ByteContentItem();
-    o.imageRedactionConfigs = buildUnnamed71();
+    o.imageRedactionConfigs = buildUnnamed72();
     o.includeFindings = true;
     o.inspectConfig = buildGooglePrivacyDlpV2InspectConfig();
     o.locationId = 'foo';
@@ -5046,7 +5166,7 @@ void checkGooglePrivacyDlpV2RedactImageRequest(
   buildCounterGooglePrivacyDlpV2RedactImageRequest++;
   if (buildCounterGooglePrivacyDlpV2RedactImageRequest < 3) {
     checkGooglePrivacyDlpV2ByteContentItem(o.byteItem!);
-    checkUnnamed71(o.imageRedactionConfigs!);
+    checkUnnamed72(o.imageRedactionConfigs!);
     unittest.expect(o.includeFindings!, unittest.isTrue);
     checkGooglePrivacyDlpV2InspectConfig(o.inspectConfig!);
     unittest.expect(
@@ -5088,12 +5208,12 @@ void checkGooglePrivacyDlpV2RedactImageResponse(
   buildCounterGooglePrivacyDlpV2RedactImageResponse--;
 }
 
-core.List<core.int> buildUnnamed72() => [
+core.List<core.int> buildUnnamed73() => [
       42,
       42,
     ];
 
-void checkUnnamed72(core.List<core.int> o) {
+void checkUnnamed73(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -5110,7 +5230,7 @@ api.GooglePrivacyDlpV2Regex buildGooglePrivacyDlpV2Regex() {
   final o = api.GooglePrivacyDlpV2Regex();
   buildCounterGooglePrivacyDlpV2Regex++;
   if (buildCounterGooglePrivacyDlpV2Regex < 3) {
-    o.groupIndexes = buildUnnamed72();
+    o.groupIndexes = buildUnnamed73();
     o.pattern = 'foo';
   }
   buildCounterGooglePrivacyDlpV2Regex--;
@@ -5120,7 +5240,7 @@ api.GooglePrivacyDlpV2Regex buildGooglePrivacyDlpV2Regex() {
 void checkGooglePrivacyDlpV2Regex(api.GooglePrivacyDlpV2Regex o) {
   buildCounterGooglePrivacyDlpV2Regex++;
   if (buildCounterGooglePrivacyDlpV2Regex < 3) {
-    checkUnnamed72(o.groupIndexes!);
+    checkUnnamed73(o.groupIndexes!);
     unittest.expect(
       o.pattern!,
       unittest.equals('foo'),
@@ -5251,6 +5371,33 @@ void checkGooglePrivacyDlpV2ReplaceWithInfoTypeConfig(
   buildCounterGooglePrivacyDlpV2ReplaceWithInfoTypeConfig--;
 }
 
+core.int buildCounterGooglePrivacyDlpV2RequestedDeidentifyOptions = 0;
+api.GooglePrivacyDlpV2RequestedDeidentifyOptions
+    buildGooglePrivacyDlpV2RequestedDeidentifyOptions() {
+  final o = api.GooglePrivacyDlpV2RequestedDeidentifyOptions();
+  buildCounterGooglePrivacyDlpV2RequestedDeidentifyOptions++;
+  if (buildCounterGooglePrivacyDlpV2RequestedDeidentifyOptions < 3) {
+    o.snapshotDeidentifyTemplate = buildGooglePrivacyDlpV2DeidentifyTemplate();
+    o.snapshotImageRedactTemplate = buildGooglePrivacyDlpV2DeidentifyTemplate();
+    o.snapshotStructuredDeidentifyTemplate =
+        buildGooglePrivacyDlpV2DeidentifyTemplate();
+  }
+  buildCounterGooglePrivacyDlpV2RequestedDeidentifyOptions--;
+  return o;
+}
+
+void checkGooglePrivacyDlpV2RequestedDeidentifyOptions(
+    api.GooglePrivacyDlpV2RequestedDeidentifyOptions o) {
+  buildCounterGooglePrivacyDlpV2RequestedDeidentifyOptions++;
+  if (buildCounterGooglePrivacyDlpV2RequestedDeidentifyOptions < 3) {
+    checkGooglePrivacyDlpV2DeidentifyTemplate(o.snapshotDeidentifyTemplate!);
+    checkGooglePrivacyDlpV2DeidentifyTemplate(o.snapshotImageRedactTemplate!);
+    checkGooglePrivacyDlpV2DeidentifyTemplate(
+        o.snapshotStructuredDeidentifyTemplate!);
+  }
+  buildCounterGooglePrivacyDlpV2RequestedDeidentifyOptions--;
+}
+
 core.int buildCounterGooglePrivacyDlpV2RequestedOptions = 0;
 api.GooglePrivacyDlpV2RequestedOptions
     buildGooglePrivacyDlpV2RequestedOptions() {
@@ -5295,12 +5442,12 @@ void checkGooglePrivacyDlpV2RequestedRiskAnalysisOptions(
   buildCounterGooglePrivacyDlpV2RequestedRiskAnalysisOptions--;
 }
 
-core.List<api.GooglePrivacyDlpV2InfoTypeStats> buildUnnamed73() => [
+core.List<api.GooglePrivacyDlpV2InfoTypeStats> buildUnnamed74() => [
       buildGooglePrivacyDlpV2InfoTypeStats(),
       buildGooglePrivacyDlpV2InfoTypeStats(),
     ];
 
-void checkUnnamed73(core.List<api.GooglePrivacyDlpV2InfoTypeStats> o) {
+void checkUnnamed74(core.List<api.GooglePrivacyDlpV2InfoTypeStats> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2InfoTypeStats(o[0]);
   checkGooglePrivacyDlpV2InfoTypeStats(o[1]);
@@ -5312,7 +5459,7 @@ api.GooglePrivacyDlpV2Result buildGooglePrivacyDlpV2Result() {
   buildCounterGooglePrivacyDlpV2Result++;
   if (buildCounterGooglePrivacyDlpV2Result < 3) {
     o.hybridStats = buildGooglePrivacyDlpV2HybridInspectStatistics();
-    o.infoTypeStats = buildUnnamed73();
+    o.infoTypeStats = buildUnnamed74();
     o.processedBytes = 'foo';
     o.totalEstimatedBytes = 'foo';
   }
@@ -5324,7 +5471,7 @@ void checkGooglePrivacyDlpV2Result(api.GooglePrivacyDlpV2Result o) {
   buildCounterGooglePrivacyDlpV2Result++;
   if (buildCounterGooglePrivacyDlpV2Result < 3) {
     checkGooglePrivacyDlpV2HybridInspectStatistics(o.hybridStats!);
-    checkUnnamed73(o.infoTypeStats!);
+    checkUnnamed74(o.infoTypeStats!);
     unittest.expect(
       o.processedBytes!,
       unittest.equals('foo'),
@@ -5337,12 +5484,12 @@ void checkGooglePrivacyDlpV2Result(api.GooglePrivacyDlpV2Result o) {
   buildCounterGooglePrivacyDlpV2Result--;
 }
 
-core.List<api.GooglePrivacyDlpV2Action> buildUnnamed74() => [
+core.List<api.GooglePrivacyDlpV2Action> buildUnnamed75() => [
       buildGooglePrivacyDlpV2Action(),
       buildGooglePrivacyDlpV2Action(),
     ];
 
-void checkUnnamed74(core.List<api.GooglePrivacyDlpV2Action> o) {
+void checkUnnamed75(core.List<api.GooglePrivacyDlpV2Action> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2Action(o[0]);
   checkGooglePrivacyDlpV2Action(o[1]);
@@ -5354,7 +5501,7 @@ api.GooglePrivacyDlpV2RiskAnalysisJobConfig
   final o = api.GooglePrivacyDlpV2RiskAnalysisJobConfig();
   buildCounterGooglePrivacyDlpV2RiskAnalysisJobConfig++;
   if (buildCounterGooglePrivacyDlpV2RiskAnalysisJobConfig < 3) {
-    o.actions = buildUnnamed74();
+    o.actions = buildUnnamed75();
     o.privacyMetric = buildGooglePrivacyDlpV2PrivacyMetric();
     o.sourceTable = buildGooglePrivacyDlpV2BigQueryTable();
   }
@@ -5366,19 +5513,19 @@ void checkGooglePrivacyDlpV2RiskAnalysisJobConfig(
     api.GooglePrivacyDlpV2RiskAnalysisJobConfig o) {
   buildCounterGooglePrivacyDlpV2RiskAnalysisJobConfig++;
   if (buildCounterGooglePrivacyDlpV2RiskAnalysisJobConfig < 3) {
-    checkUnnamed74(o.actions!);
+    checkUnnamed75(o.actions!);
     checkGooglePrivacyDlpV2PrivacyMetric(o.privacyMetric!);
     checkGooglePrivacyDlpV2BigQueryTable(o.sourceTable!);
   }
   buildCounterGooglePrivacyDlpV2RiskAnalysisJobConfig--;
 }
 
-core.List<api.GooglePrivacyDlpV2Value> buildUnnamed75() => [
+core.List<api.GooglePrivacyDlpV2Value> buildUnnamed76() => [
       buildGooglePrivacyDlpV2Value(),
       buildGooglePrivacyDlpV2Value(),
     ];
 
-void checkUnnamed75(core.List<api.GooglePrivacyDlpV2Value> o) {
+void checkUnnamed76(core.List<api.GooglePrivacyDlpV2Value> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2Value(o[0]);
   checkGooglePrivacyDlpV2Value(o[1]);
@@ -5389,7 +5536,7 @@ api.GooglePrivacyDlpV2Row buildGooglePrivacyDlpV2Row() {
   final o = api.GooglePrivacyDlpV2Row();
   buildCounterGooglePrivacyDlpV2Row++;
   if (buildCounterGooglePrivacyDlpV2Row < 3) {
-    o.values = buildUnnamed75();
+    o.values = buildUnnamed76();
   }
   buildCounterGooglePrivacyDlpV2Row--;
   return o;
@@ -5398,7 +5545,7 @@ api.GooglePrivacyDlpV2Row buildGooglePrivacyDlpV2Row() {
 void checkGooglePrivacyDlpV2Row(api.GooglePrivacyDlpV2Row o) {
   buildCounterGooglePrivacyDlpV2Row++;
   if (buildCounterGooglePrivacyDlpV2Row < 3) {
-    checkUnnamed75(o.values!);
+    checkUnnamed76(o.values!);
   }
   buildCounterGooglePrivacyDlpV2Row--;
 }
@@ -5444,12 +5591,12 @@ void checkGooglePrivacyDlpV2Schedule(api.GooglePrivacyDlpV2Schedule o) {
   buildCounterGooglePrivacyDlpV2Schedule--;
 }
 
-core.List<api.GooglePrivacyDlpV2InfoType> buildUnnamed76() => [
+core.List<api.GooglePrivacyDlpV2InfoType> buildUnnamed77() => [
       buildGooglePrivacyDlpV2InfoType(),
       buildGooglePrivacyDlpV2InfoType(),
     ];
 
-void checkUnnamed76(core.List<api.GooglePrivacyDlpV2InfoType> o) {
+void checkUnnamed77(core.List<api.GooglePrivacyDlpV2InfoType> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2InfoType(o[0]);
   checkGooglePrivacyDlpV2InfoType(o[1]);
@@ -5461,7 +5608,7 @@ api.GooglePrivacyDlpV2SelectedInfoTypes
   final o = api.GooglePrivacyDlpV2SelectedInfoTypes();
   buildCounterGooglePrivacyDlpV2SelectedInfoTypes++;
   if (buildCounterGooglePrivacyDlpV2SelectedInfoTypes < 3) {
-    o.infoTypes = buildUnnamed76();
+    o.infoTypes = buildUnnamed77();
   }
   buildCounterGooglePrivacyDlpV2SelectedInfoTypes--;
   return o;
@@ -5471,17 +5618,41 @@ void checkGooglePrivacyDlpV2SelectedInfoTypes(
     api.GooglePrivacyDlpV2SelectedInfoTypes o) {
   buildCounterGooglePrivacyDlpV2SelectedInfoTypes++;
   if (buildCounterGooglePrivacyDlpV2SelectedInfoTypes < 3) {
-    checkUnnamed76(o.infoTypes!);
+    checkUnnamed77(o.infoTypes!);
   }
   buildCounterGooglePrivacyDlpV2SelectedInfoTypes--;
 }
 
-core.List<api.GooglePrivacyDlpV2QuasiIdentifierField> buildUnnamed77() => [
+core.int buildCounterGooglePrivacyDlpV2SensitivityScore = 0;
+api.GooglePrivacyDlpV2SensitivityScore
+    buildGooglePrivacyDlpV2SensitivityScore() {
+  final o = api.GooglePrivacyDlpV2SensitivityScore();
+  buildCounterGooglePrivacyDlpV2SensitivityScore++;
+  if (buildCounterGooglePrivacyDlpV2SensitivityScore < 3) {
+    o.score = 'foo';
+  }
+  buildCounterGooglePrivacyDlpV2SensitivityScore--;
+  return o;
+}
+
+void checkGooglePrivacyDlpV2SensitivityScore(
+    api.GooglePrivacyDlpV2SensitivityScore o) {
+  buildCounterGooglePrivacyDlpV2SensitivityScore++;
+  if (buildCounterGooglePrivacyDlpV2SensitivityScore < 3) {
+    unittest.expect(
+      o.score!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGooglePrivacyDlpV2SensitivityScore--;
+}
+
+core.List<api.GooglePrivacyDlpV2QuasiIdentifierField> buildUnnamed78() => [
       buildGooglePrivacyDlpV2QuasiIdentifierField(),
       buildGooglePrivacyDlpV2QuasiIdentifierField(),
     ];
 
-void checkUnnamed77(core.List<api.GooglePrivacyDlpV2QuasiIdentifierField> o) {
+void checkUnnamed78(core.List<api.GooglePrivacyDlpV2QuasiIdentifierField> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2QuasiIdentifierField(o[0]);
   checkGooglePrivacyDlpV2QuasiIdentifierField(o[1]);
@@ -5493,7 +5664,7 @@ api.GooglePrivacyDlpV2StatisticalTable
   final o = api.GooglePrivacyDlpV2StatisticalTable();
   buildCounterGooglePrivacyDlpV2StatisticalTable++;
   if (buildCounterGooglePrivacyDlpV2StatisticalTable < 3) {
-    o.quasiIds = buildUnnamed77();
+    o.quasiIds = buildUnnamed78();
     o.relativeFrequency = buildGooglePrivacyDlpV2FieldId();
     o.table = buildGooglePrivacyDlpV2BigQueryTable();
   }
@@ -5505,7 +5676,7 @@ void checkGooglePrivacyDlpV2StatisticalTable(
     api.GooglePrivacyDlpV2StatisticalTable o) {
   buildCounterGooglePrivacyDlpV2StatisticalTable++;
   if (buildCounterGooglePrivacyDlpV2StatisticalTable < 3) {
-    checkUnnamed77(o.quasiIds!);
+    checkUnnamed78(o.quasiIds!);
     checkGooglePrivacyDlpV2FieldId(o.relativeFrequency!);
     checkGooglePrivacyDlpV2BigQueryTable(o.table!);
   }
@@ -5564,12 +5735,12 @@ void checkGooglePrivacyDlpV2StorageMetadataLabel(
   buildCounterGooglePrivacyDlpV2StorageMetadataLabel--;
 }
 
-core.List<api.GooglePrivacyDlpV2StoredInfoTypeVersion> buildUnnamed78() => [
+core.List<api.GooglePrivacyDlpV2StoredInfoTypeVersion> buildUnnamed79() => [
       buildGooglePrivacyDlpV2StoredInfoTypeVersion(),
       buildGooglePrivacyDlpV2StoredInfoTypeVersion(),
     ];
 
-void checkUnnamed78(core.List<api.GooglePrivacyDlpV2StoredInfoTypeVersion> o) {
+void checkUnnamed79(core.List<api.GooglePrivacyDlpV2StoredInfoTypeVersion> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2StoredInfoTypeVersion(o[0]);
   checkGooglePrivacyDlpV2StoredInfoTypeVersion(o[1]);
@@ -5582,7 +5753,7 @@ api.GooglePrivacyDlpV2StoredInfoType buildGooglePrivacyDlpV2StoredInfoType() {
   if (buildCounterGooglePrivacyDlpV2StoredInfoType < 3) {
     o.currentVersion = buildGooglePrivacyDlpV2StoredInfoTypeVersion();
     o.name = 'foo';
-    o.pendingVersions = buildUnnamed78();
+    o.pendingVersions = buildUnnamed79();
   }
   buildCounterGooglePrivacyDlpV2StoredInfoType--;
   return o;
@@ -5597,7 +5768,7 @@ void checkGooglePrivacyDlpV2StoredInfoType(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed78(o.pendingVersions!);
+    checkUnnamed79(o.pendingVersions!);
   }
   buildCounterGooglePrivacyDlpV2StoredInfoType--;
 }
@@ -5661,12 +5832,12 @@ void checkGooglePrivacyDlpV2StoredInfoTypeStats(
   buildCounterGooglePrivacyDlpV2StoredInfoTypeStats--;
 }
 
-core.List<api.GooglePrivacyDlpV2Error> buildUnnamed79() => [
+core.List<api.GooglePrivacyDlpV2Error> buildUnnamed80() => [
       buildGooglePrivacyDlpV2Error(),
       buildGooglePrivacyDlpV2Error(),
     ];
 
-void checkUnnamed79(core.List<api.GooglePrivacyDlpV2Error> o) {
+void checkUnnamed80(core.List<api.GooglePrivacyDlpV2Error> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2Error(o[0]);
   checkGooglePrivacyDlpV2Error(o[1]);
@@ -5680,7 +5851,7 @@ api.GooglePrivacyDlpV2StoredInfoTypeVersion
   if (buildCounterGooglePrivacyDlpV2StoredInfoTypeVersion < 3) {
     o.config = buildGooglePrivacyDlpV2StoredInfoTypeConfig();
     o.createTime = 'foo';
-    o.errors = buildUnnamed79();
+    o.errors = buildUnnamed80();
     o.state = 'foo';
     o.stats = buildGooglePrivacyDlpV2StoredInfoTypeStats();
   }
@@ -5697,7 +5868,7 @@ void checkGooglePrivacyDlpV2StoredInfoTypeVersion(
       o.createTime!,
       unittest.equals('foo'),
     );
-    checkUnnamed79(o.errors!);
+    checkUnnamed80(o.errors!);
     unittest.expect(
       o.state!,
       unittest.equals('foo'),
@@ -5783,23 +5954,23 @@ void checkGooglePrivacyDlpV2SurrogateType(
   buildCounterGooglePrivacyDlpV2SurrogateType--;
 }
 
-core.List<api.GooglePrivacyDlpV2FieldId> buildUnnamed80() => [
+core.List<api.GooglePrivacyDlpV2FieldId> buildUnnamed81() => [
       buildGooglePrivacyDlpV2FieldId(),
       buildGooglePrivacyDlpV2FieldId(),
     ];
 
-void checkUnnamed80(core.List<api.GooglePrivacyDlpV2FieldId> o) {
+void checkUnnamed81(core.List<api.GooglePrivacyDlpV2FieldId> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2FieldId(o[0]);
   checkGooglePrivacyDlpV2FieldId(o[1]);
 }
 
-core.List<api.GooglePrivacyDlpV2Row> buildUnnamed81() => [
+core.List<api.GooglePrivacyDlpV2Row> buildUnnamed82() => [
       buildGooglePrivacyDlpV2Row(),
       buildGooglePrivacyDlpV2Row(),
     ];
 
-void checkUnnamed81(core.List<api.GooglePrivacyDlpV2Row> o) {
+void checkUnnamed82(core.List<api.GooglePrivacyDlpV2Row> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2Row(o[0]);
   checkGooglePrivacyDlpV2Row(o[1]);
@@ -5810,8 +5981,8 @@ api.GooglePrivacyDlpV2Table buildGooglePrivacyDlpV2Table() {
   final o = api.GooglePrivacyDlpV2Table();
   buildCounterGooglePrivacyDlpV2Table++;
   if (buildCounterGooglePrivacyDlpV2Table < 3) {
-    o.headers = buildUnnamed80();
-    o.rows = buildUnnamed81();
+    o.headers = buildUnnamed81();
+    o.rows = buildUnnamed82();
   }
   buildCounterGooglePrivacyDlpV2Table--;
   return o;
@@ -5820,8 +5991,8 @@ api.GooglePrivacyDlpV2Table buildGooglePrivacyDlpV2Table() {
 void checkGooglePrivacyDlpV2Table(api.GooglePrivacyDlpV2Table o) {
   buildCounterGooglePrivacyDlpV2Table++;
   if (buildCounterGooglePrivacyDlpV2Table < 3) {
-    checkUnnamed80(o.headers!);
-    checkUnnamed81(o.rows!);
+    checkUnnamed81(o.headers!);
+    checkUnnamed82(o.rows!);
   }
   buildCounterGooglePrivacyDlpV2Table--;
 }
@@ -5849,12 +6020,12 @@ void checkGooglePrivacyDlpV2TableLocation(
   buildCounterGooglePrivacyDlpV2TableLocation--;
 }
 
-core.List<api.GooglePrivacyDlpV2FieldId> buildUnnamed82() => [
+core.List<api.GooglePrivacyDlpV2FieldId> buildUnnamed83() => [
       buildGooglePrivacyDlpV2FieldId(),
       buildGooglePrivacyDlpV2FieldId(),
     ];
 
-void checkUnnamed82(core.List<api.GooglePrivacyDlpV2FieldId> o) {
+void checkUnnamed83(core.List<api.GooglePrivacyDlpV2FieldId> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2FieldId(o[0]);
   checkGooglePrivacyDlpV2FieldId(o[1]);
@@ -5865,7 +6036,7 @@ api.GooglePrivacyDlpV2TableOptions buildGooglePrivacyDlpV2TableOptions() {
   final o = api.GooglePrivacyDlpV2TableOptions();
   buildCounterGooglePrivacyDlpV2TableOptions++;
   if (buildCounterGooglePrivacyDlpV2TableOptions < 3) {
-    o.identifyingFields = buildUnnamed82();
+    o.identifyingFields = buildUnnamed83();
   }
   buildCounterGooglePrivacyDlpV2TableOptions--;
   return o;
@@ -5874,7 +6045,7 @@ api.GooglePrivacyDlpV2TableOptions buildGooglePrivacyDlpV2TableOptions() {
 void checkGooglePrivacyDlpV2TableOptions(api.GooglePrivacyDlpV2TableOptions o) {
   buildCounterGooglePrivacyDlpV2TableOptions++;
   if (buildCounterGooglePrivacyDlpV2TableOptions < 3) {
-    checkUnnamed82(o.identifyingFields!);
+    checkUnnamed83(o.identifyingFields!);
   }
   buildCounterGooglePrivacyDlpV2TableOptions--;
 }
@@ -6077,12 +6248,12 @@ void checkGooglePrivacyDlpV2TransformationErrorHandling(
   buildCounterGooglePrivacyDlpV2TransformationErrorHandling--;
 }
 
-core.List<api.GooglePrivacyDlpV2TransformationSummary> buildUnnamed83() => [
+core.List<api.GooglePrivacyDlpV2TransformationSummary> buildUnnamed84() => [
       buildGooglePrivacyDlpV2TransformationSummary(),
       buildGooglePrivacyDlpV2TransformationSummary(),
     ];
 
-void checkUnnamed83(core.List<api.GooglePrivacyDlpV2TransformationSummary> o) {
+void checkUnnamed84(core.List<api.GooglePrivacyDlpV2TransformationSummary> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2TransformationSummary(o[0]);
   checkGooglePrivacyDlpV2TransformationSummary(o[1]);
@@ -6094,7 +6265,7 @@ api.GooglePrivacyDlpV2TransformationOverview
   final o = api.GooglePrivacyDlpV2TransformationOverview();
   buildCounterGooglePrivacyDlpV2TransformationOverview++;
   if (buildCounterGooglePrivacyDlpV2TransformationOverview < 3) {
-    o.transformationSummaries = buildUnnamed83();
+    o.transformationSummaries = buildUnnamed84();
     o.transformedBytes = 'foo';
   }
   buildCounterGooglePrivacyDlpV2TransformationOverview--;
@@ -6105,7 +6276,7 @@ void checkGooglePrivacyDlpV2TransformationOverview(
     api.GooglePrivacyDlpV2TransformationOverview o) {
   buildCounterGooglePrivacyDlpV2TransformationOverview++;
   if (buildCounterGooglePrivacyDlpV2TransformationOverview < 3) {
-    checkUnnamed83(o.transformationSummaries!);
+    checkUnnamed84(o.transformationSummaries!);
     unittest.expect(
       o.transformedBytes!,
       unittest.equals('foo'),
@@ -6114,23 +6285,23 @@ void checkGooglePrivacyDlpV2TransformationOverview(
   buildCounterGooglePrivacyDlpV2TransformationOverview--;
 }
 
-core.List<api.GooglePrivacyDlpV2FieldTransformation> buildUnnamed84() => [
+core.List<api.GooglePrivacyDlpV2FieldTransformation> buildUnnamed85() => [
       buildGooglePrivacyDlpV2FieldTransformation(),
       buildGooglePrivacyDlpV2FieldTransformation(),
     ];
 
-void checkUnnamed84(core.List<api.GooglePrivacyDlpV2FieldTransformation> o) {
+void checkUnnamed85(core.List<api.GooglePrivacyDlpV2FieldTransformation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2FieldTransformation(o[0]);
   checkGooglePrivacyDlpV2FieldTransformation(o[1]);
 }
 
-core.List<api.GooglePrivacyDlpV2SummaryResult> buildUnnamed85() => [
+core.List<api.GooglePrivacyDlpV2SummaryResult> buildUnnamed86() => [
       buildGooglePrivacyDlpV2SummaryResult(),
       buildGooglePrivacyDlpV2SummaryResult(),
     ];
 
-void checkUnnamed85(core.List<api.GooglePrivacyDlpV2SummaryResult> o) {
+void checkUnnamed86(core.List<api.GooglePrivacyDlpV2SummaryResult> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2SummaryResult(o[0]);
   checkGooglePrivacyDlpV2SummaryResult(o[1]);
@@ -6143,10 +6314,10 @@ api.GooglePrivacyDlpV2TransformationSummary
   buildCounterGooglePrivacyDlpV2TransformationSummary++;
   if (buildCounterGooglePrivacyDlpV2TransformationSummary < 3) {
     o.field = buildGooglePrivacyDlpV2FieldId();
-    o.fieldTransformations = buildUnnamed84();
+    o.fieldTransformations = buildUnnamed85();
     o.infoType = buildGooglePrivacyDlpV2InfoType();
     o.recordSuppress = buildGooglePrivacyDlpV2RecordSuppression();
-    o.results = buildUnnamed85();
+    o.results = buildUnnamed86();
     o.transformation = buildGooglePrivacyDlpV2PrimitiveTransformation();
     o.transformedBytes = 'foo';
   }
@@ -6159,10 +6330,10 @@ void checkGooglePrivacyDlpV2TransformationSummary(
   buildCounterGooglePrivacyDlpV2TransformationSummary++;
   if (buildCounterGooglePrivacyDlpV2TransformationSummary < 3) {
     checkGooglePrivacyDlpV2FieldId(o.field!);
-    checkUnnamed84(o.fieldTransformations!);
+    checkUnnamed85(o.fieldTransformations!);
     checkGooglePrivacyDlpV2InfoType(o.infoType!);
     checkGooglePrivacyDlpV2RecordSuppression(o.recordSuppress!);
-    checkUnnamed85(o.results!);
+    checkUnnamed86(o.results!);
     checkGooglePrivacyDlpV2PrimitiveTransformation(o.transformation!);
     unittest.expect(
       o.transformedBytes!,
@@ -6447,12 +6618,12 @@ void checkGooglePrivacyDlpV2VersionDescription(
   buildCounterGooglePrivacyDlpV2VersionDescription--;
 }
 
-core.List<core.String> buildUnnamed86() => [
+core.List<core.String> buildUnnamed87() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed86(core.List<core.String> o) {
+void checkUnnamed87(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -6469,7 +6640,7 @@ api.GooglePrivacyDlpV2WordList buildGooglePrivacyDlpV2WordList() {
   final o = api.GooglePrivacyDlpV2WordList();
   buildCounterGooglePrivacyDlpV2WordList++;
   if (buildCounterGooglePrivacyDlpV2WordList < 3) {
-    o.words = buildUnnamed86();
+    o.words = buildUnnamed87();
   }
   buildCounterGooglePrivacyDlpV2WordList--;
   return o;
@@ -6478,7 +6649,7 @@ api.GooglePrivacyDlpV2WordList buildGooglePrivacyDlpV2WordList() {
 void checkGooglePrivacyDlpV2WordList(api.GooglePrivacyDlpV2WordList o) {
   buildCounterGooglePrivacyDlpV2WordList++;
   if (buildCounterGooglePrivacyDlpV2WordList < 3) {
-    checkUnnamed86(o.words!);
+    checkUnnamed87(o.words!);
   }
   buildCounterGooglePrivacyDlpV2WordList--;
 }
@@ -6498,7 +6669,7 @@ void checkGoogleProtobufEmpty(api.GoogleProtobufEmpty o) {
   buildCounterGoogleProtobufEmpty--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed87() => {
+core.Map<core.String, core.Object?> buildUnnamed88() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -6511,7 +6682,7 @@ core.Map<core.String, core.Object?> buildUnnamed87() => {
       },
     };
 
-void checkUnnamed87(core.Map<core.String, core.Object?> o) {
+void checkUnnamed88(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -6543,15 +6714,15 @@ void checkUnnamed87(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed88() => [
-      buildUnnamed87(),
-      buildUnnamed87(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed89() => [
+      buildUnnamed88(),
+      buildUnnamed88(),
     ];
 
-void checkUnnamed88(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed89(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed87(o[0]);
-  checkUnnamed87(o[1]);
+  checkUnnamed88(o[0]);
+  checkUnnamed88(o[1]);
 }
 
 core.int buildCounterGoogleRpcStatus = 0;
@@ -6560,7 +6731,7 @@ api.GoogleRpcStatus buildGoogleRpcStatus() {
   buildCounterGoogleRpcStatus++;
   if (buildCounterGoogleRpcStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed88();
+    o.details = buildUnnamed89();
     o.message = 'foo';
   }
   buildCounterGoogleRpcStatus--;
@@ -6574,7 +6745,7 @@ void checkGoogleRpcStatus(api.GoogleRpcStatus o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed88(o.details!);
+    checkUnnamed89(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -6660,6 +6831,16 @@ void main() {
       final od = api.GooglePrivacyDlpV2Action.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2Action(od);
+    });
+  });
+
+  unittest.group('obj-schema-GooglePrivacyDlpV2ActionDetails', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2ActionDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2ActionDetails.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2ActionDetails(od);
     });
   });
 
@@ -7138,6 +7319,27 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-GooglePrivacyDlpV2DeidentifyDataSourceDetails',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2DeidentifyDataSourceDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2DeidentifyDataSourceDetails.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2DeidentifyDataSourceDetails(od);
+    });
+  });
+
+  unittest.group('obj-schema-GooglePrivacyDlpV2DeidentifyDataSourceStats', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2DeidentifyDataSourceStats();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2DeidentifyDataSourceStats.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2DeidentifyDataSourceStats(od);
+    });
+  });
+
   unittest.group('obj-schema-GooglePrivacyDlpV2DeidentifyTemplate', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGooglePrivacyDlpV2DeidentifyTemplate();
@@ -7252,6 +7454,16 @@ void main() {
       final od = api.GooglePrivacyDlpV2Error.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2Error(od);
+    });
+  });
+
+  unittest.group('obj-schema-GooglePrivacyDlpV2ExcludeByHotword', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2ExcludeByHotword();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2ExcludeByHotword.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2ExcludeByHotword(od);
     });
   });
 
@@ -8254,6 +8466,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-GooglePrivacyDlpV2RequestedDeidentifyOptions', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2RequestedDeidentifyOptions();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2RequestedDeidentifyOptions.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2RequestedDeidentifyOptions(od);
+    });
+  });
+
   unittest.group('obj-schema-GooglePrivacyDlpV2RequestedOptions', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGooglePrivacyDlpV2RequestedOptions();
@@ -8332,6 +8554,16 @@ void main() {
       final od = api.GooglePrivacyDlpV2SelectedInfoTypes.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2SelectedInfoTypes(od);
+    });
+  });
+
+  unittest.group('obj-schema-GooglePrivacyDlpV2SensitivityScore', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGooglePrivacyDlpV2SensitivityScore();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GooglePrivacyDlpV2SensitivityScore.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGooglePrivacyDlpV2SensitivityScore(od);
     });
   });
 
@@ -8731,7 +8963,7 @@ void main() {
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -8746,7 +8978,7 @@ void main() {
         );
         pathOffset += 12;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -8810,7 +9042,7 @@ void main() {
       final arg_locationId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -8826,7 +9058,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -8889,7 +9121,7 @@ void main() {
                 json as core.Map<core.String, core.dynamic>);
         checkGooglePrivacyDlpV2CreateDeidentifyTemplateRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -8905,7 +9137,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -8944,7 +9176,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -8960,7 +9192,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -8996,7 +9228,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -9012,7 +9244,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -9054,7 +9286,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -9070,7 +9302,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -9136,7 +9368,7 @@ void main() {
                 json as core.Map<core.String, core.dynamic>);
         checkGooglePrivacyDlpV2UpdateDeidentifyTemplateRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -9152,7 +9384,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -9198,7 +9430,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGooglePrivacyDlpV2CreateInspectTemplateRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -9214,7 +9446,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -9253,7 +9485,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -9269,7 +9501,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -9305,7 +9537,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -9321,7 +9553,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -9363,7 +9595,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -9379,7 +9611,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -9443,7 +9675,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGooglePrivacyDlpV2UpdateInspectTemplateRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -9459,7 +9691,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -9508,7 +9740,7 @@ void main() {
                 json as core.Map<core.String, core.dynamic>);
         checkGooglePrivacyDlpV2CreateDeidentifyTemplateRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -9524,7 +9756,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -9563,7 +9795,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -9579,7 +9811,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -9615,7 +9847,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -9631,7 +9863,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -9673,7 +9905,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -9689,7 +9921,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -9755,7 +9987,7 @@ void main() {
                 json as core.Map<core.String, core.dynamic>);
         checkGooglePrivacyDlpV2UpdateDeidentifyTemplateRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -9771,7 +10003,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -9818,7 +10050,7 @@ void main() {
       final arg_type = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -9834,7 +10066,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -9910,7 +10142,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGooglePrivacyDlpV2CreateInspectTemplateRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -9926,7 +10158,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -9965,7 +10197,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -9981,7 +10213,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -10017,7 +10249,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -10033,7 +10265,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -10075,7 +10307,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -10091,7 +10323,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -10155,7 +10387,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGooglePrivacyDlpV2UpdateInspectTemplateRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -10171,7 +10403,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -10217,7 +10449,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGooglePrivacyDlpV2CreateJobTriggerRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -10233,7 +10465,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -10271,7 +10503,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -10287,7 +10519,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -10323,7 +10555,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -10339,7 +10571,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -10382,7 +10614,7 @@ void main() {
       final arg_type = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -10398,7 +10630,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -10472,7 +10704,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGooglePrivacyDlpV2UpdateJobTriggerRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -10488,7 +10720,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -10533,7 +10765,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGooglePrivacyDlpV2CreateStoredInfoTypeRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -10549,7 +10781,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -10588,7 +10820,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -10604,7 +10836,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -10640,7 +10872,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -10656,7 +10888,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -10698,7 +10930,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -10714,7 +10946,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -10778,7 +11010,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGooglePrivacyDlpV2UpdateStoredInfoTypeRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -10794,7 +11026,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -10840,7 +11072,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGooglePrivacyDlpV2CreateStoredInfoTypeRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -10856,7 +11088,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -10895,7 +11127,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -10911,7 +11143,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -10947,7 +11179,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -10963,7 +11195,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -11005,7 +11237,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -11021,7 +11253,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -11085,7 +11317,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGooglePrivacyDlpV2UpdateStoredInfoTypeRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -11101,7 +11333,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -11147,7 +11379,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGooglePrivacyDlpV2DeidentifyContentRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -11163,7 +11395,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -11207,7 +11439,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGooglePrivacyDlpV2InspectContentRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -11223,7 +11455,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -11267,7 +11499,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGooglePrivacyDlpV2ReidentifyContentRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -11283,7 +11515,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -11331,7 +11563,7 @@ void main() {
                 json as core.Map<core.String, core.dynamic>);
         checkGooglePrivacyDlpV2CreateDeidentifyTemplateRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -11347,7 +11579,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -11386,7 +11618,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -11402,7 +11634,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -11438,7 +11670,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -11454,7 +11686,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -11496,7 +11728,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -11512,7 +11744,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -11578,7 +11810,7 @@ void main() {
                 json as core.Map<core.String, core.dynamic>);
         checkGooglePrivacyDlpV2UpdateDeidentifyTemplateRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -11594,7 +11826,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -11640,7 +11872,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGooglePrivacyDlpV2CancelDlpJobRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -11656,7 +11888,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -11698,7 +11930,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGooglePrivacyDlpV2CreateDlpJobRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -11714,7 +11946,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -11751,7 +11983,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -11767,7 +11999,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -11803,7 +12035,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -11819,7 +12051,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -11861,7 +12093,7 @@ void main() {
       final arg_type = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -11877,7 +12109,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -11953,7 +12185,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGooglePrivacyDlpV2RedactImageRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -11969,7 +12201,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -12015,7 +12247,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGooglePrivacyDlpV2CreateInspectTemplateRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -12031,7 +12263,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -12070,7 +12302,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -12086,7 +12318,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -12122,7 +12354,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -12138,7 +12370,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -12180,7 +12412,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -12196,7 +12428,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -12260,7 +12492,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGooglePrivacyDlpV2UpdateInspectTemplateRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -12276,7 +12508,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -12322,7 +12554,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGooglePrivacyDlpV2ActivateJobTriggerRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -12338,7 +12570,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -12380,7 +12612,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGooglePrivacyDlpV2CreateJobTriggerRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -12396,7 +12628,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -12434,7 +12666,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -12450,7 +12682,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -12486,7 +12718,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -12502,7 +12734,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -12545,7 +12777,7 @@ void main() {
       final arg_type = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -12561,7 +12793,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -12635,7 +12867,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGooglePrivacyDlpV2UpdateJobTriggerRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -12651,7 +12883,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -12696,7 +12928,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGooglePrivacyDlpV2DeidentifyContentRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -12712,7 +12944,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -12756,7 +12988,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGooglePrivacyDlpV2InspectContentRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -12772,7 +13004,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -12816,7 +13048,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGooglePrivacyDlpV2ReidentifyContentRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -12832,7 +13064,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -12880,7 +13112,7 @@ void main() {
                 json as core.Map<core.String, core.dynamic>);
         checkGooglePrivacyDlpV2CreateDeidentifyTemplateRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -12896,7 +13128,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -12935,7 +13167,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -12951,7 +13183,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -12987,7 +13219,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -13003,7 +13235,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -13045,7 +13277,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -13061,7 +13293,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -13127,7 +13359,7 @@ void main() {
                 json as core.Map<core.String, core.dynamic>);
         checkGooglePrivacyDlpV2UpdateDeidentifyTemplateRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -13143,7 +13375,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -13189,7 +13421,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGooglePrivacyDlpV2CancelDlpJobRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -13205,7 +13437,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -13247,7 +13479,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGooglePrivacyDlpV2CreateDlpJobRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -13263,7 +13495,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -13300,7 +13532,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -13316,7 +13548,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -13357,7 +13589,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGooglePrivacyDlpV2FinishDlpJobRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -13373,7 +13605,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -13410,7 +13642,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -13426,7 +13658,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -13467,7 +13699,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGooglePrivacyDlpV2HybridInspectDlpJobRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -13483,7 +13715,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -13528,7 +13760,7 @@ void main() {
       final arg_type = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -13544,7 +13776,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -13620,7 +13852,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGooglePrivacyDlpV2RedactImageRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -13636,7 +13868,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -13682,7 +13914,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGooglePrivacyDlpV2CreateInspectTemplateRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -13698,7 +13930,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -13737,7 +13969,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -13753,7 +13985,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -13789,7 +14021,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -13805,7 +14037,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -13847,7 +14079,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -13863,7 +14095,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -13927,7 +14159,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGooglePrivacyDlpV2UpdateInspectTemplateRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -13943,7 +14175,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -13989,7 +14221,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGooglePrivacyDlpV2ActivateJobTriggerRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -14005,7 +14237,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -14047,7 +14279,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGooglePrivacyDlpV2CreateJobTriggerRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -14063,7 +14295,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -14101,7 +14333,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -14117,7 +14349,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -14153,7 +14385,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -14169,7 +14401,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -14213,7 +14445,7 @@ void main() {
                 json as core.Map<core.String, core.dynamic>);
         checkGooglePrivacyDlpV2HybridInspectJobTriggerRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -14229,7 +14461,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -14274,7 +14506,7 @@ void main() {
       final arg_type = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -14290,7 +14522,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -14364,7 +14596,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGooglePrivacyDlpV2UpdateJobTriggerRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -14380,7 +14612,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -14425,7 +14657,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGooglePrivacyDlpV2CreateStoredInfoTypeRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -14441,7 +14673,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -14480,7 +14712,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -14496,7 +14728,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -14532,7 +14764,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -14548,7 +14780,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -14590,7 +14822,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -14606,7 +14838,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -14670,7 +14902,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGooglePrivacyDlpV2UpdateStoredInfoTypeRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -14686,7 +14918,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -14732,7 +14964,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGooglePrivacyDlpV2CreateStoredInfoTypeRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -14748,7 +14980,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -14787,7 +15019,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -14803,7 +15035,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -14839,7 +15071,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -14855,7 +15087,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -14897,7 +15129,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -14913,7 +15145,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -14977,7 +15209,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGooglePrivacyDlpV2UpdateStoredInfoTypeRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -14993,7 +15225,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>

@@ -1,8 +1,6 @@
 // ignore_for_file: camel_case_types
-// ignore_for_file: cascade_invocations
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_const_declarations
@@ -12,8 +10,9 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unreachable_from_main
 // ignore_for_file: unused_local_variable
 
 import 'dart:async' as async;
@@ -383,6 +382,33 @@ void checkOperation(api.Operation o) {
   buildCounterOperation--;
 }
 
+core.int buildCounterStateError = 0;
+api.StateError buildStateError() {
+  final o = api.StateError();
+  buildCounterStateError++;
+  if (buildCounterStateError < 3) {
+    o.details = 'foo';
+    o.type = 'foo';
+  }
+  buildCounterStateError--;
+  return o;
+}
+
+void checkStateError(api.StateError o) {
+  buildCounterStateError++;
+  if (buildCounterStateError < 3) {
+    unittest.expect(
+      o.details!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterStateError--;
+}
+
 core.Map<core.String, core.Object?> buildUnnamed8() => {
       'x': {
         'list': [1, 2, 3],
@@ -485,12 +511,31 @@ void checkUnnamed10(core.Map<core.String, core.String> o) {
   );
 }
 
+core.Map<core.String, core.String> buildUnnamed11() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
+
+void checkUnnamed11(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterWorkflow = 0;
 api.Workflow buildWorkflow() {
   final o = api.Workflow();
   buildCounterWorkflow++;
   if (buildCounterWorkflow < 3) {
+    o.callLogLevel = 'foo';
     o.createTime = 'foo';
+    o.cryptoKeyName = 'foo';
     o.description = 'foo';
     o.labels = buildUnnamed10();
     o.name = 'foo';
@@ -499,7 +544,9 @@ api.Workflow buildWorkflow() {
     o.serviceAccount = 'foo';
     o.sourceContents = 'foo';
     o.state = 'foo';
+    o.stateError = buildStateError();
     o.updateTime = 'foo';
+    o.userEnvVars = buildUnnamed11();
   }
   buildCounterWorkflow--;
   return o;
@@ -509,7 +556,15 @@ void checkWorkflow(api.Workflow o) {
   buildCounterWorkflow++;
   if (buildCounterWorkflow < 3) {
     unittest.expect(
+      o.callLogLevel!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.cryptoKeyName!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -541,10 +596,12 @@ void checkWorkflow(api.Workflow o) {
       o.state!,
       unittest.equals('foo'),
     );
+    checkStateError(o.stateError!);
     unittest.expect(
       o.updateTime!,
       unittest.equals('foo'),
     );
+    checkUnnamed11(o.userEnvVars!);
   }
   buildCounterWorkflow--;
 }
@@ -610,6 +667,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-StateError', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildStateError();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.StateError.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkStateError(od);
+    });
+  });
+
   unittest.group('obj-schema-Status', () {
     unittest.test('to-json--from-json', () async {
       final o = buildStatus();
@@ -637,7 +704,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -653,7 +720,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -692,7 +759,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -708,7 +775,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -762,7 +829,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -778,7 +845,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -814,7 +881,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -830,7 +897,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -869,7 +936,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -885,7 +952,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -945,7 +1012,7 @@ void main() {
             api.Workflow.fromJson(json as core.Map<core.String, core.dynamic>);
         checkWorkflow(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -961,7 +1028,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -1002,7 +1069,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1018,7 +1085,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -1052,9 +1119,10 @@ void main() {
       final mock = HttpServerMock();
       final res = api.WorkflowsApi(mock).projects.locations.workflows;
       final arg_name = 'foo';
+      final arg_revisionId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1070,7 +1138,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -1086,6 +1154,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['revisionId']!.first,
+          unittest.equals(arg_revisionId),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -1096,7 +1168,8 @@ void main() {
         final resp = convert.json.encode(buildWorkflow());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      final response = await res.get(arg_name, $fields: arg_$fields);
+      final response = await res.get(arg_name,
+          revisionId: arg_revisionId, $fields: arg_$fields);
       checkWorkflow(response as api.Workflow);
     });
 
@@ -1110,7 +1183,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1126,7 +1199,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -1189,7 +1262,7 @@ void main() {
             api.Workflow.fromJson(json as core.Map<core.String, core.dynamic>);
         checkWorkflow(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1205,7 +1278,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>

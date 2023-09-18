@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Authorized Buyers Marketplace API - v1
@@ -33,7 +32,7 @@
 ///   - [BuyersProposalsResource]
 ///     - [BuyersProposalsDealsResource]
 ///   - [BuyersPublisherProfilesResource]
-library authorizedbuyersmarketplace.v1;
+library authorizedbuyersmarketplace_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -42,7 +41,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -99,7 +97,7 @@ class BiddersFinalizedDealsResource {
   /// Value must have pattern `^bidders/\[^/\]+$`.
   ///
   /// [filter] - Optional query string using the
-  /// [Cloud API list filtering syntax](https://developers.google.com/authorized-buyers/apis/guides/v2/list-filters)
+  /// [Cloud API list filtering syntax](https://developers.google.com/authorized-buyers/apis/guides/list-filters)
   /// Supported columns for filtering are: * deal.displayName * deal.dealType *
   /// deal.createTime * deal.updateTime * deal.flightStartTime *
   /// deal.flightEndTime * dealServingStatus
@@ -627,7 +625,7 @@ class BuyersClientsResource {
   /// Value must have pattern `^buyers/\[^/\]+$`.
   ///
   /// [filter] - Query string using the
-  /// [Filtering Syntax](https://developers.google.com/authorized-buyers/apis/guides/v2/list-filters)
+  /// [Filtering Syntax](https://developers.google.com/authorized-buyers/apis/guides/list-filters)
   /// Supported fields for filtering are: * partnerClientId Use this field to
   /// filter the clients by the partnerClientId. For example, if the
   /// partnerClientId of the client is "1234", the value of this field should be
@@ -1109,7 +1107,7 @@ class BuyersFinalizedDealsResource {
   /// Value must have pattern `^buyers/\[^/\]+$`.
   ///
   /// [filter] - Optional query string using the
-  /// [Cloud API list filtering syntax](https://developers.google.com/authorized-buyers/apis/guides/v2/list-filters)
+  /// [Cloud API list filtering syntax](https://developers.google.com/authorized-buyers/apis/guides/list-filters)
   /// Supported columns for filtering are: * deal.displayName * deal.dealType *
   /// deal.createTime * deal.updateTime * deal.flightStartTime *
   /// deal.flightEndTime * dealServingStatus
@@ -1458,9 +1456,9 @@ class BuyersProposalsResource {
     return Proposal.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets a proposal using its name.
+  /// Gets a proposal using its resource name.
   ///
-  /// The proposal is returned at most recent revision. revision.
+  /// The proposal is returned at the latest revision.
   ///
   /// Request parameters:
   ///
@@ -1498,9 +1496,9 @@ class BuyersProposalsResource {
 
   /// Lists proposals.
   ///
-  /// A filter expression (list filter syntax) may be specified to filter the
-  /// results. This will not list finalized versions of proposals that are being
-  /// renegotiated; to retrieve these use the finalizedProposals resource.
+  /// A filter expression using
+  /// [Cloud API list filtering syntax](https://developers.google.com/authorized-buyers/apis/guides/list-filters)
+  /// may be specified to filter the results.
   ///
   /// Request parameters:
   ///
@@ -1509,7 +1507,7 @@ class BuyersProposalsResource {
   /// Value must have pattern `^buyers/\[^/\]+$`.
   ///
   /// [filter] - Optional query string using the
-  /// [Cloud API list filtering syntax](https://developers.google.com/authorized-buyers/apis/guides/v2/list-filters)
+  /// [Cloud API list filtering syntax](https://developers.google.com/authorized-buyers/apis/guides/list-filters)
   /// Supported columns for filtering are: * displayName * dealType * updateTime
   /// * state
   ///
@@ -1555,7 +1553,7 @@ class BuyersProposalsResource {
 
   /// Updates the proposal at the given revision number.
   ///
-  /// If the revision number in the request is behind the latest from the
+  /// If the revision number in the request is behind the latest one kept in the
   /// server, an error message will be returned. See FieldMask for how to use
   /// FieldMask. Only fields specified in the UpdateProposalRequest.update_mask
   /// will be updated; Fields noted as 'Immutable' or 'Output only' yet
@@ -1924,7 +1922,7 @@ class BuyersPublisherProfilesResource {
   /// Value must have pattern `^buyers/\[^/\]+$`.
   ///
   /// [filter] - Optional query string using the
-  /// [Cloud API list filtering](https://developers.google.com/authorized-buyers/apis/guides/v2/list-filters)
+  /// [Cloud API list filtering](https://developers.google.com/authorized-buyers/apis/guides/list-filters)
   /// syntax.
   ///
   /// [pageSize] - Requested page size. The server may return fewer results than
@@ -3995,6 +3993,8 @@ class ProgrammaticGuaranteedTerms {
   Price? fixedPrice;
 
   /// Count of guaranteed looks.
+  ///
+  /// For CPD deals, buyer changes to guaranteed_looks will be ignored.
   core.String? guaranteedLooks;
 
   /// The lifetime impression cap for CPM Sponsorship deals.
@@ -4003,6 +4003,9 @@ class ProgrammaticGuaranteedTerms {
   core.String? impressionCap;
 
   /// Daily minimum looks for CPD deal types.
+  ///
+  /// For CPD deals, buyer should negotiate on this field instead of
+  /// guaranteed_looks.
   core.String? minimumDailyLooks;
 
   /// For sponsorship deals, this is the percentage of the seller's eligible
@@ -4527,6 +4530,7 @@ class PublisherProfileMobileApplication {
   /// - "SAMSUNG" : Samsung Galaxy Store
   /// - "VIVO" : VIVO App Store
   /// - "XIAOMI" : Xiaomi GetApps
+  /// - "LG_TV" : LG TV
   core.String? appStore;
 
   /// The external ID for the app from its app store.

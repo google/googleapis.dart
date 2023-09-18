@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Google Workspace Alert Center API - v1beta1
@@ -25,7 +24,7 @@
 /// - [AlertsResource]
 ///   - [AlertsFeedbackResource]
 /// - [V1beta1Resource]
-library alertcenter.v1beta1;
+library alertcenter_v1beta1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -34,7 +33,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -154,8 +152,10 @@ class AlertsResource {
   /// [alertId] - Required. The identifier of the alert to delete.
   ///
   /// [customerId] - Optional. The unique identifier of the Google Workspace
-  /// organization account of the customer the alert is associated with.
-  /// Inferred from the caller identity if not provided.
+  /// account of the customer the alert is associated with. The `customer_id`
+  /// must have the initial "C" stripped (for example, `046psxkn`). Inferred
+  /// from the caller identity if not provided.
+  /// [Find your customer ID](https://support.google.com/cloudidentity/answer/10070793).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -196,8 +196,10 @@ class AlertsResource {
   /// [alertId] - Required. The identifier of the alert to retrieve.
   ///
   /// [customerId] - Optional. The unique identifier of the Google Workspace
-  /// organization account of the customer the alert is associated with.
-  /// Inferred from the caller identity if not provided.
+  /// account of the customer the alert is associated with. The `customer_id`
+  /// must have the initial "C" stripped (for example, `046psxkn`). Inferred
+  /// from the caller identity if not provided.
+  /// [Find your customer ID](https://support.google.com/cloudidentity/answer/10070793).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -240,8 +242,10 @@ class AlertsResource {
   /// to.
   ///
   /// [customerId] - Optional. The unique identifier of the Google Workspace
-  /// organization account of the customer the alert metadata is associated
-  /// with. Inferred from the caller identity if not provided.
+  /// account of the customer the alert metadata is associated with. The
+  /// `customer_id` must have the initial "C" stripped (for example,
+  /// `046psxkn`). Inferred from the caller identity if not provided.
+  /// [Find your customer ID](https://support.google.com/cloudidentity/answer/10070793).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -280,8 +284,10 @@ class AlertsResource {
   /// Request parameters:
   ///
   /// [customerId] - Optional. The unique identifier of the Google Workspace
-  /// organization account of the customer the alerts are associated with.
-  /// Inferred from the caller identity if not provided.
+  /// account of the customer the alerts are associated with. The `customer_id`
+  /// must have the initial "C" stripped (for example, `046psxkn`). Inferred
+  /// from the caller identity if not provided.
+  /// [Find your customer ID](https://support.google.com/cloudidentity/answer/10070793).
   ///
   /// [filter] - Optional. A query string for filtering alert results. For more
   /// details, see
@@ -407,8 +413,10 @@ class AlertsFeedbackResource {
   /// to.
   ///
   /// [customerId] - Optional. The unique identifier of the Google Workspace
-  /// organization account of the customer the alert is associated with.
-  /// Inferred from the caller identity if not provided.
+  /// account of the customer the alert is associated with. The `customer_id`
+  /// must have the initial "C" stripped (for example, `046psxkn`). Inferred
+  /// from the caller identity if not provided.
+  /// [Find your customer ID](https://support.google.com/cloudidentity/answer/10070793).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -456,8 +464,10 @@ class AlertsFeedbackResource {
   /// to represent all alerts.
   ///
   /// [customerId] - Optional. The unique identifier of the Google Workspace
-  /// organization account of the customer the alert feedback are associated
-  /// with. Inferred from the caller identity if not provided.
+  /// account of the customer the alert is associated with. The `customer_id`
+  /// must have the initial "C" stripped (for example, `046psxkn`). Inferred
+  /// from the caller identity if not provided.
+  /// [Find your customer ID](https://support.google.com/cloudidentity/answer/10070793).
   ///
   /// [filter] - Optional. A query string for filtering alert feedback results.
   /// For more details, see
@@ -510,8 +520,10 @@ class V1beta1Resource {
   /// Request parameters:
   ///
   /// [customerId] - Optional. The unique identifier of the Google Workspace
-  /// organization account of the customer the alert settings are associated
-  /// with. Inferred from the caller identity if not provided.
+  /// account of the customer the alert settings are associated with. The
+  /// `customer_id` must/ have the initial "C" stripped (for example,
+  /// `046psxkn`). Inferred from the caller identity if not provided.
+  /// [Find your customer ID](https://support.google.com/cloudidentity/answer/10070793).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -549,8 +561,10 @@ class V1beta1Resource {
   /// Request parameters:
   ///
   /// [customerId] - Optional. The unique identifier of the Google Workspace
-  /// organization account of the customer the alert settings are associated
-  /// with. Inferred from the caller identity if not provided.
+  /// account of the customer the alert settings are associated with. The
+  /// `customer_id` must have the initial "C" stripped (for example,
+  /// `046psxkn`). Inferred from the caller identity if not provided.
+  /// [Find your customer ID](https://support.google.com/cloudidentity/answer/10070793).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -597,7 +611,7 @@ class Alert {
   /// Output only.
   core.String? createTime;
 
-  /// The unique identifier of the Google account of the customer.
+  /// The unique identifier of the Google Workspace account of the customer.
   ///
   /// Output only.
   core.String? customerId;
@@ -766,7 +780,7 @@ class AlertFeedback {
   /// Output only.
   core.String? createTime;
 
-  /// The unique identifier of the Google account of the customer.
+  /// The unique identifier of the Google Workspace account of the customer.
   ///
   /// Output only.
   core.String? customerId;
@@ -839,7 +853,7 @@ class AlertMetadata {
   /// The email address of the user assigned to the alert.
   core.String? assignee;
 
-  /// The unique identifier of the Google account of the customer.
+  /// The unique identifier of the Google Workspace account of the customer.
   ///
   /// Output only.
   core.String? customerId;
@@ -922,11 +936,48 @@ class AlertMetadata {
 }
 
 /// A request to perform batch delete on alerts.
-typedef BatchDeleteAlertsRequest = $AlertsRequest;
+class BatchDeleteAlertsRequest {
+  /// The list of alert IDs to delete.
+  ///
+  /// Required.
+  core.List<core.String>? alertId;
+
+  /// The unique identifier of the Google Workspace account of the customer the
+  /// alerts are associated with.
+  ///
+  /// The `customer_id` must have the initial "C" stripped (for example,
+  /// `046psxkn`). Inferred from the caller identity if not provided.
+  /// [Find your customer ID](https://support.google.com/cloudidentity/answer/10070793).
+  ///
+  /// Optional.
+  core.String? customerId;
+
+  BatchDeleteAlertsRequest({
+    this.alertId,
+    this.customerId,
+  });
+
+  BatchDeleteAlertsRequest.fromJson(core.Map json_)
+      : this(
+          alertId: json_.containsKey('alertId')
+              ? (json_['alertId'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          customerId: json_.containsKey('customerId')
+              ? json_['customerId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (alertId != null) 'alertId': alertId!,
+        if (customerId != null) 'customerId': customerId!,
+      };
+}
 
 /// Response to batch delete operation on alerts.
 class BatchDeleteAlertsResponse {
-  /// The status details for each failed alert_id.
+  /// The status details for each failed `alert_id`.
   core.Map<core.String, Status>? failedAlertStatus;
 
   /// The successful list of alert IDs.
@@ -943,10 +994,10 @@ class BatchDeleteAlertsResponse {
               ? (json_['failedAlertStatus']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     Status.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -964,11 +1015,48 @@ class BatchDeleteAlertsResponse {
 }
 
 /// A request to perform batch undelete on alerts.
-typedef BatchUndeleteAlertsRequest = $AlertsRequest;
+class BatchUndeleteAlertsRequest {
+  /// The list of alert IDs to undelete.
+  ///
+  /// Required.
+  core.List<core.String>? alertId;
+
+  /// The unique identifier of the Google Workspace account of the customer the
+  /// alerts are associated with.
+  ///
+  /// The `customer_id` must have the initial "C" stripped (for example,
+  /// `046psxkn`). Inferred from the caller identity if not provided.
+  /// [Find your customer ID](https://support.google.com/cloudidentity/answer/10070793).
+  ///
+  /// Optional.
+  core.String? customerId;
+
+  BatchUndeleteAlertsRequest({
+    this.alertId,
+    this.customerId,
+  });
+
+  BatchUndeleteAlertsRequest.fromJson(core.Map json_)
+      : this(
+          alertId: json_.containsKey('alertId')
+              ? (json_['alertId'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          customerId: json_.containsKey('customerId')
+              ? json_['customerId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (alertId != null) 'alertId': alertId!,
+        if (customerId != null) 'customerId': customerId!,
+      };
+}
 
 /// Response to batch undelete operation on alerts.
 class BatchUndeleteAlertsResponse {
-  /// The status details for each failed alert_id.
+  /// The status details for each failed `alert_id`.
   core.Map<core.String, Status>? failedAlertStatus;
 
   /// The successful list of alert IDs.
@@ -985,10 +1073,10 @@ class BatchUndeleteAlertsResponse {
               ? (json_['failedAlertStatus']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     Status.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -1177,10 +1265,12 @@ typedef Status = $Status;
 
 /// A request to undelete a specific alert that was marked for deletion.
 class UndeleteAlertRequest {
-  /// The unique identifier of the Google Workspace organization account of the
-  /// customer the alert is associated with.
+  /// The unique identifier of the Google Workspace account of the customer the
+  /// alert is associated with.
   ///
-  /// Inferred from the caller identity if not provided.
+  /// The `customer_id` must have the initial "C" stripped (for example,
+  /// `046psxkn`). Inferred from the caller identity if not provided.
+  /// [Find your customer ID](https://support.google.com/cloudidentity/answer/10070793).
   ///
   /// Optional.
   core.String? customerId;

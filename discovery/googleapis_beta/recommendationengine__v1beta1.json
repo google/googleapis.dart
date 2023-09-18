@@ -24,6 +24,13 @@
     "name": "recommendationengine",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230727",
+    "rootUrl": "https://recommendationengine.googleapis.com/",
+    "servicePath": "",
+    "title": "Recommendations AI (Beta)",
+    "version": "v1beta1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "projects": {
             "resources": {
@@ -396,7 +402,7 @@
                                                     ]
                                                 },
                                                 "list": {
-                                                    "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
+                                                    "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.",
                                                     "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/eventStores/{eventStoresId}/operations",
                                                     "httpMethod": "GET",
                                                     "id": "recommendationengine.projects.locations.catalogs.eventStores.operations.list",
@@ -790,7 +796,7 @@
                                             ]
                                         },
                                         "list": {
-                                            "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
+                                            "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.",
                                             "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/operations",
                                             "httpMethod": "GET",
                                             "id": "recommendationengine.projects.locations.catalogs.operations.list",
@@ -839,8 +845,6 @@
             }
         }
     },
-    "revision": "20220908",
-    "rootUrl": "https://recommendationengine.googleapis.com/",
     "schemas": {
         "GoogleApiHttpBody": {
             "description": "Message that represents an arbitrary HTTP body. It should only be used for payload formats that can't be represented as JSON, such as raw binary or an HTML page. This message can be used both in streaming and non-streaming API methods in the request as well as the response. It can be used as a top-level request field, which is convenient if one wants to extract parameters from either the URL or HTTP template into the request fields and also want access to the raw HTTP body. Example: message GetResourceRequest { // A unique request id. string request_id = 1; // The raw HTTP body is bound to this field. google.api.HttpBody http_body = 2; } service ResourceService { rpc GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); } Example with streaming methods: service CaldavService { rpc GetCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); rpc UpdateCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); } Use of this type only changes how the request and response bodies are handled, all other features will continue to work unchanged.",
@@ -2038,9 +2042,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Recommendations AI (Beta)",
-    "version": "v1beta1",
-    "version_module": true
+    }
 }

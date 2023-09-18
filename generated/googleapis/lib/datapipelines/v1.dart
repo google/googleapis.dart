@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Data pipelines API - v1
@@ -26,7 +25,7 @@
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsPipelinesResource]
 ///       - [ProjectsLocationsPipelinesJobsResource]
-library datapipelines.v1;
+library datapipelines_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -35,7 +34,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -77,71 +75,6 @@ class ProjectsLocationsResource {
       ProjectsLocationsPipelinesResource(_requester);
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
-
-  /// Lists pipelines.
-  ///
-  /// Returns a "FORBIDDEN" error if the caller doesn't have permission to
-  /// access it.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. The location name. For example:
-  /// `projects/PROJECT_ID/locations/LOCATION_ID`.
-  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
-  ///
-  /// [filter] - An expression for filtering the results of the request. If
-  /// unspecified, all pipelines will be returned. Multiple filters can be
-  /// applied and must be comma separated. Fields eligible for filtering are: +
-  /// `type`: The type of the pipeline (streaming or batch). Allowed values are
-  /// `ALL`, `BATCH`, and `STREAMING`. + `status`: The activity status of the
-  /// pipeline. Allowed values are `ALL`, `ACTIVE`, `ARCHIVED`, and `PAUSED`.
-  /// For example, to limit results to active batch processing pipelines:
-  /// type:BATCH,status:ACTIVE
-  ///
-  /// [pageSize] - The maximum number of entities to return. The service may
-  /// return fewer than this value, even if there are additional pages. If
-  /// unspecified, the max limit is yet to be determined by the backend
-  /// implementation.
-  ///
-  /// [pageToken] - A page token, received from a previous `ListPipelines` call.
-  /// Provide this to retrieve the subsequent page. When paginating, all other
-  /// parameters provided to `ListPipelines` must match the call that provided
-  /// the page token.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleCloudDatapipelinesV1ListPipelinesResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleCloudDatapipelinesV1ListPipelinesResponse> listPipelines(
-    core.String parent, {
-    core.String? filter,
-    core.int? pageSize,
-    core.String? pageToken,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$parent');
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return GoogleCloudDatapipelinesV1ListPipelinesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
 }
 
 class ProjectsLocationsPipelinesResource {
@@ -278,6 +211,71 @@ class ProjectsLocationsPipelinesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDatapipelinesV1Pipeline.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists pipelines.
+  ///
+  /// Returns a "FORBIDDEN" error if the caller doesn't have permission to
+  /// access it.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The location name. For example:
+  /// `projects/PROJECT_ID/locations/LOCATION_ID`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - An expression for filtering the results of the request. If
+  /// unspecified, all pipelines will be returned. Multiple filters can be
+  /// applied and must be comma separated. Fields eligible for filtering are: +
+  /// `type`: The type of the pipeline (streaming or batch). Allowed values are
+  /// `ALL`, `BATCH`, and `STREAMING`. + `status`: The activity status of the
+  /// pipeline. Allowed values are `ALL`, `ACTIVE`, `ARCHIVED`, and `PAUSED`.
+  /// For example, to limit results to active batch processing pipelines:
+  /// type:BATCH,status:ACTIVE
+  ///
+  /// [pageSize] - The maximum number of entities to return. The service may
+  /// return fewer than this value, even if there are additional pages. If
+  /// unspecified, the max limit is yet to be determined by the backend
+  /// implementation.
+  ///
+  /// [pageToken] - A page token, received from a previous `ListPipelines` call.
+  /// Provide this to retrieve the subsequent page. When paginating, all other
+  /// parameters provided to `ListPipelines` must match the call that provided
+  /// the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDatapipelinesV1ListPipelinesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDatapipelinesV1ListPipelinesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/pipelines';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDatapipelinesV1ListPipelinesResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 
@@ -539,9 +537,9 @@ class GoogleCloudDatapipelinesV1DataflowJobDetails {
           resourceInfo: json_.containsKey('resourceInfo')
               ? (json_['resourceInfo'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    (item as core.num).toDouble(),
+                    (value as core.num).toDouble(),
                   ),
                 )
               : null,
@@ -685,9 +683,9 @@ class GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironment {
               ? (json_['additionalUserLabels']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -911,18 +909,18 @@ class GoogleCloudDatapipelinesV1LaunchFlexTemplateParameter {
           launchOptions: json_.containsKey('launchOptions')
               ? (json_['launchOptions'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
           parameters: json_.containsKey('parameters')
               ? (json_['parameters'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -930,9 +928,9 @@ class GoogleCloudDatapipelinesV1LaunchFlexTemplateParameter {
               ? (json_['transformNameMappings']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -1055,9 +1053,9 @@ class GoogleCloudDatapipelinesV1LaunchTemplateParameters {
           parameters: json_.containsKey('parameters')
               ? (json_['parameters'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -1065,9 +1063,9 @@ class GoogleCloudDatapipelinesV1LaunchTemplateParameters {
               ? (json_['transformNameMapping']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -1368,9 +1366,9 @@ class GoogleCloudDatapipelinesV1Pipeline {
               ? (json_['pipelineSources']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -1554,9 +1552,9 @@ class GoogleCloudDatapipelinesV1RuntimeEnvironment {
               ? (json_['additionalUserLabels']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,

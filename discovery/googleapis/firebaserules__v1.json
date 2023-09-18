@@ -30,6 +30,13 @@
     "name": "firebaserules",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230710",
+    "rootUrl": "https://firebaserules.googleapis.com/",
+    "servicePath": "",
+    "title": "Firebase Rules API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -107,7 +114,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "projects": {
             "methods": {
@@ -475,8 +481,6 @@
             }
         }
     },
-    "revision": "20220904",
-    "rootUrl": "https://firebaserules.googleapis.com/",
     "schemas": {
         "Arg": {
             "description": "Arg matchers for the mock function.",
@@ -1049,9 +1053,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Firebase Rules API",
-    "version": "v1",
-    "version_module": true
+    }
 }

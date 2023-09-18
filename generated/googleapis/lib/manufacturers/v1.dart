@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Manufacturer Center API - v1
@@ -21,8 +20,10 @@
 /// Create an instance of [ManufacturerCenterApi] to access these resources:
 ///
 /// - [AccountsResource]
+///   - [AccountsLanguagesResource]
+///     - [AccountsLanguagesProductCertificationsResource]
 ///   - [AccountsProductsResource]
-library manufacturers.v1;
+library manufacturers_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -31,7 +32,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -58,9 +58,219 @@ class ManufacturerCenterApi {
 class AccountsResource {
   final commons.ApiRequester _requester;
 
+  AccountsLanguagesResource get languages =>
+      AccountsLanguagesResource(_requester);
   AccountsProductsResource get products => AccountsProductsResource(_requester);
 
   AccountsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class AccountsLanguagesResource {
+  final commons.ApiRequester _requester;
+
+  AccountsLanguagesProductCertificationsResource get productCertifications =>
+      AccountsLanguagesProductCertificationsResource(_requester);
+
+  AccountsLanguagesResource(commons.ApiRequester client) : _requester = client;
+}
+
+class AccountsLanguagesProductCertificationsResource {
+  final commons.ApiRequester _requester;
+
+  AccountsLanguagesProductCertificationsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Deletes a product certification by its name.
+  ///
+  /// This method can only be called by certification bodies.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the product certification to delete.
+  /// Format:
+  /// accounts/{account}/languages/{language_code}/productCertifications/{id}
+  /// Value must have pattern
+  /// `^accounts/\[^/\]+/languages/\[^/\]+/productCertifications/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a product certification by its name.
+  ///
+  /// This method can only be called by certification bodies.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the product certification to get. Format:
+  /// accounts/{account}/languages/{language_code}/productCertifications/{id}
+  /// Value must have pattern
+  /// `^accounts/\[^/\]+/languages/\[^/\]+/productCertifications/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ProductCertification].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ProductCertification> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ProductCertification.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists product certifications from a specified certification body.
+  ///
+  /// This method can only be called by certification bodies.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent, which owns this collection of product
+  /// certifications. Format: accounts/{account}/languages/{language_code}
+  /// Value must have pattern `^accounts/\[^/\]+/languages/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of product certifications to
+  /// return. The service may return fewer than this value. If unspecified, at
+  /// most 50 product certifications will be returned. The maximum value is
+  /// 1000; values above 1000 will be coerced to 1000.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListProductCertifications` call. Provide this to retrieve the subsequent
+  /// page. When paginating, all other parameters provided to
+  /// `ListProductCertifications` must match the call that provided the page
+  /// token. Required if requesting the second or higher page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListProductCertificationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListProductCertificationsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/productCertifications';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListProductCertificationsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates (or creates if allow_missing = true) a product certification which
+  /// links certifications with products.
+  ///
+  /// This method can only be called by certification bodies.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The unique name identifier of a product certification
+  /// Format:
+  /// accounts/{account}/languages/{language_code}/productCertifications/{id}
+  /// Where `id` is a some unique identifier and `language_code` is a 2-letter
+  /// ISO 639-1 code of a Shopping supported language according to
+  /// https://support.google.com/merchants/answer/160637.
+  /// Value must have pattern
+  /// `^accounts/\[^/\]+/languages/\[^/\]+/productCertifications/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. The list of fields to update according to
+  /// aip.dev/134. However, only full update is supported as of right now.
+  /// Therefore, it can be either ignored or set to "*". Setting any other
+  /// values will returns UNIMPLEMENTED error.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ProductCertification].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ProductCertification> patch(
+    ProductCertification request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return ProductCertification.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class AccountsProductsResource {
@@ -537,6 +747,9 @@ class Attributes {
   /// https://support.google.com/manufacturers/answer/6124116#video.
   core.List<core.String>? videoLink;
 
+  /// Virtual Model (3d) asset link.
+  core.String? virtualModelLink;
+
   Attributes({
     this.additionalImageLink,
     this.ageGroup,
@@ -577,6 +790,7 @@ class Attributes {
     this.theme,
     this.title,
     this.videoLink,
+    this.virtualModelLink,
   });
 
   Attributes.fromJson(core.Map json_)
@@ -720,6 +934,9 @@ class Attributes {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          virtualModelLink: json_.containsKey('virtualModelLink')
+              ? json_['virtualModelLink'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -768,6 +985,7 @@ class Attributes {
         if (theme != null) 'theme': theme!,
         if (title != null) 'title': title!,
         if (videoLink != null) 'videoLink': videoLink!,
+        if (virtualModelLink != null) 'virtualModelLink': virtualModelLink!,
       };
 }
 
@@ -796,6 +1014,72 @@ class Capacity {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (unit != null) 'unit': unit!,
+        if (value != null) 'value': value!,
+      };
+}
+
+/// Description of a certification.
+class Certification {
+  /// Name of the certification body.
+  ///
+  /// Required.
+  core.String? authority;
+
+  /// A URL link to the certification.
+  ///
+  /// Optional.
+  core.String? link;
+
+  /// A URL link to the certification logo.
+  ///
+  /// Optional.
+  core.String? logo;
+
+  /// Name of the certification.
+  ///
+  /// Required.
+  core.String? name;
+
+  /// The expiration date (UTC).
+  ///
+  /// Optional.
+  core.String? validUntil;
+
+  /// A custom value of the certification.
+  ///
+  /// Required.
+  core.String? value;
+
+  Certification({
+    this.authority,
+    this.link,
+    this.logo,
+    this.name,
+    this.validUntil,
+    this.value,
+  });
+
+  Certification.fromJson(core.Map json_)
+      : this(
+          authority: json_.containsKey('authority')
+              ? json_['authority'] as core.String
+              : null,
+          link: json_.containsKey('link') ? json_['link'] as core.String : null,
+          logo: json_.containsKey('logo') ? json_['logo'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          validUntil: json_.containsKey('validUntil')
+              ? json_['validUntil'] as core.String
+              : null,
+          value:
+              json_.containsKey('value') ? json_['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (authority != null) 'authority': authority!,
+        if (link != null) 'link': link!,
+        if (logo != null) 'logo': logo!,
+        if (name != null) 'name': name!,
+        if (validUntil != null) 'validUntil': validUntil!,
         if (value != null) 'value': value!,
       };
 }
@@ -1184,6 +1468,41 @@ class Issue {
         if (timestamp != null) 'timestamp': timestamp!,
         if (title != null) 'title': title!,
         if (type != null) 'type': type!,
+      };
+}
+
+/// Response for ListProductCertifications method.
+class ListProductCertificationsResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// The product certifications from the specified certification body.
+  core.List<ProductCertification>? productCertifications;
+
+  ListProductCertificationsResponse({
+    this.nextPageToken,
+    this.productCertifications,
+  });
+
+  ListProductCertificationsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          productCertifications: json_.containsKey('productCertifications')
+              ? (json_['productCertifications'] as core.List)
+                  .map((value) => ProductCertification.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (productCertifications != null)
+          'productCertifications': productCertifications!,
       };
 }
 
@@ -1758,6 +2077,142 @@ class Product {
         if (parent != null) 'parent': parent!,
         if (productId != null) 'productId': productId!,
         if (targetCountry != null) 'targetCountry': targetCountry!,
+      };
+}
+
+/// Product certification data.
+class ProductCertification {
+  /// This is the product's brand name.
+  ///
+  /// The brand is used to help identify your product.
+  ///
+  /// Required.
+  core.String? brand;
+
+  /// A list of certifications to link to the described product.
+  ///
+  /// Required.
+  core.List<Certification>? certification;
+
+  /// A 2-letter country code (ISO 3166-1 Alpha 2).
+  ///
+  /// Optional.
+  core.List<core.String>? countryCode;
+
+  /// The statuses of the destinations.
+  ///
+  /// Output only.
+  core.List<DestinationStatus>? destinationStatuses;
+
+  /// A server-generated list of issues associated with the product.
+  ///
+  /// Output only.
+  core.List<Issue>? issues;
+
+  /// These are the Manufacturer Part Numbers (MPN).
+  ///
+  /// MPNs are used to uniquely identify a specific product among all products
+  /// from the same manufacturer
+  ///
+  /// Optional.
+  core.List<core.String>? mpn;
+
+  /// The unique name identifier of a product certification Format:
+  /// accounts/{account}/languages/{language_code}/productCertifications/{id}
+  /// Where `id` is a some unique identifier and `language_code` is a 2-letter
+  /// ISO 639-1 code of a Shopping supported language according to
+  /// https://support.google.com/merchants/answer/160637.
+  ///
+  /// Required.
+  core.String? name;
+
+  /// Another name for GTIN.
+  ///
+  /// Optional.
+  core.List<core.String>? productCode;
+
+  /// These are your own product categorization system in your product data.
+  ///
+  /// Optional.
+  core.List<core.String>? productType;
+
+  /// This is to clearly identify the product you are certifying.
+  ///
+  /// Required.
+  core.String? title;
+
+  ProductCertification({
+    this.brand,
+    this.certification,
+    this.countryCode,
+    this.destinationStatuses,
+    this.issues,
+    this.mpn,
+    this.name,
+    this.productCode,
+    this.productType,
+    this.title,
+  });
+
+  ProductCertification.fromJson(core.Map json_)
+      : this(
+          brand:
+              json_.containsKey('brand') ? json_['brand'] as core.String : null,
+          certification: json_.containsKey('certification')
+              ? (json_['certification'] as core.List)
+                  .map((value) => Certification.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          countryCode: json_.containsKey('countryCode')
+              ? (json_['countryCode'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          destinationStatuses: json_.containsKey('destinationStatuses')
+              ? (json_['destinationStatuses'] as core.List)
+                  .map((value) => DestinationStatus.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          issues: json_.containsKey('issues')
+              ? (json_['issues'] as core.List)
+                  .map((value) => Issue.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          mpn: json_.containsKey('mpn')
+              ? (json_['mpn'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          productCode: json_.containsKey('productCode')
+              ? (json_['productCode'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          productType: json_.containsKey('productType')
+              ? (json_['productType'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          title:
+              json_.containsKey('title') ? json_['title'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (brand != null) 'brand': brand!,
+        if (certification != null) 'certification': certification!,
+        if (countryCode != null) 'countryCode': countryCode!,
+        if (destinationStatuses != null)
+          'destinationStatuses': destinationStatuses!,
+        if (issues != null) 'issues': issues!,
+        if (mpn != null) 'mpn': mpn!,
+        if (name != null) 'name': name!,
+        if (productCode != null) 'productCode': productCode!,
+        if (productType != null) 'productType': productType!,
+        if (title != null) 'title': title!,
       };
 }
 

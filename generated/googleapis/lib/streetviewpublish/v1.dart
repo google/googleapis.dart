@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Street View Publish API - v1
@@ -27,7 +26,7 @@
 /// - [PhotoSequenceResource]
 /// - [PhotoSequencesResource]
 /// - [PhotosResource]
-library streetviewpublish.v1;
+library streetviewpublish_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -36,7 +35,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -289,7 +287,7 @@ class PhotoResource {
   /// with the new Photo metadata in this request. The update fails if invalid
   /// fields are specified. Multiple fields can be specified in a
   /// comma-delimited list. The following fields are valid: * `pose.heading` *
-  /// `pose.latLngPair` * `pose.pitch` * `pose.roll` * `pose.level` *
+  /// `pose.lat_lng_pair` * `pose.pitch` * `pose.roll` * `pose.level` *
   /// `pose.altitude` * `connections` * `places` \> Note: When updateMask
   /// contains repeated fields, the entire set of repeated values get replaced
   /// with the new contents. For example, if updateMask contains `connections`
@@ -542,12 +540,13 @@ class PhotoSequencesResource {
   /// Request parameters:
   ///
   /// [filter] - Optional. The filter expression. For example:
-  /// `imagery_type=SPHERICAL`. The filters supported are: `imagery_type`,
-  /// `processing_state`, `min_latitude`, `max_latitude`, `min_longitude`,
-  /// `max_longitude`, and `filename_query`. See https://google.aip.dev/160 for
-  /// more information. Filename queries should sent as a Phrase in order to
-  /// support multple words and special characters by adding escaped quotes. Ex:
-  /// filename_query="example of a phrase.mp4"
+  /// \`imagery_type=SPHERICAL\`. The filters supported are: \`imagery_type\`,
+  /// \`processing_state\`, \`min_latitude\`, \`max_latitude\`,
+  /// \`min_longitude\`, \`max_longitude\`, \`filename_query\`,
+  /// \`min_capture_time_seconds\`, \`max_capture_time_seconds. See
+  /// https://google.aip.dev/160 for more information. Filename queries should
+  /// sent as a Phrase in order to support multiple words and special characters
+  /// by adding escaped quotes. Ex: filename_query="example of a phrase.mp4"
   ///
   /// [pageSize] - Optional. The maximum number of photo sequences to return.
   /// `pageSize` must be non-negative. If `pageSize` is zero or is not provided,
@@ -763,7 +762,7 @@ class PhotosResource {
   ///
   /// [filter] - Optional. The filter expression. For example:
   /// `placeId=ChIJj61dQgK6j4AR4GeTYWZsKWw`. The filters supported are:
-  /// `placeId`, `min_latitude`, `max_latitude`, `min_longitude`, and
+  /// `placeId`, `min_latitude`, `max_latitude`, `min_longitude`,
   /// `max_longitude`. See https://google.aip.dev/160 for more information.
   ///
   /// [languageCode] - Optional. The BCP-47 language code, such as "en-US" or
@@ -1324,6 +1323,51 @@ class Measurement3d {
       };
 }
 
+/// Details related to PhotoSequenceProcessingFailureReason#NO_OVERLAP_GPS.
+class NoOverlapGpsFailureDetails {
+  /// Time of last recorded GPS point.
+  core.String? gpsEndTime;
+
+  /// Time of first recorded GPS point.
+  core.String? gpsStartTime;
+
+  /// End time of video.
+  core.String? videoEndTime;
+
+  /// Start time of video.
+  core.String? videoStartTime;
+
+  NoOverlapGpsFailureDetails({
+    this.gpsEndTime,
+    this.gpsStartTime,
+    this.videoEndTime,
+    this.videoStartTime,
+  });
+
+  NoOverlapGpsFailureDetails.fromJson(core.Map json_)
+      : this(
+          gpsEndTime: json_.containsKey('gpsEndTime')
+              ? json_['gpsEndTime'] as core.String
+              : null,
+          gpsStartTime: json_.containsKey('gpsStartTime')
+              ? json_['gpsStartTime'] as core.String
+              : null,
+          videoEndTime: json_.containsKey('videoEndTime')
+              ? json_['videoEndTime'] as core.String
+              : null,
+          videoStartTime: json_.containsKey('videoStartTime')
+              ? json_['videoStartTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gpsEndTime != null) 'gpsEndTime': gpsEndTime!,
+        if (gpsStartTime != null) 'gpsStartTime': gpsStartTime!,
+        if (videoEndTime != null) 'videoEndTime': videoEndTime!,
+        if (videoStartTime != null) 'videoStartTime': videoStartTime!,
+      };
+}
+
 /// Details related to ProcessingFailureReason#NOT_OUTDOORS.
 ///
 /// If there are multiple indoor frames found, the first frame is recorded here.
@@ -1378,7 +1422,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -1718,6 +1762,7 @@ class PhotoSequence {
   /// - "UNSUPPORTED_CAMERA" : The camera is not supported.
   /// - "NOT_OUTDOORS" : Some frames were indoors, which is unsupported.
   /// - "INSUFFICIENT_VIDEO_FRAMES" : Not enough video frames.
+  /// - "INSUFFICIENT_MOVEMENT" : Not enough moving data.
   core.String? failureReason;
 
   /// The filename of the upload.
@@ -2067,6 +2112,9 @@ class ProcessingFailureDetails {
   /// See InsufficientGpsFailureDetails.
   InsufficientGpsFailureDetails? insufficientGpsDetails;
 
+  /// See NoOverlapGpsFailureDetails.
+  NoOverlapGpsFailureDetails? noOverlapGpsDetails;
+
   /// See NotOutdoorsFailureDetails.
   NotOutdoorsFailureDetails? notOutdoorsDetails;
 
@@ -2074,6 +2122,7 @@ class ProcessingFailureDetails {
     this.gpsDataGapDetails,
     this.imuDataGapDetails,
     this.insufficientGpsDetails,
+    this.noOverlapGpsDetails,
     this.notOutdoorsDetails,
   });
 
@@ -2092,6 +2141,10 @@ class ProcessingFailureDetails {
                   json_['insufficientGpsDetails']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          noOverlapGpsDetails: json_.containsKey('noOverlapGpsDetails')
+              ? NoOverlapGpsFailureDetails.fromJson(json_['noOverlapGpsDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           notOutdoorsDetails: json_.containsKey('notOutdoorsDetails')
               ? NotOutdoorsFailureDetails.fromJson(json_['notOutdoorsDetails']
                   as core.Map<core.String, core.dynamic>)
@@ -2103,6 +2156,8 @@ class ProcessingFailureDetails {
         if (imuDataGapDetails != null) 'imuDataGapDetails': imuDataGapDetails!,
         if (insufficientGpsDetails != null)
           'insufficientGpsDetails': insufficientGpsDetails!,
+        if (noOverlapGpsDetails != null)
+          'noOverlapGpsDetails': noOverlapGpsDetails!,
         if (notOutdoorsDetails != null)
           'notOutdoorsDetails': notOutdoorsDetails!,
       };
@@ -2131,7 +2186,7 @@ class UpdatePhotoRequest {
   /// If not present, the old Photo metadata is entirely replaced with the new
   /// Photo metadata in this request. The update fails if invalid fields are
   /// specified. Multiple fields can be specified in a comma-delimited list. The
-  /// following fields are valid: * `pose.heading` * `pose.latLngPair` *
+  /// following fields are valid: * `pose.heading` * `pose.lat_lng_pair` *
   /// `pose.pitch` * `pose.roll` * `pose.level` * `pose.altitude` *
   /// `connections` * `places` \> Note: When updateMask contains repeated
   /// fields, the entire set of repeated values get replaced with the new

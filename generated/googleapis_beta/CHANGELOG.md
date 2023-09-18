@@ -1,6 +1,7 @@
-## 8.1.0-dev
+## 8.1.0-wip
 
-- Require Dart 2.17 or later.
+- Require Dart 3.0 or later.
+- Allow latest `package:http`.
 
 ## 8.0.0
 

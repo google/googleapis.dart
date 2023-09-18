@@ -2,19 +2,20 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Google Play Android Developer API - v3
 ///
-/// Lets Android application developers access their Google Play accounts.
+/// Lets Android application developers access their Google Play accounts. At a
+/// high level, the expected workflow is to "insert" an Edit, make changes as
+/// necessary, and then "commit" it.
 ///
 /// For more information, see <https://developers.google.com/android-publisher>
 ///
@@ -33,6 +34,7 @@
 ///   - [EditsListingsResource]
 ///   - [EditsTestersResource]
 ///   - [EditsTracksResource]
+/// - [ExternaltransactionsResource]
 /// - [GeneratedapksResource]
 /// - [GrantsResource]
 /// - [InappproductsResource]
@@ -51,7 +53,7 @@
 /// - [SystemapksResource]
 ///   - [SystemapksVariantsResource]
 /// - [UsersResource]
-library androidpublisher.v3;
+library androidpublisher_v3;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -60,22 +62,24 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show
         ApiRequestError,
+        ByteRange,
         DetailedApiRequestError,
-        Media,
-        UploadOptions,
-        ResumableUploadOptions,
         DownloadOptions,
+        Media,
         PartialDownloadOptions,
-        ByteRange;
+        ResumableUploadOptions,
+        UploadOptions;
 
 /// Lets Android application developers access their Google Play accounts.
+///
+/// At a high level, the expected workflow is to "insert" an Edit, make changes
+/// as necessary, and then "commit" it.
 class AndroidPublisherApi {
   /// View and manage your Google Play Developer account
   static const androidpublisherScope =
@@ -85,6 +89,8 @@ class AndroidPublisherApi {
 
   ApplicationsResource get applications => ApplicationsResource(_requester);
   EditsResource get edits => EditsResource(_requester);
+  ExternaltransactionsResource get externaltransactions =>
+      ExternaltransactionsResource(_requester);
   GeneratedapksResource get generatedapks => GeneratedapksResource(_requester);
   GrantsResource get grants => GrantsResource(_requester);
   InappproductsResource get inappproducts => InappproductsResource(_requester);
@@ -2108,6 +2114,7 @@ class EditsTracksResource {
   /// [editId] - Identifier of the edit.
   ///
   /// [track] - Identifier of the track.
+  /// [More on track name](https://developers.google.com/android-publisher/tracks#ff-track-name)
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2197,6 +2204,7 @@ class EditsTracksResource {
   /// [editId] - Identifier of the edit.
   ///
   /// [track] - Identifier of the track.
+  /// [More on track name](https://developers.google.com/android-publisher/tracks#ff-track-name)
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2247,6 +2255,7 @@ class EditsTracksResource {
   /// [editId] - Identifier of the edit.
   ///
   /// [track] - Identifier of the track.
+  /// [More on track name](https://developers.google.com/android-publisher/tracks#ff-track-name)
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2284,6 +2293,151 @@ class EditsTracksResource {
       queryParams: queryParams_,
     );
     return Track.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ExternaltransactionsResource {
+  final commons.ApiRequester _requester;
+
+  ExternaltransactionsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new external transaction.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource where this external transaction
+  /// will be created. Format: applications/{package_name}
+  /// Value must have pattern `^applications/\[^/\]+$`.
+  ///
+  /// [externalTransactionId] - Required. The id to use for the external
+  /// transaction. Must be unique across all other transactions for the app.
+  /// This value should be 1-63 characters and valid characters are /a-z0-9_-/.
+  /// Do not use this field to store any Personally Identifiable Information
+  /// (PII) such as emails. Attempting to store PII in this field may result in
+  /// requests being blocked.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ExternalTransaction].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ExternalTransaction> createexternaltransaction(
+    ExternalTransaction request,
+    core.String parent, {
+    core.String? externalTransactionId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (externalTransactionId != null)
+        'externalTransactionId': [externalTransactionId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'androidpublisher/v3/' +
+        core.Uri.encodeFull('$parent') +
+        '/externalTransactions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return ExternalTransaction.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets an existing external transaction.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the external transaction to retrieve.
+  /// Format:
+  /// applications/{package_name}/externalTransactions/{external_transaction}
+  /// Value must have pattern
+  /// `^applications/\[^/\]+/externalTransactions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ExternalTransaction].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ExternalTransaction> getexternaltransaction(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'androidpublisher/v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ExternalTransaction.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Refunds or partially refunds an existing external transaction.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the external transaction that will be
+  /// refunded. Format:
+  /// applications/{package_name}/externalTransactions/{external_transaction}
+  /// Value must have pattern
+  /// `^applications/\[^/\]+/externalTransactions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ExternalTransaction].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ExternalTransaction> refundexternaltransaction(
+    RefundExternalTransactionRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'androidpublisher/v3/' + core.Uri.encodeFull('$name') + ':refund';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return ExternalTransaction.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2526,7 +2680,11 @@ class InappproductsResource {
 
   InappproductsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Deletes an in-app product (i.e. a managed product or a subscriptions).
+  /// Deletes an in-app product (a managed product or a subscription).
+  ///
+  /// This method should no longer be used to delete subscriptions. See
+  /// [this article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html)
+  /// for more information.
   ///
   /// Request parameters:
   ///
@@ -2565,6 +2723,10 @@ class InappproductsResource {
   }
 
   /// Gets an in-app product, which can be a managed product or a subscription.
+  ///
+  /// This method should no longer be used to retrieve subscriptions. See
+  /// [this article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html)
+  /// for more information.
   ///
   /// Request parameters:
   ///
@@ -2605,7 +2767,11 @@ class InappproductsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Creates an in-app product (i.e. a managed product or a subscriptions).
+  /// Creates an in-app product (a managed product or a subscription).
+  ///
+  /// This method should no longer be used to create subscriptions. See
+  /// [this article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html)
+  /// for more information.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2660,7 +2826,10 @@ class InappproductsResource {
   /// If an app has a large number of in-app products, the response may be
   /// paginated. In this case the response field `tokenPagination.nextPageToken`
   /// will be set and the caller should provide its value as a `token` request
-  /// parameter to retrieve the next page.
+  /// parameter to retrieve the next page. This method should no longer be used
+  /// to retrieve subscriptions. See
+  /// [this article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html)
+  /// for more information.
   ///
   /// Request parameters:
   ///
@@ -2670,7 +2839,7 @@ class InappproductsResource {
   /// server.
   ///
   /// [startIndex] - Deprecated and ignored. Set the `token` parameter to
-  /// rertieve the next page.
+  /// retrieve the next page.
   ///
   /// [token] - Pagination token. If empty, list starts at the first product.
   ///
@@ -2711,7 +2880,11 @@ class InappproductsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Patches an in-app product (i.e. a managed product or a subscriptions).
+  /// Patches an in-app product (a managed product or a subscription).
+  ///
+  /// This method should no longer be used to update subscriptions. See
+  /// [this article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html)
+  /// for more information.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2765,7 +2938,11 @@ class InappproductsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates an in-app product (i.e. a managed product or a subscriptions).
+  /// Updates an in-app product (a managed product or a subscription).
+  ///
+  /// This method should no longer be used to update subscriptions. See
+  /// [this article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html)
+  /// for more information.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3093,9 +3270,7 @@ class MonetizationSubscriptionsResource {
   /// requirements on this format, see the documentation of the product_id field
   /// on the Subscription resource.
   ///
-  /// [regionsVersion_version] - Required. A string representing version of the
-  /// available regions being used for the specified resource. The current
-  /// version is 2022/01.
+  /// [regionsVersion_version] - Required. The latest version is 2022/02.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3292,9 +3467,7 @@ class MonetizationSubscriptionsResource {
   /// lower-case letter or number, and be between 1 and 40 (inclusive)
   /// characters in length.
   ///
-  /// [regionsVersion_version] - Required. A string representing version of the
-  /// available regions being used for the specified resource. The current
-  /// version is 2022/01.
+  /// [regionsVersion_version] - Required. The latest version is 2022/02.
   ///
   /// [updateMask] - Required. The list of fields to be updated.
   ///
@@ -3666,9 +3839,7 @@ class MonetizationSubscriptionsBasePlansOffersResource {
   /// this format, see the documentation of the offer_id field on the
   /// SubscriptionOffer resource.
   ///
-  /// [regionsVersion_version] - Required. A string representing version of the
-  /// available regions being used for the specified resource. The current
-  /// version is 2022/01.
+  /// [regionsVersion_version] - Required. The latest version is 2022/02.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3890,11 +4061,12 @@ class MonetizationSubscriptionsBasePlansOffersResource {
   /// subscriptions should be read.
   ///
   /// [productId] - Required. The parent subscription (ID) for which the offers
-  /// should be read.
+  /// should be read. May be specified as '-' to read all offers under an app.
   ///
   /// [basePlanId] - Required. The parent base plan (ID) for which the offers
   /// should be read. May be specified as '-' to read all offers under a
-  /// subscription.
+  /// subscription or an app. Must be specified as '-' if product_id is
+  /// specified as '-'.
   ///
   /// [pageSize] - The maximum number of subscriptions to return. The service
   /// may return fewer than this value. If unspecified, at most 50 subscriptions
@@ -3965,9 +4137,7 @@ class MonetizationSubscriptionsBasePlansOffersResource {
   /// [offerId] - Required. Immutable. Unique ID of this subscription offer.
   /// Must be unique within the base plan.
   ///
-  /// [regionsVersion_version] - Required. A string representing version of the
-  /// available regions being used for the specified resource. The current
-  /// version is 2022/01.
+  /// [regionsVersion_version] - Required. The latest version is 2022/02.
   ///
   /// [updateMask] - Required. The list of fields to be updated.
   ///
@@ -4143,6 +4313,53 @@ class PurchasesProductsResource {
       url_,
       'POST',
       body: body_,
+      queryParams: queryParams_,
+      downloadOptions: null,
+    );
+  }
+
+  /// Consumes a purchase for an inapp item.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - The package name of the application the inapp product was
+  /// sold in (for example, 'com.some.thing').
+  ///
+  /// [productId] - The inapp product SKU (for example,
+  /// 'com.some.thing.inapp1').
+  ///
+  /// [token] - The token provided to the user's device when the inapp product
+  /// was purchased.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<void> consume(
+    core.String packageName,
+    core.String productId,
+    core.String token, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/purchases/products/' +
+        commons.escapeVariable('$productId') +
+        '/tokens/' +
+        commons.escapeVariable('$token') +
+        ':consume';
+
+    await _requester.request(
+      url_,
+      'POST',
       queryParams: queryParams_,
       downloadOptions: null,
     );
@@ -5181,6 +5398,70 @@ class UsersResource {
   }
 }
 
+/// Represents an Abi.
+class Abi {
+  /// Alias for an abi.
+  /// Possible string values are:
+  /// - "UNSPECIFIED_CPU_ARCHITECTURE" : Unspecified abi.
+  /// - "ARMEABI" : ARMEABI abi.
+  /// - "ARMEABI_V7A" : ARMEABI_V7A abi.
+  /// - "ARM64_V8A" : ARM64_V8A abi.
+  /// - "X86" : X86 abi.
+  /// - "X86_64" : X86_64 abi.
+  core.String? alias;
+
+  Abi({
+    this.alias,
+  });
+
+  Abi.fromJson(core.Map json_)
+      : this(
+          alias:
+              json_.containsKey('alias') ? json_['alias'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (alias != null) 'alias': alias!,
+      };
+}
+
+/// Targeting based on Abi.
+class AbiTargeting {
+  /// Targeting of other sibling directories that were in the Bundle.
+  ///
+  /// For main splits this is targeting of other main splits.
+  core.List<Abi>? alternatives;
+
+  /// Value of an abi.
+  core.List<Abi>? value;
+
+  AbiTargeting({
+    this.alternatives,
+    this.value,
+  });
+
+  AbiTargeting.fromJson(core.Map json_)
+      : this(
+          alternatives: json_.containsKey('alternatives')
+              ? (json_['alternatives'] as core.List)
+                  .map((value) => Abi.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          value: json_.containsKey('value')
+              ? (json_['value'] as core.List)
+                  .map((value) => Abi.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (alternatives != null) 'alternatives': alternatives!,
+        if (value != null) 'value': value!,
+      };
+}
+
 /// Represents a targeting rule of the form: User never had {scope} before.
 class AcquisitionTargetingRule {
   /// The scope of subscriptions this rule considers.
@@ -5271,6 +5552,180 @@ class ApkBinary {
   core.Map<core.String, core.dynamic> toJson() => {
         if (sha1 != null) 'sha1': sha1!,
         if (sha256 != null) 'sha256': sha256!,
+      };
+}
+
+/// Description of the created apks.
+class ApkDescription {
+  /// Set only for asset slices.
+  SplitApkMetadata? assetSliceMetadata;
+
+  /// Set only for Instant split APKs.
+  SplitApkMetadata? instantApkMetadata;
+
+  /// Path of the Apk, will be in the following format: .apk where DownloadId is
+  /// the ID used to download the apk using GeneratedApks.Download API.
+  core.String? path;
+
+  /// Set only for Split APKs.
+  SplitApkMetadata? splitApkMetadata;
+
+  /// Set only for standalone APKs.
+  StandaloneApkMetadata? standaloneApkMetadata;
+
+  /// Apk-level targeting.
+  ApkTargeting? targeting;
+
+  ApkDescription({
+    this.assetSliceMetadata,
+    this.instantApkMetadata,
+    this.path,
+    this.splitApkMetadata,
+    this.standaloneApkMetadata,
+    this.targeting,
+  });
+
+  ApkDescription.fromJson(core.Map json_)
+      : this(
+          assetSliceMetadata: json_.containsKey('assetSliceMetadata')
+              ? SplitApkMetadata.fromJson(json_['assetSliceMetadata']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          instantApkMetadata: json_.containsKey('instantApkMetadata')
+              ? SplitApkMetadata.fromJson(json_['instantApkMetadata']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          path: json_.containsKey('path') ? json_['path'] as core.String : null,
+          splitApkMetadata: json_.containsKey('splitApkMetadata')
+              ? SplitApkMetadata.fromJson(json_['splitApkMetadata']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          standaloneApkMetadata: json_.containsKey('standaloneApkMetadata')
+              ? StandaloneApkMetadata.fromJson(json_['standaloneApkMetadata']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          targeting: json_.containsKey('targeting')
+              ? ApkTargeting.fromJson(
+                  json_['targeting'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (assetSliceMetadata != null)
+          'assetSliceMetadata': assetSliceMetadata!,
+        if (instantApkMetadata != null)
+          'instantApkMetadata': instantApkMetadata!,
+        if (path != null) 'path': path!,
+        if (splitApkMetadata != null) 'splitApkMetadata': splitApkMetadata!,
+        if (standaloneApkMetadata != null)
+          'standaloneApkMetadata': standaloneApkMetadata!,
+        if (targeting != null) 'targeting': targeting!,
+      };
+}
+
+/// A set of apks representing a module.
+class ApkSet {
+  /// Description of the generated apks.
+  core.List<ApkDescription>? apkDescription;
+
+  /// Metadata about the module represented by this ApkSet
+  ModuleMetadata? moduleMetadata;
+
+  ApkSet({
+    this.apkDescription,
+    this.moduleMetadata,
+  });
+
+  ApkSet.fromJson(core.Map json_)
+      : this(
+          apkDescription: json_.containsKey('apkDescription')
+              ? (json_['apkDescription'] as core.List)
+                  .map((value) => ApkDescription.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          moduleMetadata: json_.containsKey('moduleMetadata')
+              ? ModuleMetadata.fromJson(json_['moduleMetadata']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (apkDescription != null) 'apkDescription': apkDescription!,
+        if (moduleMetadata != null) 'moduleMetadata': moduleMetadata!,
+      };
+}
+
+/// Represents a set of apk-level targetings.
+class ApkTargeting {
+  /// The abi that the apk targets
+  AbiTargeting? abiTargeting;
+
+  /// The language that the apk targets
+  LanguageTargeting? languageTargeting;
+
+  /// Multi-api-level targeting.
+  MultiAbiTargeting? multiAbiTargeting;
+
+  /// The screen density that this apk supports.
+  ScreenDensityTargeting? screenDensityTargeting;
+
+  /// The sdk version that the apk targets
+  SdkVersionTargeting? sdkVersionTargeting;
+
+  /// Texture-compression-format-level targeting
+  TextureCompressionFormatTargeting? textureCompressionFormatTargeting;
+
+  ApkTargeting({
+    this.abiTargeting,
+    this.languageTargeting,
+    this.multiAbiTargeting,
+    this.screenDensityTargeting,
+    this.sdkVersionTargeting,
+    this.textureCompressionFormatTargeting,
+  });
+
+  ApkTargeting.fromJson(core.Map json_)
+      : this(
+          abiTargeting: json_.containsKey('abiTargeting')
+              ? AbiTargeting.fromJson(
+                  json_['abiTargeting'] as core.Map<core.String, core.dynamic>)
+              : null,
+          languageTargeting: json_.containsKey('languageTargeting')
+              ? LanguageTargeting.fromJson(json_['languageTargeting']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          multiAbiTargeting: json_.containsKey('multiAbiTargeting')
+              ? MultiAbiTargeting.fromJson(json_['multiAbiTargeting']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          screenDensityTargeting: json_.containsKey('screenDensityTargeting')
+              ? ScreenDensityTargeting.fromJson(json_['screenDensityTargeting']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          sdkVersionTargeting: json_.containsKey('sdkVersionTargeting')
+              ? SdkVersionTargeting.fromJson(json_['sdkVersionTargeting']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          textureCompressionFormatTargeting:
+              json_.containsKey('textureCompressionFormatTargeting')
+                  ? TextureCompressionFormatTargeting.fromJson(
+                      json_['textureCompressionFormatTargeting']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (abiTargeting != null) 'abiTargeting': abiTargeting!,
+        if (languageTargeting != null) 'languageTargeting': languageTargeting!,
+        if (multiAbiTargeting != null) 'multiAbiTargeting': multiAbiTargeting!,
+        if (screenDensityTargeting != null)
+          'screenDensityTargeting': screenDensityTargeting!,
+        if (sdkVersionTargeting != null)
+          'sdkVersionTargeting': sdkVersionTargeting!,
+        if (textureCompressionFormatTargeting != null)
+          'textureCompressionFormatTargeting':
+              textureCompressionFormatTargeting!,
       };
 }
 
@@ -5436,6 +5891,77 @@ class AppEdit {
 /// Request message for ArchiveSubscription.
 typedef ArchiveSubscriptionRequest = $Empty;
 
+/// Metadata of an asset module.
+class AssetModuleMetadata {
+  /// Indicates the delivery type for persistent install.
+  /// Possible string values are:
+  /// - "UNKNOWN_DELIVERY_TYPE" : Unspecified delivery type.
+  /// - "INSTALL_TIME" : This module will always be downloaded as part of the
+  /// initial install of the app.
+  /// - "ON_DEMAND" : This module is requested on-demand, which means it will
+  /// not be part of the initial install, and will only be sent when requested
+  /// by the client.
+  /// - "FAST_FOLLOW" : This module will be downloaded immediately after initial
+  /// install finishes. The app can be opened before these modules are
+  /// downloaded.
+  core.String? deliveryType;
+
+  /// Module name.
+  core.String? name;
+
+  AssetModuleMetadata({
+    this.deliveryType,
+    this.name,
+  });
+
+  AssetModuleMetadata.fromJson(core.Map json_)
+      : this(
+          deliveryType: json_.containsKey('deliveryType')
+              ? json_['deliveryType'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deliveryType != null) 'deliveryType': deliveryType!,
+        if (name != null) 'name': name!,
+      };
+}
+
+/// Set of asset slices belonging to a single asset module.
+class AssetSliceSet {
+  /// Asset slices.
+  core.List<ApkDescription>? apkDescription;
+
+  /// Module level metadata.
+  AssetModuleMetadata? assetModuleMetadata;
+
+  AssetSliceSet({
+    this.apkDescription,
+    this.assetModuleMetadata,
+  });
+
+  AssetSliceSet.fromJson(core.Map json_)
+      : this(
+          apkDescription: json_.containsKey('apkDescription')
+              ? (json_['apkDescription'] as core.List)
+                  .map((value) => ApkDescription.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          assetModuleMetadata: json_.containsKey('assetModuleMetadata')
+              ? AssetModuleMetadata.fromJson(json_['assetModuleMetadata']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (apkDescription != null) 'apkDescription': apkDescription!,
+        if (assetModuleMetadata != null)
+          'assetModuleMetadata': assetModuleMetadata!,
+      };
+}
+
 /// Represents a base plan that automatically renews at the end of its
 /// subscription period.
 class AutoRenewingBasePlanType {
@@ -5459,6 +5985,15 @@ class AutoRenewingBasePlanType {
   /// Library deprecated method querySkuDetailsAsync(). Only one renewing base
   /// plan can be marked as legacy compatible for a given subscription.
   core.bool? legacyCompatible;
+
+  /// Subscription offer id which is legacy compatible.
+  ///
+  /// The backward compatible subscription offer is returned by the Google Play
+  /// Billing Library deprecated method querySkuDetailsAsync(). Only one
+  /// subscription offer can be marked as legacy compatible for a given renewing
+  /// base plan. To have no Subscription offer as legacy compatible set this
+  /// field as empty string.
+  core.String? legacyCompatibleSubscriptionOfferId;
 
   /// The proration mode for the base plan determines what happens when a user
   /// switches to this plan from another base plan.
@@ -5489,6 +6024,7 @@ class AutoRenewingBasePlanType {
     this.billingPeriodDuration,
     this.gracePeriodDuration,
     this.legacyCompatible,
+    this.legacyCompatibleSubscriptionOfferId,
     this.prorationMode,
     this.resubscribeState,
   });
@@ -5504,6 +6040,10 @@ class AutoRenewingBasePlanType {
           legacyCompatible: json_.containsKey('legacyCompatible')
               ? json_['legacyCompatible'] as core.bool
               : null,
+          legacyCompatibleSubscriptionOfferId:
+              json_.containsKey('legacyCompatibleSubscriptionOfferId')
+                  ? json_['legacyCompatibleSubscriptionOfferId'] as core.String
+                  : null,
           prorationMode: json_.containsKey('prorationMode')
               ? json_['prorationMode'] as core.String
               : null,
@@ -5518,6 +6058,9 @@ class AutoRenewingBasePlanType {
         if (gracePeriodDuration != null)
           'gracePeriodDuration': gracePeriodDuration!,
         if (legacyCompatible != null) 'legacyCompatible': legacyCompatible!,
+        if (legacyCompatibleSubscriptionOfferId != null)
+          'legacyCompatibleSubscriptionOfferId':
+              legacyCompatibleSubscriptionOfferId!,
         if (prorationMode != null) 'prorationMode': prorationMode!,
         if (resubscribeState != null) 'resubscribeState': resubscribeState!,
       };
@@ -5529,8 +6072,13 @@ class AutoRenewingPlan {
   /// canceled the subscription
   core.bool? autoRenewEnabled;
 
+  /// The information of the last price change for the item since subscription
+  /// signup.
+  SubscriptionItemPriceChangeDetails? priceChangeDetails;
+
   AutoRenewingPlan({
     this.autoRenewEnabled,
+    this.priceChangeDetails,
   });
 
   AutoRenewingPlan.fromJson(core.Map json_)
@@ -5538,10 +6086,17 @@ class AutoRenewingPlan {
           autoRenewEnabled: json_.containsKey('autoRenewEnabled')
               ? json_['autoRenewEnabled'] as core.bool
               : null,
+          priceChangeDetails: json_.containsKey('priceChangeDetails')
+              ? SubscriptionItemPriceChangeDetails.fromJson(
+                  json_['priceChangeDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (autoRenewEnabled != null) 'autoRenewEnabled': autoRenewEnabled!,
+        if (priceChangeDetails != null)
+          'priceChangeDetails': priceChangeDetails!,
       };
 }
 
@@ -5907,10 +6462,10 @@ class ConvertRegionPricesResponse {
               ? (json_['convertedRegionPrices']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     ConvertedRegionPrice.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -6033,6 +6588,27 @@ typedef DeactivateBasePlanRequest = $Empty;
 /// Request message for DeactivateSubscriptionOffer.
 typedef DeactivateSubscriptionOfferRequest = $Empty;
 
+/// Information related to deferred item replacement.
+class DeferredItemReplacement {
+  /// The product_id going to replace the existing product_id.
+  core.String? productId;
+
+  DeferredItemReplacement({
+    this.productId,
+  });
+
+  DeferredItemReplacement.fromJson(core.Map json_)
+      : this(
+          productId: json_.containsKey('productId')
+              ? json_['productId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (productId != null) 'productId': productId!,
+      };
+}
+
 /// Represents a deobfuscation file.
 class DeobfuscationFile {
   /// The type of the deobfuscation file.
@@ -6112,7 +6688,59 @@ class DeveloperComment {
 /// Information specific to cancellations initiated by developers.
 typedef DeveloperInitiatedCancellation = $Empty;
 
-/// LINT.IfChange A group of devices.
+/// Represents a device feature.
+class DeviceFeature {
+  /// Name of the feature.
+  core.String? featureName;
+
+  /// The feature version specified by android:glEsVersion or android:version in
+  /// in the AndroidManifest.
+  core.int? featureVersion;
+
+  DeviceFeature({
+    this.featureName,
+    this.featureVersion,
+  });
+
+  DeviceFeature.fromJson(core.Map json_)
+      : this(
+          featureName: json_.containsKey('featureName')
+              ? json_['featureName'] as core.String
+              : null,
+          featureVersion: json_.containsKey('featureVersion')
+              ? json_['featureVersion'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (featureName != null) 'featureName': featureName!,
+        if (featureVersion != null) 'featureVersion': featureVersion!,
+      };
+}
+
+/// Targeting for a device feature.
+class DeviceFeatureTargeting {
+  /// Feature of the device.
+  DeviceFeature? requiredFeature;
+
+  DeviceFeatureTargeting({
+    this.requiredFeature,
+  });
+
+  DeviceFeatureTargeting.fromJson(core.Map json_)
+      : this(
+          requiredFeature: json_.containsKey('requiredFeature')
+              ? DeviceFeature.fromJson(json_['requiredFeature']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (requiredFeature != null) 'requiredFeature': requiredFeature!,
+      };
+}
+
+/// A group of devices.
 ///
 /// A group is defined by a set of device selectors. A device belongs to the
 /// group if it matches any selector (logical OR).
@@ -6471,8 +7099,8 @@ class DeviceTier {
       };
 }
 
-/// LINT.IfChange Configuration describing device targeting criteria for the
-/// content of an app.
+/// Configuration describing device targeting criteria for the content of an
+/// app.
 class DeviceTierConfig {
   /// Definition of device groups for the app.
   core.List<DeviceGroup>? deviceGroups;
@@ -6485,10 +7113,14 @@ class DeviceTierConfig {
   /// Definition of the set of device tiers for the app.
   DeviceTierSet? deviceTierSet;
 
+  /// Definition of user country sets for the app.
+  core.List<UserCountrySet>? userCountrySets;
+
   DeviceTierConfig({
     this.deviceGroups,
     this.deviceTierConfigId,
     this.deviceTierSet,
+    this.userCountrySets,
   });
 
   DeviceTierConfig.fromJson(core.Map json_)
@@ -6506,6 +7138,12 @@ class DeviceTierConfig {
               ? DeviceTierSet.fromJson(
                   json_['deviceTierSet'] as core.Map<core.String, core.dynamic>)
               : null,
+          userCountrySets: json_.containsKey('userCountrySets')
+              ? (json_['userCountrySets'] as core.List)
+                  .map((value) => UserCountrySet.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6513,6 +7151,7 @@ class DeviceTierConfig {
         if (deviceTierConfigId != null)
           'deviceTierConfigId': deviceTierConfigId!,
         if (deviceTierSet != null) 'deviceTierSet': deviceTierSet!,
+        if (userCountrySets != null) 'userCountrySets': userCountrySets!,
       };
 }
 
@@ -6658,6 +7297,243 @@ class ExternalAccountIdentifiers {
           'obfuscatedExternalProfileId': obfuscatedExternalProfileId!,
       };
 }
+
+/// Details of an external subscription.
+class ExternalSubscription {
+  /// The type of the external subscription.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "SUBSCRIPTION_TYPE_UNSPECIFIED" : Unspecified, do not use.
+  /// - "RECURRING" : This is a recurring subscription where the user is charged
+  /// every billing cycle.
+  /// - "PREPAID" : This is a prepaid subscription where the user pays up front.
+  core.String? subscriptionType;
+
+  ExternalSubscription({
+    this.subscriptionType,
+  });
+
+  ExternalSubscription.fromJson(core.Map json_)
+      : this(
+          subscriptionType: json_.containsKey('subscriptionType')
+              ? json_['subscriptionType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (subscriptionType != null) 'subscriptionType': subscriptionType!,
+      };
+}
+
+/// The details of an external transaction.
+class ExternalTransaction {
+  /// The time when this transaction was created.
+  ///
+  /// This is the time when Google was notified of the transaction.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The current transaction amount before tax.
+  ///
+  /// This represents the current pre-tax amount including any refunds that may
+  /// have been applied to this transaction.
+  ///
+  /// Output only.
+  Price? currentPreTaxAmount;
+
+  /// The current tax amount.
+  ///
+  /// This represents the current tax amount including any refunds that may have
+  /// been applied to this transaction.
+  ///
+  /// Output only.
+  Price? currentTaxAmount;
+
+  /// The id of this transaction.
+  ///
+  /// All transaction ids under the same package name must be unique. Set when
+  /// creating the external transaction.
+  ///
+  /// Output only.
+  core.String? externalTransactionId;
+
+  /// This is a one-time transaction and not part of a subscription.
+  OneTimeExternalTransaction? oneTimeTransaction;
+
+  /// The original transaction amount before taxes.
+  ///
+  /// This represents the pre-tax amount originally notified to Google before
+  /// any refunds were applied.
+  ///
+  /// Required.
+  Price? originalPreTaxAmount;
+
+  /// The original tax amount.
+  ///
+  /// This represents the tax amount originally notified to Google before any
+  /// refunds were applied.
+  ///
+  /// Required.
+  Price? originalTaxAmount;
+
+  /// The resource name of the external transaction.
+  ///
+  /// The package name of the application the inapp products were sold (for
+  /// example, 'com.some.app').
+  ///
+  /// Output only.
+  core.String? packageName;
+
+  /// This transaction is part of a recurring series of transactions.
+  RecurringExternalTransaction? recurringTransaction;
+
+  /// If set, this transaction was a test purchase.
+  ///
+  /// Google will not charge for a test transaction.
+  ///
+  /// Output only.
+  ExternalTransactionTestPurchase? testPurchase;
+
+  /// The current state of the transaction.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "TRANSACTION_STATE_UNSPECIFIED" : Unspecified transaction state. Not
+  /// used.
+  /// - "TRANSACTION_REPORTED" : The transaction has been successfully reported
+  /// to Google.
+  /// - "TRANSACTION_CANCELED" : The transaction has been fully refunded.
+  core.String? transactionState;
+
+  /// The time when the transaction was completed.
+  ///
+  /// Required.
+  core.String? transactionTime;
+
+  /// User address for tax computation.
+  ///
+  /// Required.
+  ExternalTransactionAddress? userTaxAddress;
+
+  ExternalTransaction({
+    this.createTime,
+    this.currentPreTaxAmount,
+    this.currentTaxAmount,
+    this.externalTransactionId,
+    this.oneTimeTransaction,
+    this.originalPreTaxAmount,
+    this.originalTaxAmount,
+    this.packageName,
+    this.recurringTransaction,
+    this.testPurchase,
+    this.transactionState,
+    this.transactionTime,
+    this.userTaxAddress,
+  });
+
+  ExternalTransaction.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          currentPreTaxAmount: json_.containsKey('currentPreTaxAmount')
+              ? Price.fromJson(json_['currentPreTaxAmount']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          currentTaxAmount: json_.containsKey('currentTaxAmount')
+              ? Price.fromJson(json_['currentTaxAmount']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          externalTransactionId: json_.containsKey('externalTransactionId')
+              ? json_['externalTransactionId'] as core.String
+              : null,
+          oneTimeTransaction: json_.containsKey('oneTimeTransaction')
+              ? OneTimeExternalTransaction.fromJson(json_['oneTimeTransaction']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          originalPreTaxAmount: json_.containsKey('originalPreTaxAmount')
+              ? Price.fromJson(json_['originalPreTaxAmount']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          originalTaxAmount: json_.containsKey('originalTaxAmount')
+              ? Price.fromJson(json_['originalTaxAmount']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          packageName: json_.containsKey('packageName')
+              ? json_['packageName'] as core.String
+              : null,
+          recurringTransaction: json_.containsKey('recurringTransaction')
+              ? RecurringExternalTransaction.fromJson(
+                  json_['recurringTransaction']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          testPurchase: json_.containsKey('testPurchase')
+              ? ExternalTransactionTestPurchase.fromJson(
+                  json_['testPurchase'] as core.Map<core.String, core.dynamic>)
+              : null,
+          transactionState: json_.containsKey('transactionState')
+              ? json_['transactionState'] as core.String
+              : null,
+          transactionTime: json_.containsKey('transactionTime')
+              ? json_['transactionTime'] as core.String
+              : null,
+          userTaxAddress: json_.containsKey('userTaxAddress')
+              ? ExternalTransactionAddress.fromJson(json_['userTaxAddress']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (currentPreTaxAmount != null)
+          'currentPreTaxAmount': currentPreTaxAmount!,
+        if (currentTaxAmount != null) 'currentTaxAmount': currentTaxAmount!,
+        if (externalTransactionId != null)
+          'externalTransactionId': externalTransactionId!,
+        if (oneTimeTransaction != null)
+          'oneTimeTransaction': oneTimeTransaction!,
+        if (originalPreTaxAmount != null)
+          'originalPreTaxAmount': originalPreTaxAmount!,
+        if (originalTaxAmount != null) 'originalTaxAmount': originalTaxAmount!,
+        if (packageName != null) 'packageName': packageName!,
+        if (recurringTransaction != null)
+          'recurringTransaction': recurringTransaction!,
+        if (testPurchase != null) 'testPurchase': testPurchase!,
+        if (transactionState != null) 'transactionState': transactionState!,
+        if (transactionTime != null) 'transactionTime': transactionTime!,
+        if (userTaxAddress != null) 'userTaxAddress': userTaxAddress!,
+      };
+}
+
+/// User's address for the external transaction.
+class ExternalTransactionAddress {
+  /// Two letter region code based on ISO-3166-1 Alpha-2 (UN region codes).
+  ///
+  /// Required.
+  core.String? regionCode;
+
+  ExternalTransactionAddress({
+    this.regionCode,
+  });
+
+  ExternalTransactionAddress.fromJson(core.Map json_)
+      : this(
+          regionCode: json_.containsKey('regionCode')
+              ? json_['regionCode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (regionCode != null) 'regionCode': regionCode!,
+      };
+}
+
+/// Represents a transaction performed using a test account.
+///
+/// These transactions will not be charged by Google.
+typedef ExternalTransactionTestPurchase = $Empty;
 
 /// Defines an APK available for this application that is hosted externally and
 /// not uploaded to Google Play.
@@ -6811,6 +7687,9 @@ class ExternallyHostedApk {
       };
 }
 
+/// A full refund of the remaining amount of a transaction.
+typedef FullRefund = $Empty;
+
 /// Response to list generated APKs.
 class GeneratedApksListResponse {
   /// All generated APKs, grouped by the APK signing key.
@@ -6860,12 +7739,16 @@ class GeneratedApksPerSigningKey {
   /// key.
   GeneratedUniversalApk? generatedUniversalApk;
 
+  /// Contains targeting information about the generated apks.
+  TargetingInfo? targetingInfo;
+
   GeneratedApksPerSigningKey({
     this.certificateSha256Hash,
     this.generatedAssetPackSlices,
     this.generatedSplitApks,
     this.generatedStandaloneApks,
     this.generatedUniversalApk,
+    this.targetingInfo,
   });
 
   GeneratedApksPerSigningKey.fromJson(core.Map json_)
@@ -6896,6 +7779,10 @@ class GeneratedApksPerSigningKey {
               ? GeneratedUniversalApk.fromJson(json_['generatedUniversalApk']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          targetingInfo: json_.containsKey('targetingInfo')
+              ? TargetingInfo.fromJson(
+                  json_['targetingInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6909,6 +7796,7 @@ class GeneratedApksPerSigningKey {
           'generatedStandaloneApks': generatedStandaloneApks!,
         if (generatedUniversalApk != null)
           'generatedUniversalApk': generatedUniversalApk!,
+        if (targetingInfo != null) 'targetingInfo': targetingInfo!,
       };
 }
 
@@ -7330,10 +8218,10 @@ class InAppProduct {
               : null,
           listings: json_.containsKey('listings')
               ? (json_['listings'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     InAppProductListing.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -7348,9 +8236,10 @@ class InAppProduct {
               : null,
           prices: json_.containsKey('prices')
               ? (json_['prices'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    Price.fromJson(item as core.Map<core.String, core.dynamic>),
+                    Price.fromJson(
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -7444,6 +8333,9 @@ class InappproductsListResponse {
   core.String? kind;
 
   /// Deprecated and unset.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   PageInfo? pageInfo;
 
   /// Pagination token, to handle a number of products that is over one page.
@@ -7586,6 +8478,39 @@ class IntroductoryPriceInfo {
           'introductoryPriceCycles': introductoryPriceCycles!,
         if (introductoryPricePeriod != null)
           'introductoryPricePeriod': introductoryPricePeriod!,
+      };
+}
+
+/// Targeting based on language.
+class LanguageTargeting {
+  /// Alternative languages.
+  core.List<core.String>? alternatives;
+
+  /// ISO-639: 2 or 3 letter language code.
+  core.List<core.String>? value;
+
+  LanguageTargeting({
+    this.alternatives,
+    this.value,
+  });
+
+  LanguageTargeting.fromJson(core.Map json_)
+      : this(
+          alternatives: json_.containsKey('alternatives')
+              ? (json_['alternatives'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          value: json_.containsKey('value')
+              ? (json_['value'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (alternatives != null) 'alternatives': alternatives!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -7873,10 +8798,10 @@ class ManagedProductTaxAndComplianceSettings {
               ? (json_['taxRateInfoByRegionCode']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     RegionalTaxRateInfo.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -7932,8 +8857,230 @@ class MigrateBasePlanPricesRequest {
 /// Response message for MigrateBasePlanPrices.
 typedef MigrateBasePlanPricesResponse = $Empty;
 
+/// Metadata of a module.
+class ModuleMetadata {
+  /// Indicates the delivery type (e.g. on-demand) of the module.
+  /// Possible string values are:
+  /// - "UNKNOWN_DELIVERY_TYPE" : Unspecified delivery type.
+  /// - "INSTALL_TIME" : This module will always be downloaded as part of the
+  /// initial install of the app.
+  /// - "ON_DEMAND" : This module is requested on-demand, which means it will
+  /// not be part of the initial install, and will only be sent when requested
+  /// by the client.
+  /// - "FAST_FOLLOW" : This module will be downloaded immediately after initial
+  /// install finishes. The app can be opened before these modules are
+  /// downloaded.
+  core.String? deliveryType;
+
+  /// Names of the modules that this module directly depends on.
+  ///
+  /// Each module implicitly depends on the base module.
+  core.List<core.String>? dependencies;
+
+  /// Indicates the type of this feature module.
+  /// Possible string values are:
+  /// - "UNKNOWN_MODULE_TYPE" : Unknown feature module.
+  /// - "FEATURE_MODULE" : Regular feature module.
+  core.String? moduleType;
+
+  /// Module name.
+  core.String? name;
+
+  /// The targeting that makes a conditional module installed.
+  ///
+  /// Relevant only for Split APKs.
+  ModuleTargeting? targeting;
+
+  ModuleMetadata({
+    this.deliveryType,
+    this.dependencies,
+    this.moduleType,
+    this.name,
+    this.targeting,
+  });
+
+  ModuleMetadata.fromJson(core.Map json_)
+      : this(
+          deliveryType: json_.containsKey('deliveryType')
+              ? json_['deliveryType'] as core.String
+              : null,
+          dependencies: json_.containsKey('dependencies')
+              ? (json_['dependencies'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          moduleType: json_.containsKey('moduleType')
+              ? json_['moduleType'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          targeting: json_.containsKey('targeting')
+              ? ModuleTargeting.fromJson(
+                  json_['targeting'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deliveryType != null) 'deliveryType': deliveryType!,
+        if (dependencies != null) 'dependencies': dependencies!,
+        if (moduleType != null) 'moduleType': moduleType!,
+        if (name != null) 'name': name!,
+        if (targeting != null) 'targeting': targeting!,
+      };
+}
+
+/// Targeting on the module level.
+class ModuleTargeting {
+  /// Targeting for device features.
+  core.List<DeviceFeatureTargeting>? deviceFeatureTargeting;
+
+  /// The sdk version that the variant targets
+  SdkVersionTargeting? sdkVersionTargeting;
+
+  /// Countries-level targeting
+  UserCountriesTargeting? userCountriesTargeting;
+
+  ModuleTargeting({
+    this.deviceFeatureTargeting,
+    this.sdkVersionTargeting,
+    this.userCountriesTargeting,
+  });
+
+  ModuleTargeting.fromJson(core.Map json_)
+      : this(
+          deviceFeatureTargeting: json_.containsKey('deviceFeatureTargeting')
+              ? (json_['deviceFeatureTargeting'] as core.List)
+                  .map((value) => DeviceFeatureTargeting.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          sdkVersionTargeting: json_.containsKey('sdkVersionTargeting')
+              ? SdkVersionTargeting.fromJson(json_['sdkVersionTargeting']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          userCountriesTargeting: json_.containsKey('userCountriesTargeting')
+              ? UserCountriesTargeting.fromJson(json_['userCountriesTargeting']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deviceFeatureTargeting != null)
+          'deviceFeatureTargeting': deviceFeatureTargeting!,
+        if (sdkVersionTargeting != null)
+          'sdkVersionTargeting': sdkVersionTargeting!,
+        if (userCountriesTargeting != null)
+          'userCountriesTargeting': userCountriesTargeting!,
+      };
+}
+
 /// Represents an amount of money with its currency type.
 typedef Money = $Money;
+
+/// Represents a list of apis.
+class MultiAbi {
+  /// A list of targeted ABIs, as represented by the Android Platform
+  core.List<Abi>? abi;
+
+  MultiAbi({
+    this.abi,
+  });
+
+  MultiAbi.fromJson(core.Map json_)
+      : this(
+          abi: json_.containsKey('abi')
+              ? (json_['abi'] as core.List)
+                  .map((value) => Abi.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (abi != null) 'abi': abi!,
+      };
+}
+
+/// Targeting based on multiple abis.
+class MultiAbiTargeting {
+  /// Targeting of other sibling directories that were in the Bundle.
+  ///
+  /// For main splits this is targeting of other main splits.
+  core.List<MultiAbi>? alternatives;
+
+  /// Value of a multi abi.
+  core.List<MultiAbi>? value;
+
+  MultiAbiTargeting({
+    this.alternatives,
+    this.value,
+  });
+
+  MultiAbiTargeting.fromJson(core.Map json_)
+      : this(
+          alternatives: json_.containsKey('alternatives')
+              ? (json_['alternatives'] as core.List)
+                  .map((value) => MultiAbi.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          value: json_.containsKey('value')
+              ? (json_['value'] as core.List)
+                  .map((value) => MultiAbi.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (alternatives != null) 'alternatives': alternatives!,
+        if (value != null) 'value': value!,
+      };
+}
+
+/// Offer details information related to a purchase line item.
+class OfferDetails {
+  /// The base plan ID.
+  ///
+  /// Present for all base plan and offers.
+  core.String? basePlanId;
+
+  /// The offer ID.
+  ///
+  /// Only present for discounted offers.
+  core.String? offerId;
+
+  /// The latest offer tags associated with the offer.
+  ///
+  /// It includes tags inherited from the base plan.
+  core.List<core.String>? offerTags;
+
+  OfferDetails({
+    this.basePlanId,
+    this.offerId,
+    this.offerTags,
+  });
+
+  OfferDetails.fromJson(core.Map json_)
+      : this(
+          basePlanId: json_.containsKey('basePlanId')
+              ? json_['basePlanId'] as core.String
+              : null,
+          offerId: json_.containsKey('offerId')
+              ? json_['offerId'] as core.String
+              : null,
+          offerTags: json_.containsKey('offerTags')
+              ? (json_['offerTags'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (basePlanId != null) 'basePlanId': basePlanId!,
+        if (offerId != null) 'offerId': offerId!,
+        if (offerTags != null) 'offerTags': offerTags!,
+      };
+}
 
 /// Represents a custom tag specified for base plans and subscription offers.
 class OfferTag {
@@ -7954,6 +9101,32 @@ class OfferTag {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (tag != null) 'tag': tag!,
+      };
+}
+
+/// Represents a one-time transaction.
+class OneTimeExternalTransaction {
+  /// Input only.
+  ///
+  /// Provided during the call to Create. Retrieved from the client when the
+  /// alternative billing flow is launched.
+  core.String? externalTransactionToken;
+
+  OneTimeExternalTransaction({
+    this.externalTransactionToken,
+  });
+
+  OneTimeExternalTransaction.fromJson(core.Map json_)
+      : this(
+          externalTransactionToken:
+              json_.containsKey('externalTransactionToken')
+                  ? json_['externalTransactionToken'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (externalTransactionToken != null)
+          'externalTransactionToken': externalTransactionToken!,
       };
 }
 
@@ -8136,6 +9309,46 @@ class OtherRegionsSubscriptionOfferPhasePrices {
 /// protocol buffer message describes the page that has been returned.
 typedef PageInfo = $PageInfo;
 
+/// A partial refund of a transaction.
+class PartialRefund {
+  /// A unique id distinguishing this partial refund.
+  ///
+  /// If the refund is successful, subsequent refunds with the same id will
+  /// fail. Must be unique across refunds for one individual transaction.
+  ///
+  /// Required.
+  core.String? refundId;
+
+  /// The pre-tax amount of the partial refund.
+  ///
+  /// Should be less than the remaining pre-tax amount of the transaction.
+  ///
+  /// Required.
+  Price? refundPreTaxAmount;
+
+  PartialRefund({
+    this.refundId,
+    this.refundPreTaxAmount,
+  });
+
+  PartialRefund.fromJson(core.Map json_)
+      : this(
+          refundId: json_.containsKey('refundId')
+              ? json_['refundId'] as core.String
+              : null,
+          refundPreTaxAmount: json_.containsKey('refundPreTaxAmount')
+              ? Price.fromJson(json_['refundPreTaxAmount']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (refundId != null) 'refundId': refundId!,
+        if (refundPreTaxAmount != null)
+          'refundPreTaxAmount': refundPreTaxAmount!,
+      };
+}
+
 /// Information specific to a subscription in paused state.
 class PausedStateContext {
   /// Time at which the subscription will be automatically resumed.
@@ -8203,9 +9416,10 @@ class PrepaidBasePlanType {
 
 /// Information related to a prepaid plan.
 class PrepaidPlan {
-  /// After this time, the subscription is allowed for a new top-up purchase.
+  /// If present, this is the time after which top up purchases are allowed for
+  /// the prepaid plan.
   ///
-  /// Not present if the subscription is already extended by a top-up purchase.
+  /// Will not be present for expired prepaid plans.
   core.String? allowExtendAfterTime;
 
   PrepaidPlan({
@@ -8420,6 +9634,101 @@ class ProductPurchase {
 /// Request for the product.purchases.acknowledge API.
 typedef ProductPurchasesAcknowledgeRequest = $PurchasesAcknowledgeRequest;
 
+/// Represents a transaction that is part of a recurring series of payments.
+///
+/// This can be a subscription or a one-time product with multiple payments
+/// (such as preorder).
+class RecurringExternalTransaction {
+  /// Details of an external subscription.
+  ExternalSubscription? externalSubscription;
+
+  /// Input only.
+  ///
+  /// Provided during the call to Create. Retrieved from the client when the
+  /// alternative billing flow is launched. Required only for the initial
+  /// purchase.
+  core.String? externalTransactionToken;
+
+  /// The external transaction id of the first transaction of this recurring
+  /// series of transactions.
+  ///
+  /// For example, for a subscription this would be the transaction id of the
+  /// first payment. Required when creating recurring external transactions.
+  core.String? initialExternalTransactionId;
+
+  RecurringExternalTransaction({
+    this.externalSubscription,
+    this.externalTransactionToken,
+    this.initialExternalTransactionId,
+  });
+
+  RecurringExternalTransaction.fromJson(core.Map json_)
+      : this(
+          externalSubscription: json_.containsKey('externalSubscription')
+              ? ExternalSubscription.fromJson(json_['externalSubscription']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          externalTransactionToken:
+              json_.containsKey('externalTransactionToken')
+                  ? json_['externalTransactionToken'] as core.String
+                  : null,
+          initialExternalTransactionId:
+              json_.containsKey('initialExternalTransactionId')
+                  ? json_['initialExternalTransactionId'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (externalSubscription != null)
+          'externalSubscription': externalSubscription!,
+        if (externalTransactionToken != null)
+          'externalTransactionToken': externalTransactionToken!,
+        if (initialExternalTransactionId != null)
+          'initialExternalTransactionId': initialExternalTransactionId!,
+      };
+}
+
+/// A request to refund an existing external transaction.
+class RefundExternalTransactionRequest {
+  /// A full-amount refund.
+  FullRefund? fullRefund;
+
+  /// A partial refund.
+  PartialRefund? partialRefund;
+
+  /// The time that the transaction was refunded.
+  ///
+  /// Required.
+  core.String? refundTime;
+
+  RefundExternalTransactionRequest({
+    this.fullRefund,
+    this.partialRefund,
+    this.refundTime,
+  });
+
+  RefundExternalTransactionRequest.fromJson(core.Map json_)
+      : this(
+          fullRefund: json_.containsKey('fullRefund')
+              ? FullRefund.fromJson(
+                  json_['fullRefund'] as core.Map<core.String, core.dynamic>)
+              : null,
+          partialRefund: json_.containsKey('partialRefund')
+              ? PartialRefund.fromJson(
+                  json_['partialRefund'] as core.Map<core.String, core.dynamic>)
+              : null,
+          refundTime: json_.containsKey('refundTime')
+              ? json_['refundTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fullRefund != null) 'fullRefund': fullRefund!,
+        if (partialRefund != null) 'partialRefund': partialRefund!,
+        if (refundTime != null) 'refundTime': refundTime!,
+      };
+}
+
 /// Configuration for a base plan specific to a region.
 class RegionalBasePlanConfig {
   /// Whether the base plan in the specified region is available for new
@@ -8483,6 +9792,22 @@ class RegionalPriceMigrationConfig {
   /// Required.
   core.String? oldestAllowedPriceVersionTime;
 
+  /// The behavior the caller wants users to see when there is a price increase
+  /// during migration.
+  ///
+  /// If left unset, the behavior defaults to PRICE_INCREASE_TYPE_OPT_IN. Note
+  /// that the first opt-out price increase migration for each app must be
+  /// initiated in Play Console.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "PRICE_INCREASE_TYPE_UNSPECIFIED" : Unspecified state.
+  /// - "PRICE_INCREASE_TYPE_OPT_IN" : Price increase will be presented to users
+  /// on an opt-in basis.
+  /// - "PRICE_INCREASE_TYPE_OPT_OUT" : Price increase will be presented to
+  /// users on an opt-out basis.
+  core.String? priceIncreaseType;
+
   /// Region code this configuration applies to, as defined by ISO 3166-2, e.g.
   /// "US".
   ///
@@ -8491,6 +9816,7 @@ class RegionalPriceMigrationConfig {
 
   RegionalPriceMigrationConfig({
     this.oldestAllowedPriceVersionTime,
+    this.priceIncreaseType,
     this.regionCode,
   });
 
@@ -8500,6 +9826,9 @@ class RegionalPriceMigrationConfig {
               json_.containsKey('oldestAllowedPriceVersionTime')
                   ? json_['oldestAllowedPriceVersionTime'] as core.String
                   : null,
+          priceIncreaseType: json_.containsKey('priceIncreaseType')
+              ? json_['priceIncreaseType'] as core.String
+              : null,
           regionCode: json_.containsKey('regionCode')
               ? json_['regionCode'] as core.String
               : null,
@@ -8508,6 +9837,7 @@ class RegionalPriceMigrationConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (oldestAllowedPriceVersionTime != null)
           'oldestAllowedPriceVersionTime': oldestAllowedPriceVersionTime!,
+        if (priceIncreaseType != null) 'priceIncreaseType': priceIncreaseType!,
         if (regionCode != null) 'regionCode': regionCode!,
       };
 }
@@ -8625,6 +9955,29 @@ class RegionalTaxRateInfo {
   /// Field only supported in United States.
   core.bool? eligibleForStreamingServiceTaxRate;
 
+  /// To collect communications or amusement taxes in the United States, choose
+  /// the appropriate tax category.
+  ///
+  /// [Learn more](https://support.google.com/googleplay/android-developer/answer/10463498#streaming_tax).
+  /// Possible string values are:
+  /// - "STREAMING_TAX_TYPE_UNSPECIFIED" : No telecommunications tax collected.
+  /// - "STREAMING_TAX_TYPE_TELCO_VIDEO_RENTAL" : US-specific telecommunications
+  /// tax tier for video streaming, on demand, rentals / subscriptions /
+  /// pay-per-view.
+  /// - "STREAMING_TAX_TYPE_TELCO_VIDEO_SALES" : US-specific telecommunications
+  /// tax tier for video streaming of pre-recorded content like movies, tv
+  /// shows.
+  /// - "STREAMING_TAX_TYPE_TELCO_VIDEO_MULTI_CHANNEL" : US-specific
+  /// telecommunications tax tier for video streaming of multi-channel
+  /// programming.
+  /// - "STREAMING_TAX_TYPE_TELCO_AUDIO_RENTAL" : US-specific telecommunications
+  /// tax tier for audio streaming, rental / subscription.
+  /// - "STREAMING_TAX_TYPE_TELCO_AUDIO_SALES" : US-specific telecommunications
+  /// tax tier for audio streaming, sale / permanent download.
+  /// - "STREAMING_TAX_TYPE_TELCO_AUDIO_MULTI_CHANNEL" : US-specific
+  /// telecommunications tax tier for multi channel audio streaming like radio.
+  core.String? streamingTaxType;
+
   /// Tax tier to specify reduced tax rate.
   ///
   /// Developers who sell digital news, magazines, newspapers, books, or
@@ -8641,6 +9994,7 @@ class RegionalTaxRateInfo {
 
   RegionalTaxRateInfo({
     this.eligibleForStreamingServiceTaxRate,
+    this.streamingTaxType,
     this.taxTier,
   });
 
@@ -8650,6 +10004,9 @@ class RegionalTaxRateInfo {
               json_.containsKey('eligibleForStreamingServiceTaxRate')
                   ? json_['eligibleForStreamingServiceTaxRate'] as core.bool
                   : null,
+          streamingTaxType: json_.containsKey('streamingTaxType')
+              ? json_['streamingTaxType'] as core.String
+              : null,
           taxTier: json_.containsKey('taxTier')
               ? json_['taxTier'] as core.String
               : null,
@@ -8659,16 +10016,19 @@ class RegionalTaxRateInfo {
         if (eligibleForStreamingServiceTaxRate != null)
           'eligibleForStreamingServiceTaxRate':
               eligibleForStreamingServiceTaxRate!,
+        if (streamingTaxType != null) 'streamingTaxType': streamingTaxType!,
         if (taxTier != null) 'taxTier': taxTier!,
       };
 }
 
 /// The version of the available regions being used for the specified resource.
+///
+/// A string representing the version of available regions being used for the
+/// specified resource. Regional prices for the resource have to be specified
+/// according to the information published in
+/// [this article](https://support.google.com/googleplay/android-developer/answer/10532353).
 class RegionsVersion {
-  /// A string representing version of the available regions being used for the
-  /// specified resource.
-  ///
-  /// The current version is 2022/01.
+  /// The latest version is 2022/02.
   ///
   /// Required.
   core.String? version;
@@ -8847,6 +10207,238 @@ class ReviewsReplyResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (result != null) 'result': result!,
+      };
+}
+
+/// Represents a screen density.
+class ScreenDensity {
+  /// Alias for a screen density.
+  /// Possible string values are:
+  /// - "DENSITY_UNSPECIFIED" : Unspecified screen density.
+  /// - "NODPI" : NODPI screen density.
+  /// - "LDPI" : LDPI screen density.
+  /// - "MDPI" : MDPI screen density.
+  /// - "TVDPI" : TVDPI screen density.
+  /// - "HDPI" : HDPI screen density.
+  /// - "XHDPI" : XHDPI screen density.
+  /// - "XXHDPI" : XXHDPI screen density.
+  /// - "XXXHDPI" : XXXHDPI screen density.
+  core.String? densityAlias;
+
+  /// Value for density dpi.
+  core.int? densityDpi;
+
+  ScreenDensity({
+    this.densityAlias,
+    this.densityDpi,
+  });
+
+  ScreenDensity.fromJson(core.Map json_)
+      : this(
+          densityAlias: json_.containsKey('densityAlias')
+              ? json_['densityAlias'] as core.String
+              : null,
+          densityDpi: json_.containsKey('densityDpi')
+              ? json_['densityDpi'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (densityAlias != null) 'densityAlias': densityAlias!,
+        if (densityDpi != null) 'densityDpi': densityDpi!,
+      };
+}
+
+/// Targeting based on screen density.
+class ScreenDensityTargeting {
+  /// Targeting of other sibling directories that were in the Bundle.
+  ///
+  /// For main splits this is targeting of other main splits.
+  core.List<ScreenDensity>? alternatives;
+
+  /// Value of a screen density.
+  core.List<ScreenDensity>? value;
+
+  ScreenDensityTargeting({
+    this.alternatives,
+    this.value,
+  });
+
+  ScreenDensityTargeting.fromJson(core.Map json_)
+      : this(
+          alternatives: json_.containsKey('alternatives')
+              ? (json_['alternatives'] as core.List)
+                  .map((value) => ScreenDensity.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          value: json_.containsKey('value')
+              ? (json_['value'] as core.List)
+                  .map((value) => ScreenDensity.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (alternatives != null) 'alternatives': alternatives!,
+        if (value != null) 'value': value!,
+      };
+}
+
+/// Represents an sdk version.
+class SdkVersion {
+  /// Inclusive minimum value of an sdk version.
+  core.int? min;
+
+  SdkVersion({
+    this.min,
+  });
+
+  SdkVersion.fromJson(core.Map json_)
+      : this(
+          min: json_.containsKey('min') ? json_['min'] as core.int : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (min != null) 'min': min!,
+      };
+}
+
+/// Targeting based on sdk version.
+class SdkVersionTargeting {
+  /// Targeting of other sibling directories that were in the Bundle.
+  ///
+  /// For main splits this is targeting of other main splits.
+  core.List<SdkVersion>? alternatives;
+
+  /// Value of an sdk version.
+  core.List<SdkVersion>? value;
+
+  SdkVersionTargeting({
+    this.alternatives,
+    this.value,
+  });
+
+  SdkVersionTargeting.fromJson(core.Map json_)
+      : this(
+          alternatives: json_.containsKey('alternatives')
+              ? (json_['alternatives'] as core.List)
+                  .map((value) => SdkVersion.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          value: json_.containsKey('value')
+              ? (json_['value'] as core.List)
+                  .map((value) => SdkVersion.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (alternatives != null) 'alternatives': alternatives!,
+        if (value != null) 'value': value!,
+      };
+}
+
+/// Holds data specific to Split APKs.
+class SplitApkMetadata {
+  /// Indicates whether this APK is the main split of the module.
+  core.bool? isMasterSplit;
+
+  /// Id of the split.
+  core.String? splitId;
+
+  SplitApkMetadata({
+    this.isMasterSplit,
+    this.splitId,
+  });
+
+  SplitApkMetadata.fromJson(core.Map json_)
+      : this(
+          isMasterSplit: json_.containsKey('isMasterSplit')
+              ? json_['isMasterSplit'] as core.bool
+              : null,
+          splitId: json_.containsKey('splitId')
+              ? json_['splitId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (isMasterSplit != null) 'isMasterSplit': isMasterSplit!,
+        if (splitId != null) 'splitId': splitId!,
+      };
+}
+
+/// Variant is a group of APKs that covers a part of the device configuration
+/// space.
+///
+/// APKs from multiple variants are never combined on one device.
+class SplitApkVariant {
+  /// Set of APKs, one set per module.
+  core.List<ApkSet>? apkSet;
+
+  /// Variant-level targeting.
+  VariantTargeting? targeting;
+
+  /// Number of the variant, starting at 0 (unless overridden).
+  ///
+  /// A device will receive APKs from the first variant that matches the device
+  /// configuration, with higher variant numbers having priority over lower
+  /// variant numbers.
+  core.int? variantNumber;
+
+  SplitApkVariant({
+    this.apkSet,
+    this.targeting,
+    this.variantNumber,
+  });
+
+  SplitApkVariant.fromJson(core.Map json_)
+      : this(
+          apkSet: json_.containsKey('apkSet')
+              ? (json_['apkSet'] as core.List)
+                  .map((value) => ApkSet.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          targeting: json_.containsKey('targeting')
+              ? VariantTargeting.fromJson(
+                  json_['targeting'] as core.Map<core.String, core.dynamic>)
+              : null,
+          variantNumber: json_.containsKey('variantNumber')
+              ? json_['variantNumber'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (apkSet != null) 'apkSet': apkSet!,
+        if (targeting != null) 'targeting': targeting!,
+        if (variantNumber != null) 'variantNumber': variantNumber!,
+      };
+}
+
+/// Holds data specific to Standalone APKs.
+class StandaloneApkMetadata {
+  /// Names of the modules fused in this standalone APK.
+  core.List<core.String>? fusedModuleName;
+
+  StandaloneApkMetadata({
+    this.fusedModuleName,
+  });
+
+  StandaloneApkMetadata.fromJson(core.Map json_)
+      : this(
+          fusedModuleName: json_.containsKey('fusedModuleName')
+              ? (json_['fusedModuleName'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fusedModuleName != null) 'fusedModuleName': fusedModuleName!,
       };
 }
 
@@ -9070,6 +10662,71 @@ class SubscriptionDeferralInfo {
           'desiredExpiryTimeMillis': desiredExpiryTimeMillis!,
         if (expectedExpiryTimeMillis != null)
           'expectedExpiryTimeMillis': expectedExpiryTimeMillis!,
+      };
+}
+
+/// Price change related information of a subscription item.
+class SubscriptionItemPriceChangeDetails {
+  /// The renewal time at which the price change will become effective for the
+  /// user.
+  ///
+  /// This is subject to change(to a future time) due to cases where the renewal
+  /// time shifts like pause.
+  core.String? expectedNewPriceChargeTime;
+
+  /// New recurring price for the subscription item.
+  Money? newPrice;
+
+  /// Price change mode specifies how the subscription item price is changing.
+  /// Possible string values are:
+  /// - "PRICE_CHANGE_MODE_UNSPECIFIED" : Price change mode unspecified. This
+  /// value should never be set.
+  /// - "PRICE_DECREASE" : If the subscription price is decreasing.
+  /// - "PRICE_INCREASE" : If the subscription price is increasing and the user
+  /// needs to accept it.
+  core.String? priceChangeMode;
+
+  /// State the price change is currently in.
+  /// Possible string values are:
+  /// - "PRICE_CHANGE_STATE_UNSPECIFIED" : Price change state unspecified. This
+  /// value should not be used.
+  /// - "OUTSTANDING" : Waiting for the user to agree for the price change.
+  /// - "CONFIRMED" : The price change is confirmed to happen for the user.
+  /// - "APPLIED" : The price change is applied, i.e. the user has started being
+  /// charged the new price.
+  core.String? priceChangeState;
+
+  SubscriptionItemPriceChangeDetails({
+    this.expectedNewPriceChargeTime,
+    this.newPrice,
+    this.priceChangeMode,
+    this.priceChangeState,
+  });
+
+  SubscriptionItemPriceChangeDetails.fromJson(core.Map json_)
+      : this(
+          expectedNewPriceChargeTime:
+              json_.containsKey('expectedNewPriceChargeTime')
+                  ? json_['expectedNewPriceChargeTime'] as core.String
+                  : null,
+          newPrice: json_.containsKey('newPrice')
+              ? Money.fromJson(
+                  json_['newPrice'] as core.Map<core.String, core.dynamic>)
+              : null,
+          priceChangeMode: json_.containsKey('priceChangeMode')
+              ? json_['priceChangeMode'] as core.String
+              : null,
+          priceChangeState: json_.containsKey('priceChangeState')
+              ? json_['priceChangeState'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (expectedNewPriceChargeTime != null)
+          'expectedNewPriceChargeTime': expectedNewPriceChargeTime!,
+        if (newPrice != null) 'newPrice': newPrice!,
+        if (priceChangeMode != null) 'priceChangeMode': priceChangeMode!,
+        if (priceChangeState != null) 'priceChangeState': priceChangeState!,
       };
 }
 
@@ -9766,11 +11423,17 @@ class SubscriptionPurchaseLineItem {
   /// The item is auto renewing.
   AutoRenewingPlan? autoRenewingPlan;
 
+  /// Information for deferred item replacement.
+  DeferredItemReplacement? deferredItemReplacement;
+
   /// Time at which the subscription expired or will expire unless the access is
   /// extended (ex.
   ///
   /// renews).
   core.String? expiryTime;
+
+  /// The offer details for this item.
+  OfferDetails? offerDetails;
 
   /// The item is prepaid.
   PrepaidPlan? prepaidPlan;
@@ -9780,7 +11443,9 @@ class SubscriptionPurchaseLineItem {
 
   SubscriptionPurchaseLineItem({
     this.autoRenewingPlan,
+    this.deferredItemReplacement,
     this.expiryTime,
+    this.offerDetails,
     this.prepaidPlan,
     this.productId,
   });
@@ -9791,8 +11456,17 @@ class SubscriptionPurchaseLineItem {
               ? AutoRenewingPlan.fromJson(json_['autoRenewingPlan']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          deferredItemReplacement: json_.containsKey('deferredItemReplacement')
+              ? DeferredItemReplacement.fromJson(
+                  json_['deferredItemReplacement']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           expiryTime: json_.containsKey('expiryTime')
               ? json_['expiryTime'] as core.String
+              : null,
+          offerDetails: json_.containsKey('offerDetails')
+              ? OfferDetails.fromJson(
+                  json_['offerDetails'] as core.Map<core.String, core.dynamic>)
               : null,
           prepaidPlan: json_.containsKey('prepaidPlan')
               ? PrepaidPlan.fromJson(
@@ -9805,7 +11479,10 @@ class SubscriptionPurchaseLineItem {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (autoRenewingPlan != null) 'autoRenewingPlan': autoRenewingPlan!,
+        if (deferredItemReplacement != null)
+          'deferredItemReplacement': deferredItemReplacement!,
         if (expiryTime != null) 'expiryTime': expiryTime!,
+        if (offerDetails != null) 'offerDetails': offerDetails!,
         if (prepaidPlan != null) 'prepaidPlan': prepaidPlan!,
         if (productId != null) 'productId': productId!,
       };
@@ -10077,10 +11754,10 @@ class SubscriptionTaxAndComplianceSettings {
               ? (json_['taxRateInfoByRegionCode']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     RegionalTaxRateInfo.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -10140,6 +11817,49 @@ class SystemFeature {
 /// Information specific to cancellations initiated by Google system.
 typedef SystemInitiatedCancellation = $Empty;
 
+/// Targeting information about the generated apks.
+class TargetingInfo {
+  /// List of created asset slices.
+  core.List<AssetSliceSet>? assetSliceSet;
+
+  /// The package name of this app.
+  core.String? packageName;
+
+  /// List of the created variants.
+  core.List<SplitApkVariant>? variant;
+
+  TargetingInfo({
+    this.assetSliceSet,
+    this.packageName,
+    this.variant,
+  });
+
+  TargetingInfo.fromJson(core.Map json_)
+      : this(
+          assetSliceSet: json_.containsKey('assetSliceSet')
+              ? (json_['assetSliceSet'] as core.List)
+                  .map((value) => AssetSliceSet.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          packageName: json_.containsKey('packageName')
+              ? json_['packageName'] as core.String
+              : null,
+          variant: json_.containsKey('variant')
+              ? (json_['variant'] as core.List)
+                  .map((value) => SplitApkVariant.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (assetSliceSet != null) 'assetSliceSet': assetSliceSet!,
+        if (packageName != null) 'packageName': packageName!,
+        if (variant != null) 'variant': variant!,
+      };
+}
+
 /// Defines the scope of subscriptions which a targeting rule can match to
 /// target offers to users based on past or current entitlement.
 class TargetingRuleScope {
@@ -10194,6 +11914,75 @@ class Testers {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (googleGroups != null) 'googleGroups': googleGroups!,
+      };
+}
+
+/// Represents texture compression format.
+class TextureCompressionFormat {
+  /// Alias for texture compression format.
+  /// Possible string values are:
+  /// - "UNSPECIFIED_TEXTURE_COMPRESSION_FORMAT" : Unspecified format.
+  /// - "ETC1_RGB8" : ETC1_RGB8 format.
+  /// - "PALETTED" : PALETTED format.
+  /// - "THREE_DC" : THREE_DC format.
+  /// - "ATC" : ATC format.
+  /// - "LATC" : LATC format.
+  /// - "DXT1" : DXT1 format.
+  /// - "S3TC" : S3TC format.
+  /// - "PVRTC" : PVRTC format.
+  /// - "ASTC" : ASTC format.
+  /// - "ETC2" : ETC2 format.
+  core.String? alias;
+
+  TextureCompressionFormat({
+    this.alias,
+  });
+
+  TextureCompressionFormat.fromJson(core.Map json_)
+      : this(
+          alias:
+              json_.containsKey('alias') ? json_['alias'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (alias != null) 'alias': alias!,
+      };
+}
+
+/// Targeting by a texture compression format.
+class TextureCompressionFormatTargeting {
+  /// List of alternative TCFs (TCFs targeted by the sibling splits).
+  core.List<TextureCompressionFormat>? alternatives;
+
+  /// The list of targeted TCFs.
+  ///
+  /// Should not be empty.
+  core.List<TextureCompressionFormat>? value;
+
+  TextureCompressionFormatTargeting({
+    this.alternatives,
+    this.value,
+  });
+
+  TextureCompressionFormatTargeting.fromJson(core.Map json_)
+      : this(
+          alternatives: json_.containsKey('alternatives')
+              ? (json_['alternatives'] as core.List)
+                  .map((value) => TextureCompressionFormat.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          value: json_.containsKey('value')
+              ? (json_['value'] as core.List)
+                  .map((value) => TextureCompressionFormat.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (alternatives != null) 'alternatives': alternatives!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -10252,6 +12041,10 @@ class Track {
   core.List<TrackRelease>? releases;
 
   /// Identifier of the track.
+  ///
+  /// Form factor tracks have a special prefix as an identifier, for example
+  /// `wear:production`, `automotive:production`.
+  /// [More on track name](https://developers.google.com/android-publisher/tracks#ff-track-name)
   core.String? track;
 
   Track({
@@ -10760,6 +12553,72 @@ class UserComment {
       };
 }
 
+/// Describes an inclusive/exclusive list of country codes that module targets.
+class UserCountriesTargeting {
+  /// List of country codes in the two-letter CLDR territory format.
+  core.List<core.String>? countryCodes;
+
+  /// Indicates if the list above is exclusive.
+  core.bool? exclude;
+
+  UserCountriesTargeting({
+    this.countryCodes,
+    this.exclude,
+  });
+
+  UserCountriesTargeting.fromJson(core.Map json_)
+      : this(
+          countryCodes: json_.containsKey('countryCodes')
+              ? (json_['countryCodes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          exclude: json_.containsKey('exclude')
+              ? json_['exclude'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (countryCodes != null) 'countryCodes': countryCodes!,
+        if (exclude != null) 'exclude': exclude!,
+      };
+}
+
+/// A set of user countries.
+///
+/// A country set determines what variation of app content gets served to a
+/// specific location.
+class UserCountrySet {
+  /// List of country codes representing countries.
+  ///
+  /// A Country code is represented in ISO 3166 alpha-2 format. For Example:-
+  /// "IT" for Italy, "GE" for Georgia.
+  core.List<core.String>? countryCodes;
+
+  /// Country set name.
+  core.String? name;
+
+  UserCountrySet({
+    this.countryCodes,
+    this.name,
+  });
+
+  UserCountrySet.fromJson(core.Map json_)
+      : this(
+          countryCodes: json_.containsKey('countryCodes')
+              ? (json_['countryCodes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (countryCodes != null) 'countryCodes': countryCodes!,
+        if (name != null) 'name': name!,
+      };
+}
+
 /// Information specific to cancellations initiated by users.
 class UserInitiatedCancellation {
   /// Information provided by the user when they complete the subscription
@@ -10853,6 +12712,70 @@ class Variant {
   core.Map<core.String, core.dynamic> toJson() => {
         if (deviceSpec != null) 'deviceSpec': deviceSpec!,
         if (variantId != null) 'variantId': variantId!,
+      };
+}
+
+/// Targeting on the level of variants.
+class VariantTargeting {
+  /// The abi that the variant targets
+  AbiTargeting? abiTargeting;
+
+  /// Multi-api-level targeting
+  MultiAbiTargeting? multiAbiTargeting;
+
+  /// The screen densities that this variant supports
+  ScreenDensityTargeting? screenDensityTargeting;
+
+  /// The sdk version that the variant targets
+  SdkVersionTargeting? sdkVersionTargeting;
+
+  /// Texture-compression-format-level targeting
+  TextureCompressionFormatTargeting? textureCompressionFormatTargeting;
+
+  VariantTargeting({
+    this.abiTargeting,
+    this.multiAbiTargeting,
+    this.screenDensityTargeting,
+    this.sdkVersionTargeting,
+    this.textureCompressionFormatTargeting,
+  });
+
+  VariantTargeting.fromJson(core.Map json_)
+      : this(
+          abiTargeting: json_.containsKey('abiTargeting')
+              ? AbiTargeting.fromJson(
+                  json_['abiTargeting'] as core.Map<core.String, core.dynamic>)
+              : null,
+          multiAbiTargeting: json_.containsKey('multiAbiTargeting')
+              ? MultiAbiTargeting.fromJson(json_['multiAbiTargeting']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          screenDensityTargeting: json_.containsKey('screenDensityTargeting')
+              ? ScreenDensityTargeting.fromJson(json_['screenDensityTargeting']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          sdkVersionTargeting: json_.containsKey('sdkVersionTargeting')
+              ? SdkVersionTargeting.fromJson(json_['sdkVersionTargeting']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          textureCompressionFormatTargeting:
+              json_.containsKey('textureCompressionFormatTargeting')
+                  ? TextureCompressionFormatTargeting.fromJson(
+                      json_['textureCompressionFormatTargeting']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (abiTargeting != null) 'abiTargeting': abiTargeting!,
+        if (multiAbiTargeting != null) 'multiAbiTargeting': multiAbiTargeting!,
+        if (screenDensityTargeting != null)
+          'screenDensityTargeting': screenDensityTargeting!,
+        if (sdkVersionTargeting != null)
+          'sdkVersionTargeting': sdkVersionTargeting!,
+        if (textureCompressionFormatTargeting != null)
+          'textureCompressionFormatTargeting':
+              textureCompressionFormatTargeting!,
       };
 }
 

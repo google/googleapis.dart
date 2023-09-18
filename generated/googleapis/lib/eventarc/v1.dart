@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Eventarc API - v1
@@ -27,7 +26,7 @@
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsProvidersResource]
 ///     - [ProjectsLocationsTriggersResource]
-library eventarc.v1;
+library eventarc_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -36,7 +35,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -611,7 +609,7 @@ class ProjectsLocationsChannelsResource {
   /// [channelId] - Required. The user-provided ID to be assigned to the
   /// channel.
   ///
-  /// [validateOnly] - Required. If set, validate the request and preview the
+  /// [validateOnly] - Optional. If set, validate the request and preview the
   /// review, but do not post it.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -658,7 +656,7 @@ class ProjectsLocationsChannelsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/channels/\[^/\]+$`.
   ///
-  /// [validateOnly] - Required. If set, validate the request and preview the
+  /// [validateOnly] - Optional. If set, validate the request and preview the
   /// review, but do not post it.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -856,7 +854,7 @@ class ProjectsLocationsChannelsResource {
   /// are updated. If no field mask is provided, all provided fields in the
   /// request are updated. To update all fields, provide a field mask of "*".
   ///
-  /// [validateOnly] - Required. If set, validate the request and preview the
+  /// [validateOnly] - Optional. If set, validate the request and preview the
   /// review, but do not post it.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1133,13 +1131,6 @@ class ProjectsLocationsOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -1307,7 +1298,7 @@ class ProjectsLocationsTriggersResource {
   /// [triggerId] - Required. The user-provided ID to be assigned to the
   /// trigger.
   ///
-  /// [validateOnly] - Required. If set, validate the request and preview the
+  /// [validateOnly] - Optional. If set, validate the request and preview the
   /// review, but do not post it.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1360,7 +1351,7 @@ class ProjectsLocationsTriggersResource {
   /// [etag] - If provided, the trigger will only be deleted if the etag matches
   /// the current etag on the resource.
   ///
-  /// [validateOnly] - Required. If set, validate the request and preview the
+  /// [validateOnly] - Optional. If set, validate the request and preview the
   /// review, but do not post it.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1572,7 +1563,7 @@ class ProjectsLocationsTriggersResource {
   /// are updated. If no field mask is provided, all provided fields in the
   /// request are updated. To update all fields, provide a field mask of "*".
   ///
-  /// [validateOnly] - Required. If set, validate the request and preview the
+  /// [validateOnly] - Optional. If set, validate the request and preview the
   /// review, but do not post it.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1801,7 +1792,9 @@ class Binding {
   /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
   /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
-  /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
+  /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
+  /// (primary) that represents all the users of that domain. For example,
+  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
   /// An email address (plus unique identifier) representing a user that has
   /// been recently deleted. For example,
   /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
@@ -1817,9 +1810,7 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
-  /// that represents all the users of that domain. For example, `google.com` or
-  /// `example.com`.
+  /// the role in the binding.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
@@ -1878,8 +1869,6 @@ class Channel {
   ///
   /// It must match the pattern `projects / * /locations / * /keyRings / *
   /// /cryptoKeys / * `.
-  ///
-  /// Optional.
   core.String? cryptoKeyName;
 
   /// The resource name of the channel.
@@ -2125,7 +2114,10 @@ class Destination {
   /// The Cloud Function resource name.
   ///
   /// Only Cloud Functions V2 is supported. Format:
-  /// `projects/{project}/locations/{location}/functions/{function}`
+  /// `projects/{project}/locations/{location}/functions/{function}` This is a
+  /// read-only field. Creating Cloud Functions V2 triggers is only supported
+  /// via the Cloud Functions product. An error will be returned if the user
+  /// sets this value.
   core.String? cloudFunction;
 
   /// Cloud Run fully-managed resource that receives the events.
@@ -2191,8 +2183,10 @@ typedef Empty = $Empty;
 class EventFilter {
   /// The name of a CloudEvents attribute.
   ///
-  /// Currently, only a subset of attributes are supported for filtering. All
-  /// triggers MUST provide a filter for the 'type' attribute.
+  /// Currently, only a subset of attributes are supported for filtering. You
+  /// can \[retrieve a specific provider's supported event
+  /// types\](/eventarc/docs/list-providers#describe-provider). All triggers
+  /// MUST provide a filter for the 'type' attribute.
   ///
   /// Required.
   core.String? attribute;
@@ -2200,7 +2194,8 @@ class EventFilter {
   /// The operator used for matching the events with the value of the filter.
   ///
   /// If not specified, only events that have an exact key-value pair specified
-  /// in the filter are matched. The only allowed value is `match-path-pattern`.
+  /// in the filter are matched. The allowed values are `path_pattern` and
+  /// `match-path-pattern`. `path_pattern` is only allowed for GCFv1 triggers.
   ///
   /// Optional.
   core.String? operator;
@@ -2834,7 +2829,7 @@ class ListTriggersResponse {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
+/// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -3087,7 +3082,7 @@ class SetIamPolicyRequest {
 class StateCondition {
   /// The canonical code of the condition.
   /// Possible string values are:
-  /// - "OK" : Not an error; returned on success HTTP Mapping: 200 OK
+  /// - "OK" : Not an error; returned on success. HTTP Mapping: 200 OK
   /// - "CANCELLED" : The operation was cancelled, typically by the caller. HTTP
   /// Mapping: 499 Client Closed Request
   /// - "UNKNOWN" : Unknown error. For example, this error may be returned when
@@ -3252,10 +3247,18 @@ class Trigger {
   /// Output only.
   core.String? etag;
 
-  /// null The list of filters that applies to event attributes.
+  /// EventDataContentType specifies the type of payload in MIME format that is
+  /// expected from the CloudEvent data field.
   ///
-  /// Only events that match all the provided filters are sent to the
-  /// destination.
+  /// This is set to `application/json` if the value is not defined.
+  ///
+  /// Optional.
+  core.String? eventDataContentType;
+
+  /// Unordered list.
+  ///
+  /// The list of filters that applies to event attributes. Only events that
+  /// match all the provided filters are sent to the destination.
   ///
   /// Required.
   core.List<EventFilter>? eventFilters;
@@ -3275,22 +3278,18 @@ class Trigger {
 
   /// The IAM service account email associated with the trigger.
   ///
-  /// The service account represents the identity of the trigger. The principal
-  /// who calls this API must have the `iam.serviceAccounts.actAs` permission in
-  /// the service account. See
-  /// https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common
-  /// for more information. For Cloud Run destinations, this service account is
-  /// used to generate identity tokens when invoking the service. See
-  /// https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account
-  /// for information on how to invoke authenticated Cloud Run services. To
-  /// create Audit Log triggers, the service account should also have the
-  /// `roles/eventarc.eventReceiver` IAM role.
+  /// The service account represents the identity of the trigger. The
+  /// `iam.serviceAccounts.actAs` permission must be granted on the service
+  /// account to allow a principal to impersonate the service account. For more
+  /// information, see the \[Roles and
+  /// permissions\](/eventarc/docs/all-roles-permissions) page specific to the
+  /// trigger destination.
   ///
   /// Optional.
   core.String? serviceAccount;
 
-  /// To deliver messages, Eventarc might use other GCP products as a transport
-  /// intermediary.
+  /// To deliver messages, Eventarc might use other Google Cloud products as a
+  /// transport intermediary.
   ///
   /// This field contains a reference to that transport intermediary. This
   /// information can be used for debugging purposes.
@@ -3317,6 +3316,7 @@ class Trigger {
     this.createTime,
     this.destination,
     this.etag,
+    this.eventDataContentType,
     this.eventFilters,
     this.labels,
     this.name,
@@ -3334,10 +3334,10 @@ class Trigger {
           conditions: json_.containsKey('conditions')
               ? (json_['conditions'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     StateCondition.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -3349,6 +3349,9 @@ class Trigger {
                   json_['destination'] as core.Map<core.String, core.dynamic>)
               : null,
           etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          eventDataContentType: json_.containsKey('eventDataContentType')
+              ? json_['eventDataContentType'] as core.String
+              : null,
           eventFilters: json_.containsKey('eventFilters')
               ? (json_['eventFilters'] as core.List)
                   .map((value) => EventFilter.fromJson(
@@ -3357,9 +3360,9 @@ class Trigger {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -3383,6 +3386,8 @@ class Trigger {
         if (createTime != null) 'createTime': createTime!,
         if (destination != null) 'destination': destination!,
         if (etag != null) 'etag': etag!,
+        if (eventDataContentType != null)
+          'eventDataContentType': eventDataContentType!,
         if (eventFilters != null) 'eventFilters': eventFilters!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,

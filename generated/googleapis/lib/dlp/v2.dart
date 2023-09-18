@@ -2,17 +2,16 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
-/// Cloud Data Loss Prevention (DLP) API - v2
+/// Cloud Data Loss Prevention (DLP) - v2
 ///
 /// Provides methods for detection, risk analysis, and de-identification of
 /// privacy-sensitive fragments in text, images, and Google Cloud Platform
@@ -51,7 +50,7 @@
 ///     - [ProjectsLocationsJobTriggersResource]
 ///     - [ProjectsLocationsStoredInfoTypesResource]
 ///   - [ProjectsStoredInfoTypesResource]
-library dlp.v2;
+library dlp_v2;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -60,7 +59,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -5797,8 +5795,10 @@ class GooglePrivacyDlpV2Action {
   /// Create a de-identified copy of the input data.
   GooglePrivacyDlpV2Deidentify? deidentify;
 
-  /// Enable email notification for project owners and editors on job's
-  /// completion/failure.
+  /// Sends an email when the job completes.
+  ///
+  /// The email goes to IAM project owners and technical
+  /// [Essential Contacts](https://cloud.google.com/resource-manager/docs/managing-notification-contacts).
   GooglePrivacyDlpV2JobNotificationEmails? jobNotificationEmails;
 
   /// Publish a notification to a Pub/Sub topic.
@@ -5877,6 +5877,29 @@ class GooglePrivacyDlpV2Action {
         if (publishToStackdriver != null)
           'publishToStackdriver': publishToStackdriver!,
         if (saveFindings != null) 'saveFindings': saveFindings!,
+      };
+}
+
+/// The results of an Action.
+class GooglePrivacyDlpV2ActionDetails {
+  /// Outcome of a de-identification action.
+  GooglePrivacyDlpV2DeidentifyDataSourceDetails? deidentifyDetails;
+
+  GooglePrivacyDlpV2ActionDetails({
+    this.deidentifyDetails,
+  });
+
+  GooglePrivacyDlpV2ActionDetails.fromJson(core.Map json_)
+      : this(
+          deidentifyDetails: json_.containsKey('deidentifyDetails')
+              ? GooglePrivacyDlpV2DeidentifyDataSourceDetails.fromJson(
+                  json_['deidentifyDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deidentifyDetails != null) 'deidentifyDetails': deidentifyDetails!,
       };
 }
 
@@ -6709,9 +6732,11 @@ class GooglePrivacyDlpV2CloudStorageOptions {
   /// Max number of bytes to scan from a file.
   ///
   /// If a scanned file's size is bigger than this value then the rest of the
-  /// bytes are omitted. Only one of bytes_limit_per_file and
-  /// bytes_limit_per_file_percent can be specified. Cannot be set if
-  /// de-identification is requested.
+  /// bytes are omitted. Only one of `bytes_limit_per_file` and
+  /// `bytes_limit_per_file_percent` can be specified. This field can't be set
+  /// if de-identification is requested. For certain file types, setting this
+  /// field has no effect. For more information, see
+  /// [Limits on bytes scanned per file](https://cloud.google.com/dlp/docs/supported-file-types#max-byte-size-per-file).
   core.String? bytesLimitPerFile;
 
   /// Max percentage of bytes to scan from a file.
@@ -6719,7 +6744,10 @@ class GooglePrivacyDlpV2CloudStorageOptions {
   /// The rest are omitted. The number of bytes scanned is rounded down. Must be
   /// between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to
   /// 0. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can
-  /// be specified. Cannot be set if de-identification is requested.
+  /// be specified. This field can't be set if de-identification is requested.
+  /// For certain file types, setting this field has no effect. For more
+  /// information, see
+  /// [Limits on bytes scanned per file](https://cloud.google.com/dlp/docs/supported-file-types#max-byte-size-per-file).
   core.int? bytesLimitPerFilePercent;
 
   /// The set of one or more files to scan.
@@ -7108,7 +7136,6 @@ class GooglePrivacyDlpV2Container {
       };
 }
 
-/// Container structure for the content to inspect.
 class GooglePrivacyDlpV2ContentItem {
   /// Content data to inspect or redact.
   ///
@@ -7804,15 +7831,24 @@ class GooglePrivacyDlpV2CustomInfoType {
   /// specified.
   /// Possible string values are:
   /// - "LIKELIHOOD_UNSPECIFIED" : Default value; same as POSSIBLE.
-  /// - "VERY_UNLIKELY" : Few matching elements.
-  /// - "UNLIKELY"
-  /// - "POSSIBLE" : Some matching elements.
-  /// - "LIKELY"
-  /// - "VERY_LIKELY" : Many matching elements.
+  /// - "VERY_UNLIKELY" : Highest chance of a false positive.
+  /// - "UNLIKELY" : High chance of a false positive.
+  /// - "POSSIBLE" : Some matching signals. The default value.
+  /// - "LIKELY" : Low chance of a false positive.
+  /// - "VERY_LIKELY" : Confidence level is high. Lowest chance of a false
+  /// positive.
   core.String? likelihood;
 
   /// Regular expression based CustomInfoType.
   GooglePrivacyDlpV2Regex? regex;
+
+  /// Sensitivity for this CustomInfoType.
+  ///
+  /// If this CustomInfoType extends an existing InfoType, the sensitivity here
+  /// will take precedent over that of the original InfoType. If unset for a
+  /// CustomInfoType, it will default to HIGH. This only applies to data
+  /// profiling.
+  GooglePrivacyDlpV2SensitivityScore? sensitivityScore;
 
   /// Load an existing `StoredInfoType` resource for use in `InspectDataSource`.
   ///
@@ -7830,6 +7866,7 @@ class GooglePrivacyDlpV2CustomInfoType {
     this.infoType,
     this.likelihood,
     this.regex,
+    this.sensitivityScore,
     this.storedType,
     this.surrogateType,
   });
@@ -7860,6 +7897,11 @@ class GooglePrivacyDlpV2CustomInfoType {
               ? GooglePrivacyDlpV2Regex.fromJson(
                   json_['regex'] as core.Map<core.String, core.dynamic>)
               : null,
+          sensitivityScore: json_.containsKey('sensitivityScore')
+              ? GooglePrivacyDlpV2SensitivityScore.fromJson(
+                  json_['sensitivityScore']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           storedType: json_.containsKey('storedType')
               ? GooglePrivacyDlpV2StoredType.fromJson(
                   json_['storedType'] as core.Map<core.String, core.dynamic>)
@@ -7877,6 +7919,7 @@ class GooglePrivacyDlpV2CustomInfoType {
         if (infoType != null) 'infoType': infoType!,
         if (likelihood != null) 'likelihood': likelihood!,
         if (regex != null) 'regex': regex!,
+        if (sensitivityScore != null) 'sensitivityScore': sensitivityScore!,
         if (storedType != null) 'storedType': storedType!,
         if (surrogateType != null) 'surrogateType': surrogateType!,
       };
@@ -8251,7 +8294,8 @@ class GooglePrivacyDlpV2DeidentifyContentRequest {
 
   /// The item to de-identify.
   ///
-  /// Will be treated as text.
+  /// Will be treated as text. This value must be of type Table if your
+  /// deidentify_config is a RecordTransformations object.
   GooglePrivacyDlpV2ContentItem? item;
 
   /// This field has no effect.
@@ -8334,6 +8378,79 @@ class GooglePrivacyDlpV2DeidentifyContentResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (item != null) 'item': item!,
         if (overview != null) 'overview': overview!,
+      };
+}
+
+/// The results of a Deidentify action from an inspect job.
+class GooglePrivacyDlpV2DeidentifyDataSourceDetails {
+  /// Stats about the de-identification operation.
+  GooglePrivacyDlpV2DeidentifyDataSourceStats? deidentifyStats;
+
+  /// De-identification config used for the request.
+  GooglePrivacyDlpV2RequestedDeidentifyOptions? requestedOptions;
+
+  GooglePrivacyDlpV2DeidentifyDataSourceDetails({
+    this.deidentifyStats,
+    this.requestedOptions,
+  });
+
+  GooglePrivacyDlpV2DeidentifyDataSourceDetails.fromJson(core.Map json_)
+      : this(
+          deidentifyStats: json_.containsKey('deidentifyStats')
+              ? GooglePrivacyDlpV2DeidentifyDataSourceStats.fromJson(
+                  json_['deidentifyStats']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          requestedOptions: json_.containsKey('requestedOptions')
+              ? GooglePrivacyDlpV2RequestedDeidentifyOptions.fromJson(
+                  json_['requestedOptions']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deidentifyStats != null) 'deidentifyStats': deidentifyStats!,
+        if (requestedOptions != null) 'requestedOptions': requestedOptions!,
+      };
+}
+
+/// Summary of what was modified during a transformation.
+class GooglePrivacyDlpV2DeidentifyDataSourceStats {
+  /// Number of successfully applied transformations.
+  core.String? transformationCount;
+
+  /// Number of errors encountered while trying to apply transformations.
+  core.String? transformationErrorCount;
+
+  /// Total size in bytes that were transformed in some way.
+  core.String? transformedBytes;
+
+  GooglePrivacyDlpV2DeidentifyDataSourceStats({
+    this.transformationCount,
+    this.transformationErrorCount,
+    this.transformedBytes,
+  });
+
+  GooglePrivacyDlpV2DeidentifyDataSourceStats.fromJson(core.Map json_)
+      : this(
+          transformationCount: json_.containsKey('transformationCount')
+              ? json_['transformationCount'] as core.String
+              : null,
+          transformationErrorCount:
+              json_.containsKey('transformationErrorCount')
+                  ? json_['transformationErrorCount'] as core.String
+                  : null,
+          transformedBytes: json_.containsKey('transformedBytes')
+              ? json_['transformedBytes'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (transformationCount != null)
+          'transformationCount': transformationCount!,
+        if (transformationErrorCount != null)
+          'transformationErrorCount': transformationErrorCount!,
+        if (transformedBytes != null) 'transformedBytes': transformedBytes!,
       };
 }
 
@@ -8697,6 +8814,9 @@ class GooglePrivacyDlpV2Dictionary {
 
 /// Combines all of the information about a DLP job.
 class GooglePrivacyDlpV2DlpJob {
+  /// Events that should occur after the job has completed.
+  core.List<GooglePrivacyDlpV2ActionDetails>? actionDetails;
+
   /// Time when the job was created.
   core.String? createTime;
 
@@ -8745,6 +8865,7 @@ class GooglePrivacyDlpV2DlpJob {
   core.String? type;
 
   GooglePrivacyDlpV2DlpJob({
+    this.actionDetails,
     this.createTime,
     this.endTime,
     this.errors,
@@ -8759,6 +8880,12 @@ class GooglePrivacyDlpV2DlpJob {
 
   GooglePrivacyDlpV2DlpJob.fromJson(core.Map json_)
       : this(
+          actionDetails: json_.containsKey('actionDetails')
+              ? (json_['actionDetails'] as core.List)
+                  .map((value) => GooglePrivacyDlpV2ActionDetails.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
               : null,
@@ -8793,6 +8920,7 @@ class GooglePrivacyDlpV2DlpJob {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (actionDetails != null) 'actionDetails': actionDetails!,
         if (createTime != null) 'createTime': createTime!,
         if (endTime != null) 'endTime': endTime!,
         if (errors != null) 'errors': errors!,
@@ -8889,6 +9017,45 @@ class GooglePrivacyDlpV2Error {
       };
 }
 
+/// The rule to exclude findings based on a hotword.
+///
+/// For record inspection of tables, column names are considered hotwords. An
+/// example of this is to exclude a finding if it belongs to a BigQuery column
+/// that matches a specific pattern.
+class GooglePrivacyDlpV2ExcludeByHotword {
+  /// Regular expression pattern defining what qualifies as a hotword.
+  GooglePrivacyDlpV2Regex? hotwordRegex;
+
+  /// Range of characters within which the entire hotword must reside.
+  ///
+  /// The total length of the window cannot exceed 1000 characters. The
+  /// windowBefore property in proximity should be set to 1 if the hotword needs
+  /// to be included in a column header.
+  GooglePrivacyDlpV2Proximity? proximity;
+
+  GooglePrivacyDlpV2ExcludeByHotword({
+    this.hotwordRegex,
+    this.proximity,
+  });
+
+  GooglePrivacyDlpV2ExcludeByHotword.fromJson(core.Map json_)
+      : this(
+          hotwordRegex: json_.containsKey('hotwordRegex')
+              ? GooglePrivacyDlpV2Regex.fromJson(
+                  json_['hotwordRegex'] as core.Map<core.String, core.dynamic>)
+              : null,
+          proximity: json_.containsKey('proximity')
+              ? GooglePrivacyDlpV2Proximity.fromJson(
+                  json_['proximity'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (hotwordRegex != null) 'hotwordRegex': hotwordRegex!,
+        if (proximity != null) 'proximity': proximity!,
+      };
+}
+
 /// List of excluded infoTypes.
 class GooglePrivacyDlpV2ExcludeInfoTypes {
   /// InfoType list in ExclusionRule rule drops a finding when it overlaps or
@@ -8927,6 +9094,11 @@ class GooglePrivacyDlpV2ExclusionRule {
   /// Dictionary which defines the rule.
   GooglePrivacyDlpV2Dictionary? dictionary;
 
+  /// Drop if the hotword rule is contained in the proximate context.
+  ///
+  /// For tabular data, the context includes the column name.
+  GooglePrivacyDlpV2ExcludeByHotword? excludeByHotword;
+
   /// Set of infoTypes for which findings would affect this rule.
   GooglePrivacyDlpV2ExcludeInfoTypes? excludeInfoTypes;
 
@@ -8951,6 +9123,7 @@ class GooglePrivacyDlpV2ExclusionRule {
 
   GooglePrivacyDlpV2ExclusionRule({
     this.dictionary,
+    this.excludeByHotword,
     this.excludeInfoTypes,
     this.matchingType,
     this.regex,
@@ -8961,6 +9134,11 @@ class GooglePrivacyDlpV2ExclusionRule {
           dictionary: json_.containsKey('dictionary')
               ? GooglePrivacyDlpV2Dictionary.fromJson(
                   json_['dictionary'] as core.Map<core.String, core.dynamic>)
+              : null,
+          excludeByHotword: json_.containsKey('excludeByHotword')
+              ? GooglePrivacyDlpV2ExcludeByHotword.fromJson(
+                  json_['excludeByHotword']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           excludeInfoTypes: json_.containsKey('excludeInfoTypes')
               ? GooglePrivacyDlpV2ExcludeInfoTypes.fromJson(
@@ -8978,6 +9156,7 @@ class GooglePrivacyDlpV2ExclusionRule {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dictionary != null) 'dictionary': dictionary!,
+        if (excludeByHotword != null) 'excludeByHotword': excludeByHotword!,
         if (excludeInfoTypes != null) 'excludeInfoTypes': excludeInfoTypes!,
         if (matchingType != null) 'matchingType': matchingType!,
         if (regex != null) 'regex': regex!,
@@ -9176,11 +9355,12 @@ class GooglePrivacyDlpV2Finding {
   /// Confidence of how likely it is that the `info_type` is correct.
   /// Possible string values are:
   /// - "LIKELIHOOD_UNSPECIFIED" : Default value; same as POSSIBLE.
-  /// - "VERY_UNLIKELY" : Few matching elements.
-  /// - "UNLIKELY"
-  /// - "POSSIBLE" : Some matching elements.
-  /// - "LIKELY"
-  /// - "VERY_LIKELY" : Many matching elements.
+  /// - "VERY_UNLIKELY" : Highest chance of a false positive.
+  /// - "UNLIKELY" : High chance of a false positive.
+  /// - "POSSIBLE" : Some matching signals. The default value.
+  /// - "LIKELY" : Low chance of a false positive.
+  /// - "VERY_LIKELY" : Confidence level is high. Lowest chance of a false
+  /// positive.
   core.String? likelihood;
 
   /// Where the content was found.
@@ -9248,9 +9428,9 @@ class GooglePrivacyDlpV2Finding {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -9304,17 +9484,22 @@ class GooglePrivacyDlpV2FindingLimits {
   /// Configuration of findings limit given for specified infoTypes.
   core.List<GooglePrivacyDlpV2InfoTypeLimit>? maxFindingsPerInfoType;
 
-  /// Max number of findings that will be returned for each item scanned.
+  /// Max number of findings that are returned for each item scanned.
   ///
-  /// When set within `InspectJobConfig`, the maximum returned is 2000
-  /// regardless if this is set higher. When set within `InspectContentRequest`,
-  /// this field is ignored.
+  /// When set within an InspectContentRequest, this field is ignored. This
+  /// value isn't a hard limit. If the number of findings for an item reaches
+  /// this limit, the inspection of that item ends gradually, not abruptly.
+  /// Therefore, the actual number of findings that Cloud DLP returns for the
+  /// item can be multiple times higher than this value.
   core.int? maxFindingsPerItem;
 
-  /// Max number of findings that will be returned per request/job.
+  /// Max number of findings that are returned per request or job.
   ///
-  /// When set within `InspectContentRequest`, the maximum returned is 2000
-  /// regardless if this is set higher.
+  /// If you set this field in an InspectContentRequest, the resulting maximum
+  /// value is the value that you set or 3,000, whichever is lower. This value
+  /// isn't a hard limit. If an inspection reaches this limit, the inspection
+  /// ends gradually, not abruptly. Therefore, the actual number of findings
+  /// that Cloud DLP returns can be multiple times higher than this value.
   core.int? maxFindingsPerRequest;
 
   GooglePrivacyDlpV2FindingLimits({
@@ -9566,9 +9751,9 @@ class GooglePrivacyDlpV2HybridFindingDetails {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -9725,9 +9910,9 @@ class GooglePrivacyDlpV2HybridOptions {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -9914,20 +10099,31 @@ class GooglePrivacyDlpV2InfoType {
   /// the names listed at https://cloud.google.com/dlp/docs/infotypes-reference
   /// when specifying a built-in type. When sending Cloud DLP results to Data
   /// Catalog, infoType names should conform to the pattern
-  /// `[A-Za-z0-9$-_]{1,64}`.
+  /// `[A-Za-z0-9$_-]{1,64}`.
   core.String? name;
+
+  /// Optional custom sensitivity for this InfoType.
+  ///
+  /// This only applies to data profiling.
+  GooglePrivacyDlpV2SensitivityScore? sensitivityScore;
 
   /// Optional version name for this InfoType.
   core.String? version;
 
   GooglePrivacyDlpV2InfoType({
     this.name,
+    this.sensitivityScore,
     this.version,
   });
 
   GooglePrivacyDlpV2InfoType.fromJson(core.Map json_)
       : this(
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          sensitivityScore: json_.containsKey('sensitivityScore')
+              ? GooglePrivacyDlpV2SensitivityScore.fromJson(
+                  json_['sensitivityScore']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           version: json_.containsKey('version')
               ? json_['version'] as core.String
               : null,
@@ -9935,6 +10131,7 @@ class GooglePrivacyDlpV2InfoType {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
+        if (sensitivityScore != null) 'sensitivityScore': sensitivityScore!,
         if (version != null) 'version': version!,
       };
 }
@@ -9965,6 +10162,7 @@ class GooglePrivacyDlpV2InfoTypeCategory {
   /// - "CHILE" : The infoType is typically used in Chile.
   /// - "CHINA" : The infoType is typically used in China.
   /// - "COLOMBIA" : The infoType is typically used in Colombia.
+  /// - "CROATIA" : The infoType is typically used in Croatia.
   /// - "DENMARK" : The infoType is typically used in Denmark.
   /// - "FRANCE" : The infoType is typically used in France.
   /// - "FINLAND" : The infoType is typically used in Finland.
@@ -9978,6 +10176,7 @@ class GooglePrivacyDlpV2InfoTypeCategory {
   /// - "JAPAN" : The infoType is typically used in Japan.
   /// - "KOREA" : The infoType is typically used in Korea.
   /// - "MEXICO" : The infoType is typically used in Mexico.
+  /// - "NEW_ZEALAND" : The infoType is typically used in New Zealand.
   /// - "THE_NETHERLANDS" : The infoType is typically used in the Netherlands.
   /// - "NORWAY" : The infoType is typically used in Norway.
   /// - "PARAGUAY" : The infoType is typically used in Paraguay.
@@ -10059,6 +10258,9 @@ class GooglePrivacyDlpV2InfoTypeDescription {
   /// Internal name of the infoType.
   core.String? name;
 
+  /// The default sensitivity of the infoType.
+  GooglePrivacyDlpV2SensitivityScore? sensitivityScore;
+
   /// Which parts of the API supports this InfoType.
   core.List<core.String>? supportedBy;
 
@@ -10070,6 +10272,7 @@ class GooglePrivacyDlpV2InfoTypeDescription {
     this.description,
     this.displayName,
     this.name,
+    this.sensitivityScore,
     this.supportedBy,
     this.versions,
   });
@@ -10089,6 +10292,11 @@ class GooglePrivacyDlpV2InfoTypeDescription {
               ? json_['displayName'] as core.String
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          sensitivityScore: json_.containsKey('sensitivityScore')
+              ? GooglePrivacyDlpV2SensitivityScore.fromJson(
+                  json_['sensitivityScore']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           supportedBy: json_.containsKey('supportedBy')
               ? (json_['supportedBy'] as core.List)
                   .map((value) => value as core.String)
@@ -10107,6 +10315,7 @@ class GooglePrivacyDlpV2InfoTypeDescription {
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
         if (name != null) 'name': name!,
+        if (sensitivityScore != null) 'sensitivityScore': sensitivityScore!,
         if (supportedBy != null) 'supportedBy': supportedBy!,
         if (versions != null) 'versions': versions!,
       };
@@ -10291,7 +10500,11 @@ class GooglePrivacyDlpV2InspectConfig {
   /// images, finding limits don't apply. They can cause unexpected or
   /// inconsistent results, where only some data is redacted. Don't include
   /// finding limits in RedactImage requests. Otherwise, Cloud DLP returns an
-  /// error.
+  /// error. When set within an InspectJobConfig, the specified maximum values
+  /// aren't hard limits. If an inspection job reaches these limits, the job
+  /// ends gradually, not abruptly. Therefore, the actual number of findings
+  /// that Cloud DLP returns can be multiple times higher than these maximum
+  /// values.
   GooglePrivacyDlpV2FindingLimits? limits;
 
   /// Only returns findings equal or above this threshold.
@@ -10300,11 +10513,12 @@ class GooglePrivacyDlpV2InspectConfig {
   /// to learn more.
   /// Possible string values are:
   /// - "LIKELIHOOD_UNSPECIFIED" : Default value; same as POSSIBLE.
-  /// - "VERY_UNLIKELY" : Few matching elements.
-  /// - "UNLIKELY"
-  /// - "POSSIBLE" : Some matching elements.
-  /// - "LIKELY"
-  /// - "VERY_LIKELY" : Many matching elements.
+  /// - "VERY_UNLIKELY" : Highest chance of a false positive.
+  /// - "UNLIKELY" : High chance of a false positive.
+  /// - "POSSIBLE" : Some matching signals. The default value.
+  /// - "LIKELY" : Low chance of a false positive.
+  /// - "VERY_LIKELY" : Confidence level is high. Lowest chance of a false
+  /// positive.
   core.String? minLikelihood;
 
   /// Set of rules to apply to the findings for this InspectConfig.
@@ -11604,11 +11818,12 @@ class GooglePrivacyDlpV2LikelihoodAdjustment {
   /// Set the likelihood of a finding to a fixed value.
   /// Possible string values are:
   /// - "LIKELIHOOD_UNSPECIFIED" : Default value; same as POSSIBLE.
-  /// - "VERY_UNLIKELY" : Few matching elements.
-  /// - "UNLIKELY"
-  /// - "POSSIBLE" : Some matching elements.
-  /// - "LIKELY"
-  /// - "VERY_LIKELY" : Many matching elements.
+  /// - "VERY_UNLIKELY" : Highest chance of a false positive.
+  /// - "UNLIKELY" : High chance of a false positive.
+  /// - "POSSIBLE" : Some matching signals. The default value.
+  /// - "LIKELY" : Low chance of a false positive.
+  /// - "VERY_LIKELY" : Confidence level is high. Lowest chance of a false
+  /// positive.
   core.String? fixedLikelihood;
 
   /// Increase or decrease the likelihood by the specified number of levels.
@@ -12404,16 +12619,15 @@ class GooglePrivacyDlpV2Proximity {
 /// Inspect
 typedef GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog = $Empty;
 
-/// Publish the result summary of a DlpJob to the Cloud Security Command Center
-/// (CSCC Alpha).
+/// Publish the result summary of a DlpJob to
+/// [Security Command Center](https://cloud.google.com/security-command-center).
 ///
-/// This action is only available for projects which are parts of an
-/// organization and whitelisted for the alpha Cloud Security Command Center.
-/// The action will publish the count of finding instances and their info types.
-/// The summary of findings will be persisted in CSCC and are governed by CSCC
-/// service-specific policy, see https://cloud.google.com/terms/service-terms
-/// Only a single instance of this action can be specified. Compatible with:
-/// Inspect
+/// This action is available for only projects that belong to an organization.
+/// This action publishes the count of finding instances and their infoTypes.
+/// The summary of findings are persisted in Security Command Center and are
+/// governed by \[service-specific policies for Security Command
+/// Center\](https://cloud.google.com/terms/service-terms). Only a single
+/// instance of this action can be specified. Compatible with: Inspect
 typedef GooglePrivacyDlpV2PublishSummaryToCscc = $Empty;
 
 /// Publish a message into a given Pub/Sub topic when DlpJob has completed.
@@ -13124,6 +13338,59 @@ class GooglePrivacyDlpV2ReplaceValueConfig {
 /// Replace each matching finding with the name of the info_type.
 typedef GooglePrivacyDlpV2ReplaceWithInfoTypeConfig = $Empty;
 
+/// De-id options.
+class GooglePrivacyDlpV2RequestedDeidentifyOptions {
+  /// Snapshot of the state of the `DeidentifyTemplate` from the Deidentify
+  /// action at the time this job was run.
+  GooglePrivacyDlpV2DeidentifyTemplate? snapshotDeidentifyTemplate;
+
+  /// Snapshot of the state of the image transformation `DeidentifyTemplate`
+  /// from the `Deidentify` action at the time this job was run.
+  GooglePrivacyDlpV2DeidentifyTemplate? snapshotImageRedactTemplate;
+
+  /// Snapshot of the state of the structured `DeidentifyTemplate` from the
+  /// `Deidentify` action at the time this job was run.
+  GooglePrivacyDlpV2DeidentifyTemplate? snapshotStructuredDeidentifyTemplate;
+
+  GooglePrivacyDlpV2RequestedDeidentifyOptions({
+    this.snapshotDeidentifyTemplate,
+    this.snapshotImageRedactTemplate,
+    this.snapshotStructuredDeidentifyTemplate,
+  });
+
+  GooglePrivacyDlpV2RequestedDeidentifyOptions.fromJson(core.Map json_)
+      : this(
+          snapshotDeidentifyTemplate:
+              json_.containsKey('snapshotDeidentifyTemplate')
+                  ? GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
+                      json_['snapshotDeidentifyTemplate']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          snapshotImageRedactTemplate:
+              json_.containsKey('snapshotImageRedactTemplate')
+                  ? GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
+                      json_['snapshotImageRedactTemplate']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          snapshotStructuredDeidentifyTemplate:
+              json_.containsKey('snapshotStructuredDeidentifyTemplate')
+                  ? GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
+                      json_['snapshotStructuredDeidentifyTemplate']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (snapshotDeidentifyTemplate != null)
+          'snapshotDeidentifyTemplate': snapshotDeidentifyTemplate!,
+        if (snapshotImageRedactTemplate != null)
+          'snapshotImageRedactTemplate': snapshotImageRedactTemplate!,
+        if (snapshotStructuredDeidentifyTemplate != null)
+          'snapshotStructuredDeidentifyTemplate':
+              snapshotStructuredDeidentifyTemplate!,
+      };
+}
+
 /// Snapshot of the inspection configuration.
 class GooglePrivacyDlpV2RequestedOptions {
   /// Inspect config.
@@ -13381,6 +13648,40 @@ class GooglePrivacyDlpV2SelectedInfoTypes {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (infoTypes != null) 'infoTypes': infoTypes!,
+      };
+}
+
+/// Score is calculated from of all elements in the data profile.
+///
+/// A higher level means the data is more sensitive.
+class GooglePrivacyDlpV2SensitivityScore {
+  /// The sensitivity score applied to the resource.
+  /// Possible string values are:
+  /// - "SENSITIVITY_SCORE_UNSPECIFIED" : Unused.
+  /// - "SENSITIVITY_LOW" : No sensitive information detected. The resource
+  /// isn't publicly accessible.
+  /// - "SENSITIVITY_MODERATE" : Medium risk. Contains personally identifiable
+  /// information (PII), potentially sensitive data, or fields with free-text
+  /// data that are at a higher risk of having intermittent sensitive data.
+  /// Consider limiting access.
+  /// - "SENSITIVITY_HIGH" : High risk. Sensitive personally identifiable
+  /// information (SPII) can be present. Exfiltration of data can lead to user
+  /// data loss. Re-identification of users might be possible. Consider limiting
+  /// usage and or removing SPII.
+  core.String? score;
+
+  GooglePrivacyDlpV2SensitivityScore({
+    this.score,
+  });
+
+  GooglePrivacyDlpV2SensitivityScore.fromJson(core.Map json_)
+      : this(
+          score:
+              json_.containsKey('score') ? json_['score'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (score != null) 'score': score!,
       };
 }
 

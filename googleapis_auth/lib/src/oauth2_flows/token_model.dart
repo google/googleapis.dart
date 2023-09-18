@@ -2,12 +2,13 @@ import 'dart:async';
 import 'dart:html';
 import 'dart:js';
 
+import 'package:google_identity_services_web/loader.dart' as gis_loader;
+import 'package:google_identity_services_web/oauth2.dart' as gis;
+
 import '../access_credentials.dart';
 import '../access_token.dart';
 import '../authentication_exception.dart';
-import '../browser_utils.dart';
 import '../utils.dart';
-import 'token_model_interop.dart' as interop;
 
 JsObject get _googleAccountsId =>
     ((context['google'] as JsObject)['accounts'] as JsObject)['id'] as JsObject;
@@ -18,7 +19,7 @@ JsObject get _googleAccountsId =>
 ///
 /// The returned [AccessCredentials] will *always* have a `null` value for
 /// [AccessCredentials.refreshToken] and
-/// [AccessCredentials.accessToken.idToken].
+/// [AccessCredentials.idToken].
 ///
 /// See
 /// [Choose a user authorization model](https://developers.google.com/identity/oauth2/web/guides/choose-authorization-model)
@@ -33,14 +34,14 @@ Future<AccessCredentials> requestAccessCredentials({
   required Iterable<String> scopes,
   String prompt = 'select_account',
   @Deprecated('Undocumented feature. Do not include in production code.')
-      String? logLevel,
+  String? logLevel,
 }) async {
-  await initializeScript('https://accounts.google.com/gsi/client');
+  await gis_loader.loadWebSdk();
   if (logLevel != null) _googleAccountsId.callMethod('setLogLevel', [logLevel]);
 
   final completer = Completer<AccessCredentials>();
 
-  void callback(interop.TokenResponse response) {
+  void callback(gis.TokenResponse response) {
     if (response.error != null) {
       window.console.log(response);
       completer.completeError(
@@ -64,14 +65,14 @@ Future<AccessCredentials> requestAccessCredentials({
     completer.complete(creds);
   }
 
-  final config = interop.TokenClientConfig(
+  final config = gis.TokenClientConfig(
     callback: allowInterop(callback),
     client_id: clientId,
     scope: scopes.toSet().join(' '),
     prompt: prompt,
   );
 
-  final client = interop.initTokenClient(config);
+  final client = gis.oauth2.initTokenClient(config);
 
   client.requestAccessToken();
 
@@ -97,14 +98,14 @@ Future<CodeResponse> requestAuthorizationCode({
   String? hint,
   String? hostedDomain,
   @Deprecated('Undocumented feature. Do not include in production code.')
-      String? logLevel,
+  String? logLevel,
 }) async {
-  await initializeScript('https://accounts.google.com/gsi/client');
+  await gis_loader.loadWebSdk();
   if (logLevel != null) _googleAccountsId.callMethod('setLogLevel', [logLevel]);
 
   final completer = Completer<CodeResponse>();
 
-  void callback(interop.CodeResponse response) {
+  void callback(gis.CodeResponse response) {
     if (response.error != null) {
       window.console.log(response);
       completer.completeError(
@@ -124,7 +125,7 @@ Future<CodeResponse> requestAuthorizationCode({
     ));
   }
 
-  final config = interop.CodeClientConfig(
+  final config = gis.CodeClientConfig(
     callback: allowInterop(callback),
     client_id: clientId,
     scope: scopes.toSet().join(' '),
@@ -133,7 +134,7 @@ Future<CodeResponse> requestAuthorizationCode({
     hosted_domain: hostedDomain,
   );
 
-  final client = interop.initCodeClient(config);
+  final client = gis.oauth2.initCodeClient(config);
 
   client.requestCode();
 
@@ -151,7 +152,7 @@ Future<void> revokeConsent(String accessTokenValue) {
     completer.complete();
   }
 
-  interop.revoke(accessTokenValue, allowInterop(done));
+  gis.oauth2.revoke(accessTokenValue, allowInterop(done));
 
   return completer.future;
 }

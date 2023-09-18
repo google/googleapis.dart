@@ -24,6 +24,13 @@
     "name": "redis",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230728",
+    "rootUrl": "https://redis.googleapis.com/",
+    "servicePath": "",
+    "title": "Google Cloud Memorystore for Redis API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "projects": {
             "resources": {
@@ -575,7 +581,7 @@
                                     ]
                                 },
                                 "list": {
-                                    "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
+                                    "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.",
                                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations",
                                     "httpMethod": "GET",
                                     "id": "redis.projects.locations.operations.list",
@@ -622,8 +628,6 @@
             }
         }
     },
-    "revision": "20220909",
-    "rootUrl": "https://redis.googleapis.com/",
     "schemas": {
         "Empty": {
             "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
@@ -781,6 +785,13 @@
                     "description": "Optional. The full name of the Google Compute Engine [network](https://cloud.google.com/vpc/docs/vpc) to which the instance is connected. If left unspecified, the `default` network will be used.",
                     "type": "string"
                 },
+                "availableMaintenanceVersions": {
+                    "description": "Optional. The available maintenance versions that an instance could update to.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "connectMode": {
                     "description": "Optional. The network connect mode of the Redis instance. If not provided, the connect mode defaults to DIRECT_PEERING.",
                     "enum": [
@@ -838,6 +849,10 @@
                     "$ref": "MaintenanceSchedule",
                     "description": "Output only. Date and time of upcoming maintenance events which have been scheduled.",
                     "readOnly": true
+                },
+                "maintenanceVersion": {
+                    "description": "Optional. The self service update maintenance version. The version is date based such as \"20210712_00_00\".",
+                    "type": "string"
                 },
                 "memorySizeGb": {
                     "description": "Required. Redis memory size in GiB.",
@@ -1079,7 +1094,7 @@
             "type": "object"
         },
         "Location": {
-            "description": "A resource that represents Google Cloud Platform location.",
+            "description": "A resource that represents a Google Cloud location.",
             "id": "Location",
             "properties": {
                 "displayName": {
@@ -1147,6 +1162,7 @@
             "id": "MaintenanceSchedule",
             "properties": {
                 "canReschedule": {
+                    "deprecated": true,
                     "description": "If the scheduled maintenance can be rescheduled, default is true.",
                     "type": "boolean"
                 },
@@ -1272,13 +1288,44 @@
                         "Snapshot every 1 hour.",
                         "Snapshot every 6 hours.",
                         "Snapshot every 12 hours.",
-                        "Snapshot every 24 horus."
+                        "Snapshot every 24 hours."
                     ],
                     "type": "string"
                 },
                 "rdbSnapshotStartTime": {
                     "description": "Optional. Date and time that the first snapshot was/will be attempted, and to which future snapshots will be aligned. If not provided, the current time will be used.",
                     "format": "google-datetime",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ReconciliationOperationMetadata": {
+            "description": "Operation metadata returned by the CLH during resource state reconciliation.",
+            "id": "ReconciliationOperationMetadata",
+            "properties": {
+                "deleteResource": {
+                    "deprecated": true,
+                    "description": "DEPRECATED. Use exclusive_action instead.",
+                    "type": "boolean"
+                },
+                "exclusiveAction": {
+                    "description": "Excluisive action returned by the CLH.",
+                    "enum": [
+                        "UNKNOWN_REPAIR_ACTION",
+                        "DELETE",
+                        "RETRY"
+                    ],
+                    "enumDeprecated": [
+                        false,
+                        true,
+                        false
+                    ],
+                    "enumDescriptions": [
+                        "Unknown repair action.",
+                        "The resource has to be deleted. When using this bit, the CLH should fail the operation. DEPRECATED. Instead use DELETE_RESOURCE OperationSignal in SideChannel.",
+                        "This resource could not be repaired but the repair should be tried again at a later time. This can happen if there is a dependency that needs to be resolved first- e.g. if a parent resource must be repaired before a child resource."
+                    ],
                     "type": "string"
                 }
             },
@@ -1449,9 +1496,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Google Cloud Memorystore for Redis API",
-    "version": "v1",
-    "version_module": true
+    }
 }

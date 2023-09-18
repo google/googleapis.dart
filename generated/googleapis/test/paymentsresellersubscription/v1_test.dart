@@ -1,8 +1,6 @@
 // ignore_for_file: camel_case_types
-// ignore_for_file: cascade_invocations
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_const_declarations
@@ -12,8 +10,9 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unreachable_from_main
 // ignore_for_file: unused_local_variable
 
 import 'dart:async' as async;
@@ -373,13 +372,69 @@ void checkGoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsRespons
   buildCounterGoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsResponse--;
 }
 
+core.List<core.String> buildUnnamed1() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed1(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterGoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload =
+    0;
+api.GoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload
+    buildGoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload() {
+  final o = api.GoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload();
+  buildCounterGoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload++;
+  if (buildCounterGoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload <
+      3) {
+    o.campaigns = buildUnnamed1();
+    o.offering = 'foo';
+    o.salesChannel = 'foo';
+    o.storeId = 'foo';
+  }
+  buildCounterGoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload--;
+  return o;
+}
+
+void checkGoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload(
+    api.GoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload o) {
+  buildCounterGoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload++;
+  if (buildCounterGoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload <
+      3) {
+    checkUnnamed1(o.campaigns!);
+    unittest.expect(
+      o.offering!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.salesChannel!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.storeId!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload--;
+}
+
 core.List<api.GoogleCloudPaymentsResellerSubscriptionV1Product>
-    buildUnnamed1() => [
+    buildUnnamed2() => [
           buildGoogleCloudPaymentsResellerSubscriptionV1Product(),
           buildGoogleCloudPaymentsResellerSubscriptionV1Product(),
         ];
 
-void checkUnnamed1(
+void checkUnnamed2(
     core.List<api.GoogleCloudPaymentsResellerSubscriptionV1Product> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudPaymentsResellerSubscriptionV1Product(o[0]);
@@ -396,7 +451,7 @@ api.GoogleCloudPaymentsResellerSubscriptionV1ListProductsResponse
   if (buildCounterGoogleCloudPaymentsResellerSubscriptionV1ListProductsResponse <
       3) {
     o.nextPageToken = 'foo';
-    o.products = buildUnnamed1();
+    o.products = buildUnnamed2();
   }
   buildCounterGoogleCloudPaymentsResellerSubscriptionV1ListProductsResponse--;
   return o;
@@ -411,18 +466,18 @@ void checkGoogleCloudPaymentsResellerSubscriptionV1ListProductsResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed1(o.products!);
+    checkUnnamed2(o.products!);
   }
   buildCounterGoogleCloudPaymentsResellerSubscriptionV1ListProductsResponse--;
 }
 
 core.List<api.GoogleCloudPaymentsResellerSubscriptionV1Promotion>
-    buildUnnamed2() => [
+    buildUnnamed3() => [
           buildGoogleCloudPaymentsResellerSubscriptionV1Promotion(),
           buildGoogleCloudPaymentsResellerSubscriptionV1Promotion(),
         ];
 
-void checkUnnamed2(
+void checkUnnamed3(
     core.List<api.GoogleCloudPaymentsResellerSubscriptionV1Promotion> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudPaymentsResellerSubscriptionV1Promotion(o[0]);
@@ -440,7 +495,7 @@ api.GoogleCloudPaymentsResellerSubscriptionV1ListPromotionsResponse
   if (buildCounterGoogleCloudPaymentsResellerSubscriptionV1ListPromotionsResponse <
       3) {
     o.nextPageToken = 'foo';
-    o.promotions = buildUnnamed2();
+    o.promotions = buildUnnamed3();
   }
   buildCounterGoogleCloudPaymentsResellerSubscriptionV1ListPromotionsResponse--;
   return o;
@@ -455,7 +510,7 @@ void checkGoogleCloudPaymentsResellerSubscriptionV1ListPromotionsResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed2(o.promotions!);
+    checkUnnamed3(o.promotions!);
   }
   buildCounterGoogleCloudPaymentsResellerSubscriptionV1ListPromotionsResponse--;
 }
@@ -490,12 +545,12 @@ void checkGoogleCloudPaymentsResellerSubscriptionV1Location(
 }
 
 core.List<api.GoogleCloudPaymentsResellerSubscriptionV1ProductPriceConfig>
-    buildUnnamed3() => [
+    buildUnnamed4() => [
           buildGoogleCloudPaymentsResellerSubscriptionV1ProductPriceConfig(),
           buildGoogleCloudPaymentsResellerSubscriptionV1ProductPriceConfig(),
         ];
 
-void checkUnnamed3(
+void checkUnnamed4(
     core.List<api.GoogleCloudPaymentsResellerSubscriptionV1ProductPriceConfig>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -503,12 +558,12 @@ void checkUnnamed3(
   checkGoogleCloudPaymentsResellerSubscriptionV1ProductPriceConfig(o[1]);
 }
 
-core.List<core.String> buildUnnamed4() => [
+core.List<core.String> buildUnnamed5() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed4(core.List<core.String> o) {
+void checkUnnamed5(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -520,12 +575,12 @@ void checkUnnamed4(core.List<core.String> o) {
   );
 }
 
-core.List<api.GoogleTypeLocalizedText> buildUnnamed5() => [
+core.List<api.GoogleTypeLocalizedText> buildUnnamed6() => [
       buildGoogleTypeLocalizedText(),
       buildGoogleTypeLocalizedText(),
     ];
 
-void checkUnnamed5(core.List<api.GoogleTypeLocalizedText> o) {
+void checkUnnamed6(core.List<api.GoogleTypeLocalizedText> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleTypeLocalizedText(o[0]);
   checkGoogleTypeLocalizedText(o[1]);
@@ -538,11 +593,11 @@ api.GoogleCloudPaymentsResellerSubscriptionV1Product
   buildCounterGoogleCloudPaymentsResellerSubscriptionV1Product++;
   if (buildCounterGoogleCloudPaymentsResellerSubscriptionV1Product < 3) {
     o.name = 'foo';
-    o.priceConfigs = buildUnnamed3();
-    o.regionCodes = buildUnnamed4();
+    o.priceConfigs = buildUnnamed4();
+    o.regionCodes = buildUnnamed5();
     o.subscriptionBillingCycleDuration =
         buildGoogleCloudPaymentsResellerSubscriptionV1Duration();
-    o.titles = buildUnnamed5();
+    o.titles = buildUnnamed6();
   }
   buildCounterGoogleCloudPaymentsResellerSubscriptionV1Product--;
   return o;
@@ -556,13 +611,41 @@ void checkGoogleCloudPaymentsResellerSubscriptionV1Product(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed3(o.priceConfigs!);
-    checkUnnamed4(o.regionCodes!);
+    checkUnnamed4(o.priceConfigs!);
+    checkUnnamed5(o.regionCodes!);
     checkGoogleCloudPaymentsResellerSubscriptionV1Duration(
         o.subscriptionBillingCycleDuration!);
-    checkUnnamed5(o.titles!);
+    checkUnnamed6(o.titles!);
   }
   buildCounterGoogleCloudPaymentsResellerSubscriptionV1Product--;
+}
+
+core.int buildCounterGoogleCloudPaymentsResellerSubscriptionV1ProductPayload =
+    0;
+api.GoogleCloudPaymentsResellerSubscriptionV1ProductPayload
+    buildGoogleCloudPaymentsResellerSubscriptionV1ProductPayload() {
+  final o = api.GoogleCloudPaymentsResellerSubscriptionV1ProductPayload();
+  buildCounterGoogleCloudPaymentsResellerSubscriptionV1ProductPayload++;
+  if (buildCounterGoogleCloudPaymentsResellerSubscriptionV1ProductPayload < 3) {
+    o.googleOnePayload =
+        buildGoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload();
+    o.youtubePayload =
+        buildGoogleCloudPaymentsResellerSubscriptionV1YoutubePayload();
+  }
+  buildCounterGoogleCloudPaymentsResellerSubscriptionV1ProductPayload--;
+  return o;
+}
+
+void checkGoogleCloudPaymentsResellerSubscriptionV1ProductPayload(
+    api.GoogleCloudPaymentsResellerSubscriptionV1ProductPayload o) {
+  buildCounterGoogleCloudPaymentsResellerSubscriptionV1ProductPayload++;
+  if (buildCounterGoogleCloudPaymentsResellerSubscriptionV1ProductPayload < 3) {
+    checkGoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload(
+        o.googleOnePayload!);
+    checkGoogleCloudPaymentsResellerSubscriptionV1YoutubePayload(
+        o.youtubePayload!);
+  }
+  buildCounterGoogleCloudPaymentsResellerSubscriptionV1ProductPayload--;
 }
 
 core.int
@@ -594,23 +677,6 @@ void checkGoogleCloudPaymentsResellerSubscriptionV1ProductPriceConfig(
   buildCounterGoogleCloudPaymentsResellerSubscriptionV1ProductPriceConfig--;
 }
 
-core.List<core.String> buildUnnamed6() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed6(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
 core.List<core.String> buildUnnamed7() => [
       'foo',
       'foo',
@@ -628,12 +694,29 @@ void checkUnnamed7(core.List<core.String> o) {
   );
 }
 
-core.List<api.GoogleTypeLocalizedText> buildUnnamed8() => [
+core.List<core.String> buildUnnamed8() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed8(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<api.GoogleTypeLocalizedText> buildUnnamed9() => [
       buildGoogleTypeLocalizedText(),
       buildGoogleTypeLocalizedText(),
     ];
 
-void checkUnnamed8(core.List<api.GoogleTypeLocalizedText> o) {
+void checkUnnamed9(core.List<api.GoogleTypeLocalizedText> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleTypeLocalizedText(o[0]);
   checkGoogleTypeLocalizedText(o[1]);
@@ -645,7 +728,7 @@ api.GoogleCloudPaymentsResellerSubscriptionV1Promotion
   final o = api.GoogleCloudPaymentsResellerSubscriptionV1Promotion();
   buildCounterGoogleCloudPaymentsResellerSubscriptionV1Promotion++;
   if (buildCounterGoogleCloudPaymentsResellerSubscriptionV1Promotion < 3) {
-    o.applicableProducts = buildUnnamed6();
+    o.applicableProducts = buildUnnamed7();
     o.endTime = 'foo';
     o.freeTrialDuration =
         buildGoogleCloudPaymentsResellerSubscriptionV1Duration();
@@ -653,9 +736,9 @@ api.GoogleCloudPaymentsResellerSubscriptionV1Promotion
         buildGoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails();
     o.name = 'foo';
     o.promotionType = 'foo';
-    o.regionCodes = buildUnnamed7();
+    o.regionCodes = buildUnnamed8();
     o.startTime = 'foo';
-    o.titles = buildUnnamed8();
+    o.titles = buildUnnamed9();
   }
   buildCounterGoogleCloudPaymentsResellerSubscriptionV1Promotion--;
   return o;
@@ -665,7 +748,7 @@ void checkGoogleCloudPaymentsResellerSubscriptionV1Promotion(
     api.GoogleCloudPaymentsResellerSubscriptionV1Promotion o) {
   buildCounterGoogleCloudPaymentsResellerSubscriptionV1Promotion++;
   if (buildCounterGoogleCloudPaymentsResellerSubscriptionV1Promotion < 3) {
-    checkUnnamed6(o.applicableProducts!);
+    checkUnnamed7(o.applicableProducts!);
     unittest.expect(
       o.endTime!,
       unittest.equals('foo'),
@@ -682,26 +765,28 @@ void checkGoogleCloudPaymentsResellerSubscriptionV1Promotion(
       o.promotionType!,
       unittest.equals('foo'),
     );
-    checkUnnamed7(o.regionCodes!);
+    checkUnnamed8(o.regionCodes!);
     unittest.expect(
       o.startTime!,
       unittest.equals('foo'),
     );
-    checkUnnamed8(o.titles!);
+    checkUnnamed9(o.titles!);
   }
   buildCounterGoogleCloudPaymentsResellerSubscriptionV1Promotion--;
 }
 
 core.List<
-        api.GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec>
-    buildUnnamed9() => [
+        api
+        .GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec>
+    buildUnnamed10() => [
           buildGoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec(),
           buildGoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec(),
         ];
 
-void checkUnnamed9(
+void checkUnnamed10(
     core.List<
-            api.GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec>
+            api
+            .GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec>
         o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec(
@@ -720,7 +805,7 @@ api.GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails
   buildCounterGoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails++;
   if (buildCounterGoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails <
       3) {
-    o.introductoryPricingSpecs = buildUnnamed9();
+    o.introductoryPricingSpecs = buildUnnamed10();
   }
   buildCounterGoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails--;
   return o;
@@ -732,7 +817,7 @@ void checkGoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingD
   buildCounterGoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails++;
   if (buildCounterGoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails <
       3) {
-    checkUnnamed9(o.introductoryPricingSpecs!);
+    checkUnnamed10(o.introductoryPricingSpecs!);
   }
   buildCounterGoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails--;
 }
@@ -750,6 +835,7 @@ api.GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails
     o.discountAmount = buildGoogleCloudPaymentsResellerSubscriptionV1Amount();
     o.discountRatioMicros = 'foo';
     o.recurrenceCount = 42;
+    o.regionCode = 'foo';
   }
   buildCounterGoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec--;
   return o;
@@ -769,6 +855,10 @@ void checkGoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingD
     unittest.expect(
       o.recurrenceCount!,
       unittest.equals(42),
+    );
+    unittest.expect(
+      o.regionCode!,
+      unittest.equals('foo'),
     );
   }
   buildCounterGoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec--;
@@ -804,12 +894,12 @@ void checkGoogleCloudPaymentsResellerSubscriptionV1ServicePeriod(
 }
 
 core.List<api.GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem>
-    buildUnnamed10() => [
+    buildUnnamed11() => [
           buildGoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem(),
           buildGoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem(),
         ];
 
-void checkUnnamed10(
+void checkUnnamed11(
     core.List<api.GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -817,12 +907,12 @@ void checkUnnamed10(
   checkGoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem(o[1]);
 }
 
-core.List<core.String> buildUnnamed11() => [
+core.List<core.String> buildUnnamed12() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed11(core.List<core.String> o) {
+void checkUnnamed12(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -836,26 +926,27 @@ void checkUnnamed11(core.List<core.String> o) {
 
 core.List<
         api.GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec>
-    buildUnnamed12() => [
+    buildUnnamed13() => [
           buildGoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec(),
           buildGoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec(),
         ];
 
-void checkUnnamed12(
+void checkUnnamed13(
     core.List<
-            api.GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec>
+            api
+            .GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec>
         o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec(o[0]);
   checkGoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec(o[1]);
 }
 
-core.List<core.String> buildUnnamed13() => [
+core.List<core.String> buildUnnamed14() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed13(core.List<core.String> o) {
+void checkUnnamed14(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -879,13 +970,13 @@ api.GoogleCloudPaymentsResellerSubscriptionV1Subscription
     o.cycleEndTime = 'foo';
     o.endUserEntitled = true;
     o.freeTrialEndTime = 'foo';
-    o.lineItems = buildUnnamed10();
+    o.lineItems = buildUnnamed11();
     o.name = 'foo';
     o.partnerUserToken = 'foo';
     o.processingState = 'foo';
-    o.products = buildUnnamed11();
-    o.promotionSpecs = buildUnnamed12();
-    o.promotions = buildUnnamed13();
+    o.products = buildUnnamed12();
+    o.promotionSpecs = buildUnnamed13();
+    o.promotions = buildUnnamed14();
     o.redirectUri = 'foo';
     o.renewalTime = 'foo';
     o.serviceLocation =
@@ -918,7 +1009,7 @@ void checkGoogleCloudPaymentsResellerSubscriptionV1Subscription(
       o.freeTrialEndTime!,
       unittest.equals('foo'),
     );
-    checkUnnamed10(o.lineItems!);
+    checkUnnamed11(o.lineItems!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -931,9 +1022,9 @@ void checkGoogleCloudPaymentsResellerSubscriptionV1Subscription(
       o.processingState!,
       unittest.equals('foo'),
     );
-    checkUnnamed11(o.products!);
-    checkUnnamed12(o.promotionSpecs!);
-    checkUnnamed13(o.promotions!);
+    checkUnnamed12(o.products!);
+    checkUnnamed13(o.promotionSpecs!);
+    checkUnnamed14(o.promotions!);
     unittest.expect(
       o.redirectUri!,
       unittest.equals('foo'),
@@ -989,14 +1080,15 @@ void checkGoogleCloudPaymentsResellerSubscriptionV1SubscriptionCancellationDetai
 
 core.List<
         api.GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec>
-    buildUnnamed14() => [
+    buildUnnamed15() => [
           buildGoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec(),
           buildGoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec(),
         ];
 
-void checkUnnamed14(
+void checkUnnamed15(
     core.List<
-            api.GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec>
+            api
+            .GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec>
         o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec(o[0]);
@@ -1012,12 +1104,16 @@ api.GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem
   buildCounterGoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem++;
   if (buildCounterGoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem <
       3) {
+    o.amount = buildGoogleCloudPaymentsResellerSubscriptionV1Amount();
     o.description = 'foo';
     o.lineItemFreeTrialEndTime = 'foo';
-    o.lineItemPromotionSpecs = buildUnnamed14();
+    o.lineItemIndex = 42;
+    o.lineItemPromotionSpecs = buildUnnamed15();
     o.oneTimeRecurrenceDetails =
         buildGoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemOneTimeRecurrenceDetails();
     o.product = 'foo';
+    o.productPayload =
+        buildGoogleCloudPaymentsResellerSubscriptionV1ProductPayload();
     o.recurrenceType = 'foo';
     o.state = 'foo';
   }
@@ -1030,6 +1126,7 @@ void checkGoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem(
   buildCounterGoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem++;
   if (buildCounterGoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem <
       3) {
+    checkGoogleCloudPaymentsResellerSubscriptionV1Amount(o.amount!);
     unittest.expect(
       o.description!,
       unittest.equals('foo'),
@@ -1038,13 +1135,19 @@ void checkGoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem(
       o.lineItemFreeTrialEndTime!,
       unittest.equals('foo'),
     );
-    checkUnnamed14(o.lineItemPromotionSpecs!);
+    unittest.expect(
+      o.lineItemIndex!,
+      unittest.equals(42),
+    );
+    checkUnnamed15(o.lineItemPromotionSpecs!);
     checkGoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemOneTimeRecurrenceDetails(
         o.oneTimeRecurrenceDetails!);
     unittest.expect(
       o.product!,
       unittest.equals('foo'),
     );
+    checkGoogleCloudPaymentsResellerSubscriptionV1ProductPayload(
+        o.productPayload!);
     unittest.expect(
       o.recurrenceType!,
       unittest.equals('foo'),
@@ -1212,6 +1315,50 @@ void checkGoogleCloudPaymentsResellerSubscriptionV1UndoCancelSubscriptionRespons
     checkGoogleCloudPaymentsResellerSubscriptionV1Subscription(o.subscription!);
   }
   buildCounterGoogleCloudPaymentsResellerSubscriptionV1UndoCancelSubscriptionResponse--;
+}
+
+core.List<core.String> buildUnnamed16() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed16(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterGoogleCloudPaymentsResellerSubscriptionV1YoutubePayload =
+    0;
+api.GoogleCloudPaymentsResellerSubscriptionV1YoutubePayload
+    buildGoogleCloudPaymentsResellerSubscriptionV1YoutubePayload() {
+  final o = api.GoogleCloudPaymentsResellerSubscriptionV1YoutubePayload();
+  buildCounterGoogleCloudPaymentsResellerSubscriptionV1YoutubePayload++;
+  if (buildCounterGoogleCloudPaymentsResellerSubscriptionV1YoutubePayload < 3) {
+    o.accessEndTime = 'foo';
+    o.partnerEligibilityIds = buildUnnamed16();
+  }
+  buildCounterGoogleCloudPaymentsResellerSubscriptionV1YoutubePayload--;
+  return o;
+}
+
+void checkGoogleCloudPaymentsResellerSubscriptionV1YoutubePayload(
+    api.GoogleCloudPaymentsResellerSubscriptionV1YoutubePayload o) {
+  buildCounterGoogleCloudPaymentsResellerSubscriptionV1YoutubePayload++;
+  if (buildCounterGoogleCloudPaymentsResellerSubscriptionV1YoutubePayload < 3) {
+    unittest.expect(
+      o.accessEndTime!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed16(o.partnerEligibilityIds!);
+  }
+  buildCounterGoogleCloudPaymentsResellerSubscriptionV1YoutubePayload--;
 }
 
 core.int buildCounterGoogleTypeLocalizedText = 0;
@@ -1397,6 +1544,19 @@ void main() {
   });
 
   unittest.group(
+      'obj-schema-GoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload(od);
+    });
+  });
+
+  unittest.group(
       'obj-schema-GoogleCloudPaymentsResellerSubscriptionV1ListProductsResponse',
       () {
     unittest.test('to-json--from-json', () async {
@@ -1443,6 +1603,18 @@ void main() {
       final od = api.GoogleCloudPaymentsResellerSubscriptionV1Product.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudPaymentsResellerSubscriptionV1Product(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleCloudPaymentsResellerSubscriptionV1ProductPayload', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudPaymentsResellerSubscriptionV1ProductPayload();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudPaymentsResellerSubscriptionV1ProductPayload.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudPaymentsResellerSubscriptionV1ProductPayload(od);
     });
   });
 
@@ -1629,6 +1801,18 @@ void main() {
     });
   });
 
+  unittest.group(
+      'obj-schema-GoogleCloudPaymentsResellerSubscriptionV1YoutubePayload', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudPaymentsResellerSubscriptionV1YoutubePayload();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudPaymentsResellerSubscriptionV1YoutubePayload.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudPaymentsResellerSubscriptionV1YoutubePayload(od);
+    });
+  });
+
   unittest.group('obj-schema-GoogleTypeLocalizedText', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleTypeLocalizedText();
@@ -1649,7 +1833,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1665,7 +1849,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -1730,7 +1914,7 @@ void main() {
         checkGoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsRequest(
             obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1746,7 +1930,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -1789,7 +1973,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1805,7 +1989,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -1871,7 +2055,7 @@ void main() {
         checkGoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionRequest(
             obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1887,7 +2071,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -1936,7 +2120,7 @@ void main() {
                 json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudPaymentsResellerSubscriptionV1Subscription(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1952,7 +2136,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2004,7 +2188,7 @@ void main() {
         checkGoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequest(
             obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2020,7 +2204,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2069,7 +2253,7 @@ void main() {
         checkGoogleCloudPaymentsResellerSubscriptionV1ExtendSubscriptionRequest(
             obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2085,7 +2269,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2126,7 +2310,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2142,7 +2326,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2189,7 +2373,7 @@ void main() {
                 json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudPaymentsResellerSubscriptionV1Subscription(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2205,7 +2389,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2257,7 +2441,7 @@ void main() {
         checkGoogleCloudPaymentsResellerSubscriptionV1UndoCancelSubscriptionRequest(
             obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2273,7 +2457,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>

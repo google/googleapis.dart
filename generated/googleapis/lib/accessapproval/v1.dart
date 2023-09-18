@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Access Approval API - v1
@@ -17,7 +16,7 @@
 /// An API for controlling access to data by Google personnel.
 ///
 /// For more information, see
-/// <https://cloud.google.com/cloud-provider-access-management/access-approval/docs>
+/// <https://cloud.google.com/assured-workloads/access-approval/docs>
 ///
 /// Create an instance of [AccessApprovalApi] to access these resources:
 ///
@@ -27,7 +26,7 @@
 ///   - [OrganizationsApprovalRequestsResource]
 /// - [ProjectsResource]
 ///   - [ProjectsApprovalRequestsResource]
-library accessapproval.v1;
+library accessapproval_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -36,7 +35,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -1441,6 +1439,16 @@ class AccessApprovalSettings {
   /// addresses are allowed.
   core.List<core.String>? notificationEmails;
 
+  /// This preference is communicated to Google personnel when sending an
+  /// approval request but can be overridden if necessary.
+  core.bool? preferNoBroadApprovalRequests;
+
+  /// This preference is shared with Google personnel, but can be overridden if
+  /// said personnel deems necessary.
+  ///
+  /// The approver ultimately can set the expiration at approval time.
+  core.int? preferredRequestExpirationDays;
+
   AccessApprovalSettings({
     this.activeKeyVersion,
     this.ancestorHasActiveKeyVersion,
@@ -1449,6 +1457,8 @@ class AccessApprovalSettings {
     this.invalidKeyVersion,
     this.name,
     this.notificationEmails,
+    this.preferNoBroadApprovalRequests,
+    this.preferredRequestExpirationDays,
   });
 
   AccessApprovalSettings.fromJson(core.Map json_)
@@ -1478,6 +1488,14 @@ class AccessApprovalSettings {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          preferNoBroadApprovalRequests:
+              json_.containsKey('preferNoBroadApprovalRequests')
+                  ? json_['preferNoBroadApprovalRequests'] as core.bool
+                  : null,
+          preferredRequestExpirationDays:
+              json_.containsKey('preferredRequestExpirationDays')
+                  ? json_['preferredRequestExpirationDays'] as core.int
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1490,6 +1508,10 @@ class AccessApprovalSettings {
         if (name != null) 'name': name!,
         if (notificationEmails != null)
           'notificationEmails': notificationEmails!,
+        if (preferNoBroadApprovalRequests != null)
+          'preferNoBroadApprovalRequests': preferNoBroadApprovalRequests!,
+        if (preferredRequestExpirationDays != null)
+          'preferredRequestExpirationDays': preferredRequestExpirationDays!,
       };
 }
 
@@ -1812,14 +1834,16 @@ class EnrolledService {
   /// The product for which Access Approval will be enrolled.
   ///
   /// Allowed values are listed below (case-sensitive): * all * GA * App Engine
-  /// * BigQuery * Cloud Bigtable * Cloud Key Management Service * Compute
-  /// Engine * Cloud Dataflow * Cloud Dataproc * Cloud DLP * Cloud EKM * Cloud
-  /// HSM * Cloud Identity and Access Management * Cloud Logging * Cloud Pub/Sub
-  /// * Cloud Spanner * Cloud SQL * Cloud Storage * Google Kubernetes Engine *
-  /// Organization Policy Serivice * Persistent Disk * Resource Manager * Secret
-  /// Manager * Speaker ID Note: These values are supported as input for legacy
-  /// purposes, but will not be returned from the API. * all * ga-only *
-  /// appengine.googleapis.com * bigquery.googleapis.com *
+  /// * Artifact Registry * BigQuery * Certificate Authority Service * Cloud
+  /// Bigtable * Cloud Key Management Service * Compute Engine * Cloud Composer
+  /// * Cloud Dataflow * Cloud Dataproc * Cloud DLP * Cloud EKM * Cloud
+  /// Firestore * Cloud HSM * Cloud Identity and Access Management * Cloud
+  /// Logging * Cloud NAT * Cloud Pub/Sub * Cloud Spanner * Cloud SQL * Cloud
+  /// Storage * Eventarc * Google Kubernetes Engine * Organization Policy
+  /// Serivice * Persistent Disk * Resource Manager * Secret Manager * Speaker
+  /// ID Note: These values are supported as input for legacy purposes, but will
+  /// not be returned from the API. * all * ga-only * appengine.googleapis.com *
+  /// artifactregistry.googleapis.com * bigquery.googleapis.com *
   /// bigtable.googleapis.com * container.googleapis.com *
   /// cloudkms.googleapis.com * cloudresourcemanager.googleapis.com *
   /// cloudsql.googleapis.com * compute.googleapis.com * dataflow.googleapis.com

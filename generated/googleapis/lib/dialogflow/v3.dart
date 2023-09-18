@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Dialogflow API - v3
@@ -45,7 +44,7 @@
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsSecuritySettingsResource]
 ///   - [ProjectsOperationsResource]
-library dialogflow.v3;
+library dialogflow_v3;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -54,7 +53,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -4975,7 +4973,9 @@ class ProjectsLocationsAgentsTestCasesResultsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Fetches a list of results for a given test case.
+  /// Fetches the list of run results for the given test case.
+  ///
+  /// A maximum of 100 results are kept for each test case.
   ///
   /// Request parameters:
   ///
@@ -5367,13 +5367,6 @@ class ProjectsLocationsOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -5738,13 +5731,6 @@ class ProjectsOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -5803,6 +5789,12 @@ class ProjectsOperationsResource {
 /// settings set at different levels define DTMF detections running in parallel.
 /// Hierarchy: Agent-\>Flow-\>Page-\>Fulfillment/Parameter.
 class GoogleCloudDialogflowCxV3AdvancedSettings {
+  /// If present, incoming audio is exported by Dialogflow to the configured
+  /// Google Cloud Storage destination.
+  ///
+  /// Exposed at the following levels: - Agent level - Flow level
+  GoogleCloudDialogflowCxV3GcsDestination? audioExportGcsDestination;
+
   /// Settings for logging.
   ///
   /// Settings for Dialogflow History, Contact Center messages, StackDriver
@@ -5810,11 +5802,18 @@ class GoogleCloudDialogflowCxV3AdvancedSettings {
   GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings? loggingSettings;
 
   GoogleCloudDialogflowCxV3AdvancedSettings({
+    this.audioExportGcsDestination,
     this.loggingSettings,
   });
 
   GoogleCloudDialogflowCxV3AdvancedSettings.fromJson(core.Map json_)
       : this(
+          audioExportGcsDestination:
+              json_.containsKey('audioExportGcsDestination')
+                  ? GoogleCloudDialogflowCxV3GcsDestination.fromJson(
+                      json_['audioExportGcsDestination']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           loggingSettings: json_.containsKey('loggingSettings')
               ? GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings
                   .fromJson(json_['loggingSettings']
@@ -5823,6 +5822,8 @@ class GoogleCloudDialogflowCxV3AdvancedSettings {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (audioExportGcsDestination != null)
+          'audioExportGcsDestination': audioExportGcsDestination!,
         if (loggingSettings != null) 'loggingSettings': loggingSettings!,
       };
 }
@@ -5910,7 +5911,13 @@ class GoogleCloudDialogflowCxV3Agent {
   /// Indicates if stackdriver logging is enabled for the agent.
   ///
   /// Please use agent.advanced_settings instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? enableStackdriverLogging;
+
+  /// Git integration settings for this agent.
+  GoogleCloudDialogflowCxV3AgentGitIntegrationSettings? gitIntegrationSettings;
 
   /// Indicates whether the agent is locked for changes.
   ///
@@ -5945,6 +5952,10 @@ class GoogleCloudDialogflowCxV3Agent {
   /// `default_language_code`).
   core.List<core.String>? supportedLanguageCodes;
 
+  /// Settings on instructing the speech synthesizer on how to generate the
+  /// output audio content.
+  GoogleCloudDialogflowCxV3TextToSpeechSettings? textToSpeechSettings;
+
   /// The time zone of the agent from the
   /// [time zone database](https://www.iana.org/time-zones), e.g.,
   /// America/New_York, Europe/Paris.
@@ -5960,12 +5971,14 @@ class GoogleCloudDialogflowCxV3Agent {
     this.displayName,
     this.enableSpellCorrection,
     this.enableStackdriverLogging,
+    this.gitIntegrationSettings,
     this.locked,
     this.name,
     this.securitySettings,
     this.speechToTextSettings,
     this.startFlow,
     this.supportedLanguageCodes,
+    this.textToSpeechSettings,
     this.timeZone,
   });
 
@@ -5995,6 +6008,11 @@ class GoogleCloudDialogflowCxV3Agent {
               json_.containsKey('enableStackdriverLogging')
                   ? json_['enableStackdriverLogging'] as core.bool
                   : null,
+          gitIntegrationSettings: json_.containsKey('gitIntegrationSettings')
+              ? GoogleCloudDialogflowCxV3AgentGitIntegrationSettings.fromJson(
+                  json_['gitIntegrationSettings']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           locked:
               json_.containsKey('locked') ? json_['locked'] as core.bool : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
@@ -6014,6 +6032,11 @@ class GoogleCloudDialogflowCxV3Agent {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          textToSpeechSettings: json_.containsKey('textToSpeechSettings')
+              ? GoogleCloudDialogflowCxV3TextToSpeechSettings.fromJson(
+                  json_['textToSpeechSettings']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           timeZone: json_.containsKey('timeZone')
               ? json_['timeZone'] as core.String
               : null,
@@ -6030,6 +6053,8 @@ class GoogleCloudDialogflowCxV3Agent {
           'enableSpellCorrection': enableSpellCorrection!,
         if (enableStackdriverLogging != null)
           'enableStackdriverLogging': enableStackdriverLogging!,
+        if (gitIntegrationSettings != null)
+          'gitIntegrationSettings': gitIntegrationSettings!,
         if (locked != null) 'locked': locked!,
         if (name != null) 'name': name!,
         if (securitySettings != null) 'securitySettings': securitySettings!,
@@ -6038,7 +6063,89 @@ class GoogleCloudDialogflowCxV3Agent {
         if (startFlow != null) 'startFlow': startFlow!,
         if (supportedLanguageCodes != null)
           'supportedLanguageCodes': supportedLanguageCodes!,
+        if (textToSpeechSettings != null)
+          'textToSpeechSettings': textToSpeechSettings!,
         if (timeZone != null) 'timeZone': timeZone!,
+      };
+}
+
+/// Settings for connecting to Git repository for an agent.
+class GoogleCloudDialogflowCxV3AgentGitIntegrationSettings {
+  /// GitHub settings.
+  GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings?
+      githubSettings;
+
+  GoogleCloudDialogflowCxV3AgentGitIntegrationSettings({
+    this.githubSettings,
+  });
+
+  GoogleCloudDialogflowCxV3AgentGitIntegrationSettings.fromJson(core.Map json_)
+      : this(
+          githubSettings: json_.containsKey('githubSettings')
+              ? GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings
+                  .fromJson(json_['githubSettings']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (githubSettings != null) 'githubSettings': githubSettings!,
+      };
+}
+
+/// Settings of integration with GitHub.
+class GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings {
+  /// The access token used to authenticate the access to the GitHub repository.
+  core.String? accessToken;
+
+  /// A list of branches configured to be used from Dialogflow.
+  core.List<core.String>? branches;
+
+  /// The unique repository display name for the GitHub repository.
+  core.String? displayName;
+
+  /// The GitHub repository URI related to the agent.
+  core.String? repositoryUri;
+
+  /// The branch of the GitHub repository tracked for this agent.
+  core.String? trackingBranch;
+
+  GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings({
+    this.accessToken,
+    this.branches,
+    this.displayName,
+    this.repositoryUri,
+    this.trackingBranch,
+  });
+
+  GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings.fromJson(
+      core.Map json_)
+      : this(
+          accessToken: json_.containsKey('accessToken')
+              ? json_['accessToken'] as core.String
+              : null,
+          branches: json_.containsKey('branches')
+              ? (json_['branches'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          repositoryUri: json_.containsKey('repositoryUri')
+              ? json_['repositoryUri'] as core.String
+              : null,
+          trackingBranch: json_.containsKey('trackingBranch')
+              ? json_['trackingBranch'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accessToken != null) 'accessToken': accessToken!,
+        if (branches != null) 'branches': branches!,
+        if (displayName != null) 'displayName': displayName!,
+        if (repositoryUri != null) 'repositoryUri': repositoryUri!,
+        if (trackingBranch != null) 'trackingBranch': trackingBranch!,
       };
 }
 
@@ -6081,7 +6188,7 @@ class GoogleCloudDialogflowCxV3AgentValidationResult {
 class GoogleCloudDialogflowCxV3AudioInput {
   /// The natural language speech audio to be processed.
   ///
-  /// A single request can contain up to 1 minute of speech audio data. The
+  /// A single request can contain up to 2 minutes of speech audio data. The
   /// transcribed text cannot contain more than 256 bytes. For non-streaming
   /// audio detect intent, both `config` and `audio` must be provided. For
   /// streaming audio detect intent, `config` must be provided in the first
@@ -6656,7 +6763,7 @@ class GoogleCloudDialogflowCxV3DeployFlowRequest {
       };
 }
 
-/// Represents an deployment in an environment.
+/// Represents a deployment in an environment.
 ///
 /// A deployment happens when a flow version configured to be active in the
 /// environment. You can configure running pre-deployment steps, e.g. running
@@ -7166,8 +7273,6 @@ class GoogleCloudDialogflowCxV3Environment {
   ///
   /// You should include version configs for all flows that are reachable from
   /// `Start Flow` in the agent. Otherwise, an error will be returned.
-  ///
-  /// Required.
   core.List<GoogleCloudDialogflowCxV3EnvironmentVersionConfig>? versionConfigs;
 
   /// The webhook configuration for this environment.
@@ -7850,6 +7955,7 @@ class GoogleCloudDialogflowCxV3ExportAgentRequest {
   /// Possible string values are:
   /// - "DATA_FORMAT_UNSPECIFIED" : Unspecified format.
   /// - "BLOB" : Agent content will be exported as raw bytes.
+  /// - "JSON_PACKAGE" : Agent content will be exported in JSON Package format.
   core.String? dataFormat;
 
   /// Environment name.
@@ -7860,10 +7966,22 @@ class GoogleCloudDialogflowCxV3ExportAgentRequest {
   /// Optional.
   core.String? environment;
 
+  /// The Git branch to export the agent to.
+  ///
+  /// Optional.
+  GoogleCloudDialogflowCxV3ExportAgentRequestGitDestination? gitDestination;
+
+  /// Whether to include BigQuery Export setting.
+  ///
+  /// Optional.
+  core.bool? includeBigqueryExportSettings;
+
   GoogleCloudDialogflowCxV3ExportAgentRequest({
     this.agentUri,
     this.dataFormat,
     this.environment,
+    this.gitDestination,
+    this.includeBigqueryExportSettings,
   });
 
   GoogleCloudDialogflowCxV3ExportAgentRequest.fromJson(core.Map json_)
@@ -7877,12 +7995,54 @@ class GoogleCloudDialogflowCxV3ExportAgentRequest {
           environment: json_.containsKey('environment')
               ? json_['environment'] as core.String
               : null,
+          gitDestination: json_.containsKey('gitDestination')
+              ? GoogleCloudDialogflowCxV3ExportAgentRequestGitDestination
+                  .fromJson(json_['gitDestination']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          includeBigqueryExportSettings:
+              json_.containsKey('includeBigqueryExportSettings')
+                  ? json_['includeBigqueryExportSettings'] as core.bool
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (agentUri != null) 'agentUri': agentUri!,
         if (dataFormat != null) 'dataFormat': dataFormat!,
         if (environment != null) 'environment': environment!,
+        if (gitDestination != null) 'gitDestination': gitDestination!,
+        if (includeBigqueryExportSettings != null)
+          'includeBigqueryExportSettings': includeBigqueryExportSettings!,
+      };
+}
+
+/// Settings for exporting to a git branch.
+class GoogleCloudDialogflowCxV3ExportAgentRequestGitDestination {
+  /// Commit message for the git push.
+  core.String? commitMessage;
+
+  /// Tracking branch for the git push.
+  core.String? trackingBranch;
+
+  GoogleCloudDialogflowCxV3ExportAgentRequestGitDestination({
+    this.commitMessage,
+    this.trackingBranch,
+  });
+
+  GoogleCloudDialogflowCxV3ExportAgentRequestGitDestination.fromJson(
+      core.Map json_)
+      : this(
+          commitMessage: json_.containsKey('commitMessage')
+              ? json_['commitMessage'] as core.String
+              : null,
+          trackingBranch: json_.containsKey('trackingBranch')
+              ? json_['trackingBranch'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (commitMessage != null) 'commitMessage': commitMessage!,
+        if (trackingBranch != null) 'trackingBranch': trackingBranch!,
       };
 }
 
@@ -8684,6 +8844,32 @@ class GoogleCloudDialogflowCxV3FulfillmentSetParameterAction {
       };
 }
 
+/// Google Cloud Storage location for a Dialogflow operation that writes or
+/// exports objects (e.g. exported agent or transcripts) outside of Dialogflow.
+class GoogleCloudDialogflowCxV3GcsDestination {
+  /// The Google Cloud Storage URI for the exported objects.
+  ///
+  /// A URI is of the form: `gs://bucket/object-name-or-prefix` Whether a full
+  /// object name, or just a prefix, its usage depends on the Dialogflow
+  /// operation.
+  ///
+  /// Required.
+  core.String? uri;
+
+  GoogleCloudDialogflowCxV3GcsDestination({
+    this.uri,
+  });
+
+  GoogleCloudDialogflowCxV3GcsDestination.fromJson(core.Map json_)
+      : this(
+          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (uri != null) 'uri': uri!,
+      };
+}
+
 /// The request message for Flows.ImportFlow.
 class GoogleCloudDialogflowCxV3ImportFlowRequest {
   /// Uncompressed raw byte content for flow.
@@ -8844,7 +9030,10 @@ class GoogleCloudDialogflowCxV3InputAudioConfig {
   /// the language does not exist, then the speech is recognized using the
   /// standard version of the specified model. Refer to
   /// [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model)
-  /// for more details.
+  /// for more details. If you specify a model, the following models typically
+  /// have the best performance: - phone_call (best for Agent Assist and
+  /// telephony) - latest_short (best for Dialogflow non-telephony) -
+  /// command_and_search (best for very short utterances and commands)
   ///
   /// Optional.
   core.String? model;
@@ -9035,9 +9224,9 @@ class GoogleCloudDialogflowCxV3Intent {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -9109,8 +9298,7 @@ class GoogleCloudDialogflowCxV3IntentCoverage {
 
 /// The agent's intent.
 class GoogleCloudDialogflowCxV3IntentCoverageIntent {
-  /// Whether or not the intent is covered by at least one of the agent's test
-  /// cases.
+  /// Whether the intent is covered by at least one of the agent's test cases.
   core.bool? covered;
 
   /// The intent full resource name
@@ -10089,6 +10277,9 @@ class GoogleCloudDialogflowCxV3Match {
 
 /// Request of MatchIntent.
 class GoogleCloudDialogflowCxV3MatchIntentRequest {
+  /// Persist session parameter changes from `query_params`.
+  core.bool? persistParameterChanges;
+
   /// The input specification.
   ///
   /// Required.
@@ -10098,12 +10289,16 @@ class GoogleCloudDialogflowCxV3MatchIntentRequest {
   GoogleCloudDialogflowCxV3QueryParameters? queryParams;
 
   GoogleCloudDialogflowCxV3MatchIntentRequest({
+    this.persistParameterChanges,
     this.queryInput,
     this.queryParams,
   });
 
   GoogleCloudDialogflowCxV3MatchIntentRequest.fromJson(core.Map json_)
       : this(
+          persistParameterChanges: json_.containsKey('persistParameterChanges')
+              ? json_['persistParameterChanges'] as core.bool
+              : null,
           queryInput: json_.containsKey('queryInput')
               ? GoogleCloudDialogflowCxV3QueryInput.fromJson(
                   json_['queryInput'] as core.Map<core.String, core.dynamic>)
@@ -10115,6 +10310,8 @@ class GoogleCloudDialogflowCxV3MatchIntentRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (persistParameterChanges != null)
+          'persistParameterChanges': persistParameterChanges!,
         if (queryInput != null) 'queryInput': queryInput!,
         if (queryParams != null) 'queryParams': queryParams!,
       };
@@ -10284,6 +10481,8 @@ class GoogleCloudDialogflowCxV3OutputAudioConfig {
 
   /// Configuration of how speech should be synthesized.
   ///
+  /// If not specified, Agent.text_to_speech_settings is applied.
+  ///
   /// Optional.
   GoogleCloudDialogflowCxV3SynthesizeSpeechConfig? synthesizeSpeechConfig;
 
@@ -10439,7 +10638,8 @@ class GoogleCloudDialogflowCxV3Page {
 ///
 /// It can contain one of: 1. A conversational query in the form of text. 2. An
 /// intent query that specifies which intent to trigger. 3. Natural language
-/// speech audio to be processed. 4. An event to be triggered.
+/// speech audio to be processed. 4. An event to be triggered. 5. DTMF digits to
+/// invoke an intent and fill in parameter value.
 class GoogleCloudDialogflowCxV3QueryInput {
   /// The natural language speech audio to be processed.
   GoogleCloudDialogflowCxV3AudioInput? audio;
@@ -10519,6 +10719,14 @@ class GoogleCloudDialogflowCxV3QueryParameters {
   /// If not provided, sentiment analysis is not performed.
   core.bool? analyzeQueryTextSentiment;
 
+  /// The channel which this query is for.
+  ///
+  /// If specified, only the ResponseMessage associated with the channel will be
+  /// returned. If no ResponseMessage is associated with the channel, it falls
+  /// back to the ResponseMessage with unspecified channel. If unspecified, the
+  /// ResponseMessage with unspecified channel will be returned.
+  core.String? channel;
+
   /// The unique identifier of the page to override the current page in the
   /// session.
   ///
@@ -10581,6 +10789,15 @@ class GoogleCloudDialogflowCxV3QueryParameters {
   /// this query.
   core.List<GoogleCloudDialogflowCxV3SessionEntityType>? sessionEntityTypes;
 
+  /// Sets Dialogflow session life time.
+  ///
+  /// By default, a Dialogflow session remains active and its data is stored for
+  /// 30 minutes after the last request is sent for the session. This value
+  /// should be no longer than 1 day.
+  ///
+  /// Optional.
+  core.String? sessionTtl;
+
   /// The time zone of this conversational query from the
   /// [time zone database](https://www.iana.org/time-zones), e.g.,
   /// America/New_York, Europe/Paris.
@@ -10601,6 +10818,7 @@ class GoogleCloudDialogflowCxV3QueryParameters {
 
   GoogleCloudDialogflowCxV3QueryParameters({
     this.analyzeQueryTextSentiment,
+    this.channel,
     this.currentPage,
     this.disableWebhook,
     this.flowVersions,
@@ -10608,6 +10826,7 @@ class GoogleCloudDialogflowCxV3QueryParameters {
     this.parameters,
     this.payload,
     this.sessionEntityTypes,
+    this.sessionTtl,
     this.timeZone,
     this.webhookHeaders,
   });
@@ -10618,6 +10837,9 @@ class GoogleCloudDialogflowCxV3QueryParameters {
               json_.containsKey('analyzeQueryTextSentiment')
                   ? json_['analyzeQueryTextSentiment'] as core.bool
                   : null,
+          channel: json_.containsKey('channel')
+              ? json_['channel'] as core.String
+              : null,
           currentPage: json_.containsKey('currentPage')
               ? json_['currentPage'] as core.String
               : null,
@@ -10646,15 +10868,18 @@ class GoogleCloudDialogflowCxV3QueryParameters {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          sessionTtl: json_.containsKey('sessionTtl')
+              ? json_['sessionTtl'] as core.String
+              : null,
           timeZone: json_.containsKey('timeZone')
               ? json_['timeZone'] as core.String
               : null,
           webhookHeaders: json_.containsKey('webhookHeaders')
               ? (json_['webhookHeaders'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -10663,6 +10888,7 @@ class GoogleCloudDialogflowCxV3QueryParameters {
   core.Map<core.String, core.dynamic> toJson() => {
         if (analyzeQueryTextSentiment != null)
           'analyzeQueryTextSentiment': analyzeQueryTextSentiment!,
+        if (channel != null) 'channel': channel!,
         if (currentPage != null) 'currentPage': currentPage!,
         if (disableWebhook != null) 'disableWebhook': disableWebhook!,
         if (flowVersions != null) 'flowVersions': flowVersions!,
@@ -10671,6 +10897,7 @@ class GoogleCloudDialogflowCxV3QueryParameters {
         if (payload != null) 'payload': payload!,
         if (sessionEntityTypes != null)
           'sessionEntityTypes': sessionEntityTypes!,
+        if (sessionTtl != null) 'sessionTtl': sessionTtl!,
         if (timeZone != null) 'timeZone': timeZone!,
         if (webhookHeaders != null) 'webhookHeaders': webhookHeaders!,
       };
@@ -10704,7 +10931,7 @@ class GoogleCloudDialogflowCxV3QueryResult {
   core.Map<core.String, core.Object?>? diagnosticInfo;
 
   /// If a DTMF was provided as input, this field will contain a copy of the
-  /// DTMFInput.
+  /// DtmfInput.
   GoogleCloudDialogflowCxV3DtmfInput? dtmf;
 
   /// The Intent that matched the conversational query.
@@ -10712,6 +10939,9 @@ class GoogleCloudDialogflowCxV3QueryResult {
   /// Some, not all fields are filled in this message, including but not limited
   /// to: `name` and `display_name`. This field is deprecated, please use
   /// QueryResult.match instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   GoogleCloudDialogflowCxV3Intent? intent;
 
   /// The intent detection confidence.
@@ -10722,6 +10952,9 @@ class GoogleCloudDialogflowCxV3QueryResult {
   /// change for the same end-user expression at any time due to a model
   /// retraining or change in implementation. This field is deprecated, please
   /// use QueryResult.match instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.double? intentDetectionConfidence;
 
   /// The language that was triggered during intent detection.
@@ -10940,6 +11173,12 @@ class GoogleCloudDialogflowCxV3ResourceName {
 /// approach allows for more sophisticated user experience scenarios, where the
 /// text displayed to the user may differ from what is heard.
 class GoogleCloudDialogflowCxV3ResponseMessage {
+  /// The channel which the response is associated with.
+  ///
+  /// Clients can specify the channel via QueryParameters.channel, and only
+  /// associated channel response will be returned.
+  core.String? channel;
+
   /// Indicates that the conversation succeeded.
   GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess?
       conversationSuccess;
@@ -10983,6 +11222,16 @@ class GoogleCloudDialogflowCxV3ResponseMessage {
   /// does not try to read or process the URI in any way.
   GoogleCloudDialogflowCxV3ResponseMessagePlayAudio? playAudio;
 
+  /// Response type.
+  /// Possible string values are:
+  /// - "RESPONSE_TYPE_UNSPECIFIED" : Not specified.
+  /// - "ENTRY_PROMPT" : The response is from an entry prompt in the page.
+  /// - "PARAMETER_PROMPT" : The response is from form-filling prompt in the
+  /// page.
+  /// - "HANDLER_PROMPT" : The response is from a transition route or an event
+  /// handler in the page or flow or transition route group.
+  core.String? responseType;
+
   /// A signal that the client should transfer the phone call connected to this
   /// agent to a third-party endpoint.
   GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall?
@@ -10992,6 +11241,7 @@ class GoogleCloudDialogflowCxV3ResponseMessage {
   GoogleCloudDialogflowCxV3ResponseMessageText? text;
 
   GoogleCloudDialogflowCxV3ResponseMessage({
+    this.channel,
     this.conversationSuccess,
     this.endInteraction,
     this.liveAgentHandoff,
@@ -10999,12 +11249,16 @@ class GoogleCloudDialogflowCxV3ResponseMessage {
     this.outputAudioText,
     this.payload,
     this.playAudio,
+    this.responseType,
     this.telephonyTransferCall,
     this.text,
   });
 
   GoogleCloudDialogflowCxV3ResponseMessage.fromJson(core.Map json_)
       : this(
+          channel: json_.containsKey('channel')
+              ? json_['channel'] as core.String
+              : null,
           conversationSuccess: json_.containsKey('conversationSuccess')
               ? GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess
                   .fromJson(json_['conversationSuccess']
@@ -11036,6 +11290,9 @@ class GoogleCloudDialogflowCxV3ResponseMessage {
               ? GoogleCloudDialogflowCxV3ResponseMessagePlayAudio.fromJson(
                   json_['playAudio'] as core.Map<core.String, core.dynamic>)
               : null,
+          responseType: json_.containsKey('responseType')
+              ? json_['responseType'] as core.String
+              : null,
           telephonyTransferCall: json_.containsKey('telephonyTransferCall')
               ? GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall
                   .fromJson(json_['telephonyTransferCall']
@@ -11048,6 +11305,7 @@ class GoogleCloudDialogflowCxV3ResponseMessage {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (channel != null) 'channel': channel!,
         if (conversationSuccess != null)
           'conversationSuccess': conversationSuccess!,
         if (endInteraction != null) 'endInteraction': endInteraction!,
@@ -11056,6 +11314,7 @@ class GoogleCloudDialogflowCxV3ResponseMessage {
         if (outputAudioText != null) 'outputAudioText': outputAudioText!,
         if (payload != null) 'payload': payload!,
         if (playAudio != null) 'playAudio': playAudio!,
+        if (responseType != null) 'responseType': responseType!,
         if (telephonyTransferCall != null)
           'telephonyTransferCall': telephonyTransferCall!,
         if (text != null) 'text': text!,
@@ -11385,6 +11644,9 @@ class GoogleCloudDialogflowCxV3RestoreAgentRequest {
   /// [Dialogflow access control](https://cloud.google.com/dialogflow/cx/docs/concept/access-control#storage).
   core.String? agentUri;
 
+  /// Setting for restoring from a git branch
+  GoogleCloudDialogflowCxV3RestoreAgentRequestGitSource? gitSource;
+
   /// Agent restore mode.
   ///
   /// If not specified, `KEEP` is assumed.
@@ -11400,6 +11662,7 @@ class GoogleCloudDialogflowCxV3RestoreAgentRequest {
   GoogleCloudDialogflowCxV3RestoreAgentRequest({
     this.agentContent,
     this.agentUri,
+    this.gitSource,
     this.restoreOption,
   });
 
@@ -11411,6 +11674,10 @@ class GoogleCloudDialogflowCxV3RestoreAgentRequest {
           agentUri: json_.containsKey('agentUri')
               ? json_['agentUri'] as core.String
               : null,
+          gitSource: json_.containsKey('gitSource')
+              ? GoogleCloudDialogflowCxV3RestoreAgentRequestGitSource.fromJson(
+                  json_['gitSource'] as core.Map<core.String, core.dynamic>)
+              : null,
           restoreOption: json_.containsKey('restoreOption')
               ? json_['restoreOption'] as core.String
               : null,
@@ -11419,7 +11686,29 @@ class GoogleCloudDialogflowCxV3RestoreAgentRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (agentContent != null) 'agentContent': agentContent!,
         if (agentUri != null) 'agentUri': agentUri!,
+        if (gitSource != null) 'gitSource': gitSource!,
         if (restoreOption != null) 'restoreOption': restoreOption!,
+      };
+}
+
+/// Settings for restoring from a git branch
+class GoogleCloudDialogflowCxV3RestoreAgentRequestGitSource {
+  /// tracking branch for the git pull
+  core.String? trackingBranch;
+
+  GoogleCloudDialogflowCxV3RestoreAgentRequestGitSource({
+    this.trackingBranch,
+  });
+
+  GoogleCloudDialogflowCxV3RestoreAgentRequestGitSource.fromJson(core.Map json_)
+      : this(
+          trackingBranch: json_.containsKey('trackingBranch')
+              ? json_['trackingBranch'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (trackingBranch != null) 'trackingBranch': trackingBranch!,
       };
 }
 
@@ -11672,14 +11961,12 @@ class GoogleCloudDialogflowCxV3SecuritySettings {
   /// be persisted.
   core.String? redactionStrategy;
 
-  /// Retains data in interaction logging for the specified number of days.
+  /// Retains the data for the specified number of days.
   ///
-  /// This does not apply to Cloud logging, which is owned by the user - not
-  /// Dialogflow. User must set a value lower than Dialogflow's default 365d
-  /// TTL. Setting a value higher than that has no effect. A missing value or
-  /// setting to 0 also means we use Dialogflow's default TTL. Note: Interaction
-  /// logging is a limited access feature. Talk to your Google representative to
-  /// check availability for you.
+  /// User must set a value lower than Dialogflow's default 365d TTL (30 days
+  /// for Agent Assist traffic), higher value will be ignored and use default.
+  /// Setting a value higher than that has no effect. A missing value or setting
+  /// to 0 also means we use default TTL.
   core.int? retentionWindowDays;
 
   GoogleCloudDialogflowCxV3SecuritySettings({
@@ -11771,7 +12058,7 @@ class GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings {
 
   /// Cloud Storage bucket to export audio record to.
   ///
-  /// Settings this field would grant the Storage Object Creator role to the
+  /// Setting this field would grant the Storage Object Creator role to the
   /// Dialogflow Service Agent. API caller that tries to modify this field
   /// should have the permission of storage.buckets.setIamPolicy.
   core.String? gcsBucket;
@@ -11840,7 +12127,7 @@ class GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings {
 /// Sentiment analysis inspects user input and identifies the prevailing
 /// subjective opinion, especially to determine a user's attitude as positive,
 /// negative, or neutral.
-typedef GoogleCloudDialogflowCxV3SentimentAnalysisResult = $Shared04;
+typedef GoogleCloudDialogflowCxV3SentimentAnalysisResult = $Shared05;
 
 /// Session entity types are referred to as **User** entity types and are
 /// entities that are built for an individual user such as favorites,
@@ -12244,7 +12531,8 @@ class GoogleCloudDialogflowCxV3TestConfig {
 
 /// The description of differences between original and replayed agent output.
 class GoogleCloudDialogflowCxV3TestRunDifference {
-  /// A description of the diff, showing the actual output vs expected output.
+  /// A human readable description of the diff, showing the actual output vs
+  /// expected output.
   core.String? description;
 
   /// The type of diff.
@@ -12254,6 +12542,7 @@ class GoogleCloudDialogflowCxV3TestRunDifference {
   /// - "PAGE" : The page.
   /// - "PARAMETERS" : The parameters.
   /// - "UTTERANCE" : The message utterance.
+  /// - "FLOW" : The flow.
   core.String? type;
 
   GoogleCloudDialogflowCxV3TestRunDifference({
@@ -12298,6 +12587,46 @@ class GoogleCloudDialogflowCxV3TextInput {
       };
 }
 
+/// Settings related to speech synthesizing.
+class GoogleCloudDialogflowCxV3TextToSpeechSettings {
+  /// Configuration of how speech should be synthesized, mapping from language
+  /// (https://cloud.google.com/dialogflow/cx/docs/reference/language) to
+  /// SynthesizeSpeechConfig.
+  ///
+  /// These settings affect: - The
+  /// [phone gateway](https://cloud.google.com/dialogflow/cx/docs/concept/integration/phone-gateway)
+  /// synthesize configuration set via Agent.text_to_speech_settings. - How
+  /// speech is synthesized when invoking session APIs.
+  /// Agent.text_to_speech_settings only applies if
+  /// OutputAudioConfig.synthesize_speech_config is not specified.
+  core.Map<core.String, GoogleCloudDialogflowCxV3SynthesizeSpeechConfig>?
+      synthesizeSpeechConfigs;
+
+  GoogleCloudDialogflowCxV3TextToSpeechSettings({
+    this.synthesizeSpeechConfigs,
+  });
+
+  GoogleCloudDialogflowCxV3TextToSpeechSettings.fromJson(core.Map json_)
+      : this(
+          synthesizeSpeechConfigs: json_.containsKey('synthesizeSpeechConfigs')
+              ? (json_['synthesizeSpeechConfigs']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    GoogleCloudDialogflowCxV3SynthesizeSpeechConfig.fromJson(
+                        value as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (synthesizeSpeechConfigs != null)
+          'synthesizeSpeechConfigs': synthesizeSpeechConfigs!,
+      };
+}
+
 /// The request message for Flows.TrainFlow.
 typedef GoogleCloudDialogflowCxV3TrainFlowRequest = $Empty;
 
@@ -12339,8 +12668,8 @@ class GoogleCloudDialogflowCxV3TransitionCoverage {
 
 /// A transition in a page.
 class GoogleCloudDialogflowCxV3TransitionCoverageTransition {
-  /// Whether or not the transition is covered by at least one of the agent's
-  /// test cases.
+  /// Whether the transition is covered by at least one of the agent's test
+  /// cases.
   core.bool? covered;
 
   /// Event handler.
@@ -12672,8 +13001,8 @@ class GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverage {
 
 /// A transition coverage in a transition route group.
 class GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverageTransition {
-  /// Whether or not the transition route is covered by at least one of the
-  /// agent's test cases.
+  /// Whether the transition route is covered by at least one of the agent's
+  /// test cases.
   core.bool? covered;
 
   /// Intent route or condition route.
@@ -12736,6 +13065,9 @@ class GoogleCloudDialogflowCxV3ValidationMessage {
   core.String? resourceType;
 
   /// The names of the resources where the message is found.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<core.String>? resources;
 
   /// Indicates the severity of the message.
@@ -13109,8 +13441,40 @@ class GoogleCloudDialogflowCxV3WebhookGenericWebService {
   /// Optional.
   core.List<core.String>? allowedCaCerts;
 
+  /// HTTP method for the flexible webhook calls.
+  ///
+  /// Standard webhook always uses POST.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "HTTP_METHOD_UNSPECIFIED" : HTTP method not specified.
+  /// - "POST" : HTTP POST Method.
+  /// - "GET" : HTTP GET Method.
+  /// - "HEAD" : HTTP HEAD Method.
+  /// - "PUT" : HTTP PUT Method.
+  /// - "DELETE" : HTTP DELETE Method.
+  /// - "PATCH" : HTTP PATCH Method.
+  /// - "OPTIONS" : HTTP OPTIONS Method.
+  core.String? httpMethod;
+
+  /// Maps the values extracted from specific fields of the flexible webhook
+  /// response into session parameters.
+  ///
+  /// - Key: session parameter name - Value: field path in the webhook response
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? parameterMapping;
+
   /// The password for HTTP Basic authentication.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? password;
+
+  /// Defines a custom JSON object as request body to send to flexible webhook.
+  ///
+  /// Optional.
+  core.String? requestBody;
 
   /// The HTTP request headers to send together with webhook requests.
   core.Map<core.String, core.String>? requestHeaders;
@@ -13123,14 +13487,30 @@ class GoogleCloudDialogflowCxV3WebhookGenericWebService {
   core.String? uri;
 
   /// The user name for HTTP Basic authentication.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? username;
+
+  /// Type of the webhook.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "WEBHOOK_TYPE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "STANDARD" : Represents a standard webhook.
+  /// - "FLEXIBLE" : Represents a flexible webhook.
+  core.String? webhookType;
 
   GoogleCloudDialogflowCxV3WebhookGenericWebService({
     this.allowedCaCerts,
+    this.httpMethod,
+    this.parameterMapping,
     this.password,
+    this.requestBody,
     this.requestHeaders,
     this.uri,
     this.username,
+    this.webhookType,
   });
 
   GoogleCloudDialogflowCxV3WebhookGenericWebService.fromJson(core.Map json_)
@@ -13140,15 +13520,31 @@ class GoogleCloudDialogflowCxV3WebhookGenericWebService {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          httpMethod: json_.containsKey('httpMethod')
+              ? json_['httpMethod'] as core.String
+              : null,
+          parameterMapping: json_.containsKey('parameterMapping')
+              ? (json_['parameterMapping']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
           password: json_.containsKey('password')
               ? json_['password'] as core.String
+              : null,
+          requestBody: json_.containsKey('requestBody')
+              ? json_['requestBody'] as core.String
               : null,
           requestHeaders: json_.containsKey('requestHeaders')
               ? (json_['requestHeaders'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -13156,14 +13552,21 @@ class GoogleCloudDialogflowCxV3WebhookGenericWebService {
           username: json_.containsKey('username')
               ? json_['username'] as core.String
               : null,
+          webhookType: json_.containsKey('webhookType')
+              ? json_['webhookType'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowedCaCerts != null) 'allowedCaCerts': allowedCaCerts!,
+        if (httpMethod != null) 'httpMethod': httpMethod!,
+        if (parameterMapping != null) 'parameterMapping': parameterMapping!,
         if (password != null) 'password': password!,
+        if (requestBody != null) 'requestBody': requestBody!,
         if (requestHeaders != null) 'requestHeaders': requestHeaders!,
         if (uri != null) 'uri': uri!,
         if (username != null) 'username': username!,
+        if (webhookType != null) 'webhookType': webhookType!,
       };
 }
 
@@ -13238,7 +13641,7 @@ class GoogleCloudLocationListLocationsResponse {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
+/// A resource that represents a Google Cloud location.
 typedef GoogleCloudLocationLocation = $Location00;
 
 /// The response message for Operations.ListOperations.

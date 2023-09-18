@@ -1,8 +1,6 @@
 // ignore_for_file: camel_case_types
-// ignore_for_file: cascade_invocations
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_const_declarations
@@ -12,8 +10,9 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unreachable_from_main
 // ignore_for_file: unused_local_variable
 
 import 'dart:async' as async;
@@ -26,12 +25,34 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
+core.int buildCounterAccountActivity = 0;
+api.AccountActivity buildAccountActivity() {
+  final o = api.AccountActivity();
+  buildCounterAccountActivity++;
+  if (buildCounterAccountActivity < 3) {
+    o.activityLevel = 'foo';
+  }
+  buildCounterAccountActivity--;
+  return o;
+}
+
+void checkAccountActivity(api.AccountActivity o) {
+  buildCounterAccountActivity++;
+  if (buildCounterAccountActivity < 3) {
+    unittest.expect(
+      o.activityLevel!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterAccountActivity--;
+}
+
 core.int buildCounterAccountDetails = 0;
 api.AccountDetails buildAccountDetails() {
   final o = api.AccountDetails();
   buildCounterAccountDetails++;
   if (buildCounterAccountDetails < 3) {
-    o.accountRiskVerdict = buildAccountRiskVerdict();
+    o.accountActivity = buildAccountActivity();
     o.appLicensingVerdict = 'foo';
   }
   buildCounterAccountDetails--;
@@ -41,40 +62,13 @@ api.AccountDetails buildAccountDetails() {
 void checkAccountDetails(api.AccountDetails o) {
   buildCounterAccountDetails++;
   if (buildCounterAccountDetails < 3) {
-    checkAccountRiskVerdict(o.accountRiskVerdict!);
+    checkAccountActivity(o.accountActivity!);
     unittest.expect(
       o.appLicensingVerdict!,
       unittest.equals('foo'),
     );
   }
   buildCounterAccountDetails--;
-}
-
-core.int buildCounterAccountRiskVerdict = 0;
-api.AccountRiskVerdict buildAccountRiskVerdict() {
-  final o = api.AccountRiskVerdict();
-  buildCounterAccountRiskVerdict++;
-  if (buildCounterAccountRiskVerdict < 3) {
-    o.risk = 'foo';
-    o.riskLevel = 'foo';
-  }
-  buildCounterAccountRiskVerdict--;
-  return o;
-}
-
-void checkAccountRiskVerdict(api.AccountRiskVerdict o) {
-  buildCounterAccountRiskVerdict++;
-  if (buildCounterAccountRiskVerdict < 3) {
-    unittest.expect(
-      o.risk!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.riskLevel!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterAccountRiskVerdict--;
 }
 
 core.List<core.String> buildUnnamed0() => [
@@ -205,12 +199,49 @@ void checkDeviceIntegrity(api.DeviceIntegrity o) {
   buildCounterDeviceIntegrity--;
 }
 
+core.List<core.String> buildUnnamed2() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed2(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterGuidanceDetails = 0;
+api.GuidanceDetails buildGuidanceDetails() {
+  final o = api.GuidanceDetails();
+  buildCounterGuidanceDetails++;
+  if (buildCounterGuidanceDetails < 3) {
+    o.userRemediation = buildUnnamed2();
+  }
+  buildCounterGuidanceDetails--;
+  return o;
+}
+
+void checkGuidanceDetails(api.GuidanceDetails o) {
+  buildCounterGuidanceDetails++;
+  if (buildCounterGuidanceDetails < 3) {
+    checkUnnamed2(o.userRemediation!);
+  }
+  buildCounterGuidanceDetails--;
+}
+
 core.int buildCounterRequestDetails = 0;
 api.RequestDetails buildRequestDetails() {
   final o = api.RequestDetails();
   buildCounterRequestDetails++;
   if (buildCounterRequestDetails < 3) {
     o.nonce = 'foo';
+    o.requestHash = 'foo';
     o.requestPackageName = 'foo';
     o.timestampMillis = 'foo';
   }
@@ -223,6 +254,10 @@ void checkRequestDetails(api.RequestDetails o) {
   if (buildCounterRequestDetails < 3) {
     unittest.expect(
       o.nonce!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.requestHash!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -264,6 +299,7 @@ api.TokenPayloadExternal buildTokenPayloadExternal() {
     o.accountDetails = buildAccountDetails();
     o.appIntegrity = buildAppIntegrity();
     o.deviceIntegrity = buildDeviceIntegrity();
+    o.guidanceDetails = buildGuidanceDetails();
     o.requestDetails = buildRequestDetails();
     o.testingDetails = buildTestingDetails();
   }
@@ -277,6 +313,7 @@ void checkTokenPayloadExternal(api.TokenPayloadExternal o) {
     checkAccountDetails(o.accountDetails!);
     checkAppIntegrity(o.appIntegrity!);
     checkDeviceIntegrity(o.deviceIntegrity!);
+    checkGuidanceDetails(o.guidanceDetails!);
     checkRequestDetails(o.requestDetails!);
     checkTestingDetails(o.testingDetails!);
   }
@@ -284,6 +321,16 @@ void checkTokenPayloadExternal(api.TokenPayloadExternal o) {
 }
 
 void main() {
+  unittest.group('obj-schema-AccountActivity', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAccountActivity();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AccountActivity.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAccountActivity(od);
+    });
+  });
+
   unittest.group('obj-schema-AccountDetails', () {
     unittest.test('to-json--from-json', () async {
       final o = buildAccountDetails();
@@ -291,16 +338,6 @@ void main() {
       final od = api.AccountDetails.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkAccountDetails(od);
-    });
-  });
-
-  unittest.group('obj-schema-AccountRiskVerdict', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildAccountRiskVerdict();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.AccountRiskVerdict.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkAccountRiskVerdict(od);
     });
   });
 
@@ -341,6 +378,16 @@ void main() {
       final od = api.DeviceIntegrity.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkDeviceIntegrity(od);
+    });
+  });
+
+  unittest.group('obj-schema-GuidanceDetails', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGuidanceDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GuidanceDetails.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGuidanceDetails(od);
     });
   });
 
@@ -386,7 +433,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkDecodeIntegrityTokenRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -402,7 +449,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>

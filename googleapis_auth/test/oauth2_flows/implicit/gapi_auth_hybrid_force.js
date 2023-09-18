@@ -41,7 +41,8 @@
         'token_type' : 'Bearer',
         'access_token' : 'foo_token',
         'expires_at' : Date.now() + 1000 * 3210,
-        'code' : 'mycode'
+        'code' : 'mycode',
+        'scope': scope,
       });
     } else {
       throw new Error('error');

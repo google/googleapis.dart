@@ -24,6 +24,7 @@ import 'authorization_code_grant_abstract_flow.dart';
 class AuthorizationCodeGrantServerFlow
     extends AuthorizationCodeGrantAbstractFlow {
   final PromptUserForConsent userPrompt;
+  final int listenPort;
 
   AuthorizationCodeGrantServerFlow(
     super.clientId,
@@ -31,11 +32,12 @@ class AuthorizationCodeGrantServerFlow
     super.client,
     this.userPrompt, {
     super.hostedDomain,
+    this.listenPort = 0,
   });
 
   @override
   Future<AccessCredentials> run() async {
-    final server = await HttpServer.bind('localhost', 0);
+    final server = await HttpServer.bind('localhost', listenPort);
 
     try {
       final port = server.port;

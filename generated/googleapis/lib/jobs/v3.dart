@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud Talent Solution API - v3
@@ -26,7 +25,7 @@
 ///   - [ProjectsClientEventsResource]
 ///   - [ProjectsCompaniesResource]
 ///   - [ProjectsJobsResource]
-library jobs.v3;
+library jobs_v3;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -35,7 +34,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -1071,9 +1069,9 @@ class ClientEvent {
               : null,
           extraInfo: json_.containsKey('extraInfo')
               ? (json_['extraInfo'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -1297,13 +1295,15 @@ class Company {
   /// Optional.
   core.String? imageUri;
 
-  /// A list of keys of filterable Job.custom_attributes, whose corresponding
-  /// `string_values` are used in keyword search.
+  /// This field is deprecated.
   ///
-  /// Jobs with `string_values` under these specified field keys are returned if
-  /// any of the values matches the search keyword. Custom field values with
-  /// parenthesis, brackets and special symbols won't be properly searchable,
-  /// and those keyword queries need to be surrounded by quotes.
+  /// Please set the searchability of the custom attribute in the
+  /// Job.custom_attributes going forward. A list of keys of filterable
+  /// Job.custom_attributes, whose corresponding `string_values` are used in
+  /// keyword search. Jobs with `string_values` under these specified field keys
+  /// are returned if any of the values matches the search keyword. Custom field
+  /// values with parenthesis, brackets and special symbols won't be properly
+  /// searchable, and those keyword queries need to be surrounded by quotes.
   ///
   /// Optional.
   core.List<core.String>? keywordSearchableJobCustomAttributes;
@@ -2139,9 +2139,9 @@ class CustomAttributeHistogramResult {
                   ? (json_['stringValueHistogramResult']
                           as core.Map<core.String, core.dynamic>)
                       .map(
-                      (key, item) => core.MapEntry(
+                      (key, value) => core.MapEntry(
                         key,
-                        item as core.int,
+                        value as core.int,
                       ),
                     )
                   : null,
@@ -2343,9 +2343,9 @@ class HistogramResult {
               : null,
           values: json_.containsKey('values')
               ? (json_['values'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.int,
+                    value as core.int,
                   ),
                 )
               : null,
@@ -2782,10 +2782,10 @@ class Job {
               ? (json_['customAttributes']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     CustomAttribute.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,

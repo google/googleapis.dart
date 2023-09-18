@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Admin SDK API - datatransfer_v1
@@ -24,7 +23,7 @@
 ///
 /// - [ApplicationsResource]
 /// - [TransfersResource]
-library admin.datatransfer_v1;
+library admin_datatransfer_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -194,6 +193,9 @@ class TransfersResource {
 
   /// Inserts a data transfer request.
   ///
+  /// See the \[Transfer parameters\](/admin-sdk/data-transfer/v1/parameters)
+  /// reference for specific application requirements.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -288,13 +290,17 @@ class TransfersResource {
   }
 }
 
-/// Applications resources represent applications installed on the domain that
+/// Application resources represent applications installed on the domain that
 /// support transferring ownership of user data.
 class Application {
   /// Etag of the resource.
   core.String? etag;
 
   /// The application's ID.
+  ///
+  /// Retrievable by using the
+  /// \[`applications.list()`\](/admin-sdk/data-transfer/reference/rest/v1/applications/list)
+  /// method.
   core.String? id;
 
   /// Identifies the resource as a DataTransfer Application Resource.
@@ -305,8 +311,7 @@ class Application {
 
   /// The list of all possible transfer parameters for this application.
   ///
-  /// These parameters can be used to select the data of the user in this
-  /// application to be transferred.
+  /// These parameters select which categories of the user's data to transfer.
   core.List<ApplicationTransferParam>? transferParams;
 
   Application({
@@ -348,12 +353,14 @@ class ApplicationDataTransfer {
   /// The transfer parameters for the application.
   ///
   /// These parameters are used to select the data which will get transferred in
-  /// context of this application.
+  /// context of this application. For more information about the specific
+  /// values available for each application, see the \[Transfer
+  /// parameters\](/admin-sdk/data-transfer/v1/parameters) reference.
   core.List<ApplicationTransferParam>? applicationTransferParams;
 
-  /// Current status of transfer for this application.
+  /// Read-only.
   ///
-  /// (Read-only)
+  /// Current status of transfer for this application.
   core.String? applicationTransferStatus;
 
   ApplicationDataTransfer({
@@ -391,14 +398,10 @@ class ApplicationDataTransfer {
 
 /// Template for application transfer parameters.
 class ApplicationTransferParam {
-  /// The type of the transfer parameter.
-  ///
-  /// eg: 'PRIVACY_LEVEL'
+  /// The type of the transfer parameter, such as `PRIVACY_LEVEL`.
   core.String? key;
 
-  /// The value of the corresponding transfer parameter.
-  ///
-  /// eg: 'PRIVATE' or 'SHARED'
+  /// The value of the transfer parameter, such as `PRIVATE` or `SHARED`.
   core.List<core.String>? value;
 
   ApplicationTransferParam({
@@ -424,8 +427,8 @@ class ApplicationTransferParam {
 
 /// Template for a collection of Applications.
 class ApplicationsListResponse {
-  /// List of applications that support data transfer and are also installed for
-  /// the customer.
+  /// The list of applications that support data transfer and are also installed
+  /// for the customer.
   core.List<Application>? applications;
 
   /// ETag of the resource.
@@ -434,7 +437,7 @@ class ApplicationsListResponse {
   /// Identifies the resource as a collection of Applications.
   core.String? kind;
 
-  /// Continuation token which will be used to specify next page in list API.
+  /// Token to specify the next page in the list.
   core.String? nextPageToken;
 
   ApplicationsListResponse({
@@ -470,18 +473,19 @@ class ApplicationsListResponse {
 /// A Transfer resource represents the transfer of the ownership of user data
 /// between users.
 class DataTransfer {
-  /// List of per application data transfer resources.
+  /// The list of per-application data transfer resources.
   ///
-  /// It contains data transfer details of the applications associated with this
-  /// transfer resource. Note that this list is also used to specify the
-  /// applications for which data transfer has to be done at the time of the
-  /// transfer resource creation.
+  /// It contains details of the applications associated with this transfer
+  /// resource, and also specifies the applications for which data transfer has
+  /// to be done at the time of the transfer resource creation.
   core.List<ApplicationDataTransfer>? applicationDataTransfers;
 
   /// ETag of the resource.
   core.String? etag;
 
-  /// The transfer's ID (Read-only).
+  /// Read-only.
+  ///
+  /// The transfer's ID.
   core.String? id;
 
   /// Identifies the resource as a DataTransfer request.
@@ -493,10 +497,14 @@ class DataTransfer {
   /// ID of the user whose data is being transferred.
   core.String? oldOwnerUserId;
 
-  /// Overall transfer status (Read-only).
+  /// Read-only.
+  ///
+  /// Overall transfer status.
   core.String? overallTransferStatusCode;
 
-  /// The time at which the data transfer was requested (Read-only).
+  /// Read-only.
+  ///
+  /// The time at which the data transfer was requested.
   core.DateTime? requestTime;
 
   DataTransfer({
@@ -563,7 +571,7 @@ class DataTransfersListResponse {
   /// Identifies the resource as a collection of data transfer requests.
   core.String? kind;
 
-  /// Continuation token which will be used to specify next page in list API.
+  /// Token to specify the next page in the list.
   core.String? nextPageToken;
 
   DataTransfersListResponse({

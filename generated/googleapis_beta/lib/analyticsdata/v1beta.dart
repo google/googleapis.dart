@@ -2,19 +2,24 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Google Analytics Data API - v1beta
 ///
-/// Accesses report data in Google Analytics.
+/// Accesses report data in Google Analytics. Warning: Creating multiple
+/// Customer Applications, Accounts, or Projects to simulate or act as a single
+/// Customer Application, Account, or Project (respectively) or to circumvent
+/// Service-specific usage limits or quotas is a direct violation of Google
+/// Cloud Platform Terms of Service as well as Google APIs Terms of Service.
+/// These actions can result in immediate termination of your GCP project(s)
+/// without any warning.
 ///
 /// For more information, see
 /// <https://developers.google.com/analytics/devguides/reporting/data/v1/>
@@ -22,7 +27,7 @@
 /// Create an instance of [AnalyticsDataApi] to access these resources:
 ///
 /// - [PropertiesResource]
-library analyticsdata.v1beta;
+library analyticsdata_v1beta;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -31,7 +36,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -39,6 +43,13 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 /// Accesses report data in Google Analytics.
+///
+/// Warning: Creating multiple Customer Applications, Accounts, or Projects to
+/// simulate or act as a single Customer Application, Account, or Project
+/// (respectively) or to circumvent Service-specific usage limits or quotas is a
+/// direct violation of Google Cloud Platform Terms of Service as well as Google
+/// APIs Terms of Service. These actions can result in immediate termination of
+/// your GCP project(s) without any warning.
 class AnalyticsDataApi {
   /// View and manage your Google Analytics data
   static const analyticsScope = 'https://www.googleapis.com/auth/analytics';
@@ -179,9 +190,7 @@ class PropertiesResource {
   /// tracked. To learn more, see
   /// [where to find your Property ID](https://developers.google.com/analytics/devguides/reporting/data/v1/property-id).
   /// `property` should be the same value as in your `runReport` request.
-  /// Example: properties/1234 Set the Property ID to 0 for compatibility
-  /// checking on dimensions and metrics common to all properties. In this
-  /// special mode, this method will not return custom dimensions and metrics.
+  /// Example: properties/1234
   /// Value must have pattern `^properties/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1964,7 +1973,7 @@ class Pivot {
   ///
   /// The `limit` parameter is required. A `limit` of 10,000 is common for
   /// single pivot requests. The product of the `limit` for each `pivot` in a
-  /// `RunPivotReportRequest` must not exceed 100,000. For example, a two pivot
+  /// `RunPivotReportRequest` must not exceed 250,000. For example, a two pivot
   /// request with `limit: 1000` in each pivot will fail because the product is
   /// `1,000,000`.
   core.String? limit;
@@ -2190,24 +2199,24 @@ class PropertyQuota {
   /// can have up to 50 server errors per hour.
   QuotaStatus? serverErrorsPerProjectPerHour;
 
-  /// Standard Analytics Properties can use up to 25,000 tokens per day;
-  /// Analytics 360 Properties can use 250,000 tokens per day.
+  /// Standard Analytics Properties can use up to 200,000 tokens per day;
+  /// Analytics 360 Properties can use 2,000,000 tokens per day.
   ///
   /// Most requests consume fewer than 10 tokens.
   QuotaStatus? tokensPerDay;
 
-  /// Standard Analytics Properties can use up to 5,000 tokens per hour;
-  /// Analytics 360 Properties can use 50,000 tokens per hour.
+  /// Standard Analytics Properties can use up to 40,000 tokens per hour;
+  /// Analytics 360 Properties can use 400,000 tokens per hour.
   ///
   /// An API request consumes a single number of tokens, and that number is
   /// deducted from all of the hourly, daily, and per project hourly quotas.
   QuotaStatus? tokensPerHour;
 
-  /// Analytics Properties can use up to 25% of their tokens per project per
+  /// Analytics Properties can use up to 35% of their tokens per project per
   /// hour.
   ///
-  /// This amounts to standard Analytics Properties can use up to 1,250 tokens
-  /// per project per hour, and Analytics 360 Properties can use 12,500 tokens
+  /// This amounts to standard Analytics Properties can use up to 14,000 tokens
+  /// per project per hour, and Analytics 360 Properties can use 140,000 tokens
   /// per project per hour. An API request consumes a single number of tokens,
   /// and that number is deducted from all of the hourly, daily, and per project
   /// hourly quotas.
@@ -2288,7 +2297,15 @@ class ResponseMetaData {
   /// If true, indicates some buckets of dimension combinations are rolled into
   /// "(other)" row.
   ///
-  /// This can happen for high cardinality reports.
+  /// This can happen for high cardinality reports. The metadata parameter
+  /// dataLossFromOtherRow is populated based on the aggregated data table used
+  /// in the report. The parameter will be accurately populated regardless of
+  /// the filters and limits in the report. For example, the (other) row could
+  /// be dropped from the report because the request contains a filter on
+  /// sessionSource = google. This parameter will still be populated if data
+  /// loss from other row was present in the input aggregate data used to
+  /// generate this report. To learn more, see \[About the (other) row and data
+  /// sampling\](https://support.google.com/analytics/answer/13208658#reports).
   core.bool? dataLossFromOtherRow;
 
   /// If empty reason is specified, the report is empty for this reason.
@@ -2449,7 +2466,11 @@ class RunPivotReportRequest {
   /// returned.
   ///
   /// If true, these rows will be returned if they are not separately removed by
-  /// a filter.
+  /// a filter. Regardless of this `keep_empty_rows` setting, only data recorded
+  /// by the Google Analytics (GA4) property can be displayed in a report. For
+  /// example if a property never logs a `purchase` event, then a query for the
+  /// `eventName` dimension and `eventCount` metric will not have a row
+  /// eventName: "purchase" and eventCount: 0.
   core.bool? keepEmptyRows;
 
   /// The filter clause of metrics.
@@ -2697,7 +2718,7 @@ class RunRealtimeReportRequest {
   /// The number of rows to return.
   ///
   /// If unspecified, 10,000 rows are returned. The API returns a maximum of
-  /// 100,000 rows per request, no matter how many you ask for. `limit` must be
+  /// 250,000 rows per request, no matter how many you ask for. `limit` must be
   /// positive. The API can also return fewer rows than the requested `limit`,
   /// if there aren't as many dimension values as the `limit`. For instance,
   /// there are fewer than 300 possible values for the dimension `country`, so
@@ -2948,8 +2969,8 @@ class RunReportRequest {
   /// ranges. In a cohort request, this `dateRanges` must be unspecified.
   core.List<DateRange>? dateRanges;
 
-  /// Dimension filters allow you to ask for only specific dimension values in
-  /// the report.
+  /// Dimension filters let you ask for only specific dimension values in the
+  /// report.
   ///
   /// To learn more, see
   /// [Fundamentals of Dimension Filters](https://developers.google.com/analytics/devguides/reporting/data/v1/basics#dimension_filters)
@@ -2963,13 +2984,17 @@ class RunReportRequest {
   /// returned.
   ///
   /// If true, these rows will be returned if they are not separately removed by
-  /// a filter.
+  /// a filter. Regardless of this `keep_empty_rows` setting, only data recorded
+  /// by the Google Analytics (GA4) property can be displayed in a report. For
+  /// example if a property never logs a `purchase` event, then a query for the
+  /// `eventName` dimension and `eventCount` metric will not have a row
+  /// eventName: "purchase" and eventCount: 0.
   core.bool? keepEmptyRows;
 
   /// The number of rows to return.
   ///
   /// If unspecified, 10,000 rows are returned. The API returns a maximum of
-  /// 100,000 rows per request, no matter how many you ask for. `limit` must be
+  /// 250,000 rows per request, no matter how many you ask for. `limit` must be
   /// positive. The API can also return fewer rows than the requested `limit`,
   /// if there aren't as many dimension values as the `limit`. For instance,
   /// there are fewer than 300 possible values for the dimension `country`, so

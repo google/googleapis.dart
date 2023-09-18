@@ -27,6 +27,13 @@
     "name": "searchconsole",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230805",
+    "rootUrl": "https://searchconsole.googleapis.com/",
+    "servicePath": "",
+    "title": "Google Search Console API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -104,7 +111,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "searchanalytics": {
             "methods": {
@@ -398,8 +404,6 @@
             }
         }
     },
-    "revision": "20220912",
-    "rootUrl": "https://searchconsole.googleapis.com/",
     "schemas": {
         "AmpInspectionResult": {
             "description": "AMP inspection result of the live page or the current information from Google's index, depending on whether you requested a live inspection or not.",
@@ -1414,6 +1418,15 @@
                         "PATTERN_SITEMAP",
                         "OCEANFRONT"
                     ],
+                    "enumDeprecated": [
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        true,
+                        true
+                    ],
                     "enumDescriptions": [
                         "",
                         "",
@@ -1438,6 +1451,7 @@
             "id": "WmxSitemapContent",
             "properties": {
                 "indexed": {
+                    "deprecated": true,
                     "description": "*Deprecated; do not use.*",
                     "format": "int64",
                     "type": "string"
@@ -1460,6 +1474,17 @@
                         "IOS_APP",
                         "DATA_FEED_ELEMENT"
                     ],
+                    "enumDeprecated": [
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        true,
+                        false,
+                        true
+                    ],
                     "enumDescriptions": [
                         "",
                         "",
@@ -1476,9 +1501,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Google Search Console API",
-    "version": "v1",
-    "version_module": true
+    }
 }

@@ -73,8 +73,12 @@ Future<AutoRefreshingAuthClient> clientViaApplicationDefaultCredentials({
           .resolve('gcloud/application_default_credentials.json'),
     );
   } else {
+    final homeVar = Platform.environment['HOME'];
+    if (homeVar == null) {
+      throw StateError('The expected environment variable HOME must be set.');
+    }
     credFile = File.fromUri(
-      Uri.directory(Platform.environment['HOME']!)
+      Uri.directory(homeVar)
           .resolve('.config/gcloud/application_default_credentials.json'),
     );
   }
@@ -110,12 +114,14 @@ Future<AutoRefreshingAuthClient> clientViaApplicationDefaultCredentials({
 ///
 /// {@macro googleapis_auth_close_the_client}
 /// {@macro googleapis_auth_not_close_the_baseClient}
+/// {@macro googleapis_auth_listen_port}
 Future<AutoRefreshingAuthClient> clientViaUserConsent(
   ClientId clientId,
   List<String> scopes,
   PromptUserForConsent userPrompt, {
   Client? baseClient,
   String? hostedDomain,
+  int listenPort = 0,
 }) async {
   var closeUnderlyingClient = false;
   if (baseClient == null) {
@@ -129,6 +135,7 @@ Future<AutoRefreshingAuthClient> clientViaUserConsent(
     baseClient,
     userPrompt,
     hostedDomain: hostedDomain,
+    listenPort: listenPort,
   );
 
   AccessCredentials credentials;
@@ -216,12 +223,21 @@ Future<AutoRefreshingAuthClient> clientViaUserConsentManual(
 /// {@macro googleapis_auth_hostedDomain_param}
 ///
 /// {@macro googleapis_auth_user_consent_return}
+///
+/// {@template googleapis_auth_listen_port}
+/// The `localhost` port to use when listening for the redirect from a user
+/// browser interaction. Defaults to `0` - which means the port is dynamic.
+///
+/// Generally you want to specify an explicit port so you can configure it
+/// on the Google Cloud console.
+/// {@endtemplate}
 Future<AccessCredentials> obtainAccessCredentialsViaUserConsent(
   ClientId clientId,
   List<String> scopes,
   Client client,
   PromptUserForConsent userPrompt, {
   String? hostedDomain,
+  int listenPort = 0,
 }) =>
     AuthorizationCodeGrantServerFlow(
       clientId,
@@ -229,6 +245,7 @@ Future<AccessCredentials> obtainAccessCredentialsViaUserConsent(
       client,
       userPrompt,
       hostedDomain: hostedDomain,
+      listenPort: listenPort,
     ).run();
 
 /// Obtain oauth2 [AccessCredentials] using the oauth2 authentication code flow.

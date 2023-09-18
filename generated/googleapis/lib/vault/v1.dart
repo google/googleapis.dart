@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Google Vault API - v1
@@ -32,7 +31,7 @@
 ///     - [MattersHoldsAccountsResource]
 ///   - [MattersSavedQueriesResource]
 /// - [OperationsResource]
-library vault.v1;
+library vault_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -41,7 +40,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -1539,13 +1537,6 @@ class OperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -1788,9 +1779,10 @@ class CloseMatterResponse {
 class CloudStorageFile {
   /// The name of the Cloud Storage bucket for the export file.
   ///
-  /// You can use this value in the
-  /// [Cloud Storage JSON or XML APIs](https://cloud.google.com/storage/docs/apis),
-  /// but not to list the bucket contents. Instead, you can
+  /// You can use this value in the Cloud Storage
+  /// [JSON API](https://cloud.google.com/storage/docs/json_api) or
+  /// [XML API](https://cloud.google.com/storage/docs/xml-api), but not to list
+  /// the bucket contents. Instead, you can
   /// [get individual export files](https://cloud.google.com/storage/docs/json_api/v1/objects/get)
   /// by object name.
   core.String? bucketName;
@@ -1800,8 +1792,9 @@ class CloudStorageFile {
 
   /// The name of the Cloud Storage object for the export file.
   ///
-  /// You can use this value in the
-  /// [Cloud Storage JSON or XML APIs](https://cloud.google.com/storage/docs/apis).
+  /// You can use this value in the Cloud Storage
+  /// [JSON API](https://cloud.google.com/storage/docs/json_api) or
+  /// [XML API](https://cloud.google.com/storage/docs/xml-api).
   core.String? objectName;
 
   /// The export file size.
@@ -2011,6 +2004,9 @@ class DriveOptions {
   core.bool? includeSharedDrives;
 
   /// Set to true to include Team Drive.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? includeTeamDrives;
 
   /// Search the current version of the Drive file, but export the contents of
@@ -2304,7 +2300,9 @@ typedef HangoutsChatExportOptions = $ExportOptions;
 /// The Chat spaces to search
 class HangoutsChatInfo {
   /// A list of Chat spaces IDs, as provided by the
-  /// [Chat API](https://developers.google.com/hangouts/chat).
+  /// [Chat API](https://developers.google.com/chat).
+  ///
+  /// There is a limit of exporting from 500 Chat spaces per request.
   core.List<core.String>? roomId;
 
   HangoutsChatInfo({
@@ -2422,6 +2420,9 @@ class HeldDriveQuery {
   core.bool? includeSharedDriveFiles;
 
   /// To include files in Team Drives in the hold, set to **true**.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? includeTeamDriveFiles;
 
   HeldDriveQuery({
@@ -2865,21 +2866,44 @@ class MailExportOptions {
 
 /// Additional options for Gmail search
 class MailOptions {
+  /// Specifies whether the results should include encrypted content,
+  /// unencrypted content, or both.
+  ///
+  /// Defaults to including both.
+  /// Possible string values are:
+  /// - "CLIENT_SIDE_ENCRYPTED_OPTION_UNSPECIFIED" : Encryption status
+  /// unspecified. Results include both client-side encrypted and non-encrypted
+  /// content.
+  /// - "CLIENT_SIDE_ENCRYPTED_OPTION_ANY" : Include both client-side encrypted
+  /// and unencrypted content in results.
+  /// - "CLIENT_SIDE_ENCRYPTED_OPTION_ENCRYPTED" : Include client-side encrypted
+  /// content only.
+  /// - "CLIENT_SIDE_ENCRYPTED_OPTION_UNENCRYPTED" : Include unencrypted content
+  /// only.
+  core.String? clientSideEncryptedOption;
+
   /// Set to **true** to exclude drafts.
   core.bool? excludeDrafts;
 
   MailOptions({
+    this.clientSideEncryptedOption,
     this.excludeDrafts,
   });
 
   MailOptions.fromJson(core.Map json_)
       : this(
+          clientSideEncryptedOption:
+              json_.containsKey('clientSideEncryptedOption')
+                  ? json_['clientSideEncryptedOption'] as core.String
+                  : null,
           excludeDrafts: json_.containsKey('excludeDrafts')
               ? json_['excludeDrafts'] as core.bool
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (clientSideEncryptedOption != null)
+          'clientSideEncryptedOption': clientSideEncryptedOption!,
         if (excludeDrafts != null) 'excludeDrafts': excludeDrafts!,
       };
 }
@@ -3182,6 +3206,9 @@ class Query {
   /// [SitesUrlInfo](https://developers.google.com/vault/reference/rest/v1/Query#sitesurlinfo).
   /// - "SHARED_DRIVE" : Search the files in the shared drives specified in
   /// [SharedDriveInfo](https://developers.google.com/vault/reference/rest/v1/Query#shareddriveinfo).
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? searchMethod;
 
   /// Required when **SearchMethod** is **SHARED_DRIVE**.
@@ -3196,6 +3223,9 @@ class Query {
   core.String? startTime;
 
   /// Required when **SearchMethod** is **TEAM_DRIVE**.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   TeamDriveInfo? teamDriveInfo;
 
   /// Service-specific
@@ -3548,6 +3578,9 @@ typedef Status = $Status;
 class TeamDriveInfo {
   /// List of Team Drive IDs, as provided by the
   /// [Drive API](https://developers.google.com/drive).
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<core.String>? teamDriveIds;
 
   TeamDriveInfo({

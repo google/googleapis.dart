@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud Identity API - v1
@@ -27,7 +26,10 @@
 ///     - [DevicesDeviceUsersClientStatesResource]
 /// - [GroupsResource]
 ///   - [GroupsMembershipsResource]
-library cloudidentity.v1;
+/// - [InboundSamlSsoProfilesResource]
+///   - [InboundSamlSsoProfilesIdpCredentialsResource]
+/// - [InboundSsoAssignmentsResource]
+library cloudidentity_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -36,7 +38,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -78,6 +79,10 @@ class CloudIdentityApi {
   CustomersResource get customers => CustomersResource(_requester);
   DevicesResource get devices => DevicesResource(_requester);
   GroupsResource get groups => GroupsResource(_requester);
+  InboundSamlSsoProfilesResource get inboundSamlSsoProfiles =>
+      InboundSamlSsoProfilesResource(_requester);
+  InboundSsoAssignmentsResource get inboundSsoAssignments =>
+      InboundSsoAssignmentsResource(_requester);
 
   CloudIdentityApi(http.Client client,
       {core.String rootUrl = 'https://cloudidentity.googleapis.com/',
@@ -1523,8 +1528,9 @@ class GroupsResource {
   ///
   /// [parent] - Required. The parent resource under which to list all `Group`
   /// resources. Must be of the form `identitysources/{identity_source}` for
-  /// external- identity-mapped groups or `customers/{customer}` for Google
-  /// Groups. The `customer` must begin with "C" (for example, 'C046psxkn').
+  /// external- identity-mapped groups or `customers/{customer_id}` for Google
+  /// Groups. The `customer_id` must begin with "C" (for example, 'C046psxkn').
+  /// [Find your customer ID.](https://support.google.com/cloudidentity/answer/10070793)
   ///
   /// [view] - The level of detail to be returned. If unspecified, defaults to
   /// `View.BASIC`.
@@ -1682,12 +1688,21 @@ class GroupsResource {
   /// [pageToken] - The `next_page_token` value returned from a previous search
   /// request, if any.
   ///
-  /// [query] - Required. The search query. Must be specified in
-  /// [Common Expression Language](https://opensource.google/projects/cel). May
-  /// only contain equality operators on the parent and inclusion operators on
-  /// labels (e.g., `parent == 'customers/{customer}' &&
-  /// 'cloudidentity.googleapis.com/groups.discussion_forum' in labels`). The
-  /// `customer` must begin with "C" (for example, 'C046psxkn').
+  /// [query] - Required. The search query. * Must be specified in
+  /// [Common Expression Language](https://opensource.google/projects/cel). *
+  /// Must contain equality operators on the parent, e.g. `parent ==
+  /// 'customers/{customer_id}'`. The `customer_id` must begin with "C" (for
+  /// example, 'C046psxkn').
+  /// [Find your customer ID.](https://support.google.com/cloudidentity/answer/10070793)
+  /// * Can contain optional inclusion operators on `labels` such as
+  /// `'cloudidentity.googleapis.com/groups.discussion_forum' in labels`). * Can
+  /// contain an optional equality operator on `domain_name`. e.g. `domain_name
+  /// == 'abc.com'` * Can contain optional `startsWith/contains/equality`
+  /// operators on `group_key`, e.g. `group_key.startsWith('dev')`,
+  /// `group_key.contains('dev'), group_key == 'dev@abc.com'` * Can contain
+  /// optional `startsWith/contains/equality` operators on `display_name`, such
+  /// as `display_name.startsWith('dev')` , `display_name.contains('dev')`,
+  /// `display_name == 'dev'`
   ///
   /// [view] - The level of detail to be returned. If unspecified, defaults to
   /// `View.BASIC`.
@@ -2184,6 +2199,78 @@ class GroupsMembershipsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Searches direct groups of a member.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] -
+  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the group to search transitive memberships in. Format: groups/{group_id},
+  /// where group_id is always '-' as this API will search across all groups for
+  /// a given member.
+  /// Value must have pattern `^groups/\[^/\]+$`.
+  ///
+  /// [orderBy] - The ordering of membership relation for the display name or
+  /// email in the response. The syntax for this field can be found at
+  /// https://cloud.google.com/apis/design/design_patterns#sorting_order.
+  /// Example: Sort by the ascending display name: order_by="group_name" or
+  /// order_by="group_name asc". Sort by the descending display name:
+  /// order_by="group_name desc". Sort by the ascending group key:
+  /// order_by="group_key" or order_by="group_key asc". Sort by the descending
+  /// group key: order_by="group_key desc".
+  ///
+  /// [pageSize] - The default page size is 200 (max 1000).
+  ///
+  /// [pageToken] - The next_page_token value returned from a previous list
+  /// request, if any
+  ///
+  /// [query] - Required. A CEL expression that MUST include member
+  /// specification AND label(s). Users can search on label attributes of
+  /// groups. CONTAINS match ('in') is supported on labels. Identity-mapped
+  /// groups are uniquely identified by both a `member_key_id` and a
+  /// `member_key_namespace`, which requires an additional query input:
+  /// `member_key_namespace`. Example query: `member_key_id ==
+  /// 'member_key_id_value' && 'label_value' in labels`
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SearchDirectGroupsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SearchDirectGroupsResponse> searchDirectGroups(
+    core.String parent, {
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? query,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (query != null) 'query': [query],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/memberships:searchDirectGroups';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SearchDirectGroupsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Search transitive groups of a member.
   ///
   /// **Note:** This feature is only available to Google Workspace Enterprise
@@ -2213,7 +2300,13 @@ class GroupsMembershipsResource {
   /// labels. Identity-mapped groups are uniquely identified by both a
   /// `member_key_id` and a `member_key_namespace`, which requires an additional
   /// query input: `member_key_namespace`. Example query: `member_key_id ==
-  /// 'member_key_id_value' && in labels`
+  /// 'member_key_id_value' && in labels` Query may optionally contain equality
+  /// operators on the parent of the group restricting the search within a
+  /// particular customer, e.g. `parent == 'customers/{customer_id}'`. The
+  /// `customer_id` must begin with "C" (for example, 'C046psxkn'). This
+  /// filtering is only supported for Admins with groups read permissons on the
+  /// input customer. Example query: `member_key_id == 'member_key_id_value' &&
+  /// in labels && parent == 'customers/C046psxkn'`
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2310,6 +2403,669 @@ class GroupsMembershipsResource {
   }
 }
 
+class InboundSamlSsoProfilesResource {
+  final commons.ApiRequester _requester;
+
+  InboundSamlSsoProfilesIdpCredentialsResource get idpCredentials =>
+      InboundSamlSsoProfilesIdpCredentialsResource(_requester);
+
+  InboundSamlSsoProfilesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates an InboundSamlSsoProfile for a customer.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    InboundSamlSsoProfile request, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'v1/inboundSamlSsoProfiles';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes an InboundSamlSsoProfile.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The
+  /// [resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the InboundSamlSsoProfile to delete. Format:
+  /// `inboundSamlSsoProfiles/{sso_profile_id}`
+  /// Value must have pattern `^inboundSamlSsoProfiles/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets an InboundSamlSsoProfile.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The
+  /// [resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the InboundSamlSsoProfile to get. Format:
+  /// `inboundSamlSsoProfiles/{sso_profile_id}`
+  /// Value must have pattern `^inboundSamlSsoProfiles/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [InboundSamlSsoProfile].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<InboundSamlSsoProfile> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return InboundSamlSsoProfile.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists InboundSamlSsoProfiles for a customer.
+  ///
+  /// Request parameters:
+  ///
+  /// [filter] - A
+  /// [Common Expression Language](https://github.com/google/cel-spec)
+  /// expression to filter the results. The only supported filter is filtering
+  /// by customer. For example: `customer=="customers/C0123abc"`. Omitting the
+  /// filter or specifying a filter of `customer=="customers/my_customer"` will
+  /// return the profiles for the customer that the caller (authenticated user)
+  /// belongs to.
+  ///
+  /// [pageSize] - The maximum number of InboundSamlSsoProfiles to return. The
+  /// service may return fewer than this value. If omitted (or defaulted to
+  /// zero) the server will use a sensible default. This default may change over
+  /// time. The maximum allowed value is 100. Requests with page_size greater
+  /// than that will be silently interpreted as having this maximum value.
+  ///
+  /// [pageToken] - A page token, received from a previous
+  /// `ListInboundSamlSsoProfiles` call. Provide this to retrieve the subsequent
+  /// page. When paginating, all other parameters provided to
+  /// `ListInboundSamlSsoProfiles` must match the call that provided the page
+  /// token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListInboundSamlSsoProfilesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListInboundSamlSsoProfilesResponse> list({
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'v1/inboundSamlSsoProfiles';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListInboundSamlSsoProfilesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an InboundSamlSsoProfile.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only.
+  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the SAML SSO profile.
+  /// Value must have pattern `^inboundSamlSsoProfiles/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The list of fields to be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    InboundSamlSsoProfile request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class InboundSamlSsoProfilesIdpCredentialsResource {
+  final commons.ApiRequester _requester;
+
+  InboundSamlSsoProfilesIdpCredentialsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Adds an IdpCredential.
+  ///
+  /// Up to 2 credentials are allowed.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The InboundSamlSsoProfile that owns the
+  /// IdpCredential. Format: `inboundSamlSsoProfiles/{sso_profile_id}`
+  /// Value must have pattern `^inboundSamlSsoProfiles/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> add(
+    AddIdpCredentialRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/idpCredentials:add';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes an IdpCredential.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The
+  /// [resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the IdpCredential to delete. Format:
+  /// `inboundSamlSsoProfiles/{sso_profile_id}/idpCredentials/{idp_credential_id}`
+  /// Value must have pattern
+  /// `^inboundSamlSsoProfiles/\[^/\]+/idpCredentials/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets an IdpCredential.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The
+  /// [resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the IdpCredential to retrieve. Format:
+  /// `inboundSamlSsoProfiles/{sso_profile_id}/idpCredentials/{idp_credential_id}`
+  /// Value must have pattern
+  /// `^inboundSamlSsoProfiles/\[^/\]+/idpCredentials/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [IdpCredential].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<IdpCredential> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return IdpCredential.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns a list of IdpCredentials in an InboundSamlSsoProfile.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent, which owns this collection of
+  /// `IdpCredential`s. Format: `inboundSamlSsoProfiles/{sso_profile_id}`
+  /// Value must have pattern `^inboundSamlSsoProfiles/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of `IdpCredential`s to return. The service
+  /// may return fewer than this value.
+  ///
+  /// [pageToken] - A page token, received from a previous `ListIdpCredentials`
+  /// call. Provide this to retrieve the subsequent page. When paginating, all
+  /// other parameters provided to `ListIdpCredentials` must match the call that
+  /// provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListIdpCredentialsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListIdpCredentialsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/idpCredentials';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListIdpCredentialsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class InboundSsoAssignmentsResource {
+  final commons.ApiRequester _requester;
+
+  InboundSsoAssignmentsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates an InboundSsoAssignment for users and devices in a `Customer`
+  /// under a given `Group` or `OrgUnit`.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    InboundSsoAssignment request, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'v1/inboundSsoAssignments';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes an InboundSsoAssignment.
+  ///
+  /// To disable SSO, Create (or Update) an assignment that has `sso_mode` ==
+  /// `SSO_OFF`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The
+  /// [resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the InboundSsoAssignment to delete. Format:
+  /// `inboundSsoAssignments/{assignment}`
+  /// Value must have pattern `^inboundSsoAssignments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets an InboundSsoAssignment.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The
+  /// [resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the InboundSsoAssignment to fetch. Format:
+  /// `inboundSsoAssignments/{assignment}`
+  /// Value must have pattern `^inboundSsoAssignments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [InboundSsoAssignment].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<InboundSsoAssignment> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return InboundSsoAssignment.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists the InboundSsoAssignments for a `Customer`.
+  ///
+  /// Request parameters:
+  ///
+  /// [filter] - A CEL expression to filter the results. The only supported
+  /// filter is filtering by customer. For example:
+  /// `customer==customers/C0123abc`. Omitting the filter or specifying a filter
+  /// of `customer==customers/my_customer` will return the assignments for the
+  /// customer that the caller (authenticated user) belongs to.
+  ///
+  /// [pageSize] - The maximum number of assignments to return. The service may
+  /// return fewer than this value. If omitted (or defaulted to zero) the server
+  /// will use a sensible default. This default may change over time. The
+  /// maximum allowed value is 100, though requests with page_size greater than
+  /// that will be silently interpreted as having this maximum value. This may
+  /// increase in the futue.
+  ///
+  /// [pageToken] - A page token, received from a previous
+  /// `ListInboundSsoAssignments` call. Provide this to retrieve the subsequent
+  /// page. When paginating, all other parameters provided to
+  /// `ListInboundSsoAssignments` must match the call that provided the page
+  /// token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListInboundSsoAssignmentsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListInboundSsoAssignmentsResponse> list({
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'v1/inboundSsoAssignments';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListInboundSsoAssignmentsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an InboundSsoAssignment.
+  ///
+  /// The body of this request is the `inbound_sso_assignment` field and the
+  /// `update_mask` is relative to that. For example: a PATCH to
+  /// `/v1/inboundSsoAssignments/0abcdefg1234567&update_mask=rank` with a body
+  /// of `{ "rank": 1 }` moves that (presumably group-targeted) SSO assignment
+  /// to the highest priority and shifts any other group-targeted assignments
+  /// down in priority.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only.
+  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the Inbound SSO Assignment.
+  /// Value must have pattern `^inboundSsoAssignments/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The list of fields to be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    InboundSsoAssignment request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+/// The request for creating an IdpCredential with its associated payload.
+///
+/// An InboundSamlSsoProfile can own up to 2 credentials.
+class AddIdpCredentialRequest {
+  /// PEM encoded x509 certificate containing the public key for verifying IdP
+  /// signatures.
+  core.String? pemData;
+
+  AddIdpCredentialRequest({
+    this.pemData,
+  });
+
+  AddIdpCredentialRequest.fromJson(core.Map json_)
+      : this(
+          pemData: json_.containsKey('pemData')
+              ? json_['pemData'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (pemData != null) 'pemData': pemData!,
+      };
+}
+
 /// Request to cancel sent invitation for target email in UserInvitation.
 typedef CancelUserInvitationRequest = $Empty;
 
@@ -2335,6 +3091,27 @@ class CheckTransitiveMembershipResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (hasMembership != null) 'hasMembership': hasMembership!,
+      };
+}
+
+/// Information of a DSA public key.
+class DsaPublicKeyInfo {
+  /// Key size in bits (size of parameter P).
+  core.int? keySize;
+
+  DsaPublicKeyInfo({
+    this.keySize,
+  });
+
+  DsaPublicKeyInfo.fromJson(core.Map json_)
+      : this(
+          keySize: json_.containsKey('keySize')
+              ? json_['keySize'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (keySize != null) 'keySize': keySize!,
       };
 }
 
@@ -2522,8 +3299,14 @@ class ExpiryDetail {
 
 /// Resource representing the Android specific attributes of a Device.
 class GoogleAppsCloudidentityDevicesV1AndroidAttributes {
+  /// Whether the device passes Android CTS compliance.
+  core.bool? ctsProfileMatch;
+
   /// Whether applications from unknown sources can be installed on device.
   core.bool? enabledUnknownSources;
+
+  /// Whether any potentially harmful apps were detected on the device.
+  core.bool? hasPotentiallyHarmfulApps;
 
   /// Whether this account is on an owner/primary profile.
   ///
@@ -2547,18 +3330,35 @@ class GoogleAppsCloudidentityDevicesV1AndroidAttributes {
   /// administrator turns on the "Enforce Work Profile" policy.
   core.bool? supportsWorkProfile;
 
+  /// Whether Android verified boot status is GREEN.
+  core.bool? verifiedBoot;
+
+  /// Whether Google Play Protect Verify Apps is enabled.
+  core.bool? verifyAppsEnabled;
+
   GoogleAppsCloudidentityDevicesV1AndroidAttributes({
+    this.ctsProfileMatch,
     this.enabledUnknownSources,
+    this.hasPotentiallyHarmfulApps,
     this.ownerProfileAccount,
     this.ownershipPrivilege,
     this.supportsWorkProfile,
+    this.verifiedBoot,
+    this.verifyAppsEnabled,
   });
 
   GoogleAppsCloudidentityDevicesV1AndroidAttributes.fromJson(core.Map json_)
       : this(
+          ctsProfileMatch: json_.containsKey('ctsProfileMatch')
+              ? json_['ctsProfileMatch'] as core.bool
+              : null,
           enabledUnknownSources: json_.containsKey('enabledUnknownSources')
               ? json_['enabledUnknownSources'] as core.bool
               : null,
+          hasPotentiallyHarmfulApps:
+              json_.containsKey('hasPotentiallyHarmfulApps')
+                  ? json_['hasPotentiallyHarmfulApps'] as core.bool
+                  : null,
           ownerProfileAccount: json_.containsKey('ownerProfileAccount')
               ? json_['ownerProfileAccount'] as core.bool
               : null,
@@ -2568,17 +3368,28 @@ class GoogleAppsCloudidentityDevicesV1AndroidAttributes {
           supportsWorkProfile: json_.containsKey('supportsWorkProfile')
               ? json_['supportsWorkProfile'] as core.bool
               : null,
+          verifiedBoot: json_.containsKey('verifiedBoot')
+              ? json_['verifiedBoot'] as core.bool
+              : null,
+          verifyAppsEnabled: json_.containsKey('verifyAppsEnabled')
+              ? json_['verifyAppsEnabled'] as core.bool
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (ctsProfileMatch != null) 'ctsProfileMatch': ctsProfileMatch!,
         if (enabledUnknownSources != null)
           'enabledUnknownSources': enabledUnknownSources!,
+        if (hasPotentiallyHarmfulApps != null)
+          'hasPotentiallyHarmfulApps': hasPotentiallyHarmfulApps!,
         if (ownerProfileAccount != null)
           'ownerProfileAccount': ownerProfileAccount!,
         if (ownershipPrivilege != null)
           'ownershipPrivilege': ownershipPrivilege!,
         if (supportsWorkProfile != null)
           'supportsWorkProfile': supportsWorkProfile!,
+        if (verifiedBoot != null) 'verifiedBoot': verifiedBoot!,
+        if (verifyAppsEnabled != null) 'verifyAppsEnabled': verifyAppsEnabled!,
       };
 }
 
@@ -2732,10 +3543,10 @@ class GoogleAppsCloudidentityDevicesV1ClientState {
           keyValuePairs: json_.containsKey('keyValuePairs')
               ? (json_['keyValuePairs'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     GoogleAppsCloudidentityDevicesV1CustomAttributeValue
-                        .fromJson(item as core.Map<core.String, core.dynamic>),
+                        .fromJson(value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -2899,6 +3710,9 @@ class GoogleAppsCloudidentityDevicesV1Device {
   /// - "NOT_ENCRYPTED" : Device is not encrypted.
   core.String? encryptionState;
 
+  /// Host name of the device.
+  core.String? hostname;
+
   /// IMEI number of device if GSM device; empty otherwise.
   ///
   /// Output only.
@@ -3018,6 +3832,7 @@ class GoogleAppsCloudidentityDevicesV1Device {
     this.enabledDeveloperOptions,
     this.enabledUsbDebugging,
     this.encryptionState,
+    this.hostname,
     this.imei,
     this.kernelVersion,
     this.lastSyncTime,
@@ -3078,6 +3893,9 @@ class GoogleAppsCloudidentityDevicesV1Device {
               : null,
           encryptionState: json_.containsKey('encryptionState')
               ? json_['encryptionState'] as core.String
+              : null,
+          hostname: json_.containsKey('hostname')
+              ? json_['hostname'] as core.String
               : null,
           imei: json_.containsKey('imei') ? json_['imei'] as core.String : null,
           kernelVersion: json_.containsKey('kernelVersion')
@@ -3143,6 +3961,7 @@ class GoogleAppsCloudidentityDevicesV1Device {
         if (enabledUsbDebugging != null)
           'enabledUsbDebugging': enabledUsbDebugging!,
         if (encryptionState != null) 'encryptionState': encryptionState!,
+        if (hostname != null) 'hostname': hostname!,
         if (imei != null) 'imei': imei!,
         if (kernelVersion != null) 'kernelVersion': kernelVersion!,
         if (lastSyncTime != null) 'lastSyncTime': lastSyncTime!,
@@ -3398,7 +4217,7 @@ class GoogleAppsCloudidentityDevicesV1ListDevicesResponse {
 /// Response containing resource names of the DeviceUsers associated with the
 /// caller's credentials.
 class GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse {
-  /// The obfuscated customer Id that may be passed back to other Devices API
+  /// The customer resource name that may be passed back to other Devices API
   /// methods such as List, Get, etc.
   core.String? customer;
 
@@ -3494,6 +4313,11 @@ typedef GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest = $Request00;
 /// A `Group` is a collection of entities, where each entity is either a user,
 /// another group, or a service account.
 class Group {
+  /// Additional group keys associated with the Group.
+  ///
+  /// Output only.
+  core.List<EntityKey>? additionalGroupKeys;
+
   /// The time when the `Group` was created.
   ///
   /// Output only.
@@ -3544,9 +4368,11 @@ class Group {
   /// The resource name of the entity under which this `Group` resides in the
   /// Cloud Identity resource hierarchy.
   ///
-  /// Must be of the form `identitysources/{identity_source}` for external-
-  /// identity-mapped groups or `customers/{customer}` for Google Groups. The
-  /// `customer` must begin with "C" (for example, 'C046psxkn').
+  /// Must be of the form `identitysources/{identity_source}` for external
+  /// \[identity-mapped groups\](https://support.google.com/a/answer/9039510) or
+  /// `customers/{customer_id}` for Google Groups. The `customer_id` must begin
+  /// with "C" (for example, 'C046psxkn').
+  /// [Find your customer ID.](https://support.google.com/cloudidentity/answer/10070793)
   ///
   /// Required. Immutable.
   core.String? parent;
@@ -3557,6 +4383,7 @@ class Group {
   core.String? updateTime;
 
   Group({
+    this.additionalGroupKeys,
     this.createTime,
     this.description,
     this.displayName,
@@ -3570,6 +4397,12 @@ class Group {
 
   Group.fromJson(core.Map json_)
       : this(
+          additionalGroupKeys: json_.containsKey('additionalGroupKeys')
+              ? (json_['additionalGroupKeys'] as core.List)
+                  .map((value) => EntityKey.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
               : null,
@@ -3589,9 +4422,9 @@ class Group {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -3605,6 +4438,8 @@ class Group {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (additionalGroupKeys != null)
+          'additionalGroupKeys': additionalGroupKeys!,
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
@@ -3672,9 +4507,9 @@ class GroupRelation {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -3696,6 +4531,229 @@ class GroupRelation {
         if (labels != null) 'labels': labels!,
         if (relationType != null) 'relationType': relationType!,
         if (roles != null) 'roles': roles!,
+      };
+}
+
+/// Credential for verifying signatures produced by the Identity Provider.
+class IdpCredential {
+  /// Information of a DSA public key.
+  ///
+  /// Output only.
+  DsaPublicKeyInfo? dsaKeyInfo;
+
+  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the credential.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Information of a RSA public key.
+  ///
+  /// Output only.
+  RsaPublicKeyInfo? rsaKeyInfo;
+
+  /// Time when the `IdpCredential` was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  IdpCredential({
+    this.dsaKeyInfo,
+    this.name,
+    this.rsaKeyInfo,
+    this.updateTime,
+  });
+
+  IdpCredential.fromJson(core.Map json_)
+      : this(
+          dsaKeyInfo: json_.containsKey('dsaKeyInfo')
+              ? DsaPublicKeyInfo.fromJson(
+                  json_['dsaKeyInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          rsaKeyInfo: json_.containsKey('rsaKeyInfo')
+              ? RsaPublicKeyInfo.fromJson(
+                  json_['rsaKeyInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dsaKeyInfo != null) 'dsaKeyInfo': dsaKeyInfo!,
+        if (name != null) 'name': name!,
+        if (rsaKeyInfo != null) 'rsaKeyInfo': rsaKeyInfo!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// A [SAML 2.0](https://www.oasis-open.org/standards#samlv2.0) federation
+/// between a Google enterprise customer and a SAML identity provider.
+class InboundSamlSsoProfile {
+  /// The customer.
+  ///
+  /// For example: `customers/C0123abc`.
+  ///
+  /// Immutable.
+  core.String? customer;
+
+  /// Human-readable name of the SAML SSO profile.
+  core.String? displayName;
+
+  /// SAML identity provider configuration.
+  SamlIdpConfig? idpConfig;
+
+  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the SAML SSO profile.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// SAML service provider configuration for this SAML SSO profile.
+  ///
+  /// These are the service provider details provided by Google that should be
+  /// configured on the corresponding identity provider.
+  SamlSpConfig? spConfig;
+
+  InboundSamlSsoProfile({
+    this.customer,
+    this.displayName,
+    this.idpConfig,
+    this.name,
+    this.spConfig,
+  });
+
+  InboundSamlSsoProfile.fromJson(core.Map json_)
+      : this(
+          customer: json_.containsKey('customer')
+              ? json_['customer'] as core.String
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          idpConfig: json_.containsKey('idpConfig')
+              ? SamlIdpConfig.fromJson(
+                  json_['idpConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          spConfig: json_.containsKey('spConfig')
+              ? SamlSpConfig.fromJson(
+                  json_['spConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (customer != null) 'customer': customer!,
+        if (displayName != null) 'displayName': displayName!,
+        if (idpConfig != null) 'idpConfig': idpConfig!,
+        if (name != null) 'name': name!,
+        if (spConfig != null) 'spConfig': spConfig!,
+      };
+}
+
+/// Targets with "set" SSO assignments and their respective assignments.
+class InboundSsoAssignment {
+  /// The customer.
+  ///
+  /// For example: `customers/C0123abc`.
+  ///
+  /// Immutable.
+  core.String? customer;
+
+  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the Inbound SSO Assignment.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Must be zero (which is the default value so it can be omitted) for
+  /// assignments with `target_org_unit` set and must be
+  /// greater-than-or-equal-to one for assignments with `target_group` set.
+  core.int? rank;
+
+  /// SAML SSO details.
+  ///
+  /// Must be set if and only if `sso_mode` is set to `SAML_SSO`.
+  SamlSsoInfo? samlSsoInfo;
+
+  /// Assertions about users assigned to an IdP will always be accepted from
+  /// that IdP.
+  ///
+  /// This controls whether/when Google should redirect a user to the IdP. Unset
+  /// (defaults) is the recommended configuration.
+  SignInBehavior? signInBehavior;
+
+  /// Inbound SSO behavior.
+  /// Possible string values are:
+  /// - "SSO_MODE_UNSPECIFIED" : Not allowed.
+  /// - "SSO_OFF" : Disable SSO for the targeted users.
+  /// - "SAML_SSO" : Use an external SAML Identity Provider for SSO for the
+  /// targeted users.
+  /// - "DOMAIN_WIDE_SAML_IF_ENABLED" : Use the domain-wide SAML Identity
+  /// Provider for the targeted users if one is configured; otherwise, this is
+  /// equivalent to `SSO_OFF`. Note that this will also be equivalent to
+  /// `SSO_OFF` if/when support for domain-wide SAML is removed. Google may
+  /// disallow this mode at that point and existing assignments with this mode
+  /// may be automatically changed to `SSO_OFF`.
+  core.String? ssoMode;
+
+  /// Must be of the form `groups/{group}`.
+  ///
+  /// Immutable.
+  core.String? targetGroup;
+
+  /// Must be of the form `orgUnits/{org_unit}`.
+  ///
+  /// Immutable.
+  core.String? targetOrgUnit;
+
+  InboundSsoAssignment({
+    this.customer,
+    this.name,
+    this.rank,
+    this.samlSsoInfo,
+    this.signInBehavior,
+    this.ssoMode,
+    this.targetGroup,
+    this.targetOrgUnit,
+  });
+
+  InboundSsoAssignment.fromJson(core.Map json_)
+      : this(
+          customer: json_.containsKey('customer')
+              ? json_['customer'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          rank: json_.containsKey('rank') ? json_['rank'] as core.int : null,
+          samlSsoInfo: json_.containsKey('samlSsoInfo')
+              ? SamlSsoInfo.fromJson(
+                  json_['samlSsoInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          signInBehavior: json_.containsKey('signInBehavior')
+              ? SignInBehavior.fromJson(json_['signInBehavior']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          ssoMode: json_.containsKey('ssoMode')
+              ? json_['ssoMode'] as core.String
+              : null,
+          targetGroup: json_.containsKey('targetGroup')
+              ? json_['targetGroup'] as core.String
+              : null,
+          targetOrgUnit: json_.containsKey('targetOrgUnit')
+              ? json_['targetOrgUnit'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (customer != null) 'customer': customer!,
+        if (name != null) 'name': name!,
+        if (rank != null) 'rank': rank!,
+        if (samlSsoInfo != null) 'samlSsoInfo': samlSsoInfo!,
+        if (signInBehavior != null) 'signInBehavior': signInBehavior!,
+        if (ssoMode != null) 'ssoMode': ssoMode!,
+        if (targetGroup != null) 'targetGroup': targetGroup!,
+        if (targetOrgUnit != null) 'targetOrgUnit': targetOrgUnit!,
       };
 }
 
@@ -3751,6 +4809,112 @@ class ListGroupsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (groups != null) 'groups': groups!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Response of the InboundSamlSsoProfilesService.ListIdpCredentials method.
+class ListIdpCredentialsResponse {
+  /// The IdpCredentials from the specified InboundSamlSsoProfile.
+  core.List<IdpCredential>? idpCredentials;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  ListIdpCredentialsResponse({
+    this.idpCredentials,
+    this.nextPageToken,
+  });
+
+  ListIdpCredentialsResponse.fromJson(core.Map json_)
+      : this(
+          idpCredentials: json_.containsKey('idpCredentials')
+              ? (json_['idpCredentials'] as core.List)
+                  .map((value) => IdpCredential.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (idpCredentials != null) 'idpCredentials': idpCredentials!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Response of the InboundSamlSsoProfilesService.ListInboundSamlSsoProfiles
+/// method.
+class ListInboundSamlSsoProfilesResponse {
+  /// List of InboundSamlSsoProfiles.
+  core.List<InboundSamlSsoProfile>? inboundSamlSsoProfiles;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  ListInboundSamlSsoProfilesResponse({
+    this.inboundSamlSsoProfiles,
+    this.nextPageToken,
+  });
+
+  ListInboundSamlSsoProfilesResponse.fromJson(core.Map json_)
+      : this(
+          inboundSamlSsoProfiles: json_.containsKey('inboundSamlSsoProfiles')
+              ? (json_['inboundSamlSsoProfiles'] as core.List)
+                  .map((value) => InboundSamlSsoProfile.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (inboundSamlSsoProfiles != null)
+          'inboundSamlSsoProfiles': inboundSamlSsoProfiles!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Response of the InboundSsoAssignmentsService.ListInboundSsoAssignments
+/// method.
+class ListInboundSsoAssignmentsResponse {
+  /// The assignments.
+  core.List<InboundSsoAssignment>? inboundSsoAssignments;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  ListInboundSsoAssignmentsResponse({
+    this.inboundSsoAssignments,
+    this.nextPageToken,
+  });
+
+  ListInboundSsoAssignmentsResponse.fromJson(core.Map json_)
+      : this(
+          inboundSsoAssignments: json_.containsKey('inboundSsoAssignments')
+              ? (json_['inboundSsoAssignments'] as core.List)
+                  .map((value) => InboundSsoAssignment.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (inboundSsoAssignments != null)
+          'inboundSsoAssignments': inboundSsoAssignments!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -3980,6 +5144,18 @@ class Membership {
   /// Output only.
   core.String? createTime;
 
+  /// Delivery setting associated with the membership.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "DELIVERY_SETTING_UNSPECIFIED" : Default. Should not be used.
+  /// - "ALL_MAIL" : Represents each mail should be delivered
+  /// - "DIGEST" : Represents 1 email for every 25 messages.
+  /// - "DAILY" : Represents daily summary of messages.
+  /// - "NONE" : Represents no delivery.
+  /// - "DISABLED" : Represents disabled state.
+  core.String? deliverySetting;
+
   /// The [resource name](https://cloud.google.com/apis/design/resource_names)
   /// of the `Membership`.
   ///
@@ -4019,6 +5195,7 @@ class Membership {
 
   Membership({
     this.createTime,
+    this.deliverySetting,
     this.name,
     this.preferredMemberKey,
     this.roles,
@@ -4030,6 +5207,9 @@ class Membership {
       : this(
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
+              : null,
+          deliverySetting: json_.containsKey('deliverySetting')
+              ? json_['deliverySetting'] as core.String
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           preferredMemberKey: json_.containsKey('preferredMemberKey')
@@ -4050,12 +5230,98 @@ class Membership {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
+        if (deliverySetting != null) 'deliverySetting': deliverySetting!,
         if (name != null) 'name': name!,
         if (preferredMemberKey != null)
           'preferredMemberKey': preferredMemberKey!,
         if (roles != null) 'roles': roles!,
         if (type != null) 'type': type!,
         if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// Message containing membership relation.
+class MembershipRelation {
+  /// An extended description to help users determine the purpose of a `Group`.
+  core.String? description;
+
+  /// The display name of the `Group`.
+  core.String? displayName;
+
+  /// The [resource name](https://cloud.google.com/apis/design/resource_names)
+  /// of the `Group`.
+  ///
+  /// Shall be of the form `groups/{group_id}`.
+  core.String? group;
+
+  /// The `EntityKey` of the `Group`.
+  EntityKey? groupKey;
+
+  /// One or more label entries that apply to the Group.
+  ///
+  /// Currently supported labels contain a key with an empty value.
+  core.Map<core.String, core.String>? labels;
+
+  /// The [resource name](https://cloud.google.com/apis/design/resource_names)
+  /// of the `Membership`.
+  ///
+  /// Shall be of the form `groups/{group_id}/memberships/{membership_id}`.
+  core.String? membership;
+
+  /// The `MembershipRole`s that apply to the `Membership`.
+  core.List<MembershipRole>? roles;
+
+  MembershipRelation({
+    this.description,
+    this.displayName,
+    this.group,
+    this.groupKey,
+    this.labels,
+    this.membership,
+    this.roles,
+  });
+
+  MembershipRelation.fromJson(core.Map json_)
+      : this(
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          group:
+              json_.containsKey('group') ? json_['group'] as core.String : null,
+          groupKey: json_.containsKey('groupKey')
+              ? EntityKey.fromJson(
+                  json_['groupKey'] as core.Map<core.String, core.dynamic>)
+              : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          membership: json_.containsKey('membership')
+              ? json_['membership'] as core.String
+              : null,
+          roles: json_.containsKey('roles')
+              ? (json_['roles'] as core.List)
+                  .map((value) => MembershipRole.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (group != null) 'group': group!,
+        if (groupKey != null) 'groupKey': groupKey!,
+        if (labels != null) 'labels': labels!,
+        if (membership != null) 'membership': membership!,
+        if (roles != null) 'roles': roles!,
       };
 }
 
@@ -4348,6 +5614,187 @@ class RestrictionEvaluations {
       };
 }
 
+/// Information of a RSA public key.
+class RsaPublicKeyInfo {
+  /// Key size in bits (size of the modulus).
+  core.int? keySize;
+
+  RsaPublicKeyInfo({
+    this.keySize,
+  });
+
+  RsaPublicKeyInfo.fromJson(core.Map json_)
+      : this(
+          keySize: json_.containsKey('keySize')
+              ? json_['keySize'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (keySize != null) 'keySize': keySize!,
+      };
+}
+
+/// SAML IDP (identity provider) configuration.
+class SamlIdpConfig {
+  /// The **Change Password URL** of the identity provider.
+  ///
+  /// Users will be sent to this URL when changing their passwords at
+  /// `myaccount.google.com`. This takes precedence over the change password URL
+  /// configured at customer-level. Must use `HTTPS`.
+  core.String? changePasswordUri;
+
+  /// The SAML **Entity ID** of the identity provider.
+  ///
+  /// Required.
+  core.String? entityId;
+
+  /// The **Logout Redirect URL** (sign-out page URL) of the identity provider.
+  ///
+  /// When a user clicks the sign-out link on a Google page, they will be
+  /// redirected to this URL. This is a pure redirect with no attached SAML
+  /// `LogoutRequest` i.e. SAML single logout is not supported. Must use
+  /// `HTTPS`.
+  core.String? logoutRedirectUri;
+
+  /// The `SingleSignOnService` endpoint location (sign-in page URL) of the
+  /// identity provider.
+  ///
+  /// This is the URL where the `AuthnRequest` will be sent. Must use `HTTPS`.
+  /// Assumed to accept the `HTTP-Redirect` binding.
+  ///
+  /// Required.
+  core.String? singleSignOnServiceUri;
+
+  SamlIdpConfig({
+    this.changePasswordUri,
+    this.entityId,
+    this.logoutRedirectUri,
+    this.singleSignOnServiceUri,
+  });
+
+  SamlIdpConfig.fromJson(core.Map json_)
+      : this(
+          changePasswordUri: json_.containsKey('changePasswordUri')
+              ? json_['changePasswordUri'] as core.String
+              : null,
+          entityId: json_.containsKey('entityId')
+              ? json_['entityId'] as core.String
+              : null,
+          logoutRedirectUri: json_.containsKey('logoutRedirectUri')
+              ? json_['logoutRedirectUri'] as core.String
+              : null,
+          singleSignOnServiceUri: json_.containsKey('singleSignOnServiceUri')
+              ? json_['singleSignOnServiceUri'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (changePasswordUri != null) 'changePasswordUri': changePasswordUri!,
+        if (entityId != null) 'entityId': entityId!,
+        if (logoutRedirectUri != null) 'logoutRedirectUri': logoutRedirectUri!,
+        if (singleSignOnServiceUri != null)
+          'singleSignOnServiceUri': singleSignOnServiceUri!,
+      };
+}
+
+/// SAML SP (service provider) configuration.
+class SamlSpConfig {
+  /// The SAML **Assertion Consumer Service (ACS) URL** to be used for the
+  /// IDP-initiated login.
+  ///
+  /// Assumed to accept response messages via the `HTTP-POST` binding.
+  ///
+  /// Output only.
+  core.String? assertionConsumerServiceUri;
+
+  /// The SAML **Entity ID** for this service provider.
+  ///
+  /// Output only.
+  core.String? entityId;
+
+  SamlSpConfig({
+    this.assertionConsumerServiceUri,
+    this.entityId,
+  });
+
+  SamlSpConfig.fromJson(core.Map json_)
+      : this(
+          assertionConsumerServiceUri:
+              json_.containsKey('assertionConsumerServiceUri')
+                  ? json_['assertionConsumerServiceUri'] as core.String
+                  : null,
+          entityId: json_.containsKey('entityId')
+              ? json_['entityId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (assertionConsumerServiceUri != null)
+          'assertionConsumerServiceUri': assertionConsumerServiceUri!,
+        if (entityId != null) 'entityId': entityId!,
+      };
+}
+
+/// Details that are applicable when `sso_mode` == `SAML_SSO`.
+class SamlSsoInfo {
+  /// Name of the `InboundSamlSsoProfile` to use.
+  ///
+  /// Must be of the form `inboundSamlSsoProfiles/{inbound_saml_sso_profile}`.
+  ///
+  /// Required.
+  core.String? inboundSamlSsoProfile;
+
+  SamlSsoInfo({
+    this.inboundSamlSsoProfile,
+  });
+
+  SamlSsoInfo.fromJson(core.Map json_)
+      : this(
+          inboundSamlSsoProfile: json_.containsKey('inboundSamlSsoProfile')
+              ? json_['inboundSamlSsoProfile'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (inboundSamlSsoProfile != null)
+          'inboundSamlSsoProfile': inboundSamlSsoProfile!,
+      };
+}
+
+/// The response message for MembershipsService.SearchDirectGroups.
+class SearchDirectGroupsResponse {
+  /// List of direct groups satisfying the query.
+  core.List<MembershipRelation>? memberships;
+
+  /// Token to retrieve the next page of results, or empty if there are no more
+  /// results available for listing.
+  core.String? nextPageToken;
+
+  SearchDirectGroupsResponse({
+    this.memberships,
+    this.nextPageToken,
+  });
+
+  SearchDirectGroupsResponse.fromJson(core.Map json_)
+      : this(
+          memberships: json_.containsKey('memberships')
+              ? (json_['memberships'] as core.List)
+                  .map((value) => MembershipRelation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (memberships != null) 'memberships': memberships!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
 /// The response message for GroupsService.SearchGroups.
 class SearchGroupsResponse {
   /// The `Group` resources that match the search query.
@@ -4482,6 +5929,34 @@ class SecuritySettings {
 /// A request to send email for inviting target user corresponding to the
 /// UserInvitation.
 typedef SendUserInvitationRequest = $Empty;
+
+/// Controls sign-in behavior.
+class SignInBehavior {
+  /// When to redirect sign-ins to the IdP.
+  /// Possible string values are:
+  /// - "REDIRECT_CONDITION_UNSPECIFIED" : Default and means "always"
+  /// - "NEVER" : Sign-in flows where the user is prompted for their identity
+  /// will not redirect to the IdP (so the user will most likely be prompted by
+  /// Google for a password), but special flows like IdP-initiated SAML and
+  /// sign-in following automatic redirection to the IdP by domain-specific
+  /// service URLs will accept the IdP's assertion of the user's identity.
+  core.String? redirectCondition;
+
+  SignInBehavior({
+    this.redirectCondition,
+  });
+
+  SignInBehavior.fromJson(core.Map json_)
+      : this(
+          redirectCondition: json_.containsKey('redirectCondition')
+              ? json_['redirectCondition'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (redirectCondition != null) 'redirectCondition': redirectCondition!,
+      };
+}
 
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.

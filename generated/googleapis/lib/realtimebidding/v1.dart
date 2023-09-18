@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Real-time Bidding API - v1
@@ -32,7 +31,7 @@
 /// - [BuyersResource]
 ///   - [BuyersCreativesResource]
 ///   - [BuyersUserListsResource]
-library realtimebidding.v1;
+library realtimebidding_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -41,7 +40,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -2658,8 +2656,21 @@ class Creative {
   /// A native creative.
   NativeContent? native;
 
+  /// Experimental field that can be used during the \[FLEDGE Origin
+  /// Trial\](/authorized-buyers/rtb/fledge-origin-trial).
+  ///
+  /// The URL to fetch an interest group ad used in \[TURTLEDOVE on-device
+  /// auction\](https://github.com/WICG/turtledove/blob/main/FLEDGE.md#1-browsers-record-interest-groups").
+  /// This should be unique among all creatives for a given `accountId`. This
+  /// URL should be the same as the URL returned by
+  /// \[generateBid()\](https://github.com/WICG/turtledove/blob/main/FLEDGE.md#32-on-device-bidding).
+  core.String? renderUrl;
+
   /// All restricted categories for the ads that may be shown from this
   /// creative.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<core.String>? restrictedCategories;
 
   /// The version of the creative.
@@ -2668,6 +2679,9 @@ class Creative {
   /// creative updates.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.int? version;
 
   /// A video creative.
@@ -2691,6 +2705,7 @@ class Creative {
     this.impressionTrackingUrls,
     this.name,
     this.native,
+    this.renderUrl,
     this.restrictedCategories,
     this.version,
     this.video,
@@ -2765,6 +2780,9 @@ class Creative {
               ? NativeContent.fromJson(
                   json_['native'] as core.Map<core.String, core.dynamic>)
               : null,
+          renderUrl: json_.containsKey('renderUrl')
+              ? json_['renderUrl'] as core.String
+              : null,
           restrictedCategories: json_.containsKey('restrictedCategories')
               ? (json_['restrictedCategories'] as core.List)
                   .map((value) => value as core.String)
@@ -2803,6 +2821,7 @@ class Creative {
           'impressionTrackingUrls': impressionTrackingUrls!,
         if (name != null) 'name': name!,
         if (native != null) 'native': native!,
+        if (renderUrl != null) 'renderUrl': renderUrl!,
         if (restrictedCategories != null)
           'restrictedCategories': restrictedCategories!,
         if (version != null) 'version': version!,
@@ -3358,16 +3377,8 @@ class Endpoint {
   /// - "BID_PROTOCOL_UNSPECIFIED" : Placeholder for undefined bid protocol.
   /// This value should not be used.
   /// - "GOOGLE_RTB" : Google RTB protocol / Protobuf encoding.
-  /// - "OPENRTB_2_2" : OpenRTB / JSON encoding, specification version 2.2.
-  /// - "OPENRTB_2_3" : OpenRTB / JSON encoding, specification version 2.3.
-  /// - "OPENRTB_PROTOBUF_2_3" : OpenRTB / Protobuf encoding, specification
-  /// version 2.3.
-  /// - "OPENRTB_2_4" : OpenRTB / JSON encoding, specification version 2.4.
-  /// - "OPENRTB_PROTOBUF_2_4" : OpenRTB / Protobuf encoding, specification
-  /// version 2.4.
-  /// - "OPENRTB_2_5" : OpenRTB / JSON encoding, specification version 2.5.
-  /// - "OPENRTB_PROTOBUF_2_5" : OpenRTB / Protobuf encoding, specification
-  /// version 2.5.
+  /// - "OPENRTB_JSON" : OpenRTB / JSON encoding (unversioned/latest).
+  /// - "OPENRTB_PROTOBUF" : OpenRTB / Protobuf encoding (unversioned/latest).
   core.String? bidProtocol;
 
   /// The maximum number of queries per second allowed to be sent to this
@@ -4109,6 +4120,13 @@ class PolicyTopicEntry {
   /// URL of the help center article describing this policy topic.
   core.String? helpCenterUrl;
 
+  /// Whether or not the policy topic is missing a certificate.
+  ///
+  /// Some policy topics require a certificate to unblock serving in some
+  /// regions. For more information about creative certification, refer to:
+  /// https://support.google.com/authorizedbuyers/answer/7450776
+  core.bool? missingCertificate;
+
   /// Policy topic this entry refers to.
   ///
   /// For example, "ALCOHOL", "TRADEMARKS_IN_AD_TEXT", or
@@ -4120,6 +4138,7 @@ class PolicyTopicEntry {
   PolicyTopicEntry({
     this.evidences,
     this.helpCenterUrl,
+    this.missingCertificate,
     this.policyTopic,
   });
 
@@ -4134,6 +4153,9 @@ class PolicyTopicEntry {
           helpCenterUrl: json_.containsKey('helpCenterUrl')
               ? json_['helpCenterUrl'] as core.String
               : null,
+          missingCertificate: json_.containsKey('missingCertificate')
+              ? json_['missingCertificate'] as core.bool
+              : null,
           policyTopic: json_.containsKey('policyTopic')
               ? json_['policyTopic'] as core.String
               : null,
@@ -4142,6 +4164,8 @@ class PolicyTopicEntry {
   core.Map<core.String, core.dynamic> toJson() => {
         if (evidences != null) 'evidences': evidences!,
         if (helpCenterUrl != null) 'helpCenterUrl': helpCenterUrl!,
+        if (missingCertificate != null)
+          'missingCertificate': missingCertificate!,
         if (policyTopic != null) 'policyTopic': policyTopic!,
       };
 }

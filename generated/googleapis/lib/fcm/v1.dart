@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Firebase Cloud Messaging API - v1
@@ -23,7 +22,7 @@
 ///
 /// - [ProjectsResource]
 ///   - [ProjectsMessagesResource]
-library fcm.v1;
+library fcm_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -32,7 +31,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -206,9 +204,9 @@ class AndroidConfig {
               : null,
           data: json_.containsKey('data')
               ? (json_['data'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -270,6 +268,9 @@ class AndroidNotification {
 
   /// If set, display notifications delivered to the device will be handled by
   /// the app instead of the proxy.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? bypassProxyNotification;
 
   /// The
@@ -396,6 +397,17 @@ class AndroidNotification {
   /// attention or input.
   core.String? notificationPriority;
 
+  /// Setting to control when a notification may be proxied.
+  /// Possible string values are:
+  /// - "PROXY_UNSPECIFIED" : If unspecified, default to
+  /// `Proxy.IF_PRIORITY_LOWERED`.
+  /// - "ALLOW" : Try to proxy this notification.
+  /// - "DENY" : Do not proxy this notification.
+  /// - "IF_PRIORITY_LOWERED" : Only try to proxy this notification if its
+  /// `AndroidMessagePriority` was lowered from `HIGH` to `NORMAL` on the
+  /// device.
+  core.String? proxy;
+
   /// The sound to play when the device receives the notification.
   ///
   /// Supports "default" or the filename of a sound resource bundled in the app.
@@ -483,6 +495,7 @@ class AndroidNotification {
     this.localOnly,
     this.notificationCount,
     this.notificationPriority,
+    this.proxy,
     this.sound,
     this.sticky,
     this.tag,
@@ -544,6 +557,8 @@ class AndroidNotification {
           notificationPriority: json_.containsKey('notificationPriority')
               ? json_['notificationPriority'] as core.String
               : null,
+          proxy:
+              json_.containsKey('proxy') ? json_['proxy'] as core.String : null,
           sound:
               json_.containsKey('sound') ? json_['sound'] as core.String : null,
           sticky:
@@ -594,6 +609,7 @@ class AndroidNotification {
         if (notificationCount != null) 'notificationCount': notificationCount!,
         if (notificationPriority != null)
           'notificationPriority': notificationPriority!,
+        if (proxy != null) 'proxy': proxy!,
         if (sound != null) 'sound': sound!,
         if (sticky != null) 'sticky': sticky!,
         if (tag != null) 'tag': tag!,
@@ -615,7 +631,9 @@ class ApnsConfig {
   ///
   /// Refer to
   /// [APNs request headers](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns)
-  /// for supported headers such as `apns-expiration` and `apns-priority`.
+  /// for supported headers such as `apns-expiration` and `apns-priority`. The
+  /// backend sets a default value for `apns-expiration` of 30 days and a
+  /// default value for `apns-priority` of 10 if not explicitly set.
   core.Map<core.String, core.String>? headers;
 
   /// APNs payload as a JSON object, including both `aps` dictionary and custom
@@ -624,9 +642,7 @@ class ApnsConfig {
   /// See
   /// [Payload Key Reference](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/generating_a_remote_notification).
   /// If present, it overrides google.firebase.fcm.v1.Notification.title and
-  /// google.firebase.fcm.v1.Notification.body. The backend sets a default value
-  /// for `apns-expiration` of 30 days and a default value for `apns-priority`
-  /// of 10 if not explicitly set.
+  /// google.firebase.fcm.v1.Notification.body.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -646,9 +662,9 @@ class ApnsConfig {
               : null,
           headers: json_.containsKey('headers')
               ? (json_['headers'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -697,32 +713,32 @@ class ApnsFcmOptions {
 
 /// Represents a color in the RGBA color space.
 ///
-/// This representation is designed for simplicity of conversion to/from color
-/// representations in various languages over compactness. For example, the
-/// fields of this representation can be trivially provided to the constructor
-/// of `java.awt.Color` in Java; it can also be trivially provided to UIColor's
-/// `+colorWithRed:green:blue:alpha` method in iOS; and, with just a little
-/// work, it can be easily formatted into a CSS `rgba()` string in JavaScript.
-/// This reference page doesn't carry information about the absolute color space
-/// that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
-/// DCI-P3, BT.2020, etc.). By default, applications should assume the sRGB
-/// color space. When color equality needs to be decided, implementations,
-/// unless documented otherwise, treat two colors as equal if all their red,
-/// green, blue, and alpha values each differ by at most 1e-5. Example (Java):
-/// import com.google.type.Color; // ... public static java.awt.Color
-/// fromProto(Color protocolor) { float alpha = protocolor.hasAlpha() ?
-/// protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color(
-/// protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); }
-/// public static Color toProto(java.awt.Color color) { float red = (float)
-/// color.getRed(); float green = (float) color.getGreen(); float blue = (float)
-/// color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder =
-/// Color .newBuilder() .setRed(red / denominator) .setGreen(green /
-/// denominator) .setBlue(blue / denominator); int alpha = color.getAlpha(); if
-/// (alpha != 255) { result.setAlpha( FloatValue .newBuilder()
-/// .setValue(((float) alpha) / denominator) .build()); } return
-/// resultBuilder.build(); } // ... Example (iOS / Obj-C): // ... static
-/// UIColor* fromProto(Color* protocolor) { float red = \[protocolor red\];
-/// float green = \[protocolor green\]; float blue = \[protocolor blue\];
+/// This representation is designed for simplicity of conversion to and from
+/// color representations in various languages over compactness. For example,
+/// the fields of this representation can be trivially provided to the
+/// constructor of `java.awt.Color` in Java; it can also be trivially provided
+/// to UIColor's `+colorWithRed:green:blue:alpha` method in iOS; and, with just
+/// a little work, it can be easily formatted into a CSS `rgba()` string in
+/// JavaScript. This reference page doesn't have information about the absolute
+/// color space that should be used to interpret the RGB value—for example,
+/// sRGB, Adobe RGB, DCI-P3, and BT.2020. By default, applications should assume
+/// the sRGB color space. When color equality needs to be decided,
+/// implementations, unless documented otherwise, treat two colors as equal if
+/// all their red, green, blue, and alpha values each differ by at most `1e-5`.
+/// Example (Java): import com.google.type.Color; // ... public static
+/// java.awt.Color fromProto(Color protocolor) { float alpha =
+/// protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new
+/// java.awt.Color( protocolor.getRed(), protocolor.getGreen(),
+/// protocolor.getBlue(), alpha); } public static Color toProto(java.awt.Color
+/// color) { float red = (float) color.getRed(); float green = (float)
+/// color.getGreen(); float blue = (float) color.getBlue(); float denominator =
+/// 255.0; Color.Builder resultBuilder = Color .newBuilder() .setRed(red /
+/// denominator) .setGreen(green / denominator) .setBlue(blue / denominator);
+/// int alpha = color.getAlpha(); if (alpha != 255) { result.setAlpha(
+/// FloatValue .newBuilder() .setValue(((float) alpha) / denominator) .build());
+/// } return resultBuilder.build(); } // ... Example (iOS / Obj-C): // ...
+/// static UIColor* fromProto(Color* protocolor) { float red = \[protocolor
+/// red\]; float green = \[protocolor green\]; float blue = \[protocolor blue\];
 /// FloatValue* alpha_wrapper = \[protocolor alpha\]; float alpha = 1.0; if
 /// (alpha_wrapper != nil) { alpha = \[alpha_wrapper value\]; } return \[UIColor
 /// colorWithRed:red green:green blue:blue alpha:alpha\]; } static Color*
@@ -882,9 +898,9 @@ class Message {
               : null,
           data: json_.containsKey('data')
               ? (json_['data'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -1032,9 +1048,9 @@ class WebpushConfig {
       : this(
           data: json_.containsKey('data')
               ? (json_['data'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -1044,9 +1060,9 @@ class WebpushConfig {
               : null,
           headers: json_.containsKey('headers')
               ? (json_['headers'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,

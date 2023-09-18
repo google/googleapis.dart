@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Notebooks API - v1
@@ -28,7 +27,7 @@
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsRuntimesResource]
 ///     - [ProjectsLocationsSchedulesResource]
-library notebooks.v1;
+library notebooks_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -37,7 +36,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -485,7 +483,7 @@ class ProjectsLocationsExecutionsResource {
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - Filter applied to resulting executions. Currently only supports
-  /// filtering executions by a specified schedule_id. Format: `schedule_id=`
+  /// filtering executions by a specified `schedule_id`. Format: `schedule_id=`
   ///
   /// [orderBy] - Sort by field.
   ///
@@ -620,6 +618,48 @@ class ProjectsLocationsInstancesResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Creates a Diagnostic File and runs Diagnostic Tool given an Instance.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Format:
+  /// `projects/{project_id}/locations/{location}/instances/{instance_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> diagnose(
+    DiagnoseInstanceRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':diagnose';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets details of a single Instance.
   ///
   /// Request parameters:
@@ -714,7 +754,7 @@ class ProjectsLocationsInstancesResource {
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Check if a notebook instance is healthy.
+  /// Checks whether a notebook instance is healthy.
   ///
   /// Request parameters:
   ///
@@ -752,7 +792,7 @@ class ProjectsLocationsInstancesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Check if a notebook instance is upgradable.
+  /// Checks whether a notebook instance is upgradable.
   ///
   /// Request parameters:
   ///
@@ -930,6 +970,48 @@ class ProjectsLocationsInstancesResource {
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':report';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Reports and processes an instance event.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Format:
+  /// `projects/{project_id}/locations/{location}/instances/{instance_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> reportEvent(
+    ReportInstanceEventRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':reportEvent';
 
     final response_ = await _requester.request(
       url_,
@@ -1685,13 +1767,6 @@ class ProjectsLocationsOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -1831,6 +1906,48 @@ class ProjectsLocationsRuntimesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Creates a Diagnostic File and runs Diagnostic Tool given a Runtime.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Format:
+  /// `projects/{project_id}/locations/{location}/runtimes/{runtimes_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/runtimes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> diagnose(
+    DiagnoseRuntimeRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':diagnose';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -1998,9 +2115,10 @@ class ProjectsLocationsRuntimesResource {
   /// new value, as follows: { "software_config":{ "kernels": \[{ 'repository':
   /// 'gcr.io/deeplearning-platform-release/pytorch-gpu', 'tag': 'latest' }\], }
   /// } Currently, only the following fields can be updated: -
-  /// software_config.kernels - software_config.post_startup_script -
-  /// software_config.custom_gpu_driver_path - software_config.idle_shutdown -
-  /// software_config.idle_shutdown_timeout - software_config.disable_terminal
+  /// `software_config.kernels` - `software_config.post_startup_script` -
+  /// `software_config.custom_gpu_driver_path` - `software_config.idle_shutdown`
+  /// - `software_config.idle_shutdown_timeout` -
+  /// `software_config.disable_terminal` - `labels`
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2084,7 +2202,7 @@ class ProjectsLocationsRuntimesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Report and process a runtime event.
+  /// Reports and processes a runtime event.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2399,6 +2517,48 @@ class ProjectsLocationsRuntimesResource {
     return TestIamPermissionsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
+
+  /// Upgrades a Managed Notebook Runtime to the latest version.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Format:
+  /// `projects/{project_id}/locations/{location}/runtimes/{runtime_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/runtimes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> upgrade(
+    UpgradeRuntimeRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':upgrade';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsSchedulesResource {
@@ -2625,9 +2785,9 @@ class ProjectsLocationsSchedulesResource {
 
 /// Definition of a hardware accelerator.
 ///
-/// Note that not all combinations of `type` and `core_count` are valid. Check
-/// \[GPUs on Compute Engine\](/compute/docs/gpus/#gpus-list) to find a valid
-/// combination. TPUs are not supported.
+/// Note that not all combinations of `type` and `core_count` are valid. See
+/// [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus/#gpus-list)
+/// to find a valid combination. TPUs are not supported.
 class AcceleratorConfig {
   /// Count of cores of this accelerator.
   core.String? coreCount;
@@ -2700,7 +2860,9 @@ class Binding {
   /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
   /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
-  /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
+  /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
+  /// (primary) that represents all the users of that domain. For example,
+  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
   /// An email address (plus unique identifier) representing a user that has
   /// been recently deleted. For example,
   /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
@@ -2716,9 +2878,7 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
-  /// that represents all the users of that domain. For example, `google.com` or
-  /// `example.com`.
+  /// the role in the binding.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
@@ -2818,6 +2978,153 @@ class DataprocParameters {
       };
 }
 
+/// Request for creating a notebook instance diagnostic file.
+class DiagnoseInstanceRequest {
+  /// Defines flags that are used to run the diagnostic tool
+  ///
+  /// Required.
+  DiagnosticConfig? diagnosticConfig;
+
+  /// Maxmium amount of time in minutes before the operation times out.
+  ///
+  /// Optional.
+  core.int? timeoutMinutes;
+
+  DiagnoseInstanceRequest({
+    this.diagnosticConfig,
+    this.timeoutMinutes,
+  });
+
+  DiagnoseInstanceRequest.fromJson(core.Map json_)
+      : this(
+          diagnosticConfig: json_.containsKey('diagnosticConfig')
+              ? DiagnosticConfig.fromJson(json_['diagnosticConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          timeoutMinutes: json_.containsKey('timeoutMinutes')
+              ? json_['timeoutMinutes'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (diagnosticConfig != null) 'diagnosticConfig': diagnosticConfig!,
+        if (timeoutMinutes != null) 'timeoutMinutes': timeoutMinutes!,
+      };
+}
+
+/// Request for creating a notebook instance diagnostic file.
+class DiagnoseRuntimeRequest {
+  /// Defines flags that are used to run the diagnostic tool
+  ///
+  /// Required.
+  DiagnosticConfig? diagnosticConfig;
+
+  /// Maxmium amount of time in minutes before the operation times out.
+  ///
+  /// Optional.
+  core.int? timeoutMinutes;
+
+  DiagnoseRuntimeRequest({
+    this.diagnosticConfig,
+    this.timeoutMinutes,
+  });
+
+  DiagnoseRuntimeRequest.fromJson(core.Map json_)
+      : this(
+          diagnosticConfig: json_.containsKey('diagnosticConfig')
+              ? DiagnosticConfig.fromJson(json_['diagnosticConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          timeoutMinutes: json_.containsKey('timeoutMinutes')
+              ? json_['timeoutMinutes'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (diagnosticConfig != null) 'diagnosticConfig': diagnosticConfig!,
+        if (timeoutMinutes != null) 'timeoutMinutes': timeoutMinutes!,
+      };
+}
+
+/// Defines flags that are used to run the diagnostic tool
+class DiagnosticConfig {
+  /// Enables flag to copy all `/home/jupyter` folder contents
+  ///
+  /// Optional.
+  core.bool? copyHomeFilesFlagEnabled;
+
+  /// User Cloud Storage bucket location (REQUIRED).
+  ///
+  /// Must be formatted with path prefix (`gs://$GCS_BUCKET`). Permissions: User
+  /// Managed Notebooks: - storage.buckets.writer: Must be given to the
+  /// project's service account attached to VM. Google Managed Notebooks: -
+  /// storage.buckets.writer: Must be given to the project's service account or
+  /// user credentials attached to VM depending on authentication mode. Cloud
+  /// Storage bucket Log file will be written to
+  /// `gs://$GCS_BUCKET/$RELATIVE_PATH/$VM_DATE_$TIME.tar.gz`
+  ///
+  /// Required.
+  core.String? gcsBucket;
+
+  /// Enables flag to capture packets from the instance for 30 seconds
+  ///
+  /// Optional.
+  core.bool? packetCaptureFlagEnabled;
+
+  /// Defines the relative storage path in the Cloud Storage bucket where the
+  /// diagnostic logs will be written: Default path will be the root directory
+  /// of the Cloud Storage bucket (`gs://$GCS_BUCKET/$DATE_$TIME.tar.gz`)
+  /// Example of full path where Log file will be written:
+  /// `gs://$GCS_BUCKET/$RELATIVE_PATH/`
+  ///
+  /// Optional.
+  core.String? relativePath;
+
+  /// Enables flag to repair service for instance
+  ///
+  /// Optional.
+  core.bool? repairFlagEnabled;
+
+  DiagnosticConfig({
+    this.copyHomeFilesFlagEnabled,
+    this.gcsBucket,
+    this.packetCaptureFlagEnabled,
+    this.relativePath,
+    this.repairFlagEnabled,
+  });
+
+  DiagnosticConfig.fromJson(core.Map json_)
+      : this(
+          copyHomeFilesFlagEnabled:
+              json_.containsKey('copyHomeFilesFlagEnabled')
+                  ? json_['copyHomeFilesFlagEnabled'] as core.bool
+                  : null,
+          gcsBucket: json_.containsKey('gcsBucket')
+              ? json_['gcsBucket'] as core.String
+              : null,
+          packetCaptureFlagEnabled:
+              json_.containsKey('packetCaptureFlagEnabled')
+                  ? json_['packetCaptureFlagEnabled'] as core.bool
+                  : null,
+          relativePath: json_.containsKey('relativePath')
+              ? json_['relativePath'] as core.String
+              : null,
+          repairFlagEnabled: json_.containsKey('repairFlagEnabled')
+              ? json_['repairFlagEnabled'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (copyHomeFilesFlagEnabled != null)
+          'copyHomeFilesFlagEnabled': copyHomeFilesFlagEnabled!,
+        if (gcsBucket != null) 'gcsBucket': gcsBucket!,
+        if (packetCaptureFlagEnabled != null)
+          'packetCaptureFlagEnabled': packetCaptureFlagEnabled!,
+        if (relativePath != null) 'relativePath': relativePath!,
+        if (repairFlagEnabled != null) 'repairFlagEnabled': repairFlagEnabled!,
+      };
+}
+
 /// An instance-attached disk resource.
 class Disk {
   /// Indicates whether the disk will be auto-deleted when the instance is
@@ -2831,7 +3138,7 @@ class Disk {
   core.bool? boot;
 
   /// Indicates a unique device name of your choice that is reflected into the
-  /// /dev/disk/by-id/google-* tree of a Linux operating system running within
+  /// `/dev/disk/by-id/google-*` tree of a Linux operating system running within
   /// the instance.
   ///
   /// This name can be used to reference the device for mounting, resizing, and
@@ -2863,7 +3170,7 @@ class Disk {
   /// will fail if you attempt to attach a persistent disk in any other format
   /// than SCSI. Local SSDs can use either NVME or SCSI. For performance
   /// characteristics of SCSI over NVMe, see Local SSD performance. Valid
-  /// values: * NVME * SCSI
+  /// values: * `NVME` * `SCSI`
   core.String? interface;
 
   /// Type of the resource.
@@ -2877,19 +3184,19 @@ class Disk {
   /// usage data for public and marketplace images.
   core.List<core.String>? licenses;
 
-  /// The mode in which to attach this disk, either READ_WRITE or READ_ONLY.
+  /// The mode in which to attach this disk, either `READ_WRITE` or `READ_ONLY`.
   ///
-  /// If not specified, the default is to attach the disk in READ_WRITE mode.
-  /// Valid values: * READ_ONLY * READ_WRITE
+  /// If not specified, the default is to attach the disk in `READ_WRITE` mode.
+  /// Valid values: * `READ_ONLY` * `READ_WRITE`
   core.String? mode;
 
   /// Indicates a valid partial or full URL to an existing Persistent Disk
   /// resource.
   core.String? source;
 
-  /// Indicates the type of the disk, either SCRATCH or PERSISTENT.
+  /// Indicates the type of the disk, either `SCRATCH` or `PERSISTENT`.
   ///
-  /// Valid values: * PERSISTENT * SCRATCH
+  /// Valid values: * `PERSISTENT` * `SCRATCH`
   core.String? type;
 
   Disk({
@@ -3111,9 +3418,9 @@ class Event {
       : this(
           details: json_.containsKey('details')
               ? (json_['details'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -3348,6 +3655,9 @@ class ExecutionTemplate {
   /// configure your processing cluster according to these guidelines: * You
   /// _must_ set `ExecutionTemplate.masterType` to specify the type of machine
   /// to use for your master node. This is the only required setting.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? scaleTier;
 
   /// The email address of a service account to use when running the execution.
@@ -3408,9 +3718,9 @@ class ExecutionTemplate {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -3519,9 +3829,9 @@ class GetInstanceHealthResponse {
           healthInfo: json_.containsKey('healthInfo')
               ? (json_['healthInfo'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -3541,8 +3851,8 @@ class GuestOsFeature {
   /// The ID of a supported feature.
   ///
   /// Read Enabling guest operating system features to see a list of available
-  /// options. Valid values: * FEATURE_TYPE_UNSPECIFIED * MULTI_IP_SUBNET *
-  /// SECURE_BOOT * UEFI_COMPATIBLE * VIRTIO_SCSI_MULTIQUEUE * WINDOWS
+  /// options. Valid values: * `FEATURE_TYPE_UNSPECIFIED` * `MULTI_IP_SUBNET` *
+  /// `SECURE_BOOT` * `UEFI_COMPATIBLE` * `VIRTIO_SCSI_MULTIQUEUE` * `WINDOWS`
   core.String? type;
 
   GuestOsFeature({
@@ -3565,7 +3875,7 @@ class Instance {
   ///
   /// If you use accelerators, make sure that your configuration has \[enough
   /// vCPUs and memory to support the `machine_type` you have
-  /// selected\](/compute/docs/gpus/#gpus-list).
+  /// selected\](https://cloud.google.com/compute/docs/gpus/#gpus-list).
   AcceleratorConfig? acceleratorConfig;
 
   /// Input only.
@@ -3672,14 +3982,21 @@ class Instance {
   /// These can be later modified by the setLabels method.
   core.Map<core.String, core.String>? labels;
 
-  /// The \[Compute Engine machine type\](/compute/docs/machine-types) of this
-  /// instance.
+  /// The
+  /// [Compute Engine machine type](https://cloud.google.com/compute/docs/machine-types)
+  /// of this instance.
   ///
   /// Required.
   core.String? machineType;
 
   /// Custom metadata to apply to this instance.
   core.Map<core.String, core.String>? metadata;
+
+  /// Bool indicating whether this notebook has been migrated to a Workbench
+  /// Instance
+  ///
+  /// Output only.
+  core.bool? migrated;
 
   /// The name of this notebook instance.
   ///
@@ -3708,7 +4025,7 @@ class Instance {
   /// If true, the notebook instance will not register with the proxy.
   core.bool? noProxyAccess;
 
-  /// If true, no public IP will be assigned to this instance.
+  /// If true, no external IP will be assigned to this instance.
   core.bool? noPublicIp;
 
   /// Input only.
@@ -3723,6 +4040,11 @@ class Instance {
   /// The path must be a URL or Cloud Storage path
   /// (`gs://path-to-file/file-name`).
   core.String? postStartupScript;
+
+  /// Check how possible a migration from UmN to WbI is.
+  ///
+  /// Output only.
+  PreMigrationCheck? preMigrationCheck;
 
   /// The proxy endpoint that is used to access the Jupyter notebook.
   ///
@@ -3828,6 +4150,7 @@ class Instance {
     this.labels,
     this.machineType,
     this.metadata,
+    this.migrated,
     this.name,
     this.network,
     this.nicType,
@@ -3835,6 +4158,7 @@ class Instance {
     this.noPublicIp,
     this.noRemoveDataDisk,
     this.postStartupScript,
+    this.preMigrationCheck,
     this.proxyUri,
     this.reservationAffinity,
     this.serviceAccount,
@@ -3904,9 +4228,9 @@ class Instance {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -3915,11 +4239,14 @@ class Instance {
               : null,
           metadata: json_.containsKey('metadata')
               ? (json_['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
+              : null,
+          migrated: json_.containsKey('migrated')
+              ? json_['migrated'] as core.bool
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           network: json_.containsKey('network')
@@ -3939,6 +4266,10 @@ class Instance {
               : null,
           postStartupScript: json_.containsKey('postStartupScript')
               ? json_['postStartupScript'] as core.String
+              : null,
+          preMigrationCheck: json_.containsKey('preMigrationCheck')
+              ? PreMigrationCheck.fromJson(json_['preMigrationCheck']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           proxyUri: json_.containsKey('proxyUri')
               ? json_['proxyUri'] as core.String
@@ -4004,6 +4335,7 @@ class Instance {
         if (labels != null) 'labels': labels!,
         if (machineType != null) 'machineType': machineType!,
         if (metadata != null) 'metadata': metadata!,
+        if (migrated != null) 'migrated': migrated!,
         if (name != null) 'name': name!,
         if (network != null) 'network': network!,
         if (nicType != null) 'nicType': nicType!,
@@ -4011,6 +4343,7 @@ class Instance {
         if (noPublicIp != null) 'noPublicIp': noPublicIp!,
         if (noRemoveDataDisk != null) 'noRemoveDataDisk': noRemoveDataDisk!,
         if (postStartupScript != null) 'postStartupScript': postStartupScript!,
+        if (preMigrationCheck != null) 'preMigrationCheck': preMigrationCheck!,
         if (proxyUri != null) 'proxyUri': proxyUri!,
         if (reservationAffinity != null)
           'reservationAffinity': reservationAffinity!,
@@ -4062,55 +4395,7 @@ class InstanceConfig {
 }
 
 /// Response for checking if a notebook instance is upgradeable.
-class IsInstanceUpgradeableResponse {
-  /// The new image self link this instance will be upgraded to if calling the
-  /// upgrade endpoint.
-  ///
-  /// This field will only be populated if field upgradeable is true.
-  core.String? upgradeImage;
-
-  /// Additional information about upgrade.
-  core.String? upgradeInfo;
-
-  /// The version this instance will be upgraded to if calling the upgrade
-  /// endpoint.
-  ///
-  /// This field will only be populated if field upgradeable is true.
-  core.String? upgradeVersion;
-
-  /// If an instance is upgradeable.
-  core.bool? upgradeable;
-
-  IsInstanceUpgradeableResponse({
-    this.upgradeImage,
-    this.upgradeInfo,
-    this.upgradeVersion,
-    this.upgradeable,
-  });
-
-  IsInstanceUpgradeableResponse.fromJson(core.Map json_)
-      : this(
-          upgradeImage: json_.containsKey('upgradeImage')
-              ? json_['upgradeImage'] as core.String
-              : null,
-          upgradeInfo: json_.containsKey('upgradeInfo')
-              ? json_['upgradeInfo'] as core.String
-              : null,
-          upgradeVersion: json_.containsKey('upgradeVersion')
-              ? json_['upgradeVersion'] as core.String
-              : null,
-          upgradeable: json_.containsKey('upgradeable')
-              ? json_['upgradeable'] as core.bool
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (upgradeImage != null) 'upgradeImage': upgradeImage!,
-        if (upgradeInfo != null) 'upgradeInfo': upgradeInfo!,
-        if (upgradeVersion != null) 'upgradeVersion': upgradeVersion!,
-        if (upgradeable != null) 'upgradeable': upgradeable!,
-      };
-}
+typedef IsInstanceUpgradeableResponse = $Response;
 
 /// Response for listing environments.
 class ListEnvironmentsResponse {
@@ -4213,7 +4498,7 @@ class ListInstancesResponse {
 
   /// Locations that could not be reached.
   ///
-  /// For example, \['us-west1-a', 'us-central1-b'\]. A ListInstancesResponse
+  /// For example, `['us-west1-a', 'us-central1-b']`. A ListInstancesResponse
   /// will only contain either instances or unreachables,
   core.List<core.String>? unreachable;
 
@@ -4323,7 +4608,7 @@ class ListRuntimesResponse {
 
   /// Locations that could not be reached.
   ///
-  /// For example, \['us-west1', 'us-central1'\]. A ListRuntimesResponse will
+  /// For example, `['us-west1', 'us-central1']`. A ListRuntimesResponse will
   /// only contain either runtimes or unreachables,
   core.List<core.String>? unreachable;
 
@@ -4422,7 +4707,7 @@ class LocalDisk {
   core.bool? boot;
 
   /// Specifies a unique device name of your choice that is reflected into the
-  /// /dev/disk/by-id/google-* tree of a Linux operating system running within
+  /// `/dev/disk/by-id/google-*` tree of a Linux operating system running within
   /// the instance.
   ///
   /// This name can be used to reference the device for mounting, resizing, and
@@ -4466,7 +4751,7 @@ class LocalDisk {
   /// will fail if you attempt to attach a persistent disk in any other format
   /// than SCSI. Local SSDs can use either NVME or SCSI. For performance
   /// characteristics of SCSI over NVMe, see Local SSD performance. Valid
-  /// values: * NVME * SCSI
+  /// values: * `NVME` * `SCSI`
   core.String? interface;
 
   /// Type of the resource.
@@ -4481,20 +4766,20 @@ class LocalDisk {
   /// Output only.
   core.List<core.String>? licenses;
 
-  /// The mode in which to attach this disk, either READ_WRITE or READ_ONLY.
+  /// The mode in which to attach this disk, either `READ_WRITE` or `READ_ONLY`.
   ///
-  /// If not specified, the default is to attach the disk in READ_WRITE mode.
-  /// Valid values: * READ_ONLY * READ_WRITE
+  /// If not specified, the default is to attach the disk in `READ_WRITE` mode.
+  /// Valid values: * `READ_ONLY` * `READ_WRITE`
   core.String? mode;
 
   /// Specifies a valid partial or full URL to an existing Persistent Disk
   /// resource.
   core.String? source;
 
-  /// Specifies the type of the disk, either SCRATCH or PERSISTENT.
+  /// Specifies the type of the disk, either `SCRATCH` or `PERSISTENT`.
   ///
-  /// If not specified, the default is PERSISTENT. Valid values: * PERSISTENT *
-  /// SCRATCH
+  /// If not specified, the default is `PERSISTENT`. Valid values: *
+  /// `PERSISTENT` * `SCRATCH`
   core.String? type;
 
   LocalDisk({
@@ -4638,9 +4923,9 @@ class LocalDiskInitializeParams {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -4655,7 +4940,7 @@ class LocalDiskInitializeParams {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
+/// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
 /// This resource represents a long-running operation that is the result of a
@@ -4844,28 +5129,44 @@ class Policy {
       };
 }
 
-/// Request for getting a new access token.
-class RefreshRuntimeTokenInternalRequest {
-  /// The VM hardware token for authenticating the VM.
-  ///
-  /// https://cloud.google.com/compute/docs/instances/verifying-instance-identity
-  ///
-  /// Required.
-  core.String? vmId;
+/// PreMigrationCheck checks how feasible a migration from UmN is.
+class PreMigrationCheck {
+  /// Message provides a summary or workaround.
+  core.String? message;
 
-  RefreshRuntimeTokenInternalRequest({
-    this.vmId,
+  /// Result returns the result of the check.
+  /// Possible string values are:
+  /// - "RESULT_UNSPECIFIED" : Default type.
+  /// - "IDENTICAL" : UmN can be migrated to WbI as is minus non-relevant parts.
+  /// - "PARTIAL" : Part of the UmN won't be ported. The migration might default
+  /// some values.
+  /// - "NOT_RECOMMENDED" : UmN has too many unsupported options for a migration
+  /// to WbI.
+  core.String? result;
+
+  PreMigrationCheck({
+    this.message,
+    this.result,
   });
 
-  RefreshRuntimeTokenInternalRequest.fromJson(core.Map json_)
+  PreMigrationCheck.fromJson(core.Map json_)
       : this(
-          vmId: json_.containsKey('vmId') ? json_['vmId'] as core.String : null,
+          message: json_.containsKey('message')
+              ? json_['message'] as core.String
+              : null,
+          result: json_.containsKey('result')
+              ? json_['result'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (vmId != null) 'vmId': vmId!,
+        if (message != null) 'message': message!,
+        if (result != null) 'result': result!,
       };
 }
+
+/// Request for getting a new access token.
+typedef RefreshRuntimeTokenInternalRequest = $Request08;
 
 /// Response with a new access token.
 class RefreshRuntimeTokenInternalResponse {
@@ -4925,6 +5226,40 @@ class RegisterInstanceRequest {
       };
 }
 
+/// Request for reporting a Managed Notebook Event.
+class ReportInstanceEventRequest {
+  /// The Event to be reported.
+  ///
+  /// Required.
+  Event? event;
+
+  /// The VM hardware token for authenticating the VM.
+  ///
+  /// https://cloud.google.com/compute/docs/instances/verifying-instance-identity
+  ///
+  /// Required.
+  core.String? vmId;
+
+  ReportInstanceEventRequest({
+    this.event,
+    this.vmId,
+  });
+
+  ReportInstanceEventRequest.fromJson(core.Map json_)
+      : this(
+          event: json_.containsKey('event')
+              ? Event.fromJson(
+                  json_['event'] as core.Map<core.String, core.dynamic>)
+              : null,
+          vmId: json_.containsKey('vmId') ? json_['vmId'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (event != null) 'event': event!,
+        if (vmId != null) 'vmId': vmId!,
+      };
+}
+
 /// Request for notebook instances to report information to Notebooks API.
 class ReportInstanceInfoRequest {
   /// The metadata reported to Notebooks API.
@@ -4948,9 +5283,9 @@ class ReportInstanceInfoRequest {
       : this(
           metadata: json_.containsKey('metadata')
               ? (json_['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -5057,7 +5392,7 @@ typedef ResetRuntimeRequest = $RuntimeRequest;
 class RollbackInstanceRequest {
   /// The snapshot for rollback.
   ///
-  /// Example: "projects/test-project/global/snapshots/krwlzipynril".
+  /// Example: `projects/test-project/global/snapshots/krwlzipynril`.
   ///
   /// Required.
   core.String? targetSnapshot;
@@ -5103,11 +5438,28 @@ class Runtime {
   /// running. Applies to ACTIVE state.
   core.String? healthState;
 
+  /// The labels to associate with this Managed Notebook or Runtime.
+  ///
+  /// Label **keys** must contain 1 to 63 characters, and must conform to
+  /// [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+  /// empty, but, if present, must contain 1 to 63 characters, and must conform
+  /// to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32
+  /// labels can be associated with a cluster.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
   /// Contains Runtime daemon metrics such as Service status and JupyterLab
   /// stats.
   ///
   /// Output only.
   RuntimeMetrics? metrics;
+
+  /// Bool indicating whether this notebook has been migrated to a Workbench
+  /// Instance
+  ///
+  /// Output only.
+  core.bool? migrated;
 
   /// The resource name of the runtime.
   ///
@@ -5150,7 +5502,9 @@ class Runtime {
     this.accessConfig,
     this.createTime,
     this.healthState,
+    this.labels,
     this.metrics,
+    this.migrated,
     this.name,
     this.softwareConfig,
     this.state,
@@ -5170,9 +5524,20 @@ class Runtime {
           healthState: json_.containsKey('healthState')
               ? json_['healthState'] as core.String
               : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
           metrics: json_.containsKey('metrics')
               ? RuntimeMetrics.fromJson(
                   json_['metrics'] as core.Map<core.String, core.dynamic>)
+              : null,
+          migrated: json_.containsKey('migrated')
+              ? json_['migrated'] as core.bool
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           softwareConfig: json_.containsKey('softwareConfig')
@@ -5194,7 +5559,9 @@ class Runtime {
         if (accessConfig != null) 'accessConfig': accessConfig!,
         if (createTime != null) 'createTime': createTime!,
         if (healthState != null) 'healthState': healthState!,
+        if (labels != null) 'labels': labels!,
         if (metrics != null) 'metrics': metrics!,
+        if (migrated != null) 'migrated': migrated!,
         if (name != null) 'name': name!,
         if (softwareConfig != null) 'softwareConfig': softwareConfig!,
         if (state != null) 'state': state!,
@@ -5205,7 +5572,7 @@ class Runtime {
 
 /// Definition of the types of hardware accelerators that can be used.
 ///
-/// Definition of the types of hardware accelerators that can be used. See
+/// See
 /// [Compute Engine AcceleratorTypes](https://cloud.google.com/compute/docs/reference/beta/acceleratorTypes).
 /// Examples: * `nvidia-tesla-k80` * `nvidia-tesla-p100` * `nvidia-tesla-v100` *
 /// `nvidia-tesla-p4` * `nvidia-tesla-t4` * `nvidia-tesla-a100`
@@ -5216,13 +5583,13 @@ class RuntimeAcceleratorConfig {
   /// Accelerator model.
   /// Possible string values are:
   /// - "ACCELERATOR_TYPE_UNSPECIFIED" : Accelerator type is not specified.
-  /// - "NVIDIA_TESLA_K80" : b/241005111 K80 deprecation in Google Managed
-  /// Notebooks Accelerator type is Nvidia Tesla K80.
+  /// - "NVIDIA_TESLA_K80" : Accelerator type is Nvidia Tesla K80.
   /// - "NVIDIA_TESLA_P100" : Accelerator type is Nvidia Tesla P100.
   /// - "NVIDIA_TESLA_V100" : Accelerator type is Nvidia Tesla V100.
   /// - "NVIDIA_TESLA_P4" : Accelerator type is Nvidia Tesla P4.
   /// - "NVIDIA_TESLA_T4" : Accelerator type is Nvidia Tesla T4.
-  /// - "NVIDIA_TESLA_A100" : Accelerator type is Nvidia Tesla A100.
+  /// - "NVIDIA_TESLA_A100" : Accelerator type is Nvidia Tesla A100 - 40GB.
+  /// - "NVIDIA_L4" : Accelerator type is Nvidia L4.
   /// - "TPU_V2" : (Coming soon) Accelerator type is TPU V2.
   /// - "TPU_V3" : (Coming soon) Accelerator type is TPU V3.
   /// - "NVIDIA_TESLA_T4_VWS" : Accelerator type is NVIDIA Tesla T4 Virtual
@@ -5313,8 +5680,8 @@ class RuntimeGuestOsFeature {
   /// Read
   /// [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features)
   /// to see a list of available options. Valid values: *
-  /// FEATURE_TYPE_UNSPECIFIED * MULTI_IP_SUBNET * SECURE_BOOT * UEFI_COMPATIBLE
-  /// * VIRTIO_SCSI_MULTIQUEUE * WINDOWS
+  /// `FEATURE_TYPE_UNSPECIFIED` * `MULTI_IP_SUBNET` * `SECURE_BOOT` *
+  /// `UEFI_COMPATIBLE` * `VIRTIO_SCSI_MULTIQUEUE` * `WINDOWS`
   core.String? type;
 
   RuntimeGuestOsFeature({
@@ -5347,9 +5714,9 @@ class RuntimeMetrics {
           systemMetrics: json_.containsKey('systemMetrics')
               ? (json_['systemMetrics'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -5362,7 +5729,7 @@ class RuntimeMetrics {
 
 /// A set of Shielded Instance options.
 ///
-/// Check
+/// See
 /// [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
 /// Not all combinations are valid.
 typedef RuntimeShieldedInstanceConfig = $ShieldedInstanceConfig;
@@ -5408,6 +5775,11 @@ class RuntimeSoftwareConfig {
   /// Optional.
   core.List<ContainerImage>? kernels;
 
+  /// Bool indicating whether mixer client should be disabled.
+  ///
+  /// Default: False
+  core.bool? mixerDisabled;
+
   /// Cron expression in UTC timezone, used to schedule instance auto upgrade.
   ///
   /// Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
@@ -5435,6 +5807,11 @@ class RuntimeSoftwareConfig {
   /// Output only.
   core.bool? upgradeable;
 
+  /// version of boot image such as M100, from release label of the image.
+  ///
+  /// Output only.
+  core.String? version;
+
   RuntimeSoftwareConfig({
     this.customGpuDriverPath,
     this.disableTerminal,
@@ -5443,10 +5820,12 @@ class RuntimeSoftwareConfig {
     this.idleShutdownTimeout,
     this.installGpuDriver,
     this.kernels,
+    this.mixerDisabled,
     this.notebookUpgradeSchedule,
     this.postStartupScript,
     this.postStartupScriptBehavior,
     this.upgradeable,
+    this.version,
   });
 
   RuntimeSoftwareConfig.fromJson(core.Map json_)
@@ -5475,6 +5854,9 @@ class RuntimeSoftwareConfig {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          mixerDisabled: json_.containsKey('mixerDisabled')
+              ? json_['mixerDisabled'] as core.bool
+              : null,
           notebookUpgradeSchedule: json_.containsKey('notebookUpgradeSchedule')
               ? json_['notebookUpgradeSchedule'] as core.String
               : null,
@@ -5487,6 +5869,9 @@ class RuntimeSoftwareConfig {
                   : null,
           upgradeable: json_.containsKey('upgradeable')
               ? json_['upgradeable'] as core.bool
+              : null,
+          version: json_.containsKey('version')
+              ? json_['version'] as core.String
               : null,
         );
 
@@ -5501,12 +5886,14 @@ class RuntimeSoftwareConfig {
           'idleShutdownTimeout': idleShutdownTimeout!,
         if (installGpuDriver != null) 'installGpuDriver': installGpuDriver!,
         if (kernels != null) 'kernels': kernels!,
+        if (mixerDisabled != null) 'mixerDisabled': mixerDisabled!,
         if (notebookUpgradeSchedule != null)
           'notebookUpgradeSchedule': notebookUpgradeSchedule!,
         if (postStartupScript != null) 'postStartupScript': postStartupScript!,
         if (postStartupScriptBehavior != null)
           'postStartupScriptBehavior': postStartupScriptBehavior!,
         if (upgradeable != null) 'upgradeable': upgradeable!,
+        if (version != null) 'version': version!,
       };
 }
 
@@ -5519,8 +5906,8 @@ class Schedule {
 
   /// Cron-tab formatted schedule by which the job will execute.
   ///
-  /// Format: minute, hour, day of month, month, day of week, e.g. 0 0 * * WED =
-  /// every Wednesday More examples: https://crontab.guru/examples.html
+  /// Format: minute, hour, day of month, month, day of week, e.g. `0 0 * * WED`
+  /// = every Wednesday More examples: https://crontab.guru/examples.html
   core.String? cronSchedule;
 
   /// A brief description of this environment.
@@ -5528,8 +5915,8 @@ class Schedule {
 
   /// Display name used for UI purposes.
   ///
-  /// Name can only contain alphanumeric characters, hyphens '-', and
-  /// underscores '_'.
+  /// Name can only contain alphanumeric characters, hyphens `-`, and
+  /// underscores `_`.
   ///
   /// Output only.
   core.String? displayName;
@@ -5645,7 +6032,7 @@ class Schedule {
 
 /// Definition of a hardware accelerator.
 ///
-/// Note that not all combinations of `type` and `core_count` are valid. Check
+/// Note that not all combinations of `type` and `core_count` are valid. See
 /// [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus) to find
 /// a valid combination. TPUs are not supported.
 class SchedulerAcceleratorConfig {
@@ -5715,7 +6102,7 @@ class SetIamPolicyRequest {
 class SetInstanceAcceleratorRequest {
   /// Count of cores of this accelerator.
   ///
-  /// Note that not all combinations of `type` and `core_count` are valid. Check
+  /// Note that not all combinations of `type` and `core_count` are valid. See
   /// [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus/#gpus-list)
   /// to find a valid combination. TPUs are not supported.
   ///
@@ -5777,9 +6164,9 @@ class SetInstanceLabelsRequest {
       : this(
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -5816,8 +6203,9 @@ class SetInstanceMachineTypeRequest {
 
 /// A set of Shielded Instance options.
 ///
-/// Check \[Images using supported Shielded VM features\] Not all combinations
-/// are valid.
+/// See
+/// [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+/// Not all combinations are valid.
 typedef ShieldedInstanceConfig = $ShieldedInstanceConfig;
 
 /// Request for starting a notebook instance
@@ -5923,9 +6311,9 @@ class UpdateInstanceMetadataItemsRequest {
       : this(
           items: json_.containsKey('items')
               ? (json_['items'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -5949,9 +6337,9 @@ class UpdateInstanceMetadataItemsResponse {
       : this(
           items: json_.containsKey('items')
               ? (json_['items'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -6020,7 +6408,10 @@ class UpgradeHistoryEntry {
 
   /// Target VM Image.
   ///
-  /// Format: ainotebooks-vm/project/image-name/name.
+  /// Format: `ainotebooks-vm/project/image-name/name`.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? targetImage;
 
   /// Target VM Version, like m63.
@@ -6162,24 +6553,30 @@ class UpgradeInstanceRequest {
       };
 }
 
+/// Request for upgrading a Managed Notebook Runtime to the latest version.
+///
+/// option (google.api.message_visibility).restriction =
+/// "TRUSTED_TESTER,SPECIAL_TESTER";
+typedef UpgradeRuntimeRequest = $RuntimeRequest;
+
 /// Parameters used in Vertex AI JobType executions.
 class VertexAIParameters {
   /// Environment variables.
   ///
   /// At most 100 environment variables can be specified and unique. Example:
-  /// GCP_BUCKET=gs://my-bucket/samples/
+  /// `GCP_BUCKET=gs://my-bucket/samples/`
   core.Map<core.String, core.String>? env;
 
   /// The full name of the Compute Engine
-  /// \[network\](/compute/docs/networks-and-firewalls#networks) to which the
-  /// Job should be peered.
+  /// [network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks)
+  /// to which the Job should be peered.
   ///
   /// For example, `projects/12345/global/networks/myVPC`.
   /// [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert)
   /// is of the form `projects/{project}/global/networks/{network}`. Where
-  /// {project} is a project number, as in `12345`, and {network} is a network
-  /// name. Private services access must already be configured for the network.
-  /// If left unspecified, the job is not peered with any network.
+  /// `{project}` is a project number, as in `12345`, and `{network}` is a
+  /// network name. Private services access must already be configured for the
+  /// network. If left unspecified, the job is not peered with any network.
   core.String? network;
 
   VertexAIParameters({
@@ -6191,9 +6588,9 @@ class VertexAIParameters {
       : this(
           env: json_.containsKey('env')
               ? (json_['env'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -6441,9 +6838,9 @@ class VirtualMachineConfig {
               ? (json_['guestAttributes']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -6452,9 +6849,9 @@ class VirtualMachineConfig {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -6463,9 +6860,9 @@ class VirtualMachineConfig {
               : null,
           metadata: json_.containsKey('metadata')
               ? (json_['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,

@@ -1,4 +1,13 @@
-## 1.4.0-dev
+## 1.4.2-wip
+
+- Require Dart 3.0 or later.
+
+## 1.4.1
+
+- Require Dart 2.19 or later.
+- Allow latest `package:http`.
+
+## 1.4.0
 
 - Update `README` to include a warning about Flutter application usage.
 - Require Dart 2.17 or later.
@@ -15,6 +24,12 @@
 - Added `requestAccessCredentials`, `requestAuthorizationCode`, `revokeConsent`,
   and `CodeResponse` to support the new
   [Google Identity Services](https://developers.google.com/identity/oauth2/web/guides/overview).
+- Deprecated `createImplicitBrowserFlow` function.
+
+#### `auth_io.dart` library
+
+- Added an optional `listenPort` parameter to `clientViaUserConsent`
+  and `obtainAccessCredentialsViaUserConsent`. 
 
 #### `auth_io.dart`
 

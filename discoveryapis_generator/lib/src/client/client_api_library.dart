@@ -2,8 +2,6 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-library discoveryapis_generator.client_api_library;
-
 import 'package:path/path.dart' as path;
 
 import '../base_api_library.dart';
@@ -88,12 +86,9 @@ class ClientApiLibrary extends BaseApiLibrary {
   /// counts being calculated
   @override
   String libraryHeader() {
-    var exportedMediaClasses = '';
+    final exportedClasses = <String>{};
     if (exposeMedia) {
-      exportedMediaClasses = ', Media, UploadOptions,\n'
-          '    ResumableUploadOptions, DownloadOptions, '
-          'PartialDownloadOptions,\n'
-          '    ByteRange';
+      exportedClasses.addAll(exportedMediaClasses);
     }
 
     var result = '''
@@ -105,8 +100,6 @@ ${ignoreForFileComments(
         'avoid_classes_with_only_static_members',
       },
     )}
-
-library $libraryName;
 
 ''';
 
@@ -135,9 +128,16 @@ library $libraryName;
 
     result += pkgImports.join('\n');
 
+    final exports = ({
+      'ApiRequestError',
+      'DetailedApiRequestError',
+      ...exportedClasses,
+    }.toList(growable: false)
+          ..sort())
+        .join(', ');
+
     return """$result${"""
-export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
-    ApiRequestError, DetailedApiRequestError$exportedMediaClasses;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show $exports;
 
 ${requestHeadersField(description.version)}
 """}""";

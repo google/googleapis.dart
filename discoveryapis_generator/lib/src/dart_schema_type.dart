@@ -34,6 +34,7 @@ abstract class DartSchemaType {
       _resolved = true;
       return resolveCore(db);
     }
+    // ignore: avoid_returning_this
     return this;
   }
 
@@ -65,7 +66,7 @@ abstract class DartSchemaType {
 
   /// [json] is the string expression of json data that needs to be decoded to
   /// a [DartSchemaType].
-  String jsonDecode(String json);
+  String jsonDecode(String json, {String? importName});
 
   /// Whether this value needs a JSON encoding or not.
   bool get needsJsonEncoding => jsonEncode('foo') != 'foo';

@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Network Services API - v1
@@ -32,7 +31,7 @@
 ///     - [ProjectsLocationsServiceBindingsResource]
 ///     - [ProjectsLocationsTcpRoutesResource]
 ///     - [ProjectsLocationsTlsRoutesResource]
-library networkservices.v1;
+library networkservices_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -41,7 +40,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -2404,13 +2402,6 @@ class ProjectsLocationsOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -3329,7 +3320,9 @@ class Binding {
   /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
   /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
-  /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
+  /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
+  /// (primary) that represents all the users of that domain. For example,
+  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
   /// An email address (plus unique identifier) representing a user that has
   /// been recently deleted. For example,
   /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
@@ -3345,9 +3338,7 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
-  /// that represents all the users of that domain. For example, `google.com` or
-  /// `example.com`.
+  /// the role in the binding.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
@@ -3638,9 +3629,9 @@ class EndpointPolicy {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -3701,6 +3692,25 @@ typedef Expr = $Expr;
 /// along with any policy configurations. Routes have reference to to Gateways
 /// to dictate how requests should be routed by this Gateway.
 class Gateway {
+  /// Zero or one IPv4 or IPv6 address on which the Gateway will receive the
+  /// traffic.
+  ///
+  /// When no address is provided, an IP from the subnetwork is allocated This
+  /// field only applies to gateways of type 'SECURE_WEB_GATEWAY'. Gateways of
+  /// type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6.
+  ///
+  /// Optional.
+  core.List<core.String>? addresses;
+
+  /// A fully-qualified Certificates URL reference.
+  ///
+  /// The proxy presents a Certificate (selected based on SNI) when establishing
+  /// a TLS connection. This feature only applies to gateways of type
+  /// 'SECURE_WEB_GATEWAY'.
+  ///
+  /// Optional.
+  core.List<core.String>? certificateUrls;
+
   /// The timestamp when the resource was created.
   ///
   /// Output only.
@@ -3712,6 +3722,16 @@ class Gateway {
   ///
   /// Optional.
   core.String? description;
+
+  /// A fully-qualified GatewaySecurityPolicy URL reference.
+  ///
+  /// Defines how a server should apply security policy to inbound (VM to Proxy)
+  /// initiated connections. For example: `projects / * /locations / *
+  /// /gatewaySecurityPolicies/swg-policy`. This policy is specific to gateways
+  /// of type 'SECURE_WEB_GATEWAY'.
+  ///
+  /// Optional.
+  core.String? gatewaySecurityPolicy;
 
   /// Set of label tags associated with the Gateway resource.
   ///
@@ -3725,12 +3745,21 @@ class Gateway {
   /// Required.
   core.String? name;
 
+  /// The relative resource name identifying the VPC network that is using this
+  /// configuration.
+  ///
+  /// For example: `projects / * /global/networks/network-1`. Currently, this
+  /// field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+  ///
+  /// Optional.
+  core.String? network;
+
   /// One or more port numbers (1-65535), on which the Gateway will receive
   /// traffic.
   ///
   /// The proxy binds to the specified ports. Gateways of type
   /// 'SECURE_WEB_GATEWAY' are limited to 1 port. Gateways of type 'OPEN_MESH'
-  /// listen on 0.0.0.0 and support multiple ports.
+  /// listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
   ///
   /// Required.
   core.List<core.int>? ports;
@@ -3743,7 +3772,7 @@ class Gateway {
   /// balancer. Max length 64 characters. Scope should start with a letter and
   /// can only have letters, numbers, hyphens.
   ///
-  /// Required. Immutable.
+  /// Optional.
   core.String? scope;
 
   /// Server-defined URL of this resource
@@ -3758,6 +3787,16 @@ class Gateway {
   ///
   /// Optional.
   core.String? serverTlsPolicy;
+
+  /// The relative resource name identifying the subnetwork in which this SWG is
+  /// allocated.
+  ///
+  /// For example: `projects / * /regions/us-central1/subnetworks/network-1`
+  /// Currently, this field is specific to gateways of type
+  /// 'SECURE_WEB_GATEWAY".
+  ///
+  /// Optional.
+  core.String? subnetwork;
 
   /// The type of the customer managed gateway.
   ///
@@ -3779,35 +3818,56 @@ class Gateway {
   core.String? updateTime;
 
   Gateway({
+    this.addresses,
+    this.certificateUrls,
     this.createTime,
     this.description,
+    this.gatewaySecurityPolicy,
     this.labels,
     this.name,
+    this.network,
     this.ports,
     this.scope,
     this.selfLink,
     this.serverTlsPolicy,
+    this.subnetwork,
     this.type,
     this.updateTime,
   });
 
   Gateway.fromJson(core.Map json_)
       : this(
+          addresses: json_.containsKey('addresses')
+              ? (json_['addresses'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          certificateUrls: json_.containsKey('certificateUrls')
+              ? (json_['certificateUrls'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
               : null,
           description: json_.containsKey('description')
               ? json_['description'] as core.String
               : null,
+          gatewaySecurityPolicy: json_.containsKey('gatewaySecurityPolicy')
+              ? json_['gatewaySecurityPolicy'] as core.String
+              : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          network: json_.containsKey('network')
+              ? json_['network'] as core.String
+              : null,
           ports: json_.containsKey('ports')
               ? (json_['ports'] as core.List)
                   .map((value) => value as core.int)
@@ -3821,6 +3881,9 @@ class Gateway {
           serverTlsPolicy: json_.containsKey('serverTlsPolicy')
               ? json_['serverTlsPolicy'] as core.String
               : null,
+          subnetwork: json_.containsKey('subnetwork')
+              ? json_['subnetwork'] as core.String
+              : null,
           type: json_.containsKey('type') ? json_['type'] as core.String : null,
           updateTime: json_.containsKey('updateTime')
               ? json_['updateTime'] as core.String
@@ -3828,14 +3891,20 @@ class Gateway {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (addresses != null) 'addresses': addresses!,
+        if (certificateUrls != null) 'certificateUrls': certificateUrls!,
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
+        if (gatewaySecurityPolicy != null)
+          'gatewaySecurityPolicy': gatewaySecurityPolicy!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
+        if (network != null) 'network': network!,
         if (ports != null) 'ports': ports!,
         if (scope != null) 'scope': scope!,
         if (selfLink != null) 'selfLink': selfLink!,
         if (serverTlsPolicy != null) 'serverTlsPolicy': serverTlsPolicy!,
+        if (subnetwork != null) 'subnetwork': subnetwork!,
         if (type != null) 'type': type!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
@@ -3871,19 +3940,19 @@ class GrpcRoute {
   /// Format: \[:\] Hostname is the fully qualified domain name of a network
   /// host. This matches the RFC 1123 definition of a hostname with 2 notable
   /// exceptions: - IPs are not allowed. - A hostname may be prefixed with a
-  /// wildcard label (*.). The wildcard label must appear by itself as the first
-  /// label. Hostname can be "precise" which is a domain name without the
-  /// terminating dot of a network host (e.g. "foo.example.com") or "wildcard",
+  /// wildcard label (`*.`). The wildcard label must appear by itself as the
+  /// first label. Hostname can be "precise" which is a domain name without the
+  /// terminating dot of a network host (e.g. `foo.example.com`) or "wildcard",
   /// which is a domain name prefixed with a single wildcard label (e.g.
-  /// *.example.com). Note that as per RFC1035 and RFC1123, a label must consist
-  /// of lower case alphanumeric characters or '-', and must start and end with
-  /// an alphanumeric character. No other punctuation is allowed. The routes
-  /// associated with a Mesh or Gateway must have unique hostnames. If you
-  /// attempt to attach multiple routes with conflicting hostnames, the
+  /// `*.example.com`). Note that as per RFC1035 and RFC1123, a label must
+  /// consist of lower case alphanumeric characters or '-', and must start and
+  /// end with an alphanumeric character. No other punctuation is allowed. The
+  /// routes associated with a Mesh or Gateway must have unique hostnames. If
+  /// you attempt to attach multiple routes with conflicting hostnames, the
   /// configuration will be rejected. For example, while it is acceptable for
-  /// routes for the hostnames "*.foo.bar.com" and "*.bar.com" to be associated
+  /// routes for the hostnames `*.foo.bar.com` and `*.bar.com` to be associated
   /// with the same route, it is not possible to associate two routes both with
-  /// "*.bar.com" or both with "bar.com". If a port is specified, then gRPC
+  /// `*.bar.com` or both with `bar.com`. If a port is specified, then gRPC
   /// clients must use the channel URI with the port to match this rule (i.e.
   /// "xds:///service:123"), otherwise they must supply the URI without a port
   /// (i.e. "xds:///service").
@@ -3964,9 +4033,9 @@ class GrpcRoute {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -4435,20 +4504,20 @@ class HttpRoute {
   ///
   /// Hostname is the fully qualified domain name of a network host, as defined
   /// by RFC 1123 with the exception that: - IPs are not allowed. - A hostname
-  /// may be prefixed with a wildcard label (*.). The wildcard label must appear
-  /// by itself as the first label. Hostname can be "precise" which is a domain
-  /// name without the terminating dot of a network host (e.g.
-  /// "foo.example.com") or "wildcard", which is a domain name prefixed with a
-  /// single wildcard label (e.g. *.example.com). Note that as per RFC1035 and
+  /// may be prefixed with a wildcard label (`*.`). The wildcard label must
+  /// appear by itself as the first label. Hostname can be "precise" which is a
+  /// domain name without the terminating dot of a network host (e.g.
+  /// `foo.example.com`) or "wildcard", which is a domain name prefixed with a
+  /// single wildcard label (e.g. `*.example.com`). Note that as per RFC1035 and
   /// RFC1123, a label must consist of lower case alphanumeric characters or
   /// '-', and must start and end with an alphanumeric character. No other
   /// punctuation is allowed. The routes associated with a Mesh or Gateways must
   /// have unique hostnames. If you attempt to attach multiple routes with
   /// conflicting hostnames, the configuration will be rejected. For example,
-  /// while it is acceptable for routes for the hostnames "*.foo.bar.com" and
-  /// "*.bar.com" to be associated with the same Mesh (or Gateways under the
+  /// while it is acceptable for routes for the hostnames `*.foo.bar.com` and
+  /// `*.bar.com` to be associated with the same Mesh (or Gateways under the
   /// same scope), it is not possible to associate two routes both with
-  /// "*.bar.com" or both with "bar.com".
+  /// `*.bar.com` or both with `bar.com`.
   ///
   /// Required.
   core.List<core.String>? hostnames;
@@ -4526,9 +4595,9 @@ class HttpRoute {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -4888,9 +4957,9 @@ class HttpRouteHeaderModifier {
       : this(
           add: json_.containsKey('add')
               ? (json_['add'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -4901,9 +4970,9 @@ class HttpRouteHeaderModifier {
               : null,
           set: json_.containsKey('set')
               ? (json_['set'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -5174,6 +5243,10 @@ class HttpRouteRouteAction {
 
   /// The specification for modifying the headers of a matching request prior to
   /// delivery of the request to the destination.
+  ///
+  /// If HeaderModifiers are set on both the Destination and the RouteAction,
+  /// they will be merged. Conflicts between the two will not be resolved on the
+  /// configuration.
   HttpRouteHeaderModifier? requestHeaderModifier;
 
   /// Specifies the policy on how requests intended for the routes destination
@@ -5186,6 +5259,10 @@ class HttpRouteRouteAction {
 
   /// The specification for modifying the headers of a response prior to sending
   /// the response back to the client.
+  ///
+  /// If HeaderModifiers are set on both the Destination and the RouteAction,
+  /// they will be merged. Conflicts between the two will not be resolved on the
+  /// configuration.
   HttpRouteHeaderModifier? responseHeaderModifier;
 
   /// Specifies the retry policy associated with this route.
@@ -5488,9 +5565,13 @@ class ListGatewaysResponse {
   /// `next_page_token` as `page_token`.
   core.String? nextPageToken;
 
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
   ListGatewaysResponse({
     this.gateways,
     this.nextPageToken,
+    this.unreachable,
   });
 
   ListGatewaysResponse.fromJson(core.Map json_)
@@ -5504,11 +5585,17 @@ class ListGatewaysResponse {
           nextPageToken: json_.containsKey('nextPageToken')
               ? json_['nextPageToken'] as core.String
               : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (gateways != null) 'gateways': gateways!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
@@ -5792,7 +5879,7 @@ class ListTlsRoutesResponse {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
+/// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
 /// Mesh represents a logical configuration grouping for workload to workload
@@ -5818,8 +5905,8 @@ class Mesh {
   ///
   /// The SIDECAR proxy will expect all traffic to be redirected to this port
   /// regardless of its actual ip:port destination. If unset, a port '15001' is
-  /// used as the interception port. This will is applicable only for sidecar
-  /// proxy deployments.
+  /// used as the interception port. This is applicable only for sidecar proxy
+  /// deployments.
   ///
   /// Optional.
   core.int? interceptionPort;
@@ -5869,9 +5956,9 @@ class Mesh {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -6126,6 +6213,15 @@ class ServiceBinding {
   /// Required.
   core.String? service;
 
+  /// The unique identifier of the Service Directory Service against which the
+  /// Service Binding resource is validated.
+  ///
+  /// This is populated when the Service Binding resource is used in another
+  /// resource (like Backend Service). This is of the UUID4 format.
+  ///
+  /// Output only.
+  core.String? serviceId;
+
   /// The timestamp when the resource was updated.
   ///
   /// Output only.
@@ -6137,6 +6233,7 @@ class ServiceBinding {
     this.labels,
     this.name,
     this.service,
+    this.serviceId,
     this.updateTime,
   });
 
@@ -6150,15 +6247,18 @@ class ServiceBinding {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           service: json_.containsKey('service')
               ? json_['service'] as core.String
+              : null,
+          serviceId: json_.containsKey('serviceId')
+              ? json_['serviceId'] as core.String
               : null,
           updateTime: json_.containsKey('updateTime')
               ? json_['updateTime'] as core.String
@@ -6171,6 +6271,7 @@ class ServiceBinding {
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (service != null) 'service': service!,
+        if (serviceId != null) 'serviceId': serviceId!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }
@@ -6312,9 +6413,9 @@ class TcpRoute {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -6355,7 +6456,8 @@ class TcpRoute {
 class TcpRouteRouteAction {
   /// The destination services to which traffic should be forwarded.
   ///
-  /// At least one destination service is required.
+  /// At least one destination service is required. Only one of route
+  /// destination or original destination can be set.
   ///
   /// Optional.
   core.List<TcpRouteRouteDestination>? destinations;
@@ -6363,7 +6465,8 @@ class TcpRouteRouteAction {
   /// If true, Router will use the destination IP and port of the original
   /// connection as the destination of the request.
   ///
-  /// Default is false.
+  /// Default is false. Only one of route destinations or original destination
+  /// can be set.
   ///
   /// Optional.
   core.bool? originalDestination;
@@ -6717,11 +6820,11 @@ class TlsRouteRouteMatch {
 
   /// SNI (server name indicator) to match against.
   ///
-  /// SNI will be matched against all wildcard domains, i.e. www.example.com
-  /// will be first matched against www.example.com, then *.example.com, then
-  /// *.com. Partial wildcards are not supported, and values like *w.example.com
-  /// are invalid. At least one of sni_host and alpn is required. Up to 5 sni
-  /// hosts across all matches can be set.
+  /// SNI will be matched against all wildcard domains, i.e. `www.example.com`
+  /// will be first matched against `www.example.com`, then `*.example.com`,
+  /// then `*.com.` Partial wildcards are not supported, and values like
+  /// *w.example.com are invalid. At least one of sni_host and alpn is required.
+  /// Up to 5 sni hosts across all matches can be set.
   ///
   /// Optional.
   core.List<core.String>? sniHost;

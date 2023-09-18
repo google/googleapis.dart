@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// My Business Verifications API - v1
@@ -25,7 +24,7 @@
 /// - [LocationsResource]
 ///   - [LocationsVerificationsResource]
 /// - [VerificationTokensResource]
-library mybusinessverifications.v1;
+library mybusinessverifications_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -34,7 +33,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -777,6 +775,11 @@ class ServiceBusinessContext {
 
 /// A verification represents a verification attempt on a location.
 class Verification {
+  /// Response announcement set only if the method is VETTED_PARTNER.
+  ///
+  /// Optional.
+  core.String? announcement;
+
   /// The timestamp when the verification is requested.
   core.String? createTime;
 
@@ -794,9 +797,7 @@ class Verification {
   /// The PIN is used to complete verification with Google.
   /// - "AUTO" : Verify the location without additional user action. This option
   /// may not be available for all locations.
-  /// - "VETTED_PARTNER" : Used for vetted
-  /// [partners](https://support.google.com/business/answer/7674102). This
-  /// option may not be available for all locations.
+  /// - "VETTED_PARTNER" : This option may not be available for all locations.
   core.String? method;
 
   /// Resource name of the verification.
@@ -811,6 +812,7 @@ class Verification {
   core.String? state;
 
   Verification({
+    this.announcement,
     this.createTime,
     this.method,
     this.name,
@@ -819,6 +821,9 @@ class Verification {
 
   Verification.fromJson(core.Map json_)
       : this(
+          announcement: json_.containsKey('announcement')
+              ? json_['announcement'] as core.String
+              : null,
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
               : null,
@@ -831,6 +836,7 @@ class Verification {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (announcement != null) 'announcement': announcement!,
         if (createTime != null) 'createTime': createTime!,
         if (method != null) 'method': method!,
         if (name != null) 'name': name!,
@@ -844,6 +850,9 @@ class Verification {
 class VerificationOption {
   /// Set only if the method is MAIL.
   AddressVerificationData? addressData;
+
+  /// Set only if the method is VETTED_PARTNER.
+  core.String? announcement;
 
   /// Set only if the method is EMAIL.
   EmailVerificationData? emailData;
@@ -867,13 +876,12 @@ class VerificationOption {
   /// The PIN is used to complete verification with Google.
   /// - "AUTO" : Verify the location without additional user action. This option
   /// may not be available for all locations.
-  /// - "VETTED_PARTNER" : Used for vetted
-  /// [partners](https://support.google.com/business/answer/7674102). This
-  /// option may not be available for all locations.
+  /// - "VETTED_PARTNER" : This option may not be available for all locations.
   core.String? verificationMethod;
 
   VerificationOption({
     this.addressData,
+    this.announcement,
     this.emailData,
     this.phoneNumber,
     this.verificationMethod,
@@ -884,6 +892,9 @@ class VerificationOption {
           addressData: json_.containsKey('addressData')
               ? AddressVerificationData.fromJson(
                   json_['addressData'] as core.Map<core.String, core.dynamic>)
+              : null,
+          announcement: json_.containsKey('announcement')
+              ? json_['announcement'] as core.String
               : null,
           emailData: json_.containsKey('emailData')
               ? EmailVerificationData.fromJson(
@@ -899,6 +910,7 @@ class VerificationOption {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (addressData != null) 'addressData': addressData!,
+        if (announcement != null) 'announcement': announcement!,
         if (emailData != null) 'emailData': emailData!,
         if (phoneNumber != null) 'phoneNumber': phoneNumber!,
         if (verificationMethod != null)
@@ -1007,9 +1019,7 @@ class VerifyLocationRequest {
   /// The PIN is used to complete verification with Google.
   /// - "AUTO" : Verify the location without additional user action. This option
   /// may not be available for all locations.
-  /// - "VETTED_PARTNER" : Used for vetted
-  /// [partners](https://support.google.com/business/answer/7674102). This
-  /// option may not be available for all locations.
+  /// - "VETTED_PARTNER" : This option may not be available for all locations.
   core.String? method;
 
   /// The input for PHONE_CALL/SMS method The phone number that should be called

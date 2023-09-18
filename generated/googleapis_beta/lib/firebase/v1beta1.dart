@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Firebase Management API - v1beta1
@@ -31,7 +30,7 @@
 ///   - [ProjectsDefaultLocationResource]
 ///   - [ProjectsIosAppsResource]
 ///   - [ProjectsWebAppsResource]
-library firebase.v1beta1;
+library firebase_v1beta1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -40,7 +39,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -669,27 +667,27 @@ class ProjectsResource {
   /// about PROJECT_IDENTIFIER values.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [filter] - A query string compatible with Google's
-  /// \[AIP-160\](https://google.aip.dev/160) standard. Use any of the following
-  /// fields in a query: *
-  /// \[`app_id`\](../projects.apps#FirebaseAppInfo.FIELDS.app_id) *
-  /// \[`namespace`\](../projects.apps#FirebaseAppInfo.FIELDS.namespace) *
-  /// \[`platform`\](../projects.apps#FirebaseAppInfo.FIELDS.platform) We also
-  /// support the following "virtual" fields (fields which are not actually part
-  /// of the returned resource object, but can be queried as if they are
-  /// pre-populated with specific values): * `sha1_hash` or `sha1_hashes`: This
-  /// field is considered to be a repeated `string` field, populated with the
-  /// list of all SHA-1 certificate fingerprints registered with the app. This
-  /// list is empty if the app is not an Android app. * `sha256_hash` or
-  /// `sha256_hashes`: This field is considered to be a repeated `string` field,
-  /// populated with the list of all SHA-256 certificate fingerprints registered
-  /// with the app. This list is empty if the app is not an Android app. *
-  /// `app_store_id`: This field is considered to be a singular `string` field,
-  /// populated with the Apple App Store ID registered with the app. This field
-  /// is empty if the app is not an iOS app. * `team_id`: This field is
-  /// considered to be a singular `string` field, populated with the Apple team
-  /// ID registered with the app. This field is empty if the app is not an iOS
-  /// app.
+  /// [filter] - A query string compatible with Google's \[AIP-160
+  /// standard\](https://google.aip.dev/160). Use any of the following fields in
+  /// a query: *
+  /// \[`app_id`\](../projects/searchApps#FirebaseAppInfo.FIELDS.app_id) *
+  /// \[`namespace`\](../projects/searchApps#FirebaseAppInfo.FIELDS.namespace) *
+  /// \[`platform`\](../projects/searchApps#FirebaseAppInfo.FIELDS.platform)
+  /// This query also supports the following "virtual" fields. These are fields
+  /// which are not actually part of the returned resource object, but they can
+  /// be queried as if they are pre-populated with specific values. *
+  /// `sha1_hash` or `sha1_hashes`: This field is considered to be a _repeated_
+  /// `string` field, populated with the list of all SHA-1 certificate
+  /// fingerprints registered with the AndroidApp. This list is empty if the App
+  /// is not an `AndroidApp`. * `sha256_hash` or `sha256_hashes`: This field is
+  /// considered to be a _repeated_ `string` field, populated with the list of
+  /// all SHA-256 certificate fingerprints registered with the AndroidApp. This
+  /// list is empty if the App is not an `AndroidApp`. * `app_store_id`: This
+  /// field is considered to be a _singular_ `string` field, populated with the
+  /// Apple App Store ID registered with the IosApp. This field is empty if the
+  /// App is not an `IosApp`. * `team_id`: This field is considered to be a
+  /// _singular_ `string` field, populated with the Apple team ID registered
+  /// with the IosApp. This field is empty if the App is not an `IosApp`.
   ///
   /// [pageSize] - The maximum number of Apps to return in the response. The
   /// server may return fewer than this value at its discretion. If no value is
@@ -2322,6 +2320,23 @@ class AndroidApp {
   /// The user-assigned display name for the `AndroidApp`.
   core.String? displayName;
 
+  /// This checksum is computed by the server based on the value of other
+  /// fields, and it may be sent with update requests to ensure the client has
+  /// an up-to-date value before proceeding.
+  ///
+  /// Learn more about `etag` in Google's \[AIP-154
+  /// standard\](https://google.aip.dev/154#declarative-friendly-resources).
+  /// This etag is strongly validated.
+  core.String? etag;
+
+  /// Timestamp of when the App will be considered expired and cannot be
+  /// undeleted.
+  ///
+  /// This value is only provided if the App is in the `DELETED` state.
+  ///
+  /// Output only.
+  core.String? expireTime;
+
   /// The resource name of the AndroidApp, in the format: projects/
   /// PROJECT_IDENTIFIER/androidApps/APP_ID * PROJECT_IDENTIFIER: the parent
   /// Project's
@@ -2360,10 +2375,10 @@ class AndroidApp {
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : Unspecified state.
   /// - "ACTIVE" : The App is active.
-  /// - "DELETED" : The App has been soft-deleted. Firebase permanantely deletes
-  /// an App after it has been in the `DELETED` state for more than 30 days. Up
-  /// until this time, you can restore the App by calling `Undelete`
-  /// (\[Android\](projects.androidApps/undelete) |
+  /// - "DELETED" : The App has been soft-deleted. After an App has been in the
+  /// `DELETED` state for more than 30 days, it is considered expired and will
+  /// be permanently deleted. Up until this time, you can restore the App by
+  /// calling `Undelete` (\[Android\](projects.androidApps/undelete) |
   /// \[iOS\](projects.iosApps/undelete) | \[web\](projects.webApps/undelete)).
   core.String? state;
 
@@ -2371,6 +2386,8 @@ class AndroidApp {
     this.apiKeyId,
     this.appId,
     this.displayName,
+    this.etag,
+    this.expireTime,
     this.name,
     this.packageName,
     this.projectId,
@@ -2388,6 +2405,10 @@ class AndroidApp {
               json_.containsKey('appId') ? json_['appId'] as core.String : null,
           displayName: json_.containsKey('displayName')
               ? json_['displayName'] as core.String
+              : null,
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          expireTime: json_.containsKey('expireTime')
+              ? json_['expireTime'] as core.String
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           packageName: json_.containsKey('packageName')
@@ -2414,6 +2435,8 @@ class AndroidApp {
         if (apiKeyId != null) 'apiKeyId': apiKeyId!,
         if (appId != null) 'appId': appId!,
         if (displayName != null) 'displayName': displayName!,
+        if (etag != null) 'etag': etag!,
+        if (expireTime != null) 'expireTime': expireTime!,
         if (name != null) 'name': name!,
         if (packageName != null) 'packageName': packageName!,
         if (projectId != null) 'projectId': projectId!,
@@ -2606,6 +2629,14 @@ class FirebaseAppInfo {
   /// The user-assigned display name of the Firebase App.
   core.String? displayName;
 
+  /// Timestamp of when the App will be considered expired and cannot be
+  /// undeleted.
+  ///
+  /// This value is only provided if the App is in the `DELETED` state.
+  ///
+  /// Output only.
+  core.String? expireTime;
+
   /// The resource name of the Firebase App, in the format: projects/PROJECT_ID
   /// /iosApps/APP_ID or projects/PROJECT_ID/androidApps/APP_ID or projects/
   /// PROJECT_ID/webApps/APP_ID
@@ -2639,10 +2670,10 @@ class FirebaseAppInfo {
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : Unspecified state.
   /// - "ACTIVE" : The App is active.
-  /// - "DELETED" : The App has been soft-deleted. Firebase permanantely deletes
-  /// an App after it has been in the `DELETED` state for more than 30 days. Up
-  /// until this time, you can restore the App by calling `Undelete`
-  /// (\[Android\](projects.androidApps/undelete) |
+  /// - "DELETED" : The App has been soft-deleted. After an App has been in the
+  /// `DELETED` state for more than 30 days, it is considered expired and will
+  /// be permanently deleted. Up until this time, you can restore the App by
+  /// calling `Undelete` (\[Android\](projects.androidApps/undelete) |
   /// \[iOS\](projects.iosApps/undelete) | \[web\](projects.webApps/undelete)).
   core.String? state;
 
@@ -2650,6 +2681,7 @@ class FirebaseAppInfo {
     this.apiKeyId,
     this.appId,
     this.displayName,
+    this.expireTime,
     this.name,
     this.namespace,
     this.platform,
@@ -2666,6 +2698,9 @@ class FirebaseAppInfo {
           displayName: json_.containsKey('displayName')
               ? json_['displayName'] as core.String
               : null,
+          expireTime: json_.containsKey('expireTime')
+              ? json_['expireTime'] as core.String
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           namespace: json_.containsKey('namespace')
               ? json_['namespace'] as core.String
@@ -2681,6 +2716,7 @@ class FirebaseAppInfo {
         if (apiKeyId != null) 'apiKeyId': apiKeyId!,
         if (appId != null) 'appId': appId!,
         if (displayName != null) 'displayName': displayName!,
+        if (expireTime != null) 'expireTime': expireTime!,
         if (name != null) 'name': name!,
         if (namespace != null) 'namespace': namespace!,
         if (platform != null) 'platform': platform!,
@@ -2701,21 +2737,23 @@ class FirebaseAppInfo {
 /// the same underlying GCP identifiers (`projectNumber` and `projectId`). This
 /// allows for easy interop with Google APIs.
 class FirebaseProject {
-  /// Set of user-defined annotations for the FirebaseProject as per
-  /// \[AIP-128\](https://google.aip.dev/128#annotations).
+  /// A set of user-defined annotations for the FirebaseProject.
   ///
-  /// These annotations are intended solely for developers and client-side tools
-  /// Firebase services will not mutate this annotation set.
+  /// Learn more about annotations in Google's \[AIP-128
+  /// standard\](https://google.aip.dev/128#annotations). These annotations are
+  /// intended solely for developers and client-side tools. Firebase services
+  /// will not mutate this annotations set.
   core.Map<core.String, core.String>? annotations;
 
   /// The user-assigned display name of the Project.
   core.String? displayName;
 
   /// This checksum is computed by the server based on the value of other
-  /// fields, and may be sent on update requests to ensure the client has an
-  /// up-to-date value before proceeding.
+  /// fields, and it may be sent with update requests to ensure the client has
+  /// an up-to-date value before proceeding.
   ///
-  /// \[AIP-154\](https://google.aip.dev/154#declarative-friendly-resources).
+  /// Learn more about `etag` in Google's \[AIP-154
+  /// standard\](https://google.aip.dev/154#declarative-friendly-resources).
   /// This etag is strongly validated.
   core.String? etag;
 
@@ -2736,7 +2774,7 @@ class FirebaseProject {
   /// associated with the Project, but it should generally be treated as a
   /// convenience alias to reference the Project.
   ///
-  /// Output only.
+  /// Output only. Immutable.
   core.String? projectId;
 
   /// The globally unique, Google-assigned canonical identifier for the Project.
@@ -2744,7 +2782,7 @@ class FirebaseProject {
   /// Use this identifier when configuring integrations and/or making API calls
   /// to Firebase or third-party services.
   ///
-  /// Output only.
+  /// Output only. Immutable.
   core.String? projectNumber;
 
   /// The default Firebase resources associated with the Project.
@@ -2777,9 +2815,9 @@ class FirebaseProject {
           annotations: json_.containsKey('annotations')
               ? (json_['annotations'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -2857,6 +2895,23 @@ class IosApp {
   /// The user-assigned display name for the `IosApp`.
   core.String? displayName;
 
+  /// This checksum is computed by the server based on the value of other
+  /// fields, and it may be sent with update requests to ensure the client has
+  /// an up-to-date value before proceeding.
+  ///
+  /// Learn more about `etag` in Google's \[AIP-154
+  /// standard\](https://google.aip.dev/154#declarative-friendly-resources).
+  /// This etag is strongly validated.
+  core.String? etag;
+
+  /// Timestamp of when the App will be considered expired and cannot be
+  /// undeleted.
+  ///
+  /// This value is only provided if the App is in the `DELETED` state.
+  ///
+  /// Output only.
+  core.String? expireTime;
+
   /// The resource name of the IosApp, in the format:
   /// projects/PROJECT_IDENTIFIER /iosApps/APP_ID * PROJECT_IDENTIFIER: the
   /// parent Project's
@@ -2883,10 +2938,10 @@ class IosApp {
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : Unspecified state.
   /// - "ACTIVE" : The App is active.
-  /// - "DELETED" : The App has been soft-deleted. Firebase permanantely deletes
-  /// an App after it has been in the `DELETED` state for more than 30 days. Up
-  /// until this time, you can restore the App by calling `Undelete`
-  /// (\[Android\](projects.androidApps/undelete) |
+  /// - "DELETED" : The App has been soft-deleted. After an App has been in the
+  /// `DELETED` state for more than 30 days, it is considered expired and will
+  /// be permanently deleted. Up until this time, you can restore the App by
+  /// calling `Undelete` (\[Android\](projects.androidApps/undelete) |
   /// \[iOS\](projects.iosApps/undelete) | \[web\](projects.webApps/undelete)).
   core.String? state;
 
@@ -2899,6 +2954,8 @@ class IosApp {
     this.appStoreId,
     this.bundleId,
     this.displayName,
+    this.etag,
+    this.expireTime,
     this.name,
     this.projectId,
     this.state,
@@ -2921,6 +2978,10 @@ class IosApp {
           displayName: json_.containsKey('displayName')
               ? json_['displayName'] as core.String
               : null,
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          expireTime: json_.containsKey('expireTime')
+              ? json_['expireTime'] as core.String
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           projectId: json_.containsKey('projectId')
               ? json_['projectId'] as core.String
@@ -2938,6 +2999,8 @@ class IosApp {
         if (appStoreId != null) 'appStoreId': appStoreId!,
         if (bundleId != null) 'bundleId': bundleId!,
         if (displayName != null) 'displayName': displayName!,
+        if (etag != null) 'etag': etag!,
+        if (expireTime != null) 'expireTime': expireTime!,
         if (name != null) 'name': name!,
         if (projectId != null) 'projectId': projectId!,
         if (state != null) 'state': state!,
@@ -3312,7 +3375,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -3441,9 +3504,19 @@ class RemoveAndroidAppRequest {
   /// action will be taken on the server.
   core.bool? allowMissing;
 
-  /// Checksum provided in the AndroidApp entity, which if provided ensures the
-  /// client has an up-to-date value before proceeding.
+  /// Checksum provided in the AndroidApp resource.
+  ///
+  /// If provided, this checksum ensures that the client has an up-to-date value
+  /// before proceeding.
   core.String? etag;
+
+  /// Determines whether to _immediately_ delete the AndroidApp.
+  ///
+  /// If set to true, the App is immediately deleted from the Project and cannot
+  /// be restored to the Project. If not set, defaults to false, which means the
+  /// App will be set to expire in 30 days. Within the 30 days, the App may be
+  /// restored to the Project using UndeleteAndroidApp.
+  core.bool? immediate;
 
   /// If set to true, the request is only validated.
   ///
@@ -3453,6 +3526,7 @@ class RemoveAndroidAppRequest {
   RemoveAndroidAppRequest({
     this.allowMissing,
     this.etag,
+    this.immediate,
     this.validateOnly,
   });
 
@@ -3462,6 +3536,9 @@ class RemoveAndroidAppRequest {
               ? json_['allowMissing'] as core.bool
               : null,
           etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          immediate: json_.containsKey('immediate')
+              ? json_['immediate'] as core.bool
+              : null,
           validateOnly: json_.containsKey('validateOnly')
               ? json_['validateOnly'] as core.bool
               : null,
@@ -3470,6 +3547,7 @@ class RemoveAndroidAppRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowMissing != null) 'allowMissing': allowMissing!,
         if (etag != null) 'etag': etag!,
+        if (immediate != null) 'immediate': immediate!,
         if (validateOnly != null) 'validateOnly': validateOnly!,
       };
 }
@@ -3479,9 +3557,19 @@ class RemoveIosAppRequest {
   /// action will be taken on the server.
   core.bool? allowMissing;
 
-  /// Checksum provided in the IosApp entity, which if provided ensures the
-  /// client has an up-to-date value before proceeding.
+  /// Checksum provided in the IosApp resource.
+  ///
+  /// If provided, this checksum ensures that the client has an up-to-date value
+  /// before proceeding.
   core.String? etag;
+
+  /// Determines whether to _immediately_ delete the IosApp.
+  ///
+  /// If set to true, the App is immediately deleted from the Project and cannot
+  /// be restored to the Project. If not set, defaults to false, which means the
+  /// App will be set to expire in 30 days. Within the 30 days, the App may be
+  /// restored to the Project using UndeleteIosApp
+  core.bool? immediate;
 
   /// If set to true, the request is only validated.
   ///
@@ -3491,6 +3579,7 @@ class RemoveIosAppRequest {
   RemoveIosAppRequest({
     this.allowMissing,
     this.etag,
+    this.immediate,
     this.validateOnly,
   });
 
@@ -3500,6 +3589,9 @@ class RemoveIosAppRequest {
               ? json_['allowMissing'] as core.bool
               : null,
           etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          immediate: json_.containsKey('immediate')
+              ? json_['immediate'] as core.bool
+              : null,
           validateOnly: json_.containsKey('validateOnly')
               ? json_['validateOnly'] as core.bool
               : null,
@@ -3508,6 +3600,7 @@ class RemoveIosAppRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowMissing != null) 'allowMissing': allowMissing!,
         if (etag != null) 'etag': etag!,
+        if (immediate != null) 'immediate': immediate!,
         if (validateOnly != null) 'validateOnly': validateOnly!,
       };
 }
@@ -3517,9 +3610,19 @@ class RemoveWebAppRequest {
   /// action will be taken on the server.
   core.bool? allowMissing;
 
-  /// Checksum provided in the WebApp entity, which if provided ensures the
-  /// client has an up-to-date value before proceeding.
+  /// Checksum provided in the WebApp resource.
+  ///
+  /// If provided, this checksum ensures that the client has an up-to-date value
+  /// before proceeding.
   core.String? etag;
+
+  /// Determines whether to _immediately_ delete the WebApp.
+  ///
+  /// If set to true, the App is immediately deleted from the Project and cannot
+  /// be restored to the Project. If not set, defaults to false, which means the
+  /// App will be set to expire in 30 days. Within the 30 days, the App may be
+  /// restored to the Project using UndeleteWebApp
+  core.bool? immediate;
 
   /// If set to true, the request is only validated.
   ///
@@ -3529,6 +3632,7 @@ class RemoveWebAppRequest {
   RemoveWebAppRequest({
     this.allowMissing,
     this.etag,
+    this.immediate,
     this.validateOnly,
   });
 
@@ -3538,6 +3642,9 @@ class RemoveWebAppRequest {
               ? json_['allowMissing'] as core.bool
               : null,
           etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          immediate: json_.containsKey('immediate')
+              ? json_['immediate'] as core.bool
+              : null,
           validateOnly: json_.containsKey('validateOnly')
               ? json_['validateOnly'] as core.bool
               : null,
@@ -3546,6 +3653,7 @@ class RemoveWebAppRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowMissing != null) 'allowMissing': allowMissing!,
         if (etag != null) 'etag': etag!,
+        if (immediate != null) 'immediate': immediate!,
         if (validateOnly != null) 'validateOnly': validateOnly!,
       };
 }
@@ -3699,8 +3807,10 @@ class StreamMapping {
 }
 
 class UndeleteAndroidAppRequest {
-  /// Checksum provided in the AndroidApp entity, which if provided ensures the
-  /// client has an up-to-date value before proceeding.
+  /// Checksum provided in the AndroidApp resource.
+  ///
+  /// If provided, this checksum ensures that the client has an up-to-date value
+  /// before proceeding.
   core.String? etag;
 
   /// If set to true, the request is only validated.
@@ -3728,8 +3838,10 @@ class UndeleteAndroidAppRequest {
 }
 
 class UndeleteIosAppRequest {
-  /// Checksum provided in the IosApp entity, which if provided ensures the
-  /// client has an up-to-date value before proceeding.
+  /// Checksum provided in the IosApp resource.
+  ///
+  /// If provided, this checksum ensures that the client has an up-to-date value
+  /// before proceeding.
   core.String? etag;
 
   /// If set to true, the request is only validated.
@@ -3757,8 +3869,10 @@ class UndeleteIosAppRequest {
 }
 
 class UndeleteWebAppRequest {
-  /// Checksum provided in the WebApp entity, which if provided ensures the
-  /// client has an up-to-date value before proceeding.
+  /// Checksum provided in the WebApp resource.
+  ///
+  /// If provided, this checksum ensures that the client has an up-to-date value
+  /// before proceeding.
   core.String? etag;
 
   /// If set to true, the request is only validated.
@@ -3821,6 +3935,23 @@ class WebApp {
   /// The user-assigned display name for the `WebApp`.
   core.String? displayName;
 
+  /// This checksum is computed by the server based on the value of other
+  /// fields, and it may be sent with update requests to ensure the client has
+  /// an up-to-date value before proceeding.
+  ///
+  /// Learn more about `etag` in Google's \[AIP-154
+  /// standard\](https://google.aip.dev/154#declarative-friendly-resources).
+  /// This etag is strongly validated.
+  core.String? etag;
+
+  /// Timestamp of when the App will be considered expired and cannot be
+  /// undeleted.
+  ///
+  /// This value is only provided if the App is in the `DELETED` state.
+  ///
+  /// Output only.
+  core.String? expireTime;
+
   /// The resource name of the WebApp, in the format:
   /// projects/PROJECT_IDENTIFIER /webApps/APP_ID * PROJECT_IDENTIFIER: the
   /// parent Project's
@@ -3847,10 +3978,10 @@ class WebApp {
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : Unspecified state.
   /// - "ACTIVE" : The App is active.
-  /// - "DELETED" : The App has been soft-deleted. Firebase permanantely deletes
-  /// an App after it has been in the `DELETED` state for more than 30 days. Up
-  /// until this time, you can restore the App by calling `Undelete`
-  /// (\[Android\](projects.androidApps/undelete) |
+  /// - "DELETED" : The App has been soft-deleted. After an App has been in the
+  /// `DELETED` state for more than 30 days, it is considered expired and will
+  /// be permanently deleted. Up until this time, you can restore the App by
+  /// calling `Undelete` (\[Android\](projects.androidApps/undelete) |
   /// \[iOS\](projects.iosApps/undelete) | \[web\](projects.webApps/undelete)).
   core.String? state;
 
@@ -3862,6 +3993,9 @@ class WebApp {
   /// associated Apps.
   ///
   /// Output only. Immutable.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? webId;
 
   WebApp({
@@ -3869,6 +4003,8 @@ class WebApp {
     this.appId,
     this.appUrls,
     this.displayName,
+    this.etag,
+    this.expireTime,
     this.name,
     this.projectId,
     this.state,
@@ -3890,6 +4026,10 @@ class WebApp {
           displayName: json_.containsKey('displayName')
               ? json_['displayName'] as core.String
               : null,
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          expireTime: json_.containsKey('expireTime')
+              ? json_['expireTime'] as core.String
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           projectId: json_.containsKey('projectId')
               ? json_['projectId'] as core.String
@@ -3905,6 +4045,8 @@ class WebApp {
         if (appId != null) 'appId': appId!,
         if (appUrls != null) 'appUrls': appUrls!,
         if (displayName != null) 'displayName': displayName!,
+        if (etag != null) 'etag': etag!,
+        if (expireTime != null) 'expireTime': expireTime!,
         if (name != null) 'name': name!,
         if (projectId != null) 'projectId': projectId!,
         if (state != null) 'state': state!,

@@ -1,8 +1,6 @@
 // ignore_for_file: camel_case_types
-// ignore_for_file: cascade_invocations
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_const_declarations
@@ -12,8 +10,9 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unreachable_from_main
 // ignore_for_file: unused_local_variable
 
 import 'dart:async' as async;
@@ -515,8 +514,10 @@ api.CryptoKeyVersion buildCryptoKeyVersion() {
     o.createTime = 'foo';
     o.destroyEventTime = 'foo';
     o.destroyTime = 'foo';
+    o.externalDestructionFailureReason = 'foo';
     o.externalProtectionLevelOptions = buildExternalProtectionLevelOptions();
     o.generateTime = 'foo';
+    o.generationFailureReason = 'foo';
     o.importFailureReason = 'foo';
     o.importJob = 'foo';
     o.importTime = 'foo';
@@ -549,9 +550,17 @@ void checkCryptoKeyVersion(api.CryptoKeyVersion o) {
       o.destroyTime!,
       unittest.equals('foo'),
     );
+    unittest.expect(
+      o.externalDestructionFailureReason!,
+      unittest.equals('foo'),
+    );
     checkExternalProtectionLevelOptions(o.externalProtectionLevelOptions!);
     unittest.expect(
       o.generateTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.generationFailureReason!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -728,6 +737,33 @@ void checkDigest(api.Digest o) {
   buildCounterDigest--;
 }
 
+core.int buildCounterEkmConfig = 0;
+api.EkmConfig buildEkmConfig() {
+  final o = api.EkmConfig();
+  buildCounterEkmConfig++;
+  if (buildCounterEkmConfig < 3) {
+    o.defaultEkmConnection = 'foo';
+    o.name = 'foo';
+  }
+  buildCounterEkmConfig--;
+  return o;
+}
+
+void checkEkmConfig(api.EkmConfig o) {
+  buildCounterEkmConfig++;
+  if (buildCounterEkmConfig < 3) {
+    unittest.expect(
+      o.defaultEkmConnection!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterEkmConfig--;
+}
+
 core.List<api.ServiceResolver> buildUnnamed8() => [
       buildServiceResolver(),
       buildServiceResolver(),
@@ -745,7 +781,9 @@ api.EkmConnection buildEkmConnection() {
   buildCounterEkmConnection++;
   if (buildCounterEkmConnection < 3) {
     o.createTime = 'foo';
+    o.cryptoSpacePath = 'foo';
     o.etag = 'foo';
+    o.keyManagementMode = 'foo';
     o.name = 'foo';
     o.serviceResolvers = buildUnnamed8();
   }
@@ -761,7 +799,15 @@ void checkEkmConnection(api.EkmConnection o) {
       unittest.equals('foo'),
     );
     unittest.expect(
+      o.cryptoSpacePath!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.etag!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.keyManagementMode!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -1695,6 +1741,203 @@ void checkPublicKey(api.PublicKey o) {
   buildCounterPublicKey--;
 }
 
+core.int buildCounterRawDecryptRequest = 0;
+api.RawDecryptRequest buildRawDecryptRequest() {
+  final o = api.RawDecryptRequest();
+  buildCounterRawDecryptRequest++;
+  if (buildCounterRawDecryptRequest < 3) {
+    o.additionalAuthenticatedData = 'foo';
+    o.additionalAuthenticatedDataCrc32c = 'foo';
+    o.ciphertext = 'foo';
+    o.ciphertextCrc32c = 'foo';
+    o.initializationVector = 'foo';
+    o.initializationVectorCrc32c = 'foo';
+    o.tagLength = 42;
+  }
+  buildCounterRawDecryptRequest--;
+  return o;
+}
+
+void checkRawDecryptRequest(api.RawDecryptRequest o) {
+  buildCounterRawDecryptRequest++;
+  if (buildCounterRawDecryptRequest < 3) {
+    unittest.expect(
+      o.additionalAuthenticatedData!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.additionalAuthenticatedDataCrc32c!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.ciphertext!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.ciphertextCrc32c!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.initializationVector!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.initializationVectorCrc32c!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.tagLength!,
+      unittest.equals(42),
+    );
+  }
+  buildCounterRawDecryptRequest--;
+}
+
+core.int buildCounterRawDecryptResponse = 0;
+api.RawDecryptResponse buildRawDecryptResponse() {
+  final o = api.RawDecryptResponse();
+  buildCounterRawDecryptResponse++;
+  if (buildCounterRawDecryptResponse < 3) {
+    o.plaintext = 'foo';
+    o.plaintextCrc32c = 'foo';
+    o.protectionLevel = 'foo';
+    o.verifiedAdditionalAuthenticatedDataCrc32c = true;
+    o.verifiedCiphertextCrc32c = true;
+    o.verifiedInitializationVectorCrc32c = true;
+  }
+  buildCounterRawDecryptResponse--;
+  return o;
+}
+
+void checkRawDecryptResponse(api.RawDecryptResponse o) {
+  buildCounterRawDecryptResponse++;
+  if (buildCounterRawDecryptResponse < 3) {
+    unittest.expect(
+      o.plaintext!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.plaintextCrc32c!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.protectionLevel!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+        o.verifiedAdditionalAuthenticatedDataCrc32c!, unittest.isTrue);
+    unittest.expect(o.verifiedCiphertextCrc32c!, unittest.isTrue);
+    unittest.expect(o.verifiedInitializationVectorCrc32c!, unittest.isTrue);
+  }
+  buildCounterRawDecryptResponse--;
+}
+
+core.int buildCounterRawEncryptRequest = 0;
+api.RawEncryptRequest buildRawEncryptRequest() {
+  final o = api.RawEncryptRequest();
+  buildCounterRawEncryptRequest++;
+  if (buildCounterRawEncryptRequest < 3) {
+    o.additionalAuthenticatedData = 'foo';
+    o.additionalAuthenticatedDataCrc32c = 'foo';
+    o.initializationVector = 'foo';
+    o.initializationVectorCrc32c = 'foo';
+    o.plaintext = 'foo';
+    o.plaintextCrc32c = 'foo';
+  }
+  buildCounterRawEncryptRequest--;
+  return o;
+}
+
+void checkRawEncryptRequest(api.RawEncryptRequest o) {
+  buildCounterRawEncryptRequest++;
+  if (buildCounterRawEncryptRequest < 3) {
+    unittest.expect(
+      o.additionalAuthenticatedData!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.additionalAuthenticatedDataCrc32c!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.initializationVector!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.initializationVectorCrc32c!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.plaintext!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.plaintextCrc32c!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterRawEncryptRequest--;
+}
+
+core.int buildCounterRawEncryptResponse = 0;
+api.RawEncryptResponse buildRawEncryptResponse() {
+  final o = api.RawEncryptResponse();
+  buildCounterRawEncryptResponse++;
+  if (buildCounterRawEncryptResponse < 3) {
+    o.ciphertext = 'foo';
+    o.ciphertextCrc32c = 'foo';
+    o.initializationVector = 'foo';
+    o.initializationVectorCrc32c = 'foo';
+    o.name = 'foo';
+    o.protectionLevel = 'foo';
+    o.tagLength = 42;
+    o.verifiedAdditionalAuthenticatedDataCrc32c = true;
+    o.verifiedInitializationVectorCrc32c = true;
+    o.verifiedPlaintextCrc32c = true;
+  }
+  buildCounterRawEncryptResponse--;
+  return o;
+}
+
+void checkRawEncryptResponse(api.RawEncryptResponse o) {
+  buildCounterRawEncryptResponse++;
+  if (buildCounterRawEncryptResponse < 3) {
+    unittest.expect(
+      o.ciphertext!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.ciphertextCrc32c!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.initializationVector!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.initializationVectorCrc32c!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.protectionLevel!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.tagLength!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+        o.verifiedAdditionalAuthenticatedDataCrc32c!, unittest.isTrue);
+    unittest.expect(o.verifiedInitializationVectorCrc32c!, unittest.isTrue);
+    unittest.expect(o.verifiedPlaintextCrc32c!, unittest.isTrue);
+  }
+  buildCounterRawEncryptResponse--;
+}
+
 core.int buildCounterRestoreCryptoKeyVersionRequest = 0;
 api.RestoreCryptoKeyVersionRequest buildRestoreCryptoKeyVersionRequest() {
   final o = api.RestoreCryptoKeyVersionRequest();
@@ -1873,6 +2116,21 @@ void checkUpdateCryptoKeyPrimaryVersionRequest(
     );
   }
   buildCounterUpdateCryptoKeyPrimaryVersionRequest--;
+}
+
+core.int buildCounterVerifyConnectivityResponse = 0;
+api.VerifyConnectivityResponse buildVerifyConnectivityResponse() {
+  final o = api.VerifyConnectivityResponse();
+  buildCounterVerifyConnectivityResponse++;
+  if (buildCounterVerifyConnectivityResponse < 3) {}
+  buildCounterVerifyConnectivityResponse--;
+  return o;
+}
+
+void checkVerifyConnectivityResponse(api.VerifyConnectivityResponse o) {
+  buildCounterVerifyConnectivityResponse++;
+  if (buildCounterVerifyConnectivityResponse < 3) {}
+  buildCounterVerifyConnectivityResponse--;
 }
 
 core.int buildCounterWrappingPublicKey = 0;
@@ -2055,6 +2313,16 @@ void main() {
       final od =
           api.Digest.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkDigest(od);
+    });
+  });
+
+  unittest.group('obj-schema-EkmConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildEkmConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.EkmConfig.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkEkmConfig(od);
     });
   });
 
@@ -2298,6 +2566,46 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-RawDecryptRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRawDecryptRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RawDecryptRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRawDecryptRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-RawDecryptResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRawDecryptResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RawDecryptResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRawDecryptResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-RawEncryptRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRawEncryptRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RawEncryptRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRawEncryptRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-RawEncryptResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRawEncryptResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RawEncryptResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRawEncryptResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-RestoreCryptoKeyVersionRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildRestoreCryptoKeyVersionRequest();
@@ -2358,6 +2666,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-VerifyConnectivityResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildVerifyConnectivityResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.VerifyConnectivityResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkVerifyConnectivityResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-WrappingPublicKey', () {
     unittest.test('to-json--from-json', () async {
       final o = buildWrappingPublicKey();
@@ -2380,7 +2698,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGenerateRandomBytesRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2396,7 +2714,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2434,7 +2752,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2450,7 +2768,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2480,16 +2798,13 @@ void main() {
       checkLocation(response as api.Location);
     });
 
-    unittest.test('method--list', () async {
+    unittest.test('method--getEkmConfig', () async {
       final mock = HttpServerMock();
       final res = api.CloudKMSApi(mock).projects.locations;
       final arg_name = 'foo';
-      final arg_filter = 'foo';
-      final arg_pageSize = 42;
-      final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2505,7 +2820,62 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildEkmConfig());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.getEkmConfig(arg_name, $fields: arg_$fields);
+      checkEkmConfig(response as api.EkmConfig);
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudKMSApi(mock).projects.locations;
+      final arg_name = 'foo';
+      final arg_filter = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2550,22 +2920,20 @@ void main() {
           $fields: arg_$fields);
       checkListLocationsResponse(response as api.ListLocationsResponse);
     });
-  });
 
-  unittest.group('resource-ProjectsLocationsEkmConnectionsResource', () {
-    unittest.test('method--create', () async {
+    unittest.test('method--updateEkmConfig', () async {
       final mock = HttpServerMock();
-      final res = api.CloudKMSApi(mock).projects.locations.ekmConnections;
-      final arg_request = buildEkmConnection();
-      final arg_parent = 'foo';
-      final arg_ekmConnectionId = 'foo';
+      final res = api.CloudKMSApi(mock).projects.locations;
+      final arg_request = buildEkmConfig();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.EkmConnection.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkEkmConnection(obj);
+        final obj =
+            api.EkmConfig.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkEkmConfig(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2581,7 +2949,250 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['updateMask']!.first,
+          unittest.equals(arg_updateMask),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildEkmConfig());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.updateEkmConfig(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkEkmConfig(response as api.EkmConfig);
+    });
+  });
+
+  unittest.group('resource-ProjectsLocationsEkmConfigResource', () {
+    unittest.test('method--getIamPolicy', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudKMSApi(mock).projects.locations.ekmConfig;
+      final arg_resource = 'foo';
+      final arg_options_requestedPolicyVersion = 42;
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          core.int.parse(queryMap['options.requestedPolicyVersion']!.first),
+          unittest.equals(arg_options_requestedPolicyVersion),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildPolicy());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.getIamPolicy(arg_resource,
+          options_requestedPolicyVersion: arg_options_requestedPolicyVersion,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
+    });
+
+    unittest.test('method--setIamPolicy', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudKMSApi(mock).projects.locations.ekmConfig;
+      final arg_request = buildSetIamPolicyRequest();
+      final arg_resource = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.SetIamPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSetIamPolicyRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildPolicy());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
+    });
+
+    unittest.test('method--testIamPermissions', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudKMSApi(mock).projects.locations.ekmConfig;
+      final arg_request = buildTestIamPermissionsRequest();
+      final arg_resource = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.TestIamPermissionsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkTestIamPermissionsRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildTestIamPermissionsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkTestIamPermissionsResponse(
+          response as api.TestIamPermissionsResponse);
+    });
+  });
+
+  unittest.group('resource-ProjectsLocationsEkmConnectionsResource', () {
+    unittest.test('method--create', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudKMSApi(mock).projects.locations.ekmConnections;
+      final arg_request = buildEkmConnection();
+      final arg_parent = 'foo';
+      final arg_ekmConnectionId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.EkmConnection.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkEkmConnection(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2622,7 +3233,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2638,7 +3249,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2675,7 +3286,7 @@ void main() {
       final arg_options_requestedPolicyVersion = 42;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2691,7 +3302,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2737,7 +3348,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2753,7 +3364,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2817,7 +3428,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkEkmConnection(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2833,7 +3444,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2879,7 +3490,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkSetIamPolicyRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2895,7 +3506,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2937,7 +3548,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkTestIamPermissionsRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2953,7 +3564,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2984,22 +3595,14 @@ void main() {
       checkTestIamPermissionsResponse(
           response as api.TestIamPermissionsResponse);
     });
-  });
 
-  unittest.group('resource-ProjectsLocationsKeyRingsResource', () {
-    unittest.test('method--create', () async {
+    unittest.test('method--verifyConnectivity', () async {
       final mock = HttpServerMock();
-      final res = api.CloudKMSApi(mock).projects.locations.keyRings;
-      final arg_request = buildKeyRing();
-      final arg_parent = 'foo';
-      final arg_keyRingId = 'foo';
+      final res = api.CloudKMSApi(mock).projects.locations.ekmConnections;
+      final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj =
-            api.KeyRing.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkKeyRing(obj);
-
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3015,7 +3618,69 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildVerifyConnectivityResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.verifyConnectivity(arg_name, $fields: arg_$fields);
+      checkVerifyConnectivityResponse(
+          response as api.VerifyConnectivityResponse);
+    });
+  });
+
+  unittest.group('resource-ProjectsLocationsKeyRingsResource', () {
+    unittest.test('method--create', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudKMSApi(mock).projects.locations.keyRings;
+      final arg_request = buildKeyRing();
+      final arg_parent = 'foo';
+      final arg_keyRingId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj =
+            api.KeyRing.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkKeyRing(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3056,7 +3721,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3072,7 +3737,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3109,7 +3774,7 @@ void main() {
       final arg_options_requestedPolicyVersion = 42;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3125,7 +3790,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3171,7 +3836,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3187,7 +3852,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3249,7 +3914,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkSetIamPolicyRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3265,7 +3930,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3307,7 +3972,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkTestIamPermissionsRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3323,7 +3988,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3370,7 +4035,7 @@ void main() {
             api.CryptoKey.fromJson(json as core.Map<core.String, core.dynamic>);
         checkCryptoKey(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3386,7 +4051,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3438,7 +4103,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkDecryptRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3454,7 +4119,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3496,7 +4161,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkEncryptRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3512,7 +4177,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3549,7 +4214,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3565,7 +4230,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3602,7 +4267,7 @@ void main() {
       final arg_options_requestedPolicyVersion = 42;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3618,7 +4283,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3665,7 +4330,7 @@ void main() {
       final arg_versionView = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3681,7 +4346,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3749,7 +4414,7 @@ void main() {
             api.CryptoKey.fromJson(json as core.Map<core.String, core.dynamic>);
         checkCryptoKey(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3765,7 +4430,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3811,7 +4476,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkSetIamPolicyRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3827,7 +4492,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3869,7 +4534,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkTestIamPermissionsRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3885,7 +4550,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3928,7 +4593,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkUpdateCryptoKeyPrimaryVersionRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3944,7 +4609,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3995,7 +4660,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkAsymmetricDecryptRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4011,7 +4676,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4058,7 +4723,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkAsymmetricSignRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4074,7 +4739,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4121,7 +4786,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkCryptoKeyVersion(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4137,7 +4802,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4184,7 +4849,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkDestroyCryptoKeyVersionRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4200,7 +4865,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4242,7 +4907,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4258,7 +4923,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4299,7 +4964,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4315,7 +4980,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4361,7 +5026,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkImportCryptoKeyVersionRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4377,7 +5042,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4424,7 +5089,7 @@ void main() {
       final arg_view = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4440,7 +5105,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4513,7 +5178,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkMacSignRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4529,7 +5194,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4576,7 +5241,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkMacVerifyRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4592,7 +5257,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4640,7 +5305,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkCryptoKeyVersion(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4656,7 +5321,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4691,6 +5356,132 @@ void main() {
       checkCryptoKeyVersion(response as api.CryptoKeyVersion);
     });
 
+    unittest.test('method--rawDecrypt', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudKMSApi(mock)
+          .projects
+          .locations
+          .keyRings
+          .cryptoKeys
+          .cryptoKeyVersions;
+      final arg_request = buildRawDecryptRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.RawDecryptRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkRawDecryptRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildRawDecryptResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.rawDecrypt(arg_request, arg_name, $fields: arg_$fields);
+      checkRawDecryptResponse(response as api.RawDecryptResponse);
+    });
+
+    unittest.test('method--rawEncrypt', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudKMSApi(mock)
+          .projects
+          .locations
+          .keyRings
+          .cryptoKeys
+          .cryptoKeyVersions;
+      final arg_request = buildRawEncryptRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.RawEncryptRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkRawEncryptRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildRawEncryptResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.rawEncrypt(arg_request, arg_name, $fields: arg_$fields);
+      checkRawEncryptResponse(response as api.RawEncryptResponse);
+    });
+
     unittest.test('method--restore', () async {
       final mock = HttpServerMock();
       final res = api.CloudKMSApi(mock)
@@ -4707,7 +5498,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkRestoreCryptoKeyVersionRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4723,7 +5514,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4768,7 +5559,7 @@ void main() {
             api.ImportJob.fromJson(json as core.Map<core.String, core.dynamic>);
         checkImportJob(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4784,7 +5575,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4825,7 +5616,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4841,7 +5632,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4878,7 +5669,7 @@ void main() {
       final arg_options_requestedPolicyVersion = 42;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4894,7 +5685,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4940,7 +5731,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4956,7 +5747,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -5018,7 +5809,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkSetIamPolicyRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -5034,7 +5825,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -5076,7 +5867,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkTestIamPermissionsRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -5092,7 +5883,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>

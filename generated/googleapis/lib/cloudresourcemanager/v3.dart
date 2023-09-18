@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud Resource Manager API - v3
@@ -31,7 +30,7 @@
 /// - [TagKeysResource]
 /// - [TagValuesResource]
 ///   - [TagValuesTagHoldsResource]
-library cloudresourcemanager.v3;
+library cloudresourcemanager_v3;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -40,7 +39,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -84,8 +82,8 @@ class EffectiveTagsResource {
 
   EffectiveTagsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Return a list of effective tags for the given cloud resource, as specified
-  /// in `parent`.
+  /// Return a list of effective tags for the given Google Cloud resource, as
+  /// specified in `parent`.
   ///
   /// Request parameters:
   ///
@@ -343,8 +341,10 @@ class FoldersResource {
   /// [pageToken] - Optional. A pagination token returned from a previous call
   /// to `ListFolders` that indicates where this listing should continue from.
   ///
-  /// [parent] - Required. The resource name of the organization or folder whose
-  /// folders are being listed. Must be of the form `folders/{folder_id}` or
+  /// [parent] - Required. The name of the parent resource whose folders are
+  /// being listed. Only children of this parent resource are listed;
+  /// descendants are not listed. If the parent is a folder, use the value
+  /// `folders/{folder_id}`. If the parent is an organization, use the value
   /// `organizations/{org_id}`. Access to this method is controlled by checking
   /// the `resourcemanager.folders.list` permission on the `parent`.
   ///
@@ -1397,9 +1397,11 @@ class ProjectsResource {
   /// [pageToken] - Optional. A pagination token returned from a previous call
   /// to ListProjects that indicates from where listing should continue.
   ///
-  /// [parent] - Required. The name of the parent resource to list projects
-  /// under. For example, setting this field to 'folders/1234' would list all
-  /// projects directly under that folder.
+  /// [parent] - Required. The name of the parent resource whose projects are
+  /// being listed. Only children of this parent resource are listed;
+  /// descendants are not listed. If the parent is a folder, use the value
+  /// `folders/{folder_id}`. If the parent is an organization, use the value
+  /// `organizations/{org_id}`.
   ///
   /// [showDeleted] - Optional. Indicate that projects in the `DELETE_REQUESTED`
   /// state should also be returned. Normally only `ACTIVE` projects are
@@ -1789,8 +1791,7 @@ class TagBindingsResource {
 
   TagBindingsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Creates a TagBinding between a TagValue and a cloud resource (currently
-  /// project, folder, or organization).
+  /// Creates a TagBinding between a TagValue and a Google Cloud resource.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1868,8 +1869,8 @@ class TagBindingsResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists the TagBindings for the given cloud resource, as specified with
-  /// `parent`.
+  /// Lists the TagBindings for the given Google Cloud resource, as specified
+  /// with `parent`.
   ///
   /// NOTE: The `parent` field is expected to be a full resource name:
   /// https://cloud.google.com/apis/design/resource_names#full_resource_name
@@ -1878,13 +1879,11 @@ class TagBindingsResource {
   ///
   /// [pageSize] - Optional. The maximum number of TagBindings to return in the
   /// response. The server allows a maximum of 300 TagBindings to return. If
-  /// unspecified, the server will use 100 as the default. Currently this api
-  /// returns unpaginated response and `page_size` is ignored.
+  /// unspecified, the server will use 100 as the default.
   ///
   /// [pageToken] - Optional. A pagination token returned from a previous call
   /// to `ListTagBindings` that indicates where this listing should continue
-  /// from. Currently this api returns unpaginated response and `page_token` is
-  /// ignored.
+  /// from.
   ///
   /// [parent] - Required. The full resource name of a resource for which you
   /// want to list existing TagBindings. E.g.
@@ -2112,6 +2111,47 @@ class TagKeysResource {
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Retrieves a TagKey by its namespaced name.
+  ///
+  /// This method will return `PERMISSION_DENIED` if the key does not exist or
+  /// the user does not have permission to view it.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. A namespaced tag key name in the format
+  /// `{parentId}/{tagKeyShort}`, such as `42/foo` for a key with short name
+  /// "foo" under the organization with ID 42 or `r2-d2/bar` for a key with
+  /// short name "bar" under the project `r2-d2`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TagKey].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TagKey> getNamespaced({
+    core.String? name,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (name != null) 'name': [name],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'v3/tagKeys/namespaced';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return TagKey.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Lists all TagKeys for a parent resource.
   ///
   /// Request parameters:
@@ -2123,8 +2163,9 @@ class TagKeysResource {
   /// [pageToken] - Optional. A pagination token returned from a previous call
   /// to `ListTagKey` that indicates where this listing should continue from.
   ///
-  /// [parent] - Required. The resource name of the new TagKey's parent. Must be
-  /// of the form `folders/{folder_id}` or `organizations/{org_id}`.
+  /// [parent] - Required. The resource name of the TagKey's parent. Must be of
+  /// the form `organizations/{org_id}` or `projects/{project_id}` or
+  /// `projects/{project_number}`
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2500,6 +2541,49 @@ class TagValuesResource {
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Retrieves a TagValue by its namespaced name.
+  ///
+  /// This method will return `PERMISSION_DENIED` if the value does not exist or
+  /// the user does not have permission to view it.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. A namespaced tag value name in the following format:
+  /// `{parentId}/{tagKeyShort}/{tagValueShort}` Examples: - `42/foo/abc` for a
+  /// value with short name "abc" under the key with short name "foo" under the
+  /// organization with ID 42 - `r2-d2/bar/xyz` for a value with short name
+  /// "xyz" under the key with short name "bar" under the project with ID
+  /// "r2-d2"
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TagValue].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TagValue> getNamespaced({
+    core.String? name,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (name != null) 'name': [name],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'v3/tagValues/namespaced';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return TagValue.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Lists all TagValues for a specific TagKey.
   ///
   /// Request parameters:
@@ -2511,8 +2595,8 @@ class TagValuesResource {
   /// [pageToken] - Optional. A pagination token returned from a previous call
   /// to `ListTagValues` that indicates where this listing should continue from.
   ///
-  /// [parent] - Required. Resource name for TagKey, parent of the TagValues to
-  /// be listed, in the format `tagKeys/123`.
+  /// [parent] - Required. Resource name for the parent of the TagValues to be
+  /// listed, in the format `tagKeys/123` or `tagValues/123`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2942,7 +3026,9 @@ class Binding {
   /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
   /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
-  /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
+  /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
+  /// (primary) that represents all the users of that domain. For example,
+  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
   /// An email address (plus unique identifier) representing a user that has
   /// been recently deleted. For example,
   /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
@@ -2958,9 +3044,7 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
-  /// that represents all the users of that domain. For example, `google.com` or
-  /// `example.com`.
+  /// the role in the binding.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
@@ -3011,23 +3095,30 @@ class EffectiveTag {
   /// to the resource, inherited will be false.
   core.bool? inherited;
 
-  /// The namespaced_name of the TagKey.
+  /// The namespaced name of the TagKey.
   ///
-  /// Now only supported in the format of
-  /// `{organization_id}/{tag_key_short_name}`. Other formats will be supported
-  /// when we add non-org parented tags.
+  /// Can be in the form `{organization_id}/{tag_key_short_name}` or
+  /// `{project_id}/{tag_key_short_name}` or
+  /// `{project_number}/{tag_key_short_name}`.
   core.String? namespacedTagKey;
 
-  /// Namespaced name of the TagValue.
+  /// The namespaced name of the TagValue.
   ///
-  /// Now only supported in the format
-  /// `{organization_id}/{tag_key_short_name}/{tag_value_short_name}`. Other
-  /// formats will be supported when we add non-org parented tags.
+  /// Can be in the form
+  /// `{organization_id}/{tag_key_short_name}/{tag_value_short_name}` or
+  /// `{project_id}/{tag_key_short_name}/{tag_value_short_name}` or
+  /// `{project_number}/{tag_key_short_name}/{tag_value_short_name}`.
   core.String? namespacedTagValue;
 
   /// The name of the TagKey, in the format `tagKeys/{id}`, such as
   /// `tagKeys/123`.
   core.String? tagKey;
+
+  /// The parent name of the tag key.
+  ///
+  /// Must be in the format `organizations/{organization_id}` or
+  /// `projects/{project_number}`
+  core.String? tagKeyParentName;
 
   /// Resource name for TagValue in the format `tagValues/456`.
   core.String? tagValue;
@@ -3037,6 +3128,7 @@ class EffectiveTag {
     this.namespacedTagKey,
     this.namespacedTagValue,
     this.tagKey,
+    this.tagKeyParentName,
     this.tagValue,
   });
 
@@ -3054,6 +3146,9 @@ class EffectiveTag {
           tagKey: json_.containsKey('tagKey')
               ? json_['tagKey'] as core.String
               : null,
+          tagKeyParentName: json_.containsKey('tagKeyParentName')
+              ? json_['tagKeyParentName'] as core.String
+              : null,
           tagValue: json_.containsKey('tagValue')
               ? json_['tagValue'] as core.String
               : null,
@@ -3065,6 +3160,7 @@ class EffectiveTag {
         if (namespacedTagValue != null)
           'namespacedTagValue': namespacedTagValue!,
         if (tagKey != null) 'tagKey': tagKey!,
+        if (tagKeyParentName != null) 'tagKeyParentName': tagKeyParentName!,
         if (tagValue != null) 'tagValue': tagValue!,
       };
 }
@@ -3616,7 +3712,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -3784,23 +3880,23 @@ class Organization {
 /// request, the resource, or both. To learn which resources support conditions
 /// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": \[ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": \[
+/// **JSON example:** ``` { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": \[
-/// "user:eve@example.com" \], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time \< timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
-/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
-/// user:mike@example.com - group:admins@example.com - domain:google.com -
-/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
-/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
-/// role: roles/resourcemanager.organizationViewer condition: title: expirable
-/// access description: Does not grant access after Sep 2020 expression:
-/// request.time \< timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
-/// version: 3 For a description of IAM and its features, see the
-/// [IAM documentation](https://cloud.google.com/iam/docs/).
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: -
+/// members: - user:mike@example.com - group:admins@example.com -
+/// domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+/// role: roles/resourcemanager.organizationAdmin - members: -
+/// user:eve@example.com role: roles/resourcemanager.organizationViewer
+/// condition: title: expirable access description: Does not grant access after
+/// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+/// etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features,
+/// see the [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig>? auditConfigs;
@@ -3929,7 +4025,7 @@ class Project {
   /// Label keys must be between 1 and 63 characters long and must conform to
   /// the following regular expression: \[a-z\](\[-a-z0-9\]*\[a-z0-9\])?. Label
   /// values must be between 0 and 63 characters long and must conform to the
-  /// regular expression (\[a-z\](\[-a-z0-9\]*\[a-z0-9\])?)?. No more than 256
+  /// regular expression (\[a-z\](\[-a-z0-9\]*\[a-z0-9\])?)?. No more than 64
   /// labels can be associated with a given resource. Clients should store
   /// labels in a representation such as JSON that does not depend on specific
   /// characters being disallowed. Example: `"myBusinessDimension" :
@@ -4006,9 +4102,9 @@ class Project {
           etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -4205,10 +4301,8 @@ class SetIamPolicyRequest {
 typedef Status = $Status;
 
 /// A TagBinding represents a connection between a TagValue and a cloud resource
-/// (currently project, folder, or organization).
-///
 /// Once a TagBinding is created, the TagValue is applied to all the descendants
-/// of the cloud resource.
+/// of the Google Cloud resource.
 class TagBinding {
   /// The name of the TagBinding.
   ///
@@ -4229,10 +4323,19 @@ class TagBinding {
   /// Must be of the form `tagValues/456`.
   core.String? tagValue;
 
+  /// The namespaced name for the TagValue of the TagBinding.
+  ///
+  /// Must be in the format `{parent_id}/{tag_key_short_name}/{short_name}`. For
+  /// methods that support TagValue namespaced name, only one of
+  /// tag_value_namespaced_name or tag_value may be filled. Requests with both
+  /// fields will be rejected.
+  core.String? tagValueNamespacedName;
+
   TagBinding({
     this.name,
     this.parent,
     this.tagValue,
+    this.tagValueNamespacedName,
   });
 
   TagBinding.fromJson(core.Map json_)
@@ -4244,12 +4347,17 @@ class TagBinding {
           tagValue: json_.containsKey('tagValue')
               ? json_['tagValue'] as core.String
               : null,
+          tagValueNamespacedName: json_.containsKey('tagValueNamespacedName')
+              ? json_['tagValueNamespacedName'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (parent != null) 'parent': parent!,
         if (tagValue != null) 'tagValue': tagValue!,
+        if (tagValueNamespacedName != null)
+          'tagValueNamespacedName': tagValueNamespacedName!,
       };
 }
 
@@ -4368,9 +4476,12 @@ class TagKey {
   /// Output only. Immutable.
   core.String? namespacedName;
 
-  /// The resource name of the new TagKey's parent.
+  /// The resource name of the TagKey's parent.
   ///
-  /// Must be of the form `organizations/{org_id}`.
+  /// A TagKey can be parented by an Organization or a Project. For a TagKey
+  /// parented by an Organization, its parent must be in the form
+  /// `organizations/{org_id}`. For a TagKey parented by a Project, its parent
+  /// can be in the form `projects/{project_id}` or `projects/{project_number}`.
   ///
   /// Immutable.
   core.String? parent;
@@ -4387,10 +4498,16 @@ class TagKey {
   /// Possible string values are:
   /// - "PURPOSE_UNSPECIFIED" : Unspecified purpose.
   /// - "GCE_FIREWALL" : Purpose for Compute Engine firewalls. A corresponding
-  /// purpose_data should be set for the network the tag is intended for. The
-  /// key should be 'network' and the value should be in the format of the
-  /// network url id string:
-  /// https://compute.googleapis.com/v1/projects/{project_number}/global/networks/{network_id}
+  /// `purpose_data` should be set for the network the tag is intended for. The
+  /// key should be `network` and the value should be in ## either of these two
+  /// formats:
+  /// `https://www.googleapis.com/compute/{compute_version}/projects/{project_id}/global/networks/{network_id}`
+  /// - `{project_id}/{network_name}` ## Examples:
+  /// `https://www.googleapis.com/compute/staging_v1/projects/fail-closed-load-testing/global/networks/6992953698831725600`
+  /// - `fail-closed-load-testing/load-testing-network`
+  /// - "DATA_GOVERNANCE" : Purpose for data governance. Tag Values created
+  /// under a key with this purpose may have Tag Value children. No
+  /// `purpose_data` should be set.
   core.String? purpose;
 
   /// Purpose data corresponds to the policy system that the tag is intended
@@ -4452,9 +4569,9 @@ class TagKey {
           purposeData: json_.containsKey('purposeData')
               ? (json_['purposeData'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -4510,11 +4627,12 @@ class TagValue {
   /// Immutable.
   core.String? name;
 
-  /// Namespaced name of the TagValue.
+  /// The namespaced name of the TagValue.
   ///
-  /// Now only supported in the format
-  /// `{organization_id}/{tag_key_short_name}/{short_name}`. Other formats will
-  /// be supported when we add non-org parented tags.
+  /// Can be in the form
+  /// `{organization_id}/{tag_key_short_name}/{tag_value_short_name}` or
+  /// `{project_id}/{tag_key_short_name}/{tag_value_short_name}` or
+  /// `{project_number}/{tag_key_short_name}/{tag_value_short_name}`.
   ///
   /// Output only.
   core.String? namespacedName;

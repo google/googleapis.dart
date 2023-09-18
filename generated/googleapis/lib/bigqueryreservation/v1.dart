@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// BigQuery Reservation API - v1
@@ -25,7 +24,7 @@
 ///     - [ProjectsLocationsCapacityCommitmentsResource]
 ///     - [ProjectsLocationsReservationsResource]
 ///       - [ProjectsLocationsReservationsAssignmentsResource]
-library bigqueryreservation.v1;
+library bigqueryreservation_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -34,7 +33,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -226,6 +224,9 @@ class ProjectsLocationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<SearchAssignmentsResponse> searchAssignments(
     core.String parent, {
     core.int? pageSize,
@@ -1186,7 +1187,7 @@ class Assignment {
   /// for model training. These jobs will not utilize idle slots from other
   /// reservations.
   /// - "BACKGROUND" : Background jobs that BigQuery runs for the customers in
-  /// the background. This is a preview feature.
+  /// the background.
   core.String? jobType;
 
   /// Name of the resource.
@@ -1234,6 +1235,39 @@ class Assignment {
         if (jobType != null) 'jobType': jobType!,
         if (name != null) 'name': name!,
         if (state != null) 'state': state!,
+      };
+}
+
+/// Auto scaling settings.
+class Autoscale {
+  /// The slot capacity added to this reservation when autoscale happens.
+  ///
+  /// Will be between \[0, max_slots\].
+  ///
+  /// Output only.
+  core.String? currentSlots;
+
+  /// Number of slots to be scaled when needed.
+  core.String? maxSlots;
+
+  Autoscale({
+    this.currentSlots,
+    this.maxSlots,
+  });
+
+  Autoscale.fromJson(core.Map json_)
+      : this(
+          currentSlots: json_.containsKey('currentSlots')
+              ? json_['currentSlots'] as core.String
+              : null,
+          maxSlots: json_.containsKey('maxSlots')
+              ? json_['maxSlots'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (currentSlots != null) 'currentSlots': currentSlots!,
+        if (maxSlots != null) 'maxSlots': maxSlots!,
       };
 }
 
@@ -1308,17 +1342,33 @@ class CapacityCommitment {
   /// Output only.
   core.String? commitmentStartTime;
 
+  /// Edition of the capacity commitment.
+  /// Possible string values are:
+  /// - "EDITION_UNSPECIFIED" : Default value, which will be treated as
+  /// ENTERPRISE.
+  /// - "STANDARD" : Standard edition.
+  /// - "ENTERPRISE" : Enterprise edition.
+  /// - "ENTERPRISE_PLUS" : Enterprise plus edition.
+  core.String? edition;
+
   /// For FAILED commitment plan, provides the reason of failure.
   ///
   /// Output only.
   Status? failureStatus;
+
+  /// If true, the commitment is a flat-rate commitment, otherwise, it's an
+  /// edition commitment.
+  ///
+  /// Output only.
+  core.bool? isFlatRate;
 
   /// Applicable only for commitments located within one of the BigQuery
   /// multi-regions (US or EU).
   ///
   /// If set to true, this commitment is placed in the organization's secondary
   /// region which is designated for disaster recovery purposes. If false, this
-  /// commitment is placed in the organization's default region.
+  /// commitment is placed in the organization's default region. NOTE: this is a
+  /// preview feature. Project must be allow-listed in order to set this field.
   core.bool? multiRegionAuxiliary;
 
   /// The resource name of the capacity commitment, e.g.,
@@ -1339,6 +1389,8 @@ class CapacityCommitment {
   /// - "FLEX" : Flex commitments have committed period of 1 minute after
   /// becoming ACTIVE. After that, they are not in a committed period anymore
   /// and can be removed any time.
+  /// - "FLEX_FLAT_RATE" : Same as FLEX, should only be used if flat-rate
+  /// commitments are still available.
   /// - "TRIAL" : Trial commitments have a committed period of 182 days after
   /// becoming ACTIVE. After that, they are converted to a new commitment based
   /// on the `renewal_plan`. Default `renewal_plan` for Trial commitment is Flex
@@ -1346,9 +1398,22 @@ class CapacityCommitment {
   /// - "MONTHLY" : Monthly commitments have a committed period of 30 days after
   /// becoming ACTIVE. After that, they are not in a committed period anymore
   /// and can be removed any time.
+  /// - "MONTHLY_FLAT_RATE" : Same as MONTHLY, should only be used if flat-rate
+  /// commitments are still available.
   /// - "ANNUAL" : Annual commitments have a committed period of 365 days after
   /// becoming ACTIVE. After that they are converted to a new commitment based
   /// on the renewal_plan.
+  /// - "ANNUAL_FLAT_RATE" : Same as ANNUAL, should only be used if flat-rate
+  /// commitments are still available.
+  /// - "THREE_YEAR" : 3-year commitments have a committed period of 1095(3 *
+  /// 365) days after becoming ACTIVE. After that they are converted to a new
+  /// commitment based on the renewal_plan.
+  /// - "NONE" : Should only be used for `renewal_plan` and is only meaningful
+  /// if edition is specified to values other than EDITION_UNSPECIFIED.
+  /// Otherwise CreateCapacityCommitmentRequest or
+  /// UpdateCapacityCommitmentRequest will be rejected with error code
+  /// `google.rpc.Code.INVALID_ARGUMENT`. If the renewal_plan is NONE, capacity
+  /// commitment will be removed at the end of its commitment period.
   core.String? plan;
 
   /// The plan this capacity commitment is converted to after
@@ -1362,6 +1427,8 @@ class CapacityCommitment {
   /// - "FLEX" : Flex commitments have committed period of 1 minute after
   /// becoming ACTIVE. After that, they are not in a committed period anymore
   /// and can be removed any time.
+  /// - "FLEX_FLAT_RATE" : Same as FLEX, should only be used if flat-rate
+  /// commitments are still available.
   /// - "TRIAL" : Trial commitments have a committed period of 182 days after
   /// becoming ACTIVE. After that, they are converted to a new commitment based
   /// on the `renewal_plan`. Default `renewal_plan` for Trial commitment is Flex
@@ -1369,9 +1436,22 @@ class CapacityCommitment {
   /// - "MONTHLY" : Monthly commitments have a committed period of 30 days after
   /// becoming ACTIVE. After that, they are not in a committed period anymore
   /// and can be removed any time.
+  /// - "MONTHLY_FLAT_RATE" : Same as MONTHLY, should only be used if flat-rate
+  /// commitments are still available.
   /// - "ANNUAL" : Annual commitments have a committed period of 365 days after
   /// becoming ACTIVE. After that they are converted to a new commitment based
   /// on the renewal_plan.
+  /// - "ANNUAL_FLAT_RATE" : Same as ANNUAL, should only be used if flat-rate
+  /// commitments are still available.
+  /// - "THREE_YEAR" : 3-year commitments have a committed period of 1095(3 *
+  /// 365) days after becoming ACTIVE. After that they are converted to a new
+  /// commitment based on the renewal_plan.
+  /// - "NONE" : Should only be used for `renewal_plan` and is only meaningful
+  /// if edition is specified to values other than EDITION_UNSPECIFIED.
+  /// Otherwise CreateCapacityCommitmentRequest or
+  /// UpdateCapacityCommitmentRequest will be rejected with error code
+  /// `google.rpc.Code.INVALID_ARGUMENT`. If the renewal_plan is NONE, capacity
+  /// commitment will be removed at the end of its commitment period.
   core.String? renewalPlan;
 
   /// Number of slots in this commitment.
@@ -1392,7 +1472,9 @@ class CapacityCommitment {
   CapacityCommitment({
     this.commitmentEndTime,
     this.commitmentStartTime,
+    this.edition,
     this.failureStatus,
+    this.isFlatRate,
     this.multiRegionAuxiliary,
     this.name,
     this.plan,
@@ -1409,9 +1491,15 @@ class CapacityCommitment {
           commitmentStartTime: json_.containsKey('commitmentStartTime')
               ? json_['commitmentStartTime'] as core.String
               : null,
+          edition: json_.containsKey('edition')
+              ? json_['edition'] as core.String
+              : null,
           failureStatus: json_.containsKey('failureStatus')
               ? Status.fromJson(
                   json_['failureStatus'] as core.Map<core.String, core.dynamic>)
+              : null,
+          isFlatRate: json_.containsKey('isFlatRate')
+              ? json_['isFlatRate'] as core.bool
               : null,
           multiRegionAuxiliary: json_.containsKey('multiRegionAuxiliary')
               ? json_['multiRegionAuxiliary'] as core.bool
@@ -1432,7 +1520,9 @@ class CapacityCommitment {
         if (commitmentEndTime != null) 'commitmentEndTime': commitmentEndTime!,
         if (commitmentStartTime != null)
           'commitmentStartTime': commitmentStartTime!,
+        if (edition != null) 'edition': edition!,
         if (failureStatus != null) 'failureStatus': failureStatus!,
+        if (isFlatRate != null) 'isFlatRate': isFlatRate!,
         if (multiRegionAuxiliary != null)
           'multiRegionAuxiliary': multiRegionAuxiliary!,
         if (name != null) 'name': name!,
@@ -1587,40 +1677,66 @@ class MergeCapacityCommitmentsRequest {
 /// "bigquery.reservationAssignments.delete" permission are required on the
 /// related assignee.
 class MoveAssignmentRequest {
+  /// The optional assignment ID.
+  ///
+  /// A new assignment name is generated if this field is empty. This field can
+  /// contain only lowercase alphanumeric characters or dashes. Max length is 64
+  /// characters.
+  core.String? assignmentId;
+
   /// The new reservation ID, e.g.:
   /// `projects/myotherproject/locations/US/reservations/team2-prod`
   core.String? destinationId;
 
   MoveAssignmentRequest({
+    this.assignmentId,
     this.destinationId,
   });
 
   MoveAssignmentRequest.fromJson(core.Map json_)
       : this(
+          assignmentId: json_.containsKey('assignmentId')
+              ? json_['assignmentId'] as core.String
+              : null,
           destinationId: json_.containsKey('destinationId')
               ? json_['destinationId'] as core.String
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (assignmentId != null) 'assignmentId': assignmentId!,
         if (destinationId != null) 'destinationId': destinationId!,
       };
 }
 
 /// A reservation is a mechanism used to guarantee slots to users.
 class Reservation {
-  /// Maximum number of queries that are allowed to run concurrently in this
-  /// reservation.
+  /// The configuration parameters for the auto scaling feature.
+  Autoscale? autoscale;
+
+  /// Job concurrency target which sets a soft upper bound on the number of jobs
+  /// that can run concurrently in this reservation.
   ///
-  /// This is a soft limit due to asynchronous nature of the system and various
+  /// This is a soft target due to asynchronous nature of the system and various
   /// optimizations for small queries. Default value is 0 which means that
-  /// concurrency will be automatically set based on the reservation size.
+  /// concurrency target will be automatically computed by the system. NOTE:
+  /// this field is exposed as `target_job_concurrency` in the Information
+  /// Schema, DDL and BQ CLI.
   core.String? concurrency;
 
   /// Creation time of the reservation.
   ///
   /// Output only.
   core.String? creationTime;
+
+  /// Edition of the reservation.
+  /// Possible string values are:
+  /// - "EDITION_UNSPECIFIED" : Default value, which will be treated as
+  /// ENTERPRISE.
+  /// - "STANDARD" : Standard edition.
+  /// - "ENTERPRISE" : Enterprise edition.
+  /// - "ENTERPRISE_PLUS" : Enterprise plus edition.
+  core.String? edition;
 
   /// If false, any query or pipeline job using this reservation will use idle
   /// slots from other reservations within the same admin project.
@@ -1634,7 +1750,9 @@ class Reservation {
   ///
   /// If set to true, this reservation is placed in the organization's secondary
   /// region which is designated for disaster recovery purposes. If false, this
-  /// reservation is placed in the organization's default region.
+  /// reservation is placed in the organization's default region. NOTE: this is
+  /// a preview feature. Project must be allow-listed in order to set this
+  /// field.
   core.bool? multiRegionAuxiliary;
 
   /// The resource name of the reservation, e.g., `projects / * /locations / *
@@ -1645,17 +1763,24 @@ class Reservation {
   /// maximum length is 64 characters.
   core.String? name;
 
-  /// Minimum slots available to this reservation.
+  /// Baseline slots available to this reservation.
   ///
   /// A slot is a unit of computational power in BigQuery, and serves as the
   /// unit of parallelism. Queries using this reservation might use more slots
-  /// during runtime if ignore_idle_slots is set to false. If total
-  /// slot_capacity of the reservation and its siblings exceeds the total
-  /// slot_count of all capacity commitments, the request will fail with
-  /// `google.rpc.Code.RESOURCE_EXHAUSTED`. NOTE: for reservations in US or EU
-  /// multi-regions, slot capacity constraints are checked separately for
-  /// default and auxiliary regions. See multi_region_auxiliary flag for more
-  /// details.
+  /// during runtime if ignore_idle_slots is set to false, or autoscaling is
+  /// enabled. If edition is EDITION_UNSPECIFIED and total slot_capacity of the
+  /// reservation and its siblings exceeds the total slot_count of all capacity
+  /// commitments, the request will fail with
+  /// `google.rpc.Code.RESOURCE_EXHAUSTED`. If edition is any value but
+  /// EDITION_UNSPECIFIED, then the above requirement is not needed. The total
+  /// slot_capacity of the reservation and its siblings may exceed the total
+  /// slot_count of capacity commitments. In that case, the exceeding slots will
+  /// be charged with the autoscale SKU. You can increase the number of baseline
+  /// slots in a reservation every few minutes. If you want to decrease your
+  /// baseline slots, you are limited to once an hour if you have recently
+  /// changed your baseline slot capacity and your baseline slots exceed your
+  /// committed slots. Otherwise, you can decrease your baseline slots every few
+  /// minutes.
   core.String? slotCapacity;
 
   /// Last update time of the reservation.
@@ -1664,8 +1789,10 @@ class Reservation {
   core.String? updateTime;
 
   Reservation({
+    this.autoscale,
     this.concurrency,
     this.creationTime,
+    this.edition,
     this.ignoreIdleSlots,
     this.multiRegionAuxiliary,
     this.name,
@@ -1675,11 +1802,18 @@ class Reservation {
 
   Reservation.fromJson(core.Map json_)
       : this(
+          autoscale: json_.containsKey('autoscale')
+              ? Autoscale.fromJson(
+                  json_['autoscale'] as core.Map<core.String, core.dynamic>)
+              : null,
           concurrency: json_.containsKey('concurrency')
               ? json_['concurrency'] as core.String
               : null,
           creationTime: json_.containsKey('creationTime')
               ? json_['creationTime'] as core.String
+              : null,
+          edition: json_.containsKey('edition')
+              ? json_['edition'] as core.String
               : null,
           ignoreIdleSlots: json_.containsKey('ignoreIdleSlots')
               ? json_['ignoreIdleSlots'] as core.bool
@@ -1697,8 +1831,10 @@ class Reservation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (autoscale != null) 'autoscale': autoscale!,
         if (concurrency != null) 'concurrency': concurrency!,
         if (creationTime != null) 'creationTime': creationTime!,
+        if (edition != null) 'edition': edition!,
         if (ignoreIdleSlots != null) 'ignoreIdleSlots': ignoreIdleSlots!,
         if (multiRegionAuxiliary != null)
           'multiRegionAuxiliary': multiRegionAuxiliary!,

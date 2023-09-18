@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud Healthcare API - v1
@@ -40,7 +39,7 @@
 ///       - [ProjectsLocationsDatasetsOperationsResource]
 ///     - [ProjectsLocationsServicesResource]
 ///       - [ProjectsLocationsServicesNlpResource]
-library healthcare.v1;
+library healthcare_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -49,7 +48,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -2557,8 +2555,8 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   /// de-identification fails for some DICOM instances. The output DICOM store
   /// will not contain these failed resources. Failed resource totals are
   /// tracked in Operation.metadata. Error details are also logged to Cloud
-  /// Logging (see \[Viewing error logs in Cloud
-  /// Logging\](/healthcare/docs/how-tos/logging)).
+  /// Logging (see
+  /// [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
   ///
   /// [request] - The metadata request object.
   ///
@@ -4432,6 +4430,43 @@ class ProjectsLocationsDatasetsFhirStoresResource {
     return FhirStore.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Gets metrics associated with the FHIR store.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name of the FHIR store to get metrics for.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [FhirStoreMetrics].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<FhirStoreMetrics> getFHIRStoreMetrics(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':getFHIRStoreMetrics';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return FhirStoreMetrics.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets the access control policy for a resource.
   ///
   /// Returns an empty policy if the resource exists and does not have a policy
@@ -4835,9 +4870,8 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// [STU3](http://www.hl7.org/fhir/stu3/compartmentdefinition-patient.html),
   /// [R4](http://hl7.org/fhir/R4/compartmentdefinition-patient.html)), which
   /// details the eligible resource types and referencing search parameters. For
-  /// samples that show how to call `Patient-everything`, see \[Getting all
-  /// patient compartment
-  /// resources\](/healthcare/docs/how-tos/fhir-resources#getting_all_patient_compartment_resources).
+  /// samples that show how to call `Patient-everything`, see
+  /// [Getting all patient compartment resources](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#getting_all_patient_compartment_resources).
   ///
   /// Request parameters:
   ///
@@ -4861,7 +4895,10 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// time must be specified to the second and include a time zone.
   ///
   /// [P_type] - String of comma-delimited FHIR resource types. If provided,
-  /// only resources of the specified resource type(s) are returned.
+  /// only resources of the specified resource type(s) are returned. Specifying
+  /// multiple `_type` parameters isn't supported. For example, the result of
+  /// `_type=Observation&_type=Encounter` is undefined. Use
+  /// `_type=Observation,Encounter` instead.
   ///
   /// [end] - The response includes records prior to the end date. The date uses
   /// the format YYYY-MM-DD. If no end date is provided, all records subsequent
@@ -4916,9 +4953,8 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   ///
   /// To remove all versions of a resource, first delete the current version and
   /// then call this method. This is not a FHIR standard operation. For samples
-  /// that show how to call `Resource-purge`, see \[Deleting historical versions
-  /// of a FHIR
-  /// resource\](/healthcare/docs/how-tos/fhir-resources#deleting_historical_versions_of_a_fhir_resource).
+  /// that show how to call `Resource-purge`, see
+  /// [Deleting historical versions of a FHIR resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#deleting_historical_versions_of_a_fhir_resource).
   ///
   /// Request parameters:
   ///
@@ -5098,8 +5134,8 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// `OperationOutcome` resource describing the reason for the error. If the
   /// request cannot be mapped to a valid API method on a FHIR store, a generic
   /// GCP error might be returned instead. For samples that show how to call
-  /// `create`, see \[Creating a FHIR
-  /// resource\](/healthcare/docs/how-tos/fhir-resources#creating_a_fhir_resource).
+  /// `create`, see
+  /// [Creating a FHIR resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#creating_a_fhir_resource).
   ///
   /// [request] - The metadata request object.
   ///
@@ -5162,8 +5198,8 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// disable_resource_versioning flag on the FHIR store, the deleted resources
   /// will be moved to a history repository that can still be retrieved through
   /// vread and related methods, unless they are removed by the purge method.
-  /// For samples that show how to call `delete`, see \[Deleting a FHIR
-  /// resource\](/healthcare/docs/how-tos/fhir-resources#deleting_a_fhir_resource).
+  /// For samples that show how to call `delete`, see
+  /// [Deleting a FHIR resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#deleting_a_fhir_resource).
   ///
   /// Request parameters:
   ///
@@ -5233,8 +5269,8 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// permission. You can use audit logs to view the permissions for
   /// `executeBundle` and each request in the bundle. For more information, see
   /// [Viewing Cloud Audit logs](https://cloud.google.com/healthcare-api/docs/how-tos/audit-logging).
-  /// For samples that show how to call `executeBundle`, see \[Managing FHIR
-  /// resources using FHIR bundles\](/healthcare/docs/how-tos/fhir-bundles).
+  /// For samples that show how to call `executeBundle`, see
+  /// [Managing FHIR resources using FHIR bundles](https://cloud.google.com/healthcare/docs/how-tos/fhir-bundles).
   ///
   /// [request] - The metadata request object.
   ///
@@ -5288,8 +5324,8 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// contain a JSON-encoded `OperationOutcome` resource describing the reason
   /// for the error. If the request cannot be mapped to a valid API method on a
   /// FHIR store, a generic GCP error might be returned instead. For samples
-  /// that show how to call `history`, see \[Listing FHIR resource
-  /// versions\](/healthcare/docs/how-tos/fhir-resources#listing_fhir_resource_versions).
+  /// that show how to call `history`, see
+  /// [Listing FHIR resource versions](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#listing_fhir_resource_versions).
   ///
   /// Request parameters:
   ///
@@ -5371,8 +5407,8 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// JSON-encoded `OperationOutcome` resource describing the reason for the
   /// error. If the request cannot be mapped to a valid API method on a FHIR
   /// store, a generic GCP error might be returned instead. For samples that
-  /// show how to call `patch`, see \[Patching a FHIR
-  /// resource\](/healthcare/docs/how-tos/fhir-resources#patching_a_fhir_resource).
+  /// show how to call `patch`, see
+  /// [Patching a FHIR resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#patching_a_fhir_resource).
   ///
   /// [request] - The metadata request object.
   ///
@@ -5430,8 +5466,8 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// `OperationOutcome` resource describing the reason for the error. If the
   /// request cannot be mapped to a valid API method on a FHIR store, a generic
   /// GCP error might be returned instead. For samples that show how to call
-  /// `read`, see \[Getting a FHIR
-  /// resource\](/healthcare/docs/how-tos/fhir-resources#getting_a_fhir_resource).
+  /// `read`, see
+  /// [Getting a FHIR resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#getting_a_fhir_resource).
   ///
   /// Request parameters:
   ///
@@ -5501,21 +5537,24 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// FHIR search parameters for DSTU2 can be found on each resource's
   /// definition page. Supported search modifiers: `:missing`, `:exact`,
   /// `:contains`, `:text`, `:in`, `:not-in`, `:above`, `:below`, `:[type]`,
-  /// `:not`, and `:recurse`. Supported search result parameters: `_sort`,
-  /// `_count`, `_include`, `_revinclude`, `_summary=text`, `_summary=data`, and
-  /// `_elements`. The maximum number of search results returned defaults to
-  /// 100, which can be overridden by the `_count` parameter up to a maximum
-  /// limit of 1000. If there are additional results, the returned `Bundle`
-  /// contains a link of `relation` "next", which has a `_page_token` parameter
-  /// for an opaque pagination token that can be used to retrieve the next page.
-  /// Resources with a total size larger than 5MB or a field count larger than
-  /// 50,000 might not be fully searchable as the server might trim its
-  /// generated search index in those cases. Note: FHIR resources are indexed
+  /// `:not`, and `recurse` (DSTU2 and STU3) or `:iterate` (R4). Supported
+  /// search result parameters: `_sort`, `_count`, `_include`, `_revinclude`,
+  /// `_summary=text`, `_summary=data`, and `_elements`. The maximum number of
+  /// search results returned defaults to 100, which can be overridden by the
+  /// `_count` parameter up to a maximum limit of 1000. The server might return
+  /// fewer resources than requested to prevent excessively large responses. If
+  /// there are additional results, the returned `Bundle` contains a link of
+  /// `relation` "next", which has a `_page_token` parameter for an opaque
+  /// pagination token that can be used to retrieve the next page. Resources
+  /// with a total size larger than 5MB or a field count larger than 50,000
+  /// might not be fully searchable as the server might trim its generated
+  /// search index in those cases. Note: FHIR resources are indexed
   /// asynchronously, so there might be a slight delay between the time a
   /// resource is created or changes and when the change is reflected in search
-  /// results. For samples and detailed information, see \[Searching for FHIR
-  /// resources\](/healthcare/docs/how-tos/fhir-search) and \[Advanced FHIR
-  /// search features\](/healthcare/docs/how-tos/fhir-advanced-search).
+  /// results. For samples and detailed information, see
+  /// [Searching for FHIR resources](https://cloud.google.com/healthcare/docs/how-tos/fhir-search)
+  /// and
+  /// [Advanced FHIR search features](https://cloud.google.com/healthcare/docs/how-tos/fhir-advanced-search).
   ///
   /// [request] - The metadata request object.
   ///
@@ -5590,21 +5629,24 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// FHIR search parameters for DSTU2 can be found on each resource's
   /// definition page. Supported search modifiers: `:missing`, `:exact`,
   /// `:contains`, `:text`, `:in`, `:not-in`, `:above`, `:below`, `:[type]`,
-  /// `:not`, and `:recurse`. Supported search result parameters: `_sort`,
-  /// `_count`, `_include`, `_revinclude`, `_summary=text`, `_summary=data`, and
-  /// `_elements`. The maximum number of search results returned defaults to
-  /// 100, which can be overridden by the `_count` parameter up to a maximum
-  /// limit of 1000. If there are additional results, the returned `Bundle`
-  /// contains a link of `relation` "next", which has a `_page_token` parameter
-  /// for an opaque pagination token that can be used to retrieve the next page.
-  /// Resources with a total size larger than 5MB or a field count larger than
-  /// 50,000 might not be fully searchable as the server might trim its
-  /// generated search index in those cases. Note: FHIR resources are indexed
+  /// `:not`, and `recurse` (DSTU2 and STU3) or `:iterate` (R4). Supported
+  /// search result parameters: `_sort`, `_count`, `_include`, `_revinclude`,
+  /// `_summary=text`, `_summary=data`, and `_elements`. The maximum number of
+  /// search results returned defaults to 100, which can be overridden by the
+  /// `_count` parameter up to a maximum limit of 1000. The server might return
+  /// fewer resources than requested to prevent excessively large responses. If
+  /// there are additional results, the returned `Bundle` contains a link of
+  /// `relation` "next", which has a `_page_token` parameter for an opaque
+  /// pagination token that can be used to retrieve the next page. Resources
+  /// with a total size larger than 5MB or a field count larger than 50,000
+  /// might not be fully searchable as the server might trim its generated
+  /// search index in those cases. Note: FHIR resources are indexed
   /// asynchronously, so there might be a slight delay between the time a
   /// resource is created or changes and when the change is reflected in search
-  /// results. For samples and detailed information, see \[Searching for FHIR
-  /// resources\](/healthcare/docs/how-tos/fhir-search) and \[Advanced FHIR
-  /// search features\](/healthcare/docs/how-tos/fhir-advanced-search).
+  /// results. For samples and detailed information, see
+  /// [Searching for FHIR resources](https://cloud.google.com/healthcare/docs/how-tos/fhir-search)
+  /// and
+  /// [Advanced FHIR search features](https://cloud.google.com/healthcare/docs/how-tos/fhir-advanced-search).
   ///
   /// [request] - The metadata request object.
   ///
@@ -5677,8 +5719,8 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// the FHIR store contain a JSON-encoded `OperationOutcome` resource
   /// describing the reason for the error. If the request cannot be mapped to a
   /// valid API method on a FHIR store, a generic GCP error might be returned
-  /// instead. For samples that show how to call `update`, see \[Updating a FHIR
-  /// resource\](/healthcare/docs/how-tos/fhir-resources#updating_a_fhir_resource).
+  /// instead. For samples that show how to call `update`, see
+  /// [Updating a FHIR resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#updating_a_fhir_resource).
   ///
   /// [request] - The metadata request object.
   ///
@@ -5731,8 +5773,8 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// `OperationOutcome` resource describing the reason for the error. If the
   /// request cannot be mapped to a valid API method on a FHIR store, a generic
   /// GCP error might be returned instead. For samples that show how to call
-  /// `vread`, see \[Retrieving a FHIR resource
-  /// version\](/healthcare/docs/how-tos/fhir-resources#retrieving_a_fhir_resource_version).
+  /// `vread`, see
+  /// [Retrieving a FHIR resource version](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#retrieving_a_fhir_resource_version).
   ///
   /// Request parameters:
   ///
@@ -6314,7 +6356,7 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The name of the dataset this message belongs to.
+  /// [parent] - The name of the HL7v2 store this message belongs to.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/hl7V2Stores/\[^/\]+$`.
   ///
@@ -6760,13 +6802,6 @@ class ProjectsLocationsDatasetsOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -6930,6 +6965,16 @@ class ActivateConsentRequest {
 
 /// The request to analyze healthcare entities in a document.
 class AnalyzeEntitiesRequest {
+  /// Alternative output format to be generated based on the results of
+  /// analysis.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "ALTERNATIVE_OUTPUT_FORMAT_UNSPECIFIED" : No alternative output format
+  /// is specified.
+  /// - "FHIR_BUNDLE" : FHIR bundle output.
+  core.String? alternativeOutputFormat;
+
   /// document_content is a document to be annotated.
   core.String? documentContent;
 
@@ -6938,12 +6983,16 @@ class AnalyzeEntitiesRequest {
   core.List<core.String>? licensedVocabularies;
 
   AnalyzeEntitiesRequest({
+    this.alternativeOutputFormat,
     this.documentContent,
     this.licensedVocabularies,
   });
 
   AnalyzeEntitiesRequest.fromJson(core.Map json_)
       : this(
+          alternativeOutputFormat: json_.containsKey('alternativeOutputFormat')
+              ? json_['alternativeOutputFormat'] as core.String
+              : null,
           documentContent: json_.containsKey('documentContent')
               ? json_['documentContent'] as core.String
               : null,
@@ -6955,6 +7004,8 @@ class AnalyzeEntitiesRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (alternativeOutputFormat != null)
+          'alternativeOutputFormat': alternativeOutputFormat!,
         if (documentContent != null) 'documentContent': documentContent!,
         if (licensedVocabularies != null)
           'licensedVocabularies': licensedVocabularies!,
@@ -6969,9 +7020,14 @@ class AnalyzeEntitiesResponse {
   /// These are UMLS concepts or normalized mention content.
   core.List<Entity>? entities;
 
-  /// entity_mentions contains all the annotated medical entities that were
-  /// mentioned in the provided document.
+  /// The `entity_mentions` field contains all the annotated medical entities
+  /// that were mentioned in the provided document.
   core.List<EntityMention>? entityMentions;
+
+  /// The FHIR bundle (\[`R4`\](http://hl7.org/fhir/R4/bundle.html)) that
+  /// includes all the entities, the entity mentions, and the relationships in
+  /// JSON format.
+  core.String? fhirBundle;
 
   /// relationships contains all the binary relationships that were identified
   /// between entity mentions within the provided document.
@@ -6980,6 +7036,7 @@ class AnalyzeEntitiesResponse {
   AnalyzeEntitiesResponse({
     this.entities,
     this.entityMentions,
+    this.fhirBundle,
     this.relationships,
   });
 
@@ -6997,6 +7054,9 @@ class AnalyzeEntitiesResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          fhirBundle: json_.containsKey('fhirBundle')
+              ? json_['fhirBundle'] as core.String
+              : null,
           relationships: json_.containsKey('relationships')
               ? (json_['relationships'] as core.List)
                   .map((value) => EntityMentionRelationship.fromJson(
@@ -7008,6 +7068,7 @@ class AnalyzeEntitiesResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (entities != null) 'entities': entities!,
         if (entityMentions != null) 'entityMentions': entityMentions!,
+        if (fhirBundle != null) 'fhirBundle': fhirBundle!,
         if (relationships != null) 'relationships': relationships!,
       };
 }
@@ -7233,16 +7294,20 @@ class Binding {
   /// identifier that represents anyone who is on the internet; with or without
   /// a Google account. * `allAuthenticatedUsers`: A special identifier that
   /// represents anyone who is authenticated with a Google account or a service
-  /// account. * `user:{emailid}`: An email address that represents a specific
-  /// Google account. For example, `alice@example.com` . *
-  /// `serviceAccount:{emailid}`: An email address that represents a Google
-  /// service account. For example, `my-other-app@appspot.gserviceaccount.com`.
-  /// * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`:
-  /// An identifier for a
+  /// account. Does not include identities that come from external identity
+  /// providers (IdPs) through identity federation. * `user:{emailid}`: An email
+  /// address that represents a specific Google account. For example,
+  /// `alice@example.com` . * `serviceAccount:{emailid}`: An email address that
+  /// represents a Google service account. For example,
+  /// `my-other-app@appspot.gserviceaccount.com`. *
+  /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An
+  /// identifier for a
   /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
   /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
-  /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
+  /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
+  /// (primary) that represents all the users of that domain. For example,
+  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
   /// An email address (plus unique identifier) representing a user that has
   /// been recently deleted. For example,
   /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
@@ -7258,9 +7323,7 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
-  /// that represents all the users of that domain. For example, `google.com` or
-  /// `example.com`.
+  /// the role in the binding.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
@@ -7383,9 +7446,9 @@ class CheckDataAccessRequest {
               ? (json_['requestAttributes']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -7421,10 +7484,10 @@ class CheckDataAccessResponse {
           consentDetails: json_.containsKey('consentDetails')
               ? (json_['consentDetails'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     ConsentEvaluation.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -7542,9 +7605,9 @@ class Consent {
               : null,
           metadata: json_.containsKey('metadata')
               ? (json_['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -7660,9 +7723,9 @@ class ConsentArtifact {
               : null,
           metadata: json_.containsKey('metadata')
               ? (json_['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -7809,9 +7872,9 @@ class ConsentStore {
                   : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -7868,8 +7931,14 @@ class CryptoHashConfig {
         convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
+  /// KMS wrapped key.
+  ///
+  /// Must not be set if `crypto_key` is set.
+  KmsWrappedCryptoKey? kmsWrapped;
+
   CryptoHashConfig({
     this.cryptoKey,
+    this.kmsWrapped,
   });
 
   CryptoHashConfig.fromJson(core.Map json_)
@@ -7877,10 +7946,15 @@ class CryptoHashConfig {
           cryptoKey: json_.containsKey('cryptoKey')
               ? json_['cryptoKey'] as core.String
               : null,
+          kmsWrapped: json_.containsKey('kmsWrapped')
+              ? KmsWrappedCryptoKey.fromJson(
+                  json_['kmsWrapped'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cryptoKey != null) 'cryptoKey': cryptoKey!,
+        if (kmsWrapped != null) 'kmsWrapped': kmsWrapped!,
       };
 }
 
@@ -7925,9 +7999,11 @@ class Dataset {
 class DateShiftConfig {
   /// An AES 128/192/256 bit key.
   ///
-  /// Causes the shift to be computed based on this key and the patient ID. A
-  /// default key is generated for each de-identification operation and is used
-  /// when neither `crypto_key` nor `kms_wrapped` is specified. Must not be set
+  /// The date shift is computed based on this key and the patient ID. If the
+  /// patient ID is empty for a DICOM resource, the date shift is computed based
+  /// on this key and the study instance UID. If `crypto_key` is not set, then
+  /// `kms_wrapped` is used to calculate the date shift. If neither is set, a
+  /// default key is generated for each de-identify operation. Must not be set
   /// if `kms_wrapped` is set.
   core.String? cryptoKey;
   core.List<core.int> get cryptoKeyAsBytes => convert.base64.decode(cryptoKey!);
@@ -7937,8 +8013,16 @@ class DateShiftConfig {
         convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
+  /// KMS wrapped key.
+  ///
+  /// If `kms_wrapped` is not set, then `crypto_key` is used to calculate the
+  /// date shift. If neither is set, a default key is generated for each
+  /// de-identify operation. Must not be set if `crypto_key` is set.
+  KmsWrappedCryptoKey? kmsWrapped;
+
   DateShiftConfig({
     this.cryptoKey,
+    this.kmsWrapped,
   });
 
   DateShiftConfig.fromJson(core.Map json_)
@@ -7946,10 +8030,46 @@ class DateShiftConfig {
           cryptoKey: json_.containsKey('cryptoKey')
               ? json_['cryptoKey'] as core.String
               : null,
+          kmsWrapped: json_.containsKey('kmsWrapped')
+              ? KmsWrappedCryptoKey.fromJson(
+                  json_['kmsWrapped'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cryptoKey != null) 'cryptoKey': cryptoKey!,
+        if (kmsWrapped != null) 'kmsWrapped': kmsWrapped!,
+      };
+}
+
+/// Contains configuration for streaming de-identified FHIR export.
+class DeidentifiedStoreDestination {
+  /// The configuration to use when de-identifying resources that are added to
+  /// this store.
+  DeidentifyConfig? config;
+
+  /// The full resource name of a Cloud Healthcare FHIR store, for example,
+  /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
+  core.String? store;
+
+  DeidentifiedStoreDestination({
+    this.config,
+    this.store,
+  });
+
+  DeidentifiedStoreDestination.fromJson(core.Map json_)
+      : this(
+          config: json_.containsKey('config')
+              ? DeidentifyConfig.fromJson(
+                  json_['config'] as core.Map<core.String, core.dynamic>)
+              : null,
+          store:
+              json_.containsKey('store') ? json_['store'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (config != null) 'config': config!,
+        if (store != null) 'store': store!,
       };
 }
 
@@ -7973,11 +8093,21 @@ class DeidentifyConfig {
   /// source_dataset.
   TextConfig? text;
 
+  /// Ensures in-flight data remains in the region of origin during
+  /// de-identification.
+  ///
+  /// Using this option results in a significant reduction of throughput, and is
+  /// not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes.
+  /// `LOCATION` must be excluded within `TextConfig`, and must also be excluded
+  /// within `ImageConfig` if image redaction is required.
+  core.bool? useRegionalDataProcessing;
+
   DeidentifyConfig({
     this.dicom,
     this.fhir,
     this.image,
     this.text,
+    this.useRegionalDataProcessing,
   });
 
   DeidentifyConfig.fromJson(core.Map json_)
@@ -7998,6 +8128,10 @@ class DeidentifyConfig {
               ? TextConfig.fromJson(
                   json_['text'] as core.Map<core.String, core.dynamic>)
               : null,
+          useRegionalDataProcessing:
+              json_.containsKey('useRegionalDataProcessing')
+                  ? json_['useRegionalDataProcessing'] as core.bool
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8005,6 +8139,8 @@ class DeidentifyConfig {
         if (fhir != null) 'fhir': fhir!,
         if (image != null) 'image': image!,
         if (text != null) 'text': text!,
+        if (useRegionalDataProcessing != null)
+          'useRegionalDataProcessing': useRegionalDataProcessing!,
       };
 }
 
@@ -8157,11 +8293,16 @@ class DeidentifyFhirStoreRequest {
   /// If not specified, all resources are included in the output.
   FhirFilter? resourceFilter;
 
+  /// If true, skips resources that are created or modified after the
+  /// de-identify operation is created.
+  core.bool? skipModifiedResources;
+
   DeidentifyFhirStoreRequest({
     this.config,
     this.destinationStore,
     this.gcsConfigUri,
     this.resourceFilter,
+    this.skipModifiedResources,
   });
 
   DeidentifyFhirStoreRequest.fromJson(core.Map json_)
@@ -8180,6 +8321,9 @@ class DeidentifyFhirStoreRequest {
               ? FhirFilter.fromJson(json_['resourceFilter']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          skipModifiedResources: json_.containsKey('skipModifiedResources')
+              ? json_['skipModifiedResources'] as core.bool
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8187,6 +8331,8 @@ class DeidentifyFhirStoreRequest {
         if (destinationStore != null) 'destinationStore': destinationStore!,
         if (gcsConfigUri != null) 'gcsConfigUri': gcsConfigUri!,
         if (resourceFilter != null) 'resourceFilter': resourceFilter!,
+        if (skipModifiedResources != null)
+          'skipModifiedResources': skipModifiedResources!,
       };
 }
 
@@ -8316,19 +8462,31 @@ class DicomStore {
   /// Supplied by the client.
   NotificationConfig? notificationConfig;
 
+  /// A list of streaming configs used to configure the destination of streaming
+  /// exports for every DICOM instance insertion in this DICOM store.
+  ///
+  /// After a new config is added to `stream_configs`, DICOM instance insertions
+  /// are streamed to the new destination. When a config is removed from
+  /// `stream_configs`, the server stops streaming to that destination. Each
+  /// config must contain a unique destination.
+  ///
+  /// Optional.
+  core.List<GoogleCloudHealthcareV1DicomStreamConfig>? streamConfigs;
+
   DicomStore({
     this.labels,
     this.name,
     this.notificationConfig,
+    this.streamConfigs,
   });
 
   DicomStore.fromJson(core.Map json_)
       : this(
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -8337,6 +8495,13 @@ class DicomStore {
               ? NotificationConfig.fromJson(json_['notificationConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          streamConfigs: json_.containsKey('streamConfigs')
+              ? (json_['streamConfigs'] as core.List)
+                  .map((value) =>
+                      GoogleCloudHealthcareV1DicomStreamConfig.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8344,6 +8509,7 @@ class DicomStore {
         if (name != null) 'name': name!,
         if (notificationConfig != null)
           'notificationConfig': notificationConfig!,
+        if (streamConfigs != null) 'streamConfigs': streamConfigs!,
       };
 }
 
@@ -8422,7 +8588,7 @@ class EntityMention {
   /// linked_entities are candidate ontological concepts that this entity
   /// mention may refer to.
   ///
-  /// They are sorted by decreasing confidence.it
+  /// They are sorted by decreasing confidence.
   core.List<LinkedEntity>? linkedEntities;
 
   /// mention_id uniquely identifies each entity mention in a single response.
@@ -8640,9 +8806,9 @@ class EvaluateUserConsentsRequest {
               ? (json_['requestAttributes']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -8650,9 +8816,9 @@ class EvaluateUserConsentsRequest {
               ? (json_['resourceAttributes']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -8769,8 +8935,54 @@ class ExportMessagesRequest {
   /// (exclusive) are exported.
   core.String? endTime;
 
+  /// Restricts messages exported to those matching a filter, only applicable to
+  /// PubsubDestination and GcsDestination.
+  ///
+  /// The following syntax is available: * A string field value can be written
+  /// as text inside quotation marks, for example `"query text"`. The only valid
+  /// relational operation for text fields is equality (`=`), where text is
+  /// searched within the field, rather than having the field be equal to the
+  /// text. For example, `"Comment = great"` returns messages with `great` in
+  /// the comment field. * A number field value can be written as an integer, a
+  /// decimal, or an exponential. The valid relational operators for number
+  /// fields are the equality operator (`=`), along with the less than/greater
+  /// than operators (`<`, `<=`, `>`, `>=`). Note that there is no inequality
+  /// (`!=`) operator. You can prepend the `NOT` operator to an expression to
+  /// negate it. * A date field value must be written in the `yyyy-mm-dd`
+  /// format. Fields with date and time use the RFC3339 time format. Leading
+  /// zeros are required for one-digit months and days. The valid relational
+  /// operators for date fields are the equality operator (`=`) , along with the
+  /// less than/greater than operators (`<`, `<=`, `>`, `>=`). Note that there
+  /// is no inequality (`!=`) operator. You can prepend the `NOT` operator to an
+  /// expression to negate it. * Multiple field query expressions can be
+  /// combined in one query by adding `AND` or `OR` operators between the
+  /// expressions. If a boolean operator appears within a quoted string, it is
+  /// not treated as special, and is just another part of the character string
+  /// to be matched. You can prepend the `NOT` operator to an expression to
+  /// negate it. The following fields and functions are available for filtering:
+  /// * `message_type`, from the MSH-9.1 field. For example, `NOT message_type =
+  /// "ADT"`. * `send_date` or `sendDate`, the `yyyy-mm-dd` date the message was
+  /// sent in the dataset's time_zone, from the MSH-7 segment. For example,
+  /// `send_date < "2017-01-02"`. * `send_time`, the timestamp when the message
+  /// was sent, using the RFC3339 time format for comparisons, from the MSH-7
+  /// segment. For example, `send_time < "2017-01-02T00:00:00-05:00"`. *
+  /// `create_time`, the timestamp when the message was created in the HL7v2
+  /// store. Use the RFC3339 time format for comparisons. For example,
+  /// `create_time < "2017-01-02T00:00:00-05:00"`. * `send_facility`, the care
+  /// center that the message came from, from the MSH-4 segment. For example,
+  /// `send_facility = "ABC"`. Note: The filter will be applied to every message
+  /// in the HL7v2 store whose `send_time` lies in the range defined by the
+  /// `start_time` and the `end_time`. Even if the filter only matches a small
+  /// set of messages, the export operation can still take a long time to finish
+  /// when a lot of messages are between the specified `start_time` and
+  /// `end_time` range.
+  core.String? filter;
+
   /// Export to a Cloud Storage destination.
   GcsDestination? gcsDestination;
+
+  /// Export messages to a Pub/Sub topic.
+  PubsubDestination? pubsubDestination;
 
   /// The start of the range in `send_time` (MSH.7,
   /// https://www.hl7.org/documentcenter/public_temp_2E58C1F9-1C23-BA17-0C6126475344DA9D/wg/conf/HL7MSH.htm)
@@ -8784,7 +8996,9 @@ class ExportMessagesRequest {
 
   ExportMessagesRequest({
     this.endTime,
+    this.filter,
     this.gcsDestination,
+    this.pubsubDestination,
     this.startTime,
   });
 
@@ -8793,8 +9007,15 @@ class ExportMessagesRequest {
           endTime: json_.containsKey('endTime')
               ? json_['endTime'] as core.String
               : null,
+          filter: json_.containsKey('filter')
+              ? json_['filter'] as core.String
+              : null,
           gcsDestination: json_.containsKey('gcsDestination')
               ? GcsDestination.fromJson(json_['gcsDestination']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          pubsubDestination: json_.containsKey('pubsubDestination')
+              ? PubsubDestination.fromJson(json_['pubsubDestination']
                   as core.Map<core.String, core.dynamic>)
               : null,
           startTime: json_.containsKey('startTime')
@@ -8804,7 +9025,9 @@ class ExportMessagesRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (endTime != null) 'endTime': endTime!,
+        if (filter != null) 'filter': filter!,
         if (gcsDestination != null) 'gcsDestination': gcsDestination!,
+        if (pubsubDestination != null) 'pubsubDestination': pubsubDestination!,
         if (startTime != null) 'startTime': startTime!,
       };
 }
@@ -8996,6 +9219,70 @@ class FhirFilter {
       };
 }
 
+/// Contains the configuration for FHIR notifications.
+class FhirNotificationConfig {
+  /// The [Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that
+  /// notifications of changes are published on.
+  ///
+  /// Supplied by the client. The notification is a `PubsubMessage` with the
+  /// following fields: * `PubsubMessage.Data` contains the resource name. *
+  /// `PubsubMessage.MessageId` is the ID of this notification. It is guaranteed
+  /// to be unique within the topic. * `PubsubMessage.PublishTime` is the time
+  /// when the message was published. Note that notifications are only sent if
+  /// the topic is non-empty.
+  /// [Topic names](https://cloud.google.com/pubsub/docs/overview#names) must be
+  /// scoped to a project. The Cloud Healthcare API service account,
+  /// service-@gcp-sa-healthcare.iam.gserviceaccount.com, must have publisher
+  /// permissions on the given Pub/Sub topic. Not having adequate permissions
+  /// causes the calls that send notifications to fail
+  /// (https://cloud.google.com/healthcare-api/docs/permissions-healthcare-api-gcp-products#dicom_fhir_and_hl7v2_store_cloud_pubsub_permissions).
+  /// If a notification can't be published to Pub/Sub, errors are logged to
+  /// Cloud Logging. For more information, see
+  /// [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare-api/docs/how-tos/logging).
+  core.String? pubsubTopic;
+
+  /// Whether to send full FHIR resource to this Pub/Sub topic.
+  core.bool? sendFullResource;
+
+  /// Whether to send full FHIR resource to this Pub/Sub topic for deleting FHIR
+  /// resource.
+  ///
+  /// Note that setting this to true does not guarantee that all previous
+  /// resources will be sent in the format of full FHIR resource. When a
+  /// resource change is too large or during heavy traffic, only the resource
+  /// name will be sent. Clients should always check the "payloadType" label
+  /// from a Pub/Sub message to determine whether it needs to fetch the full
+  /// previous resource as a separate operation.
+  core.bool? sendPreviousResourceOnDelete;
+
+  FhirNotificationConfig({
+    this.pubsubTopic,
+    this.sendFullResource,
+    this.sendPreviousResourceOnDelete,
+  });
+
+  FhirNotificationConfig.fromJson(core.Map json_)
+      : this(
+          pubsubTopic: json_.containsKey('pubsubTopic')
+              ? json_['pubsubTopic'] as core.String
+              : null,
+          sendFullResource: json_.containsKey('sendFullResource')
+              ? json_['sendFullResource'] as core.bool
+              : null,
+          sendPreviousResourceOnDelete:
+              json_.containsKey('sendPreviousResourceOnDelete')
+                  ? json_['sendPreviousResourceOnDelete'] as core.bool
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (pubsubTopic != null) 'pubsubTopic': pubsubTopic!,
+        if (sendFullResource != null) 'sendFullResource': sendFullResource!,
+        if (sendPreviousResourceOnDelete != null)
+          'sendPreviousResourceOnDelete': sendPreviousResourceOnDelete!,
+      };
+}
+
 /// Represents a FHIR store.
 class FhirStore {
   /// Enable parsing of references within complex FHIR data types such as
@@ -9080,13 +9367,22 @@ class FhirStore {
   /// Output only.
   core.String? name;
 
-  /// If non-empty, publish all resource modifications of this FHIR store to
-  /// this destination.
+  /// Use `notification_configs` instead.
   ///
-  /// The Pub/Sub message attributes contain a map with a string describing the
-  /// action that has triggered the notification. For example,
-  /// "action":"CreateResource".
+  /// If non-empty, publish all resource modifications of this FHIR store to
+  /// this destination. The Pub/Sub message attributes contain a map with a
+  /// string describing the action that has triggered the notification. For
+  /// example, "action":"CreateResource".
+  ///
+  /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   NotificationConfig? notificationConfig;
+
+  /// Specifies where and whether to send notifications upon changes to a FHIR
+  /// store.
+  core.List<FhirNotificationConfig>? notificationConfigs;
 
   /// A list of streaming configs that configure the destinations of streaming
   /// export for every resource mutation in this FHIR store.
@@ -9133,6 +9429,7 @@ class FhirStore {
     this.labels,
     this.name,
     this.notificationConfig,
+    this.notificationConfigs,
     this.streamConfigs,
     this.validationConfig,
     this.version,
@@ -9161,9 +9458,9 @@ class FhirStore {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -9171,6 +9468,12 @@ class FhirStore {
           notificationConfig: json_.containsKey('notificationConfig')
               ? NotificationConfig.fromJson(json_['notificationConfig']
                   as core.Map<core.String, core.dynamic>)
+              : null,
+          notificationConfigs: json_.containsKey('notificationConfigs')
+              ? (json_['notificationConfigs'] as core.List)
+                  .map((value) => FhirNotificationConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
               : null,
           streamConfigs: json_.containsKey('streamConfigs')
               ? (json_['streamConfigs'] as core.List)
@@ -9202,9 +9505,81 @@ class FhirStore {
         if (name != null) 'name': name!,
         if (notificationConfig != null)
           'notificationConfig': notificationConfig!,
+        if (notificationConfigs != null)
+          'notificationConfigs': notificationConfigs!,
         if (streamConfigs != null) 'streamConfigs': streamConfigs!,
         if (validationConfig != null) 'validationConfig': validationConfig!,
         if (version != null) 'version': version!,
+      };
+}
+
+/// Count of resources and total storage size by type for a given FHIR store.
+class FhirStoreMetric {
+  /// The total count of FHIR resources in the store of this resource type.
+  core.String? count;
+
+  /// The FHIR resource type this metric applies to.
+  core.String? resourceType;
+
+  /// The total amount of structured storage used by FHIR resources of this
+  /// resource type in the store.
+  core.String? structuredStorageSizeBytes;
+
+  FhirStoreMetric({
+    this.count,
+    this.resourceType,
+    this.structuredStorageSizeBytes,
+  });
+
+  FhirStoreMetric.fromJson(core.Map json_)
+      : this(
+          count:
+              json_.containsKey('count') ? json_['count'] as core.String : null,
+          resourceType: json_.containsKey('resourceType')
+              ? json_['resourceType'] as core.String
+              : null,
+          structuredStorageSizeBytes:
+              json_.containsKey('structuredStorageSizeBytes')
+                  ? json_['structuredStorageSizeBytes'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (count != null) 'count': count!,
+        if (resourceType != null) 'resourceType': resourceType!,
+        if (structuredStorageSizeBytes != null)
+          'structuredStorageSizeBytes': structuredStorageSizeBytes!,
+      };
+}
+
+/// List of metrics for a given FHIR store.
+class FhirStoreMetrics {
+  /// List of FhirStoreMetric by resource type.
+  core.List<FhirStoreMetric>? metrics;
+
+  /// The resource name of the FHIR store to get metrics for, in the format
+  /// `projects/{project_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
+  core.String? name;
+
+  FhirStoreMetrics({
+    this.metrics,
+    this.name,
+  });
+
+  FhirStoreMetrics.fromJson(core.Map json_)
+      : this(
+          metrics: json_.containsKey('metrics')
+              ? (json_['metrics'] as core.List)
+                  .map((value) => FhirStoreMetric.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (metrics != null) 'metrics': metrics!,
+        if (name != null) 'name': name!,
       };
 }
 
@@ -9586,6 +9961,52 @@ class GoogleCloudHealthcareV1DicomGcsSource {
       };
 }
 
+/// StreamConfig specifies configuration for a streaming DICOM export.
+class GoogleCloudHealthcareV1DicomStreamConfig {
+  /// Results are appended to this table.
+  ///
+  /// The server creates a new table in the given BigQuery dataset if the
+  /// specified table does not exist. To enable the Cloud Healthcare API to
+  /// write to your BigQuery table, you must give the Cloud Healthcare API
+  /// service account the bigquery.dataEditor role. The service account is:
+  /// `service-{PROJECT_NUMBER}@gcp-sa-healthcare.iam.gserviceaccount.com`. The
+  /// PROJECT_NUMBER identifies the project that the DICOM store resides in. To
+  /// get the project number, go to the Cloud Console Dashboard. It is
+  /// recommended to not have a custom schema in the destination table which
+  /// could conflict with the schema created by the Cloud Healthcare API.
+  /// Instance deletions are not applied to the destination table. The
+  /// destination's table schema will be automatically updated in case a new
+  /// instance's data is incompatible with the current schema. The schema should
+  /// not be updated manually as this can cause incompatibilies that cannot be
+  /// resolved automatically. One resolution in this case is to delete the
+  /// incompatible table and let the server recreate one, though the newly
+  /// created table only contains data after the table recreation. BigQuery
+  /// imposes a 1 MB limit on streaming insert row size, therefore any instance
+  /// that generates more than 1 MB of BigQuery data will not be streamed. If an
+  /// instance cannot be streamed to BigQuery, errors will be logged to Cloud
+  /// Logging (see
+  /// [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
+  GoogleCloudHealthcareV1DicomBigQueryDestination? bigqueryDestination;
+
+  GoogleCloudHealthcareV1DicomStreamConfig({
+    this.bigqueryDestination,
+  });
+
+  GoogleCloudHealthcareV1DicomStreamConfig.fromJson(core.Map json_)
+      : this(
+          bigqueryDestination: json_.containsKey('bigqueryDestination')
+              ? GoogleCloudHealthcareV1DicomBigQueryDestination.fromJson(
+                  json_['bigqueryDestination']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bigqueryDestination != null)
+          'bigqueryDestination': bigqueryDestination!,
+      };
+}
+
 /// The configuration for exporting to BigQuery.
 class GoogleCloudHealthcareV1FhirBigQueryDestination {
   /// BigQuery URI to an existing dataset, up to 2000 characters long, in the
@@ -9730,10 +10151,10 @@ class Hl7SchemaConfig {
               ? (json_['messageSchemaConfigs']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     SchemaGroup.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -9929,9 +10350,9 @@ class Hl7V2Store {
       : this(
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -10292,6 +10713,55 @@ class IngestMessageResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (hl7Ack != null) 'hl7Ack': hl7Ack!,
         if (message != null) 'message': message!,
+      };
+}
+
+/// Include to use an existing data crypto key wrapped by KMS.
+///
+/// The wrapped key must be a 128-, 192-, or 256-bit key. The key must grant the
+/// Cloud IAM permission `cloudkms.cryptoKeyVersions.useToDecrypt` to the
+/// project's Cloud Healthcare Service Agent service account. For more
+/// information, see
+/// [Creating a wrapped key](https://cloud.google.com/dlp/docs/create-wrapped-key).
+class KmsWrappedCryptoKey {
+  /// The resource name of the KMS CryptoKey to use for unwrapping.
+  ///
+  /// For example,
+  /// `projects/{project_id}/locations/{location_id}/keyRings/{keyring}/cryptoKeys/{key}`.
+  ///
+  /// Required.
+  core.String? cryptoKey;
+
+  /// The wrapped data crypto key.
+  ///
+  /// Required.
+  core.String? wrappedKey;
+  core.List<core.int> get wrappedKeyAsBytes =>
+      convert.base64.decode(wrappedKey!);
+
+  set wrappedKeyAsBytes(core.List<core.int> bytes_) {
+    wrappedKey =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  KmsWrappedCryptoKey({
+    this.cryptoKey,
+    this.wrappedKey,
+  });
+
+  KmsWrappedCryptoKey.fromJson(core.Map json_)
+      : this(
+          cryptoKey: json_.containsKey('cryptoKey')
+              ? json_['cryptoKey'] as core.String
+              : null,
+          wrappedKey: json_.containsKey('wrappedKey')
+              ? json_['wrappedKey'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cryptoKey != null) 'cryptoKey': cryptoKey!,
+        if (wrappedKey != null) 'wrappedKey': wrappedKey!,
       };
 }
 
@@ -10771,7 +11241,7 @@ class ListUserDataMappingsResponse {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
+/// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
 /// A complete HL7v2 message.
@@ -10862,9 +11332,9 @@ class Message {
           data: json_.containsKey('data') ? json_['data'] as core.String : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -10931,8 +11401,14 @@ class NotificationConfig {
   /// for specific details.
   core.String? pubsubTopic;
 
+  /// Indicates whether or not to send Pub/Sub notifications on bulk import.
+  ///
+  /// Only supported for DICOM imports.
+  core.bool? sendForBulkImport;
+
   NotificationConfig({
     this.pubsubTopic,
+    this.sendForBulkImport,
   });
 
   NotificationConfig.fromJson(core.Map json_)
@@ -10940,10 +11416,14 @@ class NotificationConfig {
           pubsubTopic: json_.containsKey('pubsubTopic')
               ? json_['pubsubTopic'] as core.String
               : null,
+          sendForBulkImport: json_.containsKey('sendForBulkImport')
+              ? json_['sendForBulkImport'] as core.bool
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (pubsubTopic != null) 'pubsubTopic': pubsubTopic!,
+        if (sendForBulkImport != null) 'sendForBulkImport': sendForBulkImport!,
       };
 }
 
@@ -11085,6 +11565,12 @@ class ParserConfig {
   /// segment starts with the MSH-2 field and the field numbers are off-by-one
   /// with respect to the HL7 standard.
   /// - "V2" : The `parsed_data` includes every given non-empty message field.
+  /// - "V3" : This version is the same as V2, with the following change. The
+  /// `parsed_data` contains unescaped escaped field separators, component
+  /// separators, sub-component separators, repetition separators, escape
+  /// characters, and truncation characters. If `schema` is specified, the
+  /// schematized parser uses improved parsing heuristics compared to previous
+  /// versions.
   core.String? version;
 
   ParserConfig({
@@ -11268,6 +11754,42 @@ class Policy {
       };
 }
 
+/// The Pub/Sub output destination.
+///
+/// The Cloud Healthcare Service Agent requires the `roles/pubsub.publisher`
+/// Cloud IAM role on the Pub/Sub topic.
+class PubsubDestination {
+  /// The [Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that Pub/Sub
+  /// messages are published on.
+  ///
+  /// Supplied by the client. The `PubsubMessage` contains the following fields:
+  /// * `PubsubMessage.Data` contains the resource name. *
+  /// `PubsubMessage.MessageId` is the ID of this notification. It is guaranteed
+  /// to be unique within the topic. * `PubsubMessage.PublishTime` is the time
+  /// when the message was published.
+  /// [Topic names](https://cloud.google.com/pubsub/docs/overview#names) must be
+  /// scoped to a project. The Cloud Healthcare API service account,
+  /// service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com, must
+  /// have publisher permissions on the given Pub/Sub topic. Not having adequate
+  /// permissions causes the calls that send notifications to fail.
+  core.String? pubsubTopic;
+
+  PubsubDestination({
+    this.pubsubTopic,
+  });
+
+  PubsubDestination.fromJson(core.Map json_)
+      : this(
+          pubsubTopic: json_.containsKey('pubsubTopic')
+              ? json_['pubsubTopic'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (pubsubTopic != null) 'pubsubTopic': pubsubTopic!,
+      };
+}
+
 /// Queries all data_ids that are consented for a given use in the given consent
 /// store and writes them to a specified destination.
 ///
@@ -11312,9 +11834,9 @@ class QueryAccessibleDataRequest {
               ? (json_['requestAttributes']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -11322,9 +11844,9 @@ class QueryAccessibleDataRequest {
               ? (json_['resourceAttributes']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -11430,10 +11952,10 @@ class Result {
           consentDetails: json_.containsKey('consentDetails')
               ? (json_['consentDetails'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     ConsentEvaluation.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -11485,6 +12007,10 @@ class RevokeConsentRequest {
 ///
 /// Determines how the server generates the schema.
 class SchemaConfig {
+  /// The configuration for exported BigQuery tables to be partitioned by FHIR
+  /// resource's last updated time column.
+  TimePartitioning? lastUpdatedPartitionConfig;
+
   /// The depth for all recursive structures in the output analytics schema.
   ///
   /// For example, `concept` in the CodeSystem resource is a recursive
@@ -11506,19 +12032,29 @@ class SchemaConfig {
   /// the server will not generate schemas for fields of type `Resource`, which
   /// can hold any resource type. The affected fields are
   /// `Parameters.parameter.resource`, `Bundle.entry.resource`, and
-  /// `Bundle.entry.response.outcome`.
+  /// `Bundle.entry.response.outcome`. Analytics schema does not gracefully
+  /// handle extensions with one or more occurrences, anaytics schema also does
+  /// not handle contained resource.
   /// - "ANALYTICS_V2" : Analytics V2, similar to schema defined by the FHIR
   /// community, with added support for extensions with one or more occurrences
-  /// and contained resources in stringified JSON.
+  /// and contained resources in stringified JSON. Analytics V2 uses more space
+  /// in the destination table than Analytics V1. It is generally recommended to
+  /// use Analytics V2 over Analytics.
   core.String? schemaType;
 
   SchemaConfig({
+    this.lastUpdatedPartitionConfig,
     this.recursiveStructureDepth,
     this.schemaType,
   });
 
   SchemaConfig.fromJson(core.Map json_)
       : this(
+          lastUpdatedPartitionConfig: json_
+                  .containsKey('lastUpdatedPartitionConfig')
+              ? TimePartitioning.fromJson(json_['lastUpdatedPartitionConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           recursiveStructureDepth: json_.containsKey('recursiveStructureDepth')
               ? json_['recursiveStructureDepth'] as core.String
               : null,
@@ -11528,6 +12064,8 @@ class SchemaConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (lastUpdatedPartitionConfig != null)
+          'lastUpdatedPartitionConfig': lastUpdatedPartitionConfig!,
         if (recursiveStructureDepth != null)
           'recursiveStructureDepth': recursiveStructureDepth!,
         if (schemaType != null) 'schemaType': schemaType!,
@@ -11811,9 +12349,9 @@ class Segment {
       : this(
           fields: json_.containsKey('fields')
               ? (json_['fields'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -11907,9 +12445,9 @@ class Signature {
               : null,
           metadata: json_.containsKey('metadata')
               ? (json_['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -11973,6 +12511,25 @@ class StreamConfig {
   /// [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
   GoogleCloudHealthcareV1FhirBigQueryDestination? bigqueryDestination;
 
+  /// The destination FHIR store for de-identified resources.
+  ///
+  /// After this field is added, all subsequent creates/updates/patches to the
+  /// source store will be de-identified using the provided configuration and
+  /// applied to the destination store. Importing resources to the source store
+  /// will not trigger the streaming. If the source store already contains
+  /// resources when this option is enabled, those resources will not be copied
+  /// to the destination store unless they are subsequently updated. This may
+  /// result in invalid references in the destination store. Before adding this
+  /// config, you must grant the healthcare.fhirResources.update permission on
+  /// the destination store to your project's **Cloud Healthcare Service Agent**
+  /// [service account](https://cloud.google.com/healthcare/docs/how-tos/permissions-healthcare-api-gcp-products#the_cloud_healthcare_service_agent).
+  /// The destination store must set enable_update_create to true. The
+  /// destination store must have disable_referential_integrity set to true. If
+  /// a resource cannot be de-identified, errors will be logged to Cloud Logging
+  /// (see
+  /// [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
+  DeidentifiedStoreDestination? deidentifiedStoreDestination;
+
   /// Supply a FHIR resource type (such as "Patient" or "Observation").
   ///
   /// See https://www.hl7.org/fhir/valueset-resource-types.html for a list of
@@ -11982,6 +12539,7 @@ class StreamConfig {
 
   StreamConfig({
     this.bigqueryDestination,
+    this.deidentifiedStoreDestination,
     this.resourceTypes,
   });
 
@@ -11992,6 +12550,12 @@ class StreamConfig {
                   json_['bigqueryDestination']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          deidentifiedStoreDestination:
+              json_.containsKey('deidentifiedStoreDestination')
+                  ? DeidentifiedStoreDestination.fromJson(
+                      json_['deidentifiedStoreDestination']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           resourceTypes: json_.containsKey('resourceTypes')
               ? (json_['resourceTypes'] as core.List)
                   .map((value) => value as core.String)
@@ -12002,6 +12566,8 @@ class StreamConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (bigqueryDestination != null)
           'bigqueryDestination': bigqueryDestination!,
+        if (deidentifiedStoreDestination != null)
+          'deidentifiedStoreDestination': deidentifiedStoreDestination!,
         if (resourceTypes != null) 'resourceTypes': resourceTypes!,
       };
 }
@@ -12042,15 +12608,38 @@ typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 typedef TestIamPermissionsResponse = $PermissionsResponse;
 
 class TextConfig {
+  /// Transformations to apply to the detected data, overridden by
+  /// `exclude_info_types`.
+  core.List<InfoTypeTransformation>? additionalTransformations;
+
+  /// InfoTypes to skip transforming, overriding `additional_transformations`.
+  core.List<core.String>? excludeInfoTypes;
+
   /// The transformations to apply to the detected data.
+  ///
+  /// Deprecated. Use `additional_transformations` instead.
   core.List<InfoTypeTransformation>? transformations;
 
   TextConfig({
+    this.additionalTransformations,
+    this.excludeInfoTypes,
     this.transformations,
   });
 
   TextConfig.fromJson(core.Map json_)
       : this(
+          additionalTransformations:
+              json_.containsKey('additionalTransformations')
+                  ? (json_['additionalTransformations'] as core.List)
+                      .map((value) => InfoTypeTransformation.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+          excludeInfoTypes: json_.containsKey('excludeInfoTypes')
+              ? (json_['excludeInfoTypes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           transformations: json_.containsKey('transformations')
               ? (json_['transformations'] as core.List)
                   .map((value) => InfoTypeTransformation.fromJson(
@@ -12060,6 +12649,9 @@ class TextConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (additionalTransformations != null)
+          'additionalTransformations': additionalTransformations!,
+        if (excludeInfoTypes != null) 'excludeInfoTypes': excludeInfoTypes!,
         if (transformations != null) 'transformations': transformations!,
       };
 }
@@ -12090,6 +12682,39 @@ class TextSpan {
   core.Map<core.String, core.dynamic> toJson() => {
         if (beginOffset != null) 'beginOffset': beginOffset!,
         if (content != null) 'content': content!,
+      };
+}
+
+/// Configuration for FHIR BigQuery time-partitioned tables.
+class TimePartitioning {
+  /// Number of milliseconds for which to keep the storage for a partition.
+  core.String? expirationMs;
+
+  /// Type of partitioning.
+  /// Possible string values are:
+  /// - "PARTITION_TYPE_UNSPECIFIED" : Default unknown time.
+  /// - "HOUR" : Data partitioned by hour.
+  /// - "DAY" : Data partitioned by day.
+  /// - "MONTH" : Data partitioned by month.
+  /// - "YEAR" : Data partitioned by year.
+  core.String? type;
+
+  TimePartitioning({
+    this.expirationMs,
+    this.type,
+  });
+
+  TimePartitioning.fromJson(core.Map json_)
+      : this(
+          expirationMs: json_.containsKey('expirationMs')
+              ? json_['expirationMs'] as core.String
+              : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (expirationMs != null) 'expirationMs': expirationMs!,
+        if (type != null) 'type': type!,
       };
 }
 

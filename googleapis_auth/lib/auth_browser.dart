@@ -11,18 +11,24 @@ import 'src/auth_functions.dart';
 import 'src/auth_http_utils.dart';
 import 'src/http_client_base.dart';
 import 'src/oauth2_flows/implicit.dart';
+import 'src/oauth2_flows/token_model.dart';
 import 'src/service_account_credentials.dart';
 
 export 'googleapis_auth.dart';
 export 'src/authentication_exception.dart' show AuthenticationException;
 export 'src/oauth2_flows/token_model.dart'
     show
+        CodeResponse,
         requestAccessCredentials,
         requestAuthorizationCode,
-        revokeConsent,
-        CodeResponse;
+        revokeConsent;
 
 /// Will create and complete with a [BrowserOAuth2Flow] object.
+///
+/// {@template googleapis_auth_gis_deprecated}
+/// This member is *deprecated*. Use [requestAccessCredentials] or
+/// [requestAuthorizationCode] instead.
+/// {@endtemplate}
 ///
 /// This function will perform an implicit browser based oauth2 flow.
 ///
@@ -42,6 +48,10 @@ export 'src/oauth2_flows/token_model.dart'
 ///
 /// {@macro googleapis_auth_close_the_client}
 /// {@macro googleapis_auth_not_close_the_baseClient}
+@Deprecated(
+  'This member is deprecated. Use requestAccessCredentials or '
+  'requestAuthorizationCode instead.',
+)
 Future<BrowserOAuth2Flow> createImplicitBrowserFlow(
   ClientId clientId,
   List<String> scopes, {
@@ -50,7 +60,7 @@ Future<BrowserOAuth2Flow> createImplicitBrowserFlow(
     'Undocumented feature. May help debugging. '
     'Do not include in production code.',
   )
-      bool enableDebugLogs = false,
+  bool enableDebugLogs = false,
 }) async {
   final refCountedClient = baseClient == null
       ? RefCountedClient(BrowserClient())
@@ -69,6 +79,8 @@ Future<BrowserOAuth2Flow> createImplicitBrowserFlow(
 
 /// Used for obtaining oauth2 access credentials.
 ///
+/// {@macro googleapis_auth_gis_deprecated}
+///
 /// Warning:
 ///
 /// The methods [obtainAccessCredentialsViaUserConsent] and
@@ -79,6 +91,10 @@ Future<BrowserOAuth2Flow> createImplicitBrowserFlow(
 /// methods should only be called inside an event handler, since most
 /// browsers do not block popup windows created in response to a user
 /// interaction.
+@Deprecated(
+  'This member is deprecated. Use requestAccessCredentials or '
+  'requestAuthorizationCode instead.',
+)
 class BrowserOAuth2Flow {
   final ImplicitFlow _flow;
   final RefCountedClient _client;
@@ -248,6 +264,8 @@ class BrowserOAuth2Flow {
 
 /// Represents the result of running a browser based hybrid flow.
 ///
+/// {@macro googleapis_auth_gis_deprecated}
+///
 /// The `credentials` field holds credentials which can be used on the client
 /// side. The `newClient` function can be used to make a new authenticated HTTP
 /// client using these credentials.
@@ -258,6 +276,10 @@ class BrowserOAuth2Flow {
 /// See the `obtainAccessCredentialsViaCodeExchange` function in the
 /// `googleapis_auth.auth_io` library for more details on how to use the
 /// authorization code.
+@Deprecated(
+  'This member is deprecated. Use requestAccessCredentials or '
+  'requestAuthorizationCode instead.',
+)
 class HybridFlowResult {
   final BrowserOAuth2Flow _flow;
 

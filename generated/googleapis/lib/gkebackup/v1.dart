@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Backup for GKE API - v1
@@ -31,7 +30,7 @@
 ///     - [ProjectsLocationsRestorePlansResource]
 ///       - [ProjectsLocationsRestorePlansRestoresResource]
 ///         - [ProjectsLocationsRestorePlansRestoresVolumeRestoresResource]
-library gkebackup.v1;
+library gkebackup_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -40,7 +39,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -282,8 +280,8 @@ class ProjectsLocationsBackupPlansResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/backupPlans/\[^/\]+$`.
   ///
-  /// [etag] - If provided, this value must match the current value of the
-  /// target BackupPlan's etag field or the request is rejected.
+  /// [etag] - Optional. If provided, this value must match the current value of
+  /// the target BackupPlan's etag field or the request is rejected.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -419,20 +417,21 @@ class ProjectsLocationsBackupPlansResource {
   /// Format: `projects / * /locations / * `
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [filter] - Field match expression used to filter the results.
+  /// [filter] - Optional. Field match expression used to filter the results.
   ///
-  /// [orderBy] - Field by which to sort the results.
+  /// [orderBy] - Optional. Field by which to sort the results.
   ///
-  /// [pageSize] - The target number of results to return in a single response.
-  /// If not specified, a default value will be chosen by the service. Note that
-  /// the response may inclue a partial list and a caller should only rely on
-  /// the response's next_page_token to determine if there are more instances
-  /// left to be queried.
+  /// [pageSize] - Optional. The target number of results to return in a single
+  /// response. If not specified, a default value will be chosen by the service.
+  /// Note that the response may include a partial list and a caller should only
+  /// rely on the response's next_page_token to determine if there are more
+  /// instances left to be queried.
   ///
-  /// [pageToken] - The value of next_page_token received from a previous
-  /// `ListBackupPlans` call. Provide this to retrieve the subsequent page in a
-  /// multi-page list of results. When paginating, all other parameters provided
-  /// to `ListBackupPlans` must match the call that provided the page token.
+  /// [pageToken] - Optional. The value of next_page_token received from a
+  /// previous `ListBackupPlans` call. Provide this to retrieve the subsequent
+  /// page in a multi-page list of results. When paginating, all other
+  /// parameters provided to `ListBackupPlans` must match the call that provided
+  /// the page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -482,14 +481,14 @@ class ProjectsLocationsBackupPlansResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/backupPlans/\[^/\]+$`.
   ///
-  /// [updateMask] - This is used to specify the fields to be overwritten in the
-  /// BackupPlan targeted for update. The values for each of these updated
-  /// fields will be taken from the `backup_plan` provided with this request.
-  /// Field names are relative to the root of the resource (e.g., `description`,
-  /// `backup_config.include_volume_data`, etc.) If no `update_mask` is
-  /// provided, all fields in `backup_plan` will be written to the target
-  /// BackupPlan resource. Note that OUTPUT_ONLY and IMMUTABLE fields in
-  /// `backup_plan` are ignored and are not used to update the target
+  /// [updateMask] - Optional. This is used to specify the fields to be
+  /// overwritten in the BackupPlan targeted for update. The values for each of
+  /// these updated fields will be taken from the `backup_plan` provided with
+  /// this request. Field names are relative to the root of the resource (e.g.,
+  /// `description`, `backup_config.include_volume_data`, etc.) If no
+  /// `update_mask` is provided, all fields in `backup_plan` will be written to
+  /// the target BackupPlan resource. Note that OUTPUT_ONLY and IMMUTABLE fields
+  /// in `backup_plan` are ignored and are not used to update the target
   /// BackupPlan.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -645,11 +644,11 @@ class ProjectsLocationsBackupPlansBackupsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/backupPlans/\[^/\]+$`.
   ///
-  /// [backupId] - The client-provided short name for the Backup resource. This
-  /// name must: - be between 1 and 63 characters long (inclusive) - consist of
-  /// only lower-case ASCII letters, numbers, and dashes - start with a
-  /// lower-case letter - end with a lower-case letter or number - be unique
-  /// within the set of Backups in this BackupPlan
+  /// [backupId] - Optional. The client-provided short name for the Backup
+  /// resource. This name must: - be between 1 and 63 characters long
+  /// (inclusive) - consist of only lower-case ASCII letters, numbers, and
+  /// dashes - start with a lower-case letter - end with a lower-case letter or
+  /// number - be unique within the set of Backups in this BackupPlan
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -694,12 +693,12 @@ class ProjectsLocationsBackupPlansBackupsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/backupPlans/\[^/\]+/backups/\[^/\]+$`.
   ///
-  /// [etag] - If provided, this value must match the current value of the
-  /// target Backup's etag field or the request is rejected.
+  /// [etag] - Optional. If provided, this value must match the current value of
+  /// the target Backup's etag field or the request is rejected.
   ///
-  /// [force] - If set to true, any VolumeBackups below this Backup will also be
-  /// deleted. Otherwise, the request will only succeed if the Backup has no
-  /// VolumeBackups.
+  /// [force] - Optional. If set to true, any VolumeBackups below this Backup
+  /// will also be deleted. Otherwise, the request will only succeed if the
+  /// Backup has no VolumeBackups.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -837,20 +836,21 @@ class ProjectsLocationsBackupPlansBackupsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/backupPlans/\[^/\]+$`.
   ///
-  /// [filter] - Field match expression used to filter the results.
+  /// [filter] - Optional. Field match expression used to filter the results.
   ///
-  /// [orderBy] - Field by which to sort the results.
+  /// [orderBy] - Optional. Field by which to sort the results.
   ///
-  /// [pageSize] - The target number of results to return in a single response.
-  /// If not specified, a default value will be chosen by the service. Note that
-  /// the response may inclue a partial list and a caller should only rely on
-  /// the response's next_page_token to determine if there are more instances
-  /// left to be queried.
+  /// [pageSize] - Optional. The target number of results to return in a single
+  /// response. If not specified, a default value will be chosen by the service.
+  /// Note that the response may include a partial list and a caller should only
+  /// rely on the response's next_page_token to determine if there are more
+  /// instances left to be queried.
   ///
-  /// [pageToken] - The value of next_page_token received from a previous
-  /// `ListBackups` call. Provide this to retrieve the subsequent page in a
-  /// multi-page list of results. When paginating, all other parameters provided
-  /// to `ListBackups` must match the call that provided the page token.
+  /// [pageToken] - Optional. The value of next_page_token received from a
+  /// previous `ListBackups` call. Provide this to retrieve the subsequent page
+  /// in a multi-page list of results. When paginating, all other parameters
+  /// provided to `ListBackups` must match the call that provided the page
+  /// token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -900,13 +900,13 @@ class ProjectsLocationsBackupPlansBackupsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/backupPlans/\[^/\]+/backups/\[^/\]+$`.
   ///
-  /// [updateMask] - This is used to specify the fields to be overwritten in the
-  /// Backup targeted for update. The values for each of these updated fields
-  /// will be taken from the `backup_plan` provided with this request. Field
-  /// names are relative to the root of the resource. If no `update_mask` is
-  /// provided, all fields in `backup` will be written to the target Backup
-  /// resource. Note that OUTPUT_ONLY and IMMUTABLE fields in `backup` are
-  /// ignored and are not used to update the target Backup.
+  /// [updateMask] - Optional. This is used to specify the fields to be
+  /// overwritten in the Backup targeted for update. The values for each of
+  /// these updated fields will be taken from the `backup_plan` provided with
+  /// this request. Field names are relative to the root of the resource. If no
+  /// `update_mask` is provided, all fields in `backup` will be written to the
+  /// target Backup resource. Note that OUTPUT_ONLY and IMMUTABLE fields in
+  /// `backup` are ignored and are not used to update the target Backup.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1153,21 +1153,21 @@ class ProjectsLocationsBackupPlansBackupsVolumeBackupsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/backupPlans/\[^/\]+/backups/\[^/\]+$`.
   ///
-  /// [filter] - Field match expression used to filter the results.
+  /// [filter] - Optional. Field match expression used to filter the results.
   ///
-  /// [orderBy] - Field by which to sort the results.
+  /// [orderBy] - Optional. Field by which to sort the results.
   ///
-  /// [pageSize] - The target number of results to return in a single response.
-  /// If not specified, a default value will be chosen by the service. Note that
-  /// the response may inclue a partial list and a caller should only rely on
-  /// the response's next_page_token to determine if there are more instances
-  /// left to be queried.
+  /// [pageSize] - Optional. The target number of results to return in a single
+  /// response. If not specified, a default value will be chosen by the service.
+  /// Note that the response may include a partial list and a caller should only
+  /// rely on the response's next_page_token to determine if there are more
+  /// instances left to be queried.
   ///
-  /// [pageToken] - The value of next_page_token received from a previous
-  /// `ListVolumeBackups` call. Provide this to retrieve the subsequent page in
-  /// a multi-page list of results. When paginating, all other parameters
-  /// provided to `ListVolumeBackups` must match the call that provided the page
-  /// token.
+  /// [pageToken] - Optional. The value of next_page_token received from a
+  /// previous `ListVolumeBackups` call. Provide this to retrieve the subsequent
+  /// page in a multi-page list of results. When paginating, all other
+  /// parameters provided to `ListVolumeBackups` must match the call that
+  /// provided the page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1404,13 +1404,6 @@ class ProjectsLocationsOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -1527,12 +1520,12 @@ class ProjectsLocationsRestorePlansResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/restorePlans/\[^/\]+$`.
   ///
-  /// [etag] - If provided, this value must match the current value of the
-  /// target RestorePlan's etag field or the request is rejected.
+  /// [etag] - Optional. If provided, this value must match the current value of
+  /// the target RestorePlan's etag field or the request is rejected.
   ///
-  /// [force] - If set to true, any Restores below this RestorePlan will also be
-  /// deleted. Otherwise, the request will only succeed if the RestorePlan has
-  /// no Restores.
+  /// [force] - Optional. If set to true, any Restores below this RestorePlan
+  /// will also be deleted. Otherwise, the request will only succeed if the
+  /// RestorePlan has no Restores.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1670,20 +1663,21 @@ class ProjectsLocationsRestorePlansResource {
   /// Format: `projects / * /locations / * `
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [filter] - Field match expression used to filter the results.
+  /// [filter] - Optional. Field match expression used to filter the results.
   ///
-  /// [orderBy] - Field by which to sort the results.
+  /// [orderBy] - Optional. Field by which to sort the results.
   ///
-  /// [pageSize] - The target number of results to return in a single response.
-  /// If not specified, a default value will be chosen by the service. Note that
-  /// the response may inclue a partial list and a caller should only rely on
-  /// the response's next_page_token to determine if there are more instances
-  /// left to be queried.
+  /// [pageSize] - Optional. The target number of results to return in a single
+  /// response. If not specified, a default value will be chosen by the service.
+  /// Note that the response may include a partial list and a caller should only
+  /// rely on the response's next_page_token to determine if there are more
+  /// instances left to be queried.
   ///
-  /// [pageToken] - The value of next_page_token received from a previous
-  /// `ListRestorePlans` call. Provide this to retrieve the subsequent page in a
-  /// multi-page list of results. When paginating, all other parameters provided
-  /// to `ListRestorePlans` must match the call that provided the page token.
+  /// [pageToken] - Optional. The value of next_page_token received from a
+  /// previous `ListRestorePlans` call. Provide this to retrieve the subsequent
+  /// page in a multi-page list of results. When paginating, all other
+  /// parameters provided to `ListRestorePlans` must match the call that
+  /// provided the page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1733,13 +1727,13 @@ class ProjectsLocationsRestorePlansResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/restorePlans/\[^/\]+$`.
   ///
-  /// [updateMask] - This is used to specify the fields to be overwritten in the
-  /// RestorePlan targeted for update. The values for each of these updated
-  /// fields will be taken from the `restore_plan` provided with this request.
-  /// Field names are relative to the root of the resource. If no `update_mask`
-  /// is provided, all fields in `restore_plan` will be written to the target
-  /// RestorePlan resource. Note that OUTPUT_ONLY and IMMUTABLE fields in
-  /// `restore_plan` are ignored and are not used to update the target
+  /// [updateMask] - Optional. This is used to specify the fields to be
+  /// overwritten in the RestorePlan targeted for update. The values for each of
+  /// these updated fields will be taken from the `restore_plan` provided with
+  /// this request. Field names are relative to the root of the resource. If no
+  /// `update_mask` is provided, all fields in `restore_plan` will be written to
+  /// the target RestorePlan resource. Note that OUTPUT_ONLY and IMMUTABLE
+  /// fields in `restore_plan` are ignored and are not used to update the target
   /// RestorePlan.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1946,12 +1940,12 @@ class ProjectsLocationsRestorePlansRestoresResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/restorePlans/\[^/\]+/restores/\[^/\]+$`.
   ///
-  /// [etag] - If provided, this value must match the current value of the
-  /// target Restore's etag field or the request is rejected.
+  /// [etag] - Optional. If provided, this value must match the current value of
+  /// the target Restore's etag field or the request is rejected.
   ///
-  /// [force] - If set to true, any VolumeRestores below this restore will also
-  /// be deleted. Otherwise, the request will only succeed if the restore has no
-  /// VolumeRestores.
+  /// [force] - Optional. If set to true, any VolumeRestores below this restore
+  /// will also be deleted. Otherwise, the request will only succeed if the
+  /// restore has no VolumeRestores.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2089,20 +2083,21 @@ class ProjectsLocationsRestorePlansRestoresResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/restorePlans/\[^/\]+$`.
   ///
-  /// [filter] - Field match expression used to filter the results.
+  /// [filter] - Optional. Field match expression used to filter the results.
   ///
-  /// [orderBy] - Field by which to sort the results.
+  /// [orderBy] - Optional. Field by which to sort the results.
   ///
-  /// [pageSize] - The target number of results to return in a single response.
-  /// If not specified, a default value will be chosen by the service. Note that
-  /// the response may inclue a partial list and a caller should only rely on
-  /// the response's next_page_token to determine if there are more instances
-  /// left to be queried.
+  /// [pageSize] - Optional. The target number of results to return in a single
+  /// response. If not specified, a default value will be chosen by the service.
+  /// Note that the response may include a partial list and a caller should only
+  /// rely on the response's next_page_token to determine if there are more
+  /// instances left to be queried.
   ///
-  /// [pageToken] - The value of next_page_token received from a previous
-  /// `ListRestores` call. Provide this to retrieve the subsequent page in a
-  /// multi-page list of results. When paginating, all other parameters provided
-  /// to `ListRestores` must match the call that provided the page token.
+  /// [pageToken] - Optional. The value of next_page_token received from a
+  /// previous `ListRestores` call. Provide this to retrieve the subsequent page
+  /// in a multi-page list of results. When paginating, all other parameters
+  /// provided to `ListRestores` must match the call that provided the page
+  /// token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2152,13 +2147,13 @@ class ProjectsLocationsRestorePlansRestoresResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/restorePlans/\[^/\]+/restores/\[^/\]+$`.
   ///
-  /// [updateMask] - This is used to specify the fields to be overwritten in the
-  /// Restore targeted for update. The values for each of these updated fields
-  /// will be taken from the `restore` provided with this request. Field names
-  /// are relative to the root of the resource. If no `update_mask` is provided,
-  /// all fields in `restore` will be written to the target Restore resource.
-  /// Note that OUTPUT_ONLY and IMMUTABLE fields in `restore` are ignored and
-  /// are not used to update the target Restore.
+  /// [updateMask] - Optional. This is used to specify the fields to be
+  /// overwritten in the Restore targeted for update. The values for each of
+  /// these updated fields will be taken from the `restore` provided with this
+  /// request. Field names are relative to the root of the resource. If no
+  /// `update_mask` is provided, all fields in `restore` will be written to the
+  /// target Restore resource. Note that OUTPUT_ONLY and IMMUTABLE fields in
+  /// `restore` are ignored and are not used to update the target Restore.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2405,21 +2400,21 @@ class ProjectsLocationsRestorePlansRestoresVolumeRestoresResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/restorePlans/\[^/\]+/restores/\[^/\]+$`.
   ///
-  /// [filter] - Field match expression used to filter the results.
+  /// [filter] - Optional. Field match expression used to filter the results.
   ///
-  /// [orderBy] - Field by which to sort the results.
+  /// [orderBy] - Optional. Field by which to sort the results.
   ///
-  /// [pageSize] - The target number of results to return in a single response.
-  /// If not specified, a default value will be chosen by the service. Note that
-  /// the response may inclue a partial list and a caller should only rely on
-  /// the response's next_page_token to determine if there are more instances
-  /// left to be queried.
+  /// [pageSize] - Optional. The target number of results to return in a single
+  /// response. If not specified, a default value will be chosen by the service.
+  /// Note that the response may include a partial list and a caller should only
+  /// rely on the response's next_page_token to determine if there are more
+  /// instances left to be queried.
   ///
-  /// [pageToken] - The value of next_page_token received from a previous
-  /// `ListVolumeRestores` call. Provide this to retrieve the subsequent page in
-  /// a multi-page list of results. When paginating, all other parameters
-  /// provided to `ListVolumeRestores` must match the call that provided the
-  /// page token.
+  /// [pageToken] - Optional. The value of next_page_token received from a
+  /// previous `ListVolumeRestores` call. Provide this to retrieve the
+  /// subsequent page in a multi-page list of results. When paginating, all
+  /// other parameters provided to `ListVolumeRestores` must match the call that
+  /// provided the page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2621,7 +2616,7 @@ typedef AuditLogConfig = $AuditLogConfig;
 /// itself, and an anchor for the underlying artifacts that comprise the Backup
 /// (the config backup and VolumeBackups).
 ///
-/// Next id: 28
+/// Next id: 29
 class Backup {
   /// If True, all namespaces were included in the Backup.
   ///
@@ -2670,6 +2665,8 @@ class Backup {
   /// integer value between 0-90 (inclusive). Defaults to parent BackupPlan's
   /// backup_delete_lock_days setting and may only be increased (either at
   /// creation time or in a subsequent update).
+  ///
+  /// Optional.
   core.int? deleteLockDays;
 
   /// The time at which an existing delete lock will expire for this backup
@@ -2679,6 +2676,8 @@ class Backup {
   core.String? deleteLockExpireTime;
 
   /// User specified descriptive string for this Backup.
+  ///
+  /// Optional.
   core.String? description;
 
   /// The customer managed encryption key that was used to encrypt the Backup's
@@ -2703,6 +2702,8 @@ class Backup {
   core.String? etag;
 
   /// A set of custom labels supplied by user.
+  ///
+  /// Optional.
   core.Map<core.String, core.String>? labels;
 
   /// This flag indicates whether this Backup resource was created manually by a
@@ -2736,6 +2737,8 @@ class Backup {
   /// for this Backup. - If not 0, this must be \>= delete_lock_days and \<=
   /// 365. Once a Backup is created, this value may only be increased. Defaults
   /// to the parent BackupPlan's backup_retain_days value.
+  ///
+  /// Optional.
   core.int? retainDays;
 
   /// The time at which this Backup will be automatically deleted (calculated
@@ -2868,9 +2871,9 @@ class Backup {
           etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -2961,18 +2964,24 @@ class BackupConfig {
   /// via this plan.
   ///
   /// Default (empty): Config backup artifacts will not be encrypted.
+  ///
+  /// Optional.
   EncryptionKey? encryptionKey;
 
   /// This flag specifies whether Kubernetes Secret resources should be included
   /// when they fall into the scope of Backups.
   ///
   /// Default: False
+  ///
+  /// Optional.
   core.bool? includeSecrets;
 
   /// This flag specifies whether volume data should be backed up when PVCs are
   /// included in the scope of a Backup.
   ///
   /// Default: False
+  ///
+  /// Optional.
   core.bool? includeVolumeData;
 
   /// If set, include just the resources referenced by the listed
@@ -3031,9 +3040,13 @@ class BackupConfig {
 /// Defines the configuration and scheduling for a "line" of Backups.
 class BackupPlan {
   /// Defines the configuration of Backups created via this BackupPlan.
+  ///
+  /// Optional.
   BackupConfig? backupConfig;
 
   /// Defines a schedule for automatic Backup creation via this BackupPlan.
+  ///
+  /// Optional.
   Schedule? backupSchedule;
 
   /// The source cluster from which Backups will be created via this BackupPlan.
@@ -3055,9 +3068,13 @@ class BackupPlan {
   /// updates will be allowed (except deletes), including the deactivated field
   /// itself. It also prevents any new Backups from being created via this
   /// BackupPlan (including scheduled Backups). Default: False
+  ///
+  /// Optional.
   core.bool? deactivated;
 
   /// User specified descriptive string for this BackupPlan.
+  ///
+  /// Optional.
   core.String? description;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
@@ -3074,6 +3091,8 @@ class BackupPlan {
   core.String? etag;
 
   /// A set of custom labels supplied by user.
+  ///
+  /// Optional.
   core.Map<core.String, core.String>? labels;
 
   /// The full name of the BackupPlan resource.
@@ -3090,7 +3109,32 @@ class BackupPlan {
   core.int? protectedPodCount;
 
   /// RetentionPolicy governs lifecycle of Backups created under this plan.
+  ///
+  /// Optional.
   RetentionPolicy? retentionPolicy;
+
+  /// State of the BackupPlan.
+  ///
+  /// This State field reflects the various stages a BackupPlan can be in during
+  /// the Create operation. It will be set to "DEACTIVATED" if the BackupPlan is
+  /// deactivated on an Update
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default first value for Enums.
+  /// - "CLUSTER_PENDING" : Waiting for cluster state to be RUNNING.
+  /// - "PROVISIONING" : The BackupPlan is in the process of being created.
+  /// - "READY" : The BackupPlan has successfully been created and is ready for
+  /// Backups.
+  /// - "FAILED" : BackupPlan creation has failed.
+  /// - "DEACTIVATED" : The BackupPlan has been deactivated.
+  /// - "DELETING" : The BackupPlan is in the process of being deleted.
+  core.String? state;
+
+  /// Human-readable description of why BackupPlan is in the current `state`
+  ///
+  /// Output only.
+  core.String? stateReason;
 
   /// Server generated global unique identifier of
   /// [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)
@@ -3116,6 +3160,8 @@ class BackupPlan {
     this.name,
     this.protectedPodCount,
     this.retentionPolicy,
+    this.state,
+    this.stateReason,
     this.uid,
     this.updateTime,
   });
@@ -3145,9 +3191,9 @@ class BackupPlan {
           etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -3158,6 +3204,11 @@ class BackupPlan {
           retentionPolicy: json_.containsKey('retentionPolicy')
               ? RetentionPolicy.fromJson(json_['retentionPolicy']
                   as core.Map<core.String, core.dynamic>)
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          stateReason: json_.containsKey('stateReason')
+              ? json_['stateReason'] as core.String
               : null,
           uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
           updateTime: json_.containsKey('updateTime')
@@ -3177,6 +3228,8 @@ class BackupPlan {
         if (name != null) 'name': name!,
         if (protectedPodCount != null) 'protectedPodCount': protectedPodCount!,
         if (retentionPolicy != null) 'retentionPolicy': retentionPolicy!,
+        if (state != null) 'state': state!,
+        if (stateReason != null) 'stateReason': stateReason!,
         if (uid != null) 'uid': uid!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
@@ -3201,16 +3254,20 @@ class Binding {
   /// identifier that represents anyone who is on the internet; with or without
   /// a Google account. * `allAuthenticatedUsers`: A special identifier that
   /// represents anyone who is authenticated with a Google account or a service
-  /// account. * `user:{emailid}`: An email address that represents a specific
-  /// Google account. For example, `alice@example.com` . *
-  /// `serviceAccount:{emailid}`: An email address that represents a Google
-  /// service account. For example, `my-other-app@appspot.gserviceaccount.com`.
-  /// * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`:
-  /// An identifier for a
+  /// account. Does not include identities that come from external identity
+  /// providers (IdPs) through identity federation. * `user:{emailid}`: An email
+  /// address that represents a specific Google account. For example,
+  /// `alice@example.com` . * `serviceAccount:{emailid}`: An email address that
+  /// represents a Google service account. For example,
+  /// `my-other-app@appspot.gserviceaccount.com`. *
+  /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An
+  /// identifier for a
   /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
   /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
-  /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
+  /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
+  /// (primary) that represents all the users of that domain. For example,
+  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
   /// An email address (plus unique identifier) representing a user that has
   /// been recently deleted. For example,
   /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
@@ -3226,9 +3283,7 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
-  /// that represents all the users of that domain. For example, `google.com` or
-  /// `example.com`.
+  /// the role in the binding.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
@@ -3266,9 +3321,13 @@ class Binding {
 /// Information about the GKE cluster from which this Backup was created.
 class ClusterMetadata {
   /// Anthos version
+  ///
+  /// Output only.
   core.String? anthosVersion;
 
   /// A list of the Backup for GKE CRD versions found in the cluster.
+  ///
+  /// Output only.
   core.Map<core.String, core.String>? backupCrdVersions;
 
   /// The source cluster from which this Backup was created.
@@ -3276,12 +3335,18 @@ class ClusterMetadata {
   /// Valid formats: - `projects / * /locations / * /clusters / * ` - `projects
   /// / * /zones / * /clusters / * ` This is inherited from the parent
   /// BackupPlan's cluster field.
+  ///
+  /// Output only.
   core.String? cluster;
 
   /// GKE version
+  ///
+  /// Output only.
   core.String? gkeVersion;
 
   /// The Kubernetes server version of the source cluster.
+  ///
+  /// Output only.
   core.String? k8sVersion;
 
   ClusterMetadata({
@@ -3301,9 +3366,9 @@ class ClusterMetadata {
               ? (json_['backupCrdVersions']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -3327,22 +3392,72 @@ class ClusterMetadata {
       };
 }
 
-/// Identifies the cluster-scoped resources to restore from the Backup.
+/// Defines the scope of cluster-scoped resources to restore.
+///
+/// Some group kinds are not reasonable choices for a restore, and will cause an
+/// error if selected here. Any scope selection that would restore "all valid"
+/// resources automatically excludes these group kinds. -
+/// gkebackup.gke.io/BackupJob - gkebackup.gke.io/RestoreJob -
+/// metrics.k8s.io/NodeMetrics - migration.k8s.io/StorageState -
+/// migration.k8s.io/StorageVersionMigration - Node -
+/// snapshot.storage.k8s.io/VolumeSnapshotContent - storage.k8s.io/CSINode Some
+/// group kinds are driven by restore configuration elsewhere, and will cause an
+/// error if selected here. - Namespace - PersistentVolume
 class ClusterResourceRestoreScope {
-  /// A list of "types" of cluster-scoped resources to be restored from the
-  /// Backup.
+  /// If True, all valid cluster-scoped resources will be restored.
   ///
-  /// An empty list means that NO cluster-scoped resources will be restored.
-  /// Note that Namespaces and PersistentVolume restoration is handled
-  /// separately and is not governed by this field.
+  /// Mutually exclusive to any other field in the message.
+  ///
+  /// Optional.
+  core.bool? allGroupKinds;
+
+  /// A list of cluster-scoped resource group kinds to NOT restore from the
+  /// backup.
+  ///
+  /// If specified, all valid cluster-scoped resources will be restored except
+  /// for those specified in the list. Mutually exclusive to any other field in
+  /// the message.
+  ///
+  /// Optional.
+  core.List<GroupKind>? excludedGroupKinds;
+
+  /// If True, no cluster-scoped resources will be restored.
+  ///
+  /// This has the same restore scope as if the message is not defined. Mutually
+  /// exclusive to any other field in the message.
+  ///
+  /// Optional.
+  core.bool? noGroupKinds;
+
+  /// A list of cluster-scoped resource group kinds to restore from the backup.
+  ///
+  /// If specified, only the selected resources will be restored. Mutually
+  /// exclusive to any other field in the message.
+  ///
+  /// Optional.
   core.List<GroupKind>? selectedGroupKinds;
 
   ClusterResourceRestoreScope({
+    this.allGroupKinds,
+    this.excludedGroupKinds,
+    this.noGroupKinds,
     this.selectedGroupKinds,
   });
 
   ClusterResourceRestoreScope.fromJson(core.Map json_)
       : this(
+          allGroupKinds: json_.containsKey('allGroupKinds')
+              ? json_['allGroupKinds'] as core.bool
+              : null,
+          excludedGroupKinds: json_.containsKey('excludedGroupKinds')
+              ? (json_['excludedGroupKinds'] as core.List)
+                  .map((value) => GroupKind.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          noGroupKinds: json_.containsKey('noGroupKinds')
+              ? json_['noGroupKinds'] as core.bool
+              : null,
           selectedGroupKinds: json_.containsKey('selectedGroupKinds')
               ? (json_['selectedGroupKinds'] as core.List)
                   .map((value) => GroupKind.fromJson(
@@ -3352,6 +3467,10 @@ class ClusterResourceRestoreScope {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (allGroupKinds != null) 'allGroupKinds': allGroupKinds!,
+        if (excludedGroupKinds != null)
+          'excludedGroupKinds': excludedGroupKinds!,
+        if (noGroupKinds != null) 'noGroupKinds': noGroupKinds!,
         if (selectedGroupKinds != null)
           'selectedGroupKinds': selectedGroupKinds!,
       };
@@ -3371,6 +3490,8 @@ class EncryptionKey {
   /// Google Cloud KMS encryption key.
   ///
   /// Format: `projects / * /locations / * /keyRings / * /cryptoKeys / * `
+  ///
+  /// Optional.
   core.String? gcpKmsEncryptionKey;
 
   EncryptionKey({
@@ -3538,10 +3659,14 @@ class GroupKind {
   /// "storage.k8s.io", etc.
   ///
   /// Note: use empty string for core API group
+  ///
+  /// Optional.
   core.String? resourceGroup;
 
   /// Kind of a Kubernetes resource, e.g. "CustomResourceDefinition",
   /// "StorageClass", etc.
+  ///
+  /// Optional.
   core.String? resourceKind;
 
   GroupKind({
@@ -3843,15 +3968,19 @@ class ListVolumeRestoresResponse {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
+/// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
 /// A reference to a namespaced resource in Kubernetes.
 class NamespacedName {
   /// The name of the Kubernetes resource.
+  ///
+  /// Optional.
   core.String? name;
 
   /// The Namespace of the Kubernetes resource.
+  ///
+  /// Optional.
   core.String? namespace;
 
   NamespacedName({
@@ -3876,6 +4005,8 @@ class NamespacedName {
 /// A list of namespaced Kubernetes resources.
 class NamespacedNames {
   /// A list of namespaced Kubernetes resources.
+  ///
+  /// Optional.
   core.List<NamespacedName>? namespacedNames;
 
   NamespacedNames({
@@ -3900,6 +4031,8 @@ class NamespacedNames {
 /// A list of Kubernetes Namespaces
 class Namespaces {
   /// A list of Kubernetes Namespaces
+  ///
+  /// Optional.
   core.List<core.String>? namespaces;
 
   Namespaces({
@@ -4038,6 +4171,72 @@ class Policy {
         if (bindings != null) 'bindings': bindings!,
         if (etag != null) 'etag': etag!,
         if (version != null) 'version': version!,
+      };
+}
+
+/// ResourceFilter specifies matching criteria to limit the scope of a change to
+/// a specific set of kubernetes resources that are selected for restoration
+/// from a backup.
+class ResourceFilter {
+  /// (Filtering parameter) Any resource subject to transformation must belong
+  /// to one of the listed "types".
+  ///
+  /// If this field is not provided, no type filtering will be performed (all
+  /// resources of all types matching previous filtering parameters will be
+  /// candidates for transformation).
+  ///
+  /// Optional.
+  core.List<GroupKind>? groupKinds;
+
+  /// This is a
+  /// [JSONPath](https://github.com/json-path/JsonPath/blob/master/README.md)
+  /// expression that matches specific fields of candidate resources and it
+  /// operates as a filtering parameter (resources that are not matched with
+  /// this expression will not be candidates for transformation).
+  ///
+  /// Optional.
+  core.String? jsonPath;
+
+  /// (Filtering parameter) Any resource subject to transformation must be
+  /// contained within one of the listed Kubernetes Namespace in the Backup.
+  ///
+  /// If this field is not provided, no namespace filtering will be performed
+  /// (all resources in all Namespaces, including all cluster-scoped resources,
+  /// will be candidates for transformation). To mix cluster-scoped and
+  /// namespaced resources in the same rule, use an empty string ("") as one of
+  /// the target namespaces.
+  ///
+  /// Optional.
+  core.List<core.String>? namespaces;
+
+  ResourceFilter({
+    this.groupKinds,
+    this.jsonPath,
+    this.namespaces,
+  });
+
+  ResourceFilter.fromJson(core.Map json_)
+      : this(
+          groupKinds: json_.containsKey('groupKinds')
+              ? (json_['groupKinds'] as core.List)
+                  .map((value) => GroupKind.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          jsonPath: json_.containsKey('jsonPath')
+              ? json_['jsonPath'] as core.String
+              : null,
+          namespaces: json_.containsKey('namespaces')
+              ? (json_['namespaces'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (groupKinds != null) 'groupKinds': groupKinds!,
+        if (jsonPath != null) 'jsonPath': jsonPath!,
+        if (namespaces != null) 'namespaces': namespaces!,
       };
 }
 
@@ -4202,9 +4401,9 @@ class Restore {
           etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -4263,7 +4462,7 @@ class Restore {
 
 /// Configuration of a restore.
 ///
-/// Next id: 9
+/// Next id: 12
 class RestoreConfig {
   /// Restore all namespaced resources in the Backup if set to "True".
   ///
@@ -4276,27 +4475,38 @@ class RestoreConfig {
   /// This MUST be set to a value other than
   /// CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED if
   /// cluster_resource_restore_scope is not empty.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED" : Unspecified. Only
   /// allowed if no cluster-scoped resources will be restored.
   /// - "USE_EXISTING_VERSION" : Do not attempt to restore the conflicting
   /// resource.
   /// - "USE_BACKUP_VERSION" : Delete the existing version before re-creating it
-  /// from the Backup. Note that this is a dangerous option which could cause
-  /// unintentional data loss if used inappropriately - for example, deleting a
+  /// from the Backup. This is a dangerous option which could cause
+  /// unintentional data loss if used inappropriately. For example, deleting a
   /// CRD will cause Kubernetes to delete all CRs of that type.
   core.String? clusterResourceConflictPolicy;
 
   /// Identifies the cluster-scoped resources to restore from the Backup.
   ///
   /// Not specifying it means NO cluster resource will be restored.
+  ///
+  /// Optional.
   ClusterResourceRestoreScope? clusterResourceRestoreScope;
+
+  /// A list of selected namespaces excluded from restoration.
+  ///
+  /// All namespaces except those in this list will be restored.
+  Namespaces? excludedNamespaces;
 
   /// Defines the behavior for handling the situation where sets of namespaced
   /// resources being restored already exist in the target cluster.
   ///
   /// This MUST be set to a value other than
   /// NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED" : Unspecified (invalid).
   /// - "DELETE_AND_RESTORE" : When conflicting top-level resources (either
@@ -4313,6 +4523,11 @@ class RestoreConfig {
   /// out of band process creates conflicting resources), a conflict will be
   /// reported.
   core.String? namespacedResourceRestoreMode;
+
+  /// Do not restore any namespaced resources if set to "True".
+  ///
+  /// Specifying this field to "False" is not allowed.
+  core.bool? noNamespaces;
 
   /// A list of selected ProtectedApplications to restore.
   ///
@@ -4332,36 +4547,53 @@ class RestoreConfig {
   /// Rules are executed in order defined - this order matters, as changes made
   /// by a rule may impact the filtering logic of subsequent rules. An empty
   /// list means no substitution will occur.
+  ///
+  /// Optional.
   core.List<SubstitutionRule>? substitutionRules;
+
+  /// A list of transformation rules to be applied against Kubernetes resources
+  /// as they are selected for restoration from a Backup.
+  ///
+  /// Rules are executed in order defined - this order matters, as changes made
+  /// by a rule may impact the filtering logic of subsequent rules. An empty
+  /// list means no transformation will occur.
+  ///
+  /// Optional.
+  core.List<TransformationRule>? transformationRules;
 
   /// Specifies the mechanism to be used to restore volume data.
   ///
   /// Default: VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED (will be treated as
   /// NO_VOLUME_DATA_RESTORATION).
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED" : Unspecified (illegal).
-  /// - "RESTORE_VOLUME_DATA_FROM_BACKUP" : For each PVC to be restored, will
-  /// create a new underlying volume (and PV) from the corresponding
-  /// VolumeBackup contained within the Backup.
+  /// - "RESTORE_VOLUME_DATA_FROM_BACKUP" : For each PVC to be restored, create
+  /// a new underlying volume and PV from the corresponding VolumeBackup
+  /// contained within the Backup.
   /// - "REUSE_VOLUME_HANDLE_FROM_BACKUP" : For each PVC to be restored, attempt
   /// to reuse the original PV contained in the Backup (with its original
-  /// underlying volume). Note that option is likely only usable when restoring
-  /// a workload to its original cluster.
-  /// - "NO_VOLUME_DATA_RESTORATION" : For each PVC to be restored, PVCs will be
-  /// created without any particular action to restore data. In this case, the
-  /// normal Kubernetes provisioning logic would kick in, and this would likely
-  /// result in either dynamically provisioning blank PVs or binding to
-  /// statically provisioned PVs.
+  /// underlying volume). This option is likely only usable when restoring a
+  /// workload to its original cluster.
+  /// - "NO_VOLUME_DATA_RESTORATION" : For each PVC to be restored, create PVC
+  /// without any particular action to restore data. In this case, the normal
+  /// Kubernetes provisioning logic would kick in, and this would likely result
+  /// in either dynamically provisioning blank PVs or binding to statically
+  /// provisioned PVs.
   core.String? volumeDataRestorePolicy;
 
   RestoreConfig({
     this.allNamespaces,
     this.clusterResourceConflictPolicy,
     this.clusterResourceRestoreScope,
+    this.excludedNamespaces,
     this.namespacedResourceRestoreMode,
+    this.noNamespaces,
     this.selectedApplications,
     this.selectedNamespaces,
     this.substitutionRules,
+    this.transformationRules,
     this.volumeDataRestorePolicy,
   });
 
@@ -4380,10 +4612,17 @@ class RestoreConfig {
                       json_['clusterResourceRestoreScope']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          excludedNamespaces: json_.containsKey('excludedNamespaces')
+              ? Namespaces.fromJson(json_['excludedNamespaces']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           namespacedResourceRestoreMode:
               json_.containsKey('namespacedResourceRestoreMode')
                   ? json_['namespacedResourceRestoreMode'] as core.String
                   : null,
+          noNamespaces: json_.containsKey('noNamespaces')
+              ? json_['noNamespaces'] as core.bool
+              : null,
           selectedApplications: json_.containsKey('selectedApplications')
               ? NamespacedNames.fromJson(json_['selectedApplications']
                   as core.Map<core.String, core.dynamic>)
@@ -4398,6 +4637,12 @@ class RestoreConfig {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          transformationRules: json_.containsKey('transformationRules')
+              ? (json_['transformationRules'] as core.List)
+                  .map((value) => TransformationRule.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           volumeDataRestorePolicy: json_.containsKey('volumeDataRestorePolicy')
               ? json_['volumeDataRestorePolicy'] as core.String
               : null,
@@ -4409,13 +4654,18 @@ class RestoreConfig {
           'clusterResourceConflictPolicy': clusterResourceConflictPolicy!,
         if (clusterResourceRestoreScope != null)
           'clusterResourceRestoreScope': clusterResourceRestoreScope!,
+        if (excludedNamespaces != null)
+          'excludedNamespaces': excludedNamespaces!,
         if (namespacedResourceRestoreMode != null)
           'namespacedResourceRestoreMode': namespacedResourceRestoreMode!,
+        if (noNamespaces != null) 'noNamespaces': noNamespaces!,
         if (selectedApplications != null)
           'selectedApplications': selectedApplications!,
         if (selectedNamespaces != null)
           'selectedNamespaces': selectedNamespaces!,
         if (substitutionRules != null) 'substitutionRules': substitutionRules!,
+        if (transformationRules != null)
+          'transformationRules': transformationRules!,
         if (volumeDataRestorePolicy != null)
           'volumeDataRestorePolicy': volumeDataRestorePolicy!,
       };
@@ -4424,7 +4674,7 @@ class RestoreConfig {
 /// The configuration of a potential series of Restore operations to be
 /// performed against Backups belong to a particular BackupPlan.
 ///
-/// Next id: 11
+/// Next id: 13
 class RestorePlan {
   /// A reference to the BackupPlan from which Backups may be used as the source
   /// for Restores created via this RestorePlan.
@@ -4450,6 +4700,8 @@ class RestorePlan {
   core.String? createTime;
 
   /// User specified descriptive string for this RestorePlan.
+  ///
+  /// Optional.
   core.String? description;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
@@ -4466,6 +4718,8 @@ class RestorePlan {
   core.String? etag;
 
   /// A set of custom labels supplied by user.
+  ///
+  /// Optional.
   core.Map<core.String, core.String>? labels;
 
   /// The full name of the RestorePlan resource.
@@ -4479,6 +4733,26 @@ class RestorePlan {
   ///
   /// Required.
   RestoreConfig? restoreConfig;
+
+  /// State of the RestorePlan.
+  ///
+  /// This State field reflects the various stages a RestorePlan can be in
+  /// during the Create operation.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default first value for Enums.
+  /// - "CLUSTER_PENDING" : Waiting for cluster state to be RUNNING.
+  /// - "READY" : The RestorePlan has successfully been created and is ready for
+  /// Restores.
+  /// - "FAILED" : RestorePlan creation has failed.
+  /// - "DELETING" : The RestorePlan is in the process of being deleted.
+  core.String? state;
+
+  /// Human-readable description of why RestorePlan is in the current `state`
+  ///
+  /// Output only.
+  core.String? stateReason;
 
   /// Server generated global unique identifier of
   /// [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)
@@ -4501,6 +4775,8 @@ class RestorePlan {
     this.labels,
     this.name,
     this.restoreConfig,
+    this.state,
+    this.stateReason,
     this.uid,
     this.updateTime,
   });
@@ -4522,9 +4798,9 @@ class RestorePlan {
           etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -4532,6 +4808,11 @@ class RestorePlan {
           restoreConfig: json_.containsKey('restoreConfig')
               ? RestoreConfig.fromJson(
                   json_['restoreConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          stateReason: json_.containsKey('stateReason')
+              ? json_['stateReason'] as core.String
               : null,
           uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
           updateTime: json_.containsKey('updateTime')
@@ -4548,6 +4829,8 @@ class RestorePlan {
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (restoreConfig != null) 'restoreConfig': restoreConfig!,
+        if (state != null) 'state': state!,
+        if (stateReason != null) 'stateReason': stateReason!,
         if (uid != null) 'uid': uid!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
@@ -4563,6 +4846,8 @@ class RetentionPolicy {
   /// BackupPlan does NOT affect existing Backups under it. Backups created
   /// AFTER a successful update will inherit the new value. Default: 0 (no
   /// delete blocking)
+  ///
+  /// Optional.
   core.int? backupDeleteLockDays;
 
   /// The default maximum age of a Backup created via this BackupPlan.
@@ -4576,6 +4861,8 @@ class RetentionPolicy {
   /// new value. NOTE: backup_retain_days must be \>= backup_delete_lock_days.
   /// If cron_schedule is defined, then this must be \<= 360 * the creation
   /// interval. Default: 0 (no automatic deletion)
+  ///
+  /// Optional.
   core.int? backupRetainDays;
 
   /// This flag denotes whether the retention policy of this BackupPlan is
@@ -4583,6 +4870,8 @@ class RetentionPolicy {
   ///
   /// If set to True, no further update is allowed on this policy, including the
   /// `locked` field itself. Default: False
+  ///
+  /// Optional.
   core.bool? locked;
 
   RetentionPolicy({
@@ -4611,20 +4900,26 @@ class RetentionPolicy {
       };
 }
 
-/// Schedule defines scheduling parameters for automatically creating Backups
-/// via this BackupPlan.
+/// Defines scheduling parameters for automatically creating Backups via this
+/// BackupPlan.
 class Schedule {
   /// A standard [cron](https://wikipedia.com/wiki/cron) string that defines a
   /// repeating schedule for creating Backups via this BackupPlan.
   ///
-  /// If this is defined, then backup_retain_days must also be defined. Default
-  /// (empty): no automatic backup creation will occur.
+  /// This is mutually exclusive with the rpo_config field since at most one
+  /// schedule can be defined for a BackupPlan. If this is defined, then
+  /// backup_retain_days must also be defined. Default (empty): no automatic
+  /// backup creation will occur.
+  ///
+  /// Optional.
   core.String? cronSchedule;
 
   /// This flag denotes whether automatic Backup creation is paused for this
   /// BackupPlan.
   ///
   /// Default: False
+  ///
+  /// Optional.
   core.bool? paused;
 
   Schedule({
@@ -4695,6 +4990,8 @@ class SubstitutionRule {
   ///
   /// To remove a value from a Kubernetes resource, either leave this field
   /// unspecified, or set it to the empty string ("").
+  ///
+  /// Optional.
   core.String? newValue;
 
   /// (Filtering parameter) This is a
@@ -4705,8 +5002,10 @@ class SubstitutionRule {
   /// Substitution will not be performed against fields whose value does not
   /// match this expression. If this field is NOT specified, then ALL fields
   /// matched by the target_json_path expression will undergo substitution. Note
-  /// that an empty (e.g., "", rather than unspecified) value for for this field
+  /// that an empty (e.g., "", rather than unspecified) value for this field
   /// will only match empty fields.
+  ///
+  /// Optional.
   core.String? originalValuePattern;
 
   /// (Filtering parameter) Any resource subject to substitution must belong to
@@ -4715,6 +5014,8 @@ class SubstitutionRule {
   /// If this field is not provided, no type filtering will be performed (all
   /// resources of all types matching previous filtering parameters will be
   /// candidates for substitution).
+  ///
+  /// Optional.
   core.List<GroupKind>? targetGroupKinds;
 
   /// This is a
@@ -4736,6 +5037,8 @@ class SubstitutionRule {
   /// will be candidates for substitution). To mix cluster-scoped and namespaced
   /// resources in the same rule, use an empty string ("") as one of the target
   /// namespaces.
+  ///
+  /// Optional.
   core.List<core.String>? targetNamespaces;
 
   SubstitutionRule({
@@ -4785,6 +5088,137 @@ typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;
+
+/// A transformation rule to be applied against Kubernetes resources as they are
+/// selected for restoration from a Backup.
+///
+/// A rule contains both filtering logic (which resources are subject to
+/// transform) and transformation logic.
+class TransformationRule {
+  /// The description is a user specified string description of the
+  /// transformation rule.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// A list of transformation rule actions to take against candidate resources.
+  ///
+  /// Actions are executed in order defined - this order matters, as they could
+  /// potentially interfere with each other and the first operation could affect
+  /// the outcome of the second operation.
+  ///
+  /// Required.
+  core.List<TransformationRuleAction>? fieldActions;
+
+  /// This field is used to specify a set of fields that should be used to
+  /// determine which resources in backup should be acted upon by the supplied
+  /// transformation rule actions, and this will ensure that only specific
+  /// resources are affected by transformation rule actions.
+  ///
+  /// Optional.
+  ResourceFilter? resourceFilter;
+
+  TransformationRule({
+    this.description,
+    this.fieldActions,
+    this.resourceFilter,
+  });
+
+  TransformationRule.fromJson(core.Map json_)
+      : this(
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          fieldActions: json_.containsKey('fieldActions')
+              ? (json_['fieldActions'] as core.List)
+                  .map((value) => TransformationRuleAction.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          resourceFilter: json_.containsKey('resourceFilter')
+              ? ResourceFilter.fromJson(json_['resourceFilter']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (fieldActions != null) 'fieldActions': fieldActions!,
+        if (resourceFilter != null) 'resourceFilter': resourceFilter!,
+      };
+}
+
+/// TransformationRuleAction defines a TransformationRule action based on the
+/// JSON Patch RFC (https://www.rfc-editor.org/rfc/rfc6902)
+class TransformationRuleAction {
+  /// A string containing a JSON Pointer value that references the location in
+  /// the target document to move the value from.
+  ///
+  /// Optional.
+  core.String? fromPath;
+
+  /// op specifies the operation to perform.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "OP_UNSPECIFIED" : Unspecified operation
+  /// - "REMOVE" : The "remove" operation removes the value at the target
+  /// location.
+  /// - "MOVE" : The "move" operation removes the value at a specified location
+  /// and adds it to the target location.
+  /// - "COPY" : The "copy" operation copies the value at a specified location
+  /// to the target location.
+  /// - "ADD" : The "add" operation performs one of the following functions,
+  /// depending upon what the target location references: 1. If the target
+  /// location specifies an array index, a new value is inserted into the array
+  /// at the specified index. 2. If the target location specifies an object
+  /// member that does not already exist, a new member is added to the object.
+  /// 3. If the target location specifies an object member that does exist, that
+  /// member's value is replaced.
+  /// - "TEST" : The "test" operation tests that a value at the target location
+  /// is equal to a specified value.
+  /// - "REPLACE" : The "replace" operation replaces the value at the target
+  /// location with a new value. The operation object MUST contain a "value"
+  /// member whose content specifies the replacement value.
+  core.String? op;
+
+  /// A string containing a JSON-Pointer value that references a location within
+  /// the target document where the operation is performed.
+  ///
+  /// Optional.
+  core.String? path;
+
+  /// A string that specifies the desired value in string format to use for
+  /// transformation.
+  ///
+  /// Optional.
+  core.String? value;
+
+  TransformationRuleAction({
+    this.fromPath,
+    this.op,
+    this.path,
+    this.value,
+  });
+
+  TransformationRuleAction.fromJson(core.Map json_)
+      : this(
+          fromPath: json_.containsKey('fromPath')
+              ? json_['fromPath'] as core.String
+              : null,
+          op: json_.containsKey('op') ? json_['op'] as core.String : null,
+          path: json_.containsKey('path') ? json_['path'] as core.String : null,
+          value:
+              json_.containsKey('value') ? json_['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fromPath != null) 'fromPath': fromPath!,
+        if (op != null) 'op': op!,
+        if (path != null) 'path': path!,
+        if (value != null) 'value': value!,
+      };
+}
 
 /// Represents the backup of a specific persistent volume as a component of a
 /// Backup - both the record of the operation and a pointer to the underlying

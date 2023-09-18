@@ -42,6 +42,12 @@
     "name": "tagmanager",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230802",
+    "rootUrl": "https://tagmanager.googleapis.com/",
+    "servicePath": "",
+    "title": "Tag Manager API",
+    "version": "v1",
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -119,7 +125,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "accounts": {
             "methods": {
@@ -1931,8 +1936,6 @@
             }
         }
     },
-    "revision": "20220910",
-    "rootUrl": "https://tagmanager.googleapis.com/",
     "schemas": {
         "Account": {
             "description": "Represents a Google Tag Manager Account.",
@@ -2429,6 +2432,7 @@
                     "type": "array"
                 },
                 "macro": {
+                    "deprecated": true,
                     "description": "The macros in the container that this version was taken from.",
                     "items": {
                         "$ref": "Macro"
@@ -2444,6 +2448,7 @@
                     "type": "string"
                 },
                 "rule": {
+                    "deprecated": true,
                     "description": "The rules in the container that this version was taken from.",
                     "items": {
                         "$ref": "Rule"
@@ -2499,10 +2504,12 @@
                     "type": "string"
                 },
                 "numMacros": {
+                    "deprecated": true,
                     "description": "Number of macros in the container version.",
                     "type": "string"
                 },
                 "numRules": {
+                    "deprecated": true,
                     "description": "Number of rules in the container version.",
                     "type": "string"
                 },
@@ -3029,6 +3036,7 @@
                     "type": "string"
                 },
                 "blockingRuleId": {
+                    "deprecated": true,
                     "description": "Blocking rule IDs. If any of the listed rules evaluate to true, the tag will not fire. @mutable tagmanager.accounts.containers.tags.create @mutable tagmanager.accounts.containers.tags.update",
                     "items": {
                         "type": "string"
@@ -3051,6 +3059,7 @@
                     "type": "string"
                 },
                 "firingRuleId": {
+                    "deprecated": true,
                     "description": "Firing rule IDs. A tag will fire when any of the listed rules are true and all of its blockingRuleIds (if any specified) are false. @mutable tagmanager.accounts.containers.tags.create @mutable tagmanager.accounts.containers.tags.update",
                     "items": {
                         "type": "string"
@@ -3475,8 +3484,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Tag Manager API",
-    "version": "v1"
+    }
 }

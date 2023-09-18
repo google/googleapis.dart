@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Google Identity Toolkit API - v3
@@ -22,10 +21,9 @@
 /// Create an instance of [IdentityToolkitApi] to access these resources:
 ///
 /// - [RelyingpartyResource]
-library identitytoolkit.v3;
+library identitytoolkit_v3;
 
 import 'dart:async' as async;
-import 'dart:collection' as collection;
 import 'dart:convert' as convert;
 import 'dart:core' as core;
 
@@ -354,8 +352,12 @@ class RelyingpartyResource {
       'GET',
       queryParams: queryParams_,
     );
-    return IdentitytoolkitRelyingpartyGetPublicKeysResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+    return (response_ as core.Map<core.String, core.dynamic>).map(
+      (key, value) => core.MapEntry(
+        key,
+        value as core.String,
+      ),
+    );
   }
 
   /// Get recaptcha secure param.
@@ -1284,9 +1286,9 @@ class IdentitytoolkitRelyingpartyCreateAuthUriRequest {
               ? (json_['customParameter']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -1657,38 +1659,8 @@ class IdentitytoolkitRelyingpartyGetProjectConfigResponse {
 }
 
 /// Respone of getting public keys.
-class IdentitytoolkitRelyingpartyGetPublicKeysResponse
-    extends collection.MapBase<core.String, core.String> {
-  final _innerMap = <core.String, core.String>{};
-
-  IdentitytoolkitRelyingpartyGetPublicKeysResponse();
-
-  IdentitytoolkitRelyingpartyGetPublicKeysResponse.fromJson(
-      core.Map<core.String, core.dynamic> json_) {
-    json_.forEach((core.String key, value) {
-      this[key] = value as core.String;
-    });
-  }
-
-  @core.override
-  core.String? operator [](core.Object? key) => _innerMap[key];
-
-  @core.override
-  void operator []=(core.String key, core.String value) {
-    _innerMap[key] = value;
-  }
-
-  @core.override
-  void clear() {
-    _innerMap.clear();
-  }
-
-  @core.override
-  core.Iterable<core.String> get keys => _innerMap.keys;
-
-  @core.override
-  core.String? remove(core.Object? key) => _innerMap.remove(key);
-}
+typedef IdentitytoolkitRelyingpartyGetPublicKeysResponse
+    = core.Map<core.String, core.String>;
 
 /// Request to reset the password.
 class IdentitytoolkitRelyingpartyResetPasswordRequest {

@@ -1,8 +1,6 @@
 // ignore_for_file: camel_case_types
-// ignore_for_file: cascade_invocations
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_const_declarations
@@ -12,8 +10,9 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unreachable_from_main
 // ignore_for_file: unused_local_variable
 
 import 'dart:async' as async;
@@ -752,10 +751,10 @@ void checkIdentitytoolkitRelyingpartyGetProjectConfigResponse(
 
 api.IdentitytoolkitRelyingpartyGetPublicKeysResponse
     buildIdentitytoolkitRelyingpartyGetPublicKeysResponse() {
-  final o = api.IdentitytoolkitRelyingpartyGetPublicKeysResponse();
-  o['a'] = 'foo';
-  o['b'] = 'foo';
-  return o;
+  return {
+    'a': 'foo',
+    'b': 'foo',
+  };
 }
 
 void checkIdentitytoolkitRelyingpartyGetPublicKeysResponse(
@@ -2724,8 +2723,12 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildIdentitytoolkitRelyingpartyGetPublicKeysResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.IdentitytoolkitRelyingpartyGetPublicKeysResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+      final od = (oJson as core.Map<core.String, core.dynamic>).map(
+        (key, value) => core.MapEntry(
+          key,
+          value as core.String,
+        ),
+      );
       checkIdentitytoolkitRelyingpartyGetPublicKeysResponse(od);
     });
   });
@@ -3045,7 +3048,7 @@ void main() {
                 json as core.Map<core.String, core.dynamic>);
         checkIdentitytoolkitRelyingpartyCreateAuthUriRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3065,7 +3068,7 @@ void main() {
         );
         pathOffset += 13;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3108,7 +3111,7 @@ void main() {
                 json as core.Map<core.String, core.dynamic>);
         checkIdentitytoolkitRelyingpartyDeleteAccountRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3128,7 +3131,7 @@ void main() {
         );
         pathOffset += 13;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3171,7 +3174,7 @@ void main() {
                 json as core.Map<core.String, core.dynamic>);
         checkIdentitytoolkitRelyingpartyDownloadAccountRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3191,7 +3194,7 @@ void main() {
         );
         pathOffset += 15;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3234,7 +3237,7 @@ void main() {
                 json as core.Map<core.String, core.dynamic>);
         checkIdentitytoolkitRelyingpartyEmailLinkSigninRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3254,7 +3257,7 @@ void main() {
         );
         pathOffset += 15;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3297,7 +3300,7 @@ void main() {
                 json as core.Map<core.String, core.dynamic>);
         checkIdentitytoolkitRelyingpartyGetAccountInfoRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3317,7 +3320,7 @@ void main() {
         );
         pathOffset += 14;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3358,7 +3361,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkRelyingparty(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3378,7 +3381,7 @@ void main() {
         );
         pathOffset += 22;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3417,7 +3420,7 @@ void main() {
       final arg_projectNumber = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3437,7 +3440,7 @@ void main() {
         );
         pathOffset += 16;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3485,7 +3488,7 @@ void main() {
       final res = api.IdentityToolkitApi(mock).relyingparty;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3505,7 +3508,7 @@ void main() {
         );
         pathOffset += 10;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3542,7 +3545,7 @@ void main() {
       final res = api.IdentityToolkitApi(mock).relyingparty;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3562,7 +3565,7 @@ void main() {
         );
         pathOffset += 17;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3604,7 +3607,7 @@ void main() {
                 json as core.Map<core.String, core.dynamic>);
         checkIdentitytoolkitRelyingpartyResetPasswordRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3624,7 +3627,7 @@ void main() {
         );
         pathOffset += 13;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3667,7 +3670,7 @@ void main() {
                 json as core.Map<core.String, core.dynamic>);
         checkIdentitytoolkitRelyingpartySendVerificationCodeRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3687,7 +3690,7 @@ void main() {
         );
         pathOffset += 20;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3732,7 +3735,7 @@ void main() {
                 json as core.Map<core.String, core.dynamic>);
         checkIdentitytoolkitRelyingpartySetAccountInfoRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3752,7 +3755,7 @@ void main() {
         );
         pathOffset += 14;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3795,7 +3798,7 @@ void main() {
                 json as core.Map<core.String, core.dynamic>);
         checkIdentitytoolkitRelyingpartySetProjectConfigRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3815,7 +3818,7 @@ void main() {
         );
         pathOffset += 16;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3858,7 +3861,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkIdentitytoolkitRelyingpartySignOutUserRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3878,7 +3881,7 @@ void main() {
         );
         pathOffset += 11;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3922,7 +3925,7 @@ void main() {
                 json as core.Map<core.String, core.dynamic>);
         checkIdentitytoolkitRelyingpartySignupNewUserRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3942,7 +3945,7 @@ void main() {
         );
         pathOffset += 13;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3985,7 +3988,7 @@ void main() {
                 json as core.Map<core.String, core.dynamic>);
         checkIdentitytoolkitRelyingpartyUploadAccountRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4005,7 +4008,7 @@ void main() {
         );
         pathOffset += 13;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4048,7 +4051,7 @@ void main() {
                 json as core.Map<core.String, core.dynamic>);
         checkIdentitytoolkitRelyingpartyVerifyAssertionRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4068,7 +4071,7 @@ void main() {
         );
         pathOffset += 15;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4111,7 +4114,7 @@ void main() {
                 json as core.Map<core.String, core.dynamic>);
         checkIdentitytoolkitRelyingpartyVerifyCustomTokenRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4131,7 +4134,7 @@ void main() {
         );
         pathOffset += 17;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4174,7 +4177,7 @@ void main() {
                 json as core.Map<core.String, core.dynamic>);
         checkIdentitytoolkitRelyingpartyVerifyPasswordRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4194,7 +4197,7 @@ void main() {
         );
         pathOffset += 14;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4237,7 +4240,7 @@ void main() {
                 json as core.Map<core.String, core.dynamic>);
         checkIdentitytoolkitRelyingpartyVerifyPhoneNumberRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4257,7 +4260,7 @@ void main() {
         );
         pathOffset += 17;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>

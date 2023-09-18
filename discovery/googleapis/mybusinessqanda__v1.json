@@ -3,7 +3,7 @@
     "baseUrl": "https://mybusinessqanda.googleapis.com/",
     "batchPath": "batch",
     "canonicalName": "My Business Q&A",
-    "description": "The My Business Q&A API allows questions and answers to be posted for specific listings.",
+    "description": "The My Business Q&A API allows questions and answers to be posted for specific listings. Note - If you have a quota of 0 after enabling the API, please request for GBP API access.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/my-business/",
     "icons": {
@@ -15,6 +15,13 @@
     "name": "mybusinessqanda",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230806",
+    "rootUrl": "https://mybusinessqanda.googleapis.com/",
+    "servicePath": "",
+    "title": "My Business Q&A API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -92,7 +99,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "locations": {
             "resources": {
@@ -321,8 +327,6 @@
             }
         }
     },
-    "revision": "20220913",
-    "rootUrl": "https://mybusinessqanda.googleapis.com/",
     "schemas": {
         "Answer": {
             "description": "Represents an answer to a question",
@@ -509,9 +513,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "My Business Q&A API",
-    "version": "v1",
-    "version_module": true
+    }
 }

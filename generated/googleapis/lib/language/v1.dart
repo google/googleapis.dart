@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud Natural Language API - v1
@@ -23,7 +22,7 @@
 /// Create an instance of [CloudNaturalLanguageApi] to access these resources:
 ///
 /// - [DocumentsResource]
-library language.v1;
+library language_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -32,6 +31,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -291,6 +291,43 @@ class DocumentsResource {
       queryParams: queryParams_,
     );
     return ClassifyTextResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Moderates a document for harmful and sensitive categories.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ModerateTextResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ModerateTextResponse> moderateText(
+    ModerateTextRequest request, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'v1/documents:moderateText';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return ModerateTextResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -710,6 +747,9 @@ class AnnotateTextResponse {
   /// See Document.language field for more details.
   core.String? language;
 
+  /// Harmful and sensitive categories identified in the input document.
+  core.List<ClassificationCategory>? moderationCategories;
+
   /// Sentences in the input document.
   ///
   /// Populated if the user enables AnnotateTextRequest.Features.extract_syntax.
@@ -725,6 +765,7 @@ class AnnotateTextResponse {
     this.documentSentiment,
     this.entities,
     this.language,
+    this.moderationCategories,
     this.sentences,
     this.tokens,
   });
@@ -750,6 +791,12 @@ class AnnotateTextResponse {
           language: json_.containsKey('language')
               ? json_['language'] as core.String
               : null,
+          moderationCategories: json_.containsKey('moderationCategories')
+              ? (json_['moderationCategories'] as core.List)
+                  .map((value) => ClassificationCategory.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           sentences: json_.containsKey('sentences')
               ? (json_['sentences'] as core.List)
                   .map((value) => Sentence.fromJson(
@@ -769,6 +816,8 @@ class AnnotateTextResponse {
         if (documentSentiment != null) 'documentSentiment': documentSentiment!,
         if (entities != null) 'entities': entities!,
         if (language != null) 'language': language!,
+        if (moderationCategories != null)
+          'moderationCategories': moderationCategories!,
         if (sentences != null) 'sentences': sentences!,
         if (tokens != null) 'tokens': tokens!,
       };
@@ -782,8 +831,7 @@ class ClassificationCategory {
   /// represents the given text.
   core.double? confidence;
 
-  /// The name of the category representing the document, from the
-  /// [predefined taxonomy](https://cloud.google.com/natural-language/docs/categories).
+  /// The name of the category representing the document.
   core.String? name;
 
   ClassificationCategory({
@@ -805,19 +853,69 @@ class ClassificationCategory {
       };
 }
 
+/// Model options available for classification requests.
+class ClassificationModelOptions {
+  /// Setting this field will use the V1 model and V1 content categories
+  /// version.
+  ///
+  /// The V1 model is a legacy model; support for this will be discontinued in
+  /// the future.
+  V1Model? v1Model;
+
+  /// Setting this field will use the V2 model with the appropriate content
+  /// categories version.
+  ///
+  /// The V2 model is a better performing model.
+  V2Model? v2Model;
+
+  ClassificationModelOptions({
+    this.v1Model,
+    this.v2Model,
+  });
+
+  ClassificationModelOptions.fromJson(core.Map json_)
+      : this(
+          v1Model: json_.containsKey('v1Model')
+              ? V1Model.fromJson(
+                  json_['v1Model'] as core.Map<core.String, core.dynamic>)
+              : null,
+          v2Model: json_.containsKey('v2Model')
+              ? V2Model.fromJson(
+                  json_['v2Model'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (v1Model != null) 'v1Model': v1Model!,
+        if (v2Model != null) 'v2Model': v2Model!,
+      };
+}
+
 /// The document classification request message.
 class ClassifyTextRequest {
+  /// Model options to use for classification.
+  ///
+  /// Defaults to v1 options if not specified.
+  ClassificationModelOptions? classificationModelOptions;
+
   /// Input document.
   ///
   /// Required.
   Document? document;
 
   ClassifyTextRequest({
+    this.classificationModelOptions,
     this.document,
   });
 
   ClassifyTextRequest.fromJson(core.Map json_)
       : this(
+          classificationModelOptions:
+              json_.containsKey('classificationModelOptions')
+                  ? ClassificationModelOptions.fromJson(
+                      json_['classificationModelOptions']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           document: json_.containsKey('document')
               ? Document.fromJson(
                   json_['document'] as core.Map<core.String, core.dynamic>)
@@ -825,6 +923,8 @@ class ClassifyTextRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (classificationModelOptions != null)
+          'classificationModelOptions': classificationModelOptions!,
         if (document != null) 'document': document!,
       };
 }
@@ -974,7 +1074,6 @@ class DependencyEdge {
       };
 }
 
-/// ################################################################ #
 /// Represents the input to API methods.
 class Document {
   /// The content of the input in string format.
@@ -1123,9 +1222,9 @@ class Entity {
               : null,
           metadata: json_.containsKey('metadata')
               ? (json_['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -1200,6 +1299,12 @@ class EntityMention {
 ///
 /// Setting each one to true will enable that specific analysis for the input.
 class Features {
+  /// The model options to use for classification.
+  ///
+  /// Defaults to v1 options if not specified. Only used if `classify_text` is
+  /// set to true.
+  ClassificationModelOptions? classificationModelOptions;
+
   /// Classify the full document into categories.
   core.bool? classifyText;
 
@@ -1215,16 +1320,27 @@ class Features {
   /// Extract syntax information.
   core.bool? extractSyntax;
 
+  /// Moderate the document for harmful and sensitive categories.
+  core.bool? moderateText;
+
   Features({
+    this.classificationModelOptions,
     this.classifyText,
     this.extractDocumentSentiment,
     this.extractEntities,
     this.extractEntitySentiment,
     this.extractSyntax,
+    this.moderateText,
   });
 
   Features.fromJson(core.Map json_)
       : this(
+          classificationModelOptions:
+              json_.containsKey('classificationModelOptions')
+                  ? ClassificationModelOptions.fromJson(
+                      json_['classificationModelOptions']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           classifyText: json_.containsKey('classifyText')
               ? json_['classifyText'] as core.bool
               : null,
@@ -1241,9 +1357,14 @@ class Features {
           extractSyntax: json_.containsKey('extractSyntax')
               ? json_['extractSyntax'] as core.bool
               : null,
+          moderateText: json_.containsKey('moderateText')
+              ? json_['moderateText'] as core.bool
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (classificationModelOptions != null)
+          'classificationModelOptions': classificationModelOptions!,
         if (classifyText != null) 'classifyText': classifyText!,
         if (extractDocumentSentiment != null)
           'extractDocumentSentiment': extractDocumentSentiment!,
@@ -1251,6 +1372,56 @@ class Features {
         if (extractEntitySentiment != null)
           'extractEntitySentiment': extractEntitySentiment!,
         if (extractSyntax != null) 'extractSyntax': extractSyntax!,
+        if (moderateText != null) 'moderateText': moderateText!,
+      };
+}
+
+/// The document moderation request message.
+class ModerateTextRequest {
+  /// Input document.
+  ///
+  /// Required.
+  Document? document;
+
+  ModerateTextRequest({
+    this.document,
+  });
+
+  ModerateTextRequest.fromJson(core.Map json_)
+      : this(
+          document: json_.containsKey('document')
+              ? Document.fromJson(
+                  json_['document'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (document != null) 'document': document!,
+      };
+}
+
+/// The document moderation response message.
+class ModerateTextResponse {
+  /// Harmful and sensitive categories representing the input document.
+  core.List<ClassificationCategory>? moderationCategories;
+
+  ModerateTextResponse({
+    this.moderationCategories,
+  });
+
+  ModerateTextResponse.fromJson(core.Map json_)
+      : this(
+          moderationCategories: json_.containsKey('moderationCategories')
+              ? (json_['moderationCategories'] as core.List)
+                  .map((value) => ClassificationCategory.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (moderationCategories != null)
+          'moderationCategories': moderationCategories!,
       };
 }
 
@@ -1528,13 +1699,13 @@ class Sentiment {
       };
 }
 
-/// Represents an output piece of text.
+/// Represents a text span in the input document.
 class TextSpan {
   /// The API calculates the beginning offset of the content in the original
   /// document according to the EncodingType specified in the API request.
   core.int? beginOffset;
 
-  /// The content of the output text.
+  /// The content of the text span, which is a substring of the document.
   core.String? content;
 
   TextSpan({
@@ -1603,5 +1774,36 @@ class Token {
         if (lemma != null) 'lemma': lemma!,
         if (partOfSpeech != null) 'partOfSpeech': partOfSpeech!,
         if (text != null) 'text': text!,
+      };
+}
+
+/// Options for the V1 model.
+typedef V1Model = $Empty;
+
+/// Options for the V2 model.
+class V2Model {
+  /// The content categories used for classification.
+  /// Possible string values are:
+  /// - "CONTENT_CATEGORIES_VERSION_UNSPECIFIED" : If `ContentCategoriesVersion`
+  /// is not specified, this option will default to `V1`.
+  /// - "V1" : Legacy content categories of our initial launch in 2017.
+  /// - "V2" : Updated content categories in 2022.
+  core.String? contentCategoriesVersion;
+
+  V2Model({
+    this.contentCategoriesVersion,
+  });
+
+  V2Model.fromJson(core.Map json_)
+      : this(
+          contentCategoriesVersion:
+              json_.containsKey('contentCategoriesVersion')
+                  ? json_['contentCategoriesVersion'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (contentCategoriesVersion != null)
+          'contentCategoriesVersion': contentCategoriesVersion!,
       };
 }

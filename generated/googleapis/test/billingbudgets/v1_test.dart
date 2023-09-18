@@ -1,8 +1,6 @@
 // ignore_for_file: camel_case_types
-// ignore_for_file: cascade_invocations
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_const_declarations
@@ -12,8 +10,9 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unreachable_from_main
 // ignore_for_file: unused_local_variable
 
 import 'dart:async' as async;
@@ -248,6 +247,23 @@ void checkUnnamed6(core.List<core.String> o) {
   );
 }
 
+core.List<core.String> buildUnnamed7() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed7(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterGoogleCloudBillingBudgetsV1Filter = 0;
 api.GoogleCloudBillingBudgetsV1Filter buildGoogleCloudBillingBudgetsV1Filter() {
   final o = api.GoogleCloudBillingBudgetsV1Filter();
@@ -259,8 +275,9 @@ api.GoogleCloudBillingBudgetsV1Filter buildGoogleCloudBillingBudgetsV1Filter() {
     o.customPeriod = buildGoogleCloudBillingBudgetsV1CustomPeriod();
     o.labels = buildUnnamed3();
     o.projects = buildUnnamed4();
-    o.services = buildUnnamed5();
-    o.subaccounts = buildUnnamed6();
+    o.resourceAncestors = buildUnnamed5();
+    o.services = buildUnnamed6();
+    o.subaccounts = buildUnnamed7();
   }
   buildCounterGoogleCloudBillingBudgetsV1Filter--;
   return o;
@@ -282,8 +299,9 @@ void checkGoogleCloudBillingBudgetsV1Filter(
     checkGoogleCloudBillingBudgetsV1CustomPeriod(o.customPeriod!);
     checkUnnamed3(o.labels!);
     checkUnnamed4(o.projects!);
-    checkUnnamed5(o.services!);
-    checkUnnamed6(o.subaccounts!);
+    checkUnnamed5(o.resourceAncestors!);
+    checkUnnamed6(o.services!);
+    checkUnnamed7(o.subaccounts!);
   }
   buildCounterGoogleCloudBillingBudgetsV1Filter--;
 }
@@ -305,12 +323,12 @@ void checkGoogleCloudBillingBudgetsV1LastPeriodAmount(
   buildCounterGoogleCloudBillingBudgetsV1LastPeriodAmount--;
 }
 
-core.List<api.GoogleCloudBillingBudgetsV1Budget> buildUnnamed7() => [
+core.List<api.GoogleCloudBillingBudgetsV1Budget> buildUnnamed8() => [
       buildGoogleCloudBillingBudgetsV1Budget(),
       buildGoogleCloudBillingBudgetsV1Budget(),
     ];
 
-void checkUnnamed7(core.List<api.GoogleCloudBillingBudgetsV1Budget> o) {
+void checkUnnamed8(core.List<api.GoogleCloudBillingBudgetsV1Budget> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudBillingBudgetsV1Budget(o[0]);
   checkGoogleCloudBillingBudgetsV1Budget(o[1]);
@@ -322,7 +340,7 @@ api.GoogleCloudBillingBudgetsV1ListBudgetsResponse
   final o = api.GoogleCloudBillingBudgetsV1ListBudgetsResponse();
   buildCounterGoogleCloudBillingBudgetsV1ListBudgetsResponse++;
   if (buildCounterGoogleCloudBillingBudgetsV1ListBudgetsResponse < 3) {
-    o.budgets = buildUnnamed7();
+    o.budgets = buildUnnamed8();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudBillingBudgetsV1ListBudgetsResponse--;
@@ -333,7 +351,7 @@ void checkGoogleCloudBillingBudgetsV1ListBudgetsResponse(
     api.GoogleCloudBillingBudgetsV1ListBudgetsResponse o) {
   buildCounterGoogleCloudBillingBudgetsV1ListBudgetsResponse++;
   if (buildCounterGoogleCloudBillingBudgetsV1ListBudgetsResponse < 3) {
-    checkUnnamed7(o.budgets!);
+    checkUnnamed8(o.budgets!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -342,12 +360,12 @@ void checkGoogleCloudBillingBudgetsV1ListBudgetsResponse(
   buildCounterGoogleCloudBillingBudgetsV1ListBudgetsResponse--;
 }
 
-core.List<core.String> buildUnnamed8() => [
+core.List<core.String> buildUnnamed9() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed8(core.List<core.String> o) {
+void checkUnnamed9(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -366,7 +384,7 @@ api.GoogleCloudBillingBudgetsV1NotificationsRule
   buildCounterGoogleCloudBillingBudgetsV1NotificationsRule++;
   if (buildCounterGoogleCloudBillingBudgetsV1NotificationsRule < 3) {
     o.disableDefaultIamRecipients = true;
-    o.monitoringNotificationChannels = buildUnnamed8();
+    o.monitoringNotificationChannels = buildUnnamed9();
     o.pubsubTopic = 'foo';
     o.schemaVersion = 'foo';
   }
@@ -379,7 +397,7 @@ void checkGoogleCloudBillingBudgetsV1NotificationsRule(
   buildCounterGoogleCloudBillingBudgetsV1NotificationsRule++;
   if (buildCounterGoogleCloudBillingBudgetsV1NotificationsRule < 3) {
     unittest.expect(o.disableDefaultIamRecipients!, unittest.isTrue);
-    checkUnnamed8(o.monitoringNotificationChannels!);
+    checkUnnamed9(o.monitoringNotificationChannels!);
     unittest.expect(
       o.pubsubTopic!,
       unittest.equals('foo'),
@@ -624,7 +642,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudBillingBudgetsV1Budget(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -640,7 +658,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -679,7 +697,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -695,7 +713,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -731,7 +749,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -747,7 +765,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -787,7 +805,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -803,7 +821,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -858,7 +876,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudBillingBudgetsV1Budget(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -874,7 +892,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>

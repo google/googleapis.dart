@@ -2,8 +2,6 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-library googleapis_generator;
-
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
@@ -39,7 +37,7 @@ void writeDiscoveryDocuments(
     final name = '$outputDir/${description.name}__${description.version}.json';
     final file = File(name);
     const encoder = JsonEncoder.withIndent('    ');
-    file.writeAsStringSync(encoder.convert(description.toJson()));
+    file.writeAsStringSync('${encoder.convert(description.toJsonSorted())}\n');
     print('Wrote: $name');
   }
 }

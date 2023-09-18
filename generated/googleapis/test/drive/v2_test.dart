@@ -1,8 +1,6 @@
 // ignore_for_file: camel_case_types
-// ignore_for_file: cascade_invocations
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_const_declarations
@@ -12,8 +10,9 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unreachable_from_main
 // ignore_for_file: unused_local_variable
 
 import 'dart:async' as async;
@@ -1410,6 +1409,7 @@ api.ContentRestriction buildContentRestriction() {
   final o = api.ContentRestriction();
   buildCounterContentRestriction++;
   if (buildCounterContentRestriction < 3) {
+    o.ownerRestricted = true;
     o.readOnly = true;
     o.reason = 'foo';
     o.restrictingUser = buildUser();
@@ -1423,6 +1423,7 @@ api.ContentRestriction buildContentRestriction() {
 void checkContentRestriction(api.ContentRestriction o) {
   buildCounterContentRestriction++;
   if (buildCounterContentRestriction < 3) {
+    unittest.expect(o.ownerRestricted!, unittest.isTrue);
     unittest.expect(o.readOnly!, unittest.isTrue);
     unittest.expect(
       o.reason!,
@@ -1488,6 +1489,7 @@ api.DriveCapabilities buildDriveCapabilities() {
     o.canChangeDomainUsersOnlyRestriction = true;
     o.canChangeDriveBackground = true;
     o.canChangeDriveMembersOnlyRestriction = true;
+    o.canChangeSharingFoldersRequiresOrganizerPermissionRestriction = true;
     o.canComment = true;
     o.canCopy = true;
     o.canDeleteChildren = true;
@@ -1516,6 +1518,9 @@ void checkDriveCapabilities(api.DriveCapabilities o) {
     unittest.expect(o.canChangeDomainUsersOnlyRestriction!, unittest.isTrue);
     unittest.expect(o.canChangeDriveBackground!, unittest.isTrue);
     unittest.expect(o.canChangeDriveMembersOnlyRestriction!, unittest.isTrue);
+    unittest.expect(
+        o.canChangeSharingFoldersRequiresOrganizerPermissionRestriction!,
+        unittest.isTrue);
     unittest.expect(o.canComment!, unittest.isTrue);
     unittest.expect(o.canCopy!, unittest.isTrue);
     unittest.expect(o.canDeleteChildren!, unittest.isTrue);
@@ -1543,6 +1548,7 @@ api.DriveRestrictions buildDriveRestrictions() {
     o.copyRequiresWriterPermission = true;
     o.domainUsersOnly = true;
     o.driveMembersOnly = true;
+    o.sharingFoldersRequiresOrganizerPermission = true;
   }
   buildCounterDriveRestrictions--;
   return o;
@@ -1555,6 +1561,8 @@ void checkDriveRestrictions(api.DriveRestrictions o) {
     unittest.expect(o.copyRequiresWriterPermission!, unittest.isTrue);
     unittest.expect(o.domainUsersOnly!, unittest.isTrue);
     unittest.expect(o.driveMembersOnly!, unittest.isTrue);
+    unittest.expect(
+        o.sharingFoldersRequiresOrganizerPermission!, unittest.isTrue);
   }
   buildCounterDriveRestrictions--;
 }
@@ -1685,7 +1693,9 @@ api.FileCapabilities buildFileCapabilities() {
     o.canListChildren = true;
     o.canModifyContent = true;
     o.canModifyContentRestriction = true;
+    o.canModifyEditorContentRestriction = true;
     o.canModifyLabels = true;
+    o.canModifyOwnerContentRestriction = true;
     o.canMoveChildrenOutOfDrive = true;
     o.canMoveChildrenOutOfTeamDrive = true;
     o.canMoveChildrenWithinDrive = true;
@@ -1701,6 +1711,7 @@ api.FileCapabilities buildFileCapabilities() {
     o.canReadRevisions = true;
     o.canReadTeamDrive = true;
     o.canRemoveChildren = true;
+    o.canRemoveContentRestriction = true;
     o.canRemoveMyDriveParent = true;
     o.canRename = true;
     o.canShare = true;
@@ -1731,7 +1742,9 @@ void checkFileCapabilities(api.FileCapabilities o) {
     unittest.expect(o.canListChildren!, unittest.isTrue);
     unittest.expect(o.canModifyContent!, unittest.isTrue);
     unittest.expect(o.canModifyContentRestriction!, unittest.isTrue);
+    unittest.expect(o.canModifyEditorContentRestriction!, unittest.isTrue);
     unittest.expect(o.canModifyLabels!, unittest.isTrue);
+    unittest.expect(o.canModifyOwnerContentRestriction!, unittest.isTrue);
     unittest.expect(o.canMoveChildrenOutOfDrive!, unittest.isTrue);
     unittest.expect(o.canMoveChildrenOutOfTeamDrive!, unittest.isTrue);
     unittest.expect(o.canMoveChildrenWithinDrive!, unittest.isTrue);
@@ -1747,6 +1760,7 @@ void checkFileCapabilities(api.FileCapabilities o) {
     unittest.expect(o.canReadRevisions!, unittest.isTrue);
     unittest.expect(o.canReadTeamDrive!, unittest.isTrue);
     unittest.expect(o.canRemoveChildren!, unittest.isTrue);
+    unittest.expect(o.canRemoveContentRestriction!, unittest.isTrue);
     unittest.expect(o.canRemoveMyDriveParent!, unittest.isTrue);
     unittest.expect(o.canRename!, unittest.isTrue);
     unittest.expect(o.canShare!, unittest.isTrue);
@@ -3791,6 +3805,7 @@ api.TeamDriveCapabilities buildTeamDriveCapabilities() {
     o.canAddChildren = true;
     o.canChangeCopyRequiresWriterPermissionRestriction = true;
     o.canChangeDomainUsersOnlyRestriction = true;
+    o.canChangeSharingFoldersRequiresOrganizerPermissionRestriction = true;
     o.canChangeTeamDriveBackground = true;
     o.canChangeTeamMembersOnlyRestriction = true;
     o.canComment = true;
@@ -3820,6 +3835,9 @@ void checkTeamDriveCapabilities(api.TeamDriveCapabilities o) {
     unittest.expect(
         o.canChangeCopyRequiresWriterPermissionRestriction!, unittest.isTrue);
     unittest.expect(o.canChangeDomainUsersOnlyRestriction!, unittest.isTrue);
+    unittest.expect(
+        o.canChangeSharingFoldersRequiresOrganizerPermissionRestriction!,
+        unittest.isTrue);
     unittest.expect(o.canChangeTeamDriveBackground!, unittest.isTrue);
     unittest.expect(o.canChangeTeamMembersOnlyRestriction!, unittest.isTrue);
     unittest.expect(o.canComment!, unittest.isTrue);
@@ -3849,6 +3867,7 @@ api.TeamDriveRestrictions buildTeamDriveRestrictions() {
     o.adminManagedRestrictions = true;
     o.copyRequiresWriterPermission = true;
     o.domainUsersOnly = true;
+    o.sharingFoldersRequiresOrganizerPermission = true;
     o.teamMembersOnly = true;
   }
   buildCounterTeamDriveRestrictions--;
@@ -3861,6 +3880,8 @@ void checkTeamDriveRestrictions(api.TeamDriveRestrictions o) {
     unittest.expect(o.adminManagedRestrictions!, unittest.isTrue);
     unittest.expect(o.copyRequiresWriterPermission!, unittest.isTrue);
     unittest.expect(o.domainUsersOnly!, unittest.isTrue);
+    unittest.expect(
+        o.sharingFoldersRequiresOrganizerPermission!, unittest.isTrue);
     unittest.expect(o.teamMembersOnly!, unittest.isTrue);
   }
   buildCounterTeamDriveRestrictions--;
@@ -4721,7 +4742,7 @@ void main() {
       final arg_startChangeId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4741,7 +4762,7 @@ void main() {
         );
         pathOffset += 5;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4795,7 +4816,7 @@ void main() {
       final arg_appId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4821,7 +4842,7 @@ void main() {
           unittest.equals('$arg_appId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4859,7 +4880,7 @@ void main() {
       final arg_languageCode = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4879,7 +4900,7 @@ void main() {
         );
         pathOffset += 4;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4937,7 +4958,7 @@ void main() {
       final arg_teamDriveId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4963,7 +4984,7 @@ void main() {
           unittest.equals('$arg_changeId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -5023,7 +5044,7 @@ void main() {
       final arg_teamDriveId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -5043,7 +5064,7 @@ void main() {
         );
         pathOffset += 22;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -5114,7 +5135,7 @@ void main() {
       final arg_teamDriveId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -5134,7 +5155,7 @@ void main() {
         );
         pathOffset += 7;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -5265,7 +5286,7 @@ void main() {
             api.Channel.fromJson(json as core.Map<core.String, core.dynamic>);
         checkChannel(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -5285,7 +5306,7 @@ void main() {
         );
         pathOffset += 13;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -5403,7 +5424,7 @@ void main() {
             api.Channel.fromJson(json as core.Map<core.String, core.dynamic>);
         checkChannel(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -5423,7 +5444,7 @@ void main() {
         );
         pathOffset += 13;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -5462,7 +5483,7 @@ void main() {
       final arg_enforceSingleParent = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -5502,7 +5523,7 @@ void main() {
           unittest.equals('$arg_childId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -5543,7 +5564,7 @@ void main() {
       final arg_childId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -5583,7 +5604,7 @@ void main() {
           unittest.equals('$arg_childId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -5628,7 +5649,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkChildReference(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -5662,7 +5683,7 @@ void main() {
         );
         pathOffset += 9;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -5718,7 +5739,7 @@ void main() {
       final arg_q = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -5752,7 +5773,7 @@ void main() {
         );
         pathOffset += 9;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -5812,7 +5833,7 @@ void main() {
       final arg_commentId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -5852,7 +5873,7 @@ void main() {
           unittest.equals('$arg_commentId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -5889,7 +5910,7 @@ void main() {
       final arg_includeDeleted = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -5929,7 +5950,7 @@ void main() {
           unittest.equals('$arg_commentId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -5975,7 +5996,7 @@ void main() {
             api.Comment.fromJson(json as core.Map<core.String, core.dynamic>);
         checkComment(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -6009,7 +6030,7 @@ void main() {
         );
         pathOffset += 9;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -6050,7 +6071,7 @@ void main() {
       final arg_updatedMin = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -6084,7 +6105,7 @@ void main() {
         );
         pathOffset += 9;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -6147,7 +6168,7 @@ void main() {
             api.Comment.fromJson(json as core.Map<core.String, core.dynamic>);
         checkComment(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -6187,7 +6208,7 @@ void main() {
           unittest.equals('$arg_commentId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -6230,7 +6251,7 @@ void main() {
             api.Comment.fromJson(json as core.Map<core.String, core.dynamic>);
         checkComment(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -6270,7 +6291,7 @@ void main() {
           unittest.equals('$arg_commentId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -6311,7 +6332,7 @@ void main() {
       final arg_useDomainAdminAccess = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -6337,7 +6358,7 @@ void main() {
           unittest.equals('$arg_driveId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -6384,7 +6405,7 @@ void main() {
       final arg_useDomainAdminAccess = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -6410,7 +6431,7 @@ void main() {
           unittest.equals('$arg_driveId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -6451,7 +6472,7 @@ void main() {
       final arg_driveId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -6485,7 +6506,7 @@ void main() {
         );
         pathOffset += 5;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -6526,7 +6547,7 @@ void main() {
             api.Drive.fromJson(json as core.Map<core.String, core.dynamic>);
         checkDrive(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -6546,7 +6567,7 @@ void main() {
         );
         pathOffset += 6;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -6590,7 +6611,7 @@ void main() {
       final arg_useDomainAdminAccess = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -6610,7 +6631,7 @@ void main() {
         );
         pathOffset += 6;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -6667,7 +6688,7 @@ void main() {
       final arg_driveId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -6701,7 +6722,7 @@ void main() {
         );
         pathOffset += 7;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -6743,7 +6764,7 @@ void main() {
             api.Drive.fromJson(json as core.Map<core.String, core.dynamic>);
         checkDrive(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -6769,7 +6790,7 @@ void main() {
           unittest.equals('$arg_driveId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -6829,7 +6850,7 @@ void main() {
             api.File.fromJson(json as core.Map<core.String, core.dynamic>);
         checkFile(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -6863,7 +6884,7 @@ void main() {
         );
         pathOffset += 5;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -6963,7 +6984,7 @@ void main() {
       final arg_supportsTeamDrives = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -6989,7 +7010,7 @@ void main() {
           unittest.equals('$arg_fileId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -7037,10 +7058,11 @@ void main() {
     unittest.test('method--emptyTrash', () async {
       final mock = HttpServerMock();
       final res = api.DriveApi(mock).files;
+      final arg_driveId = 'foo';
       final arg_enforceSingleParent = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -7060,7 +7082,7 @@ void main() {
         );
         pathOffset += 11;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -7075,6 +7097,10 @@ void main() {
             );
           }
         }
+        unittest.expect(
+          queryMap['driveId']!.first,
+          unittest.equals(arg_driveId),
+        );
         unittest.expect(
           queryMap['enforceSingleParent']!.first,
           unittest.equals('$arg_enforceSingleParent'),
@@ -7091,7 +7117,9 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       await res.emptyTrash(
-          enforceSingleParent: arg_enforceSingleParent, $fields: arg_$fields);
+          driveId: arg_driveId,
+          enforceSingleParent: arg_enforceSingleParent,
+          $fields: arg_$fields);
     });
 
     unittest.test('method--export', () async {
@@ -7104,7 +7132,7 @@ void main() {
       final arg_mimeType = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -7138,7 +7166,7 @@ void main() {
         );
         pathOffset += 7;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -7179,7 +7207,7 @@ void main() {
       final arg_type = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -7199,7 +7227,7 @@ void main() {
         );
         pathOffset += 17;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -7262,7 +7290,7 @@ void main() {
       final arg_updateViewedDate = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -7288,7 +7316,7 @@ void main() {
           unittest.equals('$arg_fileId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -7385,7 +7413,7 @@ void main() {
             api.File.fromJson(json as core.Map<core.String, core.dynamic>);
         checkFile(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -7405,7 +7433,7 @@ void main() {
         );
         pathOffset += 5;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -7522,7 +7550,7 @@ void main() {
       final arg_teamDriveId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -7542,7 +7570,7 @@ void main() {
         );
         pathOffset += 5;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -7661,7 +7689,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -7695,7 +7723,7 @@ void main() {
         );
         pathOffset += 11;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -7747,7 +7775,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkModifyLabelsRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -7781,7 +7809,7 @@ void main() {
         );
         pathOffset += 13;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -7841,7 +7869,7 @@ void main() {
             api.File.fromJson(json as core.Map<core.String, core.dynamic>);
         checkFile(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -7867,7 +7895,7 @@ void main() {
           unittest.equals('$arg_fileId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -7998,7 +8026,7 @@ void main() {
       final arg_supportsTeamDrives = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -8032,7 +8060,7 @@ void main() {
         );
         pathOffset += 6;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -8093,7 +8121,7 @@ void main() {
       final arg_supportsTeamDrives = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -8127,7 +8155,7 @@ void main() {
         );
         pathOffset += 6;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -8188,7 +8216,7 @@ void main() {
       final arg_supportsTeamDrives = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -8222,7 +8250,7 @@ void main() {
         );
         pathOffset += 8;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -8305,7 +8333,7 @@ void main() {
             api.File.fromJson(json as core.Map<core.String, core.dynamic>);
         checkFile(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -8331,7 +8359,7 @@ void main() {
           unittest.equals('$arg_fileId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -8453,9 +8481,6 @@ void main() {
     });
 
     unittest.test('method--watch', () async {
-      // TODO: Implement tests for media upload;
-      // TODO: Implement tests for media download;
-
       final mock = HttpServerMock();
       final res = api.DriveApi(mock).files;
       final arg_request = buildChannel();
@@ -8474,7 +8499,7 @@ void main() {
             api.Channel.fromJson(json as core.Map<core.String, core.dynamic>);
         checkChannel(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -8508,7 +8533,7 @@ void main() {
         );
         pathOffset += 6;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -8589,7 +8614,7 @@ void main() {
       final arg_enforceSingleParent = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -8629,7 +8654,7 @@ void main() {
           unittest.equals('$arg_parentId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -8670,7 +8695,7 @@ void main() {
       final arg_parentId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -8710,7 +8735,7 @@ void main() {
           unittest.equals('$arg_parentId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -8755,7 +8780,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkParentReference(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -8789,7 +8814,7 @@ void main() {
         );
         pathOffset += 8;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -8841,7 +8866,7 @@ void main() {
       final arg_fileId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -8875,7 +8900,7 @@ void main() {
         );
         pathOffset += 8;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -8917,7 +8942,7 @@ void main() {
       final arg_useDomainAdminAccess = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -8957,7 +8982,7 @@ void main() {
           unittest.equals('$arg_permissionId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -9012,7 +9037,7 @@ void main() {
       final arg_useDomainAdminAccess = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -9052,7 +9077,7 @@ void main() {
           unittest.equals('$arg_permissionId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -9104,7 +9129,7 @@ void main() {
       final arg_email = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -9130,7 +9155,7 @@ void main() {
           unittest.equals('$arg_email'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -9178,7 +9203,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkPermission(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -9212,7 +9237,7 @@ void main() {
         );
         pathOffset += 12;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -9290,7 +9315,7 @@ void main() {
       final arg_useDomainAdminAccess = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -9324,7 +9349,7 @@ void main() {
         );
         pathOffset += 12;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -9402,7 +9427,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkPermission(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -9442,7 +9467,7 @@ void main() {
           unittest.equals('$arg_permissionId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -9516,7 +9541,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkPermission(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -9556,7 +9581,7 @@ void main() {
           unittest.equals('$arg_permissionId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -9623,7 +9648,7 @@ void main() {
       final arg_visibility = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -9663,7 +9688,7 @@ void main() {
           unittest.equals('$arg_propertyKey'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -9705,7 +9730,7 @@ void main() {
       final arg_visibility = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -9745,7 +9770,7 @@ void main() {
           unittest.equals('$arg_propertyKey'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -9791,7 +9816,7 @@ void main() {
             api.Property.fromJson(json as core.Map<core.String, core.dynamic>);
         checkProperty(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -9825,7 +9850,7 @@ void main() {
         );
         pathOffset += 11;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -9862,7 +9887,7 @@ void main() {
       final arg_fileId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -9896,7 +9921,7 @@ void main() {
         );
         pathOffset += 11;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -9939,7 +9964,7 @@ void main() {
             api.Property.fromJson(json as core.Map<core.String, core.dynamic>);
         checkProperty(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -9979,7 +10004,7 @@ void main() {
           unittest.equals('$arg_propertyKey'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -10027,7 +10052,7 @@ void main() {
             api.Property.fromJson(json as core.Map<core.String, core.dynamic>);
         checkProperty(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -10067,7 +10092,7 @@ void main() {
           unittest.equals('$arg_propertyKey'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -10113,7 +10138,7 @@ void main() {
       final arg_replyId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -10167,7 +10192,7 @@ void main() {
           unittest.equals('$arg_replyId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -10206,7 +10231,7 @@ void main() {
       final arg_includeDeleted = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -10260,7 +10285,7 @@ void main() {
           unittest.equals('$arg_replyId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -10307,7 +10332,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkCommentReply(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -10355,7 +10380,7 @@ void main() {
         );
         pathOffset += 8;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -10396,7 +10421,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -10444,7 +10469,7 @@ void main() {
         );
         pathOffset += 8;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -10503,7 +10528,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkCommentReply(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -10557,7 +10582,7 @@ void main() {
           unittest.equals('$arg_replyId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -10602,7 +10627,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkCommentReply(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -10656,7 +10681,7 @@ void main() {
           unittest.equals('$arg_replyId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -10697,7 +10722,7 @@ void main() {
       final arg_revisionId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -10737,7 +10762,7 @@ void main() {
           unittest.equals('$arg_revisionId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -10773,7 +10798,7 @@ void main() {
       final arg_revisionId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -10813,7 +10838,7 @@ void main() {
           unittest.equals('$arg_revisionId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -10852,7 +10877,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -10886,7 +10911,7 @@ void main() {
         );
         pathOffset += 10;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -10939,7 +10964,7 @@ void main() {
             api.Revision.fromJson(json as core.Map<core.String, core.dynamic>);
         checkRevision(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -10979,7 +11004,7 @@ void main() {
           unittest.equals('$arg_revisionId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -11022,7 +11047,7 @@ void main() {
             api.Revision.fromJson(json as core.Map<core.String, core.dynamic>);
         checkRevision(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -11062,7 +11087,7 @@ void main() {
           unittest.equals('$arg_revisionId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -11101,7 +11126,7 @@ void main() {
       final arg_teamDriveId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -11127,7 +11152,7 @@ void main() {
           unittest.equals('$arg_teamDriveId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -11163,7 +11188,7 @@ void main() {
       final arg_useDomainAdminAccess = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -11189,7 +11214,7 @@ void main() {
           unittest.equals('$arg_teamDriveId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -11235,7 +11260,7 @@ void main() {
             api.TeamDrive.fromJson(json as core.Map<core.String, core.dynamic>);
         checkTeamDrive(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -11255,7 +11280,7 @@ void main() {
         );
         pathOffset += 10;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -11299,7 +11324,7 @@ void main() {
       final arg_useDomainAdminAccess = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -11319,7 +11344,7 @@ void main() {
         );
         pathOffset += 10;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -11382,7 +11407,7 @@ void main() {
             api.TeamDrive.fromJson(json as core.Map<core.String, core.dynamic>);
         checkTeamDrive(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -11408,7 +11433,7 @@ void main() {
           unittest.equals('$arg_teamDriveId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>

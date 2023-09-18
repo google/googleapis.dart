@@ -24,6 +24,13 @@
     "name": "clouddeploy",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230727",
+    "rootUrl": "https://clouddeploy.googleapis.com/",
+    "servicePath": "",
+    "title": "Cloud Deploy API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "projects": {
             "resources": {
@@ -652,6 +658,34 @@
                                     "resources": {
                                         "rollouts": {
                                             "methods": {
+                                                "advance": {
+                                                    "description": "Advances a Rollout in a given project and location.",
+                                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/deliveryPipelines/{deliveryPipelinesId}/releases/{releasesId}/rollouts/{rolloutsId}:advance",
+                                                    "httpMethod": "POST",
+                                                    "id": "clouddeploy.projects.locations.deliveryPipelines.releases.rollouts.advance",
+                                                    "parameterOrder": [
+                                                        "name"
+                                                    ],
+                                                    "parameters": {
+                                                        "name": {
+                                                            "description": "Required. Name of the Rollout. Format is projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/{rollout}.",
+                                                            "location": "path",
+                                                            "pattern": "^projects/[^/]+/locations/[^/]+/deliveryPipelines/[^/]+/releases/[^/]+/rollouts/[^/]+$",
+                                                            "required": true,
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "path": "v1/{+name}:advance",
+                                                    "request": {
+                                                        "$ref": "AdvanceRolloutRequest"
+                                                    },
+                                                    "response": {
+                                                        "$ref": "AdvanceRolloutResponse"
+                                                    },
+                                                    "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-platform"
+                                                    ]
+                                                },
                                                 "approve": {
                                                     "description": "Approves a Rollout.",
                                                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/deliveryPipelines/{deliveryPipelinesId}/releases/{releasesId}/rollouts/{rolloutsId}:approve",
@@ -680,6 +714,34 @@
                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                     ]
                                                 },
+                                                "cancel": {
+                                                    "description": "Cancels a Rollout in a given project and location.",
+                                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/deliveryPipelines/{deliveryPipelinesId}/releases/{releasesId}/rollouts/{rolloutsId}:cancel",
+                                                    "httpMethod": "POST",
+                                                    "id": "clouddeploy.projects.locations.deliveryPipelines.releases.rollouts.cancel",
+                                                    "parameterOrder": [
+                                                        "name"
+                                                    ],
+                                                    "parameters": {
+                                                        "name": {
+                                                            "description": "Required. Name of the Rollout. Format is projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/{rollout}.",
+                                                            "location": "path",
+                                                            "pattern": "^projects/[^/]+/locations/[^/]+/deliveryPipelines/[^/]+/releases/[^/]+/rollouts/[^/]+$",
+                                                            "required": true,
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "path": "v1/{+name}:cancel",
+                                                    "request": {
+                                                        "$ref": "CancelRolloutRequest"
+                                                    },
+                                                    "response": {
+                                                        "$ref": "CancelRolloutResponse"
+                                                    },
+                                                    "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-platform"
+                                                    ]
+                                                },
                                                 "create": {
                                                     "description": "Creates a new Rollout in a given project and location.",
                                                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/deliveryPipelines/{deliveryPipelinesId}/releases/{releasesId}/rollouts",
@@ -703,6 +765,11 @@
                                                         },
                                                         "rolloutId": {
                                                             "description": "Required. ID of the `Rollout`.",
+                                                            "location": "query",
+                                                            "type": "string"
+                                                        },
+                                                        "startingPhaseId": {
+                                                            "description": "Optional. The starting phase ID for the `Rollout`. If empty the `Rollout` will start at the first phase.",
                                                             "location": "query",
                                                             "type": "string"
                                                         },
@@ -743,6 +810,34 @@
                                                     "path": "v1/{+name}",
                                                     "response": {
                                                         "$ref": "Rollout"
+                                                    },
+                                                    "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-platform"
+                                                    ]
+                                                },
+                                                "ignoreJob": {
+                                                    "description": "Ignores the specified Job in a Rollout.",
+                                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/deliveryPipelines/{deliveryPipelinesId}/releases/{releasesId}/rollouts/{rolloutsId}:ignoreJob",
+                                                    "httpMethod": "POST",
+                                                    "id": "clouddeploy.projects.locations.deliveryPipelines.releases.rollouts.ignoreJob",
+                                                    "parameterOrder": [
+                                                        "rollout"
+                                                    ],
+                                                    "parameters": {
+                                                        "rollout": {
+                                                            "description": "Required. Name of the Rollout. Format is projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/{rollout}.",
+                                                            "location": "path",
+                                                            "pattern": "^projects/[^/]+/locations/[^/]+/deliveryPipelines/[^/]+/releases/[^/]+/rollouts/[^/]+$",
+                                                            "required": true,
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "path": "v1/{+rollout}:ignoreJob",
+                                                    "request": {
+                                                        "$ref": "IgnoreJobRequest"
+                                                    },
+                                                    "response": {
+                                                        "$ref": "IgnoreJobResponse"
                                                     },
                                                     "scopes": [
                                                         "https://www.googleapis.com/auth/cloud-platform"
@@ -793,6 +888,139 @@
                                                     "scopes": [
                                                         "https://www.googleapis.com/auth/cloud-platform"
                                                     ]
+                                                },
+                                                "retryJob": {
+                                                    "description": "Retries the specified Job in a Rollout.",
+                                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/deliveryPipelines/{deliveryPipelinesId}/releases/{releasesId}/rollouts/{rolloutsId}:retryJob",
+                                                    "httpMethod": "POST",
+                                                    "id": "clouddeploy.projects.locations.deliveryPipelines.releases.rollouts.retryJob",
+                                                    "parameterOrder": [
+                                                        "rollout"
+                                                    ],
+                                                    "parameters": {
+                                                        "rollout": {
+                                                            "description": "Required. Name of the Rollout. Format is projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/{rollout}.",
+                                                            "location": "path",
+                                                            "pattern": "^projects/[^/]+/locations/[^/]+/deliveryPipelines/[^/]+/releases/[^/]+/rollouts/[^/]+$",
+                                                            "required": true,
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "path": "v1/{+rollout}:retryJob",
+                                                    "request": {
+                                                        "$ref": "RetryJobRequest"
+                                                    },
+                                                    "response": {
+                                                        "$ref": "RetryJobResponse"
+                                                    },
+                                                    "scopes": [
+                                                        "https://www.googleapis.com/auth/cloud-platform"
+                                                    ]
+                                                }
+                                            },
+                                            "resources": {
+                                                "jobRuns": {
+                                                    "methods": {
+                                                        "get": {
+                                                            "description": "Gets details of a single JobRun.",
+                                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/deliveryPipelines/{deliveryPipelinesId}/releases/{releasesId}/rollouts/{rolloutsId}/jobRuns/{jobRunsId}",
+                                                            "httpMethod": "GET",
+                                                            "id": "clouddeploy.projects.locations.deliveryPipelines.releases.rollouts.jobRuns.get",
+                                                            "parameterOrder": [
+                                                                "name"
+                                                            ],
+                                                            "parameters": {
+                                                                "name": {
+                                                                    "description": "Required. Name of the `JobRun`. Format must be projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}/releases/{release_name}/rollouts/{rollout_name}/jobRuns/{job_run_name}.",
+                                                                    "location": "path",
+                                                                    "pattern": "^projects/[^/]+/locations/[^/]+/deliveryPipelines/[^/]+/releases/[^/]+/rollouts/[^/]+/jobRuns/[^/]+$",
+                                                                    "required": true,
+                                                                    "type": "string"
+                                                                }
+                                                            },
+                                                            "path": "v1/{+name}",
+                                                            "response": {
+                                                                "$ref": "JobRun"
+                                                            },
+                                                            "scopes": [
+                                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                            ]
+                                                        },
+                                                        "list": {
+                                                            "description": "Lists JobRuns in a given project and location.",
+                                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/deliveryPipelines/{deliveryPipelinesId}/releases/{releasesId}/rollouts/{rolloutsId}/jobRuns",
+                                                            "httpMethod": "GET",
+                                                            "id": "clouddeploy.projects.locations.deliveryPipelines.releases.rollouts.jobRuns.list",
+                                                            "parameterOrder": [
+                                                                "parent"
+                                                            ],
+                                                            "parameters": {
+                                                                "filter": {
+                                                                    "description": "Optional. Filter results to be returned. See https://google.aip.dev/160 for more details.",
+                                                                    "location": "query",
+                                                                    "type": "string"
+                                                                },
+                                                                "orderBy": {
+                                                                    "description": "Optional. Field to sort by. See https://google.aip.dev/132#ordering for more details.",
+                                                                    "location": "query",
+                                                                    "type": "string"
+                                                                },
+                                                                "pageSize": {
+                                                                    "description": "Optional. The maximum number of `JobRun` objects to return. The service may return fewer than this value. If unspecified, at most 50 `JobRun` objects will be returned. The maximum value is 1000; values above 1000 will be set to 1000.",
+                                                                    "format": "int32",
+                                                                    "location": "query",
+                                                                    "type": "integer"
+                                                                },
+                                                                "pageToken": {
+                                                                    "description": "Optional. A page token, received from a previous `ListJobRuns` call. Provide this to retrieve the subsequent page. When paginating, all other provided parameters match the call that provided the page token.",
+                                                                    "location": "query",
+                                                                    "type": "string"
+                                                                },
+                                                                "parent": {
+                                                                    "description": "Required. The `Rollout` which owns this collection of `JobRun` objects.",
+                                                                    "location": "path",
+                                                                    "pattern": "^projects/[^/]+/locations/[^/]+/deliveryPipelines/[^/]+/releases/[^/]+/rollouts/[^/]+$",
+                                                                    "required": true,
+                                                                    "type": "string"
+                                                                }
+                                                            },
+                                                            "path": "v1/{+parent}/jobRuns",
+                                                            "response": {
+                                                                "$ref": "ListJobRunsResponse"
+                                                            },
+                                                            "scopes": [
+                                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                            ]
+                                                        },
+                                                        "terminate": {
+                                                            "description": "Terminates a Job Run in a given project and location.",
+                                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/deliveryPipelines/{deliveryPipelinesId}/releases/{releasesId}/rollouts/{rolloutsId}/jobRuns/{jobRunsId}:terminate",
+                                                            "httpMethod": "POST",
+                                                            "id": "clouddeploy.projects.locations.deliveryPipelines.releases.rollouts.jobRuns.terminate",
+                                                            "parameterOrder": [
+                                                                "name"
+                                                            ],
+                                                            "parameters": {
+                                                                "name": {
+                                                                    "description": "Required. Name of the `JobRun`. Format must be projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/{rollout}/jobRuns/{jobRun}.",
+                                                                    "location": "path",
+                                                                    "pattern": "^projects/[^/]+/locations/[^/]+/deliveryPipelines/[^/]+/releases/[^/]+/rollouts/[^/]+/jobRuns/[^/]+$",
+                                                                    "required": true,
+                                                                    "type": "string"
+                                                                }
+                                                            },
+                                                            "path": "v1/{+name}:terminate",
+                                                            "request": {
+                                                                "$ref": "TerminateJobRunRequest"
+                                                            },
+                                                            "response": {
+                                                                "$ref": "TerminateJobRunResponse"
+                                                            },
+                                                            "scopes": [
+                                                                "https://www.googleapis.com/auth/cloud-platform"
+                                                            ]
+                                                        }
+                                                    }
                                                 }
                                             }
                                         }
@@ -881,7 +1109,7 @@
                                     ]
                                 },
                                 "list": {
-                                    "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
+                                    "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.",
                                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations",
                                     "httpMethod": "GET",
                                     "id": "clouddeploy.projects.locations.operations.list",
@@ -978,7 +1206,7 @@
                                     ],
                                     "parameters": {
                                         "allowMissing": {
-                                            "description": "Optional. If set to true, then deleting an already deleted or non-existing DeliveryPipeline will succeed.",
+                                            "description": "Optional. If set to true, then deleting an already deleted or non-existing `Target` will succeed.",
                                             "location": "query",
                                             "type": "boolean"
                                         },
@@ -1227,8 +1455,6 @@
             }
         }
     },
-    "revision": "20220906",
-    "rootUrl": "https://clouddeploy.googleapis.com/",
     "schemas": {
         "AbandonReleaseRequest": {
             "description": "The request object used by `AbandonRelease`.",
@@ -1239,6 +1465,46 @@
         "AbandonReleaseResponse": {
             "description": "The response object for `AbandonRelease`.",
             "id": "AbandonReleaseResponse",
+            "properties": {},
+            "type": "object"
+        },
+        "AdvanceChildRolloutJob": {
+            "description": "An advanceChildRollout Job.",
+            "id": "AdvanceChildRolloutJob",
+            "properties": {},
+            "type": "object"
+        },
+        "AdvanceChildRolloutJobRun": {
+            "description": "AdvanceChildRolloutJobRun contains information specific to a advanceChildRollout `JobRun`.",
+            "id": "AdvanceChildRolloutJobRun",
+            "properties": {
+                "rollout": {
+                    "description": "Output only. Name of the `ChildRollout`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "rolloutPhaseId": {
+                    "description": "Output only. the ID of the ChildRollout's Phase.",
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AdvanceRolloutRequest": {
+            "description": "The request object used by `AdvanceRollout`.",
+            "id": "AdvanceRolloutRequest",
+            "properties": {
+                "phaseId": {
+                    "description": "Required. The phase ID to advance the `Rollout` to.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AdvanceRolloutResponse": {
+            "description": "The response object from `AdvanceRollout`.",
+            "id": "AdvanceRolloutResponse",
             "properties": {},
             "type": "object"
         },
@@ -1327,7 +1593,7 @@
                     "description": "The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies)."
                 },
                 "members": {
-                    "description": "Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. ",
+                    "description": "Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.",
                     "items": {
                         "type": "string"
                     },
@@ -1355,10 +1621,102 @@
             },
             "type": "object"
         },
+        "Canary": {
+            "description": "Canary represents the canary deployment strategy.",
+            "id": "Canary",
+            "properties": {
+                "canaryDeployment": {
+                    "$ref": "CanaryDeployment",
+                    "description": "Configures the progressive based deployment for a Target."
+                },
+                "customCanaryDeployment": {
+                    "$ref": "CustomCanaryDeployment",
+                    "description": "Configures the progressive based deployment for a Target, but allows customizing at the phase level where a phase represents each of the percentage deployments."
+                },
+                "runtimeConfig": {
+                    "$ref": "RuntimeConfig",
+                    "description": "Optional. Runtime specific configurations for the deployment strategy. The runtime configuration is used to determine how Cloud Deploy will split traffic to enable a progressive deployment."
+                }
+            },
+            "type": "object"
+        },
+        "CanaryDeployment": {
+            "description": "CanaryDeployment represents the canary deployment configuration",
+            "id": "CanaryDeployment",
+            "properties": {
+                "percentages": {
+                    "description": "Required. The percentage based deployments that will occur as a part of a `Rollout`. List is expected in ascending order and each integer n is 0 <= n < 100.",
+                    "items": {
+                        "format": "int32",
+                        "type": "integer"
+                    },
+                    "type": "array"
+                },
+                "postdeploy": {
+                    "$ref": "Postdeploy",
+                    "description": "Optional. Configuration for the postdeploy job of the last phase. If this is not configured, postdeploy job will not be present."
+                },
+                "predeploy": {
+                    "$ref": "Predeploy",
+                    "description": "Optional. Configuration for the predeploy job of the first phase. If this is not configured, predeploy job will not be present."
+                },
+                "verify": {
+                    "description": "Whether to run verify tests after each percentage deployment.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
         "CancelOperationRequest": {
             "description": "The request message for Operations.CancelOperation.",
             "id": "CancelOperationRequest",
             "properties": {},
+            "type": "object"
+        },
+        "CancelRolloutRequest": {
+            "description": "The request object used by `CancelRollout`.",
+            "id": "CancelRolloutRequest",
+            "properties": {},
+            "type": "object"
+        },
+        "CancelRolloutResponse": {
+            "description": "The response object from `CancelRollout`.",
+            "id": "CancelRolloutResponse",
+            "properties": {},
+            "type": "object"
+        },
+        "ChildRolloutJobs": {
+            "description": "ChildRollouts job composition",
+            "id": "ChildRolloutJobs",
+            "properties": {
+                "advanceRolloutJobs": {
+                    "description": "Output only. List of AdvanceChildRolloutJobs",
+                    "items": {
+                        "$ref": "Job"
+                    },
+                    "readOnly": true,
+                    "type": "array"
+                },
+                "createRolloutJobs": {
+                    "description": "Output only. List of CreateChildRolloutJobs",
+                    "items": {
+                        "$ref": "Job"
+                    },
+                    "readOnly": true,
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "CloudRunConfig": {
+            "description": "CloudRunConfig contains the Cloud Run runtime configuration.",
+            "id": "CloudRunConfig",
+            "properties": {
+                "automaticTrafficControl": {
+                    "description": "Whether Cloud Deploy should update the traffic stanza in a Cloud Run Service on the user's behalf to facilitate traffic splitting. This is required to be true for CanaryDeployments, but optional for CustomCanaryDeployments.",
+                    "type": "boolean"
+                }
+            },
             "type": "object"
         },
         "CloudRunLocation": {
@@ -1366,7 +1724,7 @@
             "id": "CloudRunLocation",
             "properties": {
                 "location": {
-                    "description": "Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.",
+                    "description": "Required. The location for the Cloud Run Service. Format must be `projects/{project}/locations/{location}`.",
                     "type": "string"
                 }
             },
@@ -1397,13 +1755,24 @@
             },
             "type": "object"
         },
+        "CloudRunRenderMetadata": {
+            "description": "CloudRunRenderMetadata contains Cloud Run information associated with a `Release` render.",
+            "id": "CloudRunRenderMetadata",
+            "properties": {
+                "service": {
+                    "description": "Output only. The name of the Cloud Run Service in the rendered manifest. Format is projects/{project}/locations/{location}/services/{service}.",
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "Config": {
             "description": "Service-wide configuration.",
             "id": "Config",
             "properties": {
                 "defaultSkaffoldVersion": {
-                    "description": "Output only. Default Skaffold version that is assigned when a Release is created without specifying a Skaffold version.",
-                    "readOnly": true,
+                    "description": "Default Skaffold version that is assigned when a Release is created without specifying a Skaffold version.",
                     "type": "string"
                 },
                 "name": {
@@ -1411,11 +1780,47 @@
                     "type": "string"
                 },
                 "supportedVersions": {
-                    "description": "Output only. All supported versions of Skaffold.",
+                    "description": "All supported versions of Skaffold.",
                     "items": {
                         "$ref": "SkaffoldVersion"
                     },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "CreateChildRolloutJob": {
+            "description": "A createChildRollout Job.",
+            "id": "CreateChildRolloutJob",
+            "properties": {},
+            "type": "object"
+        },
+        "CreateChildRolloutJobRun": {
+            "description": "CreateChildRolloutJobRun contains information specific to a createChildRollout `JobRun`.",
+            "id": "CreateChildRolloutJobRun",
+            "properties": {
+                "rollout": {
+                    "description": "Output only. Name of the `ChildRollout`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.",
                     "readOnly": true,
+                    "type": "string"
+                },
+                "rolloutPhaseId": {
+                    "description": "Output only. The ID of the childRollout Phase initiated by this JobRun.",
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "CustomCanaryDeployment": {
+            "description": "CustomCanaryDeployment represents the custom canary deployment configuration.",
+            "id": "CustomCanaryDeployment",
+            "properties": {
+                "phaseConfigs": {
+                    "description": "Required. Configuration for each phase in the canary deployment in the order executed.",
+                    "items": {
+                        "$ref": "PhaseConfig"
+                    },
                     "type": "array"
                 }
             },
@@ -1459,14 +1864,14 @@
             "type": "object"
         },
         "DeliveryPipeline": {
-            "description": "A `DeliveryPipeline` resource in the Google Cloud Deploy API. A `DeliveryPipeline` defines a pipeline through which a Skaffold configuration can progress.",
+            "description": "A `DeliveryPipeline` resource in the Cloud Deploy API. A `DeliveryPipeline` defines a pipeline through which a Skaffold configuration can progress.",
             "id": "DeliveryPipeline",
             "properties": {
                 "annotations": {
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.",
+                    "description": "User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy.",
                     "type": "object"
                 },
                 "condition": {
@@ -1492,7 +1897,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.",
+                    "description": "Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.",
                     "type": "object"
                 },
                 "name": {
@@ -1538,14 +1943,165 @@
                     "enum": [
                         "TYPE_UNSPECIFIED",
                         "TYPE_PUBSUB_NOTIFICATION_FAILURE",
+                        "TYPE_RESOURCE_STATE_CHANGE",
+                        "TYPE_PROCESS_ABORTED",
+                        "TYPE_RESTRICTION_VIOLATED",
+                        "TYPE_RESOURCE_DELETED",
                         "TYPE_RENDER_STATUES_CHANGE"
+                    ],
+                    "enumDeprecated": [
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        true
                     ],
                     "enumDescriptions": [
                         "Type is unspecified.",
                         "A Pub/Sub notification failed to be sent.",
-                        "Release render status changed notification."
+                        "Resource state changed.",
+                        "A process aborted.",
+                        "Restriction check failed.",
+                        "Resource deleted.",
+                        "Deprecated: This field is never used. Use release_render log type instead."
                     ],
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "DeployArtifact": {
+            "description": "The artifacts produced by a deploy operation.",
+            "id": "DeployArtifact",
+            "properties": {
+                "artifactUri": {
+                    "description": "Output only. URI of a directory containing the artifacts. All paths are relative to this location.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "manifestPaths": {
+                    "description": "Output only. File paths of the manifests applied during the deploy operation relative to the URI.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "readOnly": true,
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "DeployJob": {
+            "description": "A deploy Job.",
+            "id": "DeployJob",
+            "properties": {},
+            "type": "object"
+        },
+        "DeployJobRun": {
+            "description": "DeployJobRun contains information specific to a deploy `JobRun`.",
+            "id": "DeployJobRun",
+            "properties": {
+                "artifact": {
+                    "$ref": "DeployArtifact",
+                    "description": "Output only. The artifact of a deploy job run, if available.",
+                    "readOnly": true
+                },
+                "build": {
+                    "description": "Output only. The resource name of the Cloud Build `Build` object that is used to deploy. Format is projects/{project}/locations/{location}/builds/{build}.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "failureCause": {
+                    "description": "Output only. The reason the deploy failed. This will always be unspecified while the deploy is in progress or if it succeeded.",
+                    "enum": [
+                        "FAILURE_CAUSE_UNSPECIFIED",
+                        "CLOUD_BUILD_UNAVAILABLE",
+                        "EXECUTION_FAILED",
+                        "DEADLINE_EXCEEDED",
+                        "MISSING_RESOURCES_FOR_CANARY",
+                        "CLOUD_BUILD_REQUEST_FAILED"
+                    ],
+                    "enumDescriptions": [
+                        "No reason for failure is specified.",
+                        "Cloud Build is not available, either because it is not enabled or because Cloud Deploy has insufficient permissions. See [Required permission](https://cloud.google.com/deploy/docs/cloud-deploy-service-account#required_permissions).",
+                        "The deploy operation did not complete successfully; check Cloud Build logs.",
+                        "The deploy build did not complete within the alloted time.",
+                        "There were missing resources in the runtime environment required for a canary deployment. Check the Cloud Build logs for more information.",
+                        "Cloud Build failed to fulfill Cloud Deploy's request. See failure_message for additional details."
+                    ],
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "failureMessage": {
+                    "description": "Output only. Additional information about the deploy failure, if available.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "metadata": {
+                    "$ref": "DeployJobRunMetadata",
+                    "description": "Output only. Metadata containing information about the deploy job run.",
+                    "readOnly": true
+                }
+            },
+            "type": "object"
+        },
+        "DeployJobRunMetadata": {
+            "description": "DeployJobRunMetadata surfaces information associated with a `DeployJobRun` to the user.",
+            "id": "DeployJobRunMetadata",
+            "properties": {
+                "cloudRun": {
+                    "$ref": "CloudRunMetadata",
+                    "description": "Output only. The name of the Cloud Run Service that is associated with a `DeployJobRun`.",
+                    "readOnly": true
+                }
+            },
+            "type": "object"
+        },
+        "DeployParameters": {
+            "description": "DeployParameters contains deploy parameters information.",
+            "id": "DeployParameters",
+            "properties": {
+                "matchTargetLabels": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Optional. Deploy parameters are applied to targets with match labels. If unspecified, deploy parameters are applied to all targets (including child targets of a multi-target).",
+                    "type": "object"
+                },
+                "values": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Required. Values are deploy parameters in key-value pairs.",
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "DeploymentJobs": {
+            "description": "Deployment job composition.",
+            "id": "DeploymentJobs",
+            "properties": {
+                "deployJob": {
+                    "$ref": "Job",
+                    "description": "Output only. The deploy Job. This is the deploy job in the phase.",
+                    "readOnly": true
+                },
+                "postdeployJob": {
+                    "$ref": "Job",
+                    "description": "Output only. The postdeploy Job. This is the postdeploy job in the phase. This is the last job of the phase.",
+                    "readOnly": true
+                },
+                "predeployJob": {
+                    "$ref": "Job",
+                    "description": "Output only. The predeploy Job. This is the predeploy job in the phase. This is the first job of the phase.",
+                    "readOnly": true
+                },
+                "verifyJob": {
+                    "$ref": "Job",
+                    "description": "Output only. The verify Job. Runs after a deploy if the deploy succeeds.",
+                    "readOnly": true
                 }
             },
             "type": "object"
@@ -1587,12 +2143,18 @@
                         "enum": [
                             "EXECUTION_ENVIRONMENT_USAGE_UNSPECIFIED",
                             "RENDER",
-                            "DEPLOY"
+                            "DEPLOY",
+                            "VERIFY",
+                            "PREDEPLOY",
+                            "POSTDEPLOY"
                         ],
                         "enumDescriptions": [
                             "Default value. This value is unused.",
                             "Use for rendering.",
-                            "Use for deploying and deployment hooks."
+                            "Use for deploying and deployment hooks.",
+                            "Use for deployment verification.",
+                            "Use for predeploy job execution.",
+                            "Use for postdeploy job execution."
                         ],
                         "type": "string"
                     },
@@ -1628,6 +2190,30 @@
             },
             "type": "object"
         },
+        "GatewayServiceMesh": {
+            "description": "Information about the Kubernetes Gateway API service mesh configuration.",
+            "id": "GatewayServiceMesh",
+            "properties": {
+                "deployment": {
+                    "description": "Required. Name of the Kubernetes Deployment whose traffic is managed by the specified HTTPRoute and Service.",
+                    "type": "string"
+                },
+                "httpRoute": {
+                    "description": "Required. Name of the Gateway API HTTPRoute.",
+                    "type": "string"
+                },
+                "routeUpdateWaitTime": {
+                    "description": "Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in seconds format. If unspecified, there is no wait time.",
+                    "format": "google-duration",
+                    "type": "string"
+                },
+                "service": {
+                    "description": "Required. Name of the Kubernetes Service.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "GkeCluster": {
             "description": "Information specifying a GKE Cluster.",
             "id": "GkeCluster",
@@ -1639,6 +2225,283 @@
                 "internalIp": {
                     "description": "Optional. If true, `cluster` is accessed using the private IP address of the control plane endpoint. Otherwise, the default IP address of the control plane endpoint is used. The default IP address is the private IP address for clusters with private control-plane endpoints and the public IP address otherwise. Only specify this option when `cluster` is a [private GKE cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept).",
                     "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "IgnoreJobRequest": {
+            "description": "The request object used by `IgnoreJob`.",
+            "id": "IgnoreJobRequest",
+            "properties": {
+                "jobId": {
+                    "description": "Required. The job ID for the Job to ignore.",
+                    "type": "string"
+                },
+                "phaseId": {
+                    "description": "Required. The phase ID the Job to ignore belongs to.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "IgnoreJobResponse": {
+            "description": "The response object from `IgnoreJob`.",
+            "id": "IgnoreJobResponse",
+            "properties": {},
+            "type": "object"
+        },
+        "Job": {
+            "description": "Job represents an operation for a `Rollout`.",
+            "id": "Job",
+            "properties": {
+                "advanceChildRolloutJob": {
+                    "$ref": "AdvanceChildRolloutJob",
+                    "description": "Output only. An advanceChildRollout Job.",
+                    "readOnly": true
+                },
+                "createChildRolloutJob": {
+                    "$ref": "CreateChildRolloutJob",
+                    "description": "Output only. A createChildRollout Job.",
+                    "readOnly": true
+                },
+                "deployJob": {
+                    "$ref": "DeployJob",
+                    "description": "Output only. A deploy Job.",
+                    "readOnly": true
+                },
+                "id": {
+                    "description": "Output only. The ID of the Job.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "jobRun": {
+                    "description": "Output only. The name of the `JobRun` responsible for the most recent invocation of this Job.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "postdeployJob": {
+                    "$ref": "PostdeployJob",
+                    "description": "Output only. A postdeploy Job.",
+                    "readOnly": true
+                },
+                "predeployJob": {
+                    "$ref": "PredeployJob",
+                    "description": "Output only. A predeploy Job.",
+                    "readOnly": true
+                },
+                "skipMessage": {
+                    "description": "Output only. Additional information on why the Job was skipped, if available.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "state": {
+                    "description": "Output only. The current state of the Job.",
+                    "enum": [
+                        "STATE_UNSPECIFIED",
+                        "PENDING",
+                        "DISABLED",
+                        "IN_PROGRESS",
+                        "SUCCEEDED",
+                        "FAILED",
+                        "ABORTED",
+                        "SKIPPED",
+                        "IGNORED"
+                    ],
+                    "enumDescriptions": [
+                        "The Job has an unspecified state.",
+                        "The Job is waiting for an earlier Phase(s) or Job(s) to complete.",
+                        "The Job is disabled.",
+                        "The Job is in progress.",
+                        "The Job succeeded.",
+                        "The Job failed.",
+                        "The Job was aborted.",
+                        "The Job was skipped.",
+                        "The Job was ignored."
+                    ],
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "verifyJob": {
+                    "$ref": "VerifyJob",
+                    "description": "Output only. A verify Job.",
+                    "readOnly": true
+                }
+            },
+            "type": "object"
+        },
+        "JobRun": {
+            "description": "A `JobRun` resource in the Cloud Deploy API. A `JobRun` contains information of a single `Rollout` job evaluation.",
+            "id": "JobRun",
+            "properties": {
+                "advanceChildRolloutJobRun": {
+                    "$ref": "AdvanceChildRolloutJobRun",
+                    "description": "Output only. Information specific to an advanceChildRollout `JobRun`",
+                    "readOnly": true
+                },
+                "createChildRolloutJobRun": {
+                    "$ref": "CreateChildRolloutJobRun",
+                    "description": "Output only. Information specific to a createChildRollout `JobRun`.",
+                    "readOnly": true
+                },
+                "createTime": {
+                    "description": "Output only. Time at which the `JobRun` was created.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "deployJobRun": {
+                    "$ref": "DeployJobRun",
+                    "description": "Output only. Information specific to a deploy `JobRun`.",
+                    "readOnly": true
+                },
+                "endTime": {
+                    "description": "Output only. Time at which the `JobRun` ended.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "etag": {
+                    "description": "Output only. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "jobId": {
+                    "description": "Output only. ID of the `Rollout` job this `JobRun` corresponds to.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Optional. Name of the `JobRun`. Format is projects/{project}/locations/{location}/ deliveryPipelines/{deliveryPipeline}/releases/{releases}/rollouts/ {rollouts}/jobRuns/{uuid}.",
+                    "type": "string"
+                },
+                "phaseId": {
+                    "description": "Output only. ID of the `Rollout` phase this `JobRun` belongs in.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "postdeployJobRun": {
+                    "$ref": "PostdeployJobRun",
+                    "description": "Output only. Information specific to a postdeploy `JobRun`.",
+                    "readOnly": true
+                },
+                "predeployJobRun": {
+                    "$ref": "PredeployJobRun",
+                    "description": "Output only. Information specific to a predeploy `JobRun`.",
+                    "readOnly": true
+                },
+                "startTime": {
+                    "description": "Output only. Time at which the `JobRun` was started.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "state": {
+                    "description": "Output only. The current state of the `JobRun`.",
+                    "enum": [
+                        "STATE_UNSPECIFIED",
+                        "IN_PROGRESS",
+                        "SUCCEEDED",
+                        "FAILED",
+                        "TERMINATING",
+                        "TERMINATED"
+                    ],
+                    "enumDescriptions": [
+                        "The `JobRun` has an unspecified state.",
+                        "The `JobRun` is in progress.",
+                        "The `JobRun` has succeeded.",
+                        "The `JobRun` has failed.",
+                        "The `JobRun` is terminating.",
+                        "The `JobRun` was terminated."
+                    ],
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "uid": {
+                    "description": "Output only. Unique identifier of the `JobRun`.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "verifyJobRun": {
+                    "$ref": "VerifyJobRun",
+                    "description": "Output only. Information specific to a verify `JobRun`.",
+                    "readOnly": true
+                }
+            },
+            "type": "object"
+        },
+        "JobRunNotificationEvent": {
+            "description": "Payload proto for \"clouddeploy.googleapis.com/jobrun_notification\" Platform Log event that describes the failure to send JobRun resource update Pub/Sub notification.",
+            "id": "JobRunNotificationEvent",
+            "properties": {
+                "jobRun": {
+                    "description": "The name of the `JobRun`.",
+                    "type": "string"
+                },
+                "message": {
+                    "description": "Debug message for when a notification fails to send.",
+                    "type": "string"
+                },
+                "pipelineUid": {
+                    "description": "Unique identifier of the `DeliveryPipeline`.",
+                    "type": "string"
+                },
+                "releaseUid": {
+                    "description": "Unique identifier of the `Release`.",
+                    "type": "string"
+                },
+                "rolloutUid": {
+                    "description": "Unique identifier of the `Rollout`.",
+                    "type": "string"
+                },
+                "targetId": {
+                    "description": "ID of the `Target`.",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "Type of this notification, e.g. for a Pub/Sub failure.",
+                    "enum": [
+                        "TYPE_UNSPECIFIED",
+                        "TYPE_PUBSUB_NOTIFICATION_FAILURE",
+                        "TYPE_RESOURCE_STATE_CHANGE",
+                        "TYPE_PROCESS_ABORTED",
+                        "TYPE_RESTRICTION_VIOLATED",
+                        "TYPE_RESOURCE_DELETED",
+                        "TYPE_RENDER_STATUES_CHANGE"
+                    ],
+                    "enumDeprecated": [
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        true
+                    ],
+                    "enumDescriptions": [
+                        "Type is unspecified.",
+                        "A Pub/Sub notification failed to be sent.",
+                        "Resource state changed.",
+                        "A process aborted.",
+                        "Restriction check failed.",
+                        "Resource deleted.",
+                        "Deprecated: This field is never used. Use release_render log type instead."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "KubernetesConfig": {
+            "description": "KubernetesConfig contains the Kubernetes runtime configuration.",
+            "id": "KubernetesConfig",
+            "properties": {
+                "gatewayServiceMesh": {
+                    "$ref": "GatewayServiceMesh",
+                    "description": "Kubernetes Gateway API service mesh configuration."
+                },
+                "serviceNetworking": {
+                    "$ref": "ServiceNetworking",
+                    "description": "Kubernetes Service networking configuration."
                 }
             },
             "type": "object"
@@ -1660,6 +2523,31 @@
                 },
                 "unreachable": {
                     "description": "Locations that could not be reached.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "ListJobRunsResponse": {
+            "description": "ListJobRunsResponse is the response object returned by `ListJobRuns`.",
+            "id": "ListJobRunsResponse",
+            "properties": {
+                "jobRuns": {
+                    "description": "The `JobRun` objects.",
+                    "items": {
+                        "$ref": "JobRun"
+                    },
+                    "type": "array"
+                },
+                "nextPageToken": {
+                    "description": "A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages.",
+                    "type": "string"
+                },
+                "unreachable": {
+                    "description": "Locations that could not be reached",
                     "items": {
                         "type": "string"
                     },
@@ -1780,7 +2668,7 @@
             "type": "object"
         },
         "Location": {
-            "description": "A resource that represents Google Cloud Platform location.",
+            "description": "A resource that represents a Google Cloud location.",
             "id": "Location",
             "properties": {
                 "displayName": {
@@ -1814,13 +2702,27 @@
             "type": "object"
         },
         "Metadata": {
-            "description": "Metadata surfaces information associated with a `Rollout` to the user.",
+            "description": "Metadata includes information associated with a `Rollout`.",
             "id": "Metadata",
             "properties": {
                 "cloudRun": {
                     "$ref": "CloudRunMetadata",
                     "description": "Output only. The name of the Cloud Run Service that is associated with a `Rollout`.",
                     "readOnly": true
+                }
+            },
+            "type": "object"
+        },
+        "MultiTarget": {
+            "description": "Information specifying a multiTarget.",
+            "id": "MultiTarget",
+            "properties": {
+                "targetIds": {
+                    "description": "Required. The target_ids of this multiTarget.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -1904,6 +2806,113 @@
             },
             "type": "object"
         },
+        "Phase": {
+            "description": "Phase represents a collection of jobs that are logically grouped together for a `Rollout`.",
+            "id": "Phase",
+            "properties": {
+                "childRolloutJobs": {
+                    "$ref": "ChildRolloutJobs",
+                    "description": "Output only. ChildRollout job composition.",
+                    "readOnly": true
+                },
+                "deploymentJobs": {
+                    "$ref": "DeploymentJobs",
+                    "description": "Output only. Deployment job composition.",
+                    "readOnly": true
+                },
+                "id": {
+                    "description": "Output only. The ID of the Phase.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "skipMessage": {
+                    "description": "Output only. Additional information on why the Phase was skipped, if available.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "state": {
+                    "description": "Output only. Current state of the Phase.",
+                    "enum": [
+                        "STATE_UNSPECIFIED",
+                        "PENDING",
+                        "IN_PROGRESS",
+                        "SUCCEEDED",
+                        "FAILED",
+                        "ABORTED",
+                        "SKIPPED"
+                    ],
+                    "enumDescriptions": [
+                        "The Phase has an unspecified state.",
+                        "The Phase is waiting for an earlier Phase(s) to complete.",
+                        "The Phase is in progress.",
+                        "The Phase has succeeded.",
+                        "The Phase has failed.",
+                        "The Phase was aborted.",
+                        "The Phase was skipped."
+                    ],
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "PhaseArtifact": {
+            "description": "Contains the paths to the artifacts, relative to the URI, for a phase.",
+            "id": "PhaseArtifact",
+            "properties": {
+                "jobManifestsPath": {
+                    "description": "Output only. File path of the directory of rendered job manifests relative to the URI. This is only set if it is applicable.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "manifestPath": {
+                    "description": "Output only. File path of the rendered manifest relative to the URI.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "skaffoldConfigPath": {
+                    "description": "Output only. File path of the resolved Skaffold configuration relative to the URI.",
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "PhaseConfig": {
+            "description": "PhaseConfig represents the configuration for a phase in the custom canary deployment.",
+            "id": "PhaseConfig",
+            "properties": {
+                "percentage": {
+                    "description": "Required. Percentage deployment for the phase.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "phaseId": {
+                    "description": "Required. The ID to assign to the `Rollout` phase. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.",
+                    "type": "string"
+                },
+                "postdeploy": {
+                    "$ref": "Postdeploy",
+                    "description": "Optional. Configuration for the postdeploy job of this phase. If this is not configured, postdeploy job will not be present for this phase."
+                },
+                "predeploy": {
+                    "$ref": "Predeploy",
+                    "description": "Optional. Configuration for the predeploy job of this phase. If this is not configured, predeploy job will not be present for this phase."
+                },
+                "profiles": {
+                    "description": "Skaffold profiles to use when rendering the manifest for this phase. These are in addition to the profiles list specified in the `DeliveryPipeline` stage.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "verify": {
+                    "description": "Whether to run verify tests after the deployment.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
         "PipelineCondition": {
             "description": "PipelineCondition contains all conditions relevant to a Delivery Pipeline.",
             "id": "PipelineCondition",
@@ -1914,7 +2923,11 @@
                 },
                 "targetsPresentCondition": {
                     "$ref": "TargetsPresentCondition",
-                    "description": "Detalis around targets enumerated in the pipeline."
+                    "description": "Details around targets enumerated in the pipeline."
+                },
+                "targetsTypeCondition": {
+                    "$ref": "TargetsTypeCondition",
+                    "description": "Details on the whether the targets enumerated in the pipeline are of the same type."
                 }
             },
             "type": "object"
@@ -1966,6 +2979,136 @@
             },
             "type": "object"
         },
+        "Postdeploy": {
+            "description": "Postdeploy contains the postdeploy job configuration information.",
+            "id": "Postdeploy",
+            "properties": {
+                "actions": {
+                    "description": "Optional. A sequence of skaffold custom actions to invoke during execution of the postdeploy job.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "PostdeployJob": {
+            "description": "A postdeploy Job.",
+            "id": "PostdeployJob",
+            "properties": {
+                "actions": {
+                    "description": "Output only. The custom actions that the postdeploy Job executes.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "readOnly": true,
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "PostdeployJobRun": {
+            "description": "PostdeployJobRun contains information specific to a postdeploy `JobRun`.",
+            "id": "PostdeployJobRun",
+            "properties": {
+                "build": {
+                    "description": "Output only. The resource name of the Cloud Build `Build` object that is used to execute the custom actions associated with the postdeploy Job. Format is projects/{project}/locations/{location}/builds/{build}.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "failureCause": {
+                    "description": "Output only. The reason the postdeploy failed. This will always be unspecified while the postdeploy is in progress or if it succeeded.",
+                    "enum": [
+                        "FAILURE_CAUSE_UNSPECIFIED",
+                        "CLOUD_BUILD_UNAVAILABLE",
+                        "EXECUTION_FAILED",
+                        "DEADLINE_EXCEEDED",
+                        "CLOUD_BUILD_REQUEST_FAILED"
+                    ],
+                    "enumDescriptions": [
+                        "No reason for failure is specified.",
+                        "Cloud Build is not available, either because it is not enabled or because Cloud Deploy has insufficient permissions. See [required permission](https://cloud.google.com/deploy/docs/cloud-deploy-service-account#required_permissions).",
+                        "The postdeploy operation did not complete successfully; check Cloud Build logs.",
+                        "The postdeploy build did not complete within the alloted time.",
+                        "Cloud Build failed to fulfill Cloud Deploy's request. See failure_message for additional details."
+                    ],
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "failureMessage": {
+                    "description": "Output only. Additional information about the postdeploy failure, if available.",
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Predeploy": {
+            "description": "Predeploy contains the predeploy job configuration information.",
+            "id": "Predeploy",
+            "properties": {
+                "actions": {
+                    "description": "Optional. A sequence of skaffold custom actions to invoke during execution of the predeploy job.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "PredeployJob": {
+            "description": "A predeploy Job.",
+            "id": "PredeployJob",
+            "properties": {
+                "actions": {
+                    "description": "Output only. The custom actions that the predeploy Job executes.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "readOnly": true,
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "PredeployJobRun": {
+            "description": "PredeployJobRun contains information specific to a predeploy `JobRun`.",
+            "id": "PredeployJobRun",
+            "properties": {
+                "build": {
+                    "description": "Output only. The resource name of the Cloud Build `Build` object that is used to execute the custom actions associated with the predeploy Job. Format is projects/{project}/locations/{location}/builds/{build}.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "failureCause": {
+                    "description": "Output only. The reason the predeploy failed. This will always be unspecified while the predeploy is in progress or if it succeeded.",
+                    "enum": [
+                        "FAILURE_CAUSE_UNSPECIFIED",
+                        "CLOUD_BUILD_UNAVAILABLE",
+                        "EXECUTION_FAILED",
+                        "DEADLINE_EXCEEDED",
+                        "CLOUD_BUILD_REQUEST_FAILED"
+                    ],
+                    "enumDescriptions": [
+                        "No reason for failure is specified.",
+                        "Cloud Build is not available, either because it is not enabled or because Cloud Deploy has insufficient permissions. See [required permission](https://cloud.google.com/deploy/docs/cloud-deploy-service-account#required_permissions).",
+                        "The predeploy operation did not complete successfully; check Cloud Build logs.",
+                        "The predeploy build did not complete within the alloted time.",
+                        "Cloud Build failed to fulfill Cloud Deploy's request. See failure_message for additional details."
+                    ],
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "failureMessage": {
+                    "description": "Output only. Additional information about the predeploy failure, if available.",
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "PrivatePool": {
             "description": "Execution using a private Cloud Build pool.",
             "id": "PrivatePool",
@@ -1986,7 +3129,7 @@
             "type": "object"
         },
         "Release": {
-            "description": "A `Release` resource in the Google Cloud Deploy API. A `Release` defines a specific Skaffold configuration instance that can be deployed.",
+            "description": "A `Release` resource in the Cloud Deploy API. A `Release` defines a specific Skaffold configuration instance that can be deployed.",
             "id": "Release",
             "properties": {
                 "abandoned": {
@@ -1998,7 +3141,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.",
+                    "description": "User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.",
                     "type": "object"
                 },
                 "buildArtifacts": {
@@ -2007,6 +3150,11 @@
                         "$ref": "BuildArtifact"
                     },
                     "type": "array"
+                },
+                "condition": {
+                    "$ref": "ReleaseCondition",
+                    "description": "Output only. Information around the state of the Release.",
+                    "readOnly": true
                 },
                 "createTime": {
                     "description": "Output only. Time at which the `Release` was created.",
@@ -2018,6 +3166,13 @@
                     "$ref": "DeliveryPipeline",
                     "description": "Output only. Snapshot of the parent pipeline taken at release creation time.",
                     "readOnly": true
+                },
+                "deployParameters": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Optional. The deploy parameters to use for all targets in this release.",
+                    "type": "object"
                 },
                 "description": {
                     "description": "Description of the `Release`. Max length is 255 characters.",
@@ -2031,7 +3186,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.",
+                    "description": "Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.",
                     "type": "object"
                 },
                 "name": {
@@ -2076,7 +3231,7 @@
                     "type": "string"
                 },
                 "skaffoldVersion": {
-                    "description": "The Skaffold version to use when operating on this release, such as \"1.20.0\". Not all versions are valid; Google Cloud Deploy supports a specific set of versions. If unset, the most recent supported Skaffold version will be used.",
+                    "description": "The Skaffold version to use when operating on this release, such as \"1.20.0\". Not all versions are valid; Cloud Deploy supports a specific set of versions. If unset, the most recent supported Skaffold version will be used.",
                     "type": "string"
                 },
                 "targetArtifacts": {
@@ -2111,6 +3266,21 @@
             },
             "type": "object"
         },
+        "ReleaseCondition": {
+            "description": "ReleaseCondition contains all conditions relevant to a Release.",
+            "id": "ReleaseCondition",
+            "properties": {
+                "releaseReadyCondition": {
+                    "$ref": "ReleaseReadyCondition",
+                    "description": "Details around the Releases's overall status."
+                },
+                "skaffoldSupportedCondition": {
+                    "$ref": "SkaffoldSupportedCondition",
+                    "description": "Details around the support state of the release's skaffold version."
+                }
+            },
+            "type": "object"
+        },
         "ReleaseNotificationEvent": {
             "description": "Payload proto for \"clouddeploy.googleapis.com/release_notification\" Platform Log event that describes the failure to send release status change Pub/Sub notification.",
             "id": "ReleaseNotificationEvent",
@@ -2128,14 +3298,42 @@
                     "enum": [
                         "TYPE_UNSPECIFIED",
                         "TYPE_PUBSUB_NOTIFICATION_FAILURE",
+                        "TYPE_RESOURCE_STATE_CHANGE",
+                        "TYPE_PROCESS_ABORTED",
+                        "TYPE_RESTRICTION_VIOLATED",
+                        "TYPE_RESOURCE_DELETED",
                         "TYPE_RENDER_STATUES_CHANGE"
+                    ],
+                    "enumDeprecated": [
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        true
                     ],
                     "enumDescriptions": [
                         "Type is unspecified.",
                         "A Pub/Sub notification failed to be sent.",
-                        "Release render status changed notification."
+                        "Resource state changed.",
+                        "A process aborted.",
+                        "Restriction check failed.",
+                        "Resource deleted.",
+                        "Deprecated: This field is never used. Use release_render log type instead."
                     ],
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ReleaseReadyCondition": {
+            "description": "ReleaseReadyCondition contains information around the status of the Release. If a release is not ready, you cannot create a rollout with the release.",
+            "id": "ReleaseReadyCondition",
+            "properties": {
+                "status": {
+                    "description": "True if the Release is in a valid state. Otherwise at least one condition in `ReleaseCondition` is in an invalid state. Iterate over those conditions and see which condition(s) has status = false to find out what is wrong with the Release.",
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -2155,15 +3353,48 @@
             },
             "type": "object"
         },
+        "RenderMetadata": {
+            "description": "RenderMetadata includes information associated with a `Release` render.",
+            "id": "RenderMetadata",
+            "properties": {
+                "cloudRun": {
+                    "$ref": "CloudRunRenderMetadata",
+                    "description": "Output only. Metadata associated with rendering for Cloud Run.",
+                    "readOnly": true
+                }
+            },
+            "type": "object"
+        },
+        "RetryJobRequest": {
+            "description": "RetryJobRequest is the request object used by `RetryJob`.",
+            "id": "RetryJobRequest",
+            "properties": {
+                "jobId": {
+                    "description": "Required. The job ID for the Job to retry.",
+                    "type": "string"
+                },
+                "phaseId": {
+                    "description": "Required. The phase ID the Job to retry belongs to.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "RetryJobResponse": {
+            "description": "The response object from 'RetryJob'.",
+            "id": "RetryJobResponse",
+            "properties": {},
+            "type": "object"
+        },
         "Rollout": {
-            "description": "A `Rollout` resource in the Google Cloud Deploy API. A `Rollout` contains information around a specific deployment to a `Target`.",
+            "description": "A `Rollout` resource in the Cloud Deploy API. A `Rollout` contains information around a specific deployment to a `Target`.",
             "id": "Rollout",
             "properties": {
                 "annotations": {
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.",
+                    "description": "User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.",
                     "type": "object"
                 },
                 "approvalState": {
@@ -2191,6 +3422,11 @@
                     "readOnly": true,
                     "type": "string"
                 },
+                "controllerRollout": {
+                    "description": "Output only. Name of the `ControllerRollout`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.",
+                    "readOnly": true,
+                    "type": "string"
+                },
                 "createTime": {
                     "description": "Output only. Time at which the `Rollout` was created.",
                     "format": "google-datetime",
@@ -2211,15 +3447,19 @@
                         "EXECUTION_FAILED",
                         "DEADLINE_EXCEEDED",
                         "RELEASE_FAILED",
-                        "RELEASE_ABANDONED"
+                        "RELEASE_ABANDONED",
+                        "VERIFICATION_CONFIG_NOT_FOUND",
+                        "CLOUD_BUILD_REQUEST_FAILED"
                     ],
                     "enumDescriptions": [
                         "No reason for failure is specified.",
-                        "Cloud Build is not available, either because it is not enabled or because Cloud Deploy has insufficient permissions. See [required permission](/deploy/docs/cloud-deploy-service-account#required_permissions).",
+                        "Cloud Build is not available, either because it is not enabled or because Cloud Deploy has insufficient permissions. See [required permission](https://cloud.google.com/deploy/docs/cloud-deploy-service-account#required_permissions).",
                         "The deploy operation did not complete successfully; check Cloud Build logs.",
                         "Deployment did not complete within the alloted time.",
                         "Release is in a failed state.",
-                        "Release is abandoned."
+                        "Release is abandoned.",
+                        "No skaffold verify configuration was found.",
+                        "Cloud Build failed to fulfill Cloud Deploy's request. See failure_message for additional details."
                     ],
                     "readOnly": true,
                     "type": "string"
@@ -2258,7 +3498,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.",
+                    "description": "Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.",
                     "type": "object"
                 },
                 "metadata": {
@@ -2270,6 +3510,14 @@
                     "description": "Optional. Name of the `Rollout`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.",
                     "type": "string"
                 },
+                "phases": {
+                    "description": "Output only. The phases that represent the workflows of this `Rollout`.",
+                    "items": {
+                        "$ref": "Phase"
+                    },
+                    "readOnly": true,
+                    "type": "array"
+                },
                 "state": {
                     "description": "Output only. Current state of the `Rollout`.",
                     "enum": [
@@ -2280,7 +3528,10 @@
                         "PENDING_APPROVAL",
                         "APPROVAL_REJECTED",
                         "PENDING",
-                        "PENDING_RELEASE"
+                        "PENDING_RELEASE",
+                        "CANCELLING",
+                        "CANCELLED",
+                        "HALTED"
                     ],
                     "enumDescriptions": [
                         "The `Rollout` has an unspecified state.",
@@ -2290,7 +3541,10 @@
                         "The `Rollout` needs approval.",
                         "An approver rejected the `Rollout`.",
                         "The `Rollout` is waiting for an earlier Rollout(s) to complete on this `Target`.",
-                        "The `Rollout` is waiting for the `Release` to be fully rendered."
+                        "The `Rollout` is waiting for the `Release` to be fully rendered.",
+                        "The `Rollout` is in the process of being cancelled.",
+                        "The `Rollout` has been cancelled.",
+                        "The `Rollout` is halted."
                     ],
                     "readOnly": true,
                     "type": "string"
@@ -2336,14 +3590,46 @@
                     "enum": [
                         "TYPE_UNSPECIFIED",
                         "TYPE_PUBSUB_NOTIFICATION_FAILURE",
+                        "TYPE_RESOURCE_STATE_CHANGE",
+                        "TYPE_PROCESS_ABORTED",
+                        "TYPE_RESTRICTION_VIOLATED",
+                        "TYPE_RESOURCE_DELETED",
                         "TYPE_RENDER_STATUES_CHANGE"
+                    ],
+                    "enumDeprecated": [
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        true
                     ],
                     "enumDescriptions": [
                         "Type is unspecified.",
                         "A Pub/Sub notification failed to be sent.",
-                        "Release render status changed notification."
+                        "Resource state changed.",
+                        "A process aborted.",
+                        "Restriction check failed.",
+                        "Resource deleted.",
+                        "Deprecated: This field is never used. Use release_render log type instead."
                     ],
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "RuntimeConfig": {
+            "description": "RuntimeConfig contains the runtime specific configurations for a deployment strategy.",
+            "id": "RuntimeConfig",
+            "properties": {
+                "cloudRun": {
+                    "$ref": "CloudRunConfig",
+                    "description": "Cloud Run runtime configuration."
+                },
+                "kubernetes": {
+                    "$ref": "KubernetesConfig",
+                    "description": "Kubernetes runtime configuration."
                 }
             },
             "type": "object"
@@ -2358,6 +3644,25 @@
                         "$ref": "Stage"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "ServiceNetworking": {
+            "description": "Information about the Kubernetes Service networking configuration.",
+            "id": "ServiceNetworking",
+            "properties": {
+                "deployment": {
+                    "description": "Required. Name of the Kubernetes Deployment whose traffic is managed by the specified Service.",
+                    "type": "string"
+                },
+                "disablePodOverprovisioning": {
+                    "description": "Optional. Whether to disable Pod overprovisioning. If Pod overprovisioning is disabled then Cloud Deploy will limit the number of total Pods used for the deployment strategy to the number of Pods the Deployment has on the cluster.",
+                    "type": "boolean"
+                },
+                "service": {
+                    "description": "Required. Name of the Kubernetes Service.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -2378,13 +3683,60 @@
             },
             "type": "object"
         },
+        "SkaffoldSupportedCondition": {
+            "description": "SkaffoldSupportedCondition contains information about when support for the release's version of skaffold ends.",
+            "id": "SkaffoldSupportedCondition",
+            "properties": {
+                "maintenanceModeTime": {
+                    "description": "The time at which this release's version of skaffold will enter maintenance mode.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "skaffoldSupportState": {
+                    "description": "The skaffold support state for this release's version of skaffold.",
+                    "enum": [
+                        "SKAFFOLD_SUPPORT_STATE_UNSPECIFIED",
+                        "SKAFFOLD_SUPPORT_STATE_SUPPORTED",
+                        "SKAFFOLD_SUPPORT_STATE_MAINTENANCE_MODE",
+                        "SKAFFOLD_SUPPORT_STATE_UNSUPPORTED"
+                    ],
+                    "enumDescriptions": [
+                        "Default value. This value is unused.",
+                        "This skaffold version is currently supported.",
+                        "This skaffold version is in maintenance mode.",
+                        "This skaffold version is no longer supported."
+                    ],
+                    "type": "string"
+                },
+                "status": {
+                    "description": "True if the version of skaffold used by this release is supported.",
+                    "type": "boolean"
+                },
+                "supportExpirationTime": {
+                    "description": "The time at which this release's version of skaffold will no longer be supported.",
+                    "format": "google-datetime",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "SkaffoldVersion": {
             "description": "Details of a supported Skaffold version.",
             "id": "SkaffoldVersion",
             "properties": {
+                "maintenanceModeTime": {
+                    "description": "The time at which this version of skaffold will enter maintenance mode.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
                 "supportEndDate": {
                     "$ref": "Date",
                     "description": "Date when this version is expected to no longer be supported."
+                },
+                "supportExpirationTime": {
+                    "description": "The time at which this version of skaffold will no longer be supported.",
+                    "format": "google-datetime",
+                    "type": "string"
                 },
                 "version": {
                     "description": "Release version number. For example, \"1.20.3\".",
@@ -2397,6 +3749,13 @@
             "description": "Stage specifies a location to which to deploy.",
             "id": "Stage",
             "properties": {
+                "deployParameters": {
+                    "description": "Optional. The deploy parameters to use for the target in this stage.",
+                    "items": {
+                        "$ref": "DeployParameters"
+                    },
+                    "type": "array"
+                },
                 "profiles": {
                     "description": "Skaffold profiles to use when rendering the manifest for this stage's `Target`.",
                     "items": {
@@ -2404,9 +3763,32 @@
                     },
                     "type": "array"
                 },
+                "strategy": {
+                    "$ref": "Strategy",
+                    "description": "Optional. The strategy to use for a `Rollout` to this stage."
+                },
                 "targetId": {
                     "description": "The target_id to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/locations/location/targets/my-target`). The location of the `Target` is inferred to be the same as the location of the `DeliveryPipeline` that contains this `Stage`.",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Standard": {
+            "description": "Standard represents the standard deployment strategy.",
+            "id": "Standard",
+            "properties": {
+                "postdeploy": {
+                    "$ref": "Postdeploy",
+                    "description": "Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present."
+                },
+                "predeploy": {
+                    "$ref": "Predeploy",
+                    "description": "Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present."
+                },
+                "verify": {
+                    "description": "Whether to verify a deployment.",
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -2438,26 +3820,48 @@
             },
             "type": "object"
         },
+        "Strategy": {
+            "description": "Strategy contains deployment strategy information.",
+            "id": "Strategy",
+            "properties": {
+                "canary": {
+                    "$ref": "Canary",
+                    "description": "Canary deployment strategy provides progressive percentage based deployments to a Target."
+                },
+                "standard": {
+                    "$ref": "Standard",
+                    "description": "Standard deployment strategy executes a single deploy and allows verifying the deployment."
+                }
+            },
+            "type": "object"
+        },
         "Target": {
-            "description": "A `Target` resource in the Google Cloud Deploy API. A `Target` defines a location to which a Skaffold configuration can be deployed.",
+            "description": "A `Target` resource in the Cloud Deploy API. A `Target` defines a location to which a Skaffold configuration can be deployed.",
             "id": "Target",
             "properties": {
                 "annotations": {
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.",
+                    "description": "Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.",
                     "type": "object"
                 },
                 "anthosCluster": {
                     "$ref": "AnthosCluster",
-                    "description": "Information specifying an Anthos Cluster."
+                    "description": "Optional. Information specifying an Anthos Cluster."
                 },
                 "createTime": {
                     "description": "Output only. Time at which the `Target` was created.",
                     "format": "google-datetime",
                     "readOnly": true,
                     "type": "string"
+                },
+                "deployParameters": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Optional. The deploy parameters to use for this target.",
+                    "type": "object"
                 },
                 "description": {
                     "description": "Optional. Description of the `Target`. Max length is 255 characters.",
@@ -2476,14 +3880,18 @@
                 },
                 "gke": {
                     "$ref": "GkeCluster",
-                    "description": "Information specifying a GKE Cluster."
+                    "description": "Optional. Information specifying a GKE Cluster."
                 },
                 "labels": {
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.",
+                    "description": "Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.",
                     "type": "object"
+                },
+                "multiTarget": {
+                    "$ref": "MultiTarget",
+                    "description": "Optional. Information specifying a multiTarget."
                 },
                 "name": {
                     "description": "Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.",
@@ -2495,7 +3903,7 @@
                 },
                 "run": {
                     "$ref": "CloudRunLocation",
-                    "description": "Information specifying a Cloud Run deployment target."
+                    "description": "Optional. Information specifying a Cloud Run deployment target."
                 },
                 "targetId": {
                     "description": "Output only. Resource id of the `Target`.",
@@ -2530,6 +3938,14 @@
                     "readOnly": true,
                     "type": "string"
                 },
+                "phaseArtifacts": {
+                    "additionalProperties": {
+                        "$ref": "PhaseArtifact"
+                    },
+                    "description": "Output only. Map from the phase ID to the phase artifacts for the `Target`.",
+                    "readOnly": true,
+                    "type": "object"
+                },
                 "skaffoldConfigPath": {
                     "description": "Output only. File path of the resolved Skaffold configuration relative to the URI.",
                     "readOnly": true,
@@ -2555,12 +3971,29 @@
                     "enum": [
                         "TYPE_UNSPECIFIED",
                         "TYPE_PUBSUB_NOTIFICATION_FAILURE",
+                        "TYPE_RESOURCE_STATE_CHANGE",
+                        "TYPE_PROCESS_ABORTED",
+                        "TYPE_RESTRICTION_VIOLATED",
+                        "TYPE_RESOURCE_DELETED",
                         "TYPE_RENDER_STATUES_CHANGE"
+                    ],
+                    "enumDeprecated": [
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        true
                     ],
                     "enumDescriptions": [
                         "Type is unspecified.",
                         "A Pub/Sub notification failed to be sent.",
-                        "Release render status changed notification."
+                        "Resource state changed.",
+                        "A process aborted.",
+                        "Restriction check failed.",
+                        "Resource deleted.",
+                        "Deprecated: This field is never used. Use release_render log type instead."
                     ],
                     "type": "string"
                 }
@@ -2576,12 +4009,16 @@
                     "enum": [
                         "FAILURE_CAUSE_UNSPECIFIED",
                         "CLOUD_BUILD_UNAVAILABLE",
-                        "EXECUTION_FAILED"
+                        "EXECUTION_FAILED",
+                        "CLOUD_BUILD_REQUEST_FAILED",
+                        "CUSTOM_ACTION_NOT_FOUND"
                     ],
                     "enumDescriptions": [
                         "No reason for failure is specified.",
-                        "Cloud Build is not available, either because it is not enabled or because Cloud Deploy has insufficient permissions. See [required permission](/deploy/docs/cloud-deploy-service-account#required_permissions).",
-                        "The render operation did not complete successfully; check Cloud Build logs."
+                        "Cloud Build is not available, either because it is not enabled or because Cloud Deploy has insufficient permissions. See [required permission](https://cloud.google.com/deploy/docs/cloud-deploy-service-account#required_permissions).",
+                        "The render operation did not complete successfully; check Cloud Build logs.",
+                        "Cloud Build failed to fulfill Cloud Deploy's request. See failure_message for additional details.",
+                        "The render operation did not complete successfully because the custom action required for predeploy or postdeploy was not found in the skaffold configuration. See failure_message for additional details."
                     ],
                     "readOnly": true,
                     "type": "string"
@@ -2590,6 +4027,11 @@
                     "description": "Output only. Additional information about the render failure, if available.",
                     "readOnly": true,
                     "type": "string"
+                },
+                "metadata": {
+                    "$ref": "RenderMetadata",
+                    "description": "Output only. Metadata related to the `Release` render for this Target.",
+                    "readOnly": true
                 },
                 "renderingBuild": {
                     "description": "Output only. The resource name of the Cloud Build `Build` object that is used to render the manifest for this target. Format is `projects/{project}/locations/{location}/builds/{build}`.",
@@ -2621,7 +4063,7 @@
             "id": "TargetsPresentCondition",
             "properties": {
                 "missingTargets": {
-                    "description": "The list of Target names that are missing. For example, projects/{project_id}/locations/{location_name}/targets/{target_name}.",
+                    "description": "The list of Target names that do not exist. For example, projects/{project_id}/locations/{location_name}/targets/{target_name}.",
                     "items": {
                         "type": "string"
                     },
@@ -2637,6 +4079,33 @@
                     "type": "string"
                 }
             },
+            "type": "object"
+        },
+        "TargetsTypeCondition": {
+            "description": "TargetsTypeCondition contains information on whether the Targets defined in the Delivery Pipeline are of the same type.",
+            "id": "TargetsTypeCondition",
+            "properties": {
+                "errorDetails": {
+                    "description": "Human readable error message.",
+                    "type": "string"
+                },
+                "status": {
+                    "description": "True if the targets are all a comparable type. For example this is true if all targets are GKE clusters. This is false if some targets are Cloud Run targets and others are GKE clusters.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "TerminateJobRunRequest": {
+            "description": "The request object used by `TerminateJobRun`.",
+            "id": "TerminateJobRunRequest",
+            "properties": {},
+            "type": "object"
+        },
+        "TerminateJobRunResponse": {
+            "description": "The response object from `TerminateJobRun`.",
+            "id": "TerminateJobRunResponse",
+            "properties": {},
             "type": "object"
         },
         "TestIamPermissionsRequest": {
@@ -2666,10 +4135,60 @@
                 }
             },
             "type": "object"
+        },
+        "VerifyJob": {
+            "description": "A verify Job.",
+            "id": "VerifyJob",
+            "properties": {},
+            "type": "object"
+        },
+        "VerifyJobRun": {
+            "description": "VerifyJobRun contains information specific to a verify `JobRun`.",
+            "id": "VerifyJobRun",
+            "properties": {
+                "artifactUri": {
+                    "description": "Output only. URI of a directory containing the verify artifacts. This contains the Skaffold event log.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "build": {
+                    "description": "Output only. The resource name of the Cloud Build `Build` object that is used to verify. Format is projects/{project}/locations/{location}/builds/{build}.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "eventLogPath": {
+                    "description": "Output only. File path of the Skaffold event log relative to the artifact URI.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "failureCause": {
+                    "description": "Output only. The reason the verify failed. This will always be unspecified while the verify is in progress or if it succeeded.",
+                    "enum": [
+                        "FAILURE_CAUSE_UNSPECIFIED",
+                        "CLOUD_BUILD_UNAVAILABLE",
+                        "EXECUTION_FAILED",
+                        "DEADLINE_EXCEEDED",
+                        "VERIFICATION_CONFIG_NOT_FOUND",
+                        "CLOUD_BUILD_REQUEST_FAILED"
+                    ],
+                    "enumDescriptions": [
+                        "No reason for failure is specified.",
+                        "Cloud Build is not available, either because it is not enabled or because Cloud Deploy has insufficient permissions. See [required permission](https://cloud.google.com/deploy/docs/cloud-deploy-service-account#required_permissions).",
+                        "The verify operation did not complete successfully; check Cloud Build logs.",
+                        "The verify build did not complete within the alloted time.",
+                        "No Skaffold verify configuration was found.",
+                        "Cloud Build failed to fulfill Cloud Deploy's request. See failure_message for additional details."
+                    ],
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "failureMessage": {
+                    "description": "Output only. Additional information about the verify failure, if available.",
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Google Cloud Deploy API",
-    "version": "v1",
-    "version_module": true
+    }
 }

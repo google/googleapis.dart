@@ -1,3 +1,69 @@
+## 11.4.0
+
+- Deprecated APIs are now annotated with `@Deprecated`.
+- Require Dart 3.0
+
+### API changes
+
+- `aiplatform` - new!
+- `clouddebugger` - Removed!
+- `migrationcenter` - new!
+- `places` - new!
+
+## 11.3.0
+
+- `blockchainnodeengine` - new!
+- `cloudsupport` - new!
+- `doubleclickbidmanager` - Removed v1.1 (v2 still exists)
+- `mybusinessbusinesscalls` - Removed!
+
+## 11.2.0
+
+- Add back in `library` directives to improve documentation.
+- Allow latest `package:http`.
+
+## 11.1.0
+
+- `gkeonprem` - new!
+- `identitytoolkit` - added (back) v1 and v2!
+- `publicca` - new!
+
+## 11.0.0
+
+- Require Dart 2.19
+
+### API changes
+
+- `acmedns` - new!
+- `cloudiot` - REMOVED!
+- `datalineage` - new!
+- `firebaseappdistribution` new!
+- `notebooks` - added v2
+- `readerrevenuesubscriptionlinking` - new!
+- `vpcaccess` - new!
+
+## 10.1.0
+
+### API changes
+
+- `advisorynotifications` - new!
+- `iam` - added `v2`
+- `kmsinventory` - new!
+
+## 10.0.0
+
+### API changes
+
+- `analyticshub` - new!
+- `baremetalsolution` - dropped v1. (Still have v2)
+- `batch` - new!
+- `contentwarehouse` - new!
+- `displayvideo` - added `v2`
+- `metastore` - new!
+- `tpu` - added `v2`
+- `travelimpactmodel` - new!
+- `workloadmanager` - new!
+
 ## 9.2.0
 
 - Require Dart 2.17 or later.

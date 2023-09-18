@@ -1,8 +1,6 @@
 // ignore_for_file: camel_case_types
-// ignore_for_file: cascade_invocations
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_const_declarations
@@ -12,8 +10,9 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unreachable_from_main
 // ignore_for_file: unused_local_variable
 
 import 'dart:async' as async;
@@ -25,6 +24,56 @@ import 'package:http/http.dart' as http;
 import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
+
+core.int buildCounterDailyMetricTimeSeries = 0;
+api.DailyMetricTimeSeries buildDailyMetricTimeSeries() {
+  final o = api.DailyMetricTimeSeries();
+  buildCounterDailyMetricTimeSeries++;
+  if (buildCounterDailyMetricTimeSeries < 3) {
+    o.dailyMetric = 'foo';
+    o.dailySubEntityType = buildDailySubEntityType();
+    o.timeSeries = buildTimeSeries();
+  }
+  buildCounterDailyMetricTimeSeries--;
+  return o;
+}
+
+void checkDailyMetricTimeSeries(api.DailyMetricTimeSeries o) {
+  buildCounterDailyMetricTimeSeries++;
+  if (buildCounterDailyMetricTimeSeries < 3) {
+    unittest.expect(
+      o.dailyMetric!,
+      unittest.equals('foo'),
+    );
+    checkDailySubEntityType(o.dailySubEntityType!);
+    checkTimeSeries(o.timeSeries!);
+  }
+  buildCounterDailyMetricTimeSeries--;
+}
+
+core.int buildCounterDailySubEntityType = 0;
+api.DailySubEntityType buildDailySubEntityType() {
+  final o = api.DailySubEntityType();
+  buildCounterDailySubEntityType++;
+  if (buildCounterDailySubEntityType < 3) {
+    o.dayOfWeek = 'foo';
+    o.timeOfDay = buildTimeOfDay();
+  }
+  buildCounterDailySubEntityType--;
+  return o;
+}
+
+void checkDailySubEntityType(api.DailySubEntityType o) {
+  buildCounterDailySubEntityType++;
+  if (buildCounterDailySubEntityType < 3) {
+    unittest.expect(
+      o.dayOfWeek!,
+      unittest.equals('foo'),
+    );
+    checkTimeOfDay(o.timeOfDay!);
+  }
+  buildCounterDailySubEntityType--;
+}
 
 core.int buildCounterDate = 0;
 api.Date buildDate() {
@@ -82,6 +131,38 @@ void checkDatedValue(api.DatedValue o) {
   buildCounterDatedValue--;
 }
 
+core.List<api.MultiDailyMetricTimeSeries> buildUnnamed0() => [
+      buildMultiDailyMetricTimeSeries(),
+      buildMultiDailyMetricTimeSeries(),
+    ];
+
+void checkUnnamed0(core.List<api.MultiDailyMetricTimeSeries> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkMultiDailyMetricTimeSeries(o[0]);
+  checkMultiDailyMetricTimeSeries(o[1]);
+}
+
+core.int buildCounterFetchMultiDailyMetricsTimeSeriesResponse = 0;
+api.FetchMultiDailyMetricsTimeSeriesResponse
+    buildFetchMultiDailyMetricsTimeSeriesResponse() {
+  final o = api.FetchMultiDailyMetricsTimeSeriesResponse();
+  buildCounterFetchMultiDailyMetricsTimeSeriesResponse++;
+  if (buildCounterFetchMultiDailyMetricsTimeSeriesResponse < 3) {
+    o.multiDailyMetricTimeSeries = buildUnnamed0();
+  }
+  buildCounterFetchMultiDailyMetricsTimeSeriesResponse--;
+  return o;
+}
+
+void checkFetchMultiDailyMetricsTimeSeriesResponse(
+    api.FetchMultiDailyMetricsTimeSeriesResponse o) {
+  buildCounterFetchMultiDailyMetricsTimeSeriesResponse++;
+  if (buildCounterFetchMultiDailyMetricsTimeSeriesResponse < 3) {
+    checkUnnamed0(o.multiDailyMetricTimeSeries!);
+  }
+  buildCounterFetchMultiDailyMetricsTimeSeriesResponse--;
+}
+
 core.int buildCounterGetDailyMetricsTimeSeriesResponse = 0;
 api.GetDailyMetricsTimeSeriesResponse buildGetDailyMetricsTimeSeriesResponse() {
   final o = api.GetDailyMetricsTimeSeriesResponse();
@@ -129,12 +210,12 @@ void checkInsightsValue(api.InsightsValue o) {
   buildCounterInsightsValue--;
 }
 
-core.List<api.SearchKeywordCount> buildUnnamed0() => [
+core.List<api.SearchKeywordCount> buildUnnamed1() => [
       buildSearchKeywordCount(),
       buildSearchKeywordCount(),
     ];
 
-void checkUnnamed0(core.List<api.SearchKeywordCount> o) {
+void checkUnnamed1(core.List<api.SearchKeywordCount> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSearchKeywordCount(o[0]);
   checkSearchKeywordCount(o[1]);
@@ -147,7 +228,7 @@ api.ListSearchKeywordImpressionsMonthlyResponse
   buildCounterListSearchKeywordImpressionsMonthlyResponse++;
   if (buildCounterListSearchKeywordImpressionsMonthlyResponse < 3) {
     o.nextPageToken = 'foo';
-    o.searchKeywordsCounts = buildUnnamed0();
+    o.searchKeywordsCounts = buildUnnamed1();
   }
   buildCounterListSearchKeywordImpressionsMonthlyResponse--;
   return o;
@@ -161,9 +242,39 @@ void checkListSearchKeywordImpressionsMonthlyResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed0(o.searchKeywordsCounts!);
+    checkUnnamed1(o.searchKeywordsCounts!);
   }
   buildCounterListSearchKeywordImpressionsMonthlyResponse--;
+}
+
+core.List<api.DailyMetricTimeSeries> buildUnnamed2() => [
+      buildDailyMetricTimeSeries(),
+      buildDailyMetricTimeSeries(),
+    ];
+
+void checkUnnamed2(core.List<api.DailyMetricTimeSeries> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkDailyMetricTimeSeries(o[0]);
+  checkDailyMetricTimeSeries(o[1]);
+}
+
+core.int buildCounterMultiDailyMetricTimeSeries = 0;
+api.MultiDailyMetricTimeSeries buildMultiDailyMetricTimeSeries() {
+  final o = api.MultiDailyMetricTimeSeries();
+  buildCounterMultiDailyMetricTimeSeries++;
+  if (buildCounterMultiDailyMetricTimeSeries < 3) {
+    o.dailyMetricTimeSeries = buildUnnamed2();
+  }
+  buildCounterMultiDailyMetricTimeSeries--;
+  return o;
+}
+
+void checkMultiDailyMetricTimeSeries(api.MultiDailyMetricTimeSeries o) {
+  buildCounterMultiDailyMetricTimeSeries++;
+  if (buildCounterMultiDailyMetricTimeSeries < 3) {
+    checkUnnamed2(o.dailyMetricTimeSeries!);
+  }
+  buildCounterMultiDailyMetricTimeSeries--;
 }
 
 core.int buildCounterSearchKeywordCount = 0;
@@ -190,12 +301,49 @@ void checkSearchKeywordCount(api.SearchKeywordCount o) {
   buildCounterSearchKeywordCount--;
 }
 
-core.List<api.DatedValue> buildUnnamed1() => [
+core.int buildCounterTimeOfDay = 0;
+api.TimeOfDay buildTimeOfDay() {
+  final o = api.TimeOfDay();
+  buildCounterTimeOfDay++;
+  if (buildCounterTimeOfDay < 3) {
+    o.hours = 42;
+    o.minutes = 42;
+    o.nanos = 42;
+    o.seconds = 42;
+  }
+  buildCounterTimeOfDay--;
+  return o;
+}
+
+void checkTimeOfDay(api.TimeOfDay o) {
+  buildCounterTimeOfDay++;
+  if (buildCounterTimeOfDay < 3) {
+    unittest.expect(
+      o.hours!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.minutes!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.nanos!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.seconds!,
+      unittest.equals(42),
+    );
+  }
+  buildCounterTimeOfDay--;
+}
+
+core.List<api.DatedValue> buildUnnamed3() => [
       buildDatedValue(),
       buildDatedValue(),
     ];
 
-void checkUnnamed1(core.List<api.DatedValue> o) {
+void checkUnnamed3(core.List<api.DatedValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDatedValue(o[0]);
   checkDatedValue(o[1]);
@@ -206,7 +354,7 @@ api.TimeSeries buildTimeSeries() {
   final o = api.TimeSeries();
   buildCounterTimeSeries++;
   if (buildCounterTimeSeries < 3) {
-    o.datedValues = buildUnnamed1();
+    o.datedValues = buildUnnamed3();
   }
   buildCounterTimeSeries--;
   return o;
@@ -215,12 +363,49 @@ api.TimeSeries buildTimeSeries() {
 void checkTimeSeries(api.TimeSeries o) {
   buildCounterTimeSeries++;
   if (buildCounterTimeSeries < 3) {
-    checkUnnamed1(o.datedValues!);
+    checkUnnamed3(o.datedValues!);
   }
   buildCounterTimeSeries--;
 }
 
+core.List<core.String> buildUnnamed4() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed4(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 void main() {
+  unittest.group('obj-schema-DailyMetricTimeSeries', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDailyMetricTimeSeries();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DailyMetricTimeSeries.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkDailyMetricTimeSeries(od);
+    });
+  });
+
+  unittest.group('obj-schema-DailySubEntityType', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDailySubEntityType();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DailySubEntityType.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkDailySubEntityType(od);
+    });
+  });
+
   unittest.group('obj-schema-Date', () {
     unittest.test('to-json--from-json', () async {
       final o = buildDate();
@@ -238,6 +423,16 @@ void main() {
       final od =
           api.DatedValue.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkDatedValue(od);
+    });
+  });
+
+  unittest.group('obj-schema-FetchMultiDailyMetricsTimeSeriesResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildFetchMultiDailyMetricsTimeSeriesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.FetchMultiDailyMetricsTimeSeriesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkFetchMultiDailyMetricsTimeSeriesResponse(od);
     });
   });
 
@@ -271,6 +466,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-MultiDailyMetricTimeSeries', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMultiDailyMetricTimeSeries();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MultiDailyMetricTimeSeries.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkMultiDailyMetricTimeSeries(od);
+    });
+  });
+
   unittest.group('obj-schema-SearchKeywordCount', () {
     unittest.test('to-json--from-json', () async {
       final o = buildSearchKeywordCount();
@@ -278,6 +483,16 @@ void main() {
       final od = api.SearchKeywordCount.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkSearchKeywordCount(od);
+    });
+  });
+
+  unittest.group('obj-schema-TimeOfDay', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildTimeOfDay();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.TimeOfDay.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkTimeOfDay(od);
     });
   });
 
@@ -292,6 +507,103 @@ void main() {
   });
 
   unittest.group('resource-LocationsResource', () {
+    unittest.test('method--fetchMultiDailyMetricsTimeSeries', () async {
+      final mock = HttpServerMock();
+      final res = api.BusinessProfilePerformanceApi(mock).locations;
+      final arg_location = 'foo';
+      final arg_dailyMetrics = buildUnnamed4();
+      final arg_dailyRange_endDate_day = 42;
+      final arg_dailyRange_endDate_month = 42;
+      final arg_dailyRange_endDate_year = 42;
+      final arg_dailyRange_startDate_day = 42;
+      final arg_dailyRange_startDate_month = 42;
+      final arg_dailyRange_startDate_year = 42;
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['dailyMetrics']!,
+          unittest.equals(arg_dailyMetrics),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['dailyRange.endDate.day']!.first),
+          unittest.equals(arg_dailyRange_endDate_day),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['dailyRange.endDate.month']!.first),
+          unittest.equals(arg_dailyRange_endDate_month),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['dailyRange.endDate.year']!.first),
+          unittest.equals(arg_dailyRange_endDate_year),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['dailyRange.startDate.day']!.first),
+          unittest.equals(arg_dailyRange_startDate_day),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['dailyRange.startDate.month']!.first),
+          unittest.equals(arg_dailyRange_startDate_month),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['dailyRange.startDate.year']!.first),
+          unittest.equals(arg_dailyRange_startDate_year),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildFetchMultiDailyMetricsTimeSeriesResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.fetchMultiDailyMetricsTimeSeries(arg_location,
+          dailyMetrics: arg_dailyMetrics,
+          dailyRange_endDate_day: arg_dailyRange_endDate_day,
+          dailyRange_endDate_month: arg_dailyRange_endDate_month,
+          dailyRange_endDate_year: arg_dailyRange_endDate_year,
+          dailyRange_startDate_day: arg_dailyRange_startDate_day,
+          dailyRange_startDate_month: arg_dailyRange_startDate_month,
+          dailyRange_startDate_year: arg_dailyRange_startDate_year,
+          $fields: arg_$fields);
+      checkFetchMultiDailyMetricsTimeSeriesResponse(
+          response as api.FetchMultiDailyMetricsTimeSeriesResponse);
+    });
+
     unittest.test('method--getDailyMetricsTimeSeries', () async {
       final mock = HttpServerMock();
       final res = api.BusinessProfilePerformanceApi(mock).locations;
@@ -310,7 +622,7 @@ void main() {
       final arg_dailySubEntityType_timeOfDay_seconds = 42;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -326,7 +638,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -446,7 +758,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -462,7 +774,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>

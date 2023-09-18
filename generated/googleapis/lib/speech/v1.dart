@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud Speech-to-Text API - v1
@@ -27,7 +26,7 @@
 ///     - [ProjectsLocationsCustomClassesResource]
 ///     - [ProjectsLocationsPhraseSetsResource]
 /// - [SpeechResource]
-library speech.v1;
+library speech_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -36,7 +35,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -109,13 +107,6 @@ class OperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -440,11 +431,10 @@ class ProjectsLocationsPhraseSetsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource where this phrase set will be
-  /// created. Format: `projects/{project}/locations/{location}/phraseSets`
-  /// Speech-to-Text supports three locations: `global`, `us` (US North
-  /// America), and `eu` (Europe). If you are calling the
-  /// `speech.googleapis.com` endpoint, use the `global` location. To specify a
-  /// region, use a
+  /// created. Format: `projects/{project}/locations/{location}` Speech-to-Text
+  /// supports three locations: `global`, `us` (US North America), and `eu`
+  /// (Europe). If you are calling the `speech.googleapis.com` endpoint, use the
+  /// `global` location. To specify a region, use a
   /// [regional endpoint](https://cloud.google.com/speech-to-text/docs/endpoints)
   /// with matching `us` or `eu` location value.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
@@ -748,6 +738,29 @@ class SpeechResource {
   }
 }
 
+class ABNFGrammar {
+  /// All declarations and rules of an ABNF grammar broken up into multiple
+  /// strings that will end up concatenated.
+  core.List<core.String>? abnfStrings;
+
+  ABNFGrammar({
+    this.abnfStrings,
+  });
+
+  ABNFGrammar.fromJson(core.Map json_)
+      : this(
+          abnfStrings: json_.containsKey('abnfStrings')
+              ? (json_['abnfStrings'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (abnfStrings != null) 'abnfStrings': abnfStrings!,
+      };
+}
+
 /// An item of the class.
 class ClassItem {
   /// The class item's value.
@@ -861,12 +874,34 @@ class CustomClass {
   /// A collection of class items.
   core.List<ClassItem>? items;
 
+  /// The
+  /// [KMS key name](https://cloud.google.com/kms/docs/resource-hierarchy#keys)
+  /// with which the content of the ClassItem is encrypted.
+  ///
+  /// The expected format is
+  /// `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+  ///
+  /// Output only.
+  core.String? kmsKeyName;
+
+  /// The
+  /// [KMS key version name](https://cloud.google.com/kms/docs/resource-hierarchy#key_versions)
+  /// with which content of the ClassItem is encrypted.
+  ///
+  /// The expected format is
+  /// `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{crypto_key_version}`.
+  ///
+  /// Output only.
+  core.String? kmsKeyVersionName;
+
   /// The resource name of the custom class.
   core.String? name;
 
   CustomClass({
     this.customClassId,
     this.items,
+    this.kmsKeyName,
+    this.kmsKeyVersionName,
     this.name,
   });
 
@@ -881,12 +916,20 @@ class CustomClass {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          kmsKeyName: json_.containsKey('kmsKeyName')
+              ? json_['kmsKeyName'] as core.String
+              : null,
+          kmsKeyVersionName: json_.containsKey('kmsKeyVersionName')
+              ? json_['kmsKeyVersionName'] as core.String
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (customClassId != null) 'customClassId': customClassId!,
         if (items != null) 'items': items!,
+        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
+        if (kmsKeyVersionName != null) 'kmsKeyVersionName': kmsKeyVersionName!,
         if (name != null) 'name': name!,
       };
 }
@@ -1144,9 +1187,9 @@ class Operation {
 /// wrapped in `${}` (e.g. `${my-months}`). Speech-to-Text supports three
 /// locations: `global`, `us` (US North America), and `eu` (Europe). If you are
 /// calling the `speech.googleapis.com` endpoint, use the `global` location. To
-/// specify a region, use a \[regional
-/// endpoint\](/speech-to-text/docs/endpoints) with matching `us` or `eu`
-/// location value.
+/// specify a region, use a
+/// [regional endpoint](https://cloud.google.com/speech-to-text/docs/endpoints)
+/// with matching `us` or `eu` location value.
 class Phrase {
   /// Hint Boost.
   ///
@@ -1157,7 +1200,8 @@ class Phrase {
   /// be ignored. Though `boost` can accept a wide range of positive values,
   /// most use cases are best served with values between 0 and 20. We recommend
   /// using a binary search approach to finding the optimal value for your use
-  /// case. Speech recognition will skip PhraseSets with a boost value of 0.
+  /// case as well as adding phrases both with and without boost to your
+  /// requests.
   core.double? boost;
 
   /// The phrase itself.
@@ -1195,9 +1239,29 @@ class PhraseSet {
   /// enabled, so negative boost will simply be ignored. Though `boost` can
   /// accept a wide range of positive values, most use cases are best served
   /// with values between 0 (exclusive) and 20. We recommend using a binary
-  /// search approach to finding the optimal value for your use case. Speech
-  /// recognition will skip PhraseSets with a boost value of 0.
+  /// search approach to finding the optimal value for your use case as well as
+  /// adding phrases both with and without boost to your requests.
   core.double? boost;
+
+  /// The
+  /// [KMS key name](https://cloud.google.com/kms/docs/resource-hierarchy#keys)
+  /// with which the content of the PhraseSet is encrypted.
+  ///
+  /// The expected format is
+  /// `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+  ///
+  /// Output only.
+  core.String? kmsKeyName;
+
+  /// The
+  /// [KMS key version name](https://cloud.google.com/kms/docs/resource-hierarchy#key_versions)
+  /// with which content of the PhraseSet is encrypted.
+  ///
+  /// The expected format is
+  /// `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{crypto_key_version}`.
+  ///
+  /// Output only.
+  core.String? kmsKeyVersionName;
 
   /// The resource name of the phrase set.
   core.String? name;
@@ -1207,6 +1271,8 @@ class PhraseSet {
 
   PhraseSet({
     this.boost,
+    this.kmsKeyName,
+    this.kmsKeyVersionName,
     this.name,
     this.phrases,
   });
@@ -1215,6 +1281,12 @@ class PhraseSet {
       : this(
           boost: json_.containsKey('boost')
               ? (json_['boost'] as core.num).toDouble()
+              : null,
+          kmsKeyName: json_.containsKey('kmsKeyName')
+              ? json_['kmsKeyName'] as core.String
+              : null,
+          kmsKeyVersionName: json_.containsKey('kmsKeyVersionName')
+              ? json_['kmsKeyVersionName'] as core.String
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           phrases: json_.containsKey('phrases')
@@ -1227,6 +1299,8 @@ class PhraseSet {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (boost != null) 'boost': boost!,
+        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
+        if (kmsKeyVersionName != null) 'kmsKeyVersionName': kmsKeyVersionName!,
         if (name != null) 'name': name!,
         if (phrases != null) 'phrases': phrases!,
       };
@@ -1308,11 +1382,11 @@ class RecognitionConfig {
 
   /// The number of channels in the input audio data.
   ///
-  /// ONLY set this for MULTI-CHANNEL recognition. Valid values for LINEAR16 and
-  /// FLAC are `1`-`8`. Valid values for OGG_OPUS are '1'-'254'. Valid value for
-  /// MULAW, AMR, AMR_WB and SPEEX_WITH_HEADER_BYTE is only `1`. If `0` or
-  /// omitted, defaults to one channel (mono). Note: We only recognize the first
-  /// channel by default. To perform independent recognition on each channel set
+  /// ONLY set this for MULTI-CHANNEL recognition. Valid values for LINEAR16,
+  /// OGG_OPUS and FLAC are `1`-`8`. Valid value for MULAW, AMR, AMR_WB and
+  /// SPEEX_WITH_HEADER_BYTE is only `1`. If `0` or omitted, defaults to one
+  /// channel (mono). Note: We only recognize the first channel by default. To
+  /// perform independent recognition on each channel set
   /// `enable_separate_recognition_per_channel` to 'true'.
   core.int? audioChannelCount;
 
@@ -1799,12 +1873,16 @@ class RecognizeResponse {
   /// portions of audio.
   core.List<SpeechRecognitionResult>? results;
 
+  /// Provides information on adaptation behavior in response
+  SpeechAdaptationInfo? speechAdaptationInfo;
+
   /// When available, billed audio seconds for the corresponding request.
   core.String? totalBilledTime;
 
   RecognizeResponse({
     this.requestId,
     this.results,
+    this.speechAdaptationInfo,
     this.totalBilledTime,
   });
 
@@ -1819,6 +1897,10 @@ class RecognizeResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          speechAdaptationInfo: json_.containsKey('speechAdaptationInfo')
+              ? SpeechAdaptationInfo.fromJson(json_['speechAdaptationInfo']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           totalBilledTime: json_.containsKey('totalBilledTime')
               ? json_['totalBilledTime'] as core.String
               : null,
@@ -1827,6 +1909,8 @@ class RecognizeResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (requestId != null) 'requestId': requestId!,
         if (results != null) 'results': results!,
+        if (speechAdaptationInfo != null)
+          'speechAdaptationInfo': speechAdaptationInfo!,
         if (totalBilledTime != null) 'totalBilledTime': totalBilledTime!,
       };
 }
@@ -1834,8 +1918,8 @@ class RecognizeResponse {
 /// Config to enable speaker diarization.
 class SpeakerDiarizationConfig {
   /// If 'true', enables speaker detection for each recognized word in the top
-  /// alternative of the recognition result using a speaker_tag provided in the
-  /// WordInfo.
+  /// alternative of the recognition result using a speaker_label provided in
+  /// the WordInfo.
   core.bool? enableSpeakerDiarization;
 
   /// Maximum number of speakers in the conversation.
@@ -1855,6 +1939,9 @@ class SpeakerDiarizationConfig {
   /// Unused.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.int? speakerTag;
 
   SpeakerDiarizationConfig({
@@ -1892,6 +1979,12 @@ class SpeakerDiarizationConfig {
 
 /// Speech adaptation configuration.
 class SpeechAdaptation {
+  /// Augmented Backus-Naur form (ABNF) is a standardized grammar notation
+  /// comprised by a set of derivation rules.
+  ///
+  /// See specifications: https://www.w3.org/TR/speech-grammar
+  ABNFGrammar? abnfGrammar;
+
   /// A collection of custom classes.
   ///
   /// To specify the classes inline, leave the class' `name` blank and fill in
@@ -1909,6 +2002,7 @@ class SpeechAdaptation {
   core.List<PhraseSet>? phraseSets;
 
   SpeechAdaptation({
+    this.abnfGrammar,
     this.customClasses,
     this.phraseSetReferences,
     this.phraseSets,
@@ -1916,6 +2010,10 @@ class SpeechAdaptation {
 
   SpeechAdaptation.fromJson(core.Map json_)
       : this(
+          abnfGrammar: json_.containsKey('abnfGrammar')
+              ? ABNFGrammar.fromJson(
+                  json_['abnfGrammar'] as core.Map<core.String, core.dynamic>)
+              : null,
           customClasses: json_.containsKey('customClasses')
               ? (json_['customClasses'] as core.List)
                   .map((value) => CustomClass.fromJson(
@@ -1936,10 +2034,43 @@ class SpeechAdaptation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (abnfGrammar != null) 'abnfGrammar': abnfGrammar!,
         if (customClasses != null) 'customClasses': customClasses!,
         if (phraseSetReferences != null)
           'phraseSetReferences': phraseSetReferences!,
         if (phraseSets != null) 'phraseSets': phraseSets!,
+      };
+}
+
+/// Information on speech adaptation use in results
+class SpeechAdaptationInfo {
+  /// Whether there was a timeout when applying speech adaptation.
+  ///
+  /// If true, adaptation had no effect in the response transcript.
+  core.bool? adaptationTimeout;
+
+  /// If set, returns a message specifying which part of the speech adaptation
+  /// request timed out.
+  core.String? timeoutMessage;
+
+  SpeechAdaptationInfo({
+    this.adaptationTimeout,
+    this.timeoutMessage,
+  });
+
+  SpeechAdaptationInfo.fromJson(core.Map json_)
+      : this(
+          adaptationTimeout: json_.containsKey('adaptationTimeout')
+              ? json_['adaptationTimeout'] as core.bool
+              : null,
+          timeoutMessage: json_.containsKey('timeoutMessage')
+              ? json_['timeoutMessage'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (adaptationTimeout != null) 'adaptationTimeout': adaptationTimeout!,
+        if (timeoutMessage != null) 'timeoutMessage': timeoutMessage!,
       };
 }
 
@@ -2165,14 +2296,28 @@ class WordInfo {
   /// time offset can vary.
   core.String? endTime;
 
+  /// A label value assigned for every unique speaker within the audio.
+  ///
+  /// This field specifies which speaker was detected to have spoken this word.
+  /// For some models, like medical_conversation this can be actual speaker
+  /// role, for example "patient" or "provider", but generally this would be a
+  /// number identifying a speaker. This field is only set if
+  /// enable_speaker_diarization = 'true' and only for the top alternative.
+  ///
+  /// Output only.
+  core.String? speakerLabel;
+
   /// A distinct integer value is assigned for every speaker within the audio.
   ///
   /// This field specifies which one of those speakers was detected to have
   /// spoken this word. Value ranges from '1' to diarization_speaker_count.
-  /// speaker_tag is set if enable_speaker_diarization = 'true' and only in the
-  /// top alternative.
+  /// speaker_tag is set if enable_speaker_diarization = 'true' and only for the
+  /// top alternative. Note: Use speaker_label instead.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.int? speakerTag;
 
   /// Time offset relative to the beginning of the audio, and corresponding to
@@ -2189,6 +2334,7 @@ class WordInfo {
   WordInfo({
     this.confidence,
     this.endTime,
+    this.speakerLabel,
     this.speakerTag,
     this.startTime,
     this.word,
@@ -2202,6 +2348,9 @@ class WordInfo {
           endTime: json_.containsKey('endTime')
               ? json_['endTime'] as core.String
               : null,
+          speakerLabel: json_.containsKey('speakerLabel')
+              ? json_['speakerLabel'] as core.String
+              : null,
           speakerTag: json_.containsKey('speakerTag')
               ? json_['speakerTag'] as core.int
               : null,
@@ -2214,6 +2363,7 @@ class WordInfo {
   core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (endTime != null) 'endTime': endTime!,
+        if (speakerLabel != null) 'speakerLabel': speakerLabel!,
         if (speakerTag != null) 'speakerTag': speakerTag!,
         if (startTime != null) 'startTime': startTime!,
         if (word != null) 'word': word!,

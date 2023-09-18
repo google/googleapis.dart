@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Datastream API - v1
@@ -26,7 +25,7 @@
 ///       - [ProjectsLocationsPrivateConnectionsRoutesResource]
 ///     - [ProjectsLocationsStreamsResource]
 ///       - [ProjectsLocationsStreamsObjectsResource]
-library datastream.v1;
+library datastream_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -35,7 +34,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -697,13 +695,6 @@ class ProjectsLocationsOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -771,6 +762,8 @@ class ProjectsLocationsPrivateConnectionsResource {
   /// PrivateConnections.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
+  /// [force] - Optional. If set to true, will skip validations.
+  ///
   /// [privateConnectionId] - Required. The private connectivity identifier.
   ///
   /// [requestId] - Optional. A request ID to identify requests. Specify a
@@ -798,12 +791,14 @@ class ProjectsLocationsPrivateConnectionsResource {
   async.Future<Operation> create(
     PrivateConnection request,
     core.String parent, {
+    core.bool? force,
     core.String? privateConnectionId,
     core.String? requestId,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (force != null) 'force': ['${force}'],
       if (privateConnectionId != null)
         'privateConnectionId': [privateConnectionId],
       if (requestId != null) 'requestId': [requestId],
@@ -1417,6 +1412,12 @@ class ProjectsLocationsStreamsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/streams/\[^/\]+$`.
   ///
+  /// [cdcStrategy_specificStartPosition_mysqlLogPosition_logFile] - The binary
+  /// log file name.
+  ///
+  /// [cdcStrategy_specificStartPosition_mysqlLogPosition_logPosition] - The
+  /// position within the binary log file. Default is head of file.
+  ///
   /// [force] - Optional. Update the stream without validating it.
   ///
   /// [requestId] - Optional. A request ID to identify requests. Specify a
@@ -1453,6 +1454,8 @@ class ProjectsLocationsStreamsResource {
   async.Future<Operation> patch(
     Stream request,
     core.String name, {
+    core.String? cdcStrategy_specificStartPosition_mysqlLogPosition_logFile,
+    core.int? cdcStrategy_specificStartPosition_mysqlLogPosition_logPosition,
     core.bool? force,
     core.String? requestId,
     core.String? updateMask,
@@ -1461,6 +1464,15 @@ class ProjectsLocationsStreamsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (cdcStrategy_specificStartPosition_mysqlLogPosition_logFile != null)
+        'cdcStrategy.specificStartPosition.mysqlLogPosition.logFile': [
+          cdcStrategy_specificStartPosition_mysqlLogPosition_logFile
+        ],
+      if (cdcStrategy_specificStartPosition_mysqlLogPosition_logPosition !=
+          null)
+        'cdcStrategy.specificStartPosition.mysqlLogPosition.logPosition': [
+          '${cdcStrategy_specificStartPosition_mysqlLogPosition_logPosition}'
+        ],
       if (force != null) 'force': ['${force}'],
       if (requestId != null) 'requestId': [requestId],
       if (updateMask != null) 'updateMask': [updateMask],
@@ -1473,6 +1485,49 @@ class ProjectsLocationsStreamsResource {
     final response_ = await _requester.request(
       url_,
       'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Use this method to start, resume or recover a stream with a non default
+  /// CDC strategy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the stream resource to start, in the format:
+  /// projects/{project_id}/locations/{location}/streams/{stream_name}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/streams/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> run(
+    RunStreamRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':run';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
       body: body_,
       queryParams: queryParams_,
     );
@@ -1772,6 +1827,8 @@ class BackfillJob {
   core.String? lastStartTime;
 
   /// Backfill job state.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : Default value.
   /// - "NOT_STARTED" : Backfill job was never started for the stream object
@@ -1837,6 +1894,7 @@ class BackfillJob {
 /// Backfill strategy to disable automatic backfill for the Stream's objects.
 typedef BackfillNoneStrategy = $Empty;
 
+/// BigQuery destination configuration
 class BigQueryDestinationConfig {
   /// The guaranteed data freshness (in seconds) when querying tables created by
   /// the stream.
@@ -1888,6 +1946,58 @@ typedef BigQueryProfile = $Empty;
 
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
+
+/// The strategy that the stream uses for CDC replication.
+class CdcStrategy {
+  /// Start replicating from the most recent position in the source.
+  ///
+  /// Optional.
+  MostRecentStartPosition? mostRecentStartPosition;
+
+  /// Resume replication from the next available position in the source.
+  ///
+  /// Optional.
+  NextAvailableStartPosition? nextAvailableStartPosition;
+
+  /// Start replicating from a specific position in the source.
+  ///
+  /// Optional.
+  SpecificStartPosition? specificStartPosition;
+
+  CdcStrategy({
+    this.mostRecentStartPosition,
+    this.nextAvailableStartPosition,
+    this.specificStartPosition,
+  });
+
+  CdcStrategy.fromJson(core.Map json_)
+      : this(
+          mostRecentStartPosition: json_.containsKey('mostRecentStartPosition')
+              ? MostRecentStartPosition.fromJson(
+                  json_['mostRecentStartPosition']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          nextAvailableStartPosition:
+              json_.containsKey('nextAvailableStartPosition')
+                  ? NextAvailableStartPosition.fromJson(
+                      json_['nextAvailableStartPosition']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          specificStartPosition: json_.containsKey('specificStartPosition')
+              ? SpecificStartPosition.fromJson(json_['specificStartPosition']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (mostRecentStartPosition != null)
+          'mostRecentStartPosition': mostRecentStartPosition!,
+        if (nextAvailableStartPosition != null)
+          'nextAvailableStartPosition': nextAvailableStartPosition!,
+        if (specificStartPosition != null)
+          'specificStartPosition': specificStartPosition!,
+      };
+}
 
 /// A set of reusable connection configurations to be used as a source or
 /// destination for a stream.
@@ -1978,9 +2088,9 @@ class ConnectionProfile {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -2290,9 +2400,9 @@ class Error {
       : this(
           details: json_.containsKey('details')
               ? (json_['details'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -2353,63 +2463,7 @@ class FetchStaticIpsResponse {
 }
 
 /// Forward SSH Tunnel connectivity.
-class ForwardSshTunnelConnectivity {
-  /// Hostname for the SSH tunnel.
-  ///
-  /// Required.
-  core.String? hostname;
-
-  /// Input only.
-  ///
-  /// SSH password.
-  core.String? password;
-
-  /// Port for the SSH tunnel, default value is 22.
-  core.int? port;
-
-  /// Input only.
-  ///
-  /// SSH private key.
-  core.String? privateKey;
-
-  /// Username for the SSH tunnel.
-  ///
-  /// Required.
-  core.String? username;
-
-  ForwardSshTunnelConnectivity({
-    this.hostname,
-    this.password,
-    this.port,
-    this.privateKey,
-    this.username,
-  });
-
-  ForwardSshTunnelConnectivity.fromJson(core.Map json_)
-      : this(
-          hostname: json_.containsKey('hostname')
-              ? json_['hostname'] as core.String
-              : null,
-          password: json_.containsKey('password')
-              ? json_['password'] as core.String
-              : null,
-          port: json_.containsKey('port') ? json_['port'] as core.int : null,
-          privateKey: json_.containsKey('privateKey')
-              ? json_['privateKey'] as core.String
-              : null,
-          username: json_.containsKey('username')
-              ? json_['username'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (hostname != null) 'hostname': hostname!,
-        if (password != null) 'password': password!,
-        if (port != null) 'port': port!,
-        if (privateKey != null) 'privateKey': privateKey!,
-        if (username != null) 'username': username!,
-      };
-}
+typedef ForwardSshTunnelConnectivity = $ForwardSshTunnelConnectivity;
 
 /// Google Cloud Storage destination configuration
 class GcsDestinationConfig {
@@ -2418,6 +2472,8 @@ class GcsDestinationConfig {
 
   /// The maximum duration for which new events are added before a file is
   /// closed and a new file is created.
+  ///
+  /// Values within the range of 15-60 seconds are allowed.
   core.String? fileRotationInterval;
 
   /// The maximum file size to be saved in the bucket.
@@ -2808,7 +2864,7 @@ class ListStreamsResponse {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
+/// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
 /// Request for looking up a specific stream object by its source object
@@ -2837,6 +2893,10 @@ class LookupStreamObjectRequest {
       };
 }
 
+/// CDC strategy to start replicating from the most recent position in the
+/// source.
+typedef MostRecentStartPosition = $Empty;
+
 /// MySQL Column.
 class MysqlColumn {
   /// Column collation.
@@ -2860,8 +2920,14 @@ class MysqlColumn {
   /// The ordinal position of the column in the table.
   core.int? ordinalPosition;
 
+  /// Column precision.
+  core.int? precision;
+
   /// Whether or not the column represents a primary key.
   core.bool? primaryKey;
+
+  /// Column scale.
+  core.int? scale;
 
   MysqlColumn({
     this.collation,
@@ -2870,7 +2936,9 @@ class MysqlColumn {
     this.length,
     this.nullable,
     this.ordinalPosition,
+    this.precision,
     this.primaryKey,
+    this.scale,
   });
 
   MysqlColumn.fromJson(core.Map json_)
@@ -2892,9 +2960,13 @@ class MysqlColumn {
           ordinalPosition: json_.containsKey('ordinalPosition')
               ? json_['ordinalPosition'] as core.int
               : null,
+          precision: json_.containsKey('precision')
+              ? json_['precision'] as core.int
+              : null,
           primaryKey: json_.containsKey('primaryKey')
               ? json_['primaryKey'] as core.bool
               : null,
+          scale: json_.containsKey('scale') ? json_['scale'] as core.int : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2904,7 +2976,9 @@ class MysqlColumn {
         if (length != null) 'length': length!,
         if (nullable != null) 'nullable': nullable!,
         if (ordinalPosition != null) 'ordinalPosition': ordinalPosition!,
+        if (precision != null) 'precision': precision!,
         if (primaryKey != null) 'primaryKey': primaryKey!,
+        if (scale != null) 'scale': scale!,
       };
 }
 
@@ -2937,6 +3011,37 @@ class MysqlDatabase {
   core.Map<core.String, core.dynamic> toJson() => {
         if (database != null) 'database': database!,
         if (mysqlTables != null) 'mysqlTables': mysqlTables!,
+      };
+}
+
+/// MySQL log position
+class MysqlLogPosition {
+  /// The binary log file name.
+  core.String? logFile;
+
+  /// The position within the binary log file.
+  ///
+  /// Default is head of file.
+  core.int? logPosition;
+
+  MysqlLogPosition({
+    this.logFile,
+    this.logPosition,
+  });
+
+  MysqlLogPosition.fromJson(core.Map json_)
+      : this(
+          logFile: json_.containsKey('logFile')
+              ? json_['logFile'] as core.String
+              : null,
+          logPosition: json_.containsKey('logPosition')
+              ? json_['logPosition'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (logFile != null) 'logFile': logFile!,
+        if (logPosition != null) 'logPosition': logPosition!,
       };
 }
 
@@ -3064,6 +3169,12 @@ class MysqlSourceConfig {
   /// MySQL objects to retrieve from the source.
   MysqlRdbms? includeObjects;
 
+  /// Maximum number of concurrent backfill tasks.
+  ///
+  /// The number should be non negative. If not set (or set to 0), the system's
+  /// default value will be used.
+  core.int? maxConcurrentBackfillTasks;
+
   /// Maximum number of concurrent CDC tasks.
   ///
   /// The number should be non negative. If not set (or set to 0), the system's
@@ -3073,6 +3184,7 @@ class MysqlSourceConfig {
   MysqlSourceConfig({
     this.excludeObjects,
     this.includeObjects,
+    this.maxConcurrentBackfillTasks,
     this.maxConcurrentCdcTasks,
   });
 
@@ -3086,6 +3198,10 @@ class MysqlSourceConfig {
               ? MysqlRdbms.fromJson(json_['includeObjects']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          maxConcurrentBackfillTasks:
+              json_.containsKey('maxConcurrentBackfillTasks')
+                  ? json_['maxConcurrentBackfillTasks'] as core.int
+                  : null,
           maxConcurrentCdcTasks: json_.containsKey('maxConcurrentCdcTasks')
               ? json_['maxConcurrentCdcTasks'] as core.int
               : null,
@@ -3094,6 +3210,8 @@ class MysqlSourceConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (excludeObjects != null) 'excludeObjects': excludeObjects!,
         if (includeObjects != null) 'includeObjects': includeObjects!,
+        if (maxConcurrentBackfillTasks != null)
+          'maxConcurrentBackfillTasks': maxConcurrentBackfillTasks!,
         if (maxConcurrentCdcTasks != null)
           'maxConcurrentCdcTasks': maxConcurrentCdcTasks!,
       };
@@ -3211,6 +3329,10 @@ class MysqlTable {
         if (table != null) 'table': table!,
       };
 }
+
+/// CDC strategy to resume replication from the next available position in the
+/// source.
+typedef NextAvailableStartPosition = $Empty;
 
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
@@ -3416,9 +3538,9 @@ class OracleProfile {
               ? (json_['connectionAttributes']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -3515,19 +3637,28 @@ class OracleSourceConfig {
   /// Oracle objects to include in the stream.
   OracleRdbms? includeObjects;
 
+  /// Maximum number of concurrent backfill tasks.
+  ///
+  /// The number should be non-negative. If not set (or set to 0), the system's
+  /// default value is used.
+  core.int? maxConcurrentBackfillTasks;
+
   /// Maximum number of concurrent CDC tasks.
   ///
-  /// The number should be non negative. If not set (or set to 0), the system's
-  /// default value will be used.
+  /// The number should be non-negative. If not set (or set to 0), the system's
+  /// default value is used.
   core.int? maxConcurrentCdcTasks;
 
   /// Stream large object values.
+  ///
+  /// NOTE: This feature is currently experimental.
   StreamLargeObjects? streamLargeObjects;
 
   OracleSourceConfig({
     this.dropLargeObjects,
     this.excludeObjects,
     this.includeObjects,
+    this.maxConcurrentBackfillTasks,
     this.maxConcurrentCdcTasks,
     this.streamLargeObjects,
   });
@@ -3546,6 +3677,10 @@ class OracleSourceConfig {
               ? OracleRdbms.fromJson(json_['includeObjects']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          maxConcurrentBackfillTasks:
+              json_.containsKey('maxConcurrentBackfillTasks')
+                  ? json_['maxConcurrentBackfillTasks'] as core.int
+                  : null,
           maxConcurrentCdcTasks: json_.containsKey('maxConcurrentCdcTasks')
               ? json_['maxConcurrentCdcTasks'] as core.int
               : null,
@@ -3559,6 +3694,8 @@ class OracleSourceConfig {
         if (dropLargeObjects != null) 'dropLargeObjects': dropLargeObjects!,
         if (excludeObjects != null) 'excludeObjects': excludeObjects!,
         if (includeObjects != null) 'includeObjects': includeObjects!,
+        if (maxConcurrentBackfillTasks != null)
+          'maxConcurrentBackfillTasks': maxConcurrentBackfillTasks!,
         if (maxConcurrentCdcTasks != null)
           'maxConcurrentCdcTasks': maxConcurrentCdcTasks!,
         if (streamLargeObjects != null)
@@ -3800,6 +3937,12 @@ class PostgresqlSourceConfig {
   /// PostgreSQL objects to include in the stream.
   PostgresqlRdbms? includeObjects;
 
+  /// Maximum number of concurrent backfill tasks.
+  ///
+  /// The number should be non negative. If not set (or set to 0), the system's
+  /// default value will be used.
+  core.int? maxConcurrentBackfillTasks;
+
   /// The name of the publication that includes the set of all tables that are
   /// defined in the stream's include_objects.
   ///
@@ -3809,12 +3952,13 @@ class PostgresqlSourceConfig {
   /// The name of the logical replication slot that's configured with the
   /// pgoutput plugin.
   ///
-  /// Required.
+  /// Required. Immutable.
   core.String? replicationSlot;
 
   PostgresqlSourceConfig({
     this.excludeObjects,
     this.includeObjects,
+    this.maxConcurrentBackfillTasks,
     this.publication,
     this.replicationSlot,
   });
@@ -3829,6 +3973,10 @@ class PostgresqlSourceConfig {
               ? PostgresqlRdbms.fromJson(json_['includeObjects']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          maxConcurrentBackfillTasks:
+              json_.containsKey('maxConcurrentBackfillTasks')
+                  ? json_['maxConcurrentBackfillTasks'] as core.int
+                  : null,
           publication: json_.containsKey('publication')
               ? json_['publication'] as core.String
               : null,
@@ -3840,6 +3988,8 @@ class PostgresqlSourceConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (excludeObjects != null) 'excludeObjects': excludeObjects!,
         if (includeObjects != null) 'includeObjects': includeObjects!,
+        if (maxConcurrentBackfillTasks != null)
+          'maxConcurrentBackfillTasks': maxConcurrentBackfillTasks!,
         if (publication != null) 'publication': publication!,
         if (replicationSlot != null) 'replicationSlot': replicationSlot!,
       };
@@ -3953,9 +4103,9 @@ class PrivateConnection {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -4069,9 +4219,9 @@ class Route {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -4093,8 +4243,38 @@ class Route {
       };
 }
 
+/// Request message for running a stream.
+class RunStreamRequest {
+  /// The CDC strategy of the stream.
+  ///
+  /// If not set, the system's default value will be used.
+  ///
+  /// Optional.
+  CdcStrategy? cdcStrategy;
+
+  RunStreamRequest({
+    this.cdcStrategy,
+  });
+
+  RunStreamRequest.fromJson(core.Map json_)
+      : this(
+          cdcStrategy: json_.containsKey('cdcStrategy')
+              ? CdcStrategy.fromJson(
+                  json_['cdcStrategy'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cdcStrategy != null) 'cdcStrategy': cdcStrategy!,
+      };
+}
+
 /// A single target dataset to which all data will be streamed.
 class SingleTargetDataset {
+  /// The dataset ID of the target dataset.
+  ///
+  /// DatasetIds allowed characters:
+  /// https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets#datasetreference.
   core.String? datasetId;
 
   SingleTargetDataset({
@@ -4172,6 +4352,7 @@ class SourceConfig {
 /// Destination datasets are created so that hierarchy of the destination data
 /// objects matches the source hierarchy.
 class SourceHierarchyDatasets {
+  /// The dataset template to use for dynamic dataset creation.
   DatasetTemplate? datasetTemplate;
 
   SourceHierarchyDatasets({
@@ -4233,6 +4414,28 @@ class SourceObjectIdentifier {
       };
 }
 
+/// CDC strategy to start replicating from a specific position in the source.
+class SpecificStartPosition {
+  /// MySQL specific log position to start replicating from.
+  MysqlLogPosition? mysqlLogPosition;
+
+  SpecificStartPosition({
+    this.mysqlLogPosition,
+  });
+
+  SpecificStartPosition.fromJson(core.Map json_)
+      : this(
+          mysqlLogPosition: json_.containsKey('mysqlLogPosition')
+              ? MysqlLogPosition.fromJson(json_['mysqlLogPosition']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (mysqlLogPosition != null) 'mysqlLogPosition': mysqlLogPosition!,
+      };
+}
+
 /// Request for manually initiating a backfill job for a specific stream object.
 typedef StartBackfillJobRequest = $Empty;
 
@@ -4260,6 +4463,10 @@ class StartBackfillJobResponse {
 }
 
 /// Static IP address connectivity.
+///
+/// Used when the source database is configured to allow incoming connections
+/// from the Datastream public IP addresses for the region specified in the
+/// connection profile.
 typedef StaticServiceIpConnectivity = $Empty;
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -4419,9 +4626,9 @@ class Stream {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,

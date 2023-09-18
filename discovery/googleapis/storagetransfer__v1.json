@@ -23,6 +23,13 @@
     "name": "storagetransfer",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230728",
+    "rootUrl": "https://storagetransfer.googleapis.com/",
+    "servicePath": "",
+    "title": "Storage Transfer API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -100,7 +107,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "googleServiceAccounts": {
             "methods": {
@@ -444,7 +450,7 @@
                     ]
                 },
                 "run": {
-                    "description": "Attempts to start a new TransferOperation for the current TransferJob. A TransferJob has a maximum of one active TransferOperation. If this method is called while a TransferOperation is active, an error will be returned.",
+                    "description": "Starts a new operation for the specified transfer job. A `TransferJob` has a maximum of one active `TransferOperation`. If this method is called while a `TransferOperation` is active, an error is returned.",
                     "flatPath": "v1/transferJobs/{transferJobsId}:run",
                     "httpMethod": "POST",
                     "id": "storagetransfer.transferJobs.run",
@@ -630,8 +636,6 @@
             }
         }
     },
-    "revision": "20220908",
-    "rootUrl": "https://storagetransfer.googleapis.com/",
     "schemas": {
         "AgentPool": {
             "description": "Represents an On-Premises Agent pool.",
@@ -723,6 +727,10 @@
                     "description": "Required. S3 Bucket name (see [Creating a bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-location-example.html)).",
                     "type": "string"
                 },
+                "credentialsSecret": {
+                    "description": "Optional. The Resource name of a secret in Secret Manager. The Azure SAS token must be stored in Secret Manager in JSON format: { \"sas_token\" : \"SAS_TOKEN\" } GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Microsoft Azure Blob Storage] (https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager) for more information. If `credentials_secret` is specified, do not specify azure_credentials. This feature is in [preview](https://cloud.google.com/terms/service-terms#1). Format: `projects/{project_number}/secrets/{secret_name}`",
+                    "type": "string"
+                },
                 "path": {
                     "description": "Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.",
                     "type": "string"
@@ -744,6 +752,10 @@
                 },
                 "container": {
                     "description": "Required. The container to transfer from the Azure Storage account.",
+                    "type": "string"
+                },
+                "credentialsSecret": {
+                    "description": "Optional. The Resource name of a secret in Secret Manager. The Azure SAS token must be stored in Secret Manager in JSON format: { \"sas_token\" : \"SAS_TOKEN\" } GoogleServiceAccount must be granted `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Microsoft Azure Blob Storage] (https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager) for more information. If `credentials_secret` is specified, do not specify azure_credentials. This feature is in [preview](https://cloud.google.com/terms/service-terms#1). Format: `projects/{project_number}/secrets/{secret_name}`",
                     "type": "string"
                 },
                 "path": {
@@ -858,7 +870,7 @@
                         "DATA_LOSS"
                     ],
                     "enumDescriptions": [
-                        "Not an error; returned on success HTTP Mapping: 200 OK",
+                        "Not an error; returned on success. HTTP Mapping: 200 OK",
                         "The operation was cancelled, typically by the caller. HTTP Mapping: 499 Client Closed Request",
                         "Unknown error. For example, this error may be returned when a `Status` value received from another address space belongs to an error space that is not known in this address space. Also errors raised by APIs that do not return enough error information may be converted to this error. HTTP Mapping: 500 Internal Server Error",
                         "The client specified an invalid argument. Note that this differs from `FAILED_PRECONDITION`. `INVALID_ARGUMENT` indicates arguments that are problematic regardless of the state of the system (e.g., a malformed file name). HTTP Mapping: 400 Bad Request",
@@ -889,6 +901,27 @@
                         "$ref": "ErrorLogEntry"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "EventStream": {
+            "description": "Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files.",
+            "id": "EventStream",
+            "properties": {
+                "eventStreamExpirationTime": {
+                    "description": "Specifies the data and time at which Storage Transfer Service stops listening for events from this stream. After this time, any transfers in progress will complete, but no new transfers are initiated.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "eventStreamStartTime": {
+                    "description": "Specifies the date and time that Storage Transfer Service starts listening for events from this stream. If no start time is specified or start time is in the past, Storage Transfer Service starts listening immediately.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Required. Specifies a unique name of the resource such as AWS SQS ARN in the form 'arn:aws:sqs:region:account_id:queue_name', or Pub/Sub subscription resource name in the form 'projects/{project}/subscriptions/{sub}'.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -1109,7 +1142,7 @@
                     "enumDescriptions": [
                         "Storage class behavior is unspecified.",
                         "Use the destination bucket's default storage class.",
-                        "Preserve the object's original storage class. This is only supported for transfers from Google Cloud Storage buckets.",
+                        "Preserve the object's original storage class. This is only supported for transfers from Google Cloud Storage buckets. REGIONAL and MULTI_REGIONAL storage classes will be mapped to STANDARD to ensure they can be written to the destination bucket.",
                         "Set the storage class to STANDARD.",
                         "Set the storage class to NEARLINE.",
                         "Set the storage class to COLDLINE.",
@@ -1607,6 +1640,10 @@
                     "description": "A description provided by the user for the job. Its max length is 1024 bytes when Unicode-encoded.",
                     "type": "string"
                 },
+                "eventStream": {
+                    "$ref": "EventStream",
+                    "description": "Specifies the event stream for the transfer job for event-driven transfers. When EventStream is specified, the Schedule fields are ignored."
+                },
                 "lastModificationTime": {
                     "description": "Output only. The time that the transfer job was last modified.",
                     "format": "google-datetime",
@@ -1691,6 +1728,10 @@
                     },
                     "type": "array"
                 },
+                "loggingConfig": {
+                    "$ref": "LoggingConfig",
+                    "description": "Cloud Logging configuration."
+                },
                 "name": {
                     "description": "A globally unique ID assigned by the system.",
                     "type": "string"
@@ -1717,7 +1758,8 @@
                         "SUCCESS",
                         "FAILED",
                         "ABORTED",
-                        "QUEUED"
+                        "QUEUED",
+                        "SUSPENDING"
                     ],
                     "enumDescriptions": [
                         "Zero is an illegal value.",
@@ -1726,7 +1768,8 @@
                         "Completed successfully.",
                         "Terminated due to an unrecoverable failure.",
                         "Aborted by the user.",
-                        "Temporarily delayed by the system. No user action is required."
+                        "Temporarily delayed by the system. No user action is required.",
+                        "The operation is suspending and draining the ongoing work to completion."
                     ],
                     "type": "string"
                 },
@@ -1806,7 +1849,7 @@
                 },
                 "gcsIntermediateDataLocation": {
                     "$ref": "GcsData",
-                    "description": "Cloud Storage intermediate data location."
+                    "description": "For transfers between file systems, specifies a Cloud Storage bucket to be used as an intermediate location through which to transfer data. See [Transfer data between file systems](https://cloud.google.com/storage-transfer/docs/file-to-file) for more information."
                 },
                 "httpDataSource": {
                     "$ref": "HttpData",
@@ -1863,9 +1906,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Storage Transfer API",
-    "version": "v1",
-    "version_module": true
+    }
 }

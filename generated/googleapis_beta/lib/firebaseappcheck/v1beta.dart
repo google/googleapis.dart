@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Firebase App Check API - v1beta
@@ -22,6 +21,7 @@
 /// Create an instance of [FirebaseappcheckApi] to access these resources:
 ///
 /// - [JwksResource]
+/// - [OauthClientsResource]
 /// - [ProjectsResource]
 ///   - [ProjectsAppsResource]
 ///     - [ProjectsAppsAppAttestConfigResource]
@@ -33,7 +33,7 @@
 ///     - [ProjectsAppsRecaptchaV3ConfigResource]
 ///     - [ProjectsAppsSafetyNetConfigResource]
 ///   - [ProjectsServicesResource]
-library firebaseappcheck.v1beta;
+library firebaseappcheck_v1beta;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -42,7 +42,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -63,6 +62,7 @@ class FirebaseappcheckApi {
   final commons.ApiRequester _requester;
 
   JwksResource get jwks => JwksResource(_requester);
+  OauthClientsResource get oauthClients => OauthClientsResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
 
   FirebaseappcheckApi(http.Client client,
@@ -120,6 +120,169 @@ class JwksResource {
   }
 }
 
+class OauthClientsResource {
+  final commons.ApiRequester _requester;
+
+  OauthClientsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Accepts an App Attest assertion and an artifact previously obtained from
+  /// ExchangeAppAttestAttestation and verifies those with Apple.
+  ///
+  /// If valid, returns an AppCheckToken.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [app] - Required. The relative resource name of the iOS app, in the
+  /// format: ``` projects/{project_number}/apps/{app_id} ``` If necessary, the
+  /// `project_number` element can be replaced with the project ID of the
+  /// Firebase project. Learn more about using project identifiers in Google's
+  /// [AIP 2510](https://google.aip.dev/cloud/2510) standard.
+  /// Value must have pattern `^oauthClients/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleFirebaseAppcheckV1betaAppCheckToken].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirebaseAppcheckV1betaAppCheckToken>
+      exchangeAppAttestAssertion(
+    GoogleFirebaseAppcheckV1betaExchangeAppAttestAssertionRequest request,
+    core.String app, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1beta/' + core.Uri.encodeFull('$app') + ':exchangeAppAttestAssertion';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleFirebaseAppcheckV1betaAppCheckToken.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Accepts an App Attest CBOR attestation and verifies it with Apple using
+  /// your preconfigured team and bundle IDs.
+  ///
+  /// If valid, returns an attestation artifact that can later be exchanged for
+  /// an AppCheckToken using ExchangeAppAttestAssertion. For convenience and
+  /// performance, this method's response object will also contain an
+  /// AppCheckToken (if the verification is successful).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [app] - Required. The relative resource name of the iOS app, in the
+  /// format: ``` projects/{project_number}/apps/{app_id} ``` If necessary, the
+  /// `project_number` element can be replaced with the project ID of the
+  /// Firebase project. Learn more about using project identifiers in Google's
+  /// [AIP 2510](https://google.aip.dev/cloud/2510) standard.
+  /// Value must have pattern `^oauthClients/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationResponse>
+      exchangeAppAttestAttestation(
+    GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationRequest request,
+    core.String app, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1beta/' +
+        core.Uri.encodeFull('$app') +
+        ':exchangeAppAttestAttestation';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationResponse
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Generates a challenge that protects the integrity of an immediately
+  /// following call to ExchangeAppAttestAttestation or
+  /// ExchangeAppAttestAssertion.
+  ///
+  /// A challenge should not be reused for multiple calls.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [app] - Required. The relative resource name of the iOS app, in the
+  /// format: ``` projects/{project_number}/apps/{app_id} ``` If necessary, the
+  /// `project_number` element can be replaced with the project ID of the
+  /// Firebase project. Learn more about using project identifiers in Google's
+  /// [AIP 2510](https://google.aip.dev/cloud/2510) standard.
+  /// Value must have pattern `^oauthClients/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeResponse>
+      generateAppAttestChallenge(
+    GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeRequest request,
+    core.String app, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1beta/' + core.Uri.encodeFull('$app') + ':generateAppAttestChallenge';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeResponse
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsResource {
   final commons.ApiRequester _requester;
 
@@ -127,6 +290,76 @@ class ProjectsResource {
   ProjectsServicesResource get services => ProjectsServicesResource(_requester);
 
   ProjectsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Verifies the given App Check token and returns token usage signals that
+  /// callers may act upon.
+  ///
+  /// This method currently only supports App Check tokens exchanged from the
+  /// following attestation providers: * Play Integrity API * App Attest *
+  /// DeviceCheck (`DCDevice` tokens) * reCAPTCHA Enterprise * reCAPTCHA v3 *
+  /// Custom providers App Check tokens exchanged from debug secrets are also
+  /// supported. Calling this method on an otherwise valid App Check token with
+  /// an unsupported provider will cause an HTTP 400 error to be returned.
+  /// Returns whether this token was already consumed before this call. If this
+  /// is the first time this method has seen the given App Check token, the
+  /// field `already_consumed` in the response will be absent. The given token
+  /// will then be marked as `already_consumed` (set to `true`) for all future
+  /// invocations of this method for that token. Note that if the given App
+  /// Check token is invalid, an HTTP 403 error is returned instead of a
+  /// response object, regardless whether the token was already consumed.
+  /// Currently, when evaluating whether an App Check token was already
+  /// consumed, only calls to this exact method are counted. Use of the App
+  /// Check token elsewhere will not mark the token as being already consumed.
+  /// The caller must have the
+  /// \[`firebaseappcheck.appCheckTokens.verify`\](https://firebase.google.com/docs/projects/iam/permissions#app-check)
+  /// permission to call this method. This permission is part of the
+  /// [Firebase App Check Token Verifier role](https://firebase.google.com/docs/projects/iam/roles-predefined-product#app-check).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Required. The relative resource name of the project for which
+  /// the token was minted, in the format: ``` projects/{project_number} ``` If
+  /// necessary, the `project_number` element can be replaced with the project
+  /// ID of the Firebase project. Learn more about using project identifiers in
+  /// Google's [AIP 2510](https://google.aip.dev/cloud/2510) standard.
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenResponse>
+      verifyAppCheckToken(
+    GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenRequest request,
+    core.String project, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1beta/' + core.Uri.encodeFull('$project') + ':verifyAppCheckToken';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsAppsResource {
@@ -534,6 +767,9 @@ class ProjectsAppsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleFirebaseAppcheckV1betaAppCheckToken>
       exchangeRecaptchaToken(
     GoogleFirebaseAppcheckV1betaExchangeRecaptchaTokenRequest request,
@@ -634,6 +870,9 @@ class ProjectsAppsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleFirebaseAppcheckV1betaAppCheckToken>
       exchangeSafetyNetToken(
     GoogleFirebaseAppcheckV1betaExchangeSafetyNetTokenRequest request,
@@ -1466,6 +1705,9 @@ class ProjectsAppsPlayIntegrityConfigResource {
   }
 }
 
+@core.Deprecated(
+  'Not supported. Member documentation may have more information.',
+)
 class ProjectsAppsRecaptchaConfigResource {
   final commons.ApiRequester _requester;
 
@@ -1502,6 +1744,9 @@ class ProjectsAppsRecaptchaConfigResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleFirebaseAppcheckV1betaBatchGetRecaptchaConfigsResponse>
       batchGet(
     core.String parent, {
@@ -1548,6 +1793,9 @@ class ProjectsAppsRecaptchaConfigResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleFirebaseAppcheckV1betaRecaptchaConfig> get(
     core.String name, {
     core.String? $fields,
@@ -1595,6 +1843,9 @@ class ProjectsAppsRecaptchaConfigResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleFirebaseAppcheckV1betaRecaptchaConfig> patch(
     GoogleFirebaseAppcheckV1betaRecaptchaConfig request,
     core.String name, {
@@ -1927,6 +2178,9 @@ class ProjectsAppsRecaptchaV3ConfigResource {
   }
 }
 
+@core.Deprecated(
+  'Not supported. Member documentation may have more information.',
+)
 class ProjectsAppsSafetyNetConfigResource {
   final commons.ApiRequester _requester;
 
@@ -1960,6 +2214,9 @@ class ProjectsAppsSafetyNetConfigResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleFirebaseAppcheckV1betaBatchGetSafetyNetConfigsResponse>
       batchGet(
     core.String parent, {
@@ -2003,6 +2260,9 @@ class ProjectsAppsSafetyNetConfigResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleFirebaseAppcheckV1betaSafetyNetConfig> get(
     core.String name, {
     core.String? $fields,
@@ -2049,6 +2309,9 @@ class ProjectsAppsSafetyNetConfigResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<GoogleFirebaseAppcheckV1betaSafetyNetConfig> patch(
     GoogleFirebaseAppcheckV1betaSafetyNetConfig request,
     core.String name, {
@@ -2136,7 +2399,9 @@ class ProjectsServicesResource {
   /// Currently, the following service IDs are supported: *
   /// `firebasestorage.googleapis.com` (Cloud Storage for Firebase) *
   /// `firebasedatabase.googleapis.com` (Firebase Realtime Database) *
-  /// `firestore.googleapis.com` (Cloud Firestore)
+  /// `firestore.googleapis.com` (Cloud Firestore) *
+  /// `identitytoolkit.googleapis.com` (Firebase Authentication with Identity
+  /// Platform)
   /// Value must have pattern `^projects/\[^/\]+/services/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2182,8 +2447,9 @@ class ProjectsServicesResource {
   ///
   /// [pageSize] - The maximum number of Services to return in the response.
   /// Only explicitly configured services are returned. The server may return
-  /// fewer than this at its own discretion. If no value is specified (or too
-  /// large a value is specified), the server will impose its own limit.
+  /// fewer than this at its own discretion. If no value is specified or set to
+  /// zero (or too large a value is specified), the server will impose its own
+  /// limit.
   ///
   /// [pageToken] - Token returned from a previous call to ListServices
   /// indicating where in the set of Services to resume listing. Provide this to
@@ -2236,7 +2502,9 @@ class ProjectsServicesResource {
   /// Currently, the following service IDs are supported: *
   /// `firebasestorage.googleapis.com` (Cloud Storage for Firebase) *
   /// `firebasedatabase.googleapis.com` (Firebase Realtime Database) *
-  /// `firestore.googleapis.com` (Cloud Firestore)
+  /// `firestore.googleapis.com` (Cloud Firestore) *
+  /// `identitytoolkit.googleapis.com` (Firebase Authentication with Identity
+  /// Platform)
   /// Value must have pattern `^projects/\[^/\]+/services/\[^/\]+$`.
   ///
   /// [updateMask] - Required. A comma-separated list of names of fields in the
@@ -2326,6 +2594,9 @@ class GoogleFirebaseAppcheckV1betaAppCheckToken {
   /// App Check tokens are signed [JWTs](https://tools.ietf.org/html/rfc7519)
   /// containing claims that identify the attested app and Firebase project.
   /// This token is used to access Firebase services protected by App Check.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? attestationToken;
 
   /// An App Check token.
@@ -2819,10 +3090,17 @@ class GoogleFirebaseAppcheckV1betaExchangeAppAttestAssertionRequest {
         convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
+  /// Forces a short-lived token with a 5 minute TTL.
+  ///
+  /// Useful when the client wishes to impose stricter TTL requirements for this
+  /// exchange. Default: false.
+  core.bool? limitedUse;
+
   GoogleFirebaseAppcheckV1betaExchangeAppAttestAssertionRequest({
     this.artifact,
     this.assertion,
     this.challenge,
+    this.limitedUse,
   });
 
   GoogleFirebaseAppcheckV1betaExchangeAppAttestAssertionRequest.fromJson(
@@ -2837,12 +3115,16 @@ class GoogleFirebaseAppcheckV1betaExchangeAppAttestAssertionRequest {
           challenge: json_.containsKey('challenge')
               ? json_['challenge'] as core.String
               : null,
+          limitedUse: json_.containsKey('limitedUse')
+              ? json_['limitedUse'] as core.bool
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (artifact != null) 'artifact': artifact!,
         if (assertion != null) 'assertion': assertion!,
         if (challenge != null) 'challenge': challenge!,
+        if (limitedUse != null) 'limitedUse': limitedUse!,
       };
 }
 
@@ -2885,10 +3167,17 @@ class GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationRequest {
         convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
+  /// Forces a short-lived token with a 5 minute TTL.
+  ///
+  /// Useful when the client wishes to impose stricter TTL requirements for this
+  /// exchange. Default: false.
+  core.bool? limitedUse;
+
   GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationRequest({
     this.attestationStatement,
     this.challenge,
     this.keyId,
+    this.limitedUse,
   });
 
   GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationRequest.fromJson(
@@ -2902,6 +3191,9 @@ class GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationRequest {
               : null,
           keyId:
               json_.containsKey('keyId') ? json_['keyId'] as core.String : null,
+          limitedUse: json_.containsKey('limitedUse')
+              ? json_['limitedUse'] as core.bool
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2909,6 +3201,7 @@ class GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationRequest {
           'attestationStatement': attestationStatement!,
         if (challenge != null) 'challenge': challenge!,
         if (keyId != null) 'keyId': keyId!,
+        if (limitedUse != null) 'limitedUse': limitedUse!,
       };
 }
 
@@ -2928,6 +3221,9 @@ class GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationResponse {
   }
 
   /// Encapsulates an App Check token.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   GoogleFirebaseAppcheckV1betaAttestationTokenResponse? attestationToken;
 
   GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationResponse({
@@ -2968,8 +3264,15 @@ class GoogleFirebaseAppcheckV1betaExchangeCustomTokenRequest {
   /// Required.
   core.String? customToken;
 
+  /// Forces a short-lived token with a 5 minute TTL.
+  ///
+  /// Useful when the client wishes to impose stricter TTL requirements for this
+  /// exchange. Default: false.
+  core.bool? limitedUse;
+
   GoogleFirebaseAppcheckV1betaExchangeCustomTokenRequest({
     this.customToken,
+    this.limitedUse,
   });
 
   GoogleFirebaseAppcheckV1betaExchangeCustomTokenRequest.fromJson(
@@ -2978,10 +3281,14 @@ class GoogleFirebaseAppcheckV1betaExchangeCustomTokenRequest {
           customToken: json_.containsKey('customToken')
               ? json_['customToken'] as core.String
               : null,
+          limitedUse: json_.containsKey('limitedUse')
+              ? json_['limitedUse'] as core.bool
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (customToken != null) 'customToken': customToken!,
+        if (limitedUse != null) 'limitedUse': limitedUse!,
       };
 }
 
@@ -2995,8 +3302,15 @@ class GoogleFirebaseAppcheckV1betaExchangeDebugTokenRequest {
   /// Required.
   core.String? debugToken;
 
+  /// Forces a short-lived token with a 5 minute TTL.
+  ///
+  /// Useful when the client wishes to impose stricter TTL requirements for this
+  /// exchange. Default: false.
+  core.bool? limitedUse;
+
   GoogleFirebaseAppcheckV1betaExchangeDebugTokenRequest({
     this.debugToken,
+    this.limitedUse,
   });
 
   GoogleFirebaseAppcheckV1betaExchangeDebugTokenRequest.fromJson(core.Map json_)
@@ -3004,10 +3318,14 @@ class GoogleFirebaseAppcheckV1betaExchangeDebugTokenRequest {
           debugToken: json_.containsKey('debugToken')
               ? json_['debugToken'] as core.String
               : null,
+          limitedUse: json_.containsKey('limitedUse')
+              ? json_['limitedUse'] as core.bool
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (debugToken != null) 'debugToken': debugToken!,
+        if (limitedUse != null) 'limitedUse': limitedUse!,
       };
 }
 
@@ -3021,8 +3339,15 @@ class GoogleFirebaseAppcheckV1betaExchangeDeviceCheckTokenRequest {
   /// Required.
   core.String? deviceToken;
 
+  /// Forces a short-lived token with a 5 minute TTL.
+  ///
+  /// Useful when the client wishes to impose stricter TTL requirements for this
+  /// exchange. Default: false.
+  core.bool? limitedUse;
+
   GoogleFirebaseAppcheckV1betaExchangeDeviceCheckTokenRequest({
     this.deviceToken,
+    this.limitedUse,
   });
 
   GoogleFirebaseAppcheckV1betaExchangeDeviceCheckTokenRequest.fromJson(
@@ -3031,15 +3356,25 @@ class GoogleFirebaseAppcheckV1betaExchangeDeviceCheckTokenRequest {
           deviceToken: json_.containsKey('deviceToken')
               ? json_['deviceToken'] as core.String
               : null,
+          limitedUse: json_.containsKey('limitedUse')
+              ? json_['limitedUse'] as core.bool
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deviceToken != null) 'deviceToken': deviceToken!,
+        if (limitedUse != null) 'limitedUse': limitedUse!,
       };
 }
 
 /// Request message for the ExchangePlayIntegrityToken method.
 class GoogleFirebaseAppcheckV1betaExchangePlayIntegrityTokenRequest {
+  /// Forces a short-lived token with a 5 minute TTL.
+  ///
+  /// Useful when the client wishes to impose stricter TTL requirements for this
+  /// exchange. Default: false.
+  core.bool? limitedUse;
+
   /// The
   /// [integrity verdict response token from Play Integrity](https://developer.android.com/google/play/integrity/verdict#decrypt-verify)
   /// issued to your app.
@@ -3048,18 +3383,23 @@ class GoogleFirebaseAppcheckV1betaExchangePlayIntegrityTokenRequest {
   core.String? playIntegrityToken;
 
   GoogleFirebaseAppcheckV1betaExchangePlayIntegrityTokenRequest({
+    this.limitedUse,
     this.playIntegrityToken,
   });
 
   GoogleFirebaseAppcheckV1betaExchangePlayIntegrityTokenRequest.fromJson(
       core.Map json_)
       : this(
+          limitedUse: json_.containsKey('limitedUse')
+              ? json_['limitedUse'] as core.bool
+              : null,
           playIntegrityToken: json_.containsKey('playIntegrityToken')
               ? json_['playIntegrityToken'] as core.String
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (limitedUse != null) 'limitedUse': limitedUse!,
         if (playIntegrityToken != null)
           'playIntegrityToken': playIntegrityToken!,
       };
@@ -3067,6 +3407,12 @@ class GoogleFirebaseAppcheckV1betaExchangePlayIntegrityTokenRequest {
 
 /// Request message for the ExchangeRecaptchaEnterpriseToken method.
 class GoogleFirebaseAppcheckV1betaExchangeRecaptchaEnterpriseTokenRequest {
+  /// Forces a short-lived token with a 5 minute TTL.
+  ///
+  /// Useful when the client wishes to impose stricter TTL requirements for this
+  /// exchange. Default: false.
+  core.bool? limitedUse;
+
   /// The reCAPTCHA token as returned by the
   /// [reCAPTCHA Enterprise JavaScript API](https://cloud.google.com/recaptcha-enterprise/docs/instrument-web-pages).
   ///
@@ -3074,12 +3420,16 @@ class GoogleFirebaseAppcheckV1betaExchangeRecaptchaEnterpriseTokenRequest {
   core.String? recaptchaEnterpriseToken;
 
   GoogleFirebaseAppcheckV1betaExchangeRecaptchaEnterpriseTokenRequest({
+    this.limitedUse,
     this.recaptchaEnterpriseToken,
   });
 
   GoogleFirebaseAppcheckV1betaExchangeRecaptchaEnterpriseTokenRequest.fromJson(
       core.Map json_)
       : this(
+          limitedUse: json_.containsKey('limitedUse')
+              ? json_['limitedUse'] as core.bool
+              : null,
           recaptchaEnterpriseToken:
               json_.containsKey('recaptchaEnterpriseToken')
                   ? json_['recaptchaEnterpriseToken'] as core.String
@@ -3087,6 +3437,7 @@ class GoogleFirebaseAppcheckV1betaExchangeRecaptchaEnterpriseTokenRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (limitedUse != null) 'limitedUse': limitedUse!,
         if (recaptchaEnterpriseToken != null)
           'recaptchaEnterpriseToken': recaptchaEnterpriseToken!,
       };
@@ -3119,6 +3470,12 @@ class GoogleFirebaseAppcheckV1betaExchangeRecaptchaTokenRequest {
 
 /// Request message for the ExchangeRecaptchaV3Token method.
 class GoogleFirebaseAppcheckV1betaExchangeRecaptchaV3TokenRequest {
+  /// Forces a short-lived token with a 5 minute TTL.
+  ///
+  /// Useful when the client wishes to impose stricter TTL requirements for this
+  /// exchange. Default: false.
+  core.bool? limitedUse;
+
   /// The reCAPTCHA token as returned by the
   /// [reCAPTCHA v3 JavaScript API](https://developers.google.com/recaptcha/docs/v3).
   ///
@@ -3126,18 +3483,23 @@ class GoogleFirebaseAppcheckV1betaExchangeRecaptchaV3TokenRequest {
   core.String? recaptchaV3Token;
 
   GoogleFirebaseAppcheckV1betaExchangeRecaptchaV3TokenRequest({
+    this.limitedUse,
     this.recaptchaV3Token,
   });
 
   GoogleFirebaseAppcheckV1betaExchangeRecaptchaV3TokenRequest.fromJson(
       core.Map json_)
       : this(
+          limitedUse: json_.containsKey('limitedUse')
+              ? json_['limitedUse'] as core.bool
+              : null,
           recaptchaV3Token: json_.containsKey('recaptchaV3Token')
               ? json_['recaptchaV3Token'] as core.String
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (limitedUse != null) 'limitedUse': limitedUse!,
         if (recaptchaV3Token != null) 'recaptchaV3Token': recaptchaV3Token!,
       };
 }
@@ -3693,11 +4055,19 @@ class GoogleFirebaseAppcheckV1betaService {
   /// Check metrics collected. Though the service is not protected by App Check
   /// in this mode, other applicable protections, such as user authorization,
   /// are still enforced. An unconfigured service is in this mode by default.
+  /// Note that resource policies behave slightly differently as an unconfigured
+  /// resource policy means that the resource will inherit the EnforcementMode
+  /// configured for the service it belongs to and will not be considered as
+  /// being in OFF mode by default.
   /// - "UNENFORCED" : Firebase App Check is not enforced for the service. App
   /// Check metrics are collected to help you decide when to turn on enforcement
   /// for the service. Though the service is not protected by App Check in this
   /// mode, other applicable protections, such as user authorization, are still
-  /// enforced.
+  /// enforced. Some services require certain conditions to be met before they
+  /// will work with App Check, such as requiring you to upgrade to a specific
+  /// service tier. Until those requirements are met for a service, this
+  /// `UNENFORCED` setting will have no effect and App Check will not work with
+  /// that service.
   /// - "ENFORCED" : Firebase App Check is enforced for the service. The service
   /// will reject any request that attempts to access your project's resources
   /// if it does not have valid App Check token attached, with some exceptions
@@ -3713,8 +4083,19 @@ class GoogleFirebaseAppcheckV1betaService {
   /// Firebase services that are enforcing App Check. App Check metrics can help
   /// you decide whether to enforce App Check on your Firebase services. If your
   /// app has not launched yet, you should enable enforcement immediately, since
-  /// there are no outdated clients in use.
+  /// there are no outdated clients in use. Some services require certain
+  /// conditions to be met before they will work with App Check, such as
+  /// requiring you to upgrade to a specific service tier. Until those
+  /// requirements are met for a service, this `ENFORCED` setting will have no
+  /// effect and App Check will not work with that service.
   core.String? enforcementMode;
+
+  /// This checksum is computed by the server based on the value of other
+  /// fields, and may be sent on update and delete requests to ensure the client
+  /// has an up-to-date value before proceeding.
+  ///
+  /// This etag is strongly validated as defined by RFC 7232.
+  core.String? etag;
 
   /// The relative resource name of the service configuration object, in the
   /// format: ``` projects/{project_number}/services/{service_id} ``` Note that
@@ -3723,14 +4104,24 @@ class GoogleFirebaseAppcheckV1betaService {
   /// Currently, the following service IDs are supported: *
   /// `firebasestorage.googleapis.com` (Cloud Storage for Firebase) *
   /// `firebasedatabase.googleapis.com` (Firebase Realtime Database) *
-  /// `firestore.googleapis.com` (Cloud Firestore)
+  /// `firestore.googleapis.com` (Cloud Firestore) *
+  /// `identitytoolkit.googleapis.com` (Firebase Authentication with Identity
+  /// Platform)
   ///
   /// Required.
   core.String? name;
 
+  /// Timestamp when this service configuration object was most recently
+  /// updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
   GoogleFirebaseAppcheckV1betaService({
     this.enforcementMode,
+    this.etag,
     this.name,
+    this.updateTime,
   });
 
   GoogleFirebaseAppcheckV1betaService.fromJson(core.Map json_)
@@ -3738,12 +4129,18 @@ class GoogleFirebaseAppcheckV1betaService {
           enforcementMode: json_.containsKey('enforcementMode')
               ? json_['enforcementMode'] as core.String
               : null,
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enforcementMode != null) 'enforcementMode': enforcementMode!,
+        if (etag != null) 'etag': etag!,
         if (name != null) 'name': name!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -3758,7 +4155,11 @@ class GoogleFirebaseAppcheckV1betaUpdateServiceRequest {
   /// Currently, the following service IDs are supported: *
   /// `firebasestorage.googleapis.com` (Cloud Storage for Firebase) *
   /// `firebasedatabase.googleapis.com` (Firebase Realtime Database) *
-  /// `firestore.googleapis.com` (Cloud Firestore)
+  /// `firestore.googleapis.com` (Cloud Firestore) *
+  /// `identitytoolkit.googleapis.com` (Firebase Authentication with Identity
+  /// Platform) For Firebase Authentication to work with App Check, you must
+  /// first upgrade to
+  /// [Firebase Authentication with Identity Platform](https://firebase.google.com/docs/auth#identity-platform).
   ///
   /// Required.
   GoogleFirebaseAppcheckV1betaService? service;
@@ -3789,6 +4190,62 @@ class GoogleFirebaseAppcheckV1betaUpdateServiceRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (service != null) 'service': service!,
         if (updateMask != null) 'updateMask': updateMask!,
+      };
+}
+
+/// Request message for the VerifyAppCheckToken method.
+class GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenRequest {
+  /// The App Check token to verify.
+  ///
+  /// App Check tokens exchanged from the SafetyNet provider are not supported;
+  /// an HTTP 400 error will be returned.
+  ///
+  /// Required.
+  core.String? appCheckToken;
+
+  GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenRequest({
+    this.appCheckToken,
+  });
+
+  GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenRequest.fromJson(
+      core.Map json_)
+      : this(
+          appCheckToken: json_.containsKey('appCheckToken')
+              ? json_['appCheckToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (appCheckToken != null) 'appCheckToken': appCheckToken!,
+      };
+}
+
+/// Response message for the VerifyAppCheckToken method.
+class GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenResponse {
+  /// Whether this token was already consumed.
+  ///
+  /// If this is the first time this method has seen the given App Check token,
+  /// this field will be omitted from the response. The given token will then be
+  /// marked as `already_consumed` (set to `true`) for all future invocations of
+  /// this method for that token. Note that if the given App Check token is
+  /// invalid, an HTTP 403 error is returned instead of a response containing
+  /// this field, regardless whether the token was already consumed.
+  core.bool? alreadyConsumed;
+
+  GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenResponse({
+    this.alreadyConsumed,
+  });
+
+  GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenResponse.fromJson(
+      core.Map json_)
+      : this(
+          alreadyConsumed: json_.containsKey('alreadyConsumed')
+              ? json_['alreadyConsumed'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (alreadyConsumed != null) 'alreadyConsumed': alreadyConsumed!,
       };
 }
 

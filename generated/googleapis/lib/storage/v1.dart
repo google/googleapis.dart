@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud Storage JSON API - v1
@@ -31,7 +30,7 @@
 /// - [ProjectsResource]
 ///   - [ProjectsHmacKeysResource]
 ///   - [ProjectsServiceAccountResource]
-library storage.v1;
+library storage_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -45,13 +44,13 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show
         ApiRequestError,
+        ByteRange,
         DetailedApiRequestError,
-        Media,
-        UploadOptions,
-        ResumableUploadOptions,
         DownloadOptions,
+        Media,
         PartialDownloadOptions,
-        ByteRange;
+        ResumableUploadOptions,
+        UploadOptions;
 
 /// Stores and retrieves potentially large, immutable data objects.
 class StorageApi {
@@ -1576,7 +1575,8 @@ class ObjectAccessControlsResource {
   /// [bucket] - Name of a bucket.
   ///
   /// [object] - Name of the object. For information about how to URL encode
-  /// object names to be path safe, see Encoding URI Path Parts.
+  /// object names to be path safe, see
+  /// [Encoding URI Path Parts](https://cloud.google.com/storage/docs/request-endpoints#encoding).
   ///
   /// [entity] - The entity holding the permission. Can be user-userId,
   /// user-emailAddress, group-groupId, group-emailAddress, allUsers, or
@@ -1632,7 +1632,8 @@ class ObjectAccessControlsResource {
   /// [bucket] - Name of a bucket.
   ///
   /// [object] - Name of the object. For information about how to URL encode
-  /// object names to be path safe, see Encoding URI Path Parts.
+  /// object names to be path safe, see
+  /// [Encoding URI Path Parts](https://cloud.google.com/storage/docs/request-endpoints#encoding).
   ///
   /// [entity] - The entity holding the permission. Can be user-userId,
   /// user-emailAddress, group-groupId, group-emailAddress, allUsers, or
@@ -1693,7 +1694,8 @@ class ObjectAccessControlsResource {
   /// [bucket] - Name of a bucket.
   ///
   /// [object] - Name of the object. For information about how to URL encode
-  /// object names to be path safe, see Encoding URI Path Parts.
+  /// object names to be path safe, see
+  /// [Encoding URI Path Parts](https://cloud.google.com/storage/docs/request-endpoints#encoding).
   ///
   /// [generation] - If present, selects a specific revision of this object (as
   /// opposed to the latest version, the default).
@@ -1749,7 +1751,8 @@ class ObjectAccessControlsResource {
   /// [bucket] - Name of a bucket.
   ///
   /// [object] - Name of the object. For information about how to URL encode
-  /// object names to be path safe, see Encoding URI Path Parts.
+  /// object names to be path safe, see
+  /// [Encoding URI Path Parts](https://cloud.google.com/storage/docs/request-endpoints#encoding).
   ///
   /// [generation] - If present, selects a specific revision of this object (as
   /// opposed to the latest version, the default).
@@ -1804,7 +1807,8 @@ class ObjectAccessControlsResource {
   /// [bucket] - Name of a bucket.
   ///
   /// [object] - Name of the object. For information about how to URL encode
-  /// object names to be path safe, see Encoding URI Path Parts.
+  /// object names to be path safe, see
+  /// [Encoding URI Path Parts](https://cloud.google.com/storage/docs/request-endpoints#encoding).
   ///
   /// [entity] - The entity holding the permission. Can be user-userId,
   /// user-emailAddress, group-groupId, group-emailAddress, allUsers, or
@@ -1868,7 +1872,8 @@ class ObjectAccessControlsResource {
   /// [bucket] - Name of a bucket.
   ///
   /// [object] - Name of the object. For information about how to URL encode
-  /// object names to be path safe, see Encoding URI Path Parts.
+  /// object names to be path safe, see
+  /// [Encoding URI Path Parts](https://cloud.google.com/storage/docs/request-endpoints#encoding).
   ///
   /// [entity] - The entity holding the permission. Can be user-userId,
   /// user-emailAddress, group-groupId, group-emailAddress, allUsers, or
@@ -1940,7 +1945,8 @@ class ObjectsResource {
   /// The destination object is stored in this bucket.
   ///
   /// [destinationObject] - Name of the new object. For information about how to
-  /// URL encode object names to be path safe, see Encoding URI Path Parts.
+  /// URL encode object names to be path safe, see
+  /// [Encoding URI Path Parts](https://cloud.google.com/storage/docs/request-endpoints#encoding).
   ///
   /// [destinationPredefinedAcl] - Apply a predefined set of access controls to
   /// the destination object.
@@ -2031,12 +2037,13 @@ class ObjectsResource {
   /// [sourceBucket] - Name of the bucket in which to find the source object.
   ///
   /// [sourceObject] - Name of the source object. For information about how to
-  /// URL encode object names to be path safe, see Encoding URI Path Parts.
+  /// URL encode object names to be path safe, see
+  /// [Encoding URI Path Parts](https://cloud.google.com/storage/docs/request-endpoints#encoding).
   ///
   /// [destinationBucket] - Name of the bucket in which to store the new object.
   /// Overrides the provided object metadata's bucket value, if any.For
   /// information about how to URL encode object names to be path safe, see
-  /// Encoding URI Path Parts.
+  /// [Encoding URI Path Parts](https://cloud.google.com/storage/docs/request-endpoints#encoding).
   ///
   /// [destinationObject] - Name of the new object. Required when the object
   /// metadata is not otherwise provided. Overrides the object metadata's name
@@ -2190,7 +2197,8 @@ class ObjectsResource {
   /// [bucket] - Name of the bucket in which the object resides.
   ///
   /// [object] - Name of the object. For information about how to URL encode
-  /// object names to be path safe, see Encoding URI Path Parts.
+  /// object names to be path safe, see
+  /// [Encoding URI Path Parts](https://cloud.google.com/storage/docs/request-endpoints#encoding).
   ///
   /// [generation] - If present, permanently deletes a specific revision of this
   /// object (as opposed to the latest version, the default).
@@ -2265,7 +2273,8 @@ class ObjectsResource {
   /// [bucket] - Name of the bucket in which the object resides.
   ///
   /// [object] - Name of the object. For information about how to URL encode
-  /// object names to be path safe, see Encoding URI Path Parts.
+  /// object names to be path safe, see
+  /// [Encoding URI Path Parts](https://cloud.google.com/storage/docs/request-endpoints#encoding).
   ///
   /// [generation] - If present, selects a specific revision of this object (as
   /// opposed to the latest version, the default).
@@ -2363,7 +2372,8 @@ class ObjectsResource {
   /// [bucket] - Name of the bucket in which the object resides.
   ///
   /// [object] - Name of the object. For information about how to URL encode
-  /// object names to be path safe, see Encoding URI Path Parts.
+  /// object names to be path safe, see
+  /// [Encoding URI Path Parts](https://cloud.google.com/storage/docs/request-endpoints#encoding).
   ///
   /// [generation] - If present, selects a specific revision of this object (as
   /// opposed to the latest version, the default).
@@ -2446,7 +2456,7 @@ class ObjectsResource {
   /// [name] - Name of the object. Required when the object metadata is not
   /// otherwise provided. Overrides the object metadata's name value, if any.
   /// For information about how to URL encode object names to be path safe, see
-  /// Encoding URI Path Parts.
+  /// [Encoding URI Path Parts](https://cloud.google.com/storage/docs/request-endpoints#encoding).
   ///
   /// [predefinedAcl] - Apply a predefined set of access controls to this
   /// object.
@@ -2565,6 +2575,9 @@ class ObjectsResource {
   /// instance of delimiter will have their metadata included in items in
   /// addition to prefixes.
   ///
+  /// [matchGlob] - Filter results to objects and prefixes that match this glob
+  /// pattern.
+  ///
   /// [maxResults] - Maximum number of items plus prefixes to return in a single
   /// page of responses. As duplicate prefixes are omitted, fewer total results
   /// may be returned than requested. The service will use this parameter or
@@ -2606,6 +2619,7 @@ class ObjectsResource {
     core.String? delimiter,
     core.String? endOffset,
     core.bool? includeTrailingDelimiter,
+    core.String? matchGlob,
     core.int? maxResults,
     core.String? pageToken,
     core.String? prefix,
@@ -2620,6 +2634,7 @@ class ObjectsResource {
       if (endOffset != null) 'endOffset': [endOffset],
       if (includeTrailingDelimiter != null)
         'includeTrailingDelimiter': ['${includeTrailingDelimiter}'],
+      if (matchGlob != null) 'matchGlob': [matchGlob],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (prefix != null) 'prefix': [prefix],
@@ -2649,7 +2664,8 @@ class ObjectsResource {
   /// [bucket] - Name of the bucket in which the object resides.
   ///
   /// [object] - Name of the object. For information about how to URL encode
-  /// object names to be path safe, see Encoding URI Path Parts.
+  /// object names to be path safe, see
+  /// [Encoding URI Path Parts](https://cloud.google.com/storage/docs/request-endpoints#encoding).
   ///
   /// [generation] - If present, selects a specific revision of this object (as
   /// opposed to the latest version, the default).
@@ -2757,7 +2773,8 @@ class ObjectsResource {
   /// [sourceBucket] - Name of the bucket in which to find the source object.
   ///
   /// [sourceObject] - Name of the source object. For information about how to
-  /// URL encode object names to be path safe, see Encoding URI Path Parts.
+  /// URL encode object names to be path safe, see
+  /// [Encoding URI Path Parts](https://cloud.google.com/storage/docs/request-endpoints#encoding).
   ///
   /// [destinationBucket] - Name of the bucket in which to store the new object.
   /// Overrides the provided object metadata's bucket value, if any.
@@ -2765,7 +2782,8 @@ class ObjectsResource {
   /// [destinationObject] - Name of the new object. Required when the object
   /// metadata is not otherwise provided. Overrides the object metadata's name
   /// value, if any. For information about how to URL encode object names to be
-  /// path safe, see Encoding URI Path Parts.
+  /// path safe, see
+  /// [Encoding URI Path Parts](https://cloud.google.com/storage/docs/request-endpoints#encoding).
   ///
   /// [destinationKmsKeyName] - Resource name of the Cloud KMS key, of the form
   /// projects/my-project/locations/global/keyRings/my-kr/cryptoKeys/my-key,
@@ -2933,7 +2951,8 @@ class ObjectsResource {
   /// [bucket] - Name of the bucket in which the object resides.
   ///
   /// [object] - Name of the object. For information about how to URL encode
-  /// object names to be path safe, see Encoding URI Path Parts.
+  /// object names to be path safe, see
+  /// [Encoding URI Path Parts](https://cloud.google.com/storage/docs/request-endpoints#encoding).
   ///
   /// [generation] - If present, selects a specific revision of this object (as
   /// opposed to the latest version, the default).
@@ -2989,7 +3008,8 @@ class ObjectsResource {
   /// [bucket] - Name of the bucket in which the object resides.
   ///
   /// [object] - Name of the object. For information about how to URL encode
-  /// object names to be path safe, see Encoding URI Path Parts.
+  /// object names to be path safe, see
+  /// [Encoding URI Path Parts](https://cloud.google.com/storage/docs/request-endpoints#encoding).
   ///
   /// [permissions] - Permissions to test.
   ///
@@ -3051,7 +3071,8 @@ class ObjectsResource {
   /// [bucket] - Name of the bucket in which the object resides.
   ///
   /// [object] - Name of the object. For information about how to URL encode
-  /// object names to be path safe, see Encoding URI Path Parts.
+  /// object names to be path safe, see
+  /// [Encoding URI Path Parts](https://cloud.google.com/storage/docs/request-endpoints#encoding).
   ///
   /// [generation] - If present, selects a specific revision of this object (as
   /// opposed to the latest version, the default).
@@ -4493,9 +4514,9 @@ class Bucket {
           kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -4875,9 +4896,9 @@ class Channel {
           kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
           params: json_.containsKey('params')
               ? (json_['params'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -5300,9 +5321,9 @@ class Notification {
               ? (json_['custom_attributes']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -5694,9 +5715,9 @@ class Object {
               : null,
           metadata: json_.containsKey('metadata')
               ? (json_['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,

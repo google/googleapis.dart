@@ -1,8 +1,6 @@
 // ignore_for_file: camel_case_types
-// ignore_for_file: cascade_invocations
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_const_declarations
@@ -12,8 +10,9 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unreachable_from_main
 // ignore_for_file: unused_local_variable
 
 import 'dart:async' as async;
@@ -202,6 +201,7 @@ api.Backup buildBackup() {
     o.expireTime = 'foo';
     o.name = 'foo';
     o.sizeBytes = 'foo';
+    o.sourceBackup = 'foo';
     o.sourceTable = 'foo';
     o.startTime = 'foo';
     o.state = 'foo';
@@ -231,6 +231,10 @@ void checkBackup(api.Backup o) {
       unittest.equals('foo'),
     );
     unittest.expect(
+      o.sourceBackup!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.sourceTable!,
       unittest.equals('foo'),
     );
@@ -253,6 +257,7 @@ api.BackupInfo buildBackupInfo() {
   if (buildCounterBackupInfo < 3) {
     o.backup = 'foo';
     o.endTime = 'foo';
+    o.sourceBackup = 'foo';
     o.sourceTable = 'foo';
     o.startTime = 'foo';
   }
@@ -269,6 +274,10 @@ void checkBackupInfo(api.BackupInfo o) {
     );
     unittest.expect(
       o.endTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.sourceBackup!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -324,6 +333,28 @@ void checkBinding(api.Binding o) {
     );
   }
   buildCounterBinding--;
+}
+
+core.int buildCounterChangeStreamConfig = 0;
+api.ChangeStreamConfig buildChangeStreamConfig() {
+  final o = api.ChangeStreamConfig();
+  buildCounterChangeStreamConfig++;
+  if (buildCounterChangeStreamConfig < 3) {
+    o.retentionPeriod = 'foo';
+  }
+  buildCounterChangeStreamConfig--;
+  return o;
+}
+
+void checkChangeStreamConfig(api.ChangeStreamConfig o) {
+  buildCounterChangeStreamConfig++;
+  if (buildCounterChangeStreamConfig < 3) {
+    unittest.expect(
+      o.retentionPeriod!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterChangeStreamConfig--;
 }
 
 core.int buildCounterCheckConsistencyRequest = 0;
@@ -494,6 +525,7 @@ api.ColumnFamily buildColumnFamily() {
   buildCounterColumnFamily++;
   if (buildCounterColumnFamily < 3) {
     o.gcRule = buildGcRule();
+    o.stats = buildColumnFamilyStats();
   }
   buildCounterColumnFamily--;
   return o;
@@ -503,8 +535,73 @@ void checkColumnFamily(api.ColumnFamily o) {
   buildCounterColumnFamily++;
   if (buildCounterColumnFamily < 3) {
     checkGcRule(o.gcRule!);
+    checkColumnFamilyStats(o.stats!);
   }
   buildCounterColumnFamily--;
+}
+
+core.int buildCounterColumnFamilyStats = 0;
+api.ColumnFamilyStats buildColumnFamilyStats() {
+  final o = api.ColumnFamilyStats();
+  buildCounterColumnFamilyStats++;
+  if (buildCounterColumnFamilyStats < 3) {
+    o.averageCellsPerColumn = 42.0;
+    o.averageColumnsPerRow = 42.0;
+    o.logicalDataBytes = 'foo';
+  }
+  buildCounterColumnFamilyStats--;
+  return o;
+}
+
+void checkColumnFamilyStats(api.ColumnFamilyStats o) {
+  buildCounterColumnFamilyStats++;
+  if (buildCounterColumnFamilyStats < 3) {
+    unittest.expect(
+      o.averageCellsPerColumn!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.averageColumnsPerRow!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.logicalDataBytes!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterColumnFamilyStats--;
+}
+
+core.int buildCounterCopyBackupRequest = 0;
+api.CopyBackupRequest buildCopyBackupRequest() {
+  final o = api.CopyBackupRequest();
+  buildCounterCopyBackupRequest++;
+  if (buildCounterCopyBackupRequest < 3) {
+    o.backupId = 'foo';
+    o.expireTime = 'foo';
+    o.sourceBackup = 'foo';
+  }
+  buildCounterCopyBackupRequest--;
+  return o;
+}
+
+void checkCopyBackupRequest(api.CopyBackupRequest o) {
+  buildCounterCopyBackupRequest++;
+  if (buildCounterCopyBackupRequest < 3) {
+    unittest.expect(
+      o.backupId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.expireTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.sourceBackup!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterCopyBackupRequest--;
 }
 
 core.Map<core.String, api.Cluster> buildUnnamed4() => {
@@ -1448,6 +1545,7 @@ api.ModifyColumnFamiliesRequest buildModifyColumnFamiliesRequest() {
   final o = api.ModifyColumnFamiliesRequest();
   buildCounterModifyColumnFamiliesRequest++;
   if (buildCounterModifyColumnFamiliesRequest < 3) {
+    o.ignoreWarnings = true;
     o.modifications = buildUnnamed21();
   }
   buildCounterModifyColumnFamiliesRequest--;
@@ -1457,6 +1555,7 @@ api.ModifyColumnFamiliesRequest buildModifyColumnFamiliesRequest() {
 void checkModifyColumnFamiliesRequest(api.ModifyColumnFamiliesRequest o) {
   buildCounterModifyColumnFamiliesRequest++;
   if (buildCounterModifyColumnFamiliesRequest < 3) {
+    unittest.expect(o.ignoreWarnings!, unittest.isTrue);
     checkUnnamed21(o.modifications!);
   }
   buildCounterModifyColumnFamiliesRequest--;
@@ -1904,11 +2003,14 @@ api.Table buildTable() {
   final o = api.Table();
   buildCounterTable++;
   if (buildCounterTable < 3) {
+    o.changeStreamConfig = buildChangeStreamConfig();
     o.clusterStates = buildUnnamed29();
     o.columnFamilies = buildUnnamed30();
+    o.deletionProtection = true;
     o.granularity = 'foo';
     o.name = 'foo';
     o.restoreInfo = buildRestoreInfo();
+    o.stats = buildTableStats();
   }
   buildCounterTable--;
   return o;
@@ -1917,8 +2019,10 @@ api.Table buildTable() {
 void checkTable(api.Table o) {
   buildCounterTable++;
   if (buildCounterTable < 3) {
+    checkChangeStreamConfig(o.changeStreamConfig!);
     checkUnnamed29(o.clusterStates!);
     checkUnnamed30(o.columnFamilies!);
+    unittest.expect(o.deletionProtection!, unittest.isTrue);
     unittest.expect(
       o.granularity!,
       unittest.equals('foo'),
@@ -1928,8 +2032,46 @@ void checkTable(api.Table o) {
       unittest.equals('foo'),
     );
     checkRestoreInfo(o.restoreInfo!);
+    checkTableStats(o.stats!);
   }
   buildCounterTable--;
+}
+
+core.int buildCounterTableStats = 0;
+api.TableStats buildTableStats() {
+  final o = api.TableStats();
+  buildCounterTableStats++;
+  if (buildCounterTableStats < 3) {
+    o.averageCellsPerColumn = 42.0;
+    o.averageColumnsPerRow = 42.0;
+    o.logicalDataBytes = 'foo';
+    o.rowCount = 'foo';
+  }
+  buildCounterTableStats--;
+  return o;
+}
+
+void checkTableStats(api.TableStats o) {
+  buildCounterTableStats++;
+  if (buildCounterTableStats < 3) {
+    unittest.expect(
+      o.averageCellsPerColumn!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.averageColumnsPerRow!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.logicalDataBytes!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.rowCount!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterTableStats--;
 }
 
 core.List<core.String> buildUnnamed31() => [
@@ -2130,6 +2272,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ChangeStreamConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildChangeStreamConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ChangeStreamConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkChangeStreamConfig(od);
+    });
+  });
+
   unittest.group('obj-schema-CheckConsistencyRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildCheckConsistencyRequest();
@@ -2197,6 +2349,26 @@ void main() {
       final od = api.ColumnFamily.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkColumnFamily(od);
+    });
+  });
+
+  unittest.group('obj-schema-ColumnFamilyStats', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildColumnFamilyStats();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ColumnFamilyStats.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkColumnFamilyStats(od);
+    });
+  });
+
+  unittest.group('obj-schema-CopyBackupRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCopyBackupRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CopyBackupRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkCopyBackupRequest(od);
     });
   });
 
@@ -2560,6 +2732,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-TableStats', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildTableStats();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.TableStats.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkTableStats(od);
+    });
+  });
+
   unittest.group('obj-schema-TestIamPermissionsRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildTestIamPermissionsRequest();
@@ -2607,7 +2789,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2623,7 +2805,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2659,7 +2841,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2675,7 +2857,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2711,7 +2893,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2727,7 +2909,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2768,7 +2950,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2784,7 +2966,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2843,7 +3025,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkCreateInstanceRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2859,7 +3041,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2896,7 +3078,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2912,7 +3094,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2948,7 +3130,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2964,7 +3146,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3005,7 +3187,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGetIamPolicyRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3021,7 +3203,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3059,7 +3241,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3075,7 +3257,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3122,7 +3304,7 @@ void main() {
             api.Instance.fromJson(json as core.Map<core.String, core.dynamic>);
         checkInstance(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3138,7 +3320,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3184,7 +3366,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkSetIamPolicyRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3200,7 +3382,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3242,7 +3424,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkTestIamPermissionsRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3258,7 +3440,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3301,7 +3483,7 @@ void main() {
             api.Instance.fromJson(json as core.Map<core.String, core.dynamic>);
         checkInstance(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3317,7 +3499,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3363,7 +3545,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkAppProfile(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3379,7 +3561,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3427,7 +3609,7 @@ void main() {
       final arg_ignoreWarnings = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3443,7 +3625,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3484,7 +3666,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3500,7 +3682,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3538,7 +3720,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3554,7 +3736,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3608,7 +3790,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkAppProfile(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3624,7 +3806,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3679,7 +3861,7 @@ void main() {
             api.Cluster.fromJson(json as core.Map<core.String, core.dynamic>);
         checkCluster(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3695,7 +3877,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3736,7 +3918,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3752,7 +3934,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3788,7 +3970,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3804,7 +3986,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3841,7 +4023,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3857,7 +4039,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3904,7 +4086,7 @@ void main() {
             api.Cluster.fromJson(json as core.Map<core.String, core.dynamic>);
         checkCluster(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3920,7 +4102,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3966,7 +4148,7 @@ void main() {
             api.Cluster.fromJson(json as core.Map<core.String, core.dynamic>);
         checkCluster(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3982,7 +4164,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4015,20 +4197,19 @@ void main() {
   });
 
   unittest.group('resource-ProjectsInstancesClustersBackupsResource', () {
-    unittest.test('method--create', () async {
+    unittest.test('method--copy', () async {
       final mock = HttpServerMock();
       final res =
           api.BigtableAdminApi(mock).projects.instances.clusters.backups;
-      final arg_request = buildBackup();
+      final arg_request = buildCopyBackupRequest();
       final arg_parent = 'foo';
-      final arg_backupId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj =
-            api.Backup.fromJson(json as core.Map<core.String, core.dynamic>);
-        checkBackup(obj);
+        final obj = api.CopyBackupRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCopyBackupRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4044,7 +4225,67 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.copy(arg_request, arg_parent, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--create', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.BigtableAdminApi(mock).projects.instances.clusters.backups;
+      final arg_request = buildBackup();
+      final arg_parent = 'foo';
+      final arg_backupId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj =
+            api.Backup.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkBackup(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4086,7 +4327,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4102,7 +4343,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4139,7 +4380,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4155,7 +4396,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4197,7 +4438,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGetIamPolicyRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4213,7 +4454,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4255,7 +4496,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4271,7 +4512,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4335,7 +4576,7 @@ void main() {
             api.Backup.fromJson(json as core.Map<core.String, core.dynamic>);
         checkBackup(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4351,7 +4592,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4398,7 +4639,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkSetIamPolicyRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4414,7 +4655,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4457,7 +4698,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkTestIamPermissionsRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4473,7 +4714,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4518,7 +4759,7 @@ void main() {
       final arg_startTime = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4534,7 +4775,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4598,7 +4839,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkCheckConsistencyRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4614,7 +4855,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4656,7 +4897,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkCreateTableRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4672,7 +4913,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4709,7 +4950,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4725,7 +4966,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4766,7 +5007,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkDropRowRangeRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4782,7 +5023,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4824,7 +5065,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGenerateConsistencyTokenRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4840,7 +5081,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4880,7 +5121,7 @@ void main() {
       final arg_view = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4896,7 +5137,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4942,7 +5183,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGetIamPolicyRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4958,7 +5199,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4998,7 +5239,7 @@ void main() {
       final arg_view = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -5014,7 +5255,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -5071,7 +5312,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkModifyColumnFamiliesRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -5087,7 +5328,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -5118,18 +5359,19 @@ void main() {
       checkTable(response as api.Table);
     });
 
-    unittest.test('method--restore', () async {
+    unittest.test('method--patch', () async {
       final mock = HttpServerMock();
       final res = api.BigtableAdminApi(mock).projects.instances.tables;
-      final arg_request = buildRestoreTableRequest();
-      final arg_parent = 'foo';
+      final arg_request = buildTable();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.RestoreTableRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkRestoreTableRequest(obj);
+        final obj =
+            api.Table.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkTable(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -5145,7 +5387,69 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['updateMask']!.first,
+          unittest.equals(arg_updateMask),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--restore', () async {
+      final mock = HttpServerMock();
+      final res = api.BigtableAdminApi(mock).projects.instances.tables;
+      final arg_request = buildRestoreTableRequest();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.RestoreTableRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkRestoreTableRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -5187,7 +5491,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkSetIamPolicyRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -5203,7 +5507,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -5245,7 +5549,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkTestIamPermissionsRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -5261,7 +5565,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -5304,7 +5608,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkUndeleteTableRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -5320,7 +5624,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -5359,7 +5663,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -5375,7 +5679,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -5414,7 +5718,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -5430,7 +5734,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>

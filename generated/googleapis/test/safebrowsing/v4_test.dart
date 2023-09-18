@@ -1,8 +1,6 @@
 // ignore_for_file: camel_case_types
-// ignore_for_file: cascade_invocations
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_const_declarations
@@ -12,8 +10,9 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unreachable_from_main
 // ignore_for_file: unused_local_variable
 
 import 'dart:async' as async;
@@ -95,7 +94,8 @@ void checkGoogleSecuritySafebrowsingV4ClientInfo(
 }
 
 core.List<
-        api.GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest>
+        api
+        .GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest>
     buildUnnamed0() => [
           buildGoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest(),
           buildGoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest(),
@@ -103,7 +103,8 @@ core.List<
 
 void checkUnnamed0(
     core.List<
-            api.GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest>
+            api
+            .GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest>
         o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest(
@@ -257,7 +258,8 @@ void checkGoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateReq
 }
 
 core.List<
-        api.GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse>
+        api
+        .GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse>
     buildUnnamed2() => [
           buildGoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse(),
           buildGoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse(),
@@ -265,7 +267,8 @@ core.List<
 
 void checkUnnamed2(
     core.List<
-            api.GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse>
+            api
+            .GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse>
         o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse(
@@ -1393,7 +1396,7 @@ void main() {
       final arg_clientVersion = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1414,7 +1417,7 @@ void main() {
           unittest.equals('$arg_encodedRequest'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -1467,7 +1470,7 @@ void main() {
       final arg_clientVersion = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1488,7 +1491,7 @@ void main() {
           unittest.equals('$arg_encodedRequest'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -1545,7 +1548,7 @@ void main() {
                 json as core.Map<core.String, core.dynamic>);
         checkGoogleSecuritySafebrowsingV4FindFullHashesRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1560,7 +1563,7 @@ void main() {
         );
         pathOffset += 18;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -1604,7 +1607,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleSecuritySafebrowsingV4ThreatHit(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1619,7 +1622,7 @@ void main() {
         );
         pathOffset += 13;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -1663,7 +1666,7 @@ void main() {
                 .fromJson(json as core.Map<core.String, core.dynamic>);
         checkGoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1678,7 +1681,7 @@ void main() {
         );
         pathOffset += 26;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -1717,7 +1720,7 @@ void main() {
       final res = api.SafebrowsingApi(mock).threatLists;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1732,7 +1735,7 @@ void main() {
         );
         pathOffset += 14;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -1778,7 +1781,7 @@ void main() {
                 json as core.Map<core.String, core.dynamic>);
         checkGoogleSecuritySafebrowsingV4FindThreatMatchesRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1793,7 +1796,7 @@ void main() {
         );
         pathOffset += 21;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>

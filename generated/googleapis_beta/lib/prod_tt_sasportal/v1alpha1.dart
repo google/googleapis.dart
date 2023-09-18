@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// SAS Portal API (Testing) - v1alpha1
@@ -39,7 +38,7 @@
 ///     - [NodesNodesDevicesResource]
 ///     - [NodesNodesNodesResource]
 /// - [PoliciesResource]
-library prod_tt_sasportal.v1alpha1;
+library prod_tt_sasportal_v1alpha1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -48,7 +47,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -56,12 +54,13 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 class SASPortalTestingApi {
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
+  static const cloudPlatformScope =
+      'https://www.googleapis.com/auth/cloud-platform';
+
   /// Read, create, update, and delete your SAS Portal data.
   static const sasportalScope = 'https://www.googleapis.com/auth/sasportal';
-
-  /// See your primary Google Account email address
-  static const userinfoEmailScope =
-      'https://www.googleapis.com/auth/userinfo.email';
 
   final commons.ApiRequester _requester;
 
@@ -87,6 +86,39 @@ class CustomersResource {
   CustomersNodesResource get nodes => CustomersNodesResource(_requester);
 
   CustomersResource(commons.ApiRequester client) : _requester = client;
+
+  /// Checks whether a SAS deployment for the authentication context exists.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SasPortalCheckHasProvisionedDeploymentResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SasPortalCheckHasProvisionedDeploymentResponse>
+      checkHasProvisionedDeployment({
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'v1alpha1/customers:checkHasProvisionedDeployment';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SasPortalCheckHasProvisionedDeploymentResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 
   /// Returns a requested customer.
   ///
@@ -165,6 +197,47 @@ class CustomersResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Migrates a SAS organization to the cloud.
+  ///
+  /// This will create GCP projects for each deployment and associate them. The
+  /// SAS Organization is linked to the gcp project that called the command.
+  /// go/sas-legacy-customer-migration
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SasPortalOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SasPortalOperation> migrateOrganization(
+    SasPortalMigrateOrganizationRequest request, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'v1alpha1/customers:migrateOrganization';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return SasPortalOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Updates an existing customer.
   ///
   /// [request] - The metadata request object.
@@ -207,6 +280,45 @@ class CustomersResource {
       queryParams: queryParams_,
     );
     return SasPortalCustomer.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Creates a new SAS deployment through the GCP workflow.
+  ///
+  /// Creates a SAS organization if an organization match is not found.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SasPortalProvisionDeploymentResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SasPortalProvisionDeploymentResponse> provisionDeployment(
+    SasPortalProvisionDeploymentRequest request, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'v1alpha1/customers:provisionDeployment';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return SasPortalProvisionDeploymentResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -3503,7 +3615,7 @@ class SasPortalChannelWithScore {
   /// The frequency range of the channel.
   SasPortalFrequencyRange? frequencyRange;
 
-  /// The channel score, normalized to be in \[0,100\].
+  /// The channel score, normalized to be in the range \[0,100\].
   core.double? score;
 
   SasPortalChannelWithScore({
@@ -3528,6 +3640,12 @@ class SasPortalChannelWithScore {
       };
 }
 
+/// Response for \[CheckHasProvisionedDeployment\].
+///
+/// \[spectrum.sas.portal.v1alpha1.Provisioning.CheckHasProvisionedDeployment\].
+typedef SasPortalCheckHasProvisionedDeploymentResponse
+    = $SasPortalCheckHasProvisionedDeploymentResponse;
+
 /// Request for CreateSignedDevice.
 typedef SasPortalCreateSignedDeviceRequest
     = $SasPortalCreateSignedDeviceRequest;
@@ -3547,6 +3665,9 @@ class SasPortalDevice {
   /// Current channels with scores.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<SasPortalChannelWithScore>? currentChannels;
 
   /// Device parameters that can be overridden by both SAS Portal and SAS
@@ -3559,7 +3680,7 @@ class SasPortalDevice {
   /// The FCC identifier of the device.
   core.String? fccId;
 
-  /// Only ranges within the allowlists are available for new grants.
+  /// Only ranges that are within the allowlists are available for new grants.
   core.List<SasPortalFrequencyRange>? grantRangeAllowlists;
 
   /// Grants held by the device.
@@ -3895,25 +4016,30 @@ class SasPortalDeviceGrant {
 class SasPortalDeviceMetadata {
   /// If populated, the Antenna Model Pattern to use.
   ///
-  /// Format is: RecordCreatorId:PatternId
+  /// Format is: `RecordCreatorId:PatternId`
   core.String? antennaModel;
 
-  /// CCG.
+  /// Common Channel Group (CCG).
   ///
   /// A group of CBSDs in the same ICG requesting a common primary channel
-  /// assignment. See CBRSA-TS-2001 V3.0.0 for more details.
+  /// assignment. For more details, see \[CBRSA-TS-2001
+  /// V3.0.0\](https://ongoalliance.org/wp-content/uploads/2020/02/CBRSA-TS-2001-V3.0.0_Approved-for-publication.pdf).
   core.String? commonChannelGroup;
 
-  /// ICG.
+  /// Interference Coordination Group (ICG).
   ///
-  /// A group of CBSDs that manage their own interference with the group. See
-  /// CBRSA-TS-2001 V3.0.0 for more details.
+  /// A group of CBSDs that manage their own interference with the group. For
+  /// more details, see \[CBRSA-TS-2001
+  /// V3.0.0\](https://ongoalliance.org/wp-content/uploads/2020/02/CBRSA-TS-2001-V3.0.0_Approved-for-publication.pdf).
   core.String? interferenceCoordinationGroup;
 
-  /// Whether a CPI has validated to have coordinated with the National Quiet
-  /// Zone office.
+  /// Set to `true` if a CPI has validated that they have coordinated with the
+  /// National Quiet Zone office.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? nrqzValidated;
 
   /// National Radio Quiet Zone validation info.
@@ -4156,6 +4282,15 @@ class SasPortalListNodesResponse {
       };
 }
 
+/// Request for \[MigrateOrganization\].
+///
+/// \[spectrum.sas.portal.v1alpha1.Provisioning.MigrateOrganization\]. GCP
+/// Project, Organization Info, and caller's GAIA ID should be retrieved from
+/// the RPC handler, and used to check authorization on SAS Portal organization
+/// and to create GCP Projects.
+typedef SasPortalMigrateOrganizationRequest
+    = $SasPortalMigrateOrganizationRequest;
+
 /// Request for MoveDeployment.
 typedef SasPortalMoveDeploymentRequest = $SasPortalMoveDeploymentRequest;
 
@@ -4292,10 +4427,24 @@ class SasPortalPolicy {
       };
 }
 
+/// Request for \[ProvisionDeployment\].
+///
+/// \[spectrum.sas.portal.v1alpha1.Provisioning.ProvisionDeployment\]. GCP
+/// Project, Organization Info, and caller’s GAIA ID should be retrieved from
+/// the RPC handler, and used as inputs to create a new SAS organization (if not
+/// exists) and a new SAS deployment.
+typedef SasPortalProvisionDeploymentRequest
+    = $SasPortalProvisionDeploymentRequest;
+
+/// Response for \[ProvisionDeployment\].
+///
+/// \[spectrum.sas.portal.v1alpha1.Provisioning.ProvisionDeployment\].
+typedef SasPortalProvisionDeploymentResponse
+    = $SasPortalProvisionDeploymentResponse;
+
 /// Request message for `SetPolicy` method.
 class SasPortalSetPolicyRequest {
-  /// Set the field as true when we would like to disable the onboarding
-  /// notification.
+  /// Set the field as `true` to disable the onboarding notification.
   ///
   /// Optional.
   core.bool? disableNotification;

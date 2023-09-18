@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Search Ads 360 API - v2
@@ -24,30 +23,28 @@
 /// - [ConversionResource]
 /// - [ReportsResource]
 /// - [SavedColumnsResource]
-library doubleclicksearch.v2;
+library doubleclicksearch_v2;
 
 import 'dart:async' as async;
-import 'dart:collection' as collection;
 import 'dart:convert' as convert;
 import 'dart:core' as core;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show
         ApiRequestError,
+        ByteRange,
         DetailedApiRequestError,
-        Media,
-        UploadOptions,
-        ResumableUploadOptions,
         DownloadOptions,
+        Media,
         PartialDownloadOptions,
-        ByteRange;
+        ResumableUploadOptions,
+        UploadOptions;
 
 /// The Search Ads 360 API allows developers to automate uploading conversions
 /// and downloading reports from Search Ads 360.
@@ -106,6 +103,9 @@ class ConversionResource {
   ///
   /// [criterionId] - Numeric ID of the criterion.
   ///
+  /// [customerId] - Customer ID of a client account in the new Search Ads 360
+  /// experience.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -128,6 +128,7 @@ class ConversionResource {
     core.String? adId,
     core.String? campaignId,
     core.String? criterionId,
+    core.String? customerId,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -139,6 +140,7 @@ class ConversionResource {
       if (adId != null) 'adId': [adId],
       if (campaignId != null) 'campaignId': [campaignId],
       if (criterionId != null) 'criterionId': [criterionId],
+      if (customerId != null) 'customerId': [customerId],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -148,6 +150,94 @@ class ConversionResource {
         commons.escapeVariable('$advertiserId') +
         '/engine/' +
         commons.escapeVariable('$engineAccountId') +
+        '/conversion';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ConversionList.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves a list of conversions from a DoubleClick Search engine account.
+  ///
+  /// Request parameters:
+  ///
+  /// [customerId] - Customer ID of a client account in the new Search Ads 360
+  /// experience.
+  ///
+  /// [endDate] - Last date (inclusive) on which to retrieve conversions. Format
+  /// is yyyymmdd.
+  /// Value must be between "20091101" and "99991231".
+  ///
+  /// [rowCount] - The number of conversions to return per call.
+  /// Value must be between "1" and "1000".
+  ///
+  /// [startDate] - First date (inclusive) on which to retrieve conversions.
+  /// Format is yyyymmdd.
+  /// Value must be between "20091101" and "99991231".
+  ///
+  /// [startRow] - The 0-based starting index for retrieving conversions
+  /// results.
+  ///
+  /// [adGroupId] - Numeric ID of the ad group.
+  ///
+  /// [adId] - Numeric ID of the ad.
+  ///
+  /// [advertiserId] - Numeric ID of the advertiser.
+  ///
+  /// [agencyId] - Numeric ID of the agency.
+  ///
+  /// [campaignId] - Numeric ID of the campaign.
+  ///
+  /// [criterionId] - Numeric ID of the criterion.
+  ///
+  /// [engineAccountId] - Numeric ID of the engine account.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ConversionList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ConversionList> getByCustomerId(
+    core.String customerId,
+    core.int endDate,
+    core.int rowCount,
+    core.int startDate,
+    core.int startRow, {
+    core.String? adGroupId,
+    core.String? adId,
+    core.String? advertiserId,
+    core.String? agencyId,
+    core.String? campaignId,
+    core.String? criterionId,
+    core.String? engineAccountId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      'endDate': ['${endDate}'],
+      'rowCount': ['${rowCount}'],
+      'startDate': ['${startDate}'],
+      'startRow': ['${startRow}'],
+      if (adGroupId != null) 'adGroupId': [adGroupId],
+      if (adId != null) 'adId': [adId],
+      if (advertiserId != null) 'advertiserId': [advertiserId],
+      if (agencyId != null) 'agencyId': [agencyId],
+      if (campaignId != null) 'campaignId': [campaignId],
+      if (criterionId != null) 'criterionId': [criterionId],
+      if (engineAccountId != null) 'engineAccountId': [engineAccountId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'doubleclicksearch/v2/customer/' +
+        commons.escapeVariable('$customerId') +
         '/conversion';
 
     final response_ = await _requester.request(
@@ -553,6 +643,9 @@ class Availability {
   /// The time by which all conversions have been uploaded, in epoch millis UTC.
   core.String? availabilityTimestamp;
 
+  /// Customer ID of a client account in the new Search Ads 360 experience.
+  core.String? customerId;
+
   /// The numeric segmentation identifier (for example, DoubleClick Search
   /// Floodlight activity ID).
   core.String? segmentationId;
@@ -569,6 +662,7 @@ class Availability {
     this.advertiserId,
     this.agencyId,
     this.availabilityTimestamp,
+    this.customerId,
     this.segmentationId,
     this.segmentationName,
     this.segmentationType,
@@ -584,6 +678,9 @@ class Availability {
               : null,
           availabilityTimestamp: json_.containsKey('availabilityTimestamp')
               ? json_['availabilityTimestamp'] as core.String
+              : null,
+          customerId: json_.containsKey('customerId')
+              ? json_['customerId'] as core.String
               : null,
           segmentationId: json_.containsKey('segmentationId')
               ? json_['segmentationId'] as core.String
@@ -601,6 +698,7 @@ class Availability {
         if (agencyId != null) 'agencyId': agencyId!,
         if (availabilityTimestamp != null)
           'availabilityTimestamp': availabilityTimestamp!,
+        if (customerId != null) 'customerId': customerId!,
         if (segmentationId != null) 'segmentationId': segmentationId!,
         if (segmentationName != null) 'segmentationName': segmentationName!,
         if (segmentationType != null) 'segmentationType': segmentationType!,
@@ -671,6 +769,9 @@ class Conversion {
 
   /// Custom metrics for the conversion.
   core.List<CustomMetric>? customMetric;
+
+  /// Customer ID of a client account in the new Search Ads 360 experience.
+  core.String? customerId;
 
   /// The type of device on which the conversion occurred.
   core.String? deviceType;
@@ -762,6 +863,7 @@ class Conversion {
     this.currencyCode,
     this.customDimension,
     this.customMetric,
+    this.customerId,
     this.deviceType,
     this.dsConversionId,
     this.engineAccountId,
@@ -836,6 +938,9 @@ class Conversion {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          customerId: json_.containsKey('customerId')
+              ? json_['customerId'] as core.String
+              : null,
           deviceType: json_.containsKey('deviceType')
               ? json_['deviceType'] as core.String
               : null,
@@ -905,6 +1010,7 @@ class Conversion {
         if (currencyCode != null) 'currencyCode': currencyCode!,
         if (customDimension != null) 'customDimension': customDimension!,
         if (customMetric != null) 'customMetric': customMetric!,
+        if (customerId != null) 'customerId': customerId!,
         if (deviceType != null) 'deviceType': deviceType!,
         if (dsConversionId != null) 'dsConversionId': dsConversionId!,
         if (engineAccountId != null) 'engineAccountId': engineAccountId!,
@@ -1130,8 +1236,7 @@ class Report {
               : null,
           rows: json_.containsKey('rows')
               ? (json_['rows'] as core.List)
-                  .map((value) => ReportRow.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+                  .map((value) => value as core.Map<core.String, core.dynamic>)
                   .toList()
               : null,
           statisticsCurrencyCode: json_.containsKey('statisticsCurrencyCode')
@@ -1675,36 +1780,7 @@ class ReportRequest {
 ///
 /// Indicates the columns that are represented in this row. That is, each key
 /// corresponds to a column with a non-empty cell in this row.
-class ReportRow extends collection.MapBase<core.String, core.Object?> {
-  final _innerMap = <core.String, core.Object?>{};
-
-  ReportRow();
-
-  ReportRow.fromJson(core.Map<core.String, core.dynamic> json_) {
-    json_.forEach((core.String key, value) {
-      this[key] = value;
-    });
-  }
-
-  @core.override
-  core.Object? operator [](core.Object? key) => _innerMap[key];
-
-  @core.override
-  void operator []=(core.String key, core.Object? value) {
-    _innerMap[key] = value;
-  }
-
-  @core.override
-  void clear() {
-    _innerMap.clear();
-  }
-
-  @core.override
-  core.Iterable<core.String> get keys => _innerMap.keys;
-
-  @core.override
-  core.Object? remove(core.Object? key) => _innerMap.remove(key);
-}
+typedef ReportRow = core.Map<core.String, core.Object?>;
 
 /// A saved column
 class SavedColumn {

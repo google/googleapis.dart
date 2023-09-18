@@ -2,7 +2,7 @@
 # should be ignored.
 packages:
 - googleapis:
-    version: 9.2.0
+    version: 11.4.0
     repository: https://github.com/google/googleapis.dart/tree/master/generated/googleapis
     readme: resources/README.md
     license: resources/LICENSE
@@ -10,13 +10,14 @@ packages:
     example: resources/googleapis/examples/main.dart
     mono_pkg: resources/googleapis/_mono_pkg.yaml
     extraDevDependencies:
+        dart_flutter_team_lints: ^1.0.0
         googleapis_auth: ^1.0.0
-        lints: ^2.0.0
     apis:
     - abusiveexperiencereport:v1 # https://developers.google.com/abusive-experience-report/
     - acceleratedmobilepageurl:v1 # https://developers.google.com/amp/cache/
     - accessapproval:v1
     - accesscontextmanager:v1
+    - acmedns:v1
     - adexperiencereport:v1 # https://developers.google.com/ad-experience-report/
     - admin:datatransfer_v1 # https://developers.google.com/admin-sdk/data-transfer/
     - admin:directory_v1 # https://developers.google.com/admin-sdk/directory/
@@ -24,7 +25,10 @@ packages:
     - admob:v1
     - adsense:v2
     - adsensehost:v4.1 # https://developers.google.com/adsense/host/
+    - advisorynotifications:v1
+    - aiplatform:v1
     - analytics:v3 # https://developers.google.com/analytics/
+    - analyticshub:v1
     - analyticsreporting:v4 # https://developers.google.com/analytics/devguides/reporting/core/v4/
     - androiddeviceprovisioning:v1 # https://developers.google.com/zero-touch/
     - androidenterprise:v1 # https://developers.google.com/api-client-library/java/apis/androidenterprise/v1
@@ -38,8 +42,8 @@ packages:
     - artifactregistry:v1
     - assuredworkloads:v1
     - authorizedbuyersmarketplace:v1
-    - baremetalsolution:v1
     - baremetalsolution:v2
+    - batch:v1
     - beyondcorp:v1
     - bigquery:v2 # https://developers.google.com/bigquery/
     - bigquerydatatransfer:v1 # https://cloud.google.com/bigquery/transfer/
@@ -47,6 +51,7 @@ packages:
     - bigtableadmin:v2 # https://cloud.google.com/bigtable/
     - billingbudgets:v1
     - binaryauthorization:v1
+    - blockchainnodeengine:v1
     - blogger:v3 # https://developers.google.com/blogger/
     - books:v1 # https://developers.google.com/books/
     - businessprofileperformance:v1
@@ -62,12 +67,10 @@ packages:
     - cloudbilling:v1 # https://cloud.google.com/billing/
     - cloudbuild:v1 # https://cloud.google.com/container-builder/docs/
     - cloudchannel:v1
-    - clouddebugger:v2 # https://cloud.google.com/tools/cloud-debugger
     - clouddeploy:v1
     - cloudfunctions:v1 # https://cloud.google.com/functions/docs/
     - cloudfunctions:v2
     - cloudidentity:v1 # https://cloud.google.com/identity/
-    - cloudiot:v1 # https://cloud.google.com/iot
     - cloudkms:v1 # https://cloud.google.com/kms/docs/
     - cloudprofiler:v2 # https://cloud.google.com/profiler/
     - cloudresourcemanager:v1 # https://cloud.google.com/resource-manager/
@@ -76,6 +79,7 @@ packages:
     - cloudscheduler:v1
     - cloudsearch:v1 # https://gsuite.google.com/products/cloud-search/
     - cloudshell:v1 # https://cloud.google.com/shell/docs/
+    - cloudsupport:v2
     - cloudtasks:v2
     - cloudtrace:v2 # https://cloud.google.com/cloud-trace/
     - composer:v1 # https://cloud.google.com/composer/
@@ -86,9 +90,11 @@ packages:
     - container:v1 # https://cloud.google.com/container-engine/
     - containeranalysis:v1
     - content:v2.1 # https://developers.google.com/shopping-content/
+    - contentwarehouse:v1
     - customsearch:v1 # https://developers.google.com/custom-search/
     - datacatalog:v1
     - datafusion:v1
+    - datalineage:v1
     - datamigration:v1
     - datapipelines:v1
     - dataplex:v1
@@ -103,13 +109,13 @@ packages:
     - digitalassetlinks:v1 # https://developers.google.com/digital-asset-links/
     - discovery:v1 # https://developers.google.com/discovery/
     - displayvideo:v1
+    - displayvideo:v2
     - dlp:v2 # https://cloud.google.com/dlp/
     - dns:v1 # https://cloud.google.com/dns/api/v1/
     - docs:v1
     - documentai:v1
     - domains:v1
     - domainsrdap:v1
-    - doubleclickbidmanager:v1.1
     - doubleclickbidmanager:v2
     - doubleclicksearch:v2 # https://developers.google.com/doubleclick-search/
     - drive:v2 # https://developers.google.com/drive/v2/reference/
@@ -121,6 +127,7 @@ packages:
     - fcm:v1
     - file:v1
     - firebaseappcheck:v1
+    - firebaseappdistribution:v1
     - firebasedynamiclinks:v1 # https://firebase.google.com/docs/dynamic-links/
     - firebasehosting:v1
     - firebaseml:v1
@@ -135,6 +142,7 @@ packages:
     - gameservices:v1
     - gkebackup:v1
     - gkehub:v1
+    - gkeonprem:v1
     - gmail:v1 # https://developers.google.com/gmail/
     - gmailpostmastertools:v1
     - groupsmigration:v1 # https://developers.google.com/admin-sdk/groups-migration/
@@ -142,8 +150,11 @@ packages:
     - healthcare:v1
     - homegraph:v1
     - iam:v1 # https://cloud.google.com/iam/
+    - iam:v2
     - iamcredentials:v1 # https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials
     - iap:v1 # https://cloud.google.com/iap
+    - identitytoolkit:v1 # https://cloud.google.com/identity-platform/docs/apis/
+    - identitytoolkit:v2 # https://cloud.google.com/identity-platform/docs/apis/
     - identitytoolkit:v3 # https://developers.google.com/identity-toolkit/
     - ids:v1
     - indexing:v3 # https://developers.google.com/search/apis/indexing-api/
@@ -151,6 +162,7 @@ packages:
     - jobs:v4
     - keep:v1
     - kgsearch:v1 # https://developers.google.com/knowledge-graph/
+    - kmsinventory:v1
     - language:v1 # https://cloud.google.com/natural-language/
     - libraryagent:v1 # https://cloud.google.com/docs/quota
     - licensing:v1 # https://developers.google.com/admin-sdk/licensing/v1/how-tos/using
@@ -159,10 +171,11 @@ packages:
     - managedidentities:v1
     - manufacturers:v1 # https://developers.google.com/manufacturers/
     - memcache:v1
+    - metastore:v1
+    - migrationcenter:v1
     - ml:v1 # https://cloud.google.com/ml-engine/
     - monitoring:v3 # https://cloud.google.com/monitoring/api/
     - mybusinessaccountmanagement:v1
-    - mybusinessbusinesscalls:v1
     - mybusinessbusinessinformation:v1
     - mybusinesslodging:v1
     - mybusinessnotifications:v1
@@ -174,6 +187,7 @@ packages:
     - networksecurity:v1
     - networkservices:v1
     - notebooks:v1
+    - notebooks:v2
     - oauth2:v2 # Note: this is used many places and sometimes the document is missing
     - ondemandscanning:v1
     - orgpolicy:v2
@@ -183,14 +197,17 @@ packages:
     - paymentsresellersubscription:v1
     - people:v1 # https://developers.google.com/people/
     - photoslibrary:v1
+    - places:v1
     - playcustomapp:v1 # https://developers.google.com/android/work/play/custom-app-api
     - playintegrity:v1
     - policyanalyzer:v1
     - policysimulator:v1
     - policytroubleshooter:v1
     - privateca:v1
+    - publicca:v1
     - pubsub:v1 # https://cloud.google.com/pubsub/
     - pubsublite:v1
+    - readerrevenuesubscriptionlinking:v1
     - realtimebidding:v1
     - recaptchaenterprise:v1
     - recommender:v1
@@ -230,9 +247,11 @@ packages:
     - testing:v1 # https://developers.google.com/cloud-test-lab/
     - texttospeech:v1 # https://cloud.google.com/text-to-speech/
     - tpu:v1 # https://cloud.google.com/tpu/
+    - tpu:v2
     - trafficdirector:v2
     - transcoder:v1
     - translate:v3
+    - travelimpactmodel:v1
     - vault:v1 # https://apps.google.com/products/vault/
     - verifiedaccess:v1
     - verifiedaccess:v2
@@ -240,17 +259,19 @@ packages:
     - videointelligence:v1 # https://cloud.google.com/video-intelligence/
     - vision:v1 # https://cloud.google.com/vision/reference/rest/
     - vmmigration:v1
+    - vpcaccess:v1
     - webfonts:v1 # https://developers.google.com/fonts/docs/developer_api
     - webrisk:v1
     - websecurityscanner:v1
     - workflowexecutions:v1
     - workflows:v1
+    - workloadmanager:v1
     - youtube:v3 # https://developers.google.com/youtube/
     - youtubeAnalytics:v2 # https://developers.google.com/youtube/analytics/
     - youtubereporting:v1 # https://developers.google.com/youtube/reporting/v1/reports/
 
 - googleapis_beta:
-    version: 8.1.0-dev
+    version: 8.1.0-wip
     repository: https://github.com/google/googleapis.dart/tree/master/generated/googleapis_beta
     readme: resources/README.md
     license: resources/LICENSE
@@ -261,20 +282,15 @@ packages:
     apis:
     - adexchangebuyer2:v2beta1 # https://developers.google.com/ad-exchange/buyer-rest/guides/client-access/
     - alertcenter:v1beta1 # https://developers.google.com/admin-sdk/alertcenter/
-    - analyticsadmin:v1alpha
+    - analyticsadmin:v1beta
     - analyticsdata:v1beta
     - area120tables:v1alpha1
     - bigqueryconnection:v1beta1
     - clouderrorreporting:v1beta1 # https://cloud.google.com/error-reporting/
-    - cloudfunctions:v2beta
     - cloudsupport:v2beta
-    - containeranalysis:v1beta1 # https://cloud.google.com/container-registry/docs/reference/rest/
-    - datacatalog:v1beta1
     - dataflow:v1b3 # https://cloud.google.com/dataflow/
     - datalabeling:v1beta1
     - datastream:v1alpha1
-    - documentai:v1beta3
-    - domains:v1beta1
     - factchecktools:v1alpha1
     - fcmdata:v1beta1
     - firebase:v1beta1
@@ -282,50 +298,42 @@ packages:
     - firebasedatabase:v1beta
     - firebasestorage:v1beta
     - gkehub:v2alpha
-    - ideahub:v1beta
     - lifesciences:v2beta
-    - metastore:v1beta
-    - networkconnectivity:v1alpha1
-    - networksecurity:v1beta1
-    - ondemandscanning:v1beta1
-    - osconfig:v1alpha
-    - policysimulator:v1beta1
-    - privateca:v1beta1
     - prod_tt_sasportal:v1alpha1
     - recommendationengine:v1beta1
     - sasportal:v1alpha1
     - sqladmin:v1beta4
     - toolresults:v1beta3 # https://developers.google.com/cloud-test-lab/
-    - tpu:v2alpha1
 
 additional_apis:
   "firebaseremoteconfig:v1": https://firebaseremoteconfig.googleapis.com/$discovery/rest?version=v1
   "photoslibrary:v1": https://photoslibrary.googleapis.com/$discovery/rest?version=v1
+  "aiplatform": https://aiplatform.googleapis.com/$discovery/rest?version=v1
 
 # APIs that we do not wish to include in this package
 skipped_apis:
 - accesscontextmanager:v1beta
 - admob:v1beta #v1 included
+- analyticsadmin:v1alpha
 - analyticshub:v1beta1
 - apigateway:v1beta # v1 included
 - appengine:v1alpha # v1 included
 - appengine:v1beta
 - artifactregistry:v1beta1 #v1 included
 - artifactregistry:v1beta2 #v1 included
-- baremetalsolution:v1alpha1
+- assuredworkloads:v1beta1
 - beyondcorp:v1alpha
-- bigqueryreservation:v1beta1 # v1 included
 - billingbudgets:v1beta1 # v1 included
 - binaryauthorization:v1beta1 # v1 included
 - blogger:v2 # v3 included
+- checks:v1alpha
 - cloudasset:v1beta1
 - cloudasset:v1p1beta1 # v1 included
 - cloudasset:v1p5beta1 # v1 included
 - cloudasset:v1p7beta1 # v1 included
-- cloudbuild:v1alpha1 # v1 included
-- cloudbuild:v1alpha2 # v1 included
-- cloudbuild:v1beta1
+- cloudbilling:v1beta
 - cloudfunctions:v2alpha # v2beta included
+- cloudfunctions:v2beta
 - cloudidentity:v1beta1 # v1 included
 - cloudresourcemanager:v1beta1 # v1 included
 - cloudresourcemanager:v2beta1 # v2 included
@@ -337,8 +345,12 @@ skipped_apis:
 - composer:v1beta1 # v1 included
 - compute:alpha # v1 included
 - compute:beta # v1 included
+- contactcenteraiplatform:v1alpha1
 - container:v1beta1 # v1 included
 - containeranalysis:v1alpha1 # v1beta1 included
+- containeranalysis:v1beta1 # https://cloud.google.com/container-registry/docs/reference/rest/
+- datacatalog:v1beta1
+- dataform:v1beta1
 - datafusion:v1beta1 # v1 included
 - datamigration:v1beta1
 - datastore:v1beta1 # v1 included
@@ -347,9 +359,13 @@ skipped_apis:
 - deploymentmanager:v2beta # v1 included
 - dialogflow:v2beta1 # v2 included
 - dialogflow:v3beta1 # v3 included
+- discoveryengine:v1alpha
+- discoveryengine:v1beta
 - dns:v1beta2 # v1 included
 - documentai:v1beta2 # v1beta3 included
+- documentai:v1beta3
 - domains:v1alpha2 # v1beta1 included
+- domains:v1beta1
 - drivelabels:v2beta
 - eventarc:v1beta1 # v1 included
 - file:v1beta1
@@ -358,7 +374,6 @@ skipped_apis:
 - firestore:v1beta1 # v1 included
 - firestore:v1beta2 # v1 included
 - gameservices:v1beta # v1 included
-- genomics:v2alpha1 # v1 included
 - gkehub:v1alpha
 - gkehub:v1alpha2
 - gkehub:v1beta
@@ -369,17 +384,22 @@ skipped_apis:
 - iap:v1beta1 # v1 included
 - identitytoolkit:v1
 - identitytoolkit:v2
-- ideahub:v1alpha
+- integrations:v1alpha
 - jobs:v3p1beta1 # v3 included
-- language:v1beta1 # v1 included
 - language:v1beta2 # v1 included
 - managedidentities:v1alpha1 # v1 included
 - managedidentities:v1beta1 # v1 included
 - memcache:v1beta2 # v1 included
 - metastore:v1alpha # v1beta included
+- metastore:v1beta
+- migrationcenter:v1alpha1
 - monitoring:v1 # v3 included
+- networkconnectivity:v1alpha1
 - networkmanagement:v1beta1 # v1 included
+- networksecurity:v1beta1
 - networkservices:v1beta1
+- ondemandscanning:v1beta1
+- osconfig:v1alpha
 - osconfig:v1beta # v1 included
 - oslogin:v1alpha # v1 available
 - oslogin:v1beta # v1 available
@@ -387,16 +407,20 @@ skipped_apis:
 - playdeveloperreporting:v1beta1
 - policyanalyzer:v1beta1
 - policysimulator:v1alpha
+- policysimulator:v1beta
 - policytroubleshooter:v1beta # v1 included
 - poly:v1 # https://support.google.com/poly/answer/10192635 poly.google.com is shut down!
+- privateca:v1beta1
+- publicca:v1alpha1
+- publicca:v1beta1
 - pubsub:v1beta1a # v1beta1, v1bets2 and v1 included
 - pubsub:v1beta2 # v1 included
-- realtimebidding:v1alpha
 - recommender:v1beta1 # v1 included
 - redis:v1beta1 # v1 included
 - retail:v2alpha # v2 included
 - retail:v2beta # v2 included
 - runtimeconfig:v1beta1 # v1 included
+- searchads360:v0
 - secretmanager:v1beta1 # v1 included
 - securitycenter:v1beta1 # v1 included
 - securitycenter:v1beta2 # v1 included
@@ -409,6 +433,7 @@ skipped_apis:
 - sts:v1beta #v1 included
 - texttospeech:v1beta1 # v1 included
 - tpu:v1alpha1 # v1 included
+- tpu:v2alpha1
 - translate:v2 # v3 included
 - translate:v3beta1 # v3 included
 - videointelligence:v1beta2 # v1 included
@@ -418,7 +443,9 @@ skipped_apis:
 - vision:v1p1beta1 # v1 included
 - vision:v1p2beta1 # v1 included
 - vmmigration:v1alpha1
+- vpcaccess:v1beta1
 - websecurityscanner:v1alpha # v1 included
 - websecurityscanner:v1beta # v1 included
 - workflowexecutions:v1beta # v1 included
 - workflows:v1beta # v1 included
+- workstations:v1beta

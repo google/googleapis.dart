@@ -27,6 +27,12 @@
     "name": "blogger",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230806",
+    "rootUrl": "https://blogger.googleapis.com/",
+    "servicePath": "",
+    "title": "Blogger API",
+    "version": "v3",
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -104,7 +110,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "blogUserInfos": {
             "methods": {
@@ -711,6 +716,11 @@
                             "location": "path",
                             "required": true,
                             "type": "string"
+                        },
+                        "useTrash": {
+                            "description": "Move to Trash if possible",
+                            "location": "query",
+                            "type": "boolean"
                         }
                     },
                     "path": "v3/blogs/{blogId}/pages/{pageId}",
@@ -1172,6 +1182,11 @@
                             "location": "path",
                             "required": true,
                             "type": "string"
+                        },
+                        "useTrash": {
+                            "description": "Move to Trash if possible",
+                            "location": "query",
+                            "type": "boolean"
                         }
                     },
                     "path": "v3/blogs/{blogId}/posts/{postId}",
@@ -1381,6 +1396,22 @@
                             "type": "string"
                         },
                         "pageToken": {
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "sortOption": {
+                            "default": "DESCENDING",
+                            "description": "Sort direction applied to post list.",
+                            "enum": [
+                                "SORT_OPTION_UNSPECIFIED",
+                                "DESCENDING",
+                                "ASCENDING"
+                            ],
+                            "enumDescriptions": [
+                                "The unspecified sort option.",
+                                "The option to sort posts in descending order in time.",
+                                "The option to sort posts in ascending order in time."
+                            ],
                             "location": "query",
                             "type": "string"
                         },
@@ -1682,8 +1713,6 @@
             }
         }
     },
-    "revision": "20220912",
-    "rootUrl": "https://blogger.googleapis.com/",
     "schemas": {
         "Blog": {
             "id": "Blog",
@@ -2519,8 +2548,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Blogger API",
-    "version": "v3"
+    }
 }

@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Google Classroom API - v1
@@ -34,7 +33,7 @@
 /// - [UserProfilesResource]
 ///   - [UserProfilesGuardianInvitationsResource]
 ///   - [UserProfilesGuardiansResource]
-library classroom.v1;
+library classroom_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -43,7 +42,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -183,7 +181,7 @@ class CoursesResource {
   /// codes: * `PERMISSION_DENIED` if the requesting user is not permitted to
   /// create courses or for access errors. * `NOT_FOUND` if the primary teacher
   /// is not a valid user. * `FAILED_PRECONDITION` if the course owner's account
-  /// is disabled or for the following request errors: *
+  /// is disabled or for the following request errors: * UserCannotOwnCourse *
   /// UserGroupsMembershipLimitReached * `ALREADY_EXISTS` if an alias was
   /// specified in the `id` and already exists.
   ///
@@ -378,7 +376,8 @@ class CoursesResource {
   /// access errors. * `NOT_FOUND` if no course exists with the requested ID. *
   /// `INVALID_ARGUMENT` if invalid fields are specified in the update mask or
   /// if no update mask is supplied. * `FAILED_PRECONDITION` for the following
-  /// request errors: * CourseNotModifiable * InactiveCourseOwner
+  /// request errors: * CourseNotModifiable * InactiveCourseOwner *
+  /// IneligibleOwner
   ///
   /// [request] - The metadata request object.
   ///
@@ -2884,10 +2883,11 @@ class InvitationsResource {
   /// re-create an invitation to make changes. This method returns the following
   /// error codes: * `PERMISSION_DENIED` if the requesting user is not permitted
   /// to create invitations for this course or for access errors. * `NOT_FOUND`
-  /// if the course or the user does not exist. * `FAILED_PRECONDITION` if the
-  /// requested user's account is disabled or if the user already has this role
-  /// or a role with greater permissions. * `ALREADY_EXISTS` if an invitation
-  /// for the specified user and course already exists.
+  /// if the course or the user does not exist. * `FAILED_PRECONDITION`: * if
+  /// the requested user's account is disabled. * if the user already has this
+  /// role or a role with greater permissions. * for the following request
+  /// errors: * IneligibleOwner * `ALREADY_EXISTS` if an invitation for the
+  /// specified user and course already exists.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3984,7 +3984,10 @@ class Course {
   /// The Calendar ID for a calendar that all course members can see, to which
   /// Classroom adds events for course work and announcements in the course.
   ///
-  /// Read-only.
+  /// The Calendar for a course is created asynchronously when the course is set
+  /// to `CourseState.ACTIVE` for the first time (at creation time or when it is
+  /// updated to `ACTIVE` through the UI or the API). The Calendar ID will not
+  /// be populated until the creation process is completed. Read-only.
   core.String? calendarId;
 
   /// The email address of a Google group containing all members of the course.
@@ -3996,6 +3999,9 @@ class Course {
   /// Sets of materials that appear on the "about" page of this course.
   ///
   /// Read-only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<CourseMaterialSet>? courseMaterialSets;
 
   /// State of the course.
@@ -4742,7 +4748,7 @@ class CourseWorkMaterial {
   /// never returned.
   /// - "PUBLISHED" : Status for course work material that has been published.
   /// This is the default state.
-  /// - "DRAFT" : Status for an course work material that is not yet published.
+  /// - "DRAFT" : Status for a course work material that is not yet published.
   /// Course work material in this state is visible only to course teachers and
   /// domain administrators.
   /// - "DELETED" : Status for course work material that was published but is
@@ -5032,8 +5038,8 @@ class Form {
 
   /// URL of the form responses document.
   ///
-  /// Only set if respsonses have been recorded and only when the requesting
-  /// user is an editor of the form. Read-only.
+  /// Only set if responses have been recorded and only when the requesting user
+  /// is an editor of the form. Read-only.
   core.String? responseUrl;
 
   /// URL of a thumbnail image of the Form.
@@ -6791,7 +6797,8 @@ typedef TurnInStudentSubmissionRequest = $Empty;
 class UserProfile {
   /// Email address of the user.
   ///
-  /// Read-only.
+  /// Must request `https://www.googleapis.com/auth/classroom.profile.emails`
+  /// scope for this field to be populated in a response body. Read-only.
   core.String? emailAddress;
 
   /// Identifier of the user.
@@ -6811,14 +6818,15 @@ class UserProfile {
 
   /// URL of user's profile photo.
   ///
-  /// Read-only.
+  /// Must request `https://www.googleapis.com/auth/classroom.profile.photos`
+  /// scope for this field to be populated in a response body. Read-only.
   core.String? photoUrl;
 
-  /// Represents whether a G Suite for Education user's domain administrator has
-  /// explicitly verified them as being a teacher.
+  /// Represents whether a Google Workspace for Education user's domain
+  /// administrator has explicitly verified them as being a teacher.
   ///
-  /// If the user is not a member of a G Suite for Education domain, than this
-  /// field is always false. Read-only
+  /// This field is always false if the user is not a member of a Google
+  /// Workspace for Education domain. Read-only
   core.bool? verifiedTeacher;
 
   UserProfile({

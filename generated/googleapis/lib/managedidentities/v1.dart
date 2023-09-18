@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Managed Service for Microsoft Active Directory API - v1
@@ -31,7 +30,7 @@
 ///         - [ProjectsLocationsGlobalDomainsSqlIntegrationsResource]
 ///       - [ProjectsLocationsGlobalOperationsResource]
 ///       - [ProjectsLocationsGlobalPeeringsResource]
-library managedidentities.v1;
+library managedidentities_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -40,7 +39,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -240,6 +238,50 @@ class ProjectsLocationsGlobalDomainsResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// CheckMigrationPermission API gets the current state of DomainMigration
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [domain] - Required. The domain resource name using the form:
+  /// `projects/{project_id}/locations/global/domains/{domain_name}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/domains/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CheckMigrationPermissionResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CheckMigrationPermissionResponse> checkMigrationPermission(
+    CheckMigrationPermissionRequest request,
+    core.String domain, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$domain') + ':checkMigrationPermission';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return CheckMigrationPermissionResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Creates a Microsoft AD domain.
   ///
   /// [request] - The metadata request object.
@@ -361,6 +403,133 @@ class ProjectsLocationsGlobalDomainsResource {
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':detachTrust';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Disable Domain Migration
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [domain] - Required. The domain resource name using the form:
+  /// `projects/{project_id}/locations/global/domains/{domain_name}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/domains/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> disableMigration(
+    DisableMigrationRequest request,
+    core.String domain, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$domain') + ':disableMigration';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// DomainJoinMachine API joins a Compute Engine VM to the domain
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [domain] - Required. The domain resource name using the form:
+  /// projects/{project_id}/locations/global/domains/{domain_name}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/domains/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DomainJoinMachineResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DomainJoinMachineResponse> domainJoinMachine(
+    DomainJoinMachineRequest request,
+    core.String domain, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$domain') + ':domainJoinMachine';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return DomainJoinMachineResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Enable Domain Migration
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [domain] - Required. The domain resource name using the form:
+  /// `projects/{project_id}/locations/global/domains/{domain_name}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/domains/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> enableMigration(
+    EnableMigrationRequest request,
+    core.String domain, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$domain') + ':enableMigration';
 
     final response_ = await _requester.request(
       url_,
@@ -1613,13 +1782,6 @@ class ProjectsLocationsGlobalOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -2151,9 +2313,9 @@ class Backup {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -2210,7 +2372,9 @@ class Binding {
   /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
   /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
-  /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
+  /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
+  /// (primary) that represents all the users of that domain. For example,
+  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
   /// An email address (plus unique identifier) representing a user that has
   /// been recently deleted. For example,
   /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
@@ -2226,9 +2390,7 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
-  /// that represents all the users of that domain. For example, `google.com` or
-  /// `example.com`.
+  /// the role in the binding.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
@@ -2324,6 +2486,47 @@ class Certificate {
       };
 }
 
+/// CheckMigrationPermissionRequest is the request message for
+/// CheckMigrationPermission method.
+typedef CheckMigrationPermissionRequest = $Empty;
+
+/// CheckMigrationPermissionResponse is the response message for
+/// CheckMigrationPermission method.
+class CheckMigrationPermissionResponse {
+  /// The state of SID filtering of all the domains which has trust established.
+  core.List<OnPremDomainSIDDetails>? onpremDomains;
+
+  /// The state of DomainMigration.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : DomainMigration is in unspecified state.
+  /// - "DISABLED" : Domain Migration is Disabled.
+  /// - "ENABLED" : Domain Migration is Enabled.
+  /// - "NEEDS_MAINTENANCE" : Domain Migration is not in valid state.
+  core.String? state;
+
+  CheckMigrationPermissionResponse({
+    this.onpremDomains,
+    this.state,
+  });
+
+  CheckMigrationPermissionResponse.fromJson(core.Map json_)
+      : this(
+          onpremDomains: json_.containsKey('onpremDomains')
+              ? (json_['onpremDomains'] as core.List)
+                  .map((value) => OnPremDomainSIDDetails.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (onpremDomains != null) 'onpremDomains': onpremDomains!,
+        if (state != null) 'state': state!,
+      };
+}
+
 /// Request message for DetachTrust
 class DetachTrustRequest {
   /// The domain trust resource to removed.
@@ -2347,6 +2550,9 @@ class DetachTrustRequest {
         if (trust != null) 'trust': trust!,
       };
 }
+
+/// DisableMigrationRequest is the request message for DisableMigration method.
+typedef DisableMigrationRequest = $Empty;
 
 /// Represents a managed Microsoft Active Directory domain.
 ///
@@ -2488,9 +2694,9 @@ class Domain {
           fqdn: json_.containsKey('fqdn') ? json_['fqdn'] as core.String : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -2537,6 +2743,74 @@ class Domain {
       };
 }
 
+/// DomainJoinMachineRequest is the request message for DomainJoinMachine method
+class DomainJoinMachineRequest {
+  /// force if True, forces domain join even if the computer account already
+  /// exists.
+  ///
+  /// Optional.
+  core.bool? force;
+
+  /// OU name where the VM needs to be domain joined
+  ///
+  /// Optional.
+  core.String? ouName;
+
+  /// Full instance id token of compute engine VM to verify instance identity.
+  ///
+  /// More about this:
+  /// https://cloud.google.com/compute/docs/instances/verifying-instance-identity#request_signature
+  ///
+  /// Required.
+  core.String? vmIdToken;
+
+  DomainJoinMachineRequest({
+    this.force,
+    this.ouName,
+    this.vmIdToken,
+  });
+
+  DomainJoinMachineRequest.fromJson(core.Map json_)
+      : this(
+          force:
+              json_.containsKey('force') ? json_['force'] as core.bool : null,
+          ouName: json_.containsKey('ouName')
+              ? json_['ouName'] as core.String
+              : null,
+          vmIdToken: json_.containsKey('vmIdToken')
+              ? json_['vmIdToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (force != null) 'force': force!,
+        if (ouName != null) 'ouName': ouName!,
+        if (vmIdToken != null) 'vmIdToken': vmIdToken!,
+      };
+}
+
+/// DomainJoinMachineResponse is the response message for DomainJoinMachine
+/// method
+class DomainJoinMachineResponse {
+  /// Offline domain join blob as the response
+  core.String? domainJoinBlob;
+
+  DomainJoinMachineResponse({
+    this.domainJoinBlob,
+  });
+
+  DomainJoinMachineResponse.fromJson(core.Map json_)
+      : this(
+          domainJoinBlob: json_.containsKey('domainJoinBlob')
+              ? json_['domainJoinBlob'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (domainJoinBlob != null) 'domainJoinBlob': domainJoinBlob!,
+      };
+}
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
 ///
@@ -2544,6 +2818,32 @@ class Domain {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
+
+/// EnableMigrationRequest is the request message for EnableMigration method.
+class EnableMigrationRequest {
+  /// List of the on-prem domains to be migrated.
+  ///
+  /// Required.
+  core.List<OnPremDomainDetails>? migratingDomains;
+
+  EnableMigrationRequest({
+    this.migratingDomains,
+  });
+
+  EnableMigrationRequest.fromJson(core.Map json_)
+      : this(
+          migratingDomains: json_.containsKey('migratingDomains')
+              ? (json_['migratingDomains'] as core.List)
+                  .map((value) => OnPremDomainDetails.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (migratingDomains != null) 'migratingDomains': migratingDomains!,
+      };
+}
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
@@ -2958,8 +3258,76 @@ class ListSqlIntegrationsResponse {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
+/// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
+
+/// OnPremDomainDetails is the message which contains details of on-prem domain
+/// which is trusted and needs to be migrated.
+class OnPremDomainDetails {
+  /// Option to disable SID filtering.
+  ///
+  /// Optional.
+  core.bool? disableSidFiltering;
+
+  /// FQDN of the on-prem domain being migrated.
+  ///
+  /// Required.
+  core.String? domainName;
+
+  OnPremDomainDetails({
+    this.disableSidFiltering,
+    this.domainName,
+  });
+
+  OnPremDomainDetails.fromJson(core.Map json_)
+      : this(
+          disableSidFiltering: json_.containsKey('disableSidFiltering')
+              ? json_['disableSidFiltering'] as core.bool
+              : null,
+          domainName: json_.containsKey('domainName')
+              ? json_['domainName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (disableSidFiltering != null)
+          'disableSidFiltering': disableSidFiltering!,
+        if (domainName != null) 'domainName': domainName!,
+      };
+}
+
+/// OnPremDomainDetails is the message which contains details of on-prem domain
+/// which is trusted and needs to be migrated.
+class OnPremDomainSIDDetails {
+  /// FQDN of the on-prem domain being migrated.
+  core.String? name;
+
+  /// Current SID filtering state.
+  /// Possible string values are:
+  /// - "SID_FILTERING_STATE_UNSPECIFIED" : SID Filtering is in unspecified
+  /// state.
+  /// - "ENABLED" : SID Filtering is Enabled.
+  /// - "DISABLED" : SID Filtering is Disabled.
+  core.String? sidFilteringState;
+
+  OnPremDomainSIDDetails({
+    this.name,
+    this.sidFilteringState,
+  });
+
+  OnPremDomainSIDDetails.fromJson(core.Map json_)
+      : this(
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          sidFilteringState: json_.containsKey('sidFilteringState')
+              ? json_['sidFilteringState'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (sidFilteringState != null) 'sidFilteringState': sidFilteringState!,
+      };
+}
 
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
@@ -3120,9 +3488,9 @@ class Peering {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,

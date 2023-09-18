@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Certificate Manager API - v1
@@ -20,12 +19,14 @@
 ///
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsCertificateIssuanceConfigsResource]
 ///     - [ProjectsLocationsCertificateMapsResource]
 ///       - [ProjectsLocationsCertificateMapsCertificateMapEntriesResource]
 ///     - [ProjectsLocationsCertificatesResource]
 ///     - [ProjectsLocationsDnsAuthorizationsResource]
 ///     - [ProjectsLocationsOperationsResource]
-library certificatemanager.v1;
+///     - [ProjectsLocationsTrustConfigsResource]
+library certificatemanager_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -34,7 +35,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -70,6 +70,9 @@ class ProjectsResource {
 class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsCertificateIssuanceConfigsResource
+      get certificateIssuanceConfigs =>
+          ProjectsLocationsCertificateIssuanceConfigsResource(_requester);
   ProjectsLocationsCertificateMapsResource get certificateMaps =>
       ProjectsLocationsCertificateMapsResource(_requester);
   ProjectsLocationsCertificatesResource get certificates =>
@@ -78,6 +81,8 @@ class ProjectsLocationsResource {
       ProjectsLocationsDnsAuthorizationsResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
       ProjectsLocationsOperationsResource(_requester);
+  ProjectsLocationsTrustConfigsResource get trustConfigs =>
+      ProjectsLocationsTrustConfigsResource(_requester);
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
@@ -165,6 +170,199 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsCertificateIssuanceConfigsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsCertificateIssuanceConfigsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new CertificateIssuanceConfig in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource of the certificate issuance
+  /// config. Must be in the format `projects / * /locations / * `.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [certificateIssuanceConfigId] - Required. A user-provided name of the
+  /// certificate config.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    CertificateIssuanceConfig request,
+    core.String parent, {
+    core.String? certificateIssuanceConfigId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (certificateIssuanceConfigId != null)
+        'certificateIssuanceConfigId': [certificateIssuanceConfigId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/certificateIssuanceConfigs';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single CertificateIssuanceConfig.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. A name of the certificate issuance config to delete.
+  /// Must be in the format `projects / * /locations / *
+  /// /certificateIssuanceConfigs / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/certificateIssuanceConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single CertificateIssuanceConfig.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. A name of the certificate issuance config to describe.
+  /// Must be in the format `projects / * /locations / *
+  /// /certificateIssuanceConfigs / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/certificateIssuanceConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CertificateIssuanceConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CertificateIssuanceConfig> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return CertificateIssuanceConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists CertificateIssuanceConfigs in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project and location from which the certificate
+  /// should be listed, specified in the format `projects / * /locations / * `.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Filter expression to restrict the Certificates Configs
+  /// returned.
+  ///
+  /// [orderBy] - A list of Certificate Config field names used to specify the
+  /// order of the returned results. The default sorting order is ascending. To
+  /// specify descending order for a field, add a suffix " desc".
+  ///
+  /// [pageSize] - Maximum number of certificate configs to return per call.
+  ///
+  /// [pageToken] - The value returned by the last
+  /// `ListCertificateIssuanceConfigsResponse`. Indicates that this is a
+  /// continuation of a prior `ListCertificateIssuanceConfigs` call, and that
+  /// the system should return the next page of data.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListCertificateIssuanceConfigsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListCertificateIssuanceConfigsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/certificateIssuanceConfigs';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListCertificateIssuanceConfigsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -1269,13 +1467,6 @@ class ProjectsLocationsOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -1324,6 +1515,245 @@ class ProjectsLocationsOperationsResource {
   }
 }
 
+class ProjectsLocationsTrustConfigsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsTrustConfigsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new TrustConfig in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource of the TrustConfig. Must be in
+  /// the format `projects / * /locations / * `.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [trustConfigId] - Required. A user-provided name of the TrustConfig.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    TrustConfig request,
+    core.String parent, {
+    core.String? trustConfigId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (trustConfigId != null) 'trustConfigId': [trustConfigId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/trustConfigs';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single TrustConfig.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. A name of the TrustConfig to delete. Must be in the
+  /// format `projects / * /locations / * /trustConfigs / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/trustConfigs/\[^/\]+$`.
+  ///
+  /// [etag] - The current etag of the TrustConfig. If an etag is provided and
+  /// does not match the current etag of the resource, deletion will be blocked
+  /// and an ABORTED error will be returned.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? etag,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (etag != null) 'etag': [etag],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single TrustConfig.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. A name of the TrustConfig to describe. Must be in the
+  /// format `projects / * /locations / * /trustConfigs / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/trustConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TrustConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TrustConfig> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return TrustConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists TrustConfigs in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project and location from which the TrustConfigs
+  /// should be listed, specified in the format `projects / * /locations / * `.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Filter expression to restrict the TrustConfigs returned.
+  ///
+  /// [orderBy] - A list of TrustConfig field names used to specify the order of
+  /// the returned results. The default sorting order is ascending. To specify
+  /// descending order for a field, add a suffix " desc".
+  ///
+  /// [pageSize] - Maximum number of TrustConfigs to return per call.
+  ///
+  /// [pageToken] - The value returned by the last `ListTrustConfigsResponse`.
+  /// Indicates that this is a continuation of a prior `ListTrustConfigs` call,
+  /// and that the system should return the next page of data.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListTrustConfigsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListTrustConfigsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/trustConfigs';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListTrustConfigsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a TrustConfig.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - A user-defined name of the trust config. TrustConfig names must
+  /// be unique globally and match pattern `projects / * /locations / *
+  /// /trustConfigs / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/trustConfigs/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The update mask applies to the resource. For the
+  /// `FieldMask` definition, see
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    TrustConfig request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 /// State of the latest attempt to authorize a domain for certificate issuance.
 class AuthorizationAttemptInfo {
   /// Human readable explanation for reaching the state.
@@ -1341,7 +1771,7 @@ class AuthorizationAttemptInfo {
   ///
   /// Output only.
   /// Possible string values are:
-  /// - "FAILURE_REASON_UNSPECIFIED"
+  /// - "FAILURE_REASON_UNSPECIFIED" : FailureReason is unspecified.
   /// - "CONFIG" : There was a problem with the user's DNS or load balancer
   /// configuration for this domain.
   /// - "CAA" : Certificate issuance forbidden by an explicit CAA record for the
@@ -1354,9 +1784,9 @@ class AuthorizationAttemptInfo {
   ///
   /// Output only.
   /// Possible string values are:
-  /// - "STATE_UNSPECIFIED"
+  /// - "STATE_UNSPECIFIED" : State is unspecified.
   /// - "AUTHORIZING" : Certificate provisioning for this domain is under way.
-  /// GCP will attempt to authorize the domain.
+  /// Google Cloud will attempt to authorize the domain.
   /// - "AUTHORIZED" : A managed certificate can be provisioned, no issues for
   /// this domain.
   /// - "FAILED" : Attempt to authorize the domain failed. This prevents the
@@ -1445,7 +1875,10 @@ class Certificate {
   /// - "DEFAULT" : Certificates with default scope are served from core Google
   /// data centers. If unsure, choose this option.
   /// - "EDGE_CACHE" : Certificates with scope EDGE_CACHE are special-purposed
-  /// certificates, served from non-core Google data centers.
+  /// certificates, served from Edge Points of Presence. See
+  /// https://cloud.google.com/vpc/docs/edge-locations.
+  /// - "ALL_REGIONS" : Certificates with ALL_REGIONS scope are served from all
+  /// GCP regions. See https://cloud.google.com/compute/docs/regions-zones.
   core.String? scope;
 
   /// If set, defines data of a self-managed certificate.
@@ -1483,9 +1916,9 @@ class Certificate {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -1528,6 +1961,178 @@ class Certificate {
       };
 }
 
+/// The CA that issues the workload certificate.
+///
+/// It includes CA address, type, authentication to CA service, etc.
+class CertificateAuthorityConfig {
+  /// Defines a CertificateAuthorityServiceConfig.
+  CertificateAuthorityServiceConfig? certificateAuthorityServiceConfig;
+
+  CertificateAuthorityConfig({
+    this.certificateAuthorityServiceConfig,
+  });
+
+  CertificateAuthorityConfig.fromJson(core.Map json_)
+      : this(
+          certificateAuthorityServiceConfig:
+              json_.containsKey('certificateAuthorityServiceConfig')
+                  ? CertificateAuthorityServiceConfig.fromJson(
+                      json_['certificateAuthorityServiceConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (certificateAuthorityServiceConfig != null)
+          'certificateAuthorityServiceConfig':
+              certificateAuthorityServiceConfig!,
+      };
+}
+
+/// Contains information required to contact CA service.
+class CertificateAuthorityServiceConfig {
+  /// A CA pool resource used to issue a certificate.
+  ///
+  /// The CA pool string has a relative resource path following the form
+  /// "projects/{project}/locations/{location}/caPools/{ca_pool}".
+  ///
+  /// Required.
+  core.String? caPool;
+
+  CertificateAuthorityServiceConfig({
+    this.caPool,
+  });
+
+  CertificateAuthorityServiceConfig.fromJson(core.Map json_)
+      : this(
+          caPool: json_.containsKey('caPool')
+              ? json_['caPool'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (caPool != null) 'caPool': caPool!,
+      };
+}
+
+/// CertificateIssuanceConfig specifies how to issue and manage a certificate.
+class CertificateIssuanceConfig {
+  /// The CA that issues the workload certificate.
+  ///
+  /// It includes the CA address, type, authentication to CA service, etc.
+  ///
+  /// Required.
+  CertificateAuthorityConfig? certificateAuthorityConfig;
+
+  /// The creation timestamp of a CertificateIssuanceConfig.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// One or more paragraphs of text description of a CertificateIssuanceConfig.
+  core.String? description;
+
+  /// The key algorithm to use when generating the private key.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "KEY_ALGORITHM_UNSPECIFIED" : Unspecified key algorithm.
+  /// - "RSA_2048" : Specifies RSA with a 2048-bit modulus.
+  /// - "ECDSA_P256" : Specifies ECDSA with curve P256.
+  core.String? keyAlgorithm;
+
+  /// Set of labels associated with a CertificateIssuanceConfig.
+  core.Map<core.String, core.String>? labels;
+
+  /// Workload certificate lifetime requested.
+  ///
+  /// Required.
+  core.String? lifetime;
+
+  /// A user-defined name of the certificate issuance config.
+  ///
+  /// CertificateIssuanceConfig names must be unique globally and match pattern
+  /// `projects / * /locations / * /certificateIssuanceConfigs / * `.
+  core.String? name;
+
+  /// Specifies the percentage of elapsed time of the certificate lifetime to
+  /// wait before renewing the certificate.
+  ///
+  /// Must be a number between 1-99, inclusive.
+  ///
+  /// Required.
+  core.int? rotationWindowPercentage;
+
+  /// The last update timestamp of a CertificateIssuanceConfig.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  CertificateIssuanceConfig({
+    this.certificateAuthorityConfig,
+    this.createTime,
+    this.description,
+    this.keyAlgorithm,
+    this.labels,
+    this.lifetime,
+    this.name,
+    this.rotationWindowPercentage,
+    this.updateTime,
+  });
+
+  CertificateIssuanceConfig.fromJson(core.Map json_)
+      : this(
+          certificateAuthorityConfig:
+              json_.containsKey('certificateAuthorityConfig')
+                  ? CertificateAuthorityConfig.fromJson(
+                      json_['certificateAuthorityConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          keyAlgorithm: json_.containsKey('keyAlgorithm')
+              ? json_['keyAlgorithm'] as core.String
+              : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          lifetime: json_.containsKey('lifetime')
+              ? json_['lifetime'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          rotationWindowPercentage:
+              json_.containsKey('rotationWindowPercentage')
+                  ? json_['rotationWindowPercentage'] as core.int
+                  : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (certificateAuthorityConfig != null)
+          'certificateAuthorityConfig': certificateAuthorityConfig!,
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (keyAlgorithm != null) 'keyAlgorithm': keyAlgorithm!,
+        if (labels != null) 'labels': labels!,
+        if (lifetime != null) 'lifetime': lifetime!,
+        if (name != null) 'name': name!,
+        if (rotationWindowPercentage != null)
+          'rotationWindowPercentage': rotationWindowPercentage!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
 /// Defines a collection of certificate configurations.
 class CertificateMap {
   /// The creation timestamp of a Certificate Map.
@@ -1538,7 +2143,10 @@ class CertificateMap {
   /// One or more paragraphs of text description of a certificate map.
   core.String? description;
 
-  /// A list of GCLB targets which use this Certificate Map.
+  /// A list of GCLB targets that use this Certificate Map.
+  ///
+  /// A Target Proxy is only present on this list if it's attached to a
+  /// Forwarding Rule.
   ///
   /// Output only.
   core.List<GclbTarget>? gclbTargets;
@@ -1582,9 +2190,9 @@ class CertificateMap {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -1608,7 +2216,7 @@ class CertificateMap {
 class CertificateMapEntry {
   /// A set of Certificates defines for the given `hostname`.
   ///
-  /// There can be defined up to fifteen certificates in each Certificate Map
+  /// There can be defined up to four certificates in each Certificate Map
   /// Entry. Each certificate must match pattern `projects / * /locations / *
   /// /certificates / * `.
   core.List<core.String>? certificates;
@@ -1689,9 +2297,9 @@ class CertificateMapEntry {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -1735,7 +2343,7 @@ class DnsAuthorization {
   /// Output only.
   DnsResourceRecord? dnsResourceRecord;
 
-  /// A domain which is being authorized.
+  /// A domain that is being authorized.
   ///
   /// A DnsAuthorization resource covers a single domain and its wildcard, e.g.
   /// authorization for `example.com` can be used to issue certificates for
@@ -1785,9 +2393,9 @@ class DnsAuthorization {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -1858,7 +2466,7 @@ class DnsResourceRecord {
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
-/// Describes a Target Proxy which uses this Certificate Map.
+/// Describes a Target Proxy that uses this Certificate Map.
 class GclbTarget {
   /// IP configurations for this Target Proxy where the Certificate Map is
   /// serving.
@@ -1907,6 +2515,29 @@ class GclbTarget {
       };
 }
 
+/// Defines an intermediate CA.
+class IntermediateCA {
+  /// PEM intermediate certificate used for building up paths for validation.
+  ///
+  /// Each certificate provided in PEM format may occupy up to 5kB.
+  core.String? pemCertificate;
+
+  IntermediateCA({
+    this.pemCertificate,
+  });
+
+  IntermediateCA.fromJson(core.Map json_)
+      : this(
+          pemCertificate: json_.containsKey('pemCertificate')
+              ? json_['pemCertificate'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (pemCertificate != null) 'pemCertificate': pemCertificate!,
+      };
+}
+
 /// Defines IP configuration where this Certificate Map is serving.
 class IpConfig {
   /// An external IP address.
@@ -1939,6 +2570,54 @@ class IpConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (ipAddress != null) 'ipAddress': ipAddress!,
         if (ports != null) 'ports': ports!,
+      };
+}
+
+/// Response for the `ListCertificateIssuanceConfigs` method.
+class ListCertificateIssuanceConfigsResponse {
+  /// A list of certificate configs for the parent resource.
+  core.List<CertificateIssuanceConfig>? certificateIssuanceConfigs;
+
+  /// If there might be more results than those appearing in this response, then
+  /// `next_page_token` is included.
+  ///
+  /// To get the next set of results, call this method again using the value of
+  /// `next_page_token` as `page_token`.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListCertificateIssuanceConfigsResponse({
+    this.certificateIssuanceConfigs,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListCertificateIssuanceConfigsResponse.fromJson(core.Map json_)
+      : this(
+          certificateIssuanceConfigs:
+              json_.containsKey('certificateIssuanceConfigs')
+                  ? (json_['certificateIssuanceConfigs'] as core.List)
+                      .map((value) => CertificateIssuanceConfig.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (certificateIssuanceConfigs != null)
+          'certificateIssuanceConfigs': certificateIssuanceConfigs!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
@@ -2191,7 +2870,53 @@ class ListOperationsResponse {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
+/// Response for the `ListTrustConfigs` method.
+class ListTrustConfigsResponse {
+  /// If there might be more results than those appearing in this response, then
+  /// `next_page_token` is included.
+  ///
+  /// To get the next set of results, call this method again using the value of
+  /// `next_page_token` as `page_token`.
+  core.String? nextPageToken;
+
+  /// A list of TrustConfigs for the parent resource.
+  core.List<TrustConfig>? trustConfigs;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListTrustConfigsResponse({
+    this.nextPageToken,
+    this.trustConfigs,
+    this.unreachable,
+  });
+
+  ListTrustConfigsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          trustConfigs: json_.containsKey('trustConfigs')
+              ? (json_['trustConfigs'] as core.List)
+                  .map((value) => TrustConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (trustConfigs != null) 'trustConfigs': trustConfigs!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
+/// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
 /// Configuration and state of a Managed Certificate.
@@ -2217,6 +2942,17 @@ class ManagedCertificate {
   /// Immutable.
   core.List<core.String>? domains;
 
+  /// The resource name for a CertificateIssuanceConfig used to configure
+  /// private PKI certificates in the format `projects / * /locations / *
+  /// /certificateIssuanceConfigs / * `.
+  ///
+  /// If this field is not set, the certificates will instead be publicly signed
+  /// as documented at
+  /// https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
+  ///
+  /// Immutable.
+  core.String? issuanceConfig;
+
   /// Information about issues with provisioning a Managed Certificate.
   ///
   /// Output only.
@@ -2226,7 +2962,7 @@ class ManagedCertificate {
   ///
   /// Output only.
   /// Possible string values are:
-  /// - "STATE_UNSPECIFIED"
+  /// - "STATE_UNSPECIFIED" : State is unspecified.
   /// - "PROVISIONING" : Certificate Manager attempts to provision or renew the
   /// certificate. If the process takes longer than expected, consult the
   /// `provisioning_issue` field.
@@ -2241,6 +2977,7 @@ class ManagedCertificate {
     this.authorizationAttemptInfo,
     this.dnsAuthorizations,
     this.domains,
+    this.issuanceConfig,
     this.provisioningIssue,
     this.state,
   });
@@ -2264,6 +3001,9 @@ class ManagedCertificate {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          issuanceConfig: json_.containsKey('issuanceConfig')
+              ? json_['issuanceConfig'] as core.String
+              : null,
           provisioningIssue: json_.containsKey('provisioningIssue')
               ? ProvisioningIssue.fromJson(json_['provisioningIssue']
                   as core.Map<core.String, core.dynamic>)
@@ -2277,6 +3017,7 @@ class ManagedCertificate {
           'authorizationAttemptInfo': authorizationAttemptInfo!,
         if (dnsAuthorizations != null) 'dnsAuthorizations': dnsAuthorizations!,
         if (domains != null) 'domains': domains!,
+        if (issuanceConfig != null) 'issuanceConfig': issuanceConfig!,
         if (provisioningIssue != null) 'provisioningIssue': provisioningIssue!,
         if (state != null) 'state': state!,
       };
@@ -2312,7 +3053,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -2372,7 +3113,7 @@ class ProvisioningIssue {
   ///
   /// Output only.
   /// Possible string values are:
-  /// - "REASON_UNSPECIFIED"
+  /// - "REASON_UNSPECIFIED" : Reason is unspecified.
   /// - "AUTHORIZATION_ISSUE" : Certificate provisioning failed due to an issue
   /// with one or more of the domains on the certificate. For details of which
   /// domains failed, consult the `authorization_attempt_info` field.
@@ -2446,3 +3187,152 @@ class SelfManagedCertificate {
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef Status = $Status;
+
+/// Defines a trust anchor.
+class TrustAnchor {
+  /// PEM root certificate of the PKI used for validation.
+  ///
+  /// Each certificate provided in PEM format may occupy up to 5kB.
+  core.String? pemCertificate;
+
+  TrustAnchor({
+    this.pemCertificate,
+  });
+
+  TrustAnchor.fromJson(core.Map json_)
+      : this(
+          pemCertificate: json_.containsKey('pemCertificate')
+              ? json_['pemCertificate'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (pemCertificate != null) 'pemCertificate': pemCertificate!,
+      };
+}
+
+/// Defines a trust config.
+class TrustConfig {
+  /// The creation timestamp of a TrustConfig.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// One or more paragraphs of text description of a TrustConfig.
+  core.String? description;
+
+  /// This checksum is computed by the server based on the value of other
+  /// fields, and may be sent on update and delete requests to ensure the client
+  /// has an up-to-date value before proceeding.
+  core.String? etag;
+
+  /// Set of labels associated with a TrustConfig.
+  core.Map<core.String, core.String>? labels;
+
+  /// A user-defined name of the trust config.
+  ///
+  /// TrustConfig names must be unique globally and match pattern `projects / *
+  /// /locations / * /trustConfigs / * `.
+  core.String? name;
+
+  /// Set of trust stores to perform validation against.
+  ///
+  /// This field is supported when TrustConfig is configured with Load
+  /// Balancers, currently not supported for SPIFFE certificate validation. Only
+  /// one TrustStore specified is currently allowed.
+  core.List<TrustStore>? trustStores;
+
+  /// The last update timestamp of a TrustConfig.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  TrustConfig({
+    this.createTime,
+    this.description,
+    this.etag,
+    this.labels,
+    this.name,
+    this.trustStores,
+    this.updateTime,
+  });
+
+  TrustConfig.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          trustStores: json_.containsKey('trustStores')
+              ? (json_['trustStores'] as core.List)
+                  .map((value) => TrustStore.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (etag != null) 'etag': etag!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (trustStores != null) 'trustStores': trustStores!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// Defines a trust store.
+class TrustStore {
+  /// Set of intermediate CA certificates used for the path building phase of
+  /// chain validation.
+  ///
+  /// The field is currently not supported if TrustConfig is used for the
+  /// workload certificate feature.
+  core.List<IntermediateCA>? intermediateCas;
+
+  /// List of Trust Anchors to be used while performing validation against a
+  /// given TrustStore.
+  core.List<TrustAnchor>? trustAnchors;
+
+  TrustStore({
+    this.intermediateCas,
+    this.trustAnchors,
+  });
+
+  TrustStore.fromJson(core.Map json_)
+      : this(
+          intermediateCas: json_.containsKey('intermediateCas')
+              ? (json_['intermediateCas'] as core.List)
+                  .map((value) => IntermediateCA.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          trustAnchors: json_.containsKey('trustAnchors')
+              ? (json_['trustAnchors'] as core.List)
+                  .map((value) => TrustAnchor.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (intermediateCas != null) 'intermediateCas': intermediateCas!,
+        if (trustAnchors != null) 'trustAnchors': trustAnchors!,
+      };
+}

@@ -1,8 +1,6 @@
 // ignore_for_file: camel_case_types
-// ignore_for_file: cascade_invocations
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_const_declarations
@@ -12,8 +10,9 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unreachable_from_main
 // ignore_for_file: unused_local_variable
 
 import 'dart:async' as async;
@@ -1252,6 +1251,7 @@ api.Event buildEvent() {
     o.transparency = 'foo';
     o.updated = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.visibility = 'foo';
+    o.workingLocationProperties = buildEventWorkingLocationProperties();
   }
   buildCounterEvent--;
   return o;
@@ -1353,6 +1353,7 @@ void checkEvent(api.Event o) {
       o.visibility!,
       unittest.equals('foo'),
     );
+    checkEventWorkingLocationProperties(o.workingLocationProperties!);
   }
   buildCounterEvent--;
 }
@@ -1511,6 +1512,119 @@ void checkEventReminder(api.EventReminder o) {
     );
   }
   buildCounterEventReminder--;
+}
+
+core.int buildCounterEventWorkingLocationPropertiesCustomLocation = 0;
+api.EventWorkingLocationPropertiesCustomLocation
+    buildEventWorkingLocationPropertiesCustomLocation() {
+  final o = api.EventWorkingLocationPropertiesCustomLocation();
+  buildCounterEventWorkingLocationPropertiesCustomLocation++;
+  if (buildCounterEventWorkingLocationPropertiesCustomLocation < 3) {
+    o.label = 'foo';
+  }
+  buildCounterEventWorkingLocationPropertiesCustomLocation--;
+  return o;
+}
+
+void checkEventWorkingLocationPropertiesCustomLocation(
+    api.EventWorkingLocationPropertiesCustomLocation o) {
+  buildCounterEventWorkingLocationPropertiesCustomLocation++;
+  if (buildCounterEventWorkingLocationPropertiesCustomLocation < 3) {
+    unittest.expect(
+      o.label!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterEventWorkingLocationPropertiesCustomLocation--;
+}
+
+core.int buildCounterEventWorkingLocationPropertiesOfficeLocation = 0;
+api.EventWorkingLocationPropertiesOfficeLocation
+    buildEventWorkingLocationPropertiesOfficeLocation() {
+  final o = api.EventWorkingLocationPropertiesOfficeLocation();
+  buildCounterEventWorkingLocationPropertiesOfficeLocation++;
+  if (buildCounterEventWorkingLocationPropertiesOfficeLocation < 3) {
+    o.buildingId = 'foo';
+    o.deskId = 'foo';
+    o.floorId = 'foo';
+    o.floorSectionId = 'foo';
+    o.label = 'foo';
+  }
+  buildCounterEventWorkingLocationPropertiesOfficeLocation--;
+  return o;
+}
+
+void checkEventWorkingLocationPropertiesOfficeLocation(
+    api.EventWorkingLocationPropertiesOfficeLocation o) {
+  buildCounterEventWorkingLocationPropertiesOfficeLocation++;
+  if (buildCounterEventWorkingLocationPropertiesOfficeLocation < 3) {
+    unittest.expect(
+      o.buildingId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.deskId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.floorId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.floorSectionId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.label!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterEventWorkingLocationPropertiesOfficeLocation--;
+}
+
+core.int buildCounterEventWorkingLocationProperties = 0;
+api.EventWorkingLocationProperties buildEventWorkingLocationProperties() {
+  final o = api.EventWorkingLocationProperties();
+  buildCounterEventWorkingLocationProperties++;
+  if (buildCounterEventWorkingLocationProperties < 3) {
+    o.customLocation = buildEventWorkingLocationPropertiesCustomLocation();
+    o.homeOffice = {
+      'list': [1, 2, 3],
+      'bool': true,
+      'string': 'foo'
+    };
+    o.officeLocation = buildEventWorkingLocationPropertiesOfficeLocation();
+    o.type = 'foo';
+  }
+  buildCounterEventWorkingLocationProperties--;
+  return o;
+}
+
+void checkEventWorkingLocationProperties(api.EventWorkingLocationProperties o) {
+  buildCounterEventWorkingLocationProperties++;
+  if (buildCounterEventWorkingLocationProperties < 3) {
+    checkEventWorkingLocationPropertiesCustomLocation(o.customLocation!);
+    var casted1 = (o.homeOffice!) as core.Map;
+    unittest.expect(casted1, unittest.hasLength(3));
+    unittest.expect(
+      casted1['list'],
+      unittest.equals([1, 2, 3]),
+    );
+    unittest.expect(
+      casted1['bool'],
+      unittest.equals(true),
+    );
+    unittest.expect(
+      casted1['string'],
+      unittest.equals('foo'),
+    );
+    checkEventWorkingLocationPropertiesOfficeLocation(o.officeLocation!);
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterEventWorkingLocationProperties--;
 }
 
 core.List<api.EventReminder> buildUnnamed18() => [
@@ -2010,6 +2124,40 @@ void checkUnnamed31(core.List<core.String> o) {
   );
 }
 
+core.List<core.String> buildUnnamed32() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed32(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed33() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed33(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 void main() {
   unittest.group('obj-schema-Acl', () {
     unittest.test('to-json--from-json', () async {
@@ -2330,6 +2478,36 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-EventWorkingLocationPropertiesCustomLocation', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildEventWorkingLocationPropertiesCustomLocation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.EventWorkingLocationPropertiesCustomLocation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkEventWorkingLocationPropertiesCustomLocation(od);
+    });
+  });
+
+  unittest.group('obj-schema-EventWorkingLocationPropertiesOfficeLocation', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildEventWorkingLocationPropertiesOfficeLocation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.EventWorkingLocationPropertiesOfficeLocation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkEventWorkingLocationPropertiesOfficeLocation(od);
+    });
+  });
+
+  unittest.group('obj-schema-EventWorkingLocationProperties', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildEventWorkingLocationProperties();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.EventWorkingLocationProperties.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkEventWorkingLocationProperties(od);
+    });
+  });
+
   unittest.group('obj-schema-Events', () {
     unittest.test('to-json--from-json', () async {
       final o = buildEvents();
@@ -2428,7 +2606,7 @@ void main() {
       final arg_ruleId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2468,7 +2646,7 @@ void main() {
           unittest.equals('$arg_ruleId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2504,7 +2682,7 @@ void main() {
       final arg_ruleId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2544,7 +2722,7 @@ void main() {
           unittest.equals('$arg_ruleId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2587,7 +2765,7 @@ void main() {
             api.AclRule.fromJson(json as core.Map<core.String, core.dynamic>);
         checkAclRule(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2621,7 +2799,7 @@ void main() {
         );
         pathOffset += 4;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2666,7 +2844,7 @@ void main() {
       final arg_syncToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2700,7 +2878,7 @@ void main() {
         );
         pathOffset += 4;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2764,7 +2942,7 @@ void main() {
             api.AclRule.fromJson(json as core.Map<core.String, core.dynamic>);
         checkAclRule(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2804,7 +2982,7 @@ void main() {
           unittest.equals('$arg_ruleId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2852,7 +3030,7 @@ void main() {
             api.AclRule.fromJson(json as core.Map<core.String, core.dynamic>);
         checkAclRule(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2892,7 +3070,7 @@ void main() {
           unittest.equals('$arg_ruleId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2942,7 +3120,7 @@ void main() {
             api.Channel.fromJson(json as core.Map<core.String, core.dynamic>);
         checkChannel(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2976,7 +3154,7 @@ void main() {
         );
         pathOffset += 10;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3035,7 +3213,7 @@ void main() {
       final arg_calendarId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3061,7 +3239,7 @@ void main() {
           unittest.equals('$arg_calendarId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3096,7 +3274,7 @@ void main() {
       final arg_calendarId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3122,7 +3300,7 @@ void main() {
           unittest.equals('$arg_calendarId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3163,7 +3341,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkCalendarListEntry(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3183,7 +3361,7 @@ void main() {
         );
         pathOffset += 21;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3229,7 +3407,7 @@ void main() {
       final arg_syncToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3249,7 +3427,7 @@ void main() {
         );
         pathOffset += 21;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3322,7 +3500,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkCalendarListEntry(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3348,7 +3526,7 @@ void main() {
           unittest.equals('$arg_calendarId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3395,7 +3573,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkCalendarListEntry(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3421,7 +3599,7 @@ void main() {
           unittest.equals('$arg_calendarId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3472,7 +3650,7 @@ void main() {
             api.Channel.fromJson(json as core.Map<core.String, core.dynamic>);
         checkChannel(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3492,7 +3670,7 @@ void main() {
         );
         pathOffset += 27;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3561,7 +3739,7 @@ void main() {
       final arg_calendarId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3595,7 +3773,7 @@ void main() {
         );
         pathOffset += 6;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3630,7 +3808,7 @@ void main() {
       final arg_calendarId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3656,7 +3834,7 @@ void main() {
           unittest.equals('$arg_calendarId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3691,7 +3869,7 @@ void main() {
       final arg_calendarId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3717,7 +3895,7 @@ void main() {
           unittest.equals('$arg_calendarId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3757,7 +3935,7 @@ void main() {
             api.Calendar.fromJson(json as core.Map<core.String, core.dynamic>);
         checkCalendar(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3777,7 +3955,7 @@ void main() {
         );
         pathOffset += 9;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3818,7 +3996,7 @@ void main() {
             api.Calendar.fromJson(json as core.Map<core.String, core.dynamic>);
         checkCalendar(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3844,7 +4022,7 @@ void main() {
           unittest.equals('$arg_calendarId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3886,7 +4064,7 @@ void main() {
             api.Calendar.fromJson(json as core.Map<core.String, core.dynamic>);
         checkCalendar(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3912,7 +4090,7 @@ void main() {
           unittest.equals('$arg_calendarId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3955,7 +4133,7 @@ void main() {
             api.Channel.fromJson(json as core.Map<core.String, core.dynamic>);
         checkChannel(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3975,7 +4153,7 @@ void main() {
         );
         pathOffset += 13;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4011,7 +4189,7 @@ void main() {
       final res = api.CalendarApi(mock).colors;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4031,7 +4209,7 @@ void main() {
         );
         pathOffset += 6;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4072,7 +4250,7 @@ void main() {
       final arg_sendUpdates = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4112,7 +4290,7 @@ void main() {
           unittest.equals('$arg_eventId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4162,7 +4340,7 @@ void main() {
       final arg_timeZone = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4202,7 +4380,7 @@ void main() {
           unittest.equals('$arg_eventId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4261,7 +4439,7 @@ void main() {
             api.Event.fromJson(json as core.Map<core.String, core.dynamic>);
         checkEvent(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4295,7 +4473,7 @@ void main() {
         );
         pathOffset += 14;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4352,7 +4530,7 @@ void main() {
             api.Event.fromJson(json as core.Map<core.String, core.dynamic>);
         checkEvent(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4386,7 +4564,7 @@ void main() {
         );
         pathOffset += 7;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4458,7 +4636,7 @@ void main() {
       final arg_timeZone = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4506,7 +4684,7 @@ void main() {
         );
         pathOffset += 10;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4587,14 +4765,15 @@ void main() {
       final res = api.CalendarApi(mock).events;
       final arg_calendarId = 'foo';
       final arg_alwaysIncludeEmail = true;
+      final arg_eventTypes = buildUnnamed28();
       final arg_iCalUID = 'foo';
       final arg_maxAttendees = 42;
       final arg_maxResults = 42;
       final arg_orderBy = 'foo';
       final arg_pageToken = 'foo';
-      final arg_privateExtendedProperty = buildUnnamed28();
+      final arg_privateExtendedProperty = buildUnnamed29();
       final arg_q = 'foo';
-      final arg_sharedExtendedProperty = buildUnnamed29();
+      final arg_sharedExtendedProperty = buildUnnamed30();
       final arg_showDeleted = true;
       final arg_showHiddenInvitations = true;
       final arg_singleEvents = true;
@@ -4605,7 +4784,7 @@ void main() {
       final arg_updatedMin = core.DateTime.parse('2002-02-27T14:01:02Z');
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4639,7 +4818,7 @@ void main() {
         );
         pathOffset += 7;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4657,6 +4836,10 @@ void main() {
         unittest.expect(
           queryMap['alwaysIncludeEmail']!.first,
           unittest.equals('$arg_alwaysIncludeEmail'),
+        );
+        unittest.expect(
+          queryMap['eventTypes']!,
+          unittest.equals(arg_eventTypes),
         );
         unittest.expect(
           queryMap['iCalUID']!.first,
@@ -4735,6 +4918,7 @@ void main() {
       }), true);
       final response = await res.list(arg_calendarId,
           alwaysIncludeEmail: arg_alwaysIncludeEmail,
+          eventTypes: arg_eventTypes,
           iCalUID: arg_iCalUID,
           maxAttendees: arg_maxAttendees,
           maxResults: arg_maxResults,
@@ -4765,7 +4949,7 @@ void main() {
       final arg_sendUpdates = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4813,7 +4997,7 @@ void main() {
         );
         pathOffset += 5;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4877,7 +5061,7 @@ void main() {
             api.Event.fromJson(json as core.Map<core.String, core.dynamic>);
         checkEvent(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4917,7 +5101,7 @@ void main() {
           unittest.equals('$arg_eventId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4987,7 +5171,7 @@ void main() {
       final arg_sendUpdates = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -5021,7 +5205,7 @@ void main() {
         );
         pathOffset += 16;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -5084,7 +5268,7 @@ void main() {
             api.Event.fromJson(json as core.Map<core.String, core.dynamic>);
         checkEvent(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -5124,7 +5308,7 @@ void main() {
           unittest.equals('$arg_eventId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -5192,14 +5376,15 @@ void main() {
       final arg_request = buildChannel();
       final arg_calendarId = 'foo';
       final arg_alwaysIncludeEmail = true;
+      final arg_eventTypes = buildUnnamed31();
       final arg_iCalUID = 'foo';
       final arg_maxAttendees = 42;
       final arg_maxResults = 42;
       final arg_orderBy = 'foo';
       final arg_pageToken = 'foo';
-      final arg_privateExtendedProperty = buildUnnamed30();
+      final arg_privateExtendedProperty = buildUnnamed32();
       final arg_q = 'foo';
-      final arg_sharedExtendedProperty = buildUnnamed31();
+      final arg_sharedExtendedProperty = buildUnnamed33();
       final arg_showDeleted = true;
       final arg_showHiddenInvitations = true;
       final arg_singleEvents = true;
@@ -5214,7 +5399,7 @@ void main() {
             api.Channel.fromJson(json as core.Map<core.String, core.dynamic>);
         checkChannel(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -5248,7 +5433,7 @@ void main() {
         );
         pathOffset += 13;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -5266,6 +5451,10 @@ void main() {
         unittest.expect(
           queryMap['alwaysIncludeEmail']!.first,
           unittest.equals('$arg_alwaysIncludeEmail'),
+        );
+        unittest.expect(
+          queryMap['eventTypes']!,
+          unittest.equals(arg_eventTypes),
         );
         unittest.expect(
           queryMap['iCalUID']!.first,
@@ -5344,6 +5533,7 @@ void main() {
       }), true);
       final response = await res.watch(arg_request, arg_calendarId,
           alwaysIncludeEmail: arg_alwaysIncludeEmail,
+          eventTypes: arg_eventTypes,
           iCalUID: arg_iCalUID,
           maxAttendees: arg_maxAttendees,
           maxResults: arg_maxResults,
@@ -5376,7 +5566,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkFreeBusyRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -5396,7 +5586,7 @@ void main() {
         );
         pathOffset += 8;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -5434,7 +5624,7 @@ void main() {
       final arg_setting = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -5460,7 +5650,7 @@ void main() {
           unittest.equals('$arg_setting'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -5498,7 +5688,7 @@ void main() {
       final arg_syncToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -5518,7 +5708,7 @@ void main() {
         );
         pathOffset += 17;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -5577,7 +5767,7 @@ void main() {
             api.Channel.fromJson(json as core.Map<core.String, core.dynamic>);
         checkChannel(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -5597,7 +5787,7 @@ void main() {
         );
         pathOffset += 23;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>

@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Workflow Executions API - v1
@@ -24,7 +23,7 @@
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsWorkflowsResource]
 ///       - [ProjectsLocationsWorkflowsExecutionsResource]
-library workflowexecutions.v1;
+library workflowexecutions_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -33,7 +32,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -236,9 +234,9 @@ class ProjectsLocationsWorkflowsExecutionsResource {
   /// returned execution. The API will default to the FULL view.
   /// Possible string values are:
   /// - "EXECUTION_VIEW_UNSPECIFIED" : The default / unset value.
-  /// - "BASIC" : Includes only basic metadata about the execution. Following
-  /// fields are returned: name, start_time, end_time, state and
-  /// workflow_revision_id.
+  /// - "BASIC" : Includes only basic metadata about the execution. The
+  /// following fields are returned: name, start_time, end_time, duration,
+  /// state, and workflow_revision_id.
   /// - "FULL" : Includes all data.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -285,6 +283,16 @@ class ProjectsLocationsWorkflowsExecutionsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/workflows/\[^/\]+$`.
   ///
+  /// [filter] - Optional. Filters applied to the \[Executions.ListExecutions\]
+  /// results. The following fields are supported for filtering: executionID,
+  /// state, startTime, endTime, duration, workflowRevisionID, stepName, and
+  /// label.
+  ///
+  /// [orderBy] - Optional. The ordering applied to the
+  /// \[Executions.ListExecutions\] results. By default the ordering is based on
+  /// descending start time. The following fields are supported for order by:
+  /// executionID, startTime, endTime, duration, state, and workflowRevisionID.
+  ///
   /// [pageSize] - Maximum number of executions to return per call. Max
   /// supported value depends on the selected Execution view: it's 1000 for
   /// BASIC and 100 for FULL. The default value used if the field is not
@@ -294,15 +302,16 @@ class ProjectsLocationsWorkflowsExecutionsResource {
   /// [pageToken] - A page token, received from a previous `ListExecutions`
   /// call. Provide this to retrieve the subsequent page. When paginating, all
   /// other parameters provided to `ListExecutions` must match the call that
-  /// provided the page token.
+  /// provided the page token. Note that pagination is applied to dynamic data.
+  /// The list of executions returned can change between page requests.
   ///
   /// [view] - Optional. A view defining which fields should be filled in the
   /// returned executions. The API will default to the BASIC view.
   /// Possible string values are:
   /// - "EXECUTION_VIEW_UNSPECIFIED" : The default / unset value.
-  /// - "BASIC" : Includes only basic metadata about the execution. Following
-  /// fields are returned: name, start_time, end_time, state and
-  /// workflow_revision_id.
+  /// - "BASIC" : Includes only basic metadata about the execution. The
+  /// following fields are returned: name, start_time, end_time, duration,
+  /// state, and workflow_revision_id.
   /// - "FULL" : Includes all data.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -317,12 +326,16 @@ class ProjectsLocationsWorkflowsExecutionsResource {
   /// this method will complete with the same error.
   async.Future<ListExecutionsResponse> list(
     core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
     core.int? pageSize,
     core.String? pageToken,
     core.String? view,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (view != null) 'view': [view],
@@ -395,12 +408,18 @@ class Execution {
 
   /// The call logging level associated to this execution.
   /// Possible string values are:
-  /// - "CALL_LOG_LEVEL_UNSPECIFIED" : No call logging specified.
+  /// - "CALL_LOG_LEVEL_UNSPECIFIED" : No call logging level specified.
   /// - "LOG_ALL_CALLS" : Log all call steps within workflows, all call returns,
   /// and all exceptions raised.
   /// - "LOG_ERRORS_ONLY" : Log only exceptions that are raised from call steps
   /// within workflows.
+  /// - "LOG_NONE" : Explicitly log nothing.
   core.String? callLogLevel;
+
+  /// Measures the duration of the execution.
+  ///
+  /// Output only.
+  core.String? duration;
 
   /// Marks the end of execution, successful or not.
   ///
@@ -414,6 +433,16 @@ class Execution {
   ///
   /// Output only.
   Error? error;
+
+  /// Labels associated with this execution.
+  ///
+  /// Labels can contain at most 64 entries. Keys and values can be no longer
+  /// than 63 characters and can only contain lowercase letters, numeric
+  /// characters, underscores, and dashes. Label keys must start with a letter.
+  /// International characters are allowed. By default, labels are inherited
+  /// from the workflow but are overridden by any labels associated with the
+  /// execution.
+  core.Map<core.String, core.String>? labels;
 
   /// The resource name of the execution.
   ///
@@ -444,18 +473,21 @@ class Execution {
   /// - "SUCCEEDED" : The execution finished successfully.
   /// - "FAILED" : The execution failed with an error.
   /// - "CANCELLED" : The execution was stopped intentionally.
+  /// - "UNAVAILABLE" : Execution data is unavailable. See the `state_error`
+  /// field.
+  /// - "QUEUED" : Request has been placed in the backlog for processing at a
+  /// later time.
   core.String? state;
 
-  /// Status tracks the current steps and progress data of this execution.
+  /// Error regarding the state of the Execution resource.
   ///
-  /// \> **Preview:** This field is covered by the \> \[Pre-GA Offerings
-  /// Terms\](https://cloud.google.com/terms/service-terms) of \> the Google
-  /// Cloud Terms of Service. Pre-GA features might have limited \> support, and
-  /// changes to pre-GA features might not be compatible with \> other pre-GA
-  /// versions. For more information, see the \>
-  /// [launch stage descriptions](https://cloud.google.com/products#product-launch-stages).
-  /// \> This field is usable only if your project has access. See the \>
-  /// [access request page](https://docs.google.com/forms/d/e/1FAIpQLSdgwrSV8Y4xZv_tvI6X2JEGX1-ty9yizv3_EAOVHWVKXvDLEA/viewform).
+  /// For example, this field will have error details if the execution data is
+  /// unavailable due to revoked KMS key permissions.
+  ///
+  /// Output only.
+  StateError? stateError;
+
+  /// Status tracks the current steps and progress data of this execution.
   ///
   /// Output only.
   Status? status;
@@ -468,12 +500,15 @@ class Execution {
   Execution({
     this.argument,
     this.callLogLevel,
+    this.duration,
     this.endTime,
     this.error,
+    this.labels,
     this.name,
     this.result,
     this.startTime,
     this.state,
+    this.stateError,
     this.status,
     this.workflowRevisionId,
   });
@@ -486,12 +521,23 @@ class Execution {
           callLogLevel: json_.containsKey('callLogLevel')
               ? json_['callLogLevel'] as core.String
               : null,
+          duration: json_.containsKey('duration')
+              ? json_['duration'] as core.String
+              : null,
           endTime: json_.containsKey('endTime')
               ? json_['endTime'] as core.String
               : null,
           error: json_.containsKey('error')
               ? Error.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           result: json_.containsKey('result')
@@ -502,6 +548,10 @@ class Execution {
               : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
+          stateError: json_.containsKey('stateError')
+              ? StateError.fromJson(
+                  json_['stateError'] as core.Map<core.String, core.dynamic>)
+              : null,
           status: json_.containsKey('status')
               ? Status.fromJson(
                   json_['status'] as core.Map<core.String, core.dynamic>)
@@ -514,12 +564,15 @@ class Execution {
   core.Map<core.String, core.dynamic> toJson() => {
         if (argument != null) 'argument': argument!,
         if (callLogLevel != null) 'callLogLevel': callLogLevel!,
+        if (duration != null) 'duration': duration!,
         if (endTime != null) 'endTime': endTime!,
         if (error != null) 'error': error!,
+        if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (result != null) 'result': result!,
         if (startTime != null) 'startTime': startTime!,
         if (state != null) 'state': state!,
+        if (stateError != null) 'stateError': stateError!,
         if (status != null) 'status': status!,
         if (workflowRevisionId != null)
           'workflowRevisionId': workflowRevisionId!,
@@ -668,16 +721,9 @@ class StackTraceElement {
       };
 }
 
-/// \> **Preview:** This field is covered by the \> \[Pre-GA Offerings
-/// Terms\](https://cloud.google.com/terms/service-terms) of \> the Google Cloud
-/// Terms of Service.
-///
-/// Pre-GA features might have limited \> support, and changes to pre-GA
-/// features might not be compatible with \> other pre-GA versions. For more
-/// information, see the \>
-/// [launch stage descriptions](https://cloud.google.com/products#product-launch-stages).
-/// \> This field is usable only if your project has access. See the \>
-/// [access request page](https://docs.google.com/forms/d/e/1FAIpQLSdgwrSV8Y4xZv_tvI6X2JEGX1-ty9yizv3_EAOVHWVKXvDLEA/viewform).
+/// Describes an error related to the current state of the Execution resource.
+typedef StateError = $StateError;
+
 /// Represents the current status of this execution.
 class Status {
   /// A list of currently executing or last executed step names for the workflow
@@ -744,6 +790,13 @@ class TriggerPubsubExecutionRequest {
   /// Required.
   core.String? GCPCloudEventsMode;
 
+  /// The number of attempts that have been made to deliver this message.
+  ///
+  /// This is set by Pub/Sub for subscriptions that have the "dead letter"
+  /// feature enabled, and hence provided here for compatibility, but is ignored
+  /// by Workflows.
+  core.int? deliveryAttempt;
+
   /// The message of the Pub/Sub push notification.
   ///
   /// Required.
@@ -758,6 +811,7 @@ class TriggerPubsubExecutionRequest {
 
   TriggerPubsubExecutionRequest({
     this.GCPCloudEventsMode,
+    this.deliveryAttempt,
     this.message,
     this.subscription,
   });
@@ -766,6 +820,9 @@ class TriggerPubsubExecutionRequest {
       : this(
           GCPCloudEventsMode: json_.containsKey('GCPCloudEventsMode')
               ? json_['GCPCloudEventsMode'] as core.String
+              : null,
+          deliveryAttempt: json_.containsKey('deliveryAttempt')
+              ? json_['deliveryAttempt'] as core.int
               : null,
           message: json_.containsKey('message')
               ? PubsubMessage.fromJson(
@@ -779,6 +836,7 @@ class TriggerPubsubExecutionRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (GCPCloudEventsMode != null)
           'GCPCloudEventsMode': GCPCloudEventsMode!,
+        if (deliveryAttempt != null) 'deliveryAttempt': deliveryAttempt!,
         if (message != null) 'message': message!,
         if (subscription != null) 'subscription': subscription!,
       };

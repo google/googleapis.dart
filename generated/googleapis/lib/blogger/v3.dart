@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Blogger API - v3
@@ -30,7 +29,7 @@
 /// - [PostUserInfosResource]
 /// - [PostsResource]
 /// - [UsersResource]
-library blogger.v3;
+library blogger_v3;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -712,6 +711,8 @@ class PagesResource {
   ///
   /// [pageId] - null
   ///
+  /// [useTrash] - Move to Trash if possible
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -723,9 +724,11 @@ class PagesResource {
   async.Future<void> delete(
     core.String blogId,
     core.String pageId, {
+    core.bool? useTrash,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (useTrash != null) 'useTrash': ['${useTrash}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1238,6 +1241,8 @@ class PostsResource {
   ///
   /// [postId] - null
   ///
+  /// [useTrash] - Move to Trash if possible
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1249,9 +1254,11 @@ class PostsResource {
   async.Future<void> delete(
     core.String blogId,
     core.String postId, {
+    core.bool? useTrash,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (useTrash != null) 'useTrash': ['${useTrash}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1456,6 +1463,12 @@ class PostsResource {
   ///
   /// [pageToken] - null
   ///
+  /// [sortOption] - Sort direction applied to post list.
+  /// Possible string values are:
+  /// - "SORT_OPTION_UNSPECIFIED" : The unspecified sort option.
+  /// - "DESCENDING" : The option to sort posts in descending order in time.
+  /// - "ASCENDING" : The option to sort posts in ascending order in time.
+  ///
   /// [startDate] - null
   ///
   /// [status] - null
@@ -1486,6 +1499,7 @@ class PostsResource {
     core.int? maxResults,
     core.String? orderBy,
     core.String? pageToken,
+    core.String? sortOption,
     core.String? startDate,
     core.List<core.String>? status,
     core.String? view,
@@ -1499,6 +1513,7 @@ class PostsResource {
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (orderBy != null) 'orderBy': [orderBy],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (sortOption != null) 'sortOption': [sortOption],
       if (startDate != null) 'startDate': [startDate],
       if (status != null) 'status': status,
       if (view != null) 'view': [view],

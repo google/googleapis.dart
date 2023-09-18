@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud Translation API - v3
@@ -23,10 +22,13 @@
 ///
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsDatasetsResource]
+///       - [ProjectsLocationsDatasetsExamplesResource]
 ///     - [ProjectsLocationsGlossariesResource]
 ///       - [ProjectsLocationsGlossariesGlossaryEntriesResource]
+///     - [ProjectsLocationsModelsResource]
 ///     - [ProjectsLocationsOperationsResource]
-library translate.v3;
+library translate_v3;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -35,7 +37,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -179,6 +180,52 @@ class ProjectsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Romanize input text written in non-Latin scripts to Latin text.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Project or location to make a call. Must refer to a
+  /// caller's project. Format:
+  /// `projects/{project-number-or-id}/locations/{location-id}` or
+  /// `projects/{project-number-or-id}`. For global calls, use
+  /// `projects/{project-number-or-id}/locations/global` or
+  /// `projects/{project-number-or-id}`.
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RomanizeTextResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RomanizeTextResponse> romanizeText(
+    RomanizeTextRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$parent') + ':romanizeText';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return RomanizeTextResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Translates input text and returns translated text.
   ///
   /// [request] - The metadata request object.
@@ -231,8 +278,12 @@ class ProjectsResource {
 class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsDatasetsResource get datasets =>
+      ProjectsLocationsDatasetsResource(_requester);
   ProjectsLocationsGlossariesResource get glossaries =>
       ProjectsLocationsGlossariesResource(_requester);
+  ProjectsLocationsModelsResource get models =>
+      ProjectsLocationsModelsResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
       ProjectsLocationsOperationsResource(_requester);
 
@@ -534,6 +585,52 @@ class ProjectsLocationsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Romanize input text written in non-Latin scripts to Latin text.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Project or location to make a call. Must refer to a
+  /// caller's project. Format:
+  /// `projects/{project-number-or-id}/locations/{location-id}` or
+  /// `projects/{project-number-or-id}`. For global calls, use
+  /// `projects/{project-number-or-id}/locations/global` or
+  /// `projects/{project-number-or-id}`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RomanizeTextResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RomanizeTextResponse> romanizeText(
+    RomanizeTextRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$parent') + ':romanizeText';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return RomanizeTextResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Translates documents in synchronous mode.
   ///
   /// [request] - The metadata request object.
@@ -626,6 +723,321 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return TranslateTextResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsDatasetsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsDatasetsExamplesResource get examples =>
+      ProjectsLocationsDatasetsExamplesResource(_requester);
+
+  ProjectsLocationsDatasetsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a Dataset.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project name.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    Dataset request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$parent') + '/datasets';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a dataset and all of its contents.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the dataset to delete.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Exports dataset's data to the provided output location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [dataset] - Required. Name of the dataset. In form of
+  /// `projects/{project-number-or-id}/locations/{location-id}/datasets/{dataset-id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> exportData(
+    ExportDataRequest request,
+    core.String dataset, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$dataset') + ':exportData';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a Dataset.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the dataset to retrieve.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Dataset].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Dataset> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Dataset.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Import sentence pairs into translation Dataset.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [dataset] - Required. Name of the dataset. In form of
+  /// `projects/{project-number-or-id}/locations/{location-id}/datasets/{dataset-id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> importData(
+    ImportDataRequest request,
+    core.String dataset, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$dataset') + ':importData';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists datasets.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the parent project. In form of
+  /// `projects/{project-number-or-id}/locations/{location-id}`
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. Requested page size. The server can return fewer
+  /// results than requested.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results for the
+  /// server to return. Typically obtained from next_page_token field in the
+  /// response of a ListDatasets call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListDatasetsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListDatasetsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$parent') + '/datasets';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListDatasetsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsDatasetsExamplesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsDatasetsExamplesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists sentence pairs in the dataset.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the parent dataset. In form of
+  /// `projects/{project-number-or-id}/locations/{location-id}/datasets/{dataset-id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. An expression for filtering the examples that will be
+  /// returned. Example filter: * `usage=TRAIN`
+  ///
+  /// [pageSize] - Optional. Requested page size. The server can return fewer
+  /// results than requested.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results for the
+  /// server to return. Typically obtained from next_page_token field in the
+  /// response of a ListExamples call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListExamplesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListExamplesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$parent') + '/examples';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListExamplesResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -1099,6 +1511,179 @@ class ProjectsLocationsGlossariesGlossaryEntriesResource {
   }
 }
 
+class ProjectsLocationsModelsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsModelsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a Model.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project name, in form of
+  /// `projects/{project}/locations/{location}`
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    Model request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$parent') + '/models';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a model.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the model to delete.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/models/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a model.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the model to retrieve.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/models/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Model].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Model> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Model.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists models.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the parent project. In form of
+  /// `projects/{project-number-or-id}/locations/{location-id}`
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. An expression for filtering the models that will be
+  /// returned. Supported filter: `dataset_id=${dataset_id}`
+  ///
+  /// [pageSize] - Optional. Requested page size. The server can return fewer
+  /// results than requested.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results for the
+  /// server to return. Typically obtained from next_page_token field in the
+  /// response of a ListModels call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListModelsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListModelsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$parent') + '/models';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListModelsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
@@ -1237,13 +1822,6 @@ class ProjectsLocationsOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -1437,6 +2015,29 @@ class BatchDocumentOutputConfig {
 
 /// The BatchTranslateDocument request.
 class BatchTranslateDocumentRequest {
+  /// This flag is to support user customized attribution.
+  ///
+  /// If not provided, the default is `Machine Translated by Google`. Customized
+  /// attribution should follow rules in
+  /// https://cloud.google.com/translate/attribution#attribution_and_logos
+  ///
+  /// Optional.
+  core.String? customizedAttribution;
+
+  /// If true, enable auto rotation correction in DVS.
+  ///
+  /// Optional.
+  core.bool? enableRotationCorrection;
+
+  /// If true, use the text removal server to remove the shadow text on
+  /// background image for native pdf translation.
+  ///
+  /// Shadow removal feature can only be enabled when
+  /// is_translate_native_pdf_only: false && pdf_native_only: false
+  ///
+  /// Optional.
+  core.bool? enableShadowRemovalNativePdf;
+
   /// Optional.
   core.Map<core.String, core.String>? formatConversions;
 
@@ -1478,7 +2079,7 @@ class BatchTranslateDocumentRequest {
   /// Required.
   BatchDocumentOutputConfig? outputConfig;
 
-  /// The BCP-47 language code of the input document if known, for example,
+  /// The ISO-639 language code of the input document if known, for example,
   /// "en-US" or "sr-Latn".
   ///
   /// Supported language codes are listed in
@@ -1487,7 +2088,7 @@ class BatchTranslateDocumentRequest {
   /// Required.
   core.String? sourceLanguageCode;
 
-  /// The BCP-47 language code to use for translation of the input document.
+  /// The ISO-639 language code to use for translation of the input document.
   ///
   /// Specify up to 10 language codes here.
   ///
@@ -1495,6 +2096,9 @@ class BatchTranslateDocumentRequest {
   core.List<core.String>? targetLanguageCodes;
 
   BatchTranslateDocumentRequest({
+    this.customizedAttribution,
+    this.enableRotationCorrection,
+    this.enableShadowRemovalNativePdf,
     this.formatConversions,
     this.glossaries,
     this.inputConfigs,
@@ -1506,23 +2110,34 @@ class BatchTranslateDocumentRequest {
 
   BatchTranslateDocumentRequest.fromJson(core.Map json_)
       : this(
+          customizedAttribution: json_.containsKey('customizedAttribution')
+              ? json_['customizedAttribution'] as core.String
+              : null,
+          enableRotationCorrection:
+              json_.containsKey('enableRotationCorrection')
+                  ? json_['enableRotationCorrection'] as core.bool
+                  : null,
+          enableShadowRemovalNativePdf:
+              json_.containsKey('enableShadowRemovalNativePdf')
+                  ? json_['enableShadowRemovalNativePdf'] as core.bool
+                  : null,
           formatConversions: json_.containsKey('formatConversions')
               ? (json_['formatConversions']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
           glossaries: json_.containsKey('glossaries')
               ? (json_['glossaries'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     TranslateTextGlossaryConfig.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -1534,9 +2149,9 @@ class BatchTranslateDocumentRequest {
               : null,
           models: json_.containsKey('models')
               ? (json_['models'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -1555,6 +2170,12 @@ class BatchTranslateDocumentRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (customizedAttribution != null)
+          'customizedAttribution': customizedAttribution!,
+        if (enableRotationCorrection != null)
+          'enableRotationCorrection': enableRotationCorrection!,
+        if (enableShadowRemovalNativePdf != null)
+          'enableShadowRemovalNativePdf': enableShadowRemovalNativePdf!,
         if (formatConversions != null) 'formatConversions': formatConversions!,
         if (glossaries != null) 'glossaries': glossaries!,
         if (inputConfigs != null) 'inputConfigs': inputConfigs!,
@@ -1644,10 +2265,10 @@ class BatchTranslateTextRequest {
           glossaries: json_.containsKey('glossaries')
               ? (json_['glossaries'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     TranslateTextGlossaryConfig.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -1659,17 +2280,17 @@ class BatchTranslateTextRequest {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
           models: json_.containsKey('models')
               ? (json_['models'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -1702,6 +2323,163 @@ class BatchTranslateTextRequest {
 
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
+
+/// A dataset that hosts the examples (sentence pairs) used for translation
+/// models.
+class Dataset {
+  /// Timestamp when this dataset was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The name of the dataset to show in the interface.
+  ///
+  /// The name can be up to 32 characters long and can consist only of ASCII
+  /// Latin letters A-Z and a-z, underscores (_), and ASCII digits 0-9.
+  core.String? displayName;
+
+  /// The number of examples in the dataset.
+  ///
+  /// Output only.
+  core.int? exampleCount;
+
+  /// The resource name of the dataset, in form of
+  /// `projects/{project-number-or-id}/locations/{location_id}/datasets/{dataset_id}`
+  core.String? name;
+
+  /// The BCP-47 language code of the source language.
+  core.String? sourceLanguageCode;
+
+  /// The BCP-47 language code of the target language.
+  core.String? targetLanguageCode;
+
+  /// Number of test examples (sentence pairs).
+  ///
+  /// Output only.
+  core.int? testExampleCount;
+
+  /// Number of training examples (sentence pairs).
+  ///
+  /// Output only.
+  core.int? trainExampleCount;
+
+  /// Timestamp when this dataset was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  /// Number of validation examples (sentence pairs).
+  ///
+  /// Output only.
+  core.int? validateExampleCount;
+
+  Dataset({
+    this.createTime,
+    this.displayName,
+    this.exampleCount,
+    this.name,
+    this.sourceLanguageCode,
+    this.targetLanguageCode,
+    this.testExampleCount,
+    this.trainExampleCount,
+    this.updateTime,
+    this.validateExampleCount,
+  });
+
+  Dataset.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          exampleCount: json_.containsKey('exampleCount')
+              ? json_['exampleCount'] as core.int
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          sourceLanguageCode: json_.containsKey('sourceLanguageCode')
+              ? json_['sourceLanguageCode'] as core.String
+              : null,
+          targetLanguageCode: json_.containsKey('targetLanguageCode')
+              ? json_['targetLanguageCode'] as core.String
+              : null,
+          testExampleCount: json_.containsKey('testExampleCount')
+              ? json_['testExampleCount'] as core.int
+              : null,
+          trainExampleCount: json_.containsKey('trainExampleCount')
+              ? json_['trainExampleCount'] as core.int
+              : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+          validateExampleCount: json_.containsKey('validateExampleCount')
+              ? json_['validateExampleCount'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (displayName != null) 'displayName': displayName!,
+        if (exampleCount != null) 'exampleCount': exampleCount!,
+        if (name != null) 'name': name!,
+        if (sourceLanguageCode != null)
+          'sourceLanguageCode': sourceLanguageCode!,
+        if (targetLanguageCode != null)
+          'targetLanguageCode': targetLanguageCode!,
+        if (testExampleCount != null) 'testExampleCount': testExampleCount!,
+        if (trainExampleCount != null) 'trainExampleCount': trainExampleCount!,
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (validateExampleCount != null)
+          'validateExampleCount': validateExampleCount!,
+      };
+}
+
+/// Input configuration for datasets.
+class DatasetInputConfig {
+  /// Files containing the sentence pairs to be imported to the dataset.
+  core.List<InputFile>? inputFiles;
+
+  DatasetInputConfig({
+    this.inputFiles,
+  });
+
+  DatasetInputConfig.fromJson(core.Map json_)
+      : this(
+          inputFiles: json_.containsKey('inputFiles')
+              ? (json_['inputFiles'] as core.List)
+                  .map((value) => InputFile.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (inputFiles != null) 'inputFiles': inputFiles!,
+      };
+}
+
+/// Output configuration for datasets.
+class DatasetOutputConfig {
+  /// Google Cloud Storage destination to write the output.
+  GcsOutputDestination? gcsDestination;
+
+  DatasetOutputConfig({
+    this.gcsDestination,
+  });
+
+  DatasetOutputConfig.fromJson(core.Map json_)
+      : this(
+          gcsDestination: json_.containsKey('gcsDestination')
+              ? GcsOutputDestination.fromJson(json_['gcsDestination']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gcsDestination != null) 'gcsDestination': gcsDestination!,
+      };
+}
 
 /// The request message for language detection.
 class DetectLanguageRequest {
@@ -1752,9 +2530,9 @@ class DetectLanguageRequest {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -1804,7 +2582,7 @@ class DetectedLanguage {
   /// The confidence of the detection result for this language.
   core.double? confidence;
 
-  /// The BCP-47 language code of source content in the request, detected
+  /// The ISO-639 language code of the source content in the request, detected
   /// automatically.
   core.String? languageCode;
 
@@ -2011,6 +2789,79 @@ class DocumentTranslation {
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
+/// A sentence pair.
+class Example {
+  /// The resource name of the example, in form of
+  /// \`projects/{project-number-or-id}/locations/{location_id}/datasets/{dataset_id}/examples/{example_id}'
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Sentence in source language.
+  core.String? sourceText;
+
+  /// Sentence in target language.
+  core.String? targetText;
+
+  /// Usage of the sentence pair.
+  ///
+  /// Options are TRAIN|VALIDATION|TEST.
+  ///
+  /// Output only.
+  core.String? usage;
+
+  Example({
+    this.name,
+    this.sourceText,
+    this.targetText,
+    this.usage,
+  });
+
+  Example.fromJson(core.Map json_)
+      : this(
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          sourceText: json_.containsKey('sourceText')
+              ? json_['sourceText'] as core.String
+              : null,
+          targetText: json_.containsKey('targetText')
+              ? json_['targetText'] as core.String
+              : null,
+          usage:
+              json_.containsKey('usage') ? json_['usage'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (sourceText != null) 'sourceText': sourceText!,
+        if (targetText != null) 'targetText': targetText!,
+        if (usage != null) 'usage': usage!,
+      };
+}
+
+/// Request message for ExportData.
+class ExportDataRequest {
+  /// The config for the output content.
+  ///
+  /// Required.
+  DatasetOutputConfig? outputConfig;
+
+  ExportDataRequest({
+    this.outputConfig,
+  });
+
+  ExportDataRequest.fromJson(core.Map json_)
+      : this(
+          outputConfig: json_.containsKey('outputConfig')
+              ? DatasetOutputConfig.fromJson(
+                  json_['outputConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (outputConfig != null) 'outputConfig': outputConfig!,
+      };
+}
+
 /// The Google Cloud Storage location for the output content.
 class GcsDestination {
   /// The bucket used in 'output_uri_prefix' must exist and there must be no
@@ -2040,31 +2891,39 @@ class GcsDestination {
 }
 
 /// The Google Cloud Storage location for the input content.
-class GcsSource {
-  /// Source data URI.
+typedef GcsInputSource = $Source;
+
+/// The Google Cloud Storage location for the output content.
+class GcsOutputDestination {
+  /// Google Cloud Storage URI to output directory.
   ///
-  /// For example, `gs://my_bucket/my_object`.
+  /// For example, `gs://bucket/directory`. The requesting user must have write
+  /// permission to the bucket. The directory will be created if it doesn't
+  /// exist.
   ///
   /// Required.
-  core.String? inputUri;
+  core.String? outputUriPrefix;
 
-  GcsSource({
-    this.inputUri,
+  GcsOutputDestination({
+    this.outputUriPrefix,
   });
 
-  GcsSource.fromJson(core.Map json_)
+  GcsOutputDestination.fromJson(core.Map json_)
       : this(
-          inputUri: json_.containsKey('inputUri')
-              ? json_['inputUri'] as core.String
+          outputUriPrefix: json_.containsKey('outputUriPrefix')
+              ? json_['outputUriPrefix'] as core.String
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (inputUri != null) 'inputUri': inputUri!,
+        if (outputUriPrefix != null) 'outputUriPrefix': outputUriPrefix!,
       };
 }
 
-/// Represents a glossary built from user provided data.
+/// The Google Cloud Storage location for the input content.
+typedef GcsSource = $Source;
+
+/// Represents a glossary built from user-provided data.
 class Glossary {
   /// The display name of the glossary.
   ///
@@ -2217,9 +3076,9 @@ class GlossaryInputConfig {
   /// \[google.rpc.Code.INVALID_ARGUMENT\] for unsupported URI-s and file
   /// formats. Wildcards are not allowed. This must be a single file in one of
   /// the following formats: For unidirectional glossaries: - TSV/CSV
-  /// (`.tsv`/`.csv`): 2 column file, tab- or comma-separated. The first column
-  /// is source text. The second column is target text. The file must not
-  /// contain headers. That is, the first row is data, not column names. - TMX
+  /// (`.tsv`/`.csv`): Two column file, tab- or comma-separated. The first
+  /// column is source text. The second column is target text. No headers in
+  /// this file. The first row contains data and not column names. - TMX
   /// (`.tmx`): TMX file with parallel data defining source/target term pairs.
   /// For equivalent term sets glossaries: - CSV (`.csv`): Multi-column CSV file
   /// defining equivalent glossary terms in multiple languages. See
@@ -2332,6 +3191,30 @@ class GlossaryTermsSet {
       };
 }
 
+/// Request message for ImportData.
+class ImportDataRequest {
+  /// The config for the input content.
+  ///
+  /// Required.
+  DatasetInputConfig? inputConfig;
+
+  ImportDataRequest({
+    this.inputConfig,
+  });
+
+  ImportDataRequest.fromJson(core.Map json_)
+      : this(
+          inputConfig: json_.containsKey('inputConfig')
+              ? DatasetInputConfig.fromJson(
+                  json_['inputConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (inputConfig != null) 'inputConfig': inputConfig!,
+      };
+}
+
 /// Input configuration for BatchTranslateText request.
 class InputConfig {
   /// Google Cloud Storage location for the source input.
@@ -2383,16 +3266,50 @@ class InputConfig {
       };
 }
 
+/// An input file.
+class InputFile {
+  /// Google Cloud Storage file source.
+  GcsInputSource? gcsSource;
+
+  /// Usage of the file contents.
+  ///
+  /// Options are TRAIN|VALIDATION|TEST, or UNASSIGNED (by default) for auto
+  /// split.
+  ///
+  /// Optional.
+  core.String? usage;
+
+  InputFile({
+    this.gcsSource,
+    this.usage,
+  });
+
+  InputFile.fromJson(core.Map json_)
+      : this(
+          gcsSource: json_.containsKey('gcsSource')
+              ? GcsInputSource.fromJson(
+                  json_['gcsSource'] as core.Map<core.String, core.dynamic>)
+              : null,
+          usage:
+              json_.containsKey('usage') ? json_['usage'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gcsSource != null) 'gcsSource': gcsSource!,
+        if (usage != null) 'usage': usage!,
+      };
+}
+
 /// Used with unidirectional glossaries.
 class LanguageCodePair {
-  /// The BCP-47 language code of the input text, for example, "en-US".
+  /// The ISO-639 language code of the input text, for example, "en-US".
   ///
   /// Expected to be an exact match for GlossaryTerm.language_code.
   ///
   /// Required.
   core.String? sourceLanguageCode;
 
-  /// The BCP-47 language code for translation output, for example, "zh-CN".
+  /// The ISO-639 language code for translation output, for example, "zh-CN".
   ///
   /// Expected to be an exact match for GlossaryTerm.language_code.
   ///
@@ -2424,7 +3341,7 @@ class LanguageCodePair {
 
 /// Used with equivalent term set glossaries.
 class LanguageCodesSet {
-  /// The BCP-47 language code(s) for terms defined in the glossary.
+  /// The ISO-639 language code(s) for terms defined in the glossary.
   ///
   /// All entries are unique. The list contains at least two entries. Expected
   /// to be an exact match for GlossaryTerm.language_code.
@@ -2445,6 +3362,76 @@ class LanguageCodesSet {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (languageCodes != null) 'languageCodes': languageCodes!,
+      };
+}
+
+/// Response message for ListDatasets.
+class ListDatasetsResponse {
+  /// The datasets read.
+  core.List<Dataset>? datasets;
+
+  /// A token to retrieve next page of results.
+  ///
+  /// Pass this token to the page_token field in the ListDatasetsRequest to
+  /// obtain the corresponding page.
+  core.String? nextPageToken;
+
+  ListDatasetsResponse({
+    this.datasets,
+    this.nextPageToken,
+  });
+
+  ListDatasetsResponse.fromJson(core.Map json_)
+      : this(
+          datasets: json_.containsKey('datasets')
+              ? (json_['datasets'] as core.List)
+                  .map((value) => Dataset.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (datasets != null) 'datasets': datasets!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Response message for ListExamples.
+class ListExamplesResponse {
+  /// The sentence pairs.
+  core.List<Example>? examples;
+
+  /// A token to retrieve next page of results.
+  ///
+  /// Pass this token to the page_token field in the ListExamplesRequest to
+  /// obtain the corresponding page.
+  core.String? nextPageToken;
+
+  ListExamplesResponse({
+    this.examples,
+    this.nextPageToken,
+  });
+
+  ListExamplesResponse.fromJson(core.Map json_)
+      : this(
+          examples: json_.containsKey('examples')
+              ? (json_['examples'] as core.List)
+                  .map((value) => Example.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (examples != null) 'examples': examples!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -2555,6 +3542,41 @@ class ListLocationsResponse {
       };
 }
 
+/// Response message for ListModels.
+class ListModelsResponse {
+  /// The models read.
+  core.List<Model>? models;
+
+  /// A token to retrieve next page of results.
+  ///
+  /// Pass this token to the page_token field in the ListModelsRequest to obtain
+  /// the corresponding page.
+  core.String? nextPageToken;
+
+  ListModelsResponse({
+    this.models,
+    this.nextPageToken,
+  });
+
+  ListModelsResponse.fromJson(core.Map json_)
+      : this(
+          models: json_.containsKey('models')
+              ? (json_['models'] as core.List)
+                  .map((value) => Model.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (models != null) 'models': models!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
 /// The response message for Operations.ListOperations.
 class ListOperationsResponse {
   /// The standard List next-page token.
@@ -2587,8 +3609,122 @@ class ListOperationsResponse {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
+/// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
+
+/// A trained translation model.
+class Model {
+  /// Timestamp when the model resource was created, which is also when the
+  /// training started.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The dataset from which the model is trained, in form of
+  /// `projects/{project-number-or-id}/locations/{location_id}/datasets/{dataset_id}`
+  core.String? dataset;
+
+  /// The name of the model to show in the interface.
+  ///
+  /// The name can be up to 32 characters long and can consist only of ASCII
+  /// Latin letters A-Z and a-z, underscores (_), and ASCII digits 0-9.
+  core.String? displayName;
+
+  /// The resource name of the model, in form of
+  /// `projects/{project-number-or-id}/locations/{location_id}/models/{model_id}`
+  core.String? name;
+
+  /// The BCP-47 language code of the source language.
+  ///
+  /// Output only.
+  core.String? sourceLanguageCode;
+
+  /// The BCP-47 language code of the target language.
+  ///
+  /// Output only.
+  core.String? targetLanguageCode;
+
+  /// Number of examples (sentence pairs) used to test the model.
+  ///
+  /// Output only.
+  core.int? testExampleCount;
+
+  /// Number of examples (sentence pairs) used to train the model.
+  ///
+  /// Output only.
+  core.int? trainExampleCount;
+
+  /// Timestamp when this model was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  /// Number of examples (sentence pairs) used to validate the model.
+  ///
+  /// Output only.
+  core.int? validateExampleCount;
+
+  Model({
+    this.createTime,
+    this.dataset,
+    this.displayName,
+    this.name,
+    this.sourceLanguageCode,
+    this.targetLanguageCode,
+    this.testExampleCount,
+    this.trainExampleCount,
+    this.updateTime,
+    this.validateExampleCount,
+  });
+
+  Model.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          dataset: json_.containsKey('dataset')
+              ? json_['dataset'] as core.String
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          sourceLanguageCode: json_.containsKey('sourceLanguageCode')
+              ? json_['sourceLanguageCode'] as core.String
+              : null,
+          targetLanguageCode: json_.containsKey('targetLanguageCode')
+              ? json_['targetLanguageCode'] as core.String
+              : null,
+          testExampleCount: json_.containsKey('testExampleCount')
+              ? json_['testExampleCount'] as core.int
+              : null,
+          trainExampleCount: json_.containsKey('trainExampleCount')
+              ? json_['trainExampleCount'] as core.int
+              : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+          validateExampleCount: json_.containsKey('validateExampleCount')
+              ? json_['validateExampleCount'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (dataset != null) 'dataset': dataset!,
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
+        if (sourceLanguageCode != null)
+          'sourceLanguageCode': sourceLanguageCode!,
+        if (targetLanguageCode != null)
+          'targetLanguageCode': targetLanguageCode!,
+        if (testExampleCount != null) 'testExampleCount': testExampleCount!,
+        if (trainExampleCount != null) 'trainExampleCount': trainExampleCount!,
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (validateExampleCount != null)
+          'validateExampleCount': validateExampleCount!,
+      };
+}
 
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
@@ -2695,7 +3831,7 @@ class OutputConfig {
   /// avoid file updating.
   /// (https://cloud.google.com/storage/docs/bucket-lock#retention-policy) The
   /// format of translations_file (for target language code 'trg') is:
-  /// gs://translation_test/a_b_c_'trg'_translations.\[extension\] If the input
+  /// `gs://translation_test/a_b_c_'trg'_translations.[extension]` If the input
   /// file extension is tsv, the output has the following columns: Column 1: ID
   /// of the request provided in the input, if it's not provided in the input,
   /// then the input row number is used (0-based). Column 2: source sentence.
@@ -2736,6 +3872,111 @@ class OutputConfig {
       };
 }
 
+/// A single romanization response.
+class Romanization {
+  /// The ISO-639 language code of source text in the initial request, detected
+  /// automatically, if no source language was passed within the initial
+  /// request.
+  ///
+  /// If the source language was passed, auto-detection of the language does not
+  /// occur and this field is empty.
+  core.String? detectedLanguageCode;
+
+  /// Romanized text.
+  ///
+  /// If an error occurs during romanization, this field might be excluded from
+  /// the response.
+  core.String? romanizedText;
+
+  Romanization({
+    this.detectedLanguageCode,
+    this.romanizedText,
+  });
+
+  Romanization.fromJson(core.Map json_)
+      : this(
+          detectedLanguageCode: json_.containsKey('detectedLanguageCode')
+              ? json_['detectedLanguageCode'] as core.String
+              : null,
+          romanizedText: json_.containsKey('romanizedText')
+              ? json_['romanizedText'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (detectedLanguageCode != null)
+          'detectedLanguageCode': detectedLanguageCode!,
+        if (romanizedText != null) 'romanizedText': romanizedText!,
+      };
+}
+
+/// The request message for synchronous romanization.
+class RomanizeTextRequest {
+  /// The content of the input in string format.
+  ///
+  /// Required.
+  core.List<core.String>? contents;
+
+  /// The ISO-639 language code of the input text if known, for example, "hi" or
+  /// "zh".
+  ///
+  /// If the source language isn't specified, the API attempts to identify the
+  /// source language automatically and returns the source language for each
+  /// content in the response.
+  ///
+  /// Optional.
+  core.String? sourceLanguageCode;
+
+  RomanizeTextRequest({
+    this.contents,
+    this.sourceLanguageCode,
+  });
+
+  RomanizeTextRequest.fromJson(core.Map json_)
+      : this(
+          contents: json_.containsKey('contents')
+              ? (json_['contents'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          sourceLanguageCode: json_.containsKey('sourceLanguageCode')
+              ? json_['sourceLanguageCode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (contents != null) 'contents': contents!,
+        if (sourceLanguageCode != null)
+          'sourceLanguageCode': sourceLanguageCode!,
+      };
+}
+
+/// The response message for synchronous romanization.
+class RomanizeTextResponse {
+  /// Text romanization responses.
+  ///
+  /// This field has the same length as `contents`.
+  core.List<Romanization>? romanizations;
+
+  RomanizeTextResponse({
+    this.romanizations,
+  });
+
+  RomanizeTextResponse.fromJson(core.Map json_)
+      : this(
+          romanizations: json_.containsKey('romanizations')
+              ? (json_['romanizations'] as core.List)
+                  .map((value) => Romanization.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (romanizations != null) 'romanizations': romanizations!,
+      };
+}
+
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.
 ///
@@ -2748,21 +3989,21 @@ typedef Status = $Status;
 /// A single supported language response corresponds to information related to
 /// one supported language.
 class SupportedLanguage {
-  /// Human readable name of the language localized in the display language
+  /// Human-readable name of the language localized in the display language
   /// specified in the request.
   core.String? displayName;
 
   /// Supported language code, generally consisting of its ISO 639-1 identifier,
   /// for example, 'en', 'ja'.
   ///
-  /// In certain cases, BCP-47 codes including language and region identifiers
-  /// are returned (for example, 'zh-TW' and 'zh-CN')
+  /// In certain cases, ISO-639 codes including language and region identifiers
+  /// are returned (for example, 'zh-TW' and 'zh-CN').
   core.String? languageCode;
 
-  /// Can be used as source language.
+  /// Can be used as a source language.
   core.bool? supportSource;
 
-  /// Can be used as target language.
+  /// Can be used as a target language.
   core.bool? supportTarget;
 
   SupportedLanguage({
@@ -2849,6 +4090,20 @@ class TranslateDocumentRequest {
   /// Optional.
   DocumentOutputConfig? documentOutputConfig;
 
+  /// If true, enable auto rotation correction in DVS.
+  ///
+  /// Optional.
+  core.bool? enableRotationCorrection;
+
+  /// If true, use the text removal server to remove the shadow text on
+  /// background image for native pdf translation.
+  ///
+  /// Shadow removal feature can only be enabled when
+  /// is_translate_native_pdf_only: false && pdf_native_only: false
+  ///
+  /// Optional.
+  core.bool? enableShadowRemovalNativePdf;
+
   /// Glossary to be applied.
   ///
   /// The glossary must be within the same region (have the same location-id) as
@@ -2856,6 +4111,14 @@ class TranslateDocumentRequest {
   ///
   /// Optional.
   TranslateTextGlossaryConfig? glossaryConfig;
+
+  /// is_translate_native_pdf_only field for external customers.
+  ///
+  /// If true, the page limit of online native pdf translation is 300 and only
+  /// native pdf pages will be translated.
+  ///
+  /// Optional.
+  core.bool? isTranslateNativePdfOnly;
 
   /// The labels with user-defined metadata for the request.
   ///
@@ -2881,7 +4144,7 @@ class TranslateDocumentRequest {
   /// Optional.
   core.String? model;
 
-  /// The BCP-47 language code of the input document if known, for example,
+  /// The ISO-639 language code of the input document if known, for example,
   /// "en-US" or "sr-Latn".
   ///
   /// Supported language codes are listed in Language Support. If the source
@@ -2893,8 +4156,8 @@ class TranslateDocumentRequest {
   /// Optional.
   core.String? sourceLanguageCode;
 
-  /// The BCP-47 language code to use for translation of the input document, set
-  /// to one of the language codes listed in Language Support.
+  /// The ISO-639 language code to use for translation of the input document,
+  /// set to one of the language codes listed in Language Support.
   ///
   /// Required.
   core.String? targetLanguageCode;
@@ -2903,7 +4166,10 @@ class TranslateDocumentRequest {
     this.customizedAttribution,
     this.documentInputConfig,
     this.documentOutputConfig,
+    this.enableRotationCorrection,
+    this.enableShadowRemovalNativePdf,
     this.glossaryConfig,
+    this.isTranslateNativePdfOnly,
     this.labels,
     this.model,
     this.sourceLanguageCode,
@@ -2923,15 +4189,27 @@ class TranslateDocumentRequest {
               ? DocumentOutputConfig.fromJson(json_['documentOutputConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          enableRotationCorrection:
+              json_.containsKey('enableRotationCorrection')
+                  ? json_['enableRotationCorrection'] as core.bool
+                  : null,
+          enableShadowRemovalNativePdf:
+              json_.containsKey('enableShadowRemovalNativePdf')
+                  ? json_['enableShadowRemovalNativePdf'] as core.bool
+                  : null,
           glossaryConfig: json_.containsKey('glossaryConfig')
               ? TranslateTextGlossaryConfig.fromJson(json_['glossaryConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          isTranslateNativePdfOnly:
+              json_.containsKey('isTranslateNativePdfOnly')
+                  ? json_['isTranslateNativePdfOnly'] as core.bool
+                  : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -2952,7 +4230,13 @@ class TranslateDocumentRequest {
           'documentInputConfig': documentInputConfig!,
         if (documentOutputConfig != null)
           'documentOutputConfig': documentOutputConfig!,
+        if (enableRotationCorrection != null)
+          'enableRotationCorrection': enableRotationCorrection!,
+        if (enableShadowRemovalNativePdf != null)
+          'enableShadowRemovalNativePdf': enableShadowRemovalNativePdf!,
         if (glossaryConfig != null) 'glossaryConfig': glossaryConfig!,
+        if (isTranslateNativePdfOnly != null)
+          'isTranslateNativePdfOnly': isTranslateNativePdfOnly!,
         if (labels != null) 'labels': labels!,
         if (model != null) 'model': model!,
         if (sourceLanguageCode != null)
@@ -3023,20 +4307,20 @@ class TranslateDocumentResponse {
       };
 }
 
-/// Configures which glossary should be used for a specific target language, and
-/// defines options for applying that glossary.
+/// Configures which glossary is used for a specific target language and defines
+/// options for applying that glossary.
 class TranslateTextGlossaryConfig {
   /// The `glossary` to be applied for this translation.
   ///
-  /// The format depends on glossary: - User provided custom glossary:
+  /// The format depends on the glossary: - User-provided custom glossary:
   /// `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`
   ///
   /// Required.
   core.String? glossary;
 
-  /// Indicates match is case-insensitive.
+  /// Indicates match is case insensitive.
   ///
-  /// Default value is false if missing.
+  /// The default value is `false` if missing.
   ///
   /// Optional.
   core.bool? ignoreCase;
@@ -3066,8 +4350,8 @@ class TranslateTextGlossaryConfig {
 class TranslateTextRequest {
   /// The content of the input in string format.
   ///
-  /// We recommend the total content be less than 30k codepoints. The max length
-  /// of this field is 1024. Use BatchTranslateText for larger text.
+  /// We recommend the total content be less than 30,000 codepoints. The max
+  /// length of this field is 1024. Use BatchTranslateText for larger text.
   ///
   /// Required.
   core.List<core.String>? contents;
@@ -3113,7 +4397,7 @@ class TranslateTextRequest {
   /// Optional.
   core.String? model;
 
-  /// The BCP-47 language code of the input text if known, for example, "en-US"
+  /// The ISO-639 language code of the input text if known, for example, "en-US"
   /// or "sr-Latn".
   ///
   /// Supported language codes are listed in Language Support. If the source
@@ -3123,11 +4407,16 @@ class TranslateTextRequest {
   /// Optional.
   core.String? sourceLanguageCode;
 
-  /// The BCP-47 language code to use for translation of the input text, set to
+  /// The ISO-639 language code to use for translation of the input text, set to
   /// one of the language codes listed in Language Support.
   ///
   /// Required.
   core.String? targetLanguageCode;
+
+  /// Transliteration to be applied.
+  ///
+  /// Optional.
+  TransliterationConfig? transliterationConfig;
 
   TranslateTextRequest({
     this.contents,
@@ -3137,6 +4426,7 @@ class TranslateTextRequest {
     this.model,
     this.sourceLanguageCode,
     this.targetLanguageCode,
+    this.transliterationConfig,
   });
 
   TranslateTextRequest.fromJson(core.Map json_)
@@ -3152,9 +4442,9 @@ class TranslateTextRequest {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -3169,6 +4459,10 @@ class TranslateTextRequest {
           targetLanguageCode: json_.containsKey('targetLanguageCode')
               ? json_['targetLanguageCode'] as core.String
               : null,
+          transliterationConfig: json_.containsKey('transliterationConfig')
+              ? TransliterationConfig.fromJson(json_['transliterationConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3181,6 +4475,8 @@ class TranslateTextRequest {
           'sourceLanguageCode': sourceLanguageCode!,
         if (targetLanguageCode != null)
           'targetLanguageCode': targetLanguageCode!,
+        if (transliterationConfig != null)
+          'transliterationConfig': transliterationConfig!,
       };
 }
 
@@ -3226,7 +4522,7 @@ class TranslateTextResponse {
 
 /// A single translation response.
 class Translation {
-  /// The BCP-47 language code of source text in the initial request, detected
+  /// The ISO-639 language code of source text in the initial request, detected
   /// automatically, if no source language was passed within the initial
   /// request.
   ///
@@ -3284,27 +4580,28 @@ class Translation {
       };
 }
 
-/// The request message for Operations.WaitOperation.
-class WaitOperationRequest {
-  /// The maximum duration to wait before timing out.
-  ///
-  /// If left blank, the wait will be at most the time permitted by the
-  /// underlying HTTP/RPC protocol. If RPC context deadline is also specified,
-  /// the shorter one will be used.
-  core.String? timeout;
+/// Configures transliteration feature on top of translation.
+class TransliterationConfig {
+  /// If true, source text in romanized form can be translated to the target
+  /// language.
+  core.bool? enableTransliteration;
 
-  WaitOperationRequest({
-    this.timeout,
+  TransliterationConfig({
+    this.enableTransliteration,
   });
 
-  WaitOperationRequest.fromJson(core.Map json_)
+  TransliterationConfig.fromJson(core.Map json_)
       : this(
-          timeout: json_.containsKey('timeout')
-              ? json_['timeout'] as core.String
+          enableTransliteration: json_.containsKey('enableTransliteration')
+              ? json_['enableTransliteration'] as core.bool
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (timeout != null) 'timeout': timeout!,
+        if (enableTransliteration != null)
+          'enableTransliteration': enableTransliteration!,
       };
 }
+
+/// The request message for Operations.WaitOperation.
+typedef WaitOperationRequest = $WaitOperationRequest;

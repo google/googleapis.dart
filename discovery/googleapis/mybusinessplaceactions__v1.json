@@ -3,7 +3,7 @@
     "baseUrl": "https://mybusinessplaceactions.googleapis.com/",
     "batchPath": "batch",
     "canonicalName": "My Business Place Actions",
-    "description": "The My Business Place Actions API provides an interface for managing place action links of a location on Google.",
+    "description": "The My Business Place Actions API provides an interface for managing place action links of a location on Google. Note - If you have a quota of 0 after enabling the API, please request for GBP API access.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/my-business/",
     "icons": {
@@ -15,6 +15,13 @@
     "name": "mybusinessplaceactions",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230806",
+    "rootUrl": "https://mybusinessplaceactions.googleapis.com/",
+    "servicePath": "",
+    "title": "My Business Place Actions API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -92,7 +99,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "locations": {
             "resources": {
@@ -279,8 +285,6 @@
             }
         }
     },
-    "revision": "20220913",
-    "rootUrl": "https://mybusinessplaceactions.googleapis.com/",
     "schemas": {
         "Empty": {
             "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
@@ -356,7 +360,8 @@
                         "DINING_RESERVATION",
                         "FOOD_ORDERING",
                         "FOOD_DELIVERY",
-                        "FOOD_TAKEOUT"
+                        "FOOD_TAKEOUT",
+                        "SHOP_ONLINE"
                     ],
                     "enumDescriptions": [
                         "Not specified.",
@@ -365,7 +370,8 @@
                         "The action type is making a dining reservation.",
                         "The action type is ordering food for delivery and/or takeout.",
                         "The action type is ordering food for delivery.",
-                        "The action type is ordering food for takeout."
+                        "The action type is ordering food for takeout.",
+                        "The action type is shopping, that can be delivery and/or pickup."
                     ],
                     "type": "string"
                 },
@@ -414,7 +420,8 @@
                         "DINING_RESERVATION",
                         "FOOD_ORDERING",
                         "FOOD_DELIVERY",
-                        "FOOD_TAKEOUT"
+                        "FOOD_TAKEOUT",
+                        "SHOP_ONLINE"
                     ],
                     "enumDescriptions": [
                         "Not specified.",
@@ -423,16 +430,13 @@
                         "The action type is making a dining reservation.",
                         "The action type is ordering food for delivery and/or takeout.",
                         "The action type is ordering food for delivery.",
-                        "The action type is ordering food for takeout."
+                        "The action type is ordering food for takeout.",
+                        "The action type is shopping, that can be delivery and/or pickup."
                     ],
                     "type": "string"
                 }
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "My Business Place Actions API",
-    "version": "v1",
-    "version_module": true
+    }
 }

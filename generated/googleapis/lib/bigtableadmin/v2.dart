@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud Bigtable Admin API - v2
@@ -31,7 +30,7 @@
 ///       - [ProjectsInstancesClustersHotTabletsResource]
 ///     - [ProjectsInstancesTablesResource]
 ///   - [ProjectsLocationsResource]
-library bigtableadmin.v2;
+library bigtableadmin_v2;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -40,7 +39,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -247,13 +245,6 @@ class OperationsProjectsOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -1260,6 +1251,50 @@ class ProjectsInstancesClustersBackupsResource {
   ProjectsInstancesClustersBackupsResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Copy a Cloud Bigtable backup to a new backup in the destination cluster
+  /// located in the destination instance and project.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the destination cluster that will contain
+  /// the backup copy. The cluster must already exists. Values are of the form:
+  /// `projects/{project}/instances/{instance}/clusters/{cluster}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/clusters/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> copy(
+    CopyBackupRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/backups:copy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Starts creating a new Cloud Bigtable Backup.
   ///
   /// The returned backup long-running operation can be used to track creation
@@ -2003,7 +2038,10 @@ class ProjectsInstancesTablesResource {
   /// table's replication state.
   /// - "ENCRYPTION_VIEW" : Only populates `name` and fields related to the
   /// table's encryption state.
-  /// - "FULL" : Populates all fields.
+  /// - "STATS_VIEW" : Only populates `name` and fields related to the table's
+  /// stats (e.g. TableStats and ColumnFamilyStats).
+  /// - "FULL" : Populates all fields except for stats. See STATS_VIEW to
+  /// request stats.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2114,7 +2152,10 @@ class ProjectsInstancesTablesResource {
   /// table's replication state.
   /// - "ENCRYPTION_VIEW" : Only populates `name` and fields related to the
   /// table's encryption state.
-  /// - "FULL" : Populates all fields.
+  /// - "STATS_VIEW" : Only populates `name` and fields related to the table's
+  /// stats (e.g. TableStats and ColumnFamilyStats).
+  /// - "FULL" : Populates all fields except for stats. See STATS_VIEW to
+  /// request stats.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2198,10 +2239,63 @@ class ProjectsInstancesTablesResource {
     return Table.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Updates a specified table.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The unique name of the table. Values are of the form
+  /// `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views:
+  /// `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `STATS_VIEW`, `FULL`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/tables/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The list of fields to update. A mask specifying
+  /// which fields (e.g. `change_stream_config`) in the `table` field should be
+  /// updated. This mask is relative to the `table` field, not to the request
+  /// message. The wildcard (*) path is currently not supported. Currently
+  /// UpdateTable is only supported for the following fields: *
+  /// `change_stream_config` * `change_stream_config.retention_period` *
+  /// `deletion_protection` If `column_families` is set in `update_mask`, it
+  /// will return an UNIMPLEMENTED error.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    Table request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Create a new table by restoring from a completed backup.
   ///
-  /// The new table must be in the same project as the instance containing the
-  /// backup. The returned table long-running operation can be used to track the
+  /// The returned table long-running operation can be used to track the
   /// progress of the operation, and to cancel it. The metadata field type is
   /// RestoreTableMetadata. The response type is Table, if successful.
   ///
@@ -2210,8 +2304,7 @@ class ProjectsInstancesTablesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the instance in which to create the
-  /// restored table. This instance must be in the same project as the source
-  /// backup. Values are of the form `projects//instances/`.
+  /// restored table. Values are of the form `projects//instances/`.
   /// Value must have pattern `^projects/\[^/\]+/instances/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2691,7 +2784,7 @@ class Backup {
   core.String? endTime;
 
   /// The expiration time of the backup, with microseconds granularity that must
-  /// be at least 6 hours and at most 30 days from the time the request is
+  /// be at least 6 hours and at most 90 days from the time the request is
   /// received.
   ///
   /// Once the `expire_time` has passed, Cloud Bigtable will delete the backup
@@ -2714,6 +2807,14 @@ class Backup {
   ///
   /// Output only.
   core.String? sizeBytes;
+
+  /// Name of the backup from which this backup was copied.
+  ///
+  /// If a backup is not created by copying a backup, this field will be empty.
+  /// Values are of the form: projects//instances//backups/.
+  ///
+  /// Output only.
+  core.String? sourceBackup;
 
   /// Name of the table from which this backup was created.
   ///
@@ -2747,6 +2848,7 @@ class Backup {
     this.expireTime,
     this.name,
     this.sizeBytes,
+    this.sourceBackup,
     this.sourceTable,
     this.startTime,
     this.state,
@@ -2768,6 +2870,9 @@ class Backup {
           sizeBytes: json_.containsKey('sizeBytes')
               ? json_['sizeBytes'] as core.String
               : null,
+          sourceBackup: json_.containsKey('sourceBackup')
+              ? json_['sourceBackup'] as core.String
+              : null,
           sourceTable: json_.containsKey('sourceTable')
               ? json_['sourceTable'] as core.String
               : null,
@@ -2784,6 +2889,7 @@ class Backup {
         if (expireTime != null) 'expireTime': expireTime!,
         if (name != null) 'name': name!,
         if (sizeBytes != null) 'sizeBytes': sizeBytes!,
+        if (sourceBackup != null) 'sourceBackup': sourceBackup!,
         if (sourceTable != null) 'sourceTable': sourceTable!,
         if (startTime != null) 'startTime': startTime!,
         if (state != null) 'state': state!,
@@ -2804,6 +2910,14 @@ class BackupInfo {
   /// Output only.
   core.String? endTime;
 
+  /// Name of the backup from which this backup was copied.
+  ///
+  /// If a backup is not created by copying a backup, this field will be empty.
+  /// Values are of the form: projects//instances//backups/.
+  ///
+  /// Output only.
+  core.String? sourceBackup;
+
   /// Name of the table the backup was created from.
   ///
   /// Output only.
@@ -2819,6 +2933,7 @@ class BackupInfo {
   BackupInfo({
     this.backup,
     this.endTime,
+    this.sourceBackup,
     this.sourceTable,
     this.startTime,
   });
@@ -2831,6 +2946,9 @@ class BackupInfo {
           endTime: json_.containsKey('endTime')
               ? json_['endTime'] as core.String
               : null,
+          sourceBackup: json_.containsKey('sourceBackup')
+              ? json_['sourceBackup'] as core.String
+              : null,
           sourceTable: json_.containsKey('sourceTable')
               ? json_['sourceTable'] as core.String
               : null,
@@ -2842,6 +2960,7 @@ class BackupInfo {
   core.Map<core.String, core.dynamic> toJson() => {
         if (backup != null) 'backup': backup!,
         if (endTime != null) 'endTime': endTime!,
+        if (sourceBackup != null) 'sourceBackup': sourceBackup!,
         if (sourceTable != null) 'sourceTable': sourceTable!,
         if (startTime != null) 'startTime': startTime!,
       };
@@ -2877,7 +2996,9 @@ class Binding {
   /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
   /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
-  /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
+  /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
+  /// (primary) that represents all the users of that domain. For example,
+  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
   /// An email address (plus unique identifier) representing a user that has
   /// been recently deleted. For example,
   /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
@@ -2893,9 +3014,7 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
-  /// that represents all the users of that domain. For example, `google.com` or
-  /// `example.com`.
+  /// the role in the binding.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
@@ -2927,6 +3046,31 @@ class Binding {
         if (condition != null) 'condition': condition!,
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
+      };
+}
+
+/// Change stream configuration.
+class ChangeStreamConfig {
+  /// How long the change stream should be retained.
+  ///
+  /// Change stream data older than the retention period will not be returned
+  /// when reading the change stream from the table. Values must be at least 1
+  /// day and at most 7 days, and will be truncated to microsecond granularity.
+  core.String? retentionPeriod;
+
+  ChangeStreamConfig({
+    this.retentionPeriod,
+  });
+
+  ChangeStreamConfig.fromJson(core.Map json_)
+      : this(
+          retentionPeriod: json_.containsKey('retentionPeriod')
+              ? json_['retentionPeriod'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (retentionPeriod != null) 'retentionPeriod': retentionPeriod!,
       };
 }
 
@@ -3212,8 +3356,15 @@ class ColumnFamily {
   /// return a cell even if it matches the active GC expression for its family.
   GcRule? gcRule;
 
+  /// Only available with STATS_VIEW, this includes summary statistics about
+  /// column family contents.
+  ///
+  /// For statistics over an entire table, see TableStats above.
+  ColumnFamilyStats? stats;
+
   ColumnFamily({
     this.gcRule,
+    this.stats,
   });
 
   ColumnFamily.fromJson(core.Map json_)
@@ -3222,10 +3373,137 @@ class ColumnFamily {
               ? GcRule.fromJson(
                   json_['gcRule'] as core.Map<core.String, core.dynamic>)
               : null,
+          stats: json_.containsKey('stats')
+              ? ColumnFamilyStats.fromJson(
+                  json_['stats'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (gcRule != null) 'gcRule': gcRule!,
+        if (stats != null) 'stats': stats!,
+      };
+}
+
+/// Approximate statistics related to a single column family within a table.
+///
+/// This information may change rapidly, interpreting these values at a point in
+/// time may already preset out-of-date information. Everything below is
+/// approximate, unless otherwise specified.
+class ColumnFamilyStats {
+  /// How many cells are present per column qualifier in this column family,
+  /// averaged over all rows containing any column in the column family.
+  ///
+  /// e.g. For column family "family" in a table with 3 rows: * A row with 3
+  /// cells in "family:col" and 1 cell in "other:col" (3 cells / 1 column in
+  /// "family") * A row with 1 cell in "family:col", 7 cells in
+  /// "family:other_col", and 7 cells in "other:data" (8 cells / 2 columns in
+  /// "family") * A row with 3 cells in "other:col" (0 columns in "family",
+  /// "family" not present) would report (3 + 8 + 0)/(1 + 2 + 0) = 3.66 in this
+  /// field.
+  core.double? averageCellsPerColumn;
+
+  /// How many column qualifiers are present in this column family, averaged
+  /// over all rows in the table.
+  ///
+  /// e.g. For column family "family" in a table with 3 rows: * A row with cells
+  /// in "family:col" and "other:col" (1 column in "family") * A row with cells
+  /// in "family:col", "family:other_col", and "other:data" (2 columns in
+  /// "family") * A row with cells in "other:col" (0 columns in "family",
+  /// "family" not present) would report (1 + 2 + 0)/3 = 1.5 in this field.
+  core.double? averageColumnsPerRow;
+
+  /// How much space the data in the column family occupies.
+  ///
+  /// This is roughly how many bytes would be needed to read the contents of the
+  /// entire column family (e.g. by streaming all contents out).
+  core.String? logicalDataBytes;
+
+  ColumnFamilyStats({
+    this.averageCellsPerColumn,
+    this.averageColumnsPerRow,
+    this.logicalDataBytes,
+  });
+
+  ColumnFamilyStats.fromJson(core.Map json_)
+      : this(
+          averageCellsPerColumn: json_.containsKey('averageCellsPerColumn')
+              ? (json_['averageCellsPerColumn'] as core.num).toDouble()
+              : null,
+          averageColumnsPerRow: json_.containsKey('averageColumnsPerRow')
+              ? (json_['averageColumnsPerRow'] as core.num).toDouble()
+              : null,
+          logicalDataBytes: json_.containsKey('logicalDataBytes')
+              ? json_['logicalDataBytes'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (averageCellsPerColumn != null)
+          'averageCellsPerColumn': averageCellsPerColumn!,
+        if (averageColumnsPerRow != null)
+          'averageColumnsPerRow': averageColumnsPerRow!,
+        if (logicalDataBytes != null) 'logicalDataBytes': logicalDataBytes!,
+      };
+}
+
+/// The request for CopyBackup.
+class CopyBackupRequest {
+  /// The id of the new backup.
+  ///
+  /// The `backup_id` along with `parent` are combined as
+  /// {parent}/backups/{backup_id} to create the full backup name, of the form:
+  /// `projects/{project}/instances/{instance}/clusters/{cluster}/backups/{backup_id}`.
+  /// This string must be between 1 and 50 characters in length and match the
+  /// regex _a-zA-Z0-9*.
+  ///
+  /// Required.
+  core.String? backupId;
+
+  /// The expiration time of the copied backup with microsecond granularity that
+  /// must be at least 6 hours and at most 30 days from the time the request is
+  /// received.
+  ///
+  /// Once the `expire_time` has passed, Cloud Bigtable will delete the backup
+  /// and free the resources used by the backup.
+  ///
+  /// Required.
+  core.String? expireTime;
+
+  /// The source backup to be copied from.
+  ///
+  /// The source backup needs to be in READY state for it to be copied. Copying
+  /// a copied backup is not allowed. Once CopyBackup is in progress, the source
+  /// backup cannot be deleted or cleaned up on expiration until CopyBackup is
+  /// finished. Values are of the form:
+  /// `projects//instances//clusters//backups/`.
+  ///
+  /// Required.
+  core.String? sourceBackup;
+
+  CopyBackupRequest({
+    this.backupId,
+    this.expireTime,
+    this.sourceBackup,
+  });
+
+  CopyBackupRequest.fromJson(core.Map json_)
+      : this(
+          backupId: json_.containsKey('backupId')
+              ? json_['backupId'] as core.String
+              : null,
+          expireTime: json_.containsKey('expireTime')
+              ? json_['expireTime'] as core.String
+              : null,
+          sourceBackup: json_.containsKey('sourceBackup')
+              ? json_['sourceBackup'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (backupId != null) 'backupId': backupId!,
+        if (expireTime != null) 'expireTime': expireTime!,
+        if (sourceBackup != null) 'sourceBackup': sourceBackup!,
       };
 }
 
@@ -3272,10 +3550,10 @@ class CreateInstanceRequest {
       : this(
           clusters: json_.containsKey('clusters')
               ? (json_['clusters'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     Cluster.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -3715,7 +3993,7 @@ class HotTablet {
 ///
 /// All tables in an instance are served from all Clusters in the instance.
 class Instance {
-  /// A server-assigned timestamp representing when this Instance was created.
+  /// A commit timestamp representing when this Instance was created.
   ///
   /// For instances created before this field was added (August 2021), this
   /// value is `seconds: 0, nanos: 1`.
@@ -3797,9 +4075,9 @@ class Instance {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -4164,7 +4442,7 @@ class ListTablesResponse {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
+/// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
 /// A create, update, or delete of a particular column family.
@@ -4216,6 +4494,9 @@ class Modification {
 /// Request message for
 /// google.bigtable.admin.v2.BigtableTableAdmin.ModifyColumnFamilies
 class ModifyColumnFamiliesRequest {
+  /// If true, ignore safety checks when modifying the column families.
+  core.bool? ignoreWarnings;
+
   /// Modifications to be atomically applied to the specified table's families.
   ///
   /// Entries are applied in order, meaning that earlier modifications can be
@@ -4226,11 +4507,15 @@ class ModifyColumnFamiliesRequest {
   core.List<Modification>? modifications;
 
   ModifyColumnFamiliesRequest({
+    this.ignoreWarnings,
     this.modifications,
   });
 
   ModifyColumnFamiliesRequest.fromJson(core.Map json_)
       : this(
+          ignoreWarnings: json_.containsKey('ignoreWarnings')
+              ? json_['ignoreWarnings'] as core.bool
+              : null,
           modifications: json_.containsKey('modifications')
               ? (json_['modifications'] as core.List)
                   .map((value) => Modification.fromJson(
@@ -4240,6 +4525,7 @@ class ModifyColumnFamiliesRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (ignoreWarnings != null) 'ignoreWarnings': ignoreWarnings!,
         if (modifications != null) 'modifications': modifications!,
       };
 }
@@ -4656,6 +4942,12 @@ typedef Status = $Status;
 ///
 /// Each table is served using the resources of its parent cluster.
 class Table {
+  /// If specified, enable the change stream on this table.
+  ///
+  /// Otherwise, the change stream is disabled and the change stream is not
+  /// retained.
+  ChangeStreamConfig? changeStreamConfig;
+
   /// Map from cluster ID to per-cluster table state.
   ///
   /// If it could not be determined whether or not the table has data in a
@@ -4668,8 +4960,16 @@ class Table {
 
   /// The column families configured for this table, mapped by column family ID.
   ///
-  /// Views: `SCHEMA_VIEW`, `FULL`
+  /// Views: `SCHEMA_VIEW`, `STATS_VIEW`, `FULL`
   core.Map<core.String, ColumnFamily>? columnFamilies;
+
+  /// Set to true to make the table protected against data loss.
+  ///
+  /// i.e. deleting the following resources through Admin APIs are prohibited: *
+  /// The table. * The column families in the table. * The instance containing
+  /// the table. Note one can still delete the data stored in the table through
+  /// Data APIs.
+  core.bool? deletionProtection;
 
   /// The granularity (i.e. `MILLIS`) at which timestamps are stored in this
   /// table.
@@ -4690,7 +4990,7 @@ class Table {
   ///
   /// Values are of the form
   /// `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views:
-  /// `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`
+  /// `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `STATS_VIEW`, `FULL`
   core.String? name;
 
   /// If this table was restored from another data source (e.g. a backup), this
@@ -4699,35 +4999,52 @@ class Table {
   /// Output only.
   RestoreInfo? restoreInfo;
 
+  /// Only available with STATS_VIEW, this includes summary statistics about the
+  /// entire table contents.
+  ///
+  /// For statistics about a specific column family, see ColumnFamilyStats in
+  /// the mapped ColumnFamily collection above.
+  TableStats? stats;
+
   Table({
+    this.changeStreamConfig,
     this.clusterStates,
     this.columnFamilies,
+    this.deletionProtection,
     this.granularity,
     this.name,
     this.restoreInfo,
+    this.stats,
   });
 
   Table.fromJson(core.Map json_)
       : this(
+          changeStreamConfig: json_.containsKey('changeStreamConfig')
+              ? ChangeStreamConfig.fromJson(json_['changeStreamConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           clusterStates: json_.containsKey('clusterStates')
               ? (json_['clusterStates'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     ClusterState.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
           columnFamilies: json_.containsKey('columnFamilies')
               ? (json_['columnFamilies'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     ColumnFamily.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
+              : null,
+          deletionProtection: json_.containsKey('deletionProtection')
+              ? json_['deletionProtection'] as core.bool
               : null,
           granularity: json_.containsKey('granularity')
               ? json_['granularity'] as core.String
@@ -4737,14 +5054,89 @@ class Table {
               ? RestoreInfo.fromJson(
                   json_['restoreInfo'] as core.Map<core.String, core.dynamic>)
               : null,
+          stats: json_.containsKey('stats')
+              ? TableStats.fromJson(
+                  json_['stats'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (changeStreamConfig != null)
+          'changeStreamConfig': changeStreamConfig!,
         if (clusterStates != null) 'clusterStates': clusterStates!,
         if (columnFamilies != null) 'columnFamilies': columnFamilies!,
+        if (deletionProtection != null)
+          'deletionProtection': deletionProtection!,
         if (granularity != null) 'granularity': granularity!,
         if (name != null) 'name': name!,
         if (restoreInfo != null) 'restoreInfo': restoreInfo!,
+        if (stats != null) 'stats': stats!,
+      };
+}
+
+/// Approximate statistics related to a table.
+///
+/// These statistics are calculated infrequently, while simultaneously, data in
+/// the table can change rapidly. Thus the values reported here (e.g. row count)
+/// are very likely out-of date, even the instant they are received in this API.
+/// Thus, only treat these values as approximate. IMPORTANT: Everything below is
+/// approximate, unless otherwise specified.
+class TableStats {
+  /// How many cells are present per column (column family, column qualifier)
+  /// combinations, averaged over all columns in all rows in the table.
+  ///
+  /// e.g. A table with 2 rows: * A row with 3 cells in "family:col" and 1 cell
+  /// in "other:col" (4 cells / 2 columns) * A row with 1 cell in "family:col",
+  /// 7 cells in "family:other_col", and 7 cells in "other:data" (15 cells / 3
+  /// columns) would report (4 + 15)/(2 + 3) = 3.8 in this field.
+  core.double? averageCellsPerColumn;
+
+  /// How many (column family, column qualifier) combinations are present per
+  /// row in the table, averaged over all rows in the table.
+  ///
+  /// e.g. A table with 2 rows: * A row with cells in "family:col" and
+  /// "other:col" (2 distinct columns) * A row with cells in "family:col",
+  /// "family:other_col", and "other:data" (3 distinct columns) would report (2
+  /// + 3)/2 = 2.5 in this field.
+  core.double? averageColumnsPerRow;
+
+  /// This is roughly how many bytes would be needed to read the entire table
+  /// (e.g. by streaming all contents out).
+  core.String? logicalDataBytes;
+
+  /// How many rows are in the table.
+  core.String? rowCount;
+
+  TableStats({
+    this.averageCellsPerColumn,
+    this.averageColumnsPerRow,
+    this.logicalDataBytes,
+    this.rowCount,
+  });
+
+  TableStats.fromJson(core.Map json_)
+      : this(
+          averageCellsPerColumn: json_.containsKey('averageCellsPerColumn')
+              ? (json_['averageCellsPerColumn'] as core.num).toDouble()
+              : null,
+          averageColumnsPerRow: json_.containsKey('averageColumnsPerRow')
+              ? (json_['averageColumnsPerRow'] as core.num).toDouble()
+              : null,
+          logicalDataBytes: json_.containsKey('logicalDataBytes')
+              ? json_['logicalDataBytes'] as core.String
+              : null,
+          rowCount: json_.containsKey('rowCount')
+              ? json_['rowCount'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (averageCellsPerColumn != null)
+          'averageCellsPerColumn': averageCellsPerColumn!,
+        if (averageColumnsPerRow != null)
+          'averageColumnsPerRow': averageColumnsPerRow!,
+        if (logicalDataBytes != null) 'logicalDataBytes': logicalDataBytes!,
+        if (rowCount != null) 'rowCount': rowCount!,
       };
 }
 

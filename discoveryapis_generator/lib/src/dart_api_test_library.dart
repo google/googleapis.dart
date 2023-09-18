@@ -4,8 +4,6 @@
 
 // ignore_for_file: missing_whitespace_between_adjacent_strings
 
-library discoveryapis_generator.dart_api_test_library;
-
 import 'dart_api_library.dart';
 import 'dart_resources.dart';
 import 'dart_schema_type.dart';
@@ -128,11 +126,11 @@ import '../$testSharedDartFileName';
 
 const _testIgnores = {
   ...ignoreForFileSet,
-  'cascade_invocations',
   'prefer_const_declarations',
+  'prefer_expression_function_bodies',
   'prefer_final_locals',
   'unnecessary_cast',
-  'unnecessary_parenthesis',
+  'unreachable_from_main',
   'unused_local_variable',
 };
 
@@ -230,16 +228,23 @@ class ResourceTest extends TestHelper {
             if (method.requestParameter != null) {
               final t =
                   apiTestLibrary.schemaTests[method.requestParameter!.type]!;
-              sb.writeln(
+
+              sb.write(
                 'final obj = '
-                'api.${method.requestParameter!.type.jsonDecode('json')};',
+                '${method.requestParameter!.type.apiDecode('json')};',
               );
+
               sb.writeln('        ${t.checkSchemaStatement('obj')}');
               sb.writeln();
             }
 
             final test = MethodArgsTest(
-                '(req.url)', rootPath, basePath, method, paramValues);
+              'req.url',
+              rootPath,
+              basePath,
+              method,
+              paramValues,
+            );
             sb.writeln(test.uriValidationStatements(8));
             sb.writeln(test.queryValidationStatements(8));
             sb.writeln();
@@ -330,7 +335,7 @@ class ResourceTest extends TestHelper {
             final t = apiTestLibrary.schemaTests[method.returnType]!;
             sb.writeln(
               t.checkSchemaStatement(
-                'response  as api.${t.schema.className!.name}',
+                'response as api.${t.schema.className!.name}',
               ),
             );
           }
@@ -831,8 +836,7 @@ abstract class NamedSchemaTest<T extends ComplexDartSchemaType>
         sb.writeln('final o = $newSchemaExpr;');
         sb.writeln('final oJson = convert.jsonDecode(convert.jsonEncode(o));');
         sb.writeln(
-          'final od = api.${schema.className!.name}'
-          '.fromJson(oJson as ${schema.jsonType.baseDeclaration});',
+          'final od = ${schema.apiDecode('oJson')};',
         );
         sb.writeln(checkSchemaStatement('od'));
       });
@@ -911,10 +915,11 @@ class NamedArraySchemaTest extends NamedSchemaTest<NamedArrayType> {
 
     final sb = StringBuffer();
     withFunc(0, sb, '$declaration build${schema.className!.name}', '', () {
-      sb.writeln('  final o = $declaration();');
-      sb.writeln('  o.add(${innerTest!.newSchemaExpr});');
-      sb.writeln('  o.add(${innerTest.newSchemaExpr});');
-      sb.writeln('  return o;');
+      sb.writeln('''
+return [
+${innerTest!.newSchemaExpr},
+${innerTest.newSchemaExpr},
+];''');
     });
     return '$sb';
   }
@@ -943,10 +948,12 @@ class NamedMapSchemaTest extends NamedSchemaTest<NamedMapType> {
 
     final sb = StringBuffer();
     withFunc(0, sb, '$declaration build${schema.className!.name}', '', () {
-      sb.writeln('  final o = $declaration();');
-      sb.writeln("  o['a'] = ${innerTest!.newSchemaExpr};");
-      sb.writeln("  o['b'] = ${innerTest.newSchemaExpr};");
-      sb.writeln('  return o;');
+      sb.writeln('''
+return {
+'a': ${innerTest!.newSchemaExpr},
+'b': ${innerTest.newSchemaExpr},
+};
+''');
     });
     return '$sb';
   }
@@ -1096,4 +1103,9 @@ class TestHelper {
   String intParse(String arg) => 'core.int.parse($arg)';
 
   String numParse(String arg) => 'core.num.parse($arg)';
+}
+
+extension on DartSchemaType {
+  String apiDecode(String json) =>
+      '${importPrefix('api')}${jsonDecode(json, importName: 'api')}';
 }

@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud Trace API - v2
@@ -27,7 +26,7 @@
 /// - [ProjectsResource]
 ///   - [ProjectsTracesResource]
 ///     - [ProjectsTracesSpansResource]
-library cloudtrace.v2;
+library cloudtrace_v2;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -36,7 +35,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -265,7 +263,7 @@ class Attributes {
   /// string up to 256 bytes, a signed 64-bit integer, or the boolean values
   /// `true` or `false`. For example: "/instance_id": { "string_value": {
   /// "value": "my-instance" } } "/http/request_bytes": { "int_value": 300 }
-  /// "abc.com/myattribute": { "bool_value": false }
+  /// "example.com/myattribute": { "bool_value": false }
   core.Map<core.String, AttributeValue>? attributeMap;
 
   /// The number of attributes that were discarded.
@@ -285,10 +283,10 @@ class Attributes {
           attributeMap: json_.containsKey('attributeMap')
               ? (json_['attributeMap'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     AttributeValue.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -522,7 +520,7 @@ class Module {
 /// Spans can be nested to form a trace tree. Often, a trace contains a root
 /// span that describes the end-to-end latency, and one or more subspans for its
 /// sub-operations. A trace can also contain multiple root spans, or none at
-/// all. Spans do not need to be contiguous—there might be gaps or overlaps
+/// all. Spans do not need to be contiguous. There might be gaps or overlaps
 /// between spans in a trace.
 class Span {
   /// A set of attributes on the span.
@@ -746,10 +744,11 @@ class StackFrame {
   /// The binary module from where the code was loaded.
   Module? loadModule;
 
-  /// An un-mangled function name, if `function_name` is
-  /// [mangled](http://www.avabodh.com/cxxin/namemangling.html).
+  /// An un-mangled function name, if `function_name` is mangled.
   ///
-  /// The name can be fully-qualified (up to 1024 bytes).
+  /// To get information about name mangling, run
+  /// [this search](https://www.google.com/search?q=cxx+name+mangling). The name
+  /// can be fully-qualified (up to 1024 bytes).
   TruncatableString? originalFunctionName;
 
   /// The version of the deployed source code (up to 128 bytes).

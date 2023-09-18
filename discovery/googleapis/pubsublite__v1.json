@@ -24,6 +24,13 @@
     "name": "pubsublite",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230728",
+    "rootUrl": "https://pubsublite.googleapis.com/",
+    "servicePath": "",
+    "title": "Pub/Sub Lite API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "admin": {
             "resources": {
@@ -190,7 +196,7 @@
                                             ]
                                         },
                                         "list": {
-                                            "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
+                                            "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.",
                                             "flatPath": "v1/admin/projects/{projectsId}/locations/{locationsId}/operations",
                                             "httpMethod": "GET",
                                             "id": "pubsublite.admin.projects.locations.operations.list",
@@ -1038,8 +1044,6 @@
             }
         }
     },
-    "revision": "20220902",
-    "rootUrl": "https://pubsublite.googleapis.com/",
     "schemas": {
         "CancelOperationRequest": {
             "description": "The request message for Operations.CancelOperation.",
@@ -1220,6 +1224,58 @@
             "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
             "id": "Empty",
             "properties": {},
+            "type": "object"
+        },
+        "ExportConfig": {
+            "description": "Configuration for a Pub/Sub Lite subscription that writes messages to a destination. User subscriber clients must not connect to this subscription.",
+            "id": "ExportConfig",
+            "properties": {
+                "currentState": {
+                    "description": "Output only. The current state of the export, which may be different to the desired state due to errors. This field is output only.",
+                    "enum": [
+                        "STATE_UNSPECIFIED",
+                        "ACTIVE",
+                        "PAUSED",
+                        "PERMISSION_DENIED",
+                        "NOT_FOUND"
+                    ],
+                    "enumDescriptions": [
+                        "Default value. This value is unused.",
+                        "Messages are being exported.",
+                        "Exporting messages is suspended.",
+                        "Messages cannot be exported due to permission denied errors. Output only.",
+                        "Messages cannot be exported due to missing resources. Output only."
+                    ],
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "deadLetterTopic": {
+                    "description": "Optional. The name of an optional Pub/Sub Lite topic to publish messages that can not be exported to the destination. For example, the message can not be published to the Pub/Sub service because it does not satisfy the constraints documented at https://cloud.google.com/pubsub/docs/publisher. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}. Must be within the same project and location as the subscription. The topic may be changed or removed.",
+                    "type": "string"
+                },
+                "desiredState": {
+                    "description": "The desired state of this export. Setting this to values other than `ACTIVE` and `PAUSED` will result in an error.",
+                    "enum": [
+                        "STATE_UNSPECIFIED",
+                        "ACTIVE",
+                        "PAUSED",
+                        "PERMISSION_DENIED",
+                        "NOT_FOUND"
+                    ],
+                    "enumDescriptions": [
+                        "Default value. This value is unused.",
+                        "Messages are being exported.",
+                        "Exporting messages is suspended.",
+                        "Messages cannot be exported due to permission denied errors. Output only.",
+                        "Messages cannot be exported due to missing resources. Output only."
+                    ],
+                    "type": "string"
+                },
+                "pubsubConfig": {
+                    "$ref": "PubSubConfig",
+                    "description": "Messages are automatically written from the Pub/Sub Lite topic associated with this subscription to a Pub/Sub topic."
+                }
+            },
             "type": "object"
         },
         "ListOperationsResponse": {
@@ -1422,6 +1478,7 @@
                     "type": "string"
                 },
                 "scale": {
+                    "deprecated": true,
                     "description": "DEPRECATED: Use capacity instead which can express a superset of configurations. Every partition in the topic is allocated throughput equivalent to `scale` times the standard partition throughput (4 MiB/s). This is also reflected in the cost of this topic; a topic with `scale` of 2 and count of 10 is charged for 20 partitions. This value must be in the range [1,4].",
                     "format": "int32",
                     "type": "integer"
@@ -1440,6 +1497,17 @@
                 "partition": {
                     "description": "The partition this is for.",
                     "format": "int64",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "PubSubConfig": {
+            "description": "Configuration for exporting to a Pub/Sub topic.",
+            "id": "PubSubConfig",
+            "properties": {
+                "topic": {
+                    "description": "The name of the Pub/Sub topic. Structured like: projects/{project_number}/topics/{topic_id}. The topic may be changed.",
                     "type": "string"
                 }
             },
@@ -1555,6 +1623,10 @@
                     "$ref": "DeliveryConfig",
                     "description": "The settings for this subscription's message delivery."
                 },
+                "exportConfig": {
+                    "$ref": "ExportConfig",
+                    "description": "If present, messages are automatically written from the Pub/Sub Lite topic associated with this subscription to a destination."
+                },
                 "name": {
                     "description": "The name of the subscription. Structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id}",
                     "type": "string"
@@ -1618,9 +1690,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Pub/Sub Lite API",
-    "version": "v1",
-    "version_module": true
+    }
 }

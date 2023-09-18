@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud Build API - v1
@@ -31,13 +30,16 @@
 /// - [ProjectsLocationsBitbucketServerConfigsConnectedRepositoriesResource]
 ///       - [ProjectsLocationsBitbucketServerConfigsReposResource]
 ///     - [ProjectsLocationsBuildsResource]
+///     - [ProjectsLocationsGitLabConfigsResource]
+///       - [ProjectsLocationsGitLabConfigsConnectedRepositoriesResource]
+///       - [ProjectsLocationsGitLabConfigsReposResource]
 ///     - [ProjectsLocationsGithubEnterpriseConfigsResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsTriggersResource]
 ///     - [ProjectsLocationsWorkerPoolsResource]
 ///   - [ProjectsTriggersResource]
 /// - [V1Resource]
-library cloudbuild.v1;
+library cloudbuild_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -46,7 +48,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -548,13 +549,13 @@ class ProjectsBuildsResource {
   /// of that branch, which may not be the same revision as the original build.
   /// * If the original build specified a commit sha or revision ID, the retried
   /// build will use the identical source. For builds that specify
-  /// `StorageSource`: * If the original build pulled source from Google Cloud
-  /// Storage without specifying the generation of the object, the new build
-  /// will use the current object, which may be different from the original
-  /// build source. * If the original build pulled source from Cloud Storage and
-  /// specified the generation of the object, the new build will attempt to use
-  /// the same object, which may or may not be available depending on the
-  /// bucket's lifecycle management settings.
+  /// `StorageSource`: * If the original build pulled source from Cloud Storage
+  /// without specifying the generation of the object, the new build will use
+  /// the current object, which may be different from the original build source.
+  /// * If the original build pulled source from Cloud Storage and specified the
+  /// generation of the object, the new build will attempt to use the same
+  /// object, which may or may not be available depending on the bucket's
+  /// lifecycle management settings.
   ///
   /// [request] - The metadata request object.
   ///
@@ -669,7 +670,7 @@ class ProjectsGithubEnterpriseConfigsResource {
   ///
   /// [name] - This field should contain the name of the enterprise config
   /// resource. For example:
-  /// "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+  /// "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
   /// Value must have pattern
   /// `^projects/\[^/\]+/githubEnterpriseConfigs/\[^/\]+$`.
   ///
@@ -715,7 +716,7 @@ class ProjectsGithubEnterpriseConfigsResource {
   ///
   /// [name] - This field should contain the name of the enterprise config
   /// resource. For example:
-  /// "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+  /// "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
   /// Value must have pattern
   /// `^projects/\[^/\]+/githubEnterpriseConfigs/\[^/\]+$`.
   ///
@@ -806,7 +807,8 @@ class ProjectsGithubEnterpriseConfigsResource {
   /// Request parameters:
   ///
   /// [name] - Optional. The full resource name for the GitHubEnterpriseConfig
-  /// For example: "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+  /// For example:
+  /// "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
   /// Value must have pattern
   /// `^projects/\[^/\]+/githubEnterpriseConfigs/\[^/\]+$`.
   ///
@@ -855,6 +857,8 @@ class ProjectsLocationsResource {
       ProjectsLocationsBitbucketServerConfigsResource(_requester);
   ProjectsLocationsBuildsResource get builds =>
       ProjectsLocationsBuildsResource(_requester);
+  ProjectsLocationsGitLabConfigsResource get gitLabConfigs =>
+      ProjectsLocationsGitLabConfigsResource(_requester);
   ProjectsLocationsGithubEnterpriseConfigsResource
       get githubEnterpriseConfigs =>
           ProjectsLocationsGithubEnterpriseConfigsResource(_requester);
@@ -1538,13 +1542,13 @@ class ProjectsLocationsBuildsResource {
   /// of that branch, which may not be the same revision as the original build.
   /// * If the original build specified a commit sha or revision ID, the retried
   /// build will use the identical source. For builds that specify
-  /// `StorageSource`: * If the original build pulled source from Google Cloud
-  /// Storage without specifying the generation of the object, the new build
-  /// will use the current object, which may be different from the original
-  /// build source. * If the original build pulled source from Cloud Storage and
-  /// specified the generation of the object, the new build will attempt to use
-  /// the same object, which may or may not be available depending on the
-  /// bucket's lifecycle management settings.
+  /// `StorageSource`: * If the original build pulled source from Cloud Storage
+  /// without specifying the generation of the object, the new build will use
+  /// the current object, which may be different from the original build source.
+  /// * If the original build pulled source from Cloud Storage and specified the
+  /// generation of the object, the new build will attempt to use the same
+  /// object, which may or may not be available depending on the bucket's
+  /// lifecycle management settings.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1584,6 +1588,411 @@ class ProjectsLocationsBuildsResource {
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsGitLabConfigsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsGitLabConfigsConnectedRepositoriesResource
+      get connectedRepositories =>
+          ProjectsLocationsGitLabConfigsConnectedRepositoriesResource(
+              _requester);
+  ProjectsLocationsGitLabConfigsReposResource get repos =>
+      ProjectsLocationsGitLabConfigsReposResource(_requester);
+
+  ProjectsLocationsGitLabConfigsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new `GitLabConfig`.
+  ///
+  /// This API is experimental
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the parent resource.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [gitlabConfigId] - Optional. The ID to use for the GitLabConfig, which
+  /// will become the final component of the GitLabConfig’s resource name.
+  /// gitlab_config_id must meet the following requirements: + They must contain
+  /// only alphanumeric characters and dashes. + They can be 1-64 characters
+  /// long. + They must begin and end with an alphanumeric character
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    GitLabConfig request,
+    core.String parent, {
+    core.String? gitlabConfigId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (gitlabConfigId != null) 'gitlabConfigId': [gitlabConfigId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/gitLabConfigs';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Delete a `GitLabConfig`.
+  ///
+  /// This API is experimental
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The config resource name.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/gitLabConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves a `GitLabConfig`.
+  ///
+  /// This API is experimental
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The config resource name.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/gitLabConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GitLabConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GitLabConfig> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GitLabConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List all `GitLabConfigs` for a given project.
+  ///
+  /// This API is experimental
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the parent resource
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of configs to return. The service may
+  /// return fewer than this value. If unspecified, at most 50 configs will be
+  /// returned. The maximum value is 1000;, values above 1000 will be coerced to
+  /// 1000.
+  ///
+  /// [pageToken] - A page token, received from a previous
+  /// ‘ListGitlabConfigsRequest’ call. Provide this to retrieve the subsequent
+  /// page. When paginating, all other parameters provided to
+  /// ‘ListGitlabConfigsRequest’ must match the call that provided the page
+  /// token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListGitLabConfigsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListGitLabConfigsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/gitLabConfigs';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListGitLabConfigsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an existing `GitLabConfig`.
+  ///
+  /// This API is experimental
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name for the config.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/gitLabConfigs/\[^/\]+$`.
+  ///
+  /// [updateMask] - Update mask for the resource. If this is set, the server
+  /// will only update the fields specified in the field mask. Otherwise, a full
+  /// update of the mutable resource fields will be performed.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    GitLabConfig request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Remove a GitLab repository from a given GitLabConfig's connected
+  /// repositories.
+  ///
+  /// This API is experimental.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [config] - Required. The name of the `GitLabConfig` to remove a connected
+  /// repository. Format:
+  /// `projects/{project}/locations/{location}/gitLabConfigs/{config}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/gitLabConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> removeGitLabConnectedRepository(
+    RemoveGitLabConnectedRepositoryRequest request,
+    core.String config, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$config') +
+        ':removeGitLabConnectedRepository';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsGitLabConfigsConnectedRepositoriesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsGitLabConfigsConnectedRepositoriesResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Batch connecting GitLab repositories to Cloud Build.
+  ///
+  /// This API is experimental.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The name of the `GitLabConfig` that adds connected
+  /// repositories. Format:
+  /// `projects/{project}/locations/{location}/gitLabConfigs/{config}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/gitLabConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> batchCreate(
+    BatchCreateGitLabConnectedRepositoriesRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/connectedRepositories:batchCreate';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsGitLabConfigsReposResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsGitLabConfigsReposResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// List all repositories for a given `GitLabConfig`.
+  ///
+  /// This API is experimental
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the parent resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/gitLabConfigs/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of repositories to return. The service may
+  /// return fewer than this value.
+  ///
+  /// [pageToken] - A page token, received from a previous
+  /// ListGitLabRepositoriesRequest\` call. Provide this to retrieve the
+  /// subsequent page. When paginating, all other parameters provided to
+  /// \`ListGitLabRepositoriesRequest\` must match the call that provided the
+  /// page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListGitLabRepositoriesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListGitLabRepositoriesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/repos';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListGitLabRepositoriesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1655,7 +2064,7 @@ class ProjectsLocationsGithubEnterpriseConfigsResource {
   ///
   /// [name] - This field should contain the name of the enterprise config
   /// resource. For example:
-  /// "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+  /// "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/githubEnterpriseConfigs/\[^/\]+$`.
   ///
@@ -1701,7 +2110,7 @@ class ProjectsLocationsGithubEnterpriseConfigsResource {
   ///
   /// [name] - This field should contain the name of the enterprise config
   /// resource. For example:
-  /// "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+  /// "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/githubEnterpriseConfigs/\[^/\]+$`.
   ///
@@ -1792,7 +2201,8 @@ class ProjectsLocationsGithubEnterpriseConfigsResource {
   /// Request parameters:
   ///
   /// [name] - Optional. The full resource name for the GitHubEnterpriseConfig
-  /// For example: "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+  /// For example:
+  /// "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/githubEnterpriseConfigs/\[^/\]+$`.
   ///
@@ -2150,6 +2560,10 @@ class ProjectsLocationsTriggersResource {
   ///
   /// [triggerId] - Required. ID of the `BuildTrigger` to update.
   ///
+  /// [updateMask] - Update mask for the resource. If this is set, the server
+  /// will only update the fields specified in the field mask. Otherwise, a full
+  /// update of the mutable resource fields will be performed.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2165,12 +2579,14 @@ class ProjectsLocationsTriggersResource {
     core.String resourceName, {
     core.String? projectId,
     core.String? triggerId,
+    core.String? updateMask,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       if (projectId != null) 'projectId': [projectId],
       if (triggerId != null) 'triggerId': [triggerId],
+      if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -2189,9 +2605,10 @@ class ProjectsLocationsTriggersResource {
   /// Runs a `BuildTrigger` at a particular source revision.
   ///
   /// To run a regional or global trigger, use the POST request that includes
-  /// the location endpoint in the path. The POST request that does not include
-  /// the location endpoint in the path can only be used when running global
-  /// triggers.
+  /// the location endpoint in the path (ex.
+  /// v1/projects/{projectId}/locations/{region}/triggers/{triggerId}:run). The
+  /// POST request that does not include the location endpoint in the path can
+  /// only be used when running global triggers.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2755,6 +3172,10 @@ class ProjectsTriggersResource {
   ///
   /// [triggerId] - Required. ID of the `BuildTrigger` to update.
   ///
+  /// [updateMask] - Update mask for the resource. If this is set, the server
+  /// will only update the fields specified in the field mask. Otherwise, a full
+  /// update of the mutable resource fields will be performed.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2769,10 +3190,12 @@ class ProjectsTriggersResource {
     BuildTrigger request,
     core.String projectId,
     core.String triggerId, {
+    core.String? updateMask,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -2794,9 +3217,10 @@ class ProjectsTriggersResource {
   /// Runs a `BuildTrigger` at a particular source revision.
   ///
   /// To run a regional or global trigger, use the POST request that includes
-  /// the location endpoint in the path. The POST request that does not include
-  /// the location endpoint in the path can only be used when running global
-  /// triggers.
+  /// the location endpoint in the path (ex.
+  /// v1/projects/{projectId}/locations/{region}/triggers/{triggerId}:run). The
+  /// POST request that does not include the location endpoint in the path can
+  /// only be used when running global triggers.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3132,6 +3556,24 @@ class Artifacts {
   /// FAILURE.
   core.List<core.String>? images;
 
+  /// A list of Maven artifacts to be uploaded to Artifact Registry upon
+  /// successful completion of all build steps.
+  ///
+  /// Artifacts in the workspace matching specified paths globs will be uploaded
+  /// to the specified Artifact Registry repository using the builder service
+  /// account's credentials. If any artifacts fail to be pushed, the build is
+  /// marked FAILURE.
+  core.List<MavenArtifact>? mavenArtifacts;
+
+  /// A list of npm packages to be uploaded to Artifact Registry upon successful
+  /// completion of all build steps.
+  ///
+  /// Npm packages in the specified paths will be uploaded to the specified
+  /// Artifact Registry repository using the builder service account's
+  /// credentials. If any packages fail to be pushed, the build is marked
+  /// FAILURE.
+  core.List<NpmPackage>? npmPackages;
+
   /// A list of objects to be uploaded to Cloud Storage upon successful
   /// completion of all build steps.
   ///
@@ -3142,9 +3584,19 @@ class Artifacts {
   /// pushed, the build is marked FAILURE.
   ArtifactObjects? objects;
 
+  /// A list of Python packages to be uploaded to Artifact Registry upon
+  /// successful completion of all build steps.
+  ///
+  /// The build service account credentials will be used to perform the upload.
+  /// If any objects fail to be pushed, the build is marked FAILURE.
+  core.List<PythonPackage>? pythonPackages;
+
   Artifacts({
     this.images,
+    this.mavenArtifacts,
+    this.npmPackages,
     this.objects,
+    this.pythonPackages,
   });
 
   Artifacts.fromJson(core.Map json_)
@@ -3154,15 +3606,36 @@ class Artifacts {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          mavenArtifacts: json_.containsKey('mavenArtifacts')
+              ? (json_['mavenArtifacts'] as core.List)
+                  .map((value) => MavenArtifact.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          npmPackages: json_.containsKey('npmPackages')
+              ? (json_['npmPackages'] as core.List)
+                  .map((value) => NpmPackage.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           objects: json_.containsKey('objects')
               ? ArtifactObjects.fromJson(
                   json_['objects'] as core.Map<core.String, core.dynamic>)
+              : null,
+          pythonPackages: json_.containsKey('pythonPackages')
+              ? (json_['pythonPackages'] as core.List)
+                  .map((value) => PythonPackage.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (images != null) 'images': images!,
+        if (mavenArtifacts != null) 'mavenArtifacts': mavenArtifacts!,
+        if (npmPackages != null) 'npmPackages': npmPackages!,
         if (objects != null) 'objects': objects!,
+        if (pythonPackages != null) 'pythonPackages': pythonPackages!,
       };
 }
 
@@ -3185,6 +3658,34 @@ class BatchCreateBitbucketServerConnectedRepositoriesRequest {
               ? (json_['requests'] as core.List)
                   .map((value) =>
                       CreateBitbucketServerConnectedRepositoryRequest.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (requests != null) 'requests': requests!,
+      };
+}
+
+/// RPC request object accepted by BatchCreateGitLabConnectedRepositories RPC
+/// method.
+class BatchCreateGitLabConnectedRepositoriesRequest {
+  /// Requests to connect GitLab repositories.
+  ///
+  /// Required.
+  core.List<CreateGitLabConnectedRepositoryRequest>? requests;
+
+  BatchCreateGitLabConnectedRepositoriesRequest({
+    this.requests,
+  });
+
+  BatchCreateGitLabConnectedRepositoriesRequest.fromJson(core.Map json_)
+      : this(
+          requests: json_.containsKey('requests')
+              ? (json_['requests'] as core.List)
+                  .map((value) =>
+                      CreateGitLabConnectedRepositoryRequest.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3676,7 +4177,7 @@ class Build {
   /// Output only.
   core.String? logUrl;
 
-  /// Google Cloud Storage bucket where logs should be written (see
+  /// Cloud Storage bucket where logs should be written (see
   /// [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
   ///
   /// Logs file names will be of the format
@@ -3777,15 +4278,16 @@ class Build {
   ///
   /// If this amount of time elapses, work on the build will cease and the build
   /// status will be `TIMEOUT`. `timeout` starts ticking from `startTime`.
-  /// Default time is ten minutes.
+  /// Default time is 60 minutes.
   core.String? timeout;
 
   /// Stores timing information for phases of the build.
   ///
   /// Valid keys are: * BUILD: time to execute all build steps. * PUSH: time to
-  /// push all specified images. * FETCHSOURCE: time to fetch source. *
-  /// SETUPBUILD: time to set up build. If the build does not specify source or
-  /// images, these keys will not be included.
+  /// push all artifacts including docker images and non docker artifacts. *
+  /// FETCHSOURCE: time to fetch source. * SETUPBUILD: time to set up build. If
+  /// the build does not specify source or images, these keys will not be
+  /// included.
   ///
   /// Output only.
   core.Map<core.String, TimeSpan>? timing;
@@ -3916,9 +4418,9 @@ class Build {
           substitutions: json_.containsKey('substitutions')
               ? (json_['substitutions'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -3932,10 +4434,10 @@ class Build {
               : null,
           timing: json_.containsKey('timing')
               ? (json_['timing'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     TimeSpan.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -4032,12 +4534,26 @@ class BuildApproval {
 
 /// Optional arguments to enable specific features of builds.
 class BuildOptions {
+  /// Option to include built-in and custom substitutions as env variables for
+  /// all build steps.
+  core.bool? automapSubstitutions;
+
+  /// Option to specify how default logs buckets are setup.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "DEFAULT_LOGS_BUCKET_BEHAVIOR_UNSPECIFIED" : Unspecified.
+  /// - "REGIONAL_USER_OWNED_BUCKET" : Bucket is located in user-owned project
+  /// in the same region as the build. The builder service account must have
+  /// access to create and write to Cloud Storage buckets in the build project.
+  core.String? defaultLogsBucketBehavior;
+
   /// Requested disk size for the VM that runs the build.
   ///
   /// Note that this is *NOT* "disk free"; some of the space will be used by the
   /// operating system and build utilities. Also note that this is the minimum
   /// disk size that will be allocated for the build -- the build may run with a
-  /// larger disk than requested. At present, the maximum disk size is 1000GB;
+  /// larger disk than requested. At present, the maximum disk size is 2000GB;
   /// builds that request more than the maximum are rejected with an error.
   core.String? diskSizeGb;
 
@@ -4057,13 +4573,13 @@ class BuildOptions {
   /// "VALUE".
   core.List<core.String>? env;
 
-  /// Option to define build log streaming behavior to Google Cloud Storage.
+  /// Option to define build log streaming behavior to Cloud Storage.
   /// Possible string values are:
   /// - "STREAM_DEFAULT" : Service may automatically determine build log
   /// streaming behavior.
-  /// - "STREAM_ON" : Build logs should be streamed to Google Cloud Storage.
-  /// - "STREAM_OFF" : Build logs should not be streamed to Google Cloud
-  /// Storage; they will be written when the build is completed.
+  /// - "STREAM_ON" : Build logs should be streamed to Cloud Storage.
+  /// - "STREAM_OFF" : Build logs should not be streamed to Cloud Storage; they
+  /// will be written when the build is completed.
   core.String? logStreamingOption;
 
   /// Option to specify the logging mode, which determines if and where build
@@ -4088,6 +4604,7 @@ class BuildOptions {
   /// - "N1_HIGHCPU_32" : Highcpu machine with 32 CPUs.
   /// - "E2_HIGHCPU_8" : Highcpu e2 machine with 8 CPUs.
   /// - "E2_HIGHCPU_32" : Highcpu e2 machine with 32 CPUs.
+  /// - "E2_MEDIUM" : E2 machine with 1 CPU.
   core.String? machineType;
 
   /// Specification for execution on a `WorkerPool`.
@@ -4137,9 +4654,14 @@ class BuildOptions {
   core.List<Volume>? volumes;
 
   /// This field deprecated; please use `pool.name` instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? workerPool;
 
   BuildOptions({
+    this.automapSubstitutions,
+    this.defaultLogsBucketBehavior,
     this.diskSizeGb,
     this.dynamicSubstitutions,
     this.env,
@@ -4157,6 +4679,13 @@ class BuildOptions {
 
   BuildOptions.fromJson(core.Map json_)
       : this(
+          automapSubstitutions: json_.containsKey('automapSubstitutions')
+              ? json_['automapSubstitutions'] as core.bool
+              : null,
+          defaultLogsBucketBehavior:
+              json_.containsKey('defaultLogsBucketBehavior')
+                  ? json_['defaultLogsBucketBehavior'] as core.String
+                  : null,
           diskSizeGb: json_.containsKey('diskSizeGb')
               ? json_['diskSizeGb'] as core.String
               : null,
@@ -4209,6 +4738,10 @@ class BuildOptions {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (automapSubstitutions != null)
+          'automapSubstitutions': automapSubstitutions!,
+        if (defaultLogsBucketBehavior != null)
+          'defaultLogsBucketBehavior': defaultLogsBucketBehavior!,
         if (diskSizeGb != null) 'diskSizeGb': diskSizeGb!,
         if (dynamicSubstitutions != null)
           'dynamicSubstitutions': dynamicSubstitutions!,
@@ -4252,6 +4785,12 @@ class BuildStep {
   /// define an entrypoint, the first element in args is used as the entrypoint,
   /// and the remainder will be used as arguments.
   core.List<core.String>? args;
+
+  /// Option to include built-in and custom substitutions as env variables for
+  /// this build step.
+  ///
+  /// This option will override the global option in BuildOption.
+  core.bool? automapSubstitutions;
 
   /// Working directory to use when running this step's container.
   ///
@@ -4370,6 +4909,7 @@ class BuildStep {
     this.allowExitCodes,
     this.allowFailure,
     this.args,
+    this.automapSubstitutions,
     this.dir,
     this.entrypoint,
     this.env,
@@ -4400,6 +4940,9 @@ class BuildStep {
               ? (json_['args'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
+              : null,
+          automapSubstitutions: json_.containsKey('automapSubstitutions')
+              ? json_['automapSubstitutions'] as core.bool
               : null,
           dir: json_.containsKey('dir') ? json_['dir'] as core.String : null,
           entrypoint: json_.containsKey('entrypoint')
@@ -4454,6 +4997,8 @@ class BuildStep {
         if (allowExitCodes != null) 'allowExitCodes': allowExitCodes!,
         if (allowFailure != null) 'allowFailure': allowFailure!,
         if (args != null) 'args': args!,
+        if (automapSubstitutions != null)
+          'automapSubstitutions': automapSubstitutions!,
         if (dir != null) 'dir': dir!,
         if (entrypoint != null) 'entrypoint': entrypoint!,
         if (env != null) 'env': env!,
@@ -4533,6 +5078,10 @@ class BuildTrigger {
   /// Mutually exclusive with `trigger_template`.
   GitHubEventsConfig? github;
 
+  /// GitLabEnterpriseEventsConfig describes the configuration of a trigger that
+  /// creates a build whenever a GitLab Enterprise event is received.
+  GitLabEventsConfig? gitlabEnterpriseEventsConfig;
+
   /// Unique identifier of the trigger.
   ///
   /// Output only.
@@ -4581,6 +5130,10 @@ class BuildTrigger {
   /// PubsubConfig describes the configuration of a trigger that creates a build
   /// whenever a Pub/Sub message is published.
   PubsubConfig? pubsubConfig;
+
+  /// The configuration of a trigger that creates a build whenever an event from
+  /// Repo API is received.
+  RepositoryEventConfig? repositoryEventConfig;
 
   /// The `Trigger` name with format:
   /// `projects/{project}/locations/{location}/triggers/{trigger}`, where
@@ -4635,12 +5188,14 @@ class BuildTrigger {
     this.filter,
     this.gitFileSource,
     this.github,
+    this.gitlabEnterpriseEventsConfig,
     this.id,
     this.ignoredFiles,
     this.includeBuildLogs,
     this.includedFiles,
     this.name,
     this.pubsubConfig,
+    this.repositoryEventConfig,
     this.resourceName,
     this.serviceAccount,
     this.sourceToBuild,
@@ -4695,6 +5250,12 @@ class BuildTrigger {
               ? GitHubEventsConfig.fromJson(
                   json_['github'] as core.Map<core.String, core.dynamic>)
               : null,
+          gitlabEnterpriseEventsConfig:
+              json_.containsKey('gitlabEnterpriseEventsConfig')
+                  ? GitLabEventsConfig.fromJson(
+                      json_['gitlabEnterpriseEventsConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           id: json_.containsKey('id') ? json_['id'] as core.String : null,
           ignoredFiles: json_.containsKey('ignoredFiles')
               ? (json_['ignoredFiles'] as core.List)
@@ -4714,6 +5275,10 @@ class BuildTrigger {
               ? PubsubConfig.fromJson(
                   json_['pubsubConfig'] as core.Map<core.String, core.dynamic>)
               : null,
+          repositoryEventConfig: json_.containsKey('repositoryEventConfig')
+              ? RepositoryEventConfig.fromJson(json_['repositoryEventConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           resourceName: json_.containsKey('resourceName')
               ? json_['resourceName'] as core.String
               : null,
@@ -4727,9 +5292,9 @@ class BuildTrigger {
           substitutions: json_.containsKey('substitutions')
               ? (json_['substitutions'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -4762,12 +5327,16 @@ class BuildTrigger {
         if (filter != null) 'filter': filter!,
         if (gitFileSource != null) 'gitFileSource': gitFileSource!,
         if (github != null) 'github': github!,
+        if (gitlabEnterpriseEventsConfig != null)
+          'gitlabEnterpriseEventsConfig': gitlabEnterpriseEventsConfig!,
         if (id != null) 'id': id!,
         if (ignoredFiles != null) 'ignoredFiles': ignoredFiles!,
         if (includeBuildLogs != null) 'includeBuildLogs': includeBuildLogs!,
         if (includedFiles != null) 'includedFiles': includedFiles!,
         if (name != null) 'name': name!,
         if (pubsubConfig != null) 'pubsubConfig': pubsubConfig!,
+        if (repositoryEventConfig != null)
+          'repositoryEventConfig': repositoryEventConfig!,
         if (resourceName != null) 'resourceName': resourceName!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
         if (sourceToBuild != null) 'sourceToBuild': sourceToBuild!,
@@ -4900,6 +5469,45 @@ class CreateBitbucketServerConnectedRepositoryRequest {
       };
 }
 
+/// Request to connect a repository from a connected GitLab host.
+class CreateGitLabConnectedRepositoryRequest {
+  /// The GitLab repository to connect.
+  ///
+  /// Required.
+  GitLabConnectedRepository? gitlabConnectedRepository;
+
+  /// The name of the `GitLabConfig` that adds connected repository.
+  ///
+  /// Format: `projects/{project}/locations/{location}/gitLabConfigs/{config}`
+  ///
+  /// Required.
+  core.String? parent;
+
+  CreateGitLabConnectedRepositoryRequest({
+    this.gitlabConnectedRepository,
+    this.parent,
+  });
+
+  CreateGitLabConnectedRepositoryRequest.fromJson(core.Map json_)
+      : this(
+          gitlabConnectedRepository:
+              json_.containsKey('gitlabConnectedRepository')
+                  ? GitLabConnectedRepository.fromJson(
+                      json_['gitlabConnectedRepository']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          parent: json_.containsKey('parent')
+              ? json_['parent'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gitlabConnectedRepository != null)
+          'gitlabConnectedRepository': gitlabConnectedRepository!,
+        if (parent != null) 'parent': parent!,
+      };
+}
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
 ///
@@ -4988,13 +5596,22 @@ class GitFileSource {
 
   /// See RepoType above.
   /// Possible string values are:
-  /// - "UNKNOWN" : The default, unknown repo type.
+  /// - "UNKNOWN" : The default, unknown repo type. Don't use it, instead use
+  /// one of the other repo types.
   /// - "CLOUD_SOURCE_REPOSITORIES" : A Google Cloud Source Repositories-hosted
   /// repo.
   /// - "GITHUB" : A GitHub-hosted repo not necessarily on "github.com" (i.e.
   /// GitHub Enterprise).
   /// - "BITBUCKET_SERVER" : A Bitbucket Server-hosted repo.
+  /// - "GITLAB" : A GitLab-hosted repo.
   core.String? repoType;
+
+  /// The fully qualified resource name of the Repos API repository.
+  ///
+  /// Either URI or repository can be specified. If unspecified, the repo from
+  /// which the trigger invocation originated is assumed to be the repo from
+  /// which to read the specified path.
+  core.String? repository;
 
   /// The branch, tag, arbitrary ref, or SHA version of the repo to use when
   /// resolving the filename (optional).
@@ -5017,6 +5634,7 @@ class GitFileSource {
     this.githubEnterpriseConfig,
     this.path,
     this.repoType,
+    this.repository,
     this.revision,
     this.uri,
   });
@@ -5033,6 +5651,9 @@ class GitFileSource {
           repoType: json_.containsKey('repoType')
               ? json_['repoType'] as core.String
               : null,
+          repository: json_.containsKey('repository')
+              ? json_['repository'] as core.String
+              : null,
           revision: json_.containsKey('revision')
               ? json_['revision'] as core.String
               : null,
@@ -5046,6 +5667,7 @@ class GitFileSource {
           'githubEnterpriseConfig': githubEnterpriseConfig!,
         if (path != null) 'path': path!,
         if (repoType != null) 'repoType': repoType!,
+        if (repository != null) 'repository': repository!,
         if (revision != null) 'revision': revision!,
         if (uri != null) 'uri': uri!,
       };
@@ -5071,7 +5693,7 @@ class GitHubEnterpriseConfig {
   core.String? hostUrl;
 
   /// The full resource name for the GitHubEnterpriseConfig For example:
-  /// "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+  /// "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
   ///
   /// Optional.
   core.String? name;
@@ -5161,6 +5783,9 @@ class GitHubEnterpriseConfig {
 /// Format is: projects//secrets/.
 class GitHubEnterpriseSecrets {
   /// The resource name for the OAuth client ID secret in Secret Manager.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? oauthClientIdName;
 
   /// The resource name for the OAuth client ID secret version in Secret
@@ -5168,18 +5793,27 @@ class GitHubEnterpriseSecrets {
   core.String? oauthClientIdVersionName;
 
   /// The resource name for the OAuth secret in Secret Manager.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? oauthSecretName;
 
   /// The resource name for the OAuth secret secret version in Secret Manager.
   core.String? oauthSecretVersionName;
 
   /// The resource name for the private key secret.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? privateKeyName;
 
   /// The resource name for the private key secret version.
   core.String? privateKeyVersionName;
 
   /// The resource name for the webhook secret in Secret Manager.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? webhookSecretName;
 
   /// The resource name for the webhook secret secret version in Secret Manager.
@@ -5248,12 +5882,16 @@ class GitHubEventsConfig {
   /// The resource name of the github enterprise config that should be applied
   /// to this installation.
   ///
-  /// For example: "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+  /// For example:
+  /// "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
   ///
   /// Optional.
   core.String? enterpriseConfigResourceName;
 
   /// The installationID that emits the GitHub event.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? installationId;
 
   /// Name of the repository.
@@ -5317,6 +5955,387 @@ class GitHubEventsConfig {
       };
 }
 
+/// GitLabConfig represents the configuration for a GitLab integration.
+class GitLabConfig {
+  /// Connected GitLab.com or GitLabEnterprise repositories for this config.
+  core.List<GitLabRepositoryId>? connectedRepositories;
+
+  /// Time when the config was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// GitLabEnterprise config.
+  ///
+  /// Optional.
+  GitLabEnterpriseConfig? enterpriseConfig;
+
+  /// The resource name for the config.
+  core.String? name;
+
+  /// Secret Manager secrets needed by the config.
+  ///
+  /// Required.
+  GitLabSecrets? secrets;
+
+  /// Username of the GitLab.com or GitLab Enterprise account Cloud Build will
+  /// use.
+  core.String? username;
+
+  /// UUID included in webhook requests.
+  ///
+  /// The UUID is used to look up the corresponding config.
+  ///
+  /// Output only.
+  core.String? webhookKey;
+
+  GitLabConfig({
+    this.connectedRepositories,
+    this.createTime,
+    this.enterpriseConfig,
+    this.name,
+    this.secrets,
+    this.username,
+    this.webhookKey,
+  });
+
+  GitLabConfig.fromJson(core.Map json_)
+      : this(
+          connectedRepositories: json_.containsKey('connectedRepositories')
+              ? (json_['connectedRepositories'] as core.List)
+                  .map((value) => GitLabRepositoryId.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          enterpriseConfig: json_.containsKey('enterpriseConfig')
+              ? GitLabEnterpriseConfig.fromJson(json_['enterpriseConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          secrets: json_.containsKey('secrets')
+              ? GitLabSecrets.fromJson(
+                  json_['secrets'] as core.Map<core.String, core.dynamic>)
+              : null,
+          username: json_.containsKey('username')
+              ? json_['username'] as core.String
+              : null,
+          webhookKey: json_.containsKey('webhookKey')
+              ? json_['webhookKey'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (connectedRepositories != null)
+          'connectedRepositories': connectedRepositories!,
+        if (createTime != null) 'createTime': createTime!,
+        if (enterpriseConfig != null) 'enterpriseConfig': enterpriseConfig!,
+        if (name != null) 'name': name!,
+        if (secrets != null) 'secrets': secrets!,
+        if (username != null) 'username': username!,
+        if (webhookKey != null) 'webhookKey': webhookKey!,
+      };
+}
+
+/// GitLabConnectedRepository represents a GitLab connected repository request
+/// response.
+class GitLabConnectedRepository {
+  /// The name of the `GitLabConfig` that added connected repository.
+  ///
+  /// Format: `projects/{project}/locations/{location}/gitLabConfigs/{config}`
+  core.String? parent;
+
+  /// The GitLab repositories to connect.
+  GitLabRepositoryId? repo;
+
+  /// The status of the repo connection request.
+  ///
+  /// Output only.
+  Status? status;
+
+  GitLabConnectedRepository({
+    this.parent,
+    this.repo,
+    this.status,
+  });
+
+  GitLabConnectedRepository.fromJson(core.Map json_)
+      : this(
+          parent: json_.containsKey('parent')
+              ? json_['parent'] as core.String
+              : null,
+          repo: json_.containsKey('repo')
+              ? GitLabRepositoryId.fromJson(
+                  json_['repo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          status: json_.containsKey('status')
+              ? Status.fromJson(
+                  json_['status'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (parent != null) 'parent': parent!,
+        if (repo != null) 'repo': repo!,
+        if (status != null) 'status': status!,
+      };
+}
+
+/// GitLabEnterpriseConfig represents the configuration for a GitLabEnterprise
+/// integration.
+class GitLabEnterpriseConfig {
+  /// The URI of the GitlabEnterprise host.
+  ///
+  /// Immutable.
+  core.String? hostUri;
+
+  /// The Service Directory configuration to be used when reaching out to the
+  /// GitLab Enterprise instance.
+  ServiceDirectoryConfig? serviceDirectoryConfig;
+
+  /// The SSL certificate to use in requests to GitLab Enterprise instances.
+  core.String? sslCa;
+
+  GitLabEnterpriseConfig({
+    this.hostUri,
+    this.serviceDirectoryConfig,
+    this.sslCa,
+  });
+
+  GitLabEnterpriseConfig.fromJson(core.Map json_)
+      : this(
+          hostUri: json_.containsKey('hostUri')
+              ? json_['hostUri'] as core.String
+              : null,
+          serviceDirectoryConfig: json_.containsKey('serviceDirectoryConfig')
+              ? ServiceDirectoryConfig.fromJson(json_['serviceDirectoryConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          sslCa:
+              json_.containsKey('sslCa') ? json_['sslCa'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (hostUri != null) 'hostUri': hostUri!,
+        if (serviceDirectoryConfig != null)
+          'serviceDirectoryConfig': serviceDirectoryConfig!,
+        if (sslCa != null) 'sslCa': sslCa!,
+      };
+}
+
+/// GitLabEventsConfig describes the configuration of a trigger that creates a
+/// build whenever a GitLab event is received.
+class GitLabEventsConfig {
+  /// The GitLabConfig specified in the gitlab_config_resource field.
+  ///
+  /// Output only.
+  GitLabConfig? gitlabConfig;
+
+  /// The GitLab config resource that this trigger config maps to.
+  core.String? gitlabConfigResource;
+
+  /// Namespace of the GitLab project.
+  core.String? projectNamespace;
+
+  /// Filter to match changes in pull requests.
+  PullRequestFilter? pullRequest;
+
+  /// Filter to match changes in refs like branches, tags.
+  PushFilter? push;
+
+  GitLabEventsConfig({
+    this.gitlabConfig,
+    this.gitlabConfigResource,
+    this.projectNamespace,
+    this.pullRequest,
+    this.push,
+  });
+
+  GitLabEventsConfig.fromJson(core.Map json_)
+      : this(
+          gitlabConfig: json_.containsKey('gitlabConfig')
+              ? GitLabConfig.fromJson(
+                  json_['gitlabConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          gitlabConfigResource: json_.containsKey('gitlabConfigResource')
+              ? json_['gitlabConfigResource'] as core.String
+              : null,
+          projectNamespace: json_.containsKey('projectNamespace')
+              ? json_['projectNamespace'] as core.String
+              : null,
+          pullRequest: json_.containsKey('pullRequest')
+              ? PullRequestFilter.fromJson(
+                  json_['pullRequest'] as core.Map<core.String, core.dynamic>)
+              : null,
+          push: json_.containsKey('push')
+              ? PushFilter.fromJson(
+                  json_['push'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gitlabConfig != null) 'gitlabConfig': gitlabConfig!,
+        if (gitlabConfigResource != null)
+          'gitlabConfigResource': gitlabConfigResource!,
+        if (projectNamespace != null) 'projectNamespace': projectNamespace!,
+        if (pullRequest != null) 'pullRequest': pullRequest!,
+        if (push != null) 'push': push!,
+      };
+}
+
+/// Proto Representing a GitLabRepository
+class GitLabRepository {
+  /// Link to the browse repo page on the GitLab instance
+  core.String? browseUri;
+
+  /// Description of the repository
+  core.String? description;
+
+  /// Display name of the repository
+  core.String? displayName;
+
+  /// The resource name of the repository
+  core.String? name;
+
+  /// Identifier for a repository
+  GitLabRepositoryId? repositoryId;
+
+  GitLabRepository({
+    this.browseUri,
+    this.description,
+    this.displayName,
+    this.name,
+    this.repositoryId,
+  });
+
+  GitLabRepository.fromJson(core.Map json_)
+      : this(
+          browseUri: json_.containsKey('browseUri')
+              ? json_['browseUri'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          repositoryId: json_.containsKey('repositoryId')
+              ? GitLabRepositoryId.fromJson(
+                  json_['repositoryId'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (browseUri != null) 'browseUri': browseUri!,
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (name != null) 'name': name!,
+        if (repositoryId != null) 'repositoryId': repositoryId!,
+      };
+}
+
+/// GitLabRepositoryId identifies a specific repository hosted on GitLab.com or
+/// GitLabEnterprise
+class GitLabRepositoryId {
+  /// Identifier for the repository.
+  ///
+  /// example: "namespace/project-slug", namespace is usually the username or
+  /// group ID
+  ///
+  /// Required.
+  core.String? id;
+
+  /// The ID of the webhook that was created for receiving events from this
+  /// repo.
+  ///
+  /// We only create and manage a single webhook for each repo.
+  ///
+  /// Output only.
+  core.int? webhookId;
+
+  GitLabRepositoryId({
+    this.id,
+    this.webhookId,
+  });
+
+  GitLabRepositoryId.fromJson(core.Map json_)
+      : this(
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          webhookId: json_.containsKey('webhookId')
+              ? json_['webhookId'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (id != null) 'id': id!,
+        if (webhookId != null) 'webhookId': webhookId!,
+      };
+}
+
+/// GitLabSecrets represents the secrets in Secret Manager for a GitLab
+/// integration.
+class GitLabSecrets {
+  /// The resource name for the api access token’s secret version
+  ///
+  /// Required.
+  core.String? apiAccessTokenVersion;
+
+  /// API Key that will be attached to webhook requests from GitLab to Cloud
+  /// Build.
+  ///
+  /// Required. Immutable.
+  core.String? apiKeyVersion;
+
+  /// The resource name for the read access token’s secret version
+  ///
+  /// Required.
+  core.String? readAccessTokenVersion;
+
+  /// The resource name for the webhook secret’s secret version.
+  ///
+  /// Once this field has been set, it cannot be changed. If you need to change
+  /// it, please create another GitLabConfig.
+  ///
+  /// Required. Immutable.
+  core.String? webhookSecretVersion;
+
+  GitLabSecrets({
+    this.apiAccessTokenVersion,
+    this.apiKeyVersion,
+    this.readAccessTokenVersion,
+    this.webhookSecretVersion,
+  });
+
+  GitLabSecrets.fromJson(core.Map json_)
+      : this(
+          apiAccessTokenVersion: json_.containsKey('apiAccessTokenVersion')
+              ? json_['apiAccessTokenVersion'] as core.String
+              : null,
+          apiKeyVersion: json_.containsKey('apiKeyVersion')
+              ? json_['apiKeyVersion'] as core.String
+              : null,
+          readAccessTokenVersion: json_.containsKey('readAccessTokenVersion')
+              ? json_['readAccessTokenVersion'] as core.String
+              : null,
+          webhookSecretVersion: json_.containsKey('webhookSecretVersion')
+              ? json_['webhookSecretVersion'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (apiAccessTokenVersion != null)
+          'apiAccessTokenVersion': apiAccessTokenVersion!,
+        if (apiKeyVersion != null) 'apiKeyVersion': apiKeyVersion!,
+        if (readAccessTokenVersion != null)
+          'readAccessTokenVersion': readAccessTokenVersion!,
+        if (webhookSecretVersion != null)
+          'webhookSecretVersion': webhookSecretVersion!,
+      };
+}
+
 /// GitRepoSource describes a repo and ref of a code repository.
 class GitRepoSource {
   /// The full resource name of the bitbucket server config.
@@ -5339,17 +6358,25 @@ class GitRepoSource {
 
   /// See RepoType below.
   /// Possible string values are:
-  /// - "UNKNOWN" : The default, unknown repo type.
+  /// - "UNKNOWN" : The default, unknown repo type. Don't use it, instead use
+  /// one of the other repo types.
   /// - "CLOUD_SOURCE_REPOSITORIES" : A Google Cloud Source Repositories-hosted
   /// repo.
   /// - "GITHUB" : A GitHub-hosted repo not necessarily on "github.com" (i.e.
   /// GitHub Enterprise).
   /// - "BITBUCKET_SERVER" : A Bitbucket Server-hosted repo.
+  /// - "GITLAB" : A GitLab-hosted repo.
   core.String? repoType;
 
-  /// The URI of the repo.
+  /// The connected repository resource name, in the format `projects / *
+  /// /locations / * /connections / * /repositories / * `.
   ///
-  /// Either uri or repository can be specified and is required.
+  /// Either `uri` or `repository` can be specified and is required.
+  core.String? repository;
+
+  /// The URI of the repo (e.g. https://github.com/user/repo.git).
+  ///
+  /// Either `uri` or `repository` can be specified and is required.
   core.String? uri;
 
   GitRepoSource({
@@ -5357,6 +6384,7 @@ class GitRepoSource {
     this.githubEnterpriseConfig,
     this.ref,
     this.repoType,
+    this.repository,
     this.uri,
   });
 
@@ -5372,6 +6400,9 @@ class GitRepoSource {
           repoType: json_.containsKey('repoType')
               ? json_['repoType'] as core.String
               : null,
+          repository: json_.containsKey('repository')
+              ? json_['repository'] as core.String
+              : null,
           uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
         );
 
@@ -5382,7 +6413,55 @@ class GitRepoSource {
           'githubEnterpriseConfig': githubEnterpriseConfig!,
         if (ref != null) 'ref': ref!,
         if (repoType != null) 'repoType': repoType!,
+        if (repository != null) 'repository': repository!,
         if (uri != null) 'uri': uri!,
+      };
+}
+
+/// Location of the source in any accessible Git repository.
+class GitSource {
+  /// Directory, relative to the source root, in which to run the build.
+  ///
+  /// This must be a relative path. If a step's `dir` is specified and is an
+  /// absolute path, this value is ignored for that step's execution.
+  core.String? dir;
+
+  /// The revision to fetch from the Git repository such as a branch, a tag, a
+  /// commit SHA, or any Git ref.
+  ///
+  /// Cloud Build uses `git fetch` to fetch the revision from the Git
+  /// repository; therefore make sure that the string you provide for `revision`
+  /// is parsable by the command. For information on string values accepted by
+  /// `git fetch`, see
+  /// https://git-scm.com/docs/gitrevisions#_specifying_revisions. For
+  /// information on `git fetch`, see https://git-scm.com/docs/git-fetch.
+  core.String? revision;
+
+  /// Location of the Git repo to build.
+  ///
+  /// This will be used as a `git remote`, see
+  /// https://git-scm.com/docs/git-remote.
+  core.String? url;
+
+  GitSource({
+    this.dir,
+    this.revision,
+    this.url,
+  });
+
+  GitSource.fromJson(core.Map json_)
+      : this(
+          dir: json_.containsKey('dir') ? json_['dir'] as core.String : null,
+          revision: json_.containsKey('revision')
+              ? json_['revision'] as core.String
+              : null,
+          url: json_.containsKey('url') ? json_['url'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dir != null) 'dir': dir!,
+        if (revision != null) 'revision': revision!,
+        if (url != null) 'url': url!,
       };
 }
 
@@ -5393,6 +6472,7 @@ class Hash {
   /// - "NONE" : No hash requested.
   /// - "SHA256" : Use a sha256 hash.
   /// - "MD5" : Use a md5 hash.
+  /// - "SHA512" : Use a sha512 hash.
   core.String? type;
 
   /// The hash value.
@@ -5467,9 +6547,9 @@ class InlineSecret {
       : this(
           envMap: json_.containsKey('envMap')
               ? (json_['envMap'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -5622,6 +6702,74 @@ class ListBuildsResponse {
       };
 }
 
+/// RPC response object returned by ListGitLabConfigs RPC method.
+class ListGitLabConfigsResponse {
+  /// A list of GitLabConfigs
+  core.List<GitLabConfig>? gitlabConfigs;
+
+  /// A token that can be sent as `page_token` to retrieve the next page If this
+  /// field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  ListGitLabConfigsResponse({
+    this.gitlabConfigs,
+    this.nextPageToken,
+  });
+
+  ListGitLabConfigsResponse.fromJson(core.Map json_)
+      : this(
+          gitlabConfigs: json_.containsKey('gitlabConfigs')
+              ? (json_['gitlabConfigs'] as core.List)
+                  .map((value) => GitLabConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gitlabConfigs != null) 'gitlabConfigs': gitlabConfigs!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// RPC response object returned by the ListGitLabRepositories RPC method.
+class ListGitLabRepositoriesResponse {
+  /// List of GitLab repositories
+  core.List<GitLabRepository>? gitlabRepositories;
+
+  /// A token that can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  ListGitLabRepositoriesResponse({
+    this.gitlabRepositories,
+    this.nextPageToken,
+  });
+
+  ListGitLabRepositoriesResponse.fromJson(core.Map json_)
+      : this(
+          gitlabRepositories: json_.containsKey('gitlabRepositories')
+              ? (json_['gitlabRepositories'] as core.List)
+                  .map((value) => GitLabRepository.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gitlabRepositories != null)
+          'gitlabRepositories': gitlabRepositories!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
 /// RPC response object returned by ListGithubEnterpriseConfigs RPC method.
 class ListGithubEnterpriseConfigsResponse {
   /// A list of GitHubEnterpriseConfigs
@@ -5681,6 +6829,69 @@ class ListWorkerPoolsResponse {
       };
 }
 
+/// A Maven artifact to upload to Artifact Registry upon successful completion
+/// of all build steps.
+class MavenArtifact {
+  /// Maven `artifactId` value used when uploading the artifact to Artifact
+  /// Registry.
+  core.String? artifactId;
+
+  /// Maven `groupId` value used when uploading the artifact to Artifact
+  /// Registry.
+  core.String? groupId;
+
+  /// Path to an artifact in the build's workspace to be uploaded to Artifact
+  /// Registry.
+  ///
+  /// This can be either an absolute path, e.g.
+  /// /workspace/my-app/target/my-app-1.0.SNAPSHOT.jar or a relative path from
+  /// /workspace, e.g. my-app/target/my-app-1.0.SNAPSHOT.jar.
+  core.String? path;
+
+  /// Artifact Registry repository, in the form
+  /// "https://$REGION-maven.pkg.dev/$PROJECT/$REPOSITORY" Artifact in the
+  /// workspace specified by path will be uploaded to Artifact Registry with
+  /// this location as a prefix.
+  core.String? repository;
+
+  /// Maven `version` value used when uploading the artifact to Artifact
+  /// Registry.
+  core.String? version;
+
+  MavenArtifact({
+    this.artifactId,
+    this.groupId,
+    this.path,
+    this.repository,
+    this.version,
+  });
+
+  MavenArtifact.fromJson(core.Map json_)
+      : this(
+          artifactId: json_.containsKey('artifactId')
+              ? json_['artifactId'] as core.String
+              : null,
+          groupId: json_.containsKey('groupId')
+              ? json_['groupId'] as core.String
+              : null,
+          path: json_.containsKey('path') ? json_['path'] as core.String : null,
+          repository: json_.containsKey('repository')
+              ? json_['repository'] as core.String
+              : null,
+          version: json_.containsKey('version')
+              ? json_['version'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (artifactId != null) 'artifactId': artifactId!,
+        if (groupId != null) 'groupId': groupId!,
+        if (path != null) 'path': path!,
+        if (repository != null) 'repository': repository!,
+        if (version != null) 'version': version!,
+      };
+}
+
 /// Defines the network configuration for the pool.
 class NetworkConfig {
   /// Option to configure network egress for the workers.
@@ -5705,9 +6916,22 @@ class NetworkConfig {
   /// Required. Immutable.
   core.String? peeredNetwork;
 
+  /// Subnet IP range within the peered network.
+  ///
+  /// This is specified in CIDR notation with a slash and the subnet prefix
+  /// size. You can optionally specify an IP address before the subnet prefix
+  /// value. e.g. `192.168.0.0/29` would specify an IP range starting at
+  /// 192.168.0.0 with a prefix size of 29 bits. `/16` would specify a prefix
+  /// size of 16 bits, with an automatically determined IP within the peered
+  /// VPC. If unspecified, a value of `/24` will be used.
+  ///
+  /// Immutable.
+  core.String? peeredNetworkIpRange;
+
   NetworkConfig({
     this.egressOption,
     this.peeredNetwork,
+    this.peeredNetworkIpRange,
   });
 
   NetworkConfig.fromJson(core.Map json_)
@@ -5718,11 +6942,51 @@ class NetworkConfig {
           peeredNetwork: json_.containsKey('peeredNetwork')
               ? json_['peeredNetwork'] as core.String
               : null,
+          peeredNetworkIpRange: json_.containsKey('peeredNetworkIpRange')
+              ? json_['peeredNetworkIpRange'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (egressOption != null) 'egressOption': egressOption!,
         if (peeredNetwork != null) 'peeredNetwork': peeredNetwork!,
+        if (peeredNetworkIpRange != null)
+          'peeredNetworkIpRange': peeredNetworkIpRange!,
+      };
+}
+
+/// Npm package to upload to Artifact Registry upon successful completion of all
+/// build steps.
+class NpmPackage {
+  /// Path to the package.json.
+  ///
+  /// e.g. workspace/path/to/package
+  core.String? packagePath;
+
+  /// Artifact Registry repository, in the form
+  /// "https://$REGION-npm.pkg.dev/$PROJECT/$REPOSITORY" Npm package in the
+  /// workspace specified by path will be zipped and uploaded to Artifact
+  /// Registry with this location as a prefix.
+  core.String? repository;
+
+  NpmPackage({
+    this.packagePath,
+    this.repository,
+  });
+
+  NpmPackage.fromJson(core.Map json_)
+      : this(
+          packagePath: json_.containsKey('packagePath')
+              ? json_['packagePath'] as core.String
+              : null,
+          repository: json_.containsKey('repository')
+              ? json_['repository'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (packagePath != null) 'packagePath': packagePath!,
+        if (repository != null) 'repository': repository!,
       };
 }
 
@@ -6013,6 +7277,47 @@ class PushFilter {
       };
 }
 
+/// Python package to upload to Artifact Registry upon successful completion of
+/// all build steps.
+///
+/// A package can encapsulate multiple objects to be uploaded to a single
+/// repository.
+class PythonPackage {
+  /// Path globs used to match files in the build's workspace.
+  ///
+  /// For Python/ Twine, this is usually `dist / * `, and sometimes additionally
+  /// an `.asc` file.
+  core.List<core.String>? paths;
+
+  /// Artifact Registry repository, in the form
+  /// "https://$REGION-python.pkg.dev/$PROJECT/$REPOSITORY" Files in the
+  /// workspace matching any path pattern will be uploaded to Artifact Registry
+  /// with this location as a prefix.
+  core.String? repository;
+
+  PythonPackage({
+    this.paths,
+    this.repository,
+  });
+
+  PythonPackage.fromJson(core.Map json_)
+      : this(
+          paths: json_.containsKey('paths')
+              ? (json_['paths'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          repository: json_.containsKey('repository')
+              ? json_['repository'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (paths != null) 'paths': paths!,
+        if (repository != null) 'repository': repository!,
+      };
+}
+
 /// ReceiveTriggerWebhookResponse \[Experimental\] is the response object for
 /// the ReceiveTriggerWebhook method.
 typedef ReceiveTriggerWebhookResponse = $Empty;
@@ -6033,6 +7338,29 @@ class RemoveBitbucketServerConnectedRepositoryRequest {
               ? BitbucketServerRepositoryId.fromJson(
                   json_['connectedRepository']
                       as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (connectedRepository != null)
+          'connectedRepository': connectedRepository!,
+      };
+}
+
+/// RPC request object accepted by RemoveGitLabConnectedRepository RPC method.
+class RemoveGitLabConnectedRepositoryRequest {
+  /// The connected repository to remove.
+  GitLabRepositoryId? connectedRepository;
+
+  RemoveGitLabConnectedRepositoryRequest({
+    this.connectedRepository,
+  });
+
+  RemoveGitLabConnectedRepositoryRequest.fromJson(core.Map json_)
+      : this(
+          connectedRepository: json_.containsKey('connectedRepository')
+              ? GitLabRepositoryId.fromJson(json_['connectedRepository']
+                  as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -6114,9 +7442,9 @@ class RepoSource {
           substitutions: json_.containsKey('substitutions')
               ? (json_['substitutions'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -6137,14 +7465,71 @@ class RepoSource {
       };
 }
 
+/// The configuration of a trigger that creates a build whenever an event from
+/// Repo API is received.
+class RepositoryEventConfig {
+  /// Filter to match changes in pull requests.
+  PullRequestFilter? pullRequest;
+
+  /// Filter to match changes in refs like branches, tags.
+  PushFilter? push;
+
+  /// The resource name of the Repo API resource.
+  core.String? repository;
+
+  /// The type of the SCM vendor the repository points to.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "REPOSITORY_TYPE_UNSPECIFIED" : If unspecified, RepositoryType defaults
+  /// to GITHUB.
+  /// - "GITHUB" : The SCM repo is GITHUB.
+  /// - "GITHUB_ENTERPRISE" : The SCM repo is GITHUB Enterprise.
+  /// - "GITLAB_ENTERPRISE" : The SCM repo is GITLAB Enterprise.
+  core.String? repositoryType;
+
+  RepositoryEventConfig({
+    this.pullRequest,
+    this.push,
+    this.repository,
+    this.repositoryType,
+  });
+
+  RepositoryEventConfig.fromJson(core.Map json_)
+      : this(
+          pullRequest: json_.containsKey('pullRequest')
+              ? PullRequestFilter.fromJson(
+                  json_['pullRequest'] as core.Map<core.String, core.dynamic>)
+              : null,
+          push: json_.containsKey('push')
+              ? PushFilter.fromJson(
+                  json_['push'] as core.Map<core.String, core.dynamic>)
+              : null,
+          repository: json_.containsKey('repository')
+              ? json_['repository'] as core.String
+              : null,
+          repositoryType: json_.containsKey('repositoryType')
+              ? json_['repositoryType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (pullRequest != null) 'pullRequest': pullRequest!,
+        if (push != null) 'push': push!,
+        if (repository != null) 'repository': repository!,
+        if (repositoryType != null) 'repositoryType': repositoryType!,
+      };
+}
+
 /// Artifacts created by the build pipeline.
 class Results {
-  /// Path to the artifact manifest.
+  /// Path to the artifact manifest for non-container artifacts uploaded to
+  /// Cloud Storage.
   ///
-  /// Only populated when artifacts are uploaded.
+  /// Only populated when artifacts are uploaded to Cloud Storage.
   core.String? artifactManifest;
 
-  /// Time to push all non-container artifacts.
+  /// Time to push all non-container artifacts to Cloud Storage.
   TimeSpan? artifactTiming;
 
   /// List of build step digests, in the order corresponding to build step
@@ -6162,10 +7547,19 @@ class Results {
   /// Container images that were built as a part of the build.
   core.List<BuiltImage>? images;
 
-  /// Number of artifacts uploaded.
+  /// Maven artifacts uploaded to Artifact Registry at the end of the build.
+  core.List<UploadedMavenArtifact>? mavenArtifacts;
+
+  /// Npm packages uploaded to Artifact Registry at the end of the build.
+  core.List<UploadedNpmPackage>? npmPackages;
+
+  /// Number of non-container artifacts uploaded to Cloud Storage.
   ///
-  /// Only populated when artifacts are uploaded.
+  /// Only populated when artifacts are uploaded to Cloud Storage.
   core.String? numArtifacts;
+
+  /// Python artifacts uploaded to Artifact Registry at the end of the build.
+  core.List<UploadedPythonPackage>? pythonPackages;
 
   Results({
     this.artifactManifest,
@@ -6173,7 +7567,10 @@ class Results {
     this.buildStepImages,
     this.buildStepOutputs,
     this.images,
+    this.mavenArtifacts,
+    this.npmPackages,
     this.numArtifacts,
+    this.pythonPackages,
   });
 
   Results.fromJson(core.Map json_)
@@ -6201,8 +7598,26 @@ class Results {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          mavenArtifacts: json_.containsKey('mavenArtifacts')
+              ? (json_['mavenArtifacts'] as core.List)
+                  .map((value) => UploadedMavenArtifact.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          npmPackages: json_.containsKey('npmPackages')
+              ? (json_['npmPackages'] as core.List)
+                  .map((value) => UploadedNpmPackage.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           numArtifacts: json_.containsKey('numArtifacts')
               ? json_['numArtifacts'] as core.String
+              : null,
+          pythonPackages: json_.containsKey('pythonPackages')
+              ? (json_['pythonPackages'] as core.List)
+                  .map((value) => UploadedPythonPackage.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
               : null,
         );
 
@@ -6212,7 +7627,10 @@ class Results {
         if (buildStepImages != null) 'buildStepImages': buildStepImages!,
         if (buildStepOutputs != null) 'buildStepOutputs': buildStepOutputs!,
         if (images != null) 'images': images!,
+        if (mavenArtifacts != null) 'mavenArtifacts': mavenArtifacts!,
+        if (npmPackages != null) 'npmPackages': npmPackages!,
         if (numArtifacts != null) 'numArtifacts': numArtifacts!,
+        if (pythonPackages != null) 'pythonPackages': pythonPackages!,
       };
 }
 
@@ -6329,9 +7747,9 @@ class Secret {
               : null,
           secretEnv: json_.containsKey('secretEnv')
               ? (json_['secretEnv'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -6411,22 +7829,51 @@ class Secrets {
       };
 }
 
+/// ServiceDirectoryConfig represents Service Directory configuration for a SCM
+/// host connection.
+class ServiceDirectoryConfig {
+  /// The Service Directory service name.
+  ///
+  /// Format:
+  /// projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
+  core.String? service;
+
+  ServiceDirectoryConfig({
+    this.service,
+  });
+
+  ServiceDirectoryConfig.fromJson(core.Map json_)
+      : this(
+          service: json_.containsKey('service')
+              ? json_['service'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (service != null) 'service': service!,
+      };
+}
+
 /// Location of the source in a supported storage service.
 class Source {
+  /// If provided, get the source from this Git repository.
+  GitSource? gitSource;
+
   /// If provided, get the source from this location in a Cloud Source
   /// Repository.
   RepoSource? repoSource;
 
-  /// If provided, get the source from this location in Google Cloud Storage.
+  /// If provided, get the source from this location in Cloud Storage.
   StorageSource? storageSource;
 
-  /// If provided, get the source from this manifest in Google Cloud Storage.
+  /// If provided, get the source from this manifest in Cloud Storage.
   ///
   /// This feature is in Preview; see description
   /// [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
   StorageSourceManifest? storageSourceManifest;
 
   Source({
+    this.gitSource,
     this.repoSource,
     this.storageSource,
     this.storageSourceManifest,
@@ -6434,6 +7881,10 @@ class Source {
 
   Source.fromJson(core.Map json_)
       : this(
+          gitSource: json_.containsKey('gitSource')
+              ? GitSource.fromJson(
+                  json_['gitSource'] as core.Map<core.String, core.dynamic>)
+              : null,
           repoSource: json_.containsKey('repoSource')
               ? RepoSource.fromJson(
                   json_['repoSource'] as core.Map<core.String, core.dynamic>)
@@ -6449,6 +7900,7 @@ class Source {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (gitSource != null) 'gitSource': gitSource!,
         if (repoSource != null) 'repoSource': repoSource!,
         if (storageSource != null) 'storageSource': storageSource!,
         if (storageSourceManifest != null)
@@ -6500,10 +7952,10 @@ class SourceProvenance {
           fileHashes: json_.containsKey('fileHashes')
               ? (json_['fileHashes'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     FileHashes.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -6543,18 +7995,18 @@ class SourceProvenance {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef Status = $Status;
 
-/// Location of the source in an archive file in Google Cloud Storage.
+/// Location of the source in an archive file in Cloud Storage.
 class StorageSource {
-  /// Google Cloud Storage bucket containing the source (see
+  /// Cloud Storage bucket containing the source (see
   /// [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
   core.String? bucket;
 
-  /// Google Cloud Storage generation for the object.
+  /// Cloud Storage generation for the object.
   ///
   /// If the generation is omitted, the latest generation will be used.
   core.String? generation;
 
-  /// Google Cloud Storage object containing the source.
+  /// Cloud Storage object containing the source.
   ///
   /// This object must be a zipped (`.zip`) or gzipped archive file (`.tar.gz`)
   /// containing source to build.
@@ -6586,21 +8038,21 @@ class StorageSource {
       };
 }
 
-/// Location of the source manifest in Google Cloud Storage.
+/// Location of the source manifest in Cloud Storage.
 ///
 /// This feature is in Preview; see description
 /// [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
 class StorageSourceManifest {
-  /// Google Cloud Storage bucket containing the source manifest (see
+  /// Cloud Storage bucket containing the source manifest (see
   /// [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
   core.String? bucket;
 
-  /// Google Cloud Storage generation for the object.
+  /// Cloud Storage generation for the object.
   ///
   /// If the generation is omitted, the latest generation will be used.
   core.String? generation;
 
-  /// Google Cloud Storage object containing the source manifest.
+  /// Cloud Storage object containing the source manifest.
   ///
   /// This object must be a JSON file.
   core.String? object;
@@ -6657,6 +8109,123 @@ class TimeSpan {
   core.Map<core.String, core.dynamic> toJson() => {
         if (endTime != null) 'endTime': endTime!,
         if (startTime != null) 'startTime': startTime!,
+      };
+}
+
+/// A Maven artifact uploaded using the MavenArtifact directive.
+class UploadedMavenArtifact {
+  /// Hash types and values of the Maven Artifact.
+  FileHashes? fileHashes;
+
+  /// Stores timing information for pushing the specified artifact.
+  ///
+  /// Output only.
+  TimeSpan? pushTiming;
+
+  /// URI of the uploaded artifact.
+  core.String? uri;
+
+  UploadedMavenArtifact({
+    this.fileHashes,
+    this.pushTiming,
+    this.uri,
+  });
+
+  UploadedMavenArtifact.fromJson(core.Map json_)
+      : this(
+          fileHashes: json_.containsKey('fileHashes')
+              ? FileHashes.fromJson(
+                  json_['fileHashes'] as core.Map<core.String, core.dynamic>)
+              : null,
+          pushTiming: json_.containsKey('pushTiming')
+              ? TimeSpan.fromJson(
+                  json_['pushTiming'] as core.Map<core.String, core.dynamic>)
+              : null,
+          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fileHashes != null) 'fileHashes': fileHashes!,
+        if (pushTiming != null) 'pushTiming': pushTiming!,
+        if (uri != null) 'uri': uri!,
+      };
+}
+
+/// An npm package uploaded to Artifact Registry using the NpmPackage directive.
+class UploadedNpmPackage {
+  /// Hash types and values of the npm package.
+  FileHashes? fileHashes;
+
+  /// Stores timing information for pushing the specified artifact.
+  ///
+  /// Output only.
+  TimeSpan? pushTiming;
+
+  /// URI of the uploaded npm package.
+  core.String? uri;
+
+  UploadedNpmPackage({
+    this.fileHashes,
+    this.pushTiming,
+    this.uri,
+  });
+
+  UploadedNpmPackage.fromJson(core.Map json_)
+      : this(
+          fileHashes: json_.containsKey('fileHashes')
+              ? FileHashes.fromJson(
+                  json_['fileHashes'] as core.Map<core.String, core.dynamic>)
+              : null,
+          pushTiming: json_.containsKey('pushTiming')
+              ? TimeSpan.fromJson(
+                  json_['pushTiming'] as core.Map<core.String, core.dynamic>)
+              : null,
+          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fileHashes != null) 'fileHashes': fileHashes!,
+        if (pushTiming != null) 'pushTiming': pushTiming!,
+        if (uri != null) 'uri': uri!,
+      };
+}
+
+/// Artifact uploaded using the PythonPackage directive.
+class UploadedPythonPackage {
+  /// Hash types and values of the Python Artifact.
+  FileHashes? fileHashes;
+
+  /// Stores timing information for pushing the specified artifact.
+  ///
+  /// Output only.
+  TimeSpan? pushTiming;
+
+  /// URI of the uploaded artifact.
+  core.String? uri;
+
+  UploadedPythonPackage({
+    this.fileHashes,
+    this.pushTiming,
+    this.uri,
+  });
+
+  UploadedPythonPackage.fromJson(core.Map json_)
+      : this(
+          fileHashes: json_.containsKey('fileHashes')
+              ? FileHashes.fromJson(
+                  json_['fileHashes'] as core.Map<core.String, core.dynamic>)
+              : null,
+          pushTiming: json_.containsKey('pushTiming')
+              ? TimeSpan.fromJson(
+                  json_['pushTiming'] as core.Map<core.String, core.dynamic>)
+              : null,
+          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fileHashes != null) 'fileHashes': fileHashes!,
+        if (pushTiming != null) 'pushTiming': pushTiming!,
+        if (uri != null) 'uri': uri!,
       };
 }
 
@@ -6769,7 +8338,7 @@ class WorkerConfig {
   ///
   /// See
   /// [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema).
-  /// Specify a value of up to 1000. If `0` is specified, Cloud Build will use a
+  /// Specify a value of up to 2000. If `0` is specified, Cloud Build will use a
   /// standard disk size.
   core.String? diskSizeGb;
 
@@ -6895,9 +8464,9 @@ class WorkerPool {
           annotations: json_.containsKey('annotations')
               ? (json_['annotations'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,

@@ -15,6 +15,12 @@
     "name": "discovery",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20200806",
+    "rootUrl": "https://www.googleapis.com/",
+    "servicePath": "discovery/v1/",
+    "title": "API Discovery Service",
+    "version": "v1",
     "parameters": {
         "alt": {
             "default": "json",
@@ -60,7 +66,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "apis": {
             "methods": {
@@ -116,8 +121,6 @@
             }
         }
     },
-    "revision": "20200806",
-    "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "DirectoryList": {
             "id": "DirectoryList",
@@ -234,6 +237,10 @@
                     "description": "The default value of this property (if one exists).",
                     "type": "string"
                 },
+                "deprecated": {
+                    "description": "Whether the parameter is deprecated.",
+                    "type": "boolean"
+                },
                 "description": {
                     "description": "A description of this object.",
                     "type": "string"
@@ -242,6 +249,13 @@
                     "description": "Values this parameter may take (if it is an enum).",
                     "items": {
                         "type": "string"
+                    },
+                    "type": "array"
+                },
+                "enumDeprecated": {
+                    "description": "The deprecation status for the enums. Each position maps to the corresponding value in the \"enum\" array.",
+                    "items": {
+                        "type": "boolean"
                     },
                     "type": "array"
                 },
@@ -390,6 +404,32 @@
                     "description": "A link to human readable documentation for the API.",
                     "type": "string"
                 },
+                "endpoints": {
+                    "description": "A list of location-based endpoint objects for this API. Each object contains the endpoint URL, location, description and deprecation status.",
+                    "items": {
+                        "description": "A single endpoint object",
+                        "properties": {
+                            "deprecated": {
+                                "description": "Whether this endpoint is deprecated",
+                                "type": "boolean"
+                            },
+                            "description": {
+                                "description": "A string describing the host designated by the URL",
+                                "type": "string"
+                            },
+                            "endpointUrl": {
+                                "description": "The URL of the endpoint target host",
+                                "type": "string"
+                            },
+                            "location": {
+                                "description": "The location of the endpoint",
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
                 "etag": {
                     "description": "The ETag for this response.",
                     "readOnly": true,
@@ -518,6 +558,10 @@
         "RestMethod": {
             "id": "RestMethod",
             "properties": {
+                "deprecated": {
+                    "description": "Whether this method is deprecated.",
+                    "type": "boolean"
+                },
                 "description": {
                     "description": "Description of this method.",
                     "type": "string"
@@ -663,6 +707,10 @@
         "RestResource": {
             "id": "RestResource",
             "properties": {
+                "deprecated": {
+                    "description": "Whether this resource is deprecated.",
+                    "type": "boolean"
+                },
                 "methods": {
                     "additionalProperties": {
                         "$ref": "RestMethod",
@@ -682,8 +730,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "discovery/v1/",
-    "title": "API Discovery Service",
-    "version": "v1"
+    }
 }

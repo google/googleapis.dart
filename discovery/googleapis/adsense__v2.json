@@ -26,6 +26,13 @@
     "name": "adsense",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230806",
+    "rootUrl": "https://adsense.googleapis.com/",
+    "servicePath": "",
+    "title": "AdSense Management API",
+    "version": "v2",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -103,7 +110,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "accounts": {
             "methods": {
@@ -203,7 +209,7 @@
                             "type": "integer"
                         },
                         "pageToken": {
-                            "description": "A page token, received from a previous `ListAccounts` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAccounts` must match the call that provided the page token.",
+                            "description": "A page token, received from a previous `ListChildAccounts` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListChildAccounts` must match the call that provided the page token.",
                             "location": "query",
                             "type": "string"
                         },
@@ -321,6 +327,34 @@
                     "resources": {
                         "adunits": {
                             "methods": {
+                                "create": {
+                                    "description": "Creates an ad unit. This method can only be used by projects enabled for the [AdSense for Platforms](https://developers.google.com/adsense/platforms/) product. Note that ad units can only be created for ad clients with an \"AFC\" product code. For more info see the [AdClient resource](/adsense/management/reference/rest/v2/accounts.adclients). For now, this method can only be used to create `DISPLAY` ad units. See: https://support.google.com/adsense/answer/9183566",
+                                    "flatPath": "v2/accounts/{accountsId}/adclients/{adclientsId}/adunits",
+                                    "httpMethod": "POST",
+                                    "id": "adsense.accounts.adclients.adunits.create",
+                                    "parameterOrder": [
+                                        "parent"
+                                    ],
+                                    "parameters": {
+                                        "parent": {
+                                            "description": "Required. Ad client to create an ad unit under. Format: accounts/{account}/adclients/{adclient}",
+                                            "location": "path",
+                                            "pattern": "^accounts/[^/]+/adclients/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v2/{+parent}/adunits",
+                                    "request": {
+                                        "$ref": "AdUnit"
+                                    },
+                                    "response": {
+                                        "$ref": "AdUnit"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/adsense"
+                                    ]
+                                },
                                 "get": {
                                     "description": "Gets an ad unit from a specified account and ad client.",
                                     "flatPath": "v2/accounts/{accountsId}/adclients/{adclientsId}/adunits/{adunitsId}",
@@ -446,11 +480,98 @@
                                         "https://www.googleapis.com/auth/adsense",
                                         "https://www.googleapis.com/auth/adsense.readonly"
                                     ]
+                                },
+                                "patch": {
+                                    "description": "Updates an ad unit. This method can only be used by projects enabled for the [AdSense for Platforms](https://developers.google.com/adsense/platforms/) product. For now, this method can only be used to update `DISPLAY` ad units. See: https://support.google.com/adsense/answer/9183566",
+                                    "flatPath": "v2/accounts/{accountsId}/adclients/{adclientsId}/adunits/{adunitsId}",
+                                    "httpMethod": "PATCH",
+                                    "id": "adsense.accounts.adclients.adunits.patch",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Output only. Resource name of the ad unit. Format: accounts/{account}/adclients/{adclient}/adunits/{adunit}",
+                                            "location": "path",
+                                            "pattern": "^accounts/[^/]+/adclients/[^/]+/adunits/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "updateMask": {
+                                            "description": "The list of fields to update. If empty, a full update is performed.",
+                                            "format": "google-fieldmask",
+                                            "location": "query",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v2/{+name}",
+                                    "request": {
+                                        "$ref": "AdUnit"
+                                    },
+                                    "response": {
+                                        "$ref": "AdUnit"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/adsense"
+                                    ]
                                 }
                             }
                         },
                         "customchannels": {
                             "methods": {
+                                "create": {
+                                    "description": "Creates a custom channel. This method can only be used by projects enabled for the [AdSense for Platforms](https://developers.google.com/adsense/platforms/) product.",
+                                    "flatPath": "v2/accounts/{accountsId}/adclients/{adclientsId}/customchannels",
+                                    "httpMethod": "POST",
+                                    "id": "adsense.accounts.adclients.customchannels.create",
+                                    "parameterOrder": [
+                                        "parent"
+                                    ],
+                                    "parameters": {
+                                        "parent": {
+                                            "description": "Required. The ad client to create a custom channel under. Format: accounts/{account}/adclients/{adclient}",
+                                            "location": "path",
+                                            "pattern": "^accounts/[^/]+/adclients/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v2/{+parent}/customchannels",
+                                    "request": {
+                                        "$ref": "CustomChannel"
+                                    },
+                                    "response": {
+                                        "$ref": "CustomChannel"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/adsense"
+                                    ]
+                                },
+                                "delete": {
+                                    "description": "Deletes a custom channel. This method can only be used by projects enabled for the [AdSense for Platforms](https://developers.google.com/adsense/platforms/) product.",
+                                    "flatPath": "v2/accounts/{accountsId}/adclients/{adclientsId}/customchannels/{customchannelsId}",
+                                    "httpMethod": "DELETE",
+                                    "id": "adsense.accounts.adclients.customchannels.delete",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Required. Name of the custom channel to delete. Format: accounts/{account}/adclients/{adclient}/customchannels/{customchannel}",
+                                            "location": "path",
+                                            "pattern": "^accounts/[^/]+/adclients/[^/]+/customchannels/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v2/{+name}",
+                                    "response": {
+                                        "$ref": "Empty"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/adsense"
+                                    ]
+                                },
                                 "get": {
                                     "description": "Gets information about the selected custom channel.",
                                     "flatPath": "v2/accounts/{accountsId}/adclients/{adclientsId}/customchannels/{customchannelsId}",
@@ -549,6 +670,40 @@
                                     "scopes": [
                                         "https://www.googleapis.com/auth/adsense",
                                         "https://www.googleapis.com/auth/adsense.readonly"
+                                    ]
+                                },
+                                "patch": {
+                                    "description": "Updates a custom channel. This method can only be used by projects enabled for the [AdSense for Platforms](https://developers.google.com/adsense/platforms/) product.",
+                                    "flatPath": "v2/accounts/{accountsId}/adclients/{adclientsId}/customchannels/{customchannelsId}",
+                                    "httpMethod": "PATCH",
+                                    "id": "adsense.accounts.adclients.customchannels.patch",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Output only. Resource name of the custom channel. Format: accounts/{account}/adclients/{adclient}/customchannels/{customchannel}",
+                                            "location": "path",
+                                            "pattern": "^accounts/[^/]+/adclients/[^/]+/customchannels/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "updateMask": {
+                                            "description": "The list of fields to update. If empty, a full update is performed.",
+                                            "format": "google-fieldmask",
+                                            "location": "query",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v2/{+name}",
+                                    "request": {
+                                        "$ref": "CustomChannel"
+                                    },
+                                    "response": {
+                                        "$ref": "CustomChannel"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/adsense"
                                     ]
                                 }
                             }
@@ -755,6 +910,7 @@
                                         "CUSTOM_CHANNEL_ID",
                                         "OWNED_SITE_DOMAIN_NAME",
                                         "OWNED_SITE_ID",
+                                        "PAGE_URL",
                                         "URL_CHANNEL_NAME",
                                         "URL_CHANNEL_ID",
                                         "BUYER_NETWORK_NAME",
@@ -804,6 +960,7 @@
                                         "Unique ID of a custom channel. The members of this dimension match the values from CustomChannel.reporting_dimension_id.",
                                         "Domain name of a verified site (e.g. \"example.com\"). The members of this dimension match the values from Site.domain.",
                                         "Unique ID of a verified site. The members of this dimension match the values from Site.reporting_dimension_id.",
+                                        "URL of the page upon which the ad was served. This is a complete URL including scheme and query parameters. Note that the URL that appears in this dimension may be a canonicalized version of the one that was used in the original request, and so may not exactly match the URL that a user might have seen. Note that there are also some caveats to be aware of when using this dimension. For more information, see [Page URL breakdown](https://support.google.com/adsense/answer/11988478).",
                                         "Name of a URL channel. The members of this dimension match the values from UrlChannel.uri_pattern.",
                                         "Unique ID of a URL channel. The members of this dimension match the values from UrlChannel.reporting_dimension_id.",
                                         "Name of an ad network that returned the winning ads for an ad request (e.g. \"Google AdWords\"). Note that unlike other \"NAME\" dimensions, the members of this dimensions are not localized.",
@@ -858,7 +1015,7 @@
                                     "type": "integer"
                                 },
                                 "filters": {
-                                    "description": "Filters to be run on the report.",
+                                    "description": "A list of [filters](/adsense/management/reporting/filtering) to apply to the report. All provided filters must match in order for the data to be included in the report.",
                                     "location": "query",
                                     "repeated": true,
                                     "type": "string"
@@ -909,7 +1066,11 @@
                                         "COST_PER_CLICK",
                                         "ADS_PER_IMPRESSION",
                                         "TOTAL_EARNINGS",
-                                        "WEBSEARCH_RESULT_PAGES"
+                                        "WEBSEARCH_RESULT_PAGES",
+                                        "FUNNEL_REQUESTS",
+                                        "FUNNEL_IMPRESSIONS",
+                                        "FUNNEL_CLICKS",
+                                        "FUNNEL_RPM"
                                     ],
                                     "enumDescriptions": [
                                         "Unspecified metric.",
@@ -944,7 +1105,11 @@
                                         "Amount the publisher earns each time a user clicks on an ad. CPC is calculated by dividing the estimated revenue by the number of clicks received.",
                                         "Number of ad views per impression.",
                                         "Total earnings are the gross estimated earnings from revenue shared traffic before any parent and child account revenue share is applied.",
-                                        "Number of results pages."
+                                        "Number of results pages.",
+                                        "Number of requests for non-ad units (for example a related search unit). For more information, see [Funnel requests](https://support.google.com/adsense/answer/11586959).",
+                                        "Number of requests for non-ad units ads that returned content that was shown to the user. For more information, see [Funnel impressions](https://support.google.com/adsense/answer/11585767).",
+                                        "Number of times a user clicked on a non-ad unit, triggering further ad requests. For more information, see [Funnel clicks](https://support.google.com/adsense/answer/11586382).",
+                                        "Revenue per thousand funnel impressions. This is calculated by dividing estimated revenue by the number of funnel impressions multiplied by 1000. For more information, see [Funnel RPM](https://support.google.com/adsense/answer/11585979)."
                                     ],
                                     "location": "query",
                                     "repeated": true,
@@ -1065,6 +1230,7 @@
                                         "CUSTOM_CHANNEL_ID",
                                         "OWNED_SITE_DOMAIN_NAME",
                                         "OWNED_SITE_ID",
+                                        "PAGE_URL",
                                         "URL_CHANNEL_NAME",
                                         "URL_CHANNEL_ID",
                                         "BUYER_NETWORK_NAME",
@@ -1114,6 +1280,7 @@
                                         "Unique ID of a custom channel. The members of this dimension match the values from CustomChannel.reporting_dimension_id.",
                                         "Domain name of a verified site (e.g. \"example.com\"). The members of this dimension match the values from Site.domain.",
                                         "Unique ID of a verified site. The members of this dimension match the values from Site.reporting_dimension_id.",
+                                        "URL of the page upon which the ad was served. This is a complete URL including scheme and query parameters. Note that the URL that appears in this dimension may be a canonicalized version of the one that was used in the original request, and so may not exactly match the URL that a user might have seen. Note that there are also some caveats to be aware of when using this dimension. For more information, see [Page URL breakdown](https://support.google.com/adsense/answer/11988478).",
                                         "Name of a URL channel. The members of this dimension match the values from UrlChannel.uri_pattern.",
                                         "Unique ID of a URL channel. The members of this dimension match the values from UrlChannel.reporting_dimension_id.",
                                         "Name of an ad network that returned the winning ads for an ad request (e.g. \"Google AdWords\"). Note that unlike other \"NAME\" dimensions, the members of this dimensions are not localized.",
@@ -1168,7 +1335,7 @@
                                     "type": "integer"
                                 },
                                 "filters": {
-                                    "description": "Filters to be run on the report.",
+                                    "description": "A list of [filters](/adsense/management/reporting/filtering) to apply to the report. All provided filters must match in order for the data to be included in the report.",
                                     "location": "query",
                                     "repeated": true,
                                     "type": "string"
@@ -1219,7 +1386,11 @@
                                         "COST_PER_CLICK",
                                         "ADS_PER_IMPRESSION",
                                         "TOTAL_EARNINGS",
-                                        "WEBSEARCH_RESULT_PAGES"
+                                        "WEBSEARCH_RESULT_PAGES",
+                                        "FUNNEL_REQUESTS",
+                                        "FUNNEL_IMPRESSIONS",
+                                        "FUNNEL_CLICKS",
+                                        "FUNNEL_RPM"
                                     ],
                                     "enumDescriptions": [
                                         "Unspecified metric.",
@@ -1254,7 +1425,11 @@
                                         "Amount the publisher earns each time a user clicks on an ad. CPC is calculated by dividing the estimated revenue by the number of clicks received.",
                                         "Number of ad views per impression.",
                                         "Total earnings are the gross estimated earnings from revenue shared traffic before any parent and child account revenue share is applied.",
-                                        "Number of results pages."
+                                        "Number of results pages.",
+                                        "Number of requests for non-ad units (for example a related search unit). For more information, see [Funnel requests](https://support.google.com/adsense/answer/11586959).",
+                                        "Number of requests for non-ad units ads that returned content that was shown to the user. For more information, see [Funnel impressions](https://support.google.com/adsense/answer/11585767).",
+                                        "Number of times a user clicked on a non-ad unit, triggering further ad requests. For more information, see [Funnel clicks](https://support.google.com/adsense/answer/11586382).",
+                                        "Revenue per thousand funnel impressions. This is calculated by dividing estimated revenue by the number of funnel impressions multiplied by 1000. For more information, see [Funnel RPM](https://support.google.com/adsense/answer/11585979)."
                                     ],
                                     "location": "query",
                                     "repeated": true,
@@ -1579,7 +1754,7 @@
                                             "type": "integer"
                                         },
                                         "pageToken": {
-                                            "description": "A page token, received from a previous `ListPayments` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListPayments` must match the call that provided the page token.",
+                                            "description": "A page token, received from a previous `ListSavedReports` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSavedReports` must match the call that provided the page token.",
                                             "location": "query",
                                             "type": "string"
                                         },
@@ -1674,8 +1849,6 @@
             }
         }
     },
-    "revision": "20220913",
-    "rootUrl": "https://adsense.googleapis.com/",
     "schemas": {
         "Account": {
             "description": "Representation of an account.",
@@ -1833,7 +2006,7 @@
                     "type": "string"
                 },
                 "state": {
-                    "description": "State of the ad unit.",
+                    "description": "Required. State of the ad unit.",
                     "enum": [
                         "STATE_UNSPECIFIED",
                         "ACTIVE",
@@ -1929,6 +2102,14 @@
                         "MATCHED_CONTENT",
                         "LINK"
                     ],
+                    "enumDeprecated": [
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        true
+                    ],
                     "enumDescriptions": [
                         "Unspecified ad unit type.",
                         "Display ad unit.",
@@ -1946,6 +2127,10 @@
             "description": "Representation of a custom channel.",
             "id": "CustomChannel",
             "properties": {
+                "active": {
+                    "description": "Whether the custom channel is active and collecting data. See https://support.google.com/adsense/answer/10077192.",
+                    "type": "boolean"
+                },
                 "displayName": {
                     "description": "Required. Display name of the custom channel.",
                     "type": "string"
@@ -1983,6 +2168,12 @@
                     "type": "integer"
                 }
             },
+            "type": "object"
+        },
+        "Empty": {
+            "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
+            "id": "Empty",
+            "properties": {},
             "type": "object"
         },
         "Header": {
@@ -2391,10 +2582,10 @@
                     ],
                     "enumDescriptions": [
                         "State unspecified.",
-                        "The site hasn't been checked yet.",
-                        "Running some checks on the site. This usually takes a few days, but in some cases can take up to 2 weeks.",
-                        "The site is ready to show ads.",
-                        "Publisher needs to fix some issues before the site is ready to show ads."
+                        "Either: * The site hasn't been checked yet. * The site is inactive and needs another review before it can show ads again. Learn how to [request a review for an inactive site](https://support.google.com/adsense/answer/9393996).",
+                        "Google is running some checks on the site. This usually takes a few days, but in some cases it can take two to four weeks.",
+                        "The site is ready to show ads. Learn how to [set up ads on the site](https://support.google.com/adsense/answer/7037624).",
+                        "Publisher needs to fix some issues before the site is ready to show ads. Learn what to do [if a new site isn't ready](https://support.google.com/adsense/answer/9061852)."
                     ],
                     "readOnly": true,
                     "type": "string"
@@ -2438,9 +2629,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "AdSense Management API",
-    "version": "v2",
-    "version_module": true
+    }
 }

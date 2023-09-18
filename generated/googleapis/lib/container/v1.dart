@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Kubernetes Engine API - v1
@@ -33,7 +32,7 @@
 ///     - [ProjectsZonesClustersResource]
 ///       - [ProjectsZonesClustersNodePoolsResource]
 ///     - [ProjectsZonesOperationsResource]
-library container.v1;
+library container_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -42,7 +41,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -226,6 +224,46 @@ class ProjectsLocationsClustersResource {
 
   ProjectsLocationsClustersResource(commons.ApiRequester client)
       : _requester = client;
+
+  /// Checks the cluster compatibility with Autopilot mode, and returns a list
+  /// of compatibility issues.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name (project, location, cluster) of the cluster to retrieve.
+  /// Specified in the format `projects / * /locations / * /clusters / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CheckAutopilotCompatibilityResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CheckAutopilotCompatibilityResponse> checkAutopilotCompatibility(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$name') + ':checkAutopilotCompatibility';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return CheckAutopilotCompatibilityResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 
   /// Completes master IP rotation.
   ///
@@ -642,6 +680,9 @@ class ProjectsLocationsClustersResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<Operation> setLocations(
     SetLocationsRequest request,
     core.String name, {
@@ -2261,6 +2302,9 @@ class ProjectsZonesClustersResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<Operation> locations(
     SetLocationsRequest request,
     core.String projectId,
@@ -3557,6 +3601,9 @@ class AcceleratorConfig {
   /// [here](https://cloud.google.com/compute/docs/gpus)
   core.String? acceleratorType;
 
+  /// The configuration for auto installation of GPU driver.
+  GPUDriverInstallationConfig? gpuDriverInstallationConfig;
+
   /// Size of partitions to create on the GPU.
   ///
   /// Valid values are described in the NVIDIA
@@ -3569,6 +3616,7 @@ class AcceleratorConfig {
   AcceleratorConfig({
     this.acceleratorCount,
     this.acceleratorType,
+    this.gpuDriverInstallationConfig,
     this.gpuPartitionSize,
     this.gpuSharingConfig,
   });
@@ -3581,6 +3629,12 @@ class AcceleratorConfig {
           acceleratorType: json_.containsKey('acceleratorType')
               ? json_['acceleratorType'] as core.String
               : null,
+          gpuDriverInstallationConfig:
+              json_.containsKey('gpuDriverInstallationConfig')
+                  ? GPUDriverInstallationConfig.fromJson(
+                      json_['gpuDriverInstallationConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           gpuPartitionSize: json_.containsKey('gpuPartitionSize')
               ? json_['gpuPartitionSize'] as core.String
               : null,
@@ -3593,8 +3647,118 @@ class AcceleratorConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (acceleratorCount != null) 'acceleratorCount': acceleratorCount!,
         if (acceleratorType != null) 'acceleratorType': acceleratorType!,
+        if (gpuDriverInstallationConfig != null)
+          'gpuDriverInstallationConfig': gpuDriverInstallationConfig!,
         if (gpuPartitionSize != null) 'gpuPartitionSize': gpuPartitionSize!,
         if (gpuSharingConfig != null) 'gpuSharingConfig': gpuSharingConfig!,
+      };
+}
+
+/// AdditionalNodeNetworkConfig is the configuration for additional node
+/// networks within the NodeNetworkConfig message
+class AdditionalNodeNetworkConfig {
+  /// Name of the VPC where the additional interface belongs
+  core.String? network;
+
+  /// Name of the subnetwork where the additional interface belongs
+  core.String? subnetwork;
+
+  AdditionalNodeNetworkConfig({
+    this.network,
+    this.subnetwork,
+  });
+
+  AdditionalNodeNetworkConfig.fromJson(core.Map json_)
+      : this(
+          network: json_.containsKey('network')
+              ? json_['network'] as core.String
+              : null,
+          subnetwork: json_.containsKey('subnetwork')
+              ? json_['subnetwork'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (network != null) 'network': network!,
+        if (subnetwork != null) 'subnetwork': subnetwork!,
+      };
+}
+
+/// AdditionalPodNetworkConfig is the configuration for additional pod networks
+/// within the NodeNetworkConfig message
+class AdditionalPodNetworkConfig {
+  /// The maximum number of pods per node which use this pod network
+  MaxPodsConstraint? maxPodsPerNode;
+
+  /// The name of the secondary range on the subnet which provides IP address
+  /// for this pod range
+  core.String? secondaryPodRange;
+
+  /// Name of the subnetwork where the additional pod network belongs
+  core.String? subnetwork;
+
+  AdditionalPodNetworkConfig({
+    this.maxPodsPerNode,
+    this.secondaryPodRange,
+    this.subnetwork,
+  });
+
+  AdditionalPodNetworkConfig.fromJson(core.Map json_)
+      : this(
+          maxPodsPerNode: json_.containsKey('maxPodsPerNode')
+              ? MaxPodsConstraint.fromJson(json_['maxPodsPerNode']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          secondaryPodRange: json_.containsKey('secondaryPodRange')
+              ? json_['secondaryPodRange'] as core.String
+              : null,
+          subnetwork: json_.containsKey('subnetwork')
+              ? json_['subnetwork'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (maxPodsPerNode != null) 'maxPodsPerNode': maxPodsPerNode!,
+        if (secondaryPodRange != null) 'secondaryPodRange': secondaryPodRange!,
+        if (subnetwork != null) 'subnetwork': subnetwork!,
+      };
+}
+
+/// AdditionalPodRangesConfig is the configuration for additional pod secondary
+/// ranges supporting the ClusterUpdate message.
+class AdditionalPodRangesConfig {
+  /// Information for additional pod range.
+  ///
+  /// Output only.
+  core.List<RangeInfo>? podRangeInfo;
+
+  /// Name for pod secondary ipv4 range which has the actual range defined
+  /// ahead.
+  core.List<core.String>? podRangeNames;
+
+  AdditionalPodRangesConfig({
+    this.podRangeInfo,
+    this.podRangeNames,
+  });
+
+  AdditionalPodRangesConfig.fromJson(core.Map json_)
+      : this(
+          podRangeInfo: json_.containsKey('podRangeInfo')
+              ? (json_['podRangeInfo'] as core.List)
+                  .map((value) => RangeInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          podRangeNames: json_.containsKey('podRangeNames')
+              ? (json_['podRangeNames'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (podRangeInfo != null) 'podRangeInfo': podRangeInfo!,
+        if (podRangeNames != null) 'podRangeNames': podRangeNames!,
       };
 }
 
@@ -3618,6 +3782,12 @@ class AddonsConfig {
   /// Configuration for the GCP Filestore CSI driver.
   GcpFilestoreCsiDriverConfig? gcpFilestoreCsiDriverConfig;
 
+  /// Configuration for the Cloud Storage Fuse CSI driver.
+  GcsFuseCsiDriverConfig? gcsFuseCsiDriverConfig;
+
+  /// Configuration for the Backup for GKE agent addon.
+  GkeBackupAgentConfig? gkeBackupAgentConfig;
+
   /// Configuration for the horizontal pod autoscaling feature, which increases
   /// or decreases the number of replica pods a replication controller has based
   /// on the resource usage of the existing pods.
@@ -3633,6 +3803,9 @@ class AddonsConfig {
   /// to use the Cloud Console to manage and monitor your Kubernetes clusters,
   /// workloads and applications. For more information, see:
   /// https://cloud.google.com/kubernetes-engine/docs/concepts/dashboards
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   KubernetesDashboard? kubernetesDashboard;
 
   /// Configuration for NetworkPolicy.
@@ -3647,6 +3820,8 @@ class AddonsConfig {
     this.dnsCacheConfig,
     this.gcePersistentDiskCsiDriverConfig,
     this.gcpFilestoreCsiDriverConfig,
+    this.gcsFuseCsiDriverConfig,
+    this.gkeBackupAgentConfig,
     this.horizontalPodAutoscaling,
     this.httpLoadBalancing,
     this.kubernetesDashboard,
@@ -3679,6 +3854,14 @@ class AddonsConfig {
                       json_['gcpFilestoreCsiDriverConfig']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          gcsFuseCsiDriverConfig: json_.containsKey('gcsFuseCsiDriverConfig')
+              ? GcsFuseCsiDriverConfig.fromJson(json_['gcsFuseCsiDriverConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          gkeBackupAgentConfig: json_.containsKey('gkeBackupAgentConfig')
+              ? GkeBackupAgentConfig.fromJson(json_['gkeBackupAgentConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           horizontalPodAutoscaling:
               json_.containsKey('horizontalPodAutoscaling')
                   ? HorizontalPodAutoscaling.fromJson(
@@ -3708,6 +3891,10 @@ class AddonsConfig {
           'gcePersistentDiskCsiDriverConfig': gcePersistentDiskCsiDriverConfig!,
         if (gcpFilestoreCsiDriverConfig != null)
           'gcpFilestoreCsiDriverConfig': gcpFilestoreCsiDriverConfig!,
+        if (gcsFuseCsiDriverConfig != null)
+          'gcsFuseCsiDriverConfig': gcsFuseCsiDriverConfig!,
+        if (gkeBackupAgentConfig != null)
+          'gkeBackupAgentConfig': gkeBackupAgentConfig!,
         if (horizontalPodAutoscaling != null)
           'horizontalPodAutoscaling': horizontalPodAutoscaling!,
         if (httpLoadBalancing != null) 'httpLoadBalancing': httpLoadBalancing!,
@@ -3715,6 +3902,41 @@ class AddonsConfig {
           'kubernetesDashboard': kubernetesDashboard!,
         if (networkPolicyConfig != null)
           'networkPolicyConfig': networkPolicyConfig!,
+      };
+}
+
+/// AdvancedDatapathObservabilityConfig specifies configuration of observability
+/// features of advanced datapath.
+class AdvancedDatapathObservabilityConfig {
+  /// Expose flow metrics on nodes
+  core.bool? enableMetrics;
+
+  /// Method used to make Relay available
+  /// Possible string values are:
+  /// - "RELAY_MODE_UNSPECIFIED" : Default value. This shouldn't be used.
+  /// - "DISABLED" : disabled
+  /// - "INTERNAL_VPC_LB" : exposed via internal load balancer
+  /// - "EXTERNAL_LB" : exposed via external load balancer
+  core.String? relayMode;
+
+  AdvancedDatapathObservabilityConfig({
+    this.enableMetrics,
+    this.relayMode,
+  });
+
+  AdvancedDatapathObservabilityConfig.fromJson(core.Map json_)
+      : this(
+          enableMetrics: json_.containsKey('enableMetrics')
+              ? json_['enableMetrics'] as core.bool
+              : null,
+          relayMode: json_.containsKey('relayMode')
+              ? json_['relayMode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enableMetrics != null) 'enableMetrics': enableMetrics!,
+        if (relayMode != null) 'relayMode': relayMode!,
       };
 }
 
@@ -3818,8 +4040,12 @@ class Autopilot {
   /// Enable Autopilot
   core.bool? enabled;
 
+  /// Workload policy configuration for Autopilot.
+  WorkloadPolicyConfig? workloadPolicyConfig;
+
   Autopilot({
     this.enabled,
+    this.workloadPolicyConfig,
   });
 
   Autopilot.fromJson(core.Map json_)
@@ -3827,10 +4053,90 @@ class Autopilot {
           enabled: json_.containsKey('enabled')
               ? json_['enabled'] as core.bool
               : null,
+          workloadPolicyConfig: json_.containsKey('workloadPolicyConfig')
+              ? WorkloadPolicyConfig.fromJson(json_['workloadPolicyConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
+        if (workloadPolicyConfig != null)
+          'workloadPolicyConfig': workloadPolicyConfig!,
+      };
+}
+
+/// AutopilotCompatibilityIssue contains information about a specific
+/// compatibility issue with Autopilot mode.
+class AutopilotCompatibilityIssue {
+  /// The constraint type of the issue.
+  core.String? constraintType;
+
+  /// The description of the issue.
+  core.String? description;
+
+  /// A URL to a public documnetation, which addresses resolving this issue.
+  core.String? documentationUrl;
+
+  /// The incompatibility type of this issue.
+  /// Possible string values are:
+  /// - "UNSPECIFIED" : Default value, should not be used.
+  /// - "INCOMPATIBILITY" : Indicates that the issue is a known incompatibility
+  /// between the cluster and Autopilot mode.
+  /// - "ADDITIONAL_CONFIG_REQUIRED" : Indicates the issue is an incompatibility
+  /// if customers take no further action to resolve.
+  /// - "PASSED_WITH_OPTIONAL_CONFIG" : Indicates the issue is not an
+  /// incompatibility, but depending on the workloads business logic, there is a
+  /// potential that they won't work on Autopilot.
+  core.String? incompatibilityType;
+
+  /// The last time when this issue was observed.
+  core.String? lastObservation;
+
+  /// The name of the resources which are subject to this issue.
+  core.List<core.String>? subjects;
+
+  AutopilotCompatibilityIssue({
+    this.constraintType,
+    this.description,
+    this.documentationUrl,
+    this.incompatibilityType,
+    this.lastObservation,
+    this.subjects,
+  });
+
+  AutopilotCompatibilityIssue.fromJson(core.Map json_)
+      : this(
+          constraintType: json_.containsKey('constraintType')
+              ? json_['constraintType'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          documentationUrl: json_.containsKey('documentationUrl')
+              ? json_['documentationUrl'] as core.String
+              : null,
+          incompatibilityType: json_.containsKey('incompatibilityType')
+              ? json_['incompatibilityType'] as core.String
+              : null,
+          lastObservation: json_.containsKey('lastObservation')
+              ? json_['lastObservation'] as core.String
+              : null,
+          subjects: json_.containsKey('subjects')
+              ? (json_['subjects'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (constraintType != null) 'constraintType': constraintType!,
+        if (description != null) 'description': description!,
+        if (documentationUrl != null) 'documentationUrl': documentationUrl!,
+        if (incompatibilityType != null)
+          'incompatibilityType': incompatibilityType!,
+        if (lastObservation != null) 'lastObservation': lastObservation!,
+        if (subjects != null) 'subjects': subjects!,
       };
 }
 
@@ -3858,7 +4164,14 @@ class AutoprovisioningNodePoolDefaults {
   core.String? diskType;
 
   /// The image type to use for NAP created node.
+  ///
+  /// Please see
+  /// https://cloud.google.com/kubernetes-engine/docs/concepts/node-images for
+  /// available image types.
   core.String? imageType;
+
+  /// Enable or disable Kubelet read only port.
+  core.bool? insecureKubeletReadonlyPortEnabled;
 
   /// Specifies the node management options for NAP created node-pools.
   NodeManagement? management;
@@ -3869,12 +4182,15 @@ class AutoprovisioningNodePoolDefaults {
   /// Applicable values are the friendly names of CPU platforms, such as
   /// minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For
   /// more information, read
-  /// [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+  /// [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
   /// This field is deprecated, min_cpu_platform should be specified using
-  /// https://cloud.google.com/requested-min-cpu-platform label selector on the
-  /// pod. To unset the min cpu platform field pass "automatic" as field value.
+  /// `cloud.google.com/requested-min-cpu-platform` label selector on the pod.
+  /// To unset the min cpu platform field pass "automatic" as field value.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? minCpuPlatform;
 
   /// Scopes that are used by NAP when creating node pools.
@@ -3894,6 +4210,7 @@ class AutoprovisioningNodePoolDefaults {
     this.diskSizeGb,
     this.diskType,
     this.imageType,
+    this.insecureKubeletReadonlyPortEnabled,
     this.management,
     this.minCpuPlatform,
     this.oauthScopes,
@@ -3916,6 +4233,10 @@ class AutoprovisioningNodePoolDefaults {
           imageType: json_.containsKey('imageType')
               ? json_['imageType'] as core.String
               : null,
+          insecureKubeletReadonlyPortEnabled:
+              json_.containsKey('insecureKubeletReadonlyPortEnabled')
+                  ? json_['insecureKubeletReadonlyPortEnabled'] as core.bool
+                  : null,
           management: json_.containsKey('management')
               ? NodeManagement.fromJson(
                   json_['management'] as core.Map<core.String, core.dynamic>)
@@ -3946,6 +4267,9 @@ class AutoprovisioningNodePoolDefaults {
         if (diskSizeGb != null) 'diskSizeGb': diskSizeGb!,
         if (diskType != null) 'diskType': diskType!,
         if (imageType != null) 'imageType': imageType!,
+        if (insecureKubeletReadonlyPortEnabled != null)
+          'insecureKubeletReadonlyPortEnabled':
+              insecureKubeletReadonlyPortEnabled!,
         if (management != null) 'management': management!,
         if (minCpuPlatform != null) 'minCpuPlatform': minCpuPlatform!,
         if (oauthScopes != null) 'oauthScopes': oauthScopes!,
@@ -3953,6 +4277,39 @@ class AutoprovisioningNodePoolDefaults {
         if (shieldedInstanceConfig != null)
           'shieldedInstanceConfig': shieldedInstanceConfig!,
         if (upgradeSettings != null) 'upgradeSettings': upgradeSettings!,
+      };
+}
+
+/// Best effort provisioning.
+class BestEffortProvisioning {
+  /// When this is enabled, cluster/node pool creations will ignore non-fatal
+  /// errors like stockout to best provision as many nodes as possible right now
+  /// and eventually bring up all target number of nodes
+  core.bool? enabled;
+
+  /// Minimum number of nodes to be provisioned to be considered as succeeded,
+  /// and the rest of nodes will be provisioned gradually and eventually when
+  /// stockout issue has been resolved.
+  core.int? minProvisionNodes;
+
+  BestEffortProvisioning({
+    this.enabled,
+    this.minProvisionNodes,
+  });
+
+  BestEffortProvisioning.fromJson(core.Map json_)
+      : this(
+          enabled: json_.containsKey('enabled')
+              ? json_['enabled'] as core.bool
+              : null,
+          minProvisionNodes: json_.containsKey('minProvisionNodes')
+              ? json_['minProvisionNodes'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
+        if (minProvisionNodes != null) 'minProvisionNodes': minProvisionNodes!,
       };
 }
 
@@ -3984,12 +4341,14 @@ class BinaryAuthorization {
   /// Leave this unset and instead configure BinaryAuthorization using
   /// evaluation_mode. If evaluation_mode is set to anything other than
   /// EVALUATION_MODE_UNSPECIFIED, this field is ignored.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? enabled;
 
   /// Mode of operation for binauthz policy evaluation.
   ///
-  /// Currently the only options are equivalent to enable/disable. If
-  /// unspecified, defaults to DISABLED.
+  /// If unspecified, defaults to DISABLED.
   /// Possible string values are:
   /// - "EVALUATION_MODE_UNSPECIFIED" : Default value
   /// - "DISABLED" : Disable BinaryAuthorization
@@ -4140,6 +4499,9 @@ class CancelOperationRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? operationId;
 
   /// The Google Developers Console
@@ -4148,6 +4510,9 @@ class CancelOperationRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? projectId;
 
   /// The name of the Google Compute Engine
@@ -4157,6 +4522,9 @@ class CancelOperationRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? zone;
 
   CancelOperationRequest({
@@ -4183,6 +4551,38 @@ class CancelOperationRequest {
         if (operationId != null) 'operationId': operationId!,
         if (projectId != null) 'projectId': projectId!,
         if (zone != null) 'zone': zone!,
+      };
+}
+
+/// CheckAutopilotCompatibilityResponse has a list of compatibility issues.
+class CheckAutopilotCompatibilityResponse {
+  /// The list of issues for the given operation.
+  core.List<AutopilotCompatibilityIssue>? issues;
+
+  /// The summary of the autopilot compatibility response.
+  core.String? summary;
+
+  CheckAutopilotCompatibilityResponse({
+    this.issues,
+    this.summary,
+  });
+
+  CheckAutopilotCompatibilityResponse.fromJson(core.Map json_)
+      : this(
+          issues: json_.containsKey('issues')
+              ? (json_['issues'] as core.List)
+                  .map((value) => AutopilotCompatibilityIssue.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          summary: json_.containsKey('summary')
+              ? json_['summary'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (issues != null) 'issues': issues!,
+        if (summary != null) 'summary': summary!,
       };
 }
 
@@ -4306,6 +4706,9 @@ class Cluster {
   /// All the nodes in the cluster will be Confidential VM once enabled.
   ConfidentialNodes? confidentialNodes;
 
+  /// Configuration for the fine-grained cost management feature.
+  CostManagementConfig? costManagementConfig;
+
   /// The time the cluster was created, in
   /// [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
   ///
@@ -4322,6 +4725,9 @@ class Cluster {
   /// Deprecated. Call Kubernetes API directly to retrieve node information.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.int? currentNodeCount;
 
   /// Deprecated, use
@@ -4333,6 +4739,9 @@ class Cluster {
   /// this reflects the minimum version of all nodes.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? currentNodeVersion;
 
   /// Configuration of etcd encryption.
@@ -4346,6 +4755,9 @@ class Cluster {
 
   /// An optional description of this cluster.
   core.String? description;
+
+  /// Beta APIs Config
+  K8sBetaAPIConfig? enableK8sBetaApis;
 
   /// Kubernetes alpha features are enabled on this cluster.
   ///
@@ -4367,11 +4779,19 @@ class Cluster {
   /// Output only.
   core.String? endpoint;
 
+  /// This checksum is computed by the server based on the value of cluster
+  /// fields, and may be sent on update requests to ensure the client has an
+  /// up-to-date value before proceeding.
+  core.String? etag;
+
   /// The time the cluster will be automatically deleted in
   /// [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
   ///
   /// Output only.
   core.String? expireTime;
+
+  /// Fleet information for the cluster.
+  Fleet? fleet;
 
   /// Unique id for the cluster.
   ///
@@ -4404,11 +4824,17 @@ class Cluster {
   /// "node_config") will be used to create a "NodePool" object with an
   /// auto-generated name. Do not use this and a node_pool at the same time.
   /// This field is deprecated, use node_pool.initial_node_count instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.int? initialNodeCount;
 
   /// Use node_pools.instance_group_urls.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<core.String>? instanceGroupUrls;
 
   /// Configuration for cluster IP allocation.
@@ -4517,6 +4943,9 @@ class Cluster {
   /// configuration of each node pool, see `node_pool.config`) If unspecified,
   /// the defaults are used. This field is deprecated, use node_pool.config
   /// instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   NodeConfig? nodeConfig;
 
   /// The size of the address space on each node for hosting containers.
@@ -4550,6 +4979,13 @@ class Cluster {
   PrivateClusterConfig? privateClusterConfig;
 
   /// Release channel configuration.
+  ///
+  /// If left unspecified on cluster creation and a version is specified, the
+  /// cluster is enrolled in the most mature release channel where the version
+  /// is available (first checking STABLE, then REGULAR, and finally RAPID).
+  /// Otherwise, if no release channel configuration and no version is
+  /// specified, the cluster is enrolled in the REGULAR channel with its default
+  /// version.
   ReleaseChannel? releaseChannel;
 
   /// The resource labels for the cluster to use to annotate any related Google
@@ -4560,6 +4996,9 @@ class Cluster {
   ///
   /// Resource usage export is disabled when this config is unspecified.
   ResourceUsageExportConfig? resourceUsageExportConfig;
+
+  /// Enable/Disable Security Posture API features for the cluster.
+  SecurityPostureConfig? securityPostureConfig;
 
   /// Server-defined URL for the resource.
   ///
@@ -4605,6 +5044,9 @@ class Cluster {
   /// available.
   ///
   /// Output only. Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? statusMessage;
 
   /// The name of the Google Compute Engine
@@ -4633,6 +5075,9 @@ class Cluster {
   /// This field is deprecated, use location instead.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? zone;
 
   Cluster({
@@ -4644,6 +5089,7 @@ class Cluster {
     this.clusterIpv4Cidr,
     this.conditions,
     this.confidentialNodes,
+    this.costManagementConfig,
     this.createTime,
     this.currentMasterVersion,
     this.currentNodeCount,
@@ -4651,10 +5097,13 @@ class Cluster {
     this.databaseEncryption,
     this.defaultMaxPodsConstraint,
     this.description,
+    this.enableK8sBetaApis,
     this.enableKubernetesAlpha,
     this.enableTpu,
     this.endpoint,
+    this.etag,
     this.expireTime,
+    this.fleet,
     this.id,
     this.identityServiceConfig,
     this.initialClusterVersion,
@@ -4687,6 +5136,7 @@ class Cluster {
     this.releaseChannel,
     this.resourceLabels,
     this.resourceUsageExportConfig,
+    this.securityPostureConfig,
     this.selfLink,
     this.servicesIpv4Cidr,
     this.shieldedNodes,
@@ -4736,6 +5186,10 @@ class Cluster {
               ? ConfidentialNodes.fromJson(json_['confidentialNodes']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          costManagementConfig: json_.containsKey('costManagementConfig')
+              ? CostManagementConfig.fromJson(json_['costManagementConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
               : null,
@@ -4760,6 +5214,10 @@ class Cluster {
           description: json_.containsKey('description')
               ? json_['description'] as core.String
               : null,
+          enableK8sBetaApis: json_.containsKey('enableK8sBetaApis')
+              ? K8sBetaAPIConfig.fromJson(json_['enableK8sBetaApis']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           enableKubernetesAlpha: json_.containsKey('enableKubernetesAlpha')
               ? json_['enableKubernetesAlpha'] as core.bool
               : null,
@@ -4769,8 +5227,13 @@ class Cluster {
           endpoint: json_.containsKey('endpoint')
               ? json_['endpoint'] as core.String
               : null,
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
           expireTime: json_.containsKey('expireTime')
               ? json_['expireTime'] as core.String
+              : null,
+          fleet: json_.containsKey('fleet')
+              ? Fleet.fromJson(
+                  json_['fleet'] as core.Map<core.String, core.dynamic>)
               : null,
           id: json_.containsKey('id') ? json_['id'] as core.String : null,
           identityServiceConfig: json_.containsKey('identityServiceConfig')
@@ -4887,9 +5350,9 @@ class Cluster {
           resourceLabels: json_.containsKey('resourceLabels')
               ? (json_['resourceLabels'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -4899,6 +5362,10 @@ class Cluster {
                       json_['resourceUsageExportConfig']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          securityPostureConfig: json_.containsKey('securityPostureConfig')
+              ? SecurityPostureConfig.fromJson(json_['securityPostureConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           selfLink: json_.containsKey('selfLink')
               ? json_['selfLink'] as core.String
               : null,
@@ -4943,6 +5410,8 @@ class Cluster {
         if (clusterIpv4Cidr != null) 'clusterIpv4Cidr': clusterIpv4Cidr!,
         if (conditions != null) 'conditions': conditions!,
         if (confidentialNodes != null) 'confidentialNodes': confidentialNodes!,
+        if (costManagementConfig != null)
+          'costManagementConfig': costManagementConfig!,
         if (createTime != null) 'createTime': createTime!,
         if (currentMasterVersion != null)
           'currentMasterVersion': currentMasterVersion!,
@@ -4954,11 +5423,14 @@ class Cluster {
         if (defaultMaxPodsConstraint != null)
           'defaultMaxPodsConstraint': defaultMaxPodsConstraint!,
         if (description != null) 'description': description!,
+        if (enableK8sBetaApis != null) 'enableK8sBetaApis': enableK8sBetaApis!,
         if (enableKubernetesAlpha != null)
           'enableKubernetesAlpha': enableKubernetesAlpha!,
         if (enableTpu != null) 'enableTpu': enableTpu!,
         if (endpoint != null) 'endpoint': endpoint!,
+        if (etag != null) 'etag': etag!,
         if (expireTime != null) 'expireTime': expireTime!,
+        if (fleet != null) 'fleet': fleet!,
         if (id != null) 'id': id!,
         if (identityServiceConfig != null)
           'identityServiceConfig': identityServiceConfig!,
@@ -4999,6 +5471,8 @@ class Cluster {
         if (resourceLabels != null) 'resourceLabels': resourceLabels!,
         if (resourceUsageExportConfig != null)
           'resourceUsageExportConfig': resourceUsageExportConfig!,
+        if (securityPostureConfig != null)
+          'securityPostureConfig': securityPostureConfig!,
         if (selfLink != null) 'selfLink': selfLink!,
         if (servicesIpv4Cidr != null) 'servicesIpv4Cidr': servicesIpv4Cidr!,
         if (shieldedNodes != null) 'shieldedNodes': shieldedNodes!,
@@ -5091,22 +5565,59 @@ class ClusterAutoscaling {
       };
 }
 
+/// Configuration of network bandwidth tiers
+class ClusterNetworkPerformanceConfig {
+  /// Specifies the total network bandwidth tier for NodePools in the cluster.
+  /// Possible string values are:
+  /// - "TIER_UNSPECIFIED" : Default value
+  /// - "TIER_1" : Higher bandwidth, actual values based on VM size.
+  core.String? totalEgressBandwidthTier;
+
+  ClusterNetworkPerformanceConfig({
+    this.totalEgressBandwidthTier,
+  });
+
+  ClusterNetworkPerformanceConfig.fromJson(core.Map json_)
+      : this(
+          totalEgressBandwidthTier:
+              json_.containsKey('totalEgressBandwidthTier')
+                  ? json_['totalEgressBandwidthTier'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (totalEgressBandwidthTier != null)
+          'totalEgressBandwidthTier': totalEgressBandwidthTier!,
+      };
+}
+
 /// ClusterUpdate describes an update to the cluster.
 ///
 /// Exactly one update can be applied to a cluster with each request, so at most
 /// one field can be provided.
 class ClusterUpdate {
+  /// The additional pod ranges to be added to the cluster.
+  ///
+  /// These pod ranges can be used by node pools to allocate pod IPs.
+  AdditionalPodRangesConfig? additionalPodRangesConfig;
+
   /// Configurations for the various addons available to run in the cluster.
   AddonsConfig? desiredAddonsConfig;
 
   /// The desired authenticator groups config for the cluster.
   AuthenticatorGroupsConfig? desiredAuthenticatorGroupsConfig;
 
+  /// The desired workload policy configuration for the autopilot cluster.
+  WorkloadPolicyConfig? desiredAutopilotWorkloadPolicyConfig;
+
   /// The desired configuration options for the Binary Authorization feature.
   BinaryAuthorization? desiredBinaryAuthorization;
 
   /// Cluster-level autoscaling configuration.
   ClusterAutoscaling? desiredClusterAutoscaling;
+
+  /// The desired configuration for the fine-grained cost management feature.
+  CostManagementConfig? desiredCostManagementConfig;
 
   /// Configuration of etcd encryption.
   DatabaseEncryption? desiredDatabaseEncryption;
@@ -5127,6 +5638,18 @@ class ClusterUpdate {
   /// DNSConfig contains clusterDNS config for this cluster.
   DNSConfig? desiredDnsConfig;
 
+  /// Enable/Disable FQDN Network Policy for the cluster.
+  core.bool? desiredEnableFqdnNetworkPolicy;
+
+  /// Enable/Disable private endpoint for the cluster's master.
+  core.bool? desiredEnablePrivateEndpoint;
+
+  /// The desired fleet configuration for the cluster.
+  Fleet? desiredFleet;
+
+  /// The desired config of Gateway API on this cluster.
+  GatewayAPIConfig? desiredGatewayApiConfig;
+
   /// The desired GCFS config for the cluster
   GcfsConfig? desiredGcfsConfig;
 
@@ -5140,6 +5663,9 @@ class ClusterUpdate {
 
   /// The desired config of Intra-node visibility.
   IntraNodeVisibilityConfig? desiredIntraNodeVisibilityConfig;
+
+  /// Desired Beta APIs to be enabled for cluster.
+  K8sBetaAPIConfig? desiredK8sBetaApis;
 
   /// The desired L4 Internal Load Balancer Subsetting configuration.
   ILBSubsettingConfig? desiredL4ilbSubsettingConfig;
@@ -5198,6 +5724,9 @@ class ClusterUpdate {
   /// or `monitoring.googleapis.com` for earlier versions.
   core.String? desiredMonitoringService;
 
+  /// The desired network performance config.
+  ClusterNetworkPerformanceConfig? desiredNetworkPerformanceConfig;
+
   /// The desired network tags that apply to all auto-provisioned node pools in
   /// autopilot clusters and node auto-provisioning enabled clusters.
   NetworkTags? desiredNodePoolAutoConfigNetworkTags;
@@ -5243,7 +5772,7 @@ class ClusterUpdate {
   /// Google Services
   /// - "PRIVATE_IPV6_GOOGLE_ACCESS_TO_GOOGLE" : Enables private IPv6 access to
   /// Google Services from GKE
-  /// - "PRIVATE_IPV6_GOOGLE_ACCESS_BIDIRECTIONAL" : Enables priate IPv6 access
+  /// - "PRIVATE_IPV6_GOOGLE_ACCESS_BIDIRECTIONAL" : Enables private IPv6 access
   /// to and from Google Services
   core.String? desiredPrivateIpv6GoogleAccess;
 
@@ -5253,6 +5782,9 @@ class ClusterUpdate {
   /// The desired configuration for exporting resource usage.
   ResourceUsageExportConfig? desiredResourceUsageExportConfig;
 
+  /// Enable/Disable Security Posture API features for the cluster.
+  SecurityPostureConfig? desiredSecurityPostureConfig;
+
   /// ServiceExternalIPsConfig specifies the config for the use of Services with
   /// ExternalIPs field.
   ServiceExternalIPsConfig? desiredServiceExternalIpsConfig;
@@ -5260,25 +5792,60 @@ class ClusterUpdate {
   /// Configuration for Shielded Nodes.
   ShieldedNodes? desiredShieldedNodes;
 
+  /// The desired stack type of the cluster.
+  ///
+  /// If a stack type is provided and does not match the current stack type of
+  /// the cluster, update will attempt to change the stack type to the new type.
+  /// Possible string values are:
+  /// - "STACK_TYPE_UNSPECIFIED" : Default value, will be defaulted as IPV4 only
+  /// - "IPV4" : Cluster is IPV4 only
+  /// - "IPV4_IPV6" : Cluster can use both IPv4 and IPv6
+  core.String? desiredStackType;
+
   /// Cluster-level Vertical Pod Autoscaling configuration.
   VerticalPodAutoscaling? desiredVerticalPodAutoscaling;
 
   /// Configuration for Workload Identity.
   WorkloadIdentityConfig? desiredWorkloadIdentityConfig;
 
+  /// Kubernetes open source beta apis enabled on the cluster.
+  ///
+  /// Only beta apis
+  K8sBetaAPIConfig? enableK8sBetaApis;
+
+  /// The current etag of the cluster.
+  ///
+  /// If an etag is provided and does not match the current etag of the cluster,
+  /// update will be blocked and an ABORTED error will be returned.
+  core.String? etag;
+
+  /// The additional pod ranges that are to be removed from the cluster.
+  ///
+  /// The pod ranges specified here must have been specified earlier in the
+  /// 'additional_pod_ranges_config' argument.
+  AdditionalPodRangesConfig? removedAdditionalPodRangesConfig;
+
   ClusterUpdate({
+    this.additionalPodRangesConfig,
     this.desiredAddonsConfig,
     this.desiredAuthenticatorGroupsConfig,
+    this.desiredAutopilotWorkloadPolicyConfig,
     this.desiredBinaryAuthorization,
     this.desiredClusterAutoscaling,
+    this.desiredCostManagementConfig,
     this.desiredDatabaseEncryption,
     this.desiredDatapathProvider,
     this.desiredDefaultSnatStatus,
     this.desiredDnsConfig,
+    this.desiredEnableFqdnNetworkPolicy,
+    this.desiredEnablePrivateEndpoint,
+    this.desiredFleet,
+    this.desiredGatewayApiConfig,
     this.desiredGcfsConfig,
     this.desiredIdentityServiceConfig,
     this.desiredImageType,
     this.desiredIntraNodeVisibilityConfig,
+    this.desiredK8sBetaApis,
     this.desiredL4ilbSubsettingConfig,
     this.desiredLocations,
     this.desiredLoggingConfig,
@@ -5288,6 +5855,7 @@ class ClusterUpdate {
     this.desiredMeshCertificates,
     this.desiredMonitoringConfig,
     this.desiredMonitoringService,
+    this.desiredNetworkPerformanceConfig,
     this.desiredNodePoolAutoConfigNetworkTags,
     this.desiredNodePoolAutoscaling,
     this.desiredNodePoolId,
@@ -5298,14 +5866,25 @@ class ClusterUpdate {
     this.desiredPrivateIpv6GoogleAccess,
     this.desiredReleaseChannel,
     this.desiredResourceUsageExportConfig,
+    this.desiredSecurityPostureConfig,
     this.desiredServiceExternalIpsConfig,
     this.desiredShieldedNodes,
+    this.desiredStackType,
     this.desiredVerticalPodAutoscaling,
     this.desiredWorkloadIdentityConfig,
+    this.enableK8sBetaApis,
+    this.etag,
+    this.removedAdditionalPodRangesConfig,
   });
 
   ClusterUpdate.fromJson(core.Map json_)
       : this(
+          additionalPodRangesConfig:
+              json_.containsKey('additionalPodRangesConfig')
+                  ? AdditionalPodRangesConfig.fromJson(
+                      json_['additionalPodRangesConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           desiredAddonsConfig: json_.containsKey('desiredAddonsConfig')
               ? AddonsConfig.fromJson(json_['desiredAddonsConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -5314,6 +5893,12 @@ class ClusterUpdate {
               json_.containsKey('desiredAuthenticatorGroupsConfig')
                   ? AuthenticatorGroupsConfig.fromJson(
                       json_['desiredAuthenticatorGroupsConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          desiredAutopilotWorkloadPolicyConfig:
+              json_.containsKey('desiredAutopilotWorkloadPolicyConfig')
+                  ? WorkloadPolicyConfig.fromJson(
+                      json_['desiredAutopilotWorkloadPolicyConfig']
                           as core.Map<core.String, core.dynamic>)
                   : null,
           desiredBinaryAuthorization: json_
@@ -5326,6 +5911,12 @@ class ClusterUpdate {
               ? ClusterAutoscaling.fromJson(json_['desiredClusterAutoscaling']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          desiredCostManagementConfig:
+              json_.containsKey('desiredCostManagementConfig')
+                  ? CostManagementConfig.fromJson(
+                      json_['desiredCostManagementConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           desiredDatabaseEncryption: json_
                   .containsKey('desiredDatabaseEncryption')
               ? DatabaseEncryption.fromJson(json_['desiredDatabaseEncryption']
@@ -5341,6 +5932,22 @@ class ClusterUpdate {
                   : null,
           desiredDnsConfig: json_.containsKey('desiredDnsConfig')
               ? DNSConfig.fromJson(json_['desiredDnsConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          desiredEnableFqdnNetworkPolicy:
+              json_.containsKey('desiredEnableFqdnNetworkPolicy')
+                  ? json_['desiredEnableFqdnNetworkPolicy'] as core.bool
+                  : null,
+          desiredEnablePrivateEndpoint:
+              json_.containsKey('desiredEnablePrivateEndpoint')
+                  ? json_['desiredEnablePrivateEndpoint'] as core.bool
+                  : null,
+          desiredFleet: json_.containsKey('desiredFleet')
+              ? Fleet.fromJson(
+                  json_['desiredFleet'] as core.Map<core.String, core.dynamic>)
+              : null,
+          desiredGatewayApiConfig: json_.containsKey('desiredGatewayApiConfig')
+              ? GatewayAPIConfig.fromJson(json_['desiredGatewayApiConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
           desiredGcfsConfig: json_.containsKey('desiredGcfsConfig')
@@ -5362,6 +5969,10 @@ class ClusterUpdate {
                       json_['desiredIntraNodeVisibilityConfig']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          desiredK8sBetaApis: json_.containsKey('desiredK8sBetaApis')
+              ? K8sBetaAPIConfig.fromJson(json_['desiredK8sBetaApis']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           desiredL4ilbSubsettingConfig:
               json_.containsKey('desiredL4ilbSubsettingConfig')
                   ? ILBSubsettingConfig.fromJson(
@@ -5400,6 +6011,12 @@ class ClusterUpdate {
           desiredMonitoringService:
               json_.containsKey('desiredMonitoringService')
                   ? json_['desiredMonitoringService'] as core.String
+                  : null,
+          desiredNetworkPerformanceConfig:
+              json_.containsKey('desiredNetworkPerformanceConfig')
+                  ? ClusterNetworkPerformanceConfig.fromJson(
+                      json_['desiredNetworkPerformanceConfig']
+                          as core.Map<core.String, core.dynamic>)
                   : null,
           desiredNodePoolAutoConfigNetworkTags:
               json_.containsKey('desiredNodePoolAutoConfigNetworkTags')
@@ -5449,6 +6066,12 @@ class ClusterUpdate {
                       json_['desiredResourceUsageExportConfig']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          desiredSecurityPostureConfig:
+              json_.containsKey('desiredSecurityPostureConfig')
+                  ? SecurityPostureConfig.fromJson(
+                      json_['desiredSecurityPostureConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           desiredServiceExternalIpsConfig:
               json_.containsKey('desiredServiceExternalIpsConfig')
                   ? ServiceExternalIPsConfig.fromJson(
@@ -5458,6 +6081,9 @@ class ClusterUpdate {
           desiredShieldedNodes: json_.containsKey('desiredShieldedNodes')
               ? ShieldedNodes.fromJson(json_['desiredShieldedNodes']
                   as core.Map<core.String, core.dynamic>)
+              : null,
+          desiredStackType: json_.containsKey('desiredStackType')
+              ? json_['desiredStackType'] as core.String
               : null,
           desiredVerticalPodAutoscaling:
               json_.containsKey('desiredVerticalPodAutoscaling')
@@ -5471,17 +6097,35 @@ class ClusterUpdate {
                       json_['desiredWorkloadIdentityConfig']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          enableK8sBetaApis: json_.containsKey('enableK8sBetaApis')
+              ? K8sBetaAPIConfig.fromJson(json_['enableK8sBetaApis']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          removedAdditionalPodRangesConfig:
+              json_.containsKey('removedAdditionalPodRangesConfig')
+                  ? AdditionalPodRangesConfig.fromJson(
+                      json_['removedAdditionalPodRangesConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (additionalPodRangesConfig != null)
+          'additionalPodRangesConfig': additionalPodRangesConfig!,
         if (desiredAddonsConfig != null)
           'desiredAddonsConfig': desiredAddonsConfig!,
         if (desiredAuthenticatorGroupsConfig != null)
           'desiredAuthenticatorGroupsConfig': desiredAuthenticatorGroupsConfig!,
+        if (desiredAutopilotWorkloadPolicyConfig != null)
+          'desiredAutopilotWorkloadPolicyConfig':
+              desiredAutopilotWorkloadPolicyConfig!,
         if (desiredBinaryAuthorization != null)
           'desiredBinaryAuthorization': desiredBinaryAuthorization!,
         if (desiredClusterAutoscaling != null)
           'desiredClusterAutoscaling': desiredClusterAutoscaling!,
+        if (desiredCostManagementConfig != null)
+          'desiredCostManagementConfig': desiredCostManagementConfig!,
         if (desiredDatabaseEncryption != null)
           'desiredDatabaseEncryption': desiredDatabaseEncryption!,
         if (desiredDatapathProvider != null)
@@ -5489,12 +6133,21 @@ class ClusterUpdate {
         if (desiredDefaultSnatStatus != null)
           'desiredDefaultSnatStatus': desiredDefaultSnatStatus!,
         if (desiredDnsConfig != null) 'desiredDnsConfig': desiredDnsConfig!,
+        if (desiredEnableFqdnNetworkPolicy != null)
+          'desiredEnableFqdnNetworkPolicy': desiredEnableFqdnNetworkPolicy!,
+        if (desiredEnablePrivateEndpoint != null)
+          'desiredEnablePrivateEndpoint': desiredEnablePrivateEndpoint!,
+        if (desiredFleet != null) 'desiredFleet': desiredFleet!,
+        if (desiredGatewayApiConfig != null)
+          'desiredGatewayApiConfig': desiredGatewayApiConfig!,
         if (desiredGcfsConfig != null) 'desiredGcfsConfig': desiredGcfsConfig!,
         if (desiredIdentityServiceConfig != null)
           'desiredIdentityServiceConfig': desiredIdentityServiceConfig!,
         if (desiredImageType != null) 'desiredImageType': desiredImageType!,
         if (desiredIntraNodeVisibilityConfig != null)
           'desiredIntraNodeVisibilityConfig': desiredIntraNodeVisibilityConfig!,
+        if (desiredK8sBetaApis != null)
+          'desiredK8sBetaApis': desiredK8sBetaApis!,
         if (desiredL4ilbSubsettingConfig != null)
           'desiredL4ilbSubsettingConfig': desiredL4ilbSubsettingConfig!,
         if (desiredLocations != null) 'desiredLocations': desiredLocations!,
@@ -5513,6 +6166,8 @@ class ClusterUpdate {
           'desiredMonitoringConfig': desiredMonitoringConfig!,
         if (desiredMonitoringService != null)
           'desiredMonitoringService': desiredMonitoringService!,
+        if (desiredNetworkPerformanceConfig != null)
+          'desiredNetworkPerformanceConfig': desiredNetworkPerformanceConfig!,
         if (desiredNodePoolAutoConfigNetworkTags != null)
           'desiredNodePoolAutoConfigNetworkTags':
               desiredNodePoolAutoConfigNetworkTags!,
@@ -5533,14 +6188,21 @@ class ClusterUpdate {
           'desiredReleaseChannel': desiredReleaseChannel!,
         if (desiredResourceUsageExportConfig != null)
           'desiredResourceUsageExportConfig': desiredResourceUsageExportConfig!,
+        if (desiredSecurityPostureConfig != null)
+          'desiredSecurityPostureConfig': desiredSecurityPostureConfig!,
         if (desiredServiceExternalIpsConfig != null)
           'desiredServiceExternalIpsConfig': desiredServiceExternalIpsConfig!,
         if (desiredShieldedNodes != null)
           'desiredShieldedNodes': desiredShieldedNodes!,
+        if (desiredStackType != null) 'desiredStackType': desiredStackType!,
         if (desiredVerticalPodAutoscaling != null)
           'desiredVerticalPodAutoscaling': desiredVerticalPodAutoscaling!,
         if (desiredWorkloadIdentityConfig != null)
           'desiredWorkloadIdentityConfig': desiredWorkloadIdentityConfig!,
+        if (enableK8sBetaApis != null) 'enableK8sBetaApis': enableK8sBetaApis!,
+        if (etag != null) 'etag': etag!,
+        if (removedAdditionalPodRangesConfig != null)
+          'removedAdditionalPodRangesConfig': removedAdditionalPodRangesConfig!,
       };
 }
 
@@ -5551,6 +6213,9 @@ class CompleteIPRotationRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? clusterId;
 
   /// The name (project, location, cluster name) of the cluster to complete IP
@@ -5565,6 +6230,9 @@ class CompleteIPRotationRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? projectId;
 
   /// The name of the Google Compute Engine
@@ -5574,6 +6242,9 @@ class CompleteIPRotationRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? zone;
 
   CompleteIPRotationRequest({
@@ -5674,6 +6345,27 @@ class ConsumptionMeteringConfig {
       };
 }
 
+/// Configuration for fine-grained cost management feature.
+class CostManagementConfig {
+  /// Whether the feature is enabled or not.
+  core.bool? enabled;
+
+  CostManagementConfig({
+    this.enabled,
+  });
+
+  CostManagementConfig.fromJson(core.Map json_)
+      : this(
+          enabled: json_.containsKey('enabled')
+              ? json_['enabled'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
+      };
+}
+
 /// CreateClusterRequest creates a cluster.
 class CreateClusterRequest {
   /// A
@@ -5693,6 +6385,9 @@ class CreateClusterRequest {
   /// This field has been deprecated and replaced by the parent field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? projectId;
 
   /// The name of the Google Compute Engine
@@ -5702,6 +6397,9 @@ class CreateClusterRequest {
   /// This field has been deprecated and replaced by the parent field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? zone;
 
   CreateClusterRequest({
@@ -5741,6 +6439,9 @@ class CreateNodePoolRequest {
   /// This field has been deprecated and replaced by the parent field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? clusterId;
 
   /// The node pool to create.
@@ -5760,6 +6461,9 @@ class CreateNodePoolRequest {
   /// This field has been deprecated and replaced by the parent field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? projectId;
 
   /// The name of the Google Compute Engine
@@ -5769,6 +6473,9 @@ class CreateNodePoolRequest {
   /// This field has been deprecated and replaced by the parent field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? zone;
 
   CreateNodePoolRequest({
@@ -5814,6 +6521,7 @@ class DNSConfig {
   /// - "PLATFORM_DEFAULT" : Use GKE default DNS provider(kube-dns) for DNS
   /// resolution.
   /// - "CLOUD_DNS" : Use CloudDNS for DNS resolution.
+  /// - "KUBE_DNS" : Use KubeDNS for DNS resolution.
   core.String? clusterDns;
 
   /// cluster_dns_domain is the suffix used for all cluster service records.
@@ -5823,6 +6531,7 @@ class DNSConfig {
   /// Possible string values are:
   /// - "DNS_SCOPE_UNSPECIFIED" : Default value, will be inferred as cluster
   /// scope.
+  /// - "CLUSTER_SCOPE" : DNS records are accessible from within the cluster.
   /// - "VPC_SCOPE" : DNS records are accessible from within the VPC.
   core.String? clusterDnsScope;
 
@@ -5898,7 +6607,7 @@ class DatabaseEncryption {
   /// projects/my-project/locations/global/keyRings/my-ring/cryptoKeys/my-key
   core.String? keyName;
 
-  /// Denotes the state of etcd encryption.
+  /// The desired state of etcd encryption.
   /// Possible string values are:
   /// - "UNKNOWN" : Should never be set
   /// - "ENCRYPTED" : Secrets in etcd are encrypted.
@@ -5977,6 +6686,55 @@ class DnsCacheConfig {
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
+/// EphemeralStorageLocalSsdConfig contains configuration for the node ephemeral
+/// storage using Local SSD.
+class EphemeralStorageLocalSsdConfig {
+  /// Number of local SSDs to use to back ephemeral storage.
+  ///
+  /// Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means
+  /// to disable using local SSDs as ephemeral storage. The limit for this value
+  /// is dependent upon the maximum number of disks available on a machine per
+  /// zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more
+  /// information.
+  core.int? localSsdCount;
+
+  EphemeralStorageLocalSsdConfig({
+    this.localSsdCount,
+  });
+
+  EphemeralStorageLocalSsdConfig.fromJson(core.Map json_)
+      : this(
+          localSsdCount: json_.containsKey('localSsdCount')
+              ? json_['localSsdCount'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (localSsdCount != null) 'localSsdCount': localSsdCount!,
+      };
+}
+
+/// Configuration of Fast Socket feature.
+class FastSocket {
+  /// Whether Fast Socket features are enabled in the node pool.
+  core.bool? enabled;
+
+  FastSocket({
+    this.enabled,
+  });
+
+  FastSocket.fromJson(core.Map json_)
+      : this(
+          enabled: json_.containsKey('enabled')
+              ? json_['enabled'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
+      };
+}
+
 /// Allows filtering to one or more specific event types.
 ///
 /// If event types are present, those and only those event types will be
@@ -6001,6 +6759,81 @@ class Filter {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (eventType != null) 'eventType': eventType!,
+      };
+}
+
+/// Fleet is the fleet configuration for the cluster.
+class Fleet {
+  /// The full resource name of the registered fleet membership of the cluster,
+  /// in the format `//gkehub.googleapis.com/projects / * /locations / *
+  /// /memberships / * `.
+  ///
+  /// Output only.
+  core.String? membership;
+
+  /// Whether the cluster has been registered through the fleet API.
+  ///
+  /// Output only.
+  core.bool? preRegistered;
+
+  /// The Fleet host project(project ID or project number) where this cluster
+  /// will be registered to.
+  ///
+  /// This field cannot be changed after the cluster has been registered.
+  core.String? project;
+
+  Fleet({
+    this.membership,
+    this.preRegistered,
+    this.project,
+  });
+
+  Fleet.fromJson(core.Map json_)
+      : this(
+          membership: json_.containsKey('membership')
+              ? json_['membership'] as core.String
+              : null,
+          preRegistered: json_.containsKey('preRegistered')
+              ? json_['preRegistered'] as core.bool
+              : null,
+          project: json_.containsKey('project')
+              ? json_['project'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (membership != null) 'membership': membership!,
+        if (preRegistered != null) 'preRegistered': preRegistered!,
+        if (project != null) 'project': project!,
+      };
+}
+
+/// GPUDriverInstallationConfig specifies the version of GPU driver to be auto
+/// installed.
+class GPUDriverInstallationConfig {
+  /// Mode for how the GPU driver is installed.
+  /// Possible string values are:
+  /// - "GPU_DRIVER_VERSION_UNSPECIFIED" : Default value is to not install any
+  /// GPU driver.
+  /// - "INSTALLATION_DISABLED" : Disable GPU driver auto installation and needs
+  /// manual installation
+  /// - "DEFAULT" : "Default" GPU driver in COS and Ubuntu.
+  /// - "LATEST" : "Latest" GPU driver in COS.
+  core.String? gpuDriverVersion;
+
+  GPUDriverInstallationConfig({
+    this.gpuDriverVersion,
+  });
+
+  GPUDriverInstallationConfig.fromJson(core.Map json_)
+      : this(
+          gpuDriverVersion: json_.containsKey('gpuDriverVersion')
+              ? json_['gpuDriverVersion'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gpuDriverVersion != null) 'gpuDriverVersion': gpuDriverVersion!,
       };
 }
 
@@ -6036,6 +6869,34 @@ class GPUSharingConfig {
           'gpuSharingStrategy': gpuSharingStrategy!,
         if (maxSharedClientsPerGpu != null)
           'maxSharedClientsPerGpu': maxSharedClientsPerGpu!,
+      };
+}
+
+/// GatewayAPIConfig contains the desired config of Gateway API on this cluster.
+class GatewayAPIConfig {
+  /// The Gateway API release channel to use for Gateway API.
+  /// Possible string values are:
+  /// - "CHANNEL_UNSPECIFIED" : Default value.
+  /// - "CHANNEL_DISABLED" : Gateway API support is disabled
+  /// - "CHANNEL_EXPERIMENTAL" : Gateway API support is enabled, experimental
+  /// CRDs are installed
+  /// - "CHANNEL_STANDARD" : Gateway API support is enabled, standard CRDs are
+  /// installed
+  core.String? channel;
+
+  GatewayAPIConfig({
+    this.channel,
+  });
+
+  GatewayAPIConfig.fromJson(core.Map json_)
+      : this(
+          channel: json_.containsKey('channel')
+              ? json_['channel'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (channel != null) 'channel': channel!,
       };
 }
 
@@ -6092,6 +6953,27 @@ class GcpFilestoreCsiDriverConfig {
   });
 
   GcpFilestoreCsiDriverConfig.fromJson(core.Map json_)
+      : this(
+          enabled: json_.containsKey('enabled')
+              ? json_['enabled'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
+      };
+}
+
+/// Configuration for the Cloud Storage Fuse CSI driver.
+class GcsFuseCsiDriverConfig {
+  /// Whether the Cloud Storage Fuse CSI driver is enabled for this cluster.
+  core.bool? enabled;
+
+  GcsFuseCsiDriverConfig({
+    this.enabled,
+  });
+
+  GcsFuseCsiDriverConfig.fromJson(core.Map json_)
       : this(
           enabled: json_.containsKey('enabled')
               ? json_['enabled'] as core.bool
@@ -6234,6 +7116,27 @@ class GetOpenIDConfigResponse {
       };
 }
 
+/// Configuration for the Backup for GKE Agent.
+class GkeBackupAgentConfig {
+  /// Whether the Backup for GKE agent is enabled for this cluster.
+  core.bool? enabled;
+
+  GkeBackupAgentConfig({
+    this.enabled,
+  });
+
+  GkeBackupAgentConfig.fromJson(core.Map json_)
+      : this(
+          enabled: json_.containsKey('enabled')
+              ? json_['enabled'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
+      };
+}
+
 /// Configuration options for the horizontal pod autoscaling feature, which
 /// increases or decreases the number of replica pods a replication controller
 /// has based on the resource usage of the existing pods.
@@ -6344,7 +7247,19 @@ class ILBSubsettingConfig {
 
 /// Configuration for controlling how IPs are allocated in the cluster.
 class IPAllocationPolicy {
+  /// The additional pod ranges that are added to the cluster.
+  ///
+  /// These pod ranges can be used by new node pools to allocate pod IPs
+  /// automatically. Once the range is removed it will not show up in
+  /// IPAllocationPolicy.
+  ///
+  /// Output only.
+  AdditionalPodRangesConfig? additionalPodRangesConfig;
+
   /// This field is deprecated, use cluster_ipv4_cidr_block.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? clusterIpv4Cidr;
 
   /// The IP address range for the cluster pod IPs.
@@ -6372,7 +7287,26 @@ class IPAllocationPolicy {
   /// This field is only applicable when `use_ip_aliases` is true.
   core.bool? createSubnetwork;
 
+  /// The utilization of the cluster default IPv4 range for the pod.
+  ///
+  /// The ratio is Usage/\[Total number of IPs in the secondary range\],
+  /// Usage=numNodes*numZones*podIPsPerNode.
+  ///
+  /// Output only.
+  core.double? defaultPodIpv4RangeUtilization;
+
+  /// The ipv6 access type (internal or external) when create_subnetwork is true
+  /// Possible string values are:
+  /// - "IPV6_ACCESS_TYPE_UNSPECIFIED" : Default value, will be defaulted as
+  /// type external.
+  /// - "INTERNAL" : Access type internal (all v6 addresses are internal IPs)
+  /// - "EXTERNAL" : Access type external (all v6 addresses are external IPs)
+  core.String? ipv6AccessType;
+
   /// This field is deprecated, use node_ipv4_cidr_block.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? nodeIpv4Cidr;
 
   /// The IP address range of the instance IPs in this cluster.
@@ -6386,7 +7320,20 @@ class IPAllocationPolicy {
   /// to use.
   core.String? nodeIpv4CidrBlock;
 
+  /// \[PRIVATE FIELD\] Pod CIDR size overprovisioning config for the cluster.
+  ///
+  /// Pod CIDR size per node depends on max_pods_per_node. By default, the value
+  /// of max_pods_per_node is doubled and then rounded off to next power of 2 to
+  /// get the size of pod CIDR block per node. Example: max_pods_per_node of 30
+  /// would result in 64 IPs (/26). This config can disable the doubling of IPs
+  /// (we still round off to next power of 2) Example: max_pods_per_node of 30
+  /// will result in 32 IPs (/27) when overprovisioning is disabled.
+  PodCIDROverprovisionConfig? podCidrOverprovisionConfig;
+
   /// This field is deprecated, use services_ipv4_cidr_block.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? servicesIpv4Cidr;
 
   /// The IP address range of the services IPs in this cluster.
@@ -6401,6 +7348,11 @@ class IPAllocationPolicy {
   /// to use.
   core.String? servicesIpv4CidrBlock;
 
+  /// The services IPv6 CIDR block for the cluster.
+  ///
+  /// Output only.
+  core.String? servicesIpv6CidrBlock;
+
   /// The name of the secondary range to be used as for the services CIDR block.
   ///
   /// The secondary range will be used for service ClusterIPs. This must be an
@@ -6408,6 +7360,18 @@ class IPAllocationPolicy {
   /// field is only applicable with use_ip_aliases is true and create_subnetwork
   /// is false.
   core.String? servicesSecondaryRangeName;
+
+  /// The IP stack type of the cluster
+  /// Possible string values are:
+  /// - "STACK_TYPE_UNSPECIFIED" : Default value, will be defaulted as IPV4 only
+  /// - "IPV4" : Cluster is IPV4 only
+  /// - "IPV4_IPV6" : Cluster can use both IPv4 and IPv6
+  core.String? stackType;
+
+  /// The subnet's IPv6 CIDR block used by nodes and pods.
+  ///
+  /// Output only.
+  core.String? subnetIpv6CidrBlock;
 
   /// A custom subnetwork name to be used if `create_subnetwork` is true.
   ///
@@ -6442,15 +7406,22 @@ class IPAllocationPolicy {
   core.bool? useRoutes;
 
   IPAllocationPolicy({
+    this.additionalPodRangesConfig,
     this.clusterIpv4Cidr,
     this.clusterIpv4CidrBlock,
     this.clusterSecondaryRangeName,
     this.createSubnetwork,
+    this.defaultPodIpv4RangeUtilization,
+    this.ipv6AccessType,
     this.nodeIpv4Cidr,
     this.nodeIpv4CidrBlock,
+    this.podCidrOverprovisionConfig,
     this.servicesIpv4Cidr,
     this.servicesIpv4CidrBlock,
+    this.servicesIpv6CidrBlock,
     this.servicesSecondaryRangeName,
+    this.stackType,
+    this.subnetIpv6CidrBlock,
     this.subnetworkName,
     this.tpuIpv4CidrBlock,
     this.useIpAliases,
@@ -6459,6 +7430,12 @@ class IPAllocationPolicy {
 
   IPAllocationPolicy.fromJson(core.Map json_)
       : this(
+          additionalPodRangesConfig:
+              json_.containsKey('additionalPodRangesConfig')
+                  ? AdditionalPodRangesConfig.fromJson(
+                      json_['additionalPodRangesConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           clusterIpv4Cidr: json_.containsKey('clusterIpv4Cidr')
               ? json_['clusterIpv4Cidr'] as core.String
               : null,
@@ -6472,22 +7449,44 @@ class IPAllocationPolicy {
           createSubnetwork: json_.containsKey('createSubnetwork')
               ? json_['createSubnetwork'] as core.bool
               : null,
+          defaultPodIpv4RangeUtilization: json_
+                  .containsKey('defaultPodIpv4RangeUtilization')
+              ? (json_['defaultPodIpv4RangeUtilization'] as core.num).toDouble()
+              : null,
+          ipv6AccessType: json_.containsKey('ipv6AccessType')
+              ? json_['ipv6AccessType'] as core.String
+              : null,
           nodeIpv4Cidr: json_.containsKey('nodeIpv4Cidr')
               ? json_['nodeIpv4Cidr'] as core.String
               : null,
           nodeIpv4CidrBlock: json_.containsKey('nodeIpv4CidrBlock')
               ? json_['nodeIpv4CidrBlock'] as core.String
               : null,
+          podCidrOverprovisionConfig:
+              json_.containsKey('podCidrOverprovisionConfig')
+                  ? PodCIDROverprovisionConfig.fromJson(
+                      json_['podCidrOverprovisionConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           servicesIpv4Cidr: json_.containsKey('servicesIpv4Cidr')
               ? json_['servicesIpv4Cidr'] as core.String
               : null,
           servicesIpv4CidrBlock: json_.containsKey('servicesIpv4CidrBlock')
               ? json_['servicesIpv4CidrBlock'] as core.String
               : null,
+          servicesIpv6CidrBlock: json_.containsKey('servicesIpv6CidrBlock')
+              ? json_['servicesIpv6CidrBlock'] as core.String
+              : null,
           servicesSecondaryRangeName:
               json_.containsKey('servicesSecondaryRangeName')
                   ? json_['servicesSecondaryRangeName'] as core.String
                   : null,
+          stackType: json_.containsKey('stackType')
+              ? json_['stackType'] as core.String
+              : null,
+          subnetIpv6CidrBlock: json_.containsKey('subnetIpv6CidrBlock')
+              ? json_['subnetIpv6CidrBlock'] as core.String
+              : null,
           subnetworkName: json_.containsKey('subnetworkName')
               ? json_['subnetworkName'] as core.String
               : null,
@@ -6503,19 +7502,31 @@ class IPAllocationPolicy {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (additionalPodRangesConfig != null)
+          'additionalPodRangesConfig': additionalPodRangesConfig!,
         if (clusterIpv4Cidr != null) 'clusterIpv4Cidr': clusterIpv4Cidr!,
         if (clusterIpv4CidrBlock != null)
           'clusterIpv4CidrBlock': clusterIpv4CidrBlock!,
         if (clusterSecondaryRangeName != null)
           'clusterSecondaryRangeName': clusterSecondaryRangeName!,
         if (createSubnetwork != null) 'createSubnetwork': createSubnetwork!,
+        if (defaultPodIpv4RangeUtilization != null)
+          'defaultPodIpv4RangeUtilization': defaultPodIpv4RangeUtilization!,
+        if (ipv6AccessType != null) 'ipv6AccessType': ipv6AccessType!,
         if (nodeIpv4Cidr != null) 'nodeIpv4Cidr': nodeIpv4Cidr!,
         if (nodeIpv4CidrBlock != null) 'nodeIpv4CidrBlock': nodeIpv4CidrBlock!,
+        if (podCidrOverprovisionConfig != null)
+          'podCidrOverprovisionConfig': podCidrOverprovisionConfig!,
         if (servicesIpv4Cidr != null) 'servicesIpv4Cidr': servicesIpv4Cidr!,
         if (servicesIpv4CidrBlock != null)
           'servicesIpv4CidrBlock': servicesIpv4CidrBlock!,
+        if (servicesIpv6CidrBlock != null)
+          'servicesIpv6CidrBlock': servicesIpv6CidrBlock!,
         if (servicesSecondaryRangeName != null)
           'servicesSecondaryRangeName': servicesSecondaryRangeName!,
+        if (stackType != null) 'stackType': stackType!,
+        if (subnetIpv6CidrBlock != null)
+          'subnetIpv6CidrBlock': subnetIpv6CidrBlock!,
         if (subnetworkName != null) 'subnetworkName': subnetworkName!,
         if (tpuIpv4CidrBlock != null) 'tpuIpv4CidrBlock': tpuIpv4CidrBlock!,
         if (useIpAliases != null) 'useIpAliases': useIpAliases!,
@@ -6634,6 +7645,29 @@ class Jwk {
       };
 }
 
+/// K8sBetaAPIConfig , configuration for beta APIs
+class K8sBetaAPIConfig {
+  /// Enabled k8s beta APIs.
+  core.List<core.String>? enabledApis;
+
+  K8sBetaAPIConfig({
+    this.enabledApis,
+  });
+
+  K8sBetaAPIConfig.fromJson(core.Map json_)
+      : this(
+          enabledApis: json_.containsKey('enabledApis')
+              ? (json_['enabledApis'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabledApis != null) 'enabledApis': enabledApis!,
+      };
+}
+
 /// Configuration for the Kubernetes Dashboard.
 class KubernetesDashboard {
   /// Whether the Kubernetes Dashboard is enabled for this cluster.
@@ -6683,6 +7717,17 @@ class LegacyAbac {
 
 /// Parameters that can be configured on Linux nodes.
 class LinuxNodeConfig {
+  /// cgroup_mode specifies the cgroup mode to be used on the node.
+  /// Possible string values are:
+  /// - "CGROUP_MODE_UNSPECIFIED" : CGROUP_MODE_UNSPECIFIED is when unspecified
+  /// cgroup configuration is used. The default for the GKE node OS image will
+  /// be used.
+  /// - "CGROUP_MODE_V1" : CGROUP_MODE_V1 specifies to use cgroupv1 for the
+  /// cgroup configuration on the node image.
+  /// - "CGROUP_MODE_V2" : CGROUP_MODE_V2 specifies to use cgroupv2 for the
+  /// cgroup configuration on the node image.
+  core.String? cgroupMode;
+
   /// The Linux kernel parameters to be applied to the nodes and all pods
   /// running on the nodes.
   ///
@@ -6694,22 +7739,27 @@ class LinuxNodeConfig {
   core.Map<core.String, core.String>? sysctls;
 
   LinuxNodeConfig({
+    this.cgroupMode,
     this.sysctls,
   });
 
   LinuxNodeConfig.fromJson(core.Map json_)
       : this(
+          cgroupMode: json_.containsKey('cgroupMode')
+              ? json_['cgroupMode'] as core.String
+              : null,
           sysctls: json_.containsKey('sysctls')
               ? (json_['sysctls'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (cgroupMode != null) 'cgroupMode': cgroupMode!,
         if (sysctls != null) 'sysctls': sysctls!,
       };
 }
@@ -6843,6 +7893,34 @@ class ListUsableSubnetworksResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (subnetworks != null) 'subnetworks': subnetworks!,
+      };
+}
+
+/// LocalNvmeSsdBlockConfig contains configuration for using raw-block local
+/// NVMe SSD.
+class LocalNvmeSsdBlockConfig {
+  /// The number of raw-block local NVMe SSD disks to be attached to the node.
+  ///
+  /// Each local SSD is 375 GB in size. If zero, it means no raw-block local
+  /// NVMe SSD disks to be attached to the node. The limit for this value is
+  /// dependent upon the maximum number of disks available on a machine per
+  /// zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more
+  /// information.
+  core.int? localSsdCount;
+
+  LocalNvmeSsdBlockConfig({
+    this.localSsdCount,
+  });
+
+  LocalNvmeSsdBlockConfig.fromJson(core.Map json_)
+      : this(
+          localSsdCount: json_.containsKey('localSsdCount')
+              ? json_['localSsdCount'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (localSsdCount != null) 'localSsdCount': localSsdCount!,
       };
 }
 
@@ -7017,10 +8095,10 @@ class MaintenanceWindow {
               ? (json_['maintenanceExclusions']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     TimeWindow.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -7098,6 +8176,9 @@ class MasterAuth {
   /// be removed in GKE control plane versions 1.19 and newer. For a list of
   /// recommended authentication methods, see:
   /// https://cloud.google.com/kubernetes-engine/docs/how-to/api-server-authentication
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? password;
 
   /// The username to use for HTTP basic authentication to the master endpoint.
@@ -7108,6 +8189,9 @@ class MasterAuth {
   /// plane versions 1.19 and newer. For a list of recommended authentication
   /// methods, see:
   /// https://cloud.google.com/kubernetes-engine/docs/how-to/api-server-authentication
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? username;
 
   MasterAuth({
@@ -7168,9 +8252,14 @@ class MasterAuthorizedNetworksConfig {
   /// Whether or not master authorized networks is enabled.
   core.bool? enabled;
 
+  /// Whether master is accessbile via Google Compute Engine Public IP
+  /// addresses.
+  core.bool? gcpPublicCidrsAccessEnabled;
+
   MasterAuthorizedNetworksConfig({
     this.cidrBlocks,
     this.enabled,
+    this.gcpPublicCidrsAccessEnabled,
   });
 
   MasterAuthorizedNetworksConfig.fromJson(core.Map json_)
@@ -7184,11 +8273,17 @@ class MasterAuthorizedNetworksConfig {
           enabled: json_.containsKey('enabled')
               ? json_['enabled'] as core.bool
               : null,
+          gcpPublicCidrsAccessEnabled:
+              json_.containsKey('gcpPublicCidrsAccessEnabled')
+                  ? json_['gcpPublicCidrsAccessEnabled'] as core.bool
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cidrBlocks != null) 'cidrBlocks': cidrBlocks!,
         if (enabled != null) 'enabled': enabled!,
+        if (gcpPublicCidrsAccessEnabled != null)
+          'gcpPublicCidrsAccessEnabled': gcpPublicCidrsAccessEnabled!,
       };
 }
 
@@ -7312,6 +8407,9 @@ class MonitoringComponentConfig {
 
 /// MonitoringConfig is cluster monitoring configuration.
 class MonitoringConfig {
+  /// Configuration of Advanced Datapath Observability features.
+  AdvancedDatapathObservabilityConfig? advancedDatapathObservabilityConfig;
+
   /// Monitoring components configuration
   MonitoringComponentConfig? componentConfig;
 
@@ -7319,12 +8417,19 @@ class MonitoringConfig {
   ManagedPrometheusConfig? managedPrometheusConfig;
 
   MonitoringConfig({
+    this.advancedDatapathObservabilityConfig,
     this.componentConfig,
     this.managedPrometheusConfig,
   });
 
   MonitoringConfig.fromJson(core.Map json_)
       : this(
+          advancedDatapathObservabilityConfig:
+              json_.containsKey('advancedDatapathObservabilityConfig')
+                  ? AdvancedDatapathObservabilityConfig.fromJson(
+                      json_['advancedDatapathObservabilityConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           componentConfig: json_.containsKey('componentConfig')
               ? MonitoringComponentConfig.fromJson(json_['componentConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -7337,6 +8442,9 @@ class MonitoringConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (advancedDatapathObservabilityConfig != null)
+          'advancedDatapathObservabilityConfig':
+              advancedDatapathObservabilityConfig!,
         if (componentConfig != null) 'componentConfig': componentConfig!,
         if (managedPrometheusConfig != null)
           'managedPrometheusConfig': managedPrometheusConfig!,
@@ -7367,6 +8475,9 @@ class NetworkConfig {
   /// DNSConfig contains clusterDNS config for this cluster.
   DNSConfig? dnsConfig;
 
+  /// Whether FQDN Network Policy is enabled on this cluster.
+  core.bool? enableFqdnNetworkPolicy;
+
   /// Whether Intra-node visibility is enabled for this cluster.
   ///
   /// This makes same node pod to pod traffic visible for VPC network.
@@ -7374,6 +8485,13 @@ class NetworkConfig {
 
   /// Whether L4ILB Subsetting is enabled for this cluster.
   core.bool? enableL4ilbSubsetting;
+
+  /// Whether multi-networking is enabled for this cluster.
+  core.bool? enableMultiNetworking;
+
+  /// GatewayAPIConfig contains the desired config of Gateway API on this
+  /// cluster.
+  GatewayAPIConfig? gatewayApiConfig;
 
   /// The relative name of the Google Compute Engine
   /// network(https://cloud.google.com/compute/docs/networks-and-firewalls#networks)
@@ -7383,6 +8501,9 @@ class NetworkConfig {
   ///
   /// Output only.
   core.String? network;
+
+  /// Network bandwidth tier configuration.
+  ClusterNetworkPerformanceConfig? networkPerformanceConfig;
 
   /// The desired state of IPv6 connectivity to Google Services.
   ///
@@ -7395,7 +8516,7 @@ class NetworkConfig {
   /// Google Services
   /// - "PRIVATE_IPV6_GOOGLE_ACCESS_TO_GOOGLE" : Enables private IPv6 access to
   /// Google Services from GKE
-  /// - "PRIVATE_IPV6_GOOGLE_ACCESS_BIDIRECTIONAL" : Enables priate IPv6 access
+  /// - "PRIVATE_IPV6_GOOGLE_ACCESS_BIDIRECTIONAL" : Enables private IPv6 access
   /// to and from Google Services
   core.String? privateIpv6GoogleAccess;
 
@@ -7416,9 +8537,13 @@ class NetworkConfig {
     this.datapathProvider,
     this.defaultSnatStatus,
     this.dnsConfig,
+    this.enableFqdnNetworkPolicy,
     this.enableIntraNodeVisibility,
     this.enableL4ilbSubsetting,
+    this.enableMultiNetworking,
+    this.gatewayApiConfig,
     this.network,
+    this.networkPerformanceConfig,
     this.privateIpv6GoogleAccess,
     this.serviceExternalIpsConfig,
     this.subnetwork,
@@ -7437,6 +8562,9 @@ class NetworkConfig {
               ? DNSConfig.fromJson(
                   json_['dnsConfig'] as core.Map<core.String, core.dynamic>)
               : null,
+          enableFqdnNetworkPolicy: json_.containsKey('enableFqdnNetworkPolicy')
+              ? json_['enableFqdnNetworkPolicy'] as core.bool
+              : null,
           enableIntraNodeVisibility:
               json_.containsKey('enableIntraNodeVisibility')
                   ? json_['enableIntraNodeVisibility'] as core.bool
@@ -7444,9 +8572,22 @@ class NetworkConfig {
           enableL4ilbSubsetting: json_.containsKey('enableL4ilbSubsetting')
               ? json_['enableL4ilbSubsetting'] as core.bool
               : null,
+          enableMultiNetworking: json_.containsKey('enableMultiNetworking')
+              ? json_['enableMultiNetworking'] as core.bool
+              : null,
+          gatewayApiConfig: json_.containsKey('gatewayApiConfig')
+              ? GatewayAPIConfig.fromJson(json_['gatewayApiConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           network: json_.containsKey('network')
               ? json_['network'] as core.String
               : null,
+          networkPerformanceConfig:
+              json_.containsKey('networkPerformanceConfig')
+                  ? ClusterNetworkPerformanceConfig.fromJson(
+                      json_['networkPerformanceConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           privateIpv6GoogleAccess: json_.containsKey('privateIpv6GoogleAccess')
               ? json_['privateIpv6GoogleAccess'] as core.String
               : null,
@@ -7465,11 +8606,18 @@ class NetworkConfig {
         if (datapathProvider != null) 'datapathProvider': datapathProvider!,
         if (defaultSnatStatus != null) 'defaultSnatStatus': defaultSnatStatus!,
         if (dnsConfig != null) 'dnsConfig': dnsConfig!,
+        if (enableFqdnNetworkPolicy != null)
+          'enableFqdnNetworkPolicy': enableFqdnNetworkPolicy!,
         if (enableIntraNodeVisibility != null)
           'enableIntraNodeVisibility': enableIntraNodeVisibility!,
         if (enableL4ilbSubsetting != null)
           'enableL4ilbSubsetting': enableL4ilbSubsetting!,
+        if (enableMultiNetworking != null)
+          'enableMultiNetworking': enableMultiNetworking!,
+        if (gatewayApiConfig != null) 'gatewayApiConfig': gatewayApiConfig!,
         if (network != null) 'network': network!,
+        if (networkPerformanceConfig != null)
+          'networkPerformanceConfig': networkPerformanceConfig!,
         if (privateIpv6GoogleAccess != null)
           'privateIpv6GoogleAccess': privateIpv6GoogleAccess!,
         if (serviceExternalIpsConfig != null)
@@ -7586,6 +8734,48 @@ class NetworkTags {
       };
 }
 
+/// Specifies the NodeAffinity key, values, and affinity operator according to
+/// [shared sole tenant node group affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity).
+class NodeAffinity {
+  /// Key for NodeAffinity.
+  core.String? key;
+
+  /// Operator for NodeAffinity.
+  /// Possible string values are:
+  /// - "OPERATOR_UNSPECIFIED" : Invalid or unspecified affinity operator.
+  /// - "IN" : Affinity operator.
+  /// - "NOT_IN" : Anti-affinity operator.
+  core.String? operator;
+
+  /// Values for NodeAffinity.
+  core.List<core.String>? values;
+
+  NodeAffinity({
+    this.key,
+    this.operator,
+    this.values,
+  });
+
+  NodeAffinity.fromJson(core.Map json_)
+      : this(
+          key: json_.containsKey('key') ? json_['key'] as core.String : null,
+          operator: json_.containsKey('operator')
+              ? json_['operator'] as core.String
+              : null,
+          values: json_.containsKey('values')
+              ? (json_['values'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (key != null) 'key': key!,
+        if (operator != null) 'operator': operator!,
+        if (values != null) 'values': values!,
+      };
+}
+
 /// Parameters that describe the nodes in a cluster.
 ///
 /// GKE Autopilot clusters do not recognize parameters in `NodeConfig`. Use
@@ -7625,6 +8815,14 @@ class NodeConfig {
   /// 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
   core.String? diskType;
 
+  /// Parameters for the node ephemeral storage using Local SSDs.
+  ///
+  /// If unspecified, ephemeral storage is backed by the boot disk.
+  EphemeralStorageLocalSsdConfig? ephemeralStorageLocalSsdConfig;
+
+  /// Enable or disable NCCL fast socket for the node pool.
+  FastSocket? fastSocket;
+
   /// Google Container File System (image streaming) configs.
   GcfsConfig? gcfsConfig;
 
@@ -7634,6 +8832,9 @@ class NodeConfig {
   /// The image type to use for this node.
   ///
   /// Note that for a given image type, the latest version of it will be used.
+  /// Please see
+  /// https://cloud.google.com/kubernetes-engine/docs/concepts/node-images for
+  /// available image types.
   core.String? imageType;
 
   /// Node kubelet configs.
@@ -7651,6 +8852,9 @@ class NodeConfig {
 
   /// Parameters that can be configured on Linux nodes.
   LinuxNodeConfig? linuxNodeConfig;
+
+  /// Parameters for using raw-block Local NVMe SSDs.
+  LocalNvmeSsdBlockConfig? localNvmeSsdBlockConfig;
 
   /// The number of local SSD disks to be attached to the node.
   ///
@@ -7728,6 +8932,10 @@ class NodeConfig {
   /// to this node pool.
   ReservationAffinity? reservationAffinity;
 
+  /// The resource labels for the node pool to use to annotate any related
+  /// Google Compute Engine resources.
+  core.Map<core.String, core.String>? resourceLabels;
+
   /// Sandbox configuration for this node.
   SandboxConfig? sandboxConfig;
 
@@ -7739,6 +8947,9 @@ class NodeConfig {
 
   /// Shielded Instance options.
   ShieldedInstanceConfig? shieldedInstanceConfig;
+
+  /// Parameters for node pools to be backed by shared sole tenant node groups.
+  SoleTenantConfig? soleTenantConfig;
 
   /// Spot flag for enabling Spot VM, which is a rebrand of the existing
   /// preemptible flag.
@@ -7757,6 +8968,9 @@ class NodeConfig {
   /// https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
   core.List<NodeTaint>? taints;
 
+  /// Parameters that can be configured on Windows nodes.
+  WindowsNodeConfig? windowsNodeConfig;
+
   /// The workload metadata configuration for this node.
   WorkloadMetadataConfig? workloadMetadataConfig;
 
@@ -7767,12 +8981,15 @@ class NodeConfig {
     this.confidentialNodes,
     this.diskSizeGb,
     this.diskType,
+    this.ephemeralStorageLocalSsdConfig,
+    this.fastSocket,
     this.gcfsConfig,
     this.gvnic,
     this.imageType,
     this.kubeletConfig,
     this.labels,
     this.linuxNodeConfig,
+    this.localNvmeSsdBlockConfig,
     this.localSsdCount,
     this.loggingConfig,
     this.machineType,
@@ -7782,12 +8999,15 @@ class NodeConfig {
     this.oauthScopes,
     this.preemptible,
     this.reservationAffinity,
+    this.resourceLabels,
     this.sandboxConfig,
     this.serviceAccount,
     this.shieldedInstanceConfig,
+    this.soleTenantConfig,
     this.spot,
     this.tags,
     this.taints,
+    this.windowsNodeConfig,
     this.workloadMetadataConfig,
   });
 
@@ -7817,6 +9037,16 @@ class NodeConfig {
           diskType: json_.containsKey('diskType')
               ? json_['diskType'] as core.String
               : null,
+          ephemeralStorageLocalSsdConfig:
+              json_.containsKey('ephemeralStorageLocalSsdConfig')
+                  ? EphemeralStorageLocalSsdConfig.fromJson(
+                      json_['ephemeralStorageLocalSsdConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          fastSocket: json_.containsKey('fastSocket')
+              ? FastSocket.fromJson(
+                  json_['fastSocket'] as core.Map<core.String, core.dynamic>)
+              : null,
           gcfsConfig: json_.containsKey('gcfsConfig')
               ? GcfsConfig.fromJson(
                   json_['gcfsConfig'] as core.Map<core.String, core.dynamic>)
@@ -7834,15 +9064,20 @@ class NodeConfig {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
           linuxNodeConfig: json_.containsKey('linuxNodeConfig')
               ? LinuxNodeConfig.fromJson(json_['linuxNodeConfig']
                   as core.Map<core.String, core.dynamic>)
+              : null,
+          localNvmeSsdBlockConfig: json_.containsKey('localNvmeSsdBlockConfig')
+              ? LocalNvmeSsdBlockConfig.fromJson(
+                  json_['localNvmeSsdBlockConfig']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           localSsdCount: json_.containsKey('localSsdCount')
               ? json_['localSsdCount'] as core.int
@@ -7856,9 +9091,9 @@ class NodeConfig {
               : null,
           metadata: json_.containsKey('metadata')
               ? (json_['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -7880,6 +9115,15 @@ class NodeConfig {
               ? ReservationAffinity.fromJson(json_['reservationAffinity']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          resourceLabels: json_.containsKey('resourceLabels')
+              ? (json_['resourceLabels'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
           sandboxConfig: json_.containsKey('sandboxConfig')
               ? SandboxConfig.fromJson(
                   json_['sandboxConfig'] as core.Map<core.String, core.dynamic>)
@@ -7889,6 +9133,10 @@ class NodeConfig {
               : null,
           shieldedInstanceConfig: json_.containsKey('shieldedInstanceConfig')
               ? ShieldedInstanceConfig.fromJson(json_['shieldedInstanceConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          soleTenantConfig: json_.containsKey('soleTenantConfig')
+              ? SoleTenantConfig.fromJson(json_['soleTenantConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
           spot: json_.containsKey('spot') ? json_['spot'] as core.bool : null,
@@ -7902,6 +9150,10 @@ class NodeConfig {
                   .map((value) => NodeTaint.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
+              : null,
+          windowsNodeConfig: json_.containsKey('windowsNodeConfig')
+              ? WindowsNodeConfig.fromJson(json_['windowsNodeConfig']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           workloadMetadataConfig: json_.containsKey('workloadMetadataConfig')
               ? WorkloadMetadataConfig.fromJson(json_['workloadMetadataConfig']
@@ -7917,12 +9169,17 @@ class NodeConfig {
         if (confidentialNodes != null) 'confidentialNodes': confidentialNodes!,
         if (diskSizeGb != null) 'diskSizeGb': diskSizeGb!,
         if (diskType != null) 'diskType': diskType!,
+        if (ephemeralStorageLocalSsdConfig != null)
+          'ephemeralStorageLocalSsdConfig': ephemeralStorageLocalSsdConfig!,
+        if (fastSocket != null) 'fastSocket': fastSocket!,
         if (gcfsConfig != null) 'gcfsConfig': gcfsConfig!,
         if (gvnic != null) 'gvnic': gvnic!,
         if (imageType != null) 'imageType': imageType!,
         if (kubeletConfig != null) 'kubeletConfig': kubeletConfig!,
         if (labels != null) 'labels': labels!,
         if (linuxNodeConfig != null) 'linuxNodeConfig': linuxNodeConfig!,
+        if (localNvmeSsdBlockConfig != null)
+          'localNvmeSsdBlockConfig': localNvmeSsdBlockConfig!,
         if (localSsdCount != null) 'localSsdCount': localSsdCount!,
         if (loggingConfig != null) 'loggingConfig': loggingConfig!,
         if (machineType != null) 'machineType': machineType!,
@@ -7933,13 +9190,16 @@ class NodeConfig {
         if (preemptible != null) 'preemptible': preemptible!,
         if (reservationAffinity != null)
           'reservationAffinity': reservationAffinity!,
+        if (resourceLabels != null) 'resourceLabels': resourceLabels!,
         if (sandboxConfig != null) 'sandboxConfig': sandboxConfig!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
         if (shieldedInstanceConfig != null)
           'shieldedInstanceConfig': shieldedInstanceConfig!,
+        if (soleTenantConfig != null) 'soleTenantConfig': soleTenantConfig!,
         if (spot != null) 'spot': spot!,
         if (tags != null) 'tags': tags!,
         if (taints != null) 'taints': taints!,
+        if (windowsNodeConfig != null) 'windowsNodeConfig': windowsNodeConfig!,
         if (workloadMetadataConfig != null)
           'workloadMetadataConfig': workloadMetadataConfig!,
       };
@@ -8006,6 +9266,9 @@ class NodeKubeletConfig {
   /// exclusivity on the node. The default value is 'none' if unspecified.
   core.String? cpuManagerPolicy;
 
+  /// Enable or disable Kubelet read only port.
+  core.bool? insecureKubeletReadonlyPortEnabled;
+
   /// Set the Pod PID limits.
   ///
   /// See
@@ -8018,6 +9281,7 @@ class NodeKubeletConfig {
     this.cpuCfsQuota,
     this.cpuCfsQuotaPeriod,
     this.cpuManagerPolicy,
+    this.insecureKubeletReadonlyPortEnabled,
     this.podPidsLimit,
   });
 
@@ -8032,6 +9296,10 @@ class NodeKubeletConfig {
           cpuManagerPolicy: json_.containsKey('cpuManagerPolicy')
               ? json_['cpuManagerPolicy'] as core.String
               : null,
+          insecureKubeletReadonlyPortEnabled:
+              json_.containsKey('insecureKubeletReadonlyPortEnabled')
+                  ? json_['insecureKubeletReadonlyPortEnabled'] as core.bool
+                  : null,
           podPidsLimit: json_.containsKey('podPidsLimit')
               ? json_['podPidsLimit'] as core.String
               : null,
@@ -8041,36 +9309,16 @@ class NodeKubeletConfig {
         if (cpuCfsQuota != null) 'cpuCfsQuota': cpuCfsQuota!,
         if (cpuCfsQuotaPeriod != null) 'cpuCfsQuotaPeriod': cpuCfsQuotaPeriod!,
         if (cpuManagerPolicy != null) 'cpuManagerPolicy': cpuManagerPolicy!,
+        if (insecureKubeletReadonlyPortEnabled != null)
+          'insecureKubeletReadonlyPortEnabled':
+              insecureKubeletReadonlyPortEnabled!,
         if (podPidsLimit != null) 'podPidsLimit': podPidsLimit!,
       };
 }
 
 /// Collection of node-level
 /// [Kubernetes labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels).
-class NodeLabels {
-  /// Map of node label keys and node label values.
-  core.Map<core.String, core.String>? labels;
-
-  NodeLabels({
-    this.labels,
-  });
-
-  NodeLabels.fromJson(core.Map json_)
-      : this(
-          labels: json_.containsKey('labels')
-              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.String,
-                  ),
-                )
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (labels != null) 'labels': labels!,
-      };
-}
+typedef NodeLabels = $Labels;
 
 /// NodeManagement defines the set of node management services turned on for the
 /// node pool.
@@ -8122,6 +9370,17 @@ class NodeManagement {
 
 /// Parameters for node pool-level network config.
 class NodeNetworkConfig {
+  /// We specify the additional node networks for this node pool using this
+  /// list.
+  ///
+  /// Each node network corresponds to an additional interface
+  core.List<AdditionalNodeNetworkConfig>? additionalNodeNetworkConfigs;
+
+  /// We specify the additional pod networks for this node pool using this list.
+  ///
+  /// Each pod network corresponds to an additional alias IP range for the node
+  core.List<AdditionalPodNetworkConfig>? additionalPodNetworkConfigs;
+
   /// Input only.
   ///
   /// Whether to create a new range for pod IPs in this node pool. Defaults are
@@ -8132,8 +9391,25 @@ class NodeNetworkConfig {
   /// This field cannot be changed after the node pool has been created.
   core.bool? createPodRange;
 
+  /// Whether nodes have internal IP addresses only.
+  ///
+  /// If enable_private_nodes is not specified, then the value is derived from
+  /// cluster.privateClusterConfig.enablePrivateNodes
+  core.bool? enablePrivateNodes;
+
   /// Network bandwidth tier configuration.
   NetworkPerformanceConfig? networkPerformanceConfig;
+
+  /// \[PRIVATE FIELD\] Pod CIDR size overprovisioning config for the nodepool.
+  ///
+  /// Pod CIDR size per node depends on max_pods_per_node. By default, the value
+  /// of max_pods_per_node is rounded off to next power of 2 and we then double
+  /// that to get the size of pod CIDR block per node. Example:
+  /// max_pods_per_node of 30 would result in 64 IPs (/26). This config can
+  /// disable the doubling of IPs (we still round off to next power of 2)
+  /// Example: max_pods_per_node of 30 will result in 32 IPs (/27) when
+  /// overprovisioning is disabled.
+  PodCIDROverprovisionConfig? podCidrOverprovisionConfig;
 
   /// The IP address range for pod IPs in this node pool.
   ///
@@ -8146,6 +9422,14 @@ class NodeNetworkConfig {
   /// cannot be changed after the node pool has been created.
   core.String? podIpv4CidrBlock;
 
+  /// The utilization of the IPv4 range for the pod.
+  ///
+  /// The ratio is Usage/\[Total number of IPs in the secondary range\],
+  /// Usage=numNodes*numZones*podIPsPerNode.
+  ///
+  /// Output only.
+  core.double? podIpv4RangeUtilization;
+
   /// The ID of the secondary range for pod IPs.
   ///
   /// If `create_pod_range` is true, this ID is used for the new range. If
@@ -8155,16 +9439,38 @@ class NodeNetworkConfig {
   core.String? podRange;
 
   NodeNetworkConfig({
+    this.additionalNodeNetworkConfigs,
+    this.additionalPodNetworkConfigs,
     this.createPodRange,
+    this.enablePrivateNodes,
     this.networkPerformanceConfig,
+    this.podCidrOverprovisionConfig,
     this.podIpv4CidrBlock,
+    this.podIpv4RangeUtilization,
     this.podRange,
   });
 
   NodeNetworkConfig.fromJson(core.Map json_)
       : this(
+          additionalNodeNetworkConfigs:
+              json_.containsKey('additionalNodeNetworkConfigs')
+                  ? (json_['additionalNodeNetworkConfigs'] as core.List)
+                      .map((value) => AdditionalNodeNetworkConfig.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+          additionalPodNetworkConfigs:
+              json_.containsKey('additionalPodNetworkConfigs')
+                  ? (json_['additionalPodNetworkConfigs'] as core.List)
+                      .map((value) => AdditionalPodNetworkConfig.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
           createPodRange: json_.containsKey('createPodRange')
               ? json_['createPodRange'] as core.bool
+              : null,
+          enablePrivateNodes: json_.containsKey('enablePrivateNodes')
+              ? json_['enablePrivateNodes'] as core.bool
               : null,
           networkPerformanceConfig:
               json_.containsKey('networkPerformanceConfig')
@@ -8172,8 +9478,17 @@ class NodeNetworkConfig {
                       json_['networkPerformanceConfig']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          podCidrOverprovisionConfig:
+              json_.containsKey('podCidrOverprovisionConfig')
+                  ? PodCIDROverprovisionConfig.fromJson(
+                      json_['podCidrOverprovisionConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           podIpv4CidrBlock: json_.containsKey('podIpv4CidrBlock')
               ? json_['podIpv4CidrBlock'] as core.String
+              : null,
+          podIpv4RangeUtilization: json_.containsKey('podIpv4RangeUtilization')
+              ? (json_['podIpv4RangeUtilization'] as core.num).toDouble()
               : null,
           podRange: json_.containsKey('podRange')
               ? json_['podRange'] as core.String
@@ -8181,10 +9496,20 @@ class NodeNetworkConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (additionalNodeNetworkConfigs != null)
+          'additionalNodeNetworkConfigs': additionalNodeNetworkConfigs!,
+        if (additionalPodNetworkConfigs != null)
+          'additionalPodNetworkConfigs': additionalPodNetworkConfigs!,
         if (createPodRange != null) 'createPodRange': createPodRange!,
+        if (enablePrivateNodes != null)
+          'enablePrivateNodes': enablePrivateNodes!,
         if (networkPerformanceConfig != null)
           'networkPerformanceConfig': networkPerformanceConfig!,
+        if (podCidrOverprovisionConfig != null)
+          'podCidrOverprovisionConfig': podCidrOverprovisionConfig!,
         if (podIpv4CidrBlock != null) 'podIpv4CidrBlock': podIpv4CidrBlock!,
+        if (podIpv4RangeUtilization != null)
+          'podIpv4RangeUtilization': podIpv4RangeUtilization!,
         if (podRange != null) 'podRange': podRange!,
       };
 }
@@ -8202,11 +9527,19 @@ class NodePool {
   /// Autoscaler is enabled only if a valid configuration is present.
   NodePoolAutoscaling? autoscaling;
 
+  /// Enable best effort provisioning for nodes
+  BestEffortProvisioning? bestEffortProvisioning;
+
   /// Which conditions caused the current node pool state.
   core.List<StatusCondition>? conditions;
 
   /// The node configuration of the pool.
   NodeConfig? config;
+
+  /// This checksum is computed by the server based on the value of node pool
+  /// fields, and may be sent on update requests to ensure the client has an
+  /// up-to-date value before proceeding.
+  core.String? etag;
 
   /// The initial node count for the pool.
   ///
@@ -8251,6 +9584,9 @@ class NodePool {
   /// If specified, it overrides the cluster-level defaults.
   NodeNetworkConfig? networkConfig;
 
+  /// Specifies the node placement policy.
+  PlacementPolicy? placementPolicy;
+
   /// The pod CIDR block size per node in this node pool.
   ///
   /// Output only.
@@ -8289,6 +9625,9 @@ class NodePool {
   /// instance, if available.
   ///
   /// Output only. Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? statusMessage;
 
   /// Update info contains relevant information during a node pool update.
@@ -8299,13 +9638,18 @@ class NodePool {
   /// Upgrade settings control disruption and speed of the upgrade.
   UpgradeSettings? upgradeSettings;
 
-  /// The version of the Kubernetes of this node.
+  /// The version of Kubernetes running on this NodePool's nodes.
+  ///
+  /// If unspecified, it defaults as described
+  /// [here](https://cloud.google.com/kubernetes-engine/versioning#specifying_node_version).
   core.String? version;
 
   NodePool({
     this.autoscaling,
+    this.bestEffortProvisioning,
     this.conditions,
     this.config,
+    this.etag,
     this.initialNodeCount,
     this.instanceGroupUrls,
     this.locations,
@@ -8313,6 +9657,7 @@ class NodePool {
     this.maxPodsConstraint,
     this.name,
     this.networkConfig,
+    this.placementPolicy,
     this.podIpv4CidrSize,
     this.selfLink,
     this.status,
@@ -8328,6 +9673,10 @@ class NodePool {
               ? NodePoolAutoscaling.fromJson(
                   json_['autoscaling'] as core.Map<core.String, core.dynamic>)
               : null,
+          bestEffortProvisioning: json_.containsKey('bestEffortProvisioning')
+              ? BestEffortProvisioning.fromJson(json_['bestEffortProvisioning']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           conditions: json_.containsKey('conditions')
               ? (json_['conditions'] as core.List)
                   .map((value) => StatusCondition.fromJson(
@@ -8338,6 +9687,7 @@ class NodePool {
               ? NodeConfig.fromJson(
                   json_['config'] as core.Map<core.String, core.dynamic>)
               : null,
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
           initialNodeCount: json_.containsKey('initialNodeCount')
               ? json_['initialNodeCount'] as core.int
               : null,
@@ -8363,6 +9713,10 @@ class NodePool {
           networkConfig: json_.containsKey('networkConfig')
               ? NodeNetworkConfig.fromJson(
                   json_['networkConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          placementPolicy: json_.containsKey('placementPolicy')
+              ? PlacementPolicy.fromJson(json_['placementPolicy']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           podIpv4CidrSize: json_.containsKey('podIpv4CidrSize')
               ? json_['podIpv4CidrSize'] as core.int
@@ -8391,8 +9745,11 @@ class NodePool {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (autoscaling != null) 'autoscaling': autoscaling!,
+        if (bestEffortProvisioning != null)
+          'bestEffortProvisioning': bestEffortProvisioning!,
         if (conditions != null) 'conditions': conditions!,
         if (config != null) 'config': config!,
+        if (etag != null) 'etag': etag!,
         if (initialNodeCount != null) 'initialNodeCount': initialNodeCount!,
         if (instanceGroupUrls != null) 'instanceGroupUrls': instanceGroupUrls!,
         if (locations != null) 'locations': locations!,
@@ -8400,6 +9757,7 @@ class NodePool {
         if (maxPodsConstraint != null) 'maxPodsConstraint': maxPodsConstraint!,
         if (name != null) 'name': name!,
         if (networkConfig != null) 'networkConfig': networkConfig!,
+        if (placementPolicy != null) 'placementPolicy': placementPolicy!,
         if (podIpv4CidrSize != null) 'podIpv4CidrSize': podIpv4CidrSize!,
         if (selfLink != null) 'selfLink': selfLink!,
         if (status != null) 'status': status!,
@@ -8570,7 +9928,7 @@ class NodePoolLoggingConfig {
       };
 }
 
-/// Kubernetes taint is comprised of three fields: key, value, and effect.
+/// Kubernetes taint is composed of three fields: key, value, and effect.
 ///
 /// Effect can only be one of three types: NoSchedule, PreferNoSchedule or
 /// NoExecute. See
@@ -8669,6 +10027,9 @@ class Operation {
   /// Which conditions caused the current cluster state.
   ///
   /// Deprecated. Use field error instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<StatusCondition>? clusterConditions;
 
   /// Detailed operation progress, if available.
@@ -8698,27 +10059,82 @@ class Operation {
   /// Which conditions caused the current node pool state.
   ///
   /// Deprecated. Use field error instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<StatusCondition>? nodepoolConditions;
 
   /// The operation type.
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : Not set.
-  /// - "CREATE_CLUSTER" : Cluster create.
-  /// - "DELETE_CLUSTER" : Cluster delete.
-  /// - "UPGRADE_MASTER" : A master upgrade.
-  /// - "UPGRADE_NODES" : A node upgrade.
-  /// - "REPAIR_CLUSTER" : Cluster repair.
-  /// - "UPDATE_CLUSTER" : Cluster update.
-  /// - "CREATE_NODE_POOL" : Node pool create.
-  /// - "DELETE_NODE_POOL" : Node pool delete.
-  /// - "SET_NODE_POOL_MANAGEMENT" : Set node pool management.
-  /// - "AUTO_REPAIR_NODES" : Automatic node pool repair.
-  /// - "AUTO_UPGRADE_NODES" : Automatic node upgrade.
-  /// - "SET_LABELS" : Set labels.
-  /// - "SET_MASTER_AUTH" : Set/generate master auth materials
-  /// - "SET_NODE_POOL_SIZE" : Set node pool size.
-  /// - "SET_NETWORK_POLICY" : Updates network policy for a cluster.
-  /// - "SET_MAINTENANCE_POLICY" : Set the maintenance policy.
+  /// - "CREATE_CLUSTER" : The cluster is being created. The cluster should be
+  /// assumed to be unusable until the operation finishes. In the event of the
+  /// operation failing, the cluster will enter the ERROR state and eventually
+  /// be deleted.
+  /// - "DELETE_CLUSTER" : The cluster is being deleted. The cluster should be
+  /// assumed to be unusable as soon as this operation starts. In the event of
+  /// the operation failing, the cluster will enter the ERROR state and the
+  /// deletion will be automatically retried until completed.
+  /// - "UPGRADE_MASTER" : The cluster version is being updated. Note that this
+  /// includes "upgrades" to the same version, which are simply a recreation.
+  /// This also includes
+  /// \[auto-upgrades\](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-upgrades#upgrading_automatically).
+  /// For more details, see
+  /// [documentation on cluster upgrades](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-upgrades#cluster_upgrades).
+  /// - "UPGRADE_NODES" : A node pool is being updated. Despite calling this an
+  /// "upgrade", this includes most forms of updates to node pools. This also
+  /// includes
+  /// \[auto-upgrades\](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-upgrades).
+  /// This operation sets the progress field and may be canceled. The upgrade
+  /// strategy depends on
+  /// [node pool configuration](https://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies).
+  /// The nodes are generally still usable during this operation.
+  /// - "REPAIR_CLUSTER" : A problem has been detected with the control plane
+  /// and is being repaired. This operation type is initiated by GKE. For more
+  /// details, see
+  /// [documentation on repairs](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions#repairs).
+  /// - "UPDATE_CLUSTER" : The cluster is being updated. This is a broad
+  /// category of operations and includes operations that only change metadata
+  /// as well as those that must recreate the entire cluster. If the control
+  /// plane must be recreated, this will cause temporary downtime for zonal
+  /// clusters. Some features require recreating the nodes as well. Those will
+  /// be recreated as separate operations and the update may not be completely
+  /// functional until the node pools recreations finish. Node recreations will
+  /// generally follow
+  /// [maintenance policies](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions).
+  /// Some GKE-initiated operations use this type. This includes certain types
+  /// of auto-upgrades and incident mitigations.
+  /// - "CREATE_NODE_POOL" : A node pool is being created. The node pool should
+  /// be assumed to be unusable until this operation finishes. In the event of
+  /// an error, the node pool may be partially created. If enabled,
+  /// [node autoprovisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)
+  /// may have automatically initiated such operations.
+  /// - "DELETE_NODE_POOL" : The node pool is being deleted. The node pool
+  /// should be assumed to be unusable as soon as this operation starts.
+  /// - "SET_NODE_POOL_MANAGEMENT" : The node pool's manamagent field is being
+  /// updated. These operations only update metadata and may be concurrent with
+  /// most other operations.
+  /// - "AUTO_REPAIR_NODES" : A problem has been detected with nodes and
+  /// [they are being repaired](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-repair).
+  /// This operation type is initiated by GKE, typically automatically. This
+  /// operation may be concurrent with other operations and there may be
+  /// multiple repairs occurring on the same node pool.
+  /// - "AUTO_UPGRADE_NODES" : Unused. Automatic node upgrade uses
+  /// UPGRADE_NODES.
+  /// - "SET_LABELS" : Unused. Updating labels uses UPDATE_CLUSTER.
+  /// - "SET_MASTER_AUTH" : Unused. Updating master auth uses UPDATE_CLUSTER.
+  /// - "SET_NODE_POOL_SIZE" : The node pool is being resized. With the
+  /// exception of resizing to or from size zero, the node pool is generally
+  /// usable during this operation.
+  /// - "SET_NETWORK_POLICY" : Unused. Updating network policy uses
+  /// UPDATE_CLUSTER.
+  /// - "SET_MAINTENANCE_POLICY" : Unused. Updating maintenance policy uses
+  /// UPDATE_CLUSTER.
+  /// - "RESIZE_CLUSTER" : The control plane is being resized. This operation
+  /// type is initiated by GKE. These operations are often performed
+  /// preemptively to ensure that the control plane has sufficient resources and
+  /// is not typically an indication of issues. For more details, see
+  /// [documentation on resizes](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions#repairs).
   core.String? operationType;
 
   /// Progress information for an operation.
@@ -8726,7 +10142,10 @@ class Operation {
   /// Output only.
   OperationProgress? progress;
 
-  /// Server-defined URL for the resource.
+  /// Server-defined URI for the operation.
+  ///
+  /// Example:
+  /// `https://container.googleapis.com/v1alpha1/projects/123/locations/us-central1/operations/operation-123`.
   core.String? selfLink;
 
   /// The time the operation started, in
@@ -8749,9 +10168,20 @@ class Operation {
   /// Deprecated. Use the field error instead.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? statusMessage;
 
-  /// Server-defined URL for the target of the operation.
+  /// Server-defined URI for the target of the operation.
+  ///
+  /// The format of this is a URI to the resource being modified (such as a
+  /// cluster, node pool, or node). For node pool repairs, there may be multiple
+  /// nodes being repaired, but only one will be the target. Examples: - ##
+  /// `https://container.googleapis.com/v1/projects/123/locations/us-central1/clusters/my-cluster`
+  /// ##
+  /// `https://container.googleapis.com/v1/projects/123/zones/us-central1-c/clusters/my-cluster/nodePools/my-np`
+  /// `https://container.googleapis.com/v1/projects/123/zones/us-central1-c/clusters/my-cluster/nodePools/my-np/node/my-node`
   core.String? targetLink;
 
   /// The name of the Google Compute Engine
@@ -8759,6 +10189,9 @@ class Operation {
   /// operation is taking place.
   ///
   /// This field is deprecated, use location instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? zone;
 
   Operation({
@@ -8914,6 +10347,65 @@ class OperationProgress {
       };
 }
 
+/// PlacementPolicy defines the placement policy used by the node pool.
+class PlacementPolicy {
+  /// If set, refers to the name of a custom resource policy supplied by the
+  /// user.
+  ///
+  /// The resource policy must be in the same project and region as the node
+  /// pool. If not found, InvalidArgument error is returned.
+  core.String? policyName;
+
+  /// The type of placement.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : TYPE_UNSPECIFIED specifies no requirements on nodes
+  /// placement.
+  /// - "COMPACT" : COMPACT specifies node placement in the same availability
+  /// domain to ensure low communication latency.
+  core.String? type;
+
+  PlacementPolicy({
+    this.policyName,
+    this.type,
+  });
+
+  PlacementPolicy.fromJson(core.Map json_)
+      : this(
+          policyName: json_.containsKey('policyName')
+              ? json_['policyName'] as core.String
+              : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (policyName != null) 'policyName': policyName!,
+        if (type != null) 'type': type!,
+      };
+}
+
+/// \[PRIVATE FIELD\] Config for pod CIDR size overprovisioning.
+class PodCIDROverprovisionConfig {
+  /// Whether Pod CIDR overprovisioning is disabled.
+  ///
+  /// Note: Pod CIDR overprovisioning is enabled by default.
+  core.bool? disable;
+
+  PodCIDROverprovisionConfig({
+    this.disable,
+  });
+
+  PodCIDROverprovisionConfig.fromJson(core.Map json_)
+      : this(
+          disable: json_.containsKey('disable')
+              ? json_['disable'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (disable != null) 'disable': disable!,
+      };
+}
+
 /// Configuration options for private clusters.
 class PrivateClusterConfig {
   /// Whether the master's internal IP address is used as the cluster endpoint.
@@ -8945,6 +10437,11 @@ class PrivateClusterConfig {
   /// Output only.
   core.String? privateEndpoint;
 
+  /// Subnet to provision the master's private endpoint during cluster creation.
+  ///
+  /// Specified in projects / * /regions / * /subnetworks / *  format.
+  core.String? privateEndpointSubnetwork;
+
   /// The external IP address of this cluster's master endpoint.
   ///
   /// Output only.
@@ -8957,6 +10454,7 @@ class PrivateClusterConfig {
     this.masterIpv4CidrBlock,
     this.peeringName,
     this.privateEndpoint,
+    this.privateEndpointSubnetwork,
     this.publicEndpoint,
   });
 
@@ -8983,6 +10481,10 @@ class PrivateClusterConfig {
           privateEndpoint: json_.containsKey('privateEndpoint')
               ? json_['privateEndpoint'] as core.String
               : null,
+          privateEndpointSubnetwork:
+              json_.containsKey('privateEndpointSubnetwork')
+                  ? json_['privateEndpointSubnetwork'] as core.String
+                  : null,
           publicEndpoint: json_.containsKey('publicEndpoint')
               ? json_['publicEndpoint'] as core.String
               : null,
@@ -8999,6 +10501,8 @@ class PrivateClusterConfig {
           'masterIpv4CidrBlock': masterIpv4CidrBlock!,
         if (peeringName != null) 'peeringName': peeringName!,
         if (privateEndpoint != null) 'privateEndpoint': privateEndpoint!,
+        if (privateEndpointSubnetwork != null)
+          'privateEndpointSubnetwork': privateEndpointSubnetwork!,
         if (publicEndpoint != null) 'publicEndpoint': publicEndpoint!,
       };
 }
@@ -9063,6 +10567,39 @@ class PubSub {
         if (enabled != null) 'enabled': enabled!,
         if (filter != null) 'filter': filter!,
         if (topic != null) 'topic': topic!,
+      };
+}
+
+/// RangeInfo contains the range name and the range utilization by this cluster.
+class RangeInfo {
+  /// Name of a range.
+  ///
+  /// Output only.
+  core.String? rangeName;
+
+  /// The utilization of the range.
+  ///
+  /// Output only.
+  core.double? utilization;
+
+  RangeInfo({
+    this.rangeName,
+    this.utilization,
+  });
+
+  RangeInfo.fromJson(core.Map json_)
+      : this(
+          rangeName: json_.containsKey('rangeName')
+              ? json_['rangeName'] as core.String
+              : null,
+          utilization: json_.containsKey('utilization')
+              ? (json_['utilization'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (rangeName != null) 'rangeName': rangeName!,
+        if (utilization != null) 'utilization': utilization!,
       };
 }
 
@@ -9215,8 +10752,8 @@ class ReservationAffinity {
   /// Corresponds to the label key of a reservation resource.
   ///
   /// To target a SPECIFIC_RESERVATION by name, specify
-  /// "googleapis.com/reservation-name" as the key and specify the name of your
-  /// reservation as its value.
+  /// "compute.googleapis.com/reservation-name" as the key and specify the name
+  /// of your reservation as its value.
   core.String? key;
 
   /// Corresponds to the label value(s) of reservation resource(s).
@@ -9248,6 +10785,10 @@ class ReservationAffinity {
         if (values != null) 'values': values!,
       };
 }
+
+/// Collection of
+/// [GCP labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels).
+typedef ResourceLabels = $Labels;
 
 /// Contains information about amount of some resource in the cluster.
 ///
@@ -9346,6 +10887,9 @@ class RollbackNodePoolUpgradeRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? clusterId;
 
   /// The name (project, location, cluster, node pool id) of the node poll to
@@ -9360,6 +10904,9 @@ class RollbackNodePoolUpgradeRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? nodePoolId;
 
   /// The Google Developers Console
@@ -9368,6 +10915,9 @@ class RollbackNodePoolUpgradeRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? projectId;
 
   /// Option for rollback to ignore the PodDisruptionBudget.
@@ -9382,6 +10932,9 @@ class RollbackNodePoolUpgradeRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? zone;
 
   RollbackNodePoolUpgradeRequest({
@@ -9440,6 +10993,44 @@ class SandboxConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (type != null) 'type': type!,
+      };
+}
+
+/// SecurityPostureConfig defines the flags needed to enable/disable features
+/// for the Security Posture API.
+class SecurityPostureConfig {
+  /// Sets which mode to use for Security Posture features.
+  /// Possible string values are:
+  /// - "MODE_UNSPECIFIED" : Default value not specified.
+  /// - "DISABLED" : Disables Security Posture features on the cluster.
+  /// - "BASIC" : Applies Security Posture features on the cluster.
+  core.String? mode;
+
+  /// Sets which mode to use for vulnerability scanning.
+  /// Possible string values are:
+  /// - "VULNERABILITY_MODE_UNSPECIFIED" : Default value not specified.
+  /// - "VULNERABILITY_DISABLED" : Disables vulnerability scanning on the
+  /// cluster.
+  /// - "VULNERABILITY_BASIC" : Applies basic vulnerability scanning on the
+  /// cluster.
+  core.String? vulnerabilityMode;
+
+  SecurityPostureConfig({
+    this.mode,
+    this.vulnerabilityMode,
+  });
+
+  SecurityPostureConfig.fromJson(core.Map json_)
+      : this(
+          mode: json_.containsKey('mode') ? json_['mode'] as core.String : null,
+          vulnerabilityMode: json_.containsKey('vulnerabilityMode')
+              ? json_['vulnerabilityMode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (mode != null) 'mode': mode!,
+        if (vulnerabilityMode != null) 'vulnerabilityMode': vulnerabilityMode!,
       };
 }
 
@@ -9549,6 +11140,9 @@ class SetAddonsConfigRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? clusterId;
 
   /// The name (project, location, cluster) of the cluster to set addons.
@@ -9562,6 +11156,9 @@ class SetAddonsConfigRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? projectId;
 
   /// The name of the Google Compute Engine
@@ -9571,6 +11168,9 @@ class SetAddonsConfigRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? zone;
 
   SetAddonsConfigRequest({
@@ -9615,6 +11215,9 @@ class SetLabelsRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? clusterId;
 
   /// The fingerprint of the previous set of labels for this resource, used to
@@ -9639,6 +11242,9 @@ class SetLabelsRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? projectId;
 
   /// The labels to set for that cluster.
@@ -9653,6 +11259,9 @@ class SetLabelsRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? zone;
 
   SetLabelsRequest({
@@ -9679,9 +11288,9 @@ class SetLabelsRequest {
           resourceLabels: json_.containsKey('resourceLabels')
               ? (json_['resourceLabels'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -9706,6 +11315,9 @@ class SetLegacyAbacRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? clusterId;
 
   /// Whether ABAC authorization will be enabled in the cluster.
@@ -9725,6 +11337,9 @@ class SetLegacyAbacRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? projectId;
 
   /// The name of the Google Compute Engine
@@ -9734,6 +11349,9 @@ class SetLegacyAbacRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? zone;
 
   SetLegacyAbacRequest({
@@ -9775,6 +11393,9 @@ class SetLocationsRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? clusterId;
 
   /// The desired list of Google Compute Engine
@@ -9800,6 +11421,9 @@ class SetLocationsRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? projectId;
 
   /// The name of the Google Compute Engine
@@ -9809,6 +11433,9 @@ class SetLocationsRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? zone;
 
   SetLocationsRequest({
@@ -9852,6 +11479,9 @@ class SetLoggingServiceRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? clusterId;
 
   /// The logging service the cluster should use to write logs.
@@ -9878,6 +11508,9 @@ class SetLoggingServiceRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? projectId;
 
   /// The name of the Google Compute Engine
@@ -9887,6 +11520,9 @@ class SetLoggingServiceRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? zone;
 
   SetLoggingServiceRequest({
@@ -10007,6 +11643,9 @@ class SetMasterAuthRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? clusterId;
 
   /// The name (project, location, cluster) of the cluster to set auth.
@@ -10020,6 +11659,9 @@ class SetMasterAuthRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? projectId;
 
   /// A description of the update.
@@ -10034,6 +11676,9 @@ class SetMasterAuthRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? zone;
 
   SetMasterAuthRequest({
@@ -10081,6 +11726,9 @@ class SetMonitoringServiceRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? clusterId;
 
   /// The monitoring service the cluster should use to write metrics.
@@ -10107,6 +11755,9 @@ class SetMonitoringServiceRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? projectId;
 
   /// The name of the Google Compute Engine
@@ -10116,6 +11767,9 @@ class SetMonitoringServiceRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? zone;
 
   SetMonitoringServiceRequest({
@@ -10157,6 +11811,9 @@ class SetNetworkPolicyRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? clusterId;
 
   /// The name (project, location, cluster name) of the cluster to set
@@ -10176,6 +11833,9 @@ class SetNetworkPolicyRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? projectId;
 
   /// The name of the Google Compute Engine
@@ -10185,6 +11845,9 @@ class SetNetworkPolicyRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? zone;
 
   SetNetworkPolicyRequest({
@@ -10232,6 +11895,9 @@ class SetNodePoolAutoscalingRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? clusterId;
 
   /// The name (project, location, cluster, node pool) of the node pool to set
@@ -10246,6 +11912,9 @@ class SetNodePoolAutoscalingRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? nodePoolId;
 
   /// The Google Developers Console
@@ -10254,6 +11923,9 @@ class SetNodePoolAutoscalingRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? projectId;
 
   /// The name of the Google Compute Engine
@@ -10263,6 +11935,9 @@ class SetNodePoolAutoscalingRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? zone;
 
   SetNodePoolAutoscalingRequest({
@@ -10311,6 +11986,9 @@ class SetNodePoolManagementRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? clusterId;
 
   /// NodeManagement configuration for the node pool.
@@ -10330,6 +12008,9 @@ class SetNodePoolManagementRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? nodePoolId;
 
   /// The Google Developers Console
@@ -10338,6 +12019,9 @@ class SetNodePoolManagementRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? projectId;
 
   /// The name of the Google Compute Engine
@@ -10347,6 +12031,9 @@ class SetNodePoolManagementRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? zone;
 
   SetNodePoolManagementRequest({
@@ -10394,6 +12081,9 @@ class SetNodePoolSizeRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? clusterId;
 
   /// The name (project, location, cluster, node pool id) of the node pool to
@@ -10413,6 +12103,9 @@ class SetNodePoolSizeRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? nodePoolId;
 
   /// The Google Developers Console
@@ -10421,6 +12114,9 @@ class SetNodePoolSizeRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? projectId;
 
   /// The name of the Google Compute Engine
@@ -10430,6 +12126,9 @@ class SetNodePoolSizeRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? zone;
 
   SetNodePoolSizeRequest({
@@ -10530,12 +12229,37 @@ class ShieldedNodes {
       };
 }
 
+/// SoleTenantConfig contains the NodeAffinities to specify what shared sole
+/// tenant node groups should back the node pool.
+class SoleTenantConfig {
+  /// NodeAffinities used to match to a shared sole tenant node group.
+  core.List<NodeAffinity>? nodeAffinities;
+
+  SoleTenantConfig({
+    this.nodeAffinities,
+  });
+
+  SoleTenantConfig.fromJson(core.Map json_)
+      : this(
+          nodeAffinities: json_.containsKey('nodeAffinities')
+              ? (json_['nodeAffinities'] as core.List)
+                  .map((value) => NodeAffinity.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nodeAffinities != null) 'nodeAffinities': nodeAffinities!,
+      };
+}
+
 /// Standard rollout policy is the default policy for blue-green.
 class StandardRolloutPolicy {
   /// Number of blue nodes to drain in a batch.
   core.int? batchNodeCount;
 
-  /// Percentage of the bool pool nodes to drain in a batch.
+  /// Percentage of the blue pool nodes to drain in a batch.
   ///
   /// The range of this field should be (0.0, 1.0\].
   core.double? batchPercentage;
@@ -10579,6 +12303,9 @@ class StartIPRotationRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? clusterId;
 
   /// The name (project, location, cluster name) of the cluster to start IP
@@ -10593,6 +12320,9 @@ class StartIPRotationRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? projectId;
 
   /// Whether to rotate credentials during IP rotation.
@@ -10605,6 +12335,9 @@ class StartIPRotationRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? zone;
 
   StartIPRotationRequest({
@@ -10653,7 +12386,7 @@ typedef Status = $Status;
 class StatusCondition {
   /// Canonical code of the condition.
   /// Possible string values are:
-  /// - "OK" : Not an error; returned on success HTTP Mapping: 200 OK
+  /// - "OK" : Not an error; returned on success. HTTP Mapping: 200 OK
   /// - "CANCELLED" : The operation was cancelled, typically by the caller. HTTP
   /// Mapping: 499 Client Closed Request
   /// - "UNKNOWN" : Unknown error. For example, this error may be returned when
@@ -10749,6 +12482,9 @@ class StatusCondition {
   /// - "CLOUD_KMS_KEY_ERROR" : Unable to perform an encrypt operation against
   /// the CloudKMS key used for etcd level encryption.
   /// - "CA_EXPIRING" : Cluster CA is expiring soon.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? code;
 
   /// Human-friendly representation of the condition
@@ -10829,6 +12565,9 @@ class UpdateClusterRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? clusterId;
 
   /// The name (project, location, cluster) of the cluster to update.
@@ -10842,6 +12581,9 @@ class UpdateClusterRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? projectId;
 
   /// A description of the update.
@@ -10856,6 +12598,9 @@ class UpdateClusterRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? zone;
 
   UpdateClusterRequest({
@@ -10921,6 +12666,9 @@ class UpdateMasterRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? clusterId;
 
   /// The Kubernetes version to change the master to.
@@ -10946,6 +12694,9 @@ class UpdateMasterRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? projectId;
 
   /// The name of the Google Compute Engine
@@ -10955,6 +12706,9 @@ class UpdateMasterRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? zone;
 
   UpdateMasterRequest({
@@ -10996,12 +12750,24 @@ class UpdateNodePoolRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? clusterId;
 
   /// Confidential nodes config.
   ///
   /// All the nodes in the node pool will be Confidential VM once enabled.
   ConfidentialNodes? confidentialNodes;
+
+  /// The current etag of the node pool.
+  ///
+  /// If an etag is provided and does not match the current etag of the node
+  /// pool, update will be blocked and an ABORTED error will be returned.
+  core.String? etag;
+
+  /// Enable or disable NCCL fast socket for the node pool.
+  FastSocket? fastSocket;
 
   /// GCFS config.
   GcfsConfig? gcfsConfig;
@@ -11010,6 +12776,10 @@ class UpdateNodePoolRequest {
   VirtualNIC? gvnic;
 
   /// The desired image type for the node pool.
+  ///
+  /// Please see
+  /// https://cloud.google.com/kubernetes-engine/docs/concepts/node-images for
+  /// available image types.
   ///
   /// Required.
   core.String? imageType;
@@ -11053,6 +12823,9 @@ class UpdateNodePoolRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? nodePoolId;
 
   /// The Kubernetes version to change the nodes to (typically an upgrade).
@@ -11073,7 +12846,14 @@ class UpdateNodePoolRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? projectId;
+
+  /// The resource labels for the node pool to use to annotate any related
+  /// Google Compute Engine resources.
+  ResourceLabels? resourceLabels;
 
   /// The desired network tags to be applied to all nodes in the node pool.
   ///
@@ -11090,6 +12870,9 @@ class UpdateNodePoolRequest {
   /// Upgrade settings control disruption and speed of the upgrade.
   UpgradeSettings? upgradeSettings;
 
+  /// Parameters that can be configured on Windows nodes.
+  WindowsNodeConfig? windowsNodeConfig;
+
   /// The desired workload metadata config for the node pool.
   WorkloadMetadataConfig? workloadMetadataConfig;
 
@@ -11100,11 +12883,16 @@ class UpdateNodePoolRequest {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? zone;
 
   UpdateNodePoolRequest({
     this.clusterId,
     this.confidentialNodes,
+    this.etag,
+    this.fastSocket,
     this.gcfsConfig,
     this.gvnic,
     this.imageType,
@@ -11118,9 +12906,11 @@ class UpdateNodePoolRequest {
     this.nodePoolId,
     this.nodeVersion,
     this.projectId,
+    this.resourceLabels,
     this.tags,
     this.taints,
     this.upgradeSettings,
+    this.windowsNodeConfig,
     this.workloadMetadataConfig,
     this.zone,
   });
@@ -11133,6 +12923,11 @@ class UpdateNodePoolRequest {
           confidentialNodes: json_.containsKey('confidentialNodes')
               ? ConfidentialNodes.fromJson(json_['confidentialNodes']
                   as core.Map<core.String, core.dynamic>)
+              : null,
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          fastSocket: json_.containsKey('fastSocket')
+              ? FastSocket.fromJson(
+                  json_['fastSocket'] as core.Map<core.String, core.dynamic>)
               : null,
           gcfsConfig: json_.containsKey('gcfsConfig')
               ? GcfsConfig.fromJson(
@@ -11180,6 +12975,10 @@ class UpdateNodePoolRequest {
           projectId: json_.containsKey('projectId')
               ? json_['projectId'] as core.String
               : null,
+          resourceLabels: json_.containsKey('resourceLabels')
+              ? ResourceLabels.fromJson(json_['resourceLabels']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           tags: json_.containsKey('tags')
               ? NetworkTags.fromJson(
                   json_['tags'] as core.Map<core.String, core.dynamic>)
@@ -11192,6 +12991,10 @@ class UpdateNodePoolRequest {
               ? UpgradeSettings.fromJson(json_['upgradeSettings']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          windowsNodeConfig: json_.containsKey('windowsNodeConfig')
+              ? WindowsNodeConfig.fromJson(json_['windowsNodeConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           workloadMetadataConfig: json_.containsKey('workloadMetadataConfig')
               ? WorkloadMetadataConfig.fromJson(json_['workloadMetadataConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -11202,6 +13005,8 @@ class UpdateNodePoolRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (clusterId != null) 'clusterId': clusterId!,
         if (confidentialNodes != null) 'confidentialNodes': confidentialNodes!,
+        if (etag != null) 'etag': etag!,
+        if (fastSocket != null) 'fastSocket': fastSocket!,
         if (gcfsConfig != null) 'gcfsConfig': gcfsConfig!,
         if (gvnic != null) 'gvnic': gvnic!,
         if (imageType != null) 'imageType': imageType!,
@@ -11215,9 +13020,11 @@ class UpdateNodePoolRequest {
         if (nodePoolId != null) 'nodePoolId': nodePoolId!,
         if (nodeVersion != null) 'nodeVersion': nodeVersion!,
         if (projectId != null) 'projectId': projectId!,
+        if (resourceLabels != null) 'resourceLabels': resourceLabels!,
         if (tags != null) 'tags': tags!,
         if (taints != null) 'taints': taints!,
         if (upgradeSettings != null) 'upgradeSettings': upgradeSettings!,
+        if (windowsNodeConfig != null) 'windowsNodeConfig': windowsNodeConfig!,
         if (workloadMetadataConfig != null)
           'workloadMetadataConfig': workloadMetadataConfig!,
         if (zone != null) 'zone': zone!,
@@ -11273,7 +13080,9 @@ class UpgradeSettings {
 
   /// Update strategy of the node pool.
   /// Possible string values are:
-  /// - "NODE_POOL_UPDATE_STRATEGY_UNSPECIFIED" : Default value.
+  /// - "NODE_POOL_UPDATE_STRATEGY_UNSPECIFIED" : Default value if unset. GKE
+  /// internally defaults the update strategy to SURGE for unspecified
+  /// strategies.
   /// - "BLUE_GREEN" : blue-green upgrade.
   /// - "SURGE" : SURGE is the traditional way of upgrade a node pool. max_surge
   /// and max_unavailable determines the level of upgrade parallelism.
@@ -11391,7 +13200,8 @@ class UsableSubnetworkSecondaryRange {
   /// valid status.
   /// - "UNUSED" : UNUSED denotes that this range is unclaimed by any cluster.
   /// - "IN_USE_SERVICE" : IN_USE_SERVICE denotes that this range is claimed by
-  /// a cluster for services. It cannot be used for other clusters.
+  /// cluster(s) for services. User-managed services range can be shared between
+  /// clusters within the same subnetwork.
   /// - "IN_USE_SHAREABLE_POD" : IN_USE_SHAREABLE_POD denotes this range was
   /// created by the network admin and is currently claimed by a cluster for
   /// pods. It can only be used by other clusters as a pod range.
@@ -11469,6 +13279,36 @@ class VirtualNIC {
       };
 }
 
+/// Parameters that can be configured on Windows nodes.
+///
+/// Windows Node Config that define the parameters that will be used to
+/// configure the Windows node pool settings
+class WindowsNodeConfig {
+  /// OSVersion specifies the Windows node config to be used on the node
+  /// Possible string values are:
+  /// - "OS_VERSION_UNSPECIFIED" : When OSVersion is not specified
+  /// - "OS_VERSION_LTSC2019" : LTSC2019 specifies to use LTSC2019 as the
+  /// Windows Servercore Base Image
+  /// - "OS_VERSION_LTSC2022" : LTSC2022 specifies to use LTSC2022 as the
+  /// Windows Servercore Base Image
+  core.String? osVersion;
+
+  WindowsNodeConfig({
+    this.osVersion,
+  });
+
+  WindowsNodeConfig.fromJson(core.Map json_)
+      : this(
+          osVersion: json_.containsKey('osVersion')
+              ? json_['osVersion'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (osVersion != null) 'osVersion': osVersion!,
+      };
+}
+
 /// Configuration for the use of Kubernetes Service Accounts in GCP IAM
 /// policies.
 class WorkloadIdentityConfig {
@@ -11517,5 +13357,27 @@ class WorkloadMetadataConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (mode != null) 'mode': mode!,
+      };
+}
+
+/// WorkloadPolicyConfig is the configuration of workload policy for autopilot
+/// clusters.
+class WorkloadPolicyConfig {
+  /// If true, workloads can use NET_ADMIN capability.
+  core.bool? allowNetAdmin;
+
+  WorkloadPolicyConfig({
+    this.allowNetAdmin,
+  });
+
+  WorkloadPolicyConfig.fromJson(core.Map json_)
+      : this(
+          allowNetAdmin: json_.containsKey('allowNetAdmin')
+              ? json_['allowNetAdmin'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allowNetAdmin != null) 'allowNetAdmin': allowNetAdmin!,
       };
 }

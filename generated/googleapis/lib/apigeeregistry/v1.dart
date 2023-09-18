@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Apigee Registry API - v1
@@ -33,7 +32,7 @@
 ///     - [ProjectsLocationsInstancesResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsRuntimeResource]
-library apigeeregistry.v1;
+library apigeeregistry_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -42,7 +41,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -1327,6 +1325,9 @@ class ProjectsLocationsApisDeploymentsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/apis/\[^/\]+/deployments/\[^/\]+$`.
   ///
+  /// [filter] - An expression that can be used to filter the list. Filters use
+  /// the Common Expression Language and can refer to all message fields.
+  ///
   /// [pageSize] - The maximum number of revisions to return per page.
   ///
   /// [pageToken] - The page token, received from a previous
@@ -1345,11 +1346,13 @@ class ProjectsLocationsApisDeploymentsResource {
   /// this method will complete with the same error.
   async.Future<ListApiDeploymentRevisionsResponse> listRevisions(
     core.String name, {
+    core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -3072,6 +3075,9 @@ class ProjectsLocationsApisVersionsSpecsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/apis/\[^/\]+/versions/\[^/\]+/specs/\[^/\]+$`.
   ///
+  /// [filter] - An expression that can be used to filter the list. Filters use
+  /// the Common Expression Language and can refer to all message fields.
+  ///
   /// [pageSize] - The maximum number of revisions to return per page.
   ///
   /// [pageToken] - The page token, received from a previous
@@ -3089,11 +3095,13 @@ class ProjectsLocationsApisVersionsSpecsResource {
   /// this method will complete with the same error.
   async.Future<ListApiSpecRevisionsResponse> listRevisions(
     core.String name, {
+    core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -4885,12 +4893,14 @@ class Api {
 
   /// The recommended deployment of the API.
   ///
-  /// Format: `apis/{api}/deployments/{deployment}`
+  /// Format:
+  /// `projects/{project}/locations/{location}/apis/{api}/deployments/{deployment}`
   core.String? recommendedDeployment;
 
   /// The recommended version of the API.
   ///
-  /// Format: `apis/{api}/versions/{version}`
+  /// Format:
+  /// `projects/{project}/locations/{location}/apis/{api}/versions/{version}`
   core.String? recommendedVersion;
 
   /// Last update timestamp.
@@ -4916,9 +4926,9 @@ class Api {
           annotations: json_.containsKey('annotations')
               ? (json_['annotations'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -4936,9 +4946,9 @@ class Api {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -4993,7 +5003,7 @@ class ApiDeployment {
   /// being served by the deployment.
   ///
   /// Changes to this value will update the revision. Format:
-  /// `apis/{api}/deployments/{deployment}`
+  /// `projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec@revision}`
   core.String? apiSpecRevision;
 
   /// Creation timestamp; when the deployment resource was created.
@@ -5081,9 +5091,9 @@ class ApiDeployment {
           annotations: json_.containsKey('annotations')
               ? (json_['annotations'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -5110,9 +5120,9 @@ class ApiDeployment {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -5277,9 +5287,9 @@ class ApiSpec {
           annotations: json_.containsKey('annotations')
               ? (json_['annotations'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -5298,9 +5308,9 @@ class ApiSpec {
           hash: json_.containsKey('hash') ? json_['hash'] as core.String : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -5382,6 +5392,12 @@ class ApiVersion {
   /// Resource name.
   core.String? name;
 
+  /// The primary spec for this version.
+  ///
+  /// Format:
+  /// projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec}
+  core.String? primarySpec;
+
   /// A user-definable description of the lifecycle phase of this API version.
   ///
   /// Format: free-form, but we expect single words that describe API maturity,
@@ -5401,6 +5417,7 @@ class ApiVersion {
     this.displayName,
     this.labels,
     this.name,
+    this.primarySpec,
     this.state,
     this.updateTime,
   });
@@ -5410,9 +5427,9 @@ class ApiVersion {
           annotations: json_.containsKey('annotations')
               ? (json_['annotations'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -5427,13 +5444,16 @@ class ApiVersion {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          primarySpec: json_.containsKey('primarySpec')
+              ? json_['primarySpec'] as core.String
+              : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
           updateTime: json_.containsKey('updateTime')
@@ -5448,6 +5468,7 @@ class ApiVersion {
         if (displayName != null) 'displayName': displayName!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
+        if (primarySpec != null) 'primarySpec': primarySpec!,
         if (state != null) 'state': state!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
@@ -5464,6 +5485,13 @@ class ApiVersion {
 /// quickly enumerated and checked for presence without downloading their
 /// (potentially-large) contents.
 class Artifact {
+  /// Annotations attach non-identifying metadata to resources.
+  ///
+  /// Annotation keys and values are less restricted than those of labels, but
+  /// should be generally used for small values of broad interest. Larger,
+  /// topic- specific metadata should be stored in Artifacts.
+  core.Map<core.String, core.String>? annotations;
+
   /// Input only.
   ///
   /// The contents of the artifact. Provided by API callers when artifacts are
@@ -5488,6 +5516,18 @@ class Artifact {
   ///
   /// Output only.
   core.String? hash;
+
+  /// Labels attach identifying metadata to resources.
+  ///
+  /// Identifying metadata can be used to filter list operations. Label keys and
+  /// values can be no longer than 64 characters (Unicode codepoints), can only
+  /// contain lowercase letters, numeric characters, underscores and dashes.
+  /// International characters are allowed. No more than 64 user labels can be
+  /// associated with one resource (System labels are excluded). See
+  /// https://goo.gl/xmQnxf for more information and examples of labels. System
+  /// reserved label keys are prefixed with "registry.googleapis.com/" and
+  /// cannot be changed.
+  core.Map<core.String, core.String>? labels;
 
   /// A content type specifier for the artifact.
   ///
@@ -5514,9 +5554,11 @@ class Artifact {
   core.String? updateTime;
 
   Artifact({
+    this.annotations,
     this.contents,
     this.createTime,
     this.hash,
+    this.labels,
     this.mimeType,
     this.name,
     this.sizeBytes,
@@ -5525,6 +5567,15 @@ class Artifact {
 
   Artifact.fromJson(core.Map json_)
       : this(
+          annotations: json_.containsKey('annotations')
+              ? (json_['annotations'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
           contents: json_.containsKey('contents')
               ? json_['contents'] as core.String
               : null,
@@ -5532,6 +5583,14 @@ class Artifact {
               ? json_['createTime'] as core.String
               : null,
           hash: json_.containsKey('hash') ? json_['hash'] as core.String : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
           mimeType: json_.containsKey('mimeType')
               ? json_['mimeType'] as core.String
               : null,
@@ -5545,9 +5604,11 @@ class Artifact {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (annotations != null) 'annotations': annotations!,
         if (contents != null) 'contents': contents!,
         if (createTime != null) 'createTime': createTime!,
         if (hash != null) 'hash': hash!,
+        if (labels != null) 'labels': labels!,
         if (mimeType != null) 'mimeType': mimeType!,
         if (name != null) 'name': name!,
         if (sizeBytes != null) 'sizeBytes': sizeBytes!,
@@ -5585,7 +5646,9 @@ class Binding {
   /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
   /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
-  /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
+  /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
+  /// (primary) that represents all the users of that domain. For example,
+  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
   /// An email address (plus unique identifier) representing a user that has
   /// been recently deleted. For example,
   /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
@@ -5601,9 +5664,7 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
-  /// that represents all the users of that domain. For example, `google.com` or
-  /// `example.com`.
+  /// the role in the binding.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
@@ -5635,6 +5696,47 @@ class Binding {
         if (condition != null) 'condition': condition!,
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
+      };
+}
+
+/// Build information of the Instance if it's in `ACTIVE` state.
+class Build {
+  /// Commit ID of the latest commit in the build.
+  ///
+  /// Output only.
+  core.String? commitId;
+
+  /// Commit time of the latest commit in the build.
+  ///
+  /// Output only.
+  core.String? commitTime;
+
+  /// Path of the open source repository: github.com/apigee/registry.
+  ///
+  /// Output only.
+  core.String? repo;
+
+  Build({
+    this.commitId,
+    this.commitTime,
+    this.repo,
+  });
+
+  Build.fromJson(core.Map json_)
+      : this(
+          commitId: json_.containsKey('commitId')
+              ? json_['commitId'] as core.String
+              : null,
+          commitTime: json_.containsKey('commitTime')
+              ? json_['commitTime'] as core.String
+              : null,
+          repo: json_.containsKey('repo') ? json_['repo'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (commitId != null) 'commitId': commitId!,
+        if (commitTime != null) 'commitTime': commitTime!,
+        if (repo != null) 'repo': repo!,
       };
 }
 
@@ -5730,6 +5832,11 @@ typedef HttpBody = $HttpBody;
 ///
 /// Currently, only one instance is allowed for each project.
 class Instance {
+  /// Build info of the Instance if it's in `ACTIVE` state.
+  ///
+  /// Output only.
+  Build? build;
+
   /// Config of the Instance.
   ///
   /// Required.
@@ -5770,6 +5877,7 @@ class Instance {
   core.String? updateTime;
 
   Instance({
+    this.build,
     this.config,
     this.createTime,
     this.name,
@@ -5780,6 +5888,10 @@ class Instance {
 
   Instance.fromJson(core.Map json_)
       : this(
+          build: json_.containsKey('build')
+              ? Build.fromJson(
+                  json_['build'] as core.Map<core.String, core.dynamic>)
+              : null,
           config: json_.containsKey('config')
               ? Config.fromJson(
                   json_['config'] as core.Map<core.String, core.dynamic>)
@@ -5799,6 +5911,7 @@ class Instance {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (build != null) 'build': build!,
         if (config != null) 'config': config!,
         if (createTime != null) 'createTime': createTime!,
         if (name != null) 'name': name!,

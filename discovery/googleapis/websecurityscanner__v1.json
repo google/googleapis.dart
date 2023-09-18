@@ -24,6 +24,13 @@
     "name": "websecurityscanner",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230806",
+    "rootUrl": "https://websecurityscanner.googleapis.com/",
+    "servicePath": "",
+    "title": "Web Security Scanner API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "projects": {
             "resources": {
@@ -524,8 +530,6 @@
             }
         }
     },
-    "revision": "20220825",
-    "rootUrl": "https://websecurityscanner.googleapis.com/",
     "schemas": {
         "Authentication": {
             "description": "Scan authentication configuration.",
@@ -537,6 +541,7 @@
                 },
                 "googleAccount": {
                     "$ref": "GoogleAccount",
+                    "deprecated": true,
                     "description": "Authentication using a Google account."
                 },
                 "iapCredential": {
@@ -720,6 +725,7 @@
             "type": "object"
         },
         "GoogleAccount": {
+            "deprecated": true,
             "description": "Describes authentication configuration that uses a Google account.",
             "id": "GoogleAccount",
             "properties": {
@@ -1176,7 +1182,8 @@
                         "AUTHENTICATION_CONFIG_ISSUE",
                         "TIMED_OUT_WHILE_SCANNING",
                         "TOO_MANY_REDIRECTS",
-                        "TOO_MANY_HTTP_ERRORS"
+                        "TOO_MANY_HTTP_ERRORS",
+                        "STARTING_URLS_CRAWL_HTTP_ERRORS"
                     ],
                     "enumDescriptions": [
                         "Default value is never used.",
@@ -1185,7 +1192,8 @@
                         "Indicates an authentication error, usually due to outdated ScanConfig authentication settings.",
                         "Indicates a scan operation timeout, usually caused by a very large site.",
                         "Indicates that a scan encountered excessive redirects, either to authentication or some other page outside of the scan scope.",
-                        "Indicates that a scan encountered numerous errors from the web site pages. When available, most_common_http_error_code field indicates the most common HTTP error code encountered during the scan."
+                        "Indicates that a scan encountered numerous errors from the web site pages. When available, most_common_http_error_code field indicates the most common HTTP error code encountered during the scan.",
+                        "Indicates that some of the starting web urls returned HTTP errors during the scan."
                     ],
                     "type": "string"
                 },
@@ -1392,9 +1400,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Web Security Scanner API",
-    "version": "v1",
-    "version_module": true
+    }
 }

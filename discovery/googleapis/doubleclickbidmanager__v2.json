@@ -24,6 +24,12 @@
     "name": "doubleclickbidmanager",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230725",
+    "rootUrl": "https://doubleclickbidmanager.googleapis.com/",
+    "servicePath": "v2/",
+    "title": "DoubleClick Bid Manager API",
+    "version": "v2",
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +107,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "queries": {
             "methods": {
@@ -318,8 +323,6 @@
             }
         }
     },
-    "revision": "20220906",
-    "rootUrl": "https://doubleclickbidmanager.googleapis.com/",
     "schemas": {
         "ChannelGrouping": {
             "description": "A channel grouping defines a set of rules that can be used to categorize events in a path report.",
@@ -559,6 +562,20 @@
                         "UNIQUE_REACH_AUDIENCE",
                         "FULL_PATH",
                         "PATH_ATTRIBUTION"
+                    ],
+                    "enumDeprecated": [
+                        false,
+                        false,
+                        false,
+                        true,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false,
+                        false
                     ],
                     "enumDescriptions": [
                         "Default value when report type is not specified or is unknown in this version.",
@@ -908,8 +925,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "v2/",
-    "title": "DoubleClick Bid Manager API",
-    "version": "v2"
+    }
 }

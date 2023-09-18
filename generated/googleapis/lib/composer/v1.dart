@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud Composer API - v1
@@ -25,7 +24,7 @@
 ///     - [ProjectsLocationsEnvironmentsResource]
 ///     - [ProjectsLocationsImageVersionsResource]
 ///     - [ProjectsLocationsOperationsResource]
-library composer.v1;
+library composer_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -34,7 +33,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -128,6 +126,49 @@ class ProjectsLocationsEnvironmentsResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Triggers database failover (only for highly resilient environments).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [environment] - Target environment:
+  /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/environments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> databaseFailover(
+    DatabaseFailoverRequest request,
+    core.String environment, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$environment') + ':databaseFailover';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Delete an environment.
   ///
   /// Request parameters:
@@ -163,6 +204,91 @@ class ProjectsLocationsEnvironmentsResource {
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Executes Airflow CLI command.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [environment] - The resource name of the environment in the form:
+  /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/environments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ExecuteAirflowCommandResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ExecuteAirflowCommandResponse> executeAirflowCommand(
+    ExecuteAirflowCommandRequest request,
+    core.String environment, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$environment') + ':executeAirflowCommand';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return ExecuteAirflowCommandResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Fetches database properties.
+  ///
+  /// Request parameters:
+  ///
+  /// [environment] - Required. The resource name of the environment, in the
+  /// form:
+  /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/environments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [FetchDatabasePropertiesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<FetchDatabasePropertiesResponse> fetchDatabaseProperties(
+    core.String environment, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$environment') +
+        ':fetchDatabaseProperties';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return FetchDatabasePropertiesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Get an existing environment.
@@ -247,6 +373,51 @@ class ProjectsLocationsEnvironmentsResource {
     );
     return ListEnvironmentsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Loads a snapshot of a Cloud Composer environment.
+  ///
+  /// As a result of this operation, a snapshot of environment's specified in
+  /// LoadSnapshotRequest is loaded into the environment.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [environment] - The resource name of the target environment in the form:
+  /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/environments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> loadSnapshot(
+    LoadSnapshotRequest request,
+    core.String environment, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$environment') + ':loadSnapshot';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Update an environment.
@@ -371,6 +542,139 @@ class ProjectsLocationsEnvironmentsResource {
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Polls Airflow CLI command execution and fetches logs.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [environment] - The resource name of the environment in the form:
+  /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/environments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [PollAirflowCommandResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<PollAirflowCommandResponse> pollAirflowCommand(
+    PollAirflowCommandRequest request,
+    core.String environment, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$environment') + ':pollAirflowCommand';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return PollAirflowCommandResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Creates a snapshots of a Cloud Composer environment.
+  ///
+  /// As a result of this operation, snapshot of environment's state is stored
+  /// in a location specified in the SaveSnapshotRequest.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [environment] - The resource name of the source environment in the form:
+  /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/environments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> saveSnapshot(
+    SaveSnapshotRequest request,
+    core.String environment, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$environment') + ':saveSnapshot';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Stops Airflow CLI command execution.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [environment] - The resource name of the environment in the form:
+  /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/environments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [StopAirflowCommandResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<StopAirflowCommandResponse> stopAirflowCommand(
+    StopAirflowCommandRequest request,
+    core.String environment, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$environment') + ':stopAirflowCommand';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return StopAirflowCommandResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -521,13 +825,6 @@ class ProjectsLocationsOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -673,6 +970,10 @@ class DatabaseConfig {
       };
 }
 
+/// Request to trigger database failover (only for highly resilient
+/// environments).
+typedef DatabaseFailoverRequest = $Empty;
+
 /// Represents a whole or partial calendar date, such as a birthday.
 ///
 /// The time of day and time zone are either specified elsewhere or are
@@ -793,9 +1094,9 @@ class Environment {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -821,6 +1122,15 @@ class Environment {
 
 /// Configuration information for an environment.
 class EnvironmentConfig {
+  /// The 'bring your own identity' variant of the URI of the Apache Airflow Web
+  /// UI hosted within this environment, to be accessed with external identities
+  /// using workforce identity federation (see \[Access environments with
+  /// workforce identity
+  /// federation\](/composer/docs/composer-2/access-environments-with-workforce-identity-federation)).
+  ///
+  /// Output only.
+  core.String? airflowByoidUri;
+
   /// The URI of the Apache Airflow Web UI hosted within this environment (see
   /// \[Airflow web
   /// interface\](/composer/docs/how-to/accessing/airflow-web-interface)).
@@ -908,6 +1218,27 @@ class EnvironmentConfig {
   /// The configuration used for the Private IP Cloud Composer environment.
   PrivateEnvironmentConfig? privateEnvironmentConfig;
 
+  /// The Recovery settings configuration of an environment.
+  ///
+  /// This field is supported for Cloud Composer environments in versions
+  /// composer-2.*.*-airflow-*.*.* and newer.
+  ///
+  /// Optional.
+  RecoveryConfig? recoveryConfig;
+
+  /// Resilience mode of the Cloud Composer Environment.
+  ///
+  /// This field is supported for Cloud Composer environments in versions
+  /// composer-2.2.0-airflow-*.*.* and newer.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "RESILIENCE_MODE_UNSPECIFIED" : Default mode doesn't change environment
+  /// parameters.
+  /// - "HIGH_RESILIENCE" : Enabled High Resilience mode, including Cloud SQL
+  /// HA.
+  core.String? resilienceMode;
+
   /// The configuration settings for software inside the environment.
   SoftwareConfig? softwareConfig;
 
@@ -934,6 +1265,7 @@ class EnvironmentConfig {
   WorkloadsConfig? workloadsConfig;
 
   EnvironmentConfig({
+    this.airflowByoidUri,
     this.airflowUri,
     this.dagGcsPrefix,
     this.databaseConfig,
@@ -945,6 +1277,8 @@ class EnvironmentConfig {
     this.nodeConfig,
     this.nodeCount,
     this.privateEnvironmentConfig,
+    this.recoveryConfig,
+    this.resilienceMode,
     this.softwareConfig,
     this.webServerConfig,
     this.webServerNetworkAccessControl,
@@ -953,6 +1287,9 @@ class EnvironmentConfig {
 
   EnvironmentConfig.fromJson(core.Map json_)
       : this(
+          airflowByoidUri: json_.containsKey('airflowByoidUri')
+              ? json_['airflowByoidUri'] as core.String
+              : null,
           airflowUri: json_.containsKey('airflowUri')
               ? json_['airflowUri'] as core.String
               : null,
@@ -996,6 +1333,13 @@ class EnvironmentConfig {
                       json_['privateEnvironmentConfig']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          recoveryConfig: json_.containsKey('recoveryConfig')
+              ? RecoveryConfig.fromJson(json_['recoveryConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          resilienceMode: json_.containsKey('resilienceMode')
+              ? json_['resilienceMode'] as core.String
+              : null,
           softwareConfig: json_.containsKey('softwareConfig')
               ? SoftwareConfig.fromJson(json_['softwareConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -1017,6 +1361,7 @@ class EnvironmentConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (airflowByoidUri != null) 'airflowByoidUri': airflowByoidUri!,
         if (airflowUri != null) 'airflowUri': airflowUri!,
         if (dagGcsPrefix != null) 'dagGcsPrefix': dagGcsPrefix!,
         if (databaseConfig != null) 'databaseConfig': databaseConfig!,
@@ -1030,11 +1375,174 @@ class EnvironmentConfig {
         if (nodeCount != null) 'nodeCount': nodeCount!,
         if (privateEnvironmentConfig != null)
           'privateEnvironmentConfig': privateEnvironmentConfig!,
+        if (recoveryConfig != null) 'recoveryConfig': recoveryConfig!,
+        if (resilienceMode != null) 'resilienceMode': resilienceMode!,
         if (softwareConfig != null) 'softwareConfig': softwareConfig!,
         if (webServerConfig != null) 'webServerConfig': webServerConfig!,
         if (webServerNetworkAccessControl != null)
           'webServerNetworkAccessControl': webServerNetworkAccessControl!,
         if (workloadsConfig != null) 'workloadsConfig': workloadsConfig!,
+      };
+}
+
+/// Execute Airflow Command request.
+class ExecuteAirflowCommandRequest {
+  /// Airflow command.
+  core.String? command;
+
+  /// Parameters for the Airflow command/subcommand as an array of arguments.
+  ///
+  /// It may contain positional arguments like `["my-dag-id"]`, key-value
+  /// parameters like `["--foo=bar"]` or `["--foo","bar"]`, or other flags like
+  /// `["-f"]`.
+  core.List<core.String>? parameters;
+
+  /// Airflow subcommand.
+  core.String? subcommand;
+
+  ExecuteAirflowCommandRequest({
+    this.command,
+    this.parameters,
+    this.subcommand,
+  });
+
+  ExecuteAirflowCommandRequest.fromJson(core.Map json_)
+      : this(
+          command: json_.containsKey('command')
+              ? json_['command'] as core.String
+              : null,
+          parameters: json_.containsKey('parameters')
+              ? (json_['parameters'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          subcommand: json_.containsKey('subcommand')
+              ? json_['subcommand'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (command != null) 'command': command!,
+        if (parameters != null) 'parameters': parameters!,
+        if (subcommand != null) 'subcommand': subcommand!,
+      };
+}
+
+/// Response to ExecuteAirflowCommandRequest.
+class ExecuteAirflowCommandResponse {
+  /// Error message.
+  ///
+  /// Empty if there was no error.
+  core.String? error;
+
+  /// The unique ID of the command execution for polling.
+  core.String? executionId;
+
+  /// The name of the pod where the command is executed.
+  core.String? pod;
+
+  /// The namespace of the pod where the command is executed.
+  core.String? podNamespace;
+
+  ExecuteAirflowCommandResponse({
+    this.error,
+    this.executionId,
+    this.pod,
+    this.podNamespace,
+  });
+
+  ExecuteAirflowCommandResponse.fromJson(core.Map json_)
+      : this(
+          error:
+              json_.containsKey('error') ? json_['error'] as core.String : null,
+          executionId: json_.containsKey('executionId')
+              ? json_['executionId'] as core.String
+              : null,
+          pod: json_.containsKey('pod') ? json_['pod'] as core.String : null,
+          podNamespace: json_.containsKey('podNamespace')
+              ? json_['podNamespace'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (error != null) 'error': error!,
+        if (executionId != null) 'executionId': executionId!,
+        if (pod != null) 'pod': pod!,
+        if (podNamespace != null) 'podNamespace': podNamespace!,
+      };
+}
+
+/// Information about how a command ended.
+class ExitInfo {
+  /// Error message.
+  ///
+  /// Empty if there was no error.
+  core.String? error;
+
+  /// The exit code from the command execution.
+  core.int? exitCode;
+
+  ExitInfo({
+    this.error,
+    this.exitCode,
+  });
+
+  ExitInfo.fromJson(core.Map json_)
+      : this(
+          error:
+              json_.containsKey('error') ? json_['error'] as core.String : null,
+          exitCode: json_.containsKey('exitCode')
+              ? json_['exitCode'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (error != null) 'error': error!,
+        if (exitCode != null) 'exitCode': exitCode!,
+      };
+}
+
+/// Response for FetchDatabasePropertiesRequest.
+class FetchDatabasePropertiesResponse {
+  /// The availability status of the failover replica.
+  ///
+  /// A false status indicates that the failover replica is out of sync. The
+  /// primary instance can only fail over to the failover replica when the
+  /// status is true.
+  core.bool? isFailoverReplicaAvailable;
+
+  /// The Compute Engine zone that the instance is currently serving from.
+  core.String? primaryGceZone;
+
+  /// The Compute Engine zone that the failover instance is currently serving
+  /// from for a regional Cloud SQL instance.
+  core.String? secondaryGceZone;
+
+  FetchDatabasePropertiesResponse({
+    this.isFailoverReplicaAvailable,
+    this.primaryGceZone,
+    this.secondaryGceZone,
+  });
+
+  FetchDatabasePropertiesResponse.fromJson(core.Map json_)
+      : this(
+          isFailoverReplicaAvailable:
+              json_.containsKey('isFailoverReplicaAvailable')
+                  ? json_['isFailoverReplicaAvailable'] as core.bool
+                  : null,
+          primaryGceZone: json_.containsKey('primaryGceZone')
+              ? json_['primaryGceZone'] as core.String
+              : null,
+          secondaryGceZone: json_.containsKey('secondaryGceZone')
+              ? json_['secondaryGceZone'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (isFailoverReplicaAvailable != null)
+          'isFailoverReplicaAvailable': isFailoverReplicaAvailable!,
+        if (primaryGceZone != null) 'primaryGceZone': primaryGceZone!,
+        if (secondaryGceZone != null) 'secondaryGceZone': secondaryGceZone!,
       };
 }
 
@@ -1207,6 +1715,35 @@ class ImageVersion {
       };
 }
 
+/// Contains information about a single line from logs.
+class Line {
+  /// Text content of the log line.
+  core.String? content;
+
+  /// Number of the line.
+  core.int? lineNumber;
+
+  Line({
+    this.content,
+    this.lineNumber,
+  });
+
+  Line.fromJson(core.Map json_)
+      : this(
+          content: json_.containsKey('content')
+              ? json_['content'] as core.String
+              : null,
+          lineNumber: json_.containsKey('lineNumber')
+              ? json_['lineNumber'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (content != null) 'content': content!,
+        if (lineNumber != null) 'lineNumber': lineNumber!,
+      };
+}
+
 /// The environments in a project and location.
 class ListEnvironmentsResponse {
   /// The list of environments returned by a ListEnvironmentsRequest.
@@ -1303,6 +1840,71 @@ class ListOperationsResponse {
       };
 }
 
+/// Request to load a snapshot into a Cloud Composer environment.
+class LoadSnapshotRequest {
+  /// Whether or not to skip setting Airflow overrides when loading the
+  /// environment's state.
+  core.bool? skipAirflowOverridesSetting;
+
+  /// Whether or not to skip setting environment variables when loading the
+  /// environment's state.
+  core.bool? skipEnvironmentVariablesSetting;
+
+  /// Whether or not to skip copying Cloud Storage data when loading the
+  /// environment's state.
+  core.bool? skipGcsDataCopying;
+
+  /// Whether or not to skip installing Pypi packages when loading the
+  /// environment's state.
+  core.bool? skipPypiPackagesInstallation;
+
+  /// A Cloud Storage path to a snapshot to load, e.g.:
+  /// "gs://my-bucket/snapshots/project_location_environment_timestamp".
+  core.String? snapshotPath;
+
+  LoadSnapshotRequest({
+    this.skipAirflowOverridesSetting,
+    this.skipEnvironmentVariablesSetting,
+    this.skipGcsDataCopying,
+    this.skipPypiPackagesInstallation,
+    this.snapshotPath,
+  });
+
+  LoadSnapshotRequest.fromJson(core.Map json_)
+      : this(
+          skipAirflowOverridesSetting:
+              json_.containsKey('skipAirflowOverridesSetting')
+                  ? json_['skipAirflowOverridesSetting'] as core.bool
+                  : null,
+          skipEnvironmentVariablesSetting:
+              json_.containsKey('skipEnvironmentVariablesSetting')
+                  ? json_['skipEnvironmentVariablesSetting'] as core.bool
+                  : null,
+          skipGcsDataCopying: json_.containsKey('skipGcsDataCopying')
+              ? json_['skipGcsDataCopying'] as core.bool
+              : null,
+          skipPypiPackagesInstallation:
+              json_.containsKey('skipPypiPackagesInstallation')
+                  ? json_['skipPypiPackagesInstallation'] as core.bool
+                  : null,
+          snapshotPath: json_.containsKey('snapshotPath')
+              ? json_['snapshotPath'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (skipAirflowOverridesSetting != null)
+          'skipAirflowOverridesSetting': skipAirflowOverridesSetting!,
+        if (skipEnvironmentVariablesSetting != null)
+          'skipEnvironmentVariablesSetting': skipEnvironmentVariablesSetting!,
+        if (skipGcsDataCopying != null)
+          'skipGcsDataCopying': skipGcsDataCopying!,
+        if (skipPypiPackagesInstallation != null)
+          'skipPypiPackagesInstallation': skipPypiPackagesInstallation!,
+        if (snapshotPath != null) 'snapshotPath': snapshotPath!,
+      };
+}
+
 /// The configuration settings for Cloud Composer maintenance window.
 ///
 /// The following example: ``` { "startTime":"2019-08-01T01:00:00Z"
@@ -1393,6 +1995,41 @@ class MasterAuthorizedNetworksConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (cidrBlocks != null) 'cidrBlocks': cidrBlocks!,
         if (enabled != null) 'enabled': enabled!,
+      };
+}
+
+/// Configuration options for networking connections in the Composer 2
+/// environment.
+class NetworkingConfig {
+  /// Indicates the user requested specifc connection type between Tenant and
+  /// Customer projects.
+  ///
+  /// You cannot set networking connection type in public IP environment.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "CONNECTION_TYPE_UNSPECIFIED" : No specific connection type was
+  /// requested, so the environment uses the default value corresponding to the
+  /// rest of its configuration.
+  /// - "VPC_PEERING" : Requests the use of VPC peerings for connecting the
+  /// Customer and Tenant projects.
+  /// - "PRIVATE_SERVICE_CONNECT" : Requests the use of Private Service Connect
+  /// for connecting the Customer and Tenant projects.
+  core.String? connectionType;
+
+  NetworkingConfig({
+    this.connectionType,
+  });
+
+  NetworkingConfig.fromJson(core.Map json_)
+      : this(
+          connectionType: json_.containsKey('connectionType')
+              ? json_['connectionType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (connectionType != null) 'connectionType': connectionType!,
       };
 }
 
@@ -1515,9 +2152,7 @@ class NodeConfig {
   ///
   /// Tags are used to identify valid sources or targets for network firewalls.
   /// Each tag within the list must comply with
-  /// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated. This
-  /// field is supported for Cloud Composer environments in versions
-  /// composer-1.*.*-airflow-*.*.*.
+  /// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated.
   ///
   /// Optional.
   core.List<core.String>? tags;
@@ -1665,6 +2300,93 @@ class Operation {
       };
 }
 
+/// Poll Airflow Command request.
+class PollAirflowCommandRequest {
+  /// The unique ID of the command execution.
+  core.String? executionId;
+
+  /// Line number from which new logs should be fetched.
+  core.int? nextLineNumber;
+
+  /// The name of the pod where the command is executed.
+  core.String? pod;
+
+  /// The namespace of the pod where the command is executed.
+  core.String? podNamespace;
+
+  PollAirflowCommandRequest({
+    this.executionId,
+    this.nextLineNumber,
+    this.pod,
+    this.podNamespace,
+  });
+
+  PollAirflowCommandRequest.fromJson(core.Map json_)
+      : this(
+          executionId: json_.containsKey('executionId')
+              ? json_['executionId'] as core.String
+              : null,
+          nextLineNumber: json_.containsKey('nextLineNumber')
+              ? json_['nextLineNumber'] as core.int
+              : null,
+          pod: json_.containsKey('pod') ? json_['pod'] as core.String : null,
+          podNamespace: json_.containsKey('podNamespace')
+              ? json_['podNamespace'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (executionId != null) 'executionId': executionId!,
+        if (nextLineNumber != null) 'nextLineNumber': nextLineNumber!,
+        if (pod != null) 'pod': pod!,
+        if (podNamespace != null) 'podNamespace': podNamespace!,
+      };
+}
+
+/// Response to PollAirflowCommandRequest.
+class PollAirflowCommandResponse {
+  /// The result exit status of the command.
+  ExitInfo? exitInfo;
+
+  /// Output from the command execution.
+  ///
+  /// It may not contain the full output and the caller may need to poll for
+  /// more lines.
+  core.List<Line>? output;
+
+  /// Whether the command execution has finished and there is no more output.
+  core.bool? outputEnd;
+
+  PollAirflowCommandResponse({
+    this.exitInfo,
+    this.output,
+    this.outputEnd,
+  });
+
+  PollAirflowCommandResponse.fromJson(core.Map json_)
+      : this(
+          exitInfo: json_.containsKey('exitInfo')
+              ? ExitInfo.fromJson(
+                  json_['exitInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          output: json_.containsKey('output')
+              ? (json_['output'] as core.List)
+                  .map((value) => Line.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          outputEnd: json_.containsKey('outputEnd')
+              ? json_['outputEnd'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (exitInfo != null) 'exitInfo': exitInfo!,
+        if (output != null) 'output': output!,
+        if (outputEnd != null) 'outputEnd': outputEnd!,
+      };
+}
+
 /// Configuration options for the private GKE cluster in a Cloud Composer
 /// environment.
 class PrivateClusterConfig {
@@ -1772,6 +2494,12 @@ class PrivateEnvironmentConfig {
   /// Optional.
   core.bool? enablePrivatelyUsedPublicIps;
 
+  /// Configuration for the network connections configuration in the
+  /// environment.
+  ///
+  /// Optional.
+  NetworkingConfig? networkingConfig;
+
   /// Configuration for the private GKE cluster for a Private IP Cloud Composer
   /// environment.
   ///
@@ -1802,6 +2530,7 @@ class PrivateEnvironmentConfig {
     this.cloudSqlIpv4CidrBlock,
     this.enablePrivateEnvironment,
     this.enablePrivatelyUsedPublicIps,
+    this.networkingConfig,
     this.privateClusterConfig,
     this.webServerIpv4CidrBlock,
     this.webServerIpv4ReservedRange,
@@ -1832,6 +2561,10 @@ class PrivateEnvironmentConfig {
               json_.containsKey('enablePrivatelyUsedPublicIps')
                   ? json_['enablePrivatelyUsedPublicIps'] as core.bool
                   : null,
+          networkingConfig: json_.containsKey('networkingConfig')
+              ? NetworkingConfig.fromJson(json_['networkingConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           privateClusterConfig: json_.containsKey('privateClusterConfig')
               ? PrivateClusterConfig.fromJson(json_['privateClusterConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -1861,12 +2594,121 @@ class PrivateEnvironmentConfig {
           'enablePrivateEnvironment': enablePrivateEnvironment!,
         if (enablePrivatelyUsedPublicIps != null)
           'enablePrivatelyUsedPublicIps': enablePrivatelyUsedPublicIps!,
+        if (networkingConfig != null) 'networkingConfig': networkingConfig!,
         if (privateClusterConfig != null)
           'privateClusterConfig': privateClusterConfig!,
         if (webServerIpv4CidrBlock != null)
           'webServerIpv4CidrBlock': webServerIpv4CidrBlock!,
         if (webServerIpv4ReservedRange != null)
           'webServerIpv4ReservedRange': webServerIpv4ReservedRange!,
+      };
+}
+
+/// The Recovery settings of an environment.
+class RecoveryConfig {
+  /// The configuration for scheduled snapshot creation mechanism.
+  ///
+  /// Optional.
+  ScheduledSnapshotsConfig? scheduledSnapshotsConfig;
+
+  RecoveryConfig({
+    this.scheduledSnapshotsConfig,
+  });
+
+  RecoveryConfig.fromJson(core.Map json_)
+      : this(
+          scheduledSnapshotsConfig:
+              json_.containsKey('scheduledSnapshotsConfig')
+                  ? ScheduledSnapshotsConfig.fromJson(
+                      json_['scheduledSnapshotsConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (scheduledSnapshotsConfig != null)
+          'scheduledSnapshotsConfig': scheduledSnapshotsConfig!,
+      };
+}
+
+/// Request to create a snapshot of a Cloud Composer environment.
+class SaveSnapshotRequest {
+  /// Location in a Cloud Storage where the snapshot is going to be stored,
+  /// e.g.: "gs://my-bucket/snapshots".
+  core.String? snapshotLocation;
+
+  SaveSnapshotRequest({
+    this.snapshotLocation,
+  });
+
+  SaveSnapshotRequest.fromJson(core.Map json_)
+      : this(
+          snapshotLocation: json_.containsKey('snapshotLocation')
+              ? json_['snapshotLocation'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (snapshotLocation != null) 'snapshotLocation': snapshotLocation!,
+      };
+}
+
+/// The configuration for scheduled snapshot creation mechanism.
+class ScheduledSnapshotsConfig {
+  /// Whether scheduled snapshots creation is enabled.
+  ///
+  /// Optional.
+  core.bool? enabled;
+
+  /// The cron expression representing the time when snapshots creation
+  /// mechanism runs.
+  ///
+  /// This field is subject to additional validation around frequency of
+  /// execution.
+  ///
+  /// Optional.
+  core.String? snapshotCreationSchedule;
+
+  /// The Cloud Storage location for storing automatically created snapshots.
+  ///
+  /// Optional.
+  core.String? snapshotLocation;
+
+  /// Time zone that sets the context to interpret snapshot_creation_schedule.
+  ///
+  /// Optional.
+  core.String? timeZone;
+
+  ScheduledSnapshotsConfig({
+    this.enabled,
+    this.snapshotCreationSchedule,
+    this.snapshotLocation,
+    this.timeZone,
+  });
+
+  ScheduledSnapshotsConfig.fromJson(core.Map json_)
+      : this(
+          enabled: json_.containsKey('enabled')
+              ? json_['enabled'] as core.bool
+              : null,
+          snapshotCreationSchedule:
+              json_.containsKey('snapshotCreationSchedule')
+                  ? json_['snapshotCreationSchedule'] as core.String
+                  : null,
+          snapshotLocation: json_.containsKey('snapshotLocation')
+              ? json_['snapshotLocation'] as core.String
+              : null,
+          timeZone: json_.containsKey('timeZone')
+              ? json_['timeZone'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
+        if (snapshotCreationSchedule != null)
+          'snapshotCreationSchedule': snapshotCreationSchedule!,
+        if (snapshotLocation != null) 'snapshotLocation': snapshotLocation!,
+        if (timeZone != null) 'timeZone': timeZone!,
       };
 }
 
@@ -2026,18 +2868,18 @@ class SoftwareConfig {
               ? (json_['airflowConfigOverrides']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
           envVariables: json_.containsKey('envVariables')
               ? (json_['envVariables'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -2047,9 +2889,9 @@ class SoftwareConfig {
           pypiPackages: json_.containsKey('pypiPackages')
               ? (json_['pypiPackages'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -2080,6 +2922,80 @@ class SoftwareConfig {
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef Status = $Status;
+
+/// Stop Airflow Command request.
+class StopAirflowCommandRequest {
+  /// The unique ID of the command execution.
+  core.String? executionId;
+
+  /// If true, the execution is terminated forcefully (SIGKILL).
+  ///
+  /// If false, the execution is stopped gracefully, giving it time for cleanup.
+  core.bool? force;
+
+  /// The name of the pod where the command is executed.
+  core.String? pod;
+
+  /// The namespace of the pod where the command is executed.
+  core.String? podNamespace;
+
+  StopAirflowCommandRequest({
+    this.executionId,
+    this.force,
+    this.pod,
+    this.podNamespace,
+  });
+
+  StopAirflowCommandRequest.fromJson(core.Map json_)
+      : this(
+          executionId: json_.containsKey('executionId')
+              ? json_['executionId'] as core.String
+              : null,
+          force:
+              json_.containsKey('force') ? json_['force'] as core.bool : null,
+          pod: json_.containsKey('pod') ? json_['pod'] as core.String : null,
+          podNamespace: json_.containsKey('podNamespace')
+              ? json_['podNamespace'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (executionId != null) 'executionId': executionId!,
+        if (force != null) 'force': force!,
+        if (pod != null) 'pod': pod!,
+        if (podNamespace != null) 'podNamespace': podNamespace!,
+      };
+}
+
+/// Response to StopAirflowCommandRequest.
+class StopAirflowCommandResponse {
+  /// Whether the execution is still running.
+  core.bool? isDone;
+
+  /// Output message from stopping execution request.
+  core.List<core.String>? output;
+
+  StopAirflowCommandResponse({
+    this.isDone,
+    this.output,
+  });
+
+  StopAirflowCommandResponse.fromJson(core.Map json_)
+      : this(
+          isDone:
+              json_.containsKey('isDone') ? json_['isDone'] as core.bool : null,
+          output: json_.containsKey('output')
+              ? (json_['output'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (isDone != null) 'isDone': isDone!,
+        if (output != null) 'output': output!,
+      };
+}
 
 /// The configuration settings for the Airflow web server App Engine instance.
 ///

@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Apps Script API - v1
@@ -25,7 +24,7 @@
 ///   - [ProjectsDeploymentsResource]
 ///   - [ProjectsVersionsResource]
 /// - [ScriptsResource]
-library script.v1;
+library script_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -34,7 +33,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -1566,6 +1564,13 @@ class GoogleAppsScriptTypeProcess {
   /// Name of the script being executed.
   core.String? projectName;
 
+  /// Which version of maestro to use to execute the script.
+  /// Possible string values are:
+  /// - "RUNTIME_VERSION_UNSPECIFIED" : Runtime version unset / unknown.
+  /// - "DEPRECATED_ES5" : Legacy rhino version of the Apps script runtime
+  /// - "V8" : Current default V8 version of the apps script runtime.
+  core.String? runtimeVersion;
+
   /// Time the execution started.
   core.String? startTime;
 
@@ -1584,6 +1589,7 @@ class GoogleAppsScriptTypeProcess {
     this.processStatus,
     this.processType,
     this.projectName,
+    this.runtimeVersion,
     this.startTime,
     this.userAccessLevel,
   });
@@ -1605,6 +1611,9 @@ class GoogleAppsScriptTypeProcess {
           projectName: json_.containsKey('projectName')
               ? json_['projectName'] as core.String
               : null,
+          runtimeVersion: json_.containsKey('runtimeVersion')
+              ? json_['runtimeVersion'] as core.String
+              : null,
           startTime: json_.containsKey('startTime')
               ? json_['startTime'] as core.String
               : null,
@@ -1619,6 +1628,7 @@ class GoogleAppsScriptTypeProcess {
         if (processStatus != null) 'processStatus': processStatus!,
         if (processType != null) 'processType': processType!,
         if (projectName != null) 'projectName': projectName!,
+        if (runtimeVersion != null) 'runtimeVersion': runtimeVersion!,
         if (startTime != null) 'startTime': startTime!,
         if (userAccessLevel != null) 'userAccessLevel': userAccessLevel!,
       };

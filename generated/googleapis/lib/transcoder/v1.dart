@@ -2,20 +2,19 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Transcoder API - v1
 ///
 /// This API converts video files into formats suitable for consumer
-/// distribution.
+/// distribution. For more information, see the Transcoder API overview.
 ///
 /// For more information, see <https://cloud.google.com/transcoder/docs/>
 ///
@@ -25,7 +24,7 @@
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsJobTemplatesResource]
 ///     - [ProjectsLocationsJobsResource]
-library transcoder.v1;
+library transcoder_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -34,7 +33,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -43,6 +41,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// This API converts video files into formats suitable for consumer
 /// distribution.
+///
+/// For more information, see the Transcoder API overview.
 class TranscoderApi {
   /// See, edit, configure, and delete your Google Cloud data and see the email
   /// address for your Google Account.
@@ -479,6 +479,9 @@ class AdBreak {
       };
 }
 
+/// Configuration for AES-128 encryption.
+typedef Aes128Encryption = $Empty;
+
 /// Animation types.
 class Animation {
   /// End previous animation.
@@ -521,7 +524,7 @@ class Animation {
 
 /// End previous overlay animation from the video.
 ///
-/// Without AnimationEnd, the overlay object will keep the state of previous
+/// Without `AnimationEnd`, the overlay object will keep the state of previous
 /// animation until the end of the video.
 class AnimationEnd {
   /// The time to end overlay object, in seconds.
@@ -692,10 +695,10 @@ class Audio {
       };
 }
 
-/// The mapping for the `Job.edit_list` atoms with audio `EditAtom.inputs`.
+/// The mapping for the JobConfig.edit_list atoms with audio EditAtom.inputs.
 class AudioMapping {
-  /// The `EditAtom.key` that references the atom with audio inputs in the
-  /// `Job.edit_list`.
+  /// The EditAtom.key that references the atom with audio inputs in the
+  /// JobConfig.edit_list.
   ///
   /// Required.
   core.String? atomKey;
@@ -711,7 +714,7 @@ class AudioMapping {
   /// Required.
   core.int? inputChannel;
 
-  /// The `Input.key` that identifies the input file.
+  /// The Input.key that identifies the input file.
   ///
   /// Required.
   core.String? inputKey;
@@ -796,7 +799,20 @@ class AudioStream {
   /// `aac-he-v2` - `mp3` - `ac3` - `eac3`
   core.String? codec;
 
-  /// The mapping for the `Job.edit_list` atoms with audio `EditAtom.inputs`.
+  /// The name for this particular audio stream that will be added to the
+  /// HLS/DASH manifest.
+  ///
+  /// Not supported in MP4 files.
+  core.String? displayName;
+
+  /// The BCP-47 language code, such as `en-US` or `sr-Latn`.
+  ///
+  /// For more information, see
+  /// https://www.unicode.org/reports/tr35/#Unicode_locale_identifier. Not
+  /// supported in MP4 files.
+  core.String? languageCode;
+
+  /// The mapping for the JobConfig.edit_list atoms with audio EditAtom.inputs.
   core.List<AudioMapping>? mapping;
 
   /// The audio sample rate in Hertz.
@@ -809,6 +825,8 @@ class AudioStream {
     this.channelCount,
     this.channelLayout,
     this.codec,
+    this.displayName,
+    this.languageCode,
     this.mapping,
     this.sampleRateHertz,
   });
@@ -828,6 +846,12 @@ class AudioStream {
               : null,
           codec:
               json_.containsKey('codec') ? json_['codec'] as core.String : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          languageCode: json_.containsKey('languageCode')
+              ? json_['languageCode'] as core.String
+              : null,
           mapping: json_.containsKey('mapping')
               ? (json_['mapping'] as core.List)
                   .map((value) => AudioMapping.fromJson(
@@ -844,6 +868,8 @@ class AudioStream {
         if (channelCount != null) 'channelCount': channelCount!,
         if (channelLayout != null) 'channelLayout': channelLayout!,
         if (codec != null) 'codec': codec!,
+        if (displayName != null) 'displayName': displayName!,
+        if (languageCode != null) 'languageCode': languageCode!,
         if (mapping != null) 'mapping': mapping!,
         if (sampleRateHertz != null) 'sampleRateHertz': sampleRateHertz!,
       };
@@ -894,6 +920,9 @@ class BwdifConfig {
         if (parity != null) 'parity': parity!,
       };
 }
+
+/// Clearkey configuration.
+typedef Clearkey = $Empty;
 
 /// Color preprocessing configuration.
 ///
@@ -995,6 +1024,40 @@ class Crop {
         if (leftPixels != null) 'leftPixels': leftPixels!,
         if (rightPixels != null) 'rightPixels': rightPixels!,
         if (topPixels != null) 'topPixels': topPixels!,
+      };
+}
+
+/// `DASH` manifest configuration.
+class DashConfig {
+  /// The segment reference scheme for a `DASH` manifest.
+  ///
+  /// The default is `SEGMENT_LIST`.
+  /// Possible string values are:
+  /// - "SEGMENT_REFERENCE_SCHEME_UNSPECIFIED" : The segment reference scheme is
+  /// not specified.
+  /// - "SEGMENT_LIST" : Explicitly lists the URLs of media files for each
+  /// segment. For example, if SegmentSettings.individual_segments is `true`,
+  /// then the manifest contains fields similar to the following: ```xml ... ```
+  /// - "SEGMENT_TEMPLATE_NUMBER" : SegmentSettings.individual_segments must be
+  /// set to `true` to use this segment reference scheme. Uses the DASH
+  /// specification `` tag to determine the URLs of media files for each
+  /// segment. For example: ```xml ... ```
+  core.String? segmentReferenceScheme;
+
+  DashConfig({
+    this.segmentReferenceScheme,
+  });
+
+  DashConfig.fromJson(core.Map json_)
+      : this(
+          segmentReferenceScheme: json_.containsKey('segmentReferenceScheme')
+              ? json_['segmentReferenceScheme'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (segmentReferenceScheme != null)
+          'segmentReferenceScheme': segmentReferenceScheme!,
       };
 }
 
@@ -1100,6 +1163,55 @@ class Denoise {
       };
 }
 
+/// Defines configuration for DRM systems in use.
+class DrmSystems {
+  /// Clearkey configuration.
+  Clearkey? clearkey;
+
+  /// Fairplay configuration.
+  Fairplay? fairplay;
+
+  /// Playready configuration.
+  Playready? playready;
+
+  /// Widevine configuration.
+  Widevine? widevine;
+
+  DrmSystems({
+    this.clearkey,
+    this.fairplay,
+    this.playready,
+    this.widevine,
+  });
+
+  DrmSystems.fromJson(core.Map json_)
+      : this(
+          clearkey: json_.containsKey('clearkey')
+              ? Clearkey.fromJson(
+                  json_['clearkey'] as core.Map<core.String, core.dynamic>)
+              : null,
+          fairplay: json_.containsKey('fairplay')
+              ? Fairplay.fromJson(
+                  json_['fairplay'] as core.Map<core.String, core.dynamic>)
+              : null,
+          playready: json_.containsKey('playready')
+              ? Playready.fromJson(
+                  json_['playready'] as core.Map<core.String, core.dynamic>)
+              : null,
+          widevine: json_.containsKey('widevine')
+              ? Widevine.fromJson(
+                  json_['widevine'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (clearkey != null) 'clearkey': clearkey!,
+        if (fairplay != null) 'fairplay': fairplay!,
+        if (playready != null) 'playready': playready!,
+        if (widevine != null) 'widevine': widevine!,
+      };
+}
+
 /// Edit atom.
 class EditAtom {
   /// End time in seconds for the atom, relative to the input file timeline.
@@ -1108,7 +1220,8 @@ class EditAtom {
   /// end of the atom.
   core.String? endTimeOffset;
 
-  /// List of `Input.key`s identifying files that should be used in this atom.
+  /// List of Input.key values identifying files that should be used in this
+  /// atom.
   ///
   /// The listed `inputs` must have the same timeline.
   core.List<core.String>? inputs;
@@ -1213,6 +1326,80 @@ class ElementaryStream {
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
+/// Encryption settings.
+class Encryption {
+  /// Configuration for AES-128 encryption.
+  Aes128Encryption? aes128;
+
+  /// DRM system(s) to use; at least one must be specified.
+  ///
+  /// If a DRM system is omitted, it is considered disabled.
+  ///
+  /// Required.
+  DrmSystems? drmSystems;
+
+  /// Identifier for this set of encryption options.
+  ///
+  /// Required.
+  core.String? id;
+
+  /// Configuration for MPEG Common Encryption (MPEG-CENC).
+  MpegCommonEncryption? mpegCenc;
+
+  /// Configuration for SAMPLE-AES encryption.
+  SampleAesEncryption? sampleAes;
+
+  /// Keys are stored in Google Secret Manager.
+  SecretManagerSource? secretManagerKeySource;
+
+  Encryption({
+    this.aes128,
+    this.drmSystems,
+    this.id,
+    this.mpegCenc,
+    this.sampleAes,
+    this.secretManagerKeySource,
+  });
+
+  Encryption.fromJson(core.Map json_)
+      : this(
+          aes128: json_.containsKey('aes128')
+              ? Aes128Encryption.fromJson(
+                  json_['aes128'] as core.Map<core.String, core.dynamic>)
+              : null,
+          drmSystems: json_.containsKey('drmSystems')
+              ? DrmSystems.fromJson(
+                  json_['drmSystems'] as core.Map<core.String, core.dynamic>)
+              : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          mpegCenc: json_.containsKey('mpegCenc')
+              ? MpegCommonEncryption.fromJson(
+                  json_['mpegCenc'] as core.Map<core.String, core.dynamic>)
+              : null,
+          sampleAes: json_.containsKey('sampleAes')
+              ? SampleAesEncryption.fromJson(
+                  json_['sampleAes'] as core.Map<core.String, core.dynamic>)
+              : null,
+          secretManagerKeySource: json_.containsKey('secretManagerKeySource')
+              ? SecretManagerSource.fromJson(json_['secretManagerKeySource']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (aes128 != null) 'aes128': aes128!,
+        if (drmSystems != null) 'drmSystems': drmSystems!,
+        if (id != null) 'id': id!,
+        if (mpegCenc != null) 'mpegCenc': mpegCenc!,
+        if (sampleAes != null) 'sampleAes': sampleAes!,
+        if (secretManagerKeySource != null)
+          'secretManagerKeySource': secretManagerKeySource!,
+      };
+}
+
+/// Fairplay configuration.
+typedef Fairplay = $Empty;
+
 /// H264 codec settings.
 class H264CodecSettings {
   /// Specifies whether an open Group of Pictures (GOP) structure should be
@@ -1231,7 +1418,7 @@ class H264CodecSettings {
   /// The number of consecutive B-frames.
   ///
   /// Must be greater than or equal to zero. Must be less than
-  /// `VideoStream.gop_frame_count` if set. The default is 0.
+  /// H264CodecSettings.gop_frame_count if set. The default is 0.
   core.int? bFrameCount;
 
   /// Allow B-pyramid for reference frame selection.
@@ -1254,7 +1441,7 @@ class H264CodecSettings {
 
   /// Use two-pass encoding strategy to achieve better video quality.
   ///
-  /// `VideoStream.rate_control_mode` must be `vbr`. The default is `false`.
+  /// H264CodecSettings.rate_control_mode must be `vbr`. The default is `false`.
   core.bool? enableTwoPass;
 
   /// The entropy coder to use.
@@ -1290,7 +1477,10 @@ class H264CodecSettings {
   ///
   /// Must be an even integer. When not specified, the height is adjusted to
   /// match the specified width and input aspect ratio. If both are omitted, the
-  /// input height is used.
+  /// input height is used. For portrait videos that contain horizontal ASR and
+  /// rotation metadata, provide the height, in pixels, per the horizontal ASR.
+  /// The API calculates the width per the horizontal ASR. The API detects any
+  /// rotation metadata and swaps the requested height and width for the output.
   core.int? heightPixels;
 
   /// Pixel format to use.
@@ -1320,7 +1510,7 @@ class H264CodecSettings {
   /// override other fields you set in the `H264CodecSettings` message.
   core.String? profile;
 
-  /// Specify the `rate_control_mode`.
+  /// Specify the mode.
   ///
   /// The default is `vbr`. Supported rate control modes: - `vbr` - variable
   /// bitrate - `crf` - constant rate factor
@@ -1337,20 +1527,24 @@ class H264CodecSettings {
   /// Initial fullness of the Video Buffering Verifier (VBV) buffer in bits.
   ///
   /// Must be greater than zero. The default is equal to 90% of
-  /// `VideoStream.vbv_size_bits`.
+  /// H264CodecSettings.vbv_size_bits.
   core.int? vbvFullnessBits;
 
   /// Size of the Video Buffering Verifier (VBV) buffer in bits.
   ///
   /// Must be greater than zero. The default is equal to
-  /// `VideoStream.bitrate_bps`.
+  /// H264CodecSettings.bitrate_bps.
   core.int? vbvSizeBits;
 
   /// The width of the video in pixels.
   ///
   /// Must be an even integer. When not specified, the width is adjusted to
   /// match the specified height and input aspect ratio. If both are omitted,
-  /// the input width is used.
+  /// the input width is used. For portrait videos that contain horizontal ASR
+  /// and rotation metadata, provide the width, in pixels, per the horizontal
+  /// ASR. The API calculates the height per the horizontal ASR. The API detects
+  /// any rotation metadata and swaps the requested height and width for the
+  /// output.
   core.int? widthPixels;
 
   H264CodecSettings({
@@ -1480,7 +1674,7 @@ class H265CodecSettings {
   /// The number of consecutive B-frames.
   ///
   /// Must be greater than or equal to zero. Must be less than
-  /// `VideoStream.gop_frame_count` if set. The default is 0.
+  /// H265CodecSettings.gop_frame_count if set. The default is 0.
   core.int? bFrameCount;
 
   /// Allow B-pyramid for reference frame selection.
@@ -1503,7 +1697,7 @@ class H265CodecSettings {
 
   /// Use two-pass encoding strategy to achieve better video quality.
   ///
-  /// `VideoStream.rate_control_mode` must be `vbr`. The default is `false`.
+  /// H265CodecSettings.rate_control_mode must be `vbr`. The default is `false`.
   core.bool? enableTwoPass;
 
   /// The target video frame rate in frames per second (FPS).
@@ -1534,7 +1728,10 @@ class H265CodecSettings {
   ///
   /// Must be an even integer. When not specified, the height is adjusted to
   /// match the specified width and input aspect ratio. If both are omitted, the
-  /// input height is used.
+  /// input height is used. For portrait videos that contain horizontal ASR and
+  /// rotation metadata, provide the height, in pixels, per the horizontal ASR.
+  /// The API calculates the width per the horizontal ASR. The API detects any
+  /// rotation metadata and swaps the requested height and width for the output.
   core.int? heightPixels;
 
   /// Pixel format to use.
@@ -1568,7 +1765,7 @@ class H265CodecSettings {
   /// you set in the `H265CodecSettings` message.
   core.String? profile;
 
-  /// Specify the `rate_control_mode`.
+  /// Specify the mode.
   ///
   /// The default is `vbr`. Supported rate control modes: - `vbr` - variable
   /// bitrate - `crf` - constant rate factor
@@ -1585,7 +1782,7 @@ class H265CodecSettings {
   /// Initial fullness of the Video Buffering Verifier (VBV) buffer in bits.
   ///
   /// Must be greater than zero. The default is equal to 90% of
-  /// `VideoStream.vbv_size_bits`.
+  /// H265CodecSettings.vbv_size_bits.
   core.int? vbvFullnessBits;
 
   /// Size of the Video Buffering Verifier (VBV) buffer in bits.
@@ -1598,7 +1795,11 @@ class H265CodecSettings {
   ///
   /// Must be an even integer. When not specified, the width is adjusted to
   /// match the specified height and input aspect ratio. If both are omitted,
-  /// the input width is used.
+  /// the input width is used. For portrait videos that contain horizontal ASR
+  /// and rotation metadata, provide the width, in pixels, per the horizontal
+  /// ASR. The API calculates the height per the horizontal ASR. The API detects
+  /// any rotation metadata and swaps the requested height and width for the
+  /// output.
   core.int? widthPixels;
 
   H265CodecSettings({
@@ -1705,7 +1906,7 @@ class H265CodecSettings {
       };
 }
 
-/// Overlaid jpeg image.
+/// Overlaid image.
 class Image {
   /// Target image opacity.
   ///
@@ -1720,10 +1921,10 @@ class Image {
   /// `x` and `y` to `0.0`.
   NormalizedCoordinate? resolution;
 
-  /// URI of the JPEG image in Cloud Storage.
+  /// URI of the image in Cloud Storage.
   ///
-  /// For example, `gs://bucket/inputs/image.jpeg`. JPEG is the only supported
-  /// image type.
+  /// For example, `gs://bucket/inputs/image.png`. Only PNG and JPEG images are
+  /// supported.
   ///
   /// Required.
   core.String? uri;
@@ -1767,7 +1968,7 @@ class Input {
   ///
   /// Input files must be at least 5 seconds in duration and stored in Cloud
   /// Storage (for example, `gs://bucket/inputs/file.mp4`). If empty, the value
-  /// is populated from `Job.input_uri`. See
+  /// is populated from Job.input_uri. See
   /// [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
   core.String? uri;
 
@@ -1797,6 +1998,13 @@ class Input {
 
 /// Transcoding job resource.
 class Job {
+  /// The processing priority of a batch job.
+  ///
+  /// This field can only be set for batch mode jobs. The default value is 0.
+  /// This value cannot be negative. Higher values correspond to higher
+  /// priorities for the job.
+  core.int? batchModePriority;
+
   /// The configuration for this job.
   JobConfig? config;
 
@@ -1812,7 +2020,7 @@ class Job {
 
   /// An error object that describes the reason for the failure.
   ///
-  /// This property is always present when `state` is `FAILED`.
+  /// This property is always present when ProcessingState is `FAILED`.
   ///
   /// Output only.
   Status? error;
@@ -1831,10 +2039,35 @@ class Job {
   /// You can use these to organize and group your jobs.
   core.Map<core.String, core.String>? labels;
 
+  /// The processing mode of the job.
+  ///
+  /// The default is `PROCESSING_MODE_INTERACTIVE`.
+  /// Possible string values are:
+  /// - "PROCESSING_MODE_UNSPECIFIED" : The job processing mode is not
+  /// specified.
+  /// - "PROCESSING_MODE_INTERACTIVE" : The job processing mode is interactive
+  /// mode. Interactive job will either be ran or rejected if quota does not
+  /// allow for it.
+  /// - "PROCESSING_MODE_BATCH" : The job processing mode is batch mode. Batch
+  /// mode allows queuing of jobs.
+  core.String? mode;
+
   /// The resource name of the job.
   ///
   /// Format: `projects/{project_number}/locations/{location}/jobs/{job}`
   core.String? name;
+
+  /// The optimization strategy of the job.
+  ///
+  /// The default is `AUTODETECT`.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "OPTIMIZATION_STRATEGY_UNSPECIFIED" : The optimization strategy is not
+  /// specified.
+  /// - "AUTODETECT" : Prioritize job processing speed.
+  /// - "DISABLED" : Disable all optimizations.
+  core.String? optimization;
 
   /// Input only.
   ///
@@ -1859,14 +2092,14 @@ class Job {
   /// - "RUNNING" : The job is being processed.
   /// - "SUCCEEDED" : The job has been completed successfully.
   /// - "FAILED" : The job has failed. For additional information, see
-  /// `failure_reason` and `failure_details`
+  /// [Troubleshooting](https://cloud.google.com/transcoder/docs/troubleshooting).
   core.String? state;
 
   /// Input only.
   ///
   /// Specify the `template_id` to use for populating `Job.config`. The default
-  /// is `preset/web-hd`. Preset Transcoder templates: - `preset/{preset_id}` -
-  /// User defined JobTemplate: `{job_template_id}`
+  /// is `preset/web-hd`, which is the only supported preset. User defined
+  /// JobTemplate: `{job_template_id}`
   core.String? templateId;
 
   /// Job time to live value in days, which will be effective after job
@@ -1877,13 +2110,16 @@ class Job {
   core.int? ttlAfterCompletionDays;
 
   Job({
+    this.batchModePriority,
     this.config,
     this.createTime,
     this.endTime,
     this.error,
     this.inputUri,
     this.labels,
+    this.mode,
     this.name,
+    this.optimization,
     this.outputUri,
     this.startTime,
     this.state,
@@ -1893,6 +2129,9 @@ class Job {
 
   Job.fromJson(core.Map json_)
       : this(
+          batchModePriority: json_.containsKey('batchModePriority')
+              ? json_['batchModePriority'] as core.int
+              : null,
           config: json_.containsKey('config')
               ? JobConfig.fromJson(
                   json_['config'] as core.Map<core.String, core.dynamic>)
@@ -1912,13 +2151,17 @@ class Job {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
+          mode: json_.containsKey('mode') ? json_['mode'] as core.String : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          optimization: json_.containsKey('optimization')
+              ? json_['optimization'] as core.String
+              : null,
           outputUri: json_.containsKey('outputUri')
               ? json_['outputUri'] as core.String
               : null,
@@ -1936,13 +2179,16 @@ class Job {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (batchModePriority != null) 'batchModePriority': batchModePriority!,
         if (config != null) 'config': config!,
         if (createTime != null) 'createTime': createTime!,
         if (endTime != null) 'endTime': endTime!,
         if (error != null) 'error': error!,
         if (inputUri != null) 'inputUri': inputUri!,
         if (labels != null) 'labels': labels!,
+        if (mode != null) 'mode': mode!,
         if (name != null) 'name': name!,
+        if (optimization != null) 'optimization': optimization!,
         if (outputUri != null) 'outputUri': outputUri!,
         if (startTime != null) 'startTime': startTime!,
         if (state != null) 'state': state!,
@@ -1959,13 +2205,20 @@ class JobConfig {
   /// Specifies where to insert ad break tags in the output manifests.
   core.List<AdBreak>? adBreaks;
 
-  /// List of `Edit atom`s.
+  /// List of edit atoms.
   ///
   /// Defines the ultimate timeline of the resulting file or manifest.
   core.List<EditAtom>? editList;
 
   /// List of elementary streams.
   core.List<ElementaryStream>? elementaryStreams;
+
+  /// List of encryption configurations for the content.
+  ///
+  /// Each configuration has an ID. Specify this ID in the
+  /// MuxStream.encryption_id field to indicate the configuration to use for
+  /// that `MuxStream` output.
+  core.List<Encryption>? encryptions;
 
   /// List of input assets stored in Cloud Storage.
   core.List<Input>? inputs;
@@ -1994,6 +2247,7 @@ class JobConfig {
     this.adBreaks,
     this.editList,
     this.elementaryStreams,
+    this.encryptions,
     this.inputs,
     this.manifests,
     this.muxStreams,
@@ -2020,6 +2274,12 @@ class JobConfig {
           elementaryStreams: json_.containsKey('elementaryStreams')
               ? (json_['elementaryStreams'] as core.List)
                   .map((value) => ElementaryStream.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          encryptions: json_.containsKey('encryptions')
+              ? (json_['encryptions'] as core.List)
+                  .map((value) => Encryption.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -2067,6 +2327,7 @@ class JobConfig {
         if (adBreaks != null) 'adBreaks': adBreaks!,
         if (editList != null) 'editList': editList!,
         if (elementaryStreams != null) 'elementaryStreams': elementaryStreams!,
+        if (encryptions != null) 'encryptions': encryptions!,
         if (inputs != null) 'inputs': inputs!,
         if (manifests != null) 'manifests': manifests!,
         if (muxStreams != null) 'muxStreams': muxStreams!,
@@ -2107,9 +2368,9 @@ class JobTemplate {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -2209,33 +2470,37 @@ class ListJobsResponse {
 
 /// Manifest configuration.
 class Manifest {
+  /// `DASH` manifest configuration.
+  DashConfig? dash;
+
   /// The name of the generated file.
   ///
   /// The default is `manifest` with the extension suffix corresponding to the
-  /// `Manifest.type`.
+  /// Manifest.type.
   core.String? fileName;
 
-  /// List of user given `MuxStream.key`s that should appear in this manifest.
+  /// List of user supplied MuxStream.key values that should appear in this
+  /// manifest.
   ///
-  /// When `Manifest.type` is `HLS`, a media manifest with name `MuxStream.key`
-  /// and `.m3u8` extension is generated for each element of the
-  /// `Manifest.mux_streams`.
+  /// When Manifest.type is `HLS`, a media manifest with name MuxStream.key and
+  /// `.m3u8` extension is generated for each element in this list.
   ///
   /// Required.
   core.List<core.String>? muxStreams;
 
-  /// Type of the manifest, can be `HLS` or `DASH`.
+  /// Type of the manifest.
   ///
   /// Required.
   /// Possible string values are:
   /// - "MANIFEST_TYPE_UNSPECIFIED" : The manifest type is not specified.
-  /// - "HLS" : Create `HLS` manifest. The corresponding file extension is
+  /// - "HLS" : Create an HLS manifest. The corresponding file extension is
   /// `.m3u8`.
-  /// - "DASH" : Create `DASH` manifest. The corresponding file extension is
-  /// `.mpd`.
+  /// - "DASH" : Create an MPEG-DASH manifest. The corresponding file extension
+  /// is `.mpd`.
   core.String? type;
 
   Manifest({
+    this.dash,
     this.fileName,
     this.muxStreams,
     this.type,
@@ -2243,6 +2508,10 @@ class Manifest {
 
   Manifest.fromJson(core.Map json_)
       : this(
+          dash: json_.containsKey('dash')
+              ? DashConfig.fromJson(
+                  json_['dash'] as core.Map<core.String, core.dynamic>)
+              : null,
           fileName: json_.containsKey('fileName')
               ? json_['fileName'] as core.String
               : null,
@@ -2255,9 +2524,35 @@ class Manifest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (dash != null) 'dash': dash!,
         if (fileName != null) 'fileName': fileName!,
         if (muxStreams != null) 'muxStreams': muxStreams!,
         if (type != null) 'type': type!,
+      };
+}
+
+/// Configuration for MPEG Common Encryption (MPEG-CENC).
+class MpegCommonEncryption {
+  /// Specify the encryption scheme.
+  ///
+  /// Supported encryption schemes: - `cenc` - `cbcs`
+  ///
+  /// Required.
+  core.String? scheme;
+
+  MpegCommonEncryption({
+    this.scheme,
+  });
+
+  MpegCommonEncryption.fromJson(core.Map json_)
+      : this(
+          scheme: json_.containsKey('scheme')
+              ? json_['scheme'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (scheme != null) 'scheme': scheme!,
       };
 }
 
@@ -2270,21 +2565,23 @@ class MuxStream {
   /// [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats)
   core.String? container;
 
-  /// List of `ElementaryStream.key`s multiplexed in this stream.
+  /// List of ElementaryStream.key values multiplexed in this stream.
   core.List<core.String>? elementaryStreams;
+
+  /// Identifier of the encryption configuration to use.
+  ///
+  /// If omitted, output will be unencrypted.
+  core.String? encryptionId;
 
   /// The name of the generated file.
   ///
-  /// The default is `MuxStream.key` with the extension suffix corresponding to
-  /// the `MuxStream.container`. Individual segments also have an incremental
+  /// The default is MuxStream.key with the extension suffix corresponding to
+  /// the MuxStream.container. Individual segments also have an incremental
   /// 10-digit zero-padded suffix starting from 0 before the extension, such as
   /// `mux_stream0000000123.ts`.
   core.String? fileName;
 
   /// A unique key for this multiplexed stream.
-  ///
-  /// HLS media manifests will be named `MuxStream.key` with the `.m3u8`
-  /// extension suffix.
   core.String? key;
 
   /// Segment settings for `ts`, `fmp4` and `vtt`.
@@ -2293,6 +2590,7 @@ class MuxStream {
   MuxStream({
     this.container,
     this.elementaryStreams,
+    this.encryptionId,
     this.fileName,
     this.key,
     this.segmentSettings,
@@ -2308,6 +2606,9 @@ class MuxStream {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          encryptionId: json_.containsKey('encryptionId')
+              ? json_['encryptionId'] as core.String
+              : null,
           fileName: json_.containsKey('fileName')
               ? json_['fileName'] as core.String
               : null,
@@ -2321,6 +2622,7 @@ class MuxStream {
   core.Map<core.String, core.dynamic> toJson() => {
         if (container != null) 'container': container!,
         if (elementaryStreams != null) 'elementaryStreams': elementaryStreams!,
+        if (encryptionId != null) 'encryptionId': encryptionId!,
         if (fileName != null) 'fileName': fileName!,
         if (key != null) 'key': key!,
         if (segmentSettings != null) 'segmentSettings': segmentSettings!,
@@ -2363,7 +2665,7 @@ class Output {
   /// URI for the output file(s).
   ///
   /// For example, `gs://my-bucket/outputs/`. If empty, the value is populated
-  /// from `Job.output_uri`. See
+  /// from Job.output_uri. See
   /// [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
   core.String? uri;
 
@@ -2383,7 +2685,7 @@ class Output {
 
 /// Overlay configuration.
 class Overlay {
-  /// List of Animations.
+  /// List of animations.
   ///
   /// The list should be chronological, without any time overlap.
   core.List<Animation>? animations;
@@ -2471,6 +2773,9 @@ class Pad {
         if (topPixels != null) 'topPixels': topPixels!,
       };
 }
+
+/// Playready configuration.
+typedef Playready = $Empty;
 
 /// Preprocessing configurations.
 class PreprocessingConfig {
@@ -2570,6 +2875,37 @@ class PubsubDestination {
       };
 }
 
+/// Configuration for SAMPLE-AES encryption.
+typedef SampleAesEncryption = $Empty;
+
+/// Configuration for secrets stored in Google Secret Manager.
+class SecretManagerSource {
+  /// The name of the Secret Version containing the encryption key in the
+  /// following format:
+  /// `projects/{project}/secrets/{secret_id}/versions/{version_number}` Note
+  /// that only numbered versions are supported.
+  ///
+  /// Aliases like "latest" are not supported.
+  ///
+  /// Required.
+  core.String? secretVersion;
+
+  SecretManagerSource({
+    this.secretVersion,
+  });
+
+  SecretManagerSource.fromJson(core.Map json_)
+      : this(
+          secretVersion: json_.containsKey('secretVersion')
+              ? json_['secretVersion'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (secretVersion != null) 'secretVersion': secretVersion!,
+      };
+}
+
 /// Segment settings for `ts`, `fmp4` and `vtt`.
 class SegmentSettings {
   /// Create an individual segment file.
@@ -2657,7 +2993,11 @@ class SpriteSheet {
   /// Must be an even integer. To preserve the source aspect ratio, set the
   /// SpriteSheet.sprite_height_pixels field or the
   /// SpriteSheet.sprite_width_pixels field, but not both (the API will
-  /// automatically calculate the missing field).
+  /// automatically calculate the missing field). For portrait videos that
+  /// contain horizontal ASR and rotation metadata, provide the height, in
+  /// pixels, per the horizontal ASR. The API calculates the width per the
+  /// horizontal ASR. The API detects any rotation metadata and swaps the
+  /// requested height and width for the output.
   ///
   /// Required.
   core.int? spriteHeightPixels;
@@ -2667,7 +3007,11 @@ class SpriteSheet {
   /// Must be an even integer. To preserve the source aspect ratio, set the
   /// SpriteSheet.sprite_width_pixels field or the
   /// SpriteSheet.sprite_height_pixels field, but not both (the API will
-  /// automatically calculate the missing field).
+  /// automatically calculate the missing field). For portrait videos that
+  /// contain horizontal ASR and rotation metadata, provide the width, in
+  /// pixels, per the horizontal ASR. The API calculates the height per the
+  /// horizontal ASR. The API detects any rotation metadata and swaps the
+  /// requested height and width for the output.
   ///
   /// Required.
   core.int? spriteWidthPixels;
@@ -2759,15 +3103,15 @@ class SpriteSheet {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef Status = $Status;
 
-/// The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.
+/// The mapping for the JobConfig.edit_list atoms with text EditAtom.inputs.
 class TextMapping {
-  /// The `EditAtom.key` that references atom with text inputs in the
-  /// `Job.edit_list`.
+  /// The EditAtom.key that references atom with text inputs in the
+  /// JobConfig.edit_list.
   ///
   /// Required.
   core.String? atomKey;
 
-  /// The `Input.key` that identifies the input file.
+  /// The Input.key that identifies the input file.
   ///
   /// Required.
   core.String? inputKey;
@@ -2813,11 +3157,26 @@ class TextStream {
   /// `cea608` - `cea708` - `webvtt`
   core.String? codec;
 
-  /// The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.
+  /// The name for this particular text stream that will be added to the
+  /// HLS/DASH manifest.
+  ///
+  /// Not supported in MP4 files.
+  core.String? displayName;
+
+  /// The BCP-47 language code, such as `en-US` or `sr-Latn`.
+  ///
+  /// For more information, see
+  /// https://www.unicode.org/reports/tr35/#Unicode_locale_identifier. Not
+  /// supported in MP4 files.
+  core.String? languageCode;
+
+  /// The mapping for the JobConfig.edit_list atoms with text EditAtom.inputs.
   core.List<TextMapping>? mapping;
 
   TextStream({
     this.codec,
+    this.displayName,
+    this.languageCode,
     this.mapping,
   });
 
@@ -2825,6 +3184,12 @@ class TextStream {
       : this(
           codec:
               json_.containsKey('codec') ? json_['codec'] as core.String : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          languageCode: json_.containsKey('languageCode')
+              ? json_['languageCode'] as core.String
+              : null,
           mapping: json_.containsKey('mapping')
               ? (json_['mapping'] as core.List)
                   .map((value) => TextMapping.fromJson(
@@ -2835,6 +3200,8 @@ class TextStream {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (codec != null) 'codec': codec!,
+        if (displayName != null) 'displayName': displayName!,
+        if (languageCode != null) 'languageCode': languageCode!,
         if (mapping != null) 'mapping': mapping!,
       };
 }
@@ -2923,7 +3290,10 @@ class Vp9CodecSettings {
   ///
   /// Must be an even integer. When not specified, the height is adjusted to
   /// match the specified width and input aspect ratio. If both are omitted, the
-  /// input height is used.
+  /// input height is used. For portrait videos that contain horizontal ASR and
+  /// rotation metadata, provide the height, in pixels, per the horizontal ASR.
+  /// The API calculates the width per the horizontal ASR. The API detects any
+  /// rotation metadata and swaps the requested height and width for the output.
   core.int? heightPixels;
 
   /// Pixel format to use.
@@ -2945,7 +3315,7 @@ class Vp9CodecSettings {
   /// fields you set in the `Vp9CodecSettings` message.
   core.String? profile;
 
-  /// Specify the `rate_control_mode`.
+  /// Specify the mode.
   ///
   /// The default is `vbr`. Supported rate control modes: - `vbr` - variable
   /// bitrate
@@ -2955,7 +3325,11 @@ class Vp9CodecSettings {
   ///
   /// Must be an even integer. When not specified, the width is adjusted to
   /// match the specified height and input aspect ratio. If both are omitted,
-  /// the input width is used.
+  /// the input width is used. For portrait videos that contain horizontal ASR
+  /// and rotation metadata, provide the width, in pixels, per the horizontal
+  /// ASR. The API calculates the height per the horizontal ASR. The API detects
+  /// any rotation metadata and swaps the requested height and width for the
+  /// output.
   core.int? widthPixels;
 
   Vp9CodecSettings({
@@ -3018,6 +3392,9 @@ class Vp9CodecSettings {
         if (widthPixels != null) 'widthPixels': widthPixels!,
       };
 }
+
+/// Widevine configuration.
+typedef Widevine = $Empty;
 
 /// Yet Another Deinterlacing Filter Configuration.
 class YadifConfig {

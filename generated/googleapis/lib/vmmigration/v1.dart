@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// VM Migration API - v1
@@ -31,9 +30,10 @@
 ///       - [ProjectsLocationsSourcesMigratingVmsResource]
 ///         - [ProjectsLocationsSourcesMigratingVmsCloneJobsResource]
 ///         - [ProjectsLocationsSourcesMigratingVmsCutoverJobsResource]
+///         - [ProjectsLocationsSourcesMigratingVmsReplicationCyclesResource]
 ///       - [ProjectsLocationsSourcesUtilizationReportsResource]
 ///     - [ProjectsLocationsTargetProjectsResource]
-library vmmigration.v1;
+library vmmigration_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -42,7 +42,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -241,7 +240,7 @@ class ProjectsLocationsGroupsResource {
   /// ID so that if you must retry your request, the server will know to ignore
   /// the request if it has already been completed. The server will guarantee
   /// that for at least 60 minutes since the first request. For example,
-  /// consider a situation where you make an initial request and t he request
+  /// consider a situation where you make an initial request and the request
   /// times out. If you make the request again with the same request ID, the
   /// server can check if original operation with the same request ID was
   /// received, and if so, will ignore the second request. This prevents clients
@@ -296,7 +295,7 @@ class ProjectsLocationsGroupsResource {
   /// unique request ID so that if you must retry your request, the server will
   /// know to ignore the request if it has already been completed. The server
   /// will guarantee that for at least 60 minutes after the first request. For
-  /// example, consider a situation where you make an initial request and t he
+  /// example, consider a situation where you make an initial request and the
   /// request times out. If you make the request again with the same request ID,
   /// the server can check if original operation with the same request ID was
   /// received, and if so, will ignore the second request. This prevents clients
@@ -442,7 +441,7 @@ class ProjectsLocationsGroupsResource {
   /// ID so that if you must retry your request, the server will know to ignore
   /// the request if it has already been completed. The server will guarantee
   /// that for at least 60 minutes since the first request. For example,
-  /// consider a situation where you make an initial request and t he request
+  /// consider a situation where you make an initial request and the request
   /// times out. If you make the request again with the same request ID, the
   /// server can check if original operation with the same request ID was
   /// received, and if so, will ignore the second request. This prevents clients
@@ -672,13 +671,6 @@ class ProjectsLocationsOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -754,7 +746,7 @@ class ProjectsLocationsSourcesResource {
   /// ID so that if you must retry your request, the server will know to ignore
   /// the request if it has already been completed. The server will guarantee
   /// that for at least 60 minutes since the first request. For example,
-  /// consider a situation where you make an initial request and t he request
+  /// consider a situation where you make an initial request and the request
   /// times out. If you make the request again with the same request ID, the
   /// server can check if original operation with the same request ID was
   /// received, and if so, will ignore the second request. This prevents clients
@@ -811,7 +803,7 @@ class ProjectsLocationsSourcesResource {
   /// unique request ID so that if you must retry your request, the server will
   /// know to ignore the request if it has already been completed. The server
   /// will guarantee that for at least 60 minutes after the first request. For
-  /// example, consider a situation where you make an initial request and t he
+  /// example, consider a situation where you make an initial request and the
   /// request times out. If you make the request again with the same request ID,
   /// the server can check if original operation with the same request ID was
   /// received, and if so, will ignore the second request. This prevents clients
@@ -1020,7 +1012,7 @@ class ProjectsLocationsSourcesResource {
   /// ID so that if you must retry your request, the server will know to ignore
   /// the request if it has already been completed. The server will guarantee
   /// that for at least 60 minutes since the first request. For example,
-  /// consider a situation where you make an initial request and t he request
+  /// consider a situation where you make an initial request and the request
   /// times out. If you make the request again with the same request ID, the
   /// server can check if original operation with the same request ID was
   /// received, and if so, will ignore the second request. This prevents clients
@@ -1095,7 +1087,7 @@ class ProjectsLocationsSourcesDatacenterConnectorsResource {
   /// ID so that if you must retry your request, the server will know to ignore
   /// the request if it has already been completed. The server will guarantee
   /// that for at least 60 minutes since the first request. For example,
-  /// consider a situation where you make an initial request and t he request
+  /// consider a situation where you make an initial request and the request
   /// times out. If you make the request again with the same request ID, the
   /// server can check if original operation with the same request ID was
   /// received, and if so, will ignore the second request. This prevents clients
@@ -1152,7 +1144,7 @@ class ProjectsLocationsSourcesDatacenterConnectorsResource {
   /// ID so that if you must retry your request, the server will know to ignore
   /// the request if it has already been completed. The server will guarantee
   /// that for at least 60 minutes after the first request. For example,
-  /// consider a situation where you make an initial request and t he request
+  /// consider a situation where you make an initial request and the request
   /// times out. If you make the request again with the same request ID, the
   /// server can check if original operation with the same request ID was
   /// received, and if so, will ignore the second request. This prevents clients
@@ -1340,6 +1332,10 @@ class ProjectsLocationsSourcesMigratingVmsResource {
       ProjectsLocationsSourcesMigratingVmsCloneJobsResource(_requester);
   ProjectsLocationsSourcesMigratingVmsCutoverJobsResource get cutoverJobs =>
       ProjectsLocationsSourcesMigratingVmsCutoverJobsResource(_requester);
+  ProjectsLocationsSourcesMigratingVmsReplicationCyclesResource
+      get replicationCycles =>
+          ProjectsLocationsSourcesMigratingVmsReplicationCyclesResource(
+              _requester);
 
   ProjectsLocationsSourcesMigratingVmsResource(commons.ApiRequester client)
       : _requester = client;
@@ -1360,7 +1356,7 @@ class ProjectsLocationsSourcesMigratingVmsResource {
   /// ID so that if you must retry your request, the server will know to ignore
   /// the request if it has already been completed. The server will guarantee
   /// that for at least 60 minutes since the first request. For example,
-  /// consider a situation where you make an initial request and t he request
+  /// consider a situation where you make an initial request and the request
   /// times out. If you make the request again with the same request ID, the
   /// server can check if original operation with the same request ID was
   /// received, and if so, will ignore the second request. This prevents clients
@@ -1617,7 +1613,7 @@ class ProjectsLocationsSourcesMigratingVmsResource {
   /// ID so that if you must retry your request, the server will know to ignore
   /// the request if it has already been completed. The server will guarantee
   /// that for at least 60 minutes since the first request. For example,
-  /// consider a situation where you make an initial request and t he request
+  /// consider a situation where you make an initial request and the request
   /// times out. If you make the request again with the same request ID, the
   /// server can check if original operation with the same request ID was
   /// received, and if so, will ignore the second request. This prevents clients
@@ -1869,7 +1865,7 @@ class ProjectsLocationsSourcesMigratingVmsCloneJobsResource {
   /// ID so that if you must retry your request, the server will know to ignore
   /// the request if it has already been completed. The server will guarantee
   /// that for at least 60 minutes since the first request. For example,
-  /// consider a situation where you make an initial request and t he request
+  /// consider a situation where you make an initial request and the request
   /// times out. If you make the request again with the same request ID, the
   /// server can check if original operation with the same request ID was
   /// received, and if so, will ignore the second request. This prevents clients
@@ -2075,7 +2071,7 @@ class ProjectsLocationsSourcesMigratingVmsCutoverJobsResource {
   /// ID so that if you must retry your request, the server will know to ignore
   /// the request if it has already been completed. The server will guarantee
   /// that for at least 60 minutes since the first request. For example,
-  /// consider a situation where you make an initial request and t he request
+  /// consider a situation where you make an initial request and the request
   /// times out. If you make the request again with the same request ID, the
   /// server can check if original operation with the same request ID was
   /// received, and if so, will ignore the second request. This prevents clients
@@ -2216,6 +2212,111 @@ class ProjectsLocationsSourcesMigratingVmsCutoverJobsResource {
   }
 }
 
+class ProjectsLocationsSourcesMigratingVmsReplicationCyclesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsSourcesMigratingVmsReplicationCyclesResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets details of a single ReplicationCycle.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the ReplicationCycle.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/sources/\[^/\]+/migratingVms/\[^/\]+/replicationCycles/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ReplicationCycle].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ReplicationCycle> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ReplicationCycle.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists ReplicationCycles in a given MigratingVM.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent, which owns this collection of
+  /// ReplicationCycles.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/sources/\[^/\]+/migratingVms/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. The filter request.
+  ///
+  /// [orderBy] - Optional. the order by fields for the result.
+  ///
+  /// [pageSize] - Optional. The maximum number of replication cycles to return.
+  /// The service may return fewer than this value. If unspecified, at most 100
+  /// migrating VMs will be returned. The maximum value is 100; values above 100
+  /// will be coerced to 100.
+  ///
+  /// [pageToken] - Required. A page token, received from a previous
+  /// `ListReplicationCycles` call. Provide this to retrieve the subsequent
+  /// page. When paginating, all other parameters provided to
+  /// `ListReplicationCycles` must match the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListReplicationCyclesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListReplicationCyclesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/replicationCycles';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListReplicationCyclesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsSourcesUtilizationReportsResource {
   final commons.ApiRequester _requester;
 
@@ -2237,7 +2338,7 @@ class ProjectsLocationsSourcesUtilizationReportsResource {
   /// ID so that if you must retry your request, the server will know to ignore
   /// the request if it has already been completed. The server will guarantee
   /// that for at least 60 minutes since the first request. For example,
-  /// consider a situation where you make an initial request and t he request
+  /// consider a situation where you make an initial request and the request
   /// times out. If you make the request again with the same request ID, the
   /// server can check if original operation with the same request ID was
   /// received, and if so, will ignore the second request. This prevents clients
@@ -2298,7 +2399,7 @@ class ProjectsLocationsSourcesUtilizationReportsResource {
   /// unique request ID so that if you must retry your request, the server will
   /// know to ignore the request if it has already been completed. The server
   /// will guarantee that for at least 60 minutes after the first request. For
-  /// example, consider a situation where you make an initial request and t he
+  /// example, consider a situation where you make an initial request and the
   /// request times out. If you make the request again with the same request ID,
   /// the server can check if original operation with the same request ID was
   /// received, and if so, will ignore the second request. This prevents clients
@@ -2477,7 +2578,7 @@ class ProjectsLocationsTargetProjectsResource {
   /// ID so that if you must retry your request, the server will know to ignore
   /// the request if it has already been completed. The server will guarantee
   /// that for at least 60 minutes since the first request. For example,
-  /// consider a situation where you make an initial request and t he request
+  /// consider a situation where you make an initial request and the request
   /// times out. If you make the request again with the same request ID, the
   /// server can check if original operation with the same request ID was
   /// received, and if so, will ignore the second request. This prevents clients
@@ -2537,7 +2638,7 @@ class ProjectsLocationsTargetProjectsResource {
   /// unique request ID so that if you must retry your request, the server will
   /// know to ignore the request if it has already been completed. The server
   /// will guarantee that for at least 60 minutes after the first request. For
-  /// example, consider a situation where you make an initial request and t he
+  /// example, consider a situation where you make an initial request and the
   /// request times out. If you make the request again with the same request ID,
   /// the server can check if original operation with the same request ID was
   /// received, and if so, will ignore the second request. This prevents clients
@@ -2693,7 +2794,7 @@ class ProjectsLocationsTargetProjectsResource {
   /// ID so that if you must retry your request, the server will know to ignore
   /// the request if it has already been completed. The server will guarantee
   /// that for at least 60 minutes since the first request. For example,
-  /// consider a situation where you make an initial request and t he request
+  /// consider a situation where you make an initial request and the request
   /// times out. If you make the request again with the same request ID, the
   /// server can check if original operation with the same request ID was
   /// received, and if so, will ignore the second request. This prevents clients
@@ -2742,6 +2843,51 @@ class ProjectsLocationsTargetProjectsResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
+
+/// Message describing AWS Credentials using access key id and secret.
+class AccessKeyCredentials {
+  /// AWS access key ID.
+  core.String? accessKeyId;
+
+  /// Input only.
+  ///
+  /// AWS secret access key.
+  core.String? secretAccessKey;
+
+  /// Input only.
+  ///
+  /// AWS session token. Used only when AWS security token service (STS) is
+  /// responsible for creating the temporary credentials.
+  core.String? sessionToken;
+
+  AccessKeyCredentials({
+    this.accessKeyId,
+    this.secretAccessKey,
+    this.sessionToken,
+  });
+
+  AccessKeyCredentials.fromJson(core.Map json_)
+      : this(
+          accessKeyId: json_.containsKey('accessKeyId')
+              ? json_['accessKeyId'] as core.String
+              : null,
+          secretAccessKey: json_.containsKey('secretAccessKey')
+              ? json_['secretAccessKey'] as core.String
+              : null,
+          sessionToken: json_.containsKey('sessionToken')
+              ? json_['sessionToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accessKeyId != null) 'accessKeyId': accessKeyId!,
+        if (secretAccessKey != null) 'secretAccessKey': secretAccessKey!,
+        if (sessionToken != null) 'sessionToken': sessionToken!,
+      };
+}
+
+/// AdaptingOSStep contains specific step details.
+typedef AdaptingOSStep = $Empty;
 
 /// Request message for 'AddGroupMigration' request.
 class AddGroupMigrationRequest {
@@ -2817,7 +2963,7 @@ class AppliedLicense {
   /// - "TYPE_UNSPECIFIED" : Unspecified license for the OS.
   /// - "NONE" : No license available for the OS.
   /// - "PAYG" : The license type is Pay As You Go license type.
-  /// - "BYOL" : The license type is is Bring Your Own License type.
+  /// - "BYOL" : The license type is Bring Your Own License type.
   core.String? type;
 
   AppliedLicense({
@@ -2877,6 +3023,442 @@ class AvailableUpdates {
       };
 }
 
+/// The details of an AWS instance disk.
+class AwsDiskDetails {
+  /// The ordinal number of the disk.
+  core.int? diskNumber;
+
+  /// Size in GB.
+  core.String? sizeGb;
+
+  /// AWS volume ID.
+  core.String? volumeId;
+
+  AwsDiskDetails({
+    this.diskNumber,
+    this.sizeGb,
+    this.volumeId,
+  });
+
+  AwsDiskDetails.fromJson(core.Map json_)
+      : this(
+          diskNumber: json_.containsKey('diskNumber')
+              ? json_['diskNumber'] as core.int
+              : null,
+          sizeGb: json_.containsKey('sizeGb')
+              ? json_['sizeGb'] as core.String
+              : null,
+          volumeId: json_.containsKey('volumeId')
+              ? json_['volumeId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (diskNumber != null) 'diskNumber': diskNumber!,
+        if (sizeGb != null) 'sizeGb': sizeGb!,
+        if (volumeId != null) 'volumeId': volumeId!,
+      };
+}
+
+/// AwsSecurityGroup describes a security group of an AWS VM.
+class AwsSecurityGroup {
+  /// The AWS security group id.
+  core.String? id;
+
+  /// The AWS security group name.
+  core.String? name;
+
+  AwsSecurityGroup({
+    this.id,
+    this.name,
+  });
+
+  AwsSecurityGroup.fromJson(core.Map json_)
+      : this(
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (id != null) 'id': id!,
+        if (name != null) 'name': name!,
+      };
+}
+
+/// AwsSourceDetails message describes a specific source details for the AWS
+/// source type.
+class AwsSourceDetails {
+  /// AWS Credentials using access key id and secret.
+  AccessKeyCredentials? accessKeyCreds;
+
+  /// The AWS region that the source VMs will be migrated from.
+  ///
+  /// Immutable.
+  core.String? awsRegion;
+
+  /// Provides details on the state of the Source in case of an error.
+  ///
+  /// Output only.
+  Status? error;
+
+  /// AWS security group names to limit the scope of the source inventory.
+  core.List<core.String>? inventorySecurityGroupNames;
+
+  /// AWS resource tags to limit the scope of the source inventory.
+  core.List<Tag>? inventoryTagList;
+
+  /// User specified tags to add to every M2VM generated resource in AWS.
+  ///
+  /// These tags will be set in addition to the default tags that are set as
+  /// part of the migration process. The tags must not begin with the reserved
+  /// prefix `m2vm`.
+  core.Map<core.String, core.String>? migrationResourcesUserTags;
+
+  /// The source's public IP.
+  ///
+  /// All communication initiated by this source will originate from this IP.
+  ///
+  /// Output only.
+  core.String? publicIp;
+
+  /// State of the source as determined by the health check.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The state is unknown. This is used for API
+  /// compatibility only and is not used by the system.
+  /// - "PENDING" : The state was not sampled by the health checks yet.
+  /// - "FAILED" : The source is available but might not be usable yet due to
+  /// invalid credentials or another reason. The error message will contain
+  /// further details.
+  /// - "ACTIVE" : The source exists and its credentials were verified.
+  core.String? state;
+
+  AwsSourceDetails({
+    this.accessKeyCreds,
+    this.awsRegion,
+    this.error,
+    this.inventorySecurityGroupNames,
+    this.inventoryTagList,
+    this.migrationResourcesUserTags,
+    this.publicIp,
+    this.state,
+  });
+
+  AwsSourceDetails.fromJson(core.Map json_)
+      : this(
+          accessKeyCreds: json_.containsKey('accessKeyCreds')
+              ? AccessKeyCredentials.fromJson(json_['accessKeyCreds']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          awsRegion: json_.containsKey('awsRegion')
+              ? json_['awsRegion'] as core.String
+              : null,
+          error: json_.containsKey('error')
+              ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          inventorySecurityGroupNames:
+              json_.containsKey('inventorySecurityGroupNames')
+                  ? (json_['inventorySecurityGroupNames'] as core.List)
+                      .map((value) => value as core.String)
+                      .toList()
+                  : null,
+          inventoryTagList: json_.containsKey('inventoryTagList')
+              ? (json_['inventoryTagList'] as core.List)
+                  .map((value) => Tag.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          migrationResourcesUserTags:
+              json_.containsKey('migrationResourcesUserTags')
+                  ? (json_['migrationResourcesUserTags']
+                          as core.Map<core.String, core.dynamic>)
+                      .map(
+                      (key, value) => core.MapEntry(
+                        key,
+                        value as core.String,
+                      ),
+                    )
+                  : null,
+          publicIp: json_.containsKey('publicIp')
+              ? json_['publicIp'] as core.String
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accessKeyCreds != null) 'accessKeyCreds': accessKeyCreds!,
+        if (awsRegion != null) 'awsRegion': awsRegion!,
+        if (error != null) 'error': error!,
+        if (inventorySecurityGroupNames != null)
+          'inventorySecurityGroupNames': inventorySecurityGroupNames!,
+        if (inventoryTagList != null) 'inventoryTagList': inventoryTagList!,
+        if (migrationResourcesUserTags != null)
+          'migrationResourcesUserTags': migrationResourcesUserTags!,
+        if (publicIp != null) 'publicIp': publicIp!,
+        if (state != null) 'state': state!,
+      };
+}
+
+/// Represent the source AWS VM details.
+class AwsSourceVmDetails {
+  /// The total size of the disks being migrated in bytes.
+  core.String? committedStorageBytes;
+
+  /// The disks attached to the source VM.
+  core.List<AwsDiskDetails>? disks;
+
+  /// The firmware type of the source VM.
+  /// Possible string values are:
+  /// - "FIRMWARE_UNSPECIFIED" : The firmware is unknown.
+  /// - "EFI" : The firmware is EFI.
+  /// - "BIOS" : The firmware is BIOS.
+  core.String? firmware;
+
+  AwsSourceVmDetails({
+    this.committedStorageBytes,
+    this.disks,
+    this.firmware,
+  });
+
+  AwsSourceVmDetails.fromJson(core.Map json_)
+      : this(
+          committedStorageBytes: json_.containsKey('committedStorageBytes')
+              ? json_['committedStorageBytes'] as core.String
+              : null,
+          disks: json_.containsKey('disks')
+              ? (json_['disks'] as core.List)
+                  .map((value) => AwsDiskDetails.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          firmware: json_.containsKey('firmware')
+              ? json_['firmware'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (committedStorageBytes != null)
+          'committedStorageBytes': committedStorageBytes!,
+        if (disks != null) 'disks': disks!,
+        if (firmware != null) 'firmware': firmware!,
+      };
+}
+
+/// AwsVmDetails describes a VM in AWS.
+class AwsVmDetails {
+  /// The CPU architecture.
+  /// Possible string values are:
+  /// - "VM_ARCHITECTURE_UNSPECIFIED" : The architecture is unknown.
+  /// - "I386" : The architecture is I386.
+  /// - "X86_64" : The architecture is X86_64.
+  /// - "ARM64" : The architecture is ARM64.
+  /// - "X86_64_MAC" : The architecture is X86_64_MAC.
+  core.String? architecture;
+
+  /// The VM Boot Option.
+  /// Possible string values are:
+  /// - "BOOT_OPTION_UNSPECIFIED" : The boot option is unknown.
+  /// - "EFI" : The boot option is UEFI.
+  /// - "BIOS" : The boot option is LEGACY-BIOS.
+  core.String? bootOption;
+
+  /// The total size of the storage allocated to the VM in MB.
+  core.String? committedStorageMb;
+
+  /// The number of cpus the VM has.
+  core.int? cpuCount;
+
+  /// The number of disks the VM has.
+  core.int? diskCount;
+
+  /// The display name of the VM.
+  ///
+  /// Note that this value is not necessarily unique.
+  core.String? displayName;
+
+  /// The instance type of the VM.
+  core.String? instanceType;
+
+  /// The memory size of the VM in MB.
+  core.int? memoryMb;
+
+  /// The VM's OS.
+  core.String? osDescription;
+
+  /// The power state of the VM at the moment list was taken.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "POWER_STATE_UNSPECIFIED" : Power state is not specified.
+  /// - "ON" : The VM is turned on.
+  /// - "OFF" : The VM is turned off.
+  /// - "SUSPENDED" : The VM is suspended. This is similar to hibernation or
+  /// sleep mode.
+  /// - "PENDING" : The VM is starting.
+  core.String? powerState;
+
+  /// The security groups the VM belongs to.
+  core.List<AwsSecurityGroup>? securityGroups;
+
+  /// The descriptive name of the AWS's source this VM is connected to.
+  core.String? sourceDescription;
+
+  /// The id of the AWS's source this VM is connected to.
+  core.String? sourceId;
+
+  /// The tags of the VM.
+  core.Map<core.String, core.String>? tags;
+
+  /// The virtualization type.
+  /// Possible string values are:
+  /// - "VM_VIRTUALIZATION_TYPE_UNSPECIFIED" : The virtualization type is
+  /// unknown.
+  /// - "HVM" : The virtualziation type is HVM.
+  /// - "PARAVIRTUAL" : The virtualziation type is PARAVIRTUAL.
+  core.String? virtualizationType;
+
+  /// The VM ID in AWS.
+  core.String? vmId;
+
+  /// The VPC ID the VM belongs to.
+  core.String? vpcId;
+
+  /// The AWS zone of the VM.
+  core.String? zone;
+
+  AwsVmDetails({
+    this.architecture,
+    this.bootOption,
+    this.committedStorageMb,
+    this.cpuCount,
+    this.diskCount,
+    this.displayName,
+    this.instanceType,
+    this.memoryMb,
+    this.osDescription,
+    this.powerState,
+    this.securityGroups,
+    this.sourceDescription,
+    this.sourceId,
+    this.tags,
+    this.virtualizationType,
+    this.vmId,
+    this.vpcId,
+    this.zone,
+  });
+
+  AwsVmDetails.fromJson(core.Map json_)
+      : this(
+          architecture: json_.containsKey('architecture')
+              ? json_['architecture'] as core.String
+              : null,
+          bootOption: json_.containsKey('bootOption')
+              ? json_['bootOption'] as core.String
+              : null,
+          committedStorageMb: json_.containsKey('committedStorageMb')
+              ? json_['committedStorageMb'] as core.String
+              : null,
+          cpuCount: json_.containsKey('cpuCount')
+              ? json_['cpuCount'] as core.int
+              : null,
+          diskCount: json_.containsKey('diskCount')
+              ? json_['diskCount'] as core.int
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          instanceType: json_.containsKey('instanceType')
+              ? json_['instanceType'] as core.String
+              : null,
+          memoryMb: json_.containsKey('memoryMb')
+              ? json_['memoryMb'] as core.int
+              : null,
+          osDescription: json_.containsKey('osDescription')
+              ? json_['osDescription'] as core.String
+              : null,
+          powerState: json_.containsKey('powerState')
+              ? json_['powerState'] as core.String
+              : null,
+          securityGroups: json_.containsKey('securityGroups')
+              ? (json_['securityGroups'] as core.List)
+                  .map((value) => AwsSecurityGroup.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          sourceDescription: json_.containsKey('sourceDescription')
+              ? json_['sourceDescription'] as core.String
+              : null,
+          sourceId: json_.containsKey('sourceId')
+              ? json_['sourceId'] as core.String
+              : null,
+          tags: json_.containsKey('tags')
+              ? (json_['tags'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          virtualizationType: json_.containsKey('virtualizationType')
+              ? json_['virtualizationType'] as core.String
+              : null,
+          vmId: json_.containsKey('vmId') ? json_['vmId'] as core.String : null,
+          vpcId:
+              json_.containsKey('vpcId') ? json_['vpcId'] as core.String : null,
+          zone: json_.containsKey('zone') ? json_['zone'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (architecture != null) 'architecture': architecture!,
+        if (bootOption != null) 'bootOption': bootOption!,
+        if (committedStorageMb != null)
+          'committedStorageMb': committedStorageMb!,
+        if (cpuCount != null) 'cpuCount': cpuCount!,
+        if (diskCount != null) 'diskCount': diskCount!,
+        if (displayName != null) 'displayName': displayName!,
+        if (instanceType != null) 'instanceType': instanceType!,
+        if (memoryMb != null) 'memoryMb': memoryMb!,
+        if (osDescription != null) 'osDescription': osDescription!,
+        if (powerState != null) 'powerState': powerState!,
+        if (securityGroups != null) 'securityGroups': securityGroups!,
+        if (sourceDescription != null) 'sourceDescription': sourceDescription!,
+        if (sourceId != null) 'sourceId': sourceId!,
+        if (tags != null) 'tags': tags!,
+        if (virtualizationType != null)
+          'virtualizationType': virtualizationType!,
+        if (vmId != null) 'vmId': vmId!,
+        if (vpcId != null) 'vpcId': vpcId!,
+        if (zone != null) 'zone': zone!,
+      };
+}
+
+/// AWSVmsDetails describes VMs in AWS.
+class AwsVmsDetails {
+  /// The details of the AWS VMs.
+  core.List<AwsVmDetails>? details;
+
+  AwsVmsDetails({
+    this.details,
+  });
+
+  AwsVmsDetails.fromJson(core.Map json_)
+      : this(
+          details: json_.containsKey('details')
+              ? (json_['details'] as core.List)
+                  .map((value) => AwsVmDetails.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (details != null) 'details': details!,
+      };
+}
+
 /// Request message for 'CancelCloneJob' request.
 typedef CancelCloneJobRequest = $Empty;
 
@@ -2897,6 +3479,11 @@ typedef CancelOperationRequest = $Empty;
 /// it will never touch the instance it created. It will only delete it in case
 /// of the CloneJob being cancelled or upon failure to clone.
 class CloneJob {
+  /// Details of the target Persistent Disks in Compute Engine.
+  ///
+  /// Output only.
+  ComputeEngineDisksTargetDetails? computeEngineDisksTargetDetails;
+
   /// Details of the target VM in Compute Engine.
   ///
   /// Output only.
@@ -2944,7 +3531,13 @@ class CloneJob {
   /// Output only.
   core.String? stateTime;
 
+  /// The clone steps list representing its progress.
+  ///
+  /// Output only.
+  core.List<CloneStep>? steps;
+
   CloneJob({
+    this.computeEngineDisksTargetDetails,
     this.computeEngineTargetDetails,
     this.createTime,
     this.endTime,
@@ -2952,10 +3545,17 @@ class CloneJob {
     this.name,
     this.state,
     this.stateTime,
+    this.steps,
   });
 
   CloneJob.fromJson(core.Map json_)
       : this(
+          computeEngineDisksTargetDetails:
+              json_.containsKey('computeEngineDisksTargetDetails')
+                  ? ComputeEngineDisksTargetDetails.fromJson(
+                      json_['computeEngineDisksTargetDetails']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           computeEngineTargetDetails:
               json_.containsKey('computeEngineTargetDetails')
                   ? ComputeEngineTargetDetails.fromJson(
@@ -2978,9 +3578,17 @@ class CloneJob {
           stateTime: json_.containsKey('stateTime')
               ? json_['stateTime'] as core.String
               : null,
+          steps: json_.containsKey('steps')
+              ? (json_['steps'] as core.List)
+                  .map((value) => CloneStep.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (computeEngineDisksTargetDetails != null)
+          'computeEngineDisksTargetDetails': computeEngineDisksTargetDetails!,
         if (computeEngineTargetDetails != null)
           'computeEngineTargetDetails': computeEngineTargetDetails!,
         if (createTime != null) 'createTime': createTime!,
@@ -2989,6 +3597,130 @@ class CloneJob {
         if (name != null) 'name': name!,
         if (state != null) 'state': state!,
         if (stateTime != null) 'stateTime': stateTime!,
+        if (steps != null) 'steps': steps!,
+      };
+}
+
+/// CloneStep holds information about the clone step progress.
+class CloneStep {
+  /// Adapting OS step.
+  AdaptingOSStep? adaptingOs;
+
+  /// The time the step has ended.
+  core.String? endTime;
+
+  /// Instantiating migrated VM step.
+  InstantiatingMigratedVMStep? instantiatingMigratedVm;
+
+  /// Preparing VM disks step.
+  PreparingVMDisksStep? preparingVmDisks;
+
+  /// The time the step has started.
+  core.String? startTime;
+
+  CloneStep({
+    this.adaptingOs,
+    this.endTime,
+    this.instantiatingMigratedVm,
+    this.preparingVmDisks,
+    this.startTime,
+  });
+
+  CloneStep.fromJson(core.Map json_)
+      : this(
+          adaptingOs: json_.containsKey('adaptingOs')
+              ? AdaptingOSStep.fromJson(
+                  json_['adaptingOs'] as core.Map<core.String, core.dynamic>)
+              : null,
+          endTime: json_.containsKey('endTime')
+              ? json_['endTime'] as core.String
+              : null,
+          instantiatingMigratedVm: json_.containsKey('instantiatingMigratedVm')
+              ? InstantiatingMigratedVMStep.fromJson(
+                  json_['instantiatingMigratedVm']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          preparingVmDisks: json_.containsKey('preparingVmDisks')
+              ? PreparingVMDisksStep.fromJson(json_['preparingVmDisks']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          startTime: json_.containsKey('startTime')
+              ? json_['startTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (adaptingOs != null) 'adaptingOs': adaptingOs!,
+        if (endTime != null) 'endTime': endTime!,
+        if (instantiatingMigratedVm != null)
+          'instantiatingMigratedVm': instantiatingMigratedVm!,
+        if (preparingVmDisks != null) 'preparingVmDisks': preparingVmDisks!,
+        if (startTime != null) 'startTime': startTime!,
+      };
+}
+
+/// ComputeEngineDisksTargetDefaults is a collection of details for creating
+/// Persistent Disks in a target Compute Engine project.
+class ComputeEngineDisksTargetDefaults {
+  /// The details of each Persistent Disk to create.
+  core.List<PersistentDiskDefaults>? disks;
+
+  /// The full path of the resource of type TargetProject which represents the
+  /// Compute Engine project in which to create the Persistent Disks.
+  core.String? targetProject;
+
+  /// The zone in which to create the Persistent Disks.
+  core.String? zone;
+
+  ComputeEngineDisksTargetDefaults({
+    this.disks,
+    this.targetProject,
+    this.zone,
+  });
+
+  ComputeEngineDisksTargetDefaults.fromJson(core.Map json_)
+      : this(
+          disks: json_.containsKey('disks')
+              ? (json_['disks'] as core.List)
+                  .map((value) => PersistentDiskDefaults.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          targetProject: json_.containsKey('targetProject')
+              ? json_['targetProject'] as core.String
+              : null,
+          zone: json_.containsKey('zone') ? json_['zone'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (disks != null) 'disks': disks!,
+        if (targetProject != null) 'targetProject': targetProject!,
+        if (zone != null) 'zone': zone!,
+      };
+}
+
+/// ComputeEngineDisksTargetDetails is a collection of created Persistent Disks
+/// details.
+class ComputeEngineDisksTargetDetails {
+  /// The details of each created Persistent Disk.
+  core.List<PersistentDisk>? disks;
+
+  ComputeEngineDisksTargetDetails({
+    this.disks,
+  });
+
+  ComputeEngineDisksTargetDetails.fromJson(core.Map json_)
+      : this(
+          disks: json_.containsKey('disks')
+              ? (json_['disks'] as core.List)
+                  .map((value) => PersistentDisk.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (disks != null) 'disks': disks!,
       };
 }
 
@@ -3003,7 +3735,7 @@ class ComputeEngineTargetDefaults {
   /// Output only.
   AppliedLicense? appliedLicense;
 
-  /// The VM Boot Option, as set in the source vm.
+  /// The VM Boot Option, as set in the source VM.
   ///
   /// Output only.
   /// Possible string values are:
@@ -3053,12 +3785,12 @@ class ComputeEngineTargetDefaults {
   /// List of NICs connected to this VM.
   core.List<NetworkInterface>? networkInterfaces;
 
-  /// A map of network tags to associate with the VM.
+  /// A list of network tags to associate with the VM.
   core.List<core.String>? networkTags;
 
   /// Defines whether the instance has Secure Boot enabled.
   ///
-  /// This can be set to true only if the vm boot option is EFI.
+  /// This can be set to true only if the VM boot option is EFI.
   core.bool? secureBoot;
 
   /// The service account to associate the VM with.
@@ -3121,9 +3853,9 @@ class ComputeEngineTargetDefaults {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -3138,9 +3870,9 @@ class ComputeEngineTargetDefaults {
               : null,
           metadata: json_.containsKey('metadata')
               ? (json_['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -3202,7 +3934,7 @@ class ComputeEngineTargetDetails {
   /// The OS license returned from the adaptation module report.
   AppliedLicense? appliedLicense;
 
-  /// The VM Boot Option, as set in the source vm.
+  /// The VM Boot Option, as set in the source VM.
   /// Possible string values are:
   /// - "COMPUTE_ENGINE_BOOT_OPTION_UNSPECIFIED" : The boot option is unknown.
   /// - "COMPUTE_ENGINE_BOOT_OPTION_EFI" : The boot option is EFI.
@@ -3250,15 +3982,15 @@ class ComputeEngineTargetDetails {
   /// List of NICs connected to this VM.
   core.List<NetworkInterface>? networkInterfaces;
 
-  /// A map of network tags to associate with the VM.
+  /// A list of network tags to associate with the VM.
   core.List<core.String>? networkTags;
 
-  /// The GCP target project ID or project name.
+  /// The Google Cloud target project ID or project name.
   core.String? project;
 
   /// Defines whether the instance has Secure Boot enabled.
   ///
-  /// This can be set to true only if the vm boot option is EFI.
+  /// This can be set to true only if the VM boot option is EFI.
   core.bool? secureBoot;
 
   /// The service account to associate the VM with.
@@ -3317,9 +4049,9 @@ class ComputeEngineTargetDetails {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -3334,9 +4066,9 @@ class ComputeEngineTargetDetails {
               : null,
           metadata: json_.containsKey('metadata')
               ? (json_['metadata'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -3462,11 +4194,41 @@ class ComputeScheduling {
       };
 }
 
+/// CutoverForecast holds information about future CutoverJobs of a MigratingVm.
+class CutoverForecast {
+  /// Estimation of the CutoverJob duration.
+  ///
+  /// Output only.
+  core.String? estimatedCutoverJobDuration;
+
+  CutoverForecast({
+    this.estimatedCutoverJobDuration,
+  });
+
+  CutoverForecast.fromJson(core.Map json_)
+      : this(
+          estimatedCutoverJobDuration:
+              json_.containsKey('estimatedCutoverJobDuration')
+                  ? json_['estimatedCutoverJobDuration'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (estimatedCutoverJobDuration != null)
+          'estimatedCutoverJobDuration': estimatedCutoverJobDuration!,
+      };
+}
+
 /// CutoverJob message describes a cutover of a migrating VM.
 ///
 /// The CutoverJob is the operation of shutting down the VM, creating a snapshot
 /// and clonning the VM using the replicated snapshot.
 class CutoverJob {
+  /// Details of the target Persistent Disks in Compute Engine.
+  ///
+  /// Output only.
+  ComputeEngineDisksTargetDetails? computeEngineDisksTargetDetails;
+
   /// Details of the target VM in Compute Engine.
   ///
   /// Output only.
@@ -3524,7 +4286,13 @@ class CutoverJob {
   /// Output only.
   core.String? stateTime;
 
+  /// The cutover steps list representing its progress.
+  ///
+  /// Output only.
+  core.List<CutoverStep>? steps;
+
   CutoverJob({
+    this.computeEngineDisksTargetDetails,
     this.computeEngineTargetDetails,
     this.createTime,
     this.endTime,
@@ -3534,10 +4302,17 @@ class CutoverJob {
     this.state,
     this.stateMessage,
     this.stateTime,
+    this.steps,
   });
 
   CutoverJob.fromJson(core.Map json_)
       : this(
+          computeEngineDisksTargetDetails:
+              json_.containsKey('computeEngineDisksTargetDetails')
+                  ? ComputeEngineDisksTargetDetails.fromJson(
+                      json_['computeEngineDisksTargetDetails']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           computeEngineTargetDetails:
               json_.containsKey('computeEngineTargetDetails')
                   ? ComputeEngineTargetDetails.fromJson(
@@ -3566,9 +4341,17 @@ class CutoverJob {
           stateTime: json_.containsKey('stateTime')
               ? json_['stateTime'] as core.String
               : null,
+          steps: json_.containsKey('steps')
+              ? (json_['steps'] as core.List)
+                  .map((value) => CutoverStep.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (computeEngineDisksTargetDetails != null)
+          'computeEngineDisksTargetDetails': computeEngineDisksTargetDetails!,
         if (computeEngineTargetDetails != null)
           'computeEngineTargetDetails': computeEngineTargetDetails!,
         if (createTime != null) 'createTime': createTime!,
@@ -3579,13 +4362,151 @@ class CutoverJob {
         if (state != null) 'state': state!,
         if (stateMessage != null) 'stateMessage': stateMessage!,
         if (stateTime != null) 'stateTime': stateTime!,
+        if (steps != null) 'steps': steps!,
+      };
+}
+
+/// CutoverStep holds information about the cutover step progress.
+class CutoverStep {
+  /// The time the step has ended.
+  core.String? endTime;
+
+  /// Final sync step.
+  ReplicationCycle? finalSync;
+
+  /// Instantiating migrated VM step.
+  InstantiatingMigratedVMStep? instantiatingMigratedVm;
+
+  /// Preparing VM disks step.
+  PreparingVMDisksStep? preparingVmDisks;
+
+  /// A replication cycle prior cutover step.
+  ReplicationCycle? previousReplicationCycle;
+
+  /// Shutting down VM step.
+  ShuttingDownSourceVMStep? shuttingDownSourceVm;
+
+  /// The time the step has started.
+  core.String? startTime;
+
+  CutoverStep({
+    this.endTime,
+    this.finalSync,
+    this.instantiatingMigratedVm,
+    this.preparingVmDisks,
+    this.previousReplicationCycle,
+    this.shuttingDownSourceVm,
+    this.startTime,
+  });
+
+  CutoverStep.fromJson(core.Map json_)
+      : this(
+          endTime: json_.containsKey('endTime')
+              ? json_['endTime'] as core.String
+              : null,
+          finalSync: json_.containsKey('finalSync')
+              ? ReplicationCycle.fromJson(
+                  json_['finalSync'] as core.Map<core.String, core.dynamic>)
+              : null,
+          instantiatingMigratedVm: json_.containsKey('instantiatingMigratedVm')
+              ? InstantiatingMigratedVMStep.fromJson(
+                  json_['instantiatingMigratedVm']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          preparingVmDisks: json_.containsKey('preparingVmDisks')
+              ? PreparingVMDisksStep.fromJson(json_['preparingVmDisks']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          previousReplicationCycle:
+              json_.containsKey('previousReplicationCycle')
+                  ? ReplicationCycle.fromJson(json_['previousReplicationCycle']
+                      as core.Map<core.String, core.dynamic>)
+                  : null,
+          shuttingDownSourceVm: json_.containsKey('shuttingDownSourceVm')
+              ? ShuttingDownSourceVMStep.fromJson(json_['shuttingDownSourceVm']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          startTime: json_.containsKey('startTime')
+              ? json_['startTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
+        if (finalSync != null) 'finalSync': finalSync!,
+        if (instantiatingMigratedVm != null)
+          'instantiatingMigratedVm': instantiatingMigratedVm!,
+        if (preparingVmDisks != null) 'preparingVmDisks': preparingVmDisks!,
+        if (previousReplicationCycle != null)
+          'previousReplicationCycle': previousReplicationCycle!,
+        if (shuttingDownSourceVm != null)
+          'shuttingDownSourceVm': shuttingDownSourceVm!,
+        if (startTime != null) 'startTime': startTime!,
+      };
+}
+
+/// CycleStep holds information about a step progress.
+class CycleStep {
+  /// The time the cycle step has ended.
+  core.String? endTime;
+
+  /// Initializing replication step.
+  InitializingReplicationStep? initializingReplication;
+
+  /// Post processing step.
+  PostProcessingStep? postProcessing;
+
+  /// Replicating step.
+  ReplicatingStep? replicating;
+
+  /// The time the cycle step has started.
+  core.String? startTime;
+
+  CycleStep({
+    this.endTime,
+    this.initializingReplication,
+    this.postProcessing,
+    this.replicating,
+    this.startTime,
+  });
+
+  CycleStep.fromJson(core.Map json_)
+      : this(
+          endTime: json_.containsKey('endTime')
+              ? json_['endTime'] as core.String
+              : null,
+          initializingReplication: json_.containsKey('initializingReplication')
+              ? InitializingReplicationStep.fromJson(
+                  json_['initializingReplication']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          postProcessing: json_.containsKey('postProcessing')
+              ? PostProcessingStep.fromJson(json_['postProcessing']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          replicating: json_.containsKey('replicating')
+              ? ReplicatingStep.fromJson(
+                  json_['replicating'] as core.Map<core.String, core.dynamic>)
+              : null,
+          startTime: json_.containsKey('startTime')
+              ? json_['startTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
+        if (initializingReplication != null)
+          'initializingReplication': initializingReplication!,
+        if (postProcessing != null) 'postProcessing': postProcessing!,
+        if (replicating != null) 'replicating': replicating!,
+        if (startTime != null) 'startTime': startTime!,
       };
 }
 
 /// DatacenterConnector message describes a connector between the Source and
-/// GCP, which is installed on a vmware datacenter (an OVA vm installed by the
-/// user) to connect the Datacenter to GCP and support vm migration data
-/// transfer.
+/// Google Cloud, which is installed on a vmware datacenter (an OVA vm installed
+/// by the user) to connect the Datacenter to Google Cloud and support vm
+/// migration data transfer.
 class DatacenterConnector {
   /// Appliance OVA version.
   ///
@@ -3609,7 +4530,8 @@ class DatacenterConnector {
   /// Output only.
   AvailableUpdates? availableVersions;
 
-  /// The communication channel between the datacenter connector and GCP.
+  /// The communication channel between the datacenter connector and Google
+  /// Cloud.
   ///
   /// Output only.
   core.String? bucket;
@@ -3774,6 +4696,9 @@ typedef Empty = $Empty;
 
 /// Response message for fetchInventory.
 class FetchInventoryResponse {
+  /// The description of the VMs in a Source of type AWS.
+  AwsVmsDetails? awsVms;
+
   /// A token, which can be sent as `page_token` to retrieve the next page.
   ///
   /// If this field is omitted, there are no subsequent pages.
@@ -3791,6 +4716,7 @@ class FetchInventoryResponse {
   VmwareVmsDetails? vmwareVms;
 
   FetchInventoryResponse({
+    this.awsVms,
     this.nextPageToken,
     this.updateTime,
     this.vmwareVms,
@@ -3798,6 +4724,10 @@ class FetchInventoryResponse {
 
   FetchInventoryResponse.fromJson(core.Map json_)
       : this(
+          awsVms: json_.containsKey('awsVms')
+              ? AwsVmsDetails.fromJson(
+                  json_['awsVms'] as core.Map<core.String, core.dynamic>)
+              : null,
           nextPageToken: json_.containsKey('nextPageToken')
               ? json_['nextPageToken'] as core.String
               : null,
@@ -3811,6 +4741,7 @@ class FetchInventoryResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (awsVms != null) 'awsVms': awsVms!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (vmwareVms != null) 'vmwareVms': vmwareVms!,
@@ -3835,6 +4766,18 @@ class Group {
   /// Display name is a user defined name for this group which can be updated.
   core.String? displayName;
 
+  /// The target type of this group.
+  ///
+  /// Immutable.
+  /// Possible string values are:
+  /// - "MIGRATION_TARGET_TYPE_UNSPECIFIED" : Group type is not specified. This
+  /// defaults to Compute Engine targets.
+  /// - "MIGRATION_TARGET_TYPE_GCE" : All MigratingVMs in the group must have
+  /// Compute Engine targets.
+  /// - "MIGRATION_TARGET_TYPE_DISKS" : All MigratingVMs in the group must have
+  /// Compute Engine Disks targets.
+  core.String? migrationTargetType;
+
   /// The Group name.
   ///
   /// Output only.
@@ -3849,6 +4792,7 @@ class Group {
     this.createTime,
     this.description,
     this.displayName,
+    this.migrationTargetType,
     this.name,
     this.updateTime,
   });
@@ -3864,6 +4808,9 @@ class Group {
           displayName: json_.containsKey('displayName')
               ? json_['displayName'] as core.String
               : null,
+          migrationTargetType: json_.containsKey('migrationTargetType')
+              ? json_['migrationTargetType'] as core.String
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           updateTime: json_.containsKey('updateTime')
               ? json_['updateTime'] as core.String
@@ -3874,10 +4821,21 @@ class Group {
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
+        if (migrationTargetType != null)
+          'migrationTargetType': migrationTargetType!,
         if (name != null) 'name': name!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }
+
+/// InitializingReplicationStep contains specific step details.
+typedef InitializingReplicationStep = $Empty;
+
+/// InstantiatingMigratedVMStep contains specific step details.
+typedef InstantiatingMigratedVMStep = $Empty;
+
+/// Describes a URL link.
+typedef Link = $Link;
 
 /// Response message for 'ListCloneJobs' request.
 class ListCloneJobsResponse {
@@ -4194,6 +5152,56 @@ class ListOperationsResponse {
       };
 }
 
+/// Response message for 'ListReplicationCycles' request.
+class ListReplicationCyclesResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  ///
+  /// Output only.
+  core.String? nextPageToken;
+
+  /// The list of replication cycles response.
+  ///
+  /// Output only.
+  core.List<ReplicationCycle>? replicationCycles;
+
+  /// Locations that could not be reached.
+  ///
+  /// Output only.
+  core.List<core.String>? unreachable;
+
+  ListReplicationCyclesResponse({
+    this.nextPageToken,
+    this.replicationCycles,
+    this.unreachable,
+  });
+
+  ListReplicationCyclesResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          replicationCycles: json_.containsKey('replicationCycles')
+              ? (json_['replicationCycles'] as core.List)
+                  .map((value) => ReplicationCycle.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (replicationCycles != null) 'replicationCycles': replicationCycles!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
 /// Response message for 'ListSources' request.
 class ListSourcesResponse {
   /// A token, which can be sent as `page_token` to retrieve the next page.
@@ -4345,12 +5353,24 @@ class ListUtilizationReportsResponse {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
+/// Provides a localized error message that is safe to return to the user which
+/// can be attached to an RPC error.
+typedef LocalizedMessage = $LocalizedMessage;
+
+/// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
 /// MigratingVm describes the VM that will be migrated from a Source environment
 /// and its replication state.
 class MigratingVm {
+  /// Details of the VM from an AWS source.
+  ///
+  /// Output only.
+  AwsSourceVmDetails? awsSourceVmDetails;
+
+  /// Details of the target Persistent Disks in Compute Engine.
+  ComputeEngineDisksTargetDefaults? computeEngineDisksTargetDefaults;
+
   /// Details of the target VM in Compute Engine.
   ComputeEngineTargetDefaults? computeEngineTargetDefaults;
 
@@ -4360,10 +5380,17 @@ class MigratingVm {
   /// Output only.
   core.String? createTime;
 
-  /// The percentage progress of the current running replication cycle.
+  /// Details of the current running replication cycle.
   ///
   /// Output only.
   ReplicationCycle? currentSyncInfo;
+
+  /// Provides details of future CutoverJobs of a MigratingVm.
+  ///
+  /// Set to empty when cutover forecast is unavailable.
+  ///
+  /// Output only.
+  CutoverForecast? cutoverForecast;
 
   /// The description attached to the migrating VM by the user.
   core.String? description;
@@ -4387,6 +5414,15 @@ class MigratingVm {
 
   /// The labels of the migrating VM.
   core.Map<core.String, core.String>? labels;
+
+  /// Details of the last replication cycle.
+  ///
+  /// This will be updated whenever a replication cycle is finished and is not
+  /// to be confused with last_sync which is only updated on successful
+  /// replication cycles.
+  ///
+  /// Output only.
+  ReplicationCycle? lastReplicationCycle;
 
   /// The most updated snapshot created time in the source that finished
   /// replication.
@@ -4465,14 +5501,18 @@ class MigratingVm {
   core.String? updateTime;
 
   MigratingVm({
+    this.awsSourceVmDetails,
+    this.computeEngineDisksTargetDefaults,
     this.computeEngineTargetDefaults,
     this.createTime,
     this.currentSyncInfo,
+    this.cutoverForecast,
     this.description,
     this.displayName,
     this.error,
     this.group,
     this.labels,
+    this.lastReplicationCycle,
     this.lastSync,
     this.name,
     this.policy,
@@ -4486,6 +5526,16 @@ class MigratingVm {
 
   MigratingVm.fromJson(core.Map json_)
       : this(
+          awsSourceVmDetails: json_.containsKey('awsSourceVmDetails')
+              ? AwsSourceVmDetails.fromJson(json_['awsSourceVmDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          computeEngineDisksTargetDefaults:
+              json_.containsKey('computeEngineDisksTargetDefaults')
+                  ? ComputeEngineDisksTargetDefaults.fromJson(
+                      json_['computeEngineDisksTargetDefaults']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           computeEngineTargetDefaults:
               json_.containsKey('computeEngineTargetDefaults')
                   ? ComputeEngineTargetDefaults.fromJson(
@@ -4497,6 +5547,10 @@ class MigratingVm {
               : null,
           currentSyncInfo: json_.containsKey('currentSyncInfo')
               ? ReplicationCycle.fromJson(json_['currentSyncInfo']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          cutoverForecast: json_.containsKey('cutoverForecast')
+              ? CutoverForecast.fromJson(json_['cutoverForecast']
                   as core.Map<core.String, core.dynamic>)
               : null,
           description: json_.containsKey('description')
@@ -4513,11 +5567,15 @@ class MigratingVm {
               json_.containsKey('group') ? json_['group'] as core.String : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
+              : null,
+          lastReplicationCycle: json_.containsKey('lastReplicationCycle')
+              ? ReplicationCycle.fromJson(json_['lastReplicationCycle']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           lastSync: json_.containsKey('lastSync')
               ? ReplicationSync.fromJson(
@@ -4554,15 +5612,22 @@ class MigratingVm {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (awsSourceVmDetails != null)
+          'awsSourceVmDetails': awsSourceVmDetails!,
+        if (computeEngineDisksTargetDefaults != null)
+          'computeEngineDisksTargetDefaults': computeEngineDisksTargetDefaults!,
         if (computeEngineTargetDefaults != null)
           'computeEngineTargetDefaults': computeEngineTargetDefaults!,
         if (createTime != null) 'createTime': createTime!,
         if (currentSyncInfo != null) 'currentSyncInfo': currentSyncInfo!,
+        if (cutoverForecast != null) 'cutoverForecast': cutoverForecast!,
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
         if (error != null) 'error': error!,
         if (group != null) 'group': group!,
         if (labels != null) 'labels': labels!,
+        if (lastReplicationCycle != null)
+          'lastReplicationCycle': lastReplicationCycle!,
         if (lastSync != null) 'lastSync': lastSync!,
         if (name != null) 'name': name!,
         if (policy != null) 'policy': policy!,
@@ -4572,6 +5637,69 @@ class MigratingVm {
         if (state != null) 'state': state!,
         if (stateTime != null) 'stateTime': stateTime!,
         if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// Represents migration resource warning information that can be used with
+/// google.rpc.Status message.
+///
+/// MigrationWarning is used to present the user with warning information in
+/// migration operations.
+class MigrationWarning {
+  /// Suggested action for solving the warning.
+  LocalizedMessage? actionItem;
+
+  /// The warning code.
+  /// Possible string values are:
+  /// - "WARNING_CODE_UNSPECIFIED" : Default value. This value is not used.
+  /// - "ADAPTATION_WARNING" : A warning originated from OS Adaptation.
+  core.String? code;
+
+  /// URL(s) pointing to additional information on handling the current warning.
+  core.List<Link>? helpLinks;
+
+  /// The localized warning message.
+  LocalizedMessage? warningMessage;
+
+  /// The time the warning occurred.
+  core.String? warningTime;
+
+  MigrationWarning({
+    this.actionItem,
+    this.code,
+    this.helpLinks,
+    this.warningMessage,
+    this.warningTime,
+  });
+
+  MigrationWarning.fromJson(core.Map json_)
+      : this(
+          actionItem: json_.containsKey('actionItem')
+              ? LocalizedMessage.fromJson(
+                  json_['actionItem'] as core.Map<core.String, core.dynamic>)
+              : null,
+          code: json_.containsKey('code') ? json_['code'] as core.String : null,
+          helpLinks: json_.containsKey('helpLinks')
+              ? (json_['helpLinks'] as core.List)
+                  .map((value) => Link.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          warningMessage: json_.containsKey('warningMessage')
+              ? LocalizedMessage.fromJson(json_['warningMessage']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          warningTime: json_.containsKey('warningTime')
+              ? json_['warningTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (actionItem != null) 'actionItem': actionItem!,
+        if (code != null) 'code': code!,
+        if (helpLinks != null) 'helpLinks': helpLinks!,
+        if (warningMessage != null) 'warningMessage': warningMessage!,
+        if (warningTime != null) 'warningTime': warningTime!,
       };
 }
 
@@ -4702,6 +5830,104 @@ class Operation {
 /// Request message for 'PauseMigration' request.
 typedef PauseMigrationRequest = $Empty;
 
+/// Details of a created Persistent Disk.
+class PersistentDisk {
+  /// The URI of the Persistent Disk.
+  core.String? diskUri;
+
+  /// The ordinal number of the source VM disk.
+  core.int? sourceDiskNumber;
+
+  PersistentDisk({
+    this.diskUri,
+    this.sourceDiskNumber,
+  });
+
+  PersistentDisk.fromJson(core.Map json_)
+      : this(
+          diskUri: json_.containsKey('diskUri')
+              ? json_['diskUri'] as core.String
+              : null,
+          sourceDiskNumber: json_.containsKey('sourceDiskNumber')
+              ? json_['sourceDiskNumber'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (diskUri != null) 'diskUri': diskUri!,
+        if (sourceDiskNumber != null) 'sourceDiskNumber': sourceDiskNumber!,
+      };
+}
+
+/// Details for creation of a Persistent Disk.
+class PersistentDiskDefaults {
+  /// A map of labels to associate with the Persistent Disk.
+  core.Map<core.String, core.String>? additionalLabels;
+
+  /// The name of the Persistent Disk to create.
+  ///
+  /// Optional.
+  core.String? diskName;
+
+  /// The disk type to use.
+  /// Possible string values are:
+  /// - "COMPUTE_ENGINE_DISK_TYPE_UNSPECIFIED" : An unspecified disk type. Will
+  /// be used as STANDARD.
+  /// - "COMPUTE_ENGINE_DISK_TYPE_STANDARD" : A Standard disk type.
+  /// - "COMPUTE_ENGINE_DISK_TYPE_SSD" : SSD hard disk type.
+  /// - "COMPUTE_ENGINE_DISK_TYPE_BALANCED" : An alternative to SSD persistent
+  /// disks that balance performance and cost.
+  core.String? diskType;
+
+  /// The ordinal number of the source VM disk.
+  ///
+  /// Required.
+  core.int? sourceDiskNumber;
+
+  PersistentDiskDefaults({
+    this.additionalLabels,
+    this.diskName,
+    this.diskType,
+    this.sourceDiskNumber,
+  });
+
+  PersistentDiskDefaults.fromJson(core.Map json_)
+      : this(
+          additionalLabels: json_.containsKey('additionalLabels')
+              ? (json_['additionalLabels']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          diskName: json_.containsKey('diskName')
+              ? json_['diskName'] as core.String
+              : null,
+          diskType: json_.containsKey('diskType')
+              ? json_['diskType'] as core.String
+              : null,
+          sourceDiskNumber: json_.containsKey('sourceDiskNumber')
+              ? json_['sourceDiskNumber'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (additionalLabels != null) 'additionalLabels': additionalLabels!,
+        if (diskName != null) 'diskName': diskName!,
+        if (diskType != null) 'diskType': diskType!,
+        if (sourceDiskNumber != null) 'sourceDiskNumber': sourceDiskNumber!,
+      };
+}
+
+/// PostProcessingStep contains specific step details.
+typedef PostProcessingStep = $Empty;
+
+/// PreparingVMDisksStep contains specific step details.
+typedef PreparingVMDisksStep = $Empty;
+
 /// Request message for 'RemoveMigration' request.
 class RemoveGroupMigrationRequest {
   /// The MigratingVm to remove.
@@ -4723,33 +5949,170 @@ class RemoveGroupMigrationRequest {
       };
 }
 
+/// ReplicatingStep contains specific step details.
+class ReplicatingStep {
+  /// The source disks replication rate for the last 30 minutes in bytes per
+  /// second.
+  core.String? lastThirtyMinutesAverageBytesPerSecond;
+
+  /// The source disks replication rate for the last 2 minutes in bytes per
+  /// second.
+  core.String? lastTwoMinutesAverageBytesPerSecond;
+
+  /// Replicated bytes in the step.
+  core.String? replicatedBytes;
+
+  /// Total bytes to be handled in the step.
+  core.String? totalBytes;
+
+  ReplicatingStep({
+    this.lastThirtyMinutesAverageBytesPerSecond,
+    this.lastTwoMinutesAverageBytesPerSecond,
+    this.replicatedBytes,
+    this.totalBytes,
+  });
+
+  ReplicatingStep.fromJson(core.Map json_)
+      : this(
+          lastThirtyMinutesAverageBytesPerSecond: json_
+                  .containsKey('lastThirtyMinutesAverageBytesPerSecond')
+              ? json_['lastThirtyMinutesAverageBytesPerSecond'] as core.String
+              : null,
+          lastTwoMinutesAverageBytesPerSecond:
+              json_.containsKey('lastTwoMinutesAverageBytesPerSecond')
+                  ? json_['lastTwoMinutesAverageBytesPerSecond'] as core.String
+                  : null,
+          replicatedBytes: json_.containsKey('replicatedBytes')
+              ? json_['replicatedBytes'] as core.String
+              : null,
+          totalBytes: json_.containsKey('totalBytes')
+              ? json_['totalBytes'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (lastThirtyMinutesAverageBytesPerSecond != null)
+          'lastThirtyMinutesAverageBytesPerSecond':
+              lastThirtyMinutesAverageBytesPerSecond!,
+        if (lastTwoMinutesAverageBytesPerSecond != null)
+          'lastTwoMinutesAverageBytesPerSecond':
+              lastTwoMinutesAverageBytesPerSecond!,
+        if (replicatedBytes != null) 'replicatedBytes': replicatedBytes!,
+        if (totalBytes != null) 'totalBytes': totalBytes!,
+      };
+}
+
 /// ReplicationCycle contains information about the current replication cycle
 /// status.
 class ReplicationCycle {
+  /// The cycle's ordinal number.
+  core.int? cycleNumber;
+
+  /// The time the replication cycle has ended.
+  core.String? endTime;
+
+  /// Provides details on the state of the cycle in case of an error.
+  Status? error;
+
+  /// The identifier of the ReplicationCycle.
+  core.String? name;
+
   /// The current progress in percentage of this cycle.
+  ///
+  /// Was replaced by 'steps' field, which breaks down the cycle progression
+  /// more accurately.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.int? progressPercent;
 
   /// The time the replication cycle has started.
   core.String? startTime;
 
+  /// State of the ReplicationCycle.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The state is unknown. This is used for API
+  /// compatibility only and is not used by the system.
+  /// - "RUNNING" : The replication cycle is running.
+  /// - "PAUSED" : The replication cycle is paused.
+  /// - "FAILED" : The replication cycle finished with errors.
+  /// - "SUCCEEDED" : The replication cycle finished successfully.
+  core.String? state;
+
+  /// The cycle's steps list representing its progress.
+  core.List<CycleStep>? steps;
+
+  /// The accumulated duration the replication cycle was paused.
+  core.String? totalPauseDuration;
+
+  /// Warnings that occurred during the cycle.
+  ///
+  /// Output only.
+  core.List<MigrationWarning>? warnings;
+
   ReplicationCycle({
+    this.cycleNumber,
+    this.endTime,
+    this.error,
+    this.name,
     this.progressPercent,
     this.startTime,
+    this.state,
+    this.steps,
+    this.totalPauseDuration,
+    this.warnings,
   });
 
   ReplicationCycle.fromJson(core.Map json_)
       : this(
+          cycleNumber: json_.containsKey('cycleNumber')
+              ? json_['cycleNumber'] as core.int
+              : null,
+          endTime: json_.containsKey('endTime')
+              ? json_['endTime'] as core.String
+              : null,
+          error: json_.containsKey('error')
+              ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
           progressPercent: json_.containsKey('progressPercent')
               ? json_['progressPercent'] as core.int
               : null,
           startTime: json_.containsKey('startTime')
               ? json_['startTime'] as core.String
               : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          steps: json_.containsKey('steps')
+              ? (json_['steps'] as core.List)
+                  .map((value) => CycleStep.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          totalPauseDuration: json_.containsKey('totalPauseDuration')
+              ? json_['totalPauseDuration'] as core.String
+              : null,
+          warnings: json_.containsKey('warnings')
+              ? (json_['warnings'] as core.List)
+                  .map((value) => MigrationWarning.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (cycleNumber != null) 'cycleNumber': cycleNumber!,
+        if (endTime != null) 'endTime': endTime!,
+        if (error != null) 'error': error!,
+        if (name != null) 'name': name!,
         if (progressPercent != null) 'progressPercent': progressPercent!,
         if (startTime != null) 'startTime': startTime!,
+        if (state != null) 'state': state!,
+        if (steps != null) 'steps': steps!,
+        if (totalPauseDuration != null)
+          'totalPauseDuration': totalPauseDuration!,
+        if (warnings != null) 'warnings': warnings!,
       };
 }
 
@@ -4859,10 +6222,16 @@ class SchedulingNodeAffinity {
       };
 }
 
+/// ShuttingDownSourceVMStep contains specific step details.
+typedef ShuttingDownSourceVMStep = $Empty;
+
 /// Source message describes a specific vm migration Source resource.
 ///
 /// It contains the source environment information.
 class Source {
+  /// AWS type source details.
+  AwsSourceDetails? aws;
+
   /// The create time timestamp.
   ///
   /// Output only.
@@ -4888,6 +6257,7 @@ class Source {
   VmwareSourceDetails? vmware;
 
   Source({
+    this.aws,
     this.createTime,
     this.description,
     this.labels,
@@ -4898,6 +6268,10 @@ class Source {
 
   Source.fromJson(core.Map json_)
       : this(
+          aws: json_.containsKey('aws')
+              ? AwsSourceDetails.fromJson(
+                  json_['aws'] as core.Map<core.String, core.dynamic>)
+              : null,
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
               : null,
@@ -4906,9 +6280,9 @@ class Source {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -4923,6 +6297,7 @@ class Source {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (aws != null) 'aws': aws!,
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
         if (labels != null) 'labels': labels!,
@@ -4943,6 +6318,32 @@ typedef StartMigrationRequest = $Empty;
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef Status = $Status;
+
+/// Tag is an AWS tag representation.
+class Tag {
+  /// Key of tag.
+  core.String? key;
+
+  /// Value of tag.
+  core.String? value;
+
+  Tag({
+    this.key,
+    this.value,
+  });
+
+  Tag.fromJson(core.Map json_)
+      : this(
+          key: json_.containsKey('key') ? json_['key'] as core.String : null,
+          value:
+              json_.containsKey('value') ? json_['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (key != null) 'key': key!,
+        if (value != null) 'value': value!,
+      };
+}
 
 /// TargetProject message represents a target Compute Engine project for a
 /// migration or a clone.
@@ -5011,7 +6412,7 @@ class UpgradeApplianceRequest {
   /// server will know to ignore the request if it has already been completed.
   /// The server will guarantee that for at least 60 minutes after the first
   /// request. For example, consider a situation where you make an initial
-  /// request and t he request times out. If you make the request again with the
+  /// request and the request times out. If you make the request again with the
   /// same request ID, the server can check if original operation with the same
   /// request ID was received, and if so, will ignore the second request. This
   /// prevents clients from accidentally creating duplicate commitments. The
@@ -5355,6 +6756,9 @@ class VmwareSourceDetails {
   /// operation.
   core.String? password;
 
+  /// The hostname of the vcenter.
+  core.String? resolvedVcenterHost;
+
   /// The thumbprint representing the certificate for the vcenter.
   core.String? thumbprint;
 
@@ -5366,6 +6770,7 @@ class VmwareSourceDetails {
 
   VmwareSourceDetails({
     this.password,
+    this.resolvedVcenterHost,
     this.thumbprint,
     this.username,
     this.vcenterIp,
@@ -5375,6 +6780,9 @@ class VmwareSourceDetails {
       : this(
           password: json_.containsKey('password')
               ? json_['password'] as core.String
+              : null,
+          resolvedVcenterHost: json_.containsKey('resolvedVcenterHost')
+              ? json_['resolvedVcenterHost'] as core.String
               : null,
           thumbprint: json_.containsKey('thumbprint')
               ? json_['thumbprint'] as core.String
@@ -5389,6 +6797,8 @@ class VmwareSourceDetails {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (password != null) 'password': password!,
+        if (resolvedVcenterHost != null)
+          'resolvedVcenterHost': resolvedVcenterHost!,
         if (thumbprint != null) 'thumbprint': thumbprint!,
         if (username != null) 'username': username!,
         if (vcenterIp != null) 'vcenterIp': vcenterIp!,

@@ -24,6 +24,13 @@
     "name": "firebasedynamiclinks",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230731",
+    "rootUrl": "https://firebasedynamiclinks.googleapis.com/",
+    "servicePath": "",
+    "title": "Firebase Dynamic Links API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "managedShortLinks": {
             "methods": {
@@ -223,8 +229,6 @@
             }
         }
     },
-    "revision": "20220913",
-    "rootUrl": "https://firebasedynamiclinks.googleapis.com/",
     "schemas": {
         "AnalyticsInfo": {
             "description": "Tracking parameters supported by Dynamic Link.",
@@ -378,6 +382,7 @@
                     "type": "string"
                 },
                 "languageCode": {
+                    "deprecated": true,
                     "description": "Device language code setting.",
                     "type": "string"
                 },
@@ -386,6 +391,7 @@
                     "type": "string"
                 },
                 "languageCodeRaw": {
+                    "deprecated": true,
                     "description": "Device language code raw setting. iOS does returns language code in different format than iOS WebView. For example WebView returns en_US, but iOS returns en-US. Field below will return raw value returned by iOS.",
                     "type": "string"
                 },
@@ -444,6 +450,13 @@
                         "DESKTOP",
                         "OTHER"
                     ],
+                    "enumDeprecated": [
+                        false,
+                        false,
+                        false,
+                        true,
+                        false
+                    ],
                     "enumDescriptions": [
                         "Unspecified platform.",
                         "Represents Android platform. All apps and browsers on Android are classfied in this category.",
@@ -477,6 +490,7 @@
                     "type": "string"
                 },
                 "dynamicLinkDomain": {
+                    "deprecated": true,
                     "description": "Dynamic Links domain that the project owns, e.g. abcd.app.goo.gl [Learn more](https://firebase.google.com/docs/dynamic-links/android/receive) on how to set up Dynamic Link domain associated with your Firebase project. Required if missing domain_uri_prefix.",
                     "type": "string"
                 },
@@ -816,6 +830,7 @@
             "id": "GooglePlayAnalytics",
             "properties": {
                 "gclid": {
+                    "deprecated": true,
                     "description": "Deprecated; FDL SDK does not process nor log it.",
                     "type": "string"
                 },
@@ -1012,9 +1027,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Firebase Dynamic Links API",
-    "version": "v1",
-    "version_module": true
+    }
 }

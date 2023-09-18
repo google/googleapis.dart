@@ -1,8 +1,6 @@
 // ignore_for_file: camel_case_types
-// ignore_for_file: cascade_invocations
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_const_declarations
@@ -12,8 +10,9 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unreachable_from_main
 // ignore_for_file: unused_local_variable
 
 import 'dart:async' as async;
@@ -32,6 +31,8 @@ api.GoogleCloudDialogflowCxV3AdvancedSettings
   final o = api.GoogleCloudDialogflowCxV3AdvancedSettings();
   buildCounterGoogleCloudDialogflowCxV3AdvancedSettings++;
   if (buildCounterGoogleCloudDialogflowCxV3AdvancedSettings < 3) {
+    o.audioExportGcsDestination =
+        buildGoogleCloudDialogflowCxV3GcsDestination();
     o.loggingSettings =
         buildGoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings();
   }
@@ -43,6 +44,7 @@ void checkGoogleCloudDialogflowCxV3AdvancedSettings(
     api.GoogleCloudDialogflowCxV3AdvancedSettings o) {
   buildCounterGoogleCloudDialogflowCxV3AdvancedSettings++;
   if (buildCounterGoogleCloudDialogflowCxV3AdvancedSettings < 3) {
+    checkGoogleCloudDialogflowCxV3GcsDestination(o.audioExportGcsDestination!);
     checkGoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings(
         o.loggingSettings!);
   }
@@ -104,6 +106,8 @@ api.GoogleCloudDialogflowCxV3Agent buildGoogleCloudDialogflowCxV3Agent() {
     o.displayName = 'foo';
     o.enableSpellCorrection = true;
     o.enableStackdriverLogging = true;
+    o.gitIntegrationSettings =
+        buildGoogleCloudDialogflowCxV3AgentGitIntegrationSettings();
     o.locked = true;
     o.name = 'foo';
     o.securitySettings = 'foo';
@@ -111,6 +115,8 @@ api.GoogleCloudDialogflowCxV3Agent buildGoogleCloudDialogflowCxV3Agent() {
         buildGoogleCloudDialogflowCxV3SpeechToTextSettings();
     o.startFlow = 'foo';
     o.supportedLanguageCodes = buildUnnamed0();
+    o.textToSpeechSettings =
+        buildGoogleCloudDialogflowCxV3TextToSpeechSettings();
     o.timeZone = 'foo';
   }
   buildCounterGoogleCloudDialogflowCxV3Agent--;
@@ -139,6 +145,8 @@ void checkGoogleCloudDialogflowCxV3Agent(api.GoogleCloudDialogflowCxV3Agent o) {
     );
     unittest.expect(o.enableSpellCorrection!, unittest.isTrue);
     unittest.expect(o.enableStackdriverLogging!, unittest.isTrue);
+    checkGoogleCloudDialogflowCxV3AgentGitIntegrationSettings(
+        o.gitIntegrationSettings!);
     unittest.expect(o.locked!, unittest.isTrue);
     unittest.expect(
       o.name!,
@@ -154,6 +162,7 @@ void checkGoogleCloudDialogflowCxV3Agent(api.GoogleCloudDialogflowCxV3Agent o) {
       unittest.equals('foo'),
     );
     checkUnnamed0(o.supportedLanguageCodes!);
+    checkGoogleCloudDialogflowCxV3TextToSpeechSettings(o.textToSpeechSettings!);
     unittest.expect(
       o.timeZone!,
       unittest.equals('foo'),
@@ -162,13 +171,99 @@ void checkGoogleCloudDialogflowCxV3Agent(api.GoogleCloudDialogflowCxV3Agent o) {
   buildCounterGoogleCloudDialogflowCxV3Agent--;
 }
 
-core.List<api.GoogleCloudDialogflowCxV3FlowValidationResult> buildUnnamed1() =>
+core.int buildCounterGoogleCloudDialogflowCxV3AgentGitIntegrationSettings = 0;
+api.GoogleCloudDialogflowCxV3AgentGitIntegrationSettings
+    buildGoogleCloudDialogflowCxV3AgentGitIntegrationSettings() {
+  final o = api.GoogleCloudDialogflowCxV3AgentGitIntegrationSettings();
+  buildCounterGoogleCloudDialogflowCxV3AgentGitIntegrationSettings++;
+  if (buildCounterGoogleCloudDialogflowCxV3AgentGitIntegrationSettings < 3) {
+    o.githubSettings =
+        buildGoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings();
+  }
+  buildCounterGoogleCloudDialogflowCxV3AgentGitIntegrationSettings--;
+  return o;
+}
+
+void checkGoogleCloudDialogflowCxV3AgentGitIntegrationSettings(
+    api.GoogleCloudDialogflowCxV3AgentGitIntegrationSettings o) {
+  buildCounterGoogleCloudDialogflowCxV3AgentGitIntegrationSettings++;
+  if (buildCounterGoogleCloudDialogflowCxV3AgentGitIntegrationSettings < 3) {
+    checkGoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings(
+        o.githubSettings!);
+  }
+  buildCounterGoogleCloudDialogflowCxV3AgentGitIntegrationSettings--;
+}
+
+core.List<core.String> buildUnnamed1() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed1(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int
+    buildCounterGoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings =
+    0;
+api.GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings
+    buildGoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings() {
+  final o =
+      api.GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings();
+  buildCounterGoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings++;
+  if (buildCounterGoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings <
+      3) {
+    o.accessToken = 'foo';
+    o.branches = buildUnnamed1();
+    o.displayName = 'foo';
+    o.repositoryUri = 'foo';
+    o.trackingBranch = 'foo';
+  }
+  buildCounterGoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings--;
+  return o;
+}
+
+void checkGoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings(
+    api.GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings o) {
+  buildCounterGoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings++;
+  if (buildCounterGoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings <
+      3) {
+    unittest.expect(
+      o.accessToken!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed1(o.branches!);
+    unittest.expect(
+      o.displayName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.repositoryUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.trackingBranch!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings--;
+}
+
+core.List<api.GoogleCloudDialogflowCxV3FlowValidationResult> buildUnnamed2() =>
     [
       buildGoogleCloudDialogflowCxV3FlowValidationResult(),
       buildGoogleCloudDialogflowCxV3FlowValidationResult(),
     ];
 
-void checkUnnamed1(
+void checkUnnamed2(
     core.List<api.GoogleCloudDialogflowCxV3FlowValidationResult> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowCxV3FlowValidationResult(o[0]);
@@ -181,7 +276,7 @@ api.GoogleCloudDialogflowCxV3AgentValidationResult
   final o = api.GoogleCloudDialogflowCxV3AgentValidationResult();
   buildCounterGoogleCloudDialogflowCxV3AgentValidationResult++;
   if (buildCounterGoogleCloudDialogflowCxV3AgentValidationResult < 3) {
-    o.flowValidationResults = buildUnnamed1();
+    o.flowValidationResults = buildUnnamed2();
     o.name = 'foo';
   }
   buildCounterGoogleCloudDialogflowCxV3AgentValidationResult--;
@@ -192,7 +287,7 @@ void checkGoogleCloudDialogflowCxV3AgentValidationResult(
     api.GoogleCloudDialogflowCxV3AgentValidationResult o) {
   buildCounterGoogleCloudDialogflowCxV3AgentValidationResult++;
   if (buildCounterGoogleCloudDialogflowCxV3AgentValidationResult < 3) {
-    checkUnnamed1(o.flowValidationResults!);
+    checkUnnamed2(o.flowValidationResults!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -227,12 +322,12 @@ void checkGoogleCloudDialogflowCxV3AudioInput(
   buildCounterGoogleCloudDialogflowCxV3AudioInput--;
 }
 
-core.List<core.String> buildUnnamed2() => [
+core.List<core.String> buildUnnamed3() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed2(core.List<core.String> o) {
+void checkUnnamed3(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -250,7 +345,7 @@ api.GoogleCloudDialogflowCxV3BatchDeleteTestCasesRequest
   final o = api.GoogleCloudDialogflowCxV3BatchDeleteTestCasesRequest();
   buildCounterGoogleCloudDialogflowCxV3BatchDeleteTestCasesRequest++;
   if (buildCounterGoogleCloudDialogflowCxV3BatchDeleteTestCasesRequest < 3) {
-    o.names = buildUnnamed2();
+    o.names = buildUnnamed3();
   }
   buildCounterGoogleCloudDialogflowCxV3BatchDeleteTestCasesRequest--;
   return o;
@@ -260,17 +355,17 @@ void checkGoogleCloudDialogflowCxV3BatchDeleteTestCasesRequest(
     api.GoogleCloudDialogflowCxV3BatchDeleteTestCasesRequest o) {
   buildCounterGoogleCloudDialogflowCxV3BatchDeleteTestCasesRequest++;
   if (buildCounterGoogleCloudDialogflowCxV3BatchDeleteTestCasesRequest < 3) {
-    checkUnnamed2(o.names!);
+    checkUnnamed3(o.names!);
   }
   buildCounterGoogleCloudDialogflowCxV3BatchDeleteTestCasesRequest--;
 }
 
-core.List<core.String> buildUnnamed3() => [
+core.List<core.String> buildUnnamed4() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed3(core.List<core.String> o) {
+void checkUnnamed4(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -289,7 +384,7 @@ api.GoogleCloudDialogflowCxV3BatchRunTestCasesRequest
   buildCounterGoogleCloudDialogflowCxV3BatchRunTestCasesRequest++;
   if (buildCounterGoogleCloudDialogflowCxV3BatchRunTestCasesRequest < 3) {
     o.environment = 'foo';
-    o.testCases = buildUnnamed3();
+    o.testCases = buildUnnamed4();
   }
   buildCounterGoogleCloudDialogflowCxV3BatchRunTestCasesRequest--;
   return o;
@@ -303,7 +398,7 @@ void checkGoogleCloudDialogflowCxV3BatchRunTestCasesRequest(
       o.environment!,
       unittest.equals('foo'),
     );
-    checkUnnamed3(o.testCases!);
+    checkUnnamed4(o.testCases!);
   }
   buildCounterGoogleCloudDialogflowCxV3BatchRunTestCasesRequest--;
 }
@@ -457,12 +552,12 @@ void checkGoogleCloudDialogflowCxV3CompareVersionsResponse(
   buildCounterGoogleCloudDialogflowCxV3CompareVersionsResponse--;
 }
 
-core.List<core.String> buildUnnamed4() => [
+core.List<core.String> buildUnnamed5() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed4(core.List<core.String> o) {
+void checkUnnamed5(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -483,7 +578,7 @@ api.GoogleCloudDialogflowCxV3ContinuousTestResult
     o.name = 'foo';
     o.result = 'foo';
     o.runTime = 'foo';
-    o.testCaseResults = buildUnnamed4();
+    o.testCaseResults = buildUnnamed5();
   }
   buildCounterGoogleCloudDialogflowCxV3ContinuousTestResult--;
   return o;
@@ -505,7 +600,7 @@ void checkGoogleCloudDialogflowCxV3ContinuousTestResult(
       o.runTime!,
       unittest.equals('foo'),
     );
-    checkUnnamed4(o.testCaseResults!);
+    checkUnnamed5(o.testCaseResults!);
   }
   buildCounterGoogleCloudDialogflowCxV3ContinuousTestResult--;
 }
@@ -535,7 +630,7 @@ void checkGoogleCloudDialogflowCxV3ConversationTurn(
   buildCounterGoogleCloudDialogflowCxV3ConversationTurn--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed5() => {
+core.Map<core.String, core.Object?> buildUnnamed6() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -548,7 +643,7 @@ core.Map<core.String, core.Object?> buildUnnamed5() => {
       },
     };
 
-void checkUnnamed5(core.Map<core.String, core.Object?> o) {
+void checkUnnamed6(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -587,7 +682,7 @@ api.GoogleCloudDialogflowCxV3ConversationTurnUserInput
   buildCounterGoogleCloudDialogflowCxV3ConversationTurnUserInput++;
   if (buildCounterGoogleCloudDialogflowCxV3ConversationTurnUserInput < 3) {
     o.enableSentimentAnalysis = true;
-    o.injectedParameters = buildUnnamed5();
+    o.injectedParameters = buildUnnamed6();
     o.input = buildGoogleCloudDialogflowCxV3QueryInput();
     o.isWebhookEnabled = true;
   }
@@ -600,14 +695,14 @@ void checkGoogleCloudDialogflowCxV3ConversationTurnUserInput(
   buildCounterGoogleCloudDialogflowCxV3ConversationTurnUserInput++;
   if (buildCounterGoogleCloudDialogflowCxV3ConversationTurnUserInput < 3) {
     unittest.expect(o.enableSentimentAnalysis!, unittest.isTrue);
-    checkUnnamed5(o.injectedParameters!);
+    checkUnnamed6(o.injectedParameters!);
     checkGoogleCloudDialogflowCxV3QueryInput(o.input!);
     unittest.expect(o.isWebhookEnabled!, unittest.isTrue);
   }
   buildCounterGoogleCloudDialogflowCxV3ConversationTurnUserInput--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed6() => {
+core.Map<core.String, core.Object?> buildUnnamed7() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -620,7 +715,7 @@ core.Map<core.String, core.Object?> buildUnnamed6() => {
       },
     };
 
-void checkUnnamed6(core.Map<core.String, core.Object?> o) {
+void checkUnnamed7(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -652,19 +747,19 @@ void checkUnnamed6(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<api.GoogleCloudDialogflowCxV3TestRunDifference> buildUnnamed7() => [
+core.List<api.GoogleCloudDialogflowCxV3TestRunDifference> buildUnnamed8() => [
       buildGoogleCloudDialogflowCxV3TestRunDifference(),
       buildGoogleCloudDialogflowCxV3TestRunDifference(),
     ];
 
-void checkUnnamed7(
+void checkUnnamed8(
     core.List<api.GoogleCloudDialogflowCxV3TestRunDifference> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowCxV3TestRunDifference(o[0]);
   checkGoogleCloudDialogflowCxV3TestRunDifference(o[1]);
 }
 
-core.Map<core.String, core.Object?> buildUnnamed8() => {
+core.Map<core.String, core.Object?> buildUnnamed9() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -677,7 +772,7 @@ core.Map<core.String, core.Object?> buildUnnamed8() => {
       },
     };
 
-void checkUnnamed8(core.Map<core.String, core.Object?> o) {
+void checkUnnamed9(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -709,12 +804,13 @@ void checkUnnamed8(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<api.GoogleCloudDialogflowCxV3ResponseMessageText> buildUnnamed9() => [
+core.List<api.GoogleCloudDialogflowCxV3ResponseMessageText> buildUnnamed10() =>
+    [
       buildGoogleCloudDialogflowCxV3ResponseMessageText(),
       buildGoogleCloudDialogflowCxV3ResponseMessageText(),
     ];
 
-void checkUnnamed9(
+void checkUnnamed10(
     core.List<api.GoogleCloudDialogflowCxV3ResponseMessageText> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowCxV3ResponseMessageText(o[0]);
@@ -730,11 +826,11 @@ api.GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput
   if (buildCounterGoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput <
       3) {
     o.currentPage = buildGoogleCloudDialogflowCxV3Page();
-    o.diagnosticInfo = buildUnnamed6();
-    o.differences = buildUnnamed7();
-    o.sessionParameters = buildUnnamed8();
+    o.diagnosticInfo = buildUnnamed7();
+    o.differences = buildUnnamed8();
+    o.sessionParameters = buildUnnamed9();
     o.status = buildGoogleRpcStatus();
-    o.textResponses = buildUnnamed9();
+    o.textResponses = buildUnnamed10();
     o.triggeredIntent = buildGoogleCloudDialogflowCxV3Intent();
   }
   buildCounterGoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput--;
@@ -747,11 +843,11 @@ void checkGoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput(
   if (buildCounterGoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput <
       3) {
     checkGoogleCloudDialogflowCxV3Page(o.currentPage!);
-    checkUnnamed6(o.diagnosticInfo!);
-    checkUnnamed7(o.differences!);
-    checkUnnamed8(o.sessionParameters!);
+    checkUnnamed7(o.diagnosticInfo!);
+    checkUnnamed8(o.differences!);
+    checkUnnamed9(o.sessionParameters!);
     checkGoogleRpcStatus(o.status!);
-    checkUnnamed9(o.textResponses!);
+    checkUnnamed10(o.textResponses!);
     checkGoogleCloudDialogflowCxV3Intent(o.triggeredIntent!);
   }
   buildCounterGoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput--;
@@ -827,12 +923,12 @@ void checkGoogleCloudDialogflowCxV3Deployment(
   buildCounterGoogleCloudDialogflowCxV3Deployment--;
 }
 
-core.List<core.String> buildUnnamed10() => [
+core.List<core.String> buildUnnamed11() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed10(core.List<core.String> o) {
+void checkUnnamed11(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -850,7 +946,7 @@ api.GoogleCloudDialogflowCxV3DeploymentResult
   final o = api.GoogleCloudDialogflowCxV3DeploymentResult();
   buildCounterGoogleCloudDialogflowCxV3DeploymentResult++;
   if (buildCounterGoogleCloudDialogflowCxV3DeploymentResult < 3) {
-    o.deploymentTestResults = buildUnnamed10();
+    o.deploymentTestResults = buildUnnamed11();
     o.experiment = 'foo';
   }
   buildCounterGoogleCloudDialogflowCxV3DeploymentResult--;
@@ -861,7 +957,7 @@ void checkGoogleCloudDialogflowCxV3DeploymentResult(
     api.GoogleCloudDialogflowCxV3DeploymentResult o) {
   buildCounterGoogleCloudDialogflowCxV3DeploymentResult++;
   if (buildCounterGoogleCloudDialogflowCxV3DeploymentResult < 3) {
-    checkUnnamed10(o.deploymentTestResults!);
+    checkUnnamed11(o.deploymentTestResults!);
     unittest.expect(
       o.experiment!,
       unittest.equals('foo'),
@@ -964,12 +1060,12 @@ void checkGoogleCloudDialogflowCxV3DtmfInput(
   buildCounterGoogleCloudDialogflowCxV3DtmfInput--;
 }
 
-core.List<api.GoogleCloudDialogflowCxV3EntityTypeEntity> buildUnnamed11() => [
+core.List<api.GoogleCloudDialogflowCxV3EntityTypeEntity> buildUnnamed12() => [
       buildGoogleCloudDialogflowCxV3EntityTypeEntity(),
       buildGoogleCloudDialogflowCxV3EntityTypeEntity(),
     ];
 
-void checkUnnamed11(
+void checkUnnamed12(
     core.List<api.GoogleCloudDialogflowCxV3EntityTypeEntity> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowCxV3EntityTypeEntity(o[0]);
@@ -977,12 +1073,12 @@ void checkUnnamed11(
 }
 
 core.List<api.GoogleCloudDialogflowCxV3EntityTypeExcludedPhrase>
-    buildUnnamed12() => [
+    buildUnnamed13() => [
           buildGoogleCloudDialogflowCxV3EntityTypeExcludedPhrase(),
           buildGoogleCloudDialogflowCxV3EntityTypeExcludedPhrase(),
         ];
 
-void checkUnnamed12(
+void checkUnnamed13(
     core.List<api.GoogleCloudDialogflowCxV3EntityTypeExcludedPhrase> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowCxV3EntityTypeExcludedPhrase(o[0]);
@@ -998,8 +1094,8 @@ api.GoogleCloudDialogflowCxV3EntityType
     o.autoExpansionMode = 'foo';
     o.displayName = 'foo';
     o.enableFuzzyExtraction = true;
-    o.entities = buildUnnamed11();
-    o.excludedPhrases = buildUnnamed12();
+    o.entities = buildUnnamed12();
+    o.excludedPhrases = buildUnnamed13();
     o.kind = 'foo';
     o.name = 'foo';
     o.redact = true;
@@ -1021,8 +1117,8 @@ void checkGoogleCloudDialogflowCxV3EntityType(
       unittest.equals('foo'),
     );
     unittest.expect(o.enableFuzzyExtraction!, unittest.isTrue);
-    checkUnnamed11(o.entities!);
-    checkUnnamed12(o.excludedPhrases!);
+    checkUnnamed12(o.entities!);
+    checkUnnamed13(o.excludedPhrases!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -1036,12 +1132,12 @@ void checkGoogleCloudDialogflowCxV3EntityType(
   buildCounterGoogleCloudDialogflowCxV3EntityType--;
 }
 
-core.List<core.String> buildUnnamed13() => [
+core.List<core.String> buildUnnamed14() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed13(core.List<core.String> o) {
+void checkUnnamed14(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1059,7 +1155,7 @@ api.GoogleCloudDialogflowCxV3EntityTypeEntity
   final o = api.GoogleCloudDialogflowCxV3EntityTypeEntity();
   buildCounterGoogleCloudDialogflowCxV3EntityTypeEntity++;
   if (buildCounterGoogleCloudDialogflowCxV3EntityTypeEntity < 3) {
-    o.synonyms = buildUnnamed13();
+    o.synonyms = buildUnnamed14();
     o.value = 'foo';
   }
   buildCounterGoogleCloudDialogflowCxV3EntityTypeEntity--;
@@ -1070,7 +1166,7 @@ void checkGoogleCloudDialogflowCxV3EntityTypeEntity(
     api.GoogleCloudDialogflowCxV3EntityTypeEntity o) {
   buildCounterGoogleCloudDialogflowCxV3EntityTypeEntity++;
   if (buildCounterGoogleCloudDialogflowCxV3EntityTypeEntity < 3) {
-    checkUnnamed13(o.synonyms!);
+    checkUnnamed14(o.synonyms!);
     unittest.expect(
       o.value!,
       unittest.equals('foo'),
@@ -1104,12 +1200,12 @@ void checkGoogleCloudDialogflowCxV3EntityTypeExcludedPhrase(
 }
 
 core.List<api.GoogleCloudDialogflowCxV3EnvironmentVersionConfig>
-    buildUnnamed14() => [
+    buildUnnamed15() => [
           buildGoogleCloudDialogflowCxV3EnvironmentVersionConfig(),
           buildGoogleCloudDialogflowCxV3EnvironmentVersionConfig(),
         ];
 
-void checkUnnamed14(
+void checkUnnamed15(
     core.List<api.GoogleCloudDialogflowCxV3EnvironmentVersionConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowCxV3EnvironmentVersionConfig(o[0]);
@@ -1128,7 +1224,7 @@ api.GoogleCloudDialogflowCxV3Environment
     o.testCasesConfig =
         buildGoogleCloudDialogflowCxV3EnvironmentTestCasesConfig();
     o.updateTime = 'foo';
-    o.versionConfigs = buildUnnamed14();
+    o.versionConfigs = buildUnnamed15();
     o.webhookConfig = buildGoogleCloudDialogflowCxV3EnvironmentWebhookConfig();
   }
   buildCounterGoogleCloudDialogflowCxV3Environment--;
@@ -1157,18 +1253,18 @@ void checkGoogleCloudDialogflowCxV3Environment(
       o.updateTime!,
       unittest.equals('foo'),
     );
-    checkUnnamed14(o.versionConfigs!);
+    checkUnnamed15(o.versionConfigs!);
     checkGoogleCloudDialogflowCxV3EnvironmentWebhookConfig(o.webhookConfig!);
   }
   buildCounterGoogleCloudDialogflowCxV3Environment--;
 }
 
-core.List<core.String> buildUnnamed15() => [
+core.List<core.String> buildUnnamed16() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed15(core.List<core.String> o) {
+void checkUnnamed16(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1188,7 +1284,7 @@ api.GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig
   if (buildCounterGoogleCloudDialogflowCxV3EnvironmentTestCasesConfig < 3) {
     o.enableContinuousRun = true;
     o.enablePredeploymentRun = true;
-    o.testCases = buildUnnamed15();
+    o.testCases = buildUnnamed16();
   }
   buildCounterGoogleCloudDialogflowCxV3EnvironmentTestCasesConfig--;
   return o;
@@ -1200,7 +1296,7 @@ void checkGoogleCloudDialogflowCxV3EnvironmentTestCasesConfig(
   if (buildCounterGoogleCloudDialogflowCxV3EnvironmentTestCasesConfig < 3) {
     unittest.expect(o.enableContinuousRun!, unittest.isTrue);
     unittest.expect(o.enablePredeploymentRun!, unittest.isTrue);
-    checkUnnamed15(o.testCases!);
+    checkUnnamed16(o.testCases!);
   }
   buildCounterGoogleCloudDialogflowCxV3EnvironmentTestCasesConfig--;
 }
@@ -1229,12 +1325,12 @@ void checkGoogleCloudDialogflowCxV3EnvironmentVersionConfig(
   buildCounterGoogleCloudDialogflowCxV3EnvironmentVersionConfig--;
 }
 
-core.List<api.GoogleCloudDialogflowCxV3Webhook> buildUnnamed16() => [
+core.List<api.GoogleCloudDialogflowCxV3Webhook> buildUnnamed17() => [
       buildGoogleCloudDialogflowCxV3Webhook(),
       buildGoogleCloudDialogflowCxV3Webhook(),
     ];
 
-void checkUnnamed16(core.List<api.GoogleCloudDialogflowCxV3Webhook> o) {
+void checkUnnamed17(core.List<api.GoogleCloudDialogflowCxV3Webhook> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowCxV3Webhook(o[0]);
   checkGoogleCloudDialogflowCxV3Webhook(o[1]);
@@ -1246,7 +1342,7 @@ api.GoogleCloudDialogflowCxV3EnvironmentWebhookConfig
   final o = api.GoogleCloudDialogflowCxV3EnvironmentWebhookConfig();
   buildCounterGoogleCloudDialogflowCxV3EnvironmentWebhookConfig++;
   if (buildCounterGoogleCloudDialogflowCxV3EnvironmentWebhookConfig < 3) {
-    o.webhookOverrides = buildUnnamed16();
+    o.webhookOverrides = buildUnnamed17();
   }
   buildCounterGoogleCloudDialogflowCxV3EnvironmentWebhookConfig--;
   return o;
@@ -1256,7 +1352,7 @@ void checkGoogleCloudDialogflowCxV3EnvironmentWebhookConfig(
     api.GoogleCloudDialogflowCxV3EnvironmentWebhookConfig o) {
   buildCounterGoogleCloudDialogflowCxV3EnvironmentWebhookConfig++;
   if (buildCounterGoogleCloudDialogflowCxV3EnvironmentWebhookConfig < 3) {
-    checkUnnamed16(o.webhookOverrides!);
+    checkUnnamed17(o.webhookOverrides!);
   }
   buildCounterGoogleCloudDialogflowCxV3EnvironmentWebhookConfig--;
 }
@@ -1326,12 +1422,12 @@ void checkGoogleCloudDialogflowCxV3EventInput(
   buildCounterGoogleCloudDialogflowCxV3EventInput--;
 }
 
-core.List<api.GoogleCloudDialogflowCxV3VariantsHistory> buildUnnamed17() => [
+core.List<api.GoogleCloudDialogflowCxV3VariantsHistory> buildUnnamed18() => [
       buildGoogleCloudDialogflowCxV3VariantsHistory(),
       buildGoogleCloudDialogflowCxV3VariantsHistory(),
     ];
 
-void checkUnnamed17(core.List<api.GoogleCloudDialogflowCxV3VariantsHistory> o) {
+void checkUnnamed18(core.List<api.GoogleCloudDialogflowCxV3VariantsHistory> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowCxV3VariantsHistory(o[0]);
   checkGoogleCloudDialogflowCxV3VariantsHistory(o[1]);
@@ -1357,7 +1453,7 @@ api.GoogleCloudDialogflowCxV3Experiment
     o.rolloutState = buildGoogleCloudDialogflowCxV3RolloutState();
     o.startTime = 'foo';
     o.state = 'foo';
-    o.variantsHistory = buildUnnamed17();
+    o.variantsHistory = buildUnnamed18();
   }
   buildCounterGoogleCloudDialogflowCxV3Experiment--;
   return o;
@@ -1411,7 +1507,7 @@ void checkGoogleCloudDialogflowCxV3Experiment(
       o.state!,
       unittest.equals('foo'),
     );
-    checkUnnamed17(o.variantsHistory!);
+    checkUnnamed18(o.variantsHistory!);
   }
   buildCounterGoogleCloudDialogflowCxV3Experiment--;
 }
@@ -1443,12 +1539,12 @@ void checkGoogleCloudDialogflowCxV3ExperimentDefinition(
 }
 
 core.List<api.GoogleCloudDialogflowCxV3ExperimentResultVersionMetrics>
-    buildUnnamed18() => [
+    buildUnnamed19() => [
           buildGoogleCloudDialogflowCxV3ExperimentResultVersionMetrics(),
           buildGoogleCloudDialogflowCxV3ExperimentResultVersionMetrics(),
         ];
 
-void checkUnnamed18(
+void checkUnnamed19(
     core.List<api.GoogleCloudDialogflowCxV3ExperimentResultVersionMetrics> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowCxV3ExperimentResultVersionMetrics(o[0]);
@@ -1462,7 +1558,7 @@ api.GoogleCloudDialogflowCxV3ExperimentResult
   buildCounterGoogleCloudDialogflowCxV3ExperimentResult++;
   if (buildCounterGoogleCloudDialogflowCxV3ExperimentResult < 3) {
     o.lastUpdateTime = 'foo';
-    o.versionMetrics = buildUnnamed18();
+    o.versionMetrics = buildUnnamed19();
   }
   buildCounterGoogleCloudDialogflowCxV3ExperimentResult--;
   return o;
@@ -1476,7 +1572,7 @@ void checkGoogleCloudDialogflowCxV3ExperimentResult(
       o.lastUpdateTime!,
       unittest.equals('foo'),
     );
-    checkUnnamed18(o.versionMetrics!);
+    checkUnnamed19(o.versionMetrics!);
   }
   buildCounterGoogleCloudDialogflowCxV3ExperimentResult--;
 }
@@ -1567,12 +1663,12 @@ void checkGoogleCloudDialogflowCxV3ExperimentResultMetric(
 }
 
 core.List<api.GoogleCloudDialogflowCxV3ExperimentResultMetric>
-    buildUnnamed19() => [
+    buildUnnamed20() => [
           buildGoogleCloudDialogflowCxV3ExperimentResultMetric(),
           buildGoogleCloudDialogflowCxV3ExperimentResultMetric(),
         ];
 
-void checkUnnamed19(
+void checkUnnamed20(
     core.List<api.GoogleCloudDialogflowCxV3ExperimentResultMetric> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowCxV3ExperimentResultMetric(o[0]);
@@ -1586,7 +1682,7 @@ api.GoogleCloudDialogflowCxV3ExperimentResultVersionMetrics
   final o = api.GoogleCloudDialogflowCxV3ExperimentResultVersionMetrics();
   buildCounterGoogleCloudDialogflowCxV3ExperimentResultVersionMetrics++;
   if (buildCounterGoogleCloudDialogflowCxV3ExperimentResultVersionMetrics < 3) {
-    o.metrics = buildUnnamed19();
+    o.metrics = buildUnnamed20();
     o.sessionCount = 42;
     o.version = 'foo';
   }
@@ -1598,7 +1694,7 @@ void checkGoogleCloudDialogflowCxV3ExperimentResultVersionMetrics(
     api.GoogleCloudDialogflowCxV3ExperimentResultVersionMetrics o) {
   buildCounterGoogleCloudDialogflowCxV3ExperimentResultVersionMetrics++;
   if (buildCounterGoogleCloudDialogflowCxV3ExperimentResultVersionMetrics < 3) {
-    checkUnnamed19(o.metrics!);
+    checkUnnamed20(o.metrics!);
     unittest.expect(
       o.sessionCount!,
       unittest.equals(42),
@@ -1620,6 +1716,9 @@ api.GoogleCloudDialogflowCxV3ExportAgentRequest
     o.agentUri = 'foo';
     o.dataFormat = 'foo';
     o.environment = 'foo';
+    o.gitDestination =
+        buildGoogleCloudDialogflowCxV3ExportAgentRequestGitDestination();
+    o.includeBigqueryExportSettings = true;
   }
   buildCounterGoogleCloudDialogflowCxV3ExportAgentRequest--;
   return o;
@@ -1641,8 +1740,43 @@ void checkGoogleCloudDialogflowCxV3ExportAgentRequest(
       o.environment!,
       unittest.equals('foo'),
     );
+    checkGoogleCloudDialogflowCxV3ExportAgentRequestGitDestination(
+        o.gitDestination!);
+    unittest.expect(o.includeBigqueryExportSettings!, unittest.isTrue);
   }
   buildCounterGoogleCloudDialogflowCxV3ExportAgentRequest--;
+}
+
+core.int buildCounterGoogleCloudDialogflowCxV3ExportAgentRequestGitDestination =
+    0;
+api.GoogleCloudDialogflowCxV3ExportAgentRequestGitDestination
+    buildGoogleCloudDialogflowCxV3ExportAgentRequestGitDestination() {
+  final o = api.GoogleCloudDialogflowCxV3ExportAgentRequestGitDestination();
+  buildCounterGoogleCloudDialogflowCxV3ExportAgentRequestGitDestination++;
+  if (buildCounterGoogleCloudDialogflowCxV3ExportAgentRequestGitDestination <
+      3) {
+    o.commitMessage = 'foo';
+    o.trackingBranch = 'foo';
+  }
+  buildCounterGoogleCloudDialogflowCxV3ExportAgentRequestGitDestination--;
+  return o;
+}
+
+void checkGoogleCloudDialogflowCxV3ExportAgentRequestGitDestination(
+    api.GoogleCloudDialogflowCxV3ExportAgentRequestGitDestination o) {
+  buildCounterGoogleCloudDialogflowCxV3ExportAgentRequestGitDestination++;
+  if (buildCounterGoogleCloudDialogflowCxV3ExportAgentRequestGitDestination <
+      3) {
+    unittest.expect(
+      o.commitMessage!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.trackingBranch!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudDialogflowCxV3ExportAgentRequestGitDestination--;
 }
 
 core.int buildCounterGoogleCloudDialogflowCxV3ExportFlowRequest = 0;
@@ -1705,23 +1839,23 @@ void checkGoogleCloudDialogflowCxV3ExportTestCasesRequest(
   buildCounterGoogleCloudDialogflowCxV3ExportTestCasesRequest--;
 }
 
-core.List<api.GoogleCloudDialogflowCxV3EventHandler> buildUnnamed20() => [
+core.List<api.GoogleCloudDialogflowCxV3EventHandler> buildUnnamed21() => [
       buildGoogleCloudDialogflowCxV3EventHandler(),
       buildGoogleCloudDialogflowCxV3EventHandler(),
     ];
 
-void checkUnnamed20(core.List<api.GoogleCloudDialogflowCxV3EventHandler> o) {
+void checkUnnamed21(core.List<api.GoogleCloudDialogflowCxV3EventHandler> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowCxV3EventHandler(o[0]);
   checkGoogleCloudDialogflowCxV3EventHandler(o[1]);
 }
 
-core.List<core.String> buildUnnamed21() => [
+core.List<core.String> buildUnnamed22() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed21(core.List<core.String> o) {
+void checkUnnamed22(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1733,12 +1867,12 @@ void checkUnnamed21(core.List<core.String> o) {
   );
 }
 
-core.List<api.GoogleCloudDialogflowCxV3TransitionRoute> buildUnnamed22() => [
+core.List<api.GoogleCloudDialogflowCxV3TransitionRoute> buildUnnamed23() => [
       buildGoogleCloudDialogflowCxV3TransitionRoute(),
       buildGoogleCloudDialogflowCxV3TransitionRoute(),
     ];
 
-void checkUnnamed22(core.List<api.GoogleCloudDialogflowCxV3TransitionRoute> o) {
+void checkUnnamed23(core.List<api.GoogleCloudDialogflowCxV3TransitionRoute> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowCxV3TransitionRoute(o[0]);
   checkGoogleCloudDialogflowCxV3TransitionRoute(o[1]);
@@ -1751,11 +1885,11 @@ api.GoogleCloudDialogflowCxV3Flow buildGoogleCloudDialogflowCxV3Flow() {
   if (buildCounterGoogleCloudDialogflowCxV3Flow < 3) {
     o.description = 'foo';
     o.displayName = 'foo';
-    o.eventHandlers = buildUnnamed20();
+    o.eventHandlers = buildUnnamed21();
     o.name = 'foo';
     o.nluSettings = buildGoogleCloudDialogflowCxV3NluSettings();
-    o.transitionRouteGroups = buildUnnamed21();
-    o.transitionRoutes = buildUnnamed22();
+    o.transitionRouteGroups = buildUnnamed22();
+    o.transitionRoutes = buildUnnamed23();
   }
   buildCounterGoogleCloudDialogflowCxV3Flow--;
   return o;
@@ -1772,24 +1906,24 @@ void checkGoogleCloudDialogflowCxV3Flow(api.GoogleCloudDialogflowCxV3Flow o) {
       o.displayName!,
       unittest.equals('foo'),
     );
-    checkUnnamed20(o.eventHandlers!);
+    checkUnnamed21(o.eventHandlers!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
     checkGoogleCloudDialogflowCxV3NluSettings(o.nluSettings!);
-    checkUnnamed21(o.transitionRouteGroups!);
-    checkUnnamed22(o.transitionRoutes!);
+    checkUnnamed22(o.transitionRouteGroups!);
+    checkUnnamed23(o.transitionRoutes!);
   }
   buildCounterGoogleCloudDialogflowCxV3Flow--;
 }
 
-core.List<api.GoogleCloudDialogflowCxV3ValidationMessage> buildUnnamed23() => [
+core.List<api.GoogleCloudDialogflowCxV3ValidationMessage> buildUnnamed24() => [
       buildGoogleCloudDialogflowCxV3ValidationMessage(),
       buildGoogleCloudDialogflowCxV3ValidationMessage(),
     ];
 
-void checkUnnamed23(
+void checkUnnamed24(
     core.List<api.GoogleCloudDialogflowCxV3ValidationMessage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowCxV3ValidationMessage(o[0]);
@@ -1804,7 +1938,7 @@ api.GoogleCloudDialogflowCxV3FlowValidationResult
   if (buildCounterGoogleCloudDialogflowCxV3FlowValidationResult < 3) {
     o.name = 'foo';
     o.updateTime = 'foo';
-    o.validationMessages = buildUnnamed23();
+    o.validationMessages = buildUnnamed24();
   }
   buildCounterGoogleCloudDialogflowCxV3FlowValidationResult--;
   return o;
@@ -1822,17 +1956,17 @@ void checkGoogleCloudDialogflowCxV3FlowValidationResult(
       o.updateTime!,
       unittest.equals('foo'),
     );
-    checkUnnamed23(o.validationMessages!);
+    checkUnnamed24(o.validationMessages!);
   }
   buildCounterGoogleCloudDialogflowCxV3FlowValidationResult--;
 }
 
-core.List<api.GoogleCloudDialogflowCxV3FormParameter> buildUnnamed24() => [
+core.List<api.GoogleCloudDialogflowCxV3FormParameter> buildUnnamed25() => [
       buildGoogleCloudDialogflowCxV3FormParameter(),
       buildGoogleCloudDialogflowCxV3FormParameter(),
     ];
 
-void checkUnnamed24(core.List<api.GoogleCloudDialogflowCxV3FormParameter> o) {
+void checkUnnamed25(core.List<api.GoogleCloudDialogflowCxV3FormParameter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowCxV3FormParameter(o[0]);
   checkGoogleCloudDialogflowCxV3FormParameter(o[1]);
@@ -1843,7 +1977,7 @@ api.GoogleCloudDialogflowCxV3Form buildGoogleCloudDialogflowCxV3Form() {
   final o = api.GoogleCloudDialogflowCxV3Form();
   buildCounterGoogleCloudDialogflowCxV3Form++;
   if (buildCounterGoogleCloudDialogflowCxV3Form < 3) {
-    o.parameters = buildUnnamed24();
+    o.parameters = buildUnnamed25();
   }
   buildCounterGoogleCloudDialogflowCxV3Form--;
   return o;
@@ -1852,7 +1986,7 @@ api.GoogleCloudDialogflowCxV3Form buildGoogleCloudDialogflowCxV3Form() {
 void checkGoogleCloudDialogflowCxV3Form(api.GoogleCloudDialogflowCxV3Form o) {
   buildCounterGoogleCloudDialogflowCxV3Form++;
   if (buildCounterGoogleCloudDialogflowCxV3Form < 3) {
-    checkUnnamed24(o.parameters!);
+    checkUnnamed25(o.parameters!);
   }
   buildCounterGoogleCloudDialogflowCxV3Form--;
 }
@@ -1913,12 +2047,12 @@ void checkGoogleCloudDialogflowCxV3FormParameter(
   buildCounterGoogleCloudDialogflowCxV3FormParameter--;
 }
 
-core.List<api.GoogleCloudDialogflowCxV3EventHandler> buildUnnamed25() => [
+core.List<api.GoogleCloudDialogflowCxV3EventHandler> buildUnnamed26() => [
       buildGoogleCloudDialogflowCxV3EventHandler(),
       buildGoogleCloudDialogflowCxV3EventHandler(),
     ];
 
-void checkUnnamed25(core.List<api.GoogleCloudDialogflowCxV3EventHandler> o) {
+void checkUnnamed26(core.List<api.GoogleCloudDialogflowCxV3EventHandler> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowCxV3EventHandler(o[0]);
   checkGoogleCloudDialogflowCxV3EventHandler(o[1]);
@@ -1931,7 +2065,7 @@ api.GoogleCloudDialogflowCxV3FormParameterFillBehavior
   buildCounterGoogleCloudDialogflowCxV3FormParameterFillBehavior++;
   if (buildCounterGoogleCloudDialogflowCxV3FormParameterFillBehavior < 3) {
     o.initialPromptFulfillment = buildGoogleCloudDialogflowCxV3Fulfillment();
-    o.repromptEventHandlers = buildUnnamed25();
+    o.repromptEventHandlers = buildUnnamed26();
   }
   buildCounterGoogleCloudDialogflowCxV3FormParameterFillBehavior--;
   return o;
@@ -1942,7 +2076,7 @@ void checkGoogleCloudDialogflowCxV3FormParameterFillBehavior(
   buildCounterGoogleCloudDialogflowCxV3FormParameterFillBehavior++;
   if (buildCounterGoogleCloudDialogflowCxV3FormParameterFillBehavior < 3) {
     checkGoogleCloudDialogflowCxV3Fulfillment(o.initialPromptFulfillment!);
-    checkUnnamed25(o.repromptEventHandlers!);
+    checkUnnamed26(o.repromptEventHandlers!);
   }
   buildCounterGoogleCloudDialogflowCxV3FormParameterFillBehavior--;
 }
@@ -2006,36 +2140,36 @@ void checkGoogleCloudDialogflowCxV3FulfillIntentResponse(
 }
 
 core.List<api.GoogleCloudDialogflowCxV3FulfillmentConditionalCases>
-    buildUnnamed26() => [
+    buildUnnamed27() => [
           buildGoogleCloudDialogflowCxV3FulfillmentConditionalCases(),
           buildGoogleCloudDialogflowCxV3FulfillmentConditionalCases(),
         ];
 
-void checkUnnamed26(
+void checkUnnamed27(
     core.List<api.GoogleCloudDialogflowCxV3FulfillmentConditionalCases> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowCxV3FulfillmentConditionalCases(o[0]);
   checkGoogleCloudDialogflowCxV3FulfillmentConditionalCases(o[1]);
 }
 
-core.List<api.GoogleCloudDialogflowCxV3ResponseMessage> buildUnnamed27() => [
+core.List<api.GoogleCloudDialogflowCxV3ResponseMessage> buildUnnamed28() => [
       buildGoogleCloudDialogflowCxV3ResponseMessage(),
       buildGoogleCloudDialogflowCxV3ResponseMessage(),
     ];
 
-void checkUnnamed27(core.List<api.GoogleCloudDialogflowCxV3ResponseMessage> o) {
+void checkUnnamed28(core.List<api.GoogleCloudDialogflowCxV3ResponseMessage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowCxV3ResponseMessage(o[0]);
   checkGoogleCloudDialogflowCxV3ResponseMessage(o[1]);
 }
 
 core.List<api.GoogleCloudDialogflowCxV3FulfillmentSetParameterAction>
-    buildUnnamed28() => [
+    buildUnnamed29() => [
           buildGoogleCloudDialogflowCxV3FulfillmentSetParameterAction(),
           buildGoogleCloudDialogflowCxV3FulfillmentSetParameterAction(),
         ];
 
-void checkUnnamed28(
+void checkUnnamed29(
     core.List<api.GoogleCloudDialogflowCxV3FulfillmentSetParameterAction> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowCxV3FulfillmentSetParameterAction(o[0]);
@@ -2048,10 +2182,10 @@ api.GoogleCloudDialogflowCxV3Fulfillment
   final o = api.GoogleCloudDialogflowCxV3Fulfillment();
   buildCounterGoogleCloudDialogflowCxV3Fulfillment++;
   if (buildCounterGoogleCloudDialogflowCxV3Fulfillment < 3) {
-    o.conditionalCases = buildUnnamed26();
-    o.messages = buildUnnamed27();
+    o.conditionalCases = buildUnnamed27();
+    o.messages = buildUnnamed28();
     o.returnPartialResponses = true;
-    o.setParameterActions = buildUnnamed28();
+    o.setParameterActions = buildUnnamed29();
     o.tag = 'foo';
     o.webhook = 'foo';
   }
@@ -2063,10 +2197,10 @@ void checkGoogleCloudDialogflowCxV3Fulfillment(
     api.GoogleCloudDialogflowCxV3Fulfillment o) {
   buildCounterGoogleCloudDialogflowCxV3Fulfillment++;
   if (buildCounterGoogleCloudDialogflowCxV3Fulfillment < 3) {
-    checkUnnamed26(o.conditionalCases!);
-    checkUnnamed27(o.messages!);
+    checkUnnamed27(o.conditionalCases!);
+    checkUnnamed28(o.messages!);
     unittest.expect(o.returnPartialResponses!, unittest.isTrue);
-    checkUnnamed28(o.setParameterActions!);
+    checkUnnamed29(o.setParameterActions!);
     unittest.expect(
       o.tag!,
       unittest.equals('foo'),
@@ -2080,12 +2214,12 @@ void checkGoogleCloudDialogflowCxV3Fulfillment(
 }
 
 core.List<api.GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCase>
-    buildUnnamed29() => [
+    buildUnnamed30() => [
           buildGoogleCloudDialogflowCxV3FulfillmentConditionalCasesCase(),
           buildGoogleCloudDialogflowCxV3FulfillmentConditionalCasesCase(),
         ];
 
-void checkUnnamed29(
+void checkUnnamed30(
     core.List<api.GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCase> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowCxV3FulfillmentConditionalCasesCase(o[0]);
@@ -2098,7 +2232,7 @@ api.GoogleCloudDialogflowCxV3FulfillmentConditionalCases
   final o = api.GoogleCloudDialogflowCxV3FulfillmentConditionalCases();
   buildCounterGoogleCloudDialogflowCxV3FulfillmentConditionalCases++;
   if (buildCounterGoogleCloudDialogflowCxV3FulfillmentConditionalCases < 3) {
-    o.cases = buildUnnamed29();
+    o.cases = buildUnnamed30();
   }
   buildCounterGoogleCloudDialogflowCxV3FulfillmentConditionalCases--;
   return o;
@@ -2108,21 +2242,22 @@ void checkGoogleCloudDialogflowCxV3FulfillmentConditionalCases(
     api.GoogleCloudDialogflowCxV3FulfillmentConditionalCases o) {
   buildCounterGoogleCloudDialogflowCxV3FulfillmentConditionalCases++;
   if (buildCounterGoogleCloudDialogflowCxV3FulfillmentConditionalCases < 3) {
-    checkUnnamed29(o.cases!);
+    checkUnnamed30(o.cases!);
   }
   buildCounterGoogleCloudDialogflowCxV3FulfillmentConditionalCases--;
 }
 
 core.List<
         api.GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContent>
-    buildUnnamed30() => [
+    buildUnnamed31() => [
           buildGoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContent(),
           buildGoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContent(),
         ];
 
-void checkUnnamed30(
+void checkUnnamed31(
     core.List<
-            api.GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContent>
+            api
+            .GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContent>
         o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContent(
@@ -2139,7 +2274,7 @@ api.GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCase
   buildCounterGoogleCloudDialogflowCxV3FulfillmentConditionalCasesCase++;
   if (buildCounterGoogleCloudDialogflowCxV3FulfillmentConditionalCasesCase <
       3) {
-    o.caseContent = buildUnnamed30();
+    o.caseContent = buildUnnamed31();
     o.condition = 'foo';
   }
   buildCounterGoogleCloudDialogflowCxV3FulfillmentConditionalCasesCase--;
@@ -2151,7 +2286,7 @@ void checkGoogleCloudDialogflowCxV3FulfillmentConditionalCasesCase(
   buildCounterGoogleCloudDialogflowCxV3FulfillmentConditionalCasesCase++;
   if (buildCounterGoogleCloudDialogflowCxV3FulfillmentConditionalCasesCase <
       3) {
-    checkUnnamed30(o.caseContent!);
+    checkUnnamed31(o.caseContent!);
     unittest.expect(
       o.condition!,
       unittest.equals('foo'),
@@ -2233,6 +2368,30 @@ void checkGoogleCloudDialogflowCxV3FulfillmentSetParameterAction(
   buildCounterGoogleCloudDialogflowCxV3FulfillmentSetParameterAction--;
 }
 
+core.int buildCounterGoogleCloudDialogflowCxV3GcsDestination = 0;
+api.GoogleCloudDialogflowCxV3GcsDestination
+    buildGoogleCloudDialogflowCxV3GcsDestination() {
+  final o = api.GoogleCloudDialogflowCxV3GcsDestination();
+  buildCounterGoogleCloudDialogflowCxV3GcsDestination++;
+  if (buildCounterGoogleCloudDialogflowCxV3GcsDestination < 3) {
+    o.uri = 'foo';
+  }
+  buildCounterGoogleCloudDialogflowCxV3GcsDestination--;
+  return o;
+}
+
+void checkGoogleCloudDialogflowCxV3GcsDestination(
+    api.GoogleCloudDialogflowCxV3GcsDestination o) {
+  buildCounterGoogleCloudDialogflowCxV3GcsDestination++;
+  if (buildCounterGoogleCloudDialogflowCxV3GcsDestination < 3) {
+    unittest.expect(
+      o.uri!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudDialogflowCxV3GcsDestination--;
+}
+
 core.int buildCounterGoogleCloudDialogflowCxV3ImportFlowRequest = 0;
 api.GoogleCloudDialogflowCxV3ImportFlowRequest
     buildGoogleCloudDialogflowCxV3ImportFlowRequest() {
@@ -2296,12 +2455,12 @@ void checkGoogleCloudDialogflowCxV3ImportTestCasesRequest(
   buildCounterGoogleCloudDialogflowCxV3ImportTestCasesRequest--;
 }
 
-core.List<core.String> buildUnnamed31() => [
+core.List<core.String> buildUnnamed32() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed31(core.List<core.String> o) {
+void checkUnnamed32(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2323,7 +2482,7 @@ api.GoogleCloudDialogflowCxV3InputAudioConfig
     o.enableWordInfo = true;
     o.model = 'foo';
     o.modelVariant = 'foo';
-    o.phraseHints = buildUnnamed31();
+    o.phraseHints = buildUnnamed32();
     o.sampleRateHertz = 42;
     o.singleUtterance = true;
   }
@@ -2348,7 +2507,7 @@ void checkGoogleCloudDialogflowCxV3InputAudioConfig(
       o.modelVariant!,
       unittest.equals('foo'),
     );
-    checkUnnamed31(o.phraseHints!);
+    checkUnnamed32(o.phraseHints!);
     unittest.expect(
       o.sampleRateHertz!,
       unittest.equals(42),
@@ -2358,12 +2517,12 @@ void checkGoogleCloudDialogflowCxV3InputAudioConfig(
   buildCounterGoogleCloudDialogflowCxV3InputAudioConfig--;
 }
 
-core.Map<core.String, core.String> buildUnnamed32() => {
+core.Map<core.String, core.String> buildUnnamed33() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed32(core.Map<core.String, core.String> o) {
+void checkUnnamed33(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -2375,24 +2534,24 @@ void checkUnnamed32(core.Map<core.String, core.String> o) {
   );
 }
 
-core.List<api.GoogleCloudDialogflowCxV3IntentParameter> buildUnnamed33() => [
+core.List<api.GoogleCloudDialogflowCxV3IntentParameter> buildUnnamed34() => [
       buildGoogleCloudDialogflowCxV3IntentParameter(),
       buildGoogleCloudDialogflowCxV3IntentParameter(),
     ];
 
-void checkUnnamed33(core.List<api.GoogleCloudDialogflowCxV3IntentParameter> o) {
+void checkUnnamed34(core.List<api.GoogleCloudDialogflowCxV3IntentParameter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowCxV3IntentParameter(o[0]);
   checkGoogleCloudDialogflowCxV3IntentParameter(o[1]);
 }
 
-core.List<api.GoogleCloudDialogflowCxV3IntentTrainingPhrase> buildUnnamed34() =>
+core.List<api.GoogleCloudDialogflowCxV3IntentTrainingPhrase> buildUnnamed35() =>
     [
       buildGoogleCloudDialogflowCxV3IntentTrainingPhrase(),
       buildGoogleCloudDialogflowCxV3IntentTrainingPhrase(),
     ];
 
-void checkUnnamed34(
+void checkUnnamed35(
     core.List<api.GoogleCloudDialogflowCxV3IntentTrainingPhrase> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowCxV3IntentTrainingPhrase(o[0]);
@@ -2407,11 +2566,11 @@ api.GoogleCloudDialogflowCxV3Intent buildGoogleCloudDialogflowCxV3Intent() {
     o.description = 'foo';
     o.displayName = 'foo';
     o.isFallback = true;
-    o.labels = buildUnnamed32();
+    o.labels = buildUnnamed33();
     o.name = 'foo';
-    o.parameters = buildUnnamed33();
+    o.parameters = buildUnnamed34();
     o.priority = 42;
-    o.trainingPhrases = buildUnnamed34();
+    o.trainingPhrases = buildUnnamed35();
   }
   buildCounterGoogleCloudDialogflowCxV3Intent--;
   return o;
@@ -2430,28 +2589,28 @@ void checkGoogleCloudDialogflowCxV3Intent(
       unittest.equals('foo'),
     );
     unittest.expect(o.isFallback!, unittest.isTrue);
-    checkUnnamed32(o.labels!);
+    checkUnnamed33(o.labels!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed33(o.parameters!);
+    checkUnnamed34(o.parameters!);
     unittest.expect(
       o.priority!,
       unittest.equals(42),
     );
-    checkUnnamed34(o.trainingPhrases!);
+    checkUnnamed35(o.trainingPhrases!);
   }
   buildCounterGoogleCloudDialogflowCxV3Intent--;
 }
 
-core.List<api.GoogleCloudDialogflowCxV3IntentCoverageIntent> buildUnnamed35() =>
+core.List<api.GoogleCloudDialogflowCxV3IntentCoverageIntent> buildUnnamed36() =>
     [
       buildGoogleCloudDialogflowCxV3IntentCoverageIntent(),
       buildGoogleCloudDialogflowCxV3IntentCoverageIntent(),
     ];
 
-void checkUnnamed35(
+void checkUnnamed36(
     core.List<api.GoogleCloudDialogflowCxV3IntentCoverageIntent> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowCxV3IntentCoverageIntent(o[0]);
@@ -2465,7 +2624,7 @@ api.GoogleCloudDialogflowCxV3IntentCoverage
   buildCounterGoogleCloudDialogflowCxV3IntentCoverage++;
   if (buildCounterGoogleCloudDialogflowCxV3IntentCoverage < 3) {
     o.coverageScore = 42.0;
-    o.intents = buildUnnamed35();
+    o.intents = buildUnnamed36();
   }
   buildCounterGoogleCloudDialogflowCxV3IntentCoverage--;
   return o;
@@ -2479,7 +2638,7 @@ void checkGoogleCloudDialogflowCxV3IntentCoverage(
       o.coverageScore!,
       unittest.equals(42.0),
     );
-    checkUnnamed35(o.intents!);
+    checkUnnamed36(o.intents!);
   }
   buildCounterGoogleCloudDialogflowCxV3IntentCoverage--;
 }
@@ -2568,12 +2727,12 @@ void checkGoogleCloudDialogflowCxV3IntentParameter(
 }
 
 core.List<api.GoogleCloudDialogflowCxV3IntentTrainingPhrasePart>
-    buildUnnamed36() => [
+    buildUnnamed37() => [
           buildGoogleCloudDialogflowCxV3IntentTrainingPhrasePart(),
           buildGoogleCloudDialogflowCxV3IntentTrainingPhrasePart(),
         ];
 
-void checkUnnamed36(
+void checkUnnamed37(
     core.List<api.GoogleCloudDialogflowCxV3IntentTrainingPhrasePart> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowCxV3IntentTrainingPhrasePart(o[0]);
@@ -2587,7 +2746,7 @@ api.GoogleCloudDialogflowCxV3IntentTrainingPhrase
   buildCounterGoogleCloudDialogflowCxV3IntentTrainingPhrase++;
   if (buildCounterGoogleCloudDialogflowCxV3IntentTrainingPhrase < 3) {
     o.id = 'foo';
-    o.parts = buildUnnamed36();
+    o.parts = buildUnnamed37();
     o.repeatCount = 42;
   }
   buildCounterGoogleCloudDialogflowCxV3IntentTrainingPhrase--;
@@ -2602,7 +2761,7 @@ void checkGoogleCloudDialogflowCxV3IntentTrainingPhrase(
       o.id!,
       unittest.equals('foo'),
     );
-    checkUnnamed36(o.parts!);
+    checkUnnamed37(o.parts!);
     unittest.expect(
       o.repeatCount!,
       unittest.equals(42),
@@ -2640,12 +2799,12 @@ void checkGoogleCloudDialogflowCxV3IntentTrainingPhrasePart(
   buildCounterGoogleCloudDialogflowCxV3IntentTrainingPhrasePart--;
 }
 
-core.List<api.GoogleCloudDialogflowCxV3Agent> buildUnnamed37() => [
+core.List<api.GoogleCloudDialogflowCxV3Agent> buildUnnamed38() => [
       buildGoogleCloudDialogflowCxV3Agent(),
       buildGoogleCloudDialogflowCxV3Agent(),
     ];
 
-void checkUnnamed37(core.List<api.GoogleCloudDialogflowCxV3Agent> o) {
+void checkUnnamed38(core.List<api.GoogleCloudDialogflowCxV3Agent> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowCxV3Agent(o[0]);
   checkGoogleCloudDialogflowCxV3Agent(o[1]);
@@ -2657,7 +2816,7 @@ api.GoogleCloudDialogflowCxV3ListAgentsResponse
   final o = api.GoogleCloudDialogflowCxV3ListAgentsResponse();
   buildCounterGoogleCloudDialogflowCxV3ListAgentsResponse++;
   if (buildCounterGoogleCloudDialogflowCxV3ListAgentsResponse < 3) {
-    o.agents = buildUnnamed37();
+    o.agents = buildUnnamed38();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudDialogflowCxV3ListAgentsResponse--;
@@ -2668,7 +2827,7 @@ void checkGoogleCloudDialogflowCxV3ListAgentsResponse(
     api.GoogleCloudDialogflowCxV3ListAgentsResponse o) {
   buildCounterGoogleCloudDialogflowCxV3ListAgentsResponse++;
   if (buildCounterGoogleCloudDialogflowCxV3ListAgentsResponse < 3) {
-    checkUnnamed37(o.agents!);
+    checkUnnamed38(o.agents!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -2677,12 +2836,12 @@ void checkGoogleCloudDialogflowCxV3ListAgentsResponse(
   buildCounterGoogleCloudDialogflowCxV3ListAgentsResponse--;
 }
 
-core.List<api.GoogleCloudDialogflowCxV3Changelog> buildUnnamed38() => [
+core.List<api.GoogleCloudDialogflowCxV3Changelog> buildUnnamed39() => [
       buildGoogleCloudDialogflowCxV3Changelog(),
       buildGoogleCloudDialogflowCxV3Changelog(),
     ];
 
-void checkUnnamed38(core.List<api.GoogleCloudDialogflowCxV3Changelog> o) {
+void checkUnnamed39(core.List<api.GoogleCloudDialogflowCxV3Changelog> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowCxV3Changelog(o[0]);
   checkGoogleCloudDialogflowCxV3Changelog(o[1]);
@@ -2694,7 +2853,7 @@ api.GoogleCloudDialogflowCxV3ListChangelogsResponse
   final o = api.GoogleCloudDialogflowCxV3ListChangelogsResponse();
   buildCounterGoogleCloudDialogflowCxV3ListChangelogsResponse++;
   if (buildCounterGoogleCloudDialogflowCxV3ListChangelogsResponse < 3) {
-    o.changelogs = buildUnnamed38();
+    o.changelogs = buildUnnamed39();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudDialogflowCxV3ListChangelogsResponse--;
@@ -2705,7 +2864,7 @@ void checkGoogleCloudDialogflowCxV3ListChangelogsResponse(
     api.GoogleCloudDialogflowCxV3ListChangelogsResponse o) {
   buildCounterGoogleCloudDialogflowCxV3ListChangelogsResponse++;
   if (buildCounterGoogleCloudDialogflowCxV3ListChangelogsResponse < 3) {
-    checkUnnamed38(o.changelogs!);
+    checkUnnamed39(o.changelogs!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -2714,13 +2873,13 @@ void checkGoogleCloudDialogflowCxV3ListChangelogsResponse(
   buildCounterGoogleCloudDialogflowCxV3ListChangelogsResponse--;
 }
 
-core.List<api.GoogleCloudDialogflowCxV3ContinuousTestResult> buildUnnamed39() =>
+core.List<api.GoogleCloudDialogflowCxV3ContinuousTestResult> buildUnnamed40() =>
     [
       buildGoogleCloudDialogflowCxV3ContinuousTestResult(),
       buildGoogleCloudDialogflowCxV3ContinuousTestResult(),
     ];
 
-void checkUnnamed39(
+void checkUnnamed40(
     core.List<api.GoogleCloudDialogflowCxV3ContinuousTestResult> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowCxV3ContinuousTestResult(o[0]);
@@ -2735,7 +2894,7 @@ api.GoogleCloudDialogflowCxV3ListContinuousTestResultsResponse
   buildCounterGoogleCloudDialogflowCxV3ListContinuousTestResultsResponse++;
   if (buildCounterGoogleCloudDialogflowCxV3ListContinuousTestResultsResponse <
       3) {
-    o.continuousTestResults = buildUnnamed39();
+    o.continuousTestResults = buildUnnamed40();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudDialogflowCxV3ListContinuousTestResultsResponse--;
@@ -2747,7 +2906,7 @@ void checkGoogleCloudDialogflowCxV3ListContinuousTestResultsResponse(
   buildCounterGoogleCloudDialogflowCxV3ListContinuousTestResultsResponse++;
   if (buildCounterGoogleCloudDialogflowCxV3ListContinuousTestResultsResponse <
       3) {
-    checkUnnamed39(o.continuousTestResults!);
+    checkUnnamed40(o.continuousTestResults!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -2756,12 +2915,12 @@ void checkGoogleCloudDialogflowCxV3ListContinuousTestResultsResponse(
   buildCounterGoogleCloudDialogflowCxV3ListContinuousTestResultsResponse--;
 }
 
-core.List<api.GoogleCloudDialogflowCxV3Deployment> buildUnnamed40() => [
+core.List<api.GoogleCloudDialogflowCxV3Deployment> buildUnnamed41() => [
       buildGoogleCloudDialogflowCxV3Deployment(),
       buildGoogleCloudDialogflowCxV3Deployment(),
     ];
 
-void checkUnnamed40(core.List<api.GoogleCloudDialogflowCxV3Deployment> o) {
+void checkUnnamed41(core.List<api.GoogleCloudDialogflowCxV3Deployment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowCxV3Deployment(o[0]);
   checkGoogleCloudDialogflowCxV3Deployment(o[1]);
@@ -2773,7 +2932,7 @@ api.GoogleCloudDialogflowCxV3ListDeploymentsResponse
   final o = api.GoogleCloudDialogflowCxV3ListDeploymentsResponse();
   buildCounterGoogleCloudDialogflowCxV3ListDeploymentsResponse++;
   if (buildCounterGoogleCloudDialogflowCxV3ListDeploymentsResponse < 3) {
-    o.deployments = buildUnnamed40();
+    o.deployments = buildUnnamed41();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudDialogflowCxV3ListDeploymentsResponse--;
@@ -2784,7 +2943,7 @@ void checkGoogleCloudDialogflowCxV3ListDeploymentsResponse(
     api.GoogleCloudDialogflowCxV3ListDeploymentsResponse o) {
   buildCounterGoogleCloudDialogflowCxV3ListDeploymentsResponse++;
   if (buildCounterGoogleCloudDialogflowCxV3ListDeploymentsResponse < 3) {
-    checkUnnamed40(o.deployments!);
+    checkUnnamed41(o.deployments!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -2793,12 +2952,12 @@ void checkGoogleCloudDialogflowCxV3ListDeploymentsResponse(
   buildCounterGoogleCloudDialogflowCxV3ListDeploymentsResponse--;
 }
 
-core.List<api.GoogleCloudDialogflowCxV3EntityType> buildUnnamed41() => [
+core.List<api.GoogleCloudDialogflowCxV3EntityType> buildUnnamed42() => [
       buildGoogleCloudDialogflowCxV3EntityType(),
       buildGoogleCloudDialogflowCxV3EntityType(),
     ];
 
-void checkUnnamed41(core.List<api.GoogleCloudDialogflowCxV3EntityType> o) {
+void checkUnnamed42(core.List<api.GoogleCloudDialogflowCxV3EntityType> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowCxV3EntityType(o[0]);
   checkGoogleCloudDialogflowCxV3EntityType(o[1]);
@@ -2810,7 +2969,7 @@ api.GoogleCloudDialogflowCxV3ListEntityTypesResponse
   final o = api.GoogleCloudDialogflowCxV3ListEntityTypesResponse();
   buildCounterGoogleCloudDialogflowCxV3ListEntityTypesResponse++;
   if (buildCounterGoogleCloudDialogflowCxV3ListEntityTypesResponse < 3) {
-    o.entityTypes = buildUnnamed41();
+    o.entityTypes = buildUnnamed42();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudDialogflowCxV3ListEntityTypesResponse--;
@@ -2821,7 +2980,7 @@ void checkGoogleCloudDialogflowCxV3ListEntityTypesResponse(
     api.GoogleCloudDialogflowCxV3ListEntityTypesResponse o) {
   buildCounterGoogleCloudDialogflowCxV3ListEntityTypesResponse++;
   if (buildCounterGoogleCloudDialogflowCxV3ListEntityTypesResponse < 3) {
-    checkUnnamed41(o.entityTypes!);
+    checkUnnamed42(o.entityTypes!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -2830,12 +2989,12 @@ void checkGoogleCloudDialogflowCxV3ListEntityTypesResponse(
   buildCounterGoogleCloudDialogflowCxV3ListEntityTypesResponse--;
 }
 
-core.List<api.GoogleCloudDialogflowCxV3Environment> buildUnnamed42() => [
+core.List<api.GoogleCloudDialogflowCxV3Environment> buildUnnamed43() => [
       buildGoogleCloudDialogflowCxV3Environment(),
       buildGoogleCloudDialogflowCxV3Environment(),
     ];
 
-void checkUnnamed42(core.List<api.GoogleCloudDialogflowCxV3Environment> o) {
+void checkUnnamed43(core.List<api.GoogleCloudDialogflowCxV3Environment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowCxV3Environment(o[0]);
   checkGoogleCloudDialogflowCxV3Environment(o[1]);
@@ -2847,7 +3006,7 @@ api.GoogleCloudDialogflowCxV3ListEnvironmentsResponse
   final o = api.GoogleCloudDialogflowCxV3ListEnvironmentsResponse();
   buildCounterGoogleCloudDialogflowCxV3ListEnvironmentsResponse++;
   if (buildCounterGoogleCloudDialogflowCxV3ListEnvironmentsResponse < 3) {
-    o.environments = buildUnnamed42();
+    o.environments = buildUnnamed43();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudDialogflowCxV3ListEnvironmentsResponse--;
@@ -2858,7 +3017,7 @@ void checkGoogleCloudDialogflowCxV3ListEnvironmentsResponse(
     api.GoogleCloudDialogflowCxV3ListEnvironmentsResponse o) {
   buildCounterGoogleCloudDialogflowCxV3ListEnvironmentsResponse++;
   if (buildCounterGoogleCloudDialogflowCxV3ListEnvironmentsResponse < 3) {
-    checkUnnamed42(o.environments!);
+    checkUnnamed43(o.environments!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -2867,12 +3026,12 @@ void checkGoogleCloudDialogflowCxV3ListEnvironmentsResponse(
   buildCounterGoogleCloudDialogflowCxV3ListEnvironmentsResponse--;
 }
 
-core.List<api.GoogleCloudDialogflowCxV3Experiment> buildUnnamed43() => [
+core.List<api.GoogleCloudDialogflowCxV3Experiment> buildUnnamed44() => [
       buildGoogleCloudDialogflowCxV3Experiment(),
       buildGoogleCloudDialogflowCxV3Experiment(),
     ];
 
-void checkUnnamed43(core.List<api.GoogleCloudDialogflowCxV3Experiment> o) {
+void checkUnnamed44(core.List<api.GoogleCloudDialogflowCxV3Experiment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowCxV3Experiment(o[0]);
   checkGoogleCloudDialogflowCxV3Experiment(o[1]);
@@ -2884,7 +3043,7 @@ api.GoogleCloudDialogflowCxV3ListExperimentsResponse
   final o = api.GoogleCloudDialogflowCxV3ListExperimentsResponse();
   buildCounterGoogleCloudDialogflowCxV3ListExperimentsResponse++;
   if (buildCounterGoogleCloudDialogflowCxV3ListExperimentsResponse < 3) {
-    o.experiments = buildUnnamed43();
+    o.experiments = buildUnnamed44();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudDialogflowCxV3ListExperimentsResponse--;
@@ -2895,7 +3054,7 @@ void checkGoogleCloudDialogflowCxV3ListExperimentsResponse(
     api.GoogleCloudDialogflowCxV3ListExperimentsResponse o) {
   buildCounterGoogleCloudDialogflowCxV3ListExperimentsResponse++;
   if (buildCounterGoogleCloudDialogflowCxV3ListExperimentsResponse < 3) {
-    checkUnnamed43(o.experiments!);
+    checkUnnamed44(o.experiments!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -2904,12 +3063,12 @@ void checkGoogleCloudDialogflowCxV3ListExperimentsResponse(
   buildCounterGoogleCloudDialogflowCxV3ListExperimentsResponse--;
 }
 
-core.List<api.GoogleCloudDialogflowCxV3Flow> buildUnnamed44() => [
+core.List<api.GoogleCloudDialogflowCxV3Flow> buildUnnamed45() => [
       buildGoogleCloudDialogflowCxV3Flow(),
       buildGoogleCloudDialogflowCxV3Flow(),
     ];
 
-void checkUnnamed44(core.List<api.GoogleCloudDialogflowCxV3Flow> o) {
+void checkUnnamed45(core.List<api.GoogleCloudDialogflowCxV3Flow> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowCxV3Flow(o[0]);
   checkGoogleCloudDialogflowCxV3Flow(o[1]);
@@ -2921,7 +3080,7 @@ api.GoogleCloudDialogflowCxV3ListFlowsResponse
   final o = api.GoogleCloudDialogflowCxV3ListFlowsResponse();
   buildCounterGoogleCloudDialogflowCxV3ListFlowsResponse++;
   if (buildCounterGoogleCloudDialogflowCxV3ListFlowsResponse < 3) {
-    o.flows = buildUnnamed44();
+    o.flows = buildUnnamed45();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudDialogflowCxV3ListFlowsResponse--;
@@ -2932,7 +3091,7 @@ void checkGoogleCloudDialogflowCxV3ListFlowsResponse(
     api.GoogleCloudDialogflowCxV3ListFlowsResponse o) {
   buildCounterGoogleCloudDialogflowCxV3ListFlowsResponse++;
   if (buildCounterGoogleCloudDialogflowCxV3ListFlowsResponse < 3) {
-    checkUnnamed44(o.flows!);
+    checkUnnamed45(o.flows!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -2941,12 +3100,12 @@ void checkGoogleCloudDialogflowCxV3ListFlowsResponse(
   buildCounterGoogleCloudDialogflowCxV3ListFlowsResponse--;
 }
 
-core.List<api.GoogleCloudDialogflowCxV3Intent> buildUnnamed45() => [
+core.List<api.GoogleCloudDialogflowCxV3Intent> buildUnnamed46() => [
       buildGoogleCloudDialogflowCxV3Intent(),
       buildGoogleCloudDialogflowCxV3Intent(),
     ];
 
-void checkUnnamed45(core.List<api.GoogleCloudDialogflowCxV3Intent> o) {
+void checkUnnamed46(core.List<api.GoogleCloudDialogflowCxV3Intent> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowCxV3Intent(o[0]);
   checkGoogleCloudDialogflowCxV3Intent(o[1]);
@@ -2958,7 +3117,7 @@ api.GoogleCloudDialogflowCxV3ListIntentsResponse
   final o = api.GoogleCloudDialogflowCxV3ListIntentsResponse();
   buildCounterGoogleCloudDialogflowCxV3ListIntentsResponse++;
   if (buildCounterGoogleCloudDialogflowCxV3ListIntentsResponse < 3) {
-    o.intents = buildUnnamed45();
+    o.intents = buildUnnamed46();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudDialogflowCxV3ListIntentsResponse--;
@@ -2969,7 +3128,7 @@ void checkGoogleCloudDialogflowCxV3ListIntentsResponse(
     api.GoogleCloudDialogflowCxV3ListIntentsResponse o) {
   buildCounterGoogleCloudDialogflowCxV3ListIntentsResponse++;
   if (buildCounterGoogleCloudDialogflowCxV3ListIntentsResponse < 3) {
-    checkUnnamed45(o.intents!);
+    checkUnnamed46(o.intents!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -2978,12 +3137,12 @@ void checkGoogleCloudDialogflowCxV3ListIntentsResponse(
   buildCounterGoogleCloudDialogflowCxV3ListIntentsResponse--;
 }
 
-core.List<api.GoogleCloudDialogflowCxV3Page> buildUnnamed46() => [
+core.List<api.GoogleCloudDialogflowCxV3Page> buildUnnamed47() => [
       buildGoogleCloudDialogflowCxV3Page(),
       buildGoogleCloudDialogflowCxV3Page(),
     ];
 
-void checkUnnamed46(core.List<api.GoogleCloudDialogflowCxV3Page> o) {
+void checkUnnamed47(core.List<api.GoogleCloudDialogflowCxV3Page> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowCxV3Page(o[0]);
   checkGoogleCloudDialogflowCxV3Page(o[1]);
@@ -2996,7 +3155,7 @@ api.GoogleCloudDialogflowCxV3ListPagesResponse
   buildCounterGoogleCloudDialogflowCxV3ListPagesResponse++;
   if (buildCounterGoogleCloudDialogflowCxV3ListPagesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.pages = buildUnnamed46();
+    o.pages = buildUnnamed47();
   }
   buildCounterGoogleCloudDialogflowCxV3ListPagesResponse--;
   return o;
@@ -3010,17 +3169,17 @@ void checkGoogleCloudDialogflowCxV3ListPagesResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed46(o.pages!);
+    checkUnnamed47(o.pages!);
   }
   buildCounterGoogleCloudDialogflowCxV3ListPagesResponse--;
 }
 
-core.List<api.GoogleCloudDialogflowCxV3SecuritySettings> buildUnnamed47() => [
+core.List<api.GoogleCloudDialogflowCxV3SecuritySettings> buildUnnamed48() => [
       buildGoogleCloudDialogflowCxV3SecuritySettings(),
       buildGoogleCloudDialogflowCxV3SecuritySettings(),
     ];
 
-void checkUnnamed47(
+void checkUnnamed48(
     core.List<api.GoogleCloudDialogflowCxV3SecuritySettings> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowCxV3SecuritySettings(o[0]);
@@ -3034,7 +3193,7 @@ api.GoogleCloudDialogflowCxV3ListSecuritySettingsResponse
   buildCounterGoogleCloudDialogflowCxV3ListSecuritySettingsResponse++;
   if (buildCounterGoogleCloudDialogflowCxV3ListSecuritySettingsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.securitySettings = buildUnnamed47();
+    o.securitySettings = buildUnnamed48();
   }
   buildCounterGoogleCloudDialogflowCxV3ListSecuritySettingsResponse--;
   return o;
@@ -3048,17 +3207,17 @@ void checkGoogleCloudDialogflowCxV3ListSecuritySettingsResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed47(o.securitySettings!);
+    checkUnnamed48(o.securitySettings!);
   }
   buildCounterGoogleCloudDialogflowCxV3ListSecuritySettingsResponse--;
 }
 
-core.List<api.GoogleCloudDialogflowCxV3SessionEntityType> buildUnnamed48() => [
+core.List<api.GoogleCloudDialogflowCxV3SessionEntityType> buildUnnamed49() => [
       buildGoogleCloudDialogflowCxV3SessionEntityType(),
       buildGoogleCloudDialogflowCxV3SessionEntityType(),
     ];
 
-void checkUnnamed48(
+void checkUnnamed49(
     core.List<api.GoogleCloudDialogflowCxV3SessionEntityType> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowCxV3SessionEntityType(o[0]);
@@ -3073,7 +3232,7 @@ api.GoogleCloudDialogflowCxV3ListSessionEntityTypesResponse
   buildCounterGoogleCloudDialogflowCxV3ListSessionEntityTypesResponse++;
   if (buildCounterGoogleCloudDialogflowCxV3ListSessionEntityTypesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.sessionEntityTypes = buildUnnamed48();
+    o.sessionEntityTypes = buildUnnamed49();
   }
   buildCounterGoogleCloudDialogflowCxV3ListSessionEntityTypesResponse--;
   return o;
@@ -3087,17 +3246,17 @@ void checkGoogleCloudDialogflowCxV3ListSessionEntityTypesResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed48(o.sessionEntityTypes!);
+    checkUnnamed49(o.sessionEntityTypes!);
   }
   buildCounterGoogleCloudDialogflowCxV3ListSessionEntityTypesResponse--;
 }
 
-core.List<api.GoogleCloudDialogflowCxV3TestCaseResult> buildUnnamed49() => [
+core.List<api.GoogleCloudDialogflowCxV3TestCaseResult> buildUnnamed50() => [
       buildGoogleCloudDialogflowCxV3TestCaseResult(),
       buildGoogleCloudDialogflowCxV3TestCaseResult(),
     ];
 
-void checkUnnamed49(core.List<api.GoogleCloudDialogflowCxV3TestCaseResult> o) {
+void checkUnnamed50(core.List<api.GoogleCloudDialogflowCxV3TestCaseResult> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowCxV3TestCaseResult(o[0]);
   checkGoogleCloudDialogflowCxV3TestCaseResult(o[1]);
@@ -3110,7 +3269,7 @@ api.GoogleCloudDialogflowCxV3ListTestCaseResultsResponse
   buildCounterGoogleCloudDialogflowCxV3ListTestCaseResultsResponse++;
   if (buildCounterGoogleCloudDialogflowCxV3ListTestCaseResultsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.testCaseResults = buildUnnamed49();
+    o.testCaseResults = buildUnnamed50();
   }
   buildCounterGoogleCloudDialogflowCxV3ListTestCaseResultsResponse--;
   return o;
@@ -3124,17 +3283,17 @@ void checkGoogleCloudDialogflowCxV3ListTestCaseResultsResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed49(o.testCaseResults!);
+    checkUnnamed50(o.testCaseResults!);
   }
   buildCounterGoogleCloudDialogflowCxV3ListTestCaseResultsResponse--;
 }
 
-core.List<api.GoogleCloudDialogflowCxV3TestCase> buildUnnamed50() => [
+core.List<api.GoogleCloudDialogflowCxV3TestCase> buildUnnamed51() => [
       buildGoogleCloudDialogflowCxV3TestCase(),
       buildGoogleCloudDialogflowCxV3TestCase(),
     ];
 
-void checkUnnamed50(core.List<api.GoogleCloudDialogflowCxV3TestCase> o) {
+void checkUnnamed51(core.List<api.GoogleCloudDialogflowCxV3TestCase> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowCxV3TestCase(o[0]);
   checkGoogleCloudDialogflowCxV3TestCase(o[1]);
@@ -3147,7 +3306,7 @@ api.GoogleCloudDialogflowCxV3ListTestCasesResponse
   buildCounterGoogleCloudDialogflowCxV3ListTestCasesResponse++;
   if (buildCounterGoogleCloudDialogflowCxV3ListTestCasesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.testCases = buildUnnamed50();
+    o.testCases = buildUnnamed51();
   }
   buildCounterGoogleCloudDialogflowCxV3ListTestCasesResponse--;
   return o;
@@ -3161,18 +3320,18 @@ void checkGoogleCloudDialogflowCxV3ListTestCasesResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed50(o.testCases!);
+    checkUnnamed51(o.testCases!);
   }
   buildCounterGoogleCloudDialogflowCxV3ListTestCasesResponse--;
 }
 
-core.List<api.GoogleCloudDialogflowCxV3TransitionRouteGroup> buildUnnamed51() =>
+core.List<api.GoogleCloudDialogflowCxV3TransitionRouteGroup> buildUnnamed52() =>
     [
       buildGoogleCloudDialogflowCxV3TransitionRouteGroup(),
       buildGoogleCloudDialogflowCxV3TransitionRouteGroup(),
     ];
 
-void checkUnnamed51(
+void checkUnnamed52(
     core.List<api.GoogleCloudDialogflowCxV3TransitionRouteGroup> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowCxV3TransitionRouteGroup(o[0]);
@@ -3188,7 +3347,7 @@ api.GoogleCloudDialogflowCxV3ListTransitionRouteGroupsResponse
   if (buildCounterGoogleCloudDialogflowCxV3ListTransitionRouteGroupsResponse <
       3) {
     o.nextPageToken = 'foo';
-    o.transitionRouteGroups = buildUnnamed51();
+    o.transitionRouteGroups = buildUnnamed52();
   }
   buildCounterGoogleCloudDialogflowCxV3ListTransitionRouteGroupsResponse--;
   return o;
@@ -3203,17 +3362,17 @@ void checkGoogleCloudDialogflowCxV3ListTransitionRouteGroupsResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed51(o.transitionRouteGroups!);
+    checkUnnamed52(o.transitionRouteGroups!);
   }
   buildCounterGoogleCloudDialogflowCxV3ListTransitionRouteGroupsResponse--;
 }
 
-core.List<api.GoogleCloudDialogflowCxV3Version> buildUnnamed52() => [
+core.List<api.GoogleCloudDialogflowCxV3Version> buildUnnamed53() => [
       buildGoogleCloudDialogflowCxV3Version(),
       buildGoogleCloudDialogflowCxV3Version(),
     ];
 
-void checkUnnamed52(core.List<api.GoogleCloudDialogflowCxV3Version> o) {
+void checkUnnamed53(core.List<api.GoogleCloudDialogflowCxV3Version> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowCxV3Version(o[0]);
   checkGoogleCloudDialogflowCxV3Version(o[1]);
@@ -3226,7 +3385,7 @@ api.GoogleCloudDialogflowCxV3ListVersionsResponse
   buildCounterGoogleCloudDialogflowCxV3ListVersionsResponse++;
   if (buildCounterGoogleCloudDialogflowCxV3ListVersionsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.versions = buildUnnamed52();
+    o.versions = buildUnnamed53();
   }
   buildCounterGoogleCloudDialogflowCxV3ListVersionsResponse--;
   return o;
@@ -3240,17 +3399,17 @@ void checkGoogleCloudDialogflowCxV3ListVersionsResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed52(o.versions!);
+    checkUnnamed53(o.versions!);
   }
   buildCounterGoogleCloudDialogflowCxV3ListVersionsResponse--;
 }
 
-core.List<api.GoogleCloudDialogflowCxV3Webhook> buildUnnamed53() => [
+core.List<api.GoogleCloudDialogflowCxV3Webhook> buildUnnamed54() => [
       buildGoogleCloudDialogflowCxV3Webhook(),
       buildGoogleCloudDialogflowCxV3Webhook(),
     ];
 
-void checkUnnamed53(core.List<api.GoogleCloudDialogflowCxV3Webhook> o) {
+void checkUnnamed54(core.List<api.GoogleCloudDialogflowCxV3Webhook> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowCxV3Webhook(o[0]);
   checkGoogleCloudDialogflowCxV3Webhook(o[1]);
@@ -3263,7 +3422,7 @@ api.GoogleCloudDialogflowCxV3ListWebhooksResponse
   buildCounterGoogleCloudDialogflowCxV3ListWebhooksResponse++;
   if (buildCounterGoogleCloudDialogflowCxV3ListWebhooksResponse < 3) {
     o.nextPageToken = 'foo';
-    o.webhooks = buildUnnamed53();
+    o.webhooks = buildUnnamed54();
   }
   buildCounterGoogleCloudDialogflowCxV3ListWebhooksResponse--;
   return o;
@@ -3277,7 +3436,7 @@ void checkGoogleCloudDialogflowCxV3ListWebhooksResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed53(o.webhooks!);
+    checkUnnamed54(o.webhooks!);
   }
   buildCounterGoogleCloudDialogflowCxV3ListWebhooksResponse--;
 }
@@ -3303,12 +3462,12 @@ void checkGoogleCloudDialogflowCxV3LoadVersionRequest(
   buildCounterGoogleCloudDialogflowCxV3LoadVersionRequest--;
 }
 
-core.List<api.GoogleCloudDialogflowCxV3Environment> buildUnnamed54() => [
+core.List<api.GoogleCloudDialogflowCxV3Environment> buildUnnamed55() => [
       buildGoogleCloudDialogflowCxV3Environment(),
       buildGoogleCloudDialogflowCxV3Environment(),
     ];
 
-void checkUnnamed54(core.List<api.GoogleCloudDialogflowCxV3Environment> o) {
+void checkUnnamed55(core.List<api.GoogleCloudDialogflowCxV3Environment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowCxV3Environment(o[0]);
   checkGoogleCloudDialogflowCxV3Environment(o[1]);
@@ -3322,7 +3481,7 @@ api.GoogleCloudDialogflowCxV3LookupEnvironmentHistoryResponse
   buildCounterGoogleCloudDialogflowCxV3LookupEnvironmentHistoryResponse++;
   if (buildCounterGoogleCloudDialogflowCxV3LookupEnvironmentHistoryResponse <
       3) {
-    o.environments = buildUnnamed54();
+    o.environments = buildUnnamed55();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudDialogflowCxV3LookupEnvironmentHistoryResponse--;
@@ -3334,7 +3493,7 @@ void checkGoogleCloudDialogflowCxV3LookupEnvironmentHistoryResponse(
   buildCounterGoogleCloudDialogflowCxV3LookupEnvironmentHistoryResponse++;
   if (buildCounterGoogleCloudDialogflowCxV3LookupEnvironmentHistoryResponse <
       3) {
-    checkUnnamed54(o.environments!);
+    checkUnnamed55(o.environments!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -3343,7 +3502,7 @@ void checkGoogleCloudDialogflowCxV3LookupEnvironmentHistoryResponse(
   buildCounterGoogleCloudDialogflowCxV3LookupEnvironmentHistoryResponse--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed55() => {
+core.Map<core.String, core.Object?> buildUnnamed56() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -3356,7 +3515,7 @@ core.Map<core.String, core.Object?> buildUnnamed55() => {
       },
     };
 
-void checkUnnamed55(core.Map<core.String, core.Object?> o) {
+void checkUnnamed56(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted9 = (o['x']!) as core.Map;
   unittest.expect(casted9, unittest.hasLength(3));
@@ -3397,7 +3556,7 @@ api.GoogleCloudDialogflowCxV3Match buildGoogleCloudDialogflowCxV3Match() {
     o.event = 'foo';
     o.intent = buildGoogleCloudDialogflowCxV3Intent();
     o.matchType = 'foo';
-    o.parameters = buildUnnamed55();
+    o.parameters = buildUnnamed56();
     o.resolvedInput = 'foo';
   }
   buildCounterGoogleCloudDialogflowCxV3Match--;
@@ -3420,7 +3579,7 @@ void checkGoogleCloudDialogflowCxV3Match(api.GoogleCloudDialogflowCxV3Match o) {
       o.matchType!,
       unittest.equals('foo'),
     );
-    checkUnnamed55(o.parameters!);
+    checkUnnamed56(o.parameters!);
     unittest.expect(
       o.resolvedInput!,
       unittest.equals('foo'),
@@ -3435,6 +3594,7 @@ api.GoogleCloudDialogflowCxV3MatchIntentRequest
   final o = api.GoogleCloudDialogflowCxV3MatchIntentRequest();
   buildCounterGoogleCloudDialogflowCxV3MatchIntentRequest++;
   if (buildCounterGoogleCloudDialogflowCxV3MatchIntentRequest < 3) {
+    o.persistParameterChanges = true;
     o.queryInput = buildGoogleCloudDialogflowCxV3QueryInput();
     o.queryParams = buildGoogleCloudDialogflowCxV3QueryParameters();
   }
@@ -3446,18 +3606,19 @@ void checkGoogleCloudDialogflowCxV3MatchIntentRequest(
     api.GoogleCloudDialogflowCxV3MatchIntentRequest o) {
   buildCounterGoogleCloudDialogflowCxV3MatchIntentRequest++;
   if (buildCounterGoogleCloudDialogflowCxV3MatchIntentRequest < 3) {
+    unittest.expect(o.persistParameterChanges!, unittest.isTrue);
     checkGoogleCloudDialogflowCxV3QueryInput(o.queryInput!);
     checkGoogleCloudDialogflowCxV3QueryParameters(o.queryParams!);
   }
   buildCounterGoogleCloudDialogflowCxV3MatchIntentRequest--;
 }
 
-core.List<api.GoogleCloudDialogflowCxV3Match> buildUnnamed56() => [
+core.List<api.GoogleCloudDialogflowCxV3Match> buildUnnamed57() => [
       buildGoogleCloudDialogflowCxV3Match(),
       buildGoogleCloudDialogflowCxV3Match(),
     ];
 
-void checkUnnamed56(core.List<api.GoogleCloudDialogflowCxV3Match> o) {
+void checkUnnamed57(core.List<api.GoogleCloudDialogflowCxV3Match> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowCxV3Match(o[0]);
   checkGoogleCloudDialogflowCxV3Match(o[1]);
@@ -3470,7 +3631,7 @@ api.GoogleCloudDialogflowCxV3MatchIntentResponse
   buildCounterGoogleCloudDialogflowCxV3MatchIntentResponse++;
   if (buildCounterGoogleCloudDialogflowCxV3MatchIntentResponse < 3) {
     o.currentPage = buildGoogleCloudDialogflowCxV3Page();
-    o.matches = buildUnnamed56();
+    o.matches = buildUnnamed57();
     o.text = 'foo';
     o.transcript = 'foo';
     o.triggerEvent = 'foo';
@@ -3485,7 +3646,7 @@ void checkGoogleCloudDialogflowCxV3MatchIntentResponse(
   buildCounterGoogleCloudDialogflowCxV3MatchIntentResponse++;
   if (buildCounterGoogleCloudDialogflowCxV3MatchIntentResponse < 3) {
     checkGoogleCloudDialogflowCxV3Page(o.currentPage!);
-    checkUnnamed56(o.matches!);
+    checkUnnamed57(o.matches!);
     unittest.expect(
       o.text!,
       unittest.equals('foo'),
@@ -3573,23 +3734,23 @@ void checkGoogleCloudDialogflowCxV3OutputAudioConfig(
   buildCounterGoogleCloudDialogflowCxV3OutputAudioConfig--;
 }
 
-core.List<api.GoogleCloudDialogflowCxV3EventHandler> buildUnnamed57() => [
+core.List<api.GoogleCloudDialogflowCxV3EventHandler> buildUnnamed58() => [
       buildGoogleCloudDialogflowCxV3EventHandler(),
       buildGoogleCloudDialogflowCxV3EventHandler(),
     ];
 
-void checkUnnamed57(core.List<api.GoogleCloudDialogflowCxV3EventHandler> o) {
+void checkUnnamed58(core.List<api.GoogleCloudDialogflowCxV3EventHandler> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowCxV3EventHandler(o[0]);
   checkGoogleCloudDialogflowCxV3EventHandler(o[1]);
 }
 
-core.List<core.String> buildUnnamed58() => [
+core.List<core.String> buildUnnamed59() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed58(core.List<core.String> o) {
+void checkUnnamed59(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -3601,12 +3762,12 @@ void checkUnnamed58(core.List<core.String> o) {
   );
 }
 
-core.List<api.GoogleCloudDialogflowCxV3TransitionRoute> buildUnnamed59() => [
+core.List<api.GoogleCloudDialogflowCxV3TransitionRoute> buildUnnamed60() => [
       buildGoogleCloudDialogflowCxV3TransitionRoute(),
       buildGoogleCloudDialogflowCxV3TransitionRoute(),
     ];
 
-void checkUnnamed59(core.List<api.GoogleCloudDialogflowCxV3TransitionRoute> o) {
+void checkUnnamed60(core.List<api.GoogleCloudDialogflowCxV3TransitionRoute> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowCxV3TransitionRoute(o[0]);
   checkGoogleCloudDialogflowCxV3TransitionRoute(o[1]);
@@ -3619,11 +3780,11 @@ api.GoogleCloudDialogflowCxV3Page buildGoogleCloudDialogflowCxV3Page() {
   if (buildCounterGoogleCloudDialogflowCxV3Page < 3) {
     o.displayName = 'foo';
     o.entryFulfillment = buildGoogleCloudDialogflowCxV3Fulfillment();
-    o.eventHandlers = buildUnnamed57();
+    o.eventHandlers = buildUnnamed58();
     o.form = buildGoogleCloudDialogflowCxV3Form();
     o.name = 'foo';
-    o.transitionRouteGroups = buildUnnamed58();
-    o.transitionRoutes = buildUnnamed59();
+    o.transitionRouteGroups = buildUnnamed59();
+    o.transitionRoutes = buildUnnamed60();
   }
   buildCounterGoogleCloudDialogflowCxV3Page--;
   return o;
@@ -3637,14 +3798,14 @@ void checkGoogleCloudDialogflowCxV3Page(api.GoogleCloudDialogflowCxV3Page o) {
       unittest.equals('foo'),
     );
     checkGoogleCloudDialogflowCxV3Fulfillment(o.entryFulfillment!);
-    checkUnnamed57(o.eventHandlers!);
+    checkUnnamed58(o.eventHandlers!);
     checkGoogleCloudDialogflowCxV3Form(o.form!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed58(o.transitionRouteGroups!);
-    checkUnnamed59(o.transitionRoutes!);
+    checkUnnamed59(o.transitionRouteGroups!);
+    checkUnnamed60(o.transitionRoutes!);
   }
   buildCounterGoogleCloudDialogflowCxV3Page--;
 }
@@ -3683,12 +3844,12 @@ void checkGoogleCloudDialogflowCxV3QueryInput(
   buildCounterGoogleCloudDialogflowCxV3QueryInput--;
 }
 
-core.List<core.String> buildUnnamed60() => [
+core.List<core.String> buildUnnamed61() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed60(core.List<core.String> o) {
+void checkUnnamed61(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -3700,7 +3861,7 @@ void checkUnnamed60(core.List<core.String> o) {
   );
 }
 
-core.Map<core.String, core.Object?> buildUnnamed61() => {
+core.Map<core.String, core.Object?> buildUnnamed62() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -3713,7 +3874,7 @@ core.Map<core.String, core.Object?> buildUnnamed61() => {
       },
     };
 
-void checkUnnamed61(core.Map<core.String, core.Object?> o) {
+void checkUnnamed62(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted11 = (o['x']!) as core.Map;
   unittest.expect(casted11, unittest.hasLength(3));
@@ -3745,7 +3906,7 @@ void checkUnnamed61(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.Map<core.String, core.Object?> buildUnnamed62() => {
+core.Map<core.String, core.Object?> buildUnnamed63() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -3758,7 +3919,7 @@ core.Map<core.String, core.Object?> buildUnnamed62() => {
       },
     };
 
-void checkUnnamed62(core.Map<core.String, core.Object?> o) {
+void checkUnnamed63(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted13 = (o['x']!) as core.Map;
   unittest.expect(casted13, unittest.hasLength(3));
@@ -3790,24 +3951,24 @@ void checkUnnamed62(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<api.GoogleCloudDialogflowCxV3SessionEntityType> buildUnnamed63() => [
+core.List<api.GoogleCloudDialogflowCxV3SessionEntityType> buildUnnamed64() => [
       buildGoogleCloudDialogflowCxV3SessionEntityType(),
       buildGoogleCloudDialogflowCxV3SessionEntityType(),
     ];
 
-void checkUnnamed63(
+void checkUnnamed64(
     core.List<api.GoogleCloudDialogflowCxV3SessionEntityType> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowCxV3SessionEntityType(o[0]);
   checkGoogleCloudDialogflowCxV3SessionEntityType(o[1]);
 }
 
-core.Map<core.String, core.String> buildUnnamed64() => {
+core.Map<core.String, core.String> buildUnnamed65() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed64(core.Map<core.String, core.String> o) {
+void checkUnnamed65(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -3826,15 +3987,17 @@ api.GoogleCloudDialogflowCxV3QueryParameters
   buildCounterGoogleCloudDialogflowCxV3QueryParameters++;
   if (buildCounterGoogleCloudDialogflowCxV3QueryParameters < 3) {
     o.analyzeQueryTextSentiment = true;
+    o.channel = 'foo';
     o.currentPage = 'foo';
     o.disableWebhook = true;
-    o.flowVersions = buildUnnamed60();
+    o.flowVersions = buildUnnamed61();
     o.geoLocation = buildGoogleTypeLatLng();
-    o.parameters = buildUnnamed61();
-    o.payload = buildUnnamed62();
-    o.sessionEntityTypes = buildUnnamed63();
+    o.parameters = buildUnnamed62();
+    o.payload = buildUnnamed63();
+    o.sessionEntityTypes = buildUnnamed64();
+    o.sessionTtl = 'foo';
     o.timeZone = 'foo';
-    o.webhookHeaders = buildUnnamed64();
+    o.webhookHeaders = buildUnnamed65();
   }
   buildCounterGoogleCloudDialogflowCxV3QueryParameters--;
   return o;
@@ -3846,25 +4009,33 @@ void checkGoogleCloudDialogflowCxV3QueryParameters(
   if (buildCounterGoogleCloudDialogflowCxV3QueryParameters < 3) {
     unittest.expect(o.analyzeQueryTextSentiment!, unittest.isTrue);
     unittest.expect(
+      o.channel!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.currentPage!,
       unittest.equals('foo'),
     );
     unittest.expect(o.disableWebhook!, unittest.isTrue);
-    checkUnnamed60(o.flowVersions!);
+    checkUnnamed61(o.flowVersions!);
     checkGoogleTypeLatLng(o.geoLocation!);
-    checkUnnamed61(o.parameters!);
-    checkUnnamed62(o.payload!);
-    checkUnnamed63(o.sessionEntityTypes!);
+    checkUnnamed62(o.parameters!);
+    checkUnnamed63(o.payload!);
+    checkUnnamed64(o.sessionEntityTypes!);
+    unittest.expect(
+      o.sessionTtl!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.timeZone!,
       unittest.equals('foo'),
     );
-    checkUnnamed64(o.webhookHeaders!);
+    checkUnnamed65(o.webhookHeaders!);
   }
   buildCounterGoogleCloudDialogflowCxV3QueryParameters--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed65() => {
+core.Map<core.String, core.Object?> buildUnnamed66() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -3877,7 +4048,7 @@ core.Map<core.String, core.Object?> buildUnnamed65() => {
       },
     };
 
-void checkUnnamed65(core.Map<core.String, core.Object?> o) {
+void checkUnnamed66(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted15 = (o['x']!) as core.Map;
   unittest.expect(casted15, unittest.hasLength(3));
@@ -3909,7 +4080,7 @@ void checkUnnamed65(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.Map<core.String, core.Object?> buildUnnamed66() => {
+core.Map<core.String, core.Object?> buildUnnamed67() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -3922,7 +4093,7 @@ core.Map<core.String, core.Object?> buildUnnamed66() => {
       },
     };
 
-void checkUnnamed66(core.Map<core.String, core.Object?> o) {
+void checkUnnamed67(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted17 = (o['x']!) as core.Map;
   unittest.expect(casted17, unittest.hasLength(3));
@@ -3954,18 +4125,18 @@ void checkUnnamed66(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<api.GoogleCloudDialogflowCxV3ResponseMessage> buildUnnamed67() => [
+core.List<api.GoogleCloudDialogflowCxV3ResponseMessage> buildUnnamed68() => [
       buildGoogleCloudDialogflowCxV3ResponseMessage(),
       buildGoogleCloudDialogflowCxV3ResponseMessage(),
     ];
 
-void checkUnnamed67(core.List<api.GoogleCloudDialogflowCxV3ResponseMessage> o) {
+void checkUnnamed68(core.List<api.GoogleCloudDialogflowCxV3ResponseMessage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowCxV3ResponseMessage(o[0]);
   checkGoogleCloudDialogflowCxV3ResponseMessage(o[1]);
 }
 
-core.Map<core.String, core.Object?> buildUnnamed68() => {
+core.Map<core.String, core.Object?> buildUnnamed69() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -3978,7 +4149,7 @@ core.Map<core.String, core.Object?> buildUnnamed68() => {
       },
     };
 
-void checkUnnamed68(core.Map<core.String, core.Object?> o) {
+void checkUnnamed69(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted19 = (o['x']!) as core.Map;
   unittest.expect(casted19, unittest.hasLength(3));
@@ -4010,23 +4181,23 @@ void checkUnnamed68(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed69() => [
-      buildUnnamed68(),
-      buildUnnamed68(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed70() => [
+      buildUnnamed69(),
+      buildUnnamed69(),
     ];
 
-void checkUnnamed69(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed70(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed68(o[0]);
-  checkUnnamed68(o[1]);
+  checkUnnamed69(o[0]);
+  checkUnnamed69(o[1]);
 }
 
-core.List<api.GoogleRpcStatus> buildUnnamed70() => [
+core.List<api.GoogleRpcStatus> buildUnnamed71() => [
       buildGoogleRpcStatus(),
       buildGoogleRpcStatus(),
     ];
 
-void checkUnnamed70(core.List<api.GoogleRpcStatus> o) {
+void checkUnnamed71(core.List<api.GoogleRpcStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleRpcStatus(o[0]);
   checkGoogleRpcStatus(o[1]);
@@ -4039,22 +4210,22 @@ api.GoogleCloudDialogflowCxV3QueryResult
   buildCounterGoogleCloudDialogflowCxV3QueryResult++;
   if (buildCounterGoogleCloudDialogflowCxV3QueryResult < 3) {
     o.currentPage = buildGoogleCloudDialogflowCxV3Page();
-    o.diagnosticInfo = buildUnnamed65();
+    o.diagnosticInfo = buildUnnamed66();
     o.dtmf = buildGoogleCloudDialogflowCxV3DtmfInput();
     o.intent = buildGoogleCloudDialogflowCxV3Intent();
     o.intentDetectionConfidence = 42.0;
     o.languageCode = 'foo';
     o.match = buildGoogleCloudDialogflowCxV3Match();
-    o.parameters = buildUnnamed66();
-    o.responseMessages = buildUnnamed67();
+    o.parameters = buildUnnamed67();
+    o.responseMessages = buildUnnamed68();
     o.sentimentAnalysisResult =
         buildGoogleCloudDialogflowCxV3SentimentAnalysisResult();
     o.text = 'foo';
     o.transcript = 'foo';
     o.triggerEvent = 'foo';
     o.triggerIntent = 'foo';
-    o.webhookPayloads = buildUnnamed69();
-    o.webhookStatuses = buildUnnamed70();
+    o.webhookPayloads = buildUnnamed70();
+    o.webhookStatuses = buildUnnamed71();
   }
   buildCounterGoogleCloudDialogflowCxV3QueryResult--;
   return o;
@@ -4065,7 +4236,7 @@ void checkGoogleCloudDialogflowCxV3QueryResult(
   buildCounterGoogleCloudDialogflowCxV3QueryResult++;
   if (buildCounterGoogleCloudDialogflowCxV3QueryResult < 3) {
     checkGoogleCloudDialogflowCxV3Page(o.currentPage!);
-    checkUnnamed65(o.diagnosticInfo!);
+    checkUnnamed66(o.diagnosticInfo!);
     checkGoogleCloudDialogflowCxV3DtmfInput(o.dtmf!);
     checkGoogleCloudDialogflowCxV3Intent(o.intent!);
     unittest.expect(
@@ -4077,8 +4248,8 @@ void checkGoogleCloudDialogflowCxV3QueryResult(
       unittest.equals('foo'),
     );
     checkGoogleCloudDialogflowCxV3Match(o.match!);
-    checkUnnamed66(o.parameters!);
-    checkUnnamed67(o.responseMessages!);
+    checkUnnamed67(o.parameters!);
+    checkUnnamed68(o.responseMessages!);
     checkGoogleCloudDialogflowCxV3SentimentAnalysisResult(
         o.sentimentAnalysisResult!);
     unittest.expect(
@@ -4097,8 +4268,8 @@ void checkGoogleCloudDialogflowCxV3QueryResult(
       o.triggerIntent!,
       unittest.equals('foo'),
     );
-    checkUnnamed69(o.webhookPayloads!);
-    checkUnnamed70(o.webhookStatuses!);
+    checkUnnamed70(o.webhookPayloads!);
+    checkUnnamed71(o.webhookStatuses!);
   }
   buildCounterGoogleCloudDialogflowCxV3QueryResult--;
 }
@@ -4132,7 +4303,7 @@ void checkGoogleCloudDialogflowCxV3ResourceName(
   buildCounterGoogleCloudDialogflowCxV3ResourceName--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed71() => {
+core.Map<core.String, core.Object?> buildUnnamed72() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -4145,7 +4316,7 @@ core.Map<core.String, core.Object?> buildUnnamed71() => {
       },
     };
 
-void checkUnnamed71(core.Map<core.String, core.Object?> o) {
+void checkUnnamed72(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted21 = (o['x']!) as core.Map;
   unittest.expect(casted21, unittest.hasLength(3));
@@ -4183,6 +4354,7 @@ api.GoogleCloudDialogflowCxV3ResponseMessage
   final o = api.GoogleCloudDialogflowCxV3ResponseMessage();
   buildCounterGoogleCloudDialogflowCxV3ResponseMessage++;
   if (buildCounterGoogleCloudDialogflowCxV3ResponseMessage < 3) {
+    o.channel = 'foo';
     o.conversationSuccess =
         buildGoogleCloudDialogflowCxV3ResponseMessageConversationSuccess();
     o.endInteraction =
@@ -4192,8 +4364,9 @@ api.GoogleCloudDialogflowCxV3ResponseMessage
     o.mixedAudio = buildGoogleCloudDialogflowCxV3ResponseMessageMixedAudio();
     o.outputAudioText =
         buildGoogleCloudDialogflowCxV3ResponseMessageOutputAudioText();
-    o.payload = buildUnnamed71();
+    o.payload = buildUnnamed72();
     o.playAudio = buildGoogleCloudDialogflowCxV3ResponseMessagePlayAudio();
+    o.responseType = 'foo';
     o.telephonyTransferCall =
         buildGoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall();
     o.text = buildGoogleCloudDialogflowCxV3ResponseMessageText();
@@ -4206,6 +4379,10 @@ void checkGoogleCloudDialogflowCxV3ResponseMessage(
     api.GoogleCloudDialogflowCxV3ResponseMessage o) {
   buildCounterGoogleCloudDialogflowCxV3ResponseMessage++;
   if (buildCounterGoogleCloudDialogflowCxV3ResponseMessage < 3) {
+    unittest.expect(
+      o.channel!,
+      unittest.equals('foo'),
+    );
     checkGoogleCloudDialogflowCxV3ResponseMessageConversationSuccess(
         o.conversationSuccess!);
     checkGoogleCloudDialogflowCxV3ResponseMessageEndInteraction(
@@ -4215,8 +4392,12 @@ void checkGoogleCloudDialogflowCxV3ResponseMessage(
     checkGoogleCloudDialogflowCxV3ResponseMessageMixedAudio(o.mixedAudio!);
     checkGoogleCloudDialogflowCxV3ResponseMessageOutputAudioText(
         o.outputAudioText!);
-    checkUnnamed71(o.payload!);
+    checkUnnamed72(o.payload!);
     checkGoogleCloudDialogflowCxV3ResponseMessagePlayAudio(o.playAudio!);
+    unittest.expect(
+      o.responseType!,
+      unittest.equals('foo'),
+    );
     checkGoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall(
         o.telephonyTransferCall!);
     checkGoogleCloudDialogflowCxV3ResponseMessageText(o.text!);
@@ -4224,7 +4405,7 @@ void checkGoogleCloudDialogflowCxV3ResponseMessage(
   buildCounterGoogleCloudDialogflowCxV3ResponseMessage--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed72() => {
+core.Map<core.String, core.Object?> buildUnnamed73() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -4237,7 +4418,7 @@ core.Map<core.String, core.Object?> buildUnnamed72() => {
       },
     };
 
-void checkUnnamed72(core.Map<core.String, core.Object?> o) {
+void checkUnnamed73(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted23 = (o['x']!) as core.Map;
   unittest.expect(casted23, unittest.hasLength(3));
@@ -4277,7 +4458,7 @@ api.GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess
   buildCounterGoogleCloudDialogflowCxV3ResponseMessageConversationSuccess++;
   if (buildCounterGoogleCloudDialogflowCxV3ResponseMessageConversationSuccess <
       3) {
-    o.metadata = buildUnnamed72();
+    o.metadata = buildUnnamed73();
   }
   buildCounterGoogleCloudDialogflowCxV3ResponseMessageConversationSuccess--;
   return o;
@@ -4288,7 +4469,7 @@ void checkGoogleCloudDialogflowCxV3ResponseMessageConversationSuccess(
   buildCounterGoogleCloudDialogflowCxV3ResponseMessageConversationSuccess++;
   if (buildCounterGoogleCloudDialogflowCxV3ResponseMessageConversationSuccess <
       3) {
-    checkUnnamed72(o.metadata!);
+    checkUnnamed73(o.metadata!);
   }
   buildCounterGoogleCloudDialogflowCxV3ResponseMessageConversationSuccess--;
 }
@@ -4310,7 +4491,7 @@ void checkGoogleCloudDialogflowCxV3ResponseMessageEndInteraction(
   buildCounterGoogleCloudDialogflowCxV3ResponseMessageEndInteraction--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed73() => {
+core.Map<core.String, core.Object?> buildUnnamed74() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -4323,7 +4504,7 @@ core.Map<core.String, core.Object?> buildUnnamed73() => {
       },
     };
 
-void checkUnnamed73(core.Map<core.String, core.Object?> o) {
+void checkUnnamed74(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted25 = (o['x']!) as core.Map;
   unittest.expect(casted25, unittest.hasLength(3));
@@ -4363,7 +4544,7 @@ api.GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff
   buildCounterGoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff++;
   if (buildCounterGoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff <
       3) {
-    o.metadata = buildUnnamed73();
+    o.metadata = buildUnnamed74();
   }
   buildCounterGoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff--;
   return o;
@@ -4374,18 +4555,18 @@ void checkGoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff(
   buildCounterGoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff++;
   if (buildCounterGoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff <
       3) {
-    checkUnnamed73(o.metadata!);
+    checkUnnamed74(o.metadata!);
   }
   buildCounterGoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff--;
 }
 
 core.List<api.GoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegment>
-    buildUnnamed74() => [
+    buildUnnamed75() => [
           buildGoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegment(),
           buildGoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegment(),
         ];
 
-void checkUnnamed74(
+void checkUnnamed75(
     core.List<api.GoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegment>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -4399,7 +4580,7 @@ api.GoogleCloudDialogflowCxV3ResponseMessageMixedAudio
   final o = api.GoogleCloudDialogflowCxV3ResponseMessageMixedAudio();
   buildCounterGoogleCloudDialogflowCxV3ResponseMessageMixedAudio++;
   if (buildCounterGoogleCloudDialogflowCxV3ResponseMessageMixedAudio < 3) {
-    o.segments = buildUnnamed74();
+    o.segments = buildUnnamed75();
   }
   buildCounterGoogleCloudDialogflowCxV3ResponseMessageMixedAudio--;
   return o;
@@ -4409,7 +4590,7 @@ void checkGoogleCloudDialogflowCxV3ResponseMessageMixedAudio(
     api.GoogleCloudDialogflowCxV3ResponseMessageMixedAudio o) {
   buildCounterGoogleCloudDialogflowCxV3ResponseMessageMixedAudio++;
   if (buildCounterGoogleCloudDialogflowCxV3ResponseMessageMixedAudio < 3) {
-    checkUnnamed74(o.segments!);
+    checkUnnamed75(o.segments!);
   }
   buildCounterGoogleCloudDialogflowCxV3ResponseMessageMixedAudio--;
 }
@@ -4534,12 +4715,12 @@ void checkGoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall(
   buildCounterGoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall--;
 }
 
-core.List<core.String> buildUnnamed75() => [
+core.List<core.String> buildUnnamed76() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed75(core.List<core.String> o) {
+void checkUnnamed76(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -4558,7 +4739,7 @@ api.GoogleCloudDialogflowCxV3ResponseMessageText
   buildCounterGoogleCloudDialogflowCxV3ResponseMessageText++;
   if (buildCounterGoogleCloudDialogflowCxV3ResponseMessageText < 3) {
     o.allowPlaybackInterruption = true;
-    o.text = buildUnnamed75();
+    o.text = buildUnnamed76();
   }
   buildCounterGoogleCloudDialogflowCxV3ResponseMessageText--;
   return o;
@@ -4569,7 +4750,7 @@ void checkGoogleCloudDialogflowCxV3ResponseMessageText(
   buildCounterGoogleCloudDialogflowCxV3ResponseMessageText++;
   if (buildCounterGoogleCloudDialogflowCxV3ResponseMessageText < 3) {
     unittest.expect(o.allowPlaybackInterruption!, unittest.isTrue);
-    checkUnnamed75(o.text!);
+    checkUnnamed76(o.text!);
   }
   buildCounterGoogleCloudDialogflowCxV3ResponseMessageText--;
 }
@@ -4582,6 +4763,7 @@ api.GoogleCloudDialogflowCxV3RestoreAgentRequest
   if (buildCounterGoogleCloudDialogflowCxV3RestoreAgentRequest < 3) {
     o.agentContent = 'foo';
     o.agentUri = 'foo';
+    o.gitSource = buildGoogleCloudDialogflowCxV3RestoreAgentRequestGitSource();
     o.restoreOption = 'foo';
   }
   buildCounterGoogleCloudDialogflowCxV3RestoreAgentRequest--;
@@ -4600,6 +4782,7 @@ void checkGoogleCloudDialogflowCxV3RestoreAgentRequest(
       o.agentUri!,
       unittest.equals('foo'),
     );
+    checkGoogleCloudDialogflowCxV3RestoreAgentRequestGitSource(o.gitSource!);
     unittest.expect(
       o.restoreOption!,
       unittest.equals('foo'),
@@ -4608,13 +4791,37 @@ void checkGoogleCloudDialogflowCxV3RestoreAgentRequest(
   buildCounterGoogleCloudDialogflowCxV3RestoreAgentRequest--;
 }
 
+core.int buildCounterGoogleCloudDialogflowCxV3RestoreAgentRequestGitSource = 0;
+api.GoogleCloudDialogflowCxV3RestoreAgentRequestGitSource
+    buildGoogleCloudDialogflowCxV3RestoreAgentRequestGitSource() {
+  final o = api.GoogleCloudDialogflowCxV3RestoreAgentRequestGitSource();
+  buildCounterGoogleCloudDialogflowCxV3RestoreAgentRequestGitSource++;
+  if (buildCounterGoogleCloudDialogflowCxV3RestoreAgentRequestGitSource < 3) {
+    o.trackingBranch = 'foo';
+  }
+  buildCounterGoogleCloudDialogflowCxV3RestoreAgentRequestGitSource--;
+  return o;
+}
+
+void checkGoogleCloudDialogflowCxV3RestoreAgentRequestGitSource(
+    api.GoogleCloudDialogflowCxV3RestoreAgentRequestGitSource o) {
+  buildCounterGoogleCloudDialogflowCxV3RestoreAgentRequestGitSource++;
+  if (buildCounterGoogleCloudDialogflowCxV3RestoreAgentRequestGitSource < 3) {
+    unittest.expect(
+      o.trackingBranch!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudDialogflowCxV3RestoreAgentRequestGitSource--;
+}
+
 core.List<api.GoogleCloudDialogflowCxV3RolloutConfigRolloutStep>
-    buildUnnamed76() => [
+    buildUnnamed77() => [
           buildGoogleCloudDialogflowCxV3RolloutConfigRolloutStep(),
           buildGoogleCloudDialogflowCxV3RolloutConfigRolloutStep(),
         ];
 
-void checkUnnamed76(
+void checkUnnamed77(
     core.List<api.GoogleCloudDialogflowCxV3RolloutConfigRolloutStep> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowCxV3RolloutConfigRolloutStep(o[0]);
@@ -4629,7 +4836,7 @@ api.GoogleCloudDialogflowCxV3RolloutConfig
   if (buildCounterGoogleCloudDialogflowCxV3RolloutConfig < 3) {
     o.failureCondition = 'foo';
     o.rolloutCondition = 'foo';
-    o.rolloutSteps = buildUnnamed76();
+    o.rolloutSteps = buildUnnamed77();
   }
   buildCounterGoogleCloudDialogflowCxV3RolloutConfig--;
   return o;
@@ -4647,7 +4854,7 @@ void checkGoogleCloudDialogflowCxV3RolloutConfig(
       o.rolloutCondition!,
       unittest.equals('foo'),
     );
-    checkUnnamed76(o.rolloutSteps!);
+    checkUnnamed77(o.rolloutSteps!);
   }
   buildCounterGoogleCloudDialogflowCxV3RolloutConfig--;
 }
@@ -4761,12 +4968,12 @@ void checkGoogleCloudDialogflowCxV3RunTestCaseRequest(
   buildCounterGoogleCloudDialogflowCxV3RunTestCaseRequest--;
 }
 
-core.List<core.String> buildUnnamed77() => [
+core.List<core.String> buildUnnamed78() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed77(core.List<core.String> o) {
+void checkUnnamed78(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -4792,7 +4999,7 @@ api.GoogleCloudDialogflowCxV3SecuritySettings
         buildGoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings();
     o.inspectTemplate = 'foo';
     o.name = 'foo';
-    o.purgeDataTypes = buildUnnamed77();
+    o.purgeDataTypes = buildUnnamed78();
     o.redactionScope = 'foo';
     o.redactionStrategy = 'foo';
     o.retentionWindowDays = 42;
@@ -4825,7 +5032,7 @@ void checkGoogleCloudDialogflowCxV3SecuritySettings(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed77(o.purgeDataTypes!);
+    checkUnnamed78(o.purgeDataTypes!);
     unittest.expect(
       o.redactionScope!,
       unittest.equals('foo'),
@@ -4937,12 +5144,12 @@ void checkGoogleCloudDialogflowCxV3SentimentAnalysisResult(
   buildCounterGoogleCloudDialogflowCxV3SentimentAnalysisResult--;
 }
 
-core.List<api.GoogleCloudDialogflowCxV3EntityTypeEntity> buildUnnamed78() => [
+core.List<api.GoogleCloudDialogflowCxV3EntityTypeEntity> buildUnnamed79() => [
       buildGoogleCloudDialogflowCxV3EntityTypeEntity(),
       buildGoogleCloudDialogflowCxV3EntityTypeEntity(),
     ];
 
-void checkUnnamed78(
+void checkUnnamed79(
     core.List<api.GoogleCloudDialogflowCxV3EntityTypeEntity> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowCxV3EntityTypeEntity(o[0]);
@@ -4955,7 +5162,7 @@ api.GoogleCloudDialogflowCxV3SessionEntityType
   final o = api.GoogleCloudDialogflowCxV3SessionEntityType();
   buildCounterGoogleCloudDialogflowCxV3SessionEntityType++;
   if (buildCounterGoogleCloudDialogflowCxV3SessionEntityType < 3) {
-    o.entities = buildUnnamed78();
+    o.entities = buildUnnamed79();
     o.entityOverrideMode = 'foo';
     o.name = 'foo';
   }
@@ -4967,7 +5174,7 @@ void checkGoogleCloudDialogflowCxV3SessionEntityType(
     api.GoogleCloudDialogflowCxV3SessionEntityType o) {
   buildCounterGoogleCloudDialogflowCxV3SessionEntityType++;
   if (buildCounterGoogleCloudDialogflowCxV3SessionEntityType < 3) {
-    checkUnnamed78(o.entities!);
+    checkUnnamed79(o.entities!);
     unittest.expect(
       o.entityOverrideMode!,
       unittest.equals('foo'),
@@ -5035,61 +5242,6 @@ void checkGoogleCloudDialogflowCxV3StopExperimentRequest(
   buildCounterGoogleCloudDialogflowCxV3StopExperimentRequest--;
 }
 
-core.List<core.String> buildUnnamed79() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed79(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.int buildCounterGoogleCloudDialogflowCxV3SynthesizeSpeechConfig = 0;
-api.GoogleCloudDialogflowCxV3SynthesizeSpeechConfig
-    buildGoogleCloudDialogflowCxV3SynthesizeSpeechConfig() {
-  final o = api.GoogleCloudDialogflowCxV3SynthesizeSpeechConfig();
-  buildCounterGoogleCloudDialogflowCxV3SynthesizeSpeechConfig++;
-  if (buildCounterGoogleCloudDialogflowCxV3SynthesizeSpeechConfig < 3) {
-    o.effectsProfileId = buildUnnamed79();
-    o.pitch = 42.0;
-    o.speakingRate = 42.0;
-    o.voice = buildGoogleCloudDialogflowCxV3VoiceSelectionParams();
-    o.volumeGainDb = 42.0;
-  }
-  buildCounterGoogleCloudDialogflowCxV3SynthesizeSpeechConfig--;
-  return o;
-}
-
-void checkGoogleCloudDialogflowCxV3SynthesizeSpeechConfig(
-    api.GoogleCloudDialogflowCxV3SynthesizeSpeechConfig o) {
-  buildCounterGoogleCloudDialogflowCxV3SynthesizeSpeechConfig++;
-  if (buildCounterGoogleCloudDialogflowCxV3SynthesizeSpeechConfig < 3) {
-    checkUnnamed79(o.effectsProfileId!);
-    unittest.expect(
-      o.pitch!,
-      unittest.equals(42.0),
-    );
-    unittest.expect(
-      o.speakingRate!,
-      unittest.equals(42.0),
-    );
-    checkGoogleCloudDialogflowCxV3VoiceSelectionParams(o.voice!);
-    unittest.expect(
-      o.volumeGainDb!,
-      unittest.equals(42.0),
-    );
-  }
-  buildCounterGoogleCloudDialogflowCxV3SynthesizeSpeechConfig--;
-}
-
 core.List<core.String> buildUnnamed80() => [
       'foo',
       'foo',
@@ -5107,12 +5259,67 @@ void checkUnnamed80(core.List<core.String> o) {
   );
 }
 
-core.List<api.GoogleCloudDialogflowCxV3ConversationTurn> buildUnnamed81() => [
+core.int buildCounterGoogleCloudDialogflowCxV3SynthesizeSpeechConfig = 0;
+api.GoogleCloudDialogflowCxV3SynthesizeSpeechConfig
+    buildGoogleCloudDialogflowCxV3SynthesizeSpeechConfig() {
+  final o = api.GoogleCloudDialogflowCxV3SynthesizeSpeechConfig();
+  buildCounterGoogleCloudDialogflowCxV3SynthesizeSpeechConfig++;
+  if (buildCounterGoogleCloudDialogflowCxV3SynthesizeSpeechConfig < 3) {
+    o.effectsProfileId = buildUnnamed80();
+    o.pitch = 42.0;
+    o.speakingRate = 42.0;
+    o.voice = buildGoogleCloudDialogflowCxV3VoiceSelectionParams();
+    o.volumeGainDb = 42.0;
+  }
+  buildCounterGoogleCloudDialogflowCxV3SynthesizeSpeechConfig--;
+  return o;
+}
+
+void checkGoogleCloudDialogflowCxV3SynthesizeSpeechConfig(
+    api.GoogleCloudDialogflowCxV3SynthesizeSpeechConfig o) {
+  buildCounterGoogleCloudDialogflowCxV3SynthesizeSpeechConfig++;
+  if (buildCounterGoogleCloudDialogflowCxV3SynthesizeSpeechConfig < 3) {
+    checkUnnamed80(o.effectsProfileId!);
+    unittest.expect(
+      o.pitch!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.speakingRate!,
+      unittest.equals(42.0),
+    );
+    checkGoogleCloudDialogflowCxV3VoiceSelectionParams(o.voice!);
+    unittest.expect(
+      o.volumeGainDb!,
+      unittest.equals(42.0),
+    );
+  }
+  buildCounterGoogleCloudDialogflowCxV3SynthesizeSpeechConfig--;
+}
+
+core.List<core.String> buildUnnamed81() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed81(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<api.GoogleCloudDialogflowCxV3ConversationTurn> buildUnnamed82() => [
       buildGoogleCloudDialogflowCxV3ConversationTurn(),
       buildGoogleCloudDialogflowCxV3ConversationTurn(),
     ];
 
-void checkUnnamed81(
+void checkUnnamed82(
     core.List<api.GoogleCloudDialogflowCxV3ConversationTurn> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowCxV3ConversationTurn(o[0]);
@@ -5129,8 +5336,8 @@ api.GoogleCloudDialogflowCxV3TestCase buildGoogleCloudDialogflowCxV3TestCase() {
     o.lastTestResult = buildGoogleCloudDialogflowCxV3TestCaseResult();
     o.name = 'foo';
     o.notes = 'foo';
-    o.tags = buildUnnamed80();
-    o.testCaseConversationTurns = buildUnnamed81();
+    o.tags = buildUnnamed81();
+    o.testCaseConversationTurns = buildUnnamed82();
     o.testConfig = buildGoogleCloudDialogflowCxV3TestConfig();
   }
   buildCounterGoogleCloudDialogflowCxV3TestCase--;
@@ -5158,19 +5365,19 @@ void checkGoogleCloudDialogflowCxV3TestCase(
       o.notes!,
       unittest.equals('foo'),
     );
-    checkUnnamed80(o.tags!);
-    checkUnnamed81(o.testCaseConversationTurns!);
+    checkUnnamed81(o.tags!);
+    checkUnnamed82(o.testCaseConversationTurns!);
     checkGoogleCloudDialogflowCxV3TestConfig(o.testConfig!);
   }
   buildCounterGoogleCloudDialogflowCxV3TestCase--;
 }
 
-core.List<api.GoogleCloudDialogflowCxV3ConversationTurn> buildUnnamed82() => [
+core.List<api.GoogleCloudDialogflowCxV3ConversationTurn> buildUnnamed83() => [
       buildGoogleCloudDialogflowCxV3ConversationTurn(),
       buildGoogleCloudDialogflowCxV3ConversationTurn(),
     ];
 
-void checkUnnamed82(
+void checkUnnamed83(
     core.List<api.GoogleCloudDialogflowCxV3ConversationTurn> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowCxV3ConversationTurn(o[0]);
@@ -5183,7 +5390,7 @@ api.GoogleCloudDialogflowCxV3TestCaseResult
   final o = api.GoogleCloudDialogflowCxV3TestCaseResult();
   buildCounterGoogleCloudDialogflowCxV3TestCaseResult++;
   if (buildCounterGoogleCloudDialogflowCxV3TestCaseResult < 3) {
-    o.conversationTurns = buildUnnamed82();
+    o.conversationTurns = buildUnnamed83();
     o.environment = 'foo';
     o.name = 'foo';
     o.testResult = 'foo';
@@ -5197,7 +5404,7 @@ void checkGoogleCloudDialogflowCxV3TestCaseResult(
     api.GoogleCloudDialogflowCxV3TestCaseResult o) {
   buildCounterGoogleCloudDialogflowCxV3TestCaseResult++;
   if (buildCounterGoogleCloudDialogflowCxV3TestCaseResult < 3) {
-    checkUnnamed82(o.conversationTurns!);
+    checkUnnamed83(o.conversationTurns!);
     unittest.expect(
       o.environment!,
       unittest.equals('foo'),
@@ -5218,12 +5425,12 @@ void checkGoogleCloudDialogflowCxV3TestCaseResult(
   buildCounterGoogleCloudDialogflowCxV3TestCaseResult--;
 }
 
-core.List<core.String> buildUnnamed83() => [
+core.List<core.String> buildUnnamed84() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed83(core.List<core.String> o) {
+void checkUnnamed84(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -5243,7 +5450,7 @@ api.GoogleCloudDialogflowCxV3TestConfig
   if (buildCounterGoogleCloudDialogflowCxV3TestConfig < 3) {
     o.flow = 'foo';
     o.page = 'foo';
-    o.trackingParameters = buildUnnamed83();
+    o.trackingParameters = buildUnnamed84();
   }
   buildCounterGoogleCloudDialogflowCxV3TestConfig--;
   return o;
@@ -5261,7 +5468,7 @@ void checkGoogleCloudDialogflowCxV3TestConfig(
       o.page!,
       unittest.equals('foo'),
     );
-    checkUnnamed83(o.trackingParameters!);
+    checkUnnamed84(o.trackingParameters!);
   }
   buildCounterGoogleCloudDialogflowCxV3TestConfig--;
 }
@@ -5319,6 +5526,41 @@ void checkGoogleCloudDialogflowCxV3TextInput(
   buildCounterGoogleCloudDialogflowCxV3TextInput--;
 }
 
+core.Map<core.String, api.GoogleCloudDialogflowCxV3SynthesizeSpeechConfig>
+    buildUnnamed85() => {
+          'x': buildGoogleCloudDialogflowCxV3SynthesizeSpeechConfig(),
+          'y': buildGoogleCloudDialogflowCxV3SynthesizeSpeechConfig(),
+        };
+
+void checkUnnamed85(
+    core.Map<core.String, api.GoogleCloudDialogflowCxV3SynthesizeSpeechConfig>
+        o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudDialogflowCxV3SynthesizeSpeechConfig(o['x']!);
+  checkGoogleCloudDialogflowCxV3SynthesizeSpeechConfig(o['y']!);
+}
+
+core.int buildCounterGoogleCloudDialogflowCxV3TextToSpeechSettings = 0;
+api.GoogleCloudDialogflowCxV3TextToSpeechSettings
+    buildGoogleCloudDialogflowCxV3TextToSpeechSettings() {
+  final o = api.GoogleCloudDialogflowCxV3TextToSpeechSettings();
+  buildCounterGoogleCloudDialogflowCxV3TextToSpeechSettings++;
+  if (buildCounterGoogleCloudDialogflowCxV3TextToSpeechSettings < 3) {
+    o.synthesizeSpeechConfigs = buildUnnamed85();
+  }
+  buildCounterGoogleCloudDialogflowCxV3TextToSpeechSettings--;
+  return o;
+}
+
+void checkGoogleCloudDialogflowCxV3TextToSpeechSettings(
+    api.GoogleCloudDialogflowCxV3TextToSpeechSettings o) {
+  buildCounterGoogleCloudDialogflowCxV3TextToSpeechSettings++;
+  if (buildCounterGoogleCloudDialogflowCxV3TextToSpeechSettings < 3) {
+    checkUnnamed85(o.synthesizeSpeechConfigs!);
+  }
+  buildCounterGoogleCloudDialogflowCxV3TextToSpeechSettings--;
+}
+
 core.int buildCounterGoogleCloudDialogflowCxV3TrainFlowRequest = 0;
 api.GoogleCloudDialogflowCxV3TrainFlowRequest
     buildGoogleCloudDialogflowCxV3TrainFlowRequest() {
@@ -5337,12 +5579,12 @@ void checkGoogleCloudDialogflowCxV3TrainFlowRequest(
 }
 
 core.List<api.GoogleCloudDialogflowCxV3TransitionCoverageTransition>
-    buildUnnamed84() => [
+    buildUnnamed86() => [
           buildGoogleCloudDialogflowCxV3TransitionCoverageTransition(),
           buildGoogleCloudDialogflowCxV3TransitionCoverageTransition(),
         ];
 
-void checkUnnamed84(
+void checkUnnamed86(
     core.List<api.GoogleCloudDialogflowCxV3TransitionCoverageTransition> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowCxV3TransitionCoverageTransition(o[0]);
@@ -5356,7 +5598,7 @@ api.GoogleCloudDialogflowCxV3TransitionCoverage
   buildCounterGoogleCloudDialogflowCxV3TransitionCoverage++;
   if (buildCounterGoogleCloudDialogflowCxV3TransitionCoverage < 3) {
     o.coverageScore = 42.0;
-    o.transitions = buildUnnamed84();
+    o.transitions = buildUnnamed86();
   }
   buildCounterGoogleCloudDialogflowCxV3TransitionCoverage--;
   return o;
@@ -5370,7 +5612,7 @@ void checkGoogleCloudDialogflowCxV3TransitionCoverage(
       o.coverageScore!,
       unittest.equals(42.0),
     );
-    checkUnnamed84(o.transitions!);
+    checkUnnamed86(o.transitions!);
   }
   buildCounterGoogleCloudDialogflowCxV3TransitionCoverage--;
 }
@@ -5481,12 +5723,12 @@ void checkGoogleCloudDialogflowCxV3TransitionRoute(
   buildCounterGoogleCloudDialogflowCxV3TransitionRoute--;
 }
 
-core.List<api.GoogleCloudDialogflowCxV3TransitionRoute> buildUnnamed85() => [
+core.List<api.GoogleCloudDialogflowCxV3TransitionRoute> buildUnnamed87() => [
       buildGoogleCloudDialogflowCxV3TransitionRoute(),
       buildGoogleCloudDialogflowCxV3TransitionRoute(),
     ];
 
-void checkUnnamed85(core.List<api.GoogleCloudDialogflowCxV3TransitionRoute> o) {
+void checkUnnamed87(core.List<api.GoogleCloudDialogflowCxV3TransitionRoute> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowCxV3TransitionRoute(o[0]);
   checkGoogleCloudDialogflowCxV3TransitionRoute(o[1]);
@@ -5500,7 +5742,7 @@ api.GoogleCloudDialogflowCxV3TransitionRouteGroup
   if (buildCounterGoogleCloudDialogflowCxV3TransitionRouteGroup < 3) {
     o.displayName = 'foo';
     o.name = 'foo';
-    o.transitionRoutes = buildUnnamed85();
+    o.transitionRoutes = buildUnnamed87();
   }
   buildCounterGoogleCloudDialogflowCxV3TransitionRouteGroup--;
   return o;
@@ -5518,18 +5760,18 @@ void checkGoogleCloudDialogflowCxV3TransitionRouteGroup(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed85(o.transitionRoutes!);
+    checkUnnamed87(o.transitionRoutes!);
   }
   buildCounterGoogleCloudDialogflowCxV3TransitionRouteGroup--;
 }
 
 core.List<api.GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverage>
-    buildUnnamed86() => [
+    buildUnnamed88() => [
           buildGoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverage(),
           buildGoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverage(),
         ];
 
-void checkUnnamed86(
+void checkUnnamed88(
     core.List<api.GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverage>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -5544,7 +5786,7 @@ api.GoogleCloudDialogflowCxV3TransitionRouteGroupCoverage
   buildCounterGoogleCloudDialogflowCxV3TransitionRouteGroupCoverage++;
   if (buildCounterGoogleCloudDialogflowCxV3TransitionRouteGroupCoverage < 3) {
     o.coverageScore = 42.0;
-    o.coverages = buildUnnamed86();
+    o.coverages = buildUnnamed88();
   }
   buildCounterGoogleCloudDialogflowCxV3TransitionRouteGroupCoverage--;
   return o;
@@ -5558,21 +5800,23 @@ void checkGoogleCloudDialogflowCxV3TransitionRouteGroupCoverage(
       o.coverageScore!,
       unittest.equals(42.0),
     );
-    checkUnnamed86(o.coverages!);
+    checkUnnamed88(o.coverages!);
   }
   buildCounterGoogleCloudDialogflowCxV3TransitionRouteGroupCoverage--;
 }
 
 core.List<
-        api.GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverageTransition>
-    buildUnnamed87() => [
+        api
+        .GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverageTransition>
+    buildUnnamed89() => [
           buildGoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverageTransition(),
           buildGoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverageTransition(),
         ];
 
-void checkUnnamed87(
+void checkUnnamed89(
     core.List<
-            api.GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverageTransition>
+            api
+            .GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverageTransition>
         o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverageTransition(
@@ -5592,7 +5836,7 @@ api.GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverage
       3) {
     o.coverageScore = 42.0;
     o.routeGroup = buildGoogleCloudDialogflowCxV3TransitionRouteGroup();
-    o.transitions = buildUnnamed87();
+    o.transitions = buildUnnamed89();
   }
   buildCounterGoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverage--;
   return o;
@@ -5608,7 +5852,7 @@ void checkGoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverage(
       unittest.equals(42.0),
     );
     checkGoogleCloudDialogflowCxV3TransitionRouteGroup(o.routeGroup!);
-    checkUnnamed87(o.transitions!);
+    checkUnnamed89(o.transitions!);
   }
   buildCounterGoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverage--;
 }
@@ -5690,23 +5934,23 @@ void checkGoogleCloudDialogflowCxV3ValidateFlowRequest(
   buildCounterGoogleCloudDialogflowCxV3ValidateFlowRequest--;
 }
 
-core.List<api.GoogleCloudDialogflowCxV3ResourceName> buildUnnamed88() => [
+core.List<api.GoogleCloudDialogflowCxV3ResourceName> buildUnnamed90() => [
       buildGoogleCloudDialogflowCxV3ResourceName(),
       buildGoogleCloudDialogflowCxV3ResourceName(),
     ];
 
-void checkUnnamed88(core.List<api.GoogleCloudDialogflowCxV3ResourceName> o) {
+void checkUnnamed90(core.List<api.GoogleCloudDialogflowCxV3ResourceName> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowCxV3ResourceName(o[0]);
   checkGoogleCloudDialogflowCxV3ResourceName(o[1]);
 }
 
-core.List<core.String> buildUnnamed89() => [
+core.List<core.String> buildUnnamed91() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed89(core.List<core.String> o) {
+void checkUnnamed91(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -5725,9 +5969,9 @@ api.GoogleCloudDialogflowCxV3ValidationMessage
   buildCounterGoogleCloudDialogflowCxV3ValidationMessage++;
   if (buildCounterGoogleCloudDialogflowCxV3ValidationMessage < 3) {
     o.detail = 'foo';
-    o.resourceNames = buildUnnamed88();
+    o.resourceNames = buildUnnamed90();
     o.resourceType = 'foo';
-    o.resources = buildUnnamed89();
+    o.resources = buildUnnamed91();
     o.severity = 'foo';
   }
   buildCounterGoogleCloudDialogflowCxV3ValidationMessage--;
@@ -5742,12 +5986,12 @@ void checkGoogleCloudDialogflowCxV3ValidationMessage(
       o.detail!,
       unittest.equals('foo'),
     );
-    checkUnnamed88(o.resourceNames!);
+    checkUnnamed90(o.resourceNames!);
     unittest.expect(
       o.resourceType!,
       unittest.equals('foo'),
     );
-    checkUnnamed89(o.resources!);
+    checkUnnamed91(o.resources!);
     unittest.expect(
       o.severity!,
       unittest.equals('foo'),
@@ -5828,12 +6072,12 @@ void checkGoogleCloudDialogflowCxV3Version(
 }
 
 core.List<api.GoogleCloudDialogflowCxV3VersionVariantsVariant>
-    buildUnnamed90() => [
+    buildUnnamed92() => [
           buildGoogleCloudDialogflowCxV3VersionVariantsVariant(),
           buildGoogleCloudDialogflowCxV3VersionVariantsVariant(),
         ];
 
-void checkUnnamed90(
+void checkUnnamed92(
     core.List<api.GoogleCloudDialogflowCxV3VersionVariantsVariant> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowCxV3VersionVariantsVariant(o[0]);
@@ -5846,7 +6090,7 @@ api.GoogleCloudDialogflowCxV3VersionVariants
   final o = api.GoogleCloudDialogflowCxV3VersionVariants();
   buildCounterGoogleCloudDialogflowCxV3VersionVariants++;
   if (buildCounterGoogleCloudDialogflowCxV3VersionVariants < 3) {
-    o.variants = buildUnnamed90();
+    o.variants = buildUnnamed92();
   }
   buildCounterGoogleCloudDialogflowCxV3VersionVariants--;
   return o;
@@ -5856,7 +6100,7 @@ void checkGoogleCloudDialogflowCxV3VersionVariants(
     api.GoogleCloudDialogflowCxV3VersionVariants o) {
   buildCounterGoogleCloudDialogflowCxV3VersionVariants++;
   if (buildCounterGoogleCloudDialogflowCxV3VersionVariants < 3) {
-    checkUnnamed90(o.variants!);
+    checkUnnamed92(o.variants!);
   }
   buildCounterGoogleCloudDialogflowCxV3VersionVariants--;
 }
@@ -5964,12 +6208,12 @@ void checkGoogleCloudDialogflowCxV3Webhook(
   buildCounterGoogleCloudDialogflowCxV3Webhook--;
 }
 
-core.List<core.String> buildUnnamed91() => [
+core.List<core.String> buildUnnamed93() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed91(core.List<core.String> o) {
+void checkUnnamed93(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -5981,12 +6225,29 @@ void checkUnnamed91(core.List<core.String> o) {
   );
 }
 
-core.Map<core.String, core.String> buildUnnamed92() => {
+core.Map<core.String, core.String> buildUnnamed94() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed92(core.Map<core.String, core.String> o) {
+void checkUnnamed94(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
+}
+
+core.Map<core.String, core.String> buildUnnamed95() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
+
+void checkUnnamed95(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -6004,11 +6265,15 @@ api.GoogleCloudDialogflowCxV3WebhookGenericWebService
   final o = api.GoogleCloudDialogflowCxV3WebhookGenericWebService();
   buildCounterGoogleCloudDialogflowCxV3WebhookGenericWebService++;
   if (buildCounterGoogleCloudDialogflowCxV3WebhookGenericWebService < 3) {
-    o.allowedCaCerts = buildUnnamed91();
+    o.allowedCaCerts = buildUnnamed93();
+    o.httpMethod = 'foo';
+    o.parameterMapping = buildUnnamed94();
     o.password = 'foo';
-    o.requestHeaders = buildUnnamed92();
+    o.requestBody = 'foo';
+    o.requestHeaders = buildUnnamed95();
     o.uri = 'foo';
     o.username = 'foo';
+    o.webhookType = 'foo';
   }
   buildCounterGoogleCloudDialogflowCxV3WebhookGenericWebService--;
   return o;
@@ -6018,18 +6283,31 @@ void checkGoogleCloudDialogflowCxV3WebhookGenericWebService(
     api.GoogleCloudDialogflowCxV3WebhookGenericWebService o) {
   buildCounterGoogleCloudDialogflowCxV3WebhookGenericWebService++;
   if (buildCounterGoogleCloudDialogflowCxV3WebhookGenericWebService < 3) {
-    checkUnnamed91(o.allowedCaCerts!);
+    checkUnnamed93(o.allowedCaCerts!);
+    unittest.expect(
+      o.httpMethod!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed94(o.parameterMapping!);
     unittest.expect(
       o.password!,
       unittest.equals('foo'),
     );
-    checkUnnamed92(o.requestHeaders!);
+    unittest.expect(
+      o.requestBody!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed95(o.requestHeaders!);
     unittest.expect(
       o.uri!,
       unittest.equals('foo'),
     );
     unittest.expect(
       o.username!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.webhookType!,
       unittest.equals('foo'),
     );
   }
@@ -6064,12 +6342,12 @@ void checkGoogleCloudDialogflowCxV3WebhookServiceDirectoryConfig(
   buildCounterGoogleCloudDialogflowCxV3WebhookServiceDirectoryConfig--;
 }
 
-core.List<api.GoogleCloudLocationLocation> buildUnnamed93() => [
+core.List<api.GoogleCloudLocationLocation> buildUnnamed96() => [
       buildGoogleCloudLocationLocation(),
       buildGoogleCloudLocationLocation(),
     ];
 
-void checkUnnamed93(core.List<api.GoogleCloudLocationLocation> o) {
+void checkUnnamed96(core.List<api.GoogleCloudLocationLocation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudLocationLocation(o[0]);
   checkGoogleCloudLocationLocation(o[1]);
@@ -6081,7 +6359,7 @@ api.GoogleCloudLocationListLocationsResponse
   final o = api.GoogleCloudLocationListLocationsResponse();
   buildCounterGoogleCloudLocationListLocationsResponse++;
   if (buildCounterGoogleCloudLocationListLocationsResponse < 3) {
-    o.locations = buildUnnamed93();
+    o.locations = buildUnnamed96();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudLocationListLocationsResponse--;
@@ -6092,7 +6370,7 @@ void checkGoogleCloudLocationListLocationsResponse(
     api.GoogleCloudLocationListLocationsResponse o) {
   buildCounterGoogleCloudLocationListLocationsResponse++;
   if (buildCounterGoogleCloudLocationListLocationsResponse < 3) {
-    checkUnnamed93(o.locations!);
+    checkUnnamed96(o.locations!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -6101,12 +6379,12 @@ void checkGoogleCloudLocationListLocationsResponse(
   buildCounterGoogleCloudLocationListLocationsResponse--;
 }
 
-core.Map<core.String, core.String> buildUnnamed94() => {
+core.Map<core.String, core.String> buildUnnamed97() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed94(core.Map<core.String, core.String> o) {
+void checkUnnamed97(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -6118,7 +6396,7 @@ void checkUnnamed94(core.Map<core.String, core.String> o) {
   );
 }
 
-core.Map<core.String, core.Object?> buildUnnamed95() => {
+core.Map<core.String, core.Object?> buildUnnamed98() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -6131,7 +6409,7 @@ core.Map<core.String, core.Object?> buildUnnamed95() => {
       },
     };
 
-void checkUnnamed95(core.Map<core.String, core.Object?> o) {
+void checkUnnamed98(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted27 = (o['x']!) as core.Map;
   unittest.expect(casted27, unittest.hasLength(3));
@@ -6169,9 +6447,9 @@ api.GoogleCloudLocationLocation buildGoogleCloudLocationLocation() {
   buildCounterGoogleCloudLocationLocation++;
   if (buildCounterGoogleCloudLocationLocation < 3) {
     o.displayName = 'foo';
-    o.labels = buildUnnamed94();
+    o.labels = buildUnnamed97();
     o.locationId = 'foo';
-    o.metadata = buildUnnamed95();
+    o.metadata = buildUnnamed98();
     o.name = 'foo';
   }
   buildCounterGoogleCloudLocationLocation--;
@@ -6185,12 +6463,12 @@ void checkGoogleCloudLocationLocation(api.GoogleCloudLocationLocation o) {
       o.displayName!,
       unittest.equals('foo'),
     );
-    checkUnnamed94(o.labels!);
+    checkUnnamed97(o.labels!);
     unittest.expect(
       o.locationId!,
       unittest.equals('foo'),
     );
-    checkUnnamed95(o.metadata!);
+    checkUnnamed98(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -6199,12 +6477,12 @@ void checkGoogleCloudLocationLocation(api.GoogleCloudLocationLocation o) {
   buildCounterGoogleCloudLocationLocation--;
 }
 
-core.List<api.GoogleLongrunningOperation> buildUnnamed96() => [
+core.List<api.GoogleLongrunningOperation> buildUnnamed99() => [
       buildGoogleLongrunningOperation(),
       buildGoogleLongrunningOperation(),
     ];
 
-void checkUnnamed96(core.List<api.GoogleLongrunningOperation> o) {
+void checkUnnamed99(core.List<api.GoogleLongrunningOperation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleLongrunningOperation(o[0]);
   checkGoogleLongrunningOperation(o[1]);
@@ -6217,7 +6495,7 @@ api.GoogleLongrunningListOperationsResponse
   buildCounterGoogleLongrunningListOperationsResponse++;
   if (buildCounterGoogleLongrunningListOperationsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.operations = buildUnnamed96();
+    o.operations = buildUnnamed99();
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
   return o;
@@ -6231,12 +6509,12 @@ void checkGoogleLongrunningListOperationsResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed96(o.operations!);
+    checkUnnamed99(o.operations!);
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed97() => {
+core.Map<core.String, core.Object?> buildUnnamed100() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -6249,7 +6527,7 @@ core.Map<core.String, core.Object?> buildUnnamed97() => {
       },
     };
 
-void checkUnnamed97(core.Map<core.String, core.Object?> o) {
+void checkUnnamed100(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted29 = (o['x']!) as core.Map;
   unittest.expect(casted29, unittest.hasLength(3));
@@ -6281,7 +6559,7 @@ void checkUnnamed97(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.Map<core.String, core.Object?> buildUnnamed98() => {
+core.Map<core.String, core.Object?> buildUnnamed101() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -6294,7 +6572,7 @@ core.Map<core.String, core.Object?> buildUnnamed98() => {
       },
     };
 
-void checkUnnamed98(core.Map<core.String, core.Object?> o) {
+void checkUnnamed101(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted31 = (o['x']!) as core.Map;
   unittest.expect(casted31, unittest.hasLength(3));
@@ -6333,9 +6611,9 @@ api.GoogleLongrunningOperation buildGoogleLongrunningOperation() {
   if (buildCounterGoogleLongrunningOperation < 3) {
     o.done = true;
     o.error = buildGoogleRpcStatus();
-    o.metadata = buildUnnamed97();
+    o.metadata = buildUnnamed100();
     o.name = 'foo';
-    o.response = buildUnnamed98();
+    o.response = buildUnnamed101();
   }
   buildCounterGoogleLongrunningOperation--;
   return o;
@@ -6346,12 +6624,12 @@ void checkGoogleLongrunningOperation(api.GoogleLongrunningOperation o) {
   if (buildCounterGoogleLongrunningOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkGoogleRpcStatus(o.error!);
-    checkUnnamed97(o.metadata!);
+    checkUnnamed100(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed98(o.response!);
+    checkUnnamed101(o.response!);
   }
   buildCounterGoogleLongrunningOperation--;
 }
@@ -6371,7 +6649,7 @@ void checkGoogleProtobufEmpty(api.GoogleProtobufEmpty o) {
   buildCounterGoogleProtobufEmpty--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed99() => {
+core.Map<core.String, core.Object?> buildUnnamed102() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -6384,7 +6662,7 @@ core.Map<core.String, core.Object?> buildUnnamed99() => {
       },
     };
 
-void checkUnnamed99(core.Map<core.String, core.Object?> o) {
+void checkUnnamed102(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted33 = (o['x']!) as core.Map;
   unittest.expect(casted33, unittest.hasLength(3));
@@ -6416,15 +6694,15 @@ void checkUnnamed99(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed100() => [
-      buildUnnamed99(),
-      buildUnnamed99(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed103() => [
+      buildUnnamed102(),
+      buildUnnamed102(),
     ];
 
-void checkUnnamed100(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed103(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed99(o[0]);
-  checkUnnamed99(o[1]);
+  checkUnnamed102(o[0]);
+  checkUnnamed102(o[1]);
 }
 
 core.int buildCounterGoogleRpcStatus = 0;
@@ -6433,7 +6711,7 @@ api.GoogleRpcStatus buildGoogleRpcStatus() {
   buildCounterGoogleRpcStatus++;
   if (buildCounterGoogleRpcStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed100();
+    o.details = buildUnnamed103();
     o.message = 'foo';
   }
   buildCounterGoogleRpcStatus--;
@@ -6447,7 +6725,7 @@ void checkGoogleRpcStatus(api.GoogleRpcStatus o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed100(o.details!);
+    checkUnnamed103(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -6514,6 +6792,33 @@ void main() {
       final od = api.GoogleCloudDialogflowCxV3Agent.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDialogflowCxV3Agent(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleCloudDialogflowCxV3AgentGitIntegrationSettings', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudDialogflowCxV3AgentGitIntegrationSettings();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudDialogflowCxV3AgentGitIntegrationSettings.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudDialogflowCxV3AgentGitIntegrationSettings(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings(
+          od);
     });
   });
 
@@ -6884,6 +7189,19 @@ void main() {
     });
   });
 
+  unittest.group(
+      'obj-schema-GoogleCloudDialogflowCxV3ExportAgentRequestGitDestination',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleCloudDialogflowCxV3ExportAgentRequestGitDestination();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudDialogflowCxV3ExportAgentRequestGitDestination
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudDialogflowCxV3ExportAgentRequestGitDestination(od);
+    });
+  });
+
   unittest.group('obj-schema-GoogleCloudDialogflowCxV3ExportFlowRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleCloudDialogflowCxV3ExportFlowRequest();
@@ -7039,6 +7357,16 @@ void main() {
           api.GoogleCloudDialogflowCxV3FulfillmentSetParameterAction.fromJson(
               oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDialogflowCxV3FulfillmentSetParameterAction(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleCloudDialogflowCxV3GcsDestination', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudDialogflowCxV3GcsDestination();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudDialogflowCxV3GcsDestination.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudDialogflowCxV3GcsDestination(od);
     });
   });
 
@@ -7589,6 +7917,18 @@ void main() {
     });
   });
 
+  unittest.group(
+      'obj-schema-GoogleCloudDialogflowCxV3RestoreAgentRequestGitSource', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudDialogflowCxV3RestoreAgentRequestGitSource();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudDialogflowCxV3RestoreAgentRequestGitSource.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudDialogflowCxV3RestoreAgentRequestGitSource(od);
+    });
+  });
+
   unittest.group('obj-schema-GoogleCloudDialogflowCxV3RolloutConfig', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleCloudDialogflowCxV3RolloutConfig();
@@ -7791,6 +8131,17 @@ void main() {
       final od = api.GoogleCloudDialogflowCxV3TextInput.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDialogflowCxV3TextInput(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleCloudDialogflowCxV3TextToSpeechSettings',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudDialogflowCxV3TextToSpeechSettings();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudDialogflowCxV3TextToSpeechSettings.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudDialogflowCxV3TextToSpeechSettings(od);
     });
   });
 
@@ -8094,7 +8445,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -8110,7 +8461,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -8150,7 +8501,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -8166,7 +8517,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -8227,7 +8578,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudDialogflowCxV3Agent(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -8243,7 +8594,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -8281,7 +8632,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -8297,7 +8648,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -8338,7 +8689,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudDialogflowCxV3ExportAgentRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -8354,7 +8705,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -8392,7 +8743,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -8408,7 +8759,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -8446,7 +8797,7 @@ void main() {
       final arg_languageCode = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -8462,7 +8813,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -8507,7 +8858,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -8523,7 +8874,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -8578,7 +8929,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudDialogflowCxV3Agent(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -8594,7 +8945,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -8641,7 +8992,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudDialogflowCxV3RestoreAgentRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -8657,7 +9008,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -8700,7 +9051,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudDialogflowCxV3ValidateAgentRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -8716,7 +9067,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -8757,7 +9108,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -8773,7 +9124,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -8814,7 +9165,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -8830,7 +9181,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -8892,7 +9243,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudDialogflowCxV3EntityType(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -8908,7 +9259,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -8952,7 +9303,7 @@ void main() {
       final arg_force = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -8968,7 +9319,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -9010,7 +9361,7 @@ void main() {
       final arg_languageCode = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -9026,7 +9377,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -9072,7 +9423,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -9088,7 +9439,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -9149,7 +9500,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudDialogflowCxV3EntityType(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -9165,7 +9516,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -9222,7 +9573,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudDialogflowCxV3Environment(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -9238,7 +9589,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -9277,7 +9628,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -9293,7 +9644,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -9335,7 +9686,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudDialogflowCxV3DeployFlowRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -9351,7 +9702,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -9390,7 +9741,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -9406,7 +9757,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -9447,7 +9798,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -9463,7 +9814,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -9515,7 +9866,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -9531,7 +9882,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -9587,7 +9938,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudDialogflowCxV3Environment(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -9603,7 +9954,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -9653,7 +10004,7 @@ void main() {
                 json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudDialogflowCxV3RunContinuousTestRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -9669,7 +10020,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -9718,7 +10069,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -9734,7 +10085,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -9791,7 +10142,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -9807,7 +10158,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -9852,7 +10203,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -9868,7 +10219,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -9930,7 +10281,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudDialogflowCxV3Experiment(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -9946,7 +10297,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -9990,7 +10341,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -10006,7 +10357,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -10047,7 +10398,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -10063,7 +10414,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -10108,7 +10459,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -10124,7 +10475,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -10184,7 +10535,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudDialogflowCxV3Experiment(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -10200,7 +10551,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -10255,7 +10606,7 @@ void main() {
                 json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudDialogflowCxV3StartExperimentRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -10271,7 +10622,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -10320,7 +10671,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudDialogflowCxV3StopExperimentRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -10336,7 +10687,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -10388,7 +10739,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudDialogflowCxV3DetectIntentRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -10404,7 +10755,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -10453,7 +10804,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudDialogflowCxV3FulfillIntentRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -10469,7 +10820,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -10518,7 +10869,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudDialogflowCxV3MatchIntentRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -10534,7 +10885,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -10588,7 +10939,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudDialogflowCxV3SessionEntityType(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -10604,7 +10955,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -10649,7 +11000,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -10665,7 +11016,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -10707,7 +11058,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -10723,7 +11074,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -10769,7 +11120,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -10785,7 +11136,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -10846,7 +11197,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudDialogflowCxV3SessionEntityType(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -10862,7 +11213,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -10913,7 +11264,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudDialogflowCxV3Flow(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -10929,7 +11280,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -10972,7 +11323,7 @@ void main() {
       final arg_force = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -10988,7 +11339,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -11034,7 +11385,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudDialogflowCxV3ExportFlowRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -11050,7 +11401,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -11089,7 +11440,7 @@ void main() {
       final arg_languageCode = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -11105,7 +11456,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -11148,7 +11499,7 @@ void main() {
       final arg_languageCode = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -11164,7 +11515,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -11212,7 +11563,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudDialogflowCxV3ImportFlowRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -11228,7 +11579,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -11269,7 +11620,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -11285,7 +11636,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -11346,7 +11697,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudDialogflowCxV3Flow(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -11362,7 +11713,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -11415,7 +11766,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudDialogflowCxV3TrainFlowRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -11431,7 +11782,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -11474,7 +11825,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudDialogflowCxV3ValidateFlowRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -11490,7 +11841,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -11537,7 +11888,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudDialogflowCxV3Page(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -11553,7 +11904,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -11596,7 +11947,7 @@ void main() {
       final arg_force = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -11612,7 +11963,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -11654,7 +12005,7 @@ void main() {
       final arg_languageCode = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -11670,7 +12021,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -11715,7 +12066,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -11731,7 +12082,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -11792,7 +12143,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudDialogflowCxV3Page(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -11808,7 +12159,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -11870,7 +12221,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudDialogflowCxV3TransitionRouteGroup(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -11886,7 +12237,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -11935,7 +12286,7 @@ void main() {
       final arg_force = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -11951,7 +12302,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -11998,7 +12349,7 @@ void main() {
       final arg_languageCode = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -12014,7 +12365,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -12065,7 +12416,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -12081,7 +12432,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -12147,7 +12498,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudDialogflowCxV3TransitionRouteGroup(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -12163,7 +12514,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -12222,7 +12573,7 @@ void main() {
                 json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudDialogflowCxV3CompareVersionsRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -12238,7 +12589,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -12283,7 +12634,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudDialogflowCxV3Version(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -12299,7 +12650,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -12338,7 +12689,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -12354,7 +12705,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -12391,7 +12742,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -12407,7 +12758,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -12448,7 +12799,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -12464,7 +12815,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -12519,7 +12870,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudDialogflowCxV3LoadVersionRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -12535,7 +12886,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -12580,7 +12931,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudDialogflowCxV3Version(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -12596,7 +12947,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -12647,7 +12998,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudDialogflowCxV3Intent(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -12663,7 +13014,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -12706,7 +13057,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -12722,7 +13073,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -12759,7 +13110,7 @@ void main() {
       final arg_languageCode = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -12775,7 +13126,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -12822,7 +13173,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -12838,7 +13189,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -12904,7 +13255,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudDialogflowCxV3Intent(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -12920,7 +13271,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -12976,7 +13327,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudDialogflowCxV3DetectIntentRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -12992,7 +13343,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -13036,7 +13387,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudDialogflowCxV3FulfillIntentRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -13052,7 +13403,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -13096,7 +13447,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudDialogflowCxV3MatchIntentRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -13112,7 +13463,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -13164,7 +13515,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudDialogflowCxV3SessionEntityType(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -13180,7 +13531,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -13224,7 +13575,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -13240,7 +13591,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -13281,7 +13632,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -13297,7 +13648,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -13342,7 +13693,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -13358,7 +13709,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -13418,7 +13769,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudDialogflowCxV3SessionEntityType(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -13434,7 +13785,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -13486,7 +13837,7 @@ void main() {
                 json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudDialogflowCxV3BatchDeleteTestCasesRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -13502,7 +13853,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -13546,7 +13897,7 @@ void main() {
                 json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudDialogflowCxV3BatchRunTestCasesRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -13562,7 +13913,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -13601,7 +13952,7 @@ void main() {
       final arg_type = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -13617,7 +13968,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -13665,7 +14016,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudDialogflowCxV3TestCase(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -13681,7 +14032,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -13727,7 +14078,7 @@ void main() {
                 json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudDialogflowCxV3ExportTestCasesRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -13743,7 +14094,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -13781,7 +14132,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -13797,7 +14148,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -13842,7 +14193,7 @@ void main() {
                 json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudDialogflowCxV3ImportTestCasesRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -13858,7 +14209,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -13899,7 +14250,7 @@ void main() {
       final arg_view = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -13915,7 +14266,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -13975,7 +14326,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudDialogflowCxV3TestCase(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -13991,7 +14342,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -14039,7 +14390,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudDialogflowCxV3RunTestCaseRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -14055,7 +14406,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -14097,7 +14448,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -14113,7 +14464,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -14155,7 +14506,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -14171,7 +14522,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -14232,7 +14583,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudDialogflowCxV3Webhook(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -14248,7 +14599,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -14288,7 +14639,7 @@ void main() {
       final arg_force = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -14304,7 +14655,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -14345,7 +14696,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -14361,7 +14712,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -14401,7 +14752,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -14417,7 +14768,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -14472,7 +14823,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudDialogflowCxV3Webhook(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -14488,7 +14839,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -14533,7 +14884,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -14549,7 +14900,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -14585,7 +14936,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -14601,7 +14952,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -14641,7 +14992,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -14657,7 +15008,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -14718,7 +15069,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudDialogflowCxV3SecuritySettings(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -14734,7 +15085,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -14773,7 +15124,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -14789,7 +15140,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -14825,7 +15176,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -14841,7 +15192,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -14881,7 +15232,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -14897,7 +15248,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -14952,7 +15303,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudDialogflowCxV3SecuritySettings(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -14968,7 +15319,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -15013,7 +15364,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -15029,7 +15380,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -15065,7 +15416,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -15081,7 +15432,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -15121,7 +15472,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -15137,7 +15488,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>

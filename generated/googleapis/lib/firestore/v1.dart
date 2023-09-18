@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud Firestore API - v1
@@ -23,23 +22,23 @@
 ///
 /// - [ProjectsResource]
 ///   - [ProjectsDatabasesResource]
+///     - [ProjectsDatabasesBackupSchedulesResource]
 ///     - [ProjectsDatabasesCollectionGroupsResource]
 ///       - [ProjectsDatabasesCollectionGroupsFieldsResource]
 ///       - [ProjectsDatabasesCollectionGroupsIndexesResource]
 ///     - [ProjectsDatabasesDocumentsResource]
 ///     - [ProjectsDatabasesOperationsResource]
 ///   - [ProjectsLocationsResource]
-library firestore.v1;
+///     - [ProjectsLocationsBackupsResource]
+library firestore_v1;
 
 import 'dart:async' as async;
-import 'dart:collection' as collection;
 import 'dart:convert' as convert;
 import 'dart:core' as core;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -82,6 +81,8 @@ class ProjectsResource {
 class ProjectsDatabasesResource {
   final commons.ApiRequester _requester;
 
+  ProjectsDatabasesBackupSchedulesResource get backupSchedules =>
+      ProjectsDatabasesBackupSchedulesResource(_requester);
   ProjectsDatabasesCollectionGroupsResource get collectionGroups =>
       ProjectsDatabasesCollectionGroupsResource(_requester);
   ProjectsDatabasesDocumentsResource get documents =>
@@ -135,6 +136,49 @@ class ProjectsDatabasesResource {
       url_,
       'POST',
       body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a database.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. A name of the form
+  /// `projects/{project_id}/databases/{database_id}`
+  /// Value must have pattern `^projects/\[^/\]+/databases/\[^/\]+$`.
+  ///
+  /// [etag] - The current etag of the Database. If an etag is provided and does
+  /// not match the current etag of the database, deletion will be blocked and a
+  /// FAILED_PRECONDITION error will be returned.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.String? etag,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (etag != null) 'etag': [etag],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
@@ -359,6 +403,274 @@ class ProjectsDatabasesResource {
     return GoogleLongrunningOperation.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
+
+  /// Create a new database by restore from an existing backup.
+  ///
+  /// The new database must be in the same cloud region or multi-region location
+  /// as the existing backup. This behaves similar to
+  /// FirestoreAdmin.CreateDatabase except instead of creating a new empty
+  /// database, a new database is created with the database type, index
+  /// configuration, and documents from an existing backup. The long-running
+  /// operation can be used to track the progress of the restore, with the
+  /// Operation's metadata field type being the RestoreDatabaseMetadata. The
+  /// response type is the Database if the restore was successful. The new
+  /// database is not readable or writeable until the LRO has completed.
+  /// Cancelling the returned operation will stop the restore and delete the
+  /// in-progress database, if the restore is still active.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project to restore the database in. Format is
+  /// `projects/{project_id}`.
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> restore(
+    GoogleFirestoreAdminV1RestoreDatabaseRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/databases:restore';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsDatabasesBackupSchedulesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsDatabasesBackupSchedulesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a backup schedule on a database.
+  ///
+  /// At most two backup schedules can be configured on a database, one daily
+  /// backup schedule with retention up to 7 days and one weekly backup schedule
+  /// with retention up to 14 weeks.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent database. Format
+  /// `projects/{project}/databases/{database}`
+  /// Value must have pattern `^projects/\[^/\]+/databases/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleFirestoreAdminV1BackupSchedule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirestoreAdminV1BackupSchedule> create(
+    GoogleFirestoreAdminV1BackupSchedule request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/backupSchedules';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleFirestoreAdminV1BackupSchedule.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a backup schedule.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of backup schedule. Format
+  /// `projects/{project}/databases/{database}/backupSchedules/{backup_schedule}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/databases/\[^/\]+/backupSchedules/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets information about a backup schedule.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the backup schedule. Format
+  /// `projects/{project}/databases/{database}/backupSchedules/{backup_schedule}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/databases/\[^/\]+/backupSchedules/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleFirestoreAdminV1BackupSchedule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirestoreAdminV1BackupSchedule> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleFirestoreAdminV1BackupSchedule.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List backup schedules.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent database. Format is
+  /// `projects/{project}/databases/{database}`.
+  /// Value must have pattern `^projects/\[^/\]+/databases/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleFirestoreAdminV1ListBackupSchedulesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirestoreAdminV1ListBackupSchedulesResponse> list(
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/backupSchedules';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleFirestoreAdminV1ListBackupSchedulesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a backup schedule.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. The unique backup schedule identifier across all
+  /// locations and databases for the given project. This will be auto-assigned.
+  /// Format is
+  /// `projects/{project}/databases/{database}/backupSchedules/{backup_schedule}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/databases/\[^/\]+/backupSchedules/\[^/\]+$`.
+  ///
+  /// [updateMask] - The list of fields to be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleFirestoreAdminV1BackupSchedule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirestoreAdminV1BackupSchedule> patch(
+    GoogleFirestoreAdminV1BackupSchedule request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleFirestoreAdminV1BackupSchedule.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsDatabasesCollectionGroupsResource {
@@ -422,7 +734,7 @@ class ProjectsDatabasesCollectionGroupsFieldsResource {
   /// Currently, FirestoreAdmin.ListFields only supports listing fields that
   /// have been explicitly overridden. To issue this query, call
   /// FirestoreAdmin.ListFields with the filter set to
-  /// `indexConfig.usesAncestorConfig:false` .
+  /// \`indexConfig.usesAncestorConfig:false or \`ttlConfig:*\`.
   ///
   /// Request parameters:
   ///
@@ -782,8 +1094,10 @@ class ProjectsDatabasesDocumentsResource {
       body: body_,
       queryParams: queryParams_,
     );
-    return BatchGetDocumentsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+    return (response_ as core.List)
+        .map((value) => BatchGetDocumentsResponseElement.fromJson(
+            value as core.Map<core.String, core.dynamic>))
+        .toList();
   }
 
   /// Applies a batch of write operations.
@@ -1045,8 +1359,10 @@ class ProjectsDatabasesDocumentsResource {
   /// [mask_fieldPaths] - The list of field paths in the mask. See
   /// Document.fields for a field path syntax reference.
   ///
-  /// [readTime] - Reads the version of the document at the given time. This may
-  /// not be older than 270 seconds.
+  /// [readTime] - Reads the version of the document at the given time. This
+  /// must be a microsecond precision timestamp within the past one hour, or if
+  /// Point-in-Time Recovery is enabled, can additionally be a whole minute
+  /// timestamp within the past 7 days.
   ///
   /// [transaction] - Reads the document in a transaction.
   ///
@@ -1096,30 +1412,39 @@ class ProjectsDatabasesDocumentsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/databases/\[^/\]+/documents/\[^/\]+/.*$`.
   ///
-  /// [collectionId] - Required. The collection ID, relative to `parent`, to
-  /// list. For example: `chatrooms` or `messages`.
+  /// [collectionId] - Optional. The collection ID, relative to `parent`, to
+  /// list. For example: `chatrooms` or `messages`. This is optional, and when
+  /// not provided, Firestore will list documents from all collections under the
+  /// provided `parent`.
   ///
   /// [mask_fieldPaths] - The list of field paths in the mask. See
   /// Document.fields for a field path syntax reference.
   ///
-  /// [orderBy] - The order to sort results by. For example: `priority desc,
-  /// name`.
+  /// [orderBy] - Optional. The optional ordering of the documents to return.
+  /// For example: `priority desc, __name__ desc`. This mirrors the `ORDER BY`
+  /// used in Firestore queries but in a string representation. When absent,
+  /// documents are ordered based on `__name__ ASC`.
   ///
-  /// [pageSize] - The maximum number of documents to return.
+  /// [pageSize] - Optional. The maximum number of documents to return in a
+  /// single response. Firestore may return fewer than this value.
   ///
-  /// [pageToken] - The `next_page_token` value returned from a previous List
-  /// request, if any.
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListDocuments` response. Provide this to retrieve the subsequent page.
+  /// When paginating, all other parameters (with the exception of `page_size`)
+  /// must match the values set in the request that generated the page token.
   ///
-  /// [readTime] - Reads documents as they were at the given time. This may not
-  /// be older than 270 seconds.
+  /// [readTime] - Perform the read at the provided time. This must be a
+  /// microsecond precision timestamp within the past one hour, or if
+  /// Point-in-Time Recovery is enabled, can additionally be a whole minute
+  /// timestamp within the past 7 days.
   ///
-  /// [showMissing] - If the list should show missing documents. A missing
-  /// document is a document that does not exist but has sub-documents. These
-  /// documents will be returned with a key but will not have fields,
-  /// Document.create_time, or Document.update_time set. Requests with
-  /// `show_missing` may not specify `where` or `order_by`.
+  /// [showMissing] - If the list should show missing documents. A document is
+  /// missing if it does not exist, but there are sub-documents nested
+  /// underneath it. When true, such missing documents will be returned with a
+  /// key but will not have fields, `create_time`, or `update_time` set.
+  /// Requests with `show_missing` may not specify `where` or `order_by`.
   ///
-  /// [transaction] - Reads documents in a transaction.
+  /// [transaction] - Perform the read as part of an already active transaction.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1224,30 +1549,39 @@ class ProjectsDatabasesDocumentsResource {
   /// `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom`
   /// Value must have pattern `^projects/\[^/\]+/databases/\[^/\]+/documents$`.
   ///
-  /// [collectionId] - Required. The collection ID, relative to `parent`, to
-  /// list. For example: `chatrooms` or `messages`.
+  /// [collectionId] - Optional. The collection ID, relative to `parent`, to
+  /// list. For example: `chatrooms` or `messages`. This is optional, and when
+  /// not provided, Firestore will list documents from all collections under the
+  /// provided `parent`.
   ///
   /// [mask_fieldPaths] - The list of field paths in the mask. See
   /// Document.fields for a field path syntax reference.
   ///
-  /// [orderBy] - The order to sort results by. For example: `priority desc,
-  /// name`.
+  /// [orderBy] - Optional. The optional ordering of the documents to return.
+  /// For example: `priority desc, __name__ desc`. This mirrors the `ORDER BY`
+  /// used in Firestore queries but in a string representation. When absent,
+  /// documents are ordered based on `__name__ ASC`.
   ///
-  /// [pageSize] - The maximum number of documents to return.
+  /// [pageSize] - Optional. The maximum number of documents to return in a
+  /// single response. Firestore may return fewer than this value.
   ///
-  /// [pageToken] - The `next_page_token` value returned from a previous List
-  /// request, if any.
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListDocuments` response. Provide this to retrieve the subsequent page.
+  /// When paginating, all other parameters (with the exception of `page_size`)
+  /// must match the values set in the request that generated the page token.
   ///
-  /// [readTime] - Reads documents as they were at the given time. This may not
-  /// be older than 270 seconds.
+  /// [readTime] - Perform the read at the provided time. This must be a
+  /// microsecond precision timestamp within the past one hour, or if
+  /// Point-in-Time Recovery is enabled, can additionally be a whole minute
+  /// timestamp within the past 7 days.
   ///
-  /// [showMissing] - If the list should show missing documents. A missing
-  /// document is a document that does not exist but has sub-documents. These
-  /// documents will be returned with a key but will not have fields,
-  /// Document.create_time, or Document.update_time set. Requests with
-  /// `show_missing` may not specify `where` or `order_by`.
+  /// [showMissing] - If the list should show missing documents. A document is
+  /// missing if it does not exist, but there are sub-documents nested
+  /// underneath it. When true, such missing documents will be returned with a
+  /// key but will not have fields, `create_time`, or `update_time` set.
+  /// Requests with `show_missing` may not specify `where` or `order_by`.
   ///
-  /// [transaction] - Reads documents in a transaction.
+  /// [transaction] - Perform the read as part of an already active transaction.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1453,6 +1787,61 @@ class ProjectsDatabasesDocumentsResource {
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Runs an aggregation query.
+  ///
+  /// Rather than producing Document results like Firestore.RunQuery, this API
+  /// allows running an aggregation to produce a series of AggregationResult
+  /// server-side. High-Level Example: ``` -- Return the number of documents in
+  /// table given a filter. SELECT COUNT(*) FROM ( SELECT * FROM k where a =
+  /// true ); ```
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource name. In the format:
+  /// `projects/{project_id}/databases/{database_id}/documents` or
+  /// `projects/{project_id}/databases/{database_id}/documents/{document_path}`.
+  /// For example: `projects/my-project/databases/my-database/documents` or
+  /// `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/databases/\[^/\]+/documents/\[^/\]+/.*$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RunAggregationQueryResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RunAggregationQueryResponse> runAggregationQuery(
+    RunAggregationQueryRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + ':runAggregationQuery';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return (response_ as core.List)
+        .map((value) => RunAggregationQueryResponseElement.fromJson(
+            value as core.Map<core.String, core.dynamic>))
+        .toList();
+  }
+
   /// Runs a query.
   ///
   /// [request] - The metadata request object.
@@ -1495,10 +1884,15 @@ class ProjectsDatabasesDocumentsResource {
       body: body_,
       queryParams: queryParams_,
     );
-    return RunQueryResponse.fromJson(response_ as core.List);
+    return (response_ as core.List)
+        .map((value) => RunQueryResponseElement.fromJson(
+            value as core.Map<core.String, core.dynamic>))
+        .toList();
   }
 
   /// Streams batches of document updates and deletes, in order.
+  ///
+  /// This method is only available via gRPC or WebChannel (not REST).
   ///
   /// [request] - The metadata request object.
   ///
@@ -1681,13 +2075,6 @@ class ProjectsDatabasesOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -1738,6 +2125,9 @@ class ProjectsDatabasesOperationsResource {
 
 class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
+
+  ProjectsLocationsBackupsResource get backups =>
+      ProjectsLocationsBackupsResource(_requester);
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
@@ -1829,6 +2219,220 @@ class ProjectsLocationsResource {
   }
 }
 
+class ProjectsLocationsBackupsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsBackupsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Deletes a backup.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the backup to delete. format is
+  /// `projects/{project}/locations/{location}/backups/{backup}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/backups/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets information about a backup.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the backup to fetch. Format is
+  /// `projects/{project}/locations/{location}/backups/{backup}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/backups/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleFirestoreAdminV1Backup].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirestoreAdminV1Backup> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleFirestoreAdminV1Backup.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all the backups.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The location to list backups from. Format is
+  /// `projects/{project}/locations/{location}`. Use `{location} = '-'` to list
+  /// backups from all locations for the given project. This allows listing
+  /// backups from a single location or from all locations.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleFirestoreAdminV1ListBackupsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleFirestoreAdminV1ListBackupsResponse> list(
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/backups';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleFirestoreAdminV1ListBackupsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+/// Defines an aggregation that produces a single result.
+class Aggregation {
+  /// Optional name of the field to store the result of the aggregation into.
+  ///
+  /// If not provided, Firestore will pick a default name following the format
+  /// `field_`. For example: ``` AGGREGATE COUNT_UP_TO(1) AS count_up_to_1,
+  /// COUNT_UP_TO(2), COUNT_UP_TO(3) AS count_up_to_3, COUNT(*) OVER ( ... );
+  /// ``` becomes: ``` AGGREGATE COUNT_UP_TO(1) AS count_up_to_1, COUNT_UP_TO(2)
+  /// AS field_1, COUNT_UP_TO(3) AS count_up_to_3, COUNT(*) AS field_2 OVER (
+  /// ... ); ``` Requires: * Must be unique across all aggregation aliases. *
+  /// Conform to document field name limitations.
+  ///
+  /// Optional.
+  core.String? alias;
+
+  /// Average aggregator.
+  Avg? avg;
+
+  /// Count aggregator.
+  Count? count;
+
+  /// Sum aggregator.
+  Sum? sum;
+
+  Aggregation({
+    this.alias,
+    this.avg,
+    this.count,
+    this.sum,
+  });
+
+  Aggregation.fromJson(core.Map json_)
+      : this(
+          alias:
+              json_.containsKey('alias') ? json_['alias'] as core.String : null,
+          avg: json_.containsKey('avg')
+              ? Avg.fromJson(
+                  json_['avg'] as core.Map<core.String, core.dynamic>)
+              : null,
+          count: json_.containsKey('count')
+              ? Count.fromJson(
+                  json_['count'] as core.Map<core.String, core.dynamic>)
+              : null,
+          sum: json_.containsKey('sum')
+              ? Sum.fromJson(
+                  json_['sum'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (alias != null) 'alias': alias!,
+        if (avg != null) 'avg': avg!,
+        if (count != null) 'count': count!,
+        if (sum != null) 'sum': sum!,
+      };
+}
+
+/// The result of a single bucket from a Firestore aggregation query.
+///
+/// The keys of `aggregate_fields` are the same for all results in an
+/// aggregation query, unlike document queries which can have different fields
+/// present for each result.
+class AggregationResult {
+  /// The result of the aggregation functions, ex: `COUNT(*) AS total_docs`.
+  ///
+  /// The key is the alias assigned to the aggregation function on input and the
+  /// size of this map equals the number of aggregation functions in the query.
+  core.Map<core.String, Value>? aggregateFields;
+
+  AggregationResult({
+    this.aggregateFields,
+  });
+
+  AggregationResult.fromJson(core.Map json_)
+      : this(
+          aggregateFields: json_.containsKey('aggregateFields')
+              ? (json_['aggregateFields']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    Value.fromJson(
+                        value as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (aggregateFields != null) 'aggregateFields': aggregateFields!,
+      };
+}
+
 /// An array value.
 class ArrayValue {
   /// Values in the array.
@@ -1850,6 +2454,33 @@ class ArrayValue {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (values != null) 'values': values!,
+      };
+}
+
+/// Average of the values of the requested field.
+///
+/// * Only numeric values will be aggregated. All non-numeric values including
+/// `NULL` are skipped. * If the aggregated values contain `NaN`, returns `NaN`.
+/// * If the aggregated value set is empty, returns `NULL`. * Always returns the
+/// result as a double.
+class Avg {
+  /// The field to aggregate on.
+  FieldReference? field;
+
+  Avg({
+    this.field,
+  });
+
+  Avg.fromJson(core.Map json_)
+      : this(
+          field: json_.containsKey('field')
+              ? FieldReference.fromJson(
+                  json_['field'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (field != null) 'field': field!,
       };
 }
 
@@ -1877,7 +2508,9 @@ class BatchGetDocumentsRequest {
 
   /// Reads documents as they were at the given time.
   ///
-  /// This may not be older than 270 seconds.
+  /// This must be a microsecond precision timestamp within the past one hour,
+  /// or if Point-in-Time Recovery is enabled, can additionally be a whole
+  /// minute timestamp within the past 7 days.
   core.String? readTime;
 
   /// Reads documents in a transaction.
@@ -1930,8 +2563,7 @@ class BatchGetDocumentsRequest {
       };
 }
 
-/// The streamed response for Firestore.BatchGetDocuments.
-class BatchGetDocumentsResponse {
+class BatchGetDocumentsResponseElement {
   /// A document that was requested.
   Document? found;
 
@@ -1961,14 +2593,14 @@ class BatchGetDocumentsResponse {
         convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  BatchGetDocumentsResponse({
+  BatchGetDocumentsResponseElement({
     this.found,
     this.missing,
     this.readTime,
     this.transaction,
   });
 
-  BatchGetDocumentsResponse.fromJson(core.Map json_)
+  BatchGetDocumentsResponseElement.fromJson(core.Map json_)
       : this(
           found: json_.containsKey('found')
               ? Document.fromJson(
@@ -1993,6 +2625,9 @@ class BatchGetDocumentsResponse {
       };
 }
 
+/// The streamed response for Firestore.BatchGetDocuments.
+typedef BatchGetDocumentsResponse = core.List<BatchGetDocumentsResponseElement>;
+
 /// The request for Firestore.BatchWrite.
 class BatchWriteRequest {
   /// Labels associated with this batch write.
@@ -2014,9 +2649,9 @@ class BatchWriteRequest {
       : this(
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -2248,6 +2883,8 @@ class CompositeFilter {
   /// Possible string values are:
   /// - "OPERATOR_UNSPECIFIED" : Unspecified. This value must not be used.
   /// - "AND" : Documents are required to satisfy all of the combined filters.
+  /// - "OR" : Documents are required to satisfy at least one of the combined
+  /// filters.
   core.String? op;
 
   CompositeFilter({
@@ -2269,6 +2906,35 @@ class CompositeFilter {
   core.Map<core.String, core.dynamic> toJson() => {
         if (filters != null) 'filters': filters!,
         if (op != null) 'op': op!,
+      };
+}
+
+/// Count of documents that match the query.
+///
+/// The `COUNT(*)` aggregation function operates on the entire document so it
+/// does not require a field reference.
+class Count {
+  /// Optional constraint on the maximum number of documents to count.
+  ///
+  /// This provides a way to set an upper bound on the number of documents to
+  /// scan, limiting latency, and cost. Unspecified is interpreted as no bound.
+  /// High-Level Example: ``` AGGREGATE COUNT_UP_TO(1000) OVER ( SELECT * FROM k
+  /// ); ``` Requires: * Must be greater than zero when present.
+  ///
+  /// Optional.
+  core.String? upTo;
+
+  Count({
+    this.upTo,
+  });
+
+  Count.fromJson(core.Map json_)
+      : this(
+          upTo: json_.containsKey('upTo') ? json_['upTo'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (upTo != null) 'upTo': upTo!,
       };
 }
 
@@ -2366,9 +3032,10 @@ class Document {
               : null,
           fields: json_.containsKey('fields')
               ? (json_['fields'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    Value.fromJson(item as core.Map<core.String, core.dynamic>),
+                    Value.fromJson(
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -2481,16 +3148,18 @@ class FieldFilter {
   /// - "ARRAY_CONTAINS" : The given `field` is an array that contains the given
   /// `value`.
   /// - "IN" : The given `field` is equal to at least one value in the given
-  /// array. Requires: * That `value` is a non-empty `ArrayValue` with at most
-  /// 10 values. * No other `IN` or `ARRAY_CONTAINS_ANY` or `NOT_IN`.
+  /// array. Requires: * That `value` is a non-empty `ArrayValue`, subject to
+  /// disjunction limits. * No `NOT_IN` filters in the same query.
   /// - "ARRAY_CONTAINS_ANY" : The given `field` is an array that contains any
   /// of the values in the given array. Requires: * That `value` is a non-empty
-  /// `ArrayValue` with at most 10 values. * No other `IN` or
-  /// `ARRAY_CONTAINS_ANY` or `NOT_IN`.
+  /// `ArrayValue`, subject to disjunction limits. * No other
+  /// `ARRAY_CONTAINS_ANY` filters within the same disjunction. * No `NOT_IN`
+  /// filters in the same query.
   /// - "NOT_IN" : The value of the `field` is not in the given array. Requires:
   /// * That `value` is a non-empty `ArrayValue` with at most 10 values. * No
-  /// other `IN`, `ARRAY_CONTAINS_ANY`, `NOT_IN`, `NOT_EQUAL`, `IS_NOT_NULL`, or
-  /// `IS_NOT_NAN`. * That `field` comes first in the `order_by`.
+  /// other `OR`, `IN`, `ARRAY_CONTAINS_ANY`, `NOT_IN`, `NOT_EQUAL`,
+  /// `IS_NOT_NULL`, or `IS_NOT_NAN`. * That `field` comes first in the
+  /// `order_by`.
   core.String? op;
 
   /// The value to compare to.
@@ -2712,6 +3381,192 @@ class Filter {
       };
 }
 
+/// A Backup of a Cloud Firestore Database.
+///
+/// The backup contains all documents and index configurations for the given
+/// database at specific point in time.
+class GoogleFirestoreAdminV1Backup {
+  /// Name of the Firestore database that the backup is from.
+  ///
+  /// Format is `projects/{project}/databases/{database}`.
+  ///
+  /// Output only.
+  core.String? database;
+
+  /// The system-generated UUID4 for the Firestore database that the backup is
+  /// from.
+  ///
+  /// Output only.
+  core.String? databaseUid;
+
+  /// The timestamp at which this backup expires.
+  ///
+  /// Output only.
+  core.String? expireTime;
+
+  /// The unique resource name of the Backup.
+  ///
+  /// Format is `projects/{project}/locations/{location}/backups/{backup}`.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The backup contains an externally consistent copy of the database at this
+  /// time.
+  ///
+  /// Output only.
+  core.String? snapshotTime;
+
+  /// The current state of the backup.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The state is unspecified.
+  /// - "CREATING" : The pending backup is still being created. Operations on
+  /// the backup will be rejected in this state.
+  /// - "READY" : The backup is complete and ready to use.
+  /// - "NOT_AVAILABLE" : The backup is not available at this moment.
+  core.String? state;
+
+  /// Statistics about the backup.
+  ///
+  /// This data only becomes available after the backup is fully materialized to
+  /// secondary storage. This field will be empty till then.
+  ///
+  /// Output only.
+  GoogleFirestoreAdminV1Stats? stats;
+
+  GoogleFirestoreAdminV1Backup({
+    this.database,
+    this.databaseUid,
+    this.expireTime,
+    this.name,
+    this.snapshotTime,
+    this.state,
+    this.stats,
+  });
+
+  GoogleFirestoreAdminV1Backup.fromJson(core.Map json_)
+      : this(
+          database: json_.containsKey('database')
+              ? json_['database'] as core.String
+              : null,
+          databaseUid: json_.containsKey('databaseUid')
+              ? json_['databaseUid'] as core.String
+              : null,
+          expireTime: json_.containsKey('expireTime')
+              ? json_['expireTime'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          snapshotTime: json_.containsKey('snapshotTime')
+              ? json_['snapshotTime'] as core.String
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          stats: json_.containsKey('stats')
+              ? GoogleFirestoreAdminV1Stats.fromJson(
+                  json_['stats'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (database != null) 'database': database!,
+        if (databaseUid != null) 'databaseUid': databaseUid!,
+        if (expireTime != null) 'expireTime': expireTime!,
+        if (name != null) 'name': name!,
+        if (snapshotTime != null) 'snapshotTime': snapshotTime!,
+        if (state != null) 'state': state!,
+        if (stats != null) 'stats': stats!,
+      };
+}
+
+/// A backup schedule for a Cloud Firestore Database.
+///
+/// This resource is owned by the database it is backing up, and is deleted
+/// along with the database. The actual backups are not though.
+class GoogleFirestoreAdminV1BackupSchedule {
+  /// The timestamp at which this backup schedule was created and effective
+  /// since.
+  ///
+  /// No backups will be created for this schedule before this time.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// For a schedule that runs daily at a specified time.
+  GoogleFirestoreAdminV1DailyRecurrence? dailyRecurrence;
+
+  /// The unique backup schedule identifier across all locations and databases
+  /// for the given project.
+  ///
+  /// This will be auto-assigned. Format is
+  /// `projects/{project}/databases/{database}/backupSchedules/{backup_schedule}`
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// At what relative time in the future, compared to its creation time, the
+  /// backup should be deleted, e.g. keep backups for 7 days.
+  core.String? retention;
+
+  /// The timestamp at which this backup schedule was most recently updated.
+  ///
+  /// When a backup schedule is first created, this is the same as create_time.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  /// For a schedule that runs weekly on a specific day and time.
+  GoogleFirestoreAdminV1WeeklyRecurrence? weeklyRecurrence;
+
+  GoogleFirestoreAdminV1BackupSchedule({
+    this.createTime,
+    this.dailyRecurrence,
+    this.name,
+    this.retention,
+    this.updateTime,
+    this.weeklyRecurrence,
+  });
+
+  GoogleFirestoreAdminV1BackupSchedule.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          dailyRecurrence: json_.containsKey('dailyRecurrence')
+              ? GoogleFirestoreAdminV1DailyRecurrence.fromJson(
+                  json_['dailyRecurrence']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          retention: json_.containsKey('retention')
+              ? json_['retention'] as core.String
+              : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+          weeklyRecurrence: json_.containsKey('weeklyRecurrence')
+              ? GoogleFirestoreAdminV1WeeklyRecurrence.fromJson(
+                  json_['weeklyRecurrence']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (dailyRecurrence != null) 'dailyRecurrence': dailyRecurrence!,
+        if (name != null) 'name': name!,
+        if (retention != null) 'retention': retention!,
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (weeklyRecurrence != null) 'weeklyRecurrence': weeklyRecurrence!,
+      };
+}
+
+/// Represent a recurring schedule that runs at a specific time every day.
+///
+/// The time zone is UTC.
+typedef GoogleFirestoreAdminV1DailyRecurrence = $Empty;
+
 /// A Cloud Firestore Database.
 ///
 /// Currently only one database is allowed per cloud project; this database must
@@ -2724,8 +3579,9 @@ class GoogleFirestoreAdminV1Database {
   /// this database, App Engine configuration will impact this database. This
   /// includes disabling of the application & database, as well as disabling
   /// writes to the database.
-  /// - "DISABLED" : Appengine has no affect on the ability of this database to
-  /// serve requests.
+  /// - "DISABLED" : App Engine has no effect on the ability of this database to
+  /// serve requests. This is the default setting for databases created with the
+  /// Firestore API.
   core.String? appEngineIntegrationMode;
 
   /// The concurrency control mode to use for this database.
@@ -2741,6 +3597,33 @@ class GoogleFirestoreAdminV1Database {
   /// Datastore. This mode is also available for Cloud Firestore with Datastore
   /// Mode but is not recommended.
   core.String? concurrencyMode;
+
+  /// The timestamp at which this database was created.
+  ///
+  /// Databases created before 2016 do not populate create_time.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// State of delete protection for the database.
+  /// Possible string values are:
+  /// - "DELETE_PROTECTION_STATE_UNSPECIFIED" : The default value. Delete
+  /// protection type is not specified
+  /// - "DELETE_PROTECTION_DISABLED" : Delete protection is disabled
+  /// - "DELETE_PROTECTION_ENABLED" : Delete protection is enabled
+  core.String? deleteProtectionState;
+
+  /// The earliest timestamp at which older versions of the data can be read
+  /// from the database.
+  ///
+  /// See \[version_retention_period\] above; this field is populated with `now
+  /// - version_retention_period`. This value is continuously updated, and
+  /// becomes stale the moment it is queried. If you are using this value to
+  /// recover data, make sure to account for the time from the moment when the
+  /// value is queried to the moment when you initiate the recovery.
+  ///
+  /// Output only.
+  core.String? earliestVersionTime;
 
   /// This checksum is computed by the server based on the value of other
   /// fields, and may be sent on update and delete requests to ensure the client
@@ -2769,6 +3652,18 @@ class GoogleFirestoreAdminV1Database {
   /// Format: `projects/{project}/databases/{database}`
   core.String? name;
 
+  /// Whether to enable the PITR feature on this database.
+  /// Possible string values are:
+  /// - "POINT_IN_TIME_RECOVERY_ENABLEMENT_UNSPECIFIED" : Not used.
+  /// - "POINT_IN_TIME_RECOVERY_ENABLED" : Reads are supported on selected
+  /// versions of the data from within the past 7 days: * Reads against any
+  /// timestamp within the past hour * Reads against 1-minute snapshots beyond 1
+  /// hour and within 7 days `version_retention_period` and
+  /// `earliest_version_time` can be used to determine the supported versions.
+  /// - "POINT_IN_TIME_RECOVERY_DISABLED" : Reads are supported on any version
+  /// of the data from within the past 1 hour.
+  core.String? pointInTimeRecoveryEnablement;
+
   /// The type of the database.
   ///
   /// See https://cloud.google.com/datastore/docs/firestore-or-datastore for
@@ -2780,14 +3675,45 @@ class GoogleFirestoreAdminV1Database {
   /// - "DATASTORE_MODE" : Firestore in Datastore Mode.
   core.String? type;
 
+  /// The system-generated UUID4 for this Database.
+  ///
+  /// Output only.
+  core.String? uid;
+
+  /// The timestamp at which this database was most recently updated.
+  ///
+  /// Note this only includes updates to the database resource and not data
+  /// contained by the database.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  /// The period during which past versions of data are retained in the
+  /// database.
+  ///
+  /// Any read or query can specify a `read_time` within this window, and will
+  /// read the state of the database at that time. If the PITR feature is
+  /// enabled, the retention period is 7 days. Otherwise, the retention period
+  /// is 1 hour.
+  ///
+  /// Output only.
+  core.String? versionRetentionPeriod;
+
   GoogleFirestoreAdminV1Database({
     this.appEngineIntegrationMode,
     this.concurrencyMode,
+    this.createTime,
+    this.deleteProtectionState,
+    this.earliestVersionTime,
     this.etag,
     this.keyPrefix,
     this.locationId,
     this.name,
+    this.pointInTimeRecoveryEnablement,
     this.type,
+    this.uid,
+    this.updateTime,
+    this.versionRetentionPeriod,
   });
 
   GoogleFirestoreAdminV1Database.fromJson(core.Map json_)
@@ -2799,6 +3725,15 @@ class GoogleFirestoreAdminV1Database {
           concurrencyMode: json_.containsKey('concurrencyMode')
               ? json_['concurrencyMode'] as core.String
               : null,
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          deleteProtectionState: json_.containsKey('deleteProtectionState')
+              ? json_['deleteProtectionState'] as core.String
+              : null,
+          earliestVersionTime: json_.containsKey('earliestVersionTime')
+              ? json_['earliestVersionTime'] as core.String
+              : null,
           etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
           keyPrefix: json_.containsKey('keyPrefix')
               ? json_['keyPrefix'] as core.String
@@ -2807,18 +3742,40 @@ class GoogleFirestoreAdminV1Database {
               ? json_['locationId'] as core.String
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          pointInTimeRecoveryEnablement:
+              json_.containsKey('pointInTimeRecoveryEnablement')
+                  ? json_['pointInTimeRecoveryEnablement'] as core.String
+                  : null,
           type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+          versionRetentionPeriod: json_.containsKey('versionRetentionPeriod')
+              ? json_['versionRetentionPeriod'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (appEngineIntegrationMode != null)
           'appEngineIntegrationMode': appEngineIntegrationMode!,
         if (concurrencyMode != null) 'concurrencyMode': concurrencyMode!,
+        if (createTime != null) 'createTime': createTime!,
+        if (deleteProtectionState != null)
+          'deleteProtectionState': deleteProtectionState!,
+        if (earliestVersionTime != null)
+          'earliestVersionTime': earliestVersionTime!,
         if (etag != null) 'etag': etag!,
         if (keyPrefix != null) 'keyPrefix': keyPrefix!,
         if (locationId != null) 'locationId': locationId!,
         if (name != null) 'name': name!,
+        if (pointInTimeRecoveryEnablement != null)
+          'pointInTimeRecoveryEnablement': pointInTimeRecoveryEnablement!,
         if (type != null) 'type': type!,
+        if (uid != null) 'uid': uid!,
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (versionRetentionPeriod != null)
+          'versionRetentionPeriod': versionRetentionPeriod!,
       };
 }
 
@@ -2828,6 +3785,14 @@ class GoogleFirestoreAdminV1ExportDocumentsRequest {
   ///
   /// Unspecified means all collections.
   core.List<core.String>? collectionIds;
+
+  /// An empty list represents all namespaces.
+  ///
+  /// This is the preferred usage for databases that don't use namespaces. An
+  /// empty string element represents the default namespace. This should be used
+  /// if the database has data in non-default namespaces, but doesn't want to
+  /// include them. Each namespace in this list must be unique.
+  core.List<core.String>? namespaceIds;
 
   /// The output URI.
   ///
@@ -2841,9 +3806,20 @@ class GoogleFirestoreAdminV1ExportDocumentsRequest {
   /// time.
   core.String? outputUriPrefix;
 
+  /// The timestamp that corresponds to the version of the database to be
+  /// exported.
+  ///
+  /// The timestamp must be rounded to the minute, in the past, and not older
+  /// than 1 hour. If specified, then the exported documents will represent a
+  /// consistent view of the database at the provided time. Otherwise, there are
+  /// no guarantees about the consistency of the exported documents.
+  core.String? snapshotTime;
+
   GoogleFirestoreAdminV1ExportDocumentsRequest({
     this.collectionIds,
+    this.namespaceIds,
     this.outputUriPrefix,
+    this.snapshotTime,
   });
 
   GoogleFirestoreAdminV1ExportDocumentsRequest.fromJson(core.Map json_)
@@ -2853,14 +3829,24 @@ class GoogleFirestoreAdminV1ExportDocumentsRequest {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          namespaceIds: json_.containsKey('namespaceIds')
+              ? (json_['namespaceIds'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           outputUriPrefix: json_.containsKey('outputUriPrefix')
               ? json_['outputUriPrefix'] as core.String
+              : null,
+          snapshotTime: json_.containsKey('snapshotTime')
+              ? json_['snapshotTime'] as core.String
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (collectionIds != null) 'collectionIds': collectionIds!,
+        if (namespaceIds != null) 'namespaceIds': namespaceIds!,
         if (outputUriPrefix != null) 'outputUriPrefix': outputUriPrefix!,
+        if (snapshotTime != null) 'snapshotTime': snapshotTime!,
       };
 }
 
@@ -2945,9 +3931,18 @@ class GoogleFirestoreAdminV1ImportDocumentsRequest {
   /// google.firestore.admin.v1.ExportDocumentsResponse.output_uri_prefix.
   core.String? inputUriPrefix;
 
+  /// An empty list represents all namespaces.
+  ///
+  /// This is the preferred usage for databases that don't use namespaces. An
+  /// empty string element represents the default namespace. This should be used
+  /// if the database has data in non-default namespaces, but doesn't want to
+  /// include them. Each namespace in this list must be unique.
+  core.List<core.String>? namespaceIds;
+
   GoogleFirestoreAdminV1ImportDocumentsRequest({
     this.collectionIds,
     this.inputUriPrefix,
+    this.namespaceIds,
   });
 
   GoogleFirestoreAdminV1ImportDocumentsRequest.fromJson(core.Map json_)
@@ -2960,17 +3955,31 @@ class GoogleFirestoreAdminV1ImportDocumentsRequest {
           inputUriPrefix: json_.containsKey('inputUriPrefix')
               ? json_['inputUriPrefix'] as core.String
               : null,
+          namespaceIds: json_.containsKey('namespaceIds')
+              ? (json_['namespaceIds'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (collectionIds != null) 'collectionIds': collectionIds!,
         if (inputUriPrefix != null) 'inputUriPrefix': inputUriPrefix!,
+        if (namespaceIds != null) 'namespaceIds': namespaceIds!,
       };
 }
 
 /// Cloud Firestore indexes enable simple and complex queries against documents
 /// in a database.
 class GoogleFirestoreAdminV1Index {
+  /// The API scope supported by this index.
+  /// Possible string values are:
+  /// - "ANY_API" : The index can only be used by the Firestore Native query
+  /// API. This is the default.
+  /// - "DATASTORE_MODE_API" : The index can only be used by the Firestore in
+  /// Datastore Mode query API.
+  core.String? apiScope;
+
   /// The fields supported by this index.
   ///
   /// For composite indexes, this requires a minimum of 2 and a maximum of 100
@@ -3009,6 +4018,8 @@ class GoogleFirestoreAdminV1Index {
   /// - "COLLECTION_GROUP" : Indexes with a collection group query scope
   /// specified allow queries against all collections that has the collection id
   /// specified by the index.
+  /// - "COLLECTION_RECURSIVE" : Include all the collections's ancestor in the
+  /// index. Only available for Datastore Mode databases.
   core.String? queryScope;
 
   /// The serving state of the index.
@@ -3031,6 +4042,7 @@ class GoogleFirestoreAdminV1Index {
   core.String? state;
 
   GoogleFirestoreAdminV1Index({
+    this.apiScope,
     this.fields,
     this.name,
     this.queryScope,
@@ -3039,6 +4051,9 @@ class GoogleFirestoreAdminV1Index {
 
   GoogleFirestoreAdminV1Index.fromJson(core.Map json_)
       : this(
+          apiScope: json_.containsKey('apiScope')
+              ? json_['apiScope'] as core.String
+              : null,
           fields: json_.containsKey('fields')
               ? (json_['fields'] as core.List)
                   .map((value) => GoogleFirestoreAdminV1IndexField.fromJson(
@@ -3054,6 +4069,7 @@ class GoogleFirestoreAdminV1Index {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (apiScope != null) 'apiScope': apiScope!,
         if (fields != null) 'fields': fields!,
         if (name != null) 'name': name!,
         if (queryScope != null) 'queryScope': queryScope!,
@@ -3176,6 +4192,71 @@ class GoogleFirestoreAdminV1IndexField {
       };
 }
 
+/// The response for FirestoreAdmin.ListBackupSchedules.
+class GoogleFirestoreAdminV1ListBackupSchedulesResponse {
+  /// List of all backup schedules.
+  core.List<GoogleFirestoreAdminV1BackupSchedule>? backupSchedules;
+
+  GoogleFirestoreAdminV1ListBackupSchedulesResponse({
+    this.backupSchedules,
+  });
+
+  GoogleFirestoreAdminV1ListBackupSchedulesResponse.fromJson(core.Map json_)
+      : this(
+          backupSchedules: json_.containsKey('backupSchedules')
+              ? (json_['backupSchedules'] as core.List)
+                  .map((value) => GoogleFirestoreAdminV1BackupSchedule.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (backupSchedules != null) 'backupSchedules': backupSchedules!,
+      };
+}
+
+/// The response for FirestoreAdmin.ListBackups.
+class GoogleFirestoreAdminV1ListBackupsResponse {
+  /// List of all backups for the project.
+  ///
+  /// Ordered by `location ASC, create_time DESC, name ASC`.
+  core.List<GoogleFirestoreAdminV1Backup>? backups;
+
+  /// List of locations that existing backups were not able to be fetched from.
+  ///
+  /// Instead of failing the entire requests when a single location is
+  /// unreachable, this response returns a partial result set and list of
+  /// locations unable to be reached here. The request can be retried against a
+  /// single location to get a concrete error.
+  core.List<core.String>? unreachable;
+
+  GoogleFirestoreAdminV1ListBackupsResponse({
+    this.backups,
+    this.unreachable,
+  });
+
+  GoogleFirestoreAdminV1ListBackupsResponse.fromJson(core.Map json_)
+      : this(
+          backups: json_.containsKey('backups')
+              ? (json_['backups'] as core.List)
+                  .map((value) => GoogleFirestoreAdminV1Backup.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (backups != null) 'backups': backups!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
 /// The list of databases for a project.
 class GoogleFirestoreAdminV1ListDatabasesResponse {
   /// The databases in the project.
@@ -3268,6 +4349,93 @@ class GoogleFirestoreAdminV1ListIndexesResponse {
       };
 }
 
+/// The request message for FirestoreAdmin.RestoreDatabase.
+class GoogleFirestoreAdminV1RestoreDatabaseRequest {
+  /// Backup to restore from.
+  ///
+  /// Must be from the same project as the parent. Format is:
+  /// `projects/{project_id}/locations/{location}/backups/{backup}`
+  ///
+  /// Required.
+  core.String? backup;
+
+  /// The ID to use for the database, which will become the final component of
+  /// the database's resource name.
+  ///
+  /// This database id must not be associated with an existing database. This
+  /// value should be 4-63 characters. Valid characters are /a-z-/ with first
+  /// character a letter and the last a letter or a number. Must not be
+  /// UUID-like /\[0-9a-f\]{8}(-\[0-9a-f\]{4}){3}-\[0-9a-f\]{12}/. "(default)"
+  /// database id is also valid.
+  ///
+  /// Required.
+  core.String? databaseId;
+
+  GoogleFirestoreAdminV1RestoreDatabaseRequest({
+    this.backup,
+    this.databaseId,
+  });
+
+  GoogleFirestoreAdminV1RestoreDatabaseRequest.fromJson(core.Map json_)
+      : this(
+          backup: json_.containsKey('backup')
+              ? json_['backup'] as core.String
+              : null,
+          databaseId: json_.containsKey('databaseId')
+              ? json_['databaseId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (backup != null) 'backup': backup!,
+        if (databaseId != null) 'databaseId': databaseId!,
+      };
+}
+
+/// Backup specific statistics.
+class GoogleFirestoreAdminV1Stats {
+  /// The total number of documents contained in the backup.
+  ///
+  /// Output only.
+  core.String? documentCount;
+
+  /// The total number of index entries contained in the backup.
+  ///
+  /// Output only.
+  core.String? indexCount;
+
+  /// Summation of the size of all documents and index entries in the backup,
+  /// measured in bytes.
+  ///
+  /// Output only.
+  core.String? sizeBytes;
+
+  GoogleFirestoreAdminV1Stats({
+    this.documentCount,
+    this.indexCount,
+    this.sizeBytes,
+  });
+
+  GoogleFirestoreAdminV1Stats.fromJson(core.Map json_)
+      : this(
+          documentCount: json_.containsKey('documentCount')
+              ? json_['documentCount'] as core.String
+              : null,
+          indexCount: json_.containsKey('indexCount')
+              ? json_['indexCount'] as core.String
+              : null,
+          sizeBytes: json_.containsKey('sizeBytes')
+              ? json_['sizeBytes'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (documentCount != null) 'documentCount': documentCount!,
+        if (indexCount != null) 'indexCount': indexCount!,
+        if (sizeBytes != null) 'sizeBytes': sizeBytes!,
+      };
+}
+
 /// The TTL (time-to-live) configuration for documents that have this `Field`
 /// set.
 ///
@@ -3306,6 +4474,38 @@ class GoogleFirestoreAdminV1TtlConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (state != null) 'state': state!,
+      };
+}
+
+/// Represents a recurring schedule that runs on a specified day of the week.
+///
+/// The time zone is UTC.
+class GoogleFirestoreAdminV1WeeklyRecurrence {
+  /// The day of week to run.
+  ///
+  /// DAY_OF_WEEK_UNSPECIFIED is not allowed.
+  /// Possible string values are:
+  /// - "DAY_OF_WEEK_UNSPECIFIED" : The day of the week is unspecified.
+  /// - "MONDAY" : Monday
+  /// - "TUESDAY" : Tuesday
+  /// - "WEDNESDAY" : Wednesday
+  /// - "THURSDAY" : Thursday
+  /// - "FRIDAY" : Friday
+  /// - "SATURDAY" : Saturday
+  /// - "SUNDAY" : Sunday
+  core.String? day;
+
+  GoogleFirestoreAdminV1WeeklyRecurrence({
+    this.day,
+  });
+
+  GoogleFirestoreAdminV1WeeklyRecurrence.fromJson(core.Map json_)
+      : this(
+          day: json_.containsKey('day') ? json_['day'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (day != null) 'day': day!,
       };
 }
 
@@ -3439,7 +4639,9 @@ class ListCollectionIdsRequest {
 
   /// Reads documents as they were at the given time.
   ///
-  /// This may not be older than 270 seconds.
+  /// This must be a microsecond precision timestamp within the past one hour,
+  /// or if Point-in-Time Recovery is enabled, can additionally be a whole
+  /// minute timestamp within the past 7 days.
   core.String? readTime;
 
   ListCollectionIdsRequest({
@@ -3504,7 +4706,9 @@ class ListDocumentsResponse {
   /// The Documents found.
   core.List<Document>? documents;
 
-  /// The next page token.
+  /// A token to retrieve the next page of documents.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
   ListDocumentsResponse({
@@ -3563,7 +4767,7 @@ class ListLocationsResponse {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
+/// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
 /// A map value.
@@ -3584,9 +4788,10 @@ class MapValue {
       : this(
           fields: json_.containsKey('fields')
               ? (json_['fields'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    Value.fromJson(item as core.Map<core.String, core.dynamic>),
+                    Value.fromJson(
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -3667,7 +4872,9 @@ class PartitionQueryRequest {
 
   /// Reads documents as they were at the given time.
   ///
-  /// This may not be older than 270 seconds.
+  /// This must be a microsecond precision timestamp within the past one hour,
+  /// or if Point-in-Time Recovery is enabled, can additionally be a whole
+  /// minute timestamp within the past 7 days.
   core.String? readTime;
 
   /// A structured query.
@@ -3824,7 +5031,9 @@ class Projection {
 class ReadOnly {
   /// Reads documents at the given time.
   ///
-  /// This may not be older than 60 seconds.
+  /// This must be a microsecond precision timestamp within the past one hour,
+  /// or if Point-in-Time Recovery is enabled, can additionally be a whole
+  /// minute timestamp within the past 7 days.
   core.String? readTime;
 
   ReadOnly({
@@ -3844,6 +5053,9 @@ class ReadOnly {
 }
 
 /// Options for a transaction that can be used to read and write documents.
+///
+/// Firestore does not allow 3rd party auth requests to create read-write.
+/// transactions.
 class ReadWrite {
   /// An optional transaction to retry.
   core.String? retryTransaction;
@@ -3901,6 +5113,131 @@ class RollbackRequest {
       };
 }
 
+/// The request for Firestore.RunAggregationQuery.
+class RunAggregationQueryRequest {
+  /// Starts a new transaction as part of the query, defaulting to read-only.
+  ///
+  /// The new transaction ID will be returned as the first response in the
+  /// stream.
+  TransactionOptions? newTransaction;
+
+  /// Executes the query at the given timestamp.
+  ///
+  /// This must be a microsecond precision timestamp within the past one hour,
+  /// or if Point-in-Time Recovery is enabled, can additionally be a whole
+  /// minute timestamp within the past 7 days.
+  core.String? readTime;
+
+  /// An aggregation query.
+  StructuredAggregationQuery? structuredAggregationQuery;
+
+  /// Run the aggregation within an already active transaction.
+  ///
+  /// The value here is the opaque transaction ID to execute the query in.
+  core.String? transaction;
+  core.List<core.int> get transactionAsBytes =>
+      convert.base64.decode(transaction!);
+
+  set transactionAsBytes(core.List<core.int> bytes_) {
+    transaction =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  RunAggregationQueryRequest({
+    this.newTransaction,
+    this.readTime,
+    this.structuredAggregationQuery,
+    this.transaction,
+  });
+
+  RunAggregationQueryRequest.fromJson(core.Map json_)
+      : this(
+          newTransaction: json_.containsKey('newTransaction')
+              ? TransactionOptions.fromJson(json_['newTransaction']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          readTime: json_.containsKey('readTime')
+              ? json_['readTime'] as core.String
+              : null,
+          structuredAggregationQuery:
+              json_.containsKey('structuredAggregationQuery')
+                  ? StructuredAggregationQuery.fromJson(
+                      json_['structuredAggregationQuery']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          transaction: json_.containsKey('transaction')
+              ? json_['transaction'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (newTransaction != null) 'newTransaction': newTransaction!,
+        if (readTime != null) 'readTime': readTime!,
+        if (structuredAggregationQuery != null)
+          'structuredAggregationQuery': structuredAggregationQuery!,
+        if (transaction != null) 'transaction': transaction!,
+      };
+}
+
+class RunAggregationQueryResponseElement {
+  /// The time at which the aggregate result was computed.
+  ///
+  /// This is always monotonically increasing; in this case, the previous
+  /// AggregationResult in the result stream are guaranteed not to have changed
+  /// between their `read_time` and this one. If the query returns no results, a
+  /// response with `read_time` and no `result` will be sent, and this
+  /// represents the time at which the query was run.
+  core.String? readTime;
+
+  /// A single aggregation result.
+  ///
+  /// Not present when reporting partial progress.
+  AggregationResult? result;
+
+  /// The transaction that was started as part of this request.
+  ///
+  /// Only present on the first response when the request requested to start a
+  /// new transaction.
+  core.String? transaction;
+  core.List<core.int> get transactionAsBytes =>
+      convert.base64.decode(transaction!);
+
+  set transactionAsBytes(core.List<core.int> bytes_) {
+    transaction =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  RunAggregationQueryResponseElement({
+    this.readTime,
+    this.result,
+    this.transaction,
+  });
+
+  RunAggregationQueryResponseElement.fromJson(core.Map json_)
+      : this(
+          readTime: json_.containsKey('readTime')
+              ? json_['readTime'] as core.String
+              : null,
+          result: json_.containsKey('result')
+              ? AggregationResult.fromJson(
+                  json_['result'] as core.Map<core.String, core.dynamic>)
+              : null,
+          transaction: json_.containsKey('transaction')
+              ? json_['transaction'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (readTime != null) 'readTime': readTime!,
+        if (result != null) 'result': result!,
+        if (transaction != null) 'transaction': transaction!,
+      };
+}
+
+/// The response for Firestore.RunAggregationQuery.
+typedef RunAggregationQueryResponse
+    = core.List<RunAggregationQueryResponseElement>;
+
 /// The request for Firestore.RunQuery.
 class RunQueryRequest {
   /// Starts a new transaction and reads the documents.
@@ -3911,7 +5248,9 @@ class RunQueryRequest {
 
   /// Reads documents as they were at the given time.
   ///
-  /// This may not be older than 270 seconds.
+  /// This must be a microsecond precision timestamp within the past one hour,
+  /// or if Point-in-Time Recovery is enabled, can additionally be a whole
+  /// minute timestamp within the past 7 days.
   core.String? readTime;
 
   /// A structured query.
@@ -4033,38 +5372,7 @@ class RunQueryResponseElement {
 }
 
 /// The response for Firestore.RunQuery.
-class RunQueryResponse extends collection.ListBase<RunQueryResponseElement> {
-  final core.List<RunQueryResponseElement> _inner;
-
-  RunQueryResponse() : _inner = [];
-
-  RunQueryResponse.fromJson(core.List json)
-      : _inner = json
-            .map((value) => RunQueryResponseElement.fromJson(
-                value as core.Map<core.String, core.dynamic>))
-            .toList();
-
-  @core.override
-  RunQueryResponseElement operator [](core.int key) => _inner[key];
-
-  @core.override
-  void operator []=(core.int key, RunQueryResponseElement value) {
-    _inner[key] = value;
-  }
-
-  @core.override
-  core.int get length => _inner.length;
-
-  @core.override
-  set length(core.int newLength) {
-    _inner.length = newLength;
-  }
-
-  @core.override
-  void add(RunQueryResponseElement element) {
-    _inner.add(element);
-  }
-}
+typedef RunQueryResponse = core.List<RunQueryResponseElement>;
 
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.
@@ -4074,6 +5382,44 @@ class RunQueryResponse extends collection.ListBase<RunQueryResponseElement> {
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef Status = $Status;
+
+/// Firestore query for running an aggregation over a StructuredQuery.
+class StructuredAggregationQuery {
+  /// Series of aggregations to apply over the results of the
+  /// `structured_query`.
+  ///
+  /// Requires: * A minimum of one and maximum of five aggregations per query.
+  ///
+  /// Optional.
+  core.List<Aggregation>? aggregations;
+
+  /// Nested structured query.
+  StructuredQuery? structuredQuery;
+
+  StructuredAggregationQuery({
+    this.aggregations,
+    this.structuredQuery,
+  });
+
+  StructuredAggregationQuery.fromJson(core.Map json_)
+      : this(
+          aggregations: json_.containsKey('aggregations')
+              ? (json_['aggregations'] as core.List)
+                  .map((value) => Aggregation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          structuredQuery: json_.containsKey('structuredQuery')
+              ? StructuredQuery.fromJson(json_['structuredQuery']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (aggregations != null) 'aggregations': aggregations!,
+        if (structuredQuery != null) 'structuredQuery': structuredQuery!,
+      };
+}
 
 /// A Firestore query.
 class StructuredQuery {
@@ -4117,7 +5463,10 @@ class StructuredQuery {
   /// ORDER BY a ASC, __name__ ASC`
   core.List<Order>? orderBy;
 
-  /// The projection to return.
+  /// Optional sub-set of the fields to return.
+  ///
+  /// This acts as a DocumentMask over the documents returned from a query. When
+  /// not set, assumes that the caller wants all fields returned.
   Projection? select;
 
   /// A potential prefix of a position in the result set to start the query at.
@@ -4197,6 +5546,41 @@ class StructuredQuery {
         if (select != null) 'select': select!,
         if (startAt != null) 'startAt': startAt!,
         if (where != null) 'where': where!,
+      };
+}
+
+/// Sum of the values of the requested field.
+///
+/// * Only numeric values will be aggregated. All non-numeric values including
+/// `NULL` are skipped. * If the aggregated values contain `NaN`, returns `NaN`.
+/// * If the aggregated value set is empty, returns 0. * Returns a 64-bit
+/// integer if the sum result is an integer value and does not overflow.
+/// Otherwise, the result is returned as a double. Note that even if all the
+/// aggregated values are integers, the result is returned as a double if it
+/// cannot fit within a 64-bit signed integer. When this occurs, the returned
+/// value will lose precision. * When underflow occurs, floating-point
+/// aggregation is non-deterministic. This means that running the same query
+/// repeatedly without any changes to the underlying values could produce
+/// slightly different results each time. In those cases, values should be
+/// stored as integers over floating-point numbers.
+class Sum {
+  /// The field to aggregate on.
+  FieldReference? field;
+
+  Sum({
+    this.field,
+  });
+
+  Sum.fromJson(core.Map json_)
+      : this(
+          field: json_.containsKey('field')
+              ? FieldReference.fromJson(
+                  json_['field'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (field != null) 'field': field!,
       };
 }
 
@@ -4535,9 +5919,9 @@ class WriteRequest {
       : this(
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,

@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// AdMob API - v1
@@ -26,17 +25,15 @@
 ///   - [AccountsAppsResource]
 ///   - [AccountsMediationReportResource]
 ///   - [AccountsNetworkReportResource]
-library admob.v1;
+library admob_v1;
 
 import 'dart:async' as async;
-import 'dart:collection' as collection;
 import 'dart:convert' as convert;
 import 'dart:core' as core;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -278,7 +275,7 @@ class AccountsMediationReportResource {
   AccountsMediationReportResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Generates an AdMob Mediation report based on the provided report
+  /// Generates an AdMob mediation report based on the provided report
   /// specification.
   ///
   /// Returns result of a server-side streaming RPC. The result is returned in a
@@ -321,7 +318,10 @@ class AccountsMediationReportResource {
       body: body_,
       queryParams: queryParams_,
     );
-    return GenerateMediationReportResponse.fromJson(response_ as core.List);
+    return (response_ as core.List)
+        .map((value) => GenerateMediationReportResponseElement.fromJson(
+            value as core.Map<core.String, core.dynamic>))
+        .toList();
   }
 }
 
@@ -374,7 +374,10 @@ class AccountsNetworkReportResource {
       body: body_,
       queryParams: queryParams_,
     );
-    return GenerateNetworkReportResponse.fromJson(response_ as core.List);
+    return (response_ as core.List)
+        .map((value) => GenerateNetworkReportResponseElement.fromJson(
+            value as core.Map<core.String, core.dynamic>))
+        .toList();
   }
 }
 
@@ -382,14 +385,16 @@ class AccountsNetworkReportResource {
 class AdUnit {
   /// AdFormat of the ad unit.
   ///
-  /// Possible values are as follows: "BANNER" - Banner ad format.
-  /// "BANNER_INTERSTITIAL" - Legacy format that can be used as either banner or
-  /// interstitial. This format can no longer be created but can be targeted by
-  /// mediation groups. "INTERSTITIAL" - A full screen ad. Supported ad types
-  /// are "RICH_MEDIA" and "VIDEO". "NATIVE" - Native ad format. "REWARDED" - An
-  /// ad that, once viewed, gets a callback verifying the view so that a reward
-  /// can be given to the user. Supported ad types are "RICH_MEDIA"
-  /// (interactive) and video where video can not be excluded.
+  /// Possible values are as follows: "APP_OPEN" - App Open ad format. "BANNER"
+  /// - Banner ad format. "BANNER_INTERSTITIAL" - Legacy format that can be used
+  /// as either banner or interstitial. This format can no longer be created but
+  /// can be targeted by mediation groups. "INTERSTITIAL" - A full screen ad.
+  /// Supported ad types are "RICH_MEDIA" and "VIDEO". "NATIVE" - Native ad
+  /// format. "REWARDED" - An ad that, once viewed, gets a callback verifying
+  /// the view so that a reward can be given to the user. Supported ad types are
+  /// "RICH_MEDIA" (interactive) and video where video can not be excluded.
+  /// "REWARDED_INTERSTITIAL" - Rewarded Interstitial ad format. Only supports
+  /// video ad type. See https://support.google.com/admob/answer/9884467.
   core.String? adFormat;
 
   /// Ad media type supported by this ad unit.
@@ -465,6 +470,21 @@ class AdUnit {
 /// Describes an AdMob app for a specific platform (For example: Android or
 /// iOS).
 class App {
+  /// The approval state for the app.
+  ///
+  /// The field is read-only.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "APP_APPROVAL_STATE_UNSPECIFIED" : Default value for an unset field. Do
+  /// not use.
+  /// - "ACTION_REQUIRED" : The app requires additional user action to be
+  /// approved. Please refer to https://support.google.com/admob/answer/10564477
+  /// for details and next steps.
+  /// - "IN_REVIEW" : The app is pending review.
+  /// - "APPROVED" : The app is approved and can serve ads.
+  core.String? appApprovalState;
+
   /// The externally visible ID of the app which can be used to integrate with
   /// the AdMob SDK.
   ///
@@ -497,6 +517,7 @@ class App {
   core.String? platform;
 
   App({
+    this.appApprovalState,
     this.appId,
     this.linkedAppInfo,
     this.manualAppInfo,
@@ -506,6 +527,9 @@ class App {
 
   App.fromJson(core.Map json_)
       : this(
+          appApprovalState: json_.containsKey('appApprovalState')
+              ? json_['appApprovalState'] as core.String
+              : null,
           appId:
               json_.containsKey('appId') ? json_['appId'] as core.String : null,
           linkedAppInfo: json_.containsKey('linkedAppInfo')
@@ -523,6 +547,7 @@ class App {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (appApprovalState != null) 'appApprovalState': appApprovalState!,
         if (appId != null) 'appId': appId!,
         if (linkedAppInfo != null) 'linkedAppInfo': linkedAppInfo!,
         if (manualAppInfo != null) 'manualAppInfo': manualAppInfo!,
@@ -647,7 +672,7 @@ class DateRange {
       };
 }
 
-/// Request to generate an AdMob Mediation report.
+/// Request to generate an AdMob mediation report.
 class GenerateMediationReportRequest {
   /// Network report specification.
   MediationReportSpec? reportSpec;
@@ -710,7 +735,7 @@ class GenerateMediationReportResponseElement {
       };
 }
 
-/// The streaming response for the AdMob Mediation report where the first
+/// The streaming response for the AdMob mediation report where the first
 /// response contains the report header, then a stream of row responses, and
 /// finally a footer as the last response message.
 ///
@@ -722,41 +747,8 @@ class GenerateMediationReportResponseElement {
 /// "My app name!" } }, "metric_values": { "ESTIMATED_EARNINGS":
 /// {"decimal_value": "1324746"} } } }, { "footer": {"matching_row_count": 1}
 /// }\]
-class GenerateMediationReportResponse
-    extends collection.ListBase<GenerateMediationReportResponseElement> {
-  final core.List<GenerateMediationReportResponseElement> _inner;
-
-  GenerateMediationReportResponse() : _inner = [];
-
-  GenerateMediationReportResponse.fromJson(core.List json)
-      : _inner = json
-            .map((value) => GenerateMediationReportResponseElement.fromJson(
-                value as core.Map<core.String, core.dynamic>))
-            .toList();
-
-  @core.override
-  GenerateMediationReportResponseElement operator [](core.int key) =>
-      _inner[key];
-
-  @core.override
-  void operator []=(
-      core.int key, GenerateMediationReportResponseElement value) {
-    _inner[key] = value;
-  }
-
-  @core.override
-  core.int get length => _inner.length;
-
-  @core.override
-  set length(core.int newLength) {
-    _inner.length = newLength;
-  }
-
-  @core.override
-  void add(GenerateMediationReportResponseElement element) {
-    _inner.add(element);
-  }
-}
+typedef GenerateMediationReportResponse
+    = core.List<GenerateMediationReportResponseElement>;
 
 /// Request to generate an AdMob Network report.
 class GenerateNetworkReportRequest {
@@ -832,39 +824,8 @@ class GenerateNetworkReportResponseElement {
 /// "value": "ca-app-pub-8123415297019784~1001342552", displayLabel: "My app
 /// name!" } }, "metricValues": { "ESTIMATED_EARNINGS": {"microsValue": 6500000}
 /// } } }, { "footer": {"matchingRowCount": 1} }\]
-class GenerateNetworkReportResponse
-    extends collection.ListBase<GenerateNetworkReportResponseElement> {
-  final core.List<GenerateNetworkReportResponseElement> _inner;
-
-  GenerateNetworkReportResponse() : _inner = [];
-
-  GenerateNetworkReportResponse.fromJson(core.List json)
-      : _inner = json
-            .map((value) => GenerateNetworkReportResponseElement.fromJson(
-                value as core.Map<core.String, core.dynamic>))
-            .toList();
-
-  @core.override
-  GenerateNetworkReportResponseElement operator [](core.int key) => _inner[key];
-
-  @core.override
-  void operator []=(core.int key, GenerateNetworkReportResponseElement value) {
-    _inner[key] = value;
-  }
-
-  @core.override
-  core.int get length => _inner.length;
-
-  @core.override
-  set length(core.int newLength) {
-    _inner.length = newLength;
-  }
-
-  @core.override
-  void add(GenerateNetworkReportResponseElement element) {
-    _inner.add(element);
-  }
-}
+typedef GenerateNetworkReportResponse
+    = core.List<GenerateNetworkReportResponseElement>;
 
 /// Response for the ad units list request.
 class ListAdUnitsResponse {
@@ -1157,21 +1118,13 @@ class MediationReportSpecDimensionFilter {
   /// - "PLATFORM" : Mobile OS platform of the app (for example, "Android" or
   /// "iOS").
   /// - "MOBILE_OS_VERSION" : Mobile operating system version, e.g. "iOS
-  /// 13.5.1". **Warning:** The dimension is incompatible with
-  /// \[ESTIMATED_EARNINGS\](#Metric.ENUM_VALUES.ESTIMATED_EARNINGS),
-  /// \[OBSERVED_ECPM\](#Metric.ENUM_VALUES.OBSERVED_ECPM) metrics.
-  /// - "GMA_SDK_VERSION" : GMA SDK version, e.g. "iOS 7.62.0". **Warning:** The
-  /// dimension is incompatible with
-  /// \[ESTIMATED_EARNINGS\](#Metric.ENUM_VALUES.ESTIMATED_EARNINGS),
-  /// \[OBSERVED_ECPM\](#Metric.ENUM_VALUES.OBSERVED_ECPM) metrics.
+  /// 13.5.1".
+  /// - "GMA_SDK_VERSION" : GMA SDK version, e.g. "iOS 7.62.0".
   /// - "APP_VERSION_NAME" : For Android, the app version name can be found in
   /// versionName in PackageInfo. For iOS, the app version name can be found in
-  /// CFBundleShortVersionString. **Warning:** The dimension is incompatible
-  /// with \[ESTIMATED_EARNINGS\](#Metric.ENUM_VALUES.ESTIMATED_EARNINGS),
-  /// \[OBSERVED_ECPM\](#Metric.ENUM_VALUES.OBSERVED_ECPM) metrics.
+  /// CFBundleShortVersionString.
   /// - "SERVING_RESTRICTION" : Restriction mode for ads serving (e.g.
-  /// "Non-personalized ads"). **Warning:** The dimension is incompatible with
-  /// \[ESTIMATED_EARNINGS\](#Metric.ENUM_VALUES.ESTIMATED_EARNINGS) metric.
+  /// "Non-personalized ads").
   core.String? dimension;
 
   /// Matches a row if its value for the specified dimension is in one of the
@@ -1230,21 +1183,13 @@ class MediationReportSpecSortCondition {
   /// - "PLATFORM" : Mobile OS platform of the app (for example, "Android" or
   /// "iOS").
   /// - "MOBILE_OS_VERSION" : Mobile operating system version, e.g. "iOS
-  /// 13.5.1". **Warning:** The dimension is incompatible with
-  /// \[ESTIMATED_EARNINGS\](#Metric.ENUM_VALUES.ESTIMATED_EARNINGS),
-  /// \[OBSERVED_ECPM\](#Metric.ENUM_VALUES.OBSERVED_ECPM) metrics.
-  /// - "GMA_SDK_VERSION" : GMA SDK version, e.g. "iOS 7.62.0". **Warning:** The
-  /// dimension is incompatible with
-  /// \[ESTIMATED_EARNINGS\](#Metric.ENUM_VALUES.ESTIMATED_EARNINGS),
-  /// \[OBSERVED_ECPM\](#Metric.ENUM_VALUES.OBSERVED_ECPM) metrics.
+  /// 13.5.1".
+  /// - "GMA_SDK_VERSION" : GMA SDK version, e.g. "iOS 7.62.0".
   /// - "APP_VERSION_NAME" : For Android, the app version name can be found in
   /// versionName in PackageInfo. For iOS, the app version name can be found in
-  /// CFBundleShortVersionString. **Warning:** The dimension is incompatible
-  /// with \[ESTIMATED_EARNINGS\](#Metric.ENUM_VALUES.ESTIMATED_EARNINGS),
-  /// \[OBSERVED_ECPM\](#Metric.ENUM_VALUES.OBSERVED_ECPM) metrics.
+  /// CFBundleShortVersionString.
   /// - "SERVING_RESTRICTION" : Restriction mode for ads serving (e.g.
-  /// "Non-personalized ads"). **Warning:** The dimension is incompatible with
-  /// \[ESTIMATED_EARNINGS\](#Metric.ENUM_VALUES.ESTIMATED_EARNINGS) metric.
+  /// "Non-personalized ads").
   core.String? dimension;
 
   /// Sort by the specified metric.
@@ -1759,20 +1704,20 @@ class ReportRow {
               ? (json_['dimensionValues']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     ReportRowDimensionValue.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
           metricValues: json_.containsKey('metricValues')
               ? (json_['metricValues'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     ReportRowMetricValue.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,

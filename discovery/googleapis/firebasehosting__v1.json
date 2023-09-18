@@ -15,6 +15,13 @@
     "name": "firebasehosting",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230801",
+    "rootUrl": "https://firebasehosting.googleapis.com/",
+    "servicePath": "",
+    "title": "Firebase Hosting API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -92,7 +99,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "operations": {
             "methods": {
@@ -144,7 +150,7 @@
                     }
                 },
                 "list": {
-                    "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
+                    "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.",
                     "flatPath": "v1/operations",
                     "httpMethod": "GET",
                     "id": "firebasehosting.operations.list",
@@ -184,8 +190,6 @@
             }
         }
     },
-    "revision": "20220913",
-    "rootUrl": "https://firebasehosting.googleapis.com/",
     "schemas": {
         "CancelOperationRequest": {
             "description": "The request message for Operations.CancelOperation.",
@@ -279,9 +283,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Firebase Hosting API",
-    "version": "v1",
-    "version_module": true
+    }
 }

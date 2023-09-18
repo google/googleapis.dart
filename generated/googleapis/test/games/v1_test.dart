@@ -1,8 +1,6 @@
 // ignore_for_file: camel_case_types
-// ignore_for_file: cascade_invocations
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_const_declarations
@@ -12,8 +10,9 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unreachable_from_main
 // ignore_for_file: unused_local_variable
 
 import 'dart:async' as async;
@@ -543,6 +542,33 @@ void checkApplicationCategory(api.ApplicationCategory o) {
     );
   }
   buildCounterApplicationCategory--;
+}
+
+core.int buildCounterApplicationPlayerId = 0;
+api.ApplicationPlayerId buildApplicationPlayerId() {
+  final o = api.ApplicationPlayerId();
+  buildCounterApplicationPlayerId++;
+  if (buildCounterApplicationPlayerId < 3) {
+    o.applicationId = 'foo';
+    o.playerId = 'foo';
+  }
+  buildCounterApplicationPlayerId--;
+  return o;
+}
+
+void checkApplicationPlayerId(api.ApplicationPlayerId o) {
+  buildCounterApplicationPlayerId++;
+  if (buildCounterApplicationPlayerId < 3) {
+    unittest.expect(
+      o.applicationId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.playerId!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterApplicationPlayerId--;
 }
 
 core.int buildCounterApplicationVerifyResponse = 0;
@@ -1128,6 +1154,38 @@ void checkGamesAchievementSetStepsAtLeast(
   buildCounterGamesAchievementSetStepsAtLeast--;
 }
 
+core.List<api.ApplicationPlayerId> buildUnnamed14() => [
+      buildApplicationPlayerId(),
+      buildApplicationPlayerId(),
+    ];
+
+void checkUnnamed14(core.List<api.ApplicationPlayerId> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkApplicationPlayerId(o[0]);
+  checkApplicationPlayerId(o[1]);
+}
+
+core.int buildCounterGetMultipleApplicationPlayerIdsResponse = 0;
+api.GetMultipleApplicationPlayerIdsResponse
+    buildGetMultipleApplicationPlayerIdsResponse() {
+  final o = api.GetMultipleApplicationPlayerIdsResponse();
+  buildCounterGetMultipleApplicationPlayerIdsResponse++;
+  if (buildCounterGetMultipleApplicationPlayerIdsResponse < 3) {
+    o.playerIds = buildUnnamed14();
+  }
+  buildCounterGetMultipleApplicationPlayerIdsResponse--;
+  return o;
+}
+
+void checkGetMultipleApplicationPlayerIdsResponse(
+    api.GetMultipleApplicationPlayerIdsResponse o) {
+  buildCounterGetMultipleApplicationPlayerIdsResponse++;
+  if (buildCounterGetMultipleApplicationPlayerIdsResponse < 3) {
+    checkUnnamed14(o.playerIds!);
+  }
+  buildCounterGetMultipleApplicationPlayerIdsResponse--;
+}
+
 core.int buildCounterImageAsset = 0;
 api.ImageAsset buildImageAsset() {
   final o = api.ImageAsset();
@@ -1420,12 +1478,12 @@ void checkLeaderboardEntry(api.LeaderboardEntry o) {
   buildCounterLeaderboardEntry--;
 }
 
-core.List<api.Leaderboard> buildUnnamed14() => [
+core.List<api.Leaderboard> buildUnnamed15() => [
       buildLeaderboard(),
       buildLeaderboard(),
     ];
 
-void checkUnnamed14(core.List<api.Leaderboard> o) {
+void checkUnnamed15(core.List<api.Leaderboard> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLeaderboard(o[0]);
   checkLeaderboard(o[1]);
@@ -1436,7 +1494,7 @@ api.LeaderboardListResponse buildLeaderboardListResponse() {
   final o = api.LeaderboardListResponse();
   buildCounterLeaderboardListResponse++;
   if (buildCounterLeaderboardListResponse < 3) {
-    o.items = buildUnnamed14();
+    o.items = buildUnnamed15();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
   }
@@ -1447,7 +1505,7 @@ api.LeaderboardListResponse buildLeaderboardListResponse() {
 void checkLeaderboardListResponse(api.LeaderboardListResponse o) {
   buildCounterLeaderboardListResponse++;
   if (buildCounterLeaderboardListResponse < 3) {
-    checkUnnamed14(o.items!);
+    checkUnnamed15(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -1502,12 +1560,12 @@ void checkLeaderboardScoreRank(api.LeaderboardScoreRank o) {
   buildCounterLeaderboardScoreRank--;
 }
 
-core.List<api.LeaderboardEntry> buildUnnamed15() => [
+core.List<api.LeaderboardEntry> buildUnnamed16() => [
       buildLeaderboardEntry(),
       buildLeaderboardEntry(),
     ];
 
-void checkUnnamed15(core.List<api.LeaderboardEntry> o) {
+void checkUnnamed16(core.List<api.LeaderboardEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLeaderboardEntry(o[0]);
   checkLeaderboardEntry(o[1]);
@@ -1518,7 +1576,7 @@ api.LeaderboardScores buildLeaderboardScores() {
   final o = api.LeaderboardScores();
   buildCounterLeaderboardScores++;
   if (buildCounterLeaderboardScores < 3) {
-    o.items = buildUnnamed15();
+    o.items = buildUnnamed16();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
     o.numScores = 'foo';
@@ -1532,7 +1590,7 @@ api.LeaderboardScores buildLeaderboardScores() {
 void checkLeaderboardScores(api.LeaderboardScores o) {
   buildCounterLeaderboardScores++;
   if (buildCounterLeaderboardScores < 3) {
-    checkUnnamed15(o.items!);
+    checkUnnamed16(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -1554,12 +1612,12 @@ void checkLeaderboardScores(api.LeaderboardScores o) {
   buildCounterLeaderboardScores--;
 }
 
-core.List<api.PlayerLevel> buildUnnamed16() => [
+core.List<api.PlayerLevel> buildUnnamed17() => [
       buildPlayerLevel(),
       buildPlayerLevel(),
     ];
 
-void checkUnnamed16(core.List<api.PlayerLevel> o) {
+void checkUnnamed17(core.List<api.PlayerLevel> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPlayerLevel(o[0]);
   checkPlayerLevel(o[1]);
@@ -1572,7 +1630,7 @@ api.MetagameConfig buildMetagameConfig() {
   if (buildCounterMetagameConfig < 3) {
     o.currentVersion = 42;
     o.kind = 'foo';
-    o.playerLevels = buildUnnamed16();
+    o.playerLevels = buildUnnamed17();
   }
   buildCounterMetagameConfig--;
   return o;
@@ -1589,7 +1647,7 @@ void checkMetagameConfig(api.MetagameConfig o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed16(o.playerLevels!);
+    checkUnnamed17(o.playerLevels!);
   }
   buildCounterMetagameConfig--;
 }
@@ -1746,12 +1804,12 @@ void checkPlayerAchievement(api.PlayerAchievement o) {
   buildCounterPlayerAchievement--;
 }
 
-core.List<api.PlayerAchievement> buildUnnamed17() => [
+core.List<api.PlayerAchievement> buildUnnamed18() => [
       buildPlayerAchievement(),
       buildPlayerAchievement(),
     ];
 
-void checkUnnamed17(core.List<api.PlayerAchievement> o) {
+void checkUnnamed18(core.List<api.PlayerAchievement> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPlayerAchievement(o[0]);
   checkPlayerAchievement(o[1]);
@@ -1762,7 +1820,7 @@ api.PlayerAchievementListResponse buildPlayerAchievementListResponse() {
   final o = api.PlayerAchievementListResponse();
   buildCounterPlayerAchievementListResponse++;
   if (buildCounterPlayerAchievementListResponse < 3) {
-    o.items = buildUnnamed17();
+    o.items = buildUnnamed18();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
   }
@@ -1773,7 +1831,7 @@ api.PlayerAchievementListResponse buildPlayerAchievementListResponse() {
 void checkPlayerAchievementListResponse(api.PlayerAchievementListResponse o) {
   buildCounterPlayerAchievementListResponse++;
   if (buildCounterPlayerAchievementListResponse < 3) {
-    checkUnnamed17(o.items!);
+    checkUnnamed18(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -1828,12 +1886,12 @@ void checkPlayerEvent(api.PlayerEvent o) {
   buildCounterPlayerEvent--;
 }
 
-core.List<api.PlayerEvent> buildUnnamed18() => [
+core.List<api.PlayerEvent> buildUnnamed19() => [
       buildPlayerEvent(),
       buildPlayerEvent(),
     ];
 
-void checkUnnamed18(core.List<api.PlayerEvent> o) {
+void checkUnnamed19(core.List<api.PlayerEvent> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPlayerEvent(o[0]);
   checkPlayerEvent(o[1]);
@@ -1844,7 +1902,7 @@ api.PlayerEventListResponse buildPlayerEventListResponse() {
   final o = api.PlayerEventListResponse();
   buildCounterPlayerEventListResponse++;
   if (buildCounterPlayerEventListResponse < 3) {
-    o.items = buildUnnamed18();
+    o.items = buildUnnamed19();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
   }
@@ -1855,7 +1913,7 @@ api.PlayerEventListResponse buildPlayerEventListResponse() {
 void checkPlayerEventListResponse(api.PlayerEventListResponse o) {
   buildCounterPlayerEventListResponse++;
   if (buildCounterPlayerEventListResponse < 3) {
-    checkUnnamed18(o.items!);
+    checkUnnamed19(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -1962,12 +2020,12 @@ void checkPlayerLeaderboardScore(api.PlayerLeaderboardScore o) {
   buildCounterPlayerLeaderboardScore--;
 }
 
-core.List<api.PlayerLeaderboardScore> buildUnnamed19() => [
+core.List<api.PlayerLeaderboardScore> buildUnnamed20() => [
       buildPlayerLeaderboardScore(),
       buildPlayerLeaderboardScore(),
     ];
 
-void checkUnnamed19(core.List<api.PlayerLeaderboardScore> o) {
+void checkUnnamed20(core.List<api.PlayerLeaderboardScore> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPlayerLeaderboardScore(o[0]);
   checkPlayerLeaderboardScore(o[1]);
@@ -1979,7 +2037,7 @@ api.PlayerLeaderboardScoreListResponse
   final o = api.PlayerLeaderboardScoreListResponse();
   buildCounterPlayerLeaderboardScoreListResponse++;
   if (buildCounterPlayerLeaderboardScoreListResponse < 3) {
-    o.items = buildUnnamed19();
+    o.items = buildUnnamed20();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
     o.player = buildPlayer();
@@ -1992,7 +2050,7 @@ void checkPlayerLeaderboardScoreListResponse(
     api.PlayerLeaderboardScoreListResponse o) {
   buildCounterPlayerLeaderboardScoreListResponse++;
   if (buildCounterPlayerLeaderboardScoreListResponse < 3) {
-    checkUnnamed19(o.items!);
+    checkUnnamed20(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -2043,12 +2101,12 @@ void checkPlayerLevel(api.PlayerLevel o) {
   buildCounterPlayerLevel--;
 }
 
-core.List<api.Player> buildUnnamed20() => [
+core.List<api.Player> buildUnnamed21() => [
       buildPlayer(),
       buildPlayer(),
     ];
 
-void checkUnnamed20(core.List<api.Player> o) {
+void checkUnnamed21(core.List<api.Player> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPlayer(o[0]);
   checkPlayer(o[1]);
@@ -2059,7 +2117,7 @@ api.PlayerListResponse buildPlayerListResponse() {
   final o = api.PlayerListResponse();
   buildCounterPlayerListResponse++;
   if (buildCounterPlayerListResponse < 3) {
-    o.items = buildUnnamed20();
+    o.items = buildUnnamed21();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
   }
@@ -2070,7 +2128,7 @@ api.PlayerListResponse buildPlayerListResponse() {
 void checkPlayerListResponse(api.PlayerListResponse o) {
   buildCounterPlayerListResponse++;
   if (buildCounterPlayerListResponse < 3) {
-    checkUnnamed20(o.items!);
+    checkUnnamed21(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -2125,12 +2183,12 @@ void checkPlayerScore(api.PlayerScore o) {
   buildCounterPlayerScore--;
 }
 
-core.List<api.PlayerScoreResponse> buildUnnamed21() => [
+core.List<api.PlayerScoreResponse> buildUnnamed22() => [
       buildPlayerScoreResponse(),
       buildPlayerScoreResponse(),
     ];
 
-void checkUnnamed21(core.List<api.PlayerScoreResponse> o) {
+void checkUnnamed22(core.List<api.PlayerScoreResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPlayerScoreResponse(o[0]);
   checkPlayerScoreResponse(o[1]);
@@ -2142,7 +2200,7 @@ api.PlayerScoreListResponse buildPlayerScoreListResponse() {
   buildCounterPlayerScoreListResponse++;
   if (buildCounterPlayerScoreListResponse < 3) {
     o.kind = 'foo';
-    o.submittedScores = buildUnnamed21();
+    o.submittedScores = buildUnnamed22();
   }
   buildCounterPlayerScoreListResponse--;
   return o;
@@ -2155,17 +2213,17 @@ void checkPlayerScoreListResponse(api.PlayerScoreListResponse o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed21(o.submittedScores!);
+    checkUnnamed22(o.submittedScores!);
   }
   buildCounterPlayerScoreListResponse--;
 }
 
-core.List<core.String> buildUnnamed22() => [
+core.List<core.String> buildUnnamed23() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed22(core.List<core.String> o) {
+void checkUnnamed23(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2177,12 +2235,12 @@ void checkUnnamed22(core.List<core.String> o) {
   );
 }
 
-core.List<api.PlayerScore> buildUnnamed23() => [
+core.List<api.PlayerScore> buildUnnamed24() => [
       buildPlayerScore(),
       buildPlayerScore(),
     ];
 
-void checkUnnamed23(core.List<api.PlayerScore> o) {
+void checkUnnamed24(core.List<api.PlayerScore> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPlayerScore(o[0]);
   checkPlayerScore(o[1]);
@@ -2193,12 +2251,12 @@ api.PlayerScoreResponse buildPlayerScoreResponse() {
   final o = api.PlayerScoreResponse();
   buildCounterPlayerScoreResponse++;
   if (buildCounterPlayerScoreResponse < 3) {
-    o.beatenScoreTimeSpans = buildUnnamed22();
+    o.beatenScoreTimeSpans = buildUnnamed23();
     o.formattedScore = 'foo';
     o.kind = 'foo';
     o.leaderboardId = 'foo';
     o.scoreTag = 'foo';
-    o.unbeatenScores = buildUnnamed23();
+    o.unbeatenScores = buildUnnamed24();
   }
   buildCounterPlayerScoreResponse--;
   return o;
@@ -2207,7 +2265,7 @@ api.PlayerScoreResponse buildPlayerScoreResponse() {
 void checkPlayerScoreResponse(api.PlayerScoreResponse o) {
   buildCounterPlayerScoreResponse++;
   if (buildCounterPlayerScoreResponse < 3) {
-    checkUnnamed22(o.beatenScoreTimeSpans!);
+    checkUnnamed23(o.beatenScoreTimeSpans!);
     unittest.expect(
       o.formattedScore!,
       unittest.equals('foo'),
@@ -2224,17 +2282,17 @@ void checkPlayerScoreResponse(api.PlayerScoreResponse o) {
       o.scoreTag!,
       unittest.equals('foo'),
     );
-    checkUnnamed23(o.unbeatenScores!);
+    checkUnnamed24(o.unbeatenScores!);
   }
   buildCounterPlayerScoreResponse--;
 }
 
-core.List<api.ScoreSubmission> buildUnnamed24() => [
+core.List<api.ScoreSubmission> buildUnnamed25() => [
       buildScoreSubmission(),
       buildScoreSubmission(),
     ];
 
-void checkUnnamed24(core.List<api.ScoreSubmission> o) {
+void checkUnnamed25(core.List<api.ScoreSubmission> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkScoreSubmission(o[0]);
   checkScoreSubmission(o[1]);
@@ -2246,7 +2304,7 @@ api.PlayerScoreSubmissionList buildPlayerScoreSubmissionList() {
   buildCounterPlayerScoreSubmissionList++;
   if (buildCounterPlayerScoreSubmissionList < 3) {
     o.kind = 'foo';
-    o.scores = buildUnnamed24();
+    o.scores = buildUnnamed25();
   }
   buildCounterPlayerScoreSubmissionList--;
   return o;
@@ -2259,7 +2317,7 @@ void checkPlayerScoreSubmissionList(api.PlayerScoreSubmissionList o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed24(o.scores!);
+    checkUnnamed25(o.scores!);
   }
   buildCounterPlayerScoreSubmissionList--;
 }
@@ -2505,12 +2563,12 @@ void checkSnapshotImage(api.SnapshotImage o) {
   buildCounterSnapshotImage--;
 }
 
-core.List<api.Snapshot> buildUnnamed25() => [
+core.List<api.Snapshot> buildUnnamed26() => [
       buildSnapshot(),
       buildSnapshot(),
     ];
 
-void checkUnnamed25(core.List<api.Snapshot> o) {
+void checkUnnamed26(core.List<api.Snapshot> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSnapshot(o[0]);
   checkSnapshot(o[1]);
@@ -2521,7 +2579,7 @@ api.SnapshotListResponse buildSnapshotListResponse() {
   final o = api.SnapshotListResponse();
   buildCounterSnapshotListResponse++;
   if (buildCounterSnapshotListResponse < 3) {
-    o.items = buildUnnamed25();
+    o.items = buildUnnamed26();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
   }
@@ -2532,7 +2590,7 @@ api.SnapshotListResponse buildSnapshotListResponse() {
 void checkSnapshotListResponse(api.SnapshotListResponse o) {
   buildCounterSnapshotListResponse++;
   if (buildCounterSnapshotListResponse < 3) {
-    checkUnnamed25(o.items!);
+    checkUnnamed26(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -2615,6 +2673,23 @@ void checkStatsResponse(api.StatsResponse o) {
     );
   }
   buildCounterStatsResponse--;
+}
+
+core.List<core.String> buildUnnamed27() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed27(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 void main() {
@@ -2735,6 +2810,16 @@ void main() {
       final od = api.ApplicationCategory.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkApplicationCategory(od);
+    });
+  });
+
+  unittest.group('obj-schema-ApplicationPlayerId', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildApplicationPlayerId();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ApplicationPlayerId.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkApplicationPlayerId(od);
     });
   });
 
@@ -2895,6 +2980,16 @@ void main() {
       final od = api.GamesAchievementSetStepsAtLeast.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGamesAchievementSetStepsAtLeast(od);
+    });
+  });
+
+  unittest.group('obj-schema-GetMultipleApplicationPlayerIdsResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGetMultipleApplicationPlayerIdsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GetMultipleApplicationPlayerIdsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGetMultipleApplicationPlayerIdsResponse(od);
     });
   });
 
@@ -3247,7 +3342,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3262,7 +3357,7 @@ void main() {
         );
         pathOffset += 21;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3320,7 +3415,7 @@ void main() {
       final arg_requestId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3349,7 +3444,7 @@ void main() {
         );
         pathOffset += 10;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3400,7 +3495,7 @@ void main() {
       final arg_state = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3429,7 +3524,7 @@ void main() {
         );
         pathOffset += 13;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3487,7 +3582,7 @@ void main() {
       final arg_achievementId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3516,7 +3611,7 @@ void main() {
         );
         pathOffset += 7;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3554,7 +3649,7 @@ void main() {
       final arg_steps = 42;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3583,7 +3678,7 @@ void main() {
         );
         pathOffset += 16;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3626,7 +3721,7 @@ void main() {
       final arg_achievementId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3655,7 +3750,7 @@ void main() {
         );
         pathOffset += 7;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3696,7 +3791,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkAchievementUpdateMultipleRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3711,7 +3806,7 @@ void main() {
         );
         pathOffset += 36;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3754,7 +3849,7 @@ void main() {
       final arg_platformType = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3775,7 +3870,7 @@ void main() {
           unittest.equals('$arg_applicationId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3823,7 +3918,7 @@ void main() {
       final arg_endPointType = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3838,7 +3933,7 @@ void main() {
         );
         pathOffset += 33;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3884,7 +3979,7 @@ void main() {
       final res = api.GamesApi(mock).applications;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3899,7 +3994,7 @@ void main() {
         );
         pathOffset += 28;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3934,7 +4029,7 @@ void main() {
       final arg_applicationId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3963,7 +4058,7 @@ void main() {
         );
         pathOffset += 7;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4004,7 +4099,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4019,7 +4114,7 @@ void main() {
         );
         pathOffset += 15;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4073,7 +4168,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4088,7 +4183,7 @@ void main() {
         );
         pathOffset += 25;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4146,7 +4241,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkEventRecordRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4161,7 +4256,7 @@ void main() {
         );
         pathOffset += 15;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4205,7 +4300,7 @@ void main() {
       final arg_language = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4226,7 +4321,7 @@ void main() {
           unittest.equals('$arg_leaderboardId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4269,7 +4364,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4284,7 +4379,7 @@ void main() {
         );
         pathOffset += 21;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4337,7 +4432,7 @@ void main() {
       final res = api.GamesApi(mock).metagame;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4352,7 +4447,7 @@ void main() {
         );
         pathOffset += 23;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4392,7 +4487,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4427,7 +4522,7 @@ void main() {
           unittest.equals('$arg_collection'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4484,7 +4579,7 @@ void main() {
       final arg_playerIdConsistencyToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4505,7 +4600,7 @@ void main() {
           unittest.equals('$arg_playerId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4546,12 +4641,70 @@ void main() {
       checkPlayer(response as api.Player);
     });
 
+    unittest.test('method--getMultipleApplicationPlayerIds', () async {
+      final mock = HttpServerMock();
+      final res = api.GamesApi(mock).players;
+      final arg_applicationIds = buildUnnamed27();
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 48),
+          unittest.equals('games/v1/players/me/multipleApplicationPlayerIds'),
+        );
+        pathOffset += 48;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['applicationIds']!,
+          unittest.equals(arg_applicationIds),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildGetMultipleApplicationPlayerIdsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.getMultipleApplicationPlayerIds(
+          applicationIds: arg_applicationIds, $fields: arg_$fields);
+      checkGetMultipleApplicationPlayerIdsResponse(
+          response as api.GetMultipleApplicationPlayerIdsResponse);
+    });
+
     unittest.test('method--getScopedPlayerIds', () async {
       final mock = HttpServerMock();
       final res = api.GamesApi(mock).players;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4566,7 +4719,7 @@ void main() {
         );
         pathOffset += 29;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4605,7 +4758,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4626,7 +4779,7 @@ void main() {
           unittest.equals('$arg_collection'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4680,7 +4833,7 @@ void main() {
       final arg_clientRevision = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4695,7 +4848,7 @@ void main() {
         );
         pathOffset += 24;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4744,7 +4897,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4793,7 +4946,7 @@ void main() {
           unittest.equals('$arg_timeSpan'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4858,7 +5011,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4893,7 +5046,7 @@ void main() {
           unittest.equals('$arg_collection'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4957,7 +5110,7 @@ void main() {
       final arg_returnTopIfAbsent = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4992,7 +5145,7 @@ void main() {
           unittest.equals('$arg_collection'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -5062,7 +5215,7 @@ void main() {
       final arg_scoreTag = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -5091,7 +5244,7 @@ void main() {
         );
         pathOffset += 7;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -5145,7 +5298,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkPlayerScoreSubmissionList(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -5160,7 +5313,7 @@ void main() {
         );
         pathOffset += 28;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -5204,7 +5357,7 @@ void main() {
       final arg_language = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -5225,7 +5378,7 @@ void main() {
           unittest.equals('$arg_snapshotId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -5269,7 +5422,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -5298,7 +5451,7 @@ void main() {
         );
         pathOffset += 10;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -5351,7 +5504,7 @@ void main() {
       final res = api.GamesApi(mock).stats;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -5366,7 +5519,7 @@ void main() {
         );
         pathOffset += 14;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>

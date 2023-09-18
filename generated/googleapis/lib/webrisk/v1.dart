@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Web Risk API - v1
@@ -22,10 +21,9 @@
 /// - [ProjectsResource]
 ///   - [ProjectsOperationsResource]
 ///   - [ProjectsSubmissionsResource]
-///   - [ProjectsUrisResource]
 /// - [ThreatListsResource]
 /// - [UrisResource]
-library webrisk.v1;
+library webrisk_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -34,7 +32,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -123,7 +120,6 @@ class ProjectsResource {
       ProjectsOperationsResource(_requester);
   ProjectsSubmissionsResource get submissions =>
       ProjectsSubmissionsResource(_requester);
-  ProjectsUrisResource get uris => ProjectsUrisResource(_requester);
 
   ProjectsResource(commons.ApiRequester client) : _requester = client;
 }
@@ -265,13 +261,6 @@ class ProjectsOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -377,64 +366,6 @@ class ProjectsSubmissionsResource {
   }
 }
 
-class ProjectsUrisResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsUrisResource(commons.ApiRequester client) : _requester = client;
-
-  /// Submits a URI suspected of containing malicious content to be reviewed.
-  ///
-  /// Returns a google.longrunning.Operation which, once the review is complete,
-  /// is updated with its result. You can use the
-  /// [Pub/Sub API](https://cloud.google.com/pubsub) to receive notifications
-  /// for the returned Operation. If the result verifies the existence of
-  /// malicious content, the site will be added to the
-  /// [Google's Social Engineering lists](https://support.google.com/webmasters/answer/6350487/)
-  /// in order to protect users that could get exposed to this threat in the
-  /// future. Only allowlisted projects can use this method during Early Access.
-  /// Please reach out to Sales or your customer engineer to obtain access.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. The name of the project that is making the
-  /// submission. This string is in the format "projects/{project_number}".
-  /// Value must have pattern `^projects/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleLongrunningOperation].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleLongrunningOperation> submit(
-    GoogleCloudWebriskV1SubmitUriRequest request,
-    core.String parent, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/uris:submit';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-}
-
 class ThreatListsResource {
   final commons.ApiRequester _requester;
 
@@ -471,8 +402,8 @@ class ThreatListsResource {
   /// - "MALWARE" : Malware targeting any platform.
   /// - "SOCIAL_ENGINEERING" : Social engineering targeting any platform.
   /// - "UNWANTED_SOFTWARE" : Unwanted software targeting any platform.
-  /// - "SOCIAL_ENGINEERING_EXTENDED_COVERAGE" : Extended Coverage Social
-  /// Engineering list targeting any platform.
+  /// - "SOCIAL_ENGINEERING_EXTENDED_COVERAGE" : A list of extended coverage
+  /// social engineering URIs targeting any platform.
   ///
   /// [versionToken] - The current version token of the client for the requested
   /// list (the client version that was received from the last successful diff).
@@ -877,7 +808,7 @@ class GoogleCloudWebriskV1SearchHashesResponseThreatHash {
 class GoogleCloudWebriskV1SearchUrisResponse {
   /// The threat list matches.
   ///
-  /// This may be empty if the URI is on no list.
+  /// This might be empty if the URI is on no list.
   GoogleCloudWebriskV1SearchUrisResponseThreatUri? threat;
 
   GoogleCloudWebriskV1SearchUrisResponse({
@@ -933,59 +864,22 @@ class GoogleCloudWebriskV1SearchUrisResponseThreatUri {
 
 /// Wraps a URI that might be displaying malicious content.
 class GoogleCloudWebriskV1Submission {
-  /// ThreatTypes found to be associated with the submitted URI after reviewing
-  /// it.
-  ///
-  /// This may be empty if the URI was not added to any list.
-  core.List<core.String>? threatTypes;
-
   /// The URI that is being reported for malicious content to be analyzed.
   ///
   /// Required.
   core.String? uri;
 
   GoogleCloudWebriskV1Submission({
-    this.threatTypes,
     this.uri,
   });
 
   GoogleCloudWebriskV1Submission.fromJson(core.Map json_)
       : this(
-          threatTypes: json_.containsKey('threatTypes')
-              ? (json_['threatTypes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
           uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (threatTypes != null) 'threatTypes': threatTypes!,
         if (uri != null) 'uri': uri!,
-      };
-}
-
-/// Request to send a potentially malicious URI to WebRisk.
-class GoogleCloudWebriskV1SubmitUriRequest {
-  /// The submission that contains the URI to be scanned.
-  ///
-  /// Required.
-  GoogleCloudWebriskV1Submission? submission;
-
-  GoogleCloudWebriskV1SubmitUriRequest({
-    this.submission,
-  });
-
-  GoogleCloudWebriskV1SubmitUriRequest.fromJson(core.Map json_)
-      : this(
-          submission: json_.containsKey('submission')
-              ? GoogleCloudWebriskV1Submission.fromJson(
-                  json_['submission'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (submission != null) 'submission': submission!,
       };
 }
 
@@ -1113,17 +1007,16 @@ class GoogleLongrunningOperation {
   /// The error result of the operation in case of failure or cancellation.
   GoogleRpcStatus? error;
 
-  /// This field will contain a `SubmitUriMetadata` object.
+  /// Contains a `SubmitUriMetadata` object.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? metadata;
 
-  /// This will match the pattern
-  /// `/v1/{project-name}/operations/{operation-id}`.
+  /// Matches the `/v1/{project-name}/operations/{operation-id}` pattern.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard

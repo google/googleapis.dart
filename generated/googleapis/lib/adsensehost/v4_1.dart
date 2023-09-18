@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// AdSense Host API - v4.1
@@ -30,7 +29,7 @@
 /// - [CustomchannelsResource]
 /// - [ReportsResource]
 /// - [UrlchannelsResource]
-library adsensehost.v4_1;
+library adsensehost_v4_1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

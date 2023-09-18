@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Campaign Manager 360 API - v4
@@ -64,7 +63,6 @@
 /// - [MobileCarriersResource]
 /// - [OperatingSystemVersionsResource]
 /// - [OperatingSystemsResource]
-/// - [OrderDocumentsResource]
 /// - [OrdersResource]
 /// - [PlacementGroupsResource]
 /// - [PlacementStrategiesResource]
@@ -88,7 +86,7 @@
 /// - [UserRolePermissionsResource]
 /// - [UserRolesResource]
 /// - [VideoFormatsResource]
-library dfareporting.v4;
+library dfareporting_v4;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -97,20 +95,19 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show
         ApiRequestError,
+        ByteRange,
         DetailedApiRequestError,
-        Media,
-        UploadOptions,
-        ResumableUploadOptions,
         DownloadOptions,
+        Media,
         PartialDownloadOptions,
-        ByteRange;
+        ResumableUploadOptions,
+        UploadOptions;
 
 /// Build applications to efficiently manage large or complex trafficking,
 /// reporting, and attribution workflows for Campaign Manager 360.
@@ -198,8 +195,6 @@ class DfareportingApi {
       OperatingSystemVersionsResource(_requester);
   OperatingSystemsResource get operatingSystems =>
       OperatingSystemsResource(_requester);
-  OrderDocumentsResource get orderDocuments =>
-      OrderDocumentsResource(_requester);
   OrdersResource get orders => OrdersResource(_requester);
   PlacementGroupsResource get placementGroups =>
       PlacementGroupsResource(_requester);
@@ -248,8 +243,10 @@ class AccountActiveAdSummariesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [summaryAccountId] - Account ID.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -271,9 +268,9 @@ class AccountActiveAdSummariesResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/accountActiveAdSummaries/' +
-        commons.escapeVariable('$summaryAccountId');
+        core.Uri.encodeFull('$summaryAccountId');
 
     final response_ = await _requester.request(
       url_,
@@ -296,8 +293,10 @@ class AccountPermissionGroupsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [id] - Account permission group ID.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -319,9 +318,9 @@ class AccountPermissionGroupsResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/accountPermissionGroups/' +
-        commons.escapeVariable('$id');
+        core.Uri.encodeFull('$id');
 
     final response_ = await _requester.request(
       url_,
@@ -337,6 +336,7 @@ class AccountPermissionGroupsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -357,7 +357,7 @@ class AccountPermissionGroupsResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/accountPermissionGroups';
 
     final response_ = await _requester.request(
@@ -380,8 +380,10 @@ class AccountPermissionsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [id] - Account permission ID.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -403,9 +405,9 @@ class AccountPermissionsResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/accountPermissions/' +
-        commons.escapeVariable('$id');
+        core.Uri.encodeFull('$id');
 
     final response_ = await _requester.request(
       url_,
@@ -421,6 +423,7 @@ class AccountPermissionsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -441,7 +444,7 @@ class AccountPermissionsResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/accountPermissions';
 
     final response_ = await _requester.request(
@@ -467,6 +470,7 @@ class AccountUserProfilesResource {
   /// [profileId] - User profile ID associated with this request.
   ///
   /// [id] - User profile ID.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -490,7 +494,7 @@ class AccountUserProfilesResource {
     final url_ = 'userprofiles/' +
         commons.escapeVariable('$profileId') +
         '/accountUserProfiles/' +
-        commons.escapeVariable('$id');
+        core.Uri.encodeFull('$id');
 
     final response_ = await _requester.request(
       url_,
@@ -508,6 +512,7 @@ class AccountUserProfilesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -530,7 +535,7 @@ class AccountUserProfilesResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/accountUserProfiles';
 
     final response_ = await _requester.request(
@@ -550,13 +555,13 @@ class AccountUserProfilesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [active] - Select only active user profiles.
   ///
   /// [ids] - Select only user profiles with these IDs.
   ///
   /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "1000".
   ///
   /// [pageToken] - Value of the nextPageToken from the previous result page.
   ///
@@ -575,8 +580,8 @@ class AccountUserProfilesResource {
   ///
   /// [sortOrder] - Order of sorted results.
   /// Possible string values are:
-  /// - "ASCENDING"
-  /// - "DESCENDING"
+  /// - "ASCENDING" : Ascending order.
+  /// - "DESCENDING" : Descending order.
   ///
   /// [subaccountId] - Select only user profiles with the specified subaccount
   /// ID.
@@ -620,7 +625,7 @@ class AccountUserProfilesResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/accountUserProfiles';
 
     final response_ = await _requester.request(
@@ -632,7 +637,7 @@ class AccountUserProfilesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates an existing account user profile.
+  /// Updates an existing user role.
   ///
   /// This method supports patch semantics.
   ///
@@ -641,8 +646,9 @@ class AccountUserProfilesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [id] - AccountUserProfile ID.
+  /// [id] - Required. AccountUserProfile ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -667,7 +673,7 @@ class AccountUserProfilesResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/accountUserProfiles';
 
     final response_ = await _requester.request(
@@ -687,6 +693,7 @@ class AccountUserProfilesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -709,7 +716,7 @@ class AccountUserProfilesResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/accountUserProfiles';
 
     final response_ = await _requester.request(
@@ -733,8 +740,10 @@ class AccountsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [id] - Account ID.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -756,9 +765,9 @@ class AccountsResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/accounts/' +
-        commons.escapeVariable('$id');
+        core.Uri.encodeFull('$id');
 
     final response_ = await _requester.request(
       url_,
@@ -775,6 +784,7 @@ class AccountsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [active] - Select only active accounts. Don't set this field to select
   /// both active and non-active accounts.
@@ -782,7 +792,6 @@ class AccountsResource {
   /// [ids] - Select only accounts with these IDs.
   ///
   /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "1000".
   ///
   /// [pageToken] - Value of the nextPageToken from the previous result page.
   ///
@@ -800,8 +809,8 @@ class AccountsResource {
   ///
   /// [sortOrder] - Order of sorted results.
   /// Possible string values are:
-  /// - "ASCENDING"
-  /// - "DESCENDING"
+  /// - "ASCENDING" : Ascending order.
+  /// - "DESCENDING" : Descending order.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -836,7 +845,7 @@ class AccountsResource {
     };
 
     final url_ =
-        'userprofiles/' + commons.escapeVariable('$profileId') + '/accounts';
+        'userprofiles/' + core.Uri.encodeFull('$profileId') + '/accounts';
 
     final response_ = await _requester.request(
       url_,
@@ -856,8 +865,9 @@ class AccountsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [id] - Account ID.
+  /// [id] - Required. Account ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -882,7 +892,7 @@ class AccountsResource {
     };
 
     final url_ =
-        'userprofiles/' + commons.escapeVariable('$profileId') + '/accounts';
+        'userprofiles/' + core.Uri.encodeFull('$profileId') + '/accounts';
 
     final response_ = await _requester.request(
       url_,
@@ -900,6 +910,7 @@ class AccountsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -922,7 +933,7 @@ class AccountsResource {
     };
 
     final url_ =
-        'userprofiles/' + commons.escapeVariable('$profileId') + '/accounts';
+        'userprofiles/' + core.Uri.encodeFull('$profileId') + '/accounts';
 
     final response_ = await _requester.request(
       url_,
@@ -944,8 +955,10 @@ class AdsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [id] - Ad ID.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -967,9 +980,9 @@ class AdsResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/ads/' +
-        commons.escapeVariable('$id');
+        core.Uri.encodeFull('$id');
 
     final response_ = await _requester.request(
       url_,
@@ -986,6 +999,7 @@ class AdsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1007,8 +1021,7 @@ class AdsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ =
-        'userprofiles/' + commons.escapeVariable('$profileId') + '/ads';
+    final url_ = 'userprofiles/' + core.Uri.encodeFull('$profileId') + '/ads';
 
     final response_ = await _requester.request(
       url_,
@@ -1026,6 +1039,7 @@ class AdsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [active] - Select only active ads.
   ///
@@ -1046,8 +1060,8 @@ class AdsResource {
   /// Possible string values are:
   /// - "DISPLAY"
   /// - "DISPLAY_INTERSTITIAL"
-  /// - "APP"
-  /// - "APP_INTERSTITIAL"
+  /// - "APP" : Deprecated enum value. No longer supported.
+  /// - "APP_INTERSTITIAL" : Deprecated enum value. No longer supported.
   /// - "IN_STREAM_VIDEO"
   /// - "IN_STREAM_AUDIO"
   ///
@@ -1066,7 +1080,6 @@ class AdsResource {
   /// [landingPageIds] - Select only ads with these landing page IDs.
   ///
   /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "1000".
   ///
   /// [overriddenEventTagId] - Select only ads with this event tag override ID.
   ///
@@ -1093,8 +1106,8 @@ class AdsResource {
   ///
   /// [sortOrder] - Order of sorted results.
   /// Possible string values are:
-  /// - "ASCENDING"
-  /// - "DESCENDING"
+  /// - "ASCENDING" : Ascending order.
+  /// - "DESCENDING" : Descending order.
   ///
   /// [sslCompliant] - Select only ads that are SSL-compliant.
   ///
@@ -1170,8 +1183,7 @@ class AdsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ =
-        'userprofiles/' + commons.escapeVariable('$profileId') + '/ads';
+    final url_ = 'userprofiles/' + core.Uri.encodeFull('$profileId') + '/ads';
 
     final response_ = await _requester.request(
       url_,
@@ -1182,7 +1194,7 @@ class AdsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates an existing ad.
+  /// Updates an existing event tag.
   ///
   /// This method supports patch semantics.
   ///
@@ -1191,8 +1203,9 @@ class AdsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [id] - Ad ID.
+  /// [id] - Required. RemarketingList ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1216,8 +1229,7 @@ class AdsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ =
-        'userprofiles/' + commons.escapeVariable('$profileId') + '/ads';
+    final url_ = 'userprofiles/' + core.Uri.encodeFull('$profileId') + '/ads';
 
     final response_ = await _requester.request(
       url_,
@@ -1235,6 +1247,7 @@ class AdsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1256,8 +1269,7 @@ class AdsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ =
-        'userprofiles/' + commons.escapeVariable('$profileId') + '/ads';
+    final url_ = 'userprofiles/' + core.Uri.encodeFull('$profileId') + '/ads';
 
     final response_ = await _requester.request(
       url_,
@@ -1279,8 +1291,10 @@ class AdvertiserGroupsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [id] - Advertiser group ID.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1300,9 +1314,9 @@ class AdvertiserGroupsResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/advertiserGroups/' +
-        commons.escapeVariable('$id');
+        core.Uri.encodeFull('$id');
 
     await _requester.request(
       url_,
@@ -1317,8 +1331,10 @@ class AdvertiserGroupsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [id] - Advertiser group ID.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1340,9 +1356,9 @@ class AdvertiserGroupsResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/advertiserGroups/' +
-        commons.escapeVariable('$id');
+        core.Uri.encodeFull('$id');
 
     final response_ = await _requester.request(
       url_,
@@ -1360,6 +1376,7 @@ class AdvertiserGroupsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1382,7 +1399,7 @@ class AdvertiserGroupsResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/advertiserGroups';
 
     final response_ = await _requester.request(
@@ -1402,11 +1419,11 @@ class AdvertiserGroupsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [ids] - Select only advertiser groups with these IDs.
   ///
   /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "1000".
   ///
   /// [pageToken] - Value of the nextPageToken from the previous result page.
   ///
@@ -1425,8 +1442,8 @@ class AdvertiserGroupsResource {
   ///
   /// [sortOrder] - Order of sorted results.
   /// Possible string values are:
-  /// - "ASCENDING"
-  /// - "DESCENDING"
+  /// - "ASCENDING" : Ascending order.
+  /// - "DESCENDING" : Descending order.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1459,7 +1476,7 @@ class AdvertiserGroupsResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/advertiserGroups';
 
     final response_ = await _requester.request(
@@ -1480,8 +1497,9 @@ class AdvertiserGroupsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [id] - AdvertiserGroup ID.
+  /// [id] - Required. Advertiser Group ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1506,7 +1524,7 @@ class AdvertiserGroupsResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/advertiserGroups';
 
     final response_ = await _requester.request(
@@ -1526,6 +1544,7 @@ class AdvertiserGroupsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1548,7 +1567,7 @@ class AdvertiserGroupsResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/advertiserGroups';
 
     final response_ = await _requester.request(
@@ -1575,14 +1594,15 @@ class AdvertiserInvoicesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [advertiserId] - Advertiser ID of this invoice.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [issueMonth] - Month for which invoices are needed in the format YYYYMM.
   /// Required field
   ///
   /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "1000".
   ///
   /// [pageToken] - Value of the nextPageToken from the previous result page.
   ///
@@ -1612,9 +1632,9 @@ class AdvertiserInvoicesResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/advertisers/' +
-        commons.escapeVariable('$advertiserId') +
+        core.Uri.encodeFull('$advertiserId') +
         '/invoices';
 
     final response_ = await _requester.request(
@@ -1638,8 +1658,10 @@ class AdvertiserLandingPagesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [id] - Landing page ID.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1661,9 +1683,9 @@ class AdvertiserLandingPagesResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/advertiserLandingPages/' +
-        commons.escapeVariable('$id');
+        core.Uri.encodeFull('$id');
 
     final response_ = await _requester.request(
       url_,
@@ -1681,6 +1703,7 @@ class AdvertiserLandingPagesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1703,7 +1726,7 @@ class AdvertiserLandingPagesResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/advertiserLandingPages';
 
     final response_ = await _requester.request(
@@ -1721,6 +1744,7 @@ class AdvertiserLandingPagesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [advertiserIds] - Select only landing pages that belong to these
   /// advertisers.
@@ -1734,7 +1758,6 @@ class AdvertiserLandingPagesResource {
   /// [ids] - Select only landing pages with these IDs.
   ///
   /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "1000".
   ///
   /// [pageToken] - Value of the nextPageToken from the previous result page.
   ///
@@ -1753,8 +1776,8 @@ class AdvertiserLandingPagesResource {
   ///
   /// [sortOrder] - Order of sorted results.
   /// Possible string values are:
-  /// - "ASCENDING"
-  /// - "DESCENDING"
+  /// - "ASCENDING" : Ascending order.
+  /// - "DESCENDING" : Descending order.
   ///
   /// [subaccountId] - Select only landing pages that belong to this subaccount.
   ///
@@ -1797,7 +1820,7 @@ class AdvertiserLandingPagesResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/advertiserLandingPages';
 
     final response_ = await _requester.request(
@@ -1809,7 +1832,7 @@ class AdvertiserLandingPagesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates an existing advertiser landing page.
+  /// Updates an existing advertiser.
   ///
   /// This method supports patch semantics.
   ///
@@ -1818,8 +1841,9 @@ class AdvertiserLandingPagesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [id] - LandingPage ID.
+  /// [id] - Required. Landing Page ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1844,7 +1868,7 @@ class AdvertiserLandingPagesResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/advertiserLandingPages';
 
     final response_ = await _requester.request(
@@ -1864,6 +1888,7 @@ class AdvertiserLandingPagesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1886,7 +1911,7 @@ class AdvertiserLandingPagesResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/advertiserLandingPages';
 
     final response_ = await _requester.request(
@@ -1910,8 +1935,10 @@ class AdvertisersResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [id] - Advertiser ID.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1933,9 +1960,9 @@ class AdvertisersResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/advertisers/' +
-        commons.escapeVariable('$id');
+        core.Uri.encodeFull('$id');
 
     final response_ = await _requester.request(
       url_,
@@ -1953,6 +1980,7 @@ class AdvertisersResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1975,7 +2003,7 @@ class AdvertisersResource {
     };
 
     final url_ =
-        'userprofiles/' + commons.escapeVariable('$profileId') + '/advertisers';
+        'userprofiles/' + core.Uri.encodeFull('$profileId') + '/advertisers';
 
     final response_ = await _requester.request(
       url_,
@@ -1994,6 +2022,7 @@ class AdvertisersResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [advertiserGroupIds] - Select only advertisers with these advertiser group
   /// IDs.
@@ -2007,7 +2036,6 @@ class AdvertisersResource {
   /// not belong to any advertiser group.
   ///
   /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "1000".
   ///
   /// [onlyParent] - Select only advertisers which use another advertiser's
   /// floodlight configuration.
@@ -2029,13 +2057,13 @@ class AdvertisersResource {
   ///
   /// [sortOrder] - Order of sorted results.
   /// Possible string values are:
-  /// - "ASCENDING"
-  /// - "DESCENDING"
+  /// - "ASCENDING" : Ascending order.
+  /// - "DESCENDING" : Descending order.
   ///
   /// [status] - Select only advertisers with the specified status.
   /// Possible string values are:
-  /// - "APPROVED"
-  /// - "ON_HOLD"
+  /// - "APPROVED" : Approved (ads can deliver)
+  /// - "ON_HOLD" : On-hold (all ads are stopped)
   ///
   /// [subaccountId] - Select only advertisers with these subaccount IDs.
   ///
@@ -2086,7 +2114,7 @@ class AdvertisersResource {
     };
 
     final url_ =
-        'userprofiles/' + commons.escapeVariable('$profileId') + '/advertisers';
+        'userprofiles/' + core.Uri.encodeFull('$profileId') + '/advertisers';
 
     final response_ = await _requester.request(
       url_,
@@ -2106,8 +2134,9 @@ class AdvertisersResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [id] - Advertiser ID.
+  /// [id] - Required. Advertiser ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2132,7 +2161,7 @@ class AdvertisersResource {
     };
 
     final url_ =
-        'userprofiles/' + commons.escapeVariable('$profileId') + '/advertisers';
+        'userprofiles/' + core.Uri.encodeFull('$profileId') + '/advertisers';
 
     final response_ = await _requester.request(
       url_,
@@ -2151,6 +2180,7 @@ class AdvertisersResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2173,7 +2203,7 @@ class AdvertisersResource {
     };
 
     final url_ =
-        'userprofiles/' + commons.escapeVariable('$profileId') + '/advertisers';
+        'userprofiles/' + core.Uri.encodeFull('$profileId') + '/advertisers';
 
     final response_ = await _requester.request(
       url_,
@@ -2203,8 +2233,10 @@ class BillingAssignmentsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [billingProfileId] - Billing profile ID of this billing assignment.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2228,9 +2260,9 @@ class BillingAssignmentsResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/billingProfiles/' +
-        commons.escapeVariable('$billingProfileId') +
+        core.Uri.encodeFull('$billingProfileId') +
         '/billingAssignments';
 
     final response_ = await _requester.request(
@@ -2248,8 +2280,10 @@ class BillingAssignmentsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [billingProfileId] - Billing profile ID of this billing assignment.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2271,9 +2305,9 @@ class BillingAssignmentsResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/billingProfiles/' +
-        commons.escapeVariable('$billingProfileId') +
+        core.Uri.encodeFull('$billingProfileId') +
         '/billingAssignments';
 
     final response_ = await _requester.request(
@@ -2296,8 +2330,10 @@ class BillingProfilesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [id] - Billing Profile ID.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2319,9 +2355,9 @@ class BillingProfilesResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/billingProfiles/' +
-        commons.escapeVariable('$id');
+        core.Uri.encodeFull('$id');
 
     final response_ = await _requester.request(
       url_,
@@ -2339,13 +2375,13 @@ class BillingProfilesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [currencyCode] - Select only billing profile with currency.
   ///
   /// [ids] - Select only billing profile with these IDs.
   ///
   /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "1000".
   ///
   /// [name] - Allows searching for billing profiles by name. Wildcards (*) are
   /// allowed. For example, "profile*2020" will return objects with names like
@@ -2366,8 +2402,8 @@ class BillingProfilesResource {
   ///
   /// [sortOrder] - Order of sorted results.
   /// Possible string values are:
-  /// - "ASCENDING"
-  /// - "DESCENDING"
+  /// - "ASCENDING" : Ascending order.
+  /// - "DESCENDING" : Descending order.
   ///
   /// [status] - Select only billing profile with the specified status.
   ///
@@ -2414,7 +2450,7 @@ class BillingProfilesResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/billingProfiles';
 
     final response_ = await _requester.request(
@@ -2433,6 +2469,7 @@ class BillingProfilesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2455,7 +2492,7 @@ class BillingProfilesResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/billingProfiles';
 
     final response_ = await _requester.request(
@@ -2481,8 +2518,10 @@ class BillingRatesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [billingProfileId] - Billing profile ID of this billing rate.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2504,9 +2543,9 @@ class BillingRatesResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/billingProfiles/' +
-        commons.escapeVariable('$billingProfileId') +
+        core.Uri.encodeFull('$billingProfileId') +
         '/billingRates';
 
     final response_ = await _requester.request(
@@ -2529,6 +2568,7 @@ class BrowsersResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2549,7 +2589,7 @@ class BrowsersResource {
     };
 
     final url_ =
-        'userprofiles/' + commons.escapeVariable('$profileId') + '/browsers';
+        'userprofiles/' + core.Uri.encodeFull('$profileId') + '/browsers';
 
     final response_ = await _requester.request(
       url_,
@@ -2577,8 +2617,10 @@ class CampaignCreativeAssociationsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [campaignId] - Campaign ID in this association.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2602,9 +2644,9 @@ class CampaignCreativeAssociationsResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/campaigns/' +
-        commons.escapeVariable('$campaignId') +
+        core.Uri.encodeFull('$campaignId') +
         '/campaignCreativeAssociations';
 
     final response_ = await _requester.request(
@@ -2624,18 +2666,19 @@ class CampaignCreativeAssociationsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [campaignId] - Campaign ID in this association.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "1000".
   ///
   /// [pageToken] - Value of the nextPageToken from the previous result page.
   ///
   /// [sortOrder] - Order of sorted results.
   /// Possible string values are:
-  /// - "ASCENDING"
-  /// - "DESCENDING"
+  /// - "ASCENDING" : Ascending order.
+  /// - "DESCENDING" : Descending order.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2663,9 +2706,9 @@ class CampaignCreativeAssociationsResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/campaigns/' +
-        commons.escapeVariable('$campaignId') +
+        core.Uri.encodeFull('$campaignId') +
         '/campaignCreativeAssociations';
 
     final response_ = await _requester.request(
@@ -2688,8 +2731,10 @@ class CampaignsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [id] - Campaign ID.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2711,9 +2756,9 @@ class CampaignsResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/campaigns/' +
-        commons.escapeVariable('$id');
+        core.Uri.encodeFull('$id');
 
     final response_ = await _requester.request(
       url_,
@@ -2730,6 +2775,7 @@ class CampaignsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2752,7 +2798,7 @@ class CampaignsResource {
     };
 
     final url_ =
-        'userprofiles/' + commons.escapeVariable('$profileId') + '/campaigns';
+        'userprofiles/' + core.Uri.encodeFull('$profileId') + '/campaigns';
 
     final response_ = await _requester.request(
       url_,
@@ -2770,6 +2816,7 @@ class CampaignsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [advertiserGroupIds] - Select only campaigns whose advertisers belong to
   /// these advertiser groups.
@@ -2787,7 +2834,6 @@ class CampaignsResource {
   /// [ids] - Select only campaigns with these IDs.
   ///
   /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "1000".
   ///
   /// [overriddenEventTagId] - Select only campaigns that have overridden this
   /// event tag ID.
@@ -2809,8 +2855,8 @@ class CampaignsResource {
   ///
   /// [sortOrder] - Order of sorted results.
   /// Possible string values are:
-  /// - "ASCENDING"
-  /// - "DESCENDING"
+  /// - "ASCENDING" : Ascending order.
+  /// - "DESCENDING" : Descending order.
   ///
   /// [subaccountId] - Select only campaigns that belong to this subaccount.
   ///
@@ -2861,7 +2907,7 @@ class CampaignsResource {
     };
 
     final url_ =
-        'userprofiles/' + commons.escapeVariable('$profileId') + '/campaigns';
+        'userprofiles/' + core.Uri.encodeFull('$profileId') + '/campaigns';
 
     final response_ = await _requester.request(
       url_,
@@ -2872,7 +2918,7 @@ class CampaignsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates an existing campaign.
+  /// Updates an existing creative.
   ///
   /// This method supports patch semantics.
   ///
@@ -2881,8 +2927,9 @@ class CampaignsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [id] - Campaign ID.
+  /// [id] - Required. Campaign ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2907,7 +2954,7 @@ class CampaignsResource {
     };
 
     final url_ =
-        'userprofiles/' + commons.escapeVariable('$profileId') + '/campaigns';
+        'userprofiles/' + core.Uri.encodeFull('$profileId') + '/campaigns';
 
     final response_ = await _requester.request(
       url_,
@@ -2925,6 +2972,7 @@ class CampaignsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2947,7 +2995,7 @@ class CampaignsResource {
     };
 
     final url_ =
-        'userprofiles/' + commons.escapeVariable('$profileId') + '/campaigns';
+        'userprofiles/' + core.Uri.encodeFull('$profileId') + '/campaigns';
 
     final response_ = await _requester.request(
       url_,
@@ -2969,8 +3017,10 @@ class ChangeLogsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [id] - Change log ID.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2992,9 +3042,9 @@ class ChangeLogsResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/changeLogs/' +
-        commons.escapeVariable('$id');
+        core.Uri.encodeFull('$id');
 
     final response_ = await _requester.request(
       url_,
@@ -3011,6 +3061,7 @@ class ChangeLogsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [action] - Select only change logs with the specified action.
   /// Possible string values are:
@@ -3042,7 +3093,6 @@ class ChangeLogsResource {
   /// system), minute, second, and then the time zone offset.
   ///
   /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "1000".
   ///
   /// [minChangeTime] - Select only change logs whose change time is after the
   /// specified minChangeTime.The time should be formatted as an RFC3339
@@ -3143,7 +3193,7 @@ class ChangeLogsResource {
     };
 
     final url_ =
-        'userprofiles/' + commons.escapeVariable('$profileId') + '/changeLogs';
+        'userprofiles/' + core.Uri.encodeFull('$profileId') + '/changeLogs';
 
     final response_ = await _requester.request(
       url_,
@@ -3165,6 +3215,7 @@ class CitiesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [countryDartIds] - Select only cities from these countries.
   ///
@@ -3201,7 +3252,7 @@ class CitiesResource {
     };
 
     final url_ =
-        'userprofiles/' + commons.escapeVariable('$profileId') + '/cities';
+        'userprofiles/' + core.Uri.encodeFull('$profileId') + '/cities';
 
     final response_ = await _requester.request(
       url_,
@@ -3223,8 +3274,10 @@ class ConnectionTypesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [id] - Connection type ID.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3246,9 +3299,9 @@ class ConnectionTypesResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/connectionTypes/' +
-        commons.escapeVariable('$id');
+        core.Uri.encodeFull('$id');
 
     final response_ = await _requester.request(
       url_,
@@ -3264,6 +3317,7 @@ class ConnectionTypesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3284,7 +3338,7 @@ class ConnectionTypesResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/connectionTypes';
 
     final response_ = await _requester.request(
@@ -3307,8 +3361,10 @@ class ContentCategoriesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [id] - Content category ID.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3328,9 +3384,9 @@ class ContentCategoriesResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/contentCategories/' +
-        commons.escapeVariable('$id');
+        core.Uri.encodeFull('$id');
 
     await _requester.request(
       url_,
@@ -3345,8 +3401,10 @@ class ContentCategoriesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [id] - Content category ID.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3368,9 +3426,9 @@ class ContentCategoriesResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/contentCategories/' +
-        commons.escapeVariable('$id');
+        core.Uri.encodeFull('$id');
 
     final response_ = await _requester.request(
       url_,
@@ -3388,6 +3446,7 @@ class ContentCategoriesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3410,7 +3469,7 @@ class ContentCategoriesResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/contentCategories';
 
     final response_ = await _requester.request(
@@ -3430,11 +3489,11 @@ class ContentCategoriesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [ids] - Select only content categories with these IDs.
   ///
   /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "1000".
   ///
   /// [pageToken] - Value of the nextPageToken from the previous result page.
   ///
@@ -3453,8 +3512,8 @@ class ContentCategoriesResource {
   ///
   /// [sortOrder] - Order of sorted results.
   /// Possible string values are:
-  /// - "ASCENDING"
-  /// - "DESCENDING"
+  /// - "ASCENDING" : Ascending order.
+  /// - "DESCENDING" : Descending order.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3487,7 +3546,7 @@ class ContentCategoriesResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/contentCategories';
 
     final response_ = await _requester.request(
@@ -3508,8 +3567,9 @@ class ContentCategoriesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [id] - ContentCategory ID.
+  /// [id] - Required. ContentCategory ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3534,7 +3594,7 @@ class ContentCategoriesResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/contentCategories';
 
     final response_ = await _requester.request(
@@ -3554,6 +3614,7 @@ class ContentCategoriesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3576,7 +3637,7 @@ class ContentCategoriesResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/contentCategories';
 
     final response_ = await _requester.request(
@@ -3690,8 +3751,10 @@ class CountriesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [dartId] - Country DART ID.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3713,9 +3776,9 @@ class CountriesResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/countries/' +
-        commons.escapeVariable('$dartId');
+        core.Uri.encodeFull('$dartId');
 
     final response_ = await _requester.request(
       url_,
@@ -3730,6 +3793,7 @@ class CountriesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3750,7 +3814,7 @@ class CountriesResource {
     };
 
     final url_ =
-        'userprofiles/' + commons.escapeVariable('$profileId') + '/countries';
+        'userprofiles/' + core.Uri.encodeFull('$profileId') + '/countries';
 
     final response_ = await _requester.request(
       url_,
@@ -3774,8 +3838,10 @@ class CreativeAssetsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [advertiserId] - Advertiser ID of this creative. This is a required field.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3804,15 +3870,15 @@ class CreativeAssetsResource {
     core.String url_;
     if (uploadMedia == null) {
       url_ = 'userprofiles/' +
-          commons.escapeVariable('$profileId') +
+          core.Uri.encodeFull('$profileId') +
           '/creativeAssets/' +
-          commons.escapeVariable('$advertiserId') +
+          core.Uri.encodeFull('$advertiserId') +
           '/creativeAssets';
     } else {
       url_ = '/upload/dfareporting/v4/userprofiles/' +
-          commons.escapeVariable('$profileId') +
+          core.Uri.encodeFull('$profileId') +
           '/creativeAssets/' +
-          commons.escapeVariable('$advertiserId') +
+          core.Uri.encodeFull('$advertiserId') +
           '/creativeAssets';
     }
 
@@ -3840,10 +3906,13 @@ class CreativeFieldValuesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [creativeFieldId] - Creative field ID for this creative field value.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [id] - Creative Field Value ID
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3864,11 +3933,11 @@ class CreativeFieldValuesResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/creativeFields/' +
-        commons.escapeVariable('$creativeFieldId') +
+        core.Uri.encodeFull('$creativeFieldId') +
         '/creativeFieldValues/' +
-        commons.escapeVariable('$id');
+        core.Uri.encodeFull('$id');
 
     await _requester.request(
       url_,
@@ -3883,10 +3952,13 @@ class CreativeFieldValuesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [creativeFieldId] - Creative field ID for this creative field value.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [id] - Creative Field Value ID
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3909,11 +3981,11 @@ class CreativeFieldValuesResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/creativeFields/' +
-        commons.escapeVariable('$creativeFieldId') +
+        core.Uri.encodeFull('$creativeFieldId') +
         '/creativeFieldValues/' +
-        commons.escapeVariable('$id');
+        core.Uri.encodeFull('$id');
 
     final response_ = await _requester.request(
       url_,
@@ -3931,8 +4003,10 @@ class CreativeFieldValuesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [creativeFieldId] - Creative field ID for this creative field value.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3956,9 +4030,9 @@ class CreativeFieldValuesResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/creativeFields/' +
-        commons.escapeVariable('$creativeFieldId') +
+        core.Uri.encodeFull('$creativeFieldId') +
         '/creativeFieldValues';
 
     final response_ = await _requester.request(
@@ -3978,13 +4052,14 @@ class CreativeFieldValuesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [creativeFieldId] - Creative field ID for this creative field value.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [ids] - Select only creative field values with these IDs.
   ///
   /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "1000".
   ///
   /// [pageToken] - Value of the nextPageToken from the previous result page.
   ///
@@ -3998,8 +4073,8 @@ class CreativeFieldValuesResource {
   ///
   /// [sortOrder] - Order of sorted results.
   /// Possible string values are:
-  /// - "ASCENDING"
-  /// - "DESCENDING"
+  /// - "ASCENDING" : Ascending order.
+  /// - "DESCENDING" : Descending order.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4033,9 +4108,9 @@ class CreativeFieldValuesResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/creativeFields/' +
-        commons.escapeVariable('$creativeFieldId') +
+        core.Uri.encodeFull('$creativeFieldId') +
         '/creativeFieldValues';
 
     final response_ = await _requester.request(
@@ -4056,8 +4131,10 @@ class CreativeFieldValuesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [creativeFieldId] - CreativeField ID.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [id] - CreativeFieldValue ID.
   ///
@@ -4085,9 +4162,9 @@ class CreativeFieldValuesResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/creativeFields/' +
-        commons.escapeVariable('$creativeFieldId') +
+        core.Uri.encodeFull('$creativeFieldId') +
         '/creativeFieldValues';
 
     final response_ = await _requester.request(
@@ -4107,8 +4184,10 @@ class CreativeFieldValuesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [creativeFieldId] - Creative field ID for this creative field value.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4132,9 +4211,9 @@ class CreativeFieldValuesResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/creativeFields/' +
-        commons.escapeVariable('$creativeFieldId') +
+        core.Uri.encodeFull('$creativeFieldId') +
         '/creativeFieldValues';
 
     final response_ = await _requester.request(
@@ -4158,8 +4237,10 @@ class CreativeFieldsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [id] - Creative Field ID
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4179,9 +4260,9 @@ class CreativeFieldsResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/creativeFields/' +
-        commons.escapeVariable('$id');
+        core.Uri.encodeFull('$id');
 
     await _requester.request(
       url_,
@@ -4196,8 +4277,10 @@ class CreativeFieldsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [id] - Creative Field ID
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4219,9 +4302,9 @@ class CreativeFieldsResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/creativeFields/' +
-        commons.escapeVariable('$id');
+        core.Uri.encodeFull('$id');
 
     final response_ = await _requester.request(
       url_,
@@ -4239,6 +4322,7 @@ class CreativeFieldsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4260,9 +4344,8 @@ class CreativeFieldsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/creativeFields';
+    final url_ =
+        'userprofiles/' + core.Uri.encodeFull('$profileId') + '/creativeFields';
 
     final response_ = await _requester.request(
       url_,
@@ -4281,6 +4364,7 @@ class CreativeFieldsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [advertiserIds] - Select only creative fields that belong to these
   /// advertisers.
@@ -4288,7 +4372,6 @@ class CreativeFieldsResource {
   /// [ids] - Select only creative fields with these IDs.
   ///
   /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "1000".
   ///
   /// [pageToken] - Value of the nextPageToken from the previous result page.
   ///
@@ -4308,8 +4391,8 @@ class CreativeFieldsResource {
   ///
   /// [sortOrder] - Order of sorted results.
   /// Possible string values are:
-  /// - "ASCENDING"
-  /// - "DESCENDING"
+  /// - "ASCENDING" : Ascending order.
+  /// - "DESCENDING" : Descending order.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4343,9 +4426,8 @@ class CreativeFieldsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/creativeFields';
+    final url_ =
+        'userprofiles/' + core.Uri.encodeFull('$profileId') + '/creativeFields';
 
     final response_ = await _requester.request(
       url_,
@@ -4365,6 +4447,7 @@ class CreativeFieldsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [id] - CreativeField ID.
   ///
@@ -4390,9 +4473,8 @@ class CreativeFieldsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/creativeFields';
+    final url_ =
+        'userprofiles/' + core.Uri.encodeFull('$profileId') + '/creativeFields';
 
     final response_ = await _requester.request(
       url_,
@@ -4411,6 +4493,7 @@ class CreativeFieldsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4432,9 +4515,8 @@ class CreativeFieldsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/creativeFields';
+    final url_ =
+        'userprofiles/' + core.Uri.encodeFull('$profileId') + '/creativeFields';
 
     final response_ = await _requester.request(
       url_,
@@ -4457,8 +4539,10 @@ class CreativeGroupsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [id] - Creative group ID.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4480,9 +4564,9 @@ class CreativeGroupsResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/creativeGroups/' +
-        commons.escapeVariable('$id');
+        core.Uri.encodeFull('$id');
 
     final response_ = await _requester.request(
       url_,
@@ -4500,6 +4584,7 @@ class CreativeGroupsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4521,9 +4606,8 @@ class CreativeGroupsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/creativeGroups';
+    final url_ =
+        'userprofiles/' + core.Uri.encodeFull('$profileId') + '/creativeGroups';
 
     final response_ = await _requester.request(
       url_,
@@ -4542,17 +4626,16 @@ class CreativeGroupsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [advertiserIds] - Select only creative groups that belong to these
   /// advertisers.
   ///
   /// [groupNumber] - Select only creative groups that belong to this subgroup.
-  /// Value must be between "1" and "2".
   ///
   /// [ids] - Select only creative groups with these IDs.
   ///
   /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "1000".
   ///
   /// [pageToken] - Value of the nextPageToken from the previous result page.
   ///
@@ -4572,8 +4655,8 @@ class CreativeGroupsResource {
   ///
   /// [sortOrder] - Order of sorted results.
   /// Possible string values are:
-  /// - "ASCENDING"
-  /// - "DESCENDING"
+  /// - "ASCENDING" : Ascending order.
+  /// - "DESCENDING" : Descending order.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4609,9 +4692,8 @@ class CreativeGroupsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/creativeGroups';
+    final url_ =
+        'userprofiles/' + core.Uri.encodeFull('$profileId') + '/creativeGroups';
 
     final response_ = await _requester.request(
       url_,
@@ -4631,8 +4713,9 @@ class CreativeGroupsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [id] - CreativeGroup ID.
+  /// [id] - Required. Creative Group ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4656,9 +4739,8 @@ class CreativeGroupsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/creativeGroups';
+    final url_ =
+        'userprofiles/' + core.Uri.encodeFull('$profileId') + '/creativeGroups';
 
     final response_ = await _requester.request(
       url_,
@@ -4677,6 +4759,7 @@ class CreativeGroupsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4698,9 +4781,8 @@ class CreativeGroupsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/creativeGroups';
+    final url_ =
+        'userprofiles/' + core.Uri.encodeFull('$profileId') + '/creativeGroups';
 
     final response_ = await _requester.request(
       url_,
@@ -4723,8 +4805,10 @@ class CreativesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [id] - Creative ID.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4746,9 +4830,9 @@ class CreativesResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/creatives/' +
-        commons.escapeVariable('$id');
+        core.Uri.encodeFull('$id');
 
     final response_ = await _requester.request(
       url_,
@@ -4765,6 +4849,7 @@ class CreativesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4787,7 +4872,7 @@ class CreativesResource {
     };
 
     final url_ =
-        'userprofiles/' + commons.escapeVariable('$profileId') + '/creatives';
+        'userprofiles/' + core.Uri.encodeFull('$profileId') + '/creatives';
 
     final response_ = await _requester.request(
       url_,
@@ -4805,6 +4890,7 @@ class CreativesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [active] - Select only active creatives. Leave blank to select active and
   /// inactive creatives.
@@ -4824,7 +4910,6 @@ class CreativesResource {
   /// [ids] - Select only creatives with these IDs.
   ///
   /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "1000".
   ///
   /// [pageToken] - Value of the nextPageToken from the previous result page.
   ///
@@ -4847,8 +4932,8 @@ class CreativesResource {
   ///
   /// [sortOrder] - Order of sorted results.
   /// Possible string values are:
-  /// - "ASCENDING"
-  /// - "DESCENDING"
+  /// - "ASCENDING" : Ascending order.
+  /// - "DESCENDING" : Descending order.
   ///
   /// [studioCreativeId] - Select only creatives corresponding to this Studio
   /// creative ID.
@@ -4907,7 +4992,7 @@ class CreativesResource {
     };
 
     final url_ =
-        'userprofiles/' + commons.escapeVariable('$profileId') + '/creatives';
+        'userprofiles/' + core.Uri.encodeFull('$profileId') + '/creatives';
 
     final response_ = await _requester.request(
       url_,
@@ -4927,8 +5012,9 @@ class CreativesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [id] - Creative ID.
+  /// [id] - Required. Creative ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4953,7 +5039,7 @@ class CreativesResource {
     };
 
     final url_ =
-        'userprofiles/' + commons.escapeVariable('$profileId') + '/creatives';
+        'userprofiles/' + core.Uri.encodeFull('$profileId') + '/creatives';
 
     final response_ = await _requester.request(
       url_,
@@ -4971,6 +5057,7 @@ class CreativesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4993,7 +5080,7 @@ class CreativesResource {
     };
 
     final url_ =
-        'userprofiles/' + commons.escapeVariable('$profileId') + '/creatives';
+        'userprofiles/' + core.Uri.encodeFull('$profileId') + '/creatives';
 
     final response_ = await _requester.request(
       url_,
@@ -5019,7 +5106,6 @@ class DimensionValuesResource {
   /// [profileId] - The Campaign Manager 360 user profile ID.
   ///
   /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "100".
   ///
   /// [pageToken] - The value of the nextToken from the previous result page.
   ///
@@ -5072,8 +5158,10 @@ class DirectorySitesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [id] - Directory site ID.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5095,9 +5183,9 @@ class DirectorySitesResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/directorySites/' +
-        commons.escapeVariable('$id');
+        core.Uri.encodeFull('$id');
 
     final response_ = await _requester.request(
       url_,
@@ -5115,6 +5203,7 @@ class DirectorySitesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5136,9 +5225,8 @@ class DirectorySitesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/directorySites';
+    final url_ =
+        'userprofiles/' + core.Uri.encodeFull('$profileId') + '/directorySites';
 
     final response_ = await _requester.request(
       url_,
@@ -5157,6 +5245,7 @@ class DirectorySitesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [acceptsInStreamVideoPlacements] - This search filter is no longer
   /// supported and will have no effect on the results returned.
@@ -5176,7 +5265,6 @@ class DirectorySitesResource {
   /// [ids] - Select only directory sites with these IDs.
   ///
   /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "1000".
   ///
   /// [pageToken] - Value of the nextPageToken from the previous result page.
   ///
@@ -5195,8 +5283,8 @@ class DirectorySitesResource {
   ///
   /// [sortOrder] - Order of sorted results.
   /// Possible string values are:
-  /// - "ASCENDING"
-  /// - "DESCENDING"
+  /// - "ASCENDING" : Ascending order.
+  /// - "DESCENDING" : Descending order.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5241,9 +5329,8 @@ class DirectorySitesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/directorySites';
+    final url_ =
+        'userprofiles/' + core.Uri.encodeFull('$profileId') + '/directorySites';
 
     final response_ = await _requester.request(
       url_,
@@ -5266,16 +5353,18 @@ class DynamicTargetingKeysResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [objectId] - ID of the object of this dynamic targeting key. This is a
   /// required field.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [name] - Name of this dynamic targeting key. This is a required field.
-  /// Must be less than 256 characters long and cannot contain commas. All
-  /// characters are converted to lowercase.
+  /// [name] - Required. Name of this dynamic targeting key. This is a required
+  /// field. Must be less than 256 characters long and cannot contain commas.
+  /// All characters are converted to lowercase.
   ///
-  /// [objectType] - Type of the object of this dynamic targeting key. This is a
-  /// required field.
+  /// [objectType] - Required. Type of the object of this dynamic targeting key.
+  /// This is a required field.
   /// Possible string values are:
   /// - "OBJECT_ADVERTISER"
   /// - "OBJECT_AD"
@@ -5304,9 +5393,9 @@ class DynamicTargetingKeysResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/dynamicTargetingKeys/' +
-        commons.escapeVariable('$objectId');
+        core.Uri.encodeFull('$objectId');
 
     await _requester.request(
       url_,
@@ -5328,6 +5417,7 @@ class DynamicTargetingKeysResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5350,7 +5440,7 @@ class DynamicTargetingKeysResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/dynamicTargetingKeys';
 
     final response_ = await _requester.request(
@@ -5368,6 +5458,7 @@ class DynamicTargetingKeysResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [advertiserId] - Select only dynamic targeting keys whose object has this
   /// advertiser ID.
@@ -5410,7 +5501,7 @@ class DynamicTargetingKeysResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/dynamicTargetingKeys';
 
     final response_ = await _requester.request(
@@ -5433,8 +5524,10 @@ class EventTagsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [id] - Event tag ID.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5454,9 +5547,9 @@ class EventTagsResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/eventTags/' +
-        commons.escapeVariable('$id');
+        core.Uri.encodeFull('$id');
 
     await _requester.request(
       url_,
@@ -5471,8 +5564,10 @@ class EventTagsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [id] - Event tag ID.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5494,9 +5589,9 @@ class EventTagsResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/eventTags/' +
-        commons.escapeVariable('$id');
+        core.Uri.encodeFull('$id');
 
     final response_ = await _requester.request(
       url_,
@@ -5513,6 +5608,7 @@ class EventTagsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5535,7 +5631,7 @@ class EventTagsResource {
     };
 
     final url_ =
-        'userprofiles/' + commons.escapeVariable('$profileId') + '/eventTags';
+        'userprofiles/' + core.Uri.encodeFull('$profileId') + '/eventTags';
 
     final response_ = await _requester.request(
       url_,
@@ -5551,6 +5647,7 @@ class EventTagsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [adId] - Select only event tags that belong to this ad.
   ///
@@ -5595,8 +5692,8 @@ class EventTagsResource {
   ///
   /// [sortOrder] - Order of sorted results.
   /// Possible string values are:
-  /// - "ASCENDING"
-  /// - "DESCENDING"
+  /// - "ASCENDING" : Ascending order.
+  /// - "DESCENDING" : Descending order.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5637,7 +5734,7 @@ class EventTagsResource {
     };
 
     final url_ =
-        'userprofiles/' + commons.escapeVariable('$profileId') + '/eventTags';
+        'userprofiles/' + core.Uri.encodeFull('$profileId') + '/eventTags';
 
     final response_ = await _requester.request(
       url_,
@@ -5657,8 +5754,9 @@ class EventTagsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [id] - EventTag ID.
+  /// [id] - Required. EventTag ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5683,7 +5781,7 @@ class EventTagsResource {
     };
 
     final url_ =
-        'userprofiles/' + commons.escapeVariable('$profileId') + '/eventTags';
+        'userprofiles/' + core.Uri.encodeFull('$profileId') + '/eventTags';
 
     final response_ = await _requester.request(
       url_,
@@ -5701,6 +5799,7 @@ class EventTagsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5723,7 +5822,7 @@ class EventTagsResource {
     };
 
     final url_ =
-        'userprofiles/' + commons.escapeVariable('$profileId') + '/eventTags';
+        'userprofiles/' + core.Uri.encodeFull('$profileId') + '/eventTags';
 
     final response_ = await _requester.request(
       url_,
@@ -5803,7 +5902,6 @@ class FilesResource {
   /// [profileId] - The Campaign Manager 360 user profile ID.
   ///
   /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "10".
   ///
   /// [pageToken] - The value of the nextToken from the previous result page.
   ///
@@ -5874,8 +5972,10 @@ class FloodlightActivitiesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [id] - Floodlight activity ID.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5895,9 +5995,9 @@ class FloodlightActivitiesResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/floodlightActivities/' +
-        commons.escapeVariable('$id');
+        core.Uri.encodeFull('$id');
 
     await _requester.request(
       url_,
@@ -5912,6 +6012,7 @@ class FloodlightActivitiesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [floodlightActivityId] - Floodlight activity ID for which we want to
   /// generate a tag.
@@ -5938,7 +6039,7 @@ class FloodlightActivitiesResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/floodlightActivities/generatetag';
 
     final response_ = await _requester.request(
@@ -5955,8 +6056,10 @@ class FloodlightActivitiesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [id] - Floodlight activity ID.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5978,9 +6081,9 @@ class FloodlightActivitiesResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/floodlightActivities/' +
-        commons.escapeVariable('$id');
+        core.Uri.encodeFull('$id');
 
     final response_ = await _requester.request(
       url_,
@@ -5998,6 +6101,7 @@ class FloodlightActivitiesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6020,7 +6124,7 @@ class FloodlightActivitiesResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/floodlightActivities';
 
     final response_ = await _requester.request(
@@ -6040,6 +6144,7 @@ class FloodlightActivitiesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [advertiserId] - Select only floodlight activities for the specified
   /// advertiser ID. Must specify either ids, advertiserId, or
@@ -6069,7 +6174,6 @@ class FloodlightActivitiesResource {
   /// non-empty result.
   ///
   /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "1000".
   ///
   /// [pageToken] - Value of the nextPageToken from the previous result page.
   ///
@@ -6089,8 +6193,8 @@ class FloodlightActivitiesResource {
   ///
   /// [sortOrder] - Order of sorted results.
   /// Possible string values are:
-  /// - "ASCENDING"
-  /// - "DESCENDING"
+  /// - "ASCENDING" : Ascending order.
+  /// - "DESCENDING" : Descending order.
   ///
   /// [tagString] - Select only floodlight activities with the specified tag
   /// string.
@@ -6145,7 +6249,7 @@ class FloodlightActivitiesResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/floodlightActivities';
 
     final response_ = await _requester.request(
@@ -6157,7 +6261,7 @@ class FloodlightActivitiesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates an existing floodlight activity.
+  /// Updates an existing event tag.
   ///
   /// This method supports patch semantics.
   ///
@@ -6166,8 +6270,9 @@ class FloodlightActivitiesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [id] - FloodlightActivity ID.
+  /// [id] - Required. EventTag ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6192,7 +6297,7 @@ class FloodlightActivitiesResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/floodlightActivities';
 
     final response_ = await _requester.request(
@@ -6212,6 +6317,7 @@ class FloodlightActivitiesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6234,7 +6340,7 @@ class FloodlightActivitiesResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/floodlightActivities';
 
     final response_ = await _requester.request(
@@ -6259,8 +6365,10 @@ class FloodlightActivityGroupsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [id] - Floodlight activity Group ID.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6282,9 +6390,9 @@ class FloodlightActivityGroupsResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/floodlightActivityGroups/' +
-        commons.escapeVariable('$id');
+        core.Uri.encodeFull('$id');
 
     final response_ = await _requester.request(
       url_,
@@ -6302,6 +6410,7 @@ class FloodlightActivityGroupsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6324,7 +6433,7 @@ class FloodlightActivityGroupsResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/floodlightActivityGroups';
 
     final response_ = await _requester.request(
@@ -6344,6 +6453,7 @@ class FloodlightActivityGroupsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [advertiserId] - Select only floodlight activity groups with the specified
   /// advertiser ID. Must specify either advertiserId or
@@ -6358,7 +6468,6 @@ class FloodlightActivityGroupsResource {
   /// non-empty result.
   ///
   /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "1000".
   ///
   /// [pageToken] - Value of the nextPageToken from the previous result page.
   ///
@@ -6379,8 +6488,8 @@ class FloodlightActivityGroupsResource {
   ///
   /// [sortOrder] - Order of sorted results.
   /// Possible string values are:
-  /// - "ASCENDING"
-  /// - "DESCENDING"
+  /// - "ASCENDING" : Ascending order.
+  /// - "DESCENDING" : Descending order.
   ///
   /// [type] - Select only floodlight activity groups with the specified
   /// floodlight activity group type.
@@ -6426,7 +6535,7 @@ class FloodlightActivityGroupsResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/floodlightActivityGroups';
 
     final response_ = await _requester.request(
@@ -6438,7 +6547,7 @@ class FloodlightActivityGroupsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates an existing floodlight activity group.
+  /// Updates an existing event tag.
   ///
   /// This method supports patch semantics.
   ///
@@ -6447,8 +6556,9 @@ class FloodlightActivityGroupsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [id] - FloodlightActivityGroup ID.
+  /// [id] - Required. EventTag ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6473,7 +6583,7 @@ class FloodlightActivityGroupsResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/floodlightActivityGroups';
 
     final response_ = await _requester.request(
@@ -6493,6 +6603,7 @@ class FloodlightActivityGroupsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6515,7 +6626,7 @@ class FloodlightActivityGroupsResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/floodlightActivityGroups';
 
     final response_ = await _requester.request(
@@ -6540,8 +6651,10 @@ class FloodlightConfigurationsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [id] - Floodlight configuration ID.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6563,9 +6676,9 @@ class FloodlightConfigurationsResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/floodlightConfigurations/' +
-        commons.escapeVariable('$id');
+        core.Uri.encodeFull('$id');
 
     final response_ = await _requester.request(
       url_,
@@ -6581,6 +6694,7 @@ class FloodlightConfigurationsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [ids] - Set of IDs of floodlight configurations to retrieve. Required
   /// field; otherwise an empty list will be returned.
@@ -6606,7 +6720,7 @@ class FloodlightConfigurationsResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/floodlightConfigurations';
 
     final response_ = await _requester.request(
@@ -6618,7 +6732,7 @@ class FloodlightConfigurationsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates an existing floodlight configuration.
+  /// Updates an existing event tag.
   ///
   /// This method supports patch semantics.
   ///
@@ -6627,8 +6741,9 @@ class FloodlightConfigurationsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [id] - FloodlightConfiguration ID.
+  /// [id] - Required. EventTag ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6653,7 +6768,7 @@ class FloodlightConfigurationsResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/floodlightConfigurations';
 
     final response_ = await _requester.request(
@@ -6673,6 +6788,7 @@ class FloodlightConfigurationsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6695,7 +6811,7 @@ class FloodlightConfigurationsResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/floodlightConfigurations';
 
     final response_ = await _requester.request(
@@ -6719,10 +6835,12 @@ class InventoryItemsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [projectId] - Project ID for order documents.
   ///
   /// [id] - Inventory item ID.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6745,11 +6863,11 @@ class InventoryItemsResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/projects/' +
         commons.escapeVariable('$projectId') +
         '/inventoryItems/' +
-        commons.escapeVariable('$id');
+        core.Uri.encodeFull('$id');
 
     final response_ = await _requester.request(
       url_,
@@ -6767,6 +6885,7 @@ class InventoryItemsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [projectId] - Project ID for order documents.
   ///
@@ -6775,7 +6894,6 @@ class InventoryItemsResource {
   /// [inPlan] - Select only inventory items that are in plan.
   ///
   /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "1000".
   ///
   /// [orderId] - Select only inventory items that belong to specified orders.
   ///
@@ -6791,8 +6909,8 @@ class InventoryItemsResource {
   ///
   /// [sortOrder] - Order of sorted results.
   /// Possible string values are:
-  /// - "ASCENDING"
-  /// - "DESCENDING"
+  /// - "ASCENDING" : Ascending order.
+  /// - "DESCENDING" : Descending order.
   ///
   /// [type] - Select only inventory items with this type.
   /// Possible string values are:
@@ -6837,7 +6955,7 @@ class InventoryItemsResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/projects/' +
         commons.escapeVariable('$projectId') +
         '/inventoryItems';
@@ -6862,6 +6980,7 @@ class LanguagesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6882,7 +7001,7 @@ class LanguagesResource {
     };
 
     final url_ =
-        'userprofiles/' + commons.escapeVariable('$profileId') + '/languages';
+        'userprofiles/' + core.Uri.encodeFull('$profileId') + '/languages';
 
     final response_ = await _requester.request(
       url_,
@@ -6904,6 +7023,7 @@ class MetrosResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6924,7 +7044,7 @@ class MetrosResource {
     };
 
     final url_ =
-        'userprofiles/' + commons.escapeVariable('$profileId') + '/metros';
+        'userprofiles/' + core.Uri.encodeFull('$profileId') + '/metros';
 
     final response_ = await _requester.request(
       url_,
@@ -6946,8 +7066,10 @@ class MobileAppsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [id] - Mobile app ID.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6969,9 +7091,9 @@ class MobileAppsResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/mobileApps/' +
-        commons.escapeVariable('$id');
+        core.Uri.encodeFull('$id');
 
     final response_ = await _requester.request(
       url_,
@@ -6986,13 +7108,13 @@ class MobileAppsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [directories] - Select only apps from these directories.
   ///
   /// [ids] - Select only apps with these IDs.
   ///
   /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "1000".
   ///
   /// [pageToken] - Value of the nextPageToken from the previous result page.
   ///
@@ -7032,7 +7154,7 @@ class MobileAppsResource {
     };
 
     final url_ =
-        'userprofiles/' + commons.escapeVariable('$profileId') + '/mobileApps';
+        'userprofiles/' + core.Uri.encodeFull('$profileId') + '/mobileApps';
 
     final response_ = await _requester.request(
       url_,
@@ -7054,8 +7176,10 @@ class MobileCarriersResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [id] - Mobile carrier ID.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7077,9 +7201,9 @@ class MobileCarriersResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/mobileCarriers/' +
-        commons.escapeVariable('$id');
+        core.Uri.encodeFull('$id');
 
     final response_ = await _requester.request(
       url_,
@@ -7095,6 +7219,7 @@ class MobileCarriersResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7114,9 +7239,8 @@ class MobileCarriersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/mobileCarriers';
+    final url_ =
+        'userprofiles/' + core.Uri.encodeFull('$profileId') + '/mobileCarriers';
 
     final response_ = await _requester.request(
       url_,
@@ -7139,8 +7263,10 @@ class OperatingSystemVersionsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [id] - Operating system version ID.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7162,9 +7288,9 @@ class OperatingSystemVersionsResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/operatingSystemVersions/' +
-        commons.escapeVariable('$id');
+        core.Uri.encodeFull('$id');
 
     final response_ = await _requester.request(
       url_,
@@ -7180,6 +7306,7 @@ class OperatingSystemVersionsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7200,7 +7327,7 @@ class OperatingSystemVersionsResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/operatingSystemVersions';
 
     final response_ = await _requester.request(
@@ -7223,8 +7350,10 @@ class OperatingSystemsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [dartId] - Operating system DART ID.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7246,9 +7375,9 @@ class OperatingSystemsResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/operatingSystems/' +
-        commons.escapeVariable('$dartId');
+        core.Uri.encodeFull('$dartId');
 
     final response_ = await _requester.request(
       url_,
@@ -7264,6 +7393,7 @@ class OperatingSystemsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7284,7 +7414,7 @@ class OperatingSystemsResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/operatingSystems';
 
     final response_ = await _requester.request(
@@ -7293,154 +7423,6 @@ class OperatingSystemsResource {
       queryParams: queryParams_,
     );
     return OperatingSystemsListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-}
-
-class OrderDocumentsResource {
-  final commons.ApiRequester _requester;
-
-  OrderDocumentsResource(commons.ApiRequester client) : _requester = client;
-
-  /// Gets one order document by ID.
-  ///
-  /// Request parameters:
-  ///
-  /// [profileId] - User profile ID associated with this request.
-  ///
-  /// [projectId] - Project ID for order documents.
-  ///
-  /// [id] - Order document ID.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [OrderDocument].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<OrderDocument> get(
-    core.String profileId,
-    core.String projectId,
-    core.String id, {
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/projects/' +
-        commons.escapeVariable('$projectId') +
-        '/orderDocuments/' +
-        commons.escapeVariable('$id');
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return OrderDocument.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Retrieves a list of order documents, possibly filtered.
-  ///
-  /// This method supports paging.
-  ///
-  /// Request parameters:
-  ///
-  /// [profileId] - User profile ID associated with this request.
-  ///
-  /// [projectId] - Project ID for order documents.
-  ///
-  /// [approved] - Select only order documents that have been approved by at
-  /// least one user.
-  ///
-  /// [ids] - Select only order documents with these IDs.
-  ///
-  /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "1000".
-  ///
-  /// [orderId] - Select only order documents for specified orders.
-  ///
-  /// [pageToken] - Value of the nextPageToken from the previous result page.
-  ///
-  /// [searchString] - Allows searching for order documents by name or ID.
-  /// Wildcards (*) are allowed. For example, "orderdocument*2015" will return
-  /// order documents with names like "orderdocument June 2015", "orderdocument
-  /// April 2015", or simply "orderdocument 2015". Most of the searches also add
-  /// wildcards implicitly at the start and the end of the search string. For
-  /// example, a search string of "orderdocument" will match order documents
-  /// with name "my orderdocument", "orderdocument 2015", or simply
-  /// "orderdocument".
-  ///
-  /// [siteId] - Select only order documents that are associated with these
-  /// sites.
-  ///
-  /// [sortField] - Field by which to sort the list.
-  /// Possible string values are:
-  /// - "ID"
-  /// - "NAME"
-  ///
-  /// [sortOrder] - Order of sorted results.
-  /// Possible string values are:
-  /// - "ASCENDING"
-  /// - "DESCENDING"
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [OrderDocumentsListResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<OrderDocumentsListResponse> list(
-    core.String profileId,
-    core.String projectId, {
-    core.bool? approved,
-    core.List<core.String>? ids,
-    core.int? maxResults,
-    core.List<core.String>? orderId,
-    core.String? pageToken,
-    core.String? searchString,
-    core.List<core.String>? siteId,
-    core.String? sortField,
-    core.String? sortOrder,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (approved != null) 'approved': ['${approved}'],
-      if (ids != null) 'ids': ids,
-      if (maxResults != null) 'maxResults': ['${maxResults}'],
-      if (orderId != null) 'orderId': orderId,
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (searchString != null) 'searchString': [searchString],
-      if (siteId != null) 'siteId': siteId,
-      if (sortField != null) 'sortField': [sortField],
-      if (sortOrder != null) 'sortOrder': [sortOrder],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/projects/' +
-        commons.escapeVariable('$projectId') +
-        '/orderDocuments';
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return OrderDocumentsListResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -7455,10 +7437,12 @@ class OrdersResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [projectId] - Project ID for orders.
   ///
   /// [id] - Order ID.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7481,11 +7465,11 @@ class OrdersResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/projects/' +
         commons.escapeVariable('$projectId') +
         '/orders/' +
-        commons.escapeVariable('$id');
+        core.Uri.encodeFull('$id');
 
     final response_ = await _requester.request(
       url_,
@@ -7502,13 +7486,13 @@ class OrdersResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [projectId] - Project ID for orders.
   ///
   /// [ids] - Select only orders with these IDs.
   ///
   /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "1000".
   ///
   /// [pageToken] - Value of the nextPageToken from the previous result page.
   ///
@@ -7528,8 +7512,8 @@ class OrdersResource {
   ///
   /// [sortOrder] - Order of sorted results.
   /// Possible string values are:
-  /// - "ASCENDING"
-  /// - "DESCENDING"
+  /// - "ASCENDING" : Ascending order.
+  /// - "DESCENDING" : Descending order.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7565,7 +7549,7 @@ class OrdersResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/projects/' +
         commons.escapeVariable('$projectId') +
         '/orders';
@@ -7590,8 +7574,10 @@ class PlacementGroupsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [id] - Placement group ID.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7613,9 +7599,9 @@ class PlacementGroupsResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/placementGroups/' +
-        commons.escapeVariable('$id');
+        core.Uri.encodeFull('$id');
 
     final response_ = await _requester.request(
       url_,
@@ -7633,6 +7619,7 @@ class PlacementGroupsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7655,7 +7642,7 @@ class PlacementGroupsResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/placementGroups';
 
     final response_ = await _requester.request(
@@ -7675,6 +7662,7 @@ class PlacementGroupsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [activeStatus] - Select only placements with these active statuses.
   ///
@@ -7697,7 +7685,6 @@ class PlacementGroupsResource {
   /// "yyyy-MM-dd".
   ///
   /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "800".
   ///
   /// [maxStartDate] - Select only placements or placement groups whose start
   /// date is on or before the specified maxStartDate. The date should be
@@ -7721,8 +7708,12 @@ class PlacementGroupsResource {
   /// requires one of its assigned placements to be marked as primary for
   /// reporting.
   /// Possible string values are:
-  /// - "PLACEMENT_PACKAGE"
-  /// - "PLACEMENT_ROADBLOCK"
+  /// - "PLACEMENT_PACKAGE" : A simple group of site-placements (tags).
+  /// Basically acts as a single pricing point for a group of tags.
+  /// - "PLACEMENT_ROADBLOCK" : A group of site-placements (tags) that not only
+  /// acts as a single pricing point but also assumes that all the tags in it
+  /// will be served at the same time. This kind of group requires one of its
+  /// assigned site-placements to be marked as primary for reporting purposes.
   ///
   /// [placementStrategyIds] - Select only placement groups that are associated
   /// with these placement strategies.
@@ -7748,8 +7739,8 @@ class PlacementGroupsResource {
   ///
   /// [sortOrder] - Order of sorted results.
   /// Possible string values are:
-  /// - "ASCENDING"
-  /// - "DESCENDING"
+  /// - "ASCENDING" : Ascending order.
+  /// - "DESCENDING" : Descending order.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7810,7 +7801,7 @@ class PlacementGroupsResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/placementGroups';
 
     final response_ = await _requester.request(
@@ -7831,8 +7822,9 @@ class PlacementGroupsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [id] - PlacementGroup ID.
+  /// [id] - Required. Placement ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7857,7 +7849,7 @@ class PlacementGroupsResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/placementGroups';
 
     final response_ = await _requester.request(
@@ -7877,6 +7869,7 @@ class PlacementGroupsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7899,7 +7892,7 @@ class PlacementGroupsResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/placementGroups';
 
     final response_ = await _requester.request(
@@ -7924,8 +7917,10 @@ class PlacementStrategiesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [id] - Placement strategy ID.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7945,9 +7940,9 @@ class PlacementStrategiesResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/placementStrategies/' +
-        commons.escapeVariable('$id');
+        core.Uri.encodeFull('$id');
 
     await _requester.request(
       url_,
@@ -7962,8 +7957,10 @@ class PlacementStrategiesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [id] - Placement strategy ID.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7985,9 +7982,9 @@ class PlacementStrategiesResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/placementStrategies/' +
-        commons.escapeVariable('$id');
+        core.Uri.encodeFull('$id');
 
     final response_ = await _requester.request(
       url_,
@@ -8005,6 +8002,7 @@ class PlacementStrategiesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8027,7 +8025,7 @@ class PlacementStrategiesResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/placementStrategies';
 
     final response_ = await _requester.request(
@@ -8047,11 +8045,11 @@ class PlacementStrategiesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [ids] - Select only placement strategies with these IDs.
   ///
   /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "1000".
   ///
   /// [pageToken] - Value of the nextPageToken from the previous result page.
   ///
@@ -8071,8 +8069,8 @@ class PlacementStrategiesResource {
   ///
   /// [sortOrder] - Order of sorted results.
   /// Possible string values are:
-  /// - "ASCENDING"
-  /// - "DESCENDING"
+  /// - "ASCENDING" : Ascending order.
+  /// - "DESCENDING" : Descending order.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8105,7 +8103,7 @@ class PlacementStrategiesResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/placementStrategies';
 
     final response_ = await _requester.request(
@@ -8126,8 +8124,9 @@ class PlacementStrategiesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [id] - PlacementStrategy ID.
+  /// [id] - Required. PlacementStrategy ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8152,7 +8151,7 @@ class PlacementStrategiesResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/placementStrategies';
 
     final response_ = await _requester.request(
@@ -8172,6 +8171,7 @@ class PlacementStrategiesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8194,7 +8194,7 @@ class PlacementStrategiesResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/placementStrategies';
 
     final response_ = await _requester.request(
@@ -8218,6 +8218,7 @@ class PlacementsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [campaignId] - Generate placements belonging to this campaign. This is a
   /// required field.
@@ -8252,7 +8253,7 @@ class PlacementsResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/placements/generatetags';
 
     final response_ = await _requester.request(
@@ -8269,8 +8270,10 @@ class PlacementsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [id] - Placement ID.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8292,9 +8295,9 @@ class PlacementsResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/placements/' +
-        commons.escapeVariable('$id');
+        core.Uri.encodeFull('$id');
 
     final response_ = await _requester.request(
       url_,
@@ -8311,6 +8314,7 @@ class PlacementsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8333,7 +8337,7 @@ class PlacementsResource {
     };
 
     final url_ =
-        'userprofiles/' + commons.escapeVariable('$profileId') + '/placements';
+        'userprofiles/' + core.Uri.encodeFull('$profileId') + '/placements';
 
     final response_ = await _requester.request(
       url_,
@@ -8351,6 +8355,7 @@ class PlacementsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [activeStatus] - Select only placements with these active statuses.
   ///
@@ -8380,7 +8385,6 @@ class PlacementsResource {
   /// "yyyy-MM-dd".
   ///
   /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "1000".
   ///
   /// [maxStartDate] - Select only placements or placement groups whose start
   /// date is on or before the specified maxStartDate. The date should be
@@ -8425,8 +8429,8 @@ class PlacementsResource {
   ///
   /// [sortOrder] - Order of sorted results.
   /// Possible string values are:
-  /// - "ASCENDING"
-  /// - "DESCENDING"
+  /// - "ASCENDING" : Ascending order.
+  /// - "DESCENDING" : Descending order.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8492,7 +8496,7 @@ class PlacementsResource {
     };
 
     final url_ =
-        'userprofiles/' + commons.escapeVariable('$profileId') + '/placements';
+        'userprofiles/' + core.Uri.encodeFull('$profileId') + '/placements';
 
     final response_ = await _requester.request(
       url_,
@@ -8512,8 +8516,9 @@ class PlacementsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [id] - Placement ID.
+  /// [id] - Required. Placement ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8538,7 +8543,7 @@ class PlacementsResource {
     };
 
     final url_ =
-        'userprofiles/' + commons.escapeVariable('$profileId') + '/placements';
+        'userprofiles/' + core.Uri.encodeFull('$profileId') + '/placements';
 
     final response_ = await _requester.request(
       url_,
@@ -8556,6 +8561,7 @@ class PlacementsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8578,7 +8584,7 @@ class PlacementsResource {
     };
 
     final url_ =
-        'userprofiles/' + commons.escapeVariable('$profileId') + '/placements';
+        'userprofiles/' + core.Uri.encodeFull('$profileId') + '/placements';
 
     final response_ = await _requester.request(
       url_,
@@ -8600,8 +8606,10 @@ class PlatformTypesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [id] - Platform type ID.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8623,9 +8631,9 @@ class PlatformTypesResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/platformTypes/' +
-        commons.escapeVariable('$id');
+        core.Uri.encodeFull('$id');
 
     final response_ = await _requester.request(
       url_,
@@ -8641,6 +8649,7 @@ class PlatformTypesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8660,9 +8669,8 @@ class PlatformTypesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/platformTypes';
+    final url_ =
+        'userprofiles/' + core.Uri.encodeFull('$profileId') + '/platformTypes';
 
     final response_ = await _requester.request(
       url_,
@@ -8684,8 +8692,10 @@ class PostalCodesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [code] - Postal code ID.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8707,9 +8717,9 @@ class PostalCodesResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/postalCodes/' +
-        commons.escapeVariable('$code');
+        core.Uri.encodeFull('$code');
 
     final response_ = await _requester.request(
       url_,
@@ -8725,6 +8735,7 @@ class PostalCodesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8745,7 +8756,7 @@ class PostalCodesResource {
     };
 
     final url_ =
-        'userprofiles/' + commons.escapeVariable('$profileId') + '/postalCodes';
+        'userprofiles/' + core.Uri.encodeFull('$profileId') + '/postalCodes';
 
     final response_ = await _requester.request(
       url_,
@@ -8767,8 +8778,10 @@ class ProjectsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [id] - Project ID.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8790,9 +8803,9 @@ class ProjectsResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/projects/' +
-        commons.escapeVariable('$id');
+        core.Uri.encodeFull('$id');
 
     final response_ = await _requester.request(
       url_,
@@ -8809,13 +8822,13 @@ class ProjectsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [advertiserIds] - Select only projects with these advertiser IDs.
   ///
   /// [ids] - Select only projects with these IDs.
   ///
   /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "1000".
   ///
   /// [pageToken] - Value of the nextPageToken from the previous result page.
   ///
@@ -8834,8 +8847,8 @@ class ProjectsResource {
   ///
   /// [sortOrder] - Order of sorted results.
   /// Possible string values are:
-  /// - "ASCENDING"
-  /// - "DESCENDING"
+  /// - "ASCENDING" : Ascending order.
+  /// - "DESCENDING" : Descending order.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8870,7 +8883,7 @@ class ProjectsResource {
     };
 
     final url_ =
-        'userprofiles/' + commons.escapeVariable('$profileId') + '/projects';
+        'userprofiles/' + core.Uri.encodeFull('$profileId') + '/projects';
 
     final response_ = await _requester.request(
       url_,
@@ -8892,6 +8905,7 @@ class RegionsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8912,7 +8926,7 @@ class RegionsResource {
     };
 
     final url_ =
-        'userprofiles/' + commons.escapeVariable('$profileId') + '/regions';
+        'userprofiles/' + core.Uri.encodeFull('$profileId') + '/regions';
 
     final response_ = await _requester.request(
       url_,
@@ -8935,8 +8949,10 @@ class RemarketingListSharesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [remarketingListId] - Remarketing list ID.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8958,9 +8974,9 @@ class RemarketingListSharesResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/remarketingListShares/' +
-        commons.escapeVariable('$remarketingListId');
+        core.Uri.encodeFull('$remarketingListId');
 
     final response_ = await _requester.request(
       url_,
@@ -8971,7 +8987,7 @@ class RemarketingListSharesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates an existing remarketing list share.
+  /// Updates an existing RemarketingListShare.
   ///
   /// This method supports patch semantics.
   ///
@@ -8980,8 +8996,9 @@ class RemarketingListSharesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [id] - RemarketingList ID.
+  /// [id] - Required. RemarketingList ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9006,7 +9023,7 @@ class RemarketingListSharesResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/remarketingListShares';
 
     final response_ = await _requester.request(
@@ -9026,6 +9043,7 @@ class RemarketingListSharesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9048,7 +9066,7 @@ class RemarketingListSharesResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/remarketingListShares';
 
     final response_ = await _requester.request(
@@ -9072,8 +9090,10 @@ class RemarketingListsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [id] - Remarketing list ID.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9095,9 +9115,9 @@ class RemarketingListsResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/remarketingLists/' +
-        commons.escapeVariable('$id');
+        core.Uri.encodeFull('$id');
 
     final response_ = await _requester.request(
       url_,
@@ -9115,6 +9135,7 @@ class RemarketingListsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9137,7 +9158,7 @@ class RemarketingListsResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/remarketingLists';
 
     final response_ = await _requester.request(
@@ -9157,8 +9178,10 @@ class RemarketingListsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [advertiserId] - Select only remarketing lists owned by this advertiser.
+  /// [advertiserId] - Required. Select only remarketing lists owned by this
+  /// advertiser.
   ///
   /// [active] - Select only active or only inactive remarketing lists.
   ///
@@ -9166,7 +9189,6 @@ class RemarketingListsResource {
   /// floodlight activity ID.
   ///
   /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "1000".
   ///
   /// [name] - Allows searching for objects by name or ID. Wildcards (*) are
   /// allowed. For example, "remarketing list*2015" will return objects with
@@ -9185,8 +9207,8 @@ class RemarketingListsResource {
   ///
   /// [sortOrder] - Order of sorted results.
   /// Possible string values are:
-  /// - "ASCENDING"
-  /// - "DESCENDING"
+  /// - "ASCENDING" : Ascending order.
+  /// - "DESCENDING" : Descending order.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9224,7 +9246,7 @@ class RemarketingListsResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/remarketingLists';
 
     final response_ = await _requester.request(
@@ -9236,7 +9258,7 @@ class RemarketingListsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates an existing remarketing list.
+  /// Updates an existing RemarketingList.
   ///
   /// This method supports patch semantics.
   ///
@@ -9245,8 +9267,9 @@ class RemarketingListsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [id] - RemarketingList ID.
+  /// [id] - Required. RemarketingList ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9271,7 +9294,7 @@ class RemarketingListsResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/remarketingLists';
 
     final response_ = await _requester.request(
@@ -9291,6 +9314,7 @@ class RemarketingListsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9313,7 +9337,7 @@ class RemarketingListsResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/remarketingLists';
 
     final response_ = await _requester.request(
@@ -9461,7 +9485,6 @@ class ReportsResource {
   /// [profileId] - The Campaign Manager 360 user profile ID.
   ///
   /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "10".
   ///
   /// [pageToken] - The value of the nextToken from the previous result page.
   ///
@@ -9529,7 +9552,7 @@ class ReportsResource {
   ///
   /// Request parameters:
   ///
-  /// [profileId] - The DFA user profile ID.
+  /// [profileId] - The Campaign Manager 360 user profile ID.
   ///
   /// [reportId] - The ID of the report.
   ///
@@ -9785,7 +9808,6 @@ class ReportsFilesResource {
   /// [reportId] - The ID of the parent report.
   ///
   /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "10".
   ///
   /// [pageToken] - The value of the nextToken from the previous result page.
   ///
@@ -9796,8 +9818,8 @@ class ReportsFilesResource {
   ///
   /// [sortOrder] - Order of sorted results.
   /// Possible string values are:
-  /// - "ASCENDING"
-  /// - "DESCENDING"
+  /// - "ASCENDING" : Ascending order.
+  /// - "DESCENDING" : Descending order.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9851,8 +9873,10 @@ class SitesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [id] - Site ID.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9874,9 +9898,9 @@ class SitesResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/sites/' +
-        commons.escapeVariable('$id');
+        core.Uri.encodeFull('$id');
 
     final response_ = await _requester.request(
       url_,
@@ -9893,6 +9917,7 @@ class SitesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9914,8 +9939,7 @@ class SitesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ =
-        'userprofiles/' + commons.escapeVariable('$profileId') + '/sites';
+    final url_ = 'userprofiles/' + core.Uri.encodeFull('$profileId') + '/sites';
 
     final response_ = await _requester.request(
       url_,
@@ -9933,6 +9957,7 @@ class SitesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [acceptsInStreamVideoPlacements] - This search filter is no longer
   /// supported and will have no effect on the results returned.
@@ -9954,7 +9979,6 @@ class SitesResource {
   /// [ids] - Select only sites with these IDs.
   ///
   /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "1000".
   ///
   /// [pageToken] - Value of the nextPageToken from the previous result page.
   ///
@@ -9972,8 +9996,8 @@ class SitesResource {
   ///
   /// [sortOrder] - Order of sorted results.
   /// Possible string values are:
-  /// - "ASCENDING"
-  /// - "DESCENDING"
+  /// - "ASCENDING" : Ascending order.
+  /// - "DESCENDING" : Descending order.
   ///
   /// [subaccountId] - Select only sites with this subaccount ID.
   ///
@@ -10031,8 +10055,7 @@ class SitesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ =
-        'userprofiles/' + commons.escapeVariable('$profileId') + '/sites';
+    final url_ = 'userprofiles/' + core.Uri.encodeFull('$profileId') + '/sites';
 
     final response_ = await _requester.request(
       url_,
@@ -10052,8 +10075,9 @@ class SitesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [id] - Site ID.
+  /// [id] - Required. Site ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -10077,8 +10101,7 @@ class SitesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ =
-        'userprofiles/' + commons.escapeVariable('$profileId') + '/sites';
+    final url_ = 'userprofiles/' + core.Uri.encodeFull('$profileId') + '/sites';
 
     final response_ = await _requester.request(
       url_,
@@ -10096,6 +10119,7 @@ class SitesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -10117,8 +10141,7 @@ class SitesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ =
-        'userprofiles/' + commons.escapeVariable('$profileId') + '/sites';
+    final url_ = 'userprofiles/' + core.Uri.encodeFull('$profileId') + '/sites';
 
     final response_ = await _requester.request(
       url_,
@@ -10140,8 +10163,10 @@ class SizesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [id] - Size ID.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -10163,9 +10188,9 @@ class SizesResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/sizes/' +
-        commons.escapeVariable('$id');
+        core.Uri.encodeFull('$id');
 
     final response_ = await _requester.request(
       url_,
@@ -10182,6 +10207,7 @@ class SizesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -10203,8 +10229,7 @@ class SizesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ =
-        'userprofiles/' + commons.escapeVariable('$profileId') + '/sizes';
+    final url_ = 'userprofiles/' + core.Uri.encodeFull('$profileId') + '/sizes';
 
     final response_ = await _requester.request(
       url_,
@@ -10224,16 +10249,15 @@ class SizesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [height] - Select only sizes with this height.
-  /// Value must be between "0" and "32767".
   ///
   /// [iabStandard] - Select only IAB standard sizes.
   ///
   /// [ids] - Select only sizes with these IDs.
   ///
   /// [width] - Select only sizes with this width.
-  /// Value must be between "0" and "32767".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -10261,8 +10285,7 @@ class SizesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ =
-        'userprofiles/' + commons.escapeVariable('$profileId') + '/sizes';
+    final url_ = 'userprofiles/' + core.Uri.encodeFull('$profileId') + '/sizes';
 
     final response_ = await _requester.request(
       url_,
@@ -10284,8 +10307,10 @@ class SubaccountsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [id] - Subaccount ID.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -10307,9 +10332,9 @@ class SubaccountsResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/subaccounts/' +
-        commons.escapeVariable('$id');
+        core.Uri.encodeFull('$id');
 
     final response_ = await _requester.request(
       url_,
@@ -10327,6 +10352,7 @@ class SubaccountsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -10349,7 +10375,7 @@ class SubaccountsResource {
     };
 
     final url_ =
-        'userprofiles/' + commons.escapeVariable('$profileId') + '/subaccounts';
+        'userprofiles/' + core.Uri.encodeFull('$profileId') + '/subaccounts';
 
     final response_ = await _requester.request(
       url_,
@@ -10368,11 +10394,11 @@ class SubaccountsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [ids] - Select only subaccounts with these IDs.
   ///
   /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "1000".
   ///
   /// [pageToken] - Value of the nextPageToken from the previous result page.
   ///
@@ -10391,8 +10417,8 @@ class SubaccountsResource {
   ///
   /// [sortOrder] - Order of sorted results.
   /// Possible string values are:
-  /// - "ASCENDING"
-  /// - "DESCENDING"
+  /// - "ASCENDING" : Ascending order.
+  /// - "DESCENDING" : Descending order.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -10425,7 +10451,7 @@ class SubaccountsResource {
     };
 
     final url_ =
-        'userprofiles/' + commons.escapeVariable('$profileId') + '/subaccounts';
+        'userprofiles/' + core.Uri.encodeFull('$profileId') + '/subaccounts';
 
     final response_ = await _requester.request(
       url_,
@@ -10445,8 +10471,9 @@ class SubaccountsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [id] - Subaccount ID.
+  /// [id] - Required. Subaccount ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -10471,7 +10498,7 @@ class SubaccountsResource {
     };
 
     final url_ =
-        'userprofiles/' + commons.escapeVariable('$profileId') + '/subaccounts';
+        'userprofiles/' + core.Uri.encodeFull('$profileId') + '/subaccounts';
 
     final response_ = await _requester.request(
       url_,
@@ -10490,6 +10517,7 @@ class SubaccountsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -10512,7 +10540,7 @@ class SubaccountsResource {
     };
 
     final url_ =
-        'userprofiles/' + commons.escapeVariable('$profileId') + '/subaccounts';
+        'userprofiles/' + core.Uri.encodeFull('$profileId') + '/subaccounts';
 
     final response_ = await _requester.request(
       url_,
@@ -10536,8 +10564,10 @@ class TargetableRemarketingListsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [id] - Remarketing list ID.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -10559,9 +10589,9 @@ class TargetableRemarketingListsResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/targetableRemarketingLists/' +
-        commons.escapeVariable('$id');
+        core.Uri.encodeFull('$id');
 
     final response_ = await _requester.request(
       url_,
@@ -10579,15 +10609,15 @@ class TargetableRemarketingListsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [advertiserId] - Select only targetable remarketing lists targetable by
-  /// these advertisers.
+  /// [advertiserId] - Required. Select only targetable remarketing lists
+  /// targetable by these advertisers.
   ///
   /// [active] - Select only active or only inactive targetable remarketing
   /// lists.
   ///
   /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "1000".
   ///
   /// [name] - Allows searching for objects by name or ID. Wildcards (*) are
   /// allowed. For example, "remarketing list*2015" will return objects with
@@ -10606,8 +10636,8 @@ class TargetableRemarketingListsResource {
   ///
   /// [sortOrder] - Order of sorted results.
   /// Possible string values are:
-  /// - "ASCENDING"
-  /// - "DESCENDING"
+  /// - "ASCENDING" : Ascending order.
+  /// - "DESCENDING" : Descending order.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -10642,7 +10672,7 @@ class TargetableRemarketingListsResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/targetableRemarketingLists';
 
     final response_ = await _requester.request(
@@ -10665,8 +10695,10 @@ class TargetingTemplatesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [id] - Targeting template ID.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -10688,9 +10720,9 @@ class TargetingTemplatesResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/targetingTemplates/' +
-        commons.escapeVariable('$id');
+        core.Uri.encodeFull('$id');
 
     final response_ = await _requester.request(
       url_,
@@ -10708,6 +10740,7 @@ class TargetingTemplatesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -10730,7 +10763,7 @@ class TargetingTemplatesResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/targetingTemplates';
 
     final response_ = await _requester.request(
@@ -10750,13 +10783,13 @@ class TargetingTemplatesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [advertiserId] - Select only targeting templates with this advertiser ID.
   ///
   /// [ids] - Select only targeting templates with these IDs.
   ///
   /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "1000".
   ///
   /// [pageToken] - Value of the nextPageToken from the previous result page.
   ///
@@ -10775,8 +10808,8 @@ class TargetingTemplatesResource {
   ///
   /// [sortOrder] - Order of sorted results.
   /// Possible string values are:
-  /// - "ASCENDING"
-  /// - "DESCENDING"
+  /// - "ASCENDING" : Ascending order.
+  /// - "DESCENDING" : Descending order.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -10811,7 +10844,7 @@ class TargetingTemplatesResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/targetingTemplates';
 
     final response_ = await _requester.request(
@@ -10832,8 +10865,9 @@ class TargetingTemplatesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [id] - TargetingTemplate ID.
+  /// [id] - Required. RemarketingList ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -10858,7 +10892,7 @@ class TargetingTemplatesResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/targetingTemplates';
 
     final response_ = await _requester.request(
@@ -10878,6 +10912,7 @@ class TargetingTemplatesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -10900,7 +10935,7 @@ class TargetingTemplatesResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/targetingTemplates';
 
     final response_ = await _requester.request(
@@ -10998,8 +11033,10 @@ class UserRolePermissionGroupsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [id] - User role permission group ID.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -11021,9 +11058,9 @@ class UserRolePermissionGroupsResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/userRolePermissionGroups/' +
-        commons.escapeVariable('$id');
+        core.Uri.encodeFull('$id');
 
     final response_ = await _requester.request(
       url_,
@@ -11039,6 +11076,7 @@ class UserRolePermissionGroupsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -11059,7 +11097,7 @@ class UserRolePermissionGroupsResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/userRolePermissionGroups';
 
     final response_ = await _requester.request(
@@ -11083,8 +11121,10 @@ class UserRolePermissionsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [id] - User role permission ID.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -11106,9 +11146,9 @@ class UserRolePermissionsResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/userRolePermissions/' +
-        commons.escapeVariable('$id');
+        core.Uri.encodeFull('$id');
 
     final response_ = await _requester.request(
       url_,
@@ -11124,6 +11164,7 @@ class UserRolePermissionsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [ids] - Select only user role permissions with these IDs.
   ///
@@ -11148,7 +11189,7 @@ class UserRolePermissionsResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/userRolePermissions';
 
     final response_ = await _requester.request(
@@ -11171,8 +11212,10 @@ class UserRolesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [id] - User role ID.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -11192,9 +11235,9 @@ class UserRolesResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/userRoles/' +
-        commons.escapeVariable('$id');
+        core.Uri.encodeFull('$id');
 
     await _requester.request(
       url_,
@@ -11209,8 +11252,10 @@ class UserRolesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [id] - User role ID.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -11232,9 +11277,9 @@ class UserRolesResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/userRoles/' +
-        commons.escapeVariable('$id');
+        core.Uri.encodeFull('$id');
 
     final response_ = await _requester.request(
       url_,
@@ -11251,6 +11296,7 @@ class UserRolesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -11273,7 +11319,7 @@ class UserRolesResource {
     };
 
     final url_ =
-        'userprofiles/' + commons.escapeVariable('$profileId') + '/userRoles';
+        'userprofiles/' + core.Uri.encodeFull('$profileId') + '/userRoles';
 
     final response_ = await _requester.request(
       url_,
@@ -11291,6 +11337,7 @@ class UserRolesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [accountUserRoleOnly] - Select only account level user roles not
   /// associated with any specific subaccount.
@@ -11298,7 +11345,6 @@ class UserRolesResource {
   /// [ids] - Select only user roles with the specified IDs.
   ///
   /// [maxResults] - Maximum number of results to return.
-  /// Value must be between "0" and "1000".
   ///
   /// [pageToken] - Value of the nextPageToken from the previous result page.
   ///
@@ -11317,8 +11363,8 @@ class UserRolesResource {
   ///
   /// [sortOrder] - Order of sorted results.
   /// Possible string values are:
-  /// - "ASCENDING"
-  /// - "DESCENDING"
+  /// - "ASCENDING" : Ascending order.
+  /// - "DESCENDING" : Descending order.
   ///
   /// [subaccountId] - Select only user roles that belong to this subaccount.
   ///
@@ -11358,7 +11404,7 @@ class UserRolesResource {
     };
 
     final url_ =
-        'userprofiles/' + commons.escapeVariable('$profileId') + '/userRoles';
+        'userprofiles/' + core.Uri.encodeFull('$profileId') + '/userRoles';
 
     final response_ = await _requester.request(
       url_,
@@ -11378,8 +11424,9 @@ class UserRolesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [id] - UserRole ID.
+  /// [id] - Required. UserRole ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -11404,7 +11451,7 @@ class UserRolesResource {
     };
 
     final url_ =
-        'userprofiles/' + commons.escapeVariable('$profileId') + '/userRoles';
+        'userprofiles/' + core.Uri.encodeFull('$profileId') + '/userRoles';
 
     final response_ = await _requester.request(
       url_,
@@ -11422,6 +11469,7 @@ class UserRolesResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -11444,7 +11492,7 @@ class UserRolesResource {
     };
 
     final url_ =
-        'userprofiles/' + commons.escapeVariable('$profileId') + '/userRoles';
+        'userprofiles/' + core.Uri.encodeFull('$profileId') + '/userRoles';
 
     final response_ = await _requester.request(
       url_,
@@ -11466,8 +11514,10 @@ class VideoFormatsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [id] - Video format ID.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -11489,9 +11539,9 @@ class VideoFormatsResource {
     };
 
     final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
+        core.Uri.encodeFull('$profileId') +
         '/videoFormats/' +
-        commons.escapeVariable('$id');
+        core.Uri.encodeFull('$id');
 
     final response_ = await _requester.request(
       url_,
@@ -11507,6 +11557,7 @@ class VideoFormatsResource {
   /// Request parameters:
   ///
   /// [profileId] - User profile ID associated with this request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -11526,9 +11577,8 @@ class VideoFormatsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'userprofiles/' +
-        commons.escapeVariable('$profileId') +
-        '/videoFormats';
+    final url_ =
+        'userprofiles/' + core.Uri.encodeFull('$profileId') + '/videoFormats';
 
     final response_ = await _requester.request(
       url_,
@@ -11549,8 +11599,10 @@ class Account {
   ///
   /// This is a read-only field that can be left blank.
   /// Possible string values are:
-  /// - "ACCOUNT_PROFILE_BASIC"
-  /// - "ACCOUNT_PROFILE_STANDARD"
+  /// - "ACCOUNT_PROFILE_BASIC" : Basic profile has fewer features and lower
+  /// CPM.
+  /// - "ACCOUNT_PROFILE_STANDARD" : Standard profile as a higher CPM and all
+  /// the features.
   core.String? accountProfile;
 
   /// Whether this account is active.
@@ -11756,19 +11808,170 @@ class Account {
 }
 
 /// Gets a summary of active ads in an account.
-typedef AccountActiveAdSummary = $AccountActiveAdSummary;
+class AccountActiveAdSummary {
+  /// ID of the account.
+  core.String? accountId;
+
+  /// Ads that have been activated for the account
+  core.String? activeAds;
+
+  /// Maximum number of active ads allowed for the account.
+  /// Possible string values are:
+  /// - "ACTIVE_ADS_TIER_40K"
+  /// - "ACTIVE_ADS_TIER_75K"
+  /// - "ACTIVE_ADS_TIER_100K"
+  /// - "ACTIVE_ADS_TIER_200K"
+  /// - "ACTIVE_ADS_TIER_300K"
+  /// - "ACTIVE_ADS_TIER_500K"
+  /// - "ACTIVE_ADS_TIER_750K"
+  /// - "ACTIVE_ADS_TIER_1M"
+  core.String? activeAdsLimitTier;
+
+  /// Ads that can be activated for the account.
+  core.String? availableAds;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#accountActiveAdSummary".
+  core.String? kind;
+
+  AccountActiveAdSummary({
+    this.accountId,
+    this.activeAds,
+    this.activeAdsLimitTier,
+    this.availableAds,
+    this.kind,
+  });
+
+  AccountActiveAdSummary.fromJson(core.Map json_)
+      : this(
+          accountId: json_.containsKey('accountId')
+              ? json_['accountId'] as core.String
+              : null,
+          activeAds: json_.containsKey('activeAds')
+              ? json_['activeAds'] as core.String
+              : null,
+          activeAdsLimitTier: json_.containsKey('activeAdsLimitTier')
+              ? json_['activeAdsLimitTier'] as core.String
+              : null,
+          availableAds: json_.containsKey('availableAds')
+              ? json_['availableAds'] as core.String
+              : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (activeAds != null) 'activeAds': activeAds!,
+        if (activeAdsLimitTier != null)
+          'activeAdsLimitTier': activeAdsLimitTier!,
+        if (availableAds != null) 'availableAds': availableAds!,
+        if (kind != null) 'kind': kind!,
+      };
+}
 
 /// AccountPermissions contains information about a particular account
 /// permission.
 ///
 /// Some features of Campaign Manager require an account permission to be
 /// present in the account.
-typedef AccountPermission = $AccountPermission;
+class AccountPermission {
+  /// Account profiles associated with this account permission.
+  ///
+  /// Possible values are: - "ACCOUNT_PROFILE_BASIC" -
+  /// "ACCOUNT_PROFILE_STANDARD"
+  core.List<core.String>? accountProfiles;
+
+  /// ID of this account permission.
+  core.String? id;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#accountPermission".
+  core.String? kind;
+
+  /// Administrative level required to enable this account permission.
+  /// Possible string values are:
+  /// - "USER"
+  /// - "ADMINISTRATOR"
+  core.String? level;
+
+  /// Name of this account permission.
+  core.String? name;
+
+  /// Permission group of this account permission.
+  core.String? permissionGroupId;
+
+  AccountPermission({
+    this.accountProfiles,
+    this.id,
+    this.kind,
+    this.level,
+    this.name,
+    this.permissionGroupId,
+  });
+
+  AccountPermission.fromJson(core.Map json_)
+      : this(
+          accountProfiles: json_.containsKey('accountProfiles')
+              ? (json_['accountProfiles'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          level:
+              json_.containsKey('level') ? json_['level'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          permissionGroupId: json_.containsKey('permissionGroupId')
+              ? json_['permissionGroupId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accountProfiles != null) 'accountProfiles': accountProfiles!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (level != null) 'level': level!,
+        if (name != null) 'name': name!,
+        if (permissionGroupId != null) 'permissionGroupId': permissionGroupId!,
+      };
+}
 
 /// AccountPermissionGroups contains a mapping of permission group IDs to names.
 ///
 /// A permission group is a grouping of account permissions.
-typedef AccountPermissionGroup = $AccountPermissionGroup;
+class AccountPermissionGroup {
+  /// ID of this account permission group.
+  core.String? id;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#accountPermissionGroup".
+  core.String? kind;
+
+  /// Name of this account permission group.
+  core.String? name;
+
+  AccountPermissionGroup({
+    this.id,
+    this.kind,
+    this.name,
+  });
+
+  AccountPermissionGroup.fromJson(core.Map json_)
+      : this(
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+      };
+}
 
 /// Account Permission Group List Response
 class AccountPermissionGroupsListResponse {
@@ -11778,7 +11981,7 @@ class AccountPermissionGroupsListResponse {
   /// Identifies what kind of resource this is.
   ///
   /// Value: the fixed string
-  /// "dfareporting#accountPermissionGroupsListResponse".
+  /// "dfareporting#accountPermissionGroupGroupsListResponse".
   core.String? kind;
 
   AccountPermissionGroupsListResponse({
@@ -11907,19 +12110,21 @@ class AccountUserProfile {
   ///
   /// This is a read-only field.
   /// Possible string values are:
-  /// - "INTERNAL_NON_TRAFFICKER"
-  /// - "INTERNAL_TRAFFICKER"
-  /// - "EXTERNAL_TRAFFICKER"
+  /// - "INTERNAL_NON_TRAFFICKER" : Internal profile, but is not a trafficker.
+  /// - "INTERNAL_TRAFFICKER" : Internal profile who is a trafficker.
+  /// - "EXTERNAL_TRAFFICKER" : External profile who is a trafficker.
   core.String? traffickerType;
 
   /// User type of the user profile.
   ///
   /// This is a read-only field that can be left blank.
   /// Possible string values are:
-  /// - "NORMAL_USER"
-  /// - "SUPER_USER"
-  /// - "INTERNAL_ADMINISTRATOR"
-  /// - "READ_ONLY_SUPER_USER"
+  /// - "NORMAL_USER" : Normal user managed by the customer.
+  /// - "SUPER_USER" : Super user managed by internal support teams.
+  /// - "INTERNAL_ADMINISTRATOR" : Internal administrator having super user
+  /// access to only a specific set of networks.
+  /// - "READ_ONLY_SUPER_USER" : A super-user without permission to mutate any
+  /// data.
   core.String? userAccessType;
 
   /// Filter that describes which user roles are visible to the user profile.
@@ -12211,8 +12416,8 @@ class Ad {
   /// Possible string values are:
   /// - "DISPLAY"
   /// - "DISPLAY_INTERSTITIAL"
-  /// - "APP"
-  /// - "APP_INTERSTITIAL"
+  /// - "APP" : Deprecated enum value. No longer supported.
+  /// - "APP_INTERSTITIAL" : Deprecated enum value. No longer supported.
   /// - "IN_STREAM_VIDEO"
   /// - "IN_STREAM_AUDIO"
   core.String? compatibility;
@@ -12611,10 +12816,121 @@ class Ad {
 }
 
 /// Campaign ad blocking settings.
-typedef AdBlockingConfiguration = $AdBlockingConfiguration;
+class AdBlockingConfiguration {
+  /// Whether this campaign has enabled ad blocking.
+  ///
+  /// When true, ad blocking is enabled for placements in the campaign, but this
+  /// may be overridden by site and placement settings. When false, ad blocking
+  /// is disabled for all placements under the campaign, regardless of site and
+  /// placement settings.
+  core.bool? enabled;
+
+  AdBlockingConfiguration({
+    this.enabled,
+  });
+
+  AdBlockingConfiguration.fromJson(core.Map json_)
+      : this(
+          enabled: json_.containsKey('enabled')
+              ? json_['enabled'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
+      };
+}
 
 /// Ad Slot
-typedef AdSlot = $AdSlot;
+class AdSlot {
+  /// Comment for this ad slot.
+  core.String? comment;
+
+  /// Ad slot compatibility.
+  ///
+  /// DISPLAY and DISPLAY_INTERSTITIAL refer to rendering either on desktop,
+  /// mobile devices or in mobile apps for regular or interstitial ads
+  /// respectively. APP and APP_INTERSTITIAL are for rendering in mobile apps.
+  /// IN_STREAM_VIDEO refers to rendering in in-stream video ads developed with
+  /// the VAST standard.
+  /// Possible string values are:
+  /// - "DISPLAY"
+  /// - "DISPLAY_INTERSTITIAL"
+  /// - "APP" : Deprecated enum value. No longer supported.
+  /// - "APP_INTERSTITIAL" : Deprecated enum value. No longer supported.
+  /// - "IN_STREAM_VIDEO"
+  /// - "IN_STREAM_AUDIO"
+  core.String? compatibility;
+
+  /// Height of this ad slot.
+  core.String? height;
+
+  /// ID of the placement from an external platform that is linked to this ad
+  /// slot.
+  core.String? linkedPlacementId;
+
+  /// Name of this ad slot.
+  core.String? name;
+
+  /// Payment source type of this ad slot.
+  /// Possible string values are:
+  /// - "PLANNING_PAYMENT_SOURCE_TYPE_AGENCY_PAID"
+  /// - "PLANNING_PAYMENT_SOURCE_TYPE_PUBLISHER_PAID"
+  core.String? paymentSourceType;
+
+  /// Primary ad slot of a roadblock inventory item.
+  core.bool? primary;
+
+  /// Width of this ad slot.
+  core.String? width;
+
+  AdSlot({
+    this.comment,
+    this.compatibility,
+    this.height,
+    this.linkedPlacementId,
+    this.name,
+    this.paymentSourceType,
+    this.primary,
+    this.width,
+  });
+
+  AdSlot.fromJson(core.Map json_)
+      : this(
+          comment: json_.containsKey('comment')
+              ? json_['comment'] as core.String
+              : null,
+          compatibility: json_.containsKey('compatibility')
+              ? json_['compatibility'] as core.String
+              : null,
+          height: json_.containsKey('height')
+              ? json_['height'] as core.String
+              : null,
+          linkedPlacementId: json_.containsKey('linkedPlacementId')
+              ? json_['linkedPlacementId'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          paymentSourceType: json_.containsKey('paymentSourceType')
+              ? json_['paymentSourceType'] as core.String
+              : null,
+          primary: json_.containsKey('primary')
+              ? json_['primary'] as core.bool
+              : null,
+          width:
+              json_.containsKey('width') ? json_['width'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (comment != null) 'comment': comment!,
+        if (compatibility != null) 'compatibility': compatibility!,
+        if (height != null) 'height': height!,
+        if (linkedPlacementId != null) 'linkedPlacementId': linkedPlacementId!,
+        if (name != null) 'name': name!,
+        if (paymentSourceType != null) 'paymentSourceType': paymentSourceType!,
+        if (primary != null) 'primary': primary!,
+        if (width != null) 'width': width!,
+      };
+}
 
 /// Ad List Response
 class AdsListResponse {
@@ -12733,8 +13049,8 @@ class Advertiser {
 
   /// Status of this advertiser.
   /// Possible string values are:
-  /// - "APPROVED"
-  /// - "ON_HOLD"
+  /// - "APPROVED" : Approved (ads can deliver)
+  /// - "ON_HOLD" : On-hold (all ads are stopped)
   core.String? status;
 
   /// Subaccount ID of this advertiser.This is a read-only field that can be
@@ -12848,7 +13164,52 @@ class Advertiser {
 
 /// Groups advertisers together so that reports can be generated for the entire
 /// group at once.
-typedef AdvertiserGroup = $AdvertiserGroup;
+class AdvertiserGroup {
+  /// Account ID of this advertiser group.
+  ///
+  /// This is a read-only field that can be left blank.
+  core.String? accountId;
+
+  /// ID of this advertiser group.
+  ///
+  /// This is a read-only, auto-generated field.
+  core.String? id;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#advertiserGroup".
+  core.String? kind;
+
+  /// Name of this advertiser group.
+  ///
+  /// This is a required field and must be less than 256 characters long and
+  /// unique among advertiser groups of the same account.
+  core.String? name;
+
+  AdvertiserGroup({
+    this.accountId,
+    this.id,
+    this.kind,
+    this.name,
+  });
+
+  AdvertiserGroup.fromJson(core.Map json_)
+      : this(
+          accountId: json_.containsKey('accountId')
+              ? json_['accountId'] as core.String
+              : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+      };
+}
 
 /// Advertiser Group List Response
 class AdvertiserGroupsListResponse {
@@ -13011,7 +13372,45 @@ class AdvertisersListResponse {
 }
 
 /// Audience Segment.
-typedef AudienceSegment = $AudienceSegment;
+class AudienceSegment {
+  /// Weight allocated to this segment.
+  ///
+  /// The weight assigned will be understood in proportion to the weights
+  /// assigned to other segments in the same segment group. Acceptable values
+  /// are 1 to 1000, inclusive.
+  core.int? allocation;
+
+  /// ID of this audience segment.
+  ///
+  /// This is a read-only, auto-generated field.
+  core.String? id;
+
+  /// Name of this audience segment.
+  ///
+  /// This is a required field and must be less than 65 characters long.
+  core.String? name;
+
+  AudienceSegment({
+    this.allocation,
+    this.id,
+    this.name,
+  });
+
+  AudienceSegment.fromJson(core.Map json_)
+      : this(
+          allocation: json_.containsKey('allocation')
+              ? json_['allocation'] as core.int
+              : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allocation != null) 'allocation': allocation!,
+        if (id != null) 'id': id!,
+        if (name != null) 'name': name!,
+      };
+}
 
 /// Audience Segment Group.
 class AudienceSegmentGroup {
@@ -13537,7 +13936,83 @@ class BillingRatesListResponse {
 }
 
 /// Contains information about a browser that can be targeted by ads.
-typedef Browser = $Browser;
+class Browser {
+  /// ID referring to this grouping of browser and version numbers.
+  ///
+  /// This is the ID used for targeting.
+  core.String? browserVersionId;
+
+  /// DART ID of this browser.
+  ///
+  /// This is the ID used when generating reports.
+  core.String? dartId;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#browser".
+  core.String? kind;
+
+  /// Major version number (leftmost number) of this browser.
+  ///
+  /// For example, for Chrome 5.0.376.86 beta, this field should be set to 5. An
+  /// asterisk (*) may be used to target any version number, and a question mark
+  /// (?) may be used to target cases where the version number cannot be
+  /// identified. For example, Chrome *.* targets any version of Chrome: 1.2,
+  /// 2.5, 3.5, and so on. Chrome 3.* targets Chrome 3.1, 3.5, but not 4.0.
+  /// Firefox ?.? targets cases where the ad server knows the browser is Firefox
+  /// but can't tell which version it is.
+  core.String? majorVersion;
+
+  /// Minor version number (number after first dot on left) of this browser.
+  ///
+  /// For example, for Chrome 5.0.375.86 beta, this field should be set to 0. An
+  /// asterisk (*) may be used to target any version number, and a question mark
+  /// (?) may be used to target cases where the version number cannot be
+  /// identified. For example, Chrome *.* targets any version of Chrome: 1.2,
+  /// 2.5, 3.5, and so on. Chrome 3.* targets Chrome 3.1, 3.5, but not 4.0.
+  /// Firefox ?.? targets cases where the ad server knows the browser is Firefox
+  /// but can't tell which version it is.
+  core.String? minorVersion;
+
+  /// Name of this browser.
+  core.String? name;
+
+  Browser({
+    this.browserVersionId,
+    this.dartId,
+    this.kind,
+    this.majorVersion,
+    this.minorVersion,
+    this.name,
+  });
+
+  Browser.fromJson(core.Map json_)
+      : this(
+          browserVersionId: json_.containsKey('browserVersionId')
+              ? json_['browserVersionId'] as core.String
+              : null,
+          dartId: json_.containsKey('dartId')
+              ? json_['dartId'] as core.String
+              : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          majorVersion: json_.containsKey('majorVersion')
+              ? json_['majorVersion'] as core.String
+              : null,
+          minorVersion: json_.containsKey('minorVersion')
+              ? json_['minorVersion'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (browserVersionId != null) 'browserVersionId': browserVersionId!,
+        if (dartId != null) 'dartId': dartId!,
+        if (kind != null) 'kind': kind!,
+        if (majorVersion != null) 'majorVersion': majorVersion!,
+        if (minorVersion != null) 'minorVersion': minorVersion!,
+        if (name != null) 'name': name!,
+      };
+}
 
 /// Browser List Response
 class BrowsersListResponse {
@@ -13867,7 +14342,35 @@ class Campaign {
 }
 
 /// Identifies a creative which has been associated with a given campaign.
-typedef CampaignCreativeAssociation = $CampaignCreativeAssociation;
+class CampaignCreativeAssociation {
+  /// ID of the creative associated with the campaign.
+  ///
+  /// This is a required field.
+  core.String? creativeId;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#campaignCreativeAssociation".
+  core.String? kind;
+
+  CampaignCreativeAssociation({
+    this.creativeId,
+    this.kind,
+  });
+
+  CampaignCreativeAssociation.fromJson(core.Map json_)
+      : this(
+          creativeId: json_.containsKey('creativeId')
+              ? json_['creativeId'] as core.String
+              : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (creativeId != null) 'creativeId': creativeId!,
+        if (kind != null) 'kind': kind!,
+      };
+}
 
 /// Campaign Creative Association List Response
 class CampaignCreativeAssociationsListResponse {
@@ -14009,7 +14512,131 @@ class CampaignsListResponse {
 }
 
 /// Describes a change that a user has made to a resource.
-typedef ChangeLog = $ChangeLog;
+class ChangeLog {
+  /// Account ID of the modified object.
+  core.String? accountId;
+
+  /// Action which caused the change.
+  core.String? action;
+  core.DateTime? changeTime;
+
+  /// Field name of the object which changed.
+  core.String? fieldName;
+
+  /// ID of this change log.
+  core.String? id;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#changeLog".
+  core.String? kind;
+
+  /// New value of the object field.
+  core.String? newValue;
+
+  /// ID of the object of this change log.
+  ///
+  /// The object could be a campaign, placement, ad, or other type.
+  core.String? objectId;
+
+  /// Object type of the change log.
+  core.String? objectType;
+
+  /// Old value of the object field.
+  core.String? oldValue;
+
+  /// Subaccount ID of the modified object.
+  core.String? subaccountId;
+
+  /// Transaction ID of this change log.
+  ///
+  /// When a single API call results in many changes, each change will have a
+  /// separate ID in the change log but will share the same transactionId.
+  core.String? transactionId;
+
+  /// ID of the user who modified the object.
+  core.String? userProfileId;
+
+  /// User profile name of the user who modified the object.
+  core.String? userProfileName;
+
+  ChangeLog({
+    this.accountId,
+    this.action,
+    this.changeTime,
+    this.fieldName,
+    this.id,
+    this.kind,
+    this.newValue,
+    this.objectId,
+    this.objectType,
+    this.oldValue,
+    this.subaccountId,
+    this.transactionId,
+    this.userProfileId,
+    this.userProfileName,
+  });
+
+  ChangeLog.fromJson(core.Map json_)
+      : this(
+          accountId: json_.containsKey('accountId')
+              ? json_['accountId'] as core.String
+              : null,
+          action: json_.containsKey('action')
+              ? json_['action'] as core.String
+              : null,
+          changeTime: json_.containsKey('changeTime')
+              ? core.DateTime.parse(json_['changeTime'] as core.String)
+              : null,
+          fieldName: json_.containsKey('fieldName')
+              ? json_['fieldName'] as core.String
+              : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          newValue: json_.containsKey('newValue')
+              ? json_['newValue'] as core.String
+              : null,
+          objectId: json_.containsKey('objectId')
+              ? json_['objectId'] as core.String
+              : null,
+          objectType: json_.containsKey('objectType')
+              ? json_['objectType'] as core.String
+              : null,
+          oldValue: json_.containsKey('oldValue')
+              ? json_['oldValue'] as core.String
+              : null,
+          subaccountId: json_.containsKey('subaccountId')
+              ? json_['subaccountId'] as core.String
+              : null,
+          transactionId: json_.containsKey('transactionId')
+              ? json_['transactionId'] as core.String
+              : null,
+          userProfileId: json_.containsKey('userProfileId')
+              ? json_['userProfileId'] as core.String
+              : null,
+          userProfileName: json_.containsKey('userProfileName')
+              ? json_['userProfileName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (action != null) 'action': action!,
+        if (changeTime != null)
+          'changeTime': changeTime!.toUtc().toIso8601String(),
+        if (fieldName != null) 'fieldName': fieldName!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (newValue != null) 'newValue': newValue!,
+        if (objectId != null) 'objectId': objectId!,
+        if (objectType != null) 'objectType': objectType!,
+        if (oldValue != null) 'oldValue': oldValue!,
+        if (subaccountId != null) 'subaccountId': subaccountId!,
+        if (transactionId != null) 'transactionId': transactionId!,
+        if (userProfileId != null) 'userProfileId': userProfileId!,
+        if (userProfileName != null) 'userProfileName': userProfileName!,
+      };
+}
 
 /// Change Log List Response
 class ChangeLogsListResponse {
@@ -14167,7 +14794,89 @@ class CitiesListResponse {
 }
 
 /// Contains information about a city that can be targeted by ads.
-typedef City = $City;
+class City {
+  /// Country code of the country to which this city belongs.
+  core.String? countryCode;
+
+  /// DART ID of the country to which this city belongs.
+  core.String? countryDartId;
+
+  /// DART ID of this city.
+  ///
+  /// This is the ID used for targeting and generating reports.
+  core.String? dartId;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#city".
+  core.String? kind;
+
+  /// Metro region code of the metro region (DMA) to which this city belongs.
+  core.String? metroCode;
+
+  /// ID of the metro region (DMA) to which this city belongs.
+  core.String? metroDmaId;
+
+  /// Name of this city.
+  core.String? name;
+
+  /// Region code of the region to which this city belongs.
+  core.String? regionCode;
+
+  /// DART ID of the region to which this city belongs.
+  core.String? regionDartId;
+
+  City({
+    this.countryCode,
+    this.countryDartId,
+    this.dartId,
+    this.kind,
+    this.metroCode,
+    this.metroDmaId,
+    this.name,
+    this.regionCode,
+    this.regionDartId,
+  });
+
+  City.fromJson(core.Map json_)
+      : this(
+          countryCode: json_.containsKey('countryCode')
+              ? json_['countryCode'] as core.String
+              : null,
+          countryDartId: json_.containsKey('countryDartId')
+              ? json_['countryDartId'] as core.String
+              : null,
+          dartId: json_.containsKey('dartId')
+              ? json_['dartId'] as core.String
+              : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          metroCode: json_.containsKey('metroCode')
+              ? json_['metroCode'] as core.String
+              : null,
+          metroDmaId: json_.containsKey('metroDmaId')
+              ? json_['metroDmaId'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          regionCode: json_.containsKey('regionCode')
+              ? json_['regionCode'] as core.String
+              : null,
+          regionDartId: json_.containsKey('regionDartId')
+              ? json_['regionDartId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (countryCode != null) 'countryCode': countryCode!,
+        if (countryDartId != null) 'countryDartId': countryDartId!,
+        if (dartId != null) 'dartId': dartId!,
+        if (kind != null) 'kind': kind!,
+        if (metroCode != null) 'metroCode': metroCode!,
+        if (metroDmaId != null) 'metroDmaId': metroDmaId!,
+        if (name != null) 'name': name!,
+        if (regionCode != null) 'regionCode': regionCode!,
+        if (regionDartId != null) 'regionDartId': regionDartId!,
+      };
+}
 
 /// Creative Click Tag.
 class ClickTag {
@@ -14214,10 +14923,99 @@ class ClickTag {
 }
 
 /// Click-through URL
-typedef ClickThroughUrl = $ClickThroughUrl;
+class ClickThroughUrl {
+  /// Read-only convenience field representing the actual URL that will be used
+  /// for this click-through.
+  ///
+  /// The URL is computed as follows: - If defaultLandingPage is enabled then
+  /// the campaign's default landing page URL is assigned to this field. - If
+  /// defaultLandingPage is not enabled and a landingPageId is specified then
+  /// that landing page's URL is assigned to this field. - If neither of the
+  /// above cases apply, then the customClickThroughUrl is assigned to this
+  /// field.
+  core.String? computedClickThroughUrl;
+
+  /// Custom click-through URL.
+  ///
+  /// Applicable if the defaultLandingPage field is set to false and the
+  /// landingPageId field is left unset.
+  core.String? customClickThroughUrl;
+
+  /// Whether the campaign default landing page is used.
+  core.bool? defaultLandingPage;
+
+  /// ID of the landing page for the click-through URL.
+  ///
+  /// Applicable if the defaultLandingPage field is set to false.
+  core.String? landingPageId;
+
+  ClickThroughUrl({
+    this.computedClickThroughUrl,
+    this.customClickThroughUrl,
+    this.defaultLandingPage,
+    this.landingPageId,
+  });
+
+  ClickThroughUrl.fromJson(core.Map json_)
+      : this(
+          computedClickThroughUrl: json_.containsKey('computedClickThroughUrl')
+              ? json_['computedClickThroughUrl'] as core.String
+              : null,
+          customClickThroughUrl: json_.containsKey('customClickThroughUrl')
+              ? json_['customClickThroughUrl'] as core.String
+              : null,
+          defaultLandingPage: json_.containsKey('defaultLandingPage')
+              ? json_['defaultLandingPage'] as core.bool
+              : null,
+          landingPageId: json_.containsKey('landingPageId')
+              ? json_['landingPageId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (computedClickThroughUrl != null)
+          'computedClickThroughUrl': computedClickThroughUrl!,
+        if (customClickThroughUrl != null)
+          'customClickThroughUrl': customClickThroughUrl!,
+        if (defaultLandingPage != null)
+          'defaultLandingPage': defaultLandingPage!,
+        if (landingPageId != null) 'landingPageId': landingPageId!,
+      };
+}
 
 /// Click Through URL Suffix settings.
-typedef ClickThroughUrlSuffixProperties = $ClickThroughUrlSuffixProperties;
+class ClickThroughUrlSuffixProperties {
+  /// Click-through URL suffix to apply to all ads in this entity's scope.
+  ///
+  /// Must be less than 128 characters long.
+  core.String? clickThroughUrlSuffix;
+
+  /// Whether this entity should override the inherited click-through URL suffix
+  /// with its own defined value.
+  core.bool? overrideInheritedSuffix;
+
+  ClickThroughUrlSuffixProperties({
+    this.clickThroughUrlSuffix,
+    this.overrideInheritedSuffix,
+  });
+
+  ClickThroughUrlSuffixProperties.fromJson(core.Map json_)
+      : this(
+          clickThroughUrlSuffix: json_.containsKey('clickThroughUrlSuffix')
+              ? json_['clickThroughUrlSuffix'] as core.String
+              : null,
+          overrideInheritedSuffix: json_.containsKey('overrideInheritedSuffix')
+              ? json_['overrideInheritedSuffix'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (clickThroughUrlSuffix != null)
+          'clickThroughUrlSuffix': clickThroughUrlSuffix!,
+        if (overrideInheritedSuffix != null)
+          'overrideInheritedSuffix': overrideInheritedSuffix!,
+      };
+}
 
 /// Companion Click-through override.
 class CompanionClickThroughOverride {
@@ -14417,7 +15215,37 @@ class CompatibleFields {
 /// by ads.
 ///
 /// Clients can use the connection type to target mobile vs. broadband users.
-typedef ConnectionType = $ConnectionType;
+class ConnectionType {
+  /// ID of this connection type.
+  core.String? id;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#connectionType".
+  core.String? kind;
+
+  /// Name of this connection type.
+  core.String? name;
+
+  ConnectionType({
+    this.id,
+    this.kind,
+    this.name,
+  });
+
+  ConnectionType.fromJson(core.Map json_)
+      : this(
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+      };
+}
 
 /// Connection Type List Response
 class ConnectionTypesListResponse {
@@ -14491,8 +15319,52 @@ class ContentCategoriesListResponse {
       };
 }
 
-/// Organizes placements according to the contents of their associated webpages.
-typedef ContentCategory = $ContentCategory;
+class ContentCategory {
+  /// Account ID of this content category.
+  ///
+  /// This is a read-only field that can be left blank.
+  core.String? accountId;
+
+  /// ID of this content category.
+  ///
+  /// This is a read-only, auto-generated field.
+  core.String? id;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#contentCategory".
+  core.String? kind;
+
+  /// Name of this content category.
+  ///
+  /// This is a required field and must be less than 256 characters long and
+  /// unique among content categories of the same account.
+  core.String? name;
+
+  ContentCategory({
+    this.accountId,
+    this.id,
+    this.kind,
+    this.name,
+  });
+
+  ContentCategory.fromJson(core.Map json_)
+      : this(
+          accountId: json_.containsKey('accountId')
+              ? json_['accountId'] as core.String
+              : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+      };
+}
 
 /// A Conversion represents when a user successfully performs a desired action
 /// after seeing an ad.
@@ -14600,6 +15472,8 @@ class Conversion {
   core.String? ordinal;
 
   /// The quantity of the conversion.
+  ///
+  /// This is a required field.
   core.String? quantity;
 
   /// The timestamp of conversion, in Unix epoch micros.
@@ -14612,7 +15486,14 @@ class Conversion {
   /// General Data Protection Regulation (GDPR).
   core.bool? treatmentForUnderage;
 
+  /// The user identifiers to enhance the conversion.
+  ///
+  /// The maximum number of user identifiers for each conversion is 5.
+  core.List<UserIdentifier>? userIdentifiers;
+
   /// The value of the conversion.
+  ///
+  /// This is a required field.
   core.double? value;
 
   Conversion({
@@ -14634,6 +15515,7 @@ class Conversion {
     this.quantity,
     this.timestampMicros,
     this.treatmentForUnderage,
+    this.userIdentifiers,
     this.value,
   });
 
@@ -14696,6 +15578,12 @@ class Conversion {
           treatmentForUnderage: json_.containsKey('treatmentForUnderage')
               ? json_['treatmentForUnderage'] as core.bool
               : null,
+          userIdentifiers: json_.containsKey('userIdentifiers')
+              ? (json_['userIdentifiers'] as core.List)
+                  .map((value) => UserIdentifier.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           value: json_.containsKey('value')
               ? (json_['value'] as core.num).toDouble()
               : null,
@@ -14725,13 +15613,51 @@ class Conversion {
         if (timestampMicros != null) 'timestampMicros': timestampMicros!,
         if (treatmentForUnderage != null)
           'treatmentForUnderage': treatmentForUnderage!,
+        if (userIdentifiers != null) 'userIdentifiers': userIdentifiers!,
         if (value != null) 'value': value!,
       };
 }
 
 /// The error code and description for a conversion that failed to insert or
 /// update.
-typedef ConversionError = $ConversionError;
+class ConversionError {
+  /// The error code.
+  /// Possible string values are:
+  /// - "INVALID_ARGUMENT"
+  /// - "INTERNAL"
+  /// - "PERMISSION_DENIED"
+  /// - "NOT_FOUND"
+  core.String? code;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#conversionError".
+  core.String? kind;
+
+  /// A description of the error.
+  core.String? message;
+
+  ConversionError({
+    this.code,
+    this.kind,
+    this.message,
+  });
+
+  ConversionError.fromJson(core.Map json_)
+      : this(
+          code: json_.containsKey('code') ? json_['code'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          message: json_.containsKey('message')
+              ? json_['message'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (code != null) 'code': code!,
+        if (kind != null) 'kind': kind!,
+        if (message != null) 'message': message!,
+      };
+}
 
 /// The original conversion that was inserted or updated and whether there were
 /// any errors.
@@ -14980,7 +15906,57 @@ class CountriesListResponse {
 }
 
 /// Contains information about a country that can be targeted by ads.
-typedef Country = $Country;
+class Country {
+  /// Country code.
+  core.String? countryCode;
+
+  /// DART ID of this country.
+  ///
+  /// This is the ID used for targeting and generating reports.
+  core.String? dartId;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#country".
+  core.String? kind;
+
+  /// Name of this country.
+  core.String? name;
+
+  /// Whether ad serving supports secure servers in this country.
+  core.bool? sslEnabled;
+
+  Country({
+    this.countryCode,
+    this.dartId,
+    this.kind,
+    this.name,
+    this.sslEnabled,
+  });
+
+  Country.fromJson(core.Map json_)
+      : this(
+          countryCode: json_.containsKey('countryCode')
+              ? json_['countryCode'] as core.String
+              : null,
+          dartId: json_.containsKey('dartId')
+              ? json_['dartId'] as core.String
+              : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          sslEnabled: json_.containsKey('sslEnabled')
+              ? json_['sslEnabled'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (countryCode != null) 'countryCode': countryCode!,
+        if (dartId != null) 'dartId': dartId!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+        if (sslEnabled != null) 'sslEnabled': sslEnabled!,
+      };
+}
 
 /// Contains properties of a Creative.
 class Creative {
@@ -15019,6 +15995,8 @@ class Creative {
   /// Advertiser ID of this creative.
   ///
   /// This is a required field. Applicable to all creative types.
+  ///
+  /// Required.
   core.String? advertiserId;
 
   /// Whether script access is allowed for this creative.
@@ -15038,10 +16016,11 @@ class Creative {
   /// This is a read-only field. Applicable to the following creative types: all
   /// RICH_MEDIA, and all VPAID.
   /// Possible string values are:
-  /// - "ARTWORK_TYPE_FLASH"
-  /// - "ARTWORK_TYPE_HTML5"
-  /// - "ARTWORK_TYPE_MIXED"
-  /// - "ARTWORK_TYPE_IMAGE"
+  /// - "ARTWORK_TYPE_FLASH" : The creative is a Flash creative.
+  /// - "ARTWORK_TYPE_HTML5" : The creative is HTML5.
+  /// - "ARTWORK_TYPE_MIXED" : The creative is HTML5 if available, Flash
+  /// otherwise.
+  /// - "ARTWORK_TYPE_IMAGE" : The creative is Image.
   core.String? artworkType;
 
   /// Source application where creative was authored.
@@ -15049,11 +16028,14 @@ class Creative {
   /// Presently, only DBM authored creatives will have this field set.
   /// Applicable to all creative types.
   /// Possible string values are:
-  /// - "CREATIVE_AUTHORING_SOURCE_DCM"
-  /// - "CREATIVE_AUTHORING_SOURCE_DBM"
-  /// - "CREATIVE_AUTHORING_SOURCE_STUDIO"
-  /// - "CREATIVE_AUTHORING_SOURCE_GWD"
-  /// - "CREATIVE_AUTHORING_SOURCE_ACS"
+  /// - "CREATIVE_AUTHORING_SOURCE_DCM" : DCM-UI or external API used to author
+  /// the creative.
+  /// - "CREATIVE_AUTHORING_SOURCE_DBM" : DBM-UI used to author the creative.
+  /// - "CREATIVE_AUTHORING_SOURCE_STUDIO" : Studio-UI used to author the
+  /// creative.
+  /// - "CREATIVE_AUTHORING_SOURCE_GWD" : Google Web Designer used to author the
+  /// creative.
+  /// - "CREATIVE_AUTHORING_SOURCE_ACS" : ACS-UI used to author the creative.
   core.String? authoringSource;
 
   /// Authoring tool for HTML5 banner creatives.
@@ -15269,8 +16251,10 @@ class Creative {
 
   /// Name of the creative.
   ///
-  /// This is a required field and must be less than 256 characters long.
-  /// Applicable to all creative types.
+  /// This must be less than 256 characters long. Applicable to all creative
+  /// types.
+  ///
+  /// Required.
   core.String? name;
 
   /// Online behavioral advertising icon to be added to the creative.
@@ -15412,10 +16396,11 @@ class Creative {
 
   /// Type of this creative.
   ///
-  /// This is a required field. Applicable to all creative types. *Note:*
-  /// FLASH_INPAGE, HTML5_BANNER, and IMAGE are only used for existing
-  /// creatives. New creatives should use DISPLAY as a replacement for these
-  /// types.
+  /// Applicable to all creative types. *Note:* FLASH_INPAGE, HTML5_BANNER, and
+  /// IMAGE are only used for existing creatives. New creatives should use
+  /// DISPLAY as a replacement for these types.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "IMAGE"
   /// - "DISPLAY_REDIRECT"
@@ -15902,10 +16887,11 @@ class CreativeAsset {
   /// This is a read-only field. Applicable to the following creative types: all
   /// RICH_MEDIA.
   /// Possible string values are:
-  /// - "ARTWORK_TYPE_FLASH"
-  /// - "ARTWORK_TYPE_HTML5"
-  /// - "ARTWORK_TYPE_MIXED"
-  /// - "ARTWORK_TYPE_IMAGE"
+  /// - "ARTWORK_TYPE_FLASH" : The creative is a Flash creative.
+  /// - "ARTWORK_TYPE_HTML5" : The creative is HTML5.
+  /// - "ARTWORK_TYPE_MIXED" : The creative is HTML5 if available, Flash
+  /// otherwise.
+  /// - "ARTWORK_TYPE_IMAGE" : The creative is Image.
   core.String? artworkType;
 
   /// Identifier of this asset.
@@ -15943,10 +16929,11 @@ class CreativeAsset {
   /// This is a read-only field. Applicable to the following creative types: all
   /// VPAID.
   /// Possible string values are:
-  /// - "CHILD_ASSET_TYPE_FLASH"
-  /// - "CHILD_ASSET_TYPE_VIDEO"
-  /// - "CHILD_ASSET_TYPE_IMAGE"
-  /// - "CHILD_ASSET_TYPE_DATA"
+  /// - "CHILD_ASSET_TYPE_FLASH" : swf files
+  /// - "CHILD_ASSET_TYPE_VIDEO" : flv and any other video files types
+  /// - "CHILD_ASSET_TYPE_IMAGE" : image files
+  /// - "CHILD_ASSET_TYPE_DATA" : rest of the supported file types .txt, .xml
+  /// etc.
   core.String? childAssetType;
 
   /// Size of an asset when collapsed.
@@ -15985,16 +16972,20 @@ class CreativeAsset {
   /// This is a read-only field. Applicable to the following creative types: all
   /// RICH_MEDIA.
   /// Possible string values are:
-  /// - "ASSET_DISPLAY_TYPE_INPAGE"
-  /// - "ASSET_DISPLAY_TYPE_FLOATING"
-  /// - "ASSET_DISPLAY_TYPE_OVERLAY"
-  /// - "ASSET_DISPLAY_TYPE_EXPANDING"
-  /// - "ASSET_DISPLAY_TYPE_FLASH_IN_FLASH"
-  /// - "ASSET_DISPLAY_TYPE_FLASH_IN_FLASH_EXPANDING"
-  /// - "ASSET_DISPLAY_TYPE_PEEL_DOWN"
-  /// - "ASSET_DISPLAY_TYPE_VPAID_LINEAR"
-  /// - "ASSET_DISPLAY_TYPE_VPAID_NON_LINEAR"
-  /// - "ASSET_DISPLAY_TYPE_BACKDROP"
+  /// - "ASSET_DISPLAY_TYPE_INPAGE" : Asset exists in a box and stays within the
+  /// box.
+  /// - "ASSET_DISPLAY_TYPE_FLOATING" : Asset exists at a self described
+  /// location on the page.
+  /// - "ASSET_DISPLAY_TYPE_OVERLAY" : Special display type for IM clients.
+  /// - "ASSET_DISPLAY_TYPE_EXPANDING" : Asset changes size.
+  /// - "ASSET_DISPLAY_TYPE_FLASH_IN_FLASH" : Not applicable for HTML5.
+  /// - "ASSET_DISPLAY_TYPE_FLASH_IN_FLASH_EXPANDING" : Not applicable for
+  /// HTML5.
+  /// - "ASSET_DISPLAY_TYPE_PEEL_DOWN" : Asset sits on the top right and
+  /// expands.
+  /// - "ASSET_DISPLAY_TYPE_VPAID_LINEAR" : VPAID linear asset.
+  /// - "ASSET_DISPLAY_TYPE_VPAID_NON_LINEAR" : VPAID non linear asset.
+  /// - "ASSET_DISPLAY_TYPE_BACKDROP" : Backdrop (skin) asset.
   core.String? displayType;
 
   /// Duration in seconds for which an asset will be displayed.
@@ -16007,9 +16998,11 @@ class CreativeAsset {
   ///
   /// Applicable to the following creative types: all RICH_MEDIA.
   /// Possible string values are:
-  /// - "ASSET_DURATION_TYPE_AUTO"
-  /// - "ASSET_DURATION_TYPE_NONE"
-  /// - "ASSET_DURATION_TYPE_CUSTOM"
+  /// - "ASSET_DURATION_TYPE_AUTO" : Asset is displayed for the single run of
+  /// the time line.
+  /// - "ASSET_DURATION_TYPE_NONE" : Asset is displayed indefinitely and it
+  /// loops on the timeline.
+  /// - "ASSET_DURATION_TYPE_CUSTOM" : User entered duration value in seconds.
   core.String? durationType;
 
   /// Detected expanded dimension for video asset.
@@ -16112,9 +17105,11 @@ class CreativeAsset {
   /// This is a read-only field. Applicable to the following creative types: all
   /// RICH_MEDIA.
   /// Possible string values are:
-  /// - "OFFSET_UNIT_PIXEL"
-  /// - "OFFSET_UNIT_PERCENT"
-  /// - "OFFSET_UNIT_PIXEL_FROM_CENTER"
+  /// - "OFFSET_UNIT_PIXEL" : Pixels on a screen.
+  /// - "OFFSET_UNIT_PERCENT" : Percent offset for center asset (rather than top
+  /// and left).
+  /// - "OFFSET_UNIT_PIXEL_FROM_CENTER" : Pixel offset for center of asset from
+  /// center of browser window.
   core.String? positionLeftUnit;
 
   /// Offset top unit for an asset.
@@ -16123,9 +17118,11 @@ class CreativeAsset {
   /// ASSET_DISPLAY_TYPE_OVERLAY. Applicable to the following creative types:
   /// all RICH_MEDIA.
   /// Possible string values are:
-  /// - "OFFSET_UNIT_PIXEL"
-  /// - "OFFSET_UNIT_PERCENT"
-  /// - "OFFSET_UNIT_PIXEL_FROM_CENTER"
+  /// - "OFFSET_UNIT_PIXEL" : Pixels on a screen.
+  /// - "OFFSET_UNIT_PERCENT" : Percent offset for center asset (rather than top
+  /// and left).
+  /// - "OFFSET_UNIT_PIXEL_FROM_CENTER" : Pixel offset for center of asset from
+  /// center of browser window.
   core.String? positionTopUnit;
 
   /// Progressive URL for video asset.
@@ -16208,8 +17205,9 @@ class CreativeAsset {
   ///
   /// Applicable to the following creative types: all RICH_MEDIA.
   /// Possible string values are:
-  /// - "ASSET_START_TIME_TYPE_NONE"
-  /// - "ASSET_START_TIME_TYPE_CUSTOM"
+  /// - "ASSET_START_TIME_TYPE_NONE" : Asset is not automatically displayed.
+  /// - "ASSET_START_TIME_TYPE_CUSTOM" : Asset is automatically displayed after
+  /// a fixed period of time.
   core.String? startTimeType;
 
   /// Streaming URL for video asset.
@@ -16236,9 +17234,10 @@ class CreativeAsset {
   /// RICH_MEDIA_DISPLAY_EXPANDING, RICH_MEDIA_IM_EXPAND,
   /// RICH_MEDIA_DISPLAY_BANNER, and RICH_MEDIA_INPAGE_FLOATING.
   /// Possible string values are:
-  /// - "OPAQUE"
-  /// - "WINDOW"
-  /// - "TRANSPARENT"
+  /// - "OPAQUE" : Allows overlapping of Html and SWF content.
+  /// - "WINDOW" : Default
+  /// - "TRANSPARENT" : Used for non-square borders. Allows overlapping of Html
+  /// and SWF content.
   core.String? windowMode;
 
   /// zIndex value of an asset.
@@ -16932,10 +17931,11 @@ class CreativeCustomEvent {
 
   /// Artwork type used by the creative.This is a read-only field.
   /// Possible string values are:
-  /// - "ARTWORK_TYPE_FLASH"
-  /// - "ARTWORK_TYPE_HTML5"
-  /// - "ARTWORK_TYPE_MIXED"
-  /// - "ARTWORK_TYPE_IMAGE"
+  /// - "ARTWORK_TYPE_FLASH" : The creative is a Flash creative.
+  /// - "ARTWORK_TYPE_HTML5" : The creative is HTML5.
+  /// - "ARTWORK_TYPE_MIXED" : The creative is HTML5 if available, Flash
+  /// otherwise.
+  /// - "ARTWORK_TYPE_IMAGE" : The creative is Image.
   core.String? artworkType;
 
   /// Exit click-through URL for the event.
@@ -16955,11 +17955,12 @@ class CreativeCustomEvent {
 
   /// Target type used by the event.
   /// Possible string values are:
-  /// - "TARGET_BLANK"
-  /// - "TARGET_TOP"
-  /// - "TARGET_SELF"
-  /// - "TARGET_PARENT"
-  /// - "TARGET_POPUP"
+  /// - "TARGET_BLANK" : New tab
+  /// - "TARGET_TOP" : Current tab
+  /// - "TARGET_SELF" : Same frame
+  /// - "TARGET_PARENT" : Parent frame
+  /// - "TARGET_POPUP" : New window with properties specified in
+  /// window_properties
   core.String? targetType;
 
   /// Video reporting ID, used to differentiate multiple videos in a single
@@ -17118,10 +18119,73 @@ class CreativeField {
 }
 
 /// Creative Field Assignment.
-typedef CreativeFieldAssignment = $CreativeFieldAssignment;
+class CreativeFieldAssignment {
+  /// ID of the creative field.
+  core.String? creativeFieldId;
+
+  /// ID of the creative field value.
+  core.String? creativeFieldValueId;
+
+  CreativeFieldAssignment({
+    this.creativeFieldId,
+    this.creativeFieldValueId,
+  });
+
+  CreativeFieldAssignment.fromJson(core.Map json_)
+      : this(
+          creativeFieldId: json_.containsKey('creativeFieldId')
+              ? json_['creativeFieldId'] as core.String
+              : null,
+          creativeFieldValueId: json_.containsKey('creativeFieldValueId')
+              ? json_['creativeFieldValueId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (creativeFieldId != null) 'creativeFieldId': creativeFieldId!,
+        if (creativeFieldValueId != null)
+          'creativeFieldValueId': creativeFieldValueId!,
+      };
+}
 
 /// Contains properties of a creative field value.
-typedef CreativeFieldValue = $CreativeFieldValue;
+class CreativeFieldValue {
+  /// ID of this creative field value.
+  ///
+  /// This is a read-only, auto-generated field.
+  core.String? id;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#creativeFieldValue".
+  core.String? kind;
+
+  /// Value of this creative field value.
+  ///
+  /// It needs to be less than 256 characters in length and unique per creative
+  /// field.
+  core.String? value;
+
+  CreativeFieldValue({
+    this.id,
+    this.kind,
+    this.value,
+  });
+
+  CreativeFieldValue.fromJson(core.Map json_)
+      : this(
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          value:
+              json_.containsKey('value') ? json_['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (value != null) 'value': value!,
+      };
+}
 
 /// Creative Field Value List Response
 class CreativeFieldValuesListResponse {
@@ -17298,7 +18362,37 @@ class CreativeGroup {
 }
 
 /// Creative Group Assignment.
-typedef CreativeGroupAssignment = $CreativeGroupAssignment;
+class CreativeGroupAssignment {
+  /// ID of the creative group to be assigned.
+  core.String? creativeGroupId;
+
+  /// Creative group number of the creative group assignment.
+  /// Possible string values are:
+  /// - "CREATIVE_GROUP_ONE"
+  /// - "CREATIVE_GROUP_TWO"
+  core.String? creativeGroupNumber;
+
+  CreativeGroupAssignment({
+    this.creativeGroupId,
+    this.creativeGroupNumber,
+  });
+
+  CreativeGroupAssignment.fromJson(core.Map json_)
+      : this(
+          creativeGroupId: json_.containsKey('creativeGroupId')
+              ? json_['creativeGroupId'] as core.String
+              : null,
+          creativeGroupNumber: json_.containsKey('creativeGroupNumber')
+              ? json_['creativeGroupNumber'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (creativeGroupId != null) 'creativeGroupId': creativeGroupId!,
+        if (creativeGroupNumber != null)
+          'creativeGroupNumber': creativeGroupNumber!,
+      };
+}
 
 /// Creative Group List Response
 class CreativeGroupsListResponse {
@@ -17412,18 +18506,30 @@ class CreativeRotation {
   ///
   /// Can be used to specify whether to use sequential or random rotation.
   /// Possible string values are:
-  /// - "CREATIVE_ROTATION_TYPE_SEQUENTIAL"
-  /// - "CREATIVE_ROTATION_TYPE_RANDOM"
+  /// - "CREATIVE_ROTATION_TYPE_SEQUENTIAL" : The weights of each creative in
+  /// the rotation should be sequential starting at 1. The user may adjust the
+  /// order.
+  /// - "CREATIVE_ROTATION_TYPE_RANDOM" : The weights are calculated according
+  /// to the ad's CreativeRoationWeightStrategy.
   core.String? type;
 
   /// Strategy for calculating weights.
   ///
   /// Used with CREATIVE_ROTATION_TYPE_RANDOM.
   /// Possible string values are:
-  /// - "WEIGHT_STRATEGY_EQUAL"
-  /// - "WEIGHT_STRATEGY_CUSTOM"
-  /// - "WEIGHT_STRATEGY_HIGHEST_CTR"
-  /// - "WEIGHT_STRATEGY_OPTIMIZED"
+  /// - "WEIGHT_STRATEGY_EQUAL" : The creative weights should all be equal to 1.
+  /// This is the default value for all ads with a rotation type of Random.
+  /// - "WEIGHT_STRATEGY_CUSTOM" : The creative weights can be any user provided
+  /// positive integer.
+  /// - "WEIGHT_STRATEGY_HIGHEST_CTR" : The weights will be automatically
+  /// calculated giving preference to the creative that has the highest CTR. The
+  /// CTR for campaigns that are optimized for clicks = clicks/impressions. The
+  /// CTR for campaigns that are optimized for view-through or click through is
+  /// sum(activities + floodlight weight)/impressions.
+  /// - "WEIGHT_STRATEGY_OPTIMIZED" : The creative weights will be automatically
+  /// calculated using a formula that could not possibly be explained in these
+  /// comments. The value will be within some predetermined range (probably 0 -
+  /// 1,000,000).
   core.String? weightCalculationStrategy;
 
   CreativeRotation({
@@ -17577,7 +18683,143 @@ class CrossDimensionReachReportCompatibleFields {
 ///
 /// This field may only be used when calling batchinsert; it is not supported by
 /// batchupdate.
-typedef CustomFloodlightVariable = $CustomFloodlightVariable;
+class CustomFloodlightVariable {
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#customFloodlightVariable".
+  core.String? kind;
+
+  /// The type of custom floodlight variable to supply a value for.
+  ///
+  /// These map to the "u\[1-20\]=" in the tags.
+  /// Possible string values are:
+  /// - "U1"
+  /// - "U2"
+  /// - "U3"
+  /// - "U4"
+  /// - "U5"
+  /// - "U6"
+  /// - "U7"
+  /// - "U8"
+  /// - "U9"
+  /// - "U10"
+  /// - "U11"
+  /// - "U12"
+  /// - "U13"
+  /// - "U14"
+  /// - "U15"
+  /// - "U16"
+  /// - "U17"
+  /// - "U18"
+  /// - "U19"
+  /// - "U20"
+  /// - "U21"
+  /// - "U22"
+  /// - "U23"
+  /// - "U24"
+  /// - "U25"
+  /// - "U26"
+  /// - "U27"
+  /// - "U28"
+  /// - "U29"
+  /// - "U30"
+  /// - "U31"
+  /// - "U32"
+  /// - "U33"
+  /// - "U34"
+  /// - "U35"
+  /// - "U36"
+  /// - "U37"
+  /// - "U38"
+  /// - "U39"
+  /// - "U40"
+  /// - "U41"
+  /// - "U42"
+  /// - "U43"
+  /// - "U44"
+  /// - "U45"
+  /// - "U46"
+  /// - "U47"
+  /// - "U48"
+  /// - "U49"
+  /// - "U50"
+  /// - "U51"
+  /// - "U52"
+  /// - "U53"
+  /// - "U54"
+  /// - "U55"
+  /// - "U56"
+  /// - "U57"
+  /// - "U58"
+  /// - "U59"
+  /// - "U60"
+  /// - "U61"
+  /// - "U62"
+  /// - "U63"
+  /// - "U64"
+  /// - "U65"
+  /// - "U66"
+  /// - "U67"
+  /// - "U68"
+  /// - "U69"
+  /// - "U70"
+  /// - "U71"
+  /// - "U72"
+  /// - "U73"
+  /// - "U74"
+  /// - "U75"
+  /// - "U76"
+  /// - "U77"
+  /// - "U78"
+  /// - "U79"
+  /// - "U80"
+  /// - "U81"
+  /// - "U82"
+  /// - "U83"
+  /// - "U84"
+  /// - "U85"
+  /// - "U86"
+  /// - "U87"
+  /// - "U88"
+  /// - "U89"
+  /// - "U90"
+  /// - "U91"
+  /// - "U92"
+  /// - "U93"
+  /// - "U94"
+  /// - "U95"
+  /// - "U96"
+  /// - "U97"
+  /// - "U98"
+  /// - "U99"
+  /// - "U100"
+  core.String? type;
+
+  /// The value of the custom floodlight variable.
+  ///
+  /// The length of string must not exceed 100 characters.
+  core.String? value;
+
+  CustomFloodlightVariable({
+    this.kind,
+    this.type,
+    this.value,
+  });
+
+  CustomFloodlightVariable.fromJson(core.Map json_)
+      : this(
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          value:
+              json_.containsKey('value') ? json_['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (type != null) 'type': type!,
+        if (value != null) 'value': value!,
+      };
+}
 
 /// Represents a Custom Rich Media Events group.
 class CustomRichMediaEvents {
@@ -17648,14 +18890,174 @@ class CustomViewabilityMetric {
 
 /// The attributes, like playtime and percent onscreen, that define the Custom
 /// Viewability Metric.
-typedef CustomViewabilityMetricConfiguration
-    = $CustomViewabilityMetricConfiguration;
+class CustomViewabilityMetricConfiguration {
+  /// Whether the video must be audible to count an impression.
+  core.bool? audible;
+
+  /// The time in milliseconds the video must play for the Custom Viewability
+  /// Metric to count an impression.
+  ///
+  /// If both this and timePercent are specified, the earlier of the two will be
+  /// used.
+  core.int? timeMillis;
+
+  /// The percentage of video that must play for the Custom Viewability Metric
+  /// to count an impression.
+  ///
+  /// If both this and timeMillis are specified, the earlier of the two will be
+  /// used.
+  core.int? timePercent;
+
+  /// The percentage of video that must be on screen for the Custom Viewability
+  /// Metric to count an impression.
+  core.int? viewabilityPercent;
+
+  CustomViewabilityMetricConfiguration({
+    this.audible,
+    this.timeMillis,
+    this.timePercent,
+    this.viewabilityPercent,
+  });
+
+  CustomViewabilityMetricConfiguration.fromJson(core.Map json_)
+      : this(
+          audible: json_.containsKey('audible')
+              ? json_['audible'] as core.bool
+              : null,
+          timeMillis: json_.containsKey('timeMillis')
+              ? json_['timeMillis'] as core.int
+              : null,
+          timePercent: json_.containsKey('timePercent')
+              ? json_['timePercent'] as core.int
+              : null,
+          viewabilityPercent: json_.containsKey('viewabilityPercent')
+              ? json_['viewabilityPercent'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (audible != null) 'audible': audible!,
+        if (timeMillis != null) 'timeMillis': timeMillis!,
+        if (timePercent != null) 'timePercent': timePercent!,
+        if (viewabilityPercent != null)
+          'viewabilityPercent': viewabilityPercent!,
+      };
+}
 
 /// Represents a date range.
-typedef DateRange = $DateRange;
+class DateRange {
+  core.DateTime? endDate;
+
+  /// The kind of resource this is, in this case dfareporting#dateRange.
+  core.String? kind;
+
+  /// The date range relative to the date of when the report is run.
+  /// Possible string values are:
+  /// - "TODAY"
+  /// - "YESTERDAY"
+  /// - "WEEK_TO_DATE"
+  /// - "MONTH_TO_DATE"
+  /// - "QUARTER_TO_DATE"
+  /// - "YEAR_TO_DATE"
+  /// - "PREVIOUS_WEEK"
+  /// - "PREVIOUS_MONTH"
+  /// - "PREVIOUS_QUARTER"
+  /// - "PREVIOUS_YEAR"
+  /// - "LAST_7_DAYS"
+  /// - "LAST_30_DAYS"
+  /// - "LAST_90_DAYS"
+  /// - "LAST_365_DAYS"
+  /// - "LAST_24_MONTHS"
+  /// - "LAST_14_DAYS"
+  /// - "LAST_60_DAYS"
+  core.String? relativeDateRange;
+  core.DateTime? startDate;
+
+  DateRange({
+    this.endDate,
+    this.kind,
+    this.relativeDateRange,
+    this.startDate,
+  });
+
+  DateRange.fromJson(core.Map json_)
+      : this(
+          endDate: json_.containsKey('endDate')
+              ? core.DateTime.parse(json_['endDate'] as core.String)
+              : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          relativeDateRange: json_.containsKey('relativeDateRange')
+              ? json_['relativeDateRange'] as core.String
+              : null,
+          startDate: json_.containsKey('startDate')
+              ? core.DateTime.parse(json_['startDate'] as core.String)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endDate != null)
+          'endDate':
+              "${endDate!.year.toString().padLeft(4, '0')}-${endDate!.month.toString().padLeft(2, '0')}-${endDate!.day.toString().padLeft(2, '0')}",
+        if (kind != null) 'kind': kind!,
+        if (relativeDateRange != null) 'relativeDateRange': relativeDateRange!,
+        if (startDate != null)
+          'startDate':
+              "${startDate!.year.toString().padLeft(4, '0')}-${startDate!.month.toString().padLeft(2, '0')}-${startDate!.day.toString().padLeft(2, '0')}",
+      };
+}
 
 /// Day Part Targeting.
-typedef DayPartTargeting = $DayPartTargeting;
+class DayPartTargeting {
+  /// Days of the week when the ad will serve.
+  ///
+  /// Acceptable values are: - "SUNDAY" - "MONDAY" - "TUESDAY" - "WEDNESDAY" -
+  /// "THURSDAY" - "FRIDAY" - "SATURDAY"
+  core.List<core.String>? daysOfWeek;
+
+  /// Hours of the day when the ad will serve, where 0 is midnight to 1 AM and
+  /// 23 is 11 PM to midnight.
+  ///
+  /// Can be specified with days of week, in which case the ad would serve
+  /// during these hours on the specified days. For example if Monday,
+  /// Wednesday, Friday are the days of week specified and 9-10am, 3-5pm (hours
+  /// 9, 15, and 16) is specified, the ad would serve Monday, Wednesdays, and
+  /// Fridays at 9-10am and 3-5pm. Acceptable values are 0 to 23, inclusive.
+  core.List<core.int>? hoursOfDay;
+
+  /// Whether or not to use the user's local time.
+  ///
+  /// If false, the America/New York time zone applies.
+  core.bool? userLocalTime;
+
+  DayPartTargeting({
+    this.daysOfWeek,
+    this.hoursOfDay,
+    this.userLocalTime,
+  });
+
+  DayPartTargeting.fromJson(core.Map json_)
+      : this(
+          daysOfWeek: json_.containsKey('daysOfWeek')
+              ? (json_['daysOfWeek'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          hoursOfDay: json_.containsKey('hoursOfDay')
+              ? (json_['hoursOfDay'] as core.List)
+                  .map((value) => value as core.int)
+                  .toList()
+              : null,
+          userLocalTime: json_.containsKey('userLocalTime')
+              ? json_['userLocalTime'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (daysOfWeek != null) 'daysOfWeek': daysOfWeek!,
+        if (hoursOfDay != null) 'hoursOfDay': hoursOfDay!,
+        if (userLocalTime != null) 'userLocalTime': userLocalTime!,
+      };
+}
 
 /// Contains information about a landing page deep link.
 class DeepLink {
@@ -17722,8 +19124,39 @@ class DeepLink {
 ///
 /// A campaign may override the event tag defined at the advertiser level, and
 /// an ad may also override the campaign's setting further.
-typedef DefaultClickThroughEventTagProperties
-    = $DefaultClickThroughEventTagProperties;
+class DefaultClickThroughEventTagProperties {
+  /// ID of the click-through event tag to apply to all ads in this entity's
+  /// scope.
+  core.String? defaultClickThroughEventTagId;
+
+  /// Whether this entity should override the inherited default click-through
+  /// event tag with its own defined value.
+  core.bool? overrideInheritedEventTag;
+
+  DefaultClickThroughEventTagProperties({
+    this.defaultClickThroughEventTagId,
+    this.overrideInheritedEventTag,
+  });
+
+  DefaultClickThroughEventTagProperties.fromJson(core.Map json_)
+      : this(
+          defaultClickThroughEventTagId:
+              json_.containsKey('defaultClickThroughEventTagId')
+                  ? json_['defaultClickThroughEventTagId'] as core.String
+                  : null,
+          overrideInheritedEventTag:
+              json_.containsKey('overrideInheritedEventTag')
+                  ? json_['overrideInheritedEventTag'] as core.bool
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (defaultClickThroughEventTagId != null)
+          'defaultClickThroughEventTagId': defaultClickThroughEventTagId!,
+        if (overrideInheritedEventTag != null)
+          'overrideInheritedEventTag': overrideInheritedEventTag!,
+      };
+}
 
 /// Delivery Schedule.
 class DeliverySchedule {
@@ -17801,13 +19234,121 @@ class DeliverySchedule {
 }
 
 /// Google Ad Manager Settings
-typedef DfpSettings = $DfpSettings;
+class DfpSettings {
+  /// Ad Manager network code for this directory site.
+  core.String? dfpNetworkCode;
+
+  /// Ad Manager network name for this directory site.
+  core.String? dfpNetworkName;
+
+  /// Whether this directory site accepts programmatic placements.
+  core.bool? programmaticPlacementAccepted;
+
+  /// Whether this directory site accepts publisher-paid tags.
+  core.bool? pubPaidPlacementAccepted;
+
+  /// Whether this directory site is available only via Publisher Portal.
+  core.bool? publisherPortalOnly;
+
+  DfpSettings({
+    this.dfpNetworkCode,
+    this.dfpNetworkName,
+    this.programmaticPlacementAccepted,
+    this.pubPaidPlacementAccepted,
+    this.publisherPortalOnly,
+  });
+
+  DfpSettings.fromJson(core.Map json_)
+      : this(
+          dfpNetworkCode: json_.containsKey('dfpNetworkCode')
+              ? json_['dfpNetworkCode'] as core.String
+              : null,
+          dfpNetworkName: json_.containsKey('dfpNetworkName')
+              ? json_['dfpNetworkName'] as core.String
+              : null,
+          programmaticPlacementAccepted:
+              json_.containsKey('programmaticPlacementAccepted')
+                  ? json_['programmaticPlacementAccepted'] as core.bool
+                  : null,
+          pubPaidPlacementAccepted:
+              json_.containsKey('pubPaidPlacementAccepted')
+                  ? json_['pubPaidPlacementAccepted'] as core.bool
+                  : null,
+          publisherPortalOnly: json_.containsKey('publisherPortalOnly')
+              ? json_['publisherPortalOnly'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dfpNetworkCode != null) 'dfpNetworkCode': dfpNetworkCode!,
+        if (dfpNetworkName != null) 'dfpNetworkName': dfpNetworkName!,
+        if (programmaticPlacementAccepted != null)
+          'programmaticPlacementAccepted': programmaticPlacementAccepted!,
+        if (pubPaidPlacementAccepted != null)
+          'pubPaidPlacementAccepted': pubPaidPlacementAccepted!,
+        if (publisherPortalOnly != null)
+          'publisherPortalOnly': publisherPortalOnly!,
+      };
+}
 
 /// Represents a dimension.
-typedef Dimension = $Dimension;
+class Dimension {
+  /// The kind of resource this is, in this case dfareporting#dimension.
+  core.String? kind;
+
+  /// The dimension name, e.g. advertiser
+  core.String? name;
+
+  Dimension({
+    this.kind,
+    this.name,
+  });
+
+  Dimension.fromJson(core.Map json_)
+      : this(
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+      };
+}
 
 /// Represents a dimension filter.
-typedef DimensionFilter = $DimensionFilter;
+class DimensionFilter {
+  /// The name of the dimension to filter.
+  core.String? dimensionName;
+
+  /// The kind of resource this is, in this case dfareporting#dimensionFilter.
+  core.String? kind;
+
+  /// The value of the dimension to filter.
+  core.String? value;
+
+  DimensionFilter({
+    this.dimensionName,
+    this.kind,
+    this.value,
+  });
+
+  DimensionFilter.fromJson(core.Map json_)
+      : this(
+          dimensionName: json_.containsKey('dimensionName')
+              ? json_['dimensionName'] as core.String
+              : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          value:
+              json_.containsKey('value') ? json_['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dimensionName != null) 'dimensionName': dimensionName!,
+        if (kind != null) 'kind': kind!,
+        if (value != null) 'value': value!,
+      };
+}
 
 /// Represents a DimensionValue resource.
 typedef DimensionValue = $DimensionValue;
@@ -18137,7 +19678,59 @@ class DisjunctiveMatchStatement {
 /// placements and used for targeting with Studio dynamic creatives. Use these
 /// labels instead of numeric Campaign Manager IDs (such as placement IDs) to
 /// save time and avoid errors in your dynamic feeds.
-typedef DynamicTargetingKey = $DynamicTargetingKey;
+class DynamicTargetingKey {
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#dynamicTargetingKey".
+  core.String? kind;
+
+  /// Name of this dynamic targeting key.
+  ///
+  /// This is a required field. Must be less than 256 characters long and cannot
+  /// contain commas. All characters are converted to lowercase.
+  core.String? name;
+
+  /// ID of the object of this dynamic targeting key.
+  ///
+  /// This is a required field.
+  core.String? objectId;
+
+  /// Type of the object of this dynamic targeting key.
+  ///
+  /// This is a required field.
+  /// Possible string values are:
+  /// - "OBJECT_ADVERTISER"
+  /// - "OBJECT_AD"
+  /// - "OBJECT_CREATIVE"
+  /// - "OBJECT_PLACEMENT"
+  core.String? objectType;
+
+  DynamicTargetingKey({
+    this.kind,
+    this.name,
+    this.objectId,
+    this.objectType,
+  });
+
+  DynamicTargetingKey.fromJson(core.Map json_)
+      : this(
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          objectId: json_.containsKey('objectId')
+              ? json_['objectId'] as core.String
+              : null,
+          objectType: json_.containsKey('objectType')
+              ? json_['objectType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+        if (objectId != null) 'objectId': objectId!,
+        if (objectType != null) 'objectType': objectType!,
+      };
+}
 
 /// Dynamic Targeting Key List Response
 class DynamicTargetingKeysListResponse {
@@ -18173,7 +19766,70 @@ class DynamicTargetingKeysListResponse {
 }
 
 /// A description of how user IDs are encrypted.
-typedef EncryptionInfo = $EncryptionInfo;
+class EncryptionInfo {
+  /// The encryption entity ID.
+  ///
+  /// This should match the encryption configuration for ad serving or Data
+  /// Transfer.
+  core.String? encryptionEntityId;
+
+  /// The encryption entity type.
+  ///
+  /// This should match the encryption configuration for ad serving or Data
+  /// Transfer.
+  /// Possible string values are:
+  /// - "ENCRYPTION_ENTITY_TYPE_UNKNOWN"
+  /// - "DCM_ACCOUNT"
+  /// - "DCM_ADVERTISER"
+  /// - "DBM_PARTNER"
+  /// - "DBM_ADVERTISER"
+  /// - "ADWORDS_CUSTOMER"
+  /// - "DFP_NETWORK_CODE"
+  core.String? encryptionEntityType;
+
+  /// Describes whether the encrypted cookie was received from ad serving (the
+  /// %m macro) or from Data Transfer.
+  /// Possible string values are:
+  /// - "ENCRYPTION_SCOPE_UNKNOWN"
+  /// - "AD_SERVING"
+  /// - "DATA_TRANSFER"
+  core.String? encryptionSource;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#encryptionInfo".
+  core.String? kind;
+
+  EncryptionInfo({
+    this.encryptionEntityId,
+    this.encryptionEntityType,
+    this.encryptionSource,
+    this.kind,
+  });
+
+  EncryptionInfo.fromJson(core.Map json_)
+      : this(
+          encryptionEntityId: json_.containsKey('encryptionEntityId')
+              ? json_['encryptionEntityId'] as core.String
+              : null,
+          encryptionEntityType: json_.containsKey('encryptionEntityType')
+              ? json_['encryptionEntityType'] as core.String
+              : null,
+          encryptionSource: json_.containsKey('encryptionSource')
+              ? json_['encryptionSource'] as core.String
+              : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (encryptionEntityId != null)
+          'encryptionEntityId': encryptionEntityId!,
+        if (encryptionEntityType != null)
+          'encryptionEntityType': encryptionEntityType!,
+        if (encryptionSource != null) 'encryptionSource': encryptionSource!,
+        if (kind != null) 'kind': kind!,
+      };
+}
 
 /// Represents a DfaReporting event filter.
 class EventFilter {
@@ -18183,9 +19839,13 @@ class EventFilter {
   /// The kind of resource this is, in this case dfareporting#eventFilter.
   core.String? kind;
 
+  /// Filter on a custom variable.
+  UvarFilter? uvarFilter;
+
   EventFilter({
     this.dimensionFilter,
     this.kind,
+    this.uvarFilter,
   });
 
   EventFilter.fromJson(core.Map json_)
@@ -18195,11 +19855,16 @@ class EventFilter {
                   as core.Map<core.String, core.dynamic>)
               : null,
           kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          uvarFilter: json_.containsKey('uvarFilter')
+              ? UvarFilter.fromJson(
+                  json_['uvarFilter'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dimensionFilter != null) 'dimensionFilter': dimensionFilter!,
         if (kind != null) 'kind': kind!,
+        if (uvarFilter != null) 'uvarFilter': uvarFilter!,
       };
 }
 
@@ -18260,8 +19925,9 @@ class EventTag {
   ///
   /// If no type is specified then the event tag will be applied to all sites.
   /// Possible string values are:
-  /// - "ALLOWLIST"
-  /// - "BLOCKLIST"
+  /// - "ALLOWLIST" : The event tag should only ever fire on specified sites.
+  /// - "BLOCKLIST" : The event tag should fire on all sites EXCEPT the
+  /// specified sites.
   core.String? siteFilterType;
 
   /// Filter list of site IDs associated with this event tag.
@@ -18294,9 +19960,12 @@ class EventTag {
   /// JavaScript URL, or a third-party click-through URL for either impression
   /// or click tracking. This is a required field.
   /// Possible string values are:
-  /// - "IMPRESSION_IMAGE_EVENT_TAG"
-  /// - "IMPRESSION_JAVASCRIPT_EVENT_TAG"
-  /// - "CLICK_THROUGH_EVENT_TAG"
+  /// - "IMPRESSION_IMAGE_EVENT_TAG" : A third-party pixel for impression
+  /// tracking.
+  /// - "IMPRESSION_JAVASCRIPT_EVENT_TAG" : A third-party JavaScript URL for
+  /// impression tracking.
+  /// - "CLICK_THROUGH_EVENT_TAG" : A third-party URL for click tracking that
+  /// redirects to the landing page.
   core.String? type;
 
   /// Payload URL for this event tag.
@@ -18413,7 +20082,33 @@ class EventTag {
 }
 
 /// Event tag override information.
-typedef EventTagOverride = $EventTagOverride;
+class EventTagOverride {
+  /// Whether this override is enabled.
+  core.bool? enabled;
+
+  /// ID of this event tag override.
+  ///
+  /// This is a read-only, auto-generated field.
+  core.String? id;
+
+  EventTagOverride({
+    this.enabled,
+    this.id,
+  });
+
+  EventTagOverride.fromJson(core.Map json_)
+      : this(
+          enabled: json_.containsKey('enabled')
+              ? json_['enabled'] as core.bool
+              : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
+        if (id != null) 'id': id!,
+      };
+}
 
 /// Event Tag List Response
 class EventTagsListResponse {
@@ -18637,11 +20332,96 @@ class FileList {
 }
 
 /// Flight
-typedef Flight = $Flight;
+class Flight {
+  core.DateTime? endDate;
+
+  /// Rate or cost of this flight.
+  core.String? rateOrCost;
+  core.DateTime? startDate;
+
+  /// Units of this flight.
+  core.String? units;
+
+  Flight({
+    this.endDate,
+    this.rateOrCost,
+    this.startDate,
+    this.units,
+  });
+
+  Flight.fromJson(core.Map json_)
+      : this(
+          endDate: json_.containsKey('endDate')
+              ? core.DateTime.parse(json_['endDate'] as core.String)
+              : null,
+          rateOrCost: json_.containsKey('rateOrCost')
+              ? json_['rateOrCost'] as core.String
+              : null,
+          startDate: json_.containsKey('startDate')
+              ? core.DateTime.parse(json_['startDate'] as core.String)
+              : null,
+          units:
+              json_.containsKey('units') ? json_['units'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endDate != null)
+          'endDate':
+              "${endDate!.year.toString().padLeft(4, '0')}-${endDate!.month.toString().padLeft(2, '0')}-${endDate!.day.toString().padLeft(2, '0')}",
+        if (rateOrCost != null) 'rateOrCost': rateOrCost!,
+        if (startDate != null)
+          'startDate':
+              "${startDate!.year.toString().padLeft(4, '0')}-${startDate!.month.toString().padLeft(2, '0')}-${startDate!.day.toString().padLeft(2, '0')}",
+        if (units != null) 'units': units!,
+      };
+}
 
 /// Floodlight Activity GenerateTag Response
-typedef FloodlightActivitiesGenerateTagResponse
-    = $FloodlightActivitiesGenerateTagResponse;
+class FloodlightActivitiesGenerateTagResponse {
+  /// Generated tag for this Floodlight activity.
+  ///
+  /// For global site tags, this is the event snippet.
+  core.String? floodlightActivityTag;
+
+  /// The global snippet section of a global site tag.
+  ///
+  /// The global site tag sets new cookies on your domain, which will store a
+  /// unique identifier for a user or the ad click that brought the user to your
+  /// site. Learn more.
+  core.String? globalSiteTagGlobalSnippet;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string
+  /// "dfareporting#floodlightActivitiesGenerateTagResponse".
+  core.String? kind;
+
+  FloodlightActivitiesGenerateTagResponse({
+    this.floodlightActivityTag,
+    this.globalSiteTagGlobalSnippet,
+    this.kind,
+  });
+
+  FloodlightActivitiesGenerateTagResponse.fromJson(core.Map json_)
+      : this(
+          floodlightActivityTag: json_.containsKey('floodlightActivityTag')
+              ? json_['floodlightActivityTag'] as core.String
+              : null,
+          globalSiteTagGlobalSnippet:
+              json_.containsKey('globalSiteTagGlobalSnippet')
+                  ? json_['globalSiteTagGlobalSnippet'] as core.String
+                  : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (floodlightActivityTag != null)
+          'floodlightActivityTag': floodlightActivityTag!,
+        if (globalSiteTagGlobalSnippet != null)
+          'globalSiteTagGlobalSnippet': globalSiteTagGlobalSnippet!,
+        if (kind != null) 'kind': kind!,
+      };
+}
 
 /// Floodlight Activity List Response
 class FloodlightActivitiesListResponse {
@@ -18721,11 +20501,15 @@ class FloodlightActivity {
   ///
   /// This is a required field.
   /// Possible string values are:
-  /// - "STANDARD_COUNTING"
-  /// - "UNIQUE_COUNTING"
-  /// - "SESSION_COUNTING"
-  /// - "TRANSACTIONS_COUNTING"
-  /// - "ITEMS_SOLD_COUNTING"
+  /// - "STANDARD_COUNTING" : Count every conversion.
+  /// - "UNIQUE_COUNTING" : Count the first conversion for each unique user
+  /// during each 24-hour day, from midnight to midnight, Eastern Time.
+  /// - "SESSION_COUNTING" : Count one conversion per user per session. Session
+  /// length is set by the site where the Spotlight tag is deployed.
+  /// - "TRANSACTIONS_COUNTING" : Count all conversions, plus the total number
+  /// of sales that take place and the total revenue for these transactions.
+  /// - "ITEMS_SOLD_COUNTING" : Count each conversion, plus the total number of
+  /// items sold and the total revenue for these sales.
   core.String? countingMethod;
 
   /// Dynamic floodlight tags.
@@ -19041,7 +20825,37 @@ class FloodlightActivity {
 }
 
 /// Dynamic Tag
-typedef FloodlightActivityDynamicTag = $FloodlightActivityDynamicTag;
+class FloodlightActivityDynamicTag {
+  /// ID of this dynamic tag.
+  ///
+  /// This is a read-only, auto-generated field.
+  core.String? id;
+
+  /// Name of this tag.
+  core.String? name;
+
+  /// Tag code.
+  core.String? tag;
+
+  FloodlightActivityDynamicTag({
+    this.id,
+    this.name,
+    this.tag,
+  });
+
+  FloodlightActivityDynamicTag.fromJson(core.Map json_)
+      : this(
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          tag: json_.containsKey('tag') ? json_['tag'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (id != null) 'id': id!,
+        if (name != null) 'name': name!,
+        if (tag != null) 'tag': tag!,
+      };
+}
 
 /// Contains properties of a Floodlight activity group.
 class FloodlightActivityGroup {
@@ -19330,12 +21144,10 @@ class FloodlightConfiguration {
   /// recent ad exposures seen by a user before converting.
   core.bool? exposureToConversionEnabled;
 
-  /// Day that will be counted as the first day of the week in reports.
   ///
-  /// This is a required field.
   /// Possible string values are:
-  /// - "MONDAY"
   /// - "SUNDAY"
+  /// - "MONDAY"
   core.String? firstDayOfWeek;
 
   /// ID of this floodlight configuration.
@@ -19605,10 +21417,95 @@ class FloodlightReportCompatibleFields {
 }
 
 /// Frequency Cap.
-typedef FrequencyCap = $FrequencyCap;
+class FrequencyCap {
+  /// Duration of time, in seconds, for this frequency cap.
+  ///
+  /// The maximum duration is 90 days. Acceptable values are 1 to 7776000,
+  /// inclusive.
+  core.String? duration;
+
+  /// Number of times an individual user can be served the ad within the
+  /// specified duration.
+  ///
+  /// Acceptable values are 1 to 15, inclusive.
+  core.String? impressions;
+
+  FrequencyCap({
+    this.duration,
+    this.impressions,
+  });
+
+  FrequencyCap.fromJson(core.Map json_)
+      : this(
+          duration: json_.containsKey('duration')
+              ? json_['duration'] as core.String
+              : null,
+          impressions: json_.containsKey('impressions')
+              ? json_['impressions'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (duration != null) 'duration': duration!,
+        if (impressions != null) 'impressions': impressions!,
+      };
+}
 
 /// FsCommand.
-typedef FsCommand = $FsCommand;
+class FsCommand {
+  /// Distance from the left of the browser.Applicable when positionOption is
+  /// DISTANCE_FROM_TOP_LEFT_CORNER.
+  core.int? left;
+
+  /// Position in the browser where the window will open.
+  /// Possible string values are:
+  /// - "CENTERED" : Center of the window Corresponds to "center" in UI
+  /// - "DISTANCE_FROM_TOP_LEFT_CORNER" : user-defined distance from top
+  /// left-hand corner of the window Corresponds to "top-left" in UI
+  core.String? positionOption;
+
+  /// Distance from the top of the browser.
+  ///
+  /// Applicable when positionOption is DISTANCE_FROM_TOP_LEFT_CORNER.
+  core.int? top;
+
+  /// Height of the window.
+  core.int? windowHeight;
+
+  /// Width of the window.
+  core.int? windowWidth;
+
+  FsCommand({
+    this.left,
+    this.positionOption,
+    this.top,
+    this.windowHeight,
+    this.windowWidth,
+  });
+
+  FsCommand.fromJson(core.Map json_)
+      : this(
+          left: json_.containsKey('left') ? json_['left'] as core.int : null,
+          positionOption: json_.containsKey('positionOption')
+              ? json_['positionOption'] as core.String
+              : null,
+          top: json_.containsKey('top') ? json_['top'] as core.int : null,
+          windowHeight: json_.containsKey('windowHeight')
+              ? json_['windowHeight'] as core.int
+              : null,
+          windowWidth: json_.containsKey('windowWidth')
+              ? json_['windowWidth'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (left != null) 'left': left!,
+        if (positionOption != null) 'positionOption': positionOption!,
+        if (top != null) 'top': top!,
+        if (windowHeight != null) 'windowHeight': windowHeight!,
+        if (windowWidth != null) 'windowWidth': windowWidth!,
+      };
+}
 
 /// Geographical Targeting.
 class GeoTargeting {
@@ -20127,7 +22024,25 @@ class Invoice {
 }
 
 /// Key Value Targeting Expression.
-typedef KeyValueTargetingExpression = $KeyValueTargetingExpression;
+class KeyValueTargetingExpression {
+  /// Keyword expression being targeted by the ad.
+  core.String? expression;
+
+  KeyValueTargetingExpression({
+    this.expression,
+  });
+
+  KeyValueTargetingExpression.fromJson(core.Map json_)
+      : this(
+          expression: json_.containsKey('expression')
+              ? json_['expression'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (expression != null) 'expression': expression!,
+      };
+}
 
 /// Contains information about where a user's browser is taken after the user
 /// clicks an ad.
@@ -20205,7 +22120,50 @@ class LandingPage {
 }
 
 /// Contains information about a language that can be targeted by ads.
-typedef Language = $Language;
+class Language {
+  /// Language ID of this language.
+  ///
+  /// This is the ID used for targeting and generating reports.
+  core.String? id;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#language".
+  core.String? kind;
+
+  /// Format of language code is an ISO 639 two-letter language code optionally
+  /// followed by an underscore followed by an ISO 3166 code.
+  ///
+  /// Examples are "en" for English or "zh_CN" for Simplified Chinese.
+  core.String? languageCode;
+
+  /// Name of this language.
+  core.String? name;
+
+  Language({
+    this.id,
+    this.kind,
+    this.languageCode,
+    this.name,
+  });
+
+  Language.fromJson(core.Map json_)
+      : this(
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          languageCode: json_.containsKey('languageCode')
+              ? json_['languageCode'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (languageCode != null) 'languageCode': languageCode!,
+        if (name != null) 'name': name!,
+      };
+}
 
 /// Language Targeting.
 class LanguageTargeting {
@@ -20267,7 +22225,23 @@ class LanguagesListResponse {
 }
 
 /// Modification timestamp.
-typedef LastModifiedInfo = $LastModifiedInfo;
+class LastModifiedInfo {
+  /// Timestamp of the last change in milliseconds since epoch.
+  core.String? time;
+
+  LastModifiedInfo({
+    this.time,
+  });
+
+  LastModifiedInfo.fromJson(core.Map json_)
+      : this(
+          time: json_.containsKey('time') ? json_['time'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (time != null) 'time': time!,
+      };
+}
 
 /// A group clause made up of list population terms representing constraints
 /// joined by ORs.
@@ -20348,28 +22322,296 @@ class ListPopulationRule {
 }
 
 /// Remarketing List Population Rule Term.
-typedef ListPopulationTerm = $ListPopulationTerm;
+class ListPopulationTerm {
+  /// Will be true if the term should check if the user is in the list and false
+  /// if the term should check if the user is not in the list.
+  ///
+  /// This field is only relevant when type is set to LIST_MEMBERSHIP_TERM.
+  /// False by default.
+  core.bool? contains;
+
+  /// Whether to negate the comparison result of this term during rule
+  /// evaluation.
+  ///
+  /// This field is only relevant when type is left unset or set to
+  /// CUSTOM_VARIABLE_TERM or REFERRER_TERM.
+  core.bool? negation;
+
+  /// Comparison operator of this term.
+  ///
+  /// This field is only relevant when type is left unset or set to
+  /// CUSTOM_VARIABLE_TERM or REFERRER_TERM.
+  /// Possible string values are:
+  /// - "NUM_EQUALS"
+  /// - "NUM_LESS_THAN"
+  /// - "NUM_LESS_THAN_EQUAL"
+  /// - "NUM_GREATER_THAN"
+  /// - "NUM_GREATER_THAN_EQUAL"
+  /// - "STRING_EQUALS"
+  /// - "STRING_CONTAINS"
+  core.String? operator;
+
+  /// ID of the list in question.
+  ///
+  /// This field is only relevant when type is set to LIST_MEMBERSHIP_TERM.
+  core.String? remarketingListId;
+
+  /// List population term type determines the applicable fields in this object.
+  ///
+  /// If left unset or set to CUSTOM_VARIABLE_TERM, then variableName,
+  /// variableFriendlyName, operator, value, and negation are applicable. If set
+  /// to LIST_MEMBERSHIP_TERM then remarketingListId and contains are
+  /// applicable. If set to REFERRER_TERM then operator, value, and negation are
+  /// applicable.
+  /// Possible string values are:
+  /// - "CUSTOM_VARIABLE_TERM"
+  /// - "LIST_MEMBERSHIP_TERM"
+  /// - "REFERRER_TERM"
+  core.String? type;
+
+  /// Literal to compare the variable to.
+  ///
+  /// This field is only relevant when type is left unset or set to
+  /// CUSTOM_VARIABLE_TERM or REFERRER_TERM.
+  core.String? value;
+
+  /// Friendly name of this term's variable.
+  ///
+  /// This is a read-only, auto-generated field. This field is only relevant
+  /// when type is left unset or set to CUSTOM_VARIABLE_TERM.
+  core.String? variableFriendlyName;
+
+  /// Name of the variable (U1, U2, etc.) being compared in this term.
+  ///
+  /// This field is only relevant when type is set to null, CUSTOM_VARIABLE_TERM
+  /// or REFERRER_TERM.
+  core.String? variableName;
+
+  ListPopulationTerm({
+    this.contains,
+    this.negation,
+    this.operator,
+    this.remarketingListId,
+    this.type,
+    this.value,
+    this.variableFriendlyName,
+    this.variableName,
+  });
+
+  ListPopulationTerm.fromJson(core.Map json_)
+      : this(
+          contains: json_.containsKey('contains')
+              ? json_['contains'] as core.bool
+              : null,
+          negation: json_.containsKey('negation')
+              ? json_['negation'] as core.bool
+              : null,
+          operator: json_.containsKey('operator')
+              ? json_['operator'] as core.String
+              : null,
+          remarketingListId: json_.containsKey('remarketingListId')
+              ? json_['remarketingListId'] as core.String
+              : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          value:
+              json_.containsKey('value') ? json_['value'] as core.String : null,
+          variableFriendlyName: json_.containsKey('variableFriendlyName')
+              ? json_['variableFriendlyName'] as core.String
+              : null,
+          variableName: json_.containsKey('variableName')
+              ? json_['variableName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (contains != null) 'contains': contains!,
+        if (negation != null) 'negation': negation!,
+        if (operator != null) 'operator': operator!,
+        if (remarketingListId != null) 'remarketingListId': remarketingListId!,
+        if (type != null) 'type': type!,
+        if (value != null) 'value': value!,
+        if (variableFriendlyName != null)
+          'variableFriendlyName': variableFriendlyName!,
+        if (variableName != null) 'variableName': variableName!,
+      };
+}
 
 /// Remarketing List Targeting Expression.
-typedef ListTargetingExpression = $ListTargetingExpression;
+class ListTargetingExpression {
+  /// Expression describing which lists are being targeted by the ad.
+  core.String? expression;
+
+  ListTargetingExpression({
+    this.expression,
+  });
+
+  ListTargetingExpression.fromJson(core.Map json_)
+      : this(
+          expression: json_.containsKey('expression')
+              ? json_['expression'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (expression != null) 'expression': expression!,
+      };
+}
 
 /// Lookback configuration settings.
-typedef LookbackConfiguration = $LookbackConfiguration;
-typedef MeasurementPartnerAdvertiserLink = $MeasurementPartnerAdvertiserLink;
-typedef MeasurementPartnerCampaignLink = $MeasurementPartnerCampaignLink;
+class LookbackConfiguration {
+  /// Lookback window, in days, from the last time a given user clicked on one
+  /// of your ads.
+  ///
+  /// If you enter 0, clicks will not be considered as triggering events for
+  /// floodlight tracking. If you leave this field blank, the default value for
+  /// your account will be used. Acceptable values are 0 to 90, inclusive.
+  core.int? clickDuration;
+
+  /// Lookback window, in days, from the last time a given user viewed one of
+  /// your ads.
+  ///
+  /// If you enter 0, impressions will not be considered as triggering events
+  /// for floodlight tracking. If you leave this field blank, the default value
+  /// for your account will be used. Acceptable values are 0 to 90, inclusive.
+  core.int? postImpressionActivitiesDuration;
+
+  LookbackConfiguration({
+    this.clickDuration,
+    this.postImpressionActivitiesDuration,
+  });
+
+  LookbackConfiguration.fromJson(core.Map json_)
+      : this(
+          clickDuration: json_.containsKey('clickDuration')
+              ? json_['clickDuration'] as core.int
+              : null,
+          postImpressionActivitiesDuration:
+              json_.containsKey('postImpressionActivitiesDuration')
+                  ? json_['postImpressionActivitiesDuration'] as core.int
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (clickDuration != null) 'clickDuration': clickDuration!,
+        if (postImpressionActivitiesDuration != null)
+          'postImpressionActivitiesDuration': postImpressionActivitiesDuration!,
+      };
+}
+
+class MeasurementPartnerAdvertiserLink {
+  /// Status of the partner link.
+  /// Possible string values are:
+  /// - "MEASUREMENT_PARTNER_UNLINKED" : Unlinked.
+  /// - "MEASUREMENT_PARTNER_LINKED" : Linked successfully
+  /// - "MEASUREMENT_PARTNER_LINK_PENDING" : Link pending for wrapping.
+  /// - "MEASUREMENT_PARTNER_LINK_FAILURE" : Linking failure.
+  /// - "MEASUREMENT_PARTNER_LINK_OPT_OUT" : Link opt-out by user.
+  /// - "MEASUREMENT_PARTNER_LINK_OPT_OUT_PENDING" : Link opt-out pending sync.
+  /// - "MEASUREMENT_PARTNER_LINK_WRAPPING_PENDING" : Link wrap answer pending.
+  /// - "MEASUREMENT_PARTNER_MODE_CHANGE_PENDING" : Mode change pending.
+  core.String? linkStatus;
+
+  /// Measurement partner used for tag wrapping.
+  /// Possible string values are:
+  /// - "NONE"
+  /// - "INTEGRAL_AD_SCIENCE"
+  /// - "DOUBLE_VERIFY"
+  core.String? measurementPartner;
+
+  /// partner Advertiser Id.
+  core.String? partnerAdvertiserId;
+
+  MeasurementPartnerAdvertiserLink({
+    this.linkStatus,
+    this.measurementPartner,
+    this.partnerAdvertiserId,
+  });
+
+  MeasurementPartnerAdvertiserLink.fromJson(core.Map json_)
+      : this(
+          linkStatus: json_.containsKey('linkStatus')
+              ? json_['linkStatus'] as core.String
+              : null,
+          measurementPartner: json_.containsKey('measurementPartner')
+              ? json_['measurementPartner'] as core.String
+              : null,
+          partnerAdvertiserId: json_.containsKey('partnerAdvertiserId')
+              ? json_['partnerAdvertiserId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (linkStatus != null) 'linkStatus': linkStatus!,
+        if (measurementPartner != null)
+          'measurementPartner': measurementPartner!,
+        if (partnerAdvertiserId != null)
+          'partnerAdvertiserId': partnerAdvertiserId!,
+      };
+}
+
+class MeasurementPartnerCampaignLink {
+  /// .
+  /// Possible string values are:
+  /// - "MEASUREMENT_PARTNER_UNLINKED" : Unlinked.
+  /// - "MEASUREMENT_PARTNER_LINKED" : Linked successfully
+  /// - "MEASUREMENT_PARTNER_LINK_PENDING" : Link pending for wrapping.
+  /// - "MEASUREMENT_PARTNER_LINK_FAILURE" : Linking failure.
+  /// - "MEASUREMENT_PARTNER_LINK_OPT_OUT" : Link opt-out by user.
+  /// - "MEASUREMENT_PARTNER_LINK_OPT_OUT_PENDING" : Link opt-out pending sync.
+  /// - "MEASUREMENT_PARTNER_LINK_WRAPPING_PENDING" : Link wrap answer pending.
+  /// - "MEASUREMENT_PARTNER_MODE_CHANGE_PENDING" : Mode change pending.
+  core.String? linkStatus;
+
+  /// Measurement partner used for tag wrapping.
+  /// Possible string values are:
+  /// - "NONE"
+  /// - "INTEGRAL_AD_SCIENCE"
+  /// - "DOUBLE_VERIFY"
+  core.String? measurementPartner;
+
+  /// Partner campaign ID needed for establishing linking with Measurement
+  /// partner.
+  core.String? partnerCampaignId;
+
+  MeasurementPartnerCampaignLink({
+    this.linkStatus,
+    this.measurementPartner,
+    this.partnerCampaignId,
+  });
+
+  MeasurementPartnerCampaignLink.fromJson(core.Map json_)
+      : this(
+          linkStatus: json_.containsKey('linkStatus')
+              ? json_['linkStatus'] as core.String
+              : null,
+          measurementPartner: json_.containsKey('measurementPartner')
+              ? json_['measurementPartner'] as core.String
+              : null,
+          partnerCampaignId: json_.containsKey('partnerCampaignId')
+              ? json_['partnerCampaignId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (linkStatus != null) 'linkStatus': linkStatus!,
+        if (measurementPartner != null)
+          'measurementPartner': measurementPartner!,
+        if (partnerCampaignId != null) 'partnerCampaignId': partnerCampaignId!,
+      };
+}
 
 /// Placement tag wrapping
 class MeasurementPartnerWrappingData {
   /// Placement wrapping status.
   /// Possible string values are:
-  /// - "MEASUREMENT_PARTNER_UNLINKED"
-  /// - "MEASUREMENT_PARTNER_LINKED"
-  /// - "MEASUREMENT_PARTNER_LINK_PENDING"
-  /// - "MEASUREMENT_PARTNER_LINK_FAILURE"
-  /// - "MEASUREMENT_PARTNER_LINK_OPT_OUT"
-  /// - "MEASUREMENT_PARTNER_LINK_OPT_OUT_PENDING"
-  /// - "MEASUREMENT_PARTNER_LINK_WRAPPING_PENDING"
-  /// - "MEASUREMENT_PARTNER_MODE_CHANGE_PENDING"
+  /// - "MEASUREMENT_PARTNER_UNLINKED" : Unlinked.
+  /// - "MEASUREMENT_PARTNER_LINKED" : Linked successfully
+  /// - "MEASUREMENT_PARTNER_LINK_PENDING" : Link pending for wrapping.
+  /// - "MEASUREMENT_PARTNER_LINK_FAILURE" : Linking failure.
+  /// - "MEASUREMENT_PARTNER_LINK_OPT_OUT" : Link opt-out by user.
+  /// - "MEASUREMENT_PARTNER_LINK_OPT_OUT_PENDING" : Link opt-out pending sync.
+  /// - "MEASUREMENT_PARTNER_LINK_WRAPPING_PENDING" : Link wrap answer pending.
+  /// - "MEASUREMENT_PARTNER_MODE_CHANGE_PENDING" : Mode change pending.
   core.String? linkStatus;
 
   /// Measurement partner used for wrapping the placement.
@@ -20433,10 +22675,100 @@ class MeasurementPartnerWrappingData {
 }
 
 /// Represents a metric.
-typedef Metric = $Metric;
+class Metric {
+  /// The kind of resource this is, in this case dfareporting#metric.
+  core.String? kind;
+
+  /// The metric name, e.g. impressions
+  core.String? name;
+
+  Metric({
+    this.kind,
+    this.name,
+  });
+
+  Metric.fromJson(core.Map json_)
+      : this(
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+      };
+}
 
 /// Contains information about a metro region that can be targeted by ads.
-typedef Metro = $Metro;
+class Metro {
+  /// Country code of the country to which this metro region belongs.
+  core.String? countryCode;
+
+  /// DART ID of the country to which this metro region belongs.
+  core.String? countryDartId;
+
+  /// DART ID of this metro region.
+  core.String? dartId;
+
+  /// DMA ID of this metro region.
+  ///
+  /// This is the ID used for targeting and generating reports, and is
+  /// equivalent to metro_code.
+  core.String? dmaId;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#metro".
+  core.String? kind;
+
+  /// Metro code of this metro region.
+  ///
+  /// This is equivalent to dma_id.
+  core.String? metroCode;
+
+  /// Name of this metro region.
+  core.String? name;
+
+  Metro({
+    this.countryCode,
+    this.countryDartId,
+    this.dartId,
+    this.dmaId,
+    this.kind,
+    this.metroCode,
+    this.name,
+  });
+
+  Metro.fromJson(core.Map json_)
+      : this(
+          countryCode: json_.containsKey('countryCode')
+              ? json_['countryCode'] as core.String
+              : null,
+          countryDartId: json_.containsKey('countryDartId')
+              ? json_['countryDartId'] as core.String
+              : null,
+          dartId: json_.containsKey('dartId')
+              ? json_['dartId'] as core.String
+              : null,
+          dmaId:
+              json_.containsKey('dmaId') ? json_['dmaId'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          metroCode: json_.containsKey('metroCode')
+              ? json_['metroCode'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (countryCode != null) 'countryCode': countryCode!,
+        if (countryDartId != null) 'countryDartId': countryDartId!,
+        if (dartId != null) 'dartId': dartId!,
+        if (dmaId != null) 'dmaId': dmaId!,
+        if (kind != null) 'kind': kind!,
+        if (metroCode != null) 'metroCode': metroCode!,
+        if (name != null) 'name': name!,
+      };
+}
 
 /// Metro List Response
 class MetrosListResponse {
@@ -20473,7 +22805,66 @@ class MetrosListResponse {
 /// Contains information about a mobile app.
 ///
 /// Used as a landing page deep link.
-typedef MobileApp = $MobileApp;
+class MobileApp {
+  /// Mobile app directory.
+  /// Possible string values are:
+  /// - "UNKNOWN"
+  /// - "APPLE_APP_STORE"
+  /// - "GOOGLE_PLAY_STORE"
+  /// - "ROKU_APP_STORE"
+  /// - "AMAZON_FIRETV_APP_STORE"
+  /// - "PLAYSTATION_APP_STORE"
+  /// - "APPLE_TV_APP_STORE"
+  /// - "XBOX_APP_STORE"
+  /// - "SAMSUNG_TV_APP_STORE"
+  /// - "ANDROID_TV_APP_STORE"
+  /// - "GENERIC_CTV_APP_STORE"
+  core.String? directory;
+
+  /// ID of this mobile app.
+  core.String? id;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#mobileApp".
+  core.String? kind;
+
+  /// Publisher name.
+  core.String? publisherName;
+
+  /// Title of this mobile app.
+  core.String? title;
+
+  MobileApp({
+    this.directory,
+    this.id,
+    this.kind,
+    this.publisherName,
+    this.title,
+  });
+
+  MobileApp.fromJson(core.Map json_)
+      : this(
+          directory: json_.containsKey('directory')
+              ? json_['directory'] as core.String
+              : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          publisherName: json_.containsKey('publisherName')
+              ? json_['publisherName'] as core.String
+              : null,
+          title:
+              json_.containsKey('title') ? json_['title'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (directory != null) 'directory': directory!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (publisherName != null) 'publisherName': publisherName!,
+        if (title != null) 'title': title!,
+      };
+}
 
 /// Mobile app List Response
 class MobileAppsListResponse {
@@ -20516,7 +22907,53 @@ class MobileAppsListResponse {
 }
 
 /// Contains information about a mobile carrier that can be targeted by ads.
-typedef MobileCarrier = $MobileCarrier;
+class MobileCarrier {
+  /// Country code of the country to which this mobile carrier belongs.
+  core.String? countryCode;
+
+  /// DART ID of the country to which this mobile carrier belongs.
+  core.String? countryDartId;
+
+  /// ID of this mobile carrier.
+  core.String? id;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#mobileCarrier".
+  core.String? kind;
+
+  /// Name of this mobile carrier.
+  core.String? name;
+
+  MobileCarrier({
+    this.countryCode,
+    this.countryDartId,
+    this.id,
+    this.kind,
+    this.name,
+  });
+
+  MobileCarrier.fromJson(core.Map json_)
+      : this(
+          countryCode: json_.containsKey('countryCode')
+              ? json_['countryCode'] as core.String
+              : null,
+          countryDartId: json_.containsKey('countryDartId')
+              ? json_['countryDartId'] as core.String
+              : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (countryCode != null) 'countryCode': countryCode!,
+        if (countryDartId != null) 'countryDartId': countryDartId!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+      };
+}
 
 /// Mobile Carrier List Response
 class MobileCarriersListResponse {
@@ -20640,16 +23077,216 @@ class ObaIcon {
 }
 
 /// Object Filter.
-typedef ObjectFilter = $ObjectFilter;
+class ObjectFilter {
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#objectFilter".
+  core.String? kind;
+
+  /// Applicable when status is ASSIGNED.
+  ///
+  /// The user has access to objects with these object IDs.
+  core.List<core.String>? objectIds;
+
+  /// Status of the filter.
+  ///
+  /// NONE means the user has access to none of the objects. ALL means the user
+  /// has access to all objects. ASSIGNED means the user has access to the
+  /// objects with IDs in the objectIds list.
+  /// Possible string values are:
+  /// - "NONE" : Profile has access to none of the objects.
+  /// - "ASSIGNED" : Profile has access to only specific objects.
+  /// - "ALL" : Profile has access to all objects.
+  core.String? status;
+
+  ObjectFilter({
+    this.kind,
+    this.objectIds,
+    this.status,
+  });
+
+  ObjectFilter.fromJson(core.Map json_)
+      : this(
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          objectIds: json_.containsKey('objectIds')
+              ? (json_['objectIds'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          status: json_.containsKey('status')
+              ? json_['status'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (objectIds != null) 'objectIds': objectIds!,
+        if (status != null) 'status': status!,
+      };
+}
+
+/// Identify a user by name and address.
+class OfflineUserAddressInfo {
+  /// City of the address.
+  core.String? city;
+
+  /// 2-letter country code in ISO-3166-1 alpha-2 of the user's address.
+  core.String? countryCode;
+
+  /// First name of the user, which is hashed as SHA-256 after normalized
+  /// (Lowercase all characters; Remove any extra spaces before, after, and in
+  /// between).
+  core.String? hashedFirstName;
+
+  /// Last name of the user, which is hashed as SHA-256 after normalized (lower
+  /// case only and no punctuation).
+  core.String? hashedLastName;
+
+  /// The street address of the user hashed using SHA-256 hash function after
+  /// normalization (lower case only).
+  core.String? hashedStreetAddress;
+
+  /// Postal code of the user's address.
+  core.String? postalCode;
+
+  /// State code of the address.
+  core.String? state;
+
+  OfflineUserAddressInfo({
+    this.city,
+    this.countryCode,
+    this.hashedFirstName,
+    this.hashedLastName,
+    this.hashedStreetAddress,
+    this.postalCode,
+    this.state,
+  });
+
+  OfflineUserAddressInfo.fromJson(core.Map json_)
+      : this(
+          city: json_.containsKey('city') ? json_['city'] as core.String : null,
+          countryCode: json_.containsKey('countryCode')
+              ? json_['countryCode'] as core.String
+              : null,
+          hashedFirstName: json_.containsKey('hashedFirstName')
+              ? json_['hashedFirstName'] as core.String
+              : null,
+          hashedLastName: json_.containsKey('hashedLastName')
+              ? json_['hashedLastName'] as core.String
+              : null,
+          hashedStreetAddress: json_.containsKey('hashedStreetAddress')
+              ? json_['hashedStreetAddress'] as core.String
+              : null,
+          postalCode: json_.containsKey('postalCode')
+              ? json_['postalCode'] as core.String
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (city != null) 'city': city!,
+        if (countryCode != null) 'countryCode': countryCode!,
+        if (hashedFirstName != null) 'hashedFirstName': hashedFirstName!,
+        if (hashedLastName != null) 'hashedLastName': hashedLastName!,
+        if (hashedStreetAddress != null)
+          'hashedStreetAddress': hashedStreetAddress!,
+        if (postalCode != null) 'postalCode': postalCode!,
+        if (state != null) 'state': state!,
+      };
+}
 
 /// Offset Position.
 typedef OffsetPosition = $OffsetPosition;
 
 /// Omniture Integration Settings.
-typedef OmnitureSettings = $OmnitureSettings;
+class OmnitureSettings {
+  /// Whether placement cost data will be sent to Omniture.
+  ///
+  /// This property can be enabled only if omnitureIntegrationEnabled is true.
+  core.bool? omnitureCostDataEnabled;
+
+  /// Whether Omniture integration is enabled.
+  ///
+  /// This property can be enabled only when the "Advanced Ad Serving" account
+  /// setting is enabled.
+  core.bool? omnitureIntegrationEnabled;
+
+  OmnitureSettings({
+    this.omnitureCostDataEnabled,
+    this.omnitureIntegrationEnabled,
+  });
+
+  OmnitureSettings.fromJson(core.Map json_)
+      : this(
+          omnitureCostDataEnabled: json_.containsKey('omnitureCostDataEnabled')
+              ? json_['omnitureCostDataEnabled'] as core.bool
+              : null,
+          omnitureIntegrationEnabled:
+              json_.containsKey('omnitureIntegrationEnabled')
+                  ? json_['omnitureIntegrationEnabled'] as core.bool
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (omnitureCostDataEnabled != null)
+          'omnitureCostDataEnabled': omnitureCostDataEnabled!,
+        if (omnitureIntegrationEnabled != null)
+          'omnitureIntegrationEnabled': omnitureIntegrationEnabled!,
+      };
+}
 
 /// Contains information about an operating system that can be targeted by ads.
-typedef OperatingSystem = $OperatingSystem;
+class OperatingSystem {
+  /// DART ID of this operating system.
+  ///
+  /// This is the ID used for targeting.
+  core.String? dartId;
+
+  /// Whether this operating system is for desktop.
+  core.bool? desktop;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#operatingSystem".
+  core.String? kind;
+
+  /// Whether this operating system is for mobile.
+  core.bool? mobile;
+
+  /// Name of this operating system.
+  core.String? name;
+
+  OperatingSystem({
+    this.dartId,
+    this.desktop,
+    this.kind,
+    this.mobile,
+    this.name,
+  });
+
+  OperatingSystem.fromJson(core.Map json_)
+      : this(
+          dartId: json_.containsKey('dartId')
+              ? json_['dartId'] as core.String
+              : null,
+          desktop: json_.containsKey('desktop')
+              ? json_['desktop'] as core.bool
+              : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          mobile:
+              json_.containsKey('mobile') ? json_['mobile'] as core.bool : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dartId != null) 'dartId': dartId!,
+        if (desktop != null) 'desktop': desktop!,
+        if (kind != null) 'kind': kind!,
+        if (mobile != null) 'mobile': mobile!,
+        if (name != null) 'name': name!,
+      };
+}
 
 /// Contains information about a particular version of an operating system that
 /// can be targeted by ads.
@@ -21012,202 +23649,64 @@ class Order {
 }
 
 /// Contact of an order.
-typedef OrderContact = $OrderContact;
-
-/// Contains properties of a Planning order document.
-class OrderDocument {
-  /// Account ID of this order document.
-  core.String? accountId;
-
-  /// Advertiser ID of this order document.
-  core.String? advertiserId;
-
-  /// The amended order document ID of this order document.
+class OrderContact {
+  /// Free-form information about this contact.
   ///
-  /// An order document can be created by optionally amending another order
-  /// document so that the change history can be preserved.
-  core.String? amendedOrderDocumentId;
+  /// It could be any information related to this contact in addition to type,
+  /// title, name, and signature user profile ID.
+  core.String? contactInfo;
 
-  /// IDs of users who have approved this order document.
-  core.List<core.String>? approvedByUserProfileIds;
+  /// Name of this contact.
+  core.String? contactName;
 
-  /// Whether this order document is cancelled.
-  core.bool? cancelled;
+  /// Title of this contact.
+  core.String? contactTitle;
 
-  /// Information about the creation of this order document.
-  LastModifiedInfo? createdInfo;
-  core.DateTime? effectiveDate;
-
-  /// ID of this order document.
-  core.String? id;
-
-  /// Identifies what kind of resource this is.
-  ///
-  /// Value: the fixed string "dfareporting#orderDocument".
-  core.String? kind;
-
-  /// List of email addresses that received the last sent document.
-  core.List<core.String>? lastSentRecipients;
-  core.DateTime? lastSentTime;
-
-  /// ID of the order from which this order document is created.
-  core.String? orderId;
-
-  /// Project ID of this order document.
-  core.String? projectId;
-
-  /// Whether this order document has been signed.
-  core.bool? signed;
-
-  /// Subaccount ID of this order document.
-  core.String? subaccountId;
-
-  /// Title of this order document.
-  core.String? title;
-
-  /// Type of this order document
+  /// Type of this contact.
   /// Possible string values are:
-  /// - "PLANNING_ORDER_TYPE_INSERTION_ORDER"
-  /// - "PLANNING_ORDER_TYPE_CHANGE_ORDER"
-  core.String? type;
+  /// - "PLANNING_ORDER_CONTACT_BUYER_CONTACT"
+  /// - "PLANNING_ORDER_CONTACT_BUYER_BILLING_CONTACT"
+  /// - "PLANNING_ORDER_CONTACT_SELLER_CONTACT"
+  core.String? contactType;
 
-  OrderDocument({
-    this.accountId,
-    this.advertiserId,
-    this.amendedOrderDocumentId,
-    this.approvedByUserProfileIds,
-    this.cancelled,
-    this.createdInfo,
-    this.effectiveDate,
-    this.id,
-    this.kind,
-    this.lastSentRecipients,
-    this.lastSentTime,
-    this.orderId,
-    this.projectId,
-    this.signed,
-    this.subaccountId,
-    this.title,
-    this.type,
+  /// ID of the user profile containing the signature that will be embedded into
+  /// order documents.
+  core.String? signatureUserProfileId;
+
+  OrderContact({
+    this.contactInfo,
+    this.contactName,
+    this.contactTitle,
+    this.contactType,
+    this.signatureUserProfileId,
   });
 
-  OrderDocument.fromJson(core.Map json_)
+  OrderContact.fromJson(core.Map json_)
       : this(
-          accountId: json_.containsKey('accountId')
-              ? json_['accountId'] as core.String
+          contactInfo: json_.containsKey('contactInfo')
+              ? json_['contactInfo'] as core.String
               : null,
-          advertiserId: json_.containsKey('advertiserId')
-              ? json_['advertiserId'] as core.String
+          contactName: json_.containsKey('contactName')
+              ? json_['contactName'] as core.String
               : null,
-          amendedOrderDocumentId: json_.containsKey('amendedOrderDocumentId')
-              ? json_['amendedOrderDocumentId'] as core.String
+          contactTitle: json_.containsKey('contactTitle')
+              ? json_['contactTitle'] as core.String
               : null,
-          approvedByUserProfileIds:
-              json_.containsKey('approvedByUserProfileIds')
-                  ? (json_['approvedByUserProfileIds'] as core.List)
-                      .map((value) => value as core.String)
-                      .toList()
-                  : null,
-          cancelled: json_.containsKey('cancelled')
-              ? json_['cancelled'] as core.bool
+          contactType: json_.containsKey('contactType')
+              ? json_['contactType'] as core.String
               : null,
-          createdInfo: json_.containsKey('createdInfo')
-              ? LastModifiedInfo.fromJson(
-                  json_['createdInfo'] as core.Map<core.String, core.dynamic>)
-              : null,
-          effectiveDate: json_.containsKey('effectiveDate')
-              ? core.DateTime.parse(json_['effectiveDate'] as core.String)
-              : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          lastSentRecipients: json_.containsKey('lastSentRecipients')
-              ? (json_['lastSentRecipients'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          lastSentTime: json_.containsKey('lastSentTime')
-              ? core.DateTime.parse(json_['lastSentTime'] as core.String)
-              : null,
-          orderId: json_.containsKey('orderId')
-              ? json_['orderId'] as core.String
-              : null,
-          projectId: json_.containsKey('projectId')
-              ? json_['projectId'] as core.String
-              : null,
-          signed:
-              json_.containsKey('signed') ? json_['signed'] as core.bool : null,
-          subaccountId: json_.containsKey('subaccountId')
-              ? json_['subaccountId'] as core.String
-              : null,
-          title:
-              json_.containsKey('title') ? json_['title'] as core.String : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (accountId != null) 'accountId': accountId!,
-        if (advertiserId != null) 'advertiserId': advertiserId!,
-        if (amendedOrderDocumentId != null)
-          'amendedOrderDocumentId': amendedOrderDocumentId!,
-        if (approvedByUserProfileIds != null)
-          'approvedByUserProfileIds': approvedByUserProfileIds!,
-        if (cancelled != null) 'cancelled': cancelled!,
-        if (createdInfo != null) 'createdInfo': createdInfo!,
-        if (effectiveDate != null)
-          'effectiveDate':
-              "${effectiveDate!.year.toString().padLeft(4, '0')}-${effectiveDate!.month.toString().padLeft(2, '0')}-${effectiveDate!.day.toString().padLeft(2, '0')}",
-        if (id != null) 'id': id!,
-        if (kind != null) 'kind': kind!,
-        if (lastSentRecipients != null)
-          'lastSentRecipients': lastSentRecipients!,
-        if (lastSentTime != null)
-          'lastSentTime': lastSentTime!.toUtc().toIso8601String(),
-        if (orderId != null) 'orderId': orderId!,
-        if (projectId != null) 'projectId': projectId!,
-        if (signed != null) 'signed': signed!,
-        if (subaccountId != null) 'subaccountId': subaccountId!,
-        if (title != null) 'title': title!,
-        if (type != null) 'type': type!,
-      };
-}
-
-/// Order document List Response
-class OrderDocumentsListResponse {
-  /// Identifies what kind of resource this is.
-  ///
-  /// Value: the fixed string "dfareporting#orderDocumentsListResponse".
-  core.String? kind;
-
-  /// Pagination token to be used for the next list operation.
-  core.String? nextPageToken;
-
-  /// Order document collection
-  core.List<OrderDocument>? orderDocuments;
-
-  OrderDocumentsListResponse({
-    this.kind,
-    this.nextPageToken,
-    this.orderDocuments,
-  });
-
-  OrderDocumentsListResponse.fromJson(core.Map json_)
-      : this(
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
-          orderDocuments: json_.containsKey('orderDocuments')
-              ? (json_['orderDocuments'] as core.List)
-                  .map((value) => OrderDocument.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
+          signatureUserProfileId: json_.containsKey('signatureUserProfileId')
+              ? json_['signatureUserProfileId'] as core.String
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (kind != null) 'kind': kind!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (orderDocuments != null) 'orderDocuments': orderDocuments!,
+        if (contactInfo != null) 'contactInfo': contactInfo!,
+        if (contactName != null) 'contactName': contactName!,
+        if (contactTitle != null) 'contactTitle': contactTitle!,
+        if (contactType != null) 'contactType': contactType!,
+        if (signatureUserProfileId != null)
+          'signatureUserProfileId': signatureUserProfileId!,
       };
 }
 
@@ -21369,7 +23868,70 @@ class PathReportCompatibleFields {
 }
 
 /// Represents a PathReportDimensionValue resource.
-typedef PathReportDimensionValue = $PathReportDimensionValue;
+class PathReportDimensionValue {
+  /// The name of the dimension.
+  core.String? dimensionName;
+
+  /// The possible ID's associated with the value if available.
+  core.List<core.String>? ids;
+
+  /// The kind of resource this is, in this case
+  /// dfareporting#pathReportDimensionValue.
+  core.String? kind;
+
+  /// Determines how the 'value' field is matched when filtering.
+  ///
+  /// If not specified, defaults to EXACT. If set to WILDCARD_EXPRESSION, '*' is
+  /// allowed as a placeholder for variable length character sequences, and it
+  /// can be escaped with a backslash. Note, only paid search dimensions
+  /// ('dfa:paidSearch*') allow a matchType other than EXACT.
+  /// Possible string values are:
+  /// - "EXACT"
+  /// - "BEGINS_WITH"
+  /// - "CONTAINS"
+  /// - "WILDCARD_EXPRESSION"
+  core.String? matchType;
+
+  /// The possible values of the dimension.
+  core.List<core.String>? values;
+
+  PathReportDimensionValue({
+    this.dimensionName,
+    this.ids,
+    this.kind,
+    this.matchType,
+    this.values,
+  });
+
+  PathReportDimensionValue.fromJson(core.Map json_)
+      : this(
+          dimensionName: json_.containsKey('dimensionName')
+              ? json_['dimensionName'] as core.String
+              : null,
+          ids: json_.containsKey('ids')
+              ? (json_['ids'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          matchType: json_.containsKey('matchType')
+              ? json_['matchType'] as core.String
+              : null,
+          values: json_.containsKey('values')
+              ? (json_['values'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dimensionName != null) 'dimensionName': dimensionName!,
+        if (ids != null) 'ids': ids!,
+        if (kind != null) 'kind': kind!,
+        if (matchType != null) 'matchType': matchType!,
+        if (values != null) 'values': values!,
+      };
+}
 
 /// Represents fields that are compatible to be selected for a report of type
 /// "PATH_TO_CONVERSION".
@@ -21507,8 +24069,8 @@ class Placement {
   /// Possible string values are:
   /// - "DISPLAY"
   /// - "DISPLAY_INTERSTITIAL"
-  /// - "APP"
-  /// - "APP_INTERSTITIAL"
+  /// - "APP" : Deprecated enum value. No longer supported.
+  /// - "APP_INTERSTITIAL" : Deprecated enum value. No longer supported.
   /// - "IN_STREAM_VIDEO"
   /// - "IN_STREAM_AUDIO"
   core.String? compatibility;
@@ -21638,12 +24200,17 @@ class Placement {
 
   /// Third-party placement status.
   /// Possible string values are:
-  /// - "PENDING_REVIEW"
-  /// - "PAYMENT_ACCEPTED"
-  /// - "PAYMENT_REJECTED"
-  /// - "ACKNOWLEDGE_REJECTION"
-  /// - "ACKNOWLEDGE_ACCEPTANCE"
-  /// - "DRAFT"
+  /// - "PENDING_REVIEW" : Placement is not yet reviewed by publisher.
+  /// - "PAYMENT_ACCEPTED" : Placement Ad Serving fee is accepted by publisher
+  /// - "PAYMENT_REJECTED" : Placement Ad Serving fee is rejected by publisher
+  /// - "ACKNOWLEDGE_REJECTION" : Advertisers has accepted rejection of
+  /// placement ad serving fee. This will suppress future notification on DDMM
+  /// UI
+  /// - "ACKNOWLEDGE_ACCEPTANCE" : Advertisers has accepted acceptance of
+  /// placement ad serving fee. This will suppress future notification on DDMM
+  /// UI
+  /// - "DRAFT" : Advertisers is still working on placement not yet ready for
+  /// Publisher review; default status for pub-paid placements
   core.String? status;
 
   /// Subaccount ID of this placement.
@@ -21693,7 +24260,8 @@ class Placement {
   /// supported. This field now defaults to HTML5 when the following values are
   /// provided: FLASH, BOTH.
   /// Possible string values are:
-  /// - "DEFAULT"
+  /// - "DEFAULT" : DEFAULT means Google chooses which adapter, if any, to
+  /// serve.
   /// - "FLASH"
   /// - "HTML5"
   /// - "BOTH"
@@ -22116,8 +24684,12 @@ class PlacementGroup {
   /// assigned placements to be marked as primary for reporting. This field is
   /// required on insertion.
   /// Possible string values are:
-  /// - "PLACEMENT_PACKAGE"
-  /// - "PLACEMENT_ROADBLOCK"
+  /// - "PLACEMENT_PACKAGE" : A simple group of site-placements (tags).
+  /// Basically acts as a single pricing point for a group of tags.
+  /// - "PLACEMENT_ROADBLOCK" : A group of site-placements (tags) that not only
+  /// acts as a single pricing point but also assumes that all the tags in it
+  /// will be served at the same time. This kind of group requires one of its
+  /// assigned site-placements to be marked as primary for reporting purposes.
   core.String? placementGroupType;
 
   /// ID of the placement strategy assigned to this placement group.
@@ -22398,7 +24970,51 @@ class PlacementStrategiesListResponse {
 }
 
 /// Contains properties of a placement strategy.
-typedef PlacementStrategy = $PlacementStrategy;
+class PlacementStrategy {
+  /// Account ID of this placement strategy.This is a read-only field that can
+  /// be left blank.
+  core.String? accountId;
+
+  /// ID of this placement strategy.
+  ///
+  /// This is a read-only, auto-generated field.
+  core.String? id;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#placementStrategy".
+  core.String? kind;
+
+  /// Name of this placement strategy.
+  ///
+  /// This is a required field. It must be less than 256 characters long and
+  /// unique among placement strategies of the same account.
+  core.String? name;
+
+  PlacementStrategy({
+    this.accountId,
+    this.id,
+    this.kind,
+    this.name,
+  });
+
+  PlacementStrategy.fromJson(core.Map json_)
+      : this(
+          accountId: json_.containsKey('accountId')
+              ? json_['accountId'] as core.String
+              : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+      };
+}
 
 /// Placement Tag
 class PlacementTag {
@@ -22505,7 +25121,37 @@ class PlacementsListResponse {
 }
 
 /// Contains information about a platform type that can be targeted by ads.
-typedef PlatformType = $PlatformType;
+class PlatformType {
+  /// ID of this platform type.
+  core.String? id;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#platformType".
+  core.String? kind;
+
+  /// Name of this platform type.
+  core.String? name;
+
+  PlatformType({
+    this.id,
+    this.kind,
+    this.name,
+  });
+
+  PlatformType.fromJson(core.Map json_)
+      : this(
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+      };
+}
 
 /// Platform Type List Response
 class PlatformTypesListResponse {
@@ -22554,8 +25200,8 @@ class PopupWindowProperties {
 
   /// Popup window position either centered or at specific coordinate.
   /// Possible string values are:
-  /// - "CENTER"
-  /// - "COORDINATES"
+  /// - "CENTER" : window positioning at center.
+  /// - "COORDINATES" : window positioning by upper left corner coordinates.
   core.String? positionType;
 
   /// Whether to display the browser address bar.
@@ -22634,7 +25280,55 @@ class PopupWindowProperties {
 }
 
 /// Contains information about a postal code that can be targeted by ads.
-typedef PostalCode = $PostalCode;
+class PostalCode {
+  /// Postal code.
+  ///
+  /// This is equivalent to the id field.
+  core.String? code;
+
+  /// Country code of the country to which this postal code belongs.
+  core.String? countryCode;
+
+  /// DART ID of the country to which this postal code belongs.
+  core.String? countryDartId;
+
+  /// ID of this postal code.
+  core.String? id;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#postalCode".
+  core.String? kind;
+
+  PostalCode({
+    this.code,
+    this.countryCode,
+    this.countryDartId,
+    this.id,
+    this.kind,
+  });
+
+  PostalCode.fromJson(core.Map json_)
+      : this(
+          code: json_.containsKey('code') ? json_['code'] as core.String : null,
+          countryCode: json_.containsKey('countryCode')
+              ? json_['countryCode'] as core.String
+              : null,
+          countryDartId: json_.containsKey('countryDartId')
+              ? json_['countryDartId'] as core.String
+              : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (code != null) 'code': code!,
+        if (countryCode != null) 'countryCode': countryCode!,
+        if (countryDartId != null) 'countryDartId': countryDartId!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+      };
+}
 
 /// Postal Code List Response
 class PostalCodesListResponse {
@@ -22668,7 +25362,6 @@ class PostalCodesListResponse {
       };
 }
 
-/// Pricing Information
 class Pricing {
   /// Cap cost type of this inventory item.
   /// Possible string values are:
@@ -22694,8 +25387,13 @@ class Pricing {
   /// tags in it will be served at the same time. A roadblock requires one of
   /// its assigned inventory items to be marked as primary.
   /// Possible string values are:
-  /// - "PLANNING_PLACEMENT_GROUP_TYPE_PACKAGE"
-  /// - "PLANNING_PLACEMENT_GROUP_TYPE_ROADBLOCK"
+  /// - "PLANNING_PLACEMENT_GROUP_TYPE_PACKAGE" : A placement package represents
+  /// "package pricing": Pricing and flight information is defined on the
+  /// package, not on its child placements. The placements in a package do not
+  /// need to be on the same page.
+  /// - "PLANNING_PLACEMENT_GROUP_TYPE_ROADBLOCK" : A roadblock represents a set
+  /// of placements that are all the same page. One of the child placements is
+  /// designated as the "primary" placement for reporting purposes.
   core.String? groupType;
 
   /// Pricing type of this inventory item.
@@ -22859,7 +25557,62 @@ class PricingSchedule {
 }
 
 /// Pricing Period
-typedef PricingSchedulePricingPeriod = $PricingSchedulePricingPeriod;
+class PricingSchedulePricingPeriod {
+  core.DateTime? endDate;
+
+  /// Comments for this pricing period.
+  core.String? pricingComment;
+
+  /// Rate or cost of this pricing period in nanos (i.e., multiplied by
+  /// 1000000000).
+  ///
+  /// Acceptable values are 0 to 1000000000000000000, inclusive.
+  core.String? rateOrCostNanos;
+  core.DateTime? startDate;
+
+  /// Units of this pricing period.
+  ///
+  /// Acceptable values are 0 to 10000000000, inclusive.
+  core.String? units;
+
+  PricingSchedulePricingPeriod({
+    this.endDate,
+    this.pricingComment,
+    this.rateOrCostNanos,
+    this.startDate,
+    this.units,
+  });
+
+  PricingSchedulePricingPeriod.fromJson(core.Map json_)
+      : this(
+          endDate: json_.containsKey('endDate')
+              ? core.DateTime.parse(json_['endDate'] as core.String)
+              : null,
+          pricingComment: json_.containsKey('pricingComment')
+              ? json_['pricingComment'] as core.String
+              : null,
+          rateOrCostNanos: json_.containsKey('rateOrCostNanos')
+              ? json_['rateOrCostNanos'] as core.String
+              : null,
+          startDate: json_.containsKey('startDate')
+              ? core.DateTime.parse(json_['startDate'] as core.String)
+              : null,
+          units:
+              json_.containsKey('units') ? json_['units'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endDate != null)
+          'endDate':
+              "${endDate!.year.toString().padLeft(4, '0')}-${endDate!.month.toString().padLeft(2, '0')}-${endDate!.day.toString().padLeft(2, '0')}",
+        if (pricingComment != null) 'pricingComment': pricingComment!,
+        if (rateOrCostNanos != null) 'rateOrCostNanos': rateOrCostNanos!,
+        if (startDate != null)
+          'startDate':
+              "${startDate!.year.toString().padLeft(4, '0')}-${startDate!.month.toString().padLeft(2, '0')}-${startDate!.day.toString().padLeft(2, '0')}",
+        if (units != null) 'units': units!,
+      };
+}
 
 /// Contains properties of a Planning project.
 class Project {
@@ -23190,10 +25943,100 @@ class ReachReportCompatibleFields {
 }
 
 /// Represents a recipient.
-typedef Recipient = $Recipient;
+class Recipient {
+  /// The delivery type for the recipient.
+  /// Possible string values are:
+  /// - "LINK"
+  /// - "ATTACHMENT"
+  core.String? deliveryType;
+
+  /// The email address of the recipient.
+  core.String? email;
+
+  /// The kind of resource this is, in this case dfareporting#recipient.
+  core.String? kind;
+
+  Recipient({
+    this.deliveryType,
+    this.email,
+    this.kind,
+  });
+
+  Recipient.fromJson(core.Map json_)
+      : this(
+          deliveryType: json_.containsKey('deliveryType')
+              ? json_['deliveryType'] as core.String
+              : null,
+          email:
+              json_.containsKey('email') ? json_['email'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deliveryType != null) 'deliveryType': deliveryType!,
+        if (email != null) 'email': email!,
+        if (kind != null) 'kind': kind!,
+      };
+}
 
 /// Contains information about a region that can be targeted by ads.
-typedef Region = $Region;
+class Region {
+  /// Country code of the country to which this region belongs.
+  core.String? countryCode;
+
+  /// DART ID of the country to which this region belongs.
+  core.String? countryDartId;
+
+  /// DART ID of this region.
+  core.String? dartId;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#region".
+  core.String? kind;
+
+  /// Name of this region.
+  core.String? name;
+
+  /// Region code.
+  core.String? regionCode;
+
+  Region({
+    this.countryCode,
+    this.countryDartId,
+    this.dartId,
+    this.kind,
+    this.name,
+    this.regionCode,
+  });
+
+  Region.fromJson(core.Map json_)
+      : this(
+          countryCode: json_.containsKey('countryCode')
+              ? json_['countryCode'] as core.String
+              : null,
+          countryDartId: json_.containsKey('countryDartId')
+              ? json_['countryDartId'] as core.String
+              : null,
+          dartId: json_.containsKey('dartId')
+              ? json_['dartId'] as core.String
+              : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          regionCode: json_.containsKey('regionCode')
+              ? json_['regionCode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (countryCode != null) 'countryCode': countryCode!,
+        if (countryDartId != null) 'countryDartId': countryDartId!,
+        if (dartId != null) 'dartId': dartId!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+        if (regionCode != null) 'regionCode': regionCode!,
+      };
+}
 
 /// Region List Response
 class RegionsListResponse {
@@ -23284,17 +26127,18 @@ class RemarketingList {
 
   /// Product from which this remarketing list was originated.
   /// Possible string values are:
-  /// - "REMARKETING_LIST_SOURCE_OTHER"
-  /// - "REMARKETING_LIST_SOURCE_ADX"
-  /// - "REMARKETING_LIST_SOURCE_DFP"
-  /// - "REMARKETING_LIST_SOURCE_XFP"
-  /// - "REMARKETING_LIST_SOURCE_DFA"
-  /// - "REMARKETING_LIST_SOURCE_GA"
-  /// - "REMARKETING_LIST_SOURCE_YOUTUBE"
-  /// - "REMARKETING_LIST_SOURCE_DBM"
-  /// - "REMARKETING_LIST_SOURCE_GPLUS"
-  /// - "REMARKETING_LIST_SOURCE_DMP"
-  /// - "REMARKETING_LIST_SOURCE_PLAY_STORE"
+  /// - "REMARKETING_LIST_SOURCE_OTHER" : covers sources not supported in DCM
+  /// other than those listed below
+  /// - "REMARKETING_LIST_SOURCE_ADX" : ADX
+  /// - "REMARKETING_LIST_SOURCE_DFP" : DFP
+  /// - "REMARKETING_LIST_SOURCE_XFP" : XFP
+  /// - "REMARKETING_LIST_SOURCE_DFA" : DoubleClick Campaign Manager
+  /// - "REMARKETING_LIST_SOURCE_GA" : Google Analytics Premium
+  /// - "REMARKETING_LIST_SOURCE_YOUTUBE" : Youtube
+  /// - "REMARKETING_LIST_SOURCE_DBM" : DoubleClick Bid Manager
+  /// - "REMARKETING_LIST_SOURCE_GPLUS" : G+
+  /// - "REMARKETING_LIST_SOURCE_DMP" : DoubleClick Audience Center
+  /// - "REMARKETING_LIST_SOURCE_PLAY_STORE" : Playstore
   core.String? listSource;
 
   /// Name of the remarketing list.
@@ -23387,7 +26231,56 @@ class RemarketingList {
 /// Sharing allows other accounts or advertisers to target to your remarketing
 /// lists. This resource can be used to manage remarketing list sharing to other
 /// accounts and advertisers.
-typedef RemarketingListShare = $RemarketingListShare;
+class RemarketingListShare {
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#remarketingListShare".
+  core.String? kind;
+
+  /// Remarketing list ID.
+  ///
+  /// This is a read-only, auto-generated field.
+  core.String? remarketingListId;
+
+  /// Accounts that the remarketing list is shared with.
+  core.List<core.String>? sharedAccountIds;
+
+  /// Advertisers that the remarketing list is shared with.
+  core.List<core.String>? sharedAdvertiserIds;
+
+  RemarketingListShare({
+    this.kind,
+    this.remarketingListId,
+    this.sharedAccountIds,
+    this.sharedAdvertiserIds,
+  });
+
+  RemarketingListShare.fromJson(core.Map json_)
+      : this(
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          remarketingListId: json_.containsKey('remarketingListId')
+              ? json_['remarketingListId'] as core.String
+              : null,
+          sharedAccountIds: json_.containsKey('sharedAccountIds')
+              ? (json_['sharedAccountIds'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          sharedAdvertiserIds: json_.containsKey('sharedAdvertiserIds')
+              ? (json_['sharedAdvertiserIds'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (remarketingListId != null) 'remarketingListId': remarketingListId!,
+        if (sharedAccountIds != null) 'sharedAccountIds': sharedAccountIds!,
+        if (sharedAdvertiserIds != null)
+          'sharedAdvertiserIds': sharedAdvertiserIds!,
+      };
+}
 
 /// Remarketing list response
 class RemarketingListsListResponse {
@@ -24350,6 +27243,9 @@ class ReportSchedule {
   core.String? runsOnDayOfMonth;
   core.DateTime? startDate;
 
+  /// The timezone when the report will run.
+  core.String? timezone;
+
   ReportSchedule({
     this.active,
     this.every,
@@ -24358,6 +27254,7 @@ class ReportSchedule {
     this.repeatsOnWeekDays,
     this.runsOnDayOfMonth,
     this.startDate,
+    this.timezone,
   });
 
   ReportSchedule.fromJson(core.Map json_)
@@ -24382,6 +27279,9 @@ class ReportSchedule {
           startDate: json_.containsKey('startDate')
               ? core.DateTime.parse(json_['startDate'] as core.String)
               : null,
+          timezone: json_.containsKey('timezone')
+              ? json_['timezone'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -24396,6 +27296,7 @@ class ReportSchedule {
         if (startDate != null)
           'startDate':
               "${startDate!.year.toString().padLeft(4, '0')}-${startDate!.month.toString().padLeft(2, '0')}-${startDate!.day.toString().padLeft(2, '0')}",
+        if (timezone != null) 'timezone': timezone!,
       };
 }
 
@@ -24826,7 +27727,48 @@ class RichMediaExitOverride {
 /// targeting.
 ///
 /// Applicable to INSTREAM_VIDEO creatives.
-typedef Rule = $Rule;
+class Rule {
+  /// A creativeAssets\[\].id.
+  ///
+  /// This should refer to one of the parent assets in this creative. This is a
+  /// required field.
+  core.String? assetId;
+
+  /// A user-friendly name for this rule.
+  ///
+  /// This is a required field.
+  core.String? name;
+
+  /// A targeting template ID.
+  ///
+  /// The targeting from the targeting template will be used to determine
+  /// whether this asset should be served. This is a required field.
+  core.String? targetingTemplateId;
+
+  Rule({
+    this.assetId,
+    this.name,
+    this.targetingTemplateId,
+  });
+
+  Rule.fromJson(core.Map json_)
+      : this(
+          assetId: json_.containsKey('assetId')
+              ? json_['assetId'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          targetingTemplateId: json_.containsKey('targetingTemplateId')
+              ? json_['targetingTemplateId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (assetId != null) 'assetId': assetId!,
+        if (name != null) 'name': name!,
+        if (targetingTemplateId != null)
+          'targetingTemplateId': targetingTemplateId!,
+      };
+}
 
 /// Contains properties of a site.
 class Site {
@@ -25024,7 +27966,83 @@ class SiteCompanionSetting {
 }
 
 /// Site Contact
-typedef SiteContact = $SiteContact;
+class SiteContact {
+  /// Address of this site contact.
+  core.String? address;
+
+  /// Site contact type.
+  /// Possible string values are:
+  /// - "SALES_PERSON"
+  /// - "TRAFFICKER"
+  core.String? contactType;
+
+  /// Email address of this site contact.
+  ///
+  /// This is a required field.
+  core.String? email;
+
+  /// First name of this site contact.
+  core.String? firstName;
+
+  /// ID of this site contact.
+  ///
+  /// This is a read-only, auto-generated field.
+  core.String? id;
+
+  /// Last name of this site contact.
+  core.String? lastName;
+
+  /// Primary phone number of this site contact.
+  core.String? phone;
+
+  /// Title or designation of this site contact.
+  core.String? title;
+
+  SiteContact({
+    this.address,
+    this.contactType,
+    this.email,
+    this.firstName,
+    this.id,
+    this.lastName,
+    this.phone,
+    this.title,
+  });
+
+  SiteContact.fromJson(core.Map json_)
+      : this(
+          address: json_.containsKey('address')
+              ? json_['address'] as core.String
+              : null,
+          contactType: json_.containsKey('contactType')
+              ? json_['contactType'] as core.String
+              : null,
+          email:
+              json_.containsKey('email') ? json_['email'] as core.String : null,
+          firstName: json_.containsKey('firstName')
+              ? json_['firstName'] as core.String
+              : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          lastName: json_.containsKey('lastName')
+              ? json_['lastName'] as core.String
+              : null,
+          phone:
+              json_.containsKey('phone') ? json_['phone'] as core.String : null,
+          title:
+              json_.containsKey('title') ? json_['title'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (address != null) 'address': address!,
+        if (contactType != null) 'contactType': contactType!,
+        if (email != null) 'email': email!,
+        if (firstName != null) 'firstName': firstName!,
+        if (id != null) 'id': id!,
+        if (lastName != null) 'lastName': lastName!,
+        if (phone != null) 'phone': phone!,
+        if (title != null) 'title': title!,
+      };
+}
 
 /// Site Settings
 class SiteSettings {
@@ -25062,7 +28080,8 @@ class SiteSettings {
   /// *Note:* Flash is no longer supported. This field now defaults to HTML5
   /// when the following values are provided: FLASH, BOTH.
   /// Possible string values are:
-  /// - "DEFAULT"
+  /// - "DEFAULT" : DEFAULT means Google chooses which adapter, if any, to
+  /// serve.
   /// - "FLASH"
   /// - "HTML5"
   /// - "BOTH"
@@ -25170,7 +28189,38 @@ class SiteSkippableSetting {
 }
 
 /// Transcode Settings
-typedef SiteTranscodeSetting = $SiteTranscodeSetting;
+class SiteTranscodeSetting {
+  /// Allowlist of video formats to be served to this site template.
+  ///
+  /// Set this list to null or empty to serve all video formats.
+  core.List<core.int>? enabledVideoFormats;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#siteTranscodeSetting".
+  core.String? kind;
+
+  SiteTranscodeSetting({
+    this.enabledVideoFormats,
+    this.kind,
+  });
+
+  SiteTranscodeSetting.fromJson(core.Map json_)
+      : this(
+          enabledVideoFormats: json_.containsKey('enabledVideoFormats')
+              ? (json_['enabledVideoFormats'] as core.List)
+                  .map((value) => value as core.int)
+                  .toList()
+              : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabledVideoFormats != null)
+          'enabledVideoFormats': enabledVideoFormats!,
+        if (kind != null) 'kind': kind!,
+      };
+}
 
 /// Video Settings
 class SiteVideoSettings {
@@ -25401,10 +28451,99 @@ class SkippableSetting {
 }
 
 /// Represents a sorted dimension.
-typedef SortedDimension = $SortedDimension;
+class SortedDimension {
+  /// The kind of resource this is, in this case dfareporting#sortedDimension.
+  core.String? kind;
+
+  /// The name of the dimension.
+  core.String? name;
+
+  /// An optional sort order for the dimension column.
+  /// Possible string values are:
+  /// - "ASCENDING"
+  /// - "DESCENDING"
+  core.String? sortOrder;
+
+  SortedDimension({
+    this.kind,
+    this.name,
+    this.sortOrder,
+  });
+
+  SortedDimension.fromJson(core.Map json_)
+      : this(
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          sortOrder: json_.containsKey('sortOrder')
+              ? json_['sortOrder'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+        if (sortOrder != null) 'sortOrder': sortOrder!,
+      };
+}
 
 /// Contains properties of a Campaign Manager subaccount.
-typedef Subaccount = $Subaccount;
+class Subaccount {
+  /// ID of the account that contains this subaccount.
+  ///
+  /// This is a read-only field that can be left blank.
+  core.String? accountId;
+
+  /// IDs of the available user role permissions for this subaccount.
+  core.List<core.String>? availablePermissionIds;
+
+  /// ID of this subaccount.
+  ///
+  /// This is a read-only, auto-generated field.
+  core.String? id;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#subaccount".
+  core.String? kind;
+
+  /// Name of this subaccount.
+  ///
+  /// This is a required field. Must be less than 128 characters long and be
+  /// unique among subaccounts of the same account.
+  core.String? name;
+
+  Subaccount({
+    this.accountId,
+    this.availablePermissionIds,
+    this.id,
+    this.kind,
+    this.name,
+  });
+
+  Subaccount.fromJson(core.Map json_)
+      : this(
+          accountId: json_.containsKey('accountId')
+              ? json_['accountId'] as core.String
+              : null,
+          availablePermissionIds: json_.containsKey('availablePermissionIds')
+              ? (json_['availablePermissionIds'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (availablePermissionIds != null)
+          'availablePermissionIds': availablePermissionIds!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+      };
+}
 
 /// Subaccount List Response
 class SubaccountsListResponse {
@@ -25447,22 +28586,223 @@ class SubaccountsListResponse {
 }
 
 /// Placement Tag Data
-typedef TagData = $TagData;
+class TagData {
+  /// Ad associated with this placement tag.
+  ///
+  /// Applicable only when format is PLACEMENT_TAG_TRACKING.
+  core.String? adId;
+
+  /// Tag string to record a click.
+  core.String? clickTag;
+
+  /// Creative associated with this placement tag.
+  ///
+  /// Applicable only when format is PLACEMENT_TAG_TRACKING.
+  core.String? creativeId;
+
+  /// TagData tag format of this tag.
+  /// Possible string values are:
+  /// - "PLACEMENT_TAG_STANDARD"
+  /// - "PLACEMENT_TAG_IFRAME_JAVASCRIPT"
+  /// - "PLACEMENT_TAG_IFRAME_ILAYER"
+  /// - "PLACEMENT_TAG_INTERNAL_REDIRECT"
+  /// - "PLACEMENT_TAG_JAVASCRIPT"
+  /// - "PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT"
+  /// - "PLACEMENT_TAG_INTERSTITIAL_INTERNAL_REDIRECT"
+  /// - "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT"
+  /// - "PLACEMENT_TAG_CLICK_COMMANDS"
+  /// - "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH"
+  /// - "PLACEMENT_TAG_TRACKING"
+  /// - "PLACEMENT_TAG_TRACKING_IFRAME"
+  /// - "PLACEMENT_TAG_TRACKING_JAVASCRIPT"
+  /// - "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_3"
+  /// - "PLACEMENT_TAG_IFRAME_JAVASCRIPT_LEGACY"
+  /// - "PLACEMENT_TAG_JAVASCRIPT_LEGACY"
+  /// - "PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT_LEGACY"
+  /// - "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT_LEGACY"
+  /// - "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_4"
+  /// - "PLACEMENT_TAG_TRACKING_THIRD_PARTY_MEASUREMENT"
+  core.String? format;
+
+  /// Tag string for serving an ad.
+  core.String? impressionTag;
+
+  TagData({
+    this.adId,
+    this.clickTag,
+    this.creativeId,
+    this.format,
+    this.impressionTag,
+  });
+
+  TagData.fromJson(core.Map json_)
+      : this(
+          adId: json_.containsKey('adId') ? json_['adId'] as core.String : null,
+          clickTag: json_.containsKey('clickTag')
+              ? json_['clickTag'] as core.String
+              : null,
+          creativeId: json_.containsKey('creativeId')
+              ? json_['creativeId'] as core.String
+              : null,
+          format: json_.containsKey('format')
+              ? json_['format'] as core.String
+              : null,
+          impressionTag: json_.containsKey('impressionTag')
+              ? json_['impressionTag'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (adId != null) 'adId': adId!,
+        if (clickTag != null) 'clickTag': clickTag!,
+        if (creativeId != null) 'creativeId': creativeId!,
+        if (format != null) 'format': format!,
+        if (impressionTag != null) 'impressionTag': impressionTag!,
+      };
+}
 
 /// Tag Settings
-typedef TagSetting = $TagSetting;
+class TagSetting {
+  /// Additional key-values to be included in tags.
+  ///
+  /// Each key-value pair must be of the form key=value, and pairs must be
+  /// separated by a semicolon (;). Keys and values must not contain commas. For
+  /// example, id=2;color=red is a valid value for this field.
+  core.String? additionalKeyValues;
+
+  /// Whether static landing page URLs should be included in the tags.
+  ///
+  /// This setting applies only to placements.
+  core.bool? includeClickThroughUrls;
+
+  /// Whether click-tracking string should be included in the tags.
+  core.bool? includeClickTracking;
+
+  /// Option specifying how keywords are embedded in ad tags.
+  ///
+  /// This setting can be used to specify whether keyword placeholders are
+  /// inserted in placement tags for this site. Publishers can then add keywords
+  /// to those placeholders.
+  /// Possible string values are:
+  /// - "PLACEHOLDER_WITH_LIST_OF_KEYWORDS" : Creates DART ad tags with a
+  /// placeholder, such as kw=\[keyword\] and a list of keywords. The site
+  /// trafficker must replace \[keyword\] with the keywords targeted by an ad.
+  /// - "IGNORE" : Creates DART ad tags that do not have a placeholder for
+  /// keywords and creates a list of keywords separately from the DART ad tags.
+  /// Use this option if the site uses a keyword referrer or is a site that uses
+  /// DART for Publishers.
+  /// - "GENERATE_SEPARATE_TAG_FOR_EACH_KEYWORD" : Results in unique tag
+  /// generation for each relevant keyword during tag export. For example, an ad
+  /// with three keywords will generate three tags with each tag having its kw=
+  /// parameter filled in with the relevant keyword values.
+  core.String? keywordOption;
+
+  TagSetting({
+    this.additionalKeyValues,
+    this.includeClickThroughUrls,
+    this.includeClickTracking,
+    this.keywordOption,
+  });
+
+  TagSetting.fromJson(core.Map json_)
+      : this(
+          additionalKeyValues: json_.containsKey('additionalKeyValues')
+              ? json_['additionalKeyValues'] as core.String
+              : null,
+          includeClickThroughUrls: json_.containsKey('includeClickThroughUrls')
+              ? json_['includeClickThroughUrls'] as core.bool
+              : null,
+          includeClickTracking: json_.containsKey('includeClickTracking')
+              ? json_['includeClickTracking'] as core.bool
+              : null,
+          keywordOption: json_.containsKey('keywordOption')
+              ? json_['keywordOption'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (additionalKeyValues != null)
+          'additionalKeyValues': additionalKeyValues!,
+        if (includeClickThroughUrls != null)
+          'includeClickThroughUrls': includeClickThroughUrls!,
+        if (includeClickTracking != null)
+          'includeClickTracking': includeClickTracking!,
+        if (keywordOption != null) 'keywordOption': keywordOption!,
+      };
+}
 
 /// Dynamic and Image Tag Settings.
-typedef TagSettings = $TagSettings;
+class TagSettings {
+  /// Whether dynamic floodlight tags are enabled.
+  core.bool? dynamicTagEnabled;
+
+  /// Whether image tags are enabled.
+  core.bool? imageTagEnabled;
+
+  TagSettings({
+    this.dynamicTagEnabled,
+    this.imageTagEnabled,
+  });
+
+  TagSettings.fromJson(core.Map json_)
+      : this(
+          dynamicTagEnabled: json_.containsKey('dynamicTagEnabled')
+              ? json_['dynamicTagEnabled'] as core.bool
+              : null,
+          imageTagEnabled: json_.containsKey('imageTagEnabled')
+              ? json_['imageTagEnabled'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dynamicTagEnabled != null) 'dynamicTagEnabled': dynamicTagEnabled!,
+        if (imageTagEnabled != null) 'imageTagEnabled': imageTagEnabled!,
+      };
+}
 
 /// Target Window.
-typedef TargetWindow = $TargetWindow;
+class TargetWindow {
+  /// User-entered value.
+  core.String? customHtml;
+
+  /// Type of browser window for which the backup image of the flash creative
+  /// can be displayed.
+  /// Possible string values are:
+  /// - "NEW_WINDOW" : Open up a new window to display the backup image
+  /// Corresponds to "_blank" in html
+  /// - "CURRENT_WINDOW" : Use the current window to display the backup image
+  /// Corresponds to "_top" in html
+  /// - "CUSTOM" : User-defined HTML used to display the backup image
+  /// Corresponds to "other"
+  core.String? targetWindowOption;
+
+  TargetWindow({
+    this.customHtml,
+    this.targetWindowOption,
+  });
+
+  TargetWindow.fromJson(core.Map json_)
+      : this(
+          customHtml: json_.containsKey('customHtml')
+              ? json_['customHtml'] as core.String
+              : null,
+          targetWindowOption: json_.containsKey('targetWindowOption')
+              ? json_['targetWindowOption'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (customHtml != null) 'customHtml': customHtml!,
+        if (targetWindowOption != null)
+          'targetWindowOption': targetWindowOption!,
+      };
+}
 
 /// Contains properties of a targetable remarketing list.
 ///
 /// Remarketing enables you to create lists of users who have performed specific
 /// actions on a site, then target ads to members of those lists. This resource
-/// is a read-only view of a remarketing list to be used to faciliate targeting
+/// is a read-only view of a remarketing list to be used to facilitate targeting
 /// ads to specific lists. Remarketing lists that are owned by your advertisers
 /// and those that are shared to your advertisers or account are accessible via
 /// this resource. To manage remarketing lists that are owned by your
@@ -25506,17 +28846,18 @@ class TargetableRemarketingList {
 
   /// Product from which this targetable remarketing list was originated.
   /// Possible string values are:
-  /// - "REMARKETING_LIST_SOURCE_OTHER"
-  /// - "REMARKETING_LIST_SOURCE_ADX"
-  /// - "REMARKETING_LIST_SOURCE_DFP"
-  /// - "REMARKETING_LIST_SOURCE_XFP"
-  /// - "REMARKETING_LIST_SOURCE_DFA"
-  /// - "REMARKETING_LIST_SOURCE_GA"
-  /// - "REMARKETING_LIST_SOURCE_YOUTUBE"
-  /// - "REMARKETING_LIST_SOURCE_DBM"
-  /// - "REMARKETING_LIST_SOURCE_GPLUS"
-  /// - "REMARKETING_LIST_SOURCE_DMP"
-  /// - "REMARKETING_LIST_SOURCE_PLAY_STORE"
+  /// - "REMARKETING_LIST_SOURCE_OTHER" : covers sources not supported in DCM
+  /// other than those listed below
+  /// - "REMARKETING_LIST_SOURCE_ADX" : ADX
+  /// - "REMARKETING_LIST_SOURCE_DFP" : DFP
+  /// - "REMARKETING_LIST_SOURCE_XFP" : XFP
+  /// - "REMARKETING_LIST_SOURCE_DFA" : DoubleClick Campaign Manager
+  /// - "REMARKETING_LIST_SOURCE_GA" : Google Analytics Premium
+  /// - "REMARKETING_LIST_SOURCE_YOUTUBE" : Youtube
+  /// - "REMARKETING_LIST_SOURCE_DBM" : DoubleClick Bid Manager
+  /// - "REMARKETING_LIST_SOURCE_GPLUS" : G+
+  /// - "REMARKETING_LIST_SOURCE_DMP" : DoubleClick Audience Center
+  /// - "REMARKETING_LIST_SOURCE_PLAY_STORE" : Playstore
   core.String? listSource;
 
   /// Name of the targetable remarketing list.
@@ -25936,28 +29277,433 @@ class TechnologyTargeting {
 }
 
 /// Third Party Authentication Token
-typedef ThirdPartyAuthenticationToken = $ThirdPartyAuthenticationToken;
+class ThirdPartyAuthenticationToken {
+  /// Name of the third-party authentication token.
+  core.String? name;
+
+  /// Value of the third-party authentication token.
+  ///
+  /// This is a read-only, auto-generated field.
+  core.String? value;
+
+  ThirdPartyAuthenticationToken({
+    this.name,
+    this.value,
+  });
+
+  ThirdPartyAuthenticationToken.fromJson(core.Map json_)
+      : this(
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          value:
+              json_.containsKey('value') ? json_['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (value != null) 'value': value!,
+      };
+}
 
 /// Third-party Tracking URL.
-typedef ThirdPartyTrackingUrl = $ThirdPartyTrackingUrl;
+class ThirdPartyTrackingUrl {
+  /// Third-party URL type for in-stream video and in-stream audio creatives.
+  /// Possible string values are:
+  /// - "IMPRESSION" : Used to count impressions of the ad after video buffering
+  /// is complete.
+  /// - "CLICK_TRACKING" : Used to track user clicks on the video.
+  /// - "VIDEO_START" : Used to track the number of times a user starts a video.
+  /// - "VIDEO_FIRST_QUARTILE" : Used to track the number of times the video
+  /// plays to 25% of its length.
+  /// - "VIDEO_MIDPOINT" : Used to track the number of times the video plays to
+  /// 50% of its length.
+  /// - "VIDEO_THIRD_QUARTILE" : Used to track the number of times the video
+  /// plays to 75% of its length.
+  /// - "VIDEO_COMPLETE" : Used to track the number of times the video plays to
+  /// the end.
+  /// - "VIDEO_MUTE" : Used to track the number of times a user mutes the video.
+  /// - "VIDEO_PAUSE" : Used to track the number of times a user pauses the
+  /// video.
+  /// - "VIDEO_REWIND" : Used to track the number of times a user replays the
+  /// video.
+  /// - "VIDEO_FULLSCREEN" : Used to track the number of times a user expands
+  /// the video to full-screen size.
+  /// - "VIDEO_STOP" : Used to track the number of times a user stops the video.
+  /// - "VIDEO_CUSTOM" : Used to track the number of times a user performs a
+  /// custom click, such as clicking on a video hot spot.
+  /// - "SURVEY" : Used for DFA6 compatibility, this is deprecating in favor of
+  /// event tags.
+  /// - "RICH_MEDIA_IMPRESSION" : Used by Studio RichMediaCreative, maps to its
+  /// thirdPartyImpressionsUrl
+  /// - "RICH_MEDIA_RM_IMPRESSION" : Used by Studio RichMediaCreative, maps to
+  /// its thirdPartyRichMediaImpressionsUrl
+  /// - "RICH_MEDIA_BACKUP_IMPRESSION" : Used by Studio RichMediaCreative, maps
+  /// to its thirdPartyBackupImageImpressionsUrl
+  /// - "VIDEO_SKIP" : Used to track the number of times the video was skipped.
+  /// - "VIDEO_PROGRESS" : Used to track the number of times the video plays to
+  /// an offset determined by the user.
+  core.String? thirdPartyUrlType;
+
+  /// URL for the specified third-party URL type.
+  core.String? url;
+
+  ThirdPartyTrackingUrl({
+    this.thirdPartyUrlType,
+    this.url,
+  });
+
+  ThirdPartyTrackingUrl.fromJson(core.Map json_)
+      : this(
+          thirdPartyUrlType: json_.containsKey('thirdPartyUrlType')
+              ? json_['thirdPartyUrlType'] as core.String
+              : null,
+          url: json_.containsKey('url') ? json_['url'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (thirdPartyUrlType != null) 'thirdPartyUrlType': thirdPartyUrlType!,
+        if (url != null) 'url': url!,
+      };
+}
 
 /// Transcode Settings
-typedef TranscodeSetting = $TranscodeSetting;
+class TranscodeSetting {
+  /// Allowlist of video formats to be served to this placement.
+  ///
+  /// Set this list to null or empty to serve all video formats.
+  core.List<core.int>? enabledVideoFormats;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#transcodeSetting".
+  core.String? kind;
+
+  TranscodeSetting({
+    this.enabledVideoFormats,
+    this.kind,
+  });
+
+  TranscodeSetting.fromJson(core.Map json_)
+      : this(
+          enabledVideoFormats: json_.containsKey('enabledVideoFormats')
+              ? (json_['enabledVideoFormats'] as core.List)
+                  .map((value) => value as core.int)
+                  .toList()
+              : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabledVideoFormats != null)
+          'enabledVideoFormats': enabledVideoFormats!,
+        if (kind != null) 'kind': kind!,
+      };
+}
 
 /// A Universal Ad ID as per the VAST 4.0 spec.
 ///
 /// Applicable to the following creative types: INSTREAM_AUDIO, INSTREAM_VIDEO
 /// and VPAID.
-typedef UniversalAdId = $UniversalAdId;
+class UniversalAdId {
+  /// Registry used for the Ad ID value.
+  /// Possible string values are:
+  /// - "OTHER"
+  /// - "AD_ID_OFFICIAL"
+  /// - "CLEARCAST"
+  /// - "DCM"
+  core.String? registry;
+
+  /// ID value for this creative.
+  ///
+  /// Only alphanumeric characters and the following symbols are valid: "_/\-".
+  /// Maximum length is 64 characters. Read only when registry is DCM.
+  core.String? value;
+
+  UniversalAdId({
+    this.registry,
+    this.value,
+  });
+
+  UniversalAdId.fromJson(core.Map json_)
+      : this(
+          registry: json_.containsKey('registry')
+              ? json_['registry'] as core.String
+              : null,
+          value:
+              json_.containsKey('value') ? json_['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (registry != null) 'registry': registry!,
+        if (value != null) 'value': value!,
+      };
+}
 
 /// User Defined Variable configuration.
-typedef UserDefinedVariableConfiguration = $UserDefinedVariableConfiguration;
+class UserDefinedVariableConfiguration {
+  /// Data type for the variable.
+  ///
+  /// This is a required field.
+  /// Possible string values are:
+  /// - "STRING"
+  /// - "NUMBER"
+  core.String? dataType;
+
+  /// User-friendly name for the variable which will appear in reports.
+  ///
+  /// This is a required field, must be less than 64 characters long, and cannot
+  /// contain the following characters: ""\<\>".
+  core.String? reportName;
+
+  /// Variable name in the tag.
+  ///
+  /// This is a required field.
+  /// Possible string values are:
+  /// - "U1"
+  /// - "U2"
+  /// - "U3"
+  /// - "U4"
+  /// - "U5"
+  /// - "U6"
+  /// - "U7"
+  /// - "U8"
+  /// - "U9"
+  /// - "U10"
+  /// - "U11"
+  /// - "U12"
+  /// - "U13"
+  /// - "U14"
+  /// - "U15"
+  /// - "U16"
+  /// - "U17"
+  /// - "U18"
+  /// - "U19"
+  /// - "U20"
+  /// - "U21"
+  /// - "U22"
+  /// - "U23"
+  /// - "U24"
+  /// - "U25"
+  /// - "U26"
+  /// - "U27"
+  /// - "U28"
+  /// - "U29"
+  /// - "U30"
+  /// - "U31"
+  /// - "U32"
+  /// - "U33"
+  /// - "U34"
+  /// - "U35"
+  /// - "U36"
+  /// - "U37"
+  /// - "U38"
+  /// - "U39"
+  /// - "U40"
+  /// - "U41"
+  /// - "U42"
+  /// - "U43"
+  /// - "U44"
+  /// - "U45"
+  /// - "U46"
+  /// - "U47"
+  /// - "U48"
+  /// - "U49"
+  /// - "U50"
+  /// - "U51"
+  /// - "U52"
+  /// - "U53"
+  /// - "U54"
+  /// - "U55"
+  /// - "U56"
+  /// - "U57"
+  /// - "U58"
+  /// - "U59"
+  /// - "U60"
+  /// - "U61"
+  /// - "U62"
+  /// - "U63"
+  /// - "U64"
+  /// - "U65"
+  /// - "U66"
+  /// - "U67"
+  /// - "U68"
+  /// - "U69"
+  /// - "U70"
+  /// - "U71"
+  /// - "U72"
+  /// - "U73"
+  /// - "U74"
+  /// - "U75"
+  /// - "U76"
+  /// - "U77"
+  /// - "U78"
+  /// - "U79"
+  /// - "U80"
+  /// - "U81"
+  /// - "U82"
+  /// - "U83"
+  /// - "U84"
+  /// - "U85"
+  /// - "U86"
+  /// - "U87"
+  /// - "U88"
+  /// - "U89"
+  /// - "U90"
+  /// - "U91"
+  /// - "U92"
+  /// - "U93"
+  /// - "U94"
+  /// - "U95"
+  /// - "U96"
+  /// - "U97"
+  /// - "U98"
+  /// - "U99"
+  /// - "U100"
+  core.String? variableType;
+
+  UserDefinedVariableConfiguration({
+    this.dataType,
+    this.reportName,
+    this.variableType,
+  });
+
+  UserDefinedVariableConfiguration.fromJson(core.Map json_)
+      : this(
+          dataType: json_.containsKey('dataType')
+              ? json_['dataType'] as core.String
+              : null,
+          reportName: json_.containsKey('reportName')
+              ? json_['reportName'] as core.String
+              : null,
+          variableType: json_.containsKey('variableType')
+              ? json_['variableType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataType != null) 'dataType': dataType!,
+        if (reportName != null) 'reportName': reportName!,
+        if (variableType != null) 'variableType': variableType!,
+      };
+}
+
+/// User identifying information.
+///
+/// Exactly one type of identifier must be specified.
+class UserIdentifier {
+  /// Address information.
+  OfflineUserAddressInfo? addressInfo;
+
+  /// Hashed email address using SHA-256 hash function after normalization.
+  core.String? hashedEmail;
+
+  /// Hashed phone number using SHA-256 hash function after normalization (E164
+  /// standard).
+  core.String? hashedPhoneNumber;
+
+  UserIdentifier({
+    this.addressInfo,
+    this.hashedEmail,
+    this.hashedPhoneNumber,
+  });
+
+  UserIdentifier.fromJson(core.Map json_)
+      : this(
+          addressInfo: json_.containsKey('addressInfo')
+              ? OfflineUserAddressInfo.fromJson(
+                  json_['addressInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          hashedEmail: json_.containsKey('hashedEmail')
+              ? json_['hashedEmail'] as core.String
+              : null,
+          hashedPhoneNumber: json_.containsKey('hashedPhoneNumber')
+              ? json_['hashedPhoneNumber'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (addressInfo != null) 'addressInfo': addressInfo!,
+        if (hashedEmail != null) 'hashedEmail': hashedEmail!,
+        if (hashedPhoneNumber != null) 'hashedPhoneNumber': hashedPhoneNumber!,
+      };
+}
 
 /// A UserProfile resource lets you list all DFA user profiles that are
 /// associated with a Google user account.
 ///
 /// The profile_id needs to be specified in other API requests.
-typedef UserProfile = $UserProfile;
+class UserProfile {
+  /// The account ID to which this profile belongs.
+  core.String? accountId;
+
+  /// The account name this profile belongs to.
+  core.String? accountName;
+
+  /// Etag of this resource.
+  core.String? etag;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#userProfile".
+  core.String? kind;
+
+  /// The unique ID of the user profile.
+  core.String? profileId;
+
+  /// The sub account ID this profile belongs to if applicable.
+  core.String? subAccountId;
+
+  /// The sub account name this profile belongs to if applicable.
+  core.String? subAccountName;
+
+  /// The user name.
+  core.String? userName;
+
+  UserProfile({
+    this.accountId,
+    this.accountName,
+    this.etag,
+    this.kind,
+    this.profileId,
+    this.subAccountId,
+    this.subAccountName,
+    this.userName,
+  });
+
+  UserProfile.fromJson(core.Map json_)
+      : this(
+          accountId: json_.containsKey('accountId')
+              ? json_['accountId'] as core.String
+              : null,
+          accountName: json_.containsKey('accountName')
+              ? json_['accountName'] as core.String
+              : null,
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          profileId: json_.containsKey('profileId')
+              ? json_['profileId'] as core.String
+              : null,
+          subAccountId: json_.containsKey('subAccountId')
+              ? json_['subAccountId'] as core.String
+              : null,
+          subAccountName: json_.containsKey('subAccountName')
+              ? json_['subAccountName'] as core.String
+              : null,
+          userName: json_.containsKey('userName')
+              ? json_['userName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
+        if (accountName != null) 'accountName': accountName!,
+        if (etag != null) 'etag': etag!,
+        if (kind != null) 'kind': kind!,
+        if (profileId != null) 'profileId': profileId!,
+        if (subAccountId != null) 'subAccountId': subAccountId!,
+        if (subAccountName != null) 'subAccountName': subAccountName!,
+        if (userName != null) 'userName': userName!,
+      };
+}
 
 /// Represents the list of user profiles.
 class UserProfileList {
@@ -26092,10 +29838,95 @@ class UserRole {
 }
 
 /// Contains properties of a user role permission.
-typedef UserRolePermission = $UserRolePermission;
+class UserRolePermission {
+  /// Levels of availability for a user role permission.
+  /// Possible string values are:
+  /// - "NOT_AVAILABLE_BY_DEFAULT" : Not available by default.
+  /// - "ACCOUNT_BY_DEFAULT" : Available by default to accounts only.
+  /// - "SUBACCOUNT_AND_ACCOUNT_BY_DEFAULT" : Available by default to both
+  /// accounts and subaccounts.
+  /// - "ACCOUNT_ALWAYS" : Always available to accounts.
+  /// - "SUBACCOUNT_AND_ACCOUNT_ALWAYS" : Always available to both accounts and
+  /// subaccounts.
+  /// - "USER_PROFILE_ONLY" : Available for user profile permissions only.
+  core.String? availability;
+
+  /// ID of this user role permission.
+  core.String? id;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#userRolePermission".
+  core.String? kind;
+
+  /// Name of this user role permission.
+  core.String? name;
+
+  /// ID of the permission group that this user role permission belongs to.
+  core.String? permissionGroupId;
+
+  UserRolePermission({
+    this.availability,
+    this.id,
+    this.kind,
+    this.name,
+    this.permissionGroupId,
+  });
+
+  UserRolePermission.fromJson(core.Map json_)
+      : this(
+          availability: json_.containsKey('availability')
+              ? json_['availability'] as core.String
+              : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          permissionGroupId: json_.containsKey('permissionGroupId')
+              ? json_['permissionGroupId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (availability != null) 'availability': availability!,
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+        if (permissionGroupId != null) 'permissionGroupId': permissionGroupId!,
+      };
+}
 
 /// Represents a grouping of related user role permissions.
-typedef UserRolePermissionGroup = $UserRolePermissionGroup;
+class UserRolePermissionGroup {
+  /// ID of this user role permission.
+  core.String? id;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#userRolePermissionGroup".
+  core.String? kind;
+
+  /// Name of this user role permission group.
+  core.String? name;
+
+  UserRolePermissionGroup({
+    this.id,
+    this.kind,
+    this.name,
+  });
+
+  UserRolePermissionGroup.fromJson(core.Map json_)
+      : this(
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+      };
+}
 
 /// User Role Permission Group List Response
 class UserRolePermissionGroupsListResponse {
@@ -26205,6 +30036,61 @@ class UserRolesListResponse {
       };
 }
 
+/// Defines the filtering on a single uvar.
+class UvarFilter {
+  /// Return rows which don't match this filter.
+  core.bool? complement;
+
+  /// Custom variable index the filter is applied to.
+  core.String? index;
+
+  /// The kind of resource this is, in this case dfareporting#uvarFilter.
+  core.String? kind;
+
+  /// Indicates how the filter should be matched to the values.
+  /// Possible string values are:
+  /// - "UNSPECIFIED"
+  /// - "EXACT"
+  /// - "CONTAINS"
+  core.String? match;
+
+  /// Values to filter on.
+  core.List<core.String>? values;
+
+  UvarFilter({
+    this.complement,
+    this.index,
+    this.kind,
+    this.match,
+    this.values,
+  });
+
+  UvarFilter.fromJson(core.Map json_)
+      : this(
+          complement: json_.containsKey('complement')
+              ? json_['complement'] as core.bool
+              : null,
+          index:
+              json_.containsKey('index') ? json_['index'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          match:
+              json_.containsKey('match') ? json_['match'] as core.String : null,
+          values: json_.containsKey('values')
+              ? (json_['values'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (complement != null) 'complement': complement!,
+        if (index != null) 'index': index!,
+        if (kind != null) 'kind': kind!,
+        if (match != null) 'match': match!,
+        if (values != null) 'values': values!,
+      };
+}
+
 /// Contains information about supported video formats.
 class VideoFormat {
   /// File type of the video format.
@@ -26296,7 +30182,39 @@ class VideoFormatsListResponse {
 }
 
 /// Video Offset
-typedef VideoOffset = $VideoOffset;
+class VideoOffset {
+  /// Duration, as a percentage of video duration.
+  ///
+  /// Do not set when offsetSeconds is set. Acceptable values are 0 to 100,
+  /// inclusive.
+  core.int? offsetPercentage;
+
+  /// Duration, in seconds.
+  ///
+  /// Do not set when offsetPercentage is set. Acceptable values are 0 to 86399,
+  /// inclusive.
+  core.int? offsetSeconds;
+
+  VideoOffset({
+    this.offsetPercentage,
+    this.offsetSeconds,
+  });
+
+  VideoOffset.fromJson(core.Map json_)
+      : this(
+          offsetPercentage: json_.containsKey('offsetPercentage')
+              ? json_['offsetPercentage'] as core.int
+              : null,
+          offsetSeconds: json_.containsKey('offsetSeconds')
+              ? json_['offsetSeconds'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (offsetPercentage != null) 'offsetPercentage': offsetPercentage!,
+        if (offsetSeconds != null) 'offsetSeconds': offsetSeconds!,
+      };
+}
 
 /// Video Settings
 class VideoSettings {

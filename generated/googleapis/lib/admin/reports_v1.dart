@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Admin SDK API - reports_v1
@@ -27,7 +26,7 @@
 /// - [CustomerUsageReportsResource]
 /// - [EntityUsageReportsResource]
 /// - [UserUsageReportResource]
-library admin.reports_v1;
+library admin_reports_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -188,37 +187,36 @@ class ActivitiesResource {
   /// parameters, see the list of event names for various applications above in
   /// `applicationName`.
   ///
-  /// [filters] - The `filters` query string is a comma-separated list. The list
-  /// is composed of event parameters that are manipulated by relational
-  /// operators. Event parameters are in the form `parameter1 name[parameter1
-  /// value],parameter2 name[parameter2 value],...` These event parameters are
-  /// associated with a specific `eventName`. An empty report is returned if the
-  /// filtered request's parameter does not belong to the `eventName`. For more
-  /// information about `eventName` parameters, see the list of event names for
-  /// various applications above in `applicationName`. In the following Admin
-  /// Activity example, the \<\> operator is URL-encoded in the request's query
-  /// string (%3C%3E): GET...&eventName=CHANGE_CALENDAR_SETTING
-  /// &filters=NEW_VALUE%3C%3EREAD_ONLY_ACCESS In the following Drive example,
-  /// the list can be a view or edit event's `doc_id` parameter with a value
-  /// that is manipulated by an 'equal to' (==) or 'not equal to' (\<\>)
-  /// relational operator. In the first example, the report returns each edited
-  /// document's `doc_id`. In the second example, the report returns each viewed
-  /// document's `doc_id` that equals the value 12345 and does not return any
-  /// viewed document's which have a `doc_id` value of 98765. The \<\> operator
-  /// is URL-encoded in the request's query string (%3C%3E):
-  /// GET...&eventName=edit&filters=doc_id
-  /// GET...&eventName=view&filters=doc_id==12345,doc_id%3C%3E98765 The
-  /// relational operators include: - `==` - 'equal to'. - `<>` - 'not equal
-  /// to'. It is URL-encoded (%3C%3E). - `<` - 'less than'. It is URL-encoded
-  /// (%3C). - `<=` - 'less than or equal to'. It is URL-encoded (%3C=). - `>` -
-  /// 'greater than'. It is URL-encoded (%3E). - `>=` - 'greater than or equal
-  /// to'. It is URL-encoded (%3E=). *Note:* The API doesn't accept multiple
-  /// values of a parameter. If a particular parameter is supplied more than
-  /// once in the API request, the API only accepts the last value of that
-  /// request parameter. In addition, if an invalid request parameter is
-  /// supplied in the API request, the API ignores that request parameter and
-  /// returns the response corresponding to the remaining valid request
-  /// parameters. If no parameters are requested, all parameters are returned.
+  /// [filters] - The `filters` query string is a comma-separated list composed
+  /// of event parameters manipulated by relational operators. Event parameters
+  /// are in the form `{parameter1 name}{relational operator}{parameter1
+  /// value},{parameter2 name}{relational operator}{parameter2 value},...` These
+  /// event parameters are associated with a specific `eventName`. An empty
+  /// report is returned if the request's parameter doesn't belong to the
+  /// `eventName`. For more information about the available `eventName` fields
+  /// for each application and their associated parameters, go to the
+  /// \[ApplicationName\](#applicationname) table, then click through to the
+  /// Activity Events page in the Appendix for the application you want. In the
+  /// following Drive activity examples, the returned list consists of all
+  /// `edit` events where the `doc_id` parameter value matches the conditions
+  /// defined by the relational operator. In the first example, the request
+  /// returns all edited documents with a `doc_id` value equal to `12345`. In
+  /// the second example, the report returns any edited documents where the
+  /// `doc_id` value is not equal to `98765`. The `<>` operator is URL-encoded
+  /// in the request's query string (`%3C%3E`): ```
+  /// GET...&eventName=edit&filters=doc_id==12345
+  /// GET...&eventName=edit&filters=doc_id%3C%3E98765 ``` A `filters` query
+  /// supports these relational operators: * `==`—'equal to'. * `<>`—'not equal
+  /// to'. Must be URL-encoded (%3C%3E). * `<`—'less than'. Must be URL-encoded
+  /// (%3C). * `<=`—'less than or equal to'. Must be URL-encoded (%3C=). *
+  /// `>`—'greater than'. Must be URL-encoded (%3E). * `>=`—'greater than or
+  /// equal to'. Must be URL-encoded (%3E=). **Note:** The API doesn't accept
+  /// multiple values of the same parameter. If a parameter is supplied more
+  /// than once in the API request, the API only accepts the last value of that
+  /// parameter. In addition, if an invalid parameter is supplied in the API
+  /// request, the API ignores that parameter and returns the response
+  /// corresponding to the remaining valid parameters. If no parameters are
+  /// requested, all parameters are returned.
   /// Value must have pattern
   /// `(.+\[\<,\<=,==,\>=,\>,\<\>\].+,)*(.+\[\<,\<=,==,\>=,\>,\<\>\].+)`.
   ///
@@ -416,37 +414,36 @@ class ActivitiesResource {
   /// parameters, see the list of event names for various applications above in
   /// `applicationName`.
   ///
-  /// [filters] - The `filters` query string is a comma-separated list. The list
-  /// is composed of event parameters that are manipulated by relational
-  /// operators. Event parameters are in the form `parameter1 name[parameter1
-  /// value],parameter2 name[parameter2 value],...` These event parameters are
-  /// associated with a specific `eventName`. An empty report is returned if the
-  /// filtered request's parameter does not belong to the `eventName`. For more
-  /// information about `eventName` parameters, see the list of event names for
-  /// various applications above in `applicationName`. In the following Admin
-  /// Activity example, the \<\> operator is URL-encoded in the request's query
-  /// string (%3C%3E): GET...&eventName=CHANGE_CALENDAR_SETTING
-  /// &filters=NEW_VALUE%3C%3EREAD_ONLY_ACCESS In the following Drive example,
-  /// the list can be a view or edit event's `doc_id` parameter with a value
-  /// that is manipulated by an 'equal to' (==) or 'not equal to' (\<\>)
-  /// relational operator. In the first example, the report returns each edited
-  /// document's `doc_id`. In the second example, the report returns each viewed
-  /// document's `doc_id` that equals the value 12345 and does not return any
-  /// viewed document's which have a `doc_id` value of 98765. The \<\> operator
-  /// is URL-encoded in the request's query string (%3C%3E):
-  /// GET...&eventName=edit&filters=doc_id
-  /// GET...&eventName=view&filters=doc_id==12345,doc_id%3C%3E98765 The
-  /// relational operators include: - `==` - 'equal to'. - `<>` - 'not equal
-  /// to'. It is URL-encoded (%3C%3E). - `<` - 'less than'. It is URL-encoded
-  /// (%3C). - `<=` - 'less than or equal to'. It is URL-encoded (%3C=). - `>` -
-  /// 'greater than'. It is URL-encoded (%3E). - `>=` - 'greater than or equal
-  /// to'. It is URL-encoded (%3E=). *Note:* The API doesn't accept multiple
-  /// values of a parameter. If a particular parameter is supplied more than
-  /// once in the API request, the API only accepts the last value of that
-  /// request parameter. In addition, if an invalid request parameter is
-  /// supplied in the API request, the API ignores that request parameter and
-  /// returns the response corresponding to the remaining valid request
-  /// parameters. If no parameters are requested, all parameters are returned.
+  /// [filters] - The `filters` query string is a comma-separated list composed
+  /// of event parameters manipulated by relational operators. Event parameters
+  /// are in the form `{parameter1 name}{relational operator}{parameter1
+  /// value},{parameter2 name}{relational operator}{parameter2 value},...` These
+  /// event parameters are associated with a specific `eventName`. An empty
+  /// report is returned if the request's parameter doesn't belong to the
+  /// `eventName`. For more information about the available `eventName` fields
+  /// for each application and their associated parameters, go to the
+  /// \[ApplicationName\](#applicationname) table, then click through to the
+  /// Activity Events page in the Appendix for the application you want. In the
+  /// following Drive activity examples, the returned list consists of all
+  /// `edit` events where the `doc_id` parameter value matches the conditions
+  /// defined by the relational operator. In the first example, the request
+  /// returns all edited documents with a `doc_id` value equal to `12345`. In
+  /// the second example, the report returns any edited documents where the
+  /// `doc_id` value is not equal to `98765`. The `<>` operator is URL-encoded
+  /// in the request's query string (`%3C%3E`): ```
+  /// GET...&eventName=edit&filters=doc_id==12345
+  /// GET...&eventName=edit&filters=doc_id%3C%3E98765 ``` A `filters` query
+  /// supports these relational operators: * `==`—'equal to'. * `<>`—'not equal
+  /// to'. Must be URL-encoded (%3C%3E). * `<`—'less than'. Must be URL-encoded
+  /// (%3C). * `<=`—'less than or equal to'. Must be URL-encoded (%3C=). *
+  /// `>`—'greater than'. Must be URL-encoded (%3E). * `>=`—'greater than or
+  /// equal to'. Must be URL-encoded (%3E=). **Note:** The API doesn't accept
+  /// multiple values of the same parameter. If a parameter is supplied more
+  /// than once in the API request, the API only accepts the last value of that
+  /// parameter. In addition, if an invalid parameter is supplied in the API
+  /// request, the API ignores that parameter and returns the response
+  /// corresponding to the remaining valid parameters. If no parameters are
+  /// requested, all parameters are returned.
   /// Value must have pattern
   /// `(.+\[\<,\<=,==,\>=,\>,\<\>\].+,)*(.+\[\<,\<=,==,\>=,\>,\<\>\].+)`.
   ///
@@ -594,9 +591,9 @@ class CustomerUsageReportsResource {
   ///
   /// Request parameters:
   ///
-  /// [date] - Represents the date the usage occurred. The timestamp is in the
-  /// ISO 8601 format, yyyy-mm-dd. We recommend you use your account's time zone
-  /// for this.
+  /// [date] - Represents the date the usage occurred, based on UTC-8:00
+  /// (Pacific Standard Time). The timestamp is in the
+  /// [ISO 8601 format](https://en.wikipedia.org/wiki/ISO_8601), `yyyy-mm-dd`.
   /// Value must have pattern `(\d){4}-(\d){2}-(\d){2}`.
   ///
   /// [customerId] - The unique ID of the customer to retrieve data for.
@@ -687,9 +684,9 @@ class EntityUsageReportsResource {
   /// to obtain the `entityKey` for a particular `entityType`, see the Entities
   /// Usage parameters reference guides.
   ///
-  /// [date] - Represents the date the usage occurred. The timestamp is in the
-  /// ISO 8601 format, yyyy-mm-dd. We recommend you use your account's time zone
-  /// for this.
+  /// [date] - Represents the date the usage occurred, based on UTC-8:00
+  /// (Pacific Standard Time). The timestamp is in the
+  /// [ISO 8601 format](https://en.wikipedia.org/wiki/ISO_8601), `yyyy-mm-dd`.
   /// Value must have pattern `(\d){4}-(\d){2}-(\d){2}`.
   ///
   /// [customerId] - The unique ID of the customer to retrieve data for.
@@ -808,9 +805,9 @@ class UserUsageReportResource {
   /// Directory API with `showDeleted=true`, then use the returned `ID` as the
   /// `userKey`.
   ///
-  /// [date] - Represents the date the usage occurred. The timestamp is in the
-  /// ISO 8601 format, yyyy-mm-dd. We recommend you use your account's time zone
-  /// for this.
+  /// [date] - Represents the date the usage occurred, based on UTC-8:00
+  /// (Pacific Standard Time). The timestamp is in the
+  /// [ISO 8601 format](https://en.wikipedia.org/wiki/ISO_8601), `yyyy-mm-dd`.
   /// Value must have pattern `(\d){4}-(\d){2}-(\d){2}`.
   ///
   /// [customerId] - The unique ID of the customer to retrieve data for.
@@ -1371,7 +1368,8 @@ class Channel {
 
   /// A Boolean value to indicate whether payload is wanted.
   ///
-  /// Optional.
+  /// A payload is data that is sent in the body of an HTTP POST, PUT, or PATCH
+  /// message and contains important information about the request. Optional.
   core.bool? payload;
 
   /// An opaque ID that identifies the resource being watched on this channel.
@@ -1418,9 +1416,9 @@ class Channel {
           kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
           params: json_.containsKey('params')
               ? (json_['params'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,

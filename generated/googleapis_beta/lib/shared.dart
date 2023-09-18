@@ -3,368 +3,21 @@
   'Avoid importing this library. '
   'Use the members defined in the target API library instead.',
 )
-library $shared;
+library;
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 import 'dart:convert' as convert;
 import 'dart:core' as core;
-
-/// Used by:
-///
-/// - alertcenter:v1beta1 : BatchDeleteAlertsRequest
-/// - alertcenter:v1beta1 : BatchUndeleteAlertsRequest
-class $AlertsRequest {
-  /// list of alert IDs.
-  ///
-  /// Required.
-  core.List<core.String>? alertId;
-
-  /// The unique identifier of the Google Workspace organization account of the
-  /// customer the alerts are associated with.
-  ///
-  /// Optional.
-  core.String? customerId;
-
-  $AlertsRequest({
-    this.alertId,
-    this.customerId,
-  });
-
-  $AlertsRequest.fromJson(core.Map json_)
-      : this(
-          alertId: json_.containsKey('alertId')
-              ? (json_['alertId'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          customerId: json_.containsKey('customerId')
-              ? json_['customerId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (alertId != null) 'alertId': alertId!,
-        if (customerId != null) 'customerId': customerId!,
-      };
-}
-
-/// Used by:
-///
-/// - containeranalysis:v1beta1 : AliasContext
-/// - ondemandscanning:v1beta1 : AliasContext
-class $AliasContext {
-  /// The alias kind.
-  /// Possible string values are:
-  /// - "KIND_UNSPECIFIED" : Unknown.
-  /// - "FIXED" : Git tag.
-  /// - "MOVABLE" : Git branch.
-  /// - "OTHER" : Used to specify non-standard aliases. For example, if a Git
-  /// repo has a ref named "refs/foo/bar".
-  core.String? kind;
-
-  /// The alias name.
-  core.String? name;
-
-  $AliasContext({
-    this.kind,
-    this.name,
-  });
-
-  $AliasContext.fromJson(core.Map json_)
-      : this(
-          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (kind != null) 'kind': kind!,
-        if (name != null) 'name': name!,
-      };
-}
-
-/// Used by:
-///
-/// - containeranalysis:v1beta1 : AnalysisCompleted
-/// - ondemandscanning:v1beta1 : AnalysisCompleted
-class $AnalysisCompleted {
-  core.List<core.String>? analysisType;
-
-  $AnalysisCompleted({
-    this.analysisType,
-  });
-
-  $AnalysisCompleted.fromJson(core.Map json_)
-      : this(
-          analysisType: json_.containsKey('analysisType')
-              ? (json_['analysisType'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (analysisType != null) 'analysisType': analysisType!,
-      };
-}
-
-/// Used by:
-///
-/// - containeranalysis:v1beta1 : Artifact
-/// - ondemandscanning:v1beta1 : Artifact
-class $Artifact {
-  /// Hash or checksum value of a binary, or Docker Registry 2.0 digest of a
-  /// container.
-  core.String? checksum;
-
-  /// Artifact ID, if any; for container images, this will be a URL by digest
-  /// like `gcr.io/projectID/imagename@sha256:123456`.
-  core.String? id;
-
-  /// Related artifact names.
-  ///
-  /// This may be the path to a binary or jar file, or in the case of a
-  /// container build, the name used to push the container image to Google
-  /// Container Registry, as presented to `docker push`. Note that a single
-  /// Artifact ID can have multiple names, for example if two tags are applied
-  /// to one image.
-  core.List<core.String>? names;
-
-  $Artifact({
-    this.checksum,
-    this.id,
-    this.names,
-  });
-
-  $Artifact.fromJson(core.Map json_)
-      : this(
-          checksum: json_.containsKey('checksum')
-              ? json_['checksum'] as core.String
-              : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          names: json_.containsKey('names')
-              ? (json_['names'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (checksum != null) 'checksum': checksum!,
-        if (id != null) 'id': id!,
-        if (names != null) 'names': names!,
-      };
-}
-
-/// Used by:
-///
-/// - bigqueryconnection:v1beta1 : AuditLogConfig
-/// - cloudfunctions:v2beta : AuditLogConfig
-/// - domains:v1beta1 : AuditLogConfig
-/// - metastore:v1beta : AuditLogConfig
-/// - networkconnectivity:v1alpha1 : AuditLogConfig
-/// - networksecurity:v1beta1 : GoogleIamV1AuditLogConfig
-/// - policysimulator:v1beta1 : GoogleIamV1AuditLogConfig
-/// - privateca:v1beta1 : AuditLogConfig
-class $AuditLogConfig {
-  /// Specifies the identities that do not cause logging for this type of
-  /// permission.
-  ///
-  /// Follows the same format of Binding.members.
-  core.List<core.String>? exemptedMembers;
-
-  /// The log type that this config enables.
-  /// Possible string values are:
-  /// - "LOG_TYPE_UNSPECIFIED" : Default case. Should never be this.
-  /// - "ADMIN_READ" : Admin reads. Example: CloudIAM getIamPolicy
-  /// - "DATA_WRITE" : Data writes. Example: CloudSQL Users create
-  /// - "DATA_READ" : Data reads. Example: CloudSQL Users list
-  core.String? logType;
-
-  $AuditLogConfig({
-    this.exemptedMembers,
-    this.logType,
-  });
-
-  $AuditLogConfig.fromJson(core.Map json_)
-      : this(
-          exemptedMembers: json_.containsKey('exemptedMembers')
-              ? (json_['exemptedMembers'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          logType: json_.containsKey('logType')
-              ? json_['logType'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
-        if (logType != null) 'logType': logType!,
-      };
-}
-
-/// Used by:
-///
-/// - privateca:v1beta1 : DisableCertificateAuthorityRequest
-/// - privateca:v1beta1 : EnableCertificateAuthorityRequest
-/// - privateca:v1beta1 : RestoreCertificateAuthorityRequest
-class $CertificateAuthorityRequest {
-  /// An ID to identify requests.
-  ///
-  /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes since the first
-  /// request. For example, consider a situation where you make an initial
-  /// request and t he request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
-  ///
-  /// Optional.
-  core.String? requestId;
-
-  $CertificateAuthorityRequest({
-    this.requestId,
-  });
-
-  $CertificateAuthorityRequest.fromJson(core.Map json_)
-      : this(
-          requestId: json_.containsKey('requestId')
-              ? json_['requestId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (requestId != null) 'requestId': requestId!,
-      };
-}
-
-/// Used by:
-///
-/// - containeranalysis:v1beta1 : Command
-/// - ondemandscanning:v1beta1 : Command
-class $Command {
-  /// Command-line arguments used when executing this command.
-  core.List<core.String>? args;
-
-  /// Working directory (relative to project source root) used when running this
-  /// command.
-  core.String? dir;
-
-  /// Environment variables set before running this command.
-  core.List<core.String>? env;
-
-  /// Optional unique identifier for this command, used in wait_for to reference
-  /// this command as a dependency.
-  core.String? id;
-
-  /// Name of the command, as presented on the command line, or if the command
-  /// is packaged as a Docker container, as presented to `docker pull`.
-  ///
-  /// Required.
-  core.String? name;
-
-  /// The ID(s) of the command(s) that this command depends on.
-  core.List<core.String>? waitFor;
-
-  $Command({
-    this.args,
-    this.dir,
-    this.env,
-    this.id,
-    this.name,
-    this.waitFor,
-  });
-
-  $Command.fromJson(core.Map json_)
-      : this(
-          args: json_.containsKey('args')
-              ? (json_['args'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          dir: json_.containsKey('dir') ? json_['dir'] as core.String : null,
-          env: json_.containsKey('env')
-              ? (json_['env'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          waitFor: json_.containsKey('waitFor')
-              ? (json_['waitFor'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (args != null) 'args': args!,
-        if (dir != null) 'dir': dir!,
-        if (env != null) 'env': env!,
-        if (id != null) 'id': id!,
-        if (name != null) 'name': name!,
-        if (waitFor != null) 'waitFor': waitFor!,
-      };
-}
-
-/// Used by:
-///
-/// - ondemandscanning:v1beta1 : Completeness
-/// - ondemandscanning:v1beta1 : SlsaCompleteness
-class $Completeness {
-  /// If true, the builder claims that recipe.arguments is complete, meaning
-  /// that all external inputs are properly captured in the recipe.
-  core.bool? arguments;
-
-  /// If true, the builder claims that recipe.environment is claimed to be
-  /// complete.
-  core.bool? environment;
-
-  /// If true, the builder claims that materials are complete, usually through
-  /// some controls to prevent network access.
-  ///
-  /// Sometimes called "hermetic".
-  core.bool? materials;
-
-  $Completeness({
-    this.arguments,
-    this.environment,
-    this.materials,
-  });
-
-  $Completeness.fromJson(core.Map json_)
-      : this(
-          arguments: json_.containsKey('arguments')
-              ? json_['arguments'] as core.bool
-              : null,
-          environment: json_.containsKey('environment')
-              ? json_['environment'] as core.bool
-              : null,
-          materials: json_.containsKey('materials')
-              ? json_['materials'] as core.bool
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (arguments != null) 'arguments': arguments!,
-        if (environment != null) 'environment': environment!,
-        if (materials != null) 'materials': materials!,
-      };
-}
 
 /// Used by:
 ///
@@ -406,10 +59,7 @@ class $Config {
 /// Used by:
 ///
 /// - adexchangebuyer2:v2beta1 : Date
-/// - documentai:v1beta3 : GoogleTypeDate
 /// - fcmdata:v1beta1 : GoogleTypeDate
-/// - osconfig:v1alpha : Date
-/// - policysimulator:v1beta1 : GoogleTypeDate
 class $Date {
   /// Day of a month.
   ///
@@ -449,7 +99,7 @@ class $Date {
 
 /// Used by:
 ///
-/// - analyticsadmin:v1alpha : GoogleAnalyticsAdminV1alphaAccessOrderByDimensionOrderBy
+/// - analyticsadmin:v1beta : GoogleAnalyticsAdminV1betaAccessOrderByDimensionOrderBy
 /// - analyticsdata:v1beta : DimensionOrderBy
 class $DimensionOrderBy {
   /// A dimension name in the request to order by.
@@ -498,22 +148,15 @@ class $DimensionOrderBy {
 /// - adexchangebuyer2:v2beta1 : ResumeProposalRequest
 /// - adexchangebuyer2:v2beta1 : StopWatchingCreativeRequest
 /// - alertcenter:v1beta1 : Empty
-/// - analyticsadmin:v1alpha : GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse
-/// - analyticsadmin:v1alpha : GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest
-/// - analyticsadmin:v1alpha : GoogleAnalyticsAdminV1alphaArchiveAudienceRequest
-/// - analyticsadmin:v1alpha : GoogleAnalyticsAdminV1alphaArchiveCustomDimensionRequest
-/// - analyticsadmin:v1alpha : GoogleAnalyticsAdminV1alphaArchiveCustomMetricRequest
-/// - analyticsadmin:v1alpha : GoogleAnalyticsAdminV1alphaCancelDisplayVideo360AdvertiserLinkProposalRequest
-/// - analyticsadmin:v1alpha : GoogleProtobufEmpty
+/// - analyticsadmin:v1beta : GoogleAnalyticsAdminV1betaAcknowledgeUserDataCollectionResponse
+/// - analyticsadmin:v1beta : GoogleAnalyticsAdminV1betaArchiveCustomDimensionRequest
+/// - analyticsadmin:v1beta : GoogleAnalyticsAdminV1betaArchiveCustomMetricRequest
+/// - analyticsadmin:v1beta : GoogleProtobufEmpty
 /// - area120tables:v1alpha1 : Empty
 /// - bigqueryconnection:v1beta1 : Empty
 /// - clouderrorreporting:v1beta1 : DeleteEventsResponse
 /// - clouderrorreporting:v1beta1 : ReportErrorEventResponse
-/// - cloudfunctions:v2beta : GenerateDownloadUrlRequest
-/// - cloudfunctions:v2beta : GenerateUploadUrlRequest
 /// - cloudsupport:v2beta : CloseCaseRequest
-/// - containeranalysis:v1beta1 : Empty
-/// - datacatalog:v1beta1 : Empty
 /// - dataflow:v1b3 : DeleteSnapshotResponse
 /// - dataflow:v1b3 : ResourceUtilizationReportResponse
 /// - dataflow:v1b3 : SendDebugCaptureResponse
@@ -531,13 +174,6 @@ class $DimensionOrderBy {
 /// - datastream:v1alpha1 : FetchErrorsRequest
 /// - datastream:v1alpha1 : NoConnectivitySettings
 /// - datastream:v1alpha1 : StaticServiceIpConnectivity
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3DeployProcessorVersionRequest
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3DisableProcessorRequest
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3EnableProcessorRequest
-/// - documentai:v1beta3 : GoogleCloudDocumentaiV1beta3UndeployProcessorVersionRequest
-/// - documentai:v1beta3 : GoogleProtobufEmpty
-/// - domains:v1beta1 : ExportRegistrationRequest
-/// - domains:v1beta1 : ResetAuthorizationCodeRequest
 /// - factchecktools:v1alpha1 : GoogleProtobufEmpty
 /// - firebase:v1beta1 : Empty
 /// - firebaseappcheck:v1beta : GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeRequest
@@ -553,17 +189,6 @@ class $DimensionOrderBy {
 /// - gkehub:v2alpha : Empty
 /// - lifesciences:v2beta : CancelOperationRequest
 /// - lifesciences:v2beta : Empty
-/// - metastore:v1beta : Empty
-/// - metastore:v1beta : RemoveIamPolicyRequest
-/// - networkconnectivity:v1alpha1 : Empty
-/// - networkconnectivity:v1alpha1 : GoogleLongrunningCancelOperationRequest
-/// - networksecurity:v1beta1 : CancelOperationRequest
-/// - networksecurity:v1beta1 : Empty
-/// - ondemandscanning:v1beta1 : Empty
-/// - osconfig:v1alpha : CancelOperationRequest
-/// - osconfig:v1alpha : Empty
-/// - privateca:v1beta1 : CancelOperationRequest
-/// - privateca:v1beta1 : Empty
 /// - prod_tt_sasportal:v1alpha1 : SasPortalEmpty
 /// - prod_tt_sasportal:v1alpha1 : SasPortalGenerateSecretRequest
 /// - prod_tt_sasportal:v1alpha1 : SasPortalValidateInstallerResponse
@@ -571,14 +196,12 @@ class $DimensionOrderBy {
 /// - sasportal:v1alpha1 : SasPortalEmpty
 /// - sasportal:v1alpha1 : SasPortalGenerateSecretRequest
 /// - sasportal:v1alpha1 : SasPortalValidateInstallerResponse
+/// - sqladmin:v1beta4 : Empty
+/// - sqladmin:v1beta4 : SqlInstancesResetReplicaSizeRequest
 /// - toolresults:v1beta3 : AndroidTestLoop
 /// - toolresults:v1beta3 : IosRoboTest
 /// - toolresults:v1beta3 : MatrixDimensionDefinition
 /// - toolresults:v1beta3 : StepSummary
-/// - tpu:v2alpha1 : Empty
-/// - tpu:v2alpha1 : GenerateServiceIdentityRequest
-/// - tpu:v2alpha1 : StartNodeRequest
-/// - tpu:v2alpha1 : StopNodeRequest
 class $Empty {
   $Empty();
 
@@ -618,250 +241,7 @@ class $Entry {
 
 /// Used by:
 ///
-/// - containeranalysis:v1beta1 : EnvelopeSignature
-/// - ondemandscanning:v1beta1 : EnvelopeSignature
-class $EnvelopeSignature {
-  core.String? keyid;
-  core.String? sig;
-  core.List<core.int> get sigAsBytes => convert.base64.decode(sig!);
-
-  set sigAsBytes(core.List<core.int> bytes_) {
-    sig =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
-  }
-
-  $EnvelopeSignature({
-    this.keyid,
-    this.sig,
-  });
-
-  $EnvelopeSignature.fromJson(core.Map json_)
-      : this(
-          keyid:
-              json_.containsKey('keyid') ? json_['keyid'] as core.String : null,
-          sig: json_.containsKey('sig') ? json_['sig'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (keyid != null) 'keyid': keyid!,
-        if (sig != null) 'sig': sig!,
-      };
-}
-
-/// Used by:
-///
-/// - bigqueryconnection:v1beta1 : Expr
-/// - cloudfunctions:v2beta : Expr
-/// - containeranalysis:v1beta1 : Expr
-/// - datacatalog:v1beta1 : Expr
-/// - domains:v1beta1 : Expr
-/// - metastore:v1beta : Expr
-/// - networkconnectivity:v1alpha1 : Expr
-/// - networksecurity:v1beta1 : Expr
-/// - policysimulator:v1beta1 : GoogleTypeExpr
-/// - privateca:v1beta1 : Expr
-class $Expr {
-  /// Description of the expression.
-  ///
-  /// This is a longer text which describes the expression, e.g. when hovered
-  /// over it in a UI.
-  ///
-  /// Optional.
-  core.String? description;
-
-  /// Textual representation of an expression in Common Expression Language
-  /// syntax.
-  core.String? expression;
-
-  /// String indicating the location of the expression for error reporting, e.g.
-  /// a file name and a position in the file.
-  ///
-  /// Optional.
-  core.String? location;
-
-  /// Title for the expression, i.e. a short string describing its purpose.
-  ///
-  /// This can be used e.g. in UIs which allow to enter the expression.
-  ///
-  /// Optional.
-  core.String? title;
-
-  $Expr({
-    this.description,
-    this.expression,
-    this.location,
-    this.title,
-  });
-
-  $Expr.fromJson(core.Map json_)
-      : this(
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          expression: json_.containsKey('expression')
-              ? json_['expression'] as core.String
-              : null,
-          location: json_.containsKey('location')
-              ? json_['location'] as core.String
-              : null,
-          title:
-              json_.containsKey('title') ? json_['title'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (expression != null) 'expression': expression!,
-        if (location != null) 'location': location!,
-        if (title != null) 'title': title!,
-      };
-}
-
-/// Used by:
-///
-/// - ondemandscanning:v1beta1 : FileLocation
-/// - ondemandscanning:v1beta1 : GrafeasV1FileLocation
-class $FileLocation {
-  /// For jars that are contained inside .war files, this filepath can indicate
-  /// the path to war file combined with the path to jar file.
-  core.String? filePath;
-
-  $FileLocation({
-    this.filePath,
-  });
-
-  $FileLocation.fromJson(core.Map json_)
-      : this(
-          filePath: json_.containsKey('filePath')
-              ? json_['filePath'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (filePath != null) 'filePath': filePath!,
-      };
-}
-
-/// Used by:
-///
-/// - containeranalysis:v1beta1 : Fingerprint
-/// - ondemandscanning:v1beta1 : Fingerprint
-class $Fingerprint {
-  /// The layer ID of the final layer in the Docker image's v1 representation.
-  ///
-  /// Required.
-  core.String? v1Name;
-
-  /// The ordered list of v2 blobs that represent a given image.
-  ///
-  /// Required.
-  core.List<core.String>? v2Blob;
-
-  /// The name of the image's v2 blobs computed via: \[bottom\] := v2_blobbottom
-  /// := sha256(v2_blob\[N\] + " " + v2_name\[N+1\]) Only the name of the final
-  /// blob is kept.
-  ///
-  /// Output only.
-  core.String? v2Name;
-
-  $Fingerprint({
-    this.v1Name,
-    this.v2Blob,
-    this.v2Name,
-  });
-
-  $Fingerprint.fromJson(core.Map json_)
-      : this(
-          v1Name: json_.containsKey('v1Name')
-              ? json_['v1Name'] as core.String
-              : null,
-          v2Blob: json_.containsKey('v2Blob')
-              ? (json_['v2Blob'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          v2Name: json_.containsKey('v2Name')
-              ? json_['v2Name'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (v1Name != null) 'v1Name': v1Name!,
-        if (v2Blob != null) 'v2Blob': v2Blob!,
-        if (v2Name != null) 'v2Name': v2Name!,
-      };
-}
-
-/// Used by:
-///
-/// - bigqueryconnection:v1beta1 : GetPolicyOptions
-/// - containeranalysis:v1beta1 : GetPolicyOptions
-/// - datacatalog:v1beta1 : GetPolicyOptions
-class $GetPolicyOptions {
-  /// The maximum policy version that will be used to format the policy.
-  ///
-  /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be
-  /// rejected. Requests for policies with any conditional role bindings must
-  /// specify version 3. Policies with no conditional role bindings may specify
-  /// any valid value or leave the field unset. The policy in the response might
-  /// use the policy version that you specified, or it might use a lower policy
-  /// version. For example, if you specify version 3, but the policy has no
-  /// conditional role bindings, the response uses version 1. To learn which
-  /// resources support conditions in their IAM policies, see the
-  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-  ///
-  /// Optional.
-  core.int? requestedPolicyVersion;
-
-  $GetPolicyOptions({
-    this.requestedPolicyVersion,
-  });
-
-  $GetPolicyOptions.fromJson(core.Map json_)
-      : this(
-          requestedPolicyVersion: json_.containsKey('requestedPolicyVersion')
-              ? json_['requestedPolicyVersion'] as core.int
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (requestedPolicyVersion != null)
-          'requestedPolicyVersion': requestedPolicyVersion!,
-      };
-}
-
-/// Used by:
-///
-/// - containeranalysis:v1beta1 : GitSourceContext
-/// - ondemandscanning:v1beta1 : GitSourceContext
-class $GitSourceContext {
-  /// Git commit hash.
-  core.String? revisionId;
-
-  /// Git repository URL.
-  core.String? url;
-
-  $GitSourceContext({
-    this.revisionId,
-    this.url,
-  });
-
-  $GitSourceContext.fromJson(core.Map json_)
-      : this(
-          revisionId: json_.containsKey('revisionId')
-              ? json_['revisionId'] as core.String
-              : null,
-          url: json_.containsKey('url') ? json_['url'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (revisionId != null) 'revisionId': revisionId!,
-        if (url != null) 'url': url!,
-      };
-}
-
-/// Used by:
-///
-/// - analyticsadmin:v1alpha : GoogleAnalyticsAdminV1alphaAccessInListFilter
+/// - analyticsadmin:v1beta : GoogleAnalyticsAdminV1betaAccessInListFilter
 /// - analyticsdata:v1beta : InListFilter
 class $InListFilter {
   /// If true, the string value is case sensitive.
@@ -897,52 +277,9 @@ class $InListFilter {
 
 /// Used by:
 ///
-/// - containeranalysis:v1beta1 : License
-/// - ondemandscanning:v1beta1 : License
-class $License {
-  /// Comments
-  core.String? comments;
-
-  /// Often a single license can be used to represent the licensing terms.
-  ///
-  /// Sometimes it is necessary to include a choice of one or more licenses or
-  /// some combination of license identifiers. Examples: "LGPL-2.1-only OR MIT",
-  /// "LGPL-2.1-only AND MIT", "GPL-2.0-or-later WITH Bison-exception-2.2".
-  core.String? expression;
-
-  $License({
-    this.comments,
-    this.expression,
-  });
-
-  $License.fromJson(core.Map json_)
-      : this(
-          comments: json_.containsKey('comments')
-              ? json_['comments'] as core.String
-              : null,
-          expression: json_.containsKey('expression')
-              ? json_['expression'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (comments != null) 'comments': comments!,
-        if (expression != null) 'expression': expression!,
-      };
-}
-
-/// Used by:
-///
-/// - cloudfunctions:v2beta : Location
 /// - datastream:v1alpha1 : Location
-/// - documentai:v1beta3 : GoogleCloudLocationLocation
-/// - domains:v1beta1 : Location
 /// - gkehub:v2alpha : Location
 /// - lifesciences:v2beta : Location
-/// - networkconnectivity:v1alpha1 : Location
-/// - networksecurity:v1beta1 : Location
-/// - privateca:v1beta1 : Location
-/// - tpu:v2alpha1 : Location
 class $Location {
   /// The friendly name for this location, typically a nearby city name.
   ///
@@ -987,9 +324,9 @@ class $Location {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -1013,39 +350,7 @@ class $Location {
 
 /// Used by:
 ///
-/// - ondemandscanning:v1beta1 : GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial
-/// - ondemandscanning:v1beta1 : Material
-class $Material {
-  core.Map<core.String, core.String>? digest;
-  core.String? uri;
-
-  $Material({
-    this.digest,
-    this.uri,
-  });
-
-  $Material.fromJson(core.Map json_)
-      : this(
-          digest: json_.containsKey('digest')
-              ? (json_['digest'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.String,
-                  ),
-                )
-              : null,
-          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (digest != null) 'digest': digest!,
-        if (uri != null) 'uri': uri!,
-      };
-}
-
-/// Used by:
-///
-/// - analyticsadmin:v1alpha : GoogleAnalyticsAdminV1alphaAccessOrderByMetricOrderBy
+/// - analyticsadmin:v1beta : GoogleAnalyticsAdminV1betaAccessOrderByMetricOrderBy
 /// - analyticsdata:v1beta : MetricOrderBy
 class $MetricOrderBy {
   /// A metric name in the request to order by.
@@ -1069,53 +374,7 @@ class $MetricOrderBy {
 
 /// Used by:
 ///
-/// - adexchangebuyer2:v2beta1 : Money
-/// - documentai:v1beta3 : GoogleTypeMoney
-/// - domains:v1beta1 : Money
-class $Money {
-  /// The three-letter currency code defined in ISO 4217.
-  core.String? currencyCode;
-
-  /// Number of nano (10^-9) units of the amount.
-  ///
-  /// The value must be between -999,999,999 and +999,999,999 inclusive. If
-  /// `units` is positive, `nanos` must be positive or zero. If `units` is zero,
-  /// `nanos` can be positive, zero, or negative. If `units` is negative,
-  /// `nanos` must be negative or zero. For example $-1.75 is represented as
-  /// `units`=-1 and `nanos`=-750,000,000.
-  core.int? nanos;
-
-  /// The whole units of the amount.
-  ///
-  /// For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
-  core.String? units;
-
-  $Money({
-    this.currencyCode,
-    this.nanos,
-    this.units,
-  });
-
-  $Money.fromJson(core.Map json_)
-      : this(
-          currencyCode: json_.containsKey('currencyCode')
-              ? json_['currencyCode'] as core.String
-              : null,
-          nanos: json_.containsKey('nanos') ? json_['nanos'] as core.int : null,
-          units:
-              json_.containsKey('units') ? json_['units'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (currencyCode != null) 'currencyCode': currencyCode!,
-        if (nanos != null) 'nanos': nanos!,
-        if (units != null) 'units': units!,
-      };
-}
-
-/// Used by:
-///
-/// - analyticsadmin:v1alpha : GoogleAnalyticsAdminV1alphaNumericValue
+/// - analyticsadmin:v1beta : GoogleAnalyticsAdminV1betaNumericValue
 /// - analyticsdata:v1beta : NumericValue
 class $NumericValue {
   /// Double value
@@ -1147,226 +406,7 @@ class $NumericValue {
 
 /// Used by:
 ///
-/// - documentai:v1beta3 : GoogleTypePostalAddress
-/// - domains:v1beta1 : PostalAddress
-class $PostalAddress {
-  /// Unstructured address lines describing the lower levels of an address.
-  ///
-  /// Because values in address_lines do not have type information and may
-  /// sometimes contain multiple values in a single field (e.g. "Austin, TX"),
-  /// it is important that the line order is clear. The order of address lines
-  /// should be "envelope order" for the country/region of the address. In
-  /// places where this can vary (e.g. Japan), address_language is used to make
-  /// it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en"
-  /// for small-to-large). This way, the most specific line of an address can be
-  /// selected based on the language. The minimum permitted structural
-  /// representation of an address consists of a region_code with all remaining
-  /// information placed in the address_lines. It would be possible to format
-  /// such an address very approximately without geocoding, but no semantic
-  /// reasoning could be made about any of the address components until it was
-  /// at least partially resolved. Creating an address only containing a
-  /// region_code and address_lines, and then geocoding is the recommended way
-  /// to handle completely unstructured addresses (as opposed to guessing which
-  /// parts of the address should be localities or administrative areas).
-  core.List<core.String>? addressLines;
-
-  /// Highest administrative subdivision which is used for postal addresses of a
-  /// country or region.
-  ///
-  /// For example, this can be a state, a province, an oblast, or a prefecture.
-  /// Specifically, for Spain this is the province and not the autonomous
-  /// community (e.g. "Barcelona" and not "Catalonia"). Many countries don't use
-  /// an administrative area in postal addresses. E.g. in Switzerland this
-  /// should be left unpopulated.
-  ///
-  /// Optional.
-  core.String? administrativeArea;
-
-  /// BCP-47 language code of the contents of this address (if known).
-  ///
-  /// This is often the UI language of the input form or is expected to match
-  /// one of the languages used in the address' country/region, or their
-  /// transliterated equivalents. This can affect formatting in certain
-  /// countries, but is not critical to the correctness of the data and will
-  /// never affect any validation or other non-formatting related operations. If
-  /// this value is not known, it should be omitted (rather than specifying a
-  /// possibly incorrect default). Examples: "zh-Hant", "ja", "ja-Latn", "en".
-  ///
-  /// Optional.
-  core.String? languageCode;
-
-  /// Generally refers to the city/town portion of the address.
-  ///
-  /// Examples: US city, IT comune, UK post town. In regions of the world where
-  /// localities are not well defined or do not fit into this structure well,
-  /// leave locality empty and use address_lines.
-  ///
-  /// Optional.
-  core.String? locality;
-
-  /// The name of the organization at the address.
-  ///
-  /// Optional.
-  core.String? organization;
-
-  /// Postal code of the address.
-  ///
-  /// Not all countries use or require postal codes to be present, but where
-  /// they are used, they may trigger additional validation with other parts of
-  /// the address (e.g. state/zip validation in the U.S.A.).
-  ///
-  /// Optional.
-  core.String? postalCode;
-
-  /// The recipient at the address.
-  ///
-  /// This field may, under certain circumstances, contain multiline
-  /// information. For example, it might contain "care of" information.
-  ///
-  /// Optional.
-  core.List<core.String>? recipients;
-
-  /// CLDR region code of the country/region of the address.
-  ///
-  /// This is never inferred and it is up to the user to ensure the value is
-  /// correct. See https://cldr.unicode.org/ and
-  /// https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html
-  /// for details. Example: "CH" for Switzerland.
-  ///
-  /// Required.
-  core.String? regionCode;
-
-  /// The schema revision of the `PostalAddress`.
-  ///
-  /// This must be set to 0, which is the latest revision. All new revisions
-  /// **must** be backward compatible with old revisions.
-  core.int? revision;
-
-  /// Additional, country-specific, sorting code.
-  ///
-  /// This is not used in most regions. Where it is used, the value is either a
-  /// string like "CEDEX", optionally followed by a number (e.g. "CEDEX 7"), or
-  /// just a number alone, representing the "sector code" (Jamaica), "delivery
-  /// area indicator" (Malawi) or "post office indicator" (e.g. Côte d'Ivoire).
-  ///
-  /// Optional.
-  core.String? sortingCode;
-
-  /// Sublocality of the address.
-  ///
-  /// For example, this can be neighborhoods, boroughs, districts.
-  ///
-  /// Optional.
-  core.String? sublocality;
-
-  $PostalAddress({
-    this.addressLines,
-    this.administrativeArea,
-    this.languageCode,
-    this.locality,
-    this.organization,
-    this.postalCode,
-    this.recipients,
-    this.regionCode,
-    this.revision,
-    this.sortingCode,
-    this.sublocality,
-  });
-
-  $PostalAddress.fromJson(core.Map json_)
-      : this(
-          addressLines: json_.containsKey('addressLines')
-              ? (json_['addressLines'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          administrativeArea: json_.containsKey('administrativeArea')
-              ? json_['administrativeArea'] as core.String
-              : null,
-          languageCode: json_.containsKey('languageCode')
-              ? json_['languageCode'] as core.String
-              : null,
-          locality: json_.containsKey('locality')
-              ? json_['locality'] as core.String
-              : null,
-          organization: json_.containsKey('organization')
-              ? json_['organization'] as core.String
-              : null,
-          postalCode: json_.containsKey('postalCode')
-              ? json_['postalCode'] as core.String
-              : null,
-          recipients: json_.containsKey('recipients')
-              ? (json_['recipients'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          regionCode: json_.containsKey('regionCode')
-              ? json_['regionCode'] as core.String
-              : null,
-          revision: json_.containsKey('revision')
-              ? json_['revision'] as core.int
-              : null,
-          sortingCode: json_.containsKey('sortingCode')
-              ? json_['sortingCode'] as core.String
-              : null,
-          sublocality: json_.containsKey('sublocality')
-              ? json_['sublocality'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (addressLines != null) 'addressLines': addressLines!,
-        if (administrativeArea != null)
-          'administrativeArea': administrativeArea!,
-        if (languageCode != null) 'languageCode': languageCode!,
-        if (locality != null) 'locality': locality!,
-        if (organization != null) 'organization': organization!,
-        if (postalCode != null) 'postalCode': postalCode!,
-        if (recipients != null) 'recipients': recipients!,
-        if (regionCode != null) 'regionCode': regionCode!,
-        if (revision != null) 'revision': revision!,
-        if (sortingCode != null) 'sortingCode': sortingCode!,
-        if (sublocality != null) 'sublocality': sublocality!,
-      };
-}
-
-/// Used by:
-///
-/// - containeranalysis:v1beta1 : ProjectRepoId
-/// - ondemandscanning:v1beta1 : ProjectRepoId
-class $ProjectRepoId {
-  /// The ID of the project.
-  core.String? projectId;
-
-  /// The name of the repo.
-  ///
-  /// Leave empty for the default repo.
-  core.String? repoName;
-
-  $ProjectRepoId({
-    this.projectId,
-    this.repoName,
-  });
-
-  $ProjectRepoId.fromJson(core.Map json_)
-      : this(
-          projectId: json_.containsKey('projectId')
-              ? json_['projectId'] as core.String
-              : null,
-          repoName: json_.containsKey('repoName')
-              ? json_['repoName'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (projectId != null) 'projectId': projectId!,
-        if (repoName != null) 'repoName': repoName!,
-      };
-}
-
-/// Used by:
-///
-/// - analyticsadmin:v1alpha : GoogleAnalyticsAdminV1alphaAccessQuotaStatus
+/// - analyticsadmin:v1beta : GoogleAnalyticsAdminV1betaAccessQuotaStatus
 /// - analyticsdata:v1beta : QuotaStatus
 class $QuotaStatus {
   /// Quota consumed by this request.
@@ -1393,35 +433,6 @@ class $QuotaStatus {
   core.Map<core.String, core.dynamic> toJson() => {
         if (consumed != null) 'consumed': consumed!,
         if (remaining != null) 'remaining': remaining!,
-      };
-}
-
-/// Used by:
-///
-/// - containeranalysis:v1beta1 : RelatedUrl
-/// - ondemandscanning:v1beta1 : RelatedUrl
-class $RelatedUrl {
-  /// Label to describe usage of the URL.
-  core.String? label;
-
-  /// Specific URL associated with the resource.
-  core.String? url;
-
-  $RelatedUrl({
-    this.label,
-    this.url,
-  });
-
-  $RelatedUrl.fromJson(core.Map json_)
-      : this(
-          label:
-              json_.containsKey('label') ? json_['label'] as core.String : null,
-          url: json_.containsKey('url') ? json_['url'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (label != null) 'label': label!,
-        if (url != null) 'url': url!,
       };
 }
 
@@ -1461,6 +472,32 @@ class $SasPortalAssignment {
   core.Map<core.String, core.dynamic> toJson() => {
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
+      };
+}
+
+/// Used by:
+///
+/// - prod_tt_sasportal:v1alpha1 : SasPortalCheckHasProvisionedDeploymentResponse
+/// - sasportal:v1alpha1 : SasPortalCheckHasProvisionedDeploymentResponse
+class $SasPortalCheckHasProvisionedDeploymentResponse {
+  /// Whether a SAS deployment for the authentication context exists.
+  core.bool? hasProvisionedDeployment;
+
+  $SasPortalCheckHasProvisionedDeploymentResponse({
+    this.hasProvisionedDeployment,
+  });
+
+  $SasPortalCheckHasProvisionedDeploymentResponse.fromJson(core.Map json_)
+      : this(
+          hasProvisionedDeployment:
+              json_.containsKey('hasProvisionedDeployment')
+                  ? json_['hasProvisionedDeployment'] as core.bool
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (hasProvisionedDeployment != null)
+          'hasProvisionedDeployment': hasProvisionedDeployment!,
       };
 }
 
@@ -1563,7 +600,7 @@ class $SasPortalDeployment {
   /// The deployment's display name.
   core.String? displayName;
 
-  /// The FRNs copied from its direct parent.
+  /// The FCC Registration Numbers (FRNs) copied from its direct parent.
   ///
   /// Output only.
   core.List<core.String>? frns;
@@ -1831,6 +868,9 @@ class $SasPortalInstallationParams {
   /// inclusive.
   core.int? antennaGain;
 
+  /// As above, but as a DoubleValue.
+  core.double? antennaGainNewField;
+
   /// If an external antenna is used, the antenna model is optionally provided
   /// in this field.
   ///
@@ -1847,6 +887,9 @@ class $SasPortalInstallationParams {
   /// If not included, SAS interprets it as maximum allowable EIRP in units of
   /// dBm/10MHz for device category.
   core.int? eirpCapability;
+
+  /// As above, but as a DoubleValue.
+  core.double? eirpCapabilityNewField;
 
   /// Device antenna height in meters.
   ///
@@ -1903,9 +946,11 @@ class $SasPortalInstallationParams {
     this.antennaBeamwidth,
     this.antennaDowntilt,
     this.antennaGain,
+    this.antennaGainNewField,
     this.antennaModel,
     this.cpeCbsdIndication,
     this.eirpCapability,
+    this.eirpCapabilityNewField,
     this.height,
     this.heightType,
     this.horizontalAccuracy,
@@ -1929,6 +974,9 @@ class $SasPortalInstallationParams {
           antennaGain: json_.containsKey('antennaGain')
               ? json_['antennaGain'] as core.int
               : null,
+          antennaGainNewField: json_.containsKey('antennaGainNewField')
+              ? (json_['antennaGainNewField'] as core.num).toDouble()
+              : null,
           antennaModel: json_.containsKey('antennaModel')
               ? json_['antennaModel'] as core.String
               : null,
@@ -1937,6 +985,9 @@ class $SasPortalInstallationParams {
               : null,
           eirpCapability: json_.containsKey('eirpCapability')
               ? json_['eirpCapability'] as core.int
+              : null,
+          eirpCapabilityNewField: json_.containsKey('eirpCapabilityNewField')
+              ? (json_['eirpCapabilityNewField'] as core.num).toDouble()
               : null,
           height: json_.containsKey('height')
               ? (json_['height'] as core.num).toDouble()
@@ -1966,9 +1017,13 @@ class $SasPortalInstallationParams {
         if (antennaBeamwidth != null) 'antennaBeamwidth': antennaBeamwidth!,
         if (antennaDowntilt != null) 'antennaDowntilt': antennaDowntilt!,
         if (antennaGain != null) 'antennaGain': antennaGain!,
+        if (antennaGainNewField != null)
+          'antennaGainNewField': antennaGainNewField!,
         if (antennaModel != null) 'antennaModel': antennaModel!,
         if (cpeCbsdIndication != null) 'cpeCbsdIndication': cpeCbsdIndication!,
         if (eirpCapability != null) 'eirpCapability': eirpCapability!,
+        if (eirpCapabilityNewField != null)
+          'eirpCapabilityNewField': eirpCapabilityNewField!,
         if (height != null) 'height': height!,
         if (heightType != null) 'heightType': heightType!,
         if (horizontalAccuracy != null)
@@ -1977,6 +1032,32 @@ class $SasPortalInstallationParams {
         if (latitude != null) 'latitude': latitude!,
         if (longitude != null) 'longitude': longitude!,
         if (verticalAccuracy != null) 'verticalAccuracy': verticalAccuracy!,
+      };
+}
+
+/// Used by:
+///
+/// - prod_tt_sasportal:v1alpha1 : SasPortalMigrateOrganizationRequest
+/// - sasportal:v1alpha1 : SasPortalMigrateOrganizationRequest
+class $SasPortalMigrateOrganizationRequest {
+  /// Id of the SAS organization to be migrated.
+  ///
+  /// Required.
+  core.String? organizationId;
+
+  $SasPortalMigrateOrganizationRequest({
+    this.organizationId,
+  });
+
+  $SasPortalMigrateOrganizationRequest.fromJson(core.Map json_)
+      : this(
+          organizationId: json_.containsKey('organizationId')
+              ? json_['organizationId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (organizationId != null) 'organizationId': organizationId!,
       };
 }
 
@@ -2108,16 +1189,16 @@ class $SasPortalNode {
 /// - prod_tt_sasportal:v1alpha1 : SasPortalNrqzValidation
 /// - sasportal:v1alpha1 : SasPortalNrqzValidation
 class $SasPortalNrqzValidation {
-  /// Validation case id.
+  /// Validation case ID.
   core.String? caseId;
 
   /// CPI who signed the validation.
   core.String? cpiId;
 
-  /// Device latitude associated with the validation.
+  /// Device latitude that's associated with the validation.
   core.double? latitude;
 
-  /// Device longitude associated with the validation.
+  /// Device longitude that's associated with the validation.
   core.double? longitude;
 
   /// State of the NRQZ validation info.
@@ -2158,6 +1239,85 @@ class $SasPortalNrqzValidation {
         if (latitude != null) 'latitude': latitude!,
         if (longitude != null) 'longitude': longitude!,
         if (state != null) 'state': state!,
+      };
+}
+
+/// Used by:
+///
+/// - prod_tt_sasportal:v1alpha1 : SasPortalProvisionDeploymentRequest
+/// - sasportal:v1alpha1 : SasPortalProvisionDeploymentRequest
+class $SasPortalProvisionDeploymentRequest {
+  /// If this field is set, and a new SAS Portal Deployment needs to be created,
+  /// its display name will be set to the value of this field.
+  ///
+  /// Optional.
+  core.String? newDeploymentDisplayName;
+
+  /// If this field is set, and a new SAS Portal Organization needs to be
+  /// created, its display name will be set to the value of this field.
+  ///
+  /// Optional.
+  core.String? newOrganizationDisplayName;
+
+  /// If this field is set then a new deployment will be created under the
+  /// organization specified by this id.
+  ///
+  /// Optional.
+  core.String? organizationId;
+
+  $SasPortalProvisionDeploymentRequest({
+    this.newDeploymentDisplayName,
+    this.newOrganizationDisplayName,
+    this.organizationId,
+  });
+
+  $SasPortalProvisionDeploymentRequest.fromJson(core.Map json_)
+      : this(
+          newDeploymentDisplayName:
+              json_.containsKey('newDeploymentDisplayName')
+                  ? json_['newDeploymentDisplayName'] as core.String
+                  : null,
+          newOrganizationDisplayName:
+              json_.containsKey('newOrganizationDisplayName')
+                  ? json_['newOrganizationDisplayName'] as core.String
+                  : null,
+          organizationId: json_.containsKey('organizationId')
+              ? json_['organizationId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (newDeploymentDisplayName != null)
+          'newDeploymentDisplayName': newDeploymentDisplayName!,
+        if (newOrganizationDisplayName != null)
+          'newOrganizationDisplayName': newOrganizationDisplayName!,
+        if (organizationId != null) 'organizationId': organizationId!,
+      };
+}
+
+/// Used by:
+///
+/// - prod_tt_sasportal:v1alpha1 : SasPortalProvisionDeploymentResponse
+/// - sasportal:v1alpha1 : SasPortalProvisionDeploymentResponse
+class $SasPortalProvisionDeploymentResponse {
+  /// Optional error message if the provisioning request is not successful.
+  ///
+  /// Optional.
+  core.String? errorMessage;
+
+  $SasPortalProvisionDeploymentResponse({
+    this.errorMessage,
+  });
+
+  $SasPortalProvisionDeploymentResponse.fromJson(core.Map json_)
+      : this(
+          errorMessage: json_.containsKey('errorMessage')
+              ? json_['errorMessage'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (errorMessage != null) 'errorMessage': errorMessage!,
       };
 }
 
@@ -2321,284 +1481,17 @@ class $SasPortalValidateInstallerRequest {
 
 /// Used by:
 ///
-/// - osconfig:v1alpha : OSPolicyResourcePackageResourceAPT
-/// - osconfig:v1alpha : OSPolicyResourcePackageResourceGooGet
-/// - osconfig:v1alpha : OSPolicyResourcePackageResourceYUM
-/// - osconfig:v1alpha : OSPolicyResourcePackageResourceZypper
-class $Shared00 {
-  /// Package name.
-  ///
-  /// Required.
-  core.String? name;
-
-  $Shared00({
-    this.name,
-  });
-
-  $Shared00.fromJson(core.Map json_)
-      : this(
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-      };
-}
-
-/// Used by:
-///
-/// - ondemandscanning:v1beta1 : BuilderConfig
-/// - ondemandscanning:v1beta1 : GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder
-/// - ondemandscanning:v1beta1 : SlsaBuilder
-class $Shared01 {
-  core.String? id;
-
-  $Shared01({
-    this.id,
-  });
-
-  $Shared01.fromJson(core.Map json_)
-      : this(
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
-      };
-}
-
-/// Used by:
-///
-/// - containeranalysis:v1beta1 : ByProducts
-/// - containeranalysis:v1beta1 : Environment
-class $Shared02 {
-  core.Map<core.String, core.String>? customValues;
-
-  $Shared02({
-    this.customValues,
-  });
-
-  $Shared02.fromJson(core.Map json_)
-      : this(
-          customValues: json_.containsKey('customValues')
-              ? (json_['customValues'] as core.Map<core.String, core.dynamic>)
-                  .map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.String,
-                  ),
-                )
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (customValues != null) 'customValues': customValues!,
-      };
-}
-
-/// Used by:
-///
-/// - containeranalysis:v1beta1 : Deployment
-/// - ondemandscanning:v1beta1 : DeploymentOccurrence
-class $Shared03 {
-  /// Address of the runtime element hosting this deployment.
-  core.String? address;
-
-  /// Configuration used to create this deployment.
-  core.String? config;
-
-  /// Beginning of the lifetime of this deployment.
-  ///
-  /// Required.
-  core.String? deployTime;
-
-  /// Platform hosting this deployment.
-  /// Possible string values are:
-  /// - "PLATFORM_UNSPECIFIED" : Unknown.
-  /// - "GKE" : Google Container Engine.
-  /// - "FLEX" : Google App Engine: Flexible Environment.
-  /// - "CUSTOM" : Custom user-defined platform.
-  core.String? platform;
-
-  /// Resource URI for the artifact being deployed taken from the deployable
-  /// field with the same name.
-  ///
-  /// Output only.
-  core.List<core.String>? resourceUri;
-
-  /// End of the lifetime of this deployment.
-  core.String? undeployTime;
-
-  /// Identity of the user that triggered this deployment.
-  core.String? userEmail;
-
-  $Shared03({
-    this.address,
-    this.config,
-    this.deployTime,
-    this.platform,
-    this.resourceUri,
-    this.undeployTime,
-    this.userEmail,
-  });
-
-  $Shared03.fromJson(core.Map json_)
-      : this(
-          address: json_.containsKey('address')
-              ? json_['address'] as core.String
-              : null,
-          config: json_.containsKey('config')
-              ? json_['config'] as core.String
-              : null,
-          deployTime: json_.containsKey('deployTime')
-              ? json_['deployTime'] as core.String
-              : null,
-          platform: json_.containsKey('platform')
-              ? json_['platform'] as core.String
-              : null,
-          resourceUri: json_.containsKey('resourceUri')
-              ? (json_['resourceUri'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          undeployTime: json_.containsKey('undeployTime')
-              ? json_['undeployTime'] as core.String
-              : null,
-          userEmail: json_.containsKey('userEmail')
-              ? json_['userEmail'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (address != null) 'address': address!,
-        if (config != null) 'config': config!,
-        if (deployTime != null) 'deployTime': deployTime!,
-        if (platform != null) 'platform': platform!,
-        if (resourceUri != null) 'resourceUri': resourceUri!,
-        if (undeployTime != null) 'undeployTime': undeployTime!,
-        if (userEmail != null) 'userEmail': userEmail!,
-      };
-}
-
-/// Used by:
-///
-/// - osconfig:v1alpha : OSPolicyAssignmentInstanceFilterInventory
-/// - osconfig:v1alpha : OSPolicyInventoryFilter
-class $Shared04 {
-  /// The OS short name
-  ///
-  /// Required.
-  core.String? osShortName;
-
-  /// The OS version Prefix matches are supported if asterisk(*) is provided as
-  /// the last character.
-  ///
-  /// For example, to match all versions with a major version of `7`, specify
-  /// the following value for this field `7.*` An empty string matches all OS
-  /// versions.
-  core.String? osVersion;
-
-  $Shared04({
-    this.osShortName,
-    this.osVersion,
-  });
-
-  $Shared04.fromJson(core.Map json_)
-      : this(
-          osShortName: json_.containsKey('osShortName')
-              ? json_['osShortName'] as core.String
-              : null,
-          osVersion: json_.containsKey('osVersion')
-              ? json_['osVersion'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (osShortName != null) 'osShortName': osShortName!,
-        if (osVersion != null) 'osVersion': osVersion!,
-      };
-}
-
-/// Used by:
-///
-/// - containeranalysis:v1beta1 : Signature
-/// - ondemandscanning:v1beta1 : Signature
-class $Signature {
-  /// The identifier for the public key that verifies this signature.
-  ///
-  /// * The `public_key_id` is required. * The `public_key_id` SHOULD be an
-  /// RFC3986 conformant URI. * When possible, the `public_key_id` SHOULD be an
-  /// immutable reference, such as a cryptographic digest. Examples of valid
-  /// `public_key_id`s: OpenPGP V4 public key fingerprint: *
-  /// "openpgp4fpr:74FAF3B861BDA0870C7B6DEF607E48D2A663AEEA" See
-  /// https://www.iana.org/assignments/uri-schemes/prov/openpgp4fpr for more
-  /// details on this scheme. RFC6920 digest-named SubjectPublicKeyInfo (digest
-  /// of the DER serialization): *
-  /// "ni:///sha-256;cD9o9Cq6LG3jD0iKXqEi_vdjJGecm_iXkbqVoScViaU" *
-  /// "nih:///sha-256;703f68f42aba2c6de30f488a5ea122fef76324679c9bf89791ba95a1271589a5"
-  core.String? publicKeyId;
-
-  /// The content of the signature, an opaque bytestring.
-  ///
-  /// The payload that this signature verifies MUST be unambiguously provided
-  /// with the Signature during verification. A wrapper message might provide
-  /// the payload explicitly. Alternatively, a message might have a canonical
-  /// serialization that can always be unambiguously computed to derive the
-  /// payload.
-  core.String? signature;
-  core.List<core.int> get signatureAsBytes => convert.base64.decode(signature!);
-
-  set signatureAsBytes(core.List<core.int> bytes_) {
-    signature =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
-  }
-
-  $Signature({
-    this.publicKeyId,
-    this.signature,
-  });
-
-  $Signature.fromJson(core.Map json_)
-      : this(
-          publicKeyId: json_.containsKey('publicKeyId')
-              ? json_['publicKeyId'] as core.String
-              : null,
-          signature: json_.containsKey('signature')
-              ? json_['signature'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (publicKeyId != null) 'publicKeyId': publicKeyId!,
-        if (signature != null) 'signature': signature!,
-      };
-}
-
-/// Used by:
-///
 /// - alertcenter:v1beta1 : Status
-/// - cloudfunctions:v2beta : Status
-/// - containeranalysis:v1beta1 : Status
 /// - dataflow:v1b3 : Status
 /// - datalabeling:v1beta1 : GoogleRpcStatus
 /// - datastream:v1alpha1 : Status
-/// - documentai:v1beta3 : GoogleRpcStatus
-/// - domains:v1beta1 : Status
 /// - firebase:v1beta1 : Status
 /// - gkehub:v2alpha : GoogleRpcStatus
 /// - lifesciences:v2beta : Status
-/// - metastore:v1beta : Status
-/// - networkconnectivity:v1alpha1 : GoogleRpcStatus
-/// - networksecurity:v1beta1 : Status
-/// - ondemandscanning:v1beta1 : Status
-/// - osconfig:v1alpha : Status
-/// - policysimulator:v1beta1 : GoogleRpcStatus
-/// - privateca:v1beta1 : Status
 /// - prod_tt_sasportal:v1alpha1 : SasPortalStatus
 /// - recommendationengine:v1beta1 : GoogleRpcStatus
 /// - sasportal:v1alpha1 : SasPortalStatus
 /// - toolresults:v1beta3 : Status
-/// - tpu:v2alpha1 : Status
 class $Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int? code;
@@ -2645,7 +1538,7 @@ class $Status {
 
 /// Used by:
 ///
-/// - analyticsadmin:v1alpha : GoogleAnalyticsAdminV1alphaAccessStringFilter
+/// - analyticsadmin:v1beta : GoogleAnalyticsAdminV1betaAccessStringFilter
 /// - analyticsdata:v1beta : StringFilter
 class $StringFilter {
   /// If true, the string value is case sensitive.
@@ -2689,74 +1582,5 @@ class $StringFilter {
         if (caseSensitive != null) 'caseSensitive': caseSensitive!,
         if (matchType != null) 'matchType': matchType!,
         if (value != null) 'value': value!,
-      };
-}
-
-/// Used by:
-///
-/// - bigqueryconnection:v1beta1 : TestIamPermissionsRequest
-/// - cloudfunctions:v2beta : TestIamPermissionsRequest
-/// - containeranalysis:v1beta1 : TestIamPermissionsRequest
-/// - datacatalog:v1beta1 : TestIamPermissionsRequest
-/// - domains:v1beta1 : TestIamPermissionsRequest
-/// - networkconnectivity:v1alpha1 : TestIamPermissionsRequest
-/// - networksecurity:v1beta1 : GoogleIamV1TestIamPermissionsRequest
-/// - privateca:v1beta1 : TestIamPermissionsRequest
-class $TestIamPermissionsRequest {
-  /// The set of permissions to check for the `resource`.
-  ///
-  /// Permissions with wildcards (such as `*` or `storage.*`) are not allowed.
-  /// For more information see
-  /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
-  core.List<core.String>? permissions;
-
-  $TestIamPermissionsRequest({
-    this.permissions,
-  });
-
-  $TestIamPermissionsRequest.fromJson(core.Map json_)
-      : this(
-          permissions: json_.containsKey('permissions')
-              ? (json_['permissions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (permissions != null) 'permissions': permissions!,
-      };
-}
-
-/// Used by:
-///
-/// - bigqueryconnection:v1beta1 : TestIamPermissionsResponse
-/// - cloudfunctions:v2beta : TestIamPermissionsResponse
-/// - containeranalysis:v1beta1 : TestIamPermissionsResponse
-/// - datacatalog:v1beta1 : TestIamPermissionsResponse
-/// - domains:v1beta1 : TestIamPermissionsResponse
-/// - networkconnectivity:v1alpha1 : TestIamPermissionsResponse
-/// - networksecurity:v1beta1 : GoogleIamV1TestIamPermissionsResponse
-/// - privateca:v1beta1 : TestIamPermissionsResponse
-class $TestIamPermissionsResponse {
-  /// A subset of `TestPermissionsRequest.permissions` that the caller is
-  /// allowed.
-  core.List<core.String>? permissions;
-
-  $TestIamPermissionsResponse({
-    this.permissions,
-  });
-
-  $TestIamPermissionsResponse.fromJson(core.Map json_)
-      : this(
-          permissions: json_.containsKey('permissions')
-              ? (json_['permissions'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (permissions != null) 'permissions': permissions!,
       };
 }

@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Workflows API - v1
@@ -25,7 +24,7 @@
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsWorkflowsResource]
-library workflows.v1;
+library workflows_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -34,7 +33,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -257,13 +255,6 @@ class ProjectsLocationsOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -321,8 +312,8 @@ class ProjectsLocationsWorkflowsResource {
   /// Creates a new workflow.
   ///
   /// If a workflow with the specified name already exists in the specified
-  /// project and location, the long running operation will return
-  /// ALREADY_EXISTS error.
+  /// project and location, the long running operation returns a ALREADY_EXISTS
+  /// error.
   ///
   /// [request] - The metadata request object.
   ///
@@ -411,15 +402,21 @@ class ProjectsLocationsWorkflowsResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets details of a single Workflow.
+  /// Gets details of a single workflow.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the workflow which information should be
+  /// [name] - Required. Name of the workflow for which information should be
   /// retrieved. Format:
   /// projects/{project}/locations/{location}/workflows/{workflow}
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/workflows/\[^/\]+$`.
+  ///
+  /// [revisionId] - Optional. The revision of the workflow to retrieve. If the
+  /// revision_id is empty, the latest revision is retrieved. The format is
+  /// "000001-a4d", where the first six characters define the zero-padded
+  /// decimal revision number. They are followed by a hyphen and three
+  /// hexadecimal characters.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -433,9 +430,11 @@ class ProjectsLocationsWorkflowsResource {
   /// this method will complete with the same error.
   async.Future<Workflow> get(
     core.String name, {
+    core.String? revisionId,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (revisionId != null) 'revisionId': [revisionId],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -449,7 +448,7 @@ class ProjectsLocationsWorkflowsResource {
     return Workflow.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists Workflows in a given project and location.
+  /// Lists workflows in a given project and location.
   ///
   /// The default order is not specified.
   ///
@@ -461,15 +460,16 @@ class ProjectsLocationsWorkflowsResource {
   ///
   /// [filter] - Filter to restrict results to specific workflows.
   ///
-  /// [orderBy] - Comma-separated list of fields that that specify the order of
-  /// the results. Default sorting order for a field is ascending. To specify
-  /// descending order for a field, append a " desc" suffix. If not specified,
-  /// the results will be returned in an unspecified order.
+  /// [orderBy] - Comma-separated list of fields that specify the order of the
+  /// results. Default sorting order for a field is ascending. To specify
+  /// descending order for a field, append a "desc" suffix. If not specified,
+  /// the results are returned in an unspecified order.
   ///
   /// [pageSize] - Maximum number of workflows to return per call. The service
-  /// may return fewer than this value. If the value is not specified, a default
-  /// value of 500 will be used. The maximum permitted value is 1000 and values
-  /// greater than 1000 will be coerced down to 1000.
+  /// might return fewer than this value even if not at the end of the
+  /// collection. If a value is not specified, a default value of 500 is used.
+  /// The maximum permitted value is 1000 and values greater than 1000 are
+  /// coerced down to 1000.
   ///
   /// [pageToken] - A page token, received from a previous `ListWorkflows` call.
   /// Provide this to retrieve the subsequent page. When paginating, all other
@@ -516,9 +516,9 @@ class ProjectsLocationsWorkflowsResource {
   /// Updates an existing workflow.
   ///
   /// Running this method has no impact on already running executions of the
-  /// workflow. A new revision of the workflow may be created as a result of a
-  /// successful update operation. In that case, such revision will be used in
-  /// new workflow executions.
+  /// workflow. A new revision of the workflow might be created as a result of a
+  /// successful update operation. In that case, the new revision is used in new
+  /// workflow executions.
   ///
   /// [request] - The metadata request object.
   ///
@@ -648,7 +648,7 @@ class ListWorkflowsResponse {
   /// Unreachable resources.
   core.List<core.String>? unreachable;
 
-  /// The workflows which match the request.
+  /// The workflows that match the request.
   core.List<Workflow>? workflows;
 
   ListWorkflowsResponse({
@@ -682,7 +682,7 @@ class ListWorkflowsResponse {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
+/// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
 /// This resource represents a long-running operation that is the result of a
@@ -761,6 +761,9 @@ class Operation {
       };
 }
 
+/// Describes an error related to the current state of the workflow.
+typedef StateError = $StateError;
+
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.
 ///
@@ -772,10 +775,38 @@ typedef Status = $Status;
 
 /// Workflow program to be executed by Workflows.
 class Workflow {
-  /// The timestamp of when the workflow was created.
+  /// Describes the level of platform logging to apply to calls and call
+  /// responses during executions of this workflow.
+  ///
+  /// If both the workflow and the execution specify a logging level, the
+  /// execution level takes precedence.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "CALL_LOG_LEVEL_UNSPECIFIED" : No call logging level specified.
+  /// - "LOG_ALL_CALLS" : Log all call steps within workflows, all call returns,
+  /// and all exceptions raised.
+  /// - "LOG_ERRORS_ONLY" : Log only exceptions that are raised from call steps
+  /// within workflows.
+  /// - "LOG_NONE" : Explicitly log nothing.
+  core.String? callLogLevel;
+
+  /// The timestamp for when the workflow was created.
   ///
   /// Output only.
   core.String? createTime;
+
+  /// The resource name of a KMS crypto key used to encrypt or decrypt the data
+  /// associated with the workflow.
+  ///
+  /// Format:
+  /// projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
+  /// Using `-` as a wildcard for the `{project}` or not providing one at all
+  /// will infer the project from the account. If not provided, data associated
+  /// with the workflow will not be CMEK-encrypted.
+  ///
+  /// Optional.
+  core.String? cryptoKeyName;
 
   /// Description of the workflow provided by the user.
   ///
@@ -786,7 +817,7 @@ class Workflow {
   ///
   /// Labels can contain at most 64 entries. Keys and values can be no longer
   /// than 63 characters and can only contain lowercase letters, numeric
-  /// characters, underscores and dashes. Label keys must start with a letter.
+  /// characters, underscores, and dashes. Label keys must start with a letter.
   /// International characters are allowed.
   core.Map<core.String, core.String>? labels;
 
@@ -795,7 +826,7 @@ class Workflow {
   /// Format: projects/{project}/locations/{location}/workflows/{workflow}
   core.String? name;
 
-  /// The timestamp that the latest revision of the workflow was created.
+  /// The timestamp for the latest revision of the workflow's creation.
   ///
   /// Output only.
   core.String? revisionCreateTime;
@@ -804,9 +835,9 @@ class Workflow {
   ///
   /// A new revision of a workflow is created as a result of updating the
   /// following properties of a workflow: - Service account - Workflow code to
-  /// be executed The format is "000001-a4d", where the first 6 characters
+  /// be executed The format is "000001-a4d", where the first six characters
   /// define the zero-padded revision ordinal number. They are followed by a
-  /// hyphen and 3 hexadecimal random characters.
+  /// hyphen and three hexadecimal random characters.
   ///
   /// Output only.
   core.String? revisionId;
@@ -834,15 +865,36 @@ class Workflow {
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : Invalid state.
   /// - "ACTIVE" : The workflow has been deployed successfully and is serving.
+  /// - "UNAVAILABLE" : Workflow data is unavailable. See the `state_error`
+  /// field.
   core.String? state;
 
-  /// The last update timestamp of the workflow.
+  /// Error regarding the state of the workflow.
+  ///
+  /// For example, this field will have error details if the execution data is
+  /// unavailable due to revoked KMS key permissions.
+  ///
+  /// Output only.
+  StateError? stateError;
+
+  /// The timestamp for when the workflow was last updated.
   ///
   /// Output only.
   core.String? updateTime;
 
+  /// User-defined environment variables associated with this workflow revision.
+  ///
+  /// This map has a maximum length of 20. Each string can take up to 40KiB.
+  /// Keys cannot be empty strings and cannot start with “GOOGLE” or
+  /// “WORKFLOWS".
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? userEnvVars;
+
   Workflow({
+    this.callLogLevel,
     this.createTime,
+    this.cryptoKeyName,
     this.description,
     this.labels,
     this.name,
@@ -851,22 +903,30 @@ class Workflow {
     this.serviceAccount,
     this.sourceContents,
     this.state,
+    this.stateError,
     this.updateTime,
+    this.userEnvVars,
   });
 
   Workflow.fromJson(core.Map json_)
       : this(
+          callLogLevel: json_.containsKey('callLogLevel')
+              ? json_['callLogLevel'] as core.String
+              : null,
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
+              : null,
+          cryptoKeyName: json_.containsKey('cryptoKeyName')
+              ? json_['cryptoKeyName'] as core.String
               : null,
           description: json_.containsKey('description')
               ? json_['description'] as core.String
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -885,13 +945,28 @@ class Workflow {
               : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
+          stateError: json_.containsKey('stateError')
+              ? StateError.fromJson(
+                  json_['stateError'] as core.Map<core.String, core.dynamic>)
+              : null,
           updateTime: json_.containsKey('updateTime')
               ? json_['updateTime'] as core.String
+              : null,
+          userEnvVars: json_.containsKey('userEnvVars')
+              ? (json_['userEnvVars'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (callLogLevel != null) 'callLogLevel': callLogLevel!,
         if (createTime != null) 'createTime': createTime!,
+        if (cryptoKeyName != null) 'cryptoKeyName': cryptoKeyName!,
         if (description != null) 'description': description!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
@@ -901,6 +976,8 @@ class Workflow {
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
         if (sourceContents != null) 'sourceContents': sourceContents!,
         if (state != null) 'state': state!,
+        if (stateError != null) 'stateError': stateError!,
         if (updateTime != null) 'updateTime': updateTime!,
+        if (userEnvVars != null) 'userEnvVars': userEnvVars!,
       };
 }

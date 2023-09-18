@@ -62,13 +62,6 @@ http.StreamedResponse binaryResponse(
   return http.StreamedResponse(stream, status, headers: headers);
 }
 
-Stream<List<int>> byteStream(String s) {
-  final bodyController = StreamController<List<int>>()
-    ..add(utf8.encode(s))
-    ..close();
-  return bodyController.stream;
-}
-
 class TestError {}
 
 const isApiRequestError = TypeMatcher<ApiRequestError>();
@@ -646,7 +639,7 @@ void main() {
           final result = requester.request('/xyz', 'POST',
               uploadMedia: media, uploadOptions: resumableOptions);
           if (expectedErrorStatus != null) {
-            result.catchError(expectAsync1((dynamic error) {
+            result.onError(expectAsync2((error, stack) {
               expect(error is DetailedApiRequestError, isTrue);
               expect(
                 (error as DetailedApiRequestError).status,
@@ -856,9 +849,7 @@ void main() {
 
       test('normal-detailed-400', () {
         makeDetailed400Error();
-        requester
-            .request('abc', 'GET')
-            .catchError(expectAsync2((dynamic error, dynamic stack) {
+        requester.request('abc', 'GET').onError(expectAsync2((error, stack) {
           expect(error, isDetailedApiRequestError);
           final e = error as DetailedApiRequestError;
           expect(e.status, equals(42));
@@ -868,9 +859,7 @@ void main() {
 
       test('error-with-multiple-errors', () {
         makeErrorsError();
-        requester
-            .request('abc', 'GET')
-            .catchError(expectAsync2((dynamic error, dynamic stack) {
+        requester.request('abc', 'GET').onError(expectAsync2((error, stack) {
           expect(error, isDetailedApiRequestError);
           final e = error as DetailedApiRequestError;
           expect(e.status, equals(42));
@@ -901,9 +890,7 @@ void main() {
 
       test('media-detailed-400', () {
         makeDetailed400Error();
-        requester
-            .request('abc', 'GET')
-            .catchError(expectAsync2((dynamic error, dynamic stack) {
+        requester.request('abc', 'GET').onError(expectAsync2((error, stack) {
           expect(error, isDetailedApiRequestError);
           final e = error as DetailedApiRequestError;
           expect(e.status, equals(42));

@@ -28,6 +28,12 @@
     "name": "identitytoolkit",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20180723",
+    "rootUrl": "https://www.googleapis.com/",
+    "servicePath": "identitytoolkit/v3/relyingparty/",
+    "title": "Google Identity Toolkit API",
+    "version": "v3",
     "parameters": {
         "alt": {
             "default": "json",
@@ -73,7 +79,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "relyingparty": {
             "methods": {
@@ -385,8 +390,6 @@
             }
         }
     },
-    "revision": "20180723",
-    "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "CreateAuthUriResponse": {
             "description": "Response of creating the IDP authentication URL.",
@@ -2108,8 +2111,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "identitytoolkit/v3/relyingparty/",
-    "title": "Google Identity Toolkit API",
-    "version": "v3"
+    }
 }

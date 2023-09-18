@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// BigQuery API - v2
@@ -28,30 +27,28 @@
 /// - [RowAccessPoliciesResource]
 /// - [TabledataResource]
 /// - [TablesResource]
-library bigquery.v2;
+library bigquery_v2;
 
 import 'dart:async' as async;
-import 'dart:collection' as collection;
 import 'dart:convert' as convert;
 import 'dart:core' as core;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show
         ApiRequestError,
+        ByteRange,
         DetailedApiRequestError,
-        Media,
-        UploadOptions,
-        ResumableUploadOptions,
         DownloadOptions,
+        Media,
         PartialDownloadOptions,
-        ByteRange;
+        ResumableUploadOptions,
+        UploadOptions;
 
 /// A data platform for customers to create, manage, share and query data.
 class BigqueryApi {
@@ -1267,9 +1264,9 @@ class RoutinesResource {
   /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [filter] - If set, then only the Routines matching this filter are
-  /// returned. The current supported form is either "routine_type:" or
-  /// "routineType:", where is a RoutineType enum. Example:
-  /// "routineType:SCALAR_FUNCTION".
+  /// returned. The supported format is `routineType:{RoutineType}`, where
+  /// `{RoutineType}` is a RoutineType enum. For example:
+  /// `routineType:SCALAR_FUNCTION`.
   ///
   /// [maxResults] - The maximum number of results to return in a single
   /// response page. Leverage the page tokens to iterate through the entire
@@ -1492,53 +1489,6 @@ class RowAccessPoliciesResource {
     );
     return ListRowAccessPoliciesResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Sets the access control policy on the specified resource.
-  ///
-  /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
-  /// and `PERMISSION_DENIED` errors.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [resource] - REQUIRED: The resource for which the policy is being
-  /// specified. See
-  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
-  /// the appropriate value for this field.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/datasets/\[^/\]+/tables/\[^/\]+/rowAccessPolicies/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Policy].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Policy> setIamPolicy(
-    SetIamPolicyRequest request,
-    core.String resource, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = core.Uri.encodeFull('$resource') + ':setIamPolicy';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -2401,6 +2351,9 @@ class ArimaFittingMetrics {
 /// Model evaluation metrics for ARIMA forecasting models.
 class ArimaForecastingMetrics {
   /// Arima model fitting metrics.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<ArimaFittingMetrics>? arimaFittingMetrics;
 
   /// Repeated as there can be many metric sets (one for each model) in
@@ -2411,17 +2364,29 @@ class ArimaForecastingMetrics {
   /// Whether Arima model fitted with drift or not.
   ///
   /// It is always false when d is not 1.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<core.bool>? hasDrift;
 
   /// Non-seasonal order.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<ArimaOrder>? nonSeasonalOrder;
 
   /// Seasonal periods.
   ///
   /// Repeated because multiple periods are supported for one time series.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<core.String>? seasonalPeriods;
 
   /// Id to differentiate different time series for the large-scale case.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<core.String>? timeSeriesId;
 
   ArimaForecastingMetrics({
@@ -2735,6 +2700,10 @@ class BiEngineReason {
 class BiEngineStatistics {
   /// \[Output-only\] Specifies which mode of BI Engine acceleration was
   /// performed (if any).
+  core.String? accelerationMode;
+
+  /// \[Output-only\] Specifies which mode of BI Engine acceleration was
+  /// performed (if any).
   core.String? biEngineMode;
 
   /// In case of DISABLED or PARTIAL bi_engine_mode, these contain the
@@ -2744,12 +2713,16 @@ class BiEngineStatistics {
   core.List<BiEngineReason>? biEngineReasons;
 
   BiEngineStatistics({
+    this.accelerationMode,
     this.biEngineMode,
     this.biEngineReasons,
   });
 
   BiEngineStatistics.fromJson(core.Map json_)
       : this(
+          accelerationMode: json_.containsKey('accelerationMode')
+              ? json_['accelerationMode'] as core.String
+              : null,
           biEngineMode: json_.containsKey('biEngineMode')
               ? json_['biEngineMode'] as core.String
               : null,
@@ -2762,6 +2735,7 @@ class BiEngineStatistics {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (accelerationMode != null) 'accelerationMode': accelerationMode!,
         if (biEngineMode != null) 'biEngineMode': biEngineMode!,
         if (biEngineReasons != null) 'biEngineReasons': biEngineReasons!,
       };
@@ -3221,7 +3195,9 @@ class Binding {
   /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
   /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
-  /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
+  /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
+  /// (primary) that represents all the users of that domain. For example,
+  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
   /// An email address (plus unique identifier) representing a user that has
   /// been recently deleted. For example,
   /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
@@ -3237,9 +3213,7 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
-  /// that represents all the users of that domain. For example, `google.com` or
-  /// `example.com`.
+  /// the role in the binding.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
@@ -3867,6 +3841,33 @@ class CsvOptions {
       };
 }
 
+class DataMaskingStatistics {
+  /// \[Output-only\] \[Preview\] Whether any accessed data was protected by
+  /// data masking.
+  ///
+  /// The actual evaluation is done by accessStats.masked_field_count \> 0.
+  /// Since this is only used for the discovery_doc generation purpose, as long
+  /// as the type (boolean) matches, client library can leverage this. The
+  /// actual evaluation of the variable is done else-where.
+  core.bool? dataMaskingApplied;
+
+  DataMaskingStatistics({
+    this.dataMaskingApplied,
+  });
+
+  DataMaskingStatistics.fromJson(core.Map json_)
+      : this(
+          dataMaskingApplied: json_.containsKey('dataMaskingApplied')
+              ? json_['dataMaskingApplied'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataMaskingApplied != null)
+          'dataMaskingApplied': dataMaskingApplied!,
+      };
+}
+
 /// Data split result.
 ///
 /// This contains references to the training and evaluation data tables that
@@ -4113,6 +4114,9 @@ class Dataset {
   /// Optional.
   core.String? defaultPartitionExpirationMs;
 
+  /// \[Output-only\] The default rounding mode of the dataset.
+  core.String? defaultRoundingMode;
+
   /// The default lifetime of all tables in the dataset, in milliseconds.
   ///
   /// The minimum value is 3600000 milliseconds (one hour). Once this property
@@ -4187,6 +4191,13 @@ class Dataset {
   /// You can use this URL in Get or Update requests to the resource.
   core.String? selfLink;
 
+  /// Storage billing model to be used for all tables in the dataset.
+  ///
+  /// Can be set to PHYSICAL. Default is LOGICAL.
+  ///
+  /// Optional.
+  core.String? storageBillingModel;
+
   /// \[Optional\]The tags associated with this dataset.
   ///
   /// Tag keys are globally unique.
@@ -4199,6 +4210,7 @@ class Dataset {
     this.defaultCollation,
     this.defaultEncryptionConfiguration,
     this.defaultPartitionExpirationMs,
+    this.defaultRoundingMode,
     this.defaultTableExpirationMs,
     this.description,
     this.etag,
@@ -4212,6 +4224,7 @@ class Dataset {
     this.maxTimeTravelHours,
     this.satisfiesPzs,
     this.selfLink,
+    this.storageBillingModel,
     this.tags,
   });
 
@@ -4243,6 +4256,9 @@ class Dataset {
               json_.containsKey('defaultPartitionExpirationMs')
                   ? json_['defaultPartitionExpirationMs'] as core.String
                   : null,
+          defaultRoundingMode: json_.containsKey('defaultRoundingMode')
+              ? json_['defaultRoundingMode'] as core.String
+              : null,
           defaultTableExpirationMs:
               json_.containsKey('defaultTableExpirationMs')
                   ? json_['defaultTableExpirationMs'] as core.String
@@ -4261,9 +4277,9 @@ class Dataset {
           kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -4282,6 +4298,9 @@ class Dataset {
           selfLink: json_.containsKey('selfLink')
               ? json_['selfLink'] as core.String
               : null,
+          storageBillingModel: json_.containsKey('storageBillingModel')
+              ? json_['storageBillingModel'] as core.String
+              : null,
           tags: json_.containsKey('tags')
               ? (json_['tags'] as core.List)
                   .map((value) => DatasetTags.fromJson(
@@ -4299,6 +4318,8 @@ class Dataset {
           'defaultEncryptionConfiguration': defaultEncryptionConfiguration!,
         if (defaultPartitionExpirationMs != null)
           'defaultPartitionExpirationMs': defaultPartitionExpirationMs!,
+        if (defaultRoundingMode != null)
+          'defaultRoundingMode': defaultRoundingMode!,
         if (defaultTableExpirationMs != null)
           'defaultTableExpirationMs': defaultTableExpirationMs!,
         if (description != null) 'description': description!,
@@ -4314,6 +4335,8 @@ class Dataset {
           'maxTimeTravelHours': maxTimeTravelHours!,
         if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (selfLink != null) 'selfLink': selfLink!,
+        if (storageBillingModel != null)
+          'storageBillingModel': storageBillingModel!,
         if (tags != null) 'tags': tags!,
       };
 }
@@ -4397,9 +4420,9 @@ class DatasetListDatasets {
           kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -4559,9 +4582,9 @@ class DestinationTableProperties {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -5312,6 +5335,16 @@ class ExternalDataConfiguration {
   /// Optional.
   core.List<core.String>? decimalTargetTypes;
 
+  /// Specifies how source URIs are interpreted for constructing the file set to
+  /// load.
+  ///
+  /// By default source URIs are expanded against the underlying storage. Other
+  /// options include specifying manifest files. Only applicable to object
+  /// storage systems.
+  ///
+  /// Optional.
+  core.String? fileSetSpecType;
+
   /// Additional options if sourceFormat is set to GOOGLE_SHEETS.
   ///
   /// Optional.
@@ -5336,6 +5369,10 @@ class ExternalDataConfiguration {
   /// Optional.
   core.bool? ignoreUnknownValues;
 
+  /// Additional properties to set if `sourceFormat` is set to
+  /// `NEWLINE_DELIMITED_JSON`.
+  JsonOptions? jsonOptions;
+
   /// The maximum number of bad records that BigQuery can ignore when reading
   /// data.
   ///
@@ -5347,6 +5384,20 @@ class ExternalDataConfiguration {
   ///
   /// Optional.
   core.int? maxBadRecords;
+
+  /// Metadata Cache Mode for the table.
+  ///
+  /// Set this to enable caching of metadata from external data source.
+  ///
+  /// Optional.
+  core.String? metadataCacheMode;
+
+  /// ObjectMetadata is used to create Object Tables.
+  ///
+  /// Object Tables contain a listing of objects (with their metadata) found at
+  /// the source_uris. If ObjectMetadata is set, source_format should be
+  /// omitted. Currently SIMPLE is the only supported Object Metadata type.
+  core.String? objectMetadata;
 
   /// Additional properties to set if sourceFormat is set to Parquet.
   ParquetOptions? parquetOptions;
@@ -5398,10 +5449,14 @@ class ExternalDataConfiguration {
     this.connectionId,
     this.csvOptions,
     this.decimalTargetTypes,
+    this.fileSetSpecType,
     this.googleSheetsOptions,
     this.hivePartitioningOptions,
     this.ignoreUnknownValues,
+    this.jsonOptions,
     this.maxBadRecords,
+    this.metadataCacheMode,
+    this.objectMetadata,
     this.parquetOptions,
     this.referenceFileSchemaUri,
     this.schema,
@@ -5437,6 +5492,9 @@ class ExternalDataConfiguration {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          fileSetSpecType: json_.containsKey('fileSetSpecType')
+              ? json_['fileSetSpecType'] as core.String
+              : null,
           googleSheetsOptions: json_.containsKey('googleSheetsOptions')
               ? GoogleSheetsOptions.fromJson(json_['googleSheetsOptions']
                   as core.Map<core.String, core.dynamic>)
@@ -5449,8 +5507,18 @@ class ExternalDataConfiguration {
           ignoreUnknownValues: json_.containsKey('ignoreUnknownValues')
               ? json_['ignoreUnknownValues'] as core.bool
               : null,
+          jsonOptions: json_.containsKey('jsonOptions')
+              ? JsonOptions.fromJson(
+                  json_['jsonOptions'] as core.Map<core.String, core.dynamic>)
+              : null,
           maxBadRecords: json_.containsKey('maxBadRecords')
               ? json_['maxBadRecords'] as core.int
+              : null,
+          metadataCacheMode: json_.containsKey('metadataCacheMode')
+              ? json_['metadataCacheMode'] as core.String
+              : null,
+          objectMetadata: json_.containsKey('objectMetadata')
+              ? json_['objectMetadata'] as core.String
               : null,
           parquetOptions: json_.containsKey('parquetOptions')
               ? ParquetOptions.fromJson(json_['parquetOptions']
@@ -5482,13 +5550,17 @@ class ExternalDataConfiguration {
         if (csvOptions != null) 'csvOptions': csvOptions!,
         if (decimalTargetTypes != null)
           'decimalTargetTypes': decimalTargetTypes!,
+        if (fileSetSpecType != null) 'fileSetSpecType': fileSetSpecType!,
         if (googleSheetsOptions != null)
           'googleSheetsOptions': googleSheetsOptions!,
         if (hivePartitioningOptions != null)
           'hivePartitioningOptions': hivePartitioningOptions!,
         if (ignoreUnknownValues != null)
           'ignoreUnknownValues': ignoreUnknownValues!,
+        if (jsonOptions != null) 'jsonOptions': jsonOptions!,
         if (maxBadRecords != null) 'maxBadRecords': maxBadRecords!,
+        if (metadataCacheMode != null) 'metadataCacheMode': metadataCacheMode!,
+        if (objectMetadata != null) 'objectMetadata': objectMetadata!,
         if (parquetOptions != null) 'parquetOptions': parquetOptions!,
         if (referenceFileSchemaUri != null)
           'referenceFileSchemaUri': referenceFileSchemaUri!,
@@ -5814,6 +5886,15 @@ class GoogleSheetsOptions {
 }
 
 class HivePartitioningOptions {
+  /// \[Output-only\] For permanent external tables, this field is populated
+  /// with the hive partition keys in the order they were inferred.
+  ///
+  /// The types of the partition keys can be deduced by checking the table
+  /// schema (which will include the partition keys). Not every API will
+  /// populate this field in the output. For example, Tables.Get will populate
+  /// it, but Tables.List will not contain this field.
+  core.List<core.String>? fields;
+
   /// When set, what mode of hive partitioning to use when reading data.
   ///
   /// The following modes are supported. (1) AUTO: automatically infer partition
@@ -5852,6 +5933,7 @@ class HivePartitioningOptions {
   core.String? sourceUriPrefix;
 
   HivePartitioningOptions({
+    this.fields,
     this.mode,
     this.requirePartitionFilter,
     this.sourceUriPrefix,
@@ -5859,6 +5941,11 @@ class HivePartitioningOptions {
 
   HivePartitioningOptions.fromJson(core.Map json_)
       : this(
+          fields: json_.containsKey('fields')
+              ? (json_['fields'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           mode: json_.containsKey('mode') ? json_['mode'] as core.String : null,
           requirePartitionFilter: json_.containsKey('requirePartitionFilter')
               ? json_['requirePartitionFilter'] as core.bool
@@ -5869,6 +5956,7 @@ class HivePartitioningOptions {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (fields != null) 'fields': fields!,
         if (mode != null) 'mode': mode!,
         if (requirePartitionFilter != null)
           'requirePartitionFilter': requirePartitionFilter!,
@@ -6623,9 +6711,9 @@ class JobConfiguration {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -6816,6 +6904,13 @@ class JobConfigurationLoad {
   /// Optional.
   core.String? createDisposition;
 
+  /// If true, creates a new session, where session id will be a server
+  /// generated random id.
+  ///
+  /// If false, runs query with an existing session_id passed in
+  /// ConnectionProperty, otherwise runs the load job in non-session mode.
+  core.bool? createSession;
+
   /// Defines the list of possible SQL data types to which the source decimal
   /// values are converted.
   ///
@@ -6872,6 +6967,16 @@ class JobConfigurationLoad {
   ///
   /// Optional.
   core.String? fieldDelimiter;
+
+  /// Specifies how source URIs are interpreted for constructing the file set to
+  /// load.
+  ///
+  /// By default source URIs are expanded against the underlying storage. Other
+  /// options include specifying manifest files. Only applicable to object
+  /// storage systems.
+  ///
+  /// Optional.
+  core.String? fileSetSpecType;
 
   /// Options to configure hive partitioning support.
   ///
@@ -7065,12 +7170,14 @@ class JobConfigurationLoad {
     this.clustering,
     this.connectionProperties,
     this.createDisposition,
+    this.createSession,
     this.decimalTargetTypes,
     this.destinationEncryptionConfiguration,
     this.destinationTable,
     this.destinationTableProperties,
     this.encoding,
     this.fieldDelimiter,
+    this.fileSetSpecType,
     this.hivePartitioningOptions,
     this.ignoreUnknownValues,
     this.jsonExtension,
@@ -7118,6 +7225,9 @@ class JobConfigurationLoad {
           createDisposition: json_.containsKey('createDisposition')
               ? json_['createDisposition'] as core.String
               : null,
+          createSession: json_.containsKey('createSession')
+              ? json_['createSession'] as core.bool
+              : null,
           decimalTargetTypes: json_.containsKey('decimalTargetTypes')
               ? (json_['decimalTargetTypes'] as core.List)
                   .map((value) => value as core.String)
@@ -7144,6 +7254,9 @@ class JobConfigurationLoad {
               : null,
           fieldDelimiter: json_.containsKey('fieldDelimiter')
               ? json_['fieldDelimiter'] as core.String
+              : null,
+          fileSetSpecType: json_.containsKey('fileSetSpecType')
+              ? json_['fileSetSpecType'] as core.String
               : null,
           hivePartitioningOptions: json_.containsKey('hivePartitioningOptions')
               ? HivePartitioningOptions.fromJson(
@@ -7231,6 +7344,7 @@ class JobConfigurationLoad {
         if (connectionProperties != null)
           'connectionProperties': connectionProperties!,
         if (createDisposition != null) 'createDisposition': createDisposition!,
+        if (createSession != null) 'createSession': createSession!,
         if (decimalTargetTypes != null)
           'decimalTargetTypes': decimalTargetTypes!,
         if (destinationEncryptionConfiguration != null)
@@ -7241,6 +7355,7 @@ class JobConfigurationLoad {
           'destinationTableProperties': destinationTableProperties!,
         if (encoding != null) 'encoding': encoding!,
         if (fieldDelimiter != null) 'fieldDelimiter': fieldDelimiter!,
+        if (fileSetSpecType != null) 'fileSetSpecType': fileSetSpecType!,
         if (hivePartitioningOptions != null)
           'hivePartitioningOptions': hivePartitioningOptions!,
         if (ignoreUnknownValues != null)
@@ -7292,6 +7407,13 @@ class JobConfigurationQuery {
 
   /// Connection properties.
   core.List<ConnectionProperty>? connectionProperties;
+
+  /// Specifies whether the query should be executed as a continuous query.
+  ///
+  /// The default value is false.
+  ///
+  /// Optional.
+  core.bool? continuous;
 
   /// Specifies whether the job is allowed to create new tables.
   ///
@@ -7458,6 +7580,7 @@ class JobConfigurationQuery {
     this.allowLargeResults,
     this.clustering,
     this.connectionProperties,
+    this.continuous,
     this.createDisposition,
     this.createSession,
     this.defaultDataset,
@@ -7495,6 +7618,9 @@ class JobConfigurationQuery {
                   .map((value) => ConnectionProperty.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
+              : null,
+          continuous: json_.containsKey('continuous')
+              ? json_['continuous'] as core.bool
               : null,
           createDisposition: json_.containsKey('createDisposition')
               ? json_['createDisposition'] as core.String
@@ -7555,10 +7681,10 @@ class JobConfigurationQuery {
               ? (json_['tableDefinitions']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     ExternalDataConfiguration.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -7589,6 +7715,7 @@ class JobConfigurationQuery {
         if (clustering != null) 'clustering': clustering!,
         if (connectionProperties != null)
           'connectionProperties': connectionProperties!,
+        if (continuous != null) 'continuous': continuous!,
         if (createDisposition != null) 'createDisposition': createDisposition!,
         if (createSession != null) 'createSession': createSession!,
         if (defaultDataset != null) 'defaultDataset': defaultDataset!,
@@ -7954,6 +8081,11 @@ class JobStatistics {
   /// This field will be present on all jobs.
   core.String? creationTime;
 
+  /// \[Output-only\] Statistics for data masking.
+  ///
+  /// Present only for query and extract jobs.
+  DataMaskingStatistics? dataMaskingStatistics;
+
   /// \[Output-only\] End time of this job, in milliseconds since the epoch.
   ///
   /// This field will be present whenever a job is in the DONE state.
@@ -8020,6 +8152,7 @@ class JobStatistics {
     this.completionRatio,
     this.copy,
     this.creationTime,
+    this.dataMaskingStatistics,
     this.endTime,
     this.extract,
     this.load,
@@ -8049,6 +8182,10 @@ class JobStatistics {
               : null,
           creationTime: json_.containsKey('creationTime')
               ? json_['creationTime'] as core.String
+              : null,
+          dataMaskingStatistics: json_.containsKey('dataMaskingStatistics')
+              ? DataMaskingStatistics.fromJson(json_['dataMaskingStatistics']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           endTime: json_.containsKey('endTime')
               ? json_['endTime'] as core.String
@@ -8118,6 +8255,8 @@ class JobStatistics {
         if (completionRatio != null) 'completionRatio': completionRatio!,
         if (copy != null) 'copy': copy!,
         if (creationTime != null) 'creationTime': creationTime!,
+        if (dataMaskingStatistics != null)
+          'dataMaskingStatistics': dataMaskingStatistics!,
         if (endTime != null) 'endTime': endTime!,
         if (extract != null) 'extract': extract!,
         if (load != null) 'load': load!,
@@ -8140,11 +8279,14 @@ class JobStatistics {
 }
 
 class JobStatistics2ReservationUsage {
-  /// \[Output-only\] Reservation name or "unreserved" for on-demand resources
-  /// usage.
+  /// Reservation name or "unreserved" for on-demand resources usage.
+  ///
+  /// Output only.
   core.String? name;
 
-  /// \[Output-only\] Slot-milliseconds the job spent in the given reservation.
+  /// Slot-milliseconds the job spent in the given reservation.
+  ///
+  /// Output only.
   core.String? slotMs;
 
   JobStatistics2ReservationUsage({
@@ -8169,25 +8311,32 @@ class JobStatistics2ReservationUsage {
 class JobStatistics2 {
   /// BI Engine specific Statistics.
   ///
-  /// \[Output-only\] BI Engine specific Statistics.
+  /// \[Output only\] BI Engine specific Statistics.
   BiEngineStatistics? biEngineStatistics;
 
-  /// \[Output-only\] Billing tier for the job.
+  /// Billing tier for the job.
+  ///
+  /// Output only.
   core.int? billingTier;
 
-  /// \[Output-only\] Whether the query result was fetched from the query cache.
+  /// Whether the query result was fetched from the query cache.
+  ///
+  /// Output only.
   core.bool? cacheHit;
 
-  /// \[Output-only\] \[Preview\] The number of row access policies affected by
-  /// a DDL statement.
+  /// \[Preview\] The number of row access policies affected by a DDL statement.
   ///
   /// Present only for DROP ALL ROW ACCESS POLICIES queries.
+  ///
+  /// Output only.
   core.String? ddlAffectedRowAccessPolicyCount;
 
-  /// \[Output-only\] The DDL destination table.
+  /// The DDL destination table.
   ///
   /// Present only for ALTER TABLE RENAME TO queries. Note that ddl_target_table
   /// is used just for its type information.
+  ///
+  /// Output only.
   TableReference? ddlDestinationTable;
 
   /// The DDL operation performed, possibly dependent on the pre-existence of
@@ -8202,9 +8351,11 @@ class JobStatistics2 {
   /// target.
   core.String? ddlOperationPerformed;
 
-  /// \[Output-only\] The DDL target dataset.
+  /// The DDL target dataset.
   ///
   /// Present only for CREATE/ALTER/DROP SCHEMA queries.
+  ///
+  /// Output only.
   DatasetReference? ddlTargetDataset;
 
   /// The DDL target routine.
@@ -8212,65 +8363,91 @@ class JobStatistics2 {
   /// Present only for CREATE/DROP FUNCTION/PROCEDURE queries.
   RoutineReference? ddlTargetRoutine;
 
-  /// \[Output-only\] \[Preview\] The DDL target row access policy.
+  /// \[Preview\] The DDL target row access policy.
   ///
   /// Present only for CREATE/DROP ROW ACCESS POLICY queries.
+  ///
+  /// Output only.
   RowAccessPolicyReference? ddlTargetRowAccessPolicy;
 
-  /// \[Output-only\] The DDL target table.
+  /// The DDL target table.
   ///
   /// Present only for CREATE/DROP TABLE/VIEW and DROP ALL ROW ACCESS POLICIES
   /// queries.
+  ///
+  /// Output only.
   TableReference? ddlTargetTable;
 
-  /// \[Output-only\] Detailed statistics for DML statements Present only for
-  /// DML statements INSERT, UPDATE, DELETE or TRUNCATE.
+  /// Detailed statistics for DML statements Present only for DML statements
+  /// INSERT, UPDATE, DELETE or TRUNCATE.
+  ///
+  /// Output only.
   DmlStatistics? dmlStats;
 
-  /// \[Output-only\] The original estimate of bytes processed for the job.
+  /// The original estimate of bytes processed for the job.
+  ///
+  /// Output only.
   core.String? estimatedBytesProcessed;
 
-  /// \[Output-only\] Statistics of a BigQuery ML training job.
+  /// Statistics of a BigQuery ML training job.
+  ///
+  /// Output only.
   MlStatistics? mlStatistics;
 
-  /// \[Output-only, Beta\] Information about create model query job progress.
+  /// \[Output only, Beta\] Information about create model query job progress.
   BigQueryModelTraining? modelTraining;
 
-  /// \[Output-only, Beta\] Deprecated; do not use.
+  /// \[Output only, Beta\] Deprecated; do not use.
   core.int? modelTrainingCurrentIteration;
 
-  /// \[Output-only, Beta\] Deprecated; do not use.
+  /// \[Output only, Beta\] Deprecated; do not use.
   core.String? modelTrainingExpectedTotalIteration;
 
-  /// \[Output-only\] The number of rows affected by a DML statement.
+  /// The number of rows affected by a DML statement.
   ///
   /// Present only for DML statements INSERT, UPDATE or DELETE.
+  ///
+  /// Output only.
   core.String? numDmlAffectedRows;
 
-  /// \[Output-only\] Describes execution plan for the query.
+  /// Describes execution plan for the query.
+  ///
+  /// Output only.
   core.List<ExplainQueryStage>? queryPlan;
 
-  /// \[Output-only\] Referenced routines (persistent user-defined functions and
-  /// stored procedures) for the job.
+  /// Referenced routines (persistent user-defined functions and stored
+  /// procedures) for the job.
+  ///
+  /// Output only.
   core.List<RoutineReference>? referencedRoutines;
 
-  /// \[Output-only\] Referenced tables for the job.
+  /// Referenced tables for the job.
   ///
   /// Queries that reference more than 50 tables will not have a complete list.
+  ///
+  /// Output only.
   core.List<TableReference>? referencedTables;
 
-  /// \[Output-only\] Job resource usage breakdown by reservation.
+  /// Job resource usage breakdown by reservation.
+  ///
+  /// Output only.
   core.List<JobStatistics2ReservationUsage>? reservationUsage;
 
-  /// \[Output-only\] The schema of the results.
+  /// The schema of the results.
   ///
   /// Present only for successful dry run of non-legacy SQL queries.
+  ///
+  /// Output only.
   TableSchema? schema;
 
-  /// \[Output-only\] Search query specific statistics.
+  /// Search query specific statistics.
+  ///
+  /// Output only.
   SearchStatistics? searchStatistics;
 
-  /// \[Output-only\] Statistics of a Spark procedure job.
+  /// Statistics of a Spark procedure job.
+  ///
+  /// Output only.
   SparkStatistics? sparkStatistics;
 
   /// The type of query statement, if valid.
@@ -8295,30 +8472,46 @@ class JobStatistics2 {
   /// "DROP_VIEW": DROP VIEW query.
   core.String? statementType;
 
-  /// \[Output-only\] \[Beta\] Describes a timeline of job execution.
+  /// \[Beta\] Describes a timeline of job execution.
+  ///
+  /// Output only.
   core.List<QueryTimelineSample>? timeline;
 
-  /// \[Output-only\] Total bytes billed for the job.
+  /// Total bytes billed for the job.
+  ///
+  /// Output only.
   core.String? totalBytesBilled;
 
-  /// \[Output-only\] Total bytes processed for the job.
+  /// Total bytes processed for the job.
+  ///
+  /// Output only.
   core.String? totalBytesProcessed;
 
-  /// \[Output-only\] For dry-run jobs, totalBytesProcessed is an estimate and
-  /// this field specifies the accuracy of the estimate.
+  /// For dry-run jobs, totalBytesProcessed is an estimate and this field
+  /// specifies the accuracy of the estimate.
   ///
   /// Possible values can be: UNKNOWN: accuracy of the estimate is unknown.
   /// PRECISE: estimate is precise. LOWER_BOUND: estimate is lower bound of what
   /// the query would cost. UPPER_BOUND: estimate is upper bound of what the
   /// query would cost.
+  ///
+  /// Output only.
   core.String? totalBytesProcessedAccuracy;
 
-  /// \[Output-only\] Total number of partitions processed from all partitioned
-  /// tables referenced in the job.
+  /// Total number of partitions processed from all partitioned tables
+  /// referenced in the job.
+  ///
+  /// Output only.
   core.String? totalPartitionsProcessed;
 
-  /// \[Output-only\] Slot-milliseconds for the job.
+  /// Slot-milliseconds for the job.
+  ///
+  /// Output only.
   core.String? totalSlotMs;
+
+  /// \[Output-only\] Total bytes transferred for cross-cloud queries such as
+  /// Cross Cloud Transfer and CREATE TABLE AS SELECT (CTAS).
+  core.String? transferredBytes;
 
   /// Standard SQL only: list of undeclared query parameters detected during a
   /// dry run validation.
@@ -8356,6 +8549,7 @@ class JobStatistics2 {
     this.totalBytesProcessedAccuracy,
     this.totalPartitionsProcessed,
     this.totalSlotMs,
+    this.transferredBytes,
     this.undeclaredQueryParameters,
   });
 
@@ -8488,6 +8682,9 @@ class JobStatistics2 {
           totalSlotMs: json_.containsKey('totalSlotMs')
               ? json_['totalSlotMs'] as core.String
               : null,
+          transferredBytes: json_.containsKey('transferredBytes')
+              ? json_['transferredBytes'] as core.String
+              : null,
           undeclaredQueryParameters:
               json_.containsKey('undeclaredQueryParameters')
                   ? (json_['undeclaredQueryParameters'] as core.List)
@@ -8543,6 +8740,7 @@ class JobStatistics2 {
         if (totalPartitionsProcessed != null)
           'totalPartitionsProcessed': totalPartitionsProcessed!,
         if (totalSlotMs != null) 'totalSlotMs': totalSlotMs!,
+        if (transferredBytes != null) 'transferredBytes': transferredBytes!,
         if (undeclaredQueryParameters != null)
           'undeclaredQueryParameters': undeclaredQueryParameters!,
       };
@@ -8724,35 +8922,31 @@ class JobStatus {
 }
 
 /// Represents a single JSON object.
-class JsonObject extends collection.MapBase<core.String, core.Object?> {
-  final _innerMap = <core.String, core.Object?>{};
+typedef JsonObject = core.Map<core.String, core.Object?>;
 
-  JsonObject();
+class JsonOptions {
+  /// The character encoding of the data.
+  ///
+  /// The supported values are UTF-8, UTF-16BE, UTF-16LE, UTF-32BE, and
+  /// UTF-32LE. The default value is UTF-8.
+  ///
+  /// Optional.
+  core.String? encoding;
 
-  JsonObject.fromJson(core.Map<core.String, core.dynamic> json_) {
-    json_.forEach((core.String key, value) {
-      this[key] = value;
-    });
-  }
+  JsonOptions({
+    this.encoding,
+  });
 
-  @core.override
-  core.Object? operator [](core.Object? key) => _innerMap[key];
+  JsonOptions.fromJson(core.Map json_)
+      : this(
+          encoding: json_.containsKey('encoding')
+              ? json_['encoding'] as core.String
+              : null,
+        );
 
-  @core.override
-  void operator []=(core.String key, core.Object? value) {
-    _innerMap[key] = value;
-  }
-
-  @core.override
-  void clear() {
-    _innerMap.clear();
-  }
-
-  @core.override
-  core.Iterable<core.String> get keys => _innerMap.keys;
-
-  @core.override
-  core.Object? remove(core.Object? key) => _innerMap.remove(key);
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (encoding != null) 'encoding': encoding!,
+      };
 }
 
 class ListModelsResponse {
@@ -8797,7 +8991,7 @@ class ListRoutinesResponse {
   ///
   /// Unless read_mask is set in the request, only the following fields are
   /// populated: etag, project_id, dataset_id, routine_id, routine_type,
-  /// creation_time, last_modified_time, and language.
+  /// creation_time, last_modified_time, language, and remote_function_options.
   core.List<Routine>? routines;
 
   ListRoutinesResponse({
@@ -8857,6 +9051,13 @@ class ListRowAccessPoliciesResponse {
 }
 
 class MaterializedViewDefinition {
+  /// Allow non incremental materialized view definition.
+  ///
+  /// The default value is "false".
+  ///
+  /// Optional.
+  core.bool? allowNonIncrementalDefinition;
+
   /// \[TrustedTester\] Enable automatic refresh of the materialized view when
   /// the base table is updated.
   ///
@@ -8896,6 +9097,7 @@ class MaterializedViewDefinition {
   core.String? refreshIntervalMs;
 
   MaterializedViewDefinition({
+    this.allowNonIncrementalDefinition,
     this.enableRefresh,
     this.lastRefreshTime,
     this.maxStaleness,
@@ -8905,6 +9107,10 @@ class MaterializedViewDefinition {
 
   MaterializedViewDefinition.fromJson(core.Map json_)
       : this(
+          allowNonIncrementalDefinition:
+              json_.containsKey('allow_non_incremental_definition')
+                  ? json_['allow_non_incremental_definition'] as core.bool
+                  : null,
           enableRefresh: json_.containsKey('enableRefresh')
               ? json_['enableRefresh'] as core.bool
               : null,
@@ -8922,6 +9128,8 @@ class MaterializedViewDefinition {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (allowNonIncrementalDefinition != null)
+          'allow_non_incremental_definition': allowNonIncrementalDefinition!,
         if (enableRefresh != null) 'enableRefresh': enableRefresh!,
         if (lastRefreshTime != null) 'lastRefreshTime': lastRefreshTime!,
         if (maxStaleness != null) 'maxStaleness': maxStaleness!,
@@ -8967,6 +9175,9 @@ class MlStatistics {
 
 class Model {
   /// The best trial_id across all training runs.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? bestTrialId;
 
   /// The time when this model was created, in millisecs since the epoch.
@@ -9012,7 +9223,10 @@ class Model {
   /// Optional.
   core.String? expirationTime;
 
-  /// Input feature columns that were used to train this model.
+  /// Input feature columns for the model inference.
+  ///
+  /// If the model is trained with TRANSFORM clause, these are the input of the
+  /// TRANSFORM clause.
   ///
   /// Output only.
   core.List<StandardSqlField>? featureColumns;
@@ -9079,6 +9293,7 @@ class Model {
   /// - "DNN_CLASSIFIER" : DNN classifier model.
   /// - "TENSORFLOW" : An imported TensorFlow model.
   /// - "DNN_REGRESSOR" : DNN regressor model.
+  /// - "XGBOOST" : An imported XGBoost model.
   /// - "BOOSTED_TREE_REGRESSOR" : Boosted tree regressor model.
   /// - "BOOSTED_TREE_CLASSIFIER" : Boosted tree classifier model.
   /// - "ARIMA" : ARIMA model.
@@ -9089,6 +9304,11 @@ class Model {
   /// - "DNN_LINEAR_COMBINED_REGRESSOR" : Wide-and-deep regressor model.
   /// - "AUTOENCODER" : Autoencoder model.
   /// - "ARIMA_PLUS" : New name for the ARIMA model.
+  /// - "ARIMA_PLUS_XREG" : ARIMA with external regressors.
+  /// - "RANDOM_FOREST_REGRESSOR" : Random forest regressor model.
+  /// - "RANDOM_FOREST_CLASSIFIER" : Random forest classifier model.
+  /// - "TENSORFLOW_LITE" : An imported TensorFlow Lite model.
+  /// - "ONNX" : An imported ONNX model.
   core.String? modelType;
 
   /// For single-objective \[hyperparameter
@@ -9102,10 +9322,22 @@ class Model {
   /// Output only.
   core.List<core.String>? optimalTrialIds;
 
-  /// Information for all training runs in increasing order of start_time.
+  /// Remote model info
   ///
   /// Output only.
+  RemoteModelInfo? remoteModelInfo;
+
+  /// Information for all training runs in increasing order of start_time.
   core.List<TrainingRun>? trainingRuns;
+
+  /// This field will be populated if a TRANSFORM clause was used to train a
+  /// model.
+  ///
+  /// TRANSFORM clause (if used) takes feature_columns as input and outputs
+  /// transform_columns. transform_columns then are used to train the model.
+  ///
+  /// Output only.
+  core.List<TransformColumn>? transformColumns;
 
   Model({
     this.bestTrialId,
@@ -9126,7 +9358,9 @@ class Model {
     this.modelReference,
     this.modelType,
     this.optimalTrialIds,
+    this.remoteModelInfo,
     this.trainingRuns,
+    this.transformColumns,
   });
 
   Model.fromJson(core.Map json_)
@@ -9179,9 +9413,9 @@ class Model {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -9203,9 +9437,19 @@ class Model {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          remoteModelInfo: json_.containsKey('remoteModelInfo')
+              ? RemoteModelInfo.fromJson(json_['remoteModelInfo']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           trainingRuns: json_.containsKey('trainingRuns')
               ? (json_['trainingRuns'] as core.List)
                   .map((value) => TrainingRun.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          transformColumns: json_.containsKey('transformColumns')
+              ? (json_['transformColumns'] as core.List)
+                  .map((value) => TransformColumn.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -9232,7 +9476,9 @@ class Model {
         if (modelReference != null) 'modelReference': modelReference!,
         if (modelType != null) 'modelType': modelType!,
         if (optimalTrialIds != null) 'optimalTrialIds': optimalTrialIds!,
+        if (remoteModelInfo != null) 'remoteModelInfo': remoteModelInfo!,
         if (trainingRuns != null) 'trainingRuns': trainingRuns!,
+        if (transformColumns != null) 'transformColumns': transformColumns!,
       };
 }
 
@@ -9835,10 +10081,10 @@ class QueryParameterValue {
           structValues: json_.containsKey('structValues')
               ? (json_['structValues'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     QueryParameterValue.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -9856,6 +10102,13 @@ class QueryParameterValue {
 class QueryRequest {
   /// Connection properties.
   core.List<ConnectionProperty>? connectionProperties;
+
+  /// Specifies whether the query should be executed as a continuous query.
+  ///
+  /// The default value is false.
+  ///
+  /// Optional.
+  core.bool? continuous;
 
   /// If true, creates a new session, where session id will be a server
   /// generated random id.
@@ -9995,6 +10248,7 @@ class QueryRequest {
 
   QueryRequest({
     this.connectionProperties,
+    this.continuous,
     this.createSession,
     this.defaultDataset,
     this.dryRun,
@@ -10021,6 +10275,9 @@ class QueryRequest {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          continuous: json_.containsKey('continuous')
+              ? json_['continuous'] as core.bool
+              : null,
           createSession: json_.containsKey('createSession')
               ? json_['createSession'] as core.bool
               : null,
@@ -10033,9 +10290,9 @@ class QueryRequest {
           kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -10079,6 +10336,7 @@ class QueryRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (connectionProperties != null)
           'connectionProperties': connectionProperties!,
+        if (continuous != null) 'continuous': continuous!,
         if (createSession != null) 'createSession': createSession!,
         if (defaultDataset != null) 'defaultDataset': defaultDataset!,
         if (dryRun != null) 'dryRun': dryRun!,
@@ -10551,9 +10809,9 @@ class RemoteFunctionOptions {
               ? (json_['userDefinedContext']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -10565,6 +10823,75 @@ class RemoteFunctionOptions {
         if (maxBatchingRows != null) 'maxBatchingRows': maxBatchingRows!,
         if (userDefinedContext != null)
           'userDefinedContext': userDefinedContext!,
+      };
+}
+
+/// Remote Model Info
+class RemoteModelInfo {
+  /// Fully qualified name of the user-provided connection object of the remote
+  /// model.
+  ///
+  /// Format:
+  /// ```"projects/{project_id}/locations/{location_id}/connections/{connection_id}"```
+  ///
+  /// Output only.
+  core.String? connection;
+
+  /// The endpoint for remote model.
+  ///
+  /// Output only.
+  core.String? endpoint;
+
+  /// Max number of rows in each batch sent to the remote service.
+  ///
+  /// If unset, the number of rows in each batch is set dynamically.
+  ///
+  /// Output only.
+  core.String? maxBatchingRows;
+
+  /// The remote service type for remote model.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "REMOTE_SERVICE_TYPE_UNSPECIFIED" : Unspecified remote service type.
+  /// - "CLOUD_AI_TRANSLATE_V3" : V3 Cloud AI Translation API. See more details
+  /// at
+  /// [Cloud Translation API](https://cloud.google.com/translate/docs/reference/rest).
+  /// - "CLOUD_AI_VISION_V1" : V1 Cloud AI Vision API See more details at
+  /// [Cloud Vision API](https://cloud.google.com/vision/docs/reference/rest).
+  /// - "CLOUD_AI_NATURAL_LANGUAGE_V1" : V1 Cloud AI Natural Language API. See
+  /// more details at \[REST Resource:
+  /// documents\](https://cloud.google.com/natural-language/docs/reference/rest/v1/documents).
+  core.String? remoteServiceType;
+
+  RemoteModelInfo({
+    this.connection,
+    this.endpoint,
+    this.maxBatchingRows,
+    this.remoteServiceType,
+  });
+
+  RemoteModelInfo.fromJson(core.Map json_)
+      : this(
+          connection: json_.containsKey('connection')
+              ? json_['connection'] as core.String
+              : null,
+          endpoint: json_.containsKey('endpoint')
+              ? json_['endpoint'] as core.String
+              : null,
+          maxBatchingRows: json_.containsKey('maxBatchingRows')
+              ? json_['maxBatchingRows'] as core.String
+              : null,
+          remoteServiceType: json_.containsKey('remoteServiceType')
+              ? json_['remoteServiceType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (connection != null) 'connection': connection!,
+        if (endpoint != null) 'endpoint': endpoint!,
+        if (maxBatchingRows != null) 'maxBatchingRows': maxBatchingRows!,
+        if (remoteServiceType != null) 'remoteServiceType': remoteServiceType!,
       };
 }
 
@@ -10622,7 +10949,8 @@ class Routine {
   /// Optional.
   core.List<core.String>? importedLibraries;
 
-  /// Defaults to "SQL".
+  /// Defaults to "SQL" if remote_function_options field is absent, not set
+  /// otherwise.
   ///
   /// Optional.
   /// Possible string values are:
@@ -10630,6 +10958,8 @@ class Routine {
   /// - "SQL" : SQL language.
   /// - "JAVASCRIPT" : JavaScript language.
   /// - "PYTHON" : Python language.
+  /// - "JAVA" : Java language.
+  /// - "SCALA" : Scala language.
   core.String? language;
 
   /// The time when this routine was last modified, in milliseconds since the
@@ -10648,7 +10978,7 @@ class Routine {
   /// If absent, the return table type is inferred from definition_body at query
   /// time in each query that references this routine. If present, then the
   /// columns in the evaluated table result will be cast to match the column
-  /// types specificed in return table type, at query time.
+  /// types specified in return table type, at query time.
   ///
   /// Optional.
   StandardSqlTableType? returnTableType;
@@ -10680,9 +11010,10 @@ class Routine {
   /// Required.
   /// Possible string values are:
   /// - "ROUTINE_TYPE_UNSPECIFIED"
-  /// - "SCALAR_FUNCTION" : Non-builtin permanent scalar function.
+  /// - "SCALAR_FUNCTION" : Non-built-in persistent scalar function.
   /// - "PROCEDURE" : Stored procedure.
-  /// - "TABLE_VALUED_FUNCTION" : Non-builtin permanent TVF.
+  /// - "TABLE_VALUED_FUNCTION" : Non-built-in persistent TVF.
+  /// - "AGGREGATE_FUNCTION" : Non-built-in persistent aggregate function.
   core.String? routineType;
 
   /// Spark specific options.
@@ -11308,17 +11639,26 @@ class SparkOptions {
   /// [Apache Spark](https://spark.apache.org/docs/latest/index.html).
   core.List<core.String>? jarUris;
 
-  /// The main file URI of the Spark application.
+  /// The fully qualified name of a class in jar_uris, for example,
+  /// com.example.wordcount.
+  ///
+  /// Exactly one of main_class and main_jar_uri field should be set for
+  /// Java/Scala language type.
+  core.String? mainClass;
+
+  /// The main file/jar URI of the Spark application.
   ///
   /// Exactly one of the definition_body field and the main_file_uri field must
-  /// be set.
+  /// be set for Python. Exactly one of main_class and main_file_uri field
+  /// should be set for Java/Scala language type.
   core.String? mainFileUri;
 
   /// Configuration properties as a set of key/value pairs, which will be passed
   /// on to the Spark application.
   ///
   /// For more information, see
-  /// [Apache Spark](https://spark.apache.org/docs/latest/index.html).
+  /// [Apache Spark](https://spark.apache.org/docs/latest/index.html) and the
+  /// [procedure option list](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#procedure_option_list).
   core.Map<core.String, core.String>? properties;
 
   /// Python files to be placed on the PYTHONPATH for PySpark application.
@@ -11339,6 +11679,7 @@ class SparkOptions {
     this.containerImage,
     this.fileUris,
     this.jarUris,
+    this.mainClass,
     this.mainFileUri,
     this.properties,
     this.pyFileUris,
@@ -11368,15 +11709,18 @@ class SparkOptions {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          mainClass: json_.containsKey('mainClass')
+              ? json_['mainClass'] as core.String
+              : null,
           mainFileUri: json_.containsKey('mainFileUri')
               ? json_['mainFileUri'] as core.String
               : null,
           properties: json_.containsKey('properties')
               ? (json_['properties'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -11396,6 +11740,7 @@ class SparkOptions {
         if (containerImage != null) 'containerImage': containerImage!,
         if (fileUris != null) 'fileUris': fileUris!,
         if (jarUris != null) 'jarUris': jarUris!,
+        if (mainClass != null) 'mainClass': mainClass!,
         if (mainFileUri != null) 'mainFileUri': mainFileUri!,
         if (properties != null) 'properties': properties!,
         if (pyFileUris != null) 'pyFileUris': pyFileUris!,
@@ -11427,9 +11772,9 @@ class SparkStatistics {
       : this(
           endpoints: json_.containsKey('endpoints')
               ? (json_['endpoints'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -11469,7 +11814,7 @@ class StandardSqlDataType {
 
   /// The top level type of this field.
   ///
-  /// Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
+  /// Can be any GoogleSQL data type (e.g., "INT64", "DATE", "ARRAY").
   ///
   /// Required.
   /// Possible string values are:
@@ -11688,6 +12033,9 @@ class Table {
   /// \[Output-only\] The default collation of the table.
   core.String? defaultCollation;
 
+  /// \[Output-only\] The default rounding mode of the table.
+  core.String? defaultRoundingMode;
+
   /// A user-friendly description of this table.
   ///
   /// Optional.
@@ -11775,24 +12123,6 @@ class Table {
   /// run 'PREDICT' queries.
   ModelDefinition? model;
 
-  /// \[Output-only\] The size of this table in bytes, excluding any data in the
-  /// streaming buffer.
-  core.String? numBytes;
-
-  /// \[Output-only\] The number of bytes in the table that are considered
-  /// "long-term storage".
-  core.String? numLongTermBytes;
-
-  /// \[Output-only\] \[TrustedTester\] The physical size of this table in
-  /// bytes, excluding any data in the streaming buffer.
-  ///
-  /// This includes compression and storage used for time travel.
-  core.String? numPhysicalBytes;
-
-  /// \[Output-only\] The number of rows of data in this table, excluding any
-  /// data in the streaming buffer.
-  core.String? numRows;
-
   /// \[Output-only\] Number of logical bytes that are less than 90 days old.
   core.String? numActiveLogicalBytes;
 
@@ -11801,6 +12131,14 @@ class Table {
   /// This data is not kept in real time, and might be delayed by a few seconds
   /// to a few minutes.
   core.String? numActivePhysicalBytes;
+
+  /// \[Output-only\] The size of this table in bytes, excluding any data in the
+  /// streaming buffer.
+  core.String? numBytes;
+
+  /// \[Output-only\] The number of bytes in the table that are considered
+  /// "long-term storage".
+  core.String? numLongTermBytes;
 
   /// \[Output-only\] Number of logical bytes that are more than 90 days old.
   core.String? numLongTermLogicalBytes;
@@ -11817,6 +12155,16 @@ class Table {
   /// This data is not kept in real time, and might be delayed by a few seconds
   /// to a few minutes.
   core.String? numPartitions;
+
+  /// \[Output-only\] \[TrustedTester\] The physical size of this table in
+  /// bytes, excluding any data in the streaming buffer.
+  ///
+  /// This includes compression and storage used for time travel.
+  core.String? numPhysicalBytes;
+
+  /// \[Output-only\] The number of rows of data in this table, excluding any
+  /// data in the streaming buffer.
+  core.String? numRows;
 
   /// \[Output-only\] Number of physical bytes used by time travel storage
   /// (deleted or changed data).
@@ -11864,6 +12212,11 @@ class Table {
   /// there is no data in the streaming buffer.
   Streamingbuffer? streamingBuffer;
 
+  /// The table constraints on the table.
+  ///
+  /// Optional.
+  TableConstraints? tableConstraints;
+
   /// Reference describing the ID of this table.
   ///
   /// Required.
@@ -11894,6 +12247,7 @@ class Table {
     this.clustering,
     this.creationTime,
     this.defaultCollation,
+    this.defaultRoundingMode,
     this.description,
     this.encryptionConfiguration,
     this.etag,
@@ -11908,15 +12262,15 @@ class Table {
     this.materializedView,
     this.maxStaleness,
     this.model,
-    this.numBytes,
-    this.numLongTermBytes,
-    this.numPhysicalBytes,
-    this.numRows,
     this.numActiveLogicalBytes,
     this.numActivePhysicalBytes,
+    this.numBytes,
+    this.numLongTermBytes,
     this.numLongTermLogicalBytes,
     this.numLongTermPhysicalBytes,
     this.numPartitions,
+    this.numPhysicalBytes,
+    this.numRows,
     this.numTimeTravelPhysicalBytes,
     this.numTotalLogicalBytes,
     this.numTotalPhysicalBytes,
@@ -11926,6 +12280,7 @@ class Table {
     this.selfLink,
     this.snapshotDefinition,
     this.streamingBuffer,
+    this.tableConstraints,
     this.tableReference,
     this.timePartitioning,
     this.type,
@@ -11947,6 +12302,9 @@ class Table {
               : null,
           defaultCollation: json_.containsKey('defaultCollation')
               ? json_['defaultCollation'] as core.String
+              : null,
+          defaultRoundingMode: json_.containsKey('defaultRoundingMode')
+              ? json_['defaultRoundingMode'] as core.String
               : null,
           description: json_.containsKey('description')
               ? json_['description'] as core.String
@@ -11973,9 +12331,9 @@ class Table {
           kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -11996,11 +12354,27 @@ class Table {
               ? ModelDefinition.fromJson(
                   json_['model'] as core.Map<core.String, core.dynamic>)
               : null,
+          numActiveLogicalBytes: json_.containsKey('numActiveLogicalBytes')
+              ? json_['numActiveLogicalBytes'] as core.String
+              : null,
+          numActivePhysicalBytes: json_.containsKey('numActivePhysicalBytes')
+              ? json_['numActivePhysicalBytes'] as core.String
+              : null,
           numBytes: json_.containsKey('numBytes')
               ? json_['numBytes'] as core.String
               : null,
           numLongTermBytes: json_.containsKey('numLongTermBytes')
               ? json_['numLongTermBytes'] as core.String
+              : null,
+          numLongTermLogicalBytes: json_.containsKey('numLongTermLogicalBytes')
+              ? json_['numLongTermLogicalBytes'] as core.String
+              : null,
+          numLongTermPhysicalBytes:
+              json_.containsKey('numLongTermPhysicalBytes')
+                  ? json_['numLongTermPhysicalBytes'] as core.String
+                  : null,
+          numPartitions: json_.containsKey('numPartitions')
+              ? json_['numPartitions'] as core.String
               : null,
           numPhysicalBytes: json_.containsKey('numPhysicalBytes')
               ? json_['numPhysicalBytes'] as core.String
@@ -12008,32 +12382,15 @@ class Table {
           numRows: json_.containsKey('numRows')
               ? json_['numRows'] as core.String
               : null,
-          numActiveLogicalBytes: json_.containsKey('num_active_logical_bytes')
-              ? json_['num_active_logical_bytes'] as core.String
-              : null,
-          numActivePhysicalBytes: json_.containsKey('num_active_physical_bytes')
-              ? json_['num_active_physical_bytes'] as core.String
-              : null,
-          numLongTermLogicalBytes:
-              json_.containsKey('num_long_term_logical_bytes')
-                  ? json_['num_long_term_logical_bytes'] as core.String
-                  : null,
-          numLongTermPhysicalBytes:
-              json_.containsKey('num_long_term_physical_bytes')
-                  ? json_['num_long_term_physical_bytes'] as core.String
-                  : null,
-          numPartitions: json_.containsKey('num_partitions')
-              ? json_['num_partitions'] as core.String
-              : null,
           numTimeTravelPhysicalBytes:
-              json_.containsKey('num_time_travel_physical_bytes')
-                  ? json_['num_time_travel_physical_bytes'] as core.String
+              json_.containsKey('numTimeTravelPhysicalBytes')
+                  ? json_['numTimeTravelPhysicalBytes'] as core.String
                   : null,
-          numTotalLogicalBytes: json_.containsKey('num_total_logical_bytes')
-              ? json_['num_total_logical_bytes'] as core.String
+          numTotalLogicalBytes: json_.containsKey('numTotalLogicalBytes')
+              ? json_['numTotalLogicalBytes'] as core.String
               : null,
-          numTotalPhysicalBytes: json_.containsKey('num_total_physical_bytes')
-              ? json_['num_total_physical_bytes'] as core.String
+          numTotalPhysicalBytes: json_.containsKey('numTotalPhysicalBytes')
+              ? json_['numTotalPhysicalBytes'] as core.String
               : null,
           rangePartitioning: json_.containsKey('rangePartitioning')
               ? RangePartitioning.fromJson(json_['rangePartitioning']
@@ -12057,6 +12414,10 @@ class Table {
               ? Streamingbuffer.fromJson(json_['streamingBuffer']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          tableConstraints: json_.containsKey('tableConstraints')
+              ? TableConstraints.fromJson(json_['tableConstraints']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           tableReference: json_.containsKey('tableReference')
               ? TableReference.fromJson(json_['tableReference']
                   as core.Map<core.String, core.dynamic>)
@@ -12077,6 +12438,8 @@ class Table {
         if (clustering != null) 'clustering': clustering!,
         if (creationTime != null) 'creationTime': creationTime!,
         if (defaultCollation != null) 'defaultCollation': defaultCollation!,
+        if (defaultRoundingMode != null)
+          'defaultRoundingMode': defaultRoundingMode!,
         if (description != null) 'description': description!,
         if (encryptionConfiguration != null)
           'encryptionConfiguration': encryptionConfiguration!,
@@ -12093,25 +12456,25 @@ class Table {
         if (materializedView != null) 'materializedView': materializedView!,
         if (maxStaleness != null) 'maxStaleness': maxStaleness!,
         if (model != null) 'model': model!,
+        if (numActiveLogicalBytes != null)
+          'numActiveLogicalBytes': numActiveLogicalBytes!,
+        if (numActivePhysicalBytes != null)
+          'numActivePhysicalBytes': numActivePhysicalBytes!,
         if (numBytes != null) 'numBytes': numBytes!,
         if (numLongTermBytes != null) 'numLongTermBytes': numLongTermBytes!,
+        if (numLongTermLogicalBytes != null)
+          'numLongTermLogicalBytes': numLongTermLogicalBytes!,
+        if (numLongTermPhysicalBytes != null)
+          'numLongTermPhysicalBytes': numLongTermPhysicalBytes!,
+        if (numPartitions != null) 'numPartitions': numPartitions!,
         if (numPhysicalBytes != null) 'numPhysicalBytes': numPhysicalBytes!,
         if (numRows != null) 'numRows': numRows!,
-        if (numActiveLogicalBytes != null)
-          'num_active_logical_bytes': numActiveLogicalBytes!,
-        if (numActivePhysicalBytes != null)
-          'num_active_physical_bytes': numActivePhysicalBytes!,
-        if (numLongTermLogicalBytes != null)
-          'num_long_term_logical_bytes': numLongTermLogicalBytes!,
-        if (numLongTermPhysicalBytes != null)
-          'num_long_term_physical_bytes': numLongTermPhysicalBytes!,
-        if (numPartitions != null) 'num_partitions': numPartitions!,
         if (numTimeTravelPhysicalBytes != null)
-          'num_time_travel_physical_bytes': numTimeTravelPhysicalBytes!,
+          'numTimeTravelPhysicalBytes': numTimeTravelPhysicalBytes!,
         if (numTotalLogicalBytes != null)
-          'num_total_logical_bytes': numTotalLogicalBytes!,
+          'numTotalLogicalBytes': numTotalLogicalBytes!,
         if (numTotalPhysicalBytes != null)
-          'num_total_physical_bytes': numTotalPhysicalBytes!,
+          'numTotalPhysicalBytes': numTotalPhysicalBytes!,
         if (rangePartitioning != null) 'rangePartitioning': rangePartitioning!,
         if (requirePartitionFilter != null)
           'requirePartitionFilter': requirePartitionFilter!,
@@ -12120,6 +12483,7 @@ class Table {
         if (snapshotDefinition != null)
           'snapshotDefinition': snapshotDefinition!,
         if (streamingBuffer != null) 'streamingBuffer': streamingBuffer!,
+        if (tableConstraints != null) 'tableConstraints': tableConstraints!,
         if (tableReference != null) 'tableReference': tableReference!,
         if (timePartitioning != null) 'timePartitioning': timePartitioning!,
         if (type != null) 'type': type!,
@@ -12145,6 +12509,157 @@ class TableCell {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (v != null) 'v': v!,
+      };
+}
+
+class TableConstraintsForeignKeysColumnReferences {
+  core.String? referencedColumn;
+  core.String? referencingColumn;
+
+  TableConstraintsForeignKeysColumnReferences({
+    this.referencedColumn,
+    this.referencingColumn,
+  });
+
+  TableConstraintsForeignKeysColumnReferences.fromJson(core.Map json_)
+      : this(
+          referencedColumn: json_.containsKey('referencedColumn')
+              ? json_['referencedColumn'] as core.String
+              : null,
+          referencingColumn: json_.containsKey('referencingColumn')
+              ? json_['referencingColumn'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (referencedColumn != null) 'referencedColumn': referencedColumn!,
+        if (referencingColumn != null) 'referencingColumn': referencingColumn!,
+      };
+}
+
+class TableConstraintsForeignKeysReferencedTable {
+  core.String? datasetId;
+  core.String? projectId;
+  core.String? tableId;
+
+  TableConstraintsForeignKeysReferencedTable({
+    this.datasetId,
+    this.projectId,
+    this.tableId,
+  });
+
+  TableConstraintsForeignKeysReferencedTable.fromJson(core.Map json_)
+      : this(
+          datasetId: json_.containsKey('datasetId')
+              ? json_['datasetId'] as core.String
+              : null,
+          projectId: json_.containsKey('projectId')
+              ? json_['projectId'] as core.String
+              : null,
+          tableId: json_.containsKey('tableId')
+              ? json_['tableId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (datasetId != null) 'datasetId': datasetId!,
+        if (projectId != null) 'projectId': projectId!,
+        if (tableId != null) 'tableId': tableId!,
+      };
+}
+
+class TableConstraintsForeignKeys {
+  core.List<TableConstraintsForeignKeysColumnReferences>? columnReferences;
+  core.String? name;
+  TableConstraintsForeignKeysReferencedTable? referencedTable;
+
+  TableConstraintsForeignKeys({
+    this.columnReferences,
+    this.name,
+    this.referencedTable,
+  });
+
+  TableConstraintsForeignKeys.fromJson(core.Map json_)
+      : this(
+          columnReferences: json_.containsKey('columnReferences')
+              ? (json_['columnReferences'] as core.List)
+                  .map((value) =>
+                      TableConstraintsForeignKeysColumnReferences.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          referencedTable: json_.containsKey('referencedTable')
+              ? TableConstraintsForeignKeysReferencedTable.fromJson(
+                  json_['referencedTable']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (columnReferences != null) 'columnReferences': columnReferences!,
+        if (name != null) 'name': name!,
+        if (referencedTable != null) 'referencedTable': referencedTable!,
+      };
+}
+
+/// The primary key of the table.
+///
+/// Optional.
+class TableConstraintsPrimaryKey {
+  core.List<core.String>? columns;
+
+  TableConstraintsPrimaryKey({
+    this.columns,
+  });
+
+  TableConstraintsPrimaryKey.fromJson(core.Map json_)
+      : this(
+          columns: json_.containsKey('columns')
+              ? (json_['columns'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (columns != null) 'columns': columns!,
+      };
+}
+
+class TableConstraints {
+  /// The foreign keys of the tables.
+  ///
+  /// Optional.
+  core.List<TableConstraintsForeignKeys>? foreignKeys;
+
+  /// The primary key of the table.
+  ///
+  /// Optional.
+  TableConstraintsPrimaryKey? primaryKey;
+
+  TableConstraints({
+    this.foreignKeys,
+    this.primaryKey,
+  });
+
+  TableConstraints.fromJson(core.Map json_)
+      : this(
+          foreignKeys: json_.containsKey('foreignKeys')
+              ? (json_['foreignKeys'] as core.List)
+                  .map((value) => TableConstraintsForeignKeys.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          primaryKey: json_.containsKey('primaryKey')
+              ? TableConstraintsPrimaryKey.fromJson(
+                  json_['primaryKey'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (foreignKeys != null) 'foreignKeys': foreignKeys!,
+        if (primaryKey != null) 'primaryKey': primaryKey!,
       };
 }
 
@@ -12176,8 +12691,7 @@ class TableDataInsertAllRequestRows {
               ? json_['insertId'] as core.String
               : null,
           json: json_.containsKey('json')
-              ? JsonObject.fromJson(
-                  json_['json'] as core.Map<core.String, core.dynamic>)
+              ? json_['json'] as core.Map<core.String, core.dynamic>
               : null,
         );
 
@@ -12513,6 +13027,13 @@ class TableFieldSchema {
   /// Optional.
   core.String? precision;
 
+  /// Rounding Mode specification of the field.
+  ///
+  /// It only can be set on NUMERIC or BIGNUMERIC type fields.
+  ///
+  /// Optional.
+  core.String? roundingMode;
+
   /// See documentation for precision.
   ///
   /// Optional.
@@ -12540,6 +13061,7 @@ class TableFieldSchema {
     this.name,
     this.policyTags,
     this.precision,
+    this.roundingMode,
     this.scale,
     this.type,
   });
@@ -12577,6 +13099,9 @@ class TableFieldSchema {
           precision: json_.containsKey('precision')
               ? json_['precision'] as core.String
               : null,
+          roundingMode: json_.containsKey('roundingMode')
+              ? json_['roundingMode'] as core.String
+              : null,
           scale:
               json_.containsKey('scale') ? json_['scale'] as core.String : null,
           type: json_.containsKey('type') ? json_['type'] as core.String : null,
@@ -12594,6 +13119,7 @@ class TableFieldSchema {
         if (name != null) 'name': name!,
         if (policyTags != null) 'policyTags': policyTags!,
         if (precision != null) 'precision': precision!,
+        if (roundingMode != null) 'roundingMode': roundingMode!,
         if (scale != null) 'scale': scale!,
         if (type != null) 'type': type!,
       };
@@ -12700,9 +13226,9 @@ class TableListTables {
           kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -12949,15 +13475,29 @@ class TimePartitioning {
 
 /// Options used in model training.
 class TrainingOptions {
+  /// Activation function of the neural nets.
+  core.String? activationFn;
+
   /// If true, detect step changes and make data adjustment in the input time
   /// series.
   core.bool? adjustStepChanges;
 
+  /// Whether to use approximate feature contribution method in XGBoost model
+  /// explanation for global explain.
+  core.bool? approxGlobalFeatureContrib;
+
   /// Whether to enable auto ARIMA or not.
   core.bool? autoArima;
 
-  /// The max value of non-seasonal p and q.
+  /// The max value of the sum of non-seasonal p and q.
   core.String? autoArimaMaxOrder;
+
+  /// The min value of the sum of non-seasonal p and q.
+  core.String? autoArimaMinOrder;
+
+  /// Whether to calculate class weights automatically based on the popularity
+  /// of each label.
+  core.bool? autoClassWeights;
 
   /// Batch size for dnn models.
   core.String? batchSize;
@@ -12968,6 +13508,9 @@ class TrainingOptions {
   /// - "GBTREE" : Gbtree booster.
   /// - "DART" : Dart booster.
   core.String? boosterType;
+
+  /// Budget in hours for AutoML training.
+  core.double? budgetHours;
 
   /// Whether or not p-value test should be computed for this model.
   ///
@@ -13079,6 +13622,9 @@ class TrainingOptions {
   /// - "EXPLICIT" : Use nonweighted-als for explicit feedback problems.
   core.String? feedbackType;
 
+  /// Whether the model should include intercept during model training.
+  core.bool? fitIntercept;
+
   /// Hidden units for dnn models.
   core.List<core.String>? hiddenUnits;
 
@@ -13175,6 +13721,11 @@ class TrainingOptions {
   /// Name of input label columns in training data.
   core.List<core.String>? inputLabelColumns;
 
+  /// Name of the instance weight column for training data.
+  ///
+  /// This column isn't be used as a feature.
+  core.String? instanceWeightColumn;
+
   /// Number of integral steps for the integrated gradients explain method.
   core.String? integratedGradientsNumSteps;
 
@@ -13194,6 +13745,9 @@ class TrainingOptions {
   /// kmeans_initialization_column.
   /// - "KMEANS_PLUS_PLUS" : Initializes with kmeans++.
   core.String? kmeansInitializationMethod;
+
+  /// L1 regularization coefficient to activations.
+  core.double? l1RegActivation;
 
   /// L1 regularization coefficient.
   core.double? l1Regularization;
@@ -13260,6 +13814,12 @@ class TrainingOptions {
   /// Minimum sum of instance weight needed in a child for boosted tree models.
   core.String? minTreeChildWeight;
 
+  /// The model registry.
+  /// Possible string values are:
+  /// - "MODEL_REGISTRY_UNSPECIFIED"
+  /// - "VERTEX_AI" : Vertex AI.
+  core.String? modelRegistry;
+
   /// Google Cloud Storage URI from which the model was imported.
   ///
   /// Only applicable for imported models.
@@ -13280,6 +13840,11 @@ class TrainingOptions {
   /// tree models.
   core.String? numParallelTree;
 
+  /// Number of principal components to keep in the PCA model.
+  ///
+  /// Must be \<= the number of features.
+  core.String? numPrincipalComponents;
+
   /// Number of trials to run this hyperparameter tuning job.
   core.String? numTrials;
 
@@ -13292,18 +13857,42 @@ class TrainingOptions {
   /// problem.
   core.String? optimizationStrategy;
 
-  /// Whether to preserve the input structs in output feature names.
-  ///
-  /// Suppose there is a struct A with field b. When false (default), the output
-  /// feature name is A_b. When true, the output feature name is A.b.
-  core.bool? preserveInputStructs;
+  /// Optimizer used for training the neural nets.
+  core.String? optimizer;
+
+  /// The minimum ratio of cumulative explained variance that needs to be given
+  /// by the PCA model.
+  core.double? pcaExplainedVarianceRatio;
+
+  /// The solver for PCA.
+  /// Possible string values are:
+  /// - "UNSPECIFIED"
+  /// - "FULL" : Full eigen-decoposition.
+  /// - "RANDOMIZED" : Randomized SVD.
+  /// - "AUTO" : Auto.
+  core.String? pcaSolver;
 
   /// Number of paths for the sampled Shapley explain method.
   core.String? sampledShapleyNumPaths;
 
+  /// If true, scale the feature values by dividing the feature standard
+  /// deviation.
+  ///
+  /// Currently only apply to PCA.
+  core.bool? scaleFeatures;
+
+  /// Whether to standardize numerical features.
+  ///
+  /// Default to true.
+  core.bool? standardizeFeatures;
+
   /// Subsample fraction of the training data to grow tree to prevent
   /// overfitting for boosted tree models.
   core.double? subsample;
+
+  /// Based on the selected TF version, the corresponding docker image is used
+  /// to train external models.
+  core.String? tfVersion;
 
   /// Column to be designated as time series data for ARIMA model.
   core.String? timeSeriesDataColumn;
@@ -13336,6 +13925,11 @@ class TrainingOptions {
   /// User column specified for matrix factorization models.
   core.String? userColumn;
 
+  /// The version aliases to apply in Vertex AI model registry.
+  ///
+  /// Always overwrite if the version aliases exists in a existing model.
+  core.List<core.String>? vertexAiModelVersionAliases;
+
   /// Hyperparameter for matrix factoration when implicit feedback type is
   /// specified.
   core.double? walsAlpha;
@@ -13343,12 +13937,20 @@ class TrainingOptions {
   /// Whether to train a model from the last checkpoint.
   core.bool? warmStart;
 
+  /// User-selected XGBoost versions for training of XGBoost models.
+  core.String? xgboostVersion;
+
   TrainingOptions({
+    this.activationFn,
     this.adjustStepChanges,
+    this.approxGlobalFeatureContrib,
     this.autoArima,
     this.autoArimaMaxOrder,
+    this.autoArimaMinOrder,
+    this.autoClassWeights,
     this.batchSize,
     this.boosterType,
+    this.budgetHours,
     this.calculatePValues,
     this.cleanSpikesAndDips,
     this.colorSpace,
@@ -13366,6 +13968,7 @@ class TrainingOptions {
     this.earlyStop,
     this.enableGlobalExplain,
     this.feedbackType,
+    this.fitIntercept,
     this.hiddenUnits,
     this.holidayRegion,
     this.horizon,
@@ -13373,10 +13976,12 @@ class TrainingOptions {
     this.includeDrift,
     this.initialLearnRate,
     this.inputLabelColumns,
+    this.instanceWeightColumn,
     this.integratedGradientsNumSteps,
     this.itemColumn,
     this.kmeansInitializationColumn,
     this.kmeansInitializationMethod,
+    this.l1RegActivation,
     this.l1Regularization,
     this.l2Regularization,
     this.labelClassWeights,
@@ -13391,16 +13996,23 @@ class TrainingOptions {
     this.minSplitLoss,
     this.minTimeSeriesLength,
     this.minTreeChildWeight,
+    this.modelRegistry,
     this.modelUri,
     this.nonSeasonalOrder,
     this.numClusters,
     this.numFactors,
     this.numParallelTree,
+    this.numPrincipalComponents,
     this.numTrials,
     this.optimizationStrategy,
-    this.preserveInputStructs,
+    this.optimizer,
+    this.pcaExplainedVarianceRatio,
+    this.pcaSolver,
     this.sampledShapleyNumPaths,
+    this.scaleFeatures,
+    this.standardizeFeatures,
     this.subsample,
+    this.tfVersion,
     this.timeSeriesDataColumn,
     this.timeSeriesIdColumn,
     this.timeSeriesIdColumns,
@@ -13409,26 +14021,44 @@ class TrainingOptions {
     this.treeMethod,
     this.trendSmoothingWindowSize,
     this.userColumn,
+    this.vertexAiModelVersionAliases,
     this.walsAlpha,
     this.warmStart,
+    this.xgboostVersion,
   });
 
   TrainingOptions.fromJson(core.Map json_)
       : this(
+          activationFn: json_.containsKey('activationFn')
+              ? json_['activationFn'] as core.String
+              : null,
           adjustStepChanges: json_.containsKey('adjustStepChanges')
               ? json_['adjustStepChanges'] as core.bool
               : null,
+          approxGlobalFeatureContrib:
+              json_.containsKey('approxGlobalFeatureContrib')
+                  ? json_['approxGlobalFeatureContrib'] as core.bool
+                  : null,
           autoArima: json_.containsKey('autoArima')
               ? json_['autoArima'] as core.bool
               : null,
           autoArimaMaxOrder: json_.containsKey('autoArimaMaxOrder')
               ? json_['autoArimaMaxOrder'] as core.String
               : null,
+          autoArimaMinOrder: json_.containsKey('autoArimaMinOrder')
+              ? json_['autoArimaMinOrder'] as core.String
+              : null,
+          autoClassWeights: json_.containsKey('autoClassWeights')
+              ? json_['autoClassWeights'] as core.bool
+              : null,
           batchSize: json_.containsKey('batchSize')
               ? json_['batchSize'] as core.String
               : null,
           boosterType: json_.containsKey('boosterType')
               ? json_['boosterType'] as core.String
+              : null,
+          budgetHours: json_.containsKey('budgetHours')
+              ? (json_['budgetHours'] as core.num).toDouble()
               : null,
           calculatePValues: json_.containsKey('calculatePValues')
               ? json_['calculatePValues'] as core.bool
@@ -13481,6 +14111,9 @@ class TrainingOptions {
           feedbackType: json_.containsKey('feedbackType')
               ? json_['feedbackType'] as core.String
               : null,
+          fitIntercept: json_.containsKey('fitIntercept')
+              ? json_['fitIntercept'] as core.bool
+              : null,
           hiddenUnits: json_.containsKey('hiddenUnits')
               ? (json_['hiddenUnits'] as core.List)
                   .map((value) => value as core.String)
@@ -13508,6 +14141,9 @@ class TrainingOptions {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          instanceWeightColumn: json_.containsKey('instanceWeightColumn')
+              ? json_['instanceWeightColumn'] as core.String
+              : null,
           integratedGradientsNumSteps:
               json_.containsKey('integratedGradientsNumSteps')
                   ? json_['integratedGradientsNumSteps'] as core.String
@@ -13523,6 +14159,9 @@ class TrainingOptions {
               json_.containsKey('kmeansInitializationMethod')
                   ? json_['kmeansInitializationMethod'] as core.String
                   : null,
+          l1RegActivation: json_.containsKey('l1RegActivation')
+              ? (json_['l1RegActivation'] as core.num).toDouble()
+              : null,
           l1Regularization: json_.containsKey('l1Regularization')
               ? (json_['l1Regularization'] as core.num).toDouble()
               : null,
@@ -13533,9 +14172,9 @@ class TrainingOptions {
               ? (json_['labelClassWeights']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    (item as core.num).toDouble(),
+                    (value as core.num).toDouble(),
                   ),
                 )
               : null,
@@ -13572,6 +14211,9 @@ class TrainingOptions {
           minTreeChildWeight: json_.containsKey('minTreeChildWeight')
               ? json_['minTreeChildWeight'] as core.String
               : null,
+          modelRegistry: json_.containsKey('modelRegistry')
+              ? json_['modelRegistry'] as core.String
+              : null,
           modelUri: json_.containsKey('modelUri')
               ? json_['modelUri'] as core.String
               : null,
@@ -13588,20 +14230,39 @@ class TrainingOptions {
           numParallelTree: json_.containsKey('numParallelTree')
               ? json_['numParallelTree'] as core.String
               : null,
+          numPrincipalComponents: json_.containsKey('numPrincipalComponents')
+              ? json_['numPrincipalComponents'] as core.String
+              : null,
           numTrials: json_.containsKey('numTrials')
               ? json_['numTrials'] as core.String
               : null,
           optimizationStrategy: json_.containsKey('optimizationStrategy')
               ? json_['optimizationStrategy'] as core.String
               : null,
-          preserveInputStructs: json_.containsKey('preserveInputStructs')
-              ? json_['preserveInputStructs'] as core.bool
+          optimizer: json_.containsKey('optimizer')
+              ? json_['optimizer'] as core.String
+              : null,
+          pcaExplainedVarianceRatio:
+              json_.containsKey('pcaExplainedVarianceRatio')
+                  ? (json_['pcaExplainedVarianceRatio'] as core.num).toDouble()
+                  : null,
+          pcaSolver: json_.containsKey('pcaSolver')
+              ? json_['pcaSolver'] as core.String
               : null,
           sampledShapleyNumPaths: json_.containsKey('sampledShapleyNumPaths')
               ? json_['sampledShapleyNumPaths'] as core.String
               : null,
+          scaleFeatures: json_.containsKey('scaleFeatures')
+              ? json_['scaleFeatures'] as core.bool
+              : null,
+          standardizeFeatures: json_.containsKey('standardizeFeatures')
+              ? json_['standardizeFeatures'] as core.bool
+              : null,
           subsample: json_.containsKey('subsample')
               ? (json_['subsample'] as core.num).toDouble()
+              : null,
+          tfVersion: json_.containsKey('tfVersion')
+              ? json_['tfVersion'] as core.String
               : null,
           timeSeriesDataColumn: json_.containsKey('timeSeriesDataColumn')
               ? json_['timeSeriesDataColumn'] as core.String
@@ -13632,20 +14293,35 @@ class TrainingOptions {
           userColumn: json_.containsKey('userColumn')
               ? json_['userColumn'] as core.String
               : null,
+          vertexAiModelVersionAliases:
+              json_.containsKey('vertexAiModelVersionAliases')
+                  ? (json_['vertexAiModelVersionAliases'] as core.List)
+                      .map((value) => value as core.String)
+                      .toList()
+                  : null,
           walsAlpha: json_.containsKey('walsAlpha')
               ? (json_['walsAlpha'] as core.num).toDouble()
               : null,
           warmStart: json_.containsKey('warmStart')
               ? json_['warmStart'] as core.bool
               : null,
+          xgboostVersion: json_.containsKey('xgboostVersion')
+              ? json_['xgboostVersion'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (activationFn != null) 'activationFn': activationFn!,
         if (adjustStepChanges != null) 'adjustStepChanges': adjustStepChanges!,
+        if (approxGlobalFeatureContrib != null)
+          'approxGlobalFeatureContrib': approxGlobalFeatureContrib!,
         if (autoArima != null) 'autoArima': autoArima!,
         if (autoArimaMaxOrder != null) 'autoArimaMaxOrder': autoArimaMaxOrder!,
+        if (autoArimaMinOrder != null) 'autoArimaMinOrder': autoArimaMinOrder!,
+        if (autoClassWeights != null) 'autoClassWeights': autoClassWeights!,
         if (batchSize != null) 'batchSize': batchSize!,
         if (boosterType != null) 'boosterType': boosterType!,
+        if (budgetHours != null) 'budgetHours': budgetHours!,
         if (calculatePValues != null) 'calculatePValues': calculatePValues!,
         if (cleanSpikesAndDips != null)
           'cleanSpikesAndDips': cleanSpikesAndDips!,
@@ -13667,6 +14343,7 @@ class TrainingOptions {
         if (enableGlobalExplain != null)
           'enableGlobalExplain': enableGlobalExplain!,
         if (feedbackType != null) 'feedbackType': feedbackType!,
+        if (fitIntercept != null) 'fitIntercept': fitIntercept!,
         if (hiddenUnits != null) 'hiddenUnits': hiddenUnits!,
         if (holidayRegion != null) 'holidayRegion': holidayRegion!,
         if (horizon != null) 'horizon': horizon!,
@@ -13675,6 +14352,8 @@ class TrainingOptions {
         if (includeDrift != null) 'includeDrift': includeDrift!,
         if (initialLearnRate != null) 'initialLearnRate': initialLearnRate!,
         if (inputLabelColumns != null) 'inputLabelColumns': inputLabelColumns!,
+        if (instanceWeightColumn != null)
+          'instanceWeightColumn': instanceWeightColumn!,
         if (integratedGradientsNumSteps != null)
           'integratedGradientsNumSteps': integratedGradientsNumSteps!,
         if (itemColumn != null) 'itemColumn': itemColumn!,
@@ -13682,6 +14361,7 @@ class TrainingOptions {
           'kmeansInitializationColumn': kmeansInitializationColumn!,
         if (kmeansInitializationMethod != null)
           'kmeansInitializationMethod': kmeansInitializationMethod!,
+        if (l1RegActivation != null) 'l1RegActivation': l1RegActivation!,
         if (l1Regularization != null) 'l1Regularization': l1Regularization!,
         if (l2Regularization != null) 'l2Regularization': l2Regularization!,
         if (labelClassWeights != null) 'labelClassWeights': labelClassWeights!,
@@ -13700,19 +14380,28 @@ class TrainingOptions {
           'minTimeSeriesLength': minTimeSeriesLength!,
         if (minTreeChildWeight != null)
           'minTreeChildWeight': minTreeChildWeight!,
+        if (modelRegistry != null) 'modelRegistry': modelRegistry!,
         if (modelUri != null) 'modelUri': modelUri!,
         if (nonSeasonalOrder != null) 'nonSeasonalOrder': nonSeasonalOrder!,
         if (numClusters != null) 'numClusters': numClusters!,
         if (numFactors != null) 'numFactors': numFactors!,
         if (numParallelTree != null) 'numParallelTree': numParallelTree!,
+        if (numPrincipalComponents != null)
+          'numPrincipalComponents': numPrincipalComponents!,
         if (numTrials != null) 'numTrials': numTrials!,
         if (optimizationStrategy != null)
           'optimizationStrategy': optimizationStrategy!,
-        if (preserveInputStructs != null)
-          'preserveInputStructs': preserveInputStructs!,
+        if (optimizer != null) 'optimizer': optimizer!,
+        if (pcaExplainedVarianceRatio != null)
+          'pcaExplainedVarianceRatio': pcaExplainedVarianceRatio!,
+        if (pcaSolver != null) 'pcaSolver': pcaSolver!,
         if (sampledShapleyNumPaths != null)
           'sampledShapleyNumPaths': sampledShapleyNumPaths!,
+        if (scaleFeatures != null) 'scaleFeatures': scaleFeatures!,
+        if (standardizeFeatures != null)
+          'standardizeFeatures': standardizeFeatures!,
         if (subsample != null) 'subsample': subsample!,
+        if (tfVersion != null) 'tfVersion': tfVersion!,
         if (timeSeriesDataColumn != null)
           'timeSeriesDataColumn': timeSeriesDataColumn!,
         if (timeSeriesIdColumn != null)
@@ -13727,8 +14416,11 @@ class TrainingOptions {
         if (trendSmoothingWindowSize != null)
           'trendSmoothingWindowSize': trendSmoothingWindowSize!,
         if (userColumn != null) 'userColumn': userColumn!,
+        if (vertexAiModelVersionAliases != null)
+          'vertexAiModelVersionAliases': vertexAiModelVersionAliases!,
         if (walsAlpha != null) 'walsAlpha': walsAlpha!,
         if (warmStart != null) 'warmStart': warmStart!,
+        if (xgboostVersion != null) 'xgboostVersion': xgboostVersion!,
       };
 }
 
@@ -13738,40 +14430,65 @@ class TrainingRun {
   /// level.
   ///
   /// Applies to classification models only.
+  ///
+  /// Output only.
   core.List<GlobalExplanation>? classLevelGlobalExplanations;
 
   /// Data split result of the training run.
   ///
   /// Only set when the input data is actually split.
+  ///
+  /// Output only.
   DataSplitResult? dataSplitResult;
 
   /// The evaluation metrics over training/eval data that were computed at the
   /// end of training.
+  ///
+  /// Output only.
   EvaluationMetrics? evaluationMetrics;
 
   /// Global explanation contains the explanation of top features on the model
   /// level.
   ///
   /// Applies to both regression and classification models.
+  ///
+  /// Output only.
   GlobalExplanation? modelLevelGlobalExplanation;
 
   /// Output of each iteration run, results.size() \<= max_iterations.
+  ///
+  /// Output only.
   core.List<IterationResult>? results;
 
   /// The start time of this training run.
+  ///
+  /// Output only.
   core.String? startTime;
 
   /// Options that were used for this training run, includes user specified and
   /// default options that were used.
+  ///
+  /// Output only.
   TrainingOptions? trainingOptions;
 
   /// The start time of this training run, in milliseconds since epoch.
+  ///
+  /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? trainingStartTime;
 
-  /// The model id in Vertex AI Model Registry for this training run
+  /// The model id in the
+  /// [Vertex AI Model Registry](https://cloud.google.com/vertex-ai/docs/model-registry/introduction)
+  /// for this training run.
   core.String? vertexAiModelId;
 
-  /// The model version in Vertex AI Model Registry for this training run
+  /// The model version in the
+  /// [Vertex AI Model Registry](https://cloud.google.com/vertex-ai/docs/model-registry/introduction)
+  /// for this training run.
+  ///
+  /// Output only.
   core.String? vertexAiModelVersion;
 
   TrainingRun({
@@ -13867,6 +14584,48 @@ class TransactionInfo {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (transactionId != null) 'transactionId': transactionId!,
+      };
+}
+
+/// Information about a single transform column.
+class TransformColumn {
+  /// Name of the column.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The SQL expression used in the column transform.
+  ///
+  /// Output only.
+  core.String? transformSql;
+
+  /// Data type of the column after the transform.
+  ///
+  /// Output only.
+  StandardSqlDataType? type;
+
+  TransformColumn({
+    this.name,
+    this.transformSql,
+    this.type,
+  });
+
+  TransformColumn.fromJson(core.Map json_)
+      : this(
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          transformSql: json_.containsKey('transformSql')
+              ? json_['transformSql'] as core.String
+              : null,
+          type: json_.containsKey('type')
+              ? StandardSqlDataType.fromJson(
+                  json_['type'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (transformSql != null) 'transformSql': transformSql!,
+        if (type != null) 'type': type!,
       };
 }
 

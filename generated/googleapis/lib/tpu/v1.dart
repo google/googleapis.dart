@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud TPU API - v1
@@ -26,7 +25,7 @@
 ///     - [ProjectsLocationsNodesResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsTensorflowVersionsResource]
-library tpu.v1;
+library tpu_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -35,7 +34,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -692,13 +690,6 @@ class ProjectsLocationsOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -1068,7 +1059,7 @@ class ListTensorFlowVersionsResponse {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
+/// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
 /// A network endpoint over which a TPU worker can be reached.
@@ -1160,6 +1151,9 @@ class Node {
   /// instances.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? ipAddress;
 
   /// Resource labels to represent user-provided metadata.
@@ -1190,6 +1184,9 @@ class Node {
   /// The network port for the TPU Node as visible to Compute Engine instances.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? port;
 
   /// The scheduling options for this node.
@@ -1297,9 +1294,9 @@ class Node {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -1459,33 +1456,7 @@ class ReimageNodeRequest {
 }
 
 /// Sets the scheduling options for this node.
-class SchedulingConfig {
-  /// Defines whether the node is preemptible.
-  core.bool? preemptible;
-
-  /// Whether the node is created under a reservation.
-  core.bool? reserved;
-
-  SchedulingConfig({
-    this.preemptible,
-    this.reserved,
-  });
-
-  SchedulingConfig.fromJson(core.Map json_)
-      : this(
-          preemptible: json_.containsKey('preemptible')
-              ? json_['preemptible'] as core.bool
-              : null,
-          reserved: json_.containsKey('reserved')
-              ? json_['reserved'] as core.bool
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (preemptible != null) 'preemptible': preemptible!,
-        if (reserved != null) 'reserved': reserved!,
-      };
-}
+typedef SchedulingConfig = $SchedulingConfig;
 
 /// Request for StartNode.
 typedef StartNodeRequest = $Empty;
@@ -1503,59 +1474,7 @@ typedef Status = $Status;
 typedef StopNodeRequest = $Empty;
 
 /// A Symptom instance.
-class Symptom {
-  /// Timestamp when the Symptom is created.
-  core.String? createTime;
-
-  /// Detailed information of the current Symptom.
-  core.String? details;
-
-  /// Type of the Symptom.
-  /// Possible string values are:
-  /// - "SYMPTOM_TYPE_UNSPECIFIED" : Unspecified symptom.
-  /// - "LOW_MEMORY" : TPU VM memory is low.
-  /// - "OUT_OF_MEMORY" : TPU runtime is out of memory.
-  /// - "EXECUTE_TIMED_OUT" : TPU runtime execution has timed out.
-  /// - "MESH_BUILD_FAIL" : TPU runtime fails to construct a mesh that
-  /// recognizes each TPU device's neighbors.
-  /// - "HBM_OUT_OF_MEMORY" : TPU HBM is out of memory.
-  /// - "PROJECT_ABUSE" : Abusive behaviors have been identified on the current
-  /// project.
-  core.String? symptomType;
-
-  /// A string used to uniquely distinguish a worker within a TPU node.
-  core.String? workerId;
-
-  Symptom({
-    this.createTime,
-    this.details,
-    this.symptomType,
-    this.workerId,
-  });
-
-  Symptom.fromJson(core.Map json_)
-      : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          details: json_.containsKey('details')
-              ? json_['details'] as core.String
-              : null,
-          symptomType: json_.containsKey('symptomType')
-              ? json_['symptomType'] as core.String
-              : null,
-          workerId: json_.containsKey('workerId')
-              ? json_['workerId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (details != null) 'details': details!,
-        if (symptomType != null) 'symptomType': symptomType!,
-        if (workerId != null) 'workerId': workerId!,
-      };
-}
+typedef Symptom = $Symptom;
 
 /// A tensorflow version that a Node can be configured with.
 class TensorFlowVersion {

@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Service Directory API - v1
@@ -26,7 +25,7 @@
 ///     - [ProjectsLocationsNamespacesResource]
 ///       - [ProjectsLocationsNamespacesServicesResource]
 ///         - [ProjectsLocationsNamespacesServicesEndpointsResource]
-library servicedirectory.v1;
+library servicedirectory_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -35,7 +34,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -1275,7 +1273,9 @@ class Binding {
   /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
   /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
-  /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
+  /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
+  /// (primary) that represents all the users of that domain. For example,
+  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
   /// An email address (plus unique identifier) representing a user that has
   /// been recently deleted. For example,
   /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
@@ -1291,9 +1291,7 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
-  /// that represents all the users of that domain. For example, `google.com` or
-  /// `example.com`.
+  /// the role in the binding.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
@@ -1389,12 +1387,18 @@ class Endpoint {
   /// Optional.
   core.int? port;
 
+  /// The globally unique identifier of the endpoint in the UUID4 format.
+  ///
+  /// Output only.
+  core.String? uid;
+
   Endpoint({
     this.address,
     this.annotations,
     this.name,
     this.network,
     this.port,
+    this.uid,
   });
 
   Endpoint.fromJson(core.Map json_)
@@ -1405,9 +1409,9 @@ class Endpoint {
           annotations: json_.containsKey('annotations')
               ? (json_['annotations'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -1416,6 +1420,7 @@ class Endpoint {
               ? json_['network'] as core.String
               : null,
           port: json_.containsKey('port') ? json_['port'] as core.int : null,
+          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1424,6 +1429,7 @@ class Endpoint {
         if (name != null) 'name': name!,
         if (network != null) 'network': network!,
         if (port != null) 'port': port!,
+        if (uid != null) 'uid': uid!,
       };
 }
 
@@ -1604,7 +1610,7 @@ class ListServicesResponse {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
+/// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
 /// A container for services.
@@ -1626,27 +1632,35 @@ class Namespace {
   /// Immutable.
   core.String? name;
 
+  /// The globally unique identifier of the namespace in the UUID4 format.
+  ///
+  /// Output only.
+  core.String? uid;
+
   Namespace({
     this.labels,
     this.name,
+    this.uid,
   });
 
   Namespace.fromJson(core.Map json_)
       : this(
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
+        if (uid != null) 'uid': uid!,
       };
 }
 
@@ -1880,10 +1894,16 @@ class Service {
   /// Immutable.
   core.String? name;
 
+  /// The globally unique identifier of the service in the UUID4 format.
+  ///
+  /// Output only.
+  core.String? uid;
+
   Service({
     this.annotations,
     this.endpoints,
     this.name,
+    this.uid,
   });
 
   Service.fromJson(core.Map json_)
@@ -1891,9 +1911,9 @@ class Service {
           annotations: json_.containsKey('annotations')
               ? (json_['annotations'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -1904,12 +1924,14 @@ class Service {
                   .toList()
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (annotations != null) 'annotations': annotations!,
         if (endpoints != null) 'endpoints': endpoints!,
         if (name != null) 'name': name!,
+        if (uid != null) 'uid': uid!,
       };
 }
 

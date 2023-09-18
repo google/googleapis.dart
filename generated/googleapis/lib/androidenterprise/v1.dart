@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Google Play EMM API - v1
@@ -37,7 +36,7 @@
 /// - [StorelayoutpagesResource]
 /// - [UsersResource]
 /// - [WebappsResource]
-library androidenterprise.v1;
+library androidenterprise_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -46,7 +45,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -494,6 +492,58 @@ class EnterprisesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Returns a token for device enrollment.
+  ///
+  /// The DPC can encode this token within the QR/NFC/zero-touch enrollment
+  /// payload or fetch it before calling the on-device API to authenticate the
+  /// user. The token can be generated for each device or reused across multiple
+  /// devices.
+  ///
+  /// Request parameters:
+  ///
+  /// [enterpriseId] - The ID of the enterprise.
+  ///
+  /// [deviceType] - Whether it’s a dedicated device or a knowledge worker
+  /// device.
+  /// Possible string values are:
+  /// - "unknown" : This value is unused
+  /// - "dedicatedDevice" : This device is a dedicated device.
+  /// - "knowledgeWorker" : This device is required to have an authenticated
+  /// user.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CreateEnrollmentTokenResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CreateEnrollmentTokenResponse> createEnrollmentToken(
+    core.String enterpriseId, {
+    core.String? deviceType,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (deviceType != null) 'deviceType': [deviceType],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'androidenterprise/v1/enterprises/' +
+        commons.escapeVariable('$enterpriseId') +
+        '/createEnrollmentToken';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return CreateEnrollmentTokenResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Returns a unique token to access an embeddable UI.
   ///
   /// To generate a web UI, pass the generated token into the managed Google
@@ -824,7 +874,7 @@ class EnterprisesResource {
   /// [requestMode] - The request mode for pulling notifications. Specifying
   /// waitForNotifications will cause the request to block and wait until one or
   /// more notifications are present, or return an empty notification list if no
-  /// notifications are present after some time. Speciying returnImmediately
+  /// notifications are present after some time. Specifying returnImmediately
   /// will cause the request to immediately return the pending notifications, or
   /// an empty list if no notifications are present. If omitted, defaults to
   /// waitForNotifications.
@@ -1395,7 +1445,10 @@ class InstallsResource {
   /// Requests to remove an app from a device.
   ///
   /// A call to get or list will still show the app as installed on the device
-  /// until it is actually removed.
+  /// until it is actually removed. A successful response indicates that a
+  /// removal request has been sent to the device. The call will be considered
+  /// successful even if the app is not present on the device (e.g. it was never
+  /// installed, or was removed by the user).
   ///
   /// Request parameters:
   ///
@@ -4267,6 +4320,12 @@ class AppVersion {
   /// True if this version is a production APK.
   core.bool? isProduction;
 
+  /// The SDK version this app targets, as specified in the manifest of the APK.
+  ///
+  /// See
+  /// http://developer.android.com/guide/topics/manifest/uses-sdk-element.html
+  core.int? targetSdkVersion;
+
   /// Deprecated, use trackId instead.
   /// Possible string values are:
   /// - "appTrackUnspecified"
@@ -4293,6 +4352,7 @@ class AppVersion {
 
   AppVersion({
     this.isProduction,
+    this.targetSdkVersion,
     this.track,
     this.trackId,
     this.versionCode,
@@ -4303,6 +4363,9 @@ class AppVersion {
       : this(
           isProduction: json_.containsKey('isProduction')
               ? json_['isProduction'] as core.bool
+              : null,
+          targetSdkVersion: json_.containsKey('targetSdkVersion')
+              ? json_['targetSdkVersion'] as core.int
               : null,
           track:
               json_.containsKey('track') ? json_['track'] as core.String : null,
@@ -4321,6 +4384,7 @@ class AppVersion {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (isProduction != null) 'isProduction': isProduction!,
+        if (targetSdkVersion != null) 'targetSdkVersion': targetSdkVersion!,
         if (track != null) 'track': track!,
         if (trackId != null) 'trackId': trackId!,
         if (versionCode != null) 'versionCode': versionCode!,
@@ -4536,6 +4600,27 @@ class ConfigurationVariables {
       };
 }
 
+/// Response message for create enrollment token.
+class CreateEnrollmentTokenResponse {
+  /// Enrollment token.
+  core.String? enrollmentToken;
+
+  CreateEnrollmentTokenResponse({
+    this.enrollmentToken,
+  });
+
+  CreateEnrollmentTokenResponse.fromJson(core.Map json_)
+      : this(
+          enrollmentToken: json_.containsKey('enrollmentToken')
+              ? json_['enrollmentToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enrollmentToken != null) 'enrollmentToken': enrollmentToken!,
+      };
+}
+
 /// A Devices resource represents a mobile device managed by the EMM and
 /// belonging to a specific enterprise user.
 class Device {
@@ -4544,6 +4629,20 @@ class Device {
   ///
   /// For example, "123456789abcdef0".
   core.String? androidId;
+
+  /// The internal hardware codename of the device.
+  ///
+  /// This comes from android.os.Build.DEVICE. (field named "device" per
+  /// logs/wireless/android/android_checkin.proto)
+  core.String? device;
+
+  /// The build fingerprint of the device if known.
+  core.String? latestBuildFingerprint;
+
+  /// The manufacturer of the device.
+  ///
+  /// This comes from android.os.Build.MANUFACTURER.
+  core.String? maker;
 
   /// Identifies the extent to which the device is controlled by a managed
   /// Google Play EMM in various deployment configurations.
@@ -4563,17 +4662,42 @@ class Device {
   /// - "unmanagedProfile"
   core.String? managementType;
 
+  /// The model name of the device.
+  ///
+  /// This comes from android.os.Build.MODEL.
+  core.String? model;
+
   /// The policy enforced on the device.
   Policy? policy;
+
+  /// The product name of the device.
+  ///
+  /// This comes from android.os.Build.PRODUCT.
+  core.String? product;
 
   /// The device report updated with the latest app states.
   DeviceReport? report;
 
+  /// Retail brand for the device, if set.
+  ///
+  /// See https://developer.android.com/reference/android/os/Build.html#BRAND
+  core.String? retailBrand;
+
+  /// API compatibility version.
+  core.int? sdkVersion;
+
   Device({
     this.androidId,
+    this.device,
+    this.latestBuildFingerprint,
+    this.maker,
     this.managementType,
+    this.model,
     this.policy,
+    this.product,
     this.report,
+    this.retailBrand,
+    this.sdkVersion,
   });
 
   Device.fromJson(core.Map json_)
@@ -4581,24 +4705,51 @@ class Device {
           androidId: json_.containsKey('androidId')
               ? json_['androidId'] as core.String
               : null,
+          device: json_.containsKey('device')
+              ? json_['device'] as core.String
+              : null,
+          latestBuildFingerprint: json_.containsKey('latestBuildFingerprint')
+              ? json_['latestBuildFingerprint'] as core.String
+              : null,
+          maker:
+              json_.containsKey('maker') ? json_['maker'] as core.String : null,
           managementType: json_.containsKey('managementType')
               ? json_['managementType'] as core.String
               : null,
+          model:
+              json_.containsKey('model') ? json_['model'] as core.String : null,
           policy: json_.containsKey('policy')
               ? Policy.fromJson(
                   json_['policy'] as core.Map<core.String, core.dynamic>)
+              : null,
+          product: json_.containsKey('product')
+              ? json_['product'] as core.String
               : null,
           report: json_.containsKey('report')
               ? DeviceReport.fromJson(
                   json_['report'] as core.Map<core.String, core.dynamic>)
               : null,
+          retailBrand: json_.containsKey('retailBrand')
+              ? json_['retailBrand'] as core.String
+              : null,
+          sdkVersion: json_.containsKey('sdkVersion')
+              ? json_['sdkVersion'] as core.int
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (androidId != null) 'androidId': androidId!,
+        if (device != null) 'device': device!,
+        if (latestBuildFingerprint != null)
+          'latestBuildFingerprint': latestBuildFingerprint!,
+        if (maker != null) 'maker': maker!,
         if (managementType != null) 'managementType': managementType!,
+        if (model != null) 'model': model!,
         if (policy != null) 'policy': policy!,
+        if (product != null) 'product': product!,
         if (report != null) 'report': report!,
+        if (retailBrand != null) 'retailBrand': retailBrand!,
+        if (sdkVersion != null) 'sdkVersion': sdkVersion!,
       };
 }
 
@@ -4758,6 +4909,11 @@ class Enterprise {
   /// This is only supported for enterprises created via the EMM-initiated flow.
   core.List<Administrator>? administrator;
 
+  /// Settings for Google-provided user authentication.
+  ///
+  /// Output only.
+  GoogleAuthenticationSettings? googleAuthenticationSettings;
+
   /// The unique ID for the enterprise.
   core.String? id;
 
@@ -4769,6 +4925,7 @@ class Enterprise {
 
   Enterprise({
     this.administrator,
+    this.googleAuthenticationSettings,
     this.id,
     this.name,
     this.primaryDomain,
@@ -4782,6 +4939,12 @@ class Enterprise {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          googleAuthenticationSettings:
+              json_.containsKey('googleAuthenticationSettings')
+                  ? GoogleAuthenticationSettings.fromJson(
+                      json_['googleAuthenticationSettings']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           id: json_.containsKey('id') ? json_['id'] as core.String : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           primaryDomain: json_.containsKey('primaryDomain')
@@ -4791,6 +4954,8 @@ class Enterprise {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (administrator != null) 'administrator': administrator!,
+        if (googleAuthenticationSettings != null)
+          'googleAuthenticationSettings': googleAuthenticationSettings!,
         if (id != null) 'id': id!,
         if (name != null) 'name': name!,
         if (primaryDomain != null) 'primaryDomain': primaryDomain!,
@@ -4971,6 +5136,47 @@ class EntitlementsListResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (entitlement != null) 'entitlement': entitlement!,
+      };
+}
+
+/// Contains settings for Google-provided user authentication.
+class GoogleAuthenticationSettings {
+  /// Whether dedicated devices are allowed.
+  /// Possible string values are:
+  /// - "dedicatedDevicesAllowedUnspecified" : This value is unused.
+  /// - "disallowed" : Dedicated devices are not allowed.
+  /// - "allowed" : Dedicated devices are allowed.
+  core.String? dedicatedDevicesAllowed;
+
+  /// Whether Google authentication is required.
+  /// Possible string values are:
+  /// - "googleAuthenticationRequiredUnspecified" : This value is unused.
+  /// - "notRequired" : Google authentication is not required.
+  /// - "required" : User is required to be successfully authenticated by
+  /// Google.
+  core.String? googleAuthenticationRequired;
+
+  GoogleAuthenticationSettings({
+    this.dedicatedDevicesAllowed,
+    this.googleAuthenticationRequired,
+  });
+
+  GoogleAuthenticationSettings.fromJson(core.Map json_)
+      : this(
+          dedicatedDevicesAllowed: json_.containsKey('dedicatedDevicesAllowed')
+              ? json_['dedicatedDevicesAllowed'] as core.String
+              : null,
+          googleAuthenticationRequired:
+              json_.containsKey('googleAuthenticationRequired')
+                  ? json_['googleAuthenticationRequired'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dedicatedDevicesAllowed != null)
+          'dedicatedDevicesAllowed': dedicatedDevicesAllowed!,
+        if (googleAuthenticationRequired != null)
+          'googleAuthenticationRequired': googleAuthenticationRequired!,
       };
 }
 
@@ -6044,21 +6250,23 @@ class Permission {
 
 /// The device policy for a given managed device.
 class Policy {
-  /// Use autoUpdateMode instead.
+  /// Recommended alternative: autoUpdateMode which is set per app, provides
+  /// greater flexibility around update frequency.
   ///
   /// When autoUpdateMode is set to AUTO_UPDATE_POSTPONED or
   /// AUTO_UPDATE_HIGH_PRIORITY, this field has no effect. "choiceToTheUser"
   /// allows the device's user to configure the app update policy. "always"
   /// enables auto updates. "never" disables auto updates. "wifiOnly" enables
   /// auto updates only when the device is connected to wifi.
-  ///
-  /// Deprecated.
   /// Possible string values are:
   /// - "autoUpdatePolicyUnspecified" : The auto update policy is not set.
   /// - "choiceToTheUser" : The user can control auto-updates.
   /// - "never" : Apps are never auto-updated.
   /// - "wifiOnly" : Apps are auto-updated over WiFi only.
   /// - "always" : Apps are auto-updated at any time. Data charges may apply.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? autoUpdatePolicy;
 
   /// Whether the device reports app states to the EMM.
@@ -6203,6 +6411,9 @@ class Product {
   /// Noteworthy features (if any) of this product.
   core.List<core.String>? features;
 
+  /// The localized full app store description, if available.
+  core.String? fullDescription;
+
   /// A link to an image that can be used as an icon for the product.
   ///
   /// This image is suitable for use at up to 512px x 512px.
@@ -6274,6 +6485,7 @@ class Product {
     this.detailsUrl,
     this.distributionChannel,
     this.features,
+    this.fullDescription,
     this.iconUrl,
     this.lastUpdatedTimestampMillis,
     this.minAndroidSdkVersion,
@@ -6340,6 +6552,9 @@ class Product {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          fullDescription: json_.containsKey('fullDescription')
+              ? json_['fullDescription'] as core.String
+              : null,
           iconUrl: json_.containsKey('iconUrl')
               ? json_['iconUrl'] as core.String
               : null,
@@ -6403,6 +6618,7 @@ class Product {
         if (distributionChannel != null)
           'distributionChannel': distributionChannel!,
         if (features != null) 'features': features!,
+        if (fullDescription != null) 'fullDescription': fullDescription!,
         if (iconUrl != null) 'iconUrl': iconUrl!,
         if (lastUpdatedTimestampMillis != null)
           'lastUpdatedTimestampMillis': lastUpdatedTimestampMillis!,

@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Chrome Policy API - v1
@@ -25,10 +24,11 @@
 /// - [CustomersResource]
 ///   - [CustomersPoliciesResource]
 ///     - [CustomersPoliciesGroupsResource]
+///     - [CustomersPoliciesNetworksResource]
 ///     - [CustomersPoliciesOrgunitsResource]
 ///   - [CustomersPolicySchemasResource]
 /// - [MediaResource]
-library chromepolicy.v1;
+library chromepolicy_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -37,20 +37,19 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show
         ApiRequestError,
+        ByteRange,
         DetailedApiRequestError,
-        Media,
-        UploadOptions,
-        ResumableUploadOptions,
         DownloadOptions,
+        Media,
         PartialDownloadOptions,
-        ByteRange;
+        ResumableUploadOptions,
+        UploadOptions;
 
 /// The Chrome Policy API is a suite of services that allows Chrome
 /// administrators to control the policies applied to their managed Chrome OS
@@ -94,6 +93,8 @@ class CustomersPoliciesResource {
 
   CustomersPoliciesGroupsResource get groups =>
       CustomersPoliciesGroupsResource(_requester);
+  CustomersPoliciesNetworksResource get networks =>
+      CustomersPoliciesNetworksResource(_requester);
   CustomersPoliciesOrgunitsResource get orgunits =>
       CustomersPoliciesOrgunitsResource(_requester);
 
@@ -113,15 +114,15 @@ class CustomersPoliciesResource {
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
-  /// Completes with a [GoogleChromePolicyV1ResolveResponse].
+  /// Completes with a [GoogleChromePolicyVersionsV1ResolveResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleChromePolicyV1ResolveResponse> resolve(
-    GoogleChromePolicyV1ResolveRequest request,
+  async.Future<GoogleChromePolicyVersionsV1ResolveResponse> resolve(
+    GoogleChromePolicyVersionsV1ResolveRequest request,
     core.String customer, {
     core.String? $fields,
   }) async {
@@ -138,7 +139,7 @@ class CustomersPoliciesResource {
       body: body_,
       queryParams: queryParams_,
     );
-    return GoogleChromePolicyV1ResolveResponse.fromJson(
+    return GoogleChromePolicyVersionsV1ResolveResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -176,7 +177,7 @@ class CustomersPoliciesGroupsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleProtobufEmpty> batchDelete(
-    GoogleChromePolicyV1BatchDeleteGroupPoliciesRequest request,
+    GoogleChromePolicyVersionsV1BatchDeleteGroupPoliciesRequest request,
     core.String customer, {
     core.String? $fields,
   }) async {
@@ -226,7 +227,7 @@ class CustomersPoliciesGroupsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleProtobufEmpty> batchModify(
-    GoogleChromePolicyV1BatchModifyGroupPoliciesRequest request,
+    GoogleChromePolicyVersionsV1BatchModifyGroupPoliciesRequest request,
     core.String customer, {
     core.String? $fields,
   }) async {
@@ -266,16 +267,17 @@ class CustomersPoliciesGroupsResource {
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
-  /// Completes with a [GoogleChromePolicyV1ListGroupPriorityOrderingResponse].
+  /// Completes with a
+  /// [GoogleChromePolicyVersionsV1ListGroupPriorityOrderingResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleChromePolicyV1ListGroupPriorityOrderingResponse>
+  async.Future<GoogleChromePolicyVersionsV1ListGroupPriorityOrderingResponse>
       listGroupPriorityOrdering(
-    GoogleChromePolicyV1ListGroupPriorityOrderingRequest request,
+    GoogleChromePolicyVersionsV1ListGroupPriorityOrderingRequest request,
     core.String customer, {
     core.String? $fields,
   }) async {
@@ -294,8 +296,8 @@ class CustomersPoliciesGroupsResource {
       body: body_,
       queryParams: queryParams_,
     );
-    return GoogleChromePolicyV1ListGroupPriorityOrderingResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+    return GoogleChromePolicyVersionsV1ListGroupPriorityOrderingResponse
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Update a group priority ordering for an app.
@@ -323,7 +325,7 @@ class CustomersPoliciesGroupsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleProtobufEmpty> updateGroupPriorityOrdering(
-    GoogleChromePolicyV1UpdateGroupPriorityOrderingRequest request,
+    GoogleChromePolicyVersionsV1UpdateGroupPriorityOrderingRequest request,
     core.String customer, {
     core.String? $fields,
   }) async {
@@ -343,6 +345,187 @@ class CustomersPoliciesGroupsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class CustomersPoliciesNetworksResource {
+  final commons.ApiRequester _requester;
+
+  CustomersPoliciesNetworksResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a certificate at a specified OU for a customer.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [customer] - Required. The customer for which the certificate will apply.
+  /// Value must have pattern `^customers/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleChromePolicyVersionsV1DefineCertificateResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleChromePolicyVersionsV1DefineCertificateResponse>
+      defineCertificate(
+    GoogleChromePolicyVersionsV1DefineCertificateRequest request,
+    core.String customer, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$customer') +
+        '/policies/networks:defineCertificate';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleChromePolicyVersionsV1DefineCertificateResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Define a new network.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [customer] - Required. The customer who will own this new network.
+  /// Value must have pattern `^customers/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleChromePolicyVersionsV1DefineNetworkResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleChromePolicyVersionsV1DefineNetworkResponse> defineNetwork(
+    GoogleChromePolicyVersionsV1DefineNetworkRequest request,
+    core.String customer, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$customer') +
+        '/policies/networks:defineNetwork';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleChromePolicyVersionsV1DefineNetworkResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Remove an existing certificate by guid.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [customer] - Required. The customer whose certificate will be removed.
+  /// Value must have pattern `^customers/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleChromePolicyVersionsV1RemoveCertificateResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleChromePolicyVersionsV1RemoveCertificateResponse>
+      removeCertificate(
+    GoogleChromePolicyVersionsV1RemoveCertificateRequest request,
+    core.String customer, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$customer') +
+        '/policies/networks:removeCertificate';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleChromePolicyVersionsV1RemoveCertificateResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Remove an existing network by guid.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [customer] - Required. The customer whose network will be removed.
+  /// Value must have pattern `^customers/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleChromePolicyVersionsV1RemoveNetworkResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleChromePolicyVersionsV1RemoveNetworkResponse> removeNetwork(
+    GoogleChromePolicyVersionsV1RemoveNetworkRequest request,
+    core.String customer, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$customer') +
+        '/policies/networks:removeNetwork';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleChromePolicyVersionsV1RemoveNetworkResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -381,7 +564,7 @@ class CustomersPoliciesOrgunitsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleProtobufEmpty> batchInherit(
-    GoogleChromePolicyV1BatchInheritOrgUnitPoliciesRequest request,
+    GoogleChromePolicyVersionsV1BatchInheritOrgUnitPoliciesRequest request,
     core.String customer, {
     core.String? $fields,
   }) async {
@@ -431,7 +614,7 @@ class CustomersPoliciesOrgunitsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleProtobufEmpty> batchModify(
-    GoogleChromePolicyV1BatchModifyOrgUnitPoliciesRequest request,
+    GoogleChromePolicyVersionsV1BatchModifyOrgUnitPoliciesRequest request,
     core.String customer, {
     core.String? $fields,
   }) async {
@@ -471,14 +654,14 @@ class CustomersPolicySchemasResource {
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
-  /// Completes with a [GoogleChromePolicyV1PolicySchema].
+  /// Completes with a [GoogleChromePolicyVersionsV1PolicySchema].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleChromePolicyV1PolicySchema> get(
+  async.Future<GoogleChromePolicyVersionsV1PolicySchema> get(
     core.String name, {
     core.String? $fields,
   }) async {
@@ -493,7 +676,7 @@ class CustomersPolicySchemasResource {
       'GET',
       queryParams: queryParams_,
     );
-    return GoogleChromePolicyV1PolicySchema.fromJson(
+    return GoogleChromePolicyVersionsV1PolicySchema.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 
@@ -509,7 +692,8 @@ class CustomersPolicySchemasResource {
   /// [filter] - The schema filter used to find a particular schema based on
   /// fields like its resource name, description and `additionalTargetKeyNames`.
   ///
-  /// [pageSize] - The maximum number of policy schemas to return.
+  /// [pageSize] - The maximum number of policy schemas to return, defaults to
+  /// 100 and has a maximum of 1000.
   ///
   /// [pageToken] - The page token used to retrieve a specific page of the
   /// listing request.
@@ -517,14 +701,14 @@ class CustomersPolicySchemasResource {
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
-  /// Completes with a [GoogleChromePolicyV1ListPolicySchemasResponse].
+  /// Completes with a [GoogleChromePolicyVersionsV1ListPolicySchemasResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleChromePolicyV1ListPolicySchemasResponse> list(
+  async.Future<GoogleChromePolicyVersionsV1ListPolicySchemasResponse> list(
     core.String parent, {
     core.String? filter,
     core.int? pageSize,
@@ -545,7 +729,7 @@ class CustomersPolicySchemasResource {
       'GET',
       queryParams: queryParams_,
     );
-    return GoogleChromePolicyV1ListPolicySchemasResponse.fromJson(
+    return GoogleChromePolicyVersionsV1ListPolicySchemasResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -571,15 +755,15 @@ class MediaResource {
   ///
   /// [uploadMedia] - The media to upload.
   ///
-  /// Completes with a [GoogleChromePolicyV1UploadPolicyFileResponse].
+  /// Completes with a [GoogleChromePolicyVersionsV1UploadPolicyFileResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleChromePolicyV1UploadPolicyFileResponse> upload(
-    GoogleChromePolicyV1UploadPolicyFileRequest request,
+  async.Future<GoogleChromePolicyVersionsV1UploadPolicyFileResponse> upload(
+    GoogleChromePolicyVersionsV1UploadPolicyFileRequest request,
     core.String customer, {
     core.String? $fields,
     commons.Media? uploadMedia,
@@ -608,12 +792,17 @@ class MediaResource {
       uploadMedia: uploadMedia,
       uploadOptions: commons.UploadOptions.defaultOptions,
     );
-    return GoogleChromePolicyV1UploadPolicyFileResponse.fromJson(
+    return GoogleChromePolicyVersionsV1UploadPolicyFileResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
 class ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle {
+  /// In the event that this policy was deprecated in favor of another policy,
+  /// the fully qualified namespace(s) of the new policies as they will show in
+  /// PolicyAPI.
+  core.List<core.String>? deprecatedInFavorOf;
+
   /// Description about current life cycle.
   core.String? description;
 
@@ -639,6 +828,7 @@ class ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle {
   core.String? policyApiLifecycleStage;
 
   ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle({
+    this.deprecatedInFavorOf,
     this.description,
     this.endSupport,
     this.policyApiLifecycleStage,
@@ -646,6 +836,11 @@ class ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle {
 
   ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle.fromJson(core.Map json_)
       : this(
+          deprecatedInFavorOf: json_.containsKey('deprecatedInFavorOf')
+              ? (json_['deprecatedInFavorOf'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           description: json_.containsKey('description')
               ? json_['description'] as core.String
               : null,
@@ -659,6 +854,8 @@ class ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (deprecatedInFavorOf != null)
+          'deprecatedInFavorOf': deprecatedInFavorOf!,
         if (description != null) 'description': description!,
         if (endSupport != null) 'endSupport': endSupport!,
         if (policyApiLifecycleStage != null)
@@ -668,19 +865,19 @@ class ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle {
 
 /// Additional key names that will be used to identify the target of the policy
 /// value.
-class GoogleChromePolicyV1AdditionalTargetKeyName {
+class GoogleChromePolicyVersionsV1AdditionalTargetKeyName {
   /// Key name.
   core.String? key;
 
   /// Key description.
   core.String? keyDescription;
 
-  GoogleChromePolicyV1AdditionalTargetKeyName({
+  GoogleChromePolicyVersionsV1AdditionalTargetKeyName({
     this.key,
     this.keyDescription,
   });
 
-  GoogleChromePolicyV1AdditionalTargetKeyName.fromJson(core.Map json_)
+  GoogleChromePolicyVersionsV1AdditionalTargetKeyName.fromJson(core.Map json_)
       : this(
           key: json_.containsKey('key') ? json_['key'] as core.String : null,
           keyDescription: json_.containsKey('keyDescription')
@@ -695,7 +892,7 @@ class GoogleChromePolicyV1AdditionalTargetKeyName {
 }
 
 /// Request message for specifying that multiple policy values will be deleted.
-class GoogleChromePolicyV1BatchDeleteGroupPoliciesRequest {
+class GoogleChromePolicyVersionsV1BatchDeleteGroupPoliciesRequest {
   /// List of policies that will be deleted as defined by the `requests`.
   ///
   /// All requests in the list must follow these restrictions: 1. All schemas in
@@ -704,19 +901,21 @@ class GoogleChromePolicyV1BatchDeleteGroupPoliciesRequest {
   /// All `policyTargetKey` values must have the same `app_id` key name in the
   /// `additionalTargetKeys`. 4. No two modification requests can reference the
   /// same `policySchema` + ` policyTargetKey` pair.
-  core.List<GoogleChromePolicyV1DeleteGroupPolicyRequest>? requests;
+  core.List<GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest>? requests;
 
-  GoogleChromePolicyV1BatchDeleteGroupPoliciesRequest({
+  GoogleChromePolicyVersionsV1BatchDeleteGroupPoliciesRequest({
     this.requests,
   });
 
-  GoogleChromePolicyV1BatchDeleteGroupPoliciesRequest.fromJson(core.Map json_)
+  GoogleChromePolicyVersionsV1BatchDeleteGroupPoliciesRequest.fromJson(
+      core.Map json_)
       : this(
           requests: json_.containsKey('requests')
               ? (json_['requests'] as core.List)
                   .map((value) =>
-                      GoogleChromePolicyV1DeleteGroupPolicyRequest.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                      GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -728,7 +927,7 @@ class GoogleChromePolicyV1BatchDeleteGroupPoliciesRequest {
 
 /// Request message for specifying that multiple policy values inherit their
 /// value from their parents.
-class GoogleChromePolicyV1BatchInheritOrgUnitPoliciesRequest {
+class GoogleChromePolicyVersionsV1BatchInheritOrgUnitPoliciesRequest {
   /// List of policies that have to inherit their values as defined by the
   /// `requests`.
   ///
@@ -740,20 +939,21 @@ class GoogleChromePolicyV1BatchInheritOrgUnitPoliciesRequest {
   /// empty `additionalTargetKeys` map, all of the targets must have an empty
   /// `additionalTargetKeys` map. 4. No two modification requests can reference
   /// the same `policySchema` + ` policyTargetKey` pair.
-  core.List<GoogleChromePolicyV1InheritOrgUnitPolicyRequest>? requests;
+  core.List<GoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest>? requests;
 
-  GoogleChromePolicyV1BatchInheritOrgUnitPoliciesRequest({
+  GoogleChromePolicyVersionsV1BatchInheritOrgUnitPoliciesRequest({
     this.requests,
   });
 
-  GoogleChromePolicyV1BatchInheritOrgUnitPoliciesRequest.fromJson(
+  GoogleChromePolicyVersionsV1BatchInheritOrgUnitPoliciesRequest.fromJson(
       core.Map json_)
       : this(
           requests: json_.containsKey('requests')
               ? (json_['requests'] as core.List)
                   .map((value) =>
-                      GoogleChromePolicyV1InheritOrgUnitPolicyRequest.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                      GoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -765,7 +965,7 @@ class GoogleChromePolicyV1BatchInheritOrgUnitPoliciesRequest {
 
 /// Request message for modifying multiple policy values for a specific
 /// group-based target.
-class GoogleChromePolicyV1BatchModifyGroupPoliciesRequest {
+class GoogleChromePolicyVersionsV1BatchModifyGroupPoliciesRequest {
   /// List of policies to modify as defined by the `requests`.
   ///
   /// All requests in the list must follow these restrictions: 1. All schemas in
@@ -774,19 +974,21 @@ class GoogleChromePolicyV1BatchModifyGroupPoliciesRequest {
   /// All `policyTargetKey` values must have the same `app_id` key name in the
   /// `additionalTargetKeys`. 4. No two modification requests can reference the
   /// same `policySchema` + ` policyTargetKey` pair.
-  core.List<GoogleChromePolicyV1ModifyGroupPolicyRequest>? requests;
+  core.List<GoogleChromePolicyVersionsV1ModifyGroupPolicyRequest>? requests;
 
-  GoogleChromePolicyV1BatchModifyGroupPoliciesRequest({
+  GoogleChromePolicyVersionsV1BatchModifyGroupPoliciesRequest({
     this.requests,
   });
 
-  GoogleChromePolicyV1BatchModifyGroupPoliciesRequest.fromJson(core.Map json_)
+  GoogleChromePolicyVersionsV1BatchModifyGroupPoliciesRequest.fromJson(
+      core.Map json_)
       : this(
           requests: json_.containsKey('requests')
               ? (json_['requests'] as core.List)
                   .map((value) =>
-                      GoogleChromePolicyV1ModifyGroupPolicyRequest.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                      GoogleChromePolicyVersionsV1ModifyGroupPolicyRequest
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -797,7 +999,7 @@ class GoogleChromePolicyV1BatchModifyGroupPoliciesRequest {
 }
 
 /// Request message for modifying multiple policy values for a specific target.
-class GoogleChromePolicyV1BatchModifyOrgUnitPoliciesRequest {
+class GoogleChromePolicyVersionsV1BatchModifyOrgUnitPoliciesRequest {
   /// List of policies to modify as defined by the `requests`.
   ///
   /// All requests in the list must follow these restrictions: 1. All schemas in
@@ -808,19 +1010,21 @@ class GoogleChromePolicyV1BatchModifyOrgUnitPoliciesRequest {
   /// empty `additionalTargetKeys` map, all of the targets must have an empty
   /// `additionalTargetKeys` map. 4. No two modification requests can reference
   /// the same `policySchema` + ` policyTargetKey` pair.
-  core.List<GoogleChromePolicyV1ModifyOrgUnitPolicyRequest>? requests;
+  core.List<GoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequest>? requests;
 
-  GoogleChromePolicyV1BatchModifyOrgUnitPoliciesRequest({
+  GoogleChromePolicyVersionsV1BatchModifyOrgUnitPoliciesRequest({
     this.requests,
   });
 
-  GoogleChromePolicyV1BatchModifyOrgUnitPoliciesRequest.fromJson(core.Map json_)
+  GoogleChromePolicyVersionsV1BatchModifyOrgUnitPoliciesRequest.fromJson(
+      core.Map json_)
       : this(
           requests: json_.containsKey('requests')
               ? (json_['requests'] as core.List)
                   .map((value) =>
-                      GoogleChromePolicyV1ModifyOrgUnitPolicyRequest.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                      GoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequest
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -830,8 +1034,203 @@ class GoogleChromePolicyV1BatchModifyOrgUnitPoliciesRequest {
       };
 }
 
+/// Request object for creating a certificate.
+class GoogleChromePolicyVersionsV1DefineCertificateRequest {
+  /// The optional name of the certificate.
+  ///
+  /// If not specified, the certificate issuer will be used as the name.
+  ///
+  /// Optional.
+  core.String? ceritificateName;
+
+  /// The raw contents of the .PEM, .CRT, or .CER file.
+  ///
+  /// Required.
+  core.String? certificate;
+
+  /// Certificate settings within the chrome.networks.certificates namespace.
+  ///
+  /// Optional.
+  core.List<GoogleChromePolicyVersionsV1NetworkSetting>? settings;
+
+  /// The target resource on which this certificate is applied.
+  ///
+  /// The following resources are supported: * Organizational Unit
+  /// ("orgunits/{orgunit_id}")
+  ///
+  /// Required.
+  core.String? targetResource;
+
+  GoogleChromePolicyVersionsV1DefineCertificateRequest({
+    this.ceritificateName,
+    this.certificate,
+    this.settings,
+    this.targetResource,
+  });
+
+  GoogleChromePolicyVersionsV1DefineCertificateRequest.fromJson(core.Map json_)
+      : this(
+          ceritificateName: json_.containsKey('ceritificateName')
+              ? json_['ceritificateName'] as core.String
+              : null,
+          certificate: json_.containsKey('certificate')
+              ? json_['certificate'] as core.String
+              : null,
+          settings: json_.containsKey('settings')
+              ? (json_['settings'] as core.List)
+                  .map((value) =>
+                      GoogleChromePolicyVersionsV1NetworkSetting.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          targetResource: json_.containsKey('targetResource')
+              ? json_['targetResource'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (ceritificateName != null) 'ceritificateName': ceritificateName!,
+        if (certificate != null) 'certificate': certificate!,
+        if (settings != null) 'settings': settings!,
+        if (targetResource != null) 'targetResource': targetResource!,
+      };
+}
+
+/// Response object for creating a certificate.
+class GoogleChromePolicyVersionsV1DefineCertificateResponse {
+  /// The guid of the certificate created by the action.
+  core.String? networkId;
+
+  /// the affiliated settings of the certificate (NOT IMPLEMENTED)
+  core.List<GoogleChromePolicyVersionsV1NetworkSetting>? settings;
+
+  /// the resource at which the certificate is defined.
+  core.String? targetResource;
+
+  GoogleChromePolicyVersionsV1DefineCertificateResponse({
+    this.networkId,
+    this.settings,
+    this.targetResource,
+  });
+
+  GoogleChromePolicyVersionsV1DefineCertificateResponse.fromJson(core.Map json_)
+      : this(
+          networkId: json_.containsKey('networkId')
+              ? json_['networkId'] as core.String
+              : null,
+          settings: json_.containsKey('settings')
+              ? (json_['settings'] as core.List)
+                  .map((value) =>
+                      GoogleChromePolicyVersionsV1NetworkSetting.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          targetResource: json_.containsKey('targetResource')
+              ? json_['targetResource'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (networkId != null) 'networkId': networkId!,
+        if (settings != null) 'settings': settings!,
+        if (targetResource != null) 'targetResource': targetResource!,
+      };
+}
+
+/// Request object for creating a new network.
+class GoogleChromePolicyVersionsV1DefineNetworkRequest {
+  /// Name of the new created network.
+  ///
+  /// Required.
+  core.String? name;
+
+  /// Detailed network settings.
+  ///
+  /// Required.
+  core.List<GoogleChromePolicyVersionsV1NetworkSetting>? settings;
+
+  /// The target resource on which this new network will be defined.
+  ///
+  /// The following resources are supported: * Organizational Unit
+  /// ("orgunits/{orgunit_id}")
+  ///
+  /// Required.
+  core.String? targetResource;
+
+  GoogleChromePolicyVersionsV1DefineNetworkRequest({
+    this.name,
+    this.settings,
+    this.targetResource,
+  });
+
+  GoogleChromePolicyVersionsV1DefineNetworkRequest.fromJson(core.Map json_)
+      : this(
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          settings: json_.containsKey('settings')
+              ? (json_['settings'] as core.List)
+                  .map((value) =>
+                      GoogleChromePolicyVersionsV1NetworkSetting.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          targetResource: json_.containsKey('targetResource')
+              ? json_['targetResource'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (settings != null) 'settings': settings!,
+        if (targetResource != null) 'targetResource': targetResource!,
+      };
+}
+
+/// Response object for creating a network.
+class GoogleChromePolicyVersionsV1DefineNetworkResponse {
+  /// Network ID of the new created network.
+  core.String? networkId;
+
+  /// Detailed network settings of the new created network
+  core.List<GoogleChromePolicyVersionsV1NetworkSetting>? settings;
+
+  /// The target resource on which this new network will be defined.
+  ///
+  /// The following resources are supported: * Organizational Unit
+  /// ("orgunits/{orgunit_id}")
+  core.String? targetResource;
+
+  GoogleChromePolicyVersionsV1DefineNetworkResponse({
+    this.networkId,
+    this.settings,
+    this.targetResource,
+  });
+
+  GoogleChromePolicyVersionsV1DefineNetworkResponse.fromJson(core.Map json_)
+      : this(
+          networkId: json_.containsKey('networkId')
+              ? json_['networkId'] as core.String
+              : null,
+          settings: json_.containsKey('settings')
+              ? (json_['settings'] as core.List)
+                  .map((value) =>
+                      GoogleChromePolicyVersionsV1NetworkSetting.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          targetResource: json_.containsKey('targetResource')
+              ? json_['targetResource'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (networkId != null) 'networkId': networkId!,
+        if (settings != null) 'settings': settings!,
+        if (targetResource != null) 'targetResource': targetResource!,
+      };
+}
+
 /// Request parameters for deleting the policy value of a specific group target.
-class GoogleChromePolicyV1DeleteGroupPolicyRequest {
+class GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest {
   /// The fully qualified name of the policy schema that is being inherited.
   core.String? policySchema;
 
@@ -840,20 +1239,20 @@ class GoogleChromePolicyV1DeleteGroupPolicyRequest {
   /// The target resource must point to a Group.
   ///
   /// Required.
-  GoogleChromePolicyV1PolicyTargetKey? policyTargetKey;
+  GoogleChromePolicyVersionsV1PolicyTargetKey? policyTargetKey;
 
-  GoogleChromePolicyV1DeleteGroupPolicyRequest({
+  GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest({
     this.policySchema,
     this.policyTargetKey,
   });
 
-  GoogleChromePolicyV1DeleteGroupPolicyRequest.fromJson(core.Map json_)
+  GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest.fromJson(core.Map json_)
       : this(
           policySchema: json_.containsKey('policySchema')
               ? json_['policySchema'] as core.String
               : null,
           policyTargetKey: json_.containsKey('policyTargetKey')
-              ? GoogleChromePolicyV1PolicyTargetKey.fromJson(
+              ? GoogleChromePolicyVersionsV1PolicyTargetKey.fromJson(
                   json_['policyTargetKey']
                       as core.Map<core.String, core.dynamic>)
               : null,
@@ -865,9 +1264,33 @@ class GoogleChromePolicyV1DeleteGroupPolicyRequest {
       };
 }
 
+/// Information about any range constraints.
+class GoogleChromePolicyVersionsV1FieldConstraints {
+  /// The allowed range for numeric fields.
+  GoogleChromePolicyVersionsV1NumericRangeConstraint? numericRangeConstraint;
+
+  GoogleChromePolicyVersionsV1FieldConstraints({
+    this.numericRangeConstraint,
+  });
+
+  GoogleChromePolicyVersionsV1FieldConstraints.fromJson(core.Map json_)
+      : this(
+          numericRangeConstraint: json_.containsKey('numericRangeConstraint')
+              ? GoogleChromePolicyVersionsV1NumericRangeConstraint.fromJson(
+                  json_['numericRangeConstraint']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (numericRangeConstraint != null)
+          'numericRangeConstraint': numericRangeConstraint!,
+      };
+}
+
 /// Request parameters for inheriting policy value of a specific org unit target
 /// from the policy value of its parent org unit.
-class GoogleChromePolicyV1InheritOrgUnitPolicyRequest {
+class GoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest {
   /// The fully qualified name of the policy schema that is being inherited.
   core.String? policySchema;
 
@@ -876,20 +1299,21 @@ class GoogleChromePolicyV1InheritOrgUnitPolicyRequest {
   /// The target resource must point to an Org Unit.
   ///
   /// Required.
-  GoogleChromePolicyV1PolicyTargetKey? policyTargetKey;
+  GoogleChromePolicyVersionsV1PolicyTargetKey? policyTargetKey;
 
-  GoogleChromePolicyV1InheritOrgUnitPolicyRequest({
+  GoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest({
     this.policySchema,
     this.policyTargetKey,
   });
 
-  GoogleChromePolicyV1InheritOrgUnitPolicyRequest.fromJson(core.Map json_)
+  GoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest.fromJson(
+      core.Map json_)
       : this(
           policySchema: json_.containsKey('policySchema')
               ? json_['policySchema'] as core.String
               : null,
           policyTargetKey: json_.containsKey('policyTargetKey')
-              ? GoogleChromePolicyV1PolicyTargetKey.fromJson(
+              ? GoogleChromePolicyVersionsV1PolicyTargetKey.fromJson(
                   json_['policyTargetKey']
                       as core.Map<core.String, core.dynamic>)
               : null,
@@ -902,11 +1326,12 @@ class GoogleChromePolicyV1InheritOrgUnitPolicyRequest {
 }
 
 /// Request message for listing the group priority ordering of an app.
-class GoogleChromePolicyV1ListGroupPriorityOrderingRequest {
+class GoogleChromePolicyVersionsV1ListGroupPriorityOrderingRequest {
   /// The namespace of the policy type for the request.
-  ///
-  /// Required.
   core.String? policyNamespace;
+
+  /// The schema name of the policy for the request.
+  core.String? policySchema;
 
   /// The key of the target for which we want to retrieve the group priority
   /// ordering.
@@ -914,20 +1339,25 @@ class GoogleChromePolicyV1ListGroupPriorityOrderingRequest {
   /// The target resource must point to an app.
   ///
   /// Required.
-  GoogleChromePolicyV1PolicyTargetKey? policyTargetKey;
+  GoogleChromePolicyVersionsV1PolicyTargetKey? policyTargetKey;
 
-  GoogleChromePolicyV1ListGroupPriorityOrderingRequest({
+  GoogleChromePolicyVersionsV1ListGroupPriorityOrderingRequest({
     this.policyNamespace,
+    this.policySchema,
     this.policyTargetKey,
   });
 
-  GoogleChromePolicyV1ListGroupPriorityOrderingRequest.fromJson(core.Map json_)
+  GoogleChromePolicyVersionsV1ListGroupPriorityOrderingRequest.fromJson(
+      core.Map json_)
       : this(
           policyNamespace: json_.containsKey('policyNamespace')
               ? json_['policyNamespace'] as core.String
               : null,
+          policySchema: json_.containsKey('policySchema')
+              ? json_['policySchema'] as core.String
+              : null,
           policyTargetKey: json_.containsKey('policyTargetKey')
-              ? GoogleChromePolicyV1PolicyTargetKey.fromJson(
+              ? GoogleChromePolicyVersionsV1PolicyTargetKey.fromJson(
                   json_['policyTargetKey']
                       as core.Map<core.String, core.dynamic>)
               : null,
@@ -935,12 +1365,13 @@ class GoogleChromePolicyV1ListGroupPriorityOrderingRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (policyNamespace != null) 'policyNamespace': policyNamespace!,
+        if (policySchema != null) 'policySchema': policySchema!,
         if (policyTargetKey != null) 'policyTargetKey': policyTargetKey!,
       };
 }
 
 /// Response message for listing the group priority ordering of an app.
-class GoogleChromePolicyV1ListGroupPriorityOrderingResponse {
+class GoogleChromePolicyVersionsV1ListGroupPriorityOrderingResponse {
   /// The group IDs, in priority ordering.
   ///
   /// Output only.
@@ -951,19 +1382,26 @@ class GoogleChromePolicyV1ListGroupPriorityOrderingResponse {
   /// Output only.
   core.String? policyNamespace;
 
+  /// The schema name of the policy for the group IDs.
+  ///
+  /// Output only.
+  core.String? policySchema;
+
   /// The target resource for which the group priority ordering has been
   /// retrieved.
   ///
   /// Output only.
-  GoogleChromePolicyV1PolicyTargetKey? policyTargetKey;
+  GoogleChromePolicyVersionsV1PolicyTargetKey? policyTargetKey;
 
-  GoogleChromePolicyV1ListGroupPriorityOrderingResponse({
+  GoogleChromePolicyVersionsV1ListGroupPriorityOrderingResponse({
     this.groupIds,
     this.policyNamespace,
+    this.policySchema,
     this.policyTargetKey,
   });
 
-  GoogleChromePolicyV1ListGroupPriorityOrderingResponse.fromJson(core.Map json_)
+  GoogleChromePolicyVersionsV1ListGroupPriorityOrderingResponse.fromJson(
+      core.Map json_)
       : this(
           groupIds: json_.containsKey('groupIds')
               ? (json_['groupIds'] as core.List)
@@ -973,8 +1411,11 @@ class GoogleChromePolicyV1ListGroupPriorityOrderingResponse {
           policyNamespace: json_.containsKey('policyNamespace')
               ? json_['policyNamespace'] as core.String
               : null,
+          policySchema: json_.containsKey('policySchema')
+              ? json_['policySchema'] as core.String
+              : null,
           policyTargetKey: json_.containsKey('policyTargetKey')
-              ? GoogleChromePolicyV1PolicyTargetKey.fromJson(
+              ? GoogleChromePolicyVersionsV1PolicyTargetKey.fromJson(
                   json_['policyTargetKey']
                       as core.Map<core.String, core.dynamic>)
               : null,
@@ -983,32 +1424,34 @@ class GoogleChromePolicyV1ListGroupPriorityOrderingResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (groupIds != null) 'groupIds': groupIds!,
         if (policyNamespace != null) 'policyNamespace': policyNamespace!,
+        if (policySchema != null) 'policySchema': policySchema!,
         if (policyTargetKey != null) 'policyTargetKey': policyTargetKey!,
       };
 }
 
 /// Response message for listing policy schemas that match a filter.
-class GoogleChromePolicyV1ListPolicySchemasResponse {
+class GoogleChromePolicyVersionsV1ListPolicySchemasResponse {
   /// The page token used to get the next page of policy schemas.
   core.String? nextPageToken;
 
   /// The list of policy schemas that match the query.
-  core.List<GoogleChromePolicyV1PolicySchema>? policySchemas;
+  core.List<GoogleChromePolicyVersionsV1PolicySchema>? policySchemas;
 
-  GoogleChromePolicyV1ListPolicySchemasResponse({
+  GoogleChromePolicyVersionsV1ListPolicySchemasResponse({
     this.nextPageToken,
     this.policySchemas,
   });
 
-  GoogleChromePolicyV1ListPolicySchemasResponse.fromJson(core.Map json_)
+  GoogleChromePolicyVersionsV1ListPolicySchemasResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_.containsKey('nextPageToken')
               ? json_['nextPageToken'] as core.String
               : null,
           policySchemas: json_.containsKey('policySchemas')
               ? (json_['policySchemas'] as core.List)
-                  .map((value) => GoogleChromePolicyV1PolicySchema.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleChromePolicyVersionsV1PolicySchema.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -1020,16 +1463,16 @@ class GoogleChromePolicyV1ListPolicySchemasResponse {
 }
 
 /// Request parameters for modifying a policy value for a specific group target.
-class GoogleChromePolicyV1ModifyGroupPolicyRequest {
+class GoogleChromePolicyVersionsV1ModifyGroupPolicyRequest {
   /// The key of the target for which we want to modify a policy.
   ///
   /// The target resource must point to a Group.
   ///
   /// Required.
-  GoogleChromePolicyV1PolicyTargetKey? policyTargetKey;
+  GoogleChromePolicyVersionsV1PolicyTargetKey? policyTargetKey;
 
   /// The new value for the policy.
-  GoogleChromePolicyV1PolicyValue? policyValue;
+  GoogleChromePolicyVersionsV1PolicyValue? policyValue;
 
   /// Policy fields to update.
   ///
@@ -1040,21 +1483,21 @@ class GoogleChromePolicyV1ModifyGroupPolicyRequest {
   /// Required.
   core.String? updateMask;
 
-  GoogleChromePolicyV1ModifyGroupPolicyRequest({
+  GoogleChromePolicyVersionsV1ModifyGroupPolicyRequest({
     this.policyTargetKey,
     this.policyValue,
     this.updateMask,
   });
 
-  GoogleChromePolicyV1ModifyGroupPolicyRequest.fromJson(core.Map json_)
+  GoogleChromePolicyVersionsV1ModifyGroupPolicyRequest.fromJson(core.Map json_)
       : this(
           policyTargetKey: json_.containsKey('policyTargetKey')
-              ? GoogleChromePolicyV1PolicyTargetKey.fromJson(
+              ? GoogleChromePolicyVersionsV1PolicyTargetKey.fromJson(
                   json_['policyTargetKey']
                       as core.Map<core.String, core.dynamic>)
               : null,
           policyValue: json_.containsKey('policyValue')
-              ? GoogleChromePolicyV1PolicyValue.fromJson(
+              ? GoogleChromePolicyVersionsV1PolicyValue.fromJson(
                   json_['policyValue'] as core.Map<core.String, core.dynamic>)
               : null,
           updateMask: json_.containsKey('updateMask')
@@ -1071,16 +1514,16 @@ class GoogleChromePolicyV1ModifyGroupPolicyRequest {
 
 /// Request parameters for modifying a policy value for a specific org unit
 /// target.
-class GoogleChromePolicyV1ModifyOrgUnitPolicyRequest {
+class GoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequest {
   /// The key of the target for which we want to modify a policy.
   ///
   /// The target resource must point to an Org Unit.
   ///
   /// Required.
-  GoogleChromePolicyV1PolicyTargetKey? policyTargetKey;
+  GoogleChromePolicyVersionsV1PolicyTargetKey? policyTargetKey;
 
   /// The new value for the policy.
-  GoogleChromePolicyV1PolicyValue? policyValue;
+  GoogleChromePolicyVersionsV1PolicyValue? policyValue;
 
   /// Policy fields to update.
   ///
@@ -1091,21 +1534,22 @@ class GoogleChromePolicyV1ModifyOrgUnitPolicyRequest {
   /// Required.
   core.String? updateMask;
 
-  GoogleChromePolicyV1ModifyOrgUnitPolicyRequest({
+  GoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequest({
     this.policyTargetKey,
     this.policyValue,
     this.updateMask,
   });
 
-  GoogleChromePolicyV1ModifyOrgUnitPolicyRequest.fromJson(core.Map json_)
+  GoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequest.fromJson(
+      core.Map json_)
       : this(
           policyTargetKey: json_.containsKey('policyTargetKey')
-              ? GoogleChromePolicyV1PolicyTargetKey.fromJson(
+              ? GoogleChromePolicyVersionsV1PolicyTargetKey.fromJson(
                   json_['policyTargetKey']
                       as core.Map<core.String, core.dynamic>)
               : null,
           policyValue: json_.containsKey('policyValue')
-              ? GoogleChromePolicyV1PolicyValue.fromJson(
+              ? GoogleChromePolicyVersionsV1PolicyValue.fromJson(
                   json_['policyValue'] as core.Map<core.String, core.dynamic>)
               : null,
           updateMask: json_.containsKey('updateMask')
@@ -1120,10 +1564,69 @@ class GoogleChromePolicyV1ModifyOrgUnitPolicyRequest {
       };
 }
 
+/// A network setting contains network configurations.
+class GoogleChromePolicyVersionsV1NetworkSetting {
+  /// The fully qualified name of the network setting.
+  core.String? policySchema;
+
+  /// The value of the network setting.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? value;
+
+  GoogleChromePolicyVersionsV1NetworkSetting({
+    this.policySchema,
+    this.value,
+  });
+
+  GoogleChromePolicyVersionsV1NetworkSetting.fromJson(core.Map json_)
+      : this(
+          policySchema: json_.containsKey('policySchema')
+              ? json_['policySchema'] as core.String
+              : null,
+          value: json_.containsKey('value')
+              ? json_['value'] as core.Map<core.String, core.dynamic>
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (policySchema != null) 'policySchema': policySchema!,
+        if (value != null) 'value': value!,
+      };
+}
+
+/// A constraint on upper and/or lower bounds, with at least one being set.
+class GoogleChromePolicyVersionsV1NumericRangeConstraint {
+  /// Maximum value.
+  core.String? maximum;
+
+  /// Minimum value.
+  core.String? minimum;
+
+  GoogleChromePolicyVersionsV1NumericRangeConstraint({
+    this.maximum,
+    this.minimum,
+  });
+
+  GoogleChromePolicyVersionsV1NumericRangeConstraint.fromJson(core.Map json_)
+      : this(
+          maximum: json_.containsKey('maximum')
+              ? json_['maximum'] as core.String
+              : null,
+          minimum: json_.containsKey('minimum')
+              ? json_['minimum'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (maximum != null) 'maximum': maximum!,
+        if (minimum != null) 'minimum': minimum!,
+      };
+}
+
 /// Resource representing a policy schema.
-///
-/// Next ID: 14
-class GoogleChromePolicyV1PolicySchema {
+class GoogleChromePolicyVersionsV1PolicySchema {
   /// Specific access restrictions related to this policy.
   ///
   /// Output only.
@@ -1136,12 +1639,10 @@ class GoogleChromePolicyV1PolicySchema {
   /// here will have to be included in the `additionalTargetKeys` map.
   ///
   /// Output only.
-  core.List<GoogleChromePolicyV1AdditionalTargetKeyName>?
+  core.List<GoogleChromePolicyVersionsV1AdditionalTargetKeyName>?
       additionalTargetKeyNames;
 
   /// Title of the category in which a setting belongs.
-  ///
-  /// Output only.
   core.String? categoryTitle;
 
   /// Schema definition using proto descriptor.
@@ -1149,8 +1650,11 @@ class GoogleChromePolicyV1PolicySchema {
 
   /// Detailed description of each field that is part of the schema.
   ///
+  /// Fields are suggested to be displayed by the ordering in this list, not by
+  /// field number.
+  ///
   /// Output only.
-  core.List<GoogleChromePolicyV1PolicySchemaFieldDescription>?
+  core.List<GoogleChromePolicyVersionsV1PolicySchemaFieldDescription>?
       fieldDescriptions;
 
   /// Format: name=customers/{customer}/policySchemas/{schema_namespace}
@@ -1160,15 +1664,12 @@ class GoogleChromePolicyV1PolicySchema {
   /// fields in the schema.
   ///
   /// Output only.
-  core.List<GoogleChromePolicyV1PolicySchemaNoticeDescription>? notices;
+  core.List<GoogleChromePolicyVersionsV1PolicySchemaNoticeDescription>? notices;
 
   /// Current lifecycle information.
   ///
   /// Output only.
   ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle? policyApiLifecycle;
-
-  /// Deprecated field because of typo.
-  ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle? policyApiLifeycle;
 
   /// Description about the policy schema for user consumption.
   ///
@@ -1194,7 +1695,7 @@ class GoogleChromePolicyV1PolicySchema {
   /// Output only.
   core.List<core.String>? validTargetResources;
 
-  GoogleChromePolicyV1PolicySchema({
+  GoogleChromePolicyVersionsV1PolicySchema({
     this.accessRestrictions,
     this.additionalTargetKeyNames,
     this.categoryTitle,
@@ -1203,28 +1704,28 @@ class GoogleChromePolicyV1PolicySchema {
     this.name,
     this.notices,
     this.policyApiLifecycle,
-    this.policyApiLifeycle,
     this.policyDescription,
     this.schemaName,
     this.supportUri,
     this.validTargetResources,
   });
 
-  GoogleChromePolicyV1PolicySchema.fromJson(core.Map json_)
+  GoogleChromePolicyVersionsV1PolicySchema.fromJson(core.Map json_)
       : this(
           accessRestrictions: json_.containsKey('accessRestrictions')
               ? (json_['accessRestrictions'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
               : null,
-          additionalTargetKeyNames:
-              json_.containsKey('additionalTargetKeyNames')
-                  ? (json_['additionalTargetKeyNames'] as core.List)
-                      .map((value) =>
-                          GoogleChromePolicyV1AdditionalTargetKeyName.fromJson(
+          additionalTargetKeyNames: json_
+                  .containsKey('additionalTargetKeyNames')
+              ? (json_['additionalTargetKeyNames'] as core.List)
+                  .map((value) =>
+                      GoogleChromePolicyVersionsV1AdditionalTargetKeyName
+                          .fromJson(
                               value as core.Map<core.String, core.dynamic>))
-                      .toList()
-                  : null,
+                  .toList()
+              : null,
           categoryTitle: json_.containsKey('categoryTitle')
               ? json_['categoryTitle'] as core.String
               : null,
@@ -1235,15 +1736,16 @@ class GoogleChromePolicyV1PolicySchema {
           fieldDescriptions: json_.containsKey('fieldDescriptions')
               ? (json_['fieldDescriptions'] as core.List)
                   .map((value) =>
-                      GoogleChromePolicyV1PolicySchemaFieldDescription.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                      GoogleChromePolicyVersionsV1PolicySchemaFieldDescription
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           notices: json_.containsKey('notices')
               ? (json_['notices'] as core.List)
                   .map((value) =>
-                      GoogleChromePolicyV1PolicySchemaNoticeDescription
+                      GoogleChromePolicyVersionsV1PolicySchemaNoticeDescription
                           .fromJson(
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1251,11 +1753,6 @@ class GoogleChromePolicyV1PolicySchema {
           policyApiLifecycle: json_.containsKey('policyApiLifecycle')
               ? ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle.fromJson(
                   json_['policyApiLifecycle']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          policyApiLifeycle: json_.containsKey('policyApiLifeycle')
-              ? ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle.fromJson(
-                  json_['policyApiLifeycle']
                       as core.Map<core.String, core.dynamic>)
               : null,
           policyDescription: json_.containsKey('policyDescription')
@@ -1286,7 +1783,6 @@ class GoogleChromePolicyV1PolicySchema {
         if (notices != null) 'notices': notices!,
         if (policyApiLifecycle != null)
           'policyApiLifecycle': policyApiLifecycle!,
-        if (policyApiLifeycle != null) 'policyApiLifeycle': policyApiLifeycle!,
         if (policyDescription != null) 'policyDescription': policyDescription!,
         if (schemaName != null) 'schemaName': schemaName!,
         if (supportUri != null) 'supportUri': supportUri!,
@@ -1297,7 +1793,7 @@ class GoogleChromePolicyV1PolicySchema {
 
 /// The field and the value it must have for another field to be allowed to be
 /// set.
-class GoogleChromePolicyV1PolicySchemaFieldDependencies {
+class GoogleChromePolicyVersionsV1PolicySchemaFieldDependencies {
   /// The source field which this field depends on.
   core.String? sourceField;
 
@@ -1305,12 +1801,13 @@ class GoogleChromePolicyV1PolicySchemaFieldDependencies {
   /// be set.
   core.String? sourceFieldValue;
 
-  GoogleChromePolicyV1PolicySchemaFieldDependencies({
+  GoogleChromePolicyVersionsV1PolicySchemaFieldDependencies({
     this.sourceField,
     this.sourceFieldValue,
   });
 
-  GoogleChromePolicyV1PolicySchemaFieldDependencies.fromJson(core.Map json_)
+  GoogleChromePolicyVersionsV1PolicySchemaFieldDependencies.fromJson(
+      core.Map json_)
       : this(
           sourceField: json_.containsKey('sourceField')
               ? json_['sourceField'] as core.String
@@ -1328,12 +1825,23 @@ class GoogleChromePolicyV1PolicySchemaFieldDependencies {
 
 /// Provides detailed information for a particular field that is part of a
 /// PolicySchema.
-class GoogleChromePolicyV1PolicySchemaFieldDescription {
+class GoogleChromePolicyVersionsV1PolicySchemaFieldDescription {
+  /// Client default if the policy is unset.
+  ///
+  /// Output only.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Object? defaultValue;
+
   /// Use name and field_description instead.
   ///
   /// The description for the field.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? description;
 
   /// The name of the field for associated with this description.
@@ -1341,13 +1849,19 @@ class GoogleChromePolicyV1PolicySchemaFieldDescription {
   /// Output only.
   core.String? field;
 
+  /// Information on any input constraints associated on the values for the
+  /// field.
+  ///
+  /// Output only.
+  GoogleChromePolicyVersionsV1FieldConstraints? fieldConstraints;
+
   /// Provides a list of fields and values.
   ///
   /// At least one of the fields must have the corresponding value in order for
   /// this field to be allowed to be set.
   ///
   /// Output only.
-  core.List<GoogleChromePolicyV1PolicySchemaFieldDependencies>?
+  core.List<GoogleChromePolicyVersionsV1PolicySchemaFieldDependencies>?
       fieldDependencies;
 
   /// The description of the field.
@@ -1364,7 +1878,7 @@ class GoogleChromePolicyV1PolicySchemaFieldDescription {
   /// description for these values.
   ///
   /// Output only.
-  core.List<GoogleChromePolicyV1PolicySchemaFieldKnownValueDescription>?
+  core.List<GoogleChromePolicyVersionsV1PolicySchemaFieldKnownValueDescription>?
       knownValueDescriptions;
 
   /// The name of the field.
@@ -1375,19 +1889,25 @@ class GoogleChromePolicyV1PolicySchemaFieldDescription {
   /// Provides the description of the fields nested in this field, if the field
   /// is a message type that defines multiple fields.
   ///
+  /// Fields are suggested to be displayed by the ordering in this list, not by
+  /// field number.
+  ///
   /// Output only.
-  core.List<GoogleChromePolicyV1PolicySchemaFieldDescription>?
+  core.List<GoogleChromePolicyVersionsV1PolicySchemaFieldDescription>?
       nestedFieldDescriptions;
 
   /// Provides a list of fields that are required to be set if this field has a
   /// certain value.
   ///
   /// Output only.
-  core.List<GoogleChromePolicyV1PolicySchemaRequiredItems>? requiredItems;
+  core.List<GoogleChromePolicyVersionsV1PolicySchemaRequiredItems>?
+      requiredItems;
 
-  GoogleChromePolicyV1PolicySchemaFieldDescription({
+  GoogleChromePolicyVersionsV1PolicySchemaFieldDescription({
+    this.defaultValue,
     this.description,
     this.field,
+    this.fieldConstraints,
     this.fieldDependencies,
     this.fieldDescription,
     this.inputConstraint,
@@ -1397,17 +1917,25 @@ class GoogleChromePolicyV1PolicySchemaFieldDescription {
     this.requiredItems,
   });
 
-  GoogleChromePolicyV1PolicySchemaFieldDescription.fromJson(core.Map json_)
+  GoogleChromePolicyVersionsV1PolicySchemaFieldDescription.fromJson(
+      core.Map json_)
       : this(
+          defaultValue:
+              json_.containsKey('defaultValue') ? json_['defaultValue'] : null,
           description: json_.containsKey('description')
               ? json_['description'] as core.String
               : null,
           field:
               json_.containsKey('field') ? json_['field'] as core.String : null,
+          fieldConstraints: json_.containsKey('fieldConstraints')
+              ? GoogleChromePolicyVersionsV1FieldConstraints.fromJson(
+                  json_['fieldConstraints']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           fieldDependencies: json_.containsKey('fieldDependencies')
               ? (json_['fieldDependencies'] as core.List)
                   .map((value) =>
-                      GoogleChromePolicyV1PolicySchemaFieldDependencies
+                      GoogleChromePolicyVersionsV1PolicySchemaFieldDependencies
                           .fromJson(
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1421,7 +1949,7 @@ class GoogleChromePolicyV1PolicySchemaFieldDescription {
           knownValueDescriptions: json_.containsKey('knownValueDescriptions')
               ? (json_['knownValueDescriptions'] as core.List)
                   .map((value) =>
-                      GoogleChromePolicyV1PolicySchemaFieldKnownValueDescription
+                      GoogleChromePolicyVersionsV1PolicySchemaFieldKnownValueDescription
                           .fromJson(
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
@@ -1430,22 +1958,26 @@ class GoogleChromePolicyV1PolicySchemaFieldDescription {
           nestedFieldDescriptions: json_.containsKey('nestedFieldDescriptions')
               ? (json_['nestedFieldDescriptions'] as core.List)
                   .map((value) =>
-                      GoogleChromePolicyV1PolicySchemaFieldDescription.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                      GoogleChromePolicyVersionsV1PolicySchemaFieldDescription
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
           requiredItems: json_.containsKey('requiredItems')
               ? (json_['requiredItems'] as core.List)
                   .map((value) =>
-                      GoogleChromePolicyV1PolicySchemaRequiredItems.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
+                      GoogleChromePolicyVersionsV1PolicySchemaRequiredItems
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (defaultValue != null) 'defaultValue': defaultValue!,
         if (description != null) 'description': description!,
         if (field != null) 'field': field!,
+        if (fieldConstraints != null) 'fieldConstraints': fieldConstraints!,
         if (fieldDependencies != null) 'fieldDependencies': fieldDependencies!,
         if (fieldDescription != null) 'fieldDescription': fieldDescription!,
         if (inputConstraint != null) 'inputConstraint': inputConstraint!,
@@ -1460,27 +1992,42 @@ class GoogleChromePolicyV1PolicySchemaFieldDescription {
 
 /// Provides detailed information about a known value that is allowed for a
 /// particular field in a PolicySchema.
-class GoogleChromePolicyV1PolicySchemaFieldKnownValueDescription {
+class GoogleChromePolicyVersionsV1PolicySchemaFieldKnownValueDescription {
   /// Additional description for this value.
   ///
   /// Output only.
   core.String? description;
+
+  /// Field conditions required for this value to be valid.
+  ///
+  /// Output only.
+  core.List<GoogleChromePolicyVersionsV1PolicySchemaFieldDependencies>?
+      fieldDependencies;
 
   /// The string represenstation of the value that can be set for the field.
   ///
   /// Output only.
   core.String? value;
 
-  GoogleChromePolicyV1PolicySchemaFieldKnownValueDescription({
+  GoogleChromePolicyVersionsV1PolicySchemaFieldKnownValueDescription({
     this.description,
+    this.fieldDependencies,
     this.value,
   });
 
-  GoogleChromePolicyV1PolicySchemaFieldKnownValueDescription.fromJson(
+  GoogleChromePolicyVersionsV1PolicySchemaFieldKnownValueDescription.fromJson(
       core.Map json_)
       : this(
           description: json_.containsKey('description')
               ? json_['description'] as core.String
+              : null,
+          fieldDependencies: json_.containsKey('fieldDependencies')
+              ? (json_['fieldDependencies'] as core.List)
+                  .map((value) =>
+                      GoogleChromePolicyVersionsV1PolicySchemaFieldDependencies
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
               : null,
           value:
               json_.containsKey('value') ? json_['value'] as core.String : null,
@@ -1488,13 +2035,14 @@ class GoogleChromePolicyV1PolicySchemaFieldKnownValueDescription {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
+        if (fieldDependencies != null) 'fieldDependencies': fieldDependencies!,
         if (value != null) 'value': value!,
       };
 }
 
 /// Provides special notice messages related to a particular value in a field
 /// that is part of a PolicySchema.
-class GoogleChromePolicyV1PolicySchemaNoticeDescription {
+class GoogleChromePolicyVersionsV1PolicySchemaNoticeDescription {
   /// Whether the user needs to acknowledge the notice message before the value
   /// can be set.
   ///
@@ -1519,14 +2067,15 @@ class GoogleChromePolicyV1PolicySchemaNoticeDescription {
   /// Output only.
   core.String? noticeValue;
 
-  GoogleChromePolicyV1PolicySchemaNoticeDescription({
+  GoogleChromePolicyVersionsV1PolicySchemaNoticeDescription({
     this.acknowledgementRequired,
     this.field,
     this.noticeMessage,
     this.noticeValue,
   });
 
-  GoogleChromePolicyV1PolicySchemaNoticeDescription.fromJson(core.Map json_)
+  GoogleChromePolicyVersionsV1PolicySchemaNoticeDescription.fromJson(
+      core.Map json_)
       : this(
           acknowledgementRequired: json_.containsKey('acknowledgementRequired')
               ? json_['acknowledgementRequired'] as core.bool
@@ -1551,7 +2100,7 @@ class GoogleChromePolicyV1PolicySchemaNoticeDescription {
 }
 
 /// The fields that will become required based on the value of this field.
-class GoogleChromePolicyV1PolicySchemaRequiredItems {
+class GoogleChromePolicyVersionsV1PolicySchemaRequiredItems {
   /// The value(s) of the field that provoke required field enforcement.
   ///
   /// An empty field_conditions implies that any value assigned to this field
@@ -1561,12 +2110,12 @@ class GoogleChromePolicyV1PolicySchemaRequiredItems {
   /// The fields that are required as a consequence of the field conditions.
   core.List<core.String>? requiredFields;
 
-  GoogleChromePolicyV1PolicySchemaRequiredItems({
+  GoogleChromePolicyVersionsV1PolicySchemaRequiredItems({
     this.fieldConditions,
     this.requiredFields,
   });
 
-  GoogleChromePolicyV1PolicySchemaRequiredItems.fromJson(core.Map json_)
+  GoogleChromePolicyVersionsV1PolicySchemaRequiredItems.fromJson(core.Map json_)
       : this(
           fieldConditions: json_.containsKey('fieldConditions')
               ? (json_['fieldConditions'] as core.List)
@@ -1587,7 +2136,7 @@ class GoogleChromePolicyV1PolicySchemaRequiredItems {
 }
 
 /// The key used to identify the target on which the policy will be applied.
-class GoogleChromePolicyV1PolicyTargetKey {
+class GoogleChromePolicyVersionsV1PolicyTargetKey {
   /// Map containing the additional target key name and value pairs used to
   /// further identify the target of the policy.
   core.Map<core.String, core.String>? additionalTargetKeys;
@@ -1598,20 +2147,20 @@ class GoogleChromePolicyV1PolicyTargetKey {
   /// ("orgunits/{orgunit_id}") * Group ("groups/{group_id}")
   core.String? targetResource;
 
-  GoogleChromePolicyV1PolicyTargetKey({
+  GoogleChromePolicyVersionsV1PolicyTargetKey({
     this.additionalTargetKeys,
     this.targetResource,
   });
 
-  GoogleChromePolicyV1PolicyTargetKey.fromJson(core.Map json_)
+  GoogleChromePolicyVersionsV1PolicyTargetKey.fromJson(core.Map json_)
       : this(
           additionalTargetKeys: json_.containsKey('additionalTargetKeys')
               ? (json_['additionalTargetKeys']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -1628,7 +2177,7 @@ class GoogleChromePolicyV1PolicyTargetKey {
 }
 
 /// A particular value for a policy managed by the service.
-class GoogleChromePolicyV1PolicyValue {
+class GoogleChromePolicyVersionsV1PolicyValue {
   /// The fully qualified name of the policy schema associated with this policy.
   core.String? policySchema;
 
@@ -1639,12 +2188,12 @@ class GoogleChromePolicyV1PolicyValue {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? value;
 
-  GoogleChromePolicyV1PolicyValue({
+  GoogleChromePolicyVersionsV1PolicyValue({
     this.policySchema,
     this.value,
   });
 
-  GoogleChromePolicyV1PolicyValue.fromJson(core.Map json_)
+  GoogleChromePolicyVersionsV1PolicyValue.fromJson(core.Map json_)
       : this(
           policySchema: json_.containsKey('policySchema')
               ? json_['policySchema'] as core.String
@@ -1660,8 +2209,86 @@ class GoogleChromePolicyV1PolicyValue {
       };
 }
 
+/// Request object for removing a certificate.
+class GoogleChromePolicyVersionsV1RemoveCertificateRequest {
+  /// The GUID of the certificate to remove.
+  ///
+  /// Required.
+  core.String? networkId;
+
+  /// The target resource on which this certificate will be removed.
+  ///
+  /// The following resources are supported: * Organizational Unit
+  /// ("orgunits/{orgunit_id}")
+  ///
+  /// Required.
+  core.String? targetResource;
+
+  GoogleChromePolicyVersionsV1RemoveCertificateRequest({
+    this.networkId,
+    this.targetResource,
+  });
+
+  GoogleChromePolicyVersionsV1RemoveCertificateRequest.fromJson(core.Map json_)
+      : this(
+          networkId: json_.containsKey('networkId')
+              ? json_['networkId'] as core.String
+              : null,
+          targetResource: json_.containsKey('targetResource')
+              ? json_['targetResource'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (networkId != null) 'networkId': networkId!,
+        if (targetResource != null) 'targetResource': targetResource!,
+      };
+}
+
+/// Response object for removing a certificate.
+typedef GoogleChromePolicyVersionsV1RemoveCertificateResponse = $Empty;
+
+/// Request object for removing a network
+class GoogleChromePolicyVersionsV1RemoveNetworkRequest {
+  /// The GUID of the network to remove.
+  ///
+  /// Required.
+  core.String? networkId;
+
+  /// The target resource on which this network will be removed.
+  ///
+  /// The following resources are supported: * Organizational Unit
+  /// ("orgunits/{orgunit_id}")
+  ///
+  /// Required.
+  core.String? targetResource;
+
+  GoogleChromePolicyVersionsV1RemoveNetworkRequest({
+    this.networkId,
+    this.targetResource,
+  });
+
+  GoogleChromePolicyVersionsV1RemoveNetworkRequest.fromJson(core.Map json_)
+      : this(
+          networkId: json_.containsKey('networkId')
+              ? json_['networkId'] as core.String
+              : null,
+          targetResource: json_.containsKey('targetResource')
+              ? json_['targetResource'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (networkId != null) 'networkId': networkId!,
+        if (targetResource != null) 'targetResource': targetResource!,
+      };
+}
+
+/// Response object for removing a network.
+typedef GoogleChromePolicyVersionsV1RemoveNetworkResponse = $Empty;
+
 /// Request message for getting the resolved policy value for a specific target.
-class GoogleChromePolicyV1ResolveRequest {
+class GoogleChromePolicyVersionsV1ResolveRequest {
   /// The maximum number of policies to return, defaults to 100 and has a
   /// maximum of 1000.
   core.int? pageSize;
@@ -1676,26 +2303,26 @@ class GoogleChromePolicyV1ResolveRequest {
   /// leaf portion of the schema name. Wildcards cannot be used in namespace
   /// directly. Please read
   /// https://developers.google.com/chrome/policy/guides/policy-schemas for
-  /// details on schema namepsaces. For example: Valid: "chrome.users.*",
+  /// details on schema namespaces. For example: Valid: "chrome.users.*",
   /// "chrome.users.apps.*", "chrome.printers.*" Invalid: "*", "*.users",
   /// "chrome.*", "chrome.*.apps.*"
+  ///
+  /// Required.
   core.String? policySchemaFilter;
 
   /// The key of the target resource on which the policies should be resolved.
   ///
-  /// The target resource must point to an Org Unit.
-  ///
   /// Required.
-  GoogleChromePolicyV1PolicyTargetKey? policyTargetKey;
+  GoogleChromePolicyVersionsV1PolicyTargetKey? policyTargetKey;
 
-  GoogleChromePolicyV1ResolveRequest({
+  GoogleChromePolicyVersionsV1ResolveRequest({
     this.pageSize,
     this.pageToken,
     this.policySchemaFilter,
     this.policyTargetKey,
   });
 
-  GoogleChromePolicyV1ResolveRequest.fromJson(core.Map json_)
+  GoogleChromePolicyVersionsV1ResolveRequest.fromJson(core.Map json_)
       : this(
           pageSize: json_.containsKey('pageSize')
               ? json_['pageSize'] as core.int
@@ -1707,7 +2334,7 @@ class GoogleChromePolicyV1ResolveRequest {
               ? json_['policySchemaFilter'] as core.String
               : null,
           policyTargetKey: json_.containsKey('policyTargetKey')
-              ? GoogleChromePolicyV1PolicyTargetKey.fromJson(
+              ? GoogleChromePolicyVersionsV1PolicyTargetKey.fromJson(
                   json_['policyTargetKey']
                       as core.Map<core.String, core.dynamic>)
               : null,
@@ -1724,28 +2351,29 @@ class GoogleChromePolicyV1ResolveRequest {
 
 /// Response message for getting the resolved policy value for a specific
 /// target.
-class GoogleChromePolicyV1ResolveResponse {
+class GoogleChromePolicyVersionsV1ResolveResponse {
   /// The page token used to get the next set of resolved policies found by the
   /// request.
   core.String? nextPageToken;
 
   /// The list of resolved policies found by the resolve request.
-  core.List<GoogleChromePolicyV1ResolvedPolicy>? resolvedPolicies;
+  core.List<GoogleChromePolicyVersionsV1ResolvedPolicy>? resolvedPolicies;
 
-  GoogleChromePolicyV1ResolveResponse({
+  GoogleChromePolicyVersionsV1ResolveResponse({
     this.nextPageToken,
     this.resolvedPolicies,
   });
 
-  GoogleChromePolicyV1ResolveResponse.fromJson(core.Map json_)
+  GoogleChromePolicyVersionsV1ResolveResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_.containsKey('nextPageToken')
               ? json_['nextPageToken'] as core.String
               : null,
           resolvedPolicies: json_.containsKey('resolvedPolicies')
               ? (json_['resolvedPolicies'] as core.List)
-                  .map((value) => GoogleChromePolicyV1ResolvedPolicy.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
+                  .map((value) =>
+                      GoogleChromePolicyVersionsV1ResolvedPolicy.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
         );
@@ -1757,7 +2385,7 @@ class GoogleChromePolicyV1ResolveResponse {
 }
 
 /// The resolved value of a policy for a given target.
-class GoogleChromePolicyV1ResolvedPolicy {
+class GoogleChromePolicyVersionsV1ResolvedPolicy {
   /// The added source key establishes at which level an entity was explicitly
   /// added for management.
   ///
@@ -1769,7 +2397,7 @@ class GoogleChromePolicyV1ResolvedPolicy {
   /// example: standard user or device policies.
   ///
   /// Output only.
-  GoogleChromePolicyV1PolicyTargetKey? addedSourceKey;
+  GoogleChromePolicyVersionsV1PolicyTargetKey? addedSourceKey;
 
   /// The source resource from which this policy value is obtained.
   ///
@@ -1779,42 +2407,42 @@ class GoogleChromePolicyV1ResolvedPolicy {
   /// for the customer.
   ///
   /// Output only.
-  GoogleChromePolicyV1PolicyTargetKey? sourceKey;
+  GoogleChromePolicyVersionsV1PolicyTargetKey? sourceKey;
 
   /// The target resource for which the resolved policy value applies.
   ///
   /// Output only.
-  GoogleChromePolicyV1PolicyTargetKey? targetKey;
+  GoogleChromePolicyVersionsV1PolicyTargetKey? targetKey;
 
   /// The resolved value of the policy.
   ///
   /// Output only.
-  GoogleChromePolicyV1PolicyValue? value;
+  GoogleChromePolicyVersionsV1PolicyValue? value;
 
-  GoogleChromePolicyV1ResolvedPolicy({
+  GoogleChromePolicyVersionsV1ResolvedPolicy({
     this.addedSourceKey,
     this.sourceKey,
     this.targetKey,
     this.value,
   });
 
-  GoogleChromePolicyV1ResolvedPolicy.fromJson(core.Map json_)
+  GoogleChromePolicyVersionsV1ResolvedPolicy.fromJson(core.Map json_)
       : this(
           addedSourceKey: json_.containsKey('addedSourceKey')
-              ? GoogleChromePolicyV1PolicyTargetKey.fromJson(
+              ? GoogleChromePolicyVersionsV1PolicyTargetKey.fromJson(
                   json_['addedSourceKey']
                       as core.Map<core.String, core.dynamic>)
               : null,
           sourceKey: json_.containsKey('sourceKey')
-              ? GoogleChromePolicyV1PolicyTargetKey.fromJson(
+              ? GoogleChromePolicyVersionsV1PolicyTargetKey.fromJson(
                   json_['sourceKey'] as core.Map<core.String, core.dynamic>)
               : null,
           targetKey: json_.containsKey('targetKey')
-              ? GoogleChromePolicyV1PolicyTargetKey.fromJson(
+              ? GoogleChromePolicyVersionsV1PolicyTargetKey.fromJson(
                   json_['targetKey'] as core.Map<core.String, core.dynamic>)
               : null,
           value: json_.containsKey('value')
-              ? GoogleChromePolicyV1PolicyValue.fromJson(
+              ? GoogleChromePolicyVersionsV1PolicyValue.fromJson(
                   json_['value'] as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -1828,16 +2456,17 @@ class GoogleChromePolicyV1ResolvedPolicy {
 }
 
 /// Request message for updating the group priority ordering of an app.
-class GoogleChromePolicyV1UpdateGroupPriorityOrderingRequest {
+class GoogleChromePolicyVersionsV1UpdateGroupPriorityOrderingRequest {
   /// The group IDs, in desired priority ordering.
   ///
   /// Required.
   core.List<core.String>? groupIds;
 
   /// The namespace of the policy type for the request.
-  ///
-  /// Required.
   core.String? policyNamespace;
+
+  /// The schema name of the policy for the request.
+  core.String? policySchema;
 
   /// The key of the target for which we want to update the group priority
   /// ordering.
@@ -1845,15 +2474,16 @@ class GoogleChromePolicyV1UpdateGroupPriorityOrderingRequest {
   /// The target resource must point to an app.
   ///
   /// Required.
-  GoogleChromePolicyV1PolicyTargetKey? policyTargetKey;
+  GoogleChromePolicyVersionsV1PolicyTargetKey? policyTargetKey;
 
-  GoogleChromePolicyV1UpdateGroupPriorityOrderingRequest({
+  GoogleChromePolicyVersionsV1UpdateGroupPriorityOrderingRequest({
     this.groupIds,
     this.policyNamespace,
+    this.policySchema,
     this.policyTargetKey,
   });
 
-  GoogleChromePolicyV1UpdateGroupPriorityOrderingRequest.fromJson(
+  GoogleChromePolicyVersionsV1UpdateGroupPriorityOrderingRequest.fromJson(
       core.Map json_)
       : this(
           groupIds: json_.containsKey('groupIds')
@@ -1864,8 +2494,11 @@ class GoogleChromePolicyV1UpdateGroupPriorityOrderingRequest {
           policyNamespace: json_.containsKey('policyNamespace')
               ? json_['policyNamespace'] as core.String
               : null,
+          policySchema: json_.containsKey('policySchema')
+              ? json_['policySchema'] as core.String
+              : null,
           policyTargetKey: json_.containsKey('policyTargetKey')
-              ? GoogleChromePolicyV1PolicyTargetKey.fromJson(
+              ? GoogleChromePolicyVersionsV1PolicyTargetKey.fromJson(
                   json_['policyTargetKey']
                       as core.Map<core.String, core.dynamic>)
               : null,
@@ -1874,14 +2507,13 @@ class GoogleChromePolicyV1UpdateGroupPriorityOrderingRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (groupIds != null) 'groupIds': groupIds!,
         if (policyNamespace != null) 'policyNamespace': policyNamespace!,
+        if (policySchema != null) 'policySchema': policySchema!,
         if (policyTargetKey != null) 'policyTargetKey': policyTargetKey!,
       };
 }
 
 /// Request message for uploading a file for a policy.
-///
-/// Next ID: 5
-class GoogleChromePolicyV1UploadPolicyFileRequest {
+class GoogleChromePolicyVersionsV1UploadPolicyFileRequest {
   /// The fully qualified policy schema and field name this file is uploaded
   /// for.
   ///
@@ -1890,11 +2522,11 @@ class GoogleChromePolicyV1UploadPolicyFileRequest {
   /// Required.
   core.String? policyField;
 
-  GoogleChromePolicyV1UploadPolicyFileRequest({
+  GoogleChromePolicyVersionsV1UploadPolicyFileRequest({
     this.policyField,
   });
 
-  GoogleChromePolicyV1UploadPolicyFileRequest.fromJson(core.Map json_)
+  GoogleChromePolicyVersionsV1UploadPolicyFileRequest.fromJson(core.Map json_)
       : this(
           policyField: json_.containsKey('policyField')
               ? json_['policyField'] as core.String
@@ -1907,17 +2539,15 @@ class GoogleChromePolicyV1UploadPolicyFileRequest {
 }
 
 /// Response message for downloading an uploaded file.
-///
-/// Next ID: 2
-class GoogleChromePolicyV1UploadPolicyFileResponse {
+class GoogleChromePolicyVersionsV1UploadPolicyFileResponse {
   /// The uri for end user to download the file.
   core.String? downloadUri;
 
-  GoogleChromePolicyV1UploadPolicyFileResponse({
+  GoogleChromePolicyVersionsV1UploadPolicyFileResponse({
     this.downloadUri,
   });
 
-  GoogleChromePolicyV1UploadPolicyFileResponse.fromJson(core.Map json_)
+  GoogleChromePolicyVersionsV1UploadPolicyFileResponse.fromJson(core.Map json_)
       : this(
           downloadUri: json_.containsKey('downloadUri')
               ? json_['downloadUri'] as core.String

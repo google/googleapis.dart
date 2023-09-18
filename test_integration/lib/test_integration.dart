@@ -90,12 +90,13 @@ Future<AccessCredentials> _credentials(
 
     credentials = AccessCredentials.fromJson(json);
 
-    if (credentials.scopes.toSet().containsAll(scopes)) {
-      credentials = await refreshCredentials(clientId, credentials, client);
-    } else {
+    if (credentials.accessToken.hasExpired ||
+        !credentials.scopes.toSet().containsAll(scopes)) {
       credentials = null;
       stderr.writeln(
-          'Cached credentials lack the requested scopes - doing auth!');
+        'Cached credentials have expired or the requested scopes mismatch - '
+        'doing auth!',
+      );
     }
   }
 
@@ -104,6 +105,7 @@ Future<AccessCredentials> _credentials(
     scopes,
     client,
     _prompt,
+    listenPort: 8181,
   );
 
   credentialsFile.writeAsStringSync(prettyJsonEncode(credentials));

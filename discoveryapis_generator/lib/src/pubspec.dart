@@ -5,7 +5,7 @@
 /// Specification of the pubspec.yaml for a generated package.
 class Pubspec {
   final String name;
-  final String version;
+  final String? version;
   final String description;
   final String? author;
   final String? repository;
@@ -24,10 +24,10 @@ class Pubspec {
           if (extraDevDependencies != null) ...extraDevDependencies,
         };
 
-  String get sdkConstraint => '>=2.17.0 <3.0.0';
+  String get sdkConstraint => '^3.0.0';
 
   static const dependencies = {
-    'http': '">=0.13.0 <0.14.0"',
+    'http': '">=0.13.0 <2.0.0"',
     '_discoveryapis_commons': '^1.0.0',
   };
 

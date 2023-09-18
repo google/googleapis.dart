@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Artifact Registry API - v1
@@ -28,6 +27,9 @@
 ///       - [ProjectsLocationsRepositoriesAptArtifactsResource]
 ///       - [ProjectsLocationsRepositoriesDockerImagesResource]
 ///       - [ProjectsLocationsRepositoriesFilesResource]
+///       - [ProjectsLocationsRepositoriesGoModulesResource]
+///       - [ProjectsLocationsRepositoriesGoogetArtifactsResource]
+///       - [ProjectsLocationsRepositoriesKfpArtifactsResource]
 ///       - [ProjectsLocationsRepositoriesMavenArtifactsResource]
 ///       - [ProjectsLocationsRepositoriesNpmPackagesResource]
 ///       - [ProjectsLocationsRepositoriesPackagesResource]
@@ -35,7 +37,7 @@
 ///         - [ProjectsLocationsRepositoriesPackagesVersionsResource]
 ///       - [ProjectsLocationsRepositoriesPythonPackagesResource]
 ///       - [ProjectsLocationsRepositoriesYumArtifactsResource]
-library artifactregistry.v1;
+library artifactregistry_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -44,20 +46,19 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show
         ApiRequestError,
+        ByteRange,
         DetailedApiRequestError,
-        Media,
-        UploadOptions,
-        ResumableUploadOptions,
         DownloadOptions,
+        Media,
         PartialDownloadOptions,
-        ByteRange;
+        ResumableUploadOptions,
+        UploadOptions;
 
 /// Store and manage build artifacts in a scalable and integrated service built
 /// on Google infrastructure.
@@ -220,6 +221,43 @@ class ProjectsLocationsResource {
     return Location.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Retrieves the VPCSC Config for the Project.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the VPCSCConfig resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/vpcscConfig$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [VPCSCConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<VPCSCConfig> getVpcscConfig(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return VPCSCConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Lists information about the supported locations for this service.
   ///
   /// Request parameters:
@@ -269,6 +307,54 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the VPCSC Config for the Project.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the project's VPC SC Config. Always of the form:
+  /// projects/{projectID}/locations/{location}/vpcscConfig In update request:
+  /// never set In response: always set
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/vpcscConfig$`.
+  ///
+  /// [updateMask] - Field mask to support partial updates.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [VPCSCConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<VPCSCConfig> updateVpcscConfig(
+    VPCSCConfig request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return VPCSCConfig.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -328,6 +414,12 @@ class ProjectsLocationsRepositoriesResource {
       ProjectsLocationsRepositoriesDockerImagesResource(_requester);
   ProjectsLocationsRepositoriesFilesResource get files =>
       ProjectsLocationsRepositoriesFilesResource(_requester);
+  ProjectsLocationsRepositoriesGoModulesResource get goModules =>
+      ProjectsLocationsRepositoriesGoModulesResource(_requester);
+  ProjectsLocationsRepositoriesGoogetArtifactsResource get googetArtifacts =>
+      ProjectsLocationsRepositoriesGoogetArtifactsResource(_requester);
+  ProjectsLocationsRepositoriesKfpArtifactsResource get kfpArtifacts =>
+      ProjectsLocationsRepositoriesKfpArtifactsResource(_requester);
   ProjectsLocationsRepositoriesMavenArtifactsResource get mavenArtifacts =>
       ProjectsLocationsRepositoriesMavenArtifactsResource(_requester);
   ProjectsLocationsRepositoriesNpmPackagesResource get npmPackages =>
@@ -928,7 +1020,7 @@ class ProjectsLocationsRepositoriesFilesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the file to retrieve.
+  /// [name] - Required. The name of the file to retrieve.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+/files/.*$`.
   ///
@@ -965,8 +1057,8 @@ class ProjectsLocationsRepositoriesFilesResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The name of the repository whose files will be listed. For
-  /// example: "projects/p1/locations/us-central1/repositories/repo1
+  /// [parent] - Required. The name of the repository whose files will be
+  /// listed. For example: "projects/p1/locations/us-central1/repositories/repo1
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+$`.
   ///
@@ -1019,6 +1111,254 @@ class ProjectsLocationsRepositoriesFilesResource {
       queryParams: queryParams_,
     );
     return ListFilesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsRepositoriesGoModulesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsRepositoriesGoModulesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Directly uploads a Go module.
+  ///
+  /// The returned Operation will complete once the Go module is uploaded.
+  /// Package, Version, and File resources are created based on the uploaded Go
+  /// module.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The resource name of the repository where the Go module will be
+  /// uploaded.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// [uploadMedia] - The media to upload.
+  ///
+  /// Completes with a [UploadGoModuleMediaResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<UploadGoModuleMediaResponse> upload(
+    UploadGoModuleRequest request,
+    core.String parent, {
+    core.String? $fields,
+    commons.Media? uploadMedia,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    core.String url_;
+    if (uploadMedia == null) {
+      url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/goModules:create';
+    } else {
+      url_ =
+          '/upload/v1/' + core.Uri.encodeFull('$parent') + '/goModules:create';
+    }
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+      uploadMedia: uploadMedia,
+      uploadOptions: commons.UploadOptions.defaultOptions,
+    );
+    return UploadGoModuleMediaResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsRepositoriesGoogetArtifactsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsRepositoriesGoogetArtifactsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Imports GooGet artifacts.
+  ///
+  /// The returned Operation will complete once the resources are imported.
+  /// Package, Version, and File resources are created based on the imported
+  /// artifacts. Imported artifacts that conflict with existing resources are
+  /// ignored.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The name of the parent resource where the artifacts will be
+  /// imported.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> import(
+    ImportGoogetArtifactsRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/googetArtifacts:import';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Directly uploads a GooGet artifact.
+  ///
+  /// The returned Operation will complete once the resources are uploaded.
+  /// Package, Version, and File resources are created based on the imported
+  /// artifact. Imported artifacts that conflict with existing resources are
+  /// ignored.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The name of the parent resource where the artifacts will be
+  /// uploaded.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// [uploadMedia] - The media to upload.
+  ///
+  /// Completes with a [UploadGoogetArtifactMediaResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<UploadGoogetArtifactMediaResponse> upload(
+    UploadGoogetArtifactRequest request,
+    core.String parent, {
+    core.String? $fields,
+    commons.Media? uploadMedia,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    core.String url_;
+    if (uploadMedia == null) {
+      url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/googetArtifacts:create';
+    } else {
+      url_ = '/upload/v1/' +
+          core.Uri.encodeFull('$parent') +
+          '/googetArtifacts:create';
+    }
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+      uploadMedia: uploadMedia,
+      uploadOptions: commons.UploadOptions.defaultOptions,
+    );
+    return UploadGoogetArtifactMediaResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsRepositoriesKfpArtifactsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsRepositoriesKfpArtifactsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Directly uploads a KFP artifact.
+  ///
+  /// The returned Operation will complete once the resource is uploaded.
+  /// Package, Version, and File resources will be created based on the uploaded
+  /// artifact. Uploaded artifacts that conflict with existing resources will be
+  /// overwritten.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The resource name of the repository where the KFP artifact will
+  /// be uploaded.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// [uploadMedia] - The media to upload.
+  ///
+  /// Completes with a [UploadKfpArtifactMediaResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<UploadKfpArtifactMediaResponse> upload(
+    UploadKfpArtifactRequest request,
+    core.String parent, {
+    core.String? $fields,
+    commons.Media? uploadMedia,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    core.String url_;
+    if (uploadMedia == null) {
+      url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/kfpArtifacts:create';
+    } else {
+      url_ = '/upload/v1/' +
+          core.Uri.encodeFull('$parent') +
+          '/kfpArtifacts:create';
+    }
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+      uploadMedia: uploadMedia,
+      uploadOptions: commons.UploadOptions.defaultOptions,
+    );
+    return UploadKfpArtifactMediaResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -1467,7 +1807,9 @@ class ProjectsLocationsRepositoriesPackagesTagsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The name of the parent resource whose tags will be listed.
+  /// [parent] - The name of the parent package whose tags will be listed. For
+  /// example:
+  /// `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+/packages/\[^/\]+$`.
   ///
@@ -1576,6 +1918,50 @@ class ProjectsLocationsRepositoriesPackagesVersionsResource {
   ProjectsLocationsRepositoriesPackagesVersionsResource(
       commons.ApiRequester client)
       : _requester = client;
+
+  /// Deletes multiple versions across a repository.
+  ///
+  /// The returned operation will complete once the versions have been deleted.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The name of the repository holding all requested versions.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+/packages/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> batchDelete(
+    BatchDeleteVersionsRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/versions:batchDelete';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 
   /// Deletes a version and all of its content.
   ///
@@ -1935,6 +2321,42 @@ class ProjectsLocationsRepositoriesYumArtifactsResource {
   }
 }
 
+/// The request to delete multiple versions across a repository.
+class BatchDeleteVersionsRequest {
+  /// The names of the versions to delete.
+  ///
+  /// A maximum of 10000 versions can be deleted in a batch.
+  ///
+  /// Required.
+  core.List<core.String>? names;
+
+  /// If true, the request is performed without deleting data, following
+  /// AIP-163.
+  core.bool? validateOnly;
+
+  BatchDeleteVersionsRequest({
+    this.names,
+    this.validateOnly,
+  });
+
+  BatchDeleteVersionsRequest.fromJson(core.Map json_)
+      : this(
+          names: json_.containsKey('names')
+              ? (json_['names'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          validateOnly: json_.containsKey('validateOnly')
+              ? json_['validateOnly'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (names != null) 'names': names!,
+        if (validateOnly != null) 'validateOnly': validateOnly!,
+      };
+}
+
 /// Associates `members`, or principals, with a `role`.
 class Binding {
   /// The condition that is associated with this binding.
@@ -1965,7 +2387,9 @@ class Binding {
   /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
   /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
-  /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
+  /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
+  /// (primary) that represents all the users of that domain. For example,
+  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
   /// An email address (plus unique identifier) representing a user that has
   /// been recently deleted. For example,
   /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
@@ -1981,9 +2405,7 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
-  /// that represents all the users of that domain. For example, `google.com` or
-  /// `example.com`.
+  /// the role in the binding.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
@@ -2015,6 +2437,186 @@ class Binding {
         if (condition != null) 'condition': condition!,
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
+      };
+}
+
+/// Artifact policy configuration for repository cleanup policies.
+class CleanupPolicy {
+  /// Policy action.
+  /// Possible string values are:
+  /// - "ACTION_UNSPECIFIED" : Action not specified.
+  /// - "DELETE" : Delete action.
+  /// - "KEEP" : Keep action.
+  core.String? action;
+
+  /// Policy condition for matching versions.
+  CleanupPolicyCondition? condition;
+
+  /// The user-provided ID of the cleanup policy.
+  core.String? id;
+
+  /// Policy condition for retaining a minimum number of versions.
+  ///
+  /// May only be specified with a Keep action.
+  CleanupPolicyMostRecentVersions? mostRecentVersions;
+
+  CleanupPolicy({
+    this.action,
+    this.condition,
+    this.id,
+    this.mostRecentVersions,
+  });
+
+  CleanupPolicy.fromJson(core.Map json_)
+      : this(
+          action: json_.containsKey('action')
+              ? json_['action'] as core.String
+              : null,
+          condition: json_.containsKey('condition')
+              ? CleanupPolicyCondition.fromJson(
+                  json_['condition'] as core.Map<core.String, core.dynamic>)
+              : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          mostRecentVersions: json_.containsKey('mostRecentVersions')
+              ? CleanupPolicyMostRecentVersions.fromJson(
+                  json_['mostRecentVersions']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (action != null) 'action': action!,
+        if (condition != null) 'condition': condition!,
+        if (id != null) 'id': id!,
+        if (mostRecentVersions != null)
+          'mostRecentVersions': mostRecentVersions!,
+      };
+}
+
+/// CleanupPolicyCondition is a set of conditions attached to a CleanupPolicy.
+///
+/// If multiple entries are set, all must be satisfied for the condition to be
+/// satisfied.
+class CleanupPolicyCondition {
+  /// Match versions newer than a duration.
+  core.String? newerThan;
+
+  /// Match versions older than a duration.
+  core.String? olderThan;
+
+  /// Match versions by package prefix.
+  ///
+  /// Applied on any prefix match.
+  core.List<core.String>? packageNamePrefixes;
+
+  /// Match versions by tag prefix.
+  ///
+  /// Applied on any prefix match.
+  core.List<core.String>? tagPrefixes;
+
+  /// Match versions by tag status.
+  /// Possible string values are:
+  /// - "TAG_STATE_UNSPECIFIED" : Tag status not specified.
+  /// - "TAGGED" : Applies to tagged versions only.
+  /// - "UNTAGGED" : Applies to untagged versions only.
+  /// - "ANY" : Applies to all versions.
+  core.String? tagState;
+
+  /// DEPRECATED: Use older_than.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.String? versionAge;
+
+  /// Match versions by version name prefix.
+  ///
+  /// Applied on any prefix match.
+  core.List<core.String>? versionNamePrefixes;
+
+  CleanupPolicyCondition({
+    this.newerThan,
+    this.olderThan,
+    this.packageNamePrefixes,
+    this.tagPrefixes,
+    this.tagState,
+    this.versionAge,
+    this.versionNamePrefixes,
+  });
+
+  CleanupPolicyCondition.fromJson(core.Map json_)
+      : this(
+          newerThan: json_.containsKey('newerThan')
+              ? json_['newerThan'] as core.String
+              : null,
+          olderThan: json_.containsKey('olderThan')
+              ? json_['olderThan'] as core.String
+              : null,
+          packageNamePrefixes: json_.containsKey('packageNamePrefixes')
+              ? (json_['packageNamePrefixes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          tagPrefixes: json_.containsKey('tagPrefixes')
+              ? (json_['tagPrefixes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          tagState: json_.containsKey('tagState')
+              ? json_['tagState'] as core.String
+              : null,
+          versionAge: json_.containsKey('versionAge')
+              ? json_['versionAge'] as core.String
+              : null,
+          versionNamePrefixes: json_.containsKey('versionNamePrefixes')
+              ? (json_['versionNamePrefixes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (newerThan != null) 'newerThan': newerThan!,
+        if (olderThan != null) 'olderThan': olderThan!,
+        if (packageNamePrefixes != null)
+          'packageNamePrefixes': packageNamePrefixes!,
+        if (tagPrefixes != null) 'tagPrefixes': tagPrefixes!,
+        if (tagState != null) 'tagState': tagState!,
+        if (versionAge != null) 'versionAge': versionAge!,
+        if (versionNamePrefixes != null)
+          'versionNamePrefixes': versionNamePrefixes!,
+      };
+}
+
+/// CleanupPolicyMostRecentVersions is an alternate condition of a CleanupPolicy
+/// for retaining a minimum number of versions.
+class CleanupPolicyMostRecentVersions {
+  /// Minimum number of versions to keep.
+  core.int? keepCount;
+
+  /// List of package name prefixes that will apply this rule.
+  core.List<core.String>? packageNamePrefixes;
+
+  CleanupPolicyMostRecentVersions({
+    this.keepCount,
+    this.packageNamePrefixes,
+  });
+
+  CleanupPolicyMostRecentVersions.fromJson(core.Map json_)
+      : this(
+          keepCount: json_.containsKey('keepCount')
+              ? json_['keepCount'] as core.int
+              : null,
+          packageNamePrefixes: json_.containsKey('packageNamePrefixes')
+              ? (json_['packageNamePrefixes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (keepCount != null) 'keepCount': keepCount!,
+        if (packageNamePrefixes != null)
+          'packageNamePrefixes': packageNamePrefixes!,
       };
 }
 
@@ -2126,6 +2728,58 @@ class DockerImage {
       };
 }
 
+/// Configuration for a Docker remote repository.
+class DockerRepository {
+  /// One of the publicly available Docker repositories supported by Artifact
+  /// Registry.
+  /// Possible string values are:
+  /// - "PUBLIC_REPOSITORY_UNSPECIFIED" : Unspecified repository.
+  /// - "DOCKER_HUB" : Docker Hub.
+  core.String? publicRepository;
+
+  DockerRepository({
+    this.publicRepository,
+  });
+
+  DockerRepository.fromJson(core.Map json_)
+      : this(
+          publicRepository: json_.containsKey('publicRepository')
+              ? json_['publicRepository'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (publicRepository != null) 'publicRepository': publicRepository!,
+      };
+}
+
+/// DockerRepositoryConfig is docker related repository details.
+///
+/// Provides additional configuration details for repositories of the docker
+/// format type.
+class DockerRepositoryConfig {
+  /// The repository which enabled this flag prevents all tags from being
+  /// modified, moved or deleted.
+  ///
+  /// This does not prevent tags from being created.
+  core.bool? immutableTags;
+
+  DockerRepositoryConfig({
+    this.immutableTags,
+  });
+
+  DockerRepositoryConfig.fromJson(core.Map json_)
+      : this(
+          immutableTags: json_.containsKey('immutableTags')
+              ? json_['immutableTags'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (immutableTags != null) 'immutableTags': immutableTags!,
+      };
+}
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
 ///
@@ -2158,7 +2812,16 @@ typedef Expr = $Expr;
 /// Versions.
 class GoogleDevtoolsArtifactregistryV1File {
   /// The time when the File was created.
+  ///
+  /// Output only.
   core.String? createTime;
+
+  /// The time when the last attempt to refresh the file's data was made.
+  ///
+  /// Only set when the repository is remote.
+  ///
+  /// Output only.
+  core.String? fetchTime;
 
   /// The hashes of the file content.
   core.List<Hash>? hashes;
@@ -2176,10 +2839,13 @@ class GoogleDevtoolsArtifactregistryV1File {
   core.String? sizeBytes;
 
   /// The time when the File was last updated.
+  ///
+  /// Output only.
   core.String? updateTime;
 
   GoogleDevtoolsArtifactregistryV1File({
     this.createTime,
+    this.fetchTime,
     this.hashes,
     this.name,
     this.owner,
@@ -2191,6 +2857,9 @@ class GoogleDevtoolsArtifactregistryV1File {
       : this(
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
+              : null,
+          fetchTime: json_.containsKey('fetchTime')
+              ? json_['fetchTime'] as core.String
               : null,
           hashes: json_.containsKey('hashes')
               ? (json_['hashes'] as core.List)
@@ -2211,6 +2880,7 @@ class GoogleDevtoolsArtifactregistryV1File {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
+        if (fetchTime != null) 'fetchTime': fetchTime!,
         if (hashes != null) 'hashes': hashes!,
         if (name != null) 'name': name!,
         if (owner != null) 'owner': owner!,
@@ -2271,6 +2941,59 @@ class ImportAptArtifactsRequest {
       : this(
           gcsSource: json_.containsKey('gcsSource')
               ? ImportAptArtifactsGcsSource.fromJson(
+                  json_['gcsSource'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gcsSource != null) 'gcsSource': gcsSource!,
+      };
+}
+
+/// Google Cloud Storage location where the artifacts currently reside.
+class ImportGoogetArtifactsGcsSource {
+  /// Cloud Storage paths URI (e.g., `gs://my_bucket/my_object`).
+  core.List<core.String>? uris;
+
+  /// Supports URI wildcards for matching multiple objects from a single URI.
+  core.bool? useWildcards;
+
+  ImportGoogetArtifactsGcsSource({
+    this.uris,
+    this.useWildcards,
+  });
+
+  ImportGoogetArtifactsGcsSource.fromJson(core.Map json_)
+      : this(
+          uris: json_.containsKey('uris')
+              ? (json_['uris'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          useWildcards: json_.containsKey('useWildcards')
+              ? json_['useWildcards'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (uris != null) 'uris': uris!,
+        if (useWildcards != null) 'useWildcards': useWildcards!,
+      };
+}
+
+/// The request to import new googet artifacts.
+class ImportGoogetArtifactsRequest {
+  /// Google Cloud Storage location where input content is located.
+  ImportGoogetArtifactsGcsSource? gcsSource;
+
+  ImportGoogetArtifactsRequest({
+    this.gcsSource,
+  });
+
+  ImportGoogetArtifactsRequest.fromJson(core.Map json_)
+      : this(
+          gcsSource: json_.containsKey('gcsSource')
+              ? ImportGoogetArtifactsGcsSource.fromJson(
                   json_['gcsSource'] as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -2634,7 +3357,7 @@ class ListVersionsResponse {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
+/// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
 /// MavenArtifact represents a maven artifact.
@@ -2720,6 +3443,31 @@ class MavenArtifact {
         if (pomUri != null) 'pomUri': pomUri!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (version != null) 'version': version!,
+      };
+}
+
+/// Configuration for a Maven remote repository.
+class MavenRepository {
+  /// One of the publicly available Maven repositories supported by Artifact
+  /// Registry.
+  /// Possible string values are:
+  /// - "PUBLIC_REPOSITORY_UNSPECIFIED" : Unspecified repository.
+  /// - "MAVEN_CENTRAL" : Maven Central.
+  core.String? publicRepository;
+
+  MavenRepository({
+    this.publicRepository,
+  });
+
+  MavenRepository.fromJson(core.Map json_)
+      : this(
+          publicRepository: json_.containsKey('publicRepository')
+              ? json_['publicRepository'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (publicRepository != null) 'publicRepository': publicRepository!,
       };
 }
 
@@ -2835,6 +3583,31 @@ class NpmPackage {
       };
 }
 
+/// Configuration for a Npm remote repository.
+class NpmRepository {
+  /// One of the publicly available Npm repositories supported by Artifact
+  /// Registry.
+  /// Possible string values are:
+  /// - "PUBLIC_REPOSITORY_UNSPECIFIED" : Unspecified repository.
+  /// - "NPMJS" : npmjs.
+  core.String? publicRepository;
+
+  NpmRepository({
+    this.publicRepository,
+  });
+
+  NpmRepository.fromJson(core.Map json_)
+      : this(
+          publicRepository: json_.containsKey('publicRepository')
+              ? json_['publicRepository'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (publicRepository != null) 'publicRepository': publicRepository!,
+      };
+}
+
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class Operation {
@@ -2865,7 +3638,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -2920,7 +3693,7 @@ class Package {
   core.String? displayName;
 
   /// The name of the package, for example:
-  /// "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1".
+  /// `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1`.
   ///
   /// If the package ID part contains slashes, the slashes are escaped.
   core.String? name;
@@ -2973,23 +3746,23 @@ class Package {
 /// request, the resource, or both. To learn which resources support conditions
 /// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": \[ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": \[
+/// **JSON example:** ``` { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": \[
-/// "user:eve@example.com" \], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time \< timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
-/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
-/// user:mike@example.com - group:admins@example.com - domain:google.com -
-/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
-/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
-/// role: roles/resourcemanager.organizationViewer condition: title: expirable
-/// access description: Does not grant access after Sep 2020 expression:
-/// request.time \< timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
-/// version: 3 For a description of IAM and its features, see the
-/// [IAM documentation](https://cloud.google.com/iam/docs/).
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: -
+/// members: - user:mike@example.com - group:admins@example.com -
+/// domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+/// role: roles/resourcemanager.organizationAdmin - members: -
+/// user:eve@example.com role: roles/resourcemanager.organizationViewer
+/// condition: title: expirable access description: Does not grant access after
+/// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+/// etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features,
+/// see the [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Associates a list of `members`, or principals, with a `role`.
   ///
@@ -3181,13 +3954,117 @@ class PythonPackage {
       };
 }
 
+/// Configuration for a Python remote repository.
+class PythonRepository {
+  /// One of the publicly available Python repositories supported by Artifact
+  /// Registry.
+  /// Possible string values are:
+  /// - "PUBLIC_REPOSITORY_UNSPECIFIED" : Unspecified repository.
+  /// - "PYPI" : PyPI.
+  core.String? publicRepository;
+
+  PythonRepository({
+    this.publicRepository,
+  });
+
+  PythonRepository.fromJson(core.Map json_)
+      : this(
+          publicRepository: json_.containsKey('publicRepository')
+              ? json_['publicRepository'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (publicRepository != null) 'publicRepository': publicRepository!,
+      };
+}
+
+/// Remote repository configuration.
+class RemoteRepositoryConfig {
+  /// The description of the remote source.
+  core.String? description;
+
+  /// Specific settings for a Docker remote repository.
+  DockerRepository? dockerRepository;
+
+  /// Specific settings for a Maven remote repository.
+  MavenRepository? mavenRepository;
+
+  /// Specific settings for an Npm remote repository.
+  NpmRepository? npmRepository;
+
+  /// Specific settings for a Python remote repository.
+  PythonRepository? pythonRepository;
+
+  RemoteRepositoryConfig({
+    this.description,
+    this.dockerRepository,
+    this.mavenRepository,
+    this.npmRepository,
+    this.pythonRepository,
+  });
+
+  RemoteRepositoryConfig.fromJson(core.Map json_)
+      : this(
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          dockerRepository: json_.containsKey('dockerRepository')
+              ? DockerRepository.fromJson(json_['dockerRepository']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          mavenRepository: json_.containsKey('mavenRepository')
+              ? MavenRepository.fromJson(json_['mavenRepository']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          npmRepository: json_.containsKey('npmRepository')
+              ? NpmRepository.fromJson(
+                  json_['npmRepository'] as core.Map<core.String, core.dynamic>)
+              : null,
+          pythonRepository: json_.containsKey('pythonRepository')
+              ? PythonRepository.fromJson(json_['pythonRepository']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (dockerRepository != null) 'dockerRepository': dockerRepository!,
+        if (mavenRepository != null) 'mavenRepository': mavenRepository!,
+        if (npmRepository != null) 'npmRepository': npmRepository!,
+        if (pythonRepository != null) 'pythonRepository': pythonRepository!,
+      };
+}
+
 /// A Repository for storing artifacts with a specific format.
 class Repository {
+  /// Cleanup policies for this repository.
+  ///
+  /// Cleanup policies indicate when certain package versions can be
+  /// automatically deleted. Map keys are policy IDs supplied by users during
+  /// policy creation. They must unique within a repository and be under 128
+  /// characters in length.
+  ///
+  /// Optional.
+  core.Map<core.String, CleanupPolicy>? cleanupPolicies;
+
+  /// If true, the cleanup pipeline is prevented from deleting versions in this
+  /// repository.
+  ///
+  /// Optional.
+  core.bool? cleanupPolicyDryRun;
+
   /// The time when the repository was created.
+  ///
+  /// Output only.
   core.String? createTime;
 
   /// The user-provided description of the repository.
   core.String? description;
+
+  /// Docker repository config contains repository level configuration for the
+  /// repositories of docker type.
+  DockerRepositoryConfig? dockerConfig;
 
   /// The format of packages that are stored in the repository.
   /// Possible string values are:
@@ -3197,8 +4074,10 @@ class Repository {
   /// - "NPM" : NPM package format.
   /// - "APT" : APT package format.
   /// - "YUM" : YUM package format.
+  /// - "GOOGET" : GooGet package format.
   /// - "PYTHON" : Python package format.
   /// - "KFP" : Kubeflow Pipelines package format.
+  /// - "GO" : Go package format.
   core.String? format;
 
   /// The Cloud KMS resource name of the customer managed encryption key that's
@@ -3221,9 +4100,32 @@ class Repository {
   /// repositories of maven type.
   MavenRepositoryConfig? mavenConfig;
 
+  /// The mode of the repository.
+  /// Possible string values are:
+  /// - "MODE_UNSPECIFIED" : Unspecified mode.
+  /// - "STANDARD_REPOSITORY" : A standard repository storing artifacts.
+  /// - "VIRTUAL_REPOSITORY" : A virtual repository to serve artifacts from one
+  /// or more sources.
+  /// - "REMOTE_REPOSITORY" : A remote repository to serve artifacts from a
+  /// remote source.
+  core.String? mode;
+
   /// The name of the repository, for example:
   /// "projects/p1/locations/us-central1/repositories/repo1".
   core.String? name;
+
+  /// Configuration specific for a Remote Repository.
+  RemoteRepositoryConfig? remoteRepositoryConfig;
+
+  /// If set, the repository satisfies physical zone separation.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzs;
+
+  /// Config and state for sbom generation for resources within this Repository.
+  ///
+  /// Optional.
+  SbomConfig? sbomConfig;
 
   /// The size, in bytes, of all artifact storage in this repository.
   ///
@@ -3234,27 +4136,58 @@ class Repository {
   core.String? sizeBytes;
 
   /// The time when the repository was last updated.
+  ///
+  /// Output only.
   core.String? updateTime;
 
+  /// Configuration specific for a Virtual Repository.
+  VirtualRepositoryConfig? virtualRepositoryConfig;
+
   Repository({
+    this.cleanupPolicies,
+    this.cleanupPolicyDryRun,
     this.createTime,
     this.description,
+    this.dockerConfig,
     this.format,
     this.kmsKeyName,
     this.labels,
     this.mavenConfig,
+    this.mode,
     this.name,
+    this.remoteRepositoryConfig,
+    this.satisfiesPzs,
+    this.sbomConfig,
     this.sizeBytes,
     this.updateTime,
+    this.virtualRepositoryConfig,
   });
 
   Repository.fromJson(core.Map json_)
       : this(
+          cleanupPolicies: json_.containsKey('cleanupPolicies')
+              ? (json_['cleanupPolicies']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    CleanupPolicy.fromJson(
+                        value as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+          cleanupPolicyDryRun: json_.containsKey('cleanupPolicyDryRun')
+              ? json_['cleanupPolicyDryRun'] as core.bool
+              : null,
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
               : null,
           description: json_.containsKey('description')
               ? json_['description'] as core.String
+              : null,
+          dockerConfig: json_.containsKey('dockerConfig')
+              ? DockerRepositoryConfig.fromJson(
+                  json_['dockerConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           format: json_.containsKey('format')
               ? json_['format'] as core.String
@@ -3264,9 +4197,9 @@ class Repository {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -3274,25 +4207,94 @@ class Repository {
               ? MavenRepositoryConfig.fromJson(
                   json_['mavenConfig'] as core.Map<core.String, core.dynamic>)
               : null,
+          mode: json_.containsKey('mode') ? json_['mode'] as core.String : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          remoteRepositoryConfig: json_.containsKey('remoteRepositoryConfig')
+              ? RemoteRepositoryConfig.fromJson(json_['remoteRepositoryConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          satisfiesPzs: json_.containsKey('satisfiesPzs')
+              ? json_['satisfiesPzs'] as core.bool
+              : null,
+          sbomConfig: json_.containsKey('sbomConfig')
+              ? SbomConfig.fromJson(
+                  json_['sbomConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
           sizeBytes: json_.containsKey('sizeBytes')
               ? json_['sizeBytes'] as core.String
               : null,
           updateTime: json_.containsKey('updateTime')
               ? json_['updateTime'] as core.String
               : null,
+          virtualRepositoryConfig: json_.containsKey('virtualRepositoryConfig')
+              ? VirtualRepositoryConfig.fromJson(
+                  json_['virtualRepositoryConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (cleanupPolicies != null) 'cleanupPolicies': cleanupPolicies!,
+        if (cleanupPolicyDryRun != null)
+          'cleanupPolicyDryRun': cleanupPolicyDryRun!,
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
+        if (dockerConfig != null) 'dockerConfig': dockerConfig!,
         if (format != null) 'format': format!,
         if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
         if (labels != null) 'labels': labels!,
         if (mavenConfig != null) 'mavenConfig': mavenConfig!,
+        if (mode != null) 'mode': mode!,
         if (name != null) 'name': name!,
+        if (remoteRepositoryConfig != null)
+          'remoteRepositoryConfig': remoteRepositoryConfig!,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
+        if (sbomConfig != null) 'sbomConfig': sbomConfig!,
         if (sizeBytes != null) 'sizeBytes': sizeBytes!,
         if (updateTime != null) 'updateTime': updateTime!,
+        if (virtualRepositoryConfig != null)
+          'virtualRepositoryConfig': virtualRepositoryConfig!,
+      };
+}
+
+/// Config for whether to generate SBOMs for resources in this repository, as
+/// well as output fields describing current state.
+class SbomConfig {
+  /// Config for whether this repository has sbom generation disabled.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "ENABLEMENT_CONFIG_UNSPECIFIED" : Unspecified config was not set. This
+  /// will be interpreted as DISABLED.
+  /// - "INHERITED" : Inherited indicates the repository is allowed for SBOM
+  /// generation, however the actual state will be inherited from the API
+  /// enablement state.
+  /// - "DISABLED" : Disabled indicates the repository will not generate SBOMs.
+  core.String? enablementConfig;
+
+  /// The last time this repository config was set to INHERITED.
+  ///
+  /// Output only.
+  core.String? lastEnableTime;
+
+  SbomConfig({
+    this.enablementConfig,
+    this.lastEnableTime,
+  });
+
+  SbomConfig.fromJson(core.Map json_)
+      : this(
+          enablementConfig: json_.containsKey('enablementConfig')
+              ? json_['enablementConfig'] as core.String
+              : null,
+          lastEnableTime: json_.containsKey('lastEnableTime')
+              ? json_['lastEnableTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enablementConfig != null) 'enablementConfig': enablementConfig!,
+        if (lastEnableTime != null) 'lastEnableTime': lastEnableTime!,
       };
 }
 
@@ -3398,6 +4400,109 @@ class UploadAptArtifactMediaResponse {
 /// The request to upload an artifact.
 typedef UploadAptArtifactRequest = $Empty;
 
+/// The response to upload a Go module.
+class UploadGoModuleMediaResponse {
+  /// Operation to be returned to the user.
+  Operation? operation;
+
+  UploadGoModuleMediaResponse({
+    this.operation,
+  });
+
+  UploadGoModuleMediaResponse.fromJson(core.Map json_)
+      : this(
+          operation: json_.containsKey('operation')
+              ? Operation.fromJson(
+                  json_['operation'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (operation != null) 'operation': operation!,
+      };
+}
+
+/// The request to upload a Go module.
+typedef UploadGoModuleRequest = $Empty;
+
+/// The response to upload an artifact.
+class UploadGoogetArtifactMediaResponse {
+  /// Operation to be returned to the user.
+  Operation? operation;
+
+  UploadGoogetArtifactMediaResponse({
+    this.operation,
+  });
+
+  UploadGoogetArtifactMediaResponse.fromJson(core.Map json_)
+      : this(
+          operation: json_.containsKey('operation')
+              ? Operation.fromJson(
+                  json_['operation'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (operation != null) 'operation': operation!,
+      };
+}
+
+/// The request to upload an artifact.
+typedef UploadGoogetArtifactRequest = $Empty;
+
+/// The response to upload an artifact.
+class UploadKfpArtifactMediaResponse {
+  /// Operation that will be returned to the user.
+  Operation? operation;
+
+  UploadKfpArtifactMediaResponse({
+    this.operation,
+  });
+
+  UploadKfpArtifactMediaResponse.fromJson(core.Map json_)
+      : this(
+          operation: json_.containsKey('operation')
+              ? Operation.fromJson(
+                  json_['operation'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (operation != null) 'operation': operation!,
+      };
+}
+
+/// The request to upload an artifact.
+class UploadKfpArtifactRequest {
+  /// Description of the package version.
+  core.String? description;
+
+  /// Tags to be created with the version.
+  core.List<core.String>? tags;
+
+  UploadKfpArtifactRequest({
+    this.description,
+    this.tags,
+  });
+
+  UploadKfpArtifactRequest.fromJson(core.Map json_)
+      : this(
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          tags: json_.containsKey('tags')
+              ? (json_['tags'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (tags != null) 'tags': tags!,
+      };
+}
+
 /// The response to upload an artifact.
 class UploadYumArtifactMediaResponse {
   /// Operation to be returned to the user.
@@ -3423,6 +4528,81 @@ class UploadYumArtifactMediaResponse {
 /// The request to upload an artifact.
 typedef UploadYumArtifactRequest = $Empty;
 
+/// Artifact policy configuration for the repository contents.
+class UpstreamPolicy {
+  /// The user-provided ID of the upstream policy.
+  core.String? id;
+
+  /// Entries with a greater priority value take precedence in the pull order.
+  core.int? priority;
+
+  /// A reference to the repository resource, for example:
+  /// "projects/p1/locations/us-central1/repositories/repo1".
+  core.String? repository;
+
+  UpstreamPolicy({
+    this.id,
+    this.priority,
+    this.repository,
+  });
+
+  UpstreamPolicy.fromJson(core.Map json_)
+      : this(
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          priority: json_.containsKey('priority')
+              ? json_['priority'] as core.int
+              : null,
+          repository: json_.containsKey('repository')
+              ? json_['repository'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (id != null) 'id': id!,
+        if (priority != null) 'priority': priority!,
+        if (repository != null) 'repository': repository!,
+      };
+}
+
+/// The Artifact Registry VPC SC config that apply to a Project.
+class VPCSCConfig {
+  /// The name of the project's VPC SC Config.
+  ///
+  /// Always of the form: projects/{projectID}/locations/{location}/vpcscConfig
+  /// In update request: never set In response: always set
+  core.String? name;
+
+  /// The project per location VPC SC policy that defines the VPC SC behavior
+  /// for the Remote Repository (Allow/Deny).
+  /// Possible string values are:
+  /// - "VPCSC_POLICY_UNSPECIFIED" : VPCSC_POLICY_UNSPECIFIED - the VPS SC
+  /// policy is not defined. When VPS SC policy is not defined - the Service
+  /// will use the default behavior (VPCSC_DENY).
+  /// - "DENY" : VPCSC_DENY - repository will block the requests to the
+  /// Upstreams for the Remote Repositories if the resource is in the perimeter.
+  /// - "ALLOW" : VPCSC_ALLOW - repository will allow the requests to the
+  /// Upstreams for the Remote Repositories if the resource is in the perimeter.
+  core.String? vpcscPolicy;
+
+  VPCSCConfig({
+    this.name,
+    this.vpcscPolicy,
+  });
+
+  VPCSCConfig.fromJson(core.Map json_)
+      : this(
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          vpcscPolicy: json_.containsKey('vpcscPolicy')
+              ? json_['vpcscPolicy'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (vpcscPolicy != null) 'vpcscPolicy': vpcscPolicy!,
+      };
+}
+
 /// The body of a version resource.
 ///
 /// A version resource represents a collection of components, such as files and
@@ -3440,7 +4620,7 @@ class Version {
   /// Repository-specific Metadata stored against this version.
   ///
   /// The fields returned are defined by the underlying repository-specific
-  /// resource. Currently, the only resource in use is DockerImage
+  /// resource. Currently, the resources could be: DockerImage MavenArtifact
   ///
   /// Output only.
   ///
@@ -3504,5 +4684,32 @@ class Version {
         if (name != null) 'name': name!,
         if (relatedTags != null) 'relatedTags': relatedTags!,
         if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// Virtual repository configuration.
+class VirtualRepositoryConfig {
+  /// Policies that configure the upstream artifacts distributed by the Virtual
+  /// Repository.
+  ///
+  /// Upstream policies cannot be set on a standard repository.
+  core.List<UpstreamPolicy>? upstreamPolicies;
+
+  VirtualRepositoryConfig({
+    this.upstreamPolicies,
+  });
+
+  VirtualRepositoryConfig.fromJson(core.Map json_)
+      : this(
+          upstreamPolicies: json_.containsKey('upstreamPolicies')
+              ? (json_['upstreamPolicies'] as core.List)
+                  .map((value) => UpstreamPolicy.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (upstreamPolicies != null) 'upstreamPolicies': upstreamPolicies!,
       };
 }

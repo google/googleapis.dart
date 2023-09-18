@@ -75,7 +75,6 @@ Future<void> main(List<String> arguments) async {
   switch (commandOptions.name) {
     case 'download':
       await downloadDiscoveryDocuments(commandOptions['output-dir'] as String);
-      break;
     case 'run_config':
       if (commandOptions.command == null ||
           !['download', 'generate'].contains(commandOptions.command!.name)) {
@@ -90,16 +89,13 @@ Future<void> main(List<String> arguments) async {
           await downloadFromConfiguration(configFile);
           await _applyDiffs(configFile);
           print('Done!');
-          break;
         case 'generate':
           generateFromConfiguration(
             configFile,
             deleteExisting,
           );
           print('Done');
-          break;
       }
-      break;
   }
 }
 

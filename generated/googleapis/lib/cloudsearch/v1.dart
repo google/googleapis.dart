@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud Search API - v1
@@ -51,7 +50,7 @@
 ///   - [StatsUserResource]
 ///     - [StatsUserSearchapplicationsResource]
 /// - [V1Resource]
-library cloudsearch.v1;
+library cloudsearch_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -60,20 +59,19 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show
         ApiRequestError,
+        ByteRange,
         DetailedApiRequestError,
-        Media,
-        UploadOptions,
-        ResumableUploadOptions,
         DownloadOptions,
+        Media,
         PartialDownloadOptions,
-        ByteRange;
+        ResumableUploadOptions,
+        UploadOptions;
 
 /// Cloud Search provides cloud-based search capabilities over Google Workspace
 /// data.
@@ -1250,13 +1248,6 @@ class OperationsLroResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -1311,6 +1302,49 @@ class QueryResource {
   QuerySourcesResource get sources => QuerySourcesResource(_requester);
 
   QueryResource(commons.ApiRequester client) : _requester = client;
+
+  /// Provides functionality to remove logged activity for a user.
+  ///
+  /// Currently to be used only for Chat 1p clients **Note:** This API requires
+  /// a standard end user account to execute. A service account can't perform
+  /// Remove Activity requests directly; to use a service account to perform
+  /// queries, set up \[Google Workspace domain-wide delegation of
+  /// authority\](https://developers.google.com/cloud-search/docs/guides/delegation/).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RemoveActivityResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RemoveActivityResponse> removeActivity(
+    RemoveActivityRequest request, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'v1/query:removeActivity';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return RemoveActivityResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 
   /// The Cloud Search Query API provides the search method, which returns the
   /// most relevant results from a user query.
@@ -1428,9 +1462,8 @@ class QuerySourcesResource {
   /// translations. Set this field using the language set in browser or for the
   /// page. In the event that the user's language preference is known, set this
   /// field to the known user language. When specified, the documents in search
-  /// results are biased towards the specified language. The suggest API does
-  /// not use this parameter. Instead, suggest autocompletes only based on
-  /// characters in the query.
+  /// results are biased towards the specified language. The Suggest API uses
+  /// this field as a hint to make better third-party autocomplete predictions.
   ///
   /// [requestOptions_searchApplicationId] - The ID generated when you create a
   /// search application using the
@@ -1778,6 +1811,15 @@ class SettingsDatasourcesResource {
   /// [debugOptions_enableDebugging] - If you are asked by Google to help with
   /// debugging, set this field. Otherwise, ignore this field.
   ///
+  /// [updateMask] - Only applies to
+  /// \[`settings.datasources.patch`\](https://developers.google.com/cloud-search/docs/reference/rest/v1/settings.datasources/patch).
+  /// Update mask to control which fields to update. Example field paths:
+  /// `name`, `displayName`. * If `update_mask` is non-empty, then only the
+  /// fields specified in the `update_mask` are updated. * If you specify a
+  /// field in the `update_mask`, but don't specify its value in the source,
+  /// that field is cleared. * If the `update_mask` is not present or empty or
+  /// has the value `*`, then all fields are updated.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1792,12 +1834,14 @@ class SettingsDatasourcesResource {
     DataSource request,
     core.String name, {
     core.bool? debugOptions_enableDebugging,
+    core.String? updateMask,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       if (debugOptions_enableDebugging != null)
         'debugOptions.enableDebugging': ['${debugOptions_enableDebugging}'],
+      if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -2050,6 +2094,16 @@ class SettingsSearchapplicationsResource {
   /// searchapplications/{application_id}.
   /// Value must have pattern `^searchapplications/\[^/\]+$`.
   ///
+  /// [updateMask] - Only applies to
+  /// \[`settings.searchapplications.patch`\](https://developers.google.com/cloud-search/docs/reference/rest/v1/settings.searchapplications/patch).
+  /// Update mask to control which fields to update. Example field paths:
+  /// `search_application.name`, `search_application.displayName`. * If
+  /// `update_mask` is non-empty, then only the fields specified in the
+  /// `update_mask` are updated. * If you specify a field in the `update_mask`,
+  /// but don't specify its value in the `search_application`, then that field
+  /// is cleared. * If the `update_mask` is not present or empty or has the
+  /// value `*`, then all fields are updated.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2063,10 +2117,12 @@ class SettingsSearchapplicationsResource {
   async.Future<Operation> patch(
     SearchApplication request,
     core.String name, {
+    core.String? updateMask,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -2137,6 +2193,16 @@ class SettingsSearchapplicationsResource {
   /// searchapplications/{application_id}.
   /// Value must have pattern `^searchapplications/\[^/\]+$`.
   ///
+  /// [updateMask] - Only applies to
+  /// \[`settings.searchapplications.patch`\](https://developers.google.com/cloud-search/docs/reference/rest/v1/settings.searchapplications/patch).
+  /// Update mask to control which fields to update. Example field paths:
+  /// `search_application.name`, `search_application.displayName`. * If
+  /// `update_mask` is non-empty, then only the fields specified in the
+  /// `update_mask` are updated. * If you specify a field in the `update_mask`,
+  /// but don't specify its value in the `search_application`, then that field
+  /// is cleared. * If the `update_mask` is not present or empty or has the
+  /// value `*`, then all fields are updated.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2150,10 +2216,12 @@ class SettingsSearchapplicationsResource {
   async.Future<Operation> update(
     SearchApplication request,
     core.String name, {
+    core.String? updateMask,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -4096,6 +4164,10 @@ class FacetBucket {
   /// percentages which are always returned.
   core.int? count;
 
+  /// Filter to be passed in the search request if the corresponding bucket is
+  /// selected.
+  Filter? filter;
+
   /// Percent of results that match the bucket value.
   ///
   /// The returned value is between (0-100\], and is rounded down to an integer
@@ -4108,6 +4180,7 @@ class FacetBucket {
 
   FacetBucket({
     this.count,
+    this.filter,
     this.percentage,
     this.value,
   });
@@ -4115,6 +4188,10 @@ class FacetBucket {
   FacetBucket.fromJson(core.Map json_)
       : this(
           count: json_.containsKey('count') ? json_['count'] as core.int : null,
+          filter: json_.containsKey('filter')
+              ? Filter.fromJson(
+                  json_['filter'] as core.Map<core.String, core.dynamic>)
+              : null,
           percentage: json_.containsKey('percentage')
               ? json_['percentage'] as core.int
               : null,
@@ -4126,6 +4203,7 @@ class FacetBucket {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (count != null) 'count': count!,
+        if (filter != null) 'filter': filter!,
         if (percentage != null) 'percentage': percentage!,
         if (value != null) 'value': value!,
       };
@@ -4136,6 +4214,13 @@ class FacetBucket {
 /// There will be one FacetResult for every
 /// source_name/object_type/operator_name combination.
 class FacetOptions {
+  /// If set, describes integer faceting options for the given integer property.
+  ///
+  /// The corresponding integer property in the schema should be marked
+  /// isFacetable. The number of buckets returned would be minimum of this and
+  /// num_facet_buckets.
+  IntegerFacetingOptions? integerFacetingOptions;
+
   /// Maximum number of facet buckets that should be returned for this facet.
   ///
   /// Defaults to 10. Maximum value is 100.
@@ -4158,6 +4243,7 @@ class FacetOptions {
   core.String? sourceName;
 
   FacetOptions({
+    this.integerFacetingOptions,
     this.numFacetBuckets,
     this.objectType,
     this.operatorName,
@@ -4166,6 +4252,10 @@ class FacetOptions {
 
   FacetOptions.fromJson(core.Map json_)
       : this(
+          integerFacetingOptions: json_.containsKey('integerFacetingOptions')
+              ? IntegerFacetingOptions.fromJson(json_['integerFacetingOptions']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           numFacetBuckets: json_.containsKey('numFacetBuckets')
               ? json_['numFacetBuckets'] as core.int
               : null,
@@ -4181,6 +4271,8 @@ class FacetOptions {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (integerFacetingOptions != null)
+          'integerFacetingOptions': integerFacetingOptions!,
         if (numFacetBuckets != null) 'numFacetBuckets': numFacetBuckets!,
         if (objectType != null) 'objectType': objectType!,
         if (operatorName != null) 'operatorName': operatorName!,
@@ -4850,6 +4942,32 @@ class IndexItemRequest {
 /// Request message for `InitializeCustomer` method.
 typedef InitializeCustomerRequest = $Empty;
 
+/// Used to specify integer faceting options.
+class IntegerFacetingOptions {
+  /// Buckets for given integer values should be in strictly ascending order.
+  ///
+  /// For example, if values supplied are (1,5,10,100), the following facet
+  /// buckets will be formed {\<1, \[1,5), \[5-10), \[10-100), \>=100}.
+  core.List<core.String>? integerBuckets;
+
+  IntegerFacetingOptions({
+    this.integerBuckets,
+  });
+
+  IntegerFacetingOptions.fromJson(core.Map json_)
+      : this(
+          integerBuckets: json_.containsKey('integerBuckets')
+              ? (json_['integerBuckets'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (integerBuckets != null) 'integerBuckets': integerBuckets!,
+      };
+}
+
 /// Used to provide a search operator for integer properties.
 ///
 /// This is optional. Search operators let users restrict the query to specific
@@ -4919,6 +5037,11 @@ class IntegerOperatorOptions {
 
 /// The options for integer properties.
 class IntegerPropertyOptions {
+  /// If set, describes integer faceting options for the given integer property.
+  ///
+  /// The corresponding integer property should be marked isFacetable.
+  IntegerFacetingOptions? integerFacetingOptions;
+
   /// The maximum value of the property.
   ///
   /// The minimum and maximum values for the property are used to rank results
@@ -4951,6 +5074,7 @@ class IntegerPropertyOptions {
   core.String? orderedRanking;
 
   IntegerPropertyOptions({
+    this.integerFacetingOptions,
     this.maximumValue,
     this.minimumValue,
     this.operatorOptions,
@@ -4959,6 +5083,10 @@ class IntegerPropertyOptions {
 
   IntegerPropertyOptions.fromJson(core.Map json_)
       : this(
+          integerFacetingOptions: json_.containsKey('integerFacetingOptions')
+              ? IntegerFacetingOptions.fromJson(json_['integerFacetingOptions']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           maximumValue: json_.containsKey('maximumValue')
               ? json_['maximumValue'] as core.String
               : null,
@@ -4975,6 +5103,8 @@ class IntegerPropertyOptions {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (integerFacetingOptions != null)
+          'integerFacetingOptions': integerFacetingOptions!,
         if (maximumValue != null) 'maximumValue': maximumValue!,
         if (minimumValue != null) 'minimumValue': minimumValue!,
         if (operatorOptions != null) 'operatorOptions': operatorOptions!,
@@ -6745,8 +6875,8 @@ class PropertyDefinition {
   /// Indicates that the property can be used for generating facets.
   ///
   /// Cannot be true for properties whose type is object. IsReturnable must be
-  /// true to set this option. Only supported for boolean, enum, and text
-  /// properties.
+  /// true to set this option. Only supported for boolean, enum, integer, and
+  /// text properties.
   core.bool? isFacetable;
 
   /// Indicates that multiple values are allowed for the property.
@@ -6782,7 +6912,8 @@ class PropertyDefinition {
   ///
   /// Only supported for Text properties. IsReturnable must be true to set this
   /// option. In a given datasource maximum of 5 properties can be marked as
-  /// is_wildcard_searchable.
+  /// is_wildcard_searchable. For more details, see
+  /// [Define object properties](https://developers.google.com/cloud-search/docs/guides/schema-guide#properties)
   core.bool? isWildcardSearchable;
 
   /// The name of the property.
@@ -7093,6 +7224,26 @@ class PushItemRequest {
         if (connectorName != null) 'connectorName': connectorName!,
         if (debugOptions != null) 'debugOptions': debugOptions!,
         if (item != null) 'item': item!,
+      };
+}
+
+/// Details about a user's query activity.
+class QueryActivity {
+  /// User input query to be logged/removed.
+  core.String? query;
+
+  QueryActivity({
+    this.query,
+  });
+
+  QueryActivity.fromJson(core.Map json_)
+      : this(
+          query:
+              json_.containsKey('query') ? json_['query'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (query != null) 'query': query!,
       };
 }
 
@@ -7461,6 +7612,42 @@ class QuerySource {
 /// indicator that the suggest result was a phrase completion.
 typedef QuerySuggestion = $Empty;
 
+/// Remove Logged Activity Request.
+class RemoveActivityRequest {
+  /// Request options, such as the search application and clientId.
+  RequestOptions? requestOptions;
+
+  /// User Activity containing the data to be deleted.
+  UserActivity? userActivity;
+
+  RemoveActivityRequest({
+    this.requestOptions,
+    this.userActivity,
+  });
+
+  RemoveActivityRequest.fromJson(core.Map json_)
+      : this(
+          requestOptions: json_.containsKey('requestOptions')
+              ? RequestOptions.fromJson(json_['requestOptions']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          userActivity: json_.containsKey('userActivity')
+              ? UserActivity.fromJson(
+                  json_['userActivity'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (requestOptions != null) 'requestOptions': requestOptions!,
+        if (userActivity != null) 'userActivity': userActivity!,
+      };
+}
+
+/// Remove Logged Activity Response.
+///
+/// will return an empty response for now. Will be revisited in later phases.
+typedef RemoveActivityResponse = $Empty;
+
 /// Errors when the connector is communicating to the source repository.
 class RepositoryError {
   /// Message that describes the error.
@@ -7526,9 +7713,8 @@ class RequestOptions {
   /// translations. Set this field using the language set in browser or for the
   /// page. In the event that the user's language preference is known, set this
   /// field to the known user language. When specified, the documents in search
-  /// results are biased towards the specified language. The suggest API does
-  /// not use this parameter. Instead, suggest autocompletes only based on
-  /// characters in the query.
+  /// results are biased towards the specified language. The Suggest API uses
+  /// this field as a hint to make better third-party autocomplete predictions.
   core.String? languageCode;
 
   /// The ID generated when you create a search application using the
@@ -7601,37 +7787,7 @@ class ResetSearchApplicationRequest {
 }
 
 /// Debugging information about the response.
-class ResponseDebugInfo {
-  /// Experiments enabled in QAPI.
-  core.List<core.int>? enabledExperiments;
-
-  /// General debug info formatted for display.
-  core.String? formattedDebugInfo;
-
-  ResponseDebugInfo({
-    this.enabledExperiments,
-    this.formattedDebugInfo,
-  });
-
-  ResponseDebugInfo.fromJson(core.Map json_)
-      : this(
-          enabledExperiments: json_.containsKey('enabledExperiments')
-              ? (json_['enabledExperiments'] as core.List)
-                  .map((value) => value as core.int)
-                  .toList()
-              : null,
-          formattedDebugInfo: json_.containsKey('formattedDebugInfo')
-              ? json_['formattedDebugInfo'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (enabledExperiments != null)
-          'enabledExperiments': enabledExperiments!,
-        if (formattedDebugInfo != null)
-          'formattedDebugInfo': formattedDebugInfo!,
-      };
-}
+typedef ResponseDebugInfo = $DebugInfo;
 
 /// Result count information
 class ResultCounts {
@@ -7659,26 +7815,7 @@ class ResultCounts {
 }
 
 /// Debugging information about the result.
-class ResultDebugInfo {
-  /// General debug info formatted for display.
-  core.String? formattedDebugInfo;
-
-  ResultDebugInfo({
-    this.formattedDebugInfo,
-  });
-
-  ResultDebugInfo.fromJson(core.Map json_)
-      : this(
-          formattedDebugInfo: json_.containsKey('formattedDebugInfo')
-              ? json_['formattedDebugInfo'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (formattedDebugInfo != null)
-          'formattedDebugInfo': formattedDebugInfo!,
-      };
-}
+typedef ResultDebugInfo = $DebugInfo;
 
 /// Display Fields for Search Results
 class ResultDisplayField {
@@ -7798,6 +7935,41 @@ class RetrievalImportance {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (importance != null) 'importance': importance!,
+      };
+}
+
+/// IMPORTANT: It is unsafe to accept this message from an untrusted source,
+/// since it's trivial for an attacker to forge serialized messages that don't
+/// fulfill the type's safety contract -- for example, it could contain attacker
+/// controlled script.
+///
+/// A system which receives a SafeHtmlProto implicitly trusts the producer of
+/// the SafeHtmlProto. So, it's generally safe to return this message in RPC
+/// responses, but generally unsafe to accept it in RPC requests.
+class SafeHtmlProto {
+  /// IMPORTANT: Never set or read this field, even from tests, it is private.
+  ///
+  /// See documentation at the top of .proto file for programming language
+  /// packages with which to create or read this message.
+  core.String? privateDoNotAccessOrElseSafeHtmlWrappedValue;
+
+  SafeHtmlProto({
+    this.privateDoNotAccessOrElseSafeHtmlWrappedValue,
+  });
+
+  SafeHtmlProto.fromJson(core.Map json_)
+      : this(
+          privateDoNotAccessOrElseSafeHtmlWrappedValue:
+              json_.containsKey('privateDoNotAccessOrElseSafeHtmlWrappedValue')
+                  ? json_['privateDoNotAccessOrElseSafeHtmlWrappedValue']
+                      as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (privateDoNotAccessOrElseSafeHtmlWrappedValue != null)
+          'privateDoNotAccessOrElseSafeHtmlWrappedValue':
+              privateDoNotAccessOrElseSafeHtmlWrappedValue!,
       };
 }
 
@@ -8795,8 +8967,30 @@ class SpellResult {
   /// The suggested spelling of the query.
   core.String? suggestedQuery;
 
+  /// The sanitized HTML representing the spell corrected query that can be used
+  /// in the UI.
+  ///
+  /// This usually has language-specific tags to mark up parts of the query that
+  /// are spell checked.
+  SafeHtmlProto? suggestedQueryHtml;
+
+  /// Suggestion triggered for the current query.
+  /// Possible string values are:
+  /// - "SUGGESTION_TYPE_UNSPECIFIED" : Default spell check type
+  /// - "NON_EMPTY_RESULTS_SPELL_SUGGESTION" : Spell suggestion without any
+  /// results changed. The results are still shown for the original query (which
+  /// has non zero / results) with a suggestion for spelling that would have
+  /// results.
+  /// - "ZERO_RESULTS_FULL_PAGE_REPLACEMENT" : Spell suggestion triggered when
+  /// original query has no results. When the original query has no results, and
+  /// spell suggestion has results we trigger results for the spell corrected
+  /// query.
+  core.String? suggestionType;
+
   SpellResult({
     this.suggestedQuery,
+    this.suggestedQueryHtml,
+    this.suggestionType,
   });
 
   SpellResult.fromJson(core.Map json_)
@@ -8804,10 +8998,20 @@ class SpellResult {
           suggestedQuery: json_.containsKey('suggestedQuery')
               ? json_['suggestedQuery'] as core.String
               : null,
+          suggestedQueryHtml: json_.containsKey('suggestedQueryHtml')
+              ? SafeHtmlProto.fromJson(json_['suggestedQueryHtml']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          suggestionType: json_.containsKey('suggestionType')
+              ? json_['suggestionType'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (suggestedQuery != null) 'suggestedQuery': suggestedQuery!,
+        if (suggestedQueryHtml != null)
+          'suggestedQueryHtml': suggestedQueryHtml!,
+        if (suggestionType != null) 'suggestionType': suggestionType!,
       };
 }
 
@@ -9329,9 +9533,21 @@ class UpdateDataSourceRequest {
   DebugOptions? debugOptions;
   DataSource? source;
 
+  /// Only applies to
+  /// \[`settings.datasources.patch`\](https://developers.google.com/cloud-search/docs/reference/rest/v1/settings.datasources/patch).
+  ///
+  /// Update mask to control which fields to update. Example field paths:
+  /// `name`, `displayName`. * If `update_mask` is non-empty, then only the
+  /// fields specified in the `update_mask` are updated. * If you specify a
+  /// field in the `update_mask`, but don't specify its value in the source,
+  /// that field is cleared. * If the `update_mask` is not present or empty or
+  /// has the value `*`, then all fields are updated.
+  core.String? updateMask;
+
   UpdateDataSourceRequest({
     this.debugOptions,
     this.source,
+    this.updateMask,
   });
 
   UpdateDataSourceRequest.fromJson(core.Map json_)
@@ -9344,11 +9560,15 @@ class UpdateDataSourceRequest {
               ? DataSource.fromJson(
                   json_['source'] as core.Map<core.String, core.dynamic>)
               : null,
+          updateMask: json_.containsKey('updateMask')
+              ? json_['updateMask'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (debugOptions != null) 'debugOptions': debugOptions!,
         if (source != null) 'source': source!,
+        if (updateMask != null) 'updateMask': updateMask!,
       };
 }
 
@@ -9413,6 +9633,30 @@ class UploadItemRef {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
+      };
+}
+
+/// User's single or bulk query activity.
+///
+/// This can be a logging query or deletion query.
+class UserActivity {
+  /// Contains data which needs to be logged/removed.
+  QueryActivity? queryActivity;
+
+  UserActivity({
+    this.queryActivity,
+  });
+
+  UserActivity.fromJson(core.Map json_)
+      : this(
+          queryActivity: json_.containsKey('queryActivity')
+              ? QueryActivity.fromJson(
+                  json_['queryActivity'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (queryActivity != null) 'queryActivity': queryActivity!,
       };
 }
 

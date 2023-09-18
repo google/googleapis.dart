@@ -1,8 +1,6 @@
 // ignore_for_file: camel_case_types
-// ignore_for_file: cascade_invocations
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_const_declarations
@@ -12,8 +10,9 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unreachable_from_main
 // ignore_for_file: unused_local_variable
 
 import 'dart:async' as async;
@@ -347,29 +346,11 @@ void checkGoogleCloudWebriskV1SearchUrisResponseThreatUri(
   buildCounterGoogleCloudWebriskV1SearchUrisResponseThreatUri--;
 }
 
-core.List<core.String> buildUnnamed4() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed4(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
 core.int buildCounterGoogleCloudWebriskV1Submission = 0;
 api.GoogleCloudWebriskV1Submission buildGoogleCloudWebriskV1Submission() {
   final o = api.GoogleCloudWebriskV1Submission();
   buildCounterGoogleCloudWebriskV1Submission++;
   if (buildCounterGoogleCloudWebriskV1Submission < 3) {
-    o.threatTypes = buildUnnamed4();
     o.uri = 'foo';
   }
   buildCounterGoogleCloudWebriskV1Submission--;
@@ -379,7 +360,6 @@ api.GoogleCloudWebriskV1Submission buildGoogleCloudWebriskV1Submission() {
 void checkGoogleCloudWebriskV1Submission(api.GoogleCloudWebriskV1Submission o) {
   buildCounterGoogleCloudWebriskV1Submission++;
   if (buildCounterGoogleCloudWebriskV1Submission < 3) {
-    checkUnnamed4(o.threatTypes!);
     unittest.expect(
       o.uri!,
       unittest.equals('foo'),
@@ -388,33 +368,12 @@ void checkGoogleCloudWebriskV1Submission(api.GoogleCloudWebriskV1Submission o) {
   buildCounterGoogleCloudWebriskV1Submission--;
 }
 
-core.int buildCounterGoogleCloudWebriskV1SubmitUriRequest = 0;
-api.GoogleCloudWebriskV1SubmitUriRequest
-    buildGoogleCloudWebriskV1SubmitUriRequest() {
-  final o = api.GoogleCloudWebriskV1SubmitUriRequest();
-  buildCounterGoogleCloudWebriskV1SubmitUriRequest++;
-  if (buildCounterGoogleCloudWebriskV1SubmitUriRequest < 3) {
-    o.submission = buildGoogleCloudWebriskV1Submission();
-  }
-  buildCounterGoogleCloudWebriskV1SubmitUriRequest--;
-  return o;
-}
-
-void checkGoogleCloudWebriskV1SubmitUriRequest(
-    api.GoogleCloudWebriskV1SubmitUriRequest o) {
-  buildCounterGoogleCloudWebriskV1SubmitUriRequest++;
-  if (buildCounterGoogleCloudWebriskV1SubmitUriRequest < 3) {
-    checkGoogleCloudWebriskV1Submission(o.submission!);
-  }
-  buildCounterGoogleCloudWebriskV1SubmitUriRequest--;
-}
-
-core.List<api.GoogleCloudWebriskV1RawHashes> buildUnnamed5() => [
+core.List<api.GoogleCloudWebriskV1RawHashes> buildUnnamed4() => [
       buildGoogleCloudWebriskV1RawHashes(),
       buildGoogleCloudWebriskV1RawHashes(),
     ];
 
-void checkUnnamed5(core.List<api.GoogleCloudWebriskV1RawHashes> o) {
+void checkUnnamed4(core.List<api.GoogleCloudWebriskV1RawHashes> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudWebriskV1RawHashes(o[0]);
   checkGoogleCloudWebriskV1RawHashes(o[1]);
@@ -426,7 +385,7 @@ api.GoogleCloudWebriskV1ThreatEntryAdditions
   final o = api.GoogleCloudWebriskV1ThreatEntryAdditions();
   buildCounterGoogleCloudWebriskV1ThreatEntryAdditions++;
   if (buildCounterGoogleCloudWebriskV1ThreatEntryAdditions < 3) {
-    o.rawHashes = buildUnnamed5();
+    o.rawHashes = buildUnnamed4();
     o.riceHashes = buildGoogleCloudWebriskV1RiceDeltaEncoding();
   }
   buildCounterGoogleCloudWebriskV1ThreatEntryAdditions--;
@@ -437,7 +396,7 @@ void checkGoogleCloudWebriskV1ThreatEntryAdditions(
     api.GoogleCloudWebriskV1ThreatEntryAdditions o) {
   buildCounterGoogleCloudWebriskV1ThreatEntryAdditions++;
   if (buildCounterGoogleCloudWebriskV1ThreatEntryAdditions < 3) {
-    checkUnnamed5(o.rawHashes!);
+    checkUnnamed4(o.rawHashes!);
     checkGoogleCloudWebriskV1RiceDeltaEncoding(o.riceHashes!);
   }
   buildCounterGoogleCloudWebriskV1ThreatEntryAdditions--;
@@ -483,12 +442,12 @@ void checkGoogleLongrunningCancelOperationRequest(
   buildCounterGoogleLongrunningCancelOperationRequest--;
 }
 
-core.List<api.GoogleLongrunningOperation> buildUnnamed6() => [
+core.List<api.GoogleLongrunningOperation> buildUnnamed5() => [
       buildGoogleLongrunningOperation(),
       buildGoogleLongrunningOperation(),
     ];
 
-void checkUnnamed6(core.List<api.GoogleLongrunningOperation> o) {
+void checkUnnamed5(core.List<api.GoogleLongrunningOperation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleLongrunningOperation(o[0]);
   checkGoogleLongrunningOperation(o[1]);
@@ -501,7 +460,7 @@ api.GoogleLongrunningListOperationsResponse
   buildCounterGoogleLongrunningListOperationsResponse++;
   if (buildCounterGoogleLongrunningListOperationsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.operations = buildUnnamed6();
+    o.operations = buildUnnamed5();
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
   return o;
@@ -515,12 +474,12 @@ void checkGoogleLongrunningListOperationsResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed6(o.operations!);
+    checkUnnamed5(o.operations!);
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed7() => {
+core.Map<core.String, core.Object?> buildUnnamed6() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -533,7 +492,7 @@ core.Map<core.String, core.Object?> buildUnnamed7() => {
       },
     };
 
-void checkUnnamed7(core.Map<core.String, core.Object?> o) {
+void checkUnnamed6(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -565,7 +524,7 @@ void checkUnnamed7(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.Map<core.String, core.Object?> buildUnnamed8() => {
+core.Map<core.String, core.Object?> buildUnnamed7() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -578,7 +537,7 @@ core.Map<core.String, core.Object?> buildUnnamed8() => {
       },
     };
 
-void checkUnnamed8(core.Map<core.String, core.Object?> o) {
+void checkUnnamed7(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -617,9 +576,9 @@ api.GoogleLongrunningOperation buildGoogleLongrunningOperation() {
   if (buildCounterGoogleLongrunningOperation < 3) {
     o.done = true;
     o.error = buildGoogleRpcStatus();
-    o.metadata = buildUnnamed7();
+    o.metadata = buildUnnamed6();
     o.name = 'foo';
-    o.response = buildUnnamed8();
+    o.response = buildUnnamed7();
   }
   buildCounterGoogleLongrunningOperation--;
   return o;
@@ -630,12 +589,12 @@ void checkGoogleLongrunningOperation(api.GoogleLongrunningOperation o) {
   if (buildCounterGoogleLongrunningOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkGoogleRpcStatus(o.error!);
-    checkUnnamed7(o.metadata!);
+    checkUnnamed6(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed8(o.response!);
+    checkUnnamed7(o.response!);
   }
   buildCounterGoogleLongrunningOperation--;
 }
@@ -655,7 +614,7 @@ void checkGoogleProtobufEmpty(api.GoogleProtobufEmpty o) {
   buildCounterGoogleProtobufEmpty--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed9() => {
+core.Map<core.String, core.Object?> buildUnnamed8() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -668,7 +627,7 @@ core.Map<core.String, core.Object?> buildUnnamed9() => {
       },
     };
 
-void checkUnnamed9(core.Map<core.String, core.Object?> o) {
+void checkUnnamed8(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -700,15 +659,15 @@ void checkUnnamed9(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed10() => [
-      buildUnnamed9(),
-      buildUnnamed9(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed9() => [
+      buildUnnamed8(),
+      buildUnnamed8(),
     ];
 
-void checkUnnamed10(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed9(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed9(o[0]);
-  checkUnnamed9(o[1]);
+  checkUnnamed8(o[0]);
+  checkUnnamed8(o[1]);
 }
 
 core.int buildCounterGoogleRpcStatus = 0;
@@ -717,7 +676,7 @@ api.GoogleRpcStatus buildGoogleRpcStatus() {
   buildCounterGoogleRpcStatus++;
   if (buildCounterGoogleRpcStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed10();
+    o.details = buildUnnamed9();
     o.message = 'foo';
   }
   buildCounterGoogleRpcStatus--;
@@ -731,13 +690,30 @@ void checkGoogleRpcStatus(api.GoogleRpcStatus o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed10(o.details!);
+    checkUnnamed9(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
     );
   }
   buildCounterGoogleRpcStatus--;
+}
+
+core.List<core.String> buildUnnamed10() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed10(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed11() => [
@@ -763,23 +739,6 @@ core.List<core.String> buildUnnamed12() => [
     ];
 
 void checkUnnamed12(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.List<core.String> buildUnnamed13() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed13(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -899,16 +858,6 @@ void main() {
     });
   });
 
-  unittest.group('obj-schema-GoogleCloudWebriskV1SubmitUriRequest', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleCloudWebriskV1SubmitUriRequest();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleCloudWebriskV1SubmitUriRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudWebriskV1SubmitUriRequest(od);
-    });
-  });
-
   unittest.group('obj-schema-GoogleCloudWebriskV1ThreatEntryAdditions', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleCloudWebriskV1ThreatEntryAdditions();
@@ -984,10 +933,10 @@ void main() {
       final mock = HttpServerMock();
       final res = api.WebRiskApi(mock).hashes;
       final arg_hashPrefix = 'foo';
-      final arg_threatTypes = buildUnnamed11();
+      final arg_threatTypes = buildUnnamed10();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1002,7 +951,7 @@ void main() {
         );
         pathOffset += 16;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -1058,7 +1007,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleLongrunningCancelOperationRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1074,7 +1023,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -1111,7 +1060,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1127,7 +1076,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -1163,7 +1112,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1179,7 +1128,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -1219,7 +1168,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1235,7 +1184,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -1296,7 +1245,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkGoogleCloudWebriskV1Submission(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1312,7 +1261,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -1345,79 +1294,18 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsUrisResource', () {
-    unittest.test('method--submit', () async {
-      final mock = HttpServerMock();
-      final res = api.WebRiskApi(mock).projects.uris;
-      final arg_request = buildGoogleCloudWebriskV1SubmitUriRequest();
-      final arg_parent = 'foo';
-      final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.GoogleCloudWebriskV1SubmitUriRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudWebriskV1SubmitUriRequest(obj);
-
-        final path = (req.url).path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
-
-        final query = (req.url).query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
-
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
-          }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
-
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildGoogleLongrunningOperation());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.submit(arg_request, arg_parent, $fields: arg_$fields);
-      checkGoogleLongrunningOperation(
-          response as api.GoogleLongrunningOperation);
-    });
-  });
-
   unittest.group('resource-ThreatListsResource', () {
     unittest.test('method--computeDiff', () async {
       final mock = HttpServerMock();
       final res = api.WebRiskApi(mock).threatLists;
       final arg_constraints_maxDatabaseEntries = 42;
       final arg_constraints_maxDiffEntries = 42;
-      final arg_constraints_supportedCompressions = buildUnnamed12();
+      final arg_constraints_supportedCompressions = buildUnnamed11();
       final arg_threatType = 'foo';
       final arg_versionToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1432,7 +1320,7 @@ void main() {
         );
         pathOffset += 26;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -1496,11 +1384,11 @@ void main() {
     unittest.test('method--search', () async {
       final mock = HttpServerMock();
       final res = api.WebRiskApi(mock).uris;
-      final arg_threatTypes = buildUnnamed13();
+      final arg_threatTypes = buildUnnamed12();
       final arg_uri = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1515,7 +1403,7 @@ void main() {
         );
         pathOffset += 14;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>

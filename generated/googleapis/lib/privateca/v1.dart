@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Certificate Authority API - v1
@@ -32,7 +31,7 @@
 ///       - [ProjectsLocationsCaPoolsCertificatesResource]
 ///     - [ProjectsLocationsCertificateTemplatesResource]
 ///     - [ProjectsLocationsOperationsResource]
-library privateca.v1;
+library privateca_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -41,7 +40,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -206,7 +204,7 @@ class ProjectsLocationsCaPoolsResource {
   /// request ID so that if you must retry your request, the server will know to
   /// ignore the request if it has already been completed. The server will
   /// guarantee that for at least 60 minutes since the first request. For
-  /// example, consider a situation where you make an initial request and t he
+  /// example, consider a situation where you make an initial request and the
   /// request times out. If you make the request again with the same request ID,
   /// the server can check if original operation with the same request ID was
   /// received, and if so, will ignore the second request. This prevents clients
@@ -258,11 +256,16 @@ class ProjectsLocationsCaPoolsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/caPools/\[^/\]+$`.
   ///
+  /// [ignoreDependentResources] - Optional. This field allows this pool to be
+  /// deleted even if it's being depended on by another resource. However, doing
+  /// so may result in unintended and unrecoverable effects on any dependent
+  /// resource(s) since the pool will no longer be able to issue certificates.
+  ///
   /// [requestId] - Optional. An ID to identify requests. Specify a unique
   /// request ID so that if you must retry your request, the server will know to
   /// ignore the request if it has already been completed. The server will
   /// guarantee that for at least 60 minutes since the first request. For
-  /// example, consider a situation where you make an initial request and t he
+  /// example, consider a situation where you make an initial request and the
   /// request times out. If you make the request again with the same request ID,
   /// the server can check if original operation with the same request ID was
   /// received, and if so, will ignore the second request. This prevents clients
@@ -282,10 +285,13 @@ class ProjectsLocationsCaPoolsResource {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
     core.String name, {
+    core.bool? ignoreDependentResources,
     core.String? requestId,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (ignoreDependentResources != null)
+        'ignoreDependentResources': ['${ignoreDependentResources}'],
       if (requestId != null) 'requestId': [requestId],
       if ($fields != null) 'fields': [$fields],
     };
@@ -512,7 +518,7 @@ class ProjectsLocationsCaPoolsResource {
   /// request ID so that if you must retry your request, the server will know to
   /// ignore the request if it has already been completed. The server will
   /// guarantee that for at least 60 minutes since the first request. For
-  /// example, consider a situation where you make an initial request and t he
+  /// example, consider a situation where you make an initial request and the
   /// request times out. If you make the request again with the same request ID,
   /// the server can check if original operation with the same request ID was
   /// received, and if so, will ignore the second request. This prevents clients
@@ -735,7 +741,7 @@ class ProjectsLocationsCaPoolsCertificateAuthoritiesResource {
   /// request ID so that if you must retry your request, the server will know to
   /// ignore the request if it has already been completed. The server will
   /// guarantee that for at least 60 minutes since the first request. For
-  /// example, consider a situation where you make an initial request and t he
+  /// example, consider a situation where you make an initial request and the
   /// request times out. If you make the request again with the same request ID,
   /// the server can check if original operation with the same request ID was
   /// received, and if so, will ignore the second request. This prevents clients
@@ -794,11 +800,16 @@ class ProjectsLocationsCaPoolsCertificateAuthoritiesResource {
   /// deleted even if the CA has active certs. Active certs include both
   /// unrevoked and unexpired certs.
   ///
+  /// [ignoreDependentResources] - Optional. This field allows this ca to be
+  /// deleted even if it's being depended on by another resource. However, doing
+  /// so may result in unintended and unrecoverable effects on any dependent
+  /// resource(s) since the CA will no longer be able to issue certificates.
+  ///
   /// [requestId] - Optional. An ID to identify requests. Specify a unique
   /// request ID so that if you must retry your request, the server will know to
   /// ignore the request if it has already been completed. The server will
   /// guarantee that for at least 60 minutes since the first request. For
-  /// example, consider a situation where you make an initial request and t he
+  /// example, consider a situation where you make an initial request and the
   /// request times out. If you make the request again with the same request ID,
   /// the server can check if original operation with the same request ID was
   /// received, and if so, will ignore the second request. This prevents clients
@@ -824,6 +835,7 @@ class ProjectsLocationsCaPoolsCertificateAuthoritiesResource {
   async.Future<Operation> delete(
     core.String name, {
     core.bool? ignoreActiveCertificates,
+    core.bool? ignoreDependentResources,
     core.String? requestId,
     core.bool? skipGracePeriod,
     core.String? $fields,
@@ -831,6 +843,8 @@ class ProjectsLocationsCaPoolsCertificateAuthoritiesResource {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (ignoreActiveCertificates != null)
         'ignoreActiveCertificates': ['${ignoreActiveCertificates}'],
+      if (ignoreDependentResources != null)
+        'ignoreDependentResources': ['${ignoreDependentResources}'],
       if (requestId != null) 'requestId': [requestId],
       if (skipGracePeriod != null) 'skipGracePeriod': ['${skipGracePeriod}'],
       if ($fields != null) 'fields': [$fields],
@@ -1091,7 +1105,7 @@ class ProjectsLocationsCaPoolsCertificateAuthoritiesResource {
   /// request ID so that if you must retry your request, the server will know to
   /// ignore the request if it has already been completed. The server will
   /// guarantee that for at least 60 minutes since the first request. For
-  /// example, consider a situation where you make an initial request and t he
+  /// example, consider a situation where you make an initial request and the
   /// request times out. If you make the request again with the same request ID,
   /// the server can check if original operation with the same request ID was
   /// received, and if so, will ignore the second request. This prevents clients
@@ -1359,7 +1373,7 @@ class ProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRe
   /// request ID so that if you must retry your request, the server will know to
   /// ignore the request if it has already been completed. The server will
   /// guarantee that for at least 60 minutes since the first request. For
-  /// example, consider a situation where you make an initial request and t he
+  /// example, consider a situation where you make an initial request and the
   /// request times out. If you make the request again with the same request ID,
   /// the server can check if original operation with the same request ID was
   /// received, and if so, will ignore the second request. This prevents clients
@@ -1712,7 +1726,7 @@ class ProjectsLocationsCaPoolsCertificatesResource {
   /// request ID so that if you must retry your request, the server will know to
   /// ignore the request if it has already been completed. The server will
   /// guarantee that for at least 60 minutes since the first request. For
-  /// example, consider a situation where you make an initial request and t he
+  /// example, consider a situation where you make an initial request and the
   /// request times out. If you make the request again with the same request ID,
   /// the server can check if original operation with the same request ID was
   /// received, and if so, will ignore the second request. This prevents clients
@@ -1825,7 +1839,7 @@ class ProjectsLocationsCertificateTemplatesResource {
   /// request ID so that if you must retry your request, the server will know to
   /// ignore the request if it has already been completed. The server will
   /// guarantee that for at least 60 minutes since the first request. For
-  /// example, consider a situation where you make an initial request and t he
+  /// example, consider a situation where you make an initial request and the
   /// request times out. If you make the request again with the same request ID,
   /// the server can check if original operation with the same request ID was
   /// received, and if so, will ignore the second request. This prevents clients
@@ -1883,7 +1897,7 @@ class ProjectsLocationsCertificateTemplatesResource {
   /// request ID so that if you must retry your request, the server will know to
   /// ignore the request if it has already been completed. The server will
   /// guarantee that for at least 60 minutes since the first request. For
-  /// example, consider a situation where you make an initial request and t he
+  /// example, consider a situation where you make an initial request and the
   /// request times out. If you make the request again with the same request ID,
   /// the server can check if original operation with the same request ID was
   /// received, and if so, will ignore the second request. This prevents clients
@@ -2090,7 +2104,7 @@ class ProjectsLocationsCertificateTemplatesResource {
   /// request ID so that if you must retry your request, the server will know to
   /// ignore the request if it has already been completed. The server will
   /// guarantee that for at least 60 minutes since the first request. For
-  /// example, consider a situation where you make an initial request and t he
+  /// example, consider a situation where you make an initial request and the
   /// request times out. If you make the request again with the same request ID,
   /// the server can check if original operation with the same request ID was
   /// received, and if so, will ignore the second request. This prevents clients
@@ -2372,13 +2386,6 @@ class ProjectsLocationsOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -2478,7 +2485,7 @@ class ActivateCertificateAuthorityRequest {
   /// server will know to ignore the request if it has already been completed.
   /// The server will guarantee that for at least 60 minutes since the first
   /// request. For example, consider a situation where you make an initial
-  /// request and t he request times out. If you make the request again with the
+  /// request and the request times out. If you make the request again with the
   /// same request ID, the server can check if original operation with the same
   /// request ID was received, and if so, will ignore the second request. This
   /// prevents clients from accidentally creating duplicate commitments. The
@@ -2646,7 +2653,9 @@ class Binding {
   /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
   /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
-  /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
+  /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
+  /// (primary) that represents all the users of that domain. For example,
+  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
   /// An email address (plus unique identifier) representing a user that has
   /// been recently deleted. For example,
   /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
@@ -2662,9 +2671,7 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
-  /// that represents all the users of that domain. For example, `google.com` or
-  /// `example.com`.
+  /// the role in the binding.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
@@ -2794,9 +2801,9 @@ class CaPool {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -2935,10 +2942,10 @@ class Certificate {
   /// certificate request. This mode requires the caller to have the
   /// `privateca.certificates.create` permission.
   /// - "REFLECTED_SPIFFE" : A mode reserved for special cases. Indicates that
-  /// the certificate should have one or more SPIFFE SubjectAltNames set by the
-  /// service based on the caller's identity. This mode will ignore any
-  /// explicitly specified Subject and/or SubjectAltNames in the certificate
-  /// request. This mode requires the caller to have the
+  /// the certificate should have one SPIFFE SubjectAltNames set by the service
+  /// based on the caller's identity. This mode will ignore any explicitly
+  /// specified Subject and/or SubjectAltNames in the certificate request. This
+  /// mode requires the caller to have the
   /// `privateca.certificates.createForSelf` permission.
   core.String? subjectMode;
 
@@ -2986,9 +2993,9 @@ class Certificate {
                   : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -3242,9 +3249,9 @@ class CertificateAuthority {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -3654,9 +3661,9 @@ class CertificateRevocationList {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -3786,9 +3793,9 @@ class CertificateTemplate {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -3822,7 +3829,55 @@ class CertificateTemplate {
 }
 
 /// Request message for CertificateAuthorityService.DisableCertificateAuthority.
-typedef DisableCertificateAuthorityRequest = $Request02;
+class DisableCertificateAuthorityRequest {
+  /// This field allows this CA to be disabled even if it's being depended on by
+  /// another resource.
+  ///
+  /// However, doing so may result in unintended and unrecoverable effects on
+  /// any dependent resource(s) since the CA will no longer be able to issue
+  /// certificates.
+  ///
+  /// Optional.
+  core.bool? ignoreDependentResources;
+
+  /// An ID to identify requests.
+  ///
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes since the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// Optional.
+  core.String? requestId;
+
+  DisableCertificateAuthorityRequest({
+    this.ignoreDependentResources,
+    this.requestId,
+  });
+
+  DisableCertificateAuthorityRequest.fromJson(core.Map json_)
+      : this(
+          ignoreDependentResources:
+              json_.containsKey('ignoreDependentResources')
+                  ? json_['ignoreDependentResources'] as core.bool
+                  : null,
+          requestId: json_.containsKey('requestId')
+              ? json_['requestId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (ignoreDependentResources != null)
+          'ignoreDependentResources': ignoreDependentResources!,
+        if (requestId != null) 'requestId': requestId!,
+      };
+}
 
 /// Describes an Elliptic Curve key that may be used in a Certificate issued
 /// from a CaPool.
@@ -4677,8 +4732,144 @@ class ListOperationsResponse {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
+/// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
+
+/// Describes the X.509 name constraints extension, per
+/// https://tools.ietf.org/html/rfc5280#section-4.2.1.10
+class NameConstraints {
+  /// Indicates whether or not the name constraints are marked critical.
+  core.bool? critical;
+
+  /// Contains excluded DNS names.
+  ///
+  /// Any DNS name that can be constructed by simply adding zero or more labels
+  /// to the left-hand side of the name satisfies the name constraint. For
+  /// example, `example.com`, `www.example.com`, `www.sub.example.com` would
+  /// satisfy `example.com` while `example1.com` does not.
+  core.List<core.String>? excludedDnsNames;
+
+  /// Contains the excluded email addresses.
+  ///
+  /// The value can be a particular email address, a hostname to indicate all
+  /// email addresses on that host or a domain with a leading period (e.g.
+  /// `.example.com`) to indicate all email addresses in that domain.
+  core.List<core.String>? excludedEmailAddresses;
+
+  /// Contains the excluded IP ranges.
+  ///
+  /// For IPv4 addresses, the ranges are expressed using CIDR notation as
+  /// specified in RFC 4632. For IPv6 addresses, the ranges are expressed in
+  /// similar encoding as IPv4 addresses.
+  core.List<core.String>? excludedIpRanges;
+
+  /// Contains the excluded URIs that apply to the host part of the name.
+  ///
+  /// The value can be a hostname or a domain with a leading period (like
+  /// `.example.com`)
+  core.List<core.String>? excludedUris;
+
+  /// Contains permitted DNS names.
+  ///
+  /// Any DNS name that can be constructed by simply adding zero or more labels
+  /// to the left-hand side of the name satisfies the name constraint. For
+  /// example, `example.com`, `www.example.com`, `www.sub.example.com` would
+  /// satisfy `example.com` while `example1.com` does not.
+  core.List<core.String>? permittedDnsNames;
+
+  /// Contains the permitted email addresses.
+  ///
+  /// The value can be a particular email address, a hostname to indicate all
+  /// email addresses on that host or a domain with a leading period (e.g.
+  /// `.example.com`) to indicate all email addresses in that domain.
+  core.List<core.String>? permittedEmailAddresses;
+
+  /// Contains the permitted IP ranges.
+  ///
+  /// For IPv4 addresses, the ranges are expressed using CIDR notation as
+  /// specified in RFC 4632. For IPv6 addresses, the ranges are expressed in
+  /// similar encoding as IPv4 addresses.
+  core.List<core.String>? permittedIpRanges;
+
+  /// Contains the permitted URIs that apply to the host part of the name.
+  ///
+  /// The value can be a hostname or a domain with a leading period (like
+  /// `.example.com`)
+  core.List<core.String>? permittedUris;
+
+  NameConstraints({
+    this.critical,
+    this.excludedDnsNames,
+    this.excludedEmailAddresses,
+    this.excludedIpRanges,
+    this.excludedUris,
+    this.permittedDnsNames,
+    this.permittedEmailAddresses,
+    this.permittedIpRanges,
+    this.permittedUris,
+  });
+
+  NameConstraints.fromJson(core.Map json_)
+      : this(
+          critical: json_.containsKey('critical')
+              ? json_['critical'] as core.bool
+              : null,
+          excludedDnsNames: json_.containsKey('excludedDnsNames')
+              ? (json_['excludedDnsNames'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          excludedEmailAddresses: json_.containsKey('excludedEmailAddresses')
+              ? (json_['excludedEmailAddresses'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          excludedIpRanges: json_.containsKey('excludedIpRanges')
+              ? (json_['excludedIpRanges'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          excludedUris: json_.containsKey('excludedUris')
+              ? (json_['excludedUris'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          permittedDnsNames: json_.containsKey('permittedDnsNames')
+              ? (json_['permittedDnsNames'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          permittedEmailAddresses: json_.containsKey('permittedEmailAddresses')
+              ? (json_['permittedEmailAddresses'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          permittedIpRanges: json_.containsKey('permittedIpRanges')
+              ? (json_['permittedIpRanges'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          permittedUris: json_.containsKey('permittedUris')
+              ? (json_['permittedUris'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (critical != null) 'critical': critical!,
+        if (excludedDnsNames != null) 'excludedDnsNames': excludedDnsNames!,
+        if (excludedEmailAddresses != null)
+          'excludedEmailAddresses': excludedEmailAddresses!,
+        if (excludedIpRanges != null) 'excludedIpRanges': excludedIpRanges!,
+        if (excludedUris != null) 'excludedUris': excludedUris!,
+        if (permittedDnsNames != null) 'permittedDnsNames': permittedDnsNames!,
+        if (permittedEmailAddresses != null)
+          'permittedEmailAddresses': permittedEmailAddresses!,
+        if (permittedIpRanges != null) 'permittedIpRanges': permittedIpRanges!,
+        if (permittedUris != null) 'permittedUris': permittedUris!,
+      };
+}
 
 /// An ObjectId specifies an object identifier (OID).
 ///
@@ -4968,6 +5159,21 @@ class PublicKey {
 /// The options set here apply to certificates issued by any
 /// CertificateAuthority in the CaPool.
 class PublishingOptions {
+  /// Specifies the encoding format of each CertificateAuthority's CA
+  /// certificate and CRLs.
+  ///
+  /// If this is omitted, CA certificates and CRLs will be published in PEM.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "ENCODING_FORMAT_UNSPECIFIED" : Not specified. By default, PEM format
+  /// will be used.
+  /// - "PEM" : The CertificateAuthority's CA certificate and CRLs will be
+  /// published in PEM format.
+  /// - "DER" : The CertificateAuthority's CA certificate and CRLs will be
+  /// published in DER format.
+  core.String? encodingFormat;
+
   /// When true, publishes each CertificateAuthority's CA certificate and
   /// includes its URL in the "Authority Information Access" X.509 extension in
   /// all issued Certificates.
@@ -4991,12 +5197,16 @@ class PublishingOptions {
   core.bool? publishCrl;
 
   PublishingOptions({
+    this.encodingFormat,
     this.publishCaCert,
     this.publishCrl,
   });
 
   PublishingOptions.fromJson(core.Map json_)
       : this(
+          encodingFormat: json_.containsKey('encodingFormat')
+              ? json_['encodingFormat'] as core.String
+              : null,
           publishCaCert: json_.containsKey('publishCaCert')
               ? json_['publishCaCert'] as core.bool
               : null,
@@ -5006,6 +5216,7 @@ class PublishingOptions {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (encodingFormat != null) 'encodingFormat': encodingFormat!,
         if (publishCaCert != null) 'publishCaCert': publishCaCert!,
         if (publishCrl != null) 'publishCrl': publishCrl!,
       };
@@ -5089,7 +5300,7 @@ class RevokeCertificateRequest {
   /// server will know to ignore the request if it has already been completed.
   /// The server will guarantee that for at least 60 minutes since the first
   /// request. For example, consider a situation where you make an initial
-  /// request and t he request times out. If you make the request again with the
+  /// request and the request times out. If you make the request again with the
   /// same request ID, the server can check if original operation with the same
   /// request ID was received, and if so, will ignore the second request. This
   /// prevents clients from accidentally creating duplicate commitments. The
@@ -5675,6 +5886,11 @@ class X509Parameters {
   /// Optional.
   KeyUsage? keyUsage;
 
+  /// Describes the X.509 name constraints extension.
+  ///
+  /// Optional.
+  NameConstraints? nameConstraints;
+
   /// Describes the X.509 certificate policy object identifiers, per
   /// https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
   ///
@@ -5686,6 +5902,7 @@ class X509Parameters {
     this.aiaOcspServers,
     this.caOptions,
     this.keyUsage,
+    this.nameConstraints,
     this.policyIds,
   });
 
@@ -5710,6 +5927,10 @@ class X509Parameters {
               ? KeyUsage.fromJson(
                   json_['keyUsage'] as core.Map<core.String, core.dynamic>)
               : null,
+          nameConstraints: json_.containsKey('nameConstraints')
+              ? NameConstraints.fromJson(json_['nameConstraints']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           policyIds: json_.containsKey('policyIds')
               ? (json_['policyIds'] as core.List)
                   .map((value) => ObjectId.fromJson(
@@ -5724,6 +5945,7 @@ class X509Parameters {
         if (aiaOcspServers != null) 'aiaOcspServers': aiaOcspServers!,
         if (caOptions != null) 'caOptions': caOptions!,
         if (keyUsage != null) 'keyUsage': keyUsage!,
+        if (nameConstraints != null) 'nameConstraints': nameConstraints!,
         if (policyIds != null) 'policyIds': policyIds!,
       };
 }

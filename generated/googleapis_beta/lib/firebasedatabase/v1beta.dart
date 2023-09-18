@@ -2,20 +2,19 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Firebase Realtime Database API - v1beta
 ///
-/// The Firebase Realtime Database Management API enables programmatic
-/// provisioning and management of Realtime Database instances.
+/// The Firebase Realtime Database API enables programmatic provisioning and
+/// management of Realtime Database instances.
 ///
 /// For more information, see
 /// <https://firebase.google.com/docs/reference/rest/database/database-management/rest/>
@@ -26,7 +25,7 @@
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsInstancesResource]
-library firebasedatabase.v1beta;
+library firebasedatabase_v1beta;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -35,15 +34,14 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-/// The Firebase Realtime Database Management API enables programmatic
-/// provisioning and management of Realtime Database instances.
+/// The Firebase Realtime Database API enables programmatic provisioning and
+/// management of Realtime Database instances.
 class FirebaseRealtimeDatabaseApi {
   /// See, edit, configure, and delete your Google Cloud data and see the email
   /// address for your Google Account.
@@ -110,8 +108,9 @@ class ProjectsLocationsInstancesResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The parent project for which to create a database instance, in
-  /// the form: `projects/{project-number}/locations/{location-id}`.
+  /// [parent] - Required. The parent project for which to create a database
+  /// instance, in the form:
+  /// `projects/{project-number}/locations/{location-id}`.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [databaseId] - The globally unique identifier of the database instance.
@@ -164,8 +163,8 @@ class ProjectsLocationsInstancesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The fully qualified resource name of the database instance, in
-  /// the form:
+  /// [name] - Required. The fully qualified resource name of the database
+  /// instance, in the form:
   /// `projects/{project-number}/locations/{location-id}/instances/{database-id}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
@@ -209,8 +208,8 @@ class ProjectsLocationsInstancesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The fully qualified resource name of the database instance, in
-  /// the form:
+  /// [name] - Required. The fully qualified resource name of the database
+  /// instance, in the form:
   /// `projects/{project-number}/locations/{location-id}/instances/{database-id}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
@@ -251,8 +250,8 @@ class ProjectsLocationsInstancesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The fully qualified resource name of the database instance, in
-  /// the form:
+  /// [name] - Required. The fully qualified resource name of the database
+  /// instance, in the form:
   /// `projects/{project-number}/locations/{location-id}/instances/{database-id}`.
   /// `database-id` is a globally unique identifier across all parent
   /// collections. For convenience, this method allows you to supply `-` as a
@@ -301,9 +300,10 @@ class ProjectsLocationsInstancesResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The parent project for which to list database instances, in the
-  /// form: `projects/{project-number}/locations/{location-id}` To list across
-  /// all locations, use a parent in the form:
+  /// [parent] - Required. The parent project for which to list database
+  /// instances, in the form:
+  /// `projects/{project-number}/locations/{location-id}` To list across all
+  /// locations, use a parent in the form:
   /// `projects/{project-number}/locations/-`
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
@@ -364,8 +364,8 @@ class ProjectsLocationsInstancesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The fully qualified resource name of the database instance, in
-  /// the form:
+  /// [name] - Required. The fully qualified resource name of the database
+  /// instance, in the form:
   /// `projects/{project-number}/locations/{location-id}/instances/{database-id}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
@@ -414,8 +414,8 @@ class ProjectsLocationsInstancesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The fully qualified resource name of the database instance, in
-  /// the form:
+  /// [name] - Required. The fully qualified resource name of the database
+  /// instance, in the form:
   /// `projects/{project-number}/locations/{location-id}/instances/{database-id}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.

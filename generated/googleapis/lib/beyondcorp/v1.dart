@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// BeyondCorp API - v1
@@ -23,6 +22,9 @@
 ///
 /// Create an instance of [BeyondCorpApi] to access these resources:
 ///
+/// - [OrganizationsResource]
+///   - [OrganizationsLocationsResource]
+///     - [OrganizationsLocationsOperationsResource]
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsAppConnectionsResource]
@@ -31,7 +33,7 @@
 ///     - [ProjectsLocationsClientConnectorServicesResource]
 ///     - [ProjectsLocationsClientGatewaysResource]
 ///     - [ProjectsLocationsOperationsResource]
-library beyondcorp.v1;
+library beyondcorp_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -40,7 +42,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -60,6 +61,7 @@ class BeyondCorpApi {
 
   final commons.ApiRequester _requester;
 
+  OrganizationsResource get organizations => OrganizationsResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
 
   BeyondCorpApi(http.Client client,
@@ -67,6 +69,212 @@ class BeyondCorpApi {
       core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+}
+
+class OrganizationsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsResource get locations =>
+      OrganizationsLocationsResource(_requester);
+
+  OrganizationsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class OrganizationsLocationsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsOperationsResource get operations =>
+      OrganizationsLocationsOperationsResource(_requester);
+
+  OrganizationsLocationsResource(commons.ApiRequester client)
+      : _requester = client;
+}
+
+class OrganizationsLocationsOperationsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsOperationsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Starts asynchronous cancellation on a long-running operation.
+  ///
+  /// The server makes a best effort to cancel the operation, but success is not
+  /// guaranteed. If the server doesn't support this method, it returns
+  /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
+  /// or other methods to check whether the cancellation succeeded or whether
+  /// the operation completed despite cancellation. On successful cancellation,
+  /// the operation is not deleted; instead, it becomes an operation with an
+  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
+  /// `Code.CANCELLED`.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be cancelled.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> cancel(
+    GoogleLongrunningCancelOperationRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a long-running operation.
+  ///
+  /// This method indicates that the client is no longer interested in the
+  /// operation result. It does not cancel the operation. If the server doesn't
+  /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be deleted.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists operations that match the specified filter in the request.
+  ///
+  /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation's parent resource.
+  /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - The standard list filter.
+  ///
+  /// [pageSize] - The standard list page size.
+  ///
+  /// [pageToken] - The standard list page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningListOperationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningListOperationsResponse> list(
+    core.String name, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/operations';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningListOperationsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsResource {
@@ -211,7 +419,7 @@ class ProjectsLocationsAppConnectionsResource {
   /// server will know to ignore the request if it has already been completed.
   /// The server will guarantee that for at least 60 minutes since the first
   /// request. For example, consider a situation where you make an initial
-  /// request and t he request times out. If you make the request again with the
+  /// request and the request times out. If you make the request again with the
   /// same request ID, the server can check if original operation with the same
   /// request ID was received, and if so, will ignore the second request. This
   /// prevents clients from accidentally creating duplicate commitments. The
@@ -273,7 +481,7 @@ class ProjectsLocationsAppConnectionsResource {
   /// server will know to ignore the request if it has already been completed.
   /// The server will guarantee that for at least 60 minutes after the first
   /// request. For example, consider a situation where you make an initial
-  /// request and t he request times out. If you make the request again with the
+  /// request and the request times out. If you make the request again with the
   /// same request ID, the server can check if original operation with the same
   /// request ID was received, and if so, will ignore the second request. This
   /// prevents clients from accidentally creating duplicate commitments. The
@@ -493,7 +701,7 @@ class ProjectsLocationsAppConnectionsResource {
   /// server will know to ignore the request if it has already been completed.
   /// The server will guarantee that for at least 60 minutes since the first
   /// request. For example, consider a situation where you make an initial
-  /// request and t he request times out. If you make the request again with the
+  /// request and the request times out. If you make the request again with the
   /// same request ID, the server can check if original operation with the same
   /// request ID was received, and if so, will ignore the second request. This
   /// prevents clients from accidentally creating duplicate commitments. The
@@ -736,7 +944,7 @@ class ProjectsLocationsAppConnectorsResource {
   /// server will know to ignore the request if it has already been completed.
   /// The server will guarantee that for at least 60 minutes since the first
   /// request. For example, consider a situation where you make an initial
-  /// request and t he request times out. If you make the request again with the
+  /// request and the request times out. If you make the request again with the
   /// same request ID, the server can check if original operation with the same
   /// request ID was received, and if so, will ignore the second request. This
   /// prevents clients from accidentally creating duplicate commitments. The
@@ -798,7 +1006,7 @@ class ProjectsLocationsAppConnectorsResource {
   /// server will know to ignore the request if it has already been completed.
   /// The server will guarantee that for at least 60 minutes after the first
   /// request. For example, consider a situation where you make an initial
-  /// request and t he request times out. If you make the request again with the
+  /// request and the request times out. If you make the request again with the
   /// same request ID, the server can check if original operation with the same
   /// request ID was received, and if so, will ignore the second request. This
   /// prevents clients from accidentally creating duplicate commitments. The
@@ -1015,7 +1223,7 @@ class ProjectsLocationsAppConnectorsResource {
   /// server will know to ignore the request if it has already been completed.
   /// The server will guarantee that for at least 60 minutes since the first
   /// request. For example, consider a situation where you make an initial
-  /// request and t he request times out. If you make the request again with the
+  /// request and the request times out. If you make the request again with the
   /// same request ID, the server can check if original operation with the same
   /// request ID was received, and if so, will ignore the second request. This
   /// prevents clients from accidentally creating duplicate commitments. The
@@ -1133,8 +1341,8 @@ class ProjectsLocationsAppConnectorsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<
-          GoogleCloudBeyondcorpAppconnectorsV1ResolveInstanceConfigResponse>
+  async
+      .Future<GoogleCloudBeyondcorpAppconnectorsV1ResolveInstanceConfigResponse>
       resolveInstanceConfig(
     core.String appConnector, {
     core.String? $fields,
@@ -1280,7 +1488,7 @@ class ProjectsLocationsAppGatewaysResource {
   /// server will know to ignore the request if it has already been completed.
   /// The server will guarantee that for at least 60 minutes since the first
   /// request. For example, consider a situation where you make an initial
-  /// request and t he request times out. If you make the request again with the
+  /// request and the request times out. If you make the request again with the
   /// same request ID, the server can check if original operation with the same
   /// request ID was received, and if so, will ignore the second request. This
   /// prevents clients from accidentally creating duplicate commitments. The
@@ -1342,7 +1550,7 @@ class ProjectsLocationsAppGatewaysResource {
   /// server will know to ignore the request if it has already been completed.
   /// The server will guarantee that for at least 60 minutes after the first
   /// request. For example, consider a situation where you make an initial
-  /// request and t he request times out. If you make the request again with the
+  /// request and the request times out. If you make the request again with the
   /// same request ID, the server can check if original operation with the same
   /// request ID was received, and if so, will ignore the second request. This
   /// prevents clients from accidentally creating duplicate commitments. The
@@ -1647,169 +1855,6 @@ class ProjectsLocationsClientConnectorServicesResource {
   ProjectsLocationsClientConnectorServicesResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a new ClientConnectorService in a given project and location.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. Value for parent.
-  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
-  ///
-  /// [clientConnectorServiceId] - Optional. User-settable client connector
-  /// service resource ID. * Must start with a letter. * Must contain between
-  /// 4-63 characters from `/a-z-/`. * Must end with a number or a letter. A
-  /// random system generated name will be assigned if not specified by the
-  /// user.
-  ///
-  /// [requestId] - Optional. An optional request ID to identify requests.
-  /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes since the first
-  /// request. For example, consider a situation where you make an initial
-  /// request and t he request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
-  ///
-  /// [validateOnly] - Optional. If set, validates request by executing a
-  /// dry-run which would not alter the resource in any way.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleLongrunningOperation].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleLongrunningOperation> create(
-    ClientConnectorService request,
-    core.String parent, {
-    core.String? clientConnectorServiceId,
-    core.String? requestId,
-    core.bool? validateOnly,
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (clientConnectorServiceId != null)
-        'clientConnectorServiceId': [clientConnectorServiceId],
-      if (requestId != null) 'requestId': [requestId],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ =
-        'v1/' + core.Uri.encodeFull('$parent') + '/clientConnectorServices';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Deletes a single ClientConnectorService.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. Name of the resource.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/clientConnectorServices/\[^/\]+$`.
-  ///
-  /// [requestId] - Optional. An optional request ID to identify requests.
-  /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes after the first
-  /// request. For example, consider a situation where you make an initial
-  /// request and t he request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
-  ///
-  /// [validateOnly] - Optional. If set, validates request by executing a
-  /// dry-run which would not alter the resource in any way.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleLongrunningOperation].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleLongrunningOperation> delete(
-    core.String name, {
-    core.String? requestId,
-    core.bool? validateOnly,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (requestId != null) 'requestId': [requestId],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$name');
-
-    final response_ = await _requester.request(
-      url_,
-      'DELETE',
-      queryParams: queryParams_,
-    );
-    return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Gets details of a single ClientConnectorService.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. Name of the resource.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/clientConnectorServices/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ClientConnectorService].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ClientConnectorService> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$name');
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return ClientConnectorService.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-
   /// Gets the access control policy for a resource.
   ///
   /// Returns an empty policy if the resource exists and does not have a policy
@@ -1865,136 +1910,6 @@ class ProjectsLocationsClientConnectorServicesResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Lists ClientConnectorServices in a given project and location.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. Parent value for ListClientConnectorServicesRequest.
-  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
-  ///
-  /// [filter] - Optional. Filtering results.
-  ///
-  /// [orderBy] - Optional. Hint for how to order the results.
-  ///
-  /// [pageSize] - Optional. Requested page size. Server may return fewer items
-  /// than requested. If unspecified, server will pick an appropriate default.
-  ///
-  /// [pageToken] - Optional. A token identifying a page of results the server
-  /// should return.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ListClientConnectorServicesResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ListClientConnectorServicesResponse> list(
-    core.String parent, {
-    core.String? filter,
-    core.String? orderBy,
-    core.int? pageSize,
-    core.String? pageToken,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ =
-        'v1/' + core.Uri.encodeFull('$parent') + '/clientConnectorServices';
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return ListClientConnectorServicesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Updates the parameters of a single ClientConnectorService.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. Name of resource. The name is ignored during creation.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/clientConnectorServices/\[^/\]+$`.
-  ///
-  /// [allowMissing] - Optional. If set as true, will create the resource if it
-  /// is not found.
-  ///
-  /// [requestId] - Optional. An optional request ID to identify requests.
-  /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes since the first
-  /// request. For example, consider a situation where you make an initial
-  /// request and t he request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
-  ///
-  /// [updateMask] - Required. Field mask is used to specify the fields to be
-  /// overwritten in the ClientConnectorService resource by the update. The
-  /// fields specified in the update_mask are relative to the resource, not the
-  /// full request. A field will be overwritten if it is in the mask. If the
-  /// user does not provide a mask then all fields will be overwritten. Mutable
-  /// fields: display_name, ingress.config.destination_routes.
-  ///
-  /// [validateOnly] - Optional. If set, validates request by executing a
-  /// dry-run which would not alter the resource in any way.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleLongrunningOperation].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleLongrunningOperation> patch(
-    ClientConnectorService request,
-    core.String name, {
-    core.bool? allowMissing,
-    core.String? requestId,
-    core.String? updateMask,
-    core.bool? validateOnly,
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
-      if (requestId != null) 'requestId': [requestId],
-      if (updateMask != null) 'updateMask': [updateMask],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$name');
-
-    final response_ = await _requester.request(
-      url_,
-      'PATCH',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return GoogleLongrunningOperation.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 
@@ -2104,165 +2019,6 @@ class ProjectsLocationsClientGatewaysResource {
   ProjectsLocationsClientGatewaysResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a new ClientGateway in a given project and location.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. Value for parent.
-  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
-  ///
-  /// [clientGatewayId] - Optional. User-settable client gateway resource ID. *
-  /// Must start with a letter. * Must contain between 4-63 characters from
-  /// `/a-z-/`. * Must end with a number or a letter.
-  ///
-  /// [requestId] - Optional. An optional request ID to identify requests.
-  /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes since the first
-  /// request. For example, consider a situation where you make an initial
-  /// request and t he request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
-  ///
-  /// [validateOnly] - Optional. If set, validates request by executing a
-  /// dry-run which would not alter the resource in any way.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleLongrunningOperation].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleLongrunningOperation> create(
-    ClientGateway request,
-    core.String parent, {
-    core.String? clientGatewayId,
-    core.String? requestId,
-    core.bool? validateOnly,
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (clientGatewayId != null) 'clientGatewayId': [clientGatewayId],
-      if (requestId != null) 'requestId': [requestId],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/clientGateways';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Deletes a single ClientGateway.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. Name of the resource
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/clientGateways/\[^/\]+$`.
-  ///
-  /// [requestId] - Optional. An optional request ID to identify requests.
-  /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes after the first
-  /// request. For example, consider a situation where you make an initial
-  /// request and t he request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
-  ///
-  /// [validateOnly] - Optional. If set, validates request by executing a
-  /// dry-run which would not alter the resource in any way.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleLongrunningOperation].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleLongrunningOperation> delete(
-    core.String name, {
-    core.String? requestId,
-    core.bool? validateOnly,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (requestId != null) 'requestId': [requestId],
-      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$name');
-
-    final response_ = await _requester.request(
-      url_,
-      'DELETE',
-      queryParams: queryParams_,
-    );
-    return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Gets details of a single ClientGateway.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. Name of the resource
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/clientGateways/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ClientGateway].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ClientGateway> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$name');
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return ClientGateway.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-
   /// Gets the access control policy for a resource.
   ///
   /// Returns an empty policy if the resource exists and does not have a policy
@@ -2318,60 +2074,6 @@ class ProjectsLocationsClientGatewaysResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Lists ClientGateways in a given project and location.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. Parent value for ListClientGatewaysRequest.
-  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
-  ///
-  /// [filter] - Optional. Filtering results.
-  ///
-  /// [orderBy] - Optional. Hint for how to order the results.
-  ///
-  /// [pageSize] - Optional. Requested page size. Server may return fewer items
-  /// than requested. If unspecified, server will pick an appropriate default.
-  ///
-  /// [pageToken] - Optional. A token identifying a page of results the server
-  /// should return.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ListClientGatewaysResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ListClientGatewaysResponse> list(
-    core.String parent, {
-    core.String? filter,
-    core.String? orderBy,
-    core.int? pageSize,
-    core.String? pageToken,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/clientGateways';
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return ListClientGatewaysResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 
@@ -2614,13 +2316,6 @@ class ProjectsLocationsOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -2817,9 +2512,9 @@ class AppGateway {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -2847,290 +2542,6 @@ class AppGateway {
         if (uid != null) 'uid': uid!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (uri != null) 'uri': uri!,
-      };
-}
-
-/// Message describing ClientConnectorService object.
-class ClientConnectorService {
-  /// Create time stamp.
-  ///
-  /// Output only.
-  core.String? createTime;
-
-  /// User-provided name.
-  ///
-  /// The display name should follow certain format. * Must be 6 to 30
-  /// characters in length. * Can only contain lowercase letters, numbers, and
-  /// hyphens. * Must start with a letter.
-  ///
-  /// Optional.
-  core.String? displayName;
-
-  /// The details of the egress settings.
-  ///
-  /// Required.
-  Egress? egress;
-
-  /// The details of the ingress settings.
-  ///
-  /// Required.
-  Ingress? ingress;
-
-  /// Name of resource.
-  ///
-  /// The name is ignored during creation.
-  ///
-  /// Required.
-  core.String? name;
-
-  /// The operational state of the ClientConnectorService.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : Default value. This value is unused.
-  /// - "CREATING" : ClientConnectorService is being created.
-  /// - "UPDATING" : ClientConnectorService is being updated.
-  /// - "DELETING" : ClientConnectorService is being deleted.
-  /// - "RUNNING" : ClientConnectorService is running.
-  /// - "DOWN" : ClientConnectorService is down and may be restored in the
-  /// future. This happens when CCFE sends ProjectState = OFF.
-  /// - "ERROR" : ClientConnectorService encountered an error and is in an
-  /// indeterministic state.
-  core.String? state;
-
-  /// Update time stamp.
-  ///
-  /// Output only.
-  core.String? updateTime;
-
-  ClientConnectorService({
-    this.createTime,
-    this.displayName,
-    this.egress,
-    this.ingress,
-    this.name,
-    this.state,
-    this.updateTime,
-  });
-
-  ClientConnectorService.fromJson(core.Map json_)
-      : this(
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          egress: json_.containsKey('egress')
-              ? Egress.fromJson(
-                  json_['egress'] as core.Map<core.String, core.dynamic>)
-              : null,
-          ingress: json_.containsKey('ingress')
-              ? Ingress.fromJson(
-                  json_['ingress'] as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (displayName != null) 'displayName': displayName!,
-        if (egress != null) 'egress': egress!,
-        if (ingress != null) 'ingress': ingress!,
-        if (name != null) 'name': name!,
-        if (state != null) 'state': state!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
-}
-
-/// Message describing ClientGateway object.
-class ClientGateway {
-  /// The client connector service name that the client gateway is associated
-  /// to.
-  ///
-  /// Client Connector Services, named as follows:
-  /// `projects/{project_id}/locations/{location_id}/client_connector_services/{client_connector_service_id}`.
-  ///
-  /// Output only.
-  core.String? clientConnectorService;
-
-  /// Create time stamp.
-  ///
-  /// Output only.
-  core.String? createTime;
-
-  /// A unique identifier for the instance generated by the system.
-  ///
-  /// Output only.
-  core.String? id;
-
-  /// name of resource.
-  ///
-  /// The name is ignored during creation.
-  ///
-  /// Required.
-  core.String? name;
-
-  /// The operational state of the gateway.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : Default value. This value is unused.
-  /// - "CREATING" : Gateway is being created.
-  /// - "UPDATING" : Gateway is being updated.
-  /// - "DELETING" : Gateway is being deleted.
-  /// - "RUNNING" : Gateway is running.
-  /// - "DOWN" : Gateway is down and may be restored in the future. This happens
-  /// when CCFE sends ProjectState = OFF.
-  /// - "ERROR" : ClientGateway encountered an error and is in indeterministic
-  /// state.
-  core.String? state;
-
-  /// Update time stamp.
-  ///
-  /// Output only.
-  core.String? updateTime;
-
-  ClientGateway({
-    this.clientConnectorService,
-    this.createTime,
-    this.id,
-    this.name,
-    this.state,
-    this.updateTime,
-  });
-
-  ClientGateway.fromJson(core.Map json_)
-      : this(
-          clientConnectorService: json_.containsKey('clientConnectorService')
-              ? json_['clientConnectorService'] as core.String
-              : null,
-          createTime: json_.containsKey('createTime')
-              ? json_['createTime'] as core.String
-              : null,
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (clientConnectorService != null)
-          'clientConnectorService': clientConnectorService!,
-        if (createTime != null) 'createTime': createTime!,
-        if (id != null) 'id': id!,
-        if (name != null) 'name': name!,
-        if (state != null) 'state': state!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
-}
-
-/// The basic ingress config for ClientGateways.
-class Config {
-  /// The settings used to configure basic ClientGateways.
-  ///
-  /// Required.
-  core.List<DestinationRoute>? destinationRoutes;
-
-  /// The transport protocol used between the client and the server.
-  ///
-  /// Required. Immutable.
-  /// Possible string values are:
-  /// - "TRANSPORT_PROTOCOL_UNSPECIFIED" : Default value. This value is unused.
-  /// - "TCP" : TCP protocol.
-  core.String? transportProtocol;
-
-  Config({
-    this.destinationRoutes,
-    this.transportProtocol,
-  });
-
-  Config.fromJson(core.Map json_)
-      : this(
-          destinationRoutes: json_.containsKey('destinationRoutes')
-              ? (json_['destinationRoutes'] as core.List)
-                  .map((value) => DestinationRoute.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          transportProtocol: json_.containsKey('transportProtocol')
-              ? json_['transportProtocol'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (destinationRoutes != null) 'destinationRoutes': destinationRoutes!,
-        if (transportProtocol != null) 'transportProtocol': transportProtocol!,
-      };
-}
-
-/// The setting used to configure ClientGateways.
-///
-/// It is adding routes to the client's routing table after the connection is
-/// established.
-class DestinationRoute {
-  /// The network address of the subnet for which the packet is routed to the
-  /// ClientGateway.
-  ///
-  /// Required.
-  core.String? address;
-
-  /// The network mask of the subnet for which the packet is routed to the
-  /// ClientGateway.
-  ///
-  /// Required.
-  core.String? netmask;
-
-  DestinationRoute({
-    this.address,
-    this.netmask,
-  });
-
-  DestinationRoute.fromJson(core.Map json_)
-      : this(
-          address: json_.containsKey('address')
-              ? json_['address'] as core.String
-              : null,
-          netmask: json_.containsKey('netmask')
-              ? json_['netmask'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (address != null) 'address': address!,
-        if (netmask != null) 'netmask': netmask!,
-      };
-}
-
-/// The details of the egress info.
-///
-/// One of the following options should be set.
-class Egress {
-  /// A VPC from the consumer project.
-  PeeredVpc? peeredVpc;
-
-  Egress({
-    this.peeredVpc,
-  });
-
-  Egress.fromJson(core.Map json_)
-      : this(
-          peeredVpc: json_.containsKey('peeredVpc')
-              ? PeeredVpc.fromJson(
-                  json_['peeredVpc'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (peeredVpc != null) 'peeredVpc': peeredVpc!,
       };
 }
 
@@ -3262,9 +2673,9 @@ class GoogleCloudBeyondcorpAppconnectionsV1AppConnection {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -3606,9 +3017,9 @@ class GoogleCloudBeyondcorpAppconnectorsV1AppConnector {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -3887,7 +3298,7 @@ class GoogleCloudBeyondcorpAppconnectorsV1ReportStatusRequest {
   /// server will know to ignore the request if it has already been completed.
   /// The server will guarantee that for at least 60 minutes since the first
   /// request. For example, consider a situation where you make an initial
-  /// request and t he request times out. If you make the request again with the
+  /// request and the request times out. If you make the request again with the
   /// same request ID, the server can check if original operation with the same
   /// request ID was received, and if so, will ignore the second request. This
   /// prevents clients from accidentally creating duplicate commitments. The
@@ -4067,7 +3478,7 @@ class GoogleCloudLocationListLocationsResponse {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
+/// A resource that represents a Google Cloud location.
 typedef GoogleCloudLocationLocation = $Location00;
 
 /// Specifies the audit configuration for a service.
@@ -4159,7 +3570,9 @@ class GoogleIamV1Binding {
   /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
   /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
-  /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
+  /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
+  /// (primary) that represents all the users of that domain. For example,
+  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
   /// An email address (plus unique identifier) representing a user that has
   /// been recently deleted. For example,
   /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
@@ -4175,9 +3588,7 @@ class GoogleIamV1Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
-  /// that represents all the users of that domain. For example, `google.com` or
-  /// `example.com`.
+  /// the role in the binding.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
@@ -4516,30 +3927,6 @@ typedef GoogleRpcStatus = $Status;
 /// information.
 typedef GoogleTypeExpr = $Expr;
 
-/// Settings of how to connect to the ClientGateway.
-///
-/// One of the following options should be set.
-class Ingress {
-  /// The basic ingress config for ClientGateways.
-  Config? config;
-
-  Ingress({
-    this.config,
-  });
-
-  Ingress.fromJson(core.Map json_)
-      : this(
-          config: json_.containsKey('config')
-              ? Config.fromJson(
-                  json_['config'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (config != null) 'config': config!,
-      };
-}
-
 /// Response message for BeyondCorp.ListAppGateways.
 class ListAppGatewaysResponse {
   /// A list of BeyondCorp AppGateways in the project.
@@ -4580,113 +3967,5 @@ class ListAppGatewaysResponse {
         if (appGateways != null) 'appGateways': appGateways!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (unreachable != null) 'unreachable': unreachable!,
-      };
-}
-
-/// Message for response to listing ClientConnectorServices.
-class ListClientConnectorServicesResponse {
-  /// The list of ClientConnectorService.
-  core.List<ClientConnectorService>? clientConnectorServices;
-
-  /// A token identifying a page of results the server should return.
-  core.String? nextPageToken;
-
-  /// Locations that could not be reached.
-  core.List<core.String>? unreachable;
-
-  ListClientConnectorServicesResponse({
-    this.clientConnectorServices,
-    this.nextPageToken,
-    this.unreachable,
-  });
-
-  ListClientConnectorServicesResponse.fromJson(core.Map json_)
-      : this(
-          clientConnectorServices: json_.containsKey('clientConnectorServices')
-              ? (json_['clientConnectorServices'] as core.List)
-                  .map((value) => ClientConnectorService.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
-          unreachable: json_.containsKey('unreachable')
-              ? (json_['unreachable'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (clientConnectorServices != null)
-          'clientConnectorServices': clientConnectorServices!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
-}
-
-/// Message for response to listing ClientGateways.
-class ListClientGatewaysResponse {
-  /// The list of ClientGateway.
-  core.List<ClientGateway>? clientGateways;
-
-  /// A token identifying a page of results the server should return.
-  core.String? nextPageToken;
-
-  /// Locations that could not be reached.
-  core.List<core.String>? unreachable;
-
-  ListClientGatewaysResponse({
-    this.clientGateways,
-    this.nextPageToken,
-    this.unreachable,
-  });
-
-  ListClientGatewaysResponse.fromJson(core.Map json_)
-      : this(
-          clientGateways: json_.containsKey('clientGateways')
-              ? (json_['clientGateways'] as core.List)
-                  .map((value) => ClientGateway.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
-          unreachable: json_.containsKey('unreachable')
-              ? (json_['unreachable'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (clientGateways != null) 'clientGateways': clientGateways!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
-}
-
-/// The peered VPC owned by the consumer project.
-class PeeredVpc {
-  /// The name of the peered VPC owned by the consumer project.
-  ///
-  /// Required.
-  core.String? networkVpc;
-
-  PeeredVpc({
-    this.networkVpc,
-  });
-
-  PeeredVpc.fromJson(core.Map json_)
-      : this(
-          networkVpc: json_.containsKey('networkVpc')
-              ? json_['networkVpc'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (networkVpc != null) 'networkVpc': networkVpc!,
       };
 }

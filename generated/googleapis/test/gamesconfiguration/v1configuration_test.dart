@@ -1,8 +1,6 @@
 // ignore_for_file: camel_case_types
-// ignore_for_file: cascade_invocations
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_const_declarations
@@ -12,8 +10,9 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unreachable_from_main
 // ignore_for_file: unused_local_variable
 
 import 'dart:async' as async;
@@ -221,43 +220,6 @@ void checkGamesNumberFormatConfiguration(api.GamesNumberFormatConfiguration o) {
     checkGamesNumberAffixConfiguration(o.suffix!);
   }
   buildCounterGamesNumberFormatConfiguration--;
-}
-
-core.int buildCounterImageConfiguration = 0;
-api.ImageConfiguration buildImageConfiguration() {
-  final o = api.ImageConfiguration();
-  buildCounterImageConfiguration++;
-  if (buildCounterImageConfiguration < 3) {
-    o.imageType = 'foo';
-    o.kind = 'foo';
-    o.resourceId = 'foo';
-    o.url = 'foo';
-  }
-  buildCounterImageConfiguration--;
-  return o;
-}
-
-void checkImageConfiguration(api.ImageConfiguration o) {
-  buildCounterImageConfiguration++;
-  if (buildCounterImageConfiguration < 3) {
-    unittest.expect(
-      o.imageType!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.kind!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.resourceId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.url!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterImageConfiguration--;
 }
 
 core.int buildCounterLeaderboardConfiguration = 0;
@@ -507,16 +469,6 @@ void main() {
     });
   });
 
-  unittest.group('obj-schema-ImageConfiguration', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildImageConfiguration();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.ImageConfiguration.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkImageConfiguration(od);
-    });
-  });
-
   unittest.group('obj-schema-LeaderboardConfiguration', () {
     unittest.test('to-json--from-json', () async {
       final o = buildLeaderboardConfiguration();
@@ -574,7 +526,7 @@ void main() {
       final arg_achievementId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -595,7 +547,7 @@ void main() {
           unittest.equals('$arg_achievementId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -630,7 +582,7 @@ void main() {
       final arg_achievementId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -651,7 +603,7 @@ void main() {
           unittest.equals('$arg_achievementId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -692,7 +644,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkAchievementConfiguration(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -721,7 +673,7 @@ void main() {
         );
         pathOffset += 13;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -760,7 +712,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -789,7 +741,7 @@ void main() {
         );
         pathOffset += 13;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -843,7 +795,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkAchievementConfiguration(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -864,7 +816,7 @@ void main() {
           unittest.equals('$arg_achievementId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -896,84 +848,6 @@ void main() {
     });
   });
 
-  unittest.group('resource-ImageConfigurationsResource', () {
-    unittest.test('method--upload', () async {
-      // TODO: Implement tests for media upload;
-      // TODO: Implement tests for media download;
-
-      final mock = HttpServerMock();
-      final res = api.GamesConfigurationApi(mock).imageConfigurations;
-      final arg_resourceId = 'foo';
-      final arg_imageType = 'foo';
-      final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 29),
-          unittest.equals('games/v1configuration/images/'),
-        );
-        pathOffset += 29;
-        index = path.indexOf('/imageType/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_resourceId'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 11),
-          unittest.equals('/imageType/'),
-        );
-        pathOffset += 11;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_imageType'),
-        );
-
-        final query = (req.url).query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
-
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
-          }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
-
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildImageConfiguration());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.upload(arg_resourceId, arg_imageType, $fields: arg_$fields);
-      checkImageConfiguration(response as api.ImageConfiguration);
-    });
-  });
-
   unittest.group('resource-LeaderboardConfigurationsResource', () {
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
@@ -981,7 +855,7 @@ void main() {
       final arg_leaderboardId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1002,7 +876,7 @@ void main() {
           unittest.equals('$arg_leaderboardId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -1037,7 +911,7 @@ void main() {
       final arg_leaderboardId = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1058,7 +932,7 @@ void main() {
           unittest.equals('$arg_leaderboardId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -1099,7 +973,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkLeaderboardConfiguration(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1128,7 +1002,7 @@ void main() {
         );
         pathOffset += 13;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -1167,7 +1041,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1196,7 +1070,7 @@ void main() {
         );
         pathOffset += 13;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -1250,7 +1124,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkLeaderboardConfiguration(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1271,7 +1145,7 @@ void main() {
           unittest.equals('$arg_leaderboardId'),
         );
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>

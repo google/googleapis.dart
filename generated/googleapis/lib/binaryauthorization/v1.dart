@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Binary Authorization API - v1
@@ -25,9 +24,11 @@
 ///
 /// - [ProjectsResource]
 ///   - [ProjectsAttestorsResource]
+///   - [ProjectsPlatformsResource]
+///     - [ProjectsPlatformsPoliciesResource]
 ///   - [ProjectsPolicyResource]
 /// - [SystempolicyResource]
-library binaryauthorization.v1;
+library binaryauthorization_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -36,7 +37,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -70,6 +70,8 @@ class ProjectsResource {
 
   ProjectsAttestorsResource get attestors =>
       ProjectsAttestorsResource(_requester);
+  ProjectsPlatformsResource get platforms =>
+      ProjectsPlatformsResource(_requester);
   ProjectsPolicyResource get policy => ProjectsPolicyResource(_requester);
 
   ProjectsResource(commons.ApiRequester client) : _requester = client;
@@ -584,6 +586,248 @@ class ProjectsAttestorsResource {
   }
 }
 
+class ProjectsPlatformsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsPlatformsPoliciesResource get policies =>
+      ProjectsPlatformsPoliciesResource(_requester);
+
+  ProjectsPlatformsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsPlatformsPoliciesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsPlatformsPoliciesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a platform policy, and returns a copy of it.
+  ///
+  /// Returns NOT_FOUND if the project or platform doesn't exist,
+  /// INVALID_ARGUMENT if the request is malformed, ALREADY_EXISTS if the policy
+  /// already exists, and INVALID_ARGUMENT if the policy contains a
+  /// platform-specific policy that does not match the platform value specified
+  /// in the URL.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent of this platform policy.
+  /// Value must have pattern `^projects/\[^/\]+/platforms/\[^/\]+$`.
+  ///
+  /// [policyId] - Required. The platform policy ID.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [PlatformPolicy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<PlatformPolicy> create(
+    PlatformPolicy request,
+    core.String parent, {
+    core.String? policyId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (policyId != null) 'policyId': [policyId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/policies';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return PlatformPolicy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a platform policy.
+  ///
+  /// Returns NOT_FOUND if the policy doesn't exist.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the platform policy to delete, in the
+  /// format `projects / * /platforms / * /policies / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/platforms/\[^/\]+/policies/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a platform policy.
+  ///
+  /// Returns NOT_FOUND if the policy doesn't exist.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the platform policy to retrieve in the
+  /// format `projects / * /platforms / * /policies / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/platforms/\[^/\]+/policies/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [PlatformPolicy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<PlatformPolicy> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return PlatformPolicy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists platform policies owned by a project in the specified platform.
+  ///
+  /// Returns INVALID_ARGUMENT if the project or the platform doesn't exist.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the platform associated with the
+  /// platform policies using the format `projects / * /platforms / * `.
+  /// Value must have pattern `^projects/\[^/\]+/platforms/\[^/\]+$`.
+  ///
+  /// [pageSize] - Requested page size. The server may return fewer results than
+  /// requested. If unspecified, the server picks an appropriate default.
+  ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return. Typically, this is the value of
+  /// ListPlatformPoliciesResponse.next_page_token returned from the previous
+  /// call to the `ListPlatformPolicies` method.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListPlatformPoliciesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListPlatformPoliciesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/policies';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListPlatformPoliciesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Replaces a platform policy.
+  ///
+  /// Returns NOT_FOUND if the policy doesn't exist.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. The relative resource name of the BinAuthz platform
+  /// policy, in the form of `projects / * /platforms / * /policies / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/platforms/\[^/\]+/policies/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [PlatformPolicy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<PlatformPolicy> replacePlatformPolicy(
+    PlatformPolicy request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PUT',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return PlatformPolicy.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsPolicyResource {
   final commons.ApiRequester _requester;
 
@@ -882,6 +1126,54 @@ class AdmissionWhitelistPattern {
       };
 }
 
+/// An attestation authenticator that will be used to verify attestations.
+///
+/// Typically this is just a set of public keys. Conceptually, an authenticator
+/// can be treated as always returning either "authenticated" or "not
+/// authenticated" when presented with a signed attestation (almost always
+/// assumed to be a [DSSE](https://github.com/secure-systems-lab/dsse)
+/// attestation). The details of how an authenticator makes this decision are
+/// specific to the type of 'authenticator' that this message wraps.
+class AttestationAuthenticator {
+  /// A user-provided name for this AttestationAuthenticator.
+  ///
+  /// This field has no effect on the policy evaluation behavior except to
+  /// improve readability of messages in evaluation results.
+  ///
+  /// Optional.
+  core.String? displayName;
+
+  /// A set of raw PKIX SubjectPublicKeyInfo format public keys.
+  ///
+  /// If any public key in the set validates the attestation signature, then the
+  /// signature is considered authenticated (i.e. any one key is sufficient to
+  /// authenticate).
+  ///
+  /// Optional.
+  PkixPublicKeySet? pkixPublicKeySet;
+
+  AttestationAuthenticator({
+    this.displayName,
+    this.pkixPublicKeySet,
+  });
+
+  AttestationAuthenticator.fromJson(core.Map json_)
+      : this(
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          pkixPublicKeySet: json_.containsKey('pkixPublicKeySet')
+              ? PkixPublicKeySet.fromJson(json_['pkixPublicKeySet']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (pkixPublicKeySet != null) 'pkixPublicKeySet': pkixPublicKeySet!,
+      };
+}
+
 /// Occurrence that represents a single "attestation".
 ///
 /// The authenticity of an attestation can be verified using the attached
@@ -951,6 +1243,33 @@ class AttestationOccurrence {
         if (jwts != null) 'jwts': jwts!,
         if (serializedPayload != null) 'serializedPayload': serializedPayload!,
         if (signatures != null) 'signatures': signatures!,
+      };
+}
+
+/// Specifies the locations for fetching the provenance attestations.
+class AttestationSource {
+  /// The ids of the GCP projects storing the SLSA attestations as container
+  /// analysis Occurrences.
+  core.List<core.String>? containerAnalysisAttestationProjects;
+
+  AttestationSource({
+    this.containerAnalysisAttestationProjects,
+  });
+
+  AttestationSource.fromJson(core.Map json_)
+      : this(
+          containerAnalysisAttestationProjects:
+              json_.containsKey('containerAnalysisAttestationProjects')
+                  ? (json_['containerAnalysisAttestationProjects'] as core.List)
+                      .map((value) => value as core.String)
+                      .toList()
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (containerAnalysisAttestationProjects != null)
+          'containerAnalysisAttestationProjects':
+              containerAnalysisAttestationProjects!,
       };
 }
 
@@ -1124,7 +1443,9 @@ class Binding {
   /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
   /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
-  /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
+  /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
+  /// (primary) that represents all the users of that domain. For example,
+  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
   /// An email address (plus unique identifier) representing a user that has
   /// been recently deleted. For example,
   /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
@@ -1140,9 +1461,7 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
-  /// that represents all the users of that domain. For example, `google.com` or
-  /// `example.com`.
+  /// the role in the binding.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
@@ -1177,6 +1496,209 @@ class Binding {
       };
 }
 
+/// A single check to perform against a Pod.
+///
+/// Checks are grouped into CheckSets, which are defined by the top-level
+/// policy.
+class Check {
+  /// A special-case check that always denies.
+  ///
+  /// Note that this still only applies when the scope of the CheckSet applies
+  /// and the image isn't exempted by an image allowlist. This check is
+  /// primarily useful for testing, or to set the default behavior for all
+  /// unmatched scopes to "deny".
+  ///
+  /// Optional.
+  core.bool? alwaysDeny;
+
+  /// A user-provided name for this Check.
+  ///
+  /// This field has no effect on the policy evaluation behavior except to
+  /// improve readability of messages in evaluation results.
+  ///
+  /// Optional.
+  core.String? displayName;
+
+  /// Images exempted from this Check.
+  ///
+  /// If any of the patterns match the image url, the check will not be
+  /// evaluated.
+  ///
+  /// Optional.
+  ImageAllowlist? imageAllowlist;
+
+  /// Require that an image is no older than a configured expiration time.
+  ///
+  /// Image age is determined by its upload time.
+  ///
+  /// Optional.
+  ImageFreshnessCheck? imageFreshnessCheck;
+
+  /// Require a SimpleSigning-type attestation for every image in the
+  /// deployment.
+  ///
+  /// Optional.
+  SimpleSigningAttestationCheck? simpleSigningAttestationCheck;
+
+  /// Require that an image was built by a trusted builder (such as Google Cloud
+  /// Build or GitHub), meets requirements for Supply chain Levels for Software
+  /// Artifacts (SLSA), and was built from a trusted source code repostitory.
+  ///
+  /// Optional.
+  SlsaCheck? slsaCheck;
+
+  /// Require that an image lives in a trusted directory.
+  ///
+  /// Optional.
+  TrustedDirectoryCheck? trustedDirectoryCheck;
+
+  /// Require that an image does not contain vulnerabilities that violate the
+  /// configured rules, such as based on severity levels.
+  ///
+  /// Optional.
+  VulnerabilityCheck? vulnerabilityCheck;
+
+  Check({
+    this.alwaysDeny,
+    this.displayName,
+    this.imageAllowlist,
+    this.imageFreshnessCheck,
+    this.simpleSigningAttestationCheck,
+    this.slsaCheck,
+    this.trustedDirectoryCheck,
+    this.vulnerabilityCheck,
+  });
+
+  Check.fromJson(core.Map json_)
+      : this(
+          alwaysDeny: json_.containsKey('alwaysDeny')
+              ? json_['alwaysDeny'] as core.bool
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          imageAllowlist: json_.containsKey('imageAllowlist')
+              ? ImageAllowlist.fromJson(json_['imageAllowlist']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          imageFreshnessCheck: json_.containsKey('imageFreshnessCheck')
+              ? ImageFreshnessCheck.fromJson(json_['imageFreshnessCheck']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          simpleSigningAttestationCheck:
+              json_.containsKey('simpleSigningAttestationCheck')
+                  ? SimpleSigningAttestationCheck.fromJson(
+                      json_['simpleSigningAttestationCheck']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          slsaCheck: json_.containsKey('slsaCheck')
+              ? SlsaCheck.fromJson(
+                  json_['slsaCheck'] as core.Map<core.String, core.dynamic>)
+              : null,
+          trustedDirectoryCheck: json_.containsKey('trustedDirectoryCheck')
+              ? TrustedDirectoryCheck.fromJson(json_['trustedDirectoryCheck']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          vulnerabilityCheck: json_.containsKey('vulnerabilityCheck')
+              ? VulnerabilityCheck.fromJson(json_['vulnerabilityCheck']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (alwaysDeny != null) 'alwaysDeny': alwaysDeny!,
+        if (displayName != null) 'displayName': displayName!,
+        if (imageAllowlist != null) 'imageAllowlist': imageAllowlist!,
+        if (imageFreshnessCheck != null)
+          'imageFreshnessCheck': imageFreshnessCheck!,
+        if (simpleSigningAttestationCheck != null)
+          'simpleSigningAttestationCheck': simpleSigningAttestationCheck!,
+        if (slsaCheck != null) 'slsaCheck': slsaCheck!,
+        if (trustedDirectoryCheck != null)
+          'trustedDirectoryCheck': trustedDirectoryCheck!,
+        if (vulnerabilityCheck != null)
+          'vulnerabilityCheck': vulnerabilityCheck!,
+      };
+}
+
+/// A conjunction of policy checks, scoped to a particular namespace or
+/// Kubernetes service account.
+///
+/// In order for evaluation of a CheckSet to return "allowed" for a given image
+/// in a given Pod, one of the following conditions must be satisfied: * The
+/// image is explicitly exempted by an entry in `image_allowlist`, OR * ALL of
+/// the `checks` evaluate to "allowed".
+class CheckSet {
+  /// The checks to apply.
+  ///
+  /// The ultimate result of evaluating the check set will be "allow" if and
+  /// only if every check in 'checks' evaluates to "allow". If `checks` is
+  /// empty, the default behavior is "always allow".
+  ///
+  /// Optional.
+  core.List<Check>? checks;
+
+  /// A user-provided name for this CheckSet.
+  ///
+  /// This field has no effect on the policy evaluation behavior except to
+  /// improve readability of messages in evaluation results.
+  ///
+  /// Optional.
+  core.String? displayName;
+
+  /// Images exempted from this CheckSet.
+  ///
+  /// If any of the patterns match the image being evaluated, no checks in the
+  /// CheckSet will be evaluated.
+  ///
+  /// Optional.
+  ImageAllowlist? imageAllowlist;
+
+  /// The scope to which this CheckSet applies.
+  ///
+  /// If unset or an empty string (the default), applies to all namespaces and
+  /// service accounts. See the Scope message documentation for details on
+  /// scoping rules.
+  ///
+  /// Optional.
+  Scope? scope;
+
+  CheckSet({
+    this.checks,
+    this.displayName,
+    this.imageAllowlist,
+    this.scope,
+  });
+
+  CheckSet.fromJson(core.Map json_)
+      : this(
+          checks: json_.containsKey('checks')
+              ? (json_['checks'] as core.List)
+                  .map((value) => Check.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          imageAllowlist: json_.containsKey('imageAllowlist')
+              ? ImageAllowlist.fromJson(json_['imageAllowlist']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          scope: json_.containsKey('scope')
+              ? Scope.fromJson(
+                  json_['scope'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (checks != null) 'checks': checks!,
+        if (displayName != null) 'displayName': displayName!,
+        if (imageAllowlist != null) 'imageAllowlist': imageAllowlist!,
+        if (scope != null) 'scope': scope!,
+      };
+}
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
 ///
@@ -1205,6 +1727,65 @@ typedef Empty = $Empty;
 /// information.
 typedef Expr = $Expr;
 
+/// A Binary Authorization policy for a GKE cluster.
+///
+/// This is one type of policy that can occur as a `PlatformPolicy`.
+class GkePolicy {
+  /// The CheckSets to apply, scoped by namespace or namespace and service
+  /// account.
+  ///
+  /// Exactly one CheckSet will be evaluated for a given Pod (unless the list is
+  /// empty, in which case the behavior is "always allow"). If multiple
+  /// CheckSets have scopes that match the namespace and service account of the
+  /// Pod being evaluated, only the CheckSet with the MOST SPECIFIC scope will
+  /// match. CheckSets must be listed in order of decreasing specificity, i.e.
+  /// if a scope matches a given service account (which must include the
+  /// namespace), it must come before a CheckSet with a scope matching just that
+  /// namespace. This property is enforced by server-side validation. The
+  /// purpose of this restriction is to ensure that if more than one CheckSet
+  /// matches a given Pod, the CheckSet that will be evaluated will always be
+  /// the first in the list to match (because if any other matches, it must be
+  /// less specific). If `check_sets` is empty, the default behavior is to allow
+  /// all images. If `check_sets` is non-empty, the last `check_sets` entry must
+  /// always be a CheckSet with no scope set, i.e. a catchall to handle any
+  /// situation not caught by the preceding CheckSets.
+  ///
+  /// Optional.
+  core.List<CheckSet>? checkSets;
+
+  /// Images exempted from this policy.
+  ///
+  /// If any of the patterns match the image being evaluated, the rest of the
+  /// policy will not be evaluated.
+  ///
+  /// Optional.
+  ImageAllowlist? imageAllowlist;
+
+  GkePolicy({
+    this.checkSets,
+    this.imageAllowlist,
+  });
+
+  GkePolicy.fromJson(core.Map json_)
+      : this(
+          checkSets: json_.containsKey('checkSets')
+              ? (json_['checkSets'] as core.List)
+                  .map((value) => CheckSet.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          imageAllowlist: json_.containsKey('imageAllowlist')
+              ? ImageAllowlist.fromJson(json_['imageAllowlist']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (checkSets != null) 'checkSets': checkSets!,
+        if (imageAllowlist != null) 'imageAllowlist': imageAllowlist!,
+      };
+}
+
 /// An Identity and Access Management (IAM) policy, which specifies access
 /// controls for Google Cloud resources.
 ///
@@ -1219,23 +1800,23 @@ typedef Expr = $Expr;
 /// request, the resource, or both. To learn which resources support conditions
 /// in their IAM policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": \[ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": \[
+/// **JSON example:** ``` { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": \[
-/// "user:eve@example.com" \], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time \< timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
-/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
-/// user:mike@example.com - group:admins@example.com - domain:google.com -
-/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
-/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
-/// role: roles/resourcemanager.organizationViewer condition: title: expirable
-/// access description: Does not grant access after Sep 2020 expression:
-/// request.time \< timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA=
-/// version: 3 For a description of IAM and its features, see the
-/// [IAM documentation](https://cloud.google.com/iam/docs/).
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: -
+/// members: - user:mike@example.com - group:admins@example.com -
+/// domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+/// role: roles/resourcemanager.organizationAdmin - members: -
+/// user:eve@example.com role: roles/resourcemanager.organizationViewer
+/// condition: title: expirable access description: Does not grant access after
+/// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+/// etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features,
+/// see the [IAM documentation](https://cloud.google.com/iam/docs/).
 class IamPolicy {
   /// Associates a list of `members`, or principals, with a `role`.
   ///
@@ -1315,6 +1896,60 @@ class IamPolicy {
       };
 }
 
+/// Images that are exempted from normal checks based on name pattern only.
+class ImageAllowlist {
+  /// A disjunction of image patterns to allow.
+  ///
+  /// If any of these patterns match, then the image is considered exempted by
+  /// this allowlist.
+  ///
+  /// Required.
+  core.List<core.String>? allowPattern;
+
+  ImageAllowlist({
+    this.allowPattern,
+  });
+
+  ImageAllowlist.fromJson(core.Map json_)
+      : this(
+          allowPattern: json_.containsKey('allowPattern')
+              ? (json_['allowPattern'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allowPattern != null) 'allowPattern': allowPattern!,
+      };
+}
+
+/// An image freshness check, which rejects images that were uploaded before the
+/// set number of days ago to the supported repositories.
+class ImageFreshnessCheck {
+  /// The max number of days that is allowed since the image was uploaded.
+  ///
+  /// Must be greater than zero.
+  ///
+  /// Required.
+  core.int? maxUploadAgeDays;
+
+  ImageFreshnessCheck({
+    this.maxUploadAgeDays,
+  });
+
+  ImageFreshnessCheck.fromJson(core.Map json_)
+      : this(
+          maxUploadAgeDays: json_.containsKey('maxUploadAgeDays')
+              ? json_['maxUploadAgeDays'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (maxUploadAgeDays != null) 'maxUploadAgeDays': maxUploadAgeDays!,
+      };
+}
+
 typedef Jwt = $Jwt;
 
 /// Response message for BinauthzManagementService.ListAttestors.
@@ -1350,6 +1985,42 @@ class ListAttestorsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (attestors != null) 'attestors': attestors!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Response message for PlatformPolicyManagementService.ListPlatformPolicies.
+class ListPlatformPoliciesResponse {
+  /// A token to retrieve the next page of results.
+  ///
+  /// Pass this value in the ListPlatformPoliciesRequest.page_token field in the
+  /// subsequent call to the `ListPlatformPolicies` method to retrieve the next
+  /// page of results.
+  core.String? nextPageToken;
+
+  /// The list of platform policies.
+  core.List<PlatformPolicy>? platformPolicies;
+
+  ListPlatformPoliciesResponse({
+    this.nextPageToken,
+    this.platformPolicies,
+  });
+
+  ListPlatformPoliciesResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          platformPolicies: json_.containsKey('platformPolicies')
+              ? (json_['platformPolicies'] as core.List)
+                  .map((value) => PlatformPolicy.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (platformPolicies != null) 'platformPolicies': platformPolicies!,
       };
 }
 
@@ -1424,6 +2095,89 @@ class PkixPublicKey {
         if (publicKeyPem != null) 'publicKeyPem': publicKeyPem!,
         if (signatureAlgorithm != null)
           'signatureAlgorithm': signatureAlgorithm!,
+      };
+}
+
+/// A bundle of PKIX public keys, used to authenticate attestation signatures.
+///
+/// Generally, a signature is considered to be authenticated by a
+/// PkixPublicKeySet if any of the public keys verify it (i.e. it is an "OR" of
+/// the keys).
+class PkixPublicKeySet {
+  /// `pkix_public_keys` must have at least one entry.
+  ///
+  /// Required.
+  core.List<PkixPublicKey>? pkixPublicKeys;
+
+  PkixPublicKeySet({
+    this.pkixPublicKeys,
+  });
+
+  PkixPublicKeySet.fromJson(core.Map json_)
+      : this(
+          pkixPublicKeys: json_.containsKey('pkixPublicKeys')
+              ? (json_['pkixPublicKeys'] as core.List)
+                  .map((value) => PkixPublicKey.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (pkixPublicKeys != null) 'pkixPublicKeys': pkixPublicKeys!,
+      };
+}
+
+/// A Binary Authorization platform policy for deployments on various platforms.
+class PlatformPolicy {
+  /// A description comment about the policy.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// GKE platform-specific policy.
+  ///
+  /// Optional.
+  GkePolicy? gkePolicy;
+
+  /// The relative resource name of the BinAuthz platform policy, in the form of
+  /// `projects / * /platforms / * /policies / * `.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Time when the policy was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  PlatformPolicy({
+    this.description,
+    this.gkePolicy,
+    this.name,
+    this.updateTime,
+  });
+
+  PlatformPolicy.fromJson(core.Map json_)
+      : this(
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          gkePolicy: json_.containsKey('gkePolicy')
+              ? GkePolicy.fromJson(
+                  json_['gkePolicy'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (gkePolicy != null) 'gkePolicy': gkePolicy!,
+        if (name != null) 'name': name!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -1545,10 +2299,10 @@ class Policy {
               ? (json_['clusterAdmissionRules']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     AdmissionRule.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -1569,10 +2323,10 @@ class Policy {
                   ? (json_['istioServiceIdentityAdmissionRules']
                           as core.Map<core.String, core.dynamic>)
                       .map(
-                      (key, item) => core.MapEntry(
+                      (key, value) => core.MapEntry(
                         key,
                         AdmissionRule.fromJson(
-                            item as core.Map<core.String, core.dynamic>),
+                            value as core.Map<core.String, core.dynamic>),
                       ),
                     )
                   : null,
@@ -1581,10 +2335,10 @@ class Policy {
                   ? (json_['kubernetesNamespaceAdmissionRules']
                           as core.Map<core.String, core.dynamic>)
                       .map(
-                      (key, item) => core.MapEntry(
+                      (key, value) => core.MapEntry(
                         key,
                         AdmissionRule.fromJson(
-                            item as core.Map<core.String, core.dynamic>),
+                            value as core.Map<core.String, core.dynamic>),
                       ),
                     )
                   : null,
@@ -1593,10 +2347,10 @@ class Policy {
                   ? (json_['kubernetesServiceAccountAdmissionRules']
                           as core.Map<core.String, core.dynamic>)
                       .map(
-                      (key, item) => core.MapEntry(
+                      (key, value) => core.MapEntry(
                         key,
                         AdmissionRule.fromJson(
-                            item as core.Map<core.String, core.dynamic>),
+                            value as core.Map<core.String, core.dynamic>),
                       ),
                     )
                   : null,
@@ -1628,6 +2382,47 @@ class Policy {
               kubernetesServiceAccountAdmissionRules!,
         if (name != null) 'name': name!,
         if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// A scope specifier for CheckSets.
+class Scope {
+  /// Matches all Kubernetes service accounts in the provided namespace, unless
+  /// a more specific `kubernetes_service_account` scope already matched.
+  ///
+  /// Optional.
+  core.String? kubernetesNamespace;
+
+  /// Matches a single Kubernetes service account, e.g.
+  /// 'my-namespace:my-service-account'.
+  ///
+  /// `kubernetes_service_account` scope is always more specific than
+  /// `kubernetes_namespace` scope for the same namespace.
+  ///
+  /// Optional.
+  core.String? kubernetesServiceAccount;
+
+  Scope({
+    this.kubernetesNamespace,
+    this.kubernetesServiceAccount,
+  });
+
+  Scope.fromJson(core.Map json_)
+      : this(
+          kubernetesNamespace: json_.containsKey('kubernetesNamespace')
+              ? json_['kubernetesNamespace'] as core.String
+              : null,
+          kubernetesServiceAccount:
+              json_.containsKey('kubernetesServiceAccount')
+                  ? json_['kubernetesServiceAccount'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kubernetesNamespace != null)
+          'kubernetesNamespace': kubernetesNamespace!,
+        if (kubernetesServiceAccount != null)
+          'kubernetesServiceAccount': kubernetesServiceAccount!,
       };
 }
 
@@ -1678,11 +2473,141 @@ class SetIamPolicyRequest {
 /// message that holds this signature).
 typedef Signature = $Signature;
 
+/// Require a signed [DSSE](https://github.com/secure-systems-lab/dsse)
+/// attestation with type SimpleSigning.
+class SimpleSigningAttestationCheck {
+  /// The authenticators required by this check to verify an attestation.
+  ///
+  /// Typically this is one or more PKIX public keys for signature verification.
+  /// Only one authenticator needs to consider an attestation verified in order
+  /// for an attestation to be considered fully authenticated. In otherwords,
+  /// this list of authenticators is an "OR" of the authenticator results. At
+  /// least one authenticator is required.
+  ///
+  /// Required.
+  core.List<AttestationAuthenticator>? attestationAuthenticators;
+
+  /// The projects where attestations are stored as Container Analysis
+  /// Occurrences.
+  ///
+  /// Only one attestation needs to successfully verify an image for this check
+  /// to pass, so a single verified attestation found in any of
+  /// `container_analysis_attestation_projects` is sufficient for the check to
+  /// pass. When fetching Occurrences from Container Analysis, only
+  /// 'AttestationOccurrence' kinds are considered. In the future, additional
+  /// Occurrence kinds may be added to the query.
+  ///
+  /// Optional.
+  core.List<core.String>? containerAnalysisAttestationProjects;
+
+  SimpleSigningAttestationCheck({
+    this.attestationAuthenticators,
+    this.containerAnalysisAttestationProjects,
+  });
+
+  SimpleSigningAttestationCheck.fromJson(core.Map json_)
+      : this(
+          attestationAuthenticators:
+              json_.containsKey('attestationAuthenticators')
+                  ? (json_['attestationAuthenticators'] as core.List)
+                      .map((value) => AttestationAuthenticator.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+          containerAnalysisAttestationProjects:
+              json_.containsKey('containerAnalysisAttestationProjects')
+                  ? (json_['containerAnalysisAttestationProjects'] as core.List)
+                      .map((value) => value as core.String)
+                      .toList()
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attestationAuthenticators != null)
+          'attestationAuthenticators': attestationAuthenticators!,
+        if (containerAnalysisAttestationProjects != null)
+          'containerAnalysisAttestationProjects':
+              containerAnalysisAttestationProjects!,
+      };
+}
+
+/// A SLSA provenance attestation check, which ensures that images are built by
+/// a trusted builder using source code from its trusted repositories only.
+class SlsaCheck {
+  /// Specifies a list of verification rules for the SLSA attestations.
+  ///
+  /// An image is considered compliant with the SlsaCheck if any of the rules
+  /// are satisfied.
+  core.List<VerificationRule>? rules;
+
+  SlsaCheck({
+    this.rules,
+  });
+
+  SlsaCheck.fromJson(core.Map json_)
+      : this(
+          rules: json_.containsKey('rules')
+              ? (json_['rules'] as core.List)
+                  .map((value) => VerificationRule.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (rules != null) 'rules': rules!,
+      };
+}
+
 /// Request message for `TestIamPermissions` method.
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;
+
+/// A trusted directory check, which rejects images that do not come from the
+/// set of user-configured trusted directories.
+class TrustedDirectoryCheck {
+  /// List of trusted directory patterns.
+  ///
+  /// A pattern is in the form "registry/path/to/directory". The registry domain
+  /// part is defined as two or more dot-separated words, e.g., us.pkg.dev, or
+  /// gcr.io. Additionally, * can be used in three ways as wildcards: 1. leading
+  /// * to match varying prefixes in registry subdomain (useful for location
+  /// prefixes); 2. trailing * after registry/ to match varying endings; 3.
+  /// trailing ** after registry/ to match "/" as well. For example: --
+  /// gcr.io/my-project/my-repo is valid to match a single directory --
+  /// *-docker.pkg.dev/my-project/my-repo or *.gcr.io/my-project are valid to
+  /// match varying prefixes -- gcr.io/my-project / * will match all direct
+  /// directories in my-project -- gcr.io/my-project / * * would match all
+  /// directories in my-project -- gcr.i* is not allowed since the registry is
+  /// not completely specified -- sub*domain.gcr.io/nginx is not valid because
+  /// only leading * or trailing * are allowed. -- *pkg.dev/my-project/my-repo
+  /// is not valid because leading * can only match subdomain --
+  /// **-docker.pkg.dev is not valid because one leading * is allowed, and that
+  /// it cannot match "/"
+  ///
+  /// Required.
+  core.List<core.String>? trustedDirPatterns;
+
+  TrustedDirectoryCheck({
+    this.trustedDirPatterns,
+  });
+
+  TrustedDirectoryCheck.fromJson(core.Map json_)
+      : this(
+          trustedDirPatterns: json_.containsKey('trustedDirPatterns')
+              ? (json_['trustedDirPatterns'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (trustedDirPatterns != null)
+          'trustedDirPatterns': trustedDirPatterns!,
+      };
+}
 
 /// An user owned Grafeas note references a Grafeas Attestation.Authority Note
 /// created by the user.
@@ -1833,5 +2758,217 @@ class ValidateAttestationOccurrenceResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (denialReason != null) 'denialReason': denialReason!,
         if (result != null) 'result': result!,
+      };
+}
+
+/// Specifies verification rules for evaluating the SLSA attestations including:
+/// which builders to trust, where to fetch the SLSA attestations generated by
+/// those builders, and other builder-specific evaluation rules such as which
+/// source repositories are trusted.
+///
+/// An image is considered verified by the rule if any of the fetched SLSA
+/// attestations is verified.
+class VerificationRule {
+  /// Specifies where to fetch the provenances attestations generated by the
+  /// builder (group).
+  AttestationSource? attestationSource;
+
+  /// If true, require the image to be built from a top-level configuration.
+  ///
+  /// trusted_source_repo patterns specifies the repositories containing this
+  /// configuration.
+  core.bool? configBasedBuildRequired;
+
+  /// Each verification rule is used for evaluation against provenances
+  /// generated by a specific builder (group).
+  ///
+  /// For some of the builders, such as the Google Cloud Build, users don't need
+  /// to explicitly specify their roots of trust in the policy since the
+  /// evaluation service can automatically fetch them based on the builder
+  /// (group).
+  /// Possible string values are:
+  /// - "BUILDER_UNSPECIFIED" : Should never happen.
+  /// - "GOOGLE_CLOUD_BUILD" : The whole Google Cloud Build (GCB) builder group,
+  /// including all GCB builder types.
+  core.String? trustedBuilder;
+
+  /// List of trusted source code repository URL patterns.
+  ///
+  /// These patterns match the full repository URL without its scheme (e.g.
+  /// "https://"). The patterns must not include schemes. For example, the
+  /// pattern "source.cloud.google.com/my-project/my-repo-name" matches the
+  /// following URLs: - "source.cloud.google.com/my-project/my-repo-name" -
+  /// "git+ssh://source.cloud.google.com/my-project/my-repo-name" -
+  /// "https://source.cloud.google.com/my-project/my-repo-name" A pattern
+  /// matches a URL either exactly or with * wildcards. * can be used in only
+  /// two ways: 1. trailing * after hosturi/ to match varying endings; 2.
+  /// trailing ** after hosturi/ to match "/" as well. * and ** can only be used
+  /// as wildcards and can only occur at the end of the pattern after a /. (So
+  /// it's not possible to match a URL that contains literal *.) For example: -
+  /// "github.com/my-project/my-repo" is valid to match a single repo -
+  /// "github.com/my-project / * " will match all direct repos in my-project -
+  /// "github.com / * *" matches all repos in GitHub
+  core.List<core.String>? trustedSourceRepoPatterns;
+
+  VerificationRule({
+    this.attestationSource,
+    this.configBasedBuildRequired,
+    this.trustedBuilder,
+    this.trustedSourceRepoPatterns,
+  });
+
+  VerificationRule.fromJson(core.Map json_)
+      : this(
+          attestationSource: json_.containsKey('attestationSource')
+              ? AttestationSource.fromJson(json_['attestationSource']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          configBasedBuildRequired:
+              json_.containsKey('configBasedBuildRequired')
+                  ? json_['configBasedBuildRequired'] as core.bool
+                  : null,
+          trustedBuilder: json_.containsKey('trustedBuilder')
+              ? json_['trustedBuilder'] as core.String
+              : null,
+          trustedSourceRepoPatterns:
+              json_.containsKey('trustedSourceRepoPatterns')
+                  ? (json_['trustedSourceRepoPatterns'] as core.List)
+                      .map((value) => value as core.String)
+                      .toList()
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attestationSource != null) 'attestationSource': attestationSource!,
+        if (configBasedBuildRequired != null)
+          'configBasedBuildRequired': configBasedBuildRequired!,
+        if (trustedBuilder != null) 'trustedBuilder': trustedBuilder!,
+        if (trustedSourceRepoPatterns != null)
+          'trustedSourceRepoPatterns': trustedSourceRepoPatterns!,
+      };
+}
+
+/// An image vulnerability check, which rejects images that violate the
+/// configured vulnerability rules.
+class VulnerabilityCheck {
+  /// A list of specific CVEs to ignore even if the vulnerability level violates
+  /// maximumUnfixableSeverity or maximumFixableSeverity.
+  ///
+  /// CVEs are listed in the format of Container Analysis note id. For example:
+  /// - CVE-2021-20305 - CVE-2020-10543 The CVEs are applicable regardless of
+  /// note provider project, e.g., an entry of `CVE-2021-20305` will allow
+  /// vulnerabilities with a note name of either
+  /// `projects/goog-vulnz/notes/CVE-2021-20305` or
+  /// `projects/CUSTOM-PROJECT/notes/CVE-2021-20305`.
+  ///
+  /// Optional.
+  core.List<core.String>? allowedCves;
+
+  /// A list of specific CVEs to always raise warnings about even if the
+  /// vulnerability level meets maximumUnfixableSeverity or
+  /// maximumFixableSeverity.
+  ///
+  /// CVEs are listed in the format of Container Analysis note id. For example:
+  /// - CVE-2021-20305 - CVE-2020-10543 The CVEs are applicable regardless of
+  /// note provider project, e.g., an entry of `CVE-2021-20305` will block
+  /// vulnerabilities with a note name of either
+  /// `projects/goog-vulnz/notes/CVE-2021-20305` or
+  /// `projects/CUSTOM-PROJECT/notes/CVE-2021-20305`.
+  ///
+  /// Optional.
+  core.List<core.String>? blockedCves;
+
+  /// The projects where vulnerabilities are stored as Container Analysis
+  /// Occurrences.
+  ///
+  /// Each project is expressed in the resource format of
+  /// `projects/[PROJECT_ID]`, e.g., projects/my-gcp-project. An attempt will be
+  /// made for each project to fetch vulnerabilities, and all valid
+  /// vulnerabilities will be used to check against the vulnerability policy. If
+  /// no valid scan is found in all projects configured here, an error will be
+  /// returned for the check.
+  ///
+  /// Optional.
+  core.List<core.String>? containerAnalysisVulnerabilityProjects;
+
+  /// The threshold for severity for which a fix is currently available.
+  ///
+  /// This field is required and must be set.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "MAXIMUM_ALLOWED_SEVERITY_UNSPECIFIED" : Not specified.
+  /// - "BLOCK_ALL" : Block any vulnerability.
+  /// - "MINIMAL" : Allow only minimal severity.
+  /// - "LOW" : Allow only low severity and lower.
+  /// - "MEDIUM" : Allow medium severity and lower.
+  /// - "HIGH" : Allow high severity and lower.
+  /// - "CRITICAL" : Allow critical severity and lower.
+  /// - "ALLOW_ALL" : Allow all severity, even vulnerability with unspecified
+  /// severity.
+  core.String? maximumFixableSeverity;
+
+  /// The threshold for severity for which a fix isn't currently available.
+  ///
+  /// This field is required and must be set.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "MAXIMUM_ALLOWED_SEVERITY_UNSPECIFIED" : Not specified.
+  /// - "BLOCK_ALL" : Block any vulnerability.
+  /// - "MINIMAL" : Allow only minimal severity.
+  /// - "LOW" : Allow only low severity and lower.
+  /// - "MEDIUM" : Allow medium severity and lower.
+  /// - "HIGH" : Allow high severity and lower.
+  /// - "CRITICAL" : Allow critical severity and lower.
+  /// - "ALLOW_ALL" : Allow all severity, even vulnerability with unspecified
+  /// severity.
+  core.String? maximumUnfixableSeverity;
+
+  VulnerabilityCheck({
+    this.allowedCves,
+    this.blockedCves,
+    this.containerAnalysisVulnerabilityProjects,
+    this.maximumFixableSeverity,
+    this.maximumUnfixableSeverity,
+  });
+
+  VulnerabilityCheck.fromJson(core.Map json_)
+      : this(
+          allowedCves: json_.containsKey('allowedCves')
+              ? (json_['allowedCves'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          blockedCves: json_.containsKey('blockedCves')
+              ? (json_['blockedCves'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          containerAnalysisVulnerabilityProjects: json_
+                  .containsKey('containerAnalysisVulnerabilityProjects')
+              ? (json_['containerAnalysisVulnerabilityProjects'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          maximumFixableSeverity: json_.containsKey('maximumFixableSeverity')
+              ? json_['maximumFixableSeverity'] as core.String
+              : null,
+          maximumUnfixableSeverity:
+              json_.containsKey('maximumUnfixableSeverity')
+                  ? json_['maximumUnfixableSeverity'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allowedCves != null) 'allowedCves': allowedCves!,
+        if (blockedCves != null) 'blockedCves': blockedCves!,
+        if (containerAnalysisVulnerabilityProjects != null)
+          'containerAnalysisVulnerabilityProjects':
+              containerAnalysisVulnerabilityProjects!,
+        if (maximumFixableSeverity != null)
+          'maximumFixableSeverity': maximumFixableSeverity!,
+        if (maximumUnfixableSeverity != null)
+          'maximumUnfixableSeverity': maximumUnfixableSeverity!,
       };
 }

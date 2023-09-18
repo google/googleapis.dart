@@ -2,20 +2,19 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Organization Policy API - v2
 ///
-/// The Org Policy API allows users to configure governance rules on their GCP
-/// resources across the Cloud Resource Hierarchy.
+/// The Organization Policy API allows users to configure governance rules on
+/// their Google Cloud resources across the resource hierarchy.
 ///
 /// For more information, see
 /// <https://cloud.google.com/orgpolicy/docs/reference/rest/index.html>
@@ -32,7 +31,7 @@
 /// - [ProjectsResource]
 ///   - [ProjectsConstraintsResource]
 ///   - [ProjectsPoliciesResource]
-library orgpolicy.v2;
+library orgpolicy_v2;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -41,15 +40,14 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-/// The Org Policy API allows users to configure governance rules on their GCP
-/// resources across the Cloud Resource Hierarchy.
+/// The Organization Policy API allows users to configure governance rules on
+/// their Google Cloud resources across the resource hierarchy.
 class OrgPolicyApi {
   /// See, edit, configure, and delete your Google Cloud data and see the email
   /// address for your Google Account.
@@ -84,14 +82,14 @@ class FoldersConstraintsResource {
 
   FoldersConstraintsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Lists `Constraints` that could be applied on the specified resource.
+  /// Lists constraints that could be applied on the specified resource.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The Cloud resource that parents the constraint. Must
-  /// be in one of the following forms: * `projects/{project_number}` *
-  /// `projects/{project_id}` * `folders/{folder_id}` *
-  /// `organizations/{organization_id}`
+  /// [parent] - Required. The Google Cloud resource that parents the
+  /// constraint. Must be in one of the following forms: *
+  /// `projects/{project_number}` * `projects/{project_id}` *
+  /// `folders/{folder_id}` * `organizations/{organization_id}`
   /// Value must have pattern `^folders/\[^/\]+$`.
   ///
   /// [pageSize] - Size of the pages to be returned. This is currently
@@ -141,21 +139,21 @@ class FoldersPoliciesResource {
 
   FoldersPoliciesResource(commons.ApiRequester client) : _requester = client;
 
-  /// Creates a Policy.
+  /// Creates a policy.
   ///
   /// Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the
   /// constraint does not exist. Returns a `google.rpc.Status` with
   /// `google.rpc.Code.ALREADY_EXISTS` if the policy already exists on the given
-  /// Cloud resource.
+  /// Google Cloud resource.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The Cloud resource that will parent the new Policy.
-  /// Must be in one of the following forms: * `projects/{project_number}` *
-  /// `projects/{project_id}` * `folders/{folder_id}` *
-  /// `organizations/{organization_id}`
+  /// [parent] - Required. The Google Cloud resource that will parent the new
+  /// policy. Must be in one of the following forms: *
+  /// `projects/{project_number}` * `projects/{project_id}` *
+  /// `folders/{folder_id}` * `organizations/{organization_id}`
   /// Value must have pattern `^folders/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -190,15 +188,15 @@ class FoldersPoliciesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deletes a Policy.
+  /// Deletes a policy.
   ///
   /// Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the
-  /// constraint or Org Policy does not exist.
+  /// constraint or organization policy does not exist.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the policy to delete. See `Policy` for naming
-  /// rules.
+  /// [name] - Required. Name of the policy to delete. See the policy entry for
+  /// naming rules.
   /// Value must have pattern `^folders/\[^/\]+/policies/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -230,15 +228,15 @@ class FoldersPoliciesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets a `Policy` on a resource.
+  /// Gets a policy on a resource.
   ///
-  /// If no `Policy` is set on the resource, NOT_FOUND is returned. The `etag`
-  /// value can be used with `UpdatePolicy()` to update a `Policy` during
+  /// If no policy is set on the resource, `NOT_FOUND` is returned. The `etag`
+  /// value can be used with `UpdatePolicy()` to update a policy during
   /// read-modify-write.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Resource name of the policy. See `Policy` for naming
+  /// [name] - Required. Resource name of the policy. See Policy for naming
   /// requirements.
   /// Value must have pattern `^folders/\[^/\]+/policies/\[^/\]+$`.
   ///
@@ -271,18 +269,18 @@ class FoldersPoliciesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets the effective `Policy` on a resource.
+  /// Gets the effective policy on a resource.
   ///
-  /// This is the result of merging `Policies` in the resource hierarchy and
-  /// evaluating conditions. The returned `Policy` will not have an `etag` or
-  /// `condition` set because it is a computed `Policy` across multiple
+  /// This is the result of merging policies in the resource hierarchy and
+  /// evaluating conditions. The returned policy will not have an `etag` or
+  /// `condition` set because it is an evaluated policy across multiple
   /// resources. Subtrees of Resource Manager resource hierarchy with 'under:'
   /// prefix will not be expanded.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The effective policy to compute. See `Policy` for
-  /// naming rules.
+  /// [name] - Required. The effective policy to compute. See Policy for naming
+  /// requirements.
   /// Value must have pattern `^folders/\[^/\]+/policies/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -314,13 +312,13 @@ class FoldersPoliciesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Retrieves all of the `Policies` that exist on a particular resource.
+  /// Retrieves all of the policies that exist on a particular resource.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The target Cloud resource that parents the set of
-  /// constraints and policies that will be returned from this call. Must be in
-  /// one of the following forms: * `projects/{project_number}` *
+  /// [parent] - Required. The target Google Cloud resource that parents the set
+  /// of constraints and policies that will be returned from this call. Must be
+  /// in one of the following forms: * `projects/{project_number}` *
   /// `projects/{project_id}` * `folders/{folder_id}` *
   /// `organizations/{organization_id}`
   /// Value must have pattern `^folders/\[^/\]+$`.
@@ -366,7 +364,7 @@ class FoldersPoliciesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates a Policy.
+  /// Updates a policy.
   ///
   /// Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the
   /// constraint or the policy do not exist. Returns a `google.rpc.Status` with
@@ -378,17 +376,21 @@ class FoldersPoliciesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Immutable. The resource name of the Policy. Must be one of the
-  /// following forms, where constraint_name is the name of the constraint which
-  /// this Policy configures: *
+  /// [name] - Immutable. The resource name of the policy. Must be one of the
+  /// following forms, where `constraint_name` is the name of the constraint
+  /// which this policy configures: *
   /// `projects/{project_number}/policies/{constraint_name}` *
   /// `folders/{folder_id}/policies/{constraint_name}` *
   /// `organizations/{organization_id}/policies/{constraint_name}` For example,
-  /// "projects/123/policies/compute.disableSerialPortAccess". Note:
+  /// `projects/123/policies/compute.disableSerialPortAccess`. Note:
   /// `projects/{project_id}/policies/{constraint_name}` is also an acceptable
   /// name for API requests, but responses will return the name using the
   /// equivalent project number.
   /// Value must have pattern `^folders/\[^/\]+/policies/\[^/\]+$`.
+  ///
+  /// [updateMask] - Field mask used to specify the fields to be overwritten in
+  /// the policy by the set. The fields specified in the update_mask are
+  /// relative to the policy, not the full request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -403,10 +405,12 @@ class FoldersPoliciesResource {
   async.Future<GoogleCloudOrgpolicyV2Policy> patch(
     GoogleCloudOrgpolicyV2Policy request,
     core.String name, {
+    core.String? updateMask,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -442,14 +446,14 @@ class OrganizationsConstraintsResource {
   OrganizationsConstraintsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Lists `Constraints` that could be applied on the specified resource.
+  /// Lists constraints that could be applied on the specified resource.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The Cloud resource that parents the constraint. Must
-  /// be in one of the following forms: * `projects/{project_number}` *
-  /// `projects/{project_id}` * `folders/{folder_id}` *
-  /// `organizations/{organization_id}`
+  /// [parent] - Required. The Google Cloud resource that parents the
+  /// constraint. Must be in one of the following forms: *
+  /// `projects/{project_number}` * `projects/{project_id}` *
+  /// `folders/{folder_id}` * `organizations/{organization_id}`
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [pageSize] - Size of the pages to be returned. This is currently
@@ -500,7 +504,7 @@ class OrganizationsCustomConstraintsResource {
   OrganizationsCustomConstraintsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a CustomConstraint.
+  /// Creates a custom constraint.
   ///
   /// Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the
   /// organization does not exist. Returns a `google.rpc.Status` with
@@ -547,15 +551,15 @@ class OrganizationsCustomConstraintsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deletes a Custom Constraint.
+  /// Deletes a custom constraint.
   ///
   /// Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the
   /// constraint does not exist.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the custom constraint to delete. See
-  /// `CustomConstraint` for naming rules.
+  /// [name] - Required. Name of the custom constraint to delete. See the custom
+  /// constraint entry for naming rules.
   /// Value must have pattern
   /// `^organizations/\[^/\]+/customConstraints/\[^/\]+$`.
   ///
@@ -588,15 +592,15 @@ class OrganizationsCustomConstraintsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets a CustomConstraint.
+  /// Gets a custom constraint.
   ///
   /// Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the
-  /// CustomConstraint does not exist.
+  /// custom constraint does not exist.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Resource name of the custom constraint. See
-  /// `CustomConstraint` for naming requirements.
+  /// [name] - Required. Resource name of the custom constraint. See the custom
+  /// constraint entry for naming requirements.
   /// Value must have pattern
   /// `^organizations/\[^/\]+/customConstraints/\[^/\]+$`.
   ///
@@ -629,14 +633,14 @@ class OrganizationsCustomConstraintsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Retrieves all of the `CustomConstraints` that exist on a particular
+  /// Retrieves all of the custom constraints that exist on a particular
   /// organization resource.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The target Cloud resource that parents the set of
-  /// custom constraints that will be returned from this call. Must be in one of
-  /// the following forms: * `organizations/{organization_id}`
+  /// [parent] - Required. The target Google Cloud resource that parents the set
+  /// of custom constraints that will be returned from this call. Must be in one
+  /// of the following forms: * `organizations/{organization_id}`
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [pageSize] - Size of the pages to be returned. This is currently
@@ -680,7 +684,7 @@ class OrganizationsCustomConstraintsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates a Custom Constraint.
+  /// Updates a custom constraint.
   ///
   /// Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the
   /// constraint does not exist. Note: the supplied policy will perform a full
@@ -693,7 +697,10 @@ class OrganizationsCustomConstraintsResource {
   /// [name] - Immutable. Name of the constraint. This is unique within the
   /// organization. Format of the name should be *
   /// `organizations/{organization_id}/customConstraints/{custom_constraint_id}`
-  /// Example : "organizations/123/customConstraints/custom.createOnlyE2TypeVms"
+  /// Example: `organizations/123/customConstraints/custom.createOnlyE2TypeVms`
+  /// The max length is 70 characters and the minimum length is 1. Note that the
+  /// prefix `organizations/{organization_id}/customConstraints/` is not
+  /// counted.
   /// Value must have pattern
   /// `^organizations/\[^/\]+/customConstraints/\[^/\]+$`.
   ///
@@ -736,21 +743,21 @@ class OrganizationsPoliciesResource {
   OrganizationsPoliciesResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a Policy.
+  /// Creates a policy.
   ///
   /// Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the
   /// constraint does not exist. Returns a `google.rpc.Status` with
   /// `google.rpc.Code.ALREADY_EXISTS` if the policy already exists on the given
-  /// Cloud resource.
+  /// Google Cloud resource.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The Cloud resource that will parent the new Policy.
-  /// Must be in one of the following forms: * `projects/{project_number}` *
-  /// `projects/{project_id}` * `folders/{folder_id}` *
-  /// `organizations/{organization_id}`
+  /// [parent] - Required. The Google Cloud resource that will parent the new
+  /// policy. Must be in one of the following forms: *
+  /// `projects/{project_number}` * `projects/{project_id}` *
+  /// `folders/{folder_id}` * `organizations/{organization_id}`
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -785,15 +792,15 @@ class OrganizationsPoliciesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deletes a Policy.
+  /// Deletes a policy.
   ///
   /// Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the
-  /// constraint or Org Policy does not exist.
+  /// constraint or organization policy does not exist.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the policy to delete. See `Policy` for naming
-  /// rules.
+  /// [name] - Required. Name of the policy to delete. See the policy entry for
+  /// naming rules.
   /// Value must have pattern `^organizations/\[^/\]+/policies/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -825,15 +832,15 @@ class OrganizationsPoliciesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets a `Policy` on a resource.
+  /// Gets a policy on a resource.
   ///
-  /// If no `Policy` is set on the resource, NOT_FOUND is returned. The `etag`
-  /// value can be used with `UpdatePolicy()` to update a `Policy` during
+  /// If no policy is set on the resource, `NOT_FOUND` is returned. The `etag`
+  /// value can be used with `UpdatePolicy()` to update a policy during
   /// read-modify-write.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Resource name of the policy. See `Policy` for naming
+  /// [name] - Required. Resource name of the policy. See Policy for naming
   /// requirements.
   /// Value must have pattern `^organizations/\[^/\]+/policies/\[^/\]+$`.
   ///
@@ -866,18 +873,18 @@ class OrganizationsPoliciesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets the effective `Policy` on a resource.
+  /// Gets the effective policy on a resource.
   ///
-  /// This is the result of merging `Policies` in the resource hierarchy and
-  /// evaluating conditions. The returned `Policy` will not have an `etag` or
-  /// `condition` set because it is a computed `Policy` across multiple
+  /// This is the result of merging policies in the resource hierarchy and
+  /// evaluating conditions. The returned policy will not have an `etag` or
+  /// `condition` set because it is an evaluated policy across multiple
   /// resources. Subtrees of Resource Manager resource hierarchy with 'under:'
   /// prefix will not be expanded.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The effective policy to compute. See `Policy` for
-  /// naming rules.
+  /// [name] - Required. The effective policy to compute. See Policy for naming
+  /// requirements.
   /// Value must have pattern `^organizations/\[^/\]+/policies/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -909,13 +916,13 @@ class OrganizationsPoliciesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Retrieves all of the `Policies` that exist on a particular resource.
+  /// Retrieves all of the policies that exist on a particular resource.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The target Cloud resource that parents the set of
-  /// constraints and policies that will be returned from this call. Must be in
-  /// one of the following forms: * `projects/{project_number}` *
+  /// [parent] - Required. The target Google Cloud resource that parents the set
+  /// of constraints and policies that will be returned from this call. Must be
+  /// in one of the following forms: * `projects/{project_number}` *
   /// `projects/{project_id}` * `folders/{folder_id}` *
   /// `organizations/{organization_id}`
   /// Value must have pattern `^organizations/\[^/\]+$`.
@@ -961,7 +968,7 @@ class OrganizationsPoliciesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates a Policy.
+  /// Updates a policy.
   ///
   /// Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the
   /// constraint or the policy do not exist. Returns a `google.rpc.Status` with
@@ -973,17 +980,21 @@ class OrganizationsPoliciesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Immutable. The resource name of the Policy. Must be one of the
-  /// following forms, where constraint_name is the name of the constraint which
-  /// this Policy configures: *
+  /// [name] - Immutable. The resource name of the policy. Must be one of the
+  /// following forms, where `constraint_name` is the name of the constraint
+  /// which this policy configures: *
   /// `projects/{project_number}/policies/{constraint_name}` *
   /// `folders/{folder_id}/policies/{constraint_name}` *
   /// `organizations/{organization_id}/policies/{constraint_name}` For example,
-  /// "projects/123/policies/compute.disableSerialPortAccess". Note:
+  /// `projects/123/policies/compute.disableSerialPortAccess`. Note:
   /// `projects/{project_id}/policies/{constraint_name}` is also an acceptable
   /// name for API requests, but responses will return the name using the
   /// equivalent project number.
   /// Value must have pattern `^organizations/\[^/\]+/policies/\[^/\]+$`.
+  ///
+  /// [updateMask] - Field mask used to specify the fields to be overwritten in
+  /// the policy by the set. The fields specified in the update_mask are
+  /// relative to the policy, not the full request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -998,10 +1009,12 @@ class OrganizationsPoliciesResource {
   async.Future<GoogleCloudOrgpolicyV2Policy> patch(
     GoogleCloudOrgpolicyV2Policy request,
     core.String name, {
+    core.String? updateMask,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1034,14 +1047,14 @@ class ProjectsConstraintsResource {
   ProjectsConstraintsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Lists `Constraints` that could be applied on the specified resource.
+  /// Lists constraints that could be applied on the specified resource.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The Cloud resource that parents the constraint. Must
-  /// be in one of the following forms: * `projects/{project_number}` *
-  /// `projects/{project_id}` * `folders/{folder_id}` *
-  /// `organizations/{organization_id}`
+  /// [parent] - Required. The Google Cloud resource that parents the
+  /// constraint. Must be in one of the following forms: *
+  /// `projects/{project_number}` * `projects/{project_id}` *
+  /// `folders/{folder_id}` * `organizations/{organization_id}`
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [pageSize] - Size of the pages to be returned. This is currently
@@ -1091,21 +1104,21 @@ class ProjectsPoliciesResource {
 
   ProjectsPoliciesResource(commons.ApiRequester client) : _requester = client;
 
-  /// Creates a Policy.
+  /// Creates a policy.
   ///
   /// Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the
   /// constraint does not exist. Returns a `google.rpc.Status` with
   /// `google.rpc.Code.ALREADY_EXISTS` if the policy already exists on the given
-  /// Cloud resource.
+  /// Google Cloud resource.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The Cloud resource that will parent the new Policy.
-  /// Must be in one of the following forms: * `projects/{project_number}` *
-  /// `projects/{project_id}` * `folders/{folder_id}` *
-  /// `organizations/{organization_id}`
+  /// [parent] - Required. The Google Cloud resource that will parent the new
+  /// policy. Must be in one of the following forms: *
+  /// `projects/{project_number}` * `projects/{project_id}` *
+  /// `folders/{folder_id}` * `organizations/{organization_id}`
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1140,15 +1153,15 @@ class ProjectsPoliciesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deletes a Policy.
+  /// Deletes a policy.
   ///
   /// Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the
-  /// constraint or Org Policy does not exist.
+  /// constraint or organization policy does not exist.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the policy to delete. See `Policy` for naming
-  /// rules.
+  /// [name] - Required. Name of the policy to delete. See the policy entry for
+  /// naming rules.
   /// Value must have pattern `^projects/\[^/\]+/policies/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1180,15 +1193,15 @@ class ProjectsPoliciesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets a `Policy` on a resource.
+  /// Gets a policy on a resource.
   ///
-  /// If no `Policy` is set on the resource, NOT_FOUND is returned. The `etag`
-  /// value can be used with `UpdatePolicy()` to update a `Policy` during
+  /// If no policy is set on the resource, `NOT_FOUND` is returned. The `etag`
+  /// value can be used with `UpdatePolicy()` to update a policy during
   /// read-modify-write.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Resource name of the policy. See `Policy` for naming
+  /// [name] - Required. Resource name of the policy. See Policy for naming
   /// requirements.
   /// Value must have pattern `^projects/\[^/\]+/policies/\[^/\]+$`.
   ///
@@ -1221,18 +1234,18 @@ class ProjectsPoliciesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets the effective `Policy` on a resource.
+  /// Gets the effective policy on a resource.
   ///
-  /// This is the result of merging `Policies` in the resource hierarchy and
-  /// evaluating conditions. The returned `Policy` will not have an `etag` or
-  /// `condition` set because it is a computed `Policy` across multiple
+  /// This is the result of merging policies in the resource hierarchy and
+  /// evaluating conditions. The returned policy will not have an `etag` or
+  /// `condition` set because it is an evaluated policy across multiple
   /// resources. Subtrees of Resource Manager resource hierarchy with 'under:'
   /// prefix will not be expanded.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The effective policy to compute. See `Policy` for
-  /// naming rules.
+  /// [name] - Required. The effective policy to compute. See Policy for naming
+  /// requirements.
   /// Value must have pattern `^projects/\[^/\]+/policies/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1264,13 +1277,13 @@ class ProjectsPoliciesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Retrieves all of the `Policies` that exist on a particular resource.
+  /// Retrieves all of the policies that exist on a particular resource.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The target Cloud resource that parents the set of
-  /// constraints and policies that will be returned from this call. Must be in
-  /// one of the following forms: * `projects/{project_number}` *
+  /// [parent] - Required. The target Google Cloud resource that parents the set
+  /// of constraints and policies that will be returned from this call. Must be
+  /// in one of the following forms: * `projects/{project_number}` *
   /// `projects/{project_id}` * `folders/{folder_id}` *
   /// `organizations/{organization_id}`
   /// Value must have pattern `^projects/\[^/\]+$`.
@@ -1316,7 +1329,7 @@ class ProjectsPoliciesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates a Policy.
+  /// Updates a policy.
   ///
   /// Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the
   /// constraint or the policy do not exist. Returns a `google.rpc.Status` with
@@ -1328,17 +1341,21 @@ class ProjectsPoliciesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Immutable. The resource name of the Policy. Must be one of the
-  /// following forms, where constraint_name is the name of the constraint which
-  /// this Policy configures: *
+  /// [name] - Immutable. The resource name of the policy. Must be one of the
+  /// following forms, where `constraint_name` is the name of the constraint
+  /// which this policy configures: *
   /// `projects/{project_number}/policies/{constraint_name}` *
   /// `folders/{folder_id}/policies/{constraint_name}` *
   /// `organizations/{organization_id}/policies/{constraint_name}` For example,
-  /// "projects/123/policies/compute.disableSerialPortAccess". Note:
+  /// `projects/123/policies/compute.disableSerialPortAccess`. Note:
   /// `projects/{project_id}/policies/{constraint_name}` is also an acceptable
   /// name for API requests, but responses will return the name using the
   /// equivalent project number.
   /// Value must have pattern `^projects/\[^/\]+/policies/\[^/\]+$`.
+  ///
+  /// [updateMask] - Field mask used to specify the fields to be overwritten in
+  /// the policy by the set. The fields specified in the update_mask are
+  /// relative to the policy, not the full request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1353,10 +1370,12 @@ class ProjectsPoliciesResource {
   async.Future<GoogleCloudOrgpolicyV2Policy> patch(
     GoogleCloudOrgpolicyV2Policy request,
     core.String name, {
+    core.String? updateMask,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1383,7 +1402,7 @@ class GoogleCloudOrgpolicyV2AlternatePolicySpec {
   /// Should be set only in the alternate policy.
   core.String? launch;
 
-  /// Specify `Constraint` for configurations of Cloud Platform resources.
+  /// Specify constraint for configurations of Google Cloud resources.
   GoogleCloudOrgpolicyV2PolicySpec? spec;
 
   GoogleCloudOrgpolicyV2AlternatePolicySpec({
@@ -1408,25 +1427,25 @@ class GoogleCloudOrgpolicyV2AlternatePolicySpec {
       };
 }
 
-/// A `constraint` describes a way to restrict resource's configuration.
+/// A constraint describes a way to restrict resource's configuration.
 ///
-/// For example, you could enforce a constraint that controls which cloud
+/// For example, you could enforce a constraint that controls which Google Cloud
 /// services can be activated across an organization, or whether a Compute
-/// Engine instance can have serial port connections established. `Constraints`
-/// can be configured by the organization's policy administrator to fit the
-/// needs of the organization by setting a `policy` that includes `constraints`
-/// at different locations in the organization's resource hierarchy. Policies
-/// are inherited down the resource hierarchy from higher levels, but can also
-/// be overridden. For details about the inheritance rules please read about
-/// `policies`. `Constraints` have a default behavior determined by the
+/// Engine instance can have serial port connections established. Constraints
+/// can be configured by the organization policy administrator to fit the needs
+/// of the organization by setting a policy that includes constraints at
+/// different locations in the organization's resource hierarchy. Policies are
+/// inherited down the resource hierarchy from higher levels, but can also be
+/// overridden. For details about the inheritance rules please read about
+/// `policies`. Constraints have a default behavior determined by the
 /// `constraint_default` field, which is the enforcement behavior that is used
-/// in the absence of a `policy` being defined or inherited for the resource in
+/// in the absence of a policy being defined or inherited for the resource in
 /// question.
 class GoogleCloudOrgpolicyV2Constraint {
   /// Defines this constraint as being a BooleanConstraint.
   GoogleCloudOrgpolicyV2ConstraintBooleanConstraint? booleanConstraint;
 
-  /// The evaluation behavior of this constraint in the absence of 'Policy'.
+  /// The evaluation behavior of this constraint in the absence of a policy.
   /// Possible string values are:
   /// - "CONSTRAINT_DEFAULT_UNSPECIFIED" : This is only used for distinguishing
   /// unset values and should never be used.
@@ -1436,7 +1455,7 @@ class GoogleCloudOrgpolicyV2Constraint {
   /// Indicate that enforcement is on for boolean constraints.
   core.String? constraintDefault;
 
-  /// Detailed description of what this `Constraint` controls as well as how and
+  /// Detailed description of what this constraint controls as well as how and
   /// where it is enforced.
   ///
   /// Mutable.
@@ -1450,7 +1469,7 @@ class GoogleCloudOrgpolicyV2Constraint {
   /// Defines this constraint as being a ListConstraint.
   GoogleCloudOrgpolicyV2ConstraintListConstraint? listConstraint;
 
-  /// The resource name of the Constraint.
+  /// The resource name of the constraint.
   ///
   /// Must be in one of the following forms: *
   /// `projects/{project_number}/constraints/{constraint_name}` *
@@ -1461,6 +1480,9 @@ class GoogleCloudOrgpolicyV2Constraint {
   /// Immutable.
   core.String? name;
 
+  /// Shows if dry run is supported for this constraint or not.
+  core.bool? supportsDryRun;
+
   GoogleCloudOrgpolicyV2Constraint({
     this.booleanConstraint,
     this.constraintDefault,
@@ -1468,6 +1490,7 @@ class GoogleCloudOrgpolicyV2Constraint {
     this.displayName,
     this.listConstraint,
     this.name,
+    this.supportsDryRun,
   });
 
   GoogleCloudOrgpolicyV2Constraint.fromJson(core.Map json_)
@@ -1492,6 +1515,9 @@ class GoogleCloudOrgpolicyV2Constraint {
                       as core.Map<core.String, core.dynamic>)
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          supportsDryRun: json_.containsKey('supportsDryRun')
+              ? json_['supportsDryRun'] as core.bool
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1501,18 +1527,19 @@ class GoogleCloudOrgpolicyV2Constraint {
         if (displayName != null) 'displayName': displayName!,
         if (listConstraint != null) 'listConstraint': listConstraint!,
         if (name != null) 'name': name!,
+        if (supportsDryRun != null) 'supportsDryRun': supportsDryRun!,
       };
 }
 
-/// A `Constraint` that is either enforced or not.
+/// A constraint that is either enforced or not.
 ///
-/// For example a constraint `constraints/compute.disableSerialPortAccess`. If
+/// For example, a constraint `constraints/compute.disableSerialPortAccess`. If
 /// it is enforced on a VM instance, serial port connections will not be opened
 /// to that instance.
 typedef GoogleCloudOrgpolicyV2ConstraintBooleanConstraint = $Empty;
 
-/// A `Constraint` that allows or disallows a list of string values, which are
-/// configured by an Organization's policy administrator with a `Policy`.
+/// A constraint that allows or disallows a list of string values, which are
+/// configured by an Organization Policy administrator with a policy.
 class GoogleCloudOrgpolicyV2ConstraintListConstraint {
   /// Indicates whether values grouped into categories can be used in
   /// `Policy.allowed_values` and `Policy.denied_values`.
@@ -1520,8 +1547,8 @@ class GoogleCloudOrgpolicyV2ConstraintListConstraint {
   /// For example, `"in:Python"` would match any value in the 'Python' group.
   core.bool? supportsIn;
 
-  /// Indicates whether subtrees of Cloud Resource Manager resource hierarchy
-  /// can be used in `Policy.allowed_values` and `Policy.denied_values`.
+  /// Indicates whether subtrees of the Resource Manager resource hierarchy can
+  /// be used in `Policy.allowed_values` and `Policy.denied_values`.
   ///
   /// For example, `"under:folders/123"` would match any resource under the
   /// 'folders/123' folder.
@@ -1551,28 +1578,32 @@ class GoogleCloudOrgpolicyV2ConstraintListConstraint {
 /// A custom constraint defined by customers which can *only* be applied to the
 /// given resource types and organization.
 ///
-/// By creating a custom constraint, customers can applied policies of this
-/// custom constraint. *Creating a custom constraint itself does NOT apply any
-/// policy enforcement*.
+/// By creating a custom constraint, customers can apply policies of this custom
+/// constraint. *Creating a custom constraint itself does NOT apply any policy
+/// enforcement*.
 class GoogleCloudOrgpolicyV2CustomConstraint {
   /// Allow or deny type.
   /// Possible string values are:
-  /// - "ACTION_TYPE_UNSPECIFIED" : Unspecified. Will results in user error.
+  /// - "ACTION_TYPE_UNSPECIFIED" : Unspecified. Results in an error.
   /// - "ALLOW" : Allowed action type.
   /// - "DENY" : Deny action type.
   core.String? actionType;
 
   /// Org policy condition/expression.
   ///
-  /// For example:
-  /// `resource.instanceName.matches("[production|test]_.*_(\d)+")'` or,
-  /// `resource.management.auto_upgrade == true`
+  /// For example: `resource.instanceName.matches("[production|test]_.*_(\d)+")`
+  /// or, `resource.management.auto_upgrade == true` The max length of the
+  /// condition is 1000 characters.
   core.String? condition;
 
   /// Detailed information about this custom policy constraint.
+  ///
+  /// The max length of the description is 2000 characters.
   core.String? description;
 
   /// One line display name for the UI.
+  ///
+  /// The max length of the display_name is 200 characters.
   core.String? displayName;
 
   /// All the operations being applied for this constraint.
@@ -1582,14 +1613,17 @@ class GoogleCloudOrgpolicyV2CustomConstraint {
   ///
   /// This is unique within the organization. Format of the name should be *
   /// `organizations/{organization_id}/customConstraints/{custom_constraint_id}`
-  /// Example : "organizations/123/customConstraints/custom.createOnlyE2TypeVms"
+  /// Example: `organizations/123/customConstraints/custom.createOnlyE2TypeVms`
+  /// The max length is 70 characters and the minimum length is 1. Note that the
+  /// prefix `organizations/{organization_id}/customConstraints/` is not
+  /// counted.
   ///
   /// Immutable.
   core.String? name;
 
-  /// The Resource Instance type on which this policy applies to.
+  /// The resource instance type on which this policy applies.
   ///
-  /// Format will be of the form : "/" Example: *
+  /// Format will be of the form : `/` Example: *
   /// `compute.googleapis.com/Instance`.
   ///
   /// Immutable.
@@ -1692,12 +1726,12 @@ class GoogleCloudOrgpolicyV2ListConstraintsResponse {
 
 /// The response returned from the ListCustomConstraints method.
 ///
-/// It will be empty if no `CustomConstraints` are set on the organization
+/// It will be empty if no custom constraints are set on the organization
 /// resource.
 class GoogleCloudOrgpolicyV2ListCustomConstraintsResponse {
-  /// All `CustomConstraints` that exist on the organization resource.
+  /// All custom constraints that exist on the organization resource.
   ///
-  /// It will be empty if no `CustomConstraints` are set.
+  /// It will be empty if no custom constraints are set.
   core.List<GoogleCloudOrgpolicyV2CustomConstraint>? customConstraints;
 
   /// Page token used to retrieve the next page.
@@ -1733,7 +1767,7 @@ class GoogleCloudOrgpolicyV2ListCustomConstraintsResponse {
 
 /// The response returned from the ListPolicies method.
 ///
-/// It will be empty if no `Policies` are set on the resource.
+/// It will be empty if no policies are set on the resource.
 class GoogleCloudOrgpolicyV2ListPoliciesResponse {
   /// Page token used to retrieve the next page.
   ///
@@ -1741,9 +1775,9 @@ class GoogleCloudOrgpolicyV2ListPoliciesResponse {
   /// supplying a valid token.
   core.String? nextPageToken;
 
-  /// All `Policies` that exist on the resource.
+  /// All policies that exist on the resource.
   ///
-  /// It will be empty if no `Policies` are set.
+  /// It will be empty if no policies are set.
   core.List<GoogleCloudOrgpolicyV2Policy>? policies;
 
   GoogleCloudOrgpolicyV2ListPoliciesResponse({
@@ -1770,20 +1804,29 @@ class GoogleCloudOrgpolicyV2ListPoliciesResponse {
       };
 }
 
-/// Defines a Cloud Organization `Policy` which is used to specify `Constraints`
-/// for configurations of Cloud Platform resources.
+/// Defines an organization policy which is used to specify constraints for
+/// configurations of Google Cloud resources.
 class GoogleCloudOrgpolicyV2Policy {
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   GoogleCloudOrgpolicyV2AlternatePolicySpec? alternate;
 
-  /// The resource name of the Policy.
+  /// Dry-run policy.
   ///
-  /// Must be one of the following forms, where constraint_name is the name of
-  /// the constraint which this Policy configures: *
+  /// Audit-only policy, can be used to monitor how the policy would have
+  /// impacted the existing and future resources if it's enforced.
+  GoogleCloudOrgpolicyV2PolicySpec? dryRunSpec;
+
+  /// The resource name of the policy.
+  ///
+  /// Must be one of the following forms, where `constraint_name` is the name of
+  /// the constraint which this policy configures: *
   /// `projects/{project_number}/policies/{constraint_name}` *
   /// `folders/{folder_id}/policies/{constraint_name}` *
   /// `organizations/{organization_id}/policies/{constraint_name}` For example,
-  /// "projects/123/policies/compute.disableSerialPortAccess". Note:
+  /// `projects/123/policies/compute.disableSerialPortAccess`. Note:
   /// `projects/{project_id}/policies/{constraint_name}` is also an acceptable
   /// name for API requests, but responses will return the name using the
   /// equivalent project number.
@@ -1796,6 +1839,7 @@ class GoogleCloudOrgpolicyV2Policy {
 
   GoogleCloudOrgpolicyV2Policy({
     this.alternate,
+    this.dryRunSpec,
     this.name,
     this.spec,
   });
@@ -1806,6 +1850,10 @@ class GoogleCloudOrgpolicyV2Policy {
               ? GoogleCloudOrgpolicyV2AlternatePolicySpec.fromJson(
                   json_['alternate'] as core.Map<core.String, core.dynamic>)
               : null,
+          dryRunSpec: json_.containsKey('dryRunSpec')
+              ? GoogleCloudOrgpolicyV2PolicySpec.fromJson(
+                  json_['dryRunSpec'] as core.Map<core.String, core.dynamic>)
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           spec: json_.containsKey('spec')
               ? GoogleCloudOrgpolicyV2PolicySpec.fromJson(
@@ -1815,35 +1863,36 @@ class GoogleCloudOrgpolicyV2Policy {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (alternate != null) 'alternate': alternate!,
+        if (dryRunSpec != null) 'dryRunSpec': dryRunSpec!,
         if (name != null) 'name': name!,
         if (spec != null) 'spec': spec!,
       };
 }
 
-/// Defines a Cloud Organization `PolicySpec` which is used to specify
-/// `Constraints` for configurations of Cloud Platform resources.
+/// Defines a Google Cloud policy specification which is used to specify
+/// constraints for configurations of Google Cloud resources.
 class GoogleCloudOrgpolicyV2PolicySpec {
-  /// An opaque tag indicating the current version of the `Policy`, used for
+  /// An opaque tag indicating the current version of the policy, used for
   /// concurrency control.
   ///
-  /// This field is ignored if used in a `CreatePolicy` request. When the
-  /// `Policy` is returned from either a `GetPolicy` or a `ListPolicies`
-  /// request, this `etag` indicates the version of the current `Policy` to use
-  /// when executing a read-modify-write loop. When the `Policy` is returned
-  /// from a `GetEffectivePolicy` request, the `etag` will be unset.
+  /// This field is ignored if used in a \`CreatePolicy\` request. When the
+  /// policy\` is returned from either a \`GetPolicy\` or a \`ListPolicies\`
+  /// request, this \`etag\` indicates the version of the current policy to use
+  /// when executing a read-modify-write loop. When the policy is returned from
+  /// a \`GetEffectivePolicy\` request, the \`etag\` will be unset.
   core.String? etag;
 
-  /// Determines the inheritance behavior for this `Policy`.
+  /// Determines the inheritance behavior for this policy.
   ///
-  /// If `inherit_from_parent` is true, PolicyRules set higher up in the
+  /// If `inherit_from_parent` is true, policy rules set higher up in the
   /// hierarchy (up to the closest root) are inherited and present in the
   /// effective policy. If it is false, then no rules are inherited, and this
-  /// Policy becomes the new root for evaluation. This field can be set only for
-  /// Policies which configure list constraints.
+  /// policy becomes the new root for evaluation. This field can be set only for
+  /// policies which configure list constraints.
   core.bool? inheritFromParent;
 
   /// Ignores policies set above this resource and restores the
-  /// `constraint_default` enforcement behavior of the specific `Constraint` at
+  /// `constraint_default` enforcement behavior of the specific constraint at
   /// this resource.
   ///
   /// This field can be set in policies for either list or boolean constraints.
@@ -1851,20 +1900,18 @@ class GoogleCloudOrgpolicyV2PolicySpec {
   /// false.
   core.bool? reset;
 
-  /// Up to 10 PolicyRules are allowed.
+  /// In policies for boolean constraints, the following requirements apply: -
+  /// There must be one and only one policy rule where condition is unset.
   ///
-  /// In Policies for boolean constraints, the following requirements apply: -
-  /// There must be one and only one PolicyRule where condition is unset. -
-  /// BooleanPolicyRules with conditions must set `enforced` to the opposite of
-  /// the PolicyRule without a condition. - During policy evaluation,
-  /// PolicyRules with conditions that are true for a target resource take
-  /// precedence.
+  /// - Boolean policy rules with conditions must set `enforced` to the opposite
+  /// of the policy rule without a condition. - During policy evaluation, policy
+  /// rules with conditions that are true for a target resource take precedence.
   core.List<GoogleCloudOrgpolicyV2PolicySpecPolicyRule>? rules;
 
   /// The time stamp this was previously updated.
   ///
   /// This represents the last time a call to `CreatePolicy` or `UpdatePolicy`
-  /// was made for that `Policy`.
+  /// was made for that policy.
   ///
   /// Output only.
   core.String? updateTime;
@@ -1910,7 +1957,7 @@ class GoogleCloudOrgpolicyV2PolicySpec {
 class GoogleCloudOrgpolicyV2PolicySpecPolicyRule {
   /// Setting this to true means that all values are allowed.
   ///
-  /// This field can be set only in Policies for list constraints.
+  /// This field can be set only in policies for list constraints.
   core.bool? allowAll;
 
   /// A condition which determines whether this rule is used in the evaluation
@@ -1929,18 +1976,18 @@ class GoogleCloudOrgpolicyV2PolicySpecPolicyRule {
 
   /// Setting this to true means that all values are denied.
   ///
-  /// This field can be set only in Policies for list constraints.
+  /// This field can be set only in policies for list constraints.
   core.bool? denyAll;
 
-  /// If `true`, then the `Policy` is enforced.
+  /// If `true`, then the policy is enforced.
   ///
   /// If `false`, then any configuration is acceptable. This field can be set
-  /// only in Policies for boolean constraints.
+  /// only in policies for boolean constraints.
   core.bool? enforce;
 
-  /// List of values to be used for this PolicyRule.
+  /// List of values to be used for this policy rule.
   ///
-  /// This field can be set only in Policies for list constraints.
+  /// This field can be set only in policies for list constraints.
   GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues? values;
 
   GoogleCloudOrgpolicyV2PolicySpecPolicyRule({
@@ -1983,49 +2030,18 @@ class GoogleCloudOrgpolicyV2PolicySpecPolicyRule {
 
 /// A message that holds specific allowed and denied values.
 ///
-/// This message can define specific values and subtrees of Cloud Resource
-/// Manager resource hierarchy (`Organizations`, `Folders`, `Projects`) that are
-/// allowed or denied. This is achieved by using the `under:` and optional `is:`
+/// This message can define specific values and subtrees of the Resource Manager
+/// resource hierarchy (`Organizations`, `Folders`, `Projects`) that are allowed
+/// or denied. This is achieved by using the `under:` and optional `is:`
 /// prefixes. The `under:` prefix is used to denote resource subtree values. The
 /// `is:` prefix is used to denote specific values, and is required only if the
 /// value contains a ":". Values prefixed with "is:" are treated the same as
 /// values with no prefix. Ancestry subtrees must be in one of the following
-/// formats: - "projects/", e.g. "projects/tokyo-rain-123" - "folders/", e.g.
-/// "folders/1234" - "organizations/", e.g. "organizations/1234" The
-/// `supports_under` field of the associated `Constraint` defines whether
-/// ancestry prefixes can be used.
-class GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues {
-  /// List of values allowed at this resource.
-  core.List<core.String>? allowedValues;
-
-  /// List of values denied at this resource.
-  core.List<core.String>? deniedValues;
-
-  GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues({
-    this.allowedValues,
-    this.deniedValues,
-  });
-
-  GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues.fromJson(
-      core.Map json_)
-      : this(
-          allowedValues: json_.containsKey('allowedValues')
-              ? (json_['allowedValues'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          deniedValues: json_.containsKey('deniedValues')
-              ? (json_['deniedValues'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (allowedValues != null) 'allowedValues': allowedValues!,
-        if (deniedValues != null) 'deniedValues': deniedValues!,
-      };
-}
+/// formats: - `projects/` (for example, `projects/tokyo-rain-123`) - `folders/`
+/// (for example, `folders/1234`) - `organizations/` (for example,
+/// `organizations/1234`) The `supports_under` field of the associated
+/// `Constraint` defines whether ancestry prefixes can be used.
+typedef GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues = $StringValues;
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.

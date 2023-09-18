@@ -24,6 +24,13 @@
     "name": "adexchangebuyer2",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230807",
+    "rootUrl": "https://adexchangebuyer.googleapis.com/",
+    "servicePath": "",
+    "title": "Ad Exchange Buyer API II",
+    "version": "v2beta1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "accounts": {
             "resources": {
@@ -2567,8 +2573,6 @@
             }
         }
     },
-    "revision": "20220914",
-    "rootUrl": "https://adexchangebuyer.googleapis.com/",
     "schemas": {
         "AbsoluteDateRange": {
             "description": "An absolute date range, specified by its start date and end date. The supported range of dates begins 30 days before today and ends today. Validity checked upon filter set creation. If a filter set with an absolute date range is run at a later date more than 30 days after start_date, it will fail.",
@@ -2731,7 +2735,7 @@
                 },
                 "billedImpressions": {
                     "$ref": "MetricValue",
-                    "description": "The number of bids for which the buyer was billed."
+                    "description": "The number of bids for which the buyer was billed. Also called valid impressions as invalid impressions are not billed."
                 },
                 "impressionsWon": {
                     "$ref": "MetricValue",
@@ -3162,6 +3166,7 @@
                     "type": "array"
                 },
                 "corrections": {
+                    "deprecated": true,
                     "description": "Output only. Shows any corrections that were applied to this creative.",
                     "items": {
                         "$ref": "Correction"
@@ -4233,6 +4238,7 @@
                     "type": "string"
                 },
                 "formats": {
+                    "deprecated": true,
                     "description": "Creative formats bidded on or allowed to bid on, can be empty. Although this field is a list, it can only be populated with a single item. A HTTP 400 bad request error will be returned in the response if you specify multiple items.",
                     "items": {
                         "enum": [
@@ -4348,6 +4354,7 @@
                     "type": "string"
                 },
                 "detailId": {
+                    "deprecated": true,
                     "description": "Note: this field will be deprecated, use \"detail\" field instead. When \"detail\" field represents an integer value, this field is populated as the same integer value \"detail\" field represents, otherwise this field will be 0. The ID of the detail. The associated value can be looked up in the dictionary file corresponding to the DetailType in the response message.",
                     "format": "int32",
                     "type": "integer"
@@ -4440,7 +4447,7 @@
                     "type": "string"
                 },
                 "guaranteedLooks": {
-                    "description": "Count of guaranteed looks. Required for deal, optional for product.",
+                    "description": "Count of guaranteed looks. Required for deal, optional for product. For CPD deals, buyer changes to guaranteed_looks will be ignored.",
                     "format": "int64",
                     "type": "string"
                 },
@@ -4450,7 +4457,7 @@
                     "type": "string"
                 },
                 "minimumDailyLooks": {
-                    "description": "Daily minimum looks for CPD deal types.",
+                    "description": "Daily minimum looks for CPD deal types. For CPD deals, buyer should negotiate on this field instead of guaranteed_looks.",
                     "format": "int64",
                     "type": "string"
                 },
@@ -5078,6 +5085,7 @@
                     "type": "number"
                 },
                 "storeUrl": {
+                    "deprecated": true,
                     "description": "The URL to the app store to purchase/download the promoted app.",
                     "type": "string"
                 },
@@ -5470,6 +5478,7 @@
                     "type": "boolean"
                 },
                 "isSetupComplete": {
+                    "deprecated": true,
                     "description": "Output only. True, if the buyside inventory setup is complete for this proposal.",
                     "readOnly": true,
                     "type": "boolean"
@@ -5678,7 +5687,8 @@
                         "OPPO",
                         "SAMSUNG",
                         "VIVO",
-                        "XIAOMI"
+                        "XIAOMI",
+                        "LG_TV"
                     ],
                     "enumDescriptions": [
                         "A placeholder for an unknown app store.",
@@ -5693,7 +5703,8 @@
                         "OPPO App Market",
                         "Samsung Galaxy Store",
                         "VIVO App Store",
-                        "Xiaomi GetApps"
+                        "Xiaomi GetApps",
+                        "LG TV"
                     ],
                     "type": "string"
                 },
@@ -5784,6 +5795,7 @@
             "type": "object"
         },
         "SecurityContext": {
+            "deprecated": true,
             "description": "Output only. A security context.",
             "id": "SecurityContext",
             "properties": {
@@ -5853,6 +5865,7 @@
                 },
                 "securityType": {
                     "$ref": "SecurityContext",
+                    "deprecated": true,
                     "description": "Matches impressions for a particular security type."
                 }
             },
@@ -5874,6 +5887,7 @@
                     "description": "Disapproval bound to this restriction. Only present if status=DISAPPROVED. Can be used to filter the response of the creatives.list method."
                 },
                 "disapprovalReasons": {
+                    "deprecated": true,
                     "description": "Any disapprovals bound to this restriction. Only present if status=DISAPPROVED. Can be used to filter the response of the creatives.list method. Deprecated; use disapproval field instead.",
                     "items": {
                         "$ref": "Disapproval"
@@ -6124,9 +6138,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Ad Exchange Buyer API II",
-    "version": "v2beta1",
-    "version_module": true
+    }
 }

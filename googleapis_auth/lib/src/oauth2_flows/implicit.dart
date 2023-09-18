@@ -151,21 +151,19 @@ class ImplicitFlow {
       throw AuthenticationException('Expected to get id_token, but did not.');
     }
 
-    List<String>? scopes;
-    final scopeString = jsTokenObject['scope'];
-    if (scopeString is String) {
-      scopes = scopeString.split(' ');
-    }
+    final scopeString = jsTokenObject['scope'] as String;
+    final scopes = scopeString.split(' ');
 
     final expiresAt = jsTokenObject['expires_at'] as int;
     final expiresAtDate =
         DateTime.fromMillisecondsSinceEpoch(expiresAt).toUtc();
 
     final accessToken = AccessToken('Bearer', token, expiresAtDate);
+
     final credentials = AccessCredentials(
       accessToken,
       null,
-      scopes ?? _scopes,
+      scopes,
       idToken: idToken,
     );
 
@@ -191,18 +189,13 @@ class LoginResult {
 }
 
 /// Convert [responseType] to string value expected by `gapi.auth.authorize`.
-String _responseTypeToString(ResponseType responseType) {
-  switch (responseType) {
-    case ResponseType.code:
-      return 'code';
-    case ResponseType.idToken:
-      return 'id_token';
-    case ResponseType.permission:
-      return 'permission';
-    case ResponseType.token:
-      return 'token';
-  }
-}
+String _responseTypeToString(ResponseType responseType) =>
+    switch (responseType) {
+      ResponseType.code => 'code',
+      ResponseType.idToken => 'id_token',
+      ResponseType.permission => 'permission',
+      ResponseType.token => 'token'
+    };
 
 js.JsObject get _gapiAuth2 =>
     (js.context['gapi'] as js.JsObject)['auth2'] as js.JsObject;

@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Firebase Dynamic Links API - v1
@@ -23,7 +22,7 @@
 /// - [ManagedShortLinksResource]
 /// - [ShortLinksResource]
 /// - [V1Resource]
-library firebasedynamiclinks.v1;
+library firebasedynamiclinks_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -611,6 +610,9 @@ class DeviceInfo {
   core.String? deviceModelName;
 
   /// Device language code setting.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? languageCode;
 
   /// Device language code setting obtained by executing JavaScript code in
@@ -622,6 +624,9 @@ class DeviceInfo {
   /// iOS does returns language code in different format than iOS WebView. For
   /// example WebView returns en_US, but iOS returns en-US. Field below will
   /// return raw value returned by iOS.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? languageCodeRaw;
 
   /// Device display resolution height.
@@ -768,6 +773,9 @@ class DynamicLinkInfo {
   /// project.
   ///
   /// Required if missing domain_uri_prefix.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? dynamicLinkDomain;
 
   /// iOS related information.
@@ -1395,6 +1403,9 @@ class GetIosReopenAttributionResponse {
 /// [Learn more](https://developers.google.com/analytics/devguides/collection/android/v4/campaigns#campaign-params)
 class GooglePlayAnalytics {
   /// Deprecated; FDL SDK does not process nor log it.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? gclid;
 
   /// Campaign name; used for keyword analysis to identify a specific product

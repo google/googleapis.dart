@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Ad Exchange Buyer API II - v2beta1
@@ -57,7 +56,7 @@
 ///     - [BiddersFilterSetsImpressionMetricsResource]
 ///     - [BiddersFilterSetsLosingBidsResource]
 ///     - [BiddersFilterSetsNonBillableWinningBidsResource]
-library adexchangebuyer2.v2beta1;
+library adexchangebuyer2_v2beta1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -66,7 +65,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -4074,6 +4072,8 @@ class BidMetricsRow {
   MetricValue? bidsInAuction;
 
   /// The number of bids for which the buyer was billed.
+  ///
+  /// Also called valid impressions as invalid impressions are not billed.
   MetricValue? billedImpressions;
 
   /// The number of bids that won the auction.
@@ -4675,6 +4675,9 @@ class Creative {
   /// Shows any corrections that were applied to this creative.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<Correction>? corrections;
 
   /// The buyer-defined creative ID of this creative.
@@ -6247,6 +6250,9 @@ class FilterSet {
   /// Although this field is a list, it can only be populated with a single
   /// item. A HTTP 400 bad request error will be returned in the response if you
   /// specify multiple items.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<core.String>? formats;
 
   /// A user-defined name of the filter set.
@@ -6454,6 +6460,9 @@ class FilteredBidDetailRow {
   /// will be 0. The ID of the detail. The associated value can be looked up in
   /// the dictionary file corresponding to the DetailType in the response
   /// message.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.int? detailId;
 
   /// The values of all dimensions associated with metric values in this row.
@@ -6600,7 +6609,8 @@ class GuaranteedFixedPriceTerms {
 
   /// Count of guaranteed looks.
   ///
-  /// Required for deal, optional for product.
+  /// Required for deal, optional for product. For CPD deals, buyer changes to
+  /// guaranteed_looks will be ignored.
   core.String? guaranteedLooks;
 
   /// The lifetime impression cap for CPM sponsorship deals.
@@ -6609,6 +6619,9 @@ class GuaranteedFixedPriceTerms {
   core.String? impressionCap;
 
   /// Daily minimum looks for CPD deal types.
+  ///
+  /// For CPD deals, buyer should negotiate on this field instead of
+  /// guaranteed_looks.
   core.String? minimumDailyLooks;
 
   /// For sponsorship deals, this is the percentage of the seller's eligible
@@ -7756,7 +7769,46 @@ class MobileApplicationTargeting {
 }
 
 /// Represents an amount of money with its currency type.
-typedef Money = $Money;
+class Money {
+  /// The three-letter currency code defined in ISO 4217.
+  core.String? currencyCode;
+
+  /// Number of nano (10^-9) units of the amount.
+  ///
+  /// The value must be between -999,999,999 and +999,999,999 inclusive. If
+  /// `units` is positive, `nanos` must be positive or zero. If `units` is zero,
+  /// `nanos` can be positive, zero, or negative. If `units` is negative,
+  /// `nanos` must be negative or zero. For example $-1.75 is represented as
+  /// `units`=-1 and `nanos`=-750,000,000.
+  core.int? nanos;
+
+  /// The whole units of the amount.
+  ///
+  /// For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+  core.String? units;
+
+  Money({
+    this.currencyCode,
+    this.nanos,
+    this.units,
+  });
+
+  Money.fromJson(core.Map json_)
+      : this(
+          currencyCode: json_.containsKey('currencyCode')
+              ? json_['currencyCode'] as core.String
+              : null,
+          nanos: json_.containsKey('nanos') ? json_['nanos'] as core.int : null,
+          units:
+              json_.containsKey('units') ? json_['units'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (currencyCode != null) 'currencyCode': currencyCode!,
+        if (nanos != null) 'nanos': nanos!,
+        if (units != null) 'units': units!,
+      };
+}
 
 /// Native content for a creative.
 class NativeContent {
@@ -7796,6 +7848,9 @@ class NativeContent {
   core.double? starRating;
 
   /// The URL to the app store to purchase/download the promoted app.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? storeUrl;
 
   /// The URL to fetch a native video ad.
@@ -8549,6 +8604,9 @@ class Proposal {
   /// True, if the buyside inventory setup is complete for this proposal.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? isSetupComplete;
 
   /// The role of the last user that either updated the proposal or left a
@@ -8970,6 +9028,7 @@ class PublisherProfileMobileApplication {
   /// - "SAMSUNG" : Samsung Galaxy Store
   /// - "VIVO" : VIVO App Store
   /// - "XIAOMI" : Xiaomi GetApps
+  /// - "LG_TV" : LG TV
   core.String? appStore;
 
   /// The external ID for the app from its app store.
@@ -9232,6 +9291,9 @@ class ServingContext {
   PlatformContext? platform;
 
   /// Matches impressions for a particular security type.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   SecurityContext? securityType;
 
   ServingContext({
@@ -9299,6 +9361,9 @@ class ServingRestriction {
   ///
   /// Only present if status=DISAPPROVED. Can be used to filter the response of
   /// the creatives.list method. Deprecated; use disapproval field instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<Disapproval>? disapprovalReasons;
 
   /// The status of the creative in this context (for example, it has been

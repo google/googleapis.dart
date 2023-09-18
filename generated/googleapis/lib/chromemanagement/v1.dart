@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Chrome Management API - v1
@@ -30,7 +29,9 @@
 ///   - [CustomersReportsResource]
 ///   - [CustomersTelemetryResource]
 ///     - [CustomersTelemetryDevicesResource]
-library chromemanagement.v1;
+///     - [CustomersTelemetryEventsResource]
+///     - [CustomersTelemetryUsersResource]
+library chromemanagement_v1;
 
 import 'dart:async' as async;
 import 'dart:core' as core;
@@ -38,7 +39,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -301,6 +301,54 @@ class CustomersReportsResource {
 
   CustomersReportsResource(commons.ApiRequester client) : _requester = client;
 
+  /// Count of Chrome Browsers that have been recently enrolled, have new policy
+  /// to be synced, or have no recent activity.
+  ///
+  /// Request parameters:
+  ///
+  /// [customer] - Required. The customer ID or "my_customer" prefixed with
+  /// "customers/".
+  /// Value must have pattern `^customers/\[^/\]+$`.
+  ///
+  /// [orgUnitId] - Optional. The ID of the organizational unit. If omitted, all
+  /// data will be returned.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleChromeManagementV1CountChromeBrowsersNeedingAttentionResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<
+          GoogleChromeManagementV1CountChromeBrowsersNeedingAttentionResponse>
+      countChromeBrowsersNeedingAttention(
+    core.String customer, {
+    core.String? orgUnitId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (orgUnitId != null) 'orgUnitId': [orgUnitId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$customer') +
+        '/reports:countChromeBrowsersNeedingAttention';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleChromeManagementV1CountChromeBrowsersNeedingAttentionResponse
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Generate report of the number of devices expiring in each month of the
   /// selected time frame.
   ///
@@ -423,6 +471,60 @@ class CustomersReportsResource {
         .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Counts of devices with a specific hardware specification from the
+  /// requested hardware type (for example model name, processor type).
+  ///
+  /// Further information can be found here
+  /// https://support.google.com/chrome/a/answer/10564947
+  ///
+  /// Request parameters:
+  ///
+  /// [customer] - Required. The customer ID or "my_customer".
+  /// Value must have pattern `^customers/\[^/\]+$`.
+  ///
+  /// [orgUnitId] - Optional. The ID of the organizational unit. If omitted, all
+  /// data will be returned.
+  ///
+  /// [readMask] - Required. Mask of the fields that should be populated in the
+  /// returned report.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleChromeManagementV1CountChromeHardwareFleetDevicesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleChromeManagementV1CountChromeHardwareFleetDevicesResponse>
+      countChromeHardwareFleetDevices(
+    core.String customer, {
+    core.String? orgUnitId,
+    core.String? readMask,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (orgUnitId != null) 'orgUnitId': [orgUnitId],
+      if (readMask != null) 'readMask': [readMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$customer') +
+        '/reports:countChromeHardwareFleetDevices';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleChromeManagementV1CountChromeHardwareFleetDevicesResponse
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Generate report of installed Chrome versions.
   ///
   /// Request parameters:
@@ -494,11 +596,11 @@ class CustomersReportsResource {
   /// syntax. Note: OR operations are not supported in this filter. Supported
   /// filter fields: * app_name * app_type * install_type *
   /// number_of_permissions * total_install_count * latest_profile_active_date *
-  /// permission_name
+  /// permission_name * app_id
   ///
   /// [orderBy] - Field used to order results. Supported order by fields: *
   /// app_name * app_type * install_type * number_of_permissions *
-  /// total_install_count
+  /// total_install_count * app_id
   ///
   /// [orgUnitId] - The ID of the organizational unit.
   ///
@@ -549,7 +651,8 @@ class CustomersReportsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Generate report of devices that have a specified app installed.
+  /// Generate report of managed Chrome browser devices that have a specified
+  /// app installed.
   ///
   /// Request parameters:
   ///
@@ -637,6 +740,10 @@ class CustomersTelemetryResource {
 
   CustomersTelemetryDevicesResource get devices =>
       CustomersTelemetryDevicesResource(_requester);
+  CustomersTelemetryEventsResource get events =>
+      CustomersTelemetryEventsResource(_requester);
+  CustomersTelemetryUsersResource get users =>
+      CustomersTelemetryUsersResource(_requester);
 
   CustomersTelemetryResource(commons.ApiRequester client) : _requester = client;
 }
@@ -696,7 +803,12 @@ class CustomersTelemetryDevicesResource {
   /// Value must have pattern `^customers/\[^/\]+$`.
   ///
   /// [filter] - Optional. Only include resources that match the filter.
-  /// Supported filter fields: - org_unit_id - serial_number - device_id
+  /// Supported filter fields: - org_unit_id - serial_number - device_id -
+  /// reports_timestamp The "reports_timestamp" filter accepts either the Unix
+  /// Epoch milliseconds format or the RFC3339 UTC "Zulu" format with nanosecond
+  /// resolution and up to nine fractional digits. Both formats should be
+  /// surrounded by simple double quotes. Examples: "2014-10-02T15:01:23Z",
+  /// "2014-10-02T15:01:23.045123456Z", "1679283943823".
   ///
   /// [pageSize] - Maximum number of results to return. Default value is 100.
   /// Maximum value is 1000.
@@ -739,6 +851,179 @@ class CustomersTelemetryDevicesResource {
       queryParams: queryParams_,
     );
     return GoogleChromeManagementV1ListTelemetryDevicesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class CustomersTelemetryEventsResource {
+  final commons.ApiRequester _requester;
+
+  CustomersTelemetryEventsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// List telemetry events.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Customer id or "my_customer" to use the customer
+  /// associated to the account making the request.
+  /// Value must have pattern `^customers/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Only include resources that match the filter.
+  /// Although this parameter is currently optional, this parameter will be
+  /// required- please specify at least 1 event type. Supported filter fields: -
+  /// device_id - user_id - device_org_unit_id - user_org_unit_id - timestamp -
+  /// event_type The "timestamp" filter accepts either the Unix Epoch
+  /// milliseconds format or the RFC3339 UTC "Zulu" format with nanosecond
+  /// resolution and up to nine fractional digits. Both formats should be
+  /// surrounded by simple double quotes. Examples: "2014-10-02T15:01:23Z",
+  /// "2014-10-02T15:01:23.045123456Z", "1679283943823".
+  ///
+  /// [pageSize] - Optional. Maximum number of results to return. Default value
+  /// is 100. Maximum value is 1000.
+  ///
+  /// [pageToken] - Optional. Token to specify next page in the list.
+  ///
+  /// [readMask] - Required. Read mask to specify which fields to return.
+  /// Although currently required, this field will become optional, while the
+  /// filter parameter with an event type will be come required.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleChromeManagementV1ListTelemetryEventsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleChromeManagementV1ListTelemetryEventsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? readMask,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (readMask != null) 'readMask': [readMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/telemetry/events';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleChromeManagementV1ListTelemetryEventsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class CustomersTelemetryUsersResource {
+  final commons.ApiRequester _requester;
+
+  CustomersTelemetryUsersResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Get telemetry user.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the `TelemetryUser` to return.
+  /// Value must have pattern `^customers/\[^/\]+/telemetry/users/\[^/\]+$`.
+  ///
+  /// [readMask] - Read mask to specify which fields to return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleChromeManagementV1TelemetryUser].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleChromeManagementV1TelemetryUser> get(
+    core.String name, {
+    core.String? readMask,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (readMask != null) 'readMask': [readMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleChromeManagementV1TelemetryUser.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List all telemetry users.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Customer id or "my_customer" to use the customer
+  /// associated to the account making the request.
+  /// Value must have pattern `^customers/\[^/\]+$`.
+  ///
+  /// [filter] - Only include resources that match the filter. Supported filter
+  /// fields: - user_id - user_org_unit_id
+  ///
+  /// [pageSize] - Maximum number of results to return. Default value is 100.
+  /// Maximum value is 1000.
+  ///
+  /// [pageToken] - Token to specify next page in the list.
+  ///
+  /// [readMask] - Read mask to specify which fields to return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleChromeManagementV1ListTelemetryUsersResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleChromeManagementV1ListTelemetryUsersResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? readMask,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (readMask != null) 'readMask': [readMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/telemetry/users';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleChromeManagementV1ListTelemetryUsersResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -1024,7 +1309,8 @@ class GoogleChromeManagementV1AppDetails {
 /// * Data Collection Frequency: 10 minutes * Default Data Reporting Frequency:
 /// 3 hours - Policy Controlled: Yes * Cache: If the device is offline, the
 /// collected data is stored locally, and will be reported when the device is
-/// next online: No * Reported for affiliated users only: N/A
+/// next online: No * Reported for affiliated users only: N/A * Granular
+/// permission needed: TELEMETRY_API_AUDIO_REPORT
 class GoogleChromeManagementV1AudioStatusReport {
   /// Active input device's name.
   ///
@@ -1115,7 +1401,8 @@ class GoogleChromeManagementV1AudioStatusReport {
 /// * Data Collection Frequency: Only at Upload * Default Data Reporting
 /// Frequency: 3 hours - Policy Controlled: Yes * Cache: If the device is
 /// offline, the collected data is stored locally, and will be reported when the
-/// device is next online: No * Reported for affiliated users only: N/A
+/// device is next online: No * Reported for affiliated users only: N/A *
+/// Granular permission needed: TELEMETRY_API_BATTERY_INFO
 class GoogleChromeManagementV1BatteryInfo {
   /// Design capacity (mAmpere-hours).
   ///
@@ -1305,7 +1592,8 @@ class GoogleChromeManagementV1BatterySampleReport {
 /// * Data Collection Frequency: Only at Upload * Default Data Reporting
 /// Frequency: 3 hours - Policy Controlled: Yes * Cache: If the device is
 /// offline, the collected data is stored locally, and will be reported when the
-/// device is next online: No * Reported for affiliated users only: N/A
+/// device is next online: No * Reported for affiliated users only: N/A *
+/// Granular permission needed: TELEMETRY_API_BATTERY_REPORT
 class GoogleChromeManagementV1BatteryStatusReport {
   /// Battery health.
   ///
@@ -1386,6 +1674,82 @@ class GoogleChromeManagementV1BatteryStatusReport {
         if (reportTime != null) 'reportTime': reportTime!,
         if (sample != null) 'sample': sample!,
         if (serialNumber != null) 'serialNumber': serialNumber!,
+      };
+}
+
+/// Boot performance report of a device.
+///
+/// * This field is telemetry information and this will change over time as the
+/// device is utilized. * Data for this field is controlled via policy:
+/// [ReportDeviceBootMode](https://chromeenterprise.google/policies/#ReportDeviceBootMode)
+/// * Data Collection Frequency: On every boot up event * Default Data Reporting
+/// Frequency: 3 hours - Policy Controlled: Yes * Cache: If the device is
+/// offline, the collected data is stored locally, and will be reported when the
+/// device is next online: Yes * Reported for affiliated users only: N/A *
+/// Granular permission needed: TELEMETRY_API_OS_REPORT
+class GoogleChromeManagementV1BootPerformanceReport {
+  /// Total time to boot up.
+  core.String? bootUpDuration;
+
+  /// The timestamp when power came on.
+  core.String? bootUpTime;
+
+  /// Timestamp when the report was collected.
+  core.String? reportTime;
+
+  /// Total time since shutdown start to power off.
+  core.String? shutdownDuration;
+
+  /// The shutdown reason.
+  /// Possible string values are:
+  /// - "SHUTDOWN_REASON_UNSPECIFIED" : Shutdown reason is not specified.
+  /// - "USER_REQUEST" : User initiated.
+  /// - "SYSTEM_UPDATE" : System update initiated.
+  /// - "LOW_BATTERY" : Shutdown due to low battery.
+  /// - "OTHER" : Shutdown due to other reasons.
+  core.String? shutdownReason;
+
+  /// The timestamp when shutdown.
+  core.String? shutdownTime;
+
+  GoogleChromeManagementV1BootPerformanceReport({
+    this.bootUpDuration,
+    this.bootUpTime,
+    this.reportTime,
+    this.shutdownDuration,
+    this.shutdownReason,
+    this.shutdownTime,
+  });
+
+  GoogleChromeManagementV1BootPerformanceReport.fromJson(core.Map json_)
+      : this(
+          bootUpDuration: json_.containsKey('bootUpDuration')
+              ? json_['bootUpDuration'] as core.String
+              : null,
+          bootUpTime: json_.containsKey('bootUpTime')
+              ? json_['bootUpTime'] as core.String
+              : null,
+          reportTime: json_.containsKey('reportTime')
+              ? json_['reportTime'] as core.String
+              : null,
+          shutdownDuration: json_.containsKey('shutdownDuration')
+              ? json_['shutdownDuration'] as core.String
+              : null,
+          shutdownReason: json_.containsKey('shutdownReason')
+              ? json_['shutdownReason'] as core.String
+              : null,
+          shutdownTime: json_.containsKey('shutdownTime')
+              ? json_['shutdownTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bootUpDuration != null) 'bootUpDuration': bootUpDuration!,
+        if (bootUpTime != null) 'bootUpTime': bootUpTime!,
+        if (reportTime != null) 'reportTime': reportTime!,
+        if (shutdownDuration != null) 'shutdownDuration': shutdownDuration!,
+        if (shutdownReason != null) 'shutdownReason': shutdownReason!,
+        if (shutdownTime != null) 'shutdownTime': shutdownTime!,
       };
 }
 
@@ -1482,6 +1846,11 @@ class GoogleChromeManagementV1ChromeAppInfo {
   /// Output only.
   core.bool? isCwsHosted;
 
+  /// Whether an app supports policy for extensions.
+  ///
+  /// Output only.
+  core.bool? isExtensionPolicySupported;
+
   /// Whether the app is only for Kiosk mode on ChromeOS devices
   ///
   /// Output only.
@@ -1527,9 +1896,19 @@ class GoogleChromeManagementV1ChromeAppInfo {
   /// Output only.
   core.bool? supportEnabled;
 
+  /// Types of an item in the Chrome Web Store
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "ITEM_TYPE_UNSPECIFIED" : Unspecified ItemType.
+  /// - "EXTENSION" : Chrome Extensions.
+  /// - "OTHERS" : Any other type than extension.
+  core.String? type;
+
   GoogleChromeManagementV1ChromeAppInfo({
     this.googleOwned,
     this.isCwsHosted,
+    this.isExtensionPolicySupported,
     this.isKioskOnly,
     this.isTheme,
     this.kioskEnabled,
@@ -1537,6 +1916,7 @@ class GoogleChromeManagementV1ChromeAppInfo {
     this.permissions,
     this.siteAccess,
     this.supportEnabled,
+    this.type,
   });
 
   GoogleChromeManagementV1ChromeAppInfo.fromJson(core.Map json_)
@@ -1547,6 +1927,10 @@ class GoogleChromeManagementV1ChromeAppInfo {
           isCwsHosted: json_.containsKey('isCwsHosted')
               ? json_['isCwsHosted'] as core.bool
               : null,
+          isExtensionPolicySupported:
+              json_.containsKey('isExtensionPolicySupported')
+                  ? json_['isExtensionPolicySupported'] as core.bool
+                  : null,
           isKioskOnly: json_.containsKey('isKioskOnly')
               ? json_['isKioskOnly'] as core.bool
               : null,
@@ -1576,11 +1960,14 @@ class GoogleChromeManagementV1ChromeAppInfo {
           supportEnabled: json_.containsKey('supportEnabled')
               ? json_['supportEnabled'] as core.bool
               : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (googleOwned != null) 'googleOwned': googleOwned!,
         if (isCwsHosted != null) 'isCwsHosted': isCwsHosted!,
+        if (isExtensionPolicySupported != null)
+          'isExtensionPolicySupported': isExtensionPolicySupported!,
         if (isKioskOnly != null) 'isKioskOnly': isKioskOnly!,
         if (isTheme != null) 'isTheme': isTheme!,
         if (kioskEnabled != null) 'kioskEnabled': kioskEnabled!,
@@ -1588,6 +1975,7 @@ class GoogleChromeManagementV1ChromeAppInfo {
         if (permissions != null) 'permissions': permissions!,
         if (siteAccess != null) 'siteAccess': siteAccess!,
         if (supportEnabled != null) 'supportEnabled': supportEnabled!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -1785,6 +2173,48 @@ class GoogleChromeManagementV1CountChromeAppRequestsResponse {
       };
 }
 
+/// Response containing counts for browsers that need attention.
+class GoogleChromeManagementV1CountChromeBrowsersNeedingAttentionResponse {
+  /// Number of browsers that haven’t had any recent activity
+  core.String? noRecentActivityCount;
+
+  /// Number of browsers that are pending an OS update
+  core.String? pendingBrowserUpdateCount;
+
+  /// Number of browsers that have been recently enrolled
+  core.String? recentlyEnrolledCount;
+
+  GoogleChromeManagementV1CountChromeBrowsersNeedingAttentionResponse({
+    this.noRecentActivityCount,
+    this.pendingBrowserUpdateCount,
+    this.recentlyEnrolledCount,
+  });
+
+  GoogleChromeManagementV1CountChromeBrowsersNeedingAttentionResponse.fromJson(
+      core.Map json_)
+      : this(
+          noRecentActivityCount: json_.containsKey('noRecentActivityCount')
+              ? json_['noRecentActivityCount'] as core.String
+              : null,
+          pendingBrowserUpdateCount:
+              json_.containsKey('pendingBrowserUpdateCount')
+                  ? json_['pendingBrowserUpdateCount'] as core.String
+                  : null,
+          recentlyEnrolledCount: json_.containsKey('recentlyEnrolledCount')
+              ? json_['recentlyEnrolledCount'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (noRecentActivityCount != null)
+          'noRecentActivityCount': noRecentActivityCount!,
+        if (pendingBrowserUpdateCount != null)
+          'pendingBrowserUpdateCount': pendingBrowserUpdateCount!,
+        if (recentlyEnrolledCount != null)
+          'recentlyEnrolledCount': recentlyEnrolledCount!,
+      };
+}
+
 /// Response containing a list of devices expiring in each month of a selected
 /// time frame.
 ///
@@ -1879,6 +2309,77 @@ class GoogleChromeManagementV1CountChromeDevicesThatNeedAttentionResponse {
       };
 }
 
+/// Response containing a list of devices with a specific type of hardware
+/// specification from the requested hardware type.
+class GoogleChromeManagementV1CountChromeHardwareFleetDevicesResponse {
+  /// The DeviceHardwareCountReport for device cpu type (for example Intel(R)
+  /// Core(TM) i7-10610U CPU @ 1.80GHz).
+  core.List<GoogleChromeManagementV1DeviceHardwareCountReport>? cpuReports;
+
+  /// The DeviceHardwareCountReport for device memory amount in gigabytes (for
+  /// example 16).
+  core.List<GoogleChromeManagementV1DeviceHardwareCountReport>? memoryReports;
+
+  /// The DeviceHardwareCountReport for device model type (for example Acer C7
+  /// Chromebook).
+  core.List<GoogleChromeManagementV1DeviceHardwareCountReport>? modelReports;
+
+  /// The DeviceHardwareCountReport for device storage amount in gigabytes (for
+  /// example 128).
+  core.List<GoogleChromeManagementV1DeviceHardwareCountReport>? storageReports;
+
+  GoogleChromeManagementV1CountChromeHardwareFleetDevicesResponse({
+    this.cpuReports,
+    this.memoryReports,
+    this.modelReports,
+    this.storageReports,
+  });
+
+  GoogleChromeManagementV1CountChromeHardwareFleetDevicesResponse.fromJson(
+      core.Map json_)
+      : this(
+          cpuReports: json_.containsKey('cpuReports')
+              ? (json_['cpuReports'] as core.List)
+                  .map((value) =>
+                      GoogleChromeManagementV1DeviceHardwareCountReport
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          memoryReports: json_.containsKey('memoryReports')
+              ? (json_['memoryReports'] as core.List)
+                  .map((value) =>
+                      GoogleChromeManagementV1DeviceHardwareCountReport
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          modelReports: json_.containsKey('modelReports')
+              ? (json_['modelReports'] as core.List)
+                  .map((value) =>
+                      GoogleChromeManagementV1DeviceHardwareCountReport
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          storageReports: json_.containsKey('storageReports')
+              ? (json_['storageReports'] as core.List)
+                  .map((value) =>
+                      GoogleChromeManagementV1DeviceHardwareCountReport
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cpuReports != null) 'cpuReports': cpuReports!,
+        if (memoryReports != null) 'memoryReports': memoryReports!,
+        if (modelReports != null) 'modelReports': modelReports!,
+        if (storageReports != null) 'storageReports': storageReports!,
+      };
+}
+
 /// Response containing requested browser versions details and counts.
 class GoogleChromeManagementV1CountChromeVersionsResponse {
   /// List of all browser versions and their install counts.
@@ -1968,7 +2469,8 @@ class GoogleChromeManagementV1CountInstalledAppsResponse {
 /// * Data Collection Frequency: Only at Upload * Default Data Reporting
 /// Frequency: 3 hours - Policy Controlled: Yes * Cache: If the device is
 /// offline, the collected data is stored locally, and will be reported when the
-/// device is next online: No * Reported for affiliated users only: N/A
+/// device is next online: No * Reported for affiliated users only: N/A *
+/// Granular permission needed: TELEMETRY_API_CPU_INFO
 class GoogleChromeManagementV1CpuInfo {
   /// Architecture type for the CPU.
   ///
@@ -2055,7 +2557,8 @@ class GoogleChromeManagementV1CpuInfo {
 /// * Data Collection Frequency: Every 10 minutes * Default Data Reporting
 /// Frequency: 3 hours - Policy Controlled: Yes * Cache: If the device is
 /// offline, the collected data is stored locally, and will be reported when the
-/// device is next online: No * Reported for affiliated users only: N/A
+/// device is next online: No * Reported for affiliated users only: N/A *
+/// Granular permission needed: TELEMETRY_API_CPU_REPORT
 class GoogleChromeManagementV1CpuStatusReport {
   /// CPU temperature sample info per CPU core in Celsius
   ///
@@ -2263,6 +2766,35 @@ class GoogleChromeManagementV1DeviceAueCountReport {
       };
 }
 
+/// Report for CountChromeDevicesPerHardwareSpecResponse, contains the count of
+/// devices with a unique hardware specification.
+class GoogleChromeManagementV1DeviceHardwareCountReport {
+  /// Public name of the hardware specification.
+  core.String? bucket;
+
+  /// Count of devices with a unique hardware specification.
+  core.String? count;
+
+  GoogleChromeManagementV1DeviceHardwareCountReport({
+    this.bucket,
+    this.count,
+  });
+
+  GoogleChromeManagementV1DeviceHardwareCountReport.fromJson(core.Map json_)
+      : this(
+          bucket: json_.containsKey('bucket')
+              ? json_['bucket'] as core.String
+              : null,
+          count:
+              json_.containsKey('count') ? json_['count'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bucket != null) 'bucket': bucket!,
+        if (count != null) 'count': count!,
+      };
+}
+
 /// Status of the single storage device.
 class GoogleChromeManagementV1DiskInfo {
   /// Number of bytes read since last boot.
@@ -2414,12 +2946,100 @@ class GoogleChromeManagementV1DiskInfo {
       };
 }
 
+/// Information of a display device.
+class GoogleChromeManagementV1DisplayDevice {
+  /// Display height in millimeters.
+  ///
+  /// Output only.
+  core.int? displayHeightMm;
+
+  /// Display device name.
+  ///
+  /// Output only.
+  core.String? displayName;
+
+  /// Display width in millimeters.
+  ///
+  /// Output only.
+  core.int? displayWidthMm;
+
+  /// Is display internal or not.
+  ///
+  /// Output only.
+  core.bool? internal;
+
+  /// Year of manufacture.
+  ///
+  /// Output only.
+  core.int? manufactureYear;
+
+  /// Three letter manufacturer ID.
+  ///
+  /// Output only.
+  core.String? manufacturerId;
+
+  /// Manufacturer product code.
+  ///
+  /// Output only.
+  core.int? modelId;
+
+  GoogleChromeManagementV1DisplayDevice({
+    this.displayHeightMm,
+    this.displayName,
+    this.displayWidthMm,
+    this.internal,
+    this.manufactureYear,
+    this.manufacturerId,
+    this.modelId,
+  });
+
+  GoogleChromeManagementV1DisplayDevice.fromJson(core.Map json_)
+      : this(
+          displayHeightMm: json_.containsKey('displayHeightMm')
+              ? json_['displayHeightMm'] as core.int
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          displayWidthMm: json_.containsKey('displayWidthMm')
+              ? json_['displayWidthMm'] as core.int
+              : null,
+          internal: json_.containsKey('internal')
+              ? json_['internal'] as core.bool
+              : null,
+          manufactureYear: json_.containsKey('manufactureYear')
+              ? json_['manufactureYear'] as core.int
+              : null,
+          manufacturerId: json_.containsKey('manufacturerId')
+              ? json_['manufacturerId'] as core.String
+              : null,
+          modelId: json_.containsKey('modelId')
+              ? json_['modelId'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayHeightMm != null) 'displayHeightMm': displayHeightMm!,
+        if (displayName != null) 'displayName': displayName!,
+        if (displayWidthMm != null) 'displayWidthMm': displayWidthMm!,
+        if (internal != null) 'internal': internal!,
+        if (manufactureYear != null) 'manufactureYear': manufactureYear!,
+        if (manufacturerId != null) 'manufacturerId': manufacturerId!,
+        if (modelId != null) 'modelId': modelId!,
+      };
+}
+
 /// Information for a display.
 class GoogleChromeManagementV1DisplayInfo {
   /// Represents the graphics card device id.
   ///
   /// Output only.
   core.String? deviceId;
+
+  /// Display device name.
+  ///
+  /// Output only.
+  core.String? displayName;
 
   /// Indicates if display is internal or not.
   ///
@@ -2443,6 +3063,7 @@ class GoogleChromeManagementV1DisplayInfo {
 
   GoogleChromeManagementV1DisplayInfo({
     this.deviceId,
+    this.displayName,
     this.isInternal,
     this.refreshRate,
     this.resolutionHeight,
@@ -2453,6 +3074,9 @@ class GoogleChromeManagementV1DisplayInfo {
       : this(
           deviceId: json_.containsKey('deviceId')
               ? json_['deviceId'] as core.String
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
               : null,
           isInternal: json_.containsKey('isInternal')
               ? json_['isInternal'] as core.bool
@@ -2470,6 +3094,7 @@ class GoogleChromeManagementV1DisplayInfo {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deviceId != null) 'deviceId': deviceId!,
+        if (displayName != null) 'displayName': displayName!,
         if (isInternal != null) 'isInternal': isInternal!,
         if (refreshRate != null) 'refreshRate': refreshRate!,
         if (resolutionHeight != null) 'resolutionHeight': resolutionHeight!,
@@ -2573,15 +3198,34 @@ class GoogleChromeManagementV1GraphicsAdapterInfo {
 /// * Data Collection Frequency: Only at Upload * Default Data Reporting
 /// Frequency: 3 hours - Policy Controlled: Yes * Cache: If the device is
 /// offline, the collected data is stored locally, and will be reported when the
-/// device is next online: No * Reported for affiliated users only: N/A
+/// device is next online: No * Reported for affiliated users only: N/A *
+/// Granular permission needed: TELEMETRY_API_GRAPHICS_INFO
 class GoogleChromeManagementV1GraphicsInfo {
   /// Information about the graphics adapter (GPU).
   ///
   /// Output only.
   GoogleChromeManagementV1GraphicsAdapterInfo? adapterInfo;
 
+  /// Information about the display(s) of the device.
+  ///
+  /// Output only.
+  core.List<GoogleChromeManagementV1DisplayDevice>? displayDevices;
+
+  /// Is ePrivacy screen supported or not.
+  ///
+  /// Output only.
+  core.bool? eprivacySupported;
+
+  /// Information about the internal touch screen(s) of the device.
+  ///
+  /// Output only.
+  GoogleChromeManagementV1TouchScreenInfo? touchScreenInfo;
+
   GoogleChromeManagementV1GraphicsInfo({
     this.adapterInfo,
+    this.displayDevices,
+    this.eprivacySupported,
+    this.touchScreenInfo,
   });
 
   GoogleChromeManagementV1GraphicsInfo.fromJson(core.Map json_)
@@ -2590,10 +3234,28 @@ class GoogleChromeManagementV1GraphicsInfo {
               ? GoogleChromeManagementV1GraphicsAdapterInfo.fromJson(
                   json_['adapterInfo'] as core.Map<core.String, core.dynamic>)
               : null,
+          displayDevices: json_.containsKey('displayDevices')
+              ? (json_['displayDevices'] as core.List)
+                  .map((value) =>
+                      GoogleChromeManagementV1DisplayDevice.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          eprivacySupported: json_.containsKey('eprivacySupported')
+              ? json_['eprivacySupported'] as core.bool
+              : null,
+          touchScreenInfo: json_.containsKey('touchScreenInfo')
+              ? GoogleChromeManagementV1TouchScreenInfo.fromJson(
+                  json_['touchScreenInfo']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (adapterInfo != null) 'adapterInfo': adapterInfo!,
+        if (displayDevices != null) 'displayDevices': displayDevices!,
+        if (eprivacySupported != null) 'eprivacySupported': eprivacySupported!,
+        if (touchScreenInfo != null) 'touchScreenInfo': touchScreenInfo!,
       };
 }
 
@@ -2602,10 +3264,11 @@ class GoogleChromeManagementV1GraphicsInfo {
 /// * This field is telemetry information and this will change over time as the
 /// device is utilized. * Data for this field is controlled via policy:
 /// [ReportDeviceGraphicsInfo](https://chromeenterprise.google/policies/#ReportDeviceGraphicsInfo)
-/// * Data Collection Frequency: Only at Upload * Default Data Reporting
-/// Frequency: 3 hours - Policy Controlled: Yes * Cache: If the device is
-/// offline, the collected data is stored locally, and will be reported when the
-/// device is next online: No * Reported for affiliated users only: N/A
+/// * Data Collection Frequency: 3 hours. * Default Data Reporting Frequency: 3
+/// hours - Policy Controlled: Yes * Cache: If the device is offline, the
+/// collected data is stored locally, and will be reported when the device is
+/// next online: No * Reported for affiliated users only: N/A * Granular
+/// permission needed: TELEMETRY_API_GRAPHICS_REPORT
 class GoogleChromeManagementV1GraphicsStatusReport {
   /// Information about the displays for the device.
   ///
@@ -2638,6 +3301,50 @@ class GoogleChromeManagementV1GraphicsStatusReport {
   core.Map<core.String, core.dynamic> toJson() => {
         if (displays != null) 'displays': displays!,
         if (reportTime != null) 'reportTime': reportTime!,
+      };
+}
+
+/// Heartbeat status report of a device.
+///
+/// * Available for Kiosks * This field provides online/offline/unknown status
+/// of a device and will only be included if the status has changed (e.g. Online
+/// -\> Offline) * Data for this field is controlled via policy:
+/// [HeartbeatEnabled](https://chromeenterprise.google/policies/#HeartbeatEnabled)
+/// [More Info](https://support.google.com/chrome/a/answer/6179663#:~:text=On%20the%20Chrome,device%20status%20alerts)
+/// * Heartbeat Frequency: 2 mins * Note: If a device goes offline, it can take
+/// up to 12 minutes for the online status of the device to be updated * Cache:
+/// If the device is offline, the collected data is stored locally, and will be
+/// reported when the device is next online: N/A * Reported for affiliated users
+/// only: N/A * Granular permission needed: TELEMETRY_API_DEVICE_ACTIVITY_REPORT
+class GoogleChromeManagementV1HeartbeatStatusReport {
+  /// Timestamp of when status changed was detected
+  core.String? reportTime;
+
+  /// State the device changed to
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : State not specified
+  /// - "UNKNOWN" : Device is not eligible for heartbeat monitoring
+  /// - "ONLINE" : Device is online
+  /// - "OFFLINE" : Device is offline
+  core.String? state;
+
+  GoogleChromeManagementV1HeartbeatStatusReport({
+    this.reportTime,
+    this.state,
+  });
+
+  GoogleChromeManagementV1HeartbeatStatusReport.fromJson(core.Map json_)
+      : this(
+          reportTime: json_.containsKey('reportTime')
+              ? json_['reportTime'] as core.String
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (reportTime != null) 'reportTime': reportTime!,
+        if (state != null) 'state': state!,
       };
 }
 
@@ -2835,6 +3542,52 @@ class GoogleChromeManagementV1InstalledApp {
       };
 }
 
+/// Kiosk app status report of a device.
+///
+/// * Available for Kiosks * This field provides the app id and version number
+/// running on a kiosk device and the timestamp of when the report was last
+/// updated * Data for this field is controlled via policy:
+/// [ReportDeviceSessionStatus](https://chromeenterprise.google/policies/#ReportDeviceSessionStatus)
+/// * Data Collection Frequency: Only at Upload * Default Data Reporting
+/// Frequency: 3 hours - Policy Controlled: Yes * Cache: If the device is
+/// offline, the collected data is stored locally, and will be reported when the
+/// device is next online: No * Reported for affiliated users only: N/A *
+/// Granular permission needed: TELEMETRY_API_APPS_REPORT
+class GoogleChromeManagementV1KioskAppStatusReport {
+  /// App id of kiosk app for example "mdmkkicfmmkgmpkmkdikhlbggogpicma"
+  core.String? appId;
+
+  /// App version number of kiosk app for example "1.10.118"
+  core.String? appVersion;
+
+  /// Timestamp of when report was collected
+  core.String? reportTime;
+
+  GoogleChromeManagementV1KioskAppStatusReport({
+    this.appId,
+    this.appVersion,
+    this.reportTime,
+  });
+
+  GoogleChromeManagementV1KioskAppStatusReport.fromJson(core.Map json_)
+      : this(
+          appId:
+              json_.containsKey('appId') ? json_['appId'] as core.String : null,
+          appVersion: json_.containsKey('appVersion')
+              ? json_['appVersion'] as core.String
+              : null,
+          reportTime: json_.containsKey('reportTime')
+              ? json_['reportTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (appId != null) 'appId': appId!,
+        if (appVersion != null) 'appVersion': appVersion!,
+        if (reportTime != null) 'reportTime': reportTime!,
+      };
+}
+
 class GoogleChromeManagementV1ListTelemetryDevicesResponse {
   /// Telemetry devices returned in the response.
   core.List<GoogleChromeManagementV1TelemetryDevice>? devices;
@@ -2867,6 +3620,72 @@ class GoogleChromeManagementV1ListTelemetryDevicesResponse {
       };
 }
 
+/// Response message for listing telemetry events for a customer.
+class GoogleChromeManagementV1ListTelemetryEventsResponse {
+  /// Token to specify next page in the list.
+  core.String? nextPageToken;
+
+  /// Telemetry events returned in the response.
+  core.List<GoogleChromeManagementV1TelemetryEvent>? telemetryEvents;
+
+  GoogleChromeManagementV1ListTelemetryEventsResponse({
+    this.nextPageToken,
+    this.telemetryEvents,
+  });
+
+  GoogleChromeManagementV1ListTelemetryEventsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          telemetryEvents: json_.containsKey('telemetryEvents')
+              ? (json_['telemetryEvents'] as core.List)
+                  .map((value) =>
+                      GoogleChromeManagementV1TelemetryEvent.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (telemetryEvents != null) 'telemetryEvents': telemetryEvents!,
+      };
+}
+
+/// Response message for listing telemetry users for a customer.
+class GoogleChromeManagementV1ListTelemetryUsersResponse {
+  /// Token to specify next page in the list.
+  core.String? nextPageToken;
+
+  /// Telemetry users returned in the response.
+  core.List<GoogleChromeManagementV1TelemetryUser>? telemetryUsers;
+
+  GoogleChromeManagementV1ListTelemetryUsersResponse({
+    this.nextPageToken,
+    this.telemetryUsers,
+  });
+
+  GoogleChromeManagementV1ListTelemetryUsersResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          telemetryUsers: json_.containsKey('telemetryUsers')
+              ? (json_['telemetryUsers'] as core.List)
+                  .map((value) =>
+                      GoogleChromeManagementV1TelemetryUser.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (telemetryUsers != null) 'telemetryUsers': telemetryUsers!,
+      };
+}
+
 /// Memory information of a device.
 ///
 /// * This field has both telemetry and device information: - `totalRamBytes` -
@@ -2880,7 +3699,8 @@ class GoogleChromeManagementV1ListTelemetryDevicesResponse {
 /// `availableRamBytes` - 3 hours - `totalMemoryEncryption` - at device startup
 /// - Policy Controlled: Yes * Cache: If the device is offline, the collected
 /// data is stored locally, and will be reported when the device is next online:
-/// only for `totalMemoryEncryption` * Reported for affiliated users only: N/A
+/// only for `totalMemoryEncryption` * Reported for affiliated users only: N/A *
+/// Granular permission needed: TELEMETRY_API_MEMORY_INFO
 class GoogleChromeManagementV1MemoryInfo {
   /// Amount of available RAM in bytes.
   ///
@@ -2935,7 +3755,8 @@ class GoogleChromeManagementV1MemoryInfo {
 /// every 10 minutes * Default Data Reporting Frequency: Every 3 hours - Policy
 /// Controlled: Yes * Cache: If the device is offline, the collected data is
 /// stored locally, and will be reported when the device is next online: No *
-/// Reported for affiliated users only: N/A
+/// Reported for affiliated users only: N/A * Granular permission needed:
+/// TELEMETRY_API_MEMORY_REPORT
 class GoogleChromeManagementV1MemoryStatusReport {
   /// Number of page faults during this collection
   ///
@@ -3069,6 +3890,8 @@ class GoogleChromeManagementV1NetworkDevice {
 
 /// Network testing results to determine the health of the device's network
 /// connection, for example whether the HTTPS latency is high or normal.
+///
+/// * Granular permission needed: TELEMETRY_API_NETWORK_REPORT
 class GoogleChromeManagementV1NetworkDiagnosticsReport {
   /// HTTPS latency test data.
   ///
@@ -3111,7 +3934,8 @@ class GoogleChromeManagementV1NetworkDiagnosticsReport {
 /// * Data Collection Frequency: At device startup * Default Data Reporting
 /// Frequency: At device startup - Policy Controlled: Yes * Cache: If the device
 /// is offline, the collected data is stored locally, and will be reported when
-/// the device is next online: Yes * Reported for affiliated users only: N/A
+/// the device is next online: Yes * Reported for affiliated users only: N/A *
+/// Granular permission needed: TELEMETRY_API_NETWORK_INFO
 class GoogleChromeManagementV1NetworkInfo {
   /// List of network devices.
   ///
@@ -3146,7 +3970,8 @@ class GoogleChromeManagementV1NetworkInfo {
 /// * Data Collection Frequency: 60 minutes * Default Data Reporting Frequency:
 /// 3 hours - Policy Controlled: Yes * Cache: If the device is offline, the
 /// collected data is stored locally, and will be reported when the device is
-/// next online: Yes * Reported for affiliated users only: Yes
+/// next online: Yes * Reported for affiliated users only: Yes * Granular
+/// permission needed: TELEMETRY_API_NETWORK_REPORT
 class GoogleChromeManagementV1NetworkStatusReport {
   /// Current connection state of the network.
   ///
@@ -3331,7 +4156,8 @@ class GoogleChromeManagementV1NetworkStatusReport {
 /// * Data Collection Frequency: Only at Upload * Default Data Reporting
 /// Frequency: 3 hours - Policy Controlled: Yes * Cache: If the device is
 /// offline, the collected data is stored locally, and will be reported when the
-/// device is next online: No * Reported for affiliated users only: N/A
+/// device is next online: No * Reported for affiliated users only: N/A *
+/// Granular permission needed: TELEMETRY_API_OS_REPORT
 class GoogleChromeManagementV1OsUpdateStatus {
   /// Timestamp of the last reboot.
   ///
@@ -3418,6 +4244,44 @@ class GoogleChromeManagementV1OsUpdateStatus {
       };
 }
 
+/// Peripherals report.
+///
+/// * Granular permission needed: TELEMETRY_API_PERIPHERALS_REPORT
+class GoogleChromeManagementV1PeripheralsReport {
+  /// Timestamp of when the report was collected.
+  ///
+  /// Output only.
+  core.String? reportTime;
+
+  /// Reports of all usb connected devices.
+  core.List<GoogleChromeManagementV1UsbPeripheralReport>? usbPeripheralReport;
+
+  GoogleChromeManagementV1PeripheralsReport({
+    this.reportTime,
+    this.usbPeripheralReport,
+  });
+
+  GoogleChromeManagementV1PeripheralsReport.fromJson(core.Map json_)
+      : this(
+          reportTime: json_.containsKey('reportTime')
+              ? json_['reportTime'] as core.String
+              : null,
+          usbPeripheralReport: json_.containsKey('usbPeripheralReport')
+              ? (json_['usbPeripheralReport'] as core.List)
+                  .map((value) =>
+                      GoogleChromeManagementV1UsbPeripheralReport.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (reportTime != null) 'reportTime': reportTime!,
+        if (usbPeripheralReport != null)
+          'usbPeripheralReport': usbPeripheralReport!,
+      };
+}
+
 /// Status data for storage.
 ///
 /// * This field is telemetry information and this will change over time as the
@@ -3426,7 +4290,8 @@ class GoogleChromeManagementV1OsUpdateStatus {
 /// * Data Collection Frequency: Only at Upload * Default Data Reporting
 /// Frequency: 3 hours - Policy Controlled: Yes * Cache: If the device is
 /// offline, the collected data is stored locally, and will be reported when the
-/// device is next online: No * Reported for affiliated users only: N/A
+/// device is next online: No * Reported for affiliated users only: N/A *
+/// Granular permission needed: TELEMETRY_API_STORAGE_INFO
 class GoogleChromeManagementV1StorageInfo {
   /// The available space for user data storage in the device in bytes.
   core.String? availableDiskBytes;
@@ -3513,7 +4378,8 @@ class GoogleChromeManagementV1StorageInfoDiskVolume {
 /// * Data Collection Frequency: Only at Upload * Default Data Reporting
 /// Frequency: 3 hours - Policy Controlled: Yes * Cache: If the device is
 /// offline, the collected data is stored locally, and will be reported when the
-/// device is next online: No * Reported for affiliated users only: N/A
+/// device is next online: No * Reported for affiliated users only: N/A *
+/// Granular permission needed: TELEMETRY_API_STORAGE_REPORT
 class GoogleChromeManagementV1StorageStatusReport {
   /// Reports on disk.
   ///
@@ -3549,7 +4415,15 @@ class GoogleChromeManagementV1StorageStatusReport {
       };
 }
 
+/// `TelemetryAudioSevereUnderrunEvent` is triggered when a audio devices run
+/// out of buffer data for more than 5 seconds.
+///
+/// * Granular permission needed: TELEMETRY_API_AUDIO_REPORT
+typedef GoogleChromeManagementV1TelemetryAudioSevereUnderrunEvent = $Empty;
+
 /// Telemetry data collected from a managed device.
+///
+/// * Granular permission needed: TELEMETRY_API_DEVICE
 class GoogleChromeManagementV1TelemetryDevice {
   /// Audio reports collected periodically sorted in a decreasing order of
   /// report_time.
@@ -3566,6 +4440,12 @@ class GoogleChromeManagementV1TelemetryDevice {
   ///
   /// Output only.
   core.List<GoogleChromeManagementV1BatteryStatusReport>? batteryStatusReport;
+
+  /// Boot performance reports of the device.
+  ///
+  /// Output only.
+  core.List<GoogleChromeManagementV1BootPerformanceReport>?
+      bootPerformanceReport;
 
   /// Information regarding CPU specs for the device.
   ///
@@ -3600,6 +4480,18 @@ class GoogleChromeManagementV1TelemetryDevice {
   ///
   /// Output only.
   core.List<GoogleChromeManagementV1GraphicsStatusReport>? graphicsStatusReport;
+
+  /// Heartbeat status report containing timestamps periodically sorted in
+  /// decreasing order of report_time
+  ///
+  /// Output only.
+  core.List<GoogleChromeManagementV1HeartbeatStatusReport>?
+      heartbeatStatusReport;
+
+  /// Kiosk app status report for the kiosk device
+  ///
+  /// Output only.
+  core.List<GoogleChromeManagementV1KioskAppStatusReport>? kioskAppStatusReport;
 
   /// Information regarding memory specs for the device.
   ///
@@ -3643,6 +4535,12 @@ class GoogleChromeManagementV1TelemetryDevice {
   /// Output only.
   core.List<GoogleChromeManagementV1OsUpdateStatus>? osUpdateStatus;
 
+  /// Peripherals reports collected periodically sorted in a decreasing order of
+  /// report_time.
+  ///
+  /// Output only.
+  core.List<GoogleChromeManagementV1PeripheralsReport>? peripheralsReport;
+
   /// Device serial number.
   ///
   /// This value is the same as the Admin Console's Serial Number in the
@@ -3670,12 +4568,15 @@ class GoogleChromeManagementV1TelemetryDevice {
     this.audioStatusReport,
     this.batteryInfo,
     this.batteryStatusReport,
+    this.bootPerformanceReport,
     this.cpuInfo,
     this.cpuStatusReport,
     this.customer,
     this.deviceId,
     this.graphicsInfo,
     this.graphicsStatusReport,
+    this.heartbeatStatusReport,
+    this.kioskAppStatusReport,
     this.memoryInfo,
     this.memoryStatusReport,
     this.name,
@@ -3684,6 +4585,7 @@ class GoogleChromeManagementV1TelemetryDevice {
     this.networkStatusReport,
     this.orgUnitId,
     this.osUpdateStatus,
+    this.peripheralsReport,
     this.serialNumber,
     this.storageInfo,
     this.storageStatusReport,
@@ -3709,6 +4611,13 @@ class GoogleChromeManagementV1TelemetryDevice {
               ? (json_['batteryStatusReport'] as core.List)
                   .map((value) =>
                       GoogleChromeManagementV1BatteryStatusReport.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          bootPerformanceReport: json_.containsKey('bootPerformanceReport')
+              ? (json_['bootPerformanceReport'] as core.List)
+                  .map((value) =>
+                      GoogleChromeManagementV1BootPerformanceReport.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3739,6 +4648,20 @@ class GoogleChromeManagementV1TelemetryDevice {
               ? (json_['graphicsStatusReport'] as core.List)
                   .map((value) =>
                       GoogleChromeManagementV1GraphicsStatusReport.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          heartbeatStatusReport: json_.containsKey('heartbeatStatusReport')
+              ? (json_['heartbeatStatusReport'] as core.List)
+                  .map((value) =>
+                      GoogleChromeManagementV1HeartbeatStatusReport.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kioskAppStatusReport: json_.containsKey('kioskAppStatusReport')
+              ? (json_['kioskAppStatusReport'] as core.List)
+                  .map((value) =>
+                      GoogleChromeManagementV1KioskAppStatusReport.fromJson(
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -3783,6 +4706,13 @@ class GoogleChromeManagementV1TelemetryDevice {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          peripheralsReport: json_.containsKey('peripheralsReport')
+              ? (json_['peripheralsReport'] as core.List)
+                  .map((value) =>
+                      GoogleChromeManagementV1PeripheralsReport.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           serialNumber: json_.containsKey('serialNumber')
               ? json_['serialNumber'] as core.String
               : null,
@@ -3811,6 +4741,8 @@ class GoogleChromeManagementV1TelemetryDevice {
         if (batteryInfo != null) 'batteryInfo': batteryInfo!,
         if (batteryStatusReport != null)
           'batteryStatusReport': batteryStatusReport!,
+        if (bootPerformanceReport != null)
+          'bootPerformanceReport': bootPerformanceReport!,
         if (cpuInfo != null) 'cpuInfo': cpuInfo!,
         if (cpuStatusReport != null) 'cpuStatusReport': cpuStatusReport!,
         if (customer != null) 'customer': customer!,
@@ -3818,6 +4750,10 @@ class GoogleChromeManagementV1TelemetryDevice {
         if (graphicsInfo != null) 'graphicsInfo': graphicsInfo!,
         if (graphicsStatusReport != null)
           'graphicsStatusReport': graphicsStatusReport!,
+        if (heartbeatStatusReport != null)
+          'heartbeatStatusReport': heartbeatStatusReport!,
+        if (kioskAppStatusReport != null)
+          'kioskAppStatusReport': kioskAppStatusReport!,
         if (memoryInfo != null) 'memoryInfo': memoryInfo!,
         if (memoryStatusReport != null)
           'memoryStatusReport': memoryStatusReport!,
@@ -3829,11 +4765,392 @@ class GoogleChromeManagementV1TelemetryDevice {
           'networkStatusReport': networkStatusReport!,
         if (orgUnitId != null) 'orgUnitId': orgUnitId!,
         if (osUpdateStatus != null) 'osUpdateStatus': osUpdateStatus!,
+        if (peripheralsReport != null) 'peripheralsReport': peripheralsReport!,
         if (serialNumber != null) 'serialNumber': serialNumber!,
         if (storageInfo != null) 'storageInfo': storageInfo!,
         if (storageStatusReport != null)
           'storageStatusReport': storageStatusReport!,
         if (thunderboltInfo != null) 'thunderboltInfo': thunderboltInfo!,
+      };
+}
+
+/// Information about a device associated with telemetry data.
+///
+/// * Granular Permission needed: TELEMETRY_API_DEVICE
+class GoogleChromeManagementV1TelemetryDeviceInfo {
+  /// The unique Directory API ID of the device.
+  ///
+  /// This value is the same as the Admin Console's Directory API ID in the
+  /// ChromeOS Devices tab.
+  ///
+  /// Output only.
+  core.String? deviceId;
+
+  /// Organization unit ID of the device.
+  ///
+  /// Output only.
+  core.String? orgUnitId;
+
+  GoogleChromeManagementV1TelemetryDeviceInfo({
+    this.deviceId,
+    this.orgUnitId,
+  });
+
+  GoogleChromeManagementV1TelemetryDeviceInfo.fromJson(core.Map json_)
+      : this(
+          deviceId: json_.containsKey('deviceId')
+              ? json_['deviceId'] as core.String
+              : null,
+          orgUnitId: json_.containsKey('orgUnitId')
+              ? json_['orgUnitId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deviceId != null) 'deviceId': deviceId!,
+        if (orgUnitId != null) 'orgUnitId': orgUnitId!,
+      };
+}
+
+/// Telemetry data reported by a managed device.
+class GoogleChromeManagementV1TelemetryEvent {
+  /// Payload for audio severe underrun event.
+  ///
+  /// Present only when the `event_type` field is `AUDIO_SEVERE_UNDERRUN`.
+  ///
+  /// Output only.
+  GoogleChromeManagementV1TelemetryAudioSevereUnderrunEvent?
+      audioSevereUnderrunEvent;
+
+  /// Information about the device associated with the event.
+  ///
+  /// Output only.
+  GoogleChromeManagementV1TelemetryDeviceInfo? device;
+
+  /// The event type of the current event.
+  /// Possible string values are:
+  /// - "EVENT_TYPE_UNSPECIFIED" : Event type unknown.
+  /// - "AUDIO_SEVERE_UNDERRUN" : Triggered when a audio devices run out of
+  /// buffer data for more than 5 seconds.
+  /// - "USB_ADDED" : Triggered when USB devices are added.
+  /// - "USB_REMOVED" : Triggered when USB devices are removed.
+  /// - "NETWORK_HTTPS_LATENCY_CHANGE" : Triggered when a new HTTPS latency
+  /// problem was detected or the device has recovered form an existing HTTPS
+  /// latency problem.
+  core.String? eventType;
+
+  /// Payload for HTTPS latency change event.
+  ///
+  /// Present only when `event_type` is `NETWORK_HTTPS_LATENCY_CHANGE`.
+  ///
+  /// Output only.
+  GoogleChromeManagementV1TelemetryHttpsLatencyChangeEvent?
+      httpsLatencyChangeEvent;
+
+  /// Resource name of the event.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Timestamp that represents when the event was reported.
+  core.String? reportTime;
+
+  /// Payload for usb peripherals event.
+  ///
+  /// Present only when the `event_type` field is either `USB_ADDED` or
+  /// `USB_REMOVED`.
+  ///
+  /// Output only.
+  GoogleChromeManagementV1TelemetryUsbPeripheralsEvent? usbPeripheralsEvent;
+
+  /// Information about the user associated with the event.
+  ///
+  /// Output only.
+  GoogleChromeManagementV1TelemetryUserInfo? user;
+
+  GoogleChromeManagementV1TelemetryEvent({
+    this.audioSevereUnderrunEvent,
+    this.device,
+    this.eventType,
+    this.httpsLatencyChangeEvent,
+    this.name,
+    this.reportTime,
+    this.usbPeripheralsEvent,
+    this.user,
+  });
+
+  GoogleChromeManagementV1TelemetryEvent.fromJson(core.Map json_)
+      : this(
+          audioSevereUnderrunEvent:
+              json_.containsKey('audioSevereUnderrunEvent')
+                  ? GoogleChromeManagementV1TelemetryAudioSevereUnderrunEvent
+                      .fromJson(json_['audioSevereUnderrunEvent']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          device: json_.containsKey('device')
+              ? GoogleChromeManagementV1TelemetryDeviceInfo.fromJson(
+                  json_['device'] as core.Map<core.String, core.dynamic>)
+              : null,
+          eventType: json_.containsKey('eventType')
+              ? json_['eventType'] as core.String
+              : null,
+          httpsLatencyChangeEvent: json_.containsKey('httpsLatencyChangeEvent')
+              ? GoogleChromeManagementV1TelemetryHttpsLatencyChangeEvent
+                  .fromJson(json_['httpsLatencyChangeEvent']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          reportTime: json_.containsKey('reportTime')
+              ? json_['reportTime'] as core.String
+              : null,
+          usbPeripheralsEvent: json_.containsKey('usbPeripheralsEvent')
+              ? GoogleChromeManagementV1TelemetryUsbPeripheralsEvent.fromJson(
+                  json_['usbPeripheralsEvent']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          user: json_.containsKey('user')
+              ? GoogleChromeManagementV1TelemetryUserInfo.fromJson(
+                  json_['user'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (audioSevereUnderrunEvent != null)
+          'audioSevereUnderrunEvent': audioSevereUnderrunEvent!,
+        if (device != null) 'device': device!,
+        if (eventType != null) 'eventType': eventType!,
+        if (httpsLatencyChangeEvent != null)
+          'httpsLatencyChangeEvent': httpsLatencyChangeEvent!,
+        if (name != null) 'name': name!,
+        if (reportTime != null) 'reportTime': reportTime!,
+        if (usbPeripheralsEvent != null)
+          'usbPeripheralsEvent': usbPeripheralsEvent!,
+        if (user != null) 'user': user!,
+      };
+}
+
+/// Https latency routine is run periodically and
+/// `TelemetryHttpsLatencyChangeEvent` is triggered if a latency problem was
+/// detected or if the device has recovered from a latency problem.
+///
+/// * Granular permission needed: TELEMETRY_API_NETWORK_REPORT
+class GoogleChromeManagementV1TelemetryHttpsLatencyChangeEvent {
+  /// HTTPS latency routine data that triggered the event.
+  GoogleChromeManagementV1HttpsLatencyRoutineData? httpsLatencyRoutineData;
+
+  /// Current HTTPS latency state.
+  /// Possible string values are:
+  /// - "HTTPS_LATENCY_STATE_UNSPECIFIED" : HTTPS latency state is unspecified.
+  /// - "RECOVERY" : HTTPS latency recovered from a problem.
+  /// - "PROBLEM" : HTTPS latency problem.
+  core.String? httpsLatencyState;
+
+  GoogleChromeManagementV1TelemetryHttpsLatencyChangeEvent({
+    this.httpsLatencyRoutineData,
+    this.httpsLatencyState,
+  });
+
+  GoogleChromeManagementV1TelemetryHttpsLatencyChangeEvent.fromJson(
+      core.Map json_)
+      : this(
+          httpsLatencyRoutineData: json_.containsKey('httpsLatencyRoutineData')
+              ? GoogleChromeManagementV1HttpsLatencyRoutineData.fromJson(
+                  json_['httpsLatencyRoutineData']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          httpsLatencyState: json_.containsKey('httpsLatencyState')
+              ? json_['httpsLatencyState'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (httpsLatencyRoutineData != null)
+          'httpsLatencyRoutineData': httpsLatencyRoutineData!,
+        if (httpsLatencyState != null) 'httpsLatencyState': httpsLatencyState!,
+      };
+}
+
+/// `TelemetryUsbPeripheralsEvent` is triggered USB devices are either added or
+/// removed.
+///
+/// * Granular permission needed: TELEMETRY_API_PERIPHERALS_REPORT
+class GoogleChromeManagementV1TelemetryUsbPeripheralsEvent {
+  /// List of usb devices that were either added or removed.
+  core.List<GoogleChromeManagementV1UsbPeripheralReport>? usbPeripheralReport;
+
+  GoogleChromeManagementV1TelemetryUsbPeripheralsEvent({
+    this.usbPeripheralReport,
+  });
+
+  GoogleChromeManagementV1TelemetryUsbPeripheralsEvent.fromJson(core.Map json_)
+      : this(
+          usbPeripheralReport: json_.containsKey('usbPeripheralReport')
+              ? (json_['usbPeripheralReport'] as core.List)
+                  .map((value) =>
+                      GoogleChromeManagementV1UsbPeripheralReport.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (usbPeripheralReport != null)
+          'usbPeripheralReport': usbPeripheralReport!,
+      };
+}
+
+/// Telemetry data collected from a managed user.
+///
+/// * Granular permission needed: TELEMETRY_API_USER
+class GoogleChromeManagementV1TelemetryUser {
+  /// G Suite Customer whose enterprise enrolled the device.
+  core.String? customer;
+
+  /// Resource name of the user.
+  core.String? name;
+
+  /// Organization unit of the user.
+  core.String? orgUnitId;
+
+  /// Telemetry data collected from a managed user and device.
+  core.List<GoogleChromeManagementV1TelemetryUserDevice>? userDevice;
+
+  /// Email address of the user.
+  core.String? userEmail;
+
+  /// Directory ID of the user.
+  core.String? userId;
+
+  GoogleChromeManagementV1TelemetryUser({
+    this.customer,
+    this.name,
+    this.orgUnitId,
+    this.userDevice,
+    this.userEmail,
+    this.userId,
+  });
+
+  GoogleChromeManagementV1TelemetryUser.fromJson(core.Map json_)
+      : this(
+          customer: json_.containsKey('customer')
+              ? json_['customer'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          orgUnitId: json_.containsKey('orgUnitId')
+              ? json_['orgUnitId'] as core.String
+              : null,
+          userDevice: json_.containsKey('userDevice')
+              ? (json_['userDevice'] as core.List)
+                  .map((value) =>
+                      GoogleChromeManagementV1TelemetryUserDevice.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          userEmail: json_.containsKey('userEmail')
+              ? json_['userEmail'] as core.String
+              : null,
+          userId: json_.containsKey('userId')
+              ? json_['userId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (customer != null) 'customer': customer!,
+        if (name != null) 'name': name!,
+        if (orgUnitId != null) 'orgUnitId': orgUnitId!,
+        if (userDevice != null) 'userDevice': userDevice!,
+        if (userEmail != null) 'userEmail': userEmail!,
+        if (userId != null) 'userId': userId!,
+      };
+}
+
+/// Telemetry data collected for a managed user and device.
+///
+/// * Granular permission needed: TELEMETRY_API_DEVICE
+class GoogleChromeManagementV1TelemetryUserDevice {
+  /// Audio reports collected periodically sorted in a decreasing order of
+  /// report_time.
+  ///
+  /// Output only.
+  core.List<GoogleChromeManagementV1AudioStatusReport>? audioStatusReport;
+
+  /// The unique Directory API ID of the device.
+  ///
+  /// This value is the same as the Admin Console's Directory API ID in the
+  /// ChromeOS Devices tab.
+  core.String? deviceId;
+
+  /// Peripherals reports collected periodically sorted in a decreasing order of
+  /// report_time.
+  ///
+  /// Output only.
+  core.List<GoogleChromeManagementV1PeripheralsReport>? peripheralsReport;
+
+  GoogleChromeManagementV1TelemetryUserDevice({
+    this.audioStatusReport,
+    this.deviceId,
+    this.peripheralsReport,
+  });
+
+  GoogleChromeManagementV1TelemetryUserDevice.fromJson(core.Map json_)
+      : this(
+          audioStatusReport: json_.containsKey('audioStatusReport')
+              ? (json_['audioStatusReport'] as core.List)
+                  .map((value) =>
+                      GoogleChromeManagementV1AudioStatusReport.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          deviceId: json_.containsKey('deviceId')
+              ? json_['deviceId'] as core.String
+              : null,
+          peripheralsReport: json_.containsKey('peripheralsReport')
+              ? (json_['peripheralsReport'] as core.List)
+                  .map((value) =>
+                      GoogleChromeManagementV1PeripheralsReport.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (audioStatusReport != null) 'audioStatusReport': audioStatusReport!,
+        if (deviceId != null) 'deviceId': deviceId!,
+        if (peripheralsReport != null) 'peripheralsReport': peripheralsReport!,
+      };
+}
+
+/// Information about a user associated with telemetry data.
+///
+/// * Granular permission needed: TELEMETRY_API_USER
+class GoogleChromeManagementV1TelemetryUserInfo {
+  /// User's email.
+  ///
+  /// Output only.
+  core.String? email;
+
+  /// Organization unit ID of the user.
+  ///
+  /// Output only.
+  core.String? orgUnitId;
+
+  GoogleChromeManagementV1TelemetryUserInfo({
+    this.email,
+    this.orgUnitId,
+  });
+
+  GoogleChromeManagementV1TelemetryUserInfo.fromJson(core.Map json_)
+      : this(
+          email:
+              json_.containsKey('email') ? json_['email'] as core.String : null,
+          orgUnitId: json_.containsKey('orgUnitId')
+              ? json_['orgUnitId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (email != null) 'email': email!,
+        if (orgUnitId != null) 'orgUnitId': orgUnitId!,
       };
 }
 
@@ -3845,7 +5162,8 @@ class GoogleChromeManagementV1TelemetryDevice {
 /// * Data Collection Frequency: At device startup * Default Data Reporting
 /// Frequency: At device startup - Policy Controlled: No * Cache: If the device
 /// is offline, the collected data is stored locally, and will be reported when
-/// the device is next online: Yes * Reported for affiliated users only: N/A
+/// the device is next online: Yes * Reported for affiliated users only: N/A *
+/// Granular permission needed: TELEMETRY_API_BUS_DEVICE_INFO
 class GoogleChromeManagementV1ThunderboltInfo {
   /// Security level of the Thunderbolt bus.
   /// Possible string values are:
@@ -3956,6 +5274,175 @@ class GoogleChromeManagementV1TotalMemoryEncryptionInfo {
         if (encryptionState != null) 'encryptionState': encryptionState!,
         if (keyLength != null) 'keyLength': keyLength!,
         if (maxKeys != null) 'maxKeys': maxKeys!,
+      };
+}
+
+/// Information of an internal touch screen device.
+class GoogleChromeManagementV1TouchScreenDevice {
+  /// Touch screen device display name.
+  ///
+  /// Output only.
+  core.String? displayName;
+
+  /// Touch screen device is stylus capable or not.
+  ///
+  /// Output only.
+  core.bool? stylusCapable;
+
+  /// Number of touch points supported on the device.
+  ///
+  /// Output only.
+  core.int? touchPointCount;
+
+  GoogleChromeManagementV1TouchScreenDevice({
+    this.displayName,
+    this.stylusCapable,
+    this.touchPointCount,
+  });
+
+  GoogleChromeManagementV1TouchScreenDevice.fromJson(core.Map json_)
+      : this(
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          stylusCapable: json_.containsKey('stylusCapable')
+              ? json_['stylusCapable'] as core.bool
+              : null,
+          touchPointCount: json_.containsKey('touchPointCount')
+              ? json_['touchPointCount'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (stylusCapable != null) 'stylusCapable': stylusCapable!,
+        if (touchPointCount != null) 'touchPointCount': touchPointCount!,
+      };
+}
+
+/// Information on the device touch screen.
+class GoogleChromeManagementV1TouchScreenInfo {
+  /// List of the internal touch screen devices.
+  ///
+  /// Output only.
+  core.List<GoogleChromeManagementV1TouchScreenDevice>? devices;
+
+  /// Touchpad library name used by the input stack.
+  ///
+  /// Output only.
+  core.String? touchpadLibrary;
+
+  GoogleChromeManagementV1TouchScreenInfo({
+    this.devices,
+    this.touchpadLibrary,
+  });
+
+  GoogleChromeManagementV1TouchScreenInfo.fromJson(core.Map json_)
+      : this(
+          devices: json_.containsKey('devices')
+              ? (json_['devices'] as core.List)
+                  .map((value) =>
+                      GoogleChromeManagementV1TouchScreenDevice.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          touchpadLibrary: json_.containsKey('touchpadLibrary')
+              ? json_['touchpadLibrary'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (devices != null) 'devices': devices!,
+        if (touchpadLibrary != null) 'touchpadLibrary': touchpadLibrary!,
+      };
+}
+
+/// USB connected peripheral report.
+class GoogleChromeManagementV1UsbPeripheralReport {
+  /// Categories the device belongs to https://www.usb.org/defined-class-codes
+  ///
+  /// Output only.
+  core.List<core.String>? categories;
+
+  /// Class ID https://www.usb.org/defined-class-codes
+  ///
+  /// Output only.
+  core.int? classId;
+
+  /// Firmware version
+  ///
+  /// Output only.
+  core.String? firmwareVersion;
+
+  /// Device name, model name, or product name
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Product ID
+  ///
+  /// Output only.
+  core.int? pid;
+
+  /// Subclass ID https://www.usb.org/defined-class-codes
+  ///
+  /// Output only.
+  core.int? subclassId;
+
+  /// Vendor name
+  ///
+  /// Output only.
+  core.String? vendor;
+
+  /// Vendor ID
+  ///
+  /// Output only.
+  core.int? vid;
+
+  GoogleChromeManagementV1UsbPeripheralReport({
+    this.categories,
+    this.classId,
+    this.firmwareVersion,
+    this.name,
+    this.pid,
+    this.subclassId,
+    this.vendor,
+    this.vid,
+  });
+
+  GoogleChromeManagementV1UsbPeripheralReport.fromJson(core.Map json_)
+      : this(
+          categories: json_.containsKey('categories')
+              ? (json_['categories'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          classId: json_.containsKey('classId')
+              ? json_['classId'] as core.int
+              : null,
+          firmwareVersion: json_.containsKey('firmwareVersion')
+              ? json_['firmwareVersion'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          pid: json_.containsKey('pid') ? json_['pid'] as core.int : null,
+          subclassId: json_.containsKey('subclassId')
+              ? json_['subclassId'] as core.int
+              : null,
+          vendor: json_.containsKey('vendor')
+              ? json_['vendor'] as core.String
+              : null,
+          vid: json_.containsKey('vid') ? json_['vid'] as core.int : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (categories != null) 'categories': categories!,
+        if (classId != null) 'classId': classId!,
+        if (firmwareVersion != null) 'firmwareVersion': firmwareVersion!,
+        if (name != null) 'name': name!,
+        if (pid != null) 'pid': pid!,
+        if (subclassId != null) 'subclassId': subclassId!,
+        if (vendor != null) 'vendor': vendor!,
+        if (vid != null) 'vid': vid!,
       };
 }
 

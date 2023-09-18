@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'dart:html';
 
 import 'package:googleapis/oauth2/v2.dart';
@@ -12,7 +14,6 @@ Future<void> main() async {
   _flow = await createImplicitBrowserFlow(
     clientId(),
     [Oauth2Api.userinfoProfileScope],
-    // ignore: deprecated_member_use
     enableDebugLogs: true,
   );
 

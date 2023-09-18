@@ -24,6 +24,13 @@
     "name": "cloudsupport",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230806",
+    "rootUrl": "https://cloudsupport.googleapis.com/",
+    "servicePath": "",
+    "title": "Google Cloud Support API",
+    "version": "v2beta",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,44 +108,11 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
-        "attachments": {
-            "methods": {
-                "create": {
-                    "description": "Create a file attachment on a case or Cloud resource.",
-                    "flatPath": "v2beta/{v2betaId}/{v2betaId1}/attachments",
-                    "httpMethod": "POST",
-                    "id": "cloudsupport.attachments.create",
-                    "parameterOrder": [
-                        "parent"
-                    ],
-                    "parameters": {
-                        "parent": {
-                            "description": "Required. The resource name of the case to which attachment should be attached.",
-                            "location": "path",
-                            "pattern": "^[^/]+/[^/]+$",
-                            "required": true,
-                            "type": "string"
-                        }
-                    },
-                    "path": "v2beta/{+parent}/attachments",
-                    "request": {
-                        "$ref": "CreateAttachmentRequest"
-                    },
-                    "response": {
-                        "$ref": "Attachment"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                    ]
-                }
-            }
-        },
         "caseClassifications": {
             "methods": {
                 "search": {
-                    "description": "Retrieve valid classifications to be used when creating a support case. The classications are hierarchical, with each classification containing all levels of the hierarchy, separated by \" > \". For example \"Technical Issue > Compute > Compute Engine\".",
+                    "description": "Retrieve valid classifications to be used when creating a support case. The classications are hierarchical, with each classification containing all levels of the hierarchy, separated by `\" > \"`. For example `\"Technical Issue > Compute > Compute Engine\"`. Classification IDs returned by `caseClassifications.search` are guaranteed to be valid for at least six months. If a given classification is deactivated, it immediately stops being returned. After six months, `case.create` requests using the classification ID will fail. Here is an example of calling this endpoint using cURL: ```shell curl \\ --header \"Authorization: Bearer $(gcloud auth print-access-token)\" \\ 'https://cloudsupport.googleapis.com/v2/caseClassifications:search?query=display_name:\"*Compute%20Engine*\"' ```",
                     "flatPath": "v2beta/caseClassifications:search",
                     "httpMethod": "GET",
                     "id": "cloudsupport.caseClassifications.search",
@@ -156,7 +130,7 @@
                             "type": "string"
                         },
                         "query": {
-                            "description": "An expression written in the Cloud filter language. If non-empty, then only cases whose fields match the filter are returned. If empty, then no messages are filtered out.",
+                            "description": "An expression written in the Google Cloud filter language. If non-empty, then only cases whose fields match the filter are returned. If empty, then no messages are filtered out.",
                             "location": "query",
                             "type": "string"
                         }
@@ -174,7 +148,7 @@
         "cases": {
             "methods": {
                 "close": {
-                    "description": "Close the specified case.",
+                    "description": "Close the specified case. Here is an example of calling this endpoint using cURL: ```shell case=\"projects/some-project/cases/43595344\" curl \\ --request POST \\ --header \"Authorization: Bearer $(gcloud auth print-access-token)\" \\ \"https://cloudsupport.googleapis.com/v2/$case:close\" ```",
                     "flatPath": "v2beta/{v2betaId}/{v2betaId1}/cases/{casesId}:close",
                     "httpMethod": "POST",
                     "id": "cloudsupport.cases.close",
@@ -202,7 +176,7 @@
                     ]
                 },
                 "create": {
-                    "description": "Create a new case and associate it with the given Cloud resource.",
+                    "description": "Create a new case and associate it with the given Google Cloud Resource. The case object must have the following fields set: `display_name`, `description`, `classification`, and `priority`. Here is an example of calling this endpoint using cURL: ```shell parent=\"projects/some-project\" curl \\ --request POST \\ --header \"Authorization: Bearer $(gcloud auth print-access-token)\" \\ --header 'Content-Type: application/json' \\ --data '{ \"display_name\": \"Test case created by me.\", \"description\": \"a random test case, feel free to close\", \"classification\": { \"id\": \"100IK2AKCLHMGRJ9CDGMOCGP8DM6UTB4BT262T31BT1M2T31DHNMENPO6KS36CPJ786L2TBFEHGN6NPI64R3CDHN8880G08I1H3MURR7DHII0GRCDTQM8\" }, \"time_zone\": \"-07:00\", \"subscriber_email_addresses\": [ \"foo@domain.com\", \"bar@domain.com\" ], \"testCase\": true, \"priority\": \"P3\" }' \\ \"https://cloudsupport.googleapis.com/v2/$parent/cases\" ```",
                     "flatPath": "v2beta/{v2betaId}/{v2betaId1}/cases",
                     "httpMethod": "POST",
                     "id": "cloudsupport.cases.create",
@@ -211,7 +185,7 @@
                     ],
                     "parameters": {
                         "parent": {
-                            "description": "Required. The name of the Cloud resource under which the case should be created.",
+                            "description": "Required. The name of the Google Cloud Resource under which the case should be created.",
                             "location": "path",
                             "pattern": "^[^/]+/[^/]+$",
                             "required": true,
@@ -230,7 +204,7 @@
                     ]
                 },
                 "escalate": {
-                    "description": "Escalate a case. Escalating a case will initiate the Cloud Support escalation management process. This operation is only available to certain Customer Care tiers. Go to https://cloud.google.com/support and look for 'Technical support escalations' in the feature list to find out which tiers are able to perform escalations.",
+                    "description": "Escalate a case. Escalating a case initiates the Google Cloud Support escalation management process. This operation is only available to certain Customer Care support services. Go to https://cloud.google.com/support and look for 'Technical support escalations' in the feature list to find out which support services let you perform escalations. Here is an example of calling this endpoint using cURL: ```shell case=\"projects/some-project/cases/43595344\" curl \\ --request POST \\ --header \"Authorization: Bearer $(gcloud auth print-access-token)\" \\ --header \"Content-Type: application/json\" \\ --data '{ \"escalation\": { \"reason\": \"BUSINESS_IMPACT\", \"justification\": \"This is a test escalation.\" } }' \\ \"https://cloudsupport.googleapis.com/v2/$case:escalate\" ```",
                     "flatPath": "v2beta/{v2betaId}/{v2betaId1}/cases/{casesId}:escalate",
                     "httpMethod": "POST",
                     "id": "cloudsupport.cases.escalate",
@@ -258,7 +232,7 @@
                     ]
                 },
                 "get": {
-                    "description": "Retrieve the specified case.",
+                    "description": "Retrieve the specified case. Here is an example of calling this endpoint using cURL: ```shell case=\"projects/some-project/cases/16033687\" curl \\ --header \"Authorization: Bearer $(gcloud auth print-access-token)\" \\ \"https://cloudsupport.googleapis.com/v2/$case\" ```",
                     "flatPath": "v2beta/{v2betaId}/{v2betaId1}/cases/{casesId}",
                     "httpMethod": "GET",
                     "id": "cloudsupport.cases.get",
@@ -283,7 +257,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Retrieve all cases under the specified parent. Note: Listing cases under an Organization returns only the cases directly parented by that organization. To retrieve all cases under an organization, including cases parented by projects under that organization, use `cases.search`.",
+                    "description": "Retrieve all cases under the specified parent. Note: Listing cases under an organization returns only the cases directly parented by that organization. To retrieve all cases under an organization, including cases parented by projects under that organization, use `cases.search`. Here is an example of calling this endpoint using cURL: ```shell parent=\"projects/some-project\" curl \\ --header \"Authorization: Bearer $(gcloud auth print-access-token)\" \\ \"https://cloudsupport.googleapis.com/v2/$parent/cases\" ```",
                     "flatPath": "v2beta/{v2betaId}/{v2betaId1}/cases",
                     "httpMethod": "GET",
                     "id": "cloudsupport.cases.list",
@@ -292,7 +266,7 @@
                     ],
                     "parameters": {
                         "filter": {
-                            "description": "An expression written in filter language. If non-empty, the query returns the cases that match the filter. Else, the query doesn't filter the cases. Filter expressions use the following fields with the operators equals (`=`) and `AND`: - `state`: The accepted values are `OPEN` or `CLOSED`. - `priority`: The accepted values are `P0`, `P1`, `P2`, `P3`, or `P4`. You can specify multiple values for priority using the `OR` operator. For example, `priority=P1 OR priority=P2`. - [DEPRECATED] `severity`: The accepted values are `S0`, `S1`, `S2`, `S3`, or `S4`. - `creator.email`: The email address of the case creator. Examples: - `state=CLOSED` - `state=OPEN AND creator.email=\"tester@example.com\"` - `state=OPEN AND (priority=P0 OR priority=P1)`",
+                            "description": "An expression written in filter language. If non-empty, the query returns the cases that match the filter. Else, the query doesn't filter the cases. Filter expressions use the following fields with the operators equals (`=`) and `AND`: - `state`: The accepted values are `OPEN` or `CLOSED`. - `priority`: The accepted values are `P0`, `P1`, `P2`, `P3`, or `P4`. You can specify multiple values for priority using the `OR` operator. For example, `priority=P1 OR priority=P2`. - `creator.email`: The email address of the case creator. Examples: - `state=CLOSED` - `state=OPEN AND creator.email=\"tester@example.com\"` - `state=OPEN AND (priority=P0 OR priority=P1)`",
                             "location": "query",
                             "type": "string"
                         },
@@ -324,7 +298,7 @@
                     ]
                 },
                 "patch": {
-                    "description": "Update the specified case. Only a subset of fields (display_name, description, time_zone, subscriber_email_addresses, related_resources, severity, priority, primary_contact, and labels) can be updated.",
+                    "description": "Update the specified case. Only a subset of fields can be updated. Here is an example of calling this endpoint using cURL: ```shell case=\"projects/some-project/cases/43595344\" curl \\ --request PATCH \\ --header \"Authorization: Bearer $(gcloud auth print-access-token)\" \\ --header \"Content-Type: application/json\" \\ --data '{ \"priority\": \"P1\" }' \\ \"https://cloudsupport.googleapis.com/v2/$case?updateMask=priority\" ```",
                     "flatPath": "v2beta/{v2betaId}/{v2betaId1}/cases/{casesId}",
                     "httpMethod": "PATCH",
                     "id": "cloudsupport.cases.patch",
@@ -340,7 +314,7 @@
                             "type": "string"
                         },
                         "updateMask": {
-                            "description": "A field that represents attributes of a case object that should be updated as part of this request. Supported values are severity, display_name, and subscriber_email_addresses. If no fields are specified, all supported fields will be updated. WARNING: If you do not provide a field mask then you may accidentally clear some fields. For example, if you leave field mask empty and do not provide a value for subscriber_email_addresses then subscriber_email_addresses will be updated to empty.",
+                            "description": "A list of attributes of the case object that should be updated as part of this request. Supported values are `priority`, `display_name`, and `subscriber_email_addresses`. If no fields are specified, all supported fields are updated. WARNING: If you do not provide a field mask, then you might accidentally clear some fields. For example, if you leave the field mask empty and do not provide a value for `subscriber_email_addresses`, then `subscriber_email_addresses` is updated to empty.",
                             "format": "google-fieldmask",
                             "location": "query",
                             "type": "string"
@@ -358,7 +332,7 @@
                     ]
                 },
                 "search": {
-                    "description": "Search cases using the specified query.",
+                    "description": "Search cases using the specified query. Here is an example of calling this endpoint using cURL: ```shell parent=\"projects/some-project\" curl \\ --header \"Authorization: Bearer $(gcloud auth print-access-token)\" \\ \"https://cloudsupport.googleapis.com/v2/$parent/cases:search\" ```",
                     "flatPath": "v2beta/cases:search",
                     "httpMethod": "GET",
                     "id": "cloudsupport.cases.search",
@@ -375,8 +349,13 @@
                             "location": "query",
                             "type": "string"
                         },
+                        "parent": {
+                            "description": "The fully qualified name of parent resource to search cases under.",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "query": {
-                            "description": "An expression written in filter language. A query uses the following fields with the operators equals (`=`) and `AND`: - `organization`: An organization name in the form `organizations/`. - `project`: A project name in the form `projects/`. - `state`: The accepted values are `OPEN` or `CLOSED`. - `priority`: The accepted values are `P0`, `P1`, `P2`, `P3`, or `P4`. You can specify multiple values for priority using the `OR` operator. For example, `priority=P1 OR priority=P2`. - [DEPRECATED] `severity`: The accepted values are `S0`, `S1`, `S2`, `S3`, or `S4`. - `creator.email`: The email address of the case creator. You must specify eitehr `organization` or `project`. To search across `displayName`, `description`, and comments, use a global restriction with no keyword or operator. For example, `\"my search\"`. To search only cases updated after a certain date, use `update_time` retricted with that particular date, time, and timezone in ISO datetime format. For example, `update_time>\"2020-01-01T00:00:00-05:00\"`. `update_time` only supports the greater than operator (`>`). Examples: - `organization=\"organizations/123456789\"` - `project=\"projects/my-project-id\"` - `project=\"projects/123456789\"` - `organization=\"organizations/123456789\" AND state=CLOSED` - `project=\"projects/my-project-id\" AND creator.email=\"tester@example.com\"` - `project=\"projects/my-project-id\" AND (priority=P0 OR priority=P1)`",
+                            "description": "An expression written in filter language. A query uses the following fields with the operators equals (`=`) and `AND`: - `organization`: An organization name in the form `organizations/`. - `project`: A project name in the form `projects/`. - `state`: The accepted values are `OPEN` or `CLOSED`. - `priority`: The accepted values are `P0`, `P1`, `P2`, `P3`, or `P4`. You can specify multiple values for priority using the `OR` operator. For example, `priority=P1 OR priority=P2`. - `creator.email`: The email address of the case creator. - `billingAccount`: A billing account in the form `billingAccounts/` You must specify either `organization` or `project`. To search across `displayName`, `description`, and comments, use a global restriction with no keyword or operator. For example, `\"my search\"`. To search only cases updated after a certain date, use `update_time` restricted with that particular date, time, and timezone in ISO datetime format. For example, `update_time>\"2020-01-01T00:00:00-05:00\"`. `update_time` only supports the greater than operator (`>`). Examples: - `organization=\"organizations/123456789\"` - `project=\"projects/my-project-id\"` - `project=\"projects/123456789\"` - `billing_account=\"billingAccounts/123456-A0B0C0-CUZ789\"` - `organization=\"organizations/123456789\" AND state=CLOSED` - `project=\"projects/my-project-id\" AND creator.email=\"tester@example.com\"` - `project=\"projects/my-project-id\" AND (priority=P0 OR priority=P1)`",
                             "location": "query",
                             "type": "string"
                         }
@@ -394,7 +373,7 @@
                 "attachments": {
                     "methods": {
                         "list": {
-                            "description": "Retrieve all attachments associated with a support case.",
+                            "description": "Retrieve all attachments associated with a support case. Here is an example of calling this endpoint using cURL: ```shell case=\"projects/some-project/cases/23598314\" curl \\ --header \"Authorization: Bearer $(gcloud auth print-access-token)\" \\ \"https://cloudsupport.googleapis.com/v2/$case/attachments\" ```",
                             "flatPath": "v2beta/{v2betaId}/{v2betaId1}/cases/{casesId}/attachments",
                             "httpMethod": "GET",
                             "id": "cloudsupport.cases.attachments.list",
@@ -434,7 +413,7 @@
                 "comments": {
                     "methods": {
                         "create": {
-                            "description": "Add a new comment to the specified Case.",
+                            "description": "Add a new comment to the specified Case. The comment object must have the following fields set: body. Here is an example of calling this endpoint using cURL: ```shell case=\"projects/some-project/cases/43591344\" curl \\ --request POST \\ --header \"Authorization: Bearer $(gcloud auth print-access-token)\" \\ --header 'Content-Type: application/json' \\ --data '{ \"body\": \"This is a test comment.\" }' \\ \"https://cloudsupport.googleapis.com/v2/$case/comments\" ```",
                             "flatPath": "v2beta/{v2betaId}/{v2betaId1}/cases/{casesId}/comments",
                             "httpMethod": "POST",
                             "id": "cloudsupport.cases.comments.create",
@@ -462,7 +441,7 @@
                             ]
                         },
                         "list": {
-                            "description": "Retrieve all Comments associated with the Case object.",
+                            "description": "Retrieve all comments associated with the Case object. Here is an example of calling this endpoint using cURL: ```shell case=\"projects/cloud-support-qa-premium/cases/43595344\" curl \\ --header \"Authorization: Bearer $(gcloud auth print-access-token)\" \\ \"https://cloudsupport.googleapis.com/v2/$case/comments\" ```",
                             "flatPath": "v2beta/{v2betaId}/{v2betaId1}/cases/{casesId}/comments",
                             "httpMethod": "GET",
                             "id": "cloudsupport.cases.comments.list",
@@ -504,7 +483,7 @@
         "media": {
             "methods": {
                 "download": {
-                    "description": "Download a file attachment on a case. Note: HTTP requests must append \"?alt=media\" to the URL.",
+                    "description": "Download a file attachment on a case. Note: HTTP requests must append \"?alt=media\" to the URL. Here is an example of calling this endpoint using cURL: ```shell name=\"projects/some-project/cases/43594844/attachments/0674M00000WijAnZAJ\" curl \\ --header \"Authorization: Bearer $(gcloud auth print-access-token)\" \\ \"https://cloudsupport.googleapis.com/v2/$name:download?alt=media\" ```",
                     "flatPath": "v2beta/{v2betaId}/{v2betaId1}/cases/{casesId}/attachments/{attachmentsId}:download",
                     "httpMethod": "GET",
                     "id": "cloudsupport.media.download",
@@ -531,7 +510,7 @@
                     "useMediaDownloadService": true
                 },
                 "upload": {
-                    "description": "Create a file attachment on a case or Cloud resource.",
+                    "description": "Create a file attachment on a case or Cloud resource. The attachment object must have the following fields set: filename. Here is an example of calling this endpoint using cURL: ```shell echo \"This text is in a file I'm uploading using CSAPI.\" \\ > \"./example_file.txt\" case=\"projects/some-project/cases/43594844\" curl \\ --header \"Authorization: Bearer $(gcloud auth print-access-token)\" \\ --data-binary @\"./example_file.txt\" \\ \"https://cloudsupport.googleapis.com/upload/v2beta/$case/attachments?attachment.filename=uploaded_via_curl.txt\" ```",
                     "flatPath": "v2beta/{v2betaId}/{v2betaId1}/cases/{casesId}/attachments",
                     "httpMethod": "POST",
                     "id": "cloudsupport.media.upload",
@@ -551,7 +530,7 @@
                     ],
                     "parameters": {
                         "parent": {
-                            "description": "Required. The resource name of the case to which attachment should be attached.",
+                            "description": "Required. The resource name of the case (or case parent) to which the attachment should be attached.",
                             "location": "path",
                             "pattern": "^[^/]+/[^/]+/cases/[^/]+$",
                             "required": true,
@@ -573,8 +552,6 @@
             }
         }
     },
-    "revision": "20220913",
-    "rootUrl": "https://cloudsupport.googleapis.com/",
     "schemas": {
         "Actor": {
             "description": "An object containing information about the effective user and authenticated principal responsible for an action.",
@@ -672,6 +649,10 @@
                     "$ref": "CaseClassification",
                     "description": "The issue classification applicable to this case."
                 },
+                "contactEmail": {
+                    "description": "A user-supplied email address to send case update notifications for. This should only be used in BYOID flows, where we cannot infer the user's email address directly from their EUCs.",
+                    "type": "string"
+                },
                 "createTime": {
                     "description": "Output only. The time this case was created.",
                     "format": "google-datetime",
@@ -694,12 +675,16 @@
                     "description": "Whether the case is currently escalated.",
                     "type": "boolean"
                 },
+                "languageCode": {
+                    "description": "The language the user has requested to receive support in. This should be a BCP 47 language code (e.g., `\"en\"`, `\"zh-CN\"`, `\"zh-TW\"`, `\"ja\"`, `\"ko\"`). If no language or an unsupported language is specified, this field defaults to English (en). Language selection during case creation may affect your available support options. For a list of supported languages and their support working hours, see: https://cloud.google.com/support/docs/language-working-hours",
+                    "type": "string"
+                },
                 "name": {
                     "description": "The resource name for the case.",
                     "type": "string"
                 },
                 "priority": {
-                    "description": "The priority of this case. If this is set, do not set severity.",
+                    "description": "The priority of this case.",
                     "enum": [
                         "PRIORITY_UNSPECIFIED",
                         "P0",
@@ -719,7 +704,7 @@
                     "type": "string"
                 },
                 "severity": {
-                    "description": "The severity of this case. Deprecated. Use priority instead.",
+                    "description": "REMOVED. The severity of this case. Use priority instead.",
                     "enum": [
                         "SEVERITY_UNSPECIFIED",
                         "S0",
@@ -788,11 +773,11 @@
             "id": "CaseClassification",
             "properties": {
                 "displayName": {
-                    "description": "The display name of the classification.",
+                    "description": "A display name for the classification. The display name is not static and can change. To uniquely and consistently identify classifications, use the `CaseClassification.id` field.",
                     "type": "string"
                 },
                 "id": {
-                    "description": "The unique ID for a classification. Must be specified for case creation. To retrieve valid classification IDs for case creation, use `caseClassifications.search`.",
+                    "description": "The unique ID for a classification. Must be specified for case creation. To retrieve valid classification IDs for case creation, use `caseClassifications.search`. Classification IDs returned by `caseClassifications.search` are guaranteed to be valid for at least 6 months. If a given classification is deactiveated, it will immediately stop being returned. After 6 months, `case.create` requests using the classification ID will fail.",
                     "type": "string"
                 }
             },
@@ -809,7 +794,7 @@
             "id": "Comment",
             "properties": {
                 "body": {
-                    "description": "The full comment body. Maximum of 120000 characters. This can contain rich text syntax.",
+                    "description": "The full comment body. Maximum of 12800 characters. This can contain rich text syntax.",
                     "type": "string"
                 },
                 "createTime": {
@@ -829,7 +814,7 @@
                     "type": "string"
                 },
                 "plainTextBody": {
-                    "description": "Output only. An automatically generated plain text version of body with all rich text syntax stripped.",
+                    "description": "Output only. DEPRECATED. An automatically generated plain text version of body with all rich text syntax stripped.",
                     "readOnly": true,
                     "type": "string"
                 }
@@ -841,6 +826,7 @@
             "id": "CompositeMedia",
             "properties": {
                 "blobRef": {
+                    "deprecated": true,
                     "description": "# gdata.* are outside protos with mising documentation",
                     "format": "byte",
                     "type": "string"
@@ -1112,14 +1098,14 @@
             "id": "ListCasesResponse",
             "properties": {
                 "cases": {
-                    "description": "The list of cases associated with the cloud resource, after any filters have been applied.",
+                    "description": "The list of cases associated with the Google Cloud Resource, after any filters have been applied.",
                     "items": {
                         "$ref": "Case"
                     },
                     "type": "array"
                 },
                 "nextPageToken": {
-                    "description": "A token to retrieve the next page of results. This should be set in the `page_token` field of subsequent `ListCasesRequest` message that is issued. If unspecified, there are no more results to retrieve.",
+                    "description": "A token to retrieve the next page of results. This should be set in the `page_token` field of the subsequent `ListCasesRequest` message that is issued. If unspecified, there are no more results to retrieve.",
                     "type": "string"
                 }
             },
@@ -1148,15 +1134,18 @@
             "id": "Media",
             "properties": {
                 "algorithm": {
+                    "deprecated": true,
                     "description": "# gdata.* are outside protos with mising documentation",
                     "type": "string"
                 },
                 "bigstoreObjectRef": {
+                    "deprecated": true,
                     "description": "# gdata.* are outside protos with mising documentation",
                     "format": "byte",
                     "type": "string"
                 },
                 "blobRef": {
+                    "deprecated": true,
                     "description": "# gdata.* are outside protos with mising documentation",
                     "format": "byte",
                     "type": "string"
@@ -1219,6 +1208,7 @@
                     "type": "string"
                 },
                 "hash": {
+                    "deprecated": true,
                     "description": "# gdata.* are outside protos with mising documentation",
                     "type": "string"
                 },
@@ -1357,7 +1347,7 @@
             "id": "SearchCasesResponse",
             "properties": {
                 "cases": {
-                    "description": "The list of Case associated with the cloud resource, after any filters have been applied.",
+                    "description": "The list of cases associated with the Google Cloud Resource, after any filters have been applied.",
                     "items": {
                         "$ref": "Case"
                     },
@@ -1411,9 +1401,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Google Cloud Support API",
-    "version": "v2beta",
-    "version_module": true
+    }
 }

@@ -1,8 +1,6 @@
 // ignore_for_file: camel_case_types
-// ignore_for_file: cascade_invocations
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_const_declarations
@@ -12,8 +10,9 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unreachable_from_main
 // ignore_for_file: unused_local_variable
 
 import 'dart:async' as async;
@@ -89,6 +88,27 @@ void checkSasPortalChannelWithScore(api.SasPortalChannelWithScore o) {
     );
   }
   buildCounterSasPortalChannelWithScore--;
+}
+
+core.int buildCounterSasPortalCheckHasProvisionedDeploymentResponse = 0;
+api.SasPortalCheckHasProvisionedDeploymentResponse
+    buildSasPortalCheckHasProvisionedDeploymentResponse() {
+  final o = api.SasPortalCheckHasProvisionedDeploymentResponse();
+  buildCounterSasPortalCheckHasProvisionedDeploymentResponse++;
+  if (buildCounterSasPortalCheckHasProvisionedDeploymentResponse < 3) {
+    o.hasProvisionedDeployment = true;
+  }
+  buildCounterSasPortalCheckHasProvisionedDeploymentResponse--;
+  return o;
+}
+
+void checkSasPortalCheckHasProvisionedDeploymentResponse(
+    api.SasPortalCheckHasProvisionedDeploymentResponse o) {
+  buildCounterSasPortalCheckHasProvisionedDeploymentResponse++;
+  if (buildCounterSasPortalCheckHasProvisionedDeploymentResponse < 3) {
+    unittest.expect(o.hasProvisionedDeployment!, unittest.isTrue);
+  }
+  buildCounterSasPortalCheckHasProvisionedDeploymentResponse--;
 }
 
 core.int buildCounterSasPortalCreateSignedDeviceRequest = 0;
@@ -708,9 +728,11 @@ api.SasPortalInstallationParams buildSasPortalInstallationParams() {
     o.antennaBeamwidth = 42;
     o.antennaDowntilt = 42;
     o.antennaGain = 42;
+    o.antennaGainNewField = 42.0;
     o.antennaModel = 'foo';
     o.cpeCbsdIndication = true;
     o.eirpCapability = 42;
+    o.eirpCapabilityNewField = 42.0;
     o.height = 42.0;
     o.heightType = 'foo';
     o.horizontalAccuracy = 42.0;
@@ -743,6 +765,10 @@ void checkSasPortalInstallationParams(api.SasPortalInstallationParams o) {
       unittest.equals(42),
     );
     unittest.expect(
+      o.antennaGainNewField!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
       o.antennaModel!,
       unittest.equals('foo'),
     );
@@ -750,6 +776,10 @@ void checkSasPortalInstallationParams(api.SasPortalInstallationParams o) {
     unittest.expect(
       o.eirpCapability!,
       unittest.equals(42),
+    );
+    unittest.expect(
+      o.eirpCapabilityNewField!,
+      unittest.equals(42.0),
     );
     unittest.expect(
       o.height!,
@@ -919,6 +949,30 @@ void checkSasPortalListNodesResponse(api.SasPortalListNodesResponse o) {
     checkUnnamed13(o.nodes!);
   }
   buildCounterSasPortalListNodesResponse--;
+}
+
+core.int buildCounterSasPortalMigrateOrganizationRequest = 0;
+api.SasPortalMigrateOrganizationRequest
+    buildSasPortalMigrateOrganizationRequest() {
+  final o = api.SasPortalMigrateOrganizationRequest();
+  buildCounterSasPortalMigrateOrganizationRequest++;
+  if (buildCounterSasPortalMigrateOrganizationRequest < 3) {
+    o.organizationId = 'foo';
+  }
+  buildCounterSasPortalMigrateOrganizationRequest--;
+  return o;
+}
+
+void checkSasPortalMigrateOrganizationRequest(
+    api.SasPortalMigrateOrganizationRequest o) {
+  buildCounterSasPortalMigrateOrganizationRequest++;
+  if (buildCounterSasPortalMigrateOrganizationRequest < 3) {
+    unittest.expect(
+      o.organizationId!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterSasPortalMigrateOrganizationRequest--;
 }
 
 core.int buildCounterSasPortalMoveDeploymentRequest = 0;
@@ -1230,6 +1284,64 @@ void checkSasPortalPolicy(api.SasPortalPolicy o) {
   buildCounterSasPortalPolicy--;
 }
 
+core.int buildCounterSasPortalProvisionDeploymentRequest = 0;
+api.SasPortalProvisionDeploymentRequest
+    buildSasPortalProvisionDeploymentRequest() {
+  final o = api.SasPortalProvisionDeploymentRequest();
+  buildCounterSasPortalProvisionDeploymentRequest++;
+  if (buildCounterSasPortalProvisionDeploymentRequest < 3) {
+    o.newDeploymentDisplayName = 'foo';
+    o.newOrganizationDisplayName = 'foo';
+    o.organizationId = 'foo';
+  }
+  buildCounterSasPortalProvisionDeploymentRequest--;
+  return o;
+}
+
+void checkSasPortalProvisionDeploymentRequest(
+    api.SasPortalProvisionDeploymentRequest o) {
+  buildCounterSasPortalProvisionDeploymentRequest++;
+  if (buildCounterSasPortalProvisionDeploymentRequest < 3) {
+    unittest.expect(
+      o.newDeploymentDisplayName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.newOrganizationDisplayName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.organizationId!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterSasPortalProvisionDeploymentRequest--;
+}
+
+core.int buildCounterSasPortalProvisionDeploymentResponse = 0;
+api.SasPortalProvisionDeploymentResponse
+    buildSasPortalProvisionDeploymentResponse() {
+  final o = api.SasPortalProvisionDeploymentResponse();
+  buildCounterSasPortalProvisionDeploymentResponse++;
+  if (buildCounterSasPortalProvisionDeploymentResponse < 3) {
+    o.errorMessage = 'foo';
+  }
+  buildCounterSasPortalProvisionDeploymentResponse--;
+  return o;
+}
+
+void checkSasPortalProvisionDeploymentResponse(
+    api.SasPortalProvisionDeploymentResponse o) {
+  buildCounterSasPortalProvisionDeploymentResponse++;
+  if (buildCounterSasPortalProvisionDeploymentResponse < 3) {
+    unittest.expect(
+      o.errorMessage!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterSasPortalProvisionDeploymentResponse--;
+}
+
 core.int buildCounterSasPortalSetPolicyRequest = 0;
 api.SasPortalSetPolicyRequest buildSasPortalSetPolicyRequest() {
   final o = api.SasPortalSetPolicyRequest();
@@ -1539,6 +1651,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-SasPortalCheckHasProvisionedDeploymentResponse',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSasPortalCheckHasProvisionedDeploymentResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SasPortalCheckHasProvisionedDeploymentResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSasPortalCheckHasProvisionedDeploymentResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-SasPortalCreateSignedDeviceRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildSasPortalCreateSignedDeviceRequest();
@@ -1739,6 +1862,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-SasPortalMigrateOrganizationRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSasPortalMigrateOrganizationRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SasPortalMigrateOrganizationRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSasPortalMigrateOrganizationRequest(od);
+    });
+  });
+
   unittest.group('obj-schema-SasPortalMoveDeploymentRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildSasPortalMoveDeploymentRequest();
@@ -1806,6 +1939,26 @@ void main() {
       final od = api.SasPortalPolicy.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkSasPortalPolicy(od);
+    });
+  });
+
+  unittest.group('obj-schema-SasPortalProvisionDeploymentRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSasPortalProvisionDeploymentRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SasPortalProvisionDeploymentRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSasPortalProvisionDeploymentRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-SasPortalProvisionDeploymentResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSasPortalProvisionDeploymentResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SasPortalProvisionDeploymentResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSasPortalProvisionDeploymentResponse(od);
     });
   });
 
@@ -1890,13 +2043,66 @@ void main() {
   });
 
   unittest.group('resource-CustomersResource', () {
+    unittest.test('method--checkHasProvisionedDeployment', () async {
+      final mock = HttpServerMock();
+      final res = api.SASPortalTestingApi(mock).customers;
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 48),
+          unittest.equals('v1alpha1/customers:checkHasProvisionedDeployment'),
+        );
+        pathOffset += 48;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildSasPortalCheckHasProvisionedDeploymentResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.checkHasProvisionedDeployment($fields: arg_$fields);
+      checkSasPortalCheckHasProvisionedDeploymentResponse(
+          response as api.SasPortalCheckHasProvisionedDeploymentResponse);
+    });
+
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
       final res = api.SASPortalTestingApi(mock).customers;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1912,7 +2118,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -1949,7 +2155,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1964,7 +2170,7 @@ void main() {
         );
         pathOffset += 18;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2006,6 +2212,62 @@ void main() {
           response as api.SasPortalListCustomersResponse);
     });
 
+    unittest.test('method--migrateOrganization', () async {
+      final mock = HttpServerMock();
+      final res = api.SASPortalTestingApi(mock).customers;
+      final arg_request = buildSasPortalMigrateOrganizationRequest();
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.SasPortalMigrateOrganizationRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSasPortalMigrateOrganizationRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 38),
+          unittest.equals('v1alpha1/customers:migrateOrganization'),
+        );
+        pathOffset += 38;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildSasPortalOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.migrateOrganization(arg_request, $fields: arg_$fields);
+      checkSasPortalOperation(response as api.SasPortalOperation);
+    });
+
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
       final res = api.SASPortalTestingApi(mock).customers;
@@ -2018,7 +2280,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkSasPortalCustomer(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2034,7 +2296,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2068,6 +2330,64 @@ void main() {
           updateMask: arg_updateMask, $fields: arg_$fields);
       checkSasPortalCustomer(response as api.SasPortalCustomer);
     });
+
+    unittest.test('method--provisionDeployment', () async {
+      final mock = HttpServerMock();
+      final res = api.SASPortalTestingApi(mock).customers;
+      final arg_request = buildSasPortalProvisionDeploymentRequest();
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.SasPortalProvisionDeploymentRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSasPortalProvisionDeploymentRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 38),
+          unittest.equals('v1alpha1/customers:provisionDeployment'),
+        );
+        pathOffset += 38;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildSasPortalProvisionDeploymentResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.provisionDeployment(arg_request, $fields: arg_$fields);
+      checkSasPortalProvisionDeploymentResponse(
+          response as api.SasPortalProvisionDeploymentResponse);
+    });
   });
 
   unittest.group('resource-CustomersDeploymentsResource', () {
@@ -2082,7 +2402,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkSasPortalDeployment(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2098,7 +2418,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2135,7 +2455,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2151,7 +2471,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2187,7 +2507,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2203,7 +2523,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2242,7 +2562,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2258,7 +2578,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2317,7 +2637,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkSasPortalMoveDeploymentRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2333,7 +2653,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2376,7 +2696,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkSasPortalDeployment(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2392,7 +2712,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2440,7 +2760,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkSasPortalDevice(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2456,7 +2776,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2498,7 +2818,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkSasPortalCreateSignedDeviceRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2514,7 +2834,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2554,7 +2874,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2570,7 +2890,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2630,7 +2950,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkSasPortalDevice(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2646,7 +2966,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2688,7 +3008,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkSasPortalCreateSignedDeviceRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2704,7 +3024,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2741,7 +3061,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2757,7 +3077,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2793,7 +3113,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2809,7 +3129,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2848,7 +3168,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2864,7 +3184,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2922,7 +3242,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkSasPortalMoveDeviceRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2938,7 +3258,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2981,7 +3301,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkSasPortalDevice(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2997,7 +3317,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3043,7 +3363,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkSasPortalSignDeviceRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3059,7 +3379,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3101,7 +3421,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkSasPortalUpdateSignedDeviceRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3117,7 +3437,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3161,7 +3481,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkSasPortalNode(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3177,7 +3497,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3214,7 +3534,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3230,7 +3550,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3266,7 +3586,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3282,7 +3602,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3321,7 +3641,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3337,7 +3657,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3395,7 +3715,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkSasPortalMoveNodeRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3411,7 +3731,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3454,7 +3774,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkSasPortalNode(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3470,7 +3790,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3518,7 +3838,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkSasPortalDeployment(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3534,7 +3854,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3574,7 +3894,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3590,7 +3910,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3651,7 +3971,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkSasPortalDevice(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3667,7 +3987,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3709,7 +4029,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkSasPortalCreateSignedDeviceRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3725,7 +4045,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3765,7 +4085,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3781,7 +4101,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3841,7 +4161,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkSasPortalNode(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3857,7 +4177,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3897,7 +4217,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3913,7 +4233,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3968,7 +4288,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3984,7 +4304,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4022,7 +4342,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4038,7 +4358,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4074,7 +4394,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4090,7 +4410,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4131,7 +4451,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkSasPortalMoveDeviceRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4147,7 +4467,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4190,7 +4510,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkSasPortalDevice(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4206,7 +4526,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4252,7 +4572,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkSasPortalSignDeviceRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4268,7 +4588,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4310,7 +4630,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkSasPortalUpdateSignedDeviceRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4326,7 +4646,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4369,7 +4689,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkSasPortalGenerateSecretRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4384,7 +4704,7 @@ void main() {
         );
         pathOffset += 33;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4427,7 +4747,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkSasPortalValidateInstallerRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4442,7 +4762,7 @@ void main() {
         );
         pathOffset += 27;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4482,7 +4802,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4498,7 +4818,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4536,7 +4856,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4552,7 +4872,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4588,7 +4908,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4604,7 +4924,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4643,7 +4963,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4659,7 +4979,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4718,7 +5038,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkSasPortalMoveDeploymentRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4734,7 +5054,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4777,7 +5097,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkSasPortalDeployment(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4793,7 +5113,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4841,7 +5161,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkSasPortalDevice(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4857,7 +5177,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4899,7 +5219,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkSasPortalCreateSignedDeviceRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4915,7 +5235,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -4955,7 +5275,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -4971,7 +5291,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -5031,7 +5351,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkSasPortalDevice(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -5047,7 +5367,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -5089,7 +5409,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkSasPortalCreateSignedDeviceRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -5105,7 +5425,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -5142,7 +5462,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -5158,7 +5478,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -5194,7 +5514,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -5210,7 +5530,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -5249,7 +5569,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -5265,7 +5585,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -5323,7 +5643,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkSasPortalMoveDeviceRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -5339,7 +5659,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -5382,7 +5702,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkSasPortalDevice(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -5398,7 +5718,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -5444,7 +5764,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkSasPortalSignDeviceRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -5460,7 +5780,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -5502,7 +5822,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkSasPortalUpdateSignedDeviceRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -5518,7 +5838,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -5562,7 +5882,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkSasPortalNode(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -5578,7 +5898,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -5615,7 +5935,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -5631,7 +5951,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -5667,7 +5987,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -5683,7 +6003,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -5722,7 +6042,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -5738,7 +6058,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -5796,7 +6116,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkSasPortalMoveNodeRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -5812,7 +6132,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -5855,7 +6175,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkSasPortalNode(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -5871,7 +6191,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -5919,7 +6239,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkSasPortalDeployment(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -5935,7 +6255,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -5975,7 +6295,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -5991,7 +6311,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -6052,7 +6372,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkSasPortalDevice(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -6068,7 +6388,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -6110,7 +6430,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkSasPortalCreateSignedDeviceRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -6126,7 +6446,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -6166,7 +6486,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -6182,7 +6502,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -6242,7 +6562,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkSasPortalNode(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -6258,7 +6578,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -6298,7 +6618,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -6314,7 +6634,7 @@ void main() {
         pathOffset += 9;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -6373,7 +6693,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkSasPortalGetPolicyRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -6388,7 +6708,7 @@ void main() {
         );
         pathOffset += 21;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -6428,7 +6748,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkSasPortalSetPolicyRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -6443,7 +6763,7 @@ void main() {
         );
         pathOffset += 21;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -6483,7 +6803,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkSasPortalTestPermissionsRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -6498,7 +6818,7 @@ void main() {
         );
         pathOffset += 22;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>

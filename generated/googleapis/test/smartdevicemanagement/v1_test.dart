@@ -1,8 +1,6 @@
 // ignore_for_file: camel_case_types
-// ignore_for_file: cascade_invocations
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_const_declarations
@@ -12,8 +10,9 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unreachable_from_main
 // ignore_for_file: unused_local_variable
 
 import 'dart:async' as async;
@@ -269,7 +268,6 @@ api.GoogleHomeEnterpriseSdmV1ListDevicesResponse
   buildCounterGoogleHomeEnterpriseSdmV1ListDevicesResponse++;
   if (buildCounterGoogleHomeEnterpriseSdmV1ListDevicesResponse < 3) {
     o.devices = buildUnnamed4();
-    o.nextPageToken = 'foo';
   }
   buildCounterGoogleHomeEnterpriseSdmV1ListDevicesResponse--;
   return o;
@@ -280,10 +278,6 @@ void checkGoogleHomeEnterpriseSdmV1ListDevicesResponse(
   buildCounterGoogleHomeEnterpriseSdmV1ListDevicesResponse++;
   if (buildCounterGoogleHomeEnterpriseSdmV1ListDevicesResponse < 3) {
     checkUnnamed4(o.devices!);
-    unittest.expect(
-      o.nextPageToken!,
-      unittest.equals('foo'),
-    );
   }
   buildCounterGoogleHomeEnterpriseSdmV1ListDevicesResponse--;
 }
@@ -305,7 +299,6 @@ api.GoogleHomeEnterpriseSdmV1ListRoomsResponse
   final o = api.GoogleHomeEnterpriseSdmV1ListRoomsResponse();
   buildCounterGoogleHomeEnterpriseSdmV1ListRoomsResponse++;
   if (buildCounterGoogleHomeEnterpriseSdmV1ListRoomsResponse < 3) {
-    o.nextPageToken = 'foo';
     o.rooms = buildUnnamed5();
   }
   buildCounterGoogleHomeEnterpriseSdmV1ListRoomsResponse--;
@@ -316,10 +309,6 @@ void checkGoogleHomeEnterpriseSdmV1ListRoomsResponse(
     api.GoogleHomeEnterpriseSdmV1ListRoomsResponse o) {
   buildCounterGoogleHomeEnterpriseSdmV1ListRoomsResponse++;
   if (buildCounterGoogleHomeEnterpriseSdmV1ListRoomsResponse < 3) {
-    unittest.expect(
-      o.nextPageToken!,
-      unittest.equals('foo'),
-    );
     checkUnnamed5(o.rooms!);
   }
   buildCounterGoogleHomeEnterpriseSdmV1ListRoomsResponse--;
@@ -342,7 +331,6 @@ api.GoogleHomeEnterpriseSdmV1ListStructuresResponse
   final o = api.GoogleHomeEnterpriseSdmV1ListStructuresResponse();
   buildCounterGoogleHomeEnterpriseSdmV1ListStructuresResponse++;
   if (buildCounterGoogleHomeEnterpriseSdmV1ListStructuresResponse < 3) {
-    o.nextPageToken = 'foo';
     o.structures = buildUnnamed6();
   }
   buildCounterGoogleHomeEnterpriseSdmV1ListStructuresResponse--;
@@ -353,10 +341,6 @@ void checkGoogleHomeEnterpriseSdmV1ListStructuresResponse(
     api.GoogleHomeEnterpriseSdmV1ListStructuresResponse o) {
   buildCounterGoogleHomeEnterpriseSdmV1ListStructuresResponse++;
   if (buildCounterGoogleHomeEnterpriseSdmV1ListStructuresResponse < 3) {
-    unittest.expect(
-      o.nextPageToken!,
-      unittest.equals('foo'),
-    );
     checkUnnamed6(o.structures!);
   }
   buildCounterGoogleHomeEnterpriseSdmV1ListStructuresResponse--;
@@ -641,7 +625,7 @@ void main() {
                 json as core.Map<core.String, core.dynamic>);
         checkGoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -657,7 +641,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -696,7 +680,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -712,7 +696,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -749,11 +733,9 @@ void main() {
       final res = api.SmartDeviceManagementApi(mock).enterprises.devices;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
-      final arg_pageSize = 42;
-      final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -769,7 +751,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -789,14 +771,6 @@ void main() {
           unittest.equals(arg_filter),
         );
         unittest.expect(
-          core.int.parse(queryMap['pageSize']!.first),
-          unittest.equals(arg_pageSize),
-        );
-        unittest.expect(
-          queryMap['pageToken']!.first,
-          unittest.equals(arg_pageToken),
-        );
-        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -808,11 +782,8 @@ void main() {
             .encode(buildGoogleHomeEnterpriseSdmV1ListDevicesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      final response = await res.list(arg_parent,
-          filter: arg_filter,
-          pageSize: arg_pageSize,
-          pageToken: arg_pageToken,
-          $fields: arg_$fields);
+      final response =
+          await res.list(arg_parent, filter: arg_filter, $fields: arg_$fields);
       checkGoogleHomeEnterpriseSdmV1ListDevicesResponse(
           response as api.GoogleHomeEnterpriseSdmV1ListDevicesResponse);
     });
@@ -825,7 +796,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -841,7 +812,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -878,11 +849,9 @@ void main() {
       final res = api.SmartDeviceManagementApi(mock).enterprises.structures;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
-      final arg_pageSize = 42;
-      final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -898,7 +867,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -918,14 +887,6 @@ void main() {
           unittest.equals(arg_filter),
         );
         unittest.expect(
-          core.int.parse(queryMap['pageSize']!.first),
-          unittest.equals(arg_pageSize),
-        );
-        unittest.expect(
-          queryMap['pageToken']!.first,
-          unittest.equals(arg_pageToken),
-        );
-        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -937,11 +898,8 @@ void main() {
             .encode(buildGoogleHomeEnterpriseSdmV1ListStructuresResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      final response = await res.list(arg_parent,
-          filter: arg_filter,
-          pageSize: arg_pageSize,
-          pageToken: arg_pageToken,
-          $fields: arg_$fields);
+      final response =
+          await res.list(arg_parent, filter: arg_filter, $fields: arg_$fields);
       checkGoogleHomeEnterpriseSdmV1ListStructuresResponse(
           response as api.GoogleHomeEnterpriseSdmV1ListStructuresResponse);
     });
@@ -955,7 +913,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -971,7 +929,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -1007,11 +965,9 @@ void main() {
       final res =
           api.SmartDeviceManagementApi(mock).enterprises.structures.rooms;
       final arg_parent = 'foo';
-      final arg_pageSize = 42;
-      final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1027,7 +983,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -1043,14 +999,6 @@ void main() {
           }
         }
         unittest.expect(
-          core.int.parse(queryMap['pageSize']!.first),
-          unittest.equals(arg_pageSize),
-        );
-        unittest.expect(
-          queryMap['pageToken']!.first,
-          unittest.equals(arg_pageToken),
-        );
-        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -1062,10 +1010,7 @@ void main() {
             .encode(buildGoogleHomeEnterpriseSdmV1ListRoomsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      final response = await res.list(arg_parent,
-          pageSize: arg_pageSize,
-          pageToken: arg_pageToken,
-          $fields: arg_$fields);
+      final response = await res.list(arg_parent, $fields: arg_$fields);
       checkGoogleHomeEnterpriseSdmV1ListRoomsResponse(
           response as api.GoogleHomeEnterpriseSdmV1ListRoomsResponse);
     });

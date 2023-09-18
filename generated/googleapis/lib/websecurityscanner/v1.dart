@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Web Security Scanner API - v1
@@ -27,7 +26,7 @@
 ///       - [ProjectsScanConfigsScanRunsCrawledUrlsResource]
 ///       - [ProjectsScanConfigsScanRunsFindingTypeStatsResource]
 ///       - [ProjectsScanConfigsScanRunsFindingsResource]
-library websecurityscanner.v1;
+library websecurityscanner_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -36,7 +35,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -700,6 +698,9 @@ class Authentication {
   CustomAccount? customAccount;
 
   /// Authentication using a Google account.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   GoogleAccount? googleAccount;
 
   /// Authentication using Identity-Aware-Proxy (IAP).
@@ -1863,6 +1864,8 @@ class ScanRunErrorTrace {
   /// errors from the web site pages. When available,
   /// most_common_http_error_code field indicates the most common HTTP error
   /// code encountered during the scan.
+  /// - "STARTING_URLS_CRAWL_HTTP_ERRORS" : Indicates that some of the starting
+  /// web urls returned HTTP errors during the scan.
   core.String? code;
 
   /// If the scan encounters TOO_MANY_HTTP_ERRORS, this field indicates the most

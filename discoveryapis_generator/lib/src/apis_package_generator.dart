@@ -145,7 +145,7 @@ ${requestHeadersField(pubspec.version)}
 /// Shared types to minimize the package size. Do not use directly.
 @core.Deprecated('Avoid importing this library. '
 'Use the members defined in the target API library instead.',)
-library \$shared;
+library;
 
 ${ignoreForFileComments(ignoreForFileSet)}
 
@@ -199,7 +199,11 @@ ${duplicateItems.map((e) => e.definition).join('\n\n')}
     }
 
     sink.writeln('name: ${pubspec.name}');
-    sink.writeln('version: ${pubspec.version}');
+    if (pubspec.version == null) {
+      sink.writeln('publish_to: none');
+    } else {
+      sink.writeln('version: ${pubspec.version}');
+    }
     if (pubspec.author != null) {
       sink.writeln('author: ${pubspec.author}');
     }

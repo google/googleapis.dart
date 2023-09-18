@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud Filestore API - v1
@@ -27,7 +26,7 @@
 ///     - [ProjectsLocationsInstancesResource]
 ///       - [ProjectsLocationsInstancesSnapshotsResource]
 ///     - [ProjectsLocationsOperationsResource]
-library file.v1;
+library file_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -36,7 +35,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -191,7 +189,7 @@ class ProjectsLocationsBackupsResource {
   ///
   /// [parent] - Required. The backup's project and location, in the format
   /// `projects/{project_number}/locations/{location}`. In Filestore, backup
-  /// locations map to GCP regions, for example **us-west1**.
+  /// locations map to Google Cloud regions, for example **us-west1**.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [backupId] - Required. The ID to use for the backup. The ID must be unique
@@ -315,8 +313,9 @@ class ProjectsLocationsBackupsResource {
   /// [parent] - Required. The project and location for which to retrieve backup
   /// information, in the format
   /// `projects/{project_number}/locations/{location}`. In Filestore, backup
-  /// locations map to GCP regions, for example **us-west1**. To retrieve backup
-  /// information for all locations, use "-" for the `{location}` value.
+  /// locations map to Google Cloud regions, for example **us-west1**. To
+  /// retrieve backup information for all locations, use "-" for the
+  /// `{location}` value.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - List filter.
@@ -435,7 +434,7 @@ class ProjectsLocationsInstancesResource {
   ///
   /// [parent] - Required. The instance's project and location, in the format
   /// `projects/{project_id}/locations/{location}`. In Filestore, locations map
-  /// to GCP zones, for example **us-west1-b**.
+  /// to Google Cloud zones, for example **us-west1-b**.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [instanceId] - Required. The name of the instance to create. The name must
@@ -562,9 +561,9 @@ class ProjectsLocationsInstancesResource {
   /// [parent] - Required. The project and location for which to retrieve
   /// instance information, in the format
   /// `projects/{project_id}/locations/{location}`. In Cloud Filestore,
-  /// locations map to GCP zones, for example **us-west1-b**. To retrieve
-  /// instance information for all locations, use "-" for the `{location}`
-  /// value.
+  /// locations map to Google Cloud zones, for example **us-west1-b**. To
+  /// retrieve instance information for all locations, use "-" for the
+  /// `{location}` value.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - List filter.
@@ -698,6 +697,49 @@ class ProjectsLocationsInstancesResource {
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':restore';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Revert an existing instance's file system to a specified snapshot.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required.
+  /// projects/{project_id}/locations/{location_id}/instances/{instance_id}. The
+  /// resource name of the instance, in the format
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> revert(
+    RevertInstanceRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':revert';
 
     final response_ = await _requester.request(
       url_,
@@ -1083,13 +1125,6 @@ class ProjectsLocationsOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -1163,6 +1198,11 @@ class Backup {
   /// Output only.
   core.String? downloadBytes;
 
+  /// KMS key name used for data encryption.
+  ///
+  /// Immutable.
+  core.String? kmsKey;
+
   /// Resource labels to represent user provided metadata.
   core.Map<core.String, core.String>? labels;
 
@@ -1205,6 +1245,8 @@ class Backup {
   /// performance scaling capabilities.
   /// - "ENTERPRISE" : ENTERPRISE instances offer the features and availability
   /// needed for mission-critical workloads.
+  /// - "ZONAL" : ZONAL instances offer expanded capacity and performance
+  /// scaling capabilities.
   core.String? sourceInstanceTier;
 
   /// The backup state.
@@ -1218,6 +1260,8 @@ class Backup {
   /// in the backup.
   /// - "READY" : Backup is available for use.
   /// - "DELETING" : Backup is being deleted.
+  /// - "INVALID" : Backup is not valid and cannot be used for creating new
+  /// instances or restoring existing instances.
   core.String? state;
 
   /// The size of the storage used by the backup.
@@ -1233,6 +1277,7 @@ class Backup {
     this.createTime,
     this.description,
     this.downloadBytes,
+    this.kmsKey,
     this.labels,
     this.name,
     this.satisfiesPzs,
@@ -1257,11 +1302,14 @@ class Backup {
           downloadBytes: json_.containsKey('downloadBytes')
               ? json_['downloadBytes'] as core.String
               : null,
+          kmsKey: json_.containsKey('kmsKey')
+              ? json_['kmsKey'] as core.String
+              : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -1290,6 +1338,7 @@ class Backup {
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
         if (downloadBytes != null) 'downloadBytes': downloadBytes!,
+        if (kmsKey != null) 'kmsKey': kmsKey!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
@@ -1423,6 +1472,9 @@ class Instance {
   /// share and may be unusable during this time.
   /// - "SUSPENDED" : The instance is suspended. You can get further details
   /// from the `suspension_reasons` field of the `Instance` resource.
+  /// - "SUSPENDING" : The instance is in the process of becoming suspended.
+  /// - "RESUMING" : The instance is in the process of becoming active.
+  /// - "REVERTING" : The instance is reverting to a snapshot.
   core.String? state;
 
   /// Additional information about the instance state, if available.
@@ -1451,6 +1503,8 @@ class Instance {
   /// performance scaling capabilities.
   /// - "ENTERPRISE" : ENTERPRISE instances offer the features and availability
   /// needed for mission-critical workloads.
+  /// - "ZONAL" : ZONAL instances offer expanded capacity and performance
+  /// scaling capabilities.
   core.String? tier;
 
   Instance({
@@ -1489,9 +1543,9 @@ class Instance {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -1733,7 +1787,7 @@ class ListSnapshotsResponse {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
+/// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
 /// Network configuration for the instance.
@@ -2022,6 +2076,32 @@ class RestoreInstanceRequest {
       };
 }
 
+/// RevertInstanceRequest reverts the given instance's file share to the
+/// specified snapshot.
+class RevertInstanceRequest {
+  /// The snapshot resource ID, in the format 'my-snapshot', where the specified
+  /// ID is the {snapshot_id} of the fully qualified name like
+  /// projects/{project_id}/locations/{location_id}/instances/{instance_id}/snapshots/{snapshot_id}
+  ///
+  /// Required.
+  core.String? targetSnapshotId;
+
+  RevertInstanceRequest({
+    this.targetSnapshotId,
+  });
+
+  RevertInstanceRequest.fromJson(core.Map json_)
+      : this(
+          targetSnapshotId: json_.containsKey('targetSnapshotId')
+              ? json_['targetSnapshotId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (targetSnapshotId != null) 'targetSnapshotId': targetSnapshotId!,
+      };
+}
+
 /// A Filestore snapshot.
 class Snapshot {
   /// The time when the snapshot was created.
@@ -2080,9 +2160,9 @@ class Snapshot {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,

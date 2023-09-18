@@ -24,6 +24,13 @@
     "name": "clouderrorreporting",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230720",
+    "rootUrl": "https://clouderrorreporting.googleapis.com/",
+    "servicePath": "",
+    "title": "Error Reporting API",
+    "version": "v1beta1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "projects": {
             "methods": {
@@ -212,7 +218,7 @@
                             ]
                         },
                         "report": {
-                            "description": "Report an individual error event and record the event to a log. This endpoint accepts **either** an OAuth token, **or** an [API key](https://support.google.com/cloud/answer/6158862) for authentication. To use an API key, append it to the URL as the value of a `key` parameter. For example: `POST https://clouderrorreporting.googleapis.com/v1beta1/{projectName}/events:report?key=123ABC456` **Note:** [Error Reporting] (https://cloud.google.com/error-reporting) is a global service built on Cloud Logging and doesn't analyze logs stored in regional log buckets or logs routed to other Google Cloud projects. For more information, see [Using Error Reporting with regionalized logs] (https://cloud.google.com/error-reporting/docs/regionalization).",
+                            "description": "Report an individual error event and record the event to a log. This endpoint accepts **either** an OAuth token, **or** an [API key](https://support.google.com/cloud/answer/6158862) for authentication. To use an API key, append it to the URL as the value of a `key` parameter. For example: `POST https://clouderrorreporting.googleapis.com/v1beta1/{projectName}/events:report?key=123ABC456` **Note:** [Error Reporting] (https://cloud.google.com/error-reporting) is a global service built on Cloud Logging and doesn't analyze logs stored in regional log buckets or logs routed to other Google Cloud projects.",
                             "flatPath": "v1beta1/projects/{projectsId}/events:report",
                             "httpMethod": "POST",
                             "id": "clouderrorreporting.projects.events.report",
@@ -429,8 +435,6 @@
             }
         }
     },
-    "revision": "20220907",
-    "rootUrl": "https://clouderrorreporting.googleapis.com/",
     "schemas": {
         "DeleteEventsResponse": {
             "description": "Response message for deleting error events.",
@@ -777,9 +781,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Error Reporting API",
-    "version": "v1beta1",
-    "version_module": true
+    }
 }

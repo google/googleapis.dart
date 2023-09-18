@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Pub/Sub Lite API - v1
@@ -36,7 +35,7 @@
 ///   - [TopicStatsProjectsResource]
 ///     - [TopicStatsProjectsLocationsResource]
 ///       - [TopicStatsProjectsLocationsTopicsResource]
-library pubsublite.v1;
+library pubsublite_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -45,7 +44,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -242,13 +240,6 @@ class AdminProjectsLocationsOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -1856,6 +1847,90 @@ class DeliveryConfig {
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
+/// Configuration for a Pub/Sub Lite subscription that writes messages to a
+/// destination.
+///
+/// User subscriber clients must not connect to this subscription.
+class ExportConfig {
+  /// The current state of the export, which may be different to the desired
+  /// state due to errors.
+  ///
+  /// This field is output only.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "ACTIVE" : Messages are being exported.
+  /// - "PAUSED" : Exporting messages is suspended.
+  /// - "PERMISSION_DENIED" : Messages cannot be exported due to permission
+  /// denied errors. Output only.
+  /// - "NOT_FOUND" : Messages cannot be exported due to missing resources.
+  /// Output only.
+  core.String? currentState;
+
+  /// The name of an optional Pub/Sub Lite topic to publish messages that can
+  /// not be exported to the destination.
+  ///
+  /// For example, the message can not be published to the Pub/Sub service
+  /// because it does not satisfy the constraints documented at
+  /// https://cloud.google.com/pubsub/docs/publisher. Structured like:
+  /// projects/{project_number}/locations/{location}/topics/{topic_id}. Must be
+  /// within the same project and location as the subscription. The topic may be
+  /// changed or removed.
+  ///
+  /// Optional.
+  core.String? deadLetterTopic;
+
+  /// The desired state of this export.
+  ///
+  /// Setting this to values other than `ACTIVE` and `PAUSED` will result in an
+  /// error.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "ACTIVE" : Messages are being exported.
+  /// - "PAUSED" : Exporting messages is suspended.
+  /// - "PERMISSION_DENIED" : Messages cannot be exported due to permission
+  /// denied errors. Output only.
+  /// - "NOT_FOUND" : Messages cannot be exported due to missing resources.
+  /// Output only.
+  core.String? desiredState;
+
+  /// Messages are automatically written from the Pub/Sub Lite topic associated
+  /// with this subscription to a Pub/Sub topic.
+  PubSubConfig? pubsubConfig;
+
+  ExportConfig({
+    this.currentState,
+    this.deadLetterTopic,
+    this.desiredState,
+    this.pubsubConfig,
+  });
+
+  ExportConfig.fromJson(core.Map json_)
+      : this(
+          currentState: json_.containsKey('currentState')
+              ? json_['currentState'] as core.String
+              : null,
+          deadLetterTopic: json_.containsKey('deadLetterTopic')
+              ? json_['deadLetterTopic'] as core.String
+              : null,
+          desiredState: json_.containsKey('desiredState')
+              ? json_['desiredState'] as core.String
+              : null,
+          pubsubConfig: json_.containsKey('pubsubConfig')
+              ? PubSubConfig.fromJson(
+                  json_['pubsubConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (currentState != null) 'currentState': currentState!,
+        if (deadLetterTopic != null) 'deadLetterTopic': deadLetterTopic!,
+        if (desiredState != null) 'desiredState': desiredState!,
+        if (pubsubConfig != null) 'pubsubConfig': pubsubConfig!,
+      };
+}
+
 /// The response message for Operations.ListOperations.
 class ListOperationsResponse {
   /// The standard List next-page token.
@@ -2201,6 +2276,9 @@ class PartitionConfig {
   /// times the standard partition throughput (4 MiB/s). This is also reflected
   /// in the cost of this topic; a topic with `scale` of 2 and count of 10 is
   /// charged for 20 partitions. This value must be in the range \[1,4\].
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.int? scale;
 
   PartitionConfig({
@@ -2254,6 +2332,29 @@ class PartitionCursor {
   core.Map<core.String, core.dynamic> toJson() => {
         if (cursor != null) 'cursor': cursor!,
         if (partition != null) 'partition': partition!,
+      };
+}
+
+/// Configuration for exporting to a Pub/Sub topic.
+class PubSubConfig {
+  /// The name of the Pub/Sub topic.
+  ///
+  /// Structured like: projects/{project_number}/topics/{topic_id}. The topic
+  /// may be changed.
+  core.String? topic;
+
+  PubSubConfig({
+    this.topic,
+  });
+
+  PubSubConfig.fromJson(core.Map json_)
+      : this(
+          topic:
+              json_.containsKey('topic') ? json_['topic'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (topic != null) 'topic': topic!,
       };
 }
 
@@ -2407,6 +2508,10 @@ class Subscription {
   /// The settings for this subscription's message delivery.
   DeliveryConfig? deliveryConfig;
 
+  /// If present, messages are automatically written from the Pub/Sub Lite topic
+  /// associated with this subscription to a destination.
+  ExportConfig? exportConfig;
+
   /// The name of the subscription.
   ///
   /// Structured like:
@@ -2421,6 +2526,7 @@ class Subscription {
 
   Subscription({
     this.deliveryConfig,
+    this.exportConfig,
     this.name,
     this.topic,
   });
@@ -2431,6 +2537,10 @@ class Subscription {
               ? DeliveryConfig.fromJson(json_['deliveryConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          exportConfig: json_.containsKey('exportConfig')
+              ? ExportConfig.fromJson(
+                  json_['exportConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           topic:
               json_.containsKey('topic') ? json_['topic'] as core.String : null,
@@ -2438,6 +2548,7 @@ class Subscription {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deliveryConfig != null) 'deliveryConfig': deliveryConfig!,
+        if (exportConfig != null) 'exportConfig': exportConfig!,
         if (name != null) 'name': name!,
         if (topic != null) 'topic': topic!,
       };

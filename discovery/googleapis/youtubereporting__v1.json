@@ -27,6 +27,12 @@
     "name": "youtubereporting",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230806",
+    "rootUrl": "https://youtubereporting.googleapis.com/",
+    "servicePath": "",
+    "title": "YouTube Reporting API",
+    "version": "v1",
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -104,7 +110,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "jobs": {
             "methods": {
@@ -410,8 +415,6 @@
             }
         }
     },
-    "revision": "20220913",
-    "rootUrl": "https://youtubereporting.googleapis.com/",
     "schemas": {
         "Empty": {
             "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }",
@@ -454,6 +457,7 @@
             "id": "GdataCompositeMedia",
             "properties": {
                 "blobRef": {
+                    "deprecated": true,
                     "description": "gdata",
                     "format": "byte",
                     "type": "string"
@@ -658,15 +662,18 @@
             "id": "GdataMedia",
             "properties": {
                 "algorithm": {
+                    "deprecated": true,
                     "description": "gdata",
                     "type": "string"
                 },
                 "bigstoreObjectRef": {
+                    "deprecated": true,
                     "description": "gdata",
                     "format": "byte",
                     "type": "string"
                 },
                 "blobRef": {
+                    "deprecated": true,
                     "description": "gdata",
                     "format": "byte",
                     "type": "string"
@@ -729,6 +736,7 @@
                     "type": "string"
                 },
                 "hash": {
+                    "deprecated": true,
                     "description": "gdata",
                     "type": "string"
                 },
@@ -994,8 +1002,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "YouTube Reporting API",
-    "version": "v1"
+    }
 }

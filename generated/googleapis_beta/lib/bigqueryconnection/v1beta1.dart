@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// BigQuery Connection API - v1beta1
@@ -24,7 +23,7 @@
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsConnectionsResource]
-library bigqueryconnection.v1beta1;
+library bigqueryconnection_v1beta1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -33,7 +32,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -551,7 +549,43 @@ class AuditConfig {
 /// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
 /// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
-typedef AuditLogConfig = $AuditLogConfig;
+class AuditLogConfig {
+  /// Specifies the identities that do not cause logging for this type of
+  /// permission.
+  ///
+  /// Follows the same format of Binding.members.
+  core.List<core.String>? exemptedMembers;
+
+  /// The log type that this config enables.
+  /// Possible string values are:
+  /// - "LOG_TYPE_UNSPECIFIED" : Default case. Should never be this.
+  /// - "ADMIN_READ" : Admin reads. Example: CloudIAM getIamPolicy
+  /// - "DATA_WRITE" : Data writes. Example: CloudSQL Users create
+  /// - "DATA_READ" : Data reads. Example: CloudSQL Users list
+  core.String? logType;
+
+  AuditLogConfig({
+    this.exemptedMembers,
+    this.logType,
+  });
+
+  AuditLogConfig.fromJson(core.Map json_)
+      : this(
+          exemptedMembers: json_.containsKey('exemptedMembers')
+              ? (json_['exemptedMembers'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          logType: json_.containsKey('logType')
+              ? json_['logType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
+        if (logType != null) 'logType': logType!,
+      };
+}
 
 /// Associates `members`, or principals, with a `role`.
 class Binding {
@@ -583,7 +617,9 @@ class Binding {
   /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
   /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
-  /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
+  /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
+  /// (primary) that represents all the users of that domain. For example,
+  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
   /// An email address (plus unique identifier) representing a user that has
   /// been recently deleted. For example,
   /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
@@ -599,9 +635,7 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
-  /// that represents all the users of that domain. For example, `google.com` or
-  /// `example.com`.
+  /// the role in the binding.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
@@ -853,7 +887,61 @@ typedef Empty = $Empty;
 /// functions that may be referenced within an expression are determined by the
 /// service that evaluates it. See the service documentation for additional
 /// information.
-typedef Expr = $Expr;
+class Expr {
+  /// Description of the expression.
+  ///
+  /// This is a longer text which describes the expression, e.g. when hovered
+  /// over it in a UI.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// Textual representation of an expression in Common Expression Language
+  /// syntax.
+  core.String? expression;
+
+  /// String indicating the location of the expression for error reporting, e.g.
+  /// a file name and a position in the file.
+  ///
+  /// Optional.
+  core.String? location;
+
+  /// Title for the expression, i.e. a short string describing its purpose.
+  ///
+  /// This can be used e.g. in UIs which allow to enter the expression.
+  ///
+  /// Optional.
+  core.String? title;
+
+  Expr({
+    this.description,
+    this.expression,
+    this.location,
+    this.title,
+  });
+
+  Expr.fromJson(core.Map json_)
+      : this(
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          expression: json_.containsKey('expression')
+              ? json_['expression'] as core.String
+              : null,
+          location: json_.containsKey('location')
+              ? json_['location'] as core.String
+              : null,
+          title:
+              json_.containsKey('title') ? json_['title'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (expression != null) 'expression': expression!,
+        if (location != null) 'location': location!,
+        if (title != null) 'title': title!,
+      };
+}
 
 /// Request message for `GetIamPolicy` method.
 class GetIamPolicyRequest {
@@ -879,7 +967,38 @@ class GetIamPolicyRequest {
 }
 
 /// Encapsulates settings provided to GetIamPolicy.
-typedef GetPolicyOptions = $GetPolicyOptions;
+class GetPolicyOptions {
+  /// The maximum policy version that will be used to format the policy.
+  ///
+  /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+  /// rejected. Requests for policies with any conditional role bindings must
+  /// specify version 3. Policies with no conditional role bindings may specify
+  /// any valid value or leave the field unset. The policy in the response might
+  /// use the policy version that you specified, or it might use a lower policy
+  /// version. For example, if you specify version 3, but the policy has no
+  /// conditional role bindings, the response uses version 1. To learn which
+  /// resources support conditions in their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// Optional.
+  core.int? requestedPolicyVersion;
+
+  GetPolicyOptions({
+    this.requestedPolicyVersion,
+  });
+
+  GetPolicyOptions.fromJson(core.Map json_)
+      : this(
+          requestedPolicyVersion: json_.containsKey('requestedPolicyVersion')
+              ? json_['requestedPolicyVersion'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (requestedPolicyVersion != null)
+          'requestedPolicyVersion': requestedPolicyVersion!,
+      };
+}
 
 /// The response for ConnectionService.ListConnections.
 class ListConnectionsResponse {
@@ -1072,7 +1191,52 @@ class SetIamPolicyRequest {
 }
 
 /// Request message for `TestIamPermissions` method.
-typedef TestIamPermissionsRequest = $TestIamPermissionsRequest;
+class TestIamPermissionsRequest {
+  /// The set of permissions to check for the `resource`.
+  ///
+  /// Permissions with wildcards (such as `*` or `storage.*`) are not allowed.
+  /// For more information see
+  /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
+  core.List<core.String>? permissions;
+
+  TestIamPermissionsRequest({
+    this.permissions,
+  });
+
+  TestIamPermissionsRequest.fromJson(core.Map json_)
+      : this(
+          permissions: json_.containsKey('permissions')
+              ? (json_['permissions'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
+      };
+}
 
 /// Response message for `TestIamPermissions` method.
-typedef TestIamPermissionsResponse = $TestIamPermissionsResponse;
+class TestIamPermissionsResponse {
+  /// A subset of `TestPermissionsRequest.permissions` that the caller is
+  /// allowed.
+  core.List<core.String>? permissions;
+
+  TestIamPermissionsResponse({
+    this.permissions,
+  });
+
+  TestIamPermissionsResponse.fromJson(core.Map json_)
+      : this(
+          permissions: json_.containsKey('permissions')
+              ? (json_['permissions'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
+      };
+}

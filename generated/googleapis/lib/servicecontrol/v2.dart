@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Service Control API - v2
@@ -22,7 +21,7 @@
 /// Create an instance of [ServiceControlApi] to access these resources:
 ///
 /// - [ServicesResource]
-library servicecontrol.v2;
+library servicecontrol_v2;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -31,7 +30,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -529,9 +527,9 @@ class CheckResponse {
       : this(
           headers: json_.containsKey('headers')
               ? (json_['headers'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -565,8 +563,8 @@ class Peer {
   /// The identity of this peer.
   ///
   /// Similar to `Request.auth.principal`, but relative to the peer instead of
-  /// the request. For example, the idenity associated with a load balancer that
-  /// forwared the request.
+  /// the request. For example, the identity associated with a load balancer
+  /// that forwarded the request.
   core.String? principal;
 
   /// The CLDR country/region code associated with the above IP address.
@@ -588,9 +586,9 @@ class Peer {
           ip: json_.containsKey('ip') ? json_['ip'] as core.String : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -745,9 +743,9 @@ class Request {
               : null,
           headers: json_.containsKey('headers')
               ? (json_['headers'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -797,7 +795,8 @@ class Resource {
   /// may be set by external tools to store and retrieve arbitrary metadata.
   ///
   /// They are not queryable and should be preserved when modifying objects.
-  /// More info: https://kubernetes.io/docs/user-guide/annotations
+  /// More info:
+  /// https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
   core.Map<core.String, core.String>? annotations;
 
   /// The timestamp when the resource was created.
@@ -908,9 +907,9 @@ class Resource {
           annotations: json_.containsKey('annotations')
               ? (json_['annotations'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -926,9 +925,9 @@ class Resource {
           etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -1072,9 +1071,9 @@ class Response {
           code: json_.containsKey('code') ? json_['code'] as core.String : null,
           headers: json_.containsKey('headers')
               ? (json_['headers'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,

@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// People API - v1
@@ -25,7 +24,7 @@
 /// - [OtherContactsResource]
 /// - [PeopleResource]
 ///   - [PeopleConnectionsResource]
-library people.v1;
+library people_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -34,7 +33,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -1344,8 +1342,7 @@ class PeopleResource {
   /// Request parameters:
   ///
   /// [resourceName] - The resource name for the person, assigned by the server.
-  /// An ASCII string with a max length of 27 characters, in the form of
-  /// `people/{person_id}`.
+  /// An ASCII string in the form of `people/{person_id}`.
   /// Value must have pattern `^people/\[^/\]+$`.
   ///
   /// [personFields] - Optional. A field mask to restrict which fields on each
@@ -1926,10 +1923,10 @@ class BatchUpdateContactsRequest {
       : this(
           contacts: json_.containsKey('contacts')
               ? (json_['contacts'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     Person.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -1972,10 +1969,10 @@ class BatchUpdateContactsResponse {
           updateResult: json_.containsKey('updateResult')
               ? (json_['updateResult'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     PersonResponse.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -2043,6 +2040,9 @@ class Birthday {
   ///
   /// A free-form string representing the user's birthday. This value is not
   /// validated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? text;
 
   Birthday({
@@ -2311,6 +2311,9 @@ class ContactGroupMembership {
   /// The contact group ID for the contact group membership.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? contactGroupId;
 
   /// The resource name for the contact group, assigned by the server.
@@ -3121,6 +3124,9 @@ class ListConnectionsResponse {
 
   /// **DEPRECATED** (Please use totalItems) The total number of people in the
   /// list without pagination.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.int? totalPeople;
 
   ListConnectionsResponse({
@@ -4007,6 +4013,9 @@ class Person {
   /// - "LESS_THAN_EIGHTEEN" : Younger than eighteen.
   /// - "EIGHTEEN_TO_TWENTY" : Between eighteen and twenty.
   /// - "TWENTY_ONE_OR_OLDER" : Twenty-one and older.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? ageRange;
 
   /// The person's age ranges.
@@ -4025,6 +4034,9 @@ class Person {
   core.List<Birthday>? birthdays;
 
   /// **DEPRECATED**: No data will be returned The person's bragging rights.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<BraggingRights>? braggingRights;
 
   /// The person's calendar URLs.
@@ -4121,22 +4133,30 @@ class Person {
   /// interests.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<RelationshipInterest>? relationshipInterests;
 
   /// **DEPRECATED**: No data will be returned The person's relationship
   /// statuses.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<RelationshipStatus>? relationshipStatuses;
 
   /// **DEPRECATED**: (Please use `person.locations` instead) The person's
   /// residences.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<Residence>? residences;
 
   /// The resource name for the person, assigned by the server.
   ///
-  /// An ASCII string with a max length of 27 characters, in the form of
-  /// `people/{person_id}`.
+  /// An ASCII string in the form of `people/{person_id}`.
   core.String? resourceName;
 
   /// The person's SIP addresses.
@@ -4148,6 +4168,9 @@ class Person {
   /// **DEPRECATED**: No data will be returned The person's taglines.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<Tagline>? taglines;
 
   /// The person's associated URLs.
@@ -4485,6 +4508,9 @@ class PersonMetadata {
   /// - "PERSON" : Person.
   /// - "PAGE" :
   /// [Currents Page.](https://workspace.google.com/products/currents/)
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? objectType;
 
   /// Any former resource names this person has had.
@@ -4550,6 +4576,9 @@ class PersonMetadata {
 class PersonResponse {
   /// **DEPRECATED** (Please use status instead)
   /// [HTTP 1.1 status code](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.int? httpStatusCode;
 
   /// The person.

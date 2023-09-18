@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud Talent Solution API - v4
@@ -28,7 +27,7 @@
 ///     - [ProjectsTenantsClientEventsResource]
 ///     - [ProjectsTenantsCompaniesResource]
 ///     - [ProjectsTenantsJobsResource]
-library jobs.v4;
+library jobs_v4;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -37,7 +36,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -1614,13 +1612,15 @@ class Company {
   /// A URI that hosts the employer's company logo.
   core.String? imageUri;
 
-  /// A list of keys of filterable Job.custom_attributes, whose corresponding
-  /// `string_values` are used in keyword searches.
+  /// This field is deprecated.
   ///
-  /// Jobs with `string_values` under these specified field keys are returned if
-  /// any of the values match the search keyword. Custom field values with
-  /// parenthesis, brackets and special symbols are not searchable as-is, and
-  /// those keyword queries must be surrounded by quotes.
+  /// Please set the searchability of the custom attribute in the
+  /// Job.custom_attributes going forward. A list of keys of filterable
+  /// Job.custom_attributes, whose corresponding `string_values` are used in
+  /// keyword searches. Jobs with `string_values` under these specified field
+  /// keys are returned if any of the values match the search keyword. Custom
+  /// field values with parenthesis, brackets and special symbols are not
+  /// searchable as-is, and those keyword queries must be surrounded by quotes.
   core.List<core.String>? keywordSearchableJobCustomAttributes;
 
   /// Required during company update.
@@ -2356,9 +2356,9 @@ class HistogramQueryResult {
       : this(
           histogram: json_.containsKey('histogram')
               ? (json_['histogram'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -2716,10 +2716,10 @@ class Job {
               ? (json_['customAttributes']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     CustomAttribute.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -3856,6 +3856,9 @@ class SearchJobsRequest {
   /// - "TWO_PER_COMPANY" : Similar to ONE_PER_COMPANY, but it allows at most
   /// two jobs in the same company to be shown at once, the other jobs under
   /// same company are pushed to the end of the last page of search result.
+  /// - "MAX_THREE_PER_COMPANY" : Similar to ONE_PER_COMPANY, but it allows at
+  /// most three jobs in the same company to be shown at once, the other jobs
+  /// under same company are dropped.
   /// - "DIVERSIFY_BY_LOOSER_SIMILARITY" : The result list is ordered such that
   /// somewhat similar results are pushed to the end of the last page of the
   /// search results. This option is recommended if SIMPLE diversification does
@@ -3888,11 +3891,11 @@ class SearchJobsRequest {
   /// or bucket(1, 10). Job histogram facets: * company_display_name: histogram
   /// by \[Job.company_display_name. * employment_type: histogram by
   /// Job.employment_types, for example, "FULL_TIME", "PART_TIME". *
-  /// company_size: histogram by CompanySize, for example, "SMALL", "MEDIUM",
-  /// "BIG". * publish_time_in_day: histogram by the Job.posting_publish_time in
-  /// days. Must specify list of numeric buckets in spec. *
-  /// publish_time_in_month: histogram by the Job.posting_publish_time in
-  /// months. Must specify list of numeric buckets in spec. *
+  /// company_size (DEPRECATED): histogram by CompanySize, for example, "SMALL",
+  /// "MEDIUM", "BIG". * publish_time_in_day: histogram by the
+  /// Job.posting_publish_time in days. Must specify list of numeric buckets in
+  /// spec. * publish_time_in_month: histogram by the Job.posting_publish_time
+  /// in months. Must specify list of numeric buckets in spec. *
   /// publish_time_in_year: histogram by the Job.posting_publish_time in years.
   /// Must specify list of numeric buckets in spec. * degree_types: histogram by
   /// the Job.degree_types, for example, "Bachelors", "Masters". * job_level:

@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Drive Labels API - v2
@@ -21,15 +20,22 @@
 /// Create an instance of [DriveLabelsApi] to access these resources:
 ///
 /// - [LabelsResource]
-library drivelabels.v2;
+///   - [LabelsLocksResource]
+///   - [LabelsPermissionsResource]
+///   - [LabelsRevisionsResource]
+///     - [LabelsRevisionsLocksResource]
+///     - [LabelsRevisionsPermissionsResource]
+/// - [LimitsResource]
+/// - [UsersResource]
+library drivelabels_v2;
 
 import 'dart:async' as async;
+import 'dart:convert' as convert;
 import 'dart:core' as core;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -38,9 +44,29 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 /// An API for managing Drive Labels
 class DriveLabelsApi {
+  /// See, edit, create, and delete all Google Drive labels in your
+  /// organization, and see your organization's label-related admin policies
+  static const driveAdminLabelsScope =
+      'https://www.googleapis.com/auth/drive.admin.labels';
+
+  /// See all Google Drive labels and label-related admin policies in your
+  /// organization
+  static const driveAdminLabelsReadonlyScope =
+      'https://www.googleapis.com/auth/drive.admin.labels.readonly';
+
+  /// See, edit, create, and delete your Google Drive labels
+  static const driveLabelsScope =
+      'https://www.googleapis.com/auth/drive.labels';
+
+  /// See your Google Drive labels
+  static const driveLabelsReadonlyScope =
+      'https://www.googleapis.com/auth/drive.labels.readonly';
+
   final commons.ApiRequester _requester;
 
   LabelsResource get labels => LabelsResource(_requester);
+  LimitsResource get limits => LimitsResource(_requester);
+  UsersResource get users => UsersResource(_requester);
 
   DriveLabelsApi(http.Client client,
       {core.String rootUrl = 'https://drivelabels.googleapis.com/',
@@ -52,7 +78,252 @@ class DriveLabelsApi {
 class LabelsResource {
   final commons.ApiRequester _requester;
 
+  LabelsLocksResource get locks => LabelsLocksResource(_requester);
+  LabelsPermissionsResource get permissions =>
+      LabelsPermissionsResource(_requester);
+  LabelsRevisionsResource get revisions => LabelsRevisionsResource(_requester);
+
   LabelsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Creates a new Label.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [languageCode] - The BCP-47 language code to use for evaluating localized
+  /// Field labels in response. When not specified, values in the default
+  /// configured language will be used.
+  ///
+  /// [useAdminAccess] - Set to `true` in order to use the user's admin
+  /// privileges. The server will verify the user is an admin before allowing
+  /// access.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAppsDriveLabelsV2Label].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAppsDriveLabelsV2Label> create(
+    GoogleAppsDriveLabelsV2Label request, {
+    core.String? languageCode,
+    core.bool? useAdminAccess,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (languageCode != null) 'languageCode': [languageCode],
+      if (useAdminAccess != null) 'useAdminAccess': ['${useAdminAccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'v2/labels';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleAppsDriveLabelsV2Label.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Permanently deletes a Label and related metadata on Drive Items.
+  ///
+  /// Once deleted, the Label and related Drive item metadata will be deleted.
+  /// Only draft Labels, and disabled Labels may be deleted.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Label resource name.
+  /// Value must have pattern `^labels/\[^/\]+$`.
+  ///
+  /// [useAdminAccess] - Set to `true` in order to use the user's admin
+  /// credentials. The server will verify the user is an admin for the Label
+  /// before allowing access.
+  ///
+  /// [writeControl_requiredRevisionId] - The revision_id of the label that the
+  /// write request will be applied to. If this is not the latest revision of
+  /// the label, the request will not be processed and will return a 400 Bad
+  /// Request error.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.bool? useAdminAccess,
+    core.String? writeControl_requiredRevisionId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (useAdminAccess != null) 'useAdminAccess': ['${useAdminAccess}'],
+      if (writeControl_requiredRevisionId != null)
+        'writeControl.requiredRevisionId': [writeControl_requiredRevisionId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a single Label by applying a set of update requests resulting in a
+  /// new draft revision.
+  ///
+  /// The batch update is all-or-nothing: If any of the update requests are
+  /// invalid, no changes are applied. The resulting draft revision must be
+  /// published before the changes may be used with Drive Items.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the Label to update.
+  /// Value must have pattern `^labels/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAppsDriveLabelsV2DeltaUpdateLabelResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAppsDriveLabelsV2DeltaUpdateLabelResponse> delta(
+    GoogleAppsDriveLabelsV2DeltaUpdateLabelRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':delta';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleAppsDriveLabelsV2DeltaUpdateLabelResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Disable a published Label.
+  ///
+  /// Disabling a Label will result in a new disabled published revision based
+  /// on the current published revision. If there is a draft revision, a new
+  /// disabled draft revision will be created based on the latest draft
+  /// revision. Older draft revisions will be deleted. Once disabled, a label
+  /// may be deleted with `DeleteLabel`.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Label resource name.
+  /// Value must have pattern `^labels/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAppsDriveLabelsV2Label].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAppsDriveLabelsV2Label> disable(
+    GoogleAppsDriveLabelsV2DisableLabelRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':disable';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleAppsDriveLabelsV2Label.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Enable a disabled Label and restore it to its published state.
+  ///
+  /// This will result in a new published revision based on the current disabled
+  /// published revision. If there is an existing disabled draft revision, a new
+  /// revision will be created based on that draft and will be enabled.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Label resource name.
+  /// Value must have pattern `^labels/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAppsDriveLabelsV2Label].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAppsDriveLabelsV2Label> enable(
+    GoogleAppsDriveLabelsV2EnableLabelRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':enable';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleAppsDriveLabelsV2Label.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 
   /// Get a label by its resource name.
   ///
@@ -123,6 +394,10 @@ class LabelsResource {
   ///
   /// Request parameters:
   ///
+  /// [customer] - The customer to scope this list request to. For example:
+  /// "customers/abcd1234". If unset, will return all labels within the current
+  /// customer.
+  ///
   /// [languageCode] - The BCP-47 language code to use for evaluating localized
   /// field labels. When not specified, values in the default configured
   /// language are used.
@@ -175,6 +450,7 @@ class LabelsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleAppsDriveLabelsV2ListLabelsResponse> list({
+    core.String? customer,
     core.String? languageCode,
     core.String? minimumRole,
     core.int? pageSize,
@@ -185,6 +461,7 @@ class LabelsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (customer != null) 'customer': [customer],
       if (languageCode != null) 'languageCode': [languageCode],
       if (minimumRole != null) 'minimumRole': [minimumRole],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
@@ -203,6 +480,930 @@ class LabelsResource {
       queryParams: queryParams_,
     );
     return GoogleAppsDriveLabelsV2ListLabelsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Publish all draft changes to the Label.
+  ///
+  /// Once published, the Label may not return to its draft state. See
+  /// `google.apps.drive.labels.v2.Lifecycle` for more information. Publishing a
+  /// Label will result in a new published revision. All previous draft
+  /// revisions will be deleted. Previous published revisions will be kept but
+  /// are subject to automated deletion as needed. Once published, some changes
+  /// are no longer permitted. Generally, any change that would invalidate or
+  /// cause new restrictions on existing metadata related to the Label will be
+  /// rejected. For example, the following changes to a Label will be rejected
+  /// after the Label is published: * The label cannot be directly deleted. It
+  /// must be disabled first, then deleted. * Field.FieldType cannot be changed.
+  /// * Changes to Field validation options cannot reject something that was
+  /// previously accepted. * Reducing the max entries.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Label resource name.
+  /// Value must have pattern `^labels/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAppsDriveLabelsV2Label].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAppsDriveLabelsV2Label> publish(
+    GoogleAppsDriveLabelsV2PublishLabelRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':publish';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleAppsDriveLabelsV2Label.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a Label's `CopyMode`.
+  ///
+  /// Changes to this policy are not revisioned, do not require publishing, and
+  /// take effect immediately.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the Label to update.
+  /// Value must have pattern `^labels/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAppsDriveLabelsV2Label].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAppsDriveLabelsV2Label> updateLabelCopyMode(
+    GoogleAppsDriveLabelsV2UpdateLabelCopyModeRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':updateLabelCopyMode';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleAppsDriveLabelsV2Label.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a Label's permissions.
+  ///
+  /// If a permission for the indicated principal doesn't exist, a new Label
+  /// Permission is created, otherwise the existing permission is updated.
+  /// Permissions affect the Label resource as a whole, are not revisioned, and
+  /// do not require publishing.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent Label resource name.
+  /// Value must have pattern `^labels/\[^/\]+$`.
+  ///
+  /// [useAdminAccess] - Set to `true` in order to use the user's admin
+  /// credentials. The server will verify the user is an admin for the Label
+  /// before allowing access.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAppsDriveLabelsV2LabelPermission].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAppsDriveLabelsV2LabelPermission> updatePermissions(
+    GoogleAppsDriveLabelsV2LabelPermission request,
+    core.String parent, {
+    core.bool? useAdminAccess,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (useAdminAccess != null) 'useAdminAccess': ['${useAdminAccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/permissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleAppsDriveLabelsV2LabelPermission.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class LabelsLocksResource {
+  final commons.ApiRequester _requester;
+
+  LabelsLocksResource(commons.ApiRequester client) : _requester = client;
+
+  /// Lists the LabelLocks on a Label.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Label on which Locks are applied. Format:
+  /// labels/{label}
+  /// Value must have pattern `^labels/\[^/\]+$`.
+  ///
+  /// [pageSize] - Maximum number of Locks to return per page. Default: 100.
+  /// Max: 200.
+  ///
+  /// [pageToken] - The token of the page to return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAppsDriveLabelsV2ListLabelLocksResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAppsDriveLabelsV2ListLabelLocksResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/locks';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleAppsDriveLabelsV2ListLabelLocksResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class LabelsPermissionsResource {
+  final commons.ApiRequester _requester;
+
+  LabelsPermissionsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Deletes Label permissions.
+  ///
+  /// Permissions affect the Label resource as a whole, are not revisioned, and
+  /// do not require publishing.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent Label resource name shared by all
+  /// permissions being deleted. Format: labels/{label} If this is set, the
+  /// parent field in the UpdateLabelPermissionRequest messages must either be
+  /// empty or match this field.
+  /// Value must have pattern `^labels/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> batchDelete(
+    GoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v2/' + core.Uri.encodeFull('$parent') + '/permissions:batchDelete';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates Label permissions.
+  ///
+  /// If a permission for the indicated principal doesn't exist, a new Label
+  /// Permission is created, otherwise the existing permission is updated.
+  /// Permissions affect the Label resource as a whole, are not revisioned, and
+  /// do not require publishing.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent Label resource name shared by all
+  /// permissions being updated. Format: labels/{label} If this is set, the
+  /// parent field in the UpdateLabelPermissionRequest messages must either be
+  /// empty or match this field.
+  /// Value must have pattern `^labels/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse>
+      batchUpdate(
+    GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v2/' + core.Uri.encodeFull('$parent') + '/permissions:batchUpdate';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a Label's permissions.
+  ///
+  /// If a permission for the indicated principal doesn't exist, a new Label
+  /// Permission is created, otherwise the existing permission is updated.
+  /// Permissions affect the Label resource as a whole, are not revisioned, and
+  /// do not require publishing.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent Label resource name on the Label
+  /// Permission is created. Format: labels/{label}
+  /// Value must have pattern `^labels/\[^/\]+$`.
+  ///
+  /// [useAdminAccess] - Set to `true` in order to use the user's admin
+  /// credentials. The server will verify the user is an admin for the Label
+  /// before allowing access.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAppsDriveLabelsV2LabelPermission].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAppsDriveLabelsV2LabelPermission> create(
+    GoogleAppsDriveLabelsV2LabelPermission request,
+    core.String parent, {
+    core.bool? useAdminAccess,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (useAdminAccess != null) 'useAdminAccess': ['${useAdminAccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/permissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleAppsDriveLabelsV2LabelPermission.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a Label's permission.
+  ///
+  /// Permissions affect the Label resource as a whole, are not revisioned, and
+  /// do not require publishing.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Label Permission resource name.
+  /// Value must have pattern `^labels/\[^/\]+/permissions/\[^/\]+$`.
+  ///
+  /// [useAdminAccess] - Set to `true` in order to use the user's admin
+  /// credentials. The server will verify the user is an admin for the Label
+  /// before allowing access.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.bool? useAdminAccess,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (useAdminAccess != null) 'useAdminAccess': ['${useAdminAccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists a Label's permissions.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent Label resource name on which Label
+  /// Permission are listed. Format: labels/{label}
+  /// Value must have pattern `^labels/\[^/\]+$`.
+  ///
+  /// [pageSize] - Maximum number of permissions to return per page. Default:
+  /// 50. Max: 200.
+  ///
+  /// [pageToken] - The token of the page to return.
+  ///
+  /// [useAdminAccess] - Set to `true` in order to use the user's admin
+  /// credentials. The server will verify the user is an admin for the Label
+  /// before allowing access.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAppsDriveLabelsV2ListLabelPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAppsDriveLabelsV2ListLabelPermissionsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.bool? useAdminAccess,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (useAdminAccess != null) 'useAdminAccess': ['${useAdminAccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/permissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleAppsDriveLabelsV2ListLabelPermissionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class LabelsRevisionsResource {
+  final commons.ApiRequester _requester;
+
+  LabelsRevisionsLocksResource get locks =>
+      LabelsRevisionsLocksResource(_requester);
+  LabelsRevisionsPermissionsResource get permissions =>
+      LabelsRevisionsPermissionsResource(_requester);
+
+  LabelsRevisionsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Updates a Label's permissions.
+  ///
+  /// If a permission for the indicated principal doesn't exist, a new Label
+  /// Permission is created, otherwise the existing permission is updated.
+  /// Permissions affect the Label resource as a whole, are not revisioned, and
+  /// do not require publishing.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent Label resource name.
+  /// Value must have pattern `^labels/\[^/\]+/revisions/\[^/\]+$`.
+  ///
+  /// [useAdminAccess] - Set to `true` in order to use the user's admin
+  /// credentials. The server will verify the user is an admin for the Label
+  /// before allowing access.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAppsDriveLabelsV2LabelPermission].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAppsDriveLabelsV2LabelPermission> updatePermissions(
+    GoogleAppsDriveLabelsV2LabelPermission request,
+    core.String parent, {
+    core.bool? useAdminAccess,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (useAdminAccess != null) 'useAdminAccess': ['${useAdminAccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/permissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleAppsDriveLabelsV2LabelPermission.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class LabelsRevisionsLocksResource {
+  final commons.ApiRequester _requester;
+
+  LabelsRevisionsLocksResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists the LabelLocks on a Label.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Label on which Locks are applied. Format:
+  /// labels/{label}
+  /// Value must have pattern `^labels/\[^/\]+/revisions/\[^/\]+$`.
+  ///
+  /// [pageSize] - Maximum number of Locks to return per page. Default: 100.
+  /// Max: 200.
+  ///
+  /// [pageToken] - The token of the page to return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAppsDriveLabelsV2ListLabelLocksResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAppsDriveLabelsV2ListLabelLocksResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/locks';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleAppsDriveLabelsV2ListLabelLocksResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class LabelsRevisionsPermissionsResource {
+  final commons.ApiRequester _requester;
+
+  LabelsRevisionsPermissionsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Deletes Label permissions.
+  ///
+  /// Permissions affect the Label resource as a whole, are not revisioned, and
+  /// do not require publishing.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent Label resource name shared by all
+  /// permissions being deleted. Format: labels/{label} If this is set, the
+  /// parent field in the UpdateLabelPermissionRequest messages must either be
+  /// empty or match this field.
+  /// Value must have pattern `^labels/\[^/\]+/revisions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> batchDelete(
+    GoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v2/' + core.Uri.encodeFull('$parent') + '/permissions:batchDelete';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates Label permissions.
+  ///
+  /// If a permission for the indicated principal doesn't exist, a new Label
+  /// Permission is created, otherwise the existing permission is updated.
+  /// Permissions affect the Label resource as a whole, are not revisioned, and
+  /// do not require publishing.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent Label resource name shared by all
+  /// permissions being updated. Format: labels/{label} If this is set, the
+  /// parent field in the UpdateLabelPermissionRequest messages must either be
+  /// empty or match this field.
+  /// Value must have pattern `^labels/\[^/\]+/revisions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse>
+      batchUpdate(
+    GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v2/' + core.Uri.encodeFull('$parent') + '/permissions:batchUpdate';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a Label's permissions.
+  ///
+  /// If a permission for the indicated principal doesn't exist, a new Label
+  /// Permission is created, otherwise the existing permission is updated.
+  /// Permissions affect the Label resource as a whole, are not revisioned, and
+  /// do not require publishing.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent Label resource name on the Label
+  /// Permission is created. Format: labels/{label}
+  /// Value must have pattern `^labels/\[^/\]+/revisions/\[^/\]+$`.
+  ///
+  /// [useAdminAccess] - Set to `true` in order to use the user's admin
+  /// credentials. The server will verify the user is an admin for the Label
+  /// before allowing access.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAppsDriveLabelsV2LabelPermission].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAppsDriveLabelsV2LabelPermission> create(
+    GoogleAppsDriveLabelsV2LabelPermission request,
+    core.String parent, {
+    core.bool? useAdminAccess,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (useAdminAccess != null) 'useAdminAccess': ['${useAdminAccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/permissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleAppsDriveLabelsV2LabelPermission.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a Label's permission.
+  ///
+  /// Permissions affect the Label resource as a whole, are not revisioned, and
+  /// do not require publishing.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Label Permission resource name.
+  /// Value must have pattern
+  /// `^labels/\[^/\]+/revisions/\[^/\]+/permissions/\[^/\]+$`.
+  ///
+  /// [useAdminAccess] - Set to `true` in order to use the user's admin
+  /// credentials. The server will verify the user is an admin for the Label
+  /// before allowing access.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.bool? useAdminAccess,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (useAdminAccess != null) 'useAdminAccess': ['${useAdminAccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists a Label's permissions.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent Label resource name on which Label
+  /// Permission are listed. Format: labels/{label}
+  /// Value must have pattern `^labels/\[^/\]+/revisions/\[^/\]+$`.
+  ///
+  /// [pageSize] - Maximum number of permissions to return per page. Default:
+  /// 50. Max: 200.
+  ///
+  /// [pageToken] - The token of the page to return.
+  ///
+  /// [useAdminAccess] - Set to `true` in order to use the user's admin
+  /// credentials. The server will verify the user is an admin for the Label
+  /// before allowing access.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAppsDriveLabelsV2ListLabelPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAppsDriveLabelsV2ListLabelPermissionsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.bool? useAdminAccess,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (useAdminAccess != null) 'useAdminAccess': ['${useAdminAccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/permissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleAppsDriveLabelsV2ListLabelPermissionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class LimitsResource {
+  final commons.ApiRequester _requester;
+
+  LimitsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Get the constraints on the structure of a Label; such as, the maximum
+  /// number of Fields allowed and maximum length of the label title.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Label revision resource name Must be: "limits/label"
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAppsDriveLabelsV2LabelLimits].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAppsDriveLabelsV2LabelLimits> getLabel({
+    core.String? name,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (name != null) 'name': [name],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'v2/limits/label';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleAppsDriveLabelsV2LabelLimits.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class UsersResource {
+  final commons.ApiRequester _requester;
+
+  UsersResource(commons.ApiRequester client) : _requester = client;
+
+  /// Gets the user capabilities.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the user. Only
+  /// "users/me/capabilities" is supported.
+  /// Value must have pattern `^users/\[^/\]+/capabilities$`.
+  ///
+  /// [customer] - The customer to scope this request to. For example:
+  /// "customers/abcd1234". If unset, will return settings within the current
+  /// customer.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAppsDriveLabelsV2UserCapabilities].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAppsDriveLabelsV2UserCapabilities> getCapabilities(
+    core.String name, {
+    core.String? customer,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (customer != null) 'customer': [customer],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleAppsDriveLabelsV2UserCapabilities.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -287,6 +1488,1353 @@ class GoogleAppsDriveLabelsV2BadgeConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (color != null) 'color': color!,
         if (priorityOverride != null) 'priorityOverride': priorityOverride!,
+      };
+}
+
+/// Deletes one of more Label Permissions.
+class GoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest {
+  /// The request message specifying the resources to update.
+  ///
+  /// Required.
+  core.List<GoogleAppsDriveLabelsV2DeleteLabelPermissionRequest>? requests;
+
+  /// Set to `true` in order to use the user's admin credentials.
+  ///
+  /// The server will verify the user is an admin for the Label before allowing
+  /// access. If this is set, the use_admin_access field in the
+  /// DeleteLabelPermissionRequest messages must either be empty or match this
+  /// field.
+  core.bool? useAdminAccess;
+
+  GoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest({
+    this.requests,
+    this.useAdminAccess,
+  });
+
+  GoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest.fromJson(
+      core.Map json_)
+      : this(
+          requests: json_.containsKey('requests')
+              ? (json_['requests'] as core.List)
+                  .map((value) =>
+                      GoogleAppsDriveLabelsV2DeleteLabelPermissionRequest
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          useAdminAccess: json_.containsKey('useAdminAccess')
+              ? json_['useAdminAccess'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (requests != null) 'requests': requests!,
+        if (useAdminAccess != null) 'useAdminAccess': useAdminAccess!,
+      };
+}
+
+/// Updates one or more Label Permissions.
+class GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest {
+  /// The request message specifying the resources to update.
+  ///
+  /// Required.
+  core.List<GoogleAppsDriveLabelsV2UpdateLabelPermissionRequest>? requests;
+
+  /// Set to `true` in order to use the user's admin credentials.
+  ///
+  /// The server will verify the user is an admin for the Label before allowing
+  /// access. If this is set, the use_admin_access field in the
+  /// UpdateLabelPermissionRequest messages must either be empty or match this
+  /// field.
+  core.bool? useAdminAccess;
+
+  GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest({
+    this.requests,
+    this.useAdminAccess,
+  });
+
+  GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest.fromJson(
+      core.Map json_)
+      : this(
+          requests: json_.containsKey('requests')
+              ? (json_['requests'] as core.List)
+                  .map((value) =>
+                      GoogleAppsDriveLabelsV2UpdateLabelPermissionRequest
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          useAdminAccess: json_.containsKey('useAdminAccess')
+              ? json_['useAdminAccess'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (requests != null) 'requests': requests!,
+        if (useAdminAccess != null) 'useAdminAccess': useAdminAccess!,
+      };
+}
+
+/// Response for updating one or more Label Permissions.
+class GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse {
+  /// Permissions updated.
+  ///
+  /// Required.
+  core.List<GoogleAppsDriveLabelsV2LabelPermission>? permissions;
+
+  GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse({
+    this.permissions,
+  });
+
+  GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse.fromJson(
+      core.Map json_)
+      : this(
+          permissions: json_.containsKey('permissions')
+              ? (json_['permissions'] as core.List)
+                  .map((value) =>
+                      GoogleAppsDriveLabelsV2LabelPermission.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (permissions != null) 'permissions': permissions!,
+      };
+}
+
+/// Limits for date Field type.
+class GoogleAppsDriveLabelsV2DateLimits {
+  /// Maximum value for the date Field type.
+  GoogleTypeDate? maxValue;
+
+  /// Minimum value for the date Field type.
+  GoogleTypeDate? minValue;
+
+  GoogleAppsDriveLabelsV2DateLimits({
+    this.maxValue,
+    this.minValue,
+  });
+
+  GoogleAppsDriveLabelsV2DateLimits.fromJson(core.Map json_)
+      : this(
+          maxValue: json_.containsKey('maxValue')
+              ? GoogleTypeDate.fromJson(
+                  json_['maxValue'] as core.Map<core.String, core.dynamic>)
+              : null,
+          minValue: json_.containsKey('minValue')
+              ? GoogleTypeDate.fromJson(
+                  json_['minValue'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (maxValue != null) 'maxValue': maxValue!,
+        if (minValue != null) 'minValue': minValue!,
+      };
+}
+
+/// Deletes a Label Permission.
+///
+/// Permissions affect the Label resource as a whole, are not revisioned, and do
+/// not require publishing.
+class GoogleAppsDriveLabelsV2DeleteLabelPermissionRequest {
+  /// Label Permission resource name.
+  ///
+  /// Required.
+  core.String? name;
+
+  /// Set to `true` in order to use the user's admin credentials.
+  ///
+  /// The server will verify the user is an admin for the Label before allowing
+  /// access.
+  core.bool? useAdminAccess;
+
+  GoogleAppsDriveLabelsV2DeleteLabelPermissionRequest({
+    this.name,
+    this.useAdminAccess,
+  });
+
+  GoogleAppsDriveLabelsV2DeleteLabelPermissionRequest.fromJson(core.Map json_)
+      : this(
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          useAdminAccess: json_.containsKey('useAdminAccess')
+              ? json_['useAdminAccess'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (useAdminAccess != null) 'useAdminAccess': useAdminAccess!,
+      };
+}
+
+/// The set of requests for updating aspects of a Label.
+///
+/// If any request is not valid, no requests will be applied.
+class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequest {
+  /// The BCP-47 language code to use for evaluating localized Field labels when
+  /// `include_label_in_response` is `true`.
+  core.String? languageCode;
+
+  /// A list of updates to apply to the Label.
+  ///
+  /// Requests will be applied in the order they are specified.
+  core.List<GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestRequest>? requests;
+
+  /// Set to `true` in order to use the user's admin credentials.
+  ///
+  /// The server will verify the user is an admin for the Label before allowing
+  /// access.
+  core.bool? useAdminAccess;
+
+  /// When specified, only certain fields belonging to the indicated view will
+  /// be returned.
+  /// Possible string values are:
+  /// - "LABEL_VIEW_BASIC" : Implies the field mask:
+  /// `name,id,revision_id,label_type,properties.*`
+  /// - "LABEL_VIEW_FULL" : All possible fields.
+  core.String? view;
+
+  /// Provides control over how write requests are executed.
+  GoogleAppsDriveLabelsV2WriteControl? writeControl;
+
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelRequest({
+    this.languageCode,
+    this.requests,
+    this.useAdminAccess,
+    this.view,
+    this.writeControl,
+  });
+
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelRequest.fromJson(core.Map json_)
+      : this(
+          languageCode: json_.containsKey('languageCode')
+              ? json_['languageCode'] as core.String
+              : null,
+          requests: json_.containsKey('requests')
+              ? (json_['requests'] as core.List)
+                  .map((value) =>
+                      GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestRequest
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          useAdminAccess: json_.containsKey('useAdminAccess')
+              ? json_['useAdminAccess'] as core.bool
+              : null,
+          view: json_.containsKey('view') ? json_['view'] as core.String : null,
+          writeControl: json_.containsKey('writeControl')
+              ? GoogleAppsDriveLabelsV2WriteControl.fromJson(
+                  json_['writeControl'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (languageCode != null) 'languageCode': languageCode!,
+        if (requests != null) 'requests': requests!,
+        if (useAdminAccess != null) 'useAdminAccess': useAdminAccess!,
+        if (view != null) 'view': view!,
+        if (writeControl != null) 'writeControl': writeControl!,
+      };
+}
+
+/// Request to create a Field within a Label.
+class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateFieldRequest {
+  /// Field to create.
+  ///
+  /// Required.
+  GoogleAppsDriveLabelsV2Field? field;
+
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateFieldRequest({
+    this.field,
+  });
+
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateFieldRequest.fromJson(
+      core.Map json_)
+      : this(
+          field: json_.containsKey('field')
+              ? GoogleAppsDriveLabelsV2Field.fromJson(
+                  json_['field'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (field != null) 'field': field!,
+      };
+}
+
+/// Request to create a Selection Choice.
+class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateSelectionChoiceRequest {
+  /// The Choice to create.
+  ///
+  /// Required.
+  GoogleAppsDriveLabelsV2FieldSelectionOptionsChoice? choice;
+
+  /// The Selection Field in which a Choice will be created.
+  ///
+  /// Required.
+  core.String? fieldId;
+
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateSelectionChoiceRequest({
+    this.choice,
+    this.fieldId,
+  });
+
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateSelectionChoiceRequest.fromJson(
+      core.Map json_)
+      : this(
+          choice: json_.containsKey('choice')
+              ? GoogleAppsDriveLabelsV2FieldSelectionOptionsChoice.fromJson(
+                  json_['choice'] as core.Map<core.String, core.dynamic>)
+              : null,
+          fieldId: json_.containsKey('fieldId')
+              ? json_['fieldId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (choice != null) 'choice': choice!,
+        if (fieldId != null) 'fieldId': fieldId!,
+      };
+}
+
+/// Request to delete the Field.
+class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteFieldRequest {
+  /// ID of the Field to delete.
+  ///
+  /// Required.
+  core.String? id;
+
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteFieldRequest({
+    this.id,
+  });
+
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteFieldRequest.fromJson(
+      core.Map json_)
+      : this(
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (id != null) 'id': id!,
+      };
+}
+
+/// Request to delete a Choice.
+class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteSelectionChoiceRequest {
+  /// The Selection Field from which a Choice will be deleted.
+  ///
+  /// Required.
+  core.String? fieldId;
+
+  /// Choice to delete.
+  ///
+  /// Required.
+  core.String? id;
+
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteSelectionChoiceRequest({
+    this.fieldId,
+    this.id,
+  });
+
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteSelectionChoiceRequest.fromJson(
+      core.Map json_)
+      : this(
+          fieldId: json_.containsKey('fieldId')
+              ? json_['fieldId'] as core.String
+              : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fieldId != null) 'fieldId': fieldId!,
+        if (id != null) 'id': id!,
+      };
+}
+
+/// Request to disable the Field.
+class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableFieldRequest {
+  /// Field Disabled Policy.
+  ///
+  /// Required.
+  GoogleAppsDriveLabelsV2LifecycleDisabledPolicy? disabledPolicy;
+
+  /// Key of the Field to disable.
+  ///
+  /// Required.
+  core.String? id;
+
+  /// The fields that should be updated.
+  ///
+  /// At least one field must be specified. The root `disabled_policy` is
+  /// implied and should not be specified. A single `*` can be used as
+  /// short-hand for updating every field.
+  core.String? updateMask;
+
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableFieldRequest({
+    this.disabledPolicy,
+    this.id,
+    this.updateMask,
+  });
+
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableFieldRequest.fromJson(
+      core.Map json_)
+      : this(
+          disabledPolicy: json_.containsKey('disabledPolicy')
+              ? GoogleAppsDriveLabelsV2LifecycleDisabledPolicy.fromJson(
+                  json_['disabledPolicy']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          updateMask: json_.containsKey('updateMask')
+              ? json_['updateMask'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (disabledPolicy != null) 'disabledPolicy': disabledPolicy!,
+        if (id != null) 'id': id!,
+        if (updateMask != null) 'updateMask': updateMask!,
+      };
+}
+
+/// Request to disable a Choice.
+class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableSelectionChoiceRequest {
+  /// The disabled policy to update.
+  ///
+  /// Required.
+  GoogleAppsDriveLabelsV2LifecycleDisabledPolicy? disabledPolicy;
+
+  /// The Selection Field in which a Choice will be disabled.
+  ///
+  /// Required.
+  core.String? fieldId;
+
+  /// Choice to disable.
+  ///
+  /// Required.
+  core.String? id;
+
+  /// The fields that should be updated.
+  ///
+  /// At least one field must be specified. The root `disabled_policy` is
+  /// implied and should not be specified. A single `*` can be used as
+  /// short-hand for updating every field.
+  core.String? updateMask;
+
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableSelectionChoiceRequest({
+    this.disabledPolicy,
+    this.fieldId,
+    this.id,
+    this.updateMask,
+  });
+
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableSelectionChoiceRequest.fromJson(
+      core.Map json_)
+      : this(
+          disabledPolicy: json_.containsKey('disabledPolicy')
+              ? GoogleAppsDriveLabelsV2LifecycleDisabledPolicy.fromJson(
+                  json_['disabledPolicy']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          fieldId: json_.containsKey('fieldId')
+              ? json_['fieldId'] as core.String
+              : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          updateMask: json_.containsKey('updateMask')
+              ? json_['updateMask'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (disabledPolicy != null) 'disabledPolicy': disabledPolicy!,
+        if (fieldId != null) 'fieldId': fieldId!,
+        if (id != null) 'id': id!,
+        if (updateMask != null) 'updateMask': updateMask!,
+      };
+}
+
+/// Request to enable the Field.
+class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableFieldRequest {
+  /// ID of the Field to enable.
+  ///
+  /// Required.
+  core.String? id;
+
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableFieldRequest({
+    this.id,
+  });
+
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableFieldRequest.fromJson(
+      core.Map json_)
+      : this(
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (id != null) 'id': id!,
+      };
+}
+
+/// Request to enable a Choice.
+class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableSelectionChoiceRequest {
+  /// The Selection Field in which a Choice will be enabled.
+  ///
+  /// Required.
+  core.String? fieldId;
+
+  /// Choice to enable.
+  ///
+  /// Required.
+  core.String? id;
+
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableSelectionChoiceRequest({
+    this.fieldId,
+    this.id,
+  });
+
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableSelectionChoiceRequest.fromJson(
+      core.Map json_)
+      : this(
+          fieldId: json_.containsKey('fieldId')
+              ? json_['fieldId'] as core.String
+              : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fieldId != null) 'fieldId': fieldId!,
+        if (id != null) 'id': id!,
+      };
+}
+
+/// A single kind of update to apply to a Label.
+class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestRequest {
+  /// Creates a new Field.
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateFieldRequest? createField;
+
+  /// Creates Choice within a Selection field.
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateSelectionChoiceRequest?
+      createSelectionChoice;
+
+  /// Deletes a Field from the label.
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteFieldRequest? deleteField;
+
+  /// Delete a Choice within a Selection Field.
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteSelectionChoiceRequest?
+      deleteSelectionChoice;
+
+  /// Disables the Field.
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableFieldRequest?
+      disableField;
+
+  /// Disable a Choice within a Selection Field.
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableSelectionChoiceRequest?
+      disableSelectionChoice;
+
+  /// Enables the Field.
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableFieldRequest? enableField;
+
+  /// Enable a Choice within a Selection Field.
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableSelectionChoiceRequest?
+      enableSelectionChoice;
+
+  /// Updates basic properties of a Field.
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldPropertiesRequest?
+      updateField;
+
+  /// Update Field type and/or type options.
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldTypeRequest?
+      updateFieldType;
+
+  /// Updates the Label properties.
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateLabelPropertiesRequest?
+      updateLabel;
+
+  /// Update a Choice properties within a Selection Field.
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateSelectionChoicePropertiesRequest?
+      updateSelectionChoiceProperties;
+
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestRequest({
+    this.createField,
+    this.createSelectionChoice,
+    this.deleteField,
+    this.deleteSelectionChoice,
+    this.disableField,
+    this.disableSelectionChoice,
+    this.enableField,
+    this.enableSelectionChoice,
+    this.updateField,
+    this.updateFieldType,
+    this.updateLabel,
+    this.updateSelectionChoiceProperties,
+  });
+
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestRequest.fromJson(core.Map json_)
+      : this(
+          createField: json_.containsKey('createField')
+              ? GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateFieldRequest
+                  .fromJson(json_['createField']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          createSelectionChoice: json_.containsKey('createSelectionChoice')
+              ? GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateSelectionChoiceRequest
+                  .fromJson(json_['createSelectionChoice']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          deleteField: json_.containsKey('deleteField')
+              ? GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteFieldRequest
+                  .fromJson(json_['deleteField']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          deleteSelectionChoice: json_.containsKey('deleteSelectionChoice')
+              ? GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteSelectionChoiceRequest
+                  .fromJson(json_['deleteSelectionChoice']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          disableField: json_.containsKey('disableField')
+              ? GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableFieldRequest
+                  .fromJson(json_['disableField']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          disableSelectionChoice: json_.containsKey('disableSelectionChoice')
+              ? GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableSelectionChoiceRequest
+                  .fromJson(json_['disableSelectionChoice']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          enableField: json_.containsKey('enableField')
+              ? GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableFieldRequest
+                  .fromJson(json_['enableField']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          enableSelectionChoice: json_.containsKey('enableSelectionChoice')
+              ? GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableSelectionChoiceRequest
+                  .fromJson(json_['enableSelectionChoice']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          updateField: json_.containsKey('updateField')
+              ? GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldPropertiesRequest
+                  .fromJson(json_['updateField']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          updateFieldType: json_.containsKey('updateFieldType')
+              ? GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldTypeRequest
+                  .fromJson(json_['updateFieldType']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          updateLabel: json_.containsKey('updateLabel')
+              ? GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateLabelPropertiesRequest
+                  .fromJson(json_['updateLabel']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          updateSelectionChoiceProperties: json_
+                  .containsKey('updateSelectionChoiceProperties')
+              ? GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateSelectionChoicePropertiesRequest
+                  .fromJson(json_['updateSelectionChoiceProperties']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createField != null) 'createField': createField!,
+        if (createSelectionChoice != null)
+          'createSelectionChoice': createSelectionChoice!,
+        if (deleteField != null) 'deleteField': deleteField!,
+        if (deleteSelectionChoice != null)
+          'deleteSelectionChoice': deleteSelectionChoice!,
+        if (disableField != null) 'disableField': disableField!,
+        if (disableSelectionChoice != null)
+          'disableSelectionChoice': disableSelectionChoice!,
+        if (enableField != null) 'enableField': enableField!,
+        if (enableSelectionChoice != null)
+          'enableSelectionChoice': enableSelectionChoice!,
+        if (updateField != null) 'updateField': updateField!,
+        if (updateFieldType != null) 'updateFieldType': updateFieldType!,
+        if (updateLabel != null) 'updateLabel': updateLabel!,
+        if (updateSelectionChoiceProperties != null)
+          'updateSelectionChoiceProperties': updateSelectionChoiceProperties!,
+      };
+}
+
+/// Request to update Field properties.
+class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldPropertiesRequest {
+  /// The Field to update.
+  ///
+  /// Required.
+  core.String? id;
+
+  /// Basic Field properties.
+  ///
+  /// Required.
+  GoogleAppsDriveLabelsV2FieldProperties? properties;
+
+  /// The fields that should be updated.
+  ///
+  /// At least one field must be specified. The root `properties` is implied and
+  /// should not be specified. A single `*` can be used as short-hand for
+  /// updating every field.
+  core.String? updateMask;
+
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldPropertiesRequest({
+    this.id,
+    this.properties,
+    this.updateMask,
+  });
+
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldPropertiesRequest.fromJson(
+      core.Map json_)
+      : this(
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          properties: json_.containsKey('properties')
+              ? GoogleAppsDriveLabelsV2FieldProperties.fromJson(
+                  json_['properties'] as core.Map<core.String, core.dynamic>)
+              : null,
+          updateMask: json_.containsKey('updateMask')
+              ? json_['updateMask'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (id != null) 'id': id!,
+        if (properties != null) 'properties': properties!,
+        if (updateMask != null) 'updateMask': updateMask!,
+      };
+}
+
+/// Request to change the type of a Field.
+class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldTypeRequest {
+  /// Update field to Date.
+  GoogleAppsDriveLabelsV2FieldDateOptions? dateOptions;
+
+  /// The Field to update.
+  ///
+  /// Required.
+  core.String? id;
+
+  /// Update field to Integer.
+  GoogleAppsDriveLabelsV2FieldIntegerOptions? integerOptions;
+
+  /// Update field to Long Text.
+  GoogleAppsDriveLabelsV2FieldLongTextOptions? longTextOptions;
+
+  /// Update field to Selection.
+  GoogleAppsDriveLabelsV2FieldSelectionOptions? selectionOptions;
+
+  /// Update field to Text.
+  GoogleAppsDriveLabelsV2FieldTextOptions? textOptions;
+
+  /// The fields that should be updated.
+  ///
+  /// At least one field must be specified. The root of `type_options` is
+  /// implied and should not be specified. A single `*` can be used as
+  /// short-hand for updating every field.
+  core.String? updateMask;
+
+  /// Update field to User.
+  GoogleAppsDriveLabelsV2FieldUserOptions? userOptions;
+
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldTypeRequest({
+    this.dateOptions,
+    this.id,
+    this.integerOptions,
+    this.longTextOptions,
+    this.selectionOptions,
+    this.textOptions,
+    this.updateMask,
+    this.userOptions,
+  });
+
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldTypeRequest.fromJson(
+      core.Map json_)
+      : this(
+          dateOptions: json_.containsKey('dateOptions')
+              ? GoogleAppsDriveLabelsV2FieldDateOptions.fromJson(
+                  json_['dateOptions'] as core.Map<core.String, core.dynamic>)
+              : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          integerOptions: json_.containsKey('integerOptions')
+              ? GoogleAppsDriveLabelsV2FieldIntegerOptions.fromJson(
+                  json_['integerOptions']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          longTextOptions: json_.containsKey('longTextOptions')
+              ? GoogleAppsDriveLabelsV2FieldLongTextOptions.fromJson(
+                  json_['longTextOptions']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          selectionOptions: json_.containsKey('selectionOptions')
+              ? GoogleAppsDriveLabelsV2FieldSelectionOptions.fromJson(
+                  json_['selectionOptions']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          textOptions: json_.containsKey('textOptions')
+              ? GoogleAppsDriveLabelsV2FieldTextOptions.fromJson(
+                  json_['textOptions'] as core.Map<core.String, core.dynamic>)
+              : null,
+          updateMask: json_.containsKey('updateMask')
+              ? json_['updateMask'] as core.String
+              : null,
+          userOptions: json_.containsKey('userOptions')
+              ? GoogleAppsDriveLabelsV2FieldUserOptions.fromJson(
+                  json_['userOptions'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dateOptions != null) 'dateOptions': dateOptions!,
+        if (id != null) 'id': id!,
+        if (integerOptions != null) 'integerOptions': integerOptions!,
+        if (longTextOptions != null) 'longTextOptions': longTextOptions!,
+        if (selectionOptions != null) 'selectionOptions': selectionOptions!,
+        if (textOptions != null) 'textOptions': textOptions!,
+        if (updateMask != null) 'updateMask': updateMask!,
+        if (userOptions != null) 'userOptions': userOptions!,
+      };
+}
+
+/// Updates basic properties of a Label.
+class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateLabelPropertiesRequest {
+  /// Label properties to update.
+  ///
+  /// Required.
+  GoogleAppsDriveLabelsV2LabelProperties? properties;
+
+  /// The fields that should be updated.
+  ///
+  /// At least one field must be specified. The root `label_properties` is
+  /// implied and should not be specified. A single `*` can be used as
+  /// short-hand for updating every field.
+  core.String? updateMask;
+
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateLabelPropertiesRequest({
+    this.properties,
+    this.updateMask,
+  });
+
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateLabelPropertiesRequest.fromJson(
+      core.Map json_)
+      : this(
+          properties: json_.containsKey('properties')
+              ? GoogleAppsDriveLabelsV2LabelProperties.fromJson(
+                  json_['properties'] as core.Map<core.String, core.dynamic>)
+              : null,
+          updateMask: json_.containsKey('updateMask')
+              ? json_['updateMask'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (properties != null) 'properties': properties!,
+        if (updateMask != null) 'updateMask': updateMask!,
+      };
+}
+
+/// Request to update a Choice properties.
+class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateSelectionChoicePropertiesRequest {
+  /// The Selection Field to update.
+  ///
+  /// Required.
+  core.String? fieldId;
+
+  /// The Choice to update.
+  ///
+  /// Required.
+  core.String? id;
+
+  /// The Choice properties to update.
+  ///
+  /// Required.
+  GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceProperties? properties;
+
+  /// The fields that should be updated.
+  ///
+  /// At least one field must be specified. The root `properties` is implied and
+  /// should not be specified. A single `*` can be used as short-hand for
+  /// updating every field.
+  core.String? updateMask;
+
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateSelectionChoicePropertiesRequest({
+    this.fieldId,
+    this.id,
+    this.properties,
+    this.updateMask,
+  });
+
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateSelectionChoicePropertiesRequest.fromJson(
+      core.Map json_)
+      : this(
+          fieldId: json_.containsKey('fieldId')
+              ? json_['fieldId'] as core.String
+              : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          properties: json_.containsKey('properties')
+              ? GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceProperties
+                  .fromJson(json_['properties']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          updateMask: json_.containsKey('updateMask')
+              ? json_['updateMask'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fieldId != null) 'fieldId': fieldId!,
+        if (id != null) 'id': id!,
+        if (properties != null) 'properties': properties!,
+        if (updateMask != null) 'updateMask': updateMask!,
+      };
+}
+
+/// Response for Label update.
+class GoogleAppsDriveLabelsV2DeltaUpdateLabelResponse {
+  /// The reply of the updates.
+  ///
+  /// This maps 1:1 with the updates, although responses to some requests may be
+  /// empty.
+  core.List<GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseResponse>? responses;
+
+  /// The label after updates were applied.
+  ///
+  /// This is only set if
+  /// \[BatchUpdateLabelResponse2.include_label_in_response\] is `true` and
+  /// there were no errors.
+  GoogleAppsDriveLabelsV2Label? updatedLabel;
+
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelResponse({
+    this.responses,
+    this.updatedLabel,
+  });
+
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelResponse.fromJson(core.Map json_)
+      : this(
+          responses: json_.containsKey('responses')
+              ? (json_['responses'] as core.List)
+                  .map((value) =>
+                      GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseResponse
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          updatedLabel: json_.containsKey('updatedLabel')
+              ? GoogleAppsDriveLabelsV2Label.fromJson(
+                  json_['updatedLabel'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (responses != null) 'responses': responses!,
+        if (updatedLabel != null) 'updatedLabel': updatedLabel!,
+      };
+}
+
+/// Response following Field create.
+class GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateFieldResponse {
+  /// The field of the created field.
+  ///
+  /// When left blank in a create request, a key will be autogenerated and can
+  /// be identified here.
+  core.String? id;
+
+  /// The priority of the created field.
+  ///
+  /// The priority may change from what was specified to assure contiguous
+  /// priorities between fields (1-n).
+  core.int? priority;
+
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateFieldResponse({
+    this.id,
+    this.priority,
+  });
+
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateFieldResponse.fromJson(
+      core.Map json_)
+      : this(
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          priority: json_.containsKey('priority')
+              ? json_['priority'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (id != null) 'id': id!,
+        if (priority != null) 'priority': priority!,
+      };
+}
+
+/// Response following Selection Choice create.
+class GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateSelectionChoiceResponse {
+  /// The server-generated id of the field.
+  core.String? fieldId;
+
+  /// The server-generated ID of the created choice within the Field
+  core.String? id;
+
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateSelectionChoiceResponse({
+    this.fieldId,
+    this.id,
+  });
+
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateSelectionChoiceResponse.fromJson(
+      core.Map json_)
+      : this(
+          fieldId: json_.containsKey('fieldId')
+              ? json_['fieldId'] as core.String
+              : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fieldId != null) 'fieldId': fieldId!,
+        if (id != null) 'id': id!,
+      };
+}
+
+/// Response following Field delete.
+typedef GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteFieldResponse
+    = $Empty;
+
+/// Response following Choice delete.
+typedef GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteSelectionChoiceResponse
+    = $Empty;
+
+/// Response following Field disable.
+typedef GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableFieldResponse
+    = $Empty;
+
+/// Response following Choice disable.
+typedef GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableSelectionChoiceResponse
+    = $Empty;
+
+/// Response following Field enable.
+typedef GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableFieldResponse
+    = $Empty;
+
+/// Response following Choice enable.
+typedef GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableSelectionChoiceResponse
+    = $Empty;
+
+/// A single response from an update.
+class GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseResponse {
+  /// Creates a new Field.
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateFieldResponse?
+      createField;
+
+  /// Creates a new selection list option to add to a Selection Field.
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateSelectionChoiceResponse?
+      createSelectionChoice;
+
+  /// Deletes a Field from the label.
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteFieldResponse?
+      deleteField;
+
+  /// Deletes a Choice from a Selection Field.
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteSelectionChoiceResponse?
+      deleteSelectionChoice;
+
+  /// Disables Field.
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableFieldResponse?
+      disableField;
+
+  /// Disables a Choice within a Selection Field.
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableSelectionChoiceResponse?
+      disableSelectionChoice;
+
+  /// Enables Field.
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableFieldResponse?
+      enableField;
+
+  /// Enables a Choice within a Selection Field.
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableSelectionChoiceResponse?
+      enableSelectionChoice;
+
+  /// Updates basic properties of a Field.
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldPropertiesResponse?
+      updateField;
+
+  /// Update Field type and/or type options.
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldTypeResponse?
+      updateFieldType;
+
+  /// Updated basic properties of a Label.
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateLabelPropertiesResponse?
+      updateLabel;
+
+  /// Updates a Choice within a Selection Field.
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateSelectionChoicePropertiesResponse?
+      updateSelectionChoiceProperties;
+
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseResponse({
+    this.createField,
+    this.createSelectionChoice,
+    this.deleteField,
+    this.deleteSelectionChoice,
+    this.disableField,
+    this.disableSelectionChoice,
+    this.enableField,
+    this.enableSelectionChoice,
+    this.updateField,
+    this.updateFieldType,
+    this.updateLabel,
+    this.updateSelectionChoiceProperties,
+  });
+
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseResponse.fromJson(
+      core.Map json_)
+      : this(
+          createField: json_.containsKey('createField')
+              ? GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateFieldResponse
+                  .fromJson(json_['createField']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          createSelectionChoice: json_.containsKey('createSelectionChoice')
+              ? GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateSelectionChoiceResponse
+                  .fromJson(json_['createSelectionChoice']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          deleteField: json_.containsKey('deleteField')
+              ? GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteFieldResponse
+                  .fromJson(json_['deleteField']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          deleteSelectionChoice: json_.containsKey('deleteSelectionChoice')
+              ? GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteSelectionChoiceResponse
+                  .fromJson(json_['deleteSelectionChoice']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          disableField: json_.containsKey('disableField')
+              ? GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableFieldResponse
+                  .fromJson(json_['disableField']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          disableSelectionChoice: json_.containsKey('disableSelectionChoice')
+              ? GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableSelectionChoiceResponse
+                  .fromJson(json_['disableSelectionChoice']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          enableField: json_.containsKey('enableField')
+              ? GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableFieldResponse
+                  .fromJson(json_['enableField']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          enableSelectionChoice: json_.containsKey('enableSelectionChoice')
+              ? GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableSelectionChoiceResponse
+                  .fromJson(json_['enableSelectionChoice']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          updateField: json_.containsKey('updateField')
+              ? GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldPropertiesResponse
+                  .fromJson(json_['updateField']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          updateFieldType: json_.containsKey('updateFieldType')
+              ? GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldTypeResponse
+                  .fromJson(json_['updateFieldType']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          updateLabel: json_.containsKey('updateLabel')
+              ? GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateLabelPropertiesResponse
+                  .fromJson(json_['updateLabel']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          updateSelectionChoiceProperties: json_
+                  .containsKey('updateSelectionChoiceProperties')
+              ? GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateSelectionChoicePropertiesResponse
+                  .fromJson(json_['updateSelectionChoiceProperties']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createField != null) 'createField': createField!,
+        if (createSelectionChoice != null)
+          'createSelectionChoice': createSelectionChoice!,
+        if (deleteField != null) 'deleteField': deleteField!,
+        if (deleteSelectionChoice != null)
+          'deleteSelectionChoice': deleteSelectionChoice!,
+        if (disableField != null) 'disableField': disableField!,
+        if (disableSelectionChoice != null)
+          'disableSelectionChoice': disableSelectionChoice!,
+        if (enableField != null) 'enableField': enableField!,
+        if (enableSelectionChoice != null)
+          'enableSelectionChoice': enableSelectionChoice!,
+        if (updateField != null) 'updateField': updateField!,
+        if (updateFieldType != null) 'updateFieldType': updateFieldType!,
+        if (updateLabel != null) 'updateLabel': updateLabel!,
+        if (updateSelectionChoiceProperties != null)
+          'updateSelectionChoiceProperties': updateSelectionChoiceProperties!,
+      };
+}
+
+/// Response following update to Field properties.
+class GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldPropertiesResponse {
+  /// The priority of the updated field.
+  ///
+  /// The priority may change from what was specified to assure contiguous
+  /// priorities between fields (1-n).
+  core.int? priority;
+
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldPropertiesResponse({
+    this.priority,
+  });
+
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldPropertiesResponse.fromJson(
+      core.Map json_)
+      : this(
+          priority: json_.containsKey('priority')
+              ? json_['priority'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (priority != null) 'priority': priority!,
+      };
+}
+
+/// Response following update to Field type.
+typedef GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldTypeResponse
+    = $Empty;
+
+/// Response following update to Label properties.
+typedef GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateLabelPropertiesResponse
+    = $Empty;
+
+/// Response following update to Selection Choice properties.
+class GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateSelectionChoicePropertiesResponse {
+  /// The priority of the updated choice.
+  ///
+  /// The priority may change from what was specified to assure contiguous
+  /// priorities between choices (1-n).
+  core.int? priority;
+
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateSelectionChoicePropertiesResponse({
+    this.priority,
+  });
+
+  GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateSelectionChoicePropertiesResponse.fromJson(
+      core.Map json_)
+      : this(
+          priority: json_.containsKey('priority')
+              ? json_['priority'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (priority != null) 'priority': priority!,
+      };
+}
+
+/// Request to deprecate a published Label.
+class GoogleAppsDriveLabelsV2DisableLabelRequest {
+  /// Disabled policy to use.
+  GoogleAppsDriveLabelsV2LifecycleDisabledPolicy? disabledPolicy;
+
+  /// The BCP-47 language code to use for evaluating localized field labels.
+  ///
+  /// When not specified, values in the default configured language will be
+  /// used.
+  core.String? languageCode;
+
+  /// The fields that should be updated.
+  ///
+  /// At least one field must be specified. The root `disabled_policy` is
+  /// implied and should not be specified. A single `*` can be used as
+  /// short-hand for updating every field.
+  core.String? updateMask;
+
+  /// Set to `true` in order to use the user's admin credentials.
+  ///
+  /// The server will verify the user is an admin for the Label before allowing
+  /// access.
+  core.bool? useAdminAccess;
+
+  /// Provides control over how write requests are executed.
+  ///
+  /// Defaults to unset, which means last write wins.
+  GoogleAppsDriveLabelsV2WriteControl? writeControl;
+
+  GoogleAppsDriveLabelsV2DisableLabelRequest({
+    this.disabledPolicy,
+    this.languageCode,
+    this.updateMask,
+    this.useAdminAccess,
+    this.writeControl,
+  });
+
+  GoogleAppsDriveLabelsV2DisableLabelRequest.fromJson(core.Map json_)
+      : this(
+          disabledPolicy: json_.containsKey('disabledPolicy')
+              ? GoogleAppsDriveLabelsV2LifecycleDisabledPolicy.fromJson(
+                  json_['disabledPolicy']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          languageCode: json_.containsKey('languageCode')
+              ? json_['languageCode'] as core.String
+              : null,
+          updateMask: json_.containsKey('updateMask')
+              ? json_['updateMask'] as core.String
+              : null,
+          useAdminAccess: json_.containsKey('useAdminAccess')
+              ? json_['useAdminAccess'] as core.bool
+              : null,
+          writeControl: json_.containsKey('writeControl')
+              ? GoogleAppsDriveLabelsV2WriteControl.fromJson(
+                  json_['writeControl'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (disabledPolicy != null) 'disabledPolicy': disabledPolicy!,
+        if (languageCode != null) 'languageCode': languageCode!,
+        if (updateMask != null) 'updateMask': updateMask!,
+        if (useAdminAccess != null) 'useAdminAccess': useAdminAccess!,
+        if (writeControl != null) 'writeControl': writeControl!,
+      };
+}
+
+/// Request to enable a label.
+class GoogleAppsDriveLabelsV2EnableLabelRequest {
+  /// The BCP-47 language code to use for evaluating localized field labels.
+  ///
+  /// When not specified, values in the default configured language will be
+  /// used.
+  core.String? languageCode;
+
+  /// Set to `true` in order to use the user's admin credentials.
+  ///
+  /// The server will verify the user is an admin for the Label before allowing
+  /// access.
+  core.bool? useAdminAccess;
+
+  /// Provides control over how write requests are executed.
+  ///
+  /// Defaults to unset, which means last write wins.
+  GoogleAppsDriveLabelsV2WriteControl? writeControl;
+
+  GoogleAppsDriveLabelsV2EnableLabelRequest({
+    this.languageCode,
+    this.useAdminAccess,
+    this.writeControl,
+  });
+
+  GoogleAppsDriveLabelsV2EnableLabelRequest.fromJson(core.Map json_)
+      : this(
+          languageCode: json_.containsKey('languageCode')
+              ? json_['languageCode'] as core.String
+              : null,
+          useAdminAccess: json_.containsKey('useAdminAccess')
+              ? json_['useAdminAccess'] as core.bool
+              : null,
+          writeControl: json_.containsKey('writeControl')
+              ? GoogleAppsDriveLabelsV2WriteControl.fromJson(
+                  json_['writeControl'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (languageCode != null) 'languageCode': languageCode!,
+        if (useAdminAccess != null) 'useAdminAccess': useAdminAccess!,
+        if (writeControl != null) 'writeControl': writeControl!,
       };
 }
 
@@ -703,6 +3251,104 @@ class GoogleAppsDriveLabelsV2FieldIntegerOptions {
       };
 }
 
+/// Field constants governing the structure of a Field; such as, the maximum
+/// title length, minimum and maximum field values or length, etc.
+class GoogleAppsDriveLabelsV2FieldLimits {
+  /// Date Field limits.
+  GoogleAppsDriveLabelsV2DateLimits? dateLimits;
+
+  /// Integer Field limits.
+  GoogleAppsDriveLabelsV2IntegerLimits? integerLimits;
+
+  /// Long text Field limits.
+  GoogleAppsDriveLabelsV2LongTextLimits? longTextLimits;
+
+  /// Limits for Field description, also called help text.
+  core.int? maxDescriptionLength;
+
+  /// Limits for Field title.
+  core.int? maxDisplayNameLength;
+
+  /// Max length for the id.
+  core.int? maxIdLength;
+
+  /// Selection Field limits.
+  GoogleAppsDriveLabelsV2SelectionLimits? selectionLimits;
+
+  /// The relevant limits for the specified Field.Type.
+  ///
+  /// Text Field limits.
+  GoogleAppsDriveLabelsV2TextLimits? textLimits;
+
+  /// User Field limits.
+  GoogleAppsDriveLabelsV2UserLimits? userLimits;
+
+  GoogleAppsDriveLabelsV2FieldLimits({
+    this.dateLimits,
+    this.integerLimits,
+    this.longTextLimits,
+    this.maxDescriptionLength,
+    this.maxDisplayNameLength,
+    this.maxIdLength,
+    this.selectionLimits,
+    this.textLimits,
+    this.userLimits,
+  });
+
+  GoogleAppsDriveLabelsV2FieldLimits.fromJson(core.Map json_)
+      : this(
+          dateLimits: json_.containsKey('dateLimits')
+              ? GoogleAppsDriveLabelsV2DateLimits.fromJson(
+                  json_['dateLimits'] as core.Map<core.String, core.dynamic>)
+              : null,
+          integerLimits: json_.containsKey('integerLimits')
+              ? GoogleAppsDriveLabelsV2IntegerLimits.fromJson(
+                  json_['integerLimits'] as core.Map<core.String, core.dynamic>)
+              : null,
+          longTextLimits: json_.containsKey('longTextLimits')
+              ? GoogleAppsDriveLabelsV2LongTextLimits.fromJson(
+                  json_['longTextLimits']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          maxDescriptionLength: json_.containsKey('maxDescriptionLength')
+              ? json_['maxDescriptionLength'] as core.int
+              : null,
+          maxDisplayNameLength: json_.containsKey('maxDisplayNameLength')
+              ? json_['maxDisplayNameLength'] as core.int
+              : null,
+          maxIdLength: json_.containsKey('maxIdLength')
+              ? json_['maxIdLength'] as core.int
+              : null,
+          selectionLimits: json_.containsKey('selectionLimits')
+              ? GoogleAppsDriveLabelsV2SelectionLimits.fromJson(
+                  json_['selectionLimits']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          textLimits: json_.containsKey('textLimits')
+              ? GoogleAppsDriveLabelsV2TextLimits.fromJson(
+                  json_['textLimits'] as core.Map<core.String, core.dynamic>)
+              : null,
+          userLimits: json_.containsKey('userLimits')
+              ? GoogleAppsDriveLabelsV2UserLimits.fromJson(
+                  json_['userLimits'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dateLimits != null) 'dateLimits': dateLimits!,
+        if (integerLimits != null) 'integerLimits': integerLimits!,
+        if (longTextLimits != null) 'longTextLimits': longTextLimits!,
+        if (maxDescriptionLength != null)
+          'maxDescriptionLength': maxDescriptionLength!,
+        if (maxDisplayNameLength != null)
+          'maxDisplayNameLength': maxDisplayNameLength!,
+        if (maxIdLength != null) 'maxIdLength': maxIdLength!,
+        if (selectionLimits != null) 'selectionLimits': selectionLimits!,
+        if (textLimits != null) 'textLimits': textLimits!,
+        if (userLimits != null) 'userLimits': userLimits!,
+      };
+}
+
 /// Options for a multi-valued variant of an associated field type.
 class GoogleAppsDriveLabelsV2FieldListOptions {
   /// Maximum number of entries permitted.
@@ -723,6 +3369,9 @@ class GoogleAppsDriveLabelsV2FieldListOptions {
         if (maxEntries != null) 'maxEntries': maxEntries!,
       };
 }
+
+/// Options the Long Text field type.
+typedef GoogleAppsDriveLabelsV2FieldLongTextOptions = $TextOptions;
 
 /// The basic properties of the field.
 class GoogleAppsDriveLabelsV2FieldProperties {
@@ -1260,37 +3909,7 @@ class GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceSchemaCapabilities {
 }
 
 /// Options for the Text field type.
-class GoogleAppsDriveLabelsV2FieldTextOptions {
-  /// The maximum valid length of values for the text field.
-  ///
-  /// Output only.
-  core.int? maxLength;
-
-  /// The minimum valid length of values for the text field.
-  ///
-  /// Output only.
-  core.int? minLength;
-
-  GoogleAppsDriveLabelsV2FieldTextOptions({
-    this.maxLength,
-    this.minLength,
-  });
-
-  GoogleAppsDriveLabelsV2FieldTextOptions.fromJson(core.Map json_)
-      : this(
-          maxLength: json_.containsKey('maxLength')
-              ? json_['maxLength'] as core.int
-              : null,
-          minLength: json_.containsKey('minLength')
-              ? json_['minLength'] as core.int
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (maxLength != null) 'maxLength': maxLength!,
-        if (minLength != null) 'minLength': minLength!,
-      };
-}
+typedef GoogleAppsDriveLabelsV2FieldTextOptions = $TextOptions;
 
 /// Options for the user field type.
 class GoogleAppsDriveLabelsV2FieldUserOptions {
@@ -1313,6 +3932,35 @@ class GoogleAppsDriveLabelsV2FieldUserOptions {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (listOptions != null) 'listOptions': listOptions!,
+      };
+}
+
+/// Limits for integer Field type.
+class GoogleAppsDriveLabelsV2IntegerLimits {
+  /// Maximum value for an integer Field type.
+  core.String? maxValue;
+
+  /// Minimum value for an integer Field type.
+  core.String? minValue;
+
+  GoogleAppsDriveLabelsV2IntegerLimits({
+    this.maxValue,
+    this.minValue,
+  });
+
+  GoogleAppsDriveLabelsV2IntegerLimits.fromJson(core.Map json_)
+      : this(
+          maxValue: json_.containsKey('maxValue')
+              ? json_['maxValue'] as core.String
+              : null,
+          minValue: json_.containsKey('minValue')
+              ? json_['minValue'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (maxValue != null) 'maxValue': maxValue!,
+        if (minValue != null) 'minValue': minValue!,
       };
 }
 
@@ -1341,6 +3989,13 @@ class GoogleAppsDriveLabelsV2Label {
   ///
   /// Output only.
   GoogleAppsDriveLabelsV2UserInfo? creator;
+
+  /// The customer this label belongs to.
+  ///
+  /// For example: "customers/123abc789."
+  ///
+  /// Output only.
+  core.String? customer;
 
   /// The time this label was disabled.
   ///
@@ -1381,6 +4036,8 @@ class GoogleAppsDriveLabelsV2Label {
   /// items.
   /// - "ADMIN" : Admin-owned label. Only creatable and editable by admins.
   /// Supports some additional admin-only features.
+  /// - "GOOGLE_APP" : A label owned by an internal Google application rather
+  /// than a customer. These labels are read-only.
   core.String? labelType;
 
   /// Custom URL to present to users to allow them to learn more about this
@@ -1455,6 +4112,7 @@ class GoogleAppsDriveLabelsV2Label {
     this.appliedLabelPolicy,
     this.createTime,
     this.creator,
+    this.customer,
     this.disableTime,
     this.disabler,
     this.displayHints,
@@ -1492,6 +4150,9 @@ class GoogleAppsDriveLabelsV2Label {
           creator: json_.containsKey('creator')
               ? GoogleAppsDriveLabelsV2UserInfo.fromJson(
                   json_['creator'] as core.Map<core.String, core.dynamic>)
+              : null,
+          customer: json_.containsKey('customer')
+              ? json_['customer'] as core.String
               : null,
           disableTime: json_.containsKey('disableTime')
               ? json_['disableTime'] as core.String
@@ -1562,6 +4223,7 @@ class GoogleAppsDriveLabelsV2Label {
           'appliedLabelPolicy': appliedLabelPolicy!,
         if (createTime != null) 'createTime': createTime!,
         if (creator != null) 'creator': creator!,
+        if (customer != null) 'customer': customer!,
         if (disableTime != null) 'disableTime': disableTime!,
         if (disabler != null) 'disabler': disabler!,
         if (displayHints != null) 'displayHints': displayHints!,
@@ -1696,6 +4358,274 @@ class GoogleAppsDriveLabelsV2LabelDisplayHints {
         if (hiddenInSearch != null) 'hiddenInSearch': hiddenInSearch!,
         if (priority != null) 'priority': priority!,
         if (shownInApply != null) 'shownInApply': shownInApply!,
+      };
+}
+
+/// Label constraints governing the structure of a Label; such as, the maximum
+/// number of Fields allowed and maximum length of the label title.
+class GoogleAppsDriveLabelsV2LabelLimits {
+  /// The limits for Fields.
+  GoogleAppsDriveLabelsV2FieldLimits? fieldLimits;
+
+  /// The maximum number of published Fields that can be deleted.
+  core.int? maxDeletedFields;
+
+  /// The maximum number of characters allowed for the description.
+  core.int? maxDescriptionLength;
+
+  /// The maximum number of draft revisions that will be kept before deleting
+  /// old drafts.
+  core.int? maxDraftRevisions;
+
+  /// The maximum number of Fields allowed within the label.
+  core.int? maxFields;
+
+  /// The maximum number of characters allowed for the title.
+  core.int? maxTitleLength;
+
+  /// Resource name.
+  core.String? name;
+
+  GoogleAppsDriveLabelsV2LabelLimits({
+    this.fieldLimits,
+    this.maxDeletedFields,
+    this.maxDescriptionLength,
+    this.maxDraftRevisions,
+    this.maxFields,
+    this.maxTitleLength,
+    this.name,
+  });
+
+  GoogleAppsDriveLabelsV2LabelLimits.fromJson(core.Map json_)
+      : this(
+          fieldLimits: json_.containsKey('fieldLimits')
+              ? GoogleAppsDriveLabelsV2FieldLimits.fromJson(
+                  json_['fieldLimits'] as core.Map<core.String, core.dynamic>)
+              : null,
+          maxDeletedFields: json_.containsKey('maxDeletedFields')
+              ? json_['maxDeletedFields'] as core.int
+              : null,
+          maxDescriptionLength: json_.containsKey('maxDescriptionLength')
+              ? json_['maxDescriptionLength'] as core.int
+              : null,
+          maxDraftRevisions: json_.containsKey('maxDraftRevisions')
+              ? json_['maxDraftRevisions'] as core.int
+              : null,
+          maxFields: json_.containsKey('maxFields')
+              ? json_['maxFields'] as core.int
+              : null,
+          maxTitleLength: json_.containsKey('maxTitleLength')
+              ? json_['maxTitleLength'] as core.int
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fieldLimits != null) 'fieldLimits': fieldLimits!,
+        if (maxDeletedFields != null) 'maxDeletedFields': maxDeletedFields!,
+        if (maxDescriptionLength != null)
+          'maxDescriptionLength': maxDescriptionLength!,
+        if (maxDraftRevisions != null) 'maxDraftRevisions': maxDraftRevisions!,
+        if (maxFields != null) 'maxFields': maxFields!,
+        if (maxTitleLength != null) 'maxTitleLength': maxTitleLength!,
+        if (name != null) 'name': name!,
+      };
+}
+
+/// A Lock that can be applied to a Label, Field, or Choice.
+class GoogleAppsDriveLabelsV2LabelLock {
+  /// The user's capabilities on this LabelLock.
+  ///
+  /// Output only.
+  GoogleAppsDriveLabelsV2LabelLockCapabilities? capabilities;
+
+  /// The ID of the Selection Field Choice that should be locked.
+  ///
+  /// If present, `field_id` must also be present.
+  core.String? choiceId;
+
+  /// The time this LabelLock was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The user whose credentials were used to create the LabelLock.
+  ///
+  /// This will not be present if no user was responsible for creating the
+  /// LabelLock.
+  ///
+  /// Output only.
+  GoogleAppsDriveLabelsV2UserInfo? creator;
+
+  /// A timestamp indicating when this LabelLock was scheduled for deletion.
+  ///
+  /// This will be present only if this LabelLock is in the DELETING state.
+  ///
+  /// Output only.
+  core.String? deleteTime;
+
+  /// The ID of the Field that should be locked.
+  ///
+  /// Empty if the whole Label should be locked.
+  core.String? fieldId;
+
+  /// Resource name of this LabelLock.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// This LabelLock's state.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Unknown state.
+  /// - "ACTIVE" : The LabelLock is active and is being enforced by the server.
+  /// - "DELETING" : The LabelLock is being deleted. The LabelLock will continue
+  /// to be enforced by the server until it has been fully removed.
+  core.String? state;
+
+  GoogleAppsDriveLabelsV2LabelLock({
+    this.capabilities,
+    this.choiceId,
+    this.createTime,
+    this.creator,
+    this.deleteTime,
+    this.fieldId,
+    this.name,
+    this.state,
+  });
+
+  GoogleAppsDriveLabelsV2LabelLock.fromJson(core.Map json_)
+      : this(
+          capabilities: json_.containsKey('capabilities')
+              ? GoogleAppsDriveLabelsV2LabelLockCapabilities.fromJson(
+                  json_['capabilities'] as core.Map<core.String, core.dynamic>)
+              : null,
+          choiceId: json_.containsKey('choiceId')
+              ? json_['choiceId'] as core.String
+              : null,
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          creator: json_.containsKey('creator')
+              ? GoogleAppsDriveLabelsV2UserInfo.fromJson(
+                  json_['creator'] as core.Map<core.String, core.dynamic>)
+              : null,
+          deleteTime: json_.containsKey('deleteTime')
+              ? json_['deleteTime'] as core.String
+              : null,
+          fieldId: json_.containsKey('fieldId')
+              ? json_['fieldId'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (capabilities != null) 'capabilities': capabilities!,
+        if (choiceId != null) 'choiceId': choiceId!,
+        if (createTime != null) 'createTime': createTime!,
+        if (creator != null) 'creator': creator!,
+        if (deleteTime != null) 'deleteTime': deleteTime!,
+        if (fieldId != null) 'fieldId': fieldId!,
+        if (name != null) 'name': name!,
+        if (state != null) 'state': state!,
+      };
+}
+
+/// A description of a user's capabilities on a LabelLock.
+class GoogleAppsDriveLabelsV2LabelLockCapabilities {
+  /// True if the user is authorized to view the policy.
+  core.bool? canViewPolicy;
+
+  GoogleAppsDriveLabelsV2LabelLockCapabilities({
+    this.canViewPolicy,
+  });
+
+  GoogleAppsDriveLabelsV2LabelLockCapabilities.fromJson(core.Map json_)
+      : this(
+          canViewPolicy: json_.containsKey('canViewPolicy')
+              ? json_['canViewPolicy'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (canViewPolicy != null) 'canViewPolicy': canViewPolicy!,
+      };
+}
+
+/// The permission that applies to a principal (user, group, audience) on a
+/// label.
+class GoogleAppsDriveLabelsV2LabelPermission {
+  /// Audience to grant a role to.
+  ///
+  /// The magic value of `audiences/default` may be used to apply the role to
+  /// the default audience in the context of the organization that owns the
+  /// Label.
+  core.String? audience;
+
+  /// Specifies the email address for a user or group pricinpal.
+  ///
+  /// Not populated for audience principals. User and Group permissions may only
+  /// be inserted using email address. On update requests, if email address is
+  /// specified, no principal should be specified.
+  core.String? email;
+
+  /// Group resource name.
+  core.String? group;
+
+  /// Resource name of this permission.
+  core.String? name;
+
+  /// Person resource name.
+  core.String? person;
+
+  /// The role the principal should have.
+  /// Possible string values are:
+  /// - "LABEL_ROLE_UNSPECIFIED" : Unknown role.
+  /// - "READER" : A reader can read the label and associated metadata applied
+  /// to Drive items.
+  /// - "APPLIER" : An applier can write associated metadata on Drive items in
+  /// which they also have write access to. Implies `READER`.
+  /// - "ORGANIZER" : An organizer can pin this label in shared drives they
+  /// manage and add new appliers to the label.
+  /// - "EDITOR" : Editors can make any update including deleting the label
+  /// which also deletes the associated Drive item metadata. Implies `APPLIER`.
+  core.String? role;
+
+  GoogleAppsDriveLabelsV2LabelPermission({
+    this.audience,
+    this.email,
+    this.group,
+    this.name,
+    this.person,
+    this.role,
+  });
+
+  GoogleAppsDriveLabelsV2LabelPermission.fromJson(core.Map json_)
+      : this(
+          audience: json_.containsKey('audience')
+              ? json_['audience'] as core.String
+              : null,
+          email:
+              json_.containsKey('email') ? json_['email'] as core.String : null,
+          group:
+              json_.containsKey('group') ? json_['group'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          person: json_.containsKey('person')
+              ? json_['person'] as core.String
+              : null,
+          role: json_.containsKey('role') ? json_['role'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (audience != null) 'audience': audience!,
+        if (email != null) 'email': email!,
+        if (group != null) 'group': group!,
+        if (name != null) 'name': name!,
+        if (person != null) 'person': person!,
+        if (role != null) 'role': role!,
       };
 }
 
@@ -1884,6 +4814,71 @@ class GoogleAppsDriveLabelsV2LifecycleDisabledPolicy {
       };
 }
 
+/// The response to a ListLabelLocksRequest.
+class GoogleAppsDriveLabelsV2ListLabelLocksResponse {
+  /// LabelLocks.
+  core.List<GoogleAppsDriveLabelsV2LabelLock>? labelLocks;
+
+  /// The token of the next page in the response.
+  core.String? nextPageToken;
+
+  GoogleAppsDriveLabelsV2ListLabelLocksResponse({
+    this.labelLocks,
+    this.nextPageToken,
+  });
+
+  GoogleAppsDriveLabelsV2ListLabelLocksResponse.fromJson(core.Map json_)
+      : this(
+          labelLocks: json_.containsKey('labelLocks')
+              ? (json_['labelLocks'] as core.List)
+                  .map((value) => GoogleAppsDriveLabelsV2LabelLock.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (labelLocks != null) 'labelLocks': labelLocks!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Response for listing the permissions on a Label.
+class GoogleAppsDriveLabelsV2ListLabelPermissionsResponse {
+  /// Label permissions.
+  core.List<GoogleAppsDriveLabelsV2LabelPermission>? labelPermissions;
+
+  /// The token of the next page in the response.
+  core.String? nextPageToken;
+
+  GoogleAppsDriveLabelsV2ListLabelPermissionsResponse({
+    this.labelPermissions,
+    this.nextPageToken,
+  });
+
+  GoogleAppsDriveLabelsV2ListLabelPermissionsResponse.fromJson(core.Map json_)
+      : this(
+          labelPermissions: json_.containsKey('labelPermissions')
+              ? (json_['labelPermissions'] as core.List)
+                  .map((value) =>
+                      GoogleAppsDriveLabelsV2LabelPermission.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (labelPermissions != null) 'labelPermissions': labelPermissions!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
 /// Response for listing Labels.
 class GoogleAppsDriveLabelsV2ListLabelsResponse {
   /// Labels.
@@ -1916,6 +4911,27 @@ class GoogleAppsDriveLabelsV2ListLabelsResponse {
       };
 }
 
+/// Limits for list-variant of a Field type.
+class GoogleAppsDriveLabelsV2ListLimits {
+  /// Maximum number of values allowed for the Field type.
+  core.int? maxEntries;
+
+  GoogleAppsDriveLabelsV2ListLimits({
+    this.maxEntries,
+  });
+
+  GoogleAppsDriveLabelsV2ListLimits.fromJson(core.Map json_)
+      : this(
+          maxEntries: json_.containsKey('maxEntries')
+              ? json_['maxEntries'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (maxEntries != null) 'maxEntries': maxEntries!,
+      };
+}
+
 /// Contains information about whether a label component should be considered
 /// locked.
 class GoogleAppsDriveLabelsV2LockStatus {
@@ -1943,6 +4959,348 @@ class GoogleAppsDriveLabelsV2LockStatus {
       };
 }
 
+/// Limits for long text Field type.
+class GoogleAppsDriveLabelsV2LongTextLimits {
+  /// Maximum length allowed for a long text Field type.
+  core.int? maxLength;
+
+  /// Minimum length allowed for a long text Field type.
+  core.int? minLength;
+
+  GoogleAppsDriveLabelsV2LongTextLimits({
+    this.maxLength,
+    this.minLength,
+  });
+
+  GoogleAppsDriveLabelsV2LongTextLimits.fromJson(core.Map json_)
+      : this(
+          maxLength: json_.containsKey('maxLength')
+              ? json_['maxLength'] as core.int
+              : null,
+          minLength: json_.containsKey('minLength')
+              ? json_['minLength'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (maxLength != null) 'maxLength': maxLength!,
+        if (minLength != null) 'minLength': minLength!,
+      };
+}
+
+/// Request to publish a label.
+class GoogleAppsDriveLabelsV2PublishLabelRequest {
+  /// The BCP-47 language code to use for evaluating localized field labels.
+  ///
+  /// When not specified, values in the default configured language will be
+  /// used.
+  core.String? languageCode;
+
+  /// Set to `true` in order to use the user's admin credentials.
+  ///
+  /// The server will verify the user is an admin for the Label before allowing
+  /// access.
+  core.bool? useAdminAccess;
+
+  /// Provides control over how write requests are executed.
+  ///
+  /// Defaults to unset, which means last write wins.
+  GoogleAppsDriveLabelsV2WriteControl? writeControl;
+
+  GoogleAppsDriveLabelsV2PublishLabelRequest({
+    this.languageCode,
+    this.useAdminAccess,
+    this.writeControl,
+  });
+
+  GoogleAppsDriveLabelsV2PublishLabelRequest.fromJson(core.Map json_)
+      : this(
+          languageCode: json_.containsKey('languageCode')
+              ? json_['languageCode'] as core.String
+              : null,
+          useAdminAccess: json_.containsKey('useAdminAccess')
+              ? json_['useAdminAccess'] as core.bool
+              : null,
+          writeControl: json_.containsKey('writeControl')
+              ? GoogleAppsDriveLabelsV2WriteControl.fromJson(
+                  json_['writeControl'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (languageCode != null) 'languageCode': languageCode!,
+        if (useAdminAccess != null) 'useAdminAccess': useAdminAccess!,
+        if (writeControl != null) 'writeControl': writeControl!,
+      };
+}
+
+/// Limits for selection Field type.
+class GoogleAppsDriveLabelsV2SelectionLimits {
+  /// Limits for list-variant of a Field type.
+  GoogleAppsDriveLabelsV2ListLimits? listLimits;
+
+  /// The max number of choices.
+  core.int? maxChoices;
+
+  /// Maximum number of deleted choices.
+  core.int? maxDeletedChoices;
+
+  /// Maximum length for display name.
+  core.int? maxDisplayNameLength;
+
+  /// Maximum ID length for a selection options.
+  core.int? maxIdLength;
+
+  GoogleAppsDriveLabelsV2SelectionLimits({
+    this.listLimits,
+    this.maxChoices,
+    this.maxDeletedChoices,
+    this.maxDisplayNameLength,
+    this.maxIdLength,
+  });
+
+  GoogleAppsDriveLabelsV2SelectionLimits.fromJson(core.Map json_)
+      : this(
+          listLimits: json_.containsKey('listLimits')
+              ? GoogleAppsDriveLabelsV2ListLimits.fromJson(
+                  json_['listLimits'] as core.Map<core.String, core.dynamic>)
+              : null,
+          maxChoices: json_.containsKey('maxChoices')
+              ? json_['maxChoices'] as core.int
+              : null,
+          maxDeletedChoices: json_.containsKey('maxDeletedChoices')
+              ? json_['maxDeletedChoices'] as core.int
+              : null,
+          maxDisplayNameLength: json_.containsKey('maxDisplayNameLength')
+              ? json_['maxDisplayNameLength'] as core.int
+              : null,
+          maxIdLength: json_.containsKey('maxIdLength')
+              ? json_['maxIdLength'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (listLimits != null) 'listLimits': listLimits!,
+        if (maxChoices != null) 'maxChoices': maxChoices!,
+        if (maxDeletedChoices != null) 'maxDeletedChoices': maxDeletedChoices!,
+        if (maxDisplayNameLength != null)
+          'maxDisplayNameLength': maxDisplayNameLength!,
+        if (maxIdLength != null) 'maxIdLength': maxIdLength!,
+      };
+}
+
+/// Limits for text Field type.
+class GoogleAppsDriveLabelsV2TextLimits {
+  /// Maximum length allowed for a text Field type.
+  core.int? maxLength;
+
+  /// Minimum length allowed for a text Field type.
+  core.int? minLength;
+
+  GoogleAppsDriveLabelsV2TextLimits({
+    this.maxLength,
+    this.minLength,
+  });
+
+  GoogleAppsDriveLabelsV2TextLimits.fromJson(core.Map json_)
+      : this(
+          maxLength: json_.containsKey('maxLength')
+              ? json_['maxLength'] as core.int
+              : null,
+          minLength: json_.containsKey('minLength')
+              ? json_['minLength'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (maxLength != null) 'maxLength': maxLength!,
+        if (minLength != null) 'minLength': minLength!,
+      };
+}
+
+/// Request to update the `CopyMode` of the given Label.
+///
+/// Changes to this policy are not revisioned, do not require publishing, and
+/// take effect immediately. \
+class GoogleAppsDriveLabelsV2UpdateLabelCopyModeRequest {
+  /// Indicates how the applied Label, and Field values should be copied when a
+  /// Drive item is copied.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "COPY_MODE_UNSPECIFIED" : Copy mode unspecified.
+  /// - "DO_NOT_COPY" : The applied label and field values are not copied by
+  /// default when the Drive item it's applied to is copied.
+  /// - "ALWAYS_COPY" : The applied label and field values are always copied
+  /// when the Drive item it's applied to is copied. Only admins can use this
+  /// mode.
+  /// - "COPY_APPLIABLE" : The applied label and field values are copied if the
+  /// label is appliable by the user making the copy.
+  core.String? copyMode;
+
+  /// The BCP-47 language code to use for evaluating localized field labels.
+  ///
+  /// When not specified, values in the default configured language will be
+  /// used.
+  core.String? languageCode;
+
+  /// Set to `true` in order to use the user's admin credentials.
+  ///
+  /// The server will verify the user is an admin for the Label before allowing
+  /// access.
+  core.bool? useAdminAccess;
+
+  /// When specified, only certain fields belonging to the indicated view will
+  /// be returned.
+  /// Possible string values are:
+  /// - "LABEL_VIEW_BASIC" : Implies the field mask:
+  /// `name,id,revision_id,label_type,properties.*`
+  /// - "LABEL_VIEW_FULL" : All possible fields.
+  core.String? view;
+
+  GoogleAppsDriveLabelsV2UpdateLabelCopyModeRequest({
+    this.copyMode,
+    this.languageCode,
+    this.useAdminAccess,
+    this.view,
+  });
+
+  GoogleAppsDriveLabelsV2UpdateLabelCopyModeRequest.fromJson(core.Map json_)
+      : this(
+          copyMode: json_.containsKey('copyMode')
+              ? json_['copyMode'] as core.String
+              : null,
+          languageCode: json_.containsKey('languageCode')
+              ? json_['languageCode'] as core.String
+              : null,
+          useAdminAccess: json_.containsKey('useAdminAccess')
+              ? json_['useAdminAccess'] as core.bool
+              : null,
+          view: json_.containsKey('view') ? json_['view'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (copyMode != null) 'copyMode': copyMode!,
+        if (languageCode != null) 'languageCode': languageCode!,
+        if (useAdminAccess != null) 'useAdminAccess': useAdminAccess!,
+        if (view != null) 'view': view!,
+      };
+}
+
+/// Updates a Label Permission.
+///
+/// Permissions affect the Label resource as a whole, are not revisioned, and do
+/// not require publishing.
+class GoogleAppsDriveLabelsV2UpdateLabelPermissionRequest {
+  /// The permission to create or update on the Label.
+  ///
+  /// Required.
+  GoogleAppsDriveLabelsV2LabelPermission? labelPermission;
+
+  /// The parent Label resource name.
+  ///
+  /// Required.
+  core.String? parent;
+
+  /// Set to `true` in order to use the user's admin credentials.
+  ///
+  /// The server will verify the user is an admin for the Label before allowing
+  /// access.
+  core.bool? useAdminAccess;
+
+  GoogleAppsDriveLabelsV2UpdateLabelPermissionRequest({
+    this.labelPermission,
+    this.parent,
+    this.useAdminAccess,
+  });
+
+  GoogleAppsDriveLabelsV2UpdateLabelPermissionRequest.fromJson(core.Map json_)
+      : this(
+          labelPermission: json_.containsKey('labelPermission')
+              ? GoogleAppsDriveLabelsV2LabelPermission.fromJson(
+                  json_['labelPermission']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          parent: json_.containsKey('parent')
+              ? json_['parent'] as core.String
+              : null,
+          useAdminAccess: json_.containsKey('useAdminAccess')
+              ? json_['useAdminAccess'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (labelPermission != null) 'labelPermission': labelPermission!,
+        if (parent != null) 'parent': parent!,
+        if (useAdminAccess != null) 'useAdminAccess': useAdminAccess!,
+      };
+}
+
+/// The capabilities of a user.
+class GoogleAppsDriveLabelsV2UserCapabilities {
+  /// Whether the user is allowed access to the label manager.
+  ///
+  /// Output only.
+  core.bool? canAccessLabelManager;
+
+  /// Whether the user is an administrator for the shared labels feature.
+  ///
+  /// Output only.
+  core.bool? canAdministrateLabels;
+
+  /// Whether the user is allowed to create new admin labels.
+  ///
+  /// Output only.
+  core.bool? canCreateAdminLabels;
+
+  /// Whether the user is allowed to create new shared labels.
+  ///
+  /// Output only.
+  core.bool? canCreateSharedLabels;
+
+  /// Resource name for the user capabilities.
+  ///
+  /// Output only.
+  core.String? name;
+
+  GoogleAppsDriveLabelsV2UserCapabilities({
+    this.canAccessLabelManager,
+    this.canAdministrateLabels,
+    this.canCreateAdminLabels,
+    this.canCreateSharedLabels,
+    this.name,
+  });
+
+  GoogleAppsDriveLabelsV2UserCapabilities.fromJson(core.Map json_)
+      : this(
+          canAccessLabelManager: json_.containsKey('canAccessLabelManager')
+              ? json_['canAccessLabelManager'] as core.bool
+              : null,
+          canAdministrateLabels: json_.containsKey('canAdministrateLabels')
+              ? json_['canAdministrateLabels'] as core.bool
+              : null,
+          canCreateAdminLabels: json_.containsKey('canCreateAdminLabels')
+              ? json_['canCreateAdminLabels'] as core.bool
+              : null,
+          canCreateSharedLabels: json_.containsKey('canCreateSharedLabels')
+              ? json_['canCreateSharedLabels'] as core.bool
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (canAccessLabelManager != null)
+          'canAccessLabelManager': canAccessLabelManager!,
+        if (canAdministrateLabels != null)
+          'canAdministrateLabels': canAdministrateLabels!,
+        if (canCreateAdminLabels != null)
+          'canCreateAdminLabels': canCreateAdminLabels!,
+        if (canCreateSharedLabels != null)
+          'canCreateSharedLabels': canCreateSharedLabels!,
+        if (name != null) 'name': name!,
+      };
+}
+
 /// Information about a user.
 class GoogleAppsDriveLabelsV2UserInfo {
   /// The identifier for this user that can be used with the People API to get
@@ -1967,34 +5325,91 @@ class GoogleAppsDriveLabelsV2UserInfo {
       };
 }
 
+/// Limits for Field.Type.USER.
+class GoogleAppsDriveLabelsV2UserLimits {
+  /// Limits for list-variant of a Field type.
+  GoogleAppsDriveLabelsV2ListLimits? listLimits;
+
+  GoogleAppsDriveLabelsV2UserLimits({
+    this.listLimits,
+  });
+
+  GoogleAppsDriveLabelsV2UserLimits.fromJson(core.Map json_)
+      : this(
+          listLimits: json_.containsKey('listLimits')
+              ? GoogleAppsDriveLabelsV2ListLimits.fromJson(
+                  json_['listLimits'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (listLimits != null) 'listLimits': listLimits!,
+      };
+}
+
+/// Provides control over how write requests are executed.
+///
+/// When not specified, the last write wins.
+class GoogleAppsDriveLabelsV2WriteControl {
+  /// The revision_id of the label that the write request will be applied to.
+  ///
+  /// If this is not the latest revision of the label, the request will not be
+  /// processed and will return a 400 Bad Request error.
+  core.String? requiredRevisionId;
+
+  GoogleAppsDriveLabelsV2WriteControl({
+    this.requiredRevisionId,
+  });
+
+  GoogleAppsDriveLabelsV2WriteControl.fromJson(core.Map json_)
+      : this(
+          requiredRevisionId: json_.containsKey('requiredRevisionId')
+              ? json_['requiredRevisionId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (requiredRevisionId != null)
+          'requiredRevisionId': requiredRevisionId!,
+      };
+}
+
+/// A generic empty message that you can re-use to avoid defining duplicated
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); }
+typedef GoogleProtobufEmpty = $Empty;
+
 /// Represents a color in the RGBA color space.
 ///
-/// This representation is designed for simplicity of conversion to/from color
-/// representations in various languages over compactness. For example, the
-/// fields of this representation can be trivially provided to the constructor
-/// of `java.awt.Color` in Java; it can also be trivially provided to UIColor's
-/// `+colorWithRed:green:blue:alpha` method in iOS; and, with just a little
-/// work, it can be easily formatted into a CSS `rgba()` string in JavaScript.
-/// This reference page doesn't carry information about the absolute color space
-/// that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
-/// DCI-P3, BT.2020, etc.). By default, applications should assume the sRGB
-/// color space. When color equality needs to be decided, implementations,
-/// unless documented otherwise, treat two colors as equal if all their red,
-/// green, blue, and alpha values each differ by at most 1e-5. Example (Java):
-/// import com.google.type.Color; // ... public static java.awt.Color
-/// fromProto(Color protocolor) { float alpha = protocolor.hasAlpha() ?
-/// protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color(
-/// protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); }
-/// public static Color toProto(java.awt.Color color) { float red = (float)
-/// color.getRed(); float green = (float) color.getGreen(); float blue = (float)
-/// color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder =
-/// Color .newBuilder() .setRed(red / denominator) .setGreen(green /
-/// denominator) .setBlue(blue / denominator); int alpha = color.getAlpha(); if
-/// (alpha != 255) { result.setAlpha( FloatValue .newBuilder()
-/// .setValue(((float) alpha) / denominator) .build()); } return
-/// resultBuilder.build(); } // ... Example (iOS / Obj-C): // ... static
-/// UIColor* fromProto(Color* protocolor) { float red = \[protocolor red\];
-/// float green = \[protocolor green\]; float blue = \[protocolor blue\];
+/// This representation is designed for simplicity of conversion to and from
+/// color representations in various languages over compactness. For example,
+/// the fields of this representation can be trivially provided to the
+/// constructor of `java.awt.Color` in Java; it can also be trivially provided
+/// to UIColor's `+colorWithRed:green:blue:alpha` method in iOS; and, with just
+/// a little work, it can be easily formatted into a CSS `rgba()` string in
+/// JavaScript. This reference page doesn't have information about the absolute
+/// color space that should be used to interpret the RGB value—for example,
+/// sRGB, Adobe RGB, DCI-P3, and BT.2020. By default, applications should assume
+/// the sRGB color space. When color equality needs to be decided,
+/// implementations, unless documented otherwise, treat two colors as equal if
+/// all their red, green, blue, and alpha values each differ by at most `1e-5`.
+/// Example (Java): import com.google.type.Color; // ... public static
+/// java.awt.Color fromProto(Color protocolor) { float alpha =
+/// protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new
+/// java.awt.Color( protocolor.getRed(), protocolor.getGreen(),
+/// protocolor.getBlue(), alpha); } public static Color toProto(java.awt.Color
+/// color) { float red = (float) color.getRed(); float green = (float)
+/// color.getGreen(); float blue = (float) color.getBlue(); float denominator =
+/// 255.0; Color.Builder resultBuilder = Color .newBuilder() .setRed(red /
+/// denominator) .setGreen(green / denominator) .setBlue(blue / denominator);
+/// int alpha = color.getAlpha(); if (alpha != 255) { result.setAlpha(
+/// FloatValue .newBuilder() .setValue(((float) alpha) / denominator) .build());
+/// } return resultBuilder.build(); } // ... Example (iOS / Obj-C): // ...
+/// static UIColor* fromProto(Color* protocolor) { float red = \[protocolor
+/// red\]; float green = \[protocolor green\]; float blue = \[protocolor blue\];
 /// FloatValue* alpha_wrapper = \[protocolor alpha\]; float alpha = 1.0; if
 /// (alpha_wrapper != nil) { alpha = \[alpha_wrapper value\]; } return \[UIColor
 /// colorWithRed:red green:green blue:blue alpha:alpha\]; } static Color*

@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Google Sheets API - v4
@@ -24,7 +23,7 @@
 ///   - [SpreadsheetsDeveloperMetadataResource]
 ///   - [SpreadsheetsSheetsResource]
 ///   - [SpreadsheetsValuesResource]
-library sheets.v4;
+library sheets_v4;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -33,7 +32,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -180,12 +178,13 @@ class SpreadsheetsResource {
   ///
   /// The caller must specify the spreadsheet ID. By default, data within grids
   /// is not returned. You can include grid data in one of 2 ways: * Specify a
-  /// field mask listing your desired fields using the `fields` URL parameter in
-  /// HTTP * Set the includeGridData URL parameter to true. If a field mask is
-  /// set, the `includeGridData` parameter is ignored For large spreadsheets, as
-  /// a best practice, retrieve only the specific spreadsheet fields that you
-  /// want. To retrieve only subsets of spreadsheet data, use the ranges URL
-  /// parameter. Ranges are specified using \[A1
+  /// [field mask](https://developers.google.com/sheets/api/guides/field-masks)
+  /// listing your desired fields using the `fields` URL parameter in HTTP * Set
+  /// the includeGridData URL parameter to true. If a field mask is set, the
+  /// `includeGridData` parameter is ignored For large spreadsheets, as a best
+  /// practice, retrieve only the specific spreadsheet fields that you want. To
+  /// retrieve only subsets of spreadsheet data, use the ranges URL parameter.
+  /// Ranges are specified using \[A1
   /// notation\](/sheets/api/guides/concepts#cell). You can define a single cell
   /// (for example, `A1`) or multiple cells (for example, `A1:D5`). You can also
   /// get cells from other sheets within the same spreadsheet (for example,
@@ -243,11 +242,12 @@ class SpreadsheetsResource {
   /// can be specified. Specifying one or more data filters returns the portions
   /// of the spreadsheet that intersect ranges matched by any of the filters. By
   /// default, data within grids is not returned. You can include grid data one
-  /// of 2 ways: * Specify a field mask listing your desired fields using the
-  /// `fields` URL parameter in HTTP * Set the includeGridData parameter to
-  /// true. If a field mask is set, the `includeGridData` parameter is ignored
-  /// For large spreadsheets, as a best practice, retrieve only the specific
-  /// spreadsheet fields that you want.
+  /// of 2 ways: * Specify a
+  /// [field mask](https://developers.google.com/sheets/api/guides/field-masks)
+  /// listing your desired fields using the `fields` URL parameter in HTTP * Set
+  /// the includeGridData parameter to true. If a field mask is set, the
+  /// `includeGridData` parameter is ignored For large spreadsheets, as a best
+  /// practice, retrieve only the specific spreadsheet fields that you want.
   ///
   /// [request] - The metadata request object.
   ///
@@ -502,8 +502,8 @@ class SpreadsheetsValuesResource {
   /// [responseValueRenderOption] - Determines how values in the response should
   /// be rendered. The default render option is FORMATTED_VALUE.
   /// Possible string values are:
-  /// - "FORMATTED_VALUE" : Values will be calculated & formatted in the reply
-  /// according to the cell's formatting. Formatting is based on the
+  /// - "FORMATTED_VALUE" : Values will be calculated & formatted in the
+  /// response according to the cell's formatting. Formatting is based on the
   /// spreadsheet's locale, not the requesting user's locale. For example, if
   /// `A1` is `1.23` and `A2` is `=A1` and formatted as currency, then `A2`
   /// would return `"$1.23"`.
@@ -512,7 +512,11 @@ class SpreadsheetsValuesResource {
   /// as currency, then `A2` would return the number `1.23`.
   /// - "FORMULA" : Values will not be calculated. The reply will include the
   /// formulas. For example, if `A1` is `1.23` and `A2` is `=A1` and formatted
-  /// as currency, then A2 would return `"=A1"`.
+  /// as currency, then A2 would return `"=A1"`. Sheets treats date and time
+  /// values as decimal values. This lets you perform arithmetic on them in
+  /// formulas. For more information on interpreting date and time values, see
+  /// \[About date & time
+  /// values\](https://developers.google.com/sheets/api/guides/formats#about_date_time_values).
   ///
   /// [valueInputOption] - How the input data should be interpreted.
   /// Possible string values are:
@@ -709,8 +713,8 @@ class SpreadsheetsValuesResource {
   /// [valueRenderOption] - How values should be represented in the output. The
   /// default render option is ValueRenderOption.FORMATTED_VALUE.
   /// Possible string values are:
-  /// - "FORMATTED_VALUE" : Values will be calculated & formatted in the reply
-  /// according to the cell's formatting. Formatting is based on the
+  /// - "FORMATTED_VALUE" : Values will be calculated & formatted in the
+  /// response according to the cell's formatting. Formatting is based on the
   /// spreadsheet's locale, not the requesting user's locale. For example, if
   /// `A1` is `1.23` and `A2` is `=A1` and formatted as currency, then `A2`
   /// would return `"$1.23"`.
@@ -719,7 +723,11 @@ class SpreadsheetsValuesResource {
   /// as currency, then `A2` would return the number `1.23`.
   /// - "FORMULA" : Values will not be calculated. The reply will include the
   /// formulas. For example, if `A1` is `1.23` and `A2` is `=A1` and formatted
-  /// as currency, then A2 would return `"=A1"`.
+  /// as currency, then A2 would return `"=A1"`. Sheets treats date and time
+  /// values as decimal values. This lets you perform arithmetic on them in
+  /// formulas. For more information on interpreting date and time values, see
+  /// \[About date & time
+  /// values\](https://developers.google.com/sheets/api/guides/formats#about_date_time_values).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -978,10 +986,10 @@ class SpreadsheetsValuesResource {
   /// spreadsheet locale).
   ///
   /// [majorDimension] - The major dimension that results should use. For
-  /// example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`, then
-  /// requesting `range=A1:B2,majorDimension=ROWS` returns `[[1,2],[3,4]]`,
-  /// whereas requesting `range=A1:B2,majorDimension=COLUMNS` returns
-  /// `[[1,3],[2,4]]`.
+  /// example, if the spreadsheet data in Sheet1 is: `A1=1,B1=2,A2=3,B2=4`, then
+  /// requesting `range=Sheet1!A1:B2?majorDimension=ROWS` returns
+  /// `[[1,2],[3,4]]`, whereas requesting
+  /// `range=Sheet1!A1:B2?majorDimension=COLUMNS` returns `[[1,3],[2,4]]`.
   /// Possible string values are:
   /// - "DIMENSION_UNSPECIFIED" : The default value, do not use.
   /// - "ROWS" : Operates on the rows of a sheet.
@@ -990,8 +998,8 @@ class SpreadsheetsValuesResource {
   /// [valueRenderOption] - How values should be represented in the output. The
   /// default render option is FORMATTED_VALUE.
   /// Possible string values are:
-  /// - "FORMATTED_VALUE" : Values will be calculated & formatted in the reply
-  /// according to the cell's formatting. Formatting is based on the
+  /// - "FORMATTED_VALUE" : Values will be calculated & formatted in the
+  /// response according to the cell's formatting. Formatting is based on the
   /// spreadsheet's locale, not the requesting user's locale. For example, if
   /// `A1` is `1.23` and `A2` is `=A1` and formatted as currency, then `A2`
   /// would return `"$1.23"`.
@@ -1000,7 +1008,11 @@ class SpreadsheetsValuesResource {
   /// as currency, then `A2` would return the number `1.23`.
   /// - "FORMULA" : Values will not be calculated. The reply will include the
   /// formulas. For example, if `A1` is `1.23` and `A2` is `=A1` and formatted
-  /// as currency, then A2 would return `"=A1"`.
+  /// as currency, then A2 would return `"=A1"`. Sheets treats date and time
+  /// values as decimal values. This lets you perform arithmetic on them in
+  /// formulas. For more information on interpreting date and time values, see
+  /// \[About date & time
+  /// values\](https://developers.google.com/sheets/api/guides/formats#about_date_time_values).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1081,8 +1093,8 @@ class SpreadsheetsValuesResource {
   /// [responseValueRenderOption] - Determines how values in the response should
   /// be rendered. The default render option is FORMATTED_VALUE.
   /// Possible string values are:
-  /// - "FORMATTED_VALUE" : Values will be calculated & formatted in the reply
-  /// according to the cell's formatting. Formatting is based on the
+  /// - "FORMATTED_VALUE" : Values will be calculated & formatted in the
+  /// response according to the cell's formatting. Formatting is based on the
   /// spreadsheet's locale, not the requesting user's locale. For example, if
   /// `A1` is `1.23` and `A2` is `=A1` and formatted as currency, then `A2`
   /// would return `"$1.23"`.
@@ -1091,7 +1103,11 @@ class SpreadsheetsValuesResource {
   /// as currency, then `A2` would return the number `1.23`.
   /// - "FORMULA" : Values will not be calculated. The reply will include the
   /// formulas. For example, if `A1` is `1.23` and `A2` is `=A1` and formatted
-  /// as currency, then A2 would return `"=A1"`.
+  /// as currency, then A2 would return `"=A1"`. Sheets treats date and time
+  /// values as decimal values. This lets you perform arithmetic on them in
+  /// formulas. For more information on interpreting date and time values, see
+  /// \[About date & time
+  /// values\](https://developers.google.com/sheets/api/guides/formats#about_date_time_values).
   ///
   /// [valueInputOption] - How the input data should be interpreted.
   /// Possible string values are:
@@ -1924,6 +1940,9 @@ class BandingProperties {
   /// The first color that is alternating.
   ///
   /// (Required) Deprecated: Use first_band_color_style.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Color? firstBandColor;
 
   /// The first color that is alternating.
@@ -1936,6 +1955,9 @@ class BandingProperties {
   /// If this field is not set, the last row or column is filled with either
   /// first_band_color or second_band_color, depending on the color of the
   /// previous row or column. Deprecated: Use footer_color_style.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Color? footerColor;
 
   /// The color of the last row or column.
@@ -1953,6 +1975,9 @@ class BandingProperties {
   /// starting from the second row or column. Otherwise, the first row or column
   /// is filled with first_band_color and the colors proceed to alternate as
   /// they normally would. Deprecated: Use header_color_style.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Color? headerColor;
 
   /// The color of the first row or column.
@@ -1968,6 +1993,9 @@ class BandingProperties {
   /// The second color that is alternating.
   ///
   /// (Required) Deprecated: Use second_band_color_style.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Color? secondBandColor;
 
   /// The second color that is alternating.
@@ -2056,6 +2084,9 @@ class BaselineValueFormat {
   /// key value.
   ///
   /// This field is optional. Deprecated: Use negative_color_style.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Color? negativeColor;
 
   /// Color to be used, in case baseline value represents a negative change for
@@ -2074,6 +2105,9 @@ class BaselineValueFormat {
   /// key value.
   ///
   /// This field is optional. Deprecated: Use positive_color_style.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Color? positiveColor;
 
   /// Color to be used, in case baseline value represents a positive change for
@@ -2263,6 +2297,9 @@ class BasicChartSeries {
   /// this series.
   ///
   /// If empty, a default color is used. Deprecated: Use color_style.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Color? color;
 
   /// The color for elements (such as bars, lines, and points) associated with
@@ -2576,6 +2613,9 @@ class BasicFilter {
   ///
   /// The map's key is the column index, and the value is the criteria for that
   /// column. This field is deprecated in favor of filter_specs.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.Map<core.String, FilterCriteria>? criteria;
 
   /// The filter criteria per column.
@@ -2604,10 +2644,10 @@ class BasicFilter {
       : this(
           criteria: json_.containsKey('criteria')
               ? (json_['criteria'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     FilterCriteria.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -2642,6 +2682,9 @@ class BasicSeriesDataPointStyleOverride {
   /// Color of the series data point.
   ///
   /// If empty, the series default is used. Deprecated: Use color_style.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Color? color;
 
   /// Color of the series data point.
@@ -2856,8 +2899,8 @@ class BatchGetValuesByDataFilterRequest {
   ///
   /// The default render option is FORMATTED_VALUE.
   /// Possible string values are:
-  /// - "FORMATTED_VALUE" : Values will be calculated & formatted in the reply
-  /// according to the cell's formatting. Formatting is based on the
+  /// - "FORMATTED_VALUE" : Values will be calculated & formatted in the
+  /// response according to the cell's formatting. Formatting is based on the
   /// spreadsheet's locale, not the requesting user's locale. For example, if
   /// `A1` is `1.23` and `A2` is `=A1` and formatted as currency, then `A2`
   /// would return `"$1.23"`.
@@ -2866,7 +2909,11 @@ class BatchGetValuesByDataFilterRequest {
   /// as currency, then `A2` would return the number `1.23`.
   /// - "FORMULA" : Values will not be calculated. The reply will include the
   /// formulas. For example, if `A1` is `1.23` and `A2` is `=A1` and formatted
-  /// as currency, then A2 would return `"=A1"`.
+  /// as currency, then A2 would return `"=A1"`. Sheets treats date and time
+  /// values as decimal values. This lets you perform arithmetic on them in
+  /// formulas. For more information on interpreting date and time values, see
+  /// \[About date & time
+  /// values\](https://developers.google.com/sheets/api/guides/formats#about_date_time_values).
   core.String? valueRenderOption;
 
   BatchGetValuesByDataFilterRequest({
@@ -3122,8 +3169,8 @@ class BatchUpdateValuesByDataFilterRequest {
   ///
   /// The default render option is FORMATTED_VALUE.
   /// Possible string values are:
-  /// - "FORMATTED_VALUE" : Values will be calculated & formatted in the reply
-  /// according to the cell's formatting. Formatting is based on the
+  /// - "FORMATTED_VALUE" : Values will be calculated & formatted in the
+  /// response according to the cell's formatting. Formatting is based on the
   /// spreadsheet's locale, not the requesting user's locale. For example, if
   /// `A1` is `1.23` and `A2` is `=A1` and formatted as currency, then `A2`
   /// would return `"$1.23"`.
@@ -3132,7 +3179,11 @@ class BatchUpdateValuesByDataFilterRequest {
   /// as currency, then `A2` would return the number `1.23`.
   /// - "FORMULA" : Values will not be calculated. The reply will include the
   /// formulas. For example, if `A1` is `1.23` and `A2` is `=A1` and formatted
-  /// as currency, then A2 would return `"=A1"`.
+  /// as currency, then A2 would return `"=A1"`. Sheets treats date and time
+  /// values as decimal values. This lets you perform arithmetic on them in
+  /// formulas. For more information on interpreting date and time values, see
+  /// \[About date & time
+  /// values\](https://developers.google.com/sheets/api/guides/formats#about_date_time_values).
   core.String? responseValueRenderOption;
 
   /// How the input data should be interpreted.
@@ -3297,8 +3348,8 @@ class BatchUpdateValuesRequest {
   ///
   /// The default render option is FORMATTED_VALUE.
   /// Possible string values are:
-  /// - "FORMATTED_VALUE" : Values will be calculated & formatted in the reply
-  /// according to the cell's formatting. Formatting is based on the
+  /// - "FORMATTED_VALUE" : Values will be calculated & formatted in the
+  /// response according to the cell's formatting. Formatting is based on the
   /// spreadsheet's locale, not the requesting user's locale. For example, if
   /// `A1` is `1.23` and `A2` is `=A1` and formatted as currency, then `A2`
   /// would return `"$1.23"`.
@@ -3307,7 +3358,11 @@ class BatchUpdateValuesRequest {
   /// as currency, then `A2` would return the number `1.23`.
   /// - "FORMULA" : Values will not be calculated. The reply will include the
   /// formulas. For example, if `A1` is `1.23` and `A2` is `=A1` and formatted
-  /// as currency, then A2 would return `"=A1"`.
+  /// as currency, then A2 would return `"=A1"`. Sheets treats date and time
+  /// values as decimal values. This lets you perform arithmetic on them in
+  /// formulas. For more information on interpreting date and time values, see
+  /// \[About date & time
+  /// values\](https://developers.google.com/sheets/api/guides/formats#about_date_time_values).
   core.String? responseValueRenderOption;
 
   /// How the input data should be interpreted.
@@ -3651,6 +3706,8 @@ class BooleanCondition {
   /// - "DATE_NOT_EQ" : The cell's value must be exactly not the condition's
   /// value. Supported by filters on data source objects. Requires at least one
   /// ConditionValue.
+  /// - "FILTER_EXPRESSION" : The cell's value must follow the pattern
+  /// specified. Requires a single ConditionValue.
   core.String? type;
 
   /// The values of the condition.
@@ -3723,6 +3780,9 @@ class Border {
   /// The color of the border.
   ///
   /// Deprecated: Use color_style.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Color? color;
 
   /// The color of the border.
@@ -3746,6 +3806,9 @@ class Border {
   /// The width of the border, in pixels.
   ///
   /// Deprecated; the width is determined by the "style" field.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.int? width;
 
   Border({
@@ -3832,6 +3895,9 @@ class BubbleChartSpec {
   /// The bubble border color.
   ///
   /// Deprecated: Use bubble_border_color_style.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Color? bubbleBorderColor;
 
   /// The bubble border color.
@@ -4213,7 +4279,7 @@ class CellData {
 
   /// The value the user entered in the cell.
   ///
-  /// e.g, `1234`, `'Hello'`, or `=NOW()` Note: Dates, Times and DateTimes are
+  /// e.g., `1234`, `'Hello'`, or `=NOW()` Note: Dates, Times and DateTimes are
   /// represented as doubles in serial number format.
   ExtendedValue? userEnteredValue;
 
@@ -4302,6 +4368,9 @@ class CellFormat {
   /// The background color of the cell.
   ///
   /// Deprecated: Use background_color_style.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Color? backgroundColor;
 
   /// The background color of the cell.
@@ -4791,6 +4860,9 @@ class ChartSpec {
   /// The background color of the entire chart.
   ///
   /// Not applicable to Org charts. Deprecated: Use background_color_style.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Color? backgroundColor;
 
   /// The background color of the entire chart.
@@ -5110,32 +5182,32 @@ class ClearValuesResponse {
 
 /// Represents a color in the RGBA color space.
 ///
-/// This representation is designed for simplicity of conversion to/from color
-/// representations in various languages over compactness. For example, the
-/// fields of this representation can be trivially provided to the constructor
-/// of `java.awt.Color` in Java; it can also be trivially provided to UIColor's
-/// `+colorWithRed:green:blue:alpha` method in iOS; and, with just a little
-/// work, it can be easily formatted into a CSS `rgba()` string in JavaScript.
-/// This reference page doesn't carry information about the absolute color space
-/// that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
-/// DCI-P3, BT.2020, etc.). By default, applications should assume the sRGB
-/// color space. When color equality needs to be decided, implementations,
-/// unless documented otherwise, treat two colors as equal if all their red,
-/// green, blue, and alpha values each differ by at most 1e-5. Example (Java):
-/// import com.google.type.Color; // ... public static java.awt.Color
-/// fromProto(Color protocolor) { float alpha = protocolor.hasAlpha() ?
-/// protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color(
-/// protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); }
-/// public static Color toProto(java.awt.Color color) { float red = (float)
-/// color.getRed(); float green = (float) color.getGreen(); float blue = (float)
-/// color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder =
-/// Color .newBuilder() .setRed(red / denominator) .setGreen(green /
-/// denominator) .setBlue(blue / denominator); int alpha = color.getAlpha(); if
-/// (alpha != 255) { result.setAlpha( FloatValue .newBuilder()
-/// .setValue(((float) alpha) / denominator) .build()); } return
-/// resultBuilder.build(); } // ... Example (iOS / Obj-C): // ... static
-/// UIColor* fromProto(Color* protocolor) { float red = \[protocolor red\];
-/// float green = \[protocolor green\]; float blue = \[protocolor blue\];
+/// This representation is designed for simplicity of conversion to and from
+/// color representations in various languages over compactness. For example,
+/// the fields of this representation can be trivially provided to the
+/// constructor of `java.awt.Color` in Java; it can also be trivially provided
+/// to UIColor's `+colorWithRed:green:blue:alpha` method in iOS; and, with just
+/// a little work, it can be easily formatted into a CSS `rgba()` string in
+/// JavaScript. This reference page doesn't have information about the absolute
+/// color space that should be used to interpret the RGB value—for example,
+/// sRGB, Adobe RGB, DCI-P3, and BT.2020. By default, applications should assume
+/// the sRGB color space. When color equality needs to be decided,
+/// implementations, unless documented otherwise, treat two colors as equal if
+/// all their red, green, blue, and alpha values each differ by at most `1e-5`.
+/// Example (Java): import com.google.type.Color; // ... public static
+/// java.awt.Color fromProto(Color protocolor) { float alpha =
+/// protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new
+/// java.awt.Color( protocolor.getRed(), protocolor.getGreen(),
+/// protocolor.getBlue(), alpha); } public static Color toProto(java.awt.Color
+/// color) { float red = (float) color.getRed(); float green = (float)
+/// color.getGreen(); float blue = (float) color.getBlue(); float denominator =
+/// 255.0; Color.Builder resultBuilder = Color .newBuilder() .setRed(red /
+/// denominator) .setGreen(green / denominator) .setBlue(blue / denominator);
+/// int alpha = color.getAlpha(); if (alpha != 255) { result.setAlpha(
+/// FloatValue .newBuilder() .setValue(((float) alpha) / denominator) .build());
+/// } return resultBuilder.build(); } // ... Example (iOS / Obj-C): // ...
+/// static UIColor* fromProto(Color* protocolor) { float red = \[protocolor
+/// red\]; float green = \[protocolor green\]; float blue = \[protocolor blue\];
 /// FloatValue* alpha_wrapper = \[protocolor alpha\]; float alpha = 1.0; if
 /// (alpha_wrapper != nil) { alpha = \[alpha_wrapper value\]; } return \[UIColor
 /// colorWithRed:red green:green blue:blue alpha:alpha\]; } static Color*
@@ -7632,6 +7704,9 @@ class EmbeddedObjectBorder {
   /// The color of the border.
   ///
   /// Deprecated: Use color_style.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Color? color;
 
   /// The color of the border.
@@ -7823,6 +7898,9 @@ class FilterCriteria {
   ///
   /// Mutually exclusive with visible_foreground_color. Deprecated: Use
   /// visible_background_color_style.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Color? visibleBackgroundColor;
 
   /// The background fill color to filter by; only cells with this fill color
@@ -7838,6 +7916,9 @@ class FilterCriteria {
   ///
   /// Mutually exclusive with visible_background_color. Deprecated: Use
   /// visible_foreground_color_style.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Color? visibleForegroundColor;
 
   /// The foreground color to filter by; only cells with this foreground color
@@ -7950,6 +8031,9 @@ class FilterView {
   ///
   /// The map's key is the column index, and the value is the criteria for that
   /// column. This field is deprecated in favor of filter_specs.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.Map<core.String, FilterCriteria>? criteria;
 
   /// The filter criteria for showing/hiding values per column.
@@ -7994,10 +8078,10 @@ class FilterView {
       : this(
           criteria: json_.containsKey('criteria')
               ? (json_['criteria'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     FilterCriteria.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -8664,6 +8748,9 @@ class HistogramSeries {
   /// The color of the column representing this series in each bucket.
   ///
   /// This field is optional. Deprecated: Use bar_color_style.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Color? barColor;
 
   /// The color of the column representing this series in each bucket.
@@ -8791,6 +8878,9 @@ class InterpolationPoint {
   /// The color this interpolation point should use.
   ///
   /// Deprecated: Use color_style.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Color? color;
 
   /// The color this interpolation point should use.
@@ -9304,6 +9394,9 @@ class OrgChartSpec {
   /// The color of the org chart nodes.
   ///
   /// Deprecated: Use node_color_style.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Color? nodeColor;
 
   /// The color of the org chart nodes.
@@ -9328,6 +9421,9 @@ class OrgChartSpec {
   /// The color of the selected org chart nodes.
   ///
   /// Deprecated: Use selected_node_color_style.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Color? selectedNodeColor;
 
   /// The color of the selected org chart nodes.
@@ -10022,6 +10118,9 @@ class PivotTable {
   /// source was `C10:E15`, a key of `0` will have the filter for column `C`,
   /// whereas the key `1` is for column `D`. This field is deprecated in favor
   /// of filter_specs.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.Map<core.String, PivotFilterCriteria>? criteria;
 
   /// The data execution status for data source pivot tables.
@@ -10077,10 +10176,10 @@ class PivotTable {
               : null,
           criteria: json_.containsKey('criteria')
               ? (json_['criteria'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     PivotFilterCriteria.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -10701,7 +10800,7 @@ class Request {
   /// Randomizes the order of the rows in a range.
   RandomizeRangeRequest? randomizeRange;
 
-  /// Refreshs one or multiple data sources and associated dbobjects.
+  /// Refreshes one or multiple data sources and associated dbobjects.
   RefreshDataSourceRequest? refreshDataSource;
 
   /// Repeats a single cell across a range.
@@ -11933,6 +12032,9 @@ class SheetProperties {
   /// The color of the tab in the UI.
   ///
   /// Deprecated: Use tab_color_style.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Color? tabColor;
 
   /// The color of the tab in the UI.
@@ -12060,6 +12162,9 @@ class SlicerSpec {
   /// The background color of the slicer.
   ///
   /// Deprecated: Use background_color_style.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Color? backgroundColor;
 
   /// The background color of the slicer.
@@ -12201,6 +12306,9 @@ class SortSpec {
   ///
   /// Mutually exclusive with foreground_color. Deprecated: Use
   /// background_color_style.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Color? backgroundColor;
 
   /// The background fill color to sort by; cells with this fill color are
@@ -12221,6 +12329,9 @@ class SortSpec {
   ///
   /// Mutually exclusive with background_color. Deprecated: Use
   /// foreground_color_style.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Color? foregroundColor;
 
   /// The foreground color to sort by; cells with this foreground color are
@@ -12585,6 +12696,9 @@ class TextFormat {
   /// The foreground color of the text.
   ///
   /// Deprecated: Use foreground_color_style.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Color? foregroundColor;
 
   /// The foreground color of the text.
@@ -12873,6 +12987,9 @@ class TreemapChartColorScale {
   ///
   /// Defaults to #109618 if not specified. Deprecated: Use
   /// max_value_color_style.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Color? maxValueColor;
 
   /// The background color for cells with a color value greater than or equal to
@@ -12887,6 +13004,9 @@ class TreemapChartColorScale {
   ///
   /// Defaults to #efe6dc if not specified. Deprecated: Use
   /// mid_value_color_style.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Color? midValueColor;
 
   /// The background color for cells with a color value at the midpoint between
@@ -12901,6 +13021,9 @@ class TreemapChartColorScale {
   ///
   /// Defaults to #dc3912 if not specified. Deprecated: Use
   /// min_value_color_style.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Color? minValueColor;
 
   /// The background color for cells with a color value less than or equal to
@@ -12914,6 +13037,9 @@ class TreemapChartColorScale {
   /// them.
   ///
   /// Defaults to #000000 if not specified. Deprecated: Use no_data_color_style.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Color? noDataColor;
 
   /// The background color for cells that have no color data associated with
@@ -13012,6 +13138,9 @@ class TreemapChartSpec {
   /// The background color for header cells.
   ///
   /// Deprecated: Use header_color_style.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Color? headerColor;
 
   /// The background color for header cells.
@@ -14306,6 +14435,9 @@ class WaterfallChartColumnStyle {
   /// The color of the column.
   ///
   /// Deprecated: Use color_style.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Color? color;
 
   /// The color of the column.

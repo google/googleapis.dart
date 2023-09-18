@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud DNS API - v1
@@ -27,7 +26,7 @@
 /// - [ResourceRecordSetsResource]
 /// - [ResponsePoliciesResource]
 /// - [ResponsePolicyRulesResource]
-library dns.v1;
+library dns_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -36,7 +35,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -847,9 +845,9 @@ class ManagedZonesResource {
 
   /// Returns permissions that a caller has on the specified resource.
   ///
-  /// If the resource does not exist, this will return an empty set of
-  /// permissions, not a `NOT_FOUND` error. Note: This operation is designed to
-  /// be used for building permission-aware UIs and command-line tools, not for
+  /// If the resource does not exist, this returns an empty set of permissions,
+  /// not a `NOT_FOUND` error. Note: This operation is designed to be used for
+  /// building permission-aware UIs and command-line tools, not for
   /// authorization checking. This operation may "fail open" without warning.
   ///
   /// [request] - The metadata request object.
@@ -1798,7 +1796,7 @@ class ResponsePoliciesResource {
   ///
   /// [project] - Identifies the project addressed by this request.
   ///
-  /// [responsePolicy] - User assigned name of the Respones Policy addressed by
+  /// [responsePolicy] - User assigned name of the response policy addressed by
   /// this request.
   ///
   /// [clientOperationId] - For mutating operation requests only. An optional
@@ -2761,7 +2759,9 @@ class GoogleIamV1Binding {
   /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
   /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
-  /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
+  /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
+  /// (primary) that represents all the users of that domain. For example,
+  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
   /// An email address (plus unique identifier) representing a user that has
   /// been recently deleted. For example,
   /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
@@ -2777,9 +2777,7 @@ class GoogleIamV1Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
-  /// that represents all the users of that domain. For example, `google.com` or
-  /// `example.com`.
+  /// the role in the binding.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
@@ -3137,9 +3135,9 @@ class ManagedZone {
           kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -3329,11 +3327,18 @@ class ManagedZoneForwardingConfigNameServerTarget {
 
   /// IPv4 address of a target name server.
   core.String? ipv4Address;
+
+  /// IPv6 address of a target name server.
+  ///
+  /// Does not accept both fields (ipv4 & ipv6) being populated. Public preview
+  /// as of November 2022.
+  core.String? ipv6Address;
   core.String? kind;
 
   ManagedZoneForwardingConfigNameServerTarget({
     this.forwardingPath,
     this.ipv4Address,
+    this.ipv6Address,
     this.kind,
   });
 
@@ -3345,12 +3350,16 @@ class ManagedZoneForwardingConfigNameServerTarget {
           ipv4Address: json_.containsKey('ipv4Address')
               ? json_['ipv4Address'] as core.String
               : null,
+          ipv6Address: json_.containsKey('ipv6Address')
+              ? json_['ipv6Address'] as core.String
+              : null,
           kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (forwardingPath != null) 'forwardingPath': forwardingPath!,
         if (ipv4Address != null) 'ipv4Address': ipv4Address!,
+        if (ipv6Address != null) 'ipv6Address': ipv6Address!,
         if (kind != null) 'kind': kind!,
       };
 }
@@ -4107,13 +4116,20 @@ class PolicyAlternativeNameServerConfigTargetNameServer {
   /// - "private" : Cloud DNS always forwards to this target through the VPC.
   core.String? forwardingPath;
 
-  /// IPv4 address to forward to.
+  /// IPv4 address to forward queries to.
   core.String? ipv4Address;
+
+  /// IPv6 address to forward to.
+  ///
+  /// Does not accept both fields (ipv4 & ipv6) being populated. Public preview
+  /// as of November 2022.
+  core.String? ipv6Address;
   core.String? kind;
 
   PolicyAlternativeNameServerConfigTargetNameServer({
     this.forwardingPath,
     this.ipv4Address,
+    this.ipv6Address,
     this.kind,
   });
 
@@ -4125,12 +4141,16 @@ class PolicyAlternativeNameServerConfigTargetNameServer {
           ipv4Address: json_.containsKey('ipv4Address')
               ? json_['ipv4Address'] as core.String
               : null,
+          ipv6Address: json_.containsKey('ipv6Address')
+              ? json_['ipv6Address'] as core.String
+              : null,
           kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (forwardingPath != null) 'forwardingPath': forwardingPath!,
         if (ipv4Address != null) 'ipv4Address': ipv4Address!,
+        if (ipv6Address != null) 'ipv6Address': ipv6Address!,
         if (kind != null) 'kind': kind!,
       };
 }
@@ -4628,7 +4648,7 @@ class RRSetRoutingPolicyHealthCheckTargets {
 }
 
 class RRSetRoutingPolicyLoadBalancerTarget {
-  /// The frontend IP address of the
+  /// The frontend IP address of the Load Balancer to health check.
   core.String? ipAddress;
 
   ///
@@ -4639,28 +4659,30 @@ class RRSetRoutingPolicyLoadBalancerTarget {
   core.String? ipProtocol;
   core.String? kind;
 
+  /// The type of Load Balancer specified by this target.
   ///
+  /// Must match the configuration of the Load Balancer located at the
+  /// LoadBalancerTarget's IP address/port and region.
   /// Possible string values are:
   /// - "none"
-  /// - "regionalL4ilb"
+  /// - "globalL7ilb" : Cross-region internal Application Load Balancer
+  /// - "regionalL4ilb" : Regional internal passthrough Network Load Balancer
+  /// - "regionalL7ilb" : Regional internal Application Load Balancer
   core.String? loadBalancerType;
 
-  /// The fully qualified url of the network on which the ILB is
-  core.String? networkUrl;
-
-  /// Load Balancer to health check.
-  ///
-  /// The configured port of the Load Balancer.
-  core.String? port;
-
-  /// present.
+  /// The fully qualified url of the network on which the ILB is present.
   ///
   /// This should be formatted like
   /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+  core.String? networkUrl;
+
+  /// The configured port of the Load Balancer.
+  core.String? port;
+
   /// The project ID in which the ILB exists.
   core.String? project;
 
-  /// The region for regional ILBs.
+  /// The region in which the ILB exists.
   core.String? region;
 
   RRSetRoutingPolicyLoadBalancerTarget({
@@ -5013,15 +5035,16 @@ class ResponseHeader {
 class ResponsePoliciesListResponse {
   ResponseHeader? header;
 
-  /// The presence of this field indicates that there exist more results
-  /// following your last page of results in pagination order.
+  /// The presence of this field indicates that more results exist following
+  /// your last page of results in pagination order.
   ///
-  /// To fetch them, make another list request using this value as your page
-  /// token. This lets you the complete contents of even very large collections
-  /// one page at a time. However, if the contents of the collection change
-  /// between the first and last paginated list request, the set of all elements
-  /// returned are an inconsistent view of the collection. You cannot retrieve a
-  /// consistent snapshot of a collection larger than the maximum page size.
+  /// To fetch them, make another list request by using this value as your page
+  /// token. This lets you view the complete contents of even very large
+  /// collections one page at a time. However, if the contents of the collection
+  /// change between the first and last paginated list request, the set of all
+  /// elements returned are an inconsistent view of the collection. You cannot
+  /// retrieve a consistent snapshot of a collection larger than the maximum
+  /// page size.
   core.String? nextPageToken;
 
   /// The Response Policy resources.
@@ -5125,6 +5148,9 @@ class ResponsePolicy {
   core.String? id;
   core.String? kind;
 
+  /// User labels.
+  core.Map<core.String, core.String>? labels;
+
   /// List of network names specifying networks to which this policy is applied.
   core.List<ResponsePolicyNetwork>? networks;
 
@@ -5136,6 +5162,7 @@ class ResponsePolicy {
     this.gkeClusters,
     this.id,
     this.kind,
+    this.labels,
     this.networks,
     this.responsePolicyName,
   });
@@ -5153,6 +5180,14 @@ class ResponsePolicy {
               : null,
           id: json_.containsKey('id') ? json_['id'] as core.String : null,
           kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
           networks: json_.containsKey('networks')
               ? (json_['networks'] as core.List)
                   .map((value) => ResponsePolicyNetwork.fromJson(
@@ -5169,6 +5204,7 @@ class ResponsePolicy {
         if (gkeClusters != null) 'gkeClusters': gkeClusters!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
+        if (labels != null) 'labels': labels!,
         if (networks != null) 'networks': networks!,
         if (responsePolicyName != null)
           'responsePolicyName': responsePolicyName!,

@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Google Docs API - v1
@@ -21,7 +20,7 @@
 /// Create an instance of [DocsApi] to access these resources:
 ///
 /// - [DocumentsResource]
-library docs.v1;
+library docs_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -30,7 +29,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -227,7 +225,7 @@ class DocumentsResource {
   }
 }
 
-/// A ParagraphElement representing a spot in the text that is dynamically
+/// A ParagraphElement representing a spot in the text that's dynamically
 /// replaced with content that can change over time, like a page number.
 class AutoText {
   /// The suggested deletion IDs.
@@ -237,7 +235,7 @@ class AutoText {
 
   /// The suggested insertion IDs.
   ///
-  /// An AutoText may have multiple insertion IDs if it is a nested suggested
+  /// An AutoText may have multiple insertion IDs if it's a nested suggested
   /// change. If empty, then this is not a suggested insertion.
   core.List<core.String>? suggestedInsertionIds;
 
@@ -281,10 +279,10 @@ class AutoText {
                   ? (json_['suggestedTextStyleChanges']
                           as core.Map<core.String, core.dynamic>)
                       .map(
-                      (key, item) => core.MapEntry(
+                      (key, value) => core.MapEntry(
                         key,
                         SuggestedTextStyle.fromJson(
-                            item as core.Map<core.String, core.dynamic>),
+                            value as core.Map<core.String, core.dynamic>),
                       ),
                     )
                   : null,
@@ -436,7 +434,7 @@ class BatchUpdateDocumentResponse {
 /// The document body.
 ///
 /// The body typically contains the full document contents except for headers,
-/// footers and footnotes.
+/// footers, and footnotes.
 class Body {
   /// The contents of the body.
   ///
@@ -470,7 +468,7 @@ class Bullet {
   /// The nesting level of this paragraph in the list.
   core.int? nestingLevel;
 
-  /// The paragraph specific text style applied to this bullet.
+  /// The paragraph-specific text style applied to this bullet.
   TextStyle? textStyle;
 
   Bullet({
@@ -503,7 +501,7 @@ class Bullet {
 /// A mask that indicates which of the fields on the base Bullet have been
 /// changed in this suggestion.
 ///
-/// For any field set to true, there is a new suggested value.
+/// For any field set to true, there's a new suggested value.
 class BulletSuggestionState {
   /// Indicates if there was a suggested change to the list_id.
   core.bool? listIdSuggested;
@@ -580,7 +578,7 @@ class ColumnBreak {
 
   /// The suggested insertion IDs.
   ///
-  /// A ColumnBreak may have multiple insertion IDs if it is a nested suggested
+  /// A ColumnBreak may have multiple insertion IDs if it's a nested suggested
   /// change. If empty, then this is not a suggested insertion.
   core.List<core.String>? suggestedInsertionIds;
 
@@ -592,7 +590,7 @@ class ColumnBreak {
   ///
   /// Similar to text content, like text runs and footnote references, the text
   /// style of a column break can affect content layout as well as the styling
-  /// of text inserted adjacent to it.
+  /// of text inserted next to it.
   TextStyle? textStyle;
 
   ColumnBreak({
@@ -619,10 +617,10 @@ class ColumnBreak {
                   ? (json_['suggestedTextStyleChanges']
                           as core.Map<core.String, core.dynamic>)
                       .map(
-                      (key, item) => core.MapEntry(
+                      (key, value) => core.MapEntry(
                         key,
                         SuggestedTextStyle.fromJson(
-                            item as core.Map<core.String, core.dynamic>),
+                            value as core.Map<core.String, core.dynamic>),
                       ),
                     )
                   : null,
@@ -971,7 +969,7 @@ class CreateParagraphBulletsRequest {
 /// The crop properties of an image.
 ///
 /// The crop rectangle is represented using fractional offsets from the original
-/// content's four edges. - If the offset is in the interval (0, 1), the
+/// content's 4 edges. - If the offset is in the interval (0, 1), the
 /// corresponding edge of crop rectangle is positioned inside of the image's
 /// original bounding rectangle. - If the offset is negative or greater than 1,
 /// the corresponding edge of crop rectangle is positioned outside of the
@@ -1043,7 +1041,7 @@ class CropProperties {
 /// A mask that indicates which of the fields on the base CropProperties have
 /// been changed in this suggestion.
 ///
-/// For any field set to true, there is a new suggested value.
+/// For any field set to true, there's a new suggested value.
 class CropPropertiesSuggestionState {
   /// Indicates if there was a suggested change to angle.
   core.bool? angleSuggested;
@@ -1495,56 +1493,56 @@ class Document {
               : null,
           footers: json_.containsKey('footers')
               ? (json_['footers'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     Footer.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
           footnotes: json_.containsKey('footnotes')
               ? (json_['footnotes'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     Footnote.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
           headers: json_.containsKey('headers')
               ? (json_['headers'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     Header.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
           inlineObjects: json_.containsKey('inlineObjects')
               ? (json_['inlineObjects'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     InlineObject.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
           lists: json_.containsKey('lists')
               ? (json_['lists'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    List.fromJson(item as core.Map<core.String, core.dynamic>),
+                    List.fromJson(value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
           namedRanges: json_.containsKey('namedRanges')
               ? (json_['namedRanges'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     NamedRanges.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -1556,10 +1554,10 @@ class Document {
               ? (json_['positionedObjects']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     PositionedObject.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -1571,10 +1569,10 @@ class Document {
                   ? (json_['suggestedDocumentStyleChanges']
                           as core.Map<core.String, core.dynamic>)
                       .map(
-                      (key, item) => core.MapEntry(
+                      (key, value) => core.MapEntry(
                         key,
                         SuggestedDocumentStyle.fromJson(
-                            item as core.Map<core.String, core.dynamic>),
+                            value as core.Map<core.String, core.dynamic>),
                       ),
                     )
                   : null,
@@ -1583,10 +1581,10 @@ class Document {
                   ? (json_['suggestedNamedStylesChanges']
                           as core.Map<core.String, core.dynamic>)
                       .map(
-                      (key, item) => core.MapEntry(
+                      (key, value) => core.MapEntry(
                         key,
                         SuggestedNamedStyles.fromJson(
-                            item as core.Map<core.String, core.dynamic>),
+                            value as core.Map<core.String, core.dynamic>),
                       ),
                     )
                   : null,
@@ -1629,26 +1627,26 @@ class DocumentStyle {
 
   /// The ID of the default footer.
   ///
-  /// If not set, there is no default footer. This property is read-only.
+  /// If not set, there's no default footer. This property is read-only.
   core.String? defaultFooterId;
 
   /// The ID of the default header.
   ///
-  /// If not set, there is no default header. This property is read-only.
+  /// If not set, there's no default header. This property is read-only.
   core.String? defaultHeaderId;
 
   /// The ID of the footer used only for even pages.
   ///
   /// The value of use_even_page_header_footer determines whether to use the
   /// default_footer_id or this value for the footer on even pages. If not set,
-  /// there is no even page footer. This property is read-only.
+  /// there's no even page footer. This property is read-only.
   core.String? evenPageFooterId;
 
   /// The ID of the header used only for even pages.
   ///
   /// The value of use_even_page_header_footer determines whether to use the
   /// default_header_id or this value for the header on even pages. If not set,
-  /// there is no even page header. This property is read-only.
+  /// there's no even page header. This property is read-only.
   core.String? evenPageHeaderId;
 
   /// The ID of the footer used only for the first page.
@@ -1656,7 +1654,7 @@ class DocumentStyle {
   /// If not set then a unique footer for the first page does not exist. The
   /// value of use_first_page_header_footer determines whether to use the
   /// default_footer_id or this value for the footer on the first page. If not
-  /// set, there is no first page footer. This property is read-only.
+  /// set, there's no first page footer. This property is read-only.
   core.String? firstPageFooterId;
 
   /// The ID of the header used only for the first page.
@@ -1664,7 +1662,7 @@ class DocumentStyle {
   /// If not set then a unique header for the first page does not exist. The
   /// value of use_first_page_header_footer determines whether to use the
   /// default_header_id or this value for the header on the first page. If not
-  /// set, there is no first page header. This property is read-only.
+  /// set, there's no first page header. This property is read-only.
   core.String? firstPageHeaderId;
 
   /// The bottom page margin.
@@ -1839,7 +1837,7 @@ class DocumentStyle {
 /// A mask that indicates which of the fields on the base DocumentStyle have
 /// been changed in this suggestion.
 ///
-/// For any field set to true, there is a new suggested value.
+/// For any field set to true, there's a new suggested value.
 class DocumentStyleSuggestionState {
   /// A mask that indicates which of the fields in background have been changed
   /// in this suggestion.
@@ -2033,13 +2031,17 @@ class DocumentStyleSuggestionState {
       };
 }
 
-/// The properties of an embedded drawing.
+/// The properties of an embedded drawing and used to differentiate the object
+/// type.
+///
+/// An embedded drawing is one that's created and edited within a document. Note
+/// that extensive details are not supported.
 typedef EmbeddedDrawingProperties = $Empty;
 
 /// A mask that indicates which of the fields on the base
 /// EmbeddedDrawingProperties have been changed in this suggestion.
 ///
-/// For any field set to true, there is a new suggested value.
+/// For any field set to true, there's a new suggested value.
 typedef EmbeddedDrawingPropertiesSuggestionState = $Empty;
 
 /// An embedded object in the document.
@@ -2060,9 +2062,9 @@ class EmbeddedObject {
 
   /// A reference to the external linked source content.
   ///
-  /// For example, it contains a reference to the source Sheets chart when the
-  /// embedded object is a linked chart. If unset, then the embedded object is
-  /// not linked.
+  /// For example, it contains a reference to the source Google Sheets chart
+  /// when the embedded object is a linked chart. If unset, then the embedded
+  /// object is not linked.
   LinkedContentReference? linkedContentReference;
 
   /// The bottom margin of the embedded object.
@@ -2228,7 +2230,7 @@ class EmbeddedObjectBorder {
 /// A mask that indicates which of the fields on the base EmbeddedObjectBorder
 /// have been changed in this suggestion.
 ///
-/// For any field set to true, there is a new suggested value.
+/// For any field set to true, there's a new suggested value.
 class EmbeddedObjectBorderSuggestionState {
   /// Indicates if there was a suggested change to color.
   core.bool? colorSuggested;
@@ -2278,7 +2280,7 @@ class EmbeddedObjectBorderSuggestionState {
 /// A mask that indicates which of the fields on the base EmbeddedObject have
 /// been changed in this suggestion.
 ///
-/// For any field set to true, there is a new suggested value.
+/// For any field set to true, there's a new suggested value.
 class EmbeddedObjectSuggestionState {
   /// Indicates if there was a suggested change to description.
   core.bool? descriptionSuggested;
@@ -2445,7 +2447,7 @@ class Equation {
 
   /// The suggested insertion IDs.
   ///
-  /// A Equation may have multiple insertion IDs if it is a nested suggested
+  /// An Equation may have multiple insertion IDs if it's a nested suggested
   /// change. If empty, then this is not a suggested insertion.
   core.List<core.String>? suggestedInsertionIds;
 
@@ -2563,7 +2565,7 @@ class FootnoteReference {
 
   /// The suggested insertion IDs.
   ///
-  /// A FootnoteReference may have multiple insertion IDs if it is a nested
+  /// A FootnoteReference may have multiple insertion IDs if it's a nested
   /// suggested change. If empty, then this is not a suggested insertion.
   core.List<core.String>? suggestedInsertionIds;
 
@@ -2606,10 +2608,10 @@ class FootnoteReference {
                   ? (json_['suggestedTextStyleChanges']
                           as core.Map<core.String, core.dynamic>)
                       .map(
-                      (key, item) => core.MapEntry(
+                      (key, value) => core.MapEntry(
                         key,
                         SuggestedTextStyle.fromJson(
-                            item as core.Map<core.String, core.dynamic>),
+                            value as core.Map<core.String, core.dynamic>),
                       ),
                     )
                   : null,
@@ -2687,7 +2689,7 @@ class HorizontalRule {
   ///
   /// Similar to text content, like text runs and footnote references, the text
   /// style of a horizontal rule can affect content layout as well as the
-  /// styling of text inserted adjacent to it.
+  /// styling of text inserted next to it.
   TextStyle? textStyle;
 
   HorizontalRule({
@@ -2714,10 +2716,10 @@ class HorizontalRule {
                   ? (json_['suggestedTextStyleChanges']
                           as core.Map<core.String, core.dynamic>)
                       .map(
-                      (key, item) => core.MapEntry(
+                      (key, value) => core.MapEntry(
                         key,
                         SuggestedTextStyle.fromJson(
-                            item as core.Map<core.String, core.dynamic>),
+                            value as core.Map<core.String, core.dynamic>),
                       ),
                     )
                   : null,
@@ -2773,7 +2775,7 @@ class ImageProperties {
   /// The transparency effect of the image.
   ///
   /// The value should be in the interval \[0.0, 1.0\], where 0 means no effect
-  /// and 1 means completely transparent.
+  /// and 1 means transparent.
   core.double? transparency;
 
   ImageProperties({
@@ -2826,7 +2828,7 @@ class ImageProperties {
 /// A mask that indicates which of the fields on the base ImageProperties have
 /// been changed in this suggestion.
 ///
-/// For any field set to true, there is a new suggested value.
+/// For any field set to true, there's a new suggested value.
 class ImagePropertiesSuggestionState {
   /// Indicates if there was a suggested change to angle.
   core.bool? angleSuggested;
@@ -2958,10 +2960,10 @@ class InlineObject {
                   ? (json_['suggestedInlineObjectPropertiesChanges']
                           as core.Map<core.String, core.dynamic>)
                       .map(
-                      (key, item) => core.MapEntry(
+                      (key, value) => core.MapEntry(
                         key,
                         SuggestedInlineObjectProperties.fromJson(
-                            item as core.Map<core.String, core.dynamic>),
+                            value as core.Map<core.String, core.dynamic>),
                       ),
                     )
                   : null,
@@ -2996,7 +2998,7 @@ class InlineObjectElement {
 
   /// The suggested insertion IDs.
   ///
-  /// An InlineObjectElement may have multiple insertion IDs if it is a nested
+  /// An InlineObjectElement may have multiple insertion IDs if it's a nested
   /// suggested change. If empty, then this is not a suggested insertion.
   core.List<core.String>? suggestedInsertionIds;
 
@@ -3008,7 +3010,7 @@ class InlineObjectElement {
   ///
   /// Similar to text content, like text runs and footnote references, the text
   /// style of an inline object element can affect content layout as well as the
-  /// styling of text inserted adjacent to it.
+  /// styling of text inserted next to it.
   TextStyle? textStyle;
 
   InlineObjectElement({
@@ -3039,10 +3041,10 @@ class InlineObjectElement {
                   ? (json_['suggestedTextStyleChanges']
                           as core.Map<core.String, core.dynamic>)
                       .map(
-                      (key, item) => core.MapEntry(
+                      (key, value) => core.MapEntry(
                         key,
                         SuggestedTextStyle.fromJson(
-                            item as core.Map<core.String, core.dynamic>),
+                            value as core.Map<core.String, core.dynamic>),
                       ),
                     )
                   : null,
@@ -3089,7 +3091,7 @@ class InlineObjectProperties {
 /// A mask that indicates which of the fields on the base InlineObjectProperties
 /// have been changed in this suggestion.
 ///
-/// For any field set to true, there is a new suggested value.
+/// For any field set to true, there's a new suggested value.
 class InlineObjectPropertiesSuggestionState {
   /// A mask that indicates which of the fields in embedded_object have been
   /// changed in this suggestion.
@@ -3146,8 +3148,9 @@ class InsertInlineImageRequest {
   /// The image is fetched once at insertion time and a copy is stored for
   /// display inside the document. Images must be less than 50MB in size, cannot
   /// exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF format. The
-  /// provided URI can be at most 2 kB in length. The URI itself is saved with
-  /// the image, and exposed via the ImageProperties.content_uri field.
+  /// provided URI must be publicly accessible and at most 2 kB in length. The
+  /// URI itself is saved with the image, and exposed via the
+  /// ImageProperties.content_uri field.
   core.String? uri;
 
   InsertInlineImageRequest({
@@ -3571,7 +3574,7 @@ class LinkedContentReference {
 /// A mask that indicates which of the fields on the base LinkedContentReference
 /// have been changed in this suggestion.
 ///
-/// For any field set to true, there is a new suggested value.
+/// For any field set to true, there's a new suggested value.
 class LinkedContentReferenceSuggestionState {
   /// A mask that indicates which of the fields in sheets_chart_reference have
   /// been changed in this suggestion.
@@ -3601,7 +3604,7 @@ class LinkedContentReferenceSuggestionState {
 /// A List represents the list attributes for a group of paragraphs that all
 /// belong to the same list.
 ///
-/// A paragraph that is part of a list has a reference to the list's ID in its
+/// A paragraph that's part of a list has a reference to the list's ID in its
 /// bullet.
 class List {
   /// The properties of the list.
@@ -3647,10 +3650,10 @@ class List {
                   ? (json_['suggestedListPropertiesChanges']
                           as core.Map<core.String, core.dynamic>)
                       .map(
-                      (key, item) => core.MapEntry(
+                      (key, value) => core.MapEntry(
                         key,
                         SuggestedListProperties.fromJson(
-                            item as core.Map<core.String, core.dynamic>),
+                            value as core.Map<core.String, core.dynamic>),
                       ),
                     )
                   : null,
@@ -3667,15 +3670,15 @@ class List {
       };
 }
 
-/// The properties of a list which describe the look and feel of bullets
+/// The properties of a list that describe the look and feel of bullets
 /// belonging to paragraphs associated with a list.
 class ListProperties {
   /// Describes the properties of the bullets at the associated level.
   ///
-  /// A list has at most nine levels of nesting with nesting level 0
-  /// corresponding to the top-most level and nesting level 8 corresponding to
-  /// the most nested level. The nesting levels are returned in ascending order
-  /// with the least nested returned first.
+  /// A list has at most 9 levels of nesting with nesting level 0 corresponding
+  /// to the top-most level and nesting level 8 corresponding to the most nested
+  /// level. The nesting levels are returned in ascending order with the least
+  /// nested returned first.
   core.List<NestingLevel>? nestingLevels;
 
   ListProperties({
@@ -3700,7 +3703,7 @@ class ListProperties {
 /// A mask that indicates which of the fields on the base ListProperties have
 /// been changed in this suggestion.
 ///
-/// For any field set to true, there is a new suggested value.
+/// For any field set to true, there's a new suggested value.
 class ListPropertiesSuggestionState {
   /// A mask that indicates which of the fields on the corresponding
   /// NestingLevel in nesting_levels have been changed in this suggestion.
@@ -3795,13 +3798,12 @@ class MergeTableCellsRequest {
 ///
 /// Named ranges allow developers to associate parts of a document with an
 /// arbitrary user-defined label so their contents can be programmatically read
-/// or edited at a later time. A document can contain multiple named ranges with
-/// the same name, but every named range has a unique ID. A named range is
-/// created with a single Range, and content inserted inside a named range
-/// generally expands that range. However, certain document changes can cause
-/// the range to be split into multiple ranges. Named ranges are not private.
-/// All applications and collaborators that have access to the document can see
-/// its named ranges.
+/// or edited later. A document can contain multiple named ranges with the same
+/// name, but every named range has a unique ID. A named range is created with a
+/// single Range, and content inserted inside a named range generally expands
+/// that range. However, certain document changes can cause the range to be
+/// split into multiple ranges. Named ranges are not private. All applications
+/// and collaborators that have access to the document can see its named ranges.
 class NamedRange {
   /// The name of the named range.
   core.String? name;
@@ -3990,7 +3992,7 @@ class NamedStyleSuggestionState {
 class NamedStyles {
   /// The named styles.
   ///
-  /// There is an entry for each of the possible named style types.
+  /// There's an entry for each of the possible named style types.
   core.List<NamedStyle>? styles;
 
   NamedStyles({
@@ -4017,7 +4019,7 @@ class NamedStylesSuggestionState {
   /// A mask that indicates which of the fields on the corresponding NamedStyle
   /// in styles have been changed in this suggestion.
   ///
-  /// The order of these named style suggestion states match the order of the
+  /// The order of these named style suggestion states matches the order of the
   /// corresponding named style within the named styles suggestion.
   core.List<NamedStyleSuggestionState>? stylesSuggestionStates;
 
@@ -4058,7 +4060,7 @@ class NestingLevel {
 
   /// The format string used by bullets at this level of nesting.
   ///
-  /// The glyph format contains one or more placeholders, and these placeholder
+  /// The glyph format contains one or more placeholders, and these placeholders
   /// are replaced with the appropriate values depending on the glyph_type or
   /// glyph_symbol. The placeholders follow the pattern `%[nesting_level]`.
   /// Furthermore, placeholders can have prefixes and suffixes. Thus, the glyph
@@ -4121,10 +4123,10 @@ class NestingLevel {
 
   /// The number of the first list item at this nesting level.
   ///
-  /// A value of 0 is treated as a value of 1 for lettered lists and roman
-  /// numeraled lists, i.e. for values of both 0 and 1, lettered and roman
-  /// numeraled lists will begin at `a` and `i` respectively. This value is
-  /// ignored for nesting levels with unordered glyphs.
+  /// A value of 0 is treated as a value of 1 for lettered lists and Roman
+  /// numeral lists. For values of both 0 and 1, lettered and Roman numeral
+  /// lists will begin at `a` and `i` respectively. This value is ignored for
+  /// nesting levels with unordered glyphs.
   core.int? startNumber;
 
   /// The text style of bullets at this level of nesting.
@@ -4187,7 +4189,7 @@ class NestingLevel {
 /// A mask that indicates which of the fields on the base NestingLevel have been
 /// changed in this suggestion.
 ///
-/// For any field set to true, there is a new suggested value.
+/// For any field set to true, there's a new suggested value.
 class NestingLevelSuggestionState {
   /// Indicates if there was a suggested change to bullet_alignment.
   core.bool? bulletAlignmentSuggested;
@@ -4336,7 +4338,7 @@ class PageBreak {
 
   /// The suggested insertion IDs.
   ///
-  /// A PageBreak may have multiple insertion IDs if it is a nested suggested
+  /// A PageBreak may have multiple insertion IDs if it's a nested suggested
   /// change. If empty, then this is not a suggested insertion.
   core.List<core.String>? suggestedInsertionIds;
 
@@ -4348,7 +4350,7 @@ class PageBreak {
   ///
   /// Similar to text content, like text runs and footnote references, the text
   /// style of a page break can affect content layout as well as the styling of
-  /// text inserted adjacent to it.
+  /// text inserted next to it.
   TextStyle? textStyle;
 
   PageBreak({
@@ -4375,10 +4377,10 @@ class PageBreak {
                   ? (json_['suggestedTextStyleChanges']
                           as core.Map<core.String, core.dynamic>)
                       .map(
-                      (key, item) => core.MapEntry(
+                      (key, value) => core.MapEntry(
                         key,
                         SuggestedTextStyle.fromJson(
-                            item as core.Map<core.String, core.dynamic>),
+                            value as core.Map<core.String, core.dynamic>),
                       ),
                     )
                   : null,
@@ -4401,7 +4403,7 @@ class PageBreak {
 
 /// A StructuralElement representing a paragraph.
 ///
-/// A paragraph is a range of content that is terminated with a newline
+/// A paragraph is a range of content that's terminated with a newline
 /// character.
 class Paragraph {
   /// The bullet for this paragraph.
@@ -4409,7 +4411,7 @@ class Paragraph {
   /// If not present, the paragraph does not belong to a list.
   Bullet? bullet;
 
-  /// The content of the paragraph broken down into its component parts.
+  /// The content of the paragraph, broken down into its component parts.
   core.List<ParagraphElement>? elements;
 
   /// The style of this paragraph.
@@ -4426,8 +4428,8 @@ class Paragraph {
   core.Map<core.String, SuggestedParagraphStyle>?
       suggestedParagraphStyleChanges;
 
-  /// The IDs of the positioned objects that are suggested to be attached to
-  /// this paragraph, keyed by suggestion ID.
+  /// The IDs of the positioned objects suggested to be attached to this
+  /// paragraph, keyed by suggestion ID.
   core.Map<core.String, ObjectReferences>? suggestedPositionedObjectIds;
 
   Paragraph({
@@ -4465,10 +4467,10 @@ class Paragraph {
               ? (json_['suggestedBulletChanges']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     SuggestedBullet.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -4477,10 +4479,10 @@ class Paragraph {
                   ? (json_['suggestedParagraphStyleChanges']
                           as core.Map<core.String, core.dynamic>)
                       .map(
-                      (key, item) => core.MapEntry(
+                      (key, value) => core.MapEntry(
                         key,
                         SuggestedParagraphStyle.fromJson(
-                            item as core.Map<core.String, core.dynamic>),
+                            value as core.Map<core.String, core.dynamic>),
                       ),
                     )
                   : null,
@@ -4489,10 +4491,10 @@ class Paragraph {
                   ? (json_['suggestedPositionedObjectIds']
                           as core.Map<core.String, core.dynamic>)
                       .map(
-                      (key, item) => core.MapEntry(
+                      (key, value) => core.MapEntry(
                         key,
                         ObjectReferences.fromJson(
-                            item as core.Map<core.String, core.dynamic>),
+                            value as core.Map<core.String, core.dynamic>),
                       ),
                     )
                   : null,
@@ -4600,7 +4602,7 @@ class ParagraphElement {
   Person? person;
 
   /// A paragraph element that links to a Google resource (such as a file in
-  /// Drive, a Youtube video, a Calendar event, etc.)
+  /// Google Drive, a YouTube video, or a Calendar event.)
   RichLink? richLink;
 
   /// The zero-based start index of this paragraph element, in UTF-16 code
@@ -4700,8 +4702,8 @@ class ParagraphElement {
 /// corresponding named style type. * The ParagraphStyle on a named style
 /// inherits from the normal text named style. * The ParagraphStyle of the
 /// normal text named style inherits from the default paragraph style in the
-/// Docs editor. * The ParagraphStyle on a Paragraph element that is contained
-/// in a table may inherit its paragraph style from the table style. If the
+/// Docs editor. * The ParagraphStyle on a Paragraph element that's contained in
+/// a table may inherit its paragraph style from the table style. If the
 /// paragraph style does not inherit from a parent, unsetting fields will revert
 /// the style to a value matching the defaults in the Docs editor.
 class ParagraphStyle {
@@ -4726,41 +4728,38 @@ class ParagraphStyle {
   ///
   /// If unset, the value is inherited from the parent. The between border is
   /// rendered when the adjacent paragraph has the same border and indent
-  /// properties. Paragraph borders cannot be partially updated. When making
-  /// changes to a paragraph border the new border must be specified in its
-  /// entirety.
+  /// properties. Paragraph borders cannot be partially updated. When changing a
+  /// paragraph border, the new border must be specified in its entirety.
   ParagraphBorder? borderBetween;
 
   /// The border at the bottom of this paragraph.
   ///
   /// If unset, the value is inherited from the parent. The bottom border is
   /// rendered when the paragraph below has different border and indent
-  /// properties. Paragraph borders cannot be partially updated. When making
-  /// changes to a paragraph border the new border must be specified in its
-  /// entirety.
+  /// properties. Paragraph borders cannot be partially updated. When changing a
+  /// paragraph border, the new border must be specified in its entirety.
   ParagraphBorder? borderBottom;
 
   /// The border to the left of this paragraph.
   ///
   /// If unset, the value is inherited from the parent. Paragraph borders cannot
-  /// be partially updated. When making changes to a paragraph border the new
-  /// border must be specified in its entirety.
+  /// be partially updated. When changing a paragraph border, the new border
+  /// must be specified in its entirety.
   ParagraphBorder? borderLeft;
 
   /// The border to the right of this paragraph.
   ///
   /// If unset, the value is inherited from the parent. Paragraph borders cannot
-  /// be partially updated. When making changes to a paragraph border the new
-  /// border must be specified in its entirety.
+  /// be partially updated. When changing a paragraph border, the new border
+  /// must be specified in its entirety.
   ParagraphBorder? borderRight;
 
   /// The border at the top of this paragraph.
   ///
   /// If unset, the value is inherited from the parent. The top border is
   /// rendered when the paragraph above has different border and indent
-  /// properties. Paragraph borders cannot be partially updated. When making
-  /// changes to a paragraph border the new border must be specified in its
-  /// entirety.
+  /// properties. Paragraph borders cannot be partially updated. When changing a
+  /// paragraph border, the new border must be specified in its entirety.
   ParagraphBorder? borderTop;
 
   /// The text direction of this paragraph.
@@ -4837,7 +4836,7 @@ class ParagraphStyle {
   ///
   /// If unset, the value is inherited from the parent. Attempting to update
   /// page_break_before for paragraphs in unsupported regions, including Table,
-  /// Header, Footer and Footnote, can result in an invalid document state which
+  /// Header, Footer and Footnote, can result in an invalid document state that
   /// returns a 400 bad request error.
   core.bool? pageBreakBefore;
 
@@ -5008,7 +5007,7 @@ class ParagraphStyle {
 /// A mask that indicates which of the fields on the base ParagraphStyle have
 /// been changed in this suggestion.
 ///
-/// For any field set to true, there is a new suggested value.
+/// For any field set to true, there's a new suggested value.
 class ParagraphStyleSuggestionState {
   /// Indicates if there was a suggested change to alignment.
   core.bool? alignmentSuggested;
@@ -5236,13 +5235,13 @@ class Person {
   /// IDs for suggestions that remove this person link from the document.
   ///
   /// A Person might have multiple deletion IDs if, for example, multiple users
-  /// suggest to delete it. If empty, then this person link isn't suggested for
+  /// suggest deleting it. If empty, then this person link isn't suggested for
   /// deletion.
   core.List<core.String>? suggestedDeletionIds;
 
   /// IDs for suggestions that insert this person link into the document.
   ///
-  /// A Person might have multiple insertion IDs if it is a nested suggested
+  /// A Person might have multiple insertion IDs if it's a nested suggested
   /// change (a suggestion within a suggestion made by a different user, for
   /// example). If empty, then this person link isn't a suggested insertion.
   core.List<core.String>? suggestedInsertionIds;
@@ -5286,10 +5285,10 @@ class Person {
                   ? (json_['suggestedTextStyleChanges']
                           as core.Map<core.String, core.dynamic>)
                       .map(
-                      (key, item) => core.MapEntry(
+                      (key, value) => core.MapEntry(
                         key,
                         SuggestedTextStyle.fromJson(
-                            item as core.Map<core.String, core.dynamic>),
+                            value as core.Map<core.String, core.dynamic>),
                       ),
                     )
                   : null,
@@ -5321,7 +5320,7 @@ class PersonProperties {
   /// Output only.
   core.String? email;
 
-  /// The name of the person if it is displayed in the link text instead of the
+  /// The name of the person if it's displayed in the link text instead of the
   /// person's email address.
   ///
   /// Output only.
@@ -5378,7 +5377,7 @@ class PinTableHeaderRowsRequest {
       };
 }
 
-/// An object that is tethered to a Paragraph and positioned relative to the
+/// An object that's tethered to a Paragraph and positioned relative to the
 /// beginning of the paragraph.
 ///
 /// A PositionedObject contains an EmbeddedObject such as an image.
@@ -5436,10 +5435,10 @@ class PositionedObject {
                   ? (json_['suggestedPositionedObjectPropertiesChanges']
                           as core.Map<core.String, core.dynamic>)
                       .map(
-                      (key, item) => core.MapEntry(
+                      (key, value) => core.MapEntry(
                         key,
                         SuggestedPositionedObjectProperties.fromJson(
-                            item as core.Map<core.String, core.dynamic>),
+                            value as core.Map<core.String, core.dynamic>),
                       ),
                     )
                   : null,
@@ -5462,7 +5461,7 @@ class PositionedObject {
 /// The positioning of a PositionedObject.
 ///
 /// The positioned object is positioned relative to the beginning of the
-/// Paragraph it is tethered to.
+/// Paragraph it's tethered to.
 class PositionedObjectPositioning {
   /// The layout of this positioned object.
   /// Possible string values are:
@@ -5472,21 +5471,21 @@ class PositionedObjectPositioning {
   /// left and text is on the right.
   /// - "BREAK_RIGHT" : Breaks text such that the positioned object is on the
   /// right and text is on the left.
-  /// - "BREAK_LEFT_RIGHT" : Breaks text such that there is no text on the left
+  /// - "BREAK_LEFT_RIGHT" : Breaks text such that there's no text on the left
   /// or right of the positioned object.
   /// - "IN_FRONT_OF_TEXT" : The positioned object is in front of the text.
   /// - "BEHIND_TEXT" : The positioned object is behind the text.
   core.String? layout;
 
   /// The offset of the left edge of the positioned object relative to the
-  /// beginning of the Paragraph it is tethered to.
+  /// beginning of the Paragraph it's tethered to.
   ///
   /// The exact positioning of the object can depend on other content in the
   /// document and the document's styling.
   Dimension? leftOffset;
 
   /// The offset of the top edge of the positioned object relative to the
-  /// beginning of the Paragraph it is tethered to.
+  /// beginning of the Paragraph it's tethered to.
   ///
   /// The exact positioning of the object can depend on other content in the
   /// document and the document's styling.
@@ -5523,7 +5522,7 @@ class PositionedObjectPositioning {
 /// A mask that indicates which of the fields on the base
 /// PositionedObjectPositioning have been changed in this suggestion.
 ///
-/// For any field set to true, there is a new suggested value.
+/// For any field set to true, there's a new suggested value.
 class PositionedObjectPositioningSuggestionState {
   /// Indicates if there was a suggested change to layout.
   core.bool? layoutSuggested;
@@ -5597,7 +5596,7 @@ class PositionedObjectProperties {
 /// A mask that indicates which of the fields on the base
 /// PositionedObjectProperties have been changed in this suggestion.
 ///
-/// For any field set to true, there is a new suggested value.
+/// For any field set to true, there's a new suggested value.
 class PositionedObjectPropertiesSuggestionState {
   /// A mask that indicates which of the fields in embedded_object have been
   /// changed in this suggestion.
@@ -5645,7 +5644,7 @@ class Range {
   /// ranges.
   core.int? endIndex;
 
-  /// The ID of the header, footer or footnote that this range is contained in.
+  /// The ID of the header, footer, or footnote that this range is contained in.
   ///
   /// An empty segment ID signifies the document's body.
   core.String? segmentId;
@@ -6232,8 +6231,8 @@ class Response {
 /// An RGB color.
 typedef RgbColor = $RgbColor;
 
-/// A link to a Google resource (e.g., a file in Drive, a YouTube video, a
-/// Calendar event, etc.).
+/// A link to a Google resource (such as a file in Drive, a YouTube video, or a
+/// Calendar event).
 class RichLink {
   /// The ID of this link.
   ///
@@ -6250,13 +6249,13 @@ class RichLink {
   /// IDs for suggestions that remove this link from the document.
   ///
   /// A RichLink might have multiple deletion IDs if, for example, multiple
-  /// users suggest to delete it. If empty, then this person link isn't
-  /// suggested for deletion.
+  /// users suggest deleting it. If empty, then this person link isn't suggested
+  /// for deletion.
   core.List<core.String>? suggestedDeletionIds;
 
   /// IDs for suggestions that insert this link into the document.
   ///
-  /// A RichLink might have multiple insertion IDs if it is a nested suggested
+  /// A RichLink might have multiple insertion IDs if it's a nested suggested
   /// change (a suggestion within a suggestion made by a different user, for
   /// example). If empty, then this person link isn't a suggested insertion.
   core.List<core.String>? suggestedInsertionIds;
@@ -6300,10 +6299,10 @@ class RichLink {
                   ? (json_['suggestedTextStyleChanges']
                           as core.Map<core.String, core.dynamic>)
                       .map(
-                      (key, item) => core.MapEntry(
+                      (key, value) => core.MapEntry(
                         key,
                         SuggestedTextStyle.fromJson(
-                            item as core.Map<core.String, core.dynamic>),
+                            value as core.Map<core.String, core.dynamic>),
                       ),
                     )
                   : null,
@@ -6330,7 +6329,7 @@ class RichLink {
 /// Properties specific to a RichLink.
 class RichLinkProperties {
   /// The [MIME type](https://developers.google.com/drive/api/v3/mime-types) of
-  /// the RichLink, if there is one (i.e., when it is a file in Drive).
+  /// the RichLink, if there's one (for example, when it's a file in Drive).
   ///
   /// Output only.
   core.String? mimeType;
@@ -6375,7 +6374,7 @@ class RichLinkProperties {
 
 /// A StructuralElement representing a section break.
 ///
-/// A section is a range of content which has the same SectionStyle. A section
+/// A section is a range of content that has the same SectionStyle. A section
 /// break represents the start of a new section, and the section style applies
 /// to the section after the section break. The document body always begins with
 /// a section break.
@@ -6390,7 +6389,7 @@ class SectionBreak {
 
   /// The suggested insertion IDs.
   ///
-  /// A SectionBreak may have multiple insertion IDs if it is a nested suggested
+  /// A SectionBreak may have multiple insertion IDs if it's a nested suggested
   /// change. If empty, then this is not a suggested insertion.
   core.List<core.String>? suggestedInsertionIds;
 
@@ -6465,14 +6464,14 @@ class SectionStyle {
   /// The section's columns properties.
   ///
   /// If empty, the section contains one column with the default properties in
-  /// the Docs editor. A section can be updated to have no more than three
-  /// columns. When updating this property, setting a concrete value is
-  /// required. Unsetting this property will result in a 400 bad request error.
+  /// the Docs editor. A section can be updated to have no more than 3 columns.
+  /// When updating this property, setting a concrete value is required.
+  /// Unsetting this property will result in a 400 bad request error.
   core.List<SectionColumnProperties>? columnProperties;
 
   /// The style of column separators.
   ///
-  /// This style can be set even when there is one column in the section. When
+  /// This style can be set even when there's one column in the section. When
   /// updating this property, setting a concrete value is required. Unsetting
   /// this property results in a 400 bad request error.
   /// Possible string values are:
@@ -6512,7 +6511,7 @@ class SectionStyle {
   ///
   /// If the value of DocumentStyle's use_even_page_header_footer is true, this
   /// value is used for the footers on even pages in the section. If it is
-  /// false, the footers on even pages uses the default_footer_id. If unset, the
+  /// false, the footers on even pages use the default_footer_id. If unset, the
   /// value inherits from the previous SectionBreak's SectionStyle. If the value
   /// is unset in the first SectionBreak, it inherits from DocumentStyle's
   /// even_page_footer_id. This property is read-only.
@@ -6522,7 +6521,7 @@ class SectionStyle {
   ///
   /// If the value of DocumentStyle's use_even_page_header_footer is true, this
   /// value is used for the headers on even pages in the section. If it is
-  /// false, the headers on even pages uses the default_header_id. If unset, the
+  /// false, the headers on even pages use the default_header_id. If unset, the
   /// value inherits from the previous SectionBreak's SectionStyle. If the value
   /// is unset in the first SectionBreak, it inherits from DocumentStyle's
   /// even_page_header_id. This property is read-only.
@@ -6531,7 +6530,7 @@ class SectionStyle {
   /// The ID of the footer used only for the first page of the section.
   ///
   /// If use_first_page_header_footer is true, this value is used for the footer
-  /// on the first page of the section. If it is false, the footer on the first
+  /// on the first page of the section. If it's false, the footer on the first
   /// page of the section uses the default_footer_id. If unset, the value
   /// inherits from the previous SectionBreak's SectionStyle. If the value is
   /// unset in the first SectionBreak, it inherits from DocumentStyle's
@@ -6541,7 +6540,7 @@ class SectionStyle {
   /// The ID of the header used only for the first page of the section.
   ///
   /// If use_first_page_header_footer is true, this value is used for the header
-  /// on the first page of the section. If it is false, the header on the first
+  /// on the first page of the section. If it's false, the header on the first
   /// page of the section uses the default_header_id. If unset, the value
   /// inherits from the previous SectionBreak's SectionStyle. If the value is
   /// unset in the first SectionBreak, it inherits from DocumentStyle's
@@ -6550,54 +6549,54 @@ class SectionStyle {
 
   /// The bottom page margin of the section.
   ///
-  /// If unset, uses margin_bottom from DocumentStyle. When updating this
-  /// property, setting a concrete value is required. Unsetting this property
-  /// results in a 400 bad request error.
+  /// If unset, the value defaults to margin_bottom from DocumentStyle. When
+  /// updating this property, setting a concrete value is required. Unsetting
+  /// this property results in a 400 bad request error.
   Dimension? marginBottom;
 
   /// The footer margin of the section.
   ///
-  /// If unset, uses margin_footer from DocumentStyle. If updated,
-  /// use_custom_header_footer_margins is set to true on DocumentStyle. The
-  /// value of use_custom_header_footer_margins on DocumentStyle indicates if a
-  /// footer margin is being respected for this section When updating this
+  /// If unset, the value defaults to margin_footer from DocumentStyle. If
+  /// updated, use_custom_header_footer_margins is set to true on DocumentStyle.
+  /// The value of use_custom_header_footer_margins on DocumentStyle indicates
+  /// if a footer margin is being respected for this section When updating this
   /// property, setting a concrete value is required. Unsetting this property
   /// results in a 400 bad request error.
   Dimension? marginFooter;
 
   /// The header margin of the section.
   ///
-  /// If unset, uses margin_header from DocumentStyle. If updated,
-  /// use_custom_header_footer_margins is set to true on DocumentStyle. The
-  /// value of use_custom_header_footer_margins on DocumentStyle indicates if a
-  /// header margin is being respected for this section. When updating this
+  /// If unset, the value defaults to margin_header from DocumentStyle. If
+  /// updated, use_custom_header_footer_margins is set to true on DocumentStyle.
+  /// The value of use_custom_header_footer_margins on DocumentStyle indicates
+  /// if a header margin is being respected for this section. When updating this
   /// property, setting a concrete value is required. Unsetting this property
   /// results in a 400 bad request error.
   Dimension? marginHeader;
 
   /// The left page margin of the section.
   ///
-  /// If unset, uses margin_left from DocumentStyle. Updating left margin causes
-  /// columns in this section to resize. Since the margin affects column width,
-  /// it is applied before column properties. When updating this property,
-  /// setting a concrete value is required. Unsetting this property results in a
-  /// 400 bad request error.
+  /// If unset, the value defaults to margin_left from DocumentStyle. Updating
+  /// the left margin causes columns in this section to resize. Since the margin
+  /// affects column width, it's applied before column properties. When updating
+  /// this property, setting a concrete value is required. Unsetting this
+  /// property results in a 400 bad request error.
   Dimension? marginLeft;
 
   /// The right page margin of the section.
   ///
-  /// If unset, uses margin_right from DocumentStyle. Updating right margin
-  /// causes columns in this section to resize. Since the margin affects column
-  /// width, it is applied before column properties. When updating this
-  /// property, setting a concrete value is required. Unsetting this property
-  /// results in a 400 bad request error.
+  /// If unset, the value defaults to margin_right from DocumentStyle. Updating
+  /// the right margin causes columns in this section to resize. Since the
+  /// margin affects column width, it's applied before column properties. When
+  /// updating this property, setting a concrete value is required. Unsetting
+  /// this property results in a 400 bad request error.
   Dimension? marginRight;
 
   /// The top page margin of the section.
   ///
-  /// If unset, uses margin_top from DocumentStyle. When updating this property,
-  /// setting a concrete value is required. Unsetting this property results in a
-  /// 400 bad request error.
+  /// If unset, the value defaults to margin_top from DocumentStyle. When
+  /// updating this property, setting a concrete value is required. Unsetting
+  /// this property results in a 400 bad request error.
   Dimension? marginTop;
 
   /// The page number from which to start counting the number of pages for this
@@ -6767,7 +6766,7 @@ class Shading {
 /// A mask that indicates which of the fields on the base Shading have been
 /// changed in this suggested change.
 ///
-/// For any field set to true, there is a new suggested value.
+/// For any field set to true, there's a new suggested value.
 class ShadingSuggestionState {
   /// Indicates if there was a suggested change to the Shading.
   core.bool? backgroundColorSuggested;
@@ -6792,7 +6791,7 @@ class ShadingSuggestionState {
 
 /// A reference to a linked chart embedded from Google Sheets.
 class SheetsChartReference {
-  /// The ID of the specific chart in the Google Sheets spreadsheet that is
+  /// The ID of the specific chart in the Google Sheets spreadsheet that's
   /// embedded.
   core.int? chartId;
 
@@ -6823,7 +6822,7 @@ class SheetsChartReference {
 /// A mask that indicates which of the fields on the base SheetsChartReference
 /// have been changed in this suggestion.
 ///
-/// For any field set to true, there is a new suggested value.
+/// For any field set to true, there's a new suggested value.
 class SheetsChartReferenceSuggestionState {
   /// Indicates if there was a suggested change to chart_id.
   core.bool? chartIdSuggested;
@@ -7445,7 +7444,7 @@ class TabStop {
 class Table {
   /// Number of columns in the table.
   ///
-  /// It is possible for a table to be non-rectangular, so some rows may have a
+  /// It's possible for a table to be non-rectangular, so some rows may have a
   /// different number of cells.
   core.int? columns;
 
@@ -7459,8 +7458,8 @@ class Table {
 
   /// The suggested insertion IDs.
   ///
-  /// A Table may have multiple insertion IDs if it is a nested suggested
-  /// change. If empty, then this is not a suggested insertion.
+  /// A Table may have multiple insertion IDs if it's a nested suggested change.
+  /// If empty, then this is not a suggested insertion.
   core.List<core.String>? suggestedInsertionIds;
 
   /// The contents and style of each row.
@@ -7536,7 +7535,7 @@ class TableCell {
 
   /// The suggested insertion IDs.
   ///
-  /// A TableCell may have multiple insertion IDs if it is a nested suggested
+  /// A TableCell may have multiple insertion IDs if it's a nested suggested
   /// change. If empty, then this is not a suggested insertion.
   core.List<core.String>? suggestedInsertionIds;
 
@@ -7586,10 +7585,10 @@ class TableCell {
                   ? (json_['suggestedTableCellStyleChanges']
                           as core.Map<core.String, core.dynamic>)
                       .map(
-                      (key, item) => core.MapEntry(
+                      (key, value) => core.MapEntry(
                         key,
                         SuggestedTableCellStyle.fromJson(
-                            item as core.Map<core.String, core.dynamic>),
+                            value as core.Map<core.String, core.dynamic>),
                       ),
                     )
                   : null,
@@ -7849,7 +7848,7 @@ class TableCellStyle {
 /// A mask that indicates which of the fields on the base TableCellStyle have
 /// been changed in this suggestion.
 ///
-/// For any field set to true, there is a new suggested value.
+/// For any field set to true, there's a new suggested value.
 class TableCellStyleSuggestionState {
   /// Indicates if there was a suggested change to background_color.
   core.bool? backgroundColorSuggested;
@@ -7982,7 +7981,7 @@ class TableColumnProperties {
   /// Possible string values are:
   /// - "WIDTH_TYPE_UNSPECIFIED" : The column width type is unspecified.
   /// - "EVENLY_DISTRIBUTED" : The column width is evenly distributed among the
-  /// other evenly distrubted columns. The width of the column is automatically
+  /// other evenly distributed columns. The width of the column is automatically
   /// determined and will have an equal portion of the width remaining for the
   /// table after accounting for all columns with specified widths.
   /// - "FIXED_WIDTH" : A fixed column width. The width property contains the
@@ -8122,7 +8121,7 @@ class TableRow {
 
   /// The suggested insertion IDs.
   ///
-  /// A TableRow may have multiple insertion IDs if it is a nested suggested
+  /// A TableRow may have multiple insertion IDs if it's a nested suggested
   /// change. If empty, then this is not a suggested insertion.
   core.List<core.String>? suggestedInsertionIds;
 
@@ -8131,7 +8130,7 @@ class TableRow {
 
   /// The contents and style of each cell in this row.
   ///
-  /// It is possible for a table to be non-rectangular, so some rows may have a
+  /// It's possible for a table to be non-rectangular, so some rows may have a
   /// different number of cells than other rows in the same table.
   core.List<TableCell>? tableCells;
 
@@ -8171,10 +8170,10 @@ class TableRow {
                   ? (json_['suggestedTableRowStyleChanges']
                           as core.Map<core.String, core.dynamic>)
                       .map(
-                      (key, item) => core.MapEntry(
+                      (key, value) => core.MapEntry(
                         key,
                         SuggestedTableRowStyle.fromJson(
-                            item as core.Map<core.String, core.dynamic>),
+                            value as core.Map<core.String, core.dynamic>),
                       ),
                     )
                   : null,
@@ -8249,7 +8248,7 @@ class TableRowStyle {
 /// A mask that indicates which of the fields on the base TableRowStyle have
 /// been changed in this suggestion.
 ///
-/// For any field set to true, there is a new suggested value.
+/// For any field set to true, there's a new suggested value.
 class TableRowStyleSuggestionState {
   /// Indicates if there was a suggested change to min_row_height.
   core.bool? minRowHeightSuggested;
@@ -8316,7 +8315,7 @@ class TextRun {
 
   /// The suggested insertion IDs.
   ///
-  /// A TextRun may have multiple insertion IDs if it is a nested suggested
+  /// A TextRun may have multiple insertion IDs if it's a nested suggested
   /// change. If empty, then this is not a suggested insertion.
   core.List<core.String>? suggestedInsertionIds;
 
@@ -8354,10 +8353,10 @@ class TextRun {
                   ? (json_['suggestedTextStyleChanges']
                           as core.Map<core.String, core.dynamic>)
                       .map(
-                      (key, item) => core.MapEntry(
+                      (key, value) => core.MapEntry(
                         key,
                         SuggestedTextStyle.fromJson(
-                            item as core.Map<core.String, core.dynamic>),
+                            value as core.Map<core.String, core.dynamic>),
                       ),
                     )
                   : null,
@@ -8387,7 +8386,7 @@ class TextRun {
 /// named style type. * The TextStyle on a named style inherits from the normal
 /// text named style. * The TextStyle of the normal text named style inherits
 /// from the default text style in the Docs editor. * The TextStyle on a
-/// Paragraph element that is contained in a table may inherit its text style
+/// Paragraph element that's contained in a table may inherit its text style
 /// from the table style. If the text style does not inherit from a parent,
 /// unsetting fields will revert the style to a value matching the defaults in
 /// the Docs editor.
@@ -8402,7 +8401,7 @@ class TextStyle {
   ///
   /// Text with `SUPERSCRIPT` or `SUBSCRIPT` baseline offsets is automatically
   /// rendered in a smaller font size, computed based on the `font_size` field.
-  /// The `font_size` itself is not affected by changes in this field.
+  /// Changes in this field don't affect the `font_size`.
   /// Possible string values are:
   /// - "BASELINE_OFFSET_UNSPECIFIED" : The text's baseline offset is inherited
   /// from the parent.
@@ -8428,7 +8427,7 @@ class TextStyle {
 
   /// The hyperlink destination of the text.
   ///
-  /// If unset, there is no link. Links are not inherited from parent text.
+  /// If unset, there's no link. Links are not inherited from parent text.
   /// Changing the link in an update request causes some other changes to the
   /// text style of the range: * When setting a link, the text foreground color
   /// will be updated to the default link color and the text will be underlined.
@@ -8536,7 +8535,7 @@ class TextStyle {
 /// A mask that indicates which of the fields on the base TextStyle have been
 /// changed in this suggestion.
 ///
-/// For any field set to true, there is a new suggested value.
+/// For any field set to true, there's a new suggested value.
 class TextStyleSuggestionState {
   /// Indicates if there was a suggested change to background_color.
   core.bool? backgroundColorSuggested;
@@ -9066,15 +9065,15 @@ class WeightedFontFamily {
 
   /// The weight of the font.
   ///
-  /// This field can have any value that is a multiple of `100` between `100`
-  /// and `900`, inclusive. This range corresponds to the numerical values
-  /// described in the CSS 2.1 Specification,
+  /// This field can have any value that's a multiple of `100` between `100` and
+  /// `900`, inclusive. This range corresponds to the numerical values described
+  /// in the CSS 2.1 Specification,
   /// [section 15.6](https://www.w3.org/TR/CSS21/fonts.html#font-boldness), with
   /// non-numerical values disallowed. The default value is `400` ("normal").
-  /// The font weight makes up just one component of the rendered font weight.
-  /// The rendered weight is determined by a combination of the `weight` and the
-  /// text style's resolved `bold` value, after accounting for inheritance: * If
-  /// the text is bold and the weight is less than `400`, the rendered weight is
+  /// The font weight makes up just one component of the rendered font weight. A
+  /// combination of the `weight` and the text style's resolved `bold` value
+  /// determine the rendered weight, after accounting for inheritance: * If the
+  /// text is bold and the weight is less than `400`, the rendered weight is
   /// 400. * If the text is bold and the weight is greater than or equal to
   /// `400` but is less than `700`, the rendered weight is `700`. * If the
   /// weight is greater than or equal to `700`, the rendered weight is equal to

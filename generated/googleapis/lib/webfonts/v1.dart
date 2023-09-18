@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Web Fonts Developer API - v1
@@ -23,7 +22,7 @@
 /// Create an instance of [WebfontsApi] to access these resources:
 ///
 /// - [WebfontsResource]
-library webfonts.v1;
+library webfonts_v1;
 
 import 'dart:async' as async;
 import 'dart:core' as core;
@@ -60,6 +59,12 @@ class WebfontsResource {
   ///
   /// Request parameters:
   ///
+  /// [capability] - Controls the font urls in `Webfont.files`, by default,
+  /// static ttf fonts are sent.
+  ///
+  /// [family] - Filters by Webfont.family, using literal match. If not set,
+  /// returns all families
+  ///
   /// [sort] - Enables sorting of the list.
   /// Possible string values are:
   /// - "SORT_UNDEFINED" : No sorting specified, use the default sorting method.
@@ -68,6 +73,9 @@ class WebfontsResource {
   /// - "POPULARITY" : Sort by popularity
   /// - "STYLE" : Sort by number of styles
   /// - "TRENDING" : Sort by trending
+  ///
+  /// [subset] - Filters by Webfont.subset, if subset is found in
+  /// Webfont.subsets. If not set, returns all families.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -80,11 +88,17 @@ class WebfontsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<WebfontList> list({
+    core.List<core.String>? capability,
+    core.List<core.String>? family,
     core.String? sort,
+    core.String? subset,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (capability != null) 'capability': capability,
+      if (family != null) 'family': family,
       if (sort != null) 'sort': [sort],
+      if (subset != null) 'subset': [subset],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -100,8 +114,46 @@ class WebfontsResource {
   }
 }
 
+/// Metadata for a variable font axis.
+class Axis {
+  /// maximum value
+  core.double? end;
+
+  /// minimum value
+  core.double? start;
+
+  /// tag name.
+  core.String? tag;
+
+  Axis({
+    this.end,
+    this.start,
+    this.tag,
+  });
+
+  Axis.fromJson(core.Map json_)
+      : this(
+          end: json_.containsKey('end')
+              ? (json_['end'] as core.num).toDouble()
+              : null,
+          start: json_.containsKey('start')
+              ? (json_['start'] as core.num).toDouble()
+              : null,
+          tag: json_.containsKey('tag') ? json_['tag'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (end != null) 'end': end!,
+        if (start != null) 'start': start!,
+        if (tag != null) 'tag': tag!,
+      };
+}
+
 /// Metadata describing a family of fonts.
 class Webfont {
+  /// Axis for variable fonts.
+  core.List<Axis>? axes;
+
   /// The category of the font.
   core.String? category;
 
@@ -118,6 +170,10 @@ class Webfont {
   /// The date (format "yyyy-MM-dd") the font was modified for the last time.
   core.String? lastModified;
 
+  /// Font URL for menu subset, a subset of the font that is enough to display
+  /// the font name
+  core.String? menu;
+
   /// The scripts supported by the font.
   core.List<core.String>? subsets;
 
@@ -128,11 +184,13 @@ class Webfont {
   core.String? version;
 
   Webfont({
+    this.axes,
     this.category,
     this.family,
     this.files,
     this.kind,
     this.lastModified,
+    this.menu,
     this.subsets,
     this.variants,
     this.version,
@@ -140,6 +198,12 @@ class Webfont {
 
   Webfont.fromJson(core.Map json_)
       : this(
+          axes: json_.containsKey('axes')
+              ? (json_['axes'] as core.List)
+                  .map((value) => Axis.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           category: json_.containsKey('category')
               ? json_['category'] as core.String
               : null,
@@ -148,9 +212,9 @@ class Webfont {
               : null,
           files: json_.containsKey('files')
               ? (json_['files'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -158,6 +222,7 @@ class Webfont {
           lastModified: json_.containsKey('lastModified')
               ? json_['lastModified'] as core.String
               : null,
+          menu: json_.containsKey('menu') ? json_['menu'] as core.String : null,
           subsets: json_.containsKey('subsets')
               ? (json_['subsets'] as core.List)
                   .map((value) => value as core.String)
@@ -174,11 +239,13 @@ class Webfont {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (axes != null) 'axes': axes!,
         if (category != null) 'category': category!,
         if (family != null) 'family': family!,
         if (files != null) 'files': files!,
         if (kind != null) 'kind': kind!,
         if (lastModified != null) 'lastModified': lastModified!,
+        if (menu != null) 'menu': menu!,
         if (subsets != null) 'subsets': subsets!,
         if (variants != null) 'variants': variants!,
         if (version != null) 'version': version!,

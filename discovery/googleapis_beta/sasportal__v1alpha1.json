@@ -2,11 +2,11 @@
     "auth": {
         "oauth2": {
             "scopes": {
+                "https://www.googleapis.com/auth/cloud-platform": {
+                    "description": "See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account."
+                },
                 "https://www.googleapis.com/auth/sasportal": {
                     "description": "Read, create, update, and delete your SAS Portal data."
-                },
-                "https://www.googleapis.com/auth/userinfo.email": {
-                    "description": "See your primary Google Account email address"
                 }
             }
         }
@@ -26,6 +26,13 @@
     "name": "sasportal",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230731",
+    "rootUrl": "https://sasportal.googleapis.com/",
+    "servicePath": "",
+    "title": "SAS Portal API",
+    "version": "v1alpha1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -103,10 +110,25 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "customers": {
             "methods": {
+                "checkHasProvisionedDeployment": {
+                    "description": "Checks whether a SAS deployment for the authentication context exists.",
+                    "flatPath": "v1alpha1/customers:checkHasProvisionedDeployment",
+                    "httpMethod": "GET",
+                    "id": "sasportal.customers.checkHasProvisionedDeployment",
+                    "parameterOrder": [],
+                    "parameters": {},
+                    "path": "v1alpha1/customers:checkHasProvisionedDeployment",
+                    "response": {
+                        "$ref": "SasPortalCheckHasProvisionedDeploymentResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/sasportal"
+                    ]
+                },
                 "get": {
                     "description": "Returns a requested customer.",
                     "flatPath": "v1alpha1/customers/{customersId}",
@@ -129,8 +151,8 @@
                         "$ref": "SasPortalCustomer"
                     },
                     "scopes": [
-                        "https://www.googleapis.com/auth/sasportal",
-                        "https://www.googleapis.com/auth/userinfo.email"
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/sasportal"
                     ]
                 },
                 "list": {
@@ -157,8 +179,27 @@
                         "$ref": "SasPortalListCustomersResponse"
                     },
                     "scopes": [
-                        "https://www.googleapis.com/auth/sasportal",
-                        "https://www.googleapis.com/auth/userinfo.email"
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/sasportal"
+                    ]
+                },
+                "migrateOrganization": {
+                    "description": "Migrates a SAS organization to the cloud. This will create GCP projects for each deployment and associate them. The SAS Organization is linked to the gcp project that called the command. go/sas-legacy-customer-migration",
+                    "flatPath": "v1alpha1/customers:migrateOrganization",
+                    "httpMethod": "POST",
+                    "id": "sasportal.customers.migrateOrganization",
+                    "parameterOrder": [],
+                    "parameters": {},
+                    "path": "v1alpha1/customers:migrateOrganization",
+                    "request": {
+                        "$ref": "SasPortalMigrateOrganizationRequest"
+                    },
+                    "response": {
+                        "$ref": "SasPortalOperation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/sasportal"
                     ]
                 },
                 "patch": {
@@ -192,8 +233,27 @@
                         "$ref": "SasPortalCustomer"
                     },
                     "scopes": [
-                        "https://www.googleapis.com/auth/sasportal",
-                        "https://www.googleapis.com/auth/userinfo.email"
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/sasportal"
+                    ]
+                },
+                "provisionDeployment": {
+                    "description": "Creates a new SAS deployment through the GCP workflow. Creates a SAS organization if an organization match is not found.",
+                    "flatPath": "v1alpha1/customers:provisionDeployment",
+                    "httpMethod": "POST",
+                    "id": "sasportal.customers.provisionDeployment",
+                    "parameterOrder": [],
+                    "parameters": {},
+                    "path": "v1alpha1/customers:provisionDeployment",
+                    "request": {
+                        "$ref": "SasPortalProvisionDeploymentRequest"
+                    },
+                    "response": {
+                        "$ref": "SasPortalProvisionDeploymentResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/sasportal"
                     ]
                 }
             },
@@ -225,8 +285,8 @@
                                 "$ref": "SasPortalDeployment"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "delete": {
@@ -251,8 +311,8 @@
                                 "$ref": "SasPortalEmpty"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "get": {
@@ -277,8 +337,8 @@
                                 "$ref": "SasPortalDeployment"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "list": {
@@ -319,8 +379,8 @@
                                 "$ref": "SasPortalListDeploymentsResponse"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "move": {
@@ -348,8 +408,8 @@
                                 "$ref": "SasPortalOperation"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "patch": {
@@ -383,8 +443,8 @@
                                 "$ref": "SasPortalDeployment"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         }
                     },
@@ -416,8 +476,8 @@
                                         "$ref": "SasPortalDevice"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/sasportal",
-                                        "https://www.googleapis.com/auth/userinfo.email"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/sasportal"
                                     ]
                                 },
                                 "createSigned": {
@@ -445,8 +505,8 @@
                                         "$ref": "SasPortalDevice"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/sasportal",
-                                        "https://www.googleapis.com/auth/userinfo.email"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/sasportal"
                                     ]
                                 },
                                 "list": {
@@ -487,8 +547,8 @@
                                         "$ref": "SasPortalListDevicesResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/sasportal",
-                                        "https://www.googleapis.com/auth/userinfo.email"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/sasportal"
                                     ]
                                 }
                             }
@@ -522,8 +582,8 @@
                                 "$ref": "SasPortalDevice"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "createSigned": {
@@ -551,8 +611,8 @@
                                 "$ref": "SasPortalDevice"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "delete": {
@@ -577,8 +637,8 @@
                                 "$ref": "SasPortalEmpty"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "get": {
@@ -603,8 +663,8 @@
                                 "$ref": "SasPortalDevice"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "list": {
@@ -645,8 +705,8 @@
                                 "$ref": "SasPortalListDevicesResponse"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "move": {
@@ -674,8 +734,8 @@
                                 "$ref": "SasPortalOperation"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "patch": {
@@ -709,8 +769,8 @@
                                 "$ref": "SasPortalDevice"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "signDevice": {
@@ -738,8 +798,8 @@
                                 "$ref": "SasPortalEmpty"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "updateSigned": {
@@ -767,8 +827,8 @@
                                 "$ref": "SasPortalDevice"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         }
                     }
@@ -800,8 +860,8 @@
                                 "$ref": "SasPortalNode"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "delete": {
@@ -826,8 +886,8 @@
                                 "$ref": "SasPortalEmpty"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "get": {
@@ -852,8 +912,8 @@
                                 "$ref": "SasPortalNode"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "list": {
@@ -894,8 +954,8 @@
                                 "$ref": "SasPortalListNodesResponse"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "move": {
@@ -923,8 +983,8 @@
                                 "$ref": "SasPortalOperation"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "patch": {
@@ -958,8 +1018,8 @@
                                 "$ref": "SasPortalNode"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         }
                     },
@@ -991,8 +1051,8 @@
                                         "$ref": "SasPortalDeployment"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/sasportal",
-                                        "https://www.googleapis.com/auth/userinfo.email"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/sasportal"
                                     ]
                                 },
                                 "list": {
@@ -1033,8 +1093,8 @@
                                         "$ref": "SasPortalListDeploymentsResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/sasportal",
-                                        "https://www.googleapis.com/auth/userinfo.email"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/sasportal"
                                     ]
                                 }
                             }
@@ -1066,8 +1126,8 @@
                                         "$ref": "SasPortalDevice"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/sasportal",
-                                        "https://www.googleapis.com/auth/userinfo.email"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/sasportal"
                                     ]
                                 },
                                 "createSigned": {
@@ -1095,8 +1155,8 @@
                                         "$ref": "SasPortalDevice"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/sasportal",
-                                        "https://www.googleapis.com/auth/userinfo.email"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/sasportal"
                                     ]
                                 },
                                 "list": {
@@ -1137,8 +1197,8 @@
                                         "$ref": "SasPortalListDevicesResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/sasportal",
-                                        "https://www.googleapis.com/auth/userinfo.email"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/sasportal"
                                     ]
                                 }
                             }
@@ -1170,8 +1230,8 @@
                                         "$ref": "SasPortalNode"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/sasportal",
-                                        "https://www.googleapis.com/auth/userinfo.email"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/sasportal"
                                     ]
                                 },
                                 "list": {
@@ -1212,8 +1272,8 @@
                                         "$ref": "SasPortalListNodesResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/sasportal",
-                                        "https://www.googleapis.com/auth/userinfo.email"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/sasportal"
                                     ]
                                 }
                             }
@@ -1246,8 +1306,8 @@
                         "$ref": "SasPortalDeployment"
                     },
                     "scopes": [
-                        "https://www.googleapis.com/auth/sasportal",
-                        "https://www.googleapis.com/auth/userinfo.email"
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/sasportal"
                     ]
                 }
             },
@@ -1276,8 +1336,8 @@
                                 "$ref": "SasPortalEmpty"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "get": {
@@ -1302,8 +1362,8 @@
                                 "$ref": "SasPortalDevice"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "move": {
@@ -1331,8 +1391,8 @@
                                 "$ref": "SasPortalOperation"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "patch": {
@@ -1366,8 +1426,8 @@
                                 "$ref": "SasPortalDevice"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "signDevice": {
@@ -1395,8 +1455,8 @@
                                 "$ref": "SasPortalEmpty"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "updateSigned": {
@@ -1424,8 +1484,8 @@
                                 "$ref": "SasPortalDevice"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         }
                     }
@@ -1449,8 +1509,8 @@
                         "$ref": "SasPortalGenerateSecretResponse"
                     },
                     "scopes": [
-                        "https://www.googleapis.com/auth/sasportal",
-                        "https://www.googleapis.com/auth/userinfo.email"
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/sasportal"
                     ]
                 },
                 "validate": {
@@ -1468,8 +1528,8 @@
                         "$ref": "SasPortalValidateInstallerResponse"
                     },
                     "scopes": [
-                        "https://www.googleapis.com/auth/sasportal",
-                        "https://www.googleapis.com/auth/userinfo.email"
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/sasportal"
                     ]
                 }
             }
@@ -1498,8 +1558,8 @@
                         "$ref": "SasPortalNode"
                     },
                     "scopes": [
-                        "https://www.googleapis.com/auth/sasportal",
-                        "https://www.googleapis.com/auth/userinfo.email"
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/sasportal"
                     ]
                 }
             },
@@ -1528,8 +1588,8 @@
                                 "$ref": "SasPortalEmpty"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "get": {
@@ -1554,8 +1614,8 @@
                                 "$ref": "SasPortalDeployment"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "list": {
@@ -1596,8 +1656,8 @@
                                 "$ref": "SasPortalListDeploymentsResponse"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "move": {
@@ -1625,8 +1685,8 @@
                                 "$ref": "SasPortalOperation"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "patch": {
@@ -1660,8 +1720,8 @@
                                 "$ref": "SasPortalDeployment"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         }
                     },
@@ -1693,8 +1753,8 @@
                                         "$ref": "SasPortalDevice"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/sasportal",
-                                        "https://www.googleapis.com/auth/userinfo.email"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/sasportal"
                                     ]
                                 },
                                 "createSigned": {
@@ -1722,8 +1782,8 @@
                                         "$ref": "SasPortalDevice"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/sasportal",
-                                        "https://www.googleapis.com/auth/userinfo.email"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/sasportal"
                                     ]
                                 },
                                 "list": {
@@ -1764,8 +1824,8 @@
                                         "$ref": "SasPortalListDevicesResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/sasportal",
-                                        "https://www.googleapis.com/auth/userinfo.email"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/sasportal"
                                     ]
                                 }
                             }
@@ -1799,8 +1859,8 @@
                                 "$ref": "SasPortalDevice"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "createSigned": {
@@ -1828,8 +1888,8 @@
                                 "$ref": "SasPortalDevice"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "delete": {
@@ -1854,8 +1914,8 @@
                                 "$ref": "SasPortalEmpty"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "get": {
@@ -1880,8 +1940,8 @@
                                 "$ref": "SasPortalDevice"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "list": {
@@ -1922,8 +1982,8 @@
                                 "$ref": "SasPortalListDevicesResponse"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "move": {
@@ -1951,8 +2011,8 @@
                                 "$ref": "SasPortalOperation"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "patch": {
@@ -1986,8 +2046,8 @@
                                 "$ref": "SasPortalDevice"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "signDevice": {
@@ -2015,8 +2075,8 @@
                                 "$ref": "SasPortalEmpty"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "updateSigned": {
@@ -2044,8 +2104,8 @@
                                 "$ref": "SasPortalDevice"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         }
                     }
@@ -2077,8 +2137,8 @@
                                 "$ref": "SasPortalNode"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "delete": {
@@ -2103,8 +2163,8 @@
                                 "$ref": "SasPortalEmpty"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "get": {
@@ -2129,8 +2189,8 @@
                                 "$ref": "SasPortalNode"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "list": {
@@ -2171,8 +2231,8 @@
                                 "$ref": "SasPortalListNodesResponse"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "move": {
@@ -2200,8 +2260,8 @@
                                 "$ref": "SasPortalOperation"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         },
                         "patch": {
@@ -2235,8 +2295,8 @@
                                 "$ref": "SasPortalNode"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/sasportal",
-                                "https://www.googleapis.com/auth/userinfo.email"
+                                "https://www.googleapis.com/auth/cloud-platform",
+                                "https://www.googleapis.com/auth/sasportal"
                             ]
                         }
                     },
@@ -2268,8 +2328,8 @@
                                         "$ref": "SasPortalDeployment"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/sasportal",
-                                        "https://www.googleapis.com/auth/userinfo.email"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/sasportal"
                                     ]
                                 },
                                 "list": {
@@ -2310,8 +2370,8 @@
                                         "$ref": "SasPortalListDeploymentsResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/sasportal",
-                                        "https://www.googleapis.com/auth/userinfo.email"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/sasportal"
                                     ]
                                 }
                             }
@@ -2343,8 +2403,8 @@
                                         "$ref": "SasPortalDevice"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/sasportal",
-                                        "https://www.googleapis.com/auth/userinfo.email"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/sasportal"
                                     ]
                                 },
                                 "createSigned": {
@@ -2372,8 +2432,8 @@
                                         "$ref": "SasPortalDevice"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/sasportal",
-                                        "https://www.googleapis.com/auth/userinfo.email"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/sasportal"
                                     ]
                                 },
                                 "list": {
@@ -2414,8 +2474,8 @@
                                         "$ref": "SasPortalListDevicesResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/sasportal",
-                                        "https://www.googleapis.com/auth/userinfo.email"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/sasportal"
                                     ]
                                 }
                             }
@@ -2447,8 +2507,8 @@
                                         "$ref": "SasPortalNode"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/sasportal",
-                                        "https://www.googleapis.com/auth/userinfo.email"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/sasportal"
                                     ]
                                 },
                                 "list": {
@@ -2489,8 +2549,8 @@
                                         "$ref": "SasPortalListNodesResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/sasportal",
-                                        "https://www.googleapis.com/auth/userinfo.email"
+                                        "https://www.googleapis.com/auth/cloud-platform",
+                                        "https://www.googleapis.com/auth/sasportal"
                                     ]
                                 }
                             }
@@ -2516,8 +2576,8 @@
                         "$ref": "SasPortalPolicy"
                     },
                     "scopes": [
-                        "https://www.googleapis.com/auth/sasportal",
-                        "https://www.googleapis.com/auth/userinfo.email"
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/sasportal"
                     ]
                 },
                 "set": {
@@ -2535,8 +2595,8 @@
                         "$ref": "SasPortalPolicy"
                     },
                     "scopes": [
-                        "https://www.googleapis.com/auth/sasportal",
-                        "https://www.googleapis.com/auth/userinfo.email"
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/sasportal"
                     ]
                 },
                 "test": {
@@ -2554,15 +2614,13 @@
                         "$ref": "SasPortalTestPermissionsResponse"
                     },
                     "scopes": [
-                        "https://www.googleapis.com/auth/sasportal",
-                        "https://www.googleapis.com/auth/userinfo.email"
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/sasportal"
                     ]
                 }
             }
         }
     },
-    "revision": "20220825",
-    "rootUrl": "https://sasportal.googleapis.com/",
     "schemas": {
         "SasPortalAssignment": {
             "description": "Associates `members` with a `role`.",
@@ -2591,9 +2649,20 @@
                     "description": "The frequency range of the channel."
                 },
                 "score": {
-                    "description": "The channel score, normalized to be in [0,100].",
+                    "description": "The channel score, normalized to be in the range [0,100].",
                     "format": "double",
                     "type": "number"
+                }
+            },
+            "type": "object"
+        },
+        "SasPortalCheckHasProvisionedDeploymentResponse": {
+            "description": "Response for [CheckHasProvisionedDeployment]. [spectrum.sas.portal.v1alpha1.Provisioning.CheckHasProvisionedDeployment].",
+            "id": "SasPortalCheckHasProvisionedDeploymentResponse",
+            "properties": {
+                "hasProvisionedDeployment": {
+                    "description": "Whether a SAS deployment for the authentication context exists.",
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -2645,7 +2714,7 @@
                     "type": "string"
                 },
                 "frns": {
-                    "description": "Output only. The FRNs copied from its direct parent.",
+                    "description": "Output only. The FCC Registration Numbers (FRNs) copied from its direct parent.",
                     "items": {
                         "type": "string"
                     },
@@ -2667,6 +2736,21 @@
             },
             "type": "object"
         },
+        "SasPortalDeploymentAssociation": {
+            "description": "Association between a gcp project and a SAS user id.",
+            "id": "SasPortalDeploymentAssociation",
+            "properties": {
+                "gcpProjectId": {
+                    "description": "GCP project id of the associated project.",
+                    "type": "string"
+                },
+                "userId": {
+                    "description": "User id of the deployment.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "SasPortalDevice": {
             "id": "SasPortalDevice",
             "properties": {
@@ -2675,6 +2759,7 @@
                     "description": "Output only. Current configuration of the device as registered to the SAS."
                 },
                 "currentChannels": {
+                    "deprecated": true,
                     "description": "Output only. Current channels with scores.",
                     "items": {
                         "$ref": "SasPortalChannelWithScore"
@@ -2695,7 +2780,7 @@
                     "type": "string"
                 },
                 "grantRangeAllowlists": {
-                    "description": "Only ranges within the allowlists are available for new grants.",
+                    "description": "Only ranges that are within the allowlists are available for new grants.",
                     "items": {
                         "$ref": "SasPortalFrequencyRange"
                     },
@@ -2940,19 +3025,20 @@
             "id": "SasPortalDeviceMetadata",
             "properties": {
                 "antennaModel": {
-                    "description": "If populated, the Antenna Model Pattern to use. Format is: RecordCreatorId:PatternId",
+                    "description": "If populated, the Antenna Model Pattern to use. Format is: `RecordCreatorId:PatternId`",
                     "type": "string"
                 },
                 "commonChannelGroup": {
-                    "description": "CCG. A group of CBSDs in the same ICG requesting a common primary channel assignment. See CBRSA-TS-2001 V3.0.0 for more details.",
+                    "description": "Common Channel Group (CCG). A group of CBSDs in the same ICG requesting a common primary channel assignment. For more details, see [CBRSA-TS-2001 V3.0.0](https://ongoalliance.org/wp-content/uploads/2020/02/CBRSA-TS-2001-V3.0.0_Approved-for-publication.pdf).",
                     "type": "string"
                 },
                 "interferenceCoordinationGroup": {
-                    "description": "ICG. A group of CBSDs that manage their own interference with the group. See CBRSA-TS-2001 V3.0.0 for more details.",
+                    "description": "Interference Coordination Group (ICG). A group of CBSDs that manage their own interference with the group. For more details, see [CBRSA-TS-2001 V3.0.0](https://ongoalliance.org/wp-content/uploads/2020/02/CBRSA-TS-2001-V3.0.0_Approved-for-publication.pdf).",
                     "type": "string"
                 },
                 "nrqzValidated": {
-                    "description": "Output only. Whether a CPI has validated to have coordinated with the National Quiet Zone office.",
+                    "deprecated": true,
+                    "description": "Output only. Set to `true` if a CPI has validated that they have coordinated with the National Quiet Zone office.",
                     "readOnly": true,
                     "type": "boolean"
                 },
@@ -3081,6 +3167,11 @@
                     "format": "int32",
                     "type": "integer"
                 },
+                "antennaGainNewField": {
+                    "description": "As above, but as a DoubleValue.",
+                    "format": "double",
+                    "type": "number"
+                },
                 "antennaModel": {
                     "description": "If an external antenna is used, the antenna model is optionally provided in this field. The string has a maximum length of 128 octets.",
                     "type": "string"
@@ -3093,6 +3184,11 @@
                     "description": "This parameter is the maximum device EIRP in units of dBm/10MHz and is an integer with a value between -127 and +47 (dBm/10 MHz) inclusive. If not included, SAS interprets it as maximum allowable EIRP in units of dBm/10MHz for device category.",
                     "format": "int32",
                     "type": "integer"
+                },
+                "eirpCapabilityNewField": {
+                    "description": "As above, but as a DoubleValue.",
+                    "format": "double",
+                    "type": "number"
                 },
                 "height": {
                     "description": "Device antenna height in meters. When the `heightType` parameter value is \"AGL\", the antenna height should be given relative to ground level. When the `heightType` parameter value is \"AMSL\", it is given with respect to WGS84 datum.",
@@ -3212,6 +3308,58 @@
             },
             "type": "object"
         },
+        "SasPortalMigrateOrganizationMetadata": {
+            "description": "Long-running operation metadata message returned by the MigrateOrganization.",
+            "id": "SasPortalMigrateOrganizationMetadata",
+            "properties": {
+                "operationState": {
+                    "description": "Output only. Current operation state",
+                    "enum": [
+                        "OPERATION_STATE_UNSPECIFIED",
+                        "OPERATION_STATE_PENDING",
+                        "OPERATION_STATE_RUNNING",
+                        "OPERATION_STATE_SUCCEEDED",
+                        "OPERATION_STATE_FAILED"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified.",
+                        "Pending (Not started).",
+                        "In-progress.",
+                        "Done successfully.",
+                        "Done with errors."
+                    ],
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SasPortalMigrateOrganizationRequest": {
+            "description": "Request for [MigrateOrganization]. [spectrum.sas.portal.v1alpha1.Provisioning.MigrateOrganization]. GCP Project, Organization Info, and caller's GAIA ID should be retrieved from the RPC handler, and used to check authorization on SAS Portal organization and to create GCP Projects.",
+            "id": "SasPortalMigrateOrganizationRequest",
+            "properties": {
+                "organizationId": {
+                    "description": "Required. Id of the SAS organization to be migrated.",
+                    "format": "int64",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SasPortalMigrateOrganizationResponse": {
+            "description": "Response for [MigrateOrganization]. [spectrum.sas.portal.v1alpha1.Provisioning.MigrateOrganization].",
+            "id": "SasPortalMigrateOrganizationResponse",
+            "properties": {
+                "deploymentAssociation": {
+                    "description": "Optional. A list of deployment association that were created for the migration, or current associations if they already exist.",
+                    "items": {
+                        "$ref": "SasPortalDeploymentAssociation"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "SasPortalMoveDeploymentRequest": {
             "description": "Request for MoveDeployment.",
             "id": "SasPortalMoveDeploymentRequest",
@@ -3272,7 +3420,7 @@
             "id": "SasPortalNrqzValidation",
             "properties": {
                 "caseId": {
-                    "description": "Validation case id.",
+                    "description": "Validation case ID.",
                     "type": "string"
                 },
                 "cpiId": {
@@ -3280,12 +3428,12 @@
                     "type": "string"
                 },
                 "latitude": {
-                    "description": "Device latitude associated with the validation.",
+                    "description": "Device latitude that's associated with the validation.",
                     "format": "double",
                     "type": "number"
                 },
                 "longitude": {
-                    "description": "Device longitude associated with the validation.",
+                    "description": "Device longitude that's associated with the validation.",
                     "format": "double",
                     "type": "number"
                 },
@@ -3360,12 +3508,43 @@
             },
             "type": "object"
         },
+        "SasPortalProvisionDeploymentRequest": {
+            "description": "Request for [ProvisionDeployment]. [spectrum.sas.portal.v1alpha1.Provisioning.ProvisionDeployment]. GCP Project, Organization Info, and caller’s GAIA ID should be retrieved from the RPC handler, and used as inputs to create a new SAS organization (if not exists) and a new SAS deployment.",
+            "id": "SasPortalProvisionDeploymentRequest",
+            "properties": {
+                "newDeploymentDisplayName": {
+                    "description": "Optional. If this field is set, and a new SAS Portal Deployment needs to be created, its display name will be set to the value of this field.",
+                    "type": "string"
+                },
+                "newOrganizationDisplayName": {
+                    "description": "Optional. If this field is set, and a new SAS Portal Organization needs to be created, its display name will be set to the value of this field.",
+                    "type": "string"
+                },
+                "organizationId": {
+                    "description": "Optional. If this field is set then a new deployment will be created under the organization specified by this id.",
+                    "format": "int64",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SasPortalProvisionDeploymentResponse": {
+            "description": "Response for [ProvisionDeployment]. [spectrum.sas.portal.v1alpha1.Provisioning.ProvisionDeployment].",
+            "id": "SasPortalProvisionDeploymentResponse",
+            "properties": {
+                "errorMessage": {
+                    "description": "Optional. Optional error message if the provisioning request is not successful.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "SasPortalSetPolicyRequest": {
             "description": "Request message for `SetPolicy` method.",
             "id": "SasPortalSetPolicyRequest",
             "properties": {
                 "disableNotification": {
-                    "description": "Optional. Set the field as true when we would like to disable the onboarding notification.",
+                    "description": "Optional. Set the field as `true` to disable the onboarding notification.",
                     "type": "boolean"
                 },
                 "policy": {
@@ -3490,9 +3669,5 @@
             "properties": {},
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "SAS Portal API",
-    "version": "v1alpha1",
-    "version_module": true
+    }
 }

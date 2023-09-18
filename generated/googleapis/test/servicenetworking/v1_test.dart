@@ -1,8 +1,6 @@
 // ignore_for_file: camel_case_types
-// ignore_for_file: cascade_invocations
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
 // ignore_for_file: prefer_const_declarations
@@ -12,8 +10,9 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_parenthesis
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unreachable_from_main
 // ignore_for_file: unused_local_variable
 
 import 'dart:async' as async;
@@ -172,6 +171,7 @@ api.AddSubnetworkRequest buildAddSubnetworkRequest() {
   final o = api.AddSubnetworkRequest();
   buildCounterAddSubnetworkRequest++;
   if (buildCounterAddSubnetworkRequest < 3) {
+    o.allowSubnetCidrRoutesOverlap = true;
     o.checkServiceNetworkingUsePermission = true;
     o.computeIdempotencyWindow = 'foo';
     o.consumer = 'foo';
@@ -184,6 +184,7 @@ api.AddSubnetworkRequest buildAddSubnetworkRequest() {
     o.region = 'foo';
     o.requestedAddress = 'foo';
     o.requestedRanges = buildUnnamed1();
+    o.role = 'foo';
     o.secondaryIpRangeSpecs = buildUnnamed2();
     o.subnetwork = 'foo';
     o.subnetworkUsers = buildUnnamed3();
@@ -196,6 +197,7 @@ api.AddSubnetworkRequest buildAddSubnetworkRequest() {
 void checkAddSubnetworkRequest(api.AddSubnetworkRequest o) {
   buildCounterAddSubnetworkRequest++;
   if (buildCounterAddSubnetworkRequest < 3) {
+    unittest.expect(o.allowSubnetCidrRoutesOverlap!, unittest.isTrue);
     unittest.expect(o.checkServiceNetworkingUsePermission!, unittest.isTrue);
     unittest.expect(
       o.computeIdempotencyWindow!,
@@ -238,6 +240,10 @@ void checkAddSubnetworkRequest(api.AddSubnetworkRequest o) {
       unittest.equals('foo'),
     );
     checkUnnamed1(o.requestedRanges!);
+    unittest.expect(
+      o.role!,
+      unittest.equals('foo'),
+    );
     checkUnnamed2(o.secondaryIpRangeSpecs!);
     unittest.expect(
       o.subnetwork!,
@@ -553,6 +559,54 @@ void checkDnsRecordSet(api.DnsRecordSet o) {
   buildCounterDnsRecordSet--;
 }
 
+core.int buildCounterDnsZone = 0;
+api.DnsZone buildDnsZone() {
+  final o = api.DnsZone();
+  buildCounterDnsZone++;
+  if (buildCounterDnsZone < 3) {
+    o.dnsSuffix = 'foo';
+    o.name = 'foo';
+  }
+  buildCounterDnsZone--;
+  return o;
+}
+
+void checkDnsZone(api.DnsZone o) {
+  buildCounterDnsZone++;
+  if (buildCounterDnsZone < 3) {
+    unittest.expect(
+      o.dnsSuffix!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterDnsZone--;
+}
+
+core.int buildCounterDnsZonePair = 0;
+api.DnsZonePair buildDnsZonePair() {
+  final o = api.DnsZonePair();
+  buildCounterDnsZonePair++;
+  if (buildCounterDnsZonePair < 3) {
+    o.consumerPeeringZone = buildDnsZone();
+    o.producerPrivateZone = buildDnsZone();
+  }
+  buildCounterDnsZonePair--;
+  return o;
+}
+
+void checkDnsZonePair(api.DnsZonePair o) {
+  buildCounterDnsZonePair++;
+  if (buildCounterDnsZonePair < 3) {
+    checkDnsZone(o.consumerPeeringZone!);
+    checkDnsZone(o.producerPrivateZone!);
+  }
+  buildCounterDnsZonePair--;
+}
+
 core.int buildCounterEmpty = 0;
 api.Empty buildEmpty() {
   final o = api.Empty();
@@ -589,6 +643,27 @@ void checkEnableVpcServiceControlsRequest(
     );
   }
   buildCounterEnableVpcServiceControlsRequest--;
+}
+
+core.int buildCounterGetDnsZoneResponse = 0;
+api.GetDnsZoneResponse buildGetDnsZoneResponse() {
+  final o = api.GetDnsZoneResponse();
+  buildCounterGetDnsZoneResponse++;
+  if (buildCounterGetDnsZoneResponse < 3) {
+    o.consumerPeeringZone = buildDnsZone();
+    o.producerPrivateZone = buildDnsZone();
+  }
+  buildCounterGetDnsZoneResponse--;
+  return o;
+}
+
+void checkGetDnsZoneResponse(api.GetDnsZoneResponse o) {
+  buildCounterGetDnsZoneResponse++;
+  if (buildCounterGetDnsZoneResponse < 3) {
+    checkDnsZone(o.consumerPeeringZone!);
+    checkDnsZone(o.producerPrivateZone!);
+  }
+  buildCounterGetDnsZoneResponse--;
 }
 
 core.int buildCounterGoogleCloudServicenetworkingV1ConsumerConfigReservedRange =
@@ -658,12 +733,72 @@ void checkListConnectionsResponse(api.ListConnectionsResponse o) {
   buildCounterListConnectionsResponse--;
 }
 
-core.List<api.Operation> buildUnnamed10() => [
+core.List<api.DnsRecordSet> buildUnnamed10() => [
+      buildDnsRecordSet(),
+      buildDnsRecordSet(),
+    ];
+
+void checkUnnamed10(core.List<api.DnsRecordSet> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkDnsRecordSet(o[0]);
+  checkDnsRecordSet(o[1]);
+}
+
+core.int buildCounterListDnsRecordSetsResponse = 0;
+api.ListDnsRecordSetsResponse buildListDnsRecordSetsResponse() {
+  final o = api.ListDnsRecordSetsResponse();
+  buildCounterListDnsRecordSetsResponse++;
+  if (buildCounterListDnsRecordSetsResponse < 3) {
+    o.dnsRecordSets = buildUnnamed10();
+  }
+  buildCounterListDnsRecordSetsResponse--;
+  return o;
+}
+
+void checkListDnsRecordSetsResponse(api.ListDnsRecordSetsResponse o) {
+  buildCounterListDnsRecordSetsResponse++;
+  if (buildCounterListDnsRecordSetsResponse < 3) {
+    checkUnnamed10(o.dnsRecordSets!);
+  }
+  buildCounterListDnsRecordSetsResponse--;
+}
+
+core.List<api.DnsZonePair> buildUnnamed11() => [
+      buildDnsZonePair(),
+      buildDnsZonePair(),
+    ];
+
+void checkUnnamed11(core.List<api.DnsZonePair> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkDnsZonePair(o[0]);
+  checkDnsZonePair(o[1]);
+}
+
+core.int buildCounterListDnsZonesResponse = 0;
+api.ListDnsZonesResponse buildListDnsZonesResponse() {
+  final o = api.ListDnsZonesResponse();
+  buildCounterListDnsZonesResponse++;
+  if (buildCounterListDnsZonesResponse < 3) {
+    o.dnsZonePairs = buildUnnamed11();
+  }
+  buildCounterListDnsZonesResponse--;
+  return o;
+}
+
+void checkListDnsZonesResponse(api.ListDnsZonesResponse o) {
+  buildCounterListDnsZonesResponse++;
+  if (buildCounterListDnsZonesResponse < 3) {
+    checkUnnamed11(o.dnsZonePairs!);
+  }
+  buildCounterListDnsZonesResponse--;
+}
+
+core.List<api.Operation> buildUnnamed12() => [
       buildOperation(),
       buildOperation(),
     ];
 
-void checkUnnamed10(core.List<api.Operation> o) {
+void checkUnnamed12(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperation(o[0]);
   checkOperation(o[1]);
@@ -675,7 +810,7 @@ api.ListOperationsResponse buildListOperationsResponse() {
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.operations = buildUnnamed10();
+    o.operations = buildUnnamed12();
   }
   buildCounterListOperationsResponse--;
   return o;
@@ -688,17 +823,17 @@ void checkListOperationsResponse(api.ListOperationsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed10(o.operations!);
+    checkUnnamed12(o.operations!);
   }
   buildCounterListOperationsResponse--;
 }
 
-core.List<api.PeeredDnsDomain> buildUnnamed11() => [
+core.List<api.PeeredDnsDomain> buildUnnamed13() => [
       buildPeeredDnsDomain(),
       buildPeeredDnsDomain(),
     ];
 
-void checkUnnamed11(core.List<api.PeeredDnsDomain> o) {
+void checkUnnamed13(core.List<api.PeeredDnsDomain> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPeeredDnsDomain(o[0]);
   checkPeeredDnsDomain(o[1]);
@@ -709,7 +844,7 @@ api.ListPeeredDnsDomainsResponse buildListPeeredDnsDomainsResponse() {
   final o = api.ListPeeredDnsDomainsResponse();
   buildCounterListPeeredDnsDomainsResponse++;
   if (buildCounterListPeeredDnsDomainsResponse < 3) {
-    o.peeredDnsDomains = buildUnnamed11();
+    o.peeredDnsDomains = buildUnnamed13();
   }
   buildCounterListPeeredDnsDomainsResponse--;
   return o;
@@ -718,12 +853,12 @@ api.ListPeeredDnsDomainsResponse buildListPeeredDnsDomainsResponse() {
 void checkListPeeredDnsDomainsResponse(api.ListPeeredDnsDomainsResponse o) {
   buildCounterListPeeredDnsDomainsResponse++;
   if (buildCounterListPeeredDnsDomainsResponse < 3) {
-    checkUnnamed11(o.peeredDnsDomains!);
+    checkUnnamed13(o.peeredDnsDomains!);
   }
   buildCounterListPeeredDnsDomainsResponse--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed12() => {
+core.Map<core.String, core.Object?> buildUnnamed14() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -736,7 +871,7 @@ core.Map<core.String, core.Object?> buildUnnamed12() => {
       },
     };
 
-void checkUnnamed12(core.Map<core.String, core.Object?> o) {
+void checkUnnamed14(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -768,7 +903,7 @@ void checkUnnamed12(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.Map<core.String, core.Object?> buildUnnamed13() => {
+core.Map<core.String, core.Object?> buildUnnamed15() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -781,7 +916,7 @@ core.Map<core.String, core.Object?> buildUnnamed13() => {
       },
     };
 
-void checkUnnamed13(core.Map<core.String, core.Object?> o) {
+void checkUnnamed15(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -820,9 +955,9 @@ api.Operation buildOperation() {
   if (buildCounterOperation < 3) {
     o.done = true;
     o.error = buildStatus();
-    o.metadata = buildUnnamed12();
+    o.metadata = buildUnnamed14();
     o.name = 'foo';
-    o.response = buildUnnamed13();
+    o.response = buildUnnamed15();
   }
   buildCounterOperation--;
   return o;
@@ -833,12 +968,12 @@ void checkOperation(api.Operation o) {
   if (buildCounterOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkStatus(o.error!);
-    checkUnnamed12(o.metadata!);
+    checkUnnamed14(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed13(o.response!);
+    checkUnnamed15(o.response!);
   }
   buildCounterOperation--;
 }
@@ -897,12 +1032,12 @@ void checkPolicyBinding(api.PolicyBinding o) {
   buildCounterPolicyBinding--;
 }
 
-core.List<core.String> buildUnnamed14() => [
+core.List<core.String> buildUnnamed16() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed14(core.List<core.String> o) {
+void checkUnnamed16(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -914,12 +1049,12 @@ void checkUnnamed14(core.List<core.String> o) {
   );
 }
 
-core.List<core.int> buildUnnamed15() => [
+core.List<core.int> buildUnnamed17() => [
       42,
       42,
     ];
 
-void checkUnnamed15(core.List<core.int> o) {
+void checkUnnamed17(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -931,12 +1066,12 @@ void checkUnnamed15(core.List<core.int> o) {
   );
 }
 
-core.List<api.Subnetwork> buildUnnamed16() => [
+core.List<api.Subnetwork> buildUnnamed18() => [
       buildSubnetwork(),
       buildSubnetwork(),
     ];
 
-void checkUnnamed16(core.List<api.Subnetwork> o) {
+void checkUnnamed18(core.List<api.Subnetwork> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSubnetwork(o[0]);
   checkSubnetwork(o[1]);
@@ -948,9 +1083,9 @@ api.RangeReservation buildRangeReservation() {
   buildCounterRangeReservation++;
   if (buildCounterRangeReservation < 3) {
     o.ipPrefixLength = 42;
-    o.requestedRanges = buildUnnamed14();
-    o.secondaryRangeIpPrefixLengths = buildUnnamed15();
-    o.subnetworkCandidates = buildUnnamed16();
+    o.requestedRanges = buildUnnamed16();
+    o.secondaryRangeIpPrefixLengths = buildUnnamed17();
+    o.subnetworkCandidates = buildUnnamed18();
   }
   buildCounterRangeReservation--;
   return o;
@@ -963,9 +1098,9 @@ void checkRangeReservation(api.RangeReservation o) {
       o.ipPrefixLength!,
       unittest.equals(42),
     );
-    checkUnnamed14(o.requestedRanges!);
-    checkUnnamed15(o.secondaryRangeIpPrefixLengths!);
-    checkUnnamed16(o.subnetworkCandidates!);
+    checkUnnamed16(o.requestedRanges!);
+    checkUnnamed17(o.secondaryRangeIpPrefixLengths!);
+    checkUnnamed18(o.subnetworkCandidates!);
   }
   buildCounterRangeReservation--;
 }
@@ -1117,7 +1252,7 @@ void checkSecondaryIpRangeSpec(api.SecondaryIpRangeSpec o) {
   buildCounterSecondaryIpRangeSpec--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed17() => {
+core.Map<core.String, core.Object?> buildUnnamed19() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1130,7 +1265,7 @@ core.Map<core.String, core.Object?> buildUnnamed17() => {
       },
     };
 
-void checkUnnamed17(core.Map<core.String, core.Object?> o) {
+void checkUnnamed19(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -1162,15 +1297,15 @@ void checkUnnamed17(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed18() => [
-      buildUnnamed17(),
-      buildUnnamed17(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed20() => [
+      buildUnnamed19(),
+      buildUnnamed19(),
     ];
 
-void checkUnnamed18(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed20(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed17(o[0]);
-  checkUnnamed17(o[1]);
+  checkUnnamed19(o[0]);
+  checkUnnamed19(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -1179,7 +1314,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed18();
+    o.details = buildUnnamed20();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -1193,7 +1328,7 @@ void checkStatus(api.Status o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed18(o.details!);
+    checkUnnamed20(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -1202,12 +1337,12 @@ void checkStatus(api.Status o) {
   buildCounterStatus--;
 }
 
-core.List<api.SecondaryIpRange> buildUnnamed19() => [
+core.List<api.SecondaryIpRange> buildUnnamed21() => [
       buildSecondaryIpRange(),
       buildSecondaryIpRange(),
     ];
 
-void checkUnnamed19(core.List<api.SecondaryIpRange> o) {
+void checkUnnamed21(core.List<api.SecondaryIpRange> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSecondaryIpRange(o[0]);
   checkSecondaryIpRange(o[1]);
@@ -1223,7 +1358,7 @@ api.Subnetwork buildSubnetwork() {
     o.network = 'foo';
     o.outsideAllocation = true;
     o.region = 'foo';
-    o.secondaryIpRanges = buildUnnamed19();
+    o.secondaryIpRanges = buildUnnamed21();
   }
   buildCounterSubnetwork--;
   return o;
@@ -1249,7 +1384,7 @@ void checkSubnetwork(api.Subnetwork o) {
       o.region!,
       unittest.equals('foo'),
     );
-    checkUnnamed19(o.secondaryIpRanges!);
+    checkUnnamed21(o.secondaryIpRanges!);
   }
   buildCounterSubnetwork--;
 }
@@ -1334,12 +1469,12 @@ void checkValidateConsumerConfigRequest(api.ValidateConsumerConfigRequest o) {
   buildCounterValidateConsumerConfigRequest--;
 }
 
-core.List<api.Subnetwork> buildUnnamed20() => [
+core.List<api.Subnetwork> buildUnnamed22() => [
       buildSubnetwork(),
       buildSubnetwork(),
     ];
 
-void checkUnnamed20(core.List<api.Subnetwork> o) {
+void checkUnnamed22(core.List<api.Subnetwork> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSubnetwork(o[0]);
   checkSubnetwork(o[1]);
@@ -1350,7 +1485,7 @@ api.ValidateConsumerConfigResponse buildValidateConsumerConfigResponse() {
   final o = api.ValidateConsumerConfigResponse();
   buildCounterValidateConsumerConfigResponse++;
   if (buildCounterValidateConsumerConfigResponse < 3) {
-    o.existingSubnetworkCandidates = buildUnnamed20();
+    o.existingSubnetworkCandidates = buildUnnamed22();
     o.isValid = true;
     o.validationError = 'foo';
   }
@@ -1361,7 +1496,7 @@ api.ValidateConsumerConfigResponse buildValidateConsumerConfigResponse() {
 void checkValidateConsumerConfigResponse(api.ValidateConsumerConfigResponse o) {
   buildCounterValidateConsumerConfigResponse++;
   if (buildCounterValidateConsumerConfigResponse < 3) {
-    checkUnnamed20(o.existingSubnetworkCandidates!);
+    checkUnnamed22(o.existingSubnetworkCandidates!);
     unittest.expect(o.isValid!, unittest.isTrue);
     unittest.expect(
       o.validationError!,
@@ -1492,6 +1627,26 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-DnsZone', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDnsZone();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.DnsZone.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkDnsZone(od);
+    });
+  });
+
+  unittest.group('obj-schema-DnsZonePair', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDnsZonePair();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DnsZonePair.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkDnsZonePair(od);
+    });
+  });
+
   unittest.group('obj-schema-Empty', () {
     unittest.test('to-json--from-json', () async {
       final o = buildEmpty();
@@ -1509,6 +1664,16 @@ void main() {
       final od = api.EnableVpcServiceControlsRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkEnableVpcServiceControlsRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-GetDnsZoneResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGetDnsZoneResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GetDnsZoneResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGetDnsZoneResponse(od);
     });
   });
 
@@ -1532,6 +1697,26 @@ void main() {
       final od = api.ListConnectionsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkListConnectionsResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-ListDnsRecordSetsResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildListDnsRecordSetsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListDnsRecordSetsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkListDnsRecordSetsResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-ListDnsZonesResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildListDnsZonesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListDnsZonesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkListDnsZonesResponse(od);
     });
   });
 
@@ -1717,7 +1902,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkCancelOperationRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1733,7 +1918,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -1770,7 +1955,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1786,7 +1971,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -1822,7 +2007,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1838,7 +2023,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -1877,7 +2062,7 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1893,7 +2078,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -1952,7 +2137,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkAddSubnetworkRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -1968,7 +2153,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2010,7 +2195,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkDisableVpcServiceControlsRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2026,7 +2211,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2069,7 +2254,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkEnableVpcServiceControlsRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2085,7 +2270,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2128,7 +2313,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkSearchRangeRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2144,7 +2329,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2186,7 +2371,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkValidateConsumerConfigRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2202,7 +2387,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2247,7 +2432,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkConnection(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2263,7 +2448,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2305,7 +2490,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkDeleteConnectionRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2321,7 +2506,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2359,7 +2544,7 @@ void main() {
       final arg_network = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2375,7 +2560,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2423,7 +2608,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkConnection(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2439,7 +2624,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2491,7 +2676,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkAddDnsRecordSetRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2507,7 +2692,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2538,18 +2723,17 @@ void main() {
       checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--remove', () async {
+    unittest.test('method--get', () async {
       final mock = HttpServerMock();
       final res = api.ServiceNetworkingApi(mock).services.dnsRecordSets;
-      final arg_request = buildRemoveDnsRecordSetRequest();
       final arg_parent = 'foo';
+      final arg_consumerNetwork = 'foo';
+      final arg_domain = 'foo';
+      final arg_type = 'foo';
+      final arg_zone = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.RemoveDnsRecordSetRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkRemoveDnsRecordSetRequest(obj);
-
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2565,7 +2749,150 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['consumerNetwork']!.first,
+          unittest.equals(arg_consumerNetwork),
+        );
+        unittest.expect(
+          queryMap['domain']!.first,
+          unittest.equals(arg_domain),
+        );
+        unittest.expect(
+          queryMap['type']!.first,
+          unittest.equals(arg_type),
+        );
+        unittest.expect(
+          queryMap['zone']!.first,
+          unittest.equals(arg_zone),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildDnsRecordSet());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.get(arg_parent,
+          consumerNetwork: arg_consumerNetwork,
+          domain: arg_domain,
+          type: arg_type,
+          zone: arg_zone,
+          $fields: arg_$fields);
+      checkDnsRecordSet(response as api.DnsRecordSet);
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.ServiceNetworkingApi(mock).services.dnsRecordSets;
+      final arg_parent = 'foo';
+      final arg_consumerNetwork = 'foo';
+      final arg_zone = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['consumerNetwork']!.first,
+          unittest.equals(arg_consumerNetwork),
+        );
+        unittest.expect(
+          queryMap['zone']!.first,
+          unittest.equals(arg_zone),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildListDnsRecordSetsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          consumerNetwork: arg_consumerNetwork,
+          zone: arg_zone,
+          $fields: arg_$fields);
+      checkListDnsRecordSetsResponse(response as api.ListDnsRecordSetsResponse);
+    });
+
+    unittest.test('method--remove', () async {
+      final mock = HttpServerMock();
+      final res = api.ServiceNetworkingApi(mock).services.dnsRecordSets;
+      final arg_request = buildRemoveDnsRecordSetRequest();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.RemoveDnsRecordSetRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkRemoveDnsRecordSetRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2607,7 +2934,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkUpdateDnsRecordSetRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2623,7 +2950,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2667,7 +2994,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkAddDnsZoneRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2683,7 +3010,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2725,7 +3052,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkRemoveDnsZoneRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2741,7 +3068,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2782,7 +3109,7 @@ void main() {
       final arg_includeUsedIpRanges = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2798,7 +3125,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2845,7 +3172,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkUpdateConsumerConfigRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2861,7 +3188,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2893,6 +3220,122 @@ void main() {
     });
   });
 
+  unittest.group('resource-ServicesProjectsGlobalNetworksDnsZonesResource', () {
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.ServiceNetworkingApi(mock)
+          .services
+          .projects
+          .global
+          .networks
+          .dnsZones;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGetDnsZoneResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGetDnsZoneResponse(response as api.GetDnsZoneResponse);
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.ServiceNetworkingApi(mock)
+          .services
+          .projects
+          .global
+          .networks
+          .dnsZones;
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildListDnsZonesResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent, $fields: arg_$fields);
+      checkListDnsZonesResponse(response as api.ListDnsZonesResponse);
+    });
+  });
+
   unittest.group(
       'resource-ServicesProjectsGlobalNetworksPeeredDnsDomainsResource', () {
     unittest.test('method--create', () async {
@@ -2911,7 +3354,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkPeeredDnsDomain(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2927,7 +3370,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -2969,7 +3412,7 @@ void main() {
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -2985,7 +3428,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3026,7 +3469,7 @@ void main() {
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3042,7 +3485,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>
@@ -3086,7 +3529,7 @@ void main() {
             json as core.Map<core.String, core.dynamic>);
         checkAddRolesRequest(obj);
 
-        final path = (req.url).path;
+        final path = req.url.path;
         var pathOffset = 0;
         core.int index;
         core.String subPart;
@@ -3102,7 +3545,7 @@ void main() {
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = (req.url).query;
+        final query = req.url.query;
         var queryOffset = 0;
         final queryMap = <core.String, core.List<core.String>>{};
         void addQueryParam(core.String n, core.String v) =>

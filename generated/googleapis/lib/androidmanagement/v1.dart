@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Android Management API - v1
@@ -29,8 +28,9 @@
 ///   - [EnterprisesPoliciesResource]
 ///   - [EnterprisesWebAppsResource]
 ///   - [EnterprisesWebTokensResource]
+/// - [ProvisioningInfoResource]
 /// - [SignupUrlsResource]
-library androidmanagement.v1;
+library androidmanagement_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -39,7 +39,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -56,6 +55,8 @@ class AndroidManagementApi {
   final commons.ApiRequester _requester;
 
   EnterprisesResource get enterprises => EnterprisesResource(_requester);
+  ProvisioningInfoResource get provisioningInfo =>
+      ProvisioningInfoResource(_requester);
   SignupUrlsResource get signupUrls => SignupUrlsResource(_requester);
 
   AndroidManagementApi(http.Client client,
@@ -85,7 +86,8 @@ class EnterprisesResource {
 
   /// Creates an enterprise.
   ///
-  /// This is the last step in the enterprise signup flow.
+  /// This is the last step in the enterprise signup flow. See also:
+  /// SigninDetail
   ///
   /// [request] - The metadata request object.
   ///
@@ -289,6 +291,8 @@ class EnterprisesResource {
 
   /// Updates an enterprise.
   ///
+  /// See also: SigninDetail
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -395,7 +399,9 @@ class EnterprisesDevicesResource {
 
   /// Deletes a device.
   ///
-  /// This operation wipes the device.
+  /// This operation wipes the device. Deleted devices do not show up in
+  /// enterprises.devices.list calls and a 404 is returned from
+  /// enterprises.devices.get.
   ///
   /// Request parameters:
   ///
@@ -442,6 +448,8 @@ class EnterprisesDevicesResource {
   }
 
   /// Gets a device.
+  ///
+  /// Deleted devices will respond with a 404 error.
   ///
   /// Request parameters:
   ///
@@ -522,6 +530,8 @@ class EnterprisesDevicesResource {
   }
 
   /// Lists devices for a given enterprise.
+  ///
+  /// Deleted devices are not returned in the response.
   ///
   /// Request parameters:
   ///
@@ -747,14 +757,7 @@ class EnterprisesDevicesOperationsResource {
 
   /// Lists operations that match the specified filter in the request.
   ///
-  /// If the server doesn't support this method, it returns UNIMPLEMENTED.NOTE:
-  /// the name binding allows API services to override the binding to use
-  /// different resource name schemes, such as users / * /operations. To
-  /// override the binding, API services can add a binding such as
-  /// "/v1/{name=users / * }/operations" to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
+  /// If the server doesn't support this method, it returns UNIMPLEMENTED.
   ///
   /// Request parameters:
   ///
@@ -1430,6 +1433,50 @@ class EnterprisesWebTokensResource {
   }
 }
 
+class ProvisioningInfoResource {
+  final commons.ApiRequester _requester;
+
+  ProvisioningInfoResource(commons.ApiRequester client) : _requester = client;
+
+  /// Get the device provisioning info by the identifier provided via the
+  /// sign-in url.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The identifier that Android Device Policy passes to the
+  /// 3P sign-in page in the form of provisioningInfo/{provisioning_info}.
+  /// Value must have pattern `^provisioningInfo/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ProvisioningInfo].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ProvisioningInfo> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ProvisioningInfo.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class SignupUrlsResource {
   final commons.ApiRequester _requester;
 
@@ -2067,6 +2114,9 @@ class ApplicationPermission {
 }
 
 /// Policy for an individual app.
+///
+/// Note: Application availability on a given device cannot be changed using
+/// this policy if installAppsDisabled is enabled.
 class ApplicationPolicy {
   /// List of the app’s track IDs that a device belonging to the enterprise can
   /// access.
@@ -2182,8 +2232,11 @@ class ApplicationPolicy {
 
   /// Whether the app is allowed to lock itself in full-screen mode.
   ///
-  /// DEPRECATED. Use InstallType KIOSK or kioskCustomLauncherEnabled to to
+  /// DEPRECATED. Use InstallType KIOSK or kioskCustomLauncherEnabled to
   /// configure a dedicated device.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? lockTaskAllowed;
 
   /// Managed configuration applied to the app.
@@ -2226,6 +2279,18 @@ class ApplicationPolicy {
   /// which apply to all apps.
   core.List<PermissionGrant>? permissionGrants;
 
+  /// Specifies whether the app installed in the work profile is allowed to add
+  /// widgets to the home screen.
+  /// Possible string values are:
+  /// - "WORK_PROFILE_WIDGETS_UNSPECIFIED" : Unspecified. Defaults to
+  /// work_profile_widgets_default
+  /// - "WORK_PROFILE_WIDGETS_ALLOWED" : Work profile widgets are allowed. This
+  /// means the application will be able to add widgets to the home screen.
+  /// - "WORK_PROFILE_WIDGETS_DISALLOWED" : Work profile widgets are disallowed.
+  /// This means the application will not be able to add widgets to the home
+  /// screen.
+  core.String? workProfileWidgets;
+
   ApplicationPolicy({
     this.accessibleTrackIds,
     this.alwaysOnVpnLockdownExemption,
@@ -2242,6 +2307,7 @@ class ApplicationPolicy {
     this.minimumVersionCode,
     this.packageName,
     this.permissionGrants,
+    this.workProfileWidgets,
   });
 
   ApplicationPolicy.fromJson(core.Map json_)
@@ -2305,6 +2371,9 @@ class ApplicationPolicy {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          workProfileWidgets: json_.containsKey('workProfileWidgets')
+              ? json_['workProfileWidgets'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2330,6 +2399,8 @@ class ApplicationPolicy {
           'minimumVersionCode': minimumVersionCode!,
         if (packageName != null) 'packageName': packageName!,
         if (permissionGrants != null) 'permissionGrants': permissionGrants!,
+        if (workProfileWidgets != null)
+          'workProfileWidgets': workProfileWidgets!,
       };
 }
 
@@ -2349,9 +2420,7 @@ class ApplicationReport {
   /// The display name of the app.
   core.String? displayName;
 
-  /// List of app events.
-  ///
-  /// The most recent 20 events are stored in the list.
+  /// The list of app events which have occurred in the last 30 hours.
   core.List<ApplicationEvent>? events;
 
   /// The package name of the app that installed this app.
@@ -2385,6 +2454,13 @@ class ApplicationReport {
   /// - "INSTALLED" : App is installed on the device
   core.String? state;
 
+  /// Whether the app is user facing.
+  /// Possible string values are:
+  /// - "USER_FACING_TYPE_UNSPECIFIED" : App user facing type is unspecified.
+  /// - "NOT_USER_FACING" : App is not user facing.
+  /// - "USER_FACING" : App is user facing.
+  core.String? userFacingType;
+
   /// The app version code, which can be used to determine whether one version
   /// is more recent than another.
   core.int? versionCode;
@@ -2402,6 +2478,7 @@ class ApplicationReport {
     this.packageSha256Hash,
     this.signingKeyCertFingerprints,
     this.state,
+    this.userFacingType,
     this.versionCode,
     this.versionName,
   });
@@ -2443,6 +2520,9 @@ class ApplicationReport {
                   : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
+          userFacingType: json_.containsKey('userFacingType')
+              ? json_['userFacingType'] as core.String
+              : null,
           versionCode: json_.containsKey('versionCode')
               ? json_['versionCode'] as core.int
               : null,
@@ -2463,6 +2543,7 @@ class ApplicationReport {
         if (signingKeyCertFingerprints != null)
           'signingKeyCertFingerprints': signingKeyCertFingerprints!,
         if (state != null) 'state': state!,
+        if (userFacingType != null) 'userFacingType': userFacingType!,
         if (versionCode != null) 'versionCode': versionCode!,
         if (versionName != null) 'versionName': versionName!,
       };
@@ -2641,10 +2722,10 @@ class ClearAppsDataStatus {
       : this(
           results: json_.containsKey('results')
               ? (json_['results'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     PerAppResult.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -2707,6 +2788,38 @@ class Command {
   /// For commands of type RESET_PASSWORD, optionally specifies flags.
   core.List<core.String>? resetPasswordFlags;
 
+  /// Parameters for the START_LOST_MODE command to put the device into lost
+  /// mode.
+  ///
+  /// See StartLostModeParams. If this is set, then it is suggested that type
+  /// should not be set. In this case, the server automatically sets it to
+  /// START_LOST_MODE. It is also acceptable to explicitly set type to
+  /// START_LOST_MODE.
+  StartLostModeParams? startLostModeParams;
+
+  /// Status of the START_LOST_MODE command to put the device into lost mode.
+  ///
+  /// See StartLostModeStatus.
+  ///
+  /// Output only.
+  StartLostModeStatus? startLostModeStatus;
+
+  /// Parameters for the STOP_LOST_MODE command to take the device out of lost
+  /// mode.
+  ///
+  /// See StopLostModeParams. If this is set, then it is suggested that type
+  /// should not be set. In this case, the server automatically sets it to
+  /// STOP_LOST_MODE. It is also acceptable to explicitly set type to
+  /// STOP_LOST_MODE.
+  StopLostModeParams? stopLostModeParams;
+
+  /// Status of the STOP_LOST_MODE command to take the device out of lost mode.
+  ///
+  /// See StopLostModeStatus.
+  ///
+  /// Output only.
+  StopLostModeStatus? stopLostModeStatus;
+
   /// The type of the command.
   /// Possible string values are:
   /// - "COMMAND_TYPE_UNSPECIFIED" : This value is disallowed.
@@ -2723,6 +2836,12 @@ class Command {
   /// is supported on Android 9 and above. Note that an application can store
   /// data outside of its application data, for example in external storage or
   /// in a user dictionary. See also clear_apps_data_params.
+  /// - "START_LOST_MODE" : Puts the device into lost mode. Only supported on
+  /// fully managed devices or organization-owned devices with a managed
+  /// profile. See also start_lost_mode_params.
+  /// - "STOP_LOST_MODE" : Takes the device out of lost mode. Only supported on
+  /// fully managed devices or organization-owned devices with a managed
+  /// profile. See also stop_lost_mode_params.
   core.String? type;
 
   /// The resource name of the user that owns the device in the form
@@ -2740,6 +2859,10 @@ class Command {
     this.errorCode,
     this.newPassword,
     this.resetPasswordFlags,
+    this.startLostModeParams,
+    this.startLostModeStatus,
+    this.stopLostModeParams,
+    this.stopLostModeStatus,
     this.type,
     this.userName,
   });
@@ -2771,6 +2894,22 @@ class Command {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          startLostModeParams: json_.containsKey('startLostModeParams')
+              ? StartLostModeParams.fromJson(json_['startLostModeParams']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          startLostModeStatus: json_.containsKey('startLostModeStatus')
+              ? StartLostModeStatus.fromJson(json_['startLostModeStatus']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          stopLostModeParams: json_.containsKey('stopLostModeParams')
+              ? StopLostModeParams.fromJson(json_['stopLostModeParams']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          stopLostModeStatus: json_.containsKey('stopLostModeStatus')
+              ? StopLostModeStatus.fromJson(json_['stopLostModeStatus']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           type: json_.containsKey('type') ? json_['type'] as core.String : null,
           userName: json_.containsKey('userName')
               ? json_['userName'] as core.String
@@ -2788,6 +2927,14 @@ class Command {
         if (newPassword != null) 'newPassword': newPassword!,
         if (resetPasswordFlags != null)
           'resetPasswordFlags': resetPasswordFlags!,
+        if (startLostModeParams != null)
+          'startLostModeParams': startLostModeParams!,
+        if (startLostModeStatus != null)
+          'startLostModeStatus': startLostModeStatus!,
+        if (stopLostModeParams != null)
+          'stopLostModeParams': stopLostModeParams!,
+        if (stopLostModeStatus != null)
+          'stopLostModeStatus': stopLostModeStatus!,
         if (type != null) 'type': type!,
         if (userName != null) 'userName': userName!,
       };
@@ -3066,10 +3213,28 @@ class CrossProfilePolicies {
   /// incoming calls
   core.String? showWorkContactsInPersonalProfile;
 
+  /// Specifies the default behaviour for work profile widgets.
+  ///
+  /// If the policy does not specify work_profile_widgets for a specific
+  /// application, it will behave according to the value specified here.
+  /// Possible string values are:
+  /// - "WORK_PROFILE_WIDGETS_DEFAULT_UNSPECIFIED" : Unspecified. Defaults to
+  /// WORK_PROFILE_WIDGETS_DEFAULT_DISALLOWED.
+  /// - "WORK_PROFILE_WIDGETS_DEFAULT_ALLOWED" : Work profile widgets are
+  /// allowed by default. This means that if the policy does not specify
+  /// work_profile_widgets as WORK_PROFILE_WIDGETS_DISALLOWED for the
+  /// application, it will be able to add widgets to the home screen.
+  /// - "WORK_PROFILE_WIDGETS_DEFAULT_DISALLOWED" : Work profile widgets are
+  /// disallowed by default. This means that if the policy does not specify
+  /// work_profile_widgets as WORK_PROFILE_WIDGETS_ALLOWED for the application,
+  /// it will be unable to add widgets to the home screen.
+  core.String? workProfileWidgetsDefault;
+
   CrossProfilePolicies({
     this.crossProfileCopyPaste,
     this.crossProfileDataSharing,
     this.showWorkContactsInPersonalProfile,
+    this.workProfileWidgetsDefault,
   });
 
   CrossProfilePolicies.fromJson(core.Map json_)
@@ -3084,6 +3249,10 @@ class CrossProfilePolicies {
               json_.containsKey('showWorkContactsInPersonalProfile')
                   ? json_['showWorkContactsInPersonalProfile'] as core.String
                   : null,
+          workProfileWidgetsDefault:
+              json_.containsKey('workProfileWidgetsDefault')
+                  ? json_['workProfileWidgetsDefault'] as core.String
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3094,6 +3263,8 @@ class CrossProfilePolicies {
         if (showWorkContactsInPersonalProfile != null)
           'showWorkContactsInPersonalProfile':
               showWorkContactsInPersonalProfile!,
+        if (workProfileWidgetsDefault != null)
+          'workProfileWidgetsDefault': workProfileWidgetsDefault!,
       };
 }
 
@@ -3147,6 +3318,8 @@ class Device {
   /// resets the device, the device state will remain unknown to the server.
   /// - "PROVISIONING" : The device is being provisioned. Newly enrolled devices
   /// are in this state until they have a policy applied.
+  /// - "LOST" : The device is lost. This state is only possible on
+  /// organization-owned devices.
   core.String? appliedState;
 
   /// Information about Common Criteria Mode—security standards defined in the
@@ -3195,6 +3368,9 @@ class Device {
   core.List<HardwareStatus>? hardwareStatusSamples;
 
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? lastPolicyComplianceReportTime;
 
   /// The last time the device fetched its policy.
@@ -3295,6 +3471,8 @@ class Device {
   /// resets the device, the device state will remain unknown to the server.
   /// - "PROVISIONING" : The device is being provisioned. Newly enrolled devices
   /// are in this state until they have a policy applied.
+  /// - "LOST" : The device is lost. This state is only possible on
+  /// organization-owned devices.
   core.String? state;
 
   /// Map of selected system properties name and value related to the device.
@@ -3479,9 +3657,9 @@ class Device {
               ? (json_['systemProperties']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -3543,6 +3721,175 @@ class Device {
         if (systemProperties != null) 'systemProperties': systemProperties!,
         if (user != null) 'user': user!,
         if (userName != null) 'userName': userName!,
+      };
+}
+
+/// Covers controls for device connectivity such as Wi-Fi, USB data access,
+/// keyboard/mouse connections, and more.
+class DeviceConnectivityManagement {
+  /// Controls Wi-Fi configuring privileges.
+  ///
+  /// Based on the option set, user will have either full or limited or no
+  /// control in configuring Wi-Fi networks.
+  /// Possible string values are:
+  /// - "CONFIGURE_WIFI_UNSPECIFIED" : Unspecified. Defaults to
+  /// ALLOW_CONFIGURING_WIFI unless wifiConfigDisabled is set to true. If
+  /// wifiConfigDisabled is set to true, this is equivalent to
+  /// DISALLOW_CONFIGURING_WIFI.
+  /// - "ALLOW_CONFIGURING_WIFI" : The user is allowed to configure Wi-Fi.
+  /// wifiConfigDisabled is ignored.
+  /// - "DISALLOW_ADD_WIFI_CONFIG" : Adding new Wi-Fi configurations is
+  /// disallowed. The user is only able to switch between already configured
+  /// networks. Supported on Android 13 and above, on fully managed devices and
+  /// work profiles on company-owned devices. If the setting is not supported,
+  /// ALLOW_CONFIGURING_WIFI is set. A nonComplianceDetail with API_LEVEL is
+  /// reported if the Android version is less than 13. wifiConfigDisabled is
+  /// ignored.
+  /// - "DISALLOW_CONFIGURING_WIFI" : Disallows configuring Wi-Fi networks. The
+  /// setting wifiConfigDisabled is ignored when this value is set. Supported on
+  /// fully managed devices and work profile on company-owned devices, on all
+  /// supported API levels. For fully managed devices, setting this removes all
+  /// configured networks and retains only the networks configured using
+  /// openNetworkConfiguration policy. For work profiles on company-owned
+  /// devices, existing configured networks are not affected and the user is not
+  /// allowed to add, remove, or modify Wi-Fi networks. Note: If a network
+  /// connection can't be made at boot time and configuring Wi-Fi is disabled
+  /// then network escape hatch will be shown in order to refresh the device
+  /// policy (see networkEscapeHatchEnabled).
+  core.String? configureWifi;
+
+  /// Controls tethering settings.
+  ///
+  /// Based on the value set, the user is partially or fully disallowed from
+  /// using different forms of tethering.
+  /// Possible string values are:
+  /// - "TETHERING_SETTINGS_UNSPECIFIED" : Unspecified. Defaults to
+  /// ALLOW_ALL_TETHERING unless tetheringConfigDisabled is set to true. If
+  /// tetheringConfigDisabled is set to true, this is equivalent to
+  /// DISALLOW_ALL_TETHERING.
+  /// - "ALLOW_ALL_TETHERING" : Allows configuration and use of all forms of
+  /// tethering. tetheringConfigDisabled is ignored.
+  /// - "DISALLOW_WIFI_TETHERING" : Disallows the user from using Wi-Fi
+  /// tethering. Supported on company owned devices running Android 13 and
+  /// above. If the setting is not supported, ALLOW_ALL_TETHERING will be set. A
+  /// nonComplianceDetail with API_LEVEL is reported if the Android version is
+  /// less than 13. tetheringConfigDisabled is ignored.
+  /// - "DISALLOW_ALL_TETHERING" : Disallows all forms of tethering. Supported
+  /// on fully managed devices and work profile on company-owned devices, on all
+  /// supported android versions. The setting tetheringConfigDisabled is
+  /// ignored.
+  core.String? tetheringSettings;
+
+  /// Controls what files and/or data can be transferred via USB.
+  ///
+  /// Supported only on company-owned devices.
+  /// Possible string values are:
+  /// - "USB_DATA_ACCESS_UNSPECIFIED" : Unspecified. Defaults to
+  /// ALLOW_USB_DATA_TRANSFER, unless usbFileTransferDisabled is set to true. If
+  /// usbFileTransferDisabled is set to true, this is equivalent to
+  /// DISALLOW_USB_FILE_TRANSFER.
+  /// - "ALLOW_USB_DATA_TRANSFER" : All types of USB data transfers are allowed.
+  /// usbFileTransferDisabled is ignored.
+  /// - "DISALLOW_USB_FILE_TRANSFER" : Transferring files over USB is
+  /// disallowed. Other types of USB data connections, such as mouse and
+  /// keyboard connection, are allowed. usbFileTransferDisabled is ignored.
+  /// - "DISALLOW_USB_DATA_TRANSFER" : When set, all types of USB data transfers
+  /// are prohibited. Supported for devices running Android 12 or above with USB
+  /// HAL 1.3 or above. If the setting is not supported,
+  /// DISALLOW_USB_FILE_TRANSFER will be set. A nonComplianceDetail with
+  /// API_LEVEL is reported if the Android version is less than 12. A
+  /// nonComplianceDetail with DEVICE_INCOMPATIBLE is reported if the device
+  /// does not have USB HAL 1.3 or above. usbFileTransferDisabled is ignored.
+  core.String? usbDataAccess;
+
+  /// Controls configuring and using Wi-Fi direct settings.
+  ///
+  /// Supported on company-owned devices running Android 13 and above.
+  /// Possible string values are:
+  /// - "WIFI_DIRECT_SETTINGS_UNSPECIFIED" : Unspecified. Defaults to
+  /// ALLOW_WIFI_DIRECT
+  /// - "ALLOW_WIFI_DIRECT" : The user is allowed to use Wi-Fi direct.
+  /// - "DISALLOW_WIFI_DIRECT" : The user is not allowed to use Wi-Fi direct. A
+  /// nonComplianceDetail with API_LEVEL is reported if the Android version is
+  /// less than 13.
+  core.String? wifiDirectSettings;
+
+  DeviceConnectivityManagement({
+    this.configureWifi,
+    this.tetheringSettings,
+    this.usbDataAccess,
+    this.wifiDirectSettings,
+  });
+
+  DeviceConnectivityManagement.fromJson(core.Map json_)
+      : this(
+          configureWifi: json_.containsKey('configureWifi')
+              ? json_['configureWifi'] as core.String
+              : null,
+          tetheringSettings: json_.containsKey('tetheringSettings')
+              ? json_['tetheringSettings'] as core.String
+              : null,
+          usbDataAccess: json_.containsKey('usbDataAccess')
+              ? json_['usbDataAccess'] as core.String
+              : null,
+          wifiDirectSettings: json_.containsKey('wifiDirectSettings')
+              ? json_['wifiDirectSettings'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (configureWifi != null) 'configureWifi': configureWifi!,
+        if (tetheringSettings != null) 'tetheringSettings': tetheringSettings!,
+        if (usbDataAccess != null) 'usbDataAccess': usbDataAccess!,
+        if (wifiDirectSettings != null)
+          'wifiDirectSettings': wifiDirectSettings!,
+      };
+}
+
+/// Controls for device radio settings.
+class DeviceRadioState {
+  /// Controls whether airplane mode can be toggled by the user or not
+  /// Possible string values are:
+  /// - "AIRPLANE_MODE_STATE_UNSPECIFIED" : Unspecified. Defaults to
+  /// AIRPLANE_MODE_USER_CHOICE
+  /// - "AIRPLANE_MODE_USER_CHOICE" : The user is allowed to toggle airplane
+  /// mode on or off.
+  /// - "AIRPLANE_MODE_DISABLED" : Airplane mode is disabled. The user is not
+  /// allowed to toggle airplane mode on. A nonComplianceDetail with API_LEVEL
+  /// is reported if the Android version is less than 9.
+  core.String? airplaneModeState;
+
+  /// Controls current state of Wi-Fi and if user can change its state.
+  /// Possible string values are:
+  /// - "WIFI_STATE_UNSPECIFIED" : Unspecified. Defaults to
+  /// WIFI_STATE_USER_CHOICE
+  /// - "WIFI_STATE_USER_CHOICE" : User is allowed to enable/disable Wi-Fi.
+  /// - "WIFI_ENABLED" : Wi-Fi is on and the user is not allowed to turn it off.
+  /// A nonComplianceDetail with API_LEVEL is reported if the Android version is
+  /// less than 13.
+  /// - "WIFI_DISABLED" : Wi-Fi is off and the user is not allowed to turn it
+  /// on. A nonComplianceDetail with API_LEVEL is reported if the Android
+  /// version is less than 13.
+  core.String? wifiState;
+
+  DeviceRadioState({
+    this.airplaneModeState,
+    this.wifiState,
+  });
+
+  DeviceRadioState.fromJson(core.Map json_)
+      : this(
+          airplaneModeState: json_.containsKey('airplaneModeState')
+              ? json_['airplaneModeState'] as core.String
+              : null,
+          wifiState: json_.containsKey('wifiState')
+              ? json_['wifiState'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (airplaneModeState != null) 'airplaneModeState': airplaneModeState!,
+        if (wifiState != null) 'wifiState': wifiState!,
       };
 }
 
@@ -3861,6 +4208,9 @@ class EnrollmentToken {
 /// The configuration applied to an enterprise.
 class Enterprise {
   /// Deprecated and unused.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? appAutoApprovalEnabled;
 
   /// The enterprise contact info of an EMM-managed enterprise.
@@ -3870,6 +4220,8 @@ class Enterprise {
   core.List<core.String>? enabledNotificationTypes;
 
   /// The name of the enterprise displayed to users.
+  ///
+  /// This field has a maximum length of 100 characters.
   core.String? enterpriseDisplayName;
 
   /// An image displayed as a logo during device provisioning.
@@ -3980,6 +4332,15 @@ class Enterprise {
 
 /// Configuration to enable an app as an extension app, with the capability of
 /// interacting with Android Device Policy offline.
+///
+/// For Android versions 13 and above, extension apps are exempt from battery
+/// restrictions so will not be placed into the restricted App Standby Bucket
+/// (https://developer.android.com/topic/performance/appstandby#restricted-bucket).
+/// Extensions apps are also protected against users clearing their data or
+/// force-closing the application, although admins can continue to use the clear
+/// app data command
+/// (https://developer.android.com/management/reference/rest/v1/enterprises.devices/issueCommand#CommandType)
+/// on extension apps if needed for Android 13 and above.
 class ExtensionConfig {
   /// Fully qualified class name of the receiver service class for Android
   /// Device Policy to notify the extension app of any local command status
@@ -4805,9 +5166,9 @@ class ManagedConfigurationTemplate {
               ? (json_['configurationVariables']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -5043,6 +5404,9 @@ class NetworkInfo {
   /// Alphabetic name of current registered operator.
   ///
   /// For example, Vodafone.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? networkOperatorName;
 
   /// Provides telephony information associated with each SIM card on the
@@ -5163,6 +5527,8 @@ class NonComplianceDetail {
   /// high enough.
   /// - "APP_NOT_UPDATED" : The app is installed, but it hasn't been updated to
   /// the minimum version code specified by policy.
+  /// - "DEVICE_INCOMPATIBLE" : The device is incompatible with the policy
+  /// requirements.
   core.String? nonComplianceReason;
 
   /// The package name indicating which app is out of compliance, if applicable.
@@ -5199,6 +5565,9 @@ class NonComplianceDetail {
   /// level of the Android version running on the device. fieldPath specifies
   /// which field value is not supported. oncWifiContext is set.
   /// nonComplianceReason is set to API_LEVEL.
+  /// - "ONC_WIFI_INVALID_ENTERPRISE_CONFIG" : The enterprise Wi-Fi network is
+  /// missing either the root CA or domain name. nonComplianceReason is set to
+  /// INVALID_VALUE.
   core.String? specificNonComplianceReason;
 
   NonComplianceDetail({
@@ -5291,6 +5660,8 @@ class NonComplianceDetailCondition {
   /// high enough.
   /// - "APP_NOT_UPDATED" : The app is installed, but it hasn't been updated to
   /// the minimum version code specified by policy.
+  /// - "DEVICE_INCOMPATIBLE" : The device is incompatible with the policy
+  /// requirements.
   core.String? nonComplianceReason;
 
   /// The package name of the app that's out of compliance.
@@ -5939,7 +6310,7 @@ class PersonalUsagePolicies {
   /// Account types that can't be managed by the user.
   core.List<core.String>? accountTypesWithManagementDisabled;
 
-  /// Whether camera is disabled.
+  /// If true, the camera is disabled on the personal profile.
   core.bool? cameraDisabled;
 
   /// Controls how long the work profile can stay off.
@@ -5965,7 +6336,7 @@ class PersonalUsagePolicies {
   /// personal profile.
   core.String? personalPlayStoreMode;
 
-  /// Whether screen capture is disabled.
+  /// If true, screen capture is disabled for all users.
   core.bool? screenCaptureDisabled;
 
   PersonalUsagePolicies({
@@ -6052,12 +6423,11 @@ class Policy {
   /// tracks are specified, then the device only uses the production track.
   core.List<core.String>? androidDevicePolicyTracks;
 
-  /// Use autoUpdateMode instead.When autoUpdateMode is set to
+  /// Recommended alternative: autoUpdateMode which is set per app, provides
+  /// greater flexibility around update frequency.When autoUpdateMode is set to
   /// AUTO_UPDATE_POSTPONED or AUTO_UPDATE_HIGH_PRIORITY, this field has no
   /// effect.The app auto update policy, which controls when automatic app
   /// updates can be applied.
-  ///
-  /// Deprecated.
   /// Possible string values are:
   /// - "APP_AUTO_UPDATE_POLICY_UNSPECIFIED" : The auto-update policy is not
   /// set. Equivalent to CHOICE_TO_THE_USER.
@@ -6087,6 +6457,9 @@ class Policy {
   /// setting the date and time.
   ///
   /// If autoDateAndTimeZone is set, this field is ignored.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? autoTimeRequired;
 
   /// Whether applications other than the ones configured in applications are
@@ -6094,6 +6467,9 @@ class Policy {
   ///
   /// When set, applications that were installed under a previous policy but no
   /// longer appear in the policy are automatically uninstalled.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? blockApplicationsEnabled;
 
   /// Whether configuring bluetooth is disabled.
@@ -6140,6 +6516,9 @@ class Policy {
   /// devices this field applies for all apps on the device. For work profiles,
   /// this field applies only to apps in the work profile, and the camera access
   /// of apps outside the work profile is unaffected.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? cameraDisabled;
 
   /// Whether configuring cell broadcast is disabled.
@@ -6156,6 +6535,9 @@ class Policy {
   /// When the conditions for multiple rules are satisfied, all of the
   /// mitigating actions for the rules are taken. There is a maximum limit of
   /// 100 rules. Use policy enforcement rules instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<ComplianceRule>? complianceRules;
 
   /// Whether creating windows besides app windows is disabled.
@@ -6171,6 +6553,9 @@ class Policy {
   core.bool? dataRoamingDisabled;
 
   /// Whether the user is allowed to enable debugging features.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? debuggingFeaturesAllowed;
 
   /// The default permission policy for runtime permission requests.
@@ -6183,8 +6568,15 @@ class Policy {
   /// - "DENY" : Automatically deny a permission.
   core.String? defaultPermissionPolicy;
 
+  /// Covers controls for device connectivity such as Wi-Fi, USB data access,
+  /// keyboard/mouse connections, and more.
+  DeviceConnectivityManagement? deviceConnectivityManagement;
+
   /// The device owner information to be shown on the lock screen.
   UserFacingMessage? deviceOwnerLockScreenInfo;
+
+  /// Covers controls for radio state such as Wi-Fi, bluetooth, and more.
+  DeviceRadioState? deviceRadioState;
 
   /// Whether encryption is enabled
   /// Possible string values are:
@@ -6197,6 +6589,9 @@ class Policy {
   core.String? encryptionPolicy;
 
   /// Whether app verification is force-enabled.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? ensureVerifyAppsEnabled;
 
   /// Whether factory resetting from settings is disabled.
@@ -6219,9 +6614,14 @@ class Policy {
   core.bool? installAppsDisabled;
 
   /// This field has no effect.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? installUnknownSourcesAllowed;
 
-  /// Whether the keyguard is disabled.
+  /// If true, this disables the Lock Screen
+  /// (https://source.android.com/docs/core/display/multi_display/lock-screen)
+  /// for primary and/or secondary displays.
   core.bool? keyguardDisabled;
 
   /// Disabled keyguard customizations, such as widgets.
@@ -6318,7 +6718,9 @@ class Policy {
   /// and the device boots into an app in lock task mode, or the user is
   /// otherwise unable to reach device settings.Note: Setting wifiConfigDisabled
   /// to true will override this setting under specific circumstances. Please
-  /// see wifiConfigDisabled for further details.
+  /// see wifiConfigDisabled for further details. Setting configureWifi to
+  /// DISALLOW_CONFIGURING_WIFI will override this setting under specific
+  /// circumstances. Please see DISALLOW_CONFIGURING_WIFI for further details.
   core.bool? networkEscapeHatchEnabled;
 
   /// Whether resetting network settings is disabled.
@@ -6354,6 +6756,9 @@ class Policy {
   /// PasswordQuality, that is, COMPLEXITY_LOW, COMPLEXITY_MEDIUM, and
   /// COMPLEXITY_HIGH, cannot be used here. unified_lock_settings cannot be used
   /// here.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   PasswordRequirements? passwordRequirements;
 
   /// Explicit permission or group grants or denials for all apps.
@@ -6437,6 +6842,9 @@ class Policy {
   core.bool? removeUserDisabled;
 
   /// Whether rebooting the device into safe boot is disabled.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? safeBootDisabled;
 
   /// Whether screen capture is disabled.
@@ -6454,6 +6862,9 @@ class Policy {
   core.List<SetupAction>? setupActions;
 
   /// Whether location sharing is disabled.
+  ///
+  /// share_location_disabled is supported for both fully managed devices and
+  /// personally owned work profiles.
   core.bool? shareLocationDisabled;
 
   /// A message displayed to the user in the settings screen wherever
@@ -6477,6 +6888,9 @@ class Policy {
   /// that allow escape from full-screen mode. DEPRECATED. To disable the status
   /// bar on a kiosk device, use InstallType KIOSK or
   /// kioskCustomLauncherEnabled.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? statusBarDisabled;
 
   /// Status reporting settings
@@ -6495,6 +6909,12 @@ class Policy {
   SystemUpdate? systemUpdate;
 
   /// Whether configuring tethering and portable hotspots is disabled.
+  ///
+  /// If tetheringSettings is set to anything other than
+  /// TETHERING_SETTINGS_UNSPECIFIED, this setting is ignored.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? tetheringConfigDisabled;
 
   /// Whether user uninstallation of applications is disabled.
@@ -6509,6 +6929,9 @@ class Policy {
   /// Otherwise this field controls whether microphones are disabled: If true,
   /// all microphones are disabled, otherwise they are available. This is
   /// available only on fully managed devices.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? unmuteMicrophoneDisabled;
 
   /// Configuration of device activity logging.
@@ -6517,11 +6940,17 @@ class Policy {
   /// Whether transferring files over USB is disabled.
   ///
   /// This is supported only on company-owned devices.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? usbFileTransferDisabled;
 
   /// Whether USB storage is enabled.
   ///
   /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? usbMassStorageEnabled;
 
   /// The version of the policy.
@@ -6533,13 +6962,27 @@ class Policy {
   /// Whether configuring VPN is disabled.
   core.bool? vpnConfigDisabled;
 
-  /// Whether configuring Wi-Fi access points is disabled.Note: If a network
-  /// connection can't be made at boot time and configuring Wi-Fi is disabled
-  /// then network escape hatch will be shown in order to refresh the device
-  /// policy (see networkEscapeHatchEnabled).
+  /// Whether configuring Wi-Fi networks is disabled.
+  ///
+  /// Supported on fully managed devices and work profiles on company-owned
+  /// devices. For fully managed devices, setting this to true removes all
+  /// configured networks and retains only the networks configured using
+  /// openNetworkConfiguration. For work profiles on company-owned devices,
+  /// existing configured networks are not affected and the user is not allowed
+  /// to add, remove, or modify Wi-Fi networks. If configureWifi is set to
+  /// anything other than CONFIGURE_WIFI_UNSPECIFIED, this setting is ignored.
+  /// Note: If a network connection can't be made at boot time and configuring
+  /// Wi-Fi is disabled then network escape hatch will be shown in order to
+  /// refresh the device policy (see networkEscapeHatchEnabled).
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? wifiConfigDisabled;
 
   /// DEPRECATED - Use wifi_config_disabled.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? wifiConfigsLockdownEnabled;
 
   Policy({
@@ -6568,7 +7011,9 @@ class Policy {
     this.dataRoamingDisabled,
     this.debuggingFeaturesAllowed,
     this.defaultPermissionPolicy,
+    this.deviceConnectivityManagement,
     this.deviceOwnerLockScreenInfo,
+    this.deviceRadioState,
     this.encryptionPolicy,
     this.ensureVerifyAppsEnabled,
     this.factoryResetDisabled,
@@ -6735,9 +7180,19 @@ class Policy {
           defaultPermissionPolicy: json_.containsKey('defaultPermissionPolicy')
               ? json_['defaultPermissionPolicy'] as core.String
               : null,
+          deviceConnectivityManagement:
+              json_.containsKey('deviceConnectivityManagement')
+                  ? DeviceConnectivityManagement.fromJson(
+                      json_['deviceConnectivityManagement']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           deviceOwnerLockScreenInfo: json_
                   .containsKey('deviceOwnerLockScreenInfo')
               ? UserFacingMessage.fromJson(json_['deviceOwnerLockScreenInfo']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          deviceRadioState: json_.containsKey('deviceRadioState')
+              ? DeviceRadioState.fromJson(json_['deviceRadioState']
                   as core.Map<core.String, core.dynamic>)
               : null,
           encryptionPolicy: json_.containsKey('encryptionPolicy')
@@ -7022,8 +7477,11 @@ class Policy {
           'debuggingFeaturesAllowed': debuggingFeaturesAllowed!,
         if (defaultPermissionPolicy != null)
           'defaultPermissionPolicy': defaultPermissionPolicy!,
+        if (deviceConnectivityManagement != null)
+          'deviceConnectivityManagement': deviceConnectivityManagement!,
         if (deviceOwnerLockScreenInfo != null)
           'deviceOwnerLockScreenInfo': deviceOwnerLockScreenInfo!,
+        if (deviceRadioState != null) 'deviceRadioState': deviceRadioState!,
         if (encryptionPolicy != null) 'encryptionPolicy': encryptionPolicy!,
         if (ensureVerifyAppsEnabled != null)
           'ensureVerifyAppsEnabled': ensureVerifyAppsEnabled!,
@@ -7133,8 +7591,15 @@ class Policy {
 
 /// A rule that defines the actions to take if a device or work profile is not
 /// compliant with the policy specified in settingName.
+///
+/// In the case of multiple matching or multiple triggered enforcement rules, a
+/// merge will occur with the most severe action being taken. However, all
+/// triggered rules are still kept track of: this includes initial trigger time
+/// and all associated non-compliance details. In the situation where the most
+/// severe enforcement rule is satisfied, the next most appropriate action is
+/// applied.
 class PolicyEnforcementRule {
-  /// An action to block access to apps and data on a fully managed device or in
+  /// An action to block access to apps and data on a company owned device or in
   /// a work profile.
   ///
   /// This action also triggers a user-facing notification with information
@@ -7147,7 +7612,7 @@ class PolicyEnforcementRule {
   /// For example, applications or passwordPolicies.
   core.String? settingName;
 
-  /// An action to reset a fully managed device or delete a work profile.
+  /// An action to reset a company owned device or delete a work profile.
   ///
   /// Note: blockAction must also be specified.
   WipeAction? wipeAction;
@@ -7271,6 +7736,86 @@ class PowerManagementEvent {
       };
 }
 
+/// Information about a device that is available during setup.
+class ProvisioningInfo {
+  /// The API level of the Android platform version running on the device.
+  core.int? apiLevel;
+
+  /// Brand of the device.
+  ///
+  /// For example, Google.
+  core.String? brand;
+
+  /// The name of the enterprise in the form enterprises/{enterprise}.
+  core.String? enterprise;
+
+  /// The management mode of the device or profile.
+  /// Possible string values are:
+  /// - "MANAGEMENT_MODE_UNSPECIFIED" : This value is disallowed.
+  /// - "DEVICE_OWNER" : Device owner. Android Device Policy has full control
+  /// over the device.
+  /// - "PROFILE_OWNER" : Profile owner. Android Device Policy has control over
+  /// a managed profile on the device.
+  core.String? managementMode;
+
+  /// The model of the device.
+  ///
+  /// For example, Asus Nexus 7.
+  core.String? model;
+
+  /// The name of this resource in the form
+  /// provisioningInfo/{provisioning_info}.
+  core.String? name;
+
+  /// Ownership of the managed device.
+  /// Possible string values are:
+  /// - "OWNERSHIP_UNSPECIFIED" : Ownership is unspecified.
+  /// - "COMPANY_OWNED" : Device is company-owned.
+  /// - "PERSONALLY_OWNED" : Device is personally-owned.
+  core.String? ownership;
+
+  ProvisioningInfo({
+    this.apiLevel,
+    this.brand,
+    this.enterprise,
+    this.managementMode,
+    this.model,
+    this.name,
+    this.ownership,
+  });
+
+  ProvisioningInfo.fromJson(core.Map json_)
+      : this(
+          apiLevel: json_.containsKey('apiLevel')
+              ? json_['apiLevel'] as core.int
+              : null,
+          brand:
+              json_.containsKey('brand') ? json_['brand'] as core.String : null,
+          enterprise: json_.containsKey('enterprise')
+              ? json_['enterprise'] as core.String
+              : null,
+          managementMode: json_.containsKey('managementMode')
+              ? json_['managementMode'] as core.String
+              : null,
+          model:
+              json_.containsKey('model') ? json_['model'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          ownership: json_.containsKey('ownership')
+              ? json_['ownership'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (apiLevel != null) 'apiLevel': apiLevel!,
+        if (brand != null) 'brand': brand!,
+        if (enterprise != null) 'enterprise': enterprise!,
+        if (managementMode != null) 'managementMode': managementMode!,
+        if (model != null) 'model': model!,
+        if (name != null) 'name': name!,
+        if (ownership != null) 'ownership': ownership!,
+      };
+}
+
 /// Configuration info for an HTTP proxy.
 ///
 /// For a direct proxy, set the host, port, and excluded_hosts fields. For a PAC
@@ -7369,7 +7914,10 @@ class SetupAction {
   ///
   /// The app will be launched with an intent containing an extra with key
   /// com.google.android.apps.work.clouddpc.EXTRA_LAUNCHED_AS_SETUP_ACTION set
-  /// to the boolean value true to indicate that this is a setup action flow.
+  /// to the boolean value true to indicate that this is a setup action flow. If
+  /// SetupAction references an app, the corresponding installType in the
+  /// application policy must be set as REQUIRED_FOR_SETUP or said setup will
+  /// fail.
   LaunchAppAction? launchApp;
 
   /// Title of this action.
@@ -7663,6 +8211,99 @@ class SpecificNonComplianceContext {
       };
 }
 
+/// Parameters associated with the START_LOST_MODE command to put the device
+/// into lost mode.
+///
+/// At least one of the parameters, not including the organization name, must be
+/// provided in order for the device to be put into lost mode.
+class StartLostModeParams {
+  /// The email address displayed to the user when the device is in lost mode.
+  core.String? lostEmailAddress;
+
+  /// The message displayed to the user when the device is in lost mode.
+  UserFacingMessage? lostMessage;
+
+  /// The organization name displayed to the user when the device is in lost
+  /// mode.
+  UserFacingMessage? lostOrganization;
+
+  /// The phone number displayed to the user when the device is in lost mode.
+  UserFacingMessage? lostPhoneNumber;
+
+  /// The street address displayed to the user when the device is in lost mode.
+  UserFacingMessage? lostStreetAddress;
+
+  StartLostModeParams({
+    this.lostEmailAddress,
+    this.lostMessage,
+    this.lostOrganization,
+    this.lostPhoneNumber,
+    this.lostStreetAddress,
+  });
+
+  StartLostModeParams.fromJson(core.Map json_)
+      : this(
+          lostEmailAddress: json_.containsKey('lostEmailAddress')
+              ? json_['lostEmailAddress'] as core.String
+              : null,
+          lostMessage: json_.containsKey('lostMessage')
+              ? UserFacingMessage.fromJson(
+                  json_['lostMessage'] as core.Map<core.String, core.dynamic>)
+              : null,
+          lostOrganization: json_.containsKey('lostOrganization')
+              ? UserFacingMessage.fromJson(json_['lostOrganization']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          lostPhoneNumber: json_.containsKey('lostPhoneNumber')
+              ? UserFacingMessage.fromJson(json_['lostPhoneNumber']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          lostStreetAddress: json_.containsKey('lostStreetAddress')
+              ? UserFacingMessage.fromJson(json_['lostStreetAddress']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (lostEmailAddress != null) 'lostEmailAddress': lostEmailAddress!,
+        if (lostMessage != null) 'lostMessage': lostMessage!,
+        if (lostOrganization != null) 'lostOrganization': lostOrganization!,
+        if (lostPhoneNumber != null) 'lostPhoneNumber': lostPhoneNumber!,
+        if (lostStreetAddress != null) 'lostStreetAddress': lostStreetAddress!,
+      };
+}
+
+/// Status of the START_LOST_MODE command to put the device into lost mode.
+class StartLostModeStatus {
+  /// The status.
+  ///
+  /// See StartLostModeStatus.
+  /// Possible string values are:
+  /// - "STATUS_UNSPECIFIED" : Unspecified. This value is not used.
+  /// - "SUCCESS" : The device was put into lost mode.
+  /// - "RESET_PASSWORD_RECENTLY" : The device could not be put into lost mode
+  /// because the admin reset the device's password recently.
+  /// - "USER_EXIT_LOST_MODE_RECENTLY" : The device could not be put into lost
+  /// mode because the user exited lost mode recently.
+  /// - "ALREADY_IN_LOST_MODE" : The device is already in lost mode.
+  core.String? status;
+
+  StartLostModeStatus({
+    this.status,
+  });
+
+  StartLostModeStatus.fromJson(core.Map json_)
+      : this(
+          status: json_.containsKey('status')
+              ? json_['status'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (status != null) 'status': status!,
+      };
+}
+
 /// The Status type defines a logical error model that is suitable for different
 /// programming environments, including REST APIs and RPC APIs.
 ///
@@ -7797,6 +8438,37 @@ class StatusReportingSettings {
           'softwareInfoEnabled': softwareInfoEnabled!,
         if (systemPropertiesEnabled != null)
           'systemPropertiesEnabled': systemPropertiesEnabled!,
+      };
+}
+
+/// Parameters associated with the STOP_LOST_MODE command to take the device out
+/// of lost mode.
+typedef StopLostModeParams = $Empty;
+
+/// Status of the STOP_LOST_MODE command to take the device out of lost mode.
+class StopLostModeStatus {
+  /// The status.
+  ///
+  /// See StopLostModeStatus.
+  /// Possible string values are:
+  /// - "STATUS_UNSPECIFIED" : Unspecified. This value is not used.
+  /// - "SUCCESS" : The device was taken out of lost mode.
+  /// - "NOT_IN_LOST_MODE" : The device is not in lost mode.
+  core.String? status;
+
+  StopLostModeStatus({
+    this.status,
+  });
+
+  StopLostModeStatus.fromJson(core.Map json_)
+      : this(
+          status: json_.containsKey('status')
+              ? json_['status'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (status != null) 'status': status!,
       };
 }
 
@@ -8078,9 +8750,9 @@ class UserFacingMessage {
               ? (json_['localizedMessages']
                       as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -8202,6 +8874,9 @@ class WebToken {
   ///
   /// An admin must have all of these permissions in order to view the UI. This
   /// field is deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<core.String>? permissions;
 
   /// The token value which is used in the hosting page to generate the iframe
@@ -8247,7 +8922,7 @@ class WebToken {
       };
 }
 
-/// An action to reset a fully managed device or delete a work profile.
+/// An action to reset a company owned device or delete a work profile.
 ///
 /// Note: blockAction must also be specified.
 class WipeAction {

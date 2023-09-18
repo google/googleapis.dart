@@ -2,20 +2,19 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Access Context Manager API - v1
 ///
-/// An API for setting attribute based access control to requests to GCP
-/// services.
+/// An API for setting attribute based access control to requests to Google
+/// Cloud services.
 ///
 /// For more information, see
 /// <https://cloud.google.com/access-context-manager/docs/reference/rest/>
@@ -24,11 +23,12 @@
 ///
 /// - [AccessPoliciesResource]
 ///   - [AccessPoliciesAccessLevelsResource]
+///   - [AccessPoliciesAuthorizedOrgsDescsResource]
 ///   - [AccessPoliciesServicePerimetersResource]
 /// - [OperationsResource]
 /// - [OrganizationsResource]
 ///   - [OrganizationsGcpUserAccessBindingsResource]
-library accesscontextmanager.v1;
+library accesscontextmanager_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -37,15 +37,14 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-/// An API for setting attribute based access control to requests to GCP
-/// services.
+/// An API for setting attribute based access control to requests to Google
+/// Cloud services.
 class AccessContextManagerApi {
   /// See, edit, configure, and delete your Google Cloud data and see the email
   /// address for your Google Account.
@@ -71,6 +70,8 @@ class AccessPoliciesResource {
 
   AccessPoliciesAccessLevelsResource get accessLevels =>
       AccessPoliciesAccessLevelsResource(_requester);
+  AccessPoliciesAuthorizedOrgsDescsResource get authorizedOrgsDescs =>
+      AccessPoliciesAuthorizedOrgsDescsResource(_requester);
   AccessPoliciesServicePerimetersResource get servicePerimeters =>
       AccessPoliciesServicePerimetersResource(_requester);
 
@@ -642,10 +643,11 @@ class AccessPoliciesAccessLevelsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Resource name for the Access Level. The `short_name`
-  /// component must begin with a letter and only include alphanumeric and '_'.
-  /// Format: `accessPolicies/{access_policy}/accessLevels/{access_level}`. The
-  /// maximum length of the `access_level` component is 50 characters.
+  /// [name] - Resource name for the `AccessLevel`. Format:
+  /// `accessPolicies/{access_policy}/accessLevels/{access_level}`. The
+  /// `access_level` component must begin with a letter, followed by
+  /// alphanumeric characters or `_`. Its maximum length is 50 characters. After
+  /// you create an `AccessLevel`, you cannot change its `name`.
   /// Value must have pattern `^accessPolicies/\[^/\]+/accessLevels/\[^/\]+$`.
   ///
   /// [updateMask] - Required. Mask to control which fields get updated. Must be
@@ -782,6 +784,244 @@ class AccessPoliciesAccessLevelsResource {
     );
     return TestIamPermissionsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class AccessPoliciesAuthorizedOrgsDescsResource {
+  final commons.ApiRequester _requester;
+
+  AccessPoliciesAuthorizedOrgsDescsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates an authorized orgs desc.
+  ///
+  /// The long-running operation from this RPC has a successful status after the
+  /// authorized orgs desc propagates to long-lasting storage. If a authorized
+  /// orgs desc contains errors, an error response is returned for the first
+  /// error encountered. The name of this `AuthorizedOrgsDesc` will be assigned
+  /// during creation.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Resource name for the access policy which owns this
+  /// Authorized Orgs Desc. Format: `accessPolicies/{policy_id}`
+  /// Value must have pattern `^accessPolicies/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    AuthorizedOrgsDesc request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/authorizedOrgsDescs';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes an authorized orgs desc based on the resource name.
+  ///
+  /// The long-running operation from this RPC has a successful status after the
+  /// authorized orgs desc is removed from long-lasting storage.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name for the Authorized Orgs Desc. Format:
+  /// `accessPolicies/{policy_id}/authorizedOrgsDesc/{authorized_orgs_desc_id}`
+  /// Value must have pattern
+  /// `^accessPolicies/\[^/\]+/authorizedOrgsDescs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets an authorized orgs desc based on the resource name.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name for the Authorized Orgs Desc. Format:
+  /// `accessPolicies/{policy_id}/authorizedOrgsDescs/{authorized_orgs_descs_id}`
+  /// Value must have pattern
+  /// `^accessPolicies/\[^/\]+/authorizedOrgsDescs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AuthorizedOrgsDesc].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AuthorizedOrgsDesc> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AuthorizedOrgsDesc.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all authorized orgs descs for an access policy.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Resource name for the access policy to list
+  /// Authorized Orgs Desc from. Format: `accessPolicies/{policy_id}`
+  /// Value must have pattern `^accessPolicies/\[^/\]+$`.
+  ///
+  /// [pageSize] - Number of Authorized Orgs Descs to include in the list.
+  /// Default 100.
+  ///
+  /// [pageToken] - Next page token for the next batch of Authorized Orgs Desc
+  /// instances. Defaults to the first page of results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAuthorizedOrgsDescsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAuthorizedOrgsDescsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/authorizedOrgsDescs';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListAuthorizedOrgsDescsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates an authorized orgs desc.
+  ///
+  /// The long-running operation from this RPC has a successful status after the
+  /// authorized orgs desc propagates to long-lasting storage. If a authorized
+  /// orgs desc contains errors, an error response is returned for the first
+  /// error encountered. Only the organization list in `AuthorizedOrgsDesc` can
+  /// be updated. The name, authorization_type, asset_type and
+  /// authorization_direction cannot be updated.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Resource name for the `AuthorizedOrgsDesc`. Format:
+  /// `accessPolicies/{access_policy}/authorizedOrgsDescs/{authorized_orgs_desc}`.
+  /// The `authorized_orgs_desc` component must begin with a letter, followed by
+  /// alphanumeric characters or `_`. After you create an `AuthorizedOrgsDesc`,
+  /// you cannot change its `name`.
+  /// Value must have pattern
+  /// `^accessPolicies/\[^/\]+/authorizedOrgsDescs/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. Mask to control which fields get updated. Must be
+  /// non-empty.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    AuthorizedOrgsDesc request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1028,10 +1268,11 @@ class AccessPoliciesServicePerimetersResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Resource name for the ServicePerimeter. The
-  /// `short_name` component must begin with a letter and only include
-  /// alphanumeric and '_'. Format:
-  /// `accessPolicies/{access_policy}/servicePerimeters/{service_perimeter}`
+  /// [name] - Resource name for the `ServicePerimeter`. Format:
+  /// `accessPolicies/{access_policy}/servicePerimeters/{service_perimeter}`.
+  /// The `service_perimeter` component must begin with a letter, followed by
+  /// alphanumeric characters or `_`. After you create a `ServicePerimeter`, you
+  /// cannot change its `name`.
   /// Value must have pattern
   /// `^accessPolicies/\[^/\]+/servicePerimeters/\[^/\]+$`.
   ///
@@ -1307,13 +1548,6 @@ class OperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -1572,7 +1806,8 @@ class OrganizationsGcpUserAccessBindingsResource {
   ///
   /// [updateMask] - Required. Only the fields specified in this mask are
   /// updated. Because name and group_key cannot be changed, update_mask is
-  /// required and must always be: update_mask { paths: "access_levels" }
+  /// required and may only contain the following fields: `access_levels`,
+  /// `dry_run_access_levels`. update_mask { paths: "access_levels" }
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1623,14 +1858,12 @@ class AccessLevel {
   /// Does not affect behavior.
   core.String? description;
 
-  /// Resource name for the Access Level.
+  /// Resource name for the `AccessLevel`.
   ///
-  /// The `short_name` component must begin with a letter and only include
-  /// alphanumeric and '_'. Format:
-  /// `accessPolicies/{access_policy}/accessLevels/{access_level}`. The maximum
-  /// length of the `access_level` component is 50 characters.
-  ///
-  /// Required.
+  /// Format: `accessPolicies/{access_policy}/accessLevels/{access_level}`. The
+  /// `access_level` component must begin with a letter, followed by
+  /// alphanumeric characters or `_`. Its maximum length is 50 characters. After
+  /// you create an `AccessLevel`, you cannot change its `name`.
   core.String? name;
 
   /// Human readable title.
@@ -1781,6 +2014,100 @@ class AuditConfig {
 /// exempting jose@example.com from DATA_READ logging.
 typedef AuditLogConfig = $AuditLogConfig;
 
+/// `AuthorizedOrgsDesc` contains data for an organization's authorization
+/// policy.
+class AuthorizedOrgsDesc {
+  /// The asset type of this authorized orgs desc.
+  ///
+  /// Valid values are `ASSET_TYPE_DEVICE`, and
+  /// `ASSET_TYPE_CREDENTIAL_STRENGTH`.
+  /// Possible string values are:
+  /// - "ASSET_TYPE_UNSPECIFIED" : No asset type specified.
+  /// - "ASSET_TYPE_DEVICE" : Device asset type.
+  /// - "ASSET_TYPE_CREDENTIAL_STRENGTH" : Credential strength asset type.
+  core.String? assetType;
+
+  /// The direction of the authorization relationship between this organization
+  /// and the organizations listed in the `orgs` field.
+  ///
+  /// The valid values for this field include the following:
+  /// `AUTHORIZATION_DIRECTION_FROM`: Allows this organization to evaluate
+  /// traffic in the organizations listed in the `orgs` field.
+  /// `AUTHORIZATION_DIRECTION_TO`: Allows the organizations listed in the
+  /// `orgs` field to evaluate the traffic in this organization. For the
+  /// authorization relationship to take effect, all of the organizations must
+  /// authorize and specify the appropriate relationship direction. For example,
+  /// if organization A authorized organization B and C to evaluate its traffic,
+  /// by specifying `AUTHORIZATION_DIRECTION_TO` as the authorization direction,
+  /// organizations B and C must specify `AUTHORIZATION_DIRECTION_FROM` as the
+  /// authorization direction in their `AuthorizedOrgsDesc` resource.
+  /// Possible string values are:
+  /// - "AUTHORIZATION_DIRECTION_UNSPECIFIED" : No direction specified.
+  /// - "AUTHORIZATION_DIRECTION_TO" : The specified organizations are
+  /// authorized to evaluate traffic in this organization.
+  /// - "AUTHORIZATION_DIRECTION_FROM" : The traffic of the specified
+  /// organizations can be evaluated by this organization.
+  core.String? authorizationDirection;
+
+  /// A granular control type for authorization levels.
+  ///
+  /// Valid value is `AUTHORIZATION_TYPE_TRUST`.
+  /// Possible string values are:
+  /// - "AUTHORIZATION_TYPE_UNSPECIFIED" : No authorization type specified.
+  /// - "AUTHORIZATION_TYPE_TRUST" : This authorization relationship is "trust".
+  core.String? authorizationType;
+
+  /// Resource name for the `AuthorizedOrgsDesc`.
+  ///
+  /// Format:
+  /// `accessPolicies/{access_policy}/authorizedOrgsDescs/{authorized_orgs_desc}`.
+  /// The `authorized_orgs_desc` component must begin with a letter, followed by
+  /// alphanumeric characters or `_`. After you create an `AuthorizedOrgsDesc`,
+  /// you cannot change its `name`.
+  core.String? name;
+
+  /// The list of organization ids in this AuthorizedOrgsDesc.
+  ///
+  /// Format: `organizations/` Example: `organizations/123456`
+  core.List<core.String>? orgs;
+
+  AuthorizedOrgsDesc({
+    this.assetType,
+    this.authorizationDirection,
+    this.authorizationType,
+    this.name,
+    this.orgs,
+  });
+
+  AuthorizedOrgsDesc.fromJson(core.Map json_)
+      : this(
+          assetType: json_.containsKey('assetType')
+              ? json_['assetType'] as core.String
+              : null,
+          authorizationDirection: json_.containsKey('authorizationDirection')
+              ? json_['authorizationDirection'] as core.String
+              : null,
+          authorizationType: json_.containsKey('authorizationType')
+              ? json_['authorizationType'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          orgs: json_.containsKey('orgs')
+              ? (json_['orgs'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (assetType != null) 'assetType': assetType!,
+        if (authorizationDirection != null)
+          'authorizationDirection': authorizationDirection!,
+        if (authorizationType != null) 'authorizationType': authorizationType!,
+        if (name != null) 'name': name!,
+        if (orgs != null) 'orgs': orgs!,
+      };
+}
+
 /// `BasicLevel` is an `AccessLevel` using a set of recommended features.
 class BasicLevel {
   /// How the `conditions` list should be combined to determine if a request is
@@ -1855,7 +2182,9 @@ class Binding {
   /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
   /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
-  /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
+  /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
+  /// (primary) that represents all the users of that domain. For example,
+  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
   /// An email address (plus unique identifier) representing a user that has
   /// been recently deleted. For example,
   /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
@@ -1871,9 +2200,7 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
-  /// that represents all the users of that domain. For example, `google.com` or
-  /// `example.com`.
+  /// the role in the binding.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
@@ -1974,9 +2301,9 @@ class Condition {
 
   /// Whether to negate the Condition.
   ///
-  /// If true, the Condition becomes a NAND over its non-empty fields, each
-  /// field must be false for the Condition overall to be satisfied. Defaults to
-  /// false.
+  /// If true, the Condition becomes a NAND over its non-empty fields. Any
+  /// non-empty field criteria evaluating to false will result in the Condition
+  /// to be satisfied. Defaults to false.
   core.bool? negate;
 
   /// The request must originate from one of the provided countries/regions.
@@ -2312,8 +2639,17 @@ class GcpUserAccessBinding {
   /// have exactly one element. Example:
   /// "accessPolicies/9522/accessLevels/device_trusted"
   ///
-  /// Required.
+  /// Optional.
   core.List<core.String>? accessLevels;
+
+  /// Dry run access level that will be evaluated but will not be enforced.
+  ///
+  /// The access denial based on dry run policy will be logged. Only one access
+  /// level is supported, not multiple. This list must have exactly one element.
+  /// Example: "accessPolicies/9522/accessLevels/device_trusted"
+  ///
+  /// Optional.
+  core.List<core.String>? dryRunAccessLevels;
 
   /// Google Group id whose members are subject to this binding's restrictions.
   ///
@@ -2339,6 +2675,7 @@ class GcpUserAccessBinding {
 
   GcpUserAccessBinding({
     this.accessLevels,
+    this.dryRunAccessLevels,
     this.groupKey,
     this.name,
   });
@@ -2350,6 +2687,11 @@ class GcpUserAccessBinding {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          dryRunAccessLevels: json_.containsKey('dryRunAccessLevels')
+              ? (json_['dryRunAccessLevels'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           groupKey: json_.containsKey('groupKey')
               ? json_['groupKey'] as core.String
               : null,
@@ -2358,6 +2700,8 @@ class GcpUserAccessBinding {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accessLevels != null) 'accessLevels': accessLevels!,
+        if (dryRunAccessLevels != null)
+          'dryRunAccessLevels': dryRunAccessLevels!,
         if (groupKey != null) 'groupKey': groupKey!,
         if (name != null) 'name': name!,
       };
@@ -2605,6 +2949,41 @@ class ListAccessPoliciesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accessPolicies != null) 'accessPolicies': accessPolicies!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// A response to `ListAuthorizedOrgsDescsRequest`.
+class ListAuthorizedOrgsDescsResponse {
+  /// List of all the Authorized Orgs Desc instances.
+  core.List<AuthorizedOrgsDesc>? authorizedOrgsDescs;
+
+  /// The pagination token to retrieve the next page of results.
+  ///
+  /// If the value is empty, no further results remain.
+  core.String? nextPageToken;
+
+  ListAuthorizedOrgsDescsResponse({
+    this.authorizedOrgsDescs,
+    this.nextPageToken,
+  });
+
+  ListAuthorizedOrgsDescsResponse.fromJson(core.Map json_)
+      : this(
+          authorizedOrgsDescs: json_.containsKey('authorizedOrgsDescs')
+              ? (json_['authorizedOrgsDescs'] as core.List)
+                  .map((value) => AuthorizedOrgsDesc.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (authorizedOrgsDescs != null)
+          'authorizedOrgsDescs': authorizedOrgsDescs!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -3011,34 +3390,35 @@ class ReplaceServicePerimetersRequest {
 /// outside of the `ServicePerimeter`, the request will be blocked. Otherwise
 /// the request is allowed. There are two types of Service Perimeter - Regular
 /// and Bridge. Regular Service Perimeters cannot overlap, a single Google Cloud
-/// project can only belong to a single regular Service Perimeter. Service
-/// Perimeter Bridges can contain only Google Cloud projects as members, a
-/// single Google Cloud project may belong to multiple Service Perimeter
-/// Bridges.
+/// project or VPC network can only belong to a single regular Service
+/// Perimeter. Service Perimeter Bridges can contain only Google Cloud projects
+/// as members, a single Google Cloud project may belong to multiple Service
+/// Perimeter Bridges.
 class ServicePerimeter {
   /// Description of the `ServicePerimeter` and its use.
   ///
   /// Does not affect behavior.
   core.String? description;
 
-  /// Resource name for the ServicePerimeter.
+  /// Resource name for the `ServicePerimeter`.
   ///
-  /// The `short_name` component must begin with a letter and only include
-  /// alphanumeric and '_'. Format:
-  /// `accessPolicies/{access_policy}/servicePerimeters/{service_perimeter}`
-  ///
-  /// Required.
+  /// Format:
+  /// `accessPolicies/{access_policy}/servicePerimeters/{service_perimeter}`.
+  /// The `service_perimeter` component must begin with a letter, followed by
+  /// alphanumeric characters or `_`. After you create a `ServicePerimeter`, you
+  /// cannot change its `name`.
   core.String? name;
 
   /// Perimeter type indicator.
   ///
-  /// A single project is allowed to be a member of single regular perimeter,
-  /// but multiple service perimeter bridges. A project cannot be a included in
-  /// a perimeter bridge without being included in regular perimeter. For
-  /// perimeter bridges, the restricted service list as well as access level
-  /// lists must be empty.
+  /// A single project or VPC network is allowed to be a member of single
+  /// regular perimeter, but multiple service perimeter bridges. A project
+  /// cannot be a included in a perimeter bridge without being included in
+  /// regular perimeter. For perimeter bridges, the restricted service list as
+  /// well as access level lists must be empty.
   /// Possible string values are:
-  /// - "PERIMETER_TYPE_REGULAR" : Regular Perimeter.
+  /// - "PERIMETER_TYPE_REGULAR" : Regular Perimeter. When no value is
+  /// specified, the perimeter uses this type.
   /// - "PERIMETER_TYPE_BRIDGE" : Perimeter Bridge.
   core.String? perimeterType;
 
@@ -3151,7 +3531,9 @@ class ServicePerimeterConfig {
 
   /// A list of Google Cloud resources that are inside of the service perimeter.
   ///
-  /// Currently only projects are allowed. Format: `projects/{project_number}`
+  /// Currently only projects and VPCs are allowed. Project format:
+  /// `projects/{project_number}` VPC network format:
+  /// `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`.
   core.List<core.String>? resources;
 
   /// Google Cloud services that are subject to the Service Perimeter

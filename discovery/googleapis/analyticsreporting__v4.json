@@ -27,6 +27,13 @@
     "name": "analyticsreporting",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230626",
+    "rootUrl": "https://analyticsreporting.googleapis.com/",
+    "servicePath": "",
+    "title": "Analytics Reporting API",
+    "version": "v4",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -104,7 +111,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "reports": {
             "methods": {
@@ -153,8 +159,6 @@
             }
         }
     },
-    "revision": "20220816",
-    "rootUrl": "https://analyticsreporting.googleapis.com/",
     "schemas": {
         "Activity": {
             "description": "An Activity represents data for an activity of a user. Note that an Activity is different from a hit. A hit might result in multiple Activity's. For example, if a hit includes a transaction and a goal completion, there will be two Activity protos for this hit, one for ECOMMERCE and one for GOAL. Conversely, multiple hits can also construct one Activity. In classic e-commerce, data for one transaction might be sent through multiple hits. These hits will be merged into one ECOMMERCE Activity.",
@@ -1673,9 +1677,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Analytics Reporting API",
-    "version": "v4",
-    "version_module": true
+    }
 }

@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Drive Activity API - v2
@@ -21,7 +20,7 @@
 /// Create an instance of [DriveActivityApi] to access these resources:
 ///
 /// - [ActivityResource]
-library driveactivity.v2;
+library driveactivity_v2;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -30,7 +29,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -164,6 +162,9 @@ class Action {
 
 /// Data describing the type and additional information of an action.
 class ActionDetail {
+  /// Label was changed.
+  AppliedLabelChange? appliedLabelChange;
+
   /// A change about comments was made.
   Comment? comment;
 
@@ -198,6 +199,7 @@ class ActionDetail {
   SettingsChange? settingsChange;
 
   ActionDetail({
+    this.appliedLabelChange,
     this.comment,
     this.create,
     this.delete,
@@ -213,6 +215,10 @@ class ActionDetail {
 
   ActionDetail.fromJson(core.Map json_)
       : this(
+          appliedLabelChange: json_.containsKey('appliedLabelChange')
+              ? AppliedLabelChange.fromJson(json_['appliedLabelChange']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           comment: json_.containsKey('comment')
               ? Comment.fromJson(
                   json_['comment'] as core.Map<core.String, core.dynamic>)
@@ -260,6 +266,8 @@ class ActionDetail {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (appliedLabelChange != null)
+          'appliedLabelChange': appliedLabelChange!,
         if (comment != null) 'comment': comment!,
         if (create != null) 'create': create!,
         if (delete != null) 'delete': delete!,
@@ -365,6 +373,83 @@ class ApplicationReference {
       };
 }
 
+/// Label changes that were made on the Target.
+class AppliedLabelChange {
+  /// Changes that were made to the Label on the Target.
+  core.List<AppliedLabelChangeDetail>? changes;
+
+  AppliedLabelChange({
+    this.changes,
+  });
+
+  AppliedLabelChange.fromJson(core.Map json_)
+      : this(
+          changes: json_.containsKey('changes')
+              ? (json_['changes'] as core.List)
+                  .map((value) => AppliedLabelChangeDetail.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (changes != null) 'changes': changes!,
+      };
+}
+
+/// A change made to a Label on the Target.
+class AppliedLabelChangeDetail {
+  /// Field Changes.
+  ///
+  /// Only present if `types` contains `LABEL_FIELD_VALUE_CHANGED`.
+  core.List<FieldValueChange>? fieldChanges;
+
+  /// The Label name representing the Label that changed.
+  ///
+  /// This name always contains the revision of the Label that was used when
+  /// this Action occurred. The format is `labels/id@revision`.
+  core.String? label;
+
+  /// The human-readable title of the label that changed.
+  core.String? title;
+
+  /// The types of changes made to the Label on the Target.
+  core.List<core.String>? types;
+
+  AppliedLabelChangeDetail({
+    this.fieldChanges,
+    this.label,
+    this.title,
+    this.types,
+  });
+
+  AppliedLabelChangeDetail.fromJson(core.Map json_)
+      : this(
+          fieldChanges: json_.containsKey('fieldChanges')
+              ? (json_['fieldChanges'] as core.List)
+                  .map((value) => FieldValueChange.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          label:
+              json_.containsKey('label') ? json_['label'] as core.String : null,
+          title:
+              json_.containsKey('title') ? json_['title'] as core.String : null,
+          types: json_.containsKey('types')
+              ? (json_['types'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fieldChanges != null) 'fieldChanges': fieldChanges!,
+        if (label != null) 'label': label!,
+        if (title != null) 'title': title!,
+        if (types != null) 'types': types!,
+      };
+}
+
 /// A comment with an assignment.
 class Assignment {
   /// The user to whom the comment was assigned.
@@ -457,10 +542,10 @@ class Comment {
 
 /// How the individual activities are consolidated.
 ///
-/// A set of activities may be consolidated into one combined activity if they
-/// are related in some way, such as one actor performing the same action on
-/// multiple targets, or multiple actors performing the same action on a single
-/// target. The strategy defines the rules for which activities are related.
+/// If a set of activities is related they can be consolidated into one combined
+/// activity, such as one actor performing the same action on multiple targets,
+/// or multiple actors performing the same action on a single target. The
+/// strategy defines the rules for which activities are related.
 class ConsolidationStrategy {
   /// The individual activities are consolidated using the legacy strategy.
   Legacy? legacy;
@@ -578,6 +663,26 @@ class DataLeakPreventionChange {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (type != null) 'type': type!,
+      };
+}
+
+/// Wrapper for Date Field value.
+class Date {
+  /// Date value.
+  core.String? value;
+
+  Date({
+    this.value,
+  });
+
+  Date.fromJson(core.Map json_)
+      : this(
+          value:
+              json_.containsKey('value') ? json_['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (value != null) 'value': value!,
       };
 }
 
@@ -797,9 +902,15 @@ class DriveItem {
   DriveFolder? driveFolder;
 
   /// This field is deprecated; please use the `driveFile` field instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   File? file;
 
   /// This field is deprecated; please use the `driveFolder` field instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Folder? folder;
 
   /// The MIME type of the Drive item.
@@ -882,9 +993,15 @@ class DriveItemReference {
   DriveFolder? driveFolder;
 
   /// This field is deprecated; please use the `driveFile` field instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   File? file;
 
   /// This field is deprecated; please use the `driveFolder` field instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   Folder? folder;
 
   /// The target Drive item.
@@ -969,8 +1086,156 @@ class DriveReference {
 /// An empty message indicating an object was edited.
 typedef Edit = $Empty;
 
+/// Contains a value of a Field.
+class FieldValue {
+  /// Date Field value.
+  Date? date;
+
+  /// Integer Field value.
+  Integer? integer;
+
+  /// Selection Field value.
+  Selection? selection;
+
+  /// Selection List Field value.
+  SelectionList? selectionList;
+
+  /// Text Field value.
+  Text? text;
+
+  /// Text List Field value.
+  TextList? textList;
+
+  /// User Field value.
+  SingleUser? user;
+
+  /// User List Field value.
+  UserList? userList;
+
+  FieldValue({
+    this.date,
+    this.integer,
+    this.selection,
+    this.selectionList,
+    this.text,
+    this.textList,
+    this.user,
+    this.userList,
+  });
+
+  FieldValue.fromJson(core.Map json_)
+      : this(
+          date: json_.containsKey('date')
+              ? Date.fromJson(
+                  json_['date'] as core.Map<core.String, core.dynamic>)
+              : null,
+          integer: json_.containsKey('integer')
+              ? Integer.fromJson(
+                  json_['integer'] as core.Map<core.String, core.dynamic>)
+              : null,
+          selection: json_.containsKey('selection')
+              ? Selection.fromJson(
+                  json_['selection'] as core.Map<core.String, core.dynamic>)
+              : null,
+          selectionList: json_.containsKey('selectionList')
+              ? SelectionList.fromJson(
+                  json_['selectionList'] as core.Map<core.String, core.dynamic>)
+              : null,
+          text: json_.containsKey('text')
+              ? Text.fromJson(
+                  json_['text'] as core.Map<core.String, core.dynamic>)
+              : null,
+          textList: json_.containsKey('textList')
+              ? TextList.fromJson(
+                  json_['textList'] as core.Map<core.String, core.dynamic>)
+              : null,
+          user: json_.containsKey('user')
+              ? SingleUser.fromJson(
+                  json_['user'] as core.Map<core.String, core.dynamic>)
+              : null,
+          userList: json_.containsKey('userList')
+              ? UserList.fromJson(
+                  json_['userList'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (date != null) 'date': date!,
+        if (integer != null) 'integer': integer!,
+        if (selection != null) 'selection': selection!,
+        if (selectionList != null) 'selectionList': selectionList!,
+        if (text != null) 'text': text!,
+        if (textList != null) 'textList': textList!,
+        if (user != null) 'user': user!,
+        if (userList != null) 'userList': userList!,
+      };
+}
+
+/// Change to a Field value.
+class FieldValueChange {
+  /// The human-readable display name for this field.
+  core.String? displayName;
+
+  /// The ID of this field.
+  ///
+  /// Field IDs are unique within a Label.
+  core.String? fieldId;
+
+  /// The value that is now set on the field.
+  ///
+  /// If not present, the field was cleared. At least one of
+  /// {old_value|new_value} is always set.
+  FieldValue? newValue;
+
+  /// The value that was previously set on the field.
+  ///
+  /// If not present, the field was newly set. At least one of
+  /// {old_value|new_value} is always set.
+  FieldValue? oldValue;
+
+  FieldValueChange({
+    this.displayName,
+    this.fieldId,
+    this.newValue,
+    this.oldValue,
+  });
+
+  FieldValueChange.fromJson(core.Map json_)
+      : this(
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          fieldId: json_.containsKey('fieldId')
+              ? json_['fieldId'] as core.String
+              : null,
+          newValue: json_.containsKey('newValue')
+              ? FieldValue.fromJson(
+                  json_['newValue'] as core.Map<core.String, core.dynamic>)
+              : null,
+          oldValue: json_.containsKey('oldValue')
+              ? FieldValue.fromJson(
+                  json_['oldValue'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (fieldId != null) 'fieldId': fieldId!,
+        if (newValue != null) 'newValue': newValue!,
+        if (oldValue != null) 'oldValue': oldValue!,
+      };
+}
+
 /// This item is deprecated; please see `DriveFile` instead.
-typedef File = $Empty;
+class File {
+  File();
+
+  File.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map json_);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
+}
 
 /// A comment on a file.
 class FileComment {
@@ -1107,6 +1372,26 @@ class Impersonation {
       };
 }
 
+/// Wrapper for Integer Field value.
+class Integer {
+  /// Integer value.
+  core.String? value;
+
+  Integer({
+    this.value,
+  });
+
+  Integer.fromJson(core.Map json_)
+      : this(
+          value:
+              json_.containsKey('value') ? json_['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (value != null) 'value': value!,
+      };
+}
+
 /// A known user.
 class KnownUser {
   /// True if this is the user making the request.
@@ -1140,7 +1425,7 @@ class KnownUser {
       };
 }
 
-/// A strategy which consolidates activities using the grouping rules from the
+/// A strategy that consolidates activities using the grouping rules from the
 /// legacy V1 Activity API.
 ///
 /// Similar actions occurring within a window of time can be grouped across
@@ -1187,7 +1472,7 @@ class Move {
 /// An object was created from scratch.
 typedef New = $Empty;
 
-/// A strategy which does no consolidation of individual activities.
+/// A strategy that does no consolidation of individual activities.
 typedef NoConsolidation = $Empty;
 
 /// Information about the owner of a Drive item.
@@ -1199,6 +1484,9 @@ class Owner {
   DriveReference? drive;
 
   /// This field is deprecated; please use the `drive` field instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   TeamDriveReference? teamDrive;
 
   /// The user that owns the Drive item.
@@ -1389,14 +1677,15 @@ class Post {
 
 /// The request message for querying Drive activity.
 class QueryDriveActivityRequest {
-  /// Return activities for this Drive folder and all children and descendants.
+  /// Return activities for this Drive folder, plus all children and
+  /// descendants.
   ///
   /// The format is `items/ITEM_ID`.
   core.String? ancestorName;
 
   /// Details on how to consolidate related actions that make up the activity.
   ///
-  /// If not set, then related actions are not consolidated.
+  /// If not set, then related actions aren't consolidated.
   ConsolidationStrategy? consolidationStrategy;
 
   /// The filtering for items returned from this query request.
@@ -1408,9 +1697,11 @@ class QueryDriveActivityRequest {
   /// format. Examples: - `time > 1452409200000 AND time <= 1492812924310` -
   /// `time >= "2016-01-10T01:02:03-05:00"` - `detail.action_detail_case`: Uses
   /// the "has" operator (:) and either a singular value or a list of allowed
-  /// action types enclosed in parentheses. Examples: -
-  /// `detail.action_detail_case: RENAME` - `detail.action_detail_case:(CREATE
-  /// EDIT)` - `-detail.action_detail_case:MOVE`
+  /// action types enclosed in parentheses, separated by a space. To exclude a
+  /// result from the response, prepend a hyphen (`-`) to the beginning of the
+  /// filter string. Examples: - `detail.action_detail_case:RENAME` -
+  /// `detail.action_detail_case:(CREATE RESTORE)` -
+  /// `-detail.action_detail_case:MOVE`
   core.String? filter;
 
   /// Return activities for this Drive item.
@@ -1418,18 +1709,18 @@ class QueryDriveActivityRequest {
   /// The format is `items/ITEM_ID`.
   core.String? itemName;
 
-  /// The miminum number of activities desired in the response; the server will
-  /// attempt to return at least this quanitity.
+  /// The minimum number of activities desired in the response; the server
+  /// attempts to return at least this quantity.
   ///
   /// The server may also return fewer activities if it has a partial response
   /// ready before the request times out. If not set, a default value is used.
   core.int? pageSize;
 
-  /// The token identifying which page of results to return.
+  /// The token identifies which page of results to return.
   ///
   /// Set this to the next_page_token value returned from a previous query to
   /// obtain the following page of results. If not set, the first page of
-  /// results will be returned.
+  /// results is returned.
   core.String? pageToken;
 
   QueryDriveActivityRequest({
@@ -1573,6 +1864,8 @@ class RestrictionChange {
   /// download, and print that might result in uncontrolled duplicates of items.
   /// - "DRIVE_FILE_STREAM" : When restricted, this prevents use of Drive File
   /// Stream.
+  /// - "FILE_ORGANIZER_CAN_SHARE_FOLDERS" : When restricted, this limits
+  /// sharing of folders to managers only.
   core.String? feature;
 
   /// The restriction in place after the change.
@@ -1603,6 +1896,59 @@ class RestrictionChange {
       };
 }
 
+/// Wrapper for Selection Field value as combined value/display_name pair for
+/// selected choice.
+class Selection {
+  /// Selection value as human-readable display string.
+  core.String? displayName;
+
+  /// Selection value as Field Choice ID.
+  core.String? value;
+
+  Selection({
+    this.displayName,
+    this.value,
+  });
+
+  Selection.fromJson(core.Map json_)
+      : this(
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          value:
+              json_.containsKey('value') ? json_['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (value != null) 'value': value!,
+      };
+}
+
+/// Wrapper for SelectionList Field value.
+class SelectionList {
+  /// Selection values.
+  core.List<Selection>? values;
+
+  SelectionList({
+    this.values,
+  });
+
+  SelectionList.fromJson(core.Map json_)
+      : this(
+          values: json_.containsKey('values')
+              ? (json_['values'] as core.List)
+                  .map((value) => Selection.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (values != null) 'values': values!,
+      };
+}
+
 /// Information about settings changes.
 class SettingsChange {
   /// The set of changes made to restrictions.
@@ -1625,6 +1971,26 @@ class SettingsChange {
   core.Map<core.String, core.dynamic> toJson() => {
         if (restrictionChanges != null)
           'restrictionChanges': restrictionChanges!,
+      };
+}
+
+/// Wrapper for User Field value.
+class SingleUser {
+  /// User value as email.
+  core.String? value;
+
+  SingleUser({
+    this.value,
+  });
+
+  SingleUser.fromJson(core.Map json_)
+      : this(
+          value:
+              json_.containsKey('value') ? json_['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (value != null) 'value': value!,
       };
 }
 
@@ -1685,6 +2051,9 @@ class SystemEvent {
 }
 
 /// Information about the target of activity.
+///
+/// For more information on how activity history is shared with users, see
+/// [Activity history visibility](https://developers.google.com/drive/activity/v2#activityhistory).
 class Target {
   /// The target is a shared drive.
   Drive? drive;
@@ -1696,6 +2065,9 @@ class Target {
   FileComment? fileComment;
 
   /// This field is deprecated; please use the `drive` field instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   TeamDrive? teamDrive;
 
   Target({
@@ -1742,6 +2114,9 @@ class TargetReference {
   DriveItemReference? driveItem;
 
   /// This field is deprecated; please use the `drive` field instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   TeamDriveReference? teamDrive;
 
   TargetReference({
@@ -1834,6 +2209,50 @@ class TeamDriveReference {
       };
 }
 
+/// Wrapper for Text Field value.
+class Text {
+  /// Value of Text Field.
+  core.String? value;
+
+  Text({
+    this.value,
+  });
+
+  Text.fromJson(core.Map json_)
+      : this(
+          value:
+              json_.containsKey('value') ? json_['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (value != null) 'value': value!,
+      };
+}
+
+/// Wrapper for Text List Field value.
+class TextList {
+  /// Text values.
+  core.List<Text>? values;
+
+  TextList({
+    this.values,
+  });
+
+  TextList.fromJson(core.Map json_)
+      : this(
+          values: json_.containsKey('values')
+              ? (json_['values'] as core.List)
+                  .map((value) => Text.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (values != null) 'values': values!,
+      };
+}
+
 /// Information about time ranges.
 class TimeRange {
   /// The end of the time range.
@@ -1906,5 +2325,29 @@ class User {
         if (deletedUser != null) 'deletedUser': deletedUser!,
         if (knownUser != null) 'knownUser': knownUser!,
         if (unknownUser != null) 'unknownUser': unknownUser!,
+      };
+}
+
+/// Wrapper for UserList Field value.
+class UserList {
+  /// User values.
+  core.List<SingleUser>? values;
+
+  UserList({
+    this.values,
+  });
+
+  UserList.fromJson(core.Map json_)
+      : this(
+          values: json_.containsKey('values')
+              ? (json_['values'] as core.List)
+                  .map((value) => SingleUser.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (values != null) 'values': values!,
       };
 }

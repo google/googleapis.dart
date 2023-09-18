@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud SQL Admin API - v1beta4
@@ -31,7 +30,7 @@
 /// - [SslCertsResource]
 /// - [TiersResource]
 /// - [UsersResource]
-library sqladmin.v1beta4;
+library sqladmin_v1beta4;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -40,6 +39,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -477,6 +477,8 @@ class DatabasesResource {
 
   /// Inserts a resource containing information about a database inside a Cloud
   /// SQL instance.
+  ///
+  /// **Note:** You can't modify the default character set and collation.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1332,6 +1334,52 @@ class InstancesResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Reencrypt CMEK instance with latest key version.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - ID of the project that contains the instance.
+  ///
+  /// [instance] - Cloud SQL instance ID. This does not include the project ID.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> reencrypt(
+    InstancesReencryptRequest request,
+    core.String project,
+    core.String instance, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'sql/v1beta4/projects/' +
+        commons.escapeVariable('$project') +
+        '/instances/' +
+        commons.escapeVariable('$instance') +
+        '/reencrypt';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Deletes all client certificates and generates a new server SSL certificate
   /// for the instance.
   ///
@@ -1692,6 +1740,47 @@ class OperationsResource {
 
   OperationsResource(commons.ApiRequester client) : _requester = client;
 
+  /// Cancels an instance operation that has been performed on an instance.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID of the project that contains the instance.
+  ///
+  /// [operation] - Instance operation ID.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> cancel(
+    core.String project,
+    core.String operation, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'sql/v1beta4/projects/' +
+        commons.escapeVariable('$project') +
+        '/operations/' +
+        commons.escapeVariable('$operation') +
+        '/cancel';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Retrieves an instance operation that has been performed on an instance.
   ///
   /// Request parameters:
@@ -1798,6 +1887,136 @@ class ProjectsInstancesResource {
 
   ProjectsInstancesResource(commons.ApiRequester client) : _requester = client;
 
+  /// Get Disk Shrink Config for a given instance.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID of the project that contains the instance.
+  ///
+  /// [instance] - Cloud SQL instance ID. This does not include the project ID.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SqlInstancesGetDiskShrinkConfigResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SqlInstancesGetDiskShrinkConfigResponse> getDiskShrinkConfig(
+    core.String project,
+    core.String instance, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'sql/v1beta4/projects/' +
+        commons.escapeVariable('$project') +
+        '/instances/' +
+        commons.escapeVariable('$instance') +
+        '/getDiskShrinkConfig';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SqlInstancesGetDiskShrinkConfigResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Get Latest Recovery Time for a given instance.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID of the project that contains the instance.
+  ///
+  /// [instance] - Cloud SQL instance ID. This does not include the project ID.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SqlInstancesGetLatestRecoveryTimeResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SqlInstancesGetLatestRecoveryTimeResponse> getLatestRecoveryTime(
+    core.String project,
+    core.String instance, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'sql/v1beta4/projects/' +
+        commons.escapeVariable('$project') +
+        '/instances/' +
+        commons.escapeVariable('$instance') +
+        '/getLatestRecoveryTime';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SqlInstancesGetLatestRecoveryTimeResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Perform Disk Shrink on primary instance.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID of the project that contains the instance.
+  ///
+  /// [instance] - Cloud SQL instance ID. This does not include the project ID.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> performDiskShrink(
+    PerformDiskShrinkContext request,
+    core.String project,
+    core.String instance, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'sql/v1beta4/projects/' +
+        commons.escapeVariable('$project') +
+        '/instances/' +
+        commons.escapeVariable('$instance') +
+        '/performDiskShrink';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Reschedules the maintenance on the given instance.
   ///
   /// [request] - The metadata request object.
@@ -1834,6 +2053,52 @@ class ProjectsInstancesResource {
         '/instances/' +
         commons.escapeVariable('$instance') +
         '/rescheduleMaintenance';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Reset Replica Size to primary instance disk size.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - ID of the project that contains the read replica.
+  ///
+  /// [instance] - Cloud SQL read replica instance name.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> resetReplicaSize(
+    SqlInstancesResetReplicaSizeRequest request,
+    core.String project,
+    core.String instance, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'sql/v1beta4/projects/' +
+        commons.escapeVariable('$project') +
+        '/instances/' +
+        commons.escapeVariable('$instance') +
+        '/resetReplicaSize';
 
     final response_ = await _requester.request(
       url_,
@@ -2290,8 +2555,9 @@ class UsersResource {
   ///
   /// [instance] - Database instance ID. This does not include the project ID.
   ///
-  /// [name] - User of the instance. If the database user has a host, this is
-  /// specified as {username}@{host} else as {username}.
+  /// [name] - User of the instance.
+  ///
+  /// [host] - Host of a user of the instance.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2307,9 +2573,11 @@ class UsersResource {
     core.String project,
     core.String instance,
     core.String name, {
+    core.String? host,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (host != null) 'host': [host],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -2515,6 +2783,27 @@ class AclEntry {
       };
 }
 
+/// Specifies options for controlling advanced machine features.
+class AdvancedMachineFeatures {
+  /// The number of threads per physical core.
+  core.int? threadsPerCore;
+
+  AdvancedMachineFeatures({
+    this.threadsPerCore,
+  });
+
+  AdvancedMachineFeatures.fromJson(core.Map json_)
+      : this(
+          threadsPerCore: json_.containsKey('threadsPerCore')
+              ? json_['threadsPerCore'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (threadsPerCore != null) 'threadsPerCore': threadsPerCore!,
+      };
+}
+
 /// An Admin API warning message.
 class ApiWarning {
   /// Code to uniquely identify the warning type.
@@ -2576,7 +2865,7 @@ class BackupConfiguration {
   /// Location of the backup
   core.String? location;
 
-  /// (Postgres only) Whether point in time recovery is enabled.
+  /// Whether point in time recovery is enabled.
   core.bool? pointInTimeRecoveryEnabled;
 
   /// Reserved for future use.
@@ -2677,6 +2966,40 @@ class BackupContext {
   core.Map<core.String, core.dynamic> toJson() => {
         if (backupId != null) 'backupId': backupId!,
         if (kind != null) 'kind': kind!,
+      };
+}
+
+/// Backup Reencryption Config
+class BackupReencryptionConfig {
+  /// Backup re-encryption limit
+  core.int? backupLimit;
+
+  /// Type of backups users want to re-encrypt.
+  /// Possible string values are:
+  /// - "BACKUP_TYPE_UNSPECIFIED" : Unknown backup type, will be defaulted to
+  /// AUTOMATIC backup type
+  /// - "AUTOMATED" : Reencrypt automatic backups
+  /// - "ON_DEMAND" : Reencrypt on-demand backups
+  core.String? backupType;
+
+  BackupReencryptionConfig({
+    this.backupLimit,
+    this.backupType,
+  });
+
+  BackupReencryptionConfig.fromJson(core.Map json_)
+      : this(
+          backupLimit: json_.containsKey('backupLimit')
+              ? json_['backupLimit'] as core.int
+              : null,
+          backupType: json_.containsKey('backupType')
+              ? json_['backupType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (backupLimit != null) 'backupLimit': backupLimit!,
+        if (backupType != null) 'backupType': backupType!,
       };
 }
 
@@ -2986,7 +3309,7 @@ class BinLogCoordinates {
 
 /// Database instance clone context.
 class CloneContext {
-  /// The name of the allocated ip range for the private ip CloudSQL instance.
+  /// The name of the allocated ip range for the private ip Cloud SQL instance.
   ///
   /// For example: "google-managed-services-default". If set, the cloned
   /// instance ip will be created in the allocated range. The range name must
@@ -3021,6 +3344,14 @@ class CloneContext {
   /// is cloned.
   core.String? pointInTime;
 
+  /// (Point-in-time recovery for PostgreSQL only) Clone to an instance in the
+  /// specified zone.
+  ///
+  /// If no zone is specified, clone to the same zone as the source instance.
+  ///
+  /// Optional.
+  core.String? preferredZone;
+
   CloneContext({
     this.allocatedIpRange,
     this.binLogCoordinates,
@@ -3029,6 +3360,7 @@ class CloneContext {
     this.kind,
     this.pitrTimestampMs,
     this.pointInTime,
+    this.preferredZone,
   });
 
   CloneContext.fromJson(core.Map json_)
@@ -3055,6 +3387,9 @@ class CloneContext {
           pointInTime: json_.containsKey('pointInTime')
               ? json_['pointInTime'] as core.String
               : null,
+          preferredZone: json_.containsKey('preferredZone')
+              ? json_['preferredZone'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3066,6 +3401,7 @@ class CloneContext {
         if (kind != null) 'kind': kind!,
         if (pitrTimestampMs != null) 'pitrTimestampMs': pitrTimestampMs!,
         if (pointInTime != null) 'pointInTime': pointInTime!,
+        if (preferredZone != null) 'preferredZone': preferredZone!,
       };
 }
 
@@ -3102,8 +3438,6 @@ class ConnectSettings {
   /// - "MYSQL_5_5" : The database version is MySQL 5.5.
   /// - "MYSQL_5_6" : The database version is MySQL 5.6.
   /// - "MYSQL_5_7" : The database version is MySQL 5.7.
-  /// - "POSTGRES_9_6" : The database version is PostgreSQL 9.6.
-  /// - "POSTGRES_11" : The database version is PostgreSQL 11.
   /// - "SQLSERVER_2017_STANDARD" : The database version is SQL Server 2017
   /// Standard.
   /// - "SQLSERVER_2017_ENTERPRISE" : The database version is SQL Server 2017
@@ -3111,8 +3445,13 @@ class ConnectSettings {
   /// - "SQLSERVER_2017_EXPRESS" : The database version is SQL Server 2017
   /// Express.
   /// - "SQLSERVER_2017_WEB" : The database version is SQL Server 2017 Web.
+  /// - "POSTGRES_9_6" : The database version is PostgreSQL 9.6.
   /// - "POSTGRES_10" : The database version is PostgreSQL 10.
+  /// - "POSTGRES_11" : The database version is PostgreSQL 11.
   /// - "POSTGRES_12" : The database version is PostgreSQL 12.
+  /// - "POSTGRES_13" : The database version is PostgreSQL 13.
+  /// - "POSTGRES_14" : The database version is PostgreSQL 14.
+  /// - "POSTGRES_15" : The database version is PostgreSQL 15.
   /// - "MYSQL_8_0" : The database version is MySQL 8.
   /// - "MYSQL_8_0_18" : The database major version is MySQL 8.0 and the minor
   /// version is 18.
@@ -3126,8 +3465,18 @@ class ConnectSettings {
   /// version is 29.
   /// - "MYSQL_8_0_30" : The database major version is MySQL 8.0 and the minor
   /// version is 30.
-  /// - "POSTGRES_13" : The database version is PostgreSQL 13.
-  /// - "POSTGRES_14" : The database version is PostgreSQL 14.
+  /// - "MYSQL_8_0_31" : The database major version is MySQL 8.0 and the minor
+  /// version is 31.
+  /// - "MYSQL_8_0_32" : The database major version is MySQL 8.0 and the minor
+  /// version is 32.
+  /// - "MYSQL_8_0_33" : The database major version is MySQL 8.0 and the minor
+  /// version is 33.
+  /// - "MYSQL_8_0_34" : The database major version is MySQL 8.0 and the minor
+  /// version is 34.
+  /// - "MYSQL_8_0_35" : The database major version is MySQL 8.0 and the minor
+  /// version is 35.
+  /// - "MYSQL_8_0_36" : The database major version is MySQL 8.0 and the minor
+  /// version is 36.
   /// - "SQLSERVER_2019_STANDARD" : The database version is SQL Server 2019
   /// Standard.
   /// - "SQLSERVER_2019_ENTERPRISE" : The database version is SQL Server 2019
@@ -3135,13 +3484,26 @@ class ConnectSettings {
   /// - "SQLSERVER_2019_EXPRESS" : The database version is SQL Server 2019
   /// Express.
   /// - "SQLSERVER_2019_WEB" : The database version is SQL Server 2019 Web.
+  /// - "SQLSERVER_2022_STANDARD" : The database version is SQL Server 2022
+  /// Standard.
+  /// - "SQLSERVER_2022_ENTERPRISE" : The database version is SQL Server 2022
+  /// Enterprise.
+  /// - "SQLSERVER_2022_EXPRESS" : The database version is SQL Server 2022
+  /// Express.
+  /// - "SQLSERVER_2022_WEB" : The database version is SQL Server 2022 Web.
   core.String? databaseVersion;
+
+  /// The dns name of the instance.
+  core.String? dnsName;
 
   /// The assigned IP addresses for the instance.
   core.List<IpMapping>? ipAddresses;
 
   /// This is always `sql#connectSettings`.
   core.String? kind;
+
+  /// Whether PSC connectivity is enabled for this instance.
+  core.bool? pscEnabled;
 
   /// The cloud region for the instance.
   ///
@@ -3155,8 +3517,10 @@ class ConnectSettings {
   ConnectSettings({
     this.backendType,
     this.databaseVersion,
+    this.dnsName,
     this.ipAddresses,
     this.kind,
+    this.pscEnabled,
     this.region,
     this.serverCaCert,
   });
@@ -3169,6 +3533,9 @@ class ConnectSettings {
           databaseVersion: json_.containsKey('databaseVersion')
               ? json_['databaseVersion'] as core.String
               : null,
+          dnsName: json_.containsKey('dnsName')
+              ? json_['dnsName'] as core.String
+              : null,
           ipAddresses: json_.containsKey('ipAddresses')
               ? (json_['ipAddresses'] as core.List)
                   .map((value) => IpMapping.fromJson(
@@ -3176,6 +3543,9 @@ class ConnectSettings {
                   .toList()
               : null,
           kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          pscEnabled: json_.containsKey('pscEnabled')
+              ? json_['pscEnabled'] as core.bool
+              : null,
           region: json_.containsKey('region')
               ? json_['region'] as core.String
               : null,
@@ -3188,10 +3558,33 @@ class ConnectSettings {
   core.Map<core.String, core.dynamic> toJson() => {
         if (backendType != null) 'backendType': backendType!,
         if (databaseVersion != null) 'databaseVersion': databaseVersion!,
+        if (dnsName != null) 'dnsName': dnsName!,
         if (ipAddresses != null) 'ipAddresses': ipAddresses!,
         if (kind != null) 'kind': kind!,
+        if (pscEnabled != null) 'pscEnabled': pscEnabled!,
         if (region != null) 'region': region!,
         if (serverCaCert != null) 'serverCaCert': serverCaCert!,
+      };
+}
+
+/// Data cache configurations.
+class DataCacheConfig {
+  /// Whether data cache is enabled for the instance.
+  core.bool? dataCacheEnabled;
+
+  DataCacheConfig({
+    this.dataCacheEnabled,
+  });
+
+  DataCacheConfig.fromJson(core.Map json_)
+      : this(
+          dataCacheEnabled: json_.containsKey('dataCacheEnabled')
+              ? json_['dataCacheEnabled'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataCacheEnabled != null) 'dataCacheEnabled': dataCacheEnabled!,
       };
 }
 
@@ -3355,6 +3748,8 @@ class DatabaseInstanceFailoverReplica {
 /// A Cloud SQL instance resource.
 class DatabaseInstance {
   /// List all maintenance versions applicable on the instance
+  ///
+  /// Output only.
   core.List<core.String>? availableMaintenanceVersions;
 
   /// The backend type.
@@ -3387,6 +3782,9 @@ class DatabaseInstance {
   /// Monitoring API instead. Please see
   /// [this announcement](https://groups.google.com/d/msg/google-cloud-sql-announce/I_7-F9EBhT0/BtvFtdFeAgAJ)
   /// for details.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? currentDiskSize;
 
   /// Stores the current database version running on the instance including
@@ -3405,8 +3803,6 @@ class DatabaseInstance {
   /// - "MYSQL_5_5" : The database version is MySQL 5.5.
   /// - "MYSQL_5_6" : The database version is MySQL 5.6.
   /// - "MYSQL_5_7" : The database version is MySQL 5.7.
-  /// - "POSTGRES_9_6" : The database version is PostgreSQL 9.6.
-  /// - "POSTGRES_11" : The database version is PostgreSQL 11.
   /// - "SQLSERVER_2017_STANDARD" : The database version is SQL Server 2017
   /// Standard.
   /// - "SQLSERVER_2017_ENTERPRISE" : The database version is SQL Server 2017
@@ -3414,8 +3810,13 @@ class DatabaseInstance {
   /// - "SQLSERVER_2017_EXPRESS" : The database version is SQL Server 2017
   /// Express.
   /// - "SQLSERVER_2017_WEB" : The database version is SQL Server 2017 Web.
+  /// - "POSTGRES_9_6" : The database version is PostgreSQL 9.6.
   /// - "POSTGRES_10" : The database version is PostgreSQL 10.
+  /// - "POSTGRES_11" : The database version is PostgreSQL 11.
   /// - "POSTGRES_12" : The database version is PostgreSQL 12.
+  /// - "POSTGRES_13" : The database version is PostgreSQL 13.
+  /// - "POSTGRES_14" : The database version is PostgreSQL 14.
+  /// - "POSTGRES_15" : The database version is PostgreSQL 15.
   /// - "MYSQL_8_0" : The database version is MySQL 8.
   /// - "MYSQL_8_0_18" : The database major version is MySQL 8.0 and the minor
   /// version is 18.
@@ -3429,8 +3830,18 @@ class DatabaseInstance {
   /// version is 29.
   /// - "MYSQL_8_0_30" : The database major version is MySQL 8.0 and the minor
   /// version is 30.
-  /// - "POSTGRES_13" : The database version is PostgreSQL 13.
-  /// - "POSTGRES_14" : The database version is PostgreSQL 14.
+  /// - "MYSQL_8_0_31" : The database major version is MySQL 8.0 and the minor
+  /// version is 31.
+  /// - "MYSQL_8_0_32" : The database major version is MySQL 8.0 and the minor
+  /// version is 32.
+  /// - "MYSQL_8_0_33" : The database major version is MySQL 8.0 and the minor
+  /// version is 33.
+  /// - "MYSQL_8_0_34" : The database major version is MySQL 8.0 and the minor
+  /// version is 34.
+  /// - "MYSQL_8_0_35" : The database major version is MySQL 8.0 and the minor
+  /// version is 35.
+  /// - "MYSQL_8_0_36" : The database major version is MySQL 8.0 and the minor
+  /// version is 36.
   /// - "SQLSERVER_2019_STANDARD" : The database version is SQL Server 2019
   /// Standard.
   /// - "SQLSERVER_2019_ENTERPRISE" : The database version is SQL Server 2019
@@ -3438,6 +3849,13 @@ class DatabaseInstance {
   /// - "SQLSERVER_2019_EXPRESS" : The database version is SQL Server 2019
   /// Express.
   /// - "SQLSERVER_2019_WEB" : The database version is SQL Server 2019 Web.
+  /// - "SQLSERVER_2022_STANDARD" : The database version is SQL Server 2022
+  /// Standard.
+  /// - "SQLSERVER_2022_ENTERPRISE" : The database version is SQL Server 2022
+  /// Enterprise.
+  /// - "SQLSERVER_2022_EXPRESS" : The database version is SQL Server 2022
+  /// Express.
+  /// - "SQLSERVER_2022_WEB" : The database version is SQL Server 2022 Web.
   core.String? databaseVersion;
 
   /// Disk encryption configuration specific to an instance.
@@ -3445,6 +3863,11 @@ class DatabaseInstance {
 
   /// Disk encryption status specific to an instance.
   DiskEncryptionStatus? diskEncryptionStatus;
+
+  /// The dns name of the instance.
+  ///
+  /// Output only.
+  core.String? dnsName;
 
   /// This field is deprecated and will be removed from a future version of the
   /// API.
@@ -3480,6 +3903,9 @@ class DatabaseInstance {
   ///
   /// (Deprecated) This property was applicable only to First Generation
   /// instances.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? ipv6Address;
 
   /// This is always `sql#instance`.
@@ -3493,6 +3919,9 @@ class DatabaseInstance {
   core.String? masterInstanceName;
 
   /// The maximum disk size of the instance in bytes.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? maxDiskSize;
 
   /// Name of the Cloud SQL instance.
@@ -3514,6 +3943,11 @@ class DatabaseInstance {
   ///
   /// The Google apps domain is prefixed if applicable.
   core.String? project;
+
+  /// The link to service attachment of PSC instance.
+  ///
+  /// Output only.
+  core.String? pscServiceAttachmentLink;
 
   /// The geographical region.
   ///
@@ -3592,6 +4026,7 @@ class DatabaseInstance {
     this.databaseVersion,
     this.diskEncryptionConfiguration,
     this.diskEncryptionStatus,
+    this.dnsName,
     this.etag,
     this.failoverReplica,
     this.gceZone,
@@ -3606,6 +4041,7 @@ class DatabaseInstance {
     this.onPremisesConfiguration,
     this.outOfDiskReport,
     this.project,
+    this.pscServiceAttachmentLink,
     this.region,
     this.replicaConfiguration,
     this.replicaNames,
@@ -3658,6 +4094,9 @@ class DatabaseInstance {
               ? DiskEncryptionStatus.fromJson(json_['diskEncryptionStatus']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          dnsName: json_.containsKey('dnsName')
+              ? json_['dnsName'] as core.String
+              : null,
           etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
           failoverReplica: json_.containsKey('failoverReplica')
               ? DatabaseInstanceFailoverReplica.fromJson(
@@ -3702,6 +4141,10 @@ class DatabaseInstance {
           project: json_.containsKey('project')
               ? json_['project'] as core.String
               : null,
+          pscServiceAttachmentLink:
+              json_.containsKey('pscServiceAttachmentLink')
+                  ? json_['pscServiceAttachmentLink'] as core.String
+                  : null,
           region: json_.containsKey('region')
               ? json_['region'] as core.String
               : null,
@@ -3765,6 +4208,7 @@ class DatabaseInstance {
           'diskEncryptionConfiguration': diskEncryptionConfiguration!,
         if (diskEncryptionStatus != null)
           'diskEncryptionStatus': diskEncryptionStatus!,
+        if (dnsName != null) 'dnsName': dnsName!,
         if (etag != null) 'etag': etag!,
         if (failoverReplica != null) 'failoverReplica': failoverReplica!,
         if (gceZone != null) 'gceZone': gceZone!,
@@ -3782,6 +4226,8 @@ class DatabaseInstance {
           'onPremisesConfiguration': onPremisesConfiguration!,
         if (outOfDiskReport != null) 'outOfDiskReport': outOfDiskReport!,
         if (project != null) 'project': project!,
+        if (pscServiceAttachmentLink != null)
+          'pscServiceAttachmentLink': pscServiceAttachmentLink!,
         if (region != null) 'region': region!,
         if (replicaConfiguration != null)
           'replicaConfiguration': replicaConfiguration!,
@@ -4101,6 +4547,81 @@ class DiskEncryptionStatus {
       };
 }
 
+/// A generic empty message that you can re-use to avoid defining duplicated
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); }
+typedef Empty = $Empty;
+
+/// Options for exporting BAK files (SQL Server-only)
+class ExportContextBakExportOptions {
+  /// Type of this bak file will be export, FULL or DIFF, SQL Server only
+  /// Possible string values are:
+  /// - "BAK_TYPE_UNSPECIFIED" : Default type.
+  /// - "FULL" : Full backup.
+  /// - "DIFF" : Differential backup.
+  /// - "TLOG" : SQL Server Transaction Log
+  core.String? bakType;
+
+  /// Deprecated: copy_only is deprecated.
+  ///
+  /// Use differential_base instead
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.bool? copyOnly;
+
+  /// Whether or not the backup can be used as a differential base copy_only
+  /// backup can not be served as differential base
+  core.bool? differentialBase;
+
+  /// Option for specifying how many stripes to use for the export.
+  ///
+  /// If blank, and the value of the striped field is true, the number of
+  /// stripes is automatically chosen.
+  core.int? stripeCount;
+
+  /// Whether or not the export should be striped.
+  core.bool? striped;
+
+  ExportContextBakExportOptions({
+    this.bakType,
+    this.copyOnly,
+    this.differentialBase,
+    this.stripeCount,
+    this.striped,
+  });
+
+  ExportContextBakExportOptions.fromJson(core.Map json_)
+      : this(
+          bakType: json_.containsKey('bakType')
+              ? json_['bakType'] as core.String
+              : null,
+          copyOnly: json_.containsKey('copyOnly')
+              ? json_['copyOnly'] as core.bool
+              : null,
+          differentialBase: json_.containsKey('differentialBase')
+              ? json_['differentialBase'] as core.bool
+              : null,
+          stripeCount: json_.containsKey('stripeCount')
+              ? json_['stripeCount'] as core.int
+              : null,
+          striped: json_.containsKey('striped')
+              ? json_['striped'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bakType != null) 'bakType': bakType!,
+        if (copyOnly != null) 'copyOnly': copyOnly!,
+        if (differentialBase != null) 'differentialBase': differentialBase!,
+        if (stripeCount != null) 'stripeCount': stripeCount!,
+        if (striped != null) 'striped': striped!,
+      };
+}
+
 /// Options for exporting data as CSV.
 ///
 /// `MySQL` and `PostgreSQL` instances only.
@@ -4236,6 +4757,9 @@ class ExportContextSqlExportOptions {
 
 /// Database instance export context.
 class ExportContext {
+  /// Options for exporting BAK files (SQL Server-only)
+  ExportContextBakExportOptions? bakExportOptions;
+
   /// Options for exporting data as CSV.
   ///
   /// `MySQL` and `PostgreSQL` instances only.
@@ -4280,6 +4804,7 @@ class ExportContext {
   core.String? uri;
 
   ExportContext({
+    this.bakExportOptions,
     this.csvExportOptions,
     this.databases,
     this.fileType,
@@ -4291,6 +4816,10 @@ class ExportContext {
 
   ExportContext.fromJson(core.Map json_)
       : this(
+          bakExportOptions: json_.containsKey('bakExportOptions')
+              ? ExportContextBakExportOptions.fromJson(json_['bakExportOptions']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           csvExportOptions: json_.containsKey('csvExportOptions')
               ? ExportContextCsvExportOptions.fromJson(json_['csvExportOptions']
                   as core.Map<core.String, core.dynamic>)
@@ -4315,6 +4844,7 @@ class ExportContext {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (bakExportOptions != null) 'bakExportOptions': bakExportOptions!,
         if (csvExportOptions != null) 'csvExportOptions': csvExportOptions!,
         if (databases != null) 'databases': databases!,
         if (fileType != null) 'fileType': fileType!,
@@ -4627,23 +5157,88 @@ class ImportContextBakImportOptionsEncryptionOptions {
 
 /// Import parameters specific to SQL Server .BAK files
 class ImportContextBakImportOptions {
+  /// Type of the bak content, FULL or DIFF.
+  /// Possible string values are:
+  /// - "BAK_TYPE_UNSPECIFIED" : Default type.
+  /// - "FULL" : Full backup.
+  /// - "DIFF" : Differential backup.
+  /// - "TLOG" : SQL Server Transaction Log
+  core.String? bakType;
   ImportContextBakImportOptionsEncryptionOptions? encryptionOptions;
 
+  /// Whether or not the backup importing will restore database with NORECOVERY
+  /// option Applies only to Cloud SQL for SQL Server.
+  core.bool? noRecovery;
+
+  /// Whether or not the backup importing request will just bring database
+  /// online without downloading Bak content only one of "no_recovery" and
+  /// "recovery_only" can be true otherwise error will return.
+  ///
+  /// Applies only to Cloud SQL for SQL Server.
+  core.bool? recoveryOnly;
+
+  /// StopAt keyword for transaction log import, Applies to Cloud SQL for SQL
+  /// Server only
+  ///
+  /// Optional.
+  core.String? stopAt;
+
+  /// StopAtMark keyword for transaction log import, Applies to Cloud SQL for
+  /// SQL Server only
+  ///
+  /// Optional.
+  core.String? stopAtMark;
+
+  /// Whether or not the backup set being restored is striped.
+  ///
+  /// Applies only to Cloud SQL for SQL Server.
+  core.bool? striped;
+
   ImportContextBakImportOptions({
+    this.bakType,
     this.encryptionOptions,
+    this.noRecovery,
+    this.recoveryOnly,
+    this.stopAt,
+    this.stopAtMark,
+    this.striped,
   });
 
   ImportContextBakImportOptions.fromJson(core.Map json_)
       : this(
+          bakType: json_.containsKey('bakType')
+              ? json_['bakType'] as core.String
+              : null,
           encryptionOptions: json_.containsKey('encryptionOptions')
               ? ImportContextBakImportOptionsEncryptionOptions.fromJson(
                   json_['encryptionOptions']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          noRecovery: json_.containsKey('noRecovery')
+              ? json_['noRecovery'] as core.bool
+              : null,
+          recoveryOnly: json_.containsKey('recoveryOnly')
+              ? json_['recoveryOnly'] as core.bool
+              : null,
+          stopAt: json_.containsKey('stopAt')
+              ? json_['stopAt'] as core.String
+              : null,
+          stopAtMark: json_.containsKey('stopAtMark')
+              ? json_['stopAtMark'] as core.String
+              : null,
+          striped: json_.containsKey('striped')
+              ? json_['striped'] as core.bool
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (bakType != null) 'bakType': bakType!,
         if (encryptionOptions != null) 'encryptionOptions': encryptionOptions!,
+        if (noRecovery != null) 'noRecovery': noRecovery!,
+        if (recoveryOnly != null) 'recoveryOnly': recoveryOnly!,
+        if (stopAt != null) 'stopAt': stopAt!,
+        if (stopAtMark != null) 'stopAtMark': stopAtMark!,
+        if (striped != null) 'striped': striped!,
       };
 }
 
@@ -5113,6 +5708,31 @@ class InstancesListServerCasResponse {
       };
 }
 
+/// Database Instance reencrypt request.
+class InstancesReencryptRequest {
+  /// Configuration specific to backup re-encryption
+  BackupReencryptionConfig? backupReencryptionConfig;
+
+  InstancesReencryptRequest({
+    this.backupReencryptionConfig,
+  });
+
+  InstancesReencryptRequest.fromJson(core.Map json_)
+      : this(
+          backupReencryptionConfig:
+              json_.containsKey('backupReencryptionConfig')
+                  ? BackupReencryptionConfig.fromJson(
+                      json_['backupReencryptionConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (backupReencryptionConfig != null)
+          'backupReencryptionConfig': backupReencryptionConfig!,
+      };
+}
+
 /// Database instance restore backup request.
 class InstancesRestoreBackupRequest {
   /// Parameters required to perform the restore backup operation.
@@ -5184,7 +5804,7 @@ class InstancesTruncateLogRequest {
 
 /// IP Management configuration.
 class IpConfiguration {
-  /// The name of the allocated ip range for the private ip CloudSQL instance.
+  /// The name of the allocated ip range for the private ip Cloud SQL instance.
   ///
   /// For example: "google-managed-services-default". If set, the instance ip
   /// will be created in the allocated range. The range name must comply with
@@ -5200,6 +5820,10 @@ class IpConfiguration {
   /// `157.197.200.0/24`).
   core.List<AclEntry>? authorizedNetworks;
 
+  /// Controls connectivity to private IP instances from Google services, such
+  /// as BigQuery.
+  core.bool? enablePrivatePathForGoogleCloudServices;
+
   /// Whether the instance is assigned a public IP address or not.
   core.bool? ipv4Enabled;
 
@@ -5210,14 +5834,19 @@ class IpConfiguration {
   /// can be updated, but it cannot be removed after it is set.
   core.String? privateNetwork;
 
+  /// PSC settings for this instance.
+  PscConfig? pscConfig;
+
   /// Whether SSL connections over IP are enforced or not.
   core.bool? requireSsl;
 
   IpConfiguration({
     this.allocatedIpRange,
     this.authorizedNetworks,
+    this.enablePrivatePathForGoogleCloudServices,
     this.ipv4Enabled,
     this.privateNetwork,
+    this.pscConfig,
     this.requireSsl,
   });
 
@@ -5232,11 +5861,19 @@ class IpConfiguration {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          enablePrivatePathForGoogleCloudServices: json_
+                  .containsKey('enablePrivatePathForGoogleCloudServices')
+              ? json_['enablePrivatePathForGoogleCloudServices'] as core.bool
+              : null,
           ipv4Enabled: json_.containsKey('ipv4Enabled')
               ? json_['ipv4Enabled'] as core.bool
               : null,
           privateNetwork: json_.containsKey('privateNetwork')
               ? json_['privateNetwork'] as core.String
+              : null,
+          pscConfig: json_.containsKey('pscConfig')
+              ? PscConfig.fromJson(
+                  json_['pscConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           requireSsl: json_.containsKey('requireSsl')
               ? json_['requireSsl'] as core.bool
@@ -5247,8 +5884,12 @@ class IpConfiguration {
         if (allocatedIpRange != null) 'allocatedIpRange': allocatedIpRange!,
         if (authorizedNetworks != null)
           'authorizedNetworks': authorizedNetworks!,
+        if (enablePrivatePathForGoogleCloudServices != null)
+          'enablePrivatePathForGoogleCloudServices':
+              enablePrivatePathForGoogleCloudServices!,
         if (ipv4Enabled != null) 'ipv4Enabled': ipv4Enabled!,
         if (privateNetwork != null) 'privateNetwork': privateNetwork!,
+        if (pscConfig != null) 'pscConfig': pscConfig!,
         if (requireSsl != null) 'requireSsl': requireSsl!,
       };
 }
@@ -5319,6 +5960,9 @@ class LocationPreference {
   /// Cloud SQL instance.
   ///
   /// WARNING: Changing this might restart the instance.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? followGaeApplication;
 
   /// This is always `sql#locationPreference`.
@@ -5727,6 +6371,8 @@ class Operation {
   /// - "LOG_CLEANUP" : Recovers logs from an instance's old data disk.
   /// - "AUTO_RESTART" : Performs auto-restart of an HA-enabled Cloud SQL
   /// database for auto recovery.
+  /// - "REENCRYPT" : Re-encrypts CMEK instances with latest key version.
+  /// - "SWITCHOVER" : Switches over to replica instance from primary.
   core.String? operationType;
 
   /// The URI of this resource.
@@ -5998,7 +6644,7 @@ class PasswordValidationPolicy {
 
   /// Minimum interval after which the password can be changed.
   ///
-  /// This flag is only supported for PostgresSQL.
+  /// This flag is only supported for PostgreSQL.
   core.String? passwordChangeInterval;
 
   /// Number of previous passwords that cannot be reused.
@@ -6046,6 +6692,64 @@ class PasswordValidationPolicy {
         if (passwordChangeInterval != null)
           'passwordChangeInterval': passwordChangeInterval!,
         if (reuseInterval != null) 'reuseInterval': reuseInterval!,
+      };
+}
+
+/// Perform disk shrink context.
+class PerformDiskShrinkContext {
+  /// The target disk shrink size in GigaBytes.
+  core.String? targetSizeGb;
+
+  PerformDiskShrinkContext({
+    this.targetSizeGb,
+  });
+
+  PerformDiskShrinkContext.fromJson(core.Map json_)
+      : this(
+          targetSizeGb: json_.containsKey('targetSizeGb')
+              ? json_['targetSizeGb'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (targetSizeGb != null) 'targetSizeGb': targetSizeGb!,
+      };
+}
+
+/// PSC settings for a Cloud SQL instance.
+class PscConfig {
+  /// List of consumer projects that are allow-listed for PSC connections to
+  /// this instance.
+  ///
+  /// This instance can be connected to with PSC from any network in these
+  /// projects. Each consumer project in this list may be represented by a
+  /// project number (numeric) or by a project id (alphanumeric).
+  core.List<core.String>? allowedConsumerProjects;
+
+  /// Whether PSC connectivity is enabled for this instance.
+  core.bool? pscEnabled;
+
+  PscConfig({
+    this.allowedConsumerProjects,
+    this.pscEnabled,
+  });
+
+  PscConfig.fromJson(core.Map json_)
+      : this(
+          allowedConsumerProjects: json_.containsKey('allowedConsumerProjects')
+              ? (json_['allowedConsumerProjects'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          pscEnabled: json_.containsKey('pscEnabled')
+              ? json_['pscEnabled'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allowedConsumerProjects != null)
+          'allowedConsumerProjects': allowedConsumerProjects!,
+        if (pscEnabled != null) 'pscEnabled': pscEnabled!,
       };
 }
 
@@ -6236,9 +6940,16 @@ class Settings {
   /// Server.
   SqlActiveDirectoryConfig? activeDirectoryConfig;
 
+  /// Specifies advance machine configuration for the instance relevant only for
+  /// SQL Server.
+  AdvancedMachineFeatures? advancedMachineFeatures;
+
   /// The App Engine app IDs that can access this instance.
   ///
   /// (Deprecated) Applied to First Generation instances only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<core.String>? authorizedGaeApplications;
 
   /// Availability type.
@@ -6283,7 +6994,13 @@ class Settings {
   ///
   /// Indicates whether database flags for crash-safe replication are enabled.
   /// This property was only applicable to First Generation instances.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? crashSafeReplicationEnabled;
+
+  /// Configuration for data cache.
+  DataCacheConfig? dataCacheConfig;
 
   /// The size of data disk, in GB.
   ///
@@ -6315,6 +7032,15 @@ class Settings {
 
   /// Deny maintenance periods
   core.List<DenyMaintenancePeriod>? denyMaintenancePeriods;
+
+  /// The edition of the instance.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "EDITION_UNSPECIFIED" : The instance did not specify the edition.
+  /// - "ENTERPRISE" : The instance is an enterprise edition.
+  /// - "ENTERPRISE_PLUS" : The instance is an Enterprise Plus edition.
+  core.String? edition;
 
   /// Insights configuration, for now relevant only for Postgres.
   InsightsConfig? insightsConfig;
@@ -6369,6 +7095,9 @@ class Settings {
   /// instances. It provides a slight performance gain, but if an outage occurs
   /// while this option is set to asynchronous, you can lose up to a few seconds
   /// of updates to your data.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? replicationType;
 
   /// The version of instance settings.
@@ -6407,18 +7136,21 @@ class Settings {
   Settings({
     this.activationPolicy,
     this.activeDirectoryConfig,
+    this.advancedMachineFeatures,
     this.authorizedGaeApplications,
     this.availabilityType,
     this.backupConfiguration,
     this.collation,
     this.connectorEnforcement,
     this.crashSafeReplicationEnabled,
+    this.dataCacheConfig,
     this.dataDiskSizeGb,
     this.dataDiskType,
     this.databaseFlags,
     this.databaseReplicationEnabled,
     this.deletionProtectionEnabled,
     this.denyMaintenancePeriods,
+    this.edition,
     this.insightsConfig,
     this.ipConfiguration,
     this.kind,
@@ -6445,6 +7177,11 @@ class Settings {
               ? SqlActiveDirectoryConfig.fromJson(json_['activeDirectoryConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          advancedMachineFeatures: json_.containsKey('advancedMachineFeatures')
+              ? AdvancedMachineFeatures.fromJson(
+                  json_['advancedMachineFeatures']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           authorizedGaeApplications:
               json_.containsKey('authorizedGaeApplications')
                   ? (json_['authorizedGaeApplications'] as core.List)
@@ -6468,6 +7205,10 @@ class Settings {
               json_.containsKey('crashSafeReplicationEnabled')
                   ? json_['crashSafeReplicationEnabled'] as core.bool
                   : null,
+          dataCacheConfig: json_.containsKey('dataCacheConfig')
+              ? DataCacheConfig.fromJson(json_['dataCacheConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           dataDiskSizeGb: json_.containsKey('dataDiskSizeGb')
               ? json_['dataDiskSizeGb'] as core.String
               : null,
@@ -6493,6 +7234,9 @@ class Settings {
                   .map((value) => DenyMaintenancePeriod.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
+              : null,
+          edition: json_.containsKey('edition')
+              ? json_['edition'] as core.String
               : null,
           insightsConfig: json_.containsKey('insightsConfig')
               ? InsightsConfig.fromJson(json_['insightsConfig']
@@ -6543,9 +7287,9 @@ class Settings {
           userLabels: json_.containsKey('userLabels')
               ? (json_['userLabels'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -6555,6 +7299,8 @@ class Settings {
         if (activationPolicy != null) 'activationPolicy': activationPolicy!,
         if (activeDirectoryConfig != null)
           'activeDirectoryConfig': activeDirectoryConfig!,
+        if (advancedMachineFeatures != null)
+          'advancedMachineFeatures': advancedMachineFeatures!,
         if (authorizedGaeApplications != null)
           'authorizedGaeApplications': authorizedGaeApplications!,
         if (availabilityType != null) 'availabilityType': availabilityType!,
@@ -6565,6 +7311,7 @@ class Settings {
           'connectorEnforcement': connectorEnforcement!,
         if (crashSafeReplicationEnabled != null)
           'crashSafeReplicationEnabled': crashSafeReplicationEnabled!,
+        if (dataCacheConfig != null) 'dataCacheConfig': dataCacheConfig!,
         if (dataDiskSizeGb != null) 'dataDiskSizeGb': dataDiskSizeGb!,
         if (dataDiskType != null) 'dataDiskType': dataDiskType!,
         if (databaseFlags != null) 'databaseFlags': databaseFlags!,
@@ -6574,6 +7321,7 @@ class Settings {
           'deletionProtectionEnabled': deletionProtectionEnabled!,
         if (denyMaintenancePeriods != null)
           'denyMaintenancePeriods': denyMaintenancePeriods!,
+        if (edition != null) 'edition': edition!,
         if (insightsConfig != null) 'insightsConfig': insightsConfig!,
         if (ipConfiguration != null) 'ipConfiguration': ipConfiguration!,
         if (kind != null) 'kind': kind!,
@@ -6638,7 +7386,8 @@ class SqlExternalSyncSettingError {
   /// - "BINLOG_NOT_ENABLED"
   /// - "INCOMPATIBLE_DATABASE_VERSION"
   /// - "REPLICA_ALREADY_SETUP"
-  /// - "INSUFFICIENT_PRIVILEGE"
+  /// - "INSUFFICIENT_PRIVILEGE" : The replication user is missing privileges
+  /// that are required.
   /// - "UNSUPPORTED_MIGRATION_TYPE" : Unsupported migration type.
   /// - "NO_PGLOGICAL_INSTALLED" : No pglogical extension installed on
   /// databases, applicable for postgres.
@@ -6670,7 +7419,7 @@ class SqlExternalSyncSettingError {
   /// - "UNSUPPORTED_DEFINER" : The customer has a definer that will break EM
   /// setup.
   /// - "SQLSERVER_SERVERNAME_MISMATCH" : SQL Server @@SERVERNAME does not match
-  /// actual host name
+  /// actual host name.
   /// - "PRIMARY_ALREADY_SETUP" : The primary instance has been setup and will
   /// fail the setup.
   /// - "UNSUPPORTED_BINLOG_FORMAT" : The primary instance has unsupported
@@ -6680,7 +7429,22 @@ class SqlExternalSyncSettingError {
   /// - "UNSUPPORTED_STORAGE_ENGINE" : The primary instance has tables with
   /// unsupported storage engine.
   /// - "LIMITED_SUPPORT_TABLES" : Source has tables with limited support eg:
-  /// PostgreSQL tables without primary keys
+  /// PostgreSQL tables without primary keys.
+  /// - "EXISTING_DATA_IN_REPLICA" : The replica instance contains existing
+  /// data.
+  /// - "MISSING_OPTIONAL_PRIVILEGES" : The replication user is missing
+  /// privileges that are optional.
+  /// - "RISKY_BACKUP_ADMIN_PRIVILEGE" : Additional BACKUP_ADMIN privilege is
+  /// granted to the replication user which may lock source MySQL 8 instance for
+  /// DDLs during initial sync.
+  /// - "INSUFFICIENT_GCS_PERMISSIONS" : The Cloud Storage bucket is missing
+  /// necessary permissions.
+  /// - "INVALID_FILE_INFO" : The Cloud Storage bucket has an error in the file
+  /// or contains invalid file information.
+  /// - "UNSUPPORTED_DATABASE_SETTINGS" : The source instance has unsupported
+  /// database settings for migration.
+  /// - "MYSQL_PARALLEL_IMPORT_INSUFFICIENT_PRIVILEGE" : The replication user is
+  /// missing parallel import specific privileges. (e.g. LOCK TABLES) for MySQL.
   core.String? type;
 
   SqlExternalSyncSettingError({
@@ -6702,6 +7466,70 @@ class SqlExternalSyncSettingError {
         if (detail != null) 'detail': detail!,
         if (kind != null) 'kind': kind!,
         if (type != null) 'type': type!,
+      };
+}
+
+/// Instance get disk shrink config response.
+class SqlInstancesGetDiskShrinkConfigResponse {
+  /// This is always `sql#getDiskShrinkConfig`.
+  core.String? kind;
+
+  /// Additional message to customers.
+  core.String? message;
+
+  /// The minimum size to which a disk can be shrunk in GigaBytes.
+  core.String? minimalTargetSizeGb;
+
+  SqlInstancesGetDiskShrinkConfigResponse({
+    this.kind,
+    this.message,
+    this.minimalTargetSizeGb,
+  });
+
+  SqlInstancesGetDiskShrinkConfigResponse.fromJson(core.Map json_)
+      : this(
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          message: json_.containsKey('message')
+              ? json_['message'] as core.String
+              : null,
+          minimalTargetSizeGb: json_.containsKey('minimalTargetSizeGb')
+              ? json_['minimalTargetSizeGb'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (message != null) 'message': message!,
+        if (minimalTargetSizeGb != null)
+          'minimalTargetSizeGb': minimalTargetSizeGb!,
+      };
+}
+
+/// Instance get latest recovery time response.
+class SqlInstancesGetLatestRecoveryTimeResponse {
+  /// This is always `sql#getLatestRecoveryTime`.
+  core.String? kind;
+
+  /// Timestamp, identifies the latest recovery time of the source instance.
+  core.String? latestRecoveryTime;
+
+  SqlInstancesGetLatestRecoveryTimeResponse({
+    this.kind,
+    this.latestRecoveryTime,
+  });
+
+  SqlInstancesGetLatestRecoveryTimeResponse.fromJson(core.Map json_)
+      : this(
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          latestRecoveryTime: json_.containsKey('latestRecoveryTime')
+              ? json_['latestRecoveryTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (latestRecoveryTime != null)
+          'latestRecoveryTime': latestRecoveryTime!,
       };
 }
 
@@ -6729,6 +7557,9 @@ class SqlInstancesRescheduleMaintenanceRequestBody {
       };
 }
 
+/// Instance reset replica size request.
+typedef SqlInstancesResetReplicaSizeRequest = $Empty;
+
 class SqlInstancesStartExternalSyncRequest {
   /// MySQL-specific settings for start external sync.
   MySqlSyncConfig? mysqlSyncConfig;
@@ -6746,10 +7577,24 @@ class SqlInstancesStartExternalSyncRequest {
   /// snapshot of the primary instance's data
   core.String? syncMode;
 
+  /// Parallel level for initial data sync.
+  ///
+  /// Currently only applicable for MySQL.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "EXTERNAL_SYNC_PARALLEL_LEVEL_UNSPECIFIED" : Unknown sync parallel
+  /// level. Will be defaulted to OPTIMAL.
+  /// - "MIN" : Minimal parallel level.
+  /// - "OPTIMAL" : Optimal parallel level.
+  /// - "MAX" : Maximum parallel level.
+  core.String? syncParallelLevel;
+
   SqlInstancesStartExternalSyncRequest({
     this.mysqlSyncConfig,
     this.skipVerification,
     this.syncMode,
+    this.syncParallelLevel,
   });
 
   SqlInstancesStartExternalSyncRequest.fromJson(core.Map json_)
@@ -6764,12 +7609,16 @@ class SqlInstancesStartExternalSyncRequest {
           syncMode: json_.containsKey('syncMode')
               ? json_['syncMode'] as core.String
               : null,
+          syncParallelLevel: json_.containsKey('syncParallelLevel')
+              ? json_['syncParallelLevel'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (mysqlSyncConfig != null) 'mysqlSyncConfig': mysqlSyncConfig!,
         if (skipVerification != null) 'skipVerification': skipVerification!,
         if (syncMode != null) 'syncMode': syncMode!,
+        if (syncParallelLevel != null) 'syncParallelLevel': syncParallelLevel!,
       };
 }
 
@@ -6917,6 +7766,9 @@ class SqlOutOfDiskReport {
 
 /// Any scheduled maintenance for this instance.
 class SqlScheduledMaintenance {
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? canDefer;
 
   /// If the scheduled maintenance can be rescheduled.
@@ -7650,10 +8502,10 @@ class UsersListResponse {
   /// This is always *sql#usersList*.
   core.String? kind;
 
-  /// An identifier that uniquely identifies the operation.
-  ///
-  /// You can use this identifier to retrieve the Operations resource that has
-  /// information about the operation.
+  /// Unused.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? nextPageToken;
 
   UsersListResponse({

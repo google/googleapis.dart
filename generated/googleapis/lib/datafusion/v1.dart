@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud Data Fusion API - v1
@@ -32,7 +31,7 @@
 ///       - [ProjectsLocationsInstancesDnsPeeringsResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsVersionsResource]
-library datafusion.v1;
+library datafusion_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -41,7 +40,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -906,13 +904,6 @@ class ProjectsLocationsOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -1035,17 +1026,19 @@ class Accelerator {
   /// - "CCAI_INSIGHTS" : Contact Center AI Insights This accelerator is used to
   /// enable import and export pipelines custom built to streamline CCAI
   /// Insights processing.
+  /// - "CLOUDSEARCH" : Cloud search accelerator for CDF. This accelerator is to
+  /// enable Cloud search specific CDF plugins developed by Cloudsearch team.
   core.String? acceleratorType;
 
-  /// The state of the accelerator
+  /// The state of the accelerator.
   /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : Default value, do not use
+  /// - "STATE_UNSPECIFIED" : Default value, do not use.
   /// - "ENABLED" : Indicates that the accelerator is enabled and available to
-  /// use
+  /// use.
   /// - "DISABLED" : Indicates that the accelerator is disabled and not
-  /// available to use
+  /// available to use.
   /// - "UNKNOWN" : Indicates that accelerator state is currently unknown.
-  /// Requests for enable, disable could be retried while in this state
+  /// Requests for enable, disable could be retried while in this state.
   core.String? state;
 
   Accelerator({
@@ -1157,7 +1150,9 @@ class Binding {
   /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
   /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
   /// `group:{emailid}`: An email address that represents a Google group. For
-  /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
+  /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
+  /// (primary) that represents all the users of that domain. For example,
+  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
   /// An email address (plus unique identifier) representing a user that has
   /// been recently deleted. For example,
   /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
@@ -1173,9 +1168,7 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
-  /// that represents all the users of that domain. For example, `google.com` or
-  /// `example.com`.
+  /// the role in the binding.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
@@ -1371,6 +1364,8 @@ typedef Expr = $Expr;
 /// Represents a Data Fusion instance.
 class Instance {
   /// List of accelerators enabled for this CDF instance.
+  ///
+  /// Output only.
   core.List<Accelerator>? accelerators;
 
   /// Endpoint on which the REST APIs is accessible.
@@ -1380,6 +1375,8 @@ class Instance {
 
   /// Available versions that the instance can be upgraded to using
   /// UpdateInstanceRequest.
+  ///
+  /// Output only.
   core.List<Version>? availableVersion;
 
   /// The time the instance was created.
@@ -1418,6 +1415,9 @@ class Instance {
 
   /// Option to enable Stackdriver Monitoring.
   core.bool? enableStackdriverMonitoring;
+
+  /// Option to enable granular zone separation.
+  core.bool? enableZoneSeparation;
 
   /// Option to enable and pass metadata for event publishing.
   EventPublishConfig? eventPublishConfig;
@@ -1459,9 +1459,17 @@ class Instance {
   /// will not be able to access the public internet.
   core.bool? privateInstance;
 
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzs;
+
   /// Use tenant_project_id instead to extract the tenant project ID.
   ///
   /// Output only. Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? serviceAccount;
 
   /// Endpoint on which the Data Fusion UI is accessible.
@@ -1544,6 +1552,7 @@ class Instance {
     this.enableRbac,
     this.enableStackdriverLogging,
     this.enableStackdriverMonitoring,
+    this.enableZoneSeparation,
     this.eventPublishConfig,
     this.gcsBucket,
     this.labels,
@@ -1552,6 +1561,7 @@ class Instance {
     this.options,
     this.p4ServiceAccount,
     this.privateInstance,
+    this.satisfiesPzs,
     this.serviceAccount,
     this.serviceEndpoint,
     this.state,
@@ -1612,6 +1622,9 @@ class Instance {
               json_.containsKey('enableStackdriverMonitoring')
                   ? json_['enableStackdriverMonitoring'] as core.bool
                   : null,
+          enableZoneSeparation: json_.containsKey('enableZoneSeparation')
+              ? json_['enableZoneSeparation'] as core.bool
+              : null,
           eventPublishConfig: json_.containsKey('eventPublishConfig')
               ? EventPublishConfig.fromJson(json_['eventPublishConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -1621,9 +1634,9 @@ class Instance {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -1634,9 +1647,9 @@ class Instance {
               : null,
           options: json_.containsKey('options')
               ? (json_['options'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -1645,6 +1658,9 @@ class Instance {
               : null,
           privateInstance: json_.containsKey('privateInstance')
               ? json_['privateInstance'] as core.bool
+              : null,
+          satisfiesPzs: json_.containsKey('satisfiesPzs')
+              ? json_['satisfiesPzs'] as core.bool
               : null,
           serviceAccount: json_.containsKey('serviceAccount')
               ? json_['serviceAccount'] as core.String
@@ -1686,6 +1702,8 @@ class Instance {
           'enableStackdriverLogging': enableStackdriverLogging!,
         if (enableStackdriverMonitoring != null)
           'enableStackdriverMonitoring': enableStackdriverMonitoring!,
+        if (enableZoneSeparation != null)
+          'enableZoneSeparation': enableZoneSeparation!,
         if (eventPublishConfig != null)
           'eventPublishConfig': eventPublishConfig!,
         if (gcsBucket != null) 'gcsBucket': gcsBucket!,
@@ -1695,6 +1713,7 @@ class Instance {
         if (options != null) 'options': options!,
         if (p4ServiceAccount != null) 'p4ServiceAccount': p4ServiceAccount!,
         if (privateInstance != null) 'privateInstance': privateInstance!,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
         if (serviceEndpoint != null) 'serviceEndpoint': serviceEndpoint!,
         if (state != null) 'state': state!,
@@ -1881,7 +1900,7 @@ class ListOperationsResponse {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
+/// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
 /// Network configuration for a Data Fusion instance.

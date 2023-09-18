@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Google Cloud Support API - v2beta
@@ -21,13 +20,12 @@
 ///
 /// Create an instance of [CloudSupportApi] to access these resources:
 ///
-/// - [AttachmentsResource]
 /// - [CaseClassificationsResource]
 /// - [CasesResource]
 ///   - [CasesAttachmentsResource]
 ///   - [CasesCommentsResource]
 /// - [MediaResource]
-library cloudsupport.v2beta;
+library cloudsupport_v2beta;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -36,20 +34,19 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show
         ApiRequestError,
+        ByteRange,
         DetailedApiRequestError,
-        Media,
-        UploadOptions,
-        ResumableUploadOptions,
         DownloadOptions,
+        Media,
         PartialDownloadOptions,
-        ByteRange;
+        ResumableUploadOptions,
+        UploadOptions;
 
 /// Manages Google Cloud technical support cases for Customer Care support
 /// offerings.
@@ -61,7 +58,6 @@ class CloudSupportApi {
 
   final commons.ApiRequester _requester;
 
-  AttachmentsResource get attachments => AttachmentsResource(_requester);
   CaseClassificationsResource get caseClassifications =>
       CaseClassificationsResource(_requester);
   CasesResource get cases => CasesResource(_requester);
@@ -74,54 +70,6 @@ class CloudSupportApi {
             commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
-class AttachmentsResource {
-  final commons.ApiRequester _requester;
-
-  AttachmentsResource(commons.ApiRequester client) : _requester = client;
-
-  /// Create a file attachment on a case or Cloud resource.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. The resource name of the case to which attachment
-  /// should be attached.
-  /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Attachment].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Attachment> create(
-    CreateAttachmentRequest request,
-    core.String parent, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v2beta/' + core.Uri.encodeFull('$parent') + '/attachments';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return Attachment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-}
-
 class CaseClassificationsResource {
   final commons.ApiRequester _requester;
 
@@ -131,8 +79,16 @@ class CaseClassificationsResource {
   /// Retrieve valid classifications to be used when creating a support case.
   ///
   /// The classications are hierarchical, with each classification containing
-  /// all levels of the hierarchy, separated by " \> ". For example "Technical
-  /// Issue \> Compute \> Compute Engine".
+  /// all levels of the hierarchy, separated by `" > "`. For example `"Technical
+  /// Issue > Compute > Compute Engine"`. Classification IDs returned by
+  /// `caseClassifications.search` are guaranteed to be valid for at least six
+  /// months. If a given classification is deactivated, it immediately stops
+  /// being returned. After six months, `case.create` requests using the
+  /// classification ID will fail. Here is an example of calling this endpoint
+  /// using cURL: ```shell curl \ --header "Authorization: Bearer $(gcloud auth
+  /// print-access-token)" \
+  /// 'https://cloudsupport.googleapis.com/v2/caseClassifications:search?query=display_name:"*Compute%20Engine*"'
+  /// ```
   ///
   /// Request parameters:
   ///
@@ -141,7 +97,7 @@ class CaseClassificationsResource {
   /// [pageToken] - A token identifying the page of results to return. If
   /// unspecified, the first page is retrieved.
   ///
-  /// [query] - An expression written in the Cloud filter language. If
+  /// [query] - An expression written in the Google Cloud filter language. If
   /// non-empty, then only cases whose fields match the filter are returned. If
   /// empty, then no messages are filtered out.
   ///
@@ -191,6 +147,11 @@ class CasesResource {
 
   /// Close the specified case.
   ///
+  /// Here is an example of calling this endpoint using cURL: ```shell
+  /// case="projects/some-project/cases/43595344" curl \ --request POST \
+  /// --header "Authorization: Bearer $(gcloud auth print-access-token)" \
+  /// "https://cloudsupport.googleapis.com/v2/$case:close" ```
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -230,14 +191,26 @@ class CasesResource {
     return Case.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Create a new case and associate it with the given Cloud resource.
+  /// Create a new case and associate it with the given Google Cloud Resource.
+  ///
+  /// The case object must have the following fields set: `display_name`,
+  /// `description`, `classification`, and `priority`. Here is an example of
+  /// calling this endpoint using cURL: ```shell parent="projects/some-project"
+  /// curl \ --request POST \ --header "Authorization: Bearer $(gcloud auth
+  /// print-access-token)" \ --header 'Content-Type: application/json' \ --data
+  /// '{ "display_name": "Test case created by me.", "description": "a random
+  /// test case, feel free to close", "classification": { "id":
+  /// "100IK2AKCLHMGRJ9CDGMOCGP8DM6UTB4BT262T31BT1M2T31DHNMENPO6KS36CPJ786L2TBFEHGN6NPI64R3CDHN8880G08I1H3MURR7DHII0GRCDTQM8"
+  /// }, "time_zone": "-07:00", "subscriber_email_addresses": [
+  /// "foo@domain.com", "bar@domain.com" ], "testCase": true, "priority": "P3"
+  /// }' \ "https://cloudsupport.googleapis.com/v2/$parent/cases" ```
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The name of the Cloud resource under which the case
-  /// should be created.
+  /// [parent] - Required. The name of the Google Cloud Resource under which the
+  /// case should be created.
   /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -273,11 +246,17 @@ class CasesResource {
 
   /// Escalate a case.
   ///
-  /// Escalating a case will initiate the Cloud Support escalation management
-  /// process. This operation is only available to certain Customer Care tiers.
-  /// Go to https://cloud.google.com/support and look for 'Technical support
-  /// escalations' in the feature list to find out which tiers are able to
-  /// perform escalations.
+  /// Escalating a case initiates the Google Cloud Support escalation management
+  /// process. This operation is only available to certain Customer Care support
+  /// services. Go to https://cloud.google.com/support and look for 'Technical
+  /// support escalations' in the feature list to find out which support
+  /// services let you perform escalations. Here is an example of calling this
+  /// endpoint using cURL: ```shell case="projects/some-project/cases/43595344"
+  /// curl \ --request POST \ --header "Authorization: Bearer $(gcloud auth
+  /// print-access-token)" \ --header "Content-Type: application/json" \ --data
+  /// '{ "escalation": { "reason": "BUSINESS_IMPACT", "justification": "This is
+  /// a test escalation." } }' \
+  /// "https://cloudsupport.googleapis.com/v2/$case:escalate" ```
   ///
   /// [request] - The metadata request object.
   ///
@@ -320,6 +299,11 @@ class CasesResource {
 
   /// Retrieve the specified case.
   ///
+  /// Here is an example of calling this endpoint using cURL: ```shell
+  /// case="projects/some-project/cases/16033687" curl \ --header
+  /// "Authorization: Bearer $(gcloud auth print-access-token)" \
+  /// "https://cloudsupport.googleapis.com/v2/$case" ```
+  ///
   /// Request parameters:
   ///
   /// [name] - Required. The fully qualified name of a case to be retrieved.
@@ -355,10 +339,13 @@ class CasesResource {
 
   /// Retrieve all cases under the specified parent.
   ///
-  /// Note: Listing cases under an Organization returns only the cases directly
+  /// Note: Listing cases under an organization returns only the cases directly
   /// parented by that organization. To retrieve all cases under an
   /// organization, including cases parented by projects under that
-  /// organization, use `cases.search`.
+  /// organization, use `cases.search`. Here is an example of calling this
+  /// endpoint using cURL: ```shell parent="projects/some-project" curl \
+  /// --header "Authorization: Bearer $(gcloud auth print-access-token)" \
+  /// "https://cloudsupport.googleapis.com/v2/$parent/cases" ```
   ///
   /// Request parameters:
   ///
@@ -373,11 +360,9 @@ class CasesResource {
   /// `OPEN` or `CLOSED`. - `priority`: The accepted values are `P0`, `P1`,
   /// `P2`, `P3`, or `P4`. You can specify multiple values for priority using
   /// the `OR` operator. For example, `priority=P1 OR priority=P2`. -
-  /// \[DEPRECATED\] `severity`: The accepted values are `S0`, `S1`, `S2`, `S3`,
-  /// or `S4`. - `creator.email`: The email address of the case creator.
-  /// Examples: - `state=CLOSED` - `state=OPEN AND
-  /// creator.email="tester@example.com"` - `state=OPEN AND (priority=P0 OR
-  /// priority=P1)`
+  /// `creator.email`: The email address of the case creator. Examples: -
+  /// `state=CLOSED` - `state=OPEN AND creator.email="tester@example.com"` -
+  /// `state=OPEN AND (priority=P0 OR priority=P1)`
   ///
   /// [pageSize] - The maximum number of cases fetched with each request.
   /// Defaults to 10.
@@ -422,9 +407,12 @@ class CasesResource {
 
   /// Update the specified case.
   ///
-  /// Only a subset of fields (display_name, description, time_zone,
-  /// subscriber_email_addresses, related_resources, severity, priority,
-  /// primary_contact, and labels) can be updated.
+  /// Only a subset of fields can be updated. Here is an example of calling this
+  /// endpoint using cURL: ```shell case="projects/some-project/cases/43595344"
+  /// curl \ --request PATCH \ --header "Authorization: Bearer $(gcloud auth
+  /// print-access-token)" \ --header "Content-Type: application/json" \ --data
+  /// '{ "priority": "P1" }' \
+  /// "https://cloudsupport.googleapis.com/v2/$case?updateMask=priority" ```
   ///
   /// [request] - The metadata request object.
   ///
@@ -433,13 +421,13 @@ class CasesResource {
   /// [name] - The resource name for the case.
   /// Value must have pattern `^\[^/\]+/\[^/\]+/cases/\[^/\]+$`.
   ///
-  /// [updateMask] - A field that represents attributes of a case object that
-  /// should be updated as part of this request. Supported values are severity,
-  /// display_name, and subscriber_email_addresses. If no fields are specified,
-  /// all supported fields will be updated. WARNING: If you do not provide a
-  /// field mask then you may accidentally clear some fields. For example, if
-  /// you leave field mask empty and do not provide a value for
-  /// subscriber_email_addresses then subscriber_email_addresses will be updated
+  /// [updateMask] - A list of attributes of the case object that should be
+  /// updated as part of this request. Supported values are `priority`,
+  /// `display_name`, and `subscriber_email_addresses`. If no fields are
+  /// specified, all supported fields are updated. WARNING: If you do not
+  /// provide a field mask, then you might accidentally clear some fields. For
+  /// example, if you leave the field mask empty and do not provide a value for
+  /// `subscriber_email_addresses`, then `subscriber_email_addresses` is updated
   /// to empty.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -477,6 +465,11 @@ class CasesResource {
 
   /// Search cases using the specified query.
   ///
+  /// Here is an example of calling this endpoint using cURL: ```shell
+  /// parent="projects/some-project" curl \ --header "Authorization: Bearer
+  /// $(gcloud auth print-access-token)" \
+  /// "https://cloudsupport.googleapis.com/v2/$parent/cases:search" ```
+  ///
   /// Request parameters:
   ///
   /// [pageSize] - The maximum number of cases fetched with each request. The
@@ -485,6 +478,9 @@ class CasesResource {
   /// [pageToken] - A token identifying the page of results to return. If
   /// unspecified, the first page is retrieved.
   ///
+  /// [parent] - The fully qualified name of parent resource to search cases
+  /// under.
+  ///
   /// [query] - An expression written in filter language. A query uses the
   /// following fields with the operators equals (`=`) and `AND`: -
   /// `organization`: An organization name in the form `organizations/`. -
@@ -492,17 +488,18 @@ class CasesResource {
   /// values are `OPEN` or `CLOSED`. - `priority`: The accepted values are `P0`,
   /// `P1`, `P2`, `P3`, or `P4`. You can specify multiple values for priority
   /// using the `OR` operator. For example, `priority=P1 OR priority=P2`. -
-  /// \[DEPRECATED\] `severity`: The accepted values are `S0`, `S1`, `S2`, `S3`,
-  /// or `S4`. - `creator.email`: The email address of the case creator. You
-  /// must specify eitehr `organization` or `project`. To search across
+  /// `creator.email`: The email address of the case creator. -
+  /// `billingAccount`: A billing account in the form `billingAccounts/` You
+  /// must specify either `organization` or `project`. To search across
   /// `displayName`, `description`, and comments, use a global restriction with
   /// no keyword or operator. For example, `"my search"`. To search only cases
-  /// updated after a certain date, use `update_time` retricted with that
+  /// updated after a certain date, use `update_time` restricted with that
   /// particular date, time, and timezone in ISO datetime format. For example,
   /// `update_time>"2020-01-01T00:00:00-05:00"`. `update_time` only supports the
   /// greater than operator (`>`). Examples: -
   /// `organization="organizations/123456789"` -
   /// `project="projects/my-project-id"` - `project="projects/123456789"` -
+  /// `billing_account="billingAccounts/123456-A0B0C0-CUZ789"` -
   /// `organization="organizations/123456789" AND state=CLOSED` -
   /// `project="projects/my-project-id" AND creator.email="tester@example.com"`
   /// - `project="projects/my-project-id" AND (priority=P0 OR priority=P1)`
@@ -520,12 +517,14 @@ class CasesResource {
   async.Future<SearchCasesResponse> search({
     core.int? pageSize,
     core.String? pageToken,
+    core.String? parent,
     core.String? query,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (parent != null) 'parent': [parent],
       if (query != null) 'query': [query],
       if ($fields != null) 'fields': [$fields],
     };
@@ -548,6 +547,11 @@ class CasesAttachmentsResource {
   CasesAttachmentsResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieve all attachments associated with a support case.
+  ///
+  /// Here is an example of calling this endpoint using cURL: ```shell
+  /// case="projects/some-project/cases/23598314" curl \ --header
+  /// "Authorization: Bearer $(gcloud auth print-access-token)" \
+  /// "https://cloudsupport.googleapis.com/v2/$case/attachments" ```
   ///
   /// Request parameters:
   ///
@@ -603,6 +607,14 @@ class CasesCommentsResource {
 
   /// Add a new comment to the specified Case.
   ///
+  /// The comment object must have the following fields set: body. Here is an
+  /// example of calling this endpoint using cURL: ```shell
+  /// case="projects/some-project/cases/43591344" curl \ --request POST \
+  /// --header "Authorization: Bearer $(gcloud auth print-access-token)" \
+  /// --header 'Content-Type: application/json' \ --data '{ "body": "This is a
+  /// test comment." }' \
+  /// "https://cloudsupport.googleapis.com/v2/$case/comments" ```
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -642,7 +654,12 @@ class CasesCommentsResource {
     return Comment.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Retrieve all Comments associated with the Case object.
+  /// Retrieve all comments associated with the Case object.
+  ///
+  /// Here is an example of calling this endpoint using cURL: ```shell
+  /// case="projects/cloud-support-qa-premium/cases/43595344" curl \ --header
+  /// "Authorization: Bearer $(gcloud auth print-access-token)" \
+  /// "https://cloudsupport.googleapis.com/v2/$case/comments" ```
   ///
   /// Request parameters:
   ///
@@ -697,7 +714,11 @@ class MediaResource {
 
   /// Download a file attachment on a case.
   ///
-  /// Note: HTTP requests must append "?alt=media" to the URL.
+  /// Note: HTTP requests must append "?alt=media" to the URL. Here is an
+  /// example of calling this endpoint using cURL: ```shell
+  /// name="projects/some-project/cases/43594844/attachments/0674M00000WijAnZAJ"
+  /// curl \ --header "Authorization: Bearer $(gcloud auth print-access-token)"
+  /// \ "https://cloudsupport.googleapis.com/v2/$name:download?alt=media" ```
   ///
   /// Request parameters:
   ///
@@ -749,12 +770,21 @@ class MediaResource {
 
   /// Create a file attachment on a case or Cloud resource.
   ///
+  /// The attachment object must have the following fields set: filename. Here
+  /// is an example of calling this endpoint using cURL: ```shell echo "This
+  /// text is in a file I'm uploading using CSAPI." \ > "./example_file.txt"
+  /// case="projects/some-project/cases/43594844" curl \ --header
+  /// "Authorization: Bearer $(gcloud auth print-access-token)" \ --data-binary
+  /// @"./example_file.txt" \
+  /// "https://cloudsupport.googleapis.com/upload/v2beta/$case/attachments?attachment.filename=uploaded_via_curl.txt"
+  /// ```
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The resource name of the case to which attachment
-  /// should be attached.
+  /// [parent] - Required. The resource name of the case (or case parent) to
+  /// which the attachment should be attached.
   /// Value must have pattern `^\[^/\]+/\[^/\]+/cases/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -996,6 +1026,12 @@ class Case {
   /// The issue classification applicable to this case.
   CaseClassification? classification;
 
+  /// A user-supplied email address to send case update notifications for.
+  ///
+  /// This should only be used in BYOID flows, where we cannot infer the user's
+  /// email address directly from their EUCs.
+  core.String? contactEmail;
+
   /// The time this case was created.
   ///
   /// Output only.
@@ -1016,12 +1052,20 @@ class Case {
   /// Whether the case is currently escalated.
   core.bool? escalated;
 
+  /// The language the user has requested to receive support in.
+  ///
+  /// This should be a BCP 47 language code (e.g., `"en"`, `"zh-CN"`, `"zh-TW"`,
+  /// `"ja"`, `"ko"`). If no language or an unsupported language is specified,
+  /// this field defaults to English (en). Language selection during case
+  /// creation may affect your available support options. For a list of
+  /// supported languages and their support working hours, see:
+  /// https://cloud.google.com/support/docs/language-working-hours
+  core.String? languageCode;
+
   /// The resource name for the case.
   core.String? name;
 
   /// The priority of this case.
-  ///
-  /// If this is set, do not set severity.
   /// Possible string values are:
   /// - "PRIORITY_UNSPECIFIED" : Priority is undefined or has not been set yet.
   /// - "P0" : Extreme impact on a production service. Service is hard down.
@@ -1035,9 +1079,9 @@ class Case {
   /// available.
   core.String? priority;
 
-  /// The severity of this case.
+  /// REMOVED.
   ///
-  /// Deprecated. Use priority instead.
+  /// The severity of this case. Use priority instead.
   /// Possible string values are:
   /// - "SEVERITY_UNSPECIFIED" : Severity is undefined or has not been set yet.
   /// - "S0" : Extreme impact on a production service. Service is hard down.
@@ -1086,11 +1130,13 @@ class Case {
 
   Case({
     this.classification,
+    this.contactEmail,
     this.createTime,
     this.creator,
     this.description,
     this.displayName,
     this.escalated,
+    this.languageCode,
     this.name,
     this.priority,
     this.severity,
@@ -1107,6 +1153,9 @@ class Case {
               ? CaseClassification.fromJson(json_['classification']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          contactEmail: json_.containsKey('contactEmail')
+              ? json_['contactEmail'] as core.String
+              : null,
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
               : null,
@@ -1122,6 +1171,9 @@ class Case {
               : null,
           escalated: json_.containsKey('escalated')
               ? json_['escalated'] as core.bool
+              : null,
+          languageCode: json_.containsKey('languageCode')
+              ? json_['languageCode'] as core.String
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           priority: json_.containsKey('priority')
@@ -1151,11 +1203,13 @@ class Case {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (classification != null) 'classification': classification!,
+        if (contactEmail != null) 'contactEmail': contactEmail!,
         if (createTime != null) 'createTime': createTime!,
         if (creator != null) 'creator': creator!,
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
         if (escalated != null) 'escalated': escalated!,
+        if (languageCode != null) 'languageCode': languageCode!,
         if (name != null) 'name': name!,
         if (priority != null) 'priority': priority!,
         if (severity != null) 'severity': severity!,
@@ -1170,13 +1224,21 @@ class Case {
 
 /// A classification object with a product type and value.
 class CaseClassification {
-  /// The display name of the classification.
+  /// A display name for the classification.
+  ///
+  /// The display name is not static and can change. To uniquely and
+  /// consistently identify classifications, use the `CaseClassification.id`
+  /// field.
   core.String? displayName;
 
   /// The unique ID for a classification.
   ///
   /// Must be specified for case creation. To retrieve valid classification IDs
-  /// for case creation, use `caseClassifications.search`.
+  /// for case creation, use `caseClassifications.search`. Classification IDs
+  /// returned by `caseClassifications.search` are guaranteed to be valid for at
+  /// least 6 months. If a given classification is deactiveated, it will
+  /// immediately stop being returned. After 6 months, `case.create` requests
+  /// using the classification ID will fail.
   core.String? id;
 
   CaseClassification({
@@ -1205,7 +1267,7 @@ typedef CloseCaseRequest = $Empty;
 class Comment {
   /// The full comment body.
   ///
-  /// Maximum of 120000 characters. This can contain rich text syntax.
+  /// Maximum of 12800 characters. This can contain rich text syntax.
   core.String? body;
 
   /// The time when this comment was created.
@@ -1226,7 +1288,7 @@ class Comment {
   /// An automatically generated plain text version of body with all rich text
   /// syntax stripped.
   ///
-  /// Output only.
+  /// Output only. Deprecated.
   core.String? plainTextBody;
 
   Comment({
@@ -1265,6 +1327,9 @@ class Comment {
 /// # gdata.* are outside protos with mising documentation
 class CompositeMedia {
   /// # gdata.* are outside protos with mising documentation
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? blobRef;
   core.List<core.int> get blobRefAsBytes => convert.base64.decode(blobRef!);
 
@@ -1786,13 +1851,13 @@ class ListAttachmentsResponse {
 
 /// The response message for the ListCases endpoint.
 class ListCasesResponse {
-  /// The list of cases associated with the cloud resource, after any filters
-  /// have been applied.
+  /// The list of cases associated with the Google Cloud Resource, after any
+  /// filters have been applied.
   core.List<Case>? cases;
 
   /// A token to retrieve the next page of results.
   ///
-  /// This should be set in the `page_token` field of subsequent
+  /// This should be set in the `page_token` field of the subsequent
   /// `ListCasesRequest` message that is issued. If unspecified, there are no
   /// more results to retrieve.
   core.String? nextPageToken;
@@ -1860,9 +1925,15 @@ class ListCommentsResponse {
 /// # gdata.* are outside protos with mising documentation
 class Media {
   /// # gdata.* are outside protos with mising documentation
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? algorithm;
 
   /// # gdata.* are outside protos with mising documentation
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? bigstoreObjectRef;
   core.List<core.int> get bigstoreObjectRefAsBytes =>
       convert.base64.decode(bigstoreObjectRef!);
@@ -1873,6 +1944,9 @@ class Media {
   }
 
   /// # gdata.* are outside protos with mising documentation
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? blobRef;
   core.List<core.int> get blobRefAsBytes => convert.base64.decode(blobRef!);
 
@@ -1928,6 +2002,9 @@ class Media {
   core.String? filename;
 
   /// # gdata.* are outside protos with mising documentation
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? hash;
 
   /// # gdata.* are outside protos with mising documentation
@@ -2272,8 +2349,8 @@ class SearchCaseClassificationsResponse {
 
 /// The response message for the SearchCases endpoint.
 class SearchCasesResponse {
-  /// The list of Case associated with the cloud resource, after any filters
-  /// have been applied.
+  /// The list of cases associated with the Google Cloud Resource, after any
+  /// filters have been applied.
   core.List<Case>? cases;
 
   /// A token to retrieve the next page of results.

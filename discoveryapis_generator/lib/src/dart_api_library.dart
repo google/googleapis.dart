@@ -2,8 +2,6 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-library discoveryapis_generator.dart_api_library;
-
 import 'base_api_library.dart';
 import 'dart_comments.dart';
 import 'dart_resources.dart';
@@ -18,14 +16,14 @@ const ignoreForFileSet = {
   'camel_case_types',
   // Can remove when https://github.com/dart-lang/linter/issues/2442 is fixed!
   'comment_references',
-  'file_names',
-  'library_names',
+  'deprecated_member_use_from_same_package',
   'lines_longer_than_80_chars',
   'non_constant_identifier_names',
-  'prefer_expression_function_bodies',
   'prefer_interpolation_to_compose_strings',
   'unnecessary_brace_in_string_interps',
   'unnecessary_lambdas',
+  // TODO: drop name once dart-lang/dartdoc#1658 is fixed
+  'unnecessary_library_directive',
   'unnecessary_string_interpolations',
 };
 
@@ -53,7 +51,19 @@ class DartApiImports {
 
   String get coreJsonMap =>
       '${core.ref()}Map<${core.ref()}String, ${core.ref()}dynamic>';
+
+  String get deprecatedMsg => "@${core.ref()}Deprecated('Not supported. "
+      "Member documentation may have more information.',)";
 }
+
+const exportedMediaClasses = {
+  'Media',
+  'UploadOptions',
+  'ResumableUploadOptions',
+  'DownloadOptions',
+  'PartialDownloadOptions',
+  'ByteRange',
+};
 
 /// Generates a API library based on a [RestDescription].
 class DartApiLibrary extends BaseApiLibrary {
@@ -86,20 +96,21 @@ class DartApiLibrary extends BaseApiLibrary {
   /// counts being calculated
   @override
   String libraryHeader() {
-    var exportedMediaClasses = '';
+    final exportedClasses = <String>{};
     if (exposeMedia) {
-      exportedMediaClasses = ', Media, UploadOptions,\n'
-          '    ResumableUploadOptions, DownloadOptions, '
-          'PartialDownloadOptions,\n'
-          '    ByteRange';
+      exportedClasses.addAll(exportedMediaClasses);
     }
+
+    final libraryComments =
+        _commentFromRestDescription(description, apiClass).asDartDoc(0).trim();
 
     final result = [
       '// This is a generated file (see the discoveryapis_generator project).',
       '',
       ignoreForFileComments(ignoreForFileSet),
       '',
-      _commentFromRestDescription(description, apiClass).asDartDoc(0).trim(),
+      if (libraryComments.isNotEmpty) libraryComments,
+      // TODO: drop name once dart-lang/dartdoc#1658 is fixed
       'library $libraryName;',
       if (imports.async.hasPrefix) "import 'dart:async' as ${imports.async};",
       if (!imports.async.hasPrefix) "import 'dart:async';",
@@ -112,25 +123,31 @@ class DartApiLibrary extends BaseApiLibrary {
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as ${imports.commons};""",
       "import 'package:http/http.dart' as ${imports.http};",
-      ..._sharedBits(exportedMediaClasses),
+      ..._sharedBits(exportedClasses),
     ];
 
     return result.join('\n');
   }
 
-  Iterable<String> _sharedBits(String exportedMediaClasses) sync* {
+  Iterable<String> _sharedBits(Set<String> exportedClasses) sync* {
     if (isPackage) {
       yield '';
 
       yield* [
-        if (generatedDuplicateLibraries())
-          """
-// ignore: deprecated_member_use_from_same_package
-import '../$sharedLibraryName';""",
+        if (generatedDuplicateLibraries()) "import '../$sharedLibraryName';",
         "import '../$userAgentDartFilePath';",
       ];
     }
-    yield "\nexport 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show ApiRequestError, DetailedApiRequestError$exportedMediaClasses;";
+
+    final exports = ({
+      'ApiRequestError',
+      'DetailedApiRequestError',
+      ...exportedClasses,
+    }.toList(growable: false)
+          ..sort())
+        .join(', ');
+
+    yield "\nexport 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show $exports;";
     if (!isPackage) {
       yield requestHeadersField(description.version);
     }

@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud Scheduler API - v1
@@ -23,7 +22,7 @@
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsJobsResource]
-library cloudscheduler.v1;
+library cloudscheduler_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -32,7 +31,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -576,17 +574,17 @@ class AppEngineHttpTarget {
   /// `X-CloudScheduler-JobName`: This header will contain the job name. *
   /// `X-CloudScheduler-ScheduleTime`: For Cloud Scheduler jobs specified in the
   /// unix-cron format, this header will contain the job schedule time in
-  /// RFC3339 UTC "Zulu" format. If the job has an body, Cloud Scheduler sets
-  /// the following headers: * `Content-Type`: By default, the `Content-Type`
-  /// header is set to `"application/octet-stream"`. The default can be
-  /// overridden by explictly setting `Content-Type` to a particular media type
-  /// when the job is created. For example, `Content-Type` can be set to
-  /// `"application/json"`. * `Content-Length`: This is computed by Cloud
-  /// Scheduler. This value is output only. It cannot be changed. The headers
-  /// below are output only. They cannot be set or overridden: * `X-Google-*`:
-  /// For Google internal use only. * `X-AppEngine-*`: For Google internal use
-  /// only. In addition, some App Engine headers, which contain job-specific
-  /// information, are also be sent to the job handler.
+  /// RFC3339 UTC "Zulu" format. If the job has a body and the following headers
+  /// are not set by the user, Cloud Scheduler sets default values: *
+  /// `Content-Type`: This will be set to `"application/octet-stream"`. You can
+  /// override this default by explicitly setting `Content-Type` to a particular
+  /// media type when creating the job. For example, you can set `Content-Type`
+  /// to `"application/json"`. The headers below are output only. They cannot be
+  /// set or overridden: * `Content-Length`: This is computed by Cloud
+  /// Scheduler. * `X-Google-*`: For Google internal use only. *
+  /// `X-AppEngine-*`: For Google internal use only. In addition, some App
+  /// Engine headers, which contain job-specific information, are also be sent
+  /// to the job handler.
   core.Map<core.String, core.String>? headers;
 
   /// The HTTP method to use for the request.
@@ -628,9 +626,9 @@ class AppEngineHttpTarget {
           body: json_.containsKey('body') ? json_['body'] as core.String : null,
           headers: json_.containsKey('headers')
               ? (json_['headers'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -769,24 +767,28 @@ class HttpTarget {
         convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// The user can specify HTTP request headers to send with the job's HTTP
-  /// request.
+  /// HTTP request headers.
   ///
-  /// This map contains the header field names and values. Repeated headers are
-  /// not supported, but a header value can contain commas. These headers
-  /// represent a subset of the headers that will accompany the job's HTTP
-  /// request. Some HTTP request headers will be ignored or replaced. A partial
-  /// list of headers that will be ignored or replaced is below: - Host: This
-  /// will be computed by Cloud Scheduler and derived from uri. *
-  /// `Content-Length`: This will be computed by Cloud Scheduler. *
-  /// `User-Agent`: This will be set to `"Google-Cloud-Scheduler"`. *
-  /// `X-Google-*`: Google internal use only. * `X-AppEngine-*`: Google internal
-  /// use only. * `X-CloudScheduler`: This header will be set to true. *
-  /// `X-CloudScheduler-JobName`: This header will contain the job name. *
-  /// `X-CloudScheduler-ScheduleTime`: For Cloud Scheduler jobs specified in the
-  /// unix-cron format, this header will contain the job schedule time in
-  /// RFC3339 UTC "Zulu" format. The total size of headers must be less than
-  /// 80KB.
+  /// This map contains the header field names and values. The user can specify
+  /// HTTP request headers to send with the job's HTTP request. Repeated headers
+  /// are not supported, but a header value can contain commas. The following
+  /// headers represent a subset of the headers that accompany the job's HTTP
+  /// request. Some HTTP request headers are ignored or replaced. A partial list
+  /// of headers that are ignored or replaced is below: * Host: This will be
+  /// computed by Cloud Scheduler and derived from uri. * `Content-Length`: This
+  /// will be computed by Cloud Scheduler. * `User-Agent`: This will be set to
+  /// `"Google-Cloud-Scheduler"`. * `X-Google-*`: Google internal use only. *
+  /// `X-AppEngine-*`: Google internal use only. * `X-CloudScheduler`: This
+  /// header will be set to true. * `X-CloudScheduler-JobName`: This header will
+  /// contain the job name. * `X-CloudScheduler-ScheduleTime`: For Cloud
+  /// Scheduler jobs specified in the unix-cron format, this header will contain
+  /// the job schedule time in RFC3339 UTC "Zulu" format. If the job has a body
+  /// and the following headers are not set by the user, Cloud Scheduler sets
+  /// default values: * `Content-Type`: This will be set to
+  /// `"application/octet-stream"`. You can override this default by explicitly
+  /// setting `Content-Type` to a particular media type when creating the job.
+  /// For example, you can set `Content-Type` to `"application/json"`. The total
+  /// size of headers must be less than 80KB.
   core.Map<core.String, core.String>? headers;
 
   /// Which HTTP method to use for the request.
@@ -845,9 +847,9 @@ class HttpTarget {
           body: json_.containsKey('body') ? json_['body'] as core.String : null,
           headers: json_.containsKey('headers')
               ? (json_['headers'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -1146,7 +1148,7 @@ class ListLocationsResponse {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
+/// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
 /// Contains information needed for generating an
@@ -1277,9 +1279,9 @@ class PubsubTarget {
           attributes: json_.containsKey('attributes')
               ? (json_['attributes'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -1316,12 +1318,12 @@ class RetryConfig {
   /// `max_doublings` times, then increases linearly, and finally retries at
   /// intervals of max_backoff_duration up to retry_count times. For example, if
   /// min_backoff_duration is 10s, max_backoff_duration is 300s, and
-  /// `max_doublings` is 3, then the a job will first be retried in 10s. The
-  /// retry interval will double three times, and then increase linearly by 2^3
-  /// * 10s. Finally, the job will retry at intervals of max_backoff_duration
-  /// until the job has been attempted retry_count times. Thus, the requests
-  /// will retry at 10s, 20s, 40s, 80s, 160s, 240s, 300s, 300s, .... The default
-  /// value of this field is 5.
+  /// `max_doublings` is 3, then the job will first be retried in 10s. The retry
+  /// interval will double three times, and then increase linearly by 2^3 * 10s.
+  /// Finally, the job will retry at intervals of max_backoff_duration until the
+  /// job has been attempted retry_count times. Thus, the requests will retry at
+  /// 10s, 20s, 40s, 80s, 160s, 240s, 300s, 300s, .... The default value of this
+  /// field is 5.
   core.int? maxDoublings;
 
   /// The time limit for retrying a failed job, measured from time when an

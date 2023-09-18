@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// API Discovery Service - v1
@@ -22,7 +21,7 @@
 /// Create an instance of [DiscoveryApi] to access these resources:
 ///
 /// - [ApisResource]
-library discovery.v1;
+library discovery_v1;
 
 import 'dart:async' as async;
 import 'dart:core' as core;
@@ -403,11 +402,19 @@ class JsonSchema {
   /// The default value of this property (if one exists).
   core.String? default_;
 
+  /// Whether the parameter is deprecated.
+  core.bool? deprecated;
+
   /// A description of this object.
   core.String? description;
 
   /// Values this parameter may take (if it is an enum).
   core.List<core.String>? enum_;
+
+  /// The deprecation status for the enums.
+  ///
+  /// Each position maps to the corresponding value in the "enum" array.
+  core.List<core.bool>? enumDeprecated;
 
   /// The descriptions for the enums.
   ///
@@ -475,8 +482,10 @@ class JsonSchema {
     this.additionalProperties,
     this.annotations,
     this.default_,
+    this.deprecated,
     this.description,
     this.enum_,
+    this.enumDeprecated,
     this.enumDescriptions,
     this.format,
     this.id,
@@ -508,12 +517,20 @@ class JsonSchema {
           default_: json_.containsKey('default')
               ? json_['default'] as core.String
               : null,
+          deprecated: json_.containsKey('deprecated')
+              ? json_['deprecated'] as core.bool
+              : null,
           description: json_.containsKey('description')
               ? json_['description'] as core.String
               : null,
           enum_: json_.containsKey('enum')
               ? (json_['enum'] as core.List)
                   .map((value) => value as core.String)
+                  .toList()
+              : null,
+          enumDeprecated: json_.containsKey('enumDeprecated')
+              ? (json_['enumDeprecated'] as core.List)
+                  .map((value) => value as core.bool)
                   .toList()
               : null,
           enumDescriptions: json_.containsKey('enumDescriptions')
@@ -544,10 +561,10 @@ class JsonSchema {
           properties: json_.containsKey('properties')
               ? (json_['properties'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     JsonSchema.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -573,8 +590,10 @@ class JsonSchema {
           'additionalProperties': additionalProperties!,
         if (annotations != null) 'annotations': annotations!,
         if (default_ != null) 'default': default_!,
+        if (deprecated != null) 'deprecated': deprecated!,
         if (description != null) 'description': description!,
         if (enum_ != null) 'enum': enum_!,
+        if (enumDeprecated != null) 'enumDeprecated': enumDeprecated!,
         if (enumDescriptions != null) 'enumDescriptions': enumDescriptions!,
         if (format != null) 'format': format!,
         if (id != null) 'id': id!,
@@ -626,10 +645,10 @@ class RestDescriptionAuthOauth2 {
       : this(
           scopes: json_.containsKey('scopes')
               ? (json_['scopes'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     RestDescriptionAuthOauth2ScopesValue.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -659,6 +678,51 @@ class RestDescriptionAuth {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (oauth2 != null) 'oauth2': oauth2!,
+      };
+}
+
+/// A single endpoint object
+class RestDescriptionEndpoints {
+  /// Whether this endpoint is deprecated
+  core.bool? deprecated;
+
+  /// A string describing the host designated by the URL
+  core.String? description;
+
+  /// The URL of the endpoint target host
+  core.String? endpointUrl;
+
+  /// The location of the endpoint
+  core.String? location;
+
+  RestDescriptionEndpoints({
+    this.deprecated,
+    this.description,
+    this.endpointUrl,
+    this.location,
+  });
+
+  RestDescriptionEndpoints.fromJson(core.Map json_)
+      : this(
+          deprecated: json_.containsKey('deprecated')
+              ? json_['deprecated'] as core.bool
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          endpointUrl: json_.containsKey('endpointUrl')
+              ? json_['endpointUrl'] as core.String
+              : null,
+          location: json_.containsKey('location')
+              ? json_['location'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deprecated != null) 'deprecated': deprecated!,
+        if (description != null) 'description': description!,
+        if (endpointUrl != null) 'endpointUrl': endpointUrl!,
+        if (location != null) 'location': location!,
       };
 }
 
@@ -718,6 +782,12 @@ class RestDescription {
 
   /// A link to human readable documentation for the API.
   core.String? documentationLink;
+
+  /// A list of location-based endpoint objects for this API.
+  ///
+  /// Each object contains the endpoint URL, location, description and
+  /// deprecation status.
+  core.List<RestDescriptionEndpoints>? endpoints;
 
   /// The ETag for this response.
   core.String? etag;
@@ -800,6 +870,7 @@ class RestDescription {
     this.description,
     this.discoveryVersion,
     this.documentationLink,
+    this.endpoints,
     this.etag,
     this.exponentialBackoffDefault,
     this.features,
@@ -851,6 +922,12 @@ class RestDescription {
           documentationLink: json_.containsKey('documentationLink')
               ? json_['documentationLink'] as core.String
               : null,
+          endpoints: json_.containsKey('endpoints')
+              ? (json_['endpoints'] as core.List)
+                  .map((value) => RestDescriptionEndpoints.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
           exponentialBackoffDefault:
               json_.containsKey('exponentialBackoffDefault')
@@ -874,10 +951,10 @@ class RestDescription {
               : null,
           methods: json_.containsKey('methods')
               ? (json_['methods'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     RestMethod.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -894,10 +971,10 @@ class RestDescription {
           parameters: json_.containsKey('parameters')
               ? (json_['parameters'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     JsonSchema.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -906,10 +983,10 @@ class RestDescription {
               : null,
           resources: json_.containsKey('resources')
               ? (json_['resources'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     RestResource.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -921,10 +998,10 @@ class RestDescription {
               : null,
           schemas: json_.containsKey('schemas')
               ? (json_['schemas'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     JsonSchema.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -950,6 +1027,7 @@ class RestDescription {
         if (description != null) 'description': description!,
         if (discoveryVersion != null) 'discoveryVersion': discoveryVersion!,
         if (documentationLink != null) 'documentationLink': documentationLink!,
+        if (endpoints != null) 'endpoints': endpoints!,
         if (etag != null) 'etag': etag!,
         if (exponentialBackoffDefault != null)
           'exponentialBackoffDefault': exponentialBackoffDefault!,
@@ -1154,6 +1232,9 @@ class RestMethodResponse {
 }
 
 class RestMethod {
+  /// Whether this method is deprecated.
+  core.bool? deprecated;
+
   /// Description of this method.
   core.String? description;
 
@@ -1220,6 +1301,7 @@ class RestMethod {
   core.bool? useMediaDownloadService;
 
   RestMethod({
+    this.deprecated,
     this.description,
     this.etagRequired,
     this.flatPath,
@@ -1240,6 +1322,9 @@ class RestMethod {
 
   RestMethod.fromJson(core.Map json_)
       : this(
+          deprecated: json_.containsKey('deprecated')
+              ? json_['deprecated'] as core.bool
+              : null,
           description: json_.containsKey('description')
               ? json_['description'] as core.String
               : null,
@@ -1265,10 +1350,10 @@ class RestMethod {
           parameters: json_.containsKey('parameters')
               ? (json_['parameters'] as core.Map<core.String, core.dynamic>)
                   .map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     JsonSchema.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
@@ -1301,6 +1386,7 @@ class RestMethod {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (deprecated != null) 'deprecated': deprecated!,
         if (description != null) 'description': description!,
         if (etagRequired != null) 'etagRequired': etagRequired!,
         if (flatPath != null) 'flatPath': flatPath!,
@@ -1325,6 +1411,9 @@ class RestMethod {
 }
 
 class RestResource {
+  /// Whether this resource is deprecated.
+  core.bool? deprecated;
+
   /// Methods on this resource.
   core.Map<core.String, RestMethod>? methods;
 
@@ -1332,33 +1421,38 @@ class RestResource {
   core.Map<core.String, RestResource>? resources;
 
   RestResource({
+    this.deprecated,
     this.methods,
     this.resources,
   });
 
   RestResource.fromJson(core.Map json_)
       : this(
+          deprecated: json_.containsKey('deprecated')
+              ? json_['deprecated'] as core.bool
+              : null,
           methods: json_.containsKey('methods')
               ? (json_['methods'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     RestMethod.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
           resources: json_.containsKey('resources')
               ? (json_['resources'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
                     RestResource.fromJson(
-                        item as core.Map<core.String, core.dynamic>),
+                        value as core.Map<core.String, core.dynamic>),
                   ),
                 )
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (deprecated != null) 'deprecated': deprecated!,
         if (methods != null) 'methods': methods!,
         if (resources != null) 'resources': resources!,
       };

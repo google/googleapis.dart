@@ -2,8 +2,6 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-library discoveryapis_generator.client_schemas;
-
 import '../dart_api_library.dart';
 import '../dart_comments.dart';
 import '../dart_schema_type.dart';
@@ -76,7 +74,7 @@ $toJsonString
   String jsonEncode(String value) => '${className}Factory.toJson($value)';
 
   @override
-  String jsonDecode(String json) =>
+  String jsonDecode(String json, {String? importName}) =>
       '${className}Factory.fromJson($json as $_coreMapJsonType)';
 
   String get _coreMapJsonTypeArguments =>
@@ -177,8 +175,13 @@ DartSchemaTypeDB parseSchemas(
                   classScope.newIdentifier('${jsonPName}AsBytes');
             }
             final property = DartClassProperty(
-                propertyName, comment, propertyType, jsonPName,
-                byteArrayAccessor: byteArrayAccessor);
+              propertyName,
+              comment,
+              propertyType,
+              jsonPName,
+              byteArrayAccessor: byteArrayAccessor,
+              deprecated: value.deprecated ?? false,
+            );
             properties.add(property);
           });
         }
@@ -193,7 +196,7 @@ DartSchemaTypeDB parseSchemas(
     } else if (schema.P_ref != null) {
       // This is a forward or backward reference, it will be resolved in
       // another pass following the parsing.
-      return db.register(DartSchemaForwardRef(imports, schema.P_ref));
+      return db.register(DartSchemaForwardRef(imports, schema.P_ref!));
     } else {
       return parsePrimitive(imports, db, schema);
     }

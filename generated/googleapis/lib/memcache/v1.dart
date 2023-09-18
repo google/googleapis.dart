@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud Memorystore for Memcached API - v1
@@ -26,7 +25,7 @@
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsInstancesResource]
 ///     - [ProjectsLocationsOperationsResource]
-library memcache.v1;
+library memcache_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -35,7 +34,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -685,13 +683,6 @@ class ProjectsLocationsOperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -915,7 +906,8 @@ class Instance {
   /// be automatically determined by our system based on the latest supported
   /// minor version.
   /// Possible string values are:
-  /// - "MEMCACHE_VERSION_UNSPECIFIED"
+  /// - "MEMCACHE_VERSION_UNSPECIFIED" : Memcache version is not specified by
+  /// customer
   /// - "MEMCACHE_1_5" : Memcached 1.5 version.
   core.String? memcacheVersion;
 
@@ -944,6 +936,13 @@ class Instance {
 
   /// User defined parameters to apply to the memcached process on each node.
   MemcacheParameters? parameters;
+
+  /// Contains the id of allocated IP address ranges associated with the private
+  /// service access connection for example, "test-default" associated with IP
+  /// range 10.0.0.0/29.
+  ///
+  /// Optional.
+  core.List<core.String>? reservedIpRangeId;
 
   /// The state of this Memcached instance.
   ///
@@ -987,6 +986,7 @@ class Instance {
     this.nodeConfig,
     this.nodeCount,
     this.parameters,
+    this.reservedIpRangeId,
     this.state,
     this.updateTime,
     this.zones,
@@ -1014,9 +1014,9 @@ class Instance {
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,
@@ -1053,6 +1053,11 @@ class Instance {
               ? MemcacheParameters.fromJson(
                   json_['parameters'] as core.Map<core.String, core.dynamic>)
               : null,
+          reservedIpRangeId: json_.containsKey('reservedIpRangeId')
+              ? (json_['reservedIpRangeId'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
           updateTime: json_.containsKey('updateTime')
@@ -1083,6 +1088,7 @@ class Instance {
         if (nodeConfig != null) 'nodeConfig': nodeConfig!,
         if (nodeCount != null) 'nodeCount': nodeCount!,
         if (parameters != null) 'parameters': parameters!,
+        if (reservedIpRangeId != null) 'reservedIpRangeId': reservedIpRangeId!,
         if (state != null) 'state': state!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (zones != null) 'zones': zones!,
@@ -1230,7 +1236,7 @@ class ListOperationsResponse {
       };
 }
 
-/// A resource that represents Google Cloud Platform location.
+/// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
 /// Upcoming maintenance schedule.
@@ -1302,9 +1308,9 @@ class MemcacheParameters {
           id: json_.containsKey('id') ? json_['id'] as core.String : null,
           params: json_.containsKey('params')
               ? (json_['params'] as core.Map<core.String, core.dynamic>).map(
-                  (key, item) => core.MapEntry(
+                  (key, value) => core.MapEntry(
                     key,
-                    item as core.String,
+                    value as core.String,
                   ),
                 )
               : null,

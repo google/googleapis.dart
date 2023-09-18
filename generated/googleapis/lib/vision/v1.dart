@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Cloud Vision API - v1
@@ -39,7 +38,7 @@
 ///     - [ProjectsLocationsProductsResource]
 ///       - [ProjectsLocationsProductsReferenceImagesResource]
 ///   - [ProjectsOperationsResource]
-library vision.v1;
+library vision_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -48,7 +47,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -449,13 +447,6 @@ class OperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -2775,32 +2766,32 @@ typedef CancelOperationRequest = $Empty;
 
 /// Represents a color in the RGBA color space.
 ///
-/// This representation is designed for simplicity of conversion to/from color
-/// representations in various languages over compactness. For example, the
-/// fields of this representation can be trivially provided to the constructor
-/// of `java.awt.Color` in Java; it can also be trivially provided to UIColor's
-/// `+colorWithRed:green:blue:alpha` method in iOS; and, with just a little
-/// work, it can be easily formatted into a CSS `rgba()` string in JavaScript.
-/// This reference page doesn't carry information about the absolute color space
-/// that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
-/// DCI-P3, BT.2020, etc.). By default, applications should assume the sRGB
-/// color space. When color equality needs to be decided, implementations,
-/// unless documented otherwise, treat two colors as equal if all their red,
-/// green, blue, and alpha values each differ by at most 1e-5. Example (Java):
-/// import com.google.type.Color; // ... public static java.awt.Color
-/// fromProto(Color protocolor) { float alpha = protocolor.hasAlpha() ?
-/// protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color(
-/// protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); }
-/// public static Color toProto(java.awt.Color color) { float red = (float)
-/// color.getRed(); float green = (float) color.getGreen(); float blue = (float)
-/// color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder =
-/// Color .newBuilder() .setRed(red / denominator) .setGreen(green /
-/// denominator) .setBlue(blue / denominator); int alpha = color.getAlpha(); if
-/// (alpha != 255) { result.setAlpha( FloatValue .newBuilder()
-/// .setValue(((float) alpha) / denominator) .build()); } return
-/// resultBuilder.build(); } // ... Example (iOS / Obj-C): // ... static
-/// UIColor* fromProto(Color* protocolor) { float red = \[protocolor red\];
-/// float green = \[protocolor green\]; float blue = \[protocolor blue\];
+/// This representation is designed for simplicity of conversion to and from
+/// color representations in various languages over compactness. For example,
+/// the fields of this representation can be trivially provided to the
+/// constructor of `java.awt.Color` in Java; it can also be trivially provided
+/// to UIColor's `+colorWithRed:green:blue:alpha` method in iOS; and, with just
+/// a little work, it can be easily formatted into a CSS `rgba()` string in
+/// JavaScript. This reference page doesn't have information about the absolute
+/// color space that should be used to interpret the RGB value—for example,
+/// sRGB, Adobe RGB, DCI-P3, and BT.2020. By default, applications should assume
+/// the sRGB color space. When color equality needs to be decided,
+/// implementations, unless documented otherwise, treat two colors as equal if
+/// all their red, green, blue, and alpha values each differ by at most `1e-5`.
+/// Example (Java): import com.google.type.Color; // ... public static
+/// java.awt.Color fromProto(Color protocolor) { float alpha =
+/// protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new
+/// java.awt.Color( protocolor.getRed(), protocolor.getGreen(),
+/// protocolor.getBlue(), alpha); } public static Color toProto(java.awt.Color
+/// color) { float red = (float) color.getRed(); float green = (float)
+/// color.getGreen(); float blue = (float) color.getBlue(); float denominator =
+/// 255.0; Color.Builder resultBuilder = Color .newBuilder() .setRed(red /
+/// denominator) .setGreen(green / denominator) .setBlue(blue / denominator);
+/// int alpha = color.getAlpha(); if (alpha != 255) { result.setAlpha(
+/// FloatValue .newBuilder() .setValue(((float) alpha) / denominator) .build());
+/// } return resultBuilder.build(); } // ... Example (iOS / Obj-C): // ...
+/// static UIColor* fromProto(Color* protocolor) { float red = \[protocolor
+/// red\]; float green = \[protocolor green\]; float blue = \[protocolor blue\];
 /// FloatValue* alpha_wrapper = \[protocolor alpha\]; float alpha = 1.0; if
 /// (alpha_wrapper != nil) { alpha = \[alpha_wrapper value\]; } return \[UIColor
 /// colorWithRed:red green:green blue:blue alpha:alpha\]; } static Color*
@@ -3078,6 +3069,9 @@ class EntityAnnotation {
   /// For example, for an image in which the "Eiffel Tower" entity is detected,
   /// this field represents the confidence that there is a tower in the query
   /// image. Range \[0, 1\].
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.double? confidence;
 
   /// Entity textual description, expressed in its `locale` language.
@@ -3412,7 +3406,8 @@ class Feature {
   /// Model to use for the feature.
   ///
   /// Supported values: "builtin/stable" (the default if unset) and
-  /// "builtin/latest".
+  /// "builtin/latest". `DOCUMENT_TEXT_DETECTION` and `TEXT_DETECTION` also
+  /// support "builtin/weekly" for the bleeding edge release updated weekly.
   core.String? model;
 
   /// The feature type.
@@ -5355,7 +5350,12 @@ class TextAnnotation {
 ///
 /// This is used to control TEXT_DETECTION and DOCUMENT_TEXT_DETECTION features.
 class TextDetectionParams {
-  /// A list of advanced OCR options to fine-tune OCR behavior.
+  /// A list of advanced OCR options to further fine-tune OCR behavior.
+  ///
+  /// Current valid values are: - `legacy_layout`: a heuristics layout detection
+  /// algorithm, which serves as an alternative to the current ML-based layout
+  /// detection algorithm. Customers can choose the best suitable layout
+  /// algorithm based on their situation.
   core.List<core.String>? advancedOcrOptions;
 
   /// By default, Cloud Vision API only includes confidence score for

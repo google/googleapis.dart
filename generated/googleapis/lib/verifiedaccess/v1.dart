@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Chrome Verified Access API - v1
@@ -23,7 +22,7 @@
 /// Create an instance of [VerifiedaccessApi] to access these resources:
 ///
 /// - [ChallengeResource]
-library verifiedaccess.v1;
+library verifiedaccess_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -32,7 +31,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -275,6 +273,9 @@ class VerifyChallengeResponseResult {
   /// returned if present, otherwise empty string is returned. This field is
   /// deprecated, please use device_permanent_id or
   /// signed_public_key_and_challenge fields.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? verificationOutput;
 
   VerifyChallengeResponseResult({

@@ -28,6 +28,12 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "packagePath": "admin",
+    "protocol": "rest",
+    "revision": "20230802",
+    "rootUrl": "https://admin.googleapis.com/",
+    "servicePath": "",
+    "title": "Admin SDK API",
+    "version": "datatransfer_v1",
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -105,7 +111,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "applications": {
             "methods": {
@@ -200,7 +205,7 @@
                     ]
                 },
                 "insert": {
-                    "description": "Inserts a data transfer request.",
+                    "description": "Inserts a data transfer request. See the [Transfer parameters](/admin-sdk/data-transfer/v1/parameters) reference for specific application requirements.",
                     "flatPath": "admin/datatransfer/v1/transfers",
                     "httpMethod": "POST",
                     "id": "datatransfer.transfers.insert",
@@ -270,11 +275,9 @@
             }
         }
     },
-    "revision": "20220905",
-    "rootUrl": "https://admin.googleapis.com/",
     "schemas": {
         "Application": {
-            "description": "Applications resources represent applications installed on the domain that support transferring ownership of user data.",
+            "description": "Application resources represent applications installed on the domain that support transferring ownership of user data.",
             "id": "Application",
             "properties": {
                 "etag": {
@@ -282,7 +285,7 @@
                     "type": "string"
                 },
                 "id": {
-                    "description": "The application's ID.",
+                    "description": "The application's ID. Retrievable by using the [`applications.list()`](/admin-sdk/data-transfer/reference/rest/v1/applications/list) method.",
                     "format": "int64",
                     "type": "string"
                 },
@@ -296,7 +299,7 @@
                     "type": "string"
                 },
                 "transferParams": {
-                    "description": "The list of all possible transfer parameters for this application. These parameters can be used to select the data of the user in this application to be transferred.",
+                    "description": "The list of all possible transfer parameters for this application. These parameters select which categories of the user's data to transfer.",
                     "items": {
                         "$ref": "ApplicationTransferParam"
                     },
@@ -315,14 +318,14 @@
                     "type": "string"
                 },
                 "applicationTransferParams": {
-                    "description": "The transfer parameters for the application. These parameters are used to select the data which will get transferred in context of this application.",
+                    "description": "The transfer parameters for the application. These parameters are used to select the data which will get transferred in context of this application. For more information about the specific values available for each application, see the [Transfer parameters](/admin-sdk/data-transfer/v1/parameters) reference.",
                     "items": {
                         "$ref": "ApplicationTransferParam"
                     },
                     "type": "array"
                 },
                 "applicationTransferStatus": {
-                    "description": "Current status of transfer for this application. (Read-only)",
+                    "description": "Read-only. Current status of transfer for this application.",
                     "type": "string"
                 }
             },
@@ -333,11 +336,11 @@
             "id": "ApplicationTransferParam",
             "properties": {
                 "key": {
-                    "description": "The type of the transfer parameter. eg: 'PRIVACY_LEVEL'",
+                    "description": "The type of the transfer parameter, such as `PRIVACY_LEVEL`.",
                     "type": "string"
                 },
                 "value": {
-                    "description": "The value of the corresponding transfer parameter. eg: 'PRIVATE' or 'SHARED'",
+                    "description": "The value of the transfer parameter, such as `PRIVATE` or `SHARED`.",
                     "items": {
                         "type": "string"
                     },
@@ -351,7 +354,7 @@
             "id": "ApplicationsListResponse",
             "properties": {
                 "applications": {
-                    "description": "List of applications that support data transfer and are also installed for the customer.",
+                    "description": "The list of applications that support data transfer and are also installed for the customer.",
                     "items": {
                         "$ref": "Application"
                     },
@@ -367,7 +370,7 @@
                     "type": "string"
                 },
                 "nextPageToken": {
-                    "description": "Continuation token which will be used to specify next page in list API.",
+                    "description": "Token to specify the next page in the list.",
                     "type": "string"
                 }
             },
@@ -378,7 +381,7 @@
             "id": "DataTransfer",
             "properties": {
                 "applicationDataTransfers": {
-                    "description": "List of per application data transfer resources. It contains data transfer details of the applications associated with this transfer resource. Note that this list is also used to specify the applications for which data transfer has to be done at the time of the transfer resource creation.",
+                    "description": "The list of per-application data transfer resources. It contains details of the applications associated with this transfer resource, and also specifies the applications for which data transfer has to be done at the time of the transfer resource creation.",
                     "items": {
                         "$ref": "ApplicationDataTransfer"
                     },
@@ -389,7 +392,7 @@
                     "type": "string"
                 },
                 "id": {
-                    "description": "The transfer's ID (Read-only).",
+                    "description": "Read-only. The transfer's ID.",
                     "type": "string"
                 },
                 "kind": {
@@ -406,11 +409,11 @@
                     "type": "string"
                 },
                 "overallTransferStatusCode": {
-                    "description": "Overall transfer status (Read-only).",
+                    "description": "Read-only. Overall transfer status.",
                     "type": "string"
                 },
                 "requestTime": {
-                    "description": "The time at which the data transfer was requested (Read-only).",
+                    "description": "Read-only. The time at which the data transfer was requested.",
                     "format": "date-time",
                     "type": "string"
                 }
@@ -438,14 +441,11 @@
                     "type": "string"
                 },
                 "nextPageToken": {
-                    "description": "Continuation token which will be used to specify next page in list API.",
+                    "description": "Token to specify the next page in the list.",
                     "type": "string"
                 }
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Admin SDK API",
-    "version": "datatransfer_v1"
+    }
 }

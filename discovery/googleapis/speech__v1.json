@@ -24,6 +24,13 @@
     "name": "speech",
     "ownerDomain": "google.com",
     "ownerName": "Google",
+    "protocol": "rest",
+    "revision": "20230724",
+    "rootUrl": "https://speech.googleapis.com/",
+    "servicePath": "",
+    "title": "Cloud Speech-to-Text API",
+    "version": "v1",
+    "version_module": true,
     "parameters": {
         "$.xgafv": {
             "description": "V1 error format.",
@@ -101,7 +108,6 @@
             "type": "string"
         }
     },
-    "protocol": "rest",
     "resources": {
         "operations": {
             "methods": {
@@ -131,7 +137,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
+                    "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.",
                     "flatPath": "v1/operations",
                     "httpMethod": "GET",
                     "id": "speech.operations.list",
@@ -337,7 +343,7 @@
                                     ],
                                     "parameters": {
                                         "parent": {
-                                            "description": "Required. The parent resource where this phrase set will be created. Format: `projects/{project}/locations/{location}/phraseSets` Speech-to-Text supports three locations: `global`, `us` (US North America), and `eu` (Europe). If you are calling the `speech.googleapis.com` endpoint, use the `global` location. To specify a region, use a [regional endpoint](https://cloud.google.com/speech-to-text/docs/endpoints) with matching `us` or `eu` location value.",
+                                            "description": "Required. The parent resource where this phrase set will be created. Format: `projects/{project}/locations/{location}` Speech-to-Text supports three locations: `global`, `us` (US North America), and `eu` (Europe). If you are calling the `speech.googleapis.com` endpoint, use the `global` location. To specify a region, use a [regional endpoint](https://cloud.google.com/speech-to-text/docs/endpoints) with matching `us` or `eu` location value.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+$",
                                             "required": true,
@@ -522,9 +528,20 @@
             }
         }
     },
-    "revision": "20220908",
-    "rootUrl": "https://speech.googleapis.com/",
     "schemas": {
+        "ABNFGrammar": {
+            "id": "ABNFGrammar",
+            "properties": {
+                "abnfStrings": {
+                    "description": "All declarations and rules of an ABNF grammar broken up into multiple strings that will end up concatenated.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "ClassItem": {
             "description": "An item of the class.",
             "id": "ClassItem",
@@ -580,6 +597,16 @@
                         "$ref": "ClassItem"
                     },
                     "type": "array"
+                },
+                "kmsKeyName": {
+                    "description": "Output only. The [KMS key name](https://cloud.google.com/kms/docs/resource-hierarchy#keys) with which the content of the ClassItem is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "kmsKeyVersionName": {
+                    "description": "Output only. The [KMS key version name](https://cloud.google.com/kms/docs/resource-hierarchy#key_versions) with which content of the ClassItem is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{crypto_key_version}`.",
+                    "readOnly": true,
+                    "type": "string"
                 },
                 "name": {
                     "description": "The resource name of the custom class.",
@@ -718,6 +745,10 @@
                     },
                     "type": "array"
                 },
+                "speechAdaptationInfo": {
+                    "$ref": "SpeechAdaptationInfo",
+                    "description": "Provides information on speech adaptation behavior in response"
+                },
                 "totalBilledTime": {
                     "description": "When available, billed audio seconds for the corresponding request.",
                     "format": "google-duration",
@@ -762,11 +793,11 @@
             "type": "object"
         },
         "Phrase": {
-            "description": "A phrases containing words and phrase \"hints\" so that the speech recognition is more likely to recognize them. This can be used to improve the accuracy for specific words and phrases, for example, if specific commands are typically spoken by the user. This can also be used to add additional words to the vocabulary of the recognizer. See [usage limits](https://cloud.google.com/speech-to-text/quotas#content). List items can also include pre-built or custom classes containing groups of words that represent common concepts that occur in natural language. For example, rather than providing a phrase hint for every month of the year (e.g. \"i was born in january\", \"i was born in febuary\", ...), use the pre-built `$MONTH` class improves the likelihood of correctly transcribing audio that includes months (e.g. \"i was born in $month\"). To refer to pre-built classes, use the class' symbol prepended with `$` e.g. `$MONTH`. To refer to custom classes that were defined inline in the request, set the class's `custom_class_id` to a string unique to all class resources and inline classes. Then use the class' id wrapped in $`{...}` e.g. \"${my-months}\". To refer to custom classes resources, use the class' id wrapped in `${}` (e.g. `${my-months}`). Speech-to-Text supports three locations: `global`, `us` (US North America), and `eu` (Europe). If you are calling the `speech.googleapis.com` endpoint, use the `global` location. To specify a region, use a [regional endpoint](/speech-to-text/docs/endpoints) with matching `us` or `eu` location value.",
+            "description": "A phrases containing words and phrase \"hints\" so that the speech recognition is more likely to recognize them. This can be used to improve the accuracy for specific words and phrases, for example, if specific commands are typically spoken by the user. This can also be used to add additional words to the vocabulary of the recognizer. See [usage limits](https://cloud.google.com/speech-to-text/quotas#content). List items can also include pre-built or custom classes containing groups of words that represent common concepts that occur in natural language. For example, rather than providing a phrase hint for every month of the year (e.g. \"i was born in january\", \"i was born in febuary\", ...), use the pre-built `$MONTH` class improves the likelihood of correctly transcribing audio that includes months (e.g. \"i was born in $month\"). To refer to pre-built classes, use the class' symbol prepended with `$` e.g. `$MONTH`. To refer to custom classes that were defined inline in the request, set the class's `custom_class_id` to a string unique to all class resources and inline classes. Then use the class' id wrapped in $`{...}` e.g. \"${my-months}\". To refer to custom classes resources, use the class' id wrapped in `${}` (e.g. `${my-months}`). Speech-to-Text supports three locations: `global`, `us` (US North America), and `eu` (Europe). If you are calling the `speech.googleapis.com` endpoint, use the `global` location. To specify a region, use a [regional endpoint](https://cloud.google.com/speech-to-text/docs/endpoints) with matching `us` or `eu` location value.",
             "id": "Phrase",
             "properties": {
                 "boost": {
-                    "description": "Hint Boost. Overrides the boost set at the phrase set level. Positive value will increase the probability that a specific phrase will be recognized over other similar sounding phrases. The higher the boost, the higher the chance of false positive recognition as well. Negative boost will simply be ignored. Though `boost` can accept a wide range of positive values, most use cases are best served with values between 0 and 20. We recommend using a binary search approach to finding the optimal value for your use case. Speech recognition will skip PhraseSets with a boost value of 0.",
+                    "description": "Hint Boost. Overrides the boost set at the phrase set level. Positive value will increase the probability that a specific phrase will be recognized over other similar sounding phrases. The higher the boost, the higher the chance of false positive recognition as well. Negative boost will simply be ignored. Though `boost` can accept a wide range of positive values, most use cases are best served with values between 0 and 20. We recommend using a binary search approach to finding the optimal value for your use case as well as adding phrases both with and without boost to your requests.",
                     "format": "float",
                     "type": "number"
                 },
@@ -782,9 +813,19 @@
             "id": "PhraseSet",
             "properties": {
                 "boost": {
-                    "description": "Hint Boost. Positive value will increase the probability that a specific phrase will be recognized over other similar sounding phrases. The higher the boost, the higher the chance of false positive recognition as well. Negative boost values would correspond to anti-biasing. Anti-biasing is not enabled, so negative boost will simply be ignored. Though `boost` can accept a wide range of positive values, most use cases are best served with values between 0 (exclusive) and 20. We recommend using a binary search approach to finding the optimal value for your use case. Speech recognition will skip PhraseSets with a boost value of 0.",
+                    "description": "Hint Boost. Positive value will increase the probability that a specific phrase will be recognized over other similar sounding phrases. The higher the boost, the higher the chance of false positive recognition as well. Negative boost values would correspond to anti-biasing. Anti-biasing is not enabled, so negative boost will simply be ignored. Though `boost` can accept a wide range of positive values, most use cases are best served with values between 0 (exclusive) and 20. We recommend using a binary search approach to finding the optimal value for your use case as well as adding phrases both with and without boost to your requests.",
                     "format": "float",
                     "type": "number"
+                },
+                "kmsKeyName": {
+                    "description": "Output only. The [KMS key name](https://cloud.google.com/kms/docs/resource-hierarchy#keys) with which the content of the PhraseSet is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "kmsKeyVersionName": {
+                    "description": "Output only. The [KMS key version name](https://cloud.google.com/kms/docs/resource-hierarchy#key_versions) with which content of the PhraseSet is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{crypto_key_version}`.",
+                    "readOnly": true,
+                    "type": "string"
                 },
                 "name": {
                     "description": "The resource name of the phrase set.",
@@ -832,7 +873,7 @@
                     "type": "array"
                 },
                 "audioChannelCount": {
-                    "description": "The number of channels in the input audio data. ONLY set this for MULTI-CHANNEL recognition. Valid values for LINEAR16 and FLAC are `1`-`8`. Valid values for OGG_OPUS are '1'-'254'. Valid value for MULAW, AMR, AMR_WB and SPEEX_WITH_HEADER_BYTE is only `1`. If `0` or omitted, defaults to one channel (mono). Note: We only recognize the first channel by default. To perform independent recognition on each channel set `enable_separate_recognition_per_channel` to 'true'.",
+                    "description": "The number of channels in the input audio data. ONLY set this for MULTI-CHANNEL recognition. Valid values for LINEAR16, OGG_OPUS and FLAC are `1`-`8`. Valid value for MULAW, AMR, AMR_WB and SPEEX_WITH_HEADER_BYTE is only `1`. If `0` or omitted, defaults to one channel (mono). Note: We only recognize the first channel by default. To perform independent recognition on each channel set `enable_separate_recognition_per_channel` to 'true'.",
                     "format": "int32",
                     "type": "integer"
                 },
@@ -931,6 +972,7 @@
             "type": "object"
         },
         "RecognitionMetadata": {
+            "deprecated": true,
             "description": "Description of audio data to be recognized.",
             "id": "RecognitionMetadata",
             "properties": {
@@ -1063,6 +1105,10 @@
                     },
                     "type": "array"
                 },
+                "speechAdaptationInfo": {
+                    "$ref": "SpeechAdaptationInfo",
+                    "description": "Provides information on adaptation behavior in response"
+                },
                 "totalBilledTime": {
                     "description": "When available, billed audio seconds for the corresponding request.",
                     "format": "google-duration",
@@ -1076,7 +1122,7 @@
             "id": "SpeakerDiarizationConfig",
             "properties": {
                 "enableSpeakerDiarization": {
-                    "description": "If 'true', enables speaker detection for each recognized word in the top alternative of the recognition result using a speaker_tag provided in the WordInfo.",
+                    "description": "If 'true', enables speaker detection for each recognized word in the top alternative of the recognition result using a speaker_label provided in the WordInfo.",
                     "type": "boolean"
                 },
                 "maxSpeakerCount": {
@@ -1090,6 +1136,7 @@
                     "type": "integer"
                 },
                 "speakerTag": {
+                    "deprecated": true,
                     "description": "Output only. Unused.",
                     "format": "int32",
                     "readOnly": true,
@@ -1102,6 +1149,10 @@
             "description": "Speech adaptation configuration.",
             "id": "SpeechAdaptation",
             "properties": {
+                "abnfGrammar": {
+                    "$ref": "ABNFGrammar",
+                    "description": "Augmented Backus-Naur form (ABNF) is a standardized grammar notation comprised by a set of derivation rules. See specifications: https://www.w3.org/TR/speech-grammar"
+                },
                 "customClasses": {
                     "description": "A collection of custom classes. To specify the classes inline, leave the class' `name` blank and fill in the rest of its fields, giving it a unique `custom_class_id`. Refer to the inline defined class in phrase hints by its `custom_class_id`.",
                     "items": {
@@ -1122,6 +1173,21 @@
                         "$ref": "PhraseSet"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "SpeechAdaptationInfo": {
+            "description": "Information on speech adaptation use in results",
+            "id": "SpeechAdaptationInfo",
+            "properties": {
+                "adaptationTimeout": {
+                    "description": "Whether there was a timeout when applying speech adaptation. If true, adaptation had no effect in the response transcript.",
+                    "type": "boolean"
+                },
+                "timeoutMessage": {
+                    "description": "If set, returns a message specifying which part of the speech adaptation request timed out.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -1249,8 +1315,14 @@
                     "format": "google-duration",
                     "type": "string"
                 },
+                "speakerLabel": {
+                    "description": "Output only. A label value assigned for every unique speaker within the audio. This field specifies which speaker was detected to have spoken this word. For some models, like medical_conversation this can be actual speaker role, for example \"patient\" or \"provider\", but generally this would be a number identifying a speaker. This field is only set if enable_speaker_diarization = 'true' and only for the top alternative.",
+                    "readOnly": true,
+                    "type": "string"
+                },
                 "speakerTag": {
-                    "description": "Output only. A distinct integer value is assigned for every speaker within the audio. This field specifies which one of those speakers was detected to have spoken this word. Value ranges from '1' to diarization_speaker_count. speaker_tag is set if enable_speaker_diarization = 'true' and only in the top alternative.",
+                    "deprecated": true,
+                    "description": "Output only. A distinct integer value is assigned for every speaker within the audio. This field specifies which one of those speakers was detected to have spoken this word. Value ranges from '1' to diarization_speaker_count. speaker_tag is set if enable_speaker_diarization = 'true' and only for the top alternative. Note: Use speaker_label instead.",
                     "format": "int32",
                     "readOnly": true,
                     "type": "integer"
@@ -1267,9 +1339,5 @@
             },
             "type": "object"
         }
-    },
-    "servicePath": "",
-    "title": "Cloud Speech-to-Text API",
-    "version": "v1",
-    "version_module": true
+    }
 }

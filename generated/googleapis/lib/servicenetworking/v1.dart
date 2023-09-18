@@ -2,14 +2,13 @@
 
 // ignore_for_file: camel_case_types
 // ignore_for_file: comment_references
-// ignore_for_file: file_names
-// ignore_for_file: library_names
+// ignore_for_file: deprecated_member_use_from_same_package
 // ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: non_constant_identifier_names
-// ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Service Networking API - v1
@@ -30,9 +29,10 @@
 ///   - [ServicesProjectsResource]
 ///     - [ServicesProjectsGlobalResource]
 ///       - [ServicesProjectsGlobalNetworksResource]
+///         - [ServicesProjectsGlobalNetworksDnsZonesResource]
 ///         - [ServicesProjectsGlobalNetworksPeeredDnsDomainsResource]
 ///   - [ServicesRolesResource]
-library servicenetworking.v1;
+library servicenetworking_v1;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -41,7 +41,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-// ignore: deprecated_member_use_from_same_package
 import '../shared.dart';
 import '../src/user_agent.dart';
 
@@ -206,13 +205,6 @@ class OperationsResource {
   /// Lists operations that match the specified filter in the request.
   ///
   /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  /// NOTE: the `name` binding allows API services to override the binding to
-  /// use different resource name schemes, such as `users / * /operations`. To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration. For
-  /// backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding is
-  /// the parent resource, without the operations collection id.
   ///
   /// Request parameters:
   ///
@@ -768,6 +760,115 @@ class ServicesDnsRecordSetsResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Producers can use this method to retrieve information about the DNS record
+  /// set added to the private zone inside the shared tenant host project
+  /// associated with a consumer network.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent resource identifying the connection which owns
+  /// this collection of DNS zones in the format services/{service}.
+  /// Value must have pattern `^services/\[^/\]+$`.
+  ///
+  /// [consumerNetwork] - Required. The consumer network containing the record
+  /// set. Must be in the form of projects/{project}/global/networks/{network}
+  ///
+  /// [domain] - Required. The domain name of the zone containing the recordset.
+  ///
+  /// [type] - Required. RecordSet Type eg. type='A'. See the list of
+  /// [Supported DNS Types](https://cloud.google.com/dns/records/json-record).
+  ///
+  /// [zone] - Required. The name of the zone containing the record set.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DnsRecordSet].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DnsRecordSet> get(
+    core.String parent, {
+    core.String? consumerNetwork,
+    core.String? domain,
+    core.String? type,
+    core.String? zone,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (consumerNetwork != null) 'consumerNetwork': [consumerNetwork],
+      if (domain != null) 'domain': [domain],
+      if (type != null) 'type': [type],
+      if (zone != null) 'zone': [zone],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/dnsRecordSets:get';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return DnsRecordSet.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Producers can use this method to retrieve a list of available DNS
+  /// RecordSets available inside the private zone on the tenant host project
+  /// accessible from their network.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The service that is managing peering connectivity for
+  /// a service producer's organization. For Google services that support this
+  /// functionality, this value is `services/servicenetworking.googleapis.com`.
+  /// Value must have pattern `^services/\[^/\]+$`.
+  ///
+  /// [consumerNetwork] - Required. The network that the consumer is using to
+  /// connect with services. Must be in the form of
+  /// projects/{project}/global/networks/{network} {project} is the project
+  /// number, as in '12345' {network} is the network name.
+  ///
+  /// [zone] - Required. The name of the private DNS zone in the shared producer
+  /// host project from which the record set will be removed.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListDnsRecordSetsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListDnsRecordSetsResponse> list(
+    core.String parent, {
+    core.String? consumerNetwork,
+    core.String? zone,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (consumerNetwork != null) 'consumerNetwork': [consumerNetwork],
+      if (zone != null) 'zone': [zone],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/dnsRecordSets:list';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListDnsRecordSetsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Service producers can use this method to remove DNS record sets from
   /// private DNS zones in the shared producer host project.
   ///
@@ -973,6 +1074,8 @@ class ServicesProjectsGlobalResource {
 class ServicesProjectsGlobalNetworksResource {
   final commons.ApiRequester _requester;
 
+  ServicesProjectsGlobalNetworksDnsZonesResource get dnsZones =>
+      ServicesProjectsGlobalNetworksDnsZonesResource(_requester);
   ServicesProjectsGlobalNetworksPeeredDnsDomainsResource get peeredDnsDomains =>
       ServicesProjectsGlobalNetworksPeeredDnsDomainsResource(_requester);
 
@@ -1083,6 +1186,105 @@ class ServicesProjectsGlobalNetworksResource {
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ServicesProjectsGlobalNetworksDnsZonesResource {
+  final commons.ApiRequester _requester;
+
+  ServicesProjectsGlobalNetworksDnsZonesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Service producers can use this method to retrieve a DNS zone in the shared
+  /// producer host project and the matching peering zones in consumer project
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The network that the consumer is using to connect with
+  /// services. Must be in the form of
+  /// services/{service}/projects/{project}/global/networks/{network}/zones/{zoneName}
+  /// Where {service} is the peering service that is managing connectivity for
+  /// the service producer's organization. For Google services that support this
+  /// {project} is the project number, as in '12345' {network} is the network
+  /// name. {zoneName} is the DNS zone name
+  /// Value must have pattern
+  /// `^services/\[^/\]+/projects/\[^/\]+/global/networks/\[^/\]+/dnsZones/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GetDnsZoneResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GetDnsZoneResponse> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GetDnsZoneResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// * Service producers can use this method to retrieve a list of available
+  /// DNS zones in the shared producer host project and the matching peering
+  /// zones in the consumer project.
+  ///
+  /// *
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent resource identifying the connection which owns
+  /// this collection of DNS zones in the format
+  /// services/{service}/projects/{project}/global/networks/{network} Service:
+  /// The service that is managing connectivity for the service producer's
+  /// organization. For Google services that support this functionality, this
+  /// value is `servicenetworking.googleapis.com`. Projects: the consumer
+  /// project containing the consumer network. Network: The consumer network
+  /// accessible from the tenant project.
+  /// Value must have pattern
+  /// `^services/\[^/\]+/projects/\[^/\]+/global/networks/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListDnsZonesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListDnsZonesResponse> list(
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/dnsZones:list';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListDnsZonesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1346,7 +1548,9 @@ class AddDnsZoneRequest {
   /// Required.
   core.String? consumerNetwork;
 
-  /// The DNS name suffix for the zones e.g. `example.com`.
+  /// The DNS name suffix for the zones e.g. `example.com.`.
+  ///
+  /// Cloud DNS requires that a DNS suffix ends with a trailing dot.
   ///
   /// Required.
   core.String? dnsSuffix;
@@ -1427,6 +1631,13 @@ class AddRolesRequest {
 
 /// Request to create a subnetwork in a previously peered service network.
 class AddSubnetworkRequest {
+  /// Defines the allowSubnetCidrRoutesOverlap field of the subnet, e.g.
+  /// Available in alpha and beta according to
+  /// [Compute API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/subnetworks/insert)
+  ///
+  /// Optional.
+  core.bool? allowSubnetCidrRoutesOverlap;
+
   /// The IAM permission check determines whether the consumer project has
   /// 'servicenetworking.services.use' permission or not.
   ///
@@ -1477,9 +1688,10 @@ class AddSubnetworkRequest {
 
   /// The prefix length of the subnet's IP address range.
   ///
-  /// Use CIDR range notation, such as `30` to provision a subnet with an
-  /// `x.x.x.x/30` CIDR range. The IP address range is drawn from a pool of
-  /// available ranges in the service consumer's allocated range.
+  /// Use CIDR range notation, such as `29` to provision a subnet with an
+  /// `x.x.x.x/29` CIDR range. The IP address range is drawn from a pool of
+  /// available ranges in the service consumer's allocated range. GCE disallows
+  /// subnets with prefix_length \> 29
   ///
   /// Required.
   core.int? ipPrefixLength;
@@ -1537,6 +1749,15 @@ class AddSubnetworkRequest {
   /// Optional.
   core.List<core.String>? requestedRanges;
 
+  /// Defines the role field of the subnet, e.g. 'ACTIVE'.
+  ///
+  /// For information about the roles that can be set using this field, see
+  /// [subnetwork](https://cloud.google.com/compute/docs/reference/rest/v1/subnetworks)
+  /// in the Compute API documentation.
+  ///
+  /// Optional.
+  core.String? role;
+
   /// A list of secondary IP ranges to be created within the new subnetwork.
   ///
   /// Optional.
@@ -1567,6 +1788,7 @@ class AddSubnetworkRequest {
   core.bool? useCustomComputeIdempotencyWindow;
 
   AddSubnetworkRequest({
+    this.allowSubnetCidrRoutesOverlap,
     this.checkServiceNetworkingUsePermission,
     this.computeIdempotencyWindow,
     this.consumer,
@@ -1579,6 +1801,7 @@ class AddSubnetworkRequest {
     this.region,
     this.requestedAddress,
     this.requestedRanges,
+    this.role,
     this.secondaryIpRangeSpecs,
     this.subnetwork,
     this.subnetworkUsers,
@@ -1587,6 +1810,10 @@ class AddSubnetworkRequest {
 
   AddSubnetworkRequest.fromJson(core.Map json_)
       : this(
+          allowSubnetCidrRoutesOverlap:
+              json_.containsKey('allowSubnetCidrRoutesOverlap')
+                  ? json_['allowSubnetCidrRoutesOverlap'] as core.bool
+                  : null,
           checkServiceNetworkingUsePermission:
               json_.containsKey('checkServiceNetworkingUsePermission')
                   ? json_['checkServiceNetworkingUsePermission'] as core.bool
@@ -1628,6 +1855,7 @@ class AddSubnetworkRequest {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          role: json_.containsKey('role') ? json_['role'] as core.String : null,
           secondaryIpRangeSpecs: json_.containsKey('secondaryIpRangeSpecs')
               ? (json_['secondaryIpRangeSpecs'] as core.List)
                   .map((value) => SecondaryIpRangeSpec.fromJson(
@@ -1649,6 +1877,8 @@ class AddSubnetworkRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (allowSubnetCidrRoutesOverlap != null)
+          'allowSubnetCidrRoutesOverlap': allowSubnetCidrRoutesOverlap!,
         if (checkServiceNetworkingUsePermission != null)
           'checkServiceNetworkingUsePermission':
               checkServiceNetworkingUsePermission!,
@@ -1666,6 +1896,7 @@ class AddSubnetworkRequest {
         if (region != null) 'region': region!,
         if (requestedAddress != null) 'requestedAddress': requestedAddress!,
         if (requestedRanges != null) 'requestedRanges': requestedRanges!,
+        if (role != null) 'role': role!,
         if (secondaryIpRangeSpecs != null)
           'secondaryIpRangeSpecs': secondaryIpRangeSpecs!,
         if (subnetwork != null) 'subnetwork': subnetwork!,
@@ -2025,6 +2256,8 @@ class DnsRecordSet {
 
   /// The DNS or domain name of the record set, e.g. `test.example.com`.
   ///
+  /// Cloud DNS requires that a DNS suffix ends with a trailing dot.
+  ///
   /// Required.
   core.String? domain;
 
@@ -2067,6 +2300,74 @@ class DnsRecordSet {
       };
 }
 
+/// Represents a DNS zone resource.
+class DnsZone {
+  /// The DNS name suffix of this zone e.g. `example.com.`.
+  ///
+  /// Cloud DNS requires that a DNS suffix ends with a trailing dot.
+  core.String? dnsSuffix;
+
+  /// User assigned name for this resource.
+  ///
+  /// Must be unique within the project. The name must be 1-63 characters long,
+  /// must begin with a letter, end with a letter or digit, and only contain
+  /// lowercase letters, digits or dashes.
+  core.String? name;
+
+  DnsZone({
+    this.dnsSuffix,
+    this.name,
+  });
+
+  DnsZone.fromJson(core.Map json_)
+      : this(
+          dnsSuffix: json_.containsKey('dnsSuffix')
+              ? json_['dnsSuffix'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dnsSuffix != null) 'dnsSuffix': dnsSuffix!,
+        if (name != null) 'name': name!,
+      };
+}
+
+/// * Represents a pair of private and peering DNS zone resources.
+///
+/// *
+class DnsZonePair {
+  /// The DNS peering zone in the consumer project.
+  DnsZone? consumerPeeringZone;
+
+  /// The private DNS zone in the shared producer host project.
+  DnsZone? producerPrivateZone;
+
+  DnsZonePair({
+    this.consumerPeeringZone,
+    this.producerPrivateZone,
+  });
+
+  DnsZonePair.fromJson(core.Map json_)
+      : this(
+          consumerPeeringZone: json_.containsKey('consumerPeeringZone')
+              ? DnsZone.fromJson(json_['consumerPeeringZone']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          producerPrivateZone: json_.containsKey('producerPrivateZone')
+              ? DnsZone.fromJson(json_['producerPrivateZone']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (consumerPeeringZone != null)
+          'consumerPeeringZone': consumerPeeringZone!,
+        if (producerPrivateZone != null)
+          'producerPrivateZone': producerPrivateZone!,
+      };
+}
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
 ///
@@ -2077,6 +2378,40 @@ typedef Empty = $Empty;
 
 /// Request to enable VPC service controls.
 typedef EnableVpcServiceControlsRequest = $VpcServiceControlsRequest;
+
+/// Represents managed DNS zones created in the shared Producer host and
+/// consumer projects.
+class GetDnsZoneResponse {
+  /// The DNS peering zone created in the consumer project.
+  DnsZone? consumerPeeringZone;
+
+  /// The private DNS zone created in the shared producer host project.
+  DnsZone? producerPrivateZone;
+
+  GetDnsZoneResponse({
+    this.consumerPeeringZone,
+    this.producerPrivateZone,
+  });
+
+  GetDnsZoneResponse.fromJson(core.Map json_)
+      : this(
+          consumerPeeringZone: json_.containsKey('consumerPeeringZone')
+              ? DnsZone.fromJson(json_['consumerPeeringZone']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          producerPrivateZone: json_.containsKey('producerPrivateZone')
+              ? DnsZone.fromJson(json_['producerPrivateZone']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (consumerPeeringZone != null)
+          'consumerPeeringZone': consumerPeeringZone!,
+        if (producerPrivateZone != null)
+          'producerPrivateZone': producerPrivateZone!,
+      };
+}
 
 /// Allocated IP address ranges for this private service access connection.
 class GoogleCloudServicenetworkingV1ConsumerConfigReservedRange {
@@ -2140,6 +2475,56 @@ class ListConnectionsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (connections != null) 'connections': connections!,
+      };
+}
+
+/// Represents all DNS RecordSets associated with the producer network
+class ListDnsRecordSetsResponse {
+  /// DNS record Set Resource
+  core.List<DnsRecordSet>? dnsRecordSets;
+
+  ListDnsRecordSetsResponse({
+    this.dnsRecordSets,
+  });
+
+  ListDnsRecordSetsResponse.fromJson(core.Map json_)
+      : this(
+          dnsRecordSets: json_.containsKey('dnsRecordSets')
+              ? (json_['dnsRecordSets'] as core.List)
+                  .map((value) => DnsRecordSet.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dnsRecordSets != null) 'dnsRecordSets': dnsRecordSets!,
+      };
+}
+
+/// Represents all DNS zones in the shared producer host project and the
+/// matching peering zones in the consumer project.
+class ListDnsZonesResponse {
+  /// All pairs of private DNS zones in the shared producer host project and the
+  /// matching peering zones in the consumer project..
+  core.List<DnsZonePair>? dnsZonePairs;
+
+  ListDnsZonesResponse({
+    this.dnsZonePairs,
+  });
+
+  ListDnsZonesResponse.fromJson(core.Map json_)
+      : this(
+          dnsZonePairs: json_.containsKey('dnsZonePairs')
+              ? (json_['dnsZonePairs'] as core.List)
+                  .map((value) => DnsZonePair.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dnsZonePairs != null) 'dnsZonePairs': dnsZonePairs!,
       };
 }
 
@@ -2229,7 +2614,7 @@ class Operation {
   /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal response of the operation in case of success.
+  /// The normal, successful response of the operation.
   ///
   /// If the original method returns no data on success, such as `Delete`, the
   /// response is `google.protobuf.Empty`. If the original method is standard
@@ -2325,7 +2710,10 @@ class PolicyBinding {
   /// Only allowlisted roles can be used at the specified granularity. The role
   /// must be one of the following: - 'roles/container.hostServiceAgentUser'
   /// applied on the shared VPC host project - 'roles/compute.securityAdmin'
-  /// applied on the shared VPC host project
+  /// applied on the shared VPC host project - 'roles/compute.networkAdmin'
+  /// applied on the shared VPC host project - 'roles/compute.xpnAdmin' applied
+  /// on the shared VPC host project - 'roles/dns.admin' applied on the shared
+  /// VPC host project
   ///
   /// Required.
   core.String? role;
@@ -2353,9 +2741,10 @@ class PolicyBinding {
 class RangeReservation {
   /// The size of the desired subnet.
   ///
-  /// Use usual CIDR range notation. For example, '30' to find unused x.x.x.x/30
+  /// Use usual CIDR range notation. For example, '29' to find unused x.x.x.x/29
   /// CIDR range. The goal is to determine if one of the allocated ranges has
-  /// enough free space for a subnet of the requested size.
+  /// enough free space for a subnet of the requested size. GCE disallows
+  /// subnets with prefix_length \> 29
   ///
   /// Required.
   core.int? ipPrefixLength;
@@ -2372,9 +2761,10 @@ class RangeReservation {
 
   /// The size of the desired secondary ranges for the subnet.
   ///
-  /// Use usual CIDR range notation. For example, '30' to find unused x.x.x.x/30
+  /// Use usual CIDR range notation. For example, '29' to find unused x.x.x.x/29
   /// CIDR range. The goal is to determine that the allocated ranges have enough
-  /// free space for all the requested secondary ranges.
+  /// free space for all the requested secondary ranges. GCE disallows subnets
+  /// with prefix_length \> 29
   ///
   /// Optional.
   core.List<core.int>? secondaryRangeIpPrefixLengths;
