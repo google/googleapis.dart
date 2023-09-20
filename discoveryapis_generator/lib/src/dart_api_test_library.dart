@@ -784,7 +784,7 @@ $declaration buildUnnamed$_id() =>
   }
 }
 
-class UnnamedArrayTest<T> extends UnnamedSchemaTest<UnnamedArrayType> {
+class UnnamedArrayTest extends UnnamedSchemaTest<UnnamedArrayType> {
   UnnamedArrayTest(super.apiTestLibrary, super.schema);
 
   @override

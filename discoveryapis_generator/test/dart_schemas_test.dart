@@ -39,7 +39,8 @@ void main() {
         expect(db.dartClassTypes, hasLength(0));
       });
 
-      withParsedDB({'empty-schemas': {}}, (DartSchemaTypeDB db) {
+      withParsedDB({'empty-schemas': <dynamic, dynamic>{}},
+          (DartSchemaTypeDB db) {
         expect(db.dartTypes, hasLength(0));
         expect(db.namedSchemaTypes, hasLength(0));
         expect(db.dartClassTypes, hasLength(0));

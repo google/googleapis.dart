@@ -40,7 +40,7 @@ class AuthenticatedClient extends DelegatingClient implements AuthClient {
     final response = await baseClient.send(modifiedRequest);
     final wwwAuthenticate = response.headers['www-authenticate'];
     if (wwwAuthenticate != null) {
-      await response.stream.drain();
+      await response.stream.drain<void>();
       throw AccessDeniedException(
         'Access was denied '
         '(www-authenticate header was: $wwwAuthenticate).',
