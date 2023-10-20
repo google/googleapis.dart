@@ -92,7 +92,18 @@ Future<AutoRefreshingAuthClient> clientViaApplicationDefaultCredentials({
     );
   }
 
-  return await clientViaMetadataServer(baseClient: baseClient);
+  try {
+    return await clientViaMetadataServer(baseClient: baseClient);
+  } on Exception catch (err, stack) {
+    Error.throwWithStackTrace(
+      Exception(
+        'Failed to load Application Default Credentials. '
+        'Make sure you are logged in with `firebase` or `gcloud` CLI, '
+        'or your code is running on Google Compute Engine/Google App Engine.',
+      ),
+      stack,
+    );
+  }
 }
 
 /// Obtains oauth2 credentials and returns an authenticated HTTP client.
