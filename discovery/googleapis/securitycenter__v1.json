@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20231026",
+    "revision": "20231102",
     "rootUrl": "https://securitycenter.googleapis.com/",
     "servicePath": "",
     "title": "Security Command Center API",
@@ -5617,6 +5617,30 @@
             },
             "type": "object"
         },
+        "CloudLoggingEntry": {
+            "description": "Metadata taken from a [Cloud Logging LogEntry](https://cloud.google.com/logging/docs/reference/v2/rest/v2/LogEntry)",
+            "id": "CloudLoggingEntry",
+            "properties": {
+                "insertId": {
+                    "description": "A unique identifier for the log entry.",
+                    "type": "string"
+                },
+                "logId": {
+                    "description": "The type of the log (part of `log_name`. `log_name` is the resource name of the log to which this log entry belongs). For example: `cloudresourcemanager.googleapis.com/activity`. Note that this field is not URL-encoded, unlike the `LOG_ID` field in `LogEntry`.",
+                    "type": "string"
+                },
+                "resourceContainer": {
+                    "description": "The organization, folder, or project of the monitored resource that produced this log entry.",
+                    "type": "string"
+                },
+                "timestamp": {
+                    "description": "The time the event described by the log entry occurred.",
+                    "format": "google-datetime",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "Compliance": {
             "description": "Contains compliance information about a security standard indicating unmet recommendations.",
             "id": "Compliance",
@@ -6323,6 +6347,13 @@
                     "description": "The load balancers associated with the finding.",
                     "items": {
                         "$ref": "LoadBalancer"
+                    },
+                    "type": "array"
+                },
+                "logEntries": {
+                    "description": "Log entries that are relevant to the finding.",
+                    "items": {
+                        "$ref": "LogEntry"
                     },
                     "type": "array"
                 },
@@ -7894,6 +7925,17 @@
             },
             "type": "object"
         },
+        "LogEntry": {
+            "description": "An individual entry in a log.",
+            "id": "LogEntry",
+            "properties": {
+                "cloudLoggingEntry": {
+                    "$ref": "CloudLoggingEntry",
+                    "description": "An individual entry in a log stored in Cloud Logging."
+                }
+            },
+            "type": "object"
+        },
         "MemoryHashSignature": {
             "description": "A signature corresponding to memory page hashes.",
             "id": "MemoryHashSignature",
@@ -8233,6 +8275,13 @@
             "description": "Kubernetes object related to the finding, uniquely identified by GKNN. Used if the object Kind is not one of Pod, Node, NodePool, Binding, or AccessReview.",
             "id": "Object",
             "properties": {
+                "containers": {
+                    "description": "Pod containers associated with this finding, if any.",
+                    "items": {
+                        "$ref": "Container"
+                    },
+                    "type": "array"
+                },
                 "group": {
                     "description": "Kubernetes object group, such as \"policy.k8s.io/v1\".",
                     "type": "string"

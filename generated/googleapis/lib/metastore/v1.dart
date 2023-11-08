@@ -3732,6 +3732,12 @@ class Restore {
   /// Output only.
   core.String? backup;
 
+  /// A Cloud Storage URI specifying where the backup artifacts are stored, in
+  /// the format gs:///.
+  ///
+  /// Optional.
+  core.String? backupLocation;
+
   /// The restore details containing the revision of the service to be restored
   /// to, in format of JSON.
   ///
@@ -3770,6 +3776,7 @@ class Restore {
 
   Restore({
     this.backup,
+    this.backupLocation,
     this.details,
     this.endTime,
     this.startTime,
@@ -3781,6 +3788,9 @@ class Restore {
       : this(
           backup: json_.containsKey('backup')
               ? json_['backup'] as core.String
+              : null,
+          backupLocation: json_.containsKey('backupLocation')
+              ? json_['backupLocation'] as core.String
               : null,
           details: json_.containsKey('details')
               ? json_['details'] as core.String
@@ -3798,6 +3808,7 @@ class Restore {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (backup != null) 'backup': backup!,
+        if (backupLocation != null) 'backupLocation': backupLocation!,
         if (details != null) 'details': details!,
         if (endTime != null) 'endTime': endTime!,
         if (startTime != null) 'startTime': startTime!,

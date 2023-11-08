@@ -478,6 +478,7 @@ api.Instance buildInstance() {
     o.redisVersion = 'foo';
     o.replicaCount = 42;
     o.reservedIpRange = 'foo';
+    o.satisfiesPzs = true;
     o.secondaryIpRange = 'foo';
     o.serverCaCerts = buildUnnamed8();
     o.state = 'foo';
@@ -581,6 +582,7 @@ void checkInstance(api.Instance o) {
       o.reservedIpRange!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.satisfiesPzs!, unittest.isTrue);
     unittest.expect(
       o.secondaryIpRange!,
       unittest.equals('foo'),

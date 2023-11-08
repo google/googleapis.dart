@@ -4815,12 +4815,12 @@ class GoogleCloudRunV2Service {
       };
 }
 
-/// Scaling settings that apply to the service as a whole rather than the
-/// individual revision.
+/// Scaling settings applied at the service level rather than at the revision
+/// level.
 class GoogleCloudRunV2ServiceScaling {
   /// total min instances for the service.
   ///
-  /// This number of instances will be divide among all revisions with specified
+  /// This number of instances is divided among all revisions with specified
   /// traffic based on the percent of traffic they are receiving. (ALPHA)
   core.int? minInstanceCount;
 

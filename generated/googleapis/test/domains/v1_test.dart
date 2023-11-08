@@ -890,6 +890,7 @@ api.ManagementSettings buildManagementSettings() {
   final o = api.ManagementSettings();
   buildCounterManagementSettings++;
   if (buildCounterManagementSettings < 3) {
+    o.preferredRenewalMethod = 'foo';
     o.renewalMethod = 'foo';
     o.transferLockState = 'foo';
   }
@@ -900,6 +901,10 @@ api.ManagementSettings buildManagementSettings() {
 void checkManagementSettings(api.ManagementSettings o) {
   buildCounterManagementSettings++;
   if (buildCounterManagementSettings < 3) {
+    unittest.expect(
+      o.preferredRenewalMethod!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.renewalMethod!,
       unittest.equals('foo'),

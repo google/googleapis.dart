@@ -2292,6 +2292,7 @@ class Backup {
   /// - "DATABASE_VERSION_UNSPECIFIED" : This is an unknown database version.
   /// - "POSTGRES_13" : DEPRECATED - The database version is Postgres 13.
   /// - "POSTGRES_14" : The database version is Postgres 14.
+  /// - "POSTGRES_15" : The database version is Postgres 15.
   core.String? databaseVersion;
 
   /// Delete time stamp
@@ -2667,6 +2668,7 @@ class Cluster {
   /// - "DATABASE_VERSION_UNSPECIFIED" : This is an unknown database version.
   /// - "POSTGRES_13" : DEPRECATED - The database version is Postgres 13.
   /// - "POSTGRES_14" : The database version is Postgres 14.
+  /// - "POSTGRES_15" : The database version is Postgres 15.
   core.String? databaseVersion;
 
   /// Delete time stamp
@@ -3289,10 +3291,18 @@ class GenerateClientCertificateRequest {
   /// Optional.
   core.String? requestId;
 
+  /// An optional hint to the endpoint to generate a client ceritificate that
+  /// can be used by AlloyDB connectors to exchange additional metadata with the
+  /// server after TLS handshake.
+  ///
+  /// Optional.
+  core.bool? useMetadataExchange;
+
   GenerateClientCertificateRequest({
     this.certDuration,
     this.publicKey,
     this.requestId,
+    this.useMetadataExchange,
   });
 
   GenerateClientCertificateRequest.fromJson(core.Map json_)
@@ -3306,12 +3316,17 @@ class GenerateClientCertificateRequest {
           requestId: json_.containsKey('requestId')
               ? json_['requestId'] as core.String
               : null,
+          useMetadataExchange: json_.containsKey('useMetadataExchange')
+              ? json_['useMetadataExchange'] as core.bool
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (certDuration != null) 'certDuration': certDuration!,
         if (publicKey != null) 'publicKey': publicKey!,
         if (requestId != null) 'requestId': requestId!,
+        if (useMetadataExchange != null)
+          'useMetadataExchange': useMetadataExchange!,
       };
 }
 

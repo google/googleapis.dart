@@ -7524,6 +7524,7 @@ class RepositoryEventConfig {
   /// - "GITHUB" : The SCM repo is GITHUB.
   /// - "GITHUB_ENTERPRISE" : The SCM repo is GITHUB Enterprise.
   /// - "GITLAB_ENTERPRISE" : The SCM repo is GITLAB Enterprise.
+  /// - "BITBUCKET_DATA_CENTER" : The SCM repo is BITBUCKET Data Center.
   core.String? repositoryType;
 
   RepositoryEventConfig({

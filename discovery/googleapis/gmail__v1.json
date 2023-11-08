@@ -64,7 +64,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20231023",
+    "revision": "20231120",
     "rootUrl": "https://gmail.googleapis.com/",
     "servicePath": "",
     "title": "Gmail API",
@@ -3848,6 +3848,10 @@
                         "$ref": "Label"
                     },
                     "type": "array"
+                },
+                "productId": {
+                    "format": "int32",
+                    "type": "integer"
                 }
             },
             "type": "object"

@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20231018",
+    "revision": "20231101",
     "rootUrl": "https://workstations.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Workstations API",
@@ -2025,6 +2025,13 @@
                 "displayName": {
                     "description": "Optional. Human-readable name for this workstation.",
                     "type": "string"
+                },
+                "env": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Optional. Environment variables passed to the workstation container's entrypoint.",
+                    "type": "object"
                 },
                 "etag": {
                     "description": "Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.",

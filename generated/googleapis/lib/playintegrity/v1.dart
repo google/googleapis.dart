@@ -188,6 +188,72 @@ class AccountDetails {
       };
 }
 
+/// Contains signals about others apps on the device which could be used to
+/// access or control the requesting app.
+class AppAccessRiskVerdict {
+  /// App access risk verdict related to apps that are not installed by Google
+  /// Play, and are not preloaded on the system image by the device
+  /// manufacturer.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "UNKNOWN" : Risk type is unknown.
+  /// - "UNEVALUATED" : App access risk was not evaluated because a requirement
+  /// was missed, such as the device not being trusted enough.
+  /// - "NOT_INSTALLED" : No apps under this field are installed on the device.
+  /// This is only valid for the other apps field.
+  /// - "INSTALLED" : One or more apps under this field are installed on the
+  /// device.
+  /// - "CAPTURING" : Apps under this field are running that could be used to
+  /// read or capture inputs and outputs of the requesting app, such as screen
+  /// recording apps.
+  /// - "CONTROLLING" : Apps under this field are running that could be used to
+  /// control the device and inputs and outputs of the requesting app, such as
+  /// remote controlling apps.
+  core.String? otherApps;
+
+  /// App access risk verdict related to apps that are not installed by the
+  /// Google Play Store, and are not preloaded on the system image by the device
+  /// manufacturer.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "UNKNOWN" : Risk type is unknown.
+  /// - "UNEVALUATED" : App access risk was not evaluated because a requirement
+  /// was missed, such as the device not being trusted enough.
+  /// - "NOT_INSTALLED" : No apps under this field are installed on the device.
+  /// This is only valid for the other apps field.
+  /// - "INSTALLED" : One or more apps under this field are installed on the
+  /// device.
+  /// - "CAPTURING" : Apps under this field are running that could be used to
+  /// read or capture inputs and outputs of the requesting app, such as screen
+  /// recording apps.
+  /// - "CONTROLLING" : Apps under this field are running that could be used to
+  /// control the device and inputs and outputs of the requesting app, such as
+  /// remote controlling apps.
+  core.String? playOrSystemApps;
+
+  AppAccessRiskVerdict({
+    this.otherApps,
+    this.playOrSystemApps,
+  });
+
+  AppAccessRiskVerdict.fromJson(core.Map json_)
+      : this(
+          otherApps: json_.containsKey('otherApps')
+              ? json_['otherApps'] as core.String
+              : null,
+          playOrSystemApps: json_.containsKey('playOrSystemApps')
+              ? json_['playOrSystemApps'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (otherApps != null) 'otherApps': otherApps!,
+        if (playOrSystemApps != null) 'playOrSystemApps': playOrSystemApps!,
+      };
+}
+
 /// Contains the application integrity information.
 class AppIntegrity {
   /// Details about the app recognition verdict
@@ -325,31 +391,47 @@ class DeviceIntegrity {
       };
 }
 
-/// Contains guidance details about the Integrity API response, providing
-/// additional context to the integrity verdicts.
-class GuidanceDetails {
-  /// This shows when there is an issue with at least one of the integrity
-  /// verdicts, which can be remedied by the user and provides additional
-  /// details.
-  core.List<UserRemediationDetails>? userRemediationDetails;
+/// Contains information about the environment Play Integrity API runs in, e.g.
+/// Play Protect verdict.
+class EnvironmentDetails {
+  /// The evaluation of the App Access Risk verdicts.
+  AppAccessRiskVerdict? appAccessRiskVerdict;
 
-  GuidanceDetails({
-    this.userRemediationDetails,
+  /// The evaluation of Play Protect verdict.
+  /// Possible string values are:
+  /// - "PLAY_PROTECT_VERDICT_UNSPECIFIED" : Play Protect verdict has not been
+  /// set.
+  /// - "UNEVALUATED" : Play Protect state was not evaluated. Device may not be
+  /// trusted.
+  /// - "NO_ISSUES" : Play Protect is on and no issues found.
+  /// - "NO_DATA" : Play Protect is on but no scan has been performed yet. The
+  /// device or Play Store app may have been reset.
+  /// - "MEDIUM_RISK" : Play Protect is on and warnings found.
+  /// - "HIGH_RISK" : Play Protect is on and high severity issues found.
+  /// - "POSSIBLE_RISK" : Play Protect is turned off. Turn on Play Protect.
+  core.String? playProtectVerdict;
+
+  EnvironmentDetails({
+    this.appAccessRiskVerdict,
+    this.playProtectVerdict,
   });
 
-  GuidanceDetails.fromJson(core.Map json_)
+  EnvironmentDetails.fromJson(core.Map json_)
       : this(
-          userRemediationDetails: json_.containsKey('userRemediationDetails')
-              ? (json_['userRemediationDetails'] as core.List)
-                  .map((value) => UserRemediationDetails.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
+          appAccessRiskVerdict: json_.containsKey('appAccessRiskVerdict')
+              ? AppAccessRiskVerdict.fromJson(json_['appAccessRiskVerdict']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          playProtectVerdict: json_.containsKey('playProtectVerdict')
+              ? json_['playProtectVerdict'] as core.String
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (userRemediationDetails != null)
-          'userRemediationDetails': userRemediationDetails!,
+        if (appAccessRiskVerdict != null)
+          'appAccessRiskVerdict': appAccessRiskVerdict!,
+        if (playProtectVerdict != null)
+          'playProtectVerdict': playProtectVerdict!,
       };
 }
 
@@ -447,8 +529,8 @@ class TokenPayloadExternal {
   /// Required.
   DeviceIntegrity? deviceIntegrity;
 
-  /// Additional guidance related to the integrity API response.
-  GuidanceDetails? guidanceDetails;
+  /// Details of the environment Play Integrity API runs in.
+  EnvironmentDetails? environmentDetails;
 
   /// Details about the integrity request.
   ///
@@ -463,7 +545,7 @@ class TokenPayloadExternal {
     this.accountDetails,
     this.appIntegrity,
     this.deviceIntegrity,
-    this.guidanceDetails,
+    this.environmentDetails,
     this.requestDetails,
     this.testingDetails,
   });
@@ -482,8 +564,8 @@ class TokenPayloadExternal {
               ? DeviceIntegrity.fromJson(json_['deviceIntegrity']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          guidanceDetails: json_.containsKey('guidanceDetails')
-              ? GuidanceDetails.fromJson(json_['guidanceDetails']
+          environmentDetails: json_.containsKey('environmentDetails')
+              ? EnvironmentDetails.fromJson(json_['environmentDetails']
                   as core.Map<core.String, core.dynamic>)
               : null,
           requestDetails: json_.containsKey('requestDetails')
@@ -500,41 +582,9 @@ class TokenPayloadExternal {
         if (accountDetails != null) 'accountDetails': accountDetails!,
         if (appIntegrity != null) 'appIntegrity': appIntegrity!,
         if (deviceIntegrity != null) 'deviceIntegrity': deviceIntegrity!,
-        if (guidanceDetails != null) 'guidanceDetails': guidanceDetails!,
+        if (environmentDetails != null)
+          'environmentDetails': environmentDetails!,
         if (requestDetails != null) 'requestDetails': requestDetails!,
         if (testingDetails != null) 'testingDetails': testingDetails!,
-      };
-}
-
-/// Contains details of remediation guidance that the user can perform.
-class UserRemediationDetails {
-  /// Description of the user remediation action.
-  /// Possible string values are:
-  /// - "UNKNOWN_USER_REMEDIATION" : User remediation is unknown.
-  /// - "RESTORE_FACTORY_ROM" : The user has installed a custom ROM, and should
-  /// restore the device to a clean factory ROM.
-  /// - "LOCK_BOOTLOADER" : The device bootloader has been unlocked, the user
-  /// should lock the bootloader.
-  /// - "GET_UNMODIFIED_APP" : The app is unrecognized. The user should get an
-  /// unmodified version of the app.
-  /// - "SIGN_INTO_GOOGLE_ACCOUNT" : The user has not signed into their Google
-  /// account.
-  /// - "INSTALL_APP_FROM_PLAY" : The user has no license. They should install
-  /// or purchase the app on the Google Play Store to add it to their library.
-  core.String? remediation;
-
-  UserRemediationDetails({
-    this.remediation,
-  });
-
-  UserRemediationDetails.fromJson(core.Map json_)
-      : this(
-          remediation: json_.containsKey('remediation')
-              ? json_['remediation'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (remediation != null) 'remediation': remediation!,
       };
 }

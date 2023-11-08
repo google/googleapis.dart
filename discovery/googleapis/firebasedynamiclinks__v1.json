@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20231030",
+    "revision": "20231128",
     "rootUrl": "https://firebasedynamiclinks.googleapis.com/",
     "servicePath": "",
     "title": "Firebase Dynamic Links API",
@@ -671,7 +671,7 @@
             "type": "object"
         },
         "GetIosPostInstallAttributionResponse": {
-            "description": "Response for iSDK to execute strong match flow for post-install attribution.",
+            "description": "Response for iSDK to execute strong match flow for post-install attribution. Information of the resolved FDL link.",
             "id": "GetIosPostInstallAttributionResponse",
             "properties": {
                 "appMinimumVersion": {

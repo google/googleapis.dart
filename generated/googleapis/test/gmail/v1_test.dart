@@ -1195,6 +1195,7 @@ api.ListLabelsResponse buildListLabelsResponse() {
   buildCounterListLabelsResponse++;
   if (buildCounterListLabelsResponse < 3) {
     o.labels = buildUnnamed22();
+    o.productId = 42;
   }
   buildCounterListLabelsResponse--;
   return o;
@@ -1204,6 +1205,10 @@ void checkListLabelsResponse(api.ListLabelsResponse o) {
   buildCounterListLabelsResponse++;
   if (buildCounterListLabelsResponse < 3) {
     checkUnnamed22(o.labels!);
+    unittest.expect(
+      o.productId!,
+      unittest.equals(42),
+    );
   }
   buildCounterListLabelsResponse--;
 }

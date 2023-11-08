@@ -1880,6 +1880,51 @@ class ProjectsLocationsMigrationJobsResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Demotes the destination database to become a read replica of the source.
+  ///
+  /// This is applicable for the following migrations: 1. MySQL to Cloud SQL
+  /// (for MySQL) 2. PostgreSQL to Cloud SQL (for PostgreSQL) 3. PostgreSQL to
+  /// AlloyDB.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Name of the migration job resource to demote its destination.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/migrationJobs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> demoteDestination(
+    DemoteDestinationRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert_1.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':demoteDestination';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Generate a SSH configuration script to configure the reverse SSH
   /// connectivity.
   ///
@@ -3126,6 +3171,18 @@ class AlloyDbConnectionProfile {
 
 /// Settings for creating an AlloyDB cluster.
 class AlloyDbSettings {
+  /// The database engine major version.
+  ///
+  /// This is an optional field. If a database version is not supplied at
+  /// cluster creation time, then a default database version will be used.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "DATABASE_VERSION_UNSPECIFIED" : This is an unknown database version.
+  /// - "POSTGRES_14" : The database version is Postgres 14.
+  /// - "POSTGRES_15" : The database version is Postgres 15.
+  core.String? databaseVersion;
+
   /// The encryption config can be specified to encrypt the data disks and other
   /// persistent data resources of a cluster with a customer-managed encryption
   /// key (CMEK).
@@ -3161,6 +3218,7 @@ class AlloyDbSettings {
   core.String? vpcNetwork;
 
   AlloyDbSettings({
+    this.databaseVersion,
     this.encryptionConfig,
     this.initialUser,
     this.labels,
@@ -3170,6 +3228,9 @@ class AlloyDbSettings {
 
   AlloyDbSettings.fromJson(core.Map json_)
       : this(
+          databaseVersion: json_.containsKey('databaseVersion')
+              ? json_['databaseVersion'] as core.String
+              : null,
           encryptionConfig: json_.containsKey('encryptionConfig')
               ? EncryptionConfig.fromJson(json_['encryptionConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -3197,6 +3258,7 @@ class AlloyDbSettings {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (databaseVersion != null) 'databaseVersion': databaseVersion!,
         if (encryptionConfig != null) 'encryptionConfig': encryptionConfig!,
         if (initialUser != null) 'initialUser': initialUser!,
         if (labels != null) 'labels': labels!,
@@ -3769,6 +3831,24 @@ class CloudSqlSettings {
   /// - "MYSQL_5_6" : MySQL 5.6.
   /// - "MYSQL_5_7" : MySQL 5.7.
   /// - "MYSQL_8_0" : MySQL 8.0.
+  /// - "MYSQL_8_0_18" : The database major version is MySQL 8.0 and the minor
+  /// version is 18.
+  /// - "MYSQL_8_0_26" : The database major version is MySQL 8.0 and the minor
+  /// version is 26.
+  /// - "MYSQL_8_0_27" : The database major version is MySQL 8.0 and the minor
+  /// version is 27.
+  /// - "MYSQL_8_0_28" : The database major version is MySQL 8.0 and the minor
+  /// version is 28.
+  /// - "MYSQL_8_0_30" : The database major version is MySQL 8.0 and the minor
+  /// version is 30.
+  /// - "MYSQL_8_0_31" : The database major version is MySQL 8.0 and the minor
+  /// version is 31.
+  /// - "MYSQL_8_0_32" : The database major version is MySQL 8.0 and the minor
+  /// version is 32.
+  /// - "MYSQL_8_0_33" : The database major version is MySQL 8.0 and the minor
+  /// version is 33.
+  /// - "MYSQL_8_0_34" : The database major version is MySQL 8.0 and the minor
+  /// version is 34.
   /// - "POSTGRES_9_6" : PostgreSQL 9.6.
   /// - "POSTGRES_11" : PostgreSQL 11.
   /// - "POSTGRES_10" : PostgreSQL 10.
@@ -5036,6 +5116,9 @@ class DatabaseType {
         if (provider != null) 'provider': provider!,
       };
 }
+
+/// Request message for 'DemoteDestination' request.
+typedef DemoteDestinationRequest = $Empty;
 
 /// Response message for 'DescribeConversionWorkspaceRevisions' request.
 class DescribeConversionWorkspaceRevisionsResponse {
@@ -7625,6 +7708,12 @@ class Position {
 /// Specifies connection parameters required specifically for PostgreSQL
 /// databases.
 class PostgreSqlConnectionProfile {
+  /// If the destination is an AlloyDB database, use this field to provide the
+  /// AlloyDB cluster ID.
+  ///
+  /// Optional.
+  core.String? alloydbClusterId;
+
   /// If the source is a Cloud SQL database, use this field to provide the Cloud
   /// SQL instance ID of the source.
   core.String? cloudSqlId;
@@ -7683,6 +7772,7 @@ class PostgreSqlConnectionProfile {
   core.String? username;
 
   PostgreSqlConnectionProfile({
+    this.alloydbClusterId,
     this.cloudSqlId,
     this.host,
     this.networkArchitecture,
@@ -7697,6 +7787,9 @@ class PostgreSqlConnectionProfile {
 
   PostgreSqlConnectionProfile.fromJson(core.Map json_)
       : this(
+          alloydbClusterId: json_.containsKey('alloydbClusterId')
+              ? json_['alloydbClusterId'] as core.String
+              : null,
           cloudSqlId: json_.containsKey('cloudSqlId')
               ? json_['cloudSqlId'] as core.String
               : null,
@@ -7731,6 +7824,7 @@ class PostgreSqlConnectionProfile {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (alloydbClusterId != null) 'alloydbClusterId': alloydbClusterId!,
         if (cloudSqlId != null) 'cloudSqlId': cloudSqlId!,
         if (host != null) 'host': host!,
         if (networkArchitecture != null)

@@ -285,9 +285,8 @@ class ProjectsLocationsFunctionsResource {
   /// to the target bucket using internal service identity; if credentials were
   /// attached, the identity from the credentials would be used, but that
   /// identity does not have permissions to upload files to the URL. When making
-  /// a HTTP PUT request, these two headers need to be specified: *
-  /// `content-type: application/zip` And this header SHOULD NOT be specified: *
-  /// `Authorization: Bearer YOUR_TOKEN`
+  /// a HTTP PUT request, specify this header: * `content-type: application/zip`
+  /// Do not specify this header: * `Authorization: Bearer YOUR_TOKEN`
   ///
   /// [request] - The metadata request object.
   ///

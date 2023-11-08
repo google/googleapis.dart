@@ -438,11 +438,10 @@ api.GoogleCloudApigeeV1ApiCategory buildGoogleCloudApigeeV1ApiCategory() {
   final o = api.GoogleCloudApigeeV1ApiCategory();
   buildCounterGoogleCloudApigeeV1ApiCategory++;
   if (buildCounterGoogleCloudApigeeV1ApiCategory < 3) {
-    o.data = buildGoogleCloudApigeeV1ApiCategoryData();
-    o.errorCode = 'foo';
-    o.message = 'foo';
-    o.requestId = 'foo';
-    o.status = 'foo';
+    o.id = 'foo';
+    o.name = 'foo';
+    o.siteId = 'foo';
+    o.updateTime = 'foo';
   }
   buildCounterGoogleCloudApigeeV1ApiCategory--;
   return o;
@@ -451,46 +450,6 @@ api.GoogleCloudApigeeV1ApiCategory buildGoogleCloudApigeeV1ApiCategory() {
 void checkGoogleCloudApigeeV1ApiCategory(api.GoogleCloudApigeeV1ApiCategory o) {
   buildCounterGoogleCloudApigeeV1ApiCategory++;
   if (buildCounterGoogleCloudApigeeV1ApiCategory < 3) {
-    checkGoogleCloudApigeeV1ApiCategoryData(o.data!);
-    unittest.expect(
-      o.errorCode!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.message!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.requestId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.status!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterGoogleCloudApigeeV1ApiCategory--;
-}
-
-core.int buildCounterGoogleCloudApigeeV1ApiCategoryData = 0;
-api.GoogleCloudApigeeV1ApiCategoryData
-    buildGoogleCloudApigeeV1ApiCategoryData() {
-  final o = api.GoogleCloudApigeeV1ApiCategoryData();
-  buildCounterGoogleCloudApigeeV1ApiCategoryData++;
-  if (buildCounterGoogleCloudApigeeV1ApiCategoryData < 3) {
-    o.id = 'foo';
-    o.name = 'foo';
-    o.siteId = 'foo';
-    o.updateTime = 'foo';
-  }
-  buildCounterGoogleCloudApigeeV1ApiCategoryData--;
-  return o;
-}
-
-void checkGoogleCloudApigeeV1ApiCategoryData(
-    api.GoogleCloudApigeeV1ApiCategoryData o) {
-  buildCounterGoogleCloudApigeeV1ApiCategoryData++;
-  if (buildCounterGoogleCloudApigeeV1ApiCategoryData < 3) {
     unittest.expect(
       o.id!,
       unittest.equals('foo'),
@@ -508,7 +467,48 @@ void checkGoogleCloudApigeeV1ApiCategoryData(
       unittest.equals('foo'),
     );
   }
-  buildCounterGoogleCloudApigeeV1ApiCategoryData--;
+  buildCounterGoogleCloudApigeeV1ApiCategory--;
+}
+
+core.int buildCounterGoogleCloudApigeeV1ApiCategoryResponse = 0;
+api.GoogleCloudApigeeV1ApiCategoryResponse
+    buildGoogleCloudApigeeV1ApiCategoryResponse() {
+  final o = api.GoogleCloudApigeeV1ApiCategoryResponse();
+  buildCounterGoogleCloudApigeeV1ApiCategoryResponse++;
+  if (buildCounterGoogleCloudApigeeV1ApiCategoryResponse < 3) {
+    o.data = buildGoogleCloudApigeeV1ApiCategory();
+    o.errorCode = 'foo';
+    o.message = 'foo';
+    o.requestId = 'foo';
+    o.status = 'foo';
+  }
+  buildCounterGoogleCloudApigeeV1ApiCategoryResponse--;
+  return o;
+}
+
+void checkGoogleCloudApigeeV1ApiCategoryResponse(
+    api.GoogleCloudApigeeV1ApiCategoryResponse o) {
+  buildCounterGoogleCloudApigeeV1ApiCategoryResponse++;
+  if (buildCounterGoogleCloudApigeeV1ApiCategoryResponse < 3) {
+    checkGoogleCloudApigeeV1ApiCategory(o.data!);
+    unittest.expect(
+      o.errorCode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.message!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.requestId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.status!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudApigeeV1ApiCategoryResponse--;
 }
 
 core.List<core.String> buildUnnamed2() => [
@@ -5840,15 +5840,15 @@ void checkGoogleCloudApigeeV1KeystoreConfig(
   buildCounterGoogleCloudApigeeV1KeystoreConfig--;
 }
 
-core.List<api.GoogleCloudApigeeV1ApiCategoryData> buildUnnamed109() => [
-      buildGoogleCloudApigeeV1ApiCategoryData(),
-      buildGoogleCloudApigeeV1ApiCategoryData(),
+core.List<api.GoogleCloudApigeeV1ApiCategory> buildUnnamed109() => [
+      buildGoogleCloudApigeeV1ApiCategory(),
+      buildGoogleCloudApigeeV1ApiCategory(),
     ];
 
-void checkUnnamed109(core.List<api.GoogleCloudApigeeV1ApiCategoryData> o) {
+void checkUnnamed109(core.List<api.GoogleCloudApigeeV1ApiCategory> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudApigeeV1ApiCategoryData(o[0]);
-  checkGoogleCloudApigeeV1ApiCategoryData(o[1]);
+  checkGoogleCloudApigeeV1ApiCategory(o[0]);
+  checkGoogleCloudApigeeV1ApiCategory(o[1]);
 }
 
 core.int buildCounterGoogleCloudApigeeV1ListApiCategoriesResponse = 0;
@@ -12862,13 +12862,13 @@ void main() {
     });
   });
 
-  unittest.group('obj-schema-GoogleCloudApigeeV1ApiCategoryData', () {
+  unittest.group('obj-schema-GoogleCloudApigeeV1ApiCategoryResponse', () {
     unittest.test('to-json--from-json', () async {
-      final o = buildGoogleCloudApigeeV1ApiCategoryData();
+      final o = buildGoogleCloudApigeeV1ApiCategoryResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleCloudApigeeV1ApiCategoryData.fromJson(
+      final od = api.GoogleCloudApigeeV1ApiCategoryResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudApigeeV1ApiCategoryData(od);
+      checkGoogleCloudApigeeV1ApiCategoryResponse(od);
     });
   });
 
@@ -33499,13 +33499,13 @@ void main() {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
       final res = api.ApigeeApi(mock).organizations.sites.apicategories;
-      final arg_request = buildGoogleCloudApigeeV1ApiCategoryData();
+      final arg_request = buildGoogleCloudApigeeV1ApiCategory();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.GoogleCloudApigeeV1ApiCategoryData.fromJson(
+        final obj = api.GoogleCloudApigeeV1ApiCategory.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1ApiCategoryData(obj);
+        checkGoogleCloudApigeeV1ApiCategory(obj);
 
         final path = req.url.path;
         var pathOffset = 0;
@@ -33546,13 +33546,14 @@ void main() {
         final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        final resp = convert.json.encode(buildGoogleCloudApigeeV1ApiCategory());
+        final resp =
+            convert.json.encode(buildGoogleCloudApigeeV1ApiCategoryResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
           await res.create(arg_request, arg_parent, $fields: arg_$fields);
-      checkGoogleCloudApigeeV1ApiCategory(
-          response as api.GoogleCloudApigeeV1ApiCategory);
+      checkGoogleCloudApigeeV1ApiCategoryResponse(
+          response as api.GoogleCloudApigeeV1ApiCategoryResponse);
     });
 
     unittest.test('method--delete', () async {
@@ -33654,12 +33655,13 @@ void main() {
         final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        final resp = convert.json.encode(buildGoogleCloudApigeeV1ApiCategory());
+        final resp =
+            convert.json.encode(buildGoogleCloudApigeeV1ApiCategoryResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_name, $fields: arg_$fields);
-      checkGoogleCloudApigeeV1ApiCategory(
-          response as api.GoogleCloudApigeeV1ApiCategory);
+      checkGoogleCloudApigeeV1ApiCategoryResponse(
+          response as api.GoogleCloudApigeeV1ApiCategoryResponse);
     });
 
     unittest.test('method--list', () async {
@@ -33719,13 +33721,13 @@ void main() {
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
       final res = api.ApigeeApi(mock).organizations.sites.apicategories;
-      final arg_request = buildGoogleCloudApigeeV1ApiCategoryData();
+      final arg_request = buildGoogleCloudApigeeV1ApiCategory();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.GoogleCloudApigeeV1ApiCategoryData.fromJson(
+        final obj = api.GoogleCloudApigeeV1ApiCategory.fromJson(
             json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudApigeeV1ApiCategoryData(obj);
+        checkGoogleCloudApigeeV1ApiCategory(obj);
 
         final path = req.url.path;
         var pathOffset = 0;
@@ -33766,13 +33768,14 @@ void main() {
         final h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        final resp = convert.json.encode(buildGoogleCloudApigeeV1ApiCategory());
+        final resp =
+            convert.json.encode(buildGoogleCloudApigeeV1ApiCategoryResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response =
           await res.patch(arg_request, arg_name, $fields: arg_$fields);
-      checkGoogleCloudApigeeV1ApiCategory(
-          response as api.GoogleCloudApigeeV1ApiCategory);
+      checkGoogleCloudApigeeV1ApiCategoryResponse(
+          response as api.GoogleCloudApigeeV1ApiCategoryResponse);
     });
   });
 

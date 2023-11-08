@@ -247,6 +247,35 @@ void checkEmpty(api.Empty o) {
   buildCounterEmpty--;
 }
 
+core.int buildCounterEntry = 0;
+api.Entry buildEntry() {
+  final o = api.Entry();
+  buildCounterEntry++;
+  if (buildCounterEntry < 3) {
+    o.caseSensitive = true;
+    o.replace = 'foo';
+    o.search = 'foo';
+  }
+  buildCounterEntry--;
+  return o;
+}
+
+void checkEntry(api.Entry o) {
+  buildCounterEntry++;
+  if (buildCounterEntry < 3) {
+    unittest.expect(o.caseSensitive!, unittest.isTrue);
+    unittest.expect(
+      o.replace!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.search!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterEntry--;
+}
+
 core.List<api.CustomClass> buildUnnamed3() => [
       buildCustomClass(),
       buildCustomClass(),
@@ -701,6 +730,7 @@ api.RecognitionConfig buildRecognitionConfig() {
     o.profanityFilter = true;
     o.sampleRateHertz = 42;
     o.speechContexts = buildUnnamed11();
+    o.transcriptNormalization = buildTranscriptNormalization();
     o.useEnhanced = true;
   }
   buildCounterRecognitionConfig--;
@@ -746,6 +776,7 @@ void checkRecognitionConfig(api.RecognitionConfig o) {
       unittest.equals(42),
     );
     checkUnnamed11(o.speechContexts!);
+    checkTranscriptNormalization(o.transcriptNormalization!);
     unittest.expect(o.useEnhanced!, unittest.isTrue);
   }
   buildCounterRecognitionConfig--;
@@ -1204,6 +1235,36 @@ void checkStatus(api.Status o) {
   buildCounterStatus--;
 }
 
+core.List<api.Entry> buildUnnamed21() => [
+      buildEntry(),
+      buildEntry(),
+    ];
+
+void checkUnnamed21(core.List<api.Entry> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkEntry(o[0]);
+  checkEntry(o[1]);
+}
+
+core.int buildCounterTranscriptNormalization = 0;
+api.TranscriptNormalization buildTranscriptNormalization() {
+  final o = api.TranscriptNormalization();
+  buildCounterTranscriptNormalization++;
+  if (buildCounterTranscriptNormalization < 3) {
+    o.entries = buildUnnamed21();
+  }
+  buildCounterTranscriptNormalization--;
+  return o;
+}
+
+void checkTranscriptNormalization(api.TranscriptNormalization o) {
+  buildCounterTranscriptNormalization++;
+  if (buildCounterTranscriptNormalization < 3) {
+    checkUnnamed21(o.entries!);
+  }
+  buildCounterTranscriptNormalization--;
+}
+
 core.int buildCounterTranscriptOutputConfig = 0;
 api.TranscriptOutputConfig buildTranscriptOutputConfig() {
   final o = api.TranscriptOutputConfig();
@@ -1331,6 +1392,16 @@ void main() {
       final od =
           api.Empty.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkEmpty(od);
+    });
+  });
+
+  unittest.group('obj-schema-Entry', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildEntry();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Entry.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkEntry(od);
     });
   });
 
@@ -1521,6 +1592,16 @@ void main() {
       final od =
           api.Status.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkStatus(od);
+    });
+  });
+
+  unittest.group('obj-schema-TranscriptNormalization', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildTranscriptNormalization();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TranscriptNormalization.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkTranscriptNormalization(od);
     });
   });
 

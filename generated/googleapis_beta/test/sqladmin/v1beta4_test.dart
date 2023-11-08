@@ -770,6 +770,7 @@ api.DatabaseInstance buildDatabaseInstance() {
     o.serverCaCert = buildSslCert();
     o.serviceAccountEmailAddress = 'foo';
     o.settings = buildSettings();
+    o.sqlNetworkArchitecture = 'foo';
     o.state = 'foo';
     o.suspensionReason = buildUnnamed6();
     o.writeEndpoint = 'foo';
@@ -891,6 +892,10 @@ void checkDatabaseInstance(api.DatabaseInstance o) {
     );
     checkSettings(o.settings!);
     unittest.expect(
+      o.sqlNetworkArchitecture!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.state!,
       unittest.equals('foo'),
     );
@@ -936,6 +941,33 @@ void checkDatabasesListResponse(api.DatabasesListResponse o) {
     );
   }
   buildCounterDatabasesListResponse--;
+}
+
+core.int buildCounterDemoteContext = 0;
+api.DemoteContext buildDemoteContext() {
+  final o = api.DemoteContext();
+  buildCounterDemoteContext++;
+  if (buildCounterDemoteContext < 3) {
+    o.kind = 'foo';
+    o.sourceRepresentativeInstanceName = 'foo';
+  }
+  buildCounterDemoteContext--;
+  return o;
+}
+
+void checkDemoteContext(api.DemoteContext o) {
+  buildCounterDemoteContext++;
+  if (buildCounterDemoteContext < 3) {
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.sourceRepresentativeInstanceName!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterDemoteContext--;
 }
 
 core.int buildCounterDemoteMasterConfiguration = 0;
@@ -1849,6 +1881,25 @@ void checkInstancesDemoteMasterRequest(api.InstancesDemoteMasterRequest o) {
   buildCounterInstancesDemoteMasterRequest--;
 }
 
+core.int buildCounterInstancesDemoteRequest = 0;
+api.InstancesDemoteRequest buildInstancesDemoteRequest() {
+  final o = api.InstancesDemoteRequest();
+  buildCounterInstancesDemoteRequest++;
+  if (buildCounterInstancesDemoteRequest < 3) {
+    o.demoteContext = buildDemoteContext();
+  }
+  buildCounterInstancesDemoteRequest--;
+  return o;
+}
+
+void checkInstancesDemoteRequest(api.InstancesDemoteRequest o) {
+  buildCounterInstancesDemoteRequest++;
+  if (buildCounterInstancesDemoteRequest < 3) {
+    checkDemoteContext(o.demoteContext!);
+  }
+  buildCounterInstancesDemoteRequest--;
+}
+
 core.int buildCounterInstancesExportRequest = 0;
 api.InstancesExportRequest buildInstancesExportRequest() {
   final o = api.InstancesExportRequest();
@@ -2398,6 +2449,7 @@ api.Operation buildOperation() {
   final o = api.Operation();
   buildCounterOperation++;
   if (buildCounterOperation < 3) {
+    o.apiWarning = buildApiWarning();
     o.backupContext = buildBackupContext();
     o.endTime = 'foo';
     o.error = buildOperationErrors();
@@ -2422,6 +2474,7 @@ api.Operation buildOperation() {
 void checkOperation(api.Operation o) {
   buildCounterOperation++;
   if (buildCounterOperation < 3) {
+    checkApiWarning(o.apiWarning!);
     checkBackupContext(o.backupContext!);
     unittest.expect(
       o.endTime!,
@@ -2615,6 +2668,7 @@ api.PasswordValidationPolicy buildPasswordValidationPolicy() {
   buildCounterPasswordValidationPolicy++;
   if (buildCounterPasswordValidationPolicy < 3) {
     o.complexity = 'foo';
+    o.disallowCompromisedCredentials = true;
     o.disallowUsernameSubstring = true;
     o.enablePasswordPolicy = true;
     o.minLength = 42;
@@ -2632,6 +2686,7 @@ void checkPasswordValidationPolicy(api.PasswordValidationPolicy o) {
       o.complexity!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.disallowCompromisedCredentials!, unittest.isTrue);
     unittest.expect(o.disallowUsernameSubstring!, unittest.isTrue);
     unittest.expect(o.enablePasswordPolicy!, unittest.isTrue);
     unittest.expect(
@@ -4104,6 +4159,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-DemoteContext', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDemoteContext();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DemoteContext.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkDemoteContext(od);
+    });
+  });
+
   unittest.group('obj-schema-DemoteMasterConfiguration', () {
     unittest.test('to-json--from-json', () async {
       final o = buildDemoteMasterConfiguration();
@@ -4353,6 +4418,16 @@ void main() {
       final od = api.InstancesDemoteMasterRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkInstancesDemoteMasterRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-InstancesDemoteRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildInstancesDemoteRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.InstancesDemoteRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkInstancesDemoteRequest(od);
     });
   });
 
@@ -6280,6 +6355,92 @@ void main() {
       }), true);
       final response =
           await res.delete(arg_project, arg_instance, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--demote', () async {
+      final mock = HttpServerMock();
+      final res = api.SQLAdminApi(mock).instances;
+      final arg_request = buildInstancesDemoteRequest();
+      final arg_project = 'foo';
+      final arg_instance = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.InstancesDemoteRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkInstancesDemoteRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 21),
+          unittest.equals('sql/v1beta4/projects/'),
+        );
+        pathOffset += 21;
+        index = path.indexOf('/instances/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_project'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 11),
+          unittest.equals('/instances/'),
+        );
+        pathOffset += 11;
+        index = path.indexOf('/demote', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_instance'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 7),
+          unittest.equals('/demote'),
+        );
+        pathOffset += 7;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.demote(arg_request, arg_project, arg_instance,
+          $fields: arg_$fields);
       checkOperation(response as api.Operation);
     });
 

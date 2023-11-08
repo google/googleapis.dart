@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20231027",
+    "revision": "20231121",
     "rootUrl": "https://fcm.googleapis.com/",
     "servicePath": "",
     "title": "Firebase Cloud Messaging API",

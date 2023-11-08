@@ -370,6 +370,7 @@ api.CheckConsistencyRequest buildCheckConsistencyRequest() {
   buildCounterCheckConsistencyRequest++;
   if (buildCounterCheckConsistencyRequest < 3) {
     o.consistencyToken = 'foo';
+    o.standardReadRemoteWrites = buildStandardReadRemoteWrites();
   }
   buildCounterCheckConsistencyRequest--;
   return o;
@@ -382,6 +383,7 @@ void checkCheckConsistencyRequest(api.CheckConsistencyRequest o) {
       o.consistencyToken!,
       unittest.equals('foo'),
     );
+    checkStandardReadRemoteWrites(o.standardReadRemoteWrites!);
   }
   buildCounterCheckConsistencyRequest--;
 }
@@ -1918,6 +1920,21 @@ void checkStandardIsolation(api.StandardIsolation o) {
   buildCounterStandardIsolation--;
 }
 
+core.int buildCounterStandardReadRemoteWrites = 0;
+api.StandardReadRemoteWrites buildStandardReadRemoteWrites() {
+  final o = api.StandardReadRemoteWrites();
+  buildCounterStandardReadRemoteWrites++;
+  if (buildCounterStandardReadRemoteWrites < 3) {}
+  buildCounterStandardReadRemoteWrites--;
+  return o;
+}
+
+void checkStandardReadRemoteWrites(api.StandardReadRemoteWrites o) {
+  buildCounterStandardReadRemoteWrites++;
+  if (buildCounterStandardReadRemoteWrites < 3) {}
+  buildCounterStandardReadRemoteWrites--;
+}
+
 core.Map<core.String, core.Object?> buildUnnamed27() => {
       'x': {
         'list': [1, 2, 3],
@@ -2746,6 +2763,16 @@ void main() {
       final od = api.StandardIsolation.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkStandardIsolation(od);
+    });
+  });
+
+  unittest.group('obj-schema-StandardReadRemoteWrites', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildStandardReadRemoteWrites();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.StandardReadRemoteWrites.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkStandardReadRemoteWrites(od);
     });
   });
 

@@ -2,7 +2,7 @@
 # should be ignored.
 packages:
 - googleapis:
-    version: 11.4.0
+    version: 12.0.0
     repository: https://github.com/google/googleapis.dart/tree/master/generated/googleapis
     readme: resources/README.md
     license: resources/LICENSE
@@ -49,6 +49,7 @@ packages:
     - beyondcorp:v1
     - biglake:v1
     - bigquery:v2 # https://developers.google.com/bigquery/
+    - bigquerydatapolicy:v1
     - bigquerydatatransfer:v1 # https://cloud.google.com/bigquery/transfer/
     - bigqueryreservation:v1
     - bigtableadmin:v2 # https://cloud.google.com/bigtable/
@@ -173,6 +174,7 @@ packages:
     - licensing:v1 # https://developers.google.com/admin-sdk/licensing/v1/how-tos/using
     - localservices:v1
     - logging:v2 # https://cloud.google.com/logging/docs/
+    - looker:v1
     - managedidentities:v1
     - manufacturers:v1 # https://developers.google.com/manufacturers/
     - memcache:v1

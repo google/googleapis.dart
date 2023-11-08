@@ -71,6 +71,33 @@ void checkAccountDetails(api.AccountDetails o) {
   buildCounterAccountDetails--;
 }
 
+core.int buildCounterAppAccessRiskVerdict = 0;
+api.AppAccessRiskVerdict buildAppAccessRiskVerdict() {
+  final o = api.AppAccessRiskVerdict();
+  buildCounterAppAccessRiskVerdict++;
+  if (buildCounterAppAccessRiskVerdict < 3) {
+    o.otherApps = 'foo';
+    o.playOrSystemApps = 'foo';
+  }
+  buildCounterAppAccessRiskVerdict--;
+  return o;
+}
+
+void checkAppAccessRiskVerdict(api.AppAccessRiskVerdict o) {
+  buildCounterAppAccessRiskVerdict++;
+  if (buildCounterAppAccessRiskVerdict < 3) {
+    unittest.expect(
+      o.otherApps!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.playOrSystemApps!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterAppAccessRiskVerdict--;
+}
+
 core.List<core.String> buildUnnamed0() => [
       'foo',
       'foo',
@@ -199,34 +226,28 @@ void checkDeviceIntegrity(api.DeviceIntegrity o) {
   buildCounterDeviceIntegrity--;
 }
 
-core.List<api.UserRemediationDetails> buildUnnamed2() => [
-      buildUserRemediationDetails(),
-      buildUserRemediationDetails(),
-    ];
-
-void checkUnnamed2(core.List<api.UserRemediationDetails> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkUserRemediationDetails(o[0]);
-  checkUserRemediationDetails(o[1]);
-}
-
-core.int buildCounterGuidanceDetails = 0;
-api.GuidanceDetails buildGuidanceDetails() {
-  final o = api.GuidanceDetails();
-  buildCounterGuidanceDetails++;
-  if (buildCounterGuidanceDetails < 3) {
-    o.userRemediationDetails = buildUnnamed2();
+core.int buildCounterEnvironmentDetails = 0;
+api.EnvironmentDetails buildEnvironmentDetails() {
+  final o = api.EnvironmentDetails();
+  buildCounterEnvironmentDetails++;
+  if (buildCounterEnvironmentDetails < 3) {
+    o.appAccessRiskVerdict = buildAppAccessRiskVerdict();
+    o.playProtectVerdict = 'foo';
   }
-  buildCounterGuidanceDetails--;
+  buildCounterEnvironmentDetails--;
   return o;
 }
 
-void checkGuidanceDetails(api.GuidanceDetails o) {
-  buildCounterGuidanceDetails++;
-  if (buildCounterGuidanceDetails < 3) {
-    checkUnnamed2(o.userRemediationDetails!);
+void checkEnvironmentDetails(api.EnvironmentDetails o) {
+  buildCounterEnvironmentDetails++;
+  if (buildCounterEnvironmentDetails < 3) {
+    checkAppAccessRiskVerdict(o.appAccessRiskVerdict!);
+    unittest.expect(
+      o.playProtectVerdict!,
+      unittest.equals('foo'),
+    );
   }
-  buildCounterGuidanceDetails--;
+  buildCounterEnvironmentDetails--;
 }
 
 core.int buildCounterRequestDetails = 0;
@@ -293,7 +314,7 @@ api.TokenPayloadExternal buildTokenPayloadExternal() {
     o.accountDetails = buildAccountDetails();
     o.appIntegrity = buildAppIntegrity();
     o.deviceIntegrity = buildDeviceIntegrity();
-    o.guidanceDetails = buildGuidanceDetails();
+    o.environmentDetails = buildEnvironmentDetails();
     o.requestDetails = buildRequestDetails();
     o.testingDetails = buildTestingDetails();
   }
@@ -307,33 +328,11 @@ void checkTokenPayloadExternal(api.TokenPayloadExternal o) {
     checkAccountDetails(o.accountDetails!);
     checkAppIntegrity(o.appIntegrity!);
     checkDeviceIntegrity(o.deviceIntegrity!);
-    checkGuidanceDetails(o.guidanceDetails!);
+    checkEnvironmentDetails(o.environmentDetails!);
     checkRequestDetails(o.requestDetails!);
     checkTestingDetails(o.testingDetails!);
   }
   buildCounterTokenPayloadExternal--;
-}
-
-core.int buildCounterUserRemediationDetails = 0;
-api.UserRemediationDetails buildUserRemediationDetails() {
-  final o = api.UserRemediationDetails();
-  buildCounterUserRemediationDetails++;
-  if (buildCounterUserRemediationDetails < 3) {
-    o.remediation = 'foo';
-  }
-  buildCounterUserRemediationDetails--;
-  return o;
-}
-
-void checkUserRemediationDetails(api.UserRemediationDetails o) {
-  buildCounterUserRemediationDetails++;
-  if (buildCounterUserRemediationDetails < 3) {
-    unittest.expect(
-      o.remediation!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterUserRemediationDetails--;
 }
 
 void main() {
@@ -354,6 +353,16 @@ void main() {
       final od = api.AccountDetails.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkAccountDetails(od);
+    });
+  });
+
+  unittest.group('obj-schema-AppAccessRiskVerdict', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAppAccessRiskVerdict();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AppAccessRiskVerdict.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAppAccessRiskVerdict(od);
     });
   });
 
@@ -397,13 +406,13 @@ void main() {
     });
   });
 
-  unittest.group('obj-schema-GuidanceDetails', () {
+  unittest.group('obj-schema-EnvironmentDetails', () {
     unittest.test('to-json--from-json', () async {
-      final o = buildGuidanceDetails();
+      final o = buildEnvironmentDetails();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GuidanceDetails.fromJson(
+      final od = api.EnvironmentDetails.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
-      checkGuidanceDetails(od);
+      checkEnvironmentDetails(od);
     });
   });
 
@@ -434,16 +443,6 @@ void main() {
       final od = api.TokenPayloadExternal.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkTokenPayloadExternal(od);
-    });
-  });
-
-  unittest.group('obj-schema-UserRemediationDetails', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildUserRemediationDetails();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.UserRemediationDetails.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkUserRemediationDetails(od);
     });
   });
 

@@ -9245,8 +9245,6 @@ class AccountAutomaticImprovements {
 /// [business identity attributes](https://support.google.com/merchants/answer/10342414)
 /// can be used to self-declare attributes that let customers know more about
 /// your business.
-///
-/// NEXT ID: 7.
 class AccountBusinessIdentity {
   /// Specifies whether the business identifies itself as being black-owned.
   ///
@@ -32235,8 +32233,8 @@ class Service {
 
   /// Type of locations this service ships orders to.
   ///
-  /// Acceptable values are: - "`delivery`" - "`pickup`" - "`local_delivery`" -
-  /// "`collection_point`"
+  /// Acceptable values are: - "`delivery`" - "`pickup` (deprecated)" -
+  /// "`local_delivery`" - "`collection_point`"
   core.String? shipmentType;
 
   /// A list of stores your products are delivered from.

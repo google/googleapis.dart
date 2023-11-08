@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20231018",
+    "revision": "20231108",
     "rootUrl": "https://trafficdirector.googleapis.com/",
     "servicePath": "",
     "title": "Traffic Director API",

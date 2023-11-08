@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20231019",
+    "revision": "20231109",
     "rootUrl": "https://cloudbuild.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Build API",
@@ -4755,13 +4755,15 @@
                         "REPOSITORY_TYPE_UNSPECIFIED",
                         "GITHUB",
                         "GITHUB_ENTERPRISE",
-                        "GITLAB_ENTERPRISE"
+                        "GITLAB_ENTERPRISE",
+                        "BITBUCKET_DATA_CENTER"
                     ],
                     "enumDescriptions": [
                         "If unspecified, RepositoryType defaults to GITHUB.",
                         "The SCM repo is GITHUB.",
                         "The SCM repo is GITHUB Enterprise.",
-                        "The SCM repo is GITLAB Enterprise."
+                        "The SCM repo is GITLAB Enterprise.",
+                        "The SCM repo is BITBUCKET Data Center."
                     ],
                     "readOnly": true,
                     "type": "string"

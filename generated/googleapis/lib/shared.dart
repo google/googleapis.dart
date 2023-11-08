@@ -1474,6 +1474,7 @@ class $AuditAdvertiserResponse {
 /// - backupdr:v1 : AuditLogConfig
 /// - beyondcorp:v1 : GoogleIamV1AuditLogConfig
 /// - bigquery:v2 : AuditLogConfig
+/// - bigquerydatapolicy:v1 : AuditLogConfig
 /// - bigtableadmin:v2 : AuditLogConfig
 /// - cloudasset:v1 : AuditLogConfig
 /// - cloudbilling:v1 : AuditLogConfig
@@ -1500,6 +1501,7 @@ class $AuditAdvertiserResponse {
 /// - iam:v1 : AuditLogConfig
 /// - identitytoolkit:v2 : GoogleIamV1AuditLogConfig
 /// - ids:v1 : AuditLogConfig
+/// - looker:v1 : AuditLogConfig
 /// - metastore:v1 : AuditLogConfig
 /// - ml:v1 : GoogleIamV1__AuditLogConfig
 /// - networkconnectivity:v1 : AuditLogConfig
@@ -3314,6 +3316,47 @@ class $ConditionExpectation {
 
 /// Used by:
 ///
+/// - displayvideo:v1 : Consent
+/// - displayvideo:v2 : Consent
+/// - displayvideo:v3 : Consent
+class $Consent {
+  /// Represents consent for ad personalization.
+  /// Possible string values are:
+  /// - "CONSENT_STATUS_UNSPECIFIED" : Consent is not specified.
+  /// - "CONSENT_STATUS_GRANTED" : Consent is granted.
+  /// - "CONSENT_STATUS_DENIED" : Consent is denied.
+  core.String? adPersonalization;
+
+  /// Represents consent for ad user data.
+  /// Possible string values are:
+  /// - "CONSENT_STATUS_UNSPECIFIED" : Consent is not specified.
+  /// - "CONSENT_STATUS_GRANTED" : Consent is granted.
+  /// - "CONSENT_STATUS_DENIED" : Consent is denied.
+  core.String? adUserData;
+
+  $Consent({
+    this.adPersonalization,
+    this.adUserData,
+  });
+
+  $Consent.fromJson(core.Map json_)
+      : this(
+          adPersonalization: json_.containsKey('adPersonalization')
+              ? json_['adPersonalization'] as core.String
+              : null,
+          adUserData: json_.containsKey('adUserData')
+              ? json_['adUserData'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (adPersonalization != null) 'adPersonalization': adPersonalization!,
+        if (adUserData != null) 'adUserData': adUserData!,
+      };
+}
+
+/// Used by:
+///
 /// - displayvideo:v1 : ContactInfo
 /// - displayvideo:v2 : ContactInfo
 /// - displayvideo:v3 : ContactInfo
@@ -4042,44 +4085,6 @@ class $CreativeClickThroughUrl {
 
 /// Used by:
 ///
-/// - vmwareengine:v1 : ResetNsxCredentialsRequest
-/// - vmwareengine:v1 : ResetVcenterCredentialsRequest
-class $CredentialsRequest {
-  /// A request ID to identify requests.
-  ///
-  /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server guarantees that a request doesn't result in creation of
-  /// duplicate commitments for at least 60 minutes. For example, consider a
-  /// situation where you make an initial request and the request times out. If
-  /// you make the request again with the same request ID, the server can check
-  /// if original operation with the same request ID was received, and if so,
-  /// will ignore the second request. This prevents clients from accidentally
-  /// creating duplicate commitments. The request ID must be a valid UUID with
-  /// the exception that zero UUID is not supported
-  /// (00000000-0000-0000-0000-000000000000).
-  ///
-  /// Optional.
-  core.String? requestId;
-
-  $CredentialsRequest({
-    this.requestId,
-  });
-
-  $CredentialsRequest.fromJson(core.Map json_)
-      : this(
-          requestId: json_.containsKey('requestId')
-              ? json_['requestId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (requestId != null) 'requestId': requestId!,
-      };
-}
-
-/// Used by:
-///
 /// - cloudkms:v1 : CryptoKeyVersionTemplate
 /// - kmsinventory:v1 : GoogleCloudKmsV1CryptoKeyVersionTemplate
 class $CryptoKeyVersionTemplate {
@@ -4334,6 +4339,7 @@ class $CustomListTargetingSetting {
 /// - admob:v1 : Date
 /// - adsense:v2 : Date
 /// - androidmanagement:v1 : Date
+/// - appengine:v1 : Date
 /// - billingbudgets:v1 : GoogleTypeDate
 /// - businessprofileperformance:v1 : Date
 /// - chromemanagement:v1 : GoogleTypeDate
@@ -4354,6 +4360,7 @@ class $CustomListTargetingSetting {
 /// - documentai:v1 : GoogleTypeDate
 /// - doubleclickbidmanager:v2 : Date
 /// - drivelabels:v2 : GoogleTypeDate
+/// - looker:v1 : Date
 /// - migrationcenter:v1 : Date
 /// - mybusinessbusinessinformation:v1 : Date
 /// - osconfig:v1 : Date
@@ -6041,6 +6048,7 @@ class $EgressSource {
 /// - aiplatform:v1 : GoogleCloudAiplatformV1ResumeModelDeploymentMonitoringJobRequest
 /// - aiplatform:v1 : GoogleCloudAiplatformV1StartNotebookRuntimeRequest
 /// - aiplatform:v1 : GoogleCloudAiplatformV1StopTrialRequest
+/// - aiplatform:v1 : GoogleCloudAiplatformV1SyncFeatureViewRequest
 /// - aiplatform:v1 : GoogleCloudAiplatformV1UpsertDatapointsResponse
 /// - aiplatform:v1 : GoogleCloudAiplatformV1WriteFeatureValuesResponse
 /// - aiplatform:v1 : GoogleCloudAiplatformV1WriteTensorboardExperimentDataResponse
@@ -6122,14 +6130,17 @@ class $EgressSource {
 /// - baremetalsolution:v2 : StartInstanceRequest
 /// - baremetalsolution:v2 : StopInstanceRequest
 /// - batch:v1 : CancelOperationRequest
+/// - batch:v1 : CloudLoggingOption
 /// - batch:v1 : Empty
 /// - beyondcorp:v1 : Empty
 /// - beyondcorp:v1 : GoogleLongrunningCancelOperationRequest
+/// - bigquerydatapolicy:v1 : Empty
 /// - bigquerydatatransfer:v1 : CheckValidCredsRequest
 /// - bigquerydatatransfer:v1 : Empty
 /// - bigqueryreservation:v1 : Empty
 /// - bigtableadmin:v2 : Empty
 /// - bigtableadmin:v2 : GenerateConsistencyTokenRequest
+/// - bigtableadmin:v2 : StandardReadRemoteWrites
 /// - bigtableadmin:v2 : UndeleteTableRequest
 /// - billingbudgets:v1 : GoogleCloudBillingBudgetsV1LastPeriodAmount
 /// - billingbudgets:v1 : GoogleProtobufEmpty
@@ -6167,6 +6178,8 @@ class $EgressSource {
 /// - clouddeploy:v1 : AdvanceChildRolloutJob
 /// - clouddeploy:v1 : AdvanceRolloutResponse
 /// - clouddeploy:v1 : ApproveRolloutResponse
+/// - clouddeploy:v1 : CancelAutomationRunRequest
+/// - clouddeploy:v1 : CancelAutomationRunResponse
 /// - clouddeploy:v1 : CancelOperationRequest
 /// - clouddeploy:v1 : CancelRolloutRequest
 /// - clouddeploy:v1 : CancelRolloutResponse
@@ -6251,6 +6264,7 @@ class $EgressSource {
 /// - datalineage:v1 : GoogleLongrunningCancelOperationRequest
 /// - datalineage:v1 : GoogleProtobufEmpty
 /// - datamigration:v1 : CancelOperationRequest
+/// - datamigration:v1 : DemoteDestinationRequest
 /// - datamigration:v1 : Empty
 /// - datamigration:v1 : PromoteMigrationJobRequest
 /// - datamigration:v1 : ResumeMigrationJobRequest
@@ -6335,7 +6349,6 @@ class $EgressSource {
 /// - documentai:v1 : GoogleCloudDocumentaiV1EnableProcessorRequest
 /// - documentai:v1 : GoogleCloudDocumentaiV1UndeployProcessorVersionRequest
 /// - documentai:v1 : GoogleProtobufEmpty
-/// - domains:v1 : ExportRegistrationRequest
 /// - domains:v1 : ResetAuthorizationCodeRequest
 /// - doubleclicksearch:v2 : IdMappingFile
 /// - driveactivity:v2 : Administrator
@@ -6439,6 +6452,9 @@ class $EgressSource {
 /// - logging:v2 : Empty
 /// - logging:v2 : UndeleteBucketRequest
 /// - logging:v2 : WriteLogEntriesResponse
+/// - looker:v1 : CancelOperationRequest
+/// - looker:v1 : Empty
+/// - looker:v1 : RestartInstanceRequest
 /// - managedidentities:v1 : CancelOperationRequest
 /// - managedidentities:v1 : CheckMigrationPermissionRequest
 /// - managedidentities:v1 : DisableMigrationRequest
@@ -7381,6 +7397,38 @@ class $ExchangeTargetingOptionDetails {
 
 /// Used by:
 ///
+/// - aiplatform:v1 : GoogleCloudAiplatformV1ProbeExecAction
+/// - run:v1 : ExecAction
+class $ExecAction {
+  /// Command is the command line to execute inside the container, the working
+  /// directory for the command is root ('/') in the container's filesystem.
+  ///
+  /// The command is simply exec'd, it is not run inside a shell, so traditional
+  /// shell instructions ('|', etc) won't work. To use a shell, you need to
+  /// explicitly call out to that shell. Exit status of 0 is treated as
+  /// live/healthy and non-zero is unhealthy.
+  core.List<core.String>? command;
+
+  $ExecAction({
+    this.command,
+  });
+
+  $ExecAction.fromJson(core.Map json_)
+      : this(
+          command: json_.containsKey('command')
+              ? (json_['command'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (command != null) 'command': command!,
+      };
+}
+
+/// Used by:
+///
 /// - displayvideo:v1 : ExitEvent
 /// - displayvideo:v2 : ExitEvent
 /// - displayvideo:v3 : ExitEvent
@@ -7548,6 +7596,7 @@ class $ExportOptions {
 /// - backupdr:v1 : Expr
 /// - beyondcorp:v1 : GoogleTypeExpr
 /// - bigquery:v2 : Expr
+/// - bigquerydatapolicy:v1 : Expr
 /// - bigtableadmin:v2 : Expr
 /// - binaryauthorization:v1 : Expr
 /// - cloudasset:v1 : Expr
@@ -7583,6 +7632,7 @@ class $ExportOptions {
 /// - iap:v1 : Expr
 /// - identitytoolkit:v2 : GoogleTypeExpr
 /// - ids:v1 : Expr
+/// - looker:v1 : Expr
 /// - managedidentities:v1 : Expr
 /// - metastore:v1 : Expr
 /// - ml:v1 : GoogleType__Expr
@@ -8474,6 +8524,7 @@ class $GeoRegionTargetingOptionDetails {
 /// - accesscontextmanager:v1 : GetPolicyOptions
 /// - analyticshub:v1 : GetPolicyOptions
 /// - bigquery:v2 : GetPolicyOptions
+/// - bigquerydatapolicy:v1 : GetPolicyOptions
 /// - bigtableadmin:v2 : GetPolicyOptions
 /// - cloudresourcemanager:v1 : GetPolicyOptions
 /// - cloudresourcemanager:v2 : GetPolicyOptions
@@ -9674,6 +9725,7 @@ class $HouseholdIncomeTargetingOptionDetails {
 /// - apigeeregistry:v1 : HttpBody
 /// - cloudbuild:v1 : HttpBody
 /// - cloudbuild:v2 : HttpBody
+/// - cloudtasks:v2 : HttpBody
 /// - domainsrdap:v1 : HttpBody
 /// - healthcare:v1 : HttpBody
 /// - ml:v1 : GoogleApi__HttpBody
@@ -11724,6 +11776,7 @@ class $LocalizedMessage {
 /// - gkeonprem:v1 : Location
 /// - healthcare:v1 : Location
 /// - ids:v1 : Location
+/// - looker:v1 : Location
 /// - managedidentities:v1 : Location
 /// - memcache:v1 : Location
 /// - migrationcenter:v1 : Location
@@ -12641,35 +12694,6 @@ class $MobileApp {
         if (displayName != null) 'displayName': displayName!,
         if (platform != null) 'platform': platform!,
         if (publisher != null) 'publisher': publisher!,
-      };
-}
-
-/// Used by:
-///
-/// - displayvideo:v1 : MobileDeviceIdList
-/// - displayvideo:v2 : MobileDeviceIdList
-/// - displayvideo:v3 : MobileDeviceIdList
-class $MobileDeviceIdList {
-  /// A list of mobile device IDs defining Customer Match audience members.
-  ///
-  /// The size of mobile_device_ids mustn't be greater than 500,000.
-  core.List<core.String>? mobileDeviceIds;
-
-  $MobileDeviceIdList({
-    this.mobileDeviceIds,
-  });
-
-  $MobileDeviceIdList.fromJson(core.Map json_)
-      : this(
-          mobileDeviceIds: json_.containsKey('mobileDeviceIds')
-              ? (json_['mobileDeviceIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (mobileDeviceIds != null) 'mobileDeviceIds': mobileDeviceIds!,
       };
 }
 
@@ -14522,6 +14546,7 @@ class $Permissions {
 /// - backupdr:v1 : TestIamPermissionsResponse
 /// - beyondcorp:v1 : GoogleIamV1TestIamPermissionsResponse
 /// - bigquery:v2 : TestIamPermissionsResponse
+/// - bigquerydatapolicy:v1 : TestIamPermissionsResponse
 /// - bigtableadmin:v2 : TestIamPermissionsResponse
 /// - binaryauthorization:v1 : TestIamPermissionsResponse
 /// - cloudbilling:v1 : TestIamPermissionsResponse
@@ -14552,6 +14577,7 @@ class $Permissions {
 /// - iap:v1 : TestIamPermissionsResponse
 /// - identitytoolkit:v2 : GoogleIamV1TestIamPermissionsResponse
 /// - ids:v1 : TestIamPermissionsResponse
+/// - looker:v1 : TestIamPermissionsResponse
 /// - managedidentities:v1 : TestIamPermissionsResponse
 /// - ml:v1 : GoogleIamV1__TestIamPermissionsResponse
 /// - networkconnectivity:v1 : TestIamPermissionsResponse
@@ -16761,7 +16787,7 @@ class $SdfConfig {
   /// - "SDF_VERSION_5_4" : SDF version 5.4
   /// - "SDF_VERSION_5_5" : SDF version 5.5
   /// - "SDF_VERSION_6" : SDF version 6
-  /// - "SDF_VERSION_7" : SDF version 7 Read the \[v7 migration
+  /// - "SDF_VERSION_7" : SDF version 7. Read the \[v7 migration
   /// guide\](/display-video/api/structured-data-file/v7-migration-guide) before
   /// migrating to this version. Currently in beta. Only available for use by a
   /// subset of users.
@@ -17222,10 +17248,25 @@ class $Shared01 {
 
 /// Used by:
 ///
+/// - cloudchannel:v1 : GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity
+/// - domains:v1 : ExportRegistrationRequest
+/// - driveactivity:v2 : File
+class $Shared02 {
+  $Shared02();
+
+  $Shared02.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map json_);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
+}
+
+/// Used by:
+///
 /// - vmwareengine:v1 : Hcx
 /// - vmwareengine:v1 : Nsx
 /// - vmwareengine:v1 : Vcenter
-class $Shared02 {
+class $Shared03 {
   /// Fully qualified domain name of the appliance.
   core.String? fqdn;
 
@@ -17245,14 +17286,14 @@ class $Shared02 {
   /// Version of the appliance.
   core.String? version;
 
-  $Shared02({
+  $Shared03({
     this.fqdn,
     this.internalIp,
     this.state,
     this.version,
   });
 
-  $Shared02.fromJson(core.Map json_)
+  $Shared03.fromJson(core.Map json_)
       : this(
           fqdn: json_.containsKey('fqdn') ? json_['fqdn'] as core.String : null,
           internalIp: json_.containsKey('internalIp')
@@ -17277,7 +17318,7 @@ class $Shared02 {
 ///
 /// - aiplatform:v1 : GoogleCloudAiplatformV1DiskSpec
 /// - ml:v1 : GoogleCloudMlV1__DiskConfig
-class $Shared03 {
+class $Shared04 {
   /// Size in GB of the boot disk (default is 100GB).
   core.int? bootDiskSizeGb;
 
@@ -17287,12 +17328,12 @@ class $Shared03 {
   /// "pd-standard" (Persistent Disk Hard Disk Drive).
   core.String? bootDiskType;
 
-  $Shared03({
+  $Shared04({
     this.bootDiskSizeGb,
     this.bootDiskType,
   });
 
-  $Shared03.fromJson(core.Map json_)
+  $Shared04.fromJson(core.Map json_)
       : this(
           bootDiskSizeGb: json_.containsKey('bootDiskSizeGb')
               ? json_['bootDiskSizeGb'] as core.int
@@ -17306,20 +17347,6 @@ class $Shared03 {
         if (bootDiskSizeGb != null) 'bootDiskSizeGb': bootDiskSizeGb!,
         if (bootDiskType != null) 'bootDiskType': bootDiskType!,
       };
-}
-
-/// Used by:
-///
-/// - cloudchannel:v1 : GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity
-/// - driveactivity:v2 : File
-class $Shared04 {
-  $Shared04();
-
-  $Shared04.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map json_);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Used by:
@@ -18071,6 +18098,7 @@ class $StaticRouteConfig {
 /// - ids:v1 : Status
 /// - jobs:v4 : Status
 /// - logging:v2 : Status
+/// - looker:v1 : Status
 /// - managedidentities:v1 : Status
 /// - memcache:v1 : Status
 /// - metastore:v1 : Status
@@ -18551,6 +18579,7 @@ class $TenantProjectRequest {
 /// - backupdr:v1 : TestIamPermissionsRequest
 /// - beyondcorp:v1 : GoogleIamV1TestIamPermissionsRequest
 /// - bigquery:v2 : TestIamPermissionsRequest
+/// - bigquerydatapolicy:v1 : TestIamPermissionsRequest
 /// - bigtableadmin:v2 : TestIamPermissionsRequest
 /// - binaryauthorization:v1 : TestIamPermissionsRequest
 /// - cloudbilling:v1 : TestIamPermissionsRequest
@@ -18579,6 +18608,7 @@ class $TenantProjectRequest {
 /// - iap:v1 : TestIamPermissionsRequest
 /// - identitytoolkit:v2 : GoogleIamV1TestIamPermissionsRequest
 /// - ids:v1 : TestIamPermissionsRequest
+/// - looker:v1 : TestIamPermissionsRequest
 /// - managedidentities:v1 : TestIamPermissionsRequest
 /// - ml:v1 : GoogleIamV1__TestIamPermissionsRequest
 /// - networkconnectivity:v1 : TestIamPermissionsRequest
@@ -18929,6 +18959,7 @@ class $ThirdPartyVendorConfig {
 /// - dlp:v2 : GoogleTypeTimeOfDay
 /// - jobs:v3 : TimeOfDay
 /// - jobs:v4 : TimeOfDay
+/// - looker:v1 : TimeOfDay
 /// - memcache:v1 : TimeOfDay
 /// - mybusinessbusinessinformation:v1 : TimeOfDay
 /// - mybusinesslodging:v1 : TimeOfDay

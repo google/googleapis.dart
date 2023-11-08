@@ -39,6 +39,9 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
 class PaymentsResellerSubscriptionApi {
+  /// Associate you with your personal info on Google
+  static const openidScope = 'openid';
+
   final commons.ApiRequester _requester;
 
   PartnersResource get partners => PartnersResource(_requester);
@@ -144,8 +147,8 @@ class PartnersPromotionsResource {
 
   /// To find eligible promotions for the current user.
   ///
-  /// The API requires user authorization via OAuth. The user is inferred from
-  /// the authenticated OAuth credential.
+  /// The API requires user authorization via OAuth. The bare minimum oauth
+  /// scope `openid` is sufficient, which will skip the consent screen.
   ///
   /// [request] - The metadata request object.
   ///
@@ -735,9 +738,11 @@ class GoogleCloudPaymentsResellerSubscriptionV1Duration {
 
   /// The unit used for the duration
   /// Possible string values are:
-  /// - "UNIT_UNSPECIFIED" : Default value.
+  /// - "UNIT_UNSPECIFIED" : Default value, reserved as an invalid or an
+  /// unexpected value.
   /// - "MONTH" : Unit of a calendar month.
   /// - "DAY" : Unit of a day.
+  /// - "HOUR" : Unit of an hour. It is used for testing.
   core.String? unit;
 
   GoogleCloudPaymentsResellerSubscriptionV1Duration({
@@ -875,7 +880,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1ExtendSubscriptionRequest {
   /// A random UUID is recommended. The idempotency key for the request. The ID
   /// generation logic is controlled by the partner. request_id should be the
   /// same as on retries of the same request. A different request_id must be
-  /// used for a extension of a different cycle. A random UUID is recommended.
+  /// used for a extension of a different cycle.
   ///
   /// Required.
   core.String? requestId;

@@ -200,7 +200,7 @@ class OrganizationsLocationsWorkloadsResource {
   /// [assetTypes] - Optional. List of asset types to be analyzed, including and
   /// under the source resource. If empty, all assets are analyzed. The complete
   /// list of asset types is available
-  /// [here](https://cloud.google.com/asset-inventory/docs/supported-asset-types#searchable_asset_types).
+  /// [here](https://cloud.google.com/asset-inventory/docs/supported-asset-types).
   ///
   /// [pageSize] - Optional. Page size. If a value is not specified, the default
   /// value of 10 is used.
@@ -766,6 +766,16 @@ class OrganizationsLocationsWorkloadsViolationsResource {
 
 /// Request for acknowledging the violation Next Id: 5
 class GoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest {
+  /// Acknowledge type of specified violation.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "ACKNOWLEDGE_TYPE_UNSPECIFIED" : Acknowledge type unspecified.
+  /// - "SINGLE_VIOLATION" : Acknowledge only the specific violation.
+  /// - "EXISTING_CHILD_RESOURCE_VIOLATIONS" : Acknowledge specified orgPolicy
+  /// violation and also associated resource violations.
+  core.String? acknowledgeType;
+
   /// Business justification explaining the need for violation acknowledgement
   ///
   /// Required.
@@ -786,6 +796,7 @@ class GoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest {
   core.String? nonCompliantOrgPolicy;
 
   GoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest({
+    this.acknowledgeType,
     this.comment,
     this.nonCompliantOrgPolicy,
   });
@@ -793,6 +804,9 @@ class GoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest {
   GoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest.fromJson(
       core.Map json_)
       : this(
+          acknowledgeType: json_.containsKey('acknowledgeType')
+              ? json_['acknowledgeType'] as core.String
+              : null,
           comment: json_.containsKey('comment')
               ? json_['comment'] as core.String
               : null,
@@ -802,6 +816,7 @@ class GoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (acknowledgeType != null) 'acknowledgeType': acknowledgeType!,
         if (comment != null) 'comment': comment!,
         if (nonCompliantOrgPolicy != null)
           'nonCompliantOrgPolicy': nonCompliantOrgPolicy!,
@@ -861,7 +876,7 @@ class GoogleCloudAssuredworkloadsV1AssetMoveAnalysis {
   /// Type of the asset being analyzed.
   ///
   /// Possible values will be among the ones listed
-  /// [here](https://cloud.google.com/asset-inventory/docs/supported-asset-types#searchable_asset_types).
+  /// [here](https://cloud.google.com/asset-inventory/docs/supported-asset-types).
   core.String? assetType;
 
   GoogleCloudAssuredworkloadsV1AssetMoveAnalysis({
@@ -1159,8 +1174,6 @@ class GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest {
 typedef GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse = $Empty;
 
 /// Workload monitoring Violation.
-///
-/// Next Id: 28
 class GoogleCloudAssuredworkloadsV1Violation {
   /// A boolean that indicates if the violation is acknowledged
   core.bool? acknowledged;
@@ -1173,6 +1186,14 @@ class GoogleCloudAssuredworkloadsV1Violation {
   ///
   /// Optional.
   core.String? acknowledgementTime;
+
+  /// Violation Id of the org-policy violation due to which the resource
+  /// violation is caused.
+  ///
+  /// Empty for org-policy violations.
+  ///
+  /// Optional. Output only.
+  core.String? associatedOrgPolicyViolationId;
 
   /// Audit Log Link for violated resource Format:
   /// https://console.cloud.google.com/logs/query;query={logName}{protoPayload.resourceName}{timeRange}{folder}
@@ -1241,6 +1262,13 @@ class GoogleCloudAssuredworkloadsV1Violation {
   )
   core.String? orgPolicyConstraint;
 
+  /// Parent project number where resource is present.
+  ///
+  /// Empty for org-policy violations.
+  ///
+  /// Optional. Output only.
+  core.String? parentProjectNumber;
+
   /// Compliance violation remediation
   ///
   /// Output only.
@@ -1252,6 +1280,21 @@ class GoogleCloudAssuredworkloadsV1Violation {
   ///
   /// Output only.
   core.String? resolveTime;
+
+  /// Name of the resource like
+  /// //storage.googleapis.com/myprojectxyz-testbucket.
+  ///
+  /// Empty for org-policy violations.
+  ///
+  /// Optional. Output only.
+  core.String? resourceName;
+
+  /// Type of the resource like compute.googleapis.com/Disk, etc.
+  ///
+  /// Empty for org-policy violations.
+  ///
+  /// Optional. Output only.
+  core.String? resourceType;
 
   /// State of the violation
   ///
@@ -1268,9 +1311,19 @@ class GoogleCloudAssuredworkloadsV1Violation {
   /// Output only.
   core.String? updateTime;
 
+  /// Type of the violation
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "VIOLATION_TYPE_UNSPECIFIED" : Unspecified type.
+  /// - "ORG_POLICY" : Org Policy Violation.
+  /// - "RESOURCE" : Resource Violation.
+  core.String? violationType;
+
   GoogleCloudAssuredworkloadsV1Violation({
     this.acknowledged,
     this.acknowledgementTime,
+    this.associatedOrgPolicyViolationId,
     this.auditLogLink,
     this.beginTime,
     this.category,
@@ -1280,10 +1333,14 @@ class GoogleCloudAssuredworkloadsV1Violation {
     this.name,
     this.nonCompliantOrgPolicy,
     this.orgPolicyConstraint,
+    this.parentProjectNumber,
     this.remediation,
     this.resolveTime,
+    this.resourceName,
+    this.resourceType,
     this.state,
     this.updateTime,
+    this.violationType,
   });
 
   GoogleCloudAssuredworkloadsV1Violation.fromJson(core.Map json_)
@@ -1294,6 +1351,10 @@ class GoogleCloudAssuredworkloadsV1Violation {
           acknowledgementTime: json_.containsKey('acknowledgementTime')
               ? json_['acknowledgementTime'] as core.String
               : null,
+          associatedOrgPolicyViolationId:
+              json_.containsKey('associatedOrgPolicyViolationId')
+                  ? json_['associatedOrgPolicyViolationId'] as core.String
+                  : null,
           auditLogLink: json_.containsKey('auditLogLink')
               ? json_['auditLogLink'] as core.String
               : null,
@@ -1324,6 +1385,9 @@ class GoogleCloudAssuredworkloadsV1Violation {
           orgPolicyConstraint: json_.containsKey('orgPolicyConstraint')
               ? json_['orgPolicyConstraint'] as core.String
               : null,
+          parentProjectNumber: json_.containsKey('parentProjectNumber')
+              ? json_['parentProjectNumber'] as core.String
+              : null,
           remediation: json_.containsKey('remediation')
               ? GoogleCloudAssuredworkloadsV1ViolationRemediation.fromJson(
                   json_['remediation'] as core.Map<core.String, core.dynamic>)
@@ -1331,10 +1395,19 @@ class GoogleCloudAssuredworkloadsV1Violation {
           resolveTime: json_.containsKey('resolveTime')
               ? json_['resolveTime'] as core.String
               : null,
+          resourceName: json_.containsKey('resourceName')
+              ? json_['resourceName'] as core.String
+              : null,
+          resourceType: json_.containsKey('resourceType')
+              ? json_['resourceType'] as core.String
+              : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
           updateTime: json_.containsKey('updateTime')
               ? json_['updateTime'] as core.String
+              : null,
+          violationType: json_.containsKey('violationType')
+              ? json_['violationType'] as core.String
               : null,
         );
 
@@ -1342,6 +1415,8 @@ class GoogleCloudAssuredworkloadsV1Violation {
         if (acknowledged != null) 'acknowledged': acknowledged!,
         if (acknowledgementTime != null)
           'acknowledgementTime': acknowledgementTime!,
+        if (associatedOrgPolicyViolationId != null)
+          'associatedOrgPolicyViolationId': associatedOrgPolicyViolationId!,
         if (auditLogLink != null) 'auditLogLink': auditLogLink!,
         if (beginTime != null) 'beginTime': beginTime!,
         if (category != null) 'category': category!,
@@ -1354,16 +1429,19 @@ class GoogleCloudAssuredworkloadsV1Violation {
           'nonCompliantOrgPolicy': nonCompliantOrgPolicy!,
         if (orgPolicyConstraint != null)
           'orgPolicyConstraint': orgPolicyConstraint!,
+        if (parentProjectNumber != null)
+          'parentProjectNumber': parentProjectNumber!,
         if (remediation != null) 'remediation': remediation!,
         if (resolveTime != null) 'resolveTime': resolveTime!,
+        if (resourceName != null) 'resourceName': resourceName!,
+        if (resourceType != null) 'resourceType': resourceType!,
         if (state != null) 'state': state!,
         if (updateTime != null) 'updateTime': updateTime!,
+        if (violationType != null) 'violationType': violationType!,
       };
 }
 
 /// Violation exception detail.
-///
-/// Next Id: 6
 class GoogleCloudAssuredworkloadsV1ViolationExceptionContext {
   /// Timestamp when the violation was acknowledged.
   core.String? acknowledgementTime;
@@ -1428,6 +1506,8 @@ class GoogleCloudAssuredworkloadsV1ViolationRemediation {
   /// for list org policy which have denied values in the monitoring rule
   /// - "REMEDIATION_RESTRICT_CMEK_CRYPTO_KEY_PROJECTS_ORG_POLICY_VIOLATION" :
   /// Remediation type for gcp.restrictCmekCryptoKeyProjects
+  /// - "REMEDIATION_RESOURCE_VIOLATION" : Remediation type for resource
+  /// violation.
   core.String? remediationType;
 
   GoogleCloudAssuredworkloadsV1ViolationRemediation({
@@ -1620,8 +1700,7 @@ class GoogleCloudAssuredworkloadsV1Workload {
   /// Support controls
   /// - "ITAR" : International Traffic in Arms Regulations
   /// - "AU_REGIONS_AND_US_SUPPORT" : Assured Workloads for Australia Regions
-  /// and Support controls Available for public preview consumption. Don't
-  /// create production workloads.
+  /// and Support controls
   /// - "ASSURED_WORKLOADS_FOR_PARTNERS" : Assured Workloads for Partners;
   /// - "ISR_REGIONS" : Assured Workloads for Israel
   /// - "ISR_REGIONS_AND_SUPPORT" : Assured Workloads for Israel Regions
@@ -1937,22 +2016,38 @@ class GoogleCloudAssuredworkloadsV1Workload {
 
 /// Represents the Compliance Status of this workload
 class GoogleCloudAssuredworkloadsV1WorkloadComplianceStatus {
+  /// Number of current resource violations which are not acknowledged.
+  core.int? acknowledgedResourceViolationCount;
+
   /// Number of current orgPolicy violations which are acknowledged.
   core.int? acknowledgedViolationCount;
+
+  /// Number of current resource violations which are acknowledged.
+  core.int? activeResourceViolationCount;
 
   /// Number of current orgPolicy violations which are not acknowledged.
   core.int? activeViolationCount;
 
   GoogleCloudAssuredworkloadsV1WorkloadComplianceStatus({
+    this.acknowledgedResourceViolationCount,
     this.acknowledgedViolationCount,
+    this.activeResourceViolationCount,
     this.activeViolationCount,
   });
 
   GoogleCloudAssuredworkloadsV1WorkloadComplianceStatus.fromJson(core.Map json_)
       : this(
+          acknowledgedResourceViolationCount:
+              json_.containsKey('acknowledgedResourceViolationCount')
+                  ? json_['acknowledgedResourceViolationCount'] as core.int
+                  : null,
           acknowledgedViolationCount:
               json_.containsKey('acknowledgedViolationCount')
                   ? json_['acknowledgedViolationCount'] as core.int
+                  : null,
+          activeResourceViolationCount:
+              json_.containsKey('activeResourceViolationCount')
+                  ? json_['activeResourceViolationCount'] as core.int
                   : null,
           activeViolationCount: json_.containsKey('activeViolationCount')
               ? json_['activeViolationCount'] as core.int
@@ -1960,8 +2055,13 @@ class GoogleCloudAssuredworkloadsV1WorkloadComplianceStatus {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (acknowledgedResourceViolationCount != null)
+          'acknowledgedResourceViolationCount':
+              acknowledgedResourceViolationCount!,
         if (acknowledgedViolationCount != null)
           'acknowledgedViolationCount': acknowledgedViolationCount!,
+        if (activeResourceViolationCount != null)
+          'activeResourceViolationCount': activeResourceViolationCount!,
         if (activeViolationCount != null)
           'activeViolationCount': activeViolationCount!,
       };

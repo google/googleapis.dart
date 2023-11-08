@@ -3114,6 +3114,11 @@ class Workstation {
   /// Optional.
   core.String? displayName;
 
+  /// Environment variables passed to the workstation container's entrypoint.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? env;
+
   /// Checksum computed by the server.
   ///
   /// May be sent on update and delete requests to make sure that the client has
@@ -3185,6 +3190,7 @@ class Workstation {
     this.createTime,
     this.deleteTime,
     this.displayName,
+    this.env,
     this.etag,
     this.host,
     this.labels,
@@ -3216,6 +3222,14 @@ class Workstation {
           displayName: json_.containsKey('displayName')
               ? json_['displayName'] as core.String
               : null,
+          env: json_.containsKey('env')
+              ? (json_['env'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
           etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
           host: json_.containsKey('host') ? json_['host'] as core.String : null,
           labels: json_.containsKey('labels')
@@ -3246,6 +3260,7 @@ class Workstation {
         if (createTime != null) 'createTime': createTime!,
         if (deleteTime != null) 'deleteTime': deleteTime!,
         if (displayName != null) 'displayName': displayName!,
+        if (env != null) 'env': env!,
         if (etag != null) 'etag': etag!,
         if (host != null) 'host': host!,
         if (labels != null) 'labels': labels!,

@@ -27,6 +27,8 @@
 ///       - [BillingAccountsLocationsBucketsViewsResource]
 ///         - [BillingAccountsLocationsBucketsViewsLogsResource]
 ///     - [BillingAccountsLocationsOperationsResource]
+///     - [BillingAccountsLocationsRecentQueriesResource]
+///     - [BillingAccountsLocationsSavedQueriesResource]
 ///   - [BillingAccountsLogsResource]
 ///   - [BillingAccountsSinksResource]
 /// - [EntriesResource]
@@ -39,6 +41,8 @@
 ///       - [FoldersLocationsBucketsViewsResource]
 ///         - [FoldersLocationsBucketsViewsLogsResource]
 ///     - [FoldersLocationsOperationsResource]
+///     - [FoldersLocationsRecentQueriesResource]
+///     - [FoldersLocationsSavedQueriesResource]
 ///   - [FoldersLogsResource]
 ///   - [FoldersSinksResource]
 /// - [LocationsResource]
@@ -56,6 +60,8 @@
 ///       - [OrganizationsLocationsBucketsViewsResource]
 ///         - [OrganizationsLocationsBucketsViewsLogsResource]
 ///     - [OrganizationsLocationsOperationsResource]
+///     - [OrganizationsLocationsRecentQueriesResource]
+///     - [OrganizationsLocationsSavedQueriesResource]
 ///   - [OrganizationsLogsResource]
 ///   - [OrganizationsSinksResource]
 /// - [ProjectsResource]
@@ -66,6 +72,8 @@
 ///       - [ProjectsLocationsBucketsViewsResource]
 ///         - [ProjectsLocationsBucketsViewsLogsResource]
 ///     - [ProjectsLocationsOperationsResource]
+///     - [ProjectsLocationsRecentQueriesResource]
+///     - [ProjectsLocationsSavedQueriesResource]
 ///   - [ProjectsLogsResource]
 ///   - [ProjectsMetricsResource]
 ///   - [ProjectsSinksResource]
@@ -501,6 +509,10 @@ class BillingAccountsLocationsResource {
       BillingAccountsLocationsBucketsResource(_requester);
   BillingAccountsLocationsOperationsResource get operations =>
       BillingAccountsLocationsOperationsResource(_requester);
+  BillingAccountsLocationsRecentQueriesResource get recentQueries =>
+      BillingAccountsLocationsRecentQueriesResource(_requester);
+  BillingAccountsLocationsSavedQueriesResource get savedQueries =>
+      BillingAccountsLocationsSavedQueriesResource(_requester);
 
   BillingAccountsLocationsResource(commons.ApiRequester client)
       : _requester = client;
@@ -1673,6 +1685,232 @@ class BillingAccountsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class BillingAccountsLocationsRecentQueriesResource {
+  final commons.ApiRequester _requester;
+
+  BillingAccountsLocationsRecentQueriesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists the RecentQueries that were created by the user making the request.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource to which the listed queries belong.
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]" For
+  /// example:projects/my-project/locations/us-central1Note: The location
+  /// portion of the resource must be specified, but supplying the character -
+  /// in place of LOCATION_ID will return all recent queries.
+  /// Value must have pattern `^billingAccounts/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
+  ///
+  /// [pageToken] - Optional. If present, then retrieve the next batch of
+  /// results from the preceding call to this method. pageToken must be the
+  /// value of nextPageToken from the previous response. The values of other
+  /// method parameters should be identical to those in the previous call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListRecentQueriesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListRecentQueriesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/recentQueries';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListRecentQueriesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class BillingAccountsLocationsSavedQueriesResource {
+  final commons.ApiRequester _requester;
+
+  BillingAccountsLocationsSavedQueriesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new SavedQuery for the user making the request.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource in which to create the saved
+  /// query: "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]" For example:
+  /// "projects/my-project/locations/global"
+  /// "organizations/123456789/locations/us-central1"
+  /// Value must have pattern `^billingAccounts/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [savedQueryId] - Optional. The ID to use for the saved query, which will
+  /// become the final component of the saved query's resource name.If the
+  /// saved_query_id is not provided, the system will generate an alphanumeric
+  /// ID.The saved_query_id is limited to 100 characters and can include only
+  /// the following characters: upper and lower-case alphanumeric characters,
+  /// underscores, hyphens, and periods. First character has to be alphanumeric.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SavedQuery].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SavedQuery> create(
+    SavedQuery request,
+    core.String parent, {
+    core.String? savedQueryId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (savedQueryId != null) 'savedQueryId': [savedQueryId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/savedQueries';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return SavedQuery.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes an existing SavedQuery that was created by the user making the
+  /// request.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The full resource name of the saved query to delete.
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/savedQueries/\[QUERY_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/savedQueries/\[QUERY_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/savedQueries/\[QUERY_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/savedQueries/\[QUERY_ID\]"
+  /// For example:
+  /// "projects/my-project/locations/global/savedQueries/my-saved-query"
+  /// Value must have pattern
+  /// `^billingAccounts/\[^/\]+/locations/\[^/\]+/savedQueries/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists the SavedQueries that were created by the user making the request.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource to which the listed queries belong.
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]" For example:
+  /// "projects/my-project/locations/us-central1" Note: The locations portion of
+  /// the resource must be specified. To get a list of all saved queries, a
+  /// wildcard character - can be used for LOCATION_ID, for example:
+  /// "projects/my-project/locations/-"
+  /// Value must have pattern `^billingAccounts/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request.Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
+  ///
+  /// [pageToken] - Optional. If present, then retrieve the next batch of
+  /// results from the preceding call to this method. pageToken must be the
+  /// value of nextPageToken from the previous response. The values of other
+  /// method parameters should be identical to those in the previous call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListSavedQueriesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListSavedQueriesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/savedQueries';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListSavedQueriesResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -3017,6 +3255,10 @@ class FoldersLocationsResource {
       FoldersLocationsBucketsResource(_requester);
   FoldersLocationsOperationsResource get operations =>
       FoldersLocationsOperationsResource(_requester);
+  FoldersLocationsRecentQueriesResource get recentQueries =>
+      FoldersLocationsRecentQueriesResource(_requester);
+  FoldersLocationsSavedQueriesResource get savedQueries =>
+      FoldersLocationsSavedQueriesResource(_requester);
 
   FoldersLocationsResource(commons.ApiRequester client) : _requester = client;
 
@@ -4188,6 +4430,232 @@ class FoldersLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class FoldersLocationsRecentQueriesResource {
+  final commons.ApiRequester _requester;
+
+  FoldersLocationsRecentQueriesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists the RecentQueries that were created by the user making the request.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource to which the listed queries belong.
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]" For
+  /// example:projects/my-project/locations/us-central1Note: The location
+  /// portion of the resource must be specified, but supplying the character -
+  /// in place of LOCATION_ID will return all recent queries.
+  /// Value must have pattern `^folders/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
+  ///
+  /// [pageToken] - Optional. If present, then retrieve the next batch of
+  /// results from the preceding call to this method. pageToken must be the
+  /// value of nextPageToken from the previous response. The values of other
+  /// method parameters should be identical to those in the previous call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListRecentQueriesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListRecentQueriesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/recentQueries';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListRecentQueriesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class FoldersLocationsSavedQueriesResource {
+  final commons.ApiRequester _requester;
+
+  FoldersLocationsSavedQueriesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new SavedQuery for the user making the request.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource in which to create the saved
+  /// query: "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]" For example:
+  /// "projects/my-project/locations/global"
+  /// "organizations/123456789/locations/us-central1"
+  /// Value must have pattern `^folders/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [savedQueryId] - Optional. The ID to use for the saved query, which will
+  /// become the final component of the saved query's resource name.If the
+  /// saved_query_id is not provided, the system will generate an alphanumeric
+  /// ID.The saved_query_id is limited to 100 characters and can include only
+  /// the following characters: upper and lower-case alphanumeric characters,
+  /// underscores, hyphens, and periods. First character has to be alphanumeric.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SavedQuery].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SavedQuery> create(
+    SavedQuery request,
+    core.String parent, {
+    core.String? savedQueryId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (savedQueryId != null) 'savedQueryId': [savedQueryId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/savedQueries';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return SavedQuery.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes an existing SavedQuery that was created by the user making the
+  /// request.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The full resource name of the saved query to delete.
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/savedQueries/\[QUERY_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/savedQueries/\[QUERY_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/savedQueries/\[QUERY_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/savedQueries/\[QUERY_ID\]"
+  /// For example:
+  /// "projects/my-project/locations/global/savedQueries/my-saved-query"
+  /// Value must have pattern
+  /// `^folders/\[^/\]+/locations/\[^/\]+/savedQueries/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists the SavedQueries that were created by the user making the request.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource to which the listed queries belong.
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]" For example:
+  /// "projects/my-project/locations/us-central1" Note: The locations portion of
+  /// the resource must be specified. To get a list of all saved queries, a
+  /// wildcard character - can be used for LOCATION_ID, for example:
+  /// "projects/my-project/locations/-"
+  /// Value must have pattern `^folders/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request.Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
+  ///
+  /// [pageToken] - Optional. If present, then retrieve the next batch of
+  /// results from the preceding call to this method. pageToken must be the
+  /// value of nextPageToken from the previous response. The values of other
+  /// method parameters should be identical to those in the previous call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListSavedQueriesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListSavedQueriesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/savedQueries';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListSavedQueriesResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -6463,6 +6931,10 @@ class OrganizationsLocationsResource {
       OrganizationsLocationsBucketsResource(_requester);
   OrganizationsLocationsOperationsResource get operations =>
       OrganizationsLocationsOperationsResource(_requester);
+  OrganizationsLocationsRecentQueriesResource get recentQueries =>
+      OrganizationsLocationsRecentQueriesResource(_requester);
+  OrganizationsLocationsSavedQueriesResource get savedQueries =>
+      OrganizationsLocationsSavedQueriesResource(_requester);
 
   OrganizationsLocationsResource(commons.ApiRequester client)
       : _requester = client;
@@ -7639,6 +8111,232 @@ class OrganizationsLocationsOperationsResource {
   }
 }
 
+class OrganizationsLocationsRecentQueriesResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsRecentQueriesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists the RecentQueries that were created by the user making the request.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource to which the listed queries belong.
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]" For
+  /// example:projects/my-project/locations/us-central1Note: The location
+  /// portion of the resource must be specified, but supplying the character -
+  /// in place of LOCATION_ID will return all recent queries.
+  /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
+  ///
+  /// [pageToken] - Optional. If present, then retrieve the next batch of
+  /// results from the preceding call to this method. pageToken must be the
+  /// value of nextPageToken from the previous response. The values of other
+  /// method parameters should be identical to those in the previous call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListRecentQueriesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListRecentQueriesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/recentQueries';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListRecentQueriesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class OrganizationsLocationsSavedQueriesResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsSavedQueriesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new SavedQuery for the user making the request.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource in which to create the saved
+  /// query: "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]" For example:
+  /// "projects/my-project/locations/global"
+  /// "organizations/123456789/locations/us-central1"
+  /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [savedQueryId] - Optional. The ID to use for the saved query, which will
+  /// become the final component of the saved query's resource name.If the
+  /// saved_query_id is not provided, the system will generate an alphanumeric
+  /// ID.The saved_query_id is limited to 100 characters and can include only
+  /// the following characters: upper and lower-case alphanumeric characters,
+  /// underscores, hyphens, and periods. First character has to be alphanumeric.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SavedQuery].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SavedQuery> create(
+    SavedQuery request,
+    core.String parent, {
+    core.String? savedQueryId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (savedQueryId != null) 'savedQueryId': [savedQueryId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/savedQueries';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return SavedQuery.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes an existing SavedQuery that was created by the user making the
+  /// request.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The full resource name of the saved query to delete.
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/savedQueries/\[QUERY_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/savedQueries/\[QUERY_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/savedQueries/\[QUERY_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/savedQueries/\[QUERY_ID\]"
+  /// For example:
+  /// "projects/my-project/locations/global/savedQueries/my-saved-query"
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/savedQueries/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists the SavedQueries that were created by the user making the request.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource to which the listed queries belong.
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]" For example:
+  /// "projects/my-project/locations/us-central1" Note: The locations portion of
+  /// the resource must be specified. To get a list of all saved queries, a
+  /// wildcard character - can be used for LOCATION_ID, for example:
+  /// "projects/my-project/locations/-"
+  /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request.Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
+  ///
+  /// [pageToken] - Optional. If present, then retrieve the next batch of
+  /// results from the preceding call to this method. pageToken must be the
+  /// value of nextPageToken from the previous response. The values of other
+  /// method parameters should be identical to those in the previous call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListSavedQueriesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListSavedQueriesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/savedQueries';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListSavedQueriesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class OrganizationsLogsResource {
   final commons.ApiRequester _requester;
 
@@ -8506,6 +9204,10 @@ class ProjectsLocationsResource {
       ProjectsLocationsBucketsResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
       ProjectsLocationsOperationsResource(_requester);
+  ProjectsLocationsRecentQueriesResource get recentQueries =>
+      ProjectsLocationsRecentQueriesResource(_requester);
+  ProjectsLocationsSavedQueriesResource get savedQueries =>
+      ProjectsLocationsSavedQueriesResource(_requester);
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
@@ -9677,6 +10379,232 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsRecentQueriesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsRecentQueriesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists the RecentQueries that were created by the user making the request.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource to which the listed queries belong.
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]" For
+  /// example:projects/my-project/locations/us-central1Note: The location
+  /// portion of the resource must be specified, but supplying the character -
+  /// in place of LOCATION_ID will return all recent queries.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
+  ///
+  /// [pageToken] - Optional. If present, then retrieve the next batch of
+  /// results from the preceding call to this method. pageToken must be the
+  /// value of nextPageToken from the previous response. The values of other
+  /// method parameters should be identical to those in the previous call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListRecentQueriesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListRecentQueriesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/recentQueries';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListRecentQueriesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsSavedQueriesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsSavedQueriesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new SavedQuery for the user making the request.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource in which to create the saved
+  /// query: "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]" For example:
+  /// "projects/my-project/locations/global"
+  /// "organizations/123456789/locations/us-central1"
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [savedQueryId] - Optional. The ID to use for the saved query, which will
+  /// become the final component of the saved query's resource name.If the
+  /// saved_query_id is not provided, the system will generate an alphanumeric
+  /// ID.The saved_query_id is limited to 100 characters and can include only
+  /// the following characters: upper and lower-case alphanumeric characters,
+  /// underscores, hyphens, and periods. First character has to be alphanumeric.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SavedQuery].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SavedQuery> create(
+    SavedQuery request,
+    core.String parent, {
+    core.String? savedQueryId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (savedQueryId != null) 'savedQueryId': [savedQueryId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/savedQueries';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return SavedQuery.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes an existing SavedQuery that was created by the user making the
+  /// request.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The full resource name of the saved query to delete.
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/savedQueries/\[QUERY_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/savedQueries/\[QUERY_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/savedQueries/\[QUERY_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/savedQueries/\[QUERY_ID\]"
+  /// For example:
+  /// "projects/my-project/locations/global/savedQueries/my-saved-query"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/savedQueries/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists the SavedQueries that were created by the user making the request.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource to which the listed queries belong.
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]" For example:
+  /// "projects/my-project/locations/us-central1" Note: The locations portion of
+  /// the resource must be specified. To get a list of all saved queries, a
+  /// wildcard character - can be used for LOCATION_ID, for example:
+  /// "projects/my-project/locations/-"
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request.Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
+  ///
+  /// [pageToken] - Optional. If present, then retrieve the next batch of
+  /// results from the preceding call to this method. pageToken must be the
+  /// value of nextPageToken from the previous response. The values of other
+  /// method parameters should be identical to those in the previous call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListSavedQueriesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListSavedQueriesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/savedQueries';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListSavedQueriesResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -11203,6 +12131,71 @@ class CopyLogEntriesRequest {
       };
 }
 
+/// Describes the custom _Default sink configuration that is used to override
+/// the built-in _Default sink configuration in newly created resource
+/// containers, such as projects or folders.
+class DefaultSinkConfig {
+  /// Specifies the set of exclusions to be added to the _Default sink in newly
+  /// created resource containers.
+  ///
+  /// Optional.
+  core.List<LogExclusion>? exclusions;
+
+  /// An advanced logs filter
+  /// (https://cloud.google.com/logging/docs/view/advanced-queries).
+  ///
+  /// The only exported log entries are those that are in the resource owning
+  /// the sink and that match the filter.For
+  /// example:logName="projects/\[PROJECT_ID\]/logs/\[LOG_ID\]" AND
+  /// severity\>=ERRORCannot be empty or unset if mode == OVERWRITE. In order to
+  /// match all logs, use the following line as the value of filter and do not
+  /// use exclusions:logName:*
+  ///
+  /// Optional.
+  core.String? filter;
+
+  /// Determines the behavior to apply to the built-in _Default sink inclusion
+  /// filter.Exclusions are always appended, as built-in _Default sinks have no
+  /// exclusions.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "FILTER_WRITE_MODE_UNSPECIFIED" : The filter's write mode is
+  /// unspecified. This mode must not be used.
+  /// - "APPEND" : The contents of filter will be appended to the built-in
+  /// _Default sink filter. Using the append mode with an empty filter will keep
+  /// the sink inclusion filter unchanged.
+  /// - "OVERWRITE" : The contents of filter will overwrite the built-in
+  /// _Default sink filter.
+  core.String? mode;
+
+  DefaultSinkConfig({
+    this.exclusions,
+    this.filter,
+    this.mode,
+  });
+
+  DefaultSinkConfig.fromJson(core.Map json_)
+      : this(
+          exclusions: json_.containsKey('exclusions')
+              ? (json_['exclusions'] as core.List)
+                  .map((value) => LogExclusion.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          filter: json_.containsKey('filter')
+              ? json_['filter'] as core.String
+              : null,
+          mode: json_.containsKey('mode') ? json_['mode'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (exclusions != null) 'exclusions': exclusions!,
+        if (filter != null) 'filter': filter!,
+        if (mode != null) 'mode': mode!,
+      };
+}
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
 ///
@@ -11986,6 +12979,116 @@ class ListOperationsResponse {
       };
 }
 
+/// The response from ListRecentQueries.
+class ListRecentQueriesResponse {
+  /// If there might be more results than appear in this response, then
+  /// nextPageToken is included.
+  ///
+  /// To get the next set of results, call the same method again using the value
+  /// of nextPageToken as pageToken.
+  core.String? nextPageToken;
+
+  /// A list of recent queries.
+  core.List<RecentQuery>? recentQueries;
+
+  /// The unreachable resources.
+  ///
+  /// Each resource can be either 1) a saved query if a specific query is
+  /// unreachable or 2) a location if a specific location is unreachable.
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/recentQueries/\[QUERY_ID\]"
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]" For
+  /// example:"projects/my-project/locations/global/recentQueries/12345678"
+  /// "projects/my-project/locations/global"If there are unreachable resources,
+  /// the response will first return pages that contain recent queries, and then
+  /// return pages that contain the unreachable resources.
+  core.List<core.String>? unreachable;
+
+  ListRecentQueriesResponse({
+    this.nextPageToken,
+    this.recentQueries,
+    this.unreachable,
+  });
+
+  ListRecentQueriesResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          recentQueries: json_.containsKey('recentQueries')
+              ? (json_['recentQueries'] as core.List)
+                  .map((value) => RecentQuery.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (recentQueries != null) 'recentQueries': recentQueries!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
+/// The response from ListSavedQueries.
+class ListSavedQueriesResponse {
+  /// If there might be more results than appear in this response, then
+  /// nextPageToken is included.
+  ///
+  /// To get the next set of results, call the same method again using the value
+  /// of nextPageToken as pageToken.
+  core.String? nextPageToken;
+
+  /// A list of saved queries.
+  core.List<SavedQuery>? savedQueries;
+
+  /// The unreachable resources.
+  ///
+  /// It can be either 1) a saved query if a specific query is unreachable or 2)
+  /// a location if a specific location is unreachabe.
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/savedQueries/\[QUERY_ID\]"
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]" For example:
+  /// "projects/my-project/locations/global/savedQueries/12345678"
+  /// "projects/my-project/locations/global" If there are unreachable resources,
+  /// the response will first return pages that contain saved queries, and then
+  /// return pages that contain the unreachable resources.
+  core.List<core.String>? unreachable;
+
+  ListSavedQueriesResponse({
+    this.nextPageToken,
+    this.savedQueries,
+    this.unreachable,
+  });
+
+  ListSavedQueriesResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          savedQueries: json_.containsKey('savedQueries')
+              ? (json_['savedQueries'] as core.List)
+                  .map((value) => SavedQuery.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (savedQueries != null) 'savedQueries': savedQueries!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
 /// Result returned from ListSinks.
 class ListSinksResponse {
   /// If there might be more results than appear in this response, then
@@ -12213,6 +13316,18 @@ class LogBucket {
 
 /// An individual entry in a log.
 class LogEntry {
+  /// The Error Reporting (https://cloud.google.com/error-reporting) error
+  /// groups associated with this LogEntry.
+  ///
+  /// Error Reporting sets the values for this field during error group
+  /// creation.For more information, see View error details(
+  /// https://cloud.google.com/error-reporting/docs/viewing-errors#view_error_details)This
+  /// field isn't available during log routing
+  /// (https://cloud.google.com/logging/docs/routing/overview)
+  ///
+  /// Output only.
+  core.List<LogErrorGroup>? errorGroups;
+
   /// Information about the HTTP request associated with this log entry, if
   /// applicable.
   ///
@@ -12414,6 +13529,7 @@ class LogEntry {
   core.bool? traceSampled;
 
   LogEntry({
+    this.errorGroups,
     this.httpRequest,
     this.insertId,
     this.jsonPayload,
@@ -12436,6 +13552,12 @@ class LogEntry {
 
   LogEntry.fromJson(core.Map json_)
       : this(
+          errorGroups: json_.containsKey('errorGroups')
+              ? (json_['errorGroups'] as core.List)
+                  .map((value) => LogErrorGroup.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           httpRequest: json_.containsKey('httpRequest')
               ? HttpRequest.fromJson(
                   json_['httpRequest'] as core.Map<core.String, core.dynamic>)
@@ -12503,6 +13625,7 @@ class LogEntry {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (errorGroups != null) 'errorGroups': errorGroups!,
         if (httpRequest != null) 'httpRequest': httpRequest!,
         if (insertId != null) 'insertId': insertId!,
         if (jsonPayload != null) 'jsonPayload': jsonPayload!,
@@ -12628,6 +13751,32 @@ class LogEntrySourceLocation {
         if (file != null) 'file': file!,
         if (function != null) 'function': function!,
         if (line != null) 'line': line!,
+      };
+}
+
+/// Contains metadata that associates the LogEntry to Error Reporting error
+/// groups.
+class LogErrorGroup {
+  /// The id is a unique identifier for a particular error group; it is the last
+  /// part of the error group resource name: /projects//errors/.
+  ///
+  /// Example: COShysOX0r_51QE The id is derived from key parts of the error-log
+  /// content and is treated as Service Data. For information about how Service
+  /// Data is handled, see Google Cloud Privacy Notice
+  /// (https://cloud.google.com/terms/cloud-privacy-notice).
+  core.String? id;
+
+  LogErrorGroup({
+    this.id,
+  });
+
+  LogErrorGroup.fromJson(core.Map json_)
+      : this(
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (id != null) 'id': id!,
       };
 }
 
@@ -13250,6 +14399,60 @@ class LogView {
       };
 }
 
+/// Describes a Cloud Logging query that can be run in Logs Explorer UI or via
+/// the logging API.In addition to the query itself, additional information may
+/// be stored to capture the display configuration and other UI state used in
+/// association with analysis of query results.
+class LoggingQuery {
+  /// An advanced query using the Logging Query Language
+  /// (https://cloud.google.com/logging/docs/view/logging-query-language).
+  ///
+  /// The maximum length of the filter is 20000 characters.
+  core.String? filter;
+
+  /// Characters will be counted from the end of the string.
+  core.int? summaryFieldEnd;
+
+  /// Characters will be counted from the start of the string.
+  core.int? summaryFieldStart;
+
+  /// The set of summary fields to display for this saved query.
+  core.List<SummaryField>? summaryFields;
+
+  LoggingQuery({
+    this.filter,
+    this.summaryFieldEnd,
+    this.summaryFieldStart,
+    this.summaryFields,
+  });
+
+  LoggingQuery.fromJson(core.Map json_)
+      : this(
+          filter: json_.containsKey('filter')
+              ? json_['filter'] as core.String
+              : null,
+          summaryFieldEnd: json_.containsKey('summaryFieldEnd')
+              ? json_['summaryFieldEnd'] as core.int
+              : null,
+          summaryFieldStart: json_.containsKey('summaryFieldStart')
+              ? json_['summaryFieldStart'] as core.int
+              : null,
+          summaryFields: json_.containsKey('summaryFields')
+              ? (json_['summaryFields'] as core.List)
+                  .map((value) => SummaryField.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (filter != null) 'filter': filter!,
+        if (summaryFieldEnd != null) 'summaryFieldEnd': summaryFieldEnd!,
+        if (summaryFieldStart != null) 'summaryFieldStart': summaryFieldStart!,
+        if (summaryFields != null) 'summaryFields': summaryFields!,
+      };
+}
+
 /// Defines a metric type and its schema.
 ///
 /// Once a metric descriptor is created, deleting or altering it stops data
@@ -13758,9 +14961,172 @@ class Operation {
       };
 }
 
+/// Describes an analytics query that can be run in the Log Analytics page of
+/// Google Cloud console.Preview: This is a preview feature and may be subject
+/// to change before final release.
+class OpsAnalyticsQuery {
+  /// A logs analytics SQL query, which generally follows BigQuery format.This
+  /// is the SQL query that appears in the Log Analytics UI's query editor.
+  ///
+  /// Required.
+  core.String? sqlQueryText;
+
+  OpsAnalyticsQuery({
+    this.sqlQueryText,
+  });
+
+  OpsAnalyticsQuery.fromJson(core.Map json_)
+      : this(
+          sqlQueryText: json_.containsKey('sqlQueryText')
+              ? json_['sqlQueryText'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (sqlQueryText != null) 'sqlQueryText': sqlQueryText!,
+      };
+}
+
+/// Describes a recent query executed on the Logs Explorer or Log Analytics page
+/// within the last ~ 30 days.
+class RecentQuery {
+  /// The timestamp when this query was last run.
+  core.String? lastRunTime;
+
+  /// Logging query that can be executed in Logs Explorer or via Logging API.
+  LoggingQuery? loggingQuery;
+
+  /// Resource name of the recent query.In the format:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/recentQueries/\[QUERY_ID\]"
+  /// For a list of supported locations, see Supported Regions
+  /// (https://cloud.google.com/logging/docs/region-support)The QUERY_ID is a
+  /// system generated alphanumeric ID.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Analytics query that can be executed in Log Analytics.
+  OpsAnalyticsQuery? opsAnalyticsQuery;
+
+  RecentQuery({
+    this.lastRunTime,
+    this.loggingQuery,
+    this.name,
+    this.opsAnalyticsQuery,
+  });
+
+  RecentQuery.fromJson(core.Map json_)
+      : this(
+          lastRunTime: json_.containsKey('lastRunTime')
+              ? json_['lastRunTime'] as core.String
+              : null,
+          loggingQuery: json_.containsKey('loggingQuery')
+              ? LoggingQuery.fromJson(
+                  json_['loggingQuery'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          opsAnalyticsQuery: json_.containsKey('opsAnalyticsQuery')
+              ? OpsAnalyticsQuery.fromJson(json_['opsAnalyticsQuery']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (lastRunTime != null) 'lastRunTime': lastRunTime!,
+        if (loggingQuery != null) 'loggingQuery': loggingQuery!,
+        if (name != null) 'name': name!,
+        if (opsAnalyticsQuery != null) 'opsAnalyticsQuery': opsAnalyticsQuery!,
+      };
+}
+
+/// Describes a query that has been saved by a user.
+class SavedQuery {
+  /// The timestamp when the saved query was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// A human readable description of the saved query.
+  core.String? description;
+
+  /// The user specified title for the SavedQuery.
+  core.String? displayName;
+
+  /// Logging query that can be executed in Logs Explorer or via Logging API.
+  LoggingQuery? loggingQuery;
+
+  /// Resource name of the saved query.In the format:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/savedQueries/\[QUERY_ID\]"
+  /// For a list of supported locations, see Supported Regions
+  /// (https://cloud.google.com/logging/docs/region-support#bucket-regions)After
+  /// the saved query is created, the location cannot be changed.If the user
+  /// doesn't provide a QUERY_ID, the system will generate an alphanumeric ID.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Analytics query that can be executed in Log Analytics.
+  OpsAnalyticsQuery? opsAnalyticsQuery;
+
+  /// The timestamp when the saved query was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  SavedQuery({
+    this.createTime,
+    this.description,
+    this.displayName,
+    this.loggingQuery,
+    this.name,
+    this.opsAnalyticsQuery,
+    this.updateTime,
+  });
+
+  SavedQuery.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          loggingQuery: json_.containsKey('loggingQuery')
+              ? LoggingQuery.fromJson(
+                  json_['loggingQuery'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          opsAnalyticsQuery: json_.containsKey('opsAnalyticsQuery')
+              ? OpsAnalyticsQuery.fromJson(json_['opsAnalyticsQuery']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (loggingQuery != null) 'loggingQuery': loggingQuery!,
+        if (name != null) 'name': name!,
+        if (opsAnalyticsQuery != null) 'opsAnalyticsQuery': opsAnalyticsQuery!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
 /// Describes the settings associated with a project, folder, organization,
 /// billing account, or flexible resource.
 class Settings {
+  /// Overrides the built-in configuration for _Default sink.
+  ///
+  /// Optional.
+  DefaultSinkConfig? defaultSinkConfig;
+
   /// If set to true, the _Default sink in newly created projects and folders
   /// will created in a disabled state.
   ///
@@ -13804,10 +15170,12 @@ class Settings {
   /// Output only.
   core.String? kmsServiceAccountId;
 
-  /// The service account for the given container.
+  /// The service account for the given resource container, such as project or
+  /// folder.
   ///
-  /// Sinks use this service account as their writer_identity if no custom
-  /// service account is provided.
+  /// Log sinks use this service account as their writer_identity if no custom
+  /// service account is provided in the request when calling the create sink
+  /// method.
   ///
   /// Output only.
   core.String? loggingServiceAccountId;
@@ -13829,6 +15197,7 @@ class Settings {
   core.String? storageLocation;
 
   Settings({
+    this.defaultSinkConfig,
     this.disableDefaultSink,
     this.kmsKeyName,
     this.kmsServiceAccountId,
@@ -13839,6 +15208,10 @@ class Settings {
 
   Settings.fromJson(core.Map json_)
       : this(
+          defaultSinkConfig: json_.containsKey('defaultSinkConfig')
+              ? DefaultSinkConfig.fromJson(json_['defaultSinkConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           disableDefaultSink: json_.containsKey('disableDefaultSink')
               ? json_['disableDefaultSink'] as core.bool
               : null,
@@ -13858,6 +15231,7 @@ class Settings {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (defaultSinkConfig != null) 'defaultSinkConfig': defaultSinkConfig!,
         if (disableDefaultSink != null)
           'disableDefaultSink': disableDefaultSink!,
         if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
@@ -13878,6 +15252,29 @@ class Settings {
 /// find out more about this error model and how to work with it in the API
 /// Design Guide (https://cloud.google.com/apis/design/errors).
 typedef Status = $Status;
+
+/// A field from the LogEntry that is added to the summary line
+/// (https://cloud.google.com/logging/docs/view/logs-explorer-interface#add-summary-fields)
+/// for a query in the Logs Explorer.
+class SummaryField {
+  /// The field from the LogEntry to include in the summary line, for example
+  /// resource.type or jsonPayload.name.
+  core.String? field;
+
+  SummaryField({
+    this.field,
+  });
+
+  SummaryField.fromJson(core.Map json_)
+      : this(
+          field:
+              json_.containsKey('field') ? json_['field'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (field != null) 'field': field!,
+      };
+}
 
 /// Information about entries that were omitted from the session.
 class SuppressionInfo {

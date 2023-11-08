@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20231029",
+    "revision": "20231112",
     "rootUrl": "https://recaptchaenterprise.googleapis.com/",
     "servicePath": "",
     "title": "reCAPTCHA Enterprise API",
@@ -297,7 +297,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "The resource name for the FirewallPolicy in the format `projects/{project}/firewallpolicies/{firewallpolicy}`.",
+                                    "description": "Identifier. The resource name for the FirewallPolicy in the format `projects/{project}/firewallpolicies/{firewallpolicy}`.",
                                     "location": "path",
                                     "pattern": "^projects/[^/]+/firewallpolicies/[^/]+$",
                                     "required": true,
@@ -502,7 +502,7 @@
                             ],
                             "parameters": {
                                 "name": {
-                                    "description": "The resource name for the Key in the format `projects/{project}/keys/{key}`.",
+                                    "description": "Identifier. The resource name for the Key in the format `projects/{project}/keys/{key}`.",
                                     "location": "path",
                                     "pattern": "^projects/[^/]+/keys/[^/]+$",
                                     "required": true,
@@ -918,7 +918,7 @@
                     "readOnly": true
                 },
                 "name": {
-                    "description": "Output only. The resource name for the Assessment in the format `projects/{project}/assessments/{assessment}`.",
+                    "description": "Output only. Identifier. The resource name for the Assessment in the format `projects/{project}/assessments/{assessment}`.",
                     "readOnly": true,
                     "type": "string"
                 },
@@ -1151,7 +1151,7 @@
                     "type": "string"
                 },
                 "name": {
-                    "description": "The resource name for the FirewallPolicy in the format `projects/{project}/firewallpolicies/{firewallpolicy}`.",
+                    "description": "Identifier. The resource name for the FirewallPolicy in the format `projects/{project}/firewallpolicies/{firewallpolicy}`.",
                     "type": "string"
                 },
                 "path": {
@@ -1360,7 +1360,7 @@
                     "type": "object"
                 },
                 "name": {
-                    "description": "The resource name for the Key in the format `projects/{project}/keys/{key}`.",
+                    "description": "Identifier. The resource name for the Key in the format `projects/{project}/keys/{key}`.",
                     "type": "string"
                 },
                 "testingOptions": {
@@ -1462,7 +1462,7 @@
                     "type": "array"
                 },
                 "name": {
-                    "description": "Output only. The name of the metrics, in the format `projects/{project}/keys/{key}/metrics`.",
+                    "description": "Output only. Identifier. The name of the metrics, in the format `projects/{project}/keys/{key}/metrics`.",
                     "readOnly": true,
                     "type": "string"
                 },
@@ -1529,7 +1529,7 @@
             "id": "GoogleCloudRecaptchaenterpriseV1RelatedAccountGroup",
             "properties": {
                 "name": {
-                    "description": "Required. The resource name for the related account group in the format `projects/{project}/relatedaccountgroups/{related_account_group}`.",
+                    "description": "Required. Identifier. The resource name for the related account group in the format `projects/{project}/relatedaccountgroups/{related_account_group}`.",
                     "type": "string"
                 }
             },
@@ -1545,7 +1545,7 @@
                     "type": "string"
                 },
                 "name": {
-                    "description": "Required. The resource name for this membership in the format `projects/{project}/relatedaccountgroups/{relatedaccountgroup}/memberships/{membership}`.",
+                    "description": "Required. Identifier. The resource name for this membership in the format `projects/{project}/relatedaccountgroups/{relatedaccountgroup}/memberships/{membership}`.",
                     "type": "string"
                 }
             },

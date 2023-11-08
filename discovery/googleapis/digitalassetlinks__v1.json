@@ -15,7 +15,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20231028",
+    "revision": "20231121",
     "rootUrl": "https://digitalassetlinks.googleapis.com/",
     "servicePath": "",
     "title": "Digital Asset Links API",

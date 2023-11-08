@@ -1655,6 +1655,7 @@ api.ExternalTransactionAddress buildExternalTransactionAddress() {
   final o = api.ExternalTransactionAddress();
   buildCounterExternalTransactionAddress++;
   if (buildCounterExternalTransactionAddress < 3) {
+    o.administrativeArea = 'foo';
     o.regionCode = 'foo';
   }
   buildCounterExternalTransactionAddress--;
@@ -1664,6 +1665,10 @@ api.ExternalTransactionAddress buildExternalTransactionAddress() {
 void checkExternalTransactionAddress(api.ExternalTransactionAddress o) {
   buildCounterExternalTransactionAddress++;
   if (buildCounterExternalTransactionAddress < 3) {
+    unittest.expect(
+      o.administrativeArea!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.regionCode!,
       unittest.equals('foo'),
@@ -3507,6 +3512,7 @@ api.RecurringExternalTransaction buildRecurringExternalTransaction() {
     o.externalSubscription = buildExternalSubscription();
     o.externalTransactionToken = 'foo';
     o.initialExternalTransactionId = 'foo';
+    o.migratedTransactionProgram = 'foo';
   }
   buildCounterRecurringExternalTransaction--;
   return o;
@@ -3522,6 +3528,10 @@ void checkRecurringExternalTransaction(api.RecurringExternalTransaction o) {
     );
     unittest.expect(
       o.initialExternalTransactionId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.migratedTransactionProgram!,
       unittest.equals('foo'),
     );
   }
@@ -5251,6 +5261,38 @@ void checkTrack(api.Track o) {
     );
   }
   buildCounterTrack--;
+}
+
+core.int buildCounterTrackConfig = 0;
+api.TrackConfig buildTrackConfig() {
+  final o = api.TrackConfig();
+  buildCounterTrackConfig++;
+  if (buildCounterTrackConfig < 3) {
+    o.formFactor = 'foo';
+    o.track = 'foo';
+    o.type = 'foo';
+  }
+  buildCounterTrackConfig--;
+  return o;
+}
+
+void checkTrackConfig(api.TrackConfig o) {
+  buildCounterTrackConfig++;
+  if (buildCounterTrackConfig < 3) {
+    unittest.expect(
+      o.formFactor!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.track!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterTrackConfig--;
 }
 
 core.List<api.TrackTargetedCountry> buildUnnamed75() => [
@@ -7410,6 +7452,16 @@ void main() {
       final od =
           api.Track.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkTrack(od);
+    });
+  });
+
+  unittest.group('obj-schema-TrackConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildTrackConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TrackConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkTrackConfig(od);
     });
   });
 
@@ -10741,6 +10793,93 @@ void main() {
   });
 
   unittest.group('resource-EditsTracksResource', () {
+    unittest.test('method--create', () async {
+      final mock = HttpServerMock();
+      final res = api.AndroidPublisherApi(mock).edits.tracks;
+      final arg_request = buildTrackConfig();
+      final arg_packageName = 'foo';
+      final arg_editId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.TrackConfig.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkTrackConfig(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 33),
+          unittest.equals('androidpublisher/v3/applications/'),
+        );
+        pathOffset += 33;
+        index = path.indexOf('/edits/', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_packageName'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 7),
+          unittest.equals('/edits/'),
+        );
+        pathOffset += 7;
+        index = path.indexOf('/tracks', pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(
+          subPart,
+          unittest.equals('$arg_editId'),
+        );
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 7),
+          unittest.equals('/tracks'),
+        );
+        pathOffset += 7;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildTrack());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.create(
+          arg_request, arg_packageName, arg_editId,
+          $fields: arg_$fields);
+      checkTrack(response as api.Track);
+    });
+
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
       final res = api.AndroidPublisherApi(mock).edits.tracks;

@@ -192,6 +192,7 @@ api.ApprovalRequest buildApprovalRequest() {
     o.dismiss = buildDismissDecision();
     o.name = 'foo';
     o.requestTime = 'foo';
+    o.requestedDuration = 'foo';
     o.requestedExpiration = 'foo';
     o.requestedLocations = buildAccessLocations();
     o.requestedReason = buildAccessReason();
@@ -213,6 +214,10 @@ void checkApprovalRequest(api.ApprovalRequest o) {
     );
     unittest.expect(
       o.requestTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.requestedDuration!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -445,7 +450,9 @@ api.SignatureInfo buildSignatureInfo() {
   buildCounterSignatureInfo++;
   if (buildCounterSignatureInfo < 3) {
     o.customerKmsKeyVersion = 'foo';
+    o.googleKeyAlgorithm = 'foo';
     o.googlePublicKeyPem = 'foo';
+    o.serializedApprovalRequest = 'foo';
     o.signature = 'foo';
   }
   buildCounterSignatureInfo--;
@@ -460,7 +467,15 @@ void checkSignatureInfo(api.SignatureInfo o) {
       unittest.equals('foo'),
     );
     unittest.expect(
+      o.googleKeyAlgorithm!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.googlePublicKeyPem!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.serializedApprovalRequest!,
       unittest.equals('foo'),
     );
     unittest.expect(

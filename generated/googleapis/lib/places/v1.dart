@@ -216,11 +216,11 @@ class PlacesPhotosResource {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of a photo media in the format:
-  /// `places/place_id/photos/photo_reference/media`. The resource name of a
-  /// photo as returned in a Place object's photos.name field comes with the
-  /// format `places/place_id/photos/photo_reference`. You need to append
-  /// `/media` at the end of the photo resource to get the photo media resource
-  /// name.
+  /// `"places/place_id/photos/photo_reference/media"`. The resource name of a
+  /// photo as returned in a Place object's `photos.name` field comes with the
+  /// format `"places/place_id/photos/photo_reference"`. You need to append
+  /// `"/media"` at the end of the photo resource to get the photo media
+  /// resource name.
   /// Value must have pattern `^places/\[^/\]+/photos/\[^/\]+/media$`.
   ///
   /// [maxHeightPx] - Optional. Specifies the maximum desired height, in pixels,
@@ -248,7 +248,7 @@ class PlacesPhotosResource {
   /// [skipHttpRedirect] - Optional. If set, skip the default HTTP redirect
   /// behavior and render a text format (for example, in JSON format for HTTP
   /// use case) response. If not set, an HTTP redirect will be issued to
-  /// redirect the call to the image midea. This option is ignored for non-HTTP
+  /// redirect the call to the image media. This option is ignored for non-HTTP
   /// requests.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2203,11 +2203,10 @@ class GoogleMapsPlacesV1SearchTextRequest {
   /// Filter out results whose average user rating is strictly less than this
   /// limit.
   ///
-  /// A valid value must be an float between 0 and 5 (inclusively) at a 0.5
-  /// cadence i.e. \[0, 0.5, 1.0, ... , 5.0\] inclusively. This is to keep
-  /// parity with LocalRefinement_UserRating. The input rating will round up to
-  /// the nearest 0.5(ceiling). For instance, a rating of 0.6 will eliminate all
-  /// results with a less than 1.0 rating.
+  /// A valid value must be a float between 0 and 5 (inclusively) at a 0.5
+  /// cadence i.e. \[0, 0.5, 1.0, ... , 5.0\] inclusively. The input rating will
+  /// round up to the nearest 0.5(ceiling). For instance, a rating of 0.6 will
+  /// eliminate all results with a less than 1.0 rating.
   core.double? minRating;
 
   /// Used to restrict the search to places that are currently open.
@@ -2228,7 +2227,7 @@ class GoogleMapsPlacesV1SearchTextRequest {
   /// default to DISTANCE.
   /// - "DISTANCE" : Ranks results by distance.
   /// - "RELEVANCE" : Ranks results by relevance. Sort order determined by
-  /// normal ranking stack. See SortRefinement::RELEVANCE.
+  /// normal ranking stack.
   core.String? rankPreference;
 
   /// The Unicode country/region code (CLDR) of the location where the request
@@ -2339,6 +2338,9 @@ class GoogleMapsPlacesV1SearchTextRequestLocationBias {
   GoogleMapsPlacesV1Circle? circle;
 
   /// A rectangle box defined by northeast and southwest corner.
+  ///
+  /// `rectangle.high()` must be the northeast point of the rectangle viewport.
+  /// `rectangle.low()` must be the southwest point of the rectangle viewport.
   GoogleGeoTypeViewport? rectangle;
 
   GoogleMapsPlacesV1SearchTextRequestLocationBias({
@@ -2370,6 +2372,9 @@ class GoogleMapsPlacesV1SearchTextRequestLocationBias {
 /// location will not be returned.
 class GoogleMapsPlacesV1SearchTextRequestLocationRestriction {
   /// A rectangle box defined by northeast and southwest corner.
+  ///
+  /// `rectangle.high()` must be the northeast point of the rectangle viewport.
+  /// `rectangle.low()` must be the southwest point of the rectangle viewport.
   GoogleGeoTypeViewport? rectangle;
 
   GoogleMapsPlacesV1SearchTextRequestLocationRestriction({

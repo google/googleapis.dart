@@ -5375,9 +5375,11 @@ class ListLabelsResponse {
   /// `messageListVisibility`, `labelListVisibility`, and `type`. The labels.get
   /// method can fetch additional label details.
   core.List<Label>? labels;
+  core.int? productId;
 
   ListLabelsResponse({
     this.labels,
+    this.productId,
   });
 
   ListLabelsResponse.fromJson(core.Map json_)
@@ -5388,10 +5390,14 @@ class ListLabelsResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          productId: json_.containsKey('productId')
+              ? json_['productId'] as core.int
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (labels != null) 'labels': labels!,
+        if (productId != null) 'productId': productId!,
       };
 }
 

@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20231024",
+    "revision": "20231121",
     "rootUrl": "https://indexing.googleapis.com/",
     "servicePath": "",
     "title": "Web Search Indexing API",

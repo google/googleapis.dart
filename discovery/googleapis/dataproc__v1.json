@@ -32,7 +32,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20231019",
+    "revision": "20231109",
     "rootUrl": "https://dataproc.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Dataproc API",
@@ -3758,6 +3758,20 @@
                     },
                     "type": "array"
                 },
+                "tarballAccess": {
+                    "description": "Optional. (Optional) The access type to the diagnostic tarball. If not specified, falls back to default access of the bucket",
+                    "enum": [
+                        "TARBALL_ACCESS_UNSPECIFIED",
+                        "GOOGLE_CLOUD_SUPPORT",
+                        "GOOGLE_DATAPROC_DIAGNOSE"
+                    ],
+                    "enumDescriptions": [
+                        "Tarball Access unspecified. Falls back to default access of the bucket",
+                        "Google Cloud Support group has read access to the diagnostic tarball",
+                        "Google Cloud Dataproc Diagnose service account has read access to the diagnostic tarball"
+                    ],
+                    "type": "string"
+                },
                 "tarballGcsDir": {
                     "description": "Optional. (Optional) The output Cloud Storage directory for the diagnostic tarball. If not specified, a task-specific directory in the cluster's staging bucket will be used.",
                     "type": "string"
@@ -3843,6 +3857,10 @@
             "properties": {
                 "gcePdKmsKeyName": {
                     "description": "Optional. The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.",
+                    "type": "string"
+                },
+                "kmsKey": {
+                    "description": "Optional. The Cloud KMS key name to use for encrypting customer core content in spanner and cluster PD disk for all instances in the cluster.",
                     "type": "string"
                 }
             },
@@ -5114,6 +5132,14 @@
                 "nextPageToken": {
                     "description": "Optional. This token is included in the response if there are more results to fetch. To fetch additional results, provide this value as the page_token in a subsequent ListJobsRequest.",
                     "type": "string"
+                },
+                "unreachable": {
+                    "description": "Output only. List of jobs that could not be included in the response. Attempting to get one of these resources may indicate why it was not included in the list response.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "readOnly": true,
+                    "type": "array"
                 }
             },
             "type": "object"

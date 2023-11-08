@@ -656,6 +656,15 @@ class BlockchainNode {
   /// Output only.
   core.String? name;
 
+  /// When true, the node is only accessible via Private Service Connect; no
+  /// public endpoints are exposed.
+  ///
+  /// Otherwise, the node is only accessible via public endpoints. See
+  /// https://cloud.google.com/vpc/docs/private-service-connect.
+  ///
+  /// Optional.
+  core.bool? privateServiceConnectEnabled;
+
   /// A status representing the state of the node.
   ///
   /// Output only.
@@ -684,6 +693,7 @@ class BlockchainNode {
     this.ethereumDetails,
     this.labels,
     this.name,
+    this.privateServiceConnectEnabled,
     this.state,
     this.updateTime,
   });
@@ -713,6 +723,10 @@ class BlockchainNode {
                 )
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          privateServiceConnectEnabled:
+              json_.containsKey('privateServiceConnectEnabled')
+                  ? json_['privateServiceConnectEnabled'] as core.bool
+                  : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
           updateTime: json_.containsKey('updateTime')
@@ -727,6 +741,8 @@ class BlockchainNode {
         if (ethereumDetails != null) 'ethereumDetails': ethereumDetails!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
+        if (privateServiceConnectEnabled != null)
+          'privateServiceConnectEnabled': privateServiceConnectEnabled!,
         if (state != null) 'state': state!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
@@ -879,6 +895,8 @@ class EthereumDetails {
   /// - "TESTNET_GOERLI_PRATER" : The Ethereum Testnet based on Goerli protocol.
   /// - "TESTNET_SEPOLIA" : The Ethereum Testnet based on Sepolia/Bepolia
   /// protocol. See https://github.com/eth-clients/sepolia.
+  /// - "TESTNET_HOLESKY" : The Ethereum Testnet based on Holesky specification.
+  /// See https://github.com/eth-clients/holesky.
   core.String? network;
 
   /// The type of Ethereum node.

@@ -1702,6 +1702,8 @@ class ListLocationsResponse {
 
   /// The approximate number of Locations in the list irrespective of
   /// pagination.
+  ///
+  /// This field will only be returned if `filter` is used as a query parameter.
   core.int? totalSize;
 
   ListLocationsResponse({

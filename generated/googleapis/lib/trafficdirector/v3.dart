@@ -1473,6 +1473,29 @@ class NodeMatcher {
 /// NullMatch is an empty message to specify a null value.
 typedef NullMatch = $Empty;
 
+/// Specifies a list of alternatives for the match.
+class OrMatcher {
+  core.List<ValueMatcher>? valueMatchers;
+
+  OrMatcher({
+    this.valueMatchers,
+  });
+
+  OrMatcher.fromJson(core.Map json_)
+      : this(
+          valueMatchers: json_.containsKey('valueMatchers')
+              ? (json_['valueMatchers'] as core.List)
+                  .map((value) => ValueMatcher.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (valueMatchers != null) 'valueMatchers': valueMatchers!,
+      };
+}
+
 /// Specifies the segment in a path to retrieve value from Struct.
 typedef PathSegment = $PathSegment;
 
@@ -2010,7 +2033,7 @@ class UpdateFailureState {
 /// Specifies the way to match a ProtobufWkt::Value.
 ///
 /// Primitive values and ListValue are supported. StructValue is not supported
-/// and is always not matched. \[#next-free-field: 7\]
+/// and is always not matched. \[#next-free-field: 8\]
 class ValueMatcher {
   /// If specified, a match occurs if and only if the target value is a bool
   /// value and is equal to this field.
@@ -2028,6 +2051,10 @@ class ValueMatcher {
   /// NullValue.
   NullMatch? nullMatch;
 
+  /// If specified, a match occurs if and only if any of the alternatives in the
+  /// match accept the value.
+  OrMatcher? orMatch;
+
   /// If specified, value match will be performed based on whether the path is
   /// referring to a valid primitive value in the metadata.
   ///
@@ -2044,6 +2071,7 @@ class ValueMatcher {
     this.doubleMatch,
     this.listMatch,
     this.nullMatch,
+    this.orMatch,
     this.presentMatch,
     this.stringMatch,
   });
@@ -2065,6 +2093,10 @@ class ValueMatcher {
               ? NullMatch.fromJson(
                   json_['nullMatch'] as core.Map<core.String, core.dynamic>)
               : null,
+          orMatch: json_.containsKey('orMatch')
+              ? OrMatcher.fromJson(
+                  json_['orMatch'] as core.Map<core.String, core.dynamic>)
+              : null,
           presentMatch: json_.containsKey('presentMatch')
               ? json_['presentMatch'] as core.bool
               : null,
@@ -2079,6 +2111,7 @@ class ValueMatcher {
         if (doubleMatch != null) 'doubleMatch': doubleMatch!,
         if (listMatch != null) 'listMatch': listMatch!,
         if (nullMatch != null) 'nullMatch': nullMatch!,
+        if (orMatch != null) 'orMatch': orMatch!,
         if (presentMatch != null) 'presentMatch': presentMatch!,
         if (stringMatch != null) 'stringMatch': stringMatch!,
       };

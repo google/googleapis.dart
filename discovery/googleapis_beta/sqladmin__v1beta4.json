@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20231017",
+    "revision": "20231108",
     "rootUrl": "https://sqladmin.googleapis.com/",
     "servicePath": "",
     "title": "Cloud SQL Admin API",
@@ -702,6 +702,41 @@
                         }
                     },
                     "path": "sql/v1beta4/projects/{project}/instances/{instance}",
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/sqlservice.admin"
+                    ]
+                },
+                "demote": {
+                    "description": "Demotes an existing standalone instance to be a Cloud SQL read replica for an external database server.",
+                    "flatPath": "sql/v1beta4/projects/{project}/instances/{instance}/demote",
+                    "httpMethod": "POST",
+                    "id": "sql.instances.demote",
+                    "parameterOrder": [
+                        "project",
+                        "instance"
+                    ],
+                    "parameters": {
+                        "instance": {
+                            "description": "Required. The name of the Cloud SQL instance.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "project": {
+                            "description": "Required. The project ID of the project that contains the instance.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "sql/v1beta4/projects/{project}/instances/{instance}/demote",
+                    "request": {
+                        "$ref": "InstancesDemoteRequest"
+                    },
                     "response": {
                         "$ref": "Operation"
                     },
@@ -2214,12 +2249,16 @@
                     "enum": [
                         "SQL_API_WARNING_CODE_UNSPECIFIED",
                         "REGION_UNREACHABLE",
-                        "MAX_RESULTS_EXCEEDS_LIMIT"
+                        "MAX_RESULTS_EXCEEDS_LIMIT",
+                        "COMPROMISED_CREDENTIALS",
+                        "INTERNAL_STATE_FAILURE"
                     ],
                     "enumDescriptions": [
                         "An unknown or unset warning type from Cloud SQL API.",
                         "Warning when one or more regions are not reachable. The returned result set may be incomplete.",
-                        "Warning when user provided maxResults parameter exceeds the limit. The returned result set may be incomplete."
+                        "Warning when user provided maxResults parameter exceeds the limit. The returned result set may be incomplete.",
+                        "Warning when user tries to create/update a user with credentials that have previously been compromised by a public data breach.",
+                        "Warning when the operation succeeds but some non-critical workflow state failed."
                     ],
                     "type": "string"
                 },
@@ -3130,6 +3169,20 @@
                     "$ref": "Settings",
                     "description": "The user settings."
                 },
+                "sqlNetworkArchitecture": {
+                    "description": "The SQL network architecture for the instance.",
+                    "enum": [
+                        "SQL_NETWORK_ARCHITECTURE_UNSPECIFIED",
+                        "NEW_NETWORK_ARCHITECTURE",
+                        "OLD_NETWORK_ARCHITECTURE"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "Instance is a Tenancy Unit (TU) instance.",
+                        "Instance is an Umbrella instance."
+                    ],
+                    "type": "string"
+                },
                 "state": {
                     "description": "The current serving state of the Cloud SQL instance.",
                     "enum": [
@@ -3206,6 +3259,21 @@
                 },
                 "kind": {
                     "description": "This is always `sql#databasesList`.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "DemoteContext": {
+            "description": "This context is used to demote an existing standalone instance to be a Cloud SQL read replica for an external database server.",
+            "id": "DemoteContext",
+            "properties": {
+                "kind": {
+                    "description": "This is always `sql#demoteContext`.",
+                    "type": "string"
+                },
+                "sourceRepresentativeInstanceName": {
+                    "description": "Required. The name of the instance which acts as an on-premises primary instance in the replication setup.",
                     "type": "string"
                 }
             },
@@ -3943,6 +4011,17 @@
             },
             "type": "object"
         },
+        "InstancesDemoteRequest": {
+            "description": "This request is used to demote an existing standalone instance to be a Cloud SQL read replica for an external database server.",
+            "id": "InstancesDemoteRequest",
+            "properties": {
+                "demoteContext": {
+                    "$ref": "DemoteContext",
+                    "description": "Required. This context is used to demote an existing standalone instance to be a Cloud SQL read replica for an external database server."
+                }
+            },
+            "type": "object"
+        },
         "InstancesExportRequest": {
             "description": "Database instance export request.",
             "id": "InstancesExportRequest",
@@ -4205,12 +4284,14 @@
                     "enum": [
                         "SQL_UPDATE_TRACK_UNSPECIFIED",
                         "canary",
-                        "stable"
+                        "stable",
+                        "week5"
                     ],
                     "enumDescriptions": [
                         "This is an unknown maintenance timing preference.",
                         "For instance update that requires a restart, this update track indicates your instance prefer to restart for new version early in maintenance window.",
-                        "For instance update that requires a restart, this update track indicates your instance prefer to let Cloud SQL choose the timing of restart (within its Maintenance window, if applicable)."
+                        "For instance update that requires a restart, this update track indicates your instance prefer to let Cloud SQL choose the timing of restart (within its Maintenance window, if applicable).",
+                        "For instance update that requires a restart, this update track indicates your instance prefer to let Cloud SQL choose the timing of restart (within its Maintenance window, if applicable) to be at least 5 weeks after the notification."
                     ],
                     "type": "string"
                 }
@@ -4331,6 +4412,10 @@
             "description": "An Operation resource. For successful operations that return an Operation resource, only the fields relevant to the operation are populated in the resource.",
             "id": "Operation",
             "properties": {
+                "apiWarning": {
+                    "$ref": "ApiWarning",
+                    "description": "An Admin API warning message."
+                },
                 "backupContext": {
                     "$ref": "BackupContext",
                     "description": "The context for backup operation, if applicable."
@@ -4669,6 +4754,10 @@
                         "A combination of lowercase, uppercase, numeric, and non-alphanumeric characters."
                     ],
                     "type": "string"
+                },
+                "disallowCompromisedCredentials": {
+                    "description": "Disallow credentials that have been previously compromised by a public data breach.",
+                    "type": "boolean"
                 },
                 "disallowUsernameSubstring": {
                     "description": "Disallow username as a part of the password.",
@@ -5118,7 +5207,9 @@
                         "INSUFFICIENT_GCS_PERMISSIONS",
                         "INVALID_FILE_INFO",
                         "UNSUPPORTED_DATABASE_SETTINGS",
-                        "MYSQL_PARALLEL_IMPORT_INSUFFICIENT_PRIVILEGE"
+                        "MYSQL_PARALLEL_IMPORT_INSUFFICIENT_PRIVILEGE",
+                        "LOCAL_INFILE_OFF",
+                        "TURN_ON_PITR_AFTER_PROMOTE"
                     ],
                     "enumDescriptions": [
                         "",
@@ -5155,7 +5246,9 @@
                         "The Cloud Storage bucket is missing necessary permissions.",
                         "The Cloud Storage bucket has an error in the file or contains invalid file information.",
                         "The source instance has unsupported database settings for migration.",
-                        "The replication user is missing parallel import specific privileges. (e.g. LOCK TABLES) for MySQL."
+                        "The replication user is missing parallel import specific privileges. (e.g. LOCK TABLES) for MySQL.",
+                        "The global variable local_infile is off on external server replica.",
+                        "This code instructs customers to turn on point-in-time recovery manually for the instance after promoting the Cloud SQL for PostgreSQL instance."
                     ],
                     "type": "string"
                 }

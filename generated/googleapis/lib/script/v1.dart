@@ -1547,6 +1547,7 @@ class GoogleAppsScriptTypeProcess {
   /// - "TIMED_OUT" : The process timed out.
   /// - "UNKNOWN" : Process status unknown.
   /// - "DELAYED" : The process is delayed, waiting for quota.
+  /// - "EXECUTION_DISABLED" : AppsScript executions are disabled by Admin.
   core.String? processStatus;
 
   /// The executions type.

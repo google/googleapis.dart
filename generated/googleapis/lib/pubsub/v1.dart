@@ -3114,8 +3114,19 @@ class MessageStoragePolicy {
   /// Optional.
   core.List<core.String>? allowedPersistenceRegions;
 
+  /// If true, `allowed_persistence_regions` is also used to enforce in-transit
+  /// guarantees for messages.
+  ///
+  /// That is, Pub/Sub will fail Publish operations on this topic and subscribe
+  /// operations on any subscription attached to this topic in any region that
+  /// is not in `allowed_persistence_regions`.
+  ///
+  /// Optional.
+  core.bool? enforceInTransit;
+
   MessageStoragePolicy({
     this.allowedPersistenceRegions,
+    this.enforceInTransit,
   });
 
   MessageStoragePolicy.fromJson(core.Map json_)
@@ -3126,11 +3137,15 @@ class MessageStoragePolicy {
                       .map((value) => value as core.String)
                       .toList()
                   : null,
+          enforceInTransit: json_.containsKey('enforceInTransit')
+              ? json_['enforceInTransit'] as core.bool
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowedPersistenceRegions != null)
           'allowedPersistenceRegions': allowedPersistenceRegions!,
+        if (enforceInTransit != null) 'enforceInTransit': enforceInTransit!,
       };
 }
 

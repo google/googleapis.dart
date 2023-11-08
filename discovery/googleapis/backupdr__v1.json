@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20231013",
+    "revision": "20231029",
     "rootUrl": "https://backupdr.googleapis.com/",
     "servicePath": "",
     "title": "Backup and DR Service API",
@@ -829,6 +829,16 @@
                     "format": "google-datetime",
                     "readOnly": true,
                     "type": "string"
+                },
+                "workforceIdentityBasedManagementUri": {
+                    "$ref": "WorkforceIdentityBasedManagementURI",
+                    "description": "Output only. The hostnames of the exposed AGM endpoints for both types of user i.e. 1p and 3p, used to connect AGM/RM UI.",
+                    "readOnly": true
+                },
+                "workforceIdentityBasedOauth2ClientId": {
+                    "$ref": "WorkforceIdentityBasedOAuth2ClientID",
+                    "description": "Output only. The OAuth client IDs for both types of user i.e. 1p and 3p.",
+                    "readOnly": true
                 }
             },
             "type": "object"
@@ -1058,6 +1068,40 @@
                         "type": "string"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "WorkforceIdentityBasedManagementURI": {
+            "description": "ManagementURI depending on the Workforce Identity i.e. either 1p or 3p.",
+            "id": "WorkforceIdentityBasedManagementURI",
+            "properties": {
+                "firstPartyManagementUri": {
+                    "description": "Output only. First party Management URI for Google Identities.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "thirdPartyManagementUri": {
+                    "description": "Output only. Third party Management URI for External Identity Providers.",
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "WorkforceIdentityBasedOAuth2ClientID": {
+            "description": "OAuth Client ID depending on the Workforce Identity i.e. either 1p or 3p,",
+            "id": "WorkforceIdentityBasedOAuth2ClientID",
+            "properties": {
+                "firstPartyOauth2ClientId": {
+                    "description": "Output only. First party OAuth Client ID for Google Identities.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "thirdPartyOauth2ClientId": {
+                    "description": "Output only. Third party OAuth Client ID for External Identity Providers.",
+                    "readOnly": true,
+                    "type": "string"
                 }
             },
             "type": "object"

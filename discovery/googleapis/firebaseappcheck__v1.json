@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20231023",
+    "revision": "20231113",
     "rootUrl": "https://firebaseappcheck.googleapis.com/",
     "servicePath": "",
     "title": "Firebase App Check API",

@@ -4323,33 +4323,7 @@ class EnvVarSource {
 /// Not supported by Cloud Run.
 ///
 /// ExecAction describes a "run in container" action.
-class ExecAction {
-  /// Command is the command line to execute inside the container, the working
-  /// directory for the command is root ('/') in the container's filesystem.
-  ///
-  /// The command is simply exec'd, it is not run inside a shell, so traditional
-  /// shell instructions ('|', etc) won't work. To use a shell, you need to
-  /// explicitly call out to that shell. Exit status of 0 is treated as
-  /// live/healthy and non-zero is unhealthy.
-  core.List<core.String>? command;
-
-  ExecAction({
-    this.command,
-  });
-
-  ExecAction.fromJson(core.Map json_)
-      : this(
-          command: json_.containsKey('command')
-              ? (json_['command'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (command != null) 'command': command!,
-      };
-}
+typedef ExecAction = $ExecAction;
 
 /// Execution represents the configuration of a single execution.
 ///
@@ -6506,7 +6480,7 @@ class RevisionStatus {
   /// Revision may receive traffic.
   core.List<GoogleCloudRunV1Condition>? conditions;
 
-  /// The desired number of instances running this revision.
+  /// The configured number of instances running this revision.
   ///
   /// For Cloud Run, this only includes instances provisioned using the minScale
   /// annotation. It does not include instances created by autoscaling.
@@ -8015,9 +7989,9 @@ class VolumeMount {
   /// Required.
   core.String? name;
 
-  /// Only true is accepted for Secret Volumes.
+  /// Sets the mount to be read-only or read-write.
   ///
-  /// Defaults to true for Secrets Volumes.
+  /// Not used by Cloud Run.
   core.bool? readOnly;
 
   /// Path within the volume from which the container's volume should be

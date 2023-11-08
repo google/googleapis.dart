@@ -1825,6 +1825,14 @@ class Instance {
   /// Optional.
   core.String? reservedIpRange;
 
+  /// Reserved for future use.
+  ///
+  /// Zone Separation compliance state of the instance. Field name and
+  /// documentation is obfuscated according to go/zs-resource-status.
+  ///
+  /// Optional. Output only.
+  core.bool? satisfiesPzs;
+
   /// Additional IP range for node placement.
   ///
   /// Required when enabling read replicas on an existing instance. For
@@ -1921,6 +1929,7 @@ class Instance {
     this.redisVersion,
     this.replicaCount,
     this.reservedIpRange,
+    this.satisfiesPzs,
     this.secondaryIpRange,
     this.serverCaCerts,
     this.state,
@@ -2030,6 +2039,9 @@ class Instance {
           reservedIpRange: json_.containsKey('reservedIpRange')
               ? json_['reservedIpRange'] as core.String
               : null,
+          satisfiesPzs: json_.containsKey('satisfiesPzs')
+              ? json_['satisfiesPzs'] as core.bool
+              : null,
           secondaryIpRange: json_.containsKey('secondaryIpRange')
               ? json_['secondaryIpRange'] as core.String
               : null,
@@ -2090,6 +2102,7 @@ class Instance {
         if (redisVersion != null) 'redisVersion': redisVersion!,
         if (replicaCount != null) 'replicaCount': replicaCount!,
         if (reservedIpRange != null) 'reservedIpRange': reservedIpRange!,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (secondaryIpRange != null) 'secondaryIpRange': secondaryIpRange!,
         if (serverCaCerts != null) 'serverCaCerts': serverCaCerts!,
         if (state != null) 'state': state!,

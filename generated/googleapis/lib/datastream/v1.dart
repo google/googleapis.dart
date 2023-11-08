@@ -1412,13 +1412,6 @@ class ProjectsLocationsStreamsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/streams/\[^/\]+$`.
   ///
-  /// [cdcStrategy_specificStartPosition_mysqlLogPosition_logFile] - Required.
-  /// The binary log file name.
-  ///
-  /// [cdcStrategy_specificStartPosition_mysqlLogPosition_logPosition] -
-  /// Optional. The position within the binary log file. Default is head of
-  /// file.
-  ///
   /// [force] - Optional. Update the stream without validating it.
   ///
   /// [requestId] - Optional. A request ID to identify requests. Specify a
@@ -1455,8 +1448,6 @@ class ProjectsLocationsStreamsResource {
   async.Future<Operation> patch(
     Stream request,
     core.String name, {
-    core.String? cdcStrategy_specificStartPosition_mysqlLogPosition_logFile,
-    core.int? cdcStrategy_specificStartPosition_mysqlLogPosition_logPosition,
     core.bool? force,
     core.String? requestId,
     core.String? updateMask,
@@ -1465,15 +1456,6 @@ class ProjectsLocationsStreamsResource {
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
-      if (cdcStrategy_specificStartPosition_mysqlLogPosition_logFile != null)
-        'cdcStrategy.specificStartPosition.mysqlLogPosition.logFile': [
-          cdcStrategy_specificStartPosition_mysqlLogPosition_logFile
-        ],
-      if (cdcStrategy_specificStartPosition_mysqlLogPosition_logPosition !=
-          null)
-        'cdcStrategy.specificStartPosition.mysqlLogPosition.logPosition': [
-          '${cdcStrategy_specificStartPosition_mysqlLogPosition_logPosition}'
-        ],
       if (force != null) 'force': ['${force}'],
       if (requestId != null) 'requestId': [requestId],
       if (updateMask != null) 'updateMask': [updateMask],

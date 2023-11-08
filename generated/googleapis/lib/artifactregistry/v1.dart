@@ -667,7 +667,7 @@ class ProjectsLocationsRepositoriesResource {
   /// Request parameters:
   ///
   /// [name] - The name of the repository, for example:
-  /// "projects/p1/locations/us-central1/repositories/repo1".
+  /// `projects/p1/locations/us-central1/repositories/repo1`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+$`.
   ///
@@ -2922,6 +2922,7 @@ class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicR
   /// - "REPOSITORY_BASE_UNSPECIFIED" : Unspecified repository base.
   /// - "DEBIAN" : Debian.
   /// - "UBUNTU" : Ubuntu LTS/Pro.
+  /// - "DEBIAN_SNAPSHOT" : Archived Debian.
   core.String? repositoryBase;
 
   /// A custom field to define a path to a specific repository from the base.
@@ -4244,7 +4245,7 @@ class Repository {
   core.String? mode;
 
   /// The name of the repository, for example:
-  /// "projects/p1/locations/us-central1/repositories/repo1".
+  /// `projects/p1/locations/us-central1/repositories/repo1`.
   core.String? name;
 
   /// Configuration specific for a Remote Repository.
@@ -4643,7 +4644,7 @@ class UpstreamPolicy {
   core.int? priority;
 
   /// A reference to the repository resource, for example:
-  /// "projects/p1/locations/us-central1/repositories/repo1".
+  /// `projects/p1/locations/us-central1/repositories/repo1`.
   core.String? repository;
 
   UpstreamPolicy({

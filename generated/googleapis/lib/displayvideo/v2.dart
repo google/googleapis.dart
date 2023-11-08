@@ -15874,12 +15874,20 @@ class CommonInStreamAttribute {
       };
 }
 
+/// User consent status.
+typedef Consent = $Consent;
+
 /// Contact information defining a Customer Match audience member.
 typedef ContactInfo = $ContactInfo;
 
 /// Wrapper message for a list of contact information defining Customer Match
 /// audience members.
 class ContactInfoList {
+  /// Input only.
+  ///
+  /// User consent status.
+  Consent? consent;
+
   /// A list of ContactInfo objects defining Customer Match audience members.
   ///
   /// The size of members after splitting the contact_infos mustn't be greater
@@ -15887,11 +15895,16 @@ class ContactInfoList {
   core.List<ContactInfo>? contactInfos;
 
   ContactInfoList({
+    this.consent,
     this.contactInfos,
   });
 
   ContactInfoList.fromJson(core.Map json_)
       : this(
+          consent: json_.containsKey('consent')
+              ? Consent.fromJson(
+                  json_['consent'] as core.Map<core.String, core.dynamic>)
+              : null,
           contactInfos: json_.containsKey('contactInfos')
               ? (json_['contactInfos'] as core.List)
                   .map((value) => ContactInfo.fromJson(
@@ -15901,6 +15914,7 @@ class ContactInfoList {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (consent != null) 'consent': consent!,
         if (contactInfos != null) 'contactInfos': contactInfos!,
       };
 }
@@ -16248,7 +16262,7 @@ class CreateSdfDownloadTaskRequest {
   /// - "SDF_VERSION_5_4" : SDF version 5.4
   /// - "SDF_VERSION_5_5" : SDF version 5.5
   /// - "SDF_VERSION_6" : SDF version 6
-  /// - "SDF_VERSION_7" : SDF version 7 Read the \[v7 migration
+  /// - "SDF_VERSION_7" : SDF version 7. Read the \[v7 migration
   /// guide\](/display-video/api/structured-data-file/v7-migration-guide) before
   /// migrating to this version. Currently in beta. Only available for use by a
   /// subset of users.
@@ -21882,7 +21896,40 @@ typedef MobileApp = $MobileApp;
 
 /// Wrapper message for a list of mobile device IDs defining Customer Match
 /// audience members.
-typedef MobileDeviceIdList = $MobileDeviceIdList;
+class MobileDeviceIdList {
+  /// Input only.
+  ///
+  /// User consent status.
+  Consent? consent;
+
+  /// A list of mobile device IDs defining Customer Match audience members.
+  ///
+  /// The size of mobile_device_ids mustn't be greater than 500,000.
+  core.List<core.String>? mobileDeviceIds;
+
+  MobileDeviceIdList({
+    this.consent,
+    this.mobileDeviceIds,
+  });
+
+  MobileDeviceIdList.fromJson(core.Map json_)
+      : this(
+          consent: json_.containsKey('consent')
+              ? Consent.fromJson(
+                  json_['consent'] as core.Map<core.String, core.dynamic>)
+              : null,
+          mobileDeviceIds: json_.containsKey('mobileDeviceIds')
+              ? (json_['mobileDeviceIds'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (consent != null) 'consent': consent!,
+        if (mobileDeviceIds != null) 'mobileDeviceIds': mobileDeviceIds!,
+      };
+}
 
 /// Represents an amount of money with its currency type.
 typedef Money = $Money;

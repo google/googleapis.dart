@@ -2326,6 +2326,16 @@ class ResponseMetaData {
   /// If empty reason is specified, the report is empty for this reason.
   core.String? emptyReason;
 
+  /// If this report results is
+  /// [sampled](https://support.google.com/analytics/answer/13331292), this
+  /// describes the percentage of events used in this report.
+  ///
+  /// One `samplingMetadatas` is populated for each date range. Each
+  /// `samplingMetadatas` corresponds to a date range in order that date ranges
+  /// were specified in the request. However if the results are not sampled,
+  /// this field will not be defined.
+  core.List<SamplingMetadata>? samplingMetadatas;
+
   /// Describes the schema restrictions actively enforced in creating this
   /// report.
   ///
@@ -2339,8 +2349,7 @@ class ResponseMetaData {
   /// It is possible for a request to be subject to thresholding thresholding
   /// and no data is absent from the report, and this happens when all data is
   /// above the thresholds. To learn more, see
-  /// [Data thresholds](https://support.google.com/analytics/answer/9383630) and
-  /// [About Demographics and Interests](https://support.google.com/analytics/answer/2799357).
+  /// [Data thresholds](https://support.google.com/analytics/answer/9383630).
   core.bool? subjectToThresholding;
 
   /// The property's current timezone.
@@ -2355,6 +2364,7 @@ class ResponseMetaData {
     this.currencyCode,
     this.dataLossFromOtherRow,
     this.emptyReason,
+    this.samplingMetadatas,
     this.schemaRestrictionResponse,
     this.subjectToThresholding,
     this.timeZone,
@@ -2370,6 +2380,12 @@ class ResponseMetaData {
               : null,
           emptyReason: json_.containsKey('emptyReason')
               ? json_['emptyReason'] as core.String
+              : null,
+          samplingMetadatas: json_.containsKey('samplingMetadatas')
+              ? (json_['samplingMetadatas'] as core.List)
+                  .map((value) => SamplingMetadata.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
               : null,
           schemaRestrictionResponse:
               json_.containsKey('schemaRestrictionResponse')
@@ -2390,6 +2406,7 @@ class ResponseMetaData {
         if (dataLossFromOtherRow != null)
           'dataLossFromOtherRow': dataLossFromOtherRow!,
         if (emptyReason != null) 'emptyReason': emptyReason!,
+        if (samplingMetadatas != null) 'samplingMetadatas': samplingMetadatas!,
         if (schemaRestrictionResponse != null)
           'schemaRestrictionResponse': schemaRestrictionResponse!,
         if (subjectToThresholding != null)
@@ -3284,6 +3301,49 @@ class RunReportResponse {
         if (rowCount != null) 'rowCount': rowCount!,
         if (rows != null) 'rows': rows!,
         if (totals != null) 'totals': totals!,
+      };
+}
+
+/// If this report results is
+/// [sampled](https://support.google.com/analytics/answer/13331292), this
+/// describes the percentage of events used in this report.
+///
+/// Sampling is the practice of analyzing a subset of all data in order to
+/// uncover the meaningful information in the larger data set.
+class SamplingMetadata {
+  /// The total number of events read in this sampled report for a date range.
+  ///
+  /// This is the size of the subset this property's data that was analyzed in
+  /// this report.
+  core.String? samplesReadCount;
+
+  /// The total number of events present in this property's data that could have
+  /// been analyzed in this report for a date range.
+  ///
+  /// Sampling uncovers the meaningful information about the larger data set,
+  /// and this is the size of the larger data set. To calculate the percentage
+  /// of available data that was used in this report, compute
+  /// `samplesReadCount/samplingSpaceSize`.
+  core.String? samplingSpaceSize;
+
+  SamplingMetadata({
+    this.samplesReadCount,
+    this.samplingSpaceSize,
+  });
+
+  SamplingMetadata.fromJson(core.Map json_)
+      : this(
+          samplesReadCount: json_.containsKey('samplesReadCount')
+              ? json_['samplesReadCount'] as core.String
+              : null,
+          samplingSpaceSize: json_.containsKey('samplingSpaceSize')
+              ? json_['samplingSpaceSize'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (samplesReadCount != null) 'samplesReadCount': samplesReadCount!,
+        if (samplingSpaceSize != null) 'samplingSpaceSize': samplingSpaceSize!,
       };
 }
 

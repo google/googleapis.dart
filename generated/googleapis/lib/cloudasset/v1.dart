@@ -202,7 +202,7 @@ class EffectiveIamPoliciesResource {
   /// [names] - Required. The names refer to the
   /// [full_resource_names](https://cloud.google.com/asset-inventory/docs/resource-name-format)
   /// of
-  /// [searchable asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types#searchable_asset_types).
+  /// [searchable asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types).
   /// A maximum of 20 resources' effective policies can be retrieved in a batch.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -866,7 +866,7 @@ class V1Resource {
   /// `analysis_query` and `saved_analysis_query` are provided, they will be
   /// merged together with the `saved_analysis_query` as base and the
   /// `analysis_query` as overrides. For more details of the merge behavior,
-  /// please refer to the
+  /// refer to the
   /// [MergeFrom](https://developers.google.com/protocol-buffers/docs/reference/cpp/google.protobuf.message#Message.MergeFrom.details)
   /// page. Note that you cannot override primitive fields with default value,
   /// such as 0 or empty string, etc., because we use proto3, which doesn't
@@ -1158,7 +1158,7 @@ class V1Resource {
   /// compute.skipDefaultNetworkCreation * compute.requireOsLogin *
   /// compute.disableNestedVirtualization This RPC only returns either resources
   /// of types supported by
-  /// [searchable asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types#searchable_asset_types),
+  /// [searchable asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types),
   /// or IAM policies.
   ///
   /// Request parameters:
@@ -1534,7 +1534,7 @@ class V1Resource {
   /// [assetTypes] - Optional. A list of asset types that the IAM policies are
   /// attached to. If empty, it will search the IAM policies that are attached
   /// to all the
-  /// [searchable asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types#searchable_asset_types).
+  /// [searchable asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types).
   /// Regular expressions are also supported. For example: *
   /// "compute.googleapis.com.*" snapshots IAM policies attached to asset type
   /// starts with "compute.googleapis.com". * ".*Instance" snapshots IAM
@@ -1658,7 +1658,7 @@ class V1Resource {
   ///
   /// [assetTypes] - Optional. A list of asset types that this request searches
   /// for. If empty, it will search all the
-  /// [searchable asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types#searchable_asset_types).
+  /// [searchable asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types).
   /// Regular expressions are also supported. For example: *
   /// "compute.googleapis.com.*" snapshots resources whose asset type starts
   /// with "compute.googleapis.com". * ".*Instance" snapshots resources whose
@@ -1690,71 +1690,66 @@ class V1Resource {
   /// [query] - Optional. The query statement. See
   /// [how to construct a query](https://cloud.google.com/asset-inventory/docs/searching-resources#how_to_construct_a_query)
   /// for more information. If not specified or empty, it will search all the
-  /// resources within the specified \`scope\`. Examples: * \`name:Important\`
-  /// to find Google Cloud resources whose name contains \`Important\` as a
-  /// word. * \`name=Important\` to find the Google Cloud resource whose name is
-  /// exactly \`Important\`. * \`displayName:Impor*\` to find Google Cloud
-  /// resources whose display name contains \`Impor\` as a prefix of any word in
-  /// the field. * \`location:us-west*\` to find Google Cloud resources whose
-  /// location contains both \`us\` and \`west\` as prefixes. * \`labels:prod\`
-  /// to find Google Cloud resources whose labels contain \`prod\` as a key or
-  /// value. * \`labels.env:prod\` to find Google Cloud resources that have a
-  /// label \`env\` and its value is \`prod\`. * \`labels.env:*\` to find Google
-  /// Cloud resources that have a label \`env\`. * \`tagKeys:env\` to find
+  /// resources within the specified `scope`. Examples: * `name:Important` to
+  /// find Google Cloud resources whose name contains `Important` as a word. *
+  /// `name=Important` to find the Google Cloud resource whose name is exactly
+  /// `Important`. * `displayName:Impor*` to find Google Cloud resources whose
+  /// display name contains `Impor` as a prefix of any word in the field. *
+  /// `location:us-west*` to find Google Cloud resources whose location contains
+  /// both `us` and `west` as prefixes. * `labels:prod` to find Google Cloud
+  /// resources whose labels contain `prod` as a key or value. *
+  /// `labels.env:prod` to find Google Cloud resources that have a label `env`
+  /// and its value is `prod`. * `labels.env:*` to find Google Cloud resources
+  /// that have a label `env`. * `tagKeys:env` to find Google Cloud resources
+  /// that have directly attached tags where the
+  /// \[`TagKey.namespacedName`\](https://cloud.google.com/resource-manager/reference/rest/v3/tagKeys#resource:-tagkey)
+  /// contains `env`. * `tagValues:prod*` to find Google Cloud resources that
+  /// have directly attached tags where the
+  /// \[`TagValue.namespacedName`\](https://cloud.google.com/resource-manager/reference/rest/v3/tagValues#resource:-tagvalue)
+  /// contains a word prefixed by `prod`. * `tagValueIds=tagValues/123` to find
   /// Google Cloud resources that have directly attached tags where the
-  /// \[\`TagKey\`\](https://cloud.google.com/resource-manager/reference/rest/v3/tagKeys#resource:-tagkey)
-  /// .\`namespacedName\` contains \`env\`. * \`tagValues:prod*\` to find Google
-  /// Cloud resources that have directly attached tags where the
-  /// \[\`TagValue\`\](https://cloud.google.com/resource-manager/reference/rest/v3/tagValues#resource:-tagvalue)
-  /// .\`namespacedName\` contains a word prefixed by \`prod\`. *
-  /// \`tagValueIds=tagValues/123\` to find Google Cloud resources that have
-  /// directly attached tags where the
-  /// \[\`TagValue\`\](https://cloud.google.com/resource-manager/reference/rest/v3/tagValues#resource:-tagvalue)
-  /// .\`name\` is exactly \`tagValues/123\`. * \`effectiveTagKeys:env\` to find
-  /// Google Cloud resources that have directly attached or inherited tags where
-  /// the
-  /// \[\`TagKey\`\](https://cloud.google.com/resource-manager/reference/rest/v3/tagKeys#resource:-tagkey)
-  /// .\`namespacedName\` contains \`env\`. * \`effectiveTagValues:prod*\` to
-  /// find Google Cloud resources that have directly attached or inherited tags
-  /// where the
-  /// \[\`TagValue\`\](https://cloud.google.com/resource-manager/reference/rest/v3/tagValues#resource:-tagvalue)
-  /// .\`namespacedName\` contains a word prefixed by \`prod\`. *
-  /// \`effectiveTagValueIds=tagValues/123\` to find Google Cloud resources that
-  /// have directly attached or inherited tags where the
-  /// \[\`TagValue\`\](https://cloud.google.com/resource-manager/reference/rest/v3/tagValues#resource:-tagvalue)
-  /// .\`name\` is exactly \`tagValues/123\`. * \`kmsKey:key\` to find Google
-  /// Cloud resources encrypted with a customer-managed encryption key whose
-  /// name contains \`key\` as a word. This field is deprecated. Please use the
-  /// \`kmsKeys\` field to retrieve Cloud KMS key information. * \`kmsKeys:key\`
-  /// to find Google Cloud resources encrypted with customer-managed encryption
-  /// keys whose name contains the word \`key\`. *
-  /// \`relationships:instance-group-1\` to find Google Cloud resources that
-  /// have relationships with \`instance-group-1\` in the related resource name.
-  /// * \`relationships:INSTANCE_TO_INSTANCEGROUP\` to find Compute Engine
-  /// instances that have relationships of type \`INSTANCE_TO_INSTANCEGROUP\`. *
-  /// \`relationships.INSTANCE_TO_INSTANCEGROUP:instance-group-1\` to find
-  /// Compute Engine instances that have relationships with \`instance-group-1\`
-  /// in the Compute Engine instance group resource name, for relationship type
-  /// \`INSTANCE_TO_INSTANCEGROUP\`. * \`sccSecurityMarks.key=value\` to find
-  /// Cloud resources that are attached with security marks whose key is \`key\`
-  /// and value is \`value'. * \`sccSecurityMarks.key:*\` to find Cloud
-  /// resources that are attached with security marks whose key is \`key\`. *
-  /// \`state:ACTIVE\` to find Google Cloud resources whose state contains
-  /// \`ACTIVE\` as a word. * \`NOT state:ACTIVE\` to find Google Cloud
-  /// resources whose state doesn't contain \`ACTIVE\` as a word. *
-  /// \`createTime\<1609459200\` to find Google Cloud resources that were
-  /// created before \`2021-01-01 00:00:00 UTC\`. \`1609459200\` is the epoch
-  /// timestamp of \`2021-01-01 00:00:00 UTC\` in seconds. *
-  /// \`updateTime\>1609459200\` to find Google Cloud resources that were
-  /// updated after \`2021-01-01 00:00:00 UTC\`. \`1609459200\` is the epoch
-  /// timestamp of \`2021-01-01 00:00:00 UTC\` in seconds. * \`Important\` to
-  /// find Google Cloud resources that contain \`Important\` as a word in any of
-  /// the searchable fields. * \`Impor*\` to find Google Cloud resources that
-  /// contain \`Impor\` as a prefix of any word in any of the searchable fields.
-  /// * \`Important location:(us-west1 OR global)\` to find Google Cloud
-  /// resources that contain \`Important\` as a word in any of the searchable
-  /// fields and are also located in the \`us-west1\` region or the \`global\`
-  /// location.
+  /// \[`TagValue.name`\](https://cloud.google.com/resource-manager/reference/rest/v3/tagValues#resource:-tagvalue)
+  /// is exactly `tagValues/123`. * `effectiveTagKeys:env` to find Google Cloud
+  /// resources that have directly attached or inherited tags where the
+  /// \[`TagKey.namespacedName`\](https://cloud.google.com/resource-manager/reference/rest/v3/tagKeys#resource:-tagkey)
+  /// contains `env`. * `effectiveTagValues:prod*` to find Google Cloud
+  /// resources that have directly attached or inherited tags where the
+  /// \[`TagValue.namespacedName`\](https://cloud.google.com/resource-manager/reference/rest/v3/tagValues#resource:-tagvalue)
+  /// contains a word prefixed by `prod`. * `effectiveTagValueIds=tagValues/123`
+  /// to find Google Cloud resources that have directly attached or inherited
+  /// tags where the
+  /// \[`TagValue.name`\](https://cloud.google.com/resource-manager/reference/rest/v3/tagValues#resource:-tagvalue)
+  /// is exactly `tagValues/123`. * `kmsKey:key` to find Google Cloud resources
+  /// encrypted with a customer-managed encryption key whose name contains `key`
+  /// as a word. This field is deprecated. Use the `kmsKeys` field to retrieve
+  /// Cloud KMS key information. * `kmsKeys:key` to find Google Cloud resources
+  /// encrypted with customer-managed encryption keys whose name contains the
+  /// word `key`. * `relationships:instance-group-1` to find Google Cloud
+  /// resources that have relationships with `instance-group-1` in the related
+  /// resource name. * `relationships:INSTANCE_TO_INSTANCEGROUP` to find Compute
+  /// Engine instances that have relationships of type
+  /// `INSTANCE_TO_INSTANCEGROUP`. *
+  /// `relationships.INSTANCE_TO_INSTANCEGROUP:instance-group-1` to find Compute
+  /// Engine instances that have relationships with `instance-group-1` in the
+  /// Compute Engine instance group resource name, for relationship type
+  /// `INSTANCE_TO_INSTANCEGROUP`. * `sccSecurityMarks.key=value` to find Cloud
+  /// resources that are attached with security marks whose key is `key` and
+  /// value is `value`. * `sccSecurityMarks.key:*` to find Cloud resources that
+  /// are attached with security marks whose key is `key`. * `state:ACTIVE` to
+  /// find Google Cloud resources whose state contains `ACTIVE` as a word. *
+  /// `NOT state:ACTIVE` to find Google Cloud resources whose state doesn't
+  /// contain `ACTIVE` as a word. * `createTime<1609459200` to find Google Cloud
+  /// resources that were created before `2021-01-01 00:00:00 UTC`. `1609459200`
+  /// is the epoch timestamp of `2021-01-01 00:00:00 UTC` in seconds. *
+  /// `updateTime>1609459200` to find Google Cloud resources that were updated
+  /// after `2021-01-01 00:00:00 UTC`. `1609459200` is the epoch timestamp of
+  /// `2021-01-01 00:00:00 UTC` in seconds. * `Important` to find Google Cloud
+  /// resources that contain `Important` as a word in any of the searchable
+  /// fields. * `Impor*` to find Google Cloud resources that contain `Impor` as
+  /// a prefix of any word in any of the searchable fields. * `Important
+  /// location:(us-west1 OR global)` to find Google Cloud resources that contain
+  /// `Important` as a word in any of the searchable fields and are also located
+  /// in the `us-west1` region or the `global` location.
   ///
   /// [readMask] - Optional. A comma-separated list of fields that you want
   /// returned in the results. The following fields are returned by default if
@@ -1874,7 +1869,7 @@ class AnalyzeIamPolicyLongrunningRequest {
   /// merged together with the `saved_analysis_query` as base and the
   /// `analysis_query` as overrides.
   ///
-  /// For more details of the merge behavior, please refer to the
+  /// For more details of the merge behavior, refer to the
   /// [MergeFrom](https://developers.google.com/protocol-buffers/docs/reference/cpp/google.protobuf.message#Message.MergeFrom.details)
   /// doc. Note that you cannot override primitive fields with default value,
   /// such as 0 or empty string, etc., because we use proto3, which doesn't
@@ -2243,11 +2238,11 @@ class AnalyzerOrgPolicyConstraint {
 /// [Supported asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types)
 /// for more information.
 class Asset {
-  /// Please also refer to the
+  /// Also refer to the
   /// [access level user guide](https://cloud.google.com/access-context-manager/docs/overview#access-levels).
   GoogleIdentityAccesscontextmanagerV1AccessLevel? accessLevel;
 
-  /// Please also refer to the
+  /// Also refer to the
   /// [access policy user guide](https://cloud.google.com/access-context-manager/docs/overview#access-policies).
   GoogleIdentityAccesscontextmanagerV1AccessPolicy? accessPolicy;
 
@@ -2321,7 +2316,7 @@ class Asset {
   /// A representation of the resource.
   Resource? resource;
 
-  /// Please also refer to the
+  /// Also refer to the
   /// [service perimeter user guide](https://cloud.google.com/vpc-service-controls/docs/overview).
   GoogleIdentityAccesscontextmanagerV1ServicePerimeter? servicePerimeter;
 
@@ -2427,7 +2422,7 @@ class AttachedResource {
   ///
   /// Example: `osconfig.googleapis.com/Inventory` You can find the supported
   /// attached asset types of each resource in this table:
-  /// `https://cloud.google.com/asset-inventory/docs/supported-asset-types#searchable_asset_types`
+  /// `https://cloud.google.com/asset-inventory/docs/supported-asset-types`
   core.String? assetType;
 
   /// Versioned resource representations of this attached resource.
@@ -7450,7 +7445,7 @@ class ResourceSearchResult {
   /// contains a subset of the resource metadata fields that are returned by the
   /// List or Get APIs provided by the corresponding Google Cloud service (e.g.,
   /// Compute Engine). see
-  /// [API references and supported searchable attributes](https://cloud.google.com/asset-inventory/docs/supported-asset-types#searchable_asset_types)
+  /// [API references and supported searchable attributes](https://cloud.google.com/asset-inventory/docs/supported-asset-types)
   /// to see which fields are included. You can search values of these fields
   /// through free text search. However, you should not consume the field
   /// programically as the field names and values may change as the Google Cloud
@@ -7533,10 +7528,10 @@ class ResourceSearchResult {
   /// [CryptoKeyVersion](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions)
   /// name.
   ///
-  /// This field only presents for the purpose of backward compatibility. Please
-  /// use the `kms_keys` field to retrieve Cloud KMS key information. This field
-  /// is available only when the resource's Protobuf contains it and will only
-  /// be populated for
+  /// This field only presents for the purpose of backward compatibility. Use
+  /// the `kms_keys` field to retrieve Cloud KMS key information. This field is
+  /// available only when the resource's Protobuf contains it and will only be
+  /// populated for
   /// [these resource types](https://cloud.google.com/asset-inventory/docs/legacy-field-names#resource_types_with_the_to_be_deprecated_kmskey_field)
   /// for backward compatible purposes. To search against the `kms_key`: * Use a
   /// field query. Example: `kmsKey:key` * Use a free text query. Example: `key`
@@ -7641,10 +7636,6 @@ class ResourceSearchResult {
   /// The actual content of Security Command Center security marks associated
   /// with the asset.
   ///
-  /// Note that both staging & prod SecurityMarks are attached on prod
-  /// resources. In CAS preprod/prod, both staging & prod SecurityMarks are
-  /// ingested and returned in the following `security_marks` map. In that case,
-  /// the prefix "staging." will be added to the keys of all the staging marks.
   /// To search against SCC SecurityMarks field: * Use a field query: - query by
   /// a given key value pair. Example: `sccSecurityMarks.foo=bar` - query by a
   /// given key's existence. Example: `sccSecurityMarks.foo:*`
@@ -7669,9 +7660,9 @@ class ResourceSearchResult {
 
   /// This field is only present for the purpose of backward compatibility.
   ///
-  /// Please use the `tags` field instead. TagKey namespaced names, in the
-  /// format of {ORG_ID}/{TAG_KEY_SHORT_NAME}. To search against the `tagKeys`:
-  /// * Use a field query. Example: - `tagKeys:"123456789/env*"` -
+  /// Use the `tags` field instead. TagKey namespaced names, in the format of
+  /// {ORG_ID}/{TAG_KEY_SHORT_NAME}. To search against the `tagKeys`: * Use a
+  /// field query. Example: - `tagKeys:"123456789/env*"` -
   /// `tagKeys="123456789/env"` - `tagKeys:"env"` * Use a free text query.
   /// Example: - `env`
   @core.Deprecated(
@@ -7681,7 +7672,7 @@ class ResourceSearchResult {
 
   /// This field is only present for the purpose of backward compatibility.
   ///
-  /// Please use the `tags` field instead. TagValue IDs, in the format of
+  /// Use the `tags` field instead. TagValue IDs, in the format of
   /// tagValues/{TAG_VALUE_ID}. To search against the `tagValueIds`: * Use a
   /// field query. Example: - `tagValueIds="tagValues/456"` * Use a free text
   /// query. Example: - `456`
@@ -7692,10 +7683,10 @@ class ResourceSearchResult {
 
   /// This field is only present for the purpose of backward compatibility.
   ///
-  /// Please use the `tags` field instead. TagValue namespaced names, in the
-  /// format of {ORG_ID}/{TAG_KEY_SHORT_NAME}/{TAG_VALUE_SHORT_NAME}. To search
-  /// against the `tagValues`: * Use a field query. Example: - `tagValues:"env"`
-  /// - `tagValues:"env/prod"` - `tagValues:"123456789/env/prod*"` -
+  /// Use the `tags` field instead. TagValue namespaced names, in the format of
+  /// {ORG_ID}/{TAG_KEY_SHORT_NAME}/{TAG_VALUE_SHORT_NAME}. To search against
+  /// the `tagValues`: * Use a field query. Example: - `tagValues:"env"` -
+  /// `tagValues:"env/prod"` - `tagValues:"123456789/env/prod*"` -
   /// `tagValues="123456789/env/prod"` * Use a free text query. Example: -
   /// `prod`
   @core.Deprecated(
@@ -8526,7 +8517,7 @@ class VersionedResource {
   /// `https://cloud.google.com/compute/docs/reference/rest/v1/instances`. You
   /// can find the resource definition for each supported resource type in this
   /// table:
-  /// `https://cloud.google.com/asset-inventory/docs/supported-asset-types#searchable_asset_types`
+  /// `https://cloud.google.com/asset-inventory/docs/supported-asset-types`
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.

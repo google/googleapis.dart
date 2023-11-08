@@ -661,6 +661,7 @@ api.GenerateClientCertificateRequest buildGenerateClientCertificateRequest() {
     o.certDuration = 'foo';
     o.publicKey = 'foo';
     o.requestId = 'foo';
+    o.useMetadataExchange = true;
   }
   buildCounterGenerateClientCertificateRequest--;
   return o;
@@ -682,6 +683,7 @@ void checkGenerateClientCertificateRequest(
       o.requestId!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.useMetadataExchange!, unittest.isTrue);
   }
   buildCounterGenerateClientCertificateRequest--;
 }

@@ -2003,8 +2003,10 @@ api.Maintainer buildMaintainer() {
   final o = api.Maintainer();
   buildCounterMaintainer++;
   if (buildCounterMaintainer < 3) {
+    o.email = 'foo';
     o.kind = 'foo';
     o.name = 'foo';
+    o.url = 'foo';
   }
   buildCounterMaintainer--;
   return o;
@@ -2014,11 +2016,19 @@ void checkMaintainer(api.Maintainer o) {
   buildCounterMaintainer++;
   if (buildCounterMaintainer < 3) {
     unittest.expect(
+      o.email!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.kind!,
       unittest.equals('foo'),
     );
     unittest.expect(
       o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.url!,
       unittest.equals('foo'),
     );
   }

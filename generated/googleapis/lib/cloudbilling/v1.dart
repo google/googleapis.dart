@@ -1253,11 +1253,23 @@ class BillingAccount {
   /// Output only.
   core.bool? open;
 
+  /// The billing account's parent resource identifier.
+  ///
+  /// Use the `MoveBillingAccount` method to update the account's parent
+  /// resource if it is a organization. Format: -
+  /// organizations/{organization_id}, for example: organizations/12345678 -
+  /// billingAccounts/{billing_account_id}, for example:
+  /// `billingAccounts/012345-567890-ABCDEF`
+  ///
+  /// Output only.
+  core.String? parent;
+
   BillingAccount({
     this.displayName,
     this.masterBillingAccount,
     this.name,
     this.open,
+    this.parent,
   });
 
   BillingAccount.fromJson(core.Map json_)
@@ -1270,6 +1282,9 @@ class BillingAccount {
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           open: json_.containsKey('open') ? json_['open'] as core.bool : null,
+          parent: json_.containsKey('parent')
+              ? json_['parent'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1278,6 +1293,7 @@ class BillingAccount {
           'masterBillingAccount': masterBillingAccount!,
         if (name != null) 'name': name!,
         if (open != null) 'open': open!,
+        if (parent != null) 'parent': parent!,
       };
 }
 

@@ -4386,6 +4386,41 @@ class GoogleChromeManagementV1MemoryStatusReport {
       };
 }
 
+/// Network bandwidth report.
+///
+/// * Granular permission needed: TELEMETRY_API_NETWORK_REPORT
+class GoogleChromeManagementV1NetworkBandwidthReport {
+  /// Download speed in kilobits per second.
+  ///
+  /// Output only.
+  core.String? downloadSpeedKbps;
+
+  /// Timestamp of when the report was collected.
+  ///
+  /// Output only.
+  core.String? reportTime;
+
+  GoogleChromeManagementV1NetworkBandwidthReport({
+    this.downloadSpeedKbps,
+    this.reportTime,
+  });
+
+  GoogleChromeManagementV1NetworkBandwidthReport.fromJson(core.Map json_)
+      : this(
+          downloadSpeedKbps: json_.containsKey('downloadSpeedKbps')
+              ? json_['downloadSpeedKbps'] as core.String
+              : null,
+          reportTime: json_.containsKey('reportTime')
+              ? json_['reportTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (downloadSpeedKbps != null) 'downloadSpeedKbps': downloadSpeedKbps!,
+        if (reportTime != null) 'reportTime': reportTime!,
+      };
+}
+
 /// Details about the network device.
 ///
 /// * This field provides device information, which is static and will not
@@ -5278,6 +5313,13 @@ class GoogleChromeManagementV1TelemetryDevice {
   /// Output only.
   core.String? name;
 
+  /// Network bandwidth reports collected periodically sorted in a decreasing
+  /// order of report_time.
+  ///
+  /// Output only.
+  core.List<GoogleChromeManagementV1NetworkBandwidthReport>?
+      networkBandwidthReport;
+
   /// Network diagnostics collected periodically.
   ///
   /// Output only.
@@ -5349,6 +5391,7 @@ class GoogleChromeManagementV1TelemetryDevice {
     this.memoryInfo,
     this.memoryStatusReport,
     this.name,
+    this.networkBandwidthReport,
     this.networkDiagnosticsReport,
     this.networkInfo,
     this.networkStatusReport,
@@ -5446,6 +5489,13 @@ class GoogleChromeManagementV1TelemetryDevice {
                   .toList()
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          networkBandwidthReport: json_.containsKey('networkBandwidthReport')
+              ? (json_['networkBandwidthReport'] as core.List)
+                  .map((value) =>
+                      GoogleChromeManagementV1NetworkBandwidthReport.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           networkDiagnosticsReport: json_
                   .containsKey('networkDiagnosticsReport')
               ? (json_['networkDiagnosticsReport'] as core.List)
@@ -5527,6 +5577,8 @@ class GoogleChromeManagementV1TelemetryDevice {
         if (memoryStatusReport != null)
           'memoryStatusReport': memoryStatusReport!,
         if (name != null) 'name': name!,
+        if (networkBandwidthReport != null)
+          'networkBandwidthReport': networkBandwidthReport!,
         if (networkDiagnosticsReport != null)
           'networkDiagnosticsReport': networkDiagnosticsReport!,
         if (networkInfo != null) 'networkInfo': networkInfo!,
@@ -6122,6 +6174,13 @@ class GoogleChromeManagementV1TelemetryUserDevice {
   /// ChromeOS Devices tab.
   core.String? deviceId;
 
+  /// Network bandwidth reports collected periodically sorted in a decreasing
+  /// order of report_time.
+  ///
+  /// Output only.
+  core.List<GoogleChromeManagementV1NetworkBandwidthReport>?
+      networkBandwidthReport;
+
   /// Peripherals reports collected periodically sorted in a decreasing order of
   /// report_time.
   ///
@@ -6132,6 +6191,7 @@ class GoogleChromeManagementV1TelemetryUserDevice {
     this.audioStatusReport,
     this.deviceActivityReport,
     this.deviceId,
+    this.networkBandwidthReport,
     this.peripheralsReport,
   });
 
@@ -6154,6 +6214,13 @@ class GoogleChromeManagementV1TelemetryUserDevice {
           deviceId: json_.containsKey('deviceId')
               ? json_['deviceId'] as core.String
               : null,
+          networkBandwidthReport: json_.containsKey('networkBandwidthReport')
+              ? (json_['networkBandwidthReport'] as core.List)
+                  .map((value) =>
+                      GoogleChromeManagementV1NetworkBandwidthReport.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           peripheralsReport: json_.containsKey('peripheralsReport')
               ? (json_['peripheralsReport'] as core.List)
                   .map((value) =>
@@ -6168,6 +6235,8 @@ class GoogleChromeManagementV1TelemetryUserDevice {
         if (deviceActivityReport != null)
           'deviceActivityReport': deviceActivityReport!,
         if (deviceId != null) 'deviceId': deviceId!,
+        if (networkBandwidthReport != null)
+          'networkBandwidthReport': networkBandwidthReport!,
         if (peripheralsReport != null) 'peripheralsReport': peripheralsReport!,
       };
 }

@@ -2677,7 +2677,7 @@ class ProjectsLocationsScopesRbacrolebindingsResource {
   /// Request parameters:
   ///
   /// [name] - The resource name for the rbacrolebinding
-  /// `projects/{project}/locations/{location}/namespaces/{namespace}/rbacrolebindings/{rbacrolebinding}`
+  /// `projects/{project}/locations/{location}/scopes/{scope}/rbacrolebindings/{rbacrolebinding}`
   /// or
   /// `projects/{project}/locations/{location}/memberships/{membership}/rbacrolebindings/{rbacrolebinding}`
   /// Value must have pattern
@@ -2914,6 +2914,48 @@ class Authority {
       };
 }
 
+/// BinaryAuthorizationConfig defines the fleet level configuration of binary
+/// authorization feature.
+class BinaryAuthorizationConfig {
+  /// Mode of operation for binauthz policy evaluation.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "EVALUATION_MODE_UNSPECIFIED" : Default value
+  /// - "DISABLED" : Disable BinaryAuthorization
+  /// - "POLICY_BINDINGS" : Use Binary Authorization with the policies specified
+  /// in policy_bindings.
+  core.String? evaluationMode;
+
+  /// Binauthz policies that apply to this cluster.
+  ///
+  /// Optional.
+  core.List<PolicyBinding>? policyBindings;
+
+  BinaryAuthorizationConfig({
+    this.evaluationMode,
+    this.policyBindings,
+  });
+
+  BinaryAuthorizationConfig.fromJson(core.Map json_)
+      : this(
+          evaluationMode: json_.containsKey('evaluationMode')
+              ? json_['evaluationMode'] as core.String
+              : null,
+          policyBindings: json_.containsKey('policyBindings')
+              ? (json_['policyBindings'] as core.List)
+                  .map((value) => PolicyBinding.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (evaluationMode != null) 'evaluationMode': evaluationMode!,
+        if (policyBindings != null) 'policyBindings': policyBindings!,
+      };
+}
+
 /// Associates `members`, or principals, with a `role`.
 class Binding {
   /// The condition that is associated with this binding.
@@ -3000,10 +3042,517 @@ class Binding {
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
 
+/// **ClusterUpgrade**: The configuration for the fleet-level ClusterUpgrade
+/// feature.
+class ClusterUpgradeFleetSpec {
+  /// Allow users to override some properties of each GKE upgrade.
+  core.List<ClusterUpgradeGKEUpgradeOverride>? gkeUpgradeOverrides;
+
+  /// Post conditions to evaluate to mark an upgrade COMPLETE.
+  ///
+  /// Required.
+  ///
+  /// Required.
+  ClusterUpgradePostConditions? postConditions;
+
+  /// This fleet consumes upgrades that have COMPLETE status code in the
+  /// upstream fleets.
+  ///
+  /// See UpgradeStatus.Code for code definitions. The fleet name should be
+  /// either fleet project number or id. This is defined as repeated for future
+  /// proof reasons. Initial implementation will enforce at most one upstream
+  /// fleet.
+  core.List<core.String>? upstreamFleets;
+
+  ClusterUpgradeFleetSpec({
+    this.gkeUpgradeOverrides,
+    this.postConditions,
+    this.upstreamFleets,
+  });
+
+  ClusterUpgradeFleetSpec.fromJson(core.Map json_)
+      : this(
+          gkeUpgradeOverrides: json_.containsKey('gkeUpgradeOverrides')
+              ? (json_['gkeUpgradeOverrides'] as core.List)
+                  .map((value) => ClusterUpgradeGKEUpgradeOverride.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          postConditions: json_.containsKey('postConditions')
+              ? ClusterUpgradePostConditions.fromJson(json_['postConditions']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          upstreamFleets: json_.containsKey('upstreamFleets')
+              ? (json_['upstreamFleets'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gkeUpgradeOverrides != null)
+          'gkeUpgradeOverrides': gkeUpgradeOverrides!,
+        if (postConditions != null) 'postConditions': postConditions!,
+        if (upstreamFleets != null) 'upstreamFleets': upstreamFleets!,
+      };
+}
+
+/// **ClusterUpgrade**: The state for the fleet-level ClusterUpgrade feature.
+class ClusterUpgradeFleetState {
+  /// This fleets whose upstream_fleets contain the current fleet.
+  ///
+  /// The fleet name should be either fleet project number or id.
+  core.List<core.String>? downstreamFleets;
+
+  /// Feature state for GKE clusters.
+  ClusterUpgradeGKEUpgradeFeatureState? gkeState;
+
+  /// A list of memberships ignored by the feature.
+  ///
+  /// For example, manually upgraded clusters can be ignored if they are newer
+  /// than the default versions of its release channel. The membership resource
+  /// is in the format: `projects/{p}/locations/{l}/membership/{m}`.
+  core.Map<core.String, ClusterUpgradeIgnoredMembership>? ignored;
+
+  ClusterUpgradeFleetState({
+    this.downstreamFleets,
+    this.gkeState,
+    this.ignored,
+  });
+
+  ClusterUpgradeFleetState.fromJson(core.Map json_)
+      : this(
+          downstreamFleets: json_.containsKey('downstreamFleets')
+              ? (json_['downstreamFleets'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          gkeState: json_.containsKey('gkeState')
+              ? ClusterUpgradeGKEUpgradeFeatureState.fromJson(
+                  json_['gkeState'] as core.Map<core.String, core.dynamic>)
+              : null,
+          ignored: json_.containsKey('ignored')
+              ? (json_['ignored'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    ClusterUpgradeIgnoredMembership.fromJson(
+                        value as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (downstreamFleets != null) 'downstreamFleets': downstreamFleets!,
+        if (gkeState != null) 'gkeState': gkeState!,
+        if (ignored != null) 'ignored': ignored!,
+      };
+}
+
+/// GKEUpgrade represents a GKE provided upgrade, e.g., control plane upgrade.
+class ClusterUpgradeGKEUpgrade {
+  /// Name of the upgrade, e.g., "k8s_control_plane".
+  ///
+  /// It should be a valid upgrade name. It must not exceet 99 characters.
+  core.String? name;
+
+  /// Version of the upgrade, e.g., "1.22.1-gke.100".
+  ///
+  /// It should be a valid version. It must not exceet 99 characters.
+  core.String? version;
+
+  ClusterUpgradeGKEUpgrade({
+    this.name,
+    this.version,
+  });
+
+  ClusterUpgradeGKEUpgrade.fromJson(core.Map json_)
+      : this(
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          version: json_.containsKey('version')
+              ? json_['version'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (version != null) 'version': version!,
+      };
+}
+
+/// GKEUpgradeFeatureCondition describes the condition of the feature for GKE
+/// clusters at a certain point of time.
+class ClusterUpgradeGKEUpgradeFeatureCondition {
+  /// Reason why the feature is in this status.
+  core.String? reason;
+
+  /// Status of the condition, one of True, False, Unknown.
+  core.String? status;
+
+  /// Type of the condition, for example, "ready".
+  core.String? type;
+
+  /// Last timestamp the condition was updated.
+  core.String? updateTime;
+
+  ClusterUpgradeGKEUpgradeFeatureCondition({
+    this.reason,
+    this.status,
+    this.type,
+    this.updateTime,
+  });
+
+  ClusterUpgradeGKEUpgradeFeatureCondition.fromJson(core.Map json_)
+      : this(
+          reason: json_.containsKey('reason')
+              ? json_['reason'] as core.String
+              : null,
+          status: json_.containsKey('status')
+              ? json_['status'] as core.String
+              : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (reason != null) 'reason': reason!,
+        if (status != null) 'status': status!,
+        if (type != null) 'type': type!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// GKEUpgradeFeatureState contains feature states for GKE clusters in the
+/// scope.
+class ClusterUpgradeGKEUpgradeFeatureState {
+  /// Current conditions of the feature.
+  core.List<ClusterUpgradeGKEUpgradeFeatureCondition>? conditions;
+
+  /// Upgrade state.
+  ///
+  /// It will eventually replace `state`.
+  core.List<ClusterUpgradeGKEUpgradeState>? upgradeState;
+
+  ClusterUpgradeGKEUpgradeFeatureState({
+    this.conditions,
+    this.upgradeState,
+  });
+
+  ClusterUpgradeGKEUpgradeFeatureState.fromJson(core.Map json_)
+      : this(
+          conditions: json_.containsKey('conditions')
+              ? (json_['conditions'] as core.List)
+                  .map((value) =>
+                      ClusterUpgradeGKEUpgradeFeatureCondition.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          upgradeState: json_.containsKey('upgradeState')
+              ? (json_['upgradeState'] as core.List)
+                  .map((value) => ClusterUpgradeGKEUpgradeState.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (conditions != null) 'conditions': conditions!,
+        if (upgradeState != null) 'upgradeState': upgradeState!,
+      };
+}
+
+/// Properties of a GKE upgrade that can be overridden by the user.
+///
+/// For example, a user can skip soaking by overriding the soaking to 0.
+class ClusterUpgradeGKEUpgradeOverride {
+  /// Post conditions to override for the specified upgrade (name + version).
+  ///
+  /// Required.
+  ///
+  /// Required.
+  ClusterUpgradePostConditions? postConditions;
+
+  /// Which upgrade to override.
+  ///
+  /// Required.
+  ///
+  /// Required.
+  ClusterUpgradeGKEUpgrade? upgrade;
+
+  ClusterUpgradeGKEUpgradeOverride({
+    this.postConditions,
+    this.upgrade,
+  });
+
+  ClusterUpgradeGKEUpgradeOverride.fromJson(core.Map json_)
+      : this(
+          postConditions: json_.containsKey('postConditions')
+              ? ClusterUpgradePostConditions.fromJson(json_['postConditions']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          upgrade: json_.containsKey('upgrade')
+              ? ClusterUpgradeGKEUpgrade.fromJson(
+                  json_['upgrade'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (postConditions != null) 'postConditions': postConditions!,
+        if (upgrade != null) 'upgrade': upgrade!,
+      };
+}
+
+/// GKEUpgradeState is a GKEUpgrade and its state at the scope and fleet level.
+class ClusterUpgradeGKEUpgradeState {
+  /// Number of GKE clusters in each status code.
+  core.Map<core.String, core.String>? stats;
+
+  /// Status of the upgrade.
+  ClusterUpgradeUpgradeStatus? status;
+
+  /// Which upgrade to track the state.
+  ClusterUpgradeGKEUpgrade? upgrade;
+
+  ClusterUpgradeGKEUpgradeState({
+    this.stats,
+    this.status,
+    this.upgrade,
+  });
+
+  ClusterUpgradeGKEUpgradeState.fromJson(core.Map json_)
+      : this(
+          stats: json_.containsKey('stats')
+              ? (json_['stats'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          status: json_.containsKey('status')
+              ? ClusterUpgradeUpgradeStatus.fromJson(
+                  json_['status'] as core.Map<core.String, core.dynamic>)
+              : null,
+          upgrade: json_.containsKey('upgrade')
+              ? ClusterUpgradeGKEUpgrade.fromJson(
+                  json_['upgrade'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (stats != null) 'stats': stats!,
+        if (status != null) 'status': status!,
+        if (upgrade != null) 'upgrade': upgrade!,
+      };
+}
+
+/// IgnoredMembership represents a membership ignored by the feature.
+///
+/// A membership can be ignored because it was manually upgraded to a newer
+/// version than RC default.
+class ClusterUpgradeIgnoredMembership {
+  /// Time when the membership was first set to ignored.
+  core.String? ignoredTime;
+
+  /// Reason why the membership is ignored.
+  core.String? reason;
+
+  ClusterUpgradeIgnoredMembership({
+    this.ignoredTime,
+    this.reason,
+  });
+
+  ClusterUpgradeIgnoredMembership.fromJson(core.Map json_)
+      : this(
+          ignoredTime: json_.containsKey('ignoredTime')
+              ? json_['ignoredTime'] as core.String
+              : null,
+          reason: json_.containsKey('reason')
+              ? json_['reason'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (ignoredTime != null) 'ignoredTime': ignoredTime!,
+        if (reason != null) 'reason': reason!,
+      };
+}
+
+/// ScopeGKEUpgradeState is a GKEUpgrade and its state per-membership.
+class ClusterUpgradeMembershipGKEUpgradeState {
+  /// Status of the upgrade.
+  ClusterUpgradeUpgradeStatus? status;
+
+  /// Which upgrade to track the state.
+  ClusterUpgradeGKEUpgrade? upgrade;
+
+  ClusterUpgradeMembershipGKEUpgradeState({
+    this.status,
+    this.upgrade,
+  });
+
+  ClusterUpgradeMembershipGKEUpgradeState.fromJson(core.Map json_)
+      : this(
+          status: json_.containsKey('status')
+              ? ClusterUpgradeUpgradeStatus.fromJson(
+                  json_['status'] as core.Map<core.String, core.dynamic>)
+              : null,
+          upgrade: json_.containsKey('upgrade')
+              ? ClusterUpgradeGKEUpgrade.fromJson(
+                  json_['upgrade'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (status != null) 'status': status!,
+        if (upgrade != null) 'upgrade': upgrade!,
+      };
+}
+
+/// Per-membership state for this feature.
+class ClusterUpgradeMembershipState {
+  /// Project number or id of the fleet.
+  ///
+  /// It is set only for Memberships that are part of fleet-based Rollout
+  /// Sequencing.
+  core.String? fleet;
+
+  /// Whether this membership is ignored by the feature.
+  ///
+  /// For example, manually upgraded clusters can be ignored if they are newer
+  /// than the default versions of its release channel.
+  ClusterUpgradeIgnoredMembership? ignored;
+
+  /// Fully qualified scope names that this clusters is bound to which also have
+  /// rollout sequencing enabled.
+  core.List<core.String>? scopes;
+
+  /// Actual upgrade state against desired.
+  core.List<ClusterUpgradeMembershipGKEUpgradeState>? upgrades;
+
+  ClusterUpgradeMembershipState({
+    this.fleet,
+    this.ignored,
+    this.scopes,
+    this.upgrades,
+  });
+
+  ClusterUpgradeMembershipState.fromJson(core.Map json_)
+      : this(
+          fleet:
+              json_.containsKey('fleet') ? json_['fleet'] as core.String : null,
+          ignored: json_.containsKey('ignored')
+              ? ClusterUpgradeIgnoredMembership.fromJson(
+                  json_['ignored'] as core.Map<core.String, core.dynamic>)
+              : null,
+          scopes: json_.containsKey('scopes')
+              ? (json_['scopes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          upgrades: json_.containsKey('upgrades')
+              ? (json_['upgrades'] as core.List)
+                  .map((value) =>
+                      ClusterUpgradeMembershipGKEUpgradeState.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fleet != null) 'fleet': fleet!,
+        if (ignored != null) 'ignored': ignored!,
+        if (scopes != null) 'scopes': scopes!,
+        if (upgrades != null) 'upgrades': upgrades!,
+      };
+}
+
+/// Post conditional checks after an upgrade has been applied on all eligible
+/// clusters.
+class ClusterUpgradePostConditions {
+  /// Amount of time to "soak" after a rollout has been finished before marking
+  /// it COMPLETE.
+  ///
+  /// Cannot exceed 30 days. Required.
+  ///
+  /// Required.
+  core.String? soaking;
+
+  ClusterUpgradePostConditions({
+    this.soaking,
+  });
+
+  ClusterUpgradePostConditions.fromJson(core.Map json_)
+      : this(
+          soaking: json_.containsKey('soaking')
+              ? json_['soaking'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (soaking != null) 'soaking': soaking!,
+      };
+}
+
+/// UpgradeStatus provides status information for each upgrade.
+class ClusterUpgradeUpgradeStatus {
+  /// Status code of the upgrade.
+  /// Possible string values are:
+  /// - "CODE_UNSPECIFIED" : Required by https://linter.aip.dev/126/unspecified.
+  /// - "INELIGIBLE" : The upgrade is ineligible. At the scope level, this means
+  /// the upgrade is ineligible for all the clusters in the scope.
+  /// - "PENDING" : The upgrade is pending. At the scope level, this means the
+  /// upgrade is pending for all the clusters in the scope.
+  /// - "IN_PROGRESS" : The upgrade is in progress. At the scope level, this
+  /// means the upgrade is in progress for at least one cluster in the scope.
+  /// - "SOAKING" : The upgrade has finished and is soaking until the soaking
+  /// time is up. At the scope level, this means at least one cluster is in
+  /// soaking while the rest are either soaking or complete.
+  /// - "FORCED_SOAKING" : A cluster will be forced to enter soaking if an
+  /// upgrade doesn't finish within a certain limit, despite it's actual status.
+  /// - "COMPLETE" : The upgrade has passed all post conditions (soaking). At
+  /// the scope level, this means all eligible clusters are in COMPLETE status.
+  core.String? code;
+
+  /// Reason for this status.
+  core.String? reason;
+
+  /// Last timestamp the status was updated.
+  core.String? updateTime;
+
+  ClusterUpgradeUpgradeStatus({
+    this.code,
+    this.reason,
+    this.updateTime,
+  });
+
+  ClusterUpgradeUpgradeStatus.fromJson(core.Map json_)
+      : this(
+          code: json_.containsKey('code') ? json_['code'] as core.String : null,
+          reason: json_.containsKey('reason')
+              ? json_['reason'] as core.String
+              : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (code != null) 'code': code!,
+        if (reason != null) 'reason': reason!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
 /// CommonFeatureSpec contains Hub-wide configuration information
 class CommonFeatureSpec {
   /// Appdevexperience specific spec.
   AppDevExperienceFeatureSpec? appdevexperience;
+
+  /// ClusterUpgrade (fleet-based) feature spec.
+  ClusterUpgradeFleetSpec? clusterupgrade;
 
   /// FleetObservability feature spec.
   FleetObservabilityFeatureSpec? fleetobservability;
@@ -3013,6 +3562,7 @@ class CommonFeatureSpec {
 
   CommonFeatureSpec({
     this.appdevexperience,
+    this.clusterupgrade,
     this.fleetobservability,
     this.multiclusteringress,
   });
@@ -3021,6 +3571,10 @@ class CommonFeatureSpec {
       : this(
           appdevexperience: json_.containsKey('appdevexperience')
               ? AppDevExperienceFeatureSpec.fromJson(json_['appdevexperience']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          clusterupgrade: json_.containsKey('clusterupgrade')
+              ? ClusterUpgradeFleetSpec.fromJson(json_['clusterupgrade']
                   as core.Map<core.String, core.dynamic>)
               : null,
           fleetobservability: json_.containsKey('fleetobservability')
@@ -3037,6 +3591,7 @@ class CommonFeatureSpec {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (appdevexperience != null) 'appdevexperience': appdevexperience!,
+        if (clusterupgrade != null) 'clusterupgrade': clusterupgrade!,
         if (fleetobservability != null)
           'fleetobservability': fleetobservability!,
         if (multiclusteringress != null)
@@ -3049,6 +3604,9 @@ class CommonFeatureState {
   /// Appdevexperience specific state.
   AppDevExperienceFeatureState? appdevexperience;
 
+  /// ClusterUpgrade fleet-level state.
+  ClusterUpgradeFleetState? clusterupgrade;
+
   /// FleetObservability feature state.
   FleetObservabilityFeatureState? fleetobservability;
 
@@ -3059,6 +3617,7 @@ class CommonFeatureState {
 
   CommonFeatureState({
     this.appdevexperience,
+    this.clusterupgrade,
     this.fleetobservability,
     this.state,
   });
@@ -3067,6 +3626,10 @@ class CommonFeatureState {
       : this(
           appdevexperience: json_.containsKey('appdevexperience')
               ? AppDevExperienceFeatureState.fromJson(json_['appdevexperience']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          clusterupgrade: json_.containsKey('clusterupgrade')
+              ? ClusterUpgradeFleetState.fromJson(json_['clusterupgrade']
                   as core.Map<core.String, core.dynamic>)
               : null,
           fleetobservability: json_.containsKey('fleetobservability')
@@ -3082,6 +3645,7 @@ class CommonFeatureState {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (appdevexperience != null) 'appdevexperience': appdevexperience!,
+        if (clusterupgrade != null) 'clusterupgrade': clusterupgrade!,
         if (fleetobservability != null)
           'fleetobservability': fleetobservability!,
         if (state != null) 'state': state!,
@@ -3094,11 +3658,19 @@ class CommonFleetDefaultMemberConfigSpec {
   /// Config Management-specific spec.
   ConfigManagementMembershipSpec? configmanagement;
 
+  /// Identity Service-specific spec.
+  IdentityServiceMembershipSpec? identityservice;
+
+  /// Anthos Service Mesh-specific spec
+  ServiceMeshMembershipSpec? mesh;
+
   /// Policy Controller spec.
   PolicyControllerMembershipSpec? policycontroller;
 
   CommonFleetDefaultMemberConfigSpec({
     this.configmanagement,
+    this.identityservice,
+    this.mesh,
     this.policycontroller,
   });
 
@@ -3109,6 +3681,14 @@ class CommonFleetDefaultMemberConfigSpec {
                   json_['configmanagement']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          identityservice: json_.containsKey('identityservice')
+              ? IdentityServiceMembershipSpec.fromJson(json_['identityservice']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          mesh: json_.containsKey('mesh')
+              ? ServiceMeshMembershipSpec.fromJson(
+                  json_['mesh'] as core.Map<core.String, core.dynamic>)
+              : null,
           policycontroller: json_.containsKey('policycontroller')
               ? PolicyControllerMembershipSpec.fromJson(
                   json_['policycontroller']
@@ -3118,6 +3698,8 @@ class CommonFleetDefaultMemberConfigSpec {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (configmanagement != null) 'configmanagement': configmanagement!,
+        if (identityservice != null) 'identityservice': identityservice!,
+        if (mesh != null) 'mesh': mesh!,
         if (policycontroller != null) 'policycontroller': policycontroller!,
       };
 }
@@ -3169,13 +3751,6 @@ class ConfigManagementConfigSync {
   /// "unstructured" mode.
   core.String? sourceFormat;
 
-  /// Set to true to stop syncing configs for a single cluster when automatic
-  /// Feature management is enabled.
-  ///
-  /// Default to false. The field will be ignored when automatic Feature
-  /// management is disabled.
-  core.bool? stopSyncing;
-
   ConfigManagementConfigSync({
     this.allowVerticalScale,
     this.enabled,
@@ -3184,7 +3759,6 @@ class ConfigManagementConfigSync {
     this.oci,
     this.preventDrift,
     this.sourceFormat,
-    this.stopSyncing,
   });
 
   ConfigManagementConfigSync.fromJson(core.Map json_)
@@ -3213,9 +3787,6 @@ class ConfigManagementConfigSync {
           sourceFormat: json_.containsKey('sourceFormat')
               ? json_['sourceFormat'] as core.String
               : null,
-          stopSyncing: json_.containsKey('stopSyncing')
-              ? json_['stopSyncing'] as core.bool
-              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3228,7 +3799,6 @@ class ConfigManagementConfigSync {
         if (oci != null) 'oci': oci!,
         if (preventDrift != null) 'preventDrift': preventDrift!,
         if (sourceFormat != null) 'sourceFormat': sourceFormat!,
-        if (stopSyncing != null) 'stopSyncing': stopSyncing!,
       };
 }
 
@@ -3240,6 +3810,7 @@ class ConfigManagementConfigSyncDeploymentState {
   /// - "NOT_INSTALLED" : Deployment is not installed
   /// - "INSTALLED" : Deployment is installed
   /// - "ERROR" : Deployment was attempted to be installed, but has errors
+  /// - "PENDING" : Deployment is installing or terminating
   core.String? admissionWebhook;
 
   /// Deployment state of the git-sync pod
@@ -3248,6 +3819,7 @@ class ConfigManagementConfigSyncDeploymentState {
   /// - "NOT_INSTALLED" : Deployment is not installed
   /// - "INSTALLED" : Deployment is installed
   /// - "ERROR" : Deployment was attempted to be installed, but has errors
+  /// - "PENDING" : Deployment is installing or terminating
   core.String? gitSync;
 
   /// Deployment state of the importer pod
@@ -3256,6 +3828,7 @@ class ConfigManagementConfigSyncDeploymentState {
   /// - "NOT_INSTALLED" : Deployment is not installed
   /// - "INSTALLED" : Deployment is installed
   /// - "ERROR" : Deployment was attempted to be installed, but has errors
+  /// - "PENDING" : Deployment is installing or terminating
   core.String? importer;
 
   /// Deployment state of the monitor pod
@@ -3264,6 +3837,7 @@ class ConfigManagementConfigSyncDeploymentState {
   /// - "NOT_INSTALLED" : Deployment is not installed
   /// - "INSTALLED" : Deployment is installed
   /// - "ERROR" : Deployment was attempted to be installed, but has errors
+  /// - "PENDING" : Deployment is installing or terminating
   core.String? monitor;
 
   /// Deployment state of reconciler-manager pod
@@ -3272,6 +3846,7 @@ class ConfigManagementConfigSyncDeploymentState {
   /// - "NOT_INSTALLED" : Deployment is not installed
   /// - "INSTALLED" : Deployment is installed
   /// - "ERROR" : Deployment was attempted to be installed, but has errors
+  /// - "PENDING" : Deployment is installing or terminating
   core.String? reconcilerManager;
 
   /// Deployment state of root-reconciler
@@ -3280,6 +3855,7 @@ class ConfigManagementConfigSyncDeploymentState {
   /// - "NOT_INSTALLED" : Deployment is not installed
   /// - "INSTALLED" : Deployment is installed
   /// - "ERROR" : Deployment was attempted to be installed, but has errors
+  /// - "PENDING" : Deployment is installing or terminating
   core.String? rootReconciler;
 
   /// Deployment state of the syncer pod
@@ -3288,6 +3864,7 @@ class ConfigManagementConfigSyncDeploymentState {
   /// - "NOT_INSTALLED" : Deployment is not installed
   /// - "INSTALLED" : Deployment is installed
   /// - "ERROR" : Deployment was attempted to be installed, but has errors
+  /// - "PENDING" : Deployment is installing or terminating
   core.String? syncer;
 
   ConfigManagementConfigSyncDeploymentState({
@@ -3515,6 +4092,7 @@ class ConfigManagementGatekeeperDeploymentState {
   /// - "NOT_INSTALLED" : Deployment is not installed
   /// - "INSTALLED" : Deployment is installed
   /// - "ERROR" : Deployment was attempted to be installed, but has errors
+  /// - "PENDING" : Deployment is installing or terminating
   core.String? gatekeeperAudit;
 
   /// Status of gatekeeper-controller-manager pod.
@@ -3523,6 +4101,7 @@ class ConfigManagementGatekeeperDeploymentState {
   /// - "NOT_INSTALLED" : Deployment is not installed
   /// - "INSTALLED" : Deployment is installed
   /// - "ERROR" : Deployment was attempted to be installed, but has errors
+  /// - "PENDING" : Deployment is installing or terminating
   core.String? gatekeeperControllerManagerState;
 
   /// Status of the pod serving the mutation webhook.
@@ -3531,6 +4110,7 @@ class ConfigManagementGatekeeperDeploymentState {
   /// - "NOT_INSTALLED" : Deployment is not installed
   /// - "INSTALLED" : Deployment is installed
   /// - "ERROR" : Deployment was attempted to be installed, but has errors
+  /// - "PENDING" : Deployment is installing or terminating
   core.String? gatekeeperMutation;
 
   ConfigManagementGatekeeperDeploymentState({
@@ -3735,6 +4315,7 @@ class ConfigManagementHierarchyControllerDeploymentState {
   /// - "NOT_INSTALLED" : Deployment is not installed
   /// - "INSTALLED" : Deployment is installed
   /// - "ERROR" : Deployment was attempted to be installed, but has errors
+  /// - "PENDING" : Deployment is installing or terminating
   core.String? extension;
 
   /// The deployment state for open source HNC (e.g. v0.7.0-hc.0)
@@ -3743,6 +4324,7 @@ class ConfigManagementHierarchyControllerDeploymentState {
   /// - "NOT_INSTALLED" : Deployment is not installed
   /// - "INSTALLED" : Deployment is installed
   /// - "ERROR" : Deployment was attempted to be installed, but has errors
+  /// - "PENDING" : Deployment is installing or terminating
   core.String? hnc;
 
   ConfigManagementHierarchyControllerDeploymentState({
@@ -3845,14 +4427,6 @@ class ConfigManagementMembershipSpec {
   /// Hierarchy Controller configuration for the cluster.
   ConfigManagementHierarchyControllerConfig? hierarchyController;
 
-  /// Enables automatic Feature management.
-  /// Possible string values are:
-  /// - "MANAGEMENT_UNSPECIFIED" : Unspecified
-  /// - "MANAGEMENT_AUTOMATIC" : Google will manage the Feature for the cluster.
-  /// - "MANAGEMENT_MANUAL" : User will manually manage the Feature for the
-  /// cluster.
-  core.String? management;
-
   /// Policy Controller configuration for the cluster.
   ConfigManagementPolicyController? policyController;
 
@@ -3863,7 +4437,6 @@ class ConfigManagementMembershipSpec {
     this.cluster,
     this.configSync,
     this.hierarchyController,
-    this.management,
     this.policyController,
     this.version,
   });
@@ -3882,9 +4455,6 @@ class ConfigManagementMembershipSpec {
                   json_['hierarchyController']
                       as core.Map<core.String, core.dynamic>)
               : null,
-          management: json_.containsKey('management')
-              ? json_['management'] as core.String
-              : null,
           policyController: json_.containsKey('policyController')
               ? ConfigManagementPolicyController.fromJson(
                   json_['policyController']
@@ -3900,7 +4470,6 @@ class ConfigManagementMembershipSpec {
         if (configSync != null) 'configSync': configSync!,
         if (hierarchyController != null)
           'hierarchyController': hierarchyController!,
-        if (management != null) 'management': management!,
         if (policyController != null) 'policyController': policyController!,
         if (version != null) 'version': version!,
       };
@@ -4053,6 +4622,7 @@ class ConfigManagementOperatorState {
   /// - "NOT_INSTALLED" : Deployment is not installed
   /// - "INSTALLED" : Deployment is installed
   /// - "ERROR" : Deployment was attempted to be installed, but has errors
+  /// - "PENDING" : Deployment is installing or terminating
   core.String? deploymentState;
 
   /// Install errors.
@@ -4457,6 +5027,44 @@ class ConnectAgentResource {
       };
 }
 
+/// DefaultClusterConfig describes the default cluster configurations to be
+/// applied to all clusters born-in-fleet.
+class DefaultClusterConfig {
+  /// Enable/Disable binary authorization features for the cluster.
+  ///
+  /// Optional.
+  BinaryAuthorizationConfig? binaryAuthorizationConfig;
+
+  /// Enable/Disable Security Posture features for the cluster.
+  SecurityPostureConfig? securityPostureConfig;
+
+  DefaultClusterConfig({
+    this.binaryAuthorizationConfig,
+    this.securityPostureConfig,
+  });
+
+  DefaultClusterConfig.fromJson(core.Map json_)
+      : this(
+          binaryAuthorizationConfig:
+              json_.containsKey('binaryAuthorizationConfig')
+                  ? BinaryAuthorizationConfig.fromJson(
+                      json_['binaryAuthorizationConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          securityPostureConfig: json_.containsKey('securityPostureConfig')
+              ? SecurityPostureConfig.fromJson(json_['securityPostureConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (binaryAuthorizationConfig != null)
+          'binaryAuthorizationConfig': binaryAuthorizationConfig!,
+        if (securityPostureConfig != null)
+          'securityPostureConfig': securityPostureConfig!,
+      };
+}
+
 /// EdgeCluster contains information specific to Google Edge Clusters.
 class EdgeCluster {
   /// Self-link of the Google Cloud resource for the Edge Cluster.
@@ -4823,6 +5431,11 @@ class Fleet {
   /// Output only.
   core.String? createTime;
 
+  /// The default cluster configurations to apply across the fleet.
+  ///
+  /// Optional.
+  DefaultClusterConfig? defaultClusterConfig;
+
   /// When the Fleet was deleted.
   ///
   /// Output only.
@@ -4872,6 +5485,7 @@ class Fleet {
 
   Fleet({
     this.createTime,
+    this.defaultClusterConfig,
     this.deleteTime,
     this.displayName,
     this.labels,
@@ -4885,6 +5499,10 @@ class Fleet {
       : this(
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
+              : null,
+          defaultClusterConfig: json_.containsKey('defaultClusterConfig')
+              ? DefaultClusterConfig.fromJson(json_['defaultClusterConfig']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           deleteTime: json_.containsKey('deleteTime')
               ? json_['deleteTime'] as core.String
@@ -4913,6 +5531,8 @@ class Fleet {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
+        if (defaultClusterConfig != null)
+          'defaultClusterConfig': defaultClusterConfig!,
         if (deleteTime != null) 'deleteTime': deleteTime!,
         if (displayName != null) 'displayName': displayName!,
         if (labels != null) 'labels': labels!,
@@ -6628,6 +7248,9 @@ class MembershipFeatureState {
   /// Appdevexperience specific state.
   AppDevExperienceFeatureState? appdevexperience;
 
+  /// ClusterUpgrade state.
+  ClusterUpgradeMembershipState? clusterupgrade;
+
   /// Config Management-specific state.
   ConfigManagementMembershipState? configmanagement;
 
@@ -6648,6 +7271,7 @@ class MembershipFeatureState {
 
   MembershipFeatureState({
     this.appdevexperience,
+    this.clusterupgrade,
     this.configmanagement,
     this.fleetobservability,
     this.identityservice,
@@ -6660,6 +7284,10 @@ class MembershipFeatureState {
       : this(
           appdevexperience: json_.containsKey('appdevexperience')
               ? AppDevExperienceFeatureState.fromJson(json_['appdevexperience']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          clusterupgrade: json_.containsKey('clusterupgrade')
+              ? ClusterUpgradeMembershipState.fromJson(json_['clusterupgrade']
                   as core.Map<core.String, core.dynamic>)
               : null,
           configmanagement: json_.containsKey('configmanagement')
@@ -6693,6 +7321,7 @@ class MembershipFeatureState {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (appdevexperience != null) 'appdevexperience': appdevexperience!,
+        if (clusterupgrade != null) 'clusterupgrade': clusterupgrade!,
         if (configmanagement != null) 'configmanagement': configmanagement!,
         if (fleetobservability != null)
           'fleetobservability': fleetobservability!,
@@ -7303,6 +7932,28 @@ class Policy {
         if (bindings != null) 'bindings': bindings!,
         if (etag != null) 'etag': etag!,
         if (version != null) 'version': version!,
+      };
+}
+
+/// Binauthz policy that applies to this cluster.
+class PolicyBinding {
+  /// The relative resource name of the binauthz platform policy to audit.
+  ///
+  /// GKE platform policies have the following format:
+  /// `projects/{project_number}/platforms/gke/policies/{policy_id}`.
+  core.String? name;
+
+  PolicyBinding({
+    this.name,
+  });
+
+  PolicyBinding.fromJson(core.Map json_)
+      : this(
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
       };
 }
 
@@ -7973,7 +8624,7 @@ class RBACRoleBinding {
   core.Map<core.String, core.String>? labels;
 
   /// The resource name for the rbacrolebinding
-  /// `projects/{project}/locations/{location}/namespaces/{namespace}/rbacrolebindings/{rbacrolebinding}`
+  /// `projects/{project}/locations/{location}/scopes/{scope}/rbacrolebindings/{rbacrolebinding}`
   /// or
   /// `projects/{project}/locations/{location}/memberships/{membership}/rbacrolebindings/{rbacrolebinding}`
   core.String? name;
@@ -8372,6 +9023,46 @@ class ScopeLifecycleState {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
+      };
+}
+
+/// SecurityPostureConfig defines the flags needed to enable/disable features
+/// for the Security Posture API.
+class SecurityPostureConfig {
+  /// Sets which mode to use for Security Posture features.
+  /// Possible string values are:
+  /// - "MODE_UNSPECIFIED" : Default value not specified.
+  /// - "DISABLED" : Disables Security Posture features on the cluster.
+  /// - "BASIC" : Applies Security Posture features on the cluster.
+  core.String? mode;
+
+  /// Sets which mode to use for vulnerability scanning.
+  /// Possible string values are:
+  /// - "VULNERABILITY_MODE_UNSPECIFIED" : Default value not specified.
+  /// - "VULNERABILITY_DISABLED" : Disables vulnerability scanning on the
+  /// cluster.
+  /// - "VULNERABILITY_BASIC" : Applies basic vulnerability scanning on the
+  /// cluster.
+  /// - "VULNERABILITY_ENTERPRISE" : Applies the Security Posture's
+  /// vulnerability on cluster Enterprise level features.
+  core.String? vulnerabilityMode;
+
+  SecurityPostureConfig({
+    this.mode,
+    this.vulnerabilityMode,
+  });
+
+  SecurityPostureConfig.fromJson(core.Map json_)
+      : this(
+          mode: json_.containsKey('mode') ? json_['mode'] as core.String : null,
+          vulnerabilityMode: json_.containsKey('vulnerabilityMode')
+              ? json_['vulnerabilityMode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (mode != null) 'mode': mode!,
+        if (vulnerabilityMode != null) 'vulnerabilityMode': vulnerabilityMode!,
       };
 }
 

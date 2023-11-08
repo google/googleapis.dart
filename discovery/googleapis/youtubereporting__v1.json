@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20231031",
+    "revision": "20231127",
     "rootUrl": "https://youtubereporting.googleapis.com/",
     "servicePath": "",
     "title": "YouTube Reporting API",

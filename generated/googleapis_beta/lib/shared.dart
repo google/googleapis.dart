@@ -868,9 +868,6 @@ class $SasPortalInstallationParams {
   /// inclusive.
   core.int? antennaGain;
 
-  /// As above, but as a DoubleValue.
-  core.double? antennaGainNewField;
-
   /// If an external antenna is used, the antenna model is optionally provided
   /// in this field.
   ///
@@ -887,9 +884,6 @@ class $SasPortalInstallationParams {
   /// If not included, SAS interprets it as maximum allowable EIRP in units of
   /// dBm/10MHz for device category.
   core.int? eirpCapability;
-
-  /// As above, but as a DoubleValue.
-  core.double? eirpCapabilityNewField;
 
   /// Device antenna height in meters.
   ///
@@ -946,11 +940,9 @@ class $SasPortalInstallationParams {
     this.antennaBeamwidth,
     this.antennaDowntilt,
     this.antennaGain,
-    this.antennaGainNewField,
     this.antennaModel,
     this.cpeCbsdIndication,
     this.eirpCapability,
-    this.eirpCapabilityNewField,
     this.height,
     this.heightType,
     this.horizontalAccuracy,
@@ -974,9 +966,6 @@ class $SasPortalInstallationParams {
           antennaGain: json_.containsKey('antennaGain')
               ? json_['antennaGain'] as core.int
               : null,
-          antennaGainNewField: json_.containsKey('antennaGainNewField')
-              ? (json_['antennaGainNewField'] as core.num).toDouble()
-              : null,
           antennaModel: json_.containsKey('antennaModel')
               ? json_['antennaModel'] as core.String
               : null,
@@ -985,9 +974,6 @@ class $SasPortalInstallationParams {
               : null,
           eirpCapability: json_.containsKey('eirpCapability')
               ? json_['eirpCapability'] as core.int
-              : null,
-          eirpCapabilityNewField: json_.containsKey('eirpCapabilityNewField')
-              ? (json_['eirpCapabilityNewField'] as core.num).toDouble()
               : null,
           height: json_.containsKey('height')
               ? (json_['height'] as core.num).toDouble()
@@ -1017,13 +1003,9 @@ class $SasPortalInstallationParams {
         if (antennaBeamwidth != null) 'antennaBeamwidth': antennaBeamwidth!,
         if (antennaDowntilt != null) 'antennaDowntilt': antennaDowntilt!,
         if (antennaGain != null) 'antennaGain': antennaGain!,
-        if (antennaGainNewField != null)
-          'antennaGainNewField': antennaGainNewField!,
         if (antennaModel != null) 'antennaModel': antennaModel!,
         if (cpeCbsdIndication != null) 'cpeCbsdIndication': cpeCbsdIndication!,
         if (eirpCapability != null) 'eirpCapability': eirpCapability!,
-        if (eirpCapabilityNewField != null)
-          'eirpCapabilityNewField': eirpCapabilityNewField!,
         if (height != null) 'height': height!,
         if (heightType != null) 'heightType': heightType!,
         if (horizontalAccuracy != null)

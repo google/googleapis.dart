@@ -1594,8 +1594,22 @@ class EventsResource {
   /// constraints.
   ///
   /// [q] - Free text search terms to find events that match these terms in the
-  /// following fields: summary, description, location, attendee's displayName,
-  /// attendee's email. Optional.
+  /// following fields:
+  ///
+  /// - summary
+  /// - description
+  /// - location
+  /// - attendee's displayName
+  /// - attendee's email
+  /// - workingLocationProperties.officeLocation.buildingId
+  /// - workingLocationProperties.officeLocation.deskId
+  /// - workingLocationProperties.officeLocation.label
+  /// - workingLocationProperties.customLocation.label
+  /// These search terms also match predefined keywords against all display
+  /// title translations of working location, out-of-office, and focus-time
+  /// events. For example, searching for "Office" or "Bureau" returns working
+  /// location events of type officeLocation, whereas searching for "Out of
+  /// office" or "Abwesend" returns out-of-office events. Optional.
   ///
   /// [sharedExtendedProperty] - Extended properties constraint specified as
   /// propertyName=value. Matches only shared properties. This parameter might
@@ -1734,6 +1748,9 @@ class EventsResource {
   }
 
   /// Moves an event to another calendar, i.e. changes an event's organizer.
+  ///
+  /// Note that only default events can be moved; outOfOffice, focusTime and
+  /// workingLocation events cannot be moved.
   ///
   /// Request parameters:
   ///
@@ -2118,8 +2135,22 @@ class EventsResource {
   /// constraints.
   ///
   /// [q] - Free text search terms to find events that match these terms in the
-  /// following fields: summary, description, location, attendee's displayName,
-  /// attendee's email. Optional.
+  /// following fields:
+  ///
+  /// - summary
+  /// - description
+  /// - location
+  /// - attendee's displayName
+  /// - attendee's email
+  /// - workingLocationProperties.officeLocation.buildingId
+  /// - workingLocationProperties.officeLocation.deskId
+  /// - workingLocationProperties.officeLocation.label
+  /// - workingLocationProperties.customLocation.label
+  /// These search terms also match predefined keywords against all display
+  /// title translations of working location, out-of-office, and focus-time
+  /// events. For example, searching for "Office" or "Bureau" returns working
+  /// location events of type officeLocation, whereas searching for "Out of
+  /// office" or "Abwesend" returns out-of-office events. Optional.
   ///
   /// [sharedExtendedProperty] - Extended properties constraint specified as
   /// propertyName=value. Matches only shared properties. This parameter might
@@ -4122,6 +4153,9 @@ class Event {
   /// Extended properties of the event.
   EventExtendedProperties? extendedProperties;
 
+  /// Focus Time event data.
+  EventFocusTimeProperties? focusTimeProperties;
+
   /// A gadget that extends this event.
   ///
   /// Gadgets are deprecated; this structure is instead only used for returning
@@ -4216,6 +4250,9 @@ class Event {
   /// It uniquely identifies the instance within the recurring event series even
   /// if the instance was moved to a different time. Immutable.
   EventDateTime? originalStartTime;
+
+  /// Out of office event data.
+  EventOutOfOfficeProperties? outOfOfficeProperties;
 
   /// If set to True, Event propagation is disabled.
   ///
@@ -4334,6 +4371,7 @@ class Event {
     this.etag,
     this.eventType,
     this.extendedProperties,
+    this.focusTimeProperties,
     this.gadget,
     this.guestsCanInviteOthers,
     this.guestsCanModify,
@@ -4347,6 +4385,7 @@ class Event {
     this.locked,
     this.organizer,
     this.originalStartTime,
+    this.outOfOfficeProperties,
     this.privateCopy,
     this.recurrence,
     this.recurringEventId,
@@ -4414,6 +4453,10 @@ class Event {
               ? EventExtendedProperties.fromJson(json_['extendedProperties']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          focusTimeProperties: json_.containsKey('focusTimeProperties')
+              ? EventFocusTimeProperties.fromJson(json_['focusTimeProperties']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           gadget: json_.containsKey('gadget')
               ? EventGadget.fromJson(
                   json_['gadget'] as core.Map<core.String, core.dynamic>)
@@ -4450,6 +4493,11 @@ class Event {
           originalStartTime: json_.containsKey('originalStartTime')
               ? EventDateTime.fromJson(json_['originalStartTime']
                   as core.Map<core.String, core.dynamic>)
+              : null,
+          outOfOfficeProperties: json_.containsKey('outOfOfficeProperties')
+              ? EventOutOfOfficeProperties.fromJson(
+                  json_['outOfOfficeProperties']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           privateCopy: json_.containsKey('privateCopy')
               ? json_['privateCopy'] as core.bool
@@ -4517,6 +4565,8 @@ class Event {
         if (eventType != null) 'eventType': eventType!,
         if (extendedProperties != null)
           'extendedProperties': extendedProperties!,
+        if (focusTimeProperties != null)
+          'focusTimeProperties': focusTimeProperties!,
         if (gadget != null) 'gadget': gadget!,
         if (guestsCanInviteOthers != null)
           'guestsCanInviteOthers': guestsCanInviteOthers!,
@@ -4532,6 +4582,8 @@ class Event {
         if (locked != null) 'locked': locked!,
         if (organizer != null) 'organizer': organizer!,
         if (originalStartTime != null) 'originalStartTime': originalStartTime!,
+        if (outOfOfficeProperties != null)
+          'outOfOfficeProperties': outOfOfficeProperties!,
         if (privateCopy != null) 'privateCopy': privateCopy!,
         if (recurrence != null) 'recurrence': recurrence!,
         if (recurringEventId != null) 'recurringEventId': recurringEventId!,
@@ -4771,6 +4823,88 @@ class EventDateTime {
               "${date!.year.toString().padLeft(4, '0')}-${date!.month.toString().padLeft(2, '0')}-${date!.day.toString().padLeft(2, '0')}",
         if (dateTime != null) 'dateTime': dateTime!.toUtc().toIso8601String(),
         if (timeZone != null) 'timeZone': timeZone!,
+      };
+}
+
+class EventFocusTimeProperties {
+  /// Whether to decline meeting invitations which overlap Focus Time events.
+  ///
+  /// Valid values are declineNone, meaning that no meeting invitations are
+  /// declined; declineAllConflictingInvitations, meaning that all conflicting
+  /// meeting invitations that conflict with the event are declined; and
+  /// declineOnlyNewConflictingInvitations, meaning that only new conflicting
+  /// meeting invitations which arrive while the Focus Time event is present are
+  /// to be declined.
+  core.String? autoDeclineMode;
+
+  /// The status to mark the user in Chat and related products.
+  ///
+  /// This can be available or doNotDisturb.
+  core.String? chatStatus;
+
+  /// Response message to set if an existing event or new invitation is
+  /// automatically declined by Calendar.
+  core.String? declineMessage;
+
+  EventFocusTimeProperties({
+    this.autoDeclineMode,
+    this.chatStatus,
+    this.declineMessage,
+  });
+
+  EventFocusTimeProperties.fromJson(core.Map json_)
+      : this(
+          autoDeclineMode: json_.containsKey('autoDeclineMode')
+              ? json_['autoDeclineMode'] as core.String
+              : null,
+          chatStatus: json_.containsKey('chatStatus')
+              ? json_['chatStatus'] as core.String
+              : null,
+          declineMessage: json_.containsKey('declineMessage')
+              ? json_['declineMessage'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (autoDeclineMode != null) 'autoDeclineMode': autoDeclineMode!,
+        if (chatStatus != null) 'chatStatus': chatStatus!,
+        if (declineMessage != null) 'declineMessage': declineMessage!,
+      };
+}
+
+class EventOutOfOfficeProperties {
+  /// Whether to decline meeting invitations which overlap Out of office events.
+  ///
+  /// Valid values are declineNone, meaning that no meeting invitations are
+  /// declined; declineAllConflictingInvitations, meaning that all conflicting
+  /// meeting invitations that conflict with the event are declined; and
+  /// declineOnlyNewConflictingInvitations, meaning that only new conflicting
+  /// meeting invitations which arrive while the Out of office event is present
+  /// are to be declined.
+  core.String? autoDeclineMode;
+
+  /// Response message to set if an existing event or new invitation is
+  /// automatically declined by Calendar.
+  core.String? declineMessage;
+
+  EventOutOfOfficeProperties({
+    this.autoDeclineMode,
+    this.declineMessage,
+  });
+
+  EventOutOfOfficeProperties.fromJson(core.Map json_)
+      : this(
+          autoDeclineMode: json_.containsKey('autoDeclineMode')
+              ? json_['autoDeclineMode'] as core.String
+              : null,
+          declineMessage: json_.containsKey('declineMessage')
+              ? json_['declineMessage'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (autoDeclineMode != null) 'autoDeclineMode': autoDeclineMode!,
+        if (declineMessage != null) 'declineMessage': declineMessage!,
       };
 }
 

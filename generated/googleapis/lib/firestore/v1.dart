@@ -3787,12 +3787,11 @@ class GoogleFirestoreAdminV1ExportDocumentsRequest {
   /// The timestamp that corresponds to the version of the database to be
   /// exported.
   ///
-  /// The timestamp must be rounded to the minute, in the past, and not older
-  /// than 5 days. Please choose a reasonable timestamp based on prior knowledge
-  /// on how long exports take as data at provided snapshot timestamp can expire
-  /// during export. If specified, then the exported documents will represent a
-  /// consistent view of the database at the provided time. Otherwise, there are
-  /// no guarantees about the consistency of the exported documents.
+  /// The timestamp must be in the past, rounded to the minute and not older
+  /// than earliestVersionTime. If specified, then the exported documents will
+  /// represent a consistent view of the database at the provided time.
+  /// Otherwise, there are no guarantees about the consistency of the exported
+  /// documents.
   core.String? snapshotTime;
 
   GoogleFirestoreAdminV1ExportDocumentsRequest({
@@ -4256,8 +4255,20 @@ class GoogleFirestoreAdminV1ListDatabasesResponse {
   /// The databases in the project.
   core.List<GoogleFirestoreAdminV1Database>? databases;
 
+  /// In the event that data about individual databases cannot be listed they
+  /// will be recorded here.
+  ///
+  /// An example entry might be: projects/some_project/locations/some_location
+  /// This can happen if the Cloud Region that the Database resides in is
+  /// currently unavailable. In this case we can't fetch all the details about
+  /// the database. You may be able to get a more detailed error message (or
+  /// possibly fetch the resource) by sending a 'Get' request for the resource
+  /// or a 'List' request for the specific location.
+  core.List<core.String>? unreachable;
+
   GoogleFirestoreAdminV1ListDatabasesResponse({
     this.databases,
+    this.unreachable,
   });
 
   GoogleFirestoreAdminV1ListDatabasesResponse.fromJson(core.Map json_)
@@ -4268,10 +4279,16 @@ class GoogleFirestoreAdminV1ListDatabasesResponse {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (databases != null) 'databases': databases!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 

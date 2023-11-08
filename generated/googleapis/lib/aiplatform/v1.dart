@@ -42,6 +42,15 @@
 ///       - [ProjectsLocationsDeploymentResourcePoolsOperationsResource]
 ///     - [ProjectsLocationsEndpointsResource]
 ///       - [ProjectsLocationsEndpointsOperationsResource]
+///     - [ProjectsLocationsFeatureGroupsResource]
+///       - [ProjectsLocationsFeatureGroupsFeaturesResource]
+///         - [ProjectsLocationsFeatureGroupsFeaturesOperationsResource]
+///       - [ProjectsLocationsFeatureGroupsOperationsResource]
+///     - [ProjectsLocationsFeatureOnlineStoresResource]
+///       - [ProjectsLocationsFeatureOnlineStoresFeatureViewsResource]
+/// - [ProjectsLocationsFeatureOnlineStoresFeatureViewsFeatureViewSyncsResource]
+/// - [ProjectsLocationsFeatureOnlineStoresFeatureViewsOperationsResource]
+///       - [ProjectsLocationsFeatureOnlineStoresOperationsResource]
 ///     - [ProjectsLocationsFeaturestoresResource]
 ///       - [ProjectsLocationsFeaturestoresEntityTypesResource]
 ///         - [ProjectsLocationsFeaturestoresEntityTypesFeaturesResource]
@@ -162,6 +171,10 @@ class ProjectsLocationsResource {
           ProjectsLocationsDeploymentResourcePoolsResource(_requester);
   ProjectsLocationsEndpointsResource get endpoints =>
       ProjectsLocationsEndpointsResource(_requester);
+  ProjectsLocationsFeatureGroupsResource get featureGroups =>
+      ProjectsLocationsFeatureGroupsResource(_requester);
+  ProjectsLocationsFeatureOnlineStoresResource get featureOnlineStores =>
+      ProjectsLocationsFeatureOnlineStoresResource(_requester);
   ProjectsLocationsFeaturestoresResource get featurestores =>
       ProjectsLocationsFeaturestoresResource(_requester);
   ProjectsLocationsHyperparameterTuningJobsResource
@@ -3706,6 +3719,235 @@ class ProjectsLocationsDeploymentResourcePoolsResource {
 
   ProjectsLocationsDeploymentResourcePoolsResource(commons.ApiRequester client)
       : _requester = client;
+
+  /// Create a DeploymentResourcePool.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent location resource where this
+  /// DeploymentResourcePool will be created. Format:
+  /// `projects/{project}/locations/{location}`
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> create(
+    GoogleCloudAiplatformV1CreateDeploymentResourcePoolRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/deploymentResourcePools';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Delete a DeploymentResourcePool.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the DeploymentResourcePool to delete.
+  /// Format:
+  /// `projects/{project}/locations/{location}/deploymentResourcePools/{deployment_resource_pool}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/deploymentResourcePools/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Get a DeploymentResourcePool.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the DeploymentResourcePool to retrieve.
+  /// Format:
+  /// `projects/{project}/locations/{location}/deploymentResourcePools/{deployment_resource_pool}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/deploymentResourcePools/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudAiplatformV1DeploymentResourcePool].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAiplatformV1DeploymentResourcePool> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAiplatformV1DeploymentResourcePool.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List DeploymentResourcePools in a location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent Location which owns this collection of
+  /// DeploymentResourcePools. Format: `projects/{project}/locations/{location}`
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of DeploymentResourcePools to return. The
+  /// service may return fewer than this value.
+  ///
+  /// [pageToken] - A page token, received from a previous
+  /// `ListDeploymentResourcePools` call. Provide this to retrieve the
+  /// subsequent page. When paginating, all other parameters provided to
+  /// `ListDeploymentResourcePools` must match the call that provided the page
+  /// token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudAiplatformV1ListDeploymentResourcePoolsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAiplatformV1ListDeploymentResourcePoolsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/deploymentResourcePools';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAiplatformV1ListDeploymentResourcePoolsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List DeployedModels that have been deployed on this
+  /// DeploymentResourcePool.
+  ///
+  /// Request parameters:
+  ///
+  /// [deploymentResourcePool] - Required. The name of the target
+  /// DeploymentResourcePool to query. Format:
+  /// `projects/{project}/locations/{location}/deploymentResourcePools/{deployment_resource_pool}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/deploymentResourcePools/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of DeployedModels to return. The service
+  /// may return fewer than this value.
+  ///
+  /// [pageToken] - A page token, received from a previous `QueryDeployedModels`
+  /// call. Provide this to retrieve the subsequent page. When paginating, all
+  /// other parameters provided to `QueryDeployedModels` must match the call
+  /// that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudAiplatformV1QueryDeployedModelsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAiplatformV1QueryDeployedModelsResponse>
+      queryDeployedModels(
+    core.String deploymentResourcePool, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$deploymentResourcePool') +
+        ':queryDeployedModels';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAiplatformV1QueryDeployedModelsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsDeploymentResourcePoolsOperationsResource {
@@ -3955,6 +4197,93 @@ class ProjectsLocationsEndpointsResource {
 
   ProjectsLocationsEndpointsResource(commons.ApiRequester client)
       : _requester = client;
+
+  /// Return a list of tokens based on the input text.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [endpoint] - Required. The name of the Endpoint requested to get lists of
+  /// tokens and token ids.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/endpoints/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudAiplatformV1ComputeTokensResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAiplatformV1ComputeTokensResponse> computeTokens(
+    GoogleCloudAiplatformV1ComputeTokensRequest request,
+    core.String endpoint, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$endpoint') + ':computeTokens';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAiplatformV1ComputeTokensResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Perform a token counting.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [endpoint] - Required. The name of the Endpoint requested to perform token
+  /// counting. Format:
+  /// `projects/{project}/locations/{location}/endpoints/{endpoint}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/endpoints/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudAiplatformV1CountTokensResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAiplatformV1CountTokensResponse> countTokens(
+    GoogleCloudAiplatformV1CountTokensRequest request,
+    core.String endpoint, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$endpoint') + ':countTokens';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAiplatformV1CountTokensResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 
   /// Creates an Endpoint.
   ///
@@ -4731,6 +5060,2089 @@ class ProjectsLocationsEndpointsOperationsResource {
   /// [name] - The name of the operation resource to wait on.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/endpoints/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [timeout] - The maximum duration to wait before timing out. If left blank,
+  /// the wait will be at most the time permitted by the underlying HTTP/RPC
+  /// protocol. If RPC context deadline is also specified, the shorter one will
+  /// be used.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> wait(
+    core.String name, {
+    core.String? timeout,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (timeout != null) 'timeout': [timeout],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':wait';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsFeatureGroupsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsFeatureGroupsFeaturesResource get features =>
+      ProjectsLocationsFeatureGroupsFeaturesResource(_requester);
+  ProjectsLocationsFeatureGroupsOperationsResource get operations =>
+      ProjectsLocationsFeatureGroupsOperationsResource(_requester);
+
+  ProjectsLocationsFeatureGroupsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new FeatureGroup in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the Location to create
+  /// FeatureGroups. Format: `projects/{project}/locations/{location}'`
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [featureGroupId] - Required. The ID to use for this FeatureGroup, which
+  /// will become the final component of the FeatureGroup's resource name. This
+  /// value may be up to 60 characters, and valid characters are `[a-z0-9_]`.
+  /// The first character cannot be a number. The value must be unique within
+  /// the project and location.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> create(
+    GoogleCloudAiplatformV1FeatureGroup request,
+    core.String parent, {
+    core.String? featureGroupId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (featureGroupId != null) 'featureGroupId': [featureGroupId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/featureGroups';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single FeatureGroup.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the FeatureGroup to be deleted. Format:
+  /// `projects/{project}/locations/{location}/featureGroups/{feature_group}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/featureGroups/\[^/\]+$`.
+  ///
+  /// [force] - If set to true, any Features under this FeatureGroup will also
+  /// be deleted. (Otherwise, the request will only work if the FeatureGroup has
+  /// no Features.)
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.bool? force,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (force != null) 'force': ['${force}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single FeatureGroup.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the FeatureGroup resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/featureGroups/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudAiplatformV1FeatureGroup].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAiplatformV1FeatureGroup> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAiplatformV1FeatureGroup.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists FeatureGroups in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the Location to list
+  /// FeatureGroups. Format: `projects/{project}/locations/{location}`
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Lists the FeatureGroups that match the filter expression. The
+  /// following fields are supported: * `create_time`: Supports `=`, `!=`, `<`,
+  /// `>`, `<=`, and `>=` comparisons. Values must be in RFC 3339 format. *
+  /// `update_time`: Supports `=`, `!=`, `<`, `>`, `<=`, and `>=` comparisons.
+  /// Values must be in RFC 3339 format. * `labels`: Supports key-value equality
+  /// and key presence. Examples: * `create_time > "2020-01-01" OR update_time >
+  /// "2020-01-01"` FeatureGroups created or updated after 2020-01-01. *
+  /// `labels.env = "prod"` FeatureGroups with label "env" set to "prod".
+  ///
+  /// [orderBy] - A comma-separated list of fields to order by, sorted in
+  /// ascending order. Use "desc" after a field name for descending. Supported
+  /// Fields: * `create_time` * `update_time`
+  ///
+  /// [pageSize] - The maximum number of FeatureGroups to return. The service
+  /// may return fewer than this value. If unspecified, at most 100
+  /// FeatureGroups will be returned. The maximum value is 100; any value
+  /// greater than 100 will be coerced to 100.
+  ///
+  /// [pageToken] - A page token, received from a previous
+  /// FeatureGroupAdminService.ListFeatureGroups call. Provide this to retrieve
+  /// the subsequent page. When paginating, all other parameters provided to
+  /// FeatureGroupAdminService.ListFeatureGroups must match the call that
+  /// provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudAiplatformV1ListFeatureGroupsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAiplatformV1ListFeatureGroupsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/featureGroups';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAiplatformV1ListFeatureGroupsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the parameters of a single FeatureGroup.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. Name of the FeatureGroup. Format:
+  /// `projects/{project}/locations/{location}/featureGroups/{featureGroup}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/featureGroups/\[^/\]+$`.
+  ///
+  /// [updateMask] - Field mask is used to specify the fields to be overwritten
+  /// in the FeatureGroup resource by the update. The fields specified in the
+  /// update_mask are relative to the resource, not the full request. A field
+  /// will be overwritten if it is in the mask. If the user does not provide a
+  /// mask then only the non-empty fields present in the request will be
+  /// overwritten. Set the update_mask to `*` to override all fields. Updatable
+  /// fields: * `labels`
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> patch(
+    GoogleCloudAiplatformV1FeatureGroup request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsFeatureGroupsFeaturesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsFeatureGroupsFeaturesOperationsResource get operations =>
+      ProjectsLocationsFeatureGroupsFeaturesOperationsResource(_requester);
+
+  ProjectsLocationsFeatureGroupsFeaturesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new Feature in a given FeatureGroup.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the EntityType or FeatureGroup
+  /// to create a Feature. Format for entity_type as parent:
+  /// `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}`
+  /// Format for feature_group as parent:
+  /// `projects/{project}/locations/{location}/featureGroups/{feature_group}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/featureGroups/\[^/\]+$`.
+  ///
+  /// [featureId] - Required. The ID to use for the Feature, which will become
+  /// the final component of the Feature's resource name. This value may be up
+  /// to 128 characters, and valid characters are `[a-z0-9_]`. The first
+  /// character cannot be a number. The value must be unique within an
+  /// EntityType/FeatureGroup.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> create(
+    GoogleCloudAiplatformV1Feature request,
+    core.String parent, {
+    core.String? featureId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (featureId != null) 'featureId': [featureId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/features';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single Feature.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the Features to be deleted. Format:
+  /// `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}/features/{feature}`
+  /// `projects/{project}/locations/{location}/featureGroups/{feature_group}/features/{feature}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/featureGroups/\[^/\]+/features/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single Feature.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the Feature resource. Format for
+  /// entity_type as parent:
+  /// `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}`
+  /// Format for feature_group as parent:
+  /// `projects/{project}/locations/{location}/featureGroups/{feature_group}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/featureGroups/\[^/\]+/features/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudAiplatformV1Feature].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAiplatformV1Feature> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAiplatformV1Feature.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists Features in a given FeatureGroup.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the Location to list Features.
+  /// Format for entity_type as parent:
+  /// `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}`
+  /// Format for feature_group as parent:
+  /// `projects/{project}/locations/{location}/featureGroups/{feature_group}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/featureGroups/\[^/\]+$`.
+  ///
+  /// [filter] - Lists the Features that match the filter expression. The
+  /// following filters are supported: * `value_type`: Supports = and !=
+  /// comparisons. * `create_time`: Supports =, !=, \<, \>, \>=, and \<=
+  /// comparisons. Values must be in RFC 3339 format. * `update_time`: Supports
+  /// =, !=, \<, \>, \>=, and \<= comparisons. Values must be in RFC 3339
+  /// format. * `labels`: Supports key-value equality as well as key presence.
+  /// Examples: * `value_type = DOUBLE` --\> Features whose type is DOUBLE. *
+  /// `create_time > \"2020-01-31T15:30:00.000000Z\" OR update_time >
+  /// \"2020-01-31T15:30:00.000000Z\"` --\> EntityTypes created or updated after
+  /// 2020-01-31T15:30:00.000000Z. * `labels.active = yes AND labels.env = prod`
+  /// --\> Features having both (active: yes) and (env: prod) labels. *
+  /// `labels.env: *` --\> Any Feature which has a label with 'env' as the key.
+  ///
+  /// [latestStatsCount] - Only applicable for Vertex AI Feature Store (Legacy).
+  /// If set, return the most recent ListFeaturesRequest.latest_stats_count of
+  /// stats for each Feature in response. Valid value is \[0, 10\]. If number of
+  /// stats exists \< ListFeaturesRequest.latest_stats_count, return all
+  /// existing stats.
+  ///
+  /// [orderBy] - A comma-separated list of fields to order by, sorted in
+  /// ascending order. Use "desc" after a field name for descending. Supported
+  /// fields: * `feature_id` * `value_type` (Not supported for FeatureRegistry
+  /// Feature) * `create_time` * `update_time`
+  ///
+  /// [pageSize] - The maximum number of Features to return. The service may
+  /// return fewer than this value. If unspecified, at most 1000 Features will
+  /// be returned. The maximum value is 1000; any value greater than 1000 will
+  /// be coerced to 1000.
+  ///
+  /// [pageToken] - A page token, received from a previous
+  /// FeaturestoreService.ListFeatures call or
+  /// FeatureRegistryService.ListFeatures call. Provide this to retrieve the
+  /// subsequent page. When paginating, all other parameters provided to
+  /// FeaturestoreService.ListFeatures or or FeatureRegistryService.ListFeatures
+  /// must match the call that provided the page token.
+  ///
+  /// [readMask] - Mask specifying which fields to read.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudAiplatformV1ListFeaturesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAiplatformV1ListFeaturesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? latestStatsCount,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? readMask,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (latestStatsCount != null) 'latestStatsCount': ['${latestStatsCount}'],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (readMask != null) 'readMask': [readMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/features';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAiplatformV1ListFeaturesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the parameters of a single Feature.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Immutable. Name of the Feature. Format:
+  /// `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}/features/{feature}`
+  /// `projects/{project}/locations/{location}/featureGroups/{feature_group}/features/{feature}`
+  /// The last part feature is assigned by the client. The feature can be up to
+  /// 64 characters long and can consist only of ASCII Latin letters A-Z and
+  /// a-z, underscore(_), and ASCII digits 0-9 starting with a letter. The value
+  /// will be unique given an entity type.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/featureGroups/\[^/\]+/features/\[^/\]+$`.
+  ///
+  /// [updateMask] - Field mask is used to specify the fields to be overwritten
+  /// in the Features resource by the update. The fields specified in the
+  /// update_mask are relative to the resource, not the full request. A field
+  /// will be overwritten if it is in the mask. If the user does not provide a
+  /// mask then only the non-empty fields present in the request will be
+  /// overwritten. Set the update_mask to `*` to override all fields. Updatable
+  /// fields: * `description` * `labels` * `disable_monitoring` (Not supported
+  /// for FeatureRegistry Feature)
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> patch(
+    GoogleCloudAiplatformV1Feature request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsFeatureGroupsFeaturesOperationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsFeatureGroupsFeaturesOperationsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Deletes a long-running operation.
+  ///
+  /// This method indicates that the client is no longer interested in the
+  /// operation result. It does not cancel the operation. If the server doesn't
+  /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be deleted.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/featureGroups/\[^/\]+/features/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/featureGroups/\[^/\]+/features/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists operations that match the specified filter in the request.
+  ///
+  /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation's parent resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/featureGroups/\[^/\]+/features/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [filter] - The standard list filter.
+  ///
+  /// [pageSize] - The standard list page size.
+  ///
+  /// [pageToken] - The standard list page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningListOperationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningListOperationsResponse> listWait(
+    core.String name, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':wait';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningListOperationsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Waits until the specified long-running operation is done or reaches at
+  /// most a specified timeout, returning the latest state.
+  ///
+  /// If the operation is already done, the latest state is immediately
+  /// returned. If the timeout specified is greater than the default HTTP/RPC
+  /// timeout, the HTTP/RPC timeout is used. If the server does not support this
+  /// method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method
+  /// is on a best-effort basis. It may return the latest state before the
+  /// specified timeout (including immediately), meaning even an immediate
+  /// response is no guarantee that the operation is done.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to wait on.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/featureGroups/\[^/\]+/features/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [timeout] - The maximum duration to wait before timing out. If left blank,
+  /// the wait will be at most the time permitted by the underlying HTTP/RPC
+  /// protocol. If RPC context deadline is also specified, the shorter one will
+  /// be used.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> wait(
+    core.String name, {
+    core.String? timeout,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (timeout != null) 'timeout': [timeout],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':wait';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsFeatureGroupsOperationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsFeatureGroupsOperationsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Deletes a long-running operation.
+  ///
+  /// This method indicates that the client is no longer interested in the
+  /// operation result. It does not cancel the operation. If the server doesn't
+  /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be deleted.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/featureGroups/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/featureGroups/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists operations that match the specified filter in the request.
+  ///
+  /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation's parent resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/featureGroups/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [filter] - The standard list filter.
+  ///
+  /// [pageSize] - The standard list page size.
+  ///
+  /// [pageToken] - The standard list page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningListOperationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningListOperationsResponse> listWait(
+    core.String name, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':wait';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningListOperationsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Waits until the specified long-running operation is done or reaches at
+  /// most a specified timeout, returning the latest state.
+  ///
+  /// If the operation is already done, the latest state is immediately
+  /// returned. If the timeout specified is greater than the default HTTP/RPC
+  /// timeout, the HTTP/RPC timeout is used. If the server does not support this
+  /// method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method
+  /// is on a best-effort basis. It may return the latest state before the
+  /// specified timeout (including immediately), meaning even an immediate
+  /// response is no guarantee that the operation is done.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to wait on.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/featureGroups/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [timeout] - The maximum duration to wait before timing out. If left blank,
+  /// the wait will be at most the time permitted by the underlying HTTP/RPC
+  /// protocol. If RPC context deadline is also specified, the shorter one will
+  /// be used.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> wait(
+    core.String name, {
+    core.String? timeout,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (timeout != null) 'timeout': [timeout],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':wait';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsFeatureOnlineStoresResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsFeatureOnlineStoresFeatureViewsResource get featureViews =>
+      ProjectsLocationsFeatureOnlineStoresFeatureViewsResource(_requester);
+  ProjectsLocationsFeatureOnlineStoresOperationsResource get operations =>
+      ProjectsLocationsFeatureOnlineStoresOperationsResource(_requester);
+
+  ProjectsLocationsFeatureOnlineStoresResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new FeatureOnlineStore in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the Location to create
+  /// FeatureOnlineStores. Format: `projects/{project}/locations/{location}'`
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [featureOnlineStoreId] - Required. The ID to use for this
+  /// FeatureOnlineStore, which will become the final component of the
+  /// FeatureOnlineStore's resource name. This value may be up to 60 characters,
+  /// and valid characters are `[a-z0-9_]`. The first character cannot be a
+  /// number. The value must be unique within the project and location.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> create(
+    GoogleCloudAiplatformV1FeatureOnlineStore request,
+    core.String parent, {
+    core.String? featureOnlineStoreId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (featureOnlineStoreId != null)
+        'featureOnlineStoreId': [featureOnlineStoreId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/featureOnlineStores';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single FeatureOnlineStore.
+  ///
+  /// The FeatureOnlineStore must not contain any FeatureViews.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the FeatureOnlineStore to be deleted.
+  /// Format:
+  /// `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/featureOnlineStores/\[^/\]+$`.
+  ///
+  /// [force] - If set to true, any FeatureViews and Features for this
+  /// FeatureOnlineStore will also be deleted. (Otherwise, the request will only
+  /// work if the FeatureOnlineStore has no FeatureViews.)
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.bool? force,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (force != null) 'force': ['${force}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single FeatureOnlineStore.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the FeatureOnlineStore resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/featureOnlineStores/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudAiplatformV1FeatureOnlineStore].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAiplatformV1FeatureOnlineStore> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAiplatformV1FeatureOnlineStore.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists FeatureOnlineStores in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the Location to list
+  /// FeatureOnlineStores. Format: `projects/{project}/locations/{location}`
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Lists the FeatureOnlineStores that match the filter expression.
+  /// The following fields are supported: * `create_time`: Supports `=`, `!=`,
+  /// `<`, `>`, `<=`, and `>=` comparisons. Values must be in RFC 3339 format. *
+  /// `update_time`: Supports `=`, `!=`, `<`, `>`, `<=`, and `>=` comparisons.
+  /// Values must be in RFC 3339 format. * `labels`: Supports key-value equality
+  /// and key presence. Examples: * `create_time > "2020-01-01" OR update_time >
+  /// "2020-01-01"` FeatureOnlineStores created or updated after 2020-01-01. *
+  /// `labels.env = "prod"` FeatureOnlineStores with label "env" set to "prod".
+  ///
+  /// [orderBy] - A comma-separated list of fields to order by, sorted in
+  /// ascending order. Use "desc" after a field name for descending. Supported
+  /// Fields: * `create_time` * `update_time`
+  ///
+  /// [pageSize] - The maximum number of FeatureOnlineStores to return. The
+  /// service may return fewer than this value. If unspecified, at most 100
+  /// FeatureOnlineStores will be returned. The maximum value is 100; any value
+  /// greater than 100 will be coerced to 100.
+  ///
+  /// [pageToken] - A page token, received from a previous
+  /// FeatureOnlineStoreAdminService.ListFeatureOnlineStores call. Provide this
+  /// to retrieve the subsequent page. When paginating, all other parameters
+  /// provided to FeatureOnlineStoreAdminService.ListFeatureOnlineStores must
+  /// match the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudAiplatformV1ListFeatureOnlineStoresResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAiplatformV1ListFeatureOnlineStoresResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/featureOnlineStores';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAiplatformV1ListFeatureOnlineStoresResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the parameters of a single FeatureOnlineStore.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. Name of the FeatureOnlineStore. Format:
+  /// `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/featureOnlineStores/\[^/\]+$`.
+  ///
+  /// [updateMask] - Field mask is used to specify the fields to be overwritten
+  /// in the FeatureOnlineStore resource by the update. The fields specified in
+  /// the update_mask are relative to the resource, not the full request. A
+  /// field will be overwritten if it is in the mask. If the user does not
+  /// provide a mask then only the non-empty fields present in the request will
+  /// be overwritten. Set the update_mask to `*` to override all fields.
+  /// Updatable fields: * `big_query_source` * `labels` * `sync_config`
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> patch(
+    GoogleCloudAiplatformV1FeatureOnlineStore request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsFeatureOnlineStoresFeatureViewsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsFeatureOnlineStoresFeatureViewsFeatureViewSyncsResource
+      get featureViewSyncs =>
+          ProjectsLocationsFeatureOnlineStoresFeatureViewsFeatureViewSyncsResource(
+              _requester);
+  ProjectsLocationsFeatureOnlineStoresFeatureViewsOperationsResource
+      get operations =>
+          ProjectsLocationsFeatureOnlineStoresFeatureViewsOperationsResource(
+              _requester);
+
+  ProjectsLocationsFeatureOnlineStoresFeatureViewsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new FeatureView in a given FeatureOnlineStore.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the FeatureOnlineStore to create
+  /// FeatureViews. Format:
+  /// `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/featureOnlineStores/\[^/\]+$`.
+  ///
+  /// [featureViewId] - Required. The ID to use for the FeatureView, which will
+  /// become the final component of the FeatureView's resource name. This value
+  /// may be up to 60 characters, and valid characters are `[a-z0-9_]`. The
+  /// first character cannot be a number. The value must be unique within a
+  /// FeatureOnlineStore.
+  ///
+  /// [runSyncImmediately] - Immutable. If set to true, one on demand sync will
+  /// be run immediately, regardless whether the FeatureView.sync_config is
+  /// configured or not.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> create(
+    GoogleCloudAiplatformV1FeatureView request,
+    core.String parent, {
+    core.String? featureViewId,
+    core.bool? runSyncImmediately,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (featureViewId != null) 'featureViewId': [featureViewId],
+      if (runSyncImmediately != null)
+        'runSyncImmediately': ['${runSyncImmediately}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/featureViews';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single FeatureView.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the FeatureView to be deleted. Format:
+  /// `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/featureOnlineStores/\[^/\]+/featureViews/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Fetch feature values under a FeatureView.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [featureView] - Required. FeatureView resource format
+  /// `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}/featureViews/{featureView}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/featureOnlineStores/\[^/\]+/featureViews/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudAiplatformV1FetchFeatureValuesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAiplatformV1FetchFeatureValuesResponse>
+      fetchFeatureValues(
+    GoogleCloudAiplatformV1FetchFeatureValuesRequest request,
+    core.String featureView, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$featureView') + ':fetchFeatureValues';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAiplatformV1FetchFeatureValuesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single FeatureView.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the FeatureView resource. Format:
+  /// `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/featureOnlineStores/\[^/\]+/featureViews/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudAiplatformV1FeatureView].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAiplatformV1FeatureView> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAiplatformV1FeatureView.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists FeatureViews in a given FeatureOnlineStore.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the FeatureOnlineStore to list
+  /// FeatureViews. Format:
+  /// `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/featureOnlineStores/\[^/\]+$`.
+  ///
+  /// [filter] - Lists the FeatureViews that match the filter expression. The
+  /// following filters are supported: * `create_time`: Supports `=`, `!=`, `<`,
+  /// `>`, `>=`, and `<=` comparisons. Values must be in RFC 3339 format. *
+  /// `update_time`: Supports `=`, `!=`, `<`, `>`, `>=`, and `<=` comparisons.
+  /// Values must be in RFC 3339 format. * `labels`: Supports key-value equality
+  /// as well as key presence. Examples: * `create_time >
+  /// \"2020-01-31T15:30:00.000000Z\" OR update_time >
+  /// \"2020-01-31T15:30:00.000000Z\"` --\> FeatureViews created or updated
+  /// after 2020-01-31T15:30:00.000000Z. * `labels.active = yes AND labels.env =
+  /// prod` --\> FeatureViews having both (active: yes) and (env: prod) labels.
+  /// * `labels.env: *` --\> Any FeatureView which has a label with 'env' as the
+  /// key.
+  ///
+  /// [orderBy] - A comma-separated list of fields to order by, sorted in
+  /// ascending order. Use "desc" after a field name for descending. Supported
+  /// fields: * `feature_view_id` * `create_time` * `update_time`
+  ///
+  /// [pageSize] - The maximum number of FeatureViews to return. The service may
+  /// return fewer than this value. If unspecified, at most 1000 FeatureViews
+  /// will be returned. The maximum value is 1000; any value greater than 1000
+  /// will be coerced to 1000.
+  ///
+  /// [pageToken] - A page token, received from a previous
+  /// FeatureOnlineStoreAdminService.ListFeatureViews call. Provide this to
+  /// retrieve the subsequent page. When paginating, all other parameters
+  /// provided to FeatureOnlineStoreAdminService.ListFeatureViews must match the
+  /// call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudAiplatformV1ListFeatureViewsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAiplatformV1ListFeatureViewsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/featureViews';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAiplatformV1ListFeatureViewsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the parameters of a single FeatureView.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. Name of the FeatureView. Format:
+  /// `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/featureOnlineStores/\[^/\]+/featureViews/\[^/\]+$`.
+  ///
+  /// [updateMask] - Field mask is used to specify the fields to be overwritten
+  /// in the FeatureView resource by the update. The fields specified in the
+  /// update_mask are relative to the resource, not the full request. A field
+  /// will be overwritten if it is in the mask. If the user does not provide a
+  /// mask then only the non-empty fields present in the request will be
+  /// overwritten. Set the update_mask to `*` to override all fields. Updatable
+  /// fields: * `labels`
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> patch(
+    GoogleCloudAiplatformV1FeatureView request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Triggers on-demand sync for the FeatureView.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [featureView] - Required. Format:
+  /// `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/featureOnlineStores/\[^/\]+/featureViews/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudAiplatformV1SyncFeatureViewResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAiplatformV1SyncFeatureViewResponse> sync(
+    GoogleCloudAiplatformV1SyncFeatureViewRequest request,
+    core.String featureView, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$featureView') + ':sync';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAiplatformV1SyncFeatureViewResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsFeatureOnlineStoresFeatureViewsFeatureViewSyncsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsFeatureOnlineStoresFeatureViewsFeatureViewSyncsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets details of a single FeatureViewSync.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the FeatureViewSync resource. Format:
+  /// `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}/featureViewSyncs/{feature_view_sync}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/featureOnlineStores/\[^/\]+/featureViews/\[^/\]+/featureViewSyncs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudAiplatformV1FeatureViewSync].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAiplatformV1FeatureViewSync> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAiplatformV1FeatureViewSync.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists FeatureViewSyncs in a given FeatureView.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the FeatureView to list
+  /// FeatureViewSyncs. Format:
+  /// `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/featureOnlineStores/\[^/\]+/featureViews/\[^/\]+$`.
+  ///
+  /// [filter] - Lists the FeatureViewSyncs that match the filter expression.
+  /// The following filters are supported: * `create_time`: Supports `=`, `!=`,
+  /// `<`, `>`, `>=`, and `<=` comparisons. Values must be in RFC 3339 format.
+  /// Examples: * `create_time > \"2020-01-31T15:30:00.000000Z\"` --\>
+  /// FeatureViewSyncs created after 2020-01-31T15:30:00.000000Z.
+  ///
+  /// [orderBy] - A comma-separated list of fields to order by, sorted in
+  /// ascending order. Use "desc" after a field name for descending. Supported
+  /// fields: * `create_time`
+  ///
+  /// [pageSize] - The maximum number of FeatureViewSyncs to return. The service
+  /// may return fewer than this value. If unspecified, at most 1000
+  /// FeatureViewSyncs will be returned. The maximum value is 1000; any value
+  /// greater than 1000 will be coerced to 1000.
+  ///
+  /// [pageToken] - A page token, received from a previous
+  /// FeatureOnlineStoreAdminService.ListFeatureViewSyncs call. Provide this to
+  /// retrieve the subsequent page. When paginating, all other parameters
+  /// provided to FeatureOnlineStoreAdminService.ListFeatureViewSyncs must match
+  /// the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudAiplatformV1ListFeatureViewSyncsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAiplatformV1ListFeatureViewSyncsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/featureViewSyncs';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAiplatformV1ListFeatureViewSyncsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsFeatureOnlineStoresFeatureViewsOperationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsFeatureOnlineStoresFeatureViewsOperationsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Deletes a long-running operation.
+  ///
+  /// This method indicates that the client is no longer interested in the
+  /// operation result. It does not cancel the operation. If the server doesn't
+  /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be deleted.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/featureOnlineStores/\[^/\]+/featureViews/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/featureOnlineStores/\[^/\]+/featureViews/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists operations that match the specified filter in the request.
+  ///
+  /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation's parent resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/featureOnlineStores/\[^/\]+/featureViews/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [filter] - The standard list filter.
+  ///
+  /// [pageSize] - The standard list page size.
+  ///
+  /// [pageToken] - The standard list page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningListOperationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningListOperationsResponse> listWait(
+    core.String name, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':wait';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningListOperationsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Waits until the specified long-running operation is done or reaches at
+  /// most a specified timeout, returning the latest state.
+  ///
+  /// If the operation is already done, the latest state is immediately
+  /// returned. If the timeout specified is greater than the default HTTP/RPC
+  /// timeout, the HTTP/RPC timeout is used. If the server does not support this
+  /// method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method
+  /// is on a best-effort basis. It may return the latest state before the
+  /// specified timeout (including immediately), meaning even an immediate
+  /// response is no guarantee that the operation is done.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to wait on.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/featureOnlineStores/\[^/\]+/featureViews/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [timeout] - The maximum duration to wait before timing out. If left blank,
+  /// the wait will be at most the time permitted by the underlying HTTP/RPC
+  /// protocol. If RPC context deadline is also specified, the shorter one will
+  /// be used.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> wait(
+    core.String name, {
+    core.String? timeout,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (timeout != null) 'timeout': [timeout],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':wait';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsFeatureOnlineStoresOperationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsFeatureOnlineStoresOperationsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Deletes a long-running operation.
+  ///
+  /// This method indicates that the client is no longer interested in the
+  /// operation result. It does not cancel the operation. If the server doesn't
+  /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be deleted.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/featureOnlineStores/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/featureOnlineStores/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists operations that match the specified filter in the request.
+  ///
+  /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation's parent resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/featureOnlineStores/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [filter] - The standard list filter.
+  ///
+  /// [pageSize] - The standard list page size.
+  ///
+  /// [pageToken] - The standard list page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningListOperationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningListOperationsResponse> listWait(
+    core.String name, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':wait';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningListOperationsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Waits until the specified long-running operation is done or reaches at
+  /// most a specified timeout, returning the latest state.
+  ///
+  /// If the operation is already done, the latest state is immediately
+  /// returned. If the timeout specified is greater than the default HTTP/RPC
+  /// timeout, the HTTP/RPC timeout is used. If the server does not support this
+  /// method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method
+  /// is on a best-effort basis. It may return the latest state before the
+  /// specified timeout (including immediately), meaning even an immediate
+  /// response is no guarantee that the operation is done.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to wait on.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/featureOnlineStores/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [timeout] - The maximum duration to wait before timing out. If left blank,
   /// the wait will be at most the time permitted by the underlying HTTP/RPC
@@ -14689,6 +17101,93 @@ class ProjectsLocationsPublishersModelsResource {
   ProjectsLocationsPublishersModelsResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Return a list of tokens based on the input text.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [endpoint] - Required. The name of the Endpoint requested to get lists of
+  /// tokens and token ids.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/publishers/\[^/\]+/models/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudAiplatformV1ComputeTokensResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAiplatformV1ComputeTokensResponse> computeTokens(
+    GoogleCloudAiplatformV1ComputeTokensRequest request,
+    core.String endpoint, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$endpoint') + ':computeTokens';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAiplatformV1ComputeTokensResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Perform a token counting.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [endpoint] - Required. The name of the Endpoint requested to perform token
+  /// counting. Format:
+  /// `projects/{project}/locations/{location}/endpoints/{endpoint}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/publishers/\[^/\]+/models/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudAiplatformV1CountTokensResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAiplatformV1CountTokensResponse> countTokens(
+    GoogleCloudAiplatformV1CountTokensRequest request,
+    core.String endpoint, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$endpoint') + ':countTokens';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAiplatformV1CountTokensResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Perform an online prediction.
   ///
   /// [request] - The metadata request object.
@@ -22335,6 +24834,63 @@ class GoogleCloudAiplatformV1CompletionStats {
       };
 }
 
+/// Request message for ComputeTokens RPC call.
+class GoogleCloudAiplatformV1ComputeTokensRequest {
+  /// The instances that are the input to token computing API call.
+  ///
+  /// Schema is identical to the prediction schema of the text model, even for
+  /// the non-text models, like chat models, or Codey models.
+  ///
+  /// Required.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.List<core.Object?>? instances;
+
+  GoogleCloudAiplatformV1ComputeTokensRequest({
+    this.instances,
+  });
+
+  GoogleCloudAiplatformV1ComputeTokensRequest.fromJson(core.Map json_)
+      : this(
+          instances: json_.containsKey('instances')
+              ? json_['instances'] as core.List
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (instances != null) 'instances': instances!,
+      };
+}
+
+/// Response message for ComputeTokens RPC call.
+class GoogleCloudAiplatformV1ComputeTokensResponse {
+  /// Lists of tokens info from the input.
+  ///
+  /// A ComputeTokensRequest could have multiple instances with a prompt in each
+  /// instance. We also need to return lists of tokens info for the request with
+  /// multiple instances.
+  core.List<GoogleCloudAiplatformV1TokensInfo>? tokensInfo;
+
+  GoogleCloudAiplatformV1ComputeTokensResponse({
+    this.tokensInfo,
+  });
+
+  GoogleCloudAiplatformV1ComputeTokensResponse.fromJson(core.Map json_)
+      : this(
+          tokensInfo: json_.containsKey('tokensInfo')
+              ? (json_['tokensInfo'] as core.List)
+                  .map((value) => GoogleCloudAiplatformV1TokensInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (tokensInfo != null) 'tokensInfo': tokensInfo!,
+      };
+}
+
 /// The Container Registry location for the container image.
 class GoogleCloudAiplatformV1ContainerRegistryDestination {
   /// Container Registry URI of a container image.
@@ -22624,6 +25180,108 @@ class GoogleCloudAiplatformV1CopyModelRequest {
         if (modelId != null) 'modelId': modelId!,
         if (parentModel != null) 'parentModel': parentModel!,
         if (sourceModel != null) 'sourceModel': sourceModel!,
+      };
+}
+
+/// Request message for PredictionService.CountTokens.
+class GoogleCloudAiplatformV1CountTokensRequest {
+  /// The instances that are the input to token counting call.
+  ///
+  /// Schema is identical to the prediction schema of the underlying model.
+  ///
+  /// Required.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.List<core.Object?>? instances;
+
+  GoogleCloudAiplatformV1CountTokensRequest({
+    this.instances,
+  });
+
+  GoogleCloudAiplatformV1CountTokensRequest.fromJson(core.Map json_)
+      : this(
+          instances: json_.containsKey('instances')
+              ? json_['instances'] as core.List
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (instances != null) 'instances': instances!,
+      };
+}
+
+/// Response message for PredictionService.CountTokens.
+class GoogleCloudAiplatformV1CountTokensResponse {
+  /// The total number of billable characters counted across all instances from
+  /// the request.
+  core.int? totalBillableCharacters;
+
+  /// The total number of tokens counted across all instances from the request.
+  core.int? totalTokens;
+
+  GoogleCloudAiplatformV1CountTokensResponse({
+    this.totalBillableCharacters,
+    this.totalTokens,
+  });
+
+  GoogleCloudAiplatformV1CountTokensResponse.fromJson(core.Map json_)
+      : this(
+          totalBillableCharacters: json_.containsKey('totalBillableCharacters')
+              ? json_['totalBillableCharacters'] as core.int
+              : null,
+          totalTokens: json_.containsKey('totalTokens')
+              ? json_['totalTokens'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (totalBillableCharacters != null)
+          'totalBillableCharacters': totalBillableCharacters!,
+        if (totalTokens != null) 'totalTokens': totalTokens!,
+      };
+}
+
+/// Request message for CreateDeploymentResourcePool method.
+class GoogleCloudAiplatformV1CreateDeploymentResourcePoolRequest {
+  /// The DeploymentResourcePool to create.
+  ///
+  /// Required.
+  GoogleCloudAiplatformV1DeploymentResourcePool? deploymentResourcePool;
+
+  /// The ID to use for the DeploymentResourcePool, which will become the final
+  /// component of the DeploymentResourcePool's resource name.
+  ///
+  /// The maximum length is 63 characters, and valid characters are
+  /// `/^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$/`.
+  ///
+  /// Required.
+  core.String? deploymentResourcePoolId;
+
+  GoogleCloudAiplatformV1CreateDeploymentResourcePoolRequest({
+    this.deploymentResourcePool,
+    this.deploymentResourcePoolId,
+  });
+
+  GoogleCloudAiplatformV1CreateDeploymentResourcePoolRequest.fromJson(
+      core.Map json_)
+      : this(
+          deploymentResourcePool: json_.containsKey('deploymentResourcePool')
+              ? GoogleCloudAiplatformV1DeploymentResourcePool.fromJson(
+                  json_['deploymentResourcePool']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          deploymentResourcePoolId:
+              json_.containsKey('deploymentResourcePoolId')
+                  ? json_['deploymentResourcePoolId'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deploymentResourcePool != null)
+          'deploymentResourcePool': deploymentResourcePool!,
+        if (deploymentResourcePoolId != null)
+          'deploymentResourcePoolId': deploymentResourcePoolId!,
       };
 }
 
@@ -24232,15 +26890,16 @@ class GoogleCloudAiplatformV1DeployedIndex {
   /// A description of resources that are dedicated to the DeployedIndex, and
   /// that need a higher degree of manual configuration.
   ///
-  /// If min_replica_count is not set, the default value is 2 (we don't provide
-  /// SLA when min_replica_count=1). If max_replica_count is not set, the
-  /// default value is min_replica_count. The max allowed replica count is 1000.
-  /// Available machine types for SMALL shard: e2-standard-2 and all machine
-  /// types available for MEDIUM and LARGE shard. Available machine types for
-  /// MEDIUM shard: e2-standard-16 and all machine types available for LARGE
-  /// shard. Available machine types for LARGE shard: e2-highmem-16,
-  /// n2d-standard-32. n1-standard-16 and n1-standard-32 are still available,
-  /// but we recommend e2-standard-16 and e2-highmem-16 for cost efficiency.
+  /// The field min_replica_count must be set to a value strictly greater than
+  /// 0, or else validation will fail. We don't provide SLA when
+  /// min_replica_count=1. If max_replica_count is not set, the default value is
+  /// min_replica_count. The max allowed replica count is 1000. Available
+  /// machine types for SMALL shard: e2-standard-2 and all machine types
+  /// available for MEDIUM and LARGE shard. Available machine types for MEDIUM
+  /// shard: e2-standard-16 and all machine types available for LARGE shard.
+  /// Available machine types for LARGE shard: e2-highmem-16, n2d-standard-32.
+  /// n1-standard-16 and n1-standard-32 are still available, but we recommend
+  /// e2-standard-16 and e2-highmem-16 for cost efficiency.
   ///
   /// Optional.
   GoogleCloudAiplatformV1DedicatedResources? dedicatedResources;
@@ -24723,6 +27382,54 @@ class GoogleCloudAiplatformV1DeployedModelRef {
       };
 }
 
+/// A description of resources that can be shared by multiple DeployedModels,
+/// whose underlying specification consists of a DedicatedResources.
+class GoogleCloudAiplatformV1DeploymentResourcePool {
+  /// Timestamp when this DeploymentResourcePool was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The underlying DedicatedResources that the DeploymentResourcePool uses.
+  ///
+  /// Required.
+  GoogleCloudAiplatformV1DedicatedResources? dedicatedResources;
+
+  /// The resource name of the DeploymentResourcePool.
+  ///
+  /// Format:
+  /// `projects/{project}/locations/{location}/deploymentResourcePools/{deployment_resource_pool}`
+  ///
+  /// Immutable.
+  core.String? name;
+
+  GoogleCloudAiplatformV1DeploymentResourcePool({
+    this.createTime,
+    this.dedicatedResources,
+    this.name,
+  });
+
+  GoogleCloudAiplatformV1DeploymentResourcePool.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          dedicatedResources: json_.containsKey('dedicatedResources')
+              ? GoogleCloudAiplatformV1DedicatedResources.fromJson(
+                  json_['dedicatedResources']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (dedicatedResources != null)
+          'dedicatedResources': dedicatedResources!,
+        if (name != null) 'name': name!,
+      };
+}
+
 class GoogleCloudAiplatformV1DestinationFeatureSetting {
   /// Specify the field name in the export destination.
   ///
@@ -24756,7 +27463,7 @@ class GoogleCloudAiplatformV1DestinationFeatureSetting {
 }
 
 /// Represents the spec of disk options.
-typedef GoogleCloudAiplatformV1DiskSpec = $Shared03;
+typedef GoogleCloudAiplatformV1DiskSpec = $Shared04;
 
 /// A list of double values.
 class GoogleCloudAiplatformV1DoubleArray {
@@ -27347,6 +30054,12 @@ class GoogleCloudAiplatformV1Feature {
   /// - "BYTES" : Used for Feature that is bytes.
   core.String? valueType;
 
+  /// Only applicable for Vertex AI Feature Store.
+  ///
+  /// The name of the BigQuery Table/View columnn hosting data for this version.
+  /// If no value is provided, will use feature_id.
+  core.String? versionColumnName;
+
   GoogleCloudAiplatformV1Feature({
     this.createTime,
     this.description,
@@ -27357,6 +30070,7 @@ class GoogleCloudAiplatformV1Feature {
     this.name,
     this.updateTime,
     this.valueType,
+    this.versionColumnName,
   });
 
   GoogleCloudAiplatformV1Feature.fromJson(core.Map json_)
@@ -27395,6 +30109,9 @@ class GoogleCloudAiplatformV1Feature {
           valueType: json_.containsKey('valueType')
               ? json_['valueType'] as core.String
               : null,
+          versionColumnName: json_.containsKey('versionColumnName')
+              ? json_['versionColumnName'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -27408,6 +30125,147 @@ class GoogleCloudAiplatformV1Feature {
         if (name != null) 'name': name!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (valueType != null) 'valueType': valueType!,
+        if (versionColumnName != null) 'versionColumnName': versionColumnName!,
+      };
+}
+
+/// Vertex AI Feature Group.
+class GoogleCloudAiplatformV1FeatureGroup {
+  /// Indicates that features for this group come from BigQuery Table/View.
+  ///
+  /// By default treats the source as a sparse time series source, which is
+  /// required to have an entity_id and a feature_timestamp column in the
+  /// source.
+  GoogleCloudAiplatformV1FeatureGroupBigQuery? bigQuery;
+
+  /// Timestamp when this FeatureGroup was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Description of the FeatureGroup.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// Used to perform consistent read-modify-write updates.
+  ///
+  /// If not set, a blind "overwrite" update happens.
+  ///
+  /// Optional.
+  core.String? etag;
+
+  /// The labels with user-defined metadata to organize your FeatureGroup.
+  ///
+  /// Label keys and values can be no longer than 64 characters (Unicode
+  /// codepoints), can only contain lowercase letters, numeric characters,
+  /// underscores and dashes. International characters are allowed. See
+  /// https://goo.gl/xmQnxf for more information on and examples of labels. No
+  /// more than 64 user labels can be associated with one FeatureGroup(System
+  /// labels are excluded)." System reserved label keys are prefixed with
+  /// "aiplatform.googleapis.com/" and are immutable.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Name of the FeatureGroup.
+  ///
+  /// Format:
+  /// `projects/{project}/locations/{location}/featureGroups/{featureGroup}`
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Timestamp when this FeatureGroup was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleCloudAiplatformV1FeatureGroup({
+    this.bigQuery,
+    this.createTime,
+    this.description,
+    this.etag,
+    this.labels,
+    this.name,
+    this.updateTime,
+  });
+
+  GoogleCloudAiplatformV1FeatureGroup.fromJson(core.Map json_)
+      : this(
+          bigQuery: json_.containsKey('bigQuery')
+              ? GoogleCloudAiplatformV1FeatureGroupBigQuery.fromJson(
+                  json_['bigQuery'] as core.Map<core.String, core.dynamic>)
+              : null,
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bigQuery != null) 'bigQuery': bigQuery!,
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (etag != null) 'etag': etag!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// Input source type for BigQuery Tables and Views.
+class GoogleCloudAiplatformV1FeatureGroupBigQuery {
+  /// The BigQuery source URI that points to either a BigQuery Table or View.
+  ///
+  /// Required. Immutable.
+  GoogleCloudAiplatformV1BigQuerySource? bigQuerySource;
+
+  /// Columns to construct entity_id / row keys.
+  ///
+  /// Currently only supports 1 entity_id_column. If not provided defaults to
+  /// `entity_id`.
+  ///
+  /// Optional.
+  core.List<core.String>? entityIdColumns;
+
+  GoogleCloudAiplatformV1FeatureGroupBigQuery({
+    this.bigQuerySource,
+    this.entityIdColumns,
+  });
+
+  GoogleCloudAiplatformV1FeatureGroupBigQuery.fromJson(core.Map json_)
+      : this(
+          bigQuerySource: json_.containsKey('bigQuerySource')
+              ? GoogleCloudAiplatformV1BigQuerySource.fromJson(
+                  json_['bigQuerySource']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          entityIdColumns: json_.containsKey('entityIdColumns')
+              ? (json_['entityIdColumns'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bigQuerySource != null) 'bigQuerySource': bigQuerySource!,
+        if (entityIdColumns != null) 'entityIdColumns': entityIdColumns!,
       };
 }
 
@@ -27518,6 +30376,192 @@ class GoogleCloudAiplatformV1FeatureNoiseSigmaNoiseSigmaForFeature {
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (sigma != null) 'sigma': sigma!,
+      };
+}
+
+/// Vertex AI Feature Online Store provides a centralized repository for serving
+/// ML features and embedding indexes at low latency.
+///
+/// The Feature Online Store is a top-level container.
+class GoogleCloudAiplatformV1FeatureOnlineStore {
+  /// Contains settings for the Cloud Bigtable instance that will be created to
+  /// serve featureValues for all FeatureViews under this FeatureOnlineStore.
+  GoogleCloudAiplatformV1FeatureOnlineStoreBigtable? bigtable;
+
+  /// Timestamp when this FeatureOnlineStore was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Used to perform consistent read-modify-write updates.
+  ///
+  /// If not set, a blind "overwrite" update happens.
+  ///
+  /// Optional.
+  core.String? etag;
+
+  /// The labels with user-defined metadata to organize your FeatureOnlineStore.
+  ///
+  /// Label keys and values can be no longer than 64 characters (Unicode
+  /// codepoints), can only contain lowercase letters, numeric characters,
+  /// underscores and dashes. International characters are allowed. See
+  /// https://goo.gl/xmQnxf for more information on and examples of labels. No
+  /// more than 64 user labels can be associated with one
+  /// FeatureOnlineStore(System labels are excluded)." System reserved label
+  /// keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Name of the FeatureOnlineStore.
+  ///
+  /// Format:
+  /// `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}`
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// State of the featureOnlineStore.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "STABLE" : State when the featureOnlineStore configuration is not being
+  /// updated and the fields reflect the current configuration of the
+  /// featureOnlineStore. The featureOnlineStore is usable in this state.
+  /// - "UPDATING" : The state of the featureOnlineStore configuration when it
+  /// is being updated. During an update, the fields reflect either the original
+  /// configuration or the updated configuration of the featureOnlineStore. The
+  /// featureOnlineStore is still usable in this state.
+  core.String? state;
+
+  /// Timestamp when this FeatureOnlineStore was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleCloudAiplatformV1FeatureOnlineStore({
+    this.bigtable,
+    this.createTime,
+    this.etag,
+    this.labels,
+    this.name,
+    this.state,
+    this.updateTime,
+  });
+
+  GoogleCloudAiplatformV1FeatureOnlineStore.fromJson(core.Map json_)
+      : this(
+          bigtable: json_.containsKey('bigtable')
+              ? GoogleCloudAiplatformV1FeatureOnlineStoreBigtable.fromJson(
+                  json_['bigtable'] as core.Map<core.String, core.dynamic>)
+              : null,
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bigtable != null) 'bigtable': bigtable!,
+        if (createTime != null) 'createTime': createTime!,
+        if (etag != null) 'etag': etag!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (state != null) 'state': state!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+class GoogleCloudAiplatformV1FeatureOnlineStoreBigtable {
+  /// Autoscaling config applied to Bigtable Instance.
+  ///
+  /// Required.
+  GoogleCloudAiplatformV1FeatureOnlineStoreBigtableAutoScaling? autoScaling;
+
+  GoogleCloudAiplatformV1FeatureOnlineStoreBigtable({
+    this.autoScaling,
+  });
+
+  GoogleCloudAiplatformV1FeatureOnlineStoreBigtable.fromJson(core.Map json_)
+      : this(
+          autoScaling: json_.containsKey('autoScaling')
+              ? GoogleCloudAiplatformV1FeatureOnlineStoreBigtableAutoScaling
+                  .fromJson(json_['autoScaling']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (autoScaling != null) 'autoScaling': autoScaling!,
+      };
+}
+
+class GoogleCloudAiplatformV1FeatureOnlineStoreBigtableAutoScaling {
+  /// A percentage of the cluster's CPU capacity.
+  ///
+  /// Can be from 10% to 80%. When a cluster's CPU utilization exceeds the
+  /// target that you have set, Bigtable immediately adds nodes to the cluster.
+  /// When CPU utilization is substantially lower than the target, Bigtable
+  /// removes nodes. If not set will default to 50%.
+  ///
+  /// Optional.
+  core.int? cpuUtilizationTarget;
+
+  /// The maximum number of nodes to scale up to.
+  ///
+  /// Must be greater than or equal to min_node_count, and less than or equal to
+  /// 10 times of 'min_node_count'.
+  ///
+  /// Required.
+  core.int? maxNodeCount;
+
+  /// The minimum number of nodes to scale down to.
+  ///
+  /// Must be greater than or equal to 1.
+  ///
+  /// Required.
+  core.int? minNodeCount;
+
+  GoogleCloudAiplatformV1FeatureOnlineStoreBigtableAutoScaling({
+    this.cpuUtilizationTarget,
+    this.maxNodeCount,
+    this.minNodeCount,
+  });
+
+  GoogleCloudAiplatformV1FeatureOnlineStoreBigtableAutoScaling.fromJson(
+      core.Map json_)
+      : this(
+          cpuUtilizationTarget: json_.containsKey('cpuUtilizationTarget')
+              ? json_['cpuUtilizationTarget'] as core.int
+              : null,
+          maxNodeCount: json_.containsKey('maxNodeCount')
+              ? json_['maxNodeCount'] as core.int
+              : null,
+          minNodeCount: json_.containsKey('minNodeCount')
+              ? json_['minNodeCount'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cpuUtilizationTarget != null)
+          'cpuUtilizationTarget': cpuUtilizationTarget!,
+        if (maxNodeCount != null) 'maxNodeCount': maxNodeCount!,
+        if (minNodeCount != null) 'minNodeCount': minNodeCount!,
       };
 }
 
@@ -27872,6 +30916,333 @@ class GoogleCloudAiplatformV1FeatureValueMetadata {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (generateTime != null) 'generateTime': generateTime!,
+      };
+}
+
+/// FeatureView is representation of values that the FeatureOnlineStore will
+/// serve based on its syncConfig.
+class GoogleCloudAiplatformV1FeatureView {
+  /// Configures how data is supposed to be extracted from a BigQuery source to
+  /// be loaded onto the FeatureOnlineStore.
+  ///
+  /// Optional.
+  GoogleCloudAiplatformV1FeatureViewBigQuerySource? bigQuerySource;
+
+  /// Timestamp when this FeatureView was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Used to perform consistent read-modify-write updates.
+  ///
+  /// If not set, a blind "overwrite" update happens.
+  ///
+  /// Optional.
+  core.String? etag;
+
+  /// Configures the features from a Feature Registry source that need to be
+  /// loaded onto the FeatureOnlineStore.
+  ///
+  /// Optional.
+  GoogleCloudAiplatformV1FeatureViewFeatureRegistrySource?
+      featureRegistrySource;
+
+  /// The labels with user-defined metadata to organize your FeatureViews.
+  ///
+  /// Label keys and values can be no longer than 64 characters (Unicode
+  /// codepoints), can only contain lowercase letters, numeric characters,
+  /// underscores and dashes. International characters are allowed. See
+  /// https://goo.gl/xmQnxf for more information on and examples of labels. No
+  /// more than 64 user labels can be associated with one
+  /// FeatureOnlineStore(System labels are excluded)." System reserved label
+  /// keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Name of the FeatureView.
+  ///
+  /// Format:
+  /// `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}`
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Configures when data is to be synced/updated for this FeatureView.
+  ///
+  /// At the end of the sync the latest featureValues for each entityId of this
+  /// FeatureView are made ready for online serving.
+  GoogleCloudAiplatformV1FeatureViewSyncConfig? syncConfig;
+
+  /// Timestamp when this FeatureView was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleCloudAiplatformV1FeatureView({
+    this.bigQuerySource,
+    this.createTime,
+    this.etag,
+    this.featureRegistrySource,
+    this.labels,
+    this.name,
+    this.syncConfig,
+    this.updateTime,
+  });
+
+  GoogleCloudAiplatformV1FeatureView.fromJson(core.Map json_)
+      : this(
+          bigQuerySource: json_.containsKey('bigQuerySource')
+              ? GoogleCloudAiplatformV1FeatureViewBigQuerySource.fromJson(
+                  json_['bigQuerySource']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          featureRegistrySource: json_.containsKey('featureRegistrySource')
+              ? GoogleCloudAiplatformV1FeatureViewFeatureRegistrySource
+                  .fromJson(json_['featureRegistrySource']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          syncConfig: json_.containsKey('syncConfig')
+              ? GoogleCloudAiplatformV1FeatureViewSyncConfig.fromJson(
+                  json_['syncConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bigQuerySource != null) 'bigQuerySource': bigQuerySource!,
+        if (createTime != null) 'createTime': createTime!,
+        if (etag != null) 'etag': etag!,
+        if (featureRegistrySource != null)
+          'featureRegistrySource': featureRegistrySource!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (syncConfig != null) 'syncConfig': syncConfig!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+class GoogleCloudAiplatformV1FeatureViewBigQuerySource {
+  /// Columns to construct entity_id / row keys.
+  ///
+  /// Start by supporting 1 only.
+  ///
+  /// Required.
+  core.List<core.String>? entityIdColumns;
+
+  /// The BigQuery view URI that will be materialized on each sync trigger based
+  /// on FeatureView.SyncConfig.
+  ///
+  /// Required.
+  core.String? uri;
+
+  GoogleCloudAiplatformV1FeatureViewBigQuerySource({
+    this.entityIdColumns,
+    this.uri,
+  });
+
+  GoogleCloudAiplatformV1FeatureViewBigQuerySource.fromJson(core.Map json_)
+      : this(
+          entityIdColumns: json_.containsKey('entityIdColumns')
+              ? (json_['entityIdColumns'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (entityIdColumns != null) 'entityIdColumns': entityIdColumns!,
+        if (uri != null) 'uri': uri!,
+      };
+}
+
+/// Lookup key for a feature view.
+class GoogleCloudAiplatformV1FeatureViewDataKey {
+  /// String key to use for lookup.
+  core.String? key;
+
+  GoogleCloudAiplatformV1FeatureViewDataKey({
+    this.key,
+  });
+
+  GoogleCloudAiplatformV1FeatureViewDataKey.fromJson(core.Map json_)
+      : this(
+          key: json_.containsKey('key') ? json_['key'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (key != null) 'key': key!,
+      };
+}
+
+/// A Feature Registry source for features that need to be synced to Online
+/// Store.
+class GoogleCloudAiplatformV1FeatureViewFeatureRegistrySource {
+  /// List of features that need to be synced to Online Store.
+  ///
+  /// Required.
+  core.List<
+          GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceFeatureGroup>?
+      featureGroups;
+
+  GoogleCloudAiplatformV1FeatureViewFeatureRegistrySource({
+    this.featureGroups,
+  });
+
+  GoogleCloudAiplatformV1FeatureViewFeatureRegistrySource.fromJson(
+      core.Map json_)
+      : this(
+          featureGroups: json_.containsKey('featureGroups')
+              ? (json_['featureGroups'] as core.List)
+                  .map((value) =>
+                      GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceFeatureGroup
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (featureGroups != null) 'featureGroups': featureGroups!,
+      };
+}
+
+/// Features belonging to a single feature group that will be synced to Online
+/// Store.
+class GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceFeatureGroup {
+  /// Identifier of the feature group.
+  ///
+  /// Required.
+  core.String? featureGroupId;
+
+  /// Identifiers of features under the feature group.
+  ///
+  /// Required.
+  core.List<core.String>? featureIds;
+
+  GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceFeatureGroup({
+    this.featureGroupId,
+    this.featureIds,
+  });
+
+  GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceFeatureGroup.fromJson(
+      core.Map json_)
+      : this(
+          featureGroupId: json_.containsKey('featureGroupId')
+              ? json_['featureGroupId'] as core.String
+              : null,
+          featureIds: json_.containsKey('featureIds')
+              ? (json_['featureIds'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (featureGroupId != null) 'featureGroupId': featureGroupId!,
+        if (featureIds != null) 'featureIds': featureIds!,
+      };
+}
+
+/// FeatureViewSync is a representation of sync operation which copies data from
+/// data source to Feature View in Online Store.
+class GoogleCloudAiplatformV1FeatureViewSync {
+  /// Time when this FeatureViewSync is created.
+  ///
+  /// Creation of a FeatureViewSync means that the job is pending / waiting for
+  /// sufficient resources but may not have started the actual data transfer
+  /// yet.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Final status of the FeatureViewSync.
+  ///
+  /// Output only.
+  GoogleRpcStatus? finalStatus;
+
+  /// Name of the FeatureViewSync.
+  ///
+  /// Format:
+  /// `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}/featureViewSyncs/{feature_view_sync}`
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Time when this FeatureViewSync is finished.
+  ///
+  /// Output only.
+  GoogleTypeInterval? runTime;
+
+  GoogleCloudAiplatformV1FeatureViewSync({
+    this.createTime,
+    this.finalStatus,
+    this.name,
+    this.runTime,
+  });
+
+  GoogleCloudAiplatformV1FeatureViewSync.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          finalStatus: json_.containsKey('finalStatus')
+              ? GoogleRpcStatus.fromJson(
+                  json_['finalStatus'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          runTime: json_.containsKey('runTime')
+              ? GoogleTypeInterval.fromJson(
+                  json_['runTime'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (finalStatus != null) 'finalStatus': finalStatus!,
+        if (name != null) 'name': name!,
+        if (runTime != null) 'runTime': runTime!,
+      };
+}
+
+class GoogleCloudAiplatformV1FeatureViewSyncConfig {
+  /// Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled
+  /// runs.
+  ///
+  /// To explicitly set a timezone to the cron tab, apply a prefix in the cron
+  /// tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}". The
+  /// ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database.
+  /// For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York
+  /// 1 * * * *".
+  core.String? cron;
+
+  GoogleCloudAiplatformV1FeatureViewSyncConfig({
+    this.cron,
+  });
+
+  GoogleCloudAiplatformV1FeatureViewSyncConfig.fromJson(core.Map json_)
+      : this(
+          cron: json_.containsKey('cron') ? json_['cron'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cron != null) 'cron': cron!,
       };
 }
 
@@ -28338,6 +31709,143 @@ class GoogleCloudAiplatformV1FeaturestoreOnlineServingConfigScaling {
           'cpuUtilizationTarget': cpuUtilizationTarget!,
         if (maxNodeCount != null) 'maxNodeCount': maxNodeCount!,
         if (minNodeCount != null) 'minNodeCount': minNodeCount!,
+      };
+}
+
+/// Request message for FeatureOnlineStoreService.FetchFeatureValues.
+///
+/// All the features under the requested feature view will be returned.
+class GoogleCloudAiplatformV1FetchFeatureValuesRequest {
+  /// Response data format.
+  ///
+  /// If not set, FeatureViewDataFormat.KEY_VALUE will be used.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "FEATURE_VIEW_DATA_FORMAT_UNSPECIFIED" : Not set. Will be treated as the
+  /// KeyValue format.
+  /// - "KEY_VALUE" : Return response data in key-value format.
+  /// - "PROTO_STRUCT" : Return response data in proto Struct format.
+  core.String? dataFormat;
+
+  /// The request key to fetch feature values for.
+  ///
+  /// Optional.
+  GoogleCloudAiplatformV1FeatureViewDataKey? dataKey;
+
+  GoogleCloudAiplatformV1FetchFeatureValuesRequest({
+    this.dataFormat,
+    this.dataKey,
+  });
+
+  GoogleCloudAiplatformV1FetchFeatureValuesRequest.fromJson(core.Map json_)
+      : this(
+          dataFormat: json_.containsKey('dataFormat')
+              ? json_['dataFormat'] as core.String
+              : null,
+          dataKey: json_.containsKey('dataKey')
+              ? GoogleCloudAiplatformV1FeatureViewDataKey.fromJson(
+                  json_['dataKey'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataFormat != null) 'dataFormat': dataFormat!,
+        if (dataKey != null) 'dataKey': dataKey!,
+      };
+}
+
+/// Response message for FeatureOnlineStoreService.FetchFeatureValues
+class GoogleCloudAiplatformV1FetchFeatureValuesResponse {
+  /// Feature values in KeyValue format.
+  GoogleCloudAiplatformV1FetchFeatureValuesResponseFeatureNameValuePairList?
+      keyValues;
+
+  /// Feature values in proto Struct format.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? protoStruct;
+
+  GoogleCloudAiplatformV1FetchFeatureValuesResponse({
+    this.keyValues,
+    this.protoStruct,
+  });
+
+  GoogleCloudAiplatformV1FetchFeatureValuesResponse.fromJson(core.Map json_)
+      : this(
+          keyValues: json_.containsKey('keyValues')
+              ? GoogleCloudAiplatformV1FetchFeatureValuesResponseFeatureNameValuePairList
+                  .fromJson(
+                      json_['keyValues'] as core.Map<core.String, core.dynamic>)
+              : null,
+          protoStruct: json_.containsKey('protoStruct')
+              ? json_['protoStruct'] as core.Map<core.String, core.dynamic>
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (keyValues != null) 'keyValues': keyValues!,
+        if (protoStruct != null) 'protoStruct': protoStruct!,
+      };
+}
+
+/// Response structure in the format of key (feature name) and (feature) value
+/// pair.
+class GoogleCloudAiplatformV1FetchFeatureValuesResponseFeatureNameValuePairList {
+  /// List of feature names and values.
+  core.List<
+          GoogleCloudAiplatformV1FetchFeatureValuesResponseFeatureNameValuePairListFeatureNameValuePair>?
+      features;
+
+  GoogleCloudAiplatformV1FetchFeatureValuesResponseFeatureNameValuePairList({
+    this.features,
+  });
+
+  GoogleCloudAiplatformV1FetchFeatureValuesResponseFeatureNameValuePairList.fromJson(
+      core.Map json_)
+      : this(
+          features: json_.containsKey('features')
+              ? (json_['features'] as core.List)
+                  .map((value) =>
+                      GoogleCloudAiplatformV1FetchFeatureValuesResponseFeatureNameValuePairListFeatureNameValuePair
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (features != null) 'features': features!,
+      };
+}
+
+/// Feature name & value pair.
+class GoogleCloudAiplatformV1FetchFeatureValuesResponseFeatureNameValuePairListFeatureNameValuePair {
+  /// Feature short name.
+  core.String? name;
+
+  /// Feature value.
+  GoogleCloudAiplatformV1FeatureValue? value;
+
+  GoogleCloudAiplatformV1FetchFeatureValuesResponseFeatureNameValuePairListFeatureNameValuePair({
+    this.name,
+    this.value,
+  });
+
+  GoogleCloudAiplatformV1FetchFeatureValuesResponseFeatureNameValuePairListFeatureNameValuePair.fromJson(
+      core.Map json_)
+      : this(
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          value: json_.containsKey('value')
+              ? GoogleCloudAiplatformV1FeatureValue.fromJson(
+                  json_['value'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -29456,6 +32964,16 @@ class GoogleCloudAiplatformV1IndexDatapoint {
   /// where boolean rule are used to filter the subset of the database eligible
   /// for matching.
   ///
+  /// This uses numeric comparisons.
+  ///
+  /// Optional.
+  core.List<GoogleCloudAiplatformV1IndexDatapointNumericRestriction>?
+      numericRestricts;
+
+  /// List of Restrict of the datapoint, used to perform "restricted searches"
+  /// where boolean rule are used to filter the subset of the database eligible
+  /// for matching.
+  ///
   /// This uses categorical tokens. See:
   /// https://cloud.google.com/vertex-ai/docs/matching-engine/filtering
   ///
@@ -29466,6 +32984,7 @@ class GoogleCloudAiplatformV1IndexDatapoint {
     this.crowdingTag,
     this.datapointId,
     this.featureVector,
+    this.numericRestricts,
     this.restricts,
   });
 
@@ -29483,6 +33002,14 @@ class GoogleCloudAiplatformV1IndexDatapoint {
                   .map((value) => (value as core.num).toDouble())
                   .toList()
               : null,
+          numericRestricts: json_.containsKey('numericRestricts')
+              ? (json_['numericRestricts'] as core.List)
+                  .map((value) =>
+                      GoogleCloudAiplatformV1IndexDatapointNumericRestriction
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           restricts: json_.containsKey('restricts')
               ? (json_['restricts'] as core.List)
                   .map((value) =>
@@ -29496,6 +33023,7 @@ class GoogleCloudAiplatformV1IndexDatapoint {
         if (crowdingTag != null) 'crowdingTag': crowdingTag!,
         if (datapointId != null) 'datapointId': datapointId!,
         if (featureVector != null) 'featureVector': featureVector!,
+        if (numericRestricts != null) 'numericRestricts': numericRestricts!,
         if (restricts != null) 'restricts': restricts!,
       };
 }
@@ -29525,6 +33053,71 @@ class GoogleCloudAiplatformV1IndexDatapointCrowdingTag {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (crowdingAttribute != null) 'crowdingAttribute': crowdingAttribute!,
+      };
+}
+
+/// This field allows restricts to be based on numeric comparisons rather than
+/// categorical tokens.
+class GoogleCloudAiplatformV1IndexDatapointNumericRestriction {
+  /// The namespace of this restriction.
+  ///
+  /// e.g.: cost.
+  core.String? namespace;
+
+  /// This MUST be specified for queries and must NOT be specified for
+  /// datapoints.
+  /// Possible string values are:
+  /// - "OPERATOR_UNSPECIFIED" : Default value of the enum.
+  /// - "LESS" : Datapoints are eligible iff their value is \< the query's.
+  /// - "LESS_EQUAL" : Datapoints are eligible iff their value is \<= the
+  /// query's.
+  /// - "EQUAL" : Datapoints are eligible iff their value is == the query's.
+  /// - "GREATER_EQUAL" : Datapoints are eligible iff their value is \>= the
+  /// query's.
+  /// - "GREATER" : Datapoints are eligible iff their value is \> the query's.
+  core.String? op;
+
+  /// Represents 64 bit float.
+  core.double? valueDouble;
+
+  /// Represents 32 bit float.
+  core.double? valueFloat;
+
+  /// Represents 64 bit integer.
+  core.String? valueInt;
+
+  GoogleCloudAiplatformV1IndexDatapointNumericRestriction({
+    this.namespace,
+    this.op,
+    this.valueDouble,
+    this.valueFloat,
+    this.valueInt,
+  });
+
+  GoogleCloudAiplatformV1IndexDatapointNumericRestriction.fromJson(
+      core.Map json_)
+      : this(
+          namespace: json_.containsKey('namespace')
+              ? json_['namespace'] as core.String
+              : null,
+          op: json_.containsKey('op') ? json_['op'] as core.String : null,
+          valueDouble: json_.containsKey('valueDouble')
+              ? (json_['valueDouble'] as core.num).toDouble()
+              : null,
+          valueFloat: json_.containsKey('valueFloat')
+              ? (json_['valueFloat'] as core.num).toDouble()
+              : null,
+          valueInt: json_.containsKey('valueInt')
+              ? json_['valueInt'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (namespace != null) 'namespace': namespace!,
+        if (op != null) 'op': op!,
+        if (valueDouble != null) 'valueDouble': valueDouble!,
+        if (valueFloat != null) 'valueFloat': valueFloat!,
+        if (valueInt != null) 'valueInt': valueInt!,
       };
 }
 
@@ -30502,6 +34095,44 @@ class GoogleCloudAiplatformV1ListDatasetsResponse {
       };
 }
 
+/// Response message for ListDeploymentResourcePools method.
+class GoogleCloudAiplatformV1ListDeploymentResourcePoolsResponse {
+  /// The DeploymentResourcePools from the specified location.
+  core.List<GoogleCloudAiplatformV1DeploymentResourcePool>?
+      deploymentResourcePools;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  GoogleCloudAiplatformV1ListDeploymentResourcePoolsResponse({
+    this.deploymentResourcePools,
+    this.nextPageToken,
+  });
+
+  GoogleCloudAiplatformV1ListDeploymentResourcePoolsResponse.fromJson(
+      core.Map json_)
+      : this(
+          deploymentResourcePools: json_.containsKey('deploymentResourcePools')
+              ? (json_['deploymentResourcePools'] as core.List)
+                  .map((value) =>
+                      GoogleCloudAiplatformV1DeploymentResourcePool.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deploymentResourcePools != null)
+          'deploymentResourcePools': deploymentResourcePools!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
 /// Response message for EndpointService.ListEndpoints.
 class GoogleCloudAiplatformV1ListEndpointsResponse {
   /// List of Endpoints in the requested page.
@@ -30602,6 +34233,150 @@ class GoogleCloudAiplatformV1ListExecutionsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (executions != null) 'executions': executions!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Response message for FeatureRegistryService.ListFeatureGroups.
+class GoogleCloudAiplatformV1ListFeatureGroupsResponse {
+  /// The FeatureGroups matching the request.
+  core.List<GoogleCloudAiplatformV1FeatureGroup>? featureGroups;
+
+  /// A token, which can be sent as ListFeatureGroupsRequest.page_token to
+  /// retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  GoogleCloudAiplatformV1ListFeatureGroupsResponse({
+    this.featureGroups,
+    this.nextPageToken,
+  });
+
+  GoogleCloudAiplatformV1ListFeatureGroupsResponse.fromJson(core.Map json_)
+      : this(
+          featureGroups: json_.containsKey('featureGroups')
+              ? (json_['featureGroups'] as core.List)
+                  .map((value) => GoogleCloudAiplatformV1FeatureGroup.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (featureGroups != null) 'featureGroups': featureGroups!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Response message for FeatureOnlineStoreAdminService.ListFeatureOnlineStores.
+class GoogleCloudAiplatformV1ListFeatureOnlineStoresResponse {
+  /// The FeatureOnlineStores matching the request.
+  core.List<GoogleCloudAiplatformV1FeatureOnlineStore>? featureOnlineStores;
+
+  /// A token, which can be sent as ListFeatureOnlineStoresRequest.page_token to
+  /// retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  GoogleCloudAiplatformV1ListFeatureOnlineStoresResponse({
+    this.featureOnlineStores,
+    this.nextPageToken,
+  });
+
+  GoogleCloudAiplatformV1ListFeatureOnlineStoresResponse.fromJson(
+      core.Map json_)
+      : this(
+          featureOnlineStores: json_.containsKey('featureOnlineStores')
+              ? (json_['featureOnlineStores'] as core.List)
+                  .map((value) =>
+                      GoogleCloudAiplatformV1FeatureOnlineStore.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (featureOnlineStores != null)
+          'featureOnlineStores': featureOnlineStores!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Response message for FeatureOnlineStoreAdminService.ListFeatureViewSyncs.
+class GoogleCloudAiplatformV1ListFeatureViewSyncsResponse {
+  /// The FeatureViewSyncs matching the request.
+  core.List<GoogleCloudAiplatformV1FeatureViewSync>? featureViewSyncs;
+
+  /// A token, which can be sent as ListFeatureViewSyncsRequest.page_token to
+  /// retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  GoogleCloudAiplatformV1ListFeatureViewSyncsResponse({
+    this.featureViewSyncs,
+    this.nextPageToken,
+  });
+
+  GoogleCloudAiplatformV1ListFeatureViewSyncsResponse.fromJson(core.Map json_)
+      : this(
+          featureViewSyncs: json_.containsKey('featureViewSyncs')
+              ? (json_['featureViewSyncs'] as core.List)
+                  .map((value) =>
+                      GoogleCloudAiplatformV1FeatureViewSync.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (featureViewSyncs != null) 'featureViewSyncs': featureViewSyncs!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Response message for FeatureOnlineStoreAdminService.ListFeatureViews.
+class GoogleCloudAiplatformV1ListFeatureViewsResponse {
+  /// The FeatureViews matching the request.
+  core.List<GoogleCloudAiplatformV1FeatureView>? featureViews;
+
+  /// A token, which can be sent as ListFeatureViewsRequest.page_token to
+  /// retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  GoogleCloudAiplatformV1ListFeatureViewsResponse({
+    this.featureViews,
+    this.nextPageToken,
+  });
+
+  GoogleCloudAiplatformV1ListFeatureViewsResponse.fromJson(core.Map json_)
+      : this(
+          featureViews: json_.containsKey('featureViews')
+              ? (json_['featureViews'] as core.List)
+                  .map((value) => GoogleCloudAiplatformV1FeatureView.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (featureViews != null) 'featureViews': featureViews!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
@@ -33109,6 +36884,13 @@ class GoogleCloudAiplatformV1ModelContainerSpec {
   /// Immutable.
   core.List<core.String>? command;
 
+  /// Deployment timeout.
+  ///
+  /// TODO (b/306244185): Revise documentation before exposing.
+  ///
+  /// Immutable.
+  core.String? deploymentTimeout;
+
   /// List of environment variables to set in the container.
   ///
   /// After the container starts running, code running in the container can read
@@ -33124,6 +36906,13 @@ class GoogleCloudAiplatformV1ModelContainerSpec {
   ///
   /// Immutable.
   core.List<GoogleCloudAiplatformV1EnvVar>? env;
+
+  /// Specification for Kubernetes readiness probe.
+  ///
+  /// TODO (b/306244185): Revise documentation before exposing.
+  ///
+  /// Immutable.
+  GoogleCloudAiplatformV1Probe? healthProbe;
 
   /// HTTP path on the container to send health checks to.
   ///
@@ -33207,14 +36996,33 @@ class GoogleCloudAiplatformV1ModelContainerSpec {
   /// Immutable.
   core.String? predictRoute;
 
+  /// The amount of the VM memory to reserve as the shared memory for the model
+  /// in megabytes.
+  ///
+  /// TODO (b/306244185): Revise documentation before exposing.
+  ///
+  /// Immutable.
+  core.String? sharedMemorySizeMb;
+
+  /// Specification for Kubernetes startup probe.
+  ///
+  /// TODO (b/306244185): Revise documentation before exposing.
+  ///
+  /// Immutable.
+  GoogleCloudAiplatformV1Probe? startupProbe;
+
   GoogleCloudAiplatformV1ModelContainerSpec({
     this.args,
     this.command,
+    this.deploymentTimeout,
     this.env,
+    this.healthProbe,
     this.healthRoute,
     this.imageUri,
     this.ports,
     this.predictRoute,
+    this.sharedMemorySizeMb,
+    this.startupProbe,
   });
 
   GoogleCloudAiplatformV1ModelContainerSpec.fromJson(core.Map json_)
@@ -33229,11 +37037,18 @@ class GoogleCloudAiplatformV1ModelContainerSpec {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          deploymentTimeout: json_.containsKey('deploymentTimeout')
+              ? json_['deploymentTimeout'] as core.String
+              : null,
           env: json_.containsKey('env')
               ? (json_['env'] as core.List)
                   .map((value) => GoogleCloudAiplatformV1EnvVar.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
+              : null,
+          healthProbe: json_.containsKey('healthProbe')
+              ? GoogleCloudAiplatformV1Probe.fromJson(
+                  json_['healthProbe'] as core.Map<core.String, core.dynamic>)
               : null,
           healthRoute: json_.containsKey('healthRoute')
               ? json_['healthRoute'] as core.String
@@ -33250,16 +37065,28 @@ class GoogleCloudAiplatformV1ModelContainerSpec {
           predictRoute: json_.containsKey('predictRoute')
               ? json_['predictRoute'] as core.String
               : null,
+          sharedMemorySizeMb: json_.containsKey('sharedMemorySizeMb')
+              ? json_['sharedMemorySizeMb'] as core.String
+              : null,
+          startupProbe: json_.containsKey('startupProbe')
+              ? GoogleCloudAiplatformV1Probe.fromJson(
+                  json_['startupProbe'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (args != null) 'args': args!,
         if (command != null) 'command': command!,
+        if (deploymentTimeout != null) 'deploymentTimeout': deploymentTimeout!,
         if (env != null) 'env': env!,
+        if (healthProbe != null) 'healthProbe': healthProbe!,
         if (healthRoute != null) 'healthRoute': healthRoute!,
         if (imageUri != null) 'imageUri': imageUri!,
         if (ports != null) 'ports': ports!,
         if (predictRoute != null) 'predictRoute': predictRoute!,
+        if (sharedMemorySizeMb != null)
+          'sharedMemorySizeMb': sharedMemorySizeMb!,
+        if (startupProbe != null) 'startupProbe': startupProbe!,
       };
 }
 
@@ -37683,6 +41510,54 @@ class GoogleCloudAiplatformV1PrivateServiceConnectConfig {
       };
 }
 
+/// Probe describes a health check to be performed against a container to
+/// determine whether it is alive or ready to receive traffic.
+class GoogleCloudAiplatformV1Probe {
+  /// Exec specifies the action to take.
+  GoogleCloudAiplatformV1ProbeExecAction? exec;
+
+  /// How often (in seconds) to perform the probe.
+  ///
+  /// Default to 10 seconds. Minimum value is 1. Must be less than
+  /// timeout_seconds. Maps to Kubernetes probe argument 'periodSeconds'.
+  core.int? periodSeconds;
+
+  /// Number of seconds after which the probe times out.
+  ///
+  /// Defaults to 1 second. Minimum value is 1. Must be greater or equal to
+  /// period_seconds. Maps to Kubernetes probe argument 'timeoutSeconds'.
+  core.int? timeoutSeconds;
+
+  GoogleCloudAiplatformV1Probe({
+    this.exec,
+    this.periodSeconds,
+    this.timeoutSeconds,
+  });
+
+  GoogleCloudAiplatformV1Probe.fromJson(core.Map json_)
+      : this(
+          exec: json_.containsKey('exec')
+              ? GoogleCloudAiplatformV1ProbeExecAction.fromJson(
+                  json_['exec'] as core.Map<core.String, core.dynamic>)
+              : null,
+          periodSeconds: json_.containsKey('periodSeconds')
+              ? json_['periodSeconds'] as core.int
+              : null,
+          timeoutSeconds: json_.containsKey('timeoutSeconds')
+              ? json_['timeoutSeconds'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (exec != null) 'exec': exec!,
+        if (periodSeconds != null) 'periodSeconds': periodSeconds!,
+        if (timeoutSeconds != null) 'timeoutSeconds': timeoutSeconds!,
+      };
+}
+
+/// ExecAction specifies a command to execute.
+typedef GoogleCloudAiplatformV1ProbeExecAction = $ExecAction;
+
 /// A Model Garden Publisher Model.
 class GoogleCloudAiplatformV1PublisherModel {
   /// Additional information about the model's Frameworks.
@@ -38388,6 +42263,75 @@ class GoogleCloudAiplatformV1PythonPackageSpec {
         if (executorImageUri != null) 'executorImageUri': executorImageUri!,
         if (packageUris != null) 'packageUris': packageUris!,
         if (pythonModule != null) 'pythonModule': pythonModule!,
+      };
+}
+
+/// Response message for QueryDeployedModels method.
+class GoogleCloudAiplatformV1QueryDeployedModelsResponse {
+  /// References to the DeployedModels that share the specified
+  /// deploymentResourcePool.
+  core.List<GoogleCloudAiplatformV1DeployedModelRef>? deployedModelRefs;
+
+  /// DEPRECATED Use deployed_model_refs instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.List<GoogleCloudAiplatformV1DeployedModel>? deployedModels;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// The total number of DeployedModels on this DeploymentResourcePool.
+  core.int? totalDeployedModelCount;
+
+  /// The total number of Endpoints that have DeployedModels on this
+  /// DeploymentResourcePool.
+  core.int? totalEndpointCount;
+
+  GoogleCloudAiplatformV1QueryDeployedModelsResponse({
+    this.deployedModelRefs,
+    this.deployedModels,
+    this.nextPageToken,
+    this.totalDeployedModelCount,
+    this.totalEndpointCount,
+  });
+
+  GoogleCloudAiplatformV1QueryDeployedModelsResponse.fromJson(core.Map json_)
+      : this(
+          deployedModelRefs: json_.containsKey('deployedModelRefs')
+              ? (json_['deployedModelRefs'] as core.List)
+                  .map((value) =>
+                      GoogleCloudAiplatformV1DeployedModelRef.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          deployedModels: json_.containsKey('deployedModels')
+              ? (json_['deployedModels'] as core.List)
+                  .map((value) => GoogleCloudAiplatformV1DeployedModel.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          totalDeployedModelCount: json_.containsKey('totalDeployedModelCount')
+              ? json_['totalDeployedModelCount'] as core.int
+              : null,
+          totalEndpointCount: json_.containsKey('totalEndpointCount')
+              ? json_['totalEndpointCount'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deployedModelRefs != null) 'deployedModelRefs': deployedModelRefs!,
+        if (deployedModels != null) 'deployedModels': deployedModels!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (totalDeployedModelCount != null)
+          'totalDeployedModelCount': totalDeployedModelCount!,
+        if (totalEndpointCount != null)
+          'totalEndpointCount': totalEndpointCount!,
       };
 }
 
@@ -40242,8 +44186,6 @@ class GoogleCloudAiplatformV1StringArray {
 }
 
 /// A message representing a Study.
-///
-/// Next id: 12
 class GoogleCloudAiplatformV1Study {
   /// Time at which the study was created.
   ///
@@ -41387,6 +45329,31 @@ class GoogleCloudAiplatformV1SuggestTrialsRequest {
       };
 }
 
+/// Request message for FeatureOnlineStoreAdminService.SyncFeatureView.
+typedef GoogleCloudAiplatformV1SyncFeatureViewRequest = $Empty;
+
+/// Respose message for FeatureOnlineStoreAdminService.SyncFeatureView.
+class GoogleCloudAiplatformV1SyncFeatureViewResponse {
+  /// Format:
+  /// `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}/featureViewSyncs/{feature_view_sync}`
+  core.String? featureViewSync;
+
+  GoogleCloudAiplatformV1SyncFeatureViewResponse({
+    this.featureViewSync,
+  });
+
+  GoogleCloudAiplatformV1SyncFeatureViewResponse.fromJson(core.Map json_)
+      : this(
+          featureViewSync: json_.containsKey('featureViewSync')
+              ? json_['featureViewSync'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (featureViewSync != null) 'featureViewSync': featureViewSync!,
+      };
+}
+
 /// The storage details for TFRecord output content.
 class GoogleCloudAiplatformV1TFRecordDestination {
   /// Google Cloud Storage location.
@@ -42414,6 +46381,39 @@ class GoogleCloudAiplatformV1TimestampSplit {
       };
 }
 
+/// Tokens info with a list of tokens and the corresponding list of token ids.
+class GoogleCloudAiplatformV1TokensInfo {
+  /// A list of token ids from the input.
+  core.List<core.String>? tokenIds;
+
+  /// A list of tokens from the input.
+  core.List<core.String>? tokens;
+
+  GoogleCloudAiplatformV1TokensInfo({
+    this.tokenIds,
+    this.tokens,
+  });
+
+  GoogleCloudAiplatformV1TokensInfo.fromJson(core.Map json_)
+      : this(
+          tokenIds: json_.containsKey('tokenIds')
+              ? (json_['tokenIds'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          tokens: json_.containsKey('tokens')
+              ? (json_['tokens'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (tokenIds != null) 'tokenIds': tokenIds!,
+        if (tokens != null) 'tokens': tokens!,
+      };
+}
+
 /// CMLE training config.
 ///
 /// For every active learning labeling iteration, system will train a machine
@@ -43131,10 +47131,11 @@ class GoogleCloudAiplatformV1UploadModelRequest {
   ///
   /// If empty,
   /// [Vertex AI Service Agent](https://cloud.google.com/vertex-ai/docs/general/access-control#service-agents)
-  /// will be used. Users uploading the Model must have the
-  /// `iam.serviceAccounts.actAs` permission on this service account. Also, this
-  /// account must belong to the project specified in the `parent` field and
-  /// have all necessary read permissions.
+  /// will be used to access resources needed to upload the model. This account
+  /// must belong to the target project where the model is uploaded to, i.e.,
+  /// the project specified in the `parent` field of this request and have
+  /// necessary read permissions (to Google Cloud Storage, Artifact Registry,
+  /// etc.).
   ///
   /// Optional.
   core.String? serviceAccount;

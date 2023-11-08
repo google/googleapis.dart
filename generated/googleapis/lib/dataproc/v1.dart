@@ -5952,6 +5952,20 @@ class DiagnoseClusterRequest {
   /// Optional.
   core.List<core.String>? jobs;
 
+  /// (Optional) The access type to the diagnostic tarball.
+  ///
+  /// If not specified, falls back to default access of the bucket
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "TARBALL_ACCESS_UNSPECIFIED" : Tarball Access unspecified. Falls back to
+  /// default access of the bucket
+  /// - "GOOGLE_CLOUD_SUPPORT" : Google Cloud Support group has read access to
+  /// the diagnostic tarball
+  /// - "GOOGLE_DATAPROC_DIAGNOSE" : Google Cloud Dataproc Diagnose service
+  /// account has read access to the diagnostic tarball
+  core.String? tarballAccess;
+
   /// (Optional) The output Cloud Storage directory for the diagnostic tarball.
   ///
   /// If not specified, a task-specific directory in the cluster's staging
@@ -5979,6 +5993,7 @@ class DiagnoseClusterRequest {
     this.diagnosisInterval,
     this.job,
     this.jobs,
+    this.tarballAccess,
     this.tarballGcsDir,
     this.yarnApplicationId,
     this.yarnApplicationIds,
@@ -5995,6 +6010,9 @@ class DiagnoseClusterRequest {
               ? (json_['jobs'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
+              : null,
+          tarballAccess: json_.containsKey('tarballAccess')
+              ? json_['tarballAccess'] as core.String
               : null,
           tarballGcsDir: json_.containsKey('tarballGcsDir')
               ? json_['tarballGcsDir'] as core.String
@@ -6013,6 +6031,7 @@ class DiagnoseClusterRequest {
         if (diagnosisInterval != null) 'diagnosisInterval': diagnosisInterval!,
         if (job != null) 'job': job!,
         if (jobs != null) 'jobs': jobs!,
+        if (tarballAccess != null) 'tarballAccess': tarballAccess!,
         if (tarballGcsDir != null) 'tarballGcsDir': tarballGcsDir!,
         if (yarnApplicationId != null) 'yarnApplicationId': yarnApplicationId!,
         if (yarnApplicationIds != null)
@@ -6137,8 +6156,15 @@ class EncryptionConfig {
   /// Optional.
   core.String? gcePdKmsKeyName;
 
+  /// The Cloud KMS key name to use for encrypting customer core content in
+  /// spanner and cluster PD disk for all instances in the cluster.
+  ///
+  /// Optional.
+  core.String? kmsKey;
+
   EncryptionConfig({
     this.gcePdKmsKeyName,
+    this.kmsKey,
   });
 
   EncryptionConfig.fromJson(core.Map json_)
@@ -6146,10 +6172,14 @@ class EncryptionConfig {
           gcePdKmsKeyName: json_.containsKey('gcePdKmsKeyName')
               ? json_['gcePdKmsKeyName'] as core.String
               : null,
+          kmsKey: json_.containsKey('kmsKey')
+              ? json_['kmsKey'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (gcePdKmsKeyName != null) 'gcePdKmsKeyName': gcePdKmsKeyName!,
+        if (kmsKey != null) 'kmsKey': kmsKey!,
       };
 }
 
@@ -9043,9 +9073,18 @@ class ListJobsResponse {
   /// Optional.
   core.String? nextPageToken;
 
+  /// List of jobs that could not be included in the response.
+  ///
+  /// Attempting to get one of these resources may indicate why it was not
+  /// included in the list response.
+  ///
+  /// Output only.
+  core.List<core.String>? unreachable;
+
   ListJobsResponse({
     this.jobs,
     this.nextPageToken,
+    this.unreachable,
   });
 
   ListJobsResponse.fromJson(core.Map json_)
@@ -9059,11 +9098,17 @@ class ListJobsResponse {
           nextPageToken: json_.containsKey('nextPageToken')
               ? json_['nextPageToken'] as core.String
               : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (jobs != null) 'jobs': jobs!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 

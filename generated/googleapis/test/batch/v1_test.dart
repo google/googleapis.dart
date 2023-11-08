@@ -524,6 +524,7 @@ api.AgentTaskSpec buildAgentTaskSpec() {
     o.environment = buildAgentEnvironment();
     o.maxRunDuration = 'foo';
     o.runnables = buildUnnamed7();
+    o.userAccount = buildAgentTaskUserAccount();
   }
   buildCounterAgentTaskSpec--;
   return o;
@@ -538,8 +539,36 @@ void checkAgentTaskSpec(api.AgentTaskSpec o) {
       unittest.equals('foo'),
     );
     checkUnnamed7(o.runnables!);
+    checkAgentTaskUserAccount(o.userAccount!);
   }
   buildCounterAgentTaskSpec--;
+}
+
+core.int buildCounterAgentTaskUserAccount = 0;
+api.AgentTaskUserAccount buildAgentTaskUserAccount() {
+  final o = api.AgentTaskUserAccount();
+  buildCounterAgentTaskUserAccount++;
+  if (buildCounterAgentTaskUserAccount < 3) {
+    o.gid = 'foo';
+    o.uid = 'foo';
+  }
+  buildCounterAgentTaskUserAccount--;
+  return o;
+}
+
+void checkAgentTaskUserAccount(api.AgentTaskUserAccount o) {
+  buildCounterAgentTaskUserAccount++;
+  if (buildCounterAgentTaskUserAccount < 3) {
+    unittest.expect(
+      o.gid!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.uid!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterAgentTaskUserAccount--;
 }
 
 core.int buildCounterAgentTimingInfo = 0;
@@ -695,6 +724,21 @@ void checkCancelOperationRequest(api.CancelOperationRequest o) {
   buildCounterCancelOperationRequest++;
   if (buildCounterCancelOperationRequest < 3) {}
   buildCounterCancelOperationRequest--;
+}
+
+core.int buildCounterCloudLoggingOption = 0;
+api.CloudLoggingOption buildCloudLoggingOption() {
+  final o = api.CloudLoggingOption();
+  buildCounterCloudLoggingOption++;
+  if (buildCounterCloudLoggingOption < 3) {}
+  buildCounterCloudLoggingOption--;
+  return o;
+}
+
+void checkCloudLoggingOption(api.CloudLoggingOption o) {
+  buildCounterCloudLoggingOption++;
+  if (buildCounterCloudLoggingOption < 3) {}
+  buildCounterCloudLoggingOption--;
 }
 
 core.int buildCounterComputeResource = 0;
@@ -1610,6 +1654,7 @@ api.LogsPolicy buildLogsPolicy() {
   final o = api.LogsPolicy();
   buildCounterLogsPolicy++;
   if (buildCounterLogsPolicy < 3) {
+    o.cloudLoggingOption = buildCloudLoggingOption();
     o.destination = 'foo';
     o.logsPath = 'foo';
   }
@@ -1620,6 +1665,7 @@ api.LogsPolicy buildLogsPolicy() {
 void checkLogsPolicy(api.LogsPolicy o) {
   buildCounterLogsPolicy++;
   if (buildCounterLogsPolicy < 3) {
+    checkCloudLoggingOption(o.cloudLoggingOption!);
     unittest.expect(
       o.destination!,
       unittest.equals('foo'),
@@ -2665,6 +2711,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-AgentTaskUserAccount', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAgentTaskUserAccount();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AgentTaskUserAccount.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAgentTaskUserAccount(od);
+    });
+  });
+
   unittest.group('obj-schema-AgentTimingInfo', () {
     unittest.test('to-json--from-json', () async {
       final o = buildAgentTimingInfo();
@@ -2712,6 +2768,16 @@ void main() {
       final od = api.CancelOperationRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkCancelOperationRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-CloudLoggingOption', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCloudLoggingOption();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CloudLoggingOption.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkCloudLoggingOption(od);
     });
   });
 
