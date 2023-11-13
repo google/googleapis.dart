@@ -92,7 +92,7 @@ class AuthorizationCodeGrantServerFlow
           codeVerifier: codeVerifier,
         );
 
-        // TODO: We could introduce a user-defined redirect page.
+        // TODO: Introduce a user-defined redirect page.
         request.response
           ..statusCode = 200
           ..headers.set('content-type', 'text/html; charset=UTF-8')
