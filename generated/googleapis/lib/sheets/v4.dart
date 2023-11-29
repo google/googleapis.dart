@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Google Sheets API - v4
@@ -23,7 +22,7 @@
 ///   - [SpreadsheetsDeveloperMetadataResource]
 ///   - [SpreadsheetsSheetsResource]
 ///   - [SpreadsheetsValuesResource]
-library sheets_v4;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

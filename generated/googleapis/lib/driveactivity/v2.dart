@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Drive Activity API - v2
@@ -20,7 +19,7 @@
 /// Create an instance of [DriveActivityApi] to access these resources:
 ///
 /// - [ActivityResource]
-library driveactivity_v2;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;

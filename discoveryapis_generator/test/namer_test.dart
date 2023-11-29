@@ -190,8 +190,8 @@ void main() {
 
     group('api-namer', () {
       test('library-name', () {
-        expect(ApiLibraryNamer.libraryName('9a', '\$a'), equals('d9a_p_a'));
-        expect(ApiLibraryNamer.libraryName('drive', 'v1'), equals('drive_v1'));
+        expect(ApiLibraryNamer.libraryName('9a', '\$a'), equals('D9a.P_a'));
+        expect(ApiLibraryNamer.libraryName('drive', 'v1'), equals('drive.v1'));
       });
 
       test('scope-tree', () {

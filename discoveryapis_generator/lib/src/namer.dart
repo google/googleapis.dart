@@ -256,7 +256,7 @@ class ApiLibraryNamer {
   static String libraryName(String? api, String? version) {
     api = Scope.toValidIdentifier(api, removeUnderscores: false);
     version = Scope.toValidIdentifier(version, removeUnderscores: false);
-    return '${api}_$version'.toLowerCase();
+    return '$api.$version';
   }
 
   String clientLibraryName(String package, String? api) {
