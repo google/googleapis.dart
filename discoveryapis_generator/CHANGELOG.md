@@ -1,4 +1,4 @@
-## 1.1.0-dev
+## 1.1.0-wip
 
 - Require Dart 2.19 or later.
 - Allow latest `package:http`.
