@@ -280,14 +280,14 @@ package.
       }
 
       if (item.documentationLink != null) {
-        sb.writeln('- [Documentation](${item.documentationLink})');
+        sb.writeln('- [Original documentation](${item.documentationLink})');
       }
 
       if (packageVersion != null) {
         final basePubUri =
             'https://pub.dev/documentation/$packageName/$packageVersion/';
         final pubUri = '$basePubUri$libraryName/$libraryName-library.html';
-        sb.writeln('- [API details]($pubUri)');
+        sb.writeln('- [Dart package details]($pubUri)');
       }
       sb.writeln();
     }

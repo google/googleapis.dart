@@ -13,159 +13,159 @@ this package. For an example of usage in a server application,
 The following is a list of APIs that are currently available inside this
 package.
 
-#### Ad Exchange Buyer API II - `adexchangebuyer2.v2beta1`
+#### Ad Exchange Buyer API II - `adexchangebuyer2/v2beta1`
 
 Accesses the latest features for managing Authorized Buyers accounts, Real-Time Bidding configurations and auction metrics, and Marketplace programmatic deals.
 
-- [Documentation](https://developers.google.com/authorized-buyers/apis/reference/rest/)
-- [API details](https://pub.dev/documentation/googleapis_beta/8.1.0-wip/adexchangebuyer2.v2beta1/adexchangebuyer2.v2beta1-library.html)
+- [Original documentation](https://developers.google.com/authorized-buyers/apis/reference/rest/)
+- [Dart package details](https://pub.dev/documentation/googleapis_beta/8.1.0-wip/adexchangebuyer2/v2beta1/adexchangebuyer2/v2beta1-library.html)
 
-#### Google Workspace Alert Center API - `alertcenter.v1beta1`
+#### Google Workspace Alert Center API - `alertcenter/v1beta1`
 
 Manages alerts on issues affecting your domain. Note: The current version of this API (v1beta1) is available to all Google Workspace customers. 
 
-- [Documentation](https://developers.google.com/admin-sdk/alertcenter/)
-- [API details](https://pub.dev/documentation/googleapis_beta/8.1.0-wip/alertcenter.v1beta1/alertcenter.v1beta1-library.html)
+- [Original documentation](https://developers.google.com/admin-sdk/alertcenter/)
+- [Dart package details](https://pub.dev/documentation/googleapis_beta/8.1.0-wip/alertcenter/v1beta1/alertcenter/v1beta1-library.html)
 
-#### Google Analytics Admin API - `analyticsadmin.v1beta`
+#### Google Analytics Admin API - `analyticsadmin/v1beta`
 
 Manage properties in Google Analytics. Warning: Creating multiple Customer Applications, Accounts, or Projects to simulate or act as a single Customer Application, Account, or Project (respectively) or to circumvent Service-specific usage limits or quotas is a direct violation of Google Cloud Platform Terms of Service as well as Google APIs Terms of Service. These actions can result in immediate termination of your GCP project(s) without any warning.
 
-- [Documentation](http://code.google.com/apis/analytics/docs/mgmt/home.html)
-- [API details](https://pub.dev/documentation/googleapis_beta/8.1.0-wip/analyticsadmin.v1beta/analyticsadmin.v1beta-library.html)
+- [Original documentation](http://code.google.com/apis/analytics/docs/mgmt/home.html)
+- [Dart package details](https://pub.dev/documentation/googleapis_beta/8.1.0-wip/analyticsadmin/v1beta/analyticsadmin/v1beta-library.html)
 
-#### Google Analytics Data API - `analyticsdata.v1beta`
+#### Google Analytics Data API - `analyticsdata/v1beta`
 
 Accesses report data in Google Analytics. Warning: Creating multiple Customer Applications, Accounts, or Projects to simulate or act as a single Customer Application, Account, or Project (respectively) or to circumvent Service-specific usage limits or quotas is a direct violation of Google Cloud Platform Terms of Service as well as Google APIs Terms of Service. These actions can result in immediate termination of your GCP project(s) without any warning. 
 
-- [Documentation](https://developers.google.com/analytics/devguides/reporting/data/v1/)
-- [API details](https://pub.dev/documentation/googleapis_beta/8.1.0-wip/analyticsdata.v1beta/analyticsdata.v1beta-library.html)
+- [Original documentation](https://developers.google.com/analytics/devguides/reporting/data/v1/)
+- [Dart package details](https://pub.dev/documentation/googleapis_beta/8.1.0-wip/analyticsdata/v1beta/analyticsdata/v1beta-library.html)
 
-#### Area120 Tables API - `area120tables.v1alpha1`
+#### Area120 Tables API - `area120tables/v1alpha1`
 
-- [Documentation](https://support.google.com/area120-tables/answer/10011390)
-- [API details](https://pub.dev/documentation/googleapis_beta/8.1.0-wip/area120tables.v1alpha1/area120tables.v1alpha1-library.html)
+- [Original documentation](https://support.google.com/area120-tables/answer/10011390)
+- [Dart package details](https://pub.dev/documentation/googleapis_beta/8.1.0-wip/area120tables/v1alpha1/area120tables/v1alpha1-library.html)
 
-#### BigQuery Connection API - `bigqueryconnection.v1beta1`
+#### BigQuery Connection API - `bigqueryconnection/v1beta1`
 
 Allows users to manage BigQuery connections to external data sources.
 
-- [Documentation](https://cloud.google.com/bigquery/)
-- [API details](https://pub.dev/documentation/googleapis_beta/8.1.0-wip/bigqueryconnection.v1beta1/bigqueryconnection.v1beta1-library.html)
+- [Original documentation](https://cloud.google.com/bigquery/)
+- [Dart package details](https://pub.dev/documentation/googleapis_beta/8.1.0-wip/bigqueryconnection/v1beta1/bigqueryconnection/v1beta1-library.html)
 
-#### Error Reporting API - `clouderrorreporting.v1beta1`
+#### Error Reporting API - `clouderrorreporting/v1beta1`
 
 Groups and counts similar errors from cloud services and applications, reports new errors, and provides access to error groups and their associated errors. 
 
-- [Documentation](https://cloud.google.com/error-reporting/)
-- [API details](https://pub.dev/documentation/googleapis_beta/8.1.0-wip/clouderrorreporting.v1beta1/clouderrorreporting.v1beta1-library.html)
+- [Original documentation](https://cloud.google.com/error-reporting/)
+- [Dart package details](https://pub.dev/documentation/googleapis_beta/8.1.0-wip/clouderrorreporting/v1beta1/clouderrorreporting/v1beta1-library.html)
 
-#### Google Cloud Support API - `cloudsupport.v2beta`
+#### Google Cloud Support API - `cloudsupport/v2beta`
 
 Manages Google Cloud technical support cases for Customer Care support offerings. 
 
-- [Documentation](https://cloud.google.com/support/docs/apis)
-- [API details](https://pub.dev/documentation/googleapis_beta/8.1.0-wip/cloudsupport.v2beta/cloudsupport.v2beta-library.html)
+- [Original documentation](https://cloud.google.com/support/docs/apis)
+- [Dart package details](https://pub.dev/documentation/googleapis_beta/8.1.0-wip/cloudsupport/v2beta/cloudsupport/v2beta-library.html)
 
-#### Dataflow API - `dataflow.v1b3`
+#### Dataflow API - `dataflow/v1b3`
 
 Manages Google Cloud Dataflow projects on Google Cloud Platform.
 
-- [Documentation](https://cloud.google.com/dataflow)
-- [API details](https://pub.dev/documentation/googleapis_beta/8.1.0-wip/dataflow.v1b3/dataflow.v1b3-library.html)
+- [Original documentation](https://cloud.google.com/dataflow)
+- [Dart package details](https://pub.dev/documentation/googleapis_beta/8.1.0-wip/dataflow/v1b3/dataflow/v1b3-library.html)
 
-#### Data Labeling API - `datalabeling.v1beta1`
+#### Data Labeling API - `datalabeling/v1beta1`
 
 Public API for Google Cloud AI Data Labeling Service.
 
-- [Documentation](https://cloud.google.com/data-labeling/docs/)
-- [API details](https://pub.dev/documentation/googleapis_beta/8.1.0-wip/datalabeling.v1beta1/datalabeling.v1beta1-library.html)
+- [Original documentation](https://cloud.google.com/data-labeling/docs/)
+- [Dart package details](https://pub.dev/documentation/googleapis_beta/8.1.0-wip/datalabeling/v1beta1/datalabeling/v1beta1-library.html)
 
-#### Datastream API - `datastream.v1alpha1`
+#### Datastream API - `datastream/v1alpha1`
 
-- [Documentation](https://cloud.google.com/datastream/)
-- [API details](https://pub.dev/documentation/googleapis_beta/8.1.0-wip/datastream.v1alpha1/datastream.v1alpha1-library.html)
+- [Original documentation](https://cloud.google.com/datastream/)
+- [Dart package details](https://pub.dev/documentation/googleapis_beta/8.1.0-wip/datastream/v1alpha1/datastream/v1alpha1-library.html)
 
-#### Fact Check Tools API - `factchecktools.v1alpha1`
+#### Fact Check Tools API - `factchecktools/v1alpha1`
 
-- [Documentation](https://developers.google.com/fact-check/tools/api/)
-- [API details](https://pub.dev/documentation/googleapis_beta/8.1.0-wip/factchecktools.v1alpha1/factchecktools.v1alpha1-library.html)
+- [Original documentation](https://developers.google.com/fact-check/tools/api/)
+- [Dart package details](https://pub.dev/documentation/googleapis_beta/8.1.0-wip/factchecktools/v1alpha1/factchecktools/v1alpha1-library.html)
 
-#### Firebase Cloud Messaging Data API - `fcmdata.v1beta1`
+#### Firebase Cloud Messaging Data API - `fcmdata/v1beta1`
 
 Provides additional information about Firebase Cloud Messaging (FCM) message sends and deliveries.
 
-- [Documentation](https://firebase.google.com/docs/cloud-messaging)
-- [API details](https://pub.dev/documentation/googleapis_beta/8.1.0-wip/fcmdata.v1beta1/fcmdata.v1beta1-library.html)
+- [Original documentation](https://firebase.google.com/docs/cloud-messaging)
+- [Dart package details](https://pub.dev/documentation/googleapis_beta/8.1.0-wip/fcmdata/v1beta1/fcmdata/v1beta1-library.html)
 
-#### Firebase Management API - `firebase.v1beta1`
+#### Firebase Management API - `firebase/v1beta1`
 
 The Firebase Management API enables programmatic setup and management of Firebase projects, including a project's Firebase resources and Firebase apps.
 
-- [Documentation](https://firebase.google.com)
-- [API details](https://pub.dev/documentation/googleapis_beta/8.1.0-wip/firebase.v1beta1/firebase.v1beta1-library.html)
+- [Original documentation](https://firebase.google.com)
+- [Dart package details](https://pub.dev/documentation/googleapis_beta/8.1.0-wip/firebase/v1beta1/firebase/v1beta1-library.html)
 
-#### Firebase App Check API - `firebaseappcheck.v1beta`
+#### Firebase App Check API - `firebaseappcheck/v1beta`
 
 Firebase App Check works alongside other Firebase services to help protect your backend resources from abuse, such as billing fraud or phishing.
 
-- [Documentation](https://firebase.google.com/docs/app-check)
-- [API details](https://pub.dev/documentation/googleapis_beta/8.1.0-wip/firebaseappcheck.v1beta/firebaseappcheck.v1beta-library.html)
+- [Original documentation](https://firebase.google.com/docs/app-check)
+- [Dart package details](https://pub.dev/documentation/googleapis_beta/8.1.0-wip/firebaseappcheck/v1beta/firebaseappcheck/v1beta-library.html)
 
-#### Firebase Realtime Database API - `firebasedatabase.v1beta`
+#### Firebase Realtime Database API - `firebasedatabase/v1beta`
 
 The Firebase Realtime Database API enables programmatic provisioning and management of Realtime Database instances.
 
-- [Documentation](https://firebase.google.com/docs/reference/rest/database/database-management/rest/)
-- [API details](https://pub.dev/documentation/googleapis_beta/8.1.0-wip/firebasedatabase.v1beta/firebasedatabase.v1beta-library.html)
+- [Original documentation](https://firebase.google.com/docs/reference/rest/database/database-management/rest/)
+- [Dart package details](https://pub.dev/documentation/googleapis_beta/8.1.0-wip/firebasedatabase/v1beta/firebasedatabase/v1beta-library.html)
 
-#### Cloud Storage for Firebase API - `firebasestorage.v1beta`
+#### Cloud Storage for Firebase API - `firebasestorage/v1beta`
 
 The Cloud Storage for Firebase API enables programmatic management of Cloud Storage buckets for use in Firebase projects
 
-- [Documentation](https://firebase.google.com/docs/storage)
-- [API details](https://pub.dev/documentation/googleapis_beta/8.1.0-wip/firebasestorage.v1beta/firebasestorage.v1beta-library.html)
+- [Original documentation](https://firebase.google.com/docs/storage)
+- [Dart package details](https://pub.dev/documentation/googleapis_beta/8.1.0-wip/firebasestorage/v1beta/firebasestorage/v1beta-library.html)
 
-#### GKE Hub API - `gkehub.v2alpha`
+#### GKE Hub API - `gkehub/v2alpha`
 
-- [Documentation](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster)
-- [API details](https://pub.dev/documentation/googleapis_beta/8.1.0-wip/gkehub.v2alpha/gkehub.v2alpha-library.html)
+- [Original documentation](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster)
+- [Dart package details](https://pub.dev/documentation/googleapis_beta/8.1.0-wip/gkehub/v2alpha/gkehub/v2alpha-library.html)
 
-#### Cloud Life Sciences API - `lifesciences.v2beta`
+#### Cloud Life Sciences API - `lifesciences/v2beta`
 
 Cloud Life Sciences is a suite of services and tools for managing, processing, and transforming life sciences data.
 
-- [Documentation](https://cloud.google.com/life-sciences)
-- [API details](https://pub.dev/documentation/googleapis_beta/8.1.0-wip/lifesciences.v2beta/lifesciences.v2beta-library.html)
+- [Original documentation](https://cloud.google.com/life-sciences)
+- [Dart package details](https://pub.dev/documentation/googleapis_beta/8.1.0-wip/lifesciences/v2beta/lifesciences/v2beta-library.html)
 
-#### SAS Portal API (Testing) - `prod_tt_sasportal.v1alpha1`
+#### SAS Portal API (Testing) - `prod_tt_sasportal/v1alpha1`
 
-- [Documentation](https://developers.google.com/spectrum-access-system/)
-- [API details](https://pub.dev/documentation/googleapis_beta/8.1.0-wip/prod_tt_sasportal.v1alpha1/prod_tt_sasportal.v1alpha1-library.html)
+- [Original documentation](https://developers.google.com/spectrum-access-system/)
+- [Dart package details](https://pub.dev/documentation/googleapis_beta/8.1.0-wip/prod_tt_sasportal/v1alpha1/prod_tt_sasportal/v1alpha1-library.html)
 
-#### Recommendations AI (Beta) - `recommendationengine.v1beta1`
+#### Recommendations AI (Beta) - `recommendationengine/v1beta1`
 
 Note that we now highly recommend new customers to use Retail API, which incorporates the GA version of the Recommendations AI funtionalities. To enable Retail API, please visit https://console.cloud.google.com/apis/library/retail.googleapis.com. The Recommendations AI service enables customers to build end-to-end personalized recommendation systems without requiring a high level of expertise in machine learning, recommendation system, or Google Cloud.
 
-- [Documentation](https://cloud.google.com/recommendations-ai/docs)
-- [API details](https://pub.dev/documentation/googleapis_beta/8.1.0-wip/recommendationengine.v1beta1/recommendationengine.v1beta1-library.html)
+- [Original documentation](https://cloud.google.com/recommendations-ai/docs)
+- [Dart package details](https://pub.dev/documentation/googleapis_beta/8.1.0-wip/recommendationengine/v1beta1/recommendationengine/v1beta1-library.html)
 
-#### SAS Portal API - `sasportal.v1alpha1`
+#### SAS Portal API - `sasportal/v1alpha1`
 
-- [Documentation](https://developers.google.com/spectrum-access-system/)
-- [API details](https://pub.dev/documentation/googleapis_beta/8.1.0-wip/sasportal.v1alpha1/sasportal.v1alpha1-library.html)
+- [Original documentation](https://developers.google.com/spectrum-access-system/)
+- [Dart package details](https://pub.dev/documentation/googleapis_beta/8.1.0-wip/sasportal/v1alpha1/sasportal/v1alpha1-library.html)
 
-#### Cloud SQL Admin API - `sqladmin.v1beta4`
+#### Cloud SQL Admin API - `sqladmin/v1beta4`
 
 API for Cloud SQL database instance management
 
-- [Documentation](https://developers.google.com/cloud-sql/)
-- [API details](https://pub.dev/documentation/googleapis_beta/8.1.0-wip/sqladmin.v1beta4/sqladmin.v1beta4-library.html)
+- [Original documentation](https://developers.google.com/cloud-sql/)
+- [Dart package details](https://pub.dev/documentation/googleapis_beta/8.1.0-wip/sqladmin/v1beta4/sqladmin/v1beta4-library.html)
 
-#### Cloud Tool Results API - `toolresults.v1beta3`
+#### Cloud Tool Results API - `toolresults/v1beta3`
 
 API to publish and access results from developer tools.
 
-- [Documentation](https://firebase.google.com/docs/test-lab/)
-- [API details](https://pub.dev/documentation/googleapis_beta/8.1.0-wip/toolresults.v1beta3/toolresults.v1beta3-library.html)
+- [Original documentation](https://firebase.google.com/docs/test-lab/)
+- [Dart package details](https://pub.dev/documentation/googleapis_beta/8.1.0-wip/toolresults/v1beta3/toolresults/v1beta3-library.html)
 
