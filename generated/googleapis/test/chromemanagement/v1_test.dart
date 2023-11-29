@@ -2122,6 +2122,35 @@ void checkGoogleChromeManagementV1MemoryStatusReport(
   buildCounterGoogleChromeManagementV1MemoryStatusReport--;
 }
 
+core.int buildCounterGoogleChromeManagementV1NetworkBandwidthReport = 0;
+api.GoogleChromeManagementV1NetworkBandwidthReport
+    buildGoogleChromeManagementV1NetworkBandwidthReport() {
+  final o = api.GoogleChromeManagementV1NetworkBandwidthReport();
+  buildCounterGoogleChromeManagementV1NetworkBandwidthReport++;
+  if (buildCounterGoogleChromeManagementV1NetworkBandwidthReport < 3) {
+    o.downloadSpeedKbps = 'foo';
+    o.reportTime = 'foo';
+  }
+  buildCounterGoogleChromeManagementV1NetworkBandwidthReport--;
+  return o;
+}
+
+void checkGoogleChromeManagementV1NetworkBandwidthReport(
+    api.GoogleChromeManagementV1NetworkBandwidthReport o) {
+  buildCounterGoogleChromeManagementV1NetworkBandwidthReport++;
+  if (buildCounterGoogleChromeManagementV1NetworkBandwidthReport < 3) {
+    unittest.expect(
+      o.downloadSpeedKbps!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.reportTime!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleChromeManagementV1NetworkBandwidthReport--;
+}
+
 core.int buildCounterGoogleChromeManagementV1NetworkDevice = 0;
 api.GoogleChromeManagementV1NetworkDevice
     buildGoogleChromeManagementV1NetworkDevice() {
@@ -2787,72 +2816,85 @@ void checkUnnamed38(
   checkGoogleChromeManagementV1MemoryStatusReport(o[1]);
 }
 
-core.List<api.GoogleChromeManagementV1NetworkDiagnosticsReport>
+core.List<api.GoogleChromeManagementV1NetworkBandwidthReport>
     buildUnnamed39() => [
+          buildGoogleChromeManagementV1NetworkBandwidthReport(),
+          buildGoogleChromeManagementV1NetworkBandwidthReport(),
+        ];
+
+void checkUnnamed39(
+    core.List<api.GoogleChromeManagementV1NetworkBandwidthReport> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleChromeManagementV1NetworkBandwidthReport(o[0]);
+  checkGoogleChromeManagementV1NetworkBandwidthReport(o[1]);
+}
+
+core.List<api.GoogleChromeManagementV1NetworkDiagnosticsReport>
+    buildUnnamed40() => [
           buildGoogleChromeManagementV1NetworkDiagnosticsReport(),
           buildGoogleChromeManagementV1NetworkDiagnosticsReport(),
         ];
 
-void checkUnnamed39(
+void checkUnnamed40(
     core.List<api.GoogleChromeManagementV1NetworkDiagnosticsReport> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleChromeManagementV1NetworkDiagnosticsReport(o[0]);
   checkGoogleChromeManagementV1NetworkDiagnosticsReport(o[1]);
 }
 
-core.List<api.GoogleChromeManagementV1NetworkStatusReport> buildUnnamed40() => [
+core.List<api.GoogleChromeManagementV1NetworkStatusReport> buildUnnamed41() => [
       buildGoogleChromeManagementV1NetworkStatusReport(),
       buildGoogleChromeManagementV1NetworkStatusReport(),
     ];
 
-void checkUnnamed40(
+void checkUnnamed41(
     core.List<api.GoogleChromeManagementV1NetworkStatusReport> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleChromeManagementV1NetworkStatusReport(o[0]);
   checkGoogleChromeManagementV1NetworkStatusReport(o[1]);
 }
 
-core.List<api.GoogleChromeManagementV1OsUpdateStatus> buildUnnamed41() => [
+core.List<api.GoogleChromeManagementV1OsUpdateStatus> buildUnnamed42() => [
       buildGoogleChromeManagementV1OsUpdateStatus(),
       buildGoogleChromeManagementV1OsUpdateStatus(),
     ];
 
-void checkUnnamed41(core.List<api.GoogleChromeManagementV1OsUpdateStatus> o) {
+void checkUnnamed42(core.List<api.GoogleChromeManagementV1OsUpdateStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleChromeManagementV1OsUpdateStatus(o[0]);
   checkGoogleChromeManagementV1OsUpdateStatus(o[1]);
 }
 
-core.List<api.GoogleChromeManagementV1PeripheralsReport> buildUnnamed42() => [
+core.List<api.GoogleChromeManagementV1PeripheralsReport> buildUnnamed43() => [
       buildGoogleChromeManagementV1PeripheralsReport(),
       buildGoogleChromeManagementV1PeripheralsReport(),
     ];
 
-void checkUnnamed42(
+void checkUnnamed43(
     core.List<api.GoogleChromeManagementV1PeripheralsReport> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleChromeManagementV1PeripheralsReport(o[0]);
   checkGoogleChromeManagementV1PeripheralsReport(o[1]);
 }
 
-core.List<api.GoogleChromeManagementV1StorageStatusReport> buildUnnamed43() => [
+core.List<api.GoogleChromeManagementV1StorageStatusReport> buildUnnamed44() => [
       buildGoogleChromeManagementV1StorageStatusReport(),
       buildGoogleChromeManagementV1StorageStatusReport(),
     ];
 
-void checkUnnamed43(
+void checkUnnamed44(
     core.List<api.GoogleChromeManagementV1StorageStatusReport> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleChromeManagementV1StorageStatusReport(o[0]);
   checkGoogleChromeManagementV1StorageStatusReport(o[1]);
 }
 
-core.List<api.GoogleChromeManagementV1ThunderboltInfo> buildUnnamed44() => [
+core.List<api.GoogleChromeManagementV1ThunderboltInfo> buildUnnamed45() => [
       buildGoogleChromeManagementV1ThunderboltInfo(),
       buildGoogleChromeManagementV1ThunderboltInfo(),
     ];
 
-void checkUnnamed44(core.List<api.GoogleChromeManagementV1ThunderboltInfo> o) {
+void checkUnnamed45(core.List<api.GoogleChromeManagementV1ThunderboltInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleChromeManagementV1ThunderboltInfo(o[0]);
   checkGoogleChromeManagementV1ThunderboltInfo(o[1]);
@@ -2879,16 +2921,17 @@ api.GoogleChromeManagementV1TelemetryDevice
     o.memoryInfo = buildGoogleChromeManagementV1MemoryInfo();
     o.memoryStatusReport = buildUnnamed38();
     o.name = 'foo';
-    o.networkDiagnosticsReport = buildUnnamed39();
+    o.networkBandwidthReport = buildUnnamed39();
+    o.networkDiagnosticsReport = buildUnnamed40();
     o.networkInfo = buildGoogleChromeManagementV1NetworkInfo();
-    o.networkStatusReport = buildUnnamed40();
+    o.networkStatusReport = buildUnnamed41();
     o.orgUnitId = 'foo';
-    o.osUpdateStatus = buildUnnamed41();
-    o.peripheralsReport = buildUnnamed42();
+    o.osUpdateStatus = buildUnnamed42();
+    o.peripheralsReport = buildUnnamed43();
     o.serialNumber = 'foo';
     o.storageInfo = buildGoogleChromeManagementV1StorageInfo();
-    o.storageStatusReport = buildUnnamed43();
-    o.thunderboltInfo = buildUnnamed44();
+    o.storageStatusReport = buildUnnamed44();
+    o.thunderboltInfo = buildUnnamed45();
   }
   buildCounterGoogleChromeManagementV1TelemetryDevice--;
   return o;
@@ -2922,22 +2965,23 @@ void checkGoogleChromeManagementV1TelemetryDevice(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed39(o.networkDiagnosticsReport!);
+    checkUnnamed39(o.networkBandwidthReport!);
+    checkUnnamed40(o.networkDiagnosticsReport!);
     checkGoogleChromeManagementV1NetworkInfo(o.networkInfo!);
-    checkUnnamed40(o.networkStatusReport!);
+    checkUnnamed41(o.networkStatusReport!);
     unittest.expect(
       o.orgUnitId!,
       unittest.equals('foo'),
     );
-    checkUnnamed41(o.osUpdateStatus!);
-    checkUnnamed42(o.peripheralsReport!);
+    checkUnnamed42(o.osUpdateStatus!);
+    checkUnnamed43(o.peripheralsReport!);
     unittest.expect(
       o.serialNumber!,
       unittest.equals('foo'),
     );
     checkGoogleChromeManagementV1StorageInfo(o.storageInfo!);
-    checkUnnamed43(o.storageStatusReport!);
-    checkUnnamed44(o.thunderboltInfo!);
+    checkUnnamed44(o.storageStatusReport!);
+    checkUnnamed45(o.thunderboltInfo!);
   }
   buildCounterGoogleChromeManagementV1TelemetryDevice--;
 }
@@ -3033,12 +3077,12 @@ void checkGoogleChromeManagementV1TelemetryEvent(
   buildCounterGoogleChromeManagementV1TelemetryEvent--;
 }
 
-core.List<core.String> buildUnnamed45() => [
+core.List<core.String> buildUnnamed46() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed45(core.List<core.String> o) {
+void checkUnnamed46(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -3058,7 +3102,7 @@ api.GoogleChromeManagementV1TelemetryEventNotificationFilter
   buildCounterGoogleChromeManagementV1TelemetryEventNotificationFilter++;
   if (buildCounterGoogleChromeManagementV1TelemetryEventNotificationFilter <
       3) {
-    o.eventTypes = buildUnnamed45();
+    o.eventTypes = buildUnnamed46();
   }
   buildCounterGoogleChromeManagementV1TelemetryEventNotificationFilter--;
   return o;
@@ -3069,7 +3113,7 @@ void checkGoogleChromeManagementV1TelemetryEventNotificationFilter(
   buildCounterGoogleChromeManagementV1TelemetryEventNotificationFilter++;
   if (buildCounterGoogleChromeManagementV1TelemetryEventNotificationFilter <
       3) {
-    checkUnnamed45(o.eventTypes!);
+    checkUnnamed46(o.eventTypes!);
   }
   buildCounterGoogleChromeManagementV1TelemetryEventNotificationFilter--;
 }
@@ -3250,12 +3294,12 @@ void checkGoogleChromeManagementV1TelemetryNotificationFilter(
   buildCounterGoogleChromeManagementV1TelemetryNotificationFilter--;
 }
 
-core.List<api.GoogleChromeManagementV1UsbPeripheralReport> buildUnnamed46() => [
+core.List<api.GoogleChromeManagementV1UsbPeripheralReport> buildUnnamed47() => [
       buildGoogleChromeManagementV1UsbPeripheralReport(),
       buildGoogleChromeManagementV1UsbPeripheralReport(),
     ];
 
-void checkUnnamed46(
+void checkUnnamed47(
     core.List<api.GoogleChromeManagementV1UsbPeripheralReport> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleChromeManagementV1UsbPeripheralReport(o[0]);
@@ -3268,7 +3312,7 @@ api.GoogleChromeManagementV1TelemetryUsbPeripheralsEvent
   final o = api.GoogleChromeManagementV1TelemetryUsbPeripheralsEvent();
   buildCounterGoogleChromeManagementV1TelemetryUsbPeripheralsEvent++;
   if (buildCounterGoogleChromeManagementV1TelemetryUsbPeripheralsEvent < 3) {
-    o.usbPeripheralReport = buildUnnamed46();
+    o.usbPeripheralReport = buildUnnamed47();
   }
   buildCounterGoogleChromeManagementV1TelemetryUsbPeripheralsEvent--;
   return o;
@@ -3278,17 +3322,17 @@ void checkGoogleChromeManagementV1TelemetryUsbPeripheralsEvent(
     api.GoogleChromeManagementV1TelemetryUsbPeripheralsEvent o) {
   buildCounterGoogleChromeManagementV1TelemetryUsbPeripheralsEvent++;
   if (buildCounterGoogleChromeManagementV1TelemetryUsbPeripheralsEvent < 3) {
-    checkUnnamed46(o.usbPeripheralReport!);
+    checkUnnamed47(o.usbPeripheralReport!);
   }
   buildCounterGoogleChromeManagementV1TelemetryUsbPeripheralsEvent--;
 }
 
-core.List<api.GoogleChromeManagementV1TelemetryUserDevice> buildUnnamed47() => [
+core.List<api.GoogleChromeManagementV1TelemetryUserDevice> buildUnnamed48() => [
       buildGoogleChromeManagementV1TelemetryUserDevice(),
       buildGoogleChromeManagementV1TelemetryUserDevice(),
     ];
 
-void checkUnnamed47(
+void checkUnnamed48(
     core.List<api.GoogleChromeManagementV1TelemetryUserDevice> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleChromeManagementV1TelemetryUserDevice(o[0]);
@@ -3304,7 +3348,7 @@ api.GoogleChromeManagementV1TelemetryUser
     o.customer = 'foo';
     o.name = 'foo';
     o.orgUnitId = 'foo';
-    o.userDevice = buildUnnamed47();
+    o.userDevice = buildUnnamed48();
     o.userEmail = 'foo';
     o.userId = 'foo';
   }
@@ -3328,7 +3372,7 @@ void checkGoogleChromeManagementV1TelemetryUser(
       o.orgUnitId!,
       unittest.equals('foo'),
     );
-    checkUnnamed47(o.userDevice!);
+    checkUnnamed48(o.userDevice!);
     unittest.expect(
       o.userEmail!,
       unittest.equals('foo'),
@@ -3341,37 +3385,50 @@ void checkGoogleChromeManagementV1TelemetryUser(
   buildCounterGoogleChromeManagementV1TelemetryUser--;
 }
 
-core.List<api.GoogleChromeManagementV1AudioStatusReport> buildUnnamed48() => [
+core.List<api.GoogleChromeManagementV1AudioStatusReport> buildUnnamed49() => [
       buildGoogleChromeManagementV1AudioStatusReport(),
       buildGoogleChromeManagementV1AudioStatusReport(),
     ];
 
-void checkUnnamed48(
+void checkUnnamed49(
     core.List<api.GoogleChromeManagementV1AudioStatusReport> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleChromeManagementV1AudioStatusReport(o[0]);
   checkGoogleChromeManagementV1AudioStatusReport(o[1]);
 }
 
-core.List<api.GoogleChromeManagementV1DeviceActivityReport> buildUnnamed49() =>
+core.List<api.GoogleChromeManagementV1DeviceActivityReport> buildUnnamed50() =>
     [
       buildGoogleChromeManagementV1DeviceActivityReport(),
       buildGoogleChromeManagementV1DeviceActivityReport(),
     ];
 
-void checkUnnamed49(
+void checkUnnamed50(
     core.List<api.GoogleChromeManagementV1DeviceActivityReport> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleChromeManagementV1DeviceActivityReport(o[0]);
   checkGoogleChromeManagementV1DeviceActivityReport(o[1]);
 }
 
-core.List<api.GoogleChromeManagementV1PeripheralsReport> buildUnnamed50() => [
+core.List<api.GoogleChromeManagementV1NetworkBandwidthReport>
+    buildUnnamed51() => [
+          buildGoogleChromeManagementV1NetworkBandwidthReport(),
+          buildGoogleChromeManagementV1NetworkBandwidthReport(),
+        ];
+
+void checkUnnamed51(
+    core.List<api.GoogleChromeManagementV1NetworkBandwidthReport> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleChromeManagementV1NetworkBandwidthReport(o[0]);
+  checkGoogleChromeManagementV1NetworkBandwidthReport(o[1]);
+}
+
+core.List<api.GoogleChromeManagementV1PeripheralsReport> buildUnnamed52() => [
       buildGoogleChromeManagementV1PeripheralsReport(),
       buildGoogleChromeManagementV1PeripheralsReport(),
     ];
 
-void checkUnnamed50(
+void checkUnnamed52(
     core.List<api.GoogleChromeManagementV1PeripheralsReport> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleChromeManagementV1PeripheralsReport(o[0]);
@@ -3384,10 +3441,11 @@ api.GoogleChromeManagementV1TelemetryUserDevice
   final o = api.GoogleChromeManagementV1TelemetryUserDevice();
   buildCounterGoogleChromeManagementV1TelemetryUserDevice++;
   if (buildCounterGoogleChromeManagementV1TelemetryUserDevice < 3) {
-    o.audioStatusReport = buildUnnamed48();
-    o.deviceActivityReport = buildUnnamed49();
+    o.audioStatusReport = buildUnnamed49();
+    o.deviceActivityReport = buildUnnamed50();
     o.deviceId = 'foo';
-    o.peripheralsReport = buildUnnamed50();
+    o.networkBandwidthReport = buildUnnamed51();
+    o.peripheralsReport = buildUnnamed52();
   }
   buildCounterGoogleChromeManagementV1TelemetryUserDevice--;
   return o;
@@ -3397,13 +3455,14 @@ void checkGoogleChromeManagementV1TelemetryUserDevice(
     api.GoogleChromeManagementV1TelemetryUserDevice o) {
   buildCounterGoogleChromeManagementV1TelemetryUserDevice++;
   if (buildCounterGoogleChromeManagementV1TelemetryUserDevice < 3) {
-    checkUnnamed48(o.audioStatusReport!);
-    checkUnnamed49(o.deviceActivityReport!);
+    checkUnnamed49(o.audioStatusReport!);
+    checkUnnamed50(o.deviceActivityReport!);
     unittest.expect(
       o.deviceId!,
       unittest.equals('foo'),
     );
-    checkUnnamed50(o.peripheralsReport!);
+    checkUnnamed51(o.networkBandwidthReport!);
+    checkUnnamed52(o.peripheralsReport!);
   }
   buildCounterGoogleChromeManagementV1TelemetryUserDevice--;
 }
@@ -3531,12 +3590,12 @@ void checkGoogleChromeManagementV1TouchScreenDevice(
   buildCounterGoogleChromeManagementV1TouchScreenDevice--;
 }
 
-core.List<api.GoogleChromeManagementV1TouchScreenDevice> buildUnnamed51() => [
+core.List<api.GoogleChromeManagementV1TouchScreenDevice> buildUnnamed53() => [
       buildGoogleChromeManagementV1TouchScreenDevice(),
       buildGoogleChromeManagementV1TouchScreenDevice(),
     ];
 
-void checkUnnamed51(
+void checkUnnamed53(
     core.List<api.GoogleChromeManagementV1TouchScreenDevice> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleChromeManagementV1TouchScreenDevice(o[0]);
@@ -3549,7 +3608,7 @@ api.GoogleChromeManagementV1TouchScreenInfo
   final o = api.GoogleChromeManagementV1TouchScreenInfo();
   buildCounterGoogleChromeManagementV1TouchScreenInfo++;
   if (buildCounterGoogleChromeManagementV1TouchScreenInfo < 3) {
-    o.devices = buildUnnamed51();
+    o.devices = buildUnnamed53();
     o.touchpadLibrary = 'foo';
   }
   buildCounterGoogleChromeManagementV1TouchScreenInfo--;
@@ -3560,7 +3619,7 @@ void checkGoogleChromeManagementV1TouchScreenInfo(
     api.GoogleChromeManagementV1TouchScreenInfo o) {
   buildCounterGoogleChromeManagementV1TouchScreenInfo++;
   if (buildCounterGoogleChromeManagementV1TouchScreenInfo < 3) {
-    checkUnnamed51(o.devices!);
+    checkUnnamed53(o.devices!);
     unittest.expect(
       o.touchpadLibrary!,
       unittest.equals('foo'),
@@ -3569,12 +3628,12 @@ void checkGoogleChromeManagementV1TouchScreenInfo(
   buildCounterGoogleChromeManagementV1TouchScreenInfo--;
 }
 
-core.List<core.String> buildUnnamed52() => [
+core.List<core.String> buildUnnamed54() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed52(core.List<core.String> o) {
+void checkUnnamed54(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -3592,7 +3651,7 @@ api.GoogleChromeManagementV1UsbPeripheralReport
   final o = api.GoogleChromeManagementV1UsbPeripheralReport();
   buildCounterGoogleChromeManagementV1UsbPeripheralReport++;
   if (buildCounterGoogleChromeManagementV1UsbPeripheralReport < 3) {
-    o.categories = buildUnnamed52();
+    o.categories = buildUnnamed54();
     o.classId = 42;
     o.firmwareVersion = 'foo';
     o.name = 'foo';
@@ -3609,7 +3668,7 @@ void checkGoogleChromeManagementV1UsbPeripheralReport(
     api.GoogleChromeManagementV1UsbPeripheralReport o) {
   buildCounterGoogleChromeManagementV1UsbPeripheralReport++;
   if (buildCounterGoogleChromeManagementV1UsbPeripheralReport < 3) {
-    checkUnnamed52(o.categories!);
+    checkUnnamed54(o.categories!);
     unittest.expect(
       o.classId!,
       unittest.equals(42),
@@ -3701,7 +3760,7 @@ void checkGoogleProtobufEmpty(api.GoogleProtobufEmpty o) {
   buildCounterGoogleProtobufEmpty--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed53() => {
+core.Map<core.String, core.Object?> buildUnnamed55() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -3714,7 +3773,7 @@ core.Map<core.String, core.Object?> buildUnnamed53() => {
       },
     };
 
-void checkUnnamed53(core.Map<core.String, core.Object?> o) {
+void checkUnnamed55(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -3746,15 +3805,15 @@ void checkUnnamed53(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed54() => [
-      buildUnnamed53(),
-      buildUnnamed53(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed56() => [
+      buildUnnamed55(),
+      buildUnnamed55(),
     ];
 
-void checkUnnamed54(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed56(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed53(o[0]);
-  checkUnnamed53(o[1]);
+  checkUnnamed55(o[0]);
+  checkUnnamed55(o[1]);
 }
 
 core.int buildCounterGoogleRpcStatus = 0;
@@ -3763,7 +3822,7 @@ api.GoogleRpcStatus buildGoogleRpcStatus() {
   buildCounterGoogleRpcStatus++;
   if (buildCounterGoogleRpcStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed54();
+    o.details = buildUnnamed56();
     o.message = 'foo';
   }
   buildCounterGoogleRpcStatus--;
@@ -3777,7 +3836,7 @@ void checkGoogleRpcStatus(api.GoogleRpcStatus o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed54(o.details!);
+    checkUnnamed56(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -4333,6 +4392,17 @@ void main() {
       final od = api.GoogleChromeManagementV1MemoryStatusReport.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleChromeManagementV1MemoryStatusReport(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleChromeManagementV1NetworkBandwidthReport',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleChromeManagementV1NetworkBandwidthReport();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleChromeManagementV1NetworkBandwidthReport.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleChromeManagementV1NetworkBandwidthReport(od);
     });
   });
 

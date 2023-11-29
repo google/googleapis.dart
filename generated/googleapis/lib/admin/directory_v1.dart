@@ -11882,7 +11882,8 @@ class User {
 
   /// The list of the user's email addresses.
   ///
-  /// The maximum allowed data size for this field is 10KB.
+  /// The maximum allowed data size for this field is 10KB. This excludes
+  /// `publicKeyEncryptionCertificates`.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.

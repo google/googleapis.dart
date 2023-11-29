@@ -477,6 +477,10 @@ api.ManagementServer buildManagementServer() {
     o.state = 'foo';
     o.type = 'foo';
     o.updateTime = 'foo';
+    o.workforceIdentityBasedManagementUri =
+        buildWorkforceIdentityBasedManagementURI();
+    o.workforceIdentityBasedOauth2ClientId =
+        buildWorkforceIdentityBasedOAuth2ClientID();
   }
   buildCounterManagementServer--;
   return o;
@@ -520,6 +524,10 @@ void checkManagementServer(api.ManagementServer o) {
       o.updateTime!,
       unittest.equals('foo'),
     );
+    checkWorkforceIdentityBasedManagementURI(
+        o.workforceIdentityBasedManagementUri!);
+    checkWorkforceIdentityBasedOAuth2ClientID(
+        o.workforceIdentityBasedOauth2ClientId!);
   }
   buildCounterManagementServer--;
 }
@@ -932,6 +940,64 @@ void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse--;
 }
 
+core.int buildCounterWorkforceIdentityBasedManagementURI = 0;
+api.WorkforceIdentityBasedManagementURI
+    buildWorkforceIdentityBasedManagementURI() {
+  final o = api.WorkforceIdentityBasedManagementURI();
+  buildCounterWorkforceIdentityBasedManagementURI++;
+  if (buildCounterWorkforceIdentityBasedManagementURI < 3) {
+    o.firstPartyManagementUri = 'foo';
+    o.thirdPartyManagementUri = 'foo';
+  }
+  buildCounterWorkforceIdentityBasedManagementURI--;
+  return o;
+}
+
+void checkWorkforceIdentityBasedManagementURI(
+    api.WorkforceIdentityBasedManagementURI o) {
+  buildCounterWorkforceIdentityBasedManagementURI++;
+  if (buildCounterWorkforceIdentityBasedManagementURI < 3) {
+    unittest.expect(
+      o.firstPartyManagementUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.thirdPartyManagementUri!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterWorkforceIdentityBasedManagementURI--;
+}
+
+core.int buildCounterWorkforceIdentityBasedOAuth2ClientID = 0;
+api.WorkforceIdentityBasedOAuth2ClientID
+    buildWorkforceIdentityBasedOAuth2ClientID() {
+  final o = api.WorkforceIdentityBasedOAuth2ClientID();
+  buildCounterWorkforceIdentityBasedOAuth2ClientID++;
+  if (buildCounterWorkforceIdentityBasedOAuth2ClientID < 3) {
+    o.firstPartyOauth2ClientId = 'foo';
+    o.thirdPartyOauth2ClientId = 'foo';
+  }
+  buildCounterWorkforceIdentityBasedOAuth2ClientID--;
+  return o;
+}
+
+void checkWorkforceIdentityBasedOAuth2ClientID(
+    api.WorkforceIdentityBasedOAuth2ClientID o) {
+  buildCounterWorkforceIdentityBasedOAuth2ClientID++;
+  if (buildCounterWorkforceIdentityBasedOAuth2ClientID < 3) {
+    unittest.expect(
+      o.firstPartyOauth2ClientId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.thirdPartyOauth2ClientId!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterWorkforceIdentityBasedOAuth2ClientID--;
+}
+
 void main() {
   unittest.group('obj-schema-AuditConfig', () {
     unittest.test('to-json--from-json', () async {
@@ -1120,6 +1186,26 @@ void main() {
       final od = api.TestIamPermissionsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkTestIamPermissionsResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-WorkforceIdentityBasedManagementURI', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildWorkforceIdentityBasedManagementURI();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.WorkforceIdentityBasedManagementURI.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkWorkforceIdentityBasedManagementURI(od);
+    });
+  });
+
+  unittest.group('obj-schema-WorkforceIdentityBasedOAuth2ClientID', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildWorkforceIdentityBasedOAuth2ClientID();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.WorkforceIdentityBasedOAuth2ClientID.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkWorkforceIdentityBasedOAuth2ClientID(od);
     });
   });
 

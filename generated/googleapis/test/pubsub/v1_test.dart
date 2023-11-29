@@ -663,6 +663,7 @@ api.MessageStoragePolicy buildMessageStoragePolicy() {
   buildCounterMessageStoragePolicy++;
   if (buildCounterMessageStoragePolicy < 3) {
     o.allowedPersistenceRegions = buildUnnamed10();
+    o.enforceInTransit = true;
   }
   buildCounterMessageStoragePolicy--;
   return o;
@@ -672,6 +673,7 @@ void checkMessageStoragePolicy(api.MessageStoragePolicy o) {
   buildCounterMessageStoragePolicy++;
   if (buildCounterMessageStoragePolicy < 3) {
     checkUnnamed10(o.allowedPersistenceRegions!);
+    unittest.expect(o.enforceInTransit!, unittest.isTrue);
   }
   buildCounterMessageStoragePolicy--;
 }

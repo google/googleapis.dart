@@ -3571,49 +3571,6 @@ class ProjectsLocationsSpokesResource {
   ProjectsLocationsSpokesResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Accepts a proposal to attach a Network Connectivity Center spoke to the
-  /// hub.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. The name of the spoke to accept.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/spokes/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleLongrunningOperation].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleLongrunningOperation> accept(
-    AcceptSpokeRequest request,
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':accept';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-
   /// Creates a Network Connectivity Center spoke.
   ///
   /// [request] - The metadata request object.
@@ -3939,53 +3896,6 @@ class ProjectsLocationsSpokesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Rejects a Network Connectivity Center spoke from being attached to the
-  /// hub.
-  ///
-  /// If the spoke was previously in the `ACTIVE` state, it transitions to the
-  /// `INACTIVE` state and is no longer able to connect to other spokes that are
-  /// attached to the hub.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. The name of the spoke to reject.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/spokes/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleLongrunningOperation].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleLongrunningOperation> reject(
-    RejectSpokeRequest request,
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':reject';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-
   /// Sets the access control policy on the specified resource.
   ///
   /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
@@ -4127,41 +4037,6 @@ class AcceptHubSpokeRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (requestId != null) 'requestId': requestId!,
         if (spokeUri != null) 'spokeUri': spokeUri!,
-      };
-}
-
-/// The request for HubService.AcceptSpoke.
-class AcceptSpokeRequest {
-  /// A request ID to identify requests.
-  ///
-  /// Specify a unique request ID so that if you must retry your request, the
-  /// server knows to ignore the request if it has already been completed. The
-  /// server guarantees that a request doesn't result in creation of duplicate
-  /// commitments for at least 60 minutes. For example, consider a situation
-  /// where you make an initial request and the request times out. If you make
-  /// the request again with the same request ID, the server can check to see
-  /// whether the original operation was received. If it was, the server ignores
-  /// the second request. This behavior prevents clients from mistakenly
-  /// creating duplicate commitments. The request ID must be a valid UUID, with
-  /// the exception that zero UUID is not supported
-  /// (00000000-0000-0000-0000-000000000000).
-  ///
-  /// Optional.
-  core.String? requestId;
-
-  AcceptSpokeRequest({
-    this.requestId,
-  });
-
-  AcceptSpokeRequest.fromJson(core.Map json_)
-      : this(
-          requestId: json_.containsKey('requestId')
-              ? json_['requestId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (requestId != null) 'requestId': requestId!,
       };
 }
 
@@ -6593,52 +6468,6 @@ class RejectHubSpokeRequest {
         if (details != null) 'details': details!,
         if (requestId != null) 'requestId': requestId!,
         if (spokeUri != null) 'spokeUri': spokeUri!,
-      };
-}
-
-/// The request for HubService.RejectSpoke.
-class RejectSpokeRequest {
-  /// Additional information provided by the hub administrator in the
-  /// `RejectSpoke` call.
-  ///
-  /// Optional.
-  core.String? details;
-
-  /// A request ID to identify requests.
-  ///
-  /// Specify a unique request ID so that if you must retry your request, the
-  /// server knows to ignore the request if it has already been completed. The
-  /// server guarantees that a request doesn't result in creation of duplicate
-  /// commitments for at least 60 minutes. For example, consider a situation
-  /// where you make an initial request and the request times out. If you make
-  /// the request again with the same request ID, the server can check to see
-  /// whether the original operation was received. If it was, the server ignores
-  /// the second request. This behavior prevents clients from mistakenly
-  /// creating duplicate commitments. The request ID must be a valid UUID, with
-  /// the exception that zero UUID is not supported
-  /// (00000000-0000-0000-0000-000000000000).
-  ///
-  /// Optional.
-  core.String? requestId;
-
-  RejectSpokeRequest({
-    this.details,
-    this.requestId,
-  });
-
-  RejectSpokeRequest.fromJson(core.Map json_)
-      : this(
-          details: json_.containsKey('details')
-              ? json_['details'] as core.String
-              : null,
-          requestId: json_.containsKey('requestId')
-              ? json_['requestId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (details != null) 'details': details!,
-        if (requestId != null) 'requestId': requestId!,
       };
 }
 

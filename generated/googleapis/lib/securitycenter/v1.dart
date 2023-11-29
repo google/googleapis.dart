@@ -9326,6 +9326,57 @@ class CloudDlpInspection {
       };
 }
 
+/// Metadata taken from a
+/// [Cloud Logging LogEntry](https://cloud.google.com/logging/docs/reference/v2/rest/v2/LogEntry)
+class CloudLoggingEntry {
+  /// A unique identifier for the log entry.
+  core.String? insertId;
+
+  /// The type of the log (part of `log_name`.
+  ///
+  /// `log_name` is the resource name of the log to which this log entry
+  /// belongs). For example: `cloudresourcemanager.googleapis.com/activity`.
+  /// Note that this field is not URL-encoded, unlike the `LOG_ID` field in
+  /// `LogEntry`.
+  core.String? logId;
+
+  /// The organization, folder, or project of the monitored resource that
+  /// produced this log entry.
+  core.String? resourceContainer;
+
+  /// The time the event described by the log entry occurred.
+  core.String? timestamp;
+
+  CloudLoggingEntry({
+    this.insertId,
+    this.logId,
+    this.resourceContainer,
+    this.timestamp,
+  });
+
+  CloudLoggingEntry.fromJson(core.Map json_)
+      : this(
+          insertId: json_.containsKey('insertId')
+              ? json_['insertId'] as core.String
+              : null,
+          logId:
+              json_.containsKey('logId') ? json_['logId'] as core.String : null,
+          resourceContainer: json_.containsKey('resourceContainer')
+              ? json_['resourceContainer'] as core.String
+              : null,
+          timestamp: json_.containsKey('timestamp')
+              ? json_['timestamp'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (insertId != null) 'insertId': insertId!,
+        if (logId != null) 'logId': logId!,
+        if (resourceContainer != null) 'resourceContainer': resourceContainer!,
+        if (timestamp != null) 'timestamp': timestamp!,
+      };
+}
+
 /// Contains compliance information about a security standard indicating unmet
 /// recommendations.
 class Compliance {
@@ -10431,6 +10482,9 @@ class Finding {
   /// The load balancers associated with the finding.
   core.List<LoadBalancer>? loadBalancers;
 
+  /// Log entries that are relevant to the finding.
+  core.List<LogEntry>? logEntries;
+
   /// MITRE ATT&CK tactics and techniques related to this finding.
   ///
   /// See: https://attack.mitre.org
@@ -10611,6 +10665,7 @@ class Finding {
     this.kernelRootkit,
     this.kubernetes,
     this.loadBalancers,
+    this.logEntries,
     this.mitreAttack,
     this.moduleName,
     this.mute,
@@ -10746,6 +10801,12 @@ class Finding {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          logEntries: json_.containsKey('logEntries')
+              ? (json_['logEntries'] as core.List)
+                  .map((value) => LogEntry.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           mitreAttack: json_.containsKey('mitreAttack')
               ? MitreAttack.fromJson(
                   json_['mitreAttack'] as core.Map<core.String, core.dynamic>)
@@ -10834,6 +10895,7 @@ class Finding {
         if (kernelRootkit != null) 'kernelRootkit': kernelRootkit!,
         if (kubernetes != null) 'kubernetes': kubernetes!,
         if (loadBalancers != null) 'loadBalancers': loadBalancers!,
+        if (logEntries != null) 'logEntries': logEntries!,
         if (mitreAttack != null) 'mitreAttack': mitreAttack!,
         if (moduleName != null) 'moduleName': moduleName!,
         if (mute != null) 'mute': mute!,
@@ -13167,6 +13229,28 @@ class LoadBalancer {
       };
 }
 
+/// An individual entry in a log.
+class LogEntry {
+  /// An individual entry in a log stored in Cloud Logging.
+  CloudLoggingEntry? cloudLoggingEntry;
+
+  LogEntry({
+    this.cloudLoggingEntry,
+  });
+
+  LogEntry.fromJson(core.Map json_)
+      : this(
+          cloudLoggingEntry: json_.containsKey('cloudLoggingEntry')
+              ? CloudLoggingEntry.fromJson(json_['cloudLoggingEntry']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cloudLoggingEntry != null) 'cloudLoggingEntry': cloudLoggingEntry!,
+      };
+}
+
 /// A signature corresponding to memory page hashes.
 class MemoryHashSignature {
   /// The binary family.
@@ -13411,6 +13495,9 @@ class NotificationConfig {
 /// Used if the object Kind is not one of Pod, Node, NodePool, Binding, or
 /// AccessReview.
 class Object {
+  /// Pod containers associated with this finding, if any.
+  core.List<Container>? containers;
+
   /// Kubernetes object group, such as "policy.k8s.io/v1".
   core.String? group;
 
@@ -13431,6 +13518,7 @@ class Object {
   core.String? ns;
 
   Object({
+    this.containers,
     this.group,
     this.kind,
     this.name,
@@ -13439,6 +13527,12 @@ class Object {
 
   Object.fromJson(core.Map json_)
       : this(
+          containers: json_.containsKey('containers')
+              ? (json_['containers'] as core.List)
+                  .map((value) => Container.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           group:
               json_.containsKey('group') ? json_['group'] as core.String : null,
           kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
@@ -13447,6 +13541,7 @@ class Object {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (containers != null) 'containers': containers!,
         if (group != null) 'group': group!,
         if (kind != null) 'kind': kind!,
         if (name != null) 'name': name!,

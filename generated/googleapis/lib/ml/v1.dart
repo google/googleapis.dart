@@ -3337,7 +3337,7 @@ class GoogleCloudMlV1ContainerSpec {
 }
 
 /// Represents the config of disk options.
-typedef GoogleCloudMlV1DiskConfig = $Shared03;
+typedef GoogleCloudMlV1DiskConfig = $Shared04;
 
 /// Represents a custom encryption key configuration that can be applied to a
 /// resource.

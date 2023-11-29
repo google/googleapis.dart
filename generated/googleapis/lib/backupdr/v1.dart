@@ -1094,6 +1094,17 @@ class ManagementServer {
   /// Output only.
   core.String? updateTime;
 
+  /// The hostnames of the exposed AGM endpoints for both types of user i.e. 1p
+  /// and 3p, used to connect AGM/RM UI.
+  ///
+  /// Output only.
+  WorkforceIdentityBasedManagementURI? workforceIdentityBasedManagementUri;
+
+  /// The OAuth client IDs for both types of user i.e. 1p and 3p.
+  ///
+  /// Output only.
+  WorkforceIdentityBasedOAuth2ClientID? workforceIdentityBasedOauth2ClientId;
+
   ManagementServer({
     this.createTime,
     this.description,
@@ -1106,6 +1117,8 @@ class ManagementServer {
     this.state,
     this.type,
     this.updateTime,
+    this.workforceIdentityBasedManagementUri,
+    this.workforceIdentityBasedOauth2ClientId,
   });
 
   ManagementServer.fromJson(core.Map json_)
@@ -1145,6 +1158,18 @@ class ManagementServer {
           updateTime: json_.containsKey('updateTime')
               ? json_['updateTime'] as core.String
               : null,
+          workforceIdentityBasedManagementUri:
+              json_.containsKey('workforceIdentityBasedManagementUri')
+                  ? WorkforceIdentityBasedManagementURI.fromJson(
+                      json_['workforceIdentityBasedManagementUri']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          workforceIdentityBasedOauth2ClientId:
+              json_.containsKey('workforceIdentityBasedOauth2ClientId')
+                  ? WorkforceIdentityBasedOAuth2ClientID.fromJson(
+                      json_['workforceIdentityBasedOauth2ClientId']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1159,6 +1184,12 @@ class ManagementServer {
         if (state != null) 'state': state!,
         if (type != null) 'type': type!,
         if (updateTime != null) 'updateTime': updateTime!,
+        if (workforceIdentityBasedManagementUri != null)
+          'workforceIdentityBasedManagementUri':
+              workforceIdentityBasedManagementUri!,
+        if (workforceIdentityBasedOauth2ClientId != null)
+          'workforceIdentityBasedOauth2ClientId':
+              workforceIdentityBasedOauth2ClientId!,
       };
 }
 
@@ -1481,3 +1512,75 @@ typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;
+
+/// ManagementURI depending on the Workforce Identity i.e. either 1p or 3p.
+class WorkforceIdentityBasedManagementURI {
+  /// First party Management URI for Google Identities.
+  ///
+  /// Output only.
+  core.String? firstPartyManagementUri;
+
+  /// Third party Management URI for External Identity Providers.
+  ///
+  /// Output only.
+  core.String? thirdPartyManagementUri;
+
+  WorkforceIdentityBasedManagementURI({
+    this.firstPartyManagementUri,
+    this.thirdPartyManagementUri,
+  });
+
+  WorkforceIdentityBasedManagementURI.fromJson(core.Map json_)
+      : this(
+          firstPartyManagementUri: json_.containsKey('firstPartyManagementUri')
+              ? json_['firstPartyManagementUri'] as core.String
+              : null,
+          thirdPartyManagementUri: json_.containsKey('thirdPartyManagementUri')
+              ? json_['thirdPartyManagementUri'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (firstPartyManagementUri != null)
+          'firstPartyManagementUri': firstPartyManagementUri!,
+        if (thirdPartyManagementUri != null)
+          'thirdPartyManagementUri': thirdPartyManagementUri!,
+      };
+}
+
+/// OAuth Client ID depending on the Workforce Identity i.e. either 1p or 3p,
+class WorkforceIdentityBasedOAuth2ClientID {
+  /// First party OAuth Client ID for Google Identities.
+  ///
+  /// Output only.
+  core.String? firstPartyOauth2ClientId;
+
+  /// Third party OAuth Client ID for External Identity Providers.
+  ///
+  /// Output only.
+  core.String? thirdPartyOauth2ClientId;
+
+  WorkforceIdentityBasedOAuth2ClientID({
+    this.firstPartyOauth2ClientId,
+    this.thirdPartyOauth2ClientId,
+  });
+
+  WorkforceIdentityBasedOAuth2ClientID.fromJson(core.Map json_)
+      : this(
+          firstPartyOauth2ClientId:
+              json_.containsKey('firstPartyOauth2ClientId')
+                  ? json_['firstPartyOauth2ClientId'] as core.String
+                  : null,
+          thirdPartyOauth2ClientId:
+              json_.containsKey('thirdPartyOauth2ClientId')
+                  ? json_['thirdPartyOauth2ClientId'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (firstPartyOauth2ClientId != null)
+          'firstPartyOauth2ClientId': firstPartyOauth2ClientId!,
+        if (thirdPartyOauth2ClientId != null)
+          'thirdPartyOauth2ClientId': thirdPartyOauth2ClientId!,
+      };
+}

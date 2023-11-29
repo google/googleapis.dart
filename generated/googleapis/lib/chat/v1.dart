@@ -364,23 +364,23 @@ class SpacesResource {
   /// [user authentication](https://developers.google.com/chat/api/guides/auth/users),
   /// returns the direct message space between the specified user and the
   /// authenticated user. With
-  /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts),
+  /// [app authentication](https://developers.google.com/chat/api/guides/auth/service-accounts),
   /// returns the direct message space between the specified user and the
   /// calling Chat app. Requires
   /// [user authentication](https://developers.google.com/chat/api/guides/auth/users)
   /// or
-  /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
+  /// [app authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
   ///
   /// Request parameters:
   ///
   /// [name] - Required. Resource name of the user to find direct message with.
-  /// Format: `users/{user}`, where `{user}` is either the `{person_id}` for the
+  /// Format: `users/{user}`, where `{user}` is either the `id` for the
   /// [person](https://developers.google.com/people/api/rest/v1/people) from the
   /// People API, or the `id` for the
   /// [user](https://developers.google.com/admin-sdk/directory/reference/rest/v1/users)
-  /// in the Directory API. For example, if the People API `Person.resourceName`
-  /// is `people/123456789`, you can find a direct message with that person by
-  /// using `users/123456789` as the `name`. When
+  /// in the Directory API. For example, if the People API profile ID is
+  /// `123456789`, you can find a direct message with that person by using
+  /// `users/123456789` as the `name`. When
   /// [authenticated as a user](https://developers.google.com/chat/api/guides/auth/users),
   /// you can use the email as an alias for `{user}`. For example,
   /// `users/example@gmail.com` where `example@gmail.com` is the email of the
@@ -421,8 +421,8 @@ class SpacesResource {
   /// [Get a space](https://developers.google.com/chat/api/guides/v1/spaces/get).
   /// Requires
   /// [authentication](https://developers.google.com/chat/api/guides/auth).
-  /// Fully supports
-  /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts)
+  /// Supports
+  /// [app authentication](https://developers.google.com/chat/api/guides/auth/service-accounts)
   /// and
   /// [user authentication](https://developers.google.com/chat/api/guides/auth/users).
   ///
@@ -467,8 +467,8 @@ class SpacesResource {
   /// [List spaces](https://developers.google.com/chat/api/guides/v1/spaces/list).
   /// Requires
   /// [authentication](https://developers.google.com/chat/api/guides/auth).
-  /// Fully supports
-  /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts)
+  /// Supports
+  /// [app authentication](https://developers.google.com/chat/api/guides/auth/service-accounts)
   /// and
   /// [user authentication](https://developers.google.com/chat/api/guides/auth/users).
   /// Lists spaces visible to the caller or authenticated user. Group chats and
@@ -487,10 +487,10 @@ class SpacesResource {
   /// "SPACE" spaceType = "GROUP_CHAT" OR spaceType = "DIRECT_MESSAGE" ```
   /// Invalid queries are rejected by the server with an `INVALID_ARGUMENT`
   /// error. With
-  /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts),
+  /// [app authentication](https://developers.google.com/chat/api/guides/auth/service-accounts),
   /// this field is ignored and the query always returns all spaces. But the
-  /// Chat API still validates the query syntax with service accounts, so
-  /// invalid queries are still rejected.
+  /// Chat API still validates the query syntax, so invalid queries are still
+  /// rejected.
   ///
   /// [pageSize] - Optional. The maximum number of spaces to return. The service
   /// might return fewer than this value. If unspecified, at most 100 spaces are
@@ -617,13 +617,13 @@ class SpacesResource {
   /// To specify the human members to add, add memberships with the appropriate
   /// `member.name` in the `SetUpSpaceRequest`. To add a human user, use
   /// `users/{user}`, where `{user}` can be the email address for the user. For
-  /// users in the same Workspace organization `{user}` can also be the
-  /// `{person_id}` for the person from the People API, or the `id` for the user
-  /// in the Directory API. For example, if the People API Person `resourceName`
-  /// for `user@example.com` is `people/123456789`, you can add the user to the
-  /// space by setting the `membership.member.name` to `users/user@example.com`
-  /// or `users/123456789`. For a space or group chat, if the caller blocks or
-  /// is blocked by some members, then those members aren't added to the created
+  /// users in the same Workspace organization `{user}` can also be the `id` for
+  /// the person from the People API, or the `id` for the user in the Directory
+  /// API. For example, if the People API Person profile ID for
+  /// `user@example.com` is `123456789`, you can add the user to the space by
+  /// setting the `membership.member.name` to `users/user@example.com` or
+  /// `users/123456789`. For a space or group chat, if the caller blocks or is
+  /// blocked by some members, then those members aren't added to the created
   /// space. To create a direct message (DM) between the calling user and
   /// another human user, specify exactly one membership to represent the human
   /// user. If one user blocks the other, the request fails and the DM isn't
@@ -695,11 +695,11 @@ class SpacesMembersResource {
   /// message between two human users, use `users/app`. Unable to add other apps
   /// to the space. - To add a human user, use `users/{user}`, where `{user}`
   /// can be the email address for the user. For users in the same Workspace
-  /// organization `{user}` can also be the `{person_id}` for the person from
-  /// the People API, or the `id` for the user in the Directory API. For
-  /// example, if the People API Person `resourceName` for `user@example.com` is
-  /// `people/123456789`, you can add the user to the space by setting the
-  /// `membership.member.name` to `users/user@example.com` or `users/123456789`.
+  /// organization `{user}` can also be the `id` for the person from the People
+  /// API, or the `id` for the user in the Directory API. For example, if the
+  /// People API Person profile ID for `user@example.com` is `123456789`, you
+  /// can add the user to the space by setting the `membership.member.name` to
+  /// `users/user@example.com` or `users/123456789`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -797,8 +797,8 @@ class SpacesMembersResource {
   /// [Get a membership](https://developers.google.com/chat/api/guides/v1/members/get).
   /// Requires
   /// [authentication](https://developers.google.com/chat/api/guides/auth).
-  /// Fully supports
-  /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts)
+  /// Supports
+  /// [app authentication](https://developers.google.com/chat/api/guides/auth/service-accounts)
   /// and
   /// [user authentication](https://developers.google.com/chat/api/guides/auth/users).
   ///
@@ -855,8 +855,8 @@ class SpacesMembersResource {
   /// lists memberships in spaces that the authenticated user has access to.
   /// Requires
   /// [authentication](https://developers.google.com/chat/api/guides/auth).
-  /// Fully supports
-  /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts)
+  /// Supports
+  /// [app authentication](https://developers.google.com/chat/api/guides/auth/service-accounts)
   /// and
   /// [user authentication](https://developers.google.com/chat/api/guides/auth/users).
   ///
@@ -983,12 +983,14 @@ class SpacesMessagesResource {
   /// [messageReplyOption] - Optional. Specifies whether a message starts a
   /// thread or replies to one. Only supported in named spaces.
   /// Possible string values are:
-  /// - "MESSAGE_REPLY_OPTION_UNSPECIFIED" : Default. Starts a thread.
+  /// - "MESSAGE_REPLY_OPTION_UNSPECIFIED" : Default. Starts a new thread. Using
+  /// this option ignores any thread ID or `thread_key` that's included.
   /// - "REPLY_MESSAGE_FALLBACK_TO_NEW_THREAD" : Creates the message as a reply
   /// to the thread specified by thread ID or `thread_key`. If it fails, the
   /// message starts a new thread instead.
   /// - "REPLY_MESSAGE_OR_FAIL" : Creates the message as a reply to the thread
-  /// specified by thread ID or `thread_key`. If it fails, a `NOT_FOUND` error
+  /// specified by thread ID or `thread_key`. If a new `thread_key` is used, a
+  /// new thread is created. If the message creation fails, a `NOT_FOUND` error
   /// is returned instead.
   ///
   /// [requestId] - Optional. A unique request ID for this message. Specifying
@@ -999,7 +1001,7 @@ class SpacesMessagesResource {
   /// the thread. Supports up to 4000 characters. To start or add to a thread,
   /// create a message and specify a `threadKey` or the thread.name. For example
   /// usage, see
-  /// [Start or reply to a message thread](https://developers.google.com/chat/api/guides/crudl/messages#start_or_reply_to_a_message_thread).
+  /// [Start or reply to a message thread](https://developers.google.com/chat/api/guides/v1/messages/create#create-message-thread).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1047,12 +1049,12 @@ class SpacesMessagesResource {
   /// [Delete a message](https://developers.google.com/chat/api/guides/v1/messages/delete).
   /// Requires
   /// [authentication](https://developers.google.com/chat/api/guides/auth).
-  /// Fully supports
-  /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts)
+  /// Supports
+  /// [app authentication](https://developers.google.com/chat/api/guides/auth/service-accounts)
   /// and
   /// [user authentication](https://developers.google.com/chat/api/guides/auth/users).
-  /// Requests authenticated with service accounts can only delete messages
-  /// created by the calling Chat app.
+  /// When using app authentication, requests can only delete messages created
+  /// by the calling Chat app.
   ///
   /// Request parameters:
   ///
@@ -1066,7 +1068,7 @@ class SpacesMessagesResource {
   /// Only applies when
   /// [authenticating as a user](https://developers.google.com/chat/api/guides/auth/users).
   /// Has no effect when
-  /// [authenticating with a service account](https://developers.google.com/chat/api/guides/auth/service-accounts).
+  /// [authenticating as a Chat app](https://developers.google.com/chat/api/guides/auth/service-accounts).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1104,8 +1106,8 @@ class SpacesMessagesResource {
   /// [Read a message](https://developers.google.com/chat/api/guides/v1/messages/get).
   /// Requires
   /// [authentication](https://developers.google.com/chat/api/guides/auth).
-  /// Fully supports
-  /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts)
+  /// Supports
+  /// [app authentication](https://developers.google.com/chat/api/guides/auth/service-accounts)
   /// and
   /// [user authentication](https://developers.google.com/chat/api/guides/auth/users).
   /// Note: Might return a message from a blocked member or space.
@@ -1249,12 +1251,12 @@ class SpacesMessagesResource {
   /// [Update a message](https://developers.google.com/chat/api/guides/v1/messages/update).
   /// Requires
   /// [authentication](https://developers.google.com/chat/api/guides/auth).
-  /// Fully supports
-  /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts)
+  /// Supports
+  /// [app authentication](https://developers.google.com/chat/api/guides/auth/service-accounts)
   /// and
   /// [user authentication](https://developers.google.com/chat/api/guides/auth/users).
-  /// Requests authenticated with service accounts can only update messages
-  /// created by the calling Chat app.
+  /// When using app authentication, requests can only update messages created
+  /// by the calling Chat app.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1272,10 +1274,9 @@ class SpacesMessagesResource {
   ///
   /// [updateMask] - Required. The field paths to update. Separate multiple
   /// values with commas. Currently supported field paths: - `text` -
-  /// `attachment` - `cards` (Requires \[service account
+  /// `attachment` - `cards` (Requires \[app
   /// authentication\](/chat/api/guides/auth/service-accounts).) - `cards_v2`
-  /// (Requires \[service account
-  /// authentication\](/chat/api/guides/auth/service-accounts).)
+  /// (Requires \[app authentication\](/chat/api/guides/auth/service-accounts).)
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1320,12 +1321,12 @@ class SpacesMessagesResource {
   /// [Update a message](https://developers.google.com/chat/api/guides/v1/messages/update).
   /// Requires
   /// [authentication](https://developers.google.com/chat/api/guides/auth).
-  /// Fully supports
-  /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts)
+  /// Supports
+  /// [app authentication](https://developers.google.com/chat/api/guides/auth/service-accounts)
   /// and
   /// [user authentication](https://developers.google.com/chat/api/guides/auth/users).
-  /// Requests authenticated with service accounts can only update messages
-  /// created by the calling Chat app.
+  /// When using app authentication, requests can only update messages created
+  /// by the calling Chat app.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1343,10 +1344,9 @@ class SpacesMessagesResource {
   ///
   /// [updateMask] - Required. The field paths to update. Separate multiple
   /// values with commas. Currently supported field paths: - `text` -
-  /// `attachment` - `cards` (Requires \[service account
+  /// `attachment` - `cards` (Requires \[app
   /// authentication\](/chat/api/guides/auth/service-accounts).) - `cards_v2`
-  /// (Requires \[service account
-  /// authentication\](/chat/api/guides/auth/service-accounts).)
+  /// (Requires \[app authentication\](/chat/api/guides/auth/service-accounts).)
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1397,7 +1397,7 @@ class SpacesMessagesAttachmentsResource {
   /// For an example, see
   /// [Get a message attachment](https://developers.google.com/chat/api/guides/v1/media-and-attachments/get).
   /// Requires
-  /// [service account authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
+  /// [app authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
   ///
   /// Request parameters:
   ///
@@ -1625,7 +1625,7 @@ typedef ActionParameter = $ActionParameter;
 class ActionResponse {
   /// Input only.
   ///
-  /// A response to an event related to a
+  /// A response to an interaction event related to a
   /// [dialog](https://developers.google.com/chat/how-tos/dialogs). Must be
   /// accompanied by `ResponseType.Dialog`.
   DialogAction? dialogAction;
@@ -1646,7 +1646,13 @@ class ActionResponse {
   /// or configuration.
   /// - "DIALOG" : Presents a
   /// [dialog](https://developers.google.com/chat/how-tos/dialogs).
+  /// - "UPDATE_WIDGET" : Widget text autocomplete options query.
   core.String? type;
+
+  /// Input only.
+  ///
+  /// The response of the updated widget.
+  UpdatedWidget? updatedWidget;
 
   /// Input only.
   ///
@@ -1657,6 +1663,7 @@ class ActionResponse {
   ActionResponse({
     this.dialogAction,
     this.type,
+    this.updatedWidget,
     this.url,
   });
 
@@ -1667,12 +1674,17 @@ class ActionResponse {
                   json_['dialogAction'] as core.Map<core.String, core.dynamic>)
               : null,
           type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          updatedWidget: json_.containsKey('updatedWidget')
+              ? UpdatedWidget.fromJson(
+                  json_['updatedWidget'] as core.Map<core.String, core.dynamic>)
+              : null,
           url: json_.containsKey('url') ? json_['url'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dialogAction != null) 'dialogAction': dialogAction!,
         if (type != null) 'type': type!,
+        if (updatedWidget != null) 'updatedWidget': updatedWidget!,
         if (url != null) 'url': url!,
       };
 }
@@ -5085,6 +5097,8 @@ class KeyValue {
 }
 
 class ListMembershipsResponse {
+  /// Unordered list.
+  ///
   /// List of memberships in the requested (or first) page.
   core.List<Membership>? memberships;
 
@@ -5507,7 +5521,7 @@ class Message {
   /// The thread the message belongs to.
   ///
   /// For example usage, see
-  /// [Start or reply to a message thread](https://developers.google.com/chat/api/guides/crudl/messages#start_or_reply_to_a_message_thread).
+  /// [Start or reply to a message thread](https://developers.google.com/chat/api/guides/v1/messages/create#create-message-thread).
   Thread? thread;
 
   /// When `true`, the message is a response in a reply thread.
@@ -5840,6 +5854,30 @@ class Section {
   core.Map<core.String, core.dynamic> toJson() => {
         if (header != null) 'header': header!,
         if (widgets != null) 'widgets': widgets!,
+      };
+}
+
+/// List of widget autocomplete results.
+class SelectionItems {
+  /// An array of the SelectionItem objects.
+  core.List<GoogleAppsCardV1SelectionItem>? items;
+
+  SelectionItems({
+    this.items,
+  });
+
+  SelectionItems.fromJson(core.Map json_)
+      : this(
+          items: json_.containsKey('items')
+              ? (json_['items'] as core.List)
+                  .map((value) => GoogleAppsCardV1SelectionItem.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (items != null) 'items': items!,
       };
 }
 
@@ -6344,6 +6382,41 @@ class Thread {
       };
 }
 
+/// The response of the updated widget.
+///
+/// Used to provide autocomplete options for a widget.
+class UpdatedWidget {
+  /// List of widget autocomplete results
+  SelectionItems? suggestions;
+
+  /// The ID of the updated widget.
+  ///
+  /// The ID must match the one for the widget that triggered the update
+  /// request.
+  core.String? widget;
+
+  UpdatedWidget({
+    this.suggestions,
+    this.widget,
+  });
+
+  UpdatedWidget.fromJson(core.Map json_)
+      : this(
+          suggestions: json_.containsKey('suggestions')
+              ? SelectionItems.fromJson(
+                  json_['suggestions'] as core.Map<core.String, core.dynamic>)
+              : null,
+          widget: json_.containsKey('widget')
+              ? json_['widget'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (suggestions != null) 'suggestions': suggestions!,
+        if (widget != null) 'widget': widget!,
+      };
+}
+
 class UploadAttachmentRequest {
   /// The filename of the attachment, including the file extension.
   ///
@@ -6411,18 +6484,18 @@ class User {
   ///
   /// Format: `users/{user}`. `users/app` can be used as an alias for the
   /// calling app bot user. For human users, `{user}` is the same user
-  /// identifier as: - the `{person_id`} for the
+  /// identifier as: - the `id` for the
   /// [Person](https://developers.google.com/people/api/rest/v1/people) in the
-  /// People API, where the Person `resource_name` is `people/{person_id}`. For
-  /// example, `users/123456789` in Chat API represents the same person as
-  /// `people/123456789` in People API. - the `id` for a
+  /// People API. For example, `users/123456789` in Chat API represents the same
+  /// person as the `123456789` Person profile ID in People API. - the `id` for
+  /// a
   /// [user](https://developers.google.com/admin-sdk/directory/reference/rest/v1/users)
   /// in the Admin SDK Directory API. - the user's email address can be used as
   /// an alias for `{user}` in API requests. For example, if the People API
-  /// Person `resourceName` for `user@example.com` is `people/123456789`, you
-  /// can use `users/user@example.com` as an alias to reference
-  /// `users/123456789`. Only the canonical resource name (for example
-  /// `users/123456789`) will be returned from the API.
+  /// Person profile ID for `user@example.com` is `123456789`, you can use
+  /// `users/user@example.com` as an alias to reference `users/123456789`. Only
+  /// the canonical resource name (for example `users/123456789`) will be
+  /// returned from the API.
   core.String? name;
 
   /// User type.

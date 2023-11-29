@@ -352,8 +352,8 @@ class ProjectsFirewallpoliciesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name for the FirewallPolicy in the format
-  /// `projects/{project}/firewallpolicies/{firewallpolicy}`.
+  /// [name] - Identifier. The resource name for the FirewallPolicy in the
+  /// format `projects/{project}/firewallpolicies/{firewallpolicy}`.
   /// Value must have pattern `^projects/\[^/\]+/firewallpolicies/\[^/\]+$`.
   ///
   /// [updateMask] - Optional. The mask to control which fields of the policy
@@ -654,7 +654,7 @@ class ProjectsKeysResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name for the Key in the format
+  /// [name] - Identifier. The resource name for the Key in the format
   /// `projects/{project}/keys/{key}`.
   /// Value must have pattern `^projects/\[^/\]+/keys/\[^/\]+$`.
   ///
@@ -1282,6 +1282,8 @@ class GoogleCloudRecaptchaenterpriseV1Assessment {
   /// Output only.
   GoogleCloudRecaptchaenterpriseV1FraudSignals? fraudSignals;
 
+  /// Identifier.
+  ///
   /// The resource name for the Assessment in the format
   /// `projects/{project}/assessments/{assessment}`.
   ///
@@ -1865,6 +1867,8 @@ class GoogleCloudRecaptchaenterpriseV1FirewallPolicy {
   /// Optional.
   core.String? description;
 
+  /// Identifier.
+  ///
   /// The resource name for the FirewallPolicy in the format
   /// `projects/{project}/firewallpolicies/{firewallpolicy}`.
   core.String? name;
@@ -2290,6 +2294,8 @@ class GoogleCloudRecaptchaenterpriseV1Key {
   /// Optional.
   core.Map<core.String, core.String>? labels;
 
+  /// Identifier.
+  ///
   /// The resource name for the Key in the format
   /// `projects/{project}/keys/{key}`.
   core.String? name;
@@ -2531,6 +2537,8 @@ class GoogleCloudRecaptchaenterpriseV1Metrics {
   /// data.
   core.List<GoogleCloudRecaptchaenterpriseV1ChallengeMetrics>? challengeMetrics;
 
+  /// Identifier.
+  ///
   /// The name of the metrics, in the format
   /// `projects/{project}/keys/{key}/metrics`.
   ///
@@ -2712,6 +2720,8 @@ class GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification {
 
 /// A group of related accounts.
 class GoogleCloudRecaptchaenterpriseV1RelatedAccountGroup {
+  /// Identifier.
+  ///
   /// The resource name for the related account group in the format
   /// `projects/{project}/relatedaccountgroups/{related_account_group}`.
   ///
@@ -2747,6 +2757,8 @@ class GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership {
         convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
+  /// Identifier.
+  ///
   /// The resource name for this membership in the format
   /// `projects/{project}/relatedaccountgroups/{relatedaccountgroup}/memberships/{membership}`.
   ///

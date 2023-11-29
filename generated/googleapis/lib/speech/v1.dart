@@ -1047,6 +1047,47 @@ class CustomClass {
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
+/// A single replacement configuration.
+class Entry {
+  /// Whether the search is case sensitive.
+  core.bool? caseSensitive;
+
+  /// What to replace with.
+  ///
+  /// Max length is 100 characters.
+  core.String? replace;
+
+  /// What to replace.
+  ///
+  /// Max length is 100 characters.
+  core.String? search;
+
+  Entry({
+    this.caseSensitive,
+    this.replace,
+    this.search,
+  });
+
+  Entry.fromJson(core.Map json_)
+      : this(
+          caseSensitive: json_.containsKey('caseSensitive')
+              ? json_['caseSensitive'] as core.bool
+              : null,
+          replace: json_.containsKey('replace')
+              ? json_['replace'] as core.String
+              : null,
+          search: json_.containsKey('search')
+              ? json_['search'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (caseSensitive != null) 'caseSensitive': caseSensitive!,
+        if (replace != null) 'replace': replace!,
+        if (search != null) 'search': search!,
+      };
+}
+
 /// Message returned to the client by the `ListCustomClasses` method.
 class ListCustomClassesResponse {
   /// The custom classes.
@@ -1694,9 +1735,13 @@ class RecognitionConfig {
   /// (octets) as specified in RFC 5574. In other words, each RTP header is
   /// replaced with a single byte containing the block length. Only Speex
   /// wideband is supported. `sample_rate_hertz` must be 16000.
+  /// - "MP3" : MP3 audio. MP3 encoding is a Beta feature and only available in
+  /// v1p1beta1. Support all standard MP3 bitrates (which range from 32-320
+  /// kbps). When using this encoding, `sample_rate_hertz` has to match the
+  /// sample rate of the file being used.
   /// - "WEBM_OPUS" : Opus encoded audio frames in WebM container
-  /// ([OggOpus](https://wiki.xiph.org/OggOpus)). `sample_rate_hertz` must be
-  /// one of 8000, 12000, 16000, 24000, or 48000.
+  /// ([WebM](https://www.webmproject.org/docs/container/)). `sample_rate_hertz`
+  /// must be one of 8000, 12000, 16000, 24000, or 48000.
   core.String? encoding;
 
   /// The language of the supplied audio as a
@@ -1765,6 +1810,15 @@ class RecognitionConfig {
   /// [speech adaptation](https://cloud.google.com/speech-to-text/docs/adaptation).
   core.List<SpeechContext>? speechContexts;
 
+  /// Use transcription normalization to automatically replace parts of the
+  /// transcript with phrases of your choosing.
+  ///
+  /// For StreamingRecognize, this normalization only applies to stable partial
+  /// transcripts (stability \> 0.8) and final transcripts.
+  ///
+  /// Optional.
+  TranscriptNormalization? transcriptNormalization;
+
   /// Set to true to use an enhanced model for speech recognition.
   ///
   /// If `use_enhanced` is set to true and the `model` field is not set, then an
@@ -1793,6 +1847,7 @@ class RecognitionConfig {
     this.profanityFilter,
     this.sampleRateHertz,
     this.speechContexts,
+    this.transcriptNormalization,
     this.useEnhanced,
   });
 
@@ -1862,6 +1917,11 @@ class RecognitionConfig {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          transcriptNormalization: json_.containsKey('transcriptNormalization')
+              ? TranscriptNormalization.fromJson(
+                  json_['transcriptNormalization']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           useEnhanced: json_.containsKey('useEnhanced')
               ? json_['useEnhanced'] as core.bool
               : null,
@@ -1894,6 +1954,8 @@ class RecognitionConfig {
         if (profanityFilter != null) 'profanityFilter': profanityFilter!,
         if (sampleRateHertz != null) 'sampleRateHertz': sampleRateHertz!,
         if (speechContexts != null) 'speechContexts': speechContexts!,
+        if (transcriptNormalization != null)
+          'transcriptNormalization': transcriptNormalization!,
         if (useEnhanced != null) 'useEnhanced': useEnhanced!,
       };
 }
@@ -2461,6 +2523,40 @@ class SpeechRecognitionResult {
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef Status = $Status;
+
+/// Transcription normalization configuration.
+///
+/// Use transcription normalization to automatically replace parts of the
+/// transcript with phrases of your choosing. For StreamingRecognize, this
+/// normalization only applies to stable partial transcripts (stability \> 0.8)
+/// and final transcripts.
+class TranscriptNormalization {
+  /// A list of replacement entries.
+  ///
+  /// We will perform replacement with one entry at a time. For example, the
+  /// second entry in \["cat" =\> "dog", "mountain cat" =\> "mountain dog"\]
+  /// will never be applied because we will always process the first entry
+  /// before it. At most 100 entries.
+  core.List<Entry>? entries;
+
+  TranscriptNormalization({
+    this.entries,
+  });
+
+  TranscriptNormalization.fromJson(core.Map json_)
+      : this(
+          entries: json_.containsKey('entries')
+              ? (json_['entries'] as core.List)
+                  .map((value) => Entry.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (entries != null) 'entries': entries!,
+      };
+}
 
 /// Specifies an optional destination for the recognition results.
 class TranscriptOutputConfig {

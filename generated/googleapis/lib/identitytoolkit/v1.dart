@@ -2574,7 +2574,9 @@ class GoogleCloudIdentitytoolkitV1CreateAuthUriResponse {
   ///
   /// Each element is one of `password`, `emailLink`, or the provider ID of an
   /// IdP. Present only when a registered email identifier is set in the
-  /// request.
+  /// request. If
+  /// [email enumeration protection](https://cloud.google.com/identity-platform/docs/admin/email-enumeration-protection)
+  /// is enabled, this method returns an empty list.
   core.List<core.String>? signinMethods;
 
   GoogleCloudIdentitytoolkitV1CreateAuthUriResponse({
@@ -4643,7 +4645,10 @@ class GoogleCloudIdentitytoolkitV1SetAccountInfoRequest {
   ///
   /// The length of email should be less than 256 characters and in the format
   /// of `name@domain.tld`. The email should also match the
-  /// [RFC 822](https://tools.ietf.org/html/rfc822) addr-spec production.
+  /// [RFC 822](https://tools.ietf.org/html/rfc822) addr-spec production. If
+  /// [email enumeration protection](https://cloud.google.com/identity-platform/docs/admin/email-enumeration-protection)
+  /// is enabled, the email cannot be changed by the user without verifying the
+  /// email first, but it can be changed by an administrator.
   core.String? email;
 
   /// Whether the user's email has been verified.

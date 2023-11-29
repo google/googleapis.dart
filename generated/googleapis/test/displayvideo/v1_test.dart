@@ -2566,6 +2566,33 @@ void checkCombinedAudienceTargetingSetting(
   buildCounterCombinedAudienceTargetingSetting--;
 }
 
+core.int buildCounterConsent = 0;
+api.Consent buildConsent() {
+  final o = api.Consent();
+  buildCounterConsent++;
+  if (buildCounterConsent < 3) {
+    o.adPersonalization = 'foo';
+    o.adUserData = 'foo';
+  }
+  buildCounterConsent--;
+  return o;
+}
+
+void checkConsent(api.Consent o) {
+  buildCounterConsent++;
+  if (buildCounterConsent < 3) {
+    unittest.expect(
+      o.adPersonalization!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.adUserData!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterConsent--;
+}
+
 core.List<core.String> buildUnnamed33() => [
       'foo',
       'foo',
@@ -2671,6 +2698,7 @@ api.ContactInfoList buildContactInfoList() {
   final o = api.ContactInfoList();
   buildCounterContactInfoList++;
   if (buildCounterContactInfoList < 3) {
+    o.consent = buildConsent();
     o.contactInfos = buildUnnamed36();
   }
   buildCounterContactInfoList--;
@@ -2680,6 +2708,7 @@ api.ContactInfoList buildContactInfoList() {
 void checkContactInfoList(api.ContactInfoList o) {
   buildCounterContactInfoList++;
   if (buildCounterContactInfoList < 3) {
+    checkConsent(o.consent!);
     checkUnnamed36(o.contactInfos!);
   }
   buildCounterContactInfoList--;
@@ -8203,6 +8232,7 @@ api.MobileDeviceIdList buildMobileDeviceIdList() {
   final o = api.MobileDeviceIdList();
   buildCounterMobileDeviceIdList++;
   if (buildCounterMobileDeviceIdList < 3) {
+    o.consent = buildConsent();
     o.mobileDeviceIds = buildUnnamed119();
   }
   buildCounterMobileDeviceIdList--;
@@ -8212,6 +8242,7 @@ api.MobileDeviceIdList buildMobileDeviceIdList() {
 void checkMobileDeviceIdList(api.MobileDeviceIdList o) {
   buildCounterMobileDeviceIdList++;
   if (buildCounterMobileDeviceIdList < 3) {
+    checkConsent(o.consent!);
     checkUnnamed119(o.mobileDeviceIds!);
   }
   buildCounterMobileDeviceIdList--;
@@ -11277,6 +11308,16 @@ void main() {
       final od = api.CombinedAudienceTargetingSetting.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkCombinedAudienceTargetingSetting(od);
+    });
+  });
+
+  unittest.group('obj-schema-Consent', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildConsent();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Consent.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkConsent(od);
     });
   });
 

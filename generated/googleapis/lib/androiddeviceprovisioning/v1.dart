@@ -1319,8 +1319,7 @@ class PartnersVendorsCustomersResource {
 
 /// Request message to claim a device on behalf of a customer.
 class ClaimDeviceRequest {
-  /// The unique identifier of the configuration (internally known as profile)
-  /// to set for the section.
+  /// The ID of the configuration applied to the device section.
   ///
   /// Optional.
   core.String? configurationId;
@@ -1355,7 +1354,10 @@ class ClaimDeviceRequest {
   /// - "SECTION_TYPE_ZERO_TOUCH" : Zero-touch enrollment section type.
   core.String? sectionType;
 
+  /// Must and can only be set when DeviceProvisioningSectionType is
+  /// SECTION_TYPE_SIM_LOCK.
   ///
+  /// The unique identifier of the SimLock profile.
   ///
   /// Optional.
   core.String? simlockProfileId;
@@ -2902,8 +2904,7 @@ class Operation {
 
 /// Identifies one claim request.
 class PartnerClaim {
-  /// The unique identifier of the configuration (internally known as profile)
-  /// to set for the section.
+  /// The ID of the configuration applied to the device section.
   ///
   /// Optional.
   core.String? configurationId;
@@ -2938,7 +2939,10 @@ class PartnerClaim {
   /// - "SECTION_TYPE_ZERO_TOUCH" : Zero-touch enrollment section type.
   core.String? sectionType;
 
+  /// Must and can only be set when DeviceProvisioningSectionType is
+  /// SECTION_TYPE_SIM_LOCK.
   ///
+  /// The unique identifier of the SimLock profile.
   ///
   /// Optional.
   core.String? simlockProfileId;

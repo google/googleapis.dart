@@ -136,6 +136,7 @@ api.AlertPolicy buildAlertPolicy() {
     o.mutationRecord = buildMutationRecord();
     o.name = 'foo';
     o.notificationChannels = buildUnnamed2();
+    o.severity = 'foo';
     o.userLabels = buildUnnamed3();
     o.validity = buildStatus();
   }
@@ -165,6 +166,10 @@ void checkAlertPolicy(api.AlertPolicy o) {
       unittest.equals('foo'),
     );
     checkUnnamed2(o.notificationChannels!);
+    unittest.expect(
+      o.severity!,
+      unittest.equals('foo'),
+    );
     checkUnnamed3(o.userLabels!);
     checkStatus(o.validity!);
   }

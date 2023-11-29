@@ -7773,7 +7773,7 @@ class GoogleCloudChannelV1RepricingConfig {
 /// json object. Deprecated: This is no longer supported. Use
 /// RepricingConfig.EntitlementGranularity instead.
 typedef GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity
-    = $Shared04;
+    = $Shared02;
 
 /// Applies the repricing configuration at the entitlement level.
 class GoogleCloudChannelV1RepricingConfigEntitlementGranularity {

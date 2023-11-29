@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20231031",
+    "revision": "20231121",
     "rootUrl": "https://tasks.googleapis.com/",
     "servicePath": "",
     "title": "Google Tasks API",

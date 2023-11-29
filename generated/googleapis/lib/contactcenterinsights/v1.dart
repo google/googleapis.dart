@@ -227,8 +227,8 @@ class ProjectsLocationsConversationsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent resource to create analyses in. Format:
-  /// projects/{project}/locations/{location}
+  /// [parent] - Required. The parent resource to delete conversations from.
+  /// Format: projects/{project}/locations/{location}
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2355,7 +2355,7 @@ class GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig {
   /// Default summarization model to be used.
   /// Possible string values are:
   /// - "SUMMARIZATION_MODEL_UNSPECIFIED" : Unspecified summarization model.
-  /// - "BASELINE_MODEL" : The Insights baseline model.
+  /// - "BASELINE_MODEL" : The CCAI baseline model.
   core.String? summarizationModel;
 
   GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig({
@@ -2558,7 +2558,7 @@ class GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest {
 
 /// The request to delete conversations in bulk.
 class GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest {
-  /// Filter used to select the subset of conversations to analyze.
+  /// Filter used to select the subset of conversations to delete.
   core.String? filter;
 
   /// If set to true, all of this conversation's analyses will also be deleted.
@@ -2568,12 +2568,9 @@ class GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest {
   core.bool? force;
 
   /// Maximum number of conversations to delete.
-  ///
-  /// The default is 1000. It can be changed by setting the `max_delete_count`
-  /// field.
   core.int? maxDeleteCount;
 
-  /// The parent resource to create analyses in.
+  /// The parent resource to delete conversations from.
   ///
   /// Format: projects/{project}/locations/{location}
   ///

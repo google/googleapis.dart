@@ -71,6 +71,7 @@ api.AlloyDbSettings buildAlloyDbSettings() {
   final o = api.AlloyDbSettings();
   buildCounterAlloyDbSettings++;
   if (buildCounterAlloyDbSettings < 3) {
+    o.databaseVersion = 'foo';
     o.encryptionConfig = buildEncryptionConfig();
     o.initialUser = buildUserPassword();
     o.labels = buildUnnamed0();
@@ -84,6 +85,10 @@ api.AlloyDbSettings buildAlloyDbSettings() {
 void checkAlloyDbSettings(api.AlloyDbSettings o) {
   buildCounterAlloyDbSettings++;
   if (buildCounterAlloyDbSettings < 3) {
+    unittest.expect(
+      o.databaseVersion!,
+      unittest.equals('foo'),
+    );
     checkEncryptionConfig(o.encryptionConfig!);
     checkUserPassword(o.initialUser!);
     checkUnnamed0(o.labels!);
@@ -1403,6 +1408,21 @@ void checkDatabaseType(api.DatabaseType o) {
     );
   }
   buildCounterDatabaseType--;
+}
+
+core.int buildCounterDemoteDestinationRequest = 0;
+api.DemoteDestinationRequest buildDemoteDestinationRequest() {
+  final o = api.DemoteDestinationRequest();
+  buildCounterDemoteDestinationRequest++;
+  if (buildCounterDemoteDestinationRequest < 3) {}
+  buildCounterDemoteDestinationRequest--;
+  return o;
+}
+
+void checkDemoteDestinationRequest(api.DemoteDestinationRequest o) {
+  buildCounterDemoteDestinationRequest++;
+  if (buildCounterDemoteDestinationRequest < 3) {}
+  buildCounterDemoteDestinationRequest--;
 }
 
 core.List<api.ConversionWorkspace> buildUnnamed18() => [
@@ -3621,6 +3641,7 @@ api.PostgreSqlConnectionProfile buildPostgreSqlConnectionProfile() {
   final o = api.PostgreSqlConnectionProfile();
   buildCounterPostgreSqlConnectionProfile++;
   if (buildCounterPostgreSqlConnectionProfile < 3) {
+    o.alloydbClusterId = 'foo';
     o.cloudSqlId = 'foo';
     o.host = 'foo';
     o.networkArchitecture = 'foo';
@@ -3640,6 +3661,10 @@ api.PostgreSqlConnectionProfile buildPostgreSqlConnectionProfile() {
 void checkPostgreSqlConnectionProfile(api.PostgreSqlConnectionProfile o) {
   buildCounterPostgreSqlConnectionProfile++;
   if (buildCounterPostgreSqlConnectionProfile < 3) {
+    unittest.expect(
+      o.alloydbClusterId!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.cloudSqlId!,
       unittest.equals('foo'),
@@ -5994,6 +6019,16 @@ void main() {
       final od = api.DatabaseType.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkDatabaseType(od);
+    });
+  });
+
+  unittest.group('obj-schema-DemoteDestinationRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDemoteDestinationRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DemoteDestinationRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkDemoteDestinationRequest(od);
     });
   });
 
@@ -9245,6 +9280,67 @@ void main() {
       }), true);
       final response = await res.delete(arg_name,
           force: arg_force, requestId: arg_requestId, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--demoteDestination', () async {
+      final mock = HttpServerMock();
+      final res = api.DatabaseMigrationServiceApi(mock)
+          .projects
+          .locations
+          .migrationJobs;
+      final arg_request = buildDemoteDestinationRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.DemoteDestinationRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkDemoteDestinationRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.demoteDestination(arg_request, arg_name,
+          $fields: arg_$fields);
       checkOperation(response as api.Operation);
     });
 

@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20231026",
+    "revision": "20231116",
     "rootUrl": "https://documentai.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Document AI API",
@@ -1077,11 +1077,6 @@
                 "documentId": {
                     "$ref": "GoogleCloudDocumentaiUiv1beta3DocumentId",
                     "description": "The document id of the auto-labeled document. This will replace the gcs_uri."
-                },
-                "gcsUri": {
-                    "deprecated": true,
-                    "description": "The gcs_uri of the auto-labeling document, which uniquely identifies a dataset document.",
-                    "type": "string"
                 },
                 "status": {
                     "$ref": "GoogleRpcStatus",

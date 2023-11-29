@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20231029",
+    "revision": "20231105",
     "rootUrl": "https://composer.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Composer API",

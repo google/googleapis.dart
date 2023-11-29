@@ -16,7 +16,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20231030",
+    "revision": "20231127",
     "rootUrl": "https://mybusinessbusinessinformation.googleapis.com/",
     "servicePath": "",
     "title": "My Business Business Information API",
@@ -1066,7 +1066,7 @@
                     "type": "string"
                 },
                 "totalSize": {
-                    "description": "The approximate number of Locations in the list irrespective of pagination.",
+                    "description": "The approximate number of Locations in the list irrespective of pagination. This field will only be returned if `filter` is used as a query parameter.",
                     "format": "int32",
                     "type": "integer"
                 }

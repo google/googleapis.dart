@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20231029",
+    "revision": "20231113",
     "rootUrl": "https://accesscontextmanager.googleapis.com/",
     "servicePath": "",
     "title": "Access Context Manager API",

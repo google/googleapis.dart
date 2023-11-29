@@ -3791,8 +3791,8 @@ class ProjectsUptimeCheckConfigsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - A unique resource name for this Uptime check configuration. The
-  /// format is:
+  /// [name] - Identifier. A unique resource name for this Uptime check
+  /// configuration. The format is:
   /// projects/\[PROJECT_ID_OR_NUMBER\]/uptimeCheckConfigs/\[UPTIME_CHECK_ID\]
   /// \[PROJECT_ID_OR_NUMBER\] is the Workspace host project associated with the
   /// Uptime check.This field should be omitted when creating the Uptime check
@@ -4772,6 +4772,25 @@ class AlertPolicy {
   /// is: projects/\[PROJECT_ID_OR_NUMBER\]/notificationChannels/\[CHANNEL_ID\]
   core.List<core.String>? notificationChannels;
 
+  /// The severity of an alert policy indicates how important alerts generated
+  /// by that policy are.
+  ///
+  /// The severity level, if specified, will be displayed on the Incident detail
+  /// page and in notifications.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "SEVERITY_UNSPECIFIED" : No severity is specified. This is the default
+  /// value.
+  /// - "CRITICAL" : This is the highest severity level. Use this if the problem
+  /// could cause significant damage or downtime.
+  /// - "ERROR" : This is the medium severity level. Use this if the problem
+  /// could cause minor damage or downtime.
+  /// - "WARNING" : This is the lowest severity level. Use this if the problem
+  /// is not causing any damage or downtime, but could potentially lead to a
+  /// problem in the future.
+  core.String? severity;
+
   /// User-supplied key/value data to be used for organizing and identifying the
   /// AlertPolicy objects.The field can contain up to 64 entries.
   ///
@@ -4802,6 +4821,7 @@ class AlertPolicy {
     this.mutationRecord,
     this.name,
     this.notificationChannels,
+    this.severity,
     this.userLabels,
     this.validity,
   });
@@ -4845,6 +4865,9 @@ class AlertPolicy {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          severity: json_.containsKey('severity')
+              ? json_['severity'] as core.String
+              : null,
           userLabels: json_.containsKey('userLabels')
               ? (json_['userLabels'] as core.Map<core.String, core.dynamic>)
                   .map(
@@ -4872,6 +4895,7 @@ class AlertPolicy {
         if (name != null) 'name': name!,
         if (notificationChannels != null)
           'notificationChannels': notificationChannels!,
+        if (severity != null) 'severity': severity!,
         if (userLabels != null) 'userLabels': userLabels!,
         if (validity != null) 'validity': validity!,
       };
@@ -10549,9 +10573,9 @@ class UptimeCheckConfig {
   /// k8s_service servicedirectory_service cloud_run_revision
   MonitoredResource? monitoredResource;
 
-  /// A unique resource name for this Uptime check configuration.
+  /// Identifier.
   ///
-  /// The format is:
+  /// A unique resource name for this Uptime check configuration. The format is:
   /// projects/\[PROJECT_ID_OR_NUMBER\]/uptimeCheckConfigs/\[UPTIME_CHECK_ID\]
   /// \[PROJECT_ID_OR_NUMBER\] is the Workspace host project associated with the
   /// Uptime check.This field should be omitted when creating the Uptime check

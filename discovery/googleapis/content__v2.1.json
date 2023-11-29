@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20231031",
+    "revision": "20231120",
     "rootUrl": "https://shoppingcontent.googleapis.com/",
     "servicePath": "content/v2.1/",
     "title": "Content API for Shopping",
@@ -6652,7 +6652,7 @@
             "type": "object"
         },
         "AccountBusinessIdentity": {
-            "description": "The [business identity attributes](https://support.google.com/merchants/answer/10342414) can be used to self-declare attributes that let customers know more about your business. NEXT ID: 7.",
+            "description": "The [business identity attributes](https://support.google.com/merchants/answer/10342414) can be used to self-declare attributes that let customers know more about your business.",
             "id": "AccountBusinessIdentity",
             "properties": {
                 "blackOwned": {
@@ -17831,7 +17831,7 @@
                     "type": "array"
                 },
                 "shipmentType": {
-                    "description": "Type of locations this service ships orders to. Acceptable values are: - \"`delivery`\" - \"`pickup`\" - \"`local_delivery`\" - \"`collection_point`\" ",
+                    "description": "Type of locations this service ships orders to. Acceptable values are: - \"`delivery`\" - \"`pickup` (deprecated)\" - \"`local_delivery`\" - \"`collection_point`\" ",
                     "type": "string"
                 },
                 "storeConfig": {

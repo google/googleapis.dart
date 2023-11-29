@@ -13,8 +13,11 @@
 
 /// Container Analysis API - v1
 ///
-/// An implementation of the Grafeas API, which stores, and enables querying and
-/// retrieval of critical metadata about all of your software artifacts.
+/// This API is a prerequisite for leveraging Artifact Analysis scanning
+/// capabilities in both Artifact Registry and with Advanced Vulnerability
+/// Insights (runtime scanning) in GKE. In addition, the Container Analysis API
+/// is an implementation of the Grafeas API, which enables storing, querying,
+/// and retrieval of critical metadata about all of your software artifacts.
 ///
 /// For more information, see
 /// <https://cloud.google.com/container-analysis/api/reference/rest/>
@@ -40,8 +43,13 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-/// An implementation of the Grafeas API, which stores, and enables querying and
-/// retrieval of critical metadata about all of your software artifacts.
+/// This API is a prerequisite for leveraging Artifact Analysis scanning
+/// capabilities in both Artifact Registry and with Advanced Vulnerability
+/// Insights (runtime scanning) in GKE.
+///
+/// In addition, the Container Analysis API is an implementation of the Grafeas
+/// API, which enables storing, querying, and retrieval of critical metadata
+/// about all of your software artifacts.
 class ContainerAnalysisApi {
   /// See, edit, configure, and delete your Google Cloud data and see the email
   /// address for your Google Account.

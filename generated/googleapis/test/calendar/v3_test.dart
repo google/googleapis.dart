@@ -1226,6 +1226,7 @@ api.Event buildEvent() {
     o.etag = 'foo';
     o.eventType = 'foo';
     o.extendedProperties = buildEventExtendedProperties();
+    o.focusTimeProperties = buildEventFocusTimeProperties();
     o.gadget = buildEventGadget();
     o.guestsCanInviteOthers = true;
     o.guestsCanModify = true;
@@ -1239,6 +1240,7 @@ api.Event buildEvent() {
     o.locked = true;
     o.organizer = buildEventOrganizer();
     o.originalStartTime = buildEventDateTime();
+    o.outOfOfficeProperties = buildEventOutOfOfficeProperties();
     o.privateCopy = true;
     o.recurrence = buildUnnamed16();
     o.recurringEventId = 'foo';
@@ -1289,6 +1291,7 @@ void checkEvent(api.Event o) {
       unittest.equals('foo'),
     );
     checkEventExtendedProperties(o.extendedProperties!);
+    checkEventFocusTimeProperties(o.focusTimeProperties!);
     checkEventGadget(o.gadget!);
     unittest.expect(o.guestsCanInviteOthers!, unittest.isTrue);
     unittest.expect(o.guestsCanModify!, unittest.isTrue);
@@ -1320,6 +1323,7 @@ void checkEvent(api.Event o) {
     unittest.expect(o.locked!, unittest.isTrue);
     checkEventOrganizer(o.organizer!);
     checkEventDateTime(o.originalStartTime!);
+    checkEventOutOfOfficeProperties(o.outOfOfficeProperties!);
     unittest.expect(o.privateCopy!, unittest.isTrue);
     checkUnnamed16(o.recurrence!);
     unittest.expect(
@@ -1485,6 +1489,65 @@ void checkEventDateTime(api.EventDateTime o) {
     );
   }
   buildCounterEventDateTime--;
+}
+
+core.int buildCounterEventFocusTimeProperties = 0;
+api.EventFocusTimeProperties buildEventFocusTimeProperties() {
+  final o = api.EventFocusTimeProperties();
+  buildCounterEventFocusTimeProperties++;
+  if (buildCounterEventFocusTimeProperties < 3) {
+    o.autoDeclineMode = 'foo';
+    o.chatStatus = 'foo';
+    o.declineMessage = 'foo';
+  }
+  buildCounterEventFocusTimeProperties--;
+  return o;
+}
+
+void checkEventFocusTimeProperties(api.EventFocusTimeProperties o) {
+  buildCounterEventFocusTimeProperties++;
+  if (buildCounterEventFocusTimeProperties < 3) {
+    unittest.expect(
+      o.autoDeclineMode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.chatStatus!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.declineMessage!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterEventFocusTimeProperties--;
+}
+
+core.int buildCounterEventOutOfOfficeProperties = 0;
+api.EventOutOfOfficeProperties buildEventOutOfOfficeProperties() {
+  final o = api.EventOutOfOfficeProperties();
+  buildCounterEventOutOfOfficeProperties++;
+  if (buildCounterEventOutOfOfficeProperties < 3) {
+    o.autoDeclineMode = 'foo';
+    o.declineMessage = 'foo';
+  }
+  buildCounterEventOutOfOfficeProperties--;
+  return o;
+}
+
+void checkEventOutOfOfficeProperties(api.EventOutOfOfficeProperties o) {
+  buildCounterEventOutOfOfficeProperties++;
+  if (buildCounterEventOutOfOfficeProperties < 3) {
+    unittest.expect(
+      o.autoDeclineMode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.declineMessage!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterEventOutOfOfficeProperties--;
 }
 
 core.int buildCounterEventReminder = 0;
@@ -2465,6 +2528,26 @@ void main() {
       final od = api.EventDateTime.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkEventDateTime(od);
+    });
+  });
+
+  unittest.group('obj-schema-EventFocusTimeProperties', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildEventFocusTimeProperties();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.EventFocusTimeProperties.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkEventFocusTimeProperties(od);
+    });
+  });
+
+  unittest.group('obj-schema-EventOutOfOfficeProperties', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildEventOutOfOfficeProperties();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.EventOutOfOfficeProperties.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkEventOutOfOfficeProperties(od);
     });
   });
 

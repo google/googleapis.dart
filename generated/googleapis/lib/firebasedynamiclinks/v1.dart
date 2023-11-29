@@ -1080,6 +1080,8 @@ class GetIosPostInstallAttributionRequest {
 }
 
 /// Response for iSDK to execute strong match flow for post-install attribution.
+///
+/// Information of the resolved FDL link.
 class GetIosPostInstallAttributionResponse {
   /// The minimum version for app, specified by dev through ?imv= parameter.
   ///

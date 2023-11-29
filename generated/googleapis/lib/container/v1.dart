@@ -4779,6 +4779,9 @@ class Cluster {
   /// Output only.
   core.String? endpoint;
 
+  /// GKE Enterprise Configuration.
+  EnterpriseConfig? enterpriseConfig;
+
   /// This checksum is computed by the server based on the value of cluster
   /// fields, and may be sent on update requests to ensure the client has an
   /// up-to-date value before proceeding.
@@ -5107,6 +5110,7 @@ class Cluster {
     this.enableKubernetesAlpha,
     this.enableTpu,
     this.endpoint,
+    this.enterpriseConfig,
     this.etag,
     this.expireTime,
     this.fleet,
@@ -5233,6 +5237,10 @@ class Cluster {
               : null,
           endpoint: json_.containsKey('endpoint')
               ? json_['endpoint'] as core.String
+              : null,
+          enterpriseConfig: json_.containsKey('enterpriseConfig')
+              ? EnterpriseConfig.fromJson(json_['enterpriseConfig']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
           expireTime: json_.containsKey('expireTime')
@@ -5439,6 +5447,7 @@ class Cluster {
           'enableKubernetesAlpha': enableKubernetesAlpha!,
         if (enableTpu != null) 'enableTpu': enableTpu!,
         if (endpoint != null) 'endpoint': endpoint!,
+        if (enterpriseConfig != null) 'enterpriseConfig': enterpriseConfig!,
         if (etag != null) 'etag': etag!,
         if (expireTime != null) 'expireTime': expireTime!,
         if (fleet != null) 'fleet': fleet!,
@@ -6723,6 +6732,34 @@ class DnsCacheConfig {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
+
+/// EnterpriseConfig is the cluster enterprise configuration.
+class EnterpriseConfig {
+  /// cluster_tier specifies the premium tier of the cluster.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CLUSTER_TIER_UNSPECIFIED" : CLUSTER_TIER_UNSPECIFIED is when
+  /// cluster_tier is not set.
+  /// - "STANDARD" : STANDARD indicates a standard GKE cluster.
+  /// - "ENTERPRISE" : ENTERPRISE indicates a GKE Enterprise cluster.
+  core.String? clusterTier;
+
+  EnterpriseConfig({
+    this.clusterTier,
+  });
+
+  EnterpriseConfig.fromJson(core.Map json_)
+      : this(
+          clusterTier: json_.containsKey('clusterTier')
+              ? json_['clusterTier'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (clusterTier != null) 'clusterTier': clusterTier!,
+      };
+}
 
 /// EphemeralStorageLocalSsdConfig contains configuration for the node ephemeral
 /// storage using Local SSDs.
@@ -9657,6 +9694,9 @@ class NodePool {
   /// Output only.
   core.int? podIpv4CidrSize;
 
+  /// Specifies the configuration of queued provisioning.
+  QueuedProvisioning? queuedProvisioning;
+
   /// Server-defined URL for the resource.
   ///
   /// Output only.
@@ -9724,6 +9764,7 @@ class NodePool {
     this.networkConfig,
     this.placementPolicy,
     this.podIpv4CidrSize,
+    this.queuedProvisioning,
     this.selfLink,
     this.status,
     this.statusMessage,
@@ -9786,6 +9827,10 @@ class NodePool {
           podIpv4CidrSize: json_.containsKey('podIpv4CidrSize')
               ? json_['podIpv4CidrSize'] as core.int
               : null,
+          queuedProvisioning: json_.containsKey('queuedProvisioning')
+              ? QueuedProvisioning.fromJson(json_['queuedProvisioning']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           selfLink: json_.containsKey('selfLink')
               ? json_['selfLink'] as core.String
               : null,
@@ -9824,6 +9869,8 @@ class NodePool {
         if (networkConfig != null) 'networkConfig': networkConfig!,
         if (placementPolicy != null) 'placementPolicy': placementPolicy!,
         if (podIpv4CidrSize != null) 'podIpv4CidrSize': podIpv4CidrSize!,
+        if (queuedProvisioning != null)
+          'queuedProvisioning': queuedProvisioning!,
         if (selfLink != null) 'selfLink': selfLink!,
         if (status != null) 'status': status!,
         if (statusMessage != null) 'statusMessage': statusMessage!,
@@ -10696,6 +10743,29 @@ class PubSub {
         if (enabled != null) 'enabled': enabled!,
         if (filter != null) 'filter': filter!,
         if (topic != null) 'topic': topic!,
+      };
+}
+
+/// QueuedProvisioning defines the queued provisioning used by the node pool.
+class QueuedProvisioning {
+  /// Denotes that this nodepool is QRM specific, meaning nodes can be only
+  /// obtained through queuing via the Cluster Autoscaler ProvisioningRequest
+  /// API.
+  core.bool? enabled;
+
+  QueuedProvisioning({
+    this.enabled,
+  });
+
+  QueuedProvisioning.fromJson(core.Map json_)
+      : this(
+          enabled: json_.containsKey('enabled')
+              ? json_['enabled'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
       };
 }
 

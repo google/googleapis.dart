@@ -1333,10 +1333,16 @@ class AgentTaskSpec {
   /// AgentTaskRunnable is runanbles that will be executed on the agent.
   core.List<AgentTaskRunnable>? runnables;
 
+  /// User account on the VM to run the runnables in the agentTaskSpec.
+  ///
+  /// If not set, the runnable will be run under root user.
+  AgentTaskUserAccount? userAccount;
+
   AgentTaskSpec({
     this.environment,
     this.maxRunDuration,
     this.runnables,
+    this.userAccount,
   });
 
   AgentTaskSpec.fromJson(core.Map json_)
@@ -1354,12 +1360,45 @@ class AgentTaskSpec {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          userAccount: json_.containsKey('userAccount')
+              ? AgentTaskUserAccount.fromJson(
+                  json_['userAccount'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (environment != null) 'environment': environment!,
         if (maxRunDuration != null) 'maxRunDuration': maxRunDuration!,
         if (runnables != null) 'runnables': runnables!,
+        if (userAccount != null) 'userAccount': userAccount!,
+      };
+}
+
+/// AgentTaskUserAccount contains the information of a POSIX account on the
+/// guest os which is used to execute the runnables.
+class AgentTaskUserAccount {
+  /// gid id an unique identifier of the POSIX account group corresponding to
+  /// the user account.
+  core.String? gid;
+
+  /// uid is an unique identifier of the POSIX account corresponding to the user
+  /// account.
+  core.String? uid;
+
+  AgentTaskUserAccount({
+    this.gid,
+    this.uid,
+  });
+
+  AgentTaskUserAccount.fromJson(core.Map json_)
+      : this(
+          gid: json_.containsKey('gid') ? json_['gid'] as core.String : null,
+          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gid != null) 'gid': gid!,
+        if (uid != null) 'uid': uid!,
       };
 }
 
@@ -1421,6 +1460,10 @@ class AllocationPolicy {
   LocationPolicy? location;
 
   /// The network policy.
+  ///
+  /// If you define an instance template in the InstancePolicyOrTemplate field,
+  /// Batch will use the network settings in the instance template instead of
+  /// this field.
   NetworkPolicy? network;
 
   /// The placement policy.
@@ -1546,6 +1589,10 @@ class Barrier {
 
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
+
+/// CloudLoggingOption contains additional settings for cloud logging generated
+/// by Batch job.
+typedef CloudLoggingOption = $Empty;
 
 /// Compute resource requirements.
 ///
@@ -2579,6 +2626,14 @@ class LocationPolicy {
 /// LogsPolicy describes how outputs from a Job's Tasks (stdout/stderr) will be
 /// preserved.
 class LogsPolicy {
+  /// Additional settings for Cloud Logging.
+  ///
+  /// It will only take effect when the destination of LogsPolicy is set to
+  /// CLOUD_LOGGING.
+  ///
+  /// Optional.
+  CloudLoggingOption? cloudLoggingOption;
+
   /// Where logs should be saved.
   /// Possible string values are:
   /// - "DESTINATION_UNSPECIFIED" : Logs are not preserved.
@@ -2593,12 +2648,17 @@ class LogsPolicy {
   core.String? logsPath;
 
   LogsPolicy({
+    this.cloudLoggingOption,
     this.destination,
     this.logsPath,
   });
 
   LogsPolicy.fromJson(core.Map json_)
       : this(
+          cloudLoggingOption: json_.containsKey('cloudLoggingOption')
+              ? CloudLoggingOption.fromJson(json_['cloudLoggingOption']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           destination: json_.containsKey('destination')
               ? json_['destination'] as core.String
               : null,
@@ -2608,6 +2668,8 @@ class LogsPolicy {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (cloudLoggingOption != null)
+          'cloudLoggingOption': cloudLoggingOption!,
         if (destination != null) 'destination': destination!,
         if (logsPath != null) 'logsPath': logsPath!,
       };

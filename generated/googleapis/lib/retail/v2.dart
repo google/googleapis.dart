@@ -7829,7 +7829,7 @@ class GoogleCloudRetailV2RuleFilterAction {
 /// Force returns an attribute/facet in the request around a certain position or
 /// above.
 ///
-/// * Rule Condition: - Must specify non-empty Condition.query_terms (for search
+/// * Rule Condition: Must specify non-empty Condition.query_terms (for search
 /// only) or Condition.page_categories (for browse only), but can't specify
 /// both. * Action Inputs: attribute name, position * Action Result: Will force
 /// return a facet key around a certain position or above if the condition is
@@ -7989,7 +7989,7 @@ class GoogleCloudRetailV2RuleOnewaySynonymsAction {
 
 /// Redirects a shopper to a specific page.
 ///
-/// * Rule Condition: - Must specify Condition.query_terms. * Action Input:
+/// * Rule Condition: Must specify Condition.query_terms. * Action Input:
 /// Request Query * Action Result: Redirects shopper to provided uri.
 class GoogleCloudRetailV2RuleRedirectAction {
   /// URL must have length equal or less than 2000 characters.
@@ -8013,7 +8013,7 @@ class GoogleCloudRetailV2RuleRedirectAction {
 
 /// Removes an attribute/facet in the request if is present.
 ///
-/// * Rule Condition: - Must specify non-empty Condition.query_terms (for search
+/// * Rule Condition: Must specify non-empty Condition.query_terms (for search
 /// only) or Condition.page_categories (for browse only), but can't specify
 /// both. * Action Input: attribute name * Action Result: Will remove the
 /// attribute (as a facet) from the request if it is present. Example: Suppose
@@ -8140,9 +8140,10 @@ class GoogleCloudRetailV2SearchRequest {
   /// checking any filters on the search page.
   ///
   /// The filter applied to every search request when quality improvement such
-  /// as query expansion is needed. For example, if a query does not have enough
-  /// results, an expanded query with SearchRequest.canonical_filter is returned
-  /// as a supplement of the original query. This field is strongly recommended
+  /// as query expansion is needed. In the case a query does not have a
+  /// sufficient amount of results this filter will be used to determine whether
+  /// or not to enable the query expansion flow. The original filter will still
+  /// be used for the query expanded search. This field is strongly recommended
   /// to achieve high search quality. For more information about filter syntax,
   /// see SearchRequest.filter.
   core.String? canonicalFilter;

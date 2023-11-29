@@ -833,6 +833,66 @@ class ProjectsLocationsQueuesTasksResource {
   ProjectsLocationsQueuesTasksResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Creates and buffers a new task without the need to explicitly define a
+  /// Task message.
+  ///
+  /// The queue must have HTTP target. To create the task with a custom ID, use
+  /// the following format and set TASK_ID to your desired ID:
+  /// projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID:buffer
+  /// To create the task with an automatically generated ID, use the following
+  /// format:
+  /// projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks:buffer.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [queue] - Required. The parent queue name. For example:
+  /// projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID\` The queue must
+  /// already exist.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/queues/\[^/\]+$`.
+  ///
+  /// [taskId] - Optional. Task ID for the task being created. If not provided,
+  /// Cloud Tasks generates an ID for the task.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BufferTaskResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BufferTaskResponse> buffer(
+    BufferTaskRequest request,
+    core.String queue,
+    core.String taskId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' +
+        core.Uri.encodeFull('$queue') +
+        '/tasks/' +
+        commons.escapeVariable('$taskId') +
+        ':buffer';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return BufferTaskResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Creates a task and adds it to a queue.
   ///
   /// Tasks cannot be updated after creation; there is no UpdateTask command. *
@@ -1497,6 +1557,55 @@ class Binding {
       };
 }
 
+/// Request message for BufferTask.
+class BufferTaskRequest {
+  /// Body of the HTTP request.
+  ///
+  /// The body can take any generic value. The value is written to the
+  /// HttpRequest of the \[Task\].
+  ///
+  /// Optional.
+  HttpBody? body;
+
+  BufferTaskRequest({
+    this.body,
+  });
+
+  BufferTaskRequest.fromJson(core.Map json_)
+      : this(
+          body: json_.containsKey('body')
+              ? HttpBody.fromJson(
+                  json_['body'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (body != null) 'body': body!,
+      };
+}
+
+/// Response message for BufferTask.
+class BufferTaskResponse {
+  /// The created task.
+  Task? task;
+
+  BufferTaskResponse({
+    this.task,
+  });
+
+  BufferTaskResponse.fromJson(core.Map json_)
+      : this(
+          task: json_.containsKey('task')
+              ? Task.fromJson(
+                  json_['task'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (task != null) 'task': task!,
+      };
+}
+
 /// Describes the customer-managed encryption key (CMEK) configuration
 /// associated with a project and location.
 class CmekConfig {
@@ -1658,6 +1767,76 @@ class GetIamPolicyRequest {
 /// Encapsulates settings provided to GetIamPolicy.
 typedef GetPolicyOptions = $GetPolicyOptions;
 
+/// Defines a header message.
+///
+/// A header can have a key and a value.
+class Header {
+  /// The Key of the header.
+  core.String? key;
+
+  /// The Value of the header.
+  core.String? value;
+
+  Header({
+    this.key,
+    this.value,
+  });
+
+  Header.fromJson(core.Map json_)
+      : this(
+          key: json_.containsKey('key') ? json_['key'] as core.String : null,
+          value:
+              json_.containsKey('value') ? json_['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (key != null) 'key': key!,
+        if (value != null) 'value': value!,
+      };
+}
+
+/// Wraps the Header object.
+class HeaderOverride {
+  /// header embodying a key and a value.
+  Header? header;
+
+  HeaderOverride({
+    this.header,
+  });
+
+  HeaderOverride.fromJson(core.Map json_)
+      : this(
+          header: json_.containsKey('header')
+              ? Header.fromJson(
+                  json_['header'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (header != null) 'header': header!,
+      };
+}
+
+/// Message that represents an arbitrary HTTP body.
+///
+/// It should only be used for payload formats that can't be represented as
+/// JSON, such as raw binary or an HTML page. This message can be used both in
+/// streaming and non-streaming API methods in the request as well as the
+/// response. It can be used as a top-level request field, which is convenient
+/// if one wants to extract parameters from either the URL or HTTP template into
+/// the request fields and also want access to the raw HTTP body. Example:
+/// message GetResourceRequest { // A unique request id. string request_id = 1;
+/// // The raw HTTP body is bound to this field. google.api.HttpBody http_body =
+/// 2; } service ResourceService { rpc GetResource(GetResourceRequest) returns
+/// (google.api.HttpBody); rpc UpdateResource(google.api.HttpBody) returns
+/// (google.protobuf.Empty); } Example with streaming methods: service
+/// CaldavService { rpc GetCalendar(stream google.api.HttpBody) returns (stream
+/// google.api.HttpBody); rpc UpdateCalendar(stream google.api.HttpBody) returns
+/// (stream google.api.HttpBody); } Use of this type only changes how the
+/// request and response bodies are handled, all other features will continue to
+/// work unchanged.
+typedef HttpBody = $HttpBody;
+
 /// HTTP request.
 ///
 /// The task will be pushed to the worker as an HTTP request. If the worker or
@@ -1795,6 +1974,114 @@ class HttpRequest {
         if (oauthToken != null) 'oauthToken': oauthToken!,
         if (oidcToken != null) 'oidcToken': oidcToken!,
         if (url != null) 'url': url!,
+      };
+}
+
+/// HTTP target.
+///
+/// When specified as a Queue, all the tasks with \[HttpRequest\] will be
+/// overridden according to the target.
+class HttpTarget {
+  /// HTTP target headers.
+  ///
+  /// This map contains the header field names and values. Headers will be set
+  /// when running the CreateTask and/or BufferTask. These headers represent a
+  /// subset of the headers that will be configured for the task's HTTP request.
+  /// Some HTTP request headers will be ignored or replaced. A partial list of
+  /// headers that will be ignored or replaced is: * Several predefined headers,
+  /// prefixed with "X-CloudTasks-", can be used to define properties of the
+  /// task. * Host: This will be computed by Cloud Tasks and derived from
+  /// HttpRequest.url. * Content-Length: This will be computed by Cloud Tasks.
+  /// \`Content-Type\` won't be set by Cloud Tasks. You can explicitly set
+  /// \`Content-Type\` to a media type when the task is created. For
+  /// example,\`Content-Type\` can be set to \`"application/octet-stream"\` or
+  /// \`"application/json"\`. The default value is set to "application/json"\`.
+  /// * User-Agent: This will be set to \`"Google-Cloud-Tasks"\`. Headers which
+  /// can have multiple values (according to RFC2616) can be specified using
+  /// comma-separated values. The size of the headers must be less than 80KB.
+  /// Queue-level headers to override headers of all the tasks in the queue.
+  core.List<HeaderOverride>? headerOverrides;
+
+  /// The HTTP method to use for the request.
+  ///
+  /// When specified, it overrides HttpRequest for the task. Note that if the
+  /// value is set to HttpMethod the HttpRequest of the task will be ignored at
+  /// execution time.
+  /// Possible string values are:
+  /// - "HTTP_METHOD_UNSPECIFIED" : HTTP method unspecified
+  /// - "POST" : HTTP POST
+  /// - "GET" : HTTP GET
+  /// - "HEAD" : HTTP HEAD
+  /// - "PUT" : HTTP PUT
+  /// - "DELETE" : HTTP DELETE
+  /// - "PATCH" : HTTP PATCH
+  /// - "OPTIONS" : HTTP OPTIONS
+  core.String? httpMethod;
+
+  /// If specified, an
+  /// [OAuth token](https://developers.google.com/identity/protocols/OAuth2)
+  /// will be generated and attached as the `Authorization` header in the HTTP
+  /// request.
+  ///
+  /// This type of authorization should generally only be used when calling
+  /// Google APIs hosted on *.googleapis.com.
+  OAuthToken? oauthToken;
+
+  /// If specified, an
+  /// [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect)
+  /// token will be generated and attached as an `Authorization` header in the
+  /// HTTP request.
+  ///
+  /// This type of authorization can be used for many scenarios, including
+  /// calling Cloud Run, or endpoints where you intend to validate the token
+  /// yourself.
+  OidcToken? oidcToken;
+
+  /// URI override.
+  ///
+  /// When specified, overrides the execution URI for all the tasks in the
+  /// queue.
+  UriOverride? uriOverride;
+
+  HttpTarget({
+    this.headerOverrides,
+    this.httpMethod,
+    this.oauthToken,
+    this.oidcToken,
+    this.uriOverride,
+  });
+
+  HttpTarget.fromJson(core.Map json_)
+      : this(
+          headerOverrides: json_.containsKey('headerOverrides')
+              ? (json_['headerOverrides'] as core.List)
+                  .map((value) => HeaderOverride.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          httpMethod: json_.containsKey('httpMethod')
+              ? json_['httpMethod'] as core.String
+              : null,
+          oauthToken: json_.containsKey('oauthToken')
+              ? OAuthToken.fromJson(
+                  json_['oauthToken'] as core.Map<core.String, core.dynamic>)
+              : null,
+          oidcToken: json_.containsKey('oidcToken')
+              ? OidcToken.fromJson(
+                  json_['oidcToken'] as core.Map<core.String, core.dynamic>)
+              : null,
+          uriOverride: json_.containsKey('uriOverride')
+              ? UriOverride.fromJson(
+                  json_['uriOverride'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (headerOverrides != null) 'headerOverrides': headerOverrides!,
+        if (httpMethod != null) 'httpMethod': httpMethod!,
+        if (oauthToken != null) 'oauthToken': oauthToken!,
+        if (oidcToken != null) 'oidcToken': oidcToken!,
+        if (uriOverride != null) 'uriOverride': uriOverride!,
       };
 }
 
@@ -1986,6 +2273,29 @@ class OidcToken {
       };
 }
 
+/// PathOverride.
+///
+/// Path message defines path override for HTTP targets.
+class PathOverride {
+  /// The URI path (e.g., /users/1234).
+  ///
+  /// Default is an empty string.
+  core.String? path;
+
+  PathOverride({
+    this.path,
+  });
+
+  PathOverride.fromJson(core.Map json_)
+      : this(
+          path: json_.containsKey('path') ? json_['path'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (path != null) 'path': path!,
+      };
+}
+
 /// Request message for PauseQueue.
 typedef PauseQueueRequest = $Empty;
 
@@ -2102,6 +2412,31 @@ class Policy {
 /// Request message for PurgeQueue.
 typedef PurgeQueueRequest = $Empty;
 
+/// QueryOverride.
+///
+/// Query message defines query override for HTTP targets.
+class QueryOverride {
+  /// The query parameters (e.g., qparam1=123&qparam2=456).
+  ///
+  /// Default is an empty string.
+  core.String? queryParams;
+
+  QueryOverride({
+    this.queryParams,
+  });
+
+  QueryOverride.fromJson(core.Map json_)
+      : this(
+          queryParams: json_.containsKey('queryParams')
+              ? json_['queryParams'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (queryParams != null) 'queryParams': queryParams!,
+      };
+}
+
 /// A queue is a container of related tasks.
 ///
 /// Queues are configured to manage how those tasks are dispatched. Configurable
@@ -2114,6 +2449,9 @@ class Queue {
   /// App Engine tasks in the queue, no matter what the setting is for the
   /// task-level app_engine_routing.
   AppEngineRouting? appEngineRoutingOverride;
+
+  /// Modifies HTTP target for HTTP tasks.
+  HttpTarget? httpTarget;
 
   /// Caller-specified and required in CreateQueue, after which it becomes
   /// output only.
@@ -2204,6 +2542,7 @@ class Queue {
 
   Queue({
     this.appEngineRoutingOverride,
+    this.httpTarget,
     this.name,
     this.purgeTime,
     this.rateLimits,
@@ -2219,6 +2558,10 @@ class Queue {
                   ? AppEngineRouting.fromJson(json_['appEngineRoutingOverride']
                       as core.Map<core.String, core.dynamic>)
                   : null,
+          httpTarget: json_.containsKey('httpTarget')
+              ? HttpTarget.fromJson(
+                  json_['httpTarget'] as core.Map<core.String, core.dynamic>)
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           purgeTime: json_.containsKey('purgeTime')
               ? json_['purgeTime'] as core.String
@@ -2244,6 +2587,7 @@ class Queue {
   core.Map<core.String, core.dynamic> toJson() => {
         if (appEngineRoutingOverride != null)
           'appEngineRoutingOverride': appEngineRoutingOverride!,
+        if (httpTarget != null) 'httpTarget': httpTarget!,
         if (name != null) 'name': name!,
         if (purgeTime != null) 'purgeTime': purgeTime!,
         if (rateLimits != null) 'rateLimits': rateLimits!,
@@ -2727,3 +3071,102 @@ typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;
+
+/// URI Override.
+///
+/// When specified, all the HTTP tasks inside the queue will be partially or
+/// fully overridden depending on the configured values.
+class UriOverride {
+  /// Host override.
+  ///
+  /// When specified, replaces the host part of the task URL. For example, if
+  /// the task URL is "https://www.google.com," and host value is set to
+  /// "example.net", the overridden URI will be changed to
+  /// "https://example.net." Host value cannot be an empty string
+  /// (INVALID_ARGUMENT).
+  core.String? host;
+
+  /// URI path.
+  ///
+  /// When specified, replaces the existing path of the task URL. Setting the
+  /// path value to an empty string clears the URI path segment.
+  PathOverride? pathOverride;
+
+  /// Port override.
+  ///
+  /// When specified, replaces the port part of the task URI. For instance, for
+  /// a URI http://www.google.com/foo and port=123, the overridden URI becomes
+  /// http://www.google.com:123/foo. Note that the port value must be a positive
+  /// integer. Setting the port to 0 (Zero) clears the URI port.
+  core.String? port;
+
+  /// URI query.
+  ///
+  /// When specified, replaces the query part of the task URI. Setting the query
+  /// value to an empty string clears the URI query segment.
+  QueryOverride? queryOverride;
+
+  /// Scheme override.
+  ///
+  /// When specified, the task URI scheme is replaced by the provided value
+  /// (HTTP or HTTPS).
+  /// Possible string values are:
+  /// - "SCHEME_UNSPECIFIED" : Scheme unspecified. Defaults to HTTPS.
+  /// - "HTTP" : Convert the scheme to HTTP, e.g., https://www.google.ca will
+  /// change to http://www.google.ca.
+  /// - "HTTPS" : Convert the scheme to HTTPS, e.g., http://www.google.ca will
+  /// change to https://www.google.ca.
+  core.String? scheme;
+
+  /// URI Override Enforce Mode When specified, determines the Target
+  /// UriOverride mode.
+  ///
+  /// If not specified, it defaults to ALWAYS.
+  /// Possible string values are:
+  /// - "URI_OVERRIDE_ENFORCE_MODE_UNSPECIFIED" : UriOverrideEnforceMode
+  /// Unspecified. Defaults to ALWAYS.
+  /// - "IF_NOT_EXISTS" : In the IF_NOT_EXISTS mode, queue-level configuration
+  /// is only applied where task-level configuration does not exist.
+  /// - "ALWAYS" : In the ALWAYS mode, queue-level configuration overrides all
+  /// task-level configuration
+  core.String? uriOverrideEnforceMode;
+
+  UriOverride({
+    this.host,
+    this.pathOverride,
+    this.port,
+    this.queryOverride,
+    this.scheme,
+    this.uriOverrideEnforceMode,
+  });
+
+  UriOverride.fromJson(core.Map json_)
+      : this(
+          host: json_.containsKey('host') ? json_['host'] as core.String : null,
+          pathOverride: json_.containsKey('pathOverride')
+              ? PathOverride.fromJson(
+                  json_['pathOverride'] as core.Map<core.String, core.dynamic>)
+              : null,
+          port: json_.containsKey('port') ? json_['port'] as core.String : null,
+          queryOverride: json_.containsKey('queryOverride')
+              ? QueryOverride.fromJson(
+                  json_['queryOverride'] as core.Map<core.String, core.dynamic>)
+              : null,
+          scheme: json_.containsKey('scheme')
+              ? json_['scheme'] as core.String
+              : null,
+          uriOverrideEnforceMode: json_.containsKey('uriOverrideEnforceMode')
+              ? json_['uriOverrideEnforceMode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (host != null) 'host': host!,
+        if (pathOverride != null) 'pathOverride': pathOverride!,
+        if (port != null) 'port': port!,
+        if (queryOverride != null) 'queryOverride': queryOverride!,
+        if (scheme != null) 'scheme': scheme!,
+        if (uriOverrideEnforceMode != null)
+          'uriOverrideEnforceMode': uriOverrideEnforceMode!,
+      };
+}

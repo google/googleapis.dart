@@ -53,6 +53,7 @@ api.BlockchainNode buildBlockchainNode() {
     o.ethereumDetails = buildEthereumDetails();
     o.labels = buildUnnamed0();
     o.name = 'foo';
+    o.privateServiceConnectEnabled = true;
     o.state = 'foo';
     o.updateTime = 'foo';
   }
@@ -78,6 +79,7 @@ void checkBlockchainNode(api.BlockchainNode o) {
       o.name!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.privateServiceConnectEnabled!, unittest.isTrue);
     unittest.expect(
       o.state!,
       unittest.equals('foo'),

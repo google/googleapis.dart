@@ -14939,15 +14939,15 @@ class OrganizationsSitesApicategoriesResource {
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
-  /// Completes with a [GoogleCloudApigeeV1ApiCategory].
+  /// Completes with a [GoogleCloudApigeeV1ApiCategoryResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1ApiCategory> create(
-    GoogleCloudApigeeV1ApiCategoryData request,
+  async.Future<GoogleCloudApigeeV1ApiCategoryResponse> create(
+    GoogleCloudApigeeV1ApiCategory request,
     core.String parent, {
     core.String? $fields,
   }) async {
@@ -14964,7 +14964,7 @@ class OrganizationsSitesApicategoriesResource {
       body: body_,
       queryParams: queryParams_,
     );
-    return GoogleCloudApigeeV1ApiCategory.fromJson(
+    return GoogleCloudApigeeV1ApiCategoryResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 
@@ -15020,14 +15020,14 @@ class OrganizationsSitesApicategoriesResource {
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
-  /// Completes with a [GoogleCloudApigeeV1ApiCategory].
+  /// Completes with a [GoogleCloudApigeeV1ApiCategoryResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1ApiCategory> get(
+  async.Future<GoogleCloudApigeeV1ApiCategoryResponse> get(
     core.String name, {
     core.String? $fields,
   }) async {
@@ -15042,7 +15042,7 @@ class OrganizationsSitesApicategoriesResource {
       'GET',
       queryParams: queryParams_,
     );
-    return GoogleCloudApigeeV1ApiCategory.fromJson(
+    return GoogleCloudApigeeV1ApiCategoryResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 
@@ -15098,15 +15098,15 @@ class OrganizationsSitesApicategoriesResource {
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
-  /// Completes with a [GoogleCloudApigeeV1ApiCategory].
+  /// Completes with a [GoogleCloudApigeeV1ApiCategoryResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudApigeeV1ApiCategory> patch(
-    GoogleCloudApigeeV1ApiCategoryData request,
+  async.Future<GoogleCloudApigeeV1ApiCategoryResponse> patch(
+    GoogleCloudApigeeV1ApiCategory request,
     core.String name, {
     core.String? $fields,
   }) async {
@@ -15123,7 +15123,7 @@ class OrganizationsSitesApicategoriesResource {
       body: body_,
       queryParams: queryParams_,
     );
-    return GoogleCloudApigeeV1ApiCategory.fromJson(
+    return GoogleCloudApigeeV1ApiCategoryResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -15619,10 +15619,56 @@ class GoogleCloudApigeeV1AnalyticsConfig {
       };
 }
 
-/// The API category resource wrapped with response status, error_code, etc.
+/// `ApiCategory` represents an API category.
+///
+/// \[Catalog
+/// items\](/apigee/docs/reference/apis/apigee/rest/v1/organizations.sites.apidocs)
+/// can be tagged with API categories; users viewing the API catalog in the
+/// portal will have the option to browse the catalog by category.
 class GoogleCloudApigeeV1ApiCategory {
-  /// Details of the category.
-  GoogleCloudApigeeV1ApiCategoryData? data;
+  /// ID of the category (a UUID).
+  core.String? id;
+
+  /// Name of the category.
+  core.String? name;
+
+  /// Name of the portal.
+  core.String? siteId;
+
+  /// Time the category was last modified in milliseconds since epoch.
+  core.String? updateTime;
+
+  GoogleCloudApigeeV1ApiCategory({
+    this.id,
+    this.name,
+    this.siteId,
+    this.updateTime,
+  });
+
+  GoogleCloudApigeeV1ApiCategory.fromJson(core.Map json_)
+      : this(
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          siteId: json_.containsKey('siteId')
+              ? json_['siteId'] as core.String
+              : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (id != null) 'id': id!,
+        if (name != null) 'name': name!,
+        if (siteId != null) 'siteId': siteId!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// The API category resource wrapped with response status, error_code, etc.
+class GoogleCloudApigeeV1ApiCategoryResponse {
+  /// The API category resource.
+  GoogleCloudApigeeV1ApiCategory? data;
 
   /// Unique error code for the request, if any.
   core.String? errorCode;
@@ -15636,7 +15682,7 @@ class GoogleCloudApigeeV1ApiCategory {
   /// Status of the operation.
   core.String? status;
 
-  GoogleCloudApigeeV1ApiCategory({
+  GoogleCloudApigeeV1ApiCategoryResponse({
     this.data,
     this.errorCode,
     this.message,
@@ -15644,10 +15690,10 @@ class GoogleCloudApigeeV1ApiCategory {
     this.status,
   });
 
-  GoogleCloudApigeeV1ApiCategory.fromJson(core.Map json_)
+  GoogleCloudApigeeV1ApiCategoryResponse.fromJson(core.Map json_)
       : this(
           data: json_.containsKey('data')
-              ? GoogleCloudApigeeV1ApiCategoryData.fromJson(
+              ? GoogleCloudApigeeV1ApiCategory.fromJson(
                   json_['data'] as core.Map<core.String, core.dynamic>)
               : null,
           errorCode: json_.containsKey('errorCode')
@@ -15670,51 +15716,6 @@ class GoogleCloudApigeeV1ApiCategory {
         if (message != null) 'message': message!,
         if (requestId != null) 'requestId': requestId!,
         if (status != null) 'status': status!,
-      };
-}
-
-/// `ApiCategoryData` represents an API category.
-///
-/// Catalog items can be tagged with API categories; users viewing the API
-/// catalog in the portal will have the option to browse the catalog by
-/// category.
-class GoogleCloudApigeeV1ApiCategoryData {
-  /// ID of the category (a UUID).
-  core.String? id;
-
-  /// Name of the category.
-  core.String? name;
-
-  /// Name of the portal.
-  core.String? siteId;
-
-  /// Time the category was last modified in milliseconds since epoch.
-  core.String? updateTime;
-
-  GoogleCloudApigeeV1ApiCategoryData({
-    this.id,
-    this.name,
-    this.siteId,
-    this.updateTime,
-  });
-
-  GoogleCloudApigeeV1ApiCategoryData.fromJson(core.Map json_)
-      : this(
-          id: json_.containsKey('id') ? json_['id'] as core.String : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          siteId: json_.containsKey('siteId')
-              ? json_['siteId'] as core.String
-              : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
-        if (name != null) 'name': name!,
-        if (siteId != null) 'siteId': siteId!,
-        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -22111,9 +22112,11 @@ class GoogleCloudApigeeV1KeystoreConfig {
 }
 
 /// The response for `ListApiCategoriesRequest`.
+///
+/// Next ID: 6
 class GoogleCloudApigeeV1ListApiCategoriesResponse {
-  /// Details of the categories.
-  core.List<GoogleCloudApigeeV1ApiCategoryData>? data;
+  /// The API category resources.
+  core.List<GoogleCloudApigeeV1ApiCategory>? data;
 
   /// Unique error code for the request, if any.
   core.String? errorCode;
@@ -22139,7 +22142,7 @@ class GoogleCloudApigeeV1ListApiCategoriesResponse {
       : this(
           data: json_.containsKey('data')
               ? (json_['data'] as core.List)
-                  .map((value) => GoogleCloudApigeeV1ApiCategoryData.fromJson(
+                  .map((value) => GoogleCloudApigeeV1ApiCategory.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
@@ -23807,7 +23810,7 @@ class GoogleCloudApigeeV1Organization {
   /// - "BILLING_TYPE_UNSPECIFIED" : Billing type not specified.
   /// - "SUBSCRIPTION" : A pre-paid subscription to Apigee.
   /// - "EVALUATION" : Free and limited access to Apigee for evaluation purposes
-  /// only. only.
+  /// only.
   /// - "PAYG" : Access to Apigee using a Pay-As-You-Go plan.
   core.String? billingType;
 

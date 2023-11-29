@@ -36,12 +36,25 @@ void checkUnnamed0(core.List<api.Image> o) {
   checkImage(o[1]);
 }
 
-core.List<core.String> buildUnnamed1() => [
+core.List<api.GoogleShoppingManufacturersV1ProductCertification>
+    buildUnnamed1() => [
+          buildGoogleShoppingManufacturersV1ProductCertification(),
+          buildGoogleShoppingManufacturersV1ProductCertification(),
+        ];
+
+void checkUnnamed1(
+    core.List<api.GoogleShoppingManufacturersV1ProductCertification> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleShoppingManufacturersV1ProductCertification(o[0]);
+  checkGoogleShoppingManufacturersV1ProductCertification(o[1]);
+}
+
+core.List<core.String> buildUnnamed2() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed1(core.List<core.String> o) {
+void checkUnnamed2(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -53,32 +66,15 @@ void checkUnnamed1(core.List<core.String> o) {
   );
 }
 
-core.List<api.FeatureDescription> buildUnnamed2() => [
+core.List<api.FeatureDescription> buildUnnamed3() => [
       buildFeatureDescription(),
       buildFeatureDescription(),
     ];
 
-void checkUnnamed2(core.List<api.FeatureDescription> o) {
+void checkUnnamed3(core.List<api.FeatureDescription> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFeatureDescription(o[0]);
   checkFeatureDescription(o[1]);
-}
-
-core.List<core.String> buildUnnamed3() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed3(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
 }
 
 core.List<core.String> buildUnnamed4() => [
@@ -98,23 +94,12 @@ void checkUnnamed4(core.List<core.String> o) {
   );
 }
 
-core.List<api.ProductDetail> buildUnnamed5() => [
-      buildProductDetail(),
-      buildProductDetail(),
-    ];
-
-void checkUnnamed5(core.List<api.ProductDetail> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkProductDetail(o[0]);
-  checkProductDetail(o[1]);
-}
-
-core.List<core.String> buildUnnamed6() => [
+core.List<core.String> buildUnnamed5() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed6(core.List<core.String> o) {
+void checkUnnamed5(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -124,6 +109,17 @@ void checkUnnamed6(core.List<core.String> o) {
     o[1],
     unittest.equals('foo'),
   );
+}
+
+core.List<api.ProductDetail> buildUnnamed6() => [
+      buildProductDetail(),
+      buildProductDetail(),
+    ];
+
+void checkUnnamed6(core.List<api.ProductDetail> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkProductDetail(o[0]);
+  checkProductDetail(o[1]);
 }
 
 core.List<core.String> buildUnnamed7() => [
@@ -194,6 +190,23 @@ void checkUnnamed10(core.List<core.String> o) {
   );
 }
 
+core.List<core.String> buildUnnamed11() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed11(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterAttributes = 0;
 api.Attributes buildAttributes() {
   final o = api.Attributes();
@@ -203,41 +216,42 @@ api.Attributes buildAttributes() {
     o.ageGroup = 'foo';
     o.brand = 'foo';
     o.capacity = buildCapacity();
+    o.certification = buildUnnamed1();
     o.color = 'foo';
     o.count = buildCount();
     o.description = 'foo';
     o.disclosureDate = 'foo';
-    o.excludedDestination = buildUnnamed1();
-    o.featureDescription = buildUnnamed2();
+    o.excludedDestination = buildUnnamed2();
+    o.featureDescription = buildUnnamed3();
     o.flavor = 'foo';
     o.format = 'foo';
     o.gender = 'foo';
     o.grocery = buildGrocery();
-    o.gtin = buildUnnamed3();
+    o.gtin = buildUnnamed4();
     o.imageLink = buildImage();
-    o.includedDestination = buildUnnamed4();
+    o.includedDestination = buildUnnamed5();
     o.itemGroupId = 'foo';
     o.material = 'foo';
     o.mpn = 'foo';
     o.nutrition = buildNutrition();
     o.pattern = 'foo';
-    o.productDetail = buildUnnamed5();
-    o.productHighlight = buildUnnamed6();
+    o.productDetail = buildUnnamed6();
+    o.productHighlight = buildUnnamed7();
     o.productLine = 'foo';
     o.productName = 'foo';
     o.productPageUrl = 'foo';
-    o.productType = buildUnnamed7();
+    o.productType = buildUnnamed8();
     o.releaseDate = 'foo';
-    o.richProductContent = buildUnnamed8();
+    o.richProductContent = buildUnnamed9();
     o.scent = 'foo';
     o.size = 'foo';
     o.sizeSystem = 'foo';
-    o.sizeType = buildUnnamed9();
+    o.sizeType = buildUnnamed10();
     o.suggestedRetailPrice = buildPrice();
     o.targetClientId = 'foo';
     o.theme = 'foo';
     o.title = 'foo';
-    o.videoLink = buildUnnamed10();
+    o.videoLink = buildUnnamed11();
     o.virtualModelLink = 'foo';
   }
   buildCounterAttributes--;
@@ -257,6 +271,7 @@ void checkAttributes(api.Attributes o) {
       unittest.equals('foo'),
     );
     checkCapacity(o.capacity!);
+    checkUnnamed1(o.certification!);
     unittest.expect(
       o.color!,
       unittest.equals('foo'),
@@ -270,8 +285,8 @@ void checkAttributes(api.Attributes o) {
       o.disclosureDate!,
       unittest.equals('foo'),
     );
-    checkUnnamed1(o.excludedDestination!);
-    checkUnnamed2(o.featureDescription!);
+    checkUnnamed2(o.excludedDestination!);
+    checkUnnamed3(o.featureDescription!);
     unittest.expect(
       o.flavor!,
       unittest.equals('foo'),
@@ -285,9 +300,9 @@ void checkAttributes(api.Attributes o) {
       unittest.equals('foo'),
     );
     checkGrocery(o.grocery!);
-    checkUnnamed3(o.gtin!);
+    checkUnnamed4(o.gtin!);
     checkImage(o.imageLink!);
-    checkUnnamed4(o.includedDestination!);
+    checkUnnamed5(o.includedDestination!);
     unittest.expect(
       o.itemGroupId!,
       unittest.equals('foo'),
@@ -305,8 +320,8 @@ void checkAttributes(api.Attributes o) {
       o.pattern!,
       unittest.equals('foo'),
     );
-    checkUnnamed5(o.productDetail!);
-    checkUnnamed6(o.productHighlight!);
+    checkUnnamed6(o.productDetail!);
+    checkUnnamed7(o.productHighlight!);
     unittest.expect(
       o.productLine!,
       unittest.equals('foo'),
@@ -319,12 +334,12 @@ void checkAttributes(api.Attributes o) {
       o.productPageUrl!,
       unittest.equals('foo'),
     );
-    checkUnnamed7(o.productType!);
+    checkUnnamed8(o.productType!);
     unittest.expect(
       o.releaseDate!,
       unittest.equals('foo'),
     );
-    checkUnnamed8(o.richProductContent!);
+    checkUnnamed9(o.richProductContent!);
     unittest.expect(
       o.scent!,
       unittest.equals('foo'),
@@ -337,7 +352,7 @@ void checkAttributes(api.Attributes o) {
       o.sizeSystem!,
       unittest.equals('foo'),
     );
-    checkUnnamed9(o.sizeType!);
+    checkUnnamed10(o.sizeType!);
     checkPrice(o.suggestedRetailPrice!);
     unittest.expect(
       o.targetClientId!,
@@ -351,7 +366,7 @@ void checkAttributes(api.Attributes o) {
       o.title!,
       unittest.equals('foo'),
     );
-    checkUnnamed10(o.videoLink!);
+    checkUnnamed11(o.videoLink!);
     unittest.expect(
       o.virtualModelLink!,
       unittest.equals('foo'),
@@ -564,21 +579,38 @@ void checkFloatUnit(api.FloatUnit o) {
   buildCounterFloatUnit--;
 }
 
-core.List<core.String> buildUnnamed11() => [
-      'foo',
-      'foo',
-    ];
+core.int buildCounterGoogleShoppingManufacturersV1ProductCertification = 0;
+api.GoogleShoppingManufacturersV1ProductCertification
+    buildGoogleShoppingManufacturersV1ProductCertification() {
+  final o = api.GoogleShoppingManufacturersV1ProductCertification();
+  buildCounterGoogleShoppingManufacturersV1ProductCertification++;
+  if (buildCounterGoogleShoppingManufacturersV1ProductCertification < 3) {
+    o.authority = 'foo';
+    o.code = 'foo';
+    o.name = 'foo';
+  }
+  buildCounterGoogleShoppingManufacturersV1ProductCertification--;
+  return o;
+}
 
-void checkUnnamed11(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+void checkGoogleShoppingManufacturersV1ProductCertification(
+    api.GoogleShoppingManufacturersV1ProductCertification o) {
+  buildCounterGoogleShoppingManufacturersV1ProductCertification++;
+  if (buildCounterGoogleShoppingManufacturersV1ProductCertification < 3) {
+    unittest.expect(
+      o.authority!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.code!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleShoppingManufacturersV1ProductCertification--;
 }
 
 core.List<core.String> buildUnnamed12() => [
@@ -598,6 +630,23 @@ void checkUnnamed12(core.List<core.String> o) {
   );
 }
 
+core.List<core.String> buildUnnamed13() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed13(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterGrocery = 0;
 api.Grocery buildGrocery() {
   final o = api.Grocery();
@@ -606,11 +655,11 @@ api.Grocery buildGrocery() {
     o.activeIngredients = 'foo';
     o.alcoholByVolume = 42.0;
     o.allergens = 'foo';
-    o.derivedNutritionClaim = buildUnnamed11();
+    o.derivedNutritionClaim = buildUnnamed12();
     o.directions = 'foo';
     o.indications = 'foo';
     o.ingredients = 'foo';
-    o.nutritionClaim = buildUnnamed12();
+    o.nutritionClaim = buildUnnamed13();
     o.storageInstructions = 'foo';
   }
   buildCounterGrocery--;
@@ -632,7 +681,7 @@ void checkGrocery(api.Grocery o) {
       o.allergens!,
       unittest.equals('foo'),
     );
-    checkUnnamed11(o.derivedNutritionClaim!);
+    checkUnnamed12(o.derivedNutritionClaim!);
     unittest.expect(
       o.directions!,
       unittest.equals('foo'),
@@ -645,7 +694,7 @@ void checkGrocery(api.Grocery o) {
       o.ingredients!,
       unittest.equals('foo'),
     );
-    checkUnnamed12(o.nutritionClaim!);
+    checkUnnamed13(o.nutritionClaim!);
     unittest.expect(
       o.storageInstructions!,
       unittest.equals('foo'),
@@ -743,12 +792,12 @@ void checkIssue(api.Issue o) {
   buildCounterIssue--;
 }
 
-core.List<api.ProductCertification> buildUnnamed13() => [
+core.List<api.ProductCertification> buildUnnamed14() => [
       buildProductCertification(),
       buildProductCertification(),
     ];
 
-void checkUnnamed13(core.List<api.ProductCertification> o) {
+void checkUnnamed14(core.List<api.ProductCertification> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProductCertification(o[0]);
   checkProductCertification(o[1]);
@@ -760,7 +809,7 @@ api.ListProductCertificationsResponse buildListProductCertificationsResponse() {
   buildCounterListProductCertificationsResponse++;
   if (buildCounterListProductCertificationsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.productCertifications = buildUnnamed13();
+    o.productCertifications = buildUnnamed14();
   }
   buildCounterListProductCertificationsResponse--;
   return o;
@@ -774,17 +823,17 @@ void checkListProductCertificationsResponse(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed13(o.productCertifications!);
+    checkUnnamed14(o.productCertifications!);
   }
   buildCounterListProductCertificationsResponse--;
 }
 
-core.List<api.Product> buildUnnamed14() => [
+core.List<api.Product> buildUnnamed15() => [
       buildProduct(),
       buildProduct(),
     ];
 
-void checkUnnamed14(core.List<api.Product> o) {
+void checkUnnamed15(core.List<api.Product> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProduct(o[0]);
   checkProduct(o[1]);
@@ -796,7 +845,7 @@ api.ListProductsResponse buildListProductsResponse() {
   buildCounterListProductsResponse++;
   if (buildCounterListProductsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.products = buildUnnamed14();
+    o.products = buildUnnamed15();
   }
   buildCounterListProductsResponse--;
   return o;
@@ -809,17 +858,17 @@ void checkListProductsResponse(api.ListProductsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed14(o.products!);
+    checkUnnamed15(o.products!);
   }
   buildCounterListProductsResponse--;
 }
 
-core.List<api.VoluntaryNutritionFact> buildUnnamed15() => [
+core.List<api.VoluntaryNutritionFact> buildUnnamed16() => [
       buildVoluntaryNutritionFact(),
       buildVoluntaryNutritionFact(),
     ];
 
-void checkUnnamed15(core.List<api.VoluntaryNutritionFact> o) {
+void checkUnnamed16(core.List<api.VoluntaryNutritionFact> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVoluntaryNutritionFact(o[0]);
   checkVoluntaryNutritionFact(o[1]);
@@ -872,7 +921,7 @@ api.Nutrition buildNutrition() {
     o.transFatDailyPercentage = 42.0;
     o.vitaminD = buildFloatUnit();
     o.vitaminDDailyPercentage = 42.0;
-    o.voluntaryNutritionFact = buildUnnamed15();
+    o.voluntaryNutritionFact = buildUnnamed16();
   }
   buildCounterNutrition--;
   return o;
@@ -983,7 +1032,7 @@ void checkNutrition(api.Nutrition o) {
       o.vitaminDDailyPercentage!,
       unittest.equals(42.0),
     );
-    checkUnnamed15(o.voluntaryNutritionFact!);
+    checkUnnamed16(o.voluntaryNutritionFact!);
   }
   buildCounterNutrition--;
 }
@@ -1015,23 +1064,23 @@ void checkPrice(api.Price o) {
   buildCounterPrice--;
 }
 
-core.List<api.DestinationStatus> buildUnnamed16() => [
+core.List<api.DestinationStatus> buildUnnamed17() => [
       buildDestinationStatus(),
       buildDestinationStatus(),
     ];
 
-void checkUnnamed16(core.List<api.DestinationStatus> o) {
+void checkUnnamed17(core.List<api.DestinationStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDestinationStatus(o[0]);
   checkDestinationStatus(o[1]);
 }
 
-core.List<api.Issue> buildUnnamed17() => [
+core.List<api.Issue> buildUnnamed18() => [
       buildIssue(),
       buildIssue(),
     ];
 
-void checkUnnamed17(core.List<api.Issue> o) {
+void checkUnnamed18(core.List<api.Issue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkIssue(o[0]);
   checkIssue(o[1]);
@@ -1044,8 +1093,8 @@ api.Product buildProduct() {
   if (buildCounterProduct < 3) {
     o.attributes = buildAttributes();
     o.contentLanguage = 'foo';
-    o.destinationStatuses = buildUnnamed16();
-    o.issues = buildUnnamed17();
+    o.destinationStatuses = buildUnnamed17();
+    o.issues = buildUnnamed18();
     o.name = 'foo';
     o.parent = 'foo';
     o.productId = 'foo';
@@ -1063,8 +1112,8 @@ void checkProduct(api.Product o) {
       o.contentLanguage!,
       unittest.equals('foo'),
     );
-    checkUnnamed16(o.destinationStatuses!);
-    checkUnnamed17(o.issues!);
+    checkUnnamed17(o.destinationStatuses!);
+    checkUnnamed18(o.issues!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -1085,23 +1134,23 @@ void checkProduct(api.Product o) {
   buildCounterProduct--;
 }
 
-core.List<api.Certification> buildUnnamed18() => [
+core.List<api.Certification> buildUnnamed19() => [
       buildCertification(),
       buildCertification(),
     ];
 
-void checkUnnamed18(core.List<api.Certification> o) {
+void checkUnnamed19(core.List<api.Certification> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCertification(o[0]);
   checkCertification(o[1]);
 }
 
-core.List<core.String> buildUnnamed19() => [
+core.List<core.String> buildUnnamed20() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed19(core.List<core.String> o) {
+void checkUnnamed20(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1113,43 +1162,26 @@ void checkUnnamed19(core.List<core.String> o) {
   );
 }
 
-core.List<api.DestinationStatus> buildUnnamed20() => [
+core.List<api.DestinationStatus> buildUnnamed21() => [
       buildDestinationStatus(),
       buildDestinationStatus(),
     ];
 
-void checkUnnamed20(core.List<api.DestinationStatus> o) {
+void checkUnnamed21(core.List<api.DestinationStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDestinationStatus(o[0]);
   checkDestinationStatus(o[1]);
 }
 
-core.List<api.Issue> buildUnnamed21() => [
+core.List<api.Issue> buildUnnamed22() => [
       buildIssue(),
       buildIssue(),
     ];
 
-void checkUnnamed21(core.List<api.Issue> o) {
+void checkUnnamed22(core.List<api.Issue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkIssue(o[0]);
   checkIssue(o[1]);
-}
-
-core.List<core.String> buildUnnamed22() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed22(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
 }
 
 core.List<core.String> buildUnnamed23() => [
@@ -1186,20 +1218,37 @@ void checkUnnamed24(core.List<core.String> o) {
   );
 }
 
+core.List<core.String> buildUnnamed25() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed25(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterProductCertification = 0;
 api.ProductCertification buildProductCertification() {
   final o = api.ProductCertification();
   buildCounterProductCertification++;
   if (buildCounterProductCertification < 3) {
     o.brand = 'foo';
-    o.certification = buildUnnamed18();
-    o.countryCode = buildUnnamed19();
-    o.destinationStatuses = buildUnnamed20();
-    o.issues = buildUnnamed21();
-    o.mpn = buildUnnamed22();
+    o.certification = buildUnnamed19();
+    o.countryCode = buildUnnamed20();
+    o.destinationStatuses = buildUnnamed21();
+    o.issues = buildUnnamed22();
+    o.mpn = buildUnnamed23();
     o.name = 'foo';
-    o.productCode = buildUnnamed23();
-    o.productType = buildUnnamed24();
+    o.productCode = buildUnnamed24();
+    o.productType = buildUnnamed25();
     o.title = 'foo';
   }
   buildCounterProductCertification--;
@@ -1213,17 +1262,17 @@ void checkProductCertification(api.ProductCertification o) {
       o.brand!,
       unittest.equals('foo'),
     );
-    checkUnnamed18(o.certification!);
-    checkUnnamed19(o.countryCode!);
-    checkUnnamed20(o.destinationStatuses!);
-    checkUnnamed21(o.issues!);
-    checkUnnamed22(o.mpn!);
+    checkUnnamed19(o.certification!);
+    checkUnnamed20(o.countryCode!);
+    checkUnnamed21(o.destinationStatuses!);
+    checkUnnamed22(o.issues!);
+    checkUnnamed23(o.mpn!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed23(o.productCode!);
-    checkUnnamed24(o.productType!);
+    checkUnnamed24(o.productCode!);
+    checkUnnamed25(o.productType!);
     unittest.expect(
       o.title!,
       unittest.equals('foo'),
@@ -1293,12 +1342,12 @@ void checkVoluntaryNutritionFact(api.VoluntaryNutritionFact o) {
   buildCounterVoluntaryNutritionFact--;
 }
 
-core.List<core.String> buildUnnamed25() => [
+core.List<core.String> buildUnnamed26() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed25(core.List<core.String> o) {
+void checkUnnamed26(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1310,12 +1359,12 @@ void checkUnnamed25(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed26() => [
+core.List<core.String> buildUnnamed27() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed26(core.List<core.String> o) {
+void checkUnnamed27(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1405,6 +1454,17 @@ void main() {
       final od =
           api.FloatUnit.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkFloatUnit(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleShoppingManufacturersV1ProductCertification',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleShoppingManufacturersV1ProductCertification();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleShoppingManufacturersV1ProductCertification.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleShoppingManufacturersV1ProductCertification(od);
     });
   });
 
@@ -1826,7 +1886,7 @@ void main() {
       final res = api.ManufacturerCenterApi(mock).accounts.products;
       final arg_parent = 'foo';
       final arg_name = 'foo';
-      final arg_include = buildUnnamed25();
+      final arg_include = buildUnnamed26();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -1884,7 +1944,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.ManufacturerCenterApi(mock).accounts.products;
       final arg_parent = 'foo';
-      final arg_include = buildUnnamed26();
+      final arg_include = buildUnnamed27();
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';

@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20231029",
+    "revision": "20231112",
     "rootUrl": "https://policyanalyzer.googleapis.com/",
     "servicePath": "",
     "title": "Policy Analyzer API",

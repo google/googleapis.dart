@@ -178,6 +178,51 @@ class AppsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Lists all the available runtimes for the application.
+  ///
+  /// Request parameters:
+  ///
+  /// [appsId] - Part of `parent`. Required. Name of the parent Application
+  /// resource. Example: apps/myapp.
+  ///
+  /// [environment] - Optional. The environment of the Application.
+  /// Possible string values are:
+  /// - "ENVIRONMENT_UNSPECIFIED" : Default value.
+  /// - "STANDARD" : App Engine Standard.
+  /// - "FLEXIBLE" : App Engine Flexible
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListRuntimesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListRuntimesResponse> listRuntimes(
+    core.String appsId, {
+    core.String? environment,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (environment != null) 'environment': [environment],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/apps/' + commons.escapeVariable('$appsId') + ':listRuntimes';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListRuntimesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Updates the specified Application resource.
   ///
   /// You can update the following fields: auth_domain - Google authentication
@@ -2895,6 +2940,17 @@ class CpuUtilization {
       };
 }
 
+/// Represents a whole or partial calendar date, such as a birthday.
+///
+/// The time of day and time zone are either specified elsewhere or are
+/// insignificant. The date is relative to the Gregorian Calendar. This can
+/// represent one of the following: A full date, with non-zero year, month, and
+/// day values. A month and day, with a zero year (for example, an anniversary).
+/// A year on its own, with a zero month and a zero day. A year and month, with
+/// a zero day (for example, a credit card expiration date).Related types:
+/// google.type.TimeOfDay google.type.DateTime google.protobuf.Timestamp
+typedef Date = $Date;
+
 /// Request message for Instances.DebugInstance.
 class DebugInstanceRequest {
   /// Public SSH key to add to the instance.
@@ -4016,6 +4072,38 @@ class ListOperationsResponse {
       };
 }
 
+/// Response message for Applications.ListRuntimes.
+class ListRuntimesResponse {
+  /// Continuation token for fetching the next page of results.
+  core.String? nextPageToken;
+
+  /// The runtimes available to the requested application.
+  core.List<Runtime>? runtimes;
+
+  ListRuntimesResponse({
+    this.nextPageToken,
+    this.runtimes,
+  });
+
+  ListRuntimesResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          runtimes: json_.containsKey('runtimes')
+              ? (json_['runtimes'] as core.List)
+                  .map((value) => Runtime.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (runtimes != null) 'runtimes': runtimes!,
+      };
+}
+
 /// Response message for Services.ListServices.
 class ListServicesResponse {
   /// Continuation token for fetching the next page of results.
@@ -4704,6 +4792,91 @@ class Resources {
       };
 }
 
+/// Runtime versions for App Engine.
+class Runtime {
+  /// Date when Runtime is decommissioned.
+  Date? decommissionedDate;
+
+  /// Date when Runtime is deprecated.
+  Date? deprecationDate;
+
+  /// Date when Runtime is end of support.
+  Date? endOfSupportDate;
+
+  /// The environment of the runtime.
+  /// Possible string values are:
+  /// - "ENVIRONMENT_UNSPECIFIED" : Default value.
+  /// - "STANDARD" : App Engine Standard.
+  /// - "FLEXIBLE" : App Engine Flexible
+  core.String? environment;
+
+  /// The name of the runtime, e.g., 'go113', 'nodejs12', etc.
+  core.String? name;
+
+  /// The stage of life this runtime is in, e.g., BETA, GA, etc.
+  /// Possible string values are:
+  /// - "RUNTIME_STAGE_UNSPECIFIED" : Not specified.
+  /// - "DEVELOPMENT" : The runtime is in development.
+  /// - "ALPHA" : The runtime is in the Alpha stage.
+  /// - "BETA" : The runtime is in the Beta stage.
+  /// - "GA" : The runtime is generally available.
+  /// - "DEPRECATED" : The runtime is deprecated.
+  /// - "DECOMMISSIONED" : The runtime is no longer supported.
+  /// - "END_OF_SUPPORT" : The runtime is end of support.
+  core.String? stage;
+
+  /// Warning messages, e.g., a deprecation warning.
+  core.List<core.String>? warnings;
+
+  Runtime({
+    this.decommissionedDate,
+    this.deprecationDate,
+    this.endOfSupportDate,
+    this.environment,
+    this.name,
+    this.stage,
+    this.warnings,
+  });
+
+  Runtime.fromJson(core.Map json_)
+      : this(
+          decommissionedDate: json_.containsKey('decommissionedDate')
+              ? Date.fromJson(json_['decommissionedDate']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          deprecationDate: json_.containsKey('deprecationDate')
+              ? Date.fromJson(json_['deprecationDate']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          endOfSupportDate: json_.containsKey('endOfSupportDate')
+              ? Date.fromJson(json_['endOfSupportDate']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          environment: json_.containsKey('environment')
+              ? json_['environment'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          stage:
+              json_.containsKey('stage') ? json_['stage'] as core.String : null,
+          warnings: json_.containsKey('warnings')
+              ? (json_['warnings'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (decommissionedDate != null)
+          'decommissionedDate': decommissionedDate!,
+        if (deprecationDate != null) 'deprecationDate': deprecationDate!,
+        if (endOfSupportDate != null) 'endOfSupportDate': endOfSupportDate!,
+        if (environment != null) 'environment': environment!,
+        if (name != null) 'name': name!,
+        if (stage != null) 'stage': stage!,
+        if (warnings != null) 'warnings': warnings!,
+      };
+}
+
 /// Executes a script to handle the request that matches the URL pattern.
 typedef ScriptHandler = $Handler;
 
@@ -5363,8 +5536,7 @@ class Version {
   /// Configures health checking for instances.
   ///
   /// Unhealthy instances are stopped and replaced with new instances. Only
-  /// applicable in the App Engine flexible environment.Only returned in GET
-  /// requests if view=FULL is set.
+  /// applicable in the App Engine flexible environment.
   HealthCheck? healthCheck;
 
   /// Relative name of the version within the service.
@@ -5391,8 +5563,7 @@ class Version {
 
   /// Configures liveness health checking for instances.
   ///
-  /// Unhealthy instances are stopped and replaced with new instancesOnly
-  /// returned in GET requests if view=FULL is set.
+  /// Unhealthy instances are stopped and replaced with new instances
   LivenessCheck? livenessCheck;
 
   /// A service with manual scaling runs continuously, allowing you to perform
@@ -5419,8 +5590,7 @@ class Version {
 
   /// Configures readiness health checking for instances.
   ///
-  /// Unhealthy instances are not put into the backend traffic rotation.Only
-  /// returned in GET requests if view=FULL is set.
+  /// Unhealthy instances are not put into the backend traffic rotation.
   ReadinessCheck? readinessCheck;
 
   /// Machine resources for this version.

@@ -80,7 +80,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20231025",
+    "revision": "20231114",
     "rootUrl": "https://artifactregistry.googleapis.com/",
     "servicePath": "",
     "title": "Artifact Registry API",
@@ -555,7 +555,7 @@
                                     ],
                                     "parameters": {
                                         "name": {
-                                            "description": "The name of the repository, for example: \"projects/p1/locations/us-central1/repositories/repo1\".",
+                                            "description": "The name of the repository, for example: `projects/p1/locations/us-central1/repositories/repo1`.",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+/repositories/[^/]+$",
                                             "required": true,
@@ -2152,12 +2152,14 @@
                     "enum": [
                         "REPOSITORY_BASE_UNSPECIFIED",
                         "DEBIAN",
-                        "UBUNTU"
+                        "UBUNTU",
+                        "DEBIAN_SNAPSHOT"
                     ],
                     "enumDescriptions": [
                         "Unspecified repository base.",
                         "Debian.",
-                        "Ubuntu LTS/Pro."
+                        "Ubuntu LTS/Pro.",
+                        "Archived Debian."
                     ],
                     "type": "string"
                 },
@@ -3115,7 +3117,7 @@
                     "type": "string"
                 },
                 "name": {
-                    "description": "The name of the repository, for example: \"projects/p1/locations/us-central1/repositories/repo1\".",
+                    "description": "The name of the repository, for example: `projects/p1/locations/us-central1/repositories/repo1`.",
                     "type": "string"
                 },
                 "remoteRepositoryConfig": {
@@ -3421,7 +3423,7 @@
                     "type": "integer"
                 },
                 "repository": {
-                    "description": "A reference to the repository resource, for example: \"projects/p1/locations/us-central1/repositories/repo1\".",
+                    "description": "A reference to the repository resource, for example: `projects/p1/locations/us-central1/repositories/repo1`.",
                     "type": "string"
                 }
             },

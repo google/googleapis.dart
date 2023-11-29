@@ -2105,6 +2105,52 @@ class EditsTracksResource {
 
   EditsTracksResource(commons.ApiRequester client) : _requester = client;
 
+  /// Creates a new track.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Required. Package name of the app.
+  ///
+  /// [editId] - Required. Identifier of the edit.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Track].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Track> create(
+    TrackConfig request,
+    core.String packageName,
+    core.String editId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/edits/' +
+        commons.escapeVariable('$editId') +
+        '/tracks';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Track.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets a track.
   ///
   /// Request parameters:
@@ -3270,7 +3316,16 @@ class MonetizationSubscriptionsResource {
   /// requirements on this format, see the documentation of the product_id field
   /// on the Subscription resource.
   ///
-  /// [regionsVersion_version] - Required. The latest version is 2022/02.
+  /// [regionsVersion_version] - Required. A string representing the version of
+  /// available regions being used for the specified resource. Regional prices
+  /// for the resource have to be specified according to the information
+  /// published in
+  /// [this article](https://support.google.com/googleplay/android-developer/answer/10532353).
+  /// Each time the supported locations substantially change, the version will
+  /// be incremented. Using this field will ensure that creating and updating
+  /// the resource with an older region's version and set of regional prices and
+  /// currencies will succeed even though a new version is available. The latest
+  /// version is 2022/02.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3467,7 +3522,16 @@ class MonetizationSubscriptionsResource {
   /// lower-case letter or number, and be between 1 and 40 (inclusive)
   /// characters in length.
   ///
-  /// [regionsVersion_version] - Required. The latest version is 2022/02.
+  /// [regionsVersion_version] - Required. A string representing the version of
+  /// available regions being used for the specified resource. Regional prices
+  /// for the resource have to be specified according to the information
+  /// published in
+  /// [this article](https://support.google.com/googleplay/android-developer/answer/10532353).
+  /// Each time the supported locations substantially change, the version will
+  /// be incremented. Using this field will ensure that creating and updating
+  /// the resource with an older region's version and set of regional prices and
+  /// currencies will succeed even though a new version is available. The latest
+  /// version is 2022/02.
   ///
   /// [updateMask] - Required. The list of fields to be updated.
   ///
@@ -3839,7 +3903,16 @@ class MonetizationSubscriptionsBasePlansOffersResource {
   /// this format, see the documentation of the offer_id field on the
   /// SubscriptionOffer resource.
   ///
-  /// [regionsVersion_version] - Required. The latest version is 2022/02.
+  /// [regionsVersion_version] - Required. A string representing the version of
+  /// available regions being used for the specified resource. Regional prices
+  /// for the resource have to be specified according to the information
+  /// published in
+  /// [this article](https://support.google.com/googleplay/android-developer/answer/10532353).
+  /// Each time the supported locations substantially change, the version will
+  /// be incremented. Using this field will ensure that creating and updating
+  /// the resource with an older region's version and set of regional prices and
+  /// currencies will succeed even though a new version is available. The latest
+  /// version is 2022/02.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4137,7 +4210,16 @@ class MonetizationSubscriptionsBasePlansOffersResource {
   /// [offerId] - Required. Immutable. Unique ID of this subscription offer.
   /// Must be unique within the base plan.
   ///
-  /// [regionsVersion_version] - Required. The latest version is 2022/02.
+  /// [regionsVersion_version] - Required. A string representing the version of
+  /// available regions being used for the specified resource. Regional prices
+  /// for the resource have to be specified according to the information
+  /// published in
+  /// [this article](https://support.google.com/googleplay/android-developer/answer/10532353).
+  /// Each time the supported locations substantially change, the version will
+  /// be incremented. Using this field will ensure that creating and updating
+  /// the resource with an older region's version and set of regional prices and
+  /// currencies will succeed even though a new version is available. The latest
+  /// version is 2022/02.
   ///
   /// [updateMask] - Required. The list of fields to be updated.
   ///
@@ -7510,23 +7592,44 @@ class ExternalTransaction {
 
 /// User's address for the external transaction.
 class ExternalTransactionAddress {
+  /// Top-level administrative subdivision of the country/region.
+  ///
+  /// Only required for transactions in India. Valid values are "ANDAMAN AND
+  /// NICOBAR ISLANDS", "ANDHRA PRADESH", "ARUNACHAL PRADESH", "ASSAM", "BIHAR",
+  /// "CHANDIGARH", "CHHATTISGARH", "DADRA AND NAGAR HAVELI", "DADRA AND NAGAR
+  /// HAVELI AND DAMAN AND DIU", "DAMAN AND DIU", "DELHI", "GOA", "GUJARAT",
+  /// "HARYANA", "HIMACHAL PRADESH", "JAMMU AND KASHMIR", "JHARKHAND",
+  /// "KARNATAKA", "KERALA", "LADAKH", "LAKSHADWEEP", "MADHYA PRADESH",
+  /// "MAHARASHTRA", "MANIPUR", "MEGHALAYA", "MIZORAM", "NAGALAND", "ODISHA",
+  /// "PUDUCHERRY", "PUNJAB", "RAJASTHAN", "SIKKIM", "TAMIL NADU", "TELANGANA",
+  /// "TRIPURA", "UTTAR PRADESH", "UTTARAKHAND", and "WEST BENGAL".
+  ///
+  /// Optional.
+  core.String? administrativeArea;
+
   /// Two letter region code based on ISO-3166-1 Alpha-2 (UN region codes).
   ///
   /// Required.
   core.String? regionCode;
 
   ExternalTransactionAddress({
+    this.administrativeArea,
     this.regionCode,
   });
 
   ExternalTransactionAddress.fromJson(core.Map json_)
       : this(
+          administrativeArea: json_.containsKey('administrativeArea')
+              ? json_['administrativeArea'] as core.String
+              : null,
           regionCode: json_.containsKey('regionCode')
               ? json_['regionCode'] as core.String
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (administrativeArea != null)
+          'administrativeArea': administrativeArea!,
         if (regionCode != null) 'regionCode': regionCode!,
       };
 }
@@ -9667,10 +9770,24 @@ class RecurringExternalTransaction {
   /// first payment. Required when creating recurring external transactions.
   core.String? initialExternalTransactionId;
 
+  /// Input only.
+  ///
+  /// Provided during the call to Create. Must only be used when migrating a
+  /// subscription from manual monthly reporting to automated reporting.
+  /// Possible string values are:
+  /// - "EXTERNAL_TRANSACTION_PROGRAM_UNSPECIFIED" : Unspecified transaction
+  /// program. Not used.
+  /// - "USER_CHOICE_BILLING" : User choice billing, where a user may choose
+  /// between Google Play Billing developer-managed billing.
+  /// - "ALTERTNATIVE_BILLING_ONLY" : Alternatively billing only, where users
+  /// may only use developer-manager billing.
+  core.String? migratedTransactionProgram;
+
   RecurringExternalTransaction({
     this.externalSubscription,
     this.externalTransactionToken,
     this.initialExternalTransactionId,
+    this.migratedTransactionProgram,
   });
 
   RecurringExternalTransaction.fromJson(core.Map json_)
@@ -9687,6 +9804,10 @@ class RecurringExternalTransaction {
               json_.containsKey('initialExternalTransactionId')
                   ? json_['initialExternalTransactionId'] as core.String
                   : null,
+          migratedTransactionProgram:
+              json_.containsKey('migratedTransactionProgram')
+                  ? json_['migratedTransactionProgram'] as core.String
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9696,6 +9817,8 @@ class RecurringExternalTransaction {
           'externalTransactionToken': externalTransactionToken!,
         if (initialExternalTransactionId != null)
           'initialExternalTransactionId': initialExternalTransactionId!,
+        if (migratedTransactionProgram != null)
+          'migratedTransactionProgram': migratedTransactionProgram!,
       };
 }
 
@@ -10034,13 +10157,18 @@ class RegionalTaxRateInfo {
 }
 
 /// The version of the available regions being used for the specified resource.
-///
-/// A string representing the version of available regions being used for the
-/// specified resource. Regional prices for the resource have to be specified
-/// according to the information published in
-/// [this article](https://support.google.com/googleplay/android-developer/answer/10532353).
 class RegionsVersion {
-  /// The latest version is 2022/02.
+  /// A string representing the version of available regions being used for the
+  /// specified resource.
+  ///
+  /// Regional prices for the resource have to be specified according to the
+  /// information published in
+  /// [this article](https://support.google.com/googleplay/android-developer/answer/10532353).
+  /// Each time the supported locations substantially change, the version will
+  /// be incremented. Using this field will ensure that creating and updating
+  /// the resource with an older region's version and set of regional prices and
+  /// currencies will succeed even though a new version is available. The latest
+  /// version is 2022/02.
   ///
   /// Required.
   core.String? version;
@@ -12132,6 +12260,64 @@ class Track {
   core.Map<core.String, core.dynamic> toJson() => {
         if (releases != null) 'releases': releases!,
         if (track != null) 'track': track!,
+      };
+}
+
+/// Configurations of the new track.
+class TrackConfig {
+  /// Form factor of the new track.
+  ///
+  /// Defaults to the default track.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "FORM_FACTOR_UNSPECIFIED" : Fallback value, do not use.
+  /// - "DEFAULT" : Default track.
+  /// - "WEAR" : Wear form factor track.
+  /// - "AUTOMOTIVE" : Automotive form factor track.
+  core.String? formFactor;
+
+  /// Identifier of the new track.
+  ///
+  /// For default tracks, this field consists of the track alias only. Form
+  /// factor tracks have a special prefix as an identifier, for example
+  /// `wear:production`, `automotive:production`. This prefix must match the
+  /// value of the `form_factor` field, if it is not a default track.
+  /// [More on track name](https://developers.google.com/android-publisher/tracks#ff-track-name)
+  ///
+  /// Required.
+  core.String? track;
+
+  /// Type of the new track.
+  ///
+  /// Currently, the only supported value is closedTesting.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "TRACK_TYPE_UNSPECIFIED" : Fallback value, do not use.
+  /// - "CLOSED_TESTING" : Closed testing track.
+  core.String? type;
+
+  TrackConfig({
+    this.formFactor,
+    this.track,
+    this.type,
+  });
+
+  TrackConfig.fromJson(core.Map json_)
+      : this(
+          formFactor: json_.containsKey('formFactor')
+              ? json_['formFactor'] as core.String
+              : null,
+          track:
+              json_.containsKey('track') ? json_['track'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (formFactor != null) 'formFactor': formFactor!,
+        if (track != null) 'track': track!,
+        if (type != null) 'type': type!,
       };
 }
 

@@ -20,6 +20,8 @@
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsDeliveryPipelinesResource]
+///       - [ProjectsLocationsDeliveryPipelinesAutomationRunsResource]
+///       - [ProjectsLocationsDeliveryPipelinesAutomationsResource]
 ///       - [ProjectsLocationsDeliveryPipelinesReleasesResource]
 ///         - [ProjectsLocationsDeliveryPipelinesReleasesRolloutsResource]
 /// - [ProjectsLocationsDeliveryPipelinesReleasesRolloutsJobRunsResource]
@@ -204,6 +206,10 @@ class ProjectsLocationsResource {
 class ProjectsLocationsDeliveryPipelinesResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsDeliveryPipelinesAutomationRunsResource get automationRuns =>
+      ProjectsLocationsDeliveryPipelinesAutomationRunsResource(_requester);
+  ProjectsLocationsDeliveryPipelinesAutomationsResource get automations =>
+      ProjectsLocationsDeliveryPipelinesAutomationsResource(_requester);
   ProjectsLocationsDeliveryPipelinesReleasesResource get releases =>
       ProjectsLocationsDeliveryPipelinesReleasesResource(_requester);
 
@@ -723,6 +729,479 @@ class ProjectsLocationsDeliveryPipelinesResource {
     );
     return TestIamPermissionsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsDeliveryPipelinesAutomationRunsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsDeliveryPipelinesAutomationRunsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Cancels an AutomationRun.
+  ///
+  /// The `state` of the `AutomationRun` after cancelling is `CANCELLED`.
+  /// `CancelAutomationRun` can be called on AutomationRun in the state
+  /// `IN_PROGRESS` and `PENDING`; AutomationRun in a different state returns an
+  /// `FAILED_PRECONDITION` error.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the `AutomationRun`. Format is
+  /// projects/{project}/locations/{location}/deliveryPipelines/{delivery_pipeline}/automationRuns/{automation_run}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/deliveryPipelines/\[^/\]+/automationRuns/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CancelAutomationRunResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CancelAutomationRunResponse> cancel(
+    CancelAutomationRunRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return CancelAutomationRunResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single AutomationRun.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the `AutomationRun`. Format must be
+  /// projects/{project}/locations/{location}/deliveryPipelines/{delivery_pipeline}/automationRuns/{automation_run}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/deliveryPipelines/\[^/\]+/automationRuns/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AutomationRun].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AutomationRun> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AutomationRun.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists AutomationRuns in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent, which owns this collection of
+  /// automationRuns. Format must be
+  /// projects/{project}/locations/{location}/deliveryPipelines/{delivery_pipeline}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/deliveryPipelines/\[^/\]+$`.
+  ///
+  /// [filter] - Filter automationRuns to be returned. All fields can be used in
+  /// the filter.
+  ///
+  /// [orderBy] - Field to sort by.
+  ///
+  /// [pageSize] - The maximum number of automationRuns to return. The service
+  /// may return fewer than this value. If unspecified, at most 50
+  /// automationRuns will be returned. The maximum value is 1000; values above
+  /// 1000 will be set to 1000.
+  ///
+  /// [pageToken] - A page token, received from a previous `ListAutomationRuns`
+  /// call. Provide this to retrieve the subsequent page. When paginating, all
+  /// other provided parameters match the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAutomationRunsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAutomationRunsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/automationRuns';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListAutomationRunsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsDeliveryPipelinesAutomationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsDeliveryPipelinesAutomationsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new Automation in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent collection in which the `Automation`
+  /// should be created. Format should be
+  /// projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/deliveryPipelines/\[^/\]+$`.
+  ///
+  /// [automationId] - Required. ID of the `Automation`.
+  ///
+  /// [requestId] - Optional. A request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed. The server
+  /// will guarantee that for at least 60 minutes since the first request. For
+  /// example, consider a situation where you make an initial request and the
+  /// request times out. If you make the request again with the same request ID,
+  /// the server can check if original operation with the same request ID was
+  /// received, and if so, will ignore the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [validateOnly] - Optional. If set to true, the request is validated and
+  /// the user is provided with an expected result, but no actual change is
+  /// made.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    Automation request,
+    core.String parent, {
+    core.String? automationId,
+    core.String? requestId,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (automationId != null) 'automationId': [automationId],
+      if (requestId != null) 'requestId': [requestId],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/automations';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single Automation resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the `Automation` to delete. Format should
+  /// be
+  /// projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}/automations/{automation_name}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/deliveryPipelines/\[^/\]+/automations/\[^/\]+$`.
+  ///
+  /// [allowMissing] - Optional. If set to true, then deleting an already
+  /// deleted or non-existing `Automation` will succeed.
+  ///
+  /// [etag] - Optional. The weak etag of the request. This checksum is computed
+  /// by the server based on the value of other fields, and may be sent on
+  /// update and delete requests to ensure the client has an up-to-date value
+  /// before proceeding.
+  ///
+  /// [requestId] - Optional. A request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed. The server
+  /// will guarantee that for at least 60 minutes after the first request. For
+  /// example, consider a situation where you make an initial request and the
+  /// request times out. If you make the request again with the same request ID,
+  /// the server can check if original operation with the same request ID was
+  /// received, and if so, will ignore the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [validateOnly] - Optional. If set, validate the request and verify whether
+  /// the resource exists, but do not actually post it.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.bool? allowMissing,
+    core.String? etag,
+    core.String? requestId,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
+      if (etag != null) 'etag': [etag],
+      if (requestId != null) 'requestId': [requestId],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single Automation.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the `Automation`. Format must be
+  /// projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}/automations/{automation_name}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/deliveryPipelines/\[^/\]+/automations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Automation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Automation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Automation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists Automations in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent, which owns this collection of
+  /// automations. Format must be
+  /// projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/deliveryPipelines/\[^/\]+$`.
+  ///
+  /// [filter] - Filter automations to be returned. All fields can be used in
+  /// the filter.
+  ///
+  /// [orderBy] - Field to sort by.
+  ///
+  /// [pageSize] - The maximum number of automations to return. The service may
+  /// return fewer than this value. If unspecified, at most 50 automations will
+  /// be returned. The maximum value is 1000; values above 1000 will be set to
+  /// 1000.
+  ///
+  /// [pageToken] - A page token, received from a previous `ListAutomations`
+  /// call. Provide this to retrieve the subsequent page. When paginating, all
+  /// other provided parameters match the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAutomationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAutomationsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/automations';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListAutomationsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the parameters of a single Automation resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. Name of the `Automation`. Format is
+  /// projects/{project}/locations/{location}/deliveryPipelines/{delivery_pipeline}/automations/{automation}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/deliveryPipelines/\[^/\]+/automations/\[^/\]+$`.
+  ///
+  /// [allowMissing] - Optional. If set to true, updating a `Automation` that
+  /// does not exist will result in the creation of a new `Automation`.
+  ///
+  /// [requestId] - Optional. A request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed. The server
+  /// will guarantee that for at least 60 minutes since the first request. For
+  /// example, consider a situation where you make an initial request and the
+  /// request times out. If you make the request again with the same request ID,
+  /// the server can check if original operation with the same request ID was
+  /// received, and if so, will ignore the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - Required. Field mask is used to specify the fields to be
+  /// overwritten in the `Automation` resource by the update. The fields
+  /// specified in the update_mask are relative to the resource, not the full
+  /// request. A field will be overwritten if it is in the mask. If the user
+  /// does not provide a mask then all fields will be overwritten.
+  ///
+  /// [validateOnly] - Optional. If set to true, the request is validated and
+  /// the user is provided with an expected result, but no actual change is
+  /// made.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    Automation request,
+    core.String name, {
+    core.bool? allowMissing,
+    core.String? requestId,
+    core.String? updateMask,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
+      if (requestId != null) 'requestId': [requestId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2202,6 +2681,57 @@ class AdvanceChildRolloutJobRun {
       };
 }
 
+/// Contains the information of an automated advance-rollout operation.
+class AdvanceRolloutOperation {
+  /// The phase to which the rollout will be advanced to.
+  ///
+  /// Output only.
+  core.String? destinationPhase;
+
+  /// The name of the rollout that initiates the `AutomationRun`.
+  ///
+  /// Output only.
+  core.String? rollout;
+
+  /// The phase of a deployment that initiated the operation.
+  ///
+  /// Output only.
+  core.String? sourcePhase;
+
+  /// How long the operation will be paused.
+  ///
+  /// Output only.
+  core.String? wait;
+
+  AdvanceRolloutOperation({
+    this.destinationPhase,
+    this.rollout,
+    this.sourcePhase,
+    this.wait,
+  });
+
+  AdvanceRolloutOperation.fromJson(core.Map json_)
+      : this(
+          destinationPhase: json_.containsKey('destinationPhase')
+              ? json_['destinationPhase'] as core.String
+              : null,
+          rollout: json_.containsKey('rollout')
+              ? json_['rollout'] as core.String
+              : null,
+          sourcePhase: json_.containsKey('sourcePhase')
+              ? json_['sourcePhase'] as core.String
+              : null,
+          wait: json_.containsKey('wait') ? json_['wait'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (destinationPhase != null) 'destinationPhase': destinationPhase!,
+        if (rollout != null) 'rollout': rollout!,
+        if (sourcePhase != null) 'sourcePhase': sourcePhase!,
+        if (wait != null) 'wait': wait!,
+      };
+}
+
 /// The request object used by `AdvanceRollout`.
 class AdvanceRolloutRequest {
   /// The phase ID to advance the `Rollout` to.
@@ -2227,6 +2757,67 @@ class AdvanceRolloutRequest {
 
 /// The response object from `AdvanceRollout`.
 typedef AdvanceRolloutResponse = $Empty;
+
+/// The `AdvanceRollout` automation rule will automatically advance a successful
+/// Rollout to the next phase.
+class AdvanceRolloutRule {
+  /// Information around the state of the Automation rule.
+  ///
+  /// Output only.
+  AutomationRuleCondition? condition;
+
+  /// ID of the rule.
+  ///
+  /// This id must be unique in the `Automation` resource to which this rule
+  /// belongs. The format is a-z{0,62}.
+  ///
+  /// Required.
+  core.String? id;
+
+  /// Proceeds only after phase name matched any one in the list.
+  ///
+  /// This value must consist of lower-case letters, numbers, and hyphens, start
+  /// with a letter and end with a letter or a number, and have a max length of
+  /// 63 characters. In other words, it must match the following regex:
+  /// `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+  ///
+  /// Optional.
+  core.List<core.String>? sourcePhases;
+
+  /// How long to wait after a rollout is finished.
+  ///
+  /// Optional.
+  core.String? wait;
+
+  AdvanceRolloutRule({
+    this.condition,
+    this.id,
+    this.sourcePhases,
+    this.wait,
+  });
+
+  AdvanceRolloutRule.fromJson(core.Map json_)
+      : this(
+          condition: json_.containsKey('condition')
+              ? AutomationRuleCondition.fromJson(
+                  json_['condition'] as core.Map<core.String, core.dynamic>)
+              : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          sourcePhases: json_.containsKey('sourcePhases')
+              ? (json_['sourcePhases'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          wait: json_.containsKey('wait') ? json_['wait'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (condition != null) 'condition': condition!,
+        if (id != null) 'id': id!,
+        if (sourcePhases != null) 'sourcePhases': sourcePhases!,
+        if (wait != null) 'wait': wait!,
+      };
+}
 
 /// Information specifying an Anthos Cluster.
 class AnthosCluster {
@@ -2337,6 +2928,546 @@ class AuditConfig {
 /// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
 typedef AuditLogConfig = $AuditLogConfig;
+
+/// An `Automation` resource in the Cloud Deploy API.
+///
+/// An `Automation` enables the automation of manually driven actions for a
+/// Delivery Pipeline, which includes Release promotion amongst Targets, Rollout
+/// repair and Rollout deployment strategy advancement. The intention of
+/// Automation is to reduce manual intervention in the continuous delivery
+/// process.
+class Automation {
+  /// User annotations.
+  ///
+  /// These attributes can only be set and used by the user, and not by Cloud
+  /// Deploy. Annotations must meet the following constraints: * Annotations are
+  /// key/value pairs. * Valid annotation keys have two segments: an optional
+  /// prefix and name, separated by a slash (/). * The name segment is required
+  /// and must be 63 characters or less, beginning and ending with an
+  /// alphanumeric character (\[a-z0-9A-Z\]) with dashes (-), underscores (_),
+  /// dots (.), and alphanumerics between. * The prefix is optional. If
+  /// specified, the prefix must be a DNS subdomain: a series of DNS labels
+  /// separated by dots(.), not longer than 253 characters in total, followed by
+  /// a slash (/). See
+  /// https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/#syntax-and-character-set
+  /// for more details.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? annotations;
+
+  /// Time at which the automation was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Description of the `Automation`.
+  ///
+  /// Max length is 255 characters.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// The weak etag of the `Automation` resource.
+  ///
+  /// This checksum is computed by the server based on the value of other
+  /// fields, and may be sent on update and delete requests to ensure the client
+  /// has an up-to-date value before proceeding.
+  ///
+  /// Optional.
+  core.String? etag;
+
+  /// Labels are attributes that can be set and used by both the user and by
+  /// Cloud Deploy.
+  ///
+  /// Labels must meet the following constraints: * Keys and values can contain
+  /// only lowercase letters, numeric characters, underscores, and dashes. * All
+  /// characters must use UTF-8 encoding, and international characters are
+  /// allowed. * Keys must start with a lowercase letter or international
+  /// character. * Each resource is limited to a maximum of 64 labels. Both keys
+  /// and values are additionally constrained to be \<= 63 characters.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Name of the `Automation`.
+  ///
+  /// Format is
+  /// projects/{project}/locations/{location}/deliveryPipelines/{delivery_pipeline}/automations/{automation}.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// List of Automation rules associated with the Automation resource.
+  ///
+  /// Must have at least one rule and limited to 250 rules per Delivery
+  /// Pipeline. Note: the order of the rules here is not the same as the order
+  /// of execution.
+  ///
+  /// Required.
+  core.List<AutomationRule>? rules;
+
+  /// Selected resources to which the automation will be applied.
+  ///
+  /// Required.
+  AutomationResourceSelector? selector;
+
+  /// Email address of the user-managed IAM service account that creates Cloud
+  /// Deploy release and rollout resources.
+  ///
+  /// Required.
+  core.String? serviceAccount;
+
+  /// When Suspended, automation is deactivated from execution.
+  ///
+  /// Optional.
+  core.bool? suspended;
+
+  /// Unique identifier of the `Automation`.
+  ///
+  /// Output only.
+  core.String? uid;
+
+  /// Time at which the automation was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  Automation({
+    this.annotations,
+    this.createTime,
+    this.description,
+    this.etag,
+    this.labels,
+    this.name,
+    this.rules,
+    this.selector,
+    this.serviceAccount,
+    this.suspended,
+    this.uid,
+    this.updateTime,
+  });
+
+  Automation.fromJson(core.Map json_)
+      : this(
+          annotations: json_.containsKey('annotations')
+              ? (json_['annotations'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          rules: json_.containsKey('rules')
+              ? (json_['rules'] as core.List)
+                  .map((value) => AutomationRule.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          selector: json_.containsKey('selector')
+              ? AutomationResourceSelector.fromJson(
+                  json_['selector'] as core.Map<core.String, core.dynamic>)
+              : null,
+          serviceAccount: json_.containsKey('serviceAccount')
+              ? json_['serviceAccount'] as core.String
+              : null,
+          suspended: json_.containsKey('suspended')
+              ? json_['suspended'] as core.bool
+              : null,
+          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (annotations != null) 'annotations': annotations!,
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (etag != null) 'etag': etag!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (rules != null) 'rules': rules!,
+        if (selector != null) 'selector': selector!,
+        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
+        if (suspended != null) 'suspended': suspended!,
+        if (uid != null) 'uid': uid!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// AutomationResourceSelector contains the information to select the resources
+/// to which an Automation is going to be applied.
+class AutomationResourceSelector {
+  /// Contains attributes about a target.
+  core.List<TargetAttribute>? targets;
+
+  AutomationResourceSelector({
+    this.targets,
+  });
+
+  AutomationResourceSelector.fromJson(core.Map json_)
+      : this(
+          targets: json_.containsKey('targets')
+              ? (json_['targets'] as core.List)
+                  .map((value) => TargetAttribute.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (targets != null) 'targets': targets!,
+      };
+}
+
+/// AutomationRolloutMetadata contains Automation-related actions that were
+/// performed on a rollout.
+class AutomationRolloutMetadata {
+  /// The IDs of the AutomationRuns initiated by an advance rollout rule.
+  ///
+  /// Output only.
+  core.List<core.String>? advanceAutomationRuns;
+
+  /// The ID of the AutomationRun initiated by a promote release rule.
+  ///
+  /// Output only.
+  core.String? promoteAutomationRun;
+
+  /// The IDs of the AutomationRuns initiated by a repair rollout rule.
+  ///
+  /// Output only.
+  core.List<core.String>? repairAutomationRuns;
+
+  AutomationRolloutMetadata({
+    this.advanceAutomationRuns,
+    this.promoteAutomationRun,
+    this.repairAutomationRuns,
+  });
+
+  AutomationRolloutMetadata.fromJson(core.Map json_)
+      : this(
+          advanceAutomationRuns: json_.containsKey('advanceAutomationRuns')
+              ? (json_['advanceAutomationRuns'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          promoteAutomationRun: json_.containsKey('promoteAutomationRun')
+              ? json_['promoteAutomationRun'] as core.String
+              : null,
+          repairAutomationRuns: json_.containsKey('repairAutomationRuns')
+              ? (json_['repairAutomationRuns'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (advanceAutomationRuns != null)
+          'advanceAutomationRuns': advanceAutomationRuns!,
+        if (promoteAutomationRun != null)
+          'promoteAutomationRun': promoteAutomationRun!,
+        if (repairAutomationRuns != null)
+          'repairAutomationRuns': repairAutomationRuns!,
+      };
+}
+
+/// `AutomationRule` defines the automation activities.
+class AutomationRule {
+  /// The `AdvanceRolloutRule` will automatically advance a successful Rollout.
+  ///
+  /// Optional.
+  AdvanceRolloutRule? advanceRolloutRule;
+
+  /// `PromoteReleaseRule` will automatically promote a release from the current
+  /// target to a specified target.
+  ///
+  /// Optional.
+  PromoteReleaseRule? promoteReleaseRule;
+
+  /// The `RepairRolloutRule` will automatically repair a failed rollout.
+  ///
+  /// Optional.
+  RepairRolloutRule? repairRolloutRule;
+
+  AutomationRule({
+    this.advanceRolloutRule,
+    this.promoteReleaseRule,
+    this.repairRolloutRule,
+  });
+
+  AutomationRule.fromJson(core.Map json_)
+      : this(
+          advanceRolloutRule: json_.containsKey('advanceRolloutRule')
+              ? AdvanceRolloutRule.fromJson(json_['advanceRolloutRule']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          promoteReleaseRule: json_.containsKey('promoteReleaseRule')
+              ? PromoteReleaseRule.fromJson(json_['promoteReleaseRule']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          repairRolloutRule: json_.containsKey('repairRolloutRule')
+              ? RepairRolloutRule.fromJson(json_['repairRolloutRule']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (advanceRolloutRule != null)
+          'advanceRolloutRule': advanceRolloutRule!,
+        if (promoteReleaseRule != null)
+          'promoteReleaseRule': promoteReleaseRule!,
+        if (repairRolloutRule != null) 'repairRolloutRule': repairRolloutRule!,
+      };
+}
+
+/// `AutomationRuleCondition` contains conditions relevant to an `Automation`
+/// rule.
+class AutomationRuleCondition {
+  /// Details around targets enumerated in the rule.
+  ///
+  /// Optional.
+  TargetsPresentCondition? targetsPresentCondition;
+
+  AutomationRuleCondition({
+    this.targetsPresentCondition,
+  });
+
+  AutomationRuleCondition.fromJson(core.Map json_)
+      : this(
+          targetsPresentCondition: json_.containsKey('targetsPresentCondition')
+              ? TargetsPresentCondition.fromJson(
+                  json_['targetsPresentCondition']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (targetsPresentCondition != null)
+          'targetsPresentCondition': targetsPresentCondition!,
+      };
+}
+
+/// An `AutomationRun` resource in the Cloud Deploy API.
+///
+/// An `AutomationResource` represents an automation execution instance of an
+/// automation rule.
+class AutomationRun {
+  /// Advances a rollout to the next phase.
+  ///
+  /// Output only.
+  AdvanceRolloutOperation? advanceRolloutOperation;
+
+  /// The ID of the automation that initiated the operation.
+  ///
+  /// Output only.
+  core.String? automationId;
+
+  /// Snapshot of the Automation taken at AutomationRun creation time.
+  ///
+  /// Output only.
+  Automation? automationSnapshot;
+
+  /// Time at which the `AutomationRun` was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The weak etag of the `AutomationRun` resource.
+  ///
+  /// This checksum is computed by the server based on the value of other
+  /// fields, and may be sent on update and delete requests to ensure the client
+  /// has an up-to-date value before proceeding.
+  ///
+  /// Output only.
+  core.String? etag;
+
+  /// Time the `AutomationRun` will expire.
+  ///
+  /// An `AutomationRun` will expire after 14 days from its creation date.
+  ///
+  /// Output only.
+  core.String? expireTime;
+
+  /// Name of the `AutomationRun`.
+  ///
+  /// Format is
+  /// projects/{project}/locations/{location}/deliveryPipelines/{delivery_pipeline}/automationRuns/{automation_run}.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Promotes a release to a specified 'Target'.
+  ///
+  /// Output only.
+  PromoteReleaseOperation? promoteReleaseOperation;
+
+  /// Repairs a failed 'Rollout'.
+  ///
+  /// Output only.
+  RepairRolloutOperation? repairRolloutOperation;
+
+  /// The ID of the automation rule that initiated the operation.
+  ///
+  /// Output only.
+  core.String? ruleId;
+
+  /// Email address of the user-managed IAM service account that performs the
+  /// operations against Cloud Deploy resources.
+  ///
+  /// Output only.
+  core.String? serviceAccount;
+
+  /// Current state of the `AutomationRun`.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The `AutomationRun` has an unspecified state.
+  /// - "SUCCEEDED" : The `AutomationRun` has succeeded.
+  /// - "CANCELLED" : The `AutomationRun` was cancelled.
+  /// - "FAILED" : The `AutomationRun` has failed.
+  /// - "IN_PROGRESS" : The `AutomationRun` is in progress.
+  /// - "PENDING" : The `AutomationRun` is pending.
+  core.String? state;
+
+  /// Explains the current state of the `AutomationRun`.
+  ///
+  /// Present only an explanation is needed.
+  ///
+  /// Output only.
+  core.String? stateDescription;
+
+  /// The ID of the target that represents the promotion stage that initiates
+  /// the `AutomationRun`.
+  ///
+  /// The value of this field is the last segment of a target name.
+  ///
+  /// Output only.
+  core.String? targetId;
+
+  /// Time at which the automationRun was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  /// Earliest time the `AutomationRun` will attempt to resume.
+  ///
+  /// Wait-time is configured by `wait` in automation rule.
+  ///
+  /// Output only.
+  core.String? waitUntilTime;
+
+  AutomationRun({
+    this.advanceRolloutOperation,
+    this.automationId,
+    this.automationSnapshot,
+    this.createTime,
+    this.etag,
+    this.expireTime,
+    this.name,
+    this.promoteReleaseOperation,
+    this.repairRolloutOperation,
+    this.ruleId,
+    this.serviceAccount,
+    this.state,
+    this.stateDescription,
+    this.targetId,
+    this.updateTime,
+    this.waitUntilTime,
+  });
+
+  AutomationRun.fromJson(core.Map json_)
+      : this(
+          advanceRolloutOperation: json_.containsKey('advanceRolloutOperation')
+              ? AdvanceRolloutOperation.fromJson(
+                  json_['advanceRolloutOperation']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          automationId: json_.containsKey('automationId')
+              ? json_['automationId'] as core.String
+              : null,
+          automationSnapshot: json_.containsKey('automationSnapshot')
+              ? Automation.fromJson(json_['automationSnapshot']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          expireTime: json_.containsKey('expireTime')
+              ? json_['expireTime'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          promoteReleaseOperation: json_.containsKey('promoteReleaseOperation')
+              ? PromoteReleaseOperation.fromJson(
+                  json_['promoteReleaseOperation']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          repairRolloutOperation: json_.containsKey('repairRolloutOperation')
+              ? RepairRolloutOperation.fromJson(json_['repairRolloutOperation']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          ruleId: json_.containsKey('ruleId')
+              ? json_['ruleId'] as core.String
+              : null,
+          serviceAccount: json_.containsKey('serviceAccount')
+              ? json_['serviceAccount'] as core.String
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          stateDescription: json_.containsKey('stateDescription')
+              ? json_['stateDescription'] as core.String
+              : null,
+          targetId: json_.containsKey('targetId')
+              ? json_['targetId'] as core.String
+              : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+          waitUntilTime: json_.containsKey('waitUntilTime')
+              ? json_['waitUntilTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (advanceRolloutOperation != null)
+          'advanceRolloutOperation': advanceRolloutOperation!,
+        if (automationId != null) 'automationId': automationId!,
+        if (automationSnapshot != null)
+          'automationSnapshot': automationSnapshot!,
+        if (createTime != null) 'createTime': createTime!,
+        if (etag != null) 'etag': etag!,
+        if (expireTime != null) 'expireTime': expireTime!,
+        if (name != null) 'name': name!,
+        if (promoteReleaseOperation != null)
+          'promoteReleaseOperation': promoteReleaseOperation!,
+        if (repairRolloutOperation != null)
+          'repairRolloutOperation': repairRolloutOperation!,
+        if (ruleId != null) 'ruleId': ruleId!,
+        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
+        if (state != null) 'state': state!,
+        if (stateDescription != null) 'stateDescription': stateDescription!,
+        if (targetId != null) 'targetId': targetId!,
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (waitUntilTime != null) 'waitUntilTime': waitUntilTime!,
+      };
+}
 
 /// Associates `members`, or principals, with a `role`.
 class Binding {
@@ -2558,6 +3689,12 @@ class CanaryDeployment {
         if (verify != null) 'verify': verify!,
       };
 }
+
+/// The request object used by `CancelAutomationRun`.
+typedef CancelAutomationRunRequest = $Empty;
+
+/// The response object from `CancelAutomationRun`.
+typedef CancelAutomationRunResponse = $Empty;
 
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
@@ -3912,6 +5049,94 @@ class KubernetesConfig {
       };
 }
 
+/// The response object from `ListAutomationRuns`.
+class ListAutomationRunsResponse {
+  /// The `AutomationRuns` objects.
+  core.List<AutomationRun>? automationRuns;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListAutomationRunsResponse({
+    this.automationRuns,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListAutomationRunsResponse.fromJson(core.Map json_)
+      : this(
+          automationRuns: json_.containsKey('automationRuns')
+              ? (json_['automationRuns'] as core.List)
+                  .map((value) => AutomationRun.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (automationRuns != null) 'automationRuns': automationRuns!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
+/// The response object from `ListAutomations`.
+class ListAutomationsResponse {
+  /// The `Automations` objects.
+  core.List<Automation>? automations;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListAutomationsResponse({
+    this.automations,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListAutomationsResponse.fromJson(core.Map json_)
+      : this(
+          automations: json_.containsKey('automations')
+              ? (json_['automations'] as core.List)
+                  .map((value) => Automation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (automations != null) 'automations': automations!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
 /// The response object from `ListDeliveryPipelines`.
 class ListDeliveryPipelinesResponse {
   /// The `DeliveryPipeline` objects.
@@ -4201,17 +5426,28 @@ typedef Location = $Location00;
 
 /// Metadata includes information associated with a `Rollout`.
 class Metadata {
+  /// AutomationRolloutMetadata contains the information about the interactions
+  /// between Automation service and this rollout.
+  ///
+  /// Output only.
+  AutomationRolloutMetadata? automation;
+
   /// The name of the Cloud Run Service that is associated with a `Rollout`.
   ///
   /// Output only.
   CloudRunMetadata? cloudRun;
 
   Metadata({
+    this.automation,
     this.cloudRun,
   });
 
   Metadata.fromJson(core.Map json_)
       : this(
+          automation: json_.containsKey('automation')
+              ? AutomationRolloutMetadata.fromJson(
+                  json_['automation'] as core.Map<core.String, core.dynamic>)
+              : null,
           cloudRun: json_.containsKey('cloudRun')
               ? CloudRunMetadata.fromJson(
                   json_['cloudRun'] as core.Map<core.String, core.dynamic>)
@@ -4219,6 +5455,7 @@ class Metadata {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (automation != null) 'automation': automation!,
         if (cloudRun != null) 'cloudRun': cloudRun!,
       };
 }
@@ -5000,6 +6237,133 @@ class PrivatePool {
       };
 }
 
+/// Contains the information of an automated promote-release operation.
+class PromoteReleaseOperation {
+  /// The starting phase of the rollout created by this operation.
+  ///
+  /// Output only.
+  core.String? phase;
+
+  /// The name of the rollout that initiates the `AutomationRun`.
+  ///
+  /// Output only.
+  core.String? rollout;
+
+  /// The ID of the target that represents the promotion stage to which the
+  /// release will be promoted.
+  ///
+  /// The value of this field is the last segment of a target name.
+  ///
+  /// Output only.
+  core.String? targetId;
+
+  /// How long the operation will be paused.
+  ///
+  /// Output only.
+  core.String? wait;
+
+  PromoteReleaseOperation({
+    this.phase,
+    this.rollout,
+    this.targetId,
+    this.wait,
+  });
+
+  PromoteReleaseOperation.fromJson(core.Map json_)
+      : this(
+          phase:
+              json_.containsKey('phase') ? json_['phase'] as core.String : null,
+          rollout: json_.containsKey('rollout')
+              ? json_['rollout'] as core.String
+              : null,
+          targetId: json_.containsKey('targetId')
+              ? json_['targetId'] as core.String
+              : null,
+          wait: json_.containsKey('wait') ? json_['wait'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (phase != null) 'phase': phase!,
+        if (rollout != null) 'rollout': rollout!,
+        if (targetId != null) 'targetId': targetId!,
+        if (wait != null) 'wait': wait!,
+      };
+}
+
+/// `PromoteRelease` rule will automatically promote a release from the current
+/// target to a specified target.
+class PromoteReleaseRule {
+  /// Information around the state of the Automation rule.
+  ///
+  /// Output only.
+  AutomationRuleCondition? condition;
+
+  /// The starting phase of the rollout created by this operation.
+  ///
+  /// Default to the first phase.
+  ///
+  /// Optional.
+  core.String? destinationPhase;
+
+  /// The ID of the stage in the pipeline to which this `Release` is deploying.
+  ///
+  /// If unspecified, default it to the next stage in the promotion flow. The
+  /// value of this field could be one of the following: * The last segment of a
+  /// target name. It only needs the ID to determine if the target is one of the
+  /// stages in the promotion sequence defined in the pipeline. * "@next", the
+  /// next target in the promotion sequence.
+  ///
+  /// Optional.
+  core.String? destinationTargetId;
+
+  /// ID of the rule.
+  ///
+  /// This id must be unique in the `Automation` resource to which this rule
+  /// belongs. The format is a-z{0,62}.
+  ///
+  /// Required.
+  core.String? id;
+
+  /// How long the release need to be paused until being promoted to the next
+  /// target.
+  ///
+  /// Optional.
+  core.String? wait;
+
+  PromoteReleaseRule({
+    this.condition,
+    this.destinationPhase,
+    this.destinationTargetId,
+    this.id,
+    this.wait,
+  });
+
+  PromoteReleaseRule.fromJson(core.Map json_)
+      : this(
+          condition: json_.containsKey('condition')
+              ? AutomationRuleCondition.fromJson(
+                  json_['condition'] as core.Map<core.String, core.dynamic>)
+              : null,
+          destinationPhase: json_.containsKey('destinationPhase')
+              ? json_['destinationPhase'] as core.String
+              : null,
+          destinationTargetId: json_.containsKey('destinationTargetId')
+              ? json_['destinationTargetId'] as core.String
+              : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          wait: json_.containsKey('wait') ? json_['wait'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (condition != null) 'condition': condition!,
+        if (destinationPhase != null) 'destinationPhase': destinationPhase!,
+        if (destinationTargetId != null)
+          'destinationTargetId': destinationTargetId!,
+        if (id != null) 'id': id!,
+        if (wait != null) 'wait': wait!,
+      };
+}
+
 /// A `Release` resource in the Cloud Deploy API.
 ///
 /// A `Release` defines a specific Skaffold configuration instance that can be
@@ -5365,6 +6729,325 @@ class RenderMetadata {
       };
 }
 
+/// Configuration of the repair action.
+class RepairMode {
+  /// Retries a failed job.
+  ///
+  /// Optional.
+  Retry? retry;
+
+  /// Rolls back a `Rollout`.
+  ///
+  /// Optional.
+  Rollback? rollback;
+
+  RepairMode({
+    this.retry,
+    this.rollback,
+  });
+
+  RepairMode.fromJson(core.Map json_)
+      : this(
+          retry: json_.containsKey('retry')
+              ? Retry.fromJson(
+                  json_['retry'] as core.Map<core.String, core.dynamic>)
+              : null,
+          rollback: json_.containsKey('rollback')
+              ? Rollback.fromJson(
+                  json_['rollback'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (retry != null) 'retry': retry!,
+        if (rollback != null) 'rollback': rollback!,
+      };
+}
+
+/// RepairPhase tracks the repair attempts that have been made for each
+/// `RepairMode` specified in the `Automation` resource.
+class RepairPhase {
+  /// Records of the retry attempts for retry repair mode.
+  ///
+  /// Output only.
+  RetryPhase? retry;
+
+  /// Rollback attempt for rollback repair mode .
+  ///
+  /// Output only.
+  RollbackAttempt? rollback;
+
+  RepairPhase({
+    this.retry,
+    this.rollback,
+  });
+
+  RepairPhase.fromJson(core.Map json_)
+      : this(
+          retry: json_.containsKey('retry')
+              ? RetryPhase.fromJson(
+                  json_['retry'] as core.Map<core.String, core.dynamic>)
+              : null,
+          rollback: json_.containsKey('rollback')
+              ? RollbackAttempt.fromJson(
+                  json_['rollback'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (retry != null) 'retry': retry!,
+        if (rollback != null) 'rollback': rollback!,
+      };
+}
+
+/// Contains the information for an automated `repair rollout` operation.
+class RepairRolloutOperation {
+  /// The index of the current repair action in the repair sequence.
+  ///
+  /// Output only.
+  core.String? currentRepairModeIndex;
+
+  /// Records of the repair attempts.
+  ///
+  /// Each repair phase may have multiple retry attempts or single rollback
+  /// attempt.
+  ///
+  /// Output only.
+  core.List<RepairPhase>? repairPhases;
+
+  /// The name of the rollout that initiates the `AutomationRun`.
+  ///
+  /// Output only.
+  core.String? rollout;
+
+  RepairRolloutOperation({
+    this.currentRepairModeIndex,
+    this.repairPhases,
+    this.rollout,
+  });
+
+  RepairRolloutOperation.fromJson(core.Map json_)
+      : this(
+          currentRepairModeIndex: json_.containsKey('currentRepairModeIndex')
+              ? json_['currentRepairModeIndex'] as core.String
+              : null,
+          repairPhases: json_.containsKey('repairPhases')
+              ? (json_['repairPhases'] as core.List)
+                  .map((value) => RepairPhase.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          rollout: json_.containsKey('rollout')
+              ? json_['rollout'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (currentRepairModeIndex != null)
+          'currentRepairModeIndex': currentRepairModeIndex!,
+        if (repairPhases != null) 'repairPhases': repairPhases!,
+        if (rollout != null) 'rollout': rollout!,
+      };
+}
+
+/// The `RepairRolloutRule` automation rule will automatically repair a failed
+/// `Rollout`.
+class RepairRolloutRule {
+  /// Information around the state of the 'Automation' rule.
+  ///
+  /// Output only.
+  AutomationRuleCondition? condition;
+
+  /// ID of the rule.
+  ///
+  /// This id must be unique in the `Automation` resource to which this rule
+  /// belongs. The format is a-z{0,62}.
+  ///
+  /// Required.
+  core.String? id;
+
+  /// Jobs to repair.
+  ///
+  /// Proceeds only after job name matched any one in the list, or for all jobs
+  /// if unspecified or empty. The phase that includes the job must match the
+  /// phase ID specified in `source_phase`. This value must consist of
+  /// lower-case letters, numbers, and hyphens, start with a letter and end with
+  /// a letter or a number, and have a max length of 63 characters. In other
+  /// words, it must match the following regex:
+  /// `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+  ///
+  /// Optional.
+  core.List<core.String>? jobs;
+
+  /// Defines the types of automatic repair actions for failed jobs.
+  ///
+  /// Required.
+  core.List<RepairMode>? repairModes;
+
+  /// Phases within which jobs are subject to automatic repair actions on
+  /// failure.
+  ///
+  /// Proceeds only after phase name matched any one in the list, or for all
+  /// phases if unspecified. This value must consist of lower-case letters,
+  /// numbers, and hyphens, start with a letter and end with a letter or a
+  /// number, and have a max length of 63 characters. In other words, it must
+  /// match the following regex: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+  ///
+  /// Optional.
+  core.List<core.String>? sourcePhases;
+
+  RepairRolloutRule({
+    this.condition,
+    this.id,
+    this.jobs,
+    this.repairModes,
+    this.sourcePhases,
+  });
+
+  RepairRolloutRule.fromJson(core.Map json_)
+      : this(
+          condition: json_.containsKey('condition')
+              ? AutomationRuleCondition.fromJson(
+                  json_['condition'] as core.Map<core.String, core.dynamic>)
+              : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          jobs: json_.containsKey('jobs')
+              ? (json_['jobs'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          repairModes: json_.containsKey('repairModes')
+              ? (json_['repairModes'] as core.List)
+                  .map((value) => RepairMode.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          sourcePhases: json_.containsKey('sourcePhases')
+              ? (json_['sourcePhases'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (condition != null) 'condition': condition!,
+        if (id != null) 'id': id!,
+        if (jobs != null) 'jobs': jobs!,
+        if (repairModes != null) 'repairModes': repairModes!,
+        if (sourcePhases != null) 'sourcePhases': sourcePhases!,
+      };
+}
+
+/// Retries the failed job.
+class Retry {
+  /// Total number of retries.
+  ///
+  /// Retry will skipped if set to 0; The minimum value is 1, and the maximum
+  /// value is 10.
+  ///
+  /// Required.
+  core.String? attempts;
+
+  /// The pattern of how wait time will be increased.
+  ///
+  /// Default is linear. Backoff mode will be ignored if `wait` is 0.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "BACKOFF_MODE_UNSPECIFIED" : No WaitMode is specified.
+  /// - "BACKOFF_MODE_LINEAR" : Increases the wait time linearly.
+  /// - "BACKOFF_MODE_EXPONENTIAL" : Increases the wait time exponentially.
+  core.String? backoffMode;
+
+  /// How long to wait for the first retry.
+  ///
+  /// Default is 0, and the maximum value is 14d.
+  ///
+  /// Optional.
+  core.String? wait;
+
+  Retry({
+    this.attempts,
+    this.backoffMode,
+    this.wait,
+  });
+
+  Retry.fromJson(core.Map json_)
+      : this(
+          attempts: json_.containsKey('attempts')
+              ? json_['attempts'] as core.String
+              : null,
+          backoffMode: json_.containsKey('backoffMode')
+              ? json_['backoffMode'] as core.String
+              : null,
+          wait: json_.containsKey('wait') ? json_['wait'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attempts != null) 'attempts': attempts!,
+        if (backoffMode != null) 'backoffMode': backoffMode!,
+        if (wait != null) 'wait': wait!,
+      };
+}
+
+/// RetryAttempt represents an action of retrying the failed Cloud Deploy job.
+class RetryAttempt {
+  /// The index of this retry attempt.
+  ///
+  /// Output only.
+  core.String? attempt;
+
+  /// Valid state of this retry action.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "REPAIR_STATE_UNSPECIFIED" : The `repair` has an unspecified state.
+  /// - "REPAIR_STATE_SUCCEEDED" : The `repair` action has succeeded.
+  /// - "REPAIR_STATE_CANCELLED" : The `repair` action was cancelled.
+  /// - "REPAIR_STATE_FAILED" : The `repair` action has failed.
+  /// - "REPAIR_STATE_IN_PROGRESS" : The `repair` action is in progress.
+  /// - "REPAIR_STATE_PENDING" : The `repair` action is pending.
+  /// - "REPAIR_STATE_SKIPPED" : The `repair` action was skipped.
+  core.String? state;
+
+  /// Description of the state of the Retry.
+  ///
+  /// Output only.
+  core.String? stateDesc;
+
+  /// How long the operation will be paused.
+  ///
+  /// Output only.
+  core.String? wait;
+
+  RetryAttempt({
+    this.attempt,
+    this.state,
+    this.stateDesc,
+    this.wait,
+  });
+
+  RetryAttempt.fromJson(core.Map json_)
+      : this(
+          attempt: json_.containsKey('attempt')
+              ? json_['attempt'] as core.String
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          stateDesc: json_.containsKey('stateDesc')
+              ? json_['stateDesc'] as core.String
+              : null,
+          wait: json_.containsKey('wait') ? json_['wait'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attempt != null) 'attempt': attempt!,
+        if (state != null) 'state': state!,
+        if (stateDesc != null) 'stateDesc': stateDesc!,
+        if (wait != null) 'wait': wait!,
+      };
+}
+
 /// RetryJobRequest is the request object used by `RetryJob`.
 class RetryJobRequest {
   /// The job ID for the Job to retry.
@@ -5399,6 +7082,162 @@ class RetryJobRequest {
 
 /// The response object from 'RetryJob'.
 typedef RetryJobResponse = $Empty;
+
+/// RetryPhase contains the retry attempts and the metadata for initiating a new
+/// attempt.
+class RetryPhase {
+  /// Detail of a retry action.
+  ///
+  /// Output only.
+  core.List<RetryAttempt>? attempts;
+
+  /// The pattern of how the wait time of the retry attempt is calculated.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "BACKOFF_MODE_UNSPECIFIED" : No WaitMode is specified.
+  /// - "BACKOFF_MODE_LINEAR" : Increases the wait time linearly.
+  /// - "BACKOFF_MODE_EXPONENTIAL" : Increases the wait time exponentially.
+  core.String? backoffMode;
+
+  /// The job ID for the Job to retry.
+  ///
+  /// Output only.
+  core.String? jobId;
+
+  /// The phase ID of the phase that includes the job being retried.
+  ///
+  /// Output only.
+  core.String? phaseId;
+
+  /// The number of attempts that have been made.
+  ///
+  /// Output only.
+  core.String? totalAttempts;
+
+  RetryPhase({
+    this.attempts,
+    this.backoffMode,
+    this.jobId,
+    this.phaseId,
+    this.totalAttempts,
+  });
+
+  RetryPhase.fromJson(core.Map json_)
+      : this(
+          attempts: json_.containsKey('attempts')
+              ? (json_['attempts'] as core.List)
+                  .map((value) => RetryAttempt.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          backoffMode: json_.containsKey('backoffMode')
+              ? json_['backoffMode'] as core.String
+              : null,
+          jobId:
+              json_.containsKey('jobId') ? json_['jobId'] as core.String : null,
+          phaseId: json_.containsKey('phaseId')
+              ? json_['phaseId'] as core.String
+              : null,
+          totalAttempts: json_.containsKey('totalAttempts')
+              ? json_['totalAttempts'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attempts != null) 'attempts': attempts!,
+        if (backoffMode != null) 'backoffMode': backoffMode!,
+        if (jobId != null) 'jobId': jobId!,
+        if (phaseId != null) 'phaseId': phaseId!,
+        if (totalAttempts != null) 'totalAttempts': totalAttempts!,
+      };
+}
+
+/// Rolls back a `Rollout`.
+class Rollback {
+  /// The starting phase ID for the `Rollout`.
+  ///
+  /// If unspecified, the `Rollout` will start in the stable phase.
+  ///
+  /// Optional.
+  core.String? destinationPhase;
+
+  Rollback({
+    this.destinationPhase,
+  });
+
+  Rollback.fromJson(core.Map json_)
+      : this(
+          destinationPhase: json_.containsKey('destinationPhase')
+              ? json_['destinationPhase'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (destinationPhase != null) 'destinationPhase': destinationPhase!,
+      };
+}
+
+/// RollbackAttempt represents an action of rolling back a Cloud Deploy
+/// 'Target'.
+class RollbackAttempt {
+  /// The phase to which the rollout will be rolled back to.
+  ///
+  /// Output only.
+  core.String? destinationPhase;
+
+  /// ID of the rollback `Rollout` to create.
+  ///
+  /// Output only.
+  core.String? rolloutId;
+
+  /// Valid state of this rollback action.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "REPAIR_STATE_UNSPECIFIED" : The `repair` has an unspecified state.
+  /// - "REPAIR_STATE_SUCCEEDED" : The `repair` action has succeeded.
+  /// - "REPAIR_STATE_CANCELLED" : The `repair` action was cancelled.
+  /// - "REPAIR_STATE_FAILED" : The `repair` action has failed.
+  /// - "REPAIR_STATE_IN_PROGRESS" : The `repair` action is in progress.
+  /// - "REPAIR_STATE_PENDING" : The `repair` action is pending.
+  /// - "REPAIR_STATE_SKIPPED" : The `repair` action was skipped.
+  core.String? state;
+
+  /// Description of the state of the Rollback.
+  ///
+  /// Output only.
+  core.String? stateDesc;
+
+  RollbackAttempt({
+    this.destinationPhase,
+    this.rolloutId,
+    this.state,
+    this.stateDesc,
+  });
+
+  RollbackAttempt.fromJson(core.Map json_)
+      : this(
+          destinationPhase: json_.containsKey('destinationPhase')
+              ? json_['destinationPhase'] as core.String
+              : null,
+          rolloutId: json_.containsKey('rolloutId')
+              ? json_['rolloutId'] as core.String
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          stateDesc: json_.containsKey('stateDesc')
+              ? json_['stateDesc'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (destinationPhase != null) 'destinationPhase': destinationPhase!,
+        if (rolloutId != null) 'rolloutId': rolloutId!,
+        if (state != null) 'state': state!,
+        if (stateDesc != null) 'stateDesc': stateDesc!,
+      };
+}
 
 /// Configs for the Rollback rollout.
 class RollbackTargetConfig {
@@ -6525,6 +8364,47 @@ class TargetArtifact {
         if (phaseArtifacts != null) 'phaseArtifacts': phaseArtifacts!,
         if (skaffoldConfigPath != null)
           'skaffoldConfigPath': skaffoldConfigPath!,
+      };
+}
+
+/// Contains criteria for selecting Targets.
+///
+/// Attributes provided must match the target resource in order for policy
+/// restrictions to apply. E.g. if id "prod" and labels "foo: bar" are given the
+/// target resource must match both that id and have that label in order to be
+/// selected.
+class TargetAttribute {
+  /// ID of the `Target`.
+  ///
+  /// The value of this field could be one of the following: * The last segment
+  /// of a target name. It only needs the ID to determine which target is being
+  /// referred to * "*", all targets in a location.
+  core.String? id;
+
+  /// Target labels.
+  core.Map<core.String, core.String>? labels;
+
+  TargetAttribute({
+    this.id,
+    this.labels,
+  });
+
+  TargetAttribute.fromJson(core.Map json_)
+      : this(
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (id != null) 'id': id!,
+        if (labels != null) 'labels': labels!,
       };
 }
 

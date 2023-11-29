@@ -23,12 +23,21 @@
 ///
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsGlobalResource]
+///       - [ProjectsLocationsGlobalDnsBindPermissionResource]
+///       - [ProjectsLocationsGlobalNetworkPeeringsResource]
+///         - [ProjectsLocationsGlobalNetworkPeeringsPeeringRoutesResource]
 ///     - [ProjectsLocationsNetworkPoliciesResource]
+///       - [ProjectsLocationsNetworkPoliciesExternalAccessRulesResource]
 ///     - [ProjectsLocationsNodeTypesResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsPrivateCloudsResource]
 ///       - [ProjectsLocationsPrivateCloudsClustersResource]
+///         - [ProjectsLocationsPrivateCloudsClustersNodesResource]
+///       - [ProjectsLocationsPrivateCloudsExternalAddressesResource]
 ///       - [ProjectsLocationsPrivateCloudsHcxActivationKeysResource]
+///       - [ProjectsLocationsPrivateCloudsLoggingServersResource]
+///       - [ProjectsLocationsPrivateCloudsManagementDnsZoneBindingsResource]
 ///       - [ProjectsLocationsPrivateCloudsSubnetsResource]
 ///     - [ProjectsLocationsPrivateConnectionsResource]
 ///       - [ProjectsLocationsPrivateConnectionsPeeringRoutesResource]
@@ -79,6 +88,8 @@ class ProjectsResource {
 class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsGlobalResource get global =>
+      ProjectsLocationsGlobalResource(_requester);
   ProjectsLocationsNetworkPoliciesResource get networkPolicies =>
       ProjectsLocationsNetworkPoliciesResource(_requester);
   ProjectsLocationsNodeTypesResource get nodeTypes =>
@@ -182,8 +193,570 @@ class ProjectsLocationsResource {
   }
 }
 
+class ProjectsLocationsGlobalResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsGlobalDnsBindPermissionResource get dnsBindPermission =>
+      ProjectsLocationsGlobalDnsBindPermissionResource(_requester);
+  ProjectsLocationsGlobalNetworkPeeringsResource get networkPeerings =>
+      ProjectsLocationsGlobalNetworkPeeringsResource(_requester);
+
+  ProjectsLocationsGlobalResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets all the principals having bind permission on the intranet VPC
+  /// associated with the consumer project granted by the Grant API.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the resource which stores the users/service
+  /// accounts having the permission to bind to the corresponding intranet VPC
+  /// of the consumer project. DnsBindPermission is a global resource. Resource
+  /// names are schemeless URIs that follow the conventions in
+  /// https://cloud.google.com/apis/design/resource_names. For example:
+  /// `projects/my-project/locations/global/dnsBindPermission`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/dnsBindPermission$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DnsBindPermission].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DnsBindPermission> getDnsBindPermission(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return DnsBindPermission.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsGlobalDnsBindPermissionResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsGlobalDnsBindPermissionResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Grants the bind permission to the customer provided principal(user /
+  /// service account) to bind their DNS zone with the intranet VPC associated
+  /// with the project.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the resource which stores the users/service
+  /// accounts having the permission to bind to the corresponding intranet VPC
+  /// of the consumer project. DnsBindPermission is a global resource. Resource
+  /// names are schemeless URIs that follow the conventions in
+  /// https://cloud.google.com/apis/design/resource_names. For example:
+  /// `projects/my-project/locations/global/dnsBindPermission`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/dnsBindPermission$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> grant(
+    GrantDnsBindPermissionRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':grant';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Revokes the bind permission from the customer provided principal(user /
+  /// service account) on the intranet VPC associated with the consumer project.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the resource which stores the users/service
+  /// accounts having the permission to bind to the corresponding intranet VPC
+  /// of the consumer project. DnsBindPermission is a global resource. Resource
+  /// names are schemeless URIs that follow the conventions in
+  /// https://cloud.google.com/apis/design/resource_names. For example:
+  /// `projects/my-project/locations/global/dnsBindPermission`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/dnsBindPermission$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> revoke(
+    RevokeDnsBindPermissionRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':revoke';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsGlobalNetworkPeeringsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsGlobalNetworkPeeringsPeeringRoutesResource
+      get peeringRoutes =>
+          ProjectsLocationsGlobalNetworkPeeringsPeeringRoutesResource(
+              _requester);
+
+  ProjectsLocationsGlobalNetworkPeeringsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new network peering between the peer network and VMware Engine
+  /// network provided in a `NetworkPeering` resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the location to create the new
+  /// network peering in. This value is always `global`, because
+  /// `NetworkPeering` is a global resource. Resource names are schemeless URIs
+  /// that follow the conventions in
+  /// https://cloud.google.com/apis/design/resource_names. For example:
+  /// `projects/my-project/locations/global`
+  /// Value must have pattern `^projects/\[^/\]+/locations/global$`.
+  ///
+  /// [networkPeeringId] - Required. The user-provided identifier of the new
+  /// `NetworkPeering`. This identifier must be unique among `NetworkPeering`
+  /// resources within the parent and becomes the final token in the name URI.
+  /// The identifier must meet the following requirements: * Only contains 1-63
+  /// alphanumeric characters and hyphens * Begins with an alphabetical
+  /// character * Ends with a non-hyphen character * Not formatted as a UUID *
+  /// Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034)
+  /// (section 3.5)
+  ///
+  /// [requestId] - Optional. A request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed. The server
+  /// guarantees that a request doesn't result in creation of duplicate
+  /// commitments for at least 60 minutes. For example, consider a situation
+  /// where you make an initial request and the request times out. If you make
+  /// the request again with the same request ID, the server can check if
+  /// original operation with the same request ID was received, and if so, will
+  /// ignore the second request. This prevents clients from accidentally
+  /// creating duplicate commitments. The request ID must be a valid UUID with
+  /// the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    NetworkPeering request,
+    core.String parent, {
+    core.String? networkPeeringId,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (networkPeeringId != null) 'networkPeeringId': [networkPeeringId],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/networkPeerings';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a `NetworkPeering` resource.
+  ///
+  /// When a network peering is deleted for a VMware Engine network, the peer
+  /// network becomes inaccessible to that VMware Engine network.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the network peering to be deleted.
+  /// Resource names are schemeless URIs that follow the conventions in
+  /// https://cloud.google.com/apis/design/resource_names. For example:
+  /// `projects/my-project/locations/global/networkPeerings/my-peering`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/networkPeerings/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. A request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed. The server
+  /// guarantees that a request doesn't result in creation of duplicate
+  /// commitments for at least 60 minutes. For example, consider a situation
+  /// where you make an initial request and the request times out. If you make
+  /// the request again with the same request ID, the server can check if
+  /// original operation with the same request ID was received, and if so, will
+  /// ignore the second request. This prevents clients from accidentally
+  /// creating duplicate commitments. The request ID must be a valid UUID with
+  /// the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves a `NetworkPeering` resource by its resource name.
+  ///
+  /// The resource contains details of the network peering, such as peered
+  /// networks, import and export custom route configurations, and peering
+  /// state.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the network peering to retrieve.
+  /// Resource names are schemeless URIs that follow the conventions in
+  /// https://cloud.google.com/apis/design/resource_names. For example:
+  /// `projects/my-project/locations/global/networkPeerings/my-peering`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/networkPeerings/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [NetworkPeering].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<NetworkPeering> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return NetworkPeering.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists `NetworkPeering` resources in a given project.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the location (global) to query
+  /// for network peerings. Resource names are schemeless URIs that follow the
+  /// conventions in https://cloud.google.com/apis/design/resource_names. For
+  /// example: `projects/my-project/locations/global`
+  /// Value must have pattern `^projects/\[^/\]+/locations/global$`.
+  ///
+  /// [filter] - A filter expression that matches resources returned in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be `=`,
+  /// `!=`, `>`, or `<`. For example, if you are filtering a list of network
+  /// peerings, you can exclude the ones named `example-peering` by specifying
+  /// `name != "example-peering"`. To filter on multiple expressions, provide
+  /// each separate expression within parentheses. For example: ``` (name =
+  /// "example-peering") (createTime > "2021-04-12T08:15:10.40Z") ``` By
+  /// default, each expression is an `AND` expression. However, you can include
+  /// `AND` and `OR` expressions explicitly. For example: ``` (name =
+  /// "example-peering-1") AND (createTime > "2021-04-12T08:15:10.40Z") OR (name
+  /// = "example-peering-2") ```
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, returned
+  /// results are ordered by `name` in ascending order. You can also sort
+  /// results in descending order based on the `name` value using `orderBy="name
+  /// desc"`. Currently, only ordering by `name` is supported.
+  ///
+  /// [pageSize] - The maximum number of network peerings to return in one page.
+  /// The maximum value is coerced to 1000. The default value of this field is
+  /// 500.
+  ///
+  /// [pageToken] - A page token, received from a previous `ListNetworkPeerings`
+  /// call. Provide this to retrieve the subsequent page. When paginating, all
+  /// other parameters provided to `ListNetworkPeerings` must match the call
+  /// that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListNetworkPeeringsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListNetworkPeeringsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/networkPeerings';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListNetworkPeeringsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Modifies a `NetworkPeering` resource.
+  ///
+  /// Only the `description` field can be updated. Only fields specified in
+  /// `updateMask` are applied.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. The resource name of the network peering. Resource
+  /// names are scheme-less URIs that follow the conventions in
+  /// https://cloud.google.com/apis/design/resource_names. For example:
+  /// `projects/my-project/locations/global/networkPeerings/my-peering`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/networkPeerings/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. A request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed. The server
+  /// guarantees that a request doesn't result in creation of duplicate
+  /// commitments for at least 60 minutes. For example, consider a situation
+  /// where you make an initial request and the request times out. If you make
+  /// the request again with the same request ID, the server can check if
+  /// original operation with the same request ID was received, and if so, will
+  /// ignore the second request. This prevents clients from accidentally
+  /// creating duplicate commitments. The request ID must be a valid UUID with
+  /// the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - Required. Field mask is used to specify the fields to be
+  /// overwritten in the `NetworkPeering` resource by the update. The fields
+  /// specified in the `update_mask` are relative to the resource, not the full
+  /// request. A field will be overwritten if it is in the mask. If the user
+  /// does not provide a mask then all fields will be overwritten.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    NetworkPeering request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsGlobalNetworkPeeringsPeeringRoutesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsGlobalNetworkPeeringsPeeringRoutesResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists the network peering routes exchanged over a peering connection.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the network peering to retrieve
+  /// peering routes from. Resource names are schemeless URIs that follow the
+  /// conventions in https://cloud.google.com/apis/design/resource_names. For
+  /// example: `projects/my-project/locations/global/networkPeerings/my-peering`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/networkPeerings/\[^/\]+$`.
+  ///
+  /// [filter] - A filter expression that matches resources returned in the
+  /// response. Currently, only filtering on the `direction` field is supported.
+  /// To return routes imported from the peer network, provide
+  /// "direction=INCOMING". To return routes exported from the VMware Engine
+  /// network, provide "direction=OUTGOING". Other filter expressions return an
+  /// error.
+  ///
+  /// [pageSize] - The maximum number of peering routes to return in one page.
+  /// The service may return fewer than this value. The maximum value is coerced
+  /// to 1000. The default value of this field is 500.
+  ///
+  /// [pageToken] - A page token, received from a previous `ListPeeringRoutes`
+  /// call. Provide this to retrieve the subsequent page. When paginating, all
+  /// other parameters provided to `ListPeeringRoutes` must match the call that
+  /// provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListPeeringRoutesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListPeeringRoutesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/peeringRoutes';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListPeeringRoutesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsNetworkPoliciesResource {
   final commons.ApiRequester _requester;
+
+  ProjectsLocationsNetworkPoliciesExternalAccessRulesResource
+      get externalAccessRules =>
+          ProjectsLocationsNetworkPoliciesExternalAccessRulesResource(
+              _requester);
 
   ProjectsLocationsNetworkPoliciesResource(commons.ApiRequester client)
       : _requester = client;
@@ -316,6 +889,65 @@ class ProjectsLocationsNetworkPoliciesResource {
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists external IP addresses assigned to VMware workload VMs within the
+  /// scope of the given network policy.
+  ///
+  /// Request parameters:
+  ///
+  /// [networkPolicy] - Required. The resource name of the network policy to
+  /// query for assigned external IP addresses. Resource names are schemeless
+  /// URIs that follow the conventions in
+  /// https://cloud.google.com/apis/design/resource_names. For example:
+  /// `projects/my-project/locations/us-central1/networkPolicies/my-policy`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/networkPolicies/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of external IP addresses to return in one
+  /// page. The service may return fewer than this value. The maximum value is
+  /// coerced to 1000. The default value of this field is 500.
+  ///
+  /// [pageToken] - A page token, received from a previous
+  /// `FetchNetworkPolicyExternalAddresses` call. Provide this to retrieve the
+  /// subsequent page. When paginating, all parameters provided to
+  /// `FetchNetworkPolicyExternalAddresses`, except for `page_size` and
+  /// `page_token`, must match the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [FetchNetworkPolicyExternalAddressesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<FetchNetworkPolicyExternalAddressesResponse>
+      fetchExternalAddresses(
+    core.String networkPolicy, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$networkPolicy') +
+        ':fetchExternalAddresses';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return FetchNetworkPolicyExternalAddressesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a `NetworkPolicy` resource by its resource name.
@@ -488,6 +1120,329 @@ class ProjectsLocationsNetworkPoliciesResource {
   /// this method will complete with the same error.
   async.Future<Operation> patch(
     NetworkPolicy request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsNetworkPoliciesExternalAccessRulesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsNetworkPoliciesExternalAccessRulesResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new external access rule in a given network policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the network policy to create a
+  /// new external access firewall rule in. Resource names are schemeless URIs
+  /// that follow the conventions in
+  /// https://cloud.google.com/apis/design/resource_names. For example:
+  /// `projects/my-project/locations/us-central1/networkPolicies/my-policy`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/networkPolicies/\[^/\]+$`.
+  ///
+  /// [externalAccessRuleId] - Required. The user-provided identifier of the
+  /// `ExternalAccessRule` to be created. This identifier must be unique among
+  /// `ExternalAccessRule` resources within the parent and becomes the final
+  /// token in the name URI. The identifier must meet the following
+  /// requirements: * Only contains 1-63 alphanumeric characters and hyphens *
+  /// Begins with an alphabetical character * Ends with a non-hyphen character *
+  /// Not formatted as a UUID * Complies with
+  /// [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+  ///
+  /// [requestId] - A request ID to identify requests. Specify a unique request
+  /// ID so that if you must retry your request, the server will know to ignore
+  /// the request if it has already been completed. The server guarantees that a
+  /// request doesn't result in creation of duplicate commitments for at least
+  /// 60 minutes. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if the original operation with the
+  /// same request ID was received, and if so, will ignore the second request.
+  /// This prevents clients from accidentally creating duplicate commitments.
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    ExternalAccessRule request,
+    core.String parent, {
+    core.String? externalAccessRuleId,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (externalAccessRuleId != null)
+        'externalAccessRuleId': [externalAccessRuleId],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/externalAccessRules';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single external access rule.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the external access firewall rule
+  /// to delete. Resource names are schemeless URIs that follow the conventions
+  /// in https://cloud.google.com/apis/design/resource_names. For example:
+  /// `projects/my-project/locations/us-central1/networkPolicies/my-policy/externalAccessRules/my-rule`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/networkPolicies/\[^/\]+/externalAccessRules/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. A request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed. The server
+  /// guarantees that a request doesn't result in creation of duplicate
+  /// commitments for at least 60 minutes. For example, consider a situation
+  /// where you make an initial request and the request times out. If you make
+  /// the request again with the same request ID, the server can check if the
+  /// original operation with the same request ID was received, and if so, will
+  /// ignore the second request. This prevents clients from accidentally
+  /// creating duplicate commitments. The request ID must be a valid UUID with
+  /// the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single external access rule.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the external access firewall rule
+  /// to retrieve. Resource names are schemeless URIs that follow the
+  /// conventions in https://cloud.google.com/apis/design/resource_names. For
+  /// example:
+  /// `projects/my-project/locations/us-central1/networkPolicies/my-policy/externalAccessRules/my-rule`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/networkPolicies/\[^/\]+/externalAccessRules/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ExternalAccessRule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ExternalAccessRule> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ExternalAccessRule.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists `ExternalAccessRule` resources in the specified network policy.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the network policy to query for
+  /// external access firewall rules. Resource names are schemeless URIs that
+  /// follow the conventions in
+  /// https://cloud.google.com/apis/design/resource_names. For example:
+  /// `projects/my-project/locations/us-central1/networkPolicies/my-policy`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/networkPolicies/\[^/\]+$`.
+  ///
+  /// [filter] - A filter expression that matches resources returned in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be `=`,
+  /// `!=`, `>`, or `<`. For example, if you are filtering a list of external
+  /// access rules, you can exclude the ones named `example-rule` by specifying
+  /// `name != "example-rule"`. To filter on multiple expressions, provide each
+  /// separate expression within parentheses. For example: ``` (name =
+  /// "example-rule") (createTime > "2021-04-12T08:15:10.40Z") ``` By default,
+  /// each expression is an `AND` expression. However, you can include `AND` and
+  /// `OR` expressions explicitly. For example: ``` (name = "example-rule-1")
+  /// AND (createTime > "2021-04-12T08:15:10.40Z") OR (name = "example-rule-2")
+  /// ```
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, returned
+  /// results are ordered by `name` in ascending order. You can also sort
+  /// results in descending order based on the `name` value using `orderBy="name
+  /// desc"`. Currently, only ordering by `name` is supported.
+  ///
+  /// [pageSize] - The maximum number of external access rules to return in one
+  /// page. The service may return fewer than this value. The maximum value is
+  /// coerced to 1000. The default value of this field is 500.
+  ///
+  /// [pageToken] - A page token, received from a previous
+  /// `ListExternalAccessRulesRequest` call. Provide this to retrieve the
+  /// subsequent page. When paginating, all other parameters provided to
+  /// `ListExternalAccessRulesRequest` must match the call that provided the
+  /// page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListExternalAccessRulesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListExternalAccessRulesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/externalAccessRules';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListExternalAccessRulesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the parameters of a single external access rule.
+  ///
+  /// Only fields specified in `update_mask` are applied.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. The resource name of this external access rule.
+  /// Resource names are schemeless URIs that follow the conventions in
+  /// https://cloud.google.com/apis/design/resource_names. For example:
+  /// `projects/my-project/locations/us-central1/networkPolicies/my-policy/externalAccessRules/my-rule`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/networkPolicies/\[^/\]+/externalAccessRules/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. A request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed. The server
+  /// guarantees that a request doesn't result in creation of duplicate
+  /// commitments for at least 60 minutes. For example, consider a situation
+  /// where you make an initial request and the request times out. If you make
+  /// the request again with the same request ID, the server can check if the
+  /// original operation with the same request ID was received, and if so, will
+  /// ignore the second request. This prevents clients from accidentally
+  /// creating duplicate commitments. The request ID must be a valid UUID with
+  /// the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - Required. Field mask is used to specify the fields to be
+  /// overwritten in the `ExternalAccessRule` resource by the update. The fields
+  /// specified in the `update_mask` are relative to the resource, not the full
+  /// request. A field will be overwritten if it is in the mask. If the user
+  /// does not provide a mask then all fields will be overwritten.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    ExternalAccessRule request,
     core.String name, {
     core.String? requestId,
     core.String? updateMask,
@@ -766,9 +1721,18 @@ class ProjectsLocationsPrivateCloudsResource {
 
   ProjectsLocationsPrivateCloudsClustersResource get clusters =>
       ProjectsLocationsPrivateCloudsClustersResource(_requester);
+  ProjectsLocationsPrivateCloudsExternalAddressesResource
+      get externalAddresses =>
+          ProjectsLocationsPrivateCloudsExternalAddressesResource(_requester);
   ProjectsLocationsPrivateCloudsHcxActivationKeysResource
       get hcxActivationKeys =>
           ProjectsLocationsPrivateCloudsHcxActivationKeysResource(_requester);
+  ProjectsLocationsPrivateCloudsLoggingServersResource get loggingServers =>
+      ProjectsLocationsPrivateCloudsLoggingServersResource(_requester);
+  ProjectsLocationsPrivateCloudsManagementDnsZoneBindingsResource
+      get managementDnsZoneBindings =>
+          ProjectsLocationsPrivateCloudsManagementDnsZoneBindingsResource(
+              _requester);
   ProjectsLocationsPrivateCloudsSubnetsResource get subnets =>
       ProjectsLocationsPrivateCloudsSubnetsResource(_requester);
 
@@ -961,6 +1925,46 @@ class ProjectsLocationsPrivateCloudsResource {
       queryParams: queryParams_,
     );
     return PrivateCloud.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of the `DnsForwarding` config.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of a `DnsForwarding` to retrieve.
+  /// Resource names are schemeless URIs that follow the conventions in
+  /// https://cloud.google.com/apis/design/resource_names. For example:
+  /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/dnsForwarding`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/privateClouds/\[^/\]+/dnsForwarding$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DnsForwarding].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DnsForwarding> getDnsForwarding(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return DnsForwarding.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 
@@ -1356,6 +2360,13 @@ class ProjectsLocationsPrivateCloudsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/privateClouds/\[^/\]+$`.
   ///
+  /// [username] - Optional. The username of the user to be queried for
+  /// credentials. The default value of this field is CloudOwner@gve.local. The
+  /// provided value must be one of the following: CloudOwner@gve.local,
+  /// solution-user-01@gve.local, solution-user-02@gve.local,
+  /// solution-user-03@gve.local, solution-user-04@gve.local,
+  /// solution-user-05@gve.local, zertoadmin@gve.local.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1368,9 +2379,11 @@ class ProjectsLocationsPrivateCloudsResource {
   /// this method will complete with the same error.
   async.Future<Credentials> showVcenterCredentials(
     core.String privateCloud, {
+    core.String? username,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (username != null) 'username': [username],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1486,10 +2499,83 @@ class ProjectsLocationsPrivateCloudsResource {
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
+
+  /// Updates the parameters of the `DnsForwarding` config, like associated
+  /// domains.
+  ///
+  /// Only fields specified in `update_mask` are applied.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. The resource name of this DNS profile. Resource
+  /// names are schemeless URIs that follow the conventions in
+  /// https://cloud.google.com/apis/design/resource_names. For example:
+  /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/dnsForwarding`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/privateClouds/\[^/\]+/dnsForwarding$`.
+  ///
+  /// [requestId] - Optional. A request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed. The server
+  /// guarantees that a request doesn't result in creation of duplicate
+  /// commitments for at least 60 minutes. For example, consider a situation
+  /// where you make an initial request and the request times out. If you make
+  /// the request again with the same request ID, the server can check if
+  /// original operation with the same request ID was received, and if so, will
+  /// ignore the second request. This prevents clients from accidentally
+  /// creating duplicate commitments. The request ID must be a valid UUID with
+  /// the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - Required. Field mask is used to specify the fields to be
+  /// overwritten in the `DnsForwarding` resource by the update. The fields
+  /// specified in the `update_mask` are relative to the resource, not the full
+  /// request. A field will be overwritten if it is in the mask. If the user
+  /// does not provide a mask then all fields will be overwritten.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> updateDnsForwarding(
+    DnsForwarding request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsPrivateCloudsClustersResource {
   final commons.ApiRequester _requester;
+
+  ProjectsLocationsPrivateCloudsClustersNodesResource get nodes =>
+      ProjectsLocationsPrivateCloudsClustersNodesResource(_requester);
 
   ProjectsLocationsPrivateCloudsClustersResource(commons.ApiRequester client)
       : _requester = client;
@@ -1946,6 +3032,433 @@ class ProjectsLocationsPrivateCloudsClustersResource {
   }
 }
 
+class ProjectsLocationsPrivateCloudsClustersNodesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsPrivateCloudsClustersNodesResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets details of a single node.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the node to retrieve. For example:
+  /// `projects/{project}/locations/{location}/privateClouds/{private_cloud}/clusters/{cluster}/nodes/{node}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/privateClouds/\[^/\]+/clusters/\[^/\]+/nodes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Node].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Node> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Node.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists nodes in a given cluster.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the cluster to be queried for
+  /// nodes. Resource names are schemeless URIs that follow the conventions in
+  /// https://cloud.google.com/apis/design/resource_names. For example:
+  /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/clusters/my-cluster`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/privateClouds/\[^/\]+/clusters/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of nodes to return in one page. The
+  /// service may return fewer than this value. The maximum value is coerced to
+  /// 1000. The default value of this field is 500.
+  ///
+  /// [pageToken] - A page token, received from a previous `ListNodes` call.
+  /// Provide this to retrieve the subsequent page. When paginating, all other
+  /// parameters provided to `ListNodes` must match the call that provided the
+  /// page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListNodesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListNodesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/nodes';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListNodesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsPrivateCloudsExternalAddressesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsPrivateCloudsExternalAddressesResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new `ExternalAddress` resource in a given private cloud.
+  ///
+  /// The network policy that corresponds to the private cloud must have the
+  /// external IP address network service enabled (`NetworkPolicy.external_ip`).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the private cloud to create a
+  /// new external IP address in. Resource names are schemeless URIs that follow
+  /// the conventions in https://cloud.google.com/apis/design/resource_names.
+  /// For example:
+  /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/privateClouds/\[^/\]+$`.
+  ///
+  /// [externalAddressId] - Required. The user-provided identifier of the
+  /// `ExternalAddress` to be created. This identifier must be unique among
+  /// `ExternalAddress` resources within the parent and becomes the final token
+  /// in the name URI. The identifier must meet the following requirements: *
+  /// Only contains 1-63 alphanumeric characters and hyphens * Begins with an
+  /// alphabetical character * Ends with a non-hyphen character * Not formatted
+  /// as a UUID * Complies with
+  /// [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+  ///
+  /// [requestId] - Optional. A request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed. The server
+  /// guarantees that a request doesn't result in creation of duplicate
+  /// commitments for at least 60 minutes. For example, consider a situation
+  /// where you make an initial request and the request times out. If you make
+  /// the request again with the same request ID, the server can check if the
+  /// original operation with the same request ID was received, and if so, will
+  /// ignore the second request. This prevents clients from accidentally
+  /// creating duplicate commitments. The request ID must be a valid UUID with
+  /// the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    ExternalAddress request,
+    core.String parent, {
+    core.String? externalAddressId,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (externalAddressId != null) 'externalAddressId': [externalAddressId],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/externalAddresses';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single external IP address.
+  ///
+  /// When you delete an external IP address, connectivity between the external
+  /// IP address and the corresponding internal IP address is lost.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the external IP address to delete.
+  /// Resource names are schemeless URIs that follow the conventions in
+  /// https://cloud.google.com/apis/design/resource_names. For example:
+  /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/externalAddresses/my-ip`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/privateClouds/\[^/\]+/externalAddresses/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. A request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed. The server
+  /// guarantees that a request doesn't result in creation of duplicate
+  /// commitments for at least 60 minutes. For example, consider a situation
+  /// where you make an initial request and the request times out. If you make
+  /// the request again with the same request ID, the server can check if the
+  /// original operation with the same request ID was received, and if so, will
+  /// ignore the second request. This prevents clients from accidentally
+  /// creating duplicate commitments. The request ID must be a valid UUID with
+  /// the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single external IP address.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the external IP address to
+  /// retrieve. Resource names are schemeless URIs that follow the conventions
+  /// in https://cloud.google.com/apis/design/resource_names. For example:
+  /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/externalAddresses/my-ip`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/privateClouds/\[^/\]+/externalAddresses/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ExternalAddress].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ExternalAddress> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ExternalAddress.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists external IP addresses assigned to VMware workload VMs in a given
+  /// private cloud.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the private cloud to be queried
+  /// for external IP addresses. Resource names are schemeless URIs that follow
+  /// the conventions in https://cloud.google.com/apis/design/resource_names.
+  /// For example:
+  /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/privateClouds/\[^/\]+$`.
+  ///
+  /// [filter] - A filter expression that matches resources returned in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be `=`,
+  /// `!=`, `>`, or `<`. For example, if you are filtering a list of IP
+  /// addresses, you can exclude the ones named `example-ip` by specifying `name
+  /// != "example-ip"`. To filter on multiple expressions, provide each separate
+  /// expression within parentheses. For example: ``` (name = "example-ip")
+  /// (createTime > "2021-04-12T08:15:10.40Z") ``` By default, each expression
+  /// is an `AND` expression. However, you can include `AND` and `OR`
+  /// expressions explicitly. For example: ``` (name = "example-ip-1") AND
+  /// (createTime > "2021-04-12T08:15:10.40Z") OR (name = "example-ip-2") ```
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, returned
+  /// results are ordered by `name` in ascending order. You can also sort
+  /// results in descending order based on the `name` value using `orderBy="name
+  /// desc"`. Currently, only ordering by `name` is supported.
+  ///
+  /// [pageSize] - The maximum number of external IP addresses to return in one
+  /// page. The service may return fewer than this value. The maximum value is
+  /// coerced to 1000. The default value of this field is 500.
+  ///
+  /// [pageToken] - A page token, received from a previous
+  /// `ListExternalAddresses` call. Provide this to retrieve the subsequent
+  /// page. When paginating, all other parameters provided to
+  /// `ListExternalAddresses` must match the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListExternalAddressesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListExternalAddressesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/externalAddresses';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListExternalAddressesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the parameters of a single external IP address.
+  ///
+  /// Only fields specified in `update_mask` are applied. During operation
+  /// processing, the resource is temporarily in the `ACTIVE` state before the
+  /// operation fully completes. For that period of time, you can't update the
+  /// resource. Use the operation status to determine when the processing fully
+  /// completes.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. The resource name of this external IP address.
+  /// Resource names are schemeless URIs that follow the conventions in
+  /// https://cloud.google.com/apis/design/resource_names. For example:
+  /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/externalAddresses/my-address`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/privateClouds/\[^/\]+/externalAddresses/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. A request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed. The server
+  /// guarantees that a request doesn't result in creation of duplicate
+  /// commitments for at least 60 minutes. For example, consider a situation
+  /// where you make an initial request and the request times out. If you make
+  /// the request again with the same request ID, the server can check if the
+  /// original operation with the same request ID was received, and if so, will
+  /// ignore the second request. This prevents clients from accidentally
+  /// creating duplicate commitments. The request ID must be a valid UUID with
+  /// the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - Required. Field mask is used to specify the fields to be
+  /// overwritten in the `ExternalAddress` resource by the update. The fields
+  /// specified in the `update_mask` are relative to the resource, not the full
+  /// request. A field will be overwritten if it is in the mask. If the user
+  /// does not provide a mask then all fields will be overwritten.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    ExternalAddress request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsPrivateCloudsHcxActivationKeysResource {
   final commons.ApiRequester _requester;
 
@@ -2270,6 +3783,707 @@ class ProjectsLocationsPrivateCloudsHcxActivationKeysResource {
     );
     return TestIamPermissionsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsPrivateCloudsLoggingServersResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsPrivateCloudsLoggingServersResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Create a new logging server for a given private cloud.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the private cloud to create a
+  /// new Logging Server in. Resource names are schemeless URIs that follow the
+  /// conventions in https://cloud.google.com/apis/design/resource_names. For
+  /// example:
+  /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/privateClouds/\[^/\]+$`.
+  ///
+  /// [loggingServerId] - Required. The user-provided identifier of the
+  /// `LoggingServer` to be created. This identifier must be unique among
+  /// `LoggingServer` resources within the parent and becomes the final token in
+  /// the name URI. The identifier must meet the following requirements: * Only
+  /// contains 1-63 alphanumeric characters and hyphens * Begins with an
+  /// alphabetical character * Ends with a non-hyphen character * Not formatted
+  /// as a UUID * Complies with
+  /// [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+  ///
+  /// [requestId] - Optional. A request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed. The server
+  /// guarantees that a request doesn't result in creation of duplicate
+  /// commitments for at least 60 minutes. For example, consider a situation
+  /// where you make an initial request and the request times out. If you make
+  /// the request again with the same request ID, the server can check if
+  /// original operation with the same request ID was received, and if so, will
+  /// ignore the second request. This prevents clients from accidentally
+  /// creating duplicate commitments. The request ID must be a valid UUID with
+  /// the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    LoggingServer request,
+    core.String parent, {
+    core.String? loggingServerId,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (loggingServerId != null) 'loggingServerId': [loggingServerId],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/loggingServers';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single logging server.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the logging server to delete.
+  /// Resource names are schemeless URIs that follow the conventions in
+  /// https://cloud.google.com/apis/design/resource_names. For example:
+  /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/loggingServers/my-logging-server`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/privateClouds/\[^/\]+/loggingServers/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. A request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed. The server
+  /// guarantees that a request doesn't result in creation of duplicate
+  /// commitments for at least 60 minutes. For example, consider a situation
+  /// where you make an initial request and the request times out. If you make
+  /// the request again with the same request ID, the server can check if
+  /// original operation with the same request ID was received, and if so, will
+  /// ignore the second request. This prevents clients from accidentally
+  /// creating duplicate commitments. The request ID must be a valid UUID with
+  /// the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a logging server.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the Logging Server to retrieve.
+  /// Resource names are schemeless URIs that follow the conventions in
+  /// https://cloud.google.com/apis/design/resource_names. For example:
+  /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/loggingServers/my-logging-server`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/privateClouds/\[^/\]+/loggingServers/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LoggingServer].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LoggingServer> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return LoggingServer.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists logging servers configured for a given private cloud.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the private cloud to be queried
+  /// for logging servers. Resource names are schemeless URIs that follow the
+  /// conventions in https://cloud.google.com/apis/design/resource_names. For
+  /// example:
+  /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/privateClouds/\[^/\]+$`.
+  ///
+  /// [filter] - A filter expression that matches resources returned in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be `=`,
+  /// `!=`, `>`, or `<`. For example, if you are filtering a list of logging
+  /// servers, you can exclude the ones named `example-server` by specifying
+  /// `name != "example-server"`. To filter on multiple expressions, provide
+  /// each separate expression within parentheses. For example: ``` (name =
+  /// "example-server") (createTime > "2021-04-12T08:15:10.40Z") ``` By default,
+  /// each expression is an `AND` expression. However, you can include `AND` and
+  /// `OR` expressions explicitly. For example: ``` (name = "example-server-1")
+  /// AND (createTime > "2021-04-12T08:15:10.40Z") OR (name =
+  /// "example-server-2") ```
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, returned
+  /// results are ordered by `name` in ascending order. You can also sort
+  /// results in descending order based on the `name` value using `orderBy="name
+  /// desc"`. Currently, only ordering by `name` is supported.
+  ///
+  /// [pageSize] - The maximum number of logging servers to return in one page.
+  /// The service may return fewer than this value. The maximum value is coerced
+  /// to 1000. The default value of this field is 500.
+  ///
+  /// [pageToken] - A page token, received from a previous
+  /// `ListLoggingServersRequest` call. Provide this to retrieve the subsequent
+  /// page. When paginating, all other parameters provided to
+  /// `ListLoggingServersRequest` must match the call that provided the page
+  /// token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListLoggingServersResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListLoggingServersResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/loggingServers';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListLoggingServersResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the parameters of a single logging server.
+  ///
+  /// Only fields specified in `update_mask` are applied.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. The resource name of this logging server. Resource
+  /// names are schemeless URIs that follow the conventions in
+  /// https://cloud.google.com/apis/design/resource_names. For example:
+  /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/loggingServers/my-logging-server`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/privateClouds/\[^/\]+/loggingServers/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. A request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed. The server
+  /// guarantees that a request doesn't result in creation of duplicate
+  /// commitments for at least 60 minutes. For example, consider a situation
+  /// where you make an initial request and the request times out. If you make
+  /// the request again with the same request ID, the server can check if
+  /// original operation with the same request ID was received, and if so, will
+  /// ignore the second request. This prevents clients from accidentally
+  /// creating duplicate commitments. The request ID must be a valid UUID with
+  /// the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - Required. Field mask is used to specify the fields to be
+  /// overwritten in the `LoggingServer` resource by the update. The fields
+  /// specified in the `update_mask` are relative to the resource, not the full
+  /// request. A field will be overwritten if it is in the mask. If the user
+  /// does not provide a mask then all fields will be overwritten.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    LoggingServer request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsPrivateCloudsManagementDnsZoneBindingsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsPrivateCloudsManagementDnsZoneBindingsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new `ManagementDnsZoneBinding` resource in a private cloud.
+  ///
+  /// This RPC creates the DNS binding and the resource that represents the DNS
+  /// binding of the consumer VPC network to the management DNS zone. A
+  /// management DNS zone is the Cloud DNS cross-project binding zone that
+  /// VMware Engine creates for each private cloud. It contains FQDNs and
+  /// corresponding IP addresses for the private cloud's ESXi hosts and
+  /// management VM appliances like vCenter and NSX Manager.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the private cloud to create a
+  /// new management DNS zone binding for. Resource names are schemeless URIs
+  /// that follow the conventions in
+  /// https://cloud.google.com/apis/design/resource_names. For example:
+  /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/privateClouds/\[^/\]+$`.
+  ///
+  /// [managementDnsZoneBindingId] - Required. The user-provided identifier of
+  /// the `ManagementDnsZoneBinding` resource to be created. This identifier
+  /// must be unique among `ManagementDnsZoneBinding` resources within the
+  /// parent and becomes the final token in the name URI. The identifier must
+  /// meet the following requirements: * Only contains 1-63 alphanumeric
+  /// characters and hyphens * Begins with an alphabetical character * Ends with
+  /// a non-hyphen character * Not formatted as a UUID * Complies with
+  /// [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+  ///
+  /// [requestId] - Optional. A request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed. The server
+  /// guarantees that a request doesn't result in creation of duplicate
+  /// commitments for at least 60 minutes. For example, consider a situation
+  /// where you make an initial request and the request times out. If you make
+  /// the request again with the same request ID, the server can check if the
+  /// original operation with the same request ID was received, and if so, will
+  /// ignore the second request. This prevents clients from accidentally
+  /// creating duplicate commitments. The request ID must be a valid UUID with
+  /// the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    ManagementDnsZoneBinding request,
+    core.String parent, {
+    core.String? managementDnsZoneBindingId,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (managementDnsZoneBindingId != null)
+        'managementDnsZoneBindingId': [managementDnsZoneBindingId],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/managementDnsZoneBindings';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a `ManagementDnsZoneBinding` resource.
+  ///
+  /// When a management DNS zone binding is deleted, the corresponding consumer
+  /// VPC network is no longer bound to the management DNS zone.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the management DNS zone binding to
+  /// delete. Resource names are schemeless URIs that follow the conventions in
+  /// https://cloud.google.com/apis/design/resource_names. For example:
+  /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/managementDnsZoneBindings/my-management-dns-zone-binding`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/privateClouds/\[^/\]+/managementDnsZoneBindings/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. A request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed. The server
+  /// guarantees that a request doesn't result in creation of duplicate
+  /// commitments for at least 60 minutes. For example, consider a situation
+  /// where you make an initial request and the request times out. If you make
+  /// the request again with the same request ID, the server can check if the
+  /// original operation with the same request ID was received, and if so, will
+  /// ignore the second request. This prevents clients from accidentally
+  /// creating duplicate commitments. The request ID must be a valid UUID with
+  /// the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves a 'ManagementDnsZoneBinding' resource by its resource name.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the management DNS zone binding to
+  /// retrieve. Resource names are schemeless URIs that follow the conventions
+  /// in https://cloud.google.com/apis/design/resource_names. For example:
+  /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/managementDnsZoneBindings/my-management-dns-zone-binding`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/privateClouds/\[^/\]+/managementDnsZoneBindings/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ManagementDnsZoneBinding].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ManagementDnsZoneBinding> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ManagementDnsZoneBinding.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists Consumer VPCs bound to Management DNS Zone of a given private cloud.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the private cloud to be queried
+  /// for management DNS zone bindings. Resource names are schemeless URIs that
+  /// follow the conventions in
+  /// https://cloud.google.com/apis/design/resource_names. For example:
+  /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/privateClouds/\[^/\]+$`.
+  ///
+  /// [filter] - A filter expression that matches resources returned in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be `=`,
+  /// `!=`, `>`, or `<`. For example, if you are filtering a list of Management
+  /// DNS Zone Bindings, you can exclude the ones named
+  /// `example-management-dns-zone-binding` by specifying `name !=
+  /// "example-management-dns-zone-binding"`. To filter on multiple expressions,
+  /// provide each separate expression within parentheses. For example: ```
+  /// (name = "example-management-dns-zone-binding") (createTime >
+  /// "2021-04-12T08:15:10.40Z") ``` By default, each expression is an `AND`
+  /// expression. However, you can include `AND` and `OR` expressions
+  /// explicitly. For example: ``` (name =
+  /// "example-management-dns-zone-binding-1") AND (createTime >
+  /// "2021-04-12T08:15:10.40Z") OR (name =
+  /// "example-management-dns-zone-binding-2") ```
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, returned
+  /// results are ordered by `name` in ascending order. You can also sort
+  /// results in descending order based on the `name` value using `orderBy="name
+  /// desc"`. Currently, only ordering by `name` is supported.
+  ///
+  /// [pageSize] - The maximum number of management DNS zone bindings to return
+  /// in one page. The service may return fewer than this value. The maximum
+  /// value is coerced to 1000. The default value of this field is 500.
+  ///
+  /// [pageToken] - A page token, received from a previous
+  /// `ListManagementDnsZoneBindings` call. Provide this to retrieve the
+  /// subsequent page. When paginating, all other parameters provided to
+  /// `ListManagementDnsZoneBindings` must match the call that provided the page
+  /// token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListManagementDnsZoneBindingsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListManagementDnsZoneBindingsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/managementDnsZoneBindings';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListManagementDnsZoneBindingsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a `ManagementDnsZoneBinding` resource.
+  ///
+  /// Only fields specified in `update_mask` are applied.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. The resource name of this binding. Resource names
+  /// are schemeless URIs that follow the conventions in
+  /// https://cloud.google.com/apis/design/resource_names. For example:
+  /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/managementDnsZoneBindings/my-management-dns-zone-binding`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/privateClouds/\[^/\]+/managementDnsZoneBindings/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. A request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed. The server
+  /// guarantees that a request doesn't result in creation of duplicate
+  /// commitments for at least 60 minutes. For example, consider a situation
+  /// where you make an initial request and the request times out. If you make
+  /// the request again with the same request ID, the server can check if the
+  /// original operation with the same request ID was received, and if so, will
+  /// ignore the second request. This prevents clients from accidentally
+  /// creating duplicate commitments. The request ID must be a valid UUID with
+  /// the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - Required. Field mask is used to specify the fields to be
+  /// overwritten in the `ManagementDnsZoneBinding` resource by the update. The
+  /// fields specified in the `update_mask` are relative to the resource, not
+  /// the full request. A field will be overwritten if it is in the mask. If the
+  /// user does not provide a mask then all fields will be overwritten.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    ManagementDnsZoneBinding request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retries to create a `ManagementDnsZoneBinding` resource that is in failed
+  /// state.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the management DNS zone binding to
+  /// repair. Resource names are schemeless URIs that follow the conventions in
+  /// https://cloud.google.com/apis/design/resource_names. For example:
+  /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/managementDnsZoneBindings/my-management-dns-zone-binding`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/privateClouds/\[^/\]+/managementDnsZoneBindings/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> repair(
+    RepairManagementDnsZoneBindingRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':repair';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3347,6 +5561,13 @@ class Cluster {
   /// failed node is getting replaced.
   core.String? state;
 
+  /// Configuration of a stretched cluster.
+  ///
+  /// Required for clusters that belong to a STRETCHED private cloud.
+  ///
+  /// Optional.
+  StretchedClusterConfig? stretchedClusterConfig;
+
   /// System-generated unique identifier for the resource.
   ///
   /// Output only.
@@ -3363,6 +5584,7 @@ class Cluster {
     this.name,
     this.nodeTypeConfigs,
     this.state,
+    this.stretchedClusterConfig,
     this.uid,
     this.updateTime,
   });
@@ -3389,6 +5611,10 @@ class Cluster {
               : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
+          stretchedClusterConfig: json_.containsKey('stretchedClusterConfig')
+              ? StretchedClusterConfig.fromJson(json_['stretchedClusterConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
           updateTime: json_.containsKey('updateTime')
               ? json_['updateTime'] as core.String
@@ -3401,6 +5627,8 @@ class Cluster {
         if (name != null) 'name': name!,
         if (nodeTypeConfigs != null) 'nodeTypeConfigs': nodeTypeConfigs!,
         if (state != null) 'state': state!,
+        if (stretchedClusterConfig != null)
+          'stretchedClusterConfig': stretchedClusterConfig!,
         if (uid != null) 'uid': uid!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
@@ -3435,6 +5663,111 @@ class Credentials {
       };
 }
 
+/// DnsBindPermission resource that contains the accounts having the consumer
+/// DNS bind permission on the corresponding intranet VPC of the consumer
+/// project.
+class DnsBindPermission {
+  /// The name of the resource which stores the users/service accounts having
+  /// the permission to bind to the corresponding intranet VPC of the consumer
+  /// project.
+  ///
+  /// DnsBindPermission is a global resource. Resource names are schemeless URIs
+  /// that follow the conventions in
+  /// https://cloud.google.com/apis/design/resource_names. For example:
+  /// `projects/my-project/locations/global/dnsBindPermission`
+  ///
+  /// Required. Output only.
+  core.String? name;
+
+  /// Users/Service accounts which have access for binding on the intranet VPC
+  /// project corresponding to the consumer project.
+  ///
+  /// Output only.
+  core.List<Principal>? principals;
+
+  DnsBindPermission({
+    this.name,
+    this.principals,
+  });
+
+  DnsBindPermission.fromJson(core.Map json_)
+      : this(
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          principals: json_.containsKey('principals')
+              ? (json_['principals'] as core.List)
+                  .map((value) => Principal.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (principals != null) 'principals': principals!,
+      };
+}
+
+/// DNS forwarding config.
+///
+/// This config defines a list of domain to name server mappings, and is
+/// attached to the private cloud for custom domain resolution.
+class DnsForwarding {
+  /// Creation time of this resource.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// List of domain mappings to configure
+  ///
+  /// Required.
+  core.List<ForwardingRule>? forwardingRules;
+
+  /// The resource name of this DNS profile.
+  ///
+  /// Resource names are schemeless URIs that follow the conventions in
+  /// https://cloud.google.com/apis/design/resource_names. For example:
+  /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/dnsForwarding`
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Last update time of this resource.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  DnsForwarding({
+    this.createTime,
+    this.forwardingRules,
+    this.name,
+    this.updateTime,
+  });
+
+  DnsForwarding.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          forwardingRules: json_.containsKey('forwardingRules')
+              ? (json_['forwardingRules'] as core.List)
+                  .map((value) => ForwardingRule.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (forwardingRules != null) 'forwardingRules': forwardingRules!,
+        if (name != null) 'name': name!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
 ///
@@ -3463,8 +5796,407 @@ typedef Empty = $Empty;
 /// information.
 typedef Expr = $Expr;
 
+/// External access firewall rules for filtering incoming traffic destined to
+/// `ExternalAddress` resources.
+class ExternalAccessRule {
+  /// The action that the external access rule performs.
+  /// Possible string values are:
+  /// - "ACTION_UNSPECIFIED" : Defaults to allow.
+  /// - "ALLOW" : Allows connections that match the other specified components.
+  /// - "DENY" : Blocks connections that match the other specified components.
+  core.String? action;
+
+  /// Creation time of this resource.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// User-provided description for this external access rule.
+  core.String? description;
+
+  /// If destination ranges are specified, the external access rule applies only
+  /// to the traffic that has a destination IP address in these ranges.
+  ///
+  /// The specified IP addresses must have reserved external IP addresses in the
+  /// scope of the parent network policy. To match all external IP addresses in
+  /// the scope of the parent network policy, specify `0.0.0.0/0`. To match a
+  /// specific external IP address, specify it using the
+  /// `IpRange.external_address` property.
+  core.List<IpRange>? destinationIpRanges;
+
+  /// A list of destination ports to which the external access rule applies.
+  ///
+  /// This field is only applicable for the UDP or TCP protocol. Each entry must
+  /// be either an integer or a range. For example: `["22"]`, `["80","443"]`, or
+  /// `["12345-12349"]`. To match all destination ports, specify `["0-65535"]`.
+  core.List<core.String>? destinationPorts;
+
+  /// The IP protocol to which the external access rule applies.
+  ///
+  /// This value can be one of the following three protocol strings (not
+  /// case-sensitive): `tcp`, `udp`, or `icmp`.
+  core.String? ipProtocol;
+
+  /// The resource name of this external access rule.
+  ///
+  /// Resource names are schemeless URIs that follow the conventions in
+  /// https://cloud.google.com/apis/design/resource_names. For example:
+  /// `projects/my-project/locations/us-central1/networkPolicies/my-policy/externalAccessRules/my-rule`
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// External access rule priority, which determines the external access rule
+  /// to use when multiple rules apply.
+  ///
+  /// If multiple rules have the same priority, their ordering is
+  /// non-deterministic. If specific ordering is required, assign unique
+  /// priorities to enforce such ordering. The external access rule priority is
+  /// an integer from 100 to 4096, both inclusive. Lower integers indicate
+  /// higher precedence. For example, a rule with priority `100` has higher
+  /// precedence than a rule with priority `101`.
+  core.int? priority;
+
+  /// If source ranges are specified, the external access rule applies only to
+  /// traffic that has a source IP address in these ranges.
+  ///
+  /// These ranges can either be expressed in the CIDR format or as an IP
+  /// address. As only inbound rules are supported, `ExternalAddress` resources
+  /// cannot be the source IP addresses of an external access rule. To match all
+  /// source addresses, specify `0.0.0.0/0`.
+  core.List<IpRange>? sourceIpRanges;
+
+  /// A list of source ports to which the external access rule applies.
+  ///
+  /// This field is only applicable for the UDP or TCP protocol. Each entry must
+  /// be either an integer or a range. For example: `["22"]`, `["80","443"]`, or
+  /// `["12345-12349"]`. To match all source ports, specify `["0-65535"]`.
+  core.List<core.String>? sourcePorts;
+
+  /// The state of the resource.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The default value. This value is used if the state
+  /// is omitted.
+  /// - "ACTIVE" : The rule is ready.
+  /// - "CREATING" : The rule is being created.
+  /// - "UPDATING" : The rule is being updated.
+  /// - "DELETING" : The rule is being deleted.
+  core.String? state;
+
+  /// System-generated unique identifier for the resource.
+  ///
+  /// Output only.
+  core.String? uid;
+
+  /// Last update time of this resource.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  ExternalAccessRule({
+    this.action,
+    this.createTime,
+    this.description,
+    this.destinationIpRanges,
+    this.destinationPorts,
+    this.ipProtocol,
+    this.name,
+    this.priority,
+    this.sourceIpRanges,
+    this.sourcePorts,
+    this.state,
+    this.uid,
+    this.updateTime,
+  });
+
+  ExternalAccessRule.fromJson(core.Map json_)
+      : this(
+          action: json_.containsKey('action')
+              ? json_['action'] as core.String
+              : null,
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          destinationIpRanges: json_.containsKey('destinationIpRanges')
+              ? (json_['destinationIpRanges'] as core.List)
+                  .map((value) => IpRange.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          destinationPorts: json_.containsKey('destinationPorts')
+              ? (json_['destinationPorts'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          ipProtocol: json_.containsKey('ipProtocol')
+              ? json_['ipProtocol'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          priority: json_.containsKey('priority')
+              ? json_['priority'] as core.int
+              : null,
+          sourceIpRanges: json_.containsKey('sourceIpRanges')
+              ? (json_['sourceIpRanges'] as core.List)
+                  .map((value) => IpRange.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          sourcePorts: json_.containsKey('sourcePorts')
+              ? (json_['sourcePorts'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (action != null) 'action': action!,
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (destinationIpRanges != null)
+          'destinationIpRanges': destinationIpRanges!,
+        if (destinationPorts != null) 'destinationPorts': destinationPorts!,
+        if (ipProtocol != null) 'ipProtocol': ipProtocol!,
+        if (name != null) 'name': name!,
+        if (priority != null) 'priority': priority!,
+        if (sourceIpRanges != null) 'sourceIpRanges': sourceIpRanges!,
+        if (sourcePorts != null) 'sourcePorts': sourcePorts!,
+        if (state != null) 'state': state!,
+        if (uid != null) 'uid': uid!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// Represents an allocated external IP address and its corresponding internal
+/// IP address in a private cloud.
+class ExternalAddress {
+  /// Creation time of this resource.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// User-provided description for this resource.
+  core.String? description;
+
+  /// The external IP address of a workload VM.
+  ///
+  /// Output only.
+  core.String? externalIp;
+
+  /// The internal IP address of a workload VM.
+  core.String? internalIp;
+
+  /// The resource name of this external IP address.
+  ///
+  /// Resource names are schemeless URIs that follow the conventions in
+  /// https://cloud.google.com/apis/design/resource_names. For example:
+  /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/externalAddresses/my-address`
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The state of the resource.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The default value. This value should never be
+  /// used.
+  /// - "ACTIVE" : The address is ready.
+  /// - "CREATING" : The address is being created.
+  /// - "UPDATING" : The address is being updated.
+  /// - "DELETING" : The address is being deleted.
+  core.String? state;
+
+  /// System-generated unique identifier for the resource.
+  ///
+  /// Output only.
+  core.String? uid;
+
+  /// Last update time of this resource.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  ExternalAddress({
+    this.createTime,
+    this.description,
+    this.externalIp,
+    this.internalIp,
+    this.name,
+    this.state,
+    this.uid,
+    this.updateTime,
+  });
+
+  ExternalAddress.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          externalIp: json_.containsKey('externalIp')
+              ? json_['externalIp'] as core.String
+              : null,
+          internalIp: json_.containsKey('internalIp')
+              ? json_['internalIp'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (externalIp != null) 'externalIp': externalIp!,
+        if (internalIp != null) 'internalIp': internalIp!,
+        if (name != null) 'name': name!,
+        if (state != null) 'state': state!,
+        if (uid != null) 'uid': uid!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// Response message for VmwareEngine.FetchNetworkPolicyExternalAddresses
+class FetchNetworkPolicyExternalAddressesResponse {
+  /// A list of external IP addresses assigned to VMware workload VMs within the
+  /// scope of the given network policy.
+  core.List<ExternalAddress>? externalAddresses;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  FetchNetworkPolicyExternalAddressesResponse({
+    this.externalAddresses,
+    this.nextPageToken,
+  });
+
+  FetchNetworkPolicyExternalAddressesResponse.fromJson(core.Map json_)
+      : this(
+          externalAddresses: json_.containsKey('externalAddresses')
+              ? (json_['externalAddresses'] as core.List)
+                  .map((value) => ExternalAddress.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (externalAddresses != null) 'externalAddresses': externalAddresses!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// A forwarding rule is a mapping of a `domain` to `name_servers`.
+///
+/// This mapping allows VMware Engine to resolve domains for attached private
+/// clouds by forwarding DNS requests for a given domain to the specified
+/// nameservers.
+class ForwardingRule {
+  /// Domain used to resolve a `name_servers` list.
+  ///
+  /// Required.
+  core.String? domain;
+
+  /// List of DNS servers to use for domain resolution
+  ///
+  /// Required.
+  core.List<core.String>? nameServers;
+
+  ForwardingRule({
+    this.domain,
+    this.nameServers,
+  });
+
+  ForwardingRule.fromJson(core.Map json_)
+      : this(
+          domain: json_.containsKey('domain')
+              ? json_['domain'] as core.String
+              : null,
+          nameServers: json_.containsKey('nameServers')
+              ? (json_['nameServers'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (domain != null) 'domain': domain!,
+        if (nameServers != null) 'nameServers': nameServers!,
+      };
+}
+
+/// Request message for VmwareEngine.GrantDnsBindPermission
+class GrantDnsBindPermissionRequest {
+  /// The consumer provided user/service account which needs to be granted
+  /// permission to bind with the intranet VPC corresponding to the consumer
+  /// project.
+  ///
+  /// Required.
+  Principal? principal;
+
+  /// A request ID to identify requests.
+  ///
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server guarantees that a request doesn't result in creation of
+  /// duplicate commitments for at least 60 minutes. For example, consider a
+  /// situation where you make an initial request and the request times out. If
+  /// you make the request again with the same request ID, the server can check
+  /// if original operation with the same request ID was received, and if so,
+  /// will ignore the second request. This prevents clients from accidentally
+  /// creating duplicate commitments. The request ID must be a valid UUID with
+  /// the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// Optional.
+  core.String? requestId;
+
+  GrantDnsBindPermissionRequest({
+    this.principal,
+    this.requestId,
+  });
+
+  GrantDnsBindPermissionRequest.fromJson(core.Map json_)
+      : this(
+          principal: json_.containsKey('principal')
+              ? Principal.fromJson(
+                  json_['principal'] as core.Map<core.String, core.dynamic>)
+              : null,
+          requestId: json_.containsKey('requestId')
+              ? json_['requestId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (principal != null) 'principal': principal!,
+        if (requestId != null) 'requestId': requestId!,
+      };
+}
+
 /// Details about a HCX Cloud Manager appliance.
-typedef Hcx = $Shared02;
+typedef Hcx = $Shared03;
 
 /// HCX activation key.
 ///
@@ -3539,6 +6271,54 @@ class HcxActivationKey {
       };
 }
 
+/// An IP range provided in any one of the supported formats.
+class IpRange {
+  /// The name of an `ExternalAddress` resource.
+  ///
+  /// The external address must have been reserved in the scope of this external
+  /// access rule's parent network policy. Provide the external address name in
+  /// the form of
+  /// `projects/{project}/locations/{location}/privateClouds/{private_cloud}/externalAddresses/{external_address}`.
+  /// For example:
+  /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/externalAddresses/my-address`.
+  core.String? externalAddress;
+
+  /// A single IP address.
+  ///
+  /// For example: `10.0.0.5`.
+  core.String? ipAddress;
+
+  /// An IP address range in the CIDR format.
+  ///
+  /// For example: `10.0.0.0/24`.
+  core.String? ipAddressRange;
+
+  IpRange({
+    this.externalAddress,
+    this.ipAddress,
+    this.ipAddressRange,
+  });
+
+  IpRange.fromJson(core.Map json_)
+      : this(
+          externalAddress: json_.containsKey('externalAddress')
+              ? json_['externalAddress'] as core.String
+              : null,
+          ipAddress: json_.containsKey('ipAddress')
+              ? json_['ipAddress'] as core.String
+              : null,
+          ipAddressRange: json_.containsKey('ipAddressRange')
+              ? json_['ipAddressRange'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (externalAddress != null) 'externalAddress': externalAddress!,
+        if (ipAddress != null) 'ipAddress': ipAddress!,
+        if (ipAddressRange != null) 'ipAddressRange': ipAddressRange!,
+      };
+}
+
 /// Response message for VmwareEngine.ListClusters
 class ListClustersResponse {
   /// A list of private cloud clusters.
@@ -3579,6 +6359,97 @@ class ListClustersResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (clusters != null) 'clusters': clusters!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
+/// Response message for VmwareEngine.ListExternalAccessRules
+class ListExternalAccessRulesResponse {
+  /// A list of external access firewall rules.
+  core.List<ExternalAccessRule>? externalAccessRules;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached when making an aggregated query using
+  /// wildcards.
+  core.List<core.String>? unreachable;
+
+  ListExternalAccessRulesResponse({
+    this.externalAccessRules,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListExternalAccessRulesResponse.fromJson(core.Map json_)
+      : this(
+          externalAccessRules: json_.containsKey('externalAccessRules')
+              ? (json_['externalAccessRules'] as core.List)
+                  .map((value) => ExternalAccessRule.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (externalAccessRules != null)
+          'externalAccessRules': externalAccessRules!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
+/// Response message for VmwareEngine.ListExternalAddresses
+class ListExternalAddressesResponse {
+  /// A list of external IP addresses.
+  core.List<ExternalAddress>? externalAddresses;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached when making an aggregated query using
+  /// wildcards.
+  core.List<core.String>? unreachable;
+
+  ListExternalAddressesResponse({
+    this.externalAddresses,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListExternalAddressesResponse.fromJson(core.Map json_)
+      : this(
+          externalAddresses: json_.containsKey('externalAddresses')
+              ? (json_['externalAddresses'] as core.List)
+                  .map((value) => ExternalAddress.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (externalAddresses != null) 'externalAddresses': externalAddresses!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (unreachable != null) 'unreachable': unreachable!,
       };
@@ -3658,6 +6529,142 @@ class ListLocationsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (locations != null) 'locations': locations!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Response message for VmwareEngine.ListLoggingServers
+class ListLoggingServersResponse {
+  /// A list of Logging Servers.
+  core.List<LoggingServer>? loggingServers;
+
+  /// A token, which can be send as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached when making an aggregated query using
+  /// wildcards.
+  core.List<core.String>? unreachable;
+
+  ListLoggingServersResponse({
+    this.loggingServers,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListLoggingServersResponse.fromJson(core.Map json_)
+      : this(
+          loggingServers: json_.containsKey('loggingServers')
+              ? (json_['loggingServers'] as core.List)
+                  .map((value) => LoggingServer.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (loggingServers != null) 'loggingServers': loggingServers!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
+/// Response message for VmwareEngine.ListManagementDnsZoneBindings
+class ListManagementDnsZoneBindingsResponse {
+  /// A list of management DNS zone bindings.
+  core.List<ManagementDnsZoneBinding>? managementDnsZoneBindings;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached when making an aggregated query using
+  /// wildcards.
+  core.List<core.String>? unreachable;
+
+  ListManagementDnsZoneBindingsResponse({
+    this.managementDnsZoneBindings,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListManagementDnsZoneBindingsResponse.fromJson(core.Map json_)
+      : this(
+          managementDnsZoneBindings:
+              json_.containsKey('managementDnsZoneBindings')
+                  ? (json_['managementDnsZoneBindings'] as core.List)
+                      .map((value) => ManagementDnsZoneBinding.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (managementDnsZoneBindings != null)
+          'managementDnsZoneBindings': managementDnsZoneBindings!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
+/// Response message for VmwareEngine.ListNetworkPeerings
+class ListNetworkPeeringsResponse {
+  /// A list of network peerings.
+  core.List<NetworkPeering>? networkPeerings;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// Unreachable resources.
+  core.List<core.String>? unreachable;
+
+  ListNetworkPeeringsResponse({
+    this.networkPeerings,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListNetworkPeeringsResponse.fromJson(core.Map json_)
+      : this(
+          networkPeerings: json_.containsKey('networkPeerings')
+              ? (json_['networkPeerings'] as core.List)
+                  .map((value) => NetworkPeering.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (networkPeerings != null) 'networkPeerings': networkPeerings!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
@@ -3751,6 +6758,40 @@ class ListNodeTypesResponse {
       };
 }
 
+/// Response message for VmwareEngine.ListNodes
+class ListNodesResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// The nodes.
+  core.List<Node>? nodes;
+
+  ListNodesResponse({
+    this.nextPageToken,
+    this.nodes,
+  });
+
+  ListNodesResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          nodes: json_.containsKey('nodes')
+              ? (json_['nodes'] as core.List)
+                  .map((value) => Node.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (nodes != null) 'nodes': nodes!,
+      };
+}
+
 /// The response message for Operations.ListOperations.
 class ListOperationsResponse {
   /// The standard List next-page token.
@@ -3780,6 +6821,40 @@ class ListOperationsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null) 'operations': operations!,
+      };
+}
+
+/// Response message for VmwareEngine.ListPeeringRoutes
+class ListPeeringRoutesResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// A list of peering routes.
+  core.List<PeeringRoute>? peeringRoutes;
+
+  ListPeeringRoutesResponse({
+    this.nextPageToken,
+    this.peeringRoutes,
+  });
+
+  ListPeeringRoutesResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          peeringRoutes: json_.containsKey('peeringRoutes')
+              ? (json_['peeringRoutes'] as core.List)
+                  .map((value) => PeeringRoute.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (peeringRoutes != null) 'peeringRoutes': peeringRoutes!,
       };
 }
 
@@ -4000,6 +7075,108 @@ class ListVmwareEngineNetworksResponse {
 /// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
+/// Logging server to receive vCenter or ESXi logs.
+class LoggingServer {
+  /// Creation time of this resource.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Fully-qualified domain name (FQDN) or IP Address of the logging server.
+  ///
+  /// Required.
+  core.String? hostname;
+
+  /// The resource name of this logging server.
+  ///
+  /// Resource names are schemeless URIs that follow the conventions in
+  /// https://cloud.google.com/apis/design/resource_names. For example:
+  /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/loggingServers/my-logging-server`
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Port number at which the logging server receives logs.
+  ///
+  /// Required.
+  core.int? port;
+
+  /// Protocol used by vCenter to send logs to a logging server.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "PROTOCOL_UNSPECIFIED" : Unspecified communications protocol. This is
+  /// the default value.
+  /// - "UDP" : UDP
+  /// - "TCP" : TCP
+  core.String? protocol;
+
+  /// The type of component that produces logs that will be forwarded to this
+  /// logging server.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "SOURCE_TYPE_UNSPECIFIED" : The default value. This value should never
+  /// be used.
+  /// - "ESXI" : Logs produced by ESXI hosts
+  /// - "VCSA" : Logs produced by vCenter server
+  core.String? sourceType;
+
+  /// System-generated unique identifier for the resource.
+  ///
+  /// Output only.
+  core.String? uid;
+
+  /// Last update time of this resource.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  LoggingServer({
+    this.createTime,
+    this.hostname,
+    this.name,
+    this.port,
+    this.protocol,
+    this.sourceType,
+    this.uid,
+    this.updateTime,
+  });
+
+  LoggingServer.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          hostname: json_.containsKey('hostname')
+              ? json_['hostname'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          port: json_.containsKey('port') ? json_['port'] as core.int : null,
+          protocol: json_.containsKey('protocol')
+              ? json_['protocol'] as core.String
+              : null,
+          sourceType: json_.containsKey('sourceType')
+              ? json_['sourceType'] as core.String
+              : null,
+          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (hostname != null) 'hostname': hostname!,
+        if (name != null) 'name': name!,
+        if (port != null) 'port': port!,
+        if (protocol != null) 'protocol': protocol!,
+        if (sourceType != null) 'sourceType': sourceType!,
+        if (uid != null) 'uid': uid!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
 /// Management cluster configuration.
 class ManagementCluster {
   /// The user-provided identifier of the new `Cluster`.
@@ -4019,9 +7196,17 @@ class ManagementCluster {
   /// Required.
   core.Map<core.String, NodeTypeConfig>? nodeTypeConfigs;
 
+  /// Configuration of a stretched cluster.
+  ///
+  /// Required for STRETCHED private clouds.
+  ///
+  /// Optional.
+  StretchedClusterConfig? stretchedClusterConfig;
+
   ManagementCluster({
     this.clusterId,
     this.nodeTypeConfigs,
+    this.stretchedClusterConfig,
   });
 
   ManagementCluster.fromJson(core.Map json_)
@@ -4040,17 +7225,140 @@ class ManagementCluster {
                   ),
                 )
               : null,
+          stretchedClusterConfig: json_.containsKey('stretchedClusterConfig')
+              ? StretchedClusterConfig.fromJson(json_['stretchedClusterConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (clusterId != null) 'clusterId': clusterId!,
         if (nodeTypeConfigs != null) 'nodeTypeConfigs': nodeTypeConfigs!,
+        if (stretchedClusterConfig != null)
+          'stretchedClusterConfig': stretchedClusterConfig!,
+      };
+}
+
+/// Represents a binding between a network and the management DNS zone.
+///
+/// A management DNS zone is the Cloud DNS cross-project binding zone that
+/// VMware Engine creates for each private cloud. It contains FQDNs and
+/// corresponding IP addresses for the private cloud's ESXi hosts and management
+/// VM appliances like vCenter and NSX Manager.
+class ManagementDnsZoneBinding {
+  /// Creation time of this resource.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// User-provided description for this resource.
+  core.String? description;
+
+  /// The resource name of this binding.
+  ///
+  /// Resource names are schemeless URIs that follow the conventions in
+  /// https://cloud.google.com/apis/design/resource_names. For example:
+  /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/managementDnsZoneBindings/my-management-dns-zone-binding`
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The state of the resource.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The default value. This value should never be
+  /// used.
+  /// - "ACTIVE" : The binding is ready.
+  /// - "CREATING" : The binding is being created.
+  /// - "UPDATING" : The binding is being updated.
+  /// - "DELETING" : The binding is being deleted.
+  /// - "FAILED" : The binding has failed.
+  core.String? state;
+
+  /// System-generated unique identifier for the resource.
+  ///
+  /// Output only.
+  core.String? uid;
+
+  /// Last update time of this resource.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  /// Network to bind is a VMware Engine network.
+  ///
+  /// Specify the name in the following form for VMware engine network:
+  /// `projects/{project}/locations/global/vmwareEngineNetworks/{vmware_engine_network_id}`.
+  /// `{project}` can either be a project number or a project ID.
+  core.String? vmwareEngineNetwork;
+
+  /// Network to bind is a standard consumer VPC.
+  ///
+  /// Specify the name in the following form for consumer VPC network:
+  /// `projects/{project}/global/networks/{network_id}`. `{project}` can either
+  /// be a project number or a project ID.
+  core.String? vpcNetwork;
+
+  ManagementDnsZoneBinding({
+    this.createTime,
+    this.description,
+    this.name,
+    this.state,
+    this.uid,
+    this.updateTime,
+    this.vmwareEngineNetwork,
+    this.vpcNetwork,
+  });
+
+  ManagementDnsZoneBinding.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+          vmwareEngineNetwork: json_.containsKey('vmwareEngineNetwork')
+              ? json_['vmwareEngineNetwork'] as core.String
+              : null,
+          vpcNetwork: json_.containsKey('vpcNetwork')
+              ? json_['vpcNetwork'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (name != null) 'name': name!,
+        if (state != null) 'state': state!,
+        if (uid != null) 'uid': uid!,
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (vmwareEngineNetwork != null)
+          'vmwareEngineNetwork': vmwareEngineNetwork!,
+        if (vpcNetwork != null) 'vpcNetwork': vpcNetwork!,
       };
 }
 
 /// Network configuration in the consumer project with which the peering has to
 /// be done.
 class NetworkConfig {
+  /// DNS Server IP of the Private Cloud.
+  ///
+  /// All DNS queries can be forwarded to this address for name resolution of
+  /// Private Cloud's management entities like vCenter, NSX-T Manager and ESXi
+  /// hosts.
+  ///
+  /// Output only.
+  core.String? dnsServerIp;
+
   /// Management CIDR used by VMware management appliances.
   ///
   /// Required.
@@ -4085,6 +7393,7 @@ class NetworkConfig {
   core.String? vmwareEngineNetworkCanonical;
 
   NetworkConfig({
+    this.dnsServerIp,
     this.managementCidr,
     this.managementIpAddressLayoutVersion,
     this.vmwareEngineNetwork,
@@ -4093,6 +7402,9 @@ class NetworkConfig {
 
   NetworkConfig.fromJson(core.Map json_)
       : this(
+          dnsServerIp: json_.containsKey('dnsServerIp')
+              ? json_['dnsServerIp'] as core.String
+              : null,
           managementCidr: json_.containsKey('managementCidr')
               ? json_['managementCidr'] as core.String
               : null,
@@ -4110,6 +7422,7 @@ class NetworkConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (dnsServerIp != null) 'dnsServerIp': dnsServerIp!,
         if (managementCidr != null) 'managementCidr': managementCidr!,
         if (managementIpAddressLayoutVersion != null)
           'managementIpAddressLayoutVersion': managementIpAddressLayoutVersion!,
@@ -4117,6 +7430,250 @@ class NetworkConfig {
           'vmwareEngineNetwork': vmwareEngineNetwork!,
         if (vmwareEngineNetworkCanonical != null)
           'vmwareEngineNetworkCanonical': vmwareEngineNetworkCanonical!,
+      };
+}
+
+/// Details of a network peering.
+class NetworkPeering {
+  /// Creation time of this resource.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// User-provided description for this network peering.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// True if full mesh connectivity is created and managed automatically
+  /// between peered networks; false otherwise.
+  ///
+  /// Currently this field is always true because Google Compute Engine
+  /// automatically creates and manages subnetwork routes between two VPC
+  /// networks when peering state is 'ACTIVE'.
+  ///
+  /// Optional.
+  core.bool? exchangeSubnetRoutes;
+
+  /// True if custom routes are exported to the peered network; false otherwise.
+  ///
+  /// The default value is true.
+  ///
+  /// Optional.
+  core.bool? exportCustomRoutes;
+
+  /// True if all subnet routes with a public IP address range are exported;
+  /// false otherwise.
+  ///
+  /// The default value is true. IPv4 special-use ranges
+  /// (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported
+  /// to peers and are not controlled by this field.
+  ///
+  /// Optional.
+  core.bool? exportCustomRoutesWithPublicIp;
+
+  /// True if custom routes are imported from the peered network; false
+  /// otherwise.
+  ///
+  /// The default value is true.
+  ///
+  /// Optional.
+  core.bool? importCustomRoutes;
+
+  /// True if all subnet routes with public IP address range are imported; false
+  /// otherwise.
+  ///
+  /// The default value is true. IPv4 special-use ranges
+  /// (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported
+  /// to peers and are not controlled by this field.
+  ///
+  /// Optional.
+  core.bool? importCustomRoutesWithPublicIp;
+
+  /// The resource name of the network peering.
+  ///
+  /// Resource names are scheme-less URIs that follow the conventions in
+  /// https://cloud.google.com/apis/design/resource_names. For example:
+  /// `projects/my-project/locations/global/networkPeerings/my-peering`
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Maximum transmission unit (MTU) in bytes.
+  ///
+  /// The default value is `1500`. If a value of `0` is provided for this field,
+  /// VMware Engine uses the default value instead.
+  ///
+  /// Optional.
+  core.int? peerMtu;
+
+  /// The relative resource name of the network to peer with a standard VMware
+  /// Engine network.
+  ///
+  /// The provided network can be a consumer VPC network or another standard
+  /// VMware Engine network. If the `peer_network_type` is
+  /// VMWARE_ENGINE_NETWORK, specify the name in the form:
+  /// `projects/{project}/locations/global/vmwareEngineNetworks/{vmware_engine_network_id}`.
+  /// Otherwise specify the name in the form:
+  /// `projects/{project}/global/networks/{network_id}`, where `{project}` can
+  /// either be a project number or a project ID.
+  ///
+  /// Required.
+  core.String? peerNetwork;
+
+  /// The type of the network to peer with the VMware Engine network.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "PEER_NETWORK_TYPE_UNSPECIFIED" : Unspecified
+  /// - "STANDARD" : Peering connection used for connecting to another VPC
+  /// network established by the same user. For example, a peering connection to
+  /// another VPC network in the same project or to an on-premises network.
+  /// - "VMWARE_ENGINE_NETWORK" : Peering connection used for connecting to
+  /// another VMware Engine network.
+  /// - "PRIVATE_SERVICES_ACCESS" : Peering connection used for establishing
+  /// [private services access](https://cloud.google.com/vpc/docs/private-services-access).
+  /// - "NETAPP_CLOUD_VOLUMES" : Peering connection used for connecting to
+  /// NetApp Cloud Volumes.
+  /// - "THIRD_PARTY_SERVICE" : Peering connection used for connecting to
+  /// third-party services. Most third-party services require manual setup of
+  /// reverse peering on the VPC network associated with the third-party
+  /// service.
+  /// - "DELL_POWERSCALE" : Peering connection used for connecting to Dell
+  /// PowerScale Filers
+  core.String? peerNetworkType;
+
+  /// State of the network peering.
+  ///
+  /// This field has a value of 'ACTIVE' when there's a matching configuration
+  /// in the peer network. New values may be added to this enum when
+  /// appropriate.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Unspecified network peering state. This is the
+  /// default value.
+  /// - "INACTIVE" : The peering is not active.
+  /// - "ACTIVE" : The peering is active.
+  /// - "CREATING" : The peering is being created.
+  /// - "DELETING" : The peering is being deleted.
+  core.String? state;
+
+  /// Details about the current state of the network peering.
+  ///
+  /// Output only.
+  core.String? stateDetails;
+
+  /// System-generated unique identifier for the resource.
+  ///
+  /// Output only.
+  core.String? uid;
+
+  /// Last update time of this resource.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  /// The relative resource name of the VMware Engine network.
+  ///
+  /// Specify the name in the following form:
+  /// `projects/{project}/locations/{location}/vmwareEngineNetworks/{vmware_engine_network_id}`
+  /// where `{project}` can either be a project number or a project ID.
+  ///
+  /// Required.
+  core.String? vmwareEngineNetwork;
+
+  NetworkPeering({
+    this.createTime,
+    this.description,
+    this.exchangeSubnetRoutes,
+    this.exportCustomRoutes,
+    this.exportCustomRoutesWithPublicIp,
+    this.importCustomRoutes,
+    this.importCustomRoutesWithPublicIp,
+    this.name,
+    this.peerMtu,
+    this.peerNetwork,
+    this.peerNetworkType,
+    this.state,
+    this.stateDetails,
+    this.uid,
+    this.updateTime,
+    this.vmwareEngineNetwork,
+  });
+
+  NetworkPeering.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          exchangeSubnetRoutes: json_.containsKey('exchangeSubnetRoutes')
+              ? json_['exchangeSubnetRoutes'] as core.bool
+              : null,
+          exportCustomRoutes: json_.containsKey('exportCustomRoutes')
+              ? json_['exportCustomRoutes'] as core.bool
+              : null,
+          exportCustomRoutesWithPublicIp:
+              json_.containsKey('exportCustomRoutesWithPublicIp')
+                  ? json_['exportCustomRoutesWithPublicIp'] as core.bool
+                  : null,
+          importCustomRoutes: json_.containsKey('importCustomRoutes')
+              ? json_['importCustomRoutes'] as core.bool
+              : null,
+          importCustomRoutesWithPublicIp:
+              json_.containsKey('importCustomRoutesWithPublicIp')
+                  ? json_['importCustomRoutesWithPublicIp'] as core.bool
+                  : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          peerMtu: json_.containsKey('peerMtu')
+              ? json_['peerMtu'] as core.int
+              : null,
+          peerNetwork: json_.containsKey('peerNetwork')
+              ? json_['peerNetwork'] as core.String
+              : null,
+          peerNetworkType: json_.containsKey('peerNetworkType')
+              ? json_['peerNetworkType'] as core.String
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          stateDetails: json_.containsKey('stateDetails')
+              ? json_['stateDetails'] as core.String
+              : null,
+          uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+          vmwareEngineNetwork: json_.containsKey('vmwareEngineNetwork')
+              ? json_['vmwareEngineNetwork'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (exchangeSubnetRoutes != null)
+          'exchangeSubnetRoutes': exchangeSubnetRoutes!,
+        if (exportCustomRoutes != null)
+          'exportCustomRoutes': exportCustomRoutes!,
+        if (exportCustomRoutesWithPublicIp != null)
+          'exportCustomRoutesWithPublicIp': exportCustomRoutesWithPublicIp!,
+        if (importCustomRoutes != null)
+          'importCustomRoutes': importCustomRoutes!,
+        if (importCustomRoutesWithPublicIp != null)
+          'importCustomRoutesWithPublicIp': importCustomRoutesWithPublicIp!,
+        if (name != null) 'name': name!,
+        if (peerMtu != null) 'peerMtu': peerMtu!,
+        if (peerNetwork != null) 'peerNetwork': peerNetwork!,
+        if (peerNetworkType != null) 'peerNetworkType': peerNetworkType!,
+        if (state != null) 'state': state!,
+        if (stateDetails != null) 'stateDetails': stateDetails!,
+        if (uid != null) 'uid': uid!,
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (vmwareEngineNetwork != null)
+          'vmwareEngineNetwork': vmwareEngineNetwork!,
       };
 }
 
@@ -4297,12 +7854,110 @@ class NetworkService {
       };
 }
 
+/// Node in a cluster.
+class Node {
+  /// Customized number of cores
+  ///
+  /// Output only.
+  core.String? customCoreCount;
+
+  /// Fully qualified domain name of the node.
+  ///
+  /// Output only.
+  core.String? fqdn;
+
+  /// Internal IP address of the node.
+  ///
+  /// Output only.
+  core.String? internalIp;
+
+  /// The resource name of this node.
+  ///
+  /// Resource names are schemeless URIs that follow the conventions in
+  /// https://cloud.google.com/apis/design/resource_names. For example:
+  /// projects/my-project/locations/us-central1-a/privateClouds/my-cloud/clusters/my-cluster/nodes/my-node
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The canonical identifier of the node type (corresponds to the `NodeType`).
+  ///
+  /// For example: standard-72.
+  ///
+  /// Output only.
+  core.String? nodeTypeId;
+
+  /// The state of the appliance.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The default value. This value should never be
+  /// used.
+  /// - "ACTIVE" : Node is operational and can be used by the user.
+  /// - "CREATING" : Node is being provisioned.
+  /// - "FAILED" : Node is in a failed state.
+  /// - "UPGRADING" : Node is undergoing maintenance, e.g.: during private cloud
+  /// upgrade.
+  core.String? state;
+
+  /// The version number of the VMware ESXi management component in this
+  /// cluster.
+  ///
+  /// Output only.
+  core.String? version;
+
+  Node({
+    this.customCoreCount,
+    this.fqdn,
+    this.internalIp,
+    this.name,
+    this.nodeTypeId,
+    this.state,
+    this.version,
+  });
+
+  Node.fromJson(core.Map json_)
+      : this(
+          customCoreCount: json_.containsKey('customCoreCount')
+              ? json_['customCoreCount'] as core.String
+              : null,
+          fqdn: json_.containsKey('fqdn') ? json_['fqdn'] as core.String : null,
+          internalIp: json_.containsKey('internalIp')
+              ? json_['internalIp'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          nodeTypeId: json_.containsKey('nodeTypeId')
+              ? json_['nodeTypeId'] as core.String
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          version: json_.containsKey('version')
+              ? json_['version'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (customCoreCount != null) 'customCoreCount': customCoreCount!,
+        if (fqdn != null) 'fqdn': fqdn!,
+        if (internalIp != null) 'internalIp': internalIp!,
+        if (name != null) 'name': name!,
+        if (nodeTypeId != null) 'nodeTypeId': nodeTypeId!,
+        if (state != null) 'state': state!,
+        if (version != null) 'version': version!,
+      };
+}
+
 /// Describes node type.
 class NodeType {
   /// List of possible values of custom core count.
   ///
   /// Output only.
   core.List<core.int>? availableCustomCoreCounts;
+
+  /// Capabilities of this node type.
+  ///
+  /// Output only.
+  core.List<core.String>? capabilities;
 
   /// The amount of storage available, defined in GB.
   ///
@@ -4349,6 +8004,7 @@ class NodeType {
 
   NodeType({
     this.availableCustomCoreCounts,
+    this.capabilities,
     this.diskSizeGb,
     this.displayName,
     this.memoryGb,
@@ -4366,6 +8022,11 @@ class NodeType {
                       .map((value) => value as core.int)
                       .toList()
                   : null,
+          capabilities: json_.containsKey('capabilities')
+              ? (json_['capabilities'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           diskSizeGb: json_.containsKey('diskSizeGb')
               ? json_['diskSizeGb'] as core.int
               : null,
@@ -4390,6 +8051,7 @@ class NodeType {
   core.Map<core.String, core.dynamic> toJson() => {
         if (availableCustomCoreCounts != null)
           'availableCustomCoreCounts': availableCustomCoreCounts!,
+        if (capabilities != null) 'capabilities': capabilities!,
         if (diskSizeGb != null) 'diskSizeGb': diskSizeGb!,
         if (displayName != null) 'displayName': displayName!,
         if (memoryGb != null) 'memoryGb': memoryGb!,
@@ -4438,7 +8100,7 @@ class NodeTypeConfig {
 }
 
 /// Details about a NSX Manager appliance.
-typedef Nsx = $Shared02;
+typedef Nsx = $Shared03;
 
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
@@ -4733,6 +8395,34 @@ class Policy {
       };
 }
 
+/// Users/Service accounts which have access for DNS binding on the intranet VPC
+/// corresponding to the consumer project.
+class Principal {
+  /// The service account which needs to be granted the permission.
+  core.String? serviceAccount;
+
+  /// The user who needs to be granted permission.
+  core.String? user;
+
+  Principal({
+    this.serviceAccount,
+    this.user,
+  });
+
+  Principal.fromJson(core.Map json_)
+      : this(
+          serviceAccount: json_.containsKey('serviceAccount')
+              ? json_['serviceAccount'] as core.String
+              : null,
+          user: json_.containsKey('user') ? json_['user'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
+        if (user != null) 'user': user!,
+      };
+}
+
 /// Represents a private cloud resource.
 ///
 /// Private clouds of type `STANDARD` and `TIME_LIMITED` are zonal resources,
@@ -4820,6 +8510,8 @@ class PrivateCloud {
   /// have only 1 node and has limited life span. Will be deleted after defined
   /// period of time, can be converted into standard private cloud by expanding
   /// it up to 3 or more nodes.
+  /// - "STRETCHED" : Stretched private cloud is a regional resource with
+  /// redundancy, with a minimum of 6 nodes, nodes count has to be even.
   core.String? type;
 
   /// System-generated unique identifier for the resource.
@@ -5113,11 +8805,174 @@ class PrivateConnection {
       };
 }
 
+/// Request message for VmwareEngine.RepairManagementDnsZoneBindings
+class RepairManagementDnsZoneBindingRequest {
+  /// A request ID to identify requests.
+  ///
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server guarantees that a request doesn't result in creation of
+  /// duplicate commitments for at least 60 minutes. For example, consider a
+  /// situation where you make an initial request and the request times out. If
+  /// you make the request again with the same request ID, the server can check
+  /// if the original operation with the same request ID was received, and if
+  /// so, will ignore the second request. This prevents clients from
+  /// accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// Optional.
+  core.String? requestId;
+
+  RepairManagementDnsZoneBindingRequest({
+    this.requestId,
+  });
+
+  RepairManagementDnsZoneBindingRequest.fromJson(core.Map json_)
+      : this(
+          requestId: json_.containsKey('requestId')
+              ? json_['requestId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (requestId != null) 'requestId': requestId!,
+      };
+}
+
 /// Request message for VmwareEngine.ResetNsxCredentials
-typedef ResetNsxCredentialsRequest = $CredentialsRequest;
+class ResetNsxCredentialsRequest {
+  /// A request ID to identify requests.
+  ///
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server guarantees that a request doesn't result in creation of
+  /// duplicate commitments for at least 60 minutes. For example, consider a
+  /// situation where you make an initial request and the request times out. If
+  /// you make the request again with the same request ID, the server can check
+  /// if original operation with the same request ID was received, and if so,
+  /// will ignore the second request. This prevents clients from accidentally
+  /// creating duplicate commitments. The request ID must be a valid UUID with
+  /// the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// Optional.
+  core.String? requestId;
+
+  ResetNsxCredentialsRequest({
+    this.requestId,
+  });
+
+  ResetNsxCredentialsRequest.fromJson(core.Map json_)
+      : this(
+          requestId: json_.containsKey('requestId')
+              ? json_['requestId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (requestId != null) 'requestId': requestId!,
+      };
+}
 
 /// Request message for VmwareEngine.ResetVcenterCredentials
-typedef ResetVcenterCredentialsRequest = $CredentialsRequest;
+class ResetVcenterCredentialsRequest {
+  /// A request ID to identify requests.
+  ///
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server guarantees that a request doesn't result in creation of
+  /// duplicate commitments for at least 60 minutes. For example, consider a
+  /// situation where you make an initial request and the request times out. If
+  /// you make the request again with the same request ID, the server can check
+  /// if original operation with the same request ID was received, and if so,
+  /// will ignore the second request. This prevents clients from accidentally
+  /// creating duplicate commitments. The request ID must be a valid UUID with
+  /// the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// Optional.
+  core.String? requestId;
+
+  /// The username of the user to be to reset the credentials.
+  ///
+  /// The default value of this field is CloudOwner@gve.local. The provided
+  /// value should be one of the following: solution-user-01@gve.local,
+  /// solution-user-02@gve.local, solution-user-03@gve.local,
+  /// solution-user-04@gve.local, solution-user-05@gve.local,
+  /// zertoadmin@gve.local.
+  ///
+  /// Optional.
+  core.String? username;
+
+  ResetVcenterCredentialsRequest({
+    this.requestId,
+    this.username,
+  });
+
+  ResetVcenterCredentialsRequest.fromJson(core.Map json_)
+      : this(
+          requestId: json_.containsKey('requestId')
+              ? json_['requestId'] as core.String
+              : null,
+          username: json_.containsKey('username')
+              ? json_['username'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (requestId != null) 'requestId': requestId!,
+        if (username != null) 'username': username!,
+      };
+}
+
+/// Request message for VmwareEngine.RevokeDnsBindPermission
+class RevokeDnsBindPermissionRequest {
+  /// The consumer provided user/service account which needs to be granted
+  /// permission to bind with the intranet VPC corresponding to the consumer
+  /// project.
+  ///
+  /// Required.
+  Principal? principal;
+
+  /// A request ID to identify requests.
+  ///
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server guarantees that a request doesn't result in creation of
+  /// duplicate commitments for at least 60 minutes. For example, consider a
+  /// situation where you make an initial request and the request times out. If
+  /// you make the request again with the same request ID, the server can check
+  /// if original operation with the same request ID was received, and if so,
+  /// will ignore the second request. This prevents clients from accidentally
+  /// creating duplicate commitments. The request ID must be a valid UUID with
+  /// the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// Optional.
+  core.String? requestId;
+
+  RevokeDnsBindPermissionRequest({
+    this.principal,
+    this.requestId,
+  });
+
+  RevokeDnsBindPermissionRequest.fromJson(core.Map json_)
+      : this(
+          principal: json_.containsKey('principal')
+              ? Principal.fromJson(
+                  json_['principal'] as core.Map<core.String, core.dynamic>)
+              : null,
+          requestId: json_.containsKey('requestId')
+              ? json_['requestId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (principal != null) 'principal': principal!,
+        if (requestId != null) 'requestId': requestId!,
+      };
+}
 
 /// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {
@@ -5165,6 +9020,48 @@ class SetIamPolicyRequest {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef Status = $Status;
 
+/// Configuration of a stretched cluster.
+class StretchedClusterConfig {
+  /// Zone that will remain operational when connection between the two zones is
+  /// lost.
+  ///
+  /// Specify the resource name of a zone that belongs to the region of the
+  /// private cloud. For example: `projects/{project}/locations/europe-west3-a`
+  /// where `{project}` can either be a project number or a project ID.
+  ///
+  /// Required.
+  core.String? preferredLocation;
+
+  /// Additional zone for a higher level of availability and load balancing.
+  ///
+  /// Specify the resource name of a zone that belongs to the region of the
+  /// private cloud. For example: `projects/{project}/locations/europe-west3-b`
+  /// where `{project}` can either be a project number or a project ID.
+  ///
+  /// Required.
+  core.String? secondaryLocation;
+
+  StretchedClusterConfig({
+    this.preferredLocation,
+    this.secondaryLocation,
+  });
+
+  StretchedClusterConfig.fromJson(core.Map json_)
+      : this(
+          preferredLocation: json_.containsKey('preferredLocation')
+              ? json_['preferredLocation'] as core.String
+              : null,
+          secondaryLocation: json_.containsKey('secondaryLocation')
+              ? json_['secondaryLocation'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (preferredLocation != null) 'preferredLocation': preferredLocation!,
+        if (secondaryLocation != null) 'secondaryLocation': secondaryLocation!,
+      };
+}
+
 /// Subnet in a private cloud.
 ///
 /// Either `management` subnets (such as vMotion) that are read-only, or
@@ -5210,12 +9107,18 @@ class Subnet {
   /// Output only.
   core.String? type;
 
+  /// VLAN ID of the VLAN on which the subnet is configured
+  ///
+  /// Output only.
+  core.int? vlanId;
+
   Subnet({
     this.gatewayIp,
     this.ipCidrRange,
     this.name,
     this.state,
     this.type,
+    this.vlanId,
   });
 
   Subnet.fromJson(core.Map json_)
@@ -5230,6 +9133,8 @@ class Subnet {
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
           type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          vlanId:
+              json_.containsKey('vlanId') ? json_['vlanId'] as core.int : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5238,6 +9143,7 @@ class Subnet {
         if (name != null) 'name': name!,
         if (state != null) 'state': state!,
         if (type != null) 'type': type!,
+        if (vlanId != null) 'vlanId': vlanId!,
       };
 }
 
@@ -5272,7 +9178,7 @@ class UndeletePrivateCloudRequest {
 }
 
 /// Details about a vCenter Server management appliance.
-typedef Vcenter = $Shared02;
+typedef Vcenter = $Shared03;
 
 /// VMware Engine network resource that provides connectivity for VMware Engine
 /// private clouds.
@@ -5321,6 +9227,7 @@ class VmwareEngineNetwork {
   /// - "LEGACY" : Network type used by private clouds created in projects
   /// without a network of type `STANDARD`. This network type is no longer used
   /// for new VMware Engine private cloud deployments.
+  /// - "STANDARD" : Standard network type used for private cloud connectivity.
   core.String? type;
 
   /// System-generated unique identifier for the resource.

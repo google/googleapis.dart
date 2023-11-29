@@ -16,7 +16,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20231031",
+    "revision": "20231128",
     "rootUrl": "https://domainsrdap.googleapis.com/",
     "servicePath": "",
     "title": "Domains RDAP API",

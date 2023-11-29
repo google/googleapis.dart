@@ -16,7 +16,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20231031",
+    "revision": "20231127",
     "rootUrl": "https://androiddeviceprovisioning.googleapis.com/",
     "servicePath": "",
     "title": "Android Device Provisioning Partner API",
@@ -861,7 +861,7 @@
             "id": "ClaimDeviceRequest",
             "properties": {
                 "configurationId": {
-                    "description": "Optional. The unique identifier of the configuration (internally known as profile) to set for the section.",
+                    "description": "Optional. The ID of the configuration applied to the device section.",
                     "format": "int64",
                     "type": "string"
                 },
@@ -901,7 +901,7 @@
                     "type": "string"
                 },
                 "simlockProfileId": {
-                    "description": "Optional. ",
+                    "description": "Optional. Must and can only be set when DeviceProvisioningSectionType is SECTION_TYPE_SIM_LOCK. The unique identifier of the SimLock profile.",
                     "format": "int64",
                     "type": "string"
                 }
@@ -1717,7 +1717,7 @@
             "id": "PartnerClaim",
             "properties": {
                 "configurationId": {
-                    "description": "Optional. The unique identifier of the configuration (internally known as profile) to set for the section.",
+                    "description": "Optional. The ID of the configuration applied to the device section.",
                     "format": "int64",
                     "type": "string"
                 },
@@ -1757,7 +1757,7 @@
                     "type": "string"
                 },
                 "simlockProfileId": {
-                    "description": "Optional. ",
+                    "description": "Optional. Must and can only be set when DeviceProvisioningSectionType is SECTION_TYPE_SIM_LOCK. The unique identifier of the SimLock profile.",
                     "format": "int64",
                     "type": "string"
                 }

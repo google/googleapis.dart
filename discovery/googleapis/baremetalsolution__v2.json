@@ -24,7 +24,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20231023",
+    "revision": "20231106",
     "rootUrl": "https://baremetalsolution.googleapis.com/",
     "servicePath": "",
     "title": "Bare Metal Solution API",

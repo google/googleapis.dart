@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20231012",
+    "revision": "20231106",
     "rootUrl": "https://groupsmigration.googleapis.com/",
     "servicePath": "",
     "title": "Groups Migration API",

@@ -30,6 +30,8 @@
 ///       - [ProjectsLocationsConnectionsRuntimeEntitySchemasResource]
 ///     - [ProjectsLocationsEndpointAttachmentsResource]
 ///     - [ProjectsLocationsGlobalResource]
+///       - [ProjectsLocationsGlobalCustomConnectorsResource]
+/// - [ProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsResource]
 ///       - [ProjectsLocationsGlobalManagedZonesResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsProvidersResource]
@@ -816,6 +818,208 @@ class ProjectsLocationsConnectionsConnectionSchemaMetadataResource {
       commons.ApiRequester client)
       : _requester = client;
 
+  /// Get action.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name format:
+  /// projects/{project}/locations/{location}/connections/{connection}/connectionSchemaMetadata
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+/connectionSchemaMetadata$`.
+  ///
+  /// [actionId] - Required. Id of the action.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> getAction(
+    core.String name, {
+    core.String? actionId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (actionId != null) 'actionId': [actionId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':getAction';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Get entity type.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name format:
+  /// projects/{project}/locations/{location}/connections/{connection}/connectionSchemaMetadata
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+/connectionSchemaMetadata$`.
+  ///
+  /// [entityId] - Required. Id of the entity type.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> getEntityType(
+    core.String name, {
+    core.String? entityId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (entityId != null) 'entityId': [entityId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':getEntityType';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List actions.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name format.
+  /// projects/{project}/locations/{location}/connections/{connection}/connectionSchemaMetadata
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+/connectionSchemaMetadata$`.
+  ///
+  /// [filter] - Required. Filter Wildcards are not supported in the filter
+  /// currently.
+  ///
+  /// [pageSize] - Page size. If unspecified, at most 50 actions will be
+  /// returned.
+  ///
+  /// [pageToken] - Page token.
+  ///
+  /// [view] - Specifies which fields are returned in response. Defaults to
+  /// BASIC view.
+  /// Possible string values are:
+  /// - "VIEW_UNSPECIFIED"
+  /// - "BASIC"
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListActionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListActionsResponse> listActions(
+    core.String name, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? view,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (view != null) 'view': [view],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':listActions';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListActionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List entity types.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name format:
+  /// projects/{project}/locations/{location}/connections/{connection}/connectionSchemaMetadata
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+/connectionSchemaMetadata$`.
+  ///
+  /// [filter] - Required. Filter Wildcards are not supported in the filter
+  /// currently.
+  ///
+  /// [pageSize] - Page size. If unspecified, at most 50 entity types will be
+  /// returned.
+  ///
+  /// [pageToken] - Page token.
+  ///
+  /// [view] - Specifies which fields are returned in response. Defaults to
+  /// BASIC view.
+  /// Possible string values are:
+  /// - "VIEW_UNSPECIFIED"
+  /// - "BASIC"
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListEntityTypesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListEntityTypesResponse> listEntityTypes(
+    core.String name, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? view,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (view != null) 'view': [view],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':listEntityTypes';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListEntityTypesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Refresh runtime schema of a connection.
   ///
   /// [request] - The metadata request object.
@@ -1494,6 +1698,8 @@ class ProjectsLocationsEndpointAttachmentsResource {
 class ProjectsLocationsGlobalResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsGlobalCustomConnectorsResource get customConnectors =>
+      ProjectsLocationsGlobalCustomConnectorsResource(_requester);
   ProjectsLocationsGlobalManagedZonesResource get managedZones =>
       ProjectsLocationsGlobalManagedZonesResource(_requester);
 
@@ -1561,6 +1767,471 @@ class ProjectsLocationsGlobalResource {
   /// this method will complete with the same error.
   async.Future<Operation> updateSettings(
     Settings request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsGlobalCustomConnectorsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsResource
+      get customConnectorVersions =>
+          ProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsResource(
+              _requester);
+
+  ProjectsLocationsGlobalCustomConnectorsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new CustomConnector in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent resource of the CreateCustomConnector, of the
+  /// form: `projects/{project}/locations / * `
+  /// Value must have pattern `^projects/\[^/\]+/locations/global$`.
+  ///
+  /// [customConnectorId] - Required. Identifier to assign to the
+  /// CreateCustomConnector. Must be unique within scope of the parent resource.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    CustomConnector request,
+    core.String parent, {
+    core.String? customConnectorId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (customConnectorId != null) 'customConnectorId': [customConnectorId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/customConnectors';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single CustomConnector.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the form:
+  /// `projects/{project}/locations/{location}/customConnectors/{connector}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/customConnectors/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single CustomConnector.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the form: `projects / * /locations / *
+  /// /customConnectors / * `
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/customConnectors/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CustomConnector].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CustomConnector> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return CustomConnector.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List CustomConnectorVersions in a given project
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent resource of the custom connectors, of the
+  /// form: `projects / * /locations / * ` Only global location is supported for
+  /// CustomConnector resource.
+  /// Value must have pattern `^projects/\[^/\]+/locations/global$`.
+  ///
+  /// [filter] - Filter string.
+  ///
+  /// [pageSize] - Page size.
+  ///
+  /// [pageToken] - Page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListCustomConnectorsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListCustomConnectorsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/customConnectors';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListCustomConnectorsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the parameters of a CustomConnector.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. Resource name of the CustomConnector. Format:
+  /// projects/{project}/locations/{location}/customConnectors/{connector}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/customConnectors/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. Field mask is used to specify the fields to be
+  /// overwritten in the Connector resource by the update. The fields specified
+  /// in the update_mask are relative to the resource, not the full request. A
+  /// field will be overwritten if it is in the mask. Set the mask as "*" for
+  /// full replacement, which means all fields will be overwritten.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    CustomConnector request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new CustomConnectorVersion in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent resource of the CreateCustomConnector, of the
+  /// form:
+  /// `projects/{project}/locations/{location}/customConnectors/{custom_connector}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/customConnectors/\[^/\]+$`.
+  ///
+  /// [customConnectorVersionId] - Required. Identifier to assign to the
+  /// CreateCustomConnectorVersion. Must be unique within scope of the parent
+  /// resource.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    CustomConnectorVersion request,
+    core.String parent, {
+    core.String? customConnectorVersionId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (customConnectorVersionId != null)
+        'customConnectorVersionId': [customConnectorVersionId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/customConnectorVersions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single CustomConnectorVersion.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the form:
+  /// `projects/{project}/locations/{location}/customConnectors/{custom_connector}/customConnectorVersions/{custom_connector_version}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/customConnectors/\[^/\]+/customConnectorVersions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single CustomConnectorVersion.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the form: `projects / *
+  /// /locations/{location}/customConnectors / * /customConnectorVersions / * `
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/customConnectors/\[^/\]+/customConnectorVersions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CustomConnectorVersion].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CustomConnectorVersion> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return CustomConnectorVersion.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List CustomConnectorVersions in a given project
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent resource of the connectors, of the form:
+  /// `projects / * /locations/{location}/customConnectors / *
+  /// /customConnectorVersions / * `
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/customConnectors/\[^/\]+$`.
+  ///
+  /// [pageSize] - Page size.
+  ///
+  /// [pageToken] - Page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListCustomConnectorVersionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListCustomConnectorVersionsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/customConnectorVersions';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListCustomConnectorVersionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the parameters of a CustomConnectorVersion.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. Identifier. Resource name of the Version. Format:
+  /// projects/{project}/locations/{location}/customConnectors/{custom_connector}/customConnectorVersions/{custom_connector_version}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/customConnectors/\[^/\]+/customConnectorVersions/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. Field mask is used to specify the fields to be
+  /// overwritten in the Connector resource by the update. The fields specified
+  /// in the update_mask are relative to the resource, not the full request. A
+  /// field will be overwritten if it is in the mask. Set the mask as "*" for
+  /// full replacement, which means all fields will be overwritten.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    CustomConnectorVersion request,
     core.String name, {
     core.String? updateMask,
     core.String? $fields,
@@ -4178,6 +4849,247 @@ class ConnectorsLogConfig {
       };
 }
 
+/// CustomConnector represents the custom connector defined by the customer as
+/// part of byoc.
+class CustomConnector {
+  /// Created time.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Type of the custom connector.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "CUSTOM_CONNECTOR_TYPE_UNSPECIFIED" : Connector type is not specified.
+  /// - "OPEN_API" : OpenAPI connector.
+  /// - "PROTO" : Proto connector.
+  core.String? customConnectorType;
+
+  /// Description of the resource.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// Display name.
+  ///
+  /// Optional.
+  core.String? displayName;
+
+  /// Resource labels to represent user-provided metadata.
+  ///
+  /// Refer to cloud documentation on labels for more details.
+  /// https://cloud.google.com/compute/docs/labeling-resources
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Launch stage.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "LAUNCH_STAGE_UNSPECIFIED" : LAUNCH_STAGE_UNSPECIFIED.
+  /// - "PREVIEW" : PREVIEW.
+  /// - "GA" : GA.
+  /// - "DEPRECATED" : DEPRECATED.
+  /// - "PRIVATE_PREVIEW" : PRIVATE_PREVIEW.
+  core.String? launchStage;
+
+  /// Logo of the resource.
+  ///
+  /// Optional.
+  core.String? logo;
+
+  /// Identifier.
+  ///
+  /// Resource name of the CustomConnector. Format:
+  /// projects/{project}/locations/{location}/customConnectors/{connector}
+  core.String? name;
+
+  /// Updated time.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  CustomConnector({
+    this.createTime,
+    this.customConnectorType,
+    this.description,
+    this.displayName,
+    this.labels,
+    this.launchStage,
+    this.logo,
+    this.name,
+    this.updateTime,
+  });
+
+  CustomConnector.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          customConnectorType: json_.containsKey('customConnectorType')
+              ? json_['customConnectorType'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          launchStage: json_.containsKey('launchStage')
+              ? json_['launchStage'] as core.String
+              : null,
+          logo: json_.containsKey('logo') ? json_['logo'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (customConnectorType != null)
+          'customConnectorType': customConnectorType!,
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (labels != null) 'labels': labels!,
+        if (launchStage != null) 'launchStage': launchStage!,
+        if (logo != null) 'logo': logo!,
+        if (name != null) 'name': name!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// CustomConnectorVersion indicates a specific version of a connector.
+class CustomConnectorVersion {
+  /// Configuration for establishing the authentication to the connector
+  /// destination.
+  ///
+  /// Required.
+  AuthConfig? authConfig;
+
+  /// Created time.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Configuration of the customConnector's destination.
+  ///
+  /// Required.
+  DestinationConfig? destinationConfig;
+
+  /// Whether to enable backend destination config.
+  ///
+  /// This is the backend server that the connector connects to.
+  ///
+  /// Optional.
+  core.bool? enableBackendDestinationConfig;
+
+  /// Resource labels to represent user-provided metadata.
+  ///
+  /// Refer to cloud documentation on labels for more details.
+  /// https://cloud.google.com/compute/docs/labeling-resources
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Identifier.
+  ///
+  /// Resource name of the Version. Format:
+  /// projects/{project}/locations/{location}/customConnectors/{custom_connector}/customConnectorVersions/{custom_connector_version}
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Location of the custom connector spec.
+  ///
+  /// Optional.
+  core.String? specLocation;
+
+  /// Type of the customConnector.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "CUSTOM_CONNECTOR_TYPE_UNSPECIFIED" : Connector type is not specified.
+  /// - "OPEN_API" : OpenAPI connector.
+  /// - "PROTO" : Proto connector.
+  core.String? type;
+
+  /// Updated time.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  CustomConnectorVersion({
+    this.authConfig,
+    this.createTime,
+    this.destinationConfig,
+    this.enableBackendDestinationConfig,
+    this.labels,
+    this.name,
+    this.specLocation,
+    this.type,
+    this.updateTime,
+  });
+
+  CustomConnectorVersion.fromJson(core.Map json_)
+      : this(
+          authConfig: json_.containsKey('authConfig')
+              ? AuthConfig.fromJson(
+                  json_['authConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          destinationConfig: json_.containsKey('destinationConfig')
+              ? DestinationConfig.fromJson(json_['destinationConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          enableBackendDestinationConfig:
+              json_.containsKey('enableBackendDestinationConfig')
+                  ? json_['enableBackendDestinationConfig'] as core.bool
+                  : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          specLocation: json_.containsKey('specLocation')
+              ? json_['specLocation'] as core.String
+              : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (authConfig != null) 'authConfig': authConfig!,
+        if (createTime != null) 'createTime': createTime!,
+        if (destinationConfig != null) 'destinationConfig': destinationConfig!,
+        if (enableBackendDestinationConfig != null)
+          'enableBackendDestinationConfig': enableBackendDestinationConfig!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (specLocation != null) 'specLocation': specLocation!,
+        if (type != null) 'type': type!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
 class Destination {
   /// For publicly routable host.
   core.String? host;
@@ -4377,6 +5289,47 @@ class EgressControlConfig {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
+
+/// Regional encryption config for CMEK details.
+class EncryptionConfig {
+  /// Encryption type for the region.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "ENCRYPTION_TYPE_UNSPECIFIED" : Egress mode unspecified.
+  /// - "GMEK" : Network egress through auto assigned IPs.
+  /// - "CMEK" : Network egress through static IPs.
+  core.String? encryptionType;
+
+  /// KMS crypto key.
+  ///
+  /// This field accepts identifiers of the form
+  /// `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/
+  /// {crypto_key}`
+  ///
+  /// Optional.
+  core.String? kmsKeyName;
+
+  EncryptionConfig({
+    this.encryptionType,
+    this.kmsKeyName,
+  });
+
+  EncryptionConfig.fromJson(core.Map json_)
+      : this(
+          encryptionType: json_.containsKey('encryptionType')
+              ? json_['encryptionType'] as core.String
+              : null,
+          kmsKeyName: json_.containsKey('kmsKeyName')
+              ? json_['kmsKeyName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (encryptionType != null) 'encryptionType': encryptionType!,
+        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
+      };
+}
 
 /// Encryption Key value.
 class EncryptionKey {
@@ -5095,6 +6048,15 @@ class EventingDetails {
   /// Output only.
   core.List<core.String>? searchTags;
 
+  /// The type of the event listener for a specific connector.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Default value.
+  /// - "WEBHOOK" : Webhook listener. e.g. Jira, Zendesk, Servicenow etc.,
+  /// - "JMS" : JMS Listener. e.g. IBM MQ, Rabbit MQ etc.,
+  core.String? type;
+
   EventingDetails({
     this.customEventTypes,
     this.description,
@@ -5103,6 +6065,7 @@ class EventingDetails {
     this.launchStage,
     this.name,
     this.searchTags,
+    this.type,
   });
 
   EventingDetails.fromJson(core.Map json_)
@@ -5128,6 +6091,7 @@ class EventingDetails {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5138,6 +6102,7 @@ class EventingDetails {
         if (launchStage != null) 'launchStage': launchStage!,
         if (name != null) 'name': name!,
         if (searchTags != null) 'searchTags': searchTags!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -5909,6 +6874,38 @@ class JwtClaims {
       };
 }
 
+/// Response message for ListActions API
+class ListActionsResponse {
+  /// list of actions
+  core.List<RuntimeActionSchema>? actions;
+
+  /// token for next page
+  core.String? nextPageToken;
+
+  ListActionsResponse({
+    this.actions,
+    this.nextPageToken,
+  });
+
+  ListActionsResponse.fromJson(core.Map json_)
+      : this(
+          actions: json_.containsKey('actions')
+              ? (json_['actions'] as core.List)
+                  .map((value) => RuntimeActionSchema.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (actions != null) 'actions': actions!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
 /// Response message for ConnectorsService.ListConnections
 class ListConnectionsResponse {
   /// Connections.
@@ -6035,6 +7032,91 @@ class ListConnectorsResponse {
       };
 }
 
+/// Response message for Connectors.ListCustomConnectorVersions.
+class ListCustomConnectorVersionsResponse {
+  /// A list of connector versions.
+  core.List<CustomConnectorVersion>? customConnectorVersions;
+
+  /// Next page token.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListCustomConnectorVersionsResponse({
+    this.customConnectorVersions,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListCustomConnectorVersionsResponse.fromJson(core.Map json_)
+      : this(
+          customConnectorVersions: json_.containsKey('customConnectorVersions')
+              ? (json_['customConnectorVersions'] as core.List)
+                  .map((value) => CustomConnectorVersion.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (customConnectorVersions != null)
+          'customConnectorVersions': customConnectorVersions!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
+/// Response message for Connectors.ListCustomConnectors.
+class ListCustomConnectorsResponse {
+  /// A list of customConnectors.
+  core.List<CustomConnector>? customConnectors;
+
+  /// Next page token.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListCustomConnectorsResponse({
+    this.customConnectors,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListCustomConnectorsResponse.fromJson(core.Map json_)
+      : this(
+          customConnectors: json_.containsKey('customConnectors')
+              ? (json_['customConnectors'] as core.List)
+                  .map((value) => CustomConnector.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (customConnectors != null) 'customConnectors': customConnectors!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
 /// Response message for ConnectorsService.ListEndpointAttachments
 class ListEndpointAttachmentsResponse {
   /// EndpointAttachments.
@@ -6075,6 +7157,38 @@ class ListEndpointAttachmentsResponse {
           'endpointAttachments': endpointAttachments!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
+/// Response message for ListEntityTypes API
+class ListEntityTypesResponse {
+  /// list of entity types
+  core.List<RuntimeEntitySchema>? entityTypes;
+
+  /// token for next page
+  core.String? nextPageToken;
+
+  ListEntityTypesResponse({
+    this.entityTypes,
+    this.nextPageToken,
+  });
+
+  ListEntityTypesResponse.fromJson(core.Map json_)
+      : this(
+          entityTypes: json_.containsKey('entityTypes')
+              ? (json_['entityTypes'] as core.List)
+                  .map((value) => RuntimeEntitySchema.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (entityTypes != null) 'entityTypes': entityTypes!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -7089,6 +8203,11 @@ typedef RefreshConnectionSchemaMetadataRequest = $Empty;
 
 /// Regional Settings details.
 class RegionalSettings {
+  /// Regional encryption config to hold CMEK details.
+  ///
+  /// Optional.
+  EncryptionConfig? encryptionConfig;
+
   /// Resource name of the Connection.
   ///
   /// Format: projects/{project}/locations/{location}/regionalSettings
@@ -7102,12 +8221,17 @@ class RegionalSettings {
   NetworkConfig? networkConfig;
 
   RegionalSettings({
+    this.encryptionConfig,
     this.name,
     this.networkConfig,
   });
 
   RegionalSettings.fromJson(core.Map json_)
       : this(
+          encryptionConfig: json_.containsKey('encryptionConfig')
+              ? EncryptionConfig.fromJson(json_['encryptionConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           networkConfig: json_.containsKey('networkConfig')
               ? NetworkConfig.fromJson(
@@ -7116,6 +8240,7 @@ class RegionalSettings {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (encryptionConfig != null) 'encryptionConfig': encryptionConfig!,
         if (name != null) 'name': name!,
         if (networkConfig != null) 'networkConfig': networkConfig!,
       };

@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20231019",
+    "revision": "20231102",
     "rootUrl": "https://tpu.googleapis.com/",
     "servicePath": "",
     "title": "Cloud TPU API",

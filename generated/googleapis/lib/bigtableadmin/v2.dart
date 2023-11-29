@@ -3114,8 +3114,14 @@ class CheckConsistencyRequest {
   /// Required.
   core.String? consistencyToken;
 
+  /// Checks that reads using an app profile with `StandardIsolation` can see
+  /// all writes committed before the token was created, even if the read and
+  /// write target different clusters.
+  StandardReadRemoteWrites? standardReadRemoteWrites;
+
   CheckConsistencyRequest({
     this.consistencyToken,
+    this.standardReadRemoteWrites,
   });
 
   CheckConsistencyRequest.fromJson(core.Map json_)
@@ -3123,10 +3129,18 @@ class CheckConsistencyRequest {
           consistencyToken: json_.containsKey('consistencyToken')
               ? json_['consistencyToken'] as core.String
               : null,
+          standardReadRemoteWrites:
+              json_.containsKey('standardReadRemoteWrites')
+                  ? StandardReadRemoteWrites.fromJson(
+                      json_['standardReadRemoteWrites']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (consistencyToken != null) 'consistencyToken': consistencyToken!,
+        if (standardReadRemoteWrites != null)
+          'standardReadRemoteWrites': standardReadRemoteWrites!,
       };
 }
 
@@ -3393,6 +3407,8 @@ class ColumnFamily {
   /// column family contents.
   ///
   /// For statistics over an entire table, see TableStats above.
+  ///
+  /// Output only.
   ColumnFamilyStats? stats;
 
   ColumnFamily({
@@ -4982,6 +4998,10 @@ class StandardIsolation {
       };
 }
 
+/// Checks that all writes before the consistency token was generated is
+/// replicated in every cluster and readable.
+typedef StandardReadRemoteWrites = $Empty;
+
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.
 ///
@@ -5057,6 +5077,8 @@ class Table {
   ///
   /// For statistics about a specific column family, see ColumnFamilyStats in
   /// the mapped ColumnFamily collection above.
+  ///
+  /// Output only.
   TableStats? stats;
 
   Table({

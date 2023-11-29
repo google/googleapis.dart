@@ -59,6 +59,7 @@ api.ActionResponse buildActionResponse() {
   if (buildCounterActionResponse < 3) {
     o.dialogAction = buildDialogAction();
     o.type = 'foo';
+    o.updatedWidget = buildUpdatedWidget();
     o.url = 'foo';
   }
   buildCounterActionResponse--;
@@ -73,6 +74,7 @@ void checkActionResponse(api.ActionResponse o) {
       o.type!,
       unittest.equals('foo'),
     );
+    checkUpdatedWidget(o.updatedWidget!);
     unittest.expect(
       o.url!,
       unittest.equals('foo'),
@@ -2471,12 +2473,42 @@ void checkSection(api.Section o) {
   buildCounterSection--;
 }
 
-core.List<api.Membership> buildUnnamed24() => [
+core.List<api.GoogleAppsCardV1SelectionItem> buildUnnamed24() => [
+      buildGoogleAppsCardV1SelectionItem(),
+      buildGoogleAppsCardV1SelectionItem(),
+    ];
+
+void checkUnnamed24(core.List<api.GoogleAppsCardV1SelectionItem> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleAppsCardV1SelectionItem(o[0]);
+  checkGoogleAppsCardV1SelectionItem(o[1]);
+}
+
+core.int buildCounterSelectionItems = 0;
+api.SelectionItems buildSelectionItems() {
+  final o = api.SelectionItems();
+  buildCounterSelectionItems++;
+  if (buildCounterSelectionItems < 3) {
+    o.items = buildUnnamed24();
+  }
+  buildCounterSelectionItems--;
+  return o;
+}
+
+void checkSelectionItems(api.SelectionItems o) {
+  buildCounterSelectionItems++;
+  if (buildCounterSelectionItems < 3) {
+    checkUnnamed24(o.items!);
+  }
+  buildCounterSelectionItems--;
+}
+
+core.List<api.Membership> buildUnnamed25() => [
       buildMembership(),
       buildMembership(),
     ];
 
-void checkUnnamed24(core.List<api.Membership> o) {
+void checkUnnamed25(core.List<api.Membership> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMembership(o[0]);
   checkMembership(o[1]);
@@ -2487,7 +2519,7 @@ api.SetUpSpaceRequest buildSetUpSpaceRequest() {
   final o = api.SetUpSpaceRequest();
   buildCounterSetUpSpaceRequest++;
   if (buildCounterSetUpSpaceRequest < 3) {
-    o.memberships = buildUnnamed24();
+    o.memberships = buildUnnamed25();
     o.requestId = 'foo';
     o.space = buildSpace();
   }
@@ -2498,7 +2530,7 @@ api.SetUpSpaceRequest buildSetUpSpaceRequest() {
 void checkSetUpSpaceRequest(api.SetUpSpaceRequest o) {
   buildCounterSetUpSpaceRequest++;
   if (buildCounterSetUpSpaceRequest < 3) {
-    checkUnnamed24(o.memberships!);
+    checkUnnamed25(o.memberships!);
     unittest.expect(
       o.requestId!,
       unittest.equals('foo'),
@@ -2742,6 +2774,30 @@ void checkThread(api.Thread o) {
   buildCounterThread--;
 }
 
+core.int buildCounterUpdatedWidget = 0;
+api.UpdatedWidget buildUpdatedWidget() {
+  final o = api.UpdatedWidget();
+  buildCounterUpdatedWidget++;
+  if (buildCounterUpdatedWidget < 3) {
+    o.suggestions = buildSelectionItems();
+    o.widget = 'foo';
+  }
+  buildCounterUpdatedWidget--;
+  return o;
+}
+
+void checkUpdatedWidget(api.UpdatedWidget o) {
+  buildCounterUpdatedWidget++;
+  if (buildCounterUpdatedWidget < 3) {
+    checkSelectionItems(o.suggestions!);
+    unittest.expect(
+      o.widget!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterUpdatedWidget--;
+}
+
 core.int buildCounterUploadAttachmentRequest = 0;
 api.UploadAttachmentRequest buildUploadAttachmentRequest() {
   final o = api.UploadAttachmentRequest();
@@ -2846,12 +2902,12 @@ void checkUserMentionMetadata(api.UserMentionMetadata o) {
   buildCounterUserMentionMetadata--;
 }
 
-core.List<api.Button> buildUnnamed25() => [
+core.List<api.Button> buildUnnamed26() => [
       buildButton(),
       buildButton(),
     ];
 
-void checkUnnamed25(core.List<api.Button> o) {
+void checkUnnamed26(core.List<api.Button> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkButton(o[0]);
   checkButton(o[1]);
@@ -2862,7 +2918,7 @@ api.WidgetMarkup buildWidgetMarkup() {
   final o = api.WidgetMarkup();
   buildCounterWidgetMarkup++;
   if (buildCounterWidgetMarkup < 3) {
-    o.buttons = buildUnnamed25();
+    o.buttons = buildUnnamed26();
     o.image = buildImage();
     o.keyValue = buildKeyValue();
     o.textParagraph = buildTextParagraph();
@@ -2874,7 +2930,7 @@ api.WidgetMarkup buildWidgetMarkup() {
 void checkWidgetMarkup(api.WidgetMarkup o) {
   buildCounterWidgetMarkup++;
   if (buildCounterWidgetMarkup < 3) {
-    checkUnnamed25(o.buttons!);
+    checkUnnamed26(o.buttons!);
     checkImage(o.image!);
     checkKeyValue(o.keyValue!);
     checkTextParagraph(o.textParagraph!);
@@ -3613,6 +3669,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-SelectionItems', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSelectionItems();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SelectionItems.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSelectionItems(od);
+    });
+  });
+
   unittest.group('obj-schema-SetUpSpaceRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildSetUpSpaceRequest();
@@ -3700,6 +3766,16 @@ void main() {
       final od =
           api.Thread.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkThread(od);
+    });
+  });
+
+  unittest.group('obj-schema-UpdatedWidget', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildUpdatedWidget();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UpdatedWidget.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkUpdatedWidget(od);
     });
   });
 

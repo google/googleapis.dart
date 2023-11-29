@@ -405,16 +405,17 @@ class ProjectsLocationsRegistrationsResource {
   ///
   /// This method works on any `Registration` resource using \[Subscription or
   /// Commitment billing\](/domains/pricing#billing-models), provided that the
-  /// resource was created at least 1 day in the past. For `Registration`
-  /// resources using \[Monthly billing\](/domains/pricing#billing-models), this
-  /// method works if: * `state` is `EXPORTED` with `expire_time` in the past *
-  /// `state` is `REGISTRATION_FAILED` * `state` is `TRANSFER_FAILED` When an
-  /// active registration is successfully deleted, you can continue to use the
-  /// domain in [Google Domains](https://domains.google/) until it expires. The
-  /// calling user becomes the domain's sole owner in Google Domains, and
-  /// permissions for the domain are subsequently managed there. The domain does
-  /// not renew automatically unless the new owner sets up billing in Google
-  /// Domains.
+  /// resource was created at least 1 day in the past. When an active
+  /// registration is successfully deleted, you can continue to use the domain
+  /// in [Google Domains](https://domains.google/) until it expires. The calling
+  /// user becomes the domain's sole owner in Google Domains, and permissions
+  /// for the domain are subsequently managed there. The domain does not renew
+  /// automatically unless the new owner sets up billing in Google Domains.
+  /// After January 2024 you will only be able to delete `Registration`
+  /// resources when `state` is one of: `EXPORTED`,
+  /// `EXPIRED`,`REGISTRATION_FAILED` or `TRANSFER_FAILED`. See
+  /// [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations)
+  /// for more details.
   ///
   /// Request parameters:
   ///
@@ -451,6 +452,8 @@ class ProjectsLocationsRegistrationsResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Deprecated: For more information, see
+  /// [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations)
   /// Exports a `Registration` resource, such that it is no longer managed by
   /// Cloud Domains.
   ///
@@ -480,6 +483,9 @@ class ProjectsLocationsRegistrationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<Operation> export(
     ExportRegistrationRequest request,
     core.String name, {
@@ -596,6 +602,8 @@ class ProjectsLocationsRegistrationsResource {
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Deprecated: For more information, see
+  /// [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations)
   /// Imports a domain name from [Google Domains](https://domains.google/) for
   /// use in Cloud Domains.
   ///
@@ -621,6 +629,9 @@ class ProjectsLocationsRegistrationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<Operation> import(
     ImportDomainRequest request,
     core.String parent, {
@@ -904,6 +915,8 @@ class ProjectsLocationsRegistrationsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Deprecated: For more information, see
+  /// [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations)
   /// Lists domain names from [Google Domains](https://domains.google/) that can
   /// be imported to Cloud Domains using the `ImportDomain` method.
   ///
@@ -932,6 +945,9 @@ class ProjectsLocationsRegistrationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<RetrieveImportableDomainsResponse> retrieveImportableDomains(
     core.String location, {
     core.int? pageSize,
@@ -1004,6 +1020,8 @@ class ProjectsLocationsRegistrationsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Deprecated: For more information, see
+  /// [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations)
   /// Gets parameters needed to transfer a domain name from another registrar to
   /// Cloud Domains.
   ///
@@ -1030,6 +1048,9 @@ class ProjectsLocationsRegistrationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<RetrieveTransferParametersResponse> retrieveTransferParameters(
     core.String location, {
     core.String? domainName,
@@ -1198,6 +1219,8 @@ class ProjectsLocationsRegistrationsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Deprecated: For more information, see
+  /// [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations)
   /// Transfers a domain name from another registrar to Cloud Domains.
   ///
   /// For domains already managed by [Google Domains](https://domains.google/),
@@ -1234,6 +1257,9 @@ class ProjectsLocationsRegistrationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<Operation> transfer(
     TransferDomainRequest request,
     core.String parent, {
@@ -1638,14 +1664,17 @@ class ContactSettings {
   /// available. When setting this option, you must also provide a
   /// `PUBLIC_CONTACT_DATA_ACKNOWLEDGEMENT` in the `contact_notices` field of
   /// the request.
-  /// - "PRIVATE_CONTACT_DATA" : None of the data from `ContactSettings` is
-  /// publicly available. Instead, proxy contact data is published for your
-  /// domain. Email sent to the proxy email address is forwarded to the
-  /// registrant's email address. Cloud Domains provides this privacy proxy
-  /// service at no additional cost.
-  /// - "REDACTED_CONTACT_DATA" : Some data from `ContactSettings` is publicly
-  /// available. The actual information redacted depends on the domain. For
-  /// details, see
+  /// - "PRIVATE_CONTACT_DATA" : Deprecated: For more information, see
+  /// [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations)
+  /// None of the data from `ContactSettings` is publicly available. Instead,
+  /// proxy contact data is published for your domain. Email sent to the proxy
+  /// email address is forwarded to the registrant's email address. Cloud
+  /// Domains provides this privacy proxy service at no additional cost.
+  /// - "REDACTED_CONTACT_DATA" : The organization name (if provided) and
+  /// limited non-identifying data from `ContactSettings` is available to the
+  /// public (e.g. country and state). The remaining data is marked as `REDACTED
+  /// FOR PRIVACY` in the WHOIS database. The actual information redacted
+  /// depends on the domain. For details, see
   /// [the registration privacy article](https://support.google.com/domains/answer/3251242).
   core.String? privacy;
 
@@ -1751,7 +1780,12 @@ class DnsSettings {
   /// Commonly empty.
   core.List<GlueRecord>? glueRecords;
 
+  /// Deprecated: For more information, see
+  /// [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations)
   /// The free DNS zone provided by [Google Domains](https://domains.google/).
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   GoogleDomainsDns? googleDomainsDns;
 
   DnsSettings({
@@ -1921,8 +1955,10 @@ class DsRecord {
       };
 }
 
+/// Deprecated: For more information, see
+/// [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations)
 /// Request for the `ExportRegistration` method.
-typedef ExportRegistrationRequest = $Empty;
+typedef ExportRegistrationRequest = $Shared02;
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
@@ -2000,6 +2036,8 @@ class GlueRecord {
       };
 }
 
+/// Deprecated: For more information, see
+/// [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations)
 /// Configuration for using the free DNS zone provided by Google Domains as a
 /// `Registration`'s `dns_provider`.
 ///
@@ -2069,6 +2107,8 @@ class GoogleDomainsDns {
       };
 }
 
+/// Deprecated: For more information, see
+/// [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations)
 /// Request for the `ImportDomain` method.
 class ImportDomainRequest {
   /// The domain name.
@@ -2211,19 +2251,49 @@ typedef Location = $Location00;
 
 /// Defines renewal, billing, and transfer settings for a `Registration`.
 class ManagementSettings {
-  /// The renewal method for this `Registration`.
+  /// The desired renewal method for this `Registration`.
+  ///
+  /// The actual `renewal_method` is automatically updated to reflect this
+  /// choice. If unset or equal to `RENEWAL_METHOD_UNSPECIFIED`, it will be
+  /// treated as if it were set to `AUTOMATIC_RENEWAL`. Can't be set to
+  /// `RENEWAL_DISABLED` during resource creation and can only be updated when
+  /// the `Registration` resource has state `ACTIVE` or `SUSPENDED`. When
+  /// `preferred_renewal_method` is set to `AUTOMATIC_RENEWAL` the actual
+  /// `renewal_method` can be set to `RENEWAL_DISABLED` in case of e.g. problems
+  /// with the Billing Account or reported domain abuse. In such cases check the
+  /// `issues` field on the `Registration`. After the problem is resolved the
+  /// `renewal_method` will be automatically updated to
+  /// `preferred_renewal_method` in a few hours.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "RENEWAL_METHOD_UNSPECIFIED" : The renewal method is undefined.
+  /// - "AUTOMATIC_RENEWAL" : The domain is automatically renewed each year.
+  /// - "MANUAL_RENEWAL" : Deprecated: For more information, see
+  /// [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations)
+  /// This option was never used. Use RENEWAL_DISABLED instead.
+  /// - "RENEWAL_DISABLED" : The domain won't be renewed and will expire at its
+  /// expiration time.
+  core.String? preferredRenewalMethod;
+
+  /// The actual renewal method for this `Registration`.
+  ///
+  /// When `preferred_renewal_method` is set to `AUTOMATIC_RENEWAL` the actual
+  /// `renewal_method` can be equal to `RENEWAL_DISABLED` in case of e.g.
+  /// problems with the Billing Account or reported domain abuse. In such cases
+  /// check the `issues` field on the `Registration`. After the problem is
+  /// resolved the `renewal_method` will be automatically updated to
+  /// `preferred_renewal_method` in a few hours.
   ///
   /// Output only.
   /// Possible string values are:
   /// - "RENEWAL_METHOD_UNSPECIFIED" : The renewal method is undefined.
-  /// - "AUTOMATIC_RENEWAL" : The domain is automatically renewed each year . To
-  /// disable automatic renewals, delete the resource by calling
-  /// `DeleteRegistration` or export it by calling `ExportRegistration`.
-  /// - "MANUAL_RENEWAL" : The domain must be explicitly renewed each year
-  /// before its `expire_time`. This option is only available when the
-  /// `Registration` is in state `EXPORTED`. To manage the domain's current
-  /// billing and renewal settings, go to
-  /// [Google Domains](https://domains.google/).
+  /// - "AUTOMATIC_RENEWAL" : The domain is automatically renewed each year.
+  /// - "MANUAL_RENEWAL" : Deprecated: For more information, see
+  /// [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations)
+  /// This option was never used. Use RENEWAL_DISABLED instead.
+  /// - "RENEWAL_DISABLED" : The domain won't be renewed and will expire at its
+  /// expiration time.
   core.String? renewalMethod;
 
   /// Controls whether the domain can be transferred to another registrar.
@@ -2236,12 +2306,16 @@ class ManagementSettings {
   core.String? transferLockState;
 
   ManagementSettings({
+    this.preferredRenewalMethod,
     this.renewalMethod,
     this.transferLockState,
   });
 
   ManagementSettings.fromJson(core.Map json_)
       : this(
+          preferredRenewalMethod: json_.containsKey('preferredRenewalMethod')
+              ? json_['preferredRenewalMethod'] as core.String
+              : null,
           renewalMethod: json_.containsKey('renewalMethod')
               ? json_['renewalMethod'] as core.String
               : null,
@@ -2251,6 +2325,8 @@ class ManagementSettings {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (preferredRenewalMethod != null)
+          'preferredRenewalMethod': preferredRenewalMethod!,
         if (renewalMethod != null) 'renewalMethod': renewalMethod!,
         if (transferLockState != null) 'transferLockState': transferLockState!,
       };
@@ -2628,16 +2704,20 @@ class RegisterParameters {
 /// After choosing a name, call `RetrieveRegisterParameters` to ensure
 /// availability and obtain information like pricing, which is needed to build a
 /// call to `RegisterDomain`. Another way to create a new `Registration` is to
-/// transfer an existing domain from another registrar. First, go to the current
-/// registrar to unlock the domain for transfer and retrieve the domain's
-/// transfer authorization code. Then call `RetrieveTransferParameters` to
-/// confirm that the domain is unlocked and to get values needed to build a call
-/// to `TransferDomain`. Finally, you can create a new `Registration` by
-/// importing an existing domain managed with
-/// [Google Domains](https://domains.google/). First, call
-/// `RetrieveImportableDomains` to list domains to which the calling user has
-/// sufficient access. Then call `ImportDomain` on any domain names you want to
-/// use with Cloud Domains.
+/// transfer an existing domain from another registrar (Deprecated: For more
+/// information, see
+/// [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations)).
+/// First, go to the current registrar to unlock the domain for transfer and
+/// retrieve the domain's transfer authorization code. Then call
+/// `RetrieveTransferParameters` to confirm that the domain is unlocked and to
+/// get values needed to build a call to `TransferDomain`. Finally, you can
+/// create a new `Registration` by importing an existing domain managed with
+/// [Google Domains](https://domains.google/) (Deprecated: For more information,
+/// see
+/// [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations)).
+/// First, call `RetrieveImportableDomains` to list domains to which the calling
+/// user has sufficient access. Then call `ImportDomain` on any domain names you
+/// want to use with Cloud Domains.
 class Registration {
   /// Settings for contact information linked to the `Registration`.
   ///
@@ -2732,7 +2812,8 @@ class Registration {
   /// - "IMPORT_PENDING" : The domain is being imported from Google Domains to
   /// Cloud Domains.
   /// - "ACTIVE" : The domain is registered and operational. The domain renews
-  /// automatically as long as it remains in this state.
+  /// automatically as long as it remains in this state and the RenewalMethod is
+  /// set to AUTOMATIC_RENEWAL.
   /// - "SUSPENDED" : The domain is suspended and inoperative. For more details,
   /// see the `issues` field.
   /// - "EXPORTED" : The domain is no longer managed with Cloud Domains. It may
@@ -2749,6 +2830,8 @@ class Registration {
   /// Output only.
   core.List<core.String>? supportedPrivacy;
 
+  /// Deprecated: For more information, see
+  /// [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations)
   /// The reason the domain transfer failed.
   ///
   /// Only set for domains in TRANSFER_FAILED state.
@@ -2777,6 +2860,9 @@ class Registration {
   /// - "TRANSFER_ALREADY_PENDING" : Another transfer is already pending for
   /// this domain. The existing transfer attempt must expire or be cancelled in
   /// order to proceed.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? transferFailureReason;
 
   Registration({
@@ -2877,6 +2963,8 @@ class Registration {
 /// Request for the `ResetAuthorizationCode` method.
 typedef ResetAuthorizationCodeRequest = $Empty;
 
+/// Deprecated: For more information, see
+/// [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations)
 /// Response for the `RetrieveImportableDomains` method.
 class RetrieveImportableDomainsResponse {
   /// A list of domains that the calling user manages in Google Domains.
@@ -2935,6 +3023,8 @@ class RetrieveRegisterParametersResponse {
       };
 }
 
+/// Deprecated: For more information, see
+/// [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations)
 /// Response for the `RetrieveTransferParameters` method.
 class RetrieveTransferParametersResponse {
   /// Parameters to use when calling the `TransferDomain` method.
@@ -3035,6 +3125,8 @@ typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;
 
+/// Deprecated: For more information, see
+/// [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations)
 /// Request for the `TransferDomain` method.
 class TransferDomainRequest {
   /// The domain's transfer authorization code.
@@ -3111,6 +3203,8 @@ class TransferDomainRequest {
       };
 }
 
+/// Deprecated: For more information, see
+/// [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations)
 /// Parameters required to transfer a domain from another registrar.
 class TransferParameters {
   /// The registrar that currently manages the domain.

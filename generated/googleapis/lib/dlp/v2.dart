@@ -8541,7 +8541,7 @@ class GooglePrivacyDlpV2CustomInfoType {
   /// Sensitivity for this CustomInfoType.
   ///
   /// If this CustomInfoType extends an existing InfoType, the sensitivity here
-  /// will take precedent over that of the original InfoType. If unset for a
+  /// will take precedence over that of the original InfoType. If unset for a
   /// CustomInfoType, it will default to HIGH. This only applies to data
   /// profiling.
   GooglePrivacyDlpV2SensitivityScore? sensitivityScore;
@@ -11762,11 +11762,11 @@ class GooglePrivacyDlpV2InspectConfig {
   /// The values must correspond to InfoType values returned by ListInfoTypes or
   /// listed at https://cloud.google.com/dlp/docs/infotypes-reference. When no
   /// InfoTypes or CustomInfoTypes are specified in a request, the system may
-  /// automatically choose what detectors to run. By default this may be all
-  /// types, but may change over time as detectors are updated. If you need
-  /// precise control and predictability as to what detectors are run you should
-  /// specify specific InfoTypes listed in the reference, otherwise a default
-  /// list will be used, which may change over time.
+  /// automatically choose a default list of detectors to run, which may change
+  /// over time. If you need precise control and predictability as to what
+  /// detectors are run you should specify specific InfoTypes listed in the
+  /// reference, otherwise a default list will be used, which may change over
+  /// time.
   core.List<GooglePrivacyDlpV2InfoType>? infoTypes;
 
   /// Configuration to control the number of findings returned.
@@ -13192,8 +13192,8 @@ class GooglePrivacyDlpV2ListDiscoveryConfigsResponse {
   /// List of configs, up to page_size in ListDiscoveryConfigsRequest.
   core.List<GooglePrivacyDlpV2DiscoveryConfig>? discoveryConfigs;
 
-  /// If the next page is available then the next page token to be used in the
-  /// following ListDiscoveryConfigs request.
+  /// If the next page is available then this value is the next page token to be
+  /// used in the following ListDiscoveryConfigs request.
   core.String? nextPageToken;
 
   GooglePrivacyDlpV2ListDiscoveryConfigsResponse({
@@ -13315,8 +13315,8 @@ class GooglePrivacyDlpV2ListJobTriggersResponse {
   /// List of triggeredJobs, up to page_size in ListJobTriggersRequest.
   core.List<GooglePrivacyDlpV2JobTrigger>? jobTriggers;
 
-  /// If the next page is available then the next page token to be used in the
-  /// following ListJobTriggers request.
+  /// If the next page is available then this value is the next page token to be
+  /// used in the following ListJobTriggers request.
   core.String? nextPageToken;
 
   GooglePrivacyDlpV2ListJobTriggersResponse({
@@ -14880,7 +14880,7 @@ class GooglePrivacyDlpV2ReplaceValueConfig {
 /// Replace each matching finding with the name of the info_type.
 typedef GooglePrivacyDlpV2ReplaceWithInfoTypeConfig = $Empty;
 
-/// De-id options.
+/// De-identification options.
 class GooglePrivacyDlpV2RequestedDeidentifyOptions {
   /// Snapshot of the state of the `DeidentifyTemplate` from the Deidentify
   /// action at the time this job was run.

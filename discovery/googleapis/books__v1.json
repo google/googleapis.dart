@@ -24,7 +24,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20231026",
+    "revision": "20231107",
     "rootUrl": "https://books.googleapis.com/",
     "servicePath": "",
     "title": "Books API",

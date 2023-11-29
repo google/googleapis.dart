@@ -33,6 +33,7 @@ api.GoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest
   buildCounterGoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest++;
   if (buildCounterGoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest <
       3) {
+    o.acknowledgeType = 'foo';
     o.comment = 'foo';
     o.nonCompliantOrgPolicy = 'foo';
   }
@@ -45,6 +46,10 @@ void checkGoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest(
   buildCounterGoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest++;
   if (buildCounterGoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest <
       3) {
+    unittest.expect(
+      o.acknowledgeType!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.comment!,
       unittest.equals('foo'),
@@ -441,6 +446,7 @@ api.GoogleCloudAssuredworkloadsV1Violation
   if (buildCounterGoogleCloudAssuredworkloadsV1Violation < 3) {
     o.acknowledged = true;
     o.acknowledgementTime = 'foo';
+    o.associatedOrgPolicyViolationId = 'foo';
     o.auditLogLink = 'foo';
     o.beginTime = 'foo';
     o.category = 'foo';
@@ -450,10 +456,14 @@ api.GoogleCloudAssuredworkloadsV1Violation
     o.name = 'foo';
     o.nonCompliantOrgPolicy = 'foo';
     o.orgPolicyConstraint = 'foo';
+    o.parentProjectNumber = 'foo';
     o.remediation = buildGoogleCloudAssuredworkloadsV1ViolationRemediation();
     o.resolveTime = 'foo';
+    o.resourceName = 'foo';
+    o.resourceType = 'foo';
     o.state = 'foo';
     o.updateTime = 'foo';
+    o.violationType = 'foo';
   }
   buildCounterGoogleCloudAssuredworkloadsV1Violation--;
   return o;
@@ -466,6 +476,10 @@ void checkGoogleCloudAssuredworkloadsV1Violation(
     unittest.expect(o.acknowledged!, unittest.isTrue);
     unittest.expect(
       o.acknowledgementTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.associatedOrgPolicyViolationId!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -501,9 +515,21 @@ void checkGoogleCloudAssuredworkloadsV1Violation(
       o.orgPolicyConstraint!,
       unittest.equals('foo'),
     );
+    unittest.expect(
+      o.parentProjectNumber!,
+      unittest.equals('foo'),
+    );
     checkGoogleCloudAssuredworkloadsV1ViolationRemediation(o.remediation!);
     unittest.expect(
       o.resolveTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.resourceName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.resourceType!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -512,6 +538,10 @@ void checkGoogleCloudAssuredworkloadsV1Violation(
     );
     unittest.expect(
       o.updateTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.violationType!,
       unittest.equals('foo'),
     );
   }
@@ -955,7 +985,9 @@ api.GoogleCloudAssuredworkloadsV1WorkloadComplianceStatus
   final o = api.GoogleCloudAssuredworkloadsV1WorkloadComplianceStatus();
   buildCounterGoogleCloudAssuredworkloadsV1WorkloadComplianceStatus++;
   if (buildCounterGoogleCloudAssuredworkloadsV1WorkloadComplianceStatus < 3) {
+    o.acknowledgedResourceViolationCount = 42;
     o.acknowledgedViolationCount = 42;
+    o.activeResourceViolationCount = 42;
     o.activeViolationCount = 42;
   }
   buildCounterGoogleCloudAssuredworkloadsV1WorkloadComplianceStatus--;
@@ -967,7 +999,15 @@ void checkGoogleCloudAssuredworkloadsV1WorkloadComplianceStatus(
   buildCounterGoogleCloudAssuredworkloadsV1WorkloadComplianceStatus++;
   if (buildCounterGoogleCloudAssuredworkloadsV1WorkloadComplianceStatus < 3) {
     unittest.expect(
+      o.acknowledgedResourceViolationCount!,
+      unittest.equals(42),
+    );
+    unittest.expect(
       o.acknowledgedViolationCount!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.activeResourceViolationCount!,
       unittest.equals(42),
     );
     unittest.expect(

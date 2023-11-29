@@ -16,7 +16,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20231017",
+    "revision": "20231115",
     "rootUrl": "https://webfonts.googleapis.com/",
     "servicePath": "",
     "title": "Web Fonts Developer API",

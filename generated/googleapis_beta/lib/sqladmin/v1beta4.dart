@@ -858,6 +858,54 @@ class InstancesResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Demotes an existing standalone instance to be a Cloud SQL read replica for
+  /// an external database server.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Required. The project ID of the project that contains the
+  /// instance.
+  ///
+  /// [instance] - Required. The name of the Cloud SQL instance.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> demote(
+    InstancesDemoteRequest request,
+    core.String project,
+    core.String instance, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'sql/v1beta4/projects/' +
+        commons.escapeVariable('$project') +
+        '/instances/' +
+        commons.escapeVariable('$instance') +
+        '/demote';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Demotes the stand-alone instance to be a Cloud SQL read replica for an
   /// external database server.
   ///
@@ -2869,6 +2917,11 @@ class ApiWarning {
   /// reachable. The returned result set may be incomplete.
   /// - "MAX_RESULTS_EXCEEDS_LIMIT" : Warning when user provided maxResults
   /// parameter exceeds the limit. The returned result set may be incomplete.
+  /// - "COMPROMISED_CREDENTIALS" : Warning when user tries to create/update a
+  /// user with credentials that have previously been compromised by a public
+  /// data breach.
+  /// - "INTERNAL_STATE_FAILURE" : Warning when the operation succeeds but some
+  /// non-critical workflow state failed.
   core.String? code;
 
   /// The warning message.
@@ -4062,6 +4115,13 @@ class DatabaseInstance {
   /// The user settings.
   Settings? settings;
 
+  /// The SQL network architecture for the instance.
+  /// Possible string values are:
+  /// - "SQL_NETWORK_ARCHITECTURE_UNSPECIFIED"
+  /// - "NEW_NETWORK_ARCHITECTURE" : Instance is a Tenancy Unit (TU) instance.
+  /// - "OLD_NETWORK_ARCHITECTURE" : Instance is an Umbrella instance.
+  core.String? sqlNetworkArchitecture;
+
   /// The current serving state of the Cloud SQL instance.
   /// Possible string values are:
   /// - "SQL_INSTANCE_STATE_UNSPECIFIED" : The state of the instance is unknown.
@@ -4122,6 +4182,7 @@ class DatabaseInstance {
     this.serverCaCert,
     this.serviceAccountEmailAddress,
     this.settings,
+    this.sqlNetworkArchitecture,
     this.state,
     this.suspensionReason,
     this.writeEndpoint,
@@ -4258,6 +4319,9 @@ class DatabaseInstance {
               ? Settings.fromJson(
                   json_['settings'] as core.Map<core.String, core.dynamic>)
               : null,
+          sqlNetworkArchitecture: json_.containsKey('sqlNetworkArchitecture')
+              ? json_['sqlNetworkArchitecture'] as core.String
+              : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
           suspensionReason: json_.containsKey('suspensionReason')
@@ -4319,6 +4383,8 @@ class DatabaseInstance {
         if (serviceAccountEmailAddress != null)
           'serviceAccountEmailAddress': serviceAccountEmailAddress!,
         if (settings != null) 'settings': settings!,
+        if (sqlNetworkArchitecture != null)
+          'sqlNetworkArchitecture': sqlNetworkArchitecture!,
         if (state != null) 'state': state!,
         if (suspensionReason != null) 'suspensionReason': suspensionReason!,
         if (writeEndpoint != null) 'writeEndpoint': writeEndpoint!,
@@ -4352,6 +4418,39 @@ class DatabasesListResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
+      };
+}
+
+/// This context is used to demote an existing standalone instance to be a Cloud
+/// SQL read replica for an external database server.
+class DemoteContext {
+  /// This is always `sql#demoteContext`.
+  core.String? kind;
+
+  /// The name of the instance which acts as an on-premises primary instance in
+  /// the replication setup.
+  ///
+  /// Required.
+  core.String? sourceRepresentativeInstanceName;
+
+  DemoteContext({
+    this.kind,
+    this.sourceRepresentativeInstanceName,
+  });
+
+  DemoteContext.fromJson(core.Map json_)
+      : this(
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          sourceRepresentativeInstanceName:
+              json_.containsKey('sourceRepresentativeInstanceName')
+                  ? json_['sourceRepresentativeInstanceName'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (sourceRepresentativeInstanceName != null)
+          'sourceRepresentativeInstanceName': sourceRepresentativeInstanceName!,
       };
 }
 
@@ -5636,6 +5735,32 @@ class InstancesDemoteMasterRequest {
       };
 }
 
+/// This request is used to demote an existing standalone instance to be a Cloud
+/// SQL read replica for an external database server.
+class InstancesDemoteRequest {
+  /// This context is used to demote an existing standalone instance to be a
+  /// Cloud SQL read replica for an external database server.
+  ///
+  /// Required.
+  DemoteContext? demoteContext;
+
+  InstancesDemoteRequest({
+    this.demoteContext,
+  });
+
+  InstancesDemoteRequest.fromJson(core.Map json_)
+      : this(
+          demoteContext: json_.containsKey('demoteContext')
+              ? DemoteContext.fromJson(
+                  json_['demoteContext'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (demoteContext != null) 'demoteContext': demoteContext!,
+      };
+}
+
 /// Database instance export request.
 class InstancesExportRequest {
   /// Contains details about the export operation.
@@ -6159,6 +6284,10 @@ class MaintenanceWindow {
   /// - "stable" : For instance update that requires a restart, this update
   /// track indicates your instance prefer to let Cloud SQL choose the timing of
   /// restart (within its Maintenance window, if applicable).
+  /// - "week5" : For instance update that requires a restart, this update track
+  /// indicates your instance prefer to let Cloud SQL choose the timing of
+  /// restart (within its Maintenance window, if applicable) to be at least 5
+  /// weeks after the notification.
   core.String? updateTrack;
 
   MaintenanceWindow({
@@ -6414,6 +6543,9 @@ class OnPremisesConfiguration {
 /// For successful operations that return an Operation resource, only the fields
 /// relevant to the operation are populated in the resource.
 class Operation {
+  /// An Admin API warning message.
+  ApiWarning? apiWarning;
+
   /// The context for backup operation, if applicable.
   BackupContext? backupContext;
 
@@ -6530,6 +6662,7 @@ class Operation {
   core.String? user;
 
   Operation({
+    this.apiWarning,
     this.backupContext,
     this.endTime,
     this.error,
@@ -6550,6 +6683,10 @@ class Operation {
 
   Operation.fromJson(core.Map json_)
       : this(
+          apiWarning: json_.containsKey('apiWarning')
+              ? ApiWarning.fromJson(
+                  json_['apiWarning'] as core.Map<core.String, core.dynamic>)
+              : null,
           backupContext: json_.containsKey('backupContext')
               ? BackupContext.fromJson(
                   json_['backupContext'] as core.Map<core.String, core.dynamic>)
@@ -6599,6 +6736,7 @@ class Operation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (apiWarning != null) 'apiWarning': apiWarning!,
         if (backupContext != null) 'backupContext': backupContext!,
         if (endTime != null) 'endTime': endTime!,
         if (error != null) 'error': error!,
@@ -6760,6 +6898,10 @@ class PasswordValidationPolicy {
   /// and non-alphanumeric characters.
   core.String? complexity;
 
+  /// Disallow credentials that have been previously compromised by a public
+  /// data breach.
+  core.bool? disallowCompromisedCredentials;
+
   /// Disallow username as a part of the password.
   core.bool? disallowUsernameSubstring;
 
@@ -6779,6 +6921,7 @@ class PasswordValidationPolicy {
 
   PasswordValidationPolicy({
     this.complexity,
+    this.disallowCompromisedCredentials,
     this.disallowUsernameSubstring,
     this.enablePasswordPolicy,
     this.minLength,
@@ -6791,6 +6934,10 @@ class PasswordValidationPolicy {
           complexity: json_.containsKey('complexity')
               ? json_['complexity'] as core.String
               : null,
+          disallowCompromisedCredentials:
+              json_.containsKey('disallowCompromisedCredentials')
+                  ? json_['disallowCompromisedCredentials'] as core.bool
+                  : null,
           disallowUsernameSubstring:
               json_.containsKey('disallowUsernameSubstring')
                   ? json_['disallowUsernameSubstring'] as core.bool
@@ -6811,6 +6958,8 @@ class PasswordValidationPolicy {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (complexity != null) 'complexity': complexity!,
+        if (disallowCompromisedCredentials != null)
+          'disallowCompromisedCredentials': disallowCompromisedCredentials!,
         if (disallowUsernameSubstring != null)
           'disallowUsernameSubstring': disallowUsernameSubstring!,
         if (enablePasswordPolicy != null)
@@ -7587,6 +7736,11 @@ class SqlExternalSyncSettingError {
   /// database settings for migration.
   /// - "MYSQL_PARALLEL_IMPORT_INSUFFICIENT_PRIVILEGE" : The replication user is
   /// missing parallel import specific privileges. (e.g. LOCK TABLES) for MySQL.
+  /// - "LOCAL_INFILE_OFF" : The global variable local_infile is off on external
+  /// server replica.
+  /// - "TURN_ON_PITR_AFTER_PROMOTE" : This code instructs customers to turn on
+  /// point-in-time recovery manually for the instance after promoting the Cloud
+  /// SQL for PostgreSQL instance.
   core.String? type;
 
   SqlExternalSyncSettingError({

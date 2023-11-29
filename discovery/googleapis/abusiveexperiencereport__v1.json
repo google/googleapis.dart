@@ -16,7 +16,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20231002",
+    "revision": "20231106",
     "rootUrl": "https://abusiveexperiencereport.googleapis.com/",
     "servicePath": "",
     "title": "Abusive Experience Report API",

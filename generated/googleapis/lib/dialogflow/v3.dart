@@ -4399,6 +4399,50 @@ class ProjectsLocationsAgentsSessionsResource {
     return GoogleCloudDialogflowCxV3MatchIntentResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
+
+  /// Updates the feedback received from the user for a single turn of the bot
+  /// response.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [session] - Required. The name of the session the feedback was sent to.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/agents/\[^/\]+/sessions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowCxV3AnswerFeedback].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowCxV3AnswerFeedback> submitAnswerFeedback(
+    GoogleCloudDialogflowCxV3SubmitAnswerFeedbackRequest request,
+    core.String session, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v3/' + core.Uri.encodeFull('$session') + ':submitAnswerFeedback';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDialogflowCxV3AnswerFeedback.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsAgentsSessionsEntityTypesResource {
@@ -6419,6 +6463,11 @@ class GoogleCloudDialogflowCxV3Agent {
   /// the higher level.
   GoogleCloudDialogflowCxV3AdvancedSettings? advancedSettings;
 
+  /// Answer feedback collection settings.
+  ///
+  /// Optional.
+  GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettings? answerFeedbackSettings;
+
   /// The URI of the agent's avatar.
   ///
   /// Avatars are used throughout the Dialogflow console and in the self-hosted
@@ -6511,6 +6560,7 @@ class GoogleCloudDialogflowCxV3Agent {
 
   GoogleCloudDialogflowCxV3Agent({
     this.advancedSettings,
+    this.answerFeedbackSettings,
     this.avatarUri,
     this.defaultLanguageCode,
     this.description,
@@ -6534,6 +6584,11 @@ class GoogleCloudDialogflowCxV3Agent {
           advancedSettings: json_.containsKey('advancedSettings')
               ? GoogleCloudDialogflowCxV3AdvancedSettings.fromJson(
                   json_['advancedSettings']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          answerFeedbackSettings: json_.containsKey('answerFeedbackSettings')
+              ? GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettings.fromJson(
+                  json_['answerFeedbackSettings']
                       as core.Map<core.String, core.dynamic>)
               : null,
           avatarUri: json_.containsKey('avatarUri')
@@ -6596,6 +6651,8 @@ class GoogleCloudDialogflowCxV3Agent {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (advancedSettings != null) 'advancedSettings': advancedSettings!,
+        if (answerFeedbackSettings != null)
+          'answerFeedbackSettings': answerFeedbackSettings!,
         if (avatarUri != null) 'avatarUri': avatarUri!,
         if (defaultLanguageCode != null)
           'defaultLanguageCode': defaultLanguageCode!,
@@ -6620,6 +6677,34 @@ class GoogleCloudDialogflowCxV3Agent {
         if (textToSpeechSettings != null)
           'textToSpeechSettings': textToSpeechSettings!,
         if (timeZone != null) 'timeZone': timeZone!,
+      };
+}
+
+/// Settings for answer feedback collection.
+class GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettings {
+  /// If enabled, end users will be able to provide answer feedback to
+  /// Dialogflow responses.
+  ///
+  /// Feature works only if interaction logging is enabled in the Dialogflow
+  /// agent.
+  ///
+  /// Optional.
+  core.bool? enableAnswerFeedback;
+
+  GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettings({
+    this.enableAnswerFeedback,
+  });
+
+  GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettings.fromJson(core.Map json_)
+      : this(
+          enableAnswerFeedback: json_.containsKey('enableAnswerFeedback')
+              ? json_['enableAnswerFeedback'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enableAnswerFeedback != null)
+          'enableAnswerFeedback': enableAnswerFeedback!,
       };
 }
 
@@ -6765,6 +6850,99 @@ class GoogleCloudDialogflowCxV3AgentValidationResult {
       };
 }
 
+/// Stores information about feedback provided by users about a response.
+class GoogleCloudDialogflowCxV3AnswerFeedback {
+  /// Custom rating from the user about the provided answer, with maximum length
+  /// of 1024 characters.
+  ///
+  /// For example, client could use a customized JSON object to indicate the
+  /// rating.
+  ///
+  /// Optional.
+  core.String? customRating;
+
+  /// Rating from user for the specific Dialogflow response.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "RATING_UNSPECIFIED" : Rating not specified.
+  /// - "THUMBS_UP" : Thumbs up feedback from user.
+  /// - "THUMBS_DOWN" : Thumbs down feedback from user.
+  core.String? rating;
+
+  /// In case of thumbs down rating provided, users can optionally provide
+  /// context about the rating.
+  ///
+  /// Optional.
+  GoogleCloudDialogflowCxV3AnswerFeedbackRatingReason? ratingReason;
+
+  GoogleCloudDialogflowCxV3AnswerFeedback({
+    this.customRating,
+    this.rating,
+    this.ratingReason,
+  });
+
+  GoogleCloudDialogflowCxV3AnswerFeedback.fromJson(core.Map json_)
+      : this(
+          customRating: json_.containsKey('customRating')
+              ? json_['customRating'] as core.String
+              : null,
+          rating: json_.containsKey('rating')
+              ? json_['rating'] as core.String
+              : null,
+          ratingReason: json_.containsKey('ratingReason')
+              ? GoogleCloudDialogflowCxV3AnswerFeedbackRatingReason.fromJson(
+                  json_['ratingReason'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (customRating != null) 'customRating': customRating!,
+        if (rating != null) 'rating': rating!,
+        if (ratingReason != null) 'ratingReason': ratingReason!,
+      };
+}
+
+/// Stores extra information about why users provided thumbs down rating.
+class GoogleCloudDialogflowCxV3AnswerFeedbackRatingReason {
+  /// Additional feedback about the rating.
+  ///
+  /// This field can be populated without choosing a predefined `reason`.
+  ///
+  /// Optional.
+  core.String? feedback;
+
+  /// Custom reason labels for thumbs down rating provided by the user.
+  ///
+  /// The maximum number of labels allowed is 10 and the maximum length of a
+  /// single label is 128 characters.
+  ///
+  /// Optional.
+  core.List<core.String>? reasonLabels;
+
+  GoogleCloudDialogflowCxV3AnswerFeedbackRatingReason({
+    this.feedback,
+    this.reasonLabels,
+  });
+
+  GoogleCloudDialogflowCxV3AnswerFeedbackRatingReason.fromJson(core.Map json_)
+      : this(
+          feedback: json_.containsKey('feedback')
+              ? json_['feedback'] as core.String
+              : null,
+          reasonLabels: json_.containsKey('reasonLabels')
+              ? (json_['reasonLabels'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (feedback != null) 'feedback': feedback!,
+        if (reasonLabels != null) 'reasonLabels': reasonLabels!,
+      };
+}
+
 /// Represents the natural speech audio to be processed.
 class GoogleCloudDialogflowCxV3AudioInput {
   /// The natural language speech audio to be processed.
@@ -6805,6 +6983,56 @@ class GoogleCloudDialogflowCxV3AudioInput {
   core.Map<core.String, core.dynamic> toJson() => {
         if (audio != null) 'audio': audio!,
         if (config != null) 'config': config!,
+      };
+}
+
+/// Configuration of the barge-in behavior.
+///
+/// Barge-in instructs the API to return a detected utterance at a proper time
+/// while the client is playing back the response audio from a previous request.
+/// When the client sees the utterance, it should stop the playback and
+/// immediately get ready for receiving the responses for the current request.
+/// The barge-in handling requires the client to start streaming audio input as
+/// soon as it starts playing back the audio from the previous response. The
+/// playback is modeled into two phases: * No barge-in phase: which goes first
+/// and during which speech detection should not be carried out. * Barge-in
+/// phase: which follows the no barge-in phase and during which the API starts
+/// speech detection and may inform the client that an utterance has been
+/// detected. Note that no-speech event is not expected in this phase. The
+/// client provides this configuration in terms of the durations of those two
+/// phases. The durations are measured in terms of the audio length fromt the
+/// the start of the input audio. The flow goes like below: --\> Time without
+/// speech detection | utterance only | utterance or no-speech event | |
+/// +-------------+ | +------------+ | +---------------+ ----------+ no barge-in
+/// +-|-+ barge-in +-|-+ normal period +----------- +-------------+ |
+/// +------------+ | +---------------+ No-speech event is a response with
+/// END_OF_UTTERANCE without any transcript following up.
+class GoogleCloudDialogflowCxV3BargeInConfig {
+  /// Duration that is not eligible for barge-in at the beginning of the input
+  /// audio.
+  core.String? noBargeInDuration;
+
+  /// Total duration for the playback at the beginning of the input audio.
+  core.String? totalDuration;
+
+  GoogleCloudDialogflowCxV3BargeInConfig({
+    this.noBargeInDuration,
+    this.totalDuration,
+  });
+
+  GoogleCloudDialogflowCxV3BargeInConfig.fromJson(core.Map json_)
+      : this(
+          noBargeInDuration: json_.containsKey('noBargeInDuration')
+              ? json_['noBargeInDuration'] as core.String
+              : null,
+          totalDuration: json_.containsKey('totalDuration')
+              ? json_['totalDuration'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (noBargeInDuration != null) 'noBargeInDuration': noBargeInDuration!,
+        if (totalDuration != null) 'totalDuration': totalDuration!,
       };
 }
 
@@ -6867,6 +7095,136 @@ class GoogleCloudDialogflowCxV3BatchRunTestCasesRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (environment != null) 'environment': environment!,
         if (testCases != null) 'testCases': testCases!,
+      };
+}
+
+/// Boost specification to boost certain documents.
+///
+/// A copy of google.cloud.discoveryengine.v1main.BoostSpec, field documentation
+/// is available at
+/// https://cloud.google.com/generative-ai-app-builder/docs/reference/rest/v1alpha/BoostSpec
+class GoogleCloudDialogflowCxV3BoostSpec {
+  /// Condition boost specifications.
+  ///
+  /// If a document matches multiple conditions in the specifictions, boost
+  /// scores from these specifications are all applied and combined in a
+  /// non-linear way. Maximum number of specifications is 20.
+  ///
+  /// Optional.
+  core.List<GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpec>?
+      conditionBoostSpecs;
+
+  GoogleCloudDialogflowCxV3BoostSpec({
+    this.conditionBoostSpecs,
+  });
+
+  GoogleCloudDialogflowCxV3BoostSpec.fromJson(core.Map json_)
+      : this(
+          conditionBoostSpecs: json_.containsKey('conditionBoostSpecs')
+              ? (json_['conditionBoostSpecs'] as core.List)
+                  .map((value) =>
+                      GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpec
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (conditionBoostSpecs != null)
+          'conditionBoostSpecs': conditionBoostSpecs!,
+      };
+}
+
+/// Boost applies to documents which match a condition.
+class GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpec {
+  /// Strength of the condition boost, which should be in \[-1, 1\].
+  ///
+  /// Negative boost means demotion. Default is 0.0. Setting to 1.0 gives the
+  /// document a big promotion. However, it does not necessarily mean that the
+  /// boosted document will be the top result at all times, nor that other
+  /// documents will be excluded. Results could still be shown even when none of
+  /// them matches the condition. And results that are significantly more
+  /// relevant to the search query can still trump your heavily favored but
+  /// irrelevant documents. Setting to -1.0 gives the document a big demotion.
+  /// However, results that are deeply relevant might still be shown. The
+  /// document will have an upstream battle to get a fairly high ranking, but it
+  /// is not blocked out completely. Setting to 0.0 means no boost applied. The
+  /// boosting condition is ignored.
+  ///
+  /// Optional.
+  core.double? boost;
+
+  /// An expression which specifies a boost condition.
+  ///
+  /// The syntax and supported fields are the same as a filter expression.
+  /// Examples: * To boost documents with document ID "doc_1" or "doc_2", and
+  /// color "Red" or "Blue": * (id: ANY("doc_1", "doc_2")) AND (color:
+  /// ANY("Red","Blue"))
+  ///
+  /// Optional.
+  core.String? condition;
+
+  GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpec({
+    this.boost,
+    this.condition,
+  });
+
+  GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpec.fromJson(core.Map json_)
+      : this(
+          boost: json_.containsKey('boost')
+              ? (json_['boost'] as core.num).toDouble()
+              : null,
+          condition: json_.containsKey('condition')
+              ? json_['condition'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (boost != null) 'boost': boost!,
+        if (condition != null) 'condition': condition!,
+      };
+}
+
+/// Boost specifications for data stores.
+class GoogleCloudDialogflowCxV3BoostSpecs {
+  /// Data Stores where the boosting configuration is applied.
+  ///
+  /// The full names of the referenced data stores. Formats:
+  /// \`projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}\`
+  /// \`projects/{project}/locations/{location}/dataStores/{data_store}
+  ///
+  /// Optional.
+  core.List<core.String>? dataStores;
+
+  /// A list of boosting specifications.
+  ///
+  /// Optional.
+  core.List<GoogleCloudDialogflowCxV3BoostSpec>? spec;
+
+  GoogleCloudDialogflowCxV3BoostSpecs({
+    this.dataStores,
+    this.spec,
+  });
+
+  GoogleCloudDialogflowCxV3BoostSpecs.fromJson(core.Map json_)
+      : this(
+          dataStores: json_.containsKey('dataStores')
+              ? (json_['dataStores'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          spec: json_.containsKey('spec')
+              ? (json_['spec'] as core.List)
+                  .map((value) => GoogleCloudDialogflowCxV3BoostSpec.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataStores != null) 'dataStores': dataStores!,
+        if (spec != null) 'spec': spec!,
       };
 }
 
@@ -8841,6 +9199,48 @@ class GoogleCloudDialogflowCxV3ExportTestCasesRequest {
       };
 }
 
+/// Filter specifications for data stores.
+class GoogleCloudDialogflowCxV3FilterSpecs {
+  /// Data Stores where the boosting configuration is applied.
+  ///
+  /// The full names of the referenced data stores. Formats:
+  /// \`projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}\`
+  /// \`projects/{project}/locations/{location}/dataStores/{data_store}
+  ///
+  /// Optional.
+  core.List<core.String>? dataStores;
+
+  /// The filter expression to be applied.
+  ///
+  /// Expression syntax is documented at
+  /// https://cloud.google.com/generative-ai-app-builder/docs/filter-search-metadata#filter-expression-syntax
+  ///
+  /// Optional.
+  core.String? filter;
+
+  GoogleCloudDialogflowCxV3FilterSpecs({
+    this.dataStores,
+    this.filter,
+  });
+
+  GoogleCloudDialogflowCxV3FilterSpecs.fromJson(core.Map json_)
+      : this(
+          dataStores: json_.containsKey('dataStores')
+              ? (json_['dataStores'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          filter: json_.containsKey('filter')
+              ? json_['filter'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataStores != null) 'dataStores': dataStores!,
+        if (filter != null) 'filter': filter!,
+      };
+}
+
 /// Flows represents the conversation flows when you build your chatbot agent.
 ///
 /// A flow consists of many pages connected by the transition routes.
@@ -10129,6 +10529,9 @@ class GoogleCloudDialogflowCxV3InputAudioConfig {
   /// wideband is supported. `sample_rate_hertz` must be 16000.
   core.String? audioEncoding;
 
+  /// Configuration of barge-in behavior during the streaming of input audio.
+  GoogleCloudDialogflowCxV3BargeInConfig? bargeInConfig;
+
   /// If `true`, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult
   /// with information about the recognized speech words, e.g. start and end
   /// time offsets.
@@ -10210,6 +10613,7 @@ class GoogleCloudDialogflowCxV3InputAudioConfig {
 
   GoogleCloudDialogflowCxV3InputAudioConfig({
     this.audioEncoding,
+    this.bargeInConfig,
     this.enableWordInfo,
     this.model,
     this.modelVariant,
@@ -10222,6 +10626,10 @@ class GoogleCloudDialogflowCxV3InputAudioConfig {
       : this(
           audioEncoding: json_.containsKey('audioEncoding')
               ? json_['audioEncoding'] as core.String
+              : null,
+          bargeInConfig: json_.containsKey('bargeInConfig')
+              ? GoogleCloudDialogflowCxV3BargeInConfig.fromJson(
+                  json_['bargeInConfig'] as core.Map<core.String, core.dynamic>)
               : null,
           enableWordInfo: json_.containsKey('enableWordInfo')
               ? json_['enableWordInfo'] as core.bool
@@ -10246,6 +10654,7 @@ class GoogleCloudDialogflowCxV3InputAudioConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (audioEncoding != null) 'audioEncoding': audioEncoding!,
+        if (bargeInConfig != null) 'bargeInConfig': bargeInConfig!,
         if (enableWordInfo != null) 'enableWordInfo': enableWordInfo!,
         if (model != null) 'model': model!,
         if (modelVariant != null) 'modelVariant': modelVariant!,
@@ -12022,6 +12431,11 @@ class GoogleCloudDialogflowCxV3QueryParameters {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? payload;
 
+  /// Search configuration for UCS search queries.
+  ///
+  /// Optional.
+  GoogleCloudDialogflowCxV3SearchConfig? searchConfig;
+
   /// Additional session entity types to replace or extend developer entity
   /// types with.
   ///
@@ -12066,6 +12480,7 @@ class GoogleCloudDialogflowCxV3QueryParameters {
     this.geoLocation,
     this.parameters,
     this.payload,
+    this.searchConfig,
     this.sessionEntityTypes,
     this.sessionTtl,
     this.timeZone,
@@ -12105,6 +12520,10 @@ class GoogleCloudDialogflowCxV3QueryParameters {
           payload: json_.containsKey('payload')
               ? json_['payload'] as core.Map<core.String, core.dynamic>
               : null,
+          searchConfig: json_.containsKey('searchConfig')
+              ? GoogleCloudDialogflowCxV3SearchConfig.fromJson(
+                  json_['searchConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
           sessionEntityTypes: json_.containsKey('sessionEntityTypes')
               ? (json_['sessionEntityTypes'] as core.List)
                   .map((value) =>
@@ -12140,6 +12559,7 @@ class GoogleCloudDialogflowCxV3QueryParameters {
         if (geoLocation != null) 'geoLocation': geoLocation!,
         if (parameters != null) 'parameters': parameters!,
         if (payload != null) 'payload': payload!,
+        if (searchConfig != null) 'searchConfig': searchConfig!,
         if (sessionEntityTypes != null)
           'sessionEntityTypes': sessionEntityTypes!,
         if (sessionTtl != null) 'sessionTtl': sessionTtl!,
@@ -12158,6 +12578,10 @@ class GoogleCloudDialogflowCxV3QueryResult {
   /// client may need to wait for the resulting object to appear in the bucket
   /// before proceeding.
   GoogleCloudDialogflowCxV3AdvancedSettings? advancedSettings;
+
+  /// Indicates whether the Thumbs up/Thumbs down rating controls are need to be
+  /// shown for the response in the Dialogflow Messenger widget.
+  core.bool? allowAnswerFeedback;
 
   /// The current Page.
   ///
@@ -12280,6 +12704,7 @@ class GoogleCloudDialogflowCxV3QueryResult {
 
   GoogleCloudDialogflowCxV3QueryResult({
     this.advancedSettings,
+    this.allowAnswerFeedback,
     this.currentPage,
     this.diagnosticInfo,
     this.dtmf,
@@ -12304,6 +12729,9 @@ class GoogleCloudDialogflowCxV3QueryResult {
               ? GoogleCloudDialogflowCxV3AdvancedSettings.fromJson(
                   json_['advancedSettings']
                       as core.Map<core.String, core.dynamic>)
+              : null,
+          allowAnswerFeedback: json_.containsKey('allowAnswerFeedback')
+              ? json_['allowAnswerFeedback'] as core.bool
               : null,
           currentPage: json_.containsKey('currentPage')
               ? GoogleCloudDialogflowCxV3Page.fromJson(
@@ -12371,6 +12799,8 @@ class GoogleCloudDialogflowCxV3QueryResult {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (advancedSettings != null) 'advancedSettings': advancedSettings!,
+        if (allowAnswerFeedback != null)
+          'allowAnswerFeedback': allowAnswerFeedback!,
         if (currentPage != null) 'currentPage': currentPage!,
         if (diagnosticInfo != null) 'diagnosticInfo': diagnosticInfo!,
         if (dtmf != null) 'dtmf': dtmf!,
@@ -13207,6 +13637,45 @@ class GoogleCloudDialogflowCxV3SafetySettingsPhrase {
       };
 }
 
+/// Search configuration for UCS search queries.
+class GoogleCloudDialogflowCxV3SearchConfig {
+  /// Boosting configuration for the datastores.
+  ///
+  /// Optional.
+  core.List<GoogleCloudDialogflowCxV3BoostSpecs>? boostSpecs;
+
+  /// Filter configuration for the datastores.
+  ///
+  /// Optional.
+  core.List<GoogleCloudDialogflowCxV3FilterSpecs>? filterSpecs;
+
+  GoogleCloudDialogflowCxV3SearchConfig({
+    this.boostSpecs,
+    this.filterSpecs,
+  });
+
+  GoogleCloudDialogflowCxV3SearchConfig.fromJson(core.Map json_)
+      : this(
+          boostSpecs: json_.containsKey('boostSpecs')
+              ? (json_['boostSpecs'] as core.List)
+                  .map((value) => GoogleCloudDialogflowCxV3BoostSpecs.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          filterSpecs: json_.containsKey('filterSpecs')
+              ? (json_['filterSpecs'] as core.List)
+                  .map((value) => GoogleCloudDialogflowCxV3FilterSpecs.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (boostSpecs != null) 'boostSpecs': boostSpecs!,
+        if (filterSpecs != null) 'filterSpecs': filterSpecs!,
+      };
+}
+
 /// Represents the settings related to security issues, such as data redaction
 /// and data retention.
 ///
@@ -13580,6 +14049,55 @@ typedef GoogleCloudDialogflowCxV3StartExperimentRequest = $Empty;
 
 /// The request message for Experiments.StopExperiment.
 typedef GoogleCloudDialogflowCxV3StopExperimentRequest = $Empty;
+
+/// The request to set the feedback for a bot answer.
+class GoogleCloudDialogflowCxV3SubmitAnswerFeedbackRequest {
+  /// Feedback provided for a bot answer.
+  ///
+  /// Required.
+  GoogleCloudDialogflowCxV3AnswerFeedback? answerFeedback;
+
+  /// ID of the response to update its feedback.
+  ///
+  /// This is the same as DetectIntentResponse.response_id.
+  ///
+  /// Required.
+  core.String? responseId;
+
+  /// The mask to control which fields to update.
+  ///
+  /// If the mask is not present, all fields will be updated.
+  ///
+  /// Optional.
+  core.String? updateMask;
+
+  GoogleCloudDialogflowCxV3SubmitAnswerFeedbackRequest({
+    this.answerFeedback,
+    this.responseId,
+    this.updateMask,
+  });
+
+  GoogleCloudDialogflowCxV3SubmitAnswerFeedbackRequest.fromJson(core.Map json_)
+      : this(
+          answerFeedback: json_.containsKey('answerFeedback')
+              ? GoogleCloudDialogflowCxV3AnswerFeedback.fromJson(
+                  json_['answerFeedback']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          responseId: json_.containsKey('responseId')
+              ? json_['responseId'] as core.String
+              : null,
+          updateMask: json_.containsKey('updateMask')
+              ? json_['updateMask'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (answerFeedback != null) 'answerFeedback': answerFeedback!,
+        if (responseId != null) 'responseId': responseId!,
+        if (updateMask != null) 'updateMask': updateMask!,
+      };
+}
 
 /// Configuration of how speech should be synthesized.
 class GoogleCloudDialogflowCxV3SynthesizeSpeechConfig {

@@ -142,6 +142,7 @@ api.BillingAccount buildBillingAccount() {
     o.masterBillingAccount = 'foo';
     o.name = 'foo';
     o.open = true;
+    o.parent = 'foo';
   }
   buildCounterBillingAccount--;
   return o;
@@ -163,6 +164,10 @@ void checkBillingAccount(api.BillingAccount o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.open!, unittest.isTrue);
+    unittest.expect(
+      o.parent!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterBillingAccount--;
 }

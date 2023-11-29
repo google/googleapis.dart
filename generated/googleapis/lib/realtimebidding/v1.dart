@@ -1276,15 +1276,14 @@ class BuyersResource {
     return Buyer.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// This will be removed in October 2023.
+  /// This has been sunset as of October 2023, and will return an error response
+  /// if called.
   ///
   /// For more information, see the release notes:
   /// https://developers.google.com/authorized-buyers/apis/relnotes#real-time-bidding-api
   /// Gets remarketing tag for a buyer. A remarketing tag is a piece of
   /// JavaScript code that can be placed on a web page. When a user visits a
   /// page containing a remarketing tag, Google adds the user to a user list.
-  ///
-  /// Deprecated.
   ///
   /// Request parameters:
   ///
@@ -1740,15 +1739,14 @@ class BuyersUserListsResource {
     return UserList.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// This will be removed in October 2023.
+  /// This has been sunset as of October 2023, and will return an error response
+  /// if called.
   ///
   /// For more information, see the release notes:
   /// https://developers.google.com/authorized-buyers/apis/relnotes#real-time-bidding-api
   /// Gets remarketing tag for a buyer. A remarketing tag is a piece of
   /// JavaScript code that can be placed on a web page. When a user visits a
   /// page containing a remarketing tag, Google adds the user to a user list.
-  ///
-  /// Deprecated.
   ///
   /// Request parameters:
   ///
@@ -3452,13 +3450,12 @@ class Endpoint {
       };
 }
 
-/// This will be removed in October 2023.
+/// This has been sunset as of October 2023, and will return an error response
+/// if called.
 ///
 /// For more information, see the release notes:
 /// https://developers.google.com/authorized-buyers/apis/relnotes#real-time-bidding-api
 /// Response for a request to get remarketing tag.
-///
-/// Deprecated.
 class GetRemarketingTagResponse {
   /// An HTML tag that can be placed on the advertiser's page to add users to a
   /// user list.

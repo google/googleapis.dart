@@ -24,6 +24,8 @@
 ///   - [ProjectsInstanceConfigOperationsResource]
 ///   - [ProjectsInstanceConfigsResource]
 ///     - [ProjectsInstanceConfigsOperationsResource]
+///     - [ProjectsInstanceConfigsSsdCachesResource]
+///       - [ProjectsInstanceConfigsSsdCachesOperationsResource]
 ///   - [ProjectsInstancesResource]
 ///     - [ProjectsInstancesBackupOperationsResource]
 ///     - [ProjectsInstancesBackupsResource]
@@ -192,6 +194,8 @@ class ProjectsInstanceConfigsResource {
 
   ProjectsInstanceConfigsOperationsResource get operations =>
       ProjectsInstanceConfigsOperationsResource(_requester);
+  ProjectsInstanceConfigsSsdCachesResource get ssdCaches =>
+      ProjectsInstanceConfigsSsdCachesResource(_requester);
 
   ProjectsInstanceConfigsResource(commons.ApiRequester client)
       : _requester = client;
@@ -596,6 +600,199 @@ class ProjectsInstanceConfigsOperationsResource {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern
   /// `^projects/\[^/\]+/instanceConfigs/\[^/\]+/operations$`.
+  ///
+  /// [filter] - The standard list filter.
+  ///
+  /// [pageSize] - The standard list page size.
+  ///
+  /// [pageToken] - The standard list page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListOperationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListOperationsResponse> list(
+    core.String name, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListOperationsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsInstanceConfigsSsdCachesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsInstanceConfigsSsdCachesOperationsResource get operations =>
+      ProjectsInstanceConfigsSsdCachesOperationsResource(_requester);
+
+  ProjectsInstanceConfigsSsdCachesResource(commons.ApiRequester client)
+      : _requester = client;
+}
+
+class ProjectsInstanceConfigsSsdCachesOperationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsInstanceConfigsSsdCachesOperationsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Starts asynchronous cancellation on a long-running operation.
+  ///
+  /// The server makes a best effort to cancel the operation, but success is not
+  /// guaranteed. If the server doesn't support this method, it returns
+  /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
+  /// or other methods to check whether the cancellation succeeded or whether
+  /// the operation completed despite cancellation. On successful cancellation,
+  /// the operation is not deleted; instead, it becomes an operation with an
+  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
+  /// `Code.CANCELLED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be cancelled.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instanceConfigs/\[^/\]+/ssdCaches/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> cancel(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a long-running operation.
+  ///
+  /// This method indicates that the client is no longer interested in the
+  /// operation result. It does not cancel the operation. If the server doesn't
+  /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be deleted.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instanceConfigs/\[^/\]+/ssdCaches/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instanceConfigs/\[^/\]+/ssdCaches/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists operations that match the specified filter in the request.
+  ///
+  /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation's parent resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instanceConfigs/\[^/\]+/ssdCaches/\[^/\]+/operations$`.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -5654,6 +5851,49 @@ class DiagnosticMessage {
       };
 }
 
+/// The DirectedReadOptions can be used to indicate which replicas or regions
+/// should be used for non-transactional reads or queries.
+///
+/// DirectedReadOptions may only be specified for a read-only transaction,
+/// otherwise the API will return an `INVALID_ARGUMENT` error.
+class DirectedReadOptions {
+  /// Exclude_replicas indicates that should be excluded from serving requests.
+  ///
+  /// Spanner will not route requests to the replicas in this list.
+  ExcludeReplicas? excludeReplicas;
+
+  /// Include_replicas indicates the order of replicas (as they appear in this
+  /// list) to process the request.
+  ///
+  /// If auto_failover_disabled is set to true and all replicas are exhausted
+  /// without finding a healthy replica, Spanner will wait for a replica in the
+  /// list to become available, requests may fail due to `DEADLINE_EXCEEDED`
+  /// errors.
+  IncludeReplicas? includeReplicas;
+
+  DirectedReadOptions({
+    this.excludeReplicas,
+    this.includeReplicas,
+  });
+
+  DirectedReadOptions.fromJson(core.Map json_)
+      : this(
+          excludeReplicas: json_.containsKey('excludeReplicas')
+              ? ExcludeReplicas.fromJson(json_['excludeReplicas']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          includeReplicas: json_.containsKey('includeReplicas')
+              ? IncludeReplicas.fromJson(json_['includeReplicas']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (excludeReplicas != null) 'excludeReplicas': excludeReplicas!,
+        if (includeReplicas != null) 'includeReplicas': includeReplicas!,
+      };
+}
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
 ///
@@ -5740,6 +5980,31 @@ class EncryptionInfo {
         if (encryptionStatus != null) 'encryptionStatus': encryptionStatus!,
         if (encryptionType != null) 'encryptionType': encryptionType!,
         if (kmsKeyVersion != null) 'kmsKeyVersion': kmsKeyVersion!,
+      };
+}
+
+/// An ExcludeReplicas contains a repeated set of ReplicaSelection that should
+/// be excluded from serving requests.
+class ExcludeReplicas {
+  /// The directed read replica selector.
+  core.List<ReplicaSelection>? replicaSelections;
+
+  ExcludeReplicas({
+    this.replicaSelections,
+  });
+
+  ExcludeReplicas.fromJson(core.Map json_)
+      : this(
+          replicaSelections: json_.containsKey('replicaSelections')
+              ? (json_['replicaSelections'] as core.List)
+                  .map((value) => ReplicaSelection.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (replicaSelections != null) 'replicaSelections': replicaSelections!,
       };
 }
 
@@ -5879,6 +6144,9 @@ class ExecuteSqlRequest {
   /// `partition_token`, the API returns an `INVALID_ARGUMENT` error.
   core.bool? dataBoostEnabled;
 
+  /// Directed read options for this request.
+  DirectedReadOptions? directedReadOptions;
+
   /// It is not always possible for Cloud Spanner to infer the right SQL type
   /// from a JSON value.
   ///
@@ -5981,6 +6249,7 @@ class ExecuteSqlRequest {
 
   ExecuteSqlRequest({
     this.dataBoostEnabled,
+    this.directedReadOptions,
     this.paramTypes,
     this.params,
     this.partitionToken,
@@ -5997,6 +6266,10 @@ class ExecuteSqlRequest {
       : this(
           dataBoostEnabled: json_.containsKey('dataBoostEnabled')
               ? json_['dataBoostEnabled'] as core.bool
+              : null,
+          directedReadOptions: json_.containsKey('directedReadOptions')
+              ? DirectedReadOptions.fromJson(json_['directedReadOptions']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           paramTypes: json_.containsKey('paramTypes')
               ? (json_['paramTypes'] as core.Map<core.String, core.dynamic>)
@@ -6038,6 +6311,8 @@ class ExecuteSqlRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dataBoostEnabled != null) 'dataBoostEnabled': dataBoostEnabled!,
+        if (directedReadOptions != null)
+          'directedReadOptions': directedReadOptions!,
         if (paramTypes != null) 'paramTypes': paramTypes!,
         if (params != null) 'params': params!,
         if (partitionToken != null) 'partitionToken': partitionToken!,
@@ -6233,6 +6508,44 @@ class GetIamPolicyRequest {
 
 /// Encapsulates settings provided to GetIamPolicy.
 typedef GetPolicyOptions = $GetPolicyOptions;
+
+/// An IncludeReplicas contains a repeated set of ReplicaSelection which
+/// indicates the order in which replicas should be considered.
+class IncludeReplicas {
+  /// If true, Spanner will not route requests to a replica outside the
+  /// include_replicas list when all of the specified replicas are unavailable
+  /// or unhealthy.
+  ///
+  /// Default value is `false`.
+  core.bool? autoFailoverDisabled;
+
+  /// The directed read replica selector.
+  core.List<ReplicaSelection>? replicaSelections;
+
+  IncludeReplicas({
+    this.autoFailoverDisabled,
+    this.replicaSelections,
+  });
+
+  IncludeReplicas.fromJson(core.Map json_)
+      : this(
+          autoFailoverDisabled: json_.containsKey('autoFailoverDisabled')
+              ? json_['autoFailoverDisabled'] as core.bool
+              : null,
+          replicaSelections: json_.containsKey('replicaSelections')
+              ? (json_['replicaSelections'] as core.List)
+                  .map((value) => ReplicaSelection.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (autoFailoverDisabled != null)
+          'autoFailoverDisabled': autoFailoverDisabled!,
+        if (replicaSelections != null) 'replicaSelections': replicaSelections!,
+      };
+}
 
 /// Recommendation to add new indexes to run queries more efficiently.
 class IndexAdvice {
@@ -8734,6 +9047,9 @@ class ReadRequest {
   /// `partition_token`, the API returns an `INVALID_ARGUMENT` error.
   core.bool? dataBoostEnabled;
 
+  /// Directed read options for this request.
+  DirectedReadOptions? directedReadOptions;
+
   /// If non-empty, the name of an index on table.
   ///
   /// This index is used instead of the table primary key when interpreting
@@ -8808,6 +9124,7 @@ class ReadRequest {
   ReadRequest({
     this.columns,
     this.dataBoostEnabled,
+    this.directedReadOptions,
     this.index,
     this.keySet,
     this.limit,
@@ -8827,6 +9144,10 @@ class ReadRequest {
               : null,
           dataBoostEnabled: json_.containsKey('dataBoostEnabled')
               ? json_['dataBoostEnabled'] as core.bool
+              : null,
+          directedReadOptions: json_.containsKey('directedReadOptions')
+              ? DirectedReadOptions.fromJson(json_['directedReadOptions']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           index:
               json_.containsKey('index') ? json_['index'] as core.String : null,
@@ -8857,6 +9178,8 @@ class ReadRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (columns != null) 'columns': columns!,
         if (dataBoostEnabled != null) 'dataBoostEnabled': dataBoostEnabled!,
+        if (directedReadOptions != null)
+          'directedReadOptions': directedReadOptions!,
         if (index != null) 'index': index!,
         if (keySet != null) 'keySet': keySet!,
         if (limit != null) 'limit': limit!,
@@ -8949,6 +9272,47 @@ class ReplicaInfo {
   core.Map<core.String, core.dynamic> toJson() => {
         if (defaultLeaderLocation != null)
           'defaultLeaderLocation': defaultLeaderLocation!,
+        if (location != null) 'location': location!,
+        if (type != null) 'type': type!,
+      };
+}
+
+/// The directed read replica selector.
+///
+/// Callers must provide one or more of the following fields for replica
+/// selection: * `location` - The location must be one of the regions within the
+/// multi-region configuration of your database. * `type` - The type of the
+/// replica. Some examples of using replica_selectors are: * `location:us-east1`
+/// --\> The "us-east1" replica(s) of any available type will be used to process
+/// the request. * `type:READ_ONLY` --\> The "READ_ONLY" type replica(s) in
+/// nearest . available location will be used to process the request. *
+/// `location:us-east1 type:READ_ONLY` --\> The "READ_ONLY" type replica(s) in
+/// location "us-east1" will be used to process the request.
+class ReplicaSelection {
+  /// The location or region of the serving requests, e.g. "us-east1".
+  core.String? location;
+
+  /// The type of replica.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Not specified.
+  /// - "READ_WRITE" : Read-write replicas support both reads and writes.
+  /// - "READ_ONLY" : Read-only replicas only support reads (not writes).
+  core.String? type;
+
+  ReplicaSelection({
+    this.location,
+    this.type,
+  });
+
+  ReplicaSelection.fromJson(core.Map json_)
+      : this(
+          location: json_.containsKey('location')
+              ? json_['location'] as core.String
+              : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
         if (location != null) 'location': location!,
         if (type != null) 'type': type!,
       };

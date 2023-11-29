@@ -3001,7 +3001,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   /// [Search transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction)
   /// in the Cloud Healthcare API conformance statement. For samples that show
   /// how to call SearchForInstances, see
-  /// [Searching for studies, series, instances, and frames](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#searching_for_studies_series_instances_and_frames).
+  /// [Search for DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#search-dicom).
   ///
   /// Request parameters:
   ///
@@ -3056,7 +3056,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   /// [Search transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction)
   /// in the Cloud Healthcare API conformance statement. For samples that show
   /// how to call SearchForSeries, see
-  /// [Searching for studies, series, instances, and frames](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#searching_for_studies_series_instances_and_frames).
+  /// [Search for DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#search-dicom).
   ///
   /// Request parameters:
   ///
@@ -3110,7 +3110,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   /// [Search transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction)
   /// in the Cloud Healthcare API conformance statement. For samples that show
   /// how to call SearchForStudies, see
-  /// [Searching for studies, series, instances, and frames](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#searching_for_studies_series_instances_and_frames).
+  /// [Search for DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#search-dicom).
   ///
   /// Request parameters:
   ///
@@ -3212,7 +3212,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   /// [Store transaction](https://cloud.google.com/healthcare/docs/dicom#store_transaction)
   /// in the Cloud Healthcare API conformance statement. For samples that show
   /// how to call StoreInstances, see
-  /// [Storing DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#storing_dicom_data).
+  /// [Store DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#store-dicom).
   ///
   /// [request] - The metadata request object.
   ///
@@ -3440,7 +3440,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
   /// successful when the deletion is complete. Warning: Instances cannot be
   /// inserted into a study that is being deleted by an operation until the
   /// operation completes. For samples that show how to call DeleteStudy, see
-  /// [Deleting a study, series, or instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#deleting_a_study_series_or_instance).
+  /// [Delete a study, series, or instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#delete-dicom).
   ///
   /// Request parameters:
   ///
@@ -3493,7 +3493,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
   /// [Metadata resources](https://cloud.google.com/healthcare/docs/dicom#metadata_resources)
   /// in the Cloud Healthcare API conformance statement. For samples that show
   /// how to call RetrieveStudyMetadata, see
-  /// [Retrieving metadata](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_metadata).
+  /// [Retrieve metadata](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-metadata).
   ///
   /// Request parameters:
   ///
@@ -3547,7 +3547,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
   /// [DICOM study/series/instances](https://cloud.google.com/healthcare/docs/dicom#dicom_studyseriesinstances)
   /// in the Cloud Healthcare API conformance statement. For samples that show
   /// how to call RetrieveStudy, see
-  /// [Retrieving DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_dicom_data).
+  /// [Retrieve DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-dicom).
   ///
   /// Request parameters:
   ///
@@ -3601,7 +3601,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
   /// [Search transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction)
   /// in the Cloud Healthcare API conformance statement. For samples that show
   /// how to call SearchForInstances, see
-  /// [Searching for studies, series, instances, and frames](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#searching_for_studies_series_instances_and_frames).
+  /// [Search for DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#search-dicom).
   ///
   /// Request parameters:
   ///
@@ -3656,7 +3656,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
   /// [Search transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction)
   /// in the Cloud Healthcare API conformance statement. For samples that show
   /// how to call SearchForSeries, see
-  /// [Searching for studies, series, instances, and frames](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#searching_for_studies_series_instances_and_frames).
+  /// [Search for DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#search-dicom).
   ///
   /// Request parameters:
   ///
@@ -3711,7 +3711,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
   /// [Store transaction](https://cloud.google.com/healthcare/docs/dicom#store_transaction)
   /// in the Cloud Healthcare API conformance statement. For samples that show
   /// how to call StoreInstances, see
-  /// [Storing DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#storing_dicom_data).
+  /// [Store DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#store-dicom).
   ///
   /// [request] - The metadata request object.
   ///
@@ -3782,7 +3782,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
   /// successful when the deletion is complete. Warning: Instances cannot be
   /// inserted into a series that is being deleted by an operation until the
   /// operation completes. For samples that show how to call DeleteSeries, see
-  /// [Deleting a study, series, or instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#deleting_a_study_series_or_instance).
+  /// [Delete a study, series, or instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#delete-dicom).
   ///
   /// Request parameters:
   ///
@@ -3837,7 +3837,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
   /// [Metadata resources](https://cloud.google.com/healthcare/docs/dicom#metadata_resources)
   /// in the Cloud Healthcare API conformance statement. For samples that show
   /// how to call RetrieveSeriesMetadata, see
-  /// [Retrieving metadata](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_metadata).
+  /// [Retrieve metadata](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-metadata).
   ///
   /// Request parameters:
   ///
@@ -3891,7 +3891,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
   /// [DICOM study/series/instances](https://cloud.google.com/healthcare/docs/dicom#dicom_studyseriesinstances)
   /// in the Cloud Healthcare API conformance statement. For samples that show
   /// how to call RetrieveSeries, see
-  /// [Retrieving DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_dicom_data).
+  /// [Retrieve DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-dicom).
   ///
   /// Request parameters:
   ///
@@ -3945,7 +3945,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
   /// [Search transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction)
   /// in the Cloud Healthcare API conformance statement. For samples that show
   /// how to call SearchForInstances, see
-  /// [Searching for studies, series, instances, and frames](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#searching_for_studies_series_instances_and_frames).
+  /// [Search for DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#search-dicom).
   ///
   /// Request parameters:
   ///
@@ -4012,7 +4012,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
   /// Retrieve transaction. Study and series search results can take a few
   /// seconds to be updated after an instance is deleted using DeleteInstance.
   /// For samples that show how to call DeleteInstance, see
-  /// [Deleting a study, series, or instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#deleting_a_study_series_or_instance).
+  /// [Delete a study, series, or instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#delete-dicom).
   ///
   /// Request parameters:
   ///
@@ -4070,7 +4070,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
   /// [DICOM instances](https://cloud.google.com/healthcare/docs/dicom#dicom_instances)
   /// in the Cloud Healthcare API conformance statement. For samples that show
   /// how to call RetrieveInstance, see
-  /// [Retrieving an instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_an_instance).
+  /// [Retrieve an instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-instance).
   ///
   /// Request parameters:
   ///
@@ -4128,7 +4128,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
   /// [Metadata resources](https://cloud.google.com/healthcare/docs/dicom#metadata_resources)
   /// in the Cloud Healthcare API conformance statement. For samples that show
   /// how to call RetrieveInstanceMetadata, see
-  /// [Retrieving metadata](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_metadata).
+  /// [Retrieve metadata](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-metadata).
   ///
   /// Request parameters:
   ///
@@ -4185,7 +4185,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
   /// [Rendered resources](https://cloud.google.com/healthcare/docs/dicom#rendered_resources)
   /// in the Cloud Healthcare API conformance statement. For samples that show
   /// how to call RetrieveRenderedInstance, see
-  /// [Retrieving consumer image formats](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_consumer_image_formats).
+  /// [Retrieve consumer image formats](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-consumer).
   ///
   /// Request parameters:
   ///
@@ -4250,7 +4250,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResource {
   /// [DICOM frames](https://cloud.google.com/healthcare/docs/dicom#dicom_frames)
   /// in the Cloud Healthcare API conformance statement. For samples that show
   /// how to call RetrieveFrames, see
-  /// [Retrieving DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_dicom_data).
+  /// [Retrieve DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-dicom).
   ///
   /// Request parameters:
   ///
@@ -4308,7 +4308,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResource {
   /// [Rendered resources](https://cloud.google.com/healthcare/docs/dicom#rendered_resources)
   /// in the Cloud Healthcare API conformance statement. For samples that show
   /// how to call RetrieveRenderedFrames, see
-  /// [Retrieving consumer image formats](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_consumer_image_formats).
+  /// [Retrieve consumer image formats](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-consumer).
   ///
   /// Request parameters:
   ///
@@ -6397,7 +6397,7 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets metrics asssociated with the HL7v2 store.
+  /// Gets metrics associated with the HL7v2 store.
   ///
   /// Request parameters:
   ///

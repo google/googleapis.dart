@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230913",
+    "revision": "20231030",
     "rootUrl": "https://datastream.googleapis.com/",
     "servicePath": "",
     "title": "Datastream API",
@@ -1028,17 +1028,6 @@
                                         "name"
                                     ],
                                     "parameters": {
-                                        "cdcStrategy.specificStartPosition.mysqlLogPosition.logFile": {
-                                            "description": "Required. The binary log file name.",
-                                            "location": "query",
-                                            "type": "string"
-                                        },
-                                        "cdcStrategy.specificStartPosition.mysqlLogPosition.logPosition": {
-                                            "description": "Optional. The position within the binary log file. Default is head of file.",
-                                            "format": "int32",
-                                            "location": "query",
-                                            "type": "integer"
-                                        },
                                         "force": {
                                             "description": "Optional. Update the stream without validating it.",
                                             "location": "query",

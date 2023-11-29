@@ -1729,23 +1729,32 @@ class Location {
 }
 
 class Maintainer {
+  core.String? email;
   core.String? kind;
   core.String? name;
+  core.String? url;
 
   Maintainer({
+    this.email,
     this.kind,
     this.name,
+    this.url,
   });
 
   Maintainer.fromJson(core.Map json_)
       : this(
+          email:
+              json_.containsKey('email') ? json_['email'] as core.String : null,
           kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          url: json_.containsKey('url') ? json_['url'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (email != null) 'email': email!,
         if (kind != null) 'kind': kind!,
         if (name != null) 'name': name!,
+        if (url != null) 'url': url!,
       };
 }
 

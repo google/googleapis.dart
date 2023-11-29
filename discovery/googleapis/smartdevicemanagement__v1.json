@@ -2,9 +2,6 @@
     "auth": {
         "oauth2": {
             "scopes": {
-                "https://www.googleapis.com/auth/cloud-platform": {
-                    "description": "See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account."
-                },
                 "https://www.googleapis.com/auth/sdm.service": {
                     "description": "See and/or control the devices that you selected"
                 }
@@ -28,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230907",
+    "revision": "20231119",
     "rootUrl": "https://smartdevicemanagement.googleapis.com/",
     "servicePath": "",
     "title": "Smart Device Management API",
@@ -141,7 +138,6 @@
                                 "$ref": "GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform",
                                 "https://www.googleapis.com/auth/sdm.service"
                             ]
                         },
@@ -167,7 +163,6 @@
                                 "$ref": "GoogleHomeEnterpriseSdmV1Device"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform",
                                 "https://www.googleapis.com/auth/sdm.service"
                             ]
                         },
@@ -198,7 +193,6 @@
                                 "$ref": "GoogleHomeEnterpriseSdmV1ListDevicesResponse"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform",
                                 "https://www.googleapis.com/auth/sdm.service"
                             ]
                         }
@@ -228,7 +222,6 @@
                                 "$ref": "GoogleHomeEnterpriseSdmV1Structure"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform",
                                 "https://www.googleapis.com/auth/sdm.service"
                             ]
                         },
@@ -259,7 +252,6 @@
                                 "$ref": "GoogleHomeEnterpriseSdmV1ListStructuresResponse"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/cloud-platform",
                                 "https://www.googleapis.com/auth/sdm.service"
                             ]
                         }
@@ -289,7 +281,6 @@
                                         "$ref": "GoogleHomeEnterpriseSdmV1Room"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform",
                                         "https://www.googleapis.com/auth/sdm.service"
                                     ]
                                 },
@@ -315,7 +306,6 @@
                                         "$ref": "GoogleHomeEnterpriseSdmV1ListRoomsResponse"
                                     },
                                     "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform",
                                         "https://www.googleapis.com/auth/sdm.service"
                                     ]
                                 }

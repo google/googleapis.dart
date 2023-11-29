@@ -868,6 +868,7 @@ api.Cluster buildCluster() {
     o.enableKubernetesAlpha = true;
     o.enableTpu = true;
     o.endpoint = 'foo';
+    o.enterpriseConfig = buildEnterpriseConfig();
     o.etag = 'foo';
     o.expireTime = 'foo';
     o.fleet = buildFleet();
@@ -964,6 +965,7 @@ void checkCluster(api.Cluster o) {
       o.endpoint!,
       unittest.equals('foo'),
     );
+    checkEnterpriseConfig(o.enterpriseConfig!);
     unittest.expect(
       o.etag!,
       unittest.equals('foo'),
@@ -1660,6 +1662,28 @@ void checkEmpty(api.Empty o) {
   buildCounterEmpty++;
   if (buildCounterEmpty < 3) {}
   buildCounterEmpty--;
+}
+
+core.int buildCounterEnterpriseConfig = 0;
+api.EnterpriseConfig buildEnterpriseConfig() {
+  final o = api.EnterpriseConfig();
+  buildCounterEnterpriseConfig++;
+  if (buildCounterEnterpriseConfig < 3) {
+    o.clusterTier = 'foo';
+  }
+  buildCounterEnterpriseConfig--;
+  return o;
+}
+
+void checkEnterpriseConfig(api.EnterpriseConfig o) {
+  buildCounterEnterpriseConfig++;
+  if (buildCounterEnterpriseConfig < 3) {
+    unittest.expect(
+      o.clusterTier!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterEnterpriseConfig--;
 }
 
 core.int buildCounterEphemeralStorageLocalSsdConfig = 0;
@@ -3744,6 +3768,7 @@ api.NodePool buildNodePool() {
     o.networkConfig = buildNodeNetworkConfig();
     o.placementPolicy = buildPlacementPolicy();
     o.podIpv4CidrSize = 42;
+    o.queuedProvisioning = buildQueuedProvisioning();
     o.selfLink = 'foo';
     o.status = 'foo';
     o.statusMessage = 'foo';
@@ -3784,6 +3809,7 @@ void checkNodePool(api.NodePool o) {
       o.podIpv4CidrSize!,
       unittest.equals(42),
     );
+    checkQueuedProvisioning(o.queuedProvisioning!);
     unittest.expect(
       o.selfLink!,
       unittest.equals('foo'),
@@ -4332,6 +4358,25 @@ void checkPubSub(api.PubSub o) {
     );
   }
   buildCounterPubSub--;
+}
+
+core.int buildCounterQueuedProvisioning = 0;
+api.QueuedProvisioning buildQueuedProvisioning() {
+  final o = api.QueuedProvisioning();
+  buildCounterQueuedProvisioning++;
+  if (buildCounterQueuedProvisioning < 3) {
+    o.enabled = true;
+  }
+  buildCounterQueuedProvisioning--;
+  return o;
+}
+
+void checkQueuedProvisioning(api.QueuedProvisioning o) {
+  buildCounterQueuedProvisioning++;
+  if (buildCounterQueuedProvisioning < 3) {
+    unittest.expect(o.enabled!, unittest.isTrue);
+  }
+  buildCounterQueuedProvisioning--;
 }
 
 core.int buildCounterRangeInfo = 0;
@@ -6521,6 +6566,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-EnterpriseConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildEnterpriseConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.EnterpriseConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkEnterpriseConfig(od);
+    });
+  });
+
   unittest.group('obj-schema-EphemeralStorageLocalSsdConfig', () {
     unittest.test('to-json--from-json', () async {
       final o = buildEphemeralStorageLocalSsdConfig();
@@ -7247,6 +7302,16 @@ void main() {
       final od =
           api.PubSub.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkPubSub(od);
+    });
+  });
+
+  unittest.group('obj-schema-QueuedProvisioning', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildQueuedProvisioning();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.QueuedProvisioning.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkQueuedProvisioning(od);
     });
   });
 

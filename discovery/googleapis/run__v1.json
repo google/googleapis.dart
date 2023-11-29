@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20231022",
+    "revision": "20231112",
     "rootUrl": "https://run.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Run Admin API",
@@ -3937,7 +3937,7 @@
                     "type": "array"
                 },
                 "desiredReplicas": {
-                    "description": "Output only. The desired number of instances running this revision. For Cloud Run, this only includes instances provisioned using the minScale annotation. It does not include instances created by autoscaling.",
+                    "description": "Output only. The configured number of instances running this revision. For Cloud Run, this only includes instances provisioned using the minScale annotation. It does not include instances created by autoscaling.",
                     "format": "int32",
                     "readOnly": true,
                     "type": "integer"
@@ -4586,7 +4586,7 @@
                     "type": "string"
                 },
                 "readOnly": {
-                    "description": "Only true is accepted for Secret Volumes. Defaults to true for Secrets Volumes.",
+                    "description": "Sets the mount to be read-only or read-write. Not used by Cloud Run.",
                     "type": "boolean"
                 },
                 "subPath": {

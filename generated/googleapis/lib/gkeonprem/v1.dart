@@ -4385,8 +4385,6 @@ class Authorization {
   ///
   /// For bare metal admin clusters, users will be granted the cluster-view
   /// role, which limits users to read-only access.
-  ///
-  /// Required.
   core.List<ClusterUser>? adminUsers;
 
   Authorization({
@@ -8418,6 +8416,32 @@ class VmwareAdminAddonNodeConfig {
       };
 }
 
+/// VmwareAdminAuthorizationConfig represents configuration for admin cluster
+/// authorization.
+class VmwareAdminAuthorizationConfig {
+  /// For VMware admin clusters, users will be granted the cluster-viewer role
+  /// on the cluster.
+  core.List<ClusterUser>? viewerUsers;
+
+  VmwareAdminAuthorizationConfig({
+    this.viewerUsers,
+  });
+
+  VmwareAdminAuthorizationConfig.fromJson(core.Map json_)
+      : this(
+          viewerUsers: json_.containsKey('viewerUsers')
+              ? (json_['viewerUsers'] as core.List)
+                  .map((value) => ClusterUser.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (viewerUsers != null) 'viewerUsers': viewerUsers!,
+      };
+}
+
 /// Resource that represents a VMware admin cluster.
 class VmwareAdminCluster {
   /// The VMware admin cluster addon node configuration.
@@ -8435,6 +8459,9 @@ class VmwareAdminCluster {
 
   /// The VMware admin cluster anti affinity group configuration.
   VmwareAAGConfig? antiAffinityGroups;
+
+  /// The VMware admin cluster authorization configuration.
+  VmwareAdminAuthorizationConfig? authorization;
 
   /// The VMware admin cluster auto repair configuration.
   VmwareAutoRepairConfig? autoRepairConfig;
@@ -8558,6 +8585,7 @@ class VmwareAdminCluster {
     this.addonNode,
     this.annotations,
     this.antiAffinityGroups,
+    this.authorization,
     this.autoRepairConfig,
     this.bootstrapClusterMembership,
     this.controlPlaneNode,
@@ -8600,6 +8628,10 @@ class VmwareAdminCluster {
           antiAffinityGroups: json_.containsKey('antiAffinityGroups')
               ? VmwareAAGConfig.fromJson(json_['antiAffinityGroups']
                   as core.Map<core.String, core.dynamic>)
+              : null,
+          authorization: json_.containsKey('authorization')
+              ? VmwareAdminAuthorizationConfig.fromJson(
+                  json_['authorization'] as core.Map<core.String, core.dynamic>)
               : null,
           autoRepairConfig: json_.containsKey('autoRepairConfig')
               ? VmwareAutoRepairConfig.fromJson(json_['autoRepairConfig']
@@ -8679,6 +8711,7 @@ class VmwareAdminCluster {
         if (annotations != null) 'annotations': annotations!,
         if (antiAffinityGroups != null)
           'antiAffinityGroups': antiAffinityGroups!,
+        if (authorization != null) 'authorization': authorization!,
         if (autoRepairConfig != null) 'autoRepairConfig': autoRepairConfig!,
         if (bootstrapClusterMembership != null)
           'bootstrapClusterMembership': bootstrapClusterMembership!,
