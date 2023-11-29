@@ -8,7 +8,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_library_directive
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Datastream API - v1alpha1
@@ -25,7 +24,7 @@
 ///       - [ProjectsLocationsPrivateConnectionsRoutesResource]
 ///     - [ProjectsLocationsStreamsResource]
 ///       - [ProjectsLocationsStreamsObjectsResource]
-library datastream_v1alpha1;
+library;
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
