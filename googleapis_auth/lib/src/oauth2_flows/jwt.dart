@@ -47,7 +47,7 @@ class JwtFlow extends BaseFlow {
       'aud': googleOauth2TokenEndpoint.toString(),
       'exp': timestamp + 3600,
       'iat': timestamp,
-      if (_user != null) 'sub': _user!,
+      if (_user != null) 'sub': _user,
     };
     final jwtClaimSetBase64 = _base64url(utf8.encode(jsonEncode(jwtClaimSet)));
 
