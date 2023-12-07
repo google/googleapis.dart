@@ -1,6 +1,9 @@
 ## 1.4.2-wip
 
-- Require Dart 3.0 or later.
+- Require Dart 3.2 or later.
+- Require 
+  - `google_identity_services_web: ^0.3.0`
+  - `http: ^1.0.0`
 
 ## 1.4.1
 
