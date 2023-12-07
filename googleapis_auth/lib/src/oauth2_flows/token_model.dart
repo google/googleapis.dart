@@ -55,12 +55,12 @@ Future<AccessCredentials> requestAccessCredentials({
     }
 
     final token = AccessToken(
-      response.token_type,
-      response.access_token,
-      expiryDate(response.expires_in),
+      response.token_type!,
+      response.access_token!,
+      expiryDate(response.expires_in!),
     );
 
-    final creds = AccessCredentials(token, null, response.scope.split(' '));
+    final creds = AccessCredentials(token, null, response.scope);
 
     completer.complete(creds);
   }
@@ -68,7 +68,7 @@ Future<AccessCredentials> requestAccessCredentials({
   final config = gis.TokenClientConfig(
     callback: allowInterop(callback),
     client_id: clientId,
-    scope: scopes.toSet().join(' '),
+    scope: scopes.toList(),
     prompt: prompt,
   );
 
@@ -119,8 +119,8 @@ Future<CodeResponse> requestAuthorizationCode({
     }
 
     completer.complete(CodeResponse._(
-      code: response.code,
-      scopes: response.scope.split(' '),
+      code: response.code!,
+      scopes: response.scope,
       state: response.state,
     ));
   }
@@ -128,10 +128,10 @@ Future<CodeResponse> requestAuthorizationCode({
   final config = gis.CodeClientConfig(
     callback: allowInterop(callback),
     client_id: clientId,
-    scope: scopes.toSet().join(' '),
+    scope: scopes.toList(),
     state: state,
-    hint: hint,
-    hosted_domain: hostedDomain,
+    login_hint: hint,
+    hd: hostedDomain,
   );
 
   final client = gis.oauth2.initCodeClient(config);
