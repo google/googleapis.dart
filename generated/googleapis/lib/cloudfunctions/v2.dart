@@ -136,6 +136,99 @@ class ProjectsLocationsFunctionsResource {
   ProjectsLocationsFunctionsResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Aborts generation upgrade process for a function with the given name from
+  /// the specified project.
+  ///
+  /// Deletes all 2nd Gen copy related configuration and resources which were
+  /// created during the upgrade process.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the function for which upgrade should be
+  /// aborted.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/functions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> abortFunctionUpgrade(
+    AbortFunctionUpgradeRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':abortFunctionUpgrade';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Finalizes the upgrade after which function upgrade can not be rolled back.
+  ///
+  /// This is the last step of the multi step process to upgrade 1st Gen
+  /// functions to 2nd Gen. Deletes all original 1st Gen related configuration
+  /// and resources.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the function for which upgrade should be
+  /// finalized.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/functions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> commitFunctionUpgrade(
+    CommitFunctionUpgradeRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v2/' + core.Uri.encodeFull('$name') + ':commitFunctionUpgrade';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Creates a new function.
   ///
   /// If a function with the given name already exists in the specified project,
@@ -536,6 +629,102 @@ class ProjectsLocationsFunctionsResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Changes the traffic target of a function from the original 1st Gen
+  /// function to the 2nd Gen copy.
+  ///
+  /// This is the second step of the multi step process to upgrade 1st Gen
+  /// functions to 2nd Gen. After this operation, all new traffic will be served
+  /// by 2nd Gen copy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the function for which traffic target
+  /// should be changed to 2nd Gen from 1st Gen.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/functions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> redirectFunctionUpgradeTraffic(
+    RedirectFunctionUpgradeTrafficRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' +
+        core.Uri.encodeFull('$name') +
+        ':redirectFunctionUpgradeTraffic';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Reverts the traffic target of a function from the 2nd Gen copy to the
+  /// original 1st Gen function.
+  ///
+  /// After this operation, all new traffic would be served by the 1st Gen.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the function for which traffic target
+  /// should be changed back to 1st Gen from 2nd Gen.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/functions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> rollbackFunctionUpgradeTraffic(
+    RollbackFunctionUpgradeTrafficRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' +
+        core.Uri.encodeFull('$name') +
+        ':rollbackFunctionUpgradeTraffic';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Sets the access control policy on the specified resource.
   ///
   /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
@@ -581,6 +770,54 @@ class ProjectsLocationsFunctionsResource {
       queryParams: queryParams_,
     );
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Creates a 2nd Gen copy of the function configuration based on the 1st Gen
+  /// function with the given name.
+  ///
+  /// This is the first step of the multi step process to upgrade 1st Gen
+  /// functions to 2nd Gen. Only 2nd Gen configuration is setup as part of this
+  /// request and traffic continues to be served by 1st Gen.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the function which should have
+  /// configuration copied for upgrade.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/functions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> setupFunctionUpgradeConfig(
+    SetupFunctionUpgradeConfigRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v2/' + core.Uri.encodeFull('$name') + ':setupFunctionUpgradeConfig';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -686,22 +923,14 @@ class ProjectsLocationsOperationsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Must not be set.
+  /// [name] - The name of the operation's parent resource.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [filter] - Required. A filter for matching the requested operations. The
-  /// supported formats of *filter* are: To query for a specific function:
-  /// project:*,location:*,function:* To query for all of the latest operations
-  /// for a project: project:*,latest:true
+  /// [filter] - The standard list filter.
   ///
-  /// [pageSize] - The maximum number of records that should be returned.
-  /// Requested page size cannot exceed 100. If not set, the default page size
-  /// is 100. Pagination is only supported when querying for a specific
-  /// function.
+  /// [pageSize] - The standard list page size.
   ///
-  /// [pageToken] - Token identifying which result to start with, which is
-  /// returned by a previous list call. Pagination is only supported when
-  /// querying for a specific function.
+  /// [pageToken] - The standard list page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -788,6 +1017,9 @@ class ProjectsLocationsRuntimesResource {
   }
 }
 
+/// Request for the `AbortFunctionUpgrade` method.
+typedef AbortFunctionUpgradeRequest = $Empty;
+
 /// Specifies the audit configuration for a service.
 ///
 /// The configuration determines which permission types are logged, and what
@@ -847,6 +1079,10 @@ class AuditConfig {
 /// exempting jose@example.com from DATA_READ logging.
 typedef AuditLogConfig = $AuditLogConfig;
 
+/// Security patches are applied automatically to the runtime without requiring
+/// the function to be redeployed.
+typedef AutomaticUpdatePolicy = $Empty;
+
 /// Associates `members`, or principals, with a `role`.
 class Binding {
   /// The condition that is associated with this binding.
@@ -879,14 +1115,31 @@ class Binding {
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
   /// (primary) that represents all the users of that domain. For example,
-  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a user that has
-  /// been recently deleted. For example,
-  /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
-  /// this value reverts to `user:{emailid}` and the recovered user retains the
-  /// role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a service account
-  /// that has been recently deleted. For example,
+  /// `google.com` or `example.com`. *
+  /// `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workforce identity pool. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`:
+  /// All workforce identities in a group. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All workforce identities with a specific attribute value. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}
+  /// / * `: All identities in a workforce identity pool. *
+  /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workload identity pool. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`:
+  /// A workload identity pool group. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All identities in a workload identity pool with a certain attribute. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}
+  /// / * `: All identities in a workload identity pool. *
+  /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
+  /// identifier) representing a user that has been recently deleted. For
+  /// example, `alice@example.com?uid=123456789012345678901`. If the user is
+  /// recovered, this value reverts to `user:{emailid}` and the recovered user
+  /// retains the role in the binding. *
+  /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus
+  /// unique identifier) representing a service account that has been recently
+  /// deleted. For example,
   /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If
   /// the service account is undeleted, this value reverts to
   /// `serviceAccount:{emailid}` and the undeleted service account retains the
@@ -895,12 +1148,19 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding.
+  /// the role in the binding. *
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// Deleted single identity in a workforce identity pool. For example,
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
   ///
-  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an
+  /// overview of the IAM roles and permissions, see the
+  /// [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For
+  /// a list of the available pre-defined roles, see
+  /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
   Binding({
@@ -933,6 +1193,8 @@ class Binding {
 /// Describes the Build step of the function that builds a container from the
 /// given source.
 class BuildConfig {
+  AutomaticUpdatePolicy? automaticUpdatePolicy;
+
   /// The Cloud Build name of the latest successful deployment of the function.
   ///
   /// Output only.
@@ -956,13 +1218,12 @@ class BuildConfig {
   /// `docker_repository` field.
   core.String? dockerRegistry;
 
-  /// User managed repository created in Artifact Registry optionally with a
-  /// customer managed encryption key.
+  /// Repository in Artifact Registry to which the function docker image will be
+  /// pushed after it is built by Cloud Build.
   ///
-  /// This is the repository to which the function docker image will be pushed
-  /// after it is built by Cloud Build. If unspecified, GCF will create and use
-  /// a repository named 'gcf-artifacts' for every deployed region. It must
-  /// match the pattern
+  /// If specified by user, it is created and managed by user with a customer
+  /// managed encryption key. Otherwise, GCF will create and use a repository
+  /// named 'gcf-artifacts' for every deployed region. It must match the pattern
   /// `projects/{project}/locations/{location}/repositories/{repository}`.
   /// Cross-project repositories are not supported. Cross-location repositories
   /// are not supported. Repository format must be 'DOCKER'.
@@ -979,6 +1240,7 @@ class BuildConfig {
 
   /// User-provided build-time environment variables for the function
   core.Map<core.String, core.String>? environmentVariables;
+  OnDeployUpdatePolicy? onDeployUpdatePolicy;
 
   /// The runtime in which to run the function.
   ///
@@ -987,6 +1249,9 @@ class BuildConfig {
   /// command
   /// reference\](https://cloud.google.com/sdk/gcloud/reference/functions/deploy#--runtime).
   core.String? runtime;
+
+  /// \[Preview\] Service account to be used for building the container
+  core.String? serviceAccount;
 
   /// The location of the function source code.
   Source? source;
@@ -1017,12 +1282,15 @@ class BuildConfig {
   core.String? workerPool;
 
   BuildConfig({
+    this.automaticUpdatePolicy,
     this.build,
     this.dockerRegistry,
     this.dockerRepository,
     this.entryPoint,
     this.environmentVariables,
+    this.onDeployUpdatePolicy,
     this.runtime,
+    this.serviceAccount,
     this.source,
     this.sourceProvenance,
     this.sourceToken,
@@ -1031,6 +1299,10 @@ class BuildConfig {
 
   BuildConfig.fromJson(core.Map json_)
       : this(
+          automaticUpdatePolicy: json_.containsKey('automaticUpdatePolicy')
+              ? AutomaticUpdatePolicy.fromJson(json_['automaticUpdatePolicy']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           build:
               json_.containsKey('build') ? json_['build'] as core.String : null,
           dockerRegistry: json_.containsKey('dockerRegistry')
@@ -1052,8 +1324,15 @@ class BuildConfig {
                   ),
                 )
               : null,
+          onDeployUpdatePolicy: json_.containsKey('onDeployUpdatePolicy')
+              ? OnDeployUpdatePolicy.fromJson(json_['onDeployUpdatePolicy']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           runtime: json_.containsKey('runtime')
               ? json_['runtime'] as core.String
+              : null,
+          serviceAccount: json_.containsKey('serviceAccount')
+              ? json_['serviceAccount'] as core.String
               : null,
           source: json_.containsKey('source')
               ? Source.fromJson(
@@ -1072,19 +1351,27 @@ class BuildConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (automaticUpdatePolicy != null)
+          'automaticUpdatePolicy': automaticUpdatePolicy!,
         if (build != null) 'build': build!,
         if (dockerRegistry != null) 'dockerRegistry': dockerRegistry!,
         if (dockerRepository != null) 'dockerRepository': dockerRepository!,
         if (entryPoint != null) 'entryPoint': entryPoint!,
         if (environmentVariables != null)
           'environmentVariables': environmentVariables!,
+        if (onDeployUpdatePolicy != null)
+          'onDeployUpdatePolicy': onDeployUpdatePolicy!,
         if (runtime != null) 'runtime': runtime!,
+        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
         if (source != null) 'source': source!,
         if (sourceProvenance != null) 'sourceProvenance': sourceProvenance!,
         if (sourceToken != null) 'sourceToken': sourceToken!,
         if (workerPool != null) 'workerPool': workerPool!,
       };
 }
+
+/// Request for the `CommitFunctionUpgrade` method.
+typedef CommitFunctionUpgradeRequest = $Empty;
 
 /// Represents a whole or partial calendar date, such as a birthday.
 ///
@@ -1185,6 +1472,16 @@ class EventTrigger {
   /// exponential backoff (capped at 10 seconds).
   core.String? retryPolicy;
 
+  /// The hostname of the service that 1st Gen function should be observed.
+  ///
+  /// If no string is provided, the default service implementing the API will be
+  /// used. For example, `storage.googleapis.com` is the default for all event
+  /// types in the `google.storage` namespace. The field is only applicable to
+  /// 1st Gen functions.
+  ///
+  /// Optional.
+  core.String? service;
+
   /// The email of the trigger's service account.
   ///
   /// The service account must have permission to invoke Cloud Run services, the
@@ -1217,6 +1514,7 @@ class EventTrigger {
     this.eventType,
     this.pubsubTopic,
     this.retryPolicy,
+    this.service,
     this.serviceAccountEmail,
     this.trigger,
     this.triggerRegion,
@@ -1242,6 +1540,9 @@ class EventTrigger {
           retryPolicy: json_.containsKey('retryPolicy')
               ? json_['retryPolicy'] as core.String
               : null,
+          service: json_.containsKey('service')
+              ? json_['service'] as core.String
+              : null,
           serviceAccountEmail: json_.containsKey('serviceAccountEmail')
               ? json_['serviceAccountEmail'] as core.String
               : null,
@@ -1259,6 +1560,7 @@ class EventTrigger {
         if (eventType != null) 'eventType': eventType!,
         if (pubsubTopic != null) 'pubsubTopic': pubsubTopic!,
         if (retryPolicy != null) 'retryPolicy': retryPolicy!,
+        if (service != null) 'service': service!,
         if (serviceAccountEmail != null)
           'serviceAccountEmail': serviceAccountEmail!,
         if (trigger != null) 'trigger': trigger!,
@@ -1294,6 +1596,13 @@ class Function_ {
   /// Describes the Build step of the function that builds a container from the
   /// given source.
   BuildConfig? buildConfig;
+
+  /// The create timestamp of a Cloud Function.
+  ///
+  /// This is only applicable to 2nd Gen functions.
+  ///
+  /// Output only.
+  core.String? createTime;
 
   /// User-provided description of a function.
   core.String? description;
@@ -1359,6 +1668,11 @@ class Function_ {
   /// Output only.
   core.String? updateTime;
 
+  /// UpgradeInfo for this Cloud Function
+  ///
+  /// Output only.
+  UpgradeInfo? upgradeInfo;
+
   /// The deployed url for the function.
   ///
   /// Output only.
@@ -1366,6 +1680,7 @@ class Function_ {
 
   Function_({
     this.buildConfig,
+    this.createTime,
     this.description,
     this.environment,
     this.eventTrigger,
@@ -1377,6 +1692,7 @@ class Function_ {
     this.state,
     this.stateMessages,
     this.updateTime,
+    this.upgradeInfo,
     this.url,
   });
 
@@ -1385,6 +1701,9 @@ class Function_ {
           buildConfig: json_.containsKey('buildConfig')
               ? BuildConfig.fromJson(
                   json_['buildConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
               : null,
           description: json_.containsKey('description')
               ? json_['description'] as core.String
@@ -1426,11 +1745,16 @@ class Function_ {
           updateTime: json_.containsKey('updateTime')
               ? json_['updateTime'] as core.String
               : null,
+          upgradeInfo: json_.containsKey('upgradeInfo')
+              ? UpgradeInfo.fromJson(
+                  json_['upgradeInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
           url: json_.containsKey('url') ? json_['url'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (buildConfig != null) 'buildConfig': buildConfig!,
+        if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
         if (environment != null) 'environment': environment!,
         if (eventTrigger != null) 'eventTrigger': eventTrigger!,
@@ -1442,6 +1766,7 @@ class Function_ {
         if (state != null) 'state': state!,
         if (stateMessages != null) 'stateMessages': stateMessages!,
         if (updateTime != null) 'updateTime': updateTime!,
+        if (upgradeInfo != null) 'upgradeInfo': upgradeInfo!,
         if (url != null) 'url': url!,
       };
 }
@@ -1454,6 +1779,17 @@ typedef GenerateDownloadUrlResponse = $GenerateDownloadUrlResponse;
 
 /// Request of `GenerateSourceUploadUrl` method.
 class GenerateUploadUrlRequest {
+  /// The function environment the generated upload url will be used for.
+  ///
+  /// The upload url for 2nd Gen functions can also be used for 1st gen
+  /// functions, but not vice versa. If not specified, 2nd generation-style
+  /// upload URLs are generated.
+  /// Possible string values are:
+  /// - "ENVIRONMENT_UNSPECIFIED" : Unspecified
+  /// - "GEN_1" : Gen 1
+  /// - "GEN_2" : Gen 2
+  core.String? environment;
+
   /// \[Preview\] Resource name of a KMS crypto key (managed by the user) used
   /// to encrypt/decrypt function source code objects in intermediate Cloud
   /// Storage buckets.
@@ -1471,17 +1807,22 @@ class GenerateUploadUrlRequest {
   core.String? kmsKeyName;
 
   GenerateUploadUrlRequest({
+    this.environment,
     this.kmsKeyName,
   });
 
   GenerateUploadUrlRequest.fromJson(core.Map json_)
       : this(
+          environment: json_.containsKey('environment')
+              ? json_['environment'] as core.String
+              : null,
           kmsKeyName: json_.containsKey('kmsKeyName')
               ? json_['kmsKeyName'] as core.String
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (environment != null) 'environment': environment!,
         if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
       };
 }
@@ -1701,6 +2042,9 @@ class ListRuntimesResponse {
 /// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
+/// Security patches are only applied when a function is redeployed.
+typedef OnDeployUpdatePolicy = $OnDeployUpdatePolicy;
+
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class Operation {
@@ -1898,6 +2242,9 @@ class Policy {
       };
 }
 
+/// Request for the `RedirectFunctionUpgradeTraffic` method.
+typedef RedirectFunctionUpgradeTrafficRequest = $Empty;
+
 /// Location of the source in a Google Cloud Source Repository.
 class RepoSource {
   /// Regex matching branches to build.
@@ -1968,6 +2315,9 @@ class RepoSource {
         if (tagName != null) 'tagName': tagName!,
       };
 }
+
+/// Request for the `RollbackFunctionUpgradeTraffic` method.
+typedef RollbackFunctionUpgradeTrafficRequest = $Empty;
 
 /// Describes a runtime and any special information (e.g., deprecation status)
 /// related to it.
@@ -2217,7 +2567,7 @@ class ServiceConfig {
   /// serving 100% of traffic.
   core.bool? allTrafficOnLatestRevision;
 
-  /// \[Preview\] The number of CPUs used in a single container instance.
+  /// The number of CPUs used in a single container instance.
   ///
   /// Default value is calculated from available memory. Supports the same
   /// values as Cloud Run, see
@@ -2259,8 +2609,8 @@ class ServiceConfig {
   /// Guide for more details.
   core.int? maxInstanceCount;
 
-  /// \[Preview\] Sets the maximum number of concurrent requests that each
-  /// instance can receive.
+  /// Sets the maximum number of concurrent requests that each instance can
+  /// receive.
   ///
   /// Defaults to 1.
   core.int? maxInstanceRequestConcurrency;
@@ -2503,6 +2853,9 @@ class SetIamPolicyRequest {
       };
 }
 
+/// Request for the `SetupFunctionUpgradeConfig` method.
+typedef SetupFunctionUpgradeConfigRequest = $Empty;
+
 /// The location of the function source code.
 class Source {
   /// If provided, get the source from GitHub repository.
@@ -2650,3 +3003,78 @@ typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;
+
+/// Information related to: * A function's eligibility for 1st Gen to 2nd Gen
+/// migration * Current state of migration for function undergoing migration.
+class UpgradeInfo {
+  /// Describes the Build step of the function that builds a container to
+  /// prepare for 2nd gen upgrade.
+  BuildConfig? buildConfig;
+
+  /// Describes the Event trigger which has been setup to prepare for 2nd gen
+  /// upgrade.
+  EventTrigger? eventTrigger;
+
+  /// Describes the Cloud Run service which has been setup to prepare for 2nd
+  /// gen upgrade.
+  ServiceConfig? serviceConfig;
+
+  /// UpgradeState of the function
+  /// Possible string values are:
+  /// - "UPGRADE_STATE_UNSPECIFIED" : Unspecified state. Most functions are in
+  /// this upgrade state.
+  /// - "ELIGIBLE_FOR_2ND_GEN_UPGRADE" : Functions in this state are eligible
+  /// for 1st Gen -\> 2nd Gen upgrade.
+  /// - "UPGRADE_OPERATION_IN_PROGRESS" : An upgrade related operation is in
+  /// progress.
+  /// - "SETUP_FUNCTION_UPGRADE_CONFIG_SUCCESSFUL" : SetupFunctionUpgradeConfig
+  /// API was successful and a 2nd Gen function has been created based on 1st
+  /// Gen function instance.
+  /// - "SETUP_FUNCTION_UPGRADE_CONFIG_ERROR" : SetupFunctionUpgradeConfig API
+  /// was un-successful.
+  /// - "ABORT_FUNCTION_UPGRADE_ERROR" : AbortFunctionUpgrade API was
+  /// un-successful.
+  /// - "REDIRECT_FUNCTION_UPGRADE_TRAFFIC_SUCCESSFUL" :
+  /// RedirectFunctionUpgradeTraffic API was successful and traffic is served by
+  /// 2nd Gen function stack.
+  /// - "REDIRECT_FUNCTION_UPGRADE_TRAFFIC_ERROR" :
+  /// RedirectFunctionUpgradeTraffic API was un-successful.
+  /// - "ROLLBACK_FUNCTION_UPGRADE_TRAFFIC_ERROR" :
+  /// RollbackFunctionUpgradeTraffic API was un-successful.
+  /// - "COMMIT_FUNCTION_UPGRADE_ERROR" : CommitFunctionUpgrade API was
+  /// un-successful.
+  core.String? upgradeState;
+
+  UpgradeInfo({
+    this.buildConfig,
+    this.eventTrigger,
+    this.serviceConfig,
+    this.upgradeState,
+  });
+
+  UpgradeInfo.fromJson(core.Map json_)
+      : this(
+          buildConfig: json_.containsKey('buildConfig')
+              ? BuildConfig.fromJson(
+                  json_['buildConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          eventTrigger: json_.containsKey('eventTrigger')
+              ? EventTrigger.fromJson(
+                  json_['eventTrigger'] as core.Map<core.String, core.dynamic>)
+              : null,
+          serviceConfig: json_.containsKey('serviceConfig')
+              ? ServiceConfig.fromJson(
+                  json_['serviceConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          upgradeState: json_.containsKey('upgradeState')
+              ? json_['upgradeState'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (buildConfig != null) 'buildConfig': buildConfig!,
+        if (eventTrigger != null) 'eventTrigger': eventTrigger!,
+        if (serviceConfig != null) 'serviceConfig': serviceConfig!,
+        if (upgradeState != null) 'upgradeState': upgradeState!,
+      };
+}

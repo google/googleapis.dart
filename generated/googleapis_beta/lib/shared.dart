@@ -141,6 +141,29 @@ class $DimensionOrderBy {
 
 /// Used by:
 ///
+/// - analyticsdata:v1beta : DimensionValue
+/// - analyticsdata:v1beta : V1betaAudienceDimensionValue
+class $DimensionValue {
+  /// Value as a string if the dimension type is a string.
+  core.String? value;
+
+  $DimensionValue({
+    this.value,
+  });
+
+  $DimensionValue.fromJson(core.Map json_)
+      : this(
+          value:
+              json_.containsKey('value') ? json_['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (value != null) 'value': value!,
+      };
+}
+
+/// Used by:
+///
 /// - adexchangebuyer2:v2beta1 : CancelNegotiationRequest
 /// - adexchangebuyer2:v2beta1 : CompleteSetupRequest
 /// - adexchangebuyer2:v2beta1 : Empty
@@ -471,32 +494,6 @@ class $SasPortalAssignment {
   core.Map<core.String, core.dynamic> toJson() => {
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
-      };
-}
-
-/// Used by:
-///
-/// - prod_tt_sasportal:v1alpha1 : SasPortalCheckHasProvisionedDeploymentResponse
-/// - sasportal:v1alpha1 : SasPortalCheckHasProvisionedDeploymentResponse
-class $SasPortalCheckHasProvisionedDeploymentResponse {
-  /// Whether a SAS deployment for the authentication context exists.
-  core.bool? hasProvisionedDeployment;
-
-  $SasPortalCheckHasProvisionedDeploymentResponse({
-    this.hasProvisionedDeployment,
-  });
-
-  $SasPortalCheckHasProvisionedDeploymentResponse.fromJson(core.Map json_)
-      : this(
-          hasProvisionedDeployment:
-              json_.containsKey('hasProvisionedDeployment')
-                  ? json_['hasProvisionedDeployment'] as core.bool
-                  : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (hasProvisionedDeployment != null)
-          'hasProvisionedDeployment': hasProvisionedDeployment!,
       };
 }
 
@@ -1225,6 +1222,36 @@ class $SasPortalNrqzValidation {
 
 /// Used by:
 ///
+/// - prod_tt_sasportal:v1alpha1 : SasPortalOrganization
+/// - sasportal:v1alpha1 : SasPortalOrganization
+class $SasPortalOrganization {
+  /// Name of organization
+  core.String? displayName;
+
+  /// Id of organization
+  core.String? id;
+
+  $SasPortalOrganization({
+    this.displayName,
+    this.id,
+  });
+
+  $SasPortalOrganization.fromJson(core.Map json_)
+      : this(
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
+        if (id != null) 'id': id!,
+      };
+}
+
+/// Used by:
+///
 /// - prod_tt_sasportal:v1alpha1 : SasPortalProvisionDeploymentRequest
 /// - sasportal:v1alpha1 : SasPortalProvisionDeploymentRequest
 class $SasPortalProvisionDeploymentRequest {
@@ -1492,6 +1519,7 @@ class $SasPortalValidateInstallerRequest {
 /// Used by:
 ///
 /// - alertcenter:v1beta1 : Status
+/// - analyticsdata:v1beta : Status
 /// - dataflow:v1b3 : Status
 /// - datalabeling:v1beta1 : GoogleRpcStatus
 /// - datastream:v1alpha1 : Status

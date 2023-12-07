@@ -22,10 +22,9 @@
 ///
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
-///     - [ProjectsLocationsGlobalResource]
-///       - [ProjectsLocationsGlobalDnsBindPermissionResource]
-///       - [ProjectsLocationsGlobalNetworkPeeringsResource]
-///         - [ProjectsLocationsGlobalNetworkPeeringsPeeringRoutesResource]
+///     - [ProjectsLocationsDnsBindPermissionResource]
+///     - [ProjectsLocationsNetworkPeeringsResource]
+///       - [ProjectsLocationsNetworkPeeringsPeeringRoutesResource]
 ///     - [ProjectsLocationsNetworkPoliciesResource]
 ///       - [ProjectsLocationsNetworkPoliciesExternalAccessRulesResource]
 ///     - [ProjectsLocationsNodeTypesResource]
@@ -87,8 +86,10 @@ class ProjectsResource {
 class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsGlobalResource get global =>
-      ProjectsLocationsGlobalResource(_requester);
+  ProjectsLocationsDnsBindPermissionResource get dnsBindPermission =>
+      ProjectsLocationsDnsBindPermissionResource(_requester);
+  ProjectsLocationsNetworkPeeringsResource get networkPeerings =>
+      ProjectsLocationsNetworkPeeringsResource(_requester);
   ProjectsLocationsNetworkPoliciesResource get networkPolicies =>
       ProjectsLocationsNetworkPoliciesResource(_requester);
   ProjectsLocationsNodeTypesResource get nodeTypes =>
@@ -137,6 +138,51 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return Location.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets all the principals having bind permission on the intranet VPC
+  /// associated with the consumer project granted by the Grant API.
+  ///
+  /// DnsBindPermission is a global resource and location can only be global.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the resource which stores the users/service
+  /// accounts having the permission to bind to the corresponding intranet VPC
+  /// of the consumer project. DnsBindPermission is a global resource. Resource
+  /// names are schemeless URIs that follow the conventions in
+  /// https://cloud.google.com/apis/design/resource_names. For example:
+  /// `projects/my-project/locations/global/dnsBindPermission`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dnsBindPermission$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DnsBindPermission].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DnsBindPermission> getDnsBindPermission(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return DnsBindPermission.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists information about the supported locations for this service.
@@ -192,70 +238,17 @@ class ProjectsLocationsResource {
   }
 }
 
-class ProjectsLocationsGlobalResource {
+class ProjectsLocationsDnsBindPermissionResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsGlobalDnsBindPermissionResource get dnsBindPermission =>
-      ProjectsLocationsGlobalDnsBindPermissionResource(_requester);
-  ProjectsLocationsGlobalNetworkPeeringsResource get networkPeerings =>
-      ProjectsLocationsGlobalNetworkPeeringsResource(_requester);
-
-  ProjectsLocationsGlobalResource(commons.ApiRequester client)
-      : _requester = client;
-
-  /// Gets all the principals having bind permission on the intranet VPC
-  /// associated with the consumer project granted by the Grant API.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. The name of the resource which stores the users/service
-  /// accounts having the permission to bind to the corresponding intranet VPC
-  /// of the consumer project. DnsBindPermission is a global resource. Resource
-  /// names are schemeless URIs that follow the conventions in
-  /// https://cloud.google.com/apis/design/resource_names. For example:
-  /// `projects/my-project/locations/global/dnsBindPermission`
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/global/dnsBindPermission$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [DnsBindPermission].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<DnsBindPermission> getDnsBindPermission(
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$name');
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return DnsBindPermission.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-}
-
-class ProjectsLocationsGlobalDnsBindPermissionResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsGlobalDnsBindPermissionResource(commons.ApiRequester client)
+  ProjectsLocationsDnsBindPermissionResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Grants the bind permission to the customer provided principal(user /
   /// service account) to bind their DNS zone with the intranet VPC associated
   /// with the project.
+  ///
+  /// DnsBindPermission is a global resource and location can only be global.
   ///
   /// [request] - The metadata request object.
   ///
@@ -268,7 +261,7 @@ class ProjectsLocationsGlobalDnsBindPermissionResource {
   /// https://cloud.google.com/apis/design/resource_names. For example:
   /// `projects/my-project/locations/global/dnsBindPermission`
   /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/global/dnsBindPermission$`.
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dnsBindPermission$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -304,6 +297,8 @@ class ProjectsLocationsGlobalDnsBindPermissionResource {
   /// Revokes the bind permission from the customer provided principal(user /
   /// service account) on the intranet VPC associated with the consumer project.
   ///
+  /// DnsBindPermission is a global resource and location can only be global.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -315,7 +310,7 @@ class ProjectsLocationsGlobalDnsBindPermissionResource {
   /// https://cloud.google.com/apis/design/resource_names. For example:
   /// `projects/my-project/locations/global/dnsBindPermission`
   /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/global/dnsBindPermission$`.
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dnsBindPermission$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -349,19 +344,19 @@ class ProjectsLocationsGlobalDnsBindPermissionResource {
   }
 }
 
-class ProjectsLocationsGlobalNetworkPeeringsResource {
+class ProjectsLocationsNetworkPeeringsResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsGlobalNetworkPeeringsPeeringRoutesResource
-      get peeringRoutes =>
-          ProjectsLocationsGlobalNetworkPeeringsPeeringRoutesResource(
-              _requester);
+  ProjectsLocationsNetworkPeeringsPeeringRoutesResource get peeringRoutes =>
+      ProjectsLocationsNetworkPeeringsPeeringRoutesResource(_requester);
 
-  ProjectsLocationsGlobalNetworkPeeringsResource(commons.ApiRequester client)
+  ProjectsLocationsNetworkPeeringsResource(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a new network peering between the peer network and VMware Engine
   /// network provided in a `NetworkPeering` resource.
+  ///
+  /// NetworkPeering is a global resource and location can only be global.
   ///
   /// [request] - The metadata request object.
   ///
@@ -373,7 +368,7 @@ class ProjectsLocationsGlobalNetworkPeeringsResource {
   /// that follow the conventions in
   /// https://cloud.google.com/apis/design/resource_names. For example:
   /// `projects/my-project/locations/global`
-  /// Value must have pattern `^projects/\[^/\]+/locations/global$`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [networkPeeringId] - Required. The user-provided identifier of the new
   /// `NetworkPeering`. This identifier must be unique among `NetworkPeering`
@@ -435,7 +430,8 @@ class ProjectsLocationsGlobalNetworkPeeringsResource {
   /// Deletes a `NetworkPeering` resource.
   ///
   /// When a network peering is deleted for a VMware Engine network, the peer
-  /// network becomes inaccessible to that VMware Engine network.
+  /// network becomes inaccessible to that VMware Engine network. NetworkPeering
+  /// is a global resource and location can only be global.
   ///
   /// Request parameters:
   ///
@@ -444,7 +440,7 @@ class ProjectsLocationsGlobalNetworkPeeringsResource {
   /// https://cloud.google.com/apis/design/resource_names. For example:
   /// `projects/my-project/locations/global/networkPeerings/my-peering`
   /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/global/networkPeerings/\[^/\]+$`.
+  /// `^projects/\[^/\]+/locations/\[^/\]+/networkPeerings/\[^/\]+$`.
   ///
   /// [requestId] - Optional. A request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -493,7 +489,8 @@ class ProjectsLocationsGlobalNetworkPeeringsResource {
   ///
   /// The resource contains details of the network peering, such as peered
   /// networks, import and export custom route configurations, and peering
-  /// state.
+  /// state. NetworkPeering is a global resource and location can only be
+  /// global.
   ///
   /// Request parameters:
   ///
@@ -502,7 +499,7 @@ class ProjectsLocationsGlobalNetworkPeeringsResource {
   /// https://cloud.google.com/apis/design/resource_names. For example:
   /// `projects/my-project/locations/global/networkPeerings/my-peering`
   /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/global/networkPeerings/\[^/\]+$`.
+  /// `^projects/\[^/\]+/locations/\[^/\]+/networkPeerings/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -535,13 +532,15 @@ class ProjectsLocationsGlobalNetworkPeeringsResource {
 
   /// Lists `NetworkPeering` resources in a given project.
   ///
+  /// NetworkPeering is a global resource and location can only be global.
+  ///
   /// Request parameters:
   ///
   /// [parent] - Required. The resource name of the location (global) to query
   /// for network peerings. Resource names are schemeless URIs that follow the
   /// conventions in https://cloud.google.com/apis/design/resource_names. For
   /// example: `projects/my-project/locations/global`
-  /// Value must have pattern `^projects/\[^/\]+/locations/global$`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - A filter expression that matches resources returned in the
   /// response. The expression must specify the field name, a comparison
@@ -611,18 +610,20 @@ class ProjectsLocationsGlobalNetworkPeeringsResource {
   /// Modifies a `NetworkPeering` resource.
   ///
   /// Only the `description` field can be updated. Only fields specified in
-  /// `updateMask` are applied.
+  /// `updateMask` are applied. NetworkPeering is a global resource and location
+  /// can only be global.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. The resource name of the network peering. Resource
-  /// names are scheme-less URIs that follow the conventions in
+  /// [name] - Output only. The resource name of the network peering.
+  /// NetworkPeering is a global resource and location can only be global.
+  /// Resource names are scheme-less URIs that follow the conventions in
   /// https://cloud.google.com/apis/design/resource_names. For example:
   /// `projects/my-project/locations/global/networkPeerings/my-peering`
   /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/global/networkPeerings/\[^/\]+$`.
+  /// `^projects/\[^/\]+/locations/\[^/\]+/networkPeerings/\[^/\]+$`.
   ///
   /// [requestId] - Optional. A request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -679,14 +680,16 @@ class ProjectsLocationsGlobalNetworkPeeringsResource {
   }
 }
 
-class ProjectsLocationsGlobalNetworkPeeringsPeeringRoutesResource {
+class ProjectsLocationsNetworkPeeringsPeeringRoutesResource {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsGlobalNetworkPeeringsPeeringRoutesResource(
+  ProjectsLocationsNetworkPeeringsPeeringRoutesResource(
       commons.ApiRequester client)
       : _requester = client;
 
   /// Lists the network peering routes exchanged over a peering connection.
+  ///
+  /// NetworkPeering is a global resource and location can only be global.
   ///
   /// Request parameters:
   ///
@@ -695,7 +698,7 @@ class ProjectsLocationsGlobalNetworkPeeringsPeeringRoutesResource {
   /// conventions in https://cloud.google.com/apis/design/resource_names. For
   /// example: `projects/my-project/locations/global/networkPeerings/my-peering`
   /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/global/networkPeerings/\[^/\]+$`.
+  /// `^projects/\[^/\]+/locations/\[^/\]+/networkPeerings/\[^/\]+$`.
   ///
   /// [filter] - A filter expression that matches resources returned in the
   /// response. Currently, only filtering on the `direction` field is supported.
@@ -5464,14 +5467,31 @@ class Binding {
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
   /// (primary) that represents all the users of that domain. For example,
-  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a user that has
-  /// been recently deleted. For example,
-  /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
-  /// this value reverts to `user:{emailid}` and the recovered user retains the
-  /// role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a service account
-  /// that has been recently deleted. For example,
+  /// `google.com` or `example.com`. *
+  /// `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workforce identity pool. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`:
+  /// All workforce identities in a group. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All workforce identities with a specific attribute value. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}
+  /// / * `: All identities in a workforce identity pool. *
+  /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workload identity pool. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`:
+  /// A workload identity pool group. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All identities in a workload identity pool with a certain attribute. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}
+  /// / * `: All identities in a workload identity pool. *
+  /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
+  /// identifier) representing a user that has been recently deleted. For
+  /// example, `alice@example.com?uid=123456789012345678901`. If the user is
+  /// recovered, this value reverts to `user:{emailid}` and the recovered user
+  /// retains the role in the binding. *
+  /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus
+  /// unique identifier) representing a service account that has been recently
+  /// deleted. For example,
   /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If
   /// the service account is undeleted, this value reverts to
   /// `serviceAccount:{emailid}` and the undeleted service account retains the
@@ -5480,12 +5500,19 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding.
+  /// the role in the binding. *
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// Deleted single identity in a workforce identity pool. For example,
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
   ///
-  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an
+  /// overview of the IAM roles and permissions, see the
+  /// [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For
+  /// a list of the available pre-defined roles, see
+  /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
   Binding({
@@ -5670,8 +5697,8 @@ class DnsBindPermission {
   /// the permission to bind to the corresponding intranet VPC of the consumer
   /// project.
   ///
-  /// DnsBindPermission is a global resource. Resource names are schemeless URIs
-  /// that follow the conventions in
+  /// DnsBindPermission is a global resource and location can only be global.
+  /// Resource names are schemeless URIs that follow the conventions in
   /// https://cloud.google.com/apis/design/resource_names. For example:
   /// `projects/my-project/locations/global/dnsBindPermission`
   ///
@@ -7491,6 +7518,7 @@ class NetworkPeering {
 
   /// The resource name of the network peering.
   ///
+  /// NetworkPeering is a global resource and location can only be global.
   /// Resource names are scheme-less URIs that follow the conventions in
   /// https://cloud.google.com/apis/design/resource_names. For example:
   /// `projects/my-project/locations/global/networkPeerings/my-peering`
@@ -7970,6 +7998,23 @@ class NodeType {
   /// Output only.
   core.String? displayName;
 
+  /// Families of the node type.
+  ///
+  /// For node types to be in the same cluster they must share at least one
+  /// element in the `families`.
+  ///
+  /// Output only.
+  core.List<core.String>? families;
+
+  /// The type of the resource.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "KIND_UNSPECIFIED" : The default value. This value should never be used.
+  /// - "STANDARD" : Standard HCI node.
+  /// - "STORAGE_ONLY" : Storage only Node.
+  core.String? kind;
+
   /// The amount of physical memory available, defined in GB.
   ///
   /// Output only.
@@ -8006,6 +8051,8 @@ class NodeType {
     this.capabilities,
     this.diskSizeGb,
     this.displayName,
+    this.families,
+    this.kind,
     this.memoryGb,
     this.name,
     this.nodeTypeId,
@@ -8032,6 +8079,12 @@ class NodeType {
           displayName: json_.containsKey('displayName')
               ? json_['displayName'] as core.String
               : null,
+          families: json_.containsKey('families')
+              ? (json_['families'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
           memoryGb: json_.containsKey('memoryGb')
               ? json_['memoryGb'] as core.int
               : null,
@@ -8053,6 +8106,8 @@ class NodeType {
         if (capabilities != null) 'capabilities': capabilities!,
         if (diskSizeGb != null) 'diskSizeGb': diskSizeGb!,
         if (displayName != null) 'displayName': displayName!,
+        if (families != null) 'families': families!,
+        if (kind != null) 'kind': kind!,
         if (memoryGb != null) 'memoryGb': memoryGb!,
         if (name != null) 'name': name!,
         if (nodeTypeId != null) 'nodeTypeId': nodeTypeId!,

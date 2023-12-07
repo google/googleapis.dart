@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20231127",
+    "revision": "20240226",
     "rootUrl": "https://paymentsresellersubscription.googleapis.com/",
     "servicePath": "",
     "title": "Payments Reseller Subscription API",
@@ -123,7 +123,7 @@
                             ],
                             "parameters": {
                                 "filter": {
-                                    "description": "Optional. Specifies the filters for the product results. The syntax is defined in https://google.aip.dev/160 with the following caveats: - Only the following features are supported: - Logical operator `AND` - Comparison operator `=` (no wildcards `*`) - Traversal operator `.` - Has operator `:` (no wildcards `*`) - Only the following fields are supported: - `regionCodes` - `youtubePayload.partnerEligibilityId` - `youtubePayload.postalCode` - Unless explicitly mentioned above, other features are not supported. Example: `regionCodes:US AND youtubePayload.postalCode=94043 AND youtubePayload.partnerEligibilityId=eligibility-id`",
+                                    "description": "Optional. Specifies the filters for the product results. The syntax is defined in https://google.aip.dev/160 with the following caveats: 1. Only the following features are supported: - Logical operator `AND` - Comparison operator `=` (no wildcards `*`) - Traversal operator `.` - Has operator `:` (no wildcards `*`) 2. Only the following fields are supported: - `regionCodes` - `youtubePayload.partnerEligibilityId` - `youtubePayload.postalCode` 3. Unless explicitly mentioned above, other features are not supported. Example: `regionCodes:US AND youtubePayload.postalCode=94043 AND youtubePayload.partnerEligibilityId=eligibility-id`",
                                     "location": "query",
                                     "type": "string"
                                 },
@@ -196,7 +196,7 @@
                             ],
                             "parameters": {
                                 "filter": {
-                                    "description": "Optional. Specifies the filters for the promotion results. The syntax is defined in https://google.aip.dev/160 with the following caveats: - Only the following features are supported: - Logical operator `AND` - Comparison operator `=` (no wildcards `*`) - Traversal operator `.` - Has operator `:` (no wildcards `*`) - Only the following fields are supported: - `applicableProducts` - `regionCodes` - `youtubePayload.partnerEligibilityId` - `youtubePayload.postalCode` - Unless explicitly mentioned above, other features are not supported. Example: `applicableProducts:partners/partner1/products/product1 AND regionCodes:US AND youtubePayload.postalCode=94043 AND youtubePayload.partnerEligibilityId=eligibility-id`",
+                                    "description": "Optional. Specifies the filters for the promotion results. The syntax is defined in https://google.aip.dev/160 with the following caveats: 1. Only the following features are supported: - Logical operator `AND` - Comparison operator `=` (no wildcards `*`) - Traversal operator `.` - Has operator `:` (no wildcards `*`) 2. Only the following fields are supported: - `applicableProducts` - `regionCodes` - `youtubePayload.partnerEligibilityId` - `youtubePayload.postalCode` 3. Unless explicitly mentioned above, other features are not supported. Example: `applicableProducts:partners/partner1/products/product1 AND regionCodes:US AND youtubePayload.postalCode=94043 AND youtubePayload.partnerEligibilityId=eligibility-id`",
                                     "location": "query",
                                     "type": "string"
                                 },
@@ -457,6 +457,7 @@
             "type": "object"
         },
         "GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionRequest": {
+            "description": "Request to cancel a subscription.",
             "id": "GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionRequest",
             "properties": {
                 "cancelImmediately": {
@@ -484,11 +485,11 @@
                         "Buyer's remorse.",
                         "Accidential purchase.",
                         "Payment is past due.",
-                        "User account closed.",
+                        "Used for notification only, do not use in Cancel API. User account closed.",
                         "Used for notification only, do not use in Cancel API. Cancellation due to upgrade or downgrade.",
                         "Cancellation due to user delinquency",
-                        "Cancellation due to an unrecoverable system error.",
-                        "Cancellation by a system.",
+                        "Used for notification only, do not use in Cancel API. Cancellation due to an unrecoverable system error.",
+                        "Used for notification only, do not use in Cancel API. The subscription is cancelled by Google automatically since it is no longer valid.",
                         "Other reason."
                     ],
                     "type": "string"
@@ -497,6 +498,7 @@
             "type": "object"
         },
         "GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionResponse": {
+            "description": "Response that contains the cancelled subscription resource.",
             "id": "GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionResponse",
             "properties": {
                 "subscription": {
@@ -568,6 +570,7 @@
             "type": "object"
         },
         "GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionResponse": {
+            "description": "Response that contains the entitled subscription resource.",
             "id": "GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionResponse",
             "properties": {
                 "subscription": {
@@ -593,6 +596,7 @@
             "type": "object"
         },
         "GoogleCloudPaymentsResellerSubscriptionV1ExtendSubscriptionResponse": {
+            "description": "Response that contains the timestamps after the extension.",
             "id": "GoogleCloudPaymentsResellerSubscriptionV1ExtendSubscriptionResponse",
             "properties": {
                 "cycleEndTime": {
@@ -620,7 +624,7 @@
             "properties": {
                 "duration": {
                     "$ref": "GoogleCloudPaymentsResellerSubscriptionV1Duration",
-                    "description": "Specifies the period of access the subscription should grant."
+                    "description": "Required. Specifies the period of access the subscription should grant."
                 },
                 "partnerUserToken": {
                     "description": "Required. Identifier of the end-user in partner’s system.",
@@ -630,10 +634,11 @@
             "type": "object"
         },
         "GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsRequest": {
+            "description": "Request to find eligible promotions for the current user.",
             "id": "GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsRequest",
             "properties": {
                 "filter": {
-                    "description": "Optional. Specifies the filters for the promotion results. The syntax is defined in https://google.aip.dev/160 with the following caveats: - Only the following features are supported: - Logical operator `AND` - Comparison operator `=` (no wildcards `*`) - Traversal operator `.` - Has operator `:` (no wildcards `*`) - Only the following fields are supported: - `applicableProducts` - `regionCodes` - `youtubePayload.partnerEligibilityId` - `youtubePayload.postalCode` - Unless explicitly mentioned above, other features are not supported. Example: `applicableProducts:partners/partner1/products/product1 AND regionCodes:US AND youtubePayload.postalCode=94043 AND youtubePayload.partnerEligibilityId=eligibility-id`",
+                    "description": "Optional. Specifies the filters for the promotion results. The syntax is defined in https://google.aip.dev/160 with the following caveats: 1. Only the following features are supported: - Logical operator `AND` - Comparison operator `=` (no wildcards `*`) - Traversal operator `.` - Has operator `:` (no wildcards `*`) 2. Only the following fields are supported: - `applicableProducts` - `regionCodes` - `youtubePayload.partnerEligibilityId` - `youtubePayload.postalCode` 3. Unless explicitly mentioned above, other features are not supported. Example: `applicableProducts:partners/partner1/products/product1 AND regionCodes:US AND youtubePayload.postalCode=94043 AND youtubePayload.partnerEligibilityId=eligibility-id`",
                     "type": "string"
                 },
                 "pageSize": {
@@ -733,6 +738,7 @@
             "type": "object"
         },
         "GoogleCloudPaymentsResellerSubscriptionV1ListProductsResponse": {
+            "description": "Response that contains the products.",
             "id": "GoogleCloudPaymentsResellerSubscriptionV1ListProductsResponse",
             "properties": {
                 "nextPageToken": {
@@ -750,6 +756,7 @@
             "type": "object"
         },
         "GoogleCloudPaymentsResellerSubscriptionV1ListPromotionsResponse": {
+            "description": "Response that contains the promotions.",
             "id": "GoogleCloudPaymentsResellerSubscriptionV1ListPromotionsResponse",
             "properties": {
                 "nextPageToken": {
@@ -795,8 +802,7 @@
                     "description": "Optional. Details for a subscription line item with finite billing cycles. If unset, the line item will be charged indefinitely."
                 },
                 "name": {
-                    "description": "Output only. Response only. Resource name of the product. It will have the format of \"partners/{partner_id}/products/{product_id}\"",
-                    "readOnly": true,
+                    "description": "Identifier. Response only. Resource name of the product. It will have the format of \"partners/{partner_id}/products/{product_id}\"",
                     "type": "string"
                 },
                 "priceConfigs": {
@@ -916,8 +922,7 @@
                     "description": "Optional. Specifies the introductory pricing details when the promotion_type is PROMOTION_TYPE_INTRODUCTORY_PRICING."
                 },
                 "name": {
-                    "description": "Output only. Response only. Resource name of the subscription promotion. It will have the format of \"partners/{partner_id}/promotion/{promotion_id}\"",
-                    "readOnly": true,
+                    "description": "Identifier. Response only. Resource name of the subscription promotion. It will have the format of \"partners/{partner_id}/promotion/{promotion_id}\"",
                     "type": "string"
                 },
                 "promotionType": {
@@ -964,10 +969,11 @@
             "id": "GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails",
             "properties": {
                 "introductoryPricingSpecs": {
-                    "description": "Specifies the introductory pricing periods.",
+                    "description": "Output only. Specifies the introductory pricing periods.",
                     "items": {
                         "$ref": "GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec"
                     },
+                    "readOnly": true,
                     "type": "array"
                 }
             },
@@ -1020,7 +1026,7 @@
             "type": "object"
         },
         "GoogleCloudPaymentsResellerSubscriptionV1Subscription": {
-            "description": "A Subscription resource managed by 3P Partners.",
+            "description": "A subscription serves as a central billing entity between an external partner and Google. The underlying Google services rely on the subscription state to grant or revoke the user's service entitlement. It's important to note that the subscription state may not always perfectly align with the user's service entitlement. For example, some Google services may continue providing access to the user until the current billing cycle ends, even if the subscription has been immediately canceled. However, other services may not do the same. To fully understand the specific details, please consult the relevant contract or product policy.",
             "id": "GoogleCloudPaymentsResellerSubscriptionV1Subscription",
             "properties": {
                 "cancellationDetails": {
@@ -1059,7 +1065,7 @@
                     "type": "array"
                 },
                 "name": {
-                    "description": "Optional. Resource name of the subscription. It will have the format of \"partners/{partner_id}/subscriptions/{subscription_id}\". This is available for authorizeAddon, but otherwise is response only.",
+                    "description": "Identifier. Resource name of the subscription. It will have the format of \"partners/{partner_id}/subscriptions/{subscription_id}\". This is available for authorizeAddon, but otherwise is response only.",
                     "type": "string"
                 },
                 "partnerUserToken": {
@@ -1158,7 +1164,7 @@
             "id": "GoogleCloudPaymentsResellerSubscriptionV1SubscriptionCancellationDetails",
             "properties": {
                 "reason": {
-                    "description": "The reason of the cancellation.",
+                    "description": "Output only. The reason of the cancellation.",
                     "enum": [
                         "CANCELLATION_REASON_UNSPECIFIED",
                         "CANCELLATION_REASON_FRAUD",
@@ -1178,13 +1184,14 @@
                         "Buyer's remorse.",
                         "Accidential purchase.",
                         "Payment is past due.",
-                        "User account closed.",
+                        "Used for notification only, do not use in Cancel API. User account closed.",
                         "Used for notification only, do not use in Cancel API. Cancellation due to upgrade or downgrade.",
                         "Cancellation due to user delinquency",
-                        "Cancellation due to an unrecoverable system error.",
-                        "Cancellation by a system.",
+                        "Used for notification only, do not use in Cancel API. Cancellation due to an unrecoverable system error.",
+                        "Used for notification only, do not use in Cancel API. The subscription is cancelled by Google automatically since it is no longer valid.",
                         "Other reason."
                     ],
+                    "readOnly": true,
                     "type": "string"
                 }
             },
@@ -1312,7 +1319,8 @@
             "properties": {
                 "servicePeriod": {
                     "$ref": "GoogleCloudPaymentsResellerSubscriptionV1ServicePeriod",
-                    "description": "The service period of the ONE_TIME line item."
+                    "description": "Output only. The service period of the ONE_TIME line item.",
+                    "readOnly": true
                 }
             },
             "type": "object"
@@ -1411,6 +1419,22 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "partnerPlanType": {
+                    "description": "Optional. Specifies the plan type offered to the end user by the partner.",
+                    "enum": [
+                        "PARTNER_PLAN_TYPE_UNSPECIFIED",
+                        "PARTNER_PLAN_TYPE_STANDALONE",
+                        "PARTNER_PLAN_TYPE_HARD_BUNDLE",
+                        "PARTNER_PLAN_TYPE_SOFT_BUNDLE"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified. Should not use, reserved as an invalid value.",
+                        "This item is offered as a standalone product to the user.",
+                        "This item is bundled with another partner offering, the item is provisioned at purchase time.",
+                        "This item is bundled with another partner offering, the item is provisioned after puchase, when the user opts in this Google service."
+                    ],
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -1463,10 +1487,11 @@
             "id": "SubscriptionLineItemBundleDetails",
             "properties": {
                 "bundleElementDetails": {
-                    "description": "The details for each element in the hard bundle.",
+                    "description": "Output only. The details for each element in the hard bundle.",
                     "items": {
                         "$ref": "GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemBundleDetailsBundleElementDetails"
                     },
+                    "readOnly": true,
                     "type": "array"
                 }
             },

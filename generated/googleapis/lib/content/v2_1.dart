@@ -47,7 +47,6 @@
 /// - [ProductdeliverytimeResource]
 /// - [ProductsResource]
 /// - [ProductstatusesResource]
-///   - [ProductstatusesRepricingreportsResource]
 /// - [PromotionsResource]
 /// - [PubsubnotificationsettingsResource]
 /// - [QuotasResource]
@@ -55,8 +54,6 @@
 /// - [RegionalinventoryResource]
 /// - [RegionsResource]
 /// - [ReportsResource]
-/// - [RepricingrulesResource]
-///   - [RepricingrulesRepricingreportsResource]
 /// - [ReturnaddressResource]
 /// - [ReturnpolicyResource]
 /// - [ReturnpolicyonlineResource]
@@ -130,8 +127,6 @@ class ShoppingContentApi {
       RegionalinventoryResource(_requester);
   RegionsResource get regions => RegionsResource(_requester);
   ReportsResource get reports => ReportsResource(_requester);
-  RepricingrulesResource get repricingrules =>
-      RepricingrulesResource(_requester);
   ReturnaddressResource get returnaddress => ReturnaddressResource(_requester);
   ReturnpolicyResource get returnpolicy => ReturnpolicyResource(_requester);
   ReturnpolicyonlineResource get returnpolicyonline =>
@@ -3829,7 +3824,7 @@ class MerchantsupportResource {
   /// [languageCode] - Optional. The \[IETF
   /// BCP-47\](https://tools.ietf.org/html/bcp47) language code used to localize
   /// support content. If not set, the result will be in default language
-  /// ('en-US').
+  /// `en-US`.
   ///
   /// [timeZone] - Optional. The [IANA](https://www.iana.org/time-zones)
   /// timezone used to localize times in support content. For example
@@ -3891,7 +3886,7 @@ class MerchantsupportResource {
   /// [languageCode] - Optional. The \[IETF
   /// BCP-47\](https://tools.ietf.org/html/bcp47) language code used to localize
   /// support content. If not set, the result will be in default language
-  /// ('en-US').
+  /// `en-US`.
   ///
   /// [timeZone] - Optional. The [IANA](https://www.iana.org/time-zones)
   /// timezone used to localize times in support content. For example
@@ -6397,9 +6392,6 @@ class ProductsResource {
 class ProductstatusesResource {
   final commons.ApiRequester _requester;
 
-  ProductstatusesRepricingreportsResource get repricingreports =>
-      ProductstatusesRepricingreportsResource(_requester);
-
   ProductstatusesResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets the statuses of multiple products in a single request.
@@ -6533,88 +6525,6 @@ class ProductstatusesResource {
       queryParams: queryParams_,
     );
     return ProductstatusesListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-}
-
-class ProductstatusesRepricingreportsResource {
-  final commons.ApiRequester _requester;
-
-  ProductstatusesRepricingreportsResource(commons.ApiRequester client)
-      : _requester = client;
-
-  /// Lists the metrics report for a given Repricing product.
-  ///
-  /// Request parameters:
-  ///
-  /// [merchantId] - Required. Id of the merchant who owns the Repricing rule.
-  ///
-  /// [productId] - Required. Id of the Repricing product. Also known as the
-  /// [REST_ID](https://developers.google.com/shopping-content/reference/rest/v2.1/products#Product.FIELDS.id)
-  ///
-  /// [endDate] - Gets Repricing reports on and before this date in the
-  /// merchant's timezone. You can only retrieve data up to 7 days ago (default)
-  /// or earlier. Format is YYYY-MM-DD.
-  ///
-  /// [pageSize] - Maximum number of days of reports to return. There can be
-  /// more than one rule report returned per day. For example, if 3 rule types
-  /// got applied to the same product within a 24-hour period, then a page_size
-  /// of 1 will return 3 rule reports. The page size defaults to 50 and values
-  /// above 1000 are coerced to 1000. This service may return fewer days of
-  /// reports than this value, for example, if the time between your start and
-  /// end date is less than the page size.
-  ///
-  /// [pageToken] - Token (if provided) to retrieve the subsequent page. All
-  /// other parameters must match the original call that provided the page
-  /// token.
-  ///
-  /// [ruleId] - Id of the Repricing rule. If specified, only gets this rule's
-  /// reports.
-  ///
-  /// [startDate] - Gets Repricing reports on and after this date in the
-  /// merchant's timezone, up to one year ago. Do not use a start date later
-  /// than 7 days ago (default). Format is YYYY-MM-DD.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ListRepricingProductReportsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ListRepricingProductReportsResponse> list(
-    core.String merchantId,
-    core.String productId, {
-    core.String? endDate,
-    core.int? pageSize,
-    core.String? pageToken,
-    core.String? ruleId,
-    core.String? startDate,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (endDate != null) 'endDate': [endDate],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (ruleId != null) 'ruleId': [ruleId],
-      if (startDate != null) 'startDate': [startDate],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = commons.escapeVariable('$merchantId') +
-        '/productstatuses/' +
-        commons.escapeVariable('$productId') +
-        '/repricingreports';
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return ListRepricingProductReportsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -7340,7 +7250,7 @@ class ReportsResource {
 
   ReportsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Retrieves merchant performance mertrics matching the search query and
+  /// Retrieves merchant performance metrics matching the search query and
   /// optionally segmented by selected dimensions.
   ///
   /// [request] - The metadata request object.
@@ -7379,327 +7289,6 @@ class ReportsResource {
       queryParams: queryParams_,
     );
     return SearchResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-}
-
-class RepricingrulesResource {
-  final commons.ApiRequester _requester;
-
-  RepricingrulesRepricingreportsResource get repricingreports =>
-      RepricingrulesRepricingreportsResource(_requester);
-
-  RepricingrulesResource(commons.ApiRequester client) : _requester = client;
-
-  /// Creates a repricing rule for your Merchant Center account.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [merchantId] - Required. The id of the merchant who owns the repricing
-  /// rule.
-  ///
-  /// [ruleId] - Required. The id of the rule to create.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [RepricingRule].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<RepricingRule> create(
-    RepricingRule request,
-    core.String merchantId, {
-    core.String? ruleId,
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (ruleId != null) 'ruleId': [ruleId],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = commons.escapeVariable('$merchantId') + '/repricingrules';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return RepricingRule.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Deletes a repricing rule in your Merchant Center account.
-  ///
-  /// Request parameters:
-  ///
-  /// [merchantId] - Required. The id of the merchant who owns the repricing
-  /// rule.
-  ///
-  /// [ruleId] - Required. The id of the rule to Delete.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<void> delete(
-    core.String merchantId,
-    core.String ruleId, {
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = commons.escapeVariable('$merchantId') +
-        '/repricingrules/' +
-        commons.escapeVariable('$ruleId');
-
-    await _requester.request(
-      url_,
-      'DELETE',
-      queryParams: queryParams_,
-      downloadOptions: null,
-    );
-  }
-
-  /// Retrieves a repricing rule from your Merchant Center account.
-  ///
-  /// Request parameters:
-  ///
-  /// [merchantId] - Required. The id of the merchant who owns the repricing
-  /// rule.
-  ///
-  /// [ruleId] - Required. The id of the rule to retrieve.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [RepricingRule].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<RepricingRule> get(
-    core.String merchantId,
-    core.String ruleId, {
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = commons.escapeVariable('$merchantId') +
-        '/repricingrules/' +
-        commons.escapeVariable('$ruleId');
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return RepricingRule.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Lists the repricing rules in your Merchant Center account.
-  ///
-  /// Request parameters:
-  ///
-  /// [merchantId] - Required. The id of the merchant who owns the repricing
-  /// rule.
-  ///
-  /// [countryCode] -
-  /// [CLDR country code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml)
-  /// (for example, "US"), used as a filter on repricing rules.
-  ///
-  /// [languageCode] - The two-letter ISO 639-1 language code associated with
-  /// the repricing rule, used as a filter.
-  ///
-  /// [pageSize] - The maximum number of repricing rules to return. The service
-  /// may return fewer than this value. If unspecified, at most 50 rules will be
-  /// returned. The maximum value is 1000; values above 1000 will be coerced to
-  /// 1000.
-  ///
-  /// [pageToken] - A page token, received from a previous `ListRepricingRules`
-  /// call. Provide this to retrieve the subsequent page. When paginating, all
-  /// other parameters provided to `ListRepricingRules` must match the call that
-  /// provided the page token.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ListRepricingRulesResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ListRepricingRulesResponse> list(
-    core.String merchantId, {
-    core.String? countryCode,
-    core.String? languageCode,
-    core.int? pageSize,
-    core.String? pageToken,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (countryCode != null) 'countryCode': [countryCode],
-      if (languageCode != null) 'languageCode': [languageCode],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = commons.escapeVariable('$merchantId') + '/repricingrules';
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return ListRepricingRulesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Updates a repricing rule in your Merchant Center account.
-  ///
-  /// All mutable fields will be overwritten in each update request. In each
-  /// update, you must provide all required mutable fields, or an error will be
-  /// thrown. If you do not provide an optional field in the update request, if
-  /// that field currently exists, it will be deleted from the rule.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [merchantId] - Required. The id of the merchant who owns the repricing
-  /// rule.
-  ///
-  /// [ruleId] - Required. The id of the rule to update.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [RepricingRule].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<RepricingRule> patch(
-    RepricingRule request,
-    core.String merchantId,
-    core.String ruleId, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = commons.escapeVariable('$merchantId') +
-        '/repricingrules/' +
-        commons.escapeVariable('$ruleId');
-
-    final response_ = await _requester.request(
-      url_,
-      'PATCH',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return RepricingRule.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-}
-
-class RepricingrulesRepricingreportsResource {
-  final commons.ApiRequester _requester;
-
-  RepricingrulesRepricingreportsResource(commons.ApiRequester client)
-      : _requester = client;
-
-  /// *Deprecated*: New merchants can't start using this service.
-  ///
-  /// Lists the metrics report for a given Repricing rule.
-  ///
-  /// Request parameters:
-  ///
-  /// [merchantId] - Required. Id of the merchant who owns the Repricing rule.
-  ///
-  /// [ruleId] - Required. Id of the Repricing rule.
-  ///
-  /// [endDate] - Gets Repricing reports on and before this date in the
-  /// merchant's timezone. You can only retrieve data up to 7 days ago (default)
-  /// or earlier. Format: YYYY-MM-DD.
-  ///
-  /// [pageSize] - Maximum number of daily reports to return. Each report
-  /// includes data from a single 24-hour period. The page size defaults to 50
-  /// and values above 1000 are coerced to 1000. This service may return fewer
-  /// days than this value, for example, if the time between your start and end
-  /// date is less than page size.
-  ///
-  /// [pageToken] - Token (if provided) to retrieve the subsequent page. All
-  /// other parameters must match the original call that provided the page
-  /// token.
-  ///
-  /// [startDate] - Gets Repricing reports on and after this date in the
-  /// merchant's timezone, up to one year ago. Do not use a start date later
-  /// than 7 days ago (default). Format: YYYY-MM-DD.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ListRepricingRuleReportsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ListRepricingRuleReportsResponse> list(
-    core.String merchantId,
-    core.String ruleId, {
-    core.String? endDate,
-    core.int? pageSize,
-    core.String? pageToken,
-    core.String? startDate,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (endDate != null) 'endDate': [endDate],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if (startDate != null) 'startDate': [startDate],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = commons.escapeVariable('$merchantId') +
-        '/repricingrules/' +
-        commons.escapeVariable('$ruleId') +
-        '/repricingreports';
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return ListRepricingRuleReportsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -10891,7 +10480,7 @@ class AccountsCustomBatchRequestEntryLinkRequest {
   /// Type of the link between the two accounts.
   ///
   /// Acceptable values are: - "`channelPartner`" - "`eCommercePlatform`" -
-  /// "`paymentServiceProvider`"
+  /// "`paymentServiceProvider`" - "`localProductManager`"
   core.String? linkType;
 
   /// The ID of the linked account.
@@ -10901,7 +10490,7 @@ class AccountsCustomBatchRequestEntryLinkRequest {
   ///
   /// Acceptable values are: - "`shoppingAdsProductManagement`" -
   /// "`shoppingActionsProductManagement`" - "`shoppingActionsOrderManagement`"
-  /// - "`paymentProcessing`"
+  /// - "`paymentProcessing`" - "`localProductManagement`"
   core.List<core.String>? services;
 
   AccountsCustomBatchRequestEntryLinkRequest({
@@ -11897,7 +11486,7 @@ class Amount {
 class AttributionSettings {
   /// Lookback windows (in days) used for attribution in this source.
   ///
-  /// Supported values are 7, 30, 60, 90.
+  /// Supported values are 7, 30, 40.
   ///
   /// Required.
   core.int? attributionLookbackWindowInDays;
@@ -12698,6 +12287,8 @@ class CheckoutSettings {
   /// - "INACTIVE" : Merchant has not enrolled into the feature.
   /// - "ENROLLED" : Merchant has enrolled into the feature by providing either
   /// an account level URL or checkout URLs as part of their feed.
+  /// - "OPT_OUT" : Merchant has previously enrolled but opted out of the
+  /// feature.
   core.String? effectiveEnrollmentState;
 
   /// The effective value of review state for a given merchant ID.
@@ -12734,6 +12325,8 @@ class CheckoutSettings {
   /// - "INACTIVE" : Merchant has not enrolled into the feature.
   /// - "ENROLLED" : Merchant has enrolled into the feature by providing either
   /// an account level URL or checkout URLs as part of their feed.
+  /// - "OPT_OUT" : Merchant has previously enrolled but opted out of the
+  /// feature.
   core.String? enrollmentState;
 
   /// The ID of the account.
@@ -15296,6 +14889,8 @@ class ExternalAction {
   /// account.
   /// - "LEGAL_APPEAL_IN_HELP_CENTER" : Redirect to the form in Help Center
   /// where the merchant can request a legal appeal for the issue.
+  /// - "VERIFY_IDENTITY_IN_MERCHANT_CENTER" : Redirect to Merchant Center where
+  /// the merchant can perform identity verification.
   core.String? type;
 
   /// URL to external system, for example Merchant Center, where the merchant
@@ -15903,54 +15498,6 @@ class HolidaysHoliday {
           'deliveryGuaranteeHour': deliveryGuaranteeHour!,
         if (id != null) 'id': id!,
         if (type != null) 'type': type!,
-      };
-}
-
-/// Map of inapplicability details.
-class InapplicabilityDetails {
-  /// Count of this inapplicable reason code.
-  core.String? inapplicableCount;
-
-  /// Reason code this rule was not applicable.
-  /// Possible string values are:
-  /// - "INAPPLICABLE_REASON_UNSPECIFIED" : Default value. Should not be used.
-  /// - "CANNOT_BEAT_BUYBOX_WINNER" : The rule set for this product cannot beat
-  /// the buybox winner.
-  /// - "ALREADY_WINNING_BUYBOX" : This product can already win the buybox
-  /// without rule.
-  /// - "TRIUMPHED_OVER_BY_SAME_TYPE_RULE" : Another rule of the same type takes
-  /// precedence over this one.
-  /// - "TRIUMPHED_OVER_BY_OTHER_RULE_ON_OFFER" : Another rule of a different
-  /// type takes precedence over this one.
-  /// - "RESTRICTIONS_NOT_MET" : The rule restrictions are not met. For example,
-  /// this may be the case if the calculated rule price is lower than floor
-  /// price in the restriction.
-  /// - "UNCATEGORIZED" : The reason is not categorized to any known reason.
-  /// - "INVALID_AUTO_PRICE_MIN" : The auto_pricing_min_price is invalid. For
-  /// example, it is missing or \< 0.
-  /// - "INVALID_FLOOR_CONFIG" : The floor defined in the rule is invalid. For
-  /// example, it has the wrong sign which results in a floor \< 0.
-  core.String? inapplicableReason;
-
-  InapplicabilityDetails({
-    this.inapplicableCount,
-    this.inapplicableReason,
-  });
-
-  InapplicabilityDetails.fromJson(core.Map json_)
-      : this(
-          inapplicableCount: json_.containsKey('inapplicableCount')
-              ? json_['inapplicableCount'] as core.String
-              : null,
-          inapplicableReason: json_.containsKey('inapplicableReason')
-              ? json_['inapplicableReason'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (inapplicableCount != null) 'inapplicableCount': inapplicableCount!,
-        if (inapplicableReason != null)
-          'inapplicableReason': inapplicableReason!,
       };
 }
 
@@ -17229,110 +16776,6 @@ class ListRegionsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (regions != null) 'regions': regions!,
-      };
-}
-
-/// Response message for the ListRepricingProductReports method.
-class ListRepricingProductReportsResponse {
-  /// A token for retrieving the next page.
-  ///
-  /// Its absence means there is no subsequent page.
-  core.String? nextPageToken;
-
-  /// Periodic reports for the given Repricing product.
-  core.List<RepricingProductReport>? repricingProductReports;
-
-  ListRepricingProductReportsResponse({
-    this.nextPageToken,
-    this.repricingProductReports,
-  });
-
-  ListRepricingProductReportsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
-          repricingProductReports: json_.containsKey('repricingProductReports')
-              ? (json_['repricingProductReports'] as core.List)
-                  .map((value) => RepricingProductReport.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (repricingProductReports != null)
-          'repricingProductReports': repricingProductReports!,
-      };
-}
-
-/// Response message for the ListRepricingRuleReports method.
-class ListRepricingRuleReportsResponse {
-  /// A token for retrieving the next page.
-  ///
-  /// Its absence means there is no subsequent page.
-  core.String? nextPageToken;
-
-  /// Daily reports for the given Repricing rule.
-  core.List<RepricingRuleReport>? repricingRuleReports;
-
-  ListRepricingRuleReportsResponse({
-    this.nextPageToken,
-    this.repricingRuleReports,
-  });
-
-  ListRepricingRuleReportsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
-          repricingRuleReports: json_.containsKey('repricingRuleReports')
-              ? (json_['repricingRuleReports'] as core.List)
-                  .map((value) => RepricingRuleReport.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (repricingRuleReports != null)
-          'repricingRuleReports': repricingRuleReports!,
-      };
-}
-
-/// Response message for the `ListRepricingRules` method.
-class ListRepricingRulesResponse {
-  /// A token, which can be sent as `page_token` to retrieve the next page.
-  ///
-  /// If this field is omitted, there are no subsequent pages.
-  core.String? nextPageToken;
-
-  /// The rules from the specified merchant.
-  core.List<RepricingRule>? repricingRules;
-
-  ListRepricingRulesResponse({
-    this.nextPageToken,
-    this.repricingRules,
-  });
-
-  ListRepricingRulesResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_.containsKey('nextPageToken')
-              ? json_['nextPageToken'] as core.String
-              : null,
-          repricingRules: json_.containsKey('repricingRules')
-              ? (json_['repricingRules'] as core.List)
-                  .map((value) => RepricingRule.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (repricingRules != null) 'repricingRules': repricingRules!,
       };
 }
 
@@ -24491,6 +23934,42 @@ class PosStore {
   /// Value: the fixed string "`content#posStore`"
   core.String? kind;
 
+  /// The matching status of POS store and Google Business Profile store.
+  ///
+  /// Possible values are: - "`matched`": The POS store is successfully matched
+  /// with the Google Business Profile store. - "`failed`": The POS store is not
+  /// matched with the Google Business Profile store. See matching_status_hint
+  /// for further details. Note that there is up to 48 hours propagation delay
+  /// for changes in Merchant Center (e.g. creation of new account, accounts
+  /// linking) and Google Business Profile (e.g. store address update) which may
+  /// affect the matching status. In such cases, after a delay call
+  /// [pos.list](https://developers.google.com/shopping-content/reference/rest/v2.1/pos/list)
+  /// to retrieve the updated matching status.
+  ///
+  /// Output only.
+  core.String? matchingStatus;
+
+  /// The hint of why the matching has failed.
+  ///
+  /// This is only set when matching_status=failed. Possible values are: -
+  /// "`linked-store-not-found`": There aren't any Google Business Profile
+  /// stores available for matching. Connect your Merchant Center account with
+  /// the Google Business Profile account. Or add a new Google Business Profile
+  /// store corresponding to the POS store. - "`store-match-not-found`": The
+  /// provided POS store couldn't be matched to any of the connected Google
+  /// Business Profile stores. Merchant Center account is connected correctly
+  /// and stores are available on Google Business Profile, but POS store
+  /// location address does not match with Google Business Profile stores'
+  /// addresses. Update POS store address or Google Business Profile store
+  /// address to match correctly. - "`store-match-unverified`": The provided POS
+  /// store couldn't be matched to any of the connected Google Business Profile
+  /// stores, as the matched Google Business Profile store is unverified. Go
+  /// through the Google Business Profile verification process to match
+  /// correctly.
+  ///
+  /// Output only.
+  core.String? matchingStatusHint;
+
   /// The store phone number.
   core.String? phoneNumber;
 
@@ -24516,6 +23995,8 @@ class PosStore {
   PosStore({
     this.gcidCategory,
     this.kind,
+    this.matchingStatus,
+    this.matchingStatusHint,
     this.phoneNumber,
     this.placeId,
     this.storeAddress,
@@ -24532,6 +24013,12 @@ class PosStore {
                   .toList()
               : null,
           kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          matchingStatus: json_.containsKey('matchingStatus')
+              ? json_['matchingStatus'] as core.String
+              : null,
+          matchingStatusHint: json_.containsKey('matchingStatusHint')
+              ? json_['matchingStatusHint'] as core.String
+              : null,
           phoneNumber: json_.containsKey('phoneNumber')
               ? json_['phoneNumber'] as core.String
               : null,
@@ -24555,6 +24042,9 @@ class PosStore {
   core.Map<core.String, core.dynamic> toJson() => {
         if (gcidCategory != null) 'gcidCategory': gcidCategory!,
         if (kind != null) 'kind': kind!,
+        if (matchingStatus != null) 'matchingStatus': matchingStatus!,
+        if (matchingStatusHint != null)
+          'matchingStatusHint': matchingStatusHint!,
         if (phoneNumber != null) 'phoneNumber': phoneNumber!,
         if (placeId != null) 'placeId': placeId!,
         if (storeAddress != null) 'storeAddress': storeAddress!,
@@ -24648,10 +24138,10 @@ class PostalCodeRange {
       };
 }
 
-typedef Price = $Shared06;
+typedef Price = $Shared07;
 
 /// The price represented as a number and currency.
-typedef PriceAmount = $Shared06;
+typedef PriceAmount = $Shared07;
 
 /// Price competitiveness fields requested by the merchant in the query.
 ///
@@ -27984,7 +27474,7 @@ class Promotion {
   /// channel:contentLanguage:targetCountry:promotionId The `channel` field has
   /// a value of `"online"`, `"in_store"`, or `"online_in_store"`.
   ///
-  /// Required. Output only.
+  /// Output only.
   core.String? id;
 
   /// Product filter by item group ID for the promotion.
@@ -29718,810 +29208,6 @@ class ReportRow {
       };
 }
 
-/// Resource that represents a daily Repricing product report.
-///
-/// Each report contains stats for a single type of Repricing rule for a single
-/// product on a given day. If there are multiple rules of the same type for the
-/// product on that day, the report lists all the rules by rule ids, combines
-/// the stats, and paginates the results by date. To retrieve the stats of a
-/// particular rule, provide the rule_id in the request.
-class RepricingProductReport {
-  /// Total count of Repricer applications.
-  ///
-  /// This value captures how many times the rule of this type was applied to
-  /// this product during this reporting period.
-  core.String? applicationCount;
-
-  /// Stats specific to buybox winning rules for product report (deprecated).
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  RepricingProductReportBuyboxWinningProductStats? buyboxWinningProductStats;
-
-  /// Date of the stats in this report.
-  ///
-  /// The report starts and ends according to the merchant's timezone.
-  Date? date;
-
-  /// Maximum displayed price after repriced during this reporting period.
-  PriceAmount? highWatermark;
-
-  /// List of all reasons the rule did not apply to the product during the
-  /// specified reporting period.
-  core.List<InapplicabilityDetails>? inapplicabilityDetails;
-
-  /// Minimum displayed price after repriced during this reporting period.
-  PriceAmount? lowWatermark;
-
-  /// Total unit count of impacted products ordered while the rule was active on
-  /// the date of the report.
-  ///
-  /// This count includes all orders that were started while the rule was
-  /// active, even if the rule was no longer active when the order was
-  /// completed.
-  core.int? orderItemCount;
-
-  /// Ids of the Repricing rule for this report.
-  core.List<core.String>? ruleIds;
-
-  /// Total GMV generated by impacted products while the rule was active on the
-  /// date of the report.
-  ///
-  /// This value includes all orders that were started while the rule was
-  /// active, even if the rule was no longer active when the order was
-  /// completed.
-  PriceAmount? totalGmv;
-
-  /// Type of the rule.
-  /// Possible string values are:
-  /// - "REPRICING_RULE_TYPE_UNSPECIFIED" : Unused.
-  /// - "TYPE_STATS_BASED" : Statistical measurement based rules among Google SA
-  /// merchants. If this rule is chosen, repricer will adjust the offer price
-  /// based on statistical metrics (currently only min is available) among other
-  /// merchants who sell the same product. Details need to be provdided in the
-  /// RuleDefinition.
-  /// - "TYPE_COGS_BASED" : Cost of goods sale based rule. Repricer will adjust
-  /// the offer price based on the offer's sale cost which is provided by the
-  /// merchant.
-  /// - "TYPE_SALES_VOLUME_BASED" : Sales volume based rule. Repricer will
-  /// adjust the offer price based on the offer's sales volume in the past
-  /// period of time defined within the rule.
-  /// - "TYPE_COMPETITIVE_PRICE" : Competitive price rule. Repricer will adjust
-  /// the offer price based on the min price from a list of unnamed big
-  /// competitors.
-  core.String? type;
-
-  RepricingProductReport({
-    this.applicationCount,
-    this.buyboxWinningProductStats,
-    this.date,
-    this.highWatermark,
-    this.inapplicabilityDetails,
-    this.lowWatermark,
-    this.orderItemCount,
-    this.ruleIds,
-    this.totalGmv,
-    this.type,
-  });
-
-  RepricingProductReport.fromJson(core.Map json_)
-      : this(
-          applicationCount: json_.containsKey('applicationCount')
-              ? json_['applicationCount'] as core.String
-              : null,
-          buyboxWinningProductStats:
-              json_.containsKey('buyboxWinningProductStats')
-                  ? RepricingProductReportBuyboxWinningProductStats.fromJson(
-                      json_['buyboxWinningProductStats']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          date: json_.containsKey('date')
-              ? Date.fromJson(
-                  json_['date'] as core.Map<core.String, core.dynamic>)
-              : null,
-          highWatermark: json_.containsKey('highWatermark')
-              ? PriceAmount.fromJson(
-                  json_['highWatermark'] as core.Map<core.String, core.dynamic>)
-              : null,
-          inapplicabilityDetails: json_.containsKey('inapplicabilityDetails')
-              ? (json_['inapplicabilityDetails'] as core.List)
-                  .map((value) => InapplicabilityDetails.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          lowWatermark: json_.containsKey('lowWatermark')
-              ? PriceAmount.fromJson(
-                  json_['lowWatermark'] as core.Map<core.String, core.dynamic>)
-              : null,
-          orderItemCount: json_.containsKey('orderItemCount')
-              ? json_['orderItemCount'] as core.int
-              : null,
-          ruleIds: json_.containsKey('ruleIds')
-              ? (json_['ruleIds'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          totalGmv: json_.containsKey('totalGmv')
-              ? PriceAmount.fromJson(
-                  json_['totalGmv'] as core.Map<core.String, core.dynamic>)
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (applicationCount != null) 'applicationCount': applicationCount!,
-        if (buyboxWinningProductStats != null)
-          'buyboxWinningProductStats': buyboxWinningProductStats!,
-        if (date != null) 'date': date!,
-        if (highWatermark != null) 'highWatermark': highWatermark!,
-        if (inapplicabilityDetails != null)
-          'inapplicabilityDetails': inapplicabilityDetails!,
-        if (lowWatermark != null) 'lowWatermark': lowWatermark!,
-        if (orderItemCount != null) 'orderItemCount': orderItemCount!,
-        if (ruleIds != null) 'ruleIds': ruleIds!,
-        if (totalGmv != null) 'totalGmv': totalGmv!,
-        if (type != null) 'type': type!,
-      };
-}
-
-/// Stats specific to buybox winning rules for product report.
-class RepricingProductReportBuyboxWinningProductStats {
-  /// Number of times this product won the buybox with these rules during this
-  /// time period.
-  core.int? buyboxWinsCount;
-
-  RepricingProductReportBuyboxWinningProductStats({
-    this.buyboxWinsCount,
-  });
-
-  RepricingProductReportBuyboxWinningProductStats.fromJson(core.Map json_)
-      : this(
-          buyboxWinsCount: json_.containsKey('buyboxWinsCount')
-              ? json_['buyboxWinsCount'] as core.int
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (buyboxWinsCount != null) 'buyboxWinsCount': buyboxWinsCount!,
-      };
-}
-
-/// *Deprecated*: New merchants can't start using this resource.
-///
-/// Represents a repricing rule. A repricing rule is used by shopping serving to
-/// adjust transactable offer prices if conditions are met.
-class RepricingRule {
-  /// The rule definition for TYPE_COGS_BASED.
-  ///
-  /// Required when the rule type is TYPE_COGS_BASED.
-  RepricingRuleCostOfGoodsSaleRule? cogsBasedRule;
-
-  /// [CLDR country code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml)
-  /// (for example, "US").
-  ///
-  /// Required. Immutable.
-  core.String? countryCode;
-
-  /// Time period when the rule should take effect.
-  ///
-  /// Required.
-  RepricingRuleEffectiveTime? effectiveTimePeriod;
-
-  /// Match criteria for the eligible offers.
-  ///
-  /// Required.
-  RepricingRuleEligibleOfferMatcher? eligibleOfferMatcher;
-
-  /// The two-letter ISO 639-1 language code associated with the repricing rule.
-  ///
-  /// Required. Immutable.
-  core.String? languageCode;
-
-  /// Merchant that owns the repricing rule.
-  ///
-  /// Output only. Immutable.
-  core.String? merchantId;
-
-  /// Represents whether a rule is paused.
-  ///
-  /// A paused rule will behave like a non-paused rule within CRUD operations,
-  /// with the major difference that a paused rule will not be evaluated and
-  /// will have no effect on offers.
-  core.bool? paused;
-
-  /// Restriction of the rule appliance.
-  ///
-  /// Required.
-  RepricingRuleRestriction? restriction;
-
-  /// The ID to uniquely identify each repricing rule.
-  ///
-  /// Output only. Immutable.
-  core.String? ruleId;
-
-  /// The rule definition for TYPE_STATS_BASED.
-  ///
-  /// Required when the rule type is TYPE_STATS_BASED.
-  RepricingRuleStatsBasedRule? statsBasedRule;
-
-  /// The title for the rule.
-  core.String? title;
-
-  /// The type of the rule.
-  ///
-  /// Required. Immutable.
-  /// Possible string values are:
-  /// - "REPRICING_RULE_TYPE_UNSPECIFIED" : Unused.
-  /// - "TYPE_STATS_BASED" : Statistical measurement based rules among Google SA
-  /// merchants. If this rule is chosen, repricer will adjust the offer price
-  /// based on statistical metrics (currently only min is available) among other
-  /// merchants who sell the same product. Details need to be provdided in the
-  /// RuleDefinition.
-  /// - "TYPE_COGS_BASED" : Cost of goods sale based rule. Repricer will adjust
-  /// the offer price based on the offer's sale cost which is provided by the
-  /// merchant.
-  /// - "TYPE_SALES_VOLUME_BASED" : Sales volume based rule. Repricer will
-  /// adjust the offer price based on the offer's sales volume in the past
-  /// period of time defined within the rule.
-  /// - "TYPE_COMPETITIVE_PRICE" : Competitive price rule. Repricer will adjust
-  /// the offer price based on the min price from a list of unnamed big
-  /// competitors.
-  core.String? type;
-
-  RepricingRule({
-    this.cogsBasedRule,
-    this.countryCode,
-    this.effectiveTimePeriod,
-    this.eligibleOfferMatcher,
-    this.languageCode,
-    this.merchantId,
-    this.paused,
-    this.restriction,
-    this.ruleId,
-    this.statsBasedRule,
-    this.title,
-    this.type,
-  });
-
-  RepricingRule.fromJson(core.Map json_)
-      : this(
-          cogsBasedRule: json_.containsKey('cogsBasedRule')
-              ? RepricingRuleCostOfGoodsSaleRule.fromJson(
-                  json_['cogsBasedRule'] as core.Map<core.String, core.dynamic>)
-              : null,
-          countryCode: json_.containsKey('countryCode')
-              ? json_['countryCode'] as core.String
-              : null,
-          effectiveTimePeriod: json_.containsKey('effectiveTimePeriod')
-              ? RepricingRuleEffectiveTime.fromJson(json_['effectiveTimePeriod']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          eligibleOfferMatcher: json_.containsKey('eligibleOfferMatcher')
-              ? RepricingRuleEligibleOfferMatcher.fromJson(
-                  json_['eligibleOfferMatcher']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          languageCode: json_.containsKey('languageCode')
-              ? json_['languageCode'] as core.String
-              : null,
-          merchantId: json_.containsKey('merchantId')
-              ? json_['merchantId'] as core.String
-              : null,
-          paused:
-              json_.containsKey('paused') ? json_['paused'] as core.bool : null,
-          restriction: json_.containsKey('restriction')
-              ? RepricingRuleRestriction.fromJson(
-                  json_['restriction'] as core.Map<core.String, core.dynamic>)
-              : null,
-          ruleId: json_.containsKey('ruleId')
-              ? json_['ruleId'] as core.String
-              : null,
-          statsBasedRule: json_.containsKey('statsBasedRule')
-              ? RepricingRuleStatsBasedRule.fromJson(json_['statsBasedRule']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          title:
-              json_.containsKey('title') ? json_['title'] as core.String : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (cogsBasedRule != null) 'cogsBasedRule': cogsBasedRule!,
-        if (countryCode != null) 'countryCode': countryCode!,
-        if (effectiveTimePeriod != null)
-          'effectiveTimePeriod': effectiveTimePeriod!,
-        if (eligibleOfferMatcher != null)
-          'eligibleOfferMatcher': eligibleOfferMatcher!,
-        if (languageCode != null) 'languageCode': languageCode!,
-        if (merchantId != null) 'merchantId': merchantId!,
-        if (paused != null) 'paused': paused!,
-        if (restriction != null) 'restriction': restriction!,
-        if (ruleId != null) 'ruleId': ruleId!,
-        if (statsBasedRule != null) 'statsBasedRule': statsBasedRule!,
-        if (title != null) 'title': title!,
-        if (type != null) 'type': type!,
-      };
-}
-
-/// A repricing rule that changes the sale price based on cost of goods sale.
-class RepricingRuleCostOfGoodsSaleRule {
-  /// The percent change against the COGS.
-  ///
-  /// Ex: 20 would mean to set the adjusted price 1.2X of the COGS data.
-  core.int? percentageDelta;
-
-  /// The price delta against the COGS.
-  ///
-  /// For example, 2 means $2 more of the COGS.
-  core.String? priceDelta;
-
-  RepricingRuleCostOfGoodsSaleRule({
-    this.percentageDelta,
-    this.priceDelta,
-  });
-
-  RepricingRuleCostOfGoodsSaleRule.fromJson(core.Map json_)
-      : this(
-          percentageDelta: json_.containsKey('percentageDelta')
-              ? json_['percentageDelta'] as core.int
-              : null,
-          priceDelta: json_.containsKey('priceDelta')
-              ? json_['priceDelta'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (percentageDelta != null) 'percentageDelta': percentageDelta!,
-        if (priceDelta != null) 'priceDelta': priceDelta!,
-      };
-}
-
-class RepricingRuleEffectiveTime {
-  /// A list of fixed time periods combined with OR.
-  ///
-  /// The maximum number of entries is limited to 5.
-  core.List<RepricingRuleEffectiveTimeFixedTimePeriod>? fixedTimePeriods;
-
-  RepricingRuleEffectiveTime({
-    this.fixedTimePeriods,
-  });
-
-  RepricingRuleEffectiveTime.fromJson(core.Map json_)
-      : this(
-          fixedTimePeriods: json_.containsKey('fixedTimePeriods')
-              ? (json_['fixedTimePeriods'] as core.List)
-                  .map((value) =>
-                      RepricingRuleEffectiveTimeFixedTimePeriod.fromJson(
-                          value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (fixedTimePeriods != null) 'fixedTimePeriods': fixedTimePeriods!,
-      };
-}
-
-/// Definition of a fixed time period.
-class RepricingRuleEffectiveTimeFixedTimePeriod {
-  /// The end time (exclusive) of the period.
-  ///
-  /// It can only be hour granularity.
-  core.String? endTime;
-
-  /// The start time (inclusive) of the period.
-  ///
-  /// It can only be hour granularity.
-  core.String? startTime;
-
-  RepricingRuleEffectiveTimeFixedTimePeriod({
-    this.endTime,
-    this.startTime,
-  });
-
-  RepricingRuleEffectiveTimeFixedTimePeriod.fromJson(core.Map json_)
-      : this(
-          endTime: json_.containsKey('endTime')
-              ? json_['endTime'] as core.String
-              : null,
-          startTime: json_.containsKey('startTime')
-              ? json_['startTime'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (endTime != null) 'endTime': endTime!,
-        if (startTime != null) 'startTime': startTime!,
-      };
-}
-
-/// Matcher that specifies eligible offers.
-///
-/// When the USE_FEED_ATTRIBUTE option is selected, only the repricing_rule_id
-/// attribute on the product feed is used to specify offer-rule mapping. When
-/// the CUSTOM_FILTER option is selected, only the *_matcher fields are used to
-/// filter the offers for offer-rule mapping. If the CUSTOM_FILTER option is
-/// selected, an offer needs to satisfy each custom filter matcher to be
-/// eligible for a rule. Size limit: the sum of the number of entries in all the
-/// matchers should not exceed 20. For example, there can be 15 product ids and
-/// 5 brands, but not 10 product ids and 11 brands.
-class RepricingRuleEligibleOfferMatcher {
-  /// Filter by the brand.
-  RepricingRuleEligibleOfferMatcherStringMatcher? brandMatcher;
-
-  /// Filter by the item group id.
-  RepricingRuleEligibleOfferMatcherStringMatcher? itemGroupIdMatcher;
-
-  /// Determines whether to use the custom matchers or the product feed
-  /// attribute "repricing_rule_id" to specify offer-rule mapping.
-  /// Possible string values are:
-  /// - "MATCHER_OPTION_UNSPECIFIED" : Unused.
-  /// - "MATCHER_OPTION_CUSTOM_FILTER" : Use custom filters.
-  /// - "MATCHER_OPTION_USE_FEED_ATTRIBUTE" : Use repricing_rule_id feed
-  /// attribute on the product resource to specify offer-rule mapping.
-  /// - "MATCHER_OPTION_ALL_PRODUCTS" : Matching all products.
-  core.String? matcherOption;
-
-  /// Filter by the offer id.
-  RepricingRuleEligibleOfferMatcherStringMatcher? offerIdMatcher;
-
-  /// When true, the rule won't be applied to offers with active promotions.
-  core.bool? skipWhenOnPromotion;
-
-  RepricingRuleEligibleOfferMatcher({
-    this.brandMatcher,
-    this.itemGroupIdMatcher,
-    this.matcherOption,
-    this.offerIdMatcher,
-    this.skipWhenOnPromotion,
-  });
-
-  RepricingRuleEligibleOfferMatcher.fromJson(core.Map json_)
-      : this(
-          brandMatcher: json_.containsKey('brandMatcher')
-              ? RepricingRuleEligibleOfferMatcherStringMatcher.fromJson(
-                  json_['brandMatcher'] as core.Map<core.String, core.dynamic>)
-              : null,
-          itemGroupIdMatcher: json_.containsKey('itemGroupIdMatcher')
-              ? RepricingRuleEligibleOfferMatcherStringMatcher.fromJson(
-                  json_['itemGroupIdMatcher']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          matcherOption: json_.containsKey('matcherOption')
-              ? json_['matcherOption'] as core.String
-              : null,
-          offerIdMatcher: json_.containsKey('offerIdMatcher')
-              ? RepricingRuleEligibleOfferMatcherStringMatcher.fromJson(
-                  json_['offerIdMatcher']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          skipWhenOnPromotion: json_.containsKey('skipWhenOnPromotion')
-              ? json_['skipWhenOnPromotion'] as core.bool
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (brandMatcher != null) 'brandMatcher': brandMatcher!,
-        if (itemGroupIdMatcher != null)
-          'itemGroupIdMatcher': itemGroupIdMatcher!,
-        if (matcherOption != null) 'matcherOption': matcherOption!,
-        if (offerIdMatcher != null) 'offerIdMatcher': offerIdMatcher!,
-        if (skipWhenOnPromotion != null)
-          'skipWhenOnPromotion': skipWhenOnPromotion!,
-      };
-}
-
-/// Matcher by string attributes.
-class RepricingRuleEligibleOfferMatcherStringMatcher {
-  /// String attributes, as long as such attribute of an offer is one of the
-  /// string attribute values, the offer is considered as passing the matcher.
-  ///
-  /// The string matcher checks an offer for inclusivity in the string
-  /// attributes, not equality. Only literal string matching is supported, no
-  /// regular expressions.
-  core.List<core.String>? strAttributes;
-
-  RepricingRuleEligibleOfferMatcherStringMatcher({
-    this.strAttributes,
-  });
-
-  RepricingRuleEligibleOfferMatcherStringMatcher.fromJson(core.Map json_)
-      : this(
-          strAttributes: json_.containsKey('strAttributes')
-              ? (json_['strAttributes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (strAttributes != null) 'strAttributes': strAttributes!,
-      };
-}
-
-/// Resource that represents a daily Repricing rule report.
-///
-/// Next ID: 11
-class RepricingRuleReport {
-  /// Stats specific to buybox winning rules for rule report (deprecated).
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  RepricingRuleReportBuyboxWinningRuleStats? buyboxWinningRuleStats;
-
-  /// Date of the stats in this report.
-  ///
-  /// The report starts and ends according to the merchant's timezone.
-  Date? date;
-
-  /// List of product ids that are impacted by this rule during this reporting
-  /// period.
-  ///
-  /// Out of stock products and products not searched for by customers are
-  /// examples of non-impacted products.
-  core.List<core.String>? impactedProducts;
-
-  /// List of all reasons the rule did not apply to the inapplicable products
-  /// during the specified reporting period.
-  core.List<InapplicabilityDetails>? inapplicabilityDetails;
-
-  /// List of product ids that are inapplicable to this rule during this
-  /// reporting period.
-  ///
-  /// To get the inapplicable reason for a specific product, see
-  /// RepricingProductReport.
-  core.List<core.String>? inapplicableProducts;
-
-  /// Total unit count of impacted products ordered while the rule was active on
-  /// the date of the report.
-  ///
-  /// This count includes all orders that were started while the rule was
-  /// active, even if the rule was no longer active when the order was
-  /// completed.
-  core.int? orderItemCount;
-
-  /// Id of the Repricing rule for this report.
-  core.String? ruleId;
-
-  /// Total GMV generated by impacted products while the rule was active on the
-  /// date of the report.
-  ///
-  /// This value includes all orders that were started while the rule was
-  /// active, even if the rule was no longer active when the order was
-  /// completed.
-  PriceAmount? totalGmv;
-
-  /// Type of the rule.
-  /// Possible string values are:
-  /// - "REPRICING_RULE_TYPE_UNSPECIFIED" : Unused.
-  /// - "TYPE_STATS_BASED" : Statistical measurement based rules among Google SA
-  /// merchants. If this rule is chosen, repricer will adjust the offer price
-  /// based on statistical metrics (currently only min is available) among other
-  /// merchants who sell the same product. Details need to be provdided in the
-  /// RuleDefinition.
-  /// - "TYPE_COGS_BASED" : Cost of goods sale based rule. Repricer will adjust
-  /// the offer price based on the offer's sale cost which is provided by the
-  /// merchant.
-  /// - "TYPE_SALES_VOLUME_BASED" : Sales volume based rule. Repricer will
-  /// adjust the offer price based on the offer's sales volume in the past
-  /// period of time defined within the rule.
-  /// - "TYPE_COMPETITIVE_PRICE" : Competitive price rule. Repricer will adjust
-  /// the offer price based on the min price from a list of unnamed big
-  /// competitors.
-  core.String? type;
-
-  RepricingRuleReport({
-    this.buyboxWinningRuleStats,
-    this.date,
-    this.impactedProducts,
-    this.inapplicabilityDetails,
-    this.inapplicableProducts,
-    this.orderItemCount,
-    this.ruleId,
-    this.totalGmv,
-    this.type,
-  });
-
-  RepricingRuleReport.fromJson(core.Map json_)
-      : this(
-          buyboxWinningRuleStats: json_.containsKey('buyboxWinningRuleStats')
-              ? RepricingRuleReportBuyboxWinningRuleStats.fromJson(
-                  json_['buyboxWinningRuleStats']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          date: json_.containsKey('date')
-              ? Date.fromJson(
-                  json_['date'] as core.Map<core.String, core.dynamic>)
-              : null,
-          impactedProducts: json_.containsKey('impactedProducts')
-              ? (json_['impactedProducts'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          inapplicabilityDetails: json_.containsKey('inapplicabilityDetails')
-              ? (json_['inapplicabilityDetails'] as core.List)
-                  .map((value) => InapplicabilityDetails.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          inapplicableProducts: json_.containsKey('inapplicableProducts')
-              ? (json_['inapplicableProducts'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          orderItemCount: json_.containsKey('orderItemCount')
-              ? json_['orderItemCount'] as core.int
-              : null,
-          ruleId: json_.containsKey('ruleId')
-              ? json_['ruleId'] as core.String
-              : null,
-          totalGmv: json_.containsKey('totalGmv')
-              ? PriceAmount.fromJson(
-                  json_['totalGmv'] as core.Map<core.String, core.dynamic>)
-              : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (buyboxWinningRuleStats != null)
-          'buyboxWinningRuleStats': buyboxWinningRuleStats!,
-        if (date != null) 'date': date!,
-        if (impactedProducts != null) 'impactedProducts': impactedProducts!,
-        if (inapplicabilityDetails != null)
-          'inapplicabilityDetails': inapplicabilityDetails!,
-        if (inapplicableProducts != null)
-          'inapplicableProducts': inapplicableProducts!,
-        if (orderItemCount != null) 'orderItemCount': orderItemCount!,
-        if (ruleId != null) 'ruleId': ruleId!,
-        if (totalGmv != null) 'totalGmv': totalGmv!,
-        if (type != null) 'type': type!,
-      };
-}
-
-/// Stats specific to buybox winning rules for rule report.
-class RepricingRuleReportBuyboxWinningRuleStats {
-  /// Number of unique products that won the buybox with this rule during this
-  /// period of time.
-  core.int? buyboxWonProductCount;
-
-  RepricingRuleReportBuyboxWinningRuleStats({
-    this.buyboxWonProductCount,
-  });
-
-  RepricingRuleReportBuyboxWinningRuleStats.fromJson(core.Map json_)
-      : this(
-          buyboxWonProductCount: json_.containsKey('buyboxWonProductCount')
-              ? json_['buyboxWonProductCount'] as core.int
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (buyboxWonProductCount != null)
-          'buyboxWonProductCount': buyboxWonProductCount!,
-      };
-}
-
-/// Definition of a rule restriction.
-///
-/// At least one of the following needs to be true: (1)
-/// use_auto_pricing_min_price is true (2) floor.price_delta exists (3)
-/// floor.percentage_delta exists If floor.price_delta and
-/// floor.percentage_delta are both set on a rule, the highest value will be
-/// chosen by the Repricer. In other words, for a product with a price of $50,
-/// if the `floor.percentage_delta` is "-10" and the floor.price_delta is "-12",
-/// the offer price will only be lowered $5 (10% lower than the original offer
-/// price).
-class RepricingRuleRestriction {
-  /// The inclusive floor lower bound.
-  ///
-  /// The repricing rule only applies when new price \>= floor.
-  RepricingRuleRestrictionBoundary? floor;
-
-  /// If true, use the AUTO_PRICING_MIN_PRICE offer attribute as the lower bound
-  /// of the rule.
-  ///
-  /// If use_auto_pricing_min_price is true, then only offers with
-  /// `AUTO_PRICING_MIN_PRICE` existing on the offer will get Repricer
-  /// treatment, even if a floor value is set on the rule. Also, if
-  /// use_auto_pricing_min_price is true, the floor restriction will be ignored.
-  core.bool? useAutoPricingMinPrice;
-
-  RepricingRuleRestriction({
-    this.floor,
-    this.useAutoPricingMinPrice,
-  });
-
-  RepricingRuleRestriction.fromJson(core.Map json_)
-      : this(
-          floor: json_.containsKey('floor')
-              ? RepricingRuleRestrictionBoundary.fromJson(
-                  json_['floor'] as core.Map<core.String, core.dynamic>)
-              : null,
-          useAutoPricingMinPrice: json_.containsKey('useAutoPricingMinPrice')
-              ? json_['useAutoPricingMinPrice'] as core.bool
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (floor != null) 'floor': floor!,
-        if (useAutoPricingMinPrice != null)
-          'useAutoPricingMinPrice': useAutoPricingMinPrice!,
-      };
-}
-
-/// Definition of a boundary.
-class RepricingRuleRestrictionBoundary {
-  /// The percentage delta relative to the offer selling price.
-  ///
-  /// This field is signed. It must be negative in floor. When it is used in
-  /// floor, it should be \> -100. For example, if an offer is selling at $10
-  /// and this field is -30 in floor, the repricing rule only applies if the
-  /// calculated new price is \>= $7.
-  core.int? percentageDelta;
-
-  /// The price micros relative to the offer selling price.
-  ///
-  /// This field is signed. It must be negative in floor. For example, if an
-  /// offer is selling at $10 and this field is -$2 in floor, the repricing rule
-  /// only applies if the calculated new price is \>= $8.
-  core.String? priceDelta;
-
-  RepricingRuleRestrictionBoundary({
-    this.percentageDelta,
-    this.priceDelta,
-  });
-
-  RepricingRuleRestrictionBoundary.fromJson(core.Map json_)
-      : this(
-          percentageDelta: json_.containsKey('percentageDelta')
-              ? json_['percentageDelta'] as core.int
-              : null,
-          priceDelta: json_.containsKey('priceDelta')
-              ? json_['priceDelta'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (percentageDelta != null) 'percentageDelta': percentageDelta!,
-        if (priceDelta != null) 'priceDelta': priceDelta!,
-      };
-}
-
-/// Definition of stats based rule.
-class RepricingRuleStatsBasedRule {
-  /// The percent change against the price target.
-  ///
-  /// Valid from 0 to 100 inclusively.
-  core.int? percentageDelta;
-
-  /// The price delta against the above price target.
-  ///
-  /// A positive value means the price should be adjusted to be above
-  /// statistical measure, and a negative value means below. Currency code must
-  /// not be included.
-  core.String? priceDelta;
-
-  RepricingRuleStatsBasedRule({
-    this.percentageDelta,
-    this.priceDelta,
-  });
-
-  RepricingRuleStatsBasedRule.fromJson(core.Map json_)
-      : this(
-          percentageDelta: json_.containsKey('percentageDelta')
-              ? json_['percentageDelta'] as core.int
-              : null,
-          priceDelta: json_.containsKey('priceDelta')
-              ? json_['priceDelta'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (percentageDelta != null) 'percentageDelta': percentageDelta!,
-        if (priceDelta != null) 'priceDelta': priceDelta!,
-      };
-}
-
 /// Request message for the RequestPhoneVerification method.
 class RequestPhoneVerificationRequest {
   /// Language code [IETF BCP 47 syntax](https://tools.ietf.org/html/bcp47) (for
@@ -31857,7 +30543,7 @@ class Row {
 class SearchRequest {
   /// Number of ReportRows to retrieve in a single page.
   ///
-  /// Defaults to the maximum of 1000. Values above 1000 are coerced to 1000.
+  /// Defaults to 1000. Values above 5000 are coerced to 5000.
   core.int? pageSize;
 
   /// Token of the page to retrieve.

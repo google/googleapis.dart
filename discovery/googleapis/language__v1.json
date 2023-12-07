@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20231103",
+    "revision": "20240217",
     "rootUrl": "https://language.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Natural Language API",
@@ -560,7 +560,7 @@
             "properties": {
                 "classificationModelOptions": {
                     "$ref": "ClassificationModelOptions",
-                    "description": "Model options to use for classification. Defaults to v1 options if not specified."
+                    "description": "Optional. Model options to use for classification. Defaults to v1 options if not specified."
                 },
                 "document": {
                     "$ref": "Document",
@@ -905,7 +905,7 @@
             "properties": {
                 "classificationModelOptions": {
                     "$ref": "ClassificationModelOptions",
-                    "description": "The model options to use for classification. Defaults to v1 options if not specified. Only used if `classify_text` is set to true."
+                    "description": "Optional. The model options to use for classification. Defaults to v1 options if not specified. Only used if `classify_text` is set to true."
                 },
                 "classifyText": {
                     "description": "Classify the full document into categories.",

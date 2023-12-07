@@ -62,12 +62,18 @@ class HashesResource {
 
   /// Search for full hashes matching the specified prefixes.
   ///
-  /// This is a custom method as described by guidance at
-  /// https://google.aip.dev/136
+  /// This is a custom method as defined by https://google.aip.dev/136 (the
+  /// custom method refers to this method having a custom name within Google's
+  /// general API development nomenclature; it does not refer to using a custom
+  /// HTTP method).
   ///
   /// Request parameters:
   ///
-  /// [hashPrefixes] - Required. The hash prefixes to be looked up.
+  /// [hashPrefixes] - Required. The hash prefixes to be looked up. Clients MUST
+  /// NOT send more than 1000 hash prefixes. However, following the URL
+  /// processing procedure, clients SHOULD NOT need to send more than 30 hash
+  /// prefixes. Currently each hash prefix is required to be exactly 4 bytes
+  /// long. This MAY be relaxed in the future.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -150,13 +156,13 @@ class GoogleSecuritySafebrowsingV5FullHash {
 /// An important note about forward compatibility: new threat types and threat
 /// attributes may be added by the server at any time; those additions are
 /// considered minor version changes. It is Google's policy not to expose minor
-/// version numbers in APIs (see
-/// https://cloud.google.com/apis/design/versioning), so clients MUST be
-/// prepared to receive FullHashDetail messages containing ThreatType enum
-/// values or ThreatAttribute enum values that are considered invalid by the
-/// client. Therefore, it is the client's responsibility to check for the
-/// validity of all ThreatType and ThreatAttribute enum values; if any value is
-/// considered invalid, the client MUST disregard the entire FullHashDetail
+/// version numbers in APIs (see https://cloud.google.com/apis/design/versioning
+/// for the versioning policy), so clients MUST be prepared to receive
+/// `FullHashDetail` messages containing `ThreatType` enum values or
+/// `ThreatAttribute` enum values that are considered invalid by the client.
+/// Therefore, it is the client's responsibility to check for the validity of
+/// all `ThreatType` and `ThreatAttribute` enum values; if any value is
+/// considered invalid, the client MUST disregard the entire `FullHashDetail`
 /// message.
 class GoogleSecuritySafebrowsingV5FullHashFullHashDetail {
   /// Unordered list.
@@ -168,7 +174,9 @@ class GoogleSecuritySafebrowsingV5FullHashFullHashDetail {
   ///
   /// This field will never be empty.
   /// Possible string values are:
-  /// - "THREAT_TYPE_UNSPECIFIED" : Unknown.
+  /// - "THREAT_TYPE_UNSPECIFIED" : Unknown threat type. If this is returned by
+  /// the server, the client shall disregard the enclosing `FullHashDetail`
+  /// altogether.
   /// - "MALWARE" : Malware threat type.
   /// - "SOCIAL_ENGINEERING" : Social engineering threat type.
   /// - "UNWANTED_SOFTWARE" : Unwanted software threat type.
@@ -201,20 +209,24 @@ class GoogleSecuritySafebrowsingV5FullHashFullHashDetail {
 
 /// The response returned after searching threat hashes.
 ///
-/// Note that if nothing is found, the server will return an OK status (HTTP
-/// status code 200) with the `full_hashes` field empty, rather than returning a
-/// NOT_FOUND status (HTTP status code 404).
+/// If nothing is found, the server will return an OK status (HTTP status code
+/// 200) with the `full_hashes` field empty, rather than returning a NOT_FOUND
+/// status (HTTP status code 404). **What's new in V5**: There is a separation
+/// between FullHash and FullHashDetail. In the case when a hash represents a
+/// site having multiple threats (e.g. both MALWARE and SOCIAL_ENGINEERING), the
+/// full hash does not need to be sent twice as in V4. Furthermore, the cache
+/// duration has been simplified into a single `cache_duration` field.
 class GoogleSecuritySafebrowsingV5SearchHashesResponse {
   /// The client-side cache duration.
   ///
-  /// The client shall add this duration to the current time to determine the
+  /// The client MUST add this duration to the current time to determine the
   /// expiration time. The expiration time then applies to every hash prefix
   /// queried by the client in the request, regardless of how many full hashes
   /// are returned in the response. Even if the server returns no full hashes
-  /// for a particular hash prefix, this fact should also be cached by the
-  /// client. Important: the client must not assume that the server will return
-  /// the same cache duration for all responses. The server may choose different
-  /// cache durations for different responses depending on the situation.
+  /// for a particular hash prefix, this fact MUST also be cached by the client.
+  /// Important: the client MUST NOT assume that the server will return the same
+  /// cache duration for all responses. The server MAY choose different cache
+  /// durations for different responses depending on the situation.
   core.String? cacheDuration;
 
   /// Unordered list.

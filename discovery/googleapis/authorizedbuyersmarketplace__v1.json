@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20231128",
+    "revision": "20240226",
     "rootUrl": "https://authorizedbuyersmarketplace.googleapis.com/",
     "servicePath": "",
     "title": "Authorized Buyers Marketplace API",
@@ -1584,12 +1584,14 @@
                     "enum": [
                         "CREATIVE_FORMAT_UNSPECIFIED",
                         "DISPLAY",
-                        "VIDEO"
+                        "VIDEO",
+                        "AUDIO"
                     ],
                     "enumDescriptions": [
                         "A placeholder for an unspecified creative format.",
                         "Banner creatives such as image or HTML5 assets.",
-                        "Video creatives that can be played in a video player."
+                        "Video creatives that can be played in a video player.",
+                        "Audio creatives that can play during audio content or point to a third party ad server."
                     ],
                     "readOnly": true,
                     "type": "string"

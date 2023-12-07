@@ -4156,6 +4156,7 @@ api.VmwareAdminVCenterConfig buildVmwareAdminVCenterConfig() {
     o.datastore = 'foo';
     o.folder = 'foo';
     o.resourcePool = 'foo';
+    o.storagePolicyName = 'foo';
   }
   buildCounterVmwareAdminVCenterConfig--;
   return o;
@@ -4194,6 +4195,10 @@ void checkVmwareAdminVCenterConfig(api.VmwareAdminVCenterConfig o) {
     );
     unittest.expect(
       o.resourcePool!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.storagePolicyName!,
       unittest.equals('foo'),
     );
   }
@@ -4317,6 +4322,7 @@ api.VmwareCluster buildVmwareCluster() {
     o.antiAffinityGroups = buildVmwareAAGConfig();
     o.authorization = buildAuthorization();
     o.autoRepairConfig = buildVmwareAutoRepairConfig();
+    o.binaryAuthorization = buildBinaryAuthorization();
     o.controlPlaneNode = buildVmwareControlPlaneNodeConfig();
     o.createTime = 'foo';
     o.dataplaneV2 = buildVmwareDataplaneV2Config();
@@ -4362,6 +4368,7 @@ void checkVmwareCluster(api.VmwareCluster o) {
     checkVmwareAAGConfig(o.antiAffinityGroups!);
     checkAuthorization(o.authorization!);
     checkVmwareAutoRepairConfig(o.autoRepairConfig!);
+    checkBinaryAuthorization(o.binaryAuthorization!);
     checkVmwareControlPlaneNodeConfig(o.controlPlaneNode!);
     unittest.expect(
       o.createTime!,
@@ -4533,6 +4540,7 @@ api.VmwareDataplaneV2Config buildVmwareDataplaneV2Config() {
   if (buildCounterVmwareDataplaneV2Config < 3) {
     o.advancedNetworking = true;
     o.dataplaneV2Enabled = true;
+    o.forwardMode = 'foo';
     o.windowsDataplaneV2Enabled = true;
   }
   buildCounterVmwareDataplaneV2Config--;
@@ -4544,6 +4552,10 @@ void checkVmwareDataplaneV2Config(api.VmwareDataplaneV2Config o) {
   if (buildCounterVmwareDataplaneV2Config < 3) {
     unittest.expect(o.advancedNetworking!, unittest.isTrue);
     unittest.expect(o.dataplaneV2Enabled!, unittest.isTrue);
+    unittest.expect(
+      o.forwardMode!,
+      unittest.equals('foo'),
+    );
     unittest.expect(o.windowsDataplaneV2Enabled!, unittest.isTrue);
   }
   buildCounterVmwareDataplaneV2Config--;

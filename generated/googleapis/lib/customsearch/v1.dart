@@ -215,8 +215,7 @@ class CseResource {
   ///
   /// [q] - Query
   ///
-  /// [relatedSite] - Specifies that all search results should be pages that are
-  /// related to the specified URL.
+  /// [relatedSite] - Deprecated.
   ///
   /// [rights] - Filters based on licensing. Supported values include:
   /// `cc_publicdomain`, `cc_attribute`, `cc_sharealike`, `cc_noncommercial`,
@@ -521,8 +520,7 @@ class CseSiterestrictResource {
   ///
   /// [q] - Query
   ///
-  /// [relatedSite] - Specifies that all search results should be pages that are
-  /// related to the specified URL.
+  /// [relatedSite] - Deprecated.
   ///
   /// [rights] - Filters based on licensing. Supported values include:
   /// `cc_publicdomain`, `cc_attribute`, `cc_sharealike`, `cc_noncommercial`,

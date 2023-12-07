@@ -16,7 +16,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20231127",
+    "revision": "20240227",
     "rootUrl": "https://businessprofileperformance.googleapis.com/",
     "servicePath": "",
     "title": "Business Profile Performance API",

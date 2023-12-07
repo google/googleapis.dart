@@ -32,6 +32,7 @@ api.Actor buildActor() {
     o.displayName = 'foo';
     o.email = 'foo';
     o.googleSupport = true;
+    o.username = 'foo';
   }
   buildCounterActor--;
   return o;
@@ -49,6 +50,10 @@ void checkActor(api.Actor o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.googleSupport!, unittest.isTrue);
+    unittest.expect(
+      o.username!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterActor--;
 }
@@ -245,6 +250,7 @@ api.CaseClassification buildCaseClassification() {
   if (buildCounterCaseClassification < 3) {
     o.displayName = 'foo';
     o.id = 'foo';
+    o.product = buildProduct();
   }
   buildCounterCaseClassification--;
   return o;
@@ -261,6 +267,7 @@ void checkCaseClassification(api.CaseClassification o) {
       o.id!,
       unittest.equals('foo'),
     );
+    checkProduct(o.product!);
   }
   buildCounterCaseClassification--;
 }
@@ -924,6 +931,33 @@ void checkObjectId(api.ObjectId o) {
   buildCounterObjectId--;
 }
 
+core.int buildCounterProduct = 0;
+api.Product buildProduct() {
+  final o = api.Product();
+  buildCounterProduct++;
+  if (buildCounterProduct < 3) {
+    o.productLine = 'foo';
+    o.productSubline = 'foo';
+  }
+  buildCounterProduct--;
+  return o;
+}
+
+void checkProduct(api.Product o) {
+  buildCounterProduct++;
+  if (buildCounterProduct < 3) {
+    unittest.expect(
+      o.productLine!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.productSubline!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterProduct--;
+}
+
 core.List<api.CaseClassification> buildUnnamed5() => [
       buildCaseClassification(),
       buildCaseClassification(),
@@ -1226,6 +1260,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-Product', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildProduct();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Product.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkProduct(od);
+    });
+  });
+
   unittest.group('obj-schema-SearchCaseClassificationsResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildSearchCaseClassificationsResponse();
@@ -1252,6 +1296,8 @@ void main() {
       final res = api.CloudSupportApi(mock).caseClassifications;
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
+      final arg_product_productLine = 'foo';
+      final arg_product_productSubline = 'foo';
       final arg_query = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1294,6 +1340,14 @@ void main() {
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
+          queryMap['product.productLine']!.first,
+          unittest.equals(arg_product_productLine),
+        );
+        unittest.expect(
+          queryMap['product.productSubline']!.first,
+          unittest.equals(arg_product_productSubline),
+        );
+        unittest.expect(
           queryMap['query']!.first,
           unittest.equals(arg_query),
         );
@@ -1312,6 +1366,8 @@ void main() {
       final response = await res.search(
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,
+          product_productLine: arg_product_productLine,
+          product_productSubline: arg_product_productSubline,
           query: arg_query,
           $fields: arg_$fields);
       checkSearchCaseClassificationsResponse(
@@ -1553,6 +1609,7 @@ void main() {
       final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
+      final arg_productLine = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -1599,6 +1656,10 @@ void main() {
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
+          queryMap['productLine']!.first,
+          unittest.equals(arg_productLine),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -1613,6 +1674,7 @@ void main() {
           filter: arg_filter,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,
+          productLine: arg_productLine,
           $fields: arg_$fields);
       checkListCasesResponse(response as api.ListCasesResponse);
     });

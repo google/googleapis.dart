@@ -712,7 +712,12 @@ class Conversion {
   /// DS ad ID.
   core.String? adId;
 
-  /// Ad user data consent for this conversion.
+  /// Represents consent for core platform services (CPS) preferences in
+  /// settings.
+  ///
+  /// No default value. Acceptable values are: GRANTED: The desired consent
+  /// status is to grant. Read the CPS preferences from GTE settings. DENIED:
+  /// The desired consent status is to deny; CPS list is empty.
   /// Possible string values are:
   /// - "UNKNOWN" : Not specified.
   /// - "GRANTED" : Granted.

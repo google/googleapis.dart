@@ -104,89 +104,6 @@ class OperationsResource {
 
   OperationsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Starts asynchronous cancellation on a long-running operation.
-  ///
-  /// The server makes a best effort to cancel the operation, but success is not
-  /// guaranteed. If the server doesn't support this method, it returns
-  /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
-  /// or other methods to check whether the cancellation succeeded or whether
-  /// the operation completed despite cancellation. On successful cancellation,
-  /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of 1, corresponding to
-  /// `Code.CANCELLED`.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - The name of the operation resource to be cancelled.
-  /// Value must have pattern `^operations/.*$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Empty].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Empty> cancel(
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':cancel';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      queryParams: queryParams_,
-    );
-    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Deletes a long-running operation.
-  ///
-  /// This method indicates that the client is no longer interested in the
-  /// operation result. It does not cancel the operation. If the server doesn't
-  /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - The name of the operation resource to be deleted.
-  /// Value must have pattern `^operations/.*$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Empty].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v2/' + core.Uri.encodeFull('$name');
-
-    final response_ = await _requester.request(
-      url_,
-      'DELETE',
-      queryParams: queryParams_,
-    );
-    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-
   /// Gets the latest state of a long-running operation.
   ///
   /// Clients can use this method to poll the operation result at intervals as
@@ -1925,7 +1842,10 @@ class ProjectsInstancesTablesResource {
   /// Permanently drop/delete a row range from a specified table.
   ///
   /// The request can specify whether to delete all rows in a table, or only
-  /// those that match a particular prefix.
+  /// those that match a particular prefix. Note that row key prefixes used here
+  /// are treated as service data. For more information about how service data
+  /// is handled, see the
+  /// [Google Cloud Privacy Notice](https://cloud.google.com/terms/cloud-privacy-notice).
   ///
   /// [request] - The metadata request object.
   ///
@@ -2479,41 +2399,6 @@ class ProjectsLocationsResource {
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Gets information about a location.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Resource name for the location.
-  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Location].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Location> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v2/' + core.Uri.encodeFull('$name');
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return Location.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-
   /// Lists information about the supported locations for this service.
   ///
   /// Request parameters:
@@ -2842,7 +2727,7 @@ class Backup {
   /// Name of the backup from which this backup was copied.
   ///
   /// If a backup is not created by copying a backup, this field will be empty.
-  /// Values are of the form: projects//instances//backups/.
+  /// Values are of the form: projects//instances//clusters//backups/
   ///
   /// Output only.
   core.String? sourceBackup;
@@ -2944,7 +2829,7 @@ class BackupInfo {
   /// Name of the backup from which this backup was copied.
   ///
   /// If a backup is not created by copying a backup, this field will be empty.
-  /// Values are of the form: projects//instances//backups/.
+  /// Values are of the form: projects//instances//clusters//backups/
   ///
   /// Output only.
   core.String? sourceBackup;
@@ -3029,14 +2914,31 @@ class Binding {
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
   /// (primary) that represents all the users of that domain. For example,
-  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a user that has
-  /// been recently deleted. For example,
-  /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
-  /// this value reverts to `user:{emailid}` and the recovered user retains the
-  /// role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a service account
-  /// that has been recently deleted. For example,
+  /// `google.com` or `example.com`. *
+  /// `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workforce identity pool. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`:
+  /// All workforce identities in a group. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All workforce identities with a specific attribute value. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}
+  /// / * `: All identities in a workforce identity pool. *
+  /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workload identity pool. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`:
+  /// A workload identity pool group. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All identities in a workload identity pool with a certain attribute. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}
+  /// / * `: All identities in a workload identity pool. *
+  /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
+  /// identifier) representing a user that has been recently deleted. For
+  /// example, `alice@example.com?uid=123456789012345678901`. If the user is
+  /// recovered, this value reverts to `user:{emailid}` and the recovered user
+  /// retains the role in the binding. *
+  /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus
+  /// unique identifier) representing a service account that has been recently
+  /// deleted. For example,
   /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If
   /// the service account is undeleted, this value reverts to
   /// `serviceAccount:{emailid}` and the undeleted service account retains the
@@ -3045,12 +2947,19 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding.
+  /// the role in the binding. *
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// Deleted single identity in a workforce identity pool. For example,
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
   ///
-  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an
+  /// overview of the IAM roles and permissions, see the
+  /// [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For
+  /// a list of the available pre-defined roles, see
+  /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
   Binding({
@@ -3113,14 +3022,8 @@ class CheckConsistencyRequest {
   /// Required.
   core.String? consistencyToken;
 
-  /// Checks that reads using an app profile with `StandardIsolation` can see
-  /// all writes committed before the token was created, even if the read and
-  /// write target different clusters.
-  StandardReadRemoteWrites? standardReadRemoteWrites;
-
   CheckConsistencyRequest({
     this.consistencyToken,
-    this.standardReadRemoteWrites,
   });
 
   CheckConsistencyRequest.fromJson(core.Map json_)
@@ -3128,18 +3031,10 @@ class CheckConsistencyRequest {
           consistencyToken: json_.containsKey('consistencyToken')
               ? json_['consistencyToken'] as core.String
               : null,
-          standardReadRemoteWrites:
-              json_.containsKey('standardReadRemoteWrites')
-                  ? StandardReadRemoteWrites.fromJson(
-                      json_['standardReadRemoteWrites']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (consistencyToken != null) 'consistencyToken': consistencyToken!,
-        if (standardReadRemoteWrites != null)
-          'standardReadRemoteWrites': standardReadRemoteWrites!,
       };
 }
 
@@ -4542,6 +4437,11 @@ class Modification {
 /// Request message for
 /// google.bigtable.admin.v2.BigtableTableAdmin.ModifyColumnFamilies
 class ModifyColumnFamiliesRequest {
+  /// If true, ignore safety checks when modifying the column families.
+  ///
+  /// Optional.
+  core.bool? ignoreWarnings;
+
   /// Modifications to be atomically applied to the specified table's families.
   ///
   /// Entries are applied in order, meaning that earlier modifications can be
@@ -4552,11 +4452,15 @@ class ModifyColumnFamiliesRequest {
   core.List<Modification>? modifications;
 
   ModifyColumnFamiliesRequest({
+    this.ignoreWarnings,
     this.modifications,
   });
 
   ModifyColumnFamiliesRequest.fromJson(core.Map json_)
       : this(
+          ignoreWarnings: json_.containsKey('ignoreWarnings')
+              ? json_['ignoreWarnings'] as core.bool
+              : null,
           modifications: json_.containsKey('modifications')
               ? (json_['modifications'] as core.List)
                   .map((value) => Modification.fromJson(
@@ -4566,6 +4470,7 @@ class ModifyColumnFamiliesRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (ignoreWarnings != null) 'ignoreWarnings': ignoreWarnings!,
         if (modifications != null) 'modifications': modifications!,
       };
 }
@@ -4996,10 +4901,6 @@ class StandardIsolation {
         if (priority != null) 'priority': priority!,
       };
 }
-
-/// Checks that all writes before the consistency token was generated is
-/// replicated in every cluster and readable.
-typedef StandardReadRemoteWrites = $Empty;
 
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.

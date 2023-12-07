@@ -658,7 +658,11 @@ class BlockchainNode {
   /// When true, the node is only accessible via Private Service Connect; no
   /// public endpoints are exposed.
   ///
-  /// Otherwise, the node is only accessible via public endpoints. See
+  /// Otherwise, the node is only accessible via public endpoints. Warning:
+  /// Private Service Connect enabled nodes may require a manual migration
+  /// effort to remain compatible with future versions of the product. If this
+  /// feature is enabled, you will be notified of these changes along with any
+  /// required action to avoid disruption. See
   /// https://cloud.google.com/vpc/docs/private-service-connect.
   ///
   /// Optional.
@@ -842,16 +846,6 @@ class EthereumDetails {
   /// Immutable.
   core.bool? apiEnableDebug;
 
-  /// An Ethereum address which the beacon client will send fee rewards to if no
-  /// recipient is configured in the validator client.
-  ///
-  /// See https://lighthouse-book.sigmaprime.io/suggested-fee-recipient.html or
-  /// https://docs.prylabs.network/docs/execution-node/fee-recipient for
-  /// examples of how this is used. Note that while this is often described as
-  /// "suggested", as we run the execution node we can trust the execution node,
-  /// and therefore this is considered enforced.
-  core.String? beaconFeeRecipient;
-
   /// The consensus client.
   ///
   /// Immutable.
@@ -911,16 +905,20 @@ class EthereumDetails {
   /// blockchain's history state data dating back to the Genesis Block.
   core.String? nodeType;
 
+  /// Configuration for validator-related parameters on the beacon client, and
+  /// for any GCP-managed validator client.
+  ValidatorConfig? validatorConfig;
+
   EthereumDetails({
     this.additionalEndpoints,
     this.apiEnableAdmin,
     this.apiEnableDebug,
-    this.beaconFeeRecipient,
     this.consensusClient,
     this.executionClient,
     this.gethDetails,
     this.network,
     this.nodeType,
+    this.validatorConfig,
   });
 
   EthereumDetails.fromJson(core.Map json_)
@@ -934,9 +932,6 @@ class EthereumDetails {
               : null,
           apiEnableDebug: json_.containsKey('apiEnableDebug')
               ? json_['apiEnableDebug'] as core.bool
-              : null,
-          beaconFeeRecipient: json_.containsKey('beaconFeeRecipient')
-              ? json_['beaconFeeRecipient'] as core.String
               : null,
           consensusClient: json_.containsKey('consensusClient')
               ? json_['consensusClient'] as core.String
@@ -954,6 +949,10 @@ class EthereumDetails {
           nodeType: json_.containsKey('nodeType')
               ? json_['nodeType'] as core.String
               : null,
+          validatorConfig: json_.containsKey('validatorConfig')
+              ? ValidatorConfig.fromJson(json_['validatorConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -961,13 +960,12 @@ class EthereumDetails {
           'additionalEndpoints': additionalEndpoints!,
         if (apiEnableAdmin != null) 'apiEnableAdmin': apiEnableAdmin!,
         if (apiEnableDebug != null) 'apiEnableDebug': apiEnableDebug!,
-        if (beaconFeeRecipient != null)
-          'beaconFeeRecipient': beaconFeeRecipient!,
         if (consensusClient != null) 'consensusClient': consensusClient!,
         if (executionClient != null) 'executionClient': executionClient!,
         if (gethDetails != null) 'gethDetails': gethDetails!,
         if (network != null) 'network': network!,
         if (nodeType != null) 'nodeType': nodeType!,
+        if (validatorConfig != null) 'validatorConfig': validatorConfig!,
       };
 }
 
@@ -1267,3 +1265,58 @@ class Operation {
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef Status = $Status;
+
+/// Configuration for validator-related parameters on the beacon client, and for
+/// any GCP-managed validator client.
+class ValidatorConfig {
+  /// An Ethereum address which the beacon client will send fee rewards to if no
+  /// recipient is configured in the validator client.
+  ///
+  /// See https://lighthouse-book.sigmaprime.io/suggested-fee-recipient.html or
+  /// https://docs.prylabs.network/docs/execution-node/fee-recipient for
+  /// examples of how this is used. Note that while this is often described as
+  /// "suggested", as we run the execution node we can trust the execution node,
+  /// and therefore this is considered enforced.
+  core.String? beaconFeeRecipient;
+
+  /// When true, deploys a GCP-managed validator client alongside the beacon
+  /// client.
+  ///
+  /// Immutable.
+  core.bool? managedValidatorClient;
+
+  /// URLs for MEV-relay services to use for block building.
+  ///
+  /// When set, a GCP-managed MEV-boost service is configured on the beacon
+  /// client.
+  core.List<core.String>? mevRelayUrls;
+
+  ValidatorConfig({
+    this.beaconFeeRecipient,
+    this.managedValidatorClient,
+    this.mevRelayUrls,
+  });
+
+  ValidatorConfig.fromJson(core.Map json_)
+      : this(
+          beaconFeeRecipient: json_.containsKey('beaconFeeRecipient')
+              ? json_['beaconFeeRecipient'] as core.String
+              : null,
+          managedValidatorClient: json_.containsKey('managedValidatorClient')
+              ? json_['managedValidatorClient'] as core.bool
+              : null,
+          mevRelayUrls: json_.containsKey('mevRelayUrls')
+              ? (json_['mevRelayUrls'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (beaconFeeRecipient != null)
+          'beaconFeeRecipient': beaconFeeRecipient!,
+        if (managedValidatorClient != null)
+          'managedValidatorClient': managedValidatorClient!,
+        if (mevRelayUrls != null) 'mevRelayUrls': mevRelayUrls!,
+      };
+}

@@ -476,9 +476,6 @@ class ProjectsLocationsClustersResource {
   /// Gets the public component of the cluster signing keys in JSON Web Key
   /// format.
   ///
-  /// This API is not yet intended for general use, and is not available for all
-  /// clusters.
-  ///
   /// Request parameters:
   ///
   /// [parent] - The cluster (project, location, cluster name) to get keys for.
@@ -1594,8 +1591,7 @@ class ProjectsLocationsClustersWellKnownResource {
   ///
   /// See the
   /// [OpenID Connect Discovery 1.0 specification](https://openid.net/specs/openid-connect-discovery-1_0.html)
-  /// for details. This API is not yet intended for general use, and is not
-  /// available for all clusters.
+  /// for details.
   ///
   /// Request parameters:
   ///
@@ -3813,6 +3809,11 @@ class AddonsConfig {
   /// does not track whether network policy is enabled for the nodes.
   NetworkPolicyConfig? networkPolicyConfig;
 
+  /// Configuration for the StatefulHA add-on.
+  ///
+  /// Optional.
+  StatefulHAConfig? statefulHaConfig;
+
   AddonsConfig({
     this.cloudRunConfig,
     this.configConnectorConfig,
@@ -3825,6 +3826,7 @@ class AddonsConfig {
     this.httpLoadBalancing,
     this.kubernetesDashboard,
     this.networkPolicyConfig,
+    this.statefulHaConfig,
   });
 
   AddonsConfig.fromJson(core.Map json_)
@@ -3879,6 +3881,10 @@ class AddonsConfig {
               ? NetworkPolicyConfig.fromJson(json_['networkPolicyConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          statefulHaConfig: json_.containsKey('statefulHaConfig')
+              ? StatefulHAConfig.fromJson(json_['statefulHaConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3901,6 +3907,7 @@ class AddonsConfig {
           'kubernetesDashboard': kubernetesDashboard!,
         if (networkPolicyConfig != null)
           'networkPolicyConfig': networkPolicyConfig!,
+        if (statefulHaConfig != null) 'statefulHaConfig': statefulHaConfig!,
       };
 }
 
@@ -3909,6 +3916,9 @@ class AddonsConfig {
 class AdvancedDatapathObservabilityConfig {
   /// Expose flow metrics on nodes
   core.bool? enableMetrics;
+
+  /// Enable Relay component
+  core.bool? enableRelay;
 
   /// Method used to make Relay available
   /// Possible string values are:
@@ -3920,6 +3930,7 @@ class AdvancedDatapathObservabilityConfig {
 
   AdvancedDatapathObservabilityConfig({
     this.enableMetrics,
+    this.enableRelay,
     this.relayMode,
   });
 
@@ -3928,6 +3939,9 @@ class AdvancedDatapathObservabilityConfig {
           enableMetrics: json_.containsKey('enableMetrics')
               ? json_['enableMetrics'] as core.bool
               : null,
+          enableRelay: json_.containsKey('enableRelay')
+              ? json_['enableRelay'] as core.bool
+              : null,
           relayMode: json_.containsKey('relayMode')
               ? json_['relayMode'] as core.String
               : null,
@@ -3935,6 +3949,7 @@ class AdvancedDatapathObservabilityConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (enableMetrics != null) 'enableMetrics': enableMetrics!,
+        if (enableRelay != null) 'enableRelay': enableRelay!,
         if (relayMode != null) 'relayMode': relayMode!,
       };
 }
@@ -5682,6 +5697,15 @@ class ClusterUpdate {
   /// NOTE: Set the "desired_node_pool" field as well.
   core.String? desiredImageType;
 
+  /// Specify the details of in-transit encryption.
+  /// Possible string values are:
+  /// - "IN_TRANSIT_ENCRYPTION_CONFIG_UNSPECIFIED" : Unspecified, will be
+  /// inferred as default - IN_TRANSIT_ENCRYPTION_UNSPECIFIED.
+  /// - "IN_TRANSIT_ENCRYPTION_DISABLED" : In-transit encryption is disabled.
+  /// - "IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT" : Data in-transit is
+  /// encrypted using inter-node transparent encryption.
+  core.String? desiredInTransitEncryptionConfig;
+
   /// The desired config of Intra-node visibility.
   IntraNodeVisibilityConfig? desiredIntraNodeVisibilityConfig;
 
@@ -5872,6 +5896,7 @@ class ClusterUpdate {
     this.desiredGcfsConfig,
     this.desiredIdentityServiceConfig,
     this.desiredImageType,
+    this.desiredInTransitEncryptionConfig,
     this.desiredIntraNodeVisibilityConfig,
     this.desiredK8sBetaApis,
     this.desiredL4ilbSubsettingConfig,
@@ -5993,6 +6018,10 @@ class ClusterUpdate {
           desiredImageType: json_.containsKey('desiredImageType')
               ? json_['desiredImageType'] as core.String
               : null,
+          desiredInTransitEncryptionConfig:
+              json_.containsKey('desiredInTransitEncryptionConfig')
+                  ? json_['desiredInTransitEncryptionConfig'] as core.String
+                  : null,
           desiredIntraNodeVisibilityConfig:
               json_.containsKey('desiredIntraNodeVisibilityConfig')
                   ? IntraNodeVisibilityConfig.fromJson(
@@ -6185,6 +6214,8 @@ class ClusterUpdate {
         if (desiredIdentityServiceConfig != null)
           'desiredIdentityServiceConfig': desiredIdentityServiceConfig!,
         if (desiredImageType != null) 'desiredImageType': desiredImageType!,
+        if (desiredInTransitEncryptionConfig != null)
+          'desiredInTransitEncryptionConfig': desiredInTransitEncryptionConfig!,
         if (desiredIntraNodeVisibilityConfig != null)
           'desiredIntraNodeVisibilityConfig': desiredIntraNodeVisibilityConfig!,
         if (desiredK8sBetaApis != null)
@@ -8584,6 +8615,15 @@ class NetworkConfig {
   /// cluster.
   GatewayAPIConfig? gatewayApiConfig;
 
+  /// Specify the details of in-transit encryption.
+  /// Possible string values are:
+  /// - "IN_TRANSIT_ENCRYPTION_CONFIG_UNSPECIFIED" : Unspecified, will be
+  /// inferred as default - IN_TRANSIT_ENCRYPTION_UNSPECIFIED.
+  /// - "IN_TRANSIT_ENCRYPTION_DISABLED" : In-transit encryption is disabled.
+  /// - "IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT" : Data in-transit is
+  /// encrypted using inter-node transparent encryption.
+  core.String? inTransitEncryptionConfig;
+
   /// The relative name of the Google Compute Engine
   /// network(https://cloud.google.com/compute/docs/networks-and-firewalls#networks)
   /// to which the cluster is connected.
@@ -8633,6 +8673,7 @@ class NetworkConfig {
     this.enableL4ilbSubsetting,
     this.enableMultiNetworking,
     this.gatewayApiConfig,
+    this.inTransitEncryptionConfig,
     this.network,
     this.networkPerformanceConfig,
     this.privateIpv6GoogleAccess,
@@ -8670,6 +8711,10 @@ class NetworkConfig {
               ? GatewayAPIConfig.fromJson(json_['gatewayApiConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          inTransitEncryptionConfig:
+              json_.containsKey('inTransitEncryptionConfig')
+                  ? json_['inTransitEncryptionConfig'] as core.String
+                  : null,
           network: json_.containsKey('network')
               ? json_['network'] as core.String
               : null,
@@ -8706,6 +8751,8 @@ class NetworkConfig {
         if (enableMultiNetworking != null)
           'enableMultiNetworking': enableMultiNetworking!,
         if (gatewayApiConfig != null) 'gatewayApiConfig': gatewayApiConfig!,
+        if (inTransitEncryptionConfig != null)
+          'inTransitEncryptionConfig': inTransitEncryptionConfig!,
         if (network != null) 'network': network!,
         if (networkPerformanceConfig != null)
           'networkPerformanceConfig': networkPerformanceConfig!,
@@ -8906,6 +8953,11 @@ class NodeConfig {
   /// 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
   core.String? diskType;
 
+  /// Reserved for future use.
+  ///
+  /// Optional.
+  core.bool? enableConfidentialStorage;
+
   /// Parameters for the node ephemeral storage using Local SSDs.
   ///
   /// If unspecified, ephemeral storage is backed by the boot disk.
@@ -9033,6 +9085,9 @@ class NodeConfig {
   /// Sandbox configuration for this node.
   SandboxConfig? sandboxConfig;
 
+  /// List of secondary boot disks attached to the nodes.
+  core.List<SecondaryBootDisk>? secondaryBootDisks;
+
   /// The Google Cloud Platform Service Account to be used by the node VMs.
   ///
   /// Specify the email address of the Service Account; otherwise, if no Service
@@ -9075,6 +9130,7 @@ class NodeConfig {
     this.confidentialNodes,
     this.diskSizeGb,
     this.diskType,
+    this.enableConfidentialStorage,
     this.ephemeralStorageLocalSsdConfig,
     this.fastSocket,
     this.gcfsConfig,
@@ -9096,6 +9152,7 @@ class NodeConfig {
     this.resourceLabels,
     this.resourceManagerTags,
     this.sandboxConfig,
+    this.secondaryBootDisks,
     this.serviceAccount,
     this.shieldedInstanceConfig,
     this.soleTenantConfig,
@@ -9132,6 +9189,10 @@ class NodeConfig {
           diskType: json_.containsKey('diskType')
               ? json_['diskType'] as core.String
               : null,
+          enableConfidentialStorage:
+              json_.containsKey('enableConfidentialStorage')
+                  ? json_['enableConfidentialStorage'] as core.bool
+                  : null,
           ephemeralStorageLocalSsdConfig:
               json_.containsKey('ephemeralStorageLocalSsdConfig')
                   ? EphemeralStorageLocalSsdConfig.fromJson(
@@ -9227,6 +9288,12 @@ class NodeConfig {
               ? SandboxConfig.fromJson(
                   json_['sandboxConfig'] as core.Map<core.String, core.dynamic>)
               : null,
+          secondaryBootDisks: json_.containsKey('secondaryBootDisks')
+              ? (json_['secondaryBootDisks'] as core.List)
+                  .map((value) => SecondaryBootDisk.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           serviceAccount: json_.containsKey('serviceAccount')
               ? json_['serviceAccount'] as core.String
               : null,
@@ -9268,6 +9335,8 @@ class NodeConfig {
         if (confidentialNodes != null) 'confidentialNodes': confidentialNodes!,
         if (diskSizeGb != null) 'diskSizeGb': diskSizeGb!,
         if (diskType != null) 'diskType': diskType!,
+        if (enableConfidentialStorage != null)
+          'enableConfidentialStorage': enableConfidentialStorage!,
         if (ephemeralStorageLocalSsdConfig != null)
           'ephemeralStorageLocalSsdConfig': ephemeralStorageLocalSsdConfig!,
         if (fastSocket != null) 'fastSocket': fastSocket!,
@@ -9293,6 +9362,8 @@ class NodeConfig {
         if (resourceManagerTags != null)
           'resourceManagerTags': resourceManagerTags!,
         if (sandboxConfig != null) 'sandboxConfig': sandboxConfig!,
+        if (secondaryBootDisks != null)
+          'secondaryBootDisks': secondaryBootDisks!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
         if (shieldedInstanceConfig != null)
           'shieldedInstanceConfig': shieldedInstanceConfig!,
@@ -11230,43 +11301,41 @@ class SandboxConfig {
       };
 }
 
-/// SecurityPostureConfig defines the flags needed to enable/disable features
-/// for the Security Posture API.
-class SecurityPostureConfig {
-  /// Sets which mode to use for Security Posture features.
+/// SecondaryBootDisk represents a persistent disk attached to a node with
+/// special configurations based on its mode.
+class SecondaryBootDisk {
+  /// Fully-qualified resource ID for an existing disk image.
+  core.String? diskImage;
+
+  /// Disk mode (container image cache, etc.)
   /// Possible string values are:
-  /// - "MODE_UNSPECIFIED" : Default value not specified.
-  /// - "DISABLED" : Disables Security Posture features on the cluster.
-  /// - "BASIC" : Applies Security Posture features on the cluster.
+  /// - "MODE_UNSPECIFIED" : MODE_UNSPECIFIED is when mode is not set.
+  /// - "CONTAINER_IMAGE_CACHE" : CONTAINER_IMAGE_CACHE is for using the
+  /// secondary boot disk as a container image cache.
   core.String? mode;
 
-  /// Sets which mode to use for vulnerability scanning.
-  /// Possible string values are:
-  /// - "VULNERABILITY_MODE_UNSPECIFIED" : Default value not specified.
-  /// - "VULNERABILITY_DISABLED" : Disables vulnerability scanning on the
-  /// cluster.
-  /// - "VULNERABILITY_BASIC" : Applies basic vulnerability scanning on the
-  /// cluster.
-  core.String? vulnerabilityMode;
-
-  SecurityPostureConfig({
+  SecondaryBootDisk({
+    this.diskImage,
     this.mode,
-    this.vulnerabilityMode,
   });
 
-  SecurityPostureConfig.fromJson(core.Map json_)
+  SecondaryBootDisk.fromJson(core.Map json_)
       : this(
-          mode: json_.containsKey('mode') ? json_['mode'] as core.String : null,
-          vulnerabilityMode: json_.containsKey('vulnerabilityMode')
-              ? json_['vulnerabilityMode'] as core.String
+          diskImage: json_.containsKey('diskImage')
+              ? json_['diskImage'] as core.String
               : null,
+          mode: json_.containsKey('mode') ? json_['mode'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (diskImage != null) 'diskImage': diskImage!,
         if (mode != null) 'mode': mode!,
-        if (vulnerabilityMode != null) 'vulnerabilityMode': vulnerabilityMode!,
       };
 }
+
+/// SecurityPostureConfig defines the flags needed to enable/disable features
+/// for the Security Posture API.
+typedef SecurityPostureConfig = $SecurityPostureConfig;
 
 /// Kubernetes Engine service configuration.
 class ServerConfig {
@@ -12606,6 +12675,27 @@ class StartIPRotationRequest {
       };
 }
 
+/// Configuration for the Stateful HA add-on.
+class StatefulHAConfig {
+  /// Whether the Stateful HA add-on is enabled for this cluster.
+  core.bool? enabled;
+
+  StatefulHAConfig({
+    this.enabled,
+  });
+
+  StatefulHAConfig.fromJson(core.Map json_)
+      : this(
+          enabled: json_.containsKey('enabled')
+              ? json_['enabled'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
+      };
+}
+
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.
 ///
@@ -13112,6 +13202,9 @@ class UpdateNodePoolRequest {
   )
   core.String? projectId;
 
+  /// Specifies the configuration of queued provisioning.
+  QueuedProvisioning? queuedProvisioning;
+
   /// The resource labels for the node pool to use to annotate any related
   /// Google Compute Engine resources.
   ResourceLabels? resourceLabels;
@@ -13176,6 +13269,7 @@ class UpdateNodePoolRequest {
     this.nodePoolId,
     this.nodeVersion,
     this.projectId,
+    this.queuedProvisioning,
     this.resourceLabels,
     this.resourceManagerTags,
     this.tags,
@@ -13255,6 +13349,10 @@ class UpdateNodePoolRequest {
           projectId: json_.containsKey('projectId')
               ? json_['projectId'] as core.String
               : null,
+          queuedProvisioning: json_.containsKey('queuedProvisioning')
+              ? QueuedProvisioning.fromJson(json_['queuedProvisioning']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           resourceLabels: json_.containsKey('resourceLabels')
               ? ResourceLabels.fromJson(json_['resourceLabels']
                   as core.Map<core.String, core.dynamic>)
@@ -13307,6 +13405,8 @@ class UpdateNodePoolRequest {
         if (nodePoolId != null) 'nodePoolId': nodePoolId!,
         if (nodeVersion != null) 'nodeVersion': nodeVersion!,
         if (projectId != null) 'projectId': projectId!,
+        if (queuedProvisioning != null)
+          'queuedProvisioning': queuedProvisioning!,
         if (resourceLabels != null) 'resourceLabels': resourceLabels!,
         if (resourceManagerTags != null)
           'resourceManagerTags': resourceManagerTags!,

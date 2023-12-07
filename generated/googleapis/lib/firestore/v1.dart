@@ -731,7 +731,7 @@ class ProjectsDatabasesCollectionGroupsFieldsResource {
   /// Currently, FirestoreAdmin.ListFields only supports listing fields that
   /// have been explicitly overridden. To issue this query, call
   /// FirestoreAdmin.ListFields with the filter set to
-  /// \`indexConfig.usesAncestorConfig:false or \`ttlConfig:*\`.
+  /// `indexConfig.usesAncestorConfig:false` or `ttlConfig:*`.
   ///
   /// Request parameters:
   ///
@@ -2982,6 +2982,24 @@ class Document {
   ///
   /// Output only.
   core.String? createTime;
+
+  /// The document's fields.
+  ///
+  /// The map keys represent field names. Field names matching the regular
+  /// expression `__.*__` are reserved. Reserved field names are forbidden
+  /// except in certain documented contexts. The field names, represented as
+  /// UTF-8, must not exceed 1,500 bytes and cannot be empty. Field paths may be
+  /// used in other contexts to refer to structured fields defined here. For
+  /// `map_value`, the field path is represented by a dot-delimited (`.`) string
+  /// of segments. Each segment is either a simple field name (defined below) or
+  /// a quoted field name. For example, the structured field `"foo" : {
+  /// map_value: { "x&y" : { string_value: "hello" }}}` would be represented by
+  /// the field path `` foo.`x&y` ``. A simple field name contains only
+  /// characters `a` to `z`, `A` to `Z`, `0` to `9`, or `_`, and must not start
+  /// with `0` to `9`. For example, `foo_bar_17`. A quoted field name starts and
+  /// ends with `` ` `` and may contain any character. Some characters,
+  /// including `` ` ``, must be escaped using a `\`. For example, `` `x&y` ``
+  /// represents `x&y` and `` `bak\`tik` `` represents `` bak`tik ``.
   core.Map<core.String, Value>? fields;
 
   /// The resource name of the document, for example
@@ -3542,6 +3560,57 @@ class GoogleFirestoreAdminV1BackupSchedule {
       };
 }
 
+/// The CMEK (Customer Managed Encryption Key) configuration for a Firestore
+/// database.
+///
+/// If not present, the database is secured by the default Google encryption
+/// key.
+class GoogleFirestoreAdminV1CmekConfig {
+  /// Currently in-use
+  /// [KMS key versions](https://cloud.google.com/kms/docs/resource-hierarchy#key_versions).
+  ///
+  /// During [key rotation](https://cloud.google.com/kms/docs/key-rotation),
+  /// there can be multiple in-use key versions. The expected format is
+  /// `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{key_version}`.
+  ///
+  /// Output only.
+  core.List<core.String>? activeKeyVersion;
+
+  /// Only keys in the same location as this database are allowed to be used for
+  /// encryption.
+  ///
+  /// For Firestore's nam5 multi-region, this corresponds to Cloud KMS
+  /// multi-region us. For Firestore's eur3 multi-region, this corresponds to
+  /// Cloud KMS multi-region europe. See
+  /// https://cloud.google.com/kms/docs/locations. The expected format is
+  /// `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+  ///
+  /// Required.
+  core.String? kmsKeyName;
+
+  GoogleFirestoreAdminV1CmekConfig({
+    this.activeKeyVersion,
+    this.kmsKeyName,
+  });
+
+  GoogleFirestoreAdminV1CmekConfig.fromJson(core.Map json_)
+      : this(
+          activeKeyVersion: json_.containsKey('activeKeyVersion')
+              ? (json_['activeKeyVersion'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          kmsKeyName: json_.containsKey('kmsKeyName')
+              ? json_['kmsKeyName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (activeKeyVersion != null) 'activeKeyVersion': activeKeyVersion!,
+        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
+      };
+}
+
 /// Represent a recurring schedule that runs at a specific time every day.
 ///
 /// The time zone is UTC.
@@ -3560,6 +3629,11 @@ class GoogleFirestoreAdminV1Database {
   /// serve requests. This is the default setting for databases created with the
   /// Firestore API.
   core.String? appEngineIntegrationMode;
+
+  /// Presence indicates CMEK is enabled for this database.
+  ///
+  /// Optional.
+  GoogleFirestoreAdminV1CmekConfig? cmekConfig;
 
   /// The concurrency control mode to use for this database.
   /// Possible string values are:
@@ -3678,6 +3752,7 @@ class GoogleFirestoreAdminV1Database {
 
   GoogleFirestoreAdminV1Database({
     this.appEngineIntegrationMode,
+    this.cmekConfig,
     this.concurrencyMode,
     this.createTime,
     this.deleteProtectionState,
@@ -3699,6 +3774,10 @@ class GoogleFirestoreAdminV1Database {
               json_.containsKey('appEngineIntegrationMode')
                   ? json_['appEngineIntegrationMode'] as core.String
                   : null,
+          cmekConfig: json_.containsKey('cmekConfig')
+              ? GoogleFirestoreAdminV1CmekConfig.fromJson(
+                  json_['cmekConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
           concurrencyMode: json_.containsKey('concurrencyMode')
               ? json_['concurrencyMode'] as core.String
               : null,
@@ -3736,6 +3815,7 @@ class GoogleFirestoreAdminV1Database {
   core.Map<core.String, core.dynamic> toJson() => {
         if (appEngineIntegrationMode != null)
           'appEngineIntegrationMode': appEngineIntegrationMode!,
+        if (cmekConfig != null) 'cmekConfig': cmekConfig!,
         if (concurrencyMode != null) 'concurrencyMode': concurrencyMode!,
         if (createTime != null) 'createTime': createTime!,
         if (deleteProtectionState != null)
@@ -3753,6 +3833,41 @@ class GoogleFirestoreAdminV1Database {
         if (updateTime != null) 'updateTime': updateTime!,
         if (versionRetentionPeriod != null)
           'versionRetentionPeriod': versionRetentionPeriod!,
+      };
+}
+
+/// A consistent snapshot of a database at a specific point in time.
+class GoogleFirestoreAdminV1DatabaseSnapshot {
+  /// A name of the form `projects/{project_id}/databases/{database_id}`
+  ///
+  /// Required.
+  core.String? database;
+
+  /// The timestamp at which the database snapshot is taken.
+  ///
+  /// The requested timestamp must be a whole minute within the PITR window.
+  ///
+  /// Required.
+  core.String? snapshotTime;
+
+  GoogleFirestoreAdminV1DatabaseSnapshot({
+    this.database,
+    this.snapshotTime,
+  });
+
+  GoogleFirestoreAdminV1DatabaseSnapshot.fromJson(core.Map json_)
+      : this(
+          database: json_.containsKey('database')
+              ? json_['database'] as core.String
+              : null,
+          snapshotTime: json_.containsKey('snapshotTime')
+              ? json_['snapshotTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (database != null) 'database': database!,
+        if (snapshotTime != null) 'snapshotTime': snapshotTime!,
       };
 }
 
@@ -4379,9 +4494,16 @@ class GoogleFirestoreAdminV1RestoreDatabaseRequest {
   /// Required.
   core.String? databaseId;
 
+  /// Database snapshot to restore from.
+  ///
+  /// The source database must exist and have enabled PITR. The restored
+  /// database will be created in the same location as the source database.
+  GoogleFirestoreAdminV1DatabaseSnapshot? databaseSnapshot;
+
   GoogleFirestoreAdminV1RestoreDatabaseRequest({
     this.backup,
     this.databaseId,
+    this.databaseSnapshot,
   });
 
   GoogleFirestoreAdminV1RestoreDatabaseRequest.fromJson(core.Map json_)
@@ -4392,11 +4514,17 @@ class GoogleFirestoreAdminV1RestoreDatabaseRequest {
           databaseId: json_.containsKey('databaseId')
               ? json_['databaseId'] as core.String
               : null,
+          databaseSnapshot: json_.containsKey('databaseSnapshot')
+              ? GoogleFirestoreAdminV1DatabaseSnapshot.fromJson(
+                  json_['databaseSnapshot']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (backup != null) 'backup': backup!,
         if (databaseId != null) 'databaseId': databaseId!,
+        if (databaseSnapshot != null) 'databaseSnapshot': databaseSnapshot!,
       };
 }
 
@@ -5466,6 +5594,9 @@ class StructuredAggregationQuery {
 }
 
 /// A Firestore query.
+///
+/// The query stages are executed in the following order: 1. from 2. where 3.
+/// select 4. order_by + start_at + end_at 5. offset 6. limit
 class StructuredQuery {
   /// A potential prefix of a position in the result set to end the query at.
   ///

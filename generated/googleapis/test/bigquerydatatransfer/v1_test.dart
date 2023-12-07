@@ -1194,6 +1194,42 @@ void checkTransferRun(api.TransferRun o) {
   buildCounterTransferRun--;
 }
 
+core.List<core.String> buildUnnamed18() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed18(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterUnenrollDataSourcesRequest = 0;
+api.UnenrollDataSourcesRequest buildUnenrollDataSourcesRequest() {
+  final o = api.UnenrollDataSourcesRequest();
+  buildCounterUnenrollDataSourcesRequest++;
+  if (buildCounterUnenrollDataSourcesRequest < 3) {
+    o.dataSourceIds = buildUnnamed18();
+  }
+  buildCounterUnenrollDataSourcesRequest--;
+  return o;
+}
+
+void checkUnenrollDataSourcesRequest(api.UnenrollDataSourcesRequest o) {
+  buildCounterUnenrollDataSourcesRequest++;
+  if (buildCounterUnenrollDataSourcesRequest < 3) {
+    checkUnnamed18(o.dataSourceIds!);
+  }
+  buildCounterUnenrollDataSourcesRequest--;
+}
+
 core.int buildCounterUserInfo = 0;
 api.UserInfo buildUserInfo() {
   final o = api.UserInfo();
@@ -1214,23 +1250,6 @@ void checkUserInfo(api.UserInfo o) {
     );
   }
   buildCounterUserInfo--;
-}
-
-core.List<core.String> buildUnnamed18() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed18(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
 }
 
 core.List<core.String> buildUnnamed19() => [
@@ -1307,6 +1326,23 @@ core.List<core.String> buildUnnamed23() => [
     ];
 
 void checkUnnamed23(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed24() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed24(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1556,6 +1592,16 @@ void main() {
       final od = api.TransferRun.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkTransferRun(od);
+    });
+  });
+
+  unittest.group('obj-schema-UnenrollDataSourcesRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildUnenrollDataSourcesRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UnenrollDataSourcesRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkUnenrollDataSourcesRequest(od);
     });
   });
 
@@ -1987,6 +2033,64 @@ void main() {
           $fields: arg_$fields);
       checkListLocationsResponse(response as api.ListLocationsResponse);
     });
+
+    unittest.test('method--unenrollDataSources', () async {
+      final mock = HttpServerMock();
+      final res = api.BigQueryDataTransferApi(mock).projects.locations;
+      final arg_request = buildUnenrollDataSourcesRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.UnenrollDataSourcesRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkUnenrollDataSourcesRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildEmpty());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.unenrollDataSources(arg_request, arg_name,
+          $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
+    });
   });
 
   unittest.group('resource-ProjectsLocationsDataSourcesResource', () {
@@ -2358,7 +2462,7 @@ void main() {
       final res =
           api.BigQueryDataTransferApi(mock).projects.locations.transferConfigs;
       final arg_parent = 'foo';
-      final arg_dataSourceIds = buildUnnamed18();
+      final arg_dataSourceIds = buildUnnamed19();
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
@@ -2755,7 +2859,7 @@ void main() {
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_runAttempt = 'foo';
-      final arg_states = buildUnnamed19();
+      final arg_states = buildUnnamed20();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -2837,7 +2941,7 @@ void main() {
           .runs
           .transferLogs;
       final arg_parent = 'foo';
-      final arg_messageTypes = buildUnnamed20();
+      final arg_messageTypes = buildUnnamed21();
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
@@ -3090,7 +3194,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.BigQueryDataTransferApi(mock).projects.transferConfigs;
       final arg_parent = 'foo';
-      final arg_dataSourceIds = buildUnnamed21();
+      final arg_dataSourceIds = buildUnnamed22();
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
@@ -3475,7 +3579,7 @@ void main() {
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_runAttempt = 'foo';
-      final arg_states = buildUnnamed22();
+      final arg_states = buildUnnamed23();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -3556,7 +3660,7 @@ void main() {
           .runs
           .transferLogs;
       final arg_parent = 'foo';
-      final arg_messageTypes = buildUnnamed23();
+      final arg_messageTypes = buildUnnamed24();
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';

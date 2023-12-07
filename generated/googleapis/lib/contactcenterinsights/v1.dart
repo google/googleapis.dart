@@ -502,6 +502,14 @@ class ProjectsLocationsConversationsResource {
   /// [filter] - A filter to reduce results to a specific subset. Useful for
   /// querying conversations with specific properties.
   ///
+  /// [orderBy] - Optional. The attribute by which to order conversations in the
+  /// response. If empty, conversations will be ordered by descending creation
+  /// time. Supported values are one of the following: * create_time *
+  /// customer_satisfaction_rating * duration * latest_analysis * start_time *
+  /// turn_count The default sort order is ascending. To specify order, append
+  /// `asc` or `desc`, i.e. `create_time desc`. See
+  /// https://google.aip.dev/132#ordering for more details.
+  ///
   /// [pageSize] - The maximum number of conversations to return in the
   /// response. A valid page size ranges from 0 to 1,000 inclusive. If the page
   /// size is zero or unspecified, a default page size of 100 will be chosen.
@@ -536,6 +544,7 @@ class ProjectsLocationsConversationsResource {
       list(
     core.String parent, {
     core.String? filter,
+    core.String? orderBy,
     core.int? pageSize,
     core.String? pageToken,
     core.String? view,
@@ -543,6 +552,7 @@ class ProjectsLocationsConversationsResource {
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (view != null) 'view': [view],
@@ -1057,6 +1067,48 @@ class ProjectsLocationsIssueModelsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Exports an issue model to the provided destination.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The issue model to export
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/issueModels/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> export(
+    GoogleCloudContactcenterinsightsV1ExportIssueModelRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':export';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets an issue model.
   ///
   /// Request parameters:
@@ -1091,6 +1143,47 @@ class ProjectsLocationsIssueModelsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1IssueModel.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Imports an issue model from a Cloud Storage bucket.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource of the issue model.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> import(
+    GoogleCloudContactcenterinsightsV1ImportIssueModelRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/issueModels:import';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 
@@ -3034,6 +3127,10 @@ class GoogleCloudContactcenterinsightsV1Conversation {
   /// Obfuscated user ID which the customer sent to us.
   core.String? obfuscatedUserId;
 
+  /// Conversation metadata related to quality management.
+  GoogleCloudContactcenterinsightsV1ConversationQualityMetadata?
+      qualityMetadata;
+
   /// The annotations that were generated during the customer and agent
   /// interaction.
   ///
@@ -3080,6 +3177,7 @@ class GoogleCloudContactcenterinsightsV1Conversation {
     this.medium,
     this.name,
     this.obfuscatedUserId,
+    this.qualityMetadata,
     this.runtimeAnnotations,
     this.startTime,
     this.transcript,
@@ -3151,6 +3249,11 @@ class GoogleCloudContactcenterinsightsV1Conversation {
           obfuscatedUserId: json_.containsKey('obfuscatedUserId')
               ? json_['obfuscatedUserId'] as core.String
               : null,
+          qualityMetadata: json_.containsKey('qualityMetadata')
+              ? GoogleCloudContactcenterinsightsV1ConversationQualityMetadata
+                  .fromJson(json_['qualityMetadata']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           runtimeAnnotations: json_.containsKey('runtimeAnnotations')
               ? (json_['runtimeAnnotations'] as core.List)
                   .map((value) =>
@@ -3191,6 +3294,7 @@ class GoogleCloudContactcenterinsightsV1Conversation {
         if (medium != null) 'medium': medium!,
         if (name != null) 'name': name!,
         if (obfuscatedUserId != null) 'obfuscatedUserId': obfuscatedUserId!,
+        if (qualityMetadata != null) 'qualityMetadata': qualityMetadata!,
         if (runtimeAnnotations != null)
           'runtimeAnnotations': runtimeAnnotations!,
         if (startTime != null) 'startTime': startTime!,
@@ -3231,8 +3335,7 @@ class GoogleCloudContactcenterinsightsV1ConversationCallMetadata {
       };
 }
 
-/// The conversation source, which is a combination of transcript, audio, and
-/// metadata.
+/// The conversation source, which is a combination of transcript and audio.
 class GoogleCloudContactcenterinsightsV1ConversationDataSource {
   /// The source when the conversation comes from Dialogflow.
   GoogleCloudContactcenterinsightsV1DialogflowSource? dialogflowSource;
@@ -3368,6 +3471,106 @@ class GoogleCloudContactcenterinsightsV1ConversationParticipant {
           'obfuscatedExternalUserId': obfuscatedExternalUserId!,
         if (role != null) 'role': role!,
         if (userId != null) 'userId': userId!,
+      };
+}
+
+/// Conversation metadata related to quality management.
+class GoogleCloudContactcenterinsightsV1ConversationQualityMetadata {
+  /// Information about agents involved in the call.
+  core.List<
+          GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo>?
+      agentInfo;
+
+  /// An arbitrary integer value indicating the customer's satisfaction rating.
+  core.int? customerSatisfactionRating;
+
+  /// An arbitrary string value specifying the menu path the customer took.
+  core.String? menuPath;
+
+  /// The amount of time the customer waited to connect with an agent.
+  core.String? waitDuration;
+
+  GoogleCloudContactcenterinsightsV1ConversationQualityMetadata({
+    this.agentInfo,
+    this.customerSatisfactionRating,
+    this.menuPath,
+    this.waitDuration,
+  });
+
+  GoogleCloudContactcenterinsightsV1ConversationQualityMetadata.fromJson(
+      core.Map json_)
+      : this(
+          agentInfo: json_.containsKey('agentInfo')
+              ? (json_['agentInfo'] as core.List)
+                  .map((value) =>
+                      GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          customerSatisfactionRating:
+              json_.containsKey('customerSatisfactionRating')
+                  ? json_['customerSatisfactionRating'] as core.int
+                  : null,
+          menuPath: json_.containsKey('menuPath')
+              ? json_['menuPath'] as core.String
+              : null,
+          waitDuration: json_.containsKey('waitDuration')
+              ? json_['waitDuration'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (agentInfo != null) 'agentInfo': agentInfo!,
+        if (customerSatisfactionRating != null)
+          'customerSatisfactionRating': customerSatisfactionRating!,
+        if (menuPath != null) 'menuPath': menuPath!,
+        if (waitDuration != null) 'waitDuration': waitDuration!,
+      };
+}
+
+/// Information about an agent involved in the conversation.
+class GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo {
+  /// A user-specified string representing the agent.
+  core.String? agentId;
+
+  /// The agent's name.
+  core.String? displayName;
+
+  /// A user-provided string indicating the outcome of the agent's segment of
+  /// the call.
+  core.String? dispositionCode;
+
+  /// A user-specified string representing the agent's team.
+  core.String? team;
+
+  GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo({
+    this.agentId,
+    this.displayName,
+    this.dispositionCode,
+    this.team,
+  });
+
+  GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo.fromJson(
+      core.Map json_)
+      : this(
+          agentId: json_.containsKey('agentId')
+              ? json_['agentId'] as core.String
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          dispositionCode: json_.containsKey('dispositionCode')
+              ? json_['dispositionCode'] as core.String
+              : null,
+          team: json_.containsKey('team') ? json_['team'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (agentId != null) 'agentId': agentId!,
+        if (displayName != null) 'displayName': displayName!,
+        if (dispositionCode != null) 'dispositionCode': dispositionCode!,
+        if (team != null) 'team': team!,
       };
 }
 
@@ -4066,6 +4269,43 @@ class GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestBigQueryDestina
       };
 }
 
+/// Request to export an issue model.
+class GoogleCloudContactcenterinsightsV1ExportIssueModelRequest {
+  /// Google Cloud Storage URI to export the Issue Model to.
+  GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination?
+      gcsDestination;
+
+  /// The issue model to export
+  ///
+  /// Required.
+  core.String? name;
+
+  GoogleCloudContactcenterinsightsV1ExportIssueModelRequest({
+    this.gcsDestination,
+    this.name,
+  });
+
+  GoogleCloudContactcenterinsightsV1ExportIssueModelRequest.fromJson(
+      core.Map json_)
+      : this(
+          gcsDestination: json_.containsKey('gcsDestination')
+              ? GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination
+                  .fromJson(json_['gcsDestination']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (gcsDestination != null) 'gcsDestination': gcsDestination!,
+        if (name != null) 'name': name!,
+      };
+}
+
+/// Google Cloud Storage Object URI to save the issue model to.
+typedef GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination
+    = $Shared06;
+
 /// Agent Assist frequently-asked-question answer data.
 class GoogleCloudContactcenterinsightsV1FaqAnswerData {
   /// The piece of text from the `source` knowledge base document.
@@ -4177,6 +4417,57 @@ class GoogleCloudContactcenterinsightsV1GcsSource {
 /// The data for a hold annotation.
 typedef GoogleCloudContactcenterinsightsV1HoldData = $Empty;
 
+/// Request to import an issue model.
+class GoogleCloudContactcenterinsightsV1ImportIssueModelRequest {
+  /// If set to true, will create a new issue model from the imported file with
+  /// randomly generated IDs for the issue model and corresponding issues.
+  ///
+  /// Otherwise, replaces an existing model with the same ID as the file.
+  ///
+  /// Optional.
+  core.bool? createNewModel;
+
+  /// Google Cloud Storage source message.
+  GoogleCloudContactcenterinsightsV1ImportIssueModelRequestGcsSource? gcsSource;
+
+  /// The parent resource of the issue model.
+  ///
+  /// Required.
+  core.String? parent;
+
+  GoogleCloudContactcenterinsightsV1ImportIssueModelRequest({
+    this.createNewModel,
+    this.gcsSource,
+    this.parent,
+  });
+
+  GoogleCloudContactcenterinsightsV1ImportIssueModelRequest.fromJson(
+      core.Map json_)
+      : this(
+          createNewModel: json_.containsKey('createNewModel')
+              ? json_['createNewModel'] as core.bool
+              : null,
+          gcsSource: json_.containsKey('gcsSource')
+              ? GoogleCloudContactcenterinsightsV1ImportIssueModelRequestGcsSource
+                  .fromJson(
+                      json_['gcsSource'] as core.Map<core.String, core.dynamic>)
+              : null,
+          parent: json_.containsKey('parent')
+              ? json_['parent'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createNewModel != null) 'createNewModel': createNewModel!,
+        if (gcsSource != null) 'gcsSource': gcsSource!,
+        if (parent != null) 'parent': parent!,
+      };
+}
+
+/// Google Cloud Storage Object URI to get the issue model file from.
+typedef GoogleCloudContactcenterinsightsV1ImportIssueModelRequestGcsSource
+    = $Shared06;
+
 /// The request to ingest conversations.
 class GoogleCloudContactcenterinsightsV1IngestConversationsRequest {
   /// Configuration that applies to all conversations.
@@ -4268,11 +4559,10 @@ class GoogleCloudContactcenterinsightsV1IngestConversationsRequest {
 
 /// Configuration that applies to all conversations.
 class GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig {
-  /// For audio conversations, this field indicates which of the channels, 1 or
-  /// 2, contains the agent.
+  /// Indicates which of the channels, 1 or 2, contains the agent.
   ///
-  /// Note that this must be set for audio conversations to be properly
-  /// displayed and analyzed.
+  /// Note that this must be set for conversations to be properly displayed and
+  /// analyzed.
   ///
   /// Optional.
   core.int? agentChannel;
@@ -4281,11 +4571,10 @@ class GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationCo
   /// the conversations.
   core.String? agentId;
 
-  /// For audio conversations, this field indicates which of the channels, 1 or
-  /// 2, contains the customer.
+  /// Indicates which of the channels, 1 or 2, contains the agent.
   ///
-  /// Note that this must be set for audio conversations to be properly
-  /// displayed and analyzed.
+  /// Note that this must be set for conversations to be properly displayed and
+  /// analyzed.
   ///
   /// Optional.
   core.int? customerChannel;
@@ -4324,7 +4613,7 @@ class GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource {
   /// Optional.
   /// Possible string values are:
   /// - "BUCKET_OBJECT_TYPE_UNSPECIFIED" : The object type is unspecified and
-  /// will default to TRANSCRIPT.
+  /// will default to `TRANSCRIPT`.
   /// - "TRANSCRIPT" : The object is a transcript.
   /// - "AUDIO" : The object is an audio file.
   core.String? bucketObjectType;
@@ -4334,9 +4623,29 @@ class GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource {
   /// Required.
   core.String? bucketUri;
 
+  /// Custom keys to extract as conversation labels from metadata files in
+  /// `metadata_bucket_uri`.
+  ///
+  /// Keys not included in this field will be ignored. Note that there is a
+  /// limit of 20 labels per conversation.
+  ///
+  /// Optional.
+  core.List<core.String>? customMetadataKeys;
+
+  /// The Cloud Storage path to the source object metadata.
+  ///
+  /// Note that: \[1\] metadata files are expected to be in JSON format \[2\]
+  /// metadata and source objects must be in separate buckets \[3\] a source
+  /// object's metadata object must share the same name to be properly ingested
+  ///
+  /// Optional.
+  core.String? metadataBucketUri;
+
   GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource({
     this.bucketObjectType,
     this.bucketUri,
+    this.customMetadataKeys,
+    this.metadataBucketUri,
   });
 
   GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource.fromJson(
@@ -4348,11 +4657,22 @@ class GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource {
           bucketUri: json_.containsKey('bucketUri')
               ? json_['bucketUri'] as core.String
               : null,
+          customMetadataKeys: json_.containsKey('customMetadataKeys')
+              ? (json_['customMetadataKeys'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          metadataBucketUri: json_.containsKey('metadataBucketUri')
+              ? json_['metadataBucketUri'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bucketObjectType != null) 'bucketObjectType': bucketObjectType!,
         if (bucketUri != null) 'bucketUri': bucketUri!,
+        if (customMetadataKeys != null)
+          'customMetadataKeys': customMetadataKeys!,
+        if (metadataBucketUri != null) 'metadataBucketUri': metadataBucketUri!,
       };
 }
 
@@ -5589,8 +5909,9 @@ class GoogleCloudContactcenterinsightsV1Settings {
   /// "create-conversation": Notify each time a conversation is created. *
   /// "export-insights-data": Notify each time an export is complete. *
   /// "update-conversation": Notify each time a conversation is updated via
-  /// UpdateConversation. Values are Pub/Sub topics. The format of each Pub/Sub
-  /// topic is: projects/{project}/topics/{topic}
+  /// UpdateConversation. * "upload-conversation": Notify when an
+  /// UploadConversation LRO completes. Values are Pub/Sub topics. The format of
+  /// each Pub/Sub topic is: projects/{project}/topics/{topic}
   core.Map<core.String, core.String>? pubsubNotificationSettings;
 
   /// Default DLP redaction resources to be applied while ingesting
@@ -5914,14 +6235,14 @@ class GoogleCloudContactcenterinsightsV1UploadConversationRequest {
 
   /// DLP settings for transcript redaction.
   ///
-  /// Optional, will default to the config specified in Settings.
+  /// Will default to the config specified in Settings.
   ///
   /// Optional.
   GoogleCloudContactcenterinsightsV1RedactionConfig? redactionConfig;
 
-  /// Default Speech-to-Text configuration.
+  /// Speech-to-Text configuration.
   ///
-  /// Optional, will default to the config specified in Settings.
+  /// Will default to the config specified in Settings.
   ///
   /// Optional.
   GoogleCloudContactcenterinsightsV1SpeechConfig? speechConfig;

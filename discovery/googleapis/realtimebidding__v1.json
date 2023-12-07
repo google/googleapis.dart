@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20231128",
+    "revision": "20240228",
     "rootUrl": "https://realtimebidding.googleapis.com/",
     "servicePath": "",
     "title": "Real-time Bidding API",

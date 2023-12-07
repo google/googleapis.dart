@@ -746,6 +746,31 @@ void checkGoogleCloudRunV2ExecutionTemplate(
   buildCounterGoogleCloudRunV2ExecutionTemplate--;
 }
 
+core.int buildCounterGoogleCloudRunV2GCSVolumeSource = 0;
+api.GoogleCloudRunV2GCSVolumeSource buildGoogleCloudRunV2GCSVolumeSource() {
+  final o = api.GoogleCloudRunV2GCSVolumeSource();
+  buildCounterGoogleCloudRunV2GCSVolumeSource++;
+  if (buildCounterGoogleCloudRunV2GCSVolumeSource < 3) {
+    o.bucket = 'foo';
+    o.readOnly = true;
+  }
+  buildCounterGoogleCloudRunV2GCSVolumeSource--;
+  return o;
+}
+
+void checkGoogleCloudRunV2GCSVolumeSource(
+    api.GoogleCloudRunV2GCSVolumeSource o) {
+  buildCounterGoogleCloudRunV2GCSVolumeSource++;
+  if (buildCounterGoogleCloudRunV2GCSVolumeSource < 3) {
+    unittest.expect(
+      o.bucket!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.readOnly!, unittest.isTrue);
+  }
+  buildCounterGoogleCloudRunV2GCSVolumeSource--;
+}
+
 core.int buildCounterGoogleCloudRunV2GRPCAction = 0;
 api.GoogleCloudRunV2GRPCAction buildGoogleCloudRunV2GRPCAction() {
   final o = api.GoogleCloudRunV2GRPCAction();
@@ -1176,6 +1201,36 @@ void checkGoogleCloudRunV2ListTasksResponse(
     checkUnnamed22(o.tasks!);
   }
   buildCounterGoogleCloudRunV2ListTasksResponse--;
+}
+
+core.int buildCounterGoogleCloudRunV2NFSVolumeSource = 0;
+api.GoogleCloudRunV2NFSVolumeSource buildGoogleCloudRunV2NFSVolumeSource() {
+  final o = api.GoogleCloudRunV2NFSVolumeSource();
+  buildCounterGoogleCloudRunV2NFSVolumeSource++;
+  if (buildCounterGoogleCloudRunV2NFSVolumeSource < 3) {
+    o.path = 'foo';
+    o.readOnly = true;
+    o.server = 'foo';
+  }
+  buildCounterGoogleCloudRunV2NFSVolumeSource--;
+  return o;
+}
+
+void checkGoogleCloudRunV2NFSVolumeSource(
+    api.GoogleCloudRunV2NFSVolumeSource o) {
+  buildCounterGoogleCloudRunV2NFSVolumeSource++;
+  if (buildCounterGoogleCloudRunV2NFSVolumeSource < 3) {
+    unittest.expect(
+      o.path!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.readOnly!, unittest.isTrue);
+    unittest.expect(
+      o.server!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudRunV2NFSVolumeSource--;
 }
 
 core.List<core.String> buildUnnamed23() => [
@@ -1668,6 +1723,7 @@ api.GoogleCloudRunV2RevisionTemplate buildGoogleCloudRunV2RevisionTemplate() {
     o.containers = buildUnnamed32();
     o.encryptionKey = 'foo';
     o.executionEnvironment = 'foo';
+    o.healthCheckDisabled = true;
     o.labels = buildUnnamed33();
     o.maxInstanceRequestConcurrency = 42;
     o.revision = 'foo';
@@ -1696,6 +1752,7 @@ void checkGoogleCloudRunV2RevisionTemplate(
       o.executionEnvironment!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.healthCheckDisabled!, unittest.isTrue);
     checkUnnamed33(o.labels!);
     unittest.expect(
       o.maxInstanceRequestConcurrency!,
@@ -1914,6 +1971,7 @@ api.GoogleCloudRunV2Service buildGoogleCloudRunV2Service() {
     o.createTime = 'foo';
     o.creator = 'foo';
     o.customAudiences = buildUnnamed38();
+    o.defaultUriDisabled = true;
     o.deleteTime = 'foo';
     o.description = 'foo';
     o.etag = 'foo';
@@ -1965,6 +2023,7 @@ void checkGoogleCloudRunV2Service(api.GoogleCloudRunV2Service o) {
       unittest.equals('foo'),
     );
     checkUnnamed38(o.customAudiences!);
+    unittest.expect(o.defaultUriDisabled!, unittest.isTrue);
     unittest.expect(
       o.deleteTime!,
       unittest.equals('foo'),
@@ -2509,7 +2568,9 @@ api.GoogleCloudRunV2Volume buildGoogleCloudRunV2Volume() {
   if (buildCounterGoogleCloudRunV2Volume < 3) {
     o.cloudSqlInstance = buildGoogleCloudRunV2CloudSqlInstance();
     o.emptyDir = buildGoogleCloudRunV2EmptyDirVolumeSource();
+    o.gcs = buildGoogleCloudRunV2GCSVolumeSource();
     o.name = 'foo';
+    o.nfs = buildGoogleCloudRunV2NFSVolumeSource();
     o.secret = buildGoogleCloudRunV2SecretVolumeSource();
   }
   buildCounterGoogleCloudRunV2Volume--;
@@ -2521,10 +2582,12 @@ void checkGoogleCloudRunV2Volume(api.GoogleCloudRunV2Volume o) {
   if (buildCounterGoogleCloudRunV2Volume < 3) {
     checkGoogleCloudRunV2CloudSqlInstance(o.cloudSqlInstance!);
     checkGoogleCloudRunV2EmptyDirVolumeSource(o.emptyDir!);
+    checkGoogleCloudRunV2GCSVolumeSource(o.gcs!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
+    checkGoogleCloudRunV2NFSVolumeSource(o.nfs!);
     checkGoogleCloudRunV2SecretVolumeSource(o.secret!);
   }
   buildCounterGoogleCloudRunV2Volume--;
@@ -3318,6 +3381,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-GoogleCloudRunV2GCSVolumeSource', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudRunV2GCSVolumeSource();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudRunV2GCSVolumeSource.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudRunV2GCSVolumeSource(od);
+    });
+  });
+
   unittest.group('obj-schema-GoogleCloudRunV2GRPCAction', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleCloudRunV2GRPCAction();
@@ -3405,6 +3478,16 @@ void main() {
       final od = api.GoogleCloudRunV2ListTasksResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRunV2ListTasksResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleCloudRunV2NFSVolumeSource', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudRunV2NFSVolumeSource();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudRunV2NFSVolumeSource.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudRunV2NFSVolumeSource(od);
     });
   });
 

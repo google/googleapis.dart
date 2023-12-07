@@ -78,6 +78,142 @@ void checkCidrBlock(api.CidrBlock o) {
   buildCounterCidrBlock--;
 }
 
+core.int buildCounterCloudDataLineageIntegration = 0;
+api.CloudDataLineageIntegration buildCloudDataLineageIntegration() {
+  final o = api.CloudDataLineageIntegration();
+  buildCounterCloudDataLineageIntegration++;
+  if (buildCounterCloudDataLineageIntegration < 3) {
+    o.enabled = true;
+  }
+  buildCounterCloudDataLineageIntegration--;
+  return o;
+}
+
+void checkCloudDataLineageIntegration(api.CloudDataLineageIntegration o) {
+  buildCounterCloudDataLineageIntegration++;
+  if (buildCounterCloudDataLineageIntegration < 3) {
+    unittest.expect(o.enabled!, unittest.isTrue);
+  }
+  buildCounterCloudDataLineageIntegration--;
+}
+
+core.int buildCounterComposerWorkload = 0;
+api.ComposerWorkload buildComposerWorkload() {
+  final o = api.ComposerWorkload();
+  buildCounterComposerWorkload++;
+  if (buildCounterComposerWorkload < 3) {
+    o.name = 'foo';
+    o.status = buildComposerWorkloadStatus();
+    o.type = 'foo';
+  }
+  buildCounterComposerWorkload--;
+  return o;
+}
+
+void checkComposerWorkload(api.ComposerWorkload o) {
+  buildCounterComposerWorkload++;
+  if (buildCounterComposerWorkload < 3) {
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    checkComposerWorkloadStatus(o.status!);
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterComposerWorkload--;
+}
+
+core.int buildCounterComposerWorkloadStatus = 0;
+api.ComposerWorkloadStatus buildComposerWorkloadStatus() {
+  final o = api.ComposerWorkloadStatus();
+  buildCounterComposerWorkloadStatus++;
+  if (buildCounterComposerWorkloadStatus < 3) {
+    o.detailedStatusMessage = 'foo';
+    o.state = 'foo';
+    o.statusMessage = 'foo';
+  }
+  buildCounterComposerWorkloadStatus--;
+  return o;
+}
+
+void checkComposerWorkloadStatus(api.ComposerWorkloadStatus o) {
+  buildCounterComposerWorkloadStatus++;
+  if (buildCounterComposerWorkloadStatus < 3) {
+    unittest.expect(
+      o.detailedStatusMessage!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.statusMessage!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterComposerWorkloadStatus--;
+}
+
+core.int buildCounterDagProcessorResource = 0;
+api.DagProcessorResource buildDagProcessorResource() {
+  final o = api.DagProcessorResource();
+  buildCounterDagProcessorResource++;
+  if (buildCounterDagProcessorResource < 3) {
+    o.count = 42;
+    o.cpu = 42.0;
+    o.memoryGb = 42.0;
+    o.storageGb = 42.0;
+  }
+  buildCounterDagProcessorResource--;
+  return o;
+}
+
+void checkDagProcessorResource(api.DagProcessorResource o) {
+  buildCounterDagProcessorResource++;
+  if (buildCounterDagProcessorResource < 3) {
+    unittest.expect(
+      o.count!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.cpu!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.memoryGb!,
+      unittest.equals(42.0),
+    );
+    unittest.expect(
+      o.storageGb!,
+      unittest.equals(42.0),
+    );
+  }
+  buildCounterDagProcessorResource--;
+}
+
+core.int buildCounterDataRetentionConfig = 0;
+api.DataRetentionConfig buildDataRetentionConfig() {
+  final o = api.DataRetentionConfig();
+  buildCounterDataRetentionConfig++;
+  if (buildCounterDataRetentionConfig < 3) {
+    o.taskLogsRetentionConfig = buildTaskLogsRetentionConfig();
+  }
+  buildCounterDataRetentionConfig--;
+  return o;
+}
+
+void checkDataRetentionConfig(api.DataRetentionConfig o) {
+  buildCounterDataRetentionConfig++;
+  if (buildCounterDataRetentionConfig < 3) {
+    checkTaskLogsRetentionConfig(o.taskLogsRetentionConfig!);
+  }
+  buildCounterDataRetentionConfig--;
+}
+
 core.int buildCounterDatabaseConfig = 0;
 api.DatabaseConfig buildDatabaseConfig() {
   final o = api.DatabaseConfig();
@@ -264,6 +400,7 @@ api.EnvironmentConfig buildEnvironmentConfig() {
     o.airflowByoidUri = 'foo';
     o.airflowUri = 'foo';
     o.dagGcsPrefix = 'foo';
+    o.dataRetentionConfig = buildDataRetentionConfig();
     o.databaseConfig = buildDatabaseConfig();
     o.encryptionConfig = buildEncryptionConfig();
     o.environmentSize = 'foo';
@@ -299,6 +436,7 @@ void checkEnvironmentConfig(api.EnvironmentConfig o) {
       o.dagGcsPrefix!,
       unittest.equals('foo'),
     );
+    checkDataRetentionConfig(o.dataRetentionConfig!);
     checkDatabaseConfig(o.databaseConfig!);
     checkEncryptionConfig(o.encryptionConfig!);
     unittest.expect(
@@ -690,6 +828,114 @@ void checkListOperationsResponse(api.ListOperationsResponse o) {
   buildCounterListOperationsResponse--;
 }
 
+core.List<api.UserWorkloadsConfigMap> buildUnnamed6() => [
+      buildUserWorkloadsConfigMap(),
+      buildUserWorkloadsConfigMap(),
+    ];
+
+void checkUnnamed6(core.List<api.UserWorkloadsConfigMap> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkUserWorkloadsConfigMap(o[0]);
+  checkUserWorkloadsConfigMap(o[1]);
+}
+
+core.int buildCounterListUserWorkloadsConfigMapsResponse = 0;
+api.ListUserWorkloadsConfigMapsResponse
+    buildListUserWorkloadsConfigMapsResponse() {
+  final o = api.ListUserWorkloadsConfigMapsResponse();
+  buildCounterListUserWorkloadsConfigMapsResponse++;
+  if (buildCounterListUserWorkloadsConfigMapsResponse < 3) {
+    o.nextPageToken = 'foo';
+    o.userWorkloadsConfigMaps = buildUnnamed6();
+  }
+  buildCounterListUserWorkloadsConfigMapsResponse--;
+  return o;
+}
+
+void checkListUserWorkloadsConfigMapsResponse(
+    api.ListUserWorkloadsConfigMapsResponse o) {
+  buildCounterListUserWorkloadsConfigMapsResponse++;
+  if (buildCounterListUserWorkloadsConfigMapsResponse < 3) {
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed6(o.userWorkloadsConfigMaps!);
+  }
+  buildCounterListUserWorkloadsConfigMapsResponse--;
+}
+
+core.List<api.UserWorkloadsSecret> buildUnnamed7() => [
+      buildUserWorkloadsSecret(),
+      buildUserWorkloadsSecret(),
+    ];
+
+void checkUnnamed7(core.List<api.UserWorkloadsSecret> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkUserWorkloadsSecret(o[0]);
+  checkUserWorkloadsSecret(o[1]);
+}
+
+core.int buildCounterListUserWorkloadsSecretsResponse = 0;
+api.ListUserWorkloadsSecretsResponse buildListUserWorkloadsSecretsResponse() {
+  final o = api.ListUserWorkloadsSecretsResponse();
+  buildCounterListUserWorkloadsSecretsResponse++;
+  if (buildCounterListUserWorkloadsSecretsResponse < 3) {
+    o.nextPageToken = 'foo';
+    o.userWorkloadsSecrets = buildUnnamed7();
+  }
+  buildCounterListUserWorkloadsSecretsResponse--;
+  return o;
+}
+
+void checkListUserWorkloadsSecretsResponse(
+    api.ListUserWorkloadsSecretsResponse o) {
+  buildCounterListUserWorkloadsSecretsResponse++;
+  if (buildCounterListUserWorkloadsSecretsResponse < 3) {
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed7(o.userWorkloadsSecrets!);
+  }
+  buildCounterListUserWorkloadsSecretsResponse--;
+}
+
+core.List<api.ComposerWorkload> buildUnnamed8() => [
+      buildComposerWorkload(),
+      buildComposerWorkload(),
+    ];
+
+void checkUnnamed8(core.List<api.ComposerWorkload> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkComposerWorkload(o[0]);
+  checkComposerWorkload(o[1]);
+}
+
+core.int buildCounterListWorkloadsResponse = 0;
+api.ListWorkloadsResponse buildListWorkloadsResponse() {
+  final o = api.ListWorkloadsResponse();
+  buildCounterListWorkloadsResponse++;
+  if (buildCounterListWorkloadsResponse < 3) {
+    o.nextPageToken = 'foo';
+    o.workloads = buildUnnamed8();
+  }
+  buildCounterListWorkloadsResponse--;
+  return o;
+}
+
+void checkListWorkloadsResponse(api.ListWorkloadsResponse o) {
+  buildCounterListWorkloadsResponse++;
+  if (buildCounterListWorkloadsResponse < 3) {
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed8(o.workloads!);
+  }
+  buildCounterListWorkloadsResponse--;
+}
+
 core.int buildCounterLoadSnapshotRequest = 0;
 api.LoadSnapshotRequest buildLoadSnapshotRequest() {
   final o = api.LoadSnapshotRequest();
@@ -752,12 +998,12 @@ void checkMaintenanceWindow(api.MaintenanceWindow o) {
   buildCounterMaintenanceWindow--;
 }
 
-core.List<api.CidrBlock> buildUnnamed6() => [
+core.List<api.CidrBlock> buildUnnamed9() => [
       buildCidrBlock(),
       buildCidrBlock(),
     ];
 
-void checkUnnamed6(core.List<api.CidrBlock> o) {
+void checkUnnamed9(core.List<api.CidrBlock> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCidrBlock(o[0]);
   checkCidrBlock(o[1]);
@@ -768,7 +1014,7 @@ api.MasterAuthorizedNetworksConfig buildMasterAuthorizedNetworksConfig() {
   final o = api.MasterAuthorizedNetworksConfig();
   buildCounterMasterAuthorizedNetworksConfig++;
   if (buildCounterMasterAuthorizedNetworksConfig < 3) {
-    o.cidrBlocks = buildUnnamed6();
+    o.cidrBlocks = buildUnnamed9();
     o.enabled = true;
   }
   buildCounterMasterAuthorizedNetworksConfig--;
@@ -778,7 +1024,7 @@ api.MasterAuthorizedNetworksConfig buildMasterAuthorizedNetworksConfig() {
 void checkMasterAuthorizedNetworksConfig(api.MasterAuthorizedNetworksConfig o) {
   buildCounterMasterAuthorizedNetworksConfig++;
   if (buildCounterMasterAuthorizedNetworksConfig < 3) {
-    checkUnnamed6(o.cidrBlocks!);
+    checkUnnamed9(o.cidrBlocks!);
     unittest.expect(o.enabled!, unittest.isTrue);
   }
   buildCounterMasterAuthorizedNetworksConfig--;
@@ -806,12 +1052,12 @@ void checkNetworkingConfig(api.NetworkingConfig o) {
   buildCounterNetworkingConfig--;
 }
 
-core.List<core.String> buildUnnamed7() => [
+core.List<core.String> buildUnnamed10() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed7(core.List<core.String> o) {
+void checkUnnamed10(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -823,12 +1069,12 @@ void checkUnnamed7(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed8() => [
+core.List<core.String> buildUnnamed11() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed8(core.List<core.String> o) {
+void checkUnnamed11(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -845,16 +1091,18 @@ api.NodeConfig buildNodeConfig() {
   final o = api.NodeConfig();
   buildCounterNodeConfig++;
   if (buildCounterNodeConfig < 3) {
+    o.composerInternalIpv4CidrBlock = 'foo';
+    o.composerNetworkAttachment = 'foo';
     o.diskSizeGb = 42;
     o.enableIpMasqAgent = true;
     o.ipAllocationPolicy = buildIPAllocationPolicy();
     o.location = 'foo';
     o.machineType = 'foo';
     o.network = 'foo';
-    o.oauthScopes = buildUnnamed7();
+    o.oauthScopes = buildUnnamed10();
     o.serviceAccount = 'foo';
     o.subnetwork = 'foo';
-    o.tags = buildUnnamed8();
+    o.tags = buildUnnamed11();
   }
   buildCounterNodeConfig--;
   return o;
@@ -863,6 +1111,14 @@ api.NodeConfig buildNodeConfig() {
 void checkNodeConfig(api.NodeConfig o) {
   buildCounterNodeConfig++;
   if (buildCounterNodeConfig < 3) {
+    unittest.expect(
+      o.composerInternalIpv4CidrBlock!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.composerNetworkAttachment!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.diskSizeGb!,
       unittest.equals(42),
@@ -881,7 +1137,7 @@ void checkNodeConfig(api.NodeConfig o) {
       o.network!,
       unittest.equals('foo'),
     );
-    checkUnnamed7(o.oauthScopes!);
+    checkUnnamed10(o.oauthScopes!);
     unittest.expect(
       o.serviceAccount!,
       unittest.equals('foo'),
@@ -890,12 +1146,12 @@ void checkNodeConfig(api.NodeConfig o) {
       o.subnetwork!,
       unittest.equals('foo'),
     );
-    checkUnnamed8(o.tags!);
+    checkUnnamed11(o.tags!);
   }
   buildCounterNodeConfig--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed9() => {
+core.Map<core.String, core.Object?> buildUnnamed12() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -908,7 +1164,7 @@ core.Map<core.String, core.Object?> buildUnnamed9() => {
       },
     };
 
-void checkUnnamed9(core.Map<core.String, core.Object?> o) {
+void checkUnnamed12(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -940,7 +1196,7 @@ void checkUnnamed9(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.Map<core.String, core.Object?> buildUnnamed10() => {
+core.Map<core.String, core.Object?> buildUnnamed13() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -953,7 +1209,7 @@ core.Map<core.String, core.Object?> buildUnnamed10() => {
       },
     };
 
-void checkUnnamed10(core.Map<core.String, core.Object?> o) {
+void checkUnnamed13(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -992,9 +1248,9 @@ api.Operation buildOperation() {
   if (buildCounterOperation < 3) {
     o.done = true;
     o.error = buildStatus();
-    o.metadata = buildUnnamed9();
+    o.metadata = buildUnnamed12();
     o.name = 'foo';
-    o.response = buildUnnamed10();
+    o.response = buildUnnamed13();
   }
   buildCounterOperation--;
   return o;
@@ -1005,12 +1261,12 @@ void checkOperation(api.Operation o) {
   if (buildCounterOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkStatus(o.error!);
-    checkUnnamed9(o.metadata!);
+    checkUnnamed12(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed10(o.response!);
+    checkUnnamed13(o.response!);
   }
   buildCounterOperation--;
 }
@@ -1052,12 +1308,12 @@ void checkPollAirflowCommandRequest(api.PollAirflowCommandRequest o) {
   buildCounterPollAirflowCommandRequest--;
 }
 
-core.List<api.Line> buildUnnamed11() => [
+core.List<api.Line> buildUnnamed14() => [
       buildLine(),
       buildLine(),
     ];
 
-void checkUnnamed11(core.List<api.Line> o) {
+void checkUnnamed14(core.List<api.Line> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLine(o[0]);
   checkLine(o[1]);
@@ -1069,7 +1325,7 @@ api.PollAirflowCommandResponse buildPollAirflowCommandResponse() {
   buildCounterPollAirflowCommandResponse++;
   if (buildCounterPollAirflowCommandResponse < 3) {
     o.exitInfo = buildExitInfo();
-    o.output = buildUnnamed11();
+    o.output = buildUnnamed14();
     o.outputEnd = true;
   }
   buildCounterPollAirflowCommandResponse--;
@@ -1080,7 +1336,7 @@ void checkPollAirflowCommandResponse(api.PollAirflowCommandResponse o) {
   buildCounterPollAirflowCommandResponse++;
   if (buildCounterPollAirflowCommandResponse < 3) {
     checkExitInfo(o.exitInfo!);
-    checkUnnamed11(o.output!);
+    checkUnnamed14(o.output!);
     unittest.expect(o.outputEnd!, unittest.isTrue);
   }
   buildCounterPollAirflowCommandResponse--;
@@ -1124,6 +1380,7 @@ api.PrivateEnvironmentConfig buildPrivateEnvironmentConfig() {
     o.cloudComposerNetworkIpv4CidrBlock = 'foo';
     o.cloudComposerNetworkIpv4ReservedRange = 'foo';
     o.cloudSqlIpv4CidrBlock = 'foo';
+    o.enablePrivateBuildsOnly = true;
     o.enablePrivateEnvironment = true;
     o.enablePrivatelyUsedPublicIps = true;
     o.networkingConfig = buildNetworkingConfig();
@@ -1154,6 +1411,7 @@ void checkPrivateEnvironmentConfig(api.PrivateEnvironmentConfig o) {
       o.cloudSqlIpv4CidrBlock!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.enablePrivateBuildsOnly!, unittest.isTrue);
     unittest.expect(o.enablePrivateEnvironment!, unittest.isTrue);
     unittest.expect(o.enablePrivatelyUsedPublicIps!, unittest.isTrue);
     checkNetworkingConfig(o.networkingConfig!);
@@ -1282,12 +1540,12 @@ void checkSchedulerResource(api.SchedulerResource o) {
   buildCounterSchedulerResource--;
 }
 
-core.Map<core.String, core.String> buildUnnamed12() => {
+core.Map<core.String, core.String> buildUnnamed15() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed12(core.Map<core.String, core.String> o) {
+void checkUnnamed15(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -1299,12 +1557,12 @@ void checkUnnamed12(core.Map<core.String, core.String> o) {
   );
 }
 
-core.Map<core.String, core.String> buildUnnamed13() => {
+core.Map<core.String, core.String> buildUnnamed16() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed13(core.Map<core.String, core.String> o) {
+void checkUnnamed16(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -1316,12 +1574,12 @@ void checkUnnamed13(core.Map<core.String, core.String> o) {
   );
 }
 
-core.Map<core.String, core.String> buildUnnamed14() => {
+core.Map<core.String, core.String> buildUnnamed17() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed14(core.Map<core.String, core.String> o) {
+void checkUnnamed17(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -1338,12 +1596,14 @@ api.SoftwareConfig buildSoftwareConfig() {
   final o = api.SoftwareConfig();
   buildCounterSoftwareConfig++;
   if (buildCounterSoftwareConfig < 3) {
-    o.airflowConfigOverrides = buildUnnamed12();
-    o.envVariables = buildUnnamed13();
+    o.airflowConfigOverrides = buildUnnamed15();
+    o.cloudDataLineageIntegration = buildCloudDataLineageIntegration();
+    o.envVariables = buildUnnamed16();
     o.imageVersion = 'foo';
-    o.pypiPackages = buildUnnamed14();
+    o.pypiPackages = buildUnnamed17();
     o.pythonVersion = 'foo';
     o.schedulerCount = 42;
+    o.webServerPluginsMode = 'foo';
   }
   buildCounterSoftwareConfig--;
   return o;
@@ -1352,13 +1612,14 @@ api.SoftwareConfig buildSoftwareConfig() {
 void checkSoftwareConfig(api.SoftwareConfig o) {
   buildCounterSoftwareConfig++;
   if (buildCounterSoftwareConfig < 3) {
-    checkUnnamed12(o.airflowConfigOverrides!);
-    checkUnnamed13(o.envVariables!);
+    checkUnnamed15(o.airflowConfigOverrides!);
+    checkCloudDataLineageIntegration(o.cloudDataLineageIntegration!);
+    checkUnnamed16(o.envVariables!);
     unittest.expect(
       o.imageVersion!,
       unittest.equals('foo'),
     );
-    checkUnnamed14(o.pypiPackages!);
+    checkUnnamed17(o.pypiPackages!);
     unittest.expect(
       o.pythonVersion!,
       unittest.equals('foo'),
@@ -1367,11 +1628,15 @@ void checkSoftwareConfig(api.SoftwareConfig o) {
       o.schedulerCount!,
       unittest.equals(42),
     );
+    unittest.expect(
+      o.webServerPluginsMode!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterSoftwareConfig--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed15() => {
+core.Map<core.String, core.Object?> buildUnnamed18() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1384,7 +1649,7 @@ core.Map<core.String, core.Object?> buildUnnamed15() => {
       },
     };
 
-void checkUnnamed15(core.Map<core.String, core.Object?> o) {
+void checkUnnamed18(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -1416,15 +1681,15 @@ void checkUnnamed15(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed16() => [
-      buildUnnamed15(),
-      buildUnnamed15(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed19() => [
+      buildUnnamed18(),
+      buildUnnamed18(),
     ];
 
-void checkUnnamed16(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed19(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed15(o[0]);
-  checkUnnamed15(o[1]);
+  checkUnnamed18(o[0]);
+  checkUnnamed18(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -1433,7 +1698,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed16();
+    o.details = buildUnnamed19();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -1447,7 +1712,7 @@ void checkStatus(api.Status o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed16(o.details!);
+    checkUnnamed19(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -1490,12 +1755,12 @@ void checkStopAirflowCommandRequest(api.StopAirflowCommandRequest o) {
   buildCounterStopAirflowCommandRequest--;
 }
 
-core.List<core.String> buildUnnamed17() => [
+core.List<core.String> buildUnnamed20() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed17(core.List<core.String> o) {
+void checkUnnamed20(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1513,7 +1778,7 @@ api.StopAirflowCommandResponse buildStopAirflowCommandResponse() {
   buildCounterStopAirflowCommandResponse++;
   if (buildCounterStopAirflowCommandResponse < 3) {
     o.isDone = true;
-    o.output = buildUnnamed17();
+    o.output = buildUnnamed20();
   }
   buildCounterStopAirflowCommandResponse--;
   return o;
@@ -1523,7 +1788,7 @@ void checkStopAirflowCommandResponse(api.StopAirflowCommandResponse o) {
   buildCounterStopAirflowCommandResponse++;
   if (buildCounterStopAirflowCommandResponse < 3) {
     unittest.expect(o.isDone!, unittest.isTrue);
-    checkUnnamed17(o.output!);
+    checkUnnamed20(o.output!);
   }
   buildCounterStopAirflowCommandResponse--;
 }
@@ -1548,6 +1813,28 @@ void checkStorageConfig(api.StorageConfig o) {
     );
   }
   buildCounterStorageConfig--;
+}
+
+core.int buildCounterTaskLogsRetentionConfig = 0;
+api.TaskLogsRetentionConfig buildTaskLogsRetentionConfig() {
+  final o = api.TaskLogsRetentionConfig();
+  buildCounterTaskLogsRetentionConfig++;
+  if (buildCounterTaskLogsRetentionConfig < 3) {
+    o.storageMode = 'foo';
+  }
+  buildCounterTaskLogsRetentionConfig--;
+  return o;
+}
+
+void checkTaskLogsRetentionConfig(api.TaskLogsRetentionConfig o) {
+  buildCounterTaskLogsRetentionConfig++;
+  if (buildCounterTaskLogsRetentionConfig < 3) {
+    unittest.expect(
+      o.storageMode!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterTaskLogsRetentionConfig--;
 }
 
 core.int buildCounterTriggererResource = 0;
@@ -1582,6 +1869,88 @@ void checkTriggererResource(api.TriggererResource o) {
   buildCounterTriggererResource--;
 }
 
+core.Map<core.String, core.String> buildUnnamed21() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
+
+void checkUnnamed21(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterUserWorkloadsConfigMap = 0;
+api.UserWorkloadsConfigMap buildUserWorkloadsConfigMap() {
+  final o = api.UserWorkloadsConfigMap();
+  buildCounterUserWorkloadsConfigMap++;
+  if (buildCounterUserWorkloadsConfigMap < 3) {
+    o.data = buildUnnamed21();
+    o.name = 'foo';
+  }
+  buildCounterUserWorkloadsConfigMap--;
+  return o;
+}
+
+void checkUserWorkloadsConfigMap(api.UserWorkloadsConfigMap o) {
+  buildCounterUserWorkloadsConfigMap++;
+  if (buildCounterUserWorkloadsConfigMap < 3) {
+    checkUnnamed21(o.data!);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterUserWorkloadsConfigMap--;
+}
+
+core.Map<core.String, core.String> buildUnnamed22() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
+
+void checkUnnamed22(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterUserWorkloadsSecret = 0;
+api.UserWorkloadsSecret buildUserWorkloadsSecret() {
+  final o = api.UserWorkloadsSecret();
+  buildCounterUserWorkloadsSecret++;
+  if (buildCounterUserWorkloadsSecret < 3) {
+    o.data = buildUnnamed22();
+    o.name = 'foo';
+  }
+  buildCounterUserWorkloadsSecret--;
+  return o;
+}
+
+void checkUserWorkloadsSecret(api.UserWorkloadsSecret o) {
+  buildCounterUserWorkloadsSecret++;
+  if (buildCounterUserWorkloadsSecret < 3) {
+    checkUnnamed22(o.data!);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterUserWorkloadsSecret--;
+}
+
 core.int buildCounterWebServerConfig = 0;
 api.WebServerConfig buildWebServerConfig() {
   final o = api.WebServerConfig();
@@ -1604,12 +1973,12 @@ void checkWebServerConfig(api.WebServerConfig o) {
   buildCounterWebServerConfig--;
 }
 
-core.List<api.AllowedIpRange> buildUnnamed18() => [
+core.List<api.AllowedIpRange> buildUnnamed23() => [
       buildAllowedIpRange(),
       buildAllowedIpRange(),
     ];
 
-void checkUnnamed18(core.List<api.AllowedIpRange> o) {
+void checkUnnamed23(core.List<api.AllowedIpRange> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAllowedIpRange(o[0]);
   checkAllowedIpRange(o[1]);
@@ -1620,7 +1989,7 @@ api.WebServerNetworkAccessControl buildWebServerNetworkAccessControl() {
   final o = api.WebServerNetworkAccessControl();
   buildCounterWebServerNetworkAccessControl++;
   if (buildCounterWebServerNetworkAccessControl < 3) {
-    o.allowedIpRanges = buildUnnamed18();
+    o.allowedIpRanges = buildUnnamed23();
   }
   buildCounterWebServerNetworkAccessControl--;
   return o;
@@ -1629,7 +1998,7 @@ api.WebServerNetworkAccessControl buildWebServerNetworkAccessControl() {
 void checkWebServerNetworkAccessControl(api.WebServerNetworkAccessControl o) {
   buildCounterWebServerNetworkAccessControl++;
   if (buildCounterWebServerNetworkAccessControl < 3) {
-    checkUnnamed18(o.allowedIpRanges!);
+    checkUnnamed23(o.allowedIpRanges!);
   }
   buildCounterWebServerNetworkAccessControl--;
 }
@@ -1713,6 +2082,7 @@ api.WorkloadsConfig buildWorkloadsConfig() {
   final o = api.WorkloadsConfig();
   buildCounterWorkloadsConfig++;
   if (buildCounterWorkloadsConfig < 3) {
+    o.dagProcessor = buildDagProcessorResource();
     o.scheduler = buildSchedulerResource();
     o.triggerer = buildTriggererResource();
     o.webServer = buildWebServerResource();
@@ -1725,6 +2095,7 @@ api.WorkloadsConfig buildWorkloadsConfig() {
 void checkWorkloadsConfig(api.WorkloadsConfig o) {
   buildCounterWorkloadsConfig++;
   if (buildCounterWorkloadsConfig < 3) {
+    checkDagProcessorResource(o.dagProcessor!);
     checkSchedulerResource(o.scheduler!);
     checkTriggererResource(o.triggerer!);
     checkWebServerResource(o.webServer!);
@@ -1751,6 +2122,56 @@ void main() {
       final od =
           api.CidrBlock.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkCidrBlock(od);
+    });
+  });
+
+  unittest.group('obj-schema-CloudDataLineageIntegration', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCloudDataLineageIntegration();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CloudDataLineageIntegration.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkCloudDataLineageIntegration(od);
+    });
+  });
+
+  unittest.group('obj-schema-ComposerWorkload', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildComposerWorkload();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ComposerWorkload.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkComposerWorkload(od);
+    });
+  });
+
+  unittest.group('obj-schema-ComposerWorkloadStatus', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildComposerWorkloadStatus();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ComposerWorkloadStatus.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkComposerWorkloadStatus(od);
+    });
+  });
+
+  unittest.group('obj-schema-DagProcessorResource', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDagProcessorResource();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DagProcessorResource.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkDagProcessorResource(od);
+    });
+  });
+
+  unittest.group('obj-schema-DataRetentionConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDataRetentionConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DataRetentionConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkDataRetentionConfig(od);
     });
   });
 
@@ -1921,6 +2342,36 @@ void main() {
       final od = api.ListOperationsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkListOperationsResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-ListUserWorkloadsConfigMapsResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildListUserWorkloadsConfigMapsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListUserWorkloadsConfigMapsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkListUserWorkloadsConfigMapsResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-ListUserWorkloadsSecretsResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildListUserWorkloadsSecretsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListUserWorkloadsSecretsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkListUserWorkloadsSecretsResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-ListWorkloadsResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildListWorkloadsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListWorkloadsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkListWorkloadsResponse(od);
     });
   });
 
@@ -2114,6 +2565,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-TaskLogsRetentionConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildTaskLogsRetentionConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TaskLogsRetentionConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkTaskLogsRetentionConfig(od);
+    });
+  });
+
   unittest.group('obj-schema-TriggererResource', () {
     unittest.test('to-json--from-json', () async {
       final o = buildTriggererResource();
@@ -2121,6 +2582,26 @@ void main() {
       final od = api.TriggererResource.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkTriggererResource(od);
+    });
+  });
+
+  unittest.group('obj-schema-UserWorkloadsConfigMap', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildUserWorkloadsConfigMap();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UserWorkloadsConfigMap.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkUserWorkloadsConfigMap(od);
+    });
+  });
+
+  unittest.group('obj-schema-UserWorkloadsSecret', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildUserWorkloadsSecret();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UserWorkloadsSecret.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkUserWorkloadsSecret(od);
     });
   });
 
@@ -2872,6 +3353,701 @@ void main() {
           $fields: arg_$fields);
       checkStopAirflowCommandResponse(
           response as api.StopAirflowCommandResponse);
+    });
+  });
+
+  unittest.group(
+      'resource-ProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResource',
+      () {
+    unittest.test('method--create', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudComposerApi(mock)
+          .projects
+          .locations
+          .environments
+          .userWorkloadsConfigMaps;
+      final arg_request = buildUserWorkloadsConfigMap();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.UserWorkloadsConfigMap.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkUserWorkloadsConfigMap(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildUserWorkloadsConfigMap());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkUserWorkloadsConfigMap(response as api.UserWorkloadsConfigMap);
+    });
+
+    unittest.test('method--delete', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudComposerApi(mock)
+          .projects
+          .locations
+          .environments
+          .userWorkloadsConfigMaps;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildEmpty());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
+    });
+
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudComposerApi(mock)
+          .projects
+          .locations
+          .environments
+          .userWorkloadsConfigMaps;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildUserWorkloadsConfigMap());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkUserWorkloadsConfigMap(response as api.UserWorkloadsConfigMap);
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudComposerApi(mock)
+          .projects
+          .locations
+          .environments
+          .userWorkloadsConfigMaps;
+      final arg_parent = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildListUserWorkloadsConfigMapsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListUserWorkloadsConfigMapsResponse(
+          response as api.ListUserWorkloadsConfigMapsResponse);
+    });
+
+    unittest.test('method--update', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudComposerApi(mock)
+          .projects
+          .locations
+          .environments
+          .userWorkloadsConfigMaps;
+      final arg_request = buildUserWorkloadsConfigMap();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.UserWorkloadsConfigMap.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkUserWorkloadsConfigMap(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildUserWorkloadsConfigMap());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.update(arg_request, arg_name, $fields: arg_$fields);
+      checkUserWorkloadsConfigMap(response as api.UserWorkloadsConfigMap);
+    });
+  });
+
+  unittest.group(
+      'resource-ProjectsLocationsEnvironmentsUserWorkloadsSecretsResource', () {
+    unittest.test('method--create', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudComposerApi(mock)
+          .projects
+          .locations
+          .environments
+          .userWorkloadsSecrets;
+      final arg_request = buildUserWorkloadsSecret();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.UserWorkloadsSecret.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkUserWorkloadsSecret(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildUserWorkloadsSecret());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkUserWorkloadsSecret(response as api.UserWorkloadsSecret);
+    });
+
+    unittest.test('method--delete', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudComposerApi(mock)
+          .projects
+          .locations
+          .environments
+          .userWorkloadsSecrets;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildEmpty());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
+    });
+
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudComposerApi(mock)
+          .projects
+          .locations
+          .environments
+          .userWorkloadsSecrets;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildUserWorkloadsSecret());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkUserWorkloadsSecret(response as api.UserWorkloadsSecret);
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudComposerApi(mock)
+          .projects
+          .locations
+          .environments
+          .userWorkloadsSecrets;
+      final arg_parent = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildListUserWorkloadsSecretsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListUserWorkloadsSecretsResponse(
+          response as api.ListUserWorkloadsSecretsResponse);
+    });
+
+    unittest.test('method--update', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudComposerApi(mock)
+          .projects
+          .locations
+          .environments
+          .userWorkloadsSecrets;
+      final arg_request = buildUserWorkloadsSecret();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.UserWorkloadsSecret.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkUserWorkloadsSecret(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildUserWorkloadsSecret());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.update(arg_request, arg_name, $fields: arg_$fields);
+      checkUserWorkloadsSecret(response as api.UserWorkloadsSecret);
+    });
+  });
+
+  unittest.group('resource-ProjectsLocationsEnvironmentsWorkloadsResource', () {
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.CloudComposerApi(mock).projects.locations.environments.workloads;
+      final arg_parent = 'foo';
+      final arg_filter = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['filter']!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildListWorkloadsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListWorkloadsResponse(response as api.ListWorkloadsResponse);
     });
   });
 

@@ -100,6 +100,15 @@ class CaseClassificationsResource {
   /// [pageToken] - A token identifying the page of results to return. If
   /// unspecified, the first page is retrieved.
   ///
+  /// [product_productLine] - The Product Line of the Product.
+  /// Possible string values are:
+  /// - "PRODUCT_LINE_UNSPECIFIED" : Unknown product type.
+  /// - "GOOGLE_CLOUD" : Google Cloud
+  /// - "GOOGLE_MAPS" : Google Maps
+  ///
+  /// [product_productSubline] - The Product Subline of the Product, such as
+  /// "Maps Billing".
+  ///
   /// [query] - An expression used to filter case classifications. If it's an
   /// empty string, then no filtering happens. Otherwise, case classifications
   /// will be returned that match the filter.
@@ -117,12 +126,18 @@ class CaseClassificationsResource {
   async.Future<SearchCaseClassificationsResponse> search({
     core.int? pageSize,
     core.String? pageToken,
+    core.String? product_productLine,
+    core.String? product_productSubline,
     core.String? query,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (product_productLine != null)
+        'product.productLine': [product_productLine],
+      if (product_productSubline != null)
+        'product.productSubline': [product_productSubline],
       if (query != null) 'query': [query],
       if ($fields != null) 'fields': [$fields],
     };
@@ -405,6 +420,12 @@ class CasesResource {
   /// [pageToken] - A token identifying the page of results to return. If
   /// unspecified, the first page is retrieved.
   ///
+  /// [productLine] - The product line to request cases for.
+  /// Possible string values are:
+  /// - "PRODUCT_LINE_UNSPECIFIED" : Unknown product type.
+  /// - "GOOGLE_CLOUD" : Google Cloud
+  /// - "GOOGLE_MAPS" : Google Maps
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -420,12 +441,14 @@ class CasesResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.String? productLine,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (productLine != null) 'productLine': [productLine],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -908,8 +931,11 @@ class MediaResource {
   }
 }
 
-/// An object containing information about the effective user and authenticated
-/// principal responsible for an action.
+/// An Actor represents an entity that performed an action.
+///
+/// For example, an actor could be a user who posted a comment on a support
+/// case, a user who uploaded an attachment, or a service account that created a
+/// support case.
 class Actor {
   /// The name to display for the actor.
   ///
@@ -920,10 +946,13 @@ class Actor {
 
   /// The email address of the actor.
   ///
-  /// If not provided, it is inferred from credentials supplied during case
-  /// creation. If the authenticated principal does not have an email address,
-  /// one must be provided. When a name is provided, an email must also be
-  /// provided. This will be obfuscated if the user is a Google Support agent.
+  /// If not provided, it is inferred from the credentials supplied during case
+  /// creation. When a name is provided, an email must also be provided. If the
+  /// user is a Google Support agent, this is obfuscated. This field is
+  /// deprecated. Use **username** field instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? email;
 
   /// Whether the actor is a Google support actor.
@@ -931,10 +960,21 @@ class Actor {
   /// Output only.
   core.bool? googleSupport;
 
+  /// The username of the actor.
+  ///
+  /// It may look like an email or other format provided by the identity
+  /// provider. If not provided, it is inferred from the credentials supplied.
+  /// When a name is provided, a username must also be provided. If the user is
+  /// a Google Support agent, this will not be set.
+  ///
+  /// Output only.
+  core.String? username;
+
   Actor({
     this.displayName,
     this.email,
     this.googleSupport,
+    this.username,
   });
 
   Actor.fromJson(core.Map json_)
@@ -947,16 +987,26 @@ class Actor {
           googleSupport: json_.containsKey('googleSupport')
               ? json_['googleSupport'] as core.bool
               : null,
+          username: json_.containsKey('username')
+              ? json_['username'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (email != null) 'email': email!,
         if (googleSupport != null) 'googleSupport': googleSupport!,
+        if (username != null) 'username': username!,
       };
 }
 
-/// Represents a file attached to a support case.
+/// An Attachment contains metadata about a file that was uploaded to a case -
+/// it is NOT a file itself.
+///
+/// That being said, the name of an Attachment object can be used to download
+/// its accompanying file through the `media.download` endpoint. While
+/// attachments can be uploaded in the console at the same time as a comment,
+/// they're associated on a "case" level, not a "comment" level.
 class Attachment {
   /// The time at which the attachment was created.
   ///
@@ -1098,7 +1148,18 @@ class Blobstore2Info {
       };
 }
 
-/// A support case.
+/// A Case is an object that contains the details of a support case.
+///
+/// It contains fields for the time it was created, its priority, its
+/// classification, and more. Cases can also have comments and attachments that
+/// get added over time. A case is parented by a Google Cloud organization or
+/// project. Organizations are identified by a number, so the name of a case
+/// parented by an organization would look like this: ```
+/// organizations/123/cases/456 ``` Projects have two unique identifiers, an ID
+/// and a number, and they look like this: ``` projects/abc/cases/456 ``` ```
+/// projects/123/cases/456 ``` You can use either of them when calling the API.
+/// To learn more about project identifiers, see
+/// \[AIP-2510\](https://google.aip.dev/cloud/2510). Next ID: 38
 class Case {
   /// The issue classification applicable to this case.
   CaseClassification? classification;
@@ -1299,7 +1360,12 @@ class Case {
       };
 }
 
-/// A classification object with a product type and value.
+/// A Case Classification represents the topic that a case is about.
+///
+/// It's very important to use accurate classifications, because they're used to
+/// route your cases to specialists who can help you. A classification always
+/// has an ID that is its unique identifier. A valid ID is required when
+/// creating a case.
 class CaseClassification {
   /// A display name for the classification.
   ///
@@ -1318,9 +1384,13 @@ class CaseClassification {
   /// using the classification ID will fail.
   core.String? id;
 
+  /// The full product the classification corresponds to.
+  Product? product;
+
   CaseClassification({
     this.displayName,
     this.id,
+    this.product,
   });
 
   CaseClassification.fromJson(core.Map json_)
@@ -1329,18 +1399,27 @@ class CaseClassification {
               ? json_['displayName'] as core.String
               : null,
           id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          product: json_.containsKey('product')
+              ? Product.fromJson(
+                  json_['product'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (id != null) 'id': id!,
+        if (product != null) 'product': product!,
       };
 }
 
 /// The request message for the CloseCase endpoint.
 typedef CloseCaseRequest = $Empty;
 
-/// A comment associated with a support case.
+/// Case comments are the main way Google Support communicates with a user who
+/// has opened a case.
+///
+/// When a user responds to Google Support, the user's responses also appear as
+/// comments.
 class Comment {
   /// The full comment body.
   ///
@@ -2381,6 +2460,40 @@ class ObjectId {
         if (bucketName != null) 'bucketName': bucketName!,
         if (generation != null) 'generation': generation!,
         if (objectName != null) 'objectName': objectName!,
+      };
+}
+
+/// The full product a case may be associated with, including Product Line and
+/// Product Subline.
+class Product {
+  /// The Product Line of the Product.
+  /// Possible string values are:
+  /// - "PRODUCT_LINE_UNSPECIFIED" : Unknown product type.
+  /// - "GOOGLE_CLOUD" : Google Cloud
+  /// - "GOOGLE_MAPS" : Google Maps
+  core.String? productLine;
+
+  /// The Product Subline of the Product, such as "Maps Billing".
+  core.String? productSubline;
+
+  Product({
+    this.productLine,
+    this.productSubline,
+  });
+
+  Product.fromJson(core.Map json_)
+      : this(
+          productLine: json_.containsKey('productLine')
+              ? json_['productLine'] as core.String
+              : null,
+          productSubline: json_.containsKey('productSubline')
+              ? json_['productSubline'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (productLine != null) 'productLine': productLine!,
+        if (productSubline != null) 'productSubline': productSubline!,
       };
 }
 

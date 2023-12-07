@@ -2403,6 +2403,7 @@ api.Settings buildSettings() {
   final o = api.Settings();
   buildCounterSettings++;
   if (buildCounterSettings < 3) {
+    o.analyticsMode = 'foo';
     o.defaultSinkConfig = buildDefaultSinkConfig();
     o.disableDefaultSink = true;
     o.kmsKeyName = 'foo';
@@ -2418,6 +2419,10 @@ api.Settings buildSettings() {
 void checkSettings(api.Settings o) {
   buildCounterSettings++;
   if (buildCounterSettings < 3) {
+    unittest.expect(
+      o.analyticsMode!,
+      unittest.equals('foo'),
+    );
     checkDefaultSinkConfig(o.defaultSinkConfig!);
     unittest.expect(o.disableDefaultSink!, unittest.isTrue);
     unittest.expect(

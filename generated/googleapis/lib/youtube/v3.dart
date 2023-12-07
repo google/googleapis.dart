@@ -1059,6 +1059,8 @@ class ChannelsResource {
   ///
   /// [categoryId] - Return the channels within the specified guide category ID.
   ///
+  /// [forHandle] - Return the channel associated with a YouTube handle.
+  ///
   /// [forUsername] - Return the channel associated with a YouTube username.
   ///
   /// [hl] - Stands for "host language". Specifies the localization language of
@@ -1107,6 +1109,7 @@ class ChannelsResource {
   async.Future<ChannelListResponse> list(
     core.List<core.String> part, {
     core.String? categoryId,
+    core.String? forHandle,
     core.String? forUsername,
     core.String? hl,
     core.List<core.String>? id,
@@ -1124,6 +1127,7 @@ class ChannelsResource {
     final queryParams_ = <core.String, core.List<core.String>>{
       'part': part,
       if (categoryId != null) 'categoryId': [categoryId],
+      if (forHandle != null) 'forHandle': [forHandle],
       if (forUsername != null) 'forUsername': [forUsername],
       if (hl != null) 'hl': [hl],
       if (id != null) 'id': id,
@@ -3321,6 +3325,12 @@ class PlaylistImagesResource {
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
+  /// [uploadMedia] - The media to upload.
+  ///
+  /// [uploadOptions] - Options for the media upload. Streaming Media without
+  /// the length being known ahead of time is only supported via resumable
+  /// uploads.
+  ///
   /// Completes with a [PlaylistImage].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3334,6 +3344,8 @@ class PlaylistImagesResource {
     core.String? onBehalfOfContentOwnerChannel,
     core.List<core.String>? part,
     core.String? $fields,
+    commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
+    commons.Media? uploadMedia,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -3345,13 +3357,22 @@ class PlaylistImagesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    const url_ = 'youtube/v3/playlistImages';
+    core.String url_;
+    if (uploadMedia == null) {
+      url_ = 'youtube/v3/playlistImages';
+    } else if (uploadOptions is commons.ResumableUploadOptions) {
+      url_ = '/resumable/upload/youtube/v3/playlistImages';
+    } else {
+      url_ = '/upload/youtube/v3/playlistImages';
+    }
 
     final response_ = await _requester.request(
       url_,
       'POST',
       body: body_,
       queryParams: queryParams_,
+      uploadMedia: uploadMedia,
+      uploadOptions: uploadOptions,
     );
     return PlaylistImage.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
@@ -8353,6 +8374,9 @@ class ChannelStatus {
 /// Information specific to a store on a merchandising platform linked to a
 /// YouTube channel.
 class ChannelToStoreLinkDetails {
+  /// Information specific to billing (read-only).
+  ChannelToStoreLinkDetailsBillingDetails? billingDetails;
+
   /// Google Merchant Center id of the store.
   core.String? merchantId;
 
@@ -8363,6 +8387,7 @@ class ChannelToStoreLinkDetails {
   core.String? storeUrl;
 
   ChannelToStoreLinkDetails({
+    this.billingDetails,
     this.merchantId,
     this.storeName,
     this.storeUrl,
@@ -8370,6 +8395,11 @@ class ChannelToStoreLinkDetails {
 
   ChannelToStoreLinkDetails.fromJson(core.Map json_)
       : this(
+          billingDetails: json_.containsKey('billingDetails')
+              ? ChannelToStoreLinkDetailsBillingDetails.fromJson(
+                  json_['billingDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           merchantId: json_.containsKey('merchantId')
               ? json_['merchantId'] as core.String
               : null,
@@ -8382,9 +8412,36 @@ class ChannelToStoreLinkDetails {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (billingDetails != null) 'billingDetails': billingDetails!,
         if (merchantId != null) 'merchantId': merchantId!,
         if (storeName != null) 'storeName': storeName!,
         if (storeUrl != null) 'storeUrl': storeUrl!,
+      };
+}
+
+/// Information specific to billing.
+class ChannelToStoreLinkDetailsBillingDetails {
+  /// The current billing profile status.
+  /// Possible string values are:
+  /// - "billingStatusUnspecified"
+  /// - "billingStatusPending"
+  /// - "billingStatusActive"
+  /// - "billingStatusInactive"
+  core.String? billingStatus;
+
+  ChannelToStoreLinkDetailsBillingDetails({
+    this.billingStatus,
+  });
+
+  ChannelToStoreLinkDetailsBillingDetails.fromJson(core.Map json_)
+      : this(
+          billingStatus: json_.containsKey('billingStatus')
+              ? json_['billingStatus'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (billingStatus != null) 'billingStatus': billingStatus!,
       };
 }
 
@@ -8718,7 +8775,7 @@ class CommentSnippet {
 }
 
 /// The id of the author's YouTube channel, if any.
-typedef CommentSnippetAuthorChannelId = $Shared10;
+typedef CommentSnippetAuthorChannelId = $Shared11;
 
 /// A *comment thread* represents information that applies to a top level
 /// comment and all its replies.
@@ -11236,7 +11293,7 @@ class InvideoTiming {
       };
 }
 
-typedef LanguageTag = $Shared10;
+typedef LanguageTag = $Shared11;
 
 class LevelDetails {
   /// The name that should be used when referring to this level.
@@ -12498,7 +12555,7 @@ class LiveChatMessageRetractedDetails {
       };
 }
 
-/// Next ID: 33
+/// Next ID: 34
 class LiveChatMessageSnippet {
   /// The ID of the user that authored this message, this field is not always
   /// filled.
@@ -12512,7 +12569,7 @@ class LiveChatMessageSnippet {
   /// messageRetractedEvent - the author that retracted their message
   /// userBannedEvent - the moderator that took the action superChatEvent - the
   /// user that made the purchase superStickerEvent - the user that made the
-  /// purchase
+  /// purchase pollEvent - the user that created the poll
   core.String? authorChannelId;
 
   /// Contains a string that can be displayed to the user.
@@ -12552,6 +12609,9 @@ class LiveChatMessageSnippet {
   /// Please note that "member" is the new term for "sponsor".
   LiveChatNewSponsorDetails? newSponsorDetails;
 
+  /// Details about the poll event, this is only set if the type is 'pollEvent'.
+  LiveChatPollDetails? pollDetails;
+
   /// The date and time when the message was orignally published.
   core.DateTime? publishedAt;
 
@@ -12586,6 +12646,7 @@ class LiveChatMessageSnippet {
   /// - "userBannedEvent"
   /// - "superChatEvent"
   /// - "superStickerEvent"
+  /// - "pollEvent"
   core.String? type;
   LiveChatUserBannedMessageDetails? userBannedDetails;
 
@@ -12601,6 +12662,7 @@ class LiveChatMessageSnippet {
     this.messageDeletedDetails,
     this.messageRetractedDetails,
     this.newSponsorDetails,
+    this.pollDetails,
     this.publishedAt,
     this.superChatDetails,
     this.superStickerDetails,
@@ -12660,6 +12722,10 @@ class LiveChatMessageSnippet {
               ? LiveChatNewSponsorDetails.fromJson(json_['newSponsorDetails']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          pollDetails: json_.containsKey('pollDetails')
+              ? LiveChatPollDetails.fromJson(
+                  json_['pollDetails'] as core.Map<core.String, core.dynamic>)
+              : null,
           publishedAt: json_.containsKey('publishedAt')
               ? core.DateTime.parse(json_['publishedAt'] as core.String)
               : null,
@@ -12702,6 +12768,7 @@ class LiveChatMessageSnippet {
         if (messageRetractedDetails != null)
           'messageRetractedDetails': messageRetractedDetails!,
         if (newSponsorDetails != null) 'newSponsorDetails': newSponsorDetails!,
+        if (pollDetails != null) 'pollDetails': pollDetails!,
         if (publishedAt != null)
           'publishedAt': publishedAt!.toUtc().toIso8601String(),
         if (superChatDetails != null) 'superChatDetails': superChatDetails!,
@@ -12916,6 +12983,92 @@ class LiveChatNewSponsorDetails {
   core.Map<core.String, core.dynamic> toJson() => {
         if (isUpgrade != null) 'isUpgrade': isUpgrade!,
         if (memberLevelName != null) 'memberLevelName': memberLevelName!,
+      };
+}
+
+class LiveChatPollDetails {
+  LiveChatPollDetailsPollMetadata? metadata;
+
+  ///
+  /// Possible string values are:
+  /// - "unknown"
+  /// - "active"
+  /// - "closed"
+  core.String? status;
+
+  LiveChatPollDetails({
+    this.metadata,
+    this.status,
+  });
+
+  LiveChatPollDetails.fromJson(core.Map json_)
+      : this(
+          metadata: json_.containsKey('metadata')
+              ? LiveChatPollDetailsPollMetadata.fromJson(
+                  json_['metadata'] as core.Map<core.String, core.dynamic>)
+              : null,
+          status: json_.containsKey('status')
+              ? json_['status'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (metadata != null) 'metadata': metadata!,
+        if (status != null) 'status': status!,
+      };
+}
+
+class LiveChatPollDetailsPollMetadata {
+  /// The options will be returned in the order that is displayed in 1P
+  core.List<LiveChatPollDetailsPollMetadataPollOption>? options;
+  core.String? questionText;
+
+  LiveChatPollDetailsPollMetadata({
+    this.options,
+    this.questionText,
+  });
+
+  LiveChatPollDetailsPollMetadata.fromJson(core.Map json_)
+      : this(
+          options: json_.containsKey('options')
+              ? (json_['options'] as core.List)
+                  .map((value) =>
+                      LiveChatPollDetailsPollMetadataPollOption.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          questionText: json_.containsKey('questionText')
+              ? json_['questionText'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (options != null) 'options': options!,
+        if (questionText != null) 'questionText': questionText!,
+      };
+}
+
+class LiveChatPollDetailsPollMetadataPollOption {
+  core.String? optionText;
+  core.String? tally;
+
+  LiveChatPollDetailsPollMetadataPollOption({
+    this.optionText,
+    this.tally,
+  });
+
+  LiveChatPollDetailsPollMetadataPollOption.fromJson(core.Map json_)
+      : this(
+          optionText: json_.containsKey('optionText')
+              ? json_['optionText'] as core.String
+              : null,
+          tally:
+              json_.containsKey('tally') ? json_['tally'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (optionText != null) 'optionText': optionText!,
+        if (tally != null) 'tally': tally!,
       };
 }
 

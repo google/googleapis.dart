@@ -79,6 +79,10 @@ class ApplicationDetailServiceResource {
   ///
   /// Request parameters:
   ///
+  /// [bundleLocation_gcsPath] - A path to a file in Google Cloud Storage.
+  /// Example: gs://build-app-1414623860166/app%40debug-unaligned.apk These
+  /// paths are expected to be url encoded (percent encoding)
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -91,10 +95,13 @@ class ApplicationDetailServiceResource {
   /// this method will complete with the same error.
   async.Future<GetApkDetailsResponse> getApkDetails(
     FileReference request, {
+    core.String? bundleLocation_gcsPath,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (bundleLocation_gcsPath != null)
+        'bundleLocation.gcsPath': [bundleLocation_gcsPath],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1469,7 +1476,7 @@ class Apk {
       };
 }
 
-/// Android application details based on application manifest and apk archive
+/// Android application details based on application manifest and archive
 /// contents.
 class ApkDetail {
   ApkManifest? apkManifest;
@@ -2214,9 +2221,9 @@ class FileReference {
       };
 }
 
-/// Response containing the details of the specified Android application APK.
+/// Response containing the details of the specified Android application.
 class GetApkDetailsResponse {
-  /// Details of the Android APK.
+  /// Details of the Android App.
   ApkDetail? apkDetail;
 
   GetApkDetailsResponse({
@@ -3082,6 +3089,45 @@ class ManualSharding {
       };
 }
 
+/// Describes a single error or issue with a matrix.
+class MatrixErrorDetail {
+  /// A human-readable message about how the error in the TestMatrix.
+  ///
+  /// Expands on the `reason` field with additional details and possible options
+  /// to fix the issue.
+  ///
+  /// Output only.
+  core.String? message;
+
+  /// The reason for the error.
+  ///
+  /// This is a constant value in UPPER_SNAKE_CASE that identifies the cause of
+  /// the error.
+  ///
+  /// Output only.
+  core.String? reason;
+
+  MatrixErrorDetail({
+    this.message,
+    this.reason,
+  });
+
+  MatrixErrorDetail.fromJson(core.Map json_)
+      : this(
+          message: json_.containsKey('message')
+              ? json_['message'] as core.String
+              : null,
+          reason: json_.containsKey('reason')
+              ? json_['reason'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (message != null) 'message': message!,
+        if (reason != null) 'reason': reason!,
+      };
+}
+
 /// A tag within a manifest.
 ///
 /// https://developer.android.com/guide/topics/manifest/meta-data-element.html
@@ -3283,12 +3329,19 @@ class PerAndroidVersionInfo {
   /// Output only.
   DirectAccessVersionInfo? directAccessVersionInfo;
 
+  /// The estimated wait time for a single interactive device session using
+  /// Direct Access.
+  ///
+  /// Output only.
+  core.String? interactiveDeviceAvailabilityEstimate;
+
   /// An Android version.
   core.String? versionId;
 
   PerAndroidVersionInfo({
     this.deviceCapacity,
     this.directAccessVersionInfo,
+    this.interactiveDeviceAvailabilityEstimate,
     this.versionId,
   });
 
@@ -3302,6 +3355,10 @@ class PerAndroidVersionInfo {
                   json_['directAccessVersionInfo']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          interactiveDeviceAvailabilityEstimate: json_
+                  .containsKey('interactiveDeviceAvailabilityEstimate')
+              ? json_['interactiveDeviceAvailabilityEstimate'] as core.String
+              : null,
           versionId: json_.containsKey('versionId')
               ? json_['versionId'] as core.String
               : null,
@@ -3311,6 +3368,9 @@ class PerAndroidVersionInfo {
         if (deviceCapacity != null) 'deviceCapacity': deviceCapacity!,
         if (directAccessVersionInfo != null)
           'directAccessVersionInfo': directAccessVersionInfo!,
+        if (interactiveDeviceAvailabilityEstimate != null)
+          'interactiveDeviceAvailabilityEstimate':
+              interactiveDeviceAvailabilityEstimate!,
         if (versionId != null) 'versionId': versionId!,
       };
 }
@@ -4188,6 +4248,14 @@ class TestMatrix {
   /// Required.
   EnvironmentMatrix? environmentMatrix;
 
+  /// Details about why a matrix was deemed invalid.
+  ///
+  /// If multiple checks can be safely performed, they will be reported but no
+  /// assumptions should be made about the length of this list.
+  ///
+  /// Output only.
+  core.List<MatrixErrorDetail>? extendedInvalidMatrixDetails;
+
   /// If true, only a single attempt at most will be made to run each
   /// execution/shard in the matrix.
   ///
@@ -4374,6 +4442,7 @@ class TestMatrix {
   TestMatrix({
     this.clientInfo,
     this.environmentMatrix,
+    this.extendedInvalidMatrixDetails,
     this.failFast,
     this.flakyTestAttempts,
     this.invalidMatrixDetails,
@@ -4397,6 +4466,13 @@ class TestMatrix {
               ? EnvironmentMatrix.fromJson(json_['environmentMatrix']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          extendedInvalidMatrixDetails:
+              json_.containsKey('extendedInvalidMatrixDetails')
+                  ? (json_['extendedInvalidMatrixDetails'] as core.List)
+                      .map((value) => MatrixErrorDetail.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
           failFast: json_.containsKey('failFast')
               ? json_['failFast'] as core.bool
               : null,
@@ -4439,6 +4515,8 @@ class TestMatrix {
   core.Map<core.String, core.dynamic> toJson() => {
         if (clientInfo != null) 'clientInfo': clientInfo!,
         if (environmentMatrix != null) 'environmentMatrix': environmentMatrix!,
+        if (extendedInvalidMatrixDetails != null)
+          'extendedInvalidMatrixDetails': extendedInvalidMatrixDetails!,
         if (failFast != null) 'failFast': failFast!,
         if (flakyTestAttempts != null) 'flakyTestAttempts': flakyTestAttempts!,
         if (invalidMatrixDetails != null)

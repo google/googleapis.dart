@@ -1057,13 +1057,14 @@ class AwsS3Data {
 
   /// The Resource name of a secret in Secret Manager.
   ///
-  /// The Azure SAS token must be stored in Secret Manager in JSON format: {
-  /// "sas_token" : "SAS_TOKEN" } GoogleServiceAccount must be granted
+  /// AWS credentials must be stored in Secret Manager in JSON format: {
+  /// "access_key_id": "ACCESS_KEY_ID", "secret_access_key": "SECRET_ACCESS_KEY"
+  /// } GoogleServiceAccount must be granted
   /// `roles/secretmanager.secretAccessor` for the resource. See \[Configure
-  /// access to a source: Microsoft Azure Blob
-  /// Storage\](https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager)
+  /// access to a source: Amazon
+  /// S3\](https://cloud.google.com/storage-transfer/docs/source-amazon-s3#secret_manager)
   /// for more information. If `credentials_secret` is specified, do not specify
-  /// azure_credentials. This feature is in
+  /// role_arn or aws_access_key. This feature is in
   /// [preview](https://cloud.google.com/terms/service-terms#1). Format:
   /// `projects/{project_number}/secrets/{secret_name}`
   ///
@@ -1349,6 +1350,14 @@ class GcsData {
   /// Required.
   core.String? bucketName;
 
+  /// Transfer managed folders is in public preview.
+  ///
+  /// This option is only applicable to the Cloud Storage source bucket. If set
+  /// to true: - The source managed folder will be transferred to the
+  /// destination bucket - The destination managed folder will always be
+  /// overwritten, other OVERWRITE options will not be supported
+  core.bool? managedFolderTransferEnabled;
+
   /// Root path to transfer objects.
   ///
   /// Must be an empty string or full path name that ends with a '/'. This field
@@ -1359,6 +1368,7 @@ class GcsData {
 
   GcsData({
     this.bucketName,
+    this.managedFolderTransferEnabled,
     this.path,
   });
 
@@ -1367,11 +1377,17 @@ class GcsData {
           bucketName: json_.containsKey('bucketName')
               ? json_['bucketName'] as core.String
               : null,
+          managedFolderTransferEnabled:
+              json_.containsKey('managedFolderTransferEnabled')
+                  ? json_['managedFolderTransferEnabled'] as core.bool
+                  : null,
           path: json_.containsKey('path') ? json_['path'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bucketName != null) 'bucketName': bucketName!,
+        if (managedFolderTransferEnabled != null)
+          'managedFolderTransferEnabled': managedFolderTransferEnabled!,
         if (path != null) 'path': path!,
       };
 }
@@ -1402,6 +1418,30 @@ class GoogleServiceAccount {
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountEmail != null) 'accountEmail': accountEmail!,
         if (subjectId != null) 'subjectId': subjectId!,
+      };
+}
+
+/// An HdfsData resource specifies a path within an HDFS entity (e.g. a
+/// cluster).
+///
+/// All cluster-specific settings, such as namenodes and ports, are configured
+/// on the transfer agents servicing requests, so HdfsData only contains the
+/// root path to the data in our transfer.
+class HdfsData {
+  /// Root path to transfer files.
+  core.String? path;
+
+  HdfsData({
+    this.path,
+  });
+
+  HdfsData.fromJson(core.Map json_)
+      : this(
+          path: json_.containsKey('path') ? json_['path'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (path != null) 'path': path!,
       };
 }
 
@@ -1707,7 +1747,7 @@ class MetadataOptions {
   core.String? temporaryHold;
 
   /// Specifies how each object's `timeCreated` metadata is preserved for
-  /// transfers between Google Cloud Storage buckets.
+  /// transfers.
   ///
   /// If unspecified, the default behavior is the same as TIME_CREATED_SKIP.
   /// Possible string values are:
@@ -1715,9 +1755,9 @@ class MetadataOptions {
   /// - "TIME_CREATED_SKIP" : Do not preserve the `timeCreated` metadata from
   /// the source object.
   /// - "TIME_CREATED_PRESERVE_AS_CUSTOM_TIME" : Preserves the source object's
-  /// `timeCreated` metadata in the `customTime` field in the destination
-  /// object. Note that any value stored in the source object's `customTime`
-  /// field will not be propagated to the destination object.
+  /// `timeCreated` or `lastModified` metadata in the `customTime` field in the
+  /// destination object. Note that any value stored in the source object's
+  /// `customTime` field will not be propagated to the destination object.
   core.String? timeCreated;
 
   /// Specifies how each file's POSIX user ID (UID) attribute should be handled
@@ -2606,6 +2646,9 @@ class TransferSpec {
   /// for more information.
   GcsData? gcsIntermediateDataLocation;
 
+  /// An HDFS cluster data source.
+  HdfsData? hdfsDataSource;
+
   /// An HTTP URL data source.
   HttpData? httpDataSource;
 
@@ -2651,6 +2694,7 @@ class TransferSpec {
     this.gcsDataSink,
     this.gcsDataSource,
     this.gcsIntermediateDataLocation,
+    this.hdfsDataSource,
     this.httpDataSource,
     this.objectConditions,
     this.posixDataSink,
@@ -2691,6 +2735,10 @@ class TransferSpec {
                   ? GcsData.fromJson(json_['gcsIntermediateDataLocation']
                       as core.Map<core.String, core.dynamic>)
                   : null,
+          hdfsDataSource: json_.containsKey('hdfsDataSource')
+              ? HdfsData.fromJson(json_['hdfsDataSource']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           httpDataSource: json_.containsKey('httpDataSource')
               ? HttpData.fromJson(json_['httpDataSource']
                   as core.Map<core.String, core.dynamic>)
@@ -2733,6 +2781,7 @@ class TransferSpec {
         if (gcsDataSource != null) 'gcsDataSource': gcsDataSource!,
         if (gcsIntermediateDataLocation != null)
           'gcsIntermediateDataLocation': gcsIntermediateDataLocation!,
+        if (hdfsDataSource != null) 'hdfsDataSource': hdfsDataSource!,
         if (httpDataSource != null) 'httpDataSource': httpDataSource!,
         if (objectConditions != null) 'objectConditions': objectConditions!,
         if (posixDataSink != null) 'posixDataSink': posixDataSink!,

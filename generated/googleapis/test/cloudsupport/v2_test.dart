@@ -32,6 +32,7 @@ api.Actor buildActor() {
     o.displayName = 'foo';
     o.email = 'foo';
     o.googleSupport = true;
+    o.username = 'foo';
   }
   buildCounterActor--;
   return o;
@@ -49,6 +50,10 @@ void checkActor(api.Actor o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.googleSupport!, unittest.isTrue);
+    unittest.expect(
+      o.username!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterActor--;
 }

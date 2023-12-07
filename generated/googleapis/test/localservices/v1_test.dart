@@ -209,6 +209,7 @@ api.GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport
     o.currencyCode = 'foo';
     o.disputeStatus = 'foo';
     o.geo = 'foo';
+    o.googleAdsLeadId = 'foo';
     o.leadCategory = 'foo';
     o.leadCreationTimestamp = 'foo';
     o.leadId = 'foo';
@@ -250,6 +251,10 @@ void checkGoogleAdsHomeservicesLocalservicesV1DetailedLeadReport(
     );
     unittest.expect(
       o.geo!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.googleAdsLeadId!,
       unittest.equals('foo'),
     );
     unittest.expect(

@@ -1867,14 +1867,31 @@ class Binding {
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
   /// (primary) that represents all the users of that domain. For example,
-  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a user that has
-  /// been recently deleted. For example,
-  /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
-  /// this value reverts to `user:{emailid}` and the recovered user retains the
-  /// role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a service account
-  /// that has been recently deleted. For example,
+  /// `google.com` or `example.com`. *
+  /// `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workforce identity pool. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`:
+  /// All workforce identities in a group. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All workforce identities with a specific attribute value. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}
+  /// / * `: All identities in a workforce identity pool. *
+  /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workload identity pool. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`:
+  /// A workload identity pool group. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All identities in a workload identity pool with a certain attribute. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}
+  /// / * `: All identities in a workload identity pool. *
+  /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
+  /// identifier) representing a user that has been recently deleted. For
+  /// example, `alice@example.com?uid=123456789012345678901`. If the user is
+  /// recovered, this value reverts to `user:{emailid}` and the recovered user
+  /// retains the role in the binding. *
+  /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus
+  /// unique identifier) representing a service account that has been recently
+  /// deleted. For example,
   /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If
   /// the service account is undeleted, this value reverts to
   /// `serviceAccount:{emailid}` and the undeleted service account retains the
@@ -1883,12 +1900,19 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding.
+  /// the role in the binding. *
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// Deleted single identity in a workforce identity pool. For example,
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
   ///
-  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an
+  /// overview of the IAM roles and permissions, see the
+  /// [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For
+  /// a list of the available pre-defined roles, see
+  /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
   Binding({
@@ -4183,6 +4207,16 @@ class MethodPolicy {
 
 /// Describes the generator configuration for a method.
 class MethodSettings {
+  /// List of top-level fields of the request message, that should be
+  /// automatically populated by the client libraries based on their
+  /// (google.api.field_info).format.
+  ///
+  /// Currently supported format: UUID4. Example of a YAML configuration:
+  /// publishing: method_settings: - selector:
+  /// google.example.v1.ExampleService.CreateExample auto_populated_fields: -
+  /// request_id
+  core.List<core.String>? autoPopulatedFields;
+
   /// Describes settings to use for long-running operations when generating API
   /// methods for RPCs.
   ///
@@ -4201,12 +4235,18 @@ class MethodSettings {
   core.String? selector;
 
   MethodSettings({
+    this.autoPopulatedFields,
     this.longRunning,
     this.selector,
   });
 
   MethodSettings.fromJson(core.Map json_)
       : this(
+          autoPopulatedFields: json_.containsKey('autoPopulatedFields')
+              ? (json_['autoPopulatedFields'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           longRunning: json_.containsKey('longRunning')
               ? LongRunning.fromJson(
                   json_['longRunning'] as core.Map<core.String, core.dynamic>)
@@ -4217,6 +4257,8 @@ class MethodSettings {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (autoPopulatedFields != null)
+          'autoPopulatedFields': autoPopulatedFields!,
         if (longRunning != null) 'longRunning': longRunning!,
         if (selector != null) 'selector': selector!,
       };
@@ -4666,7 +4708,7 @@ class MonitoredResourceDescriptor {
   ///
   /// For example, the type `"cloudsql_database"` represents databases in Google
   /// Cloud SQL. For a list of types, see
-  /// [Monitoring resource types](https://cloud.google.com/monitoring/api/resources)
+  /// [Monitored resource types](https://cloud.google.com/monitoring/api/resources)
   /// and
   /// [Logging resource types](https://cloud.google.com/logging/docs/api/v2/resource-list).
   ///
@@ -5168,6 +5210,11 @@ class Publishing {
   /// Example: https://cloud.google.com/pubsub/lite/docs/reference/rpc
   core.String? protoReferenceDocumentationUri;
 
+  /// Optional link to REST reference documentation.
+  ///
+  /// Example: https://cloud.google.com/pubsub/lite/docs/reference/rest
+  core.String? restReferenceDocumentationUri;
+
   Publishing({
     this.apiShortName,
     this.codeownerGithubTeams,
@@ -5179,6 +5226,7 @@ class Publishing {
     this.newIssueUri,
     this.organization,
     this.protoReferenceDocumentationUri,
+    this.restReferenceDocumentationUri,
   });
 
   Publishing.fromJson(core.Map json_)
@@ -5222,6 +5270,10 @@ class Publishing {
               json_.containsKey('protoReferenceDocumentationUri')
                   ? json_['protoReferenceDocumentationUri'] as core.String
                   : null,
+          restReferenceDocumentationUri:
+              json_.containsKey('restReferenceDocumentationUri')
+                  ? json_['restReferenceDocumentationUri'] as core.String
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5237,6 +5289,8 @@ class Publishing {
         if (organization != null) 'organization': organization!,
         if (protoReferenceDocumentationUri != null)
           'protoReferenceDocumentationUri': protoReferenceDocumentationUri!,
+        if (restReferenceDocumentationUri != null)
+          'restReferenceDocumentationUri': restReferenceDocumentationUri!,
       };
 }
 

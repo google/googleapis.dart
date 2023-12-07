@@ -53,6 +53,7 @@ api.Backup buildBackup() {
     o.kmsKey = 'foo';
     o.labels = buildUnnamed0();
     o.name = 'foo';
+    o.satisfiesPzi = true;
     o.satisfiesPzs = true;
     o.sourceFileShare = 'foo';
     o.sourceInstance = 'foo';
@@ -92,6 +93,7 @@ void checkBackup(api.Backup o) {
       o.name!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.satisfiesPzi!, unittest.isTrue);
     unittest.expect(o.satisfiesPzs!, unittest.isTrue);
     unittest.expect(
       o.sourceFileShare!,
@@ -261,6 +263,7 @@ api.Instance buildInstance() {
     o.labels = buildUnnamed3();
     o.name = 'foo';
     o.networks = buildUnnamed4();
+    o.satisfiesPzi = true;
     o.satisfiesPzs = true;
     o.state = 'foo';
     o.statusMessage = 'foo';
@@ -297,6 +300,7 @@ void checkInstance(api.Instance o) {
       unittest.equals('foo'),
     );
     checkUnnamed4(o.networks!);
+    unittest.expect(o.satisfiesPzi!, unittest.isTrue);
     unittest.expect(o.satisfiesPzs!, unittest.isTrue);
     unittest.expect(
       o.state!,

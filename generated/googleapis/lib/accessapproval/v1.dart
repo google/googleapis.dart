@@ -1596,6 +1596,11 @@ class AccessReason {
   /// - "GOOGLE_RESPONSE_TO_PRODUCTION_ALERT" : The principal accessed customer
   /// data in order to diagnose or resolve a suspected issue in services or a
   /// known outage.
+  /// - "CLOUD_INITIATED_ACCESS" : Similar to 'GOOGLE_INITIATED_SERVICE' or
+  /// 'GOOGLE_INITIATED_REVIEW', but with universe agnostic naming. The
+  /// principal accessed customer data in order to diagnose or resolve a
+  /// suspected issue in services or a known outage, or for security, fraud,
+  /// abuse, or compliance review purposes.
   core.String? type;
 
   AccessReason({
@@ -2041,10 +2046,11 @@ class SignatureInfo {
   /// this public key.
   core.String? googlePublicKeyPem;
 
-  /// The serialized ApprovalRequest message without the approve.signature_info
+  /// The ApprovalRequest that is serialized without the SignatureInfo message
   /// field.
   ///
-  /// This to allow the customer to verify signatures if they want to.
+  /// This data is used with the hashing algorithm to generate the digital
+  /// signature, and it can be used for signature verification.
   core.String? serializedApprovalRequest;
   core.List<core.int> get serializedApprovalRequestAsBytes =>
       convert.base64.decode(serializedApprovalRequest!);

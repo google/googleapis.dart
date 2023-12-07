@@ -2855,11 +2855,15 @@ class GoogleCloudRecommenderV1CostProjection {
   /// prices or custom contract prices.
   GoogleTypeMoney? cost;
 
+  /// The approximate cost savings in the billing account's local currency.
+  GoogleTypeMoney? costInLocalCurrency;
+
   /// Duration for which this cost applies.
   core.String? duration;
 
   GoogleCloudRecommenderV1CostProjection({
     this.cost,
+    this.costInLocalCurrency,
     this.duration,
   });
 
@@ -2869,6 +2873,10 @@ class GoogleCloudRecommenderV1CostProjection {
               ? GoogleTypeMoney.fromJson(
                   json_['cost'] as core.Map<core.String, core.dynamic>)
               : null,
+          costInLocalCurrency: json_.containsKey('costInLocalCurrency')
+              ? GoogleTypeMoney.fromJson(json_['costInLocalCurrency']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           duration: json_.containsKey('duration')
               ? json_['duration'] as core.String
               : null,
@@ -2876,6 +2884,8 @@ class GoogleCloudRecommenderV1CostProjection {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cost != null) 'cost': cost!,
+        if (costInLocalCurrency != null)
+          'costInLocalCurrency': costInLocalCurrency!,
         if (duration != null) 'duration': duration!,
       };
 }
@@ -2901,7 +2911,7 @@ class GoogleCloudRecommenderV1Impact {
   /// Use with CategoryType.COST
   GoogleCloudRecommenderV1CostProjection? costProjection;
 
-  /// Use with CategoryType.RELAIBILITY
+  /// Use with CategoryType.RELIABILITY
   GoogleCloudRecommenderV1ReliabilityProjection? reliabilityProjection;
 
   /// Use with CategoryType.SECURITY
@@ -3680,6 +3690,9 @@ class GoogleCloudRecommenderV1Recommendation {
   /// Contains state and metadata.
   GoogleCloudRecommenderV1RecommendationStateInfo? stateInfo;
 
+  /// Fully qualified resource names that this recommendation is targeting.
+  core.List<core.String>? targetResources;
+
   /// Corresponds to a mutually exclusive group ID within a recommender.
   ///
   /// A non-empty ID indicates that the recommendation belongs to a mutually
@@ -3699,6 +3712,7 @@ class GoogleCloudRecommenderV1Recommendation {
     this.priority,
     this.recommenderSubtype,
     this.stateInfo,
+    this.targetResources,
     this.xorGroupId,
   });
 
@@ -3744,6 +3758,11 @@ class GoogleCloudRecommenderV1Recommendation {
               ? GoogleCloudRecommenderV1RecommendationStateInfo.fromJson(
                   json_['stateInfo'] as core.Map<core.String, core.dynamic>)
               : null,
+          targetResources: json_.containsKey('targetResources')
+              ? (json_['targetResources'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           xorGroupId: json_.containsKey('xorGroupId')
               ? json_['xorGroupId'] as core.String
               : null,
@@ -3763,6 +3782,7 @@ class GoogleCloudRecommenderV1Recommendation {
         if (recommenderSubtype != null)
           'recommenderSubtype': recommenderSubtype!,
         if (stateInfo != null) 'stateInfo': stateInfo!,
+        if (targetResources != null) 'targetResources': targetResources!,
         if (xorGroupId != null) 'xorGroupId': xorGroupId!,
       };
 }

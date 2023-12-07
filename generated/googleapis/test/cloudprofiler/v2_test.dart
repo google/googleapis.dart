@@ -108,12 +108,52 @@ void checkDeployment(api.Deployment o) {
   buildCounterDeployment--;
 }
 
-core.Map<core.String, core.String> buildUnnamed2() => {
+core.List<api.Profile> buildUnnamed2() => [
+      buildProfile(),
+      buildProfile(),
+    ];
+
+void checkUnnamed2(core.List<api.Profile> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkProfile(o[0]);
+  checkProfile(o[1]);
+}
+
+core.int buildCounterListProfilesResponse = 0;
+api.ListProfilesResponse buildListProfilesResponse() {
+  final o = api.ListProfilesResponse();
+  buildCounterListProfilesResponse++;
+  if (buildCounterListProfilesResponse < 3) {
+    o.nextPageToken = 'foo';
+    o.profiles = buildUnnamed2();
+    o.skippedProfiles = 42;
+  }
+  buildCounterListProfilesResponse--;
+  return o;
+}
+
+void checkListProfilesResponse(api.ListProfilesResponse o) {
+  buildCounterListProfilesResponse++;
+  if (buildCounterListProfilesResponse < 3) {
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed2(o.profiles!);
+    unittest.expect(
+      o.skippedProfiles!,
+      unittest.equals(42),
+    );
+  }
+  buildCounterListProfilesResponse--;
+}
+
+core.Map<core.String, core.String> buildUnnamed3() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed2(core.Map<core.String, core.String> o) {
+void checkUnnamed3(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -132,10 +172,11 @@ api.Profile buildProfile() {
   if (buildCounterProfile < 3) {
     o.deployment = buildDeployment();
     o.duration = 'foo';
-    o.labels = buildUnnamed2();
+    o.labels = buildUnnamed3();
     o.name = 'foo';
     o.profileBytes = 'foo';
     o.profileType = 'foo';
+    o.startTime = 'foo';
   }
   buildCounterProfile--;
   return o;
@@ -149,7 +190,7 @@ void checkProfile(api.Profile o) {
       o.duration!,
       unittest.equals('foo'),
     );
-    checkUnnamed2(o.labels!);
+    checkUnnamed3(o.labels!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -160,6 +201,10 @@ void checkProfile(api.Profile o) {
     );
     unittest.expect(
       o.profileType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.startTime!,
       unittest.equals('foo'),
     );
   }
@@ -184,6 +229,16 @@ void main() {
       final od =
           api.Deployment.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkDeployment(od);
+    });
+  });
+
+  unittest.group('obj-schema-ListProfilesResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildListProfilesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListProfilesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkListProfilesResponse(od);
     });
   });
 
@@ -312,6 +367,71 @@ void main() {
       final response = await res.createOffline(arg_request, arg_parent,
           $fields: arg_$fields);
       checkProfile(response as api.Profile);
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudProfilerApi(mock).projects.profiles;
+      final arg_parent = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildListProfilesResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListProfilesResponse(response as api.ListProfilesResponse);
     });
 
     unittest.test('method--patch', () async {

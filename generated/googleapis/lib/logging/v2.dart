@@ -156,7 +156,7 @@ class BillingAccountsResource {
 
   /// Gets the Logging CMEK settings for the given resource.Note: CMEK for the
   /// Log Router can be configured for Google Cloud projects, folders,
-  /// organizations and billing accounts.
+  /// organizations, and billing accounts.
   ///
   /// Once configured for an organization, it applies to all projects and
   /// folders in the Google Cloud organization.See Enabling CMEK for Log Router
@@ -171,7 +171,7 @@ class BillingAccountsResource {
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/cmekSettings"
   /// "folders/\[FOLDER_ID\]/cmekSettings" For
   /// example:"organizations/12345/cmekSettings"Note: CMEK for the Log Router
-  /// can be configured for Google Cloud projects, folders, organizations and
+  /// can be configured for Google Cloud projects, folders, organizations, and
   /// billing accounts. Once configured for an organization, it applies to all
   /// projects and folders in the Google Cloud organization.
   /// Value must have pattern `^billingAccounts/\[^/\]+$`.
@@ -205,15 +205,11 @@ class BillingAccountsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets the Log Router settings for the given resource.Note: Settings for the
-  /// Log Router can be get for Google Cloud projects, folders, organizations
-  /// and billing accounts.
-  ///
-  /// Currently it can only be configured for organizations. Once configured for
-  /// an organization, it applies to all projects and folders in the Google
-  /// Cloud organization.See Enabling CMEK for Log Router
-  /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for
-  /// more information.
+  /// Gets the settings for the given resource.Note: Settings can be retrieved
+  /// for Google Cloud projects, folders, organizations, and billing
+  /// accounts.See View default resource settings for Logging
+  /// (https://cloud.google.com/logging/docs/default-settings#view-org-settings)
+  /// for more information.
   ///
   /// Request parameters:
   ///
@@ -222,11 +218,8 @@ class BillingAccountsResource {
   /// "organizations/\[ORGANIZATION_ID\]/settings"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/settings"
   /// "folders/\[FOLDER_ID\]/settings" For
-  /// example:"organizations/12345/settings"Note: Settings for the Log Router
-  /// can be get for Google Cloud projects, folders, organizations and billing
-  /// accounts. Currently it can only be configured for organizations. Once
-  /// configured for an organization, it applies to all projects and folders in
-  /// the Google Cloud organization.
+  /// example:"organizations/12345/settings"Note: Settings can be retrieved for
+  /// Google Cloud projects, folders, organizations, and billing accounts.
   /// Value must have pattern `^billingAccounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1412,10 +1405,10 @@ class BillingAccountsLocationsBucketsViewsResource {
 
   /// Updates a view on a log bucket.
   ///
-  /// This method replaces the following fields in the existing view with values
-  /// from the new view: filter. If an UNAVAILABLE error is returned, this
-  /// indicates that system is not in a state where it can update the view. If
-  /// this occurs, please try again in a few minutes.
+  /// This method replaces the value of the filter field from the existing view
+  /// with the corresponding value from the new view. If an UNAVAILABLE error is
+  /// returned, this indicates that system is not in a state where it can update
+  /// the view. If this occurs, please try again in a few minutes.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1777,7 +1770,7 @@ class BillingAccountsLocationsSavedQueriesResource {
   /// saved_query_id is not provided, the system will generate an alphanumeric
   /// ID.The saved_query_id is limited to 100 characters and can include only
   /// the following characters: upper and lower-case alphanumeric characters,
-  /// underscores, hyphens, and periods. First character has to be alphanumeric.
+  /// underscores, hyphens, periods.First character has to be alphanumeric.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2248,9 +2241,10 @@ class BillingAccountsSinksResource {
 
   /// Updates a sink.
   ///
-  /// This method replaces the following fields in the existing sink with values
-  /// from the new sink: destination, and filter.The updated sink might also
-  /// have a new writer_identity; see the unique_writer_identity field.
+  /// This method replaces the values of the destination and filter fields of
+  /// the existing sink with the corresponding values from the new sink.The
+  /// updated sink might also have a new writer_identity; see the
+  /// unique_writer_identity field.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2333,9 +2327,10 @@ class BillingAccountsSinksResource {
 
   /// Updates a sink.
   ///
-  /// This method replaces the following fields in the existing sink with values
-  /// from the new sink: destination, and filter.The updated sink might also
-  /// have a new writer_identity; see the unique_writer_identity field.
+  /// This method replaces the values of the destination and filter fields of
+  /// the existing sink with the corresponding values from the new sink.The
+  /// updated sink might also have a new writer_identity; see the
+  /// unique_writer_identity field.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2840,7 +2835,7 @@ class FoldersResource {
 
   /// Gets the Logging CMEK settings for the given resource.Note: CMEK for the
   /// Log Router can be configured for Google Cloud projects, folders,
-  /// organizations and billing accounts.
+  /// organizations, and billing accounts.
   ///
   /// Once configured for an organization, it applies to all projects and
   /// folders in the Google Cloud organization.See Enabling CMEK for Log Router
@@ -2855,7 +2850,7 @@ class FoldersResource {
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/cmekSettings"
   /// "folders/\[FOLDER_ID\]/cmekSettings" For
   /// example:"organizations/12345/cmekSettings"Note: CMEK for the Log Router
-  /// can be configured for Google Cloud projects, folders, organizations and
+  /// can be configured for Google Cloud projects, folders, organizations, and
   /// billing accounts. Once configured for an organization, it applies to all
   /// projects and folders in the Google Cloud organization.
   /// Value must have pattern `^folders/\[^/\]+$`.
@@ -2889,15 +2884,11 @@ class FoldersResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets the Log Router settings for the given resource.Note: Settings for the
-  /// Log Router can be get for Google Cloud projects, folders, organizations
-  /// and billing accounts.
-  ///
-  /// Currently it can only be configured for organizations. Once configured for
-  /// an organization, it applies to all projects and folders in the Google
-  /// Cloud organization.See Enabling CMEK for Log Router
-  /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for
-  /// more information.
+  /// Gets the settings for the given resource.Note: Settings can be retrieved
+  /// for Google Cloud projects, folders, organizations, and billing
+  /// accounts.See View default resource settings for Logging
+  /// (https://cloud.google.com/logging/docs/default-settings#view-org-settings)
+  /// for more information.
   ///
   /// Request parameters:
   ///
@@ -2906,11 +2897,8 @@ class FoldersResource {
   /// "organizations/\[ORGANIZATION_ID\]/settings"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/settings"
   /// "folders/\[FOLDER_ID\]/settings" For
-  /// example:"organizations/12345/settings"Note: Settings for the Log Router
-  /// can be get for Google Cloud projects, folders, organizations and billing
-  /// accounts. Currently it can only be configured for organizations. Once
-  /// configured for an organization, it applies to all projects and folders in
-  /// the Google Cloud organization.
+  /// example:"organizations/12345/settings"Note: Settings can be retrieved for
+  /// Google Cloud projects, folders, organizations, and billing accounts.
   /// Value must have pattern `^folders/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2941,18 +2929,19 @@ class FoldersResource {
     return Settings.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates the Log Router settings for the given resource.Note: Settings for
-  /// the Log Router can currently only be configured for Google Cloud
-  /// organizations.
+  /// Updates the settings for the given resource.
   ///
-  /// Once configured, it applies to all projects and folders in the Google
-  /// Cloud organization.UpdateSettings will fail if 1) kms_key_name is invalid,
-  /// or 2) the associated service account does not have the required
-  /// roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key, or
-  /// 3) access to the key is disabled. 4) location_id is not supported by
-  /// Logging. 5) location_id violate OrgPolicy.See Enabling CMEK for Log Router
-  /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for
-  /// more information.
+  /// This method applies to all feature configurations for organization and
+  /// folders.UpdateSettings fails when any of the following are true: The value
+  /// of storage_location either isn't supported by Logging or violates the
+  /// location OrgPolicy. The default_sink_config field is set, but it has an
+  /// unspecified filter write mode. The value of kms_key_name is invalid. The
+  /// associated service account doesn't have the required
+  /// roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key.
+  /// Access to the key is disabled.See Configure default settings for
+  /// organizations and folders
+  /// (https://cloud.google.com/logging/docs/default-settings) for more
+  /// information.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2960,10 +2949,7 @@ class FoldersResource {
   ///
   /// [name] - Required. The resource name for the settings to update.
   /// "organizations/\[ORGANIZATION_ID\]/settings" For
-  /// example:"organizations/12345/settings"Note: Settings for the Log Router
-  /// can currently only be configured for Google Cloud organizations. Once
-  /// configured, it applies to all projects and folders in the Google Cloud
-  /// organization.
+  /// example:"organizations/12345/settings"
   /// Value must have pattern `^folders/\[^/\]+$`.
   ///
   /// [updateMask] - Optional. Field mask identifying which fields from settings
@@ -4157,10 +4143,10 @@ class FoldersLocationsBucketsViewsResource {
 
   /// Updates a view on a log bucket.
   ///
-  /// This method replaces the following fields in the existing view with values
-  /// from the new view: filter. If an UNAVAILABLE error is returned, this
-  /// indicates that system is not in a state where it can update the view. If
-  /// this occurs, please try again in a few minutes.
+  /// This method replaces the value of the filter field from the existing view
+  /// with the corresponding value from the new view. If an UNAVAILABLE error is
+  /// returned, this indicates that system is not in a state where it can update
+  /// the view. If this occurs, please try again in a few minutes.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4522,7 +4508,7 @@ class FoldersLocationsSavedQueriesResource {
   /// saved_query_id is not provided, the system will generate an alphanumeric
   /// ID.The saved_query_id is limited to 100 characters and can include only
   /// the following characters: upper and lower-case alphanumeric characters,
-  /// underscores, hyphens, and periods. First character has to be alphanumeric.
+  /// underscores, hyphens, periods.First character has to be alphanumeric.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4991,9 +4977,10 @@ class FoldersSinksResource {
 
   /// Updates a sink.
   ///
-  /// This method replaces the following fields in the existing sink with values
-  /// from the new sink: destination, and filter.The updated sink might also
-  /// have a new writer_identity; see the unique_writer_identity field.
+  /// This method replaces the values of the destination and filter fields of
+  /// the existing sink with the corresponding values from the new sink.The
+  /// updated sink might also have a new writer_identity; see the
+  /// unique_writer_identity field.
   ///
   /// [request] - The metadata request object.
   ///
@@ -5076,9 +5063,10 @@ class FoldersSinksResource {
 
   /// Updates a sink.
   ///
-  /// This method replaces the following fields in the existing sink with values
-  /// from the new sink: destination, and filter.The updated sink might also
-  /// have a new writer_identity; see the unique_writer_identity field.
+  /// This method replaces the values of the destination and filter fields of
+  /// the existing sink with the corresponding values from the new sink.The
+  /// updated sink might also have a new writer_identity; see the
+  /// unique_writer_identity field.
   ///
   /// [request] - The metadata request object.
   ///
@@ -6061,10 +6049,10 @@ class LocationsBucketsViewsResource {
 
   /// Updates a view on a log bucket.
   ///
-  /// This method replaces the following fields in the existing view with values
-  /// from the new view: filter. If an UNAVAILABLE error is returned, this
-  /// indicates that system is not in a state where it can update the view. If
-  /// this occurs, please try again in a few minutes.
+  /// This method replaces the value of the filter field from the existing view
+  /// with the corresponding value from the new view. If an UNAVAILABLE error is
+  /// returned, this indicates that system is not in a state where it can update
+  /// the view. If this occurs, please try again in a few minutes.
   ///
   /// [request] - The metadata request object.
   ///
@@ -6449,7 +6437,7 @@ class OrganizationsResource {
 
   /// Gets the Logging CMEK settings for the given resource.Note: CMEK for the
   /// Log Router can be configured for Google Cloud projects, folders,
-  /// organizations and billing accounts.
+  /// organizations, and billing accounts.
   ///
   /// Once configured for an organization, it applies to all projects and
   /// folders in the Google Cloud organization.See Enabling CMEK for Log Router
@@ -6464,7 +6452,7 @@ class OrganizationsResource {
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/cmekSettings"
   /// "folders/\[FOLDER_ID\]/cmekSettings" For
   /// example:"organizations/12345/cmekSettings"Note: CMEK for the Log Router
-  /// can be configured for Google Cloud projects, folders, organizations and
+  /// can be configured for Google Cloud projects, folders, organizations, and
   /// billing accounts. Once configured for an organization, it applies to all
   /// projects and folders in the Google Cloud organization.
   /// Value must have pattern `^organizations/\[^/\]+$`.
@@ -6498,15 +6486,11 @@ class OrganizationsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets the Log Router settings for the given resource.Note: Settings for the
-  /// Log Router can be get for Google Cloud projects, folders, organizations
-  /// and billing accounts.
-  ///
-  /// Currently it can only be configured for organizations. Once configured for
-  /// an organization, it applies to all projects and folders in the Google
-  /// Cloud organization.See Enabling CMEK for Log Router
-  /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for
-  /// more information.
+  /// Gets the settings for the given resource.Note: Settings can be retrieved
+  /// for Google Cloud projects, folders, organizations, and billing
+  /// accounts.See View default resource settings for Logging
+  /// (https://cloud.google.com/logging/docs/default-settings#view-org-settings)
+  /// for more information.
   ///
   /// Request parameters:
   ///
@@ -6515,11 +6499,8 @@ class OrganizationsResource {
   /// "organizations/\[ORGANIZATION_ID\]/settings"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/settings"
   /// "folders/\[FOLDER_ID\]/settings" For
-  /// example:"organizations/12345/settings"Note: Settings for the Log Router
-  /// can be get for Google Cloud projects, folders, organizations and billing
-  /// accounts. Currently it can only be configured for organizations. Once
-  /// configured for an organization, it applies to all projects and folders in
-  /// the Google Cloud organization.
+  /// example:"organizations/12345/settings"Note: Settings can be retrieved for
+  /// Google Cloud projects, folders, organizations, and billing accounts.
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -6555,10 +6536,11 @@ class OrganizationsResource {
   /// organizations.
   ///
   /// Once configured, it applies to all projects and folders in the Google
-  /// Cloud organization.UpdateCmekSettings will fail if 1) kms_key_name is
-  /// invalid, or 2) the associated service account does not have the required
-  /// roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key, or
-  /// 3) access to the key is disabled.See Enabling CMEK for Log Router
+  /// Cloud organization.UpdateCmekSettings fails when any of the following are
+  /// true: The value of kms_key_name is invalid. The associated service account
+  /// doesn't have the required roles/cloudkms.cryptoKeyEncrypterDecrypter role
+  /// assigned for the key. Access to the key is disabled.See Enabling CMEK for
+  /// Log Router
   /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for
   /// more information.
   ///
@@ -6616,18 +6598,19 @@ class OrganizationsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates the Log Router settings for the given resource.Note: Settings for
-  /// the Log Router can currently only be configured for Google Cloud
-  /// organizations.
+  /// Updates the settings for the given resource.
   ///
-  /// Once configured, it applies to all projects and folders in the Google
-  /// Cloud organization.UpdateSettings will fail if 1) kms_key_name is invalid,
-  /// or 2) the associated service account does not have the required
-  /// roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key, or
-  /// 3) access to the key is disabled. 4) location_id is not supported by
-  /// Logging. 5) location_id violate OrgPolicy.See Enabling CMEK for Log Router
-  /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for
-  /// more information.
+  /// This method applies to all feature configurations for organization and
+  /// folders.UpdateSettings fails when any of the following are true: The value
+  /// of storage_location either isn't supported by Logging or violates the
+  /// location OrgPolicy. The default_sink_config field is set, but it has an
+  /// unspecified filter write mode. The value of kms_key_name is invalid. The
+  /// associated service account doesn't have the required
+  /// roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key.
+  /// Access to the key is disabled.See Configure default settings for
+  /// organizations and folders
+  /// (https://cloud.google.com/logging/docs/default-settings) for more
+  /// information.
   ///
   /// [request] - The metadata request object.
   ///
@@ -6635,10 +6618,7 @@ class OrganizationsResource {
   ///
   /// [name] - Required. The resource name for the settings to update.
   /// "organizations/\[ORGANIZATION_ID\]/settings" For
-  /// example:"organizations/12345/settings"Note: Settings for the Log Router
-  /// can currently only be configured for Google Cloud organizations. Once
-  /// configured, it applies to all projects and folders in the Google Cloud
-  /// organization.
+  /// example:"organizations/12345/settings"
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [updateMask] - Optional. Field mask identifying which fields from settings
@@ -7834,10 +7814,10 @@ class OrganizationsLocationsBucketsViewsResource {
 
   /// Updates a view on a log bucket.
   ///
-  /// This method replaces the following fields in the existing view with values
-  /// from the new view: filter. If an UNAVAILABLE error is returned, this
-  /// indicates that system is not in a state where it can update the view. If
-  /// this occurs, please try again in a few minutes.
+  /// This method replaces the value of the filter field from the existing view
+  /// with the corresponding value from the new view. If an UNAVAILABLE error is
+  /// returned, this indicates that system is not in a state where it can update
+  /// the view. If this occurs, please try again in a few minutes.
   ///
   /// [request] - The metadata request object.
   ///
@@ -8199,7 +8179,7 @@ class OrganizationsLocationsSavedQueriesResource {
   /// saved_query_id is not provided, the system will generate an alphanumeric
   /// ID.The saved_query_id is limited to 100 characters and can include only
   /// the following characters: upper and lower-case alphanumeric characters,
-  /// underscores, hyphens, and periods. First character has to be alphanumeric.
+  /// underscores, hyphens, periods.First character has to be alphanumeric.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8668,9 +8648,10 @@ class OrganizationsSinksResource {
 
   /// Updates a sink.
   ///
-  /// This method replaces the following fields in the existing sink with values
-  /// from the new sink: destination, and filter.The updated sink might also
-  /// have a new writer_identity; see the unique_writer_identity field.
+  /// This method replaces the values of the destination and filter fields of
+  /// the existing sink with the corresponding values from the new sink.The
+  /// updated sink might also have a new writer_identity; see the
+  /// unique_writer_identity field.
   ///
   /// [request] - The metadata request object.
   ///
@@ -8753,9 +8734,10 @@ class OrganizationsSinksResource {
 
   /// Updates a sink.
   ///
-  /// This method replaces the following fields in the existing sink with values
-  /// from the new sink: destination, and filter.The updated sink might also
-  /// have a new writer_identity; see the unique_writer_identity field.
+  /// This method replaces the values of the destination and filter fields of
+  /// the existing sink with the corresponding values from the new sink.The
+  /// updated sink might also have a new writer_identity; see the
+  /// unique_writer_identity field.
   ///
   /// [request] - The metadata request object.
   ///
@@ -8852,7 +8834,7 @@ class ProjectsResource {
 
   /// Gets the Logging CMEK settings for the given resource.Note: CMEK for the
   /// Log Router can be configured for Google Cloud projects, folders,
-  /// organizations and billing accounts.
+  /// organizations, and billing accounts.
   ///
   /// Once configured for an organization, it applies to all projects and
   /// folders in the Google Cloud organization.See Enabling CMEK for Log Router
@@ -8867,7 +8849,7 @@ class ProjectsResource {
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/cmekSettings"
   /// "folders/\[FOLDER_ID\]/cmekSettings" For
   /// example:"organizations/12345/cmekSettings"Note: CMEK for the Log Router
-  /// can be configured for Google Cloud projects, folders, organizations and
+  /// can be configured for Google Cloud projects, folders, organizations, and
   /// billing accounts. Once configured for an organization, it applies to all
   /// projects and folders in the Google Cloud organization.
   /// Value must have pattern `^projects/\[^/\]+$`.
@@ -8901,15 +8883,11 @@ class ProjectsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets the Log Router settings for the given resource.Note: Settings for the
-  /// Log Router can be get for Google Cloud projects, folders, organizations
-  /// and billing accounts.
-  ///
-  /// Currently it can only be configured for organizations. Once configured for
-  /// an organization, it applies to all projects and folders in the Google
-  /// Cloud organization.See Enabling CMEK for Log Router
-  /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for
-  /// more information.
+  /// Gets the settings for the given resource.Note: Settings can be retrieved
+  /// for Google Cloud projects, folders, organizations, and billing
+  /// accounts.See View default resource settings for Logging
+  /// (https://cloud.google.com/logging/docs/default-settings#view-org-settings)
+  /// for more information.
   ///
   /// Request parameters:
   ///
@@ -8918,11 +8896,8 @@ class ProjectsResource {
   /// "organizations/\[ORGANIZATION_ID\]/settings"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/settings"
   /// "folders/\[FOLDER_ID\]/settings" For
-  /// example:"organizations/12345/settings"Note: Settings for the Log Router
-  /// can be get for Google Cloud projects, folders, organizations and billing
-  /// accounts. Currently it can only be configured for organizations. Once
-  /// configured for an organization, it applies to all projects and folders in
-  /// the Google Cloud organization.
+  /// example:"organizations/12345/settings"Note: Settings can be retrieved for
+  /// Google Cloud projects, folders, organizations, and billing accounts.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -10106,10 +10081,10 @@ class ProjectsLocationsBucketsViewsResource {
 
   /// Updates a view on a log bucket.
   ///
-  /// This method replaces the following fields in the existing view with values
-  /// from the new view: filter. If an UNAVAILABLE error is returned, this
-  /// indicates that system is not in a state where it can update the view. If
-  /// this occurs, please try again in a few minutes.
+  /// This method replaces the value of the filter field from the existing view
+  /// with the corresponding value from the new view. If an UNAVAILABLE error is
+  /// returned, this indicates that system is not in a state where it can update
+  /// the view. If this occurs, please try again in a few minutes.
   ///
   /// [request] - The metadata request object.
   ///
@@ -10471,7 +10446,7 @@ class ProjectsLocationsSavedQueriesResource {
   /// saved_query_id is not provided, the system will generate an alphanumeric
   /// ID.The saved_query_id is limited to 100 characters and can include only
   /// the following characters: upper and lower-case alphanumeric characters,
-  /// underscores, hyphens, and periods. First character has to be alphanumeric.
+  /// underscores, hyphens, periods.First character has to be alphanumeric.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -11154,9 +11129,10 @@ class ProjectsSinksResource {
 
   /// Updates a sink.
   ///
-  /// This method replaces the following fields in the existing sink with values
-  /// from the new sink: destination, and filter.The updated sink might also
-  /// have a new writer_identity; see the unique_writer_identity field.
+  /// This method replaces the values of the destination and filter fields of
+  /// the existing sink with the corresponding values from the new sink.The
+  /// updated sink might also have a new writer_identity; see the
+  /// unique_writer_identity field.
   ///
   /// [request] - The metadata request object.
   ///
@@ -11239,9 +11215,10 @@ class ProjectsSinksResource {
 
   /// Updates a sink.
   ///
-  /// This method replaces the following fields in the existing sink with values
-  /// from the new sink: destination, and filter.The updated sink might also
-  /// have a new writer_identity; see the unique_writer_identity field.
+  /// This method replaces the values of the destination and filter fields of
+  /// the existing sink with the corresponding values from the new sink.The
+  /// updated sink might also have a new writer_identity; see the
+  /// unique_writer_identity field.
   ///
   /// [request] - The metadata request object.
   ///
@@ -11537,9 +11514,10 @@ class SinksResource {
 
   /// Updates a sink.
   ///
-  /// This method replaces the following fields in the existing sink with values
-  /// from the new sink: destination, and filter.The updated sink might also
-  /// have a new writer_identity; see the unique_writer_identity field.
+  /// This method replaces the values of the destination and filter fields of
+  /// the existing sink with the corresponding values from the new sink.The
+  /// updated sink might also have a new writer_identity; see the
+  /// unique_writer_identity field.
   ///
   /// [request] - The metadata request object.
   ///
@@ -11628,7 +11606,7 @@ class V2Resource {
 
   /// Gets the Logging CMEK settings for the given resource.Note: CMEK for the
   /// Log Router can be configured for Google Cloud projects, folders,
-  /// organizations and billing accounts.
+  /// organizations, and billing accounts.
   ///
   /// Once configured for an organization, it applies to all projects and
   /// folders in the Google Cloud organization.See Enabling CMEK for Log Router
@@ -11643,7 +11621,7 @@ class V2Resource {
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/cmekSettings"
   /// "folders/\[FOLDER_ID\]/cmekSettings" For
   /// example:"organizations/12345/cmekSettings"Note: CMEK for the Log Router
-  /// can be configured for Google Cloud projects, folders, organizations and
+  /// can be configured for Google Cloud projects, folders, organizations, and
   /// billing accounts. Once configured for an organization, it applies to all
   /// projects and folders in the Google Cloud organization.
   /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
@@ -11677,15 +11655,11 @@ class V2Resource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets the Log Router settings for the given resource.Note: Settings for the
-  /// Log Router can be get for Google Cloud projects, folders, organizations
-  /// and billing accounts.
-  ///
-  /// Currently it can only be configured for organizations. Once configured for
-  /// an organization, it applies to all projects and folders in the Google
-  /// Cloud organization.See Enabling CMEK for Log Router
-  /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for
-  /// more information.
+  /// Gets the settings for the given resource.Note: Settings can be retrieved
+  /// for Google Cloud projects, folders, organizations, and billing
+  /// accounts.See View default resource settings for Logging
+  /// (https://cloud.google.com/logging/docs/default-settings#view-org-settings)
+  /// for more information.
   ///
   /// Request parameters:
   ///
@@ -11694,11 +11668,8 @@ class V2Resource {
   /// "organizations/\[ORGANIZATION_ID\]/settings"
   /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/settings"
   /// "folders/\[FOLDER_ID\]/settings" For
-  /// example:"organizations/12345/settings"Note: Settings for the Log Router
-  /// can be get for Google Cloud projects, folders, organizations and billing
-  /// accounts. Currently it can only be configured for organizations. Once
-  /// configured for an organization, it applies to all projects and folders in
-  /// the Google Cloud organization.
+  /// example:"organizations/12345/settings"Note: Settings can be retrieved for
+  /// Google Cloud projects, folders, organizations, and billing accounts.
   /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -11734,10 +11705,11 @@ class V2Resource {
   /// organizations.
   ///
   /// Once configured, it applies to all projects and folders in the Google
-  /// Cloud organization.UpdateCmekSettings will fail if 1) kms_key_name is
-  /// invalid, or 2) the associated service account does not have the required
-  /// roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key, or
-  /// 3) access to the key is disabled.See Enabling CMEK for Log Router
+  /// Cloud organization.UpdateCmekSettings fails when any of the following are
+  /// true: The value of kms_key_name is invalid. The associated service account
+  /// doesn't have the required roles/cloudkms.cryptoKeyEncrypterDecrypter role
+  /// assigned for the key. Access to the key is disabled.See Enabling CMEK for
+  /// Log Router
   /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for
   /// more information.
   ///
@@ -11795,18 +11767,19 @@ class V2Resource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates the Log Router settings for the given resource.Note: Settings for
-  /// the Log Router can currently only be configured for Google Cloud
-  /// organizations.
+  /// Updates the settings for the given resource.
   ///
-  /// Once configured, it applies to all projects and folders in the Google
-  /// Cloud organization.UpdateSettings will fail if 1) kms_key_name is invalid,
-  /// or 2) the associated service account does not have the required
-  /// roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key, or
-  /// 3) access to the key is disabled. 4) location_id is not supported by
-  /// Logging. 5) location_id violate OrgPolicy.See Enabling CMEK for Log Router
-  /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for
-  /// more information.
+  /// This method applies to all feature configurations for organization and
+  /// folders.UpdateSettings fails when any of the following are true: The value
+  /// of storage_location either isn't supported by Logging or violates the
+  /// location OrgPolicy. The default_sink_config field is set, but it has an
+  /// unspecified filter write mode. The value of kms_key_name is invalid. The
+  /// associated service account doesn't have the required
+  /// roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key.
+  /// Access to the key is disabled.See Configure default settings for
+  /// organizations and folders
+  /// (https://cloud.google.com/logging/docs/default-settings) for more
+  /// information.
   ///
   /// [request] - The metadata request object.
   ///
@@ -11814,10 +11787,7 @@ class V2Resource {
   ///
   /// [name] - Required. The resource name for the settings to update.
   /// "organizations/\[ORGANIZATION_ID\]/settings" For
-  /// example:"organizations/12345/settings"Note: Settings for the Log Router
-  /// can currently only be configured for Google Cloud organizations. Once
-  /// configured, it applies to all projects and folders in the Google Cloud
-  /// organization.
+  /// example:"organizations/12345/settings"
   /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
   ///
   /// [updateMask] - Optional. Field mask identifying which fields from settings
@@ -12023,6 +11993,8 @@ class CmekSettings {
   /// field to an empty string.See Enabling CMEK for Log Router
   /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for
   /// more information.
+  ///
+  /// Optional.
   core.String? kmsKeyName;
 
   /// The CryptoKeyVersion resource name for the configured Cloud KMS key.KMS
@@ -12036,6 +12008,8 @@ class CmekSettings {
   /// It will be populated in cases where the CMEK settings are bound to a
   /// single key version.If this field is populated, the kms_key is tied to a
   /// specific CryptoKeyVersion.
+  ///
+  /// Output only.
   core.String? kmsKeyVersionName;
 
   /// The resource name of the CMEK settings.
@@ -12146,9 +12120,9 @@ class DefaultSinkConfig {
   /// The only exported log entries are those that are in the resource owning
   /// the sink and that match the filter.For
   /// example:logName="projects/\[PROJECT_ID\]/logs/\[LOG_ID\]" AND
-  /// severity\>=ERRORCannot be empty or unset if mode == OVERWRITE. In order to
-  /// match all logs, use the following line as the value of filter and do not
-  /// use exclusions:logName:*
+  /// severity\>=ERRORTo match all logs, don't add exclusions and use the
+  /// following line as the value of filter:logName:*Cannot be empty or unset
+  /// when the value of mode is OVERWRITE.
   ///
   /// Optional.
   core.String? filter;
@@ -12459,6 +12433,8 @@ class Link {
   /// When a link is created, a BigQuery dataset is created along with it, in
   /// the same project as the LogBucket it's linked to. This dataset will also
   /// have BigQuery Views corresponding to the LogViews in the bucket.
+  ///
+  /// Optional.
   BigQueryDataset? bigqueryDataset;
 
   /// The creation timestamp of the link.
@@ -12468,6 +12444,8 @@ class Link {
 
   /// Describes this link.The maximum length of the description is 8000
   /// characters.
+  ///
+  /// Optional.
   core.String? description;
 
   /// The resource lifecycle state.
@@ -12498,6 +12476,8 @@ class Link {
   /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/links/\[LINK_ID\]"
   /// For
   /// example:\`projects/my-project/locations/global/buckets/my-bucket/links/my_link
+  ///
+  /// Output only.
   core.String? name;
 
   Link({
@@ -13167,6 +13147,8 @@ typedef Location = $Location01;
 class LogBucket {
   /// Whether log analytics is enabled for this bucket.Once enabled, log
   /// analytics features cannot be disabled.
+  ///
+  /// Optional.
   core.bool? analyticsEnabled;
 
   /// The CMEK settings of the log bucket.
@@ -13175,6 +13157,8 @@ class LogBucket {
   /// the CMEK key provided in this configuration. If a log bucket has CMEK
   /// settings, the CMEK settings cannot be disabled later by updating the log
   /// bucket. Changing the KMS key is allowed.
+  ///
+  /// Optional.
   CmekSettings? cmekSettings;
 
   /// The creation timestamp of the bucket.
@@ -13185,9 +13169,13 @@ class LogBucket {
   core.String? createTime;
 
   /// Describes this bucket.
+  ///
+  /// Optional.
   core.String? description;
 
   /// A list of indexed fields and related configuration data.
+  ///
+  /// Optional.
   core.List<IndexConfig>? indexConfigs;
 
   /// The bucket lifecycle state.
@@ -13211,6 +13199,8 @@ class LogBucket {
   /// cannot be changed.
   ///
   /// Locked buckets may only be deleted if they are empty.
+  ///
+  /// Optional.
   core.bool? locked;
 
   /// The resource name of the bucket.For
@@ -13230,6 +13220,8 @@ class LogBucket {
   ///
   /// Adding a parent will block all child fields. (e.g. foo.bar will block
   /// foo.bar.baz)
+  ///
+  /// Optional.
   core.List<core.String>? restrictedFields;
 
   /// Logs will be retained by default for this amount of time, after which they
@@ -13237,6 +13229,8 @@ class LogBucket {
   ///
   /// The minimum retention period is 1 day. If this value is set to zero at
   /// bucket creation time, the default time of 30 days will be used.
+  ///
+  /// Optional.
   core.int? retentionDays;
 
   /// The last update timestamp of the bucket.
@@ -13757,11 +13751,12 @@ class LogEntrySourceLocation {
 /// groups.
 class LogErrorGroup {
   /// The id is a unique identifier for a particular error group; it is the last
-  /// part of the error group resource name: /projects//errors/.
+  /// part of the error group resource name:
+  /// /project/\[PROJECT_ID\]/errors/\[ERROR_GROUP_ID\].
   ///
-  /// Example: COShysOX0r_51QE The id is derived from key parts of the error-log
-  /// content and is treated as Service Data. For information about how Service
-  /// Data is handled, see Google Cloud Privacy Notice
+  /// Example: COShysOX0r_51QE. The id is derived from key parts of the
+  /// error-log content and is treated as Service Data. For information about
+  /// how Service Data is handled, see Google Cloud Privacy Notice
   /// (https://cloud.google.com/terms/cloud-privacy-notice).
   core.String? id;
 
@@ -13825,7 +13820,7 @@ class LogExclusion {
   /// digits, underscores, hyphens, and periods. First character has to be
   /// alphanumeric.
   ///
-  /// Required.
+  /// Output only.
   core.String? name;
 
   /// The last update timestamp of the exclusion.This field may not be present
@@ -14095,11 +14090,12 @@ class LogMetric {
 }
 
 /// Describes a sink used to export log entries to one of the following
-/// destinations in any project: a Cloud Storage bucket, a BigQuery dataset, a
-/// Pub/Sub topic or a Cloud Logging log bucket.
+/// destinations: a Cloud Logging log bucket, a Cloud Storage bucket, a BigQuery
+/// dataset, a Pub/Sub topic, a Cloud project.A logs filter controls which log
+/// entries are exported.
 ///
-/// A logs filter controls which log entries are exported. The sink must be
-/// created within a project, organization, billing account, or folder.
+/// The sink must be created within a project, organization, billing account, or
+/// folder.
 class LogSink {
   /// Options that affect sinks exporting data to BigQuery.
   ///
@@ -14175,13 +14171,12 @@ class LogSink {
   core.bool? includeChildren;
 
   /// The client-assigned sink identifier, unique within the project.For
-  /// example: "my-syslog-errors-to-pubsub".
+  /// example: "my-syslog-errors-to-pubsub".Sink identifiers are limited to 100
+  /// characters and can include only the following characters: upper and
+  /// lower-case alphanumeric characters, underscores, hyphens, periods.First
+  /// character has to be alphanumeric.
   ///
-  /// Sink identifiers are limited to 100 characters and can include only the
-  /// following characters: upper and lower-case alphanumeric characters,
-  /// underscores, hyphens, and periods. First character has to be alphanumeric.
-  ///
-  /// Required.
+  /// Output only.
   core.String? name;
 
   /// This field is unused.
@@ -14345,18 +14340,27 @@ class LogView {
   core.String? createTime;
 
   /// Describes this view.
+  ///
+  /// Optional.
   core.String? description;
 
   /// Filter that restricts which log entries in a bucket are visible in this
-  /// view.Filters are restricted to be a logical AND of ==/!= of any of the
-  /// following: originating project/folder/organization/billing account.
+  /// view.Filters must be logical conjunctions that use the AND operator, and
+  /// they can use any of the following qualifiers: SOURCE(), which specifies a
+  /// project, folder, organization, or billing account of origin.
   ///
-  /// resource type log idFor example:SOURCE("projects/myproject") AND
-  /// resource.type = "gce_instance" AND LOG_ID("stdout")
+  /// resource.type, which specifies the resource type. LOG_ID(), which
+  /// identifies the log.They can also use the negations of these qualifiers
+  /// with the NOT operator.For example:SOURCE("projects/myproject") AND
+  /// resource.type = "gce_instance" AND NOT LOG_ID("stdout")
+  ///
+  /// Optional.
   core.String? filter;
 
   /// The resource name of the view.For
   /// example:projects/my-project/locations/global/buckets/my-bucket/views/my-view
+  ///
+  /// Output only.
   core.String? name;
 
   /// The last update timestamp of the view.
@@ -14407,6 +14411,8 @@ class LoggingQuery {
   /// (https://cloud.google.com/logging/docs/view/logging-query-language).
   ///
   /// The maximum length of the filter is 20000 characters.
+  ///
+  /// Required.
   core.String? filter;
 
   /// Characters will be counted from the end of the string.
@@ -14416,6 +14422,8 @@ class LoggingQuery {
   core.int? summaryFieldStart;
 
   /// The set of summary fields to display for this saved query.
+  ///
+  /// Optional.
   core.List<SummaryField>? summaryFields;
 
   LoggingQuery({
@@ -14828,7 +14836,7 @@ class MonitoredResourceDescriptor {
   /// The monitored resource type.
   ///
   /// For example, the type "cloudsql_database" represents databases in Google
-  /// Cloud SQL. For a list of types, see Monitoring resource types
+  /// Cloud SQL. For a list of types, see Monitored resource types
   /// (https://cloud.google.com/monitoring/api/resources) and Logging resource
   /// types (https://cloud.google.com/logging/docs/api/v2/resource-list).
   ///
@@ -14990,6 +14998,8 @@ class OpsAnalyticsQuery {
 /// within the last ~ 30 days.
 class RecentQuery {
   /// The timestamp when this query was last run.
+  ///
+  /// Output only.
   core.String? lastRunTime;
 
   /// Logging query that can be executed in Logs Explorer or via Logging API.
@@ -15046,9 +15056,13 @@ class SavedQuery {
   core.String? createTime;
 
   /// A human readable description of the saved query.
+  ///
+  /// Optional.
   core.String? description;
 
   /// The user specified title for the SavedQuery.
+  ///
+  /// Optional.
   core.String? displayName;
 
   /// Logging query that can be executed in Logs Explorer or via Logging API.
@@ -15118,9 +15132,26 @@ class SavedQuery {
       };
 }
 
-/// Describes the settings associated with a project, folder, organization,
-/// billing account, or flexible resource.
+/// Describes the settings associated with a project, folder, organization, or
+/// billing account.
 class Settings {
+  /// The default analytics mode of an org or folder which is inherited by all
+  /// newly created child project buckets.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "ANALYTICS_MODE_UNSPECIFIED" : No default analytics mode defined at this
+  /// resource level, it will inherit from the closest ancester which has a
+  /// defined analytics mode. If there is no specified analytics mode across the
+  /// resource hierarchy, analytics will be disabled by default.
+  /// - "ANALYTICS_ENABLED" : By default, analytics will be enabled for all new
+  /// project-level buckets unless explicitly specified otherwise at bucket
+  /// creation time.
+  /// - "ANALYTICS_DISABLED" : By default, analytics will be disabled for new
+  /// project-level buckets unless explicitly specified otherwise at bucket
+  /// creation time.
+  core.String? analyticsMode;
+
   /// Overrides the built-in configuration for _Default sink.
   ///
   /// Optional.
@@ -15140,17 +15171,12 @@ class Settings {
   /// "projects/\[PROJECT_ID\]/locations/\[LOCATION\]/keyRings/\[KEYRING\]/cryptoKeys/\[KEY\]"
   /// For
   /// example:"projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key"To
-  /// enable CMEK for the Log Router, set this field to a valid kms_key_name for
-  /// which the associated service account has the required
+  /// enable CMEK, set this field to a valid kms_key_name for which the
+  /// associated service account has the required
   /// roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key.The
   /// Cloud KMS key used by the Log Router can be updated by changing the
-  /// kms_key_name to a new valid key name.
-  ///
-  /// Encryption operations that are in progress will be completed with the key
-  /// that was in use when they started. Decryption operations will be completed
-  /// using the key that was used at the time of encryption unless access to
-  /// that key has been revoked.To disable CMEK for the Log Router, set this
-  /// field to an empty string.See Enabling CMEK for Log Router
+  /// kms_key_name to a new valid key name.To disable CMEK for the Log Router,
+  /// set this field to an empty string.See Enabling CMEK for Log Router
   /// (https://cloud.google.com/logging/docs/routing/managed-encryption) for
   /// more information.
   ///
@@ -15158,9 +15184,9 @@ class Settings {
   core.String? kmsKeyName;
 
   /// The service account that will be used by the Log Router to access your
-  /// Cloud KMS key.Before enabling CMEK for Log Router, you must first assign
-  /// the role roles/cloudkms.cryptoKeyEncrypterDecrypter to the service account
-  /// that the Log Router will use to access your Cloud KMS key.
+  /// Cloud KMS key.Before enabling CMEK, you must first assign the role
+  /// roles/cloudkms.cryptoKeyEncrypterDecrypter to the service account that
+  /// will be used to access your Cloud KMS key.
   ///
   /// Use GetSettings to obtain the service account ID.See Enabling CMEK for Log
   /// Router (https://cloud.google.com/logging/docs/routing/managed-encryption)
@@ -15184,18 +15210,17 @@ class Settings {
   /// Output only.
   core.String? name;
 
-  /// The storage location that Cloud Logging will use to create new resources
-  /// when a location is needed but not explicitly provided.
-  ///
-  /// The use cases includes: The location of _Default and _Required log bucket
-  /// for newly created projects and folders.Example value: europe-west1.Note:
-  /// this setting does not affect the location of resources where a location is
-  /// explicitly provided when created, such as custom log buckets.
+  /// The storage location for the _Default and _Required log buckets of newly
+  /// created projects and folders, unless the storage location is explicitly
+  /// provided.Example value: europe-west1.Note: this setting does not affect
+  /// the location of resources where a location is explicitly provided when
+  /// created, such as custom log buckets.
   ///
   /// Optional.
   core.String? storageLocation;
 
   Settings({
+    this.analyticsMode,
     this.defaultSinkConfig,
     this.disableDefaultSink,
     this.kmsKeyName,
@@ -15207,6 +15232,9 @@ class Settings {
 
   Settings.fromJson(core.Map json_)
       : this(
+          analyticsMode: json_.containsKey('analyticsMode')
+              ? json_['analyticsMode'] as core.String
+              : null,
           defaultSinkConfig: json_.containsKey('defaultSinkConfig')
               ? DefaultSinkConfig.fromJson(json_['defaultSinkConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -15230,6 +15258,7 @@ class Settings {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (analyticsMode != null) 'analyticsMode': analyticsMode!,
         if (defaultSinkConfig != null) 'defaultSinkConfig': defaultSinkConfig!,
         if (disableDefaultSink != null)
           'disableDefaultSink': disableDefaultSink!,
@@ -15258,6 +15287,8 @@ typedef Status = $Status;
 class SummaryField {
   /// The field from the LogEntry to include in the summary line, for example
   /// resource.type or jsonPayload.name.
+  ///
+  /// Optional.
   core.String? field;
 
   SummaryField({

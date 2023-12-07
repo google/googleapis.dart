@@ -218,6 +218,7 @@ api.ConsumerPscConnection buildConsumerPscConnection() {
     o.network = 'foo';
     o.project = 'foo';
     o.pscConnectionId = 'foo';
+    o.selectedSubnetwork = 'foo';
     o.serviceAttachmentUri = 'foo';
     o.state = 'foo';
   }
@@ -256,6 +257,10 @@ void checkConsumerPscConnection(api.ConsumerPscConnection o) {
     );
     unittest.expect(
       o.pscConnectionId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.selectedSubnetwork!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -2196,6 +2201,7 @@ api.PscConnection buildPscConnection() {
     o.errorType = 'foo';
     o.gceOperation = 'foo';
     o.pscConnectionId = 'foo';
+    o.selectedSubnetwork = 'foo';
     o.state = 'foo';
   }
   buildCounterPscConnection--;
@@ -2229,6 +2235,10 @@ void checkPscConnection(api.PscConnection o) {
     );
     unittest.expect(
       o.pscConnectionId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.selectedSubnetwork!,
       unittest.equals('foo'),
     );
     unittest.expect(

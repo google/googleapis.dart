@@ -31,7 +31,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20231127",
+    "revision": "20240227",
     "rootUrl": "https://games.googleapis.com/",
     "servicePath": "",
     "title": "Google Play Game Services",

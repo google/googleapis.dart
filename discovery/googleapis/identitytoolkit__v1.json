@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20231103",
+    "revision": "20240220",
     "rootUrl": "https://identitytoolkit.googleapis.com/",
     "servicePath": "",
     "title": "Identity Toolkit API",

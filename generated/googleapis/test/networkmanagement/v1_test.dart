@@ -554,7 +554,10 @@ api.DropInfo buildDropInfo() {
   buildCounterDropInfo++;
   if (buildCounterDropInfo < 3) {
     o.cause = 'foo';
+    o.destinationIp = 'foo';
+    o.region = 'foo';
     o.resourceUri = 'foo';
+    o.sourceIp = 'foo';
   }
   buildCounterDropInfo--;
   return o;
@@ -568,7 +571,19 @@ void checkDropInfo(api.DropInfo o) {
       unittest.equals('foo'),
     );
     unittest.expect(
+      o.destinationIp!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.region!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.resourceUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.sourceIp!,
       unittest.equals('foo'),
     );
   }
@@ -1349,6 +1364,73 @@ void checkLoadBalancerBackend(api.LoadBalancerBackend o) {
   buildCounterLoadBalancerBackend--;
 }
 
+core.int buildCounterLoadBalancerBackendInfo = 0;
+api.LoadBalancerBackendInfo buildLoadBalancerBackendInfo() {
+  final o = api.LoadBalancerBackendInfo();
+  buildCounterLoadBalancerBackendInfo++;
+  if (buildCounterLoadBalancerBackendInfo < 3) {
+    o.backendBucketUri = 'foo';
+    o.backendServiceUri = 'foo';
+    o.healthCheckFirewallsConfigState = 'foo';
+    o.healthCheckUri = 'foo';
+    o.instanceGroupUri = 'foo';
+    o.instanceUri = 'foo';
+    o.name = 'foo';
+    o.networkEndpointGroupUri = 'foo';
+    o.pscGoogleApiTarget = 'foo';
+    o.pscServiceAttachmentUri = 'foo';
+  }
+  buildCounterLoadBalancerBackendInfo--;
+  return o;
+}
+
+void checkLoadBalancerBackendInfo(api.LoadBalancerBackendInfo o) {
+  buildCounterLoadBalancerBackendInfo++;
+  if (buildCounterLoadBalancerBackendInfo < 3) {
+    unittest.expect(
+      o.backendBucketUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.backendServiceUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.healthCheckFirewallsConfigState!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.healthCheckUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.instanceGroupUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.instanceUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.networkEndpointGroupUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.pscGoogleApiTarget!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.pscServiceAttachmentUri!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterLoadBalancerBackendInfo--;
+}
+
 core.List<api.LoadBalancerBackend> buildUnnamed16() => [
       buildLoadBalancerBackend(),
       buildLoadBalancerBackend(),
@@ -1495,6 +1577,88 @@ void checkLocation(api.Location o) {
     );
   }
   buildCounterLocation--;
+}
+
+core.int buildCounterNatInfo = 0;
+api.NatInfo buildNatInfo() {
+  final o = api.NatInfo();
+  buildCounterNatInfo++;
+  if (buildCounterNatInfo < 3) {
+    o.natGatewayName = 'foo';
+    o.networkUri = 'foo';
+    o.newDestinationIp = 'foo';
+    o.newDestinationPort = 42;
+    o.newSourceIp = 'foo';
+    o.newSourcePort = 42;
+    o.oldDestinationIp = 'foo';
+    o.oldDestinationPort = 42;
+    o.oldSourceIp = 'foo';
+    o.oldSourcePort = 42;
+    o.protocol = 'foo';
+    o.routerUri = 'foo';
+    o.type = 'foo';
+  }
+  buildCounterNatInfo--;
+  return o;
+}
+
+void checkNatInfo(api.NatInfo o) {
+  buildCounterNatInfo++;
+  if (buildCounterNatInfo < 3) {
+    unittest.expect(
+      o.natGatewayName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.networkUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.newDestinationIp!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.newDestinationPort!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.newSourceIp!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.newSourcePort!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.oldDestinationIp!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.oldDestinationPort!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.oldSourceIp!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.oldSourcePort!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.protocol!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.routerUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterNatInfo--;
 }
 
 core.int buildCounterNetworkInfo = 0;
@@ -1750,6 +1914,78 @@ void checkProbingDetails(api.ProbingDetails o) {
     );
   }
   buildCounterProbingDetails--;
+}
+
+core.int buildCounterProxyConnectionInfo = 0;
+api.ProxyConnectionInfo buildProxyConnectionInfo() {
+  final o = api.ProxyConnectionInfo();
+  buildCounterProxyConnectionInfo++;
+  if (buildCounterProxyConnectionInfo < 3) {
+    o.networkUri = 'foo';
+    o.newDestinationIp = 'foo';
+    o.newDestinationPort = 42;
+    o.newSourceIp = 'foo';
+    o.newSourcePort = 42;
+    o.oldDestinationIp = 'foo';
+    o.oldDestinationPort = 42;
+    o.oldSourceIp = 'foo';
+    o.oldSourcePort = 42;
+    o.protocol = 'foo';
+    o.subnetUri = 'foo';
+  }
+  buildCounterProxyConnectionInfo--;
+  return o;
+}
+
+void checkProxyConnectionInfo(api.ProxyConnectionInfo o) {
+  buildCounterProxyConnectionInfo++;
+  if (buildCounterProxyConnectionInfo < 3) {
+    unittest.expect(
+      o.networkUri!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.newDestinationIp!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.newDestinationPort!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.newSourceIp!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.newSourcePort!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.oldDestinationIp!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.oldDestinationPort!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.oldSourceIp!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.oldSourcePort!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.protocol!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.subnetUri!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterProxyConnectionInfo--;
 }
 
 core.List<api.Trace> buildUnnamed23() => [
@@ -2093,10 +2329,14 @@ api.Step buildStep() {
     o.googleService = buildGoogleServiceInfo();
     o.instance = buildInstanceInfo();
     o.loadBalancer = buildLoadBalancerInfo();
+    o.loadBalancerBackendInfo = buildLoadBalancerBackendInfo();
+    o.nat = buildNatInfo();
     o.network = buildNetworkInfo();
     o.projectId = 'foo';
+    o.proxyConnection = buildProxyConnectionInfo();
     o.route = buildRouteInfo();
     o.state = 'foo';
+    o.storageBucket = buildStorageBucketInfo();
     o.vpcConnector = buildVpcConnectorInfo();
     o.vpnGateway = buildVpnGatewayInfo();
     o.vpnTunnel = buildVpnTunnelInfo();
@@ -2128,21 +2368,47 @@ void checkStep(api.Step o) {
     checkGoogleServiceInfo(o.googleService!);
     checkInstanceInfo(o.instance!);
     checkLoadBalancerInfo(o.loadBalancer!);
+    checkLoadBalancerBackendInfo(o.loadBalancerBackendInfo!);
+    checkNatInfo(o.nat!);
     checkNetworkInfo(o.network!);
     unittest.expect(
       o.projectId!,
       unittest.equals('foo'),
     );
+    checkProxyConnectionInfo(o.proxyConnection!);
     checkRouteInfo(o.route!);
     unittest.expect(
       o.state!,
       unittest.equals('foo'),
     );
+    checkStorageBucketInfo(o.storageBucket!);
     checkVpcConnectorInfo(o.vpcConnector!);
     checkVpnGatewayInfo(o.vpnGateway!);
     checkVpnTunnelInfo(o.vpnTunnel!);
   }
   buildCounterStep--;
+}
+
+core.int buildCounterStorageBucketInfo = 0;
+api.StorageBucketInfo buildStorageBucketInfo() {
+  final o = api.StorageBucketInfo();
+  buildCounterStorageBucketInfo++;
+  if (buildCounterStorageBucketInfo < 3) {
+    o.bucket = 'foo';
+  }
+  buildCounterStorageBucketInfo--;
+  return o;
+}
+
+void checkStorageBucketInfo(api.StorageBucketInfo o) {
+  buildCounterStorageBucketInfo++;
+  if (buildCounterStorageBucketInfo < 3) {
+    unittest.expect(
+      o.bucket!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterStorageBucketInfo--;
 }
 
 core.List<core.String> buildUnnamed30() => [
@@ -2234,6 +2500,7 @@ api.Trace buildTrace() {
   buildCounterTrace++;
   if (buildCounterTrace < 3) {
     o.endpointInfo = buildEndpointInfo();
+    o.forwardTraceId = 42;
     o.steps = buildUnnamed32();
   }
   buildCounterTrace--;
@@ -2244,6 +2511,10 @@ void checkTrace(api.Trace o) {
   buildCounterTrace++;
   if (buildCounterTrace < 3) {
     checkEndpointInfo(o.endpointInfo!);
+    unittest.expect(
+      o.forwardTraceId!,
+      unittest.equals(42),
+    );
     checkUnnamed32(o.steps!);
   }
   buildCounterTrace--;
@@ -2711,6 +2982,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-LoadBalancerBackendInfo', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildLoadBalancerBackendInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LoadBalancerBackendInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkLoadBalancerBackendInfo(od);
+    });
+  });
+
   unittest.group('obj-schema-LoadBalancerInfo', () {
     unittest.test('to-json--from-json', () async {
       final o = buildLoadBalancerInfo();
@@ -2728,6 +3009,16 @@ void main() {
       final od =
           api.Location.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkLocation(od);
+    });
+  });
+
+  unittest.group('obj-schema-NatInfo', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildNatInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.NatInfo.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkNatInfo(od);
     });
   });
 
@@ -2768,6 +3059,16 @@ void main() {
       final od = api.ProbingDetails.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkProbingDetails(od);
+    });
+  });
+
+  unittest.group('obj-schema-ProxyConnectionInfo', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildProxyConnectionInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ProxyConnectionInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkProxyConnectionInfo(od);
     });
   });
 
@@ -2828,6 +3129,16 @@ void main() {
       final od =
           api.Step.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkStep(od);
+    });
+  });
+
+  unittest.group('obj-schema-StorageBucketInfo', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildStorageBucketInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.StorageBucketInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkStorageBucketInfo(od);
     });
   });
 

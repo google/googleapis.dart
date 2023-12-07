@@ -1,3 +1,11 @@
+## 13.0.0
+
+ - `apphub` - new!
+ - `bigqueryconnection` - new!
+ - `displayvideo` - Removed v1 (v2, v3 still exist)
+ - `walletobjects` - new!
+ - `workspaceevents` - new!
+
 ## 12.0.0
 
  - `alloydb` - new!

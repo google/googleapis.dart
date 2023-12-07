@@ -2,7 +2,7 @@
 # should be ignored.
 packages:
 - googleapis:
-    version: 12.0.0
+    version: 13.0.0
     repository: https://github.com/google/googleapis.dart/tree/master/generated/googleapis
     readme: resources/README.md
     license: resources/LICENSE
@@ -40,6 +40,7 @@ packages:
     - apigeeregistry:v1
     - apikeys:v2
     - appengine:v1 # https://cloud.google.com/appengine/docs/admin-api/
+    - apphub:v1
     - artifactregistry:v1
     - assuredworkloads:v1
     - authorizedbuyersmarketplace:v1
@@ -49,6 +50,7 @@ packages:
     - beyondcorp:v1
     - biglake:v1
     - bigquery:v2 # https://developers.google.com/bigquery/
+    - bigqueryconnection:v1
     - bigquerydatapolicy:v1
     - bigquerydatatransfer:v1 # https://cloud.google.com/bigquery/transfer/
     - bigqueryreservation:v1
@@ -113,7 +115,6 @@ packages:
     - dialogflow:v3 # https://cloud.google.com/dialogflow-enterprise/
     - digitalassetlinks:v1 # https://developers.google.com/digital-asset-links/
     - discovery:v1 # https://developers.google.com/discovery/
-    - displayvideo:v1
     - displayvideo:v2
     - displayvideo:v3
     - dlp:v2 # https://cloud.google.com/dlp/
@@ -271,12 +272,14 @@ packages:
     - vmmigration:v1
     - vmwareengine:v1
     - vpcaccess:v1
+    - walletobjects:v1
     - webfonts:v1 # https://developers.google.com/fonts/docs/developer_api
     - webrisk:v1
     - websecurityscanner:v1
     - workflowexecutions:v1
     - workflows:v1
     - workloadmanager:v1
+    - workspaceevents:v1
     - workstations:v1
     - youtube:v3 # https://developers.google.com/youtube/
     - youtubeAnalytics:v2 # https://developers.google.com/youtube/analytics/
@@ -323,7 +326,6 @@ additional_apis:
 
 # APIs that we do not wish to include in this package
 skipped_apis:
-- accesscontextmanager:v1beta
 - admob:v1beta #v1 included
 - aiplatform:v1beta1
 - alloydb:v1alpha
@@ -333,6 +335,7 @@ skipped_apis:
 - apigateway:v1beta # v1 included
 - appengine:v1alpha # v1 included
 - appengine:v1beta
+- apphub:v1alpha
 - artifactregistry:v1beta1 #v1 included
 - artifactregistry:v1beta2 #v1 included
 - assuredworkloads:v1beta1
@@ -367,6 +370,7 @@ skipped_apis:
 - dataform:v1beta1
 - datafusion:v1beta1 # v1 included
 - datamigration:v1beta1
+- dataportability:v1beta
 - datastore:v1beta1 # v1 included
 - datastore:v1beta3 # v1 included
 - deploymentmanager:alpha # v2beta # v1 included
@@ -383,6 +387,7 @@ skipped_apis:
 - drivelabels:v2beta
 - eventarc:v1beta1 # v1 included
 - file:v1beta1
+- firebaseappdistribution:v1alpha
 - firebasehosting:v1beta1 # v1 included
 - firebaseml:v1beta2
 - firestore:v1beta1 # v1 included
@@ -423,7 +428,6 @@ skipped_apis:
 - policysimulator:v1alpha
 - policysimulator:v1beta
 - policytroubleshooter:v1beta # v1 included
-- poly:v1 # https://support.google.com/poly/answer/10192635 poly.google.com is shut down!
 - privateca:v1beta1
 - publicca:v1alpha1
 - publicca:v1beta1

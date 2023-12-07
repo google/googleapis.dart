@@ -2362,6 +2362,21 @@ class DnsAuthorization {
   /// / * /locations / * /dnsAuthorizations / * `.
   core.String? name;
 
+  /// Type of DnsAuthorization.
+  ///
+  /// If unset during resource creation the following default will be used: - in
+  /// location global: FIXED_RECORD.
+  ///
+  /// Immutable.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Type is unspecified.
+  /// - "FIXED_RECORD" : FIXED_RECORD DNS authorization uses DNS-01 validation
+  /// method.
+  /// - "PER_PROJECT_RECORD" : PER_PROJECT_RECORD DNS authorization allows for
+  /// independent management of Google-managed certificates with DNS
+  /// authorization across multiple projects.
+  core.String? type;
+
   /// The last update timestamp of a DnsAuthorization.
   ///
   /// Output only.
@@ -2374,6 +2389,7 @@ class DnsAuthorization {
     this.domain,
     this.labels,
     this.name,
+    this.type,
     this.updateTime,
   });
 
@@ -2401,6 +2417,7 @@ class DnsAuthorization {
                 )
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
           updateTime: json_.containsKey('updateTime')
               ? json_['updateTime'] as core.String
               : null,
@@ -2413,6 +2430,7 @@ class DnsAuthorization {
         if (domain != null) 'domain': domain!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
+        if (type != null) 'type': type!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }

@@ -2118,6 +2118,33 @@ void checkManualSharding(api.ManualSharding o) {
   buildCounterManualSharding--;
 }
 
+core.int buildCounterMatrixErrorDetail = 0;
+api.MatrixErrorDetail buildMatrixErrorDetail() {
+  final o = api.MatrixErrorDetail();
+  buildCounterMatrixErrorDetail++;
+  if (buildCounterMatrixErrorDetail < 3) {
+    o.message = 'foo';
+    o.reason = 'foo';
+  }
+  buildCounterMatrixErrorDetail--;
+  return o;
+}
+
+void checkMatrixErrorDetail(api.MatrixErrorDetail o) {
+  buildCounterMatrixErrorDetail++;
+  if (buildCounterMatrixErrorDetail < 3) {
+    unittest.expect(
+      o.message!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.reason!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterMatrixErrorDetail--;
+}
+
 core.int buildCounterMetadata = 0;
 api.Metadata buildMetadata() {
   final o = api.Metadata();
@@ -2293,6 +2320,7 @@ api.PerAndroidVersionInfo buildPerAndroidVersionInfo() {
   if (buildCounterPerAndroidVersionInfo < 3) {
     o.deviceCapacity = 'foo';
     o.directAccessVersionInfo = buildDirectAccessVersionInfo();
+    o.interactiveDeviceAvailabilityEstimate = 'foo';
     o.versionId = 'foo';
   }
   buildCounterPerAndroidVersionInfo--;
@@ -2307,6 +2335,10 @@ void checkPerAndroidVersionInfo(api.PerAndroidVersionInfo o) {
       unittest.equals('foo'),
     );
     checkDirectAccessVersionInfo(o.directAccessVersionInfo!);
+    unittest.expect(
+      o.interactiveDeviceAvailabilityEstimate!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.versionId!,
       unittest.equals('foo'),
@@ -2815,12 +2847,23 @@ void checkTestExecution(api.TestExecution o) {
   buildCounterTestExecution--;
 }
 
-core.List<api.TestExecution> buildUnnamed53() => [
+core.List<api.MatrixErrorDetail> buildUnnamed53() => [
+      buildMatrixErrorDetail(),
+      buildMatrixErrorDetail(),
+    ];
+
+void checkUnnamed53(core.List<api.MatrixErrorDetail> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkMatrixErrorDetail(o[0]);
+  checkMatrixErrorDetail(o[1]);
+}
+
+core.List<api.TestExecution> buildUnnamed54() => [
       buildTestExecution(),
       buildTestExecution(),
     ];
 
-void checkUnnamed53(core.List<api.TestExecution> o) {
+void checkUnnamed54(core.List<api.TestExecution> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTestExecution(o[0]);
   checkTestExecution(o[1]);
@@ -2833,6 +2876,7 @@ api.TestMatrix buildTestMatrix() {
   if (buildCounterTestMatrix < 3) {
     o.clientInfo = buildClientInfo();
     o.environmentMatrix = buildEnvironmentMatrix();
+    o.extendedInvalidMatrixDetails = buildUnnamed53();
     o.failFast = true;
     o.flakyTestAttempts = 42;
     o.invalidMatrixDetails = 'foo';
@@ -2840,7 +2884,7 @@ api.TestMatrix buildTestMatrix() {
     o.projectId = 'foo';
     o.resultStorage = buildResultStorage();
     o.state = 'foo';
-    o.testExecutions = buildUnnamed53();
+    o.testExecutions = buildUnnamed54();
     o.testMatrixId = 'foo';
     o.testSpecification = buildTestSpecification();
     o.timestamp = 'foo';
@@ -2854,6 +2898,7 @@ void checkTestMatrix(api.TestMatrix o) {
   if (buildCounterTestMatrix < 3) {
     checkClientInfo(o.clientInfo!);
     checkEnvironmentMatrix(o.environmentMatrix!);
+    checkUnnamed53(o.extendedInvalidMatrixDetails!);
     unittest.expect(o.failFast!, unittest.isTrue);
     unittest.expect(
       o.flakyTestAttempts!,
@@ -2876,7 +2921,7 @@ void checkTestMatrix(api.TestMatrix o) {
       o.state!,
       unittest.equals('foo'),
     );
-    checkUnnamed53(o.testExecutions!);
+    checkUnnamed54(o.testExecutions!);
     unittest.expect(
       o.testMatrixId!,
       unittest.equals('foo'),
@@ -2890,23 +2935,23 @@ void checkTestMatrix(api.TestMatrix o) {
   buildCounterTestMatrix--;
 }
 
-core.List<api.Apk> buildUnnamed54() => [
+core.List<api.Apk> buildUnnamed55() => [
       buildApk(),
       buildApk(),
     ];
 
-void checkUnnamed54(core.List<api.Apk> o) {
+void checkUnnamed55(core.List<api.Apk> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkApk(o[0]);
   checkApk(o[1]);
 }
 
-core.List<core.String> buildUnnamed55() => [
+core.List<core.String> buildUnnamed56() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed55(core.List<core.String> o) {
+void checkUnnamed56(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2918,34 +2963,34 @@ void checkUnnamed55(core.List<core.String> o) {
   );
 }
 
-core.List<api.EnvironmentVariable> buildUnnamed56() => [
+core.List<api.EnvironmentVariable> buildUnnamed57() => [
       buildEnvironmentVariable(),
       buildEnvironmentVariable(),
     ];
 
-void checkUnnamed56(core.List<api.EnvironmentVariable> o) {
+void checkUnnamed57(core.List<api.EnvironmentVariable> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEnvironmentVariable(o[0]);
   checkEnvironmentVariable(o[1]);
 }
 
-core.List<api.DeviceFile> buildUnnamed57() => [
+core.List<api.DeviceFile> buildUnnamed58() => [
       buildDeviceFile(),
       buildDeviceFile(),
     ];
 
-void checkUnnamed57(core.List<api.DeviceFile> o) {
+void checkUnnamed58(core.List<api.DeviceFile> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDeviceFile(o[0]);
   checkDeviceFile(o[1]);
 }
 
-core.List<api.Apk> buildUnnamed58() => [
+core.List<api.Apk> buildUnnamed59() => [
       buildApk(),
       buildApk(),
     ];
 
-void checkUnnamed58(core.List<api.Apk> o) {
+void checkUnnamed59(core.List<api.Apk> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkApk(o[0]);
   checkApk(o[1]);
@@ -2957,12 +3002,12 @@ api.TestSetup buildTestSetup() {
   buildCounterTestSetup++;
   if (buildCounterTestSetup < 3) {
     o.account = buildAccount();
-    o.additionalApks = buildUnnamed54();
-    o.directoriesToPull = buildUnnamed55();
+    o.additionalApks = buildUnnamed55();
+    o.directoriesToPull = buildUnnamed56();
     o.dontAutograntPermissions = true;
-    o.environmentVariables = buildUnnamed56();
-    o.filesToPush = buildUnnamed57();
-    o.initialSetupApks = buildUnnamed58();
+    o.environmentVariables = buildUnnamed57();
+    o.filesToPush = buildUnnamed58();
+    o.initialSetupApks = buildUnnamed59();
     o.networkProfile = 'foo';
     o.systrace = buildSystraceSetup();
   }
@@ -2974,12 +3019,12 @@ void checkTestSetup(api.TestSetup o) {
   buildCounterTestSetup++;
   if (buildCounterTestSetup < 3) {
     checkAccount(o.account!);
-    checkUnnamed54(o.additionalApks!);
-    checkUnnamed55(o.directoriesToPull!);
+    checkUnnamed55(o.additionalApks!);
+    checkUnnamed56(o.directoriesToPull!);
     unittest.expect(o.dontAutograntPermissions!, unittest.isTrue);
-    checkUnnamed56(o.environmentVariables!);
-    checkUnnamed57(o.filesToPush!);
-    checkUnnamed58(o.initialSetupApks!);
+    checkUnnamed57(o.environmentVariables!);
+    checkUnnamed58(o.filesToPush!);
+    checkUnnamed59(o.initialSetupApks!);
     unittest.expect(
       o.networkProfile!,
       unittest.equals('foo'),
@@ -3031,12 +3076,12 @@ void checkTestSpecification(api.TestSpecification o) {
   buildCounterTestSpecification--;
 }
 
-core.List<core.String> buildUnnamed59() => [
+core.List<core.String> buildUnnamed60() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed59(core.List<core.String> o) {
+void checkUnnamed60(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -3053,7 +3098,7 @@ api.TestTargetsForShard buildTestTargetsForShard() {
   final o = api.TestTargetsForShard();
   buildCounterTestTargetsForShard++;
   if (buildCounterTestTargetsForShard < 3) {
-    o.testTargets = buildUnnamed59();
+    o.testTargets = buildUnnamed60();
   }
   buildCounterTestTargetsForShard--;
   return o;
@@ -3062,7 +3107,7 @@ api.TestTargetsForShard buildTestTargetsForShard() {
 void checkTestTargetsForShard(api.TestTargetsForShard o) {
   buildCounterTestTargetsForShard++;
   if (buildCounterTestTargetsForShard < 3) {
-    checkUnnamed59(o.testTargets!);
+    checkUnnamed60(o.testTargets!);
   }
   buildCounterTestTargetsForShard--;
 }
@@ -3251,12 +3296,12 @@ void checkUsesFeature(api.UsesFeature o) {
   buildCounterUsesFeature--;
 }
 
-core.List<core.String> buildUnnamed60() => [
+core.List<core.String> buildUnnamed61() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed60(core.List<core.String> o) {
+void checkUnnamed61(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -3273,7 +3318,7 @@ api.XcodeVersion buildXcodeVersion() {
   final o = api.XcodeVersion();
   buildCounterXcodeVersion++;
   if (buildCounterXcodeVersion < 3) {
-    o.tags = buildUnnamed60();
+    o.tags = buildUnnamed61();
     o.version = 'foo';
   }
   buildCounterXcodeVersion--;
@@ -3283,7 +3328,7 @@ api.XcodeVersion buildXcodeVersion() {
 void checkXcodeVersion(api.XcodeVersion o) {
   buildCounterXcodeVersion++;
   if (buildCounterXcodeVersion < 3) {
-    checkUnnamed60(o.tags!);
+    checkUnnamed61(o.tags!);
     unittest.expect(
       o.version!,
       unittest.equals('foo'),
@@ -3792,6 +3837,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-MatrixErrorDetail', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMatrixErrorDetail();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MatrixErrorDetail.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkMatrixErrorDetail(od);
+    });
+  });
+
   unittest.group('obj-schema-Metadata', () {
     unittest.test('to-json--from-json', () async {
       final o = buildMetadata();
@@ -4137,6 +4192,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.TestingApi(mock).applicationDetailService;
       final arg_request = buildFileReference();
+      final arg_bundleLocation_gcsPath = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj = api.FileReference.fromJson(
@@ -4174,6 +4230,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['bundleLocation.gcsPath']!.first,
+          unittest.equals(arg_bundleLocation_gcsPath),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -4184,8 +4244,9 @@ void main() {
         final resp = convert.json.encode(buildGetApkDetailsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      final response =
-          await res.getApkDetails(arg_request, $fields: arg_$fields);
+      final response = await res.getApkDetails(arg_request,
+          bundleLocation_gcsPath: arg_bundleLocation_gcsPath,
+          $fields: arg_$fields);
       checkGetApkDetailsResponse(response as api.GetApkDetailsResponse);
     });
   });

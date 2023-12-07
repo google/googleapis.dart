@@ -881,6 +881,8 @@ class AbortInfo {
   /// PSC-based Cloud SQL instance as a source are not supported.
   /// - "SOURCE_FORWARDING_RULE_UNSUPPORTED" : Aborted because tests with a
   /// forwarding rule as a source are not supported.
+  /// - "NON_ROUTABLE_IP_ADDRESS" : Aborted because one of the endpoints is a
+  /// non-routable IP address (loopback, link-local, etc).
   core.String? cause;
 
   /// List of project IDs that the user has specified in the request but does
@@ -1078,14 +1080,31 @@ class Binding {
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
   /// (primary) that represents all the users of that domain. For example,
-  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a user that has
-  /// been recently deleted. For example,
-  /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
-  /// this value reverts to `user:{emailid}` and the recovered user retains the
-  /// role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a service account
-  /// that has been recently deleted. For example,
+  /// `google.com` or `example.com`. *
+  /// `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workforce identity pool. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`:
+  /// All workforce identities in a group. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All workforce identities with a specific attribute value. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}
+  /// / * `: All identities in a workforce identity pool. *
+  /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workload identity pool. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`:
+  /// A workload identity pool group. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All identities in a workload identity pool with a certain attribute. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}
+  /// / * `: All identities in a workload identity pool. *
+  /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
+  /// identifier) representing a user that has been recently deleted. For
+  /// example, `alice@example.com?uid=123456789012345678901`. If the user is
+  /// recovered, this value reverts to `user:{emailid}` and the recovered user
+  /// retains the role in the binding. *
+  /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus
+  /// unique identifier) representing a service account that has been recently
+  /// deleted. For example,
   /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If
   /// the service account is undeleted, this value reverts to
   /// `serviceAccount:{emailid}` and the undeleted service account retains the
@@ -1094,12 +1113,19 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding.
+  /// the role in the binding. *
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// Deleted single identity in a workforce identity pool. For example,
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
   ///
-  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an
+  /// overview of the IAM roles and permissions, see the
+  /// [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For
+  /// a list of the available pre-defined roles, see
+  /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
   Binding({
@@ -1521,6 +1547,15 @@ class DeliverInfo {
   /// - "PSC_VPC_SC" : Target is a VPC-SC that uses
   /// [Private Service Connect](https://cloud.google.com/vpc/docs/configure-private-service-connect-apis).
   /// - "SERVERLESS_NEG" : Target is a serverless network endpoint group.
+  /// - "STORAGE_BUCKET" : Target is a Cloud Storage bucket.
+  /// - "PRIVATE_NETWORK" : Target is a private network. Used only for return
+  /// traces.
+  /// - "CLOUD_FUNCTION" : Target is a Cloud Function. Used only for return
+  /// traces.
+  /// - "APP_ENGINE_VERSION" : Target is a App Engine service version. Used only
+  /// for return traces.
+  /// - "CLOUD_RUN_REVISION" : Target is a Cloud Run revision. Used only for
+  /// return traces.
   core.String? target;
 
   DeliverInfo({
@@ -1556,18 +1591,43 @@ class DropInfo {
   /// receive a packet with a foreign IP address if ip_forward is enabled.
   /// - "FIREWALL_RULE" : Dropped due to a firewall rule, unless allowed due to
   /// connection tracking.
-  /// - "NO_ROUTE" : Dropped due to no routes.
+  /// - "NO_ROUTE" : Dropped due to no matching routes.
   /// - "ROUTE_BLACKHOLE" : Dropped due to invalid route. Route's next hop is a
   /// blackhole.
   /// - "ROUTE_WRONG_NETWORK" : Packet is sent to a wrong (unintended) network.
   /// Example: you trace a packet from VM1:Network1 to VM2:Network2, however,
   /// the route configured in Network1 sends the packet destined for VM2's IP
-  /// addresss to Network3.
+  /// address to Network3.
+  /// - "ROUTE_NEXT_HOP_IP_ADDRESS_NOT_RESOLVED" : Route's next hop IP address
+  /// cannot be resolved to a GCP resource.
+  /// - "ROUTE_NEXT_HOP_RESOURCE_NOT_FOUND" : Route's next hop resource is not
+  /// found.
+  /// - "ROUTE_NEXT_HOP_INSTANCE_WRONG_NETWORK" : Route's next hop instance
+  /// doesn't hace a NIC in the route's network.
+  /// - "ROUTE_NEXT_HOP_INSTANCE_NON_PRIMARY_IP" : Route's next hop IP address
+  /// is not a primary IP address of the next hop instance.
+  /// - "ROUTE_NEXT_HOP_FORWARDING_RULE_IP_MISMATCH" : Route's next hop
+  /// forwarding rule doesn't match next hop IP address.
+  /// - "ROUTE_NEXT_HOP_VPN_TUNNEL_NOT_ESTABLISHED" : Route's next hop VPN
+  /// tunnel is down (does not have valid IKE SAs).
+  /// - "ROUTE_NEXT_HOP_FORWARDING_RULE_TYPE_INVALID" : Route's next hop
+  /// forwarding rule type is invalid (it's not a forwarding rule of the
+  /// internal passthrough load balancer).
+  /// - "NO_ROUTE_FROM_INTERNET_TO_PRIVATE_IPV6_ADDRESS" : Packet is sent from
+  /// the Internet to the private IPv6 address.
+  /// - "VPN_TUNNEL_LOCAL_SELECTOR_MISMATCH" : The packet does not match a
+  /// policy-based VPN tunnel local selector.
+  /// - "VPN_TUNNEL_REMOTE_SELECTOR_MISMATCH" : The packet does not match a
+  /// policy-based VPN tunnel remote selector.
   /// - "PRIVATE_TRAFFIC_TO_INTERNET" : Packet with internal destination address
   /// sent to the internet gateway.
   /// - "PRIVATE_GOOGLE_ACCESS_DISALLOWED" : Instance with only an internal IP
   /// address tries to access Google API and services, but private Google access
-  /// is not enabled.
+  /// is not enabled in the subnet.
+  /// - "PRIVATE_GOOGLE_ACCESS_VIA_VPN_TUNNEL_UNSUPPORTED" : Source endpoint
+  /// tries to access Google API and services through the VPN tunnel to another
+  /// network, but Private Google Access needs to be enabled in the source
+  /// endpoint network.
   /// - "NO_EXTERNAL_ADDRESS" : Instance with only an internal IP address tries
   /// to access external hosts, but Cloud NAT is not enabled in the subnet,
   /// unless special configurations on a VM allow this connection.
@@ -1577,9 +1637,6 @@ class DropInfo {
   /// IP address is being used in the project.
   /// - "FORWARDING_RULE_MISMATCH" : Forwarding rule's protocol and ports do not
   /// match the packet header.
-  /// - "FORWARDING_RULE_REGION_MISMATCH" : Packet could be dropped because it
-  /// was sent from a different region to a regional forwarding without global
-  /// access.
   /// - "FORWARDING_RULE_NO_INSTANCES" : Forwarding rule does not have backends
   /// configured.
   /// - "FIREWALL_BLOCKING_LOAD_BALANCER_BACKEND_HEALTH_CHECK" : Firewalls block
@@ -1640,36 +1697,80 @@ class DropInfo {
   /// connector is set.
   /// - "VPC_CONNECTOR_NOT_RUNNING" : Packet could be dropped because the VPC
   /// connector is not in a running state.
+  /// - "FORWARDING_RULE_REGION_MISMATCH" : Packet could be dropped because it
+  /// was sent from a different region to a regional forwarding without global
+  /// access.
   /// - "PSC_CONNECTION_NOT_ACCEPTED" : The Private Service Connect endpoint is
   /// in a project that is not approved to connect to the service.
+  /// - "PSC_ENDPOINT_ACCESSED_FROM_PEERED_NETWORK" : The packet is sent to the
+  /// Private Service Connect endpoint over the peering, but
+  /// [it's not supported](https://cloud.google.com/vpc/docs/configure-private-service-connect-services#on-premises).
+  /// - "PSC_NEG_PRODUCER_ENDPOINT_NO_GLOBAL_ACCESS" : The packet is sent to the
+  /// Private Service Connect backend (network endpoint group), but the producer
+  /// PSC forwarding rule does not have global access enabled.
+  /// - "PSC_NEG_PRODUCER_FORWARDING_RULE_MULTIPLE_PORTS" : The packet is sent
+  /// to the Private Service Connect backend (network endpoint group), but the
+  /// producer PSC forwarding rule has multiple ports specified.
+  /// - "HYBRID_NEG_NON_DYNAMIC_ROUTE_MATCHED" : The packet sent from the hybrid
+  /// NEG proxy matches a non-dynamic route, but such a configuration is not
+  /// supported.
+  /// - "HYBRID_NEG_NON_LOCAL_DYNAMIC_ROUTE_MATCHED" : The packet sent from the
+  /// hybrid NEG proxy matches a dynamic route with a next hop in a different
+  /// region, but such a configuration is not supported.
   /// - "CLOUD_RUN_REVISION_NOT_READY" : Packet sent from a Cloud Run revision
   /// that is not ready.
   /// - "DROPPED_INSIDE_PSC_SERVICE_PRODUCER" : Packet was dropped inside
   /// Private Service Connect service producer.
   /// - "LOAD_BALANCER_HAS_NO_PROXY_SUBNET" : Packet sent to a load balancer,
   /// which requires a proxy-only subnet and the subnet is not found.
+  /// - "CLOUD_NAT_NO_ADDRESSES" : Packet sent to Cloud Nat without active NAT
+  /// IPs.
   core.String? cause;
+
+  /// Destination IP address of the dropped packet (if relevant).
+  core.String? destinationIp;
+
+  /// Region of the dropped packet (if relevant).
+  core.String? region;
 
   /// URI of the resource that caused the drop.
   core.String? resourceUri;
 
+  /// Source IP address of the dropped packet (if relevant).
+  core.String? sourceIp;
+
   DropInfo({
     this.cause,
+    this.destinationIp,
+    this.region,
     this.resourceUri,
+    this.sourceIp,
   });
 
   DropInfo.fromJson(core.Map json_)
       : this(
           cause:
               json_.containsKey('cause') ? json_['cause'] as core.String : null,
+          destinationIp: json_.containsKey('destinationIp')
+              ? json_['destinationIp'] as core.String
+              : null,
+          region: json_.containsKey('region')
+              ? json_['region'] as core.String
+              : null,
           resourceUri: json_.containsKey('resourceUri')
               ? json_['resourceUri'] as core.String
+              : null,
+          sourceIp: json_.containsKey('sourceIp')
+              ? json_['sourceIp'] as core.String
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cause != null) 'cause': cause!,
+        if (destinationIp != null) 'destinationIp': destinationIp!,
+        if (region != null) 'region': region!,
         if (resourceUri != null) 'resourceUri': resourceUri!,
+        if (sourceIp != null) 'sourceIp': sourceIp!,
       };
 }
 
@@ -1749,9 +1850,6 @@ class Endpoint {
   core.String? instance;
 
   /// The IP address of the endpoint, which can be an external or internal IP.
-  ///
-  /// An IPv6 address is only allowed when the test's destination is a
-  /// [global load balancer VIP](https://cloud.google.com/load-balancing/docs/load-balancing-overview).
   core.String? ipAddress;
 
   /// ID of the load balancer the forwarding rule points to.
@@ -2011,7 +2109,7 @@ typedef Expr = $Expr;
 /// Metadata associated with a VPC firewall rule, an implied VPC firewall rule,
 /// or a hierarchical firewall policy rule.
 class FirewallInfo {
-  /// Possible values: ALLOW, DENY
+  /// Possible values: ALLOW, DENY, APPLY_SECURITY_PROFILE_GROUP
   core.String? action;
 
   /// Possible values: INGRESS, EGRESS
@@ -2043,6 +2141,13 @@ class FirewallInfo {
   /// - "NETWORK_REGIONAL_FIREWALL_POLICY_RULE" : Regional network firewall
   /// policy rule. For details, see
   /// [Regional network firewall policies](https://cloud.google.com/firewall/docs/regional-firewall-policies).
+  /// - "UNSUPPORTED_FIREWALL_POLICY_RULE" : Firewall policy rule containing
+  /// attributes not yet supported in Connectivity tests. Firewall analysis is
+  /// skipped if such a rule can potentially be matched. Please see the
+  /// [list of unsupported configurations](https://cloud.google.com/network-intelligence-center/docs/connectivity-tests/concepts/overview#unsupported-configs).
+  /// - "TRACKING_STATE" : Tracking state for response traffic created when
+  /// request traffic goes through allow firewall rule. For details, see
+  /// [firewall rules specifications](https://cloud.google.com/firewall/docs/firewalls#specifications)
   core.String? firewallRuleType;
 
   /// The URI of the VPC network that the firewall rule is associated with.
@@ -2154,6 +2259,7 @@ class ForwardInfo {
   /// - "CLOUD_SQL_INSTANCE" : Forwarded to a Cloud SQL instance.
   /// - "ANOTHER_PROJECT" : Forwarded to a VPC network in another project.
   /// - "NCC_HUB" : Forwarded to an NCC Hub.
+  /// - "ROUTER_APPLIANCE" : Forwarded to a router appliance.
   core.String? target;
 
   ForwardInfo({
@@ -2303,8 +2409,7 @@ class GKEMasterInfo {
 class GoogleServiceInfo {
   /// Recognized type of a Google Service.
   /// Possible string values are:
-  /// - "GOOGLE_SERVICE_TYPE_UNSPECIFIED" : Unspecified Google Service. Includes
-  /// most of Google APIs and services.
+  /// - "GOOGLE_SERVICE_TYPE_UNSPECIFIED" : Unspecified Google Service.
   /// - "IAP" : Identity aware proxy.
   /// https://cloud.google.com/iap/docs/using-tcp-forwarding
   /// - "GFE_PROXY_OR_HEALTH_CHECK_PROBER" : One of two services sharing IP
@@ -2314,6 +2419,11 @@ class GoogleServiceInfo {
   /// alternate name servers that use private routing.
   /// https://cloud.google.com/dns/docs/zones/forwarding-zones#firewall-rules
   /// https://cloud.google.com/dns/docs/policies#firewall-rules
+  /// - "GOOGLE_API" : private.googleapis.com and restricted.googleapis.com
+  /// - "GOOGLE_API_PSC" : Google API via Private Service Connect.
+  /// https://cloud.google.com/vpc/docs/configure-private-service-connect-apis
+  /// - "GOOGLE_API_VPC_SC" : Google API via VPC Service Controls.
+  /// https://cloud.google.com/vpc/docs/configure-private-service-connect-apis
   core.String? googleServiceType;
 
   /// Source IP address.
@@ -2661,6 +2771,134 @@ class LoadBalancerBackend {
 
 /// For display only.
 ///
+/// Metadata associated with the load balancer backend.
+class LoadBalancerBackendInfo {
+  /// URI of the backend bucket this backend targets (if applicable).
+  core.String? backendBucketUri;
+
+  /// URI of the backend service this backend belongs to (if applicable).
+  core.String? backendServiceUri;
+
+  /// Health check firewalls configuration state for the backend.
+  ///
+  /// This is a result of the static firewall analysis (verifying that health
+  /// check traffic from required IP ranges to the backend is allowed or not).
+  /// The backend might still be unhealthy even if these firewalls are
+  /// configured. Please refer to the documentation for more information:
+  /// https://cloud.google.com/load-balancing/docs/firewall-rules
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "HEALTH_CHECK_FIREWALLS_CONFIG_STATE_UNSPECIFIED" : Configuration state
+  /// unspecified. It usually means that the backend has no health check
+  /// attached, or there was an unexpected configuration error preventing
+  /// Connectivity tests from verifying health check configuration.
+  /// - "FIREWALLS_CONFIGURED" : Firewall rules (policies) allowing health check
+  /// traffic from all required IP ranges to the backend are configured.
+  /// - "FIREWALLS_PARTIALLY_CONFIGURED" : Firewall rules (policies) allow
+  /// health check traffic only from a part of required IP ranges.
+  /// - "FIREWALLS_NOT_CONFIGURED" : Firewall rules (policies) deny health check
+  /// traffic from all required IP ranges to the backend.
+  /// - "FIREWALLS_UNSUPPORTED" : The network contains firewall rules of
+  /// unsupported types, so Connectivity tests were not able to verify health
+  /// check configuration status. Please refer to the documentation for the list
+  /// of unsupported configurations:
+  /// https://cloud.google.com/network-intelligence-center/docs/connectivity-tests/concepts/overview#unsupported-configs
+  core.String? healthCheckFirewallsConfigState;
+
+  /// URI of the health check attached to this backend (if applicable).
+  core.String? healthCheckUri;
+
+  /// URI of the instance group this backend belongs to (if applicable).
+  core.String? instanceGroupUri;
+
+  /// URI of the backend instance (if applicable).
+  ///
+  /// Populated for instance group backends, and zonal NEG backends.
+  core.String? instanceUri;
+
+  /// Display name of the backend.
+  ///
+  /// For example, it might be an instance name for the instance group backends,
+  /// or an IP address and port for zonal network endpoint group backends.
+  core.String? name;
+
+  /// URI of the network endpoint group this backend belongs to (if applicable).
+  core.String? networkEndpointGroupUri;
+
+  /// PSC Google API target this PSC NEG backend targets (if applicable).
+  core.String? pscGoogleApiTarget;
+
+  /// URI of the PSC service attachment this PSC NEG backend targets (if
+  /// applicable).
+  core.String? pscServiceAttachmentUri;
+
+  LoadBalancerBackendInfo({
+    this.backendBucketUri,
+    this.backendServiceUri,
+    this.healthCheckFirewallsConfigState,
+    this.healthCheckUri,
+    this.instanceGroupUri,
+    this.instanceUri,
+    this.name,
+    this.networkEndpointGroupUri,
+    this.pscGoogleApiTarget,
+    this.pscServiceAttachmentUri,
+  });
+
+  LoadBalancerBackendInfo.fromJson(core.Map json_)
+      : this(
+          backendBucketUri: json_.containsKey('backendBucketUri')
+              ? json_['backendBucketUri'] as core.String
+              : null,
+          backendServiceUri: json_.containsKey('backendServiceUri')
+              ? json_['backendServiceUri'] as core.String
+              : null,
+          healthCheckFirewallsConfigState:
+              json_.containsKey('healthCheckFirewallsConfigState')
+                  ? json_['healthCheckFirewallsConfigState'] as core.String
+                  : null,
+          healthCheckUri: json_.containsKey('healthCheckUri')
+              ? json_['healthCheckUri'] as core.String
+              : null,
+          instanceGroupUri: json_.containsKey('instanceGroupUri')
+              ? json_['instanceGroupUri'] as core.String
+              : null,
+          instanceUri: json_.containsKey('instanceUri')
+              ? json_['instanceUri'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          networkEndpointGroupUri: json_.containsKey('networkEndpointGroupUri')
+              ? json_['networkEndpointGroupUri'] as core.String
+              : null,
+          pscGoogleApiTarget: json_.containsKey('pscGoogleApiTarget')
+              ? json_['pscGoogleApiTarget'] as core.String
+              : null,
+          pscServiceAttachmentUri: json_.containsKey('pscServiceAttachmentUri')
+              ? json_['pscServiceAttachmentUri'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (backendBucketUri != null) 'backendBucketUri': backendBucketUri!,
+        if (backendServiceUri != null) 'backendServiceUri': backendServiceUri!,
+        if (healthCheckFirewallsConfigState != null)
+          'healthCheckFirewallsConfigState': healthCheckFirewallsConfigState!,
+        if (healthCheckUri != null) 'healthCheckUri': healthCheckUri!,
+        if (instanceGroupUri != null) 'instanceGroupUri': instanceGroupUri!,
+        if (instanceUri != null) 'instanceUri': instanceUri!,
+        if (name != null) 'name': name!,
+        if (networkEndpointGroupUri != null)
+          'networkEndpointGroupUri': networkEndpointGroupUri!,
+        if (pscGoogleApiTarget != null)
+          'pscGoogleApiTarget': pscGoogleApiTarget!,
+        if (pscServiceAttachmentUri != null)
+          'pscServiceAttachmentUri': pscServiceAttachmentUri!,
+      };
+}
+
+/// For display only.
+///
 /// Metadata associated with a load balancer.
 class LoadBalancerInfo {
   /// Type of load balancer's backend configuration.
@@ -2678,6 +2916,12 @@ class LoadBalancerInfo {
   core.List<LoadBalancerBackend>? backends;
 
   /// URI of the health check for the load balancer.
+  ///
+  /// Deprecated and no longer populated as different load balancer backends
+  /// might have different health checks.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? healthCheckUri;
 
   /// Type of the load balancer.
@@ -2731,6 +2975,145 @@ class LoadBalancerInfo {
 
 /// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
+
+/// For display only.
+///
+/// Metadata associated with NAT.
+class NatInfo {
+  /// The name of Cloud NAT Gateway.
+  ///
+  /// Only valid when type is CLOUD_NAT.
+  core.String? natGatewayName;
+
+  /// URI of the network where NAT translation takes place.
+  core.String? networkUri;
+
+  /// Destination IP address after NAT translation.
+  core.String? newDestinationIp;
+
+  /// Destination port after NAT translation.
+  ///
+  /// Only valid when protocol is TCP or UDP.
+  core.int? newDestinationPort;
+
+  /// Source IP address after NAT translation.
+  core.String? newSourceIp;
+
+  /// Source port after NAT translation.
+  ///
+  /// Only valid when protocol is TCP or UDP.
+  core.int? newSourcePort;
+
+  /// Destination IP address before NAT translation.
+  core.String? oldDestinationIp;
+
+  /// Destination port before NAT translation.
+  ///
+  /// Only valid when protocol is TCP or UDP.
+  core.int? oldDestinationPort;
+
+  /// Source IP address before NAT translation.
+  core.String? oldSourceIp;
+
+  /// Source port before NAT translation.
+  ///
+  /// Only valid when protocol is TCP or UDP.
+  core.int? oldSourcePort;
+
+  /// IP protocol in string format, for example: "TCP", "UDP", "ICMP".
+  core.String? protocol;
+
+  /// Uri of the Cloud Router.
+  ///
+  /// Only valid when type is CLOUD_NAT.
+  core.String? routerUri;
+
+  /// Type of NAT.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Type is unspecified.
+  /// - "INTERNAL_TO_EXTERNAL" : From Compute Engine instance's internal address
+  /// to external address.
+  /// - "EXTERNAL_TO_INTERNAL" : From Compute Engine instance's external address
+  /// to internal address.
+  /// - "CLOUD_NAT" : Cloud NAT Gateway.
+  /// - "PRIVATE_SERVICE_CONNECT" : Private service connect NAT.
+  core.String? type;
+
+  NatInfo({
+    this.natGatewayName,
+    this.networkUri,
+    this.newDestinationIp,
+    this.newDestinationPort,
+    this.newSourceIp,
+    this.newSourcePort,
+    this.oldDestinationIp,
+    this.oldDestinationPort,
+    this.oldSourceIp,
+    this.oldSourcePort,
+    this.protocol,
+    this.routerUri,
+    this.type,
+  });
+
+  NatInfo.fromJson(core.Map json_)
+      : this(
+          natGatewayName: json_.containsKey('natGatewayName')
+              ? json_['natGatewayName'] as core.String
+              : null,
+          networkUri: json_.containsKey('networkUri')
+              ? json_['networkUri'] as core.String
+              : null,
+          newDestinationIp: json_.containsKey('newDestinationIp')
+              ? json_['newDestinationIp'] as core.String
+              : null,
+          newDestinationPort: json_.containsKey('newDestinationPort')
+              ? json_['newDestinationPort'] as core.int
+              : null,
+          newSourceIp: json_.containsKey('newSourceIp')
+              ? json_['newSourceIp'] as core.String
+              : null,
+          newSourcePort: json_.containsKey('newSourcePort')
+              ? json_['newSourcePort'] as core.int
+              : null,
+          oldDestinationIp: json_.containsKey('oldDestinationIp')
+              ? json_['oldDestinationIp'] as core.String
+              : null,
+          oldDestinationPort: json_.containsKey('oldDestinationPort')
+              ? json_['oldDestinationPort'] as core.int
+              : null,
+          oldSourceIp: json_.containsKey('oldSourceIp')
+              ? json_['oldSourceIp'] as core.String
+              : null,
+          oldSourcePort: json_.containsKey('oldSourcePort')
+              ? json_['oldSourcePort'] as core.int
+              : null,
+          protocol: json_.containsKey('protocol')
+              ? json_['protocol'] as core.String
+              : null,
+          routerUri: json_.containsKey('routerUri')
+              ? json_['routerUri'] as core.String
+              : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (natGatewayName != null) 'natGatewayName': natGatewayName!,
+        if (networkUri != null) 'networkUri': networkUri!,
+        if (newDestinationIp != null) 'newDestinationIp': newDestinationIp!,
+        if (newDestinationPort != null)
+          'newDestinationPort': newDestinationPort!,
+        if (newSourceIp != null) 'newSourceIp': newSourceIp!,
+        if (newSourcePort != null) 'newSourcePort': newSourcePort!,
+        if (oldDestinationIp != null) 'oldDestinationIp': oldDestinationIp!,
+        if (oldDestinationPort != null)
+          'oldDestinationPort': oldDestinationPort!,
+        if (oldSourceIp != null) 'oldSourceIp': oldSourceIp!,
+        if (oldSourcePort != null) 'oldSourcePort': oldSourcePort!,
+        if (protocol != null) 'protocol': protocol!,
+        if (routerUri != null) 'routerUri': routerUri!,
+        if (type != null) 'type': type!,
+      };
+}
 
 /// For display only.
 ///
@@ -3082,6 +3465,119 @@ class ProbingDetails {
       };
 }
 
+/// For display only.
+///
+/// Metadata associated with ProxyConnection.
+class ProxyConnectionInfo {
+  /// URI of the network where connection is proxied.
+  core.String? networkUri;
+
+  /// Destination IP address of a new connection.
+  core.String? newDestinationIp;
+
+  /// Destination port of a new connection.
+  ///
+  /// Only valid when protocol is TCP or UDP.
+  core.int? newDestinationPort;
+
+  /// Source IP address of a new connection.
+  core.String? newSourceIp;
+
+  /// Source port of a new connection.
+  ///
+  /// Only valid when protocol is TCP or UDP.
+  core.int? newSourcePort;
+
+  /// Destination IP address of an original connection
+  core.String? oldDestinationIp;
+
+  /// Destination port of an original connection.
+  ///
+  /// Only valid when protocol is TCP or UDP.
+  core.int? oldDestinationPort;
+
+  /// Source IP address of an original connection.
+  core.String? oldSourceIp;
+
+  /// Source port of an original connection.
+  ///
+  /// Only valid when protocol is TCP or UDP.
+  core.int? oldSourcePort;
+
+  /// IP protocol in string format, for example: "TCP", "UDP", "ICMP".
+  core.String? protocol;
+
+  /// Uri of proxy subnet.
+  core.String? subnetUri;
+
+  ProxyConnectionInfo({
+    this.networkUri,
+    this.newDestinationIp,
+    this.newDestinationPort,
+    this.newSourceIp,
+    this.newSourcePort,
+    this.oldDestinationIp,
+    this.oldDestinationPort,
+    this.oldSourceIp,
+    this.oldSourcePort,
+    this.protocol,
+    this.subnetUri,
+  });
+
+  ProxyConnectionInfo.fromJson(core.Map json_)
+      : this(
+          networkUri: json_.containsKey('networkUri')
+              ? json_['networkUri'] as core.String
+              : null,
+          newDestinationIp: json_.containsKey('newDestinationIp')
+              ? json_['newDestinationIp'] as core.String
+              : null,
+          newDestinationPort: json_.containsKey('newDestinationPort')
+              ? json_['newDestinationPort'] as core.int
+              : null,
+          newSourceIp: json_.containsKey('newSourceIp')
+              ? json_['newSourceIp'] as core.String
+              : null,
+          newSourcePort: json_.containsKey('newSourcePort')
+              ? json_['newSourcePort'] as core.int
+              : null,
+          oldDestinationIp: json_.containsKey('oldDestinationIp')
+              ? json_['oldDestinationIp'] as core.String
+              : null,
+          oldDestinationPort: json_.containsKey('oldDestinationPort')
+              ? json_['oldDestinationPort'] as core.int
+              : null,
+          oldSourceIp: json_.containsKey('oldSourceIp')
+              ? json_['oldSourceIp'] as core.String
+              : null,
+          oldSourcePort: json_.containsKey('oldSourcePort')
+              ? json_['oldSourcePort'] as core.int
+              : null,
+          protocol: json_.containsKey('protocol')
+              ? json_['protocol'] as core.String
+              : null,
+          subnetUri: json_.containsKey('subnetUri')
+              ? json_['subnetUri'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (networkUri != null) 'networkUri': networkUri!,
+        if (newDestinationIp != null) 'newDestinationIp': newDestinationIp!,
+        if (newDestinationPort != null)
+          'newDestinationPort': newDestinationPort!,
+        if (newSourceIp != null) 'newSourceIp': newSourceIp!,
+        if (newSourcePort != null) 'newSourcePort': newSourcePort!,
+        if (oldDestinationIp != null) 'oldDestinationIp': oldDestinationIp!,
+        if (oldDestinationPort != null)
+          'oldDestinationPort': oldDestinationPort!,
+        if (oldSourceIp != null) 'oldSourceIp': oldSourceIp!,
+        if (oldSourcePort != null) 'oldSourcePort': oldSourcePort!,
+        if (protocol != null) 'protocol': protocol!,
+        if (subnetUri != null) 'subnetUri': subnetUri!,
+      };
+}
+
 /// Results of the configuration analysis from the last run of the test.
 class ReachabilityDetails {
   /// The details of a failure or a cancellation of reachability analysis.
@@ -3101,7 +3597,9 @@ class ReachabilityDetails {
   /// - "AMBIGUOUS" : The source and destination endpoints do not uniquely
   /// identify the test location in the network, and the reachability result
   /// contains multiple traces. For some traces, a packet could be delivered,
-  /// and for others, it would not be.
+  /// and for others, it would not be. This result is also assigned to
+  /// configuration analysis of return path if on its own it should be
+  /// REACHABLE, but configuration analysis of forward path is AMBIGUOUS.
   /// - "UNDETERMINED" : The configuration analysis did not complete. Possible
   /// reasons are: * A permissions error occurred--for example, the user might
   /// not have read permission for all of the resources named in the test. * An
@@ -3463,13 +3961,28 @@ class Step {
   InstanceInfo? instance;
 
   /// Display information of the load balancers.
+  ///
+  /// Deprecated in favor of the `load_balancer_backend_info` field, not used in
+  /// new tests.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   LoadBalancerInfo? loadBalancer;
+
+  /// Display information of a specific load balancer backend.
+  LoadBalancerBackendInfo? loadBalancerBackendInfo;
+
+  /// Display information of a NAT.
+  NatInfo? nat;
 
   /// Display information of a Google Cloud network.
   NetworkInfo? network;
 
   /// Project ID that contains the configuration this step is validating.
   core.String? projectId;
+
+  /// Display information of a ProxyConnection.
+  ProxyConnectionInfo? proxyConnection;
 
   /// Display information of a Compute Engine route.
   RouteInfo? route;
@@ -3483,9 +3996,7 @@ class Step {
   /// - "START_FROM_INTERNET" : Initial state: packet originating from the
   /// internet. The endpoint information is populated.
   /// - "START_FROM_GOOGLE_SERVICE" : Initial state: packet originating from a
-  /// Google service. Some Google services, such as health check probers or
-  /// Identity Aware Proxy use special routes, outside VPC routing configuration
-  /// to reach Compute Engine Instances.
+  /// Google service. The google_service information is populated.
   /// - "START_FROM_PRIVATE_NETWORK" : Initial state: packet originating from a
   /// VPC or on-premises network with internal source IP. If the source is a VPC
   /// network visible to the user, a NetworkInfo is populated with details of
@@ -3505,12 +4016,20 @@ class Step {
   /// - "START_FROM_CLOUD_RUN_REVISION" : Initial state: packet originating from
   /// a Cloud Run revision. A CloudRunRevisionInfo is populated with starting
   /// revision information.
+  /// - "START_FROM_STORAGE_BUCKET" : Initial state: packet originating from a
+  /// Storage Bucket. Used only for return traces. The storage_bucket
+  /// information is populated.
+  /// - "START_FROM_PSC_PUBLISHED_SERVICE" : Initial state: packet originating
+  /// from a published service that uses Private Service Connect. Used only for
+  /// return traces.
   /// - "APPLY_INGRESS_FIREWALL_RULE" : Config checking state: verify ingress
   /// firewall rule.
   /// - "APPLY_EGRESS_FIREWALL_RULE" : Config checking state: verify egress
   /// firewall rule.
   /// - "APPLY_ROUTE" : Config checking state: verify route.
   /// - "APPLY_FORWARDING_RULE" : Config checking state: match forwarding rule.
+  /// - "ANALYZE_LOAD_BALANCER_BACKEND" : Config checking state: verify load
+  /// balancer backend configuration.
   /// - "SPOOFING_APPROVED" : Config checking state: packet sent or received
   /// under foreign IP address and allowed.
   /// - "ARRIVE_AT_INSTANCE" : Forwarding state: arriving at a Compute Engine
@@ -3536,6 +4055,11 @@ class Step {
   /// - "VIEWER_PERMISSION_MISSING" : Special state: viewer of the test result
   /// does not have permission to see the configuration in this step.
   core.String? state;
+
+  /// Display information of a Storage Bucket.
+  ///
+  /// Used only for return traces.
+  StorageBucketInfo? storageBucket;
 
   /// Display information of a VPC connector.
   VpcConnectorInfo? vpcConnector;
@@ -3564,10 +4088,14 @@ class Step {
     this.googleService,
     this.instance,
     this.loadBalancer,
+    this.loadBalancerBackendInfo,
+    this.nat,
     this.network,
     this.projectId,
+    this.proxyConnection,
     this.route,
     this.state,
+    this.storageBucket,
     this.vpcConnector,
     this.vpnGateway,
     this.vpnTunnel,
@@ -3641,6 +4169,15 @@ class Step {
               ? LoadBalancerInfo.fromJson(
                   json_['loadBalancer'] as core.Map<core.String, core.dynamic>)
               : null,
+          loadBalancerBackendInfo: json_.containsKey('loadBalancerBackendInfo')
+              ? LoadBalancerBackendInfo.fromJson(
+                  json_['loadBalancerBackendInfo']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          nat: json_.containsKey('nat')
+              ? NatInfo.fromJson(
+                  json_['nat'] as core.Map<core.String, core.dynamic>)
+              : null,
           network: json_.containsKey('network')
               ? NetworkInfo.fromJson(
                   json_['network'] as core.Map<core.String, core.dynamic>)
@@ -3648,12 +4185,20 @@ class Step {
           projectId: json_.containsKey('projectId')
               ? json_['projectId'] as core.String
               : null,
+          proxyConnection: json_.containsKey('proxyConnection')
+              ? ProxyConnectionInfo.fromJson(json_['proxyConnection']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           route: json_.containsKey('route')
               ? RouteInfo.fromJson(
                   json_['route'] as core.Map<core.String, core.dynamic>)
               : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
+          storageBucket: json_.containsKey('storageBucket')
+              ? StorageBucketInfo.fromJson(
+                  json_['storageBucket'] as core.Map<core.String, core.dynamic>)
+              : null,
           vpcConnector: json_.containsKey('vpcConnector')
               ? VpcConnectorInfo.fromJson(
                   json_['vpcConnector'] as core.Map<core.String, core.dynamic>)
@@ -3686,13 +4231,41 @@ class Step {
         if (googleService != null) 'googleService': googleService!,
         if (instance != null) 'instance': instance!,
         if (loadBalancer != null) 'loadBalancer': loadBalancer!,
+        if (loadBalancerBackendInfo != null)
+          'loadBalancerBackendInfo': loadBalancerBackendInfo!,
+        if (nat != null) 'nat': nat!,
         if (network != null) 'network': network!,
         if (projectId != null) 'projectId': projectId!,
+        if (proxyConnection != null) 'proxyConnection': proxyConnection!,
         if (route != null) 'route': route!,
         if (state != null) 'state': state!,
+        if (storageBucket != null) 'storageBucket': storageBucket!,
         if (vpcConnector != null) 'vpcConnector': vpcConnector!,
         if (vpnGateway != null) 'vpnGateway': vpnGateway!,
         if (vpnTunnel != null) 'vpnTunnel': vpnTunnel!,
+      };
+}
+
+/// For display only.
+///
+/// Metadata associated with Storage Bucket.
+class StorageBucketInfo {
+  /// Cloud Storage Bucket name.
+  core.String? bucket;
+
+  StorageBucketInfo({
+    this.bucket,
+  });
+
+  StorageBucketInfo.fromJson(core.Map json_)
+      : this(
+          bucket: json_.containsKey('bucket')
+              ? json_['bucket'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bucket != null) 'bucket': bucket!,
       };
 }
 
@@ -3718,6 +4291,13 @@ class Trace {
   /// then the endpoint_info may be different between traces.
   EndpointInfo? endpointInfo;
 
+  /// ID of trace.
+  ///
+  /// For forward traces, this ID is unique for each trace. For return traces,
+  /// it matches ID of associated forward trace. A single forward trace can be
+  /// associated with none, one or more than one return trace.
+  core.int? forwardTraceId;
+
   /// A trace of a test contains multiple steps from the initial state to the
   /// final state (delivered, dropped, forwarded, or aborted).
   ///
@@ -3728,6 +4308,7 @@ class Trace {
 
   Trace({
     this.endpointInfo,
+    this.forwardTraceId,
     this.steps,
   });
 
@@ -3736,6 +4317,9 @@ class Trace {
           endpointInfo: json_.containsKey('endpointInfo')
               ? EndpointInfo.fromJson(
                   json_['endpointInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          forwardTraceId: json_.containsKey('forwardTraceId')
+              ? json_['forwardTraceId'] as core.int
               : null,
           steps: json_.containsKey('steps')
               ? (json_['steps'] as core.List)
@@ -3747,6 +4331,7 @@ class Trace {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (endpointInfo != null) 'endpointInfo': endpointInfo!,
+        if (forwardTraceId != null) 'forwardTraceId': forwardTraceId!,
         if (steps != null) 'steps': steps!,
       };
 }

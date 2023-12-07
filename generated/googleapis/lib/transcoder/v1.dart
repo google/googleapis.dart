@@ -1476,14 +1476,29 @@ class H264CodecSettings {
 
   /// The target video frame rate in frames per second (FPS).
   ///
-  /// Must be less than or equal to 120. Will default to the input frame rate if
-  /// larger than the input frame rate. The API will generate an output FPS that
-  /// is divisible by the input FPS, and smaller or equal to the target FPS. See
-  /// [Calculating frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate)
-  /// for more information.
+  /// Must be less than or equal to 120.
   ///
   /// Required.
   core.double? frameRate;
+
+  /// Frame rate conversion strategy for desired frame rate.
+  ///
+  /// The default is `DOWNSAMPLE`.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "FRAME_RATE_CONVERSION_STRATEGY_UNSPECIFIED" : Unspecified frame rate
+  /// conversion strategy.
+  /// - "DOWNSAMPLE" : Selectively retain frames to reduce the output frame
+  /// rate. Every _n_ th frame is kept, where `n = ceil(input frame rate /
+  /// target frame rate)`. When _n_ = 1 (that is, the target frame rate is
+  /// greater than the input frame rate), the output frame rate matches the
+  /// input frame rate. When _n_ \> 1, frames are dropped and the output frame
+  /// rate is equal to `(input frame rate / n)`. For more information, see
+  /// [Calculate frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate).
+  /// - "DROP_DUPLICATE" : Drop or duplicate frames to match the specified frame
+  /// rate.
+  core.String? frameRateConversionStrategy;
 
   /// Select the GOP size based on the specified duration.
   ///
@@ -1507,6 +1522,11 @@ class H264CodecSettings {
   /// The API calculates the width per the horizontal ASR. The API detects any
   /// rotation metadata and swaps the requested height and width for the output.
   core.int? heightPixels;
+
+  /// HLG color format setting for H264.
+  ///
+  /// Optional.
+  H264ColorFormatHLG? hlg;
 
   /// Pixel format to use.
   ///
@@ -1540,6 +1560,11 @@ class H264CodecSettings {
   /// The default is `vbr`. Supported rate control modes: - `vbr` - variable
   /// bitrate - `crf` - constant rate factor
   core.String? rateControlMode;
+
+  /// SDR color format setting for H264.
+  ///
+  /// Optional.
+  H264ColorFormatSDR? sdr;
 
   /// Enforces the specified codec tune.
   ///
@@ -1582,13 +1607,16 @@ class H264CodecSettings {
     this.enableTwoPass,
     this.entropyCoder,
     this.frameRate,
+    this.frameRateConversionStrategy,
     this.gopDuration,
     this.gopFrameCount,
     this.heightPixels,
+    this.hlg,
     this.pixelFormat,
     this.preset,
     this.profile,
     this.rateControlMode,
+    this.sdr,
     this.tune,
     this.vbvFullnessBits,
     this.vbvSizeBits,
@@ -1624,6 +1652,10 @@ class H264CodecSettings {
           frameRate: json_.containsKey('frameRate')
               ? (json_['frameRate'] as core.num).toDouble()
               : null,
+          frameRateConversionStrategy:
+              json_.containsKey('frameRateConversionStrategy')
+                  ? json_['frameRateConversionStrategy'] as core.String
+                  : null,
           gopDuration: json_.containsKey('gopDuration')
               ? json_['gopDuration'] as core.String
               : null,
@@ -1632,6 +1664,10 @@ class H264CodecSettings {
               : null,
           heightPixels: json_.containsKey('heightPixels')
               ? json_['heightPixels'] as core.int
+              : null,
+          hlg: json_.containsKey('hlg')
+              ? H264ColorFormatHLG.fromJson(
+                  json_['hlg'] as core.Map<core.String, core.dynamic>)
               : null,
           pixelFormat: json_.containsKey('pixelFormat')
               ? json_['pixelFormat'] as core.String
@@ -1644,6 +1680,10 @@ class H264CodecSettings {
               : null,
           rateControlMode: json_.containsKey('rateControlMode')
               ? json_['rateControlMode'] as core.String
+              : null,
+          sdr: json_.containsKey('sdr')
+              ? H264ColorFormatSDR.fromJson(
+                  json_['sdr'] as core.Map<core.String, core.dynamic>)
               : null,
           tune: json_.containsKey('tune') ? json_['tune'] as core.String : null,
           vbvFullnessBits: json_.containsKey('vbvFullnessBits')
@@ -1667,19 +1707,29 @@ class H264CodecSettings {
         if (enableTwoPass != null) 'enableTwoPass': enableTwoPass!,
         if (entropyCoder != null) 'entropyCoder': entropyCoder!,
         if (frameRate != null) 'frameRate': frameRate!,
+        if (frameRateConversionStrategy != null)
+          'frameRateConversionStrategy': frameRateConversionStrategy!,
         if (gopDuration != null) 'gopDuration': gopDuration!,
         if (gopFrameCount != null) 'gopFrameCount': gopFrameCount!,
         if (heightPixels != null) 'heightPixels': heightPixels!,
+        if (hlg != null) 'hlg': hlg!,
         if (pixelFormat != null) 'pixelFormat': pixelFormat!,
         if (preset != null) 'preset': preset!,
         if (profile != null) 'profile': profile!,
         if (rateControlMode != null) 'rateControlMode': rateControlMode!,
+        if (sdr != null) 'sdr': sdr!,
         if (tune != null) 'tune': tune!,
         if (vbvFullnessBits != null) 'vbvFullnessBits': vbvFullnessBits!,
         if (vbvSizeBits != null) 'vbvSizeBits': vbvSizeBits!,
         if (widthPixels != null) 'widthPixels': widthPixels!,
       };
 }
+
+/// Convert the input video to a Hybrid Log Gamma (HLG) video.
+typedef H264ColorFormatHLG = $Empty;
+
+/// Convert the input video to a Standard Dynamic Range (SDR) video.
+typedef H264ColorFormatSDR = $Empty;
 
 /// H265 codec settings.
 class H265CodecSettings {
@@ -1727,14 +1777,29 @@ class H265CodecSettings {
 
   /// The target video frame rate in frames per second (FPS).
   ///
-  /// Must be less than or equal to 120. Will default to the input frame rate if
-  /// larger than the input frame rate. The API will generate an output FPS that
-  /// is divisible by the input FPS, and smaller or equal to the target FPS. See
-  /// [Calculating frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate)
-  /// for more information.
+  /// Must be less than or equal to 120.
   ///
   /// Required.
   core.double? frameRate;
+
+  /// Frame rate conversion strategy for desired frame rate.
+  ///
+  /// The default is `DOWNSAMPLE`.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "FRAME_RATE_CONVERSION_STRATEGY_UNSPECIFIED" : Unspecified frame rate
+  /// conversion strategy.
+  /// - "DOWNSAMPLE" : Selectively retain frames to reduce the output frame
+  /// rate. Every _n_ th frame is kept, where `n = ceil(input frame rate /
+  /// target frame rate)`. When _n_ = 1 (that is, the target frame rate is
+  /// greater than the input frame rate), the output frame rate matches the
+  /// input frame rate. When _n_ \> 1, frames are dropped and the output frame
+  /// rate is equal to `(input frame rate / n)`. For more information, see
+  /// [Calculate frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate).
+  /// - "DROP_DUPLICATE" : Drop or duplicate frames to match the specified frame
+  /// rate.
+  core.String? frameRateConversionStrategy;
 
   /// Select the GOP size based on the specified duration.
   ///
@@ -1749,6 +1814,11 @@ class H265CodecSettings {
   /// Must be greater than zero.
   core.int? gopFrameCount;
 
+  /// HDR10 color format setting for H265.
+  ///
+  /// Optional.
+  H265ColorFormatHDR10? hdr10;
+
   /// The height of the video in pixels.
   ///
   /// Must be an even integer. When not specified, the height is adjusted to
@@ -1758,6 +1828,11 @@ class H265CodecSettings {
   /// The API calculates the width per the horizontal ASR. The API detects any
   /// rotation metadata and swaps the requested height and width for the output.
   core.int? heightPixels;
+
+  /// HLG color format setting for H265.
+  ///
+  /// Optional.
+  H265ColorFormatHLG? hlg;
 
   /// Pixel format to use.
   ///
@@ -1795,6 +1870,11 @@ class H265CodecSettings {
   /// The default is `vbr`. Supported rate control modes: - `vbr` - variable
   /// bitrate - `crf` - constant rate factor
   core.String? rateControlMode;
+
+  /// SDR color format setting for H265.
+  ///
+  /// Optional.
+  H265ColorFormatSDR? sdr;
 
   /// Enforces the specified codec tune.
   ///
@@ -1836,13 +1916,17 @@ class H265CodecSettings {
     this.crfLevel,
     this.enableTwoPass,
     this.frameRate,
+    this.frameRateConversionStrategy,
     this.gopDuration,
     this.gopFrameCount,
+    this.hdr10,
     this.heightPixels,
+    this.hlg,
     this.pixelFormat,
     this.preset,
     this.profile,
     this.rateControlMode,
+    this.sdr,
     this.tune,
     this.vbvFullnessBits,
     this.vbvSizeBits,
@@ -1875,14 +1959,26 @@ class H265CodecSettings {
           frameRate: json_.containsKey('frameRate')
               ? (json_['frameRate'] as core.num).toDouble()
               : null,
+          frameRateConversionStrategy:
+              json_.containsKey('frameRateConversionStrategy')
+                  ? json_['frameRateConversionStrategy'] as core.String
+                  : null,
           gopDuration: json_.containsKey('gopDuration')
               ? json_['gopDuration'] as core.String
               : null,
           gopFrameCount: json_.containsKey('gopFrameCount')
               ? json_['gopFrameCount'] as core.int
               : null,
+          hdr10: json_.containsKey('hdr10')
+              ? H265ColorFormatHDR10.fromJson(
+                  json_['hdr10'] as core.Map<core.String, core.dynamic>)
+              : null,
           heightPixels: json_.containsKey('heightPixels')
               ? json_['heightPixels'] as core.int
+              : null,
+          hlg: json_.containsKey('hlg')
+              ? H265ColorFormatHLG.fromJson(
+                  json_['hlg'] as core.Map<core.String, core.dynamic>)
               : null,
           pixelFormat: json_.containsKey('pixelFormat')
               ? json_['pixelFormat'] as core.String
@@ -1895,6 +1991,10 @@ class H265CodecSettings {
               : null,
           rateControlMode: json_.containsKey('rateControlMode')
               ? json_['rateControlMode'] as core.String
+              : null,
+          sdr: json_.containsKey('sdr')
+              ? H265ColorFormatSDR.fromJson(
+                  json_['sdr'] as core.Map<core.String, core.dynamic>)
               : null,
           tune: json_.containsKey('tune') ? json_['tune'] as core.String : null,
           vbvFullnessBits: json_.containsKey('vbvFullnessBits')
@@ -1917,19 +2017,33 @@ class H265CodecSettings {
         if (crfLevel != null) 'crfLevel': crfLevel!,
         if (enableTwoPass != null) 'enableTwoPass': enableTwoPass!,
         if (frameRate != null) 'frameRate': frameRate!,
+        if (frameRateConversionStrategy != null)
+          'frameRateConversionStrategy': frameRateConversionStrategy!,
         if (gopDuration != null) 'gopDuration': gopDuration!,
         if (gopFrameCount != null) 'gopFrameCount': gopFrameCount!,
+        if (hdr10 != null) 'hdr10': hdr10!,
         if (heightPixels != null) 'heightPixels': heightPixels!,
+        if (hlg != null) 'hlg': hlg!,
         if (pixelFormat != null) 'pixelFormat': pixelFormat!,
         if (preset != null) 'preset': preset!,
         if (profile != null) 'profile': profile!,
         if (rateControlMode != null) 'rateControlMode': rateControlMode!,
+        if (sdr != null) 'sdr': sdr!,
         if (tune != null) 'tune': tune!,
         if (vbvFullnessBits != null) 'vbvFullnessBits': vbvFullnessBits!,
         if (vbvSizeBits != null) 'vbvSizeBits': vbvSizeBits!,
         if (widthPixels != null) 'widthPixels': widthPixels!,
       };
 }
+
+/// Convert the input video to a High Dynamic Range 10 (HDR10) video.
+typedef H265ColorFormatHDR10 = $Empty;
+
+/// Convert the input video to a Hybrid Log Gamma (HLG) video.
+typedef H265ColorFormatHLG = $Empty;
+
+/// Convert the input video to a Standard Dynamic Range (SDR) video.
+typedef H265ColorFormatSDR = $Empty;
 
 /// Overlaid image.
 class Image {
@@ -3300,14 +3414,29 @@ class Vp9CodecSettings {
 
   /// The target video frame rate in frames per second (FPS).
   ///
-  /// Must be less than or equal to 120. Will default to the input frame rate if
-  /// larger than the input frame rate. The API will generate an output FPS that
-  /// is divisible by the input FPS, and smaller or equal to the target FPS. See
-  /// [Calculating frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate)
-  /// for more information.
+  /// Must be less than or equal to 120.
   ///
   /// Required.
   core.double? frameRate;
+
+  /// Frame rate conversion strategy for desired frame rate.
+  ///
+  /// The default is `DOWNSAMPLE`.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "FRAME_RATE_CONVERSION_STRATEGY_UNSPECIFIED" : Unspecified frame rate
+  /// conversion strategy.
+  /// - "DOWNSAMPLE" : Selectively retain frames to reduce the output frame
+  /// rate. Every _n_ th frame is kept, where `n = ceil(input frame rate /
+  /// target frame rate)`. When _n_ = 1 (that is, the target frame rate is
+  /// greater than the input frame rate), the output frame rate matches the
+  /// input frame rate. When _n_ \> 1, frames are dropped and the output frame
+  /// rate is equal to `(input frame rate / n)`. For more information, see
+  /// [Calculate frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate).
+  /// - "DROP_DUPLICATE" : Drop or duplicate frames to match the specified frame
+  /// rate.
+  core.String? frameRateConversionStrategy;
 
   /// Select the GOP size based on the specified duration.
   ///
@@ -3331,6 +3460,11 @@ class Vp9CodecSettings {
   /// The API calculates the width per the horizontal ASR. The API detects any
   /// rotation metadata and swaps the requested height and width for the output.
   core.int? heightPixels;
+
+  /// HLG color format setting for VP9.
+  ///
+  /// Optional.
+  Vp9ColorFormatHLG? hlg;
 
   /// Pixel format to use.
   ///
@@ -3357,6 +3491,11 @@ class Vp9CodecSettings {
   /// bitrate
   core.String? rateControlMode;
 
+  /// SDR color format setting for VP9.
+  ///
+  /// Optional.
+  Vp9ColorFormatSDR? sdr;
+
   /// The width of the video in pixels.
   ///
   /// Must be an even integer. When not specified, the width is adjusted to
@@ -3372,12 +3511,15 @@ class Vp9CodecSettings {
     this.bitrateBps,
     this.crfLevel,
     this.frameRate,
+    this.frameRateConversionStrategy,
     this.gopDuration,
     this.gopFrameCount,
     this.heightPixels,
+    this.hlg,
     this.pixelFormat,
     this.profile,
     this.rateControlMode,
+    this.sdr,
     this.widthPixels,
   });
 
@@ -3392,6 +3534,10 @@ class Vp9CodecSettings {
           frameRate: json_.containsKey('frameRate')
               ? (json_['frameRate'] as core.num).toDouble()
               : null,
+          frameRateConversionStrategy:
+              json_.containsKey('frameRateConversionStrategy')
+                  ? json_['frameRateConversionStrategy'] as core.String
+                  : null,
           gopDuration: json_.containsKey('gopDuration')
               ? json_['gopDuration'] as core.String
               : null,
@@ -3400,6 +3546,10 @@ class Vp9CodecSettings {
               : null,
           heightPixels: json_.containsKey('heightPixels')
               ? json_['heightPixels'] as core.int
+              : null,
+          hlg: json_.containsKey('hlg')
+              ? Vp9ColorFormatHLG.fromJson(
+                  json_['hlg'] as core.Map<core.String, core.dynamic>)
               : null,
           pixelFormat: json_.containsKey('pixelFormat')
               ? json_['pixelFormat'] as core.String
@@ -3410,6 +3560,10 @@ class Vp9CodecSettings {
           rateControlMode: json_.containsKey('rateControlMode')
               ? json_['rateControlMode'] as core.String
               : null,
+          sdr: json_.containsKey('sdr')
+              ? Vp9ColorFormatSDR.fromJson(
+                  json_['sdr'] as core.Map<core.String, core.dynamic>)
+              : null,
           widthPixels: json_.containsKey('widthPixels')
               ? json_['widthPixels'] as core.int
               : null,
@@ -3419,15 +3573,25 @@ class Vp9CodecSettings {
         if (bitrateBps != null) 'bitrateBps': bitrateBps!,
         if (crfLevel != null) 'crfLevel': crfLevel!,
         if (frameRate != null) 'frameRate': frameRate!,
+        if (frameRateConversionStrategy != null)
+          'frameRateConversionStrategy': frameRateConversionStrategy!,
         if (gopDuration != null) 'gopDuration': gopDuration!,
         if (gopFrameCount != null) 'gopFrameCount': gopFrameCount!,
         if (heightPixels != null) 'heightPixels': heightPixels!,
+        if (hlg != null) 'hlg': hlg!,
         if (pixelFormat != null) 'pixelFormat': pixelFormat!,
         if (profile != null) 'profile': profile!,
         if (rateControlMode != null) 'rateControlMode': rateControlMode!,
+        if (sdr != null) 'sdr': sdr!,
         if (widthPixels != null) 'widthPixels': widthPixels!,
       };
 }
+
+/// Convert the input video to a Hybrid Log Gamma (HLG) video.
+typedef Vp9ColorFormatHLG = $Empty;
+
+/// Convert the input video to a Standard Dynamic Range (SDR) video.
+typedef Vp9ColorFormatSDR = $Empty;
 
 /// Widevine configuration.
 typedef Widevine = $Empty;

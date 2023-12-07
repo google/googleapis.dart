@@ -5283,6 +5283,9 @@ class SafeSearchAnnotation {
   core.String? spoof;
 
   /// Likelihood that this image contains violent content.
+  ///
+  /// Violent content may include death, serious harm, or injury to individuals
+  /// or groups of individuals.
   /// Possible string values are:
   /// - "UNKNOWN" : Unknown likelihood.
   /// - "VERY_UNLIKELY" : It is very unlikely.
@@ -5623,7 +5626,10 @@ class WebDetection {
 
 /// Parameters for web detection request.
 class WebDetectionParams {
-  /// Whether to include results derived from the geo information in the image.
+  /// This field has no effect on results.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? includeGeoResults;
 
   WebDetectionParams({

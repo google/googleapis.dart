@@ -1029,8 +1029,9 @@ class DevicesDeviceUsersResource {
   /// [rawResourceId] - Raw Resource Id used by Google Endpoint Verification. If
   /// the user is enrolled into Google Endpoint Verification, this id will be
   /// saved as the 'device_resource_id' field in the following platform
-  /// dependent files. Mac: ~/.secureConnect/context_aware_config.json Windows:
-  /// C:\Users\%USERPROFILE%\.secureConnect\context_aware_config.json Linux:
+  /// dependent files. * macOS: ~/.secureConnect/context_aware_config.json *
+  /// Windows: %USERPROFILE%\AppData\Local\Google\Endpoint
+  /// Verification\accounts.json * Linux:
   /// ~/.secureConnect/context_aware_config.json
   ///
   /// [userId] - The user whose DeviceUser's resource name will be fetched. Must
@@ -1581,9 +1582,12 @@ class GroupsResource {
   /// Request parameters:
   ///
   /// [groupKey_id] - The ID of the entity. For Google-managed entities, the
-  /// `id` should be the email address of an existing group or user. For
-  /// external-identity-mapped entities, the `id` must be a string conforming to
-  /// the Identity Source's requirements. Must be unique within a `namespace`.
+  /// `id` should be the email address of an existing group or user. Email
+  /// addresses need to adhere to
+  /// [name guidelines for users and groups](https://support.google.com/a/answer/9193374).
+  /// For external-identity-mapped entities, the `id` must be a string
+  /// conforming to the Identity Source's requirements. Must be unique within a
+  /// `namespace`.
   ///
   /// [groupKey_namespace] - The namespace in which the entity exists. If not
   /// specified, the `EntityKey` represents a Google-managed entity such as a
@@ -1696,11 +1700,12 @@ class GroupsResource {
   /// * Can contain optional inclusion operators on `labels` such as
   /// `'cloudidentity.googleapis.com/groups.discussion_forum' in labels`). * Can
   /// contain an optional equality operator on `domain_name`. e.g. `domain_name
-  /// == 'abc.com'` * Can contain optional `startsWith/contains/equality`
-  /// operators on `group_key`, e.g. `group_key.startsWith('dev')`,
-  /// `group_key.contains('dev'), group_key == 'dev@abc.com'` * Can contain
-  /// optional `startsWith/contains/equality` operators on `display_name`, such
-  /// as `display_name.startsWith('dev')` , `display_name.contains('dev')`,
+  /// == 'examplepetstore.com'` * Can contain optional
+  /// `startsWith/contains/equality` operators on `group_key`, e.g.
+  /// `group_key.startsWith('dev')`, `group_key.contains('dev'), group_key ==
+  /// 'dev@examplepetstore.com'` * Can contain optional
+  /// `startsWith/contains/equality` operators on `display_name`, such as
+  /// `display_name.startsWith('dev')` , `display_name.contains('dev')`,
   /// `display_name == 'dev'`
   ///
   /// [view] - The level of detail to be returned. If unspecified, defaults to
@@ -2108,9 +2113,12 @@ class GroupsMembershipsResource {
   /// Value must have pattern `^groups/\[^/\]+$`.
   ///
   /// [memberKey_id] - The ID of the entity. For Google-managed entities, the
-  /// `id` should be the email address of an existing group or user. For
-  /// external-identity-mapped entities, the `id` must be a string conforming to
-  /// the Identity Source's requirements. Must be unique within a `namespace`.
+  /// `id` should be the email address of an existing group or user. Email
+  /// addresses need to adhere to
+  /// [name guidelines for users and groups](https://support.google.com/a/answer/9193374).
+  /// For external-identity-mapped entities, the `id` must be a string
+  /// conforming to the Identity Source's requirements. Must be unique within a
+  /// `namespace`.
   ///
   /// [memberKey_namespace] - The namespace in which the entity exists. If not
   /// specified, the `EntityKey` represents a Google-managed entity such as a
@@ -3119,7 +3127,7 @@ class DynamicGroupMetadata {
   /// Memberships will be the union of all queries.
   ///
   /// Only one entry with USER resource is currently supported. Customers can
-  /// create up to 100 dynamic groups.
+  /// create up to 500 dynamic groups.
   core.List<DynamicGroupQuery>? queries;
 
   /// Status of the dynamic group.
@@ -3242,9 +3250,11 @@ class EntityKey {
   /// The ID of the entity.
   ///
   /// For Google-managed entities, the `id` should be the email address of an
-  /// existing group or user. For external-identity-mapped entities, the `id`
-  /// must be a string conforming to the Identity Source's requirements. Must be
-  /// unique within a `namespace`.
+  /// existing group or user. Email addresses need to adhere to
+  /// [name guidelines for users and groups](https://support.google.com/a/answer/9193374).
+  /// For external-identity-mapped entities, the `id` must be a string
+  /// conforming to the Identity Source's requirements. Must be unique within a
+  /// `namespace`.
   core.String? id;
 
   /// The namespace in which the entity exists.

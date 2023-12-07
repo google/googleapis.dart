@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20231116",
+    "revision": "20240227",
     "rootUrl": "https://toolresults.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Tool Results API",
@@ -2836,6 +2836,7 @@
                 },
                 "graphicsStats": {
                     "$ref": "GraphicsStats",
+                    "deprecated": true,
                     "description": "Graphics statistics for the entire run. Statistics are reset at the beginning of the run and collected at the end of the run."
                 },
                 "historyId": {

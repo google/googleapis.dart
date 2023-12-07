@@ -29,6 +29,7 @@
 ///     - [ProjectsLocationsInsightsResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsRulesResource]
+///     - [ProjectsLocationsWorkloadProfilesResource]
 library;
 
 import 'dart:async' as async;
@@ -84,6 +85,8 @@ class ProjectsLocationsResource {
       ProjectsLocationsOperationsResource(_requester);
   ProjectsLocationsRulesResource get rules =>
       ProjectsLocationsRulesResource(_requester);
+  ProjectsLocationsWorkloadProfilesResource get workloadProfiles =>
+      ProjectsLocationsWorkloadProfilesResource(_requester);
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
@@ -243,6 +246,56 @@ class ProjectsLocationsEvaluationsResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Deletes a single Evaluation.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the resource
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/evaluations/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes after the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets details of a single Evaluation.
   ///
   /// Request parameters:
@@ -347,6 +400,56 @@ class ProjectsLocationsEvaluationsExecutionsResource {
 
   ProjectsLocationsEvaluationsExecutionsResource(commons.ApiRequester client)
       : _requester = client;
+
+  /// Deletes a single Execution.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the resource
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/evaluations/\[^/\]+/executions/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes after the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 
   /// Gets details of a single Execution.
   ///
@@ -911,8 +1014,431 @@ class ProjectsLocationsRulesResource {
   }
 }
 
+class ProjectsLocationsWorkloadProfilesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsWorkloadProfilesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets details of a single workload.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the resource
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workloadProfiles/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [WorkloadProfile].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<WorkloadProfile> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return WorkloadProfile.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List workloads
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent value for ListWorkloadRequest
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filtering results
+  ///
+  /// [pageSize] - Optional. Requested page size. Server may return fewer items
+  /// than requested. If unspecified, server will pick an appropriate default.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results the server
+  /// should return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListWorkloadProfilesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  async.Future<ListWorkloadProfilesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/workloadProfiles';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListWorkloadProfilesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+/// The API layer server
+class APILayerServer {
+  /// The api layer name
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// OS information
+  ///
+  /// Output only.
+  core.String? osVersion;
+
+  /// resources in the component
+  ///
+  /// Output only.
+  core.List<CloudResource>? resources;
+
+  APILayerServer({
+    this.name,
+    this.osVersion,
+    this.resources,
+  });
+
+  APILayerServer.fromJson(core.Map json_)
+      : this(
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          osVersion: json_.containsKey('osVersion')
+              ? json_['osVersion'] as core.String
+              : null,
+          resources: json_.containsKey('resources')
+              ? (json_['resources'] as core.List)
+                  .map((value) => CloudResource.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (osVersion != null) 'osVersion': osVersion!,
+        if (resources != null) 'resources': resources!,
+      };
+}
+
+/// The availability groups for sqlserver
+class AvailabilityGroup {
+  /// The databases
+  ///
+  /// Output only.
+  core.List<core.String>? databases;
+
+  /// The availability group name
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The primary server
+  ///
+  /// Output only.
+  core.String? primaryServer;
+
+  /// The secondary servers
+  ///
+  /// Output only.
+  core.List<core.String>? secondaryServers;
+
+  AvailabilityGroup({
+    this.databases,
+    this.name,
+    this.primaryServer,
+    this.secondaryServers,
+  });
+
+  AvailabilityGroup.fromJson(core.Map json_)
+      : this(
+          databases: json_.containsKey('databases')
+              ? (json_['databases'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          primaryServer: json_.containsKey('primaryServer')
+              ? json_['primaryServer'] as core.String
+              : null,
+          secondaryServers: json_.containsKey('secondaryServers')
+              ? (json_['secondaryServers'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (databases != null) 'databases': databases!,
+        if (name != null) 'name': name!,
+        if (primaryServer != null) 'primaryServer': primaryServer!,
+        if (secondaryServers != null) 'secondaryServers': secondaryServers!,
+      };
+}
+
+/// The backend server
+class BackendServer {
+  /// The backup file
+  ///
+  /// Output only.
+  core.String? backupFile;
+
+  /// The backup schedule
+  ///
+  /// Output only.
+  core.String? backupSchedule;
+
+  /// The backend name
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// OS information
+  ///
+  /// Output only.
+  core.String? osVersion;
+
+  /// resources in the component
+  ///
+  /// Output only.
+  core.List<CloudResource>? resources;
+
+  BackendServer({
+    this.backupFile,
+    this.backupSchedule,
+    this.name,
+    this.osVersion,
+    this.resources,
+  });
+
+  BackendServer.fromJson(core.Map json_)
+      : this(
+          backupFile: json_.containsKey('backupFile')
+              ? json_['backupFile'] as core.String
+              : null,
+          backupSchedule: json_.containsKey('backupSchedule')
+              ? json_['backupSchedule'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          osVersion: json_.containsKey('osVersion')
+              ? json_['osVersion'] as core.String
+              : null,
+          resources: json_.containsKey('resources')
+              ? (json_['resources'] as core.List)
+                  .map((value) => CloudResource.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (backupFile != null) 'backupFile': backupFile!,
+        if (backupSchedule != null) 'backupSchedule': backupSchedule!,
+        if (name != null) 'name': name!,
+        if (osVersion != null) 'osVersion': osVersion!,
+        if (resources != null) 'resources': resources!,
+      };
+}
+
+/// Message describing big query destination
+class BigQueryDestination {
+  /// determine if results will be saved in a new table
+  ///
+  /// Optional.
+  core.bool? createNewResultsTable;
+
+  /// destination dataset to save evaluation results
+  ///
+  /// Optional.
+  core.String? destinationDataset;
+
+  BigQueryDestination({
+    this.createNewResultsTable,
+    this.destinationDataset,
+  });
+
+  BigQueryDestination.fromJson(core.Map json_)
+      : this(
+          createNewResultsTable: json_.containsKey('createNewResultsTable')
+              ? json_['createNewResultsTable'] as core.bool
+              : null,
+          destinationDataset: json_.containsKey('destinationDataset')
+              ? json_['destinationDataset'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createNewResultsTable != null)
+          'createNewResultsTable': createNewResultsTable!,
+        if (destinationDataset != null)
+          'destinationDataset': destinationDataset!,
+      };
+}
+
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
+
+/// The resource on GCP
+class CloudResource {
+  /// ComputeInstance, ComputeDisk, VPC, Bare Metal server, etc.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "RESOURCE_KIND_UNSPECIFIED" : Unspecified resource kind.
+  /// - "RESOURCE_KIND_INSTANCE" : This is a compute instance.
+  /// - "RESOURCE_KIND_DISK" : This is a compute disk.
+  /// - "RESOURCE_KIND_ADDRESS" : This is a compute address.
+  /// - "RESOURCE_KIND_FILESTORE" : This is a filestore instance.
+  /// - "RESOURCE_KIND_HEALTH_CHECK" : This is a compute health check.
+  /// - "RESOURCE_KIND_FORWARDING_RULE" : This is a compute forwarding rule.
+  /// - "RESOURCE_KIND_BACKEND_SERVICE" : This is a compute backend service.
+  /// - "RESOURCE_KIND_SUBNETWORK" : This is a compute subnetwork.
+  /// - "RESOURCE_KIND_NETWORK" : This is a compute network.
+  /// - "RESOURCE_KIND_PUBLIC_ADDRESS" : This is a public accessible IP Address.
+  /// - "RESOURCE_KIND_INSTANCE_GROUP" : This is a compute instance group.
+  core.String? kind;
+
+  /// resource name
+  ///
+  /// Output only.
+  core.String? name;
+
+  CloudResource({
+    this.kind,
+    this.name,
+  });
+
+  CloudResource.fromJson(core.Map json_)
+      : this(
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (name != null) 'name': name!,
+      };
+}
+
+/// The cluster for sqlserver
+class Cluster {
+  /// The nodes
+  ///
+  /// Output only.
+  core.List<core.String>? nodes;
+
+  /// The witness server
+  ///
+  /// Output only.
+  core.String? witnessServer;
+
+  Cluster({
+    this.nodes,
+    this.witnessServer,
+  });
+
+  Cluster.fromJson(core.Map json_)
+      : this(
+          nodes: json_.containsKey('nodes')
+              ? (json_['nodes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          witnessServer: json_.containsKey('witnessServer')
+              ? json_['witnessServer'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nodes != null) 'nodes': nodes!,
+        if (witnessServer != null) 'witnessServer': witnessServer!,
+      };
+}
+
+/// The database for sqlserver
+class Database {
+  /// The backup file
+  ///
+  /// Output only.
+  core.String? backupFile;
+
+  /// The backup schedule
+  ///
+  /// Output only.
+  core.String? backupSchedule;
+
+  /// The host VM
+  ///
+  /// Output only.
+  core.String? hostVm;
+
+  /// The database name
+  ///
+  /// Output only.
+  core.String? name;
+
+  Database({
+    this.backupFile,
+    this.backupSchedule,
+    this.hostVm,
+    this.name,
+  });
+
+  Database.fromJson(core.Map json_)
+      : this(
+          backupFile: json_.containsKey('backupFile')
+              ? json_['backupFile'] as core.String
+              : null,
+          backupSchedule: json_.containsKey('backupSchedule')
+              ? json_['backupSchedule'] as core.String
+              : null,
+          hostVm: json_.containsKey('hostVm')
+              ? json_['hostVm'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (backupFile != null) 'backupFile': backupFile!,
+        if (backupSchedule != null) 'backupSchedule': backupSchedule!,
+        if (hostVm != null) 'hostVm': hostVm!,
+        if (name != null) 'name': name!,
+      };
+}
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
@@ -924,6 +1450,11 @@ typedef Empty = $Empty;
 
 /// LINT.IfChange Message describing Evaluation object
 class Evaluation {
+  /// BigQuery destination
+  ///
+  /// Optional.
+  BigQueryDestination? bigQueryDestination;
+
   /// Create time stamp
   ///
   /// Output only.
@@ -969,6 +1500,7 @@ class Evaluation {
   core.String? updateTime;
 
   Evaluation({
+    this.bigQueryDestination,
     this.createTime,
     this.customRulesBucket,
     this.description,
@@ -984,6 +1516,10 @@ class Evaluation {
 
   Evaluation.fromJson(core.Map json_)
       : this(
+          bigQueryDestination: json_.containsKey('bigQueryDestination')
+              ? BigQueryDestination.fromJson(json_['bigQueryDestination']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
               : null,
@@ -1029,6 +1565,8 @@ class Evaluation {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (bigQueryDestination != null)
+          'bigQueryDestination': bigQueryDestination!,
         if (createTime != null) 'createTime': createTime!,
         if (customRulesBucket != null) 'customRulesBucket': customRulesBucket!,
         if (description != null) 'description': description!,
@@ -1206,6 +1744,50 @@ class ExecutionResult {
       };
 }
 
+/// The front end server
+class FrontEndServer {
+  /// The frontend name
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// OS information
+  ///
+  /// Output only.
+  core.String? osVersion;
+
+  /// resources in the component
+  ///
+  /// Output only.
+  core.List<CloudResource>? resources;
+
+  FrontEndServer({
+    this.name,
+    this.osVersion,
+    this.resources,
+  });
+
+  FrontEndServer.fromJson(core.Map json_)
+      : this(
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          osVersion: json_.containsKey('osVersion')
+              ? json_['osVersion'] as core.String
+              : null,
+          resources: json_.containsKey('resources')
+              ? (json_['resources'] as core.List)
+                  .map((value) => CloudResource.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (osVersion != null) 'osVersion': osVersion!,
+        if (resources != null) 'resources': resources!,
+      };
+}
+
 /// Message describing compute engine instance filter
 class GceInstanceFilter {
   /// Service account of compute engine
@@ -1290,6 +1872,114 @@ class Insight {
         if (sentTime != null) 'sentTime': sentTime!,
         if (sqlserverValidation != null)
           'sqlserverValidation': sqlserverValidation!,
+      };
+}
+
+/// a vm instance
+class Instance {
+  /// name of the VM
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The location of the VM
+  ///
+  /// Output only.
+  core.String? region;
+
+  /// The state of the VM
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "INSTANCESTATE_UNSPECIFIED" : The Status of the VM is unspecified
+  /// - "PROVISIONING" : Resources are being allocated for the instance.
+  /// - "STAGING" : All required resources have been allocated and the instance
+  /// is being started.
+  /// - "RUNNING" : The instance is running.
+  /// - "STOPPING" : The instance is currently stopping (either being deleted or
+  /// killed).
+  /// - "STOPPED" : The instance has stopped due to various reasons (user
+  /// request, VM preemption, project freezing, etc.).
+  /// - "TERMINATED" : The instance has failed in some way.
+  /// - "SUSPENDING" : The instance is suspending.
+  /// - "SUSPENDED" : The instance is suspended.
+  /// - "REPAIRING" : The instance is in repair.
+  /// - "DEPROVISIONING" : The instance is in de-provisioning state.
+  core.String? status;
+
+  Instance({
+    this.name,
+    this.region,
+    this.status,
+  });
+
+  Instance.fromJson(core.Map json_)
+      : this(
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          region: json_.containsKey('region')
+              ? json_['region'] as core.String
+              : null,
+          status: json_.containsKey('status')
+              ? json_['status'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (region != null) 'region': region!,
+        if (status != null) 'status': status!,
+      };
+}
+
+/// The database layer
+class Layer {
+  /// the application layer
+  core.String? applicationType;
+
+  /// the database layer
+  ///
+  /// Optional.
+  core.String? databaseType;
+
+  /// instances in a layer
+  ///
+  /// Optional.
+  core.List<Instance>? instances;
+
+  /// system identification of a layer
+  ///
+  /// Output only.
+  core.String? sid;
+
+  Layer({
+    this.applicationType,
+    this.databaseType,
+    this.instances,
+    this.sid,
+  });
+
+  Layer.fromJson(core.Map json_)
+      : this(
+          applicationType: json_.containsKey('applicationType')
+              ? json_['applicationType'] as core.String
+              : null,
+          databaseType: json_.containsKey('databaseType')
+              ? json_['databaseType'] as core.String
+              : null,
+          instances: json_.containsKey('instances')
+              ? (json_['instances'] as core.List)
+                  .map((value) => Instance.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          sid: json_.containsKey('sid') ? json_['sid'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (applicationType != null) 'applicationType': applicationType!,
+        if (databaseType != null) 'databaseType': databaseType!,
+        if (instances != null) 'instances': instances!,
+        if (sid != null) 'sid': sid!,
       };
 }
 
@@ -1541,6 +2231,81 @@ class ListScannedResourcesResponse {
       };
 }
 
+/// List workloadResponse returns a response with the list of workload overview
+class ListWorkloadProfilesResponse {
+  /// A token identifying a page of results the server should return
+  ///
+  /// Output only.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  /// The list of Workload Overview
+  ///
+  /// Output only.
+  core.List<WorkloadProfileOverview>? workloadOverviews;
+
+  ListWorkloadProfilesResponse({
+    this.nextPageToken,
+    this.unreachable,
+    this.workloadOverviews,
+  });
+
+  ListWorkloadProfilesResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          workloadOverviews: json_.containsKey('workloadOverviews')
+              ? (json_['workloadOverviews'] as core.List)
+                  .map((value) => WorkloadProfileOverview.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
+        if (workloadOverviews != null) 'workloadOverviews': workloadOverviews!,
+      };
+}
+
+/// The load balancer for sqlserver
+class LoadBalancerServer {
+  /// The IP address
+  ///
+  /// Output only.
+  core.String? ip;
+
+  /// The VM name
+  ///
+  /// Output only.
+  core.String? vm;
+
+  LoadBalancerServer({
+    this.ip,
+    this.vm,
+  });
+
+  LoadBalancerServer.fromJson(core.Map json_)
+      : this(
+          ip: json_.containsKey('ip') ? json_['ip'] as core.String : null,
+          vm: json_.containsKey('vm') ? json_['vm'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (ip != null) 'ip': ip!,
+        if (vm != null) 'vm': vm!,
+      };
+}
+
 /// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
@@ -1782,6 +2547,9 @@ class Rule {
   /// the severity of the rule
   core.String? severity;
 
+  /// List of user-defined tags
+  core.List<core.String>? tags;
+
   /// the docuement url for the rule
   core.String? uri;
 
@@ -1795,6 +2563,7 @@ class Rule {
     this.revisionId,
     this.secondaryCategory,
     this.severity,
+    this.tags,
     this.uri,
   });
 
@@ -1825,6 +2594,11 @@ class Rule {
           severity: json_.containsKey('severity')
               ? json_['severity'] as core.String
               : null,
+          tags: json_.containsKey('tags')
+              ? (json_['tags'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
         );
 
@@ -1838,6 +2612,7 @@ class Rule {
         if (revisionId != null) 'revisionId': revisionId!,
         if (secondaryCategory != null) 'secondaryCategory': secondaryCategory!,
         if (severity != null) 'severity': severity!,
+        if (tags != null) 'tags': tags!,
         if (uri != null) 'uri': uri!,
       };
 }
@@ -1898,6 +2673,40 @@ class RunEvaluationRequest {
       };
 }
 
+/// The component of sap workload
+class SapComponent {
+  /// resources in the component
+  ///
+  /// Output only.
+  core.List<CloudResource>? resources;
+
+  /// sid is the sap component identificator
+  ///
+  /// Output only.
+  core.String? sid;
+
+  SapComponent({
+    this.resources,
+    this.sid,
+  });
+
+  SapComponent.fromJson(core.Map json_)
+      : this(
+          resources: json_.containsKey('resources')
+              ? (json_['resources'] as core.List)
+                  .map((value) => CloudResource.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          sid: json_.containsKey('sid') ? json_['sid'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (resources != null) 'resources': resources!,
+        if (sid != null) 'sid': sid!,
+      };
+}
+
 /// The schema of SAP system discovery data.
 class SapDiscovery {
   /// An SAP system may run without an application layer.
@@ -1915,6 +2724,11 @@ class SapDiscovery {
   /// Optional.
   SapDiscoveryMetadata? metadata;
 
+  /// The GCP project number that this SapSystem belongs to.
+  ///
+  /// Optional.
+  core.String? projectNumber;
+
   /// A combination of database SID, database instance URI and tenant DB name to
   /// make a unique identifier per-system.
   ///
@@ -1926,12 +2740,19 @@ class SapDiscovery {
   /// Required.
   core.String? updateTime;
 
+  /// The properties of the workload.
+  ///
+  /// Optional.
+  SapDiscoveryWorkloadProperties? workloadProperties;
+
   SapDiscovery({
     this.applicationLayer,
     this.databaseLayer,
     this.metadata,
+    this.projectNumber,
     this.systemId,
     this.updateTime,
+    this.workloadProperties,
   });
 
   SapDiscovery.fromJson(core.Map json_)
@@ -1948,11 +2769,19 @@ class SapDiscovery {
               ? SapDiscoveryMetadata.fromJson(
                   json_['metadata'] as core.Map<core.String, core.dynamic>)
               : null,
+          projectNumber: json_.containsKey('projectNumber')
+              ? json_['projectNumber'] as core.String
+              : null,
           systemId: json_.containsKey('systemId')
               ? json_['systemId'] as core.String
               : null,
           updateTime: json_.containsKey('updateTime')
               ? json_['updateTime'] as core.String
+              : null,
+          workloadProperties: json_.containsKey('workloadProperties')
+              ? SapDiscoveryWorkloadProperties.fromJson(
+                  json_['workloadProperties']
+                      as core.Map<core.String, core.dynamic>)
               : null,
         );
 
@@ -1960,8 +2789,11 @@ class SapDiscovery {
         if (applicationLayer != null) 'applicationLayer': applicationLayer!,
         if (databaseLayer != null) 'databaseLayer': databaseLayer!,
         if (metadata != null) 'metadata': metadata!,
+        if (projectNumber != null) 'projectNumber': projectNumber!,
         if (systemId != null) 'systemId': systemId!,
         if (updateTime != null) 'updateTime': updateTime!,
+        if (workloadProperties != null)
+          'workloadProperties': workloadProperties!,
       };
 }
 
@@ -1976,6 +2808,13 @@ class SapDiscoveryComponent {
   ///
   /// Optional.
   SapDiscoveryComponentDatabaseProperties? databaseProperties;
+
+  /// A list of host URIs that are part of the HA configuration if present.
+  ///
+  /// An empty list indicates the component is not configured for HA.
+  ///
+  /// Optional.
+  core.List<core.String>? haHosts;
 
   /// Pantheon Project in which the resources reside.
   ///
@@ -1993,12 +2832,23 @@ class SapDiscoveryComponent {
   /// Optional.
   core.String? sid;
 
+  /// The detected topology of the component.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "TOPOLOGY_TYPE_UNSPECIFIED" : Unspecified topology.
+  /// - "TOPOLOGY_SCALE_UP" : A scale-up single node system.
+  /// - "TOPOLOGY_SCALE_OUT" : A scale-out multi-node system.
+  core.String? topologyType;
+
   SapDiscoveryComponent({
     this.applicationProperties,
     this.databaseProperties,
+    this.haHosts,
     this.hostProject,
     this.resources,
     this.sid,
+    this.topologyType,
   });
 
   SapDiscoveryComponent.fromJson(core.Map json_)
@@ -2013,6 +2863,11 @@ class SapDiscoveryComponent {
                   json_['databaseProperties']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          haHosts: json_.containsKey('haHosts')
+              ? (json_['haHosts'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           hostProject: json_.containsKey('hostProject')
               ? json_['hostProject'] as core.String
               : null,
@@ -2023,6 +2878,9 @@ class SapDiscoveryComponent {
                   .toList()
               : null,
           sid: json_.containsKey('sid') ? json_['sid'] as core.String : null,
+          topologyType: json_.containsKey('topologyType')
+              ? json_['topologyType'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2030,14 +2888,23 @@ class SapDiscoveryComponent {
           'applicationProperties': applicationProperties!,
         if (databaseProperties != null)
           'databaseProperties': databaseProperties!,
+        if (haHosts != null) 'haHosts': haHosts!,
         if (hostProject != null) 'hostProject': hostProject!,
         if (resources != null) 'resources': resources!,
         if (sid != null) 'sid': sid!,
+        if (topologyType != null) 'topologyType': topologyType!,
       };
 }
 
 /// A set of properties describing an SAP Application layer.
 class SapDiscoveryComponentApplicationProperties {
+  /// Indicates whether this is a Java or ABAP Netweaver instance.
+  ///
+  /// true means it is ABAP, false means it is Java.
+  ///
+  /// Optional.
+  core.bool? abap;
+
   /// Type of the application.
   ///
   /// Netweaver, etc.
@@ -2053,6 +2920,11 @@ class SapDiscoveryComponentApplicationProperties {
   /// Optional.
   core.String? ascsUri;
 
+  /// Kernel version for Netweaver running in the system.
+  ///
+  /// Optional.
+  core.String? kernelVersion;
+
   /// Resource URI of the recognized shared NFS of the application.
   ///
   /// May be empty if the application server has only a single node.
@@ -2061,18 +2933,24 @@ class SapDiscoveryComponentApplicationProperties {
   core.String? nfsUri;
 
   SapDiscoveryComponentApplicationProperties({
+    this.abap,
     this.applicationType,
     this.ascsUri,
+    this.kernelVersion,
     this.nfsUri,
   });
 
   SapDiscoveryComponentApplicationProperties.fromJson(core.Map json_)
       : this(
+          abap: json_.containsKey('abap') ? json_['abap'] as core.bool : null,
           applicationType: json_.containsKey('applicationType')
               ? json_['applicationType'] as core.String
               : null,
           ascsUri: json_.containsKey('ascsUri')
               ? json_['ascsUri'] as core.String
+              : null,
+          kernelVersion: json_.containsKey('kernelVersion')
+              ? json_['kernelVersion'] as core.String
               : null,
           nfsUri: json_.containsKey('nfsUri')
               ? json_['nfsUri'] as core.String
@@ -2080,8 +2958,10 @@ class SapDiscoveryComponentApplicationProperties {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (abap != null) 'abap': abap!,
         if (applicationType != null) 'applicationType': applicationType!,
         if (ascsUri != null) 'ascsUri': ascsUri!,
+        if (kernelVersion != null) 'kernelVersion': kernelVersion!,
         if (nfsUri != null) 'nfsUri': nfsUri!,
       };
 }
@@ -2100,6 +2980,11 @@ class SapDiscoveryComponentDatabaseProperties {
   /// - "DB2" : IBM DB2
   core.String? databaseType;
 
+  /// The version of the database software running in the system.
+  ///
+  /// Optional.
+  core.String? databaseVersion;
+
   /// URI of the recognized primary instance of the database.
   ///
   /// Required.
@@ -2114,6 +2999,7 @@ class SapDiscoveryComponentDatabaseProperties {
 
   SapDiscoveryComponentDatabaseProperties({
     this.databaseType,
+    this.databaseVersion,
     this.primaryInstanceUri,
     this.sharedNfsUri,
   });
@@ -2122,6 +3008,9 @@ class SapDiscoveryComponentDatabaseProperties {
       : this(
           databaseType: json_.containsKey('databaseType')
               ? json_['databaseType'] as core.String
+              : null,
+          databaseVersion: json_.containsKey('databaseVersion')
+              ? json_['databaseVersion'] as core.String
               : null,
           primaryInstanceUri: json_.containsKey('primaryInstanceUri')
               ? json_['primaryInstanceUri'] as core.String
@@ -2133,6 +3022,7 @@ class SapDiscoveryComponentDatabaseProperties {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (databaseType != null) 'databaseType': databaseType!,
+        if (databaseVersion != null) 'databaseVersion': databaseVersion!,
         if (primaryInstanceUri != null)
           'primaryInstanceUri': primaryInstanceUri!,
         if (sharedNfsUri != null) 'sharedNfsUri': sharedNfsUri!,
@@ -2196,6 +3086,11 @@ class SapDiscoveryMetadata {
 
 /// Message describing a resource.
 class SapDiscoveryResource {
+  /// A set of properties only applying to instance type resources.
+  ///
+  /// Optional.
+  SapDiscoveryResourceInstanceProperties? instanceProperties;
+
   /// A list of resource URIs related to this resource.
   ///
   /// Optional.
@@ -2240,6 +3135,7 @@ class SapDiscoveryResource {
   core.String? updateTime;
 
   SapDiscoveryResource({
+    this.instanceProperties,
     this.relatedResources,
     this.resourceKind,
     this.resourceType,
@@ -2249,6 +3145,11 @@ class SapDiscoveryResource {
 
   SapDiscoveryResource.fromJson(core.Map json_)
       : this(
+          instanceProperties: json_.containsKey('instanceProperties')
+              ? SapDiscoveryResourceInstanceProperties.fromJson(
+                  json_['instanceProperties']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           relatedResources: json_.containsKey('relatedResources')
               ? (json_['relatedResources'] as core.List)
                   .map((value) => value as core.String)
@@ -2269,6 +3170,8 @@ class SapDiscoveryResource {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (instanceProperties != null)
+          'instanceProperties': instanceProperties!,
         if (relatedResources != null) 'relatedResources': relatedResources!,
         if (resourceKind != null) 'resourceKind': resourceKind!,
         if (resourceType != null) 'resourceType': resourceType!,
@@ -2277,31 +3180,211 @@ class SapDiscoveryResource {
       };
 }
 
+/// A set of properties only present for an instance type resource
+class SapDiscoveryResourceInstanceProperties {
+  /// A list of instance URIs that are part of a cluster with this one.
+  ///
+  /// Optional.
+  core.List<core.String>? clusterInstances;
+
+  /// A virtual hostname of the instance if it has one.
+  ///
+  /// Optional.
+  core.String? virtualHostname;
+
+  SapDiscoveryResourceInstanceProperties({
+    this.clusterInstances,
+    this.virtualHostname,
+  });
+
+  SapDiscoveryResourceInstanceProperties.fromJson(core.Map json_)
+      : this(
+          clusterInstances: json_.containsKey('clusterInstances')
+              ? (json_['clusterInstances'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          virtualHostname: json_.containsKey('virtualHostname')
+              ? json_['virtualHostname'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (clusterInstances != null) 'clusterInstances': clusterInstances!,
+        if (virtualHostname != null) 'virtualHostname': virtualHostname!,
+      };
+}
+
+/// A set of properties describing an SAP workload.
+class SapDiscoveryWorkloadProperties {
+  /// List of SAP Products and their versions running on the system.
+  ///
+  /// Optional.
+  core.List<SapDiscoveryWorkloadPropertiesProductVersion>? productVersions;
+
+  /// A list of SAP software components and their versions running on the
+  /// system.
+  ///
+  /// Optional.
+  core.List<SapDiscoveryWorkloadPropertiesSoftwareComponentProperties>?
+      softwareComponentVersions;
+
+  SapDiscoveryWorkloadProperties({
+    this.productVersions,
+    this.softwareComponentVersions,
+  });
+
+  SapDiscoveryWorkloadProperties.fromJson(core.Map json_)
+      : this(
+          productVersions: json_.containsKey('productVersions')
+              ? (json_['productVersions'] as core.List)
+                  .map((value) =>
+                      SapDiscoveryWorkloadPropertiesProductVersion.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          softwareComponentVersions: json_
+                  .containsKey('softwareComponentVersions')
+              ? (json_['softwareComponentVersions'] as core.List)
+                  .map((value) =>
+                      SapDiscoveryWorkloadPropertiesSoftwareComponentProperties
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (productVersions != null) 'productVersions': productVersions!,
+        if (softwareComponentVersions != null)
+          'softwareComponentVersions': softwareComponentVersions!,
+      };
+}
+
+/// A product name and version.
+class SapDiscoveryWorkloadPropertiesProductVersion {
+  /// Name of the product.
+  ///
+  /// Optional.
+  core.String? name;
+
+  /// Version of the product.
+  ///
+  /// Optional.
+  core.String? version;
+
+  SapDiscoveryWorkloadPropertiesProductVersion({
+    this.name,
+    this.version,
+  });
+
+  SapDiscoveryWorkloadPropertiesProductVersion.fromJson(core.Map json_)
+      : this(
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          version: json_.containsKey('version')
+              ? json_['version'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (version != null) 'version': version!,
+      };
+}
+
+/// A SAP software component name, version, and type.
+class SapDiscoveryWorkloadPropertiesSoftwareComponentProperties {
+  /// The component's minor version.
+  ///
+  /// Optional.
+  core.String? extVersion;
+
+  /// Name of the component.
+  ///
+  /// Optional.
+  core.String? name;
+
+  /// The component's type.
+  ///
+  /// Optional.
+  core.String? type;
+
+  /// The component's major version.
+  ///
+  /// Optional.
+  core.String? version;
+
+  SapDiscoveryWorkloadPropertiesSoftwareComponentProperties({
+    this.extVersion,
+    this.name,
+    this.type,
+    this.version,
+  });
+
+  SapDiscoveryWorkloadPropertiesSoftwareComponentProperties.fromJson(
+      core.Map json_)
+      : this(
+          extVersion: json_.containsKey('extVersion')
+              ? json_['extVersion'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          version: json_.containsKey('version')
+              ? json_['version'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (extVersion != null) 'extVersion': extVersion!,
+        if (name != null) 'name': name!,
+        if (type != null) 'type': type!,
+        if (version != null) 'version': version!,
+      };
+}
+
 /// A presentation of SAP workload insight.
 ///
 /// The schema of SAP workloads validation related data.
 class SapValidation {
+  /// The project_id of the cloud project that the Insight data comes from.
+  ///
+  /// Required.
+  core.String? projectId;
+
   /// A list of SAP validation metrics data.
   ///
   /// Optional.
   core.List<SapValidationValidationDetail>? validationDetails;
 
+  /// The zone of the instance that the Insight data comes from.
+  ///
+  /// Optional.
+  core.String? zone;
+
   SapValidation({
+    this.projectId,
     this.validationDetails,
+    this.zone,
   });
 
   SapValidation.fromJson(core.Map json_)
       : this(
+          projectId: json_.containsKey('projectId')
+              ? json_['projectId'] as core.String
+              : null,
           validationDetails: json_.containsKey('validationDetails')
               ? (json_['validationDetails'] as core.List)
                   .map((value) => SapValidationValidationDetail.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          zone: json_.containsKey('zone') ? json_['zone'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (projectId != null) 'projectId': projectId!,
         if (validationDetails != null) 'validationDetails': validationDetails!,
+        if (zone != null) 'zone': zone!,
       };
 }
 
@@ -2311,6 +3394,11 @@ class SapValidationValidationDetail {
   ///
   /// Optional.
   core.Map<core.String, core.String>? details;
+
+  /// Was there a SAP system detected for this validation type.
+  ///
+  /// Optional.
+  core.bool? isPresent;
 
   /// The SAP system that the validation data is from.
   ///
@@ -2339,6 +3427,7 @@ class SapValidationValidationDetail {
 
   SapValidationValidationDetail({
     this.details,
+    this.isPresent,
     this.sapValidationType,
   });
 
@@ -2352,6 +3441,9 @@ class SapValidationValidationDetail {
                   ),
                 )
               : null,
+          isPresent: json_.containsKey('isPresent')
+              ? json_['isPresent'] as core.bool
+              : null,
           sapValidationType: json_.containsKey('sapValidationType')
               ? json_['sapValidationType'] as core.String
               : null,
@@ -2359,7 +3451,100 @@ class SapValidationValidationDetail {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (details != null) 'details': details!,
+        if (isPresent != null) 'isPresent': isPresent!,
         if (sapValidationType != null) 'sapValidationType': sapValidationType!,
+      };
+}
+
+/// The body of sap workload
+class SapWorkload {
+  /// the acsc componment
+  ///
+  /// Output only.
+  SapComponent? application;
+
+  /// the database componment
+  ///
+  /// Output only.
+  SapComponent? database;
+
+  /// The metadata for SAP workload.
+  ///
+  /// Output only.
+  core.Map<core.String, core.String>? metadata;
+
+  SapWorkload({
+    this.application,
+    this.database,
+    this.metadata,
+  });
+
+  SapWorkload.fromJson(core.Map json_)
+      : this(
+          application: json_.containsKey('application')
+              ? SapComponent.fromJson(
+                  json_['application'] as core.Map<core.String, core.dynamic>)
+              : null,
+          database: json_.containsKey('database')
+              ? SapComponent.fromJson(
+                  json_['database'] as core.Map<core.String, core.dynamic>)
+              : null,
+          metadata: json_.containsKey('metadata')
+              ? (json_['metadata'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (application != null) 'application': application!,
+        if (database != null) 'database': database!,
+        if (metadata != null) 'metadata': metadata!,
+      };
+}
+
+/// The overview of sap workload
+class SapWorkloadOverview {
+  /// The application SID
+  ///
+  /// Output only.
+  core.String? appSid;
+
+  /// The database SID
+  ///
+  /// Output only.
+  core.String? dbSid;
+
+  /// The UUID for a SAP workload
+  ///
+  /// Output only.
+  core.String? sapSystemId;
+
+  SapWorkloadOverview({
+    this.appSid,
+    this.dbSid,
+    this.sapSystemId,
+  });
+
+  SapWorkloadOverview.fromJson(core.Map json_)
+      : this(
+          appSid: json_.containsKey('appSid')
+              ? json_['appSid'] as core.String
+              : null,
+          dbSid:
+              json_.containsKey('dbSid') ? json_['dbSid'] as core.String : null,
+          sapSystemId: json_.containsKey('sapSystemId')
+              ? json_['sapSystemId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (appSid != null) 'appSid': appSid!,
+        if (dbSid != null) 'dbSid': dbSid!,
+        if (sapSystemId != null) 'sapSystemId': sapSystemId!,
       };
 }
 
@@ -2368,8 +3553,12 @@ class ScannedResource {
   /// resource name
   core.String? resource;
 
+  /// resource type
+  core.String? type;
+
   ScannedResource({
     this.resource,
+    this.type,
   });
 
   ScannedResource.fromJson(core.Map json_)
@@ -2377,10 +3566,12 @@ class ScannedResource {
           resource: json_.containsKey('resource')
               ? json_['resource'] as core.String
               : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (resource != null) 'resource': resource!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -2521,6 +3712,103 @@ class SqlserverValidationValidationDetail {
       };
 }
 
+/// The body of sqlserver workload
+class SqlserverWorkload {
+  /// The availability groups for sqlserver
+  ///
+  /// Output only.
+  core.List<AvailabilityGroup>? ags;
+
+  /// The cluster for sqlserver
+  ///
+  /// Output only.
+  Cluster? cluster;
+
+  /// The databases for sqlserver
+  ///
+  /// Output only.
+  core.List<Database>? databases;
+
+  /// The load balancer for sqlserver
+  ///
+  /// Output only.
+  LoadBalancerServer? loadBalancerServer;
+
+  SqlserverWorkload({
+    this.ags,
+    this.cluster,
+    this.databases,
+    this.loadBalancerServer,
+  });
+
+  SqlserverWorkload.fromJson(core.Map json_)
+      : this(
+          ags: json_.containsKey('ags')
+              ? (json_['ags'] as core.List)
+                  .map((value) => AvailabilityGroup.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          cluster: json_.containsKey('cluster')
+              ? Cluster.fromJson(
+                  json_['cluster'] as core.Map<core.String, core.dynamic>)
+              : null,
+          databases: json_.containsKey('databases')
+              ? (json_['databases'] as core.List)
+                  .map((value) => Database.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          loadBalancerServer: json_.containsKey('loadBalancerServer')
+              ? LoadBalancerServer.fromJson(json_['loadBalancerServer']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (ags != null) 'ags': ags!,
+        if (cluster != null) 'cluster': cluster!,
+        if (databases != null) 'databases': databases!,
+        if (loadBalancerServer != null)
+          'loadBalancerServer': loadBalancerServer!,
+      };
+}
+
+/// The overview of sqlserver workload
+class SqlserverWorkloadOverview {
+  /// The availability groups
+  ///
+  /// Output only.
+  core.List<core.String>? availabilityGroup;
+
+  /// The UUID for a Sqlserver workload
+  ///
+  /// Output only.
+  core.String? sqlserverSystemId;
+
+  SqlserverWorkloadOverview({
+    this.availabilityGroup,
+    this.sqlserverSystemId,
+  });
+
+  SqlserverWorkloadOverview.fromJson(core.Map json_)
+      : this(
+          availabilityGroup: json_.containsKey('availabilityGroup')
+              ? (json_['availabilityGroup'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          sqlserverSystemId: json_.containsKey('sqlserverSystemId')
+              ? json_['sqlserverSystemId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (availabilityGroup != null) 'availabilityGroup': availabilityGroup!,
+        if (sqlserverSystemId != null) 'sqlserverSystemId': sqlserverSystemId!,
+      };
+}
+
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.
 ///
@@ -2529,6 +3817,85 @@ class SqlserverValidationValidationDetail {
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef Status = $Status;
+
+/// The body of three tier workload
+class ThreeTierWorkload {
+  /// The API layer for three tier workload
+  ///
+  /// Output only.
+  APILayerServer? apiLayer;
+
+  /// The backend for three tier workload
+  ///
+  /// Output only.
+  BackendServer? backend;
+
+  /// the workload endpoint
+  ///
+  /// Output only.
+  core.String? endpoint;
+
+  /// The frontend for three tier workload
+  ///
+  /// Output only.
+  FrontEndServer? frontend;
+
+  ThreeTierWorkload({
+    this.apiLayer,
+    this.backend,
+    this.endpoint,
+    this.frontend,
+  });
+
+  ThreeTierWorkload.fromJson(core.Map json_)
+      : this(
+          apiLayer: json_.containsKey('apiLayer')
+              ? APILayerServer.fromJson(
+                  json_['apiLayer'] as core.Map<core.String, core.dynamic>)
+              : null,
+          backend: json_.containsKey('backend')
+              ? BackendServer.fromJson(
+                  json_['backend'] as core.Map<core.String, core.dynamic>)
+              : null,
+          endpoint: json_.containsKey('endpoint')
+              ? json_['endpoint'] as core.String
+              : null,
+          frontend: json_.containsKey('frontend')
+              ? FrontEndServer.fromJson(
+                  json_['frontend'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (apiLayer != null) 'apiLayer': apiLayer!,
+        if (backend != null) 'backend': backend!,
+        if (endpoint != null) 'endpoint': endpoint!,
+        if (frontend != null) 'frontend': frontend!,
+      };
+}
+
+/// The overview of three tier workload
+class ThreeTierWorkloadOverview {
+  /// The UUID for a three tier workload
+  ///
+  /// Output only.
+  core.String? threeTierSystemId;
+
+  ThreeTierWorkloadOverview({
+    this.threeTierSystemId,
+  });
+
+  ThreeTierWorkloadOverview.fromJson(core.Map json_)
+      : this(
+          threeTierSystemId: json_.containsKey('threeTierSystemId')
+              ? json_['threeTierSystemId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (threeTierSystemId != null) 'threeTierSystemId': threeTierSystemId!,
+      };
+}
 
 /// Message describing the violdation in execution result
 class ViolationDetails {
@@ -2568,6 +3935,204 @@ class ViolationDetails {
         if (asset != null) 'asset': asset!,
         if (observed != null) 'observed': observed!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
+      };
+}
+
+/// workload resource
+class WorkloadProfile {
+  /// The application layer
+  ///
+  /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  Layer? application;
+
+  /// The ascs layer
+  ///
+  /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  Layer? ascs;
+
+  /// The database layer
+  ///
+  /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  Layer? database;
+
+  /// such as name, description, version.
+  ///
+  /// More example can be found in deployment
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Identifier.
+  ///
+  /// name of resource names have the form
+  /// 'projects/{project_id}/workloads/{workload_id}'
+  core.String? name;
+
+  /// time when the workload data was refreshed
+  ///
+  /// Required.
+  core.String? refreshedTime;
+
+  /// The sap workload content
+  SapWorkload? sapWorkload;
+
+  /// The sqlserver workload content
+  SqlserverWorkload? sqlserverWorkload;
+
+  /// the current state if a a workload
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : unspecified
+  /// - "ACTIVE" : ACTIVE state
+  /// - "DEPLOYING" : workload is in Deploying state
+  /// - "DESTROYING" : The workload is in Destroying state
+  /// - "MAINTENANCE" : The Workload is undermaintance
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.String? state;
+
+  /// The 3 tier web app workload content
+  ThreeTierWorkload? threeTierWorkload;
+
+  /// The type of the workload
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "WORKLOAD_TYPE_UNSPECIFIED" : unspecified workload type
+  /// - "S4_HANA" : running sap workload s4/hana
+  /// - "SQL_SERVER" : running sqlserver workload
+  /// - "THREE_TIER_WEB_APP" : running 3 tier web app workload
+  core.String? workloadType;
+
+  WorkloadProfile({
+    this.application,
+    this.ascs,
+    this.database,
+    this.labels,
+    this.name,
+    this.refreshedTime,
+    this.sapWorkload,
+    this.sqlserverWorkload,
+    this.state,
+    this.threeTierWorkload,
+    this.workloadType,
+  });
+
+  WorkloadProfile.fromJson(core.Map json_)
+      : this(
+          application: json_.containsKey('application')
+              ? Layer.fromJson(
+                  json_['application'] as core.Map<core.String, core.dynamic>)
+              : null,
+          ascs: json_.containsKey('ascs')
+              ? Layer.fromJson(
+                  json_['ascs'] as core.Map<core.String, core.dynamic>)
+              : null,
+          database: json_.containsKey('database')
+              ? Layer.fromJson(
+                  json_['database'] as core.Map<core.String, core.dynamic>)
+              : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          refreshedTime: json_.containsKey('refreshedTime')
+              ? json_['refreshedTime'] as core.String
+              : null,
+          sapWorkload: json_.containsKey('sapWorkload')
+              ? SapWorkload.fromJson(
+                  json_['sapWorkload'] as core.Map<core.String, core.dynamic>)
+              : null,
+          sqlserverWorkload: json_.containsKey('sqlserverWorkload')
+              ? SqlserverWorkload.fromJson(json_['sqlserverWorkload']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          threeTierWorkload: json_.containsKey('threeTierWorkload')
+              ? ThreeTierWorkload.fromJson(json_['threeTierWorkload']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          workloadType: json_.containsKey('workloadType')
+              ? json_['workloadType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (application != null) 'application': application!,
+        if (ascs != null) 'ascs': ascs!,
+        if (database != null) 'database': database!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (refreshedTime != null) 'refreshedTime': refreshedTime!,
+        if (sapWorkload != null) 'sapWorkload': sapWorkload!,
+        if (sqlserverWorkload != null) 'sqlserverWorkload': sqlserverWorkload!,
+        if (state != null) 'state': state!,
+        if (threeTierWorkload != null) 'threeTierWorkload': threeTierWorkload!,
+        if (workloadType != null) 'workloadType': workloadType!,
+      };
+}
+
+/// a workload profile overview
+class WorkloadProfileOverview {
+  /// The sap workload overview
+  SapWorkloadOverview? sapWorkloadOverview;
+
+  /// The sqlserver workload overview
+  SqlserverWorkloadOverview? sqlserverWorkloadOverview;
+
+  /// The three tier workload overview
+  ThreeTierWorkloadOverview? threeTierWorkloadOverview;
+
+  WorkloadProfileOverview({
+    this.sapWorkloadOverview,
+    this.sqlserverWorkloadOverview,
+    this.threeTierWorkloadOverview,
+  });
+
+  WorkloadProfileOverview.fromJson(core.Map json_)
+      : this(
+          sapWorkloadOverview: json_.containsKey('sapWorkloadOverview')
+              ? SapWorkloadOverview.fromJson(json_['sapWorkloadOverview']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          sqlserverWorkloadOverview:
+              json_.containsKey('sqlserverWorkloadOverview')
+                  ? SqlserverWorkloadOverview.fromJson(
+                      json_['sqlserverWorkloadOverview']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          threeTierWorkloadOverview:
+              json_.containsKey('threeTierWorkloadOverview')
+                  ? ThreeTierWorkloadOverview.fromJson(
+                      json_['threeTierWorkloadOverview']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (sapWorkloadOverview != null)
+          'sapWorkloadOverview': sapWorkloadOverview!,
+        if (sqlserverWorkloadOverview != null)
+          'sqlserverWorkloadOverview': sqlserverWorkloadOverview!,
+        if (threeTierWorkloadOverview != null)
+          'threeTierWorkloadOverview': threeTierWorkloadOverview!,
       };
 }
 

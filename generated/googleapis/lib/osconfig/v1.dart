@@ -3048,7 +3048,7 @@ class OSPolicyAssignmentInstanceFilter {
 }
 
 /// VM inventory details.
-typedef OSPolicyAssignmentInstanceFilterInventory = $Shared09;
+typedef OSPolicyAssignmentInstanceFilterInventory = $Shared10;
 
 /// Message representing label set.
 ///
@@ -3444,7 +3444,7 @@ class OSPolicyAssignmentRollout {
 }
 
 /// Filtering criteria to select VMs based on inventory details.
-typedef OSPolicyInventoryFilter = $Shared09;
+typedef OSPolicyInventoryFilter = $Shared10;
 
 /// An OS policy resource is used to define the desired state configuration and
 /// provides a specific functionality like installing/removing packages,
@@ -3987,7 +3987,7 @@ class OSPolicyResourcePackageResource {
 ///
 /// - install: `apt-get update && apt-get -y install [name]` - remove: `apt-get
 /// -y remove [name]`
-typedef OSPolicyResourcePackageResourceAPT = $Shared01;
+typedef OSPolicyResourcePackageResourceAPT = $Shared02;
 
 /// A deb package file.
 ///
@@ -4030,7 +4030,7 @@ class OSPolicyResourcePackageResourceDeb {
 ///
 /// - install: `googet -noconfirm install package` - remove: `googet -noconfirm
 /// remove package`
-typedef OSPolicyResourcePackageResourceGooGet = $Shared01;
+typedef OSPolicyResourcePackageResourceGooGet = $Shared02;
 
 /// An MSI package.
 ///
@@ -4111,12 +4111,12 @@ class OSPolicyResourcePackageResourceRPM {
 /// A package managed by YUM.
 ///
 /// - install: `yum -y install package` - remove: `yum -y remove package`
-typedef OSPolicyResourcePackageResourceYUM = $Shared01;
+typedef OSPolicyResourcePackageResourceYUM = $Shared02;
 
 /// A package managed by Zypper.
 ///
 /// - install: `zypper -y install package` - remove: `zypper -y rm package`
-typedef OSPolicyResourcePackageResourceZypper = $Shared01;
+typedef OSPolicyResourcePackageResourceZypper = $Shared02;
 
 /// A resource that manages a package repository.
 class OSPolicyResourceRepositoryResource {
@@ -5807,11 +5807,11 @@ class WeekDayOfMonth {
   /// that the patch deployment is scheduled for.
   ///
   /// For example if `week_ordinal` and `day_of_week` values point to the second
-  /// day of the month and this `day_offset` value is set to `3`, the patch
+  /// Tuesday of the month and the `day_offset` value is set to `3`, patch
   /// deployment takes place three days after the second Tuesday of the month.
-  /// If this value is negative, for example -5, the patches are deployed five
-  /// days before before the second Tuesday of the month. Allowed values are in
-  /// range \[-30, 30\].
+  /// If this value is negative, for example -5, patches are deployed five days
+  /// before the second Tuesday of the month. Allowed values are in range \[-30,
+  /// 30\].
   ///
   /// Optional.
   core.int? dayOffset;

@@ -1025,6 +1025,21 @@ void checkCloudRepoSourceContext(api.CloudRepoSourceContext o) {
   buildCounterCloudRepoSourceContext--;
 }
 
+core.int buildCounterCloudStorageLocation = 0;
+api.CloudStorageLocation buildCloudStorageLocation() {
+  final o = api.CloudStorageLocation();
+  buildCounterCloudStorageLocation++;
+  if (buildCounterCloudStorageLocation < 3) {}
+  buildCounterCloudStorageLocation--;
+  return o;
+}
+
+void checkCloudStorageLocation(api.CloudStorageLocation o) {
+  buildCounterCloudStorageLocation++;
+  if (buildCounterCloudStorageLocation < 3) {}
+  buildCounterCloudStorageLocation--;
+}
+
 core.List<core.String> buildUnnamed18() => [
       'foo',
       'foo',
@@ -1734,6 +1749,47 @@ void checkEnvelopeSignature(api.EnvelopeSignature o) {
     );
   }
   buildCounterEnvelopeSignature--;
+}
+
+core.int buildCounterExportSBOMRequest = 0;
+api.ExportSBOMRequest buildExportSBOMRequest() {
+  final o = api.ExportSBOMRequest();
+  buildCounterExportSBOMRequest++;
+  if (buildCounterExportSBOMRequest < 3) {
+    o.cloudStorageLocation = buildCloudStorageLocation();
+  }
+  buildCounterExportSBOMRequest--;
+  return o;
+}
+
+void checkExportSBOMRequest(api.ExportSBOMRequest o) {
+  buildCounterExportSBOMRequest++;
+  if (buildCounterExportSBOMRequest < 3) {
+    checkCloudStorageLocation(o.cloudStorageLocation!);
+  }
+  buildCounterExportSBOMRequest--;
+}
+
+core.int buildCounterExportSBOMResponse = 0;
+api.ExportSBOMResponse buildExportSBOMResponse() {
+  final o = api.ExportSBOMResponse();
+  buildCounterExportSBOMResponse++;
+  if (buildCounterExportSBOMResponse < 3) {
+    o.discoveryOccurrence = 'foo';
+  }
+  buildCounterExportSBOMResponse--;
+  return o;
+}
+
+void checkExportSBOMResponse(api.ExportSBOMResponse o) {
+  buildCounterExportSBOMResponse++;
+  if (buildCounterExportSBOMResponse < 3) {
+    unittest.expect(
+      o.discoveryOccurrence!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterExportSBOMResponse--;
 }
 
 core.int buildCounterExpr = 0;
@@ -5577,6 +5633,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-CloudStorageLocation', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCloudStorageLocation();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CloudStorageLocation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkCloudStorageLocation(od);
+    });
+  });
+
   unittest.group('obj-schema-Command', () {
     unittest.test('to-json--from-json', () async {
       final o = buildCommand();
@@ -5754,6 +5820,26 @@ void main() {
       final od = api.EnvelopeSignature.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkEnvelopeSignature(od);
+    });
+  });
+
+  unittest.group('obj-schema-ExportSBOMRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildExportSBOMRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ExportSBOMRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkExportSBOMRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-ExportSBOMResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildExportSBOMResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ExportSBOMResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkExportSBOMResponse(od);
     });
   });
 
@@ -7829,6 +7915,66 @@ void main() {
           $fields: arg_$fields);
       checkTestIamPermissionsResponse(
           response as api.TestIamPermissionsResponse);
+    });
+  });
+
+  unittest.group('resource-ProjectsResourcesResource', () {
+    unittest.test('method--exportSBOM', () async {
+      final mock = HttpServerMock();
+      final res = api.ContainerAnalysisApi(mock).projects.resources;
+      final arg_request = buildExportSBOMRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.ExportSBOMRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkExportSBOMRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildExportSBOMResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.exportSBOM(arg_request, arg_name, $fields: arg_$fields);
+      checkExportSBOMResponse(response as api.ExportSBOMResponse);
     });
   });
 }

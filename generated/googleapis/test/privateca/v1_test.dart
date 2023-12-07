@@ -600,6 +600,7 @@ api.CertificateConfig buildCertificateConfig() {
   if (buildCounterCertificateConfig < 3) {
     o.publicKey = buildPublicKey();
     o.subjectConfig = buildSubjectConfig();
+    o.subjectKeyId = buildCertificateConfigKeyId();
     o.x509Config = buildX509Parameters();
   }
   buildCounterCertificateConfig--;
@@ -611,9 +612,32 @@ void checkCertificateConfig(api.CertificateConfig o) {
   if (buildCounterCertificateConfig < 3) {
     checkPublicKey(o.publicKey!);
     checkSubjectConfig(o.subjectConfig!);
+    checkCertificateConfigKeyId(o.subjectKeyId!);
     checkX509Parameters(o.x509Config!);
   }
   buildCounterCertificateConfig--;
+}
+
+core.int buildCounterCertificateConfigKeyId = 0;
+api.CertificateConfigKeyId buildCertificateConfigKeyId() {
+  final o = api.CertificateConfigKeyId();
+  buildCounterCertificateConfigKeyId++;
+  if (buildCounterCertificateConfigKeyId < 3) {
+    o.keyId = 'foo';
+  }
+  buildCounterCertificateConfigKeyId--;
+  return o;
+}
+
+void checkCertificateConfigKeyId(api.CertificateConfigKeyId o) {
+  buildCounterCertificateConfigKeyId++;
+  if (buildCounterCertificateConfigKeyId < 3) {
+    unittest.expect(
+      o.keyId!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterCertificateConfigKeyId--;
 }
 
 core.List<core.String> buildUnnamed11() => [
@@ -3045,6 +3069,16 @@ void main() {
       final od = api.CertificateConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkCertificateConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-CertificateConfigKeyId', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCertificateConfigKeyId();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CertificateConfigKeyId.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkCertificateConfigKeyId(od);
     });
   });
 

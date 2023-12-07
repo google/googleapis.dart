@@ -351,6 +351,7 @@ api.GcsData buildGcsData() {
   buildCounterGcsData++;
   if (buildCounterGcsData < 3) {
     o.bucketName = 'foo';
+    o.managedFolderTransferEnabled = true;
     o.path = 'foo';
   }
   buildCounterGcsData--;
@@ -364,6 +365,7 @@ void checkGcsData(api.GcsData o) {
       o.bucketName!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.managedFolderTransferEnabled!, unittest.isTrue);
     unittest.expect(
       o.path!,
       unittest.equals('foo'),
@@ -397,6 +399,28 @@ void checkGoogleServiceAccount(api.GoogleServiceAccount o) {
     );
   }
   buildCounterGoogleServiceAccount--;
+}
+
+core.int buildCounterHdfsData = 0;
+api.HdfsData buildHdfsData() {
+  final o = api.HdfsData();
+  buildCounterHdfsData++;
+  if (buildCounterHdfsData < 3) {
+    o.path = 'foo';
+  }
+  buildCounterHdfsData--;
+  return o;
+}
+
+void checkHdfsData(api.HdfsData o) {
+  buildCounterHdfsData++;
+  if (buildCounterHdfsData < 3) {
+    unittest.expect(
+      o.path!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterHdfsData--;
 }
 
 core.int buildCounterHttpData = 0;
@@ -1279,6 +1303,7 @@ api.TransferSpec buildTransferSpec() {
     o.gcsDataSink = buildGcsData();
     o.gcsDataSource = buildGcsData();
     o.gcsIntermediateDataLocation = buildGcsData();
+    o.hdfsDataSource = buildHdfsData();
     o.httpDataSource = buildHttpData();
     o.objectConditions = buildObjectConditions();
     o.posixDataSink = buildPosixFilesystem();
@@ -1301,6 +1326,7 @@ void checkTransferSpec(api.TransferSpec o) {
     checkGcsData(o.gcsDataSink!);
     checkGcsData(o.gcsDataSource!);
     checkGcsData(o.gcsIntermediateDataLocation!);
+    checkHdfsData(o.hdfsDataSource!);
     checkHttpData(o.httpDataSource!);
     checkObjectConditions(o.objectConditions!);
     checkPosixFilesystem(o.posixDataSink!);
@@ -1476,6 +1502,16 @@ void main() {
       final od = api.GoogleServiceAccount.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleServiceAccount(od);
+    });
+  });
+
+  unittest.group('obj-schema-HdfsData', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildHdfsData();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.HdfsData.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkHdfsData(od);
     });
   });
 

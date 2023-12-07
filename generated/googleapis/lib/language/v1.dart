@@ -868,6 +868,8 @@ class ClassifyTextRequest {
   /// Model options to use for classification.
   ///
   /// Defaults to v1 options if not specified.
+  ///
+  /// Optional.
   ClassificationModelOptions? classificationModelOptions;
 
   /// Input document.
@@ -1275,6 +1277,8 @@ class Features {
   ///
   /// Defaults to v1 options if not specified. Only used if `classify_text` is
   /// set to true.
+  ///
+  /// Optional.
   ClassificationModelOptions? classificationModelOptions;
 
   /// Classify the full document into categories.

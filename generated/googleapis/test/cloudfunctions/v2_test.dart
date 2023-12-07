@@ -24,6 +24,21 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
+core.int buildCounterAbortFunctionUpgradeRequest = 0;
+api.AbortFunctionUpgradeRequest buildAbortFunctionUpgradeRequest() {
+  final o = api.AbortFunctionUpgradeRequest();
+  buildCounterAbortFunctionUpgradeRequest++;
+  if (buildCounterAbortFunctionUpgradeRequest < 3) {}
+  buildCounterAbortFunctionUpgradeRequest--;
+  return o;
+}
+
+void checkAbortFunctionUpgradeRequest(api.AbortFunctionUpgradeRequest o) {
+  buildCounterAbortFunctionUpgradeRequest++;
+  if (buildCounterAbortFunctionUpgradeRequest < 3) {}
+  buildCounterAbortFunctionUpgradeRequest--;
+}
+
 core.List<api.AuditLogConfig> buildUnnamed0() => [
       buildAuditLogConfig(),
       buildAuditLogConfig(),
@@ -100,6 +115,21 @@ void checkAuditLogConfig(api.AuditLogConfig o) {
   buildCounterAuditLogConfig--;
 }
 
+core.int buildCounterAutomaticUpdatePolicy = 0;
+api.AutomaticUpdatePolicy buildAutomaticUpdatePolicy() {
+  final o = api.AutomaticUpdatePolicy();
+  buildCounterAutomaticUpdatePolicy++;
+  if (buildCounterAutomaticUpdatePolicy < 3) {}
+  buildCounterAutomaticUpdatePolicy--;
+  return o;
+}
+
+void checkAutomaticUpdatePolicy(api.AutomaticUpdatePolicy o) {
+  buildCounterAutomaticUpdatePolicy++;
+  if (buildCounterAutomaticUpdatePolicy < 3) {}
+  buildCounterAutomaticUpdatePolicy--;
+}
+
 core.List<core.String> buildUnnamed2() => [
       'foo',
       'foo',
@@ -165,12 +195,15 @@ api.BuildConfig buildBuildConfig() {
   final o = api.BuildConfig();
   buildCounterBuildConfig++;
   if (buildCounterBuildConfig < 3) {
+    o.automaticUpdatePolicy = buildAutomaticUpdatePolicy();
     o.build = 'foo';
     o.dockerRegistry = 'foo';
     o.dockerRepository = 'foo';
     o.entryPoint = 'foo';
     o.environmentVariables = buildUnnamed3();
+    o.onDeployUpdatePolicy = buildOnDeployUpdatePolicy();
     o.runtime = 'foo';
+    o.serviceAccount = 'foo';
     o.source = buildSource();
     o.sourceProvenance = buildSourceProvenance();
     o.sourceToken = 'foo';
@@ -183,6 +216,7 @@ api.BuildConfig buildBuildConfig() {
 void checkBuildConfig(api.BuildConfig o) {
   buildCounterBuildConfig++;
   if (buildCounterBuildConfig < 3) {
+    checkAutomaticUpdatePolicy(o.automaticUpdatePolicy!);
     unittest.expect(
       o.build!,
       unittest.equals('foo'),
@@ -200,8 +234,13 @@ void checkBuildConfig(api.BuildConfig o) {
       unittest.equals('foo'),
     );
     checkUnnamed3(o.environmentVariables!);
+    checkOnDeployUpdatePolicy(o.onDeployUpdatePolicy!);
     unittest.expect(
       o.runtime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.serviceAccount!,
       unittest.equals('foo'),
     );
     checkSource(o.source!);
@@ -216,6 +255,21 @@ void checkBuildConfig(api.BuildConfig o) {
     );
   }
   buildCounterBuildConfig--;
+}
+
+core.int buildCounterCommitFunctionUpgradeRequest = 0;
+api.CommitFunctionUpgradeRequest buildCommitFunctionUpgradeRequest() {
+  final o = api.CommitFunctionUpgradeRequest();
+  buildCounterCommitFunctionUpgradeRequest++;
+  if (buildCounterCommitFunctionUpgradeRequest < 3) {}
+  buildCounterCommitFunctionUpgradeRequest--;
+  return o;
+}
+
+void checkCommitFunctionUpgradeRequest(api.CommitFunctionUpgradeRequest o) {
+  buildCounterCommitFunctionUpgradeRequest++;
+  if (buildCounterCommitFunctionUpgradeRequest < 3) {}
+  buildCounterCommitFunctionUpgradeRequest--;
 }
 
 core.int buildCounterDate = 0;
@@ -303,6 +357,7 @@ api.EventTrigger buildEventTrigger() {
     o.eventType = 'foo';
     o.pubsubTopic = 'foo';
     o.retryPolicy = 'foo';
+    o.service = 'foo';
     o.serviceAccountEmail = 'foo';
     o.trigger = 'foo';
     o.triggerRegion = 'foo';
@@ -329,6 +384,10 @@ void checkEventTrigger(api.EventTrigger o) {
     );
     unittest.expect(
       o.retryPolicy!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.service!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -418,6 +477,7 @@ api.Function_ buildFunction_() {
   buildCounterFunction_++;
   if (buildCounterFunction_ < 3) {
     o.buildConfig = buildBuildConfig();
+    o.createTime = 'foo';
     o.description = 'foo';
     o.environment = 'foo';
     o.eventTrigger = buildEventTrigger();
@@ -429,6 +489,7 @@ api.Function_ buildFunction_() {
     o.state = 'foo';
     o.stateMessages = buildUnnamed6();
     o.updateTime = 'foo';
+    o.upgradeInfo = buildUpgradeInfo();
     o.url = 'foo';
   }
   buildCounterFunction_--;
@@ -439,6 +500,10 @@ void checkFunction_(api.Function_ o) {
   buildCounterFunction_++;
   if (buildCounterFunction_ < 3) {
     checkBuildConfig(o.buildConfig!);
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.description!,
       unittest.equals('foo'),
@@ -468,6 +533,7 @@ void checkFunction_(api.Function_ o) {
       o.updateTime!,
       unittest.equals('foo'),
     );
+    checkUpgradeInfo(o.upgradeInfo!);
     unittest.expect(
       o.url!,
       unittest.equals('foo'),
@@ -518,6 +584,7 @@ api.GenerateUploadUrlRequest buildGenerateUploadUrlRequest() {
   final o = api.GenerateUploadUrlRequest();
   buildCounterGenerateUploadUrlRequest++;
   if (buildCounterGenerateUploadUrlRequest < 3) {
+    o.environment = 'foo';
     o.kmsKeyName = 'foo';
   }
   buildCounterGenerateUploadUrlRequest--;
@@ -527,6 +594,10 @@ api.GenerateUploadUrlRequest buildGenerateUploadUrlRequest() {
 void checkGenerateUploadUrlRequest(api.GenerateUploadUrlRequest o) {
   buildCounterGenerateUploadUrlRequest++;
   if (buildCounterGenerateUploadUrlRequest < 3) {
+    unittest.expect(
+      o.environment!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.kmsKeyName!,
       unittest.equals('foo'),
@@ -845,6 +916,28 @@ void checkLocation(api.Location o) {
   buildCounterLocation--;
 }
 
+core.int buildCounterOnDeployUpdatePolicy = 0;
+api.OnDeployUpdatePolicy buildOnDeployUpdatePolicy() {
+  final o = api.OnDeployUpdatePolicy();
+  buildCounterOnDeployUpdatePolicy++;
+  if (buildCounterOnDeployUpdatePolicy < 3) {
+    o.runtimeVersion = 'foo';
+  }
+  buildCounterOnDeployUpdatePolicy--;
+  return o;
+}
+
+void checkOnDeployUpdatePolicy(api.OnDeployUpdatePolicy o) {
+  buildCounterOnDeployUpdatePolicy++;
+  if (buildCounterOnDeployUpdatePolicy < 3) {
+    unittest.expect(
+      o.runtimeVersion!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterOnDeployUpdatePolicy--;
+}
+
 core.Map<core.String, core.Object?> buildUnnamed14() => {
       'x': {
         'list': [1, 2, 3],
@@ -1018,6 +1111,23 @@ void checkPolicy(api.Policy o) {
   buildCounterPolicy--;
 }
 
+core.int buildCounterRedirectFunctionUpgradeTrafficRequest = 0;
+api.RedirectFunctionUpgradeTrafficRequest
+    buildRedirectFunctionUpgradeTrafficRequest() {
+  final o = api.RedirectFunctionUpgradeTrafficRequest();
+  buildCounterRedirectFunctionUpgradeTrafficRequest++;
+  if (buildCounterRedirectFunctionUpgradeTrafficRequest < 3) {}
+  buildCounterRedirectFunctionUpgradeTrafficRequest--;
+  return o;
+}
+
+void checkRedirectFunctionUpgradeTrafficRequest(
+    api.RedirectFunctionUpgradeTrafficRequest o) {
+  buildCounterRedirectFunctionUpgradeTrafficRequest++;
+  if (buildCounterRedirectFunctionUpgradeTrafficRequest < 3) {}
+  buildCounterRedirectFunctionUpgradeTrafficRequest--;
+}
+
 core.int buildCounterRepoSource = 0;
 api.RepoSource buildRepoSource() {
   final o = api.RepoSource();
@@ -1063,6 +1173,23 @@ void checkRepoSource(api.RepoSource o) {
     );
   }
   buildCounterRepoSource--;
+}
+
+core.int buildCounterRollbackFunctionUpgradeTrafficRequest = 0;
+api.RollbackFunctionUpgradeTrafficRequest
+    buildRollbackFunctionUpgradeTrafficRequest() {
+  final o = api.RollbackFunctionUpgradeTrafficRequest();
+  buildCounterRollbackFunctionUpgradeTrafficRequest++;
+  if (buildCounterRollbackFunctionUpgradeTrafficRequest < 3) {}
+  buildCounterRollbackFunctionUpgradeTrafficRequest--;
+  return o;
+}
+
+void checkRollbackFunctionUpgradeTrafficRequest(
+    api.RollbackFunctionUpgradeTrafficRequest o) {
+  buildCounterRollbackFunctionUpgradeTrafficRequest++;
+  if (buildCounterRollbackFunctionUpgradeTrafficRequest < 3) {}
+  buildCounterRollbackFunctionUpgradeTrafficRequest--;
 }
 
 core.List<core.String> buildUnnamed18() => [
@@ -1392,6 +1519,22 @@ void checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest--;
 }
 
+core.int buildCounterSetupFunctionUpgradeConfigRequest = 0;
+api.SetupFunctionUpgradeConfigRequest buildSetupFunctionUpgradeConfigRequest() {
+  final o = api.SetupFunctionUpgradeConfigRequest();
+  buildCounterSetupFunctionUpgradeConfigRequest++;
+  if (buildCounterSetupFunctionUpgradeConfigRequest < 3) {}
+  buildCounterSetupFunctionUpgradeConfigRequest--;
+  return o;
+}
+
+void checkSetupFunctionUpgradeConfigRequest(
+    api.SetupFunctionUpgradeConfigRequest o) {
+  buildCounterSetupFunctionUpgradeConfigRequest++;
+  if (buildCounterSetupFunctionUpgradeConfigRequest < 3) {}
+  buildCounterSetupFunctionUpgradeConfigRequest--;
+}
+
 core.int buildCounterSource = 0;
 api.Source buildSource() {
   final o = api.Source();
@@ -1633,7 +1776,45 @@ void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse--;
 }
 
+core.int buildCounterUpgradeInfo = 0;
+api.UpgradeInfo buildUpgradeInfo() {
+  final o = api.UpgradeInfo();
+  buildCounterUpgradeInfo++;
+  if (buildCounterUpgradeInfo < 3) {
+    o.buildConfig = buildBuildConfig();
+    o.eventTrigger = buildEventTrigger();
+    o.serviceConfig = buildServiceConfig();
+    o.upgradeState = 'foo';
+  }
+  buildCounterUpgradeInfo--;
+  return o;
+}
+
+void checkUpgradeInfo(api.UpgradeInfo o) {
+  buildCounterUpgradeInfo++;
+  if (buildCounterUpgradeInfo < 3) {
+    checkBuildConfig(o.buildConfig!);
+    checkEventTrigger(o.eventTrigger!);
+    checkServiceConfig(o.serviceConfig!);
+    unittest.expect(
+      o.upgradeState!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterUpgradeInfo--;
+}
+
 void main() {
+  unittest.group('obj-schema-AbortFunctionUpgradeRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAbortFunctionUpgradeRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AbortFunctionUpgradeRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAbortFunctionUpgradeRequest(od);
+    });
+  });
+
   unittest.group('obj-schema-AuditConfig', () {
     unittest.test('to-json--from-json', () async {
       final o = buildAuditConfig();
@@ -1654,6 +1835,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-AutomaticUpdatePolicy', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAutomaticUpdatePolicy();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AutomaticUpdatePolicy.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAutomaticUpdatePolicy(od);
+    });
+  });
+
   unittest.group('obj-schema-Binding', () {
     unittest.test('to-json--from-json', () async {
       final o = buildBinding();
@@ -1671,6 +1862,16 @@ void main() {
       final od = api.BuildConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkBuildConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-CommitFunctionUpgradeRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCommitFunctionUpgradeRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CommitFunctionUpgradeRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkCommitFunctionUpgradeRequest(od);
     });
   });
 
@@ -1824,6 +2025,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-OnDeployUpdatePolicy', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildOnDeployUpdatePolicy();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OnDeployUpdatePolicy.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkOnDeployUpdatePolicy(od);
+    });
+  });
+
   unittest.group('obj-schema-Operation', () {
     unittest.test('to-json--from-json', () async {
       final o = buildOperation();
@@ -1844,6 +2055,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-RedirectFunctionUpgradeTrafficRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRedirectFunctionUpgradeTrafficRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RedirectFunctionUpgradeTrafficRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRedirectFunctionUpgradeTrafficRequest(od);
+    });
+  });
+
   unittest.group('obj-schema-RepoSource', () {
     unittest.test('to-json--from-json', () async {
       final o = buildRepoSource();
@@ -1851,6 +2072,16 @@ void main() {
       final od =
           api.RepoSource.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkRepoSource(od);
+    });
+  });
+
+  unittest.group('obj-schema-RollbackFunctionUpgradeTrafficRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRollbackFunctionUpgradeTrafficRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RollbackFunctionUpgradeTrafficRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRollbackFunctionUpgradeTrafficRequest(od);
     });
   });
 
@@ -1914,6 +2145,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-SetupFunctionUpgradeConfigRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSetupFunctionUpgradeConfigRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SetupFunctionUpgradeConfigRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSetupFunctionUpgradeConfigRequest(od);
+    });
+  });
+
   unittest.group('obj-schema-Source', () {
     unittest.test('to-json--from-json', () async {
       final o = buildSource();
@@ -1971,6 +2212,16 @@ void main() {
       final od = api.TestIamPermissionsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkTestIamPermissionsResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-UpgradeInfo', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildUpgradeInfo();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UpgradeInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkUpgradeInfo(od);
     });
   });
 
@@ -2048,6 +2299,122 @@ void main() {
   });
 
   unittest.group('resource-ProjectsLocationsFunctionsResource', () {
+    unittest.test('method--abortFunctionUpgrade', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudFunctionsApi(mock).projects.locations.functions;
+      final arg_request = buildAbortFunctionUpgradeRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.AbortFunctionUpgradeRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAbortFunctionUpgradeRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.abortFunctionUpgrade(arg_request, arg_name,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--commitFunctionUpgrade', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudFunctionsApi(mock).projects.locations.functions;
+      final arg_request = buildCommitFunctionUpgradeRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.CommitFunctionUpgradeRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCommitFunctionUpgradeRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.commitFunctionUpgrade(arg_request, arg_name,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
       final res = api.CloudFunctionsApi(mock).projects.locations.functions;
@@ -2531,6 +2898,124 @@ void main() {
       checkOperation(response as api.Operation);
     });
 
+    unittest.test('method--redirectFunctionUpgradeTraffic', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudFunctionsApi(mock).projects.locations.functions;
+      final arg_request = buildRedirectFunctionUpgradeTrafficRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.RedirectFunctionUpgradeTrafficRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkRedirectFunctionUpgradeTrafficRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.redirectFunctionUpgradeTraffic(
+          arg_request, arg_name,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--rollbackFunctionUpgradeTraffic', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudFunctionsApi(mock).projects.locations.functions;
+      final arg_request = buildRollbackFunctionUpgradeTrafficRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.RollbackFunctionUpgradeTrafficRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkRollbackFunctionUpgradeTrafficRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.rollbackFunctionUpgradeTraffic(
+          arg_request, arg_name,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
       final res = api.CloudFunctionsApi(mock).projects.locations.functions;
@@ -2587,6 +3072,65 @@ void main() {
       final response = await res.setIamPolicy(arg_request, arg_resource,
           $fields: arg_$fields);
       checkPolicy(response as api.Policy);
+    });
+
+    unittest.test('method--setupFunctionUpgradeConfig', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudFunctionsApi(mock).projects.locations.functions;
+      final arg_request = buildSetupFunctionUpgradeConfigRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.SetupFunctionUpgradeConfigRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSetupFunctionUpgradeConfigRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.setupFunctionUpgradeConfig(
+          arg_request, arg_name,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
     unittest.test('method--testIamPermissions', () async {

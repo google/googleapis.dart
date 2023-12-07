@@ -2760,14 +2760,31 @@ class GoogleIamV1Binding {
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
   /// (primary) that represents all the users of that domain. For example,
-  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a user that has
-  /// been recently deleted. For example,
-  /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
-  /// this value reverts to `user:{emailid}` and the recovered user retains the
-  /// role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a service account
-  /// that has been recently deleted. For example,
+  /// `google.com` or `example.com`. *
+  /// `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workforce identity pool. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`:
+  /// All workforce identities in a group. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All workforce identities with a specific attribute value. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}
+  /// / * `: All identities in a workforce identity pool. *
+  /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workload identity pool. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`:
+  /// A workload identity pool group. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All identities in a workload identity pool with a certain attribute. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}
+  /// / * `: All identities in a workload identity pool. *
+  /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
+  /// identifier) representing a user that has been recently deleted. For
+  /// example, `alice@example.com?uid=123456789012345678901`. If the user is
+  /// recovered, this value reverts to `user:{emailid}` and the recovered user
+  /// retains the role in the binding. *
+  /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus
+  /// unique identifier) representing a service account that has been recently
+  /// deleted. For example,
   /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If
   /// the service account is undeleted, this value reverts to
   /// `serviceAccount:{emailid}` and the undeleted service account retains the
@@ -2776,12 +2793,19 @@ class GoogleIamV1Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding.
+  /// the role in the binding. *
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// Deleted single identity in a workforce identity pool. For example,
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
   ///
-  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an
+  /// overview of the IAM roles and permissions, see the
+  /// [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For
+  /// a list of the available pre-defined roles, see
+  /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
   GoogleIamV1Binding({
@@ -4256,6 +4280,9 @@ class Quota {
   /// network.
   core.int? managedZonesPerNetwork;
 
+  /// Maximum number of nameservers per delegation, meant to prevent abuse
+  core.int? nameserversPerDelegation;
+
   /// Maximum allowed number of networks to which a privately scoped zone can be
   /// attached.
   core.int? networksPerManagedZone;
@@ -4316,6 +4343,7 @@ class Quota {
     this.managedZones,
     this.managedZonesPerGkeCluster,
     this.managedZonesPerNetwork,
+    this.nameserversPerDelegation,
     this.networksPerManagedZone,
     this.networksPerPolicy,
     this.networksPerResponsePolicy,
@@ -4363,6 +4391,10 @@ class Quota {
           managedZonesPerNetwork: json_.containsKey('managedZonesPerNetwork')
               ? json_['managedZonesPerNetwork'] as core.int
               : null,
+          nameserversPerDelegation:
+              json_.containsKey('nameserversPerDelegation')
+                  ? json_['nameserversPerDelegation'] as core.int
+                  : null,
           networksPerManagedZone: json_.containsKey('networksPerManagedZone')
               ? json_['networksPerManagedZone'] as core.int
               : null,
@@ -4436,6 +4468,8 @@ class Quota {
           'managedZonesPerGkeCluster': managedZonesPerGkeCluster!,
         if (managedZonesPerNetwork != null)
           'managedZonesPerNetwork': managedZonesPerNetwork!,
+        if (nameserversPerDelegation != null)
+          'nameserversPerDelegation': nameserversPerDelegation!,
         if (networksPerManagedZone != null)
           'networksPerManagedZone': networksPerManagedZone!,
         if (networksPerPolicy != null) 'networksPerPolicy': networksPerPolicy!,
@@ -4472,12 +4506,19 @@ class Quota {
 /// geolocation or by weighted random selection.
 class RRSetRoutingPolicy {
   RRSetRoutingPolicyGeoPolicy? geo;
+
+  /// The selfLink attribute of the HealthCheck resource to use for this
+  /// RRSetRoutingPolicy.
+  ///
+  /// https://cloud.google.com/compute/docs/reference/rest/v1/healthChecks
+  core.String? healthCheck;
   core.String? kind;
   RRSetRoutingPolicyPrimaryBackupPolicy? primaryBackup;
   RRSetRoutingPolicyWrrPolicy? wrr;
 
   RRSetRoutingPolicy({
     this.geo,
+    this.healthCheck,
     this.kind,
     this.primaryBackup,
     this.wrr,
@@ -4488,6 +4529,9 @@ class RRSetRoutingPolicy {
           geo: json_.containsKey('geo')
               ? RRSetRoutingPolicyGeoPolicy.fromJson(
                   json_['geo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          healthCheck: json_.containsKey('healthCheck')
+              ? json_['healthCheck'] as core.String
               : null,
           kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
           primaryBackup: json_.containsKey('primaryBackup')
@@ -4502,6 +4546,7 @@ class RRSetRoutingPolicy {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (geo != null) 'geo': geo!,
+        if (healthCheck != null) 'healthCheck': healthCheck!,
         if (kind != null) 'kind': kind!,
         if (primaryBackup != null) 'primaryBackup': primaryBackup!,
         if (wrr != null) 'wrr': wrr!,
@@ -4622,16 +4667,30 @@ class RRSetRoutingPolicyGeoPolicyGeoPolicyItem {
 /// HealthCheckTargets describes endpoints to health-check when responding to
 /// Routing Policy queries.
 ///
-/// Only the healthy endpoints will be included in the response.
+/// Only the healthy endpoints will be included in the response. Only one of
+/// internal_load_balancer and external_endpoints should be set.
 class RRSetRoutingPolicyHealthCheckTargets {
+  /// The Internet IP addresses to be health checked.
+  ///
+  /// The format matches the format of ResourceRecordSet.rrdata as defined in
+  /// RFC 1035 (section 5) and RFC 1034 (section 3.6.1)
+  core.List<core.String>? externalEndpoints;
+
+  /// Configuration for internal load balancers to be health checked.
   core.List<RRSetRoutingPolicyLoadBalancerTarget>? internalLoadBalancers;
 
   RRSetRoutingPolicyHealthCheckTargets({
+    this.externalEndpoints,
     this.internalLoadBalancers,
   });
 
   RRSetRoutingPolicyHealthCheckTargets.fromJson(core.Map json_)
       : this(
+          externalEndpoints: json_.containsKey('externalEndpoints')
+              ? (json_['externalEndpoints'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           internalLoadBalancers: json_.containsKey('internalLoadBalancers')
               ? (json_['internalLoadBalancers'] as core.List)
                   .map((value) => RRSetRoutingPolicyLoadBalancerTarget.fromJson(
@@ -4641,6 +4700,7 @@ class RRSetRoutingPolicyHealthCheckTargets {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (externalEndpoints != null) 'externalEndpoints': externalEndpoints!,
         if (internalLoadBalancers != null)
           'internalLoadBalancers': internalLoadBalancers!,
       };

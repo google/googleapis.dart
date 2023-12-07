@@ -1316,8 +1316,10 @@ api.ExportContextSqlExportOptions buildExportContextSqlExportOptions() {
   if (buildCounterExportContextSqlExportOptions < 3) {
     o.mysqlExportOptions =
         buildExportContextSqlExportOptionsMysqlExportOptions();
+    o.parallel = true;
     o.schemaOnly = true;
     o.tables = buildUnnamed9();
+    o.threads = 42;
   }
   buildCounterExportContextSqlExportOptions--;
   return o;
@@ -1327,8 +1329,13 @@ void checkExportContextSqlExportOptions(api.ExportContextSqlExportOptions o) {
   buildCounterExportContextSqlExportOptions++;
   if (buildCounterExportContextSqlExportOptions < 3) {
     checkExportContextSqlExportOptionsMysqlExportOptions(o.mysqlExportOptions!);
+    unittest.expect(o.parallel!, unittest.isTrue);
     unittest.expect(o.schemaOnly!, unittest.isTrue);
     checkUnnamed9(o.tables!);
+    unittest.expect(
+      o.threads!,
+      unittest.equals(42),
+    );
   }
   buildCounterExportContextSqlExportOptions--;
 }

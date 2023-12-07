@@ -1202,8 +1202,15 @@ class GoogleChromePolicyVersionsV1FieldConstraints {
   /// The allowed range for numeric fields.
   GoogleChromePolicyVersionsV1NumericRangeConstraint? numericRangeConstraint;
 
+  /// Constraints on the uploaded file of a file policy.
+  ///
+  /// If present, this policy requires a URL that can be fetched by uploading a
+  /// file with the constraints specified in this proto.
+  GoogleChromePolicyVersionsV1UploadedFileConstraints? uploadedFileConstraints;
+
   GoogleChromePolicyVersionsV1FieldConstraints({
     this.numericRangeConstraint,
+    this.uploadedFileConstraints,
   });
 
   GoogleChromePolicyVersionsV1FieldConstraints.fromJson(core.Map json_)
@@ -1213,11 +1220,18 @@ class GoogleChromePolicyVersionsV1FieldConstraints {
                   json_['numericRangeConstraint']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          uploadedFileConstraints: json_.containsKey('uploadedFileConstraints')
+              ? GoogleChromePolicyVersionsV1UploadedFileConstraints.fromJson(
+                  json_['uploadedFileConstraints']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (numericRangeConstraint != null)
           'numericRangeConstraint': numericRangeConstraint!,
+        if (uploadedFileConstraints != null)
+          'uploadedFileConstraints': uploadedFileConstraints!,
       };
 }
 
@@ -1713,6 +1727,12 @@ class GoogleChromePolicyVersionsV1PolicySchema {
   /// Output only.
   core.String? supportUri;
 
+  /// List indicates that the policy will only apply to devices/users on these
+  /// platforms.
+  ///
+  /// Output only.
+  core.List<core.String>? supportedPlatforms;
+
   /// Information about applicable target resources for the policy.
   ///
   /// Output only.
@@ -1730,6 +1750,7 @@ class GoogleChromePolicyVersionsV1PolicySchema {
     this.policyDescription,
     this.schemaName,
     this.supportUri,
+    this.supportedPlatforms,
     this.validTargetResources,
   });
 
@@ -1787,6 +1808,11 @@ class GoogleChromePolicyVersionsV1PolicySchema {
           supportUri: json_.containsKey('supportUri')
               ? json_['supportUri'] as core.String
               : null,
+          supportedPlatforms: json_.containsKey('supportedPlatforms')
+              ? (json_['supportedPlatforms'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           validTargetResources: json_.containsKey('validTargetResources')
               ? (json_['validTargetResources'] as core.List)
                   .map((value) => value as core.String)
@@ -1809,6 +1835,8 @@ class GoogleChromePolicyVersionsV1PolicySchema {
         if (policyDescription != null) 'policyDescription': policyDescription!,
         if (schemaName != null) 'schemaName': schemaName!,
         if (supportUri != null) 'supportUri': supportUri!,
+        if (supportedPlatforms != null)
+          'supportedPlatforms': supportedPlatforms!,
         if (validTargetResources != null)
           'validTargetResources': validTargetResources!,
       };
@@ -2579,6 +2607,38 @@ class GoogleChromePolicyVersionsV1UploadPolicyFileResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (downloadUri != null) 'downloadUri': downloadUri!,
+      };
+}
+
+/// Constraints on the uploaded file of a file policy.
+class GoogleChromePolicyVersionsV1UploadedFileConstraints {
+  /// The size limit of uploaded files for a setting, in bytes.
+  core.String? sizeLimitBytes;
+
+  /// File types that can be uploaded for a setting.
+  core.List<core.String>? supportedContentTypes;
+
+  GoogleChromePolicyVersionsV1UploadedFileConstraints({
+    this.sizeLimitBytes,
+    this.supportedContentTypes,
+  });
+
+  GoogleChromePolicyVersionsV1UploadedFileConstraints.fromJson(core.Map json_)
+      : this(
+          sizeLimitBytes: json_.containsKey('sizeLimitBytes')
+              ? json_['sizeLimitBytes'] as core.String
+              : null,
+          supportedContentTypes: json_.containsKey('supportedContentTypes')
+              ? (json_['supportedContentTypes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (sizeLimitBytes != null) 'sizeLimitBytes': sizeLimitBytes!,
+        if (supportedContentTypes != null)
+          'supportedContentTypes': supportedContentTypes!,
       };
 }
 

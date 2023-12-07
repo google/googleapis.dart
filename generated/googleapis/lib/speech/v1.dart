@@ -2150,11 +2150,16 @@ class RecognizeResponse {
   /// When available, billed audio seconds for the corresponding request.
   core.String? totalBilledTime;
 
+  /// Whether request used legacy asr models (was not automatically migrated to
+  /// use conformer models).
+  core.bool? usingLegacyModels;
+
   RecognizeResponse({
     this.requestId,
     this.results,
     this.speechAdaptationInfo,
     this.totalBilledTime,
+    this.usingLegacyModels,
   });
 
   RecognizeResponse.fromJson(core.Map json_)
@@ -2175,6 +2180,9 @@ class RecognizeResponse {
           totalBilledTime: json_.containsKey('totalBilledTime')
               ? json_['totalBilledTime'] as core.String
               : null,
+          usingLegacyModels: json_.containsKey('usingLegacyModels')
+              ? json_['usingLegacyModels'] as core.bool
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2183,6 +2191,7 @@ class RecognizeResponse {
         if (speechAdaptationInfo != null)
           'speechAdaptationInfo': speechAdaptationInfo!,
         if (totalBilledTime != null) 'totalBilledTime': totalBilledTime!,
+        if (usingLegacyModels != null) 'usingLegacyModels': usingLegacyModels!,
       };
 }
 

@@ -1526,6 +1526,7 @@ api.GoogleCloudPaymentsResellerSubscriptionV1YoutubePayload
   if (buildCounterGoogleCloudPaymentsResellerSubscriptionV1YoutubePayload < 3) {
     o.accessEndTime = 'foo';
     o.partnerEligibilityIds = buildUnnamed18();
+    o.partnerPlanType = 'foo';
   }
   buildCounterGoogleCloudPaymentsResellerSubscriptionV1YoutubePayload--;
   return o;
@@ -1540,6 +1541,10 @@ void checkGoogleCloudPaymentsResellerSubscriptionV1YoutubePayload(
       unittest.equals('foo'),
     );
     checkUnnamed18(o.partnerEligibilityIds!);
+    unittest.expect(
+      o.partnerPlanType!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterGoogleCloudPaymentsResellerSubscriptionV1YoutubePayload--;
 }

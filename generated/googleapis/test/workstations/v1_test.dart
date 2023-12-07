@@ -274,6 +274,28 @@ void checkCustomerEncryptionKey(api.CustomerEncryptionKey o) {
   buildCounterCustomerEncryptionKey--;
 }
 
+core.int buildCounterDomainConfig = 0;
+api.DomainConfig buildDomainConfig() {
+  final o = api.DomainConfig();
+  buildCounterDomainConfig++;
+  if (buildCounterDomainConfig < 3) {
+    o.domain = 'foo';
+  }
+  buildCounterDomainConfig--;
+  return o;
+}
+
+void checkDomainConfig(api.DomainConfig o) {
+  buildCounterDomainConfig++;
+  if (buildCounterDomainConfig < 3) {
+    unittest.expect(
+      o.domain!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterDomainConfig--;
+}
+
 core.int buildCounterExpr = 0;
 api.Expr buildExpr() {
   final o = api.Expr();
@@ -1576,6 +1598,7 @@ api.Workstation buildWorkstation() {
     o.env = buildUnnamed32();
     o.etag = 'foo';
     o.host = 'foo';
+    o.kmsKey = 'foo';
     o.labels = buildUnnamed33();
     o.name = 'foo';
     o.reconciling = true;
@@ -1611,6 +1634,10 @@ void checkWorkstation(api.Workstation o) {
     );
     unittest.expect(
       o.host!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.kmsKey!,
       unittest.equals('foo'),
     );
     checkUnnamed33(o.labels!);
@@ -1696,6 +1723,7 @@ api.WorkstationCluster buildWorkstationCluster() {
     o.degraded = true;
     o.deleteTime = 'foo';
     o.displayName = 'foo';
+    o.domainConfig = buildDomainConfig();
     o.etag = 'foo';
     o.labels = buildUnnamed36();
     o.name = 'foo';
@@ -1732,6 +1760,7 @@ void checkWorkstationCluster(api.WorkstationCluster o) {
       o.displayName!,
       unittest.equals('foo'),
     );
+    checkDomainConfig(o.domainConfig!);
     unittest.expect(
       o.etag!,
       unittest.equals('foo'),
@@ -1858,7 +1887,9 @@ api.WorkstationConfig buildWorkstationConfig() {
     o.createTime = 'foo';
     o.degraded = true;
     o.deleteTime = 'foo';
+    o.disableTcpConnections = true;
     o.displayName = 'foo';
+    o.enableAuditAgent = true;
     o.encryptionKey = buildCustomerEncryptionKey();
     o.etag = 'foo';
     o.host = buildHost();
@@ -1892,10 +1923,12 @@ void checkWorkstationConfig(api.WorkstationConfig o) {
       o.deleteTime!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.disableTcpConnections!, unittest.isTrue);
     unittest.expect(
       o.displayName!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.enableAuditAgent!, unittest.isTrue);
     checkCustomerEncryptionKey(o.encryptionKey!);
     unittest.expect(
       o.etag!,
@@ -1989,6 +2022,16 @@ void main() {
       final od = api.CustomerEncryptionKey.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkCustomerEncryptionKey(od);
+    });
+  });
+
+  unittest.group('obj-schema-DomainConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDomainConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DomainConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkDomainConfig(od);
     });
   });
 

@@ -370,8 +370,12 @@ class DeviceIntegrity {
   /// Details about the integrity of the device the app is running on.
   core.List<core.String>? deviceRecognitionVerdict;
 
+  /// Details about the device activity of the device the app is running on.
+  RecentDeviceActivity? recentDeviceActivity;
+
   DeviceIntegrity({
     this.deviceRecognitionVerdict,
+    this.recentDeviceActivity,
   });
 
   DeviceIntegrity.fromJson(core.Map json_)
@@ -382,11 +386,17 @@ class DeviceIntegrity {
                       .map((value) => value as core.String)
                       .toList()
                   : null,
+          recentDeviceActivity: json_.containsKey('recentDeviceActivity')
+              ? RecentDeviceActivity.fromJson(json_['recentDeviceActivity']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deviceRecognitionVerdict != null)
           'deviceRecognitionVerdict': deviceRecognitionVerdict!,
+        if (recentDeviceActivity != null)
+          'recentDeviceActivity': recentDeviceActivity!,
       };
 }
 
@@ -431,6 +441,44 @@ class EnvironmentDetails {
           'appAccessRiskVerdict': appAccessRiskVerdict!,
         if (playProtectVerdict != null)
           'playProtectVerdict': playProtectVerdict!,
+      };
+}
+
+/// Recent device activity can help developers identify devices that have
+/// exhibited hyperactive attestation activity, which could be a sign of an
+/// attack or token farming.
+class RecentDeviceActivity {
+  /// Indicates the activity level of the device.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "DEVICE_ACTIVITY_LEVEL_UNSPECIFIED" : Device activity level has not been
+  /// set.
+  /// - "UNEVALUATED" : Device activity level has not been evaluated.
+  /// - "LEVEL_1" : Indicates the amount of used tokens. See the documentation
+  /// for details.
+  /// - "LEVEL_2" : Indicates the amount of used tokens. See the documentation
+  /// for details.
+  /// - "LEVEL_3" : Indicates the amount of used tokens. See the documentation
+  /// for details.
+  /// - "LEVEL_4" : Indicates the amount of used tokens. See the documentation
+  /// for details.
+  core.String? deviceActivityLevel;
+
+  RecentDeviceActivity({
+    this.deviceActivityLevel,
+  });
+
+  RecentDeviceActivity.fromJson(core.Map json_)
+      : this(
+          deviceActivityLevel: json_.containsKey('deviceActivityLevel')
+              ? json_['deviceActivityLevel'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deviceActivityLevel != null)
+          'deviceActivityLevel': deviceActivityLevel!,
       };
 }
 

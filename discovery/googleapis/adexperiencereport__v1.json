@@ -16,7 +16,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20231106",
+    "revision": "20240207",
     "rootUrl": "https://adexperiencereport.googleapis.com/",
     "servicePath": "",
     "title": "Ad Experience Report API",

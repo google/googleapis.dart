@@ -19,11 +19,12 @@
 ///
 /// Create an instance of [StorageApi] to access these resources:
 ///
-/// - [AnywhereCacheResource]
+/// - [AnywhereCachesResource]
 /// - [BucketAccessControlsResource]
 /// - [BucketsResource]
 /// - [ChannelsResource]
 /// - [DefaultObjectAccessControlsResource]
+/// - [FoldersResource]
 /// - [ManagedFoldersResource]
 /// - [NotificationsResource]
 /// - [ObjectAccessControlsResource]
@@ -78,13 +79,15 @@ class StorageApi {
 
   final commons.ApiRequester _requester;
 
-  AnywhereCacheResource get anywhereCache => AnywhereCacheResource(_requester);
+  AnywhereCachesResource get anywhereCaches =>
+      AnywhereCachesResource(_requester);
   BucketAccessControlsResource get bucketAccessControls =>
       BucketAccessControlsResource(_requester);
   BucketsResource get buckets => BucketsResource(_requester);
   ChannelsResource get channels => ChannelsResource(_requester);
   DefaultObjectAccessControlsResource get defaultObjectAccessControls =>
       DefaultObjectAccessControlsResource(_requester);
+  FoldersResource get folders => FoldersResource(_requester);
   ManagedFoldersResource get managedFolders =>
       ManagedFoldersResource(_requester);
   NotificationsResource get notifications => NotificationsResource(_requester);
@@ -101,16 +104,16 @@ class StorageApi {
             commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
-class AnywhereCacheResource {
+class AnywhereCachesResource {
   final commons.ApiRequester _requester;
 
-  AnywhereCacheResource(commons.ApiRequester client) : _requester = client;
+  AnywhereCachesResource(commons.ApiRequester client) : _requester = client;
 
   /// Disables an Anywhere Cache instance.
   ///
   /// Request parameters:
   ///
-  /// [bucket] - Name of the partent bucket
+  /// [bucket] - Name of the parent bucket.
   ///
   /// [anywhereCacheId] - The ID of requested Anywhere Cache instance.
   ///
@@ -152,7 +155,7 @@ class AnywhereCacheResource {
   ///
   /// Request parameters:
   ///
-  /// [bucket] - Name of the partent bucket
+  /// [bucket] - Name of the parent bucket.
   ///
   /// [anywhereCacheId] - The ID of requested Anywhere Cache instance.
   ///
@@ -195,7 +198,7 @@ class AnywhereCacheResource {
   ///
   /// Request parameters:
   ///
-  /// [bucket] - Name of the partent bucket
+  /// [bucket] - Name of the parent bucket.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -234,10 +237,10 @@ class AnywhereCacheResource {
   ///
   /// Request parameters:
   ///
-  /// [bucket] - Name of the partent bucket
+  /// [bucket] - Name of the parent bucket.
   ///
-  /// [pageSize] - Maximum number of items return in a single page of responses.
-  /// Maximum 1000.
+  /// [pageSize] - Maximum number of items to return in a single page of
+  /// responses. Maximum 1000.
   ///
   /// [pageToken] - A previously-returned page token representing part of the
   /// larger set of results to view.
@@ -264,7 +267,7 @@ class AnywhereCacheResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'b/' + commons.escapeVariable('$bucket') + '/anywhereCache';
+    final url_ = 'b/' + commons.escapeVariable('$bucket') + '/anywhereCaches';
 
     final response_ = await _requester.request(
       url_,
@@ -279,7 +282,7 @@ class AnywhereCacheResource {
   ///
   /// Request parameters:
   ///
-  /// [bucket] - Name of the partent bucket
+  /// [bucket] - Name of the parent bucket.
   ///
   /// [anywhereCacheId] - The ID of requested Anywhere Cache instance.
   ///
@@ -321,7 +324,7 @@ class AnywhereCacheResource {
   ///
   /// Request parameters:
   ///
-  /// [bucket] - Name of the partent bucket
+  /// [bucket] - Name of the parent bucket.
   ///
   /// [anywhereCacheId] - The ID of requested Anywhere Cache instance.
   ///
@@ -365,7 +368,7 @@ class AnywhereCacheResource {
   ///
   /// Request parameters:
   ///
-  /// [bucket] - Name of the partent bucket
+  /// [bucket] - Name of the parent bucket.
   ///
   /// [anywhereCacheId] - The ID of requested Anywhere Cache instance.
   ///
@@ -1696,6 +1699,297 @@ class DefaultObjectAccessControlsResource {
   }
 }
 
+class FoldersResource {
+  final commons.ApiRequester _requester;
+
+  FoldersResource(commons.ApiRequester client) : _requester = client;
+
+  /// Permanently deletes a folder.
+  ///
+  /// Only applicable to buckets with hierarchical namespace enabled.
+  ///
+  /// Request parameters:
+  ///
+  /// [bucket] - Name of the bucket in which the folder resides.
+  ///
+  /// [folder] - Name of a folder.
+  ///
+  /// [ifMetagenerationMatch] - If set, only deletes the folder if its
+  /// metageneration matches this value.
+  ///
+  /// [ifMetagenerationNotMatch] - If set, only deletes the folder if its
+  /// metageneration does not match this value.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<void> delete(
+    core.String bucket,
+    core.String folder, {
+    core.String? ifMetagenerationMatch,
+    core.String? ifMetagenerationNotMatch,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (ifMetagenerationMatch != null)
+        'ifMetagenerationMatch': [ifMetagenerationMatch],
+      if (ifMetagenerationNotMatch != null)
+        'ifMetagenerationNotMatch': [ifMetagenerationNotMatch],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'b/' +
+        commons.escapeVariable('$bucket') +
+        '/folders/' +
+        commons.escapeVariable('$folder');
+
+    await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+      downloadOptions: null,
+    );
+  }
+
+  /// Returns metadata for the specified folder.
+  ///
+  /// Only applicable to buckets with hierarchical namespace enabled.
+  ///
+  /// Request parameters:
+  ///
+  /// [bucket] - Name of the bucket in which the folder resides.
+  ///
+  /// [folder] - Name of a folder.
+  ///
+  /// [ifMetagenerationMatch] - Makes the return of the folder metadata
+  /// conditional on whether the folder's current metageneration matches the
+  /// given value.
+  ///
+  /// [ifMetagenerationNotMatch] - Makes the return of the folder metadata
+  /// conditional on whether the folder's current metageneration does not match
+  /// the given value.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Folder].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Folder> get(
+    core.String bucket,
+    core.String folder, {
+    core.String? ifMetagenerationMatch,
+    core.String? ifMetagenerationNotMatch,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (ifMetagenerationMatch != null)
+        'ifMetagenerationMatch': [ifMetagenerationMatch],
+      if (ifMetagenerationNotMatch != null)
+        'ifMetagenerationNotMatch': [ifMetagenerationNotMatch],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'b/' +
+        commons.escapeVariable('$bucket') +
+        '/folders/' +
+        commons.escapeVariable('$folder');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Folder.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Creates a new folder.
+  ///
+  /// Only applicable to buckets with hierarchical namespace enabled.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [bucket] - Name of the bucket in which the folder resides.
+  ///
+  /// [recursive] - If true, any parent folder which doesn’t exist will be
+  /// created automatically.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Folder].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Folder> insert(
+    Folder request,
+    core.String bucket, {
+    core.bool? recursive,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (recursive != null) 'recursive': ['${recursive}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'b/' + commons.escapeVariable('$bucket') + '/folders';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Folder.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves a list of folders matching the criteria.
+  ///
+  /// Only applicable to buckets with hierarchical namespace enabled.
+  ///
+  /// Request parameters:
+  ///
+  /// [bucket] - Name of the bucket in which to look for folders.
+  ///
+  /// [delimiter] - Returns results in a directory-like mode. The only supported
+  /// value is '/'. If set, items will only contain folders that either exactly
+  /// match the prefix, or are one level below the prefix.
+  ///
+  /// [endOffset] - Filter results to folders whose names are lexicographically
+  /// before endOffset. If startOffset is also set, the folders listed will have
+  /// names between startOffset (inclusive) and endOffset (exclusive).
+  ///
+  /// [pageSize] - Maximum number of items to return in a single page of
+  /// responses.
+  ///
+  /// [pageToken] - A previously-returned page token representing part of the
+  /// larger set of results to view.
+  ///
+  /// [prefix] - Filter results to folders whose paths begin with this prefix.
+  /// If set, the value must either be an empty string or end with a '/'.
+  ///
+  /// [startOffset] - Filter results to folders whose names are
+  /// lexicographically equal to or after startOffset. If endOffset is also set,
+  /// the folders listed will have names between startOffset (inclusive) and
+  /// endOffset (exclusive).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Folders].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Folders> list(
+    core.String bucket, {
+    core.String? delimiter,
+    core.String? endOffset,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? prefix,
+    core.String? startOffset,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (delimiter != null) 'delimiter': [delimiter],
+      if (endOffset != null) 'endOffset': [endOffset],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (prefix != null) 'prefix': [prefix],
+      if (startOffset != null) 'startOffset': [startOffset],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'b/' + commons.escapeVariable('$bucket') + '/folders';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Folders.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Renames a source folder to a destination folder.
+  ///
+  /// Only applicable to buckets with hierarchical namespace enabled.
+  ///
+  /// Request parameters:
+  ///
+  /// [bucket] - Name of the bucket in which the folders are in.
+  ///
+  /// [sourceFolder] - Name of the source folder.
+  ///
+  /// [destinationFolder] - Name of the destination folder.
+  ///
+  /// [ifSourceMetagenerationMatch] - Makes the operation conditional on whether
+  /// the source object's current metageneration matches the given value.
+  ///
+  /// [ifSourceMetagenerationNotMatch] - Makes the operation conditional on
+  /// whether the source object's current metageneration does not match the
+  /// given value.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> rename(
+    core.String bucket,
+    core.String sourceFolder,
+    core.String destinationFolder, {
+    core.String? ifSourceMetagenerationMatch,
+    core.String? ifSourceMetagenerationNotMatch,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (ifSourceMetagenerationMatch != null)
+        'ifSourceMetagenerationMatch': [ifSourceMetagenerationMatch],
+      if (ifSourceMetagenerationNotMatch != null)
+        'ifSourceMetagenerationNotMatch': [ifSourceMetagenerationNotMatch],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'b/' +
+        commons.escapeVariable('$bucket') +
+        '/folders/' +
+        commons.escapeVariable('$sourceFolder') +
+        '/renameTo/folders/' +
+        commons.escapeVariable('$destinationFolder');
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ManagedFoldersResource {
   final commons.ApiRequester _requester;
 
@@ -1905,7 +2199,8 @@ class ManagedFoldersResource {
   ///
   /// [bucket] - Name of the bucket containing the managed folder.
   ///
-  /// [pageSize] - Maximum number of items return in a single page of responses.
+  /// [pageSize] - Maximum number of items to return in a single page of
+  /// responses.
   ///
   /// [pageToken] - A previously-returned page token representing part of the
   /// larger set of results to view.
@@ -4602,6 +4897,11 @@ class AnywhereCache {
   /// The modification time of the cache instance metadata in RFC 3339 format.
   core.DateTime? updateTime;
 
+  /// The zone in which the cache instance is running.
+  ///
+  /// For example, us-central1-a.
+  core.String? zone;
+
   AnywhereCache({
     this.admissionPolicy,
     this.anywhereCacheId,
@@ -4614,6 +4914,7 @@ class AnywhereCache {
     this.state,
     this.ttl,
     this.updateTime,
+    this.zone,
   });
 
   AnywhereCache.fromJson(core.Map json_)
@@ -4644,6 +4945,7 @@ class AnywhereCache {
           updateTime: json_.containsKey('updateTime')
               ? core.DateTime.parse(json_['updateTime'] as core.String)
               : null,
+          zone: json_.containsKey('zone') ? json_['zone'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4660,6 +4962,7 @@ class AnywhereCache {
         if (ttl != null) 'ttl': ttl!,
         if (updateTime != null)
           'updateTime': updateTime!.toUtc().toIso8601String(),
+        if (zone != null) 'zone': zone!,
       };
 }
 
@@ -4881,6 +5184,27 @@ class BucketEncryption {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (defaultKmsKeyName != null) 'defaultKmsKeyName': defaultKmsKeyName!,
+      };
+}
+
+/// The bucket's hierarchical namespace configuration.
+class BucketHierarchicalNamespace {
+  /// When set to true, hierarchical namespace is enabled for this bucket.
+  core.bool? enabled;
+
+  BucketHierarchicalNamespace({
+    this.enabled,
+  });
+
+  BucketHierarchicalNamespace.fromJson(core.Map json_)
+      : this(
+          enabled: json_.containsKey('enabled')
+              ? json_['enabled'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabled != null) 'enabled': enabled!,
       };
 }
 
@@ -5544,6 +5868,9 @@ class Bucket {
   /// HTTP 1.1 Entity tag for the bucket.
   core.String? etag;
 
+  /// The bucket's hierarchical namespace configuration.
+  BucketHierarchicalNamespace? hierarchicalNamespace;
+
   /// The bucket's IAM configuration.
   BucketIamConfiguration? iamConfiguration;
 
@@ -5658,6 +5985,7 @@ class Bucket {
     this.defaultObjectAcl,
     this.encryption,
     this.etag,
+    this.hierarchicalNamespace,
     this.iamConfiguration,
     this.id,
     this.kind,
@@ -5724,6 +6052,11 @@ class Bucket {
                   json_['encryption'] as core.Map<core.String, core.dynamic>)
               : null,
           etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          hierarchicalNamespace: json_.containsKey('hierarchicalNamespace')
+              ? BucketHierarchicalNamespace.fromJson(
+                  json_['hierarchicalNamespace']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           iamConfiguration: json_.containsKey('iamConfiguration')
               ? BucketIamConfiguration.fromJson(json_['iamConfiguration']
                   as core.Map<core.String, core.dynamic>)
@@ -5813,6 +6146,8 @@ class Bucket {
         if (defaultObjectAcl != null) 'defaultObjectAcl': defaultObjectAcl!,
         if (encryption != null) 'encryption': encryption!,
         if (etag != null) 'etag': etag!,
+        if (hierarchicalNamespace != null)
+          'hierarchicalNamespace': hierarchicalNamespace!,
         if (iamConfiguration != null) 'iamConfiguration': iamConfiguration!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
@@ -6390,6 +6725,164 @@ class Expr {
         if (expression != null) 'expression': expression!,
         if (location != null) 'location': location!,
         if (title != null) 'title': title!,
+      };
+}
+
+/// Only present if the folder is part of an ongoing rename folder operation.
+///
+/// Contains information which can be used to query the operation status.
+class FolderPendingRenameInfo {
+  /// The ID of the rename folder operation.
+  core.String? operationId;
+
+  FolderPendingRenameInfo({
+    this.operationId,
+  });
+
+  FolderPendingRenameInfo.fromJson(core.Map json_)
+      : this(
+          operationId: json_.containsKey('operationId')
+              ? json_['operationId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (operationId != null) 'operationId': operationId!,
+      };
+}
+
+/// A folder.
+///
+/// Only available in buckets with hierarchical namespace enabled.
+class Folder {
+  /// The name of the bucket containing this folder.
+  core.String? bucket;
+
+  /// The creation time of the folder in RFC 3339 format.
+  core.DateTime? createTime;
+
+  /// The ID of the folder, including the bucket name, folder name.
+  core.String? id;
+
+  /// The kind of item this is.
+  ///
+  /// For folders, this is always storage#folder.
+  core.String? kind;
+
+  /// The version of the metadata for this folder.
+  ///
+  /// Used for preconditions and for detecting changes in metadata.
+  core.String? metageneration;
+
+  /// The name of the folder.
+  ///
+  /// Required if not specified by URL parameter.
+  core.String? name;
+
+  /// Only present if the folder is part of an ongoing rename folder operation.
+  ///
+  /// Contains information which can be used to query the operation status.
+  FolderPendingRenameInfo? pendingRenameInfo;
+
+  /// The link to this folder.
+  core.String? selfLink;
+
+  /// The modification time of the folder metadata in RFC 3339 format.
+  core.DateTime? updateTime;
+
+  Folder({
+    this.bucket,
+    this.createTime,
+    this.id,
+    this.kind,
+    this.metageneration,
+    this.name,
+    this.pendingRenameInfo,
+    this.selfLink,
+    this.updateTime,
+  });
+
+  Folder.fromJson(core.Map json_)
+      : this(
+          bucket: json_.containsKey('bucket')
+              ? json_['bucket'] as core.String
+              : null,
+          createTime: json_.containsKey('createTime')
+              ? core.DateTime.parse(json_['createTime'] as core.String)
+              : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          metageneration: json_.containsKey('metageneration')
+              ? json_['metageneration'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          pendingRenameInfo: json_.containsKey('pendingRenameInfo')
+              ? FolderPendingRenameInfo.fromJson(json_['pendingRenameInfo']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          selfLink: json_.containsKey('selfLink')
+              ? json_['selfLink'] as core.String
+              : null,
+          updateTime: json_.containsKey('updateTime')
+              ? core.DateTime.parse(json_['updateTime'] as core.String)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bucket != null) 'bucket': bucket!,
+        if (createTime != null)
+          'createTime': createTime!.toUtc().toIso8601String(),
+        if (id != null) 'id': id!,
+        if (kind != null) 'kind': kind!,
+        if (metageneration != null) 'metageneration': metageneration!,
+        if (name != null) 'name': name!,
+        if (pendingRenameInfo != null) 'pendingRenameInfo': pendingRenameInfo!,
+        if (selfLink != null) 'selfLink': selfLink!,
+        if (updateTime != null)
+          'updateTime': updateTime!.toUtc().toIso8601String(),
+      };
+}
+
+/// A list of folders.
+class Folders {
+  /// The list of items.
+  core.List<Folder>? items;
+
+  /// The kind of item this is.
+  ///
+  /// For lists of folders, this is always storage#folders.
+  core.String? kind;
+
+  /// The continuation token, used to page through large result sets.
+  ///
+  /// Provide this value in a subsequent request to return the next page of
+  /// results.
+  core.String? nextPageToken;
+
+  Folders({
+    this.items,
+    this.kind,
+    this.nextPageToken,
+  });
+
+  Folders.fromJson(core.Map json_)
+      : this(
+          items: json_.containsKey('items')
+              ? (json_['items'] as core.List)
+                  .map((value) => Folder.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (items != null) 'items': items!,
+        if (kind != null) 'kind': kind!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 

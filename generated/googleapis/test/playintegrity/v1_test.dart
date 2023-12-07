@@ -212,6 +212,7 @@ api.DeviceIntegrity buildDeviceIntegrity() {
   buildCounterDeviceIntegrity++;
   if (buildCounterDeviceIntegrity < 3) {
     o.deviceRecognitionVerdict = buildUnnamed1();
+    o.recentDeviceActivity = buildRecentDeviceActivity();
   }
   buildCounterDeviceIntegrity--;
   return o;
@@ -221,6 +222,7 @@ void checkDeviceIntegrity(api.DeviceIntegrity o) {
   buildCounterDeviceIntegrity++;
   if (buildCounterDeviceIntegrity < 3) {
     checkUnnamed1(o.deviceRecognitionVerdict!);
+    checkRecentDeviceActivity(o.recentDeviceActivity!);
   }
   buildCounterDeviceIntegrity--;
 }
@@ -247,6 +249,28 @@ void checkEnvironmentDetails(api.EnvironmentDetails o) {
     );
   }
   buildCounterEnvironmentDetails--;
+}
+
+core.int buildCounterRecentDeviceActivity = 0;
+api.RecentDeviceActivity buildRecentDeviceActivity() {
+  final o = api.RecentDeviceActivity();
+  buildCounterRecentDeviceActivity++;
+  if (buildCounterRecentDeviceActivity < 3) {
+    o.deviceActivityLevel = 'foo';
+  }
+  buildCounterRecentDeviceActivity--;
+  return o;
+}
+
+void checkRecentDeviceActivity(api.RecentDeviceActivity o) {
+  buildCounterRecentDeviceActivity++;
+  if (buildCounterRecentDeviceActivity < 3) {
+    unittest.expect(
+      o.deviceActivityLevel!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterRecentDeviceActivity--;
 }
 
 core.int buildCounterRequestDetails = 0;
@@ -412,6 +436,16 @@ void main() {
       final od = api.EnvironmentDetails.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkEnvironmentDetails(od);
+    });
+  });
+
+  unittest.group('obj-schema-RecentDeviceActivity', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRecentDeviceActivity();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RecentDeviceActivity.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRecentDeviceActivity(od);
     });
   });
 

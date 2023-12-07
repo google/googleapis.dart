@@ -1550,6 +1550,16 @@ class GoogleCloudDocumentaiV1BatchProcessRequest {
   /// The input documents for the BatchProcessDocuments method.
   GoogleCloudDocumentaiV1BatchDocumentsInputConfig? inputDocuments;
 
+  /// The labels with user-defined metadata for the request.
+  ///
+  /// Label keys and values can be no longer than 63 characters (Unicode
+  /// codepoints) and can only contain lowercase letters, numeric characters,
+  /// underscores, and dashes. International characters are allowed. Label
+  /// values are optional. Label keys must start with a letter.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
   /// Inference-time options for the process API
   GoogleCloudDocumentaiV1ProcessOptions? processOptions;
 
@@ -1561,6 +1571,7 @@ class GoogleCloudDocumentaiV1BatchProcessRequest {
   GoogleCloudDocumentaiV1BatchProcessRequest({
     this.documentOutputConfig,
     this.inputDocuments,
+    this.labels,
     this.processOptions,
     this.skipHumanReview,
   });
@@ -1577,6 +1588,14 @@ class GoogleCloudDocumentaiV1BatchProcessRequest {
                   json_['inputDocuments']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
           processOptions: json_.containsKey('processOptions')
               ? GoogleCloudDocumentaiV1ProcessOptions.fromJson(
                   json_['processOptions']
@@ -1591,6 +1610,7 @@ class GoogleCloudDocumentaiV1BatchProcessRequest {
         if (documentOutputConfig != null)
           'documentOutputConfig': documentOutputConfig!,
         if (inputDocuments != null) 'inputDocuments': inputDocuments!,
+        if (labels != null) 'labels': labels!,
         if (processOptions != null) 'processOptions': processOptions!,
         if (skipHumanReview != null) 'skipHumanReview': skipHumanReview!,
       };
@@ -4891,7 +4911,7 @@ class GoogleCloudDocumentaiV1ProcessOptions {
   GoogleCloudDocumentaiV1ProcessOptionsIndividualPageSelector?
       individualPageSelector;
 
-  /// Only applicable to `OCR_PROCESSOR`.
+  /// Only applicable to `OCR_PROCESSOR` and `FORM_PARSER_PROCESSOR`.
   ///
   /// Returns error if set on other processor types.
   GoogleCloudDocumentaiV1OcrConfig? ocrConfig;
@@ -4971,6 +4991,16 @@ class GoogleCloudDocumentaiV1ProcessRequest {
   /// An inline document proto.
   GoogleCloudDocumentaiV1Document? inlineDocument;
 
+  /// The labels with user-defined metadata for the request.
+  ///
+  /// Label keys and values can be no longer than 63 characters (Unicode
+  /// codepoints) and can only contain lowercase letters, numeric characters,
+  /// underscores, and dashes. International characters are allowed. Label
+  /// values are optional. Label keys must start with a letter.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
   /// Inference-time options for the process API
   GoogleCloudDocumentaiV1ProcessOptions? processOptions;
 
@@ -4986,6 +5016,7 @@ class GoogleCloudDocumentaiV1ProcessRequest {
     this.fieldMask,
     this.gcsDocument,
     this.inlineDocument,
+    this.labels,
     this.processOptions,
     this.rawDocument,
     this.skipHumanReview,
@@ -5003,6 +5034,14 @@ class GoogleCloudDocumentaiV1ProcessRequest {
           inlineDocument: json_.containsKey('inlineDocument')
               ? GoogleCloudDocumentaiV1Document.fromJson(json_['inlineDocument']
                   as core.Map<core.String, core.dynamic>)
+              : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
               : null,
           processOptions: json_.containsKey('processOptions')
               ? GoogleCloudDocumentaiV1ProcessOptions.fromJson(
@@ -5022,6 +5061,7 @@ class GoogleCloudDocumentaiV1ProcessRequest {
         if (fieldMask != null) 'fieldMask': fieldMask!,
         if (gcsDocument != null) 'gcsDocument': gcsDocument!,
         if (inlineDocument != null) 'inlineDocument': inlineDocument!,
+        if (labels != null) 'labels': labels!,
         if (processOptions != null) 'processOptions': processOptions!,
         if (rawDocument != null) 'rawDocument': rawDocument!,
         if (skipHumanReview != null) 'skipHumanReview': skipHumanReview!,
@@ -5354,6 +5394,17 @@ class GoogleCloudDocumentaiV1ProcessorVersion {
   /// The most recently invoked evaluation for the processor version.
   GoogleCloudDocumentaiV1EvaluationReference? latestEvaluation;
 
+  /// The model type of this processor version.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "MODEL_TYPE_UNSPECIFIED" : The processor version has unspecified model
+  /// type.
+  /// - "MODEL_TYPE_GENERATIVE" : The processor version has generative model
+  /// type.
+  /// - "MODEL_TYPE_CUSTOM" : The processor version has custom model type.
+  core.String? modelType;
+
   /// The resource name of the processor version.
   ///
   /// Format:
@@ -5385,6 +5436,7 @@ class GoogleCloudDocumentaiV1ProcessorVersion {
     this.kmsKeyName,
     this.kmsKeyVersionName,
     this.latestEvaluation,
+    this.modelType,
     this.name,
     this.state,
   });
@@ -5421,6 +5473,9 @@ class GoogleCloudDocumentaiV1ProcessorVersion {
                   json_['latestEvaluation']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          modelType: json_.containsKey('modelType')
+              ? json_['modelType'] as core.String
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
@@ -5435,6 +5490,7 @@ class GoogleCloudDocumentaiV1ProcessorVersion {
         if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
         if (kmsKeyVersionName != null) 'kmsKeyVersionName': kmsKeyVersionName!,
         if (latestEvaluation != null) 'latestEvaluation': latestEvaluation!,
+        if (modelType != null) 'modelType': modelType!,
         if (name != null) 'name': name!,
         if (state != null) 'state': state!,
       };

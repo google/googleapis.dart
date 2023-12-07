@@ -618,6 +618,48 @@ class ProjectsLocationsConnectionsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// ListenEvent listens to the event.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resourcePath] - Required. Resource path for request.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListenEventResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListenEventResponse> listenEvent(
+    ListenEventRequest request,
+    core.String resourcePath, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resourcePath') + ':listenEvent';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return ListenEventResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Updates the parameters of a single Connection.
   ///
   /// [request] - The metadata request object.
@@ -1854,6 +1896,9 @@ class ProjectsLocationsGlobalCustomConnectorsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/global/customConnectors/\[^/\]+$`.
   ///
+  /// [force] - Optional. If set to true, any customConnectorVersion which is a
+  /// child resource will also be deleted. https://aip.dev/135#cascading-delete
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1866,9 +1911,11 @@ class ProjectsLocationsGlobalCustomConnectorsResource {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
     core.String name, {
+    core.bool? force,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (force != null) 'force': ['${force}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -3306,6 +3353,7 @@ class AuthConfig {
   /// Authentication
   /// - "SSH_PUBLIC_KEY" : SSH Public Key Authentication
   /// - "OAUTH2_AUTH_CODE_FLOW" : Oauth 2.0 Authorization Code Flow
+  /// - "GOOGLE_AUTHENTICATION" : Google authentication
   core.String? authType;
 
   /// Oauth2AuthCodeFlow.
@@ -3401,6 +3449,7 @@ class AuthConfigTemplate {
   /// Authentication
   /// - "SSH_PUBLIC_KEY" : SSH Public Key Authentication
   /// - "OAUTH2_AUTH_CODE_FLOW" : Oauth 2.0 Authorization Code Flow
+  /// - "GOOGLE_AUTHENTICATION" : Google authentication
   core.String? authType;
 
   /// Config variables to describe an `AuthConfig` for a `Connection`.
@@ -3533,14 +3582,31 @@ class Binding {
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
   /// (primary) that represents all the users of that domain. For example,
-  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a user that has
-  /// been recently deleted. For example,
-  /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
-  /// this value reverts to `user:{emailid}` and the recovered user retains the
-  /// role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a service account
-  /// that has been recently deleted. For example,
+  /// `google.com` or `example.com`. *
+  /// `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workforce identity pool. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`:
+  /// All workforce identities in a group. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All workforce identities with a specific attribute value. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}
+  /// / * `: All identities in a workforce identity pool. *
+  /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workload identity pool. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`:
+  /// A workload identity pool group. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All identities in a workload identity pool with a certain attribute. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}
+  /// / * `: All identities in a workload identity pool. *
+  /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
+  /// identifier) representing a user that has been recently deleted. For
+  /// example, `alice@example.com?uid=123456789012345678901`. If the user is
+  /// recovered, this value reverts to `user:{emailid}` and the recovered user
+  /// retains the role in the binding. *
+  /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus
+  /// unique identifier) representing a service account that has been recently
+  /// deleted. For example,
   /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If
   /// the service account is undeleted, this value reverts to
   /// `serviceAccount:{emailid}` and the undeleted service account retains the
@@ -3549,12 +3615,19 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding.
+  /// the role in the binding. *
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// Deleted single identity in a workforce identity pool. For example,
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
   ///
-  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an
+  /// overview of the IAM roles and permissions, see the
+  /// [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For
+  /// a list of the available pre-defined roles, see
+  /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
   Binding({
@@ -3676,6 +3749,17 @@ class ConfigVariableTemplate {
   /// Key of the config variable.
   core.String? key;
 
+  /// Location Tyep denotes where this value should be sent in BYOC connections.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "LOCATION_TYPE_UNSPECIFIED" : Location type unspecified.
+  /// - "HEADER" : Request header.
+  /// - "PAYLOAD" : Request Payload.
+  /// - "QUERY_PARAM" : Request query param.
+  /// - "PATH_PARAM" : Request path param.
+  core.String? locationType;
+
   /// Flag represents that this `ConfigVariable` must be provided for a
   /// connection.
   core.bool? required;
@@ -3720,6 +3804,7 @@ class ConfigVariableTemplate {
     this.enumOptions,
     this.isAdvanced,
     this.key,
+    this.locationType,
     this.required,
     this.requiredCondition,
     this.roleGrant,
@@ -3750,6 +3835,9 @@ class ConfigVariableTemplate {
               ? json_['isAdvanced'] as core.bool
               : null,
           key: json_.containsKey('key') ? json_['key'] as core.String : null,
+          locationType: json_.containsKey('locationType')
+              ? json_['locationType'] as core.String
+              : null,
           required: json_.containsKey('required')
               ? json_['required'] as core.bool
               : null,
@@ -3779,6 +3867,7 @@ class ConfigVariableTemplate {
         if (enumOptions != null) 'enumOptions': enumOptions!,
         if (isAdvanced != null) 'isAdvanced': isAdvanced!,
         if (key != null) 'key': key!,
+        if (locationType != null) 'locationType': locationType!,
         if (required != null) 'required': required!,
         if (requiredCondition != null) 'requiredCondition': requiredCondition!,
         if (roleGrant != null) 'roleGrant': roleGrant!,
@@ -4153,6 +4242,9 @@ class ConnectionSchemaMetadata {
   /// Output only.
   core.List<core.String>? entities;
 
+  /// Error message for users.
+  core.String? errorMessage;
+
   /// Resource name.
   ///
   /// Format:
@@ -4189,6 +4281,7 @@ class ConnectionSchemaMetadata {
   ConnectionSchemaMetadata({
     this.actions,
     this.entities,
+    this.errorMessage,
     this.name,
     this.refreshTime,
     this.state,
@@ -4207,6 +4300,9 @@ class ConnectionSchemaMetadata {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          errorMessage: json_.containsKey('errorMessage')
+              ? json_['errorMessage'] as core.String
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           refreshTime: json_.containsKey('refreshTime')
               ? json_['refreshTime'] as core.String
@@ -4221,6 +4317,7 @@ class ConnectionSchemaMetadata {
   core.Map<core.String, core.dynamic> toJson() => {
         if (actions != null) 'actions': actions!,
         if (entities != null) 'entities': entities!,
+        if (errorMessage != null) 'errorMessage': errorMessage!,
         if (name != null) 'name': name!,
         if (refreshTime != null) 'refreshTime': refreshTime!,
         if (state != null) 'state': state!,
@@ -4603,6 +4700,11 @@ class ConnectorVersion {
   /// Output only.
   SupportedRuntimeFeatures? supportedRuntimeFeatures;
 
+  /// Unsupported connection types.
+  ///
+  /// Output only.
+  core.List<core.String>? unsupportedConnectionTypes;
+
   /// Updated time.
   ///
   /// Output only.
@@ -4625,6 +4727,7 @@ class ConnectorVersion {
     this.roleGrants,
     this.sslConfigTemplate,
     this.supportedRuntimeFeatures,
+    this.unsupportedConnectionTypes,
     this.updateTime,
   });
 
@@ -4702,6 +4805,12 @@ class ConnectorVersion {
                       json_['supportedRuntimeFeatures']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          unsupportedConnectionTypes:
+              json_.containsKey('unsupportedConnectionTypes')
+                  ? (json_['unsupportedConnectionTypes'] as core.List)
+                      .map((value) => value as core.String)
+                      .toList()
+                  : null,
           updateTime: json_.containsKey('updateTime')
               ? json_['updateTime'] as core.String
               : null,
@@ -4731,6 +4840,8 @@ class ConnectorVersion {
         if (sslConfigTemplate != null) 'sslConfigTemplate': sslConfigTemplate!,
         if (supportedRuntimeFeatures != null)
           'supportedRuntimeFeatures': supportedRuntimeFeatures!,
+        if (unsupportedConnectionTypes != null)
+          'unsupportedConnectionTypes': unsupportedConnectionTypes!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }
@@ -4742,6 +4853,15 @@ class ConnectorVersionInfraConfig {
   ///
   /// Output only.
   core.String? connectionRatelimitWindowSeconds;
+
+  /// Indicates whether connector is deployed on GKE/CloudRun
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "DEPLOYMENT_MODEL_UNSPECIFIED" : Deployment model is not specified.
+  /// - "GKE_MST" : Default model gke mst.
+  /// - "CLOUD_RUN_MST" : Cloud run mst.
+  core.String? deploymentModel;
 
   /// HPA autoscaling config.
   ///
@@ -4775,6 +4895,7 @@ class ConnectorVersionInfraConfig {
 
   ConnectorVersionInfraConfig({
     this.connectionRatelimitWindowSeconds,
+    this.deploymentModel,
     this.hpaConfig,
     this.internalclientRatelimitThreshold,
     this.ratelimitThreshold,
@@ -4789,6 +4910,9 @@ class ConnectorVersionInfraConfig {
               json_.containsKey('connectionRatelimitWindowSeconds')
                   ? json_['connectionRatelimitWindowSeconds'] as core.String
                   : null,
+          deploymentModel: json_.containsKey('deploymentModel')
+              ? json_['deploymentModel'] as core.String
+              : null,
           hpaConfig: json_.containsKey('hpaConfig')
               ? HPAConfig.fromJson(
                   json_['hpaConfig'] as core.Map<core.String, core.dynamic>)
@@ -4816,6 +4940,7 @@ class ConnectorVersionInfraConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (connectionRatelimitWindowSeconds != null)
           'connectionRatelimitWindowSeconds': connectionRatelimitWindowSeconds!,
+        if (deploymentModel != null) 'deploymentModel': deploymentModel!,
         if (hpaConfig != null) 'hpaConfig': hpaConfig!,
         if (internalclientRatelimitThreshold != null)
           'internalclientRatelimitThreshold': internalclientRatelimitThreshold!,
@@ -4851,6 +4976,11 @@ class ConnectorsLogConfig {
 /// CustomConnector represents the custom connector defined by the customer as
 /// part of byoc.
 class CustomConnector {
+  /// Active connector versions.
+  ///
+  /// Optional.
+  core.List<core.String>? activeConnectorVersions;
+
   /// Created time.
   ///
   /// Output only.
@@ -4883,17 +5013,6 @@ class CustomConnector {
   /// Optional.
   core.Map<core.String, core.String>? labels;
 
-  /// Launch stage.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "LAUNCH_STAGE_UNSPECIFIED" : LAUNCH_STAGE_UNSPECIFIED.
-  /// - "PREVIEW" : PREVIEW.
-  /// - "GA" : GA.
-  /// - "DEPRECATED" : DEPRECATED.
-  /// - "PRIVATE_PREVIEW" : PRIVATE_PREVIEW.
-  core.String? launchStage;
-
   /// Logo of the resource.
   ///
   /// Optional.
@@ -4911,12 +5030,12 @@ class CustomConnector {
   core.String? updateTime;
 
   CustomConnector({
+    this.activeConnectorVersions,
     this.createTime,
     this.customConnectorType,
     this.description,
     this.displayName,
     this.labels,
-    this.launchStage,
     this.logo,
     this.name,
     this.updateTime,
@@ -4924,6 +5043,11 @@ class CustomConnector {
 
   CustomConnector.fromJson(core.Map json_)
       : this(
+          activeConnectorVersions: json_.containsKey('activeConnectorVersions')
+              ? (json_['activeConnectorVersions'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
               : null,
@@ -4944,9 +5068,6 @@ class CustomConnector {
                   ),
                 )
               : null,
-          launchStage: json_.containsKey('launchStage')
-              ? json_['launchStage'] as core.String
-              : null,
           logo: json_.containsKey('logo') ? json_['logo'] as core.String : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           updateTime: json_.containsKey('updateTime')
@@ -4955,13 +5076,14 @@ class CustomConnector {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (activeConnectorVersions != null)
+          'activeConnectorVersions': activeConnectorVersions!,
         if (createTime != null) 'createTime': createTime!,
         if (customConnectorType != null)
           'customConnectorType': customConnectorType!,
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
         if (labels != null) 'labels': labels!,
-        if (launchStage != null) 'launchStage': launchStage!,
         if (logo != null) 'logo': logo!,
         if (name != null) 'name': name!,
         if (updateTime != null) 'updateTime': updateTime!,
@@ -4970,25 +5092,34 @@ class CustomConnector {
 
 /// CustomConnectorVersion indicates a specific version of a connector.
 class CustomConnectorVersion {
-  /// Configuration for establishing the authentication to the connector
-  /// destination.
+  /// Authentication config for accessing connector facade/ proxy.
   ///
-  /// Required.
+  /// This is used only when enable_backend_destination_config is true.
+  ///
+  /// Optional.
   AuthConfig? authConfig;
+
+  /// Backend variables config templates.
+  ///
+  /// This translates to additional variable templates in connection.
+  ///
+  /// Optional.
+  core.List<ConfigVariableTemplate>? backendVariableTemplates;
 
   /// Created time.
   ///
   /// Output only.
   core.String? createTime;
 
-  /// Configuration of the customConnector's destination.
+  /// Destination config(s) for accessing connector facade/ proxy.
   ///
-  /// Required.
-  DestinationConfig? destinationConfig;
+  /// This is used only when enable_backend_destination_config is true.
+  ///
+  /// Optional.
+  core.List<DestinationConfig>? destinationConfigs;
 
-  /// Whether to enable backend destination config.
-  ///
-  /// This is the backend server that the connector connects to.
+  /// When enabled, the connector will be a facade/ proxy, and connects to the
+  /// destination provided during connection creation.
   ///
   /// Optional.
   core.bool? enableBackendDestinationConfig;
@@ -5009,19 +5140,27 @@ class CustomConnectorVersion {
   /// Output only.
   core.String? name;
 
+  /// Service account used by runtime plane to access auth config secrets.
+  ///
+  /// Optional.
+  core.String? serviceAccount;
+
   /// Location of the custom connector spec.
+  ///
+  /// The location can be either a public url like `https://public-url.com/spec`
+  /// Or a Google Cloud Storage location like `gs:///`
   ///
   /// Optional.
   core.String? specLocation;
 
-  /// Type of the customConnector.
+  /// State of the custom connector version.
   ///
-  /// Required.
+  /// Output only.
   /// Possible string values are:
-  /// - "CUSTOM_CONNECTOR_TYPE_UNSPECIFIED" : Connector type is not specified.
-  /// - "OPEN_API" : OpenAPI connector.
-  /// - "PROTO" : Proto connector.
-  core.String? type;
+  /// - "STATE_UNSPECIFIED" : State Unspecified.
+  /// - "ACTIVE" : Active state. By default we set the state to Active.
+  /// - "DEPRECATED" : Deprecated state.
+  core.String? state;
 
   /// Updated time.
   ///
@@ -5030,13 +5169,15 @@ class CustomConnectorVersion {
 
   CustomConnectorVersion({
     this.authConfig,
+    this.backendVariableTemplates,
     this.createTime,
-    this.destinationConfig,
+    this.destinationConfigs,
     this.enableBackendDestinationConfig,
     this.labels,
     this.name,
+    this.serviceAccount,
     this.specLocation,
-    this.type,
+    this.state,
     this.updateTime,
   });
 
@@ -5046,12 +5187,21 @@ class CustomConnectorVersion {
               ? AuthConfig.fromJson(
                   json_['authConfig'] as core.Map<core.String, core.dynamic>)
               : null,
+          backendVariableTemplates:
+              json_.containsKey('backendVariableTemplates')
+                  ? (json_['backendVariableTemplates'] as core.List)
+                      .map((value) => ConfigVariableTemplate.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
               : null,
-          destinationConfig: json_.containsKey('destinationConfig')
-              ? DestinationConfig.fromJson(json_['destinationConfig']
-                  as core.Map<core.String, core.dynamic>)
+          destinationConfigs: json_.containsKey('destinationConfigs')
+              ? (json_['destinationConfigs'] as core.List)
+                  .map((value) => DestinationConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
               : null,
           enableBackendDestinationConfig:
               json_.containsKey('enableBackendDestinationConfig')
@@ -5066,10 +5216,14 @@ class CustomConnectorVersion {
                 )
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          serviceAccount: json_.containsKey('serviceAccount')
+              ? json_['serviceAccount'] as core.String
+              : null,
           specLocation: json_.containsKey('specLocation')
               ? json_['specLocation'] as core.String
               : null,
-          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
           updateTime: json_.containsKey('updateTime')
               ? json_['updateTime'] as core.String
               : null,
@@ -5077,15 +5231,51 @@ class CustomConnectorVersion {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (authConfig != null) 'authConfig': authConfig!,
+        if (backendVariableTemplates != null)
+          'backendVariableTemplates': backendVariableTemplates!,
         if (createTime != null) 'createTime': createTime!,
-        if (destinationConfig != null) 'destinationConfig': destinationConfig!,
+        if (destinationConfigs != null)
+          'destinationConfigs': destinationConfigs!,
         if (enableBackendDestinationConfig != null)
           'enableBackendDestinationConfig': enableBackendDestinationConfig!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
+        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
         if (specLocation != null) 'specLocation': specLocation!,
-        if (type != null) 'type': type!,
+        if (state != null) 'state': state!,
         if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// Dead Letter configuration details provided by the user.
+class DeadLetterConfig {
+  /// Project which has the topic given.
+  ///
+  /// Optional.
+  core.String? projectId;
+
+  /// Topic to push events which couldn't be processed.
+  ///
+  /// Optional.
+  core.String? topic;
+
+  DeadLetterConfig({
+    this.projectId,
+    this.topic,
+  });
+
+  DeadLetterConfig.fromJson(core.Map json_)
+      : this(
+          projectId: json_.containsKey('projectId')
+              ? json_['projectId'] as core.String
+              : null,
+          topic:
+              json_.containsKey('topic') ? json_['topic'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (projectId != null) 'projectId': projectId!,
+        if (topic != null) 'topic': topic!,
       };
 }
 
@@ -5295,9 +5485,9 @@ class EncryptionConfig {
   ///
   /// Optional.
   /// Possible string values are:
-  /// - "ENCRYPTION_TYPE_UNSPECIFIED" : Egress mode unspecified.
-  /// - "GMEK" : Network egress through auto assigned IPs.
-  /// - "CMEK" : Network egress through static IPs.
+  /// - "ENCRYPTION_TYPE_UNSPECIFIED" : Encryption type unspecified.
+  /// - "GMEK" : Google managed encryption keys
+  /// - "CMEK" : Customer managed encryption keys.
   core.String? encryptionType;
 
   /// KMS crypto key.
@@ -5815,8 +6005,10 @@ class EventingConfig {
   /// Auth details for the webhook adapter.
   AuthConfig? authConfig;
 
-  /// Encryption key (can be either Google managed or CMEK).
-  ConfigVariable? encryptionKey;
+  /// Dead letter configuration for eventing of a connection.
+  ///
+  /// Optional.
+  DeadLetterConfig? deadLetterConfig;
 
   /// Enrichment Enabled.
   core.bool? enrichmentEnabled;
@@ -5828,22 +6020,40 @@ class EventingConfig {
   /// Optional.
   core.String? eventsListenerIngressEndpoint;
 
+  /// Auth details for the event listener.
+  ///
+  /// Optional.
+  AuthConfig? listenerAuthConfig;
+
   /// Private Connectivity Enabled.
   ///
   /// Optional.
   core.bool? privateConnectivityEnabled;
 
+  /// Proxy for Eventing auto-registration.
+  ///
+  /// Optional.
+  DestinationConfig? proxyDestinationConfig;
+
   /// Registration endpoint for auto registration.
   DestinationConfig? registrationDestinationConfig;
+
+  /// Additional eventing related field values
+  ///
+  /// Optional.
+  core.List<ConfigVariable>? triggerConfigVariables;
 
   EventingConfig({
     this.additionalVariables,
     this.authConfig,
-    this.encryptionKey,
+    this.deadLetterConfig,
     this.enrichmentEnabled,
     this.eventsListenerIngressEndpoint,
+    this.listenerAuthConfig,
     this.privateConnectivityEnabled,
+    this.proxyDestinationConfig,
     this.registrationDestinationConfig,
+    this.triggerConfigVariables,
   });
 
   EventingConfig.fromJson(core.Map json_)
@@ -5858,9 +6068,9 @@ class EventingConfig {
               ? AuthConfig.fromJson(
                   json_['authConfig'] as core.Map<core.String, core.dynamic>)
               : null,
-          encryptionKey: json_.containsKey('encryptionKey')
-              ? ConfigVariable.fromJson(
-                  json_['encryptionKey'] as core.Map<core.String, core.dynamic>)
+          deadLetterConfig: json_.containsKey('deadLetterConfig')
+              ? DeadLetterConfig.fromJson(json_['deadLetterConfig']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           enrichmentEnabled: json_.containsKey('enrichmentEnabled')
               ? json_['enrichmentEnabled'] as core.bool
@@ -5869,30 +6079,50 @@ class EventingConfig {
               json_.containsKey('eventsListenerIngressEndpoint')
                   ? json_['eventsListenerIngressEndpoint'] as core.String
                   : null,
+          listenerAuthConfig: json_.containsKey('listenerAuthConfig')
+              ? AuthConfig.fromJson(json_['listenerAuthConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           privateConnectivityEnabled:
               json_.containsKey('privateConnectivityEnabled')
                   ? json_['privateConnectivityEnabled'] as core.bool
                   : null,
+          proxyDestinationConfig: json_.containsKey('proxyDestinationConfig')
+              ? DestinationConfig.fromJson(json_['proxyDestinationConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           registrationDestinationConfig:
               json_.containsKey('registrationDestinationConfig')
                   ? DestinationConfig.fromJson(
                       json_['registrationDestinationConfig']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          triggerConfigVariables: json_.containsKey('triggerConfigVariables')
+              ? (json_['triggerConfigVariables'] as core.List)
+                  .map((value) => ConfigVariable.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (additionalVariables != null)
           'additionalVariables': additionalVariables!,
         if (authConfig != null) 'authConfig': authConfig!,
-        if (encryptionKey != null) 'encryptionKey': encryptionKey!,
+        if (deadLetterConfig != null) 'deadLetterConfig': deadLetterConfig!,
         if (enrichmentEnabled != null) 'enrichmentEnabled': enrichmentEnabled!,
         if (eventsListenerIngressEndpoint != null)
           'eventsListenerIngressEndpoint': eventsListenerIngressEndpoint!,
+        if (listenerAuthConfig != null)
+          'listenerAuthConfig': listenerAuthConfig!,
         if (privateConnectivityEnabled != null)
           'privateConnectivityEnabled': privateConnectivityEnabled!,
+        if (proxyDestinationConfig != null)
+          'proxyDestinationConfig': proxyDestinationConfig!,
         if (registrationDestinationConfig != null)
           'registrationDestinationConfig': registrationDestinationConfig!,
+        if (triggerConfigVariables != null)
+          'triggerConfigVariables': triggerConfigVariables!,
       };
 }
 
@@ -5927,8 +6157,18 @@ class EventingConfigTemplate {
   /// Is Eventing Supported.
   core.bool? isEventingSupported;
 
+  /// ListenerAuthConfigTemplates represents the auth values for the event
+  /// listener.
+  core.List<AuthConfigTemplate>? listenerAuthConfigTemplates;
+
+  /// Proxy destination config template.
+  DestinationConfigTemplate? proxyDestinationConfig;
+
   /// Registration host destination config template.
   DestinationConfigTemplate? registrationDestinationConfig;
+
+  /// Trigger Config fields that needs to be rendered
+  core.List<ConfigVariableTemplate>? triggerConfigVariables;
 
   EventingConfigTemplate({
     this.additionalVariables,
@@ -5939,7 +6179,10 @@ class EventingConfigTemplate {
     this.enrichmentSupported,
     this.eventListenerType,
     this.isEventingSupported,
+    this.listenerAuthConfigTemplates,
+    this.proxyDestinationConfig,
     this.registrationDestinationConfig,
+    this.triggerConfigVariables,
   });
 
   EventingConfigTemplate.fromJson(core.Map json_)
@@ -5976,12 +6219,30 @@ class EventingConfigTemplate {
           isEventingSupported: json_.containsKey('isEventingSupported')
               ? json_['isEventingSupported'] as core.bool
               : null,
+          listenerAuthConfigTemplates:
+              json_.containsKey('listenerAuthConfigTemplates')
+                  ? (json_['listenerAuthConfigTemplates'] as core.List)
+                      .map((value) => AuthConfigTemplate.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+          proxyDestinationConfig: json_.containsKey('proxyDestinationConfig')
+              ? DestinationConfigTemplate.fromJson(
+                  json_['proxyDestinationConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           registrationDestinationConfig:
               json_.containsKey('registrationDestinationConfig')
                   ? DestinationConfigTemplate.fromJson(
                       json_['registrationDestinationConfig']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          triggerConfigVariables: json_.containsKey('triggerConfigVariables')
+              ? (json_['triggerConfigVariables'] as core.List)
+                  .map((value) => ConfigVariableTemplate.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5999,8 +6260,14 @@ class EventingConfigTemplate {
         if (eventListenerType != null) 'eventListenerType': eventListenerType!,
         if (isEventingSupported != null)
           'isEventingSupported': isEventingSupported!,
+        if (listenerAuthConfigTemplates != null)
+          'listenerAuthConfigTemplates': listenerAuthConfigTemplates!,
+        if (proxyDestinationConfig != null)
+          'proxyDestinationConfig': proxyDestinationConfig!,
         if (registrationDestinationConfig != null)
           'registrationDestinationConfig': registrationDestinationConfig!,
+        if (triggerConfigVariables != null)
+          'triggerConfigVariables': triggerConfigVariables!,
       };
 }
 
@@ -7470,6 +7737,35 @@ class ListRuntimeEntitySchemasResponse {
       };
 }
 
+/// Expected request for ListenEvent API.
+class ListenEventRequest {
+  /// Request payload.
+  ///
+  /// Optional.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? payload;
+
+  ListenEventRequest({
+    this.payload,
+  });
+
+  ListenEventRequest.fromJson(core.Map json_)
+      : this(
+          payload: json_.containsKey('payload')
+              ? json_['payload'] as core.Map<core.String, core.dynamic>
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (payload != null) 'payload': payload!,
+      };
+}
+
+/// Expected response for ListenEvent API.
+typedef ListenEventResponse = $Empty;
+
 /// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
@@ -8219,10 +8515,16 @@ class RegionalSettings {
   /// Optional.
   NetworkConfig? networkConfig;
 
+  /// Specifies whether the region is provisioned.
+  ///
+  /// Output only.
+  core.bool? provisioned;
+
   RegionalSettings({
     this.encryptionConfig,
     this.name,
     this.networkConfig,
+    this.provisioned,
   });
 
   RegionalSettings.fromJson(core.Map json_)
@@ -8236,12 +8538,16 @@ class RegionalSettings {
               ? NetworkConfig.fromJson(
                   json_['networkConfig'] as core.Map<core.String, core.dynamic>)
               : null,
+          provisioned: json_.containsKey('provisioned')
+              ? json_['provisioned'] as core.bool
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (encryptionConfig != null) 'encryptionConfig': encryptionConfig!,
         if (name != null) 'name': name!,
         if (networkConfig != null) 'networkConfig': networkConfig!,
+        if (provisioned != null) 'provisioned': provisioned!,
       };
 }
 

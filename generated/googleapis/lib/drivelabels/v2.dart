@@ -2214,9 +2214,6 @@ class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldTypeRequest {
   /// Update field to Integer.
   GoogleAppsDriveLabelsV2FieldIntegerOptions? integerOptions;
 
-  /// Update field to Long Text.
-  GoogleAppsDriveLabelsV2FieldLongTextOptions? longTextOptions;
-
   /// Update field to Selection.
   GoogleAppsDriveLabelsV2FieldSelectionOptions? selectionOptions;
 
@@ -2237,7 +2234,6 @@ class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldTypeRequest {
     this.dateOptions,
     this.id,
     this.integerOptions,
-    this.longTextOptions,
     this.selectionOptions,
     this.textOptions,
     this.updateMask,
@@ -2255,11 +2251,6 @@ class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldTypeRequest {
           integerOptions: json_.containsKey('integerOptions')
               ? GoogleAppsDriveLabelsV2FieldIntegerOptions.fromJson(
                   json_['integerOptions']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          longTextOptions: json_.containsKey('longTextOptions')
-              ? GoogleAppsDriveLabelsV2FieldLongTextOptions.fromJson(
-                  json_['longTextOptions']
                       as core.Map<core.String, core.dynamic>)
               : null,
           selectionOptions: json_.containsKey('selectionOptions')
@@ -2284,7 +2275,6 @@ class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldTypeRequest {
         if (dateOptions != null) 'dateOptions': dateOptions!,
         if (id != null) 'id': id!,
         if (integerOptions != null) 'integerOptions': integerOptions!,
-        if (longTextOptions != null) 'longTextOptions': longTextOptions!,
         if (selectionOptions != null) 'selectionOptions': selectionOptions!,
         if (textOptions != null) 'textOptions': textOptions!,
         if (updateMask != null) 'updateMask': updateMask!,
@@ -3369,9 +3359,6 @@ class GoogleAppsDriveLabelsV2FieldListOptions {
       };
 }
 
-/// Options the Long Text field type.
-typedef GoogleAppsDriveLabelsV2FieldLongTextOptions = $TextOptions;
-
 /// The basic properties of the field.
 class GoogleAppsDriveLabelsV2FieldProperties {
   /// The display text to show in the UI identifying this field.
@@ -3908,7 +3895,37 @@ class GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceSchemaCapabilities {
 }
 
 /// Options for the Text field type.
-typedef GoogleAppsDriveLabelsV2FieldTextOptions = $TextOptions;
+class GoogleAppsDriveLabelsV2FieldTextOptions {
+  /// The maximum valid length of values for the text field.
+  ///
+  /// Output only.
+  core.int? maxLength;
+
+  /// The minimum valid length of values for the text field.
+  ///
+  /// Output only.
+  core.int? minLength;
+
+  GoogleAppsDriveLabelsV2FieldTextOptions({
+    this.maxLength,
+    this.minLength,
+  });
+
+  GoogleAppsDriveLabelsV2FieldTextOptions.fromJson(core.Map json_)
+      : this(
+          maxLength: json_.containsKey('maxLength')
+              ? json_['maxLength'] as core.int
+              : null,
+          minLength: json_.containsKey('minLength')
+              ? json_['minLength'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (maxLength != null) 'maxLength': maxLength!,
+        if (minLength != null) 'minLength': minLength!,
+      };
+}
 
 /// Options for the user field type.
 class GoogleAppsDriveLabelsV2FieldUserOptions {

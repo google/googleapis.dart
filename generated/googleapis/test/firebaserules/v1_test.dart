@@ -522,6 +522,7 @@ api.Ruleset buildRuleset() {
   final o = api.Ruleset();
   buildCounterRuleset++;
   if (buildCounterRuleset < 3) {
+    o.attachmentPoint = 'foo';
     o.createTime = 'foo';
     o.metadata = buildMetadata();
     o.name = 'foo';
@@ -534,6 +535,10 @@ api.Ruleset buildRuleset() {
 void checkRuleset(api.Ruleset o) {
   buildCounterRuleset++;
   if (buildCounterRuleset < 3) {
+    unittest.expect(
+      o.attachmentPoint!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.createTime!,
       unittest.equals('foo'),

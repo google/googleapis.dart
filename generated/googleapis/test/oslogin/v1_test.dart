@@ -217,6 +217,23 @@ void checkSshPublicKey(api.SshPublicKey o) {
   buildCounterSshPublicKey--;
 }
 
+core.List<core.String> buildUnnamed2() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed2(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 void main() {
   unittest.group('obj-schema-Empty', () {
     unittest.test('to-json--from-json', () async {
@@ -340,6 +357,7 @@ void main() {
       final arg_request = buildSshPublicKey();
       final arg_parent = 'foo';
       final arg_projectId = 'foo';
+      final arg_regions = buildUnnamed2();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj = api.SshPublicKey.fromJson(
@@ -382,6 +400,10 @@ void main() {
           unittest.equals(arg_projectId),
         );
         unittest.expect(
+          queryMap['regions']!,
+          unittest.equals(arg_regions),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -393,7 +415,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.importSshPublicKey(arg_request, arg_parent,
-          projectId: arg_projectId, $fields: arg_$fields);
+          projectId: arg_projectId, regions: arg_regions, $fields: arg_$fields);
       checkImportSshPublicKeyResponse(
           response as api.ImportSshPublicKeyResponse);
     });

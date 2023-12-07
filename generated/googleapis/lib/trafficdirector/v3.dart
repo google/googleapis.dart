@@ -168,6 +168,12 @@ class BuildVersion {
 
 /// All xds configs for a particular client.
 class ClientConfig {
+  /// For xDS clients, the scope in which the data is used.
+  ///
+  /// For example, gRPC indicates the data plane target or that the data is
+  /// associated with gRPC server(s).
+  core.String? clientScope;
+
   /// Represents generic xDS config and the exact config structure depends on
   /// the type URL (like Cluster if it is CDS)
   core.List<GenericXdsConfig>? genericXdsConfigs;
@@ -183,6 +189,7 @@ class ClientConfig {
   core.List<PerXdsConfig>? xdsConfig;
 
   ClientConfig({
+    this.clientScope,
     this.genericXdsConfigs,
     this.node,
     this.xdsConfig,
@@ -190,6 +197,9 @@ class ClientConfig {
 
   ClientConfig.fromJson(core.Map json_)
       : this(
+          clientScope: json_.containsKey('clientScope')
+              ? json_['clientScope'] as core.String
+              : null,
           genericXdsConfigs: json_.containsKey('genericXdsConfigs')
               ? (json_['genericXdsConfigs'] as core.List)
                   .map((value) => GenericXdsConfig.fromJson(
@@ -209,6 +219,7 @@ class ClientConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (clientScope != null) 'clientScope': clientScope!,
         if (genericXdsConfigs != null) 'genericXdsConfigs': genericXdsConfigs!,
         if (node != null) 'node': node!,
         if (xdsConfig != null) 'xdsConfig': xdsConfig!,

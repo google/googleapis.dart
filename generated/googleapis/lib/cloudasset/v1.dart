@@ -192,16 +192,16 @@ class EffectiveIamPoliciesResource {
   /// returned. This can only be an organization number (such as
   /// "organizations/123"), a folder number (such as "folders/123"), a project
   /// ID (such as "projects/my-project-id"), or a project number (such as
-  /// "projects/12345"). To know how to get organization id, visit
+  /// "projects/12345"). To know how to get organization ID, visit
   /// [here ](https://cloud.google.com/resource-manager/docs/creating-managing-organization#retrieving_your_organization_id).
-  /// To know how to get folder or project id, visit
+  /// To know how to get folder or project ID, visit
   /// [here ](https://cloud.google.com/resource-manager/docs/creating-managing-folders#viewing_or_listing_folders_and_projects).
   /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
   ///
   /// [names] - Required. The names refer to the
   /// [full_resource_names](https://cloud.google.com/asset-inventory/docs/resource-name-format)
-  /// of
-  /// [searchable asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types).
+  /// of the asset types
+  /// [supported by search APIs](https://cloud.google.com/asset-inventory/docs/supported-asset-types).
   /// A maximum of 20 resources' effective policies can be retrieved in a batch.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -753,9 +753,9 @@ class V1Resource {
   /// organization number (such as "organizations/123"), a folder number (such
   /// as "folders/123"), a project ID (such as "projects/my-project-id"), or a
   /// project number (such as "projects/12345"). To know how to get organization
-  /// id, visit
+  /// ID, visit
   /// [here ](https://cloud.google.com/resource-manager/docs/creating-managing-organization#retrieving_your_organization_id).
-  /// To know how to get folder or project id, visit
+  /// To know how to get folder or project ID, visit
   /// [here ](https://cloud.google.com/resource-manager/docs/creating-managing-folders#viewing_or_listing_folders_and_projects).
   /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
   ///
@@ -978,9 +978,9 @@ class V1Resource {
   /// organization number (such as "organizations/123"), a folder number (such
   /// as "folders/123"), a project ID (such as "projects/my-project-id"), or a
   /// project number (such as "projects/12345"). To know how to get organization
-  /// id, visit
+  /// ID, visit
   /// [here ](https://cloud.google.com/resource-manager/docs/creating-managing-organization#retrieving_your_organization_id).
-  /// To know how to get folder or project id, visit
+  /// To know how to get folder or project ID, visit
   /// [here ](https://cloud.google.com/resource-manager/docs/creating-managing-folders#viewing_or_listing_folders_and_projects).
   /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
   ///
@@ -1149,15 +1149,49 @@ class V1Resource {
   /// Analyzes organization policies governed assets (Google Cloud resources or
   /// policies) under a scope.
   ///
-  /// This RPC supports custom constraints and the following 10 canned
-  /// constraints: * storage.uniformBucketLevelAccess *
-  /// iam.disableServiceAccountKeyCreation * iam.allowedPolicyMemberDomains *
-  /// compute.vmExternalIpAccess * appengine.enforceServiceAccountActAsCheck *
-  /// gcp.resourceLocations * compute.trustedImageProjects *
-  /// compute.skipDefaultNetworkCreation * compute.requireOsLogin *
-  /// compute.disableNestedVirtualization This RPC only returns either resources
-  /// of types supported by
-  /// [searchable asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types),
+  /// This RPC supports custom constraints and the following canned constraints:
+  /// * constraints/ainotebooks.accessMode *
+  /// constraints/ainotebooks.disableFileDownloads *
+  /// constraints/ainotebooks.disableRootAccess *
+  /// constraints/ainotebooks.disableTerminal *
+  /// constraints/ainotebooks.environmentOptions *
+  /// constraints/ainotebooks.requireAutoUpgradeSchedule *
+  /// constraints/ainotebooks.restrictVpcNetworks *
+  /// constraints/compute.disableGuestAttributesAccess *
+  /// constraints/compute.disableInstanceDataAccessApis *
+  /// constraints/compute.disableNestedVirtualization *
+  /// constraints/compute.disableSerialPortAccess *
+  /// constraints/compute.disableSerialPortLogging *
+  /// constraints/compute.disableVpcExternalIpv6 *
+  /// constraints/compute.requireOsLogin * constraints/compute.requireShieldedVm
+  /// * constraints/compute.restrictLoadBalancerCreationForTypes *
+  /// constraints/compute.restrictProtocolForwardingCreationForTypes *
+  /// constraints/compute.restrictXpnProjectLienRemoval *
+  /// constraints/compute.setNewProjectDefaultToZonalDNSOnly *
+  /// constraints/compute.skipDefaultNetworkCreation *
+  /// constraints/compute.trustedImageProjects *
+  /// constraints/compute.vmCanIpForward *
+  /// constraints/compute.vmExternalIpAccess *
+  /// constraints/gcp.detailedAuditLoggingMode *
+  /// constraints/gcp.resourceLocations *
+  /// constraints/iam.allowedPolicyMemberDomains *
+  /// constraints/iam.automaticIamGrantsForDefaultServiceAccounts *
+  /// constraints/iam.disableServiceAccountCreation *
+  /// constraints/iam.disableServiceAccountKeyCreation *
+  /// constraints/iam.disableServiceAccountKeyUpload *
+  /// constraints/iam.restrictCrossProjectServiceAccountLienRemoval *
+  /// constraints/iam.serviceAccountKeyExpiryHours *
+  /// constraints/resourcemanager.accessBoundaries *
+  /// constraints/resourcemanager.allowedExportDestinations *
+  /// constraints/sql.restrictAuthorizedNetworks *
+  /// constraints/sql.restrictNoncompliantDiagnosticDataAccess *
+  /// constraints/sql.restrictNoncompliantResourceCreation *
+  /// constraints/sql.restrictPublicIp *
+  /// constraints/storage.publicAccessPrevention *
+  /// constraints/storage.restrictAuthTypes *
+  /// constraints/storage.uniformBucketLevelAccess This RPC only returns either
+  /// resources of types
+  /// [supported by search APIs](https://cloud.google.com/asset-inventory/docs/supported-asset-types)
   /// or IAM policies.
   ///
   /// Request parameters:
@@ -1532,8 +1566,8 @@ class V1Resource {
   ///
   /// [assetTypes] - Optional. A list of asset types that the IAM policies are
   /// attached to. If empty, it will search the IAM policies that are attached
-  /// to all the
-  /// [searchable asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types).
+  /// to all the asset types
+  /// [supported by search APIs](https://cloud.google.com/asset-inventory/docs/supported-asset-types)
   /// Regular expressions are also supported. For example: *
   /// "compute.googleapis.com.*" snapshots IAM policies attached to asset type
   /// starts with "compute.googleapis.com". * ".*Instance" snapshots IAM
@@ -1656,8 +1690,8 @@ class V1Resource {
   /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
   ///
   /// [assetTypes] - Optional. A list of asset types that this request searches
-  /// for. If empty, it will search all the
-  /// [searchable asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types).
+  /// for. If empty, it will search all the asset types
+  /// [supported by search APIs](https://cloud.google.com/asset-inventory/docs/supported-asset-types).
   /// Regular expressions are also supported. For example: *
   /// "compute.googleapis.com.*" snapshots resources whose asset type starts
   /// with "compute.googleapis.com". * ".*Instance" snapshots resources whose
@@ -2710,14 +2744,31 @@ class Binding {
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
   /// (primary) that represents all the users of that domain. For example,
-  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a user that has
-  /// been recently deleted. For example,
-  /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
-  /// this value reverts to `user:{emailid}` and the recovered user retains the
-  /// role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a service account
-  /// that has been recently deleted. For example,
+  /// `google.com` or `example.com`. *
+  /// `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workforce identity pool. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`:
+  /// All workforce identities in a group. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All workforce identities with a specific attribute value. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}
+  /// / * `: All identities in a workforce identity pool. *
+  /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workload identity pool. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`:
+  /// A workload identity pool group. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All identities in a workload identity pool with a certain attribute. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}
+  /// / * `: All identities in a workload identity pool. *
+  /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
+  /// identifier) representing a user that has been recently deleted. For
+  /// example, `alice@example.com?uid=123456789012345678901`. If the user is
+  /// recovered, this value reverts to `user:{emailid}` and the recovered user
+  /// retains the role in the binding. *
+  /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus
+  /// unique identifier) representing a service account that has been recently
+  /// deleted. For example,
   /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If
   /// the service account is undeleted, this value reverts to
   /// `serviceAccount:{emailid}` and the undeleted service account retains the
@@ -2726,12 +2777,19 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding.
+  /// the role in the binding. *
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// Deleted single identity in a workforce identity pool. For example,
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
   ///
-  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an
+  /// overview of the IAM roles and permissions, see the
+  /// [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For
+  /// a list of the available pre-defined roles, see
+  /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
   Binding({
@@ -2785,7 +2843,7 @@ class ConditionContext {
       };
 }
 
-/// The Condition evaluation.
+/// The condition evaluation.
 class ConditionEvaluation {
   /// The evaluation result.
   /// Possible string values are:
@@ -2794,7 +2852,7 @@ class ConditionEvaluation {
   /// - "FALSE" : The evaluation result is `false`.
   /// - "CONDITIONAL" : The evaluation result is `conditional` when the
   /// condition expression contains variables that are either missing input
-  /// values or have not been supported by Analyzer yet.
+  /// values or have not been supported by Policy Analyzer yet.
   core.String? evaluationValue;
 
   ConditionEvaluation({
@@ -3507,6 +3565,14 @@ class GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedAsset {
 /// The IAM policies governed by the organization policies of the
 /// AnalyzeOrgPolicyGovernedAssetsRequest.constraint.
 class GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedIamPolicy {
+  /// The asset type of the
+  /// AnalyzeOrgPolicyGovernedAssetsResponse.GovernedIamPolicy.attached_resource.
+  ///
+  /// Example: `cloudresourcemanager.googleapis.com/Project` See
+  /// [Cloud Asset Inventory Supported Asset Types](https://cloud.google.com/asset-inventory/docs/supported-asset-types)
+  /// for all supported asset types.
+  core.String? assetType;
+
   /// The full resource name of the resource on which this IAM policy is set.
   ///
   /// Example:
@@ -3540,6 +3606,7 @@ class GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedIamPolicy 
   core.String? project;
 
   GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedIamPolicy({
+    this.assetType,
     this.attachedResource,
     this.folders,
     this.organization,
@@ -3550,6 +3617,9 @@ class GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedIamPolicy 
   GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedIamPolicy.fromJson(
       core.Map json_)
       : this(
+          assetType: json_.containsKey('assetType')
+              ? json_['assetType'] as core.String
+              : null,
           attachedResource: json_.containsKey('attachedResource')
               ? json_['attachedResource'] as core.String
               : null,
@@ -3571,6 +3641,7 @@ class GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedIamPolicy 
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (assetType != null) 'assetType': assetType!,
         if (attachedResource != null) 'attachedResource': attachedResource!,
         if (folders != null) 'folders': folders!,
         if (organization != null) 'organization': organization!,
@@ -3582,6 +3653,16 @@ class GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedIamPolicy 
 /// The Google Cloud resources governed by the organization policies of the
 /// AnalyzeOrgPolicyGovernedAssetsRequest.constraint.
 class GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedResource {
+  /// The asset type of the
+  /// AnalyzeOrgPolicyGovernedAssetsResponse.GovernedResource.full_resource_name
+  /// Example: `cloudresourcemanager.googleapis.com/Project` See
+  /// [Cloud Asset Inventory Supported Asset Types](https://cloud.google.com/asset-inventory/docs/supported-asset-types)
+  /// for all supported asset types.
+  core.String? assetType;
+
+  /// The effective tags on this resource.
+  core.List<EffectiveTagDetails>? effectiveTags;
+
   /// The folder(s) that this resource belongs to, in the format of
   /// folders/{FOLDER_NUMBER}.
   ///
@@ -3614,6 +3695,8 @@ class GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedResource {
   core.String? project;
 
   GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedResource({
+    this.assetType,
+    this.effectiveTags,
     this.folders,
     this.fullResourceName,
     this.organization,
@@ -3624,6 +3707,15 @@ class GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedResource {
   GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedResource.fromJson(
       core.Map json_)
       : this(
+          assetType: json_.containsKey('assetType')
+              ? json_['assetType'] as core.String
+              : null,
+          effectiveTags: json_.containsKey('effectiveTags')
+              ? (json_['effectiveTags'] as core.List)
+                  .map((value) => EffectiveTagDetails.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           folders: json_.containsKey('folders')
               ? (json_['folders'] as core.List)
                   .map((value) => value as core.String)
@@ -3644,6 +3736,8 @@ class GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedResource {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (assetType != null) 'assetType': assetType!,
+        if (effectiveTags != null) 'effectiveTags': effectiveTags!,
         if (folders != null) 'folders': folders!,
         if (fullResourceName != null) 'fullResourceName': fullResourceName!,
         if (organization != null) 'organization': organization!,
@@ -3974,10 +4068,27 @@ class GoogleCloudAssetV1GovernedContainer {
   /// [hierarchy rules](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-hierarchy).
   AnalyzerOrgPolicy? consolidatedPolicy;
 
+  /// The effective tags on this resource.
+  core.List<EffectiveTagDetails>? effectiveTags;
+
+  /// The folder(s) that this resource belongs to, in the format of
+  /// folders/{FOLDER_NUMBER}.
+  ///
+  /// This field is available when the resource belongs (directly or
+  /// cascadingly) to one or more folders.
+  core.List<core.String>? folders;
+
   /// The
   /// [full resource name](https://cloud.google.com/asset-inventory/docs/resource-name-format)
   /// of an organization/folder/project resource.
   core.String? fullResourceName;
+
+  /// The organization that this resource belongs to, in the format of
+  /// organizations/{ORGANIZATION_NUMBER}.
+  ///
+  /// This field is available when the resource belongs (directly or
+  /// cascadingly) to an organization.
+  core.String? organization;
 
   /// The
   /// [full resource name](https://cloud.google.com/asset-inventory/docs/resource-name-format)
@@ -3992,11 +4103,21 @@ class GoogleCloudAssetV1GovernedContainer {
   /// default policy, it will also appear in the list.
   core.List<AnalyzerOrgPolicy>? policyBundle;
 
+  /// The project that this resource belongs to, in the format of
+  /// projects/{PROJECT_NUMBER}.
+  ///
+  /// This field is available when the resource belongs to a project.
+  core.String? project;
+
   GoogleCloudAssetV1GovernedContainer({
     this.consolidatedPolicy,
+    this.effectiveTags,
+    this.folders,
     this.fullResourceName,
+    this.organization,
     this.parent,
     this.policyBundle,
+    this.project,
   });
 
   GoogleCloudAssetV1GovernedContainer.fromJson(core.Map json_)
@@ -4005,8 +4126,22 @@ class GoogleCloudAssetV1GovernedContainer {
               ? AnalyzerOrgPolicy.fromJson(json_['consolidatedPolicy']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          effectiveTags: json_.containsKey('effectiveTags')
+              ? (json_['effectiveTags'] as core.List)
+                  .map((value) => EffectiveTagDetails.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          folders: json_.containsKey('folders')
+              ? (json_['folders'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           fullResourceName: json_.containsKey('fullResourceName')
               ? json_['fullResourceName'] as core.String
+              : null,
+          organization: json_.containsKey('organization')
+              ? json_['organization'] as core.String
               : null,
           parent: json_.containsKey('parent')
               ? json_['parent'] as core.String
@@ -4017,14 +4152,21 @@ class GoogleCloudAssetV1GovernedContainer {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          project: json_.containsKey('project')
+              ? json_['project'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (consolidatedPolicy != null)
           'consolidatedPolicy': consolidatedPolicy!,
+        if (effectiveTags != null) 'effectiveTags': effectiveTags!,
+        if (folders != null) 'folders': folders!,
         if (fullResourceName != null) 'fullResourceName': fullResourceName!,
+        if (organization != null) 'organization': organization!,
         if (parent != null) 'parent': parent!,
         if (policyBundle != null) 'policyBundle': policyBundle!,
+        if (project != null) 'project': project!,
       };
 }
 
@@ -4242,6 +4384,17 @@ class GoogleCloudAssetV1Rule {
   /// The evaluating condition for this rule.
   Expr? condition;
 
+  /// The condition evaluation result for this rule.
+  ///
+  /// Only populated if it meets all the following criteria: * There is a
+  /// condition defined for this rule. * This rule is within
+  /// AnalyzeOrgPolicyGovernedContainersResponse.GovernedContainer.consolidated_policy,
+  /// or
+  /// AnalyzeOrgPolicyGovernedAssetsResponse.GovernedAsset.consolidated_policy
+  /// when the AnalyzeOrgPolicyGovernedAssetsResponse.GovernedAsset has
+  /// AnalyzeOrgPolicyGovernedAssetsResponse.GovernedAsset.governed_resource.
+  ConditionEvaluation? conditionEvaluation;
+
   /// Setting this to true means that all values are denied.
   ///
   /// This field can be set only in Policies for list constraints.
@@ -4253,14 +4406,15 @@ class GoogleCloudAssetV1Rule {
   /// only in Policies for boolean constraints.
   core.bool? enforce;
 
-  /// List of values to be used for this PolicyRule.
+  /// List of values to be used for this policy rule.
   ///
-  /// This field can be set only in Policies for list constraints.
+  /// This field can be set only in policies for list constraints.
   GoogleCloudAssetV1StringValues? values;
 
   GoogleCloudAssetV1Rule({
     this.allowAll,
     this.condition,
+    this.conditionEvaluation,
     this.denyAll,
     this.enforce,
     this.values,
@@ -4274,6 +4428,10 @@ class GoogleCloudAssetV1Rule {
           condition: json_.containsKey('condition')
               ? Expr.fromJson(
                   json_['condition'] as core.Map<core.String, core.dynamic>)
+              : null,
+          conditionEvaluation: json_.containsKey('conditionEvaluation')
+              ? ConditionEvaluation.fromJson(json_['conditionEvaluation']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           denyAll: json_.containsKey('denyAll')
               ? json_['denyAll'] as core.bool
@@ -4290,6 +4448,8 @@ class GoogleCloudAssetV1Rule {
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowAll != null) 'allowAll': allowAll!,
         if (condition != null) 'condition': condition!,
+        if (conditionEvaluation != null)
+          'conditionEvaluation': conditionEvaluation!,
         if (denyAll != null) 'denyAll': denyAll!,
         if (enforce != null) 'enforce': enforce!,
         if (values != null) 'values': values!,
@@ -4839,10 +4999,8 @@ class GoogleIdentityAccesscontextmanagerV1DevicePolicy {
 /// order for this request to succeed.
 class GoogleIdentityAccesscontextmanagerV1EgressFrom {
   /// A list of identities that are allowed access through this
-  /// \[EgressPolicy\].
-  ///
-  /// Should be in the format of email address. The email address should
-  /// represent individual user or service account only.
+  /// \[EgressPolicy\], in the format of `user:{email_id}` or
+  /// `serviceAccount:{email_id}`.
   core.List<core.String>? identities;
 
   /// Specifies the type of identities that are allowed access to outside the
@@ -5039,10 +5197,8 @@ class GoogleIdentityAccesscontextmanagerV1EgressTo {
 /// request must satisfy what is defined in `sources` AND identity related
 /// fields in order to match.
 class GoogleIdentityAccesscontextmanagerV1IngressFrom {
-  /// A list of identities that are allowed access through this ingress policy.
-  ///
-  /// Should be in the format of email address. The email address should
-  /// represent individual user or service account only.
+  /// A list of identities that are allowed access through this ingress policy,
+  /// in the format of `user:{email_id}` or `serviceAccount:{email_id}`.
   core.List<core.String>? identities;
 
   /// Specifies the type of identities that are allowed access from outside the
@@ -5575,9 +5731,9 @@ class IamPolicyAnalysisQuery {
   /// can only be an organization number (such as "organizations/123"), a folder
   /// number (such as "folders/123"), a project ID (such as
   /// "projects/my-project-id"), or a project number (such as "projects/12345").
-  /// To know how to get organization id, visit
+  /// To know how to get organization ID, visit
   /// [here ](https://cloud.google.com/resource-manager/docs/creating-managing-organization#retrieving_your_organization_id).
-  /// To know how to get folder or project id, visit
+  /// To know how to get folder or project ID, visit
   /// [here ](https://cloud.google.com/resource-manager/docs/creating-managing-folders#viewing_or_listing_folders_and_projects).
   ///
   /// Required.
@@ -6519,6 +6675,20 @@ class OrgPolicyResult {
   /// [hierarchy rules](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-hierarchy).
   AnalyzerOrgPolicy? consolidatedPolicy;
 
+  /// The folder(s) that this consolidated policy belongs to, in the format of
+  /// folders/{FOLDER_NUMBER}.
+  ///
+  /// This field is available when the consolidated policy belongs (directly or
+  /// cascadingly) to one or more folders.
+  core.List<core.String>? folders;
+
+  /// The organization that this consolidated policy belongs to, in the format
+  /// of organizations/{ORGANIZATION_NUMBER}.
+  ///
+  /// This field is available when the consolidated policy belongs (directly or
+  /// cascadingly) to an organization.
+  core.String? organization;
+
   /// The ordered list of all organization policies from the
   /// AnalyzeOrgPoliciesResponse.OrgPolicyResult.consolidated_policy.attached_resource.
   ///
@@ -6526,9 +6696,18 @@ class OrgPolicyResult {
   /// default policy, it will also appear in the list.
   core.List<AnalyzerOrgPolicy>? policyBundle;
 
+  /// The project that this consolidated policy belongs to, in the format of
+  /// projects/{PROJECT_NUMBER}.
+  ///
+  /// This field is available when the consolidated policy belongs to a project.
+  core.String? project;
+
   OrgPolicyResult({
     this.consolidatedPolicy,
+    this.folders,
+    this.organization,
     this.policyBundle,
+    this.project,
   });
 
   OrgPolicyResult.fromJson(core.Map json_)
@@ -6537,18 +6716,32 @@ class OrgPolicyResult {
               ? AnalyzerOrgPolicy.fromJson(json_['consolidatedPolicy']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          folders: json_.containsKey('folders')
+              ? (json_['folders'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          organization: json_.containsKey('organization')
+              ? json_['organization'] as core.String
+              : null,
           policyBundle: json_.containsKey('policyBundle')
               ? (json_['policyBundle'] as core.List)
                   .map((value) => AnalyzerOrgPolicy.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          project: json_.containsKey('project')
+              ? json_['project'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (consolidatedPolicy != null)
           'consolidatedPolicy': consolidatedPolicy!,
+        if (folders != null) 'folders': folders!,
+        if (organization != null) 'organization': organization!,
         if (policyBundle != null) 'policyBundle': policyBundle!,
+        if (project != null) 'project': project!,
       };
 }
 
@@ -7371,7 +7564,6 @@ class Resource {
   /// resource defined in the
   /// [IAM policy hierarchy](https://cloud.google.com/iam/docs/overview#policy_hierarchy).
   /// Example: `//cloudresourcemanager.googleapis.com/projects/my_project_123`
-  /// For third-party assets, this field may be set differently.
   core.String? parent;
 
   /// The REST URL for accessing the resource.
@@ -8320,7 +8512,7 @@ class TableSchema {
 }
 
 /// The key and value for a
-/// [tag](https://cloud.google.com/resource-manager/docs/tags/tags-overview),
+/// [tag](https://cloud.google.com/resource-manager/docs/tags/tags-overview).
 class Tag {
   /// TagKey namespaced name, in the format of {ORG_ID}/{TAG_KEY_SHORT_NAME}.
   core.String? tagKey;
