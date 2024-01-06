@@ -118,10 +118,10 @@ Future<AutoRefreshingAuthClient> clientViaApplicationDefaultCredentials({
 Future<AutoRefreshingAuthClient> clientViaUserConsent(
   ClientId clientId,
   List<String> scopes,
-  PromptUserForConsent userPrompt, {
+  PromptUserForConsent userPrompt,
+  String hostedDomain,
+  int listenPort, {
   Client? baseClient,
-  String? hostedDomain,
-  int listenPort = 0,
 }) async {
   var closeUnderlyingClient = false;
   if (baseClient == null) {
@@ -174,9 +174,9 @@ Future<AutoRefreshingAuthClient> clientViaUserConsent(
 Future<AutoRefreshingAuthClient> clientViaUserConsentManual(
   ClientId clientId,
   List<String> scopes,
-  PromptUserForConsentManual userPrompt, {
+  PromptUserForConsentManual userPrompt,
+  String hostedDomain, {
   Client? baseClient,
-  String? hostedDomain,
 }) async {
   var closeUnderlyingClient = false;
   if (baseClient == null) {
@@ -235,10 +235,10 @@ Future<AccessCredentials> obtainAccessCredentialsViaUserConsent(
   ClientId clientId,
   List<String> scopes,
   Client client,
-  PromptUserForConsent userPrompt, {
-  String? hostedDomain,
-  int listenPort = 0,
-}) =>
+  String hostedDomain,
+  int listenPort,
+  PromptUserForConsent userPrompt,
+) =>
     AuthorizationCodeGrantServerFlow(
       clientId,
       scopes,
@@ -264,9 +264,9 @@ Future<AccessCredentials> obtainAccessCredentialsViaUserConsentManual(
   ClientId clientId,
   List<String> scopes,
   Client client,
-  PromptUserForConsentManual userPrompt, {
-  String? hostedDomain,
-}) =>
+  String hostedDomain,
+  PromptUserForConsentManual userPrompt,
+) =>
     AuthorizationCodeGrantManualFlow(
       clientId,
       scopes,

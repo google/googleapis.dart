@@ -104,8 +104,9 @@ Future<AccessCredentials> _credentials(
     clientId,
     scopes,
     client,
+    'http://localhost',
+    8181,
     _prompt,
-    listenPort: 8181,
   );
 
   credentialsFile.writeAsStringSync(prettyJsonEncode(credentials));
