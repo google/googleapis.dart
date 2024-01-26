@@ -1,7 +1,25 @@
-## 8.1.0-wip
+## 9.0.0
 
 - Require Dart 3.0 or later.
 - Allow latest `package:http`.
+
+### API changes
+
+ - `analyticsadmin` - replaces `v1alpha` with `v1beta`.
+ - `cloudfunctions` - **REMOVED**
+ - `containeranalysis` - **REMOVED**
+ - `datacatalog` - **REMOVED**
+ - `documentai` - **REMOVED**
+ - `domains` - **REMOVED**
+ - `ideahub` - **REMOVED**
+ - `metastore` - **REMOVED**
+ - `networkconnectivity` - **REMOVED**
+ - `networksecurity` - **REMOVED**
+ - `ondemandscanning` - **REMOVED**
+ - `osconfig` - **REMOVED**
+ - `policysimulator` - **REMOVED**
+ - `privateca` - **REMOVED**
+ - `tpu` - **REMOVED**
 
 ## 8.0.0
 
