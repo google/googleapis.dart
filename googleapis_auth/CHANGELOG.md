@@ -1,4 +1,4 @@
-## 1.4.2-wip
+## 1.4.2
 
 - Require Dart 3.2 or later.
 - Require 
