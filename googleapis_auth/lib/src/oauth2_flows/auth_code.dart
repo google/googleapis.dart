@@ -8,15 +8,13 @@ import 'dart:math';
 import 'dart:typed_data';
 
 import 'package:crypto/crypto.dart';
+import 'package:googleapis_auth/auth_io.dart';
 import 'package:http/http.dart' as http;
 
-import '../access_credentials.dart';
-import '../client_id.dart';
-import '../exceptions.dart';
-import '../known_uris.dart';
 import '../utils.dart';
 
 Uri createAuthenticationUri({
+  required AuthEndpoints authEndpoints,
   required String redirectUri,
   required String clientId,
   required Iterable<String> scopes,
@@ -36,7 +34,7 @@ Uri createAuthenticationUri({
     if (hostedDomain != null) 'hd': hostedDomain,
     if (state != null) 'state': state,
   };
-  return googleOauth2AuthorizationEndpoint.replace(
+  return authEndpoints.authorizationEndpoint.replace(
     queryParameters: queryValues,
   );
 }
@@ -106,6 +104,7 @@ String _stripBase64Equals(String value) {
 /// to the server. You should use "anti-request forgery state tokens" to guard
 /// against "cross site request forgery" attacks.
 Future<AccessCredentials> obtainAccessCredentialsViaCodeExchange(
+  AuthEndpoints authEndpoints,
   http.Client client,
   ClientId clientId,
   String code, {
@@ -121,6 +120,7 @@ Future<AccessCredentials> obtainAccessCredentialsViaCodeExchange(
       'grant_type': 'authorization_code',
       'redirect_uri': redirectUrl,
     },
+    authEndpoints: authEndpoints,
   );
   final accessToken = parseAccessToken(jsonMap);
 

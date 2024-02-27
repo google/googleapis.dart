@@ -5,17 +5,20 @@
 import 'package:http/http.dart' as http;
 
 import '../access_credentials.dart';
+import '../auth_endpoints.dart';
 import '../client_id.dart';
 import 'auth_code.dart';
 import 'base_flow.dart';
 
 abstract class AuthorizationCodeGrantAbstractFlow implements BaseFlow {
+  final AuthEndpoints authEndpoints;
   final ClientId clientId;
   final String? hostedDomain;
   final List<String> scopes;
   final http.Client _client;
 
   AuthorizationCodeGrantAbstractFlow(
+    this.authEndpoints,
     this.clientId,
     this.scopes,
     this._client, {
@@ -25,9 +28,11 @@ abstract class AuthorizationCodeGrantAbstractFlow implements BaseFlow {
   Future<AccessCredentials> obtainAccessCredentialsUsingCodeImpl(
     String code,
     String redirectUri, {
+    required AuthEndpoints authEndpoints,
     required String codeVerifier,
   }) =>
       obtainAccessCredentialsViaCodeExchange(
+        authEndpoints,
         _client,
         clientId,
         code,
@@ -41,6 +46,7 @@ abstract class AuthorizationCodeGrantAbstractFlow implements BaseFlow {
     required String codeVerifier,
   }) =>
       createAuthenticationUri(
+        authEndpoints: authEndpoints,
         redirectUri: redirectUri,
         clientId: clientId.identifier,
         scopes: scopes,
