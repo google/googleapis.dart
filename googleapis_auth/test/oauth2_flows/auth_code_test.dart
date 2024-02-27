@@ -17,6 +17,14 @@ import '../test_utils.dart';
 
 typedef RequestHandler = Future<Response> Function(Request _);
 
+class CustomAuthEndpoints extends AuthEndpoints {
+  @override
+  Uri get authorizationEndpoint => Uri.https('example.com', '/auth');
+
+  @override
+  Uri get tokenEndpoint => Uri.https('example.com', '/token');
+}
+
 final _browserFlowRedirectMatcher = predicate<String>((object) {
   if (object.startsWith('redirect_uri=')) {
     final url = Uri.parse(
@@ -35,10 +43,13 @@ void main() {
 
   // Validation + Responses from the authorization server.
 
-  RequestHandler successFullResponse({required bool manual}) =>
+  RequestHandler successFullResponse({
+    required bool manual,
+    AuthEndpoints authEndpoints = const GoogleAuthEndpoints(),
+  }) =>
       (Request request) async {
         expect(request.method, equals('POST'));
-        expect(request.url, googleOauth2TokenEndpoint);
+        expect(request.url, authEndpoints.tokenEndpoint);
         expect(
           request.headers['content-type']!,
           startsWith('application/x-www-form-urlencoded'),
@@ -128,10 +139,47 @@ void main() {
     return redirectUri;
   }
 
+  Uri validateUserPromptUriWithCustomEndpoints(
+    String url, {
+    bool manual = false,
+  }) {
+    final uri = Uri.parse(url);
+    final authEndpoints = CustomAuthEndpoints();
+    expect(uri.scheme, authEndpoints.authorizationEndpoint.scheme);
+    expect(uri.authority, authEndpoints.authorizationEndpoint.authority);
+    expect(uri.path, authEndpoints.authorizationEndpoint.path);
+    expect(uri.queryParameters, {
+      'client_id': clientId.identifier,
+      'response_type': 'code',
+      'scope': 's1 s2',
+      'redirect_uri': isNotEmpty,
+      'code_challenge': hasLength(43),
+      'code_challenge_method': 'S256',
+      if (!manual) 'state': hasLength(32),
+    });
+
+    final redirectUri = Uri.parse(uri.queryParameters['redirect_uri']!);
+
+    if (manual) {
+      expect('$redirectUri', equals('urn:ietf:wg:oauth:2.0:oob'));
+    } else {
+      expect(uri.queryParameters['state'], isNotNull);
+      expect(redirectUri.scheme, equals('http'));
+      expect(redirectUri.host, equals('localhost'));
+    }
+
+    return redirectUri;
+  }
+
   group('authorization-code-flow', () {
     group('manual-copy-paste', () {
       Future<String> manualUserPrompt(String url) async {
         validateUserPromptUri(url, manual: true);
+        return 'mycode';
+      }
+
+      Future<String> manualUserPromptWithCustomEndpoints(String url) async {
+        validateUserPromptUriWithCustomEndpoints(url, manual: true);
         return 'mycode';
       }
 
@@ -142,6 +190,21 @@ void main() {
           scopes,
           mockClient(successFullResponse(manual: true), expectClose: false),
           manualUserPrompt,
+        );
+        validateAccessCredentials(await flow.run());
+      });
+
+      test('successful (custom endpoints)', () async {
+        final authEndpoints = CustomAuthEndpoints();
+        final flow = AuthorizationCodeGrantManualFlow(
+          authEndpoints,
+          clientId,
+          scopes,
+          mockClient(
+            successFullResponse(manual: true, authEndpoints: authEndpoints),
+            expectClose: false,
+          ),
+          manualUserPromptWithCustomEndpoints,
         );
         validateAccessCredentials(await flow.run());
       });
@@ -215,6 +278,20 @@ void main() {
 
       void userPrompt(String url) {
         final redirectUri = validateUserPromptUri(url);
+        final authCodeCall = Uri(
+            scheme: redirectUri.scheme,
+            host: redirectUri.host,
+            port: redirectUri.port,
+            path: redirectUri.path,
+            queryParameters: {
+              'state': Uri.parse(url).queryParameters['state'],
+              'code': 'mycode',
+            });
+        callRedirectionEndpoint(authCodeCall);
+      }
+
+      void userPromptCustomEndpoints(String url, AuthEndpoints endpoints) {
+        final redirectUri = validateUserPromptUriWithCustomEndpoints(url);
         final authCodeCall = Uri(
             scheme: redirectUri.scheme,
             host: redirectUri.host,
