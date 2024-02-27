@@ -1,3 +1,7 @@
+## 1.5.0
+
+- Add support for non-Google OAuth 2.0 providers.
+
 ## 1.4.2
 
 - Require Dart 3.2 or later.

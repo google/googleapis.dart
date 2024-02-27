@@ -323,6 +323,38 @@ var client = clientViaApiKey('<api-key-from-devconsole>');
 client.close();
 ```
 
+### Using a non-Google authentication provider
+
+The `googleapis_auth` package is designed to work with Google's OAuth flow, but
+can be used with other OAuth providers as well. To do this, you need to
+subclass `AuthEndpoints` and provide authorization and token Uris. For example:
+
+```dart
+import 'package:googleapis_auth/auth_io.dart';
+
+class MicrosoftAuthEndpoints extends AuthEndpoints {
+  @override
+  Uri get authorizationEndpoint =>
+      Uri.https('login.microsoftonline.com', 'common/oauth2/v2.0/authorize');
+
+  @override
+  Uri get tokenEndpoint =>
+      Uri.https('login.microsoftonline.com', 'common/oauth2/v2.0/token');
+}
+```
+
+This can then be used to obtain credentials:
+
+```dart
+final credentials = await obtainAccessCredentialsViaUserConsent(
+  clientId,
+  ['scope1', 'scope2'],
+  client,
+  prompt,
+  authEndpoints: MicrosoftAuthEndpoints(),
+);
+```
+
 ### More information
 
 More information can be obtained from official Google Developers documentation:
