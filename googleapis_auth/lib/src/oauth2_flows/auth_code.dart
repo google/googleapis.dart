@@ -8,9 +8,12 @@ import 'dart:math';
 import 'dart:typed_data';
 
 import 'package:crypto/crypto.dart';
-import 'package:googleapis_auth/auth_io.dart';
 import 'package:http/http.dart' as http;
 
+import '../access_credentials.dart';
+import '../auth_endpoints.dart';
+import '../client_id.dart';
+import '../exceptions.dart';
 import '../utils.dart';
 
 Uri createAuthenticationUri({
