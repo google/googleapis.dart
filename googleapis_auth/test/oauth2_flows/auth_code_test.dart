@@ -31,7 +31,7 @@ final _browserFlowRedirectMatcher = predicate<String>((object) {
 void main() {
   final clientId = ClientId('id', 'secret');
   final scopes = ['s1', 's2'];
-  final authEndpoints = GoogleAuthEndpoints();
+  const authEndpoints = GoogleAuthEndpoints();
 
   // Validation + Responses from the authorization server.
 
@@ -305,7 +305,7 @@ void main() {
             isA<Exception>().having(
               (e) => e.toString(),
               'message',
-              'Exception: Invalid response from server (expected GET request callback, got: POST).',
+              '''Exception: Invalid response from server (expected GET request callback, got: POST).''',
             ),
           ),
         );
