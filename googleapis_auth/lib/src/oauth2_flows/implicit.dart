@@ -189,18 +189,13 @@ class LoginResult {
 }
 
 /// Convert [responseType] to string value expected by `gapi.auth.authorize`.
-String _responseTypeToString(ResponseType responseType) {
-  switch (responseType) {
-    case ResponseType.code:
-      return 'code';
-    case ResponseType.idToken:
-      return 'id_token';
-    case ResponseType.permission:
-      return 'permission';
-    case ResponseType.token:
-      return 'token';
-  }
-}
+String _responseTypeToString(ResponseType responseType) =>
+    switch (responseType) {
+      ResponseType.code => 'code',
+      ResponseType.idToken => 'id_token',
+      ResponseType.permission => 'permission',
+      ResponseType.token => 'token'
+    };
 
 js.JsObject get _gapiAuth2 =>
     (js.context['gapi'] as js.JsObject)['auth2'] as js.JsObject;
