@@ -4,10 +4,12 @@
 
 import 'dart:convert';
 
-import 'package:googleapis_auth/auth_io.dart';
 import 'package:http/http.dart' show BaseRequest, Client, StreamedResponse;
 import 'package:http_parser/http_parser.dart';
 
+import 'access_token.dart';
+import 'auth_endpoints.dart';
+import 'exceptions.dart';
 import 'http_client_base.dart';
 
 /// Due to differences of clock speed, network latency, etc. we
