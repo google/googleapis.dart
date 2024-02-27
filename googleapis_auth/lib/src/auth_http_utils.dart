@@ -118,10 +118,10 @@ class AutoRefreshingClient extends AutoRefreshDelegatingClient {
       return authClient.send(request);
     } else {
       final cred = await refreshCredentials(
-        authEndpoints,
         clientId,
         credentials,
         baseClient,
+        authEndpoints: authEndpoints,
       );
       notifyAboutNewCredentials(cred);
       credentials = cred;

@@ -32,12 +32,12 @@ abstract class AuthorizationCodeGrantAbstractFlow implements BaseFlow {
     required String codeVerifier,
   }) =>
       obtainAccessCredentialsViaCodeExchange(
-        authEndpoints,
         _client,
         clientId,
         code,
         redirectUrl: redirectUri,
         codeVerifier: codeVerifier,
+        authEndpoints: authEndpoints,
       );
 
   Uri authenticationUri(

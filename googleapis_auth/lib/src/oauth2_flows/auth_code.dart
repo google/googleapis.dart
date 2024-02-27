@@ -107,12 +107,12 @@ String _stripBase64Equals(String value) {
 /// to the server. You should use "anti-request forgery state tokens" to guard
 /// against "cross site request forgery" attacks.
 Future<AccessCredentials> obtainAccessCredentialsViaCodeExchange(
-  AuthEndpoints authEndpoints,
   http.Client client,
   ClientId clientId,
   String code, {
   String redirectUrl = 'postmessage',
   String? codeVerifier,
+  AuthEndpoints authEndpoints = const GoogleAuthEndpoints(),
 }) async {
   final jsonMap = await client.oauthTokenRequest(
     {
