@@ -290,20 +290,6 @@ void main() {
         callRedirectionEndpoint(authCodeCall);
       }
 
-      void userPromptCustomEndpoints(String url, AuthEndpoints endpoints) {
-        final redirectUri = validateUserPromptUriWithCustomEndpoints(url);
-        final authCodeCall = Uri(
-            scheme: redirectUri.scheme,
-            host: redirectUri.host,
-            port: redirectUri.port,
-            path: redirectUri.path,
-            queryParameters: {
-              'state': Uri.parse(url).queryParameters['state'],
-              'code': 'mycode',
-            });
-        callRedirectionEndpoint(authCodeCall);
-      }
-
       void userPromptInvalidHttpVerb(String url) {
         final redirectUri = validateUserPromptUri(url);
         final authCodeCall = Uri(
