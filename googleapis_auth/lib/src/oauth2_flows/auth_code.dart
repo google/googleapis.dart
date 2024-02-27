@@ -17,7 +17,6 @@ import '../exceptions.dart';
 import '../utils.dart';
 
 Uri createAuthenticationUri({
-  required AuthEndpoints authEndpoints,
   required String redirectUri,
   required String clientId,
   required Iterable<String> scopes,
@@ -25,6 +24,7 @@ Uri createAuthenticationUri({
   String? hostedDomain,
   String? state,
   bool offline = false,
+  AuthEndpoints authEndpoints = const GoogleAuthEndpoints(),
 }) {
   final queryValues = {
     'client_id': clientId,
