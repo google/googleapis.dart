@@ -162,8 +162,11 @@ void main() {
         Future<Response>.error(Exception('transport layer exception'));
 
     test('refreshCredentials-successful', () async {
-      final newCredentials = await refreshCredentials(clientId, credentials,
-          mockClient(expectAsync1(successfulRefresh), expectClose: false));
+      final newCredentials = await refreshCredentials(
+        clientId,
+        credentials,
+        mockClient(expectAsync1(successfulRefresh), expectClose: false),
+      );
       final expectedResultUtc = DateTime.now()
           .toUtc()
           .add(const Duration(seconds: 3600 - maxExpectedTimeDiffInSeconds));

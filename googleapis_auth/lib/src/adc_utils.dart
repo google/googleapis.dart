@@ -8,6 +8,7 @@ import 'dart:io';
 
 import 'package:http/http.dart';
 
+import 'auth_endpoints.dart';
 import 'auth_functions.dart';
 import 'auth_http_utils.dart';
 import 'service_account_client.dart';
@@ -39,6 +40,7 @@ Future<AutoRefreshingAuthClient> fromApplicationsCredentialsFile(
     );
     return AutoRefreshingClient(
       baseClient,
+      const GoogleAuthEndpoints(),
       clientId,
       await refreshCredentials(
         clientId,

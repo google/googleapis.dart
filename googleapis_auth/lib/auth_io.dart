@@ -7,6 +7,7 @@ import 'dart:io';
 import 'package:http/http.dart';
 
 import 'src/adc_utils.dart';
+import 'src/auth_endpoints.dart';
 import 'src/auth_http_utils.dart';
 import 'src/http_client_base.dart';
 import 'src/metadata_server_client.dart' show clientViaMetadataServer;
@@ -122,6 +123,7 @@ Future<AutoRefreshingAuthClient> clientViaUserConsent(
   Client? baseClient,
   String? hostedDomain,
   int listenPort = 0,
+  AuthEndpoints authEndpoints = const GoogleAuthEndpoints(),
 }) async {
   var closeUnderlyingClient = false;
   if (baseClient == null) {
@@ -130,6 +132,7 @@ Future<AutoRefreshingAuthClient> clientViaUserConsent(
   }
 
   final flow = AuthorizationCodeGrantServerFlow(
+    authEndpoints,
     clientId,
     scopes,
     baseClient,
@@ -150,6 +153,7 @@ Future<AutoRefreshingAuthClient> clientViaUserConsent(
   }
   return AutoRefreshingClient(
     baseClient,
+    authEndpoints,
     clientId,
     credentials,
     closeUnderlyingClient: closeUnderlyingClient,
@@ -177,6 +181,7 @@ Future<AutoRefreshingAuthClient> clientViaUserConsentManual(
   PromptUserForConsentManual userPrompt, {
   Client? baseClient,
   String? hostedDomain,
+  AuthEndpoints authEndpoints = const GoogleAuthEndpoints(),
 }) async {
   var closeUnderlyingClient = false;
   if (baseClient == null) {
@@ -185,6 +190,7 @@ Future<AutoRefreshingAuthClient> clientViaUserConsentManual(
   }
 
   final flow = AuthorizationCodeGrantManualFlow(
+    authEndpoints,
     clientId,
     scopes,
     baseClient,
@@ -205,6 +211,7 @@ Future<AutoRefreshingAuthClient> clientViaUserConsentManual(
 
   return AutoRefreshingClient(
     baseClient,
+    authEndpoints,
     clientId,
     credentials,
     closeUnderlyingClient: closeUnderlyingClient,
@@ -238,8 +245,10 @@ Future<AccessCredentials> obtainAccessCredentialsViaUserConsent(
   PromptUserForConsent userPrompt, {
   String? hostedDomain,
   int listenPort = 0,
+  AuthEndpoints authEndpoints = const GoogleAuthEndpoints(),
 }) =>
     AuthorizationCodeGrantServerFlow(
+      authEndpoints,
       clientId,
       scopes,
       client,
@@ -266,8 +275,10 @@ Future<AccessCredentials> obtainAccessCredentialsViaUserConsentManual(
   Client client,
   PromptUserForConsentManual userPrompt, {
   String? hostedDomain,
+  AuthEndpoints authEndpoints = const GoogleAuthEndpoints(),
 }) =>
     AuthorizationCodeGrantManualFlow(
+      authEndpoints,
       clientId,
       scopes,
       client,

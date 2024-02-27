@@ -11,9 +11,9 @@ import 'package:crypto/crypto.dart';
 import 'package:http/http.dart' as http;
 
 import '../access_credentials.dart';
+import '../auth_endpoints.dart';
 import '../client_id.dart';
 import '../exceptions.dart';
-import '../known_uris.dart';
 import '../utils.dart';
 
 Uri createAuthenticationUri({
@@ -24,6 +24,7 @@ Uri createAuthenticationUri({
   String? hostedDomain,
   String? state,
   bool offline = false,
+  AuthEndpoints authEndpoints = const GoogleAuthEndpoints(),
 }) {
   final queryValues = {
     'client_id': clientId,
@@ -36,7 +37,7 @@ Uri createAuthenticationUri({
     if (hostedDomain != null) 'hd': hostedDomain,
     if (state != null) 'state': state,
   };
-  return googleOauth2AuthorizationEndpoint.replace(
+  return authEndpoints.authorizationEndpoint.replace(
     queryParameters: queryValues,
   );
 }
@@ -111,6 +112,7 @@ Future<AccessCredentials> obtainAccessCredentialsViaCodeExchange(
   String code, {
   String redirectUrl = 'postmessage',
   String? codeVerifier,
+  AuthEndpoints authEndpoints = const GoogleAuthEndpoints(),
 }) async {
   final jsonMap = await client.oauthTokenRequest(
     {
@@ -121,6 +123,7 @@ Future<AccessCredentials> obtainAccessCredentialsViaCodeExchange(
       'grant_type': 'authorization_code',
       'redirect_uri': redirectUrl,
     },
+    authEndpoints: authEndpoints,
   );
   final accessToken = parseAccessToken(jsonMap);
 
