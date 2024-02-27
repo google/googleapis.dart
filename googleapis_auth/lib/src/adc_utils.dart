@@ -6,14 +6,16 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:googleapis_auth/auth_io.dart';
 import 'package:http/http.dart';
 
+import '../auth_io.dart';
+import 'auth_functions.dart';
 import 'auth_http_utils.dart';
+import 'service_account_client.dart';
+import 'service_account_credentials.dart';
 
 Future<AutoRefreshingAuthClient> fromApplicationsCredentialsFile(
   File file,
-  AuthEndpoints authEndpoints,
   String fileSource,
   List<String> scopes,
   Client baseClient,
@@ -38,10 +40,10 @@ Future<AutoRefreshingAuthClient> fromApplicationsCredentialsFile(
     );
     return AutoRefreshingClient(
       baseClient,
-      authEndpoints,
+      const GoogleAuthEndpoints(),
       clientId,
       await refreshCredentials(
-        authEndpoints,
+        const GoogleAuthEndpoints(),
         clientId,
         AccessCredentials(
           // Hack: Create empty credentials that have expired.
