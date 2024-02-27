@@ -207,7 +207,7 @@ void main() {
         try {
           final request = await ioClient.postUrl(authCodeCall);
           final response = await request.close();
-          await response.drain();
+          await response.drain<void>();
         } finally {
           closeMe();
         }

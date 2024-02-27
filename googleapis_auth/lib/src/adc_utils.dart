@@ -43,7 +43,6 @@ Future<AutoRefreshingAuthClient> fromApplicationsCredentialsFile(
       const GoogleAuthEndpoints(),
       clientId,
       await refreshCredentials(
-        const GoogleAuthEndpoints(),
         clientId,
         AccessCredentials(
           // Hack: Create empty credentials that have expired.
