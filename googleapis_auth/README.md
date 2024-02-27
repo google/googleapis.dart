@@ -325,9 +325,9 @@ client.close();
 
 ### Using a non-Google authentication provider
 
-The `googleapis_auth` package is designed to work with Google's OAuth flow, but
-can be used with other OAuth providers as well. To do this, you need to
-subclass `AuthEndpoints` and provide authorization and token Uris. For example:
+This package is designed to work with Google's OAuth flow, but it can be used
+with other OAuth providers as well. To do this, you need to subclass
+`AuthEndpoints` and provide authorization and token uris. For example:
 
 ```dart
 import 'package:googleapis_auth/auth_io.dart';
