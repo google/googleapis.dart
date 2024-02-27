@@ -7,14 +7,14 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
-import '../../auth_io.dart';
+import '../access_credentials.dart';
+import '../auth_endpoints.dart';
 import '../crypto/rsa.dart';
 import '../crypto/rsa_sign.dart';
 import '../known_uris.dart';
 import '../utils.dart';
 import 'base_flow.dart';
 
-/// Currently only supports the Google auth provider.
 class JwtFlow extends BaseFlow {
   // All details are described at:
   // https://developers.google.com/accounts/docs/OAuth2ServiceAccount
@@ -48,7 +48,7 @@ class JwtFlow extends BaseFlow {
       'aud': googleOauth2TokenEndpoint.toString(),
       'exp': timestamp + 3600,
       'iat': timestamp,
-      if (_user != null) 'sub': _user!,
+      if (_user != null) 'sub': _user,
     };
     final jwtClaimSetBase64 = _base64url(utf8.encode(jsonEncode(jwtClaimSet)));
 
@@ -64,7 +64,7 @@ class JwtFlow extends BaseFlow {
         'grant_type': _uri,
         'assertion': jwt,
       },
-      authEndpoints: GoogleAuthEndpoints(),
+      authEndpoints: const GoogleAuthEndpoints(),
     );
     final accessToken = parseAccessToken(response);
     return AccessCredentials(accessToken, null, _scopes);
