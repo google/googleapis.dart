@@ -117,13 +117,13 @@ Future<AutoRefreshingAuthClient> clientViaApplicationDefaultCredentials({
 /// {@macro googleapis_auth_not_close_the_baseClient}
 /// {@macro googleapis_auth_listen_port}
 Future<AutoRefreshingAuthClient> clientViaUserConsent(
-  AuthEndpoints authEndpoints,
   ClientId clientId,
   List<String> scopes,
   PromptUserForConsent userPrompt, {
   Client? baseClient,
   String? hostedDomain,
   int listenPort = 0,
+  AuthEndpoints authEndpoints = const GoogleAuthEndpoints(),
 }) async {
   var closeUnderlyingClient = false;
   if (baseClient == null) {

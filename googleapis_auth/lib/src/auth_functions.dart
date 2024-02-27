@@ -83,11 +83,11 @@ AuthClient authenticatedClient(
 /// {@macro googleapis_auth_close_the_client}
 /// {@macro googleapis_auth_not_close_the_baseClient}
 AutoRefreshingAuthClient autoRefreshingClient(
-  AuthEndpoints authEndpoints,
   ClientId clientId,
   AccessCredentials credentials,
-  Client baseClient,
-) {
+  Client baseClient, {
+  AuthEndpoints authEndpoints = const GoogleAuthEndpoints(),
+}) {
   if (credentials.accessToken.type != 'Bearer') {
     throw ArgumentError('Only Bearer access tokens are accepted.');
   }
@@ -103,11 +103,11 @@ AutoRefreshingAuthClient autoRefreshingClient(
 ///
 /// {@macro googleapis_auth_client_for_creds}
 Future<AccessCredentials> refreshCredentials(
-  AuthEndpoints authEndpoints,
   ClientId clientId,
   AccessCredentials credentials,
-  Client client,
-) async {
+  Client client, {
+  AuthEndpoints authEndpoints = const GoogleAuthEndpoints(),
+}) async {
   final secret = clientId.secret;
   if (secret == null) {
     throw ArgumentError('clientId.secret cannot be null.');
