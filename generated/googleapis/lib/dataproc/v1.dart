@@ -2674,13 +2674,13 @@ class ProjectsRegionsClustersResource {
   /// value ...where field is one of status.state, clusterName, or
   /// labels.\[KEY\], and \[KEY\] is a label key. value can be * to match all
   /// values. status.state can be one of the following: ACTIVE, INACTIVE,
-  /// CREATING, RUNNING, ERROR, DELETING, or UPDATING. ACTIVE contains the
-  /// CREATING, UPDATING, and RUNNING states. INACTIVE contains the DELETING and
-  /// ERROR states. clusterName is the name of the cluster provided at creation
-  /// time. Only the logical AND operator is supported; space-separated items
-  /// are treated as having an implicit AND operator.Example filter:status.state
-  /// = ACTIVE AND clusterName = mycluster AND labels.env = staging AND
-  /// labels.starred = *
+  /// CREATING, RUNNING, ERROR, DELETING, UPDATING, STOPPING, or STOPPED. ACTIVE
+  /// contains the CREATING, UPDATING, and RUNNING states. INACTIVE contains the
+  /// DELETING, ERROR, STOPPING, and STOPPED states. clusterName is the name of
+  /// the cluster provided at creation time. Only the logical AND operator is
+  /// supported; space-separated items are treated as having an implicit AND
+  /// operator.Example filter:status.state = ACTIVE AND clusterName = mycluster
+  /// AND labels.env = staging AND labels.starred = *
   ///
   /// [pageSize] - Optional. The standard List page size.
   ///
@@ -3109,7 +3109,7 @@ class ProjectsRegionsClustersNodeGroupsResource {
   ///
   /// [requestId] - Optional. A unique ID used to identify the request. If the
   /// server receives two CreateNodeGroupRequest
-  /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateNodeGroupRequests)
+  /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateNodeGroupRequest)
   /// with the same ID, the second request is ignored and the first
   /// google.longrunning.Operation created and stored in the backend is
   /// returned.Recommendation: Set this value to a UUID
@@ -3189,6 +3189,48 @@ class ProjectsRegionsClustersNodeGroupsResource {
       queryParams: queryParams_,
     );
     return NodeGroup.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Repair nodes in a node group.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the node group to resize. Format:
+  /// projects/{project}/regions/{region}/clusters/{cluster}/nodeGroups/{nodeGroup}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/regions/\[^/\]+/clusters/\[^/\]+/nodeGroups/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> repair(
+    RepairNodeGroupRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':repair';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Resizes a node group in a cluster.
@@ -5266,8 +5308,25 @@ class Binding {
   /// group:{emailid}: An email address that represents a Google group. For
   /// example, admins@example.com. domain:{domain}: The G Suite domain (primary)
   /// that represents all the users of that domain. For example, google.com or
-  /// example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus
-  /// unique identifier) representing a user that has been recently deleted. For
+  /// example.com.
+  /// principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}:
+  /// A single identity in a workforce identity pool.
+  /// principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}:
+  /// All workforce identities in a group.
+  /// principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}:
+  /// All workforce identities with a specific attribute value.
+  /// principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}
+  /// / * : All identities in a workforce identity pool.
+  /// principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}:
+  /// A single identity in a workload identity pool.
+  /// principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}:
+  /// A workload identity pool group.
+  /// principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}:
+  /// All identities in a workload identity pool with a certain attribute.
+  /// principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}
+  /// / * : All identities in a workload identity pool.
+  /// deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique
+  /// identifier) representing a user that has been recently deleted. For
   /// example, alice@example.com?uid=123456789012345678901. If the user is
   /// recovered, this value reverts to user:{emailid} and the recovered user
   /// retains the role in the binding.
@@ -5283,11 +5342,18 @@ class Binding {
   /// admins@example.com?uid=123456789012345678901. If the group is recovered,
   /// this value reverts to group:{emailid} and the recovered group retains the
   /// role in the binding.
+  /// deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}:
+  /// Deleted single identity in a workforce identity pool. For example,
+  /// deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of members, or principals.
   ///
-  /// For example, roles/viewer, roles/editor, or roles/owner.
+  /// For example, roles/viewer, roles/editor, or roles/owner.For an overview of
+  /// the IAM roles and permissions, see the IAM documentation
+  /// (https://cloud.google.com/iam/docs/roles-overview). For a list of the
+  /// available pre-defined roles, see here
+  /// (https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
   Binding({
@@ -6149,14 +6215,42 @@ typedef Empty = $Empty;
 
 /// Encryption settings for the cluster.
 class EncryptionConfig {
-  /// The Cloud KMS key name to use for PD disk encryption for all instances in
-  /// the cluster.
+  /// The Cloud KMS key resource name to use for persistent disk encryption for
+  /// all instances in the cluster.
+  ///
+  /// See Use CMEK with cluster data
+  /// (https://cloud.google.com//dataproc/docs/concepts/configuring-clusters/customer-managed-encryption#use_cmek_with_cluster_data)
+  /// for more information.
   ///
   /// Optional.
   core.String? gcePdKmsKeyName;
 
-  /// The Cloud KMS key name to use for encrypting customer core content in
-  /// spanner and cluster PD disk for all instances in the cluster.
+  /// The Cloud KMS key resource name to use for cluster persistent disk and job
+  /// argument encryption.
+  ///
+  /// See Use CMEK with cluster data
+  /// (https://cloud.google.com//dataproc/docs/concepts/configuring-clusters/customer-managed-encryption#use_cmek_with_cluster_data)
+  /// for more information.When this key resource name is provided, the
+  /// following job arguments of the following job types submitted to the
+  /// cluster are encrypted using CMEK: FlinkJob args
+  /// (https://cloud.google.com/dataproc/docs/reference/rest/v1/FlinkJob)
+  /// HadoopJob args
+  /// (https://cloud.google.com/dataproc/docs/reference/rest/v1/HadoopJob)
+  /// SparkJob args
+  /// (https://cloud.google.com/dataproc/docs/reference/rest/v1/SparkJob)
+  /// SparkRJob args
+  /// (https://cloud.google.com/dataproc/docs/reference/rest/v1/SparkRJob)
+  /// PySparkJob args
+  /// (https://cloud.google.com/dataproc/docs/reference/rest/v1/PySparkJob)
+  /// SparkSqlJob
+  /// (https://cloud.google.com/dataproc/docs/reference/rest/v1/SparkSqlJob)
+  /// scriptVariables and queryList.queries HiveJob
+  /// (https://cloud.google.com/dataproc/docs/reference/rest/v1/HiveJob)
+  /// scriptVariables and queryList.queries PigJob
+  /// (https://cloud.google.com/dataproc/docs/reference/rest/v1/PigJob)
+  /// scriptVariables and queryList.queries PrestoJob
+  /// (https://cloud.google.com/dataproc/docs/reference/rest/v1/PrestoJob)
+  /// scriptVariables and queryList.queries
   ///
   /// Optional.
   core.String? kmsKey;
@@ -7152,11 +7246,33 @@ class GkeNodePoolTarget {
       };
 }
 
-/// Encryption settings for the encrypting customer core content.
-///
-/// NEXT ID: 2
+/// Encryption settings for encrypting workflow template job arguments.
 class GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig {
-  /// The Cloud KMS key name to use for encrypting customer core content.
+  /// The Cloud KMS key name to use for encrypting workflow template job
+  /// arguments.When this this key is provided, the following workflow template
+  /// job arguments
+  /// (https://cloud.google.com/dataproc/docs/concepts/workflows/use-workflows#adding_jobs_to_a_template),
+  /// if present, are CMEK encrypted
+  /// (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/customer-managed-encryption#use_cmek_with_workflow_template_data):
+  /// FlinkJob args
+  /// (https://cloud.google.com/dataproc/docs/reference/rest/v1/FlinkJob)
+  /// HadoopJob args
+  /// (https://cloud.google.com/dataproc/docs/reference/rest/v1/HadoopJob)
+  /// SparkJob args
+  /// (https://cloud.google.com/dataproc/docs/reference/rest/v1/SparkJob)
+  /// SparkRJob args
+  /// (https://cloud.google.com/dataproc/docs/reference/rest/v1/SparkRJob)
+  /// PySparkJob args
+  /// (https://cloud.google.com/dataproc/docs/reference/rest/v1/PySparkJob)
+  /// SparkSqlJob
+  /// (https://cloud.google.com/dataproc/docs/reference/rest/v1/SparkSqlJob)
+  /// scriptVariables and queryList.queries HiveJob
+  /// (https://cloud.google.com/dataproc/docs/reference/rest/v1/HiveJob)
+  /// scriptVariables and queryList.queries PigJob
+  /// (https://cloud.google.com/dataproc/docs/reference/rest/v1/PigJob)
+  /// scriptVariables and queryList.queries PrestoJob
+  /// (https://cloud.google.com/dataproc/docs/reference/rest/v1/PrestoJob)
+  /// scriptVariables and queryList.queries
   ///
   /// Optional.
   core.String? kmsKey;
@@ -8636,7 +8752,7 @@ class KerberosConfig {
   /// Optional.
   core.String? keystoreUri;
 
-  /// The uri of the KMS key used to encrypt various sensitive files.
+  /// The URI of the KMS key used to encrypt sensitive files.
   ///
   /// Optional.
   core.String? kmsKeyUri;
@@ -8994,9 +9110,18 @@ class ListBatchesResponse {
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
+  /// List of Batches that could not be included in the response.
+  ///
+  /// Attempting to get one of these resources may indicate why it was not
+  /// included in the list response.
+  ///
+  /// Output only.
+  core.List<core.String>? unreachable;
+
   ListBatchesResponse({
     this.batches,
     this.nextPageToken,
+    this.unreachable,
   });
 
   ListBatchesResponse.fromJson(core.Map json_)
@@ -9010,11 +9135,17 @@ class ListBatchesResponse {
           nextPageToken: json_.containsKey('nextPageToken')
               ? json_['nextPageToken'] as core.String
               : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (batches != null) 'batches': batches!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
@@ -9072,10 +9203,11 @@ class ListJobsResponse {
   /// Optional.
   core.String? nextPageToken;
 
-  /// List of jobs that could not be included in the response.
+  /// List of jobs with kms_key-encrypted parameters that could not be
+  /// decrypted.
   ///
-  /// Attempting to get one of these resources may indicate why it was not
-  /// included in the list response.
+  /// A response to a jobs.get request may indicate the reason for the
+  /// decryption failure for a specific job.
   ///
   /// Output only.
   core.List<core.String>? unreachable;
@@ -10772,6 +10904,63 @@ class RepairClusterRequest {
           'gracefulDecommissionTimeout': gracefulDecommissionTimeout!,
         if (nodePools != null) 'nodePools': nodePools!,
         if (parentOperationId != null) 'parentOperationId': parentOperationId!,
+        if (requestId != null) 'requestId': requestId!,
+      };
+}
+
+class RepairNodeGroupRequest {
+  /// Name of instances to be repaired.
+  ///
+  /// These instances must belong to specified node pool.
+  ///
+  /// Required.
+  core.List<core.String>? instanceNames;
+
+  /// Repair action to take on specified resources of the node pool.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "REPAIR_ACTION_UNSPECIFIED" : No action will be taken by default.
+  /// - "REPLACE" : replace the specified list of nodes.
+  core.String? repairAction;
+
+  /// A unique ID used to identify the request.
+  ///
+  /// If the server receives two RepairNodeGroupRequest with the same ID, the
+  /// second request is ignored and the first google.longrunning.Operation
+  /// created and stored in the backend is returned.Recommendation: Set this
+  /// value to a UUID
+  /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The ID must
+  /// contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
+  /// hyphens (-). The maximum length is 40 characters.
+  ///
+  /// Optional.
+  core.String? requestId;
+
+  RepairNodeGroupRequest({
+    this.instanceNames,
+    this.repairAction,
+    this.requestId,
+  });
+
+  RepairNodeGroupRequest.fromJson(core.Map json_)
+      : this(
+          instanceNames: json_.containsKey('instanceNames')
+              ? (json_['instanceNames'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          repairAction: json_.containsKey('repairAction')
+              ? json_['repairAction'] as core.String
+              : null,
+          requestId: json_.containsKey('requestId')
+              ? json_['requestId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (instanceNames != null) 'instanceNames': instanceNames!,
+        if (repairAction != null) 'repairAction': repairAction!,
         if (requestId != null) 'requestId': requestId!,
       };
 }
@@ -12982,7 +13171,7 @@ class WorkflowTemplate {
   /// Optional.
   core.String? dagTimeout;
 
-  /// Encryption settings for the encrypting customer core content.
+  /// Encryption settings for encrypting workflow template job arguments.
   ///
   /// Optional.
   GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig? encryptionConfig;

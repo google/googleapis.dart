@@ -468,7 +468,7 @@ class AnnotateTextRequest {
   /// The enabled features.
   ///
   /// Required.
-  Features? features;
+  AnnotateTextRequestFeatures? features;
 
   AnnotateTextRequest({
     this.document,
@@ -486,7 +486,7 @@ class AnnotateTextRequest {
               ? json_['encodingType'] as core.String
               : null,
           features: json_.containsKey('features')
-              ? Features.fromJson(
+              ? AnnotateTextRequestFeatures.fromJson(
                   json_['features'] as core.Map<core.String, core.dynamic>)
               : null,
         );
@@ -495,6 +495,63 @@ class AnnotateTextRequest {
         if (document != null) 'document': document!,
         if (encodingType != null) 'encodingType': encodingType!,
         if (features != null) 'features': features!,
+      };
+}
+
+/// All available features.
+///
+/// Setting each one to true will enable that specific analysis for the input.
+class AnnotateTextRequestFeatures {
+  /// Classify the full document into categories.
+  ///
+  /// Optional.
+  core.bool? classifyText;
+
+  /// Extract document-level sentiment.
+  ///
+  /// Optional.
+  core.bool? extractDocumentSentiment;
+
+  /// Extract entities.
+  ///
+  /// Optional.
+  core.bool? extractEntities;
+
+  /// Moderate the document for harmful and sensitive categories.
+  ///
+  /// Optional.
+  core.bool? moderateText;
+
+  AnnotateTextRequestFeatures({
+    this.classifyText,
+    this.extractDocumentSentiment,
+    this.extractEntities,
+    this.moderateText,
+  });
+
+  AnnotateTextRequestFeatures.fromJson(core.Map json_)
+      : this(
+          classifyText: json_.containsKey('classifyText')
+              ? json_['classifyText'] as core.bool
+              : null,
+          extractDocumentSentiment:
+              json_.containsKey('extractDocumentSentiment')
+                  ? json_['extractDocumentSentiment'] as core.bool
+                  : null,
+          extractEntities: json_.containsKey('extractEntities')
+              ? json_['extractEntities'] as core.bool
+              : null,
+          moderateText: json_.containsKey('moderateText')
+              ? json_['moderateText'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (classifyText != null) 'classifyText': classifyText!,
+        if (extractDocumentSentiment != null)
+          'extractDocumentSentiment': extractDocumentSentiment!,
+        if (extractEntities != null) 'extractEntities': extractEntities!,
+        if (moderateText != null) 'moderateText': moderateText!,
       };
 }
 
@@ -888,63 +945,6 @@ class EntityMention {
         if (sentiment != null) 'sentiment': sentiment!,
         if (text != null) 'text': text!,
         if (type != null) 'type': type!,
-      };
-}
-
-/// All available features.
-///
-/// Setting each one to true will enable that specific analysis for the input.
-class Features {
-  /// Classify the full document into categories.
-  ///
-  /// Optional.
-  core.bool? classifyText;
-
-  /// Extract document-level sentiment.
-  ///
-  /// Optional.
-  core.bool? extractDocumentSentiment;
-
-  /// Extract entities.
-  ///
-  /// Optional.
-  core.bool? extractEntities;
-
-  /// Moderate the document for harmful and sensitive categories.
-  ///
-  /// Optional.
-  core.bool? moderateText;
-
-  Features({
-    this.classifyText,
-    this.extractDocumentSentiment,
-    this.extractEntities,
-    this.moderateText,
-  });
-
-  Features.fromJson(core.Map json_)
-      : this(
-          classifyText: json_.containsKey('classifyText')
-              ? json_['classifyText'] as core.bool
-              : null,
-          extractDocumentSentiment:
-              json_.containsKey('extractDocumentSentiment')
-                  ? json_['extractDocumentSentiment'] as core.bool
-                  : null,
-          extractEntities: json_.containsKey('extractEntities')
-              ? json_['extractEntities'] as core.bool
-              : null,
-          moderateText: json_.containsKey('moderateText')
-              ? json_['moderateText'] as core.bool
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (classifyText != null) 'classifyText': classifyText!,
-        if (extractDocumentSentiment != null)
-          'extractDocumentSentiment': extractDocumentSentiment!,
-        if (extractEntities != null) 'extractEntities': extractEntities!,
-        if (moderateText != null) 'moderateText': moderateText!,
       };
 }
 

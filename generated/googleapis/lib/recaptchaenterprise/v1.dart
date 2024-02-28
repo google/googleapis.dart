@@ -391,6 +391,51 @@ class ProjectsFirewallpoliciesResource {
     return GoogleCloudRecaptchaenterpriseV1FirewallPolicy.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
+
+  /// Reorders all firewall policies.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the project to list the policies for, in
+  /// the format `projects/{project}`.
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesResponse>
+      reorder(
+    GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/firewallpolicies:reorder';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesResponse
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsKeysResource {
@@ -991,8 +1036,8 @@ class GoogleCloudRecaptchaenterpriseV1AccountVerificationInfo {
 
   /// Username of the account that is being verified.
   ///
-  /// Deprecated. Customers should now provide the hashed account ID field in
-  /// Event.
+  /// Deprecated. Customers should now provide the `account_id` field in
+  /// `event.user_info`.
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
   )
@@ -1703,6 +1748,11 @@ class GoogleCloudRecaptchaenterpriseV1FirewallAction {
   /// The user will get an HTTP error code.
   GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction? block;
 
+  /// This action will inject reCAPTCHA JavaScript code into the HTML page
+  /// returned by the site backend.
+  GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptAction?
+      includeRecaptchaScript;
+
   /// This action will redirect the request to a ReCaptcha interstitial to
   /// attach a token.
   GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction? redirect;
@@ -1718,6 +1768,7 @@ class GoogleCloudRecaptchaenterpriseV1FirewallAction {
   GoogleCloudRecaptchaenterpriseV1FirewallAction({
     this.allow,
     this.block,
+    this.includeRecaptchaScript,
     this.redirect,
     this.setHeader,
     this.substitute,
@@ -1734,6 +1785,11 @@ class GoogleCloudRecaptchaenterpriseV1FirewallAction {
               ? GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction
                   .fromJson(
                       json_['block'] as core.Map<core.String, core.dynamic>)
+              : null,
+          includeRecaptchaScript: json_.containsKey('includeRecaptchaScript')
+              ? GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptAction
+                  .fromJson(json_['includeRecaptchaScript']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           redirect: json_.containsKey('redirect')
               ? GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction
@@ -1755,6 +1811,8 @@ class GoogleCloudRecaptchaenterpriseV1FirewallAction {
   core.Map<core.String, core.dynamic> toJson() => {
         if (allow != null) 'allow': allow!,
         if (block != null) 'block': block!,
+        if (includeRecaptchaScript != null)
+          'includeRecaptchaScript': includeRecaptchaScript!,
         if (redirect != null) 'redirect': redirect!,
         if (setHeader != null) 'setHeader': setHeader!,
         if (substitute != null) 'substitute': substitute!,
@@ -1767,6 +1825,15 @@ typedef GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction = $Empty;
 /// A block action serves an HTTP error code a prevents the request from hitting
 /// the backend.
 typedef GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction = $Empty;
+
+/// An include reCAPTCHA script action involves injecting reCAPTCHA JavaScript
+/// code into the HTML returned by the site backend.
+///
+/// This reCAPTCHA script is tasked with collecting user signals on the
+/// requested web page, issuing tokens as a cookie within the site domain, and
+/// enabling their utilization in subsequent page requests.
+typedef GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptAction
+    = $Empty;
 
 /// A redirect action returns a 307 (temporary redirect) response, pointing the
 /// user to a ReCaptcha interstitial page to attach a token.
@@ -2743,10 +2810,20 @@ class GoogleCloudRecaptchaenterpriseV1RelatedAccountGroup {
 
 /// A membership in a group of related accounts.
 class GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership {
-  /// The unique stable hashed user identifier of the member.
+  /// The unique stable account identifier of the member.
   ///
-  /// The identifier corresponds to a `hashed_account_id` provided in a previous
+  /// The identifier corresponds to an `account_id` provided in a previous
   /// `CreateAssessment` or `AnnotateAssessment` call.
+  core.String? accountId;
+
+  /// Deprecated: use `account_id` instead.
+  ///
+  /// The unique stable hashed account identifier of the member. The identifier
+  /// corresponds to a `hashed_account_id` provided in a previous
+  /// `CreateAssessment` or `AnnotateAssessment` call.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? hashedAccountId;
   core.List<core.int> get hashedAccountIdAsBytes =>
       convert.base64.decode(hashedAccountId!);
@@ -2765,6 +2842,7 @@ class GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership {
   core.String? name;
 
   GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership({
+    this.accountId,
     this.hashedAccountId,
     this.name,
   });
@@ -2772,6 +2850,9 @@ class GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership {
   GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership.fromJson(
       core.Map json_)
       : this(
+          accountId: json_.containsKey('accountId')
+              ? json_['accountId'] as core.String
+              : null,
           hashedAccountId: json_.containsKey('hashedAccountId')
               ? json_['hashedAccountId'] as core.String
               : null,
@@ -2779,10 +2860,44 @@ class GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
         if (hashedAccountId != null) 'hashedAccountId': hashedAccountId!,
         if (name != null) 'name': name!,
       };
 }
+
+/// The reorder firewall policies request message.
+class GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesRequest {
+  /// A list containing all policy names, in the new order.
+  ///
+  /// Each name is in the format
+  /// `projects/{project}/firewallpolicies/{firewallpolicy}`.
+  ///
+  /// Required.
+  core.List<core.String>? names;
+
+  GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesRequest({
+    this.names,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesRequest.fromJson(
+      core.Map json_)
+      : this(
+          names: json_.containsKey('names')
+              ? (json_['names'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (names != null) 'names': names!,
+      };
+}
+
+/// The reorder firewall policies response message.
+typedef GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesResponse
+    = $Empty;
 
 /// Secret key is used only in legacy reCAPTCHA.
 ///
@@ -2939,12 +3054,26 @@ class GoogleCloudRecaptchaenterpriseV1ScoreMetrics {
 
 /// The request message to search related account group memberships.
 class GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRequest {
-  /// The unique stable hashed user identifier used to search connections.
+  /// The unique stable account identifier used to search connections.
   ///
-  /// The identifier should correspond to a `hashed_account_id` provided in a
-  /// previous `CreateAssessment` or `AnnotateAssessment` call.
+  /// The identifier should correspond to an `account_id` provided in a previous
+  /// `CreateAssessment` or `AnnotateAssessment` call. Either hashed_account_id
+  /// or account_id must be set, but not both.
   ///
   /// Optional.
+  core.String? accountId;
+
+  /// Deprecated: use `account_id` instead.
+  ///
+  /// The unique stable hashed account identifier used to search connections.
+  /// The identifier should correspond to a `hashed_account_id` provided in a
+  /// previous `CreateAssessment` or `AnnotateAssessment` call. Either
+  /// hashed_account_id or account_id must be set, but not both.
+  ///
+  /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? hashedAccountId;
   core.List<core.int> get hashedAccountIdAsBytes =>
       convert.base64.decode(hashedAccountId!);
@@ -2974,6 +3103,7 @@ class GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsReques
   core.String? pageToken;
 
   GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRequest({
+    this.accountId,
     this.hashedAccountId,
     this.pageSize,
     this.pageToken,
@@ -2982,6 +3112,9 @@ class GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsReques
   GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRequest.fromJson(
       core.Map json_)
       : this(
+          accountId: json_.containsKey('accountId')
+              ? json_['accountId'] as core.String
+              : null,
           hashedAccountId: json_.containsKey('hashedAccountId')
               ? json_['hashedAccountId'] as core.String
               : null,
@@ -2994,6 +3127,7 @@ class GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsReques
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
         if (hashedAccountId != null) 'hashedAccountId': hashedAccountId!,
         if (pageSize != null) 'pageSize': pageSize!,
         if (pageToken != null) 'pageToken': pageToken!,
@@ -3872,6 +4006,7 @@ class GoogleCloudRecaptchaenterpriseV1WafSettings {
   /// - "WAF_SERVICE_UNSPECIFIED" : Undefined WAF
   /// - "CA" : Cloud Armor
   /// - "FASTLY" : Fastly
+  /// - "CLOUDFLARE" : Cloudflare
   core.String? wafService;
 
   GoogleCloudRecaptchaenterpriseV1WafSettings({

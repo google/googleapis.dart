@@ -135,6 +135,7 @@ api.Backup buildBackup() {
     o.labels = buildUnnamed2();
     o.name = 'foo';
     o.reconciling = true;
+    o.satisfiesPzs = true;
     o.sizeBytes = 'foo';
     o.state = 'foo';
     o.type = 'foo';
@@ -194,6 +195,7 @@ void checkBackup(api.Backup o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.reconciling!, unittest.isTrue);
+    unittest.expect(o.satisfiesPzs!, unittest.isTrue);
     unittest.expect(
       o.sizeBytes!,
       unittest.equals('foo'),
@@ -341,6 +343,7 @@ api.Cluster buildCluster() {
     o.networkConfig = buildNetworkConfig();
     o.primaryConfig = buildPrimaryConfig();
     o.reconciling = true;
+    o.satisfiesPzs = true;
     o.secondaryConfig = buildSecondaryConfig();
     o.sslConfig = buildSslConfig();
     o.state = 'foo';
@@ -399,6 +402,7 @@ void checkCluster(api.Cluster o) {
     checkNetworkConfig(o.networkConfig!);
     checkPrimaryConfig(o.primaryConfig!);
     unittest.expect(o.reconciling!, unittest.isTrue);
+    unittest.expect(o.satisfiesPzs!, unittest.isTrue);
     checkSecondaryConfig(o.secondaryConfig!);
     checkSslConfig(o.sslConfig!);
     unittest.expect(
@@ -1015,6 +1019,7 @@ api.Instance buildInstance() {
     o.queryInsightsConfig = buildQueryInsightsInstanceConfig();
     o.readPoolConfig = buildReadPoolConfig();
     o.reconciling = true;
+    o.satisfiesPzs = true;
     o.state = 'foo';
     o.uid = 'foo';
     o.updateTime = 'foo';
@@ -1072,6 +1077,7 @@ void checkInstance(api.Instance o) {
     checkQueryInsightsInstanceConfig(o.queryInsightsConfig!);
     checkReadPoolConfig(o.readPoolConfig!);
     unittest.expect(o.reconciling!, unittest.isTrue);
+    unittest.expect(o.satisfiesPzs!, unittest.isTrue);
     unittest.expect(
       o.state!,
       unittest.equals('foo'),

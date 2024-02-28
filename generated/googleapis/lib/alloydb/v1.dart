@@ -2365,6 +2365,11 @@ class Backup {
   /// Output only.
   core.bool? reconciling;
 
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzs;
+
   /// The size of the backup in bytes.
   ///
   /// Output only.
@@ -2422,6 +2427,7 @@ class Backup {
     this.labels,
     this.name,
     this.reconciling,
+    this.satisfiesPzs,
     this.sizeBytes,
     this.state,
     this.type,
@@ -2489,6 +2495,9 @@ class Backup {
           reconciling: json_.containsKey('reconciling')
               ? json_['reconciling'] as core.bool
               : null,
+          satisfiesPzs: json_.containsKey('satisfiesPzs')
+              ? json_['satisfiesPzs'] as core.bool
+              : null,
           sizeBytes: json_.containsKey('sizeBytes')
               ? json_['sizeBytes'] as core.String
               : null,
@@ -2518,6 +2527,7 @@ class Backup {
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (reconciling != null) 'reconciling': reconciling!,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (sizeBytes != null) 'sizeBytes': sizeBytes!,
         if (state != null) 'state': state!,
         if (type != null) 'type': type!,
@@ -2751,6 +2761,11 @@ class Cluster {
   /// Output only.
   core.bool? reconciling;
 
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzs;
+
   /// Cross Region replication config specific to SECONDARY cluster.
   SecondaryConfig? secondaryConfig;
 
@@ -2820,6 +2835,7 @@ class Cluster {
     this.networkConfig,
     this.primaryConfig,
     this.reconciling,
+    this.satisfiesPzs,
     this.secondaryConfig,
     this.sslConfig,
     this.state,
@@ -2909,6 +2925,9 @@ class Cluster {
           reconciling: json_.containsKey('reconciling')
               ? json_['reconciling'] as core.bool
               : null,
+          satisfiesPzs: json_.containsKey('satisfiesPzs')
+              ? json_['satisfiesPzs'] as core.bool
+              : null,
           secondaryConfig: json_.containsKey('secondaryConfig')
               ? SecondaryConfig.fromJson(json_['secondaryConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -2950,6 +2969,7 @@ class Cluster {
         if (networkConfig != null) 'networkConfig': networkConfig!,
         if (primaryConfig != null) 'primaryConfig': primaryConfig!,
         if (reconciling != null) 'reconciling': reconciling!,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (secondaryConfig != null) 'secondaryConfig': secondaryConfig!,
         if (sslConfig != null) 'sslConfig': sslConfig!,
         if (state != null) 'state': state!,
@@ -3600,6 +3620,11 @@ class Instance {
   /// Output only.
   core.bool? reconciling;
 
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzs;
+
   /// The current serving state of the instance.
   ///
   /// Output only.
@@ -3659,6 +3684,7 @@ class Instance {
     this.queryInsightsConfig,
     this.readPoolConfig,
     this.reconciling,
+    this.satisfiesPzs,
     this.state,
     this.uid,
     this.updateTime,
@@ -3742,6 +3768,9 @@ class Instance {
           reconciling: json_.containsKey('reconciling')
               ? json_['reconciling'] as core.bool
               : null,
+          satisfiesPzs: json_.containsKey('satisfiesPzs')
+              ? json_['satisfiesPzs'] as core.bool
+              : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
           uid: json_.containsKey('uid') ? json_['uid'] as core.String : null,
@@ -3775,6 +3804,7 @@ class Instance {
           'queryInsightsConfig': queryInsightsConfig!,
         if (readPoolConfig != null) 'readPoolConfig': readPoolConfig!,
         if (reconciling != null) 'reconciling': reconciling!,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (state != null) 'state': state!,
         if (uid != null) 'uid': uid!,
         if (updateTime != null) 'updateTime': updateTime!,
@@ -4117,7 +4147,7 @@ class NetworkConfig {
   /// "projects/{project_number}/global/networks/{network_id}". This is required
   /// to create a cluster.
   ///
-  /// Required.
+  /// Optional.
   core.String? network;
 
   NetworkConfig({

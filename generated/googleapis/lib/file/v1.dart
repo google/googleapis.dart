@@ -713,8 +713,8 @@ class ProjectsLocationsInstancesResource {
   /// Request parameters:
   ///
   /// [name] - Required.
-  /// projects/{project_id}/locations/{location_id}/instances/{instance_id}. The
-  /// resource name of the instance, in the format
+  /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`.
+  /// The resource name of the instance, in the format
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
   ///
@@ -1214,6 +1214,11 @@ class Backup {
   /// Reserved for future use.
   ///
   /// Output only.
+  core.bool? satisfiesPzi;
+
+  /// Reserved for future use.
+  ///
+  /// Output only.
   core.bool? satisfiesPzs;
 
   /// Name of the file share in the source Filestore instance that the backup is
@@ -1281,6 +1286,7 @@ class Backup {
     this.kmsKey,
     this.labels,
     this.name,
+    this.satisfiesPzi,
     this.satisfiesPzs,
     this.sourceFileShare,
     this.sourceInstance,
@@ -1315,6 +1321,9 @@ class Backup {
                 )
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          satisfiesPzi: json_.containsKey('satisfiesPzi')
+              ? json_['satisfiesPzi'] as core.bool
+              : null,
           satisfiesPzs: json_.containsKey('satisfiesPzs')
               ? json_['satisfiesPzs'] as core.bool
               : null,
@@ -1342,6 +1351,7 @@ class Backup {
         if (kmsKey != null) 'kmsKey': kmsKey!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
+        if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
         if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (sourceFileShare != null) 'sourceFileShare': sourceFileShare!,
         if (sourceInstance != null) 'sourceInstance': sourceInstance!,
@@ -1370,7 +1380,13 @@ class FileShareConfig {
   /// Filestore defines 1 GB as 1024^3 bytes.
   core.String? capacityGb;
 
-  /// The name of the file share (must be 16 characters or less).
+  /// The name of the file share.
+  ///
+  /// Must use 1-16 characters for the basic service tier and 1-63 characters
+  /// for all other service tiers. Must use lowercase letters, numbers, or
+  /// underscores `[a-z0-9_]`. Must start with a letter. Immutable.
+  ///
+  /// Required.
   core.String? name;
 
   /// Nfs Export Options.
@@ -1454,6 +1470,11 @@ class Instance {
   /// Reserved for future use.
   ///
   /// Output only.
+  core.bool? satisfiesPzi;
+
+  /// Reserved for future use.
+  ///
+  /// Output only.
   core.bool? satisfiesPzs;
 
   /// The instance state.
@@ -1519,6 +1540,7 @@ class Instance {
     this.labels,
     this.name,
     this.networks,
+    this.satisfiesPzi,
     this.satisfiesPzs,
     this.state,
     this.statusMessage,
@@ -1559,6 +1581,9 @@ class Instance {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          satisfiesPzi: json_.containsKey('satisfiesPzi')
+              ? json_['satisfiesPzi'] as core.bool
+              : null,
           satisfiesPzs: json_.containsKey('satisfiesPzs')
               ? json_['satisfiesPzs'] as core.bool
               : null,
@@ -1584,6 +1609,7 @@ class Instance {
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (networks != null) 'networks': networks!,
+        if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
         if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (state != null) 'state': state!,
         if (statusMessage != null) 'statusMessage': statusMessage!,
@@ -2084,7 +2110,7 @@ class RestoreInstanceRequest {
 class RevertInstanceRequest {
   /// The snapshot resource ID, in the format 'my-snapshot', where the specified
   /// ID is the {snapshot_id} of the fully qualified name like
-  /// projects/{project_id}/locations/{location_id}/instances/{instance_id}/snapshots/{snapshot_id}
+  /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}/snapshots/{snapshot_id}`
   ///
   /// Required.
   core.String? targetSnapshotId;

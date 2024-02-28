@@ -323,7 +323,7 @@ class ProjectsLocationsClustersResource {
   /// `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}/certificateAuthority`
   /// where `location_id` refers to a GCP region.
   /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+$`.
+  /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+/certificateAuthority$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -343,7 +343,7 @@ class ProjectsLocationsClustersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/certificateAuthority';
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
 
     final response_ = await _requester.request(
       url_,
@@ -1271,7 +1271,8 @@ class Cluster {
   /// Required.
   core.int? shardCount;
 
-  /// Redis memory size in GB for the entire cluster.
+  /// Redis memory size in GB for the entire cluster rounded up to the next
+  /// integer.
   ///
   /// Output only.
   core.int? sizeGb;
@@ -1796,7 +1797,8 @@ class Instance {
   /// If not provided, latest supported version will be used. Currently, the
   /// supported values are: * `REDIS_3_2` for Redis 3.2 compatibility *
   /// `REDIS_4_0` for Redis 4.0 compatibility (default) * `REDIS_5_0` for Redis
-  /// 5.0 compatibility * `REDIS_6_X` for Redis 6.x compatibility
+  /// 5.0 compatibility * `REDIS_6_X` for Redis 6.x compatibility * `REDIS_7_0`
+  /// for Redis 7.0 compatibility
   ///
   /// Optional.
   core.String? redisVersion;
@@ -1826,8 +1828,10 @@ class Instance {
 
   /// Reserved for future use.
   ///
-  /// Zone Separation compliance state of the instance. Field name and
-  /// documentation is obfuscated according to go/zs-resource-status.
+  /// Optional. Output only.
+  core.bool? satisfiesPzi;
+
+  /// Reserved for future use.
   ///
   /// Optional. Output only.
   core.bool? satisfiesPzs;
@@ -1928,6 +1932,7 @@ class Instance {
     this.redisVersion,
     this.replicaCount,
     this.reservedIpRange,
+    this.satisfiesPzi,
     this.satisfiesPzs,
     this.secondaryIpRange,
     this.serverCaCerts,
@@ -2038,6 +2043,9 @@ class Instance {
           reservedIpRange: json_.containsKey('reservedIpRange')
               ? json_['reservedIpRange'] as core.String
               : null,
+          satisfiesPzi: json_.containsKey('satisfiesPzi')
+              ? json_['satisfiesPzi'] as core.bool
+              : null,
           satisfiesPzs: json_.containsKey('satisfiesPzs')
               ? json_['satisfiesPzs'] as core.bool
               : null,
@@ -2101,6 +2109,7 @@ class Instance {
         if (redisVersion != null) 'redisVersion': redisVersion!,
         if (replicaCount != null) 'replicaCount': replicaCount!,
         if (reservedIpRange != null) 'reservedIpRange': reservedIpRange!,
+        if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
         if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (secondaryIpRange != null) 'secondaryIpRange': secondaryIpRange!,
         if (serverCaCerts != null) 'serverCaCerts': serverCaCerts!,

@@ -355,6 +355,8 @@ class Channel {
   /// - "CANARY_ASAN"
   /// - "ALL"
   /// - "EXTENDED"
+  /// - "LTS" : The Long-term support channel for ChromeOS.
+  /// - "LTC" : The Long-term support candidate channel for ChromeOS.
   core.String? channelType;
 
   /// Channel name.

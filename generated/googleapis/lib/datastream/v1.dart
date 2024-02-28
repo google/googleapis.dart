@@ -1760,10 +1760,14 @@ class BackfillAllStrategy {
   /// PostgreSQL data source objects to avoid backfilling.
   PostgresqlRdbms? postgresqlExcludedObjects;
 
+  /// SQLServer data source objects to avoid backfilling
+  SqlServerRdbms? sqlServerExcludedObjects;
+
   BackfillAllStrategy({
     this.mysqlExcludedObjects,
     this.oracleExcludedObjects,
     this.postgresqlExcludedObjects,
+    this.sqlServerExcludedObjects,
   });
 
   BackfillAllStrategy.fromJson(core.Map json_)
@@ -1781,6 +1785,11 @@ class BackfillAllStrategy {
                   ? PostgresqlRdbms.fromJson(json_['postgresqlExcludedObjects']
                       as core.Map<core.String, core.dynamic>)
                   : null,
+          sqlServerExcludedObjects:
+              json_.containsKey('sqlServerExcludedObjects')
+                  ? SqlServerRdbms.fromJson(json_['sqlServerExcludedObjects']
+                      as core.Map<core.String, core.dynamic>)
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1790,6 +1799,8 @@ class BackfillAllStrategy {
           'oracleExcludedObjects': oracleExcludedObjects!,
         if (postgresqlExcludedObjects != null)
           'postgresqlExcludedObjects': postgresqlExcludedObjects!,
+        if (sqlServerExcludedObjects != null)
+          'sqlServerExcludedObjects': sqlServerExcludedObjects!,
       };
 }
 
@@ -2025,6 +2036,9 @@ class ConnectionProfile {
   /// Private connectivity.
   PrivateConnectivity? privateConnectivity;
 
+  /// SQLServer Connection Profile configuration.
+  SqlServerProfile? sqlServerProfile;
+
   /// Static Service IP connectivity.
   StaticServiceIpConnectivity? staticServiceIpConnectivity;
 
@@ -2045,6 +2059,7 @@ class ConnectionProfile {
     this.oracleProfile,
     this.postgresqlProfile,
     this.privateConnectivity,
+    this.sqlServerProfile,
     this.staticServiceIpConnectivity,
     this.updateTime,
   });
@@ -2095,6 +2110,10 @@ class ConnectionProfile {
               ? PrivateConnectivity.fromJson(json_['privateConnectivity']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          sqlServerProfile: json_.containsKey('sqlServerProfile')
+              ? SqlServerProfile.fromJson(json_['sqlServerProfile']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           staticServiceIpConnectivity:
               json_.containsKey('staticServiceIpConnectivity')
                   ? StaticServiceIpConnectivity.fromJson(
@@ -2120,6 +2139,7 @@ class ConnectionProfile {
         if (postgresqlProfile != null) 'postgresqlProfile': postgresqlProfile!,
         if (privateConnectivity != null)
           'privateConnectivity': privateConnectivity!,
+        if (sqlServerProfile != null) 'sqlServerProfile': sqlServerProfile!,
         if (staticServiceIpConnectivity != null)
           'staticServiceIpConnectivity': staticServiceIpConnectivity!,
         if (updateTime != null) 'updateTime': updateTime!,
@@ -3625,6 +3645,27 @@ class OracleSchema {
       };
 }
 
+/// Oracle SCN position
+class OracleScnPosition {
+  /// SCN number from where Logs will be read
+  ///
+  /// Required.
+  core.String? scn;
+
+  OracleScnPosition({
+    this.scn,
+  });
+
+  OracleScnPosition.fromJson(core.Map json_)
+      : this(
+          scn: json_.containsKey('scn') ? json_['scn'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (scn != null) 'scn': scn!,
+      };
+}
+
 /// Oracle data source configuration
 class OracleSourceConfig {
   /// Drop large object values.
@@ -3649,8 +3690,6 @@ class OracleSourceConfig {
   core.int? maxConcurrentCdcTasks;
 
   /// Stream large object values.
-  ///
-  /// NOTE: This feature is currently experimental.
   StreamLargeObjects? streamLargeObjects;
 
   OracleSourceConfig({
@@ -4346,11 +4385,15 @@ class SourceConfig {
   /// Required.
   core.String? sourceConnectionProfile;
 
+  /// SQLServer data source configuration.
+  SqlServerSourceConfig? sqlServerSourceConfig;
+
   SourceConfig({
     this.mysqlSourceConfig,
     this.oracleSourceConfig,
     this.postgresqlSourceConfig,
     this.sourceConnectionProfile,
+    this.sqlServerSourceConfig,
   });
 
   SourceConfig.fromJson(core.Map json_)
@@ -4370,6 +4413,10 @@ class SourceConfig {
           sourceConnectionProfile: json_.containsKey('sourceConnectionProfile')
               ? json_['sourceConnectionProfile'] as core.String
               : null,
+          sqlServerSourceConfig: json_.containsKey('sqlServerSourceConfig')
+              ? SqlServerSourceConfig.fromJson(json_['sqlServerSourceConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4380,6 +4427,8 @@ class SourceConfig {
           'postgresqlSourceConfig': postgresqlSourceConfig!,
         if (sourceConnectionProfile != null)
           'sourceConnectionProfile': sourceConnectionProfile!,
+        if (sqlServerSourceConfig != null)
+          'sqlServerSourceConfig': sqlServerSourceConfig!,
       };
 }
 
@@ -4417,10 +4466,14 @@ class SourceObjectIdentifier {
   /// PostgreSQL data source object identifier.
   PostgresqlObjectIdentifier? postgresqlIdentifier;
 
+  /// SQLServer data source object identifier.
+  SqlServerObjectIdentifier? sqlServerIdentifier;
+
   SourceObjectIdentifier({
     this.mysqlIdentifier,
     this.oracleIdentifier,
     this.postgresqlIdentifier,
+    this.sqlServerIdentifier,
   });
 
   SourceObjectIdentifier.fromJson(core.Map json_)
@@ -4438,6 +4491,10 @@ class SourceObjectIdentifier {
                   json_['postgresqlIdentifier']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          sqlServerIdentifier: json_.containsKey('sqlServerIdentifier')
+              ? SqlServerObjectIdentifier.fromJson(json_['sqlServerIdentifier']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4445,6 +4502,8 @@ class SourceObjectIdentifier {
         if (oracleIdentifier != null) 'oracleIdentifier': oracleIdentifier!,
         if (postgresqlIdentifier != null)
           'postgresqlIdentifier': postgresqlIdentifier!,
+        if (sqlServerIdentifier != null)
+          'sqlServerIdentifier': sqlServerIdentifier!,
       };
 }
 
@@ -4453,8 +4512,12 @@ class SpecificStartPosition {
   /// MySQL specific log position to start replicating from.
   MysqlLogPosition? mysqlLogPosition;
 
+  /// Oracle SCN to start replicating from.
+  OracleScnPosition? oracleScnPosition;
+
   SpecificStartPosition({
     this.mysqlLogPosition,
+    this.oracleScnPosition,
   });
 
   SpecificStartPosition.fromJson(core.Map json_)
@@ -4463,10 +4526,291 @@ class SpecificStartPosition {
               ? MysqlLogPosition.fromJson(json_['mysqlLogPosition']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          oracleScnPosition: json_.containsKey('oracleScnPosition')
+              ? OracleScnPosition.fromJson(json_['oracleScnPosition']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (mysqlLogPosition != null) 'mysqlLogPosition': mysqlLogPosition!,
+        if (oracleScnPosition != null) 'oracleScnPosition': oracleScnPosition!,
+      };
+}
+
+/// SQLServer Column.
+class SqlServerColumn {
+  /// Column name.
+  core.String? column;
+
+  /// The SQLServer data type.
+  core.String? dataType;
+
+  /// Column length.
+  core.int? length;
+
+  /// Whether or not the column can accept a null value.
+  core.bool? nullable;
+
+  /// The ordinal position of the column in the table.
+  core.int? ordinalPosition;
+
+  /// Column precision.
+  core.int? precision;
+
+  /// Whether or not the column represents a primary key.
+  core.bool? primaryKey;
+
+  /// Column scale.
+  core.int? scale;
+
+  SqlServerColumn({
+    this.column,
+    this.dataType,
+    this.length,
+    this.nullable,
+    this.ordinalPosition,
+    this.precision,
+    this.primaryKey,
+    this.scale,
+  });
+
+  SqlServerColumn.fromJson(core.Map json_)
+      : this(
+          column: json_.containsKey('column')
+              ? json_['column'] as core.String
+              : null,
+          dataType: json_.containsKey('dataType')
+              ? json_['dataType'] as core.String
+              : null,
+          length:
+              json_.containsKey('length') ? json_['length'] as core.int : null,
+          nullable: json_.containsKey('nullable')
+              ? json_['nullable'] as core.bool
+              : null,
+          ordinalPosition: json_.containsKey('ordinalPosition')
+              ? json_['ordinalPosition'] as core.int
+              : null,
+          precision: json_.containsKey('precision')
+              ? json_['precision'] as core.int
+              : null,
+          primaryKey: json_.containsKey('primaryKey')
+              ? json_['primaryKey'] as core.bool
+              : null,
+          scale: json_.containsKey('scale') ? json_['scale'] as core.int : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (column != null) 'column': column!,
+        if (dataType != null) 'dataType': dataType!,
+        if (length != null) 'length': length!,
+        if (nullable != null) 'nullable': nullable!,
+        if (ordinalPosition != null) 'ordinalPosition': ordinalPosition!,
+        if (precision != null) 'precision': precision!,
+        if (primaryKey != null) 'primaryKey': primaryKey!,
+        if (scale != null) 'scale': scale!,
+      };
+}
+
+/// SQLServer data source object identifier.
+typedef SqlServerObjectIdentifier = $ObjectIdentifier;
+
+/// SQLServer database profile
+class SqlServerProfile {
+  /// Database for the SQLServer connection.
+  ///
+  /// Required.
+  core.String? database;
+
+  /// Hostname for the SQLServer connection.
+  ///
+  /// Required.
+  core.String? hostname;
+
+  /// Password for the SQLServer connection.
+  ///
+  /// Required.
+  core.String? password;
+
+  /// Port for the SQLServer connection, default value is 1433.
+  core.int? port;
+
+  /// Username for the SQLServer connection.
+  ///
+  /// Required.
+  core.String? username;
+
+  SqlServerProfile({
+    this.database,
+    this.hostname,
+    this.password,
+    this.port,
+    this.username,
+  });
+
+  SqlServerProfile.fromJson(core.Map json_)
+      : this(
+          database: json_.containsKey('database')
+              ? json_['database'] as core.String
+              : null,
+          hostname: json_.containsKey('hostname')
+              ? json_['hostname'] as core.String
+              : null,
+          password: json_.containsKey('password')
+              ? json_['password'] as core.String
+              : null,
+          port: json_.containsKey('port') ? json_['port'] as core.int : null,
+          username: json_.containsKey('username')
+              ? json_['username'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (database != null) 'database': database!,
+        if (hostname != null) 'hostname': hostname!,
+        if (password != null) 'password': password!,
+        if (port != null) 'port': port!,
+        if (username != null) 'username': username!,
+      };
+}
+
+/// SQLServer database structure.
+class SqlServerRdbms {
+  /// SQLServer schemas in the database server.
+  core.List<SqlServerSchema>? schemas;
+
+  SqlServerRdbms({
+    this.schemas,
+  });
+
+  SqlServerRdbms.fromJson(core.Map json_)
+      : this(
+          schemas: json_.containsKey('schemas')
+              ? (json_['schemas'] as core.List)
+                  .map((value) => SqlServerSchema.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (schemas != null) 'schemas': schemas!,
+      };
+}
+
+/// SQLServer schema.
+class SqlServerSchema {
+  /// Schema name.
+  core.String? schema;
+
+  /// Tables in the schema.
+  core.List<SqlServerTable>? tables;
+
+  SqlServerSchema({
+    this.schema,
+    this.tables,
+  });
+
+  SqlServerSchema.fromJson(core.Map json_)
+      : this(
+          schema: json_.containsKey('schema')
+              ? json_['schema'] as core.String
+              : null,
+          tables: json_.containsKey('tables')
+              ? (json_['tables'] as core.List)
+                  .map((value) => SqlServerTable.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (schema != null) 'schema': schema!,
+        if (tables != null) 'tables': tables!,
+      };
+}
+
+/// SQLServer data source configuration
+class SqlServerSourceConfig {
+  /// SQLServer objects to exclude from the stream.
+  SqlServerRdbms? excludeObjects;
+
+  /// SQLServer objects to include in the stream.
+  SqlServerRdbms? includeObjects;
+
+  /// Max concurrent backfill tasks.
+  core.int? maxConcurrentBackfillTasks;
+
+  /// Max concurrent CDC tasks.
+  core.int? maxConcurrentCdcTasks;
+
+  SqlServerSourceConfig({
+    this.excludeObjects,
+    this.includeObjects,
+    this.maxConcurrentBackfillTasks,
+    this.maxConcurrentCdcTasks,
+  });
+
+  SqlServerSourceConfig.fromJson(core.Map json_)
+      : this(
+          excludeObjects: json_.containsKey('excludeObjects')
+              ? SqlServerRdbms.fromJson(json_['excludeObjects']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          includeObjects: json_.containsKey('includeObjects')
+              ? SqlServerRdbms.fromJson(json_['includeObjects']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          maxConcurrentBackfillTasks:
+              json_.containsKey('maxConcurrentBackfillTasks')
+                  ? json_['maxConcurrentBackfillTasks'] as core.int
+                  : null,
+          maxConcurrentCdcTasks: json_.containsKey('maxConcurrentCdcTasks')
+              ? json_['maxConcurrentCdcTasks'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (excludeObjects != null) 'excludeObjects': excludeObjects!,
+        if (includeObjects != null) 'includeObjects': includeObjects!,
+        if (maxConcurrentBackfillTasks != null)
+          'maxConcurrentBackfillTasks': maxConcurrentBackfillTasks!,
+        if (maxConcurrentCdcTasks != null)
+          'maxConcurrentCdcTasks': maxConcurrentCdcTasks!,
+      };
+}
+
+/// SQLServer table.
+class SqlServerTable {
+  /// SQLServer columns in the schema.
+  ///
+  /// When unspecified as part of include/exclude objects, includes/excludes
+  /// everything.
+  core.List<SqlServerColumn>? columns;
+
+  /// Table name.
+  core.String? table;
+
+  SqlServerTable({
+    this.columns,
+    this.table,
+  });
+
+  SqlServerTable.fromJson(core.Map json_)
+      : this(
+          columns: json_.containsKey('columns')
+              ? (json_['columns'] as core.List)
+                  .map((value) => SqlServerColumn.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          table:
+              json_.containsKey('table') ? json_['table'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (columns != null) 'columns': columns!,
+        if (table != null) 'table': table!,
       };
 }
 

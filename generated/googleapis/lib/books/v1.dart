@@ -1468,6 +1468,8 @@ class MylibraryAnnotationsResource {
   ///
   /// [volumeId] - Volume id to get the summary for.
   ///
+  /// [source] - Optional. String to identify the originator of this request.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1481,6 +1483,7 @@ class MylibraryAnnotationsResource {
   async.Future<AnnotationsSummary> summary(
     core.List<core.String> layerIds,
     core.String volumeId, {
+    core.String? source,
     core.String? $fields,
   }) async {
     if (layerIds.isEmpty) {
@@ -1489,6 +1492,7 @@ class MylibraryAnnotationsResource {
     final queryParams_ = <core.String, core.List<core.String>>{
       'layerIds': layerIds,
       'volumeId': [volumeId],
+      if (source != null) 'source': [source],
       if ($fields != null) 'fields': [$fields],
     };
 

@@ -405,6 +405,43 @@ class ProjectsLocationsInstancesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Load auth info for a server.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the server.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LoadInstanceAuthInfoResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LoadInstanceAuthInfoResponse> loadAuthInfo(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':loadAuthInfo';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return LoadInstanceAuthInfoResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Update details of a single server.
   ///
   /// [request] - The metadata request object.
@@ -2479,6 +2516,14 @@ class Instance {
   /// Output only.
   core.bool? interactiveSerialConsoleEnabled;
 
+  /// Name of the KMS crypto key version used to encrypt the initial passwords.
+  ///
+  /// The key has to have ASYMMETRIC_DECRYPT purpose. Format is
+  /// `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}/cryptoKeyVersions/{version}`.
+  ///
+  /// Optional.
+  core.String? kmsKeyVersion;
+
   /// Labels as key value pairs.
   core.Map<core.String, core.String>? labels;
 
@@ -2541,6 +2586,11 @@ class Instance {
   /// Immutable.
   core.String? pod;
 
+  /// List of SSH Keys used during instance provisioning.
+  ///
+  /// Optional.
+  core.List<core.String>? sshKeys;
+
   /// The state of the server.
   ///
   /// Output only.
@@ -2580,6 +2630,7 @@ class Instance {
     this.hyperthreadingEnabled,
     this.id,
     this.interactiveSerialConsoleEnabled,
+    this.kmsKeyVersion,
     this.labels,
     this.logicalInterfaces,
     this.loginInfo,
@@ -2590,6 +2641,7 @@ class Instance {
     this.networks,
     this.osImage,
     this.pod,
+    this.sshKeys,
     this.state,
     this.updateTime,
     this.volumes,
@@ -2612,6 +2664,9 @@ class Instance {
               json_.containsKey('interactiveSerialConsoleEnabled')
                   ? json_['interactiveSerialConsoleEnabled'] as core.bool
                   : null,
+          kmsKeyVersion: json_.containsKey('kmsKeyVersion')
+              ? json_['kmsKeyVersion'] as core.String
+              : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -2653,6 +2708,11 @@ class Instance {
               ? json_['osImage'] as core.String
               : null,
           pod: json_.containsKey('pod') ? json_['pod'] as core.String : null,
+          sshKeys: json_.containsKey('sshKeys')
+              ? (json_['sshKeys'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
           updateTime: json_.containsKey('updateTime')
@@ -2677,6 +2737,7 @@ class Instance {
         if (id != null) 'id': id!,
         if (interactiveSerialConsoleEnabled != null)
           'interactiveSerialConsoleEnabled': interactiveSerialConsoleEnabled!,
+        if (kmsKeyVersion != null) 'kmsKeyVersion': kmsKeyVersion!,
         if (labels != null) 'labels': labels!,
         if (logicalInterfaces != null) 'logicalInterfaces': logicalInterfaces!,
         if (loginInfo != null) 'loginInfo': loginInfo!,
@@ -2687,6 +2748,7 @@ class Instance {
         if (networks != null) 'networks': networks!,
         if (osImage != null) 'osImage': osImage!,
         if (pod != null) 'pod': pod!,
+        if (sshKeys != null) 'sshKeys': sshKeys!,
         if (state != null) 'state': state!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (volumes != null) 'volumes': volumes!,
@@ -2722,6 +2784,11 @@ class InstanceConfig {
   ///
   /// [Available types](https://cloud.google.com/bare-metal/docs/bms-planning#server_configurations)
   core.String? instanceType;
+
+  /// Name of the KMS crypto key version used to encrypt the initial passwords.
+  ///
+  /// The key has to have ASYMMETRIC_DECRYPT purpose.
+  core.String? kmsKeyVersion;
 
   /// List of logical interfaces for the instance.
   ///
@@ -2775,6 +2842,7 @@ class InstanceConfig {
     this.hyperthreading,
     this.id,
     this.instanceType,
+    this.kmsKeyVersion,
     this.logicalInterfaces,
     this.name,
     this.networkConfig,
@@ -2800,6 +2868,9 @@ class InstanceConfig {
           id: json_.containsKey('id') ? json_['id'] as core.String : null,
           instanceType: json_.containsKey('instanceType')
               ? json_['instanceType'] as core.String
+              : null,
+          kmsKeyVersion: json_.containsKey('kmsKeyVersion')
+              ? json_['kmsKeyVersion'] as core.String
               : null,
           logicalInterfaces: json_.containsKey('logicalInterfaces')
               ? (json_['logicalInterfaces'] as core.List)
@@ -2839,6 +2910,7 @@ class InstanceConfig {
         if (hyperthreading != null) 'hyperthreading': hyperthreading!,
         if (id != null) 'id': id!,
         if (instanceType != null) 'instanceType': instanceType!,
+        if (kmsKeyVersion != null) 'kmsKeyVersion': kmsKeyVersion!,
         if (logicalInterfaces != null) 'logicalInterfaces': logicalInterfaces!,
         if (name != null) 'name': name!,
         if (networkConfig != null) 'networkConfig': networkConfig!,
@@ -3345,6 +3417,45 @@ class ListVolumesResponse {
       };
 }
 
+/// Response for LoadInstanceAuthInfo.
+class LoadInstanceAuthInfoResponse {
+  /// List of ssh keys.
+  core.List<SSHKey>? sshKeys;
+
+  /// Map of username to the user account info.
+  core.Map<core.String, UserAccount>? userAccounts;
+
+  LoadInstanceAuthInfoResponse({
+    this.sshKeys,
+    this.userAccounts,
+  });
+
+  LoadInstanceAuthInfoResponse.fromJson(core.Map json_)
+      : this(
+          sshKeys: json_.containsKey('sshKeys')
+              ? (json_['sshKeys'] as core.List)
+                  .map((value) => SSHKey.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          userAccounts: json_.containsKey('userAccounts')
+              ? (json_['userAccounts'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    UserAccount.fromJson(
+                        value as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (sshKeys != null) 'sshKeys': sshKeys!,
+        if (userAccounts != null) 'userAccounts': userAccounts!,
+      };
+}
+
 /// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
@@ -3441,7 +3552,7 @@ class Lun {
   /// Display if this LUN can be shared between multiple physical servers.
   core.bool? shareable;
 
-  /// The size of this LUN, in gigabytes.
+  /// The size of this LUN, in GiB.
   core.String? sizeGb;
 
   /// The state of this storage volume.
@@ -4943,6 +5054,35 @@ class SubmitProvisioningConfigResponse {
       };
 }
 
+/// User account provisioned for the customer.
+class UserAccount {
+  /// Encrypted initial password value.
+  core.String? encryptedPassword;
+
+  /// KMS CryptoKey Version used to encrypt the password.
+  core.String? kmsKeyVersion;
+
+  UserAccount({
+    this.encryptedPassword,
+    this.kmsKeyVersion,
+  });
+
+  UserAccount.fromJson(core.Map json_)
+      : this(
+          encryptedPassword: json_.containsKey('encryptedPassword')
+              ? json_['encryptedPassword'] as core.String
+              : null,
+          kmsKeyVersion: json_.containsKey('kmsKeyVersion')
+              ? json_['kmsKeyVersion'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (encryptedPassword != null) 'encryptedPassword': encryptedPassword!,
+        if (kmsKeyVersion != null) 'kmsKeyVersion': kmsKeyVersion!,
+      };
+}
+
 /// A network VRF.
 class VRF {
   /// The name of the VRF.
@@ -5164,6 +5304,8 @@ class Volume {
   /// - "VOLUME_PERFORMANCE_TIER_SHARED" : Regular volumes, shared aggregates.
   /// - "VOLUME_PERFORMANCE_TIER_ASSIGNED" : Assigned aggregates.
   /// - "VOLUME_PERFORMANCE_TIER_HT" : High throughput aggregates.
+  /// - "VOLUME_PERFORMANCE_TIER_QOS2_PERFORMANCE" : QoS 2.0 high performance
+  /// storage.
   core.String? performanceTier;
 
   /// Pod name.
@@ -5411,6 +5553,8 @@ class VolumeConfig {
   /// - "VOLUME_PERFORMANCE_TIER_SHARED" : Regular volumes, shared aggregates.
   /// - "VOLUME_PERFORMANCE_TIER_ASSIGNED" : Assigned aggregates.
   /// - "VOLUME_PERFORMANCE_TIER_HT" : High throughput aggregates.
+  /// - "VOLUME_PERFORMANCE_TIER_QOS2_PERFORMANCE" : QoS 2.0 high performance
+  /// storage.
   core.String? performanceTier;
 
   /// Volume protocol.

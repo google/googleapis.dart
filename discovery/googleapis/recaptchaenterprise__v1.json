@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20231112",
+    "revision": "20240225",
     "rootUrl": "https://recaptchaenterprise.googleapis.com/",
     "servicePath": "",
     "title": "reCAPTCHA Enterprise API",
@@ -316,6 +316,34 @@
                             },
                             "response": {
                                 "$ref": "GoogleCloudRecaptchaenterpriseV1FirewallPolicy"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        },
+                        "reorder": {
+                            "description": "Reorders all firewall policies.",
+                            "flatPath": "v1/projects/{projectsId}/firewallpolicies:reorder",
+                            "httpMethod": "POST",
+                            "id": "recaptchaenterprise.projects.firewallpolicies.reorder",
+                            "parameterOrder": [
+                                "parent"
+                            ],
+                            "parameters": {
+                                "parent": {
+                                    "description": "Required. The name of the project to list the policies for, in the format `projects/{project}`.",
+                                    "location": "path",
+                                    "pattern": "^projects/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+parent}/firewallpolicies:reorder",
+                            "request": {
+                                "$ref": "GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesRequest"
+                            },
+                            "response": {
+                                "$ref": "GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesResponse"
                             },
                             "scopes": [
                                 "https://www.googleapis.com/auth/cloud-platform"
@@ -746,7 +774,7 @@
                 },
                 "username": {
                     "deprecated": true,
-                    "description": "Username of the account that is being verified. Deprecated. Customers should now provide the hashed account ID field in Event.",
+                    "description": "Username of the account that is being verified. Deprecated. Customers should now provide the `account_id` field in `event.user_info`.",
                     "type": "string"
                 }
             },
@@ -1072,6 +1100,10 @@
                     "$ref": "GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction",
                     "description": "This action will deny access to a given page. The user will get an HTTP error code."
                 },
+                "includeRecaptchaScript": {
+                    "$ref": "GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptAction",
+                    "description": "This action will inject reCAPTCHA JavaScript code into the HTML page returned by the site backend."
+                },
                 "redirect": {
                     "$ref": "GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction",
                     "description": "This action will redirect the request to a ReCaptcha interstitial to attach a token."
@@ -1096,6 +1128,12 @@
         "GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction": {
             "description": "A block action serves an HTTP error code a prevents the request from hitting the backend.",
             "id": "GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction",
+            "properties": {},
+            "type": "object"
+        },
+        "GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptAction": {
+            "description": "An include reCAPTCHA script action involves injecting reCAPTCHA JavaScript code into the HTML returned by the site backend. This reCAPTCHA script is tasked with collecting user signals on the requested web page, issuing tokens as a cookie within the site domain, and enabling their utilization in subsequent page requests.",
+            "id": "GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptAction",
             "properties": {},
             "type": "object"
         },
@@ -1539,8 +1577,13 @@
             "description": "A membership in a group of related accounts.",
             "id": "GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership",
             "properties": {
+                "accountId": {
+                    "description": "The unique stable account identifier of the member. The identifier corresponds to an `account_id` provided in a previous `CreateAssessment` or `AnnotateAssessment` call.",
+                    "type": "string"
+                },
                 "hashedAccountId": {
-                    "description": "The unique stable hashed user identifier of the member. The identifier corresponds to a `hashed_account_id` provided in a previous `CreateAssessment` or `AnnotateAssessment` call.",
+                    "deprecated": true,
+                    "description": "Deprecated: use `account_id` instead. The unique stable hashed account identifier of the member. The identifier corresponds to a `hashed_account_id` provided in a previous `CreateAssessment` or `AnnotateAssessment` call.",
                     "format": "byte",
                     "type": "string"
                 },
@@ -1549,6 +1592,26 @@
                     "type": "string"
                 }
             },
+            "type": "object"
+        },
+        "GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesRequest": {
+            "description": "The reorder firewall policies request message.",
+            "id": "GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesRequest",
+            "properties": {
+                "names": {
+                    "description": "Required. A list containing all policy names, in the new order. Each name is in the format `projects/{project}/firewallpolicies/{firewallpolicy}`.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesResponse": {
+            "description": "The reorder firewall policies response message.",
+            "id": "GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesResponse",
+            "properties": {},
             "type": "object"
         },
         "GoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse": {
@@ -1648,8 +1711,13 @@
             "description": "The request message to search related account group memberships.",
             "id": "GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsRequest",
             "properties": {
+                "accountId": {
+                    "description": "Optional. The unique stable account identifier used to search connections. The identifier should correspond to an `account_id` provided in a previous `CreateAssessment` or `AnnotateAssessment` call. Either hashed_account_id or account_id must be set, but not both.",
+                    "type": "string"
+                },
                 "hashedAccountId": {
-                    "description": "Optional. The unique stable hashed user identifier used to search connections. The identifier should correspond to a `hashed_account_id` provided in a previous `CreateAssessment` or `AnnotateAssessment` call.",
+                    "deprecated": true,
+                    "description": "Optional. Deprecated: use `account_id` instead. The unique stable hashed account identifier used to search connections. The identifier should correspond to a `hashed_account_id` provided in a previous `CreateAssessment` or `AnnotateAssessment` call. Either hashed_account_id or account_id must be set, but not both.",
                     "format": "byte",
                     "type": "string"
                 },
@@ -2087,12 +2155,14 @@
                     "enum": [
                         "WAF_SERVICE_UNSPECIFIED",
                         "CA",
-                        "FASTLY"
+                        "FASTLY",
+                        "CLOUDFLARE"
                     ],
                     "enumDescriptions": [
                         "Undefined WAF",
                         "Cloud Armor",
-                        "Fastly"
+                        "Fastly",
+                        "Cloudflare"
                     ],
                     "type": "string"
                 }

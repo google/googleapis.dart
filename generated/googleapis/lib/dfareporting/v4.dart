@@ -15370,6 +15370,12 @@ class ContentCategory {
 /// A Conversion represents when a user successfully performs a desired action
 /// after seeing an ad.
 class Conversion {
+  /// This represents consent for ad user data.
+  /// Possible string values are:
+  /// - "GRANTED" : Granted.
+  /// - "DENIED" : Denied.
+  core.String? adUserDataConsent;
+
   /// Whether this particular request may come from a user under the age of 13,
   /// under COPPA compliance.
   core.bool? childDirectedTreatment;
@@ -15498,6 +15504,7 @@ class Conversion {
   core.double? value;
 
   Conversion({
+    this.adUserDataConsent,
     this.childDirectedTreatment,
     this.customVariables,
     this.dclid,
@@ -15522,6 +15529,9 @@ class Conversion {
 
   Conversion.fromJson(core.Map json_)
       : this(
+          adUserDataConsent: json_.containsKey('adUserDataConsent')
+              ? json_['adUserDataConsent'] as core.String
+              : null,
           childDirectedTreatment: json_.containsKey('childDirectedTreatment')
               ? json_['childDirectedTreatment'] as core.bool
               : null,
@@ -15591,6 +15601,7 @@ class Conversion {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (adUserDataConsent != null) 'adUserDataConsent': adUserDataConsent!,
         if (childDirectedTreatment != null)
           'childDirectedTreatment': childDirectedTreatment!,
         if (customVariables != null) 'customVariables': customVariables!,
@@ -24079,6 +24090,11 @@ class Placement {
   /// ID of the content category assigned to this placement.
   core.String? contentCategoryId;
 
+  /// Conversion domain overrides for a placement.
+  ///
+  /// Optional.
+  PlacementConversionDomainOverride? conversionDomainOverride;
+
   /// Information about the creation of this placement.
   ///
   /// This is a read-only field.
@@ -24283,6 +24299,7 @@ class Placement {
     this.comment,
     this.compatibility,
     this.contentCategoryId,
+    this.conversionDomainOverride,
     this.createInfo,
     this.directorySiteId,
     this.directorySiteIdDimensionValue,
@@ -24359,6 +24376,12 @@ class Placement {
           contentCategoryId: json_.containsKey('contentCategoryId')
               ? json_['contentCategoryId'] as core.String
               : null,
+          conversionDomainOverride:
+              json_.containsKey('conversionDomainOverride')
+                  ? PlacementConversionDomainOverride.fromJson(
+                      json_['conversionDomainOverride']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           createInfo: json_.containsKey('createInfo')
               ? LastModifiedInfo.fromJson(
                   json_['createInfo'] as core.Map<core.String, core.dynamic>)
@@ -24483,6 +24506,8 @@ class Placement {
         if (comment != null) 'comment': comment!,
         if (compatibility != null) 'compatibility': compatibility!,
         if (contentCategoryId != null) 'contentCategoryId': contentCategoryId!,
+        if (conversionDomainOverride != null)
+          'conversionDomainOverride': conversionDomainOverride!,
         if (createInfo != null) 'createInfo': createInfo!,
         if (directorySiteId != null) 'directorySiteId': directorySiteId!,
         if (directorySiteIdDimensionValue != null)
@@ -24580,6 +24605,28 @@ class PlacementAssignment {
         if (placementIdDimensionValue != null)
           'placementIdDimensionValue': placementIdDimensionValue!,
         if (sslRequired != null) 'sslRequired': sslRequired!,
+      };
+}
+
+class PlacementConversionDomainOverride {
+  core.List<PlacementSingleConversionDomain>? conversionDomains;
+
+  PlacementConversionDomainOverride({
+    this.conversionDomains,
+  });
+
+  PlacementConversionDomainOverride.fromJson(core.Map json_)
+      : this(
+          conversionDomains: json_.containsKey('conversionDomains')
+              ? (json_['conversionDomains'] as core.List)
+                  .map((value) => PlacementSingleConversionDomain.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (conversionDomains != null) 'conversionDomains': conversionDomains!,
       };
 }
 
@@ -24926,6 +24973,33 @@ class PlacementGroupsListResponse {
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (placementGroups != null) 'placementGroups': placementGroups!,
+      };
+}
+
+class PlacementSingleConversionDomain {
+  core.String? conversionDomainId;
+  core.String? conversionDomainValue;
+
+  PlacementSingleConversionDomain({
+    this.conversionDomainId,
+    this.conversionDomainValue,
+  });
+
+  PlacementSingleConversionDomain.fromJson(core.Map json_)
+      : this(
+          conversionDomainId: json_.containsKey('conversionDomainId')
+              ? json_['conversionDomainId'] as core.String
+              : null,
+          conversionDomainValue: json_.containsKey('conversionDomainValue')
+              ? json_['conversionDomainValue'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (conversionDomainId != null)
+          'conversionDomainId': conversionDomainId!,
+        if (conversionDomainValue != null)
+          'conversionDomainValue': conversionDomainValue!,
       };
 }
 
@@ -28672,7 +28746,7 @@ class TagSetting {
 
   /// Whether static landing page URLs should be included in the tags.
   ///
-  /// This setting applies only to placements.
+  /// New placements will default to the value set on their site.
   core.bool? includeClickThroughUrls;
 
   /// Whether click-tracking string should be included in the tags.
@@ -29410,6 +29484,7 @@ class UniversalAdId {
   /// - "AD_ID_OFFICIAL"
   /// - "CLEARCAST"
   /// - "DCM"
+  /// - "ARPP"
   core.String? registry;
 
   /// ID value for this creative.

@@ -478,8 +478,8 @@ class TasksResource {
   /// [dueMin] - Lower bound for a task's due date (as a RFC 3339 timestamp) to
   /// filter by. Optional. The default is not to filter by due date.
   ///
-  /// [maxResults] - Maximum number of task lists returned on one page.
-  /// Optional. The default is 20 (max allowed: 100).
+  /// [maxResults] - Maximum number of tasks returned on one page. Optional. The
+  /// default is 20 (max allowed: 100).
   ///
   /// [pageToken] - Token specifying the result page to return. Optional.
   ///

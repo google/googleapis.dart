@@ -6185,6 +6185,14 @@ class ContentRestriction {
   /// Only populated if readOnly is true.
   core.DateTime? restrictionDate;
 
+  /// Whether the content restriction was applied by the system, for example due
+  /// to an esignature.
+  ///
+  /// Users cannot modify or remove system restricted content restrictions.
+  ///
+  /// Output only.
+  core.bool? systemRestricted;
+
   /// The type of the content restriction.
   ///
   /// Currently the only possible value is `globalContentRestriction`.
@@ -6198,6 +6206,7 @@ class ContentRestriction {
     this.reason,
     this.restrictingUser,
     this.restrictionDate,
+    this.systemRestricted,
     this.type,
   });
 
@@ -6219,6 +6228,9 @@ class ContentRestriction {
           restrictionDate: json_.containsKey('restrictionDate')
               ? core.DateTime.parse(json_['restrictionDate'] as core.String)
               : null,
+          systemRestricted: json_.containsKey('systemRestricted')
+              ? json_['systemRestricted'] as core.bool
+              : null,
           type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
@@ -6229,6 +6241,7 @@ class ContentRestriction {
         if (restrictingUser != null) 'restrictingUser': restrictingUser!,
         if (restrictionDate != null)
           'restrictionDate': restrictionDate!.toUtc().toIso8601String(),
+        if (systemRestricted != null) 'systemRestricted': systemRestricted!,
         if (type != null) 'type': type!,
       };
 }

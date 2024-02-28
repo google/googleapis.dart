@@ -486,6 +486,8 @@ api.GoogleCloudDatacatalogV1ColumnSchema
         buildGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec();
     o.mode = 'foo';
     o.ordinalPosition = 42;
+    o.rangeElementType =
+        buildGoogleCloudDatacatalogV1ColumnSchemaFieldElementType();
     o.subcolumns = buildUnnamed3();
     o.type = 'foo';
   }
@@ -527,6 +529,8 @@ void checkGoogleCloudDatacatalogV1ColumnSchema(
       o.ordinalPosition!,
       unittest.equals(42),
     );
+    checkGoogleCloudDatacatalogV1ColumnSchemaFieldElementType(
+        o.rangeElementType!);
     checkUnnamed3(o.subcolumns!);
     unittest.expect(
       o.type!,
@@ -534,6 +538,30 @@ void checkGoogleCloudDatacatalogV1ColumnSchema(
     );
   }
   buildCounterGoogleCloudDatacatalogV1ColumnSchema--;
+}
+
+core.int buildCounterGoogleCloudDatacatalogV1ColumnSchemaFieldElementType = 0;
+api.GoogleCloudDatacatalogV1ColumnSchemaFieldElementType
+    buildGoogleCloudDatacatalogV1ColumnSchemaFieldElementType() {
+  final o = api.GoogleCloudDatacatalogV1ColumnSchemaFieldElementType();
+  buildCounterGoogleCloudDatacatalogV1ColumnSchemaFieldElementType++;
+  if (buildCounterGoogleCloudDatacatalogV1ColumnSchemaFieldElementType < 3) {
+    o.type = 'foo';
+  }
+  buildCounterGoogleCloudDatacatalogV1ColumnSchemaFieldElementType--;
+  return o;
+}
+
+void checkGoogleCloudDatacatalogV1ColumnSchemaFieldElementType(
+    api.GoogleCloudDatacatalogV1ColumnSchemaFieldElementType o) {
+  buildCounterGoogleCloudDatacatalogV1ColumnSchemaFieldElementType++;
+  if (buildCounterGoogleCloudDatacatalogV1ColumnSchemaFieldElementType < 3) {
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudDatacatalogV1ColumnSchemaFieldElementType--;
 }
 
 core.int buildCounterGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec = 0;
@@ -984,6 +1012,8 @@ api.GoogleCloudDatacatalogV1Entry buildGoogleCloudDatacatalogV1Entry() {
     o.datasetSpec = buildGoogleCloudDatacatalogV1DatasetSpec();
     o.description = 'foo';
     o.displayName = 'foo';
+    o.featureOnlineStoreSpec =
+        buildGoogleCloudDatacatalogV1FeatureOnlineStoreSpec();
     o.filesetSpec = buildGoogleCloudDatacatalogV1FilesetSpec();
     o.fullyQualifiedName = 'foo';
     o.gcsFilesetSpec = buildGoogleCloudDatacatalogV1GcsFilesetSpec();
@@ -1031,6 +1061,8 @@ void checkGoogleCloudDatacatalogV1Entry(api.GoogleCloudDatacatalogV1Entry o) {
       o.displayName!,
       unittest.equals('foo'),
     );
+    checkGoogleCloudDatacatalogV1FeatureOnlineStoreSpec(
+        o.featureOnlineStoreSpec!);
     checkGoogleCloudDatacatalogV1FilesetSpec(o.filesetSpec!);
     unittest.expect(
       o.fullyQualifiedName!,
@@ -1167,6 +1199,30 @@ void checkGoogleCloudDatacatalogV1ExportTaxonomiesResponse(
     checkUnnamed7(o.taxonomies!);
   }
   buildCounterGoogleCloudDatacatalogV1ExportTaxonomiesResponse--;
+}
+
+core.int buildCounterGoogleCloudDatacatalogV1FeatureOnlineStoreSpec = 0;
+api.GoogleCloudDatacatalogV1FeatureOnlineStoreSpec
+    buildGoogleCloudDatacatalogV1FeatureOnlineStoreSpec() {
+  final o = api.GoogleCloudDatacatalogV1FeatureOnlineStoreSpec();
+  buildCounterGoogleCloudDatacatalogV1FeatureOnlineStoreSpec++;
+  if (buildCounterGoogleCloudDatacatalogV1FeatureOnlineStoreSpec < 3) {
+    o.storageType = 'foo';
+  }
+  buildCounterGoogleCloudDatacatalogV1FeatureOnlineStoreSpec--;
+  return o;
+}
+
+void checkGoogleCloudDatacatalogV1FeatureOnlineStoreSpec(
+    api.GoogleCloudDatacatalogV1FeatureOnlineStoreSpec o) {
+  buildCounterGoogleCloudDatacatalogV1FeatureOnlineStoreSpec++;
+  if (buildCounterGoogleCloudDatacatalogV1FeatureOnlineStoreSpec < 3) {
+    unittest.expect(
+      o.storageType!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleCloudDatacatalogV1FeatureOnlineStoreSpec--;
 }
 
 core.int buildCounterGoogleCloudDatacatalogV1FieldType = 0;
@@ -3919,6 +3975,18 @@ void main() {
   });
 
   unittest.group(
+      'obj-schema-GoogleCloudDatacatalogV1ColumnSchemaFieldElementType', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudDatacatalogV1ColumnSchemaFieldElementType();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudDatacatalogV1ColumnSchemaFieldElementType.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudDatacatalogV1ColumnSchemaFieldElementType(od);
+    });
+  });
+
+  unittest.group(
       'obj-schema-GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec();
@@ -4103,6 +4171,17 @@ void main() {
       final od = api.GoogleCloudDatacatalogV1ExportTaxonomiesResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatacatalogV1ExportTaxonomiesResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleCloudDatacatalogV1FeatureOnlineStoreSpec',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudDatacatalogV1FeatureOnlineStoreSpec();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudDatacatalogV1FeatureOnlineStoreSpec.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudDatacatalogV1FeatureOnlineStoreSpec(od);
     });
   });
 

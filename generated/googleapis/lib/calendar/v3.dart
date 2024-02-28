@@ -1543,24 +1543,11 @@ class EventsResource {
   /// calendarList.list method. If you want to access the primary calendar of
   /// the currently logged in user, use the "primary" keyword.
   ///
-  /// [alwaysIncludeEmail] - Deprecated and ignored. A value will always be
-  /// returned in the email field for the organizer, creator and attendees, even
-  /// if no real email address is available (i.e. a generated, non-working value
-  /// will be provided).
+  /// [alwaysIncludeEmail] - Deprecated and ignored.
   ///
-  /// [eventTypes] - Event types to return. Optional. Possible values are:
-  /// - "default"
-  /// - "focusTime"
-  /// - "outOfOffice"
-  /// - "workingLocation"This parameter can be repeated multiple times to return
-  /// events of different types. Currently, these are the only allowed values
-  /// for this field:
-  /// - \["default", "focusTime", "outOfOffice"\]
-  /// - \["default", "focusTime", "outOfOffice", "workingLocation"\]
-  /// - \["workingLocation"\] The default is \["default", "focusTime",
-  /// "outOfOffice"\].
-  /// Additional combinations of these four event types will be made available
-  /// in later releases.
+  /// [eventTypes] - Event types to return. Optional. This parameter can be
+  /// repeated multiple times to return events of different types. The default
+  /// is \["default", "focusTime", "outOfOffice"\].
   ///
   /// [iCalUID] - Specifies an event ID in the iCalendar format to be provided
   /// in the response. Optional. Use this if you want to search for an event by
@@ -1600,6 +1587,8 @@ class EventsResource {
   /// - location
   /// - attendee's displayName
   /// - attendee's email
+  /// - organizer's displayName
+  /// - organizer's email
   /// - workingLocationProperties.officeLocation.buildingId
   /// - workingLocationProperties.officeLocation.deskId
   /// - workingLocationProperties.officeLocation.label
@@ -2084,24 +2073,11 @@ class EventsResource {
   /// calendarList.list method. If you want to access the primary calendar of
   /// the currently logged in user, use the "primary" keyword.
   ///
-  /// [alwaysIncludeEmail] - Deprecated and ignored. A value will always be
-  /// returned in the email field for the organizer, creator and attendees, even
-  /// if no real email address is available (i.e. a generated, non-working value
-  /// will be provided).
+  /// [alwaysIncludeEmail] - Deprecated and ignored.
   ///
-  /// [eventTypes] - Event types to return. Optional. Possible values are:
-  /// - "default"
-  /// - "focusTime"
-  /// - "outOfOffice"
-  /// - "workingLocation"This parameter can be repeated multiple times to return
-  /// events of different types. Currently, these are the only allowed values
-  /// for this field:
-  /// - \["default", "focusTime", "outOfOffice"\]
-  /// - \["default", "focusTime", "outOfOffice", "workingLocation"\]
-  /// - \["workingLocation"\] The default is \["default", "focusTime",
-  /// "outOfOffice"\].
-  /// Additional combinations of these four event types will be made available
-  /// in later releases.
+  /// [eventTypes] - Event types to return. Optional. This parameter can be
+  /// repeated multiple times to return events of different types. The default
+  /// is \["default", "focusTime", "outOfOffice"\].
   ///
   /// [iCalUID] - Specifies an event ID in the iCalendar format to be provided
   /// in the response. Optional. Use this if you want to search for an event by
@@ -2141,6 +2117,8 @@ class EventsResource {
   /// - location
   /// - attendee's displayName
   /// - attendee's email
+  /// - organizer's displayName
+  /// - organizer's email
   /// - workingLocationProperties.officeLocation.buildingId
   /// - workingLocationProperties.officeLocation.deskId
   /// - workingLocationProperties.officeLocation.label
@@ -4153,6 +4131,8 @@ class Event {
   EventExtendedProperties? extendedProperties;
 
   /// Focus Time event data.
+  ///
+  /// Used if eventType is focusTime.
   EventFocusTimeProperties? focusTimeProperties;
 
   /// A gadget that extends this event.
@@ -4251,6 +4231,8 @@ class Event {
   EventDateTime? originalStartTime;
 
   /// Out of office event data.
+  ///
+  /// Used if eventType is outOfOffice.
   EventOutOfOfficeProperties? outOfOfficeProperties;
 
   /// If set to True, Event propagation is disabled.

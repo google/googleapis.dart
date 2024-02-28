@@ -1455,7 +1455,33 @@ class ReimageNodeRequest {
 }
 
 /// Sets the scheduling options for this node.
-typedef SchedulingConfig = $SchedulingConfig;
+class SchedulingConfig {
+  /// Defines whether the node is preemptible.
+  core.bool? preemptible;
+
+  /// Whether the node is created under a reservation.
+  core.bool? reserved;
+
+  SchedulingConfig({
+    this.preemptible,
+    this.reserved,
+  });
+
+  SchedulingConfig.fromJson(core.Map json_)
+      : this(
+          preemptible: json_.containsKey('preemptible')
+              ? json_['preemptible'] as core.bool
+              : null,
+          reserved: json_.containsKey('reserved')
+              ? json_['reserved'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (preemptible != null) 'preemptible': preemptible!,
+        if (reserved != null) 'reserved': reserved!,
+      };
+}
 
 /// Request for StartNode.
 typedef StartNodeRequest = $Empty;

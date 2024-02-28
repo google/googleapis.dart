@@ -4799,6 +4799,9 @@ class Runtime {
   /// Date when Runtime is deprecated.
   Date? deprecationDate;
 
+  /// User-friendly display name, e.g. 'Node.js 12', etc.
+  core.String? displayName;
+
   /// Date when Runtime is end of support.
   Date? endOfSupportDate;
 
@@ -4824,16 +4827,21 @@ class Runtime {
   /// - "END_OF_SUPPORT" : The runtime is end of support.
   core.String? stage;
 
+  /// Supported operating systems for the runtime, e.g., 'ubuntu22', etc.
+  core.List<core.String>? supportedOperatingSystems;
+
   /// Warning messages, e.g., a deprecation warning.
   core.List<core.String>? warnings;
 
   Runtime({
     this.decommissionedDate,
     this.deprecationDate,
+    this.displayName,
     this.endOfSupportDate,
     this.environment,
     this.name,
     this.stage,
+    this.supportedOperatingSystems,
     this.warnings,
   });
 
@@ -4847,6 +4855,9 @@ class Runtime {
               ? Date.fromJson(json_['deprecationDate']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
           endOfSupportDate: json_.containsKey('endOfSupportDate')
               ? Date.fromJson(json_['endOfSupportDate']
                   as core.Map<core.String, core.dynamic>)
@@ -4857,6 +4868,12 @@ class Runtime {
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           stage:
               json_.containsKey('stage') ? json_['stage'] as core.String : null,
+          supportedOperatingSystems:
+              json_.containsKey('supportedOperatingSystems')
+                  ? (json_['supportedOperatingSystems'] as core.List)
+                      .map((value) => value as core.String)
+                      .toList()
+                  : null,
           warnings: json_.containsKey('warnings')
               ? (json_['warnings'] as core.List)
                   .map((value) => value as core.String)
@@ -4868,10 +4885,13 @@ class Runtime {
         if (decommissionedDate != null)
           'decommissionedDate': decommissionedDate!,
         if (deprecationDate != null) 'deprecationDate': deprecationDate!,
+        if (displayName != null) 'displayName': displayName!,
         if (endOfSupportDate != null) 'endOfSupportDate': endOfSupportDate!,
         if (environment != null) 'environment': environment!,
         if (name != null) 'name': name!,
         if (stage != null) 'stage': stage!,
+        if (supportedOperatingSystems != null)
+          'supportedOperatingSystems': supportedOperatingSystems!,
         if (warnings != null) 'warnings': warnings!,
       };
 }

@@ -26,6 +26,7 @@
 ///     - [ProjectsLocationsServicesResource]
 ///       - [ProjectsLocationsServicesBackupsResource]
 ///       - [ProjectsLocationsServicesMetadataImportsResource]
+///       - [ProjectsLocationsServicesMigrationExecutionsResource]
 library;
 
 import 'dart:async' as async;
@@ -801,6 +802,9 @@ class ProjectsLocationsServicesResource {
       ProjectsLocationsServicesBackupsResource(_requester);
   ProjectsLocationsServicesMetadataImportsResource get metadataImports =>
       ProjectsLocationsServicesMetadataImportsResource(_requester);
+  ProjectsLocationsServicesMigrationExecutionsResource
+      get migrationExecutions =>
+          ProjectsLocationsServicesMigrationExecutionsResource(_requester);
 
   ProjectsLocationsServicesResource(commons.ApiRequester client)
       : _requester = client;
@@ -843,6 +847,51 @@ class ProjectsLocationsServicesResource {
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$service') + ':alterLocation';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Alter metadata table properties.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [service] - Required. The relative resource name of the Dataproc Metastore
+  /// service that's being used to mutate metadata table properties, in the
+  /// following
+  /// format:projects/{project_id}/locations/{location_id}/services/{service_id}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> alterTableProperties(
+    AlterTablePropertiesRequest request,
+    core.String service, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$service') + ':alterTableProperties';
 
     final response_ = await _requester.request(
       url_,
@@ -2025,6 +2074,64 @@ class ProjectsLocationsServicesMetadataImportsResource {
   }
 }
 
+class ProjectsLocationsServicesMigrationExecutionsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsServicesMigrationExecutionsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Deletes a single migration execution.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The relative resource name of the migrationExecution to
+  /// delete, in the following
+  /// form:projects/{project_number}/locations/{location_id}/services/{service_id}/migrationExecutions/{migration_execution_id}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+/migrationExecutions/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. A request ID. Specify a unique request ID to allow
+  /// the server to ignore the request if it has completed. The server will
+  /// ignore subsequent requests that provide a duplicate request ID for at
+  /// least 60 minutes after the first request.For example, if an initial
+  /// request times out, followed by another request with the same request ID,
+  /// the server ignores the second request to prevent the creation of duplicate
+  /// commitments.The request ID must be a valid UUID
+  /// (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A
+  /// zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 /// Request message for DataprocMetastore.AlterMetadataResourceLocation.
 class AlterMetadataResourceLocationRequest {
   /// The new location URI for the metadata resource.
@@ -2058,6 +2165,64 @@ class AlterMetadataResourceLocationRequest {
   core.Map<core.String, core.dynamic> toJson() => {
         if (locationUri != null) 'locationUri': locationUri!,
         if (resourceName != null) 'resourceName': resourceName!,
+      };
+}
+
+/// Request message for DataprocMetastore.AlterTableProperties.
+class AlterTablePropertiesRequest {
+  /// A map that describes the desired values to mutate.
+  ///
+  /// If update_mask is empty, the properties will not update. Otherwise, the
+  /// properties only alters the value whose associated paths exist in the
+  /// update mask
+  core.Map<core.String, core.String>? properties;
+
+  /// The name of the table containing the properties you're altering in the
+  /// following format.databases/{database_id}/tables/{table_id}
+  ///
+  /// Required.
+  core.String? tableName;
+
+  /// A field mask that specifies the metadata table properties that are
+  /// overwritten by the update.
+  ///
+  /// Fields specified in the update_mask are relative to the resource (not to
+  /// the full request). A field is overwritten if it is in the mask.For
+  /// example, given the target properties: properties { a: 1 b: 2 } And an
+  /// update properties: properties { a: 2 b: 3 c: 4 } then if the field mask
+  /// is:paths: "properties.b", "properties.c"then the result will be:
+  /// properties { a: 1 b: 3 c: 4 }
+  core.String? updateMask;
+
+  AlterTablePropertiesRequest({
+    this.properties,
+    this.tableName,
+    this.updateMask,
+  });
+
+  AlterTablePropertiesRequest.fromJson(core.Map json_)
+      : this(
+          properties: json_.containsKey('properties')
+              ? (json_['properties'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          tableName: json_.containsKey('tableName')
+              ? json_['tableName'] as core.String
+              : null,
+          updateMask: json_.containsKey('updateMask')
+              ? json_['updateMask'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (properties != null) 'properties': properties!,
+        if (tableName != null) 'tableName': tableName!,
+        if (updateMask != null) 'updateMask': updateMask!,
       };
 }
 
@@ -2331,8 +2496,25 @@ class Binding {
   /// group:{emailid}: An email address that represents a Google group. For
   /// example, admins@example.com. domain:{domain}: The G Suite domain (primary)
   /// that represents all the users of that domain. For example, google.com or
-  /// example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus
-  /// unique identifier) representing a user that has been recently deleted. For
+  /// example.com.
+  /// principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}:
+  /// A single identity in a workforce identity pool.
+  /// principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}:
+  /// All workforce identities in a group.
+  /// principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}:
+  /// All workforce identities with a specific attribute value.
+  /// principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}
+  /// / * : All identities in a workforce identity pool.
+  /// principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}:
+  /// A single identity in a workload identity pool.
+  /// principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}:
+  /// A workload identity pool group.
+  /// principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}:
+  /// All identities in a workload identity pool with a certain attribute.
+  /// principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}
+  /// / * : All identities in a workload identity pool.
+  /// deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique
+  /// identifier) representing a user that has been recently deleted. For
   /// example, alice@example.com?uid=123456789012345678901. If the user is
   /// recovered, this value reverts to user:{emailid} and the recovered user
   /// retains the role in the binding.
@@ -2348,11 +2530,18 @@ class Binding {
   /// admins@example.com?uid=123456789012345678901. If the group is recovered,
   /// this value reverts to group:{emailid} and the recovered group retains the
   /// role in the binding.
+  /// deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}:
+  /// Deleted single identity in a workforce identity pool. For example,
+  /// deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of members, or principals.
   ///
-  /// For example, roles/viewer, roles/editor, or roles/owner.
+  /// For example, roles/viewer, roles/editor, or roles/owner.For an overview of
+  /// the IAM roles and permissions, see the IAM documentation
+  /// (https://cloud.google.com/iam/docs/roles-overview). For a list of the
+  /// available pre-defined roles, see here
+  /// (https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
   Binding({
@@ -3731,12 +3920,6 @@ class Restore {
   /// Output only.
   core.String? backup;
 
-  /// A Cloud Storage URI specifying where the backup artifacts are stored, in
-  /// the format gs:///.
-  ///
-  /// Optional.
-  core.String? backupLocation;
-
   /// The restore details containing the revision of the service to be restored
   /// to, in format of JSON.
   ///
@@ -3775,7 +3958,6 @@ class Restore {
 
   Restore({
     this.backup,
-    this.backupLocation,
     this.details,
     this.endTime,
     this.startTime,
@@ -3787,9 +3969,6 @@ class Restore {
       : this(
           backup: json_.containsKey('backup')
               ? json_['backup'] as core.String
-              : null,
-          backupLocation: json_.containsKey('backupLocation')
-              ? json_['backupLocation'] as core.String
               : null,
           details: json_.containsKey('details')
               ? json_['details'] as core.String
@@ -3807,7 +3986,6 @@ class Restore {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (backup != null) 'backup': backup!,
-        if (backupLocation != null) 'backupLocation': backupLocation!,
         if (details != null) 'details': details!,
         if (endTime != null) 'endTime': endTime!,
         if (startTime != null) 'startTime': startTime!,
@@ -3822,7 +4000,10 @@ class RestoreServiceRequest {
   /// from, in the following
   /// form:projects/{project_id}/locations/{location_id}/services/{service_id}/backups/{backup_id}.
   ///
-  /// Required.
+  /// Mutually exclusive with backup_location, and exactly one of the two must
+  /// be set.
+  ///
+  /// Optional.
   core.String? backup;
 
   /// A request ID.

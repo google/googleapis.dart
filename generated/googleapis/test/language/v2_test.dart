@@ -155,7 +155,7 @@ api.AnnotateTextRequest buildAnnotateTextRequest() {
   if (buildCounterAnnotateTextRequest < 3) {
     o.document = buildDocument();
     o.encodingType = 'foo';
-    o.features = buildFeatures();
+    o.features = buildAnnotateTextRequestFeatures();
   }
   buildCounterAnnotateTextRequest--;
   return o;
@@ -169,9 +169,34 @@ void checkAnnotateTextRequest(api.AnnotateTextRequest o) {
       o.encodingType!,
       unittest.equals('foo'),
     );
-    checkFeatures(o.features!);
+    checkAnnotateTextRequestFeatures(o.features!);
   }
   buildCounterAnnotateTextRequest--;
+}
+
+core.int buildCounterAnnotateTextRequestFeatures = 0;
+api.AnnotateTextRequestFeatures buildAnnotateTextRequestFeatures() {
+  final o = api.AnnotateTextRequestFeatures();
+  buildCounterAnnotateTextRequestFeatures++;
+  if (buildCounterAnnotateTextRequestFeatures < 3) {
+    o.classifyText = true;
+    o.extractDocumentSentiment = true;
+    o.extractEntities = true;
+    o.moderateText = true;
+  }
+  buildCounterAnnotateTextRequestFeatures--;
+  return o;
+}
+
+void checkAnnotateTextRequestFeatures(api.AnnotateTextRequestFeatures o) {
+  buildCounterAnnotateTextRequestFeatures++;
+  if (buildCounterAnnotateTextRequestFeatures < 3) {
+    unittest.expect(o.classifyText!, unittest.isTrue);
+    unittest.expect(o.extractDocumentSentiment!, unittest.isTrue);
+    unittest.expect(o.extractEntities!, unittest.isTrue);
+    unittest.expect(o.moderateText!, unittest.isTrue);
+  }
+  buildCounterAnnotateTextRequestFeatures--;
 }
 
 core.List<api.ClassificationCategory> buildUnnamed2() => [
@@ -464,31 +489,6 @@ void checkEntityMention(api.EntityMention o) {
   buildCounterEntityMention--;
 }
 
-core.int buildCounterFeatures = 0;
-api.Features buildFeatures() {
-  final o = api.Features();
-  buildCounterFeatures++;
-  if (buildCounterFeatures < 3) {
-    o.classifyText = true;
-    o.extractDocumentSentiment = true;
-    o.extractEntities = true;
-    o.moderateText = true;
-  }
-  buildCounterFeatures--;
-  return o;
-}
-
-void checkFeatures(api.Features o) {
-  buildCounterFeatures++;
-  if (buildCounterFeatures < 3) {
-    unittest.expect(o.classifyText!, unittest.isTrue);
-    unittest.expect(o.extractDocumentSentiment!, unittest.isTrue);
-    unittest.expect(o.extractEntities!, unittest.isTrue);
-    unittest.expect(o.moderateText!, unittest.isTrue);
-  }
-  buildCounterFeatures--;
-}
-
 core.int buildCounterModerateTextRequest = 0;
 api.ModerateTextRequest buildModerateTextRequest() {
   final o = api.ModerateTextRequest();
@@ -671,6 +671,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-AnnotateTextRequestFeatures', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAnnotateTextRequestFeatures();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AnnotateTextRequestFeatures.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAnnotateTextRequestFeatures(od);
+    });
+  });
+
   unittest.group('obj-schema-AnnotateTextResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildAnnotateTextResponse();
@@ -738,16 +748,6 @@ void main() {
       final od = api.EntityMention.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkEntityMention(od);
-    });
-  });
-
-  unittest.group('obj-schema-Features', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildFeatures();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Features.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkFeatures(od);
     });
   });
 

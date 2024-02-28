@@ -86,39 +86,6 @@ class CustomersResource {
 
   CustomersResource(commons.ApiRequester client) : _requester = client;
 
-  /// Checks whether a SAS deployment for the authentication context exists.
-  ///
-  /// Request parameters:
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [SasPortalCheckHasProvisionedDeploymentResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<SasPortalCheckHasProvisionedDeploymentResponse>
-      checkHasProvisionedDeployment({
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    const url_ = 'v1alpha1/customers:checkHasProvisionedDeployment';
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return SasPortalCheckHasProvisionedDeploymentResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-
   /// Returns a requested customer.
   ///
   /// Request parameters:
@@ -193,6 +160,74 @@ class CustomersResource {
       queryParams: queryParams_,
     );
     return SasPortalListCustomersResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns a list of SAS deployments associated with current GCP project.
+  ///
+  /// Includes whether SAS analytics has been enabled or not.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SasPortalListGcpProjectDeploymentsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SasPortalListGcpProjectDeploymentsResponse>
+      listGcpProjectDeployments({
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'v1alpha1/customers:listGcpProjectDeployments';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SasPortalListGcpProjectDeploymentsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns a list of legacy organizations.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SasPortalListLegacyOrganizationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SasPortalListLegacyOrganizationsResponse>
+      listLegacyOrganizations({
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'v1alpha1/customers:listLegacyOrganizations';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SasPortalListLegacyOrganizationsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 
@@ -3680,12 +3715,6 @@ class SasPortalChannelWithScore {
       };
 }
 
-/// Response for \[CheckHasProvisionedDeployment\].
-///
-/// \[spectrum.sas.portal.v1alpha1.Provisioning.CheckHasProvisionedDeployment\].
-typedef SasPortalCheckHasProvisionedDeploymentResponse
-    = $SasPortalCheckHasProvisionedDeploymentResponse;
-
 /// Request for CreateSignedDevice.
 typedef SasPortalCreateSignedDeviceRequest
     = $SasPortalCreateSignedDeviceRequest;
@@ -3718,6 +3747,9 @@ class SasPortalDevice {
   core.String? displayName;
 
   /// The FCC identifier of the device.
+  ///
+  /// Refer to https://www.fcc.gov/oet/ea/fccid for FccID format. Accept
+  /// underscores and periods because some test-SAS customers use them.
   core.String? fccId;
 
   /// Only ranges that are within the allowlists are available for new grants.
@@ -4170,6 +4202,39 @@ typedef SasPortalEmpty = $Empty;
 /// Frequency range from `low_frequency` to `high_frequency`.
 typedef SasPortalFrequencyRange = $SasPortalFrequencyRange;
 
+/// Deployment associated with the GCP project.
+///
+/// Includes whether SAS analytics has been enabled or not.
+class SasPortalGcpProjectDeployment {
+  /// Deployment associated with the GCP project.
+  SasPortalDeployment? deployment;
+
+  /// Whether SAS analytics has been enabled.
+  core.bool? hasEnabledAnalytics;
+
+  SasPortalGcpProjectDeployment({
+    this.deployment,
+    this.hasEnabledAnalytics,
+  });
+
+  SasPortalGcpProjectDeployment.fromJson(core.Map json_)
+      : this(
+          deployment: json_.containsKey('deployment')
+              ? SasPortalDeployment.fromJson(
+                  json_['deployment'] as core.Map<core.String, core.dynamic>)
+              : null,
+          hasEnabledAnalytics: json_.containsKey('hasEnabledAnalytics')
+              ? json_['hasEnabledAnalytics'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deployment != null) 'deployment': deployment!,
+        if (hasEnabledAnalytics != null)
+          'hasEnabledAnalytics': hasEnabledAnalytics!,
+      };
+}
+
 /// Request for GenerateSecret.
 typedef SasPortalGenerateSecretRequest = $Empty;
 
@@ -4284,6 +4349,60 @@ class SasPortalListDevicesResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (devices != null) 'devices': devices!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Response for \[ListGcpProjectDeployments\].
+class SasPortalListGcpProjectDeploymentsResponse {
+  /// Deployments associated with the GCP project
+  ///
+  /// Optional.
+  core.List<SasPortalGcpProjectDeployment>? deployments;
+
+  SasPortalListGcpProjectDeploymentsResponse({
+    this.deployments,
+  });
+
+  SasPortalListGcpProjectDeploymentsResponse.fromJson(core.Map json_)
+      : this(
+          deployments: json_.containsKey('deployments')
+              ? (json_['deployments'] as core.List)
+                  .map((value) => SasPortalGcpProjectDeployment.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deployments != null) 'deployments': deployments!,
+      };
+}
+
+/// Response for \[ListLegacyOrganizations\].
+///
+/// \[spectrum.sas.portal.v1alpha1.Provisioning.ListLegacyOrganizations\].
+class SasPortalListLegacyOrganizationsResponse {
+  /// Legacy SAS organizations.
+  ///
+  /// Optional.
+  core.List<SasPortalOrganization>? organizations;
+
+  SasPortalListLegacyOrganizationsResponse({
+    this.organizations,
+  });
+
+  SasPortalListLegacyOrganizationsResponse.fromJson(core.Map json_)
+      : this(
+          organizations: json_.containsKey('organizations')
+              ? (json_['organizations'] as core.List)
+                  .map((value) => SasPortalOrganization.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (organizations != null) 'organizations': organizations!,
       };
 }
 
@@ -4421,6 +4540,9 @@ class SasPortalOperation {
         if (response != null) 'response': response!,
       };
 }
+
+/// Organization details.
+typedef SasPortalOrganization = $SasPortalOrganization;
 
 /// Defines an access control policy to the resources.
 class SasPortalPolicy {

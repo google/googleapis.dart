@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20231110",
+    "revision": "20240222",
     "rootUrl": "https://assuredworkloads.googleapis.com/",
     "servicePath": "",
     "title": "Assured Workloads API",
@@ -290,6 +290,31 @@
                                     "path": "v1/{+name}",
                                     "response": {
                                         "$ref": "GoogleProtobufEmpty"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "enableResourceMonitoring": {
+                                    "description": "Enable resource violation monitoring for a workload.",
+                                    "flatPath": "v1/organizations/{organizationsId}/locations/{locationsId}/workloads/{workloadsId}:enableResourceMonitoring",
+                                    "httpMethod": "POST",
+                                    "id": "assuredworkloads.organizations.locations.workloads.enableResourceMonitoring",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Required. The `name` field is used to identify the workload. Format: organizations/{org_id}/locations/{location_id}/workloads/{workload_id}",
+                                            "location": "path",
+                                            "pattern": "^organizations/[^/]+/locations/[^/]+/workloads/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+name}:enableResourceMonitoring",
+                                    "response": {
+                                        "$ref": "GoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse"
                                     },
                                     "scopes": [
                                         "https://www.googleapis.com/auth/cloud-platform"
@@ -572,7 +597,7 @@
     },
     "schemas": {
         "GoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest": {
-            "description": "Request for acknowledging the violation Next Id: 5",
+            "description": "Request for acknowledging the violation",
             "id": "GoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest",
             "properties": {
                 "acknowledgeType": {
@@ -711,6 +736,12 @@
                     "type": "string"
                 }
             },
+            "type": "object"
+        },
+        "GoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse": {
+            "description": "Response for EnableResourceMonitoring endpoint.",
+            "id": "GoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse",
+            "properties": {},
             "type": "object"
         },
         "GoogleCloudAssuredworkloadsV1ListViolationsResponse": {

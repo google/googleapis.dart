@@ -45,6 +45,11 @@ class PlacesApi {
       'https://www.googleapis.com/auth/maps-platform.places';
 
   /// Private Service:
+  /// https://www.googleapis.com/auth/maps-platform.places.autocomplete
+  static const mapsPlatformPlacesAutocompleteScope =
+      'https://www.googleapis.com/auth/maps-platform.places.autocomplete';
+
+  /// Private Service:
   /// https://www.googleapis.com/auth/maps-platform.places.details
   static const mapsPlatformPlacesDetailsScope =
       'https://www.googleapis.com/auth/maps-platform.places.details';
@@ -77,12 +82,50 @@ class PlacesResource {
 
   PlacesResource(commons.ApiRequester client) : _requester = client;
 
-  /// Get place details with a place id (in a name) string.
+  /// Returns predictions for the given input.
+  ///
+  /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. A place ID returned in a Place (with "places/" prefix),
-  /// or equivalently the name in the same Place. Format: places / * place_id*.
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleMapsPlacesV1AutocompletePlacesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleMapsPlacesV1AutocompletePlacesResponse> autocomplete(
+    GoogleMapsPlacesV1AutocompletePlacesRequest request, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'v1/places:autocomplete';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleMapsPlacesV1AutocompletePlacesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Get the details of a place based on its resource name, which is a string
+  /// in the `places/{place_id}` format.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of a place, in the
+  /// `places/{place_id}` format.
   /// Value must have pattern `^places/\[^/\]+$`.
   ///
   /// [languageCode] - Optional. Place details will be displayed with the
@@ -96,6 +139,27 @@ class PlacesResource {
   /// information, see
   /// https://www.unicode.org/cldr/charts/latest/supplemental/territory_language_information.html.
   /// Note that 3-digit region codes are not currently supported.
+  ///
+  /// [sessionToken] - Optional. A string which identifies an Autocomplete
+  /// session for billing purposes. Must be a URL and filename safe base64
+  /// string with at most 36 ASCII characters in length. Otherwise an
+  /// INVALID_ARGUMENT error is returned. The session begins when the user
+  /// starts typing a query, and concludes when they select a place and a call
+  /// to Place Details or Address Validation is made. Each session can have
+  /// multiple queries, followed by one Place Details or Address Validation
+  /// request. The credentials used for each request within a session must
+  /// belong to the same Google Cloud Console project. Once a session has
+  /// concluded, the token is no longer valid; your app must generate a fresh
+  /// token for each session. If the `session_token` parameter is omitted, or if
+  /// you reuse a session token, the session is charged as if no session token
+  /// was provided (each request is billed separately). We recommend the
+  /// following guidelines: * Use session tokens for all Place Autocomplete
+  /// calls. * Generate a fresh token for each session. Using a version 4 UUID
+  /// is recommended. * Ensure that the credentials used for all Place
+  /// Autocomplete, Place Details, and Address Validation requests within a
+  /// session belong to the same Cloud Console project. * Be sure to pass a
+  /// unique session token for each new session. Using the same token for more
+  /// than one session will result in each request being billed individually.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -111,11 +175,13 @@ class PlacesResource {
     core.String name, {
     core.String? languageCode,
     core.String? regionCode,
+    core.String? sessionToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (languageCode != null) 'languageCode': [languageCode],
       if (regionCode != null) 'regionCode': [regionCode],
+      if (sessionToken != null) 'sessionToken': [sessionToken],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -215,11 +281,11 @@ class PlacesPhotosResource {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of a photo media in the format:
-  /// `"places/place_id/photos/photo_reference/media"`. The resource name of a
+  /// `places/{place_id}/photos/{photo_reference}/media`. The resource name of a
   /// photo as returned in a Place object's `photos.name` field comes with the
-  /// format `"places/place_id/photos/photo_reference"`. You need to append
-  /// `"/media"` at the end of the photo resource to get the photo media
-  /// resource name.
+  /// format `places/{place_id}/photos/{photo_reference}`. You need to append
+  /// `/media` at the end of the photo resource to get the photo media resource
+  /// name.
   /// Value must have pattern `^places/\[^/\]+/photos/\[^/\]+/media$`.
   ///
   /// [maxHeightPx] - Optional. Specifies the maximum desired height, in pixels,
@@ -372,6 +438,600 @@ class GoogleMapsPlacesV1AuthorAttribution {
         if (displayName != null) 'displayName': displayName!,
         if (photoUri != null) 'photoUri': photoUri!,
         if (uri != null) 'uri': uri!,
+      };
+}
+
+/// Request proto for AutocompletePlaces.
+class GoogleMapsPlacesV1AutocompletePlacesRequest {
+  /// If true, the response will include both Place and query predictions.
+  ///
+  /// Otherwise the response will only return Place predictions.
+  ///
+  /// Optional.
+  core.bool? includeQueryPredictions;
+
+  /// Included primary Place type (for example, "restaurant" or "gas_station")
+  /// from
+  /// https://developers.google.com/maps/documentation/places/web-service/place-types.
+  ///
+  /// A Place is only returned if its primary type is included in this list. Up
+  /// to 5 values can be specified. If no types are specified, all Place types
+  /// are returned.
+  ///
+  /// Optional.
+  core.List<core.String>? includedPrimaryTypes;
+
+  /// Only include results in the specified regions, specified as up to 15 CLDR
+  /// two-character region codes.
+  ///
+  /// An empty set will not restrict the results. If both `location_restriction`
+  /// and `included_region_codes` are set, the results will be located in the
+  /// area of intersection.
+  ///
+  /// Optional.
+  core.List<core.String>? includedRegionCodes;
+
+  /// The text string on which to search.
+  ///
+  /// Required.
+  core.String? input;
+
+  /// A zero-based Unicode character offset of `input` indicating the cursor
+  /// position in `input`.
+  ///
+  /// The cursor position may influence what predictions are returned. If empty,
+  /// defaults to the length of `input`.
+  ///
+  /// Optional.
+  core.int? inputOffset;
+
+  /// The language in which to return results.
+  ///
+  /// Defaults to en-US. The results may be in mixed languages if the language
+  /// used in `input` is different from `language_code` or if the returned Place
+  /// does not have a translation from the local language to `language_code`.
+  ///
+  /// Optional.
+  core.String? languageCode;
+
+  /// Bias results to a specified location.
+  ///
+  /// At most one of `location_bias` or `location_restriction` should be set. If
+  /// neither are set, the results will be biased by IP address, meaning the IP
+  /// address will be mapped to an imprecise location and used as a biasing
+  /// signal.
+  ///
+  /// Optional.
+  GoogleMapsPlacesV1AutocompletePlacesRequestLocationBias? locationBias;
+
+  /// Restrict results to a specified location.
+  ///
+  /// At most one of `location_bias` or `location_restriction` should be set. If
+  /// neither are set, the results will be biased by IP address, meaning the IP
+  /// address will be mapped to an imprecise location and used as a biasing
+  /// signal.
+  ///
+  /// Optional.
+  GoogleMapsPlacesV1AutocompletePlacesRequestLocationRestriction?
+      locationRestriction;
+
+  /// The origin point from which to calculate geodesic distance to the
+  /// destination (returned as `distance_meters`).
+  ///
+  /// If this value is omitted, geodesic distance will not be returned.
+  ///
+  /// Optional.
+  GoogleTypeLatLng? origin;
+
+  /// The region code, specified as a CLDR two-character region code.
+  ///
+  /// This affects address formatting, result ranking, and may influence what
+  /// results are returned. This does not restrict results to the specified
+  /// region. To restrict results to a region, use `region_code_restriction`.
+  ///
+  /// Optional.
+  core.String? regionCode;
+
+  /// A string which identifies an Autocomplete session for billing purposes.
+  ///
+  /// Must be a URL and filename safe base64 string with at most 36 ASCII
+  /// characters in length. Otherwise an INVALID_ARGUMENT error is returned. The
+  /// session begins when the user starts typing a query, and concludes when
+  /// they select a place and a call to Place Details or Address Validation is
+  /// made. Each session can have multiple queries, followed by one Place
+  /// Details or Address Validation request. The credentials used for each
+  /// request within a session must belong to the same Google Cloud Console
+  /// project. Once a session has concluded, the token is no longer valid; your
+  /// app must generate a fresh token for each session. If the `session_token`
+  /// parameter is omitted, or if you reuse a session token, the session is
+  /// charged as if no session token was provided (each request is billed
+  /// separately). We recommend the following guidelines: * Use session tokens
+  /// for all Place Autocomplete calls. * Generate a fresh token for each
+  /// session. Using a version 4 UUID is recommended. * Ensure that the
+  /// credentials used for all Place Autocomplete, Place Details, and Address
+  /// Validation requests within a session belong to the same Cloud Console
+  /// project. * Be sure to pass a unique session token for each new session.
+  /// Using the same token for more than one session will result in each request
+  /// being billed individually.
+  ///
+  /// Optional.
+  core.String? sessionToken;
+
+  GoogleMapsPlacesV1AutocompletePlacesRequest({
+    this.includeQueryPredictions,
+    this.includedPrimaryTypes,
+    this.includedRegionCodes,
+    this.input,
+    this.inputOffset,
+    this.languageCode,
+    this.locationBias,
+    this.locationRestriction,
+    this.origin,
+    this.regionCode,
+    this.sessionToken,
+  });
+
+  GoogleMapsPlacesV1AutocompletePlacesRequest.fromJson(core.Map json_)
+      : this(
+          includeQueryPredictions: json_.containsKey('includeQueryPredictions')
+              ? json_['includeQueryPredictions'] as core.bool
+              : null,
+          includedPrimaryTypes: json_.containsKey('includedPrimaryTypes')
+              ? (json_['includedPrimaryTypes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          includedRegionCodes: json_.containsKey('includedRegionCodes')
+              ? (json_['includedRegionCodes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          input:
+              json_.containsKey('input') ? json_['input'] as core.String : null,
+          inputOffset: json_.containsKey('inputOffset')
+              ? json_['inputOffset'] as core.int
+              : null,
+          languageCode: json_.containsKey('languageCode')
+              ? json_['languageCode'] as core.String
+              : null,
+          locationBias: json_.containsKey('locationBias')
+              ? GoogleMapsPlacesV1AutocompletePlacesRequestLocationBias
+                  .fromJson(json_['locationBias']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          locationRestriction: json_.containsKey('locationRestriction')
+              ? GoogleMapsPlacesV1AutocompletePlacesRequestLocationRestriction
+                  .fromJson(json_['locationRestriction']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          origin: json_.containsKey('origin')
+              ? GoogleTypeLatLng.fromJson(
+                  json_['origin'] as core.Map<core.String, core.dynamic>)
+              : null,
+          regionCode: json_.containsKey('regionCode')
+              ? json_['regionCode'] as core.String
+              : null,
+          sessionToken: json_.containsKey('sessionToken')
+              ? json_['sessionToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (includeQueryPredictions != null)
+          'includeQueryPredictions': includeQueryPredictions!,
+        if (includedPrimaryTypes != null)
+          'includedPrimaryTypes': includedPrimaryTypes!,
+        if (includedRegionCodes != null)
+          'includedRegionCodes': includedRegionCodes!,
+        if (input != null) 'input': input!,
+        if (inputOffset != null) 'inputOffset': inputOffset!,
+        if (languageCode != null) 'languageCode': languageCode!,
+        if (locationBias != null) 'locationBias': locationBias!,
+        if (locationRestriction != null)
+          'locationRestriction': locationRestriction!,
+        if (origin != null) 'origin': origin!,
+        if (regionCode != null) 'regionCode': regionCode!,
+        if (sessionToken != null) 'sessionToken': sessionToken!,
+      };
+}
+
+/// The region to search.
+///
+/// The results may be biased around the specified region.
+class GoogleMapsPlacesV1AutocompletePlacesRequestLocationBias {
+  /// A circle defined by a center point and radius.
+  GoogleMapsPlacesV1Circle? circle;
+
+  /// A viewport defined by a northeast and a southwest corner.
+  GoogleGeoTypeViewport? rectangle;
+
+  GoogleMapsPlacesV1AutocompletePlacesRequestLocationBias({
+    this.circle,
+    this.rectangle,
+  });
+
+  GoogleMapsPlacesV1AutocompletePlacesRequestLocationBias.fromJson(
+      core.Map json_)
+      : this(
+          circle: json_.containsKey('circle')
+              ? GoogleMapsPlacesV1Circle.fromJson(
+                  json_['circle'] as core.Map<core.String, core.dynamic>)
+              : null,
+          rectangle: json_.containsKey('rectangle')
+              ? GoogleGeoTypeViewport.fromJson(
+                  json_['rectangle'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (circle != null) 'circle': circle!,
+        if (rectangle != null) 'rectangle': rectangle!,
+      };
+}
+
+/// The region to search.
+///
+/// The results will be restricted to the specified region.
+class GoogleMapsPlacesV1AutocompletePlacesRequestLocationRestriction {
+  /// A circle defined by a center point and radius.
+  GoogleMapsPlacesV1Circle? circle;
+
+  /// A viewport defined by a northeast and a southwest corner.
+  GoogleGeoTypeViewport? rectangle;
+
+  GoogleMapsPlacesV1AutocompletePlacesRequestLocationRestriction({
+    this.circle,
+    this.rectangle,
+  });
+
+  GoogleMapsPlacesV1AutocompletePlacesRequestLocationRestriction.fromJson(
+      core.Map json_)
+      : this(
+          circle: json_.containsKey('circle')
+              ? GoogleMapsPlacesV1Circle.fromJson(
+                  json_['circle'] as core.Map<core.String, core.dynamic>)
+              : null,
+          rectangle: json_.containsKey('rectangle')
+              ? GoogleGeoTypeViewport.fromJson(
+                  json_['rectangle'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (circle != null) 'circle': circle!,
+        if (rectangle != null) 'rectangle': rectangle!,
+      };
+}
+
+/// Response proto for AutocompletePlaces.
+class GoogleMapsPlacesV1AutocompletePlacesResponse {
+  /// Contains a list of suggestions, ordered in descending order of relevance.
+  core.List<GoogleMapsPlacesV1AutocompletePlacesResponseSuggestion>?
+      suggestions;
+
+  GoogleMapsPlacesV1AutocompletePlacesResponse({
+    this.suggestions,
+  });
+
+  GoogleMapsPlacesV1AutocompletePlacesResponse.fromJson(core.Map json_)
+      : this(
+          suggestions: json_.containsKey('suggestions')
+              ? (json_['suggestions'] as core.List)
+                  .map((value) =>
+                      GoogleMapsPlacesV1AutocompletePlacesResponseSuggestion
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (suggestions != null) 'suggestions': suggestions!,
+      };
+}
+
+/// An Autocomplete suggestion result.
+class GoogleMapsPlacesV1AutocompletePlacesResponseSuggestion {
+  /// A prediction for a Place.
+  GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionPlacePrediction?
+      placePrediction;
+
+  /// A prediction for a query.
+  GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionQueryPrediction?
+      queryPrediction;
+
+  GoogleMapsPlacesV1AutocompletePlacesResponseSuggestion({
+    this.placePrediction,
+    this.queryPrediction,
+  });
+
+  GoogleMapsPlacesV1AutocompletePlacesResponseSuggestion.fromJson(
+      core.Map json_)
+      : this(
+          placePrediction: json_.containsKey('placePrediction')
+              ? GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionPlacePrediction
+                  .fromJson(json_['placePrediction']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          queryPrediction: json_.containsKey('queryPrediction')
+              ? GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionQueryPrediction
+                  .fromJson(json_['queryPrediction']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (placePrediction != null) 'placePrediction': placePrediction!,
+        if (queryPrediction != null) 'queryPrediction': queryPrediction!,
+      };
+}
+
+/// Text representing a Place or query prediction.
+///
+/// The text may be used as is or formatted.
+class GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText {
+  /// A list of string ranges identifying where the input request matched in
+  /// `text`.
+  ///
+  /// The ranges can be used to format specific parts of `text`. The substrings
+  /// may not be exact matches of `input` if the matching was determined by
+  /// criteria other than string matching (for example, spell corrections or
+  /// transliterations). These values are Unicode character offsets of `text`.
+  /// The ranges are guaranteed to be ordered in increasing offset values.
+  core.List<GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStringRange>?
+      matches;
+
+  /// Text that may be used as is or formatted with `matches`.
+  core.String? text;
+
+  GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText({
+    this.matches,
+    this.text,
+  });
+
+  GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText.fromJson(
+      core.Map json_)
+      : this(
+          matches: json_.containsKey('matches')
+              ? (json_['matches'] as core.List)
+                  .map((value) =>
+                      GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStringRange
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          text: json_.containsKey('text') ? json_['text'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (matches != null) 'matches': matches!,
+        if (text != null) 'text': text!,
+      };
+}
+
+/// Prediction results for a Place Autocomplete prediction.
+class GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionPlacePrediction {
+  /// The length of the geodesic in meters from `origin` if `origin` is
+  /// specified.
+  ///
+  /// Certain predictions such as routes may not populate this field.
+  core.int? distanceMeters;
+
+  /// The resource name of the suggested Place.
+  ///
+  /// This name can be used in other APIs that accept Place names.
+  core.String? place;
+
+  /// The unique identifier of the suggested Place.
+  ///
+  /// This identifier can be used in other APIs that accept Place IDs.
+  core.String? placeId;
+
+  /// A breakdown of the Place prediction into main text containing the name of
+  /// the Place and secondary text containing additional disambiguating features
+  /// (such as a city or region).
+  ///
+  /// `structured_format` is recommended for developers who wish to show two
+  /// separate, but related, UI elements. Developers who wish to show a single
+  /// UI element may want to use `text` instead. They are two different ways to
+  /// represent a Place prediction. Users should not try to parse
+  /// `structured_format` into `text` or vice versa.
+  GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStructuredFormat?
+      structuredFormat;
+
+  /// Contains the human-readable name for the returned result.
+  ///
+  /// For establishment results, this is usually the business name and address.
+  /// `text` is recommended for developers who wish to show a single UI element.
+  /// Developers who wish to show two separate, but related, UI elements may
+  /// want to use `structured_format` instead. They are two different ways to
+  /// represent a Place prediction. Users should not try to parse
+  /// `structured_format` into `text` or vice versa. This text may be different
+  /// from the `display_name` returned by GetPlace. May be in mixed languages if
+  /// the request `input` and `language_code` are in different languages or if
+  /// the Place does not have a translation from the local language to
+  /// `language_code`.
+  GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText? text;
+
+  /// List of types that apply to this Place from Table A or Table B in
+  /// https://developers.google.com/maps/documentation/places/web-service/place-types.
+  ///
+  /// A type is a categorization of a Place. Places with shared types will share
+  /// similar characteristics.
+  core.List<core.String>? types;
+
+  GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionPlacePrediction({
+    this.distanceMeters,
+    this.place,
+    this.placeId,
+    this.structuredFormat,
+    this.text,
+    this.types,
+  });
+
+  GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionPlacePrediction.fromJson(
+      core.Map json_)
+      : this(
+          distanceMeters: json_.containsKey('distanceMeters')
+              ? json_['distanceMeters'] as core.int
+              : null,
+          place:
+              json_.containsKey('place') ? json_['place'] as core.String : null,
+          placeId: json_.containsKey('placeId')
+              ? json_['placeId'] as core.String
+              : null,
+          structuredFormat: json_.containsKey('structuredFormat')
+              ? GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStructuredFormat
+                  .fromJson(json_['structuredFormat']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          text: json_.containsKey('text')
+              ? GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText
+                  .fromJson(
+                      json_['text'] as core.Map<core.String, core.dynamic>)
+              : null,
+          types: json_.containsKey('types')
+              ? (json_['types'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (distanceMeters != null) 'distanceMeters': distanceMeters!,
+        if (place != null) 'place': place!,
+        if (placeId != null) 'placeId': placeId!,
+        if (structuredFormat != null) 'structuredFormat': structuredFormat!,
+        if (text != null) 'text': text!,
+        if (types != null) 'types': types!,
+      };
+}
+
+/// Prediction results for a Query Autocomplete prediction.
+class GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionQueryPrediction {
+  /// A breakdown of the query prediction into main text containing the query
+  /// and secondary text containing additional disambiguating features (such as
+  /// a city or region).
+  ///
+  /// `structured_format` is recommended for developers who wish to show two
+  /// separate, but related, UI elements. Developers who wish to show a single
+  /// UI element may want to use `text` instead. They are two different ways to
+  /// represent a query prediction. Users should not try to parse
+  /// `structured_format` into `text` or vice versa.
+  GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStructuredFormat?
+      structuredFormat;
+
+  /// The predicted text.
+  ///
+  /// This text does not represent a Place, but rather a text query that could
+  /// be used in a search endpoint (for example, TextSearch). `text` is
+  /// recommended for developers who wish to show a single UI element.
+  /// Developers who wish to show two separate, but related, UI elements may
+  /// want to use `structured_format` instead. They are two different ways to
+  /// represent a query prediction. Users should not try to parse
+  /// `structured_format` into `text` or vice versa. May be in mixed languages
+  /// if the request `input` and `language_code` are in different languages or
+  /// if part of the query does not have a translation from the local language
+  /// to `language_code`.
+  GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText? text;
+
+  GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionQueryPrediction({
+    this.structuredFormat,
+    this.text,
+  });
+
+  GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionQueryPrediction.fromJson(
+      core.Map json_)
+      : this(
+          structuredFormat: json_.containsKey('structuredFormat')
+              ? GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStructuredFormat
+                  .fromJson(json_['structuredFormat']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          text: json_.containsKey('text')
+              ? GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText
+                  .fromJson(
+                      json_['text'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (structuredFormat != null) 'structuredFormat': structuredFormat!,
+        if (text != null) 'text': text!,
+      };
+}
+
+/// Identifies a substring within a given text.
+class GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStringRange {
+  /// Zero-based offset of the last Unicode character (exclusive).
+  core.int? endOffset;
+
+  /// Zero-based offset of the first Unicode character of the string
+  /// (inclusive).
+  core.int? startOffset;
+
+  GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStringRange({
+    this.endOffset,
+    this.startOffset,
+  });
+
+  GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStringRange.fromJson(
+      core.Map json_)
+      : this(
+          endOffset: json_.containsKey('endOffset')
+              ? json_['endOffset'] as core.int
+              : null,
+          startOffset: json_.containsKey('startOffset')
+              ? json_['startOffset'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endOffset != null) 'endOffset': endOffset!,
+        if (startOffset != null) 'startOffset': startOffset!,
+      };
+}
+
+/// Contains a breakdown of a Place or query prediction into main text and
+/// secondary text.
+///
+/// For Place predictions, the main text contains the specific name of the
+/// Place. For query predictions, the main text contains the query. The
+/// secondary text contains additional disambiguating features (such as a city
+/// or region) to further identify the Place or refine the query.
+class GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStructuredFormat {
+  /// Represents the name of the Place or query.
+  GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText?
+      mainText;
+
+  /// Represents additional disambiguating features (such as a city or region)
+  /// to further identify the Place or refine the query.
+  GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText?
+      secondaryText;
+
+  GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStructuredFormat({
+    this.mainText,
+    this.secondaryText,
+  });
+
+  GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStructuredFormat.fromJson(
+      core.Map json_)
+      : this(
+          mainText: json_.containsKey('mainText')
+              ? GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText
+                  .fromJson(
+                      json_['mainText'] as core.Map<core.String, core.dynamic>)
+              : null,
+          secondaryText: json_.containsKey('secondaryText')
+              ? GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText
+                  .fromJson(json_['secondaryText']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (mainText != null) 'mainText': mainText!,
+        if (secondaryText != null) 'secondaryText': secondaryText!,
       };
 }
 
@@ -639,8 +1299,8 @@ class GoogleMapsPlacesV1Photo {
   /// Identifier.
   ///
   /// A reference representing this place photo which may be used to look up
-  /// this place photo again (a.k.a. the API "resource" name:
-  /// places/{place_id}/photos/{photo}).
+  /// this place photo again (also called the API "resource" name:
+  /// `places/{place_id}/photos/{photo}`).
   core.String? name;
 
   /// The maximum available width, in pixels.
@@ -682,7 +1342,7 @@ class GoogleMapsPlacesV1Photo {
 /// A photo media from Places API.
 class GoogleMapsPlacesV1PhotoMedia {
   /// The resource name of a photo media in the format:
-  /// `places/place_id/photos/photo_reference/media`.
+  /// `places/{place_id}/photos/{photo_reference}/media`.
   core.String? name;
 
   /// A short-lived uri that can be used to render the photo.
@@ -834,8 +1494,9 @@ class GoogleMapsPlacesV1Place {
   /// Place has a children's menu.
   core.bool? menuForChildren;
 
-  /// An ID representing this place which may be used to look up this place
-  /// again (a.k.a. the API "resource" name: places/place_id).
+  /// This Place's resource name, in `places/{place_id}` format.
+  ///
+  /// Can be used to look up the Place.
   core.String? name;
 
   /// A human-readable phone number for the place, in national format.
@@ -854,6 +1515,8 @@ class GoogleMapsPlacesV1Place {
   GoogleMapsPlacesV1PlacePaymentOptions? paymentOptions;
 
   /// Information (including references) about photos of this place.
+  ///
+  /// A maximum of 10 photos can be returned.
   core.List<GoogleMapsPlacesV1Photo>? photos;
 
   /// Plus code of the place location lat/long.
@@ -908,6 +1571,8 @@ class GoogleMapsPlacesV1Place {
   core.bool? restroom;
 
   /// List of reviews about this place, sorted by relevance.
+  ///
+  /// A maximum of 5 reviews can be returned.
   core.List<GoogleMapsPlacesV1Review>? reviews;
 
   /// Specifies if the place serves beer.
@@ -1881,7 +2546,7 @@ class GoogleMapsPlacesV1Review {
 
   /// A reference representing this place review which may be used to look up
   /// this place review again (also called the API "resource" name:
-  /// places/place_id/reviews/review).
+  /// `places/{place_id}/reviews/{review}`).
   core.String? name;
 
   /// The review text in its original language.
@@ -1955,38 +2620,45 @@ class GoogleMapsPlacesV1SearchNearbyRequest {
   /// Excluded primary Place type (e.g. "restaurant" or "gas_station") from
   /// https://developers.google.com/maps/documentation/places/web-service/place-types.
   ///
-  /// If there are any conflicting primary types, i.e. a type appears in both
-  /// included_primary_types and excluded_primary_types, an INVALID_ARGUMENT
-  /// error is returned. If a Place type is specified with multiple type
-  /// restrictions, only places that satisfy all of the restrictions are
-  /// returned. For example, if we have {included_types = \["restaurant"\],
-  /// excluded_primary_types = \["restaurant"\]}, the returned places provide
-  /// "restaurant" related services but do not operate primarily as
-  /// "restaurants".
+  /// Up to 50 types from
+  /// [Table A](https://developers.google.com/maps/documentation/places/web-service/place-types#table-a)
+  /// may be specified. If there are any conflicting primary types, i.e. a type
+  /// appears in both included_primary_types and excluded_primary_types, an
+  /// INVALID_ARGUMENT error is returned. If a Place type is specified with
+  /// multiple type restrictions, only places that satisfy all of the
+  /// restrictions are returned. For example, if we have {included_types =
+  /// \["restaurant"\], excluded_primary_types = \["restaurant"\]}, the returned
+  /// places provide "restaurant" related services but do not operate primarily
+  /// as "restaurants".
   core.List<core.String>? excludedPrimaryTypes;
 
   /// Excluded Place type (eg, "restaurant" or "gas_station") from
   /// https://developers.google.com/maps/documentation/places/web-service/place-types.
   ///
-  /// If the client provides both included_types (e.g. restaurant) and
-  /// excluded_types (e.g. cafe), then the response should include places that
-  /// are restaurant but not cafe. The response includes places that match at
-  /// least one of the included_types and none of the excluded_types. If there
-  /// are any conflicting types, i.e. a type appears in both included_types and
-  /// excluded_types, an INVALID_ARGUMENT error is returned. If a Place type is
-  /// specified with multiple type restrictions, only places that satisfy all of
-  /// the restrictions are returned. For example, if we have {included_types =
-  /// \["restaurant"\], excluded_primary_types = \["restaurant"\]}, the returned
-  /// places provide "restaurant" related services but do not operate primarily
-  /// as "restaurants".
+  /// Up to 50 types from
+  /// [Table A](https://developers.google.com/maps/documentation/places/web-service/place-types#table-a)
+  /// may be specified. If the client provides both included_types (e.g.
+  /// restaurant) and excluded_types (e.g. cafe), then the response should
+  /// include places that are restaurant but not cafe. The response includes
+  /// places that match at least one of the included_types and none of the
+  /// excluded_types. If there are any conflicting types, i.e. a type appears in
+  /// both included_types and excluded_types, an INVALID_ARGUMENT error is
+  /// returned. If a Place type is specified with multiple type restrictions,
+  /// only places that satisfy all of the restrictions are returned. For
+  /// example, if we have {included_types = \["restaurant"\],
+  /// excluded_primary_types = \["restaurant"\]}, the returned places provide
+  /// "restaurant" related services but do not operate primarily as
+  /// "restaurants".
   core.List<core.String>? excludedTypes;
 
   /// Included primary Place type (e.g. "restaurant" or "gas_station") from
   /// https://developers.google.com/maps/documentation/places/web-service/place-types.
   ///
   /// A place can only have a single primary type from the supported types table
-  /// associated with it. If there are any conflicting primary types, i.e. a
-  /// type appears in both included_primary_types and excluded_primary_types, an
+  /// associated with it. Up to 50 types from
+  /// [Table A](https://developers.google.com/maps/documentation/places/web-service/place-types#table-a)
+  /// may be specified. If there are any conflicting primary types, i.e. a type
+  /// appears in both included_primary_types and excluded_primary_types, an
   /// INVALID_ARGUMENT error is returned. If a Place type is specified with
   /// multiple type restrictions, only places that satisfy all of the
   /// restrictions are returned. For example, if we have {included_types =
@@ -1998,13 +2670,16 @@ class GoogleMapsPlacesV1SearchNearbyRequest {
   /// Included Place type (eg, "restaurant" or "gas_station") from
   /// https://developers.google.com/maps/documentation/places/web-service/place-types.
   ///
-  /// If there are any conflicting types, i.e. a type appears in both
-  /// included_types and excluded_types, an INVALID_ARGUMENT error is returned.
-  /// If a Place type is specified with multiple type restrictions, only places
-  /// that satisfy all of the restrictions are returned. For example, if we have
-  /// {included_types = \["restaurant"\], excluded_primary_types =
-  /// \["restaurant"\]}, the returned places provide "restaurant" related
-  /// services but do not operate primarily as "restaurants".
+  /// Up to 50 types from
+  /// [Table A](https://developers.google.com/maps/documentation/places/web-service/place-types#table-a)
+  /// may be specified. If there are any conflicting types, i.e. a type appears
+  /// in both included_types and excluded_types, an INVALID_ARGUMENT error is
+  /// returned. If a Place type is specified with multiple type restrictions,
+  /// only places that satisfy all of the restrictions are returned. For
+  /// example, if we have {included_types = \["restaurant"\],
+  /// excluded_primary_types = \["restaurant"\]}, the returned places provide
+  /// "restaurant" related services but do not operate primarily as
+  /// "restaurants".
   core.List<core.String>? includedTypes;
 
   /// Place details will be displayed with the preferred language if available.
@@ -2340,6 +3015,9 @@ class GoogleMapsPlacesV1SearchTextRequestLocationBias {
   ///
   /// `rectangle.high()` must be the northeast point of the rectangle viewport.
   /// `rectangle.low()` must be the southwest point of the rectangle viewport.
+  /// `rectangle.low().latitude()` cannot be greater than
+  /// `rectangle.high().latitude()`. This will result in an empty latitude
+  /// range. A rectangle viewport cannot be wider than 180 degrees.
   GoogleGeoTypeViewport? rectangle;
 
   GoogleMapsPlacesV1SearchTextRequestLocationBias({
@@ -2374,6 +3052,9 @@ class GoogleMapsPlacesV1SearchTextRequestLocationRestriction {
   ///
   /// `rectangle.high()` must be the northeast point of the rectangle viewport.
   /// `rectangle.low()` must be the southwest point of the rectangle viewport.
+  /// `rectangle.low().latitude()` cannot be greater than
+  /// `rectangle.high().latitude()`. This will result in an empty latitude
+  /// range. A rectangle viewport cannot be wider than 180 degrees.
   GoogleGeoTypeViewport? rectangle;
 
   GoogleMapsPlacesV1SearchTextRequestLocationRestriction({

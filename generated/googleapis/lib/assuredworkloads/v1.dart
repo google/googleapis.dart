@@ -352,6 +352,48 @@ class OrganizationsLocationsWorkloadsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Enable resource violation monitoring for a workload.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The `name` field is used to identify the workload.
+  /// Format:
+  /// organizations/{org_id}/locations/{location_id}/workloads/{workload_id}
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/workloads/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse>
+      enableResourceMonitoring(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$name') + ':enableResourceMonitoring';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets Assured Workload associated with a CRM Node
   ///
   /// Request parameters:
@@ -763,7 +805,7 @@ class OrganizationsLocationsWorkloadsViolationsResource {
   }
 }
 
-/// Request for acknowledging the violation Next Id: 5
+/// Request for acknowledging the violation
 class GoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest {
   /// Acknowledge type of specified violation.
   ///
@@ -906,6 +948,9 @@ class GoogleCloudAssuredworkloadsV1AssetMoveAnalysis {
         if (assetType != null) 'assetType': assetType!,
       };
 }
+
+/// Response for EnableResourceMonitoring endpoint.
+typedef GoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse = $Empty;
 
 /// Response of ListViolations endpoint.
 class GoogleCloudAssuredworkloadsV1ListViolationsResponse {

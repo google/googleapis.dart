@@ -140,6 +140,7 @@ api.ClientConfig buildClientConfig() {
   final o = api.ClientConfig();
   buildCounterClientConfig++;
   if (buildCounterClientConfig < 3) {
+    o.clientScope = 'foo';
     o.genericXdsConfigs = buildUnnamed1();
     o.node = buildNode();
     o.xdsConfig = buildUnnamed2();
@@ -151,6 +152,10 @@ api.ClientConfig buildClientConfig() {
 void checkClientConfig(api.ClientConfig o) {
   buildCounterClientConfig++;
   if (buildCounterClientConfig < 3) {
+    unittest.expect(
+      o.clientScope!,
+      unittest.equals('foo'),
+    );
     checkUnnamed1(o.genericXdsConfigs!);
     checkNode(o.node!);
     checkUnnamed2(o.xdsConfig!);

@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20231027",
+    "revision": "20240219",
     "rootUrl": "https://datalineage.googleapis.com/",
     "servicePath": "",
     "title": "Data Lineage API",

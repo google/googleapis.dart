@@ -489,6 +489,7 @@ api.CommitRequest buildCommitRequest() {
   final o = api.CommitRequest();
   buildCounterCommitRequest++;
   if (buildCounterCommitRequest < 3) {
+    o.maxCommitDelay = 'foo';
     o.mutations = buildUnnamed6();
     o.requestOptions = buildRequestOptions();
     o.returnCommitStats = true;
@@ -502,6 +503,10 @@ api.CommitRequest buildCommitRequest() {
 void checkCommitRequest(api.CommitRequest o) {
   buildCounterCommitRequest++;
   if (buildCounterCommitRequest < 3) {
+    unittest.expect(
+      o.maxCommitDelay!,
+      unittest.equals('foo'),
+    );
     checkUnnamed6(o.mutations!);
     checkRequestOptions(o.requestOptions!);
     unittest.expect(o.returnCommitStats!, unittest.isTrue);
@@ -1738,6 +1743,7 @@ api.InstanceConfig buildInstanceConfig() {
     o.reconciling = true;
     o.replicas = buildUnnamed24();
     o.state = 'foo';
+    o.storageLimitPerProcessingUnit = 'foo';
   }
   buildCounterInstanceConfig--;
   return o;
@@ -1777,6 +1783,10 @@ void checkInstanceConfig(api.InstanceConfig o) {
     checkUnnamed24(o.replicas!);
     unittest.expect(
       o.state!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.storageLimitPerProcessingUnit!,
       unittest.equals('foo'),
     );
   }

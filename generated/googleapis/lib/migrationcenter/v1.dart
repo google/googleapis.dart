@@ -3874,9 +3874,23 @@ class ComputeEnginePreferences {
   /// Preferences concerning the machine types to consider on Compute Engine.
   MachinePreferences? machinePreferences;
 
+  /// Persistent disk type to use.
+  ///
+  /// If unspecified (default), all types are considered, based on available
+  /// usage data.
+  /// Possible string values are:
+  /// - "PERSISTENT_DISK_TYPE_UNSPECIFIED" : Unspecified (default value).
+  /// Selecting this value allows the system to use any disk type according to
+  /// reported usage. This a good value to start with.
+  /// - "PERSISTENT_DISK_TYPE_STANDARD" : Standard HDD Persistent Disk.
+  /// - "PERSISTENT_DISK_TYPE_BALANCED" : Balanced Persistent Disk.
+  /// - "PERSISTENT_DISK_TYPE_SSD" : SSD Persistent Disk.
+  core.String? persistentDiskType;
+
   ComputeEnginePreferences({
     this.licenseType,
     this.machinePreferences,
+    this.persistentDiskType,
   });
 
   ComputeEnginePreferences.fromJson(core.Map json_)
@@ -3888,12 +3902,17 @@ class ComputeEnginePreferences {
               ? MachinePreferences.fromJson(json_['machinePreferences']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          persistentDiskType: json_.containsKey('persistentDiskType')
+              ? json_['persistentDiskType'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (licenseType != null) 'licenseType': licenseType!,
         if (machinePreferences != null)
           'machinePreferences': machinePreferences!,
+        if (persistentDiskType != null)
+          'persistentDiskType': persistentDiskType!,
       };
 }
 
@@ -5004,6 +5023,9 @@ class GuestInstalledApplication {
   /// The time when the application was installed.
   core.String? installTime;
 
+  /// License strings associated with the installed application.
+  core.List<core.String>? licenses;
+
   /// Source path.
   core.String? path;
 
@@ -5016,6 +5038,7 @@ class GuestInstalledApplication {
   GuestInstalledApplication({
     this.applicationName,
     this.installTime,
+    this.licenses,
     this.path,
     this.vendor,
     this.version,
@@ -5029,6 +5052,11 @@ class GuestInstalledApplication {
           installTime: json_.containsKey('installTime')
               ? json_['installTime'] as core.String
               : null,
+          licenses: json_.containsKey('licenses')
+              ? (json_['licenses'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           path: json_.containsKey('path') ? json_['path'] as core.String : null,
           vendor: json_.containsKey('vendor')
               ? json_['vendor'] as core.String
@@ -5041,6 +5069,7 @@ class GuestInstalledApplication {
   core.Map<core.String, core.dynamic> toJson() => {
         if (applicationName != null) 'applicationName': applicationName!,
         if (installTime != null) 'installTime': installTime!,
+        if (licenses != null) 'licenses': licenses!,
         if (path != null) 'path': path!,
         if (vendor != null) 'vendor': vendor!,
         if (version != null) 'version': version!,
@@ -7522,7 +7551,7 @@ class ReportSummaryAssetAggregateStats {
   /// Count of assets grouped by Operating System families.
   ReportSummaryChartData? operatingSystem;
 
-  /// Histogram showing a distribution of memory sizes.
+  /// Histogram showing a distribution of storage sizes.
   ReportSummaryHistogramChartData? storageBytesHistogram;
 
   /// Total memory split into Used/Free buckets.

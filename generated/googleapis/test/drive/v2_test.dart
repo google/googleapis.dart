@@ -1413,6 +1413,7 @@ api.ContentRestriction buildContentRestriction() {
     o.reason = 'foo';
     o.restrictingUser = buildUser();
     o.restrictionDate = core.DateTime.parse('2002-02-27T14:01:02Z');
+    o.systemRestricted = true;
     o.type = 'foo';
   }
   buildCounterContentRestriction--;
@@ -1433,6 +1434,7 @@ void checkContentRestriction(api.ContentRestriction o) {
       o.restrictionDate!,
       unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
+    unittest.expect(o.systemRestricted!, unittest.isTrue);
     unittest.expect(
       o.type!,
       unittest.equals('foo'),

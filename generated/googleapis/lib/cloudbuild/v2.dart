@@ -1260,14 +1260,31 @@ class Binding {
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
   /// (primary) that represents all the users of that domain. For example,
-  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a user that has
-  /// been recently deleted. For example,
-  /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
-  /// this value reverts to `user:{emailid}` and the recovered user retains the
-  /// role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a service account
-  /// that has been recently deleted. For example,
+  /// `google.com` or `example.com`. *
+  /// `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workforce identity pool. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`:
+  /// All workforce identities in a group. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All workforce identities with a specific attribute value. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}
+  /// / * `: All identities in a workforce identity pool. *
+  /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workload identity pool. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`:
+  /// A workload identity pool group. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All identities in a workload identity pool with a certain attribute. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}
+  /// / * `: All identities in a workload identity pool. *
+  /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
+  /// identifier) representing a user that has been recently deleted. For
+  /// example, `alice@example.com?uid=123456789012345678901`. If the user is
+  /// recovered, this value reverts to `user:{emailid}` and the recovered user
+  /// retains the role in the binding. *
+  /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus
+  /// unique identifier) representing a service account that has been recently
+  /// deleted. For example,
   /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If
   /// the service account is undeleted, this value reverts to
   /// `serviceAccount:{emailid}` and the undeleted service account retains the
@@ -1276,12 +1293,19 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding.
+  /// the role in the binding. *
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// Deleted single identity in a workforce identity pool. For example,
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
   ///
-  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an
+  /// overview of the IAM roles and permissions, see the
+  /// [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For
+  /// a list of the available pre-defined roles, see
+  /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
   Binding({
@@ -1311,14 +1335,187 @@ class Binding {
       };
 }
 
+/// Configuration for connections to Bitbucket Cloud.
+class BitbucketCloudConfig {
+  /// An access token with the `webhook`, `repository`, `repository:admin` and
+  /// `pullrequest` scope access.
+  ///
+  /// It can be either a workspace, project or repository access token. It's
+  /// recommended to use a system account to generate these credentials.
+  ///
+  /// Required.
+  UserCredential? authorizerCredential;
+
+  /// An access token with the `repository` access.
+  ///
+  /// It can be either a workspace, project or repository access token. It's
+  /// recommended to use a system account to generate the credentials.
+  ///
+  /// Required.
+  UserCredential? readAuthorizerCredential;
+
+  /// SecretManager resource containing the webhook secret used to verify
+  /// webhook events, formatted as `projects / * /secrets / * /versions / * `.
+  ///
+  /// Required.
+  core.String? webhookSecretSecretVersion;
+
+  /// The Bitbucket Cloud Workspace ID to be connected to Google Cloud Platform.
+  ///
+  /// Required.
+  core.String? workspace;
+
+  BitbucketCloudConfig({
+    this.authorizerCredential,
+    this.readAuthorizerCredential,
+    this.webhookSecretSecretVersion,
+    this.workspace,
+  });
+
+  BitbucketCloudConfig.fromJson(core.Map json_)
+      : this(
+          authorizerCredential: json_.containsKey('authorizerCredential')
+              ? UserCredential.fromJson(json_['authorizerCredential']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          readAuthorizerCredential:
+              json_.containsKey('readAuthorizerCredential')
+                  ? UserCredential.fromJson(json_['readAuthorizerCredential']
+                      as core.Map<core.String, core.dynamic>)
+                  : null,
+          webhookSecretSecretVersion:
+              json_.containsKey('webhookSecretSecretVersion')
+                  ? json_['webhookSecretSecretVersion'] as core.String
+                  : null,
+          workspace: json_.containsKey('workspace')
+              ? json_['workspace'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (authorizerCredential != null)
+          'authorizerCredential': authorizerCredential!,
+        if (readAuthorizerCredential != null)
+          'readAuthorizerCredential': readAuthorizerCredential!,
+        if (webhookSecretSecretVersion != null)
+          'webhookSecretSecretVersion': webhookSecretSecretVersion!,
+        if (workspace != null) 'workspace': workspace!,
+      };
+}
+
+/// Configuration for connections to Bitbucket Data Center.
+class BitbucketDataCenterConfig {
+  /// A http access token with the `REPO_ADMIN` scope access.
+  ///
+  /// Required.
+  UserCredential? authorizerCredential;
+
+  /// The URI of the Bitbucket Data Center instance or cluster this connection
+  /// is for.
+  ///
+  /// Required.
+  core.String? hostUri;
+
+  /// A http access token with the `REPO_READ` access.
+  ///
+  /// Required.
+  UserCredential? readAuthorizerCredential;
+
+  /// Version of the Bitbucket Data Center running on the `host_uri`.
+  ///
+  /// Output only.
+  core.String? serverVersion;
+
+  /// Configuration for using Service Directory to privately connect to a
+  /// Bitbucket Data Center.
+  ///
+  /// This should only be set if the Bitbucket Data Center is hosted on-premises
+  /// and not reachable by public internet. If this field is left empty, calls
+  /// to the Bitbucket Data Center will be made over the public internet.
+  ///
+  /// Optional.
+  GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig? serviceDirectoryConfig;
+
+  /// SSL certificate to use for requests to the Bitbucket Data Center.
+  ///
+  /// Optional.
+  core.String? sslCa;
+
+  /// SecretManager resource containing the webhook secret used to verify
+  /// webhook events, formatted as `projects / * /secrets / * /versions / * `.
+  ///
+  /// Required. Immutable.
+  core.String? webhookSecretSecretVersion;
+
+  BitbucketDataCenterConfig({
+    this.authorizerCredential,
+    this.hostUri,
+    this.readAuthorizerCredential,
+    this.serverVersion,
+    this.serviceDirectoryConfig,
+    this.sslCa,
+    this.webhookSecretSecretVersion,
+  });
+
+  BitbucketDataCenterConfig.fromJson(core.Map json_)
+      : this(
+          authorizerCredential: json_.containsKey('authorizerCredential')
+              ? UserCredential.fromJson(json_['authorizerCredential']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          hostUri: json_.containsKey('hostUri')
+              ? json_['hostUri'] as core.String
+              : null,
+          readAuthorizerCredential:
+              json_.containsKey('readAuthorizerCredential')
+                  ? UserCredential.fromJson(json_['readAuthorizerCredential']
+                      as core.Map<core.String, core.dynamic>)
+                  : null,
+          serverVersion: json_.containsKey('serverVersion')
+              ? json_['serverVersion'] as core.String
+              : null,
+          serviceDirectoryConfig: json_.containsKey('serviceDirectoryConfig')
+              ? GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig.fromJson(
+                  json_['serviceDirectoryConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          sslCa:
+              json_.containsKey('sslCa') ? json_['sslCa'] as core.String : null,
+          webhookSecretSecretVersion:
+              json_.containsKey('webhookSecretSecretVersion')
+                  ? json_['webhookSecretSecretVersion'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (authorizerCredential != null)
+          'authorizerCredential': authorizerCredential!,
+        if (hostUri != null) 'hostUri': hostUri!,
+        if (readAuthorizerCredential != null)
+          'readAuthorizerCredential': readAuthorizerCredential!,
+        if (serverVersion != null) 'serverVersion': serverVersion!,
+        if (serviceDirectoryConfig != null)
+          'serviceDirectoryConfig': serviceDirectoryConfig!,
+        if (sslCa != null) 'sslCa': sslCa!,
+        if (webhookSecretSecretVersion != null)
+          'webhookSecretSecretVersion': webhookSecretSecretVersion!,
+      };
+}
+
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
 
-/// A connection to a SCM like GitHub, GitHub Enterprise, Bitbucket Data Center
-/// or GitLab.
+/// A connection to a SCM like GitHub, GitHub Enterprise, Bitbucket Data Center,
+/// Bitbucket Cloud or GitLab.
 class Connection {
   /// Allows clients to store small amounts of arbitrary data.
   core.Map<core.String, core.String>? annotations;
+
+  /// Configuration for connections to Bitbucket Cloud.
+  BitbucketCloudConfig? bitbucketCloudConfig;
+
+  /// Configuration for connections to Bitbucket Data Center.
+  BitbucketDataCenterConfig? bitbucketDataCenterConfig;
 
   /// Server assigned timestamp for when the connection was created.
   ///
@@ -1370,6 +1567,8 @@ class Connection {
 
   Connection({
     this.annotations,
+    this.bitbucketCloudConfig,
+    this.bitbucketDataCenterConfig,
     this.createTime,
     this.disabled,
     this.etag,
@@ -1393,6 +1592,16 @@ class Connection {
                   ),
                 )
               : null,
+          bitbucketCloudConfig: json_.containsKey('bitbucketCloudConfig')
+              ? BitbucketCloudConfig.fromJson(json_['bitbucketCloudConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          bitbucketDataCenterConfig:
+              json_.containsKey('bitbucketDataCenterConfig')
+                  ? BitbucketDataCenterConfig.fromJson(
+                      json_['bitbucketDataCenterConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
               : null,
@@ -1428,6 +1637,10 @@ class Connection {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (annotations != null) 'annotations': annotations!,
+        if (bitbucketCloudConfig != null)
+          'bitbucketCloudConfig': bitbucketCloudConfig!,
+        if (bitbucketDataCenterConfig != null)
+          'bitbucketDataCenterConfig': bitbucketDataCenterConfig!,
         if (createTime != null) 'createTime': createTime!,
         if (disabled != null) 'disabled': disabled!,
         if (etag != null) 'etag': etag!,

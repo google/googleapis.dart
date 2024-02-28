@@ -50,7 +50,7 @@ Accesses report data in Google Analytics. Warning: Creating multiple Customer Ap
 
 Allows users to manage BigQuery connections to external data sources.
 
-- [Original documentation](https://cloud.google.com/bigquery/)
+- [Original documentation](https://cloud.google.com/bigquery/docs/connections-api-intro)
 - [Dart package details](https://pub.dev/documentation/googleapis_beta/9.0.0/bigqueryconnection/v1beta1/bigqueryconnection/v1beta1-library.html)
 
 #### Error Reporting API - `clouderrorreporting/v1beta1`

@@ -879,6 +879,7 @@ api.RecognizeResponse buildRecognizeResponse() {
     o.results = buildUnnamed12();
     o.speechAdaptationInfo = buildSpeechAdaptationInfo();
     o.totalBilledTime = 'foo';
+    o.usingLegacyModels = true;
   }
   buildCounterRecognizeResponse--;
   return o;
@@ -897,6 +898,7 @@ void checkRecognizeResponse(api.RecognizeResponse o) {
       o.totalBilledTime!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.usingLegacyModels!, unittest.isTrue);
   }
   buildCounterRecognizeResponse--;
 }

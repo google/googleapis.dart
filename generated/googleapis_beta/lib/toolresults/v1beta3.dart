@@ -3951,6 +3951,9 @@ class PerfMetricsSummary {
   ///
   /// Statistics are reset at the beginning of the run and collected at the end
   /// of the run.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   GraphicsStats? graphicsStats;
 
   /// A tool results history ID.

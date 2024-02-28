@@ -33,6 +33,9 @@
 /// - [OperationsResource]
 /// - [OrganizationsResource]
 ///   - [OrganizationsLocationsResource]
+///     - [OrganizationsLocationsOrgPolicyViolationsPreviewsResource]
+/// -
+/// [OrganizationsLocationsOrgPolicyViolationsPreviewsOrgPolicyViolationsResource]
 ///     - [OrganizationsLocationsReplaysResource]
 ///       - [OrganizationsLocationsReplaysOperationsResource]
 ///       - [OrganizationsLocationsReplaysResultsResource]
@@ -469,11 +472,243 @@ class OrganizationsResource {
 class OrganizationsLocationsResource {
   final commons.ApiRequester _requester;
 
+  OrganizationsLocationsOrgPolicyViolationsPreviewsResource
+      get orgPolicyViolationsPreviews =>
+          OrganizationsLocationsOrgPolicyViolationsPreviewsResource(_requester);
   OrganizationsLocationsReplaysResource get replays =>
       OrganizationsLocationsReplaysResource(_requester);
 
   OrganizationsLocationsResource(commons.ApiRequester client)
       : _requester = client;
+}
+
+class OrganizationsLocationsOrgPolicyViolationsPreviewsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsOrgPolicyViolationsPreviewsOrgPolicyViolationsResource
+      get orgPolicyViolations =>
+          OrganizationsLocationsOrgPolicyViolationsPreviewsOrgPolicyViolationsResource(
+              _requester);
+
+  OrganizationsLocationsOrgPolicyViolationsPreviewsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// CreateOrgPolicyViolationsPreview creates an OrgPolicyViolationsPreview for
+  /// the proposed changes in the provided
+  /// OrgPolicyViolationsPreview.OrgPolicyOverlay.
+  ///
+  /// The changes to OrgPolicy are specified by this `OrgPolicyOverlay`. The
+  /// resources to scan are inferred from these specified changes.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The organization under which this
+  /// OrgPolicyViolationsPreview will be created. Example:
+  /// `organizations/my-example-org/locations/global`
+  /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [orgPolicyViolationsPreviewId] - Optional. An optional user-specified ID
+  /// for the OrgPolicyViolationsPreview. If not provided, a random ID will be
+  /// generated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> create(
+    GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreview request,
+    core.String parent, {
+    core.String? orgPolicyViolationsPreviewId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (orgPolicyViolationsPreviewId != null)
+        'orgPolicyViolationsPreviewId': [orgPolicyViolationsPreviewId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/orgPolicyViolationsPreviews';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// GetOrgPolicyViolationsPreview gets the specified
+  /// OrgPolicyViolationsPreview.
+  ///
+  /// Each OrgPolicyViolationsPreview is available for at least 7 days.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the OrgPolicyViolationsPreview to get.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/orgPolicyViolationsPreviews/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreview].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreview> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreview.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// ListOrgPolicyViolationsPreviews lists each OrgPolicyViolationsPreview in
+  /// an organization.
+  ///
+  /// Each OrgPolicyViolationsPreview is available for at least 7 days.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent the violations are scoped to. Format:
+  /// `organizations/{organization}/locations/{location}` Example:
+  /// `organizations/my-example-org/locations/global`
+  /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of items to return. The service
+  /// may return fewer than this value. If unspecified, at most 5 items will be
+  /// returned. The maximum value is 10; values above 10 will be coerced to 10.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous call.
+  /// Provide this to retrieve the subsequent page. When paginating, all other
+  /// parameters must match the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudPolicysimulatorV1ListOrgPolicyViolationsPreviewsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<
+      GoogleCloudPolicysimulatorV1ListOrgPolicyViolationsPreviewsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/orgPolicyViolationsPreviews';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudPolicysimulatorV1ListOrgPolicyViolationsPreviewsResponse
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class OrganizationsLocationsOrgPolicyViolationsPreviewsOrgPolicyViolationsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsOrgPolicyViolationsPreviewsOrgPolicyViolationsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// ListOrgPolicyViolations lists the OrgPolicyViolations that are present in
+  /// an OrgPolicyViolationsPreview.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The OrgPolicyViolationsPreview to get
+  /// OrgPolicyViolations from. Format:
+  /// organizations/{organization}/locations/{location}/orgPolicyViolationsPreviews/{orgPolicyViolationsPreview}
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/orgPolicyViolationsPreviews/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of items to return. The service
+  /// may return fewer than this value. If unspecified, at most 50 items will be
+  /// returned. The maximum value is 1000; values above 1000 will be coerced to
+  /// 1000.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous call.
+  /// Provide this to retrieve the subsequent page. When paginating, all other
+  /// parameters must match the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudPolicysimulatorV1ListOrgPolicyViolationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudPolicysimulatorV1ListOrgPolicyViolationsResponse>
+      list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/orgPolicyViolations';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudPolicysimulatorV1ListOrgPolicyViolationsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class OrganizationsLocationsReplaysResource {
@@ -1012,6 +1247,302 @@ class ProjectsLocationsReplaysResultsResource {
   }
 }
 
+/// Similar to PolicySpec but with an extra 'launch' field for launch reference.
+///
+/// The PolicySpec here is specific for dry-run/darklaunch.
+class GoogleCloudOrgpolicyV2AlternatePolicySpec {
+  /// Reference to the launch that will be used while audit logging and to
+  /// control the launch.
+  ///
+  /// Should be set only in the alternate policy.
+  core.String? launch;
+
+  /// Specify constraint for configurations of Google Cloud resources.
+  GoogleCloudOrgpolicyV2PolicySpec? spec;
+
+  GoogleCloudOrgpolicyV2AlternatePolicySpec({
+    this.launch,
+    this.spec,
+  });
+
+  GoogleCloudOrgpolicyV2AlternatePolicySpec.fromJson(core.Map json_)
+      : this(
+          launch: json_.containsKey('launch')
+              ? json_['launch'] as core.String
+              : null,
+          spec: json_.containsKey('spec')
+              ? GoogleCloudOrgpolicyV2PolicySpec.fromJson(
+                  json_['spec'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (launch != null) 'launch': launch!,
+        if (spec != null) 'spec': spec!,
+      };
+}
+
+/// A custom constraint defined by customers which can *only* be applied to the
+/// given resource types and organization.
+///
+/// By creating a custom constraint, customers can apply policies of this custom
+/// constraint. *Creating a custom constraint itself does NOT apply any policy
+/// enforcement*.
+typedef GoogleCloudOrgpolicyV2CustomConstraint
+    = $GoogleCloudOrgpolicyV2CustomConstraint;
+
+/// Defines an organization policy which is used to specify constraints for
+/// configurations of Google Cloud resources.
+class GoogleCloudOrgpolicyV2Policy {
+  /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  GoogleCloudOrgpolicyV2AlternatePolicySpec? alternate;
+
+  /// Dry-run policy.
+  ///
+  /// Audit-only policy, can be used to monitor how the policy would have
+  /// impacted the existing and future resources if it's enforced.
+  GoogleCloudOrgpolicyV2PolicySpec? dryRunSpec;
+
+  /// An opaque tag indicating the current state of the policy, used for
+  /// concurrency control.
+  ///
+  /// This 'etag' is computed by the server based on the value of other fields,
+  /// and may be sent on update and delete requests to ensure the client has an
+  /// up-to-date value before proceeding.
+  ///
+  /// Optional.
+  core.String? etag;
+
+  /// The resource name of the policy.
+  ///
+  /// Must be one of the following forms, where `constraint_name` is the name of
+  /// the constraint which this policy configures: *
+  /// `projects/{project_number}/policies/{constraint_name}` *
+  /// `folders/{folder_id}/policies/{constraint_name}` *
+  /// `organizations/{organization_id}/policies/{constraint_name}` For example,
+  /// `projects/123/policies/compute.disableSerialPortAccess`. Note:
+  /// `projects/{project_id}/policies/{constraint_name}` is also an acceptable
+  /// name for API requests, but responses will return the name using the
+  /// equivalent project number.
+  ///
+  /// Immutable.
+  core.String? name;
+
+  /// Basic information about the Organization Policy.
+  GoogleCloudOrgpolicyV2PolicySpec? spec;
+
+  GoogleCloudOrgpolicyV2Policy({
+    this.alternate,
+    this.dryRunSpec,
+    this.etag,
+    this.name,
+    this.spec,
+  });
+
+  GoogleCloudOrgpolicyV2Policy.fromJson(core.Map json_)
+      : this(
+          alternate: json_.containsKey('alternate')
+              ? GoogleCloudOrgpolicyV2AlternatePolicySpec.fromJson(
+                  json_['alternate'] as core.Map<core.String, core.dynamic>)
+              : null,
+          dryRunSpec: json_.containsKey('dryRunSpec')
+              ? GoogleCloudOrgpolicyV2PolicySpec.fromJson(
+                  json_['dryRunSpec'] as core.Map<core.String, core.dynamic>)
+              : null,
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          spec: json_.containsKey('spec')
+              ? GoogleCloudOrgpolicyV2PolicySpec.fromJson(
+                  json_['spec'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (alternate != null) 'alternate': alternate!,
+        if (dryRunSpec != null) 'dryRunSpec': dryRunSpec!,
+        if (etag != null) 'etag': etag!,
+        if (name != null) 'name': name!,
+        if (spec != null) 'spec': spec!,
+      };
+}
+
+/// Defines a Google Cloud policy specification which is used to specify
+/// constraints for configurations of Google Cloud resources.
+class GoogleCloudOrgpolicyV2PolicySpec {
+  /// An opaque tag indicating the current version of the policySpec, used for
+  /// concurrency control.
+  ///
+  /// This field is ignored if used in a `CreatePolicy` request. When the policy
+  /// is returned from either a `GetPolicy` or a `ListPolicies` request, this
+  /// `etag` indicates the version of the current policySpec to use when
+  /// executing a read-modify-write loop. When the policy is returned from a
+  /// `GetEffectivePolicy` request, the `etag` will be unset.
+  core.String? etag;
+
+  /// Determines the inheritance behavior for this policy.
+  ///
+  /// If `inherit_from_parent` is true, policy rules set higher up in the
+  /// hierarchy (up to the closest root) are inherited and present in the
+  /// effective policy. If it is false, then no rules are inherited, and this
+  /// policy becomes the new root for evaluation. This field can be set only for
+  /// policies which configure list constraints.
+  core.bool? inheritFromParent;
+
+  /// Ignores policies set above this resource and restores the
+  /// `constraint_default` enforcement behavior of the specific constraint at
+  /// this resource.
+  ///
+  /// This field can be set in policies for either list or boolean constraints.
+  /// If set, `rules` must be empty and `inherit_from_parent` must be set to
+  /// false.
+  core.bool? reset;
+
+  /// In policies for boolean constraints, the following requirements apply: -
+  /// There must be one and only one policy rule where condition is unset.
+  ///
+  /// - Boolean policy rules with conditions must set `enforced` to the opposite
+  /// of the policy rule without a condition. - During policy evaluation, policy
+  /// rules with conditions that are true for a target resource take precedence.
+  core.List<GoogleCloudOrgpolicyV2PolicySpecPolicyRule>? rules;
+
+  /// The time stamp this was previously updated.
+  ///
+  /// This represents the last time a call to `CreatePolicy` or `UpdatePolicy`
+  /// was made for that policy.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleCloudOrgpolicyV2PolicySpec({
+    this.etag,
+    this.inheritFromParent,
+    this.reset,
+    this.rules,
+    this.updateTime,
+  });
+
+  GoogleCloudOrgpolicyV2PolicySpec.fromJson(core.Map json_)
+      : this(
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          inheritFromParent: json_.containsKey('inheritFromParent')
+              ? json_['inheritFromParent'] as core.bool
+              : null,
+          reset:
+              json_.containsKey('reset') ? json_['reset'] as core.bool : null,
+          rules: json_.containsKey('rules')
+              ? (json_['rules'] as core.List)
+                  .map((value) =>
+                      GoogleCloudOrgpolicyV2PolicySpecPolicyRule.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (inheritFromParent != null) 'inheritFromParent': inheritFromParent!,
+        if (reset != null) 'reset': reset!,
+        if (rules != null) 'rules': rules!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// A rule used to express this policy.
+class GoogleCloudOrgpolicyV2PolicySpecPolicyRule {
+  /// Setting this to true means that all values are allowed.
+  ///
+  /// This field can be set only in policies for list constraints.
+  core.bool? allowAll;
+
+  /// A condition which determines whether this rule is used in the evaluation
+  /// of the policy.
+  ///
+  /// When set, the \`expression\` field in the \`Expr' must include from 1 to
+  /// 10 subexpressions, joined by the "||" or "&&" operators. Each
+  /// subexpression must be of the form "resource.matchTag('/tag_key_short_name,
+  /// 'tag_value_short_name')". or "resource.matchTagId('tagKeys/key_id',
+  /// 'tagValues/value_id')". where key_name and value_name are the resource
+  /// names for Label Keys and Values. These names are available from the Tag
+  /// Manager Service. An example expression is:
+  /// "resource.matchTag('123456789/environment, 'prod')". or
+  /// "resource.matchTagId('tagKeys/123', 'tagValues/456')".
+  GoogleTypeExpr? condition;
+
+  /// Setting this to true means that all values are denied.
+  ///
+  /// This field can be set only in policies for list constraints.
+  core.bool? denyAll;
+
+  /// If `true`, then the policy is enforced.
+  ///
+  /// If `false`, then any configuration is acceptable. This field can be set
+  /// only in policies for boolean constraints.
+  core.bool? enforce;
+
+  /// List of values to be used for this policy rule.
+  ///
+  /// This field can be set only in policies for list constraints.
+  GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues? values;
+
+  GoogleCloudOrgpolicyV2PolicySpecPolicyRule({
+    this.allowAll,
+    this.condition,
+    this.denyAll,
+    this.enforce,
+    this.values,
+  });
+
+  GoogleCloudOrgpolicyV2PolicySpecPolicyRule.fromJson(core.Map json_)
+      : this(
+          allowAll: json_.containsKey('allowAll')
+              ? json_['allowAll'] as core.bool
+              : null,
+          condition: json_.containsKey('condition')
+              ? GoogleTypeExpr.fromJson(
+                  json_['condition'] as core.Map<core.String, core.dynamic>)
+              : null,
+          denyAll: json_.containsKey('denyAll')
+              ? json_['denyAll'] as core.bool
+              : null,
+          enforce: json_.containsKey('enforce')
+              ? json_['enforce'] as core.bool
+              : null,
+          values: json_.containsKey('values')
+              ? GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues.fromJson(
+                  json_['values'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allowAll != null) 'allowAll': allowAll!,
+        if (condition != null) 'condition': condition!,
+        if (denyAll != null) 'denyAll': denyAll!,
+        if (enforce != null) 'enforce': enforce!,
+        if (values != null) 'values': values!,
+      };
+}
+
+/// A message that holds specific allowed and denied values.
+///
+/// This message can define specific values and subtrees of the Resource Manager
+/// resource hierarchy (`Organizations`, `Folders`, `Projects`) that are allowed
+/// or denied. This is achieved by using the `under:` and optional `is:`
+/// prefixes. The `under:` prefix is used to denote resource subtree values. The
+/// `is:` prefix is used to denote specific values, and is required only if the
+/// value contains a ":". Values prefixed with "is:" are treated the same as
+/// values with no prefix. Ancestry subtrees must be in one of the following
+/// formats: - `projects/` (for example, `projects/tokyo-rain-123`) - `folders/`
+/// (for example, `folders/1234`) - `organizations/` (for example,
+/// `organizations/1234`) The `supports_under` field of the associated
+/// `Constraint` defines whether ancestry prefixes can be used.
+typedef GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues = $StringValues;
+
 /// A summary and comparison of the principal's access under the current
 /// (baseline) policies and the proposed (simulated) policies for a single
 /// access tuple.
@@ -1432,6 +1963,86 @@ class GoogleCloudPolicysimulatorV1ExplainedPolicy {
       };
 }
 
+/// ListOrgPolicyViolationsPreviewsResponse is the response message for
+/// OrgPolicyViolationsPreviewService.ListOrgPolicyViolationsPreviews.
+class GoogleCloudPolicysimulatorV1ListOrgPolicyViolationsPreviewsResponse {
+  /// A token that you can use to retrieve the next page of results.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// The list of OrgPolicyViolationsPreview
+  core.List<GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreview>?
+      orgPolicyViolationsPreviews;
+
+  GoogleCloudPolicysimulatorV1ListOrgPolicyViolationsPreviewsResponse({
+    this.nextPageToken,
+    this.orgPolicyViolationsPreviews,
+  });
+
+  GoogleCloudPolicysimulatorV1ListOrgPolicyViolationsPreviewsResponse.fromJson(
+      core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          orgPolicyViolationsPreviews:
+              json_.containsKey('orgPolicyViolationsPreviews')
+                  ? (json_['orgPolicyViolationsPreviews'] as core.List)
+                      .map((value) =>
+                          GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreview
+                              .fromJson(
+                                  value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (orgPolicyViolationsPreviews != null)
+          'orgPolicyViolationsPreviews': orgPolicyViolationsPreviews!,
+      };
+}
+
+/// ListOrgPolicyViolationsResponse is the response message for
+/// OrgPolicyViolationsPreviewService.ListOrgPolicyViolations
+class GoogleCloudPolicysimulatorV1ListOrgPolicyViolationsResponse {
+  /// A token that you can use to retrieve the next page of results.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// The list of OrgPolicyViolations
+  core.List<GoogleCloudPolicysimulatorV1OrgPolicyViolation>?
+      orgPolicyViolations;
+
+  GoogleCloudPolicysimulatorV1ListOrgPolicyViolationsResponse({
+    this.nextPageToken,
+    this.orgPolicyViolations,
+  });
+
+  GoogleCloudPolicysimulatorV1ListOrgPolicyViolationsResponse.fromJson(
+      core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          orgPolicyViolations: json_.containsKey('orgPolicyViolations')
+              ? (json_['orgPolicyViolations'] as core.List)
+                  .map((value) =>
+                      GoogleCloudPolicysimulatorV1OrgPolicyViolation.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (orgPolicyViolations != null)
+          'orgPolicyViolations': orgPolicyViolations!,
+      };
+}
+
 /// Response message for Simulator.ListReplayResults.
 class GoogleCloudPolicysimulatorV1ListReplayResultsResponse {
   /// A token that you can use to retrieve the next page of ReplayResult
@@ -1465,6 +2076,379 @@ class GoogleCloudPolicysimulatorV1ListReplayResultsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (replayResults != null) 'replayResults': replayResults!,
+      };
+}
+
+/// The proposed changes to OrgPolicy.
+class GoogleCloudPolicysimulatorV1OrgPolicyOverlay {
+  /// The OrgPolicy CustomConstraint changes to preview violations for.
+  ///
+  /// Any existing CustomConstraints with the same name will be overridden in
+  /// the simulation. That is, violations will be determined as if all custom
+  /// constraints in the overlay were instantiated. Only a single
+  /// custom_constraint is supported in the overlay at a time. For evaluating
+  /// multiple constraints, multiple `GenerateOrgPolicyViolationsPreview`
+  /// requests are made, where each request evaluates a single constraint.
+  ///
+  /// Optional.
+  core.List<
+          GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlay>?
+      customConstraints;
+
+  /// The OrgPolicy changes to preview violations for.
+  ///
+  /// Any existing OrgPolicies with the same name will be overridden in the
+  /// simulation. That is, violations will be determined as if all policies in
+  /// the overlay were created or updated.
+  ///
+  /// Optional.
+  core.List<GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlay>?
+      policies;
+
+  GoogleCloudPolicysimulatorV1OrgPolicyOverlay({
+    this.customConstraints,
+    this.policies,
+  });
+
+  GoogleCloudPolicysimulatorV1OrgPolicyOverlay.fromJson(core.Map json_)
+      : this(
+          customConstraints: json_.containsKey('customConstraints')
+              ? (json_['customConstraints'] as core.List)
+                  .map((value) =>
+                      GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlay
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          policies: json_.containsKey('policies')
+              ? (json_['policies'] as core.List)
+                  .map((value) =>
+                      GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlay
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (customConstraints != null) 'customConstraints': customConstraints!,
+        if (policies != null) 'policies': policies!,
+      };
+}
+
+/// A change to an OrgPolicy custom constraint.
+class GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlay {
+  /// The new or updated custom constraint.
+  ///
+  /// Optional.
+  GoogleCloudOrgpolicyV2CustomConstraint? customConstraint;
+
+  /// Resource the constraint is attached to.
+  ///
+  /// Example: "organization/987654"
+  ///
+  /// Optional.
+  core.String? customConstraintParent;
+
+  GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlay({
+    this.customConstraint,
+    this.customConstraintParent,
+  });
+
+  GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlay.fromJson(
+      core.Map json_)
+      : this(
+          customConstraint: json_.containsKey('customConstraint')
+              ? GoogleCloudOrgpolicyV2CustomConstraint.fromJson(
+                  json_['customConstraint']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          customConstraintParent: json_.containsKey('customConstraintParent')
+              ? json_['customConstraintParent'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (customConstraint != null) 'customConstraint': customConstraint!,
+        if (customConstraintParent != null)
+          'customConstraintParent': customConstraintParent!,
+      };
+}
+
+/// A change to an OrgPolicy.
+class GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlay {
+  /// The new or updated OrgPolicy.
+  ///
+  /// Optional.
+  GoogleCloudOrgpolicyV2Policy? policy;
+
+  /// The parent of the policy we are attaching to.
+  ///
+  /// Example: "projects/123456"
+  ///
+  /// Optional.
+  core.String? policyParent;
+
+  GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlay({
+    this.policy,
+    this.policyParent,
+  });
+
+  GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlay.fromJson(
+      core.Map json_)
+      : this(
+          policy: json_.containsKey('policy')
+              ? GoogleCloudOrgpolicyV2Policy.fromJson(
+                  json_['policy'] as core.Map<core.String, core.dynamic>)
+              : null,
+          policyParent: json_.containsKey('policyParent')
+              ? json_['policyParent'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (policy != null) 'policy': policy!,
+        if (policyParent != null) 'policyParent': policyParent!,
+      };
+}
+
+/// OrgPolicyViolation is a resource representing a single resource violating a
+/// single OrgPolicy constraint.
+class GoogleCloudPolicysimulatorV1OrgPolicyViolation {
+  /// The custom constraint being violated.
+  GoogleCloudOrgpolicyV2CustomConstraint? customConstraint;
+
+  /// Any error encountered during the evaluation.
+  GoogleRpcStatus? error;
+
+  /// The name of the \`OrgPolicyViolation\`.
+  ///
+  /// Example:
+  /// organizations/my-example-org/locations/global/orgPolicyViolationsPreviews/506a5f7f/orgPolicyViolations/38ce\`
+  core.String? name;
+
+  /// The resource violating the constraint.
+  GoogleCloudPolicysimulatorV1ResourceContext? resource;
+
+  GoogleCloudPolicysimulatorV1OrgPolicyViolation({
+    this.customConstraint,
+    this.error,
+    this.name,
+    this.resource,
+  });
+
+  GoogleCloudPolicysimulatorV1OrgPolicyViolation.fromJson(core.Map json_)
+      : this(
+          customConstraint: json_.containsKey('customConstraint')
+              ? GoogleCloudOrgpolicyV2CustomConstraint.fromJson(
+                  json_['customConstraint']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          error: json_.containsKey('error')
+              ? GoogleRpcStatus.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          resource: json_.containsKey('resource')
+              ? GoogleCloudPolicysimulatorV1ResourceContext.fromJson(
+                  json_['resource'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (customConstraint != null) 'customConstraint': customConstraint!,
+        if (error != null) 'error': error!,
+        if (name != null) 'name': name!,
+        if (resource != null) 'resource': resource!,
+      };
+}
+
+/// OrgPolicyViolationsPreview is a resource providing a preview of the
+/// violations that will exist if an OrgPolicy change is made.
+///
+/// The list of violations are modeled as child resources and retrieved via a
+/// ListOrgPolicyViolations API call. There are potentially more
+/// OrgPolicyViolations than could fit in an embedded field. Thus, the use of a
+/// child resource instead of a field.
+class GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreview {
+  /// Time when this `OrgPolicyViolationsPreview` was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The names of the constraints against which all `OrgPolicyViolations` were
+  /// evaluated.
+  ///
+  /// If `OrgPolicyOverlay` only contains `PolicyOverlay` then it contains the
+  /// name of the configured custom constraint, applicable to the specified
+  /// policies. Otherwise it contains the name of the constraint specified in
+  /// `CustomConstraintOverlay`. Format:
+  /// `organizations/{organization_id}/customConstraints/{custom_constraint_id}`
+  /// Example: `organizations/123/customConstraints/custom.createOnlyE2TypeVms`
+  ///
+  /// Output only.
+  core.List<core.String>? customConstraints;
+
+  /// The resource name of the `OrgPolicyViolationsPreview`.
+  ///
+  /// It has the following format:
+  /// `organizations/{organization}/locations/{location}/orgPolicyViolationsPreviews/{orgPolicyViolationsPreview}`
+  /// Example:
+  /// `organizations/my-example-org/locations/global/orgPolicyViolationsPreviews/506a5f7f`
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The proposed changes we are previewing violations for.
+  ///
+  /// Required.
+  GoogleCloudPolicysimulatorV1OrgPolicyOverlay? overlay;
+
+  /// A summary of the state of all resources scanned for compliance with the
+  /// changed OrgPolicy.
+  ///
+  /// Output only.
+  GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreviewResourceCounts?
+      resourceCounts;
+
+  /// The state of the `OrgPolicyViolationsPreview`.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "PREVIEW_STATE_UNSPECIFIED" : The state is unspecified.
+  /// - "PREVIEW_PENDING" : The OrgPolicyViolationsPreview has not been created
+  /// yet.
+  /// - "PREVIEW_RUNNING" : The OrgPolicyViolationsPreview is currently being
+  /// created.
+  /// - "PREVIEW_SUCCEEDED" : The OrgPolicyViolationsPreview creation finished
+  /// successfully.
+  /// - "PREVIEW_FAILED" : The OrgPolicyViolationsPreview creation failed with
+  /// an error.
+  core.String? state;
+
+  /// The number of OrgPolicyViolations in this `OrgPolicyViolationsPreview`.
+  ///
+  /// This count may differ from `resource_summary.noncompliant_count` because
+  /// each OrgPolicyViolation is specific to a resource **and** constraint. If
+  /// there are multiple constraints being evaluated (i.e. multiple policies in
+  /// the overlay), a single resource may violate multiple constraints.
+  ///
+  /// Output only.
+  core.int? violationsCount;
+
+  GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreview({
+    this.createTime,
+    this.customConstraints,
+    this.name,
+    this.overlay,
+    this.resourceCounts,
+    this.state,
+    this.violationsCount,
+  });
+
+  GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreview.fromJson(
+      core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          customConstraints: json_.containsKey('customConstraints')
+              ? (json_['customConstraints'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          overlay: json_.containsKey('overlay')
+              ? GoogleCloudPolicysimulatorV1OrgPolicyOverlay.fromJson(
+                  json_['overlay'] as core.Map<core.String, core.dynamic>)
+              : null,
+          resourceCounts: json_.containsKey('resourceCounts')
+              ? GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreviewResourceCounts
+                  .fromJson(json_['resourceCounts']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          violationsCount: json_.containsKey('violationsCount')
+              ? json_['violationsCount'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (customConstraints != null) 'customConstraints': customConstraints!,
+        if (name != null) 'name': name!,
+        if (overlay != null) 'overlay': overlay!,
+        if (resourceCounts != null) 'resourceCounts': resourceCounts!,
+        if (state != null) 'state': state!,
+        if (violationsCount != null) 'violationsCount': violationsCount!,
+      };
+}
+
+/// A summary of the state of all resources scanned for compliance with the
+/// changed OrgPolicy.
+class GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreviewResourceCounts {
+  /// Number of scanned resources with zero violations.
+  ///
+  /// Output only.
+  core.int? compliant;
+
+  /// Number of resources that returned an error when scanned.
+  ///
+  /// Output only.
+  core.int? errors;
+
+  /// Number of scanned resources with at least one violation.
+  ///
+  /// Output only.
+  core.int? noncompliant;
+
+  /// Number of resources checked for compliance.
+  ///
+  /// Must equal: unenforced + noncompliant + compliant + error
+  ///
+  /// Output only.
+  core.int? scanned;
+
+  /// Number of resources where the constraint was not enforced, i.e. the Policy
+  /// set `enforced: false` for that resource.
+  ///
+  /// Output only.
+  core.int? unenforced;
+
+  GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreviewResourceCounts({
+    this.compliant,
+    this.errors,
+    this.noncompliant,
+    this.scanned,
+    this.unenforced,
+  });
+
+  GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreviewResourceCounts.fromJson(
+      core.Map json_)
+      : this(
+          compliant: json_.containsKey('compliant')
+              ? json_['compliant'] as core.int
+              : null,
+          errors:
+              json_.containsKey('errors') ? json_['errors'] as core.int : null,
+          noncompliant: json_.containsKey('noncompliant')
+              ? json_['noncompliant'] as core.int
+              : null,
+          scanned: json_.containsKey('scanned')
+              ? json_['scanned'] as core.int
+              : null,
+          unenforced: json_.containsKey('unenforced')
+              ? json_['unenforced'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (compliant != null) 'compliant': compliant!,
+        if (errors != null) 'errors': errors!,
+        if (noncompliant != null) 'noncompliant': noncompliant!,
+        if (scanned != null) 'scanned': scanned!,
+        if (unenforced != null) 'unenforced': unenforced!,
       };
 }
 
@@ -1762,6 +2746,65 @@ class GoogleCloudPolicysimulatorV1ReplayResultsSummary {
       };
 }
 
+/// ResourceContext provides the context we know about a resource.
+///
+/// It is similar in concept to google.cloud.asset.v1.Resource, but focuses on
+/// the information specifically used by Simulator.
+class GoogleCloudPolicysimulatorV1ResourceContext {
+  /// The ancestry path of the resource in Google Cloud
+  /// [resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy),
+  /// represented as a list of relative resource names.
+  ///
+  /// An ancestry path starts with the closest ancestor in the hierarchy and
+  /// ends at root. If the resource is a project, folder, or organization, the
+  /// ancestry path starts from the resource itself. Example:
+  /// `["projects/123456789", "folders/5432", "organizations/1234"]`
+  core.List<core.String>? ancestors;
+
+  /// The asset type of the resource as defined by CAIS.
+  ///
+  /// Example: `compute.googleapis.com/Firewall` See
+  /// [Supported asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types)
+  /// for more information.
+  core.String? assetType;
+
+  /// The full name of the resource.
+  ///
+  /// Example:
+  /// `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`
+  /// See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names#full_resource_name)
+  /// for more information.
+  core.String? resource;
+
+  GoogleCloudPolicysimulatorV1ResourceContext({
+    this.ancestors,
+    this.assetType,
+    this.resource,
+  });
+
+  GoogleCloudPolicysimulatorV1ResourceContext.fromJson(core.Map json_)
+      : this(
+          ancestors: json_.containsKey('ancestors')
+              ? (json_['ancestors'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          assetType: json_.containsKey('assetType')
+              ? json_['assetType'] as core.String
+              : null,
+          resource: json_.containsKey('resource')
+              ? json_['resource'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (ancestors != null) 'ancestors': ancestors!,
+        if (assetType != null) 'assetType': assetType!,
+        if (resource != null) 'resource': resource!,
+      };
+}
+
 /// Specifies the audit configuration for a service.
 ///
 /// The configuration determines which permission types are logged, and what
@@ -1853,14 +2896,31 @@ class GoogleIamV1Binding {
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
   /// (primary) that represents all the users of that domain. For example,
-  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a user that has
-  /// been recently deleted. For example,
-  /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
-  /// this value reverts to `user:{emailid}` and the recovered user retains the
-  /// role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a service account
-  /// that has been recently deleted. For example,
+  /// `google.com` or `example.com`. *
+  /// `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workforce identity pool. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`:
+  /// All workforce identities in a group. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All workforce identities with a specific attribute value. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}
+  /// / * `: All identities in a workforce identity pool. *
+  /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workload identity pool. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`:
+  /// A workload identity pool group. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All identities in a workload identity pool with a certain attribute. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}
+  /// / * `: All identities in a workload identity pool. *
+  /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
+  /// identifier) representing a user that has been recently deleted. For
+  /// example, `alice@example.com?uid=123456789012345678901`. If the user is
+  /// recovered, this value reverts to `user:{emailid}` and the recovered user
+  /// retains the role in the binding. *
+  /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus
+  /// unique identifier) representing a service account that has been recently
+  /// deleted. For example,
   /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If
   /// the service account is undeleted, this value reverts to
   /// `serviceAccount:{emailid}` and the undeleted service account retains the
@@ -1869,12 +2929,19 @@ class GoogleIamV1Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding.
+  /// the role in the binding. *
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// Deleted single identity in a workforce identity pool. For example,
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
   ///
-  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an
+  /// overview of the IAM roles and permissions, see the
+  /// [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For
+  /// a list of the available pre-defined roles, see
+  /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
   GoogleIamV1Binding({

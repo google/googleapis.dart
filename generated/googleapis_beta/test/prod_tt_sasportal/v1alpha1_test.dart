@@ -89,27 +89,6 @@ void checkSasPortalChannelWithScore(api.SasPortalChannelWithScore o) {
   buildCounterSasPortalChannelWithScore--;
 }
 
-core.int buildCounterSasPortalCheckHasProvisionedDeploymentResponse = 0;
-api.SasPortalCheckHasProvisionedDeploymentResponse
-    buildSasPortalCheckHasProvisionedDeploymentResponse() {
-  final o = api.SasPortalCheckHasProvisionedDeploymentResponse();
-  buildCounterSasPortalCheckHasProvisionedDeploymentResponse++;
-  if (buildCounterSasPortalCheckHasProvisionedDeploymentResponse < 3) {
-    o.hasProvisionedDeployment = true;
-  }
-  buildCounterSasPortalCheckHasProvisionedDeploymentResponse--;
-  return o;
-}
-
-void checkSasPortalCheckHasProvisionedDeploymentResponse(
-    api.SasPortalCheckHasProvisionedDeploymentResponse o) {
-  buildCounterSasPortalCheckHasProvisionedDeploymentResponse++;
-  if (buildCounterSasPortalCheckHasProvisionedDeploymentResponse < 3) {
-    unittest.expect(o.hasProvisionedDeployment!, unittest.isTrue);
-  }
-  buildCounterSasPortalCheckHasProvisionedDeploymentResponse--;
-}
-
 core.int buildCounterSasPortalCreateSignedDeviceRequest = 0;
 api.SasPortalCreateSignedDeviceRequest
     buildSasPortalCreateSignedDeviceRequest() {
@@ -658,6 +637,27 @@ void checkSasPortalFrequencyRange(api.SasPortalFrequencyRange o) {
   buildCounterSasPortalFrequencyRange--;
 }
 
+core.int buildCounterSasPortalGcpProjectDeployment = 0;
+api.SasPortalGcpProjectDeployment buildSasPortalGcpProjectDeployment() {
+  final o = api.SasPortalGcpProjectDeployment();
+  buildCounterSasPortalGcpProjectDeployment++;
+  if (buildCounterSasPortalGcpProjectDeployment < 3) {
+    o.deployment = buildSasPortalDeployment();
+    o.hasEnabledAnalytics = true;
+  }
+  buildCounterSasPortalGcpProjectDeployment--;
+  return o;
+}
+
+void checkSasPortalGcpProjectDeployment(api.SasPortalGcpProjectDeployment o) {
+  buildCounterSasPortalGcpProjectDeployment++;
+  if (buildCounterSasPortalGcpProjectDeployment < 3) {
+    checkSasPortalDeployment(o.deployment!);
+    unittest.expect(o.hasEnabledAnalytics!, unittest.isTrue);
+  }
+  buildCounterSasPortalGcpProjectDeployment--;
+}
+
 core.int buildCounterSasPortalGenerateSecretRequest = 0;
 api.SasPortalGenerateSecretRequest buildSasPortalGenerateSecretRequest() {
   final o = api.SasPortalGenerateSecretRequest();
@@ -905,12 +905,76 @@ void checkSasPortalListDevicesResponse(api.SasPortalListDevicesResponse o) {
   buildCounterSasPortalListDevicesResponse--;
 }
 
-core.List<api.SasPortalNode> buildUnnamed13() => [
+core.List<api.SasPortalGcpProjectDeployment> buildUnnamed13() => [
+      buildSasPortalGcpProjectDeployment(),
+      buildSasPortalGcpProjectDeployment(),
+    ];
+
+void checkUnnamed13(core.List<api.SasPortalGcpProjectDeployment> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkSasPortalGcpProjectDeployment(o[0]);
+  checkSasPortalGcpProjectDeployment(o[1]);
+}
+
+core.int buildCounterSasPortalListGcpProjectDeploymentsResponse = 0;
+api.SasPortalListGcpProjectDeploymentsResponse
+    buildSasPortalListGcpProjectDeploymentsResponse() {
+  final o = api.SasPortalListGcpProjectDeploymentsResponse();
+  buildCounterSasPortalListGcpProjectDeploymentsResponse++;
+  if (buildCounterSasPortalListGcpProjectDeploymentsResponse < 3) {
+    o.deployments = buildUnnamed13();
+  }
+  buildCounterSasPortalListGcpProjectDeploymentsResponse--;
+  return o;
+}
+
+void checkSasPortalListGcpProjectDeploymentsResponse(
+    api.SasPortalListGcpProjectDeploymentsResponse o) {
+  buildCounterSasPortalListGcpProjectDeploymentsResponse++;
+  if (buildCounterSasPortalListGcpProjectDeploymentsResponse < 3) {
+    checkUnnamed13(o.deployments!);
+  }
+  buildCounterSasPortalListGcpProjectDeploymentsResponse--;
+}
+
+core.List<api.SasPortalOrganization> buildUnnamed14() => [
+      buildSasPortalOrganization(),
+      buildSasPortalOrganization(),
+    ];
+
+void checkUnnamed14(core.List<api.SasPortalOrganization> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkSasPortalOrganization(o[0]);
+  checkSasPortalOrganization(o[1]);
+}
+
+core.int buildCounterSasPortalListLegacyOrganizationsResponse = 0;
+api.SasPortalListLegacyOrganizationsResponse
+    buildSasPortalListLegacyOrganizationsResponse() {
+  final o = api.SasPortalListLegacyOrganizationsResponse();
+  buildCounterSasPortalListLegacyOrganizationsResponse++;
+  if (buildCounterSasPortalListLegacyOrganizationsResponse < 3) {
+    o.organizations = buildUnnamed14();
+  }
+  buildCounterSasPortalListLegacyOrganizationsResponse--;
+  return o;
+}
+
+void checkSasPortalListLegacyOrganizationsResponse(
+    api.SasPortalListLegacyOrganizationsResponse o) {
+  buildCounterSasPortalListLegacyOrganizationsResponse++;
+  if (buildCounterSasPortalListLegacyOrganizationsResponse < 3) {
+    checkUnnamed14(o.organizations!);
+  }
+  buildCounterSasPortalListLegacyOrganizationsResponse--;
+}
+
+core.List<api.SasPortalNode> buildUnnamed15() => [
       buildSasPortalNode(),
       buildSasPortalNode(),
     ];
 
-void checkUnnamed13(core.List<api.SasPortalNode> o) {
+void checkUnnamed15(core.List<api.SasPortalNode> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSasPortalNode(o[0]);
   checkSasPortalNode(o[1]);
@@ -922,7 +986,7 @@ api.SasPortalListNodesResponse buildSasPortalListNodesResponse() {
   buildCounterSasPortalListNodesResponse++;
   if (buildCounterSasPortalListNodesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.nodes = buildUnnamed13();
+    o.nodes = buildUnnamed15();
   }
   buildCounterSasPortalListNodesResponse--;
   return o;
@@ -935,7 +999,7 @@ void checkSasPortalListNodesResponse(api.SasPortalListNodesResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed13(o.nodes!);
+    checkUnnamed15(o.nodes!);
   }
   buildCounterSasPortalListNodesResponse--;
 }
@@ -1030,12 +1094,12 @@ void checkSasPortalMoveNodeRequest(api.SasPortalMoveNodeRequest o) {
   buildCounterSasPortalMoveNodeRequest--;
 }
 
-core.List<core.String> buildUnnamed14() => [
+core.List<core.String> buildUnnamed16() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed14(core.List<core.String> o) {
+void checkUnnamed16(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1054,7 +1118,7 @@ api.SasPortalNode buildSasPortalNode() {
   if (buildCounterSasPortalNode < 3) {
     o.displayName = 'foo';
     o.name = 'foo';
-    o.sasUserIds = buildUnnamed14();
+    o.sasUserIds = buildUnnamed16();
   }
   buildCounterSasPortalNode--;
   return o;
@@ -1071,7 +1135,7 @@ void checkSasPortalNode(api.SasPortalNode o) {
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed14(o.sasUserIds!);
+    checkUnnamed16(o.sasUserIds!);
   }
   buildCounterSasPortalNode--;
 }
@@ -1118,7 +1182,7 @@ void checkSasPortalNrqzValidation(api.SasPortalNrqzValidation o) {
   buildCounterSasPortalNrqzValidation--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed15() => {
+core.Map<core.String, core.Object?> buildUnnamed17() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1131,7 +1195,7 @@ core.Map<core.String, core.Object?> buildUnnamed15() => {
       },
     };
 
-void checkUnnamed15(core.Map<core.String, core.Object?> o) {
+void checkUnnamed17(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -1163,7 +1227,7 @@ void checkUnnamed15(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.Map<core.String, core.Object?> buildUnnamed16() => {
+core.Map<core.String, core.Object?> buildUnnamed18() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1176,7 +1240,7 @@ core.Map<core.String, core.Object?> buildUnnamed16() => {
       },
     };
 
-void checkUnnamed16(core.Map<core.String, core.Object?> o) {
+void checkUnnamed18(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -1215,9 +1279,9 @@ api.SasPortalOperation buildSasPortalOperation() {
   if (buildCounterSasPortalOperation < 3) {
     o.done = true;
     o.error = buildSasPortalStatus();
-    o.metadata = buildUnnamed15();
+    o.metadata = buildUnnamed17();
     o.name = 'foo';
-    o.response = buildUnnamed16();
+    o.response = buildUnnamed18();
   }
   buildCounterSasPortalOperation--;
   return o;
@@ -1228,22 +1292,49 @@ void checkSasPortalOperation(api.SasPortalOperation o) {
   if (buildCounterSasPortalOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkSasPortalStatus(o.error!);
-    checkUnnamed15(o.metadata!);
+    checkUnnamed17(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed16(o.response!);
+    checkUnnamed18(o.response!);
   }
   buildCounterSasPortalOperation--;
 }
 
-core.List<api.SasPortalAssignment> buildUnnamed17() => [
+core.int buildCounterSasPortalOrganization = 0;
+api.SasPortalOrganization buildSasPortalOrganization() {
+  final o = api.SasPortalOrganization();
+  buildCounterSasPortalOrganization++;
+  if (buildCounterSasPortalOrganization < 3) {
+    o.displayName = 'foo';
+    o.id = 'foo';
+  }
+  buildCounterSasPortalOrganization--;
+  return o;
+}
+
+void checkSasPortalOrganization(api.SasPortalOrganization o) {
+  buildCounterSasPortalOrganization++;
+  if (buildCounterSasPortalOrganization < 3) {
+    unittest.expect(
+      o.displayName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.id!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterSasPortalOrganization--;
+}
+
+core.List<api.SasPortalAssignment> buildUnnamed19() => [
       buildSasPortalAssignment(),
       buildSasPortalAssignment(),
     ];
 
-void checkUnnamed17(core.List<api.SasPortalAssignment> o) {
+void checkUnnamed19(core.List<api.SasPortalAssignment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSasPortalAssignment(o[0]);
   checkSasPortalAssignment(o[1]);
@@ -1254,7 +1345,7 @@ api.SasPortalPolicy buildSasPortalPolicy() {
   final o = api.SasPortalPolicy();
   buildCounterSasPortalPolicy++;
   if (buildCounterSasPortalPolicy < 3) {
-    o.assignments = buildUnnamed17();
+    o.assignments = buildUnnamed19();
     o.etag = 'foo';
   }
   buildCounterSasPortalPolicy--;
@@ -1264,7 +1355,7 @@ api.SasPortalPolicy buildSasPortalPolicy() {
 void checkSasPortalPolicy(api.SasPortalPolicy o) {
   buildCounterSasPortalPolicy++;
   if (buildCounterSasPortalPolicy < 3) {
-    checkUnnamed17(o.assignments!);
+    checkUnnamed19(o.assignments!);
     unittest.expect(
       o.etag!,
       unittest.equals('foo'),
@@ -1399,7 +1490,7 @@ void checkSasPortalSignDeviceRequest(api.SasPortalSignDeviceRequest o) {
   buildCounterSasPortalSignDeviceRequest--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed18() => {
+core.Map<core.String, core.Object?> buildUnnamed20() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1412,7 +1503,7 @@ core.Map<core.String, core.Object?> buildUnnamed18() => {
       },
     };
 
-void checkUnnamed18(core.Map<core.String, core.Object?> o) {
+void checkUnnamed20(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -1444,15 +1535,15 @@ void checkUnnamed18(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed19() => [
-      buildUnnamed18(),
-      buildUnnamed18(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed21() => [
+      buildUnnamed20(),
+      buildUnnamed20(),
     ];
 
-void checkUnnamed19(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed21(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed18(o[0]);
-  checkUnnamed18(o[1]);
+  checkUnnamed20(o[0]);
+  checkUnnamed20(o[1]);
 }
 
 core.int buildCounterSasPortalStatus = 0;
@@ -1461,7 +1552,7 @@ api.SasPortalStatus buildSasPortalStatus() {
   buildCounterSasPortalStatus++;
   if (buildCounterSasPortalStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed19();
+    o.details = buildUnnamed21();
     o.message = 'foo';
   }
   buildCounterSasPortalStatus--;
@@ -1475,7 +1566,7 @@ void checkSasPortalStatus(api.SasPortalStatus o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed19(o.details!);
+    checkUnnamed21(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -1484,12 +1575,12 @@ void checkSasPortalStatus(api.SasPortalStatus o) {
   buildCounterSasPortalStatus--;
 }
 
-core.List<core.String> buildUnnamed20() => [
+core.List<core.String> buildUnnamed22() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed20(core.List<core.String> o) {
+void checkUnnamed22(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1506,7 +1597,7 @@ api.SasPortalTestPermissionsRequest buildSasPortalTestPermissionsRequest() {
   final o = api.SasPortalTestPermissionsRequest();
   buildCounterSasPortalTestPermissionsRequest++;
   if (buildCounterSasPortalTestPermissionsRequest < 3) {
-    o.permissions = buildUnnamed20();
+    o.permissions = buildUnnamed22();
     o.resource = 'foo';
   }
   buildCounterSasPortalTestPermissionsRequest--;
@@ -1517,7 +1608,7 @@ void checkSasPortalTestPermissionsRequest(
     api.SasPortalTestPermissionsRequest o) {
   buildCounterSasPortalTestPermissionsRequest++;
   if (buildCounterSasPortalTestPermissionsRequest < 3) {
-    checkUnnamed20(o.permissions!);
+    checkUnnamed22(o.permissions!);
     unittest.expect(
       o.resource!,
       unittest.equals('foo'),
@@ -1526,12 +1617,12 @@ void checkSasPortalTestPermissionsRequest(
   buildCounterSasPortalTestPermissionsRequest--;
 }
 
-core.List<core.String> buildUnnamed21() => [
+core.List<core.String> buildUnnamed23() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed21(core.List<core.String> o) {
+void checkUnnamed23(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1548,7 +1639,7 @@ api.SasPortalTestPermissionsResponse buildSasPortalTestPermissionsResponse() {
   final o = api.SasPortalTestPermissionsResponse();
   buildCounterSasPortalTestPermissionsResponse++;
   if (buildCounterSasPortalTestPermissionsResponse < 3) {
-    o.permissions = buildUnnamed21();
+    o.permissions = buildUnnamed23();
   }
   buildCounterSasPortalTestPermissionsResponse--;
   return o;
@@ -1558,7 +1649,7 @@ void checkSasPortalTestPermissionsResponse(
     api.SasPortalTestPermissionsResponse o) {
   buildCounterSasPortalTestPermissionsResponse++;
   if (buildCounterSasPortalTestPermissionsResponse < 3) {
-    checkUnnamed21(o.permissions!);
+    checkUnnamed23(o.permissions!);
   }
   buildCounterSasPortalTestPermissionsResponse--;
 }
@@ -1660,17 +1751,6 @@ void main() {
       final od = api.SasPortalChannelWithScore.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkSasPortalChannelWithScore(od);
-    });
-  });
-
-  unittest.group('obj-schema-SasPortalCheckHasProvisionedDeploymentResponse',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildSasPortalCheckHasProvisionedDeploymentResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.SasPortalCheckHasProvisionedDeploymentResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkSasPortalCheckHasProvisionedDeploymentResponse(od);
     });
   });
 
@@ -1794,6 +1874,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-SasPortalGcpProjectDeployment', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSasPortalGcpProjectDeployment();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SasPortalGcpProjectDeployment.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSasPortalGcpProjectDeployment(od);
+    });
+  });
+
   unittest.group('obj-schema-SasPortalGenerateSecretRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildSasPortalGenerateSecretRequest();
@@ -1861,6 +1951,26 @@ void main() {
       final od = api.SasPortalListDevicesResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkSasPortalListDevicesResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-SasPortalListGcpProjectDeploymentsResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSasPortalListGcpProjectDeploymentsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SasPortalListGcpProjectDeploymentsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSasPortalListGcpProjectDeploymentsResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-SasPortalListLegacyOrganizationsResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSasPortalListLegacyOrganizationsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SasPortalListLegacyOrganizationsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSasPortalListLegacyOrganizationsResponse(od);
     });
   });
 
@@ -1941,6 +2051,16 @@ void main() {
       final od = api.SasPortalOperation.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkSasPortalOperation(od);
+    });
+  });
+
+  unittest.group('obj-schema-SasPortalOrganization', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSasPortalOrganization();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SasPortalOrganization.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSasPortalOrganization(od);
     });
   });
 
@@ -2065,59 +2185,6 @@ void main() {
   });
 
   unittest.group('resource-CustomersResource', () {
-    unittest.test('method--checkHasProvisionedDeployment', () async {
-      final mock = HttpServerMock();
-      final res = api.SASPortalTestingApi(mock).customers;
-      final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 48),
-          unittest.equals('v1alpha1/customers:checkHasProvisionedDeployment'),
-        );
-        pathOffset += 48;
-
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
-
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
-          }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
-
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json
-            .encode(buildSasPortalCheckHasProvisionedDeploymentResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.checkHasProvisionedDeployment($fields: arg_$fields);
-      checkSasPortalCheckHasProvisionedDeploymentResponse(
-          response as api.SasPortalCheckHasProvisionedDeploymentResponse);
-    });
-
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
       final res = api.SASPortalTestingApi(mock).customers;
@@ -2232,6 +2299,111 @@ void main() {
           $fields: arg_$fields);
       checkSasPortalListCustomersResponse(
           response as api.SasPortalListCustomersResponse);
+    });
+
+    unittest.test('method--listGcpProjectDeployments', () async {
+      final mock = HttpServerMock();
+      final res = api.SASPortalTestingApi(mock).customers;
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 44),
+          unittest.equals('v1alpha1/customers:listGcpProjectDeployments'),
+        );
+        pathOffset += 44;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildSasPortalListGcpProjectDeploymentsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.listGcpProjectDeployments($fields: arg_$fields);
+      checkSasPortalListGcpProjectDeploymentsResponse(
+          response as api.SasPortalListGcpProjectDeploymentsResponse);
+    });
+
+    unittest.test('method--listLegacyOrganizations', () async {
+      final mock = HttpServerMock();
+      final res = api.SASPortalTestingApi(mock).customers;
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 42),
+          unittest.equals('v1alpha1/customers:listLegacyOrganizations'),
+        );
+        pathOffset += 42;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json
+            .encode(buildSasPortalListLegacyOrganizationsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.listLegacyOrganizations($fields: arg_$fields);
+      checkSasPortalListLegacyOrganizationsResponse(
+          response as api.SasPortalListLegacyOrganizationsResponse);
     });
 
     unittest.test('method--migrateOrganization', () async {

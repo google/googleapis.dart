@@ -1943,7 +1943,9 @@ class ProjectsLocationsSourcesMigratingVmsCloneJobsResource {
     return CloneJob.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists CloneJobs of a given migrating VM.
+  /// Lists the CloneJobs of a migrating VM.
+  ///
+  /// Only 25 most recent CloneJobs are listed.
   ///
   /// Request parameters:
   ///
@@ -2150,7 +2152,9 @@ class ProjectsLocationsSourcesMigratingVmsCutoverJobsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists CutoverJobs of a given migrating VM.
+  /// Lists the CutoverJobs of a migrating VM.
+  ///
+  /// Only 25 most recent CutoverJobs are listed.
   ///
   /// Request parameters:
   ///
@@ -3667,7 +3671,7 @@ class AzureSourceVmDetails {
       };
 }
 
-/// AwsVmDetails describes a VM in AWS.
+/// AzureVmDetails describes a VM in Azure.
 class AzureVmDetails {
   /// The VM Boot Option.
   /// Possible string values are:

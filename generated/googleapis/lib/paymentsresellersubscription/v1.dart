@@ -82,11 +82,11 @@ class PartnersProductsResource {
   ///
   /// [filter] - Optional. Specifies the filters for the product results. The
   /// syntax is defined in https://google.aip.dev/160 with the following
-  /// caveats: - Only the following features are supported: - Logical operator
+  /// caveats: 1. Only the following features are supported: - Logical operator
   /// `AND` - Comparison operator `=` (no wildcards `*`) - Traversal operator
-  /// `.` - Has operator `:` (no wildcards `*`) - Only the following fields are
+  /// `.` - Has operator `:` (no wildcards `*`) 2. Only the following fields are
   /// supported: - `regionCodes` - `youtubePayload.partnerEligibilityId` -
-  /// `youtubePayload.postalCode` - Unless explicitly mentioned above, other
+  /// `youtubePayload.postalCode` 3. Unless explicitly mentioned above, other
   /// features are not supported. Example: `regionCodes:US AND
   /// youtubePayload.postalCode=94043 AND
   /// youtubePayload.partnerEligibilityId=eligibility-id`
@@ -207,11 +207,11 @@ class PartnersPromotionsResource {
   ///
   /// [filter] - Optional. Specifies the filters for the promotion results. The
   /// syntax is defined in https://google.aip.dev/160 with the following
-  /// caveats: - Only the following features are supported: - Logical operator
+  /// caveats: 1. Only the following features are supported: - Logical operator
   /// `AND` - Comparison operator `=` (no wildcards `*`) - Traversal operator
-  /// `.` - Has operator `:` (no wildcards `*`) - Only the following fields are
+  /// `.` - Has operator `:` (no wildcards `*`) 2. Only the following fields are
   /// supported: - `applicableProducts` - `regionCodes` -
-  /// `youtubePayload.partnerEligibilityId` - `youtubePayload.postalCode` -
+  /// `youtubePayload.partnerEligibilityId` - `youtubePayload.postalCode` 3.
   /// Unless explicitly mentioned above, other features are not supported.
   /// Example: `applicableProducts:partners/partner1/products/product1 AND
   /// regionCodes:US AND youtubePayload.postalCode=94043 AND
@@ -656,6 +656,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1Amount {
       };
 }
 
+/// Request to cancel a subscription.
 class GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionRequest {
   /// If true, Google will cancel the subscription immediately, and may or may
   /// not (based on the contract) issue a prorated refund for the remainder of
@@ -674,14 +675,17 @@ class GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionRequest {
   /// - "CANCELLATION_REASON_REMORSE" : Buyer's remorse.
   /// - "CANCELLATION_REASON_ACCIDENTAL_PURCHASE" : Accidential purchase.
   /// - "CANCELLATION_REASON_PAST_DUE" : Payment is past due.
-  /// - "CANCELLATION_REASON_ACCOUNT_CLOSED" : User account closed.
+  /// - "CANCELLATION_REASON_ACCOUNT_CLOSED" : Used for notification only, do
+  /// not use in Cancel API. User account closed.
   /// - "CANCELLATION_REASON_UPGRADE_DOWNGRADE" : Used for notification only, do
   /// not use in Cancel API. Cancellation due to upgrade or downgrade.
   /// - "CANCELLATION_REASON_USER_DELINQUENCY" : Cancellation due to user
   /// delinquency
-  /// - "CANCELLATION_REASON_SYSTEM_ERROR" : Cancellation due to an
-  /// unrecoverable system error.
-  /// - "CANCELLATION_REASON_SYSTEM_CANCEL" : Cancellation by a system.
+  /// - "CANCELLATION_REASON_SYSTEM_ERROR" : Used for notification only, do not
+  /// use in Cancel API. Cancellation due to an unrecoverable system error.
+  /// - "CANCELLATION_REASON_SYSTEM_CANCEL" : Used for notification only, do not
+  /// use in Cancel API. The subscription is cancelled by Google automatically
+  /// since it is no longer valid.
   /// - "CANCELLATION_REASON_OTHER" : Other reason.
   core.String? cancellationReason;
 
@@ -708,6 +712,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionRequest {
       };
 }
 
+/// Response that contains the cancelled subscription resource.
 class GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionResponse {
   /// The cancelled subscription resource.
   GoogleCloudPaymentsResellerSubscriptionV1Subscription? subscription;
@@ -839,6 +844,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequestLineIte
       };
 }
 
+/// Response that contains the entitled subscription resource.
 class GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionResponse {
   /// The subscription that has user linked to it.
   GoogleCloudPaymentsResellerSubscriptionV1Subscription? subscription;
@@ -907,6 +913,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1ExtendSubscriptionRequest {
       };
 }
 
+/// Response that contains the timestamps after the extension.
 class GoogleCloudPaymentsResellerSubscriptionV1ExtendSubscriptionResponse {
   /// The time at which the subscription is expected to be extended, in ISO 8061
   /// format.
@@ -961,6 +968,8 @@ class GoogleCloudPaymentsResellerSubscriptionV1ExtendSubscriptionResponse {
 /// Describes the details of an extension request.
 class GoogleCloudPaymentsResellerSubscriptionV1Extension {
   /// Specifies the period of access the subscription should grant.
+  ///
+  /// Required.
   GoogleCloudPaymentsResellerSubscriptionV1Duration? duration;
 
   /// Identifier of the end-user in partner’s system.
@@ -990,15 +999,16 @@ class GoogleCloudPaymentsResellerSubscriptionV1Extension {
       };
 }
 
+/// Request to find eligible promotions for the current user.
 class GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsRequest {
   /// Specifies the filters for the promotion results.
   ///
   /// The syntax is defined in https://google.aip.dev/160 with the following
-  /// caveats: - Only the following features are supported: - Logical operator
+  /// caveats: 1. Only the following features are supported: - Logical operator
   /// `AND` - Comparison operator `=` (no wildcards `*`) - Traversal operator
-  /// `.` - Has operator `:` (no wildcards `*`) - Only the following fields are
+  /// `.` - Has operator `:` (no wildcards `*`) 2. Only the following fields are
   /// supported: - `applicableProducts` - `regionCodes` -
-  /// `youtubePayload.partnerEligibilityId` - `youtubePayload.postalCode` -
+  /// `youtubePayload.partnerEligibilityId` - `youtubePayload.postalCode` 3.
   /// Unless explicitly mentioned above, other features are not supported.
   /// Example: `applicableProducts:partners/partner1/products/product1 AND
   /// regionCodes:US AND youtubePayload.postalCode=94043 AND
@@ -1184,6 +1194,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload {
       };
 }
 
+/// Response that contains the products.
 class GoogleCloudPaymentsResellerSubscriptionV1ListProductsResponse {
   /// A token, which can be sent as `page_token` to retrieve the next page.
   ///
@@ -1219,6 +1230,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1ListProductsResponse {
       };
 }
 
+/// Response that contains the promotions.
 class GoogleCloudPaymentsResellerSubscriptionV1ListPromotionsResponse {
   /// A token, which can be sent as `page_token` to retrieve the next page.
   ///
@@ -1303,12 +1315,10 @@ class GoogleCloudPaymentsResellerSubscriptionV1Product {
   GoogleCloudPaymentsResellerSubscriptionV1FiniteBillingCycleDetails?
       finiteBillingCycleDetails;
 
-  /// Response only.
+  /// Identifier.
   ///
-  /// Resource name of the product. It will have the format of
+  /// Response only. Resource name of the product. It will have the format of
   /// "partners/{partner_id}/products/{product_id}"
-  ///
-  /// Output only.
   core.String? name;
 
   /// Price configs for the product in the available regions.
@@ -1542,12 +1552,10 @@ class GoogleCloudPaymentsResellerSubscriptionV1Promotion {
   GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails?
       introductoryPricingDetails;
 
-  /// Response only.
+  /// Identifier.
   ///
-  /// Resource name of the subscription promotion. It will have the format of
-  /// "partners/{partner_id}/promotion/{promotion_id}"
-  ///
-  /// Output only.
+  /// Response only. Resource name of the subscription promotion. It will have
+  /// the format of "partners/{partner_id}/promotion/{promotion_id}"
   core.String? name;
 
   /// Specifies the type of the promotion.
@@ -1649,6 +1657,8 @@ class GoogleCloudPaymentsResellerSubscriptionV1Promotion {
 /// The details of a introductory pricing promotion.
 class GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails {
   /// Specifies the introductory pricing periods.
+  ///
+  /// Output only.
   core.List<
           GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec>?
       introductoryPricingSpecs;
@@ -1779,7 +1789,17 @@ class GoogleCloudPaymentsResellerSubscriptionV1ServicePeriod {
       };
 }
 
-/// A Subscription resource managed by 3P Partners.
+/// A subscription serves as a central billing entity between an external
+/// partner and Google.
+///
+/// The underlying Google services rely on the subscription state to grant or
+/// revoke the user's service entitlement. It's important to note that the
+/// subscription state may not always perfectly align with the user's service
+/// entitlement. For example, some Google services may continue providing access
+/// to the user until the current billing cycle ends, even if the subscription
+/// has been immediately canceled. However, other services may not do the same.
+/// To fully understand the specific details, please consult the relevant
+/// contract or product policy.
 class GoogleCloudPaymentsResellerSubscriptionV1Subscription {
   /// Describes the details of a cancelled subscription.
   ///
@@ -1823,13 +1843,11 @@ class GoogleCloudPaymentsResellerSubscriptionV1Subscription {
   core.List<GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem>?
       lineItems;
 
-  /// Resource name of the subscription.
+  /// Identifier.
   ///
-  /// It will have the format of
+  /// Resource name of the subscription. It will have the format of
   /// "partners/{partner_id}/subscriptions/{subscription_id}". This is available
   /// for authorizeAddon, but otherwise is response only.
-  ///
-  /// Optional.
   core.String? name;
 
   /// Identifier of the end-user in partner’s system.
@@ -2065,20 +2083,25 @@ class GoogleCloudPaymentsResellerSubscriptionV1Subscription {
 /// Describes the details of a cancelled or cancelling subscription.
 class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionCancellationDetails {
   /// The reason of the cancellation.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "CANCELLATION_REASON_UNSPECIFIED" : Reason is unspecified.
   /// - "CANCELLATION_REASON_FRAUD" : Fraudualant transaction.
   /// - "CANCELLATION_REASON_REMORSE" : Buyer's remorse.
   /// - "CANCELLATION_REASON_ACCIDENTAL_PURCHASE" : Accidential purchase.
   /// - "CANCELLATION_REASON_PAST_DUE" : Payment is past due.
-  /// - "CANCELLATION_REASON_ACCOUNT_CLOSED" : User account closed.
+  /// - "CANCELLATION_REASON_ACCOUNT_CLOSED" : Used for notification only, do
+  /// not use in Cancel API. User account closed.
   /// - "CANCELLATION_REASON_UPGRADE_DOWNGRADE" : Used for notification only, do
   /// not use in Cancel API. Cancellation due to upgrade or downgrade.
   /// - "CANCELLATION_REASON_USER_DELINQUENCY" : Cancellation due to user
   /// delinquency
-  /// - "CANCELLATION_REASON_SYSTEM_ERROR" : Cancellation due to an
-  /// unrecoverable system error.
-  /// - "CANCELLATION_REASON_SYSTEM_CANCEL" : Cancellation by a system.
+  /// - "CANCELLATION_REASON_SYSTEM_ERROR" : Used for notification only, do not
+  /// use in Cancel API. Cancellation due to an unrecoverable system error.
+  /// - "CANCELLATION_REASON_SYSTEM_CANCEL" : Used for notification only, do not
+  /// use in Cancel API. The subscription is cancelled by Google automatically
+  /// since it is no longer valid.
   /// - "CANCELLATION_REASON_OTHER" : Other reason.
   core.String? reason;
 
@@ -2339,6 +2362,8 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemBundleDetails
 /// Details for a ONE_TIME recurrence line item.
 class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemOneTimeRecurrenceDetails {
   /// The service period of the ONE_TIME line item.
+  ///
+  /// Output only.
   GoogleCloudPaymentsResellerSubscriptionV1ServicePeriod? servicePeriod;
 
   GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemOneTimeRecurrenceDetails({
@@ -2509,9 +2534,25 @@ class GoogleCloudPaymentsResellerSubscriptionV1YoutubePayload {
   /// The list of eligibility_ids which are applicable for the line item.
   core.List<core.String>? partnerEligibilityIds;
 
+  /// Specifies the plan type offered to the end user by the partner.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "PARTNER_PLAN_TYPE_UNSPECIFIED" : Unspecified. Should not use, reserved
+  /// as an invalid value.
+  /// - "PARTNER_PLAN_TYPE_STANDALONE" : This item is offered as a standalone
+  /// product to the user.
+  /// - "PARTNER_PLAN_TYPE_HARD_BUNDLE" : This item is bundled with another
+  /// partner offering, the item is provisioned at purchase time.
+  /// - "PARTNER_PLAN_TYPE_SOFT_BUNDLE" : This item is bundled with another
+  /// partner offering, the item is provisioned after puchase, when the user
+  /// opts in this Google service.
+  core.String? partnerPlanType;
+
   GoogleCloudPaymentsResellerSubscriptionV1YoutubePayload({
     this.accessEndTime,
     this.partnerEligibilityIds,
+    this.partnerPlanType,
   });
 
   GoogleCloudPaymentsResellerSubscriptionV1YoutubePayload.fromJson(
@@ -2525,12 +2566,16 @@ class GoogleCloudPaymentsResellerSubscriptionV1YoutubePayload {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          partnerPlanType: json_.containsKey('partnerPlanType')
+              ? json_['partnerPlanType'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accessEndTime != null) 'accessEndTime': accessEndTime!,
         if (partnerEligibilityIds != null)
           'partnerEligibilityIds': partnerEligibilityIds!,
+        if (partnerPlanType != null) 'partnerPlanType': partnerPlanType!,
       };
 }
 
@@ -2583,6 +2628,8 @@ class ProductBundleDetails {
 /// The bundle details for a line item corresponding to a hard bundle.
 class SubscriptionLineItemBundleDetails {
   /// The details for each element in the hard bundle.
+  ///
+  /// Output only.
   core.List<
           GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemBundleDetailsBundleElementDetails>?
       bundleElementDetails;

@@ -26,6 +26,7 @@
 /// Create an instance of [AnalyticsDataApi] to access these resources:
 ///
 /// - [PropertiesResource]
+///   - [PropertiesAudienceExportsResource]
 library;
 
 import 'dart:async' as async;
@@ -70,6 +71,9 @@ class AnalyticsDataApi {
 
 class PropertiesResource {
   final commons.ApiRequester _requester;
+
+  PropertiesAudienceExportsResource get audienceExports =>
+      PropertiesAudienceExportsResource(_requester);
 
   PropertiesResource(commons.ApiRequester client) : _requester = client;
 
@@ -433,6 +437,243 @@ class PropertiesResource {
   }
 }
 
+class PropertiesAudienceExportsResource {
+  final commons.ApiRequester _requester;
+
+  PropertiesAudienceExportsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates an audience export for later retrieval.
+  ///
+  /// This method quickly returns the audience export's resource name and
+  /// initiates a long running asynchronous request to form an audience export.
+  /// To export the users in an audience export, first create the audience
+  /// export through this method and then send the audience resource name to the
+  /// `QueryAudienceExport` method. See
+  /// [Creating an Audience Export](https://developers.google.com/analytics/devguides/reporting/data/v1/audience-list-basics)
+  /// for an introduction to Audience Exports with examples. An audience export
+  /// is a snapshot of the users currently in the audience at the time of
+  /// audience export creation. Creating audience exports for one audience on
+  /// different days will return different results as users enter and exit the
+  /// audience. Audiences in Google Analytics 4 allow you to segment your users
+  /// in the ways that are important to your business. To learn more, see
+  /// https://support.google.com/analytics/answer/9267572. Audience exports
+  /// contain the users in each audience. Audience Export APIs have some methods
+  /// at alpha and other methods at beta stability. The intention is to advance
+  /// methods to beta stability after some feedback and adoption. To give your
+  /// feedback on this API, complete the
+  /// [Google Analytics Audience Export API Feedback](https://forms.gle/EeA5u5LW6PEggtCEA)
+  /// form.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource where this audience export will
+  /// be created. Format: `properties/{property}`
+  /// Value must have pattern `^properties/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    AudienceExport request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1beta/' + core.Uri.encodeFull('$parent') + '/audienceExports';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets configuration metadata about a specific audience export.
+  ///
+  /// This method can be used to understand an audience export after it has been
+  /// created. See
+  /// [Creating an Audience Export](https://developers.google.com/analytics/devguides/reporting/data/v1/audience-list-basics)
+  /// for an introduction to Audience Exports with examples. Audience Export
+  /// APIs have some methods at alpha and other methods at beta stability. The
+  /// intention is to advance methods to beta stability after some feedback and
+  /// adoption. To give your feedback on this API, complete the
+  /// [Google Analytics Audience Export API Feedback](https://forms.gle/EeA5u5LW6PEggtCEA)
+  /// form.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The audience export resource name. Format:
+  /// `properties/{property}/audienceExports/{audience_export}`
+  /// Value must have pattern `^properties/\[^/\]+/audienceExports/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AudienceExport].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AudienceExport> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AudienceExport.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all audience exports for a property.
+  ///
+  /// This method can be used for you to find and reuse existing audience
+  /// exports rather than creating unnecessary new audience exports. The same
+  /// audience can have multiple audience exports that represent the export of
+  /// users that were in an audience on different days. See
+  /// [Creating an Audience Export](https://developers.google.com/analytics/devguides/reporting/data/v1/audience-list-basics)
+  /// for an introduction to Audience Exports with examples. Audience Export
+  /// APIs have some methods at alpha and other methods at beta stability. The
+  /// intention is to advance methods to beta stability after some feedback and
+  /// adoption. To give your feedback on this API, complete the
+  /// [Google Analytics Audience Export API Feedback](https://forms.gle/EeA5u5LW6PEggtCEA)
+  /// form.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. All audience exports for this property will be listed
+  /// in the response. Format: `properties/{property}`
+  /// Value must have pattern `^properties/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of audience exports to return.
+  /// The service may return fewer than this value. If unspecified, at most 200
+  /// audience exports will be returned. The maximum value is 1000 (higher
+  /// values will be coerced to the maximum).
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListAudienceExports` call. Provide this to retrieve the subsequent page.
+  /// When paginating, all other parameters provided to `ListAudienceExports`
+  /// must match the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAudienceExportsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAudienceExportsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1beta/' + core.Uri.encodeFull('$parent') + '/audienceExports';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListAudienceExportsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves an audience export of users.
+  ///
+  /// After creating an audience, the users are not immediately available for
+  /// exporting. First, a request to `CreateAudienceExport` is necessary to
+  /// create an audience export of users, and then second, this method is used
+  /// to retrieve the users in the audience export. See
+  /// [Creating an Audience Export](https://developers.google.com/analytics/devguides/reporting/data/v1/audience-list-basics)
+  /// for an introduction to Audience Exports with examples. Audiences in Google
+  /// Analytics 4 allow you to segment your users in the ways that are important
+  /// to your business. To learn more, see
+  /// https://support.google.com/analytics/answer/9267572. Audience Export APIs
+  /// have some methods at alpha and other methods at beta stability. The
+  /// intention is to advance methods to beta stability after some feedback and
+  /// adoption. To give your feedback on this API, complete the
+  /// [Google Analytics Audience Export API Feedback](https://forms.gle/EeA5u5LW6PEggtCEA)
+  /// form.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the audience export to retrieve users from.
+  /// Format: `properties/{property}/audienceExports/{audience_export}`
+  /// Value must have pattern `^properties/\[^/\]+/audienceExports/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [QueryAudienceExportResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<QueryAudienceExportResponse> query(
+    QueryAudienceExportRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$name') + ':query';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return QueryAudienceExportResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 /// A metric actively restricted in creating the report.
 class ActiveMetricRestriction {
   /// The name of the restricted metric.
@@ -462,6 +703,154 @@ class ActiveMetricRestriction {
         if (metricName != null) 'metricName': metricName!,
         if (restrictedMetricTypes != null)
           'restrictedMetricTypes': restrictedMetricTypes!,
+      };
+}
+
+/// An audience export is a list of users in an audience at the time of the
+/// list's creation.
+///
+/// One audience may have multiple audience exports created for different days.
+class AudienceExport {
+  /// The audience resource name.
+  ///
+  /// This resource name identifies the audience being listed and is shared
+  /// between the Analytics Data & Admin APIs. Format:
+  /// `properties/{property}/audiences/{audience}`
+  ///
+  /// Required.
+  core.String? audience;
+
+  /// The descriptive display name for this audience.
+  ///
+  /// For example, "Purchasers".
+  ///
+  /// Output only.
+  core.String? audienceDisplayName;
+
+  /// The time when CreateAudienceExport was called and the AudienceExport began
+  /// the `CREATING` state.
+  ///
+  /// Output only.
+  core.String? beginCreatingTime;
+
+  /// The total quota tokens charged during creation of the AudienceExport.
+  ///
+  /// Because this token count is based on activity from the `CREATING` state,
+  /// this tokens charged will be fixed once an AudienceExport enters the
+  /// `ACTIVE` or `FAILED` states.
+  ///
+  /// Output only.
+  core.int? creationQuotaTokensCharged;
+
+  /// The dimensions requested and displayed in the query response.
+  ///
+  /// Required.
+  core.List<V1betaAudienceDimension>? dimensions;
+
+  /// Error message is populated when an audience export fails during creation.
+  ///
+  /// A common reason for such a failure is quota exhaustion.
+  ///
+  /// Output only.
+  core.String? errorMessage;
+
+  /// Identifier.
+  ///
+  /// The audience export resource name assigned during creation. This resource
+  /// name identifies this `AudienceExport`. Format:
+  /// `properties/{property}/audienceExports/{audience_export}`
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The percentage completed for this audience export ranging between 0 to
+  /// 100.
+  ///
+  /// Output only.
+  core.double? percentageCompleted;
+
+  /// The total number of rows in the AudienceExport result.
+  ///
+  /// Output only.
+  core.int? rowCount;
+
+  /// The current state for this AudienceExport.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Unspecified state will never be used.
+  /// - "CREATING" : The AudienceExport is currently creating and will be
+  /// available in the future. Creating occurs immediately after the
+  /// CreateAudienceExport call.
+  /// - "ACTIVE" : The AudienceExport is fully created and ready for querying.
+  /// An AudienceExport is updated to active asynchronously from a request; this
+  /// occurs some time (for example 15 minutes) after the initial create call.
+  /// - "FAILED" : The AudienceExport failed to be created. It is possible that
+  /// re-requesting this audience export will succeed.
+  core.String? state;
+
+  AudienceExport({
+    this.audience,
+    this.audienceDisplayName,
+    this.beginCreatingTime,
+    this.creationQuotaTokensCharged,
+    this.dimensions,
+    this.errorMessage,
+    this.name,
+    this.percentageCompleted,
+    this.rowCount,
+    this.state,
+  });
+
+  AudienceExport.fromJson(core.Map json_)
+      : this(
+          audience: json_.containsKey('audience')
+              ? json_['audience'] as core.String
+              : null,
+          audienceDisplayName: json_.containsKey('audienceDisplayName')
+              ? json_['audienceDisplayName'] as core.String
+              : null,
+          beginCreatingTime: json_.containsKey('beginCreatingTime')
+              ? json_['beginCreatingTime'] as core.String
+              : null,
+          creationQuotaTokensCharged:
+              json_.containsKey('creationQuotaTokensCharged')
+                  ? json_['creationQuotaTokensCharged'] as core.int
+                  : null,
+          dimensions: json_.containsKey('dimensions')
+              ? (json_['dimensions'] as core.List)
+                  .map((value) => V1betaAudienceDimension.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          errorMessage: json_.containsKey('errorMessage')
+              ? json_['errorMessage'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          percentageCompleted: json_.containsKey('percentageCompleted')
+              ? (json_['percentageCompleted'] as core.num).toDouble()
+              : null,
+          rowCount: json_.containsKey('rowCount')
+              ? json_['rowCount'] as core.int
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (audience != null) 'audience': audience!,
+        if (audienceDisplayName != null)
+          'audienceDisplayName': audienceDisplayName!,
+        if (beginCreatingTime != null) 'beginCreatingTime': beginCreatingTime!,
+        if (creationQuotaTokensCharged != null)
+          'creationQuotaTokensCharged': creationQuotaTokensCharged!,
+        if (dimensions != null) 'dimensions': dimensions!,
+        if (errorMessage != null) 'errorMessage': errorMessage!,
+        if (name != null) 'name': name!,
+        if (percentageCompleted != null)
+          'percentageCompleted': percentageCompleted!,
+        if (rowCount != null) 'rowCount': rowCount!,
+        if (state != null) 'state': state!,
       };
 }
 
@@ -1253,7 +1642,13 @@ class DimensionMetadata {
   /// Similar dimensions and metrics are categorized together.
   core.String? category;
 
-  /// True if the dimension is a custom dimension for this property.
+  /// True if the dimension is custom to this property.
+  ///
+  /// This includes user, event, & item scoped custom dimensions; to learn more
+  /// about custom dimensions, see
+  /// https://support.google.com/analytics/answer/14240153. This also include
+  /// custom channel groups; to learn more about custom channel groups, see
+  /// https://support.google.com/analytics/answer/13051316.
   core.bool? customDefinition;
 
   /// Still usable but deprecated names for this dimension.
@@ -1319,24 +1714,7 @@ class DimensionMetadata {
 typedef DimensionOrderBy = $DimensionOrderBy;
 
 /// The value of a dimension.
-class DimensionValue {
-  /// Value as a string if the dimension type is a string.
-  core.String? value;
-
-  DimensionValue({
-    this.value,
-  });
-
-  DimensionValue.fromJson(core.Map json_)
-      : this(
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (value != null) 'value': value!,
-      };
-}
+typedef DimensionValue = $DimensionValue;
 
 /// An expression to filter dimension or metric values.
 class Filter {
@@ -1481,6 +1859,40 @@ class FilterExpressionList {
 
 /// The result needs to be in a list of string values.
 typedef InListFilter = $InListFilter;
+
+/// A list of all audience exports for a property.
+class ListAudienceExportsResponse {
+  /// Each audience export for a property.
+  core.List<AudienceExport>? audienceExports;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  ListAudienceExportsResponse({
+    this.audienceExports,
+    this.nextPageToken,
+  });
+
+  ListAudienceExportsResponse.fromJson(core.Map json_)
+      : this(
+          audienceExports: json_.containsKey('audienceExports')
+              ? (json_['audienceExports'] as core.List)
+                  .map((value) => AudienceExport.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (audienceExports != null) 'audienceExports': audienceExports!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
 
 /// The dimensions, metrics and comparisons currently accepted in reporting
 /// methods.
@@ -1924,6 +2336,82 @@ class NumericFilter {
 /// To represent a number.
 typedef NumericValue = $NumericValue;
 
+/// This resource represents a long-running operation that is the result of a
+/// network API call.
+class Operation {
+  /// If the value is `false`, it means the operation is still in progress.
+  ///
+  /// If `true`, the operation is completed, and either `error` or `response` is
+  /// available.
+  core.bool? done;
+
+  /// The error result of the operation in case of failure or cancellation.
+  Status? error;
+
+  /// Service-specific metadata associated with the operation.
+  ///
+  /// It typically contains progress information and common metadata such as
+  /// create time. Some services might not provide such metadata. Any method
+  /// that returns a long-running operation should document the metadata type,
+  /// if any.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? metadata;
+
+  /// The server-assigned name, which is only unique within the same service
+  /// that originally returns it.
+  ///
+  /// If you use the default HTTP mapping, the `name` should be a resource name
+  /// ending with `operations/{unique_id}`.
+  core.String? name;
+
+  /// The normal, successful response of the operation.
+  ///
+  /// If the original method returns no data on success, such as `Delete`, the
+  /// response is `google.protobuf.Empty`. If the original method is standard
+  /// `Get`/`Create`/`Update`, the response should be the resource. For other
+  /// methods, the response should have the type `XxxResponse`, where `Xxx` is
+  /// the original method name. For example, if the original method name is
+  /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? response;
+
+  Operation({
+    this.done,
+    this.error,
+    this.metadata,
+    this.name,
+    this.response,
+  });
+
+  Operation.fromJson(core.Map json_)
+      : this(
+          done: json_.containsKey('done') ? json_['done'] as core.bool : null,
+          error: json_.containsKey('error')
+              ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>)
+              : null,
+          metadata: json_.containsKey('metadata')
+              ? json_['metadata'] as core.Map<core.String, core.dynamic>
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          response: json_.containsKey('response')
+              ? json_['response'] as core.Map<core.String, core.dynamic>
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (done != null) 'done': done!,
+        if (error != null) 'error': error!,
+        if (metadata != null) 'metadata': metadata!,
+        if (name != null) 'name': name!,
+        if (response != null) 'response': response!,
+      };
+}
+
 /// Order bys define how rows will be sorted in the response.
 ///
 /// For example, ordering rows by descending event count is one ordering, and
@@ -2288,6 +2776,107 @@ class PropertyQuota {
         if (tokensPerHour != null) 'tokensPerHour': tokensPerHour!,
         if (tokensPerProjectPerHour != null)
           'tokensPerProjectPerHour': tokensPerProjectPerHour!,
+      };
+}
+
+/// A request to list users in an audience export.
+class QueryAudienceExportRequest {
+  /// The number of rows to return.
+  ///
+  /// If unspecified, 10,000 rows are returned. The API returns a maximum of
+  /// 250,000 rows per request, no matter how many you ask for. `limit` must be
+  /// positive. The API can also return fewer rows than the requested `limit`,
+  /// if there aren't as many dimension values as the `limit`. To learn more
+  /// about this pagination parameter, see
+  /// [Pagination](https://developers.google.com/analytics/devguides/reporting/data/v1/basics#pagination).
+  ///
+  /// Optional.
+  core.String? limit;
+
+  /// The row count of the start row.
+  ///
+  /// The first row is counted as row 0. When paging, the first request does not
+  /// specify offset; or equivalently, sets offset to 0; the first request
+  /// returns the first `limit` of rows. The second request sets offset to the
+  /// `limit` of the first request; the second request returns the second
+  /// `limit` of rows. To learn more about this pagination parameter, see
+  /// [Pagination](https://developers.google.com/analytics/devguides/reporting/data/v1/basics#pagination).
+  ///
+  /// Optional.
+  core.String? offset;
+
+  QueryAudienceExportRequest({
+    this.limit,
+    this.offset,
+  });
+
+  QueryAudienceExportRequest.fromJson(core.Map json_)
+      : this(
+          limit:
+              json_.containsKey('limit') ? json_['limit'] as core.String : null,
+          offset: json_.containsKey('offset')
+              ? json_['offset'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (limit != null) 'limit': limit!,
+        if (offset != null) 'offset': offset!,
+      };
+}
+
+/// A list of users in an audience export.
+class QueryAudienceExportResponse {
+  /// Configuration data about AudienceExport being queried.
+  ///
+  /// Returned to help interpret the audience rows in this response. For
+  /// example, the dimensions in this AudienceExport correspond to the columns
+  /// in the AudienceRows.
+  AudienceExport? audienceExport;
+
+  /// Rows for each user in an audience export.
+  ///
+  /// The number of rows in this response will be less than or equal to
+  /// request's page size.
+  core.List<V1betaAudienceRow>? audienceRows;
+
+  /// The total number of rows in the AudienceExport result.
+  ///
+  /// `rowCount` is independent of the number of rows returned in the response,
+  /// the `limit` request parameter, and the `offset` request parameter. For
+  /// example if a query returns 175 rows and includes `limit` of 50 in the API
+  /// request, the response will contain `rowCount` of 175 but only 50 rows. To
+  /// learn more about this pagination parameter, see
+  /// [Pagination](https://developers.google.com/analytics/devguides/reporting/data/v1/basics#pagination).
+  core.int? rowCount;
+
+  QueryAudienceExportResponse({
+    this.audienceExport,
+    this.audienceRows,
+    this.rowCount,
+  });
+
+  QueryAudienceExportResponse.fromJson(core.Map json_)
+      : this(
+          audienceExport: json_.containsKey('audienceExport')
+              ? AudienceExport.fromJson(json_['audienceExport']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          audienceRows: json_.containsKey('audienceRows')
+              ? (json_['audienceRows'] as core.List)
+                  .map((value) => V1betaAudienceRow.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          rowCount: json_.containsKey('rowCount')
+              ? json_['rowCount'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (audienceExport != null) 'audienceExport': audienceExport!,
+        if (audienceRows != null) 'audienceRows': audienceRows!,
+        if (rowCount != null) 'rowCount': rowCount!,
       };
 }
 
@@ -3379,5 +3968,73 @@ class SchemaRestrictionResponse {
       };
 }
 
+/// The `Status` type defines a logical error model that is suitable for
+/// different programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
+/// contains three pieces of data: error code, error message, and error details.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
+typedef Status = $Status;
+
 /// The filter for string
 typedef StringFilter = $StringFilter;
+
+/// An audience dimension is a user attribute.
+///
+/// Specific user attributed are requested and then later returned in the
+/// `QueryAudienceExportResponse`.
+class V1betaAudienceDimension {
+  /// The API name of the dimension.
+  ///
+  /// See the
+  /// [API Dimensions](https://developers.google.com/analytics/devguides/reporting/data/v1/audience-list-api-schema#dimensions)
+  /// for the list of dimension names.
+  ///
+  /// Optional.
+  core.String? dimensionName;
+
+  V1betaAudienceDimension({
+    this.dimensionName,
+  });
+
+  V1betaAudienceDimension.fromJson(core.Map json_)
+      : this(
+          dimensionName: json_.containsKey('dimensionName')
+              ? json_['dimensionName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dimensionName != null) 'dimensionName': dimensionName!,
+      };
+}
+
+/// The value of a dimension.
+typedef V1betaAudienceDimensionValue = $DimensionValue;
+
+/// Dimension value attributes for the audience user row.
+class V1betaAudienceRow {
+  /// Each dimension value attribute for an audience user.
+  ///
+  /// One dimension value will be added for each dimension column requested.
+  core.List<V1betaAudienceDimensionValue>? dimensionValues;
+
+  V1betaAudienceRow({
+    this.dimensionValues,
+  });
+
+  V1betaAudienceRow.fromJson(core.Map json_)
+      : this(
+          dimensionValues: json_.containsKey('dimensionValues')
+              ? (json_['dimensionValues'] as core.List)
+                  .map((value) => V1betaAudienceDimensionValue.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dimensionValues != null) 'dimensionValues': dimensionValues!,
+      };
+}

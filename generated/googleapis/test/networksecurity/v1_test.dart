@@ -995,6 +995,7 @@ api.ListAddressGroupReferencesResponseAddressGroupReference
   if (buildCounterListAddressGroupReferencesResponseAddressGroupReference < 3) {
     o.firewallPolicy = 'foo';
     o.rulePriority = 42;
+    o.securityPolicy = 'foo';
   }
   buildCounterListAddressGroupReferencesResponseAddressGroupReference--;
   return o;
@@ -1011,6 +1012,10 @@ void checkListAddressGroupReferencesResponseAddressGroupReference(
     unittest.expect(
       o.rulePriority!,
       unittest.equals(42),
+    );
+    unittest.expect(
+      o.securityPolicy!,
+      unittest.equals('foo'),
     );
   }
   buildCounterListAddressGroupReferencesResponseAddressGroupReference--;

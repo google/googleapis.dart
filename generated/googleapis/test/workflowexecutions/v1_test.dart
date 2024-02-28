@@ -165,6 +165,8 @@ api.Execution buildExecution() {
   if (buildCounterExecution < 3) {
     o.argument = 'foo';
     o.callLogLevel = 'foo';
+    o.createTime = 'foo';
+    o.disableConcurrencyQuotaOverflowBuffering = true;
     o.duration = 'foo';
     o.endTime = 'foo';
     o.error = buildError();
@@ -192,6 +194,12 @@ void checkExecution(api.Execution o) {
       o.callLogLevel!,
       unittest.equals('foo'),
     );
+    unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+        o.disableConcurrencyQuotaOverflowBuffering!, unittest.isTrue);
     unittest.expect(
       o.duration!,
       unittest.equals('foo'),

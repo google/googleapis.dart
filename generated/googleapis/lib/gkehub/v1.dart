@@ -2987,14 +2987,31 @@ class Binding {
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
   /// (primary) that represents all the users of that domain. For example,
-  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a user that has
-  /// been recently deleted. For example,
-  /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
-  /// this value reverts to `user:{emailid}` and the recovered user retains the
-  /// role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a service account
-  /// that has been recently deleted. For example,
+  /// `google.com` or `example.com`. *
+  /// `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workforce identity pool. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`:
+  /// All workforce identities in a group. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All workforce identities with a specific attribute value. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}
+  /// / * `: All identities in a workforce identity pool. *
+  /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workload identity pool. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`:
+  /// A workload identity pool group. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All identities in a workload identity pool with a certain attribute. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}
+  /// / * `: All identities in a workload identity pool. *
+  /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
+  /// identifier) representing a user that has been recently deleted. For
+  /// example, `alice@example.com?uid=123456789012345678901`. If the user is
+  /// recovered, this value reverts to `user:{emailid}` and the recovered user
+  /// retains the role in the binding. *
+  /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus
+  /// unique identifier) representing a service account that has been recently
+  /// deleted. For example,
   /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If
   /// the service account is undeleted, this value reverts to
   /// `serviceAccount:{emailid}` and the undeleted service account retains the
@@ -3003,12 +3020,19 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding.
+  /// the role in the binding. *
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// Deleted single identity in a workforce identity pool. For example,
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
   ///
-  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an
+  /// overview of the IAM roles and permissions, see the
+  /// [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For
+  /// a list of the available pre-defined roles, see
+  /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
   Binding({
@@ -3412,44 +3436,25 @@ class ClusterUpgradeMembershipGKEUpgradeState {
 
 /// Per-membership state for this feature.
 class ClusterUpgradeMembershipState {
-  /// Project number or id of the fleet.
-  ///
-  /// It is set only for Memberships that are part of fleet-based Rollout
-  /// Sequencing.
-  core.String? fleet;
-
   /// Whether this membership is ignored by the feature.
   ///
   /// For example, manually upgraded clusters can be ignored if they are newer
   /// than the default versions of its release channel.
   ClusterUpgradeIgnoredMembership? ignored;
 
-  /// Fully qualified scope names that this clusters is bound to which also have
-  /// rollout sequencing enabled.
-  core.List<core.String>? scopes;
-
   /// Actual upgrade state against desired.
   core.List<ClusterUpgradeMembershipGKEUpgradeState>? upgrades;
 
   ClusterUpgradeMembershipState({
-    this.fleet,
     this.ignored,
-    this.scopes,
     this.upgrades,
   });
 
   ClusterUpgradeMembershipState.fromJson(core.Map json_)
       : this(
-          fleet:
-              json_.containsKey('fleet') ? json_['fleet'] as core.String : null,
           ignored: json_.containsKey('ignored')
               ? ClusterUpgradeIgnoredMembership.fromJson(
                   json_['ignored'] as core.Map<core.String, core.dynamic>)
-              : null,
-          scopes: json_.containsKey('scopes')
-              ? (json_['scopes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
               : null,
           upgrades: json_.containsKey('upgrades')
               ? (json_['upgrades'] as core.List)
@@ -3461,9 +3466,7 @@ class ClusterUpgradeMembershipState {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fleet != null) 'fleet': fleet!,
         if (ignored != null) 'ignored': ignored!,
-        if (scopes != null) 'scopes': scopes!,
         if (upgrades != null) 'upgrades': upgrades!,
       };
 }
@@ -3553,6 +3556,9 @@ class CommonFeatureSpec {
   /// ClusterUpgrade (fleet-based) feature spec.
   ClusterUpgradeFleetSpec? clusterupgrade;
 
+  /// DataplaneV2 feature spec.
+  DataplaneV2FeatureSpec? dataplanev2;
+
   /// FleetObservability feature spec.
   FleetObservabilityFeatureSpec? fleetobservability;
 
@@ -3562,6 +3568,7 @@ class CommonFeatureSpec {
   CommonFeatureSpec({
     this.appdevexperience,
     this.clusterupgrade,
+    this.dataplanev2,
     this.fleetobservability,
     this.multiclusteringress,
   });
@@ -3575,6 +3582,10 @@ class CommonFeatureSpec {
           clusterupgrade: json_.containsKey('clusterupgrade')
               ? ClusterUpgradeFleetSpec.fromJson(json_['clusterupgrade']
                   as core.Map<core.String, core.dynamic>)
+              : null,
+          dataplanev2: json_.containsKey('dataplanev2')
+              ? DataplaneV2FeatureSpec.fromJson(
+                  json_['dataplanev2'] as core.Map<core.String, core.dynamic>)
               : null,
           fleetobservability: json_.containsKey('fleetobservability')
               ? FleetObservabilityFeatureSpec.fromJson(
@@ -3591,6 +3602,7 @@ class CommonFeatureSpec {
   core.Map<core.String, core.dynamic> toJson() => {
         if (appdevexperience != null) 'appdevexperience': appdevexperience!,
         if (clusterupgrade != null) 'clusterupgrade': clusterupgrade!,
+        if (dataplanev2 != null) 'dataplanev2': dataplanev2!,
         if (fleetobservability != null)
           'fleetobservability': fleetobservability!,
         if (multiclusteringress != null)
@@ -3733,8 +3745,7 @@ class ConfigManagementConfigSync {
   /// The GSA should have the Monitoring Metric Writer
   /// (roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount
   /// `default` in the namespace `config-management-monitoring` should be bound
-  /// to the GSA. This field is required when automatic Feature management is
-  /// enabled.
+  /// to the GSA.
   core.String? metricsGcpServiceAccountEmail;
 
   /// OCI repo configuration for the cluster
@@ -3924,6 +3935,36 @@ class ConfigManagementConfigSyncState {
   /// Errors pertaining to the installation of Config Sync.
   core.List<ConfigManagementConfigSyncError>? errors;
 
+  /// The state of the Reposync CRD
+  /// Possible string values are:
+  /// - "CRD_STATE_UNSPECIFIED" : CRD's state cannot be determined
+  /// - "NOT_INSTALLED" : CRD is not installed
+  /// - "INSTALLED" : CRD is installed
+  /// - "TERMINATING" : CRD is terminating (i.e., it has been deleted and is
+  /// cleaning up)
+  /// - "INSTALLING" : CRD is installing
+  core.String? reposyncCrd;
+
+  /// The state of the RootSync CRD
+  /// Possible string values are:
+  /// - "CRD_STATE_UNSPECIFIED" : CRD's state cannot be determined
+  /// - "NOT_INSTALLED" : CRD is not installed
+  /// - "INSTALLED" : CRD is installed
+  /// - "TERMINATING" : CRD is terminating (i.e., it has been deleted and is
+  /// cleaning up)
+  /// - "INSTALLING" : CRD is installing
+  core.String? rootsyncCrd;
+
+  /// The state of CS This field summarizes the other fields in this message.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : CS's state cannot be determined.
+  /// - "CONFIG_SYNC_NOT_INSTALLED" : CS is not installed.
+  /// - "CONFIG_SYNC_INSTALLED" : The expected CS version is installed
+  /// successfully.
+  /// - "CONFIG_SYNC_ERROR" : CS encounters errors.
+  /// - "CONFIG_SYNC_PENDING" : CS is installing or terminating.
+  core.String? state;
+
   /// The state of ConfigSync's process to sync configs to a cluster
   ConfigManagementSyncState? syncState;
 
@@ -3933,6 +3974,9 @@ class ConfigManagementConfigSyncState {
   ConfigManagementConfigSyncState({
     this.deploymentState,
     this.errors,
+    this.reposyncCrd,
+    this.rootsyncCrd,
+    this.state,
     this.syncState,
     this.version,
   });
@@ -3950,6 +3994,14 @@ class ConfigManagementConfigSyncState {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          reposyncCrd: json_.containsKey('reposyncCrd')
+              ? json_['reposyncCrd'] as core.String
+              : null,
+          rootsyncCrd: json_.containsKey('rootsyncCrd')
+              ? json_['rootsyncCrd'] as core.String
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
           syncState: json_.containsKey('syncState')
               ? ConfigManagementSyncState.fromJson(
                   json_['syncState'] as core.Map<core.String, core.dynamic>)
@@ -3963,6 +4015,9 @@ class ConfigManagementConfigSyncState {
   core.Map<core.String, core.dynamic> toJson() => {
         if (deploymentState != null) 'deploymentState': deploymentState!,
         if (errors != null) 'errors': errors!,
+        if (reposyncCrd != null) 'reposyncCrd': reposyncCrd!,
+        if (rootsyncCrd != null) 'rootsyncCrd': rootsyncCrd!,
+        if (state != null) 'state': state!,
         if (syncState != null) 'syncState': syncState!,
         if (version != null) 'version': version!,
       };
@@ -4426,6 +4481,14 @@ class ConfigManagementMembershipSpec {
   /// Hierarchy Controller configuration for the cluster.
   ConfigManagementHierarchyControllerConfig? hierarchyController;
 
+  /// Enables automatic Feature management.
+  /// Possible string values are:
+  /// - "MANAGEMENT_UNSPECIFIED" : Unspecified
+  /// - "MANAGEMENT_AUTOMATIC" : Google will manage the Feature for the cluster.
+  /// - "MANAGEMENT_MANUAL" : User will manually manage the Feature for the
+  /// cluster.
+  core.String? management;
+
   /// Policy Controller configuration for the cluster.
   ConfigManagementPolicyController? policyController;
 
@@ -4436,6 +4499,7 @@ class ConfigManagementMembershipSpec {
     this.cluster,
     this.configSync,
     this.hierarchyController,
+    this.management,
     this.policyController,
     this.version,
   });
@@ -4454,6 +4518,9 @@ class ConfigManagementMembershipSpec {
                   json_['hierarchyController']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          management: json_.containsKey('management')
+              ? json_['management'] as core.String
+              : null,
           policyController: json_.containsKey('policyController')
               ? ConfigManagementPolicyController.fromJson(
                   json_['policyController']
@@ -4469,6 +4536,7 @@ class ConfigManagementMembershipSpec {
         if (configSync != null) 'configSync': configSync!,
         if (hierarchyController != null)
           'hierarchyController': hierarchyController!,
+        if (management != null) 'management': management!,
         if (policyController != null) 'policyController': policyController!,
         if (version != null) 'version': version!,
       };
@@ -4803,7 +4871,7 @@ class ConfigManagementPolicyControllerMigration {
 ///
 /// For example, to specify metrics should be exported to Cloud Monitoring and
 /// Prometheus, specify backends: \["cloudmonitoring", "prometheus"\]
-typedef ConfigManagementPolicyControllerMonitoring = $Shared08;
+typedef ConfigManagementPolicyControllerMonitoring = $Shared09;
 
 /// State for PolicyControllerState.
 class ConfigManagementPolicyControllerState {
@@ -5023,6 +5091,27 @@ class ConnectAgentResource {
   core.Map<core.String, core.dynamic> toJson() => {
         if (manifest != null) 'manifest': manifest!,
         if (type != null) 'type': type!,
+      };
+}
+
+/// **Dataplane V2**: Spec
+class DataplaneV2FeatureSpec {
+  /// Enable dataplane-v2 based encryption for multiple clusters.
+  core.bool? enableEncryption;
+
+  DataplaneV2FeatureSpec({
+    this.enableEncryption,
+  });
+
+  DataplaneV2FeatureSpec.fromJson(core.Map json_)
+      : this(
+          enableEncryption: json_.containsKey('enableEncryption')
+              ? json_['enableEncryption'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enableEncryption != null) 'enableEncryption': enableEncryption!,
       };
 }
 
@@ -8243,7 +8332,7 @@ class PolicyControllerMembershipState {
 ///
 /// For example, to specify metrics should be exported to Cloud Monitoring and
 /// Prometheus, specify backends: \["cloudmonitoring", "prometheus"\]
-typedef PolicyControllerMonitoringConfig = $Shared08;
+typedef PolicyControllerMonitoringConfig = $Shared09;
 
 /// OnClusterState represents the state of a sub-component of Policy Controller.
 class PolicyControllerOnClusterState {
@@ -8423,6 +8512,11 @@ class PolicyControllerPolicyControllerDeploymentConfig {
   core.String? podAffinity;
 
   /// Pod anti-affinity enablement.
+  ///
+  /// Deprecated: use `pod_affinity` instead.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? podAntiAffinity;
 
   /// Pod tolerations of node taints.
@@ -9027,43 +9121,7 @@ class ScopeLifecycleState {
 
 /// SecurityPostureConfig defines the flags needed to enable/disable features
 /// for the Security Posture API.
-class SecurityPostureConfig {
-  /// Sets which mode to use for Security Posture features.
-  /// Possible string values are:
-  /// - "MODE_UNSPECIFIED" : Default value not specified.
-  /// - "DISABLED" : Disables Security Posture features on the cluster.
-  /// - "BASIC" : Applies Security Posture features on the cluster.
-  core.String? mode;
-
-  /// Sets which mode to use for vulnerability scanning.
-  /// Possible string values are:
-  /// - "VULNERABILITY_MODE_UNSPECIFIED" : Default value not specified.
-  /// - "VULNERABILITY_DISABLED" : Disables vulnerability scanning on the
-  /// cluster.
-  /// - "VULNERABILITY_BASIC" : Applies basic vulnerability scanning on the
-  /// cluster.
-  /// - "VULNERABILITY_ENTERPRISE" : Applies the Security Posture's
-  /// vulnerability on cluster Enterprise level features.
-  core.String? vulnerabilityMode;
-
-  SecurityPostureConfig({
-    this.mode,
-    this.vulnerabilityMode,
-  });
-
-  SecurityPostureConfig.fromJson(core.Map json_)
-      : this(
-          mode: json_.containsKey('mode') ? json_['mode'] as core.String : null,
-          vulnerabilityMode: json_.containsKey('vulnerabilityMode')
-              ? json_['vulnerabilityMode'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (mode != null) 'mode': mode!,
-        if (vulnerabilityMode != null) 'vulnerabilityMode': vulnerabilityMode!,
-      };
-}
+typedef SecurityPostureConfig = $SecurityPostureConfig;
 
 /// Status of control plane management.
 class ServiceMeshControlPlaneManagement {

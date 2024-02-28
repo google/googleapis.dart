@@ -36,7 +36,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20231116",
+    "revision": "20240223",
     "rootUrl": "https://www.googleapis.com/",
     "servicePath": "calendar/v3/",
     "title": "Calendar API",
@@ -1082,7 +1082,7 @@
                     ],
                     "parameters": {
                         "alwaysIncludeEmail": {
-                            "description": "Deprecated and ignored. A value will always be returned in the email field for the organizer, creator and attendees, even if no real email address is available (i.e. a generated, non-working value will be provided).",
+                            "description": "Deprecated and ignored.",
                             "location": "query",
                             "type": "boolean"
                         },
@@ -1093,7 +1093,19 @@
                             "type": "string"
                         },
                         "eventTypes": {
-                            "description": "Event types to return. Optional. Possible values are: \n- \"default\" \n- \"focusTime\" \n- \"outOfOffice\" \n- \"workingLocation\"This parameter can be repeated multiple times to return events of different types. Currently, these are the only allowed values for this field: \n- [\"default\", \"focusTime\", \"outOfOffice\"] \n- [\"default\", \"focusTime\", \"outOfOffice\", \"workingLocation\"] \n- [\"workingLocation\"] The default is [\"default\", \"focusTime\", \"outOfOffice\"].\nAdditional combinations of these four event types will be made available in later releases.",
+                            "description": "Event types to return. Optional. This parameter can be repeated multiple times to return events of different types. The default is [\"default\", \"focusTime\", \"outOfOffice\"].",
+                            "enum": [
+                                "default",
+                                "focusTime",
+                                "outOfOffice",
+                                "workingLocation"
+                            ],
+                            "enumDescriptions": [
+                                "Regular events.",
+                                "Focus time events.",
+                                "Out of office events.",
+                                "Working location events."
+                            ],
                             "location": "query",
                             "repeated": true,
                             "type": "string"
@@ -1143,7 +1155,7 @@
                             "type": "string"
                         },
                         "q": {
-                            "description": "Free text search terms to find events that match these terms in the following fields:\n\n- summary \n- description \n- location \n- attendee's displayName \n- attendee's email \n- workingLocationProperties.officeLocation.buildingId \n- workingLocationProperties.officeLocation.deskId \n- workingLocationProperties.officeLocation.label \n- workingLocationProperties.customLocation.label \nThese search terms also match predefined keywords against all display title translations of working location, out-of-office, and focus-time events. For example, searching for \"Office\" or \"Bureau\" returns working location events of type officeLocation, whereas searching for \"Out of office\" or \"Abwesend\" returns out-of-office events. Optional.",
+                            "description": "Free text search terms to find events that match these terms in the following fields:\n\n- summary \n- description \n- location \n- attendee's displayName \n- attendee's email \n- organizer's displayName \n- organizer's email \n- workingLocationProperties.officeLocation.buildingId \n- workingLocationProperties.officeLocation.deskId \n- workingLocationProperties.officeLocation.label \n- workingLocationProperties.customLocation.label \nThese search terms also match predefined keywords against all display title translations of working location, out-of-office, and focus-time events. For example, searching for \"Office\" or \"Bureau\" returns working location events of type officeLocation, whereas searching for \"Out of office\" or \"Abwesend\" returns out-of-office events. Optional.",
                             "location": "query",
                             "type": "string"
                         },
@@ -1485,7 +1497,7 @@
                     ],
                     "parameters": {
                         "alwaysIncludeEmail": {
-                            "description": "Deprecated and ignored. A value will always be returned in the email field for the organizer, creator and attendees, even if no real email address is available (i.e. a generated, non-working value will be provided).",
+                            "description": "Deprecated and ignored.",
                             "location": "query",
                             "type": "boolean"
                         },
@@ -1496,7 +1508,19 @@
                             "type": "string"
                         },
                         "eventTypes": {
-                            "description": "Event types to return. Optional. Possible values are: \n- \"default\" \n- \"focusTime\" \n- \"outOfOffice\" \n- \"workingLocation\"This parameter can be repeated multiple times to return events of different types. Currently, these are the only allowed values for this field: \n- [\"default\", \"focusTime\", \"outOfOffice\"] \n- [\"default\", \"focusTime\", \"outOfOffice\", \"workingLocation\"] \n- [\"workingLocation\"] The default is [\"default\", \"focusTime\", \"outOfOffice\"].\nAdditional combinations of these four event types will be made available in later releases.",
+                            "description": "Event types to return. Optional. This parameter can be repeated multiple times to return events of different types. The default is [\"default\", \"focusTime\", \"outOfOffice\"].",
+                            "enum": [
+                                "default",
+                                "focusTime",
+                                "outOfOffice",
+                                "workingLocation"
+                            ],
+                            "enumDescriptions": [
+                                "Regular events.",
+                                "Focus time events.",
+                                "Out of office events.",
+                                "Working location events."
+                            ],
                             "location": "query",
                             "repeated": true,
                             "type": "string"
@@ -1546,7 +1570,7 @@
                             "type": "string"
                         },
                         "q": {
-                            "description": "Free text search terms to find events that match these terms in the following fields:\n\n- summary \n- description \n- location \n- attendee's displayName \n- attendee's email \n- workingLocationProperties.officeLocation.buildingId \n- workingLocationProperties.officeLocation.deskId \n- workingLocationProperties.officeLocation.label \n- workingLocationProperties.customLocation.label \nThese search terms also match predefined keywords against all display title translations of working location, out-of-office, and focus-time events. For example, searching for \"Office\" or \"Bureau\" returns working location events of type officeLocation, whereas searching for \"Out of office\" or \"Abwesend\" returns out-of-office events. Optional.",
+                            "description": "Free text search terms to find events that match these terms in the following fields:\n\n- summary \n- description \n- location \n- attendee's displayName \n- attendee's email \n- organizer's displayName \n- organizer's email \n- workingLocationProperties.officeLocation.buildingId \n- workingLocationProperties.officeLocation.deskId \n- workingLocationProperties.officeLocation.label \n- workingLocationProperties.customLocation.label \nThese search terms also match predefined keywords against all display title translations of working location, out-of-office, and focus-time events. For example, searching for \"Office\" or \"Bureau\" returns working location events of type officeLocation, whereas searching for \"Out of office\" or \"Abwesend\" returns out-of-office events. Optional.",
                             "location": "query",
                             "type": "string"
                         },
@@ -2422,7 +2446,7 @@
                 },
                 "focusTimeProperties": {
                     "$ref": "EventFocusTimeProperties",
-                    "description": "Focus Time event data."
+                    "description": "Focus Time event data. Used if eventType is focusTime."
                 },
                 "gadget": {
                     "description": "A gadget that extends this event. Gadgets are deprecated; this structure is instead only used for returning birthday calendar metadata.",
@@ -2547,7 +2571,7 @@
                 },
                 "outOfOfficeProperties": {
                     "$ref": "EventOutOfOfficeProperties",
-                    "description": "Out of office event data."
+                    "description": "Out of office event data. Used if eventType is outOfOffice."
                 },
                 "privateCopy": {
                     "default": "false",

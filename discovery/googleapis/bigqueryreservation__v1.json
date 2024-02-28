@@ -23,6 +23,26 @@
             "description": "Regional Endpoint",
             "endpointUrl": "https://bigqueryreservation.me-central2.rep.googleapis.com/",
             "location": "me-central2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://bigqueryreservation.europe-west3.rep.googleapis.com/",
+            "location": "europe-west3"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://bigqueryreservation.europe-west9.rep.googleapis.com/",
+            "location": "europe-west9"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://bigqueryreservation.us-east4.rep.googleapis.com/",
+            "location": "us-east4"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://bigqueryreservation.us-west1.rep.googleapis.com/",
+            "location": "us-west1"
         }
     ],
     "icons": {
@@ -35,7 +55,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20231026",
+    "revision": "20240217",
     "rootUrl": "https://bigqueryreservation.googleapis.com/",
     "servicePath": "",
     "title": "BigQuery Reservation API",

@@ -1133,14 +1133,31 @@ class Binding {
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
   /// (primary) that represents all the users of that domain. For example,
-  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a user that has
-  /// been recently deleted. For example,
-  /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
-  /// this value reverts to `user:{emailid}` and the recovered user retains the
-  /// role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a service account
-  /// that has been recently deleted. For example,
+  /// `google.com` or `example.com`. *
+  /// `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workforce identity pool. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`:
+  /// All workforce identities in a group. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All workforce identities with a specific attribute value. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}
+  /// / * `: All identities in a workforce identity pool. *
+  /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workload identity pool. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`:
+  /// A workload identity pool group. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All identities in a workload identity pool with a certain attribute. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}
+  /// / * `: All identities in a workload identity pool. *
+  /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
+  /// identifier) representing a user that has been recently deleted. For
+  /// example, `alice@example.com?uid=123456789012345678901`. If the user is
+  /// recovered, this value reverts to `user:{emailid}` and the recovered user
+  /// retains the role in the binding. *
+  /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus
+  /// unique identifier) representing a service account that has been recently
+  /// deleted. For example,
   /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If
   /// the service account is undeleted, this value reverts to
   /// `serviceAccount:{emailid}` and the undeleted service account retains the
@@ -1149,12 +1166,19 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding.
+  /// the role in the binding. *
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// Deleted single identity in a workforce identity pool. For example,
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
   ///
-  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an
+  /// overview of the IAM roles and permissions, see the
+  /// [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For
+  /// a list of the available pre-defined roles, see
+  /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
   Binding({
@@ -1525,6 +1549,20 @@ class Instance {
   /// Whether private IP is enabled on the Looker instance.
   core.bool? privateIpEnabled;
 
+  /// PSC configuration.
+  ///
+  /// Used when `enable_private_ip` and `psc_enabled` are both true.
+  ///
+  /// Optional.
+  PscConfig? pscConfig;
+
+  /// Whether to use Private Service Connect (PSC) for private IP connectivity.
+  ///
+  /// If true, VPC peering (PSA) will not be used.
+  ///
+  /// Optional.
+  core.bool? pscEnabled;
+
   /// Whether public IP is enabled on the Looker instance.
   core.bool? publicIpEnabled;
 
@@ -1576,6 +1614,8 @@ class Instance {
     this.oauthConfig,
     this.platformEdition,
     this.privateIpEnabled,
+    this.pscConfig,
+    this.pscEnabled,
     this.publicIpEnabled,
     this.reservedRange,
     this.state,
@@ -1647,6 +1687,13 @@ class Instance {
           privateIpEnabled: json_.containsKey('privateIpEnabled')
               ? json_['privateIpEnabled'] as core.bool
               : null,
+          pscConfig: json_.containsKey('pscConfig')
+              ? PscConfig.fromJson(
+                  json_['pscConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          pscEnabled: json_.containsKey('pscEnabled')
+              ? json_['pscEnabled'] as core.bool
+              : null,
           publicIpEnabled: json_.containsKey('publicIpEnabled')
               ? json_['publicIpEnabled'] as core.bool
               : null,
@@ -1686,6 +1733,8 @@ class Instance {
         if (oauthConfig != null) 'oauthConfig': oauthConfig!,
         if (platformEdition != null) 'platformEdition': platformEdition!,
         if (privateIpEnabled != null) 'privateIpEnabled': privateIpEnabled!,
+        if (pscConfig != null) 'pscConfig': pscConfig!,
+        if (pscEnabled != null) 'pscEnabled': pscEnabled!,
         if (publicIpEnabled != null) 'publicIpEnabled': publicIpEnabled!,
         if (reservedRange != null) 'reservedRange': reservedRange!,
         if (state != null) 'state': state!,
@@ -2113,8 +2162,121 @@ class Policy {
       };
 }
 
+/// Information for Private Service Connect (PSC) setup for a Looker instance.
+class PscConfig {
+  /// List of VPCs that are allowed ingress into looker.
+  ///
+  /// Format: projects/{project}/global/networks/{network}
+  ///
+  /// Optional.
+  core.List<core.String>? allowedVpcs;
+
+  /// URI of the Looker service attachment.
+  ///
+  /// Output only.
+  core.String? lookerServiceAttachmentUri;
+
+  /// List of egress service attachment configurations.
+  ///
+  /// Optional.
+  core.List<ServiceAttachment>? serviceAttachments;
+
+  PscConfig({
+    this.allowedVpcs,
+    this.lookerServiceAttachmentUri,
+    this.serviceAttachments,
+  });
+
+  PscConfig.fromJson(core.Map json_)
+      : this(
+          allowedVpcs: json_.containsKey('allowedVpcs')
+              ? (json_['allowedVpcs'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          lookerServiceAttachmentUri:
+              json_.containsKey('lookerServiceAttachmentUri')
+                  ? json_['lookerServiceAttachmentUri'] as core.String
+                  : null,
+          serviceAttachments: json_.containsKey('serviceAttachments')
+              ? (json_['serviceAttachments'] as core.List)
+                  .map((value) => ServiceAttachment.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allowedVpcs != null) 'allowedVpcs': allowedVpcs!,
+        if (lookerServiceAttachmentUri != null)
+          'lookerServiceAttachmentUri': lookerServiceAttachmentUri!,
+        if (serviceAttachments != null)
+          'serviceAttachments': serviceAttachments!,
+      };
+}
+
 /// Request options for restarting an instance.
 typedef RestartInstanceRequest = $Empty;
+
+/// Service attachment configuration.
+class ServiceAttachment {
+  /// Connection status.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "UNKNOWN" : Connection status is unspecified.
+  /// - "ACCEPTED" : Connection is established and functioning normally.
+  /// - "PENDING" : Connection is not established (Looker tenant project hasn't
+  /// been allowlisted).
+  /// - "REJECTED" : Connection is not established (Looker tenant project is
+  /// explicitly in reject list).
+  /// - "NEEDS_ATTENTION" : Issue with target service attachment, e.g. NAT
+  /// subnet is exhausted.
+  /// - "CLOSED" : Target service attachment does not exist. This status is a
+  /// terminal state.
+  core.String? connectionStatus;
+
+  /// Fully qualified domain name that will be used in the private DNS record
+  /// created for the service attachment.
+  ///
+  /// Required.
+  core.String? localFqdn;
+
+  /// URI of the service attachment to connect to.
+  ///
+  /// Format:
+  /// projects/{project}/regions/{region}/serviceAttachments/{service_attachment}
+  ///
+  /// Required.
+  core.String? targetServiceAttachmentUri;
+
+  ServiceAttachment({
+    this.connectionStatus,
+    this.localFqdn,
+    this.targetServiceAttachmentUri,
+  });
+
+  ServiceAttachment.fromJson(core.Map json_)
+      : this(
+          connectionStatus: json_.containsKey('connectionStatus')
+              ? json_['connectionStatus'] as core.String
+              : null,
+          localFqdn: json_.containsKey('localFqdn')
+              ? json_['localFqdn'] as core.String
+              : null,
+          targetServiceAttachmentUri:
+              json_.containsKey('targetServiceAttachmentUri')
+                  ? json_['targetServiceAttachmentUri'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (connectionStatus != null) 'connectionStatus': connectionStatus!,
+        if (localFqdn != null) 'localFqdn': localFqdn!,
+        if (targetServiceAttachmentUri != null)
+          'targetServiceAttachmentUri': targetServiceAttachmentUri!,
+      };
+}
 
 /// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {

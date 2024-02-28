@@ -408,13 +408,15 @@ class AccountsResource {
   ///
   /// The report provides records of each time a user reads Google Analytics
   /// reporting data. Access records are retained for up to 2 years. Data Access
-  /// Reports can be requested for a property. The property must be in Google
-  /// Analytics 360. This method is only available to Administrators. These data
-  /// access records include GA4 UI Reporting, GA4 UI Explorations, GA4 Data
-  /// API, and other products like Firebase & Admob that can retrieve data from
-  /// Google Analytics through a linkage. These records don't include property
-  /// configuration changes like adding a stream or changing a property's time
-  /// zone. For configuration change history, see
+  /// Reports can be requested for a property. Reports may be requested for any
+  /// property, but dimensions that aren't related to quota can only be
+  /// requested on Google Analytics 360 properties. This method is only
+  /// available to Administrators. These data access records include GA4 UI
+  /// Reporting, GA4 UI Explorations, GA4 Data API, and other products like
+  /// Firebase & Admob that can retrieve data from Google Analytics through a
+  /// linkage. These records don't include property configuration changes like
+  /// adding a stream or changing a property's time zone. For configuration
+  /// change history, see
   /// [searchChangeHistoryEvents](https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1alpha/accounts/searchChangeHistoryEvents).
   ///
   /// [request] - The metadata request object.
@@ -472,7 +474,7 @@ class AccountsResource {
   /// Request parameters:
   ///
   /// [account] - Required. The account resource for which to return change
-  /// history resources.
+  /// history resources. Format: accounts/{account} Example: "accounts/100"
   /// Value must have pattern `^accounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -861,13 +863,15 @@ class PropertiesResource {
   ///
   /// The report provides records of each time a user reads Google Analytics
   /// reporting data. Access records are retained for up to 2 years. Data Access
-  /// Reports can be requested for a property. The property must be in Google
-  /// Analytics 360. This method is only available to Administrators. These data
-  /// access records include GA4 UI Reporting, GA4 UI Explorations, GA4 Data
-  /// API, and other products like Firebase & Admob that can retrieve data from
-  /// Google Analytics through a linkage. These records don't include property
-  /// configuration changes like adding a stream or changing a property's time
-  /// zone. For configuration change history, see
+  /// Reports can be requested for a property. Reports may be requested for any
+  /// property, but dimensions that aren't related to quota can only be
+  /// requested on Google Analytics 360 properties. This method is only
+  /// available to Administrators. These data access records include GA4 UI
+  /// Reporting, GA4 UI Explorations, GA4 Data API, and other products like
+  /// Firebase & Admob that can retrieve data from Google Analytics through a
+  /// linkage. These records don't include property configuration changes like
+  /// adding a stream or changing a property's time zone. For configuration
+  /// change history, see
   /// [searchChangeHistoryEvents](https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1alpha/accounts/searchChangeHistoryEvents).
   ///
   /// [request] - The metadata request object.
@@ -3520,7 +3524,7 @@ class GoogleAnalyticsAdminV1betaConversionEventDefaultConversionValue {
   /// currency will be applied as the default.
   ///
   /// Must be in ISO 4217 currency code format. See
-  /// https://en.wikipedia.org/wiki/ISO_4217 for more.
+  /// https://en.wikipedia.org/wiki/ISO_4217 for more information.
   core.String? currencyCode;
 
   /// This value will be used to populate the value for all conversions of the
@@ -5291,6 +5295,7 @@ class GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequest {
   /// Resource name for a child property.
   ///
   /// If set, only return changes made to this property or its child resources.
+  /// Format: properties/{propertyId} Example: "properties/100"
   ///
   /// Optional.
   core.String? property;

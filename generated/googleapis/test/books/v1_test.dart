@@ -7793,6 +7793,7 @@ void main() {
       final res = api.BooksApi(mock).mylibrary.annotations;
       final arg_layerIds = buildUnnamed42();
       final arg_volumeId = 'foo';
+      final arg_source = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -7834,6 +7835,10 @@ void main() {
           unittest.equals(arg_volumeId),
         );
         unittest.expect(
+          queryMap['source']!.first,
+          unittest.equals(arg_source),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -7844,8 +7849,8 @@ void main() {
         final resp = convert.json.encode(buildAnnotationsSummary());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      final response =
-          await res.summary(arg_layerIds, arg_volumeId, $fields: arg_$fields);
+      final response = await res.summary(arg_layerIds, arg_volumeId,
+          source: arg_source, $fields: arg_$fields);
       checkAnnotationsSummary(response as api.AnnotationsSummary);
     });
 

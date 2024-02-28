@@ -4396,7 +4396,7 @@ class AutoscalingTargets {
   /// trying to achieve for the instance.
   ///
   /// This number is on a scale from 0 (no utilization) to 100 (full
-  /// utilization). The valid range is \[10, 100\] inclusive.
+  /// utilization). The valid range is \[10, 99\] inclusive.
   ///
   /// Required.
   core.int? storageUtilizationPercent;
@@ -4871,14 +4871,31 @@ class Binding {
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
   /// (primary) that represents all the users of that domain. For example,
-  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a user that has
-  /// been recently deleted. For example,
-  /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
-  /// this value reverts to `user:{emailid}` and the recovered user retains the
-  /// role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a service account
-  /// that has been recently deleted. For example,
+  /// `google.com` or `example.com`. *
+  /// `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workforce identity pool. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`:
+  /// All workforce identities in a group. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All workforce identities with a specific attribute value. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}
+  /// / * `: All identities in a workforce identity pool. *
+  /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workload identity pool. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`:
+  /// A workload identity pool group. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All identities in a workload identity pool with a certain attribute. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}
+  /// / * `: All identities in a workload identity pool. *
+  /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
+  /// identifier) representing a user that has been recently deleted. For
+  /// example, `alice@example.com?uid=123456789012345678901`. If the user is
+  /// recovered, this value reverts to `user:{emailid}` and the recovered user
+  /// retains the role in the binding. *
+  /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus
+  /// unique identifier) representing a service account that has been recently
+  /// deleted. For example,
   /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If
   /// the service account is undeleted, this value reverts to
   /// `serviceAccount:{emailid}` and the undeleted service account retains the
@@ -4887,12 +4904,19 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding.
+  /// the role in the binding. *
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// Deleted single identity in a workforce identity pool. For example,
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
   ///
-  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an
+  /// overview of the IAM roles and permissions, see the
+  /// [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For
+  /// a list of the available pre-defined roles, see
+  /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
   Binding({
@@ -4971,6 +4995,16 @@ class ChildLink {
 
 /// The request for Commit.
 class CommitRequest {
+  /// The amount of latency this request is willing to incur in order to improve
+  /// throughput.
+  ///
+  /// If this field is not set, Spanner assumes requests are relatively latency
+  /// sensitive and automatically determines an appropriate delay time. You can
+  /// specify a batching delay value between 0 and 500 ms.
+  ///
+  /// Optional.
+  core.String? maxCommitDelay;
+
   /// The mutations to be executed when this transaction commits.
   ///
   /// All mutations are applied atomically, in the order they appear in this
@@ -5007,6 +5041,7 @@ class CommitRequest {
   }
 
   CommitRequest({
+    this.maxCommitDelay,
     this.mutations,
     this.requestOptions,
     this.returnCommitStats,
@@ -5016,6 +5051,9 @@ class CommitRequest {
 
   CommitRequest.fromJson(core.Map json_)
       : this(
+          maxCommitDelay: json_.containsKey('maxCommitDelay')
+              ? json_['maxCommitDelay'] as core.String
+              : null,
           mutations: json_.containsKey('mutations')
               ? (json_['mutations'] as core.List)
                   .map((value) => Mutation.fromJson(
@@ -5039,6 +5077,7 @@ class CommitRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (maxCommitDelay != null) 'maxCommitDelay': maxCommitDelay!,
         if (mutations != null) 'mutations': mutations!,
         if (requestOptions != null) 'requestOptions': requestOptions!,
         if (returnCommitStats != null) 'returnCommitStats': returnCommitStats!,
@@ -5328,9 +5367,9 @@ class CreateDatabaseRequest {
   /// [google.protobuf.FileDescriptorSet](https://github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/descriptor.proto).
   /// To generate it, [install](https://grpc.io/docs/protoc-installation/) and
   /// run `protoc` with --include_imports and --descriptor_set_out. For example,
-  /// to generate for moon/shot/app.proto, run """ $protoc
+  /// to generate for moon/shot/app.proto, run ``` $protoc
   /// --proto_path=/app_path --proto_path=/lib_path \ --include_imports \
-  /// --descriptor_set_out=descriptors.data \ moon/shot/app.proto """ For more
+  /// --descriptor_set_out=descriptors.data \ moon/shot/app.proto ``` For more
   /// details, see protobuffer
   /// [self description](https://developers.google.com/protocol-buffers/docs/techniques#self-description).
   ///
@@ -5856,7 +5895,8 @@ class DiagnosticMessage {
 /// DirectedReadOptions may only be specified for a read-only transaction,
 /// otherwise the API will return an `INVALID_ARGUMENT` error.
 class DirectedReadOptions {
-  /// Exclude_replicas indicates that should be excluded from serving requests.
+  /// Exclude_replicas indicates that specified replicas should be excluded from
+  /// serving requests.
   ///
   /// Spanner will not route requests to the replicas in this list.
   ExcludeReplicas? excludeReplicas;
@@ -6964,6 +7004,11 @@ class InstanceConfig {
   /// create instances.
   core.String? state;
 
+  /// The storage limit in bytes per processing unit.
+  ///
+  /// Output only.
+  core.String? storageLimitPerProcessingUnit;
+
   InstanceConfig({
     this.baseConfig,
     this.configType,
@@ -6977,6 +7022,7 @@ class InstanceConfig {
     this.reconciling,
     this.replicas,
     this.state,
+    this.storageLimitPerProcessingUnit,
   });
 
   InstanceConfig.fromJson(core.Map json_)
@@ -7026,6 +7072,10 @@ class InstanceConfig {
               : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
+          storageLimitPerProcessingUnit:
+              json_.containsKey('storageLimitPerProcessingUnit')
+                  ? json_['storageLimitPerProcessingUnit'] as core.String
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7042,6 +7092,8 @@ class InstanceConfig {
         if (reconciling != null) 'reconciling': reconciling!,
         if (replicas != null) 'replicas': replicas!,
         if (state != null) 'state': state!,
+        if (storageLimitPerProcessingUnit != null)
+          'storageLimitPerProcessingUnit': storageLimitPerProcessingUnit!,
       };
 }
 
@@ -8377,9 +8429,9 @@ class PartitionQueryRequest {
   ///
   /// The request will fail if the query is not root partitionable. For a query
   /// to be root partitionable, it needs to satisfy a few conditions. For
-  /// example, the first operator in the query execution plan must be a
-  /// distributed union operator. For more information about other conditions,
-  /// see
+  /// example, if the query execution plan contains a distributed union
+  /// operator, then it must be the first operator in the plan. For more
+  /// information about other conditions, see
   /// [Read data in parallel](https://cloud.google.com/spanner/docs/reads#read_data_in_parallel).
   /// The query request must not contain DML commands, such as INSERT, UPDATE,
   /// or DELETE. Use ExecuteStreamingSql with a PartitionedDml transaction for
@@ -9231,7 +9283,7 @@ class ReplicaInfo {
   /// for more details.
   core.bool? defaultLeaderLocation;
 
-  /// The location of the serving resources, e.g. "us-central1".
+  /// The location of the serving resources, e.g., "us-central1".
   core.String? location;
 
   /// The type of replica.
@@ -9284,7 +9336,7 @@ class ReplicaInfo {
 /// replica. Some examples of using replica_selectors are: * `location:us-east1`
 /// --\> The "us-east1" replica(s) of any available type will be used to process
 /// the request. * `type:READ_ONLY` --\> The "READ_ONLY" type replica(s) in
-/// nearest . available location will be used to process the request. *
+/// nearest available location will be used to process the request. *
 /// `location:us-east1 type:READ_ONLY` --\> The "READ_ONLY" type replica(s) in
 /// location "us-east1" will be used to process the request.
 class ReplicaSelection {
@@ -10439,6 +10491,8 @@ class Type {
   /// - "INT64" : Encoded as `string`, in decimal format.
   /// - "FLOAT64" : Encoded as `number`, or the strings `"NaN"`, `"Infinity"`,
   /// or `"-Infinity"`.
+  /// - "FLOAT32" : Encoded as `number`, or the strings `"NaN"`, `"Infinity"`,
+  /// or `"-Infinity"`.
   /// - "TIMESTAMP" : Encoded as `string` in RFC 3339 timestamp format. The time
   /// zone must be present, and must be `"Z"`. If the schema has the column
   /// option `allow_commit_timestamp=true`, the placeholder string
@@ -10570,9 +10624,9 @@ class UpdateDatabaseDdlRequest {
   /// [google.protobuf.FileDescriptorSet](https://github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/descriptor.proto).
   /// To generate it, [install](https://grpc.io/docs/protoc-installation/) and
   /// run `protoc` with --include_imports and --descriptor_set_out. For example,
-  /// to generate for moon/shot/app.proto, run """ $protoc
+  /// to generate for moon/shot/app.proto, run ``` $protoc
   /// --proto_path=/app_path --proto_path=/lib_path \ --include_imports \
-  /// --descriptor_set_out=descriptors.data \ moon/shot/app.proto """ For more
+  /// --descriptor_set_out=descriptors.data \ moon/shot/app.proto ``` For more
   /// details, see protobuffer
   /// [self description](https://developers.google.com/protocol-buffers/docs/techniques#self-description).
   ///

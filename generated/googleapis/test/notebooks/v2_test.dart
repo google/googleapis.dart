@@ -713,6 +713,7 @@ api.Instance buildInstance() {
     o.name = 'foo';
     o.proxyUri = 'foo';
     o.state = 'foo';
+    o.thirdPartyProxyUrl = 'foo';
     o.updateTime = 'foo';
     o.upgradeHistory = buildUnnamed12();
   }
@@ -754,6 +755,10 @@ void checkInstance(api.Instance o) {
     );
     unittest.expect(
       o.state!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.thirdPartyProxyUrl!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -1217,6 +1222,27 @@ void checkResetInstanceRequest(api.ResetInstanceRequest o) {
   buildCounterResetInstanceRequest++;
   if (buildCounterResetInstanceRequest < 3) {}
   buildCounterResetInstanceRequest--;
+}
+
+core.int buildCounterResizeDiskRequest = 0;
+api.ResizeDiskRequest buildResizeDiskRequest() {
+  final o = api.ResizeDiskRequest();
+  buildCounterResizeDiskRequest++;
+  if (buildCounterResizeDiskRequest < 3) {
+    o.bootDisk = buildBootDisk();
+    o.dataDisk = buildDataDisk();
+  }
+  buildCounterResizeDiskRequest--;
+  return o;
+}
+
+void checkResizeDiskRequest(api.ResizeDiskRequest o) {
+  buildCounterResizeDiskRequest++;
+  if (buildCounterResizeDiskRequest < 3) {
+    checkBootDisk(o.bootDisk!);
+    checkDataDisk(o.dataDisk!);
+  }
+  buildCounterResizeDiskRequest--;
 }
 
 core.int buildCounterRollbackInstanceRequest = 0;
@@ -1970,6 +1996,16 @@ void main() {
       final od = api.ResetInstanceRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkResetInstanceRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-ResizeDiskRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildResizeDiskRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ResizeDiskRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkResizeDiskRequest(od);
     });
   });
 
@@ -2903,6 +2939,64 @@ void main() {
       }), true);
       final response =
           await res.reset(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--resizeDisk', () async {
+      final mock = HttpServerMock();
+      final res = api.AIPlatformNotebooksApi(mock).projects.locations.instances;
+      final arg_request = buildResizeDiskRequest();
+      final arg_notebookInstance = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.ResizeDiskRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkResizeDiskRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.resizeDisk(arg_request, arg_notebookInstance,
+          $fields: arg_$fields);
       checkOperation(response as api.Operation);
     });
 

@@ -64,10 +64,6 @@ class DataflowApi {
   static const computeReadonlyScope =
       'https://www.googleapis.com/auth/compute.readonly';
 
-  /// See your primary Google Account email address
-  static const userinfoEmailScope =
-      'https://www.googleapis.com/auth/userinfo.email';
-
   final commons.ApiRequester _requester;
 
   ProjectsResource get projects => ProjectsResource(_requester);
@@ -3031,6 +3027,41 @@ class AutoscalingSettings {
       };
 }
 
+/// Exponential buckets where the growth factor between buckets is
+/// `2**(2**-scale)`.
+///
+/// e.g. for `scale=1` growth factor is `2**(2**(-1))=sqrt(2)`. `n` buckets will
+/// have the following boundaries. - 0th: \[0, gf) - i in \[1, n-1\]: \[gf^(i),
+/// gf^(i+1))
+class Base2Exponent {
+  /// Must be greater than 0.
+  core.int? numberOfBuckets;
+
+  /// Must be between -3 and 3.
+  ///
+  /// This forces the growth factor of the bucket boundaries to be between
+  /// `2^(1/8)` and `256`.
+  core.int? scale;
+
+  Base2Exponent({
+    this.numberOfBuckets,
+    this.scale,
+  });
+
+  Base2Exponent.fromJson(core.Map json_)
+      : this(
+          numberOfBuckets: json_.containsKey('numberOfBuckets')
+              ? json_['numberOfBuckets'] as core.int
+              : null,
+          scale: json_.containsKey('scale') ? json_['scale'] as core.int : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (numberOfBuckets != null) 'numberOfBuckets': numberOfBuckets!,
+        if (scale != null) 'scale': scale!,
+      };
+}
+
 /// Metadata for a BigQuery connector used by the job.
 class BigQueryIODetails {
   /// Dataset accessed in the connection.
@@ -3108,6 +3139,37 @@ class BigTableIODetails {
         if (instanceId != null) 'instanceId': instanceId!,
         if (projectId != null) 'projectId': projectId!,
         if (tableId != null) 'tableId': tableId!,
+      };
+}
+
+/// `BucketOptions` describes the bucket boundaries used in the histogram.
+class BucketOptions {
+  /// Bucket boundaries grow exponentially.
+  Base2Exponent? exponential;
+
+  /// Bucket boundaries grow linearly.
+  Linear? linear;
+
+  BucketOptions({
+    this.exponential,
+    this.linear,
+  });
+
+  BucketOptions.fromJson(core.Map json_)
+      : this(
+          exponential: json_.containsKey('exponential')
+              ? Base2Exponent.fromJson(
+                  json_['exponential'] as core.Map<core.String, core.dynamic>)
+              : null,
+          linear: json_.containsKey('linear')
+              ? Linear.fromJson(
+                  json_['linear'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (exponential != null) 'exponential': exponential!,
+        if (linear != null) 'linear': linear!,
       };
 }
 
@@ -4030,6 +4092,66 @@ class DataSamplingReport {
       };
 }
 
+/// Summary statistics for a population of values.
+///
+/// HistogramValue contains a sequence of buckets and gives a count of values
+/// that fall into each bucket. Bucket boundares are defined by a formula and
+/// bucket widths are either fixed or exponentially increasing.
+class DataflowHistogramValue {
+  /// The number of values in each bucket of the histogram, as described in
+  /// `bucket_options`.
+  ///
+  /// `bucket_counts` should contain N values, where N is the number of buckets
+  /// specified in `bucket_options`. If `bucket_counts` has fewer than N values,
+  /// the remaining values are assumed to be 0.
+  ///
+  /// Optional.
+  core.List<core.String>? bucketCounts;
+
+  /// Describes the bucket boundaries used in the histogram.
+  BucketOptions? bucketOptions;
+
+  /// Number of values recorded in this histogram.
+  core.String? count;
+
+  /// Statistics on the values recorded in the histogram that fall out of the
+  /// bucket boundaries.
+  OutlierStats? outlierStats;
+
+  DataflowHistogramValue({
+    this.bucketCounts,
+    this.bucketOptions,
+    this.count,
+    this.outlierStats,
+  });
+
+  DataflowHistogramValue.fromJson(core.Map json_)
+      : this(
+          bucketCounts: json_.containsKey('bucketCounts')
+              ? (json_['bucketCounts'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          bucketOptions: json_.containsKey('bucketOptions')
+              ? BucketOptions.fromJson(
+                  json_['bucketOptions'] as core.Map<core.String, core.dynamic>)
+              : null,
+          count:
+              json_.containsKey('count') ? json_['count'] as core.String : null,
+          outlierStats: json_.containsKey('outlierStats')
+              ? OutlierStats.fromJson(
+                  json_['outlierStats'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bucketCounts != null) 'bucketCounts': bucketCounts!,
+        if (bucketOptions != null) 'bucketOptions': bucketOptions!,
+        if (count != null) 'count': count!,
+        if (outlierStats != null) 'outlierStats': outlierStats!,
+      };
+}
+
 /// Metadata for a Datastore connector used by the job.
 class DatastoreIODetails {
   /// Namespace used in the connection.
@@ -4488,6 +4610,25 @@ class Environment {
   /// - "SERVICE_BASED" : Shuffle is done on the service side.
   core.String? shuffleMode;
 
+  /// Specifies the Streaming Engine message processing guarantees.
+  ///
+  /// Reduces cost and latency but might result in duplicate messages committed
+  /// to storage. Designed to run simple mapping streaming ETL jobs at the
+  /// lowest cost. For example, Change Data Capture (CDC) to BigQuery is a
+  /// canonical use case.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "STREAMING_MODE_UNSPECIFIED" : Run in the default mode.
+  /// - "STREAMING_MODE_EXACTLY_ONCE" : In this mode, message deduplication is
+  /// performed against persistent state to make sure each message is processed
+  /// and committed to storage exactly once.
+  /// - "STREAMING_MODE_AT_LEAST_ONCE" : Message deduplication is not performed.
+  /// Messages might be processed multiple times, and the results are applied
+  /// multiple times. Note: Setting this value also enables Streaming Engine and
+  /// Streaming Engine resource-based billing.
+  core.String? streamingMode;
+
   /// The prefix of the resources the system should use for temporary storage.
   ///
   /// The system will append the suffix "/temp-{JOBNAME} to this resource
@@ -4499,8 +4640,7 @@ class Environment {
   /// bucket.storage.googleapis.com/{object}
   core.String? tempStoragePrefix;
 
-  /// Whether the job uses the new streaming engine billing model based on
-  /// resource usage.
+  /// Whether the job uses the Streaming Engine resource-based billing model.
   ///
   /// Output only.
   core.bool? useStreamingEngineResourceBasedBilling;
@@ -4553,6 +4693,7 @@ class Environment {
     this.serviceKmsKeyName,
     this.serviceOptions,
     this.shuffleMode,
+    this.streamingMode,
     this.tempStoragePrefix,
     this.useStreamingEngineResourceBasedBilling,
     this.userAgent,
@@ -4606,6 +4747,9 @@ class Environment {
           shuffleMode: json_.containsKey('shuffleMode')
               ? json_['shuffleMode'] as core.String
               : null,
+          streamingMode: json_.containsKey('streamingMode')
+              ? json_['streamingMode'] as core.String
+              : null,
           tempStoragePrefix: json_.containsKey('tempStoragePrefix')
               ? json_['tempStoragePrefix'] as core.String
               : null,
@@ -4650,6 +4794,7 @@ class Environment {
         if (serviceKmsKeyName != null) 'serviceKmsKeyName': serviceKmsKeyName!,
         if (serviceOptions != null) 'serviceOptions': serviceOptions!,
         if (shuffleMode != null) 'shuffleMode': shuffleMode!,
+        if (streamingMode != null) 'streamingMode': streamingMode!,
         if (tempStoragePrefix != null) 'tempStoragePrefix': tempStoragePrefix!,
         if (useStreamingEngineResourceBasedBilling != null)
           'useStreamingEngineResourceBasedBilling':
@@ -4920,6 +5065,8 @@ class FlattenInstruction {
 }
 
 /// The environment values to be set at runtime for flex template.
+///
+/// LINT.IfChange
 class FlexTemplateRuntimeEnvironment {
   /// Additional experiment flags for the job.
   core.List<core.String>? additionalExperiments;
@@ -5023,6 +5170,25 @@ class FlexTemplateRuntimeEnvironment {
   /// Must be a valid Cloud Storage URL, beginning with `gs://`.
   core.String? stagingLocation;
 
+  /// Specifies the Streaming Engine message processing guarantees.
+  ///
+  /// Reduces cost and latency but might result in duplicate messages committed
+  /// to storage. Designed to run simple mapping streaming ETL jobs at the
+  /// lowest cost. For example, Change Data Capture (CDC) to BigQuery is a
+  /// canonical use case.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "STREAMING_MODE_UNSPECIFIED" : Run in the default mode.
+  /// - "STREAMING_MODE_EXACTLY_ONCE" : In this mode, message deduplication is
+  /// performed against persistent state to make sure each message is processed
+  /// and committed to storage exactly once.
+  /// - "STREAMING_MODE_AT_LEAST_ONCE" : Message deduplication is not performed.
+  /// Messages might be processed multiple times, and the results are applied
+  /// multiple times. Note: Setting this value also enables Streaming Engine and
+  /// Streaming Engine resource-based billing.
+  core.String? streamingMode;
+
   /// Subnetwork to which VMs will be assigned, if desired.
   ///
   /// You can specify a subnetwork using either a complete URL or an abbreviated
@@ -5082,6 +5248,7 @@ class FlexTemplateRuntimeEnvironment {
     this.sdkContainerImage,
     this.serviceAccountEmail,
     this.stagingLocation,
+    this.streamingMode,
     this.subnetwork,
     this.tempLocation,
     this.workerRegion,
@@ -5158,6 +5325,9 @@ class FlexTemplateRuntimeEnvironment {
           stagingLocation: json_.containsKey('stagingLocation')
               ? json_['stagingLocation'] as core.String
               : null,
+          streamingMode: json_.containsKey('streamingMode')
+              ? json_['streamingMode'] as core.String
+              : null,
           subnetwork: json_.containsKey('subnetwork')
               ? json_['subnetwork'] as core.String
               : null,
@@ -5202,6 +5372,7 @@ class FlexTemplateRuntimeEnvironment {
         if (serviceAccountEmail != null)
           'serviceAccountEmail': serviceAccountEmail!,
         if (stagingLocation != null) 'stagingLocation': stagingLocation!,
+        if (streamingMode != null) 'streamingMode': streamingMode!,
         if (subnetwork != null) 'subnetwork': subnetwork!,
         if (tempLocation != null) 'tempLocation': tempLocation!,
         if (workerRegion != null) 'workerRegion': workerRegion!,
@@ -5754,7 +5925,7 @@ class Job {
   /// Jobs are created in the `JOB_STATE_STOPPED` state unless otherwise
   /// specified. A job in the `JOB_STATE_RUNNING` state may asynchronously enter
   /// a terminal state. After a job has reached a terminal state, no further
-  /// state updates may be made. This field may be mutated by the Cloud Dataflow
+  /// state updates may be made. This field might be mutated by the Dataflow
   /// service; callers cannot mutate it.
   /// Possible string values are:
   /// - "JOB_STATE_UNKNOWN" : The job's run state isn't specified.
@@ -5817,8 +5988,8 @@ class Job {
 
   /// The unique ID of this job.
   ///
-  /// This field is set by the Cloud Dataflow service when the Job is created,
-  /// and is immutable for the life of the job.
+  /// This field is set by the Dataflow service when the job is created, and is
+  /// immutable for the life of the job.
   core.String? id;
 
   /// This field is populated by the Dataflow service to support filtering jobs
@@ -5841,13 +6012,13 @@ class Job {
   /// that contains this job.
   core.String? location;
 
-  /// The user-specified Cloud Dataflow job name.
+  /// The user-specified Dataflow job name.
   ///
-  /// Only one Job with a given name can exist in a project within one region at
-  /// any given time. Jobs in different regions can have the same name. If a
-  /// caller attempts to create a Job with the same name as an already-existing
-  /// Job, the attempt returns the existing Job. The name must match the regular
-  /// expression `[a-z]([-a-z0-9]{0,1022}[a-z0-9])?`
+  /// Only one active job with a given name can exist in a project within one
+  /// region at any given time. Jobs in different regions can have the same
+  /// name. If a caller attempts to create a job with the same name as an active
+  /// job that already exists, the attempt returns the existing job. The name
+  /// must match the regular expression `[a-z]([-a-z0-9]{0,1022}[a-z0-9])?`
   core.String? name;
 
   /// Preliminary field: The format of this data may change at any time.
@@ -5857,7 +6028,7 @@ class Job {
   /// JOB_VIEW_DESCRIPTION or JOB_VIEW_ALL.
   PipelineDescription? pipelineDescription;
 
-  /// The ID of the Cloud Platform project that the job belongs to.
+  /// The ID of the Google Cloud project that the job belongs to.
   core.String? projectId;
 
   /// If this job is an update of an existing job, this field is the job ID of
@@ -5987,7 +6158,7 @@ class Job {
   /// corresponding name prefixes of the new job.
   core.Map<core.String, core.String>? transformNameMapping;
 
-  /// The type of Cloud Dataflow job.
+  /// The type of Dataflow job.
   /// Possible string values are:
   /// - "JOB_TYPE_UNKNOWN" : The type of the job is unspecified, or unknown.
   /// - "JOB_TYPE_BATCH" : A batch job with a well-defined end point: data is
@@ -6971,6 +7142,47 @@ class LeaseWorkItemResponse {
       };
 }
 
+/// Linear buckets with the following boundaries for indices in 0 to n-1.
+///
+/// - i in \[0, n-1\]: \[start + (i)*width, start + (i+1)*width)
+class Linear {
+  /// Must be greater than 0.
+  core.int? numberOfBuckets;
+
+  /// Lower bound of the first bucket.
+  core.double? start;
+
+  /// Distance between bucket boundaries.
+  ///
+  /// Must be greater than 0.
+  core.double? width;
+
+  Linear({
+    this.numberOfBuckets,
+    this.start,
+    this.width,
+  });
+
+  Linear.fromJson(core.Map json_)
+      : this(
+          numberOfBuckets: json_.containsKey('numberOfBuckets')
+              ? json_['numberOfBuckets'] as core.int
+              : null,
+          start: json_.containsKey('start')
+              ? (json_['start'] as core.num).toDouble()
+              : null,
+          width: json_.containsKey('width')
+              ? (json_['width'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (numberOfBuckets != null) 'numberOfBuckets': numberOfBuckets!,
+        if (start != null) 'start': start!,
+        if (width != null) 'width': width!,
+      };
+}
+
 /// Response to a request to list job messages.
 class ListJobMessagesResponse {
   /// Autoscaling events in ascending timestamp order.
@@ -7420,6 +7632,60 @@ class MetricUpdate {
       };
 }
 
+/// The value of a metric along with its name and labels.
+class MetricValue {
+  /// Base name for this metric.
+  core.String? metric;
+
+  /// Set of metric labels for this metric.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? metricLabels;
+
+  /// Histogram value of this metric.
+  DataflowHistogramValue? valueHistogram;
+
+  /// Integer value of this metric.
+  core.String? valueInt64;
+
+  MetricValue({
+    this.metric,
+    this.metricLabels,
+    this.valueHistogram,
+    this.valueInt64,
+  });
+
+  MetricValue.fromJson(core.Map json_)
+      : this(
+          metric: json_.containsKey('metric')
+              ? json_['metric'] as core.String
+              : null,
+          metricLabels: json_.containsKey('metricLabels')
+              ? (json_['metricLabels'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          valueHistogram: json_.containsKey('valueHistogram')
+              ? DataflowHistogramValue.fromJson(json_['valueHistogram']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          valueInt64: json_.containsKey('valueInt64')
+              ? json_['valueInt64'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (metric != null) 'metric': metric!,
+        if (metricLabels != null) 'metricLabels': metricLabels!,
+        if (valueHistogram != null) 'valueHistogram': valueHistogram!,
+        if (valueInt64 != null) 'valueInt64': valueInt64!,
+      };
+}
+
 /// Describes mounted data disk.
 class MountedDataDisk {
   /// The name of the data disk.
@@ -7501,6 +7767,53 @@ class NameAndKind {
   core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (name != null) 'name': name!,
+      };
+}
+
+/// Statistics for the underflow and overflow bucket.
+class OutlierStats {
+  /// Number of values that are larger than the upper bound of the largest
+  /// bucket.
+  core.String? overflowCount;
+
+  /// Mean of values in the overflow bucket.
+  core.double? overflowMean;
+
+  /// Number of values that are smaller than the lower bound of the smallest
+  /// bucket.
+  core.String? underflowCount;
+
+  /// Mean of values in the undeflow bucket.
+  core.double? underflowMean;
+
+  OutlierStats({
+    this.overflowCount,
+    this.overflowMean,
+    this.underflowCount,
+    this.underflowMean,
+  });
+
+  OutlierStats.fromJson(core.Map json_)
+      : this(
+          overflowCount: json_.containsKey('overflowCount')
+              ? json_['overflowCount'] as core.String
+              : null,
+          overflowMean: json_.containsKey('overflowMean')
+              ? (json_['overflowMean'] as core.num).toDouble()
+              : null,
+          underflowCount: json_.containsKey('underflowCount')
+              ? json_['underflowCount'] as core.String
+              : null,
+          underflowMean: json_.containsKey('underflowMean')
+              ? (json_['underflowMean'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (overflowCount != null) 'overflowCount': overflowCount!,
+        if (overflowMean != null) 'overflowMean': overflowMean!,
+        if (underflowCount != null) 'underflowCount': underflowCount!,
+        if (underflowMean != null) 'underflowMean': underflowMean!,
       };
 }
 
@@ -7762,6 +8075,11 @@ class ParameterMetadata {
   /// Required.
   core.String? helpText;
 
+  /// Whether the parameter should be hidden in the UI.
+  ///
+  /// Optional.
+  core.bool? hiddenUi;
+
   /// Whether the parameter is optional.
   ///
   /// Defaults to false.
@@ -7844,6 +8162,7 @@ class ParameterMetadata {
     this.enumOptions,
     this.groupName,
     this.helpText,
+    this.hiddenUi,
     this.isOptional,
     this.label,
     this.name,
@@ -7879,6 +8198,9 @@ class ParameterMetadata {
           helpText: json_.containsKey('helpText')
               ? json_['helpText'] as core.String
               : null,
+          hiddenUi: json_.containsKey('hiddenUi')
+              ? json_['hiddenUi'] as core.bool
+              : null,
           isOptional: json_.containsKey('isOptional')
               ? json_['isOptional'] as core.bool
               : null,
@@ -7909,6 +8231,7 @@ class ParameterMetadata {
         if (enumOptions != null) 'enumOptions': enumOptions!,
         if (groupName != null) 'groupName': groupName!,
         if (helpText != null) 'helpText': helpText!,
+        if (hiddenUi != null) 'hiddenUi': hiddenUi!,
         if (isOptional != null) 'isOptional': isOptional!,
         if (label != null) 'label': label!,
         if (name != null) 'name': name!,
@@ -8039,6 +8362,79 @@ class PartialGroupByKeyInstruction {
           'originalCombineValuesStepName': originalCombineValuesStepName!,
         if (sideInputs != null) 'sideInputs': sideInputs!,
         if (valueCombiningFn != null) 'valueCombiningFn': valueCombiningFn!,
+      };
+}
+
+/// Metrics for a particular unfused step and namespace.
+///
+/// A metric is uniquely identified by the `metrics_namespace`, `original_step`,
+/// `metric name` and `metric_labels`.
+class PerStepNamespaceMetrics {
+  /// Metrics that are recorded for this namespace and unfused step.
+  ///
+  /// Optional.
+  core.List<MetricValue>? metricValues;
+
+  /// The namespace of these metrics on the worker.
+  core.String? metricsNamespace;
+
+  /// The original system name of the unfused step that these metrics are
+  /// reported from.
+  core.String? originalStep;
+
+  PerStepNamespaceMetrics({
+    this.metricValues,
+    this.metricsNamespace,
+    this.originalStep,
+  });
+
+  PerStepNamespaceMetrics.fromJson(core.Map json_)
+      : this(
+          metricValues: json_.containsKey('metricValues')
+              ? (json_['metricValues'] as core.List)
+                  .map((value) => MetricValue.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          metricsNamespace: json_.containsKey('metricsNamespace')
+              ? json_['metricsNamespace'] as core.String
+              : null,
+          originalStep: json_.containsKey('originalStep')
+              ? json_['originalStep'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (metricValues != null) 'metricValues': metricValues!,
+        if (metricsNamespace != null) 'metricsNamespace': metricsNamespace!,
+        if (originalStep != null) 'originalStep': originalStep!,
+      };
+}
+
+/// Per worker metrics.
+class PerWorkerMetrics {
+  /// Metrics for a particular unfused step and namespace.
+  ///
+  /// Optional.
+  core.List<PerStepNamespaceMetrics>? perStepNamespaceMetrics;
+
+  PerWorkerMetrics({
+    this.perStepNamespaceMetrics,
+  });
+
+  PerWorkerMetrics.fromJson(core.Map json_)
+      : this(
+          perStepNamespaceMetrics: json_.containsKey('perStepNamespaceMetrics')
+              ? (json_['perStepNamespaceMetrics'] as core.List)
+                  .map((value) => PerStepNamespaceMetrics.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (perStepNamespaceMetrics != null)
+          'perStepNamespaceMetrics': perStepNamespaceMetrics!,
       };
 }
 
@@ -8693,6 +9089,25 @@ class RuntimeEnvironment {
   /// Optional.
   core.String? serviceAccountEmail;
 
+  /// Specifies the Streaming Engine message processing guarantees.
+  ///
+  /// Reduces cost and latency but might result in duplicate messages committed
+  /// to storage. Designed to run simple mapping streaming ETL jobs at the
+  /// lowest cost. For example, Change Data Capture (CDC) to BigQuery is a
+  /// canonical use case.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "STREAMING_MODE_UNSPECIFIED" : Run in the default mode.
+  /// - "STREAMING_MODE_EXACTLY_ONCE" : In this mode, message deduplication is
+  /// performed against persistent state to make sure each message is processed
+  /// and committed to storage exactly once.
+  /// - "STREAMING_MODE_AT_LEAST_ONCE" : Message deduplication is not performed.
+  /// Messages might be processed multiple times, and the results are applied
+  /// multiple times. Note: Setting this value also enables Streaming Engine and
+  /// Streaming Engine resource-based billing.
+  core.String? streamingMode;
+
   /// Subnetwork to which VMs will be assigned, if desired.
   ///
   /// You can specify a subnetwork using either a complete URL or an abbreviated
@@ -8755,6 +9170,7 @@ class RuntimeEnvironment {
     this.network,
     this.numWorkers,
     this.serviceAccountEmail,
+    this.streamingMode,
     this.subnetwork,
     this.tempLocation,
     this.workerRegion,
@@ -8809,6 +9225,9 @@ class RuntimeEnvironment {
           serviceAccountEmail: json_.containsKey('serviceAccountEmail')
               ? json_['serviceAccountEmail'] as core.String
               : null,
+          streamingMode: json_.containsKey('streamingMode')
+              ? json_['streamingMode'] as core.String
+              : null,
           subnetwork: json_.containsKey('subnetwork')
               ? json_['subnetwork'] as core.String
               : null,
@@ -8842,6 +9261,7 @@ class RuntimeEnvironment {
         if (numWorkers != null) 'numWorkers': numWorkers!,
         if (serviceAccountEmail != null)
           'serviceAccountEmail': serviceAccountEmail!,
+        if (streamingMode != null) 'streamingMode': streamingMode!,
         if (subnetwork != null) 'subnetwork': subnetwork!,
         if (tempLocation != null) 'tempLocation': tempLocation!,
         if (workerRegion != null) 'workerRegion': workerRegion!,
@@ -8898,9 +9318,15 @@ class RuntimeUpdatableParams {
   /// This field is currently only supported for Streaming Engine jobs.
   core.int? minNumWorkers;
 
+  /// Target worker utilization, compared against the aggregate utilization of
+  /// the worker pool by autoscaler, to determine upscaling and downscaling when
+  /// absent other constraints such as backlog.
+  core.double? workerUtilizationHint;
+
   RuntimeUpdatableParams({
     this.maxNumWorkers,
     this.minNumWorkers,
+    this.workerUtilizationHint,
   });
 
   RuntimeUpdatableParams.fromJson(core.Map json_)
@@ -8911,11 +9337,16 @@ class RuntimeUpdatableParams {
           minNumWorkers: json_.containsKey('minNumWorkers')
               ? json_['minNumWorkers'] as core.int
               : null,
+          workerUtilizationHint: json_.containsKey('workerUtilizationHint')
+              ? (json_['workerUtilizationHint'] as core.num).toDouble()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (maxNumWorkers != null) 'maxNumWorkers': maxNumWorkers!,
         if (minNumWorkers != null) 'minNumWorkers': minNumWorkers!,
+        if (workerUtilizationHint != null)
+          'workerUtilizationHint': workerUtilizationHint!,
       };
 }
 
@@ -10921,6 +11352,121 @@ class StreamingConfigTask {
       };
 }
 
+/// Contains per-user worker telemetry used in streaming autoscaling.
+class StreamingScalingReport {
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.int? activeBundleCount;
+
+  /// Current acive thread count.
+  core.int? activeThreadCount;
+
+  /// Maximum bundle count.
+  core.int? maximumBundleCount;
+
+  /// Maximum bytes.
+  core.String? maximumBytes;
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.int? maximumBytesCount;
+
+  /// Maximum thread count limit.
+  core.int? maximumThreadCount;
+
+  /// Current outstanding bundle count.
+  core.int? outstandingBundleCount;
+
+  /// Current outstanding bytes.
+  core.String? outstandingBytes;
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.int? outstandingBytesCount;
+
+  StreamingScalingReport({
+    this.activeBundleCount,
+    this.activeThreadCount,
+    this.maximumBundleCount,
+    this.maximumBytes,
+    this.maximumBytesCount,
+    this.maximumThreadCount,
+    this.outstandingBundleCount,
+    this.outstandingBytes,
+    this.outstandingBytesCount,
+  });
+
+  StreamingScalingReport.fromJson(core.Map json_)
+      : this(
+          activeBundleCount: json_.containsKey('activeBundleCount')
+              ? json_['activeBundleCount'] as core.int
+              : null,
+          activeThreadCount: json_.containsKey('activeThreadCount')
+              ? json_['activeThreadCount'] as core.int
+              : null,
+          maximumBundleCount: json_.containsKey('maximumBundleCount')
+              ? json_['maximumBundleCount'] as core.int
+              : null,
+          maximumBytes: json_.containsKey('maximumBytes')
+              ? json_['maximumBytes'] as core.String
+              : null,
+          maximumBytesCount: json_.containsKey('maximumBytesCount')
+              ? json_['maximumBytesCount'] as core.int
+              : null,
+          maximumThreadCount: json_.containsKey('maximumThreadCount')
+              ? json_['maximumThreadCount'] as core.int
+              : null,
+          outstandingBundleCount: json_.containsKey('outstandingBundleCount')
+              ? json_['outstandingBundleCount'] as core.int
+              : null,
+          outstandingBytes: json_.containsKey('outstandingBytes')
+              ? json_['outstandingBytes'] as core.String
+              : null,
+          outstandingBytesCount: json_.containsKey('outstandingBytesCount')
+              ? json_['outstandingBytesCount'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (activeBundleCount != null) 'activeBundleCount': activeBundleCount!,
+        if (activeThreadCount != null) 'activeThreadCount': activeThreadCount!,
+        if (maximumBundleCount != null)
+          'maximumBundleCount': maximumBundleCount!,
+        if (maximumBytes != null) 'maximumBytes': maximumBytes!,
+        if (maximumBytesCount != null) 'maximumBytesCount': maximumBytesCount!,
+        if (maximumThreadCount != null)
+          'maximumThreadCount': maximumThreadCount!,
+        if (outstandingBundleCount != null)
+          'outstandingBundleCount': outstandingBundleCount!,
+        if (outstandingBytes != null) 'outstandingBytes': outstandingBytes!,
+        if (outstandingBytesCount != null)
+          'outstandingBytesCount': outstandingBytesCount!,
+      };
+}
+
+/// Contains per-user-worker streaming scaling recommendation from the backend.
+class StreamingScalingReportResponse {
+  /// Maximum thread count limit;
+  core.int? maximumThreadCount;
+
+  StreamingScalingReportResponse({
+    this.maximumThreadCount,
+  });
+
+  StreamingScalingReportResponse.fromJson(core.Map json_)
+      : this(
+          maximumThreadCount: json_.containsKey('maximumThreadCount')
+              ? json_['maximumThreadCount'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (maximumThreadCount != null)
+          'maximumThreadCount': maximumThreadCount!,
+      };
+}
+
 /// A task which initializes part of a streaming Dataflow job.
 class StreamingSetupTask {
   /// The user has requested drain.
@@ -11358,10 +11904,28 @@ class TemplateMetadata {
   /// The parameters for the template.
   core.List<ParameterMetadata>? parameters;
 
+  /// Indicates if the template is streaming or not.
+  ///
+  /// Optional.
+  core.bool? streaming;
+
+  /// Indicates if the streaming template supports at least once mode.
+  ///
+  /// Optional.
+  core.bool? supportsAtLeastOnce;
+
+  /// Indicates if the streaming template supports exactly once mode.
+  ///
+  /// Optional.
+  core.bool? supportsExactlyOnce;
+
   TemplateMetadata({
     this.description,
     this.name,
     this.parameters,
+    this.streaming,
+    this.supportsAtLeastOnce,
+    this.supportsExactlyOnce,
   });
 
   TemplateMetadata.fromJson(core.Map json_)
@@ -11376,12 +11940,26 @@ class TemplateMetadata {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          streaming: json_.containsKey('streaming')
+              ? json_['streaming'] as core.bool
+              : null,
+          supportsAtLeastOnce: json_.containsKey('supportsAtLeastOnce')
+              ? json_['supportsAtLeastOnce'] as core.bool
+              : null,
+          supportsExactlyOnce: json_.containsKey('supportsExactlyOnce')
+              ? json_['supportsExactlyOnce'] as core.bool
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (name != null) 'name': name!,
         if (parameters != null) 'parameters': parameters!,
+        if (streaming != null) 'streaming': streaming!,
+        if (supportsAtLeastOnce != null)
+          'supportsAtLeastOnce': supportsAtLeastOnce!,
+        if (supportsExactlyOnce != null)
+          'supportsExactlyOnce': supportsExactlyOnce!,
       };
 }
 
@@ -12326,6 +12904,12 @@ class WorkerMessage {
   /// not be used here.
   core.Map<core.String, core.String>? labels;
 
+  /// System defined metrics for this worker.
+  PerWorkerMetrics? perWorkerMetrics;
+
+  /// Contains per-user worker telemetry used in streaming autoscaling.
+  StreamingScalingReport? streamingScalingReport;
+
   /// The timestamp of the worker_message.
   core.String? time;
 
@@ -12350,6 +12934,8 @@ class WorkerMessage {
   WorkerMessage({
     this.dataSamplingReport,
     this.labels,
+    this.perWorkerMetrics,
+    this.streamingScalingReport,
     this.time,
     this.workerHealthReport,
     this.workerLifecycleEvent,
@@ -12372,6 +12958,14 @@ class WorkerMessage {
                     value as core.String,
                   ),
                 )
+              : null,
+          perWorkerMetrics: json_.containsKey('perWorkerMetrics')
+              ? PerWorkerMetrics.fromJson(json_['perWorkerMetrics']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          streamingScalingReport: json_.containsKey('streamingScalingReport')
+              ? StreamingScalingReport.fromJson(json_['streamingScalingReport']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           time: json_.containsKey('time') ? json_['time'] as core.String : null,
           workerHealthReport: json_.containsKey('workerHealthReport')
@@ -12406,6 +13000,9 @@ class WorkerMessage {
         if (dataSamplingReport != null)
           'dataSamplingReport': dataSamplingReport!,
         if (labels != null) 'labels': labels!,
+        if (perWorkerMetrics != null) 'perWorkerMetrics': perWorkerMetrics!,
+        if (streamingScalingReport != null)
+          'streamingScalingReport': streamingScalingReport!,
         if (time != null) 'time': time!,
         if (workerHealthReport != null)
           'workerHealthReport': workerHealthReport!,
@@ -12478,6 +13075,9 @@ class WorkerMessageCode {
 /// A worker_message response allows the server to pass information to the
 /// sender.
 class WorkerMessageResponse {
+  /// Service's streaming scaling response for workers.
+  StreamingScalingReportResponse? streamingScalingReportResponse;
+
   /// The service's response to a worker's health report.
   WorkerHealthReportResponse? workerHealthReportResponse;
 
@@ -12491,6 +13091,7 @@ class WorkerMessageResponse {
   WorkerThreadScalingReportResponse? workerThreadScalingReportResponse;
 
   WorkerMessageResponse({
+    this.streamingScalingReportResponse,
     this.workerHealthReportResponse,
     this.workerMetricsResponse,
     this.workerShutdownNoticeResponse,
@@ -12499,6 +13100,12 @@ class WorkerMessageResponse {
 
   WorkerMessageResponse.fromJson(core.Map json_)
       : this(
+          streamingScalingReportResponse:
+              json_.containsKey('streamingScalingReportResponse')
+                  ? StreamingScalingReportResponse.fromJson(
+                      json_['streamingScalingReportResponse']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           workerHealthReportResponse:
               json_.containsKey('workerHealthReportResponse')
                   ? WorkerHealthReportResponse.fromJson(
@@ -12525,6 +13132,8 @@ class WorkerMessageResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (streamingScalingReportResponse != null)
+          'streamingScalingReportResponse': streamingScalingReportResponse!,
         if (workerHealthReportResponse != null)
           'workerHealthReportResponse': workerHealthReportResponse!,
         if (workerMetricsResponse != null)

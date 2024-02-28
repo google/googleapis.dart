@@ -100,6 +100,21 @@ void checkAuditLogConfig(api.AuditLogConfig o) {
   buildCounterAuditLogConfig--;
 }
 
+core.int buildCounterAutomaticUpdatePolicy = 0;
+api.AutomaticUpdatePolicy buildAutomaticUpdatePolicy() {
+  final o = api.AutomaticUpdatePolicy();
+  buildCounterAutomaticUpdatePolicy++;
+  if (buildCounterAutomaticUpdatePolicy < 3) {}
+  buildCounterAutomaticUpdatePolicy--;
+  return o;
+}
+
+void checkAutomaticUpdatePolicy(api.AutomaticUpdatePolicy o) {
+  buildCounterAutomaticUpdatePolicy++;
+  if (buildCounterAutomaticUpdatePolicy < 3) {}
+  buildCounterAutomaticUpdatePolicy--;
+}
+
 core.List<core.String> buildUnnamed2() => [
       'foo',
       'foo',
@@ -275,10 +290,12 @@ api.CloudFunction buildCloudFunction() {
   final o = api.CloudFunction();
   buildCounterCloudFunction++;
   if (buildCounterCloudFunction < 3) {
+    o.automaticUpdatePolicy = buildAutomaticUpdatePolicy();
     o.availableMemoryMb = 42;
     o.buildEnvironmentVariables = buildUnnamed3();
     o.buildId = 'foo';
     o.buildName = 'foo';
+    o.buildServiceAccount = 'foo';
     o.buildWorkerPool = 'foo';
     o.description = 'foo';
     o.dockerRegistry = 'foo';
@@ -294,6 +311,7 @@ api.CloudFunction buildCloudFunction() {
     o.minInstances = 42;
     o.name = 'foo';
     o.network = 'foo';
+    o.onDeployUpdatePolicy = buildOnDeployUpdatePolicy();
     o.runtime = 'foo';
     o.secretEnvironmentVariables = buildUnnamed6();
     o.secretVolumes = buildUnnamed7();
@@ -316,6 +334,7 @@ api.CloudFunction buildCloudFunction() {
 void checkCloudFunction(api.CloudFunction o) {
   buildCounterCloudFunction++;
   if (buildCounterCloudFunction < 3) {
+    checkAutomaticUpdatePolicy(o.automaticUpdatePolicy!);
     unittest.expect(
       o.availableMemoryMb!,
       unittest.equals(42),
@@ -327,6 +346,10 @@ void checkCloudFunction(api.CloudFunction o) {
     );
     unittest.expect(
       o.buildName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.buildServiceAccount!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -377,6 +400,7 @@ void checkCloudFunction(api.CloudFunction o) {
       o.network!,
       unittest.equals('foo'),
     );
+    checkOnDeployUpdatePolicy(o.onDeployUpdatePolicy!);
     unittest.expect(
       o.runtime!,
       unittest.equals('foo'),
@@ -853,6 +877,28 @@ void checkLocation(api.Location o) {
     );
   }
   buildCounterLocation--;
+}
+
+core.int buildCounterOnDeployUpdatePolicy = 0;
+api.OnDeployUpdatePolicy buildOnDeployUpdatePolicy() {
+  final o = api.OnDeployUpdatePolicy();
+  buildCounterOnDeployUpdatePolicy++;
+  if (buildCounterOnDeployUpdatePolicy < 3) {
+    o.runtimeVersion = 'foo';
+  }
+  buildCounterOnDeployUpdatePolicy--;
+  return o;
+}
+
+void checkOnDeployUpdatePolicy(api.OnDeployUpdatePolicy o) {
+  buildCounterOnDeployUpdatePolicy++;
+  if (buildCounterOnDeployUpdatePolicy < 3) {
+    unittest.expect(
+      o.runtimeVersion!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterOnDeployUpdatePolicy--;
 }
 
 core.Map<core.String, core.Object?> buildUnnamed14() => {
@@ -1381,6 +1427,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-AutomaticUpdatePolicy', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAutomaticUpdatePolicy();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AutomaticUpdatePolicy.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAutomaticUpdatePolicy(od);
+    });
+  });
+
   unittest.group('obj-schema-Binding', () {
     unittest.test('to-json--from-json', () async {
       final o = buildBinding();
@@ -1538,6 +1594,16 @@ void main() {
       final od =
           api.Location.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkLocation(od);
+    });
+  });
+
+  unittest.group('obj-schema-OnDeployUpdatePolicy', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildOnDeployUpdatePolicy();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OnDeployUpdatePolicy.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkOnDeployUpdatePolicy(od);
     });
   });
 

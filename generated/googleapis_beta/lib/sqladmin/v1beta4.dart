@@ -4064,12 +4064,12 @@ class DatabaseInstance {
   /// Output only.
   core.String? pscServiceAttachmentLink;
 
-  /// The geographical region.
+  /// The geographical region of the Cloud SQL instance.
   ///
-  /// Can be: * `us-central` (`FIRST_GEN` instances only) * `us-central1`
-  /// (`SECOND_GEN` instances only) * `asia-east1` or `europe-west1`. Defaults
-  /// to `us-central` or `us-central1` depending on the instance type. The
-  /// region cannot be changed after instance creation.
+  /// It can be one of the
+  /// [regions](https://cloud.google.com/sql/docs/mysql/locations#location-r)
+  /// where Cloud SQL operates: For example, `asia-east1`, `europe-west1`, and
+  /// `us-central1`. The default value is `us-central1`.
   core.String? region;
 
   /// Configuration specific to failover replicas and read replicas.
@@ -4117,8 +4117,10 @@ class DatabaseInstance {
   /// The SQL network architecture for the instance.
   /// Possible string values are:
   /// - "SQL_NETWORK_ARCHITECTURE_UNSPECIFIED"
-  /// - "NEW_NETWORK_ARCHITECTURE" : Instance is a Tenancy Unit (TU) instance.
-  /// - "OLD_NETWORK_ARCHITECTURE" : Instance is an Umbrella instance.
+  /// - "NEW_NETWORK_ARCHITECTURE" : The instance uses the new network
+  /// architecture.
+  /// - "OLD_NETWORK_ARCHITECTURE" : The instance uses the old network
+  /// architecture.
   core.String? sqlNetworkArchitecture;
 
   /// The current serving state of the Cloud SQL instance.
@@ -4891,6 +4893,11 @@ class ExportContextSqlExportOptions {
   /// Options for exporting from MySQL.
   ExportContextSqlExportOptionsMysqlExportOptions? mysqlExportOptions;
 
+  /// Whether or not the export should be parallel.
+  ///
+  /// Optional.
+  core.bool? parallel;
+
   /// Export only schemas.
   core.bool? schemaOnly;
 
@@ -4900,10 +4907,17 @@ class ExportContextSqlExportOptions {
   /// instances, you can specify only one table.
   core.List<core.String>? tables;
 
+  /// The number of threads to use for parallel export.
+  ///
+  /// Optional.
+  core.int? threads;
+
   ExportContextSqlExportOptions({
     this.mysqlExportOptions,
+    this.parallel,
     this.schemaOnly,
     this.tables,
+    this.threads,
   });
 
   ExportContextSqlExportOptions.fromJson(core.Map json_)
@@ -4913,6 +4927,9 @@ class ExportContextSqlExportOptions {
                   json_['mysqlExportOptions']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          parallel: json_.containsKey('parallel')
+              ? json_['parallel'] as core.bool
+              : null,
           schemaOnly: json_.containsKey('schemaOnly')
               ? json_['schemaOnly'] as core.bool
               : null,
@@ -4921,13 +4938,18 @@ class ExportContextSqlExportOptions {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          threads: json_.containsKey('threads')
+              ? json_['threads'] as core.int
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (mysqlExportOptions != null)
           'mysqlExportOptions': mysqlExportOptions!,
+        if (parallel != null) 'parallel': parallel!,
         if (schemaOnly != null) 'schemaOnly': schemaOnly!,
         if (tables != null) 'tables': tables!,
+        if (threads != null) 'threads': threads!,
       };
 }
 
@@ -6044,31 +6066,31 @@ class IpConfiguration {
   /// PSC settings for this instance.
   PscConfig? pscConfig;
 
-  /// Whether SSL/TLS connections over IP are enforced.
+  /// Use `ssl_mode` instead for MySQL and PostgreSQL.
   ///
-  /// If set to false, then allow both non-SSL/non-TLS and SSL/TLS connections.
-  /// For SSL/TLS connections, the client certificate won't be verified. If set
-  /// to true, then only allow connections encrypted with SSL/TLS and with valid
-  /// client certificates. If you want to enforce SSL/TLS without enforcing the
-  /// requirement for valid client certificates, then use the `ssl_mode` flag
-  /// instead of the legacy `require_ssl` flag.
+  /// SQL Server uses this flag. Whether SSL/TLS connections over IP are
+  /// enforced. If set to false, then allow both non-SSL/non-TLS and SSL/TLS
+  /// connections. For SSL/TLS connections, the client certificate won't be
+  /// verified. If set to true, then only allow connections encrypted with
+  /// SSL/TLS and with valid client certificates. If you want to enforce SSL/TLS
+  /// without enforcing the requirement for valid client certificates, then use
+  /// the `ssl_mode` flag instead of the legacy `require_ssl` flag.
   core.bool? requireSsl;
 
   /// Specify how SSL/TLS is enforced in database connections.
   ///
-  /// This flag is supported only for PostgreSQL. Use the legacy `require_ssl`
-  /// flag for enforcing SSL/TLS in MySQL and SQL Server. But, for PostgreSQL,
-  /// use the `ssl_mode` flag instead of the legacy `require_ssl` flag. To avoid
-  /// the conflict between those flags in PostgreSQL, only the following value
-  /// pairs are valid: * `ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and
+  /// MySQL and PostgreSQL use the `ssl_mode` flag. If you must use the
+  /// `require_ssl` flag for backward compatibility, then only the following
+  /// value pairs are valid: * `ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and
   /// `require_ssl=false` * `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=false` *
-  /// `ssl_mode=TRUSTED_CLIENT_CERTIFICATE_REQUIRED` and `require_ssl=true` Note
-  /// that the value of `ssl_mode` gets priority over the value of the legacy
-  /// `require_ssl`. For example, for the pair `ssl_mode=ENCRYPTED_ONLY,
-  /// require_ssl=false`, the `ssl_mode=ENCRYPTED_ONLY` means "only accepts SSL
-  /// connection", while the `require_ssl=false` means "both non-SSL and SSL
-  /// connections are allowed". The database respects `ssl_mode` in this case
-  /// and only accepts SSL connections.
+  /// `ssl_mode=TRUSTED_CLIENT_CERTIFICATE_REQUIRED` and `require_ssl=true` The
+  /// value of `ssl_mode` gets priority over the value of `require_ssl`. For
+  /// example, for the pair `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=false`,
+  /// the `ssl_mode=ENCRYPTED_ONLY` means only accept SSL connections, while the
+  /// `require_ssl=false` means accept both non-SSL and SSL connections. MySQL
+  /// and PostgreSQL databases respect `ssl_mode` in this case and accept only
+  /// SSL connections. SQL Server uses the `require_ssl` flag. You can set the
+  /// value for this flag to `true` or `false`.
   /// Possible string values are:
   /// - "SSL_MODE_UNSPECIFIED" : The SSL mode is unknown.
   /// - "ALLOW_UNENCRYPTED_AND_ENCRYPTED" : Allow non-SSL/non-TLS and SSL/TLS
@@ -6081,7 +6103,12 @@ class IpConfiguration {
   /// - "TRUSTED_CLIENT_CERTIFICATE_REQUIRED" : Only allow connections encrypted
   /// with SSL/TLS and with valid client certificates. When this value is used,
   /// the legacy `require_ssl` flag must be true or cleared to avoid the
-  /// conflict between values of two flags.
+  /// conflict between values of two flags. PostgreSQL clients or users that
+  /// connect using IAM database authentication must use either the
+  /// [Cloud SQL Auth Proxy](https://cloud.google.com/sql/docs/postgres/connect-auth-proxy)
+  /// or
+  /// [Cloud SQL Connectors](https://cloud.google.com/sql/docs/postgres/connect-connectors)
+  /// to enforce client identity verification.
   core.String? sslMode;
 
   IpConfiguration({
@@ -6897,8 +6924,11 @@ class PasswordValidationPolicy {
   /// and non-alphanumeric characters.
   core.String? complexity;
 
-  /// Disallow credentials that have been previously compromised by a public
-  /// data breach.
+  /// This field is deprecated and will be removed in a future version of the
+  /// API.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? disallowCompromisedCredentials;
 
   /// Disallow username as a part of the password.
@@ -7740,6 +7770,25 @@ class SqlExternalSyncSettingError {
   /// - "TURN_ON_PITR_AFTER_PROMOTE" : This code instructs customers to turn on
   /// point-in-time recovery manually for the instance after promoting the Cloud
   /// SQL for PostgreSQL instance.
+  /// - "INCOMPATIBLE_DATABASE_MINOR_VERSION" : The minor version of replica
+  /// database is incompatible with the source.
+  /// - "SOURCE_MAX_SUBSCRIPTIONS" : This warning message indicates that Cloud
+  /// SQL uses the maximum number of subscriptions to migrate data from the
+  /// source to the destination.
+  /// - "UNABLE_TO_VERIFY_DEFINERS" : Unable to verify definers on the source
+  /// for MySQL.
+  /// - "SUBSCRIPTION_CALCULATION_STATUS" : If a time out occurs while the
+  /// subscription counts are calculated, then this value is set to 1.
+  /// Otherwise, this value is set to 2.
+  /// - "PG_SUBSCRIPTION_COUNT" : Count of subscriptions needed to sync source
+  /// data for PostgreSQL database.
+  /// - "PG_SYNC_PARALLEL_LEVEL" : Final parallel level that is used to do
+  /// migration.
+  /// - "INSUFFICIENT_DISK_SIZE" : The disk size of the replica instance is
+  /// smaller than the data size of the source instance.
+  /// - "INSUFFICIENT_MACHINE_TIER" : The data size of the source instance is
+  /// greater than 1 TB, the number of cores of the replica instance is less
+  /// than 8, and the memory of the replica is less than 32 GB.
   core.String? type;
 
   SqlExternalSyncSettingError({
@@ -8662,9 +8711,9 @@ class User {
   /// - "BUILT_IN" : The database's built-in user type.
   /// - "CLOUD_IAM_USER" : Cloud IAM user.
   /// - "CLOUD_IAM_SERVICE_ACCOUNT" : Cloud IAM service account.
-  /// - "CLOUD_IAM_GROUP" : Cloud IAM Group non-login user.
-  /// - "CLOUD_IAM_GROUP_USER" : Cloud IAM Group login user.
-  /// - "CLOUD_IAM_GROUP_SERVICE_ACCOUNT" : Cloud IAM Group service account.
+  /// - "CLOUD_IAM_GROUP" : Cloud IAM group non-login user.
+  /// - "CLOUD_IAM_GROUP_USER" : Cloud IAM group login user.
+  /// - "CLOUD_IAM_GROUP_SERVICE_ACCOUNT" : Cloud IAM group service account.
   core.String? type;
 
   User({

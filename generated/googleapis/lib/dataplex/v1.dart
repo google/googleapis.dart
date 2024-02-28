@@ -8816,6 +8816,42 @@ class GoogleCloudDataplexV1DataProfileSpecSelectedFields {
       };
 }
 
+/// DataQualityColumnResult provides a more detailed, per-column view of the
+/// results.
+class GoogleCloudDataplexV1DataQualityColumnResult {
+  /// The column specified in the DataQualityRule.
+  ///
+  /// Output only.
+  core.String? column;
+
+  /// The column-level data quality score for this data scan job if and only if
+  /// the 'column' field is set.The score ranges between between 0, 100 (up to
+  /// two decimal points).
+  ///
+  /// Output only.
+  core.double? score;
+
+  GoogleCloudDataplexV1DataQualityColumnResult({
+    this.column,
+    this.score,
+  });
+
+  GoogleCloudDataplexV1DataQualityColumnResult.fromJson(core.Map json_)
+      : this(
+          column: json_.containsKey('column')
+              ? json_['column'] as core.String
+              : null,
+          score: json_.containsKey('score')
+              ? (json_['score'] as core.num).toDouble()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (column != null) 'column': column!,
+        if (score != null) 'score': score!,
+      };
+}
+
 /// A dimension captures data quality intent about a defined subset of the rules
 /// specified.
 class GoogleCloudDataplexV1DataQualityDimension {
@@ -8850,9 +8886,17 @@ class GoogleCloudDataplexV1DataQualityDimensionResult {
   /// Whether the dimension passed or failed.
   core.bool? passed;
 
+  /// The dimension-level data quality score for this data scan job if and only
+  /// if the 'dimension' field is set.The score ranges between 0, 100 (up to two
+  /// decimal points).
+  ///
+  /// Output only.
+  core.double? score;
+
   GoogleCloudDataplexV1DataQualityDimensionResult({
     this.dimension,
     this.passed,
+    this.score,
   });
 
   GoogleCloudDataplexV1DataQualityDimensionResult.fromJson(core.Map json_)
@@ -8863,16 +8907,27 @@ class GoogleCloudDataplexV1DataQualityDimensionResult {
               : null,
           passed:
               json_.containsKey('passed') ? json_['passed'] as core.bool : null,
+          score: json_.containsKey('score')
+              ? (json_['score'] as core.num).toDouble()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dimension != null) 'dimension': dimension!,
         if (passed != null) 'passed': passed!,
+        if (score != null) 'score': score!,
       };
 }
 
 /// The output of a DataQualityScan.
 class GoogleCloudDataplexV1DataQualityResult {
+  /// A list of results at the column level.A column will have a corresponding
+  /// DataQualityColumnResult if and only if there is at least one rule with the
+  /// 'column' field set to it.
+  ///
+  /// Output only.
+  core.List<GoogleCloudDataplexV1DataQualityColumnResult>? columns;
+
   /// A list of results at the dimension level.A dimension will have a
   /// corresponding DataQualityDimensionResult if and only if there is at least
   /// one rule with the 'dimension' field set to it.
@@ -8896,17 +8951,32 @@ class GoogleCloudDataplexV1DataQualityResult {
   /// The data scanned for this result.
   GoogleCloudDataplexV1ScannedData? scannedData;
 
+  /// The overall data quality score.The score ranges between 0, 100 (up to two
+  /// decimal points).
+  ///
+  /// Output only.
+  core.double? score;
+
   GoogleCloudDataplexV1DataQualityResult({
+    this.columns,
     this.dimensions,
     this.passed,
     this.postScanActionsResult,
     this.rowCount,
     this.rules,
     this.scannedData,
+    this.score,
   });
 
   GoogleCloudDataplexV1DataQualityResult.fromJson(core.Map json_)
       : this(
+          columns: json_.containsKey('columns')
+              ? (json_['columns'] as core.List)
+                  .map((value) =>
+                      GoogleCloudDataplexV1DataQualityColumnResult.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           dimensions: json_.containsKey('dimensions')
               ? (json_['dimensions'] as core.List)
                   .map((value) =>
@@ -8935,9 +9005,13 @@ class GoogleCloudDataplexV1DataQualityResult {
               ? GoogleCloudDataplexV1ScannedData.fromJson(
                   json_['scannedData'] as core.Map<core.String, core.dynamic>)
               : null,
+          score: json_.containsKey('score')
+              ? (json_['score'] as core.num).toDouble()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (columns != null) 'columns': columns!,
         if (dimensions != null) 'dimensions': dimensions!,
         if (passed != null) 'passed': passed!,
         if (postScanActionsResult != null)
@@ -8945,6 +9019,7 @@ class GoogleCloudDataplexV1DataQualityResult {
         if (rowCount != null) 'rowCount': rowCount!,
         if (rules != null) 'rules': rules!,
         if (scannedData != null) 'scannedData': scannedData!,
+        if (score != null) 'score': score!,
       };
 }
 
@@ -9007,7 +9082,8 @@ class GoogleCloudDataplexV1DataQualityRule {
   /// is true.
   ///
   /// In that case, such null rows are trivially considered passing.This field
-  /// is only valid for row-level type rules.
+  /// is only valid for the following type of rules: RangeExpectation
+  /// RegexExpectation SetExpectation UniquenessExpectation
   ///
   /// Optional.
   core.bool? ignoreNull;
@@ -13852,8 +13928,25 @@ class GoogleIamV1Binding {
   /// group:{emailid}: An email address that represents a Google group. For
   /// example, admins@example.com. domain:{domain}: The G Suite domain (primary)
   /// that represents all the users of that domain. For example, google.com or
-  /// example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus
-  /// unique identifier) representing a user that has been recently deleted. For
+  /// example.com.
+  /// principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}:
+  /// A single identity in a workforce identity pool.
+  /// principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}:
+  /// All workforce identities in a group.
+  /// principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}:
+  /// All workforce identities with a specific attribute value.
+  /// principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}
+  /// / * : All identities in a workforce identity pool.
+  /// principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}:
+  /// A single identity in a workload identity pool.
+  /// principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}:
+  /// A workload identity pool group.
+  /// principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}:
+  /// All identities in a workload identity pool with a certain attribute.
+  /// principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}
+  /// / * : All identities in a workload identity pool.
+  /// deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique
+  /// identifier) representing a user that has been recently deleted. For
   /// example, alice@example.com?uid=123456789012345678901. If the user is
   /// recovered, this value reverts to user:{emailid} and the recovered user
   /// retains the role in the binding.
@@ -13869,11 +13962,18 @@ class GoogleIamV1Binding {
   /// admins@example.com?uid=123456789012345678901. If the group is recovered,
   /// this value reverts to group:{emailid} and the recovered group retains the
   /// role in the binding.
+  /// deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}:
+  /// Deleted single identity in a workforce identity pool. For example,
+  /// deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of members, or principals.
   ///
-  /// For example, roles/viewer, roles/editor, or roles/owner.
+  /// For example, roles/viewer, roles/editor, or roles/owner.For an overview of
+  /// the IAM roles and permissions, see the IAM documentation
+  /// (https://cloud.google.com/iam/docs/roles-overview). For a list of the
+  /// available pre-defined roles, see here
+  /// (https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
   GoogleIamV1Binding({

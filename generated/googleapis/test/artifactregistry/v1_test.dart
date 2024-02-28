@@ -218,7 +218,6 @@ api.CleanupPolicyCondition buildCleanupPolicyCondition() {
     o.packageNamePrefixes = buildUnnamed2();
     o.tagPrefixes = buildUnnamed3();
     o.tagState = 'foo';
-    o.versionAge = 'foo';
     o.versionNamePrefixes = buildUnnamed4();
   }
   buildCounterCleanupPolicyCondition--;
@@ -240,10 +239,6 @@ void checkCleanupPolicyCondition(api.CleanupPolicyCondition o) {
     checkUnnamed3(o.tagPrefixes!);
     unittest.expect(
       o.tagState!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.versionAge!,
       unittest.equals('foo'),
     );
     checkUnnamed4(o.versionNamePrefixes!);
@@ -1782,6 +1777,7 @@ api.Repository buildRepository() {
     o.cleanupPolicyDryRun = true;
     o.createTime = 'foo';
     o.description = 'foo';
+    o.disallowUnspecifiedMode = true;
     o.dockerConfig = buildDockerRepositoryConfig();
     o.format = 'foo';
     o.kmsKeyName = 'foo';
@@ -1812,6 +1808,7 @@ void checkRepository(api.Repository o) {
       o.description!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.disallowUnspecifiedMode!, unittest.isTrue);
     checkDockerRepositoryConfig(o.dockerConfig!);
     unittest.expect(
       o.format!,

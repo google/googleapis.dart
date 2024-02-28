@@ -173,6 +173,82 @@ void checkBinding(api.Binding o) {
   buildCounterBinding--;
 }
 
+core.int buildCounterBitbucketCloudConfig = 0;
+api.BitbucketCloudConfig buildBitbucketCloudConfig() {
+  final o = api.BitbucketCloudConfig();
+  buildCounterBitbucketCloudConfig++;
+  if (buildCounterBitbucketCloudConfig < 3) {
+    o.authorizerCredential = buildUserCredential();
+    o.readAuthorizerCredential = buildUserCredential();
+    o.webhookSecretSecretVersion = 'foo';
+    o.workspace = 'foo';
+  }
+  buildCounterBitbucketCloudConfig--;
+  return o;
+}
+
+void checkBitbucketCloudConfig(api.BitbucketCloudConfig o) {
+  buildCounterBitbucketCloudConfig++;
+  if (buildCounterBitbucketCloudConfig < 3) {
+    checkUserCredential(o.authorizerCredential!);
+    checkUserCredential(o.readAuthorizerCredential!);
+    unittest.expect(
+      o.webhookSecretSecretVersion!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.workspace!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterBitbucketCloudConfig--;
+}
+
+core.int buildCounterBitbucketDataCenterConfig = 0;
+api.BitbucketDataCenterConfig buildBitbucketDataCenterConfig() {
+  final o = api.BitbucketDataCenterConfig();
+  buildCounterBitbucketDataCenterConfig++;
+  if (buildCounterBitbucketDataCenterConfig < 3) {
+    o.authorizerCredential = buildUserCredential();
+    o.hostUri = 'foo';
+    o.readAuthorizerCredential = buildUserCredential();
+    o.serverVersion = 'foo';
+    o.serviceDirectoryConfig =
+        buildGoogleDevtoolsCloudbuildV2ServiceDirectoryConfig();
+    o.sslCa = 'foo';
+    o.webhookSecretSecretVersion = 'foo';
+  }
+  buildCounterBitbucketDataCenterConfig--;
+  return o;
+}
+
+void checkBitbucketDataCenterConfig(api.BitbucketDataCenterConfig o) {
+  buildCounterBitbucketDataCenterConfig++;
+  if (buildCounterBitbucketDataCenterConfig < 3) {
+    checkUserCredential(o.authorizerCredential!);
+    unittest.expect(
+      o.hostUri!,
+      unittest.equals('foo'),
+    );
+    checkUserCredential(o.readAuthorizerCredential!);
+    unittest.expect(
+      o.serverVersion!,
+      unittest.equals('foo'),
+    );
+    checkGoogleDevtoolsCloudbuildV2ServiceDirectoryConfig(
+        o.serviceDirectoryConfig!);
+    unittest.expect(
+      o.sslCa!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.webhookSecretSecretVersion!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterBitbucketDataCenterConfig--;
+}
+
 core.int buildCounterCancelOperationRequest = 0;
 api.CancelOperationRequest buildCancelOperationRequest() {
   final o = api.CancelOperationRequest();
@@ -211,6 +287,8 @@ api.Connection buildConnection() {
   buildCounterConnection++;
   if (buildCounterConnection < 3) {
     o.annotations = buildUnnamed4();
+    o.bitbucketCloudConfig = buildBitbucketCloudConfig();
+    o.bitbucketDataCenterConfig = buildBitbucketDataCenterConfig();
     o.createTime = 'foo';
     o.disabled = true;
     o.etag = 'foo';
@@ -231,6 +309,8 @@ void checkConnection(api.Connection o) {
   buildCounterConnection++;
   if (buildCounterConnection < 3) {
     checkUnnamed4(o.annotations!);
+    checkBitbucketCloudConfig(o.bitbucketCloudConfig!);
+    checkBitbucketDataCenterConfig(o.bitbucketDataCenterConfig!);
     unittest.expect(
       o.createTime!,
       unittest.equals('foo'),
@@ -1495,6 +1575,26 @@ void main() {
       final od =
           api.Binding.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkBinding(od);
+    });
+  });
+
+  unittest.group('obj-schema-BitbucketCloudConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildBitbucketCloudConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BitbucketCloudConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkBitbucketCloudConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-BitbucketDataCenterConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildBitbucketDataCenterConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BitbucketDataCenterConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkBitbucketDataCenterConfig(od);
     });
   });
 

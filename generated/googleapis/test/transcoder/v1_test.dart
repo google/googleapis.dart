@@ -725,13 +725,16 @@ api.H264CodecSettings buildH264CodecSettings() {
     o.enableTwoPass = true;
     o.entropyCoder = 'foo';
     o.frameRate = 42.0;
+    o.frameRateConversionStrategy = 'foo';
     o.gopDuration = 'foo';
     o.gopFrameCount = 42;
     o.heightPixels = 42;
+    o.hlg = buildH264ColorFormatHLG();
     o.pixelFormat = 'foo';
     o.preset = 'foo';
     o.profile = 'foo';
     o.rateControlMode = 'foo';
+    o.sdr = buildH264ColorFormatSDR();
     o.tune = 'foo';
     o.vbvFullnessBits = 42;
     o.vbvSizeBits = 42;
@@ -772,6 +775,10 @@ void checkH264CodecSettings(api.H264CodecSettings o) {
       unittest.equals(42.0),
     );
     unittest.expect(
+      o.frameRateConversionStrategy!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.gopDuration!,
       unittest.equals('foo'),
     );
@@ -783,6 +790,7 @@ void checkH264CodecSettings(api.H264CodecSettings o) {
       o.heightPixels!,
       unittest.equals(42),
     );
+    checkH264ColorFormatHLG(o.hlg!);
     unittest.expect(
       o.pixelFormat!,
       unittest.equals('foo'),
@@ -799,6 +807,7 @@ void checkH264CodecSettings(api.H264CodecSettings o) {
       o.rateControlMode!,
       unittest.equals('foo'),
     );
+    checkH264ColorFormatSDR(o.sdr!);
     unittest.expect(
       o.tune!,
       unittest.equals('foo'),
@@ -819,6 +828,36 @@ void checkH264CodecSettings(api.H264CodecSettings o) {
   buildCounterH264CodecSettings--;
 }
 
+core.int buildCounterH264ColorFormatHLG = 0;
+api.H264ColorFormatHLG buildH264ColorFormatHLG() {
+  final o = api.H264ColorFormatHLG();
+  buildCounterH264ColorFormatHLG++;
+  if (buildCounterH264ColorFormatHLG < 3) {}
+  buildCounterH264ColorFormatHLG--;
+  return o;
+}
+
+void checkH264ColorFormatHLG(api.H264ColorFormatHLG o) {
+  buildCounterH264ColorFormatHLG++;
+  if (buildCounterH264ColorFormatHLG < 3) {}
+  buildCounterH264ColorFormatHLG--;
+}
+
+core.int buildCounterH264ColorFormatSDR = 0;
+api.H264ColorFormatSDR buildH264ColorFormatSDR() {
+  final o = api.H264ColorFormatSDR();
+  buildCounterH264ColorFormatSDR++;
+  if (buildCounterH264ColorFormatSDR < 3) {}
+  buildCounterH264ColorFormatSDR--;
+  return o;
+}
+
+void checkH264ColorFormatSDR(api.H264ColorFormatSDR o) {
+  buildCounterH264ColorFormatSDR++;
+  if (buildCounterH264ColorFormatSDR < 3) {}
+  buildCounterH264ColorFormatSDR--;
+}
+
 core.int buildCounterH265CodecSettings = 0;
 api.H265CodecSettings buildH265CodecSettings() {
   final o = api.H265CodecSettings();
@@ -832,13 +871,17 @@ api.H265CodecSettings buildH265CodecSettings() {
     o.crfLevel = 42;
     o.enableTwoPass = true;
     o.frameRate = 42.0;
+    o.frameRateConversionStrategy = 'foo';
     o.gopDuration = 'foo';
     o.gopFrameCount = 42;
+    o.hdr10 = buildH265ColorFormatHDR10();
     o.heightPixels = 42;
+    o.hlg = buildH265ColorFormatHLG();
     o.pixelFormat = 'foo';
     o.preset = 'foo';
     o.profile = 'foo';
     o.rateControlMode = 'foo';
+    o.sdr = buildH265ColorFormatSDR();
     o.tune = 'foo';
     o.vbvFullnessBits = 42;
     o.vbvSizeBits = 42;
@@ -875,6 +918,10 @@ void checkH265CodecSettings(api.H265CodecSettings o) {
       unittest.equals(42.0),
     );
     unittest.expect(
+      o.frameRateConversionStrategy!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.gopDuration!,
       unittest.equals('foo'),
     );
@@ -882,10 +929,12 @@ void checkH265CodecSettings(api.H265CodecSettings o) {
       o.gopFrameCount!,
       unittest.equals(42),
     );
+    checkH265ColorFormatHDR10(o.hdr10!);
     unittest.expect(
       o.heightPixels!,
       unittest.equals(42),
     );
+    checkH265ColorFormatHLG(o.hlg!);
     unittest.expect(
       o.pixelFormat!,
       unittest.equals('foo'),
@@ -902,6 +951,7 @@ void checkH265CodecSettings(api.H265CodecSettings o) {
       o.rateControlMode!,
       unittest.equals('foo'),
     );
+    checkH265ColorFormatSDR(o.sdr!);
     unittest.expect(
       o.tune!,
       unittest.equals('foo'),
@@ -920,6 +970,51 @@ void checkH265CodecSettings(api.H265CodecSettings o) {
     );
   }
   buildCounterH265CodecSettings--;
+}
+
+core.int buildCounterH265ColorFormatHDR10 = 0;
+api.H265ColorFormatHDR10 buildH265ColorFormatHDR10() {
+  final o = api.H265ColorFormatHDR10();
+  buildCounterH265ColorFormatHDR10++;
+  if (buildCounterH265ColorFormatHDR10 < 3) {}
+  buildCounterH265ColorFormatHDR10--;
+  return o;
+}
+
+void checkH265ColorFormatHDR10(api.H265ColorFormatHDR10 o) {
+  buildCounterH265ColorFormatHDR10++;
+  if (buildCounterH265ColorFormatHDR10 < 3) {}
+  buildCounterH265ColorFormatHDR10--;
+}
+
+core.int buildCounterH265ColorFormatHLG = 0;
+api.H265ColorFormatHLG buildH265ColorFormatHLG() {
+  final o = api.H265ColorFormatHLG();
+  buildCounterH265ColorFormatHLG++;
+  if (buildCounterH265ColorFormatHLG < 3) {}
+  buildCounterH265ColorFormatHLG--;
+  return o;
+}
+
+void checkH265ColorFormatHLG(api.H265ColorFormatHLG o) {
+  buildCounterH265ColorFormatHLG++;
+  if (buildCounterH265ColorFormatHLG < 3) {}
+  buildCounterH265ColorFormatHLG--;
+}
+
+core.int buildCounterH265ColorFormatSDR = 0;
+api.H265ColorFormatSDR buildH265ColorFormatSDR() {
+  final o = api.H265ColorFormatSDR();
+  buildCounterH265ColorFormatSDR++;
+  if (buildCounterH265ColorFormatSDR < 3) {}
+  buildCounterH265ColorFormatSDR--;
+  return o;
+}
+
+void checkH265ColorFormatSDR(api.H265ColorFormatSDR o) {
+  buildCounterH265ColorFormatSDR++;
+  if (buildCounterH265ColorFormatSDR < 3) {}
+  buildCounterH265ColorFormatSDR--;
 }
 
 core.int buildCounterImage = 0;
@@ -2011,12 +2106,15 @@ api.Vp9CodecSettings buildVp9CodecSettings() {
     o.bitrateBps = 42;
     o.crfLevel = 42;
     o.frameRate = 42.0;
+    o.frameRateConversionStrategy = 'foo';
     o.gopDuration = 'foo';
     o.gopFrameCount = 42;
     o.heightPixels = 42;
+    o.hlg = buildVp9ColorFormatHLG();
     o.pixelFormat = 'foo';
     o.profile = 'foo';
     o.rateControlMode = 'foo';
+    o.sdr = buildVp9ColorFormatSDR();
     o.widthPixels = 42;
   }
   buildCounterVp9CodecSettings--;
@@ -2039,6 +2137,10 @@ void checkVp9CodecSettings(api.Vp9CodecSettings o) {
       unittest.equals(42.0),
     );
     unittest.expect(
+      o.frameRateConversionStrategy!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.gopDuration!,
       unittest.equals('foo'),
     );
@@ -2050,6 +2152,7 @@ void checkVp9CodecSettings(api.Vp9CodecSettings o) {
       o.heightPixels!,
       unittest.equals(42),
     );
+    checkVp9ColorFormatHLG(o.hlg!);
     unittest.expect(
       o.pixelFormat!,
       unittest.equals('foo'),
@@ -2062,12 +2165,43 @@ void checkVp9CodecSettings(api.Vp9CodecSettings o) {
       o.rateControlMode!,
       unittest.equals('foo'),
     );
+    checkVp9ColorFormatSDR(o.sdr!);
     unittest.expect(
       o.widthPixels!,
       unittest.equals(42),
     );
   }
   buildCounterVp9CodecSettings--;
+}
+
+core.int buildCounterVp9ColorFormatHLG = 0;
+api.Vp9ColorFormatHLG buildVp9ColorFormatHLG() {
+  final o = api.Vp9ColorFormatHLG();
+  buildCounterVp9ColorFormatHLG++;
+  if (buildCounterVp9ColorFormatHLG < 3) {}
+  buildCounterVp9ColorFormatHLG--;
+  return o;
+}
+
+void checkVp9ColorFormatHLG(api.Vp9ColorFormatHLG o) {
+  buildCounterVp9ColorFormatHLG++;
+  if (buildCounterVp9ColorFormatHLG < 3) {}
+  buildCounterVp9ColorFormatHLG--;
+}
+
+core.int buildCounterVp9ColorFormatSDR = 0;
+api.Vp9ColorFormatSDR buildVp9ColorFormatSDR() {
+  final o = api.Vp9ColorFormatSDR();
+  buildCounterVp9ColorFormatSDR++;
+  if (buildCounterVp9ColorFormatSDR < 3) {}
+  buildCounterVp9ColorFormatSDR--;
+  return o;
+}
+
+void checkVp9ColorFormatSDR(api.Vp9ColorFormatSDR o) {
+  buildCounterVp9ColorFormatSDR++;
+  if (buildCounterVp9ColorFormatSDR < 3) {}
+  buildCounterVp9ColorFormatSDR--;
 }
 
 core.int buildCounterWidevine = 0;
@@ -2367,6 +2501,26 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-H264ColorFormatHLG', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildH264ColorFormatHLG();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.H264ColorFormatHLG.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkH264ColorFormatHLG(od);
+    });
+  });
+
+  unittest.group('obj-schema-H264ColorFormatSDR', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildH264ColorFormatSDR();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.H264ColorFormatSDR.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkH264ColorFormatSDR(od);
+    });
+  });
+
   unittest.group('obj-schema-H265CodecSettings', () {
     unittest.test('to-json--from-json', () async {
       final o = buildH265CodecSettings();
@@ -2374,6 +2528,36 @@ void main() {
       final od = api.H265CodecSettings.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkH265CodecSettings(od);
+    });
+  });
+
+  unittest.group('obj-schema-H265ColorFormatHDR10', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildH265ColorFormatHDR10();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.H265ColorFormatHDR10.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkH265ColorFormatHDR10(od);
+    });
+  });
+
+  unittest.group('obj-schema-H265ColorFormatHLG', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildH265ColorFormatHLG();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.H265ColorFormatHLG.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkH265ColorFormatHLG(od);
+    });
+  });
+
+  unittest.group('obj-schema-H265ColorFormatSDR', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildH265ColorFormatSDR();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.H265ColorFormatSDR.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkH265ColorFormatSDR(od);
     });
   });
 
@@ -2632,6 +2816,26 @@ void main() {
       final od = api.Vp9CodecSettings.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkVp9CodecSettings(od);
+    });
+  });
+
+  unittest.group('obj-schema-Vp9ColorFormatHLG', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildVp9ColorFormatHLG();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Vp9ColorFormatHLG.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkVp9ColorFormatHLG(od);
+    });
+  });
+
+  unittest.group('obj-schema-Vp9ColorFormatSDR', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildVp9ColorFormatSDR();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Vp9ColorFormatSDR.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkVp9ColorFormatSDR(od);
     });
   });
 

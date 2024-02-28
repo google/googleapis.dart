@@ -632,6 +632,147 @@ void checkRollbackRemoteConfigRequest(api.RollbackRemoteConfigRequest o) {
   buildCounterRollbackRemoteConfigRequest--;
 }
 
+core.List<api.ServerRemoteConfigCondition> buildUnnamed10() => [
+      buildServerRemoteConfigCondition(),
+      buildServerRemoteConfigCondition(),
+    ];
+
+void checkUnnamed10(core.List<api.ServerRemoteConfigCondition> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkServerRemoteConfigCondition(o[0]);
+  checkServerRemoteConfigCondition(o[1]);
+}
+
+core.Map<core.String, api.ServerRemoteConfigParameter> buildUnnamed11() => {
+      'x': buildServerRemoteConfigParameter(),
+      'y': buildServerRemoteConfigParameter(),
+    };
+
+void checkUnnamed11(core.Map<core.String, api.ServerRemoteConfigParameter> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkServerRemoteConfigParameter(o['x']!);
+  checkServerRemoteConfigParameter(o['y']!);
+}
+
+core.int buildCounterServerRemoteConfig = 0;
+api.ServerRemoteConfig buildServerRemoteConfig() {
+  final o = api.ServerRemoteConfig();
+  buildCounterServerRemoteConfig++;
+  if (buildCounterServerRemoteConfig < 3) {
+    o.conditions = buildUnnamed10();
+    o.parameters = buildUnnamed11();
+    o.version = buildVersion();
+  }
+  buildCounterServerRemoteConfig--;
+  return o;
+}
+
+void checkServerRemoteConfig(api.ServerRemoteConfig o) {
+  buildCounterServerRemoteConfig++;
+  if (buildCounterServerRemoteConfig < 3) {
+    checkUnnamed10(o.conditions!);
+    checkUnnamed11(o.parameters!);
+    checkVersion(o.version!);
+  }
+  buildCounterServerRemoteConfig--;
+}
+
+core.int buildCounterServerRemoteConfigCondition = 0;
+api.ServerRemoteConfigCondition buildServerRemoteConfigCondition() {
+  final o = api.ServerRemoteConfigCondition();
+  buildCounterServerRemoteConfigCondition++;
+  if (buildCounterServerRemoteConfigCondition < 3) {
+    o.expression = 'foo';
+    o.name = 'foo';
+  }
+  buildCounterServerRemoteConfigCondition--;
+  return o;
+}
+
+void checkServerRemoteConfigCondition(api.ServerRemoteConfigCondition o) {
+  buildCounterServerRemoteConfigCondition++;
+  if (buildCounterServerRemoteConfigCondition < 3) {
+    unittest.expect(
+      o.expression!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterServerRemoteConfigCondition--;
+}
+
+core.Map<core.String, api.ServerRemoteConfigParameterValue> buildUnnamed12() =>
+    {
+      'x': buildServerRemoteConfigParameterValue(),
+      'y': buildServerRemoteConfigParameterValue(),
+    };
+
+void checkUnnamed12(
+    core.Map<core.String, api.ServerRemoteConfigParameterValue> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkServerRemoteConfigParameterValue(o['x']!);
+  checkServerRemoteConfigParameterValue(o['y']!);
+}
+
+core.int buildCounterServerRemoteConfigParameter = 0;
+api.ServerRemoteConfigParameter buildServerRemoteConfigParameter() {
+  final o = api.ServerRemoteConfigParameter();
+  buildCounterServerRemoteConfigParameter++;
+  if (buildCounterServerRemoteConfigParameter < 3) {
+    o.conditionalValues = buildUnnamed12();
+    o.defaultValue = buildServerRemoteConfigParameterValue();
+    o.description = 'foo';
+    o.valueType = 'foo';
+  }
+  buildCounterServerRemoteConfigParameter--;
+  return o;
+}
+
+void checkServerRemoteConfigParameter(api.ServerRemoteConfigParameter o) {
+  buildCounterServerRemoteConfigParameter++;
+  if (buildCounterServerRemoteConfigParameter < 3) {
+    checkUnnamed12(o.conditionalValues!);
+    checkServerRemoteConfigParameterValue(o.defaultValue!);
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.valueType!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterServerRemoteConfigParameter--;
+}
+
+core.int buildCounterServerRemoteConfigParameterValue = 0;
+api.ServerRemoteConfigParameterValue buildServerRemoteConfigParameterValue() {
+  final o = api.ServerRemoteConfigParameterValue();
+  buildCounterServerRemoteConfigParameterValue++;
+  if (buildCounterServerRemoteConfigParameterValue < 3) {
+    o.useInAppDefault = true;
+    o.value = 'foo';
+  }
+  buildCounterServerRemoteConfigParameterValue--;
+  return o;
+}
+
+void checkServerRemoteConfigParameterValue(
+    api.ServerRemoteConfigParameterValue o) {
+  buildCounterServerRemoteConfigParameterValue++;
+  if (buildCounterServerRemoteConfigParameterValue < 3) {
+    unittest.expect(o.useInAppDefault!, unittest.isTrue);
+    unittest.expect(
+      o.value!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterServerRemoteConfigParameterValue--;
+}
+
 core.int buildCounterVersion = 0;
 api.Version buildVersion() {
   final o = api.Version();
@@ -820,6 +961,46 @@ void main() {
       final od = api.RollbackRemoteConfigRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkRollbackRemoteConfigRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-ServerRemoteConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildServerRemoteConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ServerRemoteConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkServerRemoteConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-ServerRemoteConfigCondition', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildServerRemoteConfigCondition();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ServerRemoteConfigCondition.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkServerRemoteConfigCondition(od);
+    });
+  });
+
+  unittest.group('obj-schema-ServerRemoteConfigParameter', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildServerRemoteConfigParameter();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ServerRemoteConfigParameter.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkServerRemoteConfigParameter(od);
+    });
+  });
+
+  unittest.group('obj-schema-ServerRemoteConfigParameterValue', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildServerRemoteConfigParameterValue();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ServerRemoteConfigParameterValue.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkServerRemoteConfigParameterValue(od);
     });
   });
 
@@ -1041,6 +1222,59 @@ void main() {
       final response = await res.fetch(arg_request, arg_project, arg_namespace,
           $fields: arg_$fields);
       checkFetchRemoteConfigResponse(response as api.FetchRemoteConfigResponse);
+    });
+
+    unittest.test('method--getServerRemoteConfig', () async {
+      final mock = HttpServerMock();
+      final res = api.FirebaseRemoteConfigApi(mock).projects.namespaces;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildServerRemoteConfig());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.getServerRemoteConfig(arg_name, $fields: arg_$fields);
+      checkServerRemoteConfig(response as api.ServerRemoteConfig);
     });
   });
 

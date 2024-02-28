@@ -2413,14 +2413,31 @@ class Binding {
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
   /// (primary) that represents all the users of that domain. For example,
-  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a user that has
-  /// been recently deleted. For example,
-  /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
-  /// this value reverts to `user:{emailid}` and the recovered user retains the
-  /// role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a service account
-  /// that has been recently deleted. For example,
+  /// `google.com` or `example.com`. *
+  /// `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workforce identity pool. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`:
+  /// All workforce identities in a group. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All workforce identities with a specific attribute value. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}
+  /// / * `: All identities in a workforce identity pool. *
+  /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workload identity pool. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`:
+  /// A workload identity pool group. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All identities in a workload identity pool with a certain attribute. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}
+  /// / * `: All identities in a workload identity pool. *
+  /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
+  /// identifier) representing a user that has been recently deleted. For
+  /// example, `alice@example.com?uid=123456789012345678901`. If the user is
+  /// recovered, this value reverts to `user:{emailid}` and the recovered user
+  /// retains the role in the binding. *
+  /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus
+  /// unique identifier) representing a service account that has been recently
+  /// deleted. For example,
   /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If
   /// the service account is undeleted, this value reverts to
   /// `serviceAccount:{emailid}` and the undeleted service account retains the
@@ -2429,12 +2446,19 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding.
+  /// the role in the binding. *
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// Deleted single identity in a workforce identity pool. For example,
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
   ///
-  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an
+  /// overview of the IAM roles and permissions, see the
+  /// [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For
+  /// a list of the available pre-defined roles, see
+  /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
   Binding({
@@ -2546,12 +2570,6 @@ class CleanupPolicyCondition {
   /// - "ANY" : Applies to all versions.
   core.String? tagState;
 
-  /// DEPRECATED: Use older_than.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? versionAge;
-
   /// Match versions by version name prefix.
   ///
   /// Applied on any prefix match.
@@ -2563,7 +2581,6 @@ class CleanupPolicyCondition {
     this.packageNamePrefixes,
     this.tagPrefixes,
     this.tagState,
-    this.versionAge,
     this.versionNamePrefixes,
   });
 
@@ -2588,9 +2605,6 @@ class CleanupPolicyCondition {
           tagState: json_.containsKey('tagState')
               ? json_['tagState'] as core.String
               : null,
-          versionAge: json_.containsKey('versionAge')
-              ? json_['versionAge'] as core.String
-              : null,
           versionNamePrefixes: json_.containsKey('versionNamePrefixes')
               ? (json_['versionNamePrefixes'] as core.List)
                   .map((value) => value as core.String)
@@ -2605,7 +2619,6 @@ class CleanupPolicyCondition {
           'packageNamePrefixes': packageNamePrefixes!,
         if (tagPrefixes != null) 'tagPrefixes': tagPrefixes!,
         if (tagState != null) 'tagState': tagState!,
-        if (versionAge != null) 'versionAge': versionAge!,
         if (versionNamePrefixes != null)
           'versionNamePrefixes': versionNamePrefixes!,
       };
@@ -4191,6 +4204,14 @@ class Repository {
   /// The user-provided description of the repository.
   core.String? description;
 
+  /// If this is true, aunspecified repo type will be treated as error.
+  ///
+  /// Is used for new repo types that don't have any specific fields. Right now
+  /// is used by AOSS team when creating repos for customers.
+  ///
+  /// Optional.
+  core.bool? disallowUnspecifiedMode;
+
   /// Docker repository config contains repository level configuration for the
   /// repositories of docker type.
   DockerRepositoryConfig? dockerConfig;
@@ -4276,6 +4297,7 @@ class Repository {
     this.cleanupPolicyDryRun,
     this.createTime,
     this.description,
+    this.disallowUnspecifiedMode,
     this.dockerConfig,
     this.format,
     this.kmsKeyName,
@@ -4311,6 +4333,9 @@ class Repository {
               : null,
           description: json_.containsKey('description')
               ? json_['description'] as core.String
+              : null,
+          disallowUnspecifiedMode: json_.containsKey('disallowUnspecifiedMode')
+              ? json_['disallowUnspecifiedMode'] as core.bool
               : null,
           dockerConfig: json_.containsKey('dockerConfig')
               ? DockerRepositoryConfig.fromJson(
@@ -4362,6 +4387,8 @@ class Repository {
           'cleanupPolicyDryRun': cleanupPolicyDryRun!,
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
+        if (disallowUnspecifiedMode != null)
+          'disallowUnspecifiedMode': disallowUnspecifiedMode!,
         if (dockerConfig != null) 'dockerConfig': dockerConfig!,
         if (format != null) 'format': format!,
         if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,

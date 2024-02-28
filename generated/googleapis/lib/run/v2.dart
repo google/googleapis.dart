@@ -2721,6 +2721,35 @@ class GoogleCloudRunV2ExecutionTemplate {
       };
 }
 
+/// Represents a GCS Bucket mounted as a volume.
+class GoogleCloudRunV2GCSVolumeSource {
+  /// GCS Bucket name
+  core.String? bucket;
+
+  /// If true, mount the GCS bucket as read-only
+  core.bool? readOnly;
+
+  GoogleCloudRunV2GCSVolumeSource({
+    this.bucket,
+    this.readOnly,
+  });
+
+  GoogleCloudRunV2GCSVolumeSource.fromJson(core.Map json_)
+      : this(
+          bucket: json_.containsKey('bucket')
+              ? json_['bucket'] as core.String
+              : null,
+          readOnly: json_.containsKey('readOnly')
+              ? json_['readOnly'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bucket != null) 'bucket': bucket!,
+        if (readOnly != null) 'readOnly': readOnly!,
+      };
+}
+
 /// GRPCAction describes an action involving a GRPC port.
 class GoogleCloudRunV2GRPCAction {
   /// Port number of the gRPC service.
@@ -3323,6 +3352,41 @@ class GoogleCloudRunV2ListTasksResponse {
       };
 }
 
+/// Represents an NFS mount.
+class GoogleCloudRunV2NFSVolumeSource {
+  /// Path that is exported by the NFS server.
+  core.String? path;
+
+  /// If true, mount the NFS volume as read only
+  core.bool? readOnly;
+
+  /// Hostname or IP address of the NFS server
+  core.String? server;
+
+  GoogleCloudRunV2NFSVolumeSource({
+    this.path,
+    this.readOnly,
+    this.server,
+  });
+
+  GoogleCloudRunV2NFSVolumeSource.fromJson(core.Map json_)
+      : this(
+          path: json_.containsKey('path') ? json_['path'] as core.String : null,
+          readOnly: json_.containsKey('readOnly')
+              ? json_['readOnly'] as core.bool
+              : null,
+          server: json_.containsKey('server')
+              ? json_['server'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (path != null) 'path': path!,
+        if (readOnly != null) 'readOnly': readOnly!,
+        if (server != null) 'server': server!,
+      };
+}
+
 /// Direct VPC egress settings.
 class GoogleCloudRunV2NetworkInterface {
   /// The VPC network that the Cloud Run resource will be able to send traffic
@@ -3517,10 +3581,14 @@ class GoogleCloudRunV2Probe {
 
 /// ResourceRequirements describes the compute resource requirements.
 class GoogleCloudRunV2ResourceRequirements {
-  /// Determines whether CPU should be throttled or not outside of requests.
+  /// Determines whether CPU is only allocated during requests (true by
+  /// default).
+  ///
+  /// However, if ResourceRequirements is set, the caller must explicitly set
+  /// this field to true to preserve the default behavior.
   core.bool? cpuIdle;
 
-  /// Only ´memory´ and 'cpu' are supported.
+  /// Only `memory` and `cpu` keys in the map are supported.
   ///
   /// Notes: * The only supported values for CPU are '1', '2', '4', and '8'.
   /// Setting 4 CPU requires at least 2Gi of memory. For more information, go to
@@ -4056,6 +4124,11 @@ class GoogleCloudRunV2RevisionTemplate {
   /// - "EXECUTION_ENVIRONMENT_GEN2" : Uses Second Generation environment.
   core.String? executionEnvironment;
 
+  /// Disables health checking containers during deployment.
+  ///
+  /// Optional.
+  core.bool? healthCheckDisabled;
+
   /// Unstructured key value map that can be used to organize and categorize
   /// objects.
   ///
@@ -4092,6 +4165,8 @@ class GoogleCloudRunV2RevisionTemplate {
   core.String? serviceAccount;
 
   /// Enable session affinity.
+  ///
+  /// Optional.
   core.bool? sessionAffinity;
 
   /// Max allowed time for an instance to respond to a request.
@@ -4111,6 +4186,7 @@ class GoogleCloudRunV2RevisionTemplate {
     this.containers,
     this.encryptionKey,
     this.executionEnvironment,
+    this.healthCheckDisabled,
     this.labels,
     this.maxInstanceRequestConcurrency,
     this.revision,
@@ -4144,6 +4220,9 @@ class GoogleCloudRunV2RevisionTemplate {
               : null,
           executionEnvironment: json_.containsKey('executionEnvironment')
               ? json_['executionEnvironment'] as core.String
+              : null,
+          healthCheckDisabled: json_.containsKey('healthCheckDisabled')
+              ? json_['healthCheckDisabled'] as core.bool
               : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
@@ -4191,6 +4270,8 @@ class GoogleCloudRunV2RevisionTemplate {
         if (encryptionKey != null) 'encryptionKey': encryptionKey!,
         if (executionEnvironment != null)
           'executionEnvironment': executionEnvironment!,
+        if (healthCheckDisabled != null)
+          'healthCheckDisabled': healthCheckDisabled!,
         if (labels != null) 'labels': labels!,
         if (maxInstanceRequestConcurrency != null)
           'maxInstanceRequestConcurrency': maxInstanceRequestConcurrency!,
@@ -4368,6 +4449,8 @@ class GoogleCloudRunV2Service {
   /// resources. All system annotations in v1 now have a corresponding field in
   /// v2 Service. This field follows Kubernetes annotations' namespacing,
   /// limits, and rules.
+  ///
+  /// Optional.
   core.Map<core.String, core.String>? annotations;
 
   /// Settings for the Binary Authorization feature.
@@ -4405,6 +4488,11 @@ class GoogleCloudRunV2Service {
   /// more information, see
   /// https://cloud.google.com/run/docs/configuring/custom-audiences.
   core.List<core.String>? customAudiences;
+
+  /// Disables public resolution of the default URI of this service.
+  ///
+  /// Optional.
+  core.bool? defaultUriDisabled;
 
   /// The deletion time.
   ///
@@ -4462,6 +4550,8 @@ class GoogleCloudRunV2Service {
   /// `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they
   /// will be rejected. All system labels in v1 now have a corresponding field
   /// in v2 Service.
+  ///
+  /// Optional.
   core.Map<core.String, core.String>? labels;
 
   /// Email address of the last authenticated modifier.
@@ -4634,6 +4724,7 @@ class GoogleCloudRunV2Service {
     this.createTime,
     this.creator,
     this.customAudiences,
+    this.defaultUriDisabled,
     this.deleteTime,
     this.description,
     this.etag,
@@ -4697,6 +4788,9 @@ class GoogleCloudRunV2Service {
               ? (json_['customAudiences'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
+              : null,
+          defaultUriDisabled: json_.containsKey('defaultUriDisabled')
+              ? json_['defaultUriDisabled'] as core.bool
               : null,
           deleteTime: json_.containsKey('deleteTime')
               ? json_['deleteTime'] as core.String
@@ -4785,6 +4879,8 @@ class GoogleCloudRunV2Service {
         if (createTime != null) 'createTime': createTime!,
         if (creator != null) 'creator': creator!,
         if (customAudiences != null) 'customAudiences': customAudiences!,
+        if (defaultUriDisabled != null)
+          'defaultUriDisabled': defaultUriDisabled!,
         if (deleteTime != null) 'deleteTime': deleteTime!,
         if (description != null) 'description': description!,
         if (etag != null) 'etag': etag!,
@@ -5570,10 +5666,16 @@ class GoogleCloudRunV2Volume {
   /// Ephemeral storage used as a shared volume.
   GoogleCloudRunV2EmptyDirVolumeSource? emptyDir;
 
+  /// Persistent storage backed by a Google Cloud Storage bucket.
+  GoogleCloudRunV2GCSVolumeSource? gcs;
+
   /// Volume's name.
   ///
   /// Required.
   core.String? name;
+
+  /// For NFS Voumes, contains the path to the nfs Volume
+  GoogleCloudRunV2NFSVolumeSource? nfs;
 
   /// Secret represents a secret that should populate this volume.
   GoogleCloudRunV2SecretVolumeSource? secret;
@@ -5581,7 +5683,9 @@ class GoogleCloudRunV2Volume {
   GoogleCloudRunV2Volume({
     this.cloudSqlInstance,
     this.emptyDir,
+    this.gcs,
     this.name,
+    this.nfs,
     this.secret,
   });
 
@@ -5596,7 +5700,15 @@ class GoogleCloudRunV2Volume {
               ? GoogleCloudRunV2EmptyDirVolumeSource.fromJson(
                   json_['emptyDir'] as core.Map<core.String, core.dynamic>)
               : null,
+          gcs: json_.containsKey('gcs')
+              ? GoogleCloudRunV2GCSVolumeSource.fromJson(
+                  json_['gcs'] as core.Map<core.String, core.dynamic>)
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          nfs: json_.containsKey('nfs')
+              ? GoogleCloudRunV2NFSVolumeSource.fromJson(
+                  json_['nfs'] as core.Map<core.String, core.dynamic>)
+              : null,
           secret: json_.containsKey('secret')
               ? GoogleCloudRunV2SecretVolumeSource.fromJson(
                   json_['secret'] as core.Map<core.String, core.dynamic>)
@@ -5606,7 +5718,9 @@ class GoogleCloudRunV2Volume {
   core.Map<core.String, core.dynamic> toJson() => {
         if (cloudSqlInstance != null) 'cloudSqlInstance': cloudSqlInstance!,
         if (emptyDir != null) 'emptyDir': emptyDir!,
+        if (gcs != null) 'gcs': gcs!,
         if (name != null) 'name': name!,
+        if (nfs != null) 'nfs': nfs!,
         if (secret != null) 'secret': secret!,
       };
 }
@@ -5796,14 +5910,31 @@ class GoogleIamV1Binding {
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
   /// (primary) that represents all the users of that domain. For example,
-  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a user that has
-  /// been recently deleted. For example,
-  /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
-  /// this value reverts to `user:{emailid}` and the recovered user retains the
-  /// role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a service account
-  /// that has been recently deleted. For example,
+  /// `google.com` or `example.com`. *
+  /// `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workforce identity pool. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`:
+  /// All workforce identities in a group. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All workforce identities with a specific attribute value. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}
+  /// / * `: All identities in a workforce identity pool. *
+  /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workload identity pool. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`:
+  /// A workload identity pool group. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All identities in a workload identity pool with a certain attribute. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}
+  /// / * `: All identities in a workload identity pool. *
+  /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
+  /// identifier) representing a user that has been recently deleted. For
+  /// example, `alice@example.com?uid=123456789012345678901`. If the user is
+  /// recovered, this value reverts to `user:{emailid}` and the recovered user
+  /// retains the role in the binding. *
+  /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus
+  /// unique identifier) representing a service account that has been recently
+  /// deleted. For example,
   /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If
   /// the service account is undeleted, this value reverts to
   /// `serviceAccount:{emailid}` and the undeleted service account retains the
@@ -5812,12 +5943,19 @@ class GoogleIamV1Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding.
+  /// the role in the binding. *
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// Deleted single identity in a workforce identity pool. For example,
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
   ///
-  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an
+  /// overview of the IAM roles and permissions, see the
+  /// [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For
+  /// a list of the available pre-defined roles, see
+  /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
   GoogleIamV1Binding({

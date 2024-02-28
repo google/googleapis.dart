@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20231114",
+    "revision": "20240216",
     "rootUrl": "https://gkehub.googleapis.com/",
     "servicePath": "",
     "title": "GKE Hub API",
@@ -1978,14 +1978,14 @@
                     "description": "The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies)."
                 },
                 "members": {
-                    "description": "Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.",
+                    "description": "Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.",
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
                 },
                 "role": {
-                    "description": "Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.",
+                    "description": "Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).",
                     "type": "string"
                 }
             },
@@ -2180,20 +2180,9 @@
             "description": "Per-membership state for this feature.",
             "id": "ClusterUpgradeMembershipState",
             "properties": {
-                "fleet": {
-                    "description": "Project number or id of the fleet. It is set only for Memberships that are part of fleet-based Rollout Sequencing.",
-                    "type": "string"
-                },
                 "ignored": {
                     "$ref": "ClusterUpgradeIgnoredMembership",
                     "description": "Whether this membership is ignored by the feature. For example, manually upgraded clusters can be ignored if they are newer than the default versions of its release channel."
-                },
-                "scopes": {
-                    "description": "Fully qualified scope names that this clusters is bound to which also have rollout sequencing enabled.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
                 },
                 "upgrades": {
                     "description": "Actual upgrade state against desired.",
@@ -2266,6 +2255,10 @@
                 "clusterupgrade": {
                     "$ref": "ClusterUpgradeFleetSpec",
                     "description": "ClusterUpgrade (fleet-based) feature spec."
+                },
+                "dataplanev2": {
+                    "$ref": "DataplaneV2FeatureSpec",
+                    "description": "DataplaneV2 feature spec."
                 },
                 "fleetobservability": {
                     "$ref": "FleetObservabilityFeatureSpec",
@@ -2343,7 +2336,7 @@
                     "description": "Git repo configuration for the cluster."
                 },
                 "metricsGcpServiceAccountEmail": {
-                    "description": "The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring and Cloud Monarch when Workload Identity is enabled. The GSA should have the Monitoring Metric Writer (roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA. This field is required when automatic Feature management is enabled.",
+                    "description": "The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring and Cloud Monarch when Workload Identity is enabled. The GSA should have the Monitoring Metric Writer (roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.",
                     "type": "string"
                 },
                 "oci": {
@@ -2519,6 +2512,60 @@
                         "$ref": "ConfigManagementConfigSyncError"
                     },
                     "type": "array"
+                },
+                "reposyncCrd": {
+                    "description": "The state of the Reposync CRD",
+                    "enum": [
+                        "CRD_STATE_UNSPECIFIED",
+                        "NOT_INSTALLED",
+                        "INSTALLED",
+                        "TERMINATING",
+                        "INSTALLING"
+                    ],
+                    "enumDescriptions": [
+                        "CRD's state cannot be determined",
+                        "CRD is not installed",
+                        "CRD is installed",
+                        "CRD is terminating (i.e., it has been deleted and is cleaning up)",
+                        "CRD is installing"
+                    ],
+                    "type": "string"
+                },
+                "rootsyncCrd": {
+                    "description": "The state of the RootSync CRD",
+                    "enum": [
+                        "CRD_STATE_UNSPECIFIED",
+                        "NOT_INSTALLED",
+                        "INSTALLED",
+                        "TERMINATING",
+                        "INSTALLING"
+                    ],
+                    "enumDescriptions": [
+                        "CRD's state cannot be determined",
+                        "CRD is not installed",
+                        "CRD is installed",
+                        "CRD is terminating (i.e., it has been deleted and is cleaning up)",
+                        "CRD is installing"
+                    ],
+                    "type": "string"
+                },
+                "state": {
+                    "description": "The state of CS This field summarizes the other fields in this message.",
+                    "enum": [
+                        "STATE_UNSPECIFIED",
+                        "CONFIG_SYNC_NOT_INSTALLED",
+                        "CONFIG_SYNC_INSTALLED",
+                        "CONFIG_SYNC_ERROR",
+                        "CONFIG_SYNC_PENDING"
+                    ],
+                    "enumDescriptions": [
+                        "CS's state cannot be determined.",
+                        "CS is not installed.",
+                        "The expected CS version is installed successfully.",
+                        "CS encounters errors.",
+                        "CS is installing or terminating."
+                    ],
+                    "type": "string"
                 },
                 "syncState": {
                     "$ref": "ConfigManagementSyncState",
@@ -2827,6 +2874,20 @@
                 "hierarchyController": {
                     "$ref": "ConfigManagementHierarchyControllerConfig",
                     "description": "Hierarchy Controller configuration for the cluster."
+                },
+                "management": {
+                    "description": "Enables automatic Feature management.",
+                    "enum": [
+                        "MANAGEMENT_UNSPECIFIED",
+                        "MANAGEMENT_AUTOMATIC",
+                        "MANAGEMENT_MANUAL"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified",
+                        "Google will manage the Feature for the cluster.",
+                        "User will manually manage the Feature for the cluster."
+                    ],
+                    "type": "string"
                 },
                 "policyController": {
                     "$ref": "ConfigManagementPolicyController",
@@ -3156,6 +3217,17 @@
                 "type": {
                     "$ref": "TypeMeta",
                     "description": "Kubernetes type of the resource."
+                }
+            },
+            "type": "object"
+        },
+        "DataplaneV2FeatureSpec": {
+            "description": "**Dataplane V2**: Spec",
+            "id": "DataplaneV2FeatureSpec",
+            "properties": {
+                "enableEncryption": {
+                    "description": "Enable dataplane-v2 based encryption for multiple clusters.",
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -4972,7 +5044,8 @@
                     "type": "string"
                 },
                 "podAntiAffinity": {
-                    "description": "Pod anti-affinity enablement.",
+                    "deprecated": true,
+                    "description": "Pod anti-affinity enablement. Deprecated: use `pod_affinity` instead.",
                     "type": "boolean"
                 },
                 "podTolerations": {

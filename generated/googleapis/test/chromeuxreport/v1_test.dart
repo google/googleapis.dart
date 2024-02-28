@@ -137,6 +137,42 @@ void checkDate(api.Date o) {
   buildCounterDate--;
 }
 
+core.List<core.double> buildUnnamed0() => [
+      42.0,
+      42.0,
+    ];
+
+void checkUnnamed0(core.List<core.double> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals(42.0),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals(42.0),
+  );
+}
+
+core.int buildCounterFractionTimeseries = 0;
+api.FractionTimeseries buildFractionTimeseries() {
+  final o = api.FractionTimeseries();
+  buildCounterFractionTimeseries++;
+  if (buildCounterFractionTimeseries < 3) {
+    o.fractions = buildUnnamed0();
+  }
+  buildCounterFractionTimeseries--;
+  return o;
+}
+
+void checkFractionTimeseries(api.FractionTimeseries o) {
+  buildCounterFractionTimeseries++;
+  if (buildCounterFractionTimeseries < 3) {
+    checkUnnamed0(o.fractions!);
+  }
+  buildCounterFractionTimeseries--;
+}
+
 core.int buildCounterHistoryKey = 0;
 api.HistoryKey buildHistoryKey() {
   final o = api.HistoryKey();
@@ -169,23 +205,23 @@ void checkHistoryKey(api.HistoryKey o) {
   buildCounterHistoryKey--;
 }
 
-core.List<api.CollectionPeriod> buildUnnamed0() => [
+core.List<api.CollectionPeriod> buildUnnamed1() => [
       buildCollectionPeriod(),
       buildCollectionPeriod(),
     ];
 
-void checkUnnamed0(core.List<api.CollectionPeriod> o) {
+void checkUnnamed1(core.List<api.CollectionPeriod> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCollectionPeriod(o[0]);
   checkCollectionPeriod(o[1]);
 }
 
-core.Map<core.String, api.MetricTimeseries> buildUnnamed1() => {
+core.Map<core.String, api.MetricTimeseries> buildUnnamed2() => {
       'x': buildMetricTimeseries(),
       'y': buildMetricTimeseries(),
     };
 
-void checkUnnamed1(core.Map<core.String, api.MetricTimeseries> o) {
+void checkUnnamed2(core.Map<core.String, api.MetricTimeseries> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMetricTimeseries(o['x']!);
   checkMetricTimeseries(o['y']!);
@@ -196,9 +232,9 @@ api.HistoryRecord buildHistoryRecord() {
   final o = api.HistoryRecord();
   buildCounterHistoryRecord++;
   if (buildCounterHistoryRecord < 3) {
-    o.collectionPeriods = buildUnnamed0();
+    o.collectionPeriods = buildUnnamed1();
     o.key = buildHistoryKey();
-    o.metrics = buildUnnamed1();
+    o.metrics = buildUnnamed2();
   }
   buildCounterHistoryRecord--;
   return o;
@@ -207,9 +243,9 @@ api.HistoryRecord buildHistoryRecord() {
 void checkHistoryRecord(api.HistoryRecord o) {
   buildCounterHistoryRecord++;
   if (buildCounterHistoryRecord < 3) {
-    checkUnnamed0(o.collectionPeriods!);
+    checkUnnamed1(o.collectionPeriods!);
     checkHistoryKey(o.key!);
-    checkUnnamed1(o.metrics!);
+    checkUnnamed2(o.metrics!);
   }
   buildCounterHistoryRecord--;
 }
@@ -251,12 +287,12 @@ void checkKey(api.Key o) {
   buildCounterKey--;
 }
 
-core.Map<core.String, core.double> buildUnnamed2() => {
+core.Map<core.String, core.double> buildUnnamed3() => {
       'x': 42.0,
       'y': 42.0,
     };
 
-void checkUnnamed2(core.Map<core.String, core.double> o) {
+void checkUnnamed3(core.Map<core.String, core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -268,12 +304,12 @@ void checkUnnamed2(core.Map<core.String, core.double> o) {
   );
 }
 
-core.List<api.Bin> buildUnnamed3() => [
+core.List<api.Bin> buildUnnamed4() => [
       buildBin(),
       buildBin(),
     ];
 
-void checkUnnamed3(core.List<api.Bin> o) {
+void checkUnnamed4(core.List<api.Bin> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBin(o[0]);
   checkBin(o[1]);
@@ -284,8 +320,8 @@ api.Metric buildMetric() {
   final o = api.Metric();
   buildCounterMetric++;
   if (buildCounterMetric < 3) {
-    o.fractions = buildUnnamed2();
-    o.histogram = buildUnnamed3();
+    o.fractions = buildUnnamed3();
+    o.histogram = buildUnnamed4();
     o.percentiles = buildPercentiles();
   }
   buildCounterMetric--;
@@ -295,19 +331,30 @@ api.Metric buildMetric() {
 void checkMetric(api.Metric o) {
   buildCounterMetric++;
   if (buildCounterMetric < 3) {
-    checkUnnamed2(o.fractions!);
-    checkUnnamed3(o.histogram!);
+    checkUnnamed3(o.fractions!);
+    checkUnnamed4(o.histogram!);
     checkPercentiles(o.percentiles!);
   }
   buildCounterMetric--;
 }
 
-core.List<api.TimeseriesBin> buildUnnamed4() => [
+core.Map<core.String, api.FractionTimeseries> buildUnnamed5() => {
+      'x': buildFractionTimeseries(),
+      'y': buildFractionTimeseries(),
+    };
+
+void checkUnnamed5(core.Map<core.String, api.FractionTimeseries> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkFractionTimeseries(o['x']!);
+  checkFractionTimeseries(o['y']!);
+}
+
+core.List<api.TimeseriesBin> buildUnnamed6() => [
       buildTimeseriesBin(),
       buildTimeseriesBin(),
     ];
 
-void checkUnnamed4(core.List<api.TimeseriesBin> o) {
+void checkUnnamed6(core.List<api.TimeseriesBin> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTimeseriesBin(o[0]);
   checkTimeseriesBin(o[1]);
@@ -318,7 +365,8 @@ api.MetricTimeseries buildMetricTimeseries() {
   final o = api.MetricTimeseries();
   buildCounterMetricTimeseries++;
   if (buildCounterMetricTimeseries < 3) {
-    o.histogramTimeseries = buildUnnamed4();
+    o.fractionTimeseries = buildUnnamed5();
+    o.histogramTimeseries = buildUnnamed6();
     o.percentilesTimeseries = buildTimeseriesPercentiles();
   }
   buildCounterMetricTimeseries--;
@@ -328,7 +376,8 @@ api.MetricTimeseries buildMetricTimeseries() {
 void checkMetricTimeseries(api.MetricTimeseries o) {
   buildCounterMetricTimeseries++;
   if (buildCounterMetricTimeseries < 3) {
-    checkUnnamed4(o.histogramTimeseries!);
+    checkUnnamed5(o.fractionTimeseries!);
+    checkUnnamed6(o.histogramTimeseries!);
     checkTimeseriesPercentiles(o.percentilesTimeseries!);
   }
   buildCounterMetricTimeseries--;
@@ -370,12 +419,12 @@ void checkPercentiles(api.Percentiles o) {
   buildCounterPercentiles--;
 }
 
-core.List<core.String> buildUnnamed5() => [
+core.List<core.String> buildUnnamed7() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed5(core.List<core.String> o) {
+void checkUnnamed7(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -393,7 +442,7 @@ api.QueryHistoryRequest buildQueryHistoryRequest() {
   buildCounterQueryHistoryRequest++;
   if (buildCounterQueryHistoryRequest < 3) {
     o.formFactor = 'foo';
-    o.metrics = buildUnnamed5();
+    o.metrics = buildUnnamed7();
     o.origin = 'foo';
     o.url = 'foo';
   }
@@ -408,7 +457,7 @@ void checkQueryHistoryRequest(api.QueryHistoryRequest o) {
       o.formFactor!,
       unittest.equals('foo'),
     );
-    checkUnnamed5(o.metrics!);
+    checkUnnamed7(o.metrics!);
     unittest.expect(
       o.origin!,
       unittest.equals('foo'),
@@ -442,12 +491,12 @@ void checkQueryHistoryResponse(api.QueryHistoryResponse o) {
   buildCounterQueryHistoryResponse--;
 }
 
-core.List<core.String> buildUnnamed6() => [
+core.List<core.String> buildUnnamed8() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed6(core.List<core.String> o) {
+void checkUnnamed8(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -466,7 +515,7 @@ api.QueryRequest buildQueryRequest() {
   if (buildCounterQueryRequest < 3) {
     o.effectiveConnectionType = 'foo';
     o.formFactor = 'foo';
-    o.metrics = buildUnnamed6();
+    o.metrics = buildUnnamed8();
     o.origin = 'foo';
     o.url = 'foo';
   }
@@ -485,7 +534,7 @@ void checkQueryRequest(api.QueryRequest o) {
       o.formFactor!,
       unittest.equals('foo'),
     );
-    checkUnnamed6(o.metrics!);
+    checkUnnamed8(o.metrics!);
     unittest.expect(
       o.origin!,
       unittest.equals('foo'),
@@ -519,12 +568,12 @@ void checkQueryResponse(api.QueryResponse o) {
   buildCounterQueryResponse--;
 }
 
-core.Map<core.String, api.Metric> buildUnnamed7() => {
+core.Map<core.String, api.Metric> buildUnnamed9() => {
       'x': buildMetric(),
       'y': buildMetric(),
     };
 
-void checkUnnamed7(core.Map<core.String, api.Metric> o) {
+void checkUnnamed9(core.Map<core.String, api.Metric> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMetric(o['x']!);
   checkMetric(o['y']!);
@@ -537,7 +586,7 @@ api.Record buildRecord() {
   if (buildCounterRecord < 3) {
     o.collectionPeriod = buildCollectionPeriod();
     o.key = buildKey();
-    o.metrics = buildUnnamed7();
+    o.metrics = buildUnnamed9();
   }
   buildCounterRecord--;
   return o;
@@ -548,17 +597,17 @@ void checkRecord(api.Record o) {
   if (buildCounterRecord < 3) {
     checkCollectionPeriod(o.collectionPeriod!);
     checkKey(o.key!);
-    checkUnnamed7(o.metrics!);
+    checkUnnamed9(o.metrics!);
   }
   buildCounterRecord--;
 }
 
-core.List<core.double> buildUnnamed8() => [
+core.List<core.double> buildUnnamed10() => [
       42.0,
       42.0,
     ];
 
-void checkUnnamed8(core.List<core.double> o) {
+void checkUnnamed10(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -575,7 +624,7 @@ api.TimeseriesBin buildTimeseriesBin() {
   final o = api.TimeseriesBin();
   buildCounterTimeseriesBin++;
   if (buildCounterTimeseriesBin < 3) {
-    o.densities = buildUnnamed8();
+    o.densities = buildUnnamed10();
     o.end = {
       'list': [1, 2, 3],
       'bool': true,
@@ -594,7 +643,7 @@ api.TimeseriesBin buildTimeseriesBin() {
 void checkTimeseriesBin(api.TimeseriesBin o) {
   buildCounterTimeseriesBin++;
   if (buildCounterTimeseriesBin < 3) {
-    checkUnnamed8(o.densities!);
+    checkUnnamed10(o.densities!);
     var casted4 = (o.end!) as core.Map;
     unittest.expect(casted4, unittest.hasLength(3));
     unittest.expect(
@@ -627,7 +676,7 @@ void checkTimeseriesBin(api.TimeseriesBin o) {
   buildCounterTimeseriesBin--;
 }
 
-core.List<core.Object?> buildUnnamed9() => [
+core.List<core.Object?> buildUnnamed11() => [
       {
         'list': [1, 2, 3],
         'bool': true,
@@ -640,7 +689,7 @@ core.List<core.Object?> buildUnnamed9() => [
       },
     ];
 
-void checkUnnamed9(core.List<core.Object?> o) {
+void checkUnnamed11(core.List<core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted6 = (o[0]) as core.Map;
   unittest.expect(casted6, unittest.hasLength(3));
@@ -677,7 +726,7 @@ api.TimeseriesPercentiles buildTimeseriesPercentiles() {
   final o = api.TimeseriesPercentiles();
   buildCounterTimeseriesPercentiles++;
   if (buildCounterTimeseriesPercentiles < 3) {
-    o.p75s = buildUnnamed9();
+    o.p75s = buildUnnamed11();
   }
   buildCounterTimeseriesPercentiles--;
   return o;
@@ -686,7 +735,7 @@ api.TimeseriesPercentiles buildTimeseriesPercentiles() {
 void checkTimeseriesPercentiles(api.TimeseriesPercentiles o) {
   buildCounterTimeseriesPercentiles++;
   if (buildCounterTimeseriesPercentiles < 3) {
-    checkUnnamed9(o.p75s!);
+    checkUnnamed11(o.p75s!);
   }
   buildCounterTimeseriesPercentiles--;
 }
@@ -745,6 +794,16 @@ void main() {
       final od =
           api.Date.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkDate(od);
+    });
+  });
+
+  unittest.group('obj-schema-FractionTimeseries', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildFractionTimeseries();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.FractionTimeseries.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkFractionTimeseries(od);
     });
   });
 

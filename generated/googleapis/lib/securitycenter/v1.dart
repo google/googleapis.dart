@@ -22,6 +22,9 @@
 /// - [FoldersResource]
 ///   - [FoldersAssetsResource]
 ///   - [FoldersBigQueryExportsResource]
+///   - [FoldersEventThreatDetectionSettingsResource]
+///     - [FoldersEventThreatDetectionSettingsCustomModulesResource]
+///     - [FoldersEventThreatDetectionSettingsEffectiveCustomModulesResource]
 ///   - [FoldersFindingsResource]
 ///   - [FoldersLocationsResource]
 ///     - [FoldersLocationsMuteConfigsResource]
@@ -38,6 +41,7 @@
 ///   - [OrganizationsBigQueryExportsResource]
 ///   - [OrganizationsEventThreatDetectionSettingsResource]
 ///     - [OrganizationsEventThreatDetectionSettingsCustomModulesResource]
+/// - [OrganizationsEventThreatDetectionSettingsEffectiveCustomModulesResource]
 ///   - [OrganizationsFindingsResource]
 ///   - [OrganizationsLocationsResource]
 ///     - [OrganizationsLocationsMuteConfigsResource]
@@ -62,6 +66,9 @@
 /// - [ProjectsResource]
 ///   - [ProjectsAssetsResource]
 ///   - [ProjectsBigQueryExportsResource]
+///   - [ProjectsEventThreatDetectionSettingsResource]
+///     - [ProjectsEventThreatDetectionSettingsCustomModulesResource]
+///     - [ProjectsEventThreatDetectionSettingsEffectiveCustomModulesResource]
 ///   - [ProjectsFindingsResource]
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsMuteConfigsResource]
@@ -115,6 +122,9 @@ class FoldersResource {
   FoldersAssetsResource get assets => FoldersAssetsResource(_requester);
   FoldersBigQueryExportsResource get bigQueryExports =>
       FoldersBigQueryExportsResource(_requester);
+  FoldersEventThreatDetectionSettingsResource
+      get eventThreatDetectionSettings =>
+          FoldersEventThreatDetectionSettingsResource(_requester);
   FoldersFindingsResource get findings => FoldersFindingsResource(_requester);
   FoldersLocationsResource get locations =>
       FoldersLocationsResource(_requester);
@@ -622,6 +632,493 @@ class FoldersBigQueryExportsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudSecuritycenterV1BigQueryExport.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class FoldersEventThreatDetectionSettingsResource {
+  final commons.ApiRequester _requester;
+
+  FoldersEventThreatDetectionSettingsCustomModulesResource get customModules =>
+      FoldersEventThreatDetectionSettingsCustomModulesResource(_requester);
+  FoldersEventThreatDetectionSettingsEffectiveCustomModulesResource
+      get effectiveCustomModules =>
+          FoldersEventThreatDetectionSettingsEffectiveCustomModulesResource(
+              _requester);
+
+  FoldersEventThreatDetectionSettingsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Validates the given Event Threat Detection custom module.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Resource name of the parent to validate the Custom
+  /// Module under. Its format is: *
+  /// "organizations/{organization}/eventThreatDetectionSettings". *
+  /// "folders/{folder}/eventThreatDetectionSettings". *
+  /// "projects/{project}/eventThreatDetectionSettings".
+  /// Value must have pattern `^folders/\[^/\]+/eventThreatDetectionSettings$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ValidateEventThreatDetectionCustomModuleResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ValidateEventThreatDetectionCustomModuleResponse>
+      validateCustomModule(
+    ValidateEventThreatDetectionCustomModuleRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + ':validateCustomModule';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return ValidateEventThreatDetectionCustomModuleResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class FoldersEventThreatDetectionSettingsCustomModulesResource {
+  final commons.ApiRequester _requester;
+
+  FoldersEventThreatDetectionSettingsCustomModulesResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a resident Event Threat Detection custom module at the scope of
+  /// the given Resource Manager parent, and also creates inherited custom
+  /// modules for all descendants of the given parent.
+  ///
+  /// These modules are enabled by default.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The new custom module's parent. Its format is: *
+  /// "organizations/{organization}/eventThreatDetectionSettings". *
+  /// "folders/{folder}/eventThreatDetectionSettings". *
+  /// "projects/{project}/eventThreatDetectionSettings".
+  /// Value must have pattern `^folders/\[^/\]+/eventThreatDetectionSettings$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [EventThreatDetectionCustomModule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<EventThreatDetectionCustomModule> create(
+    EventThreatDetectionCustomModule request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/customModules';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return EventThreatDetectionCustomModule.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes the specified Event Threat Detection custom module and all of its
+  /// descendants in the Resource Manager hierarchy.
+  ///
+  /// This method is only supported for resident custom modules.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the custom module to delete. Its format is: *
+  /// "organizations/{organization}/eventThreatDetectionSettings/customModules/{module}".
+  /// * "folders/{folder}/eventThreatDetectionSettings/customModules/{module}".
+  /// *
+  /// "projects/{project}/eventThreatDetectionSettings/customModules/{module}".
+  /// Value must have pattern
+  /// `^folders/\[^/\]+/eventThreatDetectionSettings/customModules/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets an Event Threat Detection custom module.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the custom module to get. Its format is: *
+  /// "organizations/{organization}/eventThreatDetectionSettings/customModules/{module}".
+  /// * "folders/{folder}/eventThreatDetectionSettings/customModules/{module}".
+  /// *
+  /// "projects/{project}/eventThreatDetectionSettings/customModules/{module}".
+  /// Value must have pattern
+  /// `^folders/\[^/\]+/eventThreatDetectionSettings/customModules/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [EventThreatDetectionCustomModule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<EventThreatDetectionCustomModule> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return EventThreatDetectionCustomModule.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all Event Threat Detection custom modules for the given Resource
+  /// Manager parent.
+  ///
+  /// This includes resident modules defined at the scope of the parent along
+  /// with modules inherited from ancestors.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the parent to list custom modules under. Its
+  /// format is: * "organizations/{organization}/eventThreatDetectionSettings".
+  /// * "folders/{folder}/eventThreatDetectionSettings". *
+  /// "projects/{project}/eventThreatDetectionSettings".
+  /// Value must have pattern `^folders/\[^/\]+/eventThreatDetectionSettings$`.
+  ///
+  /// [pageSize] - The maximum number of modules to return. The service may
+  /// return fewer than this value. If unspecified, at most 10 configs will be
+  /// returned. The maximum value is 1000; values above 1000 will be coerced to
+  /// 1000.
+  ///
+  /// [pageToken] - A page token, received from a previous
+  /// `ListEventThreatDetectionCustomModules` call. Provide this to retrieve the
+  /// subsequent page. When paginating, all other parameters provided to
+  /// `ListEventThreatDetectionCustomModules` must match the call that provided
+  /// the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListEventThreatDetectionCustomModulesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListEventThreatDetectionCustomModulesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/customModules';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListEventThreatDetectionCustomModulesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all resident Event Threat Detection custom modules under the given
+  /// Resource Manager parent and its descendants.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the parent to list custom modules under. Its
+  /// format is: * "organizations/{organization}/eventThreatDetectionSettings".
+  /// * "folders/{folder}/eventThreatDetectionSettings". *
+  /// "projects/{project}/eventThreatDetectionSettings".
+  /// Value must have pattern `^folders/\[^/\]+/eventThreatDetectionSettings$`.
+  ///
+  /// [pageSize] - The maximum number of modules to return. The service may
+  /// return fewer than this value. If unspecified, at most 10 configs will be
+  /// returned. The maximum value is 1000; values above 1000 will be coerced to
+  /// 1000.
+  ///
+  /// [pageToken] - A page token, received from a previous
+  /// `ListDescendantEventThreatDetectionCustomModules` call. Provide this to
+  /// retrieve the subsequent page. When paginating, all other parameters
+  /// provided to `ListDescendantEventThreatDetectionCustomModules` must match
+  /// the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [ListDescendantEventThreatDetectionCustomModulesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListDescendantEventThreatDetectionCustomModulesResponse>
+      listDescendant(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/customModules:listDescendant';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListDescendantEventThreatDetectionCustomModulesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the Event Threat Detection custom module with the given name based
+  /// on the given update mask.
+  ///
+  /// Updating the enablement state is supported for both resident and inherited
+  /// modules (though resident modules cannot have an enablement state of
+  /// "inherited"). Updating the display name or configuration of a module is
+  /// supported for resident modules only. The type of a module cannot be
+  /// changed.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Immutable. The resource name of the Event Threat Detection custom
+  /// module. Its format is: *
+  /// "organizations/{organization}/eventThreatDetectionSettings/customModules/{module}".
+  /// * "folders/{folder}/eventThreatDetectionSettings/customModules/{module}".
+  /// *
+  /// "projects/{project}/eventThreatDetectionSettings/customModules/{module}".
+  /// Value must have pattern
+  /// `^folders/\[^/\]+/eventThreatDetectionSettings/customModules/\[^/\]+$`.
+  ///
+  /// [updateMask] - The list of fields to be updated. If empty all mutable
+  /// fields will be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [EventThreatDetectionCustomModule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<EventThreatDetectionCustomModule> patch(
+    EventThreatDetectionCustomModule request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return EventThreatDetectionCustomModule.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class FoldersEventThreatDetectionSettingsEffectiveCustomModulesResource {
+  final commons.ApiRequester _requester;
+
+  FoldersEventThreatDetectionSettingsEffectiveCustomModulesResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets an effective Event Threat Detection custom module at the given level.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the effective Event Threat
+  /// Detection custom module. Its format is: *
+  /// "organizations/{organization}/eventThreatDetectionSettings/effectiveCustomModules/{module}".
+  /// *
+  /// "folders/{folder}/eventThreatDetectionSettings/effectiveCustomModules/{module}".
+  /// *
+  /// "projects/{project}/eventThreatDetectionSettings/effectiveCustomModules/{module}".
+  /// Value must have pattern
+  /// `^folders/\[^/\]+/eventThreatDetectionSettings/effectiveCustomModules/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [EffectiveEventThreatDetectionCustomModule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<EffectiveEventThreatDetectionCustomModule> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return EffectiveEventThreatDetectionCustomModule.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all effective Event Threat Detection custom modules for the given
+  /// parent.
+  ///
+  /// This includes resident modules defined at the scope of the parent along
+  /// with modules inherited from its ancestors.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the parent to list custom modules for. Its
+  /// format is: * "organizations/{organization}/eventThreatDetectionSettings".
+  /// * "folders/{folder}/eventThreatDetectionSettings". *
+  /// "projects/{project}/eventThreatDetectionSettings".
+  /// Value must have pattern `^folders/\[^/\]+/eventThreatDetectionSettings$`.
+  ///
+  /// [pageSize] - The maximum number of modules to return. The service may
+  /// return fewer than this value. If unspecified, at most 10 configs will be
+  /// returned. The maximum value is 1000; values above 1000 will be coerced to
+  /// 1000.
+  ///
+  /// [pageToken] - A page token, received from a previous
+  /// `ListEffectiveEventThreatDetectionCustomModules` call. Provide this to
+  /// retrieve the subsequent page. When paginating, all other parameters
+  /// provided to `ListEffectiveEventThreatDetectionCustomModules` must match
+  /// the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListEffectiveEventThreatDetectionCustomModulesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListEffectiveEventThreatDetectionCustomModulesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/effectiveCustomModules';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListEffectiveEventThreatDetectionCustomModulesResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -1607,7 +2104,10 @@ class FoldersSecurityHealthAnalyticsSettingsCustomModulesResource {
   /// Value must have pattern
   /// `^folders/\[^/\]+/securityHealthAnalyticsSettings/customModules/\[^/\]+$`.
   ///
-  /// [updateMask] - The list of fields to update.
+  /// [updateMask] - The list of fields to be updated. The only fields that can
+  /// be updated are `enablement_state` and `custom_config`. If empty or set to
+  /// the wildcard value `*`, both `enablement_state` and `custom_config` are
+  /// updated.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1652,9 +2152,10 @@ class FoldersSecurityHealthAnalyticsSettingsCustomModulesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The relative resource name of the organization,
-  /// project, or folder. See:
-  /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
-  /// An example is: "organizations/{organization_id}".
+  /// project, or folder. For more information about relative resource names,
+  /// see
+  /// [Relative Resource Name](https://cloud.google.com/apis/design/resource_names#relative_resource_name)
+  /// Example: `organizations/{organization_id}`
   /// Value must have pattern
   /// `^folders/\[^/\]+/securityHealthAnalyticsSettings$`.
   ///
@@ -2998,6 +3499,10 @@ class OrganizationsEventThreatDetectionSettingsResource {
       get customModules =>
           OrganizationsEventThreatDetectionSettingsCustomModulesResource(
               _requester);
+  OrganizationsEventThreatDetectionSettingsEffectiveCustomModulesResource
+      get effectiveCustomModules =>
+          OrganizationsEventThreatDetectionSettingsEffectiveCustomModulesResource(
+              _requester);
 
   OrganizationsEventThreatDetectionSettingsResource(commons.ApiRequester client)
       : _requester = client;
@@ -3010,7 +3515,9 @@ class OrganizationsEventThreatDetectionSettingsResource {
   ///
   /// [parent] - Required. Resource name of the parent to validate the Custom
   /// Module under. Its format is: *
-  /// "organizations/{organization}/eventThreatDetectionSettings".
+  /// "organizations/{organization}/eventThreatDetectionSettings". *
+  /// "folders/{folder}/eventThreatDetectionSettings". *
+  /// "projects/{project}/eventThreatDetectionSettings".
   /// Value must have pattern
   /// `^organizations/\[^/\]+/eventThreatDetectionSettings$`.
   ///
@@ -3056,14 +3563,20 @@ class OrganizationsEventThreatDetectionSettingsCustomModulesResource {
       commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates an Event Threat Detection custom module.
+  /// Creates a resident Event Threat Detection custom module at the scope of
+  /// the given Resource Manager parent, and also creates inherited custom
+  /// modules for all descendants of the given parent.
+  ///
+  /// These modules are enabled by default.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The new custom module's parent. Its format is: *
-  /// "organizations/{organization}/eventThreatDetectionSettings".
+  /// "organizations/{organization}/eventThreatDetectionSettings". *
+  /// "folders/{folder}/eventThreatDetectionSettings". *
+  /// "projects/{project}/eventThreatDetectionSettings".
   /// Value must have pattern
   /// `^organizations/\[^/\]+/eventThreatDetectionSettings$`.
   ///
@@ -3099,12 +3612,18 @@ class OrganizationsEventThreatDetectionSettingsCustomModulesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deletes an Event Threat Detection custom module.
+  /// Deletes the specified Event Threat Detection custom module and all of its
+  /// descendants in the Resource Manager hierarchy.
+  ///
+  /// This method is only supported for resident custom modules.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. Name of the custom module to delete. Its format is: *
   /// "organizations/{organization}/eventThreatDetectionSettings/customModules/{module}".
+  /// * "folders/{folder}/eventThreatDetectionSettings/customModules/{module}".
+  /// *
+  /// "projects/{project}/eventThreatDetectionSettings/customModules/{module}".
   /// Value must have pattern
   /// `^organizations/\[^/\]+/eventThreatDetectionSettings/customModules/\[^/\]+$`.
   ///
@@ -3142,6 +3661,9 @@ class OrganizationsEventThreatDetectionSettingsCustomModulesResource {
   ///
   /// [name] - Required. Name of the custom module to get. Its format is: *
   /// "organizations/{organization}/eventThreatDetectionSettings/customModules/{module}".
+  /// * "folders/{folder}/eventThreatDetectionSettings/customModules/{module}".
+  /// *
+  /// "projects/{project}/eventThreatDetectionSettings/customModules/{module}".
   /// Value must have pattern
   /// `^organizations/\[^/\]+/eventThreatDetectionSettings/customModules/\[^/\]+$`.
   ///
@@ -3174,12 +3696,18 @@ class OrganizationsEventThreatDetectionSettingsCustomModulesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists Event Threat Detection custom modules.
+  /// Lists all Event Threat Detection custom modules for the given Resource
+  /// Manager parent.
+  ///
+  /// This includes resident modules defined at the scope of the parent along
+  /// with modules inherited from ancestors.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. Name of the parent to list custom modules under. Its
   /// format is: * "organizations/{organization}/eventThreatDetectionSettings".
+  /// * "folders/{folder}/eventThreatDetectionSettings". *
+  /// "projects/{project}/eventThreatDetectionSettings".
   /// Value must have pattern
   /// `^organizations/\[^/\]+/eventThreatDetectionSettings$`.
   ///
@@ -3227,7 +3755,74 @@ class OrganizationsEventThreatDetectionSettingsCustomModulesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates an Event Threat Detection custom module.
+  /// Lists all resident Event Threat Detection custom modules under the given
+  /// Resource Manager parent and its descendants.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the parent to list custom modules under. Its
+  /// format is: * "organizations/{organization}/eventThreatDetectionSettings".
+  /// * "folders/{folder}/eventThreatDetectionSettings". *
+  /// "projects/{project}/eventThreatDetectionSettings".
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/eventThreatDetectionSettings$`.
+  ///
+  /// [pageSize] - The maximum number of modules to return. The service may
+  /// return fewer than this value. If unspecified, at most 10 configs will be
+  /// returned. The maximum value is 1000; values above 1000 will be coerced to
+  /// 1000.
+  ///
+  /// [pageToken] - A page token, received from a previous
+  /// `ListDescendantEventThreatDetectionCustomModules` call. Provide this to
+  /// retrieve the subsequent page. When paginating, all other parameters
+  /// provided to `ListDescendantEventThreatDetectionCustomModules` must match
+  /// the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [ListDescendantEventThreatDetectionCustomModulesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListDescendantEventThreatDetectionCustomModulesResponse>
+      listDescendant(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/customModules:listDescendant';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListDescendantEventThreatDetectionCustomModulesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the Event Threat Detection custom module with the given name based
+  /// on the given update mask.
+  ///
+  /// Updating the enablement state is supported for both resident and inherited
+  /// modules (though resident modules cannot have an enablement state of
+  /// "inherited"). Updating the display name or configuration of a module is
+  /// supported for resident modules only. The type of a module cannot be
+  /// changed.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3276,6 +3871,117 @@ class OrganizationsEventThreatDetectionSettingsCustomModulesResource {
       queryParams: queryParams_,
     );
     return EventThreatDetectionCustomModule.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class OrganizationsEventThreatDetectionSettingsEffectiveCustomModulesResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsEventThreatDetectionSettingsEffectiveCustomModulesResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets an effective Event Threat Detection custom module at the given level.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the effective Event Threat
+  /// Detection custom module. Its format is: *
+  /// "organizations/{organization}/eventThreatDetectionSettings/effectiveCustomModules/{module}".
+  /// *
+  /// "folders/{folder}/eventThreatDetectionSettings/effectiveCustomModules/{module}".
+  /// *
+  /// "projects/{project}/eventThreatDetectionSettings/effectiveCustomModules/{module}".
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/eventThreatDetectionSettings/effectiveCustomModules/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [EffectiveEventThreatDetectionCustomModule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<EffectiveEventThreatDetectionCustomModule> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return EffectiveEventThreatDetectionCustomModule.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all effective Event Threat Detection custom modules for the given
+  /// parent.
+  ///
+  /// This includes resident modules defined at the scope of the parent along
+  /// with modules inherited from its ancestors.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the parent to list custom modules for. Its
+  /// format is: * "organizations/{organization}/eventThreatDetectionSettings".
+  /// * "folders/{folder}/eventThreatDetectionSettings". *
+  /// "projects/{project}/eventThreatDetectionSettings".
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/eventThreatDetectionSettings$`.
+  ///
+  /// [pageSize] - The maximum number of modules to return. The service may
+  /// return fewer than this value. If unspecified, at most 10 configs will be
+  /// returned. The maximum value is 1000; values above 1000 will be coerced to
+  /// 1000.
+  ///
+  /// [pageToken] - A page token, received from a previous
+  /// `ListEffectiveEventThreatDetectionCustomModules` call. Provide this to
+  /// retrieve the subsequent page. When paginating, all other parameters
+  /// provided to `ListEffectiveEventThreatDetectionCustomModules` must match
+  /// the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListEffectiveEventThreatDetectionCustomModulesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListEffectiveEventThreatDetectionCustomModulesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/effectiveCustomModules';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListEffectiveEventThreatDetectionCustomModulesResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -4674,7 +5380,10 @@ class OrganizationsSecurityHealthAnalyticsSettingsCustomModulesResource {
   /// Value must have pattern
   /// `^organizations/\[^/\]+/securityHealthAnalyticsSettings/customModules/\[^/\]+$`.
   ///
-  /// [updateMask] - The list of fields to update.
+  /// [updateMask] - The list of fields to be updated. The only fields that can
+  /// be updated are `enablement_state` and `custom_config`. If empty or set to
+  /// the wildcard value `*`, both `enablement_state` and `custom_config` are
+  /// updated.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4719,9 +5428,10 @@ class OrganizationsSecurityHealthAnalyticsSettingsCustomModulesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The relative resource name of the organization,
-  /// project, or folder. See:
-  /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
-  /// An example is: "organizations/{organization_id}".
+  /// project, or folder. For more information about relative resource names,
+  /// see
+  /// [Relative Resource Name](https://cloud.google.com/apis/design/resource_names#relative_resource_name)
+  /// Example: `organizations/{organization_id}`
   /// Value must have pattern
   /// `^organizations/\[^/\]+/securityHealthAnalyticsSettings$`.
   ///
@@ -5027,6 +5737,14 @@ class OrganizationsSimulationsAttackExposureResultsValuedResourcesResource {
   /// response. Supported fields: * `resource_value` supports = *
   /// `resource_type` supports =
   ///
+  /// [orderBy] - Optional. The fields by which to order the valued resources
+  /// response. Supported fields: * `exposed_score` * `resource_value` *
+  /// `resource_type` * `resource` * `display_name` Values should be a comma
+  /// separated list of fields. For example: `exposed_score,resource_value`. The
+  /// default sorting order is descending. To specify ascending or descending
+  /// order for a field, append a " ASC" or a " DESC" suffix, respectively; for
+  /// example: `exposed_score DESC`.
+  ///
   /// [pageSize] - The maximum number of results to return in a single response.
   /// Default is 10, minimum is 1, maximum is 1000.
   ///
@@ -5048,12 +5766,14 @@ class OrganizationsSimulationsAttackExposureResultsValuedResourcesResource {
   async.Future<ListValuedResourcesResponse> list(
     core.String parent, {
     core.String? filter,
+    core.String? orderBy,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -5144,6 +5864,44 @@ class OrganizationsSimulationsValuedResourcesResource {
   OrganizationsSimulationsValuedResourcesResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Get the valued resource by name
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of this valued resource Valid format:
+  /// "organizations/{organization}/simulations/{simulation}/valuedResources/{valued_resource}"
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/simulations/\[^/\]+/valuedResources/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ValuedResource].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ValuedResource> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ValuedResource.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Lists the valued resources for a set of simulation results and filter.
   ///
   /// Request parameters:
@@ -5157,6 +5915,14 @@ class OrganizationsSimulationsValuedResourcesResource {
   /// [filter] - The filter expression that filters the valued resources in the
   /// response. Supported fields: * `resource_value` supports = *
   /// `resource_type` supports =
+  ///
+  /// [orderBy] - Optional. The fields by which to order the valued resources
+  /// response. Supported fields: * `exposed_score` * `resource_value` *
+  /// `resource_type` * `resource` * `display_name` Values should be a comma
+  /// separated list of fields. For example: `exposed_score,resource_value`. The
+  /// default sorting order is descending. To specify ascending or descending
+  /// order for a field, append a " ASC" or a " DESC" suffix, respectively; for
+  /// example: `exposed_score DESC`.
   ///
   /// [pageSize] - The maximum number of results to return in a single response.
   /// Default is 10, minimum is 1, maximum is 1000.
@@ -5179,12 +5945,14 @@ class OrganizationsSimulationsValuedResourcesResource {
   async.Future<ListValuedResourcesResponse> list(
     core.String parent, {
     core.String? filter,
+    core.String? orderBy,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -6104,6 +6872,9 @@ class ProjectsResource {
   ProjectsAssetsResource get assets => ProjectsAssetsResource(_requester);
   ProjectsBigQueryExportsResource get bigQueryExports =>
       ProjectsBigQueryExportsResource(_requester);
+  ProjectsEventThreatDetectionSettingsResource
+      get eventThreatDetectionSettings =>
+          ProjectsEventThreatDetectionSettingsResource(_requester);
   ProjectsFindingsResource get findings => ProjectsFindingsResource(_requester);
   ProjectsLocationsResource get locations =>
       ProjectsLocationsResource(_requester);
@@ -6611,6 +7382,493 @@ class ProjectsBigQueryExportsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudSecuritycenterV1BigQueryExport.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsEventThreatDetectionSettingsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsEventThreatDetectionSettingsCustomModulesResource get customModules =>
+      ProjectsEventThreatDetectionSettingsCustomModulesResource(_requester);
+  ProjectsEventThreatDetectionSettingsEffectiveCustomModulesResource
+      get effectiveCustomModules =>
+          ProjectsEventThreatDetectionSettingsEffectiveCustomModulesResource(
+              _requester);
+
+  ProjectsEventThreatDetectionSettingsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Validates the given Event Threat Detection custom module.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Resource name of the parent to validate the Custom
+  /// Module under. Its format is: *
+  /// "organizations/{organization}/eventThreatDetectionSettings". *
+  /// "folders/{folder}/eventThreatDetectionSettings". *
+  /// "projects/{project}/eventThreatDetectionSettings".
+  /// Value must have pattern `^projects/\[^/\]+/eventThreatDetectionSettings$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ValidateEventThreatDetectionCustomModuleResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ValidateEventThreatDetectionCustomModuleResponse>
+      validateCustomModule(
+    ValidateEventThreatDetectionCustomModuleRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + ':validateCustomModule';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return ValidateEventThreatDetectionCustomModuleResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsEventThreatDetectionSettingsCustomModulesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsEventThreatDetectionSettingsCustomModulesResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a resident Event Threat Detection custom module at the scope of
+  /// the given Resource Manager parent, and also creates inherited custom
+  /// modules for all descendants of the given parent.
+  ///
+  /// These modules are enabled by default.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The new custom module's parent. Its format is: *
+  /// "organizations/{organization}/eventThreatDetectionSettings". *
+  /// "folders/{folder}/eventThreatDetectionSettings". *
+  /// "projects/{project}/eventThreatDetectionSettings".
+  /// Value must have pattern `^projects/\[^/\]+/eventThreatDetectionSettings$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [EventThreatDetectionCustomModule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<EventThreatDetectionCustomModule> create(
+    EventThreatDetectionCustomModule request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/customModules';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return EventThreatDetectionCustomModule.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes the specified Event Threat Detection custom module and all of its
+  /// descendants in the Resource Manager hierarchy.
+  ///
+  /// This method is only supported for resident custom modules.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the custom module to delete. Its format is: *
+  /// "organizations/{organization}/eventThreatDetectionSettings/customModules/{module}".
+  /// * "folders/{folder}/eventThreatDetectionSettings/customModules/{module}".
+  /// *
+  /// "projects/{project}/eventThreatDetectionSettings/customModules/{module}".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/eventThreatDetectionSettings/customModules/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets an Event Threat Detection custom module.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the custom module to get. Its format is: *
+  /// "organizations/{organization}/eventThreatDetectionSettings/customModules/{module}".
+  /// * "folders/{folder}/eventThreatDetectionSettings/customModules/{module}".
+  /// *
+  /// "projects/{project}/eventThreatDetectionSettings/customModules/{module}".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/eventThreatDetectionSettings/customModules/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [EventThreatDetectionCustomModule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<EventThreatDetectionCustomModule> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return EventThreatDetectionCustomModule.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all Event Threat Detection custom modules for the given Resource
+  /// Manager parent.
+  ///
+  /// This includes resident modules defined at the scope of the parent along
+  /// with modules inherited from ancestors.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the parent to list custom modules under. Its
+  /// format is: * "organizations/{organization}/eventThreatDetectionSettings".
+  /// * "folders/{folder}/eventThreatDetectionSettings". *
+  /// "projects/{project}/eventThreatDetectionSettings".
+  /// Value must have pattern `^projects/\[^/\]+/eventThreatDetectionSettings$`.
+  ///
+  /// [pageSize] - The maximum number of modules to return. The service may
+  /// return fewer than this value. If unspecified, at most 10 configs will be
+  /// returned. The maximum value is 1000; values above 1000 will be coerced to
+  /// 1000.
+  ///
+  /// [pageToken] - A page token, received from a previous
+  /// `ListEventThreatDetectionCustomModules` call. Provide this to retrieve the
+  /// subsequent page. When paginating, all other parameters provided to
+  /// `ListEventThreatDetectionCustomModules` must match the call that provided
+  /// the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListEventThreatDetectionCustomModulesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListEventThreatDetectionCustomModulesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/customModules';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListEventThreatDetectionCustomModulesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all resident Event Threat Detection custom modules under the given
+  /// Resource Manager parent and its descendants.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the parent to list custom modules under. Its
+  /// format is: * "organizations/{organization}/eventThreatDetectionSettings".
+  /// * "folders/{folder}/eventThreatDetectionSettings". *
+  /// "projects/{project}/eventThreatDetectionSettings".
+  /// Value must have pattern `^projects/\[^/\]+/eventThreatDetectionSettings$`.
+  ///
+  /// [pageSize] - The maximum number of modules to return. The service may
+  /// return fewer than this value. If unspecified, at most 10 configs will be
+  /// returned. The maximum value is 1000; values above 1000 will be coerced to
+  /// 1000.
+  ///
+  /// [pageToken] - A page token, received from a previous
+  /// `ListDescendantEventThreatDetectionCustomModules` call. Provide this to
+  /// retrieve the subsequent page. When paginating, all other parameters
+  /// provided to `ListDescendantEventThreatDetectionCustomModules` must match
+  /// the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [ListDescendantEventThreatDetectionCustomModulesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListDescendantEventThreatDetectionCustomModulesResponse>
+      listDescendant(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/customModules:listDescendant';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListDescendantEventThreatDetectionCustomModulesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the Event Threat Detection custom module with the given name based
+  /// on the given update mask.
+  ///
+  /// Updating the enablement state is supported for both resident and inherited
+  /// modules (though resident modules cannot have an enablement state of
+  /// "inherited"). Updating the display name or configuration of a module is
+  /// supported for resident modules only. The type of a module cannot be
+  /// changed.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Immutable. The resource name of the Event Threat Detection custom
+  /// module. Its format is: *
+  /// "organizations/{organization}/eventThreatDetectionSettings/customModules/{module}".
+  /// * "folders/{folder}/eventThreatDetectionSettings/customModules/{module}".
+  /// *
+  /// "projects/{project}/eventThreatDetectionSettings/customModules/{module}".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/eventThreatDetectionSettings/customModules/\[^/\]+$`.
+  ///
+  /// [updateMask] - The list of fields to be updated. If empty all mutable
+  /// fields will be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [EventThreatDetectionCustomModule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<EventThreatDetectionCustomModule> patch(
+    EventThreatDetectionCustomModule request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return EventThreatDetectionCustomModule.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsEventThreatDetectionSettingsEffectiveCustomModulesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsEventThreatDetectionSettingsEffectiveCustomModulesResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets an effective Event Threat Detection custom module at the given level.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the effective Event Threat
+  /// Detection custom module. Its format is: *
+  /// "organizations/{organization}/eventThreatDetectionSettings/effectiveCustomModules/{module}".
+  /// *
+  /// "folders/{folder}/eventThreatDetectionSettings/effectiveCustomModules/{module}".
+  /// *
+  /// "projects/{project}/eventThreatDetectionSettings/effectiveCustomModules/{module}".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/eventThreatDetectionSettings/effectiveCustomModules/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [EffectiveEventThreatDetectionCustomModule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<EffectiveEventThreatDetectionCustomModule> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return EffectiveEventThreatDetectionCustomModule.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all effective Event Threat Detection custom modules for the given
+  /// parent.
+  ///
+  /// This includes resident modules defined at the scope of the parent along
+  /// with modules inherited from its ancestors.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the parent to list custom modules for. Its
+  /// format is: * "organizations/{organization}/eventThreatDetectionSettings".
+  /// * "folders/{folder}/eventThreatDetectionSettings". *
+  /// "projects/{project}/eventThreatDetectionSettings".
+  /// Value must have pattern `^projects/\[^/\]+/eventThreatDetectionSettings$`.
+  ///
+  /// [pageSize] - The maximum number of modules to return. The service may
+  /// return fewer than this value. If unspecified, at most 10 configs will be
+  /// returned. The maximum value is 1000; values above 1000 will be coerced to
+  /// 1000.
+  ///
+  /// [pageToken] - A page token, received from a previous
+  /// `ListEffectiveEventThreatDetectionCustomModules` call. Provide this to
+  /// retrieve the subsequent page. When paginating, all other parameters
+  /// provided to `ListEffectiveEventThreatDetectionCustomModules` must match
+  /// the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListEffectiveEventThreatDetectionCustomModulesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListEffectiveEventThreatDetectionCustomModulesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/effectiveCustomModules';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListEffectiveEventThreatDetectionCustomModulesResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -7597,7 +8855,10 @@ class ProjectsSecurityHealthAnalyticsSettingsCustomModulesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/securityHealthAnalyticsSettings/customModules/\[^/\]+$`.
   ///
-  /// [updateMask] - The list of fields to update.
+  /// [updateMask] - The list of fields to be updated. The only fields that can
+  /// be updated are `enablement_state` and `custom_config`. If empty or set to
+  /// the wildcard value `*`, both `enablement_state` and `custom_config` are
+  /// updated.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7642,9 +8903,10 @@ class ProjectsSecurityHealthAnalyticsSettingsCustomModulesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The relative resource name of the organization,
-  /// project, or folder. See:
-  /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
-  /// An example is: "organizations/{organization_id}".
+  /// project, or folder. For more information about relative resource names,
+  /// see
+  /// [Relative Resource Name](https://cloud.google.com/apis/design/resource_names#relative_resource_name)
+  /// Example: `organizations/{organization_id}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/securityHealthAnalyticsSettings$`.
   ///
@@ -8538,6 +9800,40 @@ class AccessReview {
       };
 }
 
+/// Represents an application associated with a finding.
+class Application {
+  /// The base URI that identifies the network location of the application in
+  /// which the vulnerability was detected.
+  ///
+  /// For example, `http://example.com`.
+  core.String? baseUri;
+
+  /// The full URI with payload that can be used to reproduce the vulnerability.
+  ///
+  /// For example, `http://example.com?p=aMmYgI6H`.
+  core.String? fullUri;
+
+  Application({
+    this.baseUri,
+    this.fullUri,
+  });
+
+  Application.fromJson(core.Map json_)
+      : this(
+          baseUri: json_.containsKey('baseUri')
+              ? json_['baseUri'] as core.String
+              : null,
+          fullUri: json_.containsKey('fullUri')
+              ? json_['fullUri'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (baseUri != null) 'baseUri': baseUri!,
+        if (fullUri != null) 'fullUri': fullUri!,
+      };
+}
+
 /// Security Command Center representation of a Google Cloud resource.
 ///
 /// The Asset is a Security Command Center resource that captures information
@@ -8706,7 +10002,7 @@ class AttackExposure {
   /// The resource name of the attack path simulation result that contains the
   /// details regarding this attack exposure score.
   ///
-  /// Example: organizations/123/attackExposureResults/456
+  /// Example: organizations/123/simulations/456/attackExposureResults/789
   core.String? attackExposureResult;
 
   /// The number of high value resources that are exposed as a result of this
@@ -9056,6 +10352,143 @@ class AuditConfig {
 /// exempting jose@example.com from DATA_READ logging.
 typedef AuditLogConfig = $AuditLogConfig;
 
+/// Information related to Google Cloud Backup and DR Service findings.
+class BackupDisasterRecovery {
+  /// The name of the Backup and DR appliance that captures, moves, and manages
+  /// the lifecycle of backup data.
+  ///
+  /// For example, `backup-server-57137`.
+  core.String? appliance;
+
+  /// The names of Backup and DR applications.
+  ///
+  /// An application is a VM, database, or file system on a managed host
+  /// monitored by a backup and recovery appliance. For example,
+  /// `centos7-01-vol00`, `centos7-01-vol01`, `centos7-01-vol02`.
+  core.List<core.String>? applications;
+
+  /// The timestamp at which the Backup and DR backup was created.
+  core.String? backupCreateTime;
+
+  /// The name of a Backup and DR template which comprises one or more backup
+  /// policies.
+  ///
+  /// See the
+  /// [Backup and DR documentation](https://cloud.google.com/backup-disaster-recovery/docs/concepts/backup-plan#temp)
+  /// for more information. For example, `snap-ov`.
+  core.String? backupTemplate;
+
+  /// The backup type of the Backup and DR image.
+  ///
+  /// For example, `Snapshot`, `Remote Snapshot`, `OnVault`.
+  core.String? backupType;
+
+  /// The name of a Backup and DR host, which is managed by the backup and
+  /// recovery appliance and known to the management console.
+  ///
+  /// The host can be of type Generic (for example, Compute Engine, SQL Server,
+  /// Oracle DB, SMB file system, etc.), vCenter, or an ESX server. See the
+  /// [Backup and DR documentation on hosts](https://cloud.google.com/backup-disaster-recovery/docs/configuration/manage-hosts-and-their-applications)
+  /// for more information. For example, `centos7-01`.
+  core.String? host;
+
+  /// The names of Backup and DR policies that are associated with a template
+  /// and that define when to run a backup, how frequently to run a backup, and
+  /// how long to retain the backup image.
+  ///
+  /// For example, `onvaults`.
+  core.List<core.String>? policies;
+
+  /// The names of Backup and DR advanced policy options of a policy applying to
+  /// an application.
+  ///
+  /// See the
+  /// [Backup and DR documentation on policy options](https://cloud.google.com/backup-disaster-recovery/docs/create-plan/policy-settings).
+  /// For example, `skipofflineappsincongrp, nounmap`.
+  core.List<core.String>? policyOptions;
+
+  /// The name of the Backup and DR resource profile that specifies the storage
+  /// media for backups of application and VM data.
+  ///
+  /// See the
+  /// [Backup and DR documentation on profiles](https://cloud.google.com/backup-disaster-recovery/docs/concepts/backup-plan#profile).
+  /// For example, `GCP`.
+  core.String? profile;
+
+  /// The name of the Backup and DR storage pool that the backup and recovery
+  /// appliance is storing data in.
+  ///
+  /// The storage pool could be of type Cloud, Primary, Snapshot, or OnVault.
+  /// See the
+  /// [Backup and DR documentation on storage pools](https://cloud.google.com/backup-disaster-recovery/docs/concepts/storage-pools).
+  /// For example, `DiskPoolOne`.
+  core.String? storagePool;
+
+  BackupDisasterRecovery({
+    this.appliance,
+    this.applications,
+    this.backupCreateTime,
+    this.backupTemplate,
+    this.backupType,
+    this.host,
+    this.policies,
+    this.policyOptions,
+    this.profile,
+    this.storagePool,
+  });
+
+  BackupDisasterRecovery.fromJson(core.Map json_)
+      : this(
+          appliance: json_.containsKey('appliance')
+              ? json_['appliance'] as core.String
+              : null,
+          applications: json_.containsKey('applications')
+              ? (json_['applications'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          backupCreateTime: json_.containsKey('backupCreateTime')
+              ? json_['backupCreateTime'] as core.String
+              : null,
+          backupTemplate: json_.containsKey('backupTemplate')
+              ? json_['backupTemplate'] as core.String
+              : null,
+          backupType: json_.containsKey('backupType')
+              ? json_['backupType'] as core.String
+              : null,
+          host: json_.containsKey('host') ? json_['host'] as core.String : null,
+          policies: json_.containsKey('policies')
+              ? (json_['policies'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          policyOptions: json_.containsKey('policyOptions')
+              ? (json_['policyOptions'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          profile: json_.containsKey('profile')
+              ? json_['profile'] as core.String
+              : null,
+          storagePool: json_.containsKey('storagePool')
+              ? json_['storagePool'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (appliance != null) 'appliance': appliance!,
+        if (applications != null) 'applications': applications!,
+        if (backupCreateTime != null) 'backupCreateTime': backupCreateTime!,
+        if (backupTemplate != null) 'backupTemplate': backupTemplate!,
+        if (backupType != null) 'backupType': backupType!,
+        if (host != null) 'host': host!,
+        if (policies != null) 'policies': policies!,
+        if (policyOptions != null) 'policyOptions': policyOptions!,
+        if (profile != null) 'profile': profile!,
+        if (storagePool != null) 'storagePool': storagePool!,
+      };
+}
+
 /// Request message to create multiple resource value configs
 class BatchCreateResourceValueConfigsRequest {
   /// The resource value configs to be created.
@@ -9141,14 +10574,31 @@ class Binding {
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
   /// (primary) that represents all the users of that domain. For example,
-  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a user that has
-  /// been recently deleted. For example,
-  /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
-  /// this value reverts to `user:{emailid}` and the recovered user retains the
-  /// role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a service account
-  /// that has been recently deleted. For example,
+  /// `google.com` or `example.com`. *
+  /// `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workforce identity pool. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`:
+  /// All workforce identities in a group. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All workforce identities with a specific attribute value. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}
+  /// / * `: All identities in a workforce identity pool. *
+  /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workload identity pool. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`:
+  /// A workload identity pool group. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All identities in a workload identity pool with a certain attribute. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}
+  /// / * `: All identities in a workload identity pool. *
+  /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
+  /// identifier) representing a user that has been recently deleted. For
+  /// example, `alice@example.com?uid=123456789012345678901`. If the user is
+  /// recovered, this value reverts to `user:{emailid}` and the recovered user
+  /// retains the role in the binding. *
+  /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus
+  /// unique identifier) representing a service account that has been recently
+  /// deleted. For example,
   /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If
   /// the service account is undeleted, this value reverts to
   /// `serviceAccount:{emailid}` and the undeleted service account retains the
@@ -9157,12 +10607,19 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding.
+  /// the role in the binding. *
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// Deleted single identity in a workforce identity pool. For example,
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
   ///
-  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an
+  /// overview of the IAM roles and permissions, see the
+  /// [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For
+  /// a list of the available pre-defined roles, see
+  /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
   Binding({
@@ -9706,16 +11163,46 @@ class CustomModuleValidationErrors {
 
 /// CVE stands for Common Vulnerabilities and Exposures.
 ///
-/// More information: https://cve.mitre.org
+/// Information from the
+/// [CVE record](https://www.cve.org/ResourcesSupport/Glossary) that describes
+/// this vulnerability.
 class Cve {
   /// Describe Common Vulnerability Scoring System specified at
   /// https://www.first.org/cvss/v3.1/specification-document
   Cvssv3? cvssv3;
 
+  /// The exploitation activity of the vulnerability in the wild.
+  /// Possible string values are:
+  /// - "EXPLOITATION_ACTIVITY_UNSPECIFIED" : Invalid or empty value.
+  /// - "WIDE" : Exploitation has been reported or confirmed to widely occur.
+  /// - "CONFIRMED" : Limited reported or confirmed exploitation activities.
+  /// - "AVAILABLE" : Exploit is publicly available.
+  /// - "ANTICIPATED" : No known exploitation activity, but has a high potential
+  /// for exploitation.
+  /// - "NO_KNOWN" : No known exploitation activity.
+  core.String? exploitationActivity;
+
   /// The unique identifier for the vulnerability.
   ///
   /// e.g. CVE-2021-34527
   core.String? id;
+
+  /// The potential impact of the vulnerability if it was to be exploited.
+  /// Possible string values are:
+  /// - "RISK_RATING_UNSPECIFIED" : Invalid or empty value.
+  /// - "LOW" : Exploitation would have little to no security impact.
+  /// - "MEDIUM" : Exploitation would enable attackers to perform activities, or
+  /// could allow attackers to have a direct impact, but would require
+  /// additional steps.
+  /// - "HIGH" : Exploitation would enable attackers to have a notable direct
+  /// impact without needing to overcome any major mitigating factors.
+  /// - "CRITICAL" : Exploitation would fundamentally undermine the security of
+  /// affected systems, enable actors to perform significant attacks with
+  /// minimal effort, with little to no mitigating factors to overcome.
+  core.String? impact;
+
+  /// Whether or not the vulnerability has been observed in the wild.
+  core.bool? observedInTheWild;
 
   /// Additional information about the CVE.
   ///
@@ -9725,11 +11212,19 @@ class Cve {
   /// Whether upstream fix is available for the CVE.
   core.bool? upstreamFixAvailable;
 
+  /// Whether or not the vulnerability was zero day when the finding was
+  /// published.
+  core.bool? zeroDay;
+
   Cve({
     this.cvssv3,
+    this.exploitationActivity,
     this.id,
+    this.impact,
+    this.observedInTheWild,
     this.references,
     this.upstreamFixAvailable,
+    this.zeroDay,
   });
 
   Cve.fromJson(core.Map json_)
@@ -9738,7 +11233,16 @@ class Cve {
               ? Cvssv3.fromJson(
                   json_['cvssv3'] as core.Map<core.String, core.dynamic>)
               : null,
+          exploitationActivity: json_.containsKey('exploitationActivity')
+              ? json_['exploitationActivity'] as core.String
+              : null,
           id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          impact: json_.containsKey('impact')
+              ? json_['impact'] as core.String
+              : null,
+          observedInTheWild: json_.containsKey('observedInTheWild')
+              ? json_['observedInTheWild'] as core.bool
+              : null,
           references: json_.containsKey('references')
               ? (json_['references'] as core.List)
                   .map((value) => Reference.fromJson(
@@ -9748,14 +11252,22 @@ class Cve {
           upstreamFixAvailable: json_.containsKey('upstreamFixAvailable')
               ? json_['upstreamFixAvailable'] as core.bool
               : null,
+          zeroDay: json_.containsKey('zeroDay')
+              ? json_['zeroDay'] as core.bool
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cvssv3 != null) 'cvssv3': cvssv3!,
+        if (exploitationActivity != null)
+          'exploitationActivity': exploitationActivity!,
         if (id != null) 'id': id!,
+        if (impact != null) 'impact': impact!,
+        if (observedInTheWild != null) 'observedInTheWild': observedInTheWild!,
         if (references != null) 'references': references!,
         if (upstreamFixAvailable != null)
           'upstreamFixAvailable': upstreamFixAvailable!,
+        if (zeroDay != null) 'zeroDay': zeroDay!,
       };
 }
 
@@ -10036,6 +11548,134 @@ class Detection {
       };
 }
 
+/// Path of the file in terms of underlying disk/partition identifiers.
+class DiskPath {
+  /// UUID of the partition (format
+  /// https://wiki.archlinux.org/title/persistent_block_device_naming#by-uuid)
+  core.String? partitionUuid;
+
+  /// Relative path of the file in the partition as a JSON encoded string.
+  ///
+  /// Example: /home/user1/executable_file.sh
+  core.String? relativePath;
+
+  DiskPath({
+    this.partitionUuid,
+    this.relativePath,
+  });
+
+  DiskPath.fromJson(core.Map json_)
+      : this(
+          partitionUuid: json_.containsKey('partitionUuid')
+              ? json_['partitionUuid'] as core.String
+              : null,
+          relativePath: json_.containsKey('relativePath')
+              ? json_['relativePath'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (partitionUuid != null) 'partitionUuid': partitionUuid!,
+        if (relativePath != null) 'relativePath': relativePath!,
+      };
+}
+
+/// An EffectiveEventThreatDetectionCustomModule is the representation of an
+/// Event Threat Detection custom module at a specified level of the resource
+/// hierarchy: organization, folder, or project.
+///
+/// If a custom module is inherited from a parent organization or folder, the
+/// value of the `enablement_state` property in
+/// EffectiveEventThreatDetectionCustomModule is set to the value that is
+/// effective in the parent, instead of `INHERITED`. For example, if the module
+/// is enabled in a parent organization or folder, the effective
+/// `enablement_state` for the module in all child folders or projects is also
+/// `enabled`. EffectiveEventThreatDetectionCustomModule is read-only.
+class EffectiveEventThreatDetectionCustomModule {
+  /// Config for the effective module.
+  ///
+  /// Output only.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? config;
+
+  /// The description for the module.
+  ///
+  /// Output only.
+  core.String? description;
+
+  /// The human readable name to be displayed for the module.
+  ///
+  /// Output only.
+  core.String? displayName;
+
+  /// The effective state of enablement for the module at the given level of the
+  /// hierarchy.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "ENABLEMENT_STATE_UNSPECIFIED" : Unspecified enablement state.
+  /// - "ENABLED" : The module is enabled at the given level.
+  /// - "DISABLED" : The module is disabled at the given level.
+  core.String? enablementState;
+
+  /// The resource name of the effective ETD custom module.
+  ///
+  /// Its format is: *
+  /// "organizations/{organization}/eventThreatDetectionSettings/effectiveCustomModules/{module}".
+  /// *
+  /// "folders/{folder}/eventThreatDetectionSettings/effectiveCustomModules/{module}".
+  /// *
+  /// "projects/{project}/eventThreatDetectionSettings/effectiveCustomModules/{module}".
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Type for the module.
+  ///
+  /// e.g. CONFIGURABLE_BAD_IP.
+  ///
+  /// Output only.
+  core.String? type;
+
+  EffectiveEventThreatDetectionCustomModule({
+    this.config,
+    this.description,
+    this.displayName,
+    this.enablementState,
+    this.name,
+    this.type,
+  });
+
+  EffectiveEventThreatDetectionCustomModule.fromJson(core.Map json_)
+      : this(
+          config: json_.containsKey('config')
+              ? json_['config'] as core.Map<core.String, core.dynamic>
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          enablementState: json_.containsKey('enablementState')
+              ? json_['enablementState'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (config != null) 'config': config!,
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (enablementState != null) 'enablementState': enablementState!,
+        if (name != null) 'name': name!,
+        if (type != null) 'type': type!,
+      };
+}
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
 ///
@@ -10073,8 +11713,19 @@ class EnvironmentVariable {
 /// Represents an instance of an Event Threat Detection custom module, including
 /// its full module name, display name, enablement state, and last updated time.
 ///
-/// You can create a custom module at the organization level only.
+/// You can create a custom module at the organization, folder, or project
+/// level. Custom modules that you create at the organization or folder level
+/// are inherited by child folders and projects.
 class EventThreatDetectionCustomModule {
+  /// The closest ancestor module that this module inherits the enablement state
+  /// from.
+  ///
+  /// The format is the same as the EventThreatDetectionCustomModule resource
+  /// name.
+  ///
+  /// Output only.
+  core.String? ancestorModule;
+
   /// Config for the module.
   ///
   /// For the resident module, its config value is defined at this level. For
@@ -10097,6 +11748,7 @@ class EventThreatDetectionCustomModule {
   /// - "ENABLEMENT_STATE_UNSPECIFIED" : Unspecified enablement state.
   /// - "ENABLED" : The module is enabled at the given level.
   /// - "DISABLED" : The module is disabled at the given level.
+  /// - "INHERITED" : When the enablement state is inherited.
   core.String? enablementState;
 
   /// The editor the module was last updated by.
@@ -10126,6 +11778,7 @@ class EventThreatDetectionCustomModule {
   core.String? updateTime;
 
   EventThreatDetectionCustomModule({
+    this.ancestorModule,
     this.config,
     this.description,
     this.displayName,
@@ -10138,6 +11791,9 @@ class EventThreatDetectionCustomModule {
 
   EventThreatDetectionCustomModule.fromJson(core.Map json_)
       : this(
+          ancestorModule: json_.containsKey('ancestorModule')
+              ? json_['ancestorModule'] as core.String
+              : null,
           config: json_.containsKey('config')
               ? json_['config'] as core.Map<core.String, core.dynamic>
               : null,
@@ -10161,6 +11817,7 @@ class EventThreatDetectionCustomModule {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (ancestorModule != null) 'ancestorModule': ancestorModule!,
         if (config != null) 'config': config!,
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
@@ -10286,6 +11943,9 @@ class File {
   /// Prefix of the file contents as a JSON-encoded string.
   core.String? contents;
 
+  /// Path of the file in terms of underlying disk/partition identifiers.
+  DiskPath? diskPath;
+
   /// The length in bytes of the file prefix that was hashed.
   ///
   /// If hashed_size == size, any hashes reported represent the entire file.
@@ -10309,6 +11969,7 @@ class File {
 
   File({
     this.contents,
+    this.diskPath,
     this.hashedSize,
     this.partiallyHashed,
     this.path,
@@ -10320,6 +11981,10 @@ class File {
       : this(
           contents: json_.containsKey('contents')
               ? json_['contents'] as core.String
+              : null,
+          diskPath: json_.containsKey('diskPath')
+              ? DiskPath.fromJson(
+                  json_['diskPath'] as core.Map<core.String, core.dynamic>)
               : null,
           hashedSize: json_.containsKey('hashedSize')
               ? json_['hashedSize'] as core.String
@@ -10336,6 +12001,7 @@ class File {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (contents != null) 'contents': contents!,
+        if (diskPath != null) 'diskPath': diskPath!,
         if (hashedSize != null) 'hashedSize': hashedSize!,
         if (partiallyHashed != null) 'partiallyHashed': partiallyHashed!,
         if (path != null) 'path': path!,
@@ -10356,8 +12022,14 @@ class Finding {
   /// the caller, which method was accessed, and from where.
   Access? access;
 
+  /// Represents an application associated with the finding.
+  Application? application;
+
   /// The results of an attack path simulation relevant to this finding.
   AttackExposure? attackExposure;
+
+  /// Fields related to Backup and DR findings.
+  BackupDisasterRecovery? backupDisasterRecovery;
 
   /// The canonical name of the finding.
   ///
@@ -10641,7 +12313,9 @@ class Finding {
 
   Finding({
     this.access,
+    this.application,
     this.attackExposure,
+    this.backupDisasterRecovery,
     this.canonicalName,
     this.category,
     this.cloudDlpDataProfile,
@@ -10691,8 +12365,16 @@ class Finding {
               ? Access.fromJson(
                   json_['access'] as core.Map<core.String, core.dynamic>)
               : null,
+          application: json_.containsKey('application')
+              ? Application.fromJson(
+                  json_['application'] as core.Map<core.String, core.dynamic>)
+              : null,
           attackExposure: json_.containsKey('attackExposure')
               ? AttackExposure.fromJson(json_['attackExposure']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          backupDisasterRecovery: json_.containsKey('backupDisasterRecovery')
+              ? BackupDisasterRecovery.fromJson(json_['backupDisasterRecovery']
                   as core.Map<core.String, core.dynamic>)
               : null,
           canonicalName: json_.containsKey('canonicalName')
@@ -10869,7 +12551,10 @@ class Finding {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (access != null) 'access': access!,
+        if (application != null) 'application': application!,
         if (attackExposure != null) 'attackExposure': attackExposure!,
+        if (backupDisasterRecovery != null)
+          'backupDisasterRecovery': backupDisasterRecovery!,
         if (canonicalName != null) 'canonicalName': canonicalName!,
         if (category != null) 'category': category!,
         if (cloudDlpDataProfile != null)
@@ -11361,6 +13046,21 @@ class GoogleCloudSecuritycenterV1ExternalSystem {
   /// References primary/secondary etc assignees in the external system.
   core.List<core.String>? assignees;
 
+  /// The time when the case was closed, as reported by the external system.
+  core.String? caseCloseTime;
+
+  /// The time when the case was created, as reported by the external system.
+  core.String? caseCreateTime;
+
+  /// The priority of the finding's corresponding case in the external system.
+  core.String? casePriority;
+
+  /// The SLA of the finding's corresponding case in the external system.
+  core.String? caseSla;
+
+  /// The link to the finding's corresponding case in the external system.
+  core.String? caseUri;
+
   /// The time when the case was last updated, as reported by the external
   /// system.
   core.String? externalSystemUpdateTime;
@@ -11379,12 +13079,22 @@ class GoogleCloudSecuritycenterV1ExternalSystem {
   /// the external system.
   core.String? status;
 
+  /// Information about the ticket, if any, that is being used to track the
+  /// resolution of the issue that is identified by this finding.
+  TicketInfo? ticketInfo;
+
   GoogleCloudSecuritycenterV1ExternalSystem({
     this.assignees,
+    this.caseCloseTime,
+    this.caseCreateTime,
+    this.casePriority,
+    this.caseSla,
+    this.caseUri,
     this.externalSystemUpdateTime,
     this.externalUid,
     this.name,
     this.status,
+    this.ticketInfo,
   });
 
   GoogleCloudSecuritycenterV1ExternalSystem.fromJson(core.Map json_)
@@ -11393,6 +13103,21 @@ class GoogleCloudSecuritycenterV1ExternalSystem {
               ? (json_['assignees'] as core.List)
                   .map((value) => value as core.String)
                   .toList()
+              : null,
+          caseCloseTime: json_.containsKey('caseCloseTime')
+              ? json_['caseCloseTime'] as core.String
+              : null,
+          caseCreateTime: json_.containsKey('caseCreateTime')
+              ? json_['caseCreateTime'] as core.String
+              : null,
+          casePriority: json_.containsKey('casePriority')
+              ? json_['casePriority'] as core.String
+              : null,
+          caseSla: json_.containsKey('caseSla')
+              ? json_['caseSla'] as core.String
+              : null,
+          caseUri: json_.containsKey('caseUri')
+              ? json_['caseUri'] as core.String
               : null,
           externalSystemUpdateTime:
               json_.containsKey('externalSystemUpdateTime')
@@ -11405,15 +13130,25 @@ class GoogleCloudSecuritycenterV1ExternalSystem {
           status: json_.containsKey('status')
               ? json_['status'] as core.String
               : null,
+          ticketInfo: json_.containsKey('ticketInfo')
+              ? TicketInfo.fromJson(
+                  json_['ticketInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (assignees != null) 'assignees': assignees!,
+        if (caseCloseTime != null) 'caseCloseTime': caseCloseTime!,
+        if (caseCreateTime != null) 'caseCreateTime': caseCreateTime!,
+        if (casePriority != null) 'casePriority': casePriority!,
+        if (caseSla != null) 'caseSla': caseSla!,
+        if (caseUri != null) 'caseUri': caseUri!,
         if (externalSystemUpdateTime != null)
           'externalSystemUpdateTime': externalSystemUpdateTime!,
         if (externalUid != null) 'externalUid': externalUid!,
         if (name != null) 'name': name!,
         if (status != null) 'status': status!,
+        if (ticketInfo != null) 'ticketInfo': ticketInfo!,
       };
 }
 
@@ -11625,6 +13360,14 @@ class GoogleCloudSecuritycenterV1ResourceValueConfig {
   /// "project/456" scope will be checked with "AND" of other resources.
   core.String? scope;
 
+  /// A mapping of the sensitivity on Sensitive Data Protection finding to
+  /// resource values.
+  ///
+  /// This mapping can only be used in combination with a resource_type that is
+  /// related to BigQuery, e.g. "bigquery.googleapis.com/Dataset".
+  GoogleCloudSecuritycenterV1SensitiveDataProtectionMapping?
+      sensitiveDataProtectionMapping;
+
   /// Tag values combined with AND to check against.
   ///
   /// Values in the form "tagValues/123" E.g. \[ "tagValues/123",
@@ -11647,6 +13390,7 @@ class GoogleCloudSecuritycenterV1ResourceValueConfig {
     this.resourceType,
     this.resourceValue,
     this.scope,
+    this.sensitiveDataProtectionMapping,
     this.tagValues,
     this.updateTime,
   });
@@ -11678,6 +13422,12 @@ class GoogleCloudSecuritycenterV1ResourceValueConfig {
               : null,
           scope:
               json_.containsKey('scope') ? json_['scope'] as core.String : null,
+          sensitiveDataProtectionMapping:
+              json_.containsKey('sensitiveDataProtectionMapping')
+                  ? GoogleCloudSecuritycenterV1SensitiveDataProtectionMapping
+                      .fromJson(json_['sensitiveDataProtectionMapping']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           tagValues: json_.containsKey('tagValues')
               ? (json_['tagValues'] as core.List)
                   .map((value) => value as core.String)
@@ -11697,6 +13447,8 @@ class GoogleCloudSecuritycenterV1ResourceValueConfig {
         if (resourceType != null) 'resourceType': resourceType!,
         if (resourceValue != null) 'resourceValue': resourceValue!,
         if (scope != null) 'scope': scope!,
+        if (sensitiveDataProtectionMapping != null)
+          'sensitiveDataProtectionMapping': sensitiveDataProtectionMapping!,
         if (tagValues != null) 'tagValues': tagValues!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
@@ -11808,6 +13560,56 @@ class GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule {
         if (lastEditor != null) 'lastEditor': lastEditor!,
         if (name != null) 'name': name!,
         if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// Resource value mapping for Sensitive Data Protection findings.
+///
+/// If any of these mappings have a resource value that is not unspecified, the
+/// resource_value field will be ignored when reading this configuration.
+class GoogleCloudSecuritycenterV1SensitiveDataProtectionMapping {
+  /// Resource value mapping for high-sensitivity Sensitive Data Protection
+  /// findings
+  /// Possible string values are:
+  /// - "RESOURCE_VALUE_UNSPECIFIED" : Unspecific value
+  /// - "HIGH" : High resource value
+  /// - "MEDIUM" : Medium resource value
+  /// - "LOW" : Low resource value
+  /// - "NONE" : No resource value, e.g. ignore these resources
+  core.String? highSensitivityMapping;
+
+  /// Resource value mapping for medium-sensitivity Sensitive Data Protection
+  /// findings
+  /// Possible string values are:
+  /// - "RESOURCE_VALUE_UNSPECIFIED" : Unspecific value
+  /// - "HIGH" : High resource value
+  /// - "MEDIUM" : Medium resource value
+  /// - "LOW" : Low resource value
+  /// - "NONE" : No resource value, e.g. ignore these resources
+  core.String? mediumSensitivityMapping;
+
+  GoogleCloudSecuritycenterV1SensitiveDataProtectionMapping({
+    this.highSensitivityMapping,
+    this.mediumSensitivityMapping,
+  });
+
+  GoogleCloudSecuritycenterV1SensitiveDataProtectionMapping.fromJson(
+      core.Map json_)
+      : this(
+          highSensitivityMapping: json_.containsKey('highSensitivityMapping')
+              ? json_['highSensitivityMapping'] as core.String
+              : null,
+          mediumSensitivityMapping:
+              json_.containsKey('mediumSensitivityMapping')
+                  ? json_['mediumSensitivityMapping'] as core.String
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (highSensitivityMapping != null)
+          'highSensitivityMapping': highSensitivityMapping!,
+        if (mediumSensitivityMapping != null)
+          'mediumSensitivityMapping': mediumSensitivityMapping!,
       };
 }
 
@@ -12734,6 +14536,46 @@ class ListBigQueryExportsResponse {
       };
 }
 
+/// Response for listing current and descendant resident Event Threat Detection
+/// custom modules.
+class ListDescendantEventThreatDetectionCustomModulesResponse {
+  /// Custom modules belonging to the requested parent.
+  core.List<EventThreatDetectionCustomModule>?
+      eventThreatDetectionCustomModules;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  ListDescendantEventThreatDetectionCustomModulesResponse({
+    this.eventThreatDetectionCustomModules,
+    this.nextPageToken,
+  });
+
+  ListDescendantEventThreatDetectionCustomModulesResponse.fromJson(
+      core.Map json_)
+      : this(
+          eventThreatDetectionCustomModules:
+              json_.containsKey('eventThreatDetectionCustomModules')
+                  ? (json_['eventThreatDetectionCustomModules'] as core.List)
+                      .map((value) => EventThreatDetectionCustomModule.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (eventThreatDetectionCustomModules != null)
+          'eventThreatDetectionCustomModules':
+              eventThreatDetectionCustomModules!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
 /// Response message for listing descendant Security Health Analytics custom
 /// modules.
 class ListDescendantSecurityHealthAnalyticsCustomModulesResponse {
@@ -12772,6 +14614,47 @@ class ListDescendantSecurityHealthAnalyticsCustomModulesResponse {
         if (securityHealthAnalyticsCustomModules != null)
           'securityHealthAnalyticsCustomModules':
               securityHealthAnalyticsCustomModules!,
+      };
+}
+
+/// Response for listing EffectiveEventThreatDetectionCustomModules.
+class ListEffectiveEventThreatDetectionCustomModulesResponse {
+  /// Effective custom modules belonging to the requested parent.
+  core.List<EffectiveEventThreatDetectionCustomModule>?
+      effectiveEventThreatDetectionCustomModules;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  ListEffectiveEventThreatDetectionCustomModulesResponse({
+    this.effectiveEventThreatDetectionCustomModules,
+    this.nextPageToken,
+  });
+
+  ListEffectiveEventThreatDetectionCustomModulesResponse.fromJson(
+      core.Map json_)
+      : this(
+          effectiveEventThreatDetectionCustomModules:
+              json_.containsKey('effectiveEventThreatDetectionCustomModules')
+                  ? (json_['effectiveEventThreatDetectionCustomModules']
+                          as core.List)
+                      .map((value) =>
+                          EffectiveEventThreatDetectionCustomModule.fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (effectiveEventThreatDetectionCustomModules != null)
+          'effectiveEventThreatDetectionCustomModules':
+              effectiveEventThreatDetectionCustomModules!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
 }
 
@@ -13500,7 +15383,7 @@ class Object {
   /// Kubernetes object group, such as "policy.k8s.io/v1".
   core.String? group;
 
-  /// Kubernetes object kind, such as “Namespace”.
+  /// Kubernetes object kind, such as "Namespace".
   core.String? kind;
 
   /// Kubernetes object name.
@@ -13689,6 +15572,51 @@ class OrganizationSettings {
         if (enableAssetDiscovery != null)
           'enableAssetDiscovery': enableAssetDiscovery!,
         if (name != null) 'name': name!,
+      };
+}
+
+/// Package is a generic definition of a package.
+class Package {
+  /// The CPE URI where the vulnerability was detected.
+  core.String? cpeUri;
+
+  /// The name of the package where the vulnerability was detected.
+  core.String? packageName;
+
+  /// Type of package, for example, os, maven, or go.
+  core.String? packageType;
+
+  /// The version of the package.
+  core.String? packageVersion;
+
+  Package({
+    this.cpeUri,
+    this.packageName,
+    this.packageType,
+    this.packageVersion,
+  });
+
+  Package.fromJson(core.Map json_)
+      : this(
+          cpeUri: json_.containsKey('cpeUri')
+              ? json_['cpeUri'] as core.String
+              : null,
+          packageName: json_.containsKey('packageName')
+              ? json_['packageName'] as core.String
+              : null,
+          packageType: json_.containsKey('packageType')
+              ? json_['packageType'] as core.String
+              : null,
+          packageVersion: json_.containsKey('packageVersion')
+              ? json_['packageVersion'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cpeUri != null) 'cpeUri': cpeUri!,
+        if (packageName != null) 'packageName': packageName!,
+        if (packageType != null) 'packageType': packageType!,
+        if (packageVersion != null) 'packageVersion': packageVersion!,
       };
 }
 
@@ -13899,6 +15827,46 @@ class Policy {
       };
 }
 
+/// The policy field that violates the deployed posture and its expected and
+/// detected values.
+class PolicyDriftDetails {
+  /// The detected value that violates the deployed posture, for example,
+  /// `false` or `allowed_values={"projects/22831892"}`.
+  core.String? detectedValue;
+
+  /// The value of this field that was configured in a posture, for example,
+  /// `true` or `allowed_values={"projects/29831892"}`.
+  core.String? expectedValue;
+
+  /// The name of the updated field, for example
+  /// constraint.implementation.policy_rules\[0\].enforce
+  core.String? field;
+
+  PolicyDriftDetails({
+    this.detectedValue,
+    this.expectedValue,
+    this.field,
+  });
+
+  PolicyDriftDetails.fromJson(core.Map json_)
+      : this(
+          detectedValue: json_.containsKey('detectedValue')
+              ? json_['detectedValue'] as core.String
+              : null,
+          expectedValue: json_.containsKey('expectedValue')
+              ? json_['expectedValue'] as core.String
+              : null,
+          field:
+              json_.containsKey('field') ? json_['field'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (detectedValue != null) 'detectedValue': detectedValue!,
+        if (expectedValue != null) 'expectedValue': expectedValue!,
+        if (field != null) 'field': field!,
+      };
+}
+
 /// A position in the uploaded text version of a module.
 class Position {
   core.int? columnNumber;
@@ -14036,11 +16004,19 @@ class ProcessSignature {
   /// Signature indicating that a binary family was matched.
   MemoryHashSignature? memoryHashSignature;
 
+  /// Describes the type of resource associated with the signature.
+  /// Possible string values are:
+  /// - "SIGNATURE_TYPE_UNSPECIFIED" : The default signature type.
+  /// - "SIGNATURE_TYPE_PROCESS" : Used for signatures concerning processes.
+  /// - "SIGNATURE_TYPE_FILE" : Used for signatures concerning disks.
+  core.String? signatureType;
+
   /// Signature indicating that a YARA rule was matched.
   YaraRuleSignature? yaraRuleSignature;
 
   ProcessSignature({
     this.memoryHashSignature,
+    this.signatureType,
     this.yaraRuleSignature,
   });
 
@@ -14049,6 +16025,9 @@ class ProcessSignature {
           memoryHashSignature: json_.containsKey('memoryHashSignature')
               ? MemoryHashSignature.fromJson(json_['memoryHashSignature']
                   as core.Map<core.String, core.dynamic>)
+              : null,
+          signatureType: json_.containsKey('signatureType')
+              ? json_['signatureType'] as core.String
               : null,
           yaraRuleSignature: json_.containsKey('yaraRuleSignature')
               ? YaraRuleSignature.fromJson(json_['yaraRuleSignature']
@@ -14059,6 +16038,7 @@ class ProcessSignature {
   core.Map<core.String, core.dynamic> toJson() => {
         if (memoryHashSignature != null)
           'memoryHashSignature': memoryHashSignature!,
+        if (signatureType != null) 'signatureType': signatureType!,
         if (yaraRuleSignature != null) 'yaraRuleSignature': yaraRuleSignature!,
       };
 }
@@ -14233,6 +16213,47 @@ class Role {
 
 /// Request message for running asset discovery for an organization.
 typedef RunAssetDiscoveryRequest = $Empty;
+
+/// SecurityBulletin are notifications of vulnerabilities of Google products.
+class SecurityBulletin {
+  /// ID of the bulletin corresponding to the vulnerability.
+  core.String? bulletinId;
+
+  /// Submission time of this Security Bulletin.
+  core.String? submissionTime;
+
+  /// This represents a version that the cluster receiving this notification
+  /// should be upgraded to, based on its current version.
+  ///
+  /// For example, 1.15.0
+  core.String? suggestedUpgradeVersion;
+
+  SecurityBulletin({
+    this.bulletinId,
+    this.submissionTime,
+    this.suggestedUpgradeVersion,
+  });
+
+  SecurityBulletin.fromJson(core.Map json_)
+      : this(
+          bulletinId: json_.containsKey('bulletinId')
+              ? json_['bulletinId'] as core.String
+              : null,
+          submissionTime: json_.containsKey('submissionTime')
+              ? json_['submissionTime'] as core.String
+              : null,
+          suggestedUpgradeVersion: json_.containsKey('suggestedUpgradeVersion')
+              ? json_['suggestedUpgradeVersion'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bulletinId != null) 'bulletinId': bulletinId!,
+        if (submissionTime != null) 'submissionTime': submissionTime!,
+        if (suggestedUpgradeVersion != null)
+          'suggestedUpgradeVersion': suggestedUpgradeVersion!,
+      };
+}
 
 /// Security Command Center managed properties.
 ///
@@ -14419,20 +16440,29 @@ class SecurityMarks {
 /// A posture contains one or more policy sets. A policy set is a group of
 /// policies that enforce a set of security rules on Google Cloud.
 class SecurityPosture {
-  /// The name of the policy that has been updated, for example,
+  /// The name of the updated policy, for example,
   /// `projects/{project_id}/policies/{constraint_name}`.
   core.String? changedPolicy;
 
-  /// Name of the posture, for example,
-  /// `organizations/{org_id}/locations/{location}/postures/{posture_name}`.
+  /// Name of the posture, for example, `CIS-Posture`.
   core.String? name;
 
+  /// The ID of the updated policy, for example, `compute-policy-1`.
+  core.String? policy;
+
+  /// The details about a change in an updated policy that violates the deployed
+  /// posture.
+  core.List<PolicyDriftDetails>? policyDriftDetails;
+
+  /// The name of the updated policyset, for example, `cis-policyset`.
+  core.String? policySet;
+
   /// The name of the posture deployment, for example,
-  /// `projects/{project_id}/posturedeployments/{posture_deployment_id}`.
+  /// `organizations/{org_id}/posturedeployments/{posture_deployment_id}`.
   core.String? postureDeployment;
 
   /// The project, folder, or organization on which the posture is deployed, for
-  /// example, `projects/{project_id}`.
+  /// example, `projects/{project_number}`.
   core.String? postureDeploymentResource;
 
   /// The version of the posture, for example, `c7cfa2a8`.
@@ -14441,6 +16471,9 @@ class SecurityPosture {
   SecurityPosture({
     this.changedPolicy,
     this.name,
+    this.policy,
+    this.policyDriftDetails,
+    this.policySet,
     this.postureDeployment,
     this.postureDeploymentResource,
     this.revisionId,
@@ -14452,6 +16485,18 @@ class SecurityPosture {
               ? json_['changedPolicy'] as core.String
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          policy: json_.containsKey('policy')
+              ? json_['policy'] as core.String
+              : null,
+          policyDriftDetails: json_.containsKey('policyDriftDetails')
+              ? (json_['policyDriftDetails'] as core.List)
+                  .map((value) => PolicyDriftDetails.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          policySet: json_.containsKey('policySet')
+              ? json_['policySet'] as core.String
+              : null,
           postureDeployment: json_.containsKey('postureDeployment')
               ? json_['postureDeployment'] as core.String
               : null,
@@ -14467,6 +16512,10 @@ class SecurityPosture {
   core.Map<core.String, core.dynamic> toJson() => {
         if (changedPolicy != null) 'changedPolicy': changedPolicy!,
         if (name != null) 'name': name!,
+        if (policy != null) 'policy': policy!,
+        if (policyDriftDetails != null)
+          'policyDriftDetails': policyDriftDetails!,
+        if (policySet != null) 'policySet': policySet!,
         if (postureDeployment != null) 'postureDeployment': postureDeployment!,
         if (postureDeploymentResource != null)
           'postureDeploymentResource': postureDeploymentResource!,
@@ -14615,7 +16664,7 @@ class SetMuteRequest {
 ///
 /// Maximum size of the request is 4 MB by default.
 class SimulateSecurityHealthAnalyticsCustomModuleRequest {
-  /// The user specified custom configuration to test.
+  /// The custom configuration that you need to test.
   ///
   /// Required.
   GoogleCloudSecuritycenterV1CustomConfig? customConfig;
@@ -14648,7 +16697,7 @@ class SimulateSecurityHealthAnalyticsCustomModuleRequest {
       };
 }
 
-/// Response message for simulating a SecurityHealthAnalyticsCustomModule
+/// Response message for simulating a `SecurityHealthAnalyticsCustomModule`
 /// against a given resource.
 class SimulateSecurityHealthAnalyticsCustomModuleResponse {
   /// Result for test case in the corresponding request.
@@ -14671,19 +16720,20 @@ class SimulateSecurityHealthAnalyticsCustomModuleResponse {
       };
 }
 
-/// Manually constructed resource.
+/// Manually constructed resource name.
 ///
-/// If the custom module only evaluates against the resource data, the
-/// iam_policy_data field can be omitted, and vice versa.
+/// If the custom module evaluates against only the resource data, you can omit
+/// the `iam_policy_data` field. If it evaluates only the `iam_policy_data`
+/// field, you can omit the resource data.
 class SimulatedResource {
   /// A representation of the IAM policy.
   ///
   /// Optional.
   Policy? iamPolicyData;
 
-  /// A representation of the GCP resource.
+  /// A representation of the Google Cloud resource.
   ///
-  /// Should match the GCP resource JSON format.
+  /// Should match the Google Cloud resource JSON format.
   ///
   /// Optional.
   ///
@@ -14691,7 +16741,7 @@ class SimulatedResource {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? resourceData;
 
-  /// The type of the resource, e.g. `compute.googleapis.com/Disk`.
+  /// The type of the resource, for example, `compute.googleapis.com/Disk`.
   ///
   /// Required.
   core.String? resourceType;
@@ -14959,6 +17009,65 @@ typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;
 
+/// Information about the ticket, if any, that is being used to track the
+/// resolution of the issue that is identified by this finding.
+class TicketInfo {
+  /// The assignee of the ticket in the ticket system.
+  core.String? assignee;
+
+  /// The description of the ticket in the ticket system.
+  core.String? description;
+
+  /// The identifier of the ticket in the ticket system.
+  core.String? id;
+
+  /// The latest status of the ticket, as reported by the ticket system.
+  core.String? status;
+
+  /// The time when the ticket was last updated, as reported by the ticket
+  /// system.
+  core.String? updateTime;
+
+  /// The link to the ticket in the ticket system.
+  core.String? uri;
+
+  TicketInfo({
+    this.assignee,
+    this.description,
+    this.id,
+    this.status,
+    this.updateTime,
+    this.uri,
+  });
+
+  TicketInfo.fromJson(core.Map json_)
+      : this(
+          assignee: json_.containsKey('assignee')
+              ? json_['assignee'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          status: json_.containsKey('status')
+              ? json_['status'] as core.String
+              : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (assignee != null) 'assignee': assignee!,
+        if (description != null) 'description': description!,
+        if (id != null) 'id': id!,
+        if (status != null) 'status': status!,
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (uri != null) 'uri': uri!,
+      };
+}
+
 /// Request to validate an Event Threat Detection custom module.
 class ValidateEventThreatDetectionCustomModuleRequest {
   /// The raw text of the module's contents.
@@ -15109,8 +17218,20 @@ class Vulnerability {
   /// (https://cve.mitre.org/about/)
   Cve? cve;
 
+  /// The fixed package is relevant to the finding.
+  Package? fixedPackage;
+
+  /// The offending package is relevant to the finding.
+  Package? offendingPackage;
+
+  /// The security bulletin is relevant to this finding.
+  SecurityBulletin? securityBulletin;
+
   Vulnerability({
     this.cve,
+    this.fixedPackage,
+    this.offendingPackage,
+    this.securityBulletin,
   });
 
   Vulnerability.fromJson(core.Map json_)
@@ -15119,10 +17240,25 @@ class Vulnerability {
               ? Cve.fromJson(
                   json_['cve'] as core.Map<core.String, core.dynamic>)
               : null,
+          fixedPackage: json_.containsKey('fixedPackage')
+              ? Package.fromJson(
+                  json_['fixedPackage'] as core.Map<core.String, core.dynamic>)
+              : null,
+          offendingPackage: json_.containsKey('offendingPackage')
+              ? Package.fromJson(json_['offendingPackage']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          securityBulletin: json_.containsKey('securityBulletin')
+              ? SecurityBulletin.fromJson(json_['securityBulletin']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cve != null) 'cve': cve!,
+        if (fixedPackage != null) 'fixedPackage': fixedPackage!,
+        if (offendingPackage != null) 'offendingPackage': offendingPackage!,
+        if (securityBulletin != null) 'securityBulletin': securityBulletin!,
       };
 }
 

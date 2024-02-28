@@ -185,6 +185,8 @@ class ProjectsLocationsWorkflowsExecutionsResource {
 
   /// Creates a new execution using the latest revision of the given workflow.
   ///
+  /// For more information, see Execute a workflow.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -331,16 +333,16 @@ class ProjectsLocationsWorkflowsExecutionsResource {
   ///
   /// [filter] - Optional. Filters applied to the `[Executions.ListExecutions]`
   /// results. The following fields are supported for filtering: `executionId`,
-  /// `state`, `startTime`, `endTime`, `duration`, `workflowRevisionId`,
-  /// `stepName`, and `label`. For details, see AIP-160. For example, if you are
-  /// using the Google APIs Explorer: `state="SUCCEEDED"` or
-  /// `startTime>"2023-08-01" AND state="FAILED"`
+  /// `state`, `createTime`, `startTime`, `endTime`, `duration`,
+  /// `workflowRevisionId`, `stepName`, and `label`. For details, see AIP-160.
+  /// For example, if you are using the Google APIs Explorer:
+  /// `state="SUCCEEDED"` or `startTime>"2023-08-01" AND state="FAILED"`
   ///
   /// [orderBy] - Optional. Comma-separated list of fields that specify the
   /// ordering applied to the `[Executions.ListExecutions]` results. By default
-  /// the ordering is based on descending `startTime`. The following fields are
-  /// supported for ordering: `executionId`, `state`, `startTime`, `endTime`,
-  /// `duration`, and `workflowRevisionId`. For details, see AIP-132.
+  /// the ordering is based on descending `createTime`. The following fields are
+  /// supported for ordering: `executionId`, `state`, `createTime`, `startTime`,
+  /// `endTime`, `duration`, and `workflowRevisionId`. For details, see AIP-132.
   ///
   /// [pageSize] - Maximum number of executions to return per call. Max
   /// supported value depends on the selected Execution view: it's 1000 for
@@ -728,6 +730,19 @@ class Execution {
   /// - "LOG_NONE" : Explicitly log nothing.
   core.String? callLogLevel;
 
+  /// Marks the creation of the execution.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// If set to true, the execution will not be backlogged when the concurrency
+  /// quota is exhausted.
+  ///
+  /// The backlog execution starts when the concurrency quota becomes available.
+  ///
+  /// Optional.
+  core.bool? disableConcurrencyQuotaOverflowBuffering;
+
   /// Measures the duration of the execution.
   ///
   /// Output only.
@@ -812,6 +827,8 @@ class Execution {
   Execution({
     this.argument,
     this.callLogLevel,
+    this.createTime,
+    this.disableConcurrencyQuotaOverflowBuffering,
     this.duration,
     this.endTime,
     this.error,
@@ -832,6 +849,13 @@ class Execution {
               : null,
           callLogLevel: json_.containsKey('callLogLevel')
               ? json_['callLogLevel'] as core.String
+              : null,
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          disableConcurrencyQuotaOverflowBuffering: json_
+                  .containsKey('disableConcurrencyQuotaOverflowBuffering')
+              ? json_['disableConcurrencyQuotaOverflowBuffering'] as core.bool
               : null,
           duration: json_.containsKey('duration')
               ? json_['duration'] as core.String
@@ -876,6 +900,10 @@ class Execution {
   core.Map<core.String, core.dynamic> toJson() => {
         if (argument != null) 'argument': argument!,
         if (callLogLevel != null) 'callLogLevel': callLogLevel!,
+        if (createTime != null) 'createTime': createTime!,
+        if (disableConcurrencyQuotaOverflowBuffering != null)
+          'disableConcurrencyQuotaOverflowBuffering':
+              disableConcurrencyQuotaOverflowBuffering!,
         if (duration != null) 'duration': duration!,
         if (endTime != null) 'endTime': endTime!,
         if (error != null) 'error': error!,

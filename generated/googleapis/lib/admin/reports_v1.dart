@@ -95,7 +95,7 @@ class ActivitiesResource {
   /// [applicationName] - Application name for which the events are to be
   /// retrieved.
   /// Value must have pattern
-  /// `(access_transparency)|(admin)|(calendar)|(chat)|(chrome)|(context_aware_access)|(data_studio)|(drive)|(gcp)|(gplus)|(groups)|(groups_enterprise)|(jamboard)|(keep)|(login)|(meet)|(mobile)|(rules)|(saml)|(token)|(user_accounts)`.
+  /// `(access_transparency)|(admin)|(calendar)|(chat)|(chrome)|(context_aware_access)|(data_studio)|(drive)|(gcp)|(gplus)|(groups)|(groups_enterprise)|(jamboard)|(keep)|(login)|(meet)|(mobile)|(rules)|(saml)|(token)|(user_accounts)|(vault)`.
   /// Possible string values are:
   /// - "access_transparency" : The Google Workspace Access Transparency
   /// activity reports return information about different types of Access
@@ -146,6 +146,8 @@ class ActivitiesResource {
   /// - "keep" : The Keep application's activity reports return information
   /// about various Google Keep activity events. The Keep activity report is
   /// only available for Google Workspace Business and Enterprise customers.
+  /// - "vault" : The Vault activity reports return information about various
+  /// types of Vault activity events.
   ///
   /// [actorIpAddress] - The Internet Protocol (IP) Address of host where the
   /// event was performed. This is an additional way to filter a report's
@@ -460,7 +462,8 @@ class ActivitiesResource {
   /// 1000.
   /// Value must be between "1" and "1000".
   ///
-  /// [orgUnitID] - ID of the organizational unit to report on. Activity records
+  /// [orgUnitID] - `Deprecated`. This field is deprecated and is no longer
+  /// supported. ID of the organizational unit to report on. Activity records
   /// will be shown only for users who belong to the specified organizational
   /// unit. Data before Dec 17, 2018 doesn't appear in the filtered results.
   /// Value must have pattern `(id:\[a-z0-9\]+)`.
@@ -1165,10 +1168,8 @@ class ActivityEvents {
   /// parameters in general: - If no `eventName` is given, the report returns
   /// all possible instances of an `eventName`. - When you request an
   /// `eventName`, the API's response returns all activities which contain that
-  /// `eventName`. It is possible that the returned activities will have other
-  /// `eventName` properties in addition to the one requested. For more
-  /// information about `eventName` properties, see the list of event names for
-  /// various applications above in `applicationName`.
+  /// `eventName`. For more information about `eventName` properties, see the
+  /// list of event names for various applications above in `applicationName`.
   core.String? name;
 
   /// Parameter value pairs for various applications.

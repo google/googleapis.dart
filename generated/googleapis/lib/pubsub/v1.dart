@@ -955,7 +955,8 @@ class ProjectsSnapshotsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates an existing snapshot.
+  /// Updates an existing snapshot by updating the fields specified in the
+  /// update mask.
   ///
   /// Snapshots are used in
   /// [Seek](https://cloud.google.com/pubsub/docs/replay-overview) operations,
@@ -1525,7 +1526,8 @@ class ProjectsSubscriptionsResource {
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates an existing subscription.
+  /// Updates an existing subscription by updating the fields specified in the
+  /// update mask.
   ///
   /// Note that certain properties of a subscription, such as its topic, are not
   /// modifiable.
@@ -2002,7 +2004,8 @@ class ProjectsTopicsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates an existing topic.
+  /// Updates an existing topic by updating the fields specified in the update
+  /// mask.
   ///
   /// Note that certain properties of a topic are not modifiable.
   ///
@@ -2365,6 +2368,96 @@ class AvroConfig {
       };
 }
 
+/// Ingestion settings for Amazon Kinesis Data Streams.
+class AwsKinesis {
+  /// AWS role ARN to be used for Federated Identity authentication with
+  /// Kinesis.
+  ///
+  /// Check the Pub/Sub docs for how to set up this role and the required
+  /// permissions that need to be attached to it.
+  ///
+  /// Required.
+  core.String? awsRoleArn;
+
+  /// The Kinesis consumer ARN to used for ingestion in Enhanced Fan-Out mode.
+  ///
+  /// The consumer must be already created and ready to be used.
+  ///
+  /// Required.
+  core.String? consumerArn;
+
+  /// The GCP service account to be used for Federated Identity authentication
+  /// with Kinesis (via a `AssumeRoleWithWebIdentity` call for the provided
+  /// role).
+  ///
+  /// The `aws_role_arn` must be set up with `accounts.google.com:sub` equals to
+  /// this service account number.
+  ///
+  /// Required.
+  core.String? gcpServiceAccount;
+
+  /// An output-only field that indicates the state of the Kinesis ingestion
+  /// source.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "ACTIVE" : Ingestion is active.
+  /// - "KINESIS_PERMISSION_DENIED" : Permission denied encountered while
+  /// consuming data from Kinesis. This can happen if: - The provided
+  /// `aws_role_arn` does not exist or does not have the appropriate permissions
+  /// attached. - The provided `aws_role_arn` is not set up properly for
+  /// Identity Federation using `gcp_service_account`. - The Pub/Sub SA is not
+  /// granted the `iam.serviceAccounts.getOpenIdToken` permission on
+  /// `gcp_service_account`.
+  /// - "PUBLISH_PERMISSION_DENIED" : Permission denied encountered while
+  /// publishing to the topic. This can happen if the Pub/Sub SA has not been
+  /// granted the
+  /// [appropriate publish permissions](https://cloud.google.com/pubsub/docs/access-control#pubsub.publisher)
+  /// - "STREAM_NOT_FOUND" : The Kinesis stream does not exist.
+  /// - "CONSUMER_NOT_FOUND" : The Kinesis consumer does not exist.
+  core.String? state;
+
+  /// The Kinesis stream ARN to ingest data from.
+  ///
+  /// Required.
+  core.String? streamArn;
+
+  AwsKinesis({
+    this.awsRoleArn,
+    this.consumerArn,
+    this.gcpServiceAccount,
+    this.state,
+    this.streamArn,
+  });
+
+  AwsKinesis.fromJson(core.Map json_)
+      : this(
+          awsRoleArn: json_.containsKey('awsRoleArn')
+              ? json_['awsRoleArn'] as core.String
+              : null,
+          consumerArn: json_.containsKey('consumerArn')
+              ? json_['consumerArn'] as core.String
+              : null,
+          gcpServiceAccount: json_.containsKey('gcpServiceAccount')
+              ? json_['gcpServiceAccount'] as core.String
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          streamArn: json_.containsKey('streamArn')
+              ? json_['streamArn'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (awsRoleArn != null) 'awsRoleArn': awsRoleArn!,
+        if (consumerArn != null) 'consumerArn': consumerArn!,
+        if (gcpServiceAccount != null) 'gcpServiceAccount': gcpServiceAccount!,
+        if (state != null) 'state': state!,
+        if (streamArn != null) 'streamArn': streamArn!,
+      };
+}
+
 /// Configuration for a BigQuery subscription.
 class BigQueryConfig {
   /// When true and use_topic_schema is true, any fields that are a part of the
@@ -2376,6 +2469,17 @@ class BigQueryConfig {
   ///
   /// Optional.
   core.bool? dropUnknownFields;
+
+  /// The service account to use to write to BigQuery.
+  ///
+  /// The subscription creator or updater that specifies this field must have
+  /// `iam.serviceAccounts.actAs` permission on the service account. If not
+  /// specified, the Pub/Sub
+  /// [service agent](https://cloud.google.com/iam/docs/service-agents),
+  /// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+  ///
+  /// Optional.
+  core.String? serviceAccountEmail;
 
   /// An output-only field that indicates whether or not the subscription can
   /// receive messages.
@@ -2405,8 +2509,20 @@ class BigQueryConfig {
   /// Optional.
   core.String? table;
 
+  /// When true, use the BigQuery table's schema as the columns to write to in
+  /// BigQuery.
+  ///
+  /// `use_table_schema` and `use_topic_schema` cannot be enabled at the same
+  /// time.
+  ///
+  /// Optional.
+  core.bool? useTableSchema;
+
   /// When true, use the topic's schema as the columns to write to in BigQuery,
   /// if it exists.
+  ///
+  /// `use_topic_schema` and `use_table_schema` cannot be enabled at the same
+  /// time.
   ///
   /// Optional.
   core.bool? useTopicSchema;
@@ -2423,8 +2539,10 @@ class BigQueryConfig {
 
   BigQueryConfig({
     this.dropUnknownFields,
+    this.serviceAccountEmail,
     this.state,
     this.table,
+    this.useTableSchema,
     this.useTopicSchema,
     this.writeMetadata,
   });
@@ -2434,10 +2552,16 @@ class BigQueryConfig {
           dropUnknownFields: json_.containsKey('dropUnknownFields')
               ? json_['dropUnknownFields'] as core.bool
               : null,
+          serviceAccountEmail: json_.containsKey('serviceAccountEmail')
+              ? json_['serviceAccountEmail'] as core.String
+              : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
           table:
               json_.containsKey('table') ? json_['table'] as core.String : null,
+          useTableSchema: json_.containsKey('useTableSchema')
+              ? json_['useTableSchema'] as core.bool
+              : null,
           useTopicSchema: json_.containsKey('useTopicSchema')
               ? json_['useTopicSchema'] as core.bool
               : null,
@@ -2448,8 +2572,11 @@ class BigQueryConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dropUnknownFields != null) 'dropUnknownFields': dropUnknownFields!,
+        if (serviceAccountEmail != null)
+          'serviceAccountEmail': serviceAccountEmail!,
         if (state != null) 'state': state!,
         if (table != null) 'table': table!,
+        if (useTableSchema != null) 'useTableSchema': useTableSchema!,
         if (useTopicSchema != null) 'useTopicSchema': useTopicSchema!,
         if (writeMetadata != null) 'writeMetadata': writeMetadata!,
       };
@@ -2487,14 +2614,31 @@ class Binding {
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
   /// (primary) that represents all the users of that domain. For example,
-  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a user that has
-  /// been recently deleted. For example,
-  /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
-  /// this value reverts to `user:{emailid}` and the recovered user retains the
-  /// role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a service account
-  /// that has been recently deleted. For example,
+  /// `google.com` or `example.com`. *
+  /// `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workforce identity pool. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`:
+  /// All workforce identities in a group. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All workforce identities with a specific attribute value. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}
+  /// / * `: All identities in a workforce identity pool. *
+  /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workload identity pool. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`:
+  /// A workload identity pool group. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All identities in a workload identity pool with a certain attribute. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}
+  /// / * `: All identities in a workload identity pool. *
+  /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
+  /// identifier) representing a user that has been recently deleted. For
+  /// example, `alice@example.com?uid=123456789012345678901`. If the user is
+  /// recovered, this value reverts to `user:{emailid}` and the recovered user
+  /// retains the role in the binding. *
+  /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus
+  /// unique identifier) representing a service account that has been recently
+  /// deleted. For example,
   /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If
   /// the service account is undeleted, this value reverts to
   /// `serviceAccount:{emailid}` and the undeleted service account retains the
@@ -2503,12 +2647,19 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding.
+  /// the role in the binding. *
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// Deleted single identity in a workforce identity pool. For example,
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
   ///
-  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an
+  /// overview of the IAM roles and permissions, see the
+  /// [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For
+  /// a list of the available pre-defined roles, see
+  /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
   Binding({
@@ -2589,6 +2740,17 @@ class CloudStorageConfig {
   /// Optional.
   core.String? maxDuration;
 
+  /// The service account to use to write to Cloud Storage.
+  ///
+  /// The subscription creator or updater that specifies this field must have
+  /// `iam.serviceAccounts.actAs` permission on the service account. If not
+  /// specified, the Pub/Sub
+  /// [service agent](https://cloud.google.com/iam/docs/service-agents),
+  /// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+  ///
+  /// Optional.
+  core.String? serviceAccountEmail;
+
   /// An output-only field that indicates whether or not the subscription can
   /// receive messages.
   ///
@@ -2617,6 +2779,7 @@ class CloudStorageConfig {
     this.filenameSuffix,
     this.maxBytes,
     this.maxDuration,
+    this.serviceAccountEmail,
     this.state,
     this.textConfig,
   });
@@ -2642,6 +2805,9 @@ class CloudStorageConfig {
           maxDuration: json_.containsKey('maxDuration')
               ? json_['maxDuration'] as core.String
               : null,
+          serviceAccountEmail: json_.containsKey('serviceAccountEmail')
+              ? json_['serviceAccountEmail'] as core.String
+              : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
           textConfig: json_.containsKey('textConfig')
@@ -2657,6 +2823,8 @@ class CloudStorageConfig {
         if (filenameSuffix != null) 'filenameSuffix': filenameSuffix!,
         if (maxBytes != null) 'maxBytes': maxBytes!,
         if (maxDuration != null) 'maxDuration': maxDuration!,
+        if (serviceAccountEmail != null)
+          'serviceAccountEmail': serviceAccountEmail!,
         if (state != null) 'state': state!,
         if (textConfig != null) 'textConfig': textConfig!,
       };
@@ -2846,6 +3014,30 @@ class ExpirationPolicy {
 /// service that evaluates it. See the service documentation for additional
 /// information.
 typedef Expr = $Expr;
+
+/// Settings for an ingestion data source on a topic.
+class IngestionDataSourceSettings {
+  /// Amazon Kinesis Data Streams.
+  ///
+  /// Optional.
+  AwsKinesis? awsKinesis;
+
+  IngestionDataSourceSettings({
+    this.awsKinesis,
+  });
+
+  IngestionDataSourceSettings.fromJson(core.Map json_)
+      : this(
+          awsKinesis: json_.containsKey('awsKinesis')
+              ? AwsKinesis.fromJson(
+                  json_['awsKinesis'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (awsKinesis != null) 'awsKinesis': awsKinesis!,
+      };
+}
 
 /// Response for the `ListSchemaRevisions` method.
 class ListSchemaRevisionsResponse {
@@ -3158,8 +3350,8 @@ class ModifyAckDeadlineRequest {
   /// immediately make the message available for delivery to another subscriber
   /// client. This typically results in an increase in the rate of message
   /// redeliveries (that is, duplicates). The minimum deadline you can specify
-  /// is 0 seconds. The maximum deadline you can specify is 600 seconds (10
-  /// minutes).
+  /// is 0 seconds. The maximum deadline you can specify in a single request is
+  /// 600 seconds (10 minutes).
   ///
   /// Required.
   core.int? ackDeadlineSeconds;
@@ -4372,6 +4564,11 @@ typedef TextConfig = $Empty;
 
 /// A topic resource.
 class Topic {
+  /// Settings for managed ingestion from a data source into this topic.
+  ///
+  /// Optional.
+  IngestionDataSourceSettings? ingestionDataSourceSettings;
+
   /// The resource name of the Cloud KMS CryptoKey to be used to protect access
   /// to messages published on this topic.
   ///
@@ -4433,7 +4630,19 @@ class Topic {
   /// Optional.
   SchemaSettings? schemaSettings;
 
+  /// An output-only field indicating the state of the topic.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "ACTIVE" : The topic does not have any persistent errors.
+  /// - "INGESTION_RESOURCE_ERROR" : Ingestion from the data source has
+  /// encountered a permanent error. See the more detailed error state in the
+  /// corresponding ingestion source configuration.
+  core.String? state;
+
   Topic({
+    this.ingestionDataSourceSettings,
     this.kmsKeyName,
     this.labels,
     this.messageRetentionDuration,
@@ -4441,10 +4650,17 @@ class Topic {
     this.name,
     this.satisfiesPzs,
     this.schemaSettings,
+    this.state,
   });
 
   Topic.fromJson(core.Map json_)
       : this(
+          ingestionDataSourceSettings:
+              json_.containsKey('ingestionDataSourceSettings')
+                  ? IngestionDataSourceSettings.fromJson(
+                      json_['ingestionDataSourceSettings']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           kmsKeyName: json_.containsKey('kmsKeyName')
               ? json_['kmsKeyName'] as core.String
               : null,
@@ -4472,9 +4688,13 @@ class Topic {
               ? SchemaSettings.fromJson(json_['schemaSettings']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (ingestionDataSourceSettings != null)
+          'ingestionDataSourceSettings': ingestionDataSourceSettings!,
         if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
         if (labels != null) 'labels': labels!,
         if (messageRetentionDuration != null)
@@ -4484,6 +4704,7 @@ class Topic {
         if (name != null) 'name': name!,
         if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (schemaSettings != null) 'schemaSettings': schemaSettings!,
+        if (state != null) 'state': state!,
       };
 }
 

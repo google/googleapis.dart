@@ -198,6 +198,10 @@ class FoldersPoliciesResource {
   /// naming rules.
   /// Value must have pattern `^folders/\[^/\]+/policies/\[^/\]+$`.
   ///
+  /// [etag] - Optional. The current etag of policy. If an etag is provided and
+  /// does not match the current etag of the policy, deletion will be blocked
+  /// and an ABORTED error will be returned.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -210,9 +214,11 @@ class FoldersPoliciesResource {
   /// this method will complete with the same error.
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
+    core.String? etag,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (etag != null) 'etag': [etag],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -802,6 +808,10 @@ class OrganizationsPoliciesResource {
   /// naming rules.
   /// Value must have pattern `^organizations/\[^/\]+/policies/\[^/\]+$`.
   ///
+  /// [etag] - Optional. The current etag of policy. If an etag is provided and
+  /// does not match the current etag of the policy, deletion will be blocked
+  /// and an ABORTED error will be returned.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -814,9 +824,11 @@ class OrganizationsPoliciesResource {
   /// this method will complete with the same error.
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
+    core.String? etag,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (etag != null) 'etag': [etag],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1163,6 +1175,10 @@ class ProjectsPoliciesResource {
   /// naming rules.
   /// Value must have pattern `^projects/\[^/\]+/policies/\[^/\]+$`.
   ///
+  /// [etag] - Optional. The current etag of policy. If an etag is provided and
+  /// does not match the current etag of the policy, deletion will be blocked
+  /// and an ABORTED error will be returned.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1175,9 +1191,11 @@ class ProjectsPoliciesResource {
   /// this method will complete with the same error.
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
+    core.String? etag,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (etag != null) 'etag': [etag],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1580,114 +1598,8 @@ class GoogleCloudOrgpolicyV2ConstraintListConstraint {
 /// By creating a custom constraint, customers can apply policies of this custom
 /// constraint. *Creating a custom constraint itself does NOT apply any policy
 /// enforcement*.
-class GoogleCloudOrgpolicyV2CustomConstraint {
-  /// Allow or deny type.
-  /// Possible string values are:
-  /// - "ACTION_TYPE_UNSPECIFIED" : Unspecified. Results in an error.
-  /// - "ALLOW" : Allowed action type.
-  /// - "DENY" : Deny action type.
-  core.String? actionType;
-
-  /// Org policy condition/expression.
-  ///
-  /// For example: `resource.instanceName.matches("[production|test]_.*_(\d)+")`
-  /// or, `resource.management.auto_upgrade == true` The max length of the
-  /// condition is 1000 characters.
-  core.String? condition;
-
-  /// Detailed information about this custom policy constraint.
-  ///
-  /// The max length of the description is 2000 characters.
-  core.String? description;
-
-  /// One line display name for the UI.
-  ///
-  /// The max length of the display_name is 200 characters.
-  core.String? displayName;
-
-  /// All the operations being applied for this constraint.
-  core.List<core.String>? methodTypes;
-
-  /// Name of the constraint.
-  ///
-  /// This is unique within the organization. Format of the name should be *
-  /// `organizations/{organization_id}/customConstraints/{custom_constraint_id}`
-  /// Example: `organizations/123/customConstraints/custom.createOnlyE2TypeVms`
-  /// The max length is 70 characters and the minimum length is 1. Note that the
-  /// prefix `organizations/{organization_id}/customConstraints/` is not
-  /// counted.
-  ///
-  /// Immutable.
-  core.String? name;
-
-  /// The resource instance type on which this policy applies.
-  ///
-  /// Format will be of the form : `/` Example: *
-  /// `compute.googleapis.com/Instance`.
-  ///
-  /// Immutable.
-  core.List<core.String>? resourceTypes;
-
-  /// The last time this custom constraint was updated.
-  ///
-  /// This represents the last time that the `CreateCustomConstraint` or
-  /// `UpdateCustomConstraint` RPC was called
-  ///
-  /// Output only.
-  core.String? updateTime;
-
-  GoogleCloudOrgpolicyV2CustomConstraint({
-    this.actionType,
-    this.condition,
-    this.description,
-    this.displayName,
-    this.methodTypes,
-    this.name,
-    this.resourceTypes,
-    this.updateTime,
-  });
-
-  GoogleCloudOrgpolicyV2CustomConstraint.fromJson(core.Map json_)
-      : this(
-          actionType: json_.containsKey('actionType')
-              ? json_['actionType'] as core.String
-              : null,
-          condition: json_.containsKey('condition')
-              ? json_['condition'] as core.String
-              : null,
-          description: json_.containsKey('description')
-              ? json_['description'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          methodTypes: json_.containsKey('methodTypes')
-              ? (json_['methodTypes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          resourceTypes: json_.containsKey('resourceTypes')
-              ? (json_['resourceTypes'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          updateTime: json_.containsKey('updateTime')
-              ? json_['updateTime'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (actionType != null) 'actionType': actionType!,
-        if (condition != null) 'condition': condition!,
-        if (description != null) 'description': description!,
-        if (displayName != null) 'displayName': displayName!,
-        if (methodTypes != null) 'methodTypes': methodTypes!,
-        if (name != null) 'name': name!,
-        if (resourceTypes != null) 'resourceTypes': resourceTypes!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
-}
+typedef GoogleCloudOrgpolicyV2CustomConstraint
+    = $GoogleCloudOrgpolicyV2CustomConstraint;
 
 /// The response returned from the ListConstraints method.
 class GoogleCloudOrgpolicyV2ListConstraintsResponse {
@@ -1818,6 +1730,16 @@ class GoogleCloudOrgpolicyV2Policy {
   /// impacted the existing and future resources if it's enforced.
   GoogleCloudOrgpolicyV2PolicySpec? dryRunSpec;
 
+  /// An opaque tag indicating the current state of the policy, used for
+  /// concurrency control.
+  ///
+  /// This 'etag' is computed by the server based on the value of other fields,
+  /// and may be sent on update and delete requests to ensure the client has an
+  /// up-to-date value before proceeding.
+  ///
+  /// Optional.
+  core.String? etag;
+
   /// The resource name of the policy.
   ///
   /// Must be one of the following forms, where `constraint_name` is the name of
@@ -1839,6 +1761,7 @@ class GoogleCloudOrgpolicyV2Policy {
   GoogleCloudOrgpolicyV2Policy({
     this.alternate,
     this.dryRunSpec,
+    this.etag,
     this.name,
     this.spec,
   });
@@ -1853,6 +1776,7 @@ class GoogleCloudOrgpolicyV2Policy {
               ? GoogleCloudOrgpolicyV2PolicySpec.fromJson(
                   json_['dryRunSpec'] as core.Map<core.String, core.dynamic>)
               : null,
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           spec: json_.containsKey('spec')
               ? GoogleCloudOrgpolicyV2PolicySpec.fromJson(
@@ -1863,6 +1787,7 @@ class GoogleCloudOrgpolicyV2Policy {
   core.Map<core.String, core.dynamic> toJson() => {
         if (alternate != null) 'alternate': alternate!,
         if (dryRunSpec != null) 'dryRunSpec': dryRunSpec!,
+        if (etag != null) 'etag': etag!,
         if (name != null) 'name': name!,
         if (spec != null) 'spec': spec!,
       };
@@ -1871,14 +1796,14 @@ class GoogleCloudOrgpolicyV2Policy {
 /// Defines a Google Cloud policy specification which is used to specify
 /// constraints for configurations of Google Cloud resources.
 class GoogleCloudOrgpolicyV2PolicySpec {
-  /// An opaque tag indicating the current version of the policy, used for
+  /// An opaque tag indicating the current version of the policySpec, used for
   /// concurrency control.
   ///
-  /// This field is ignored if used in a \`CreatePolicy\` request. When the
-  /// policy\` is returned from either a \`GetPolicy\` or a \`ListPolicies\`
-  /// request, this \`etag\` indicates the version of the current policy to use
-  /// when executing a read-modify-write loop. When the policy is returned from
-  /// a \`GetEffectivePolicy\` request, the \`etag\` will be unset.
+  /// This field is ignored if used in a `CreatePolicy` request. When the policy
+  /// is returned from either a `GetPolicy` or a `ListPolicies` request, this
+  /// `etag` indicates the version of the current policySpec to use when
+  /// executing a read-modify-write loop. When the policy is returned from a
+  /// `GetEffectivePolicy` request, the `etag` will be unset.
   core.String? etag;
 
   /// Determines the inheritance behavior for this policy.

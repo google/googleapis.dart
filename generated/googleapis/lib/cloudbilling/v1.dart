@@ -102,8 +102,7 @@ class BillingAccountsResource {
   /// Request parameters:
   ///
   /// [parent] - Optional. The parent to create a billing account from. Format:
-  /// - organizations/{organization_id} eg organizations/12345678 -
-  /// billingAccounts/{billing_account_id} eg
+  /// - `billingAccounts/{billing_account_id}`, for example,
   /// `billingAccounts/012345-567890-ABCDEF`
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -245,8 +244,8 @@ class BillingAccountsResource {
   /// [filter] - Options for how to filter the returned billing accounts. This
   /// only supports filtering for
   /// [subaccounts](https://cloud.google.com/billing/docs/concepts) under a
-  /// single provided parent billing account. (e.g.
-  /// "master_billing_account=billingAccounts/012345-678901-ABCDEF"). Boolean
+  /// single provided parent billing account. (for example,
+  /// `master_billing_account=billingAccounts/012345-678901-ABCDEF`). Boolean
   /// algebra and other fields are not currently supported.
   ///
   /// [pageSize] - Requested page size. The maximum page size is 100; this is
@@ -258,9 +257,9 @@ class BillingAccountsResource {
   /// returned.
   ///
   /// [parent] - Optional. The parent resource to list billing accounts from.
-  /// Format: - organizations/{organization_id} eg organizations/12345678 -
-  /// billingAccounts/{billing_account_id} eg
-  /// `billingAccounts/012345-567890-ABCDEF`
+  /// Format: - `organizations/{organization_id}`, for example,
+  /// `organizations/12345678` - `billingAccounts/{billing_account_id}`, for
+  /// example, `billingAccounts/012345-567890-ABCDEF`
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -579,8 +578,7 @@ class BillingAccountsSubAccountsResource {
   /// Request parameters:
   ///
   /// [parent] - Optional. The parent to create a billing account from. Format:
-  /// - organizations/{organization_id} eg organizations/12345678 -
-  /// billingAccounts/{billing_account_id} eg
+  /// - `billingAccounts/{billing_account_id}`, for example,
   /// `billingAccounts/012345-567890-ABCDEF`
   /// Value must have pattern `^billingAccounts/\[^/\]+$`.
   ///
@@ -623,16 +621,16 @@ class BillingAccountsSubAccountsResource {
   /// Request parameters:
   ///
   /// [parent] - Optional. The parent resource to list billing accounts from.
-  /// Format: - organizations/{organization_id} eg organizations/12345678 -
-  /// billingAccounts/{billing_account_id} eg
-  /// `billingAccounts/012345-567890-ABCDEF`
+  /// Format: - `organizations/{organization_id}`, for example,
+  /// `organizations/12345678` - `billingAccounts/{billing_account_id}`, for
+  /// example, `billingAccounts/012345-567890-ABCDEF`
   /// Value must have pattern `^billingAccounts/\[^/\]+$`.
   ///
   /// [filter] - Options for how to filter the returned billing accounts. This
   /// only supports filtering for
   /// [subaccounts](https://cloud.google.com/billing/docs/concepts) under a
-  /// single provided parent billing account. (e.g.
-  /// "master_billing_account=billingAccounts/012345-678901-ABCDEF"). Boolean
+  /// single provided parent billing account. (for example,
+  /// `master_billing_account=billingAccounts/012345-678901-ABCDEF`). Boolean
   /// algebra and other fields are not currently supported.
   ///
   /// [pageSize] - Requested page size. The maximum page size is 100; this is
@@ -713,8 +711,7 @@ class OrganizationsBillingAccountsResource {
   /// Request parameters:
   ///
   /// [parent] - Optional. The parent to create a billing account from. Format:
-  /// - organizations/{organization_id} eg organizations/12345678 -
-  /// billingAccounts/{billing_account_id} eg
+  /// - `billingAccounts/{billing_account_id}`, for example,
   /// `billingAccounts/012345-567890-ABCDEF`
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
@@ -757,16 +754,16 @@ class OrganizationsBillingAccountsResource {
   /// Request parameters:
   ///
   /// [parent] - Optional. The parent resource to list billing accounts from.
-  /// Format: - organizations/{organization_id} eg organizations/12345678 -
-  /// billingAccounts/{billing_account_id} eg
-  /// `billingAccounts/012345-567890-ABCDEF`
+  /// Format: - `organizations/{organization_id}`, for example,
+  /// `organizations/12345678` - `billingAccounts/{billing_account_id}`, for
+  /// example, `billingAccounts/012345-567890-ABCDEF`
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [filter] - Options for how to filter the returned billing accounts. This
   /// only supports filtering for
   /// [subaccounts](https://cloud.google.com/billing/docs/concepts) under a
-  /// single provided parent billing account. (e.g.
-  /// "master_billing_account=billingAccounts/012345-678901-ABCDEF"). Boolean
+  /// single provided parent billing account. (for example,
+  /// `master_billing_account=billingAccounts/012345-678901-ABCDEF`). Boolean
   /// algebra and other fields are not currently supported.
   ///
   /// [pageSize] - Requested page size. The maximum page size is 100; this is
@@ -817,7 +814,7 @@ class OrganizationsBillingAccountsResource {
   /// Request parameters:
   ///
   /// [destinationParent] - Required. The resource name of the Organization to
-  /// reparent the billing account under. Must be of the form
+  /// move the billing account under. Must be of the form
   /// `organizations/{organization_id}`.
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
@@ -1247,7 +1244,7 @@ class BillingAccount {
   /// usage on associated projects.
   ///
   /// False if the billing account is closed, and therefore projects associated
-  /// with it will be unable to use paid services.
+  /// with it are unable to use paid services.
   ///
   /// Output only.
   core.bool? open;
@@ -1256,8 +1253,8 @@ class BillingAccount {
   ///
   /// Use the `MoveBillingAccount` method to update the account's parent
   /// resource if it is a organization. Format: -
-  /// organizations/{organization_id}, for example: organizations/12345678 -
-  /// billingAccounts/{billing_account_id}, for example:
+  /// `organizations/{organization_id}`, for example, `organizations/12345678` -
+  /// `billingAccounts/{billing_account_id}`, for example,
   /// `billingAccounts/012345-567890-ABCDEF`
   ///
   /// Output only.
@@ -1328,14 +1325,31 @@ class Binding {
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
   /// (primary) that represents all the users of that domain. For example,
-  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a user that has
-  /// been recently deleted. For example,
-  /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
-  /// this value reverts to `user:{emailid}` and the recovered user retains the
-  /// role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a service account
-  /// that has been recently deleted. For example,
+  /// `google.com` or `example.com`. *
+  /// `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workforce identity pool. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`:
+  /// All workforce identities in a group. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All workforce identities with a specific attribute value. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}
+  /// / * `: All identities in a workforce identity pool. *
+  /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workload identity pool. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`:
+  /// A workload identity pool group. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All identities in a workload identity pool with a certain attribute. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}
+  /// / * `: All identities in a workload identity pool. *
+  /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
+  /// identifier) representing a user that has been recently deleted. For
+  /// example, `alice@example.com?uid=123456789012345678901`. If the user is
+  /// recovered, this value reverts to `user:{emailid}` and the recovered user
+  /// retains the role in the binding. *
+  /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus
+  /// unique identifier) representing a service account that has been recently
+  /// deleted. For example,
   /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If
   /// the service account is undeleted, this value reverts to
   /// `serviceAccount:{emailid}` and the undeleted service account retains the
@@ -1344,12 +1358,19 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding.
+  /// the role in the binding. *
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// Deleted single identity in a workforce identity pool. For example,
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
   ///
-  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an
+  /// overview of the IAM roles and permissions, see the
+  /// [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For
+  /// a list of the available pre-defined roles, see
+  /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
   Binding({
@@ -1640,8 +1661,7 @@ typedef Money = $Money;
 
 /// Request message for `MoveBillingAccount` RPC.
 class MoveBillingAccountRequest {
-  /// The resource name of the Organization to reparent the billing account
-  /// under.
+  /// The resource name of the Organization to move the billing account under.
   ///
   /// Must be of the form `organizations/{organization_id}`.
   ///

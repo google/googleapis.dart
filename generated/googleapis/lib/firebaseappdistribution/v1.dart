@@ -1351,84 +1351,7 @@ class ProjectsTestersResource {
 }
 
 /// Information to read/write to blobstore2.
-class GdataBlobstore2Info {
-  /// The blob generation id.
-  core.String? blobGeneration;
-
-  /// The blob id, e.g., /blobstore/prod/playground/scotty
-  core.String? blobId;
-
-  /// Read handle passed from Bigstore -\> Scotty for a GCS download.
-  ///
-  /// This is a signed, serialized blobstore2.ReadHandle proto which must never
-  /// be set outside of Bigstore, and is not applicable to non-GCS media
-  /// downloads.
-  core.String? downloadReadHandle;
-  core.List<core.int> get downloadReadHandleAsBytes =>
-      convert.base64.decode(downloadReadHandle!);
-
-  set downloadReadHandleAsBytes(core.List<core.int> bytes_) {
-    downloadReadHandle =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
-  }
-
-  /// The blob read token.
-  ///
-  /// Needed to read blobs that have not been replicated. Might not be available
-  /// until the final call.
-  core.String? readToken;
-
-  /// Metadata passed from Blobstore -\> Scotty for a new GCS upload.
-  ///
-  /// This is a signed, serialized blobstore2.BlobMetadataContainer proto which
-  /// must never be consumed outside of Bigstore, and is not applicable to
-  /// non-GCS media uploads.
-  core.String? uploadMetadataContainer;
-  core.List<core.int> get uploadMetadataContainerAsBytes =>
-      convert.base64.decode(uploadMetadataContainer!);
-
-  set uploadMetadataContainerAsBytes(core.List<core.int> bytes_) {
-    uploadMetadataContainer =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
-  }
-
-  GdataBlobstore2Info({
-    this.blobGeneration,
-    this.blobId,
-    this.downloadReadHandle,
-    this.readToken,
-    this.uploadMetadataContainer,
-  });
-
-  GdataBlobstore2Info.fromJson(core.Map json_)
-      : this(
-          blobGeneration: json_.containsKey('blobGeneration')
-              ? json_['blobGeneration'] as core.String
-              : null,
-          blobId: json_.containsKey('blobId')
-              ? json_['blobId'] as core.String
-              : null,
-          downloadReadHandle: json_.containsKey('downloadReadHandle')
-              ? json_['downloadReadHandle'] as core.String
-              : null,
-          readToken: json_.containsKey('readToken')
-              ? json_['readToken'] as core.String
-              : null,
-          uploadMetadataContainer: json_.containsKey('uploadMetadataContainer')
-              ? json_['uploadMetadataContainer'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (blobGeneration != null) 'blobGeneration': blobGeneration!,
-        if (blobId != null) 'blobId': blobId!,
-        if (downloadReadHandle != null)
-          'downloadReadHandle': downloadReadHandle!,
-        if (readToken != null) 'readToken': readToken!,
-        if (uploadMetadataContainer != null)
-          'uploadMetadataContainer': uploadMetadataContainer!,
-      };
-}
+typedef GdataBlobstore2Info = $Blobstore2Info;
 
 /// A sequence of media data references representing composite data.
 ///
@@ -1595,64 +1518,7 @@ class GdataCompositeMedia {
 /// Scotty's best_guess, but this extended information provides the backend with
 /// more information so that it can make a better decision if needed. This is
 /// only used on media upload requests from Scotty.
-class GdataContentTypeInfo {
-  /// Scotty's best guess of what the content type of the file is.
-  core.String? bestGuess;
-
-  /// The content type of the file derived by looking at specific bytes (i.e.
-  /// "magic bytes") of the actual file.
-  core.String? fromBytes;
-
-  /// The content type of the file derived from the file extension of the
-  /// original file name used by the client.
-  core.String? fromFileName;
-
-  /// The content type of the file as specified in the request headers,
-  /// multipart headers, or RUPIO start request.
-  core.String? fromHeader;
-
-  /// The content type of the file derived from the file extension of the URL
-  /// path.
-  ///
-  /// The URL path is assumed to represent a file name (which is typically only
-  /// true for agents that are providing a REST API).
-  core.String? fromUrlPath;
-
-  GdataContentTypeInfo({
-    this.bestGuess,
-    this.fromBytes,
-    this.fromFileName,
-    this.fromHeader,
-    this.fromUrlPath,
-  });
-
-  GdataContentTypeInfo.fromJson(core.Map json_)
-      : this(
-          bestGuess: json_.containsKey('bestGuess')
-              ? json_['bestGuess'] as core.String
-              : null,
-          fromBytes: json_.containsKey('fromBytes')
-              ? json_['fromBytes'] as core.String
-              : null,
-          fromFileName: json_.containsKey('fromFileName')
-              ? json_['fromFileName'] as core.String
-              : null,
-          fromHeader: json_.containsKey('fromHeader')
-              ? json_['fromHeader'] as core.String
-              : null,
-          fromUrlPath: json_.containsKey('fromUrlPath')
-              ? json_['fromUrlPath'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (bestGuess != null) 'bestGuess': bestGuess!,
-        if (fromBytes != null) 'fromBytes': fromBytes!,
-        if (fromFileName != null) 'fromFileName': fromFileName!,
-        if (fromHeader != null) 'fromHeader': fromHeader!,
-        if (fromUrlPath != null) 'fromUrlPath': fromUrlPath!,
-      };
-}
+typedef GdataContentTypeInfo = $ContentTypeInfo;
 
 /// Backend response for a Diff get checksums response.
 ///
@@ -1841,68 +1707,10 @@ class GdataDiffUploadResponse {
 ///
 /// For details on the Scotty Diff protocol, visit
 /// http://go/scotty-diff-protocol.
-class GdataDiffVersionResponse {
-  /// The total size of the server object.
-  core.String? objectSizeBytes;
-
-  /// The version of the object stored at the server.
-  core.String? objectVersion;
-
-  GdataDiffVersionResponse({
-    this.objectSizeBytes,
-    this.objectVersion,
-  });
-
-  GdataDiffVersionResponse.fromJson(core.Map json_)
-      : this(
-          objectSizeBytes: json_.containsKey('objectSizeBytes')
-              ? json_['objectSizeBytes'] as core.String
-              : null,
-          objectVersion: json_.containsKey('objectVersion')
-              ? json_['objectVersion'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (objectSizeBytes != null) 'objectSizeBytes': objectSizeBytes!,
-        if (objectVersion != null) 'objectVersion': objectVersion!,
-      };
-}
+typedef GdataDiffVersionResponse = $DiffVersionResponse;
 
 /// Parameters specific to media downloads.
-class GdataDownloadParameters {
-  /// A boolean to be returned in the response to Scotty.
-  ///
-  /// Allows/disallows gzip encoding of the payload content when the server
-  /// thinks it's advantageous (hence, does not guarantee compression) which
-  /// allows Scotty to GZip the response to the client.
-  core.bool? allowGzipCompression;
-
-  /// Determining whether or not Apiary should skip the inclusion of any
-  /// Content-Range header on its response to Scotty.
-  core.bool? ignoreRange;
-
-  GdataDownloadParameters({
-    this.allowGzipCompression,
-    this.ignoreRange,
-  });
-
-  GdataDownloadParameters.fromJson(core.Map json_)
-      : this(
-          allowGzipCompression: json_.containsKey('allowGzipCompression')
-              ? json_['allowGzipCompression'] as core.bool
-              : null,
-          ignoreRange: json_.containsKey('ignoreRange')
-              ? json_['ignoreRange'] as core.bool
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (allowGzipCompression != null)
-          'allowGzipCompression': allowGzipCompression!,
-        if (ignoreRange != null) 'ignoreRange': ignoreRange!,
-      };
-}
+typedef GdataDownloadParameters = $DownloadParameters;
 
 /// A reference to data stored on the filesystem, on GFS or in blobstore.
 class GdataMedia {
@@ -2309,46 +2117,7 @@ class GdataMedia {
 /// This is a copy of the tech.blob.ObjectId proto, which could not be used
 /// directly here due to transitive closure issues with JavaScript support; see
 /// http://b/8801763.
-class GdataObjectId {
-  /// The name of the bucket to which this object belongs.
-  core.String? bucketName;
-
-  /// Generation of the object.
-  ///
-  /// Generations are monotonically increasing across writes, allowing them to
-  /// be be compared to determine which generation is newer. If this is omitted
-  /// in a request, then you are requesting the live object. See
-  /// http://go/bigstore-versions
-  core.String? generation;
-
-  /// The name of the object.
-  core.String? objectName;
-
-  GdataObjectId({
-    this.bucketName,
-    this.generation,
-    this.objectName,
-  });
-
-  GdataObjectId.fromJson(core.Map json_)
-      : this(
-          bucketName: json_.containsKey('bucketName')
-              ? json_['bucketName'] as core.String
-              : null,
-          generation: json_.containsKey('generation')
-              ? json_['generation'] as core.String
-              : null,
-          objectName: json_.containsKey('objectName')
-              ? json_['objectName'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (bucketName != null) 'bucketName': bucketName!,
-        if (generation != null) 'generation': generation!,
-        if (objectName != null) 'objectName': objectName!,
-      };
-}
+typedef GdataObjectId = $ObjectId;
 
 /// Android App Bundle (AAB) information for a Firebase app.
 class GoogleFirebaseAppdistroV1AabInfo {

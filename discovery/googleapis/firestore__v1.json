@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20231103",
+    "revision": "20240215",
     "rootUrl": "https://firestore.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Firestore API",
@@ -534,7 +534,7 @@
                                             ]
                                         },
                                         "list": {
-                                            "description": "Lists the field configuration and metadata for this database. Currently, FirestoreAdmin.ListFields only supports listing fields that have been explicitly overridden. To issue this query, call FirestoreAdmin.ListFields with the filter set to `indexConfig.usesAncestorConfig:false or `ttlConfig:*`.",
+                                            "description": "Lists the field configuration and metadata for this database. Currently, FirestoreAdmin.ListFields only supports listing fields that have been explicitly overridden. To issue this query, call FirestoreAdmin.ListFields with the filter set to `indexConfig.usesAncestorConfig:false` or `ttlConfig:*`.",
                                             "flatPath": "v1/projects/{projectsId}/databases/{databasesId}/collectionGroups/{collectionGroupsId}/fields",
                                             "httpMethod": "GET",
                                             "id": "firestore.projects.databases.collectionGroups.fields.list",
@@ -1992,6 +1992,7 @@
                     "additionalProperties": {
                         "$ref": "Value"
                     },
+                    "description": "The document's fields. The map keys represent field names. Field names matching the regular expression `__.*__` are reserved. Reserved field names are forbidden except in certain documented contexts. The field names, represented as UTF-8, must not exceed 1,500 bytes and cannot be empty. Field paths may be used in other contexts to refer to structured fields defined here. For `map_value`, the field path is represented by a dot-delimited (`.`) string of segments. Each segment is either a simple field name (defined below) or a quoted field name. For example, the structured field `\"foo\" : { map_value: { \"x&y\" : { string_value: \"hello\" }}}` would be represented by the field path `` foo.`x&y` ``. A simple field name contains only characters `a` to `z`, `A` to `Z`, `0` to `9`, or `_`, and must not start with `0` to `9`. For example, `foo_bar_17`. A quoted field name starts and ends with `` ` `` and may contain any character. Some characters, including `` ` ``, must be escaped using a `\\`. For example, `` `x&y` `` represents `x&y` and `` `bak\\`tik` `` represents `` bak`tik ``.",
                     "type": "object"
                 },
                 "name": {
@@ -2365,6 +2366,25 @@
             },
             "type": "object"
         },
+        "GoogleFirestoreAdminV1CmekConfig": {
+            "description": "The CMEK (Customer Managed Encryption Key) configuration for a Firestore database. If not present, the database is secured by the default Google encryption key.",
+            "id": "GoogleFirestoreAdminV1CmekConfig",
+            "properties": {
+                "activeKeyVersion": {
+                    "description": "Output only. Currently in-use [KMS key versions](https://cloud.google.com/kms/docs/resource-hierarchy#key_versions). During [key rotation](https://cloud.google.com/kms/docs/key-rotation), there can be multiple in-use key versions. The expected format is `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{key_version}`.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "readOnly": true,
+                    "type": "array"
+                },
+                "kmsKeyName": {
+                    "description": "Required. Only keys in the same location as this database are allowed to be used for encryption. For Firestore's nam5 multi-region, this corresponds to Cloud KMS multi-region us. For Firestore's eur3 multi-region, this corresponds to Cloud KMS multi-region europe. See https://cloud.google.com/kms/docs/locations. The expected format is `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "GoogleFirestoreAdminV1CreateDatabaseMetadata": {
             "description": "Metadata related to the create database operation.",
             "id": "GoogleFirestoreAdminV1CreateDatabaseMetadata",
@@ -2394,6 +2414,10 @@
                         "App Engine has no effect on the ability of this database to serve requests. This is the default setting for databases created with the Firestore API."
                     ],
                     "type": "string"
+                },
+                "cmekConfig": {
+                    "$ref": "GoogleFirestoreAdminV1CmekConfig",
+                    "description": "Optional. Presence indicates CMEK is enabled for this database."
                 },
                 "concurrencyMode": {
                     "description": "The concurrency control mode to use for this database.",
@@ -2497,6 +2521,22 @@
                     "description": "Output only. The period during which past versions of data are retained in the database. Any read or query can specify a `read_time` within this window, and will read the state of the database at that time. If the PITR feature is enabled, the retention period is 7 days. Otherwise, the retention period is 1 hour.",
                     "format": "google-duration",
                     "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleFirestoreAdminV1DatabaseSnapshot": {
+            "description": "A consistent snapshot of a database at a specific point in time.",
+            "id": "GoogleFirestoreAdminV1DatabaseSnapshot",
+            "properties": {
+                "database": {
+                    "description": "Required. A name of the form `projects/{project_id}/databases/{database_id}`",
+                    "type": "string"
+                },
+                "snapshotTime": {
+                    "description": "Required. The timestamp at which the database snapshot is taken. The requested timestamp must be a whole minute within the PITR window.",
+                    "format": "google-datetime",
                     "type": "string"
                 }
             },
@@ -3188,6 +3228,10 @@
                 "databaseId": {
                     "description": "Required. The ID to use for the database, which will become the final component of the database's resource name. This database id must not be associated with an existing database. This value should be 4-63 characters. Valid characters are /a-z-/ with first character a letter and the last a letter or a number. Must not be UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/. \"(default)\" database id is also valid.",
                     "type": "string"
+                },
+                "databaseSnapshot": {
+                    "$ref": "GoogleFirestoreAdminV1DatabaseSnapshot",
+                    "description": "Database snapshot to restore from. The source database must exist and have enabled PITR. The restored database will be created in the same location as the source database."
                 }
             },
             "type": "object"
@@ -3871,7 +3915,7 @@
             "type": "object"
         },
         "StructuredQuery": {
-            "description": "A Firestore query.",
+            "description": "A Firestore query. The query stages are executed in the following order: 1. from 2. where 3. select 4. order_by + start_at + end_at 5. offset 6. limit",
             "id": "StructuredQuery",
             "properties": {
                 "endAt": {

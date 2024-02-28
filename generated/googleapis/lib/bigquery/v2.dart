@@ -115,9 +115,11 @@ class DatasetsResource {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - Project ID of the dataset being deleted
+  /// [projectId] - Required. Project ID of the dataset being deleted
+  /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [datasetId] - Dataset ID of dataset being deleted
+  /// [datasetId] - Required. Dataset ID of dataset being deleted
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [deleteContents] - If True, delete all the tables in the dataset. If False
   /// and the dataset contains tables, the request will fail. Default is False
@@ -142,9 +144,9 @@ class DatasetsResource {
     };
 
     final url_ = 'projects/' +
-        commons.escapeVariable('$projectId') +
+        core.Uri.encodeFull('$projectId') +
         '/datasets/' +
-        commons.escapeVariable('$datasetId');
+        core.Uri.encodeFull('$datasetId');
 
     await _requester.request(
       url_,
@@ -158,13 +160,23 @@ class DatasetsResource {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - Project ID of the requested dataset
+  /// [projectId] - Required. Project ID of the requested dataset
+  /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [datasetId] - Dataset ID of the requested dataset
+  /// [datasetId] - Required. Dataset ID of the requested dataset
+  /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [datasetView] - Specifies the view that determines which dataset
+  /// [datasetView] - Optional. Specifies the view that determines which dataset
   /// information is returned. By default, metadata and ACL information are
-  /// returned. Allowed values: METADATA, ACL, FULL.
+  /// returned.
+  /// Possible string values are:
+  /// - "DATASET_VIEW_UNSPECIFIED" : The default value. Default to the FULL
+  /// view.
+  /// - "METADATA" : Includes metadata information for the dataset, such as
+  /// location, etag, lastModifiedTime, etc.
+  /// - "ACL" : Includes ACL information for the dataset, which defines dataset
+  /// access for one or more entities.
+  /// - "FULL" : Includes both dataset metadata and ACL information.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -188,9 +200,9 @@ class DatasetsResource {
     };
 
     final url_ = 'projects/' +
-        commons.escapeVariable('$projectId') +
+        core.Uri.encodeFull('$projectId') +
         '/datasets/' +
-        commons.escapeVariable('$datasetId');
+        core.Uri.encodeFull('$datasetId');
 
     final response_ = await _requester.request(
       url_,
@@ -206,7 +218,8 @@ class DatasetsResource {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - Project ID of the new dataset
+  /// [projectId] - Required. Project ID of the new dataset
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -228,8 +241,7 @@ class DatasetsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ =
-        'projects/' + commons.escapeVariable('$projectId') + '/datasets';
+    final url_ = 'projects/' + core.Uri.encodeFull('$projectId') + '/datasets';
 
     final response_ = await _requester.request(
       url_,
@@ -240,22 +252,27 @@ class DatasetsResource {
     return Dataset.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists all datasets in the specified project to which you have been granted
-  /// the READER dataset role.
+  /// Lists all datasets in the specified project to which the user has been
+  /// granted the READER dataset role.
   ///
   /// Request parameters:
   ///
-  /// [projectId] - Project ID of the datasets to be listed
+  /// [projectId] - Required. Project ID of the datasets to be listed
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [all] - Whether to list all datasets, including hidden ones
   ///
   /// [filter] - An expression for filtering the results of the request by
-  /// label. The syntax is "labels.\<name\>\[:\<value\>\]". Multiple filters can
-  /// be ANDed together by connecting with a space. Example:
-  /// "labels.department:receiving labels.active". See Filtering datasets using
-  /// labels for details.
+  /// label. The syntax is \"labels.\<name\>\[:\<value\>\]\". Multiple filters
+  /// can be ANDed together by connecting with a space. Example:
+  /// \"labels.department:receiving labels.active\". See \[Filtering datasets
+  /// using
+  /// labels\](/bigquery/docs/labeling-datasets#filtering_datasets_using_labels)
+  /// for details.
   ///
-  /// [maxResults] - The maximum number of results to return
+  /// [maxResults] - The maximum number of results to return in a single
+  /// response page. Leverage the page tokens to iterate through the entire
+  /// collection.
   ///
   /// [pageToken] - Page token, returned by a previous call, to request the next
   /// page of results
@@ -286,8 +303,7 @@ class DatasetsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ =
-        'projects/' + commons.escapeVariable('$projectId') + '/datasets';
+    final url_ = 'projects/' + core.Uri.encodeFull('$projectId') + '/datasets';
 
     final response_ = await _requester.request(
       url_,
@@ -302,15 +318,17 @@ class DatasetsResource {
   ///
   /// The update method replaces the entire dataset resource, whereas the patch
   /// method only replaces fields that are provided in the submitted dataset
-  /// resource. This method supports patch semantics.
+  /// resource. This method supports RFC5789 patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [projectId] - Project ID of the dataset being updated
+  /// [projectId] - Required. Project ID of the dataset being updated
+  /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [datasetId] - Dataset ID of the dataset being updated
+  /// [datasetId] - Required. Dataset ID of the dataset being updated
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -334,13 +352,64 @@ class DatasetsResource {
     };
 
     final url_ = 'projects/' +
-        commons.escapeVariable('$projectId') +
+        core.Uri.encodeFull('$projectId') +
         '/datasets/' +
-        commons.escapeVariable('$datasetId');
+        core.Uri.encodeFull('$datasetId');
 
     final response_ = await _requester.request(
       url_,
       'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Dataset.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Undeletes a dataset which is within time travel window based on datasetId.
+  ///
+  /// If a time is specified, the dataset version deleted at that time is
+  /// undeleted, else the last live version is undeleted.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - Required. Project ID of the dataset to be undeleted
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [datasetId] - Required. Dataset ID of dataset being deleted
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Dataset].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Dataset> undelete(
+    UndeleteDatasetRequest request,
+    core.String projectId,
+    core.String datasetId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'projects/' +
+        core.Uri.encodeFull('$projectId') +
+        '/datasets/' +
+        core.Uri.encodeFull('$datasetId') +
+        ':undelete';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
       body: body_,
       queryParams: queryParams_,
     );
@@ -357,9 +426,11 @@ class DatasetsResource {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - Project ID of the dataset being updated
+  /// [projectId] - Required. Project ID of the dataset being updated
+  /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [datasetId] - Dataset ID of the dataset being updated
+  /// [datasetId] - Required. Dataset ID of the dataset being updated
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -383,9 +454,9 @@ class DatasetsResource {
     };
 
     final url_ = 'projects/' +
-        commons.escapeVariable('$projectId') +
+        core.Uri.encodeFull('$projectId') +
         '/datasets/' +
-        commons.escapeVariable('$datasetId');
+        core.Uri.encodeFull('$datasetId');
 
     final response_ = await _requester.request(
       url_,
@@ -410,12 +481,17 @@ class JobsResource {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - \[Required\] Project ID of the job to cancel
+  /// [projectId] - Required. Project ID of the job to cancel
+  /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [jobId] - \[Required\] Job ID of the job to cancel
+  /// [jobId] - Required. Job ID of the job to cancel
+  /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [location] - The geographic location of the job. Required except for US
-  /// and EU. See details at
+  /// [location] - The geographic location of the job. You must specify the
+  /// location to run the job for the following scenarios: - If the location to
+  /// run a job is not in the `us` or the `eu` multi-regional location - If the
+  /// job's location is in a single region (for example, `us-central1`) For more
+  /// information, see
   /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -440,9 +516,9 @@ class JobsResource {
     };
 
     final url_ = 'projects/' +
-        commons.escapeVariable('$projectId') +
+        core.Uri.encodeFull('$projectId') +
         '/jobs/' +
-        commons.escapeVariable('$jobId') +
+        core.Uri.encodeFull('$jobId') +
         '/cancel';
 
     final response_ = await _requester.request(
@@ -514,12 +590,17 @@ class JobsResource {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - \[Required\] Project ID of the requested job
+  /// [projectId] - Required. Project ID of the requested job.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [jobId] - \[Required\] Job ID of the requested job
+  /// [jobId] - Required. Job ID of the requested job.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [location] - The geographic location of the job. Required except for US
-  /// and EU. See details at
+  /// [location] - The geographic location of the job. You must specify the
+  /// location to run the job for the following scenarios: - If the location to
+  /// run a job is not in the `us` or the `eu` multi-regional location - If the
+  /// job's location is in a single region (for example, `us-central1`) For more
+  /// information, see
   /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -544,9 +625,9 @@ class JobsResource {
     };
 
     final url_ = 'projects/' +
-        commons.escapeVariable('$projectId') +
+        core.Uri.encodeFull('$projectId') +
         '/jobs/' +
-        commons.escapeVariable('$jobId');
+        core.Uri.encodeFull('$jobId');
 
     final response_ = await _requester.request(
       url_,
@@ -556,28 +637,44 @@ class JobsResource {
     return Job.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Retrieves the results of a query job.
+  /// RPC to get the results of a query job.
   ///
   /// Request parameters:
   ///
-  /// [projectId] - \[Required\] Project ID of the query job
+  /// [projectId] - Required. Project ID of the query job.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [jobId] - \[Required\] Job ID of the query job
+  /// [jobId] - Required. Job ID of the query job.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [location] - The geographic location where the job should run. Required
-  /// except for US and EU. See details at
+  /// [formatOptions_useInt64Timestamp] - Optional. Output timestamp as usec
+  /// int64. Default is false.
+  ///
+  /// [location] - The geographic location of the job. You must specify the
+  /// location to run the job for the following scenarios: - If the location to
+  /// run a job is not in the `us` or the `eu` multi-regional location - If the
+  /// job's location is in a single region (for example, `us-central1`) For more
+  /// information, see
   /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.
   ///
-  /// [maxResults] - Maximum number of results to read
+  /// [maxResults] - Maximum number of results to read.
   ///
   /// [pageToken] - Page token, returned by a previous call, to request the next
-  /// page of results
+  /// page of results.
   ///
-  /// [startIndex] - Zero-based index of the starting row
+  /// [startIndex] - Zero-based index of the starting row.
   ///
-  /// [timeoutMs] - How long to wait for the query to complete, in milliseconds,
-  /// before returning. Default is 10 seconds. If the timeout passes before the
-  /// job completes, the 'jobComplete' field in the response will be false
+  /// [timeoutMs] - Optional: Specifies the maximum amount of time, in
+  /// milliseconds, that the client is willing to wait for the query to
+  /// complete. By default, this limit is 10 seconds (10,000 milliseconds). If
+  /// the query is complete, the jobComplete field in the response is true. If
+  /// the query has not yet completed, jobComplete is false. You can request a
+  /// longer timeout period in the timeoutMs field. However, the call is not
+  /// guaranteed to wait for the specified timeout; it typically returns after
+  /// around 200 seconds (200,000 milliseconds), even if the query is not
+  /// complete. If jobComplete is false, you can continue to wait for the query
+  /// to complete by calling the getQueryResults method until the jobComplete
+  /// field in the getQueryResults response is true.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -592,6 +689,7 @@ class JobsResource {
   async.Future<GetQueryResultsResponse> getQueryResults(
     core.String projectId,
     core.String jobId, {
+    core.bool? formatOptions_useInt64Timestamp,
     core.String? location,
     core.int? maxResults,
     core.String? pageToken,
@@ -600,6 +698,10 @@ class JobsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (formatOptions_useInt64Timestamp != null)
+        'formatOptions.useInt64Timestamp': [
+          '${formatOptions_useInt64Timestamp}'
+        ],
       if (location != null) 'location': [location],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -609,9 +711,9 @@ class JobsResource {
     };
 
     final url_ = 'projects/' +
-        commons.escapeVariable('$projectId') +
+        core.Uri.encodeFull('$projectId') +
         '/queries/' +
-        commons.escapeVariable('$jobId');
+        core.Uri.encodeFull('$jobId');
 
     final response_ = await _requester.request(
       url_,
@@ -624,13 +726,19 @@ class JobsResource {
 
   /// Starts a new asynchronous job.
   ///
-  /// Requires the Can View project role.
+  /// This API has two different kinds of endpoint URIs, as this method supports
+  /// a variety of use cases. * The *Metadata* URI is used for most
+  /// interactions, as it accepts the job configuration directly. * The *Upload*
+  /// URI is ONLY for the case when you're sending both a load job configuration
+  /// and a data stream together. In this case, the Upload URI accepts the job
+  /// configuration and the data as two distinct multipart MIME parts.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [projectId] - Project ID of the project that will be billed for the job
+  /// [projectId] - Project ID of project that will be billed for the job.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -662,14 +770,14 @@ class JobsResource {
 
     core.String url_;
     if (uploadMedia == null) {
-      url_ = 'projects/' + commons.escapeVariable('$projectId') + '/jobs';
+      url_ = 'projects/' + core.Uri.encodeFull('$projectId') + '/jobs';
     } else if (uploadOptions is commons.ResumableUploadOptions) {
       url_ = '/resumable/upload/bigquery/v2/projects/' +
-          commons.escapeVariable('$projectId') +
+          core.Uri.encodeFull('$projectId') +
           '/jobs';
     } else {
       url_ = '/upload/bigquery/v2/projects/' +
-          commons.escapeVariable('$projectId') +
+          core.Uri.encodeFull('$projectId') +
           '/jobs';
     }
 
@@ -693,26 +801,29 @@ class JobsResource {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - Project ID of the jobs to list
+  /// [projectId] - Project ID of the jobs to list.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [allUsers] - Whether to display jobs owned by all users in the project.
-  /// Default false
+  /// Default False.
   ///
   /// [maxCreationTime] - Max value for job creation time, in milliseconds since
   /// the POSIX epoch. If set, only jobs created before or at this timestamp are
-  /// returned
+  /// returned.
   ///
-  /// [maxResults] - Maximum number of results to return
+  /// [maxResults] - The maximum number of results to return in a single
+  /// response page. Leverage the page tokens to iterate through the entire
+  /// collection.
   ///
   /// [minCreationTime] - Min value for job creation time, in milliseconds since
   /// the POSIX epoch. If set, only jobs created after or at this timestamp are
-  /// returned
+  /// returned.
   ///
   /// [pageToken] - Page token, returned by a previous call, to request the next
-  /// page of results
+  /// page of results.
   ///
-  /// [parentJobId] - If set, retrieves only jobs whose parent is this job.
-  /// Otherwise, retrieves only jobs which have no parent
+  /// [parentJobId] - If set, show only child jobs of the specified parent.
+  /// Otherwise, show all top-level jobs.
   ///
   /// [projection] - Restrict information returned to a set of selected fields
   /// Possible string values are:
@@ -755,7 +866,7 @@ class JobsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'projects/' + commons.escapeVariable('$projectId') + '/jobs';
+    final url_ = 'projects/' + core.Uri.encodeFull('$projectId') + '/jobs';
 
     final response_ = await _requester.request(
       url_,
@@ -772,7 +883,8 @@ class JobsResource {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - Project ID of the project billed for the query
+  /// [projectId] - Required. Project ID of the query request.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -794,8 +906,7 @@ class JobsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ =
-        'projects/' + commons.escapeVariable('$projectId') + '/queries';
+    final url_ = 'projects/' + core.Uri.encodeFull('$projectId') + '/queries';
 
     final response_ = await _requester.request(
       url_,
@@ -1025,12 +1136,13 @@ class ProjectsResource {
 
   ProjectsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Returns the email address of the service account for your project used for
-  /// interactions with Google Cloud KMS.
+  /// RPC to get the service account for a project used for interactions with
+  /// Google Cloud KMS
   ///
   /// Request parameters:
   ///
-  /// [projectId] - Project ID for which the service account is requested.
+  /// [projectId] - Required. ID of the project.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1051,7 +1163,7 @@ class ProjectsResource {
     };
 
     final url_ =
-        'projects/' + commons.escapeVariable('$projectId') + '/serviceAccount';
+        'projects/' + core.Uri.encodeFull('$projectId') + '/serviceAccount';
 
     final response_ = await _requester.request(
       url_,
@@ -1062,14 +1174,22 @@ class ProjectsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists all projects to which you have been granted any project role.
+  /// RPC to list projects to which the user has been granted any project role.
+  ///
+  /// Users of this method are encouraged to consider the
+  /// [Resource Manager](https://cloud.google.com/resource-manager/docs/) API,
+  /// which provides the underlying data for this method and has more
+  /// capabilities.
   ///
   /// Request parameters:
   ///
-  /// [maxResults] - Maximum number of results to return
+  /// [maxResults] - `maxResults` unset returns all results, up to 50 per page.
+  /// Additionally, the number of projects in a page may be fewer than
+  /// `maxResults` because projects are retrieved and then filtered to only
+  /// projects with the BigQuery API enabled.
   ///
   /// [pageToken] - Page token, returned by a previous call, to request the next
-  /// page of results
+  /// page of results. If not present, no further pages are present.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1555,17 +1675,18 @@ class TabledataResource {
   /// Streams data into BigQuery one record at a time without needing to run a
   /// load job.
   ///
-  /// Requires the WRITER dataset role.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [projectId] - Project ID of the destination table.
+  /// [projectId] - Required. Project ID of the destination.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [datasetId] - Dataset ID of the destination table.
+  /// [datasetId] - Required. Dataset ID of the destination.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [tableId] - Table ID of the destination table.
+  /// [tableId] - Required. Table ID of the destination.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1590,11 +1711,11 @@ class TabledataResource {
     };
 
     final url_ = 'projects/' +
-        commons.escapeVariable('$projectId') +
+        core.Uri.encodeFull('$projectId') +
         '/datasets/' +
-        commons.escapeVariable('$datasetId') +
+        core.Uri.encodeFull('$datasetId') +
         '/tables/' +
-        commons.escapeVariable('$tableId') +
+        core.Uri.encodeFull('$tableId') +
         '/insertAll';
 
     final response_ = await _requester.request(
@@ -1607,27 +1728,32 @@ class TabledataResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Retrieves table data from a specified set of rows.
-  ///
-  /// Requires the READER dataset role.
+  /// List the content of a table in rows.
   ///
   /// Request parameters:
   ///
-  /// [projectId] - Project ID of the table to read
+  /// [projectId] - Required. Project id of the table to list.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [datasetId] - Dataset ID of the table to read
+  /// [datasetId] - Required. Dataset id of the table to list.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [tableId] - Table ID of the table to read
+  /// [tableId] - Required. Table id of the table to list.
+  /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [maxResults] - Maximum number of results to return
+  /// [formatOptions_useInt64Timestamp] - Optional. Output timestamp as usec
+  /// int64. Default is false.
   ///
-  /// [pageToken] - Page token, returned by a previous call, identifying the
-  /// result set
+  /// [maxResults] - Row limit of the table.
   ///
-  /// [selectedFields] - List of fields to return (comma-separated). If
-  /// unspecified, all fields are returned
+  /// [pageToken] - To retrieve the next page of table data, set this field to
+  /// the string provided in the pageToken field of the response body from your
+  /// previous call to tabledata.list.
   ///
-  /// [startIndex] - Zero-based index of the starting row to read
+  /// [selectedFields] - Subset of fields to return, supports select into sub
+  /// fields. Example: selected_fields = "a,e.d.f";
+  ///
+  /// [startIndex] - Start row index of the table.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1643,6 +1769,7 @@ class TabledataResource {
     core.String projectId,
     core.String datasetId,
     core.String tableId, {
+    core.bool? formatOptions_useInt64Timestamp,
     core.int? maxResults,
     core.String? pageToken,
     core.String? selectedFields,
@@ -1650,6 +1777,10 @@ class TabledataResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (formatOptions_useInt64Timestamp != null)
+        'formatOptions.useInt64Timestamp': [
+          '${formatOptions_useInt64Timestamp}'
+        ],
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (selectedFields != null) 'selectedFields': [selectedFields],
@@ -1658,11 +1789,11 @@ class TabledataResource {
     };
 
     final url_ = 'projects/' +
-        commons.escapeVariable('$projectId') +
+        core.Uri.encodeFull('$projectId') +
         '/datasets/' +
-        commons.escapeVariable('$datasetId') +
+        core.Uri.encodeFull('$datasetId') +
         '/tables/' +
-        commons.escapeVariable('$tableId') +
+        core.Uri.encodeFull('$tableId') +
         '/data';
 
     final response_ = await _requester.request(
@@ -1686,11 +1817,14 @@ class TablesResource {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - Project ID of the table to delete
+  /// [projectId] - Required. Project ID of the table to delete
+  /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [datasetId] - Dataset ID of the table to delete
+  /// [datasetId] - Required. Dataset ID of the table to delete
+  /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [tableId] - Table ID of the table to delete
+  /// [tableId] - Required. Table ID of the table to delete
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1711,11 +1845,11 @@ class TablesResource {
     };
 
     final url_ = 'projects/' +
-        commons.escapeVariable('$projectId') +
+        core.Uri.encodeFull('$projectId') +
         '/datasets/' +
-        commons.escapeVariable('$datasetId') +
+        core.Uri.encodeFull('$datasetId') +
         '/tables/' +
-        commons.escapeVariable('$tableId');
+        core.Uri.encodeFull('$tableId');
 
     await _requester.request(
       url_,
@@ -1732,31 +1866,38 @@ class TablesResource {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - Project ID of the requested table
+  /// [projectId] - Required. Project ID of the requested table
+  /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [datasetId] - Dataset ID of the requested table
+  /// [datasetId] - Required. Dataset ID of the requested table
+  /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [tableId] - Table ID of the requested table
+  /// [tableId] - Required. Table ID of the requested table
+  /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [selectedFields] - List of fields to return (comma-separated). If
-  /// unspecified, all fields are returned
+  /// [selectedFields] - List of table schema fields to return
+  /// (comma-separated). If unspecified, all fields are returned. A fieldMask
+  /// cannot be used here because the fields will automatically be converted
+  /// from camelCase to snake_case and the conversion will fail if there are
+  /// underscores. Since these are fields in BigQuery table schemas, underscores
+  /// are allowed.
   ///
-  /// [view] - Specifies the view that determines which table information is
-  /// returned. By default, basic table information and storage statistics
-  /// (STORAGE_STATS) are returned.
+  /// [view] - Optional. Specifies the view that determines which table
+  /// information is returned. By default, basic table information and storage
+  /// statistics (STORAGE_STATS) are returned.
   /// Possible string values are:
+  /// - "TABLE_METADATA_VIEW_UNSPECIFIED" : The default value. Default to the
+  /// STORAGE_STATS view.
   /// - "BASIC" : Includes basic table information including schema and
   /// partitioning specification. This view does not include storage statistics
   /// such as numRows or numBytes. This view is significantly more efficient and
   /// should be used to support high query rates.
-  /// - "FULL" : Includes all table information, including storage statistics.
-  /// It returns same information as STORAGE_STATS view, but may contain
-  /// additional information in the future.
   /// - "STORAGE_STATS" : Includes all information in the BASIC view as well as
   /// storage statistics (numBytes, numLongTermBytes, numRows and
   /// lastModifiedTime).
-  /// - "TABLE_METADATA_VIEW_UNSPECIFIED" : The default value. Default to the
-  /// STORAGE_STATS view.
+  /// - "FULL" : Includes all table information, including storage statistics.
+  /// It returns same information as STORAGE_STATS view, but may contain
+  /// additional information in the future.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1783,11 +1924,11 @@ class TablesResource {
     };
 
     final url_ = 'projects/' +
-        commons.escapeVariable('$projectId') +
+        core.Uri.encodeFull('$projectId') +
         '/datasets/' +
-        commons.escapeVariable('$datasetId') +
+        core.Uri.encodeFull('$datasetId') +
         '/tables/' +
-        commons.escapeVariable('$tableId');
+        core.Uri.encodeFull('$tableId');
 
     final response_ = await _requester.request(
       url_,
@@ -1850,9 +1991,11 @@ class TablesResource {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - Project ID of the new table
+  /// [projectId] - Required. Project ID of the new table
+  /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [datasetId] - Dataset ID of the new table
+  /// [datasetId] - Required. Dataset ID of the new table
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1876,9 +2019,9 @@ class TablesResource {
     };
 
     final url_ = 'projects/' +
-        commons.escapeVariable('$projectId') +
+        core.Uri.encodeFull('$projectId') +
         '/datasets/' +
-        commons.escapeVariable('$datasetId') +
+        core.Uri.encodeFull('$datasetId') +
         '/tables';
 
     final response_ = await _requester.request(
@@ -1896,11 +2039,15 @@ class TablesResource {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - Project ID of the tables to list
+  /// [projectId] - Required. Project ID of the tables to list
+  /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [datasetId] - Dataset ID of the tables to list
+  /// [datasetId] - Required. Dataset ID of the tables to list
+  /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [maxResults] - Maximum number of results to return
+  /// [maxResults] - The maximum number of results to return in a single
+  /// response page. Leverage the page tokens to iterate through the entire
+  /// collection.
   ///
   /// [pageToken] - Page token, returned by a previous call, to request the next
   /// page of results
@@ -1929,9 +2076,9 @@ class TablesResource {
     };
 
     final url_ = 'projects/' +
-        commons.escapeVariable('$projectId') +
+        core.Uri.encodeFull('$projectId') +
         '/datasets/' +
-        commons.escapeVariable('$datasetId') +
+        core.Uri.encodeFull('$datasetId') +
         '/tables';
 
     final response_ = await _requester.request(
@@ -1946,20 +2093,23 @@ class TablesResource {
   ///
   /// The update method replaces the entire table resource, whereas the patch
   /// method only replaces fields that are provided in the submitted table
-  /// resource. This method supports patch semantics.
+  /// resource. This method supports RFC5789 patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [projectId] - Project ID of the table to update
+  /// [projectId] - Required. Project ID of the table to update
+  /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [datasetId] - Dataset ID of the table to update
+  /// [datasetId] - Required. Dataset ID of the table to update
+  /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [tableId] - Table ID of the table to update
+  /// [tableId] - Required. Table ID of the table to update
+  /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [autodetectSchema] - When true will autodetect schema, else will keep
-  /// original schema
+  /// [autodetectSchema] - Optional. When true will autodetect schema, else will
+  /// keep original schema
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1987,11 +2137,11 @@ class TablesResource {
     };
 
     final url_ = 'projects/' +
-        commons.escapeVariable('$projectId') +
+        core.Uri.encodeFull('$projectId') +
         '/datasets/' +
-        commons.escapeVariable('$datasetId') +
+        core.Uri.encodeFull('$datasetId') +
         '/tables/' +
-        commons.escapeVariable('$tableId');
+        core.Uri.encodeFull('$tableId');
 
     final response_ = await _requester.request(
       url_,
@@ -2101,22 +2251,25 @@ class TablesResource {
 
   /// Updates information in an existing table.
   ///
-  /// The update method replaces the entire table resource, whereas the patch
-  /// method only replaces fields that are provided in the submitted table
+  /// The update method replaces the entire Table resource, whereas the patch
+  /// method only replaces fields that are provided in the submitted Table
   /// resource.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [projectId] - Project ID of the table to update
+  /// [projectId] - Required. Project ID of the table to update
+  /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [datasetId] - Dataset ID of the table to update
+  /// [datasetId] - Required. Dataset ID of the table to update
+  /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [tableId] - Table ID of the table to update
+  /// [tableId] - Required. Table ID of the table to update
+  /// Value must have pattern `^\[^/\]+$`.
   ///
-  /// [autodetectSchema] - When true will autodetect schema, else will keep
-  /// original schema
+  /// [autodetectSchema] - Optional. When true will autodetect schema, else will
+  /// keep original schema
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2144,11 +2297,11 @@ class TablesResource {
     };
 
     final url_ = 'projects/' +
-        commons.escapeVariable('$projectId') +
+        core.Uri.encodeFull('$projectId') +
         '/datasets/' +
-        commons.escapeVariable('$datasetId') +
+        core.Uri.encodeFull('$datasetId') +
         '/tables/' +
-        commons.escapeVariable('$tableId');
+        core.Uri.encodeFull('$tableId');
 
     final response_ = await _requester.request(
       url_,
@@ -2253,6 +2406,48 @@ class AggregateClassificationMetrics {
       };
 }
 
+/// Represents privacy policy associated with "aggregation threshold" method.
+class AggregationThresholdPolicy {
+  /// The privacy unit column(s) associated with this policy.
+  ///
+  /// For now, only one column per data source object (table, view) is allowed
+  /// as a privacy unit column. Representing as a repeated field in metadata for
+  /// extensibility to multiple columns in future. Duplicates and Repeated
+  /// struct fields are not allowed. For nested fields, use dot notation
+  /// ("outer.inner")
+  ///
+  /// Optional.
+  core.List<core.String>? privacyUnitColumns;
+
+  /// The threshold for the "aggregation threshold" policy.
+  ///
+  /// Optional.
+  core.String? threshold;
+
+  AggregationThresholdPolicy({
+    this.privacyUnitColumns,
+    this.threshold,
+  });
+
+  AggregationThresholdPolicy.fromJson(core.Map json_)
+      : this(
+          privacyUnitColumns: json_.containsKey('privacyUnitColumns')
+              ? (json_['privacyUnitColumns'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          threshold: json_.containsKey('threshold')
+              ? json_['threshold'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (privacyUnitColumns != null)
+          'privacyUnitColumns': privacyUnitColumns!,
+        if (threshold != null) 'threshold': threshold!,
+      };
+}
+
 /// Input/output argument of a function or a stored procedure.
 class Argument {
   /// Defaults to FIXED_TYPE.
@@ -2328,6 +2523,52 @@ class Argument {
         if (isAggregate != null) 'isAggregate': isAggregate!,
         if (mode != null) 'mode': mode!,
         if (name != null) 'name': name!,
+      };
+}
+
+/// Arima coefficients.
+class ArimaCoefficients {
+  /// Auto-regressive coefficients, an array of double.
+  core.List<core.double>? autoRegressiveCoefficients;
+
+  /// Intercept coefficient, just a double not an array.
+  core.double? interceptCoefficient;
+
+  /// Moving-average coefficients, an array of double.
+  core.List<core.double>? movingAverageCoefficients;
+
+  ArimaCoefficients({
+    this.autoRegressiveCoefficients,
+    this.interceptCoefficient,
+    this.movingAverageCoefficients,
+  });
+
+  ArimaCoefficients.fromJson(core.Map json_)
+      : this(
+          autoRegressiveCoefficients:
+              json_.containsKey('autoRegressiveCoefficients')
+                  ? (json_['autoRegressiveCoefficients'] as core.List)
+                      .map((value) => (value as core.num).toDouble())
+                      .toList()
+                  : null,
+          interceptCoefficient: json_.containsKey('interceptCoefficient')
+              ? (json_['interceptCoefficient'] as core.num).toDouble()
+              : null,
+          movingAverageCoefficients:
+              json_.containsKey('movingAverageCoefficients')
+                  ? (json_['movingAverageCoefficients'] as core.List)
+                      .map((value) => (value as core.num).toDouble())
+                      .toList()
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (autoRegressiveCoefficients != null)
+          'autoRegressiveCoefficients': autoRegressiveCoefficients!,
+        if (interceptCoefficient != null)
+          'interceptCoefficient': interceptCoefficient!,
+        if (movingAverageCoefficients != null)
+          'movingAverageCoefficients': movingAverageCoefficients!,
       };
 }
 
@@ -2469,6 +2710,120 @@ class ArimaForecastingMetrics {
       };
 }
 
+/// Arima model information.
+class ArimaModelInfo {
+  /// Arima coefficients.
+  ArimaCoefficients? arimaCoefficients;
+
+  /// Arima fitting metrics.
+  ArimaFittingMetrics? arimaFittingMetrics;
+
+  /// Whether Arima model fitted with drift or not.
+  ///
+  /// It is always false when d is not 1.
+  core.bool? hasDrift;
+
+  /// If true, holiday_effect is a part of time series decomposition result.
+  core.bool? hasHolidayEffect;
+
+  /// If true, spikes_and_dips is a part of time series decomposition result.
+  core.bool? hasSpikesAndDips;
+
+  /// If true, step_changes is a part of time series decomposition result.
+  core.bool? hasStepChanges;
+
+  /// Non-seasonal order.
+  ArimaOrder? nonSeasonalOrder;
+
+  /// Seasonal periods.
+  ///
+  /// Repeated because multiple periods are supported for one time series.
+  core.List<core.String>? seasonalPeriods;
+
+  /// The time_series_id value for this time series.
+  ///
+  /// It will be one of the unique values from the time_series_id_column
+  /// specified during ARIMA model training. Only present when
+  /// time_series_id_column training option was used.
+  core.String? timeSeriesId;
+
+  /// The tuple of time_series_ids identifying this time series.
+  ///
+  /// It will be one of the unique tuples of values present in the
+  /// time_series_id_columns specified during ARIMA model training. Only present
+  /// when time_series_id_columns training option was used and the order of
+  /// values here are same as the order of time_series_id_columns.
+  core.List<core.String>? timeSeriesIds;
+
+  ArimaModelInfo({
+    this.arimaCoefficients,
+    this.arimaFittingMetrics,
+    this.hasDrift,
+    this.hasHolidayEffect,
+    this.hasSpikesAndDips,
+    this.hasStepChanges,
+    this.nonSeasonalOrder,
+    this.seasonalPeriods,
+    this.timeSeriesId,
+    this.timeSeriesIds,
+  });
+
+  ArimaModelInfo.fromJson(core.Map json_)
+      : this(
+          arimaCoefficients: json_.containsKey('arimaCoefficients')
+              ? ArimaCoefficients.fromJson(json_['arimaCoefficients']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          arimaFittingMetrics: json_.containsKey('arimaFittingMetrics')
+              ? ArimaFittingMetrics.fromJson(json_['arimaFittingMetrics']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          hasDrift: json_.containsKey('hasDrift')
+              ? json_['hasDrift'] as core.bool
+              : null,
+          hasHolidayEffect: json_.containsKey('hasHolidayEffect')
+              ? json_['hasHolidayEffect'] as core.bool
+              : null,
+          hasSpikesAndDips: json_.containsKey('hasSpikesAndDips')
+              ? json_['hasSpikesAndDips'] as core.bool
+              : null,
+          hasStepChanges: json_.containsKey('hasStepChanges')
+              ? json_['hasStepChanges'] as core.bool
+              : null,
+          nonSeasonalOrder: json_.containsKey('nonSeasonalOrder')
+              ? ArimaOrder.fromJson(json_['nonSeasonalOrder']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          seasonalPeriods: json_.containsKey('seasonalPeriods')
+              ? (json_['seasonalPeriods'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          timeSeriesId: json_.containsKey('timeSeriesId')
+              ? json_['timeSeriesId'] as core.String
+              : null,
+          timeSeriesIds: json_.containsKey('timeSeriesIds')
+              ? (json_['timeSeriesIds'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (arimaCoefficients != null) 'arimaCoefficients': arimaCoefficients!,
+        if (arimaFittingMetrics != null)
+          'arimaFittingMetrics': arimaFittingMetrics!,
+        if (hasDrift != null) 'hasDrift': hasDrift!,
+        if (hasHolidayEffect != null) 'hasHolidayEffect': hasHolidayEffect!,
+        if (hasSpikesAndDips != null) 'hasSpikesAndDips': hasSpikesAndDips!,
+        if (hasStepChanges != null) 'hasStepChanges': hasStepChanges!,
+        if (nonSeasonalOrder != null) 'nonSeasonalOrder': nonSeasonalOrder!,
+        if (seasonalPeriods != null) 'seasonalPeriods': seasonalPeriods!,
+        if (timeSeriesId != null) 'timeSeriesId': timeSeriesId!,
+        if (timeSeriesIds != null) 'timeSeriesIds': timeSeriesIds!,
+      };
+}
+
 /// Arima order, can be used for both non-seasonal and seasonal parts.
 class ArimaOrder {
   /// Order of the differencing part.
@@ -2497,6 +2852,48 @@ class ArimaOrder {
         if (d != null) 'd': d!,
         if (p != null) 'p': p!,
         if (q != null) 'q': q!,
+      };
+}
+
+/// (Auto-)arima fitting result.
+///
+/// Wrap everything in ArimaResult for easier refactoring if we want to use
+/// model-specific iteration results.
+class ArimaResult {
+  /// This message is repeated because there are multiple arima models fitted in
+  /// auto-arima.
+  ///
+  /// For non-auto-arima model, its size is one.
+  core.List<ArimaModelInfo>? arimaModelInfo;
+
+  /// Seasonal periods.
+  ///
+  /// Repeated because multiple periods are supported for one time series.
+  core.List<core.String>? seasonalPeriods;
+
+  ArimaResult({
+    this.arimaModelInfo,
+    this.seasonalPeriods,
+  });
+
+  ArimaResult.fromJson(core.Map json_)
+      : this(
+          arimaModelInfo: json_.containsKey('arimaModelInfo')
+              ? (json_['arimaModelInfo'] as core.List)
+                  .map((value) => ArimaModelInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          seasonalPeriods: json_.containsKey('seasonalPeriods')
+              ? (json_['seasonalPeriods'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (arimaModelInfo != null) 'arimaModelInfo': arimaModelInfo!,
+        if (seasonalPeriods != null) 'seasonalPeriods': seasonalPeriods!,
       };
 }
 
@@ -2664,6 +3061,7 @@ class AuditConfig {
 /// exempting jose@example.com from DATA_READ logging.
 typedef AuditLogConfig = $AuditLogConfig;
 
+/// Options for external data sources.
 class AvroOptions {
   /// If sourceFormat is set to "AVRO", indicates whether to interpret logical
   /// types as the corresponding BigQuery data type (for example, TIMESTAMP),
@@ -2689,13 +3087,28 @@ class AvroOptions {
       };
 }
 
+/// Reason why BI Engine didn't accelerate the query (or sub-query).
 class BiEngineReason {
-  /// \[Output-only\] High-level BI Engine reason for partial or disabled
+  /// High-level BI Engine reason for partial or disabled acceleration
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CODE_UNSPECIFIED" : BiEngineReason not specified.
+  /// - "NO_RESERVATION" : No reservation available for BI Engine acceleration.
+  /// - "INSUFFICIENT_RESERVATION" : Not enough memory available for BI Engine
+  /// acceleration.
+  /// - "UNSUPPORTED_SQL_TEXT" : This particular SQL text is not supported for
+  /// acceleration by BI Engine.
+  /// - "INPUT_TOO_LARGE" : Input too large for acceleration by BI Engine.
+  /// - "OTHER_REASON" : Catch-all code for all other cases for partial or
+  /// disabled acceleration.
+  /// - "TABLE_EXCLUDED" : One or more tables were not eligible for BI Engine
   /// acceleration.
   core.String? code;
 
-  /// \[Output-only\] Free form human-readable reason for partial or disabled
-  /// acceleration.
+  /// Free form human-readable reason for partial or disabled acceleration.
+  ///
+  /// Output only.
   core.String? message;
 
   BiEngineReason({
@@ -2717,13 +3130,34 @@ class BiEngineReason {
       };
 }
 
+/// Statistics for a BI Engine specific query.
+///
+/// Populated as part of JobStatistics2
 class BiEngineStatistics {
-  /// \[Output-only\] Specifies which mode of BI Engine acceleration was
-  /// performed (if any).
+  /// Specifies which mode of BI Engine acceleration was performed (if any).
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "BI_ENGINE_ACCELERATION_MODE_UNSPECIFIED" : BiEngineMode type not
+  /// specified.
+  /// - "BI_ENGINE_DISABLED" : BI Engine acceleration was attempted but
+  /// disabled. bi_engine_reasons specifies a more detailed reason.
+  /// - "PARTIAL_INPUT" : Some inputs were accelerated using BI Engine. See
+  /// bi_engine_reasons for why parts of the query were not accelerated.
+  /// - "FULL_INPUT" : All of the query inputs were accelerated using BI Engine.
+  /// - "FULL_QUERY" : All of the query was accelerated using BI Engine.
   core.String? accelerationMode;
 
-  /// \[Output-only\] Specifies which mode of BI Engine acceleration was
-  /// performed (if any).
+  /// Specifies which mode of BI Engine acceleration was performed (if any).
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "ACCELERATION_MODE_UNSPECIFIED" : BiEngineMode type not specified.
+  /// - "DISABLED" : BI Engine disabled the acceleration. bi_engine_reasons
+  /// specifies a more detailed reason.
+  /// - "PARTIAL" : Part of the query was accelerated using BI Engine. See
+  /// bi_engine_reasons for why parts of the query were not accelerated.
+  /// - "FULL" : All of the query was accelerated using BI Engine.
   core.String? biEngineMode;
 
   /// In case of DISABLED or PARTIAL bi_engine_mode, these contain the
@@ -2761,39 +3195,41 @@ class BiEngineStatistics {
       };
 }
 
+/// Configuration for BigLake managed tables.
 class BigLakeConfiguration {
-  /// Required and immutable.
+  /// The connection specifying the credentials to be used to read and write to
+  /// external storage, such as Cloud Storage.
   ///
-  /// Credential reference for accessing external storage system. Normalized as
-  /// project_id.location_id.connection_id.
+  /// The connection_id can have the form
+  /// "\<project\_id\>.\<location\_id\>.\<connection\_id\>" or
+  /// "projects/\<project\_id\>/locations/\<location\_id\>/connections/\<connection\_id\>".
   ///
   /// Required.
   core.String? connectionId;
 
-  /// Required and immutable.
-  ///
-  /// Open source file format that the table data is stored in. Currently only
-  /// PARQUET is supported.
+  /// The file format the table data is stored in.
   ///
   /// Required.
+  /// Possible string values are:
+  /// - "FILE_FORMAT_UNSPECIFIED" : Default Value.
+  /// - "PARQUET" : Apache Parquet format.
   core.String? fileFormat;
 
-  /// Required and immutable.
+  /// The fully qualified location prefix of the external folder where table
+  /// data is stored.
   ///
-  /// Fully qualified location prefix of the external folder where data is
-  /// stored. Normalized to standard format: "gs:////". Starts with "gs://"
-  /// rather than "/bigstore/". Ends with "/". Does not contain "*". See also
-  /// BigLakeStorageMetadata on how it is used.
+  /// The '*' wildcard character is not allowed. The URI should be in the format
+  /// "gs://bucket/path_to_table/"
   ///
   /// Required.
   core.String? storageUri;
 
-  /// Required and immutable.
-  ///
-  /// Open source file format that the table data is stored in. Currently only
-  /// PARQUET is supported.
+  /// The table format the metadata only snapshots are stored in.
   ///
   /// Required.
+  /// Possible string values are:
+  /// - "TABLE_FORMAT_UNSPECIFIED" : Default Value.
+  /// - "ICEBERG" : Apache Iceberg format.
   core.String? tableFormat;
 
   BigLakeConfiguration({
@@ -2828,16 +3264,10 @@ class BigLakeConfiguration {
 }
 
 class BigQueryModelTraining {
-  /// \[Output-only, Beta\] Index of current ML training iteration.
-  ///
-  /// Updated during create model query job to show job progress.
+  /// Deprecated.
   core.int? currentIteration;
 
-  /// \[Output-only, Beta\] Expected number of iterations for the create model
-  /// query job specified as num_iterations in the input query.
-  ///
-  /// The actual total number of iterations may be less than this number due to
-  /// early stop.
+  /// Deprecated.
   core.String? expectedTotalIterations;
 
   BigQueryModelTraining({
@@ -2862,6 +3292,7 @@ class BigQueryModelTraining {
       };
 }
 
+/// Information related to a Bigtable column.
 class BigtableColumn {
   /// The encoding of the values when the type is not STRING.
   ///
@@ -2875,8 +3306,8 @@ class BigtableColumn {
   core.String? encoding;
 
   /// If the qualifier is not a valid BigQuery field identifier i.e. does not
-  /// match \[a-zA-Z\]\[a-zA-Z0-9_\]*, a valid identifier must be provided as
-  /// the column field name and is used as field name in queries.
+  /// match a-zA-Z*, a valid identifier must be provided as the column field
+  /// name and is used as field name in queries.
   ///
   /// Optional.
   core.String? fieldName;
@@ -2898,8 +3329,8 @@ class BigtableColumn {
   /// specified in the qualifier_string field. Otherwise, a base-64 encoded
   /// value must be set to qualifier_encoded. The column field name is the same
   /// as the column qualifier. However, if the qualifier is not a valid BigQuery
-  /// field identifier i.e. does not match \[a-zA-Z\]\[a-zA-Z0-9_\]*, a valid
-  /// identifier must be provided as field_name.
+  /// field identifier i.e. does not match a-zA-Z*, a valid identifier must be
+  /// provided as field_name.
   ///
   /// Required.
   core.String? qualifierEncoded;
@@ -2911,15 +3342,17 @@ class BigtableColumn {
         convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
+  /// Qualifier string.
   core.String? qualifierString;
 
   /// The type to convert the value in cells of this column.
   ///
   /// The values are expected to be encoded using HBase Bytes.toBytes function
   /// when using the BINARY encoding value. Following BigQuery types are allowed
-  /// (case-sensitive) - BYTES STRING INTEGER FLOAT BOOLEAN Default type is
-  /// BYTES. 'type' can also be set at the column family level. However, the
-  /// setting at this level takes precedence if 'type' is set at both levels.
+  /// (case-sensitive): * BYTES * STRING * INTEGER * FLOAT * BOOLEAN * JSON
+  /// Default type is BYTES. 'type' can also be set at the column family level.
+  /// However, the setting at this level takes precedence if 'type' is set at
+  /// both levels.
   ///
   /// Optional.
   core.String? type;
@@ -2963,6 +3396,7 @@ class BigtableColumn {
       };
 }
 
+/// Information related to a Bigtable column family.
 class BigtableColumnFamily {
   /// Lists of columns that should be exposed as individual fields as opposed to
   /// a list of (column name, value) pairs.
@@ -3001,9 +3435,9 @@ class BigtableColumnFamily {
   ///
   /// The values are expected to be encoded using HBase Bytes.toBytes function
   /// when using the BINARY encoding value. Following BigQuery types are allowed
-  /// (case-sensitive) - BYTES STRING INTEGER FLOAT BOOLEAN Default type is
-  /// BYTES. This can be overridden for a specific column by listing that column
-  /// in 'columns' and specifying a type for it.
+  /// (case-sensitive): * BYTES * STRING * INTEGER * FLOAT * BOOLEAN * JSON
+  /// Default type is BYTES. This can be overridden for a specific column by
+  /// listing that column in 'columns' and specifying a type for it.
   ///
   /// Optional.
   core.String? type;
@@ -3045,6 +3479,7 @@ class BigtableColumnFamily {
       };
 }
 
+/// Options specific to Google Cloud Bigtable data sources.
 class BigtableOptions {
   /// List of column families to expose in the table schema along with their
   /// types.
@@ -3068,6 +3503,15 @@ class BigtableOptions {
   /// Optional.
   core.bool? ignoreUnspecifiedColumnFamilies;
 
+  /// If field is true, then each column family will be read as a single JSON
+  /// column.
+  ///
+  /// Otherwise they are read as a repeated cell structure containing
+  /// timestamp/value tuples. The default value is false.
+  ///
+  /// Optional.
+  core.bool? outputColumnFamiliesAsJson;
+
   /// If field is true, then the rowkey column families will be read and
   /// converted to string.
   ///
@@ -3080,6 +3524,7 @@ class BigtableOptions {
   BigtableOptions({
     this.columnFamilies,
     this.ignoreUnspecifiedColumnFamilies,
+    this.outputColumnFamiliesAsJson,
     this.readRowkeyAsString,
   });
 
@@ -3095,6 +3540,10 @@ class BigtableOptions {
               json_.containsKey('ignoreUnspecifiedColumnFamilies')
                   ? json_['ignoreUnspecifiedColumnFamilies'] as core.bool
                   : null,
+          outputColumnFamiliesAsJson:
+              json_.containsKey('outputColumnFamiliesAsJson')
+                  ? json_['outputColumnFamiliesAsJson'] as core.bool
+                  : null,
           readRowkeyAsString: json_.containsKey('readRowkeyAsString')
               ? json_['readRowkeyAsString'] as core.bool
               : null,
@@ -3104,6 +3553,8 @@ class BigtableOptions {
         if (columnFamilies != null) 'columnFamilies': columnFamilies!,
         if (ignoreUnspecifiedColumnFamilies != null)
           'ignoreUnspecifiedColumnFamilies': ignoreUnspecifiedColumnFamilies!,
+        if (outputColumnFamiliesAsJson != null)
+          'outputColumnFamiliesAsJson': outputColumnFamiliesAsJson!,
         if (readRowkeyAsString != null)
           'readRowkeyAsString': readRowkeyAsString!,
       };
@@ -3283,14 +3734,31 @@ class Binding {
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
   /// (primary) that represents all the users of that domain. For example,
-  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a user that has
-  /// been recently deleted. For example,
-  /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
-  /// this value reverts to `user:{emailid}` and the recovered user retains the
-  /// role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a service account
-  /// that has been recently deleted. For example,
+  /// `google.com` or `example.com`. *
+  /// `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workforce identity pool. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`:
+  /// All workforce identities in a group. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All workforce identities with a specific attribute value. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}
+  /// / * `: All identities in a workforce identity pool. *
+  /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workload identity pool. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`:
+  /// A workload identity pool group. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All identities in a workload identity pool with a certain attribute. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}
+  /// / * `: All identities in a workload identity pool. *
+  /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
+  /// identifier) representing a user that has been recently deleted. For
+  /// example, `alice@example.com?uid=123456789012345678901`. If the user is
+  /// recovered, this value reverts to `user:{emailid}` and the recovered user
+  /// retains the role in the binding. *
+  /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus
+  /// unique identifier) representing a service account that has been recently
+  /// deleted. For example,
   /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If
   /// the service account is undeleted, this value reverts to
   /// `serviceAccount:{emailid}` and the undeleted service account retains the
@@ -3299,12 +3767,19 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding.
+  /// the role in the binding. *
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// Deleted single identity in a workforce identity pool. For example,
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
   ///
-  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an
+  /// overview of the IAM roles and permissions, see the
+  /// [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For
+  /// a list of the available pre-defined roles, see
+  /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
   Binding({
@@ -3335,31 +3810,19 @@ class Binding {
 }
 
 class BqmlIterationResult {
-  /// \[Output-only, Beta\] Time taken to run the training iteration in
-  /// milliseconds.
+  /// Deprecated.
   core.String? durationMs;
 
-  /// \[Output-only, Beta\] Eval loss computed on the eval data at the end of
-  /// the iteration.
-  ///
-  /// The eval loss is used for early stopping to avoid overfitting. No eval
-  /// loss if eval_split_method option is specified as no_split or auto_split
-  /// with input data size less than 500 rows.
+  /// Deprecated.
   core.double? evalLoss;
 
-  /// \[Output-only, Beta\] Index of the ML training iteration, starting from
-  /// zero for each training run.
+  /// Deprecated.
   core.int? index;
 
-  /// \[Output-only, Beta\] Learning rate used for this iteration, it varies for
-  /// different training iterations if learn_rate_strategy option is not
-  /// constant.
+  /// Deprecated.
   core.double? learnRate;
 
-  /// \[Output-only, Beta\] Training loss computed on the training data at the
-  /// end of the iteration.
-  ///
-  /// The training loss function is defined by model type.
+  /// Deprecated.
   core.double? trainingLoss;
 
   BqmlIterationResult({
@@ -3396,12 +3859,7 @@ class BqmlIterationResult {
       };
 }
 
-/// \[Output-only, Beta\] Training options used by this training run.
-///
-/// These options are mutable for subsequent training runs. Default values are
-/// explicitly stored for options not specified in the input query of the first
-/// training run. For subsequent training runs, any option not explicitly
-/// specified in the input query will be copied from the previous training run.
+/// Deprecated.
 class BqmlTrainingRunTrainingOptions {
   core.bool? earlyStop;
   core.double? l1Reg;
@@ -3471,27 +3929,16 @@ class BqmlTrainingRunTrainingOptions {
 }
 
 class BqmlTrainingRun {
-  /// \[Output-only, Beta\] List of each iteration results.
+  /// Deprecated.
   core.List<BqmlIterationResult>? iterationResults;
 
-  /// \[Output-only, Beta\] Training run start time in milliseconds since the
-  /// epoch.
+  /// Deprecated.
   core.DateTime? startTime;
 
-  /// \[Output-only, Beta\] Different state applicable for a training run.
-  ///
-  /// IN PROGRESS: Training run is in progress. FAILED: Training run ended due
-  /// to a non-retryable failure. SUCCEEDED: Training run successfully
-  /// completed. CANCELLED: Training run cancelled by the user.
+  /// Deprecated.
   core.String? state;
 
-  /// \[Output-only, Beta\] Training options used by this training run.
-  ///
-  /// These options are mutable for subsequent training runs. Default values are
-  /// explicitly stored for options not specified in the input query of the
-  /// first training run. For subsequent training runs, any option not
-  /// explicitly specified in the input query will be copied from the previous
-  /// training run.
+  /// Deprecated.
   BqmlTrainingRunTrainingOptions? trainingOptions;
 
   BqmlTrainingRun({
@@ -3585,6 +4032,7 @@ class CategoryCount {
       };
 }
 
+/// Information about base table and clone time of a table clone.
 class CloneDefinition {
   /// Reference describing the ID of the table that was cloned.
   ///
@@ -3661,13 +4109,53 @@ class Cluster {
       };
 }
 
+/// Information about a single cluster for clustering model.
+class ClusterInfo {
+  /// Centroid id.
+  core.String? centroidId;
+
+  /// Cluster radius, the average distance from centroid to each point assigned
+  /// to the cluster.
+  core.double? clusterRadius;
+
+  /// Cluster size, the total number of points assigned to the cluster.
+  core.String? clusterSize;
+
+  ClusterInfo({
+    this.centroidId,
+    this.clusterRadius,
+    this.clusterSize,
+  });
+
+  ClusterInfo.fromJson(core.Map json_)
+      : this(
+          centroidId: json_.containsKey('centroidId')
+              ? json_['centroidId'] as core.String
+              : null,
+          clusterRadius: json_.containsKey('clusterRadius')
+              ? (json_['clusterRadius'] as core.num).toDouble()
+              : null,
+          clusterSize: json_.containsKey('clusterSize')
+              ? json_['clusterSize'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (centroidId != null) 'centroidId': centroidId!,
+        if (clusterRadius != null) 'clusterRadius': clusterRadius!,
+        if (clusterSize != null) 'clusterSize': clusterSize!,
+      };
+}
+
+/// Configures table clustering.
 class Clustering {
-  /// \[Repeated\] One or more fields on which data should be clustered.
+  /// One or more fields on which data should be clustered.
   ///
-  /// Only top-level, non-repeated, simple-type fields are supported. When you
-  /// cluster a table using multiple columns, the order of columns you specify
-  /// is important. The order of the specified columns determines the sort order
-  /// of the data.
+  /// Only top-level, non-repeated, simple-type fields are supported. The
+  /// ordering of the clustering fields should be prioritized from most to least
+  /// important for filtering purposes. Additional information on limitations
+  /// can be found here:
+  /// https://cloud.google.com/bigquery/docs/creating-clustered-tables#limitations
   core.List<core.String>? fields;
 
   Clustering({
@@ -3764,15 +4252,29 @@ class ConfusionMatrix {
       };
 }
 
+/// A connection-level property to customize query behavior.
+///
+/// Under JDBC, these correspond directly to connection properties passed to the
+/// DriverManager. Under ODBC, these correspond to properties in the connection
+/// string. Currently supported connection properties: * **dataset_project_id**:
+/// represents the default project for datasets that are used in the query.
+/// Setting the system variable `@@dataset_project_id` achieves the same
+/// behavior. For more information about system variables, see:
+/// https://cloud.google.com/bigquery/docs/reference/system-variables *
+/// **time_zone**: represents the default timezone used to run the query. *
+/// **session_id**: associates the query with a given session. *
+/// **query_label**: associates the query with a given job label. If set, all
+/// subsequent queries in a script or session will have this label. For the
+/// format in which a you can specify a query label, see labels in the
+/// JobConfiguration resource type:
+/// https://cloud.google.com/bigquery/docs/reference/rest/v2/Job#jobconfiguration
+/// Additional properties are allowed, but ignored. Specifying multiple
+/// connection properties with the same key returns an error.
 class ConnectionProperty {
-  /// Name of the connection property to set.
-  ///
-  /// Required.
+  /// The key of the property to set.
   core.String? key;
 
-  /// Value of the connection property.
-  ///
-  /// Required.
+  /// The value of the property to set.
   core.String? value;
 
   ConnectionProperty({
@@ -3793,6 +4295,7 @@ class ConnectionProperty {
       };
 }
 
+/// Information related to a CSV data source.
 class CsvOptions {
   /// Indicates if BigQuery should accept rows that are missing trailing
   /// optional columns.
@@ -3815,32 +4318,36 @@ class CsvOptions {
 
   /// The character encoding of the data.
   ///
-  /// The supported values are UTF-8 or ISO-8859-1. The default value is UTF-8.
-  /// BigQuery decodes the data after the raw, binary data has been split using
-  /// the values of the quote and fieldDelimiter properties.
+  /// The supported values are UTF-8, ISO-8859-1, UTF-16BE, UTF-16LE, UTF-32BE,
+  /// and UTF-32LE. The default value is UTF-8. BigQuery decodes the data after
+  /// the raw, binary data has been split using the values of the quote and
+  /// fieldDelimiter properties.
   ///
   /// Optional.
   core.String? encoding;
 
-  /// The separator for fields in a CSV file.
+  /// The separator character for fields in a CSV file.
   ///
-  /// BigQuery converts the string to ISO-8859-1 encoding, and then uses the
-  /// first byte of the encoded string to split the data in its raw, binary
-  /// state. BigQuery also supports the escape sequence "\t" to specify a tab
-  /// separator. The default value is a comma (',').
+  /// The separator is interpreted as a single byte. For files encoded in
+  /// ISO-8859-1, any single character can be used as a separator. For files
+  /// encoded in UTF-8, characters represented in decimal range 1-127
+  /// (U+0001-U+007F) can be used without any modification. UTF-8 characters
+  /// encoded with multiple bytes (i.e. U+0080 and above) will have only the
+  /// first byte used for separating fields. The remaining bytes will be treated
+  /// as a part of the field. BigQuery also supports the escape sequence "\t"
+  /// (U+0009) to specify a tab separator. The default value is comma (",",
+  /// U+002C).
   ///
   /// Optional.
   core.String? fieldDelimiter;
 
-  /// An custom string that will represent a NULL value in CSV import data.
+  /// A custom string that will represent a NULL value in CSV import data.
   ///
   /// Optional.
   core.String? nullMarker;
 
-  /// Preserves the embedded ASCII control characters (the first 32 characters
-  /// in the ASCII-table, from '\x00' to '\x1F') when loading from CSV.
-  ///
-  /// Only applicable to CSV, ignored for other formats.
+  /// Indicates if the embedded ASCII control characters (the first 32
+  /// characters in the ASCII-table, from '\x00' to '\x1F') are preserved.
   ///
   /// Optional.
   core.bool? preserveAsciiControlCharacters;
@@ -3849,10 +4356,13 @@ class CsvOptions {
   ///
   /// BigQuery converts the string to ISO-8859-1 encoding, and then uses the
   /// first byte of the encoded string to split the data in its raw, binary
-  /// state. The default value is a double-quote ('"'). If your data does not
+  /// state. The default value is a double-quote ("). If your data does not
   /// contain quoted sections, set the property value to an empty string. If
   /// your data contains quoted newline characters, you must also set the
-  /// allowQuotedNewlines property to true.
+  /// allowQuotedNewlines property to true. To include the specific quote
+  /// character within a quoted value, precede it with an additional matching
+  /// quote character. For example, if you want to escape the default character
+  /// ' " ', use ' "" '.
   ///
   /// Optional.
   core.String? quote;
@@ -3927,14 +4437,34 @@ class CsvOptions {
       };
 }
 
-class DataMaskingStatistics {
-  /// \[Output-only\] \[Preview\] Whether any accessed data was protected by
-  /// data masking.
+/// Options for data format adjustments.
+class DataFormatOptions {
+  /// Output timestamp as usec int64.
   ///
-  /// The actual evaluation is done by accessStats.masked_field_count \> 0.
-  /// Since this is only used for the discovery_doc generation purpose, as long
-  /// as the type (boolean) matches, client library can leverage this. The
-  /// actual evaluation of the variable is done else-where.
+  /// Default is false.
+  ///
+  /// Optional.
+  core.bool? useInt64Timestamp;
+
+  DataFormatOptions({
+    this.useInt64Timestamp,
+  });
+
+  DataFormatOptions.fromJson(core.Map json_)
+      : this(
+          useInt64Timestamp: json_.containsKey('useInt64Timestamp')
+              ? json_['useInt64Timestamp'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (useInt64Timestamp != null) 'useInt64Timestamp': useInt64Timestamp!,
+      };
+}
+
+/// Statistics for data-masking.
+class DataMaskingStatistics {
+  /// Whether any accessed data was protected by the data masking.
   core.bool? dataMaskingApplied;
 
   DataMaskingStatistics({
@@ -3997,6 +4527,7 @@ class DataSplitResult {
       };
 }
 
+/// An object that defines dataset access for an entity.
 class DatasetAccess {
   /// \[Pick one\] A grant authorizing all resources of a particular type in a
   /// particular dataset access to this dataset.
@@ -4025,13 +4556,12 @@ class DatasetAccess {
   /// An IAM role ID that should be granted to the user, group, or domain
   /// specified in this access entry.
   ///
-  /// The following legacy mappings will be applied: OWNER
-  /// roles/bigquery.dataOwner WRITER roles/bigquery.dataEditor READER
-  /// roles/bigquery.dataViewer This field will accept any of the above formats,
-  /// but will return only the legacy format. For example, if you set this field
-  /// to "roles/bigquery.dataOwner", it will be returned back as "OWNER".
-  ///
-  /// Required.
+  /// The following legacy mappings will be applied: OWNER \<=\>
+  /// roles/bigquery.dataOwner WRITER \<=\> roles/bigquery.dataEditor READER
+  /// \<=\> roles/bigquery.dataViewer This field will accept any of the above
+  /// formats, but will return only the legacy format. For example, if you set
+  /// this field to "roles/bigquery.dataOwner", it will be returned back as
+  /// "OWNER".
   core.String? role;
 
   /// \[Pick one\] A routine from a different dataset to grant access to.
@@ -4059,10 +4589,10 @@ class DatasetAccess {
 
   /// \[Pick one\] A view from a different dataset to grant access to.
   ///
-  /// Queries executed against that view will have read access to tables in this
-  /// dataset. The role field is not required when this field is set. If that
-  /// view is updated by any user, access to the view needs to be granted again
-  /// via an update operation.
+  /// Queries executed against that view will have read access to
+  /// views/tables/routines in this dataset. The role field is not required when
+  /// this field is set. If that view is updated by any user, access to the view
+  /// needs to be granted again via an update operation.
   TableReference? view;
 
   DatasetAccess({
@@ -4122,6 +4652,9 @@ class DatasetAccess {
       };
 }
 
+/// A global tag managed by Resource Manager.
+///
+/// https://cloud.google.com/iam/docs/tags-access-control#definitions
 class DatasetTags {
   /// The namespaced friendly name of the tag key, e.g. "12345/environment"
   /// where 12345 is org id.
@@ -4129,7 +4662,7 @@ class DatasetTags {
   /// Required.
   core.String? tagKey;
 
-  /// Friendly short name of the tag value, e.g. "production".
+  /// The friendly short name of the tag value, e.g. "production".
   ///
   /// Required.
   core.String? tagValue;
@@ -4169,8 +4702,9 @@ class Dataset {
   /// Optional.
   core.List<DatasetAccess>? access;
 
-  /// \[Output-only\] The time when this dataset was created, in milliseconds
-  /// since the epoch.
+  /// The time when this dataset was created, in milliseconds since the epoch.
+  ///
+  /// Output only.
   core.String? creationTime;
 
   /// A reference that identifies the dataset.
@@ -4178,35 +4712,68 @@ class Dataset {
   /// Required.
   DatasetReference? datasetReference;
 
-  /// \[Output-only\] The default collation of the dataset.
-  core.String? defaultCollation;
-  EncryptionConfiguration? defaultEncryptionConfiguration;
-
-  /// The default partition expiration for all partitioned tables in the
-  /// dataset, in milliseconds.
+  /// Defines the default collation specification of future tables created in
+  /// the dataset.
   ///
-  /// Once this property is set, all newly-created partitioned tables in the
-  /// dataset will have an expirationMs property in the timePartitioning
-  /// settings set to this value, and changing the value will only affect new
-  /// tables, not existing ones. The storage in a partition will have an
-  /// expiration time of its partition time plus this value. Setting this
-  /// property overrides the use of defaultTableExpirationMs for partitioned
-  /// tables: only one of defaultTableExpirationMs and
-  /// defaultPartitionExpirationMs will be used for any new partitioned table.
-  /// If you provide an explicit timePartitioning.expirationMs when creating or
-  /// updating a partitioned table, that value takes precedence over the default
-  /// partition expiration time indicated by this property.
+  /// If a table is created in this dataset without table-level default
+  /// collation, then the table inherits the dataset default collation, which is
+  /// applied to the string fields that do not have explicit collation
+  /// specified. A change to this field affects only tables created afterwards,
+  /// and does not alter the existing tables. The following values are
+  /// supported: * 'und:ci': undetermined locale, case insensitive. * '': empty
+  /// string. Default to case-sensitive behavior.
   ///
   /// Optional.
+  core.String? defaultCollation;
+
+  /// The default encryption key for all tables in the dataset.
+  ///
+  /// Once this property is set, all newly-created partitioned tables in the
+  /// dataset will have encryption key set to this value, unless table creation
+  /// request (or query) overrides the key.
+  EncryptionConfiguration? defaultEncryptionConfiguration;
+
+  /// This default partition expiration, expressed in milliseconds.
+  ///
+  /// When new time-partitioned tables are created in a dataset where this
+  /// property is set, the table will inherit this value, propagated as the
+  /// `TimePartitioning.expirationMs` property on the new table. If you set
+  /// `TimePartitioning.expirationMs` explicitly when creating a table, the
+  /// `defaultPartitionExpirationMs` of the containing dataset is ignored. When
+  /// creating a partitioned table, if `defaultPartitionExpirationMs` is set,
+  /// the `defaultTableExpirationMs` value is ignored and the table will not be
+  /// inherit a table expiration deadline.
   core.String? defaultPartitionExpirationMs;
 
-  /// \[Output-only\] The default rounding mode of the dataset.
+  /// Defines the default rounding mode specification of new tables created
+  /// within this dataset.
+  ///
+  /// During table creation, if this field is specified, the table within this
+  /// dataset will inherit the default rounding mode of the dataset. Setting the
+  /// default rounding mode on a table overrides this option. Existing tables in
+  /// the dataset are unaffected. If columns are defined during that table
+  /// creation, they will immediately inherit the table's default rounding mode,
+  /// unless otherwise specified.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "ROUNDING_MODE_UNSPECIFIED" : Unspecified will default to using
+  /// ROUND_HALF_AWAY_FROM_ZERO.
+  /// - "ROUND_HALF_AWAY_FROM_ZERO" : ROUND_HALF_AWAY_FROM_ZERO rounds half
+  /// values away from zero when applying precision and scale upon writing of
+  /// NUMERIC and BIGNUMERIC values. For Scale: 0 1.1, 1.2, 1.3, 1.4 =\> 1 1.5,
+  /// 1.6, 1.7, 1.8, 1.9 =\> 2
+  /// - "ROUND_HALF_EVEN" : ROUND_HALF_EVEN rounds half values to the nearest
+  /// even value when applying precision and scale upon writing of NUMERIC and
+  /// BIGNUMERIC values. For Scale: 0 1.1, 1.2, 1.3, 1.4 =\> 1 1.5 =\> 2 1.6,
+  /// 1.7, 1.8, 1.9 =\> 2 2.5 =\> 2
   core.String? defaultRoundingMode;
 
   /// The default lifetime of all tables in the dataset, in milliseconds.
   ///
-  /// The minimum value is 3600000 milliseconds (one hour). Once this property
-  /// is set, all newly-created tables in the dataset will have an
+  /// The minimum lifetime value is 3600000 milliseconds (one hour). To clear an
+  /// existing default expiration with a PATCH request, set to 0. Once this
+  /// property is set, all newly-created tables in the dataset will have an
   /// expirationTime property set to the creation time plus the value in this
   /// property, and changing the value will only affect new tables, not existing
   /// ones. When the expirationTime for a given table is reached, that table
@@ -4223,11 +4790,13 @@ class Dataset {
   /// Optional.
   core.String? description;
 
-  /// \[Output-only\] A hash of the resource.
+  /// A hash of the resource.
+  ///
+  /// Output only.
   core.String? etag;
 
-  /// Information about the external metadata storage where the dataset is
-  /// defined.
+  /// Reference to a read-only external dataset defined in data catalogs outside
+  /// of BigQuery.
   ///
   /// Filled out when the dataset type is EXTERNAL.
   ///
@@ -4239,20 +4808,28 @@ class Dataset {
   /// Optional.
   core.String? friendlyName;
 
-  /// \[Output-only\] The fully-qualified unique name of the dataset in the
-  /// format projectId:datasetId.
+  /// The fully-qualified unique name of the dataset in the format
+  /// projectId:datasetId.
   ///
   /// The dataset name without the project name is given in the datasetId field.
   /// When creating a new dataset, leave this field blank, and instead specify
   /// the datasetId field.
+  ///
+  /// Output only.
   core.String? id;
 
-  /// Indicates if table names are case insensitive in the dataset.
+  /// TRUE if the dataset and its table names are case-insensitive, otherwise
+  /// FALSE.
+  ///
+  /// By default, this is FALSE, which means the dataset and its table names are
+  /// case-sensitive. This field does not affect routine references.
   ///
   /// Optional.
   core.bool? isCaseInsensitive;
 
-  /// \[Output-only\] The resource type.
+  /// The resource type.
+  ///
+  /// Output only.
   core.String? kind;
 
   /// The labels associated with this dataset.
@@ -4262,40 +4839,76 @@ class Dataset {
   /// Dataset Labels for more information.
   core.Map<core.String, core.String>? labels;
 
-  /// \[Output-only\] The date when this dataset or any of its tables was last
-  /// modified, in milliseconds since the epoch.
+  /// The date when this dataset was last modified, in milliseconds since the
+  /// epoch.
+  ///
+  /// Output only.
   core.String? lastModifiedTime;
+
+  /// The source dataset reference when the dataset is of type LINKED.
+  ///
+  /// For all other dataset types it is not set. This field cannot be updated
+  /// once it is set. Any attempt to update this field using Update and Patch
+  /// API Operations will be ignored.
+  ///
+  /// Optional.
+  LinkedDatasetSource? linkedDatasetSource;
 
   /// The geographic location where the dataset should reside.
   ///
-  /// The default value is US. See details at
-  /// https://cloud.google.com/bigquery/docs/locations.
+  /// See https://cloud.google.com/bigquery/docs/locations for supported
+  /// locations.
   core.String? location;
 
-  /// Number of hours for the max time travel for all tables in the dataset.
+  /// Defines the time travel window in hours.
+  ///
+  /// The value can be from 48 to 168 hours (2 to 7 days). The default value is
+  /// 168 hours if this is not set.
   ///
   /// Optional.
   core.String? maxTimeTravelHours;
 
-  /// \[Output-only\] Reserved for future use.
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzi;
+
+  /// Reserved for future use.
+  ///
+  /// Output only.
   core.bool? satisfiesPzs;
 
-  /// \[Output-only\] A URL that can be used to access the resource again.
+  /// A URL that can be used to access the resource again.
   ///
   /// You can use this URL in Get or Update requests to the resource.
+  ///
+  /// Output only.
   core.String? selfLink;
 
-  /// Storage billing model to be used for all tables in the dataset.
-  ///
-  /// Can be set to PHYSICAL. Default is LOGICAL.
+  /// Updates storage_billing_model for the dataset.
   ///
   /// Optional.
+  /// Possible string values are:
+  /// - "STORAGE_BILLING_MODEL_UNSPECIFIED" : Value not set.
+  /// - "LOGICAL" : Billing for logical bytes.
+  /// - "PHYSICAL" : Billing for physical bytes.
   core.String? storageBillingModel;
 
-  /// \[Optional\]The tags associated with this dataset.
+  /// Tags for the Dataset.
   ///
-  /// Tag keys are globally unique.
+  /// Output only.
   core.List<DatasetTags>? tags;
+
+  /// Same as `type` in `ListFormatDataset`.
+  ///
+  /// The type of the dataset, one of: * DEFAULT - only accessible by owner and
+  /// authorized accounts, * PUBLIC - accessible by everyone, * LINKED - linked
+  /// dataset, * EXTERNAL - dataset with definition in external metadata
+  /// catalog. -- *BIGLAKE_METASTORE - dataset that references a database
+  /// created in BigLakeMetastore service. --
+  ///
+  /// Output only.
+  core.String? type;
 
   Dataset({
     this.access,
@@ -4315,12 +4928,15 @@ class Dataset {
     this.kind,
     this.labels,
     this.lastModifiedTime,
+    this.linkedDatasetSource,
     this.location,
     this.maxTimeTravelHours,
+    this.satisfiesPzi,
     this.satisfiesPzs,
     this.selfLink,
     this.storageBillingModel,
     this.tags,
+    this.type,
   });
 
   Dataset.fromJson(core.Map json_)
@@ -4387,11 +5003,18 @@ class Dataset {
           lastModifiedTime: json_.containsKey('lastModifiedTime')
               ? json_['lastModifiedTime'] as core.String
               : null,
+          linkedDatasetSource: json_.containsKey('linkedDatasetSource')
+              ? LinkedDatasetSource.fromJson(json_['linkedDatasetSource']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           location: json_.containsKey('location')
               ? json_['location'] as core.String
               : null,
           maxTimeTravelHours: json_.containsKey('maxTimeTravelHours')
               ? json_['maxTimeTravelHours'] as core.String
+              : null,
+          satisfiesPzi: json_.containsKey('satisfiesPzi')
+              ? json_['satisfiesPzi'] as core.bool
               : null,
           satisfiesPzs: json_.containsKey('satisfiesPzs')
               ? json_['satisfiesPzs'] as core.bool
@@ -4408,6 +5031,7 @@ class Dataset {
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4433,22 +5057,36 @@ class Dataset {
         if (kind != null) 'kind': kind!,
         if (labels != null) 'labels': labels!,
         if (lastModifiedTime != null) 'lastModifiedTime': lastModifiedTime!,
+        if (linkedDatasetSource != null)
+          'linkedDatasetSource': linkedDatasetSource!,
         if (location != null) 'location': location!,
         if (maxTimeTravelHours != null)
           'maxTimeTravelHours': maxTimeTravelHours!,
+        if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
         if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (selfLink != null) 'selfLink': selfLink!,
         if (storageBillingModel != null)
           'storageBillingModel': storageBillingModel!,
         if (tags != null) 'tags': tags!,
+        if (type != null) 'type': type!,
       };
 }
 
+/// Grants all resources of particular types in a particular dataset read access
+/// to the current dataset.
+///
+/// Similar to how individually authorized views work, updates to any resource
+/// granted through its dataset (including creation of new resources) requires
+/// read permission to referenced resources, plus write permission to the
+/// authorizing dataset.
 class DatasetAccessEntry {
-  /// The dataset this entry applies to.
-  ///
-  /// Required.
+  /// The dataset this entry applies to
   DatasetReference? dataset;
+
+  /// Which resources in the dataset this entry applies to.
+  ///
+  /// Currently, only views are supported, but additional target types may be
+  /// added in the future.
   core.List<core.String>? targetTypes;
 
   DatasetAccessEntry({
@@ -4475,6 +5113,8 @@ class DatasetAccessEntry {
       };
 }
 
+/// A dataset resource with only a subset of fields, to be returned in a list of
+/// datasets.
 class DatasetListDatasets {
   /// The dataset reference.
   ///
@@ -4482,7 +5122,9 @@ class DatasetListDatasets {
   /// project ID or dataset ID.
   DatasetReference? datasetReference;
 
-  /// A descriptive name for the dataset, if one exists.
+  /// An alternate name for the dataset.
+  ///
+  /// The friendly name is purely decorative in nature.
   core.String? friendlyName;
 
   /// The fully-qualified, unique, opaque ID of the dataset.
@@ -4490,7 +5132,7 @@ class DatasetListDatasets {
 
   /// The resource type.
   ///
-  /// This property always returns the value "bigquery#dataset".
+  /// This property always returns the value "bigquery#dataset"
   core.String? kind;
 
   /// The labels associated with this dataset.
@@ -4498,7 +5140,7 @@ class DatasetListDatasets {
   /// You can use these to organize and group your datasets.
   core.Map<core.String, core.String>? labels;
 
-  /// The geographic location where the data resides.
+  /// The geographic location where the dataset resides.
   core.String? location;
 
   DatasetListDatasets({
@@ -4544,6 +5186,7 @@ class DatasetListDatasets {
       };
 }
 
+/// Response format for a page of results when listing datasets.
 class DatasetList {
   /// An array of the dataset resources in the project.
   ///
@@ -4556,11 +5199,15 @@ class DatasetList {
   ///
   /// You can use this property to determine if the page has changed since the
   /// last request.
+  ///
+  /// Output only.
   core.String? etag;
 
-  /// The list type.
+  /// The resource type.
   ///
-  /// This property always returns the value "bigquery#datasetList".
+  /// This property always returns the value "bigquery#datasetList"
+  ///
+  /// Output only.
   core.String? kind;
 
   /// A token that can be used to request the next results page.
@@ -4568,11 +5215,18 @@ class DatasetList {
   /// This property is omitted on the final results page.
   core.String? nextPageToken;
 
+  /// A list of skipped locations that were unreachable.
+  ///
+  /// For more information about BigQuery locations, see:
+  /// https://cloud.google.com/bigquery/docs/locations. Example: "europe-west5"
+  core.List<core.String>? unreachable;
+
   DatasetList({
     this.datasets,
     this.etag,
     this.kind,
     this.nextPageToken,
+    this.unreachable,
   });
 
   DatasetList.fromJson(core.Map json_)
@@ -4588,6 +5242,11 @@ class DatasetList {
           nextPageToken: json_.containsKey('nextPageToken')
               ? json_['nextPageToken'] as core.String
               : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4595,6 +5254,7 @@ class DatasetList {
         if (etag != null) 'etag': etag!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
@@ -4633,6 +5293,7 @@ class DatasetReference {
       };
 }
 
+/// Properties for the destination table.
 class DestinationTableProperties {
   /// The description for the destination table.
   ///
@@ -4643,14 +5304,13 @@ class DestinationTableProperties {
   /// Optional.
   core.String? description;
 
-  /// \[Internal\] This field is for Google internal use only.
+  /// Internal use only.
   core.DateTime? expirationTime;
 
-  /// The friendly name for the destination table.
+  /// Friendly name for the destination table.
   ///
-  /// This will only be used if the destination table is newly created. If the
-  /// table already exists and a value different than the current friendly name
-  /// is provided, the job will fail.
+  /// If the table already exists, it should be same as the existing friendly
+  /// name.
   ///
   /// Optional.
   core.String? friendlyName;
@@ -4726,20 +5386,27 @@ class DimensionalityReductionMetrics {
       };
 }
 
+/// Detailed statistics for DML statements
 class DmlStatistics {
   /// Number of deleted Rows.
   ///
   /// populated by DML DELETE, MERGE and TRUNCATE statements.
+  ///
+  /// Output only.
   core.String? deletedRowCount;
 
   /// Number of inserted Rows.
   ///
-  /// Populated by DML INSERT and MERGE statements.
+  /// Populated by DML INSERT and MERGE statements
+  ///
+  /// Output only.
   core.String? insertedRowCount;
 
   /// Number of updated Rows.
   ///
   /// Populated by DML UPDATE and MERGE statements.
+  ///
+  /// Output only.
   core.String? updatedRowCount;
 
   DmlStatistics({
@@ -4909,6 +5576,7 @@ class Entry {
       };
 }
 
+/// Error details.
 class ErrorProto {
   /// Debugging information.
   ///
@@ -5048,9 +5716,19 @@ class EvaluationMetrics {
       };
 }
 
+/// A single stage of query execution.
 class ExplainQueryStage {
   /// Number of parallel input segments completed.
   core.String? completedParallelInputs;
+
+  /// Compute mode for this stage.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "COMPUTE_MODE_UNSPECIFIED" : ComputeMode type not specified.
+  /// - "BIGQUERY" : This stage was processed using BigQuery slots.
+  /// - "BI_ENGINE" : This stage was processed using BI Engine compute.
+  core.String? computeMode;
 
   /// Milliseconds the average shard spent on CPU-bound tasks.
   core.String? computeMsAvg;
@@ -5064,19 +5742,19 @@ class ExplainQueryStage {
   /// Relative amount of time the slowest shard spent on CPU-bound tasks.
   core.double? computeRatioMax;
 
-  /// Stage end time represented as milliseconds since epoch.
+  /// Stage end time represented as milliseconds since the epoch.
   core.String? endMs;
 
-  /// Unique ID for stage within plan.
+  /// Unique ID for the stage within the plan.
   core.String? id;
 
   /// IDs for stages that are inputs to this stage.
   core.List<core.String>? inputStages;
 
-  /// Human-readable name for stage.
+  /// Human-readable name for the stage.
   core.String? name;
 
-  /// Number of parallel input segments to be processed.
+  /// Number of parallel input segments to be processed
   core.String? parallelInputs;
 
   /// Milliseconds the average shard spent reading input.
@@ -5106,10 +5784,10 @@ class ExplainQueryStage {
   /// Slot-milliseconds used by the stage.
   core.String? slotMs;
 
-  /// Stage start time represented as milliseconds since epoch.
+  /// Stage start time represented as milliseconds since the epoch.
   core.String? startMs;
 
-  /// Current status for the stage.
+  /// Current status for this stage.
   core.String? status;
 
   /// List of operations within the stage in dependency order (approximately
@@ -5142,6 +5820,7 @@ class ExplainQueryStage {
 
   ExplainQueryStage({
     this.completedParallelInputs,
+    this.computeMode,
     this.computeMsAvg,
     this.computeMsMax,
     this.computeRatioAvg,
@@ -5177,6 +5856,9 @@ class ExplainQueryStage {
       : this(
           completedParallelInputs: json_.containsKey('completedParallelInputs')
               ? json_['completedParallelInputs'] as core.String
+              : null,
+          computeMode: json_.containsKey('computeMode')
+              ? json_['computeMode'] as core.String
               : null,
           computeMsAvg: json_.containsKey('computeMsAvg')
               ? json_['computeMsAvg'] as core.String
@@ -5271,6 +5953,7 @@ class ExplainQueryStage {
   core.Map<core.String, core.dynamic> toJson() => {
         if (completedParallelInputs != null)
           'completedParallelInputs': completedParallelInputs!,
+        if (computeMode != null) 'computeMode': computeMode!,
         if (computeMsAvg != null) 'computeMsAvg': computeMsAvg!,
         if (computeMsMax != null) 'computeMsMax': computeMsMax!,
         if (computeRatioAvg != null) 'computeRatioAvg': computeRatioAvg!,
@@ -5305,11 +5988,12 @@ class ExplainQueryStage {
       };
 }
 
+/// An operation within a stage.
 class ExplainQueryStep {
   /// Machine-readable operation type.
   core.String? kind;
 
-  /// Human-readable stage descriptions.
+  /// Human-readable description of the step(s).
   core.List<core.String>? substeps;
 
   ExplainQueryStep({
@@ -5365,6 +6049,39 @@ class Explanation {
       };
 }
 
+/// Statistics for the EXPORT DATA statement as part of Query Job.
+///
+/// EXTRACT JOB statistics are populated in JobStatistics4.
+class ExportDataStatistics {
+  /// Number of destination files generated in case of EXPORT DATA statement
+  /// only.
+  core.String? fileCount;
+
+  /// \[Alpha\] Number of destination rows generated in case of EXPORT DATA
+  /// statement only.
+  core.String? rowCount;
+
+  ExportDataStatistics({
+    this.fileCount,
+    this.rowCount,
+  });
+
+  ExportDataStatistics.fromJson(core.Map json_)
+      : this(
+          fileCount: json_.containsKey('fileCount')
+              ? json_['fileCount'] as core.String
+              : null,
+          rowCount: json_.containsKey('rowCount')
+              ? json_['rowCount'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fileCount != null) 'fileCount': fileCount!,
+        if (rowCount != null) 'rowCount': rowCount!,
+      };
+}
+
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
 ///
@@ -5391,7 +6108,9 @@ class ExternalDataConfiguration {
   /// Any option specified explicitly will be honored.
   core.bool? autodetect;
 
-  /// Additional properties to set if sourceFormat is set to Avro.
+  /// Additional properties to set if sourceFormat is set to AVRO.
+  ///
+  /// Optional.
   AvroOptions? avroOptions;
 
   /// Additional options if sourceFormat is set to BIGTABLE.
@@ -5403,15 +6122,25 @@ class ExternalDataConfiguration {
   ///
   /// Possible values include GZIP and NONE. The default value is NONE. This
   /// setting is ignored for Google Cloud Bigtable, Google Cloud Datastore
-  /// backups and Avro formats.
+  /// backups, Avro, ORC and Parquet formats. An empty string is an invalid
+  /// value.
   ///
   /// Optional.
   core.String? compression;
 
-  /// \[Optional, Trusted Tester\] Connection for external data source.
+  /// The connection specifying the credentials to be used to read external
+  /// storage, such as Azure Blob, Cloud Storage, or S3.
+  ///
+  /// The connection_id can have the form
+  /// "\<project\_id\>.\<location\_id\>.\<connection\_id\>" or
+  /// "projects/\<project\_id\>/locations/\<location\_id\>/connections/\<connection\_id\>".
+  ///
+  /// Optional.
   core.String? connectionId;
 
   /// Additional properties to set if sourceFormat is set to CSV.
+  ///
+  /// Optional.
   CsvOptions? csvOptions;
 
   /// Defines the list of possible SQL data types to which the source decimal
@@ -5425,17 +6154,15 @@ class ExternalDataConfiguration {
   /// the type supporting the widest range in the specified list is picked, and
   /// if a value exceeds the supported range when reading the data, an error
   /// will be thrown. Example: Suppose the value of this field is \["NUMERIC",
-  /// "BIGNUMERIC"\]. If (precision,scale) is: (38,9) -\> NUMERIC; (39,9) -\>
-  /// BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -\> BIGNUMERIC
-  /// (NUMERIC cannot hold 10 fractional digits); (76,38) -\> BIGNUMERIC;
-  /// (77,38) -\> BIGNUMERIC (error if value exeeds supported range). This field
-  /// cannot contain duplicate types. The order of the types in this field is
-  /// ignored. For example, \["BIGNUMERIC", "NUMERIC"\] is the same as
-  /// \["NUMERIC", "BIGNUMERIC"\] and NUMERIC always takes precedence over
-  /// BIGNUMERIC. Defaults to \["NUMERIC", "STRING"\] for ORC and \["NUMERIC"\]
-  /// for the other file formats.
-  ///
-  /// Optional.
+  /// "BIGNUMERIC"\]. If (precision,scale) is: * (38,9) -\> NUMERIC; * (39,9)
+  /// -\> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); * (38,10) -\>
+  /// BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); * (76,38) -\>
+  /// BIGNUMERIC; * (77,38) -\> BIGNUMERIC (error if value exeeds supported
+  /// range). This field cannot contain duplicate types. The order of the types
+  /// in this field is ignored. For example, \["BIGNUMERIC", "NUMERIC"\] is the
+  /// same as \["NUMERIC", "BIGNUMERIC"\] and NUMERIC always takes precedence
+  /// over BIGNUMERIC. Defaults to \["NUMERIC", "STRING"\] for ORC and
+  /// \["NUMERIC"\] for the other file formats.
   core.List<core.String>? decimalTargetTypes;
 
   /// Specifies how source URIs are interpreted for constructing the file set to
@@ -5446,6 +6173,13 @@ class ExternalDataConfiguration {
   /// storage systems.
   ///
   /// Optional.
+  /// Possible string values are:
+  /// - "FILE_SET_SPEC_TYPE_FILE_SYSTEM_MATCH" : This option expands source URIs
+  /// by listing files from the object store. It is the default behavior if
+  /// FileSetSpecType is not set.
+  /// - "FILE_SET_SPEC_TYPE_NEW_LINE_DELIMITED_MANIFEST" : This option indicates
+  /// that the provided URIs are newline-delimited manifest files, with one URI
+  /// per line. Wildcard URIs are not supported.
   core.String? fileSetSpecType;
 
   /// Additional options if sourceFormat is set to GOOGLE_SHEETS.
@@ -5453,7 +6187,11 @@ class ExternalDataConfiguration {
   /// Optional.
   GoogleSheetsOptions? googleSheetsOptions;
 
-  /// Options to configure hive partitioning support.
+  /// When set, configures hive partitioning support.
+  ///
+  /// Not all storage formats support hive partitioning -- requesting hive
+  /// partitioning on an unsupported format will lead to an error, as will
+  /// providing an invalid specification.
   ///
   /// Optional.
   HivePartitioningOptions? hivePartitioningOptions;
@@ -5468,22 +6206,38 @@ class ExternalDataConfiguration {
   /// extra value: CSV: Trailing columns JSON: Named values that don't match any
   /// column names Google Cloud Bigtable: This setting is ignored. Google Cloud
   /// Datastore backups: This setting is ignored. Avro: This setting is ignored.
+  /// ORC: This setting is ignored. Parquet: This setting is ignored.
   ///
   /// Optional.
   core.bool? ignoreUnknownValues;
 
-  /// Additional properties to set if `sourceFormat` is set to
-  /// `NEWLINE_DELIMITED_JSON`.
+  /// Load option to be used together with source_format newline-delimited JSON
+  /// to indicate that a variant of JSON is being loaded.
+  ///
+  /// To load newline-delimited GeoJSON, specify GEOJSON (and source_format must
+  /// be set to NEWLINE_DELIMITED_JSON).
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "JSON_EXTENSION_UNSPECIFIED" : The default if provided value is not one
+  /// included in the enum, or the value is not specified. The source formate is
+  /// parsed without any modification.
+  /// - "GEOJSON" : Use GeoJSON variant of JSON. See
+  /// https://tools.ietf.org/html/rfc7946.
+  core.String? jsonExtension;
+
+  /// Additional properties to set if sourceFormat is set to JSON.
+  ///
+  /// Optional.
   JsonOptions? jsonOptions;
 
   /// The maximum number of bad records that BigQuery can ignore when reading
   /// data.
   ///
   /// If the number of bad records exceeds this value, an invalid error is
-  /// returned in the job result. This is only valid for CSV, JSON, and Google
-  /// Sheets. The default value is 0, which requires that all records are valid.
-  /// This setting is ignored for Google Cloud Bigtable, Google Cloud Datastore
-  /// backups and Avro formats.
+  /// returned in the job result. The default value is 0, which requires that
+  /// all records are valid. This setting is ignored for Google Cloud Bigtable,
+  /// Google Cloud Datastore backups, Avro, ORC and Parquet formats.
   ///
   /// Optional.
   core.int? maxBadRecords;
@@ -5493,6 +6247,14 @@ class ExternalDataConfiguration {
   /// Set this to enable caching of metadata from external data source.
   ///
   /// Optional.
+  /// Possible string values are:
+  /// - "METADATA_CACHE_MODE_UNSPECIFIED" : Unspecified metadata cache mode.
+  /// - "AUTOMATIC" : Set this mode to trigger automatic background refresh of
+  /// metadata cache from the external source. Queries will use the latest
+  /// available cache version within the table's maxStaleness interval.
+  /// - "MANUAL" : Set this mode to enable triggering manual refresh of the
+  /// metadata cache from external source. Queries will use the latest manually
+  /// triggered cache version within the table's maxStaleness interval.
   core.String? metadataCacheMode;
 
   /// ObjectMetadata is used to create Object Tables.
@@ -5500,22 +6262,32 @@ class ExternalDataConfiguration {
   /// Object Tables contain a listing of objects (with their metadata) found at
   /// the source_uris. If ObjectMetadata is set, source_format should be
   /// omitted. Currently SIMPLE is the only supported Object Metadata type.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "OBJECT_METADATA_UNSPECIFIED" : Unspecified by default.
+  /// - "DIRECTORY" : A synonym for `SIMPLE`.
+  /// - "SIMPLE" : Directory listing of objects.
   core.String? objectMetadata;
 
-  /// Additional properties to set if sourceFormat is set to Parquet.
+  /// Additional properties to set if sourceFormat is set to PARQUET.
+  ///
+  /// Optional.
   ParquetOptions? parquetOptions;
 
-  /// Provide a referencing file with the expected table schema.
+  /// When creating an external table, the user can provide a reference file
+  /// with the table schema.
   ///
-  /// Enabled for the format: AVRO, PARQUET, ORC.
+  /// This is enabled for the following formats: AVRO, PARQUET, ORC.
   ///
   /// Optional.
   core.String? referenceFileSchemaUri;
 
   /// The schema for the data.
   ///
-  /// Schema is required for CSV and JSON formats. Schema is disallowed for
-  /// Google Cloud Bigtable, Cloud Datastore backups, and Avro formats.
+  /// Schema is required for CSV and JSON formats if autodetect is not on.
+  /// Schema is disallowed for Google Cloud Bigtable, Cloud Datastore backups,
+  /// Avro, ORC and Parquet formats.
   ///
   /// Optional.
   TableSchema? schema;
@@ -5525,8 +6297,9 @@ class ExternalDataConfiguration {
   /// For CSV files, specify "CSV". For Google sheets, specify "GOOGLE_SHEETS".
   /// For newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro
   /// files, specify "AVRO". For Google Cloud Datastore backups, specify
-  /// "DATASTORE_BACKUP". \[Beta\] For Google Cloud Bigtable, specify
-  /// "BIGTABLE".
+  /// "DATASTORE_BACKUP". For Apache Iceberg tables, specify "ICEBERG". For ORC
+  /// files, specify "ORC". For Parquet files, specify "PARQUET". \[Beta\] For
+  /// Google Cloud Bigtable, specify "BIGTABLE".
   ///
   /// Required.
   core.String? sourceFormat;
@@ -5556,6 +6329,7 @@ class ExternalDataConfiguration {
     this.googleSheetsOptions,
     this.hivePartitioningOptions,
     this.ignoreUnknownValues,
+    this.jsonExtension,
     this.jsonOptions,
     this.maxBadRecords,
     this.metadataCacheMode,
@@ -5610,6 +6384,9 @@ class ExternalDataConfiguration {
           ignoreUnknownValues: json_.containsKey('ignoreUnknownValues')
               ? json_['ignoreUnknownValues'] as core.bool
               : null,
+          jsonExtension: json_.containsKey('jsonExtension')
+              ? json_['jsonExtension'] as core.String
+              : null,
           jsonOptions: json_.containsKey('jsonOptions')
               ? JsonOptions.fromJson(
                   json_['jsonOptions'] as core.Map<core.String, core.dynamic>)
@@ -5660,6 +6437,7 @@ class ExternalDataConfiguration {
           'hivePartitioningOptions': hivePartitioningOptions!,
         if (ignoreUnknownValues != null)
           'ignoreUnknownValues': ignoreUnknownValues!,
+        if (jsonExtension != null) 'jsonExtension': jsonExtension!,
         if (jsonOptions != null) 'jsonOptions': jsonOptions!,
         if (maxBadRecords != null) 'maxBadRecords': maxBadRecords!,
         if (metadataCacheMode != null) 'metadataCacheMode': metadataCacheMode!,
@@ -5673,6 +6451,7 @@ class ExternalDataConfiguration {
       };
 }
 
+/// Configures the access a dataset defined in an external metadata storage.
 class ExternalDatasetReference {
   /// The connection id that is used to access the external_source.
   ///
@@ -5705,6 +6484,72 @@ class ExternalDatasetReference {
   core.Map<core.String, core.dynamic> toJson() => {
         if (connection != null) 'connection': connection!,
         if (externalSource != null) 'externalSource': externalSource!,
+      };
+}
+
+/// The external service cost is a portion of the total cost, these costs are
+/// not additive with total_bytes_billed.
+///
+/// Moreover, this field only track external service costs that will show up as
+/// BigQuery costs (e.g. training BigQuery ML job with google cloud CAIP or
+/// Automl Tables services), not other costs which may be accrued by running the
+/// query (e.g. reading from Bigtable or Cloud Storage). The external service
+/// costs with different billing sku (e.g. CAIP job is charged based on VM
+/// usage) are converted to BigQuery billed_bytes and slot_ms with equivalent
+/// amount of US dollars. Services may not directly correlate to these metrics,
+/// but these are the equivalents for billing purposes. Output only.
+class ExternalServiceCost {
+  /// External service cost in terms of bigquery bytes billed.
+  core.String? bytesBilled;
+
+  /// External service cost in terms of bigquery bytes processed.
+  core.String? bytesProcessed;
+
+  /// External service name.
+  core.String? externalService;
+
+  /// Non-preemptable reserved slots used for external job.
+  ///
+  /// For example, reserved slots for Cloua AI Platform job are the VM usages
+  /// converted to BigQuery slot with equivalent mount of price.
+  core.String? reservedSlotCount;
+
+  /// External service cost in terms of bigquery slot milliseconds.
+  core.String? slotMs;
+
+  ExternalServiceCost({
+    this.bytesBilled,
+    this.bytesProcessed,
+    this.externalService,
+    this.reservedSlotCount,
+    this.slotMs,
+  });
+
+  ExternalServiceCost.fromJson(core.Map json_)
+      : this(
+          bytesBilled: json_.containsKey('bytesBilled')
+              ? json_['bytesBilled'] as core.String
+              : null,
+          bytesProcessed: json_.containsKey('bytesProcessed')
+              ? json_['bytesProcessed'] as core.String
+              : null,
+          externalService: json_.containsKey('externalService')
+              ? json_['externalService'] as core.String
+              : null,
+          reservedSlotCount: json_.containsKey('reservedSlotCount')
+              ? json_['reservedSlotCount'] as core.String
+              : null,
+          slotMs: json_.containsKey('slotMs')
+              ? json_['slotMs'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bytesBilled != null) 'bytesBilled': bytesBilled!,
+        if (bytesProcessed != null) 'bytesProcessed': bytesProcessed!,
+        if (externalService != null) 'externalService': externalService!,
+        if (reservedSlotCount != null) 'reservedSlotCount': reservedSlotCount!,
+        if (slotMs != null) 'slotMs': slotMs!,
       };
 }
 
@@ -5774,16 +6619,19 @@ class GetIamPolicyRequest {
 /// Encapsulates settings provided to GetIamPolicy.
 typedef GetPolicyOptions = $GetPolicyOptions;
 
+/// Response object of GetQueryResults.
 class GetQueryResultsResponse {
   /// Whether the query result was fetched from the query cache.
   core.bool? cacheHit;
 
-  /// \[Output-only\] The first errors or warnings encountered during the
-  /// running of the job.
+  /// The first errors or warnings encountered during the running of the job.
   ///
   /// The final message includes the number of errors that caused the process to
   /// stop. Errors here do not necessarily mean that the job has completed or
-  /// was unsuccessful.
+  /// was unsuccessful. For more information about error messages, see
+  /// [Error messages](https://cloud.google.com/bigquery/docs/error-messages).
+  ///
+  /// Output only.
   core.List<ErrorProto>? errors;
 
   /// A hash of this response.
@@ -5806,12 +6654,17 @@ class GetQueryResultsResponse {
   /// The resource type of the response.
   core.String? kind;
 
-  /// \[Output-only\] The number of rows affected by a DML statement.
+  /// The number of rows affected by a DML statement.
   ///
   /// Present only for DML statements INSERT, UPDATE or DELETE.
+  ///
+  /// Output only.
   core.String? numDmlAffectedRows;
 
   /// A token used for paging results.
+  ///
+  /// When this token is non-empty, it indicates additional results are
+  /// available.
   core.String? pageToken;
 
   /// An object with as many results as can be contained within the maximum
@@ -5819,7 +6672,8 @@ class GetQueryResultsResponse {
   ///
   /// To get any additional rows, you can call GetQueryResults and specify the
   /// jobReference returned above. Present only when the query completes
-  /// successfully.
+  /// successfully. The REST-based representation of this data leverages a
+  /// series of JSON f,v objects for indicating fields and values.
   core.List<TableRow>? rows;
 
   /// The schema of the results.
@@ -5913,6 +6767,7 @@ class GetQueryResultsResponse {
       };
 }
 
+/// Response object of GetServiceAccount
 class GetServiceAccountResponse {
   /// The service account email address.
   core.String? email;
@@ -5976,6 +6831,7 @@ class GlobalExplanation {
       };
 }
 
+/// Options specific to Google Sheets data sources.
 class GoogleSheetsOptions {
   /// Range of a sheet to query from.
   ///
@@ -5990,15 +6846,15 @@ class GoogleSheetsOptions {
   /// reading the data.
   ///
   /// The default value is 0. This property is useful if you have header rows
-  /// that should be skipped. When autodetect is on, behavior is the following:
-  /// * skipLeadingRows unspecified - Autodetect tries to detect headers in the
-  /// first row. If they are not detected, the row is read as data. Otherwise
-  /// data is read starting from the second row. * skipLeadingRows is 0 -
-  /// Instructs autodetect that there are no headers and data should be read
-  /// starting from the first row. * skipLeadingRows = N \> 0 - Autodetect skips
-  /// N-1 rows and tries to detect headers in row N. If headers are not
-  /// detected, row N is just skipped. Otherwise row N is used to extract column
-  /// names for the detected schema.
+  /// that should be skipped. When autodetect is on, the behavior is the
+  /// following: * skipLeadingRows unspecified - Autodetect tries to detect
+  /// headers in the first row. If they are not detected, the row is read as
+  /// data. Otherwise data is read starting from the second row. *
+  /// skipLeadingRows is 0 - Instructs autodetect that there are no headers and
+  /// data should be read starting from the first row. * skipLeadingRows = N \>
+  /// 0 - Autodetect skips N-1 rows and tries to detect headers in row N. If
+  /// headers are not detected, row N is just skipped. Otherwise row N is used
+  /// to extract column names for the detected schema.
   ///
   /// Optional.
   core.String? skipLeadingRows;
@@ -6023,25 +6879,81 @@ class GoogleSheetsOptions {
       };
 }
 
+/// High cardinality join detailed information.
+class HighCardinalityJoin {
+  /// Count of left input rows.
+  ///
+  /// Output only.
+  core.String? leftRows;
+
+  /// Count of the output rows.
+  ///
+  /// Output only.
+  core.String? outputRows;
+
+  /// Count of right input rows.
+  ///
+  /// Output only.
+  core.String? rightRows;
+
+  /// The index of the join operator in the ExplainQueryStep lists.
+  ///
+  /// Output only.
+  core.int? stepIndex;
+
+  HighCardinalityJoin({
+    this.leftRows,
+    this.outputRows,
+    this.rightRows,
+    this.stepIndex,
+  });
+
+  HighCardinalityJoin.fromJson(core.Map json_)
+      : this(
+          leftRows: json_.containsKey('leftRows')
+              ? json_['leftRows'] as core.String
+              : null,
+          outputRows: json_.containsKey('outputRows')
+              ? json_['outputRows'] as core.String
+              : null,
+          rightRows: json_.containsKey('rightRows')
+              ? json_['rightRows'] as core.String
+              : null,
+          stepIndex: json_.containsKey('stepIndex')
+              ? json_['stepIndex'] as core.int
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (leftRows != null) 'leftRows': leftRows!,
+        if (outputRows != null) 'outputRows': outputRows!,
+        if (rightRows != null) 'rightRows': rightRows!,
+        if (stepIndex != null) 'stepIndex': stepIndex!,
+      };
+}
+
+/// Options for configuring hive partitioning detect.
 class HivePartitioningOptions {
-  /// \[Output-only\] For permanent external tables, this field is populated
-  /// with the hive partition keys in the order they were inferred.
+  /// For permanent external tables, this field is populated with the hive
+  /// partition keys in the order they were inferred.
   ///
   /// The types of the partition keys can be deduced by checking the table
   /// schema (which will include the partition keys). Not every API will
   /// populate this field in the output. For example, Tables.Get will populate
   /// it, but Tables.List will not contain this field.
+  ///
+  /// Output only.
   core.List<core.String>? fields;
 
   /// When set, what mode of hive partitioning to use when reading data.
   ///
-  /// The following modes are supported. (1) AUTO: automatically infer partition
-  /// key name(s) and type(s). (2) STRINGS: automatically infer partition key
-  /// name(s). All types are interpreted as strings. (3) CUSTOM: partition key
-  /// schema is encoded in the source URI prefix. Not all storage formats
-  /// support hive partitioning. Requesting hive partitioning on an unsupported
-  /// format will lead to an error. Currently supported types include: AVRO,
-  /// CSV, JSON, ORC and Parquet.
+  /// The following modes are supported: * AUTO: automatically infer partition
+  /// key name(s) and type(s). * STRINGS: automatically infer partition key
+  /// name(s). All types are strings. * CUSTOM: partition key schema is encoded
+  /// in the source URI prefix. Not all storage formats support hive
+  /// partitioning. Requesting hive partitioning on an unsupported format will
+  /// lead to an error. Currently supported formats are: JSON, CSV, ORC, Avro
+  /// and Parquet.
   ///
   /// Optional.
   core.String? mode;
@@ -6051,21 +6963,26 @@ class HivePartitioningOptions {
   ///
   /// Note that this field should only be true when creating a permanent
   /// external table or querying a temporary external table. Hive-partitioned
-  /// loads with requirePartitionFilter explicitly set to true will fail.
+  /// loads with require_partition_filter explicitly set to true will fail.
   ///
   /// Optional.
   core.bool? requirePartitionFilter;
 
   /// When hive partition detection is requested, a common prefix for all source
-  /// uris should be supplied.
+  /// uris must be required.
   ///
   /// The prefix must end immediately before the partition key encoding begins.
-  /// For example, consider files following this data layout.
-  /// gs://bucket/path_to_table/dt=2019-01-01/country=BR/id=7/file.avro
-  /// gs://bucket/path_to_table/dt=2018-12-31/country=CA/id=3/file.avro When
+  /// For example, consider files following this data layout:
+  /// gs://bucket/path_to_table/dt=2019-06-01/country=USA/id=7/file.avro
+  /// gs://bucket/path_to_table/dt=2019-05-31/country=CA/id=3/file.avro When
   /// hive partitioning is requested with either AUTO or STRINGS detection, the
   /// common prefix can be either of gs://bucket/path_to_table or
-  /// gs://bucket/path_to_table/ (trailing slash does not matter).
+  /// gs://bucket/path_to_table/. CUSTOM detection requires encoding the
+  /// partitioning schema immediately after the common prefix. For CUSTOM, any
+  /// of * gs://bucket/path_to_table/{dt:DATE}/{country:STRING}/{id:INTEGER} *
+  /// gs://bucket/path_to_table/{dt:STRING}/{country:STRING}/{id:INTEGER} *
+  /// gs://bucket/path_to_table/{dt:DATE}/{country:STRING}/{id:STRING} would all
+  /// be valid source URI prefixes.
   ///
   /// Optional.
   core.String? sourceUriPrefix;
@@ -6435,21 +7352,68 @@ class HparamTuningTrial {
       };
 }
 
+/// Reason about why no search index was used in the search query (or
+/// sub-query).
 class IndexUnusedReason {
-  /// \[Output-only\] Specifies the base table involved in the reason that no
-  /// search index was used.
+  /// Specifies the base table involved in the reason that no search index was
+  /// used.
   TableReference? baseTable;
 
-  /// \[Output-only\] Specifies the high-level reason for the scenario when no
-  /// search index was used.
+  /// Specifies the high-level reason for the scenario when no search index was
+  /// used.
+  /// Possible string values are:
+  /// - "CODE_UNSPECIFIED" : Code not specified.
+  /// - "INDEX_CONFIG_NOT_AVAILABLE" : Indicates the search index configuration
+  /// has not been created.
+  /// - "PENDING_INDEX_CREATION" : Indicates the search index creation has not
+  /// been completed.
+  /// - "BASE_TABLE_TRUNCATED" : Indicates the base table has been truncated
+  /// (rows have been removed from table with TRUNCATE TABLE statement) since
+  /// the last time the search index was refreshed.
+  /// - "INDEX_CONFIG_MODIFIED" : Indicates the search index configuration has
+  /// been changed since the last time the search index was refreshed.
+  /// - "TIME_TRAVEL_QUERY" : Indicates the search query accesses data at a
+  /// timestamp before the last time the search index was refreshed.
+  /// - "NO_PRUNING_POWER" : Indicates the usage of search index will not
+  /// contribute to any pruning improvement for the search function, e.g. when
+  /// the search predicate is in a disjunction with other non-search predicates.
+  /// - "UNINDEXED_SEARCH_FIELDS" : Indicates the search index does not cover
+  /// all fields in the search function.
+  /// - "UNSUPPORTED_SEARCH_PATTERN" : Indicates the search index does not
+  /// support the given search query pattern.
+  /// - "OPTIMIZED_WITH_MATERIALIZED_VIEW" : Indicates the query has been
+  /// optimized by using a materialized view.
+  /// - "SECURED_BY_DATA_MASKING" : Indicates the query has been secured by data
+  /// masking, and thus search indexes are not applicable.
+  /// - "MISMATCHED_TEXT_ANALYZER" : Indicates that the search index and the
+  /// search function call do not have the same text analyzer.
+  /// - "BASE_TABLE_TOO_SMALL" : Indicates the base table is too small (below a
+  /// certain threshold). The index does not provide noticeable search
+  /// performance gains when the base table is too small.
+  /// - "BASE_TABLE_TOO_LARGE" : Indicates that the total size of indexed base
+  /// tables in your organization exceeds your region's limit and the index is
+  /// not used in the query. To index larger base tables, you can use your own
+  /// reservation for index-management jobs.
+  /// - "ESTIMATED_PERFORMANCE_GAIN_TOO_LOW" : Indicates that the estimated
+  /// performance gain from using the search index is too low for the given
+  /// search query.
+  /// - "NOT_SUPPORTED_IN_STANDARD_EDITION" : Indicates that search indexes can
+  /// not be used for search query with STANDARD edition.
+  /// - "INDEX_SUPPRESSED_BY_FUNCTION_OPTION" : Indicates that an option in the
+  /// search function that cannot make use of the index has been selected.
+  /// - "QUERY_CACHE_HIT" : Indicates that the query was cached, and thus the
+  /// search index was not used.
+  /// - "INTERNAL_ERROR" : Indicates an internal error that causes the search
+  /// index to be unused.
+  /// - "OTHER_REASON" : Indicates that the reason search indexes cannot be used
+  /// in the query is not covered by any of the other IndexUnusedReason options.
   core.String? code;
 
-  /// \[Output-only\] Specifies the name of the unused search index, if
-  /// available.
+  /// Specifies the name of the unused search index, if available.
   core.String? indexName;
 
-  /// \[Output-only\] Free form human-readable reason for the scenario when no
-  /// search index was used.
+  /// Free form human-readable reason for the scenario when no search index was
+  /// used.
   core.String? message;
 
   IndexUnusedReason({
@@ -6479,6 +7443,31 @@ class IndexUnusedReason {
         if (code != null) 'code': code!,
         if (indexName != null) 'indexName': indexName!,
         if (message != null) 'message': message!,
+      };
+}
+
+/// Details about the input data change insight.
+class InputDataChange {
+  /// Records read difference percentage compared to a previous run.
+  ///
+  /// Output only.
+  core.double? recordsReadDiffPercentage;
+
+  InputDataChange({
+    this.recordsReadDiffPercentage,
+  });
+
+  InputDataChange.fromJson(core.Map json_)
+      : this(
+          recordsReadDiffPercentage:
+              json_.containsKey('recordsReadDiffPercentage')
+                  ? (json_['recordsReadDiffPercentage'] as core.num).toDouble()
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (recordsReadDiffPercentage != null)
+          'recordsReadDiffPercentage': recordsReadDiffPercentage!,
       };
 }
 
@@ -6608,7 +7597,14 @@ class IntRange {
       };
 }
 
+/// Information about a single iteration of the training run.
 class IterationResult {
+  /// Arima result.
+  ArimaResult? arimaResult;
+
+  /// Information about top clusters for clustering models.
+  core.List<ClusterInfo>? clusterInfos;
+
   /// Time taken to run the iteration in milliseconds.
   core.String? durationMs;
 
@@ -6621,19 +7617,35 @@ class IterationResult {
   /// Learn rate used for this iteration.
   core.double? learnRate;
 
+  /// The information of the principal components.
+  core.List<PrincipalComponentInfo>? principalComponentInfos;
+
   /// Loss computed on the training data at the end of iteration.
   core.double? trainingLoss;
 
   IterationResult({
+    this.arimaResult,
+    this.clusterInfos,
     this.durationMs,
     this.evalLoss,
     this.index,
     this.learnRate,
+    this.principalComponentInfos,
     this.trainingLoss,
   });
 
   IterationResult.fromJson(core.Map json_)
       : this(
+          arimaResult: json_.containsKey('arimaResult')
+              ? ArimaResult.fromJson(
+                  json_['arimaResult'] as core.Map<core.String, core.dynamic>)
+              : null,
+          clusterInfos: json_.containsKey('clusterInfos')
+              ? (json_['clusterInfos'] as core.List)
+                  .map((value) => ClusterInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           durationMs: json_.containsKey('durationMs')
               ? json_['durationMs'] as core.String
               : null,
@@ -6644,16 +7656,26 @@ class IterationResult {
           learnRate: json_.containsKey('learnRate')
               ? (json_['learnRate'] as core.num).toDouble()
               : null,
+          principalComponentInfos: json_.containsKey('principalComponentInfos')
+              ? (json_['principalComponentInfos'] as core.List)
+                  .map((value) => PrincipalComponentInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           trainingLoss: json_.containsKey('trainingLoss')
               ? (json_['trainingLoss'] as core.num).toDouble()
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (arimaResult != null) 'arimaResult': arimaResult!,
+        if (clusterInfos != null) 'clusterInfos': clusterInfos!,
         if (durationMs != null) 'durationMs': durationMs!,
         if (evalLoss != null) 'evalLoss': evalLoss!,
         if (index != null) 'index': index!,
         if (learnRate != null) 'learnRate': learnRate!,
+        if (principalComponentInfos != null)
+          'principalComponentInfos': principalComponentInfos!,
         if (trainingLoss != null) 'trainingLoss': trainingLoss!,
       };
 }
@@ -6664,43 +7686,65 @@ class Job {
   /// Required.
   JobConfiguration? configuration;
 
-  /// \[Output-only\] A hash of this resource.
+  /// A hash of this resource.
+  ///
+  /// Output only.
   core.String? etag;
 
-  /// \[Output-only\] Opaque ID field of the job
+  /// Opaque ID field of the job.
+  ///
+  /// Output only.
   core.String? id;
 
-  /// \[Output-only\] If set, it provides the reason why a Job was created.
+  /// If set, it provides the reason why a Job was created.
   ///
   /// If not set, it should be treated as the default: REQUESTED. This feature
   /// is not yet available. Jobs will always be created.
   ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Object? jobCreationReason;
+  /// Output only.
+  JobCreationReason? jobCreationReason;
 
   /// Reference describing the unique-per-user name of the job.
   ///
   /// Optional.
   JobReference? jobReference;
 
-  /// \[Output-only\] The type of the resource.
+  /// The type of the resource.
+  ///
+  /// Output only.
   core.String? kind;
 
-  /// \[Output-only\] A URL that can be used to access this resource again.
+  /// \[Full-projection-only\] String representation of identity of requesting
+  /// party.
+  ///
+  /// Populated for both first- and third-party identities. Only present for
+  /// APIs that support third-party identities.
+  ///
+  /// Output only.
+  core.String? principalSubject;
+
+  /// A URL that can be used to access the resource again.
+  ///
+  /// Output only.
   core.String? selfLink;
 
-  /// \[Output-only\] Information about the job, including starting time and
-  /// ending time of the job.
+  /// Information about the job, including starting time and ending time of the
+  /// job.
+  ///
+  /// Output only.
   JobStatistics? statistics;
 
-  /// \[Output-only\] The status of this job.
+  /// The status of this job.
   ///
   /// Examine this value when polling an asynchronous job to see if the job is
   /// complete.
+  ///
+  /// Output only.
   JobStatus? status;
 
-  /// \[Output-only\] Email address of the user who ran the job.
+  /// Email address of the user who ran the job.
+  ///
+  /// Output only.
   core.String? userEmail;
 
   Job({
@@ -6710,6 +7754,7 @@ class Job {
     this.jobCreationReason,
     this.jobReference,
     this.kind,
+    this.principalSubject,
     this.selfLink,
     this.statistics,
     this.status,
@@ -6725,13 +7770,17 @@ class Job {
           etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
           id: json_.containsKey('id') ? json_['id'] as core.String : null,
           jobCreationReason: json_.containsKey('jobCreationReason')
-              ? json_['jobCreationReason']
+              ? JobCreationReason.fromJson(json_['jobCreationReason']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           jobReference: json_.containsKey('jobReference')
               ? JobReference.fromJson(
                   json_['jobReference'] as core.Map<core.String, core.dynamic>)
               : null,
           kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          principalSubject: json_.containsKey('principal_subject')
+              ? json_['principal_subject'] as core.String
+              : null,
           selfLink: json_.containsKey('selfLink')
               ? json_['selfLink'] as core.String
               : null,
@@ -6755,6 +7804,7 @@ class Job {
         if (jobCreationReason != null) 'jobCreationReason': jobCreationReason!,
         if (jobReference != null) 'jobReference': jobReference!,
         if (kind != null) 'kind': kind!,
+        if (principalSubject != null) 'principal_subject': principalSubject!,
         if (selfLink != null) 'selfLink': selfLink!,
         if (statistics != null) 'statistics': statistics!,
         if (status != null) 'status': status!,
@@ -6762,6 +7812,7 @@ class Job {
       };
 }
 
+/// Describes format of a jobs cancellation response.
 class JobCancelResponse {
   /// The final state of the job.
   Job? job;
@@ -6807,14 +7858,16 @@ class JobConfiguration {
 
   /// Job timeout in milliseconds.
   ///
-  /// If this time limit is exceeded, BigQuery may attempt to terminate the job.
+  /// If this time limit is exceeded, BigQuery might attempt to stop the job.
   ///
   /// Optional.
   core.String? jobTimeoutMs;
 
-  /// \[Output-only\] The type of the job.
+  /// The type of the job.
   ///
   /// Can be QUERY, LOAD, EXTRACT, COPY or UNKNOWN.
+  ///
+  /// Output only.
   core.String? jobType;
 
   /// The labels associated with this job.
@@ -6891,19 +7944,22 @@ class JobConfiguration {
       };
 }
 
+/// JobConfigurationExtract configures a job that exports data from a BigQuery
+/// table into Google Cloud Storage.
 class JobConfigurationExtract {
   /// The compression type to use for exported files.
   ///
-  /// Possible values include GZIP, DEFLATE, SNAPPY, and NONE. The default value
-  /// is NONE. DEFLATE and SNAPPY are only supported for Avro. Not applicable
-  /// when extracting models.
+  /// Possible values include DEFLATE, GZIP, NONE, SNAPPY, and ZSTD. The default
+  /// value is NONE. Not all compression formats are support for all file
+  /// formats. DEFLATE is only supported for Avro. ZSTD is only supported for
+  /// Parquet. Not applicable when extracting models.
   ///
   /// Optional.
   core.String? compression;
 
   /// The exported file format.
   ///
-  /// Possible values include CSV, NEWLINE_DELIMITED_JSON, PARQUET or AVRO for
+  /// Possible values include CSV, NEWLINE_DELIMITED_JSON, PARQUET, or AVRO for
   /// tables and ML_TF_SAVED_MODEL or ML_XGBOOST_BOOSTER for models. The default
   /// value for tables is CSV. Tables with nested or repeated fields cannot be
   /// exported as CSV. The default value for models is ML_TF_SAVED_MODEL.
@@ -6922,12 +7978,18 @@ class JobConfigurationExtract {
   /// extracted table should be written.
   core.List<core.String>? destinationUris;
 
-  /// Delimiter to use between fields in the exported data.
+  /// When extracting data in CSV format, this defines the delimiter to use
+  /// between fields in the exported data.
   ///
   /// Default is ','. Not applicable when extracting models.
   ///
   /// Optional.
   core.String? fieldDelimiter;
+
+  /// Model extract options only applicable when extracting models.
+  ///
+  /// Optional.
+  ModelExtractOptions? modelExtractOptions;
 
   /// Whether to print out a header row in the results.
   ///
@@ -6942,14 +8004,9 @@ class JobConfigurationExtract {
   /// A reference to the table being exported.
   TableReference? sourceTable;
 
-  /// If destinationFormat is set to "AVRO", this flag indicates whether to
-  /// enable extracting applicable column types (such as TIMESTAMP) to their
-  /// corresponding AVRO logical types (timestamp-micros), instead of only using
-  /// their raw types (avro-long).
+  /// Whether to use logical types when extracting to AVRO format.
   ///
   /// Not applicable when extracting models.
-  ///
-  /// Optional.
   core.bool? useAvroLogicalTypes;
 
   JobConfigurationExtract({
@@ -6958,6 +8015,7 @@ class JobConfigurationExtract {
     this.destinationUri,
     this.destinationUris,
     this.fieldDelimiter,
+    this.modelExtractOptions,
     this.printHeader,
     this.sourceModel,
     this.sourceTable,
@@ -6983,6 +8041,10 @@ class JobConfigurationExtract {
           fieldDelimiter: json_.containsKey('fieldDelimiter')
               ? json_['fieldDelimiter'] as core.String
               : null,
+          modelExtractOptions: json_.containsKey('modelExtractOptions')
+              ? ModelExtractOptions.fromJson(json_['modelExtractOptions']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           printHeader: json_.containsKey('printHeader')
               ? json_['printHeader'] as core.bool
               : null,
@@ -7005,6 +8067,8 @@ class JobConfigurationExtract {
         if (destinationUri != null) 'destinationUri': destinationUri!,
         if (destinationUris != null) 'destinationUris': destinationUris!,
         if (fieldDelimiter != null) 'fieldDelimiter': fieldDelimiter!,
+        if (modelExtractOptions != null)
+          'modelExtractOptions': modelExtractOptions!,
         if (printHeader != null) 'printHeader': printHeader!,
         if (sourceModel != null) 'sourceModel': sourceModel!,
         if (sourceTable != null) 'sourceTable': sourceTable!,
@@ -7013,6 +8077,8 @@ class JobConfigurationExtract {
       };
 }
 
+/// JobConfigurationLoad contains the configuration properties for loading data
+/// into a destination table.
 class JobConfigurationLoad {
   /// Accept rows that are missing trailing optional columns.
   ///
@@ -7036,19 +8102,36 @@ class JobConfigurationLoad {
   /// Optional.
   core.bool? autodetect;
 
-  /// \[Beta\] Clustering specification for the destination table.
-  ///
-  /// Must be specified with time-based partitioning, data in the table will be
-  /// first partitioned and subsequently clustered.
+  /// Clustering specification for the destination table.
   Clustering? clustering;
 
-  /// Connection properties.
+  /// Connection properties which can modify the load job behavior.
+  ///
+  /// Currently, only the 'session_id' connection property is supported, and is
+  /// used to resolve _SESSION appearing as the dataset id.
+  ///
+  /// Optional.
   core.List<ConnectionProperty>? connectionProperties;
+
+  /// \[Experimental\] Configures the load job to only copy files to the
+  /// destination BigLake managed table with an external storage_uri, without
+  /// reading file content and writing them to new files.
+  ///
+  /// Copying files only is supported when: * source_uris are in the same
+  /// external storage system as the destination table but they do not overlap
+  /// with storage_uri of the destination table. * source_format is the same
+  /// file format as the destination table. * destination_table is an existing
+  /// BigLake managed table. Its schema does not have default value expression.
+  /// It schema does not have type parameters other than precision and scale. *
+  /// No options other than the above are specified.
+  ///
+  /// Optional.
+  core.bool? copyFilesOnly;
 
   /// Specifies whether the job is allowed to create new tables.
   ///
-  /// The following values are supported: CREATE_IF_NEEDED: If the table does
-  /// not exist, BigQuery creates the table. CREATE_NEVER: The table must
+  /// The following values are supported: * CREATE_IF_NEEDED: If the table does
+  /// not exist, BigQuery creates the table. * CREATE_NEVER: The table must
   /// already exist. If it does not, a 'notFound' error is returned in the job
   /// result. The default value is CREATE_IF_NEEDED. Creation, truncation and
   /// append actions occur as one atomic update upon job completion.
@@ -7056,11 +8139,17 @@ class JobConfigurationLoad {
   /// Optional.
   core.String? createDisposition;
 
-  /// If true, creates a new session, where session id will be a server
-  /// generated random id.
+  /// If this property is true, the job creates a new session using a randomly
+  /// generated session_id.
   ///
-  /// If false, runs query with an existing session_id passed in
-  /// ConnectionProperty, otherwise runs the load job in non-session mode.
+  /// To continue using a created session with subsequent queries, pass the
+  /// existing session identifier as a `ConnectionProperty` value. The session
+  /// identifier is returned as part of the `SessionInfo` message within the
+  /// query statistics. The new session's location will be set to
+  /// `Job.JobReference.location` if it is present, otherwise it's set to the
+  /// default location based on existing routing logic.
+  ///
+  /// Optional.
   core.bool? createSession;
 
   /// Defines the list of possible SQL data types to which the source decimal
@@ -7074,20 +8163,18 @@ class JobConfigurationLoad {
   /// the type supporting the widest range in the specified list is picked, and
   /// if a value exceeds the supported range when reading the data, an error
   /// will be thrown. Example: Suppose the value of this field is \["NUMERIC",
-  /// "BIGNUMERIC"\]. If (precision,scale) is: (38,9) -\> NUMERIC; (39,9) -\>
-  /// BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -\> BIGNUMERIC
-  /// (NUMERIC cannot hold 10 fractional digits); (76,38) -\> BIGNUMERIC;
-  /// (77,38) -\> BIGNUMERIC (error if value exeeds supported range). This field
-  /// cannot contain duplicate types. The order of the types in this field is
-  /// ignored. For example, \["BIGNUMERIC", "NUMERIC"\] is the same as
-  /// \["NUMERIC", "BIGNUMERIC"\] and NUMERIC always takes precedence over
-  /// BIGNUMERIC. Defaults to \["NUMERIC", "STRING"\] for ORC and \["NUMERIC"\]
-  /// for the other file formats.
-  ///
-  /// Optional.
+  /// "BIGNUMERIC"\]. If (precision,scale) is: * (38,9) -\> NUMERIC; * (39,9)
+  /// -\> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); * (38,10) -\>
+  /// BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); * (76,38) -\>
+  /// BIGNUMERIC; * (77,38) -\> BIGNUMERIC (error if value exeeds supported
+  /// range). This field cannot contain duplicate types. The order of the types
+  /// in this field is ignored. For example, \["BIGNUMERIC", "NUMERIC"\] is the
+  /// same as \["NUMERIC", "BIGNUMERIC"\] and NUMERIC always takes precedence
+  /// over BIGNUMERIC. Defaults to \["NUMERIC", "STRING"\] for ORC and
+  /// \["NUMERIC"\] for the other file formats.
   core.List<core.String>? decimalTargetTypes;
 
-  /// Custom encryption configuration (e.g., Cloud KMS keys).
+  /// Custom encryption configuration (e.g., Cloud KMS keys)
   EncryptionConfiguration? destinationEncryptionConfiguration;
 
   /// The destination table to load the data into.
@@ -7095,27 +8182,40 @@ class JobConfigurationLoad {
   /// Required.
   TableReference? destinationTable;
 
-  /// \[Beta\] \[Optional\] Properties with which to create the destination
-  /// table if it is new.
+  /// \[Experimental\] Properties with which to create the destination table if
+  /// it is new.
+  ///
+  /// Optional.
   DestinationTableProperties? destinationTableProperties;
 
   /// The character encoding of the data.
   ///
-  /// The supported values are UTF-8 or ISO-8859-1. The default value is UTF-8.
-  /// BigQuery decodes the data after the raw, binary data has been split using
-  /// the values of the quote and fieldDelimiter properties.
+  /// The supported values are UTF-8, ISO-8859-1, UTF-16BE, UTF-16LE, UTF-32BE,
+  /// and UTF-32LE. The default value is UTF-8. BigQuery decodes the data after
+  /// the raw, binary data has been split using the values of the `quote` and
+  /// `fieldDelimiter` properties. If you don't specify an encoding, or if you
+  /// specify a UTF-8 encoding when the CSV file is not UTF-8 encoded, BigQuery
+  /// attempts to convert the data to UTF-8. Generally, your data loads
+  /// successfully, but it may not match byte-for-byte what you expect. To avoid
+  /// this, specify the correct encoding by using the `--encoding` flag. If
+  /// BigQuery can't convert a character other than the ASCII `0` character,
+  /// BigQuery converts the character to the standard Unicode replacement
+  /// character: �.
   ///
   /// Optional.
   core.String? encoding;
 
-  /// The separator for fields in a CSV file.
+  /// The separator character for fields in a CSV file.
   ///
-  /// The separator can be any ISO-8859-1 single-byte character. To use a
-  /// character in the range 128-255, you must encode the character as UTF8.
-  /// BigQuery converts the string to ISO-8859-1 encoding, and then uses the
-  /// first byte of the encoded string to split the data in its raw, binary
-  /// state. BigQuery also supports the escape sequence "\t" to specify a tab
-  /// separator. The default value is a comma (',').
+  /// The separator is interpreted as a single byte. For files encoded in
+  /// ISO-8859-1, any single character can be used as a separator. For files
+  /// encoded in UTF-8, characters represented in decimal range 1-127
+  /// (U+0001-U+007F) can be used without any modification. UTF-8 characters
+  /// encoded with multiple bytes (i.e. U+0080 and above) will have only the
+  /// first byte used for separating fields. The remaining bytes will be treated
+  /// as a part of the field. BigQuery also supports the escape sequence "\t"
+  /// (U+0009) to specify a tab separator. The default value is comma (",",
+  /// U+002C).
   ///
   /// Optional.
   core.String? fieldDelimiter;
@@ -7123,14 +8223,25 @@ class JobConfigurationLoad {
   /// Specifies how source URIs are interpreted for constructing the file set to
   /// load.
   ///
-  /// By default source URIs are expanded against the underlying storage. Other
-  /// options include specifying manifest files. Only applicable to object
-  /// storage systems.
+  /// By default, source URIs are expanded against the underlying storage. You
+  /// can also specify manifest files to control how the file set is
+  /// constructed. This option is only applicable to object storage systems.
   ///
   /// Optional.
+  /// Possible string values are:
+  /// - "FILE_SET_SPEC_TYPE_FILE_SYSTEM_MATCH" : This option expands source URIs
+  /// by listing files from the object store. It is the default behavior if
+  /// FileSetSpecType is not set.
+  /// - "FILE_SET_SPEC_TYPE_NEW_LINE_DELIMITED_MANIFEST" : This option indicates
+  /// that the provided URIs are newline-delimited manifest files, with one URI
+  /// per line. Wildcard URIs are not supported.
   core.String? fileSetSpecType;
 
-  /// Options to configure hive partitioning support.
+  /// When set, configures hive partitioning support.
+  ///
+  /// Not all storage formats support hive partitioning -- requesting hive
+  /// partitioning on an unsupported format will lead to an error, as will
+  /// providing an invalid specification.
   ///
   /// Optional.
   HivePartitioningOptions? hivePartitioningOptions;
@@ -7143,27 +8254,34 @@ class JobConfigurationLoad {
   /// an invalid error is returned in the job result. The default value is
   /// false. The sourceFormat property determines what BigQuery treats as an
   /// extra value: CSV: Trailing columns JSON: Named values that don't match any
-  /// column names
+  /// column names in the table schema Avro, Parquet, ORC: Fields in the file
+  /// schema that don't exist in the table schema.
   ///
   /// Optional.
   core.bool? ignoreUnknownValues;
 
-  /// If sourceFormat is set to newline-delimited JSON, indicates whether it
-  /// should be processed as a JSON variant such as GeoJSON.
+  /// Load option to be used together with source_format newline-delimited JSON
+  /// to indicate that a variant of JSON is being loaded.
   ///
-  /// For a sourceFormat other than JSON, omit this field. If the sourceFormat
-  /// is newline-delimited JSON: - for newline-delimited GeoJSON: set to
-  /// GEOJSON.
+  /// To load newline-delimited GeoJSON, specify GEOJSON (and source_format must
+  /// be set to NEWLINE_DELIMITED_JSON).
   ///
   /// Optional.
+  /// Possible string values are:
+  /// - "JSON_EXTENSION_UNSPECIFIED" : The default if provided value is not one
+  /// included in the enum, or the value is not specified. The source formate is
+  /// parsed without any modification.
+  /// - "GEOJSON" : Use GeoJSON variant of JSON. See
+  /// https://tools.ietf.org/html/rfc7946.
   core.String? jsonExtension;
 
   /// The maximum number of bad records that BigQuery can ignore when running
   /// the job.
   ///
   /// If the number of bad records exceeds this value, an invalid error is
-  /// returned in the job result. This is only valid for CSV and JSON. The
-  /// default value is 0, which requires that all records are valid.
+  /// returned in the job result. The default value is 0, which requires that
+  /// all records are valid. This is only supported for CSV and
+  /// NEWLINE_DELIMITED_JSON file formats.
   ///
   /// Optional.
   core.int? maxBadRecords;
@@ -7180,15 +8298,14 @@ class JobConfigurationLoad {
   /// Optional.
   core.String? nullMarker;
 
-  /// Options to configure parquet support.
+  /// Additional properties to set if sourceFormat is set to PARQUET.
   ///
   /// Optional.
   ParquetOptions? parquetOptions;
 
-  /// Preserves the embedded ASCII control characters (the first 32 characters
-  /// in the ASCII-table, from '\x00' to '\x1F') when loading from CSV.
-  ///
-  /// Only applicable to CSV, ignored for other formats.
+  /// When sourceFormat is set to "CSV", this indicates whether the embedded
+  /// ASCII control characters (the first 32 characters in the ASCII-table, from
+  /// '\x00' to '\x1F') are preserved.
   ///
   /// Optional.
   core.bool? preserveAsciiControlCharacters;
@@ -7209,18 +8326,25 @@ class JobConfigurationLoad {
   /// state. The default value is a double-quote ('"'). If your data does not
   /// contain quoted sections, set the property value to an empty string. If
   /// your data contains quoted newline characters, you must also set the
-  /// allowQuotedNewlines property to true.
+  /// allowQuotedNewlines property to true. To include the specific quote
+  /// character within a quoted value, precede it with an additional matching
+  /// quote character. For example, if you want to escape the default character
+  /// ' " ', use ' "" '. @default "
   ///
   /// Optional.
   core.String? quote;
 
-  /// \[TrustedTester\] Range partitioning specification for this table.
+  /// Range partitioning specification for the destination table.
   ///
   /// Only one of timePartitioning and rangePartitioning should be specified.
   RangePartitioning? rangePartitioning;
 
-  /// User provided referencing file with the expected reader schema, Available
-  /// for the format: AVRO, PARQUET, ORC.
+  /// The user can provide a reference file with the reader schema.
+  ///
+  /// This file is only loaded if it is part of source URIs, but is not loaded
+  /// otherwise. It is enabled for the following formats: AVRO, PARQUET, ORC.
+  ///
+  /// Optional.
   core.String? referenceFileSchemaUri;
 
   /// The schema for the destination table.
@@ -7252,8 +8376,8 @@ class JobConfigurationLoad {
   /// WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination
   /// table is a partition of a table, specified by partition decorators. For
   /// normal tables, WRITE_TRUNCATE will always overwrite the schema. One or
-  /// more of the following values are specified: ALLOW_FIELD_ADDITION: allow
-  /// adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow
+  /// more of the following values are specified: * ALLOW_FIELD_ADDITION: allow
+  /// adding a nullable field to the schema. * ALLOW_FIELD_RELAXATION: allow
   /// relaxing a required field in the original schema to nullable.
   core.List<core.String>? schemaUpdateOptions;
 
@@ -7261,7 +8385,15 @@ class JobConfigurationLoad {
   /// loading the data.
   ///
   /// The default value is 0. This property is useful if you have header rows in
-  /// the file that should be skipped.
+  /// the file that should be skipped. When autodetect is on, the behavior is
+  /// the following: * skipLeadingRows unspecified - Autodetect tries to detect
+  /// headers in the first row. If they are not detected, the row is read as
+  /// data. Otherwise data is read starting from the second row. *
+  /// skipLeadingRows is 0 - Instructs autodetect that there are no headers and
+  /// data should be read starting from the first row. * skipLeadingRows = N \>
+  /// 0 - Autodetect skips N-1 rows and tries to detect headers in row N. If
+  /// headers are not detected, row N is just skipped. Otherwise row N is used
+  /// to extract column names for the detected schema.
   ///
   /// Optional.
   core.int? skipLeadingRows;
@@ -7303,14 +8435,15 @@ class JobConfigurationLoad {
 
   /// Specifies the action that occurs if the destination table already exists.
   ///
-  /// The following values are supported: WRITE_TRUNCATE: If the table already
-  /// exists, BigQuery overwrites the table data. WRITE_APPEND: If the table
-  /// already exists, BigQuery appends the data to the table. WRITE_EMPTY: If
-  /// the table already exists and contains data, a 'duplicate' error is
-  /// returned in the job result. The default value is WRITE_APPEND. Each action
-  /// is atomic and only occurs if BigQuery is able to complete the job
-  /// successfully. Creation, truncation and append actions occur as one atomic
-  /// update upon job completion.
+  /// The following values are supported: * WRITE_TRUNCATE: If the table already
+  /// exists, BigQuery overwrites the data, removes the constraints and uses the
+  /// schema from the load job. * WRITE_APPEND: If the table already exists,
+  /// BigQuery appends the data to the table. * WRITE_EMPTY: If the table
+  /// already exists and contains data, a 'duplicate' error is returned in the
+  /// job result. The default value is WRITE_APPEND. Each action is atomic and
+  /// only occurs if BigQuery is able to complete the job successfully.
+  /// Creation, truncation and append actions occur as one atomic update upon
+  /// job completion.
   ///
   /// Optional.
   core.String? writeDisposition;
@@ -7321,6 +8454,7 @@ class JobConfigurationLoad {
     this.autodetect,
     this.clustering,
     this.connectionProperties,
+    this.copyFilesOnly,
     this.createDisposition,
     this.createSession,
     this.decimalTargetTypes,
@@ -7373,6 +8507,9 @@ class JobConfigurationLoad {
                   .map((value) => ConnectionProperty.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
+              : null,
+          copyFilesOnly: json_.containsKey('copyFilesOnly')
+              ? json_['copyFilesOnly'] as core.bool
               : null,
           createDisposition: json_.containsKey('createDisposition')
               ? json_['createDisposition'] as core.String
@@ -7495,6 +8632,7 @@ class JobConfigurationLoad {
         if (clustering != null) 'clustering': clustering!,
         if (connectionProperties != null)
           'connectionProperties': connectionProperties!,
+        if (copyFilesOnly != null) 'copyFilesOnly': copyFilesOnly!,
         if (createDisposition != null) 'createDisposition': createDisposition!,
         if (createSession != null) 'createSession': createSession!,
         if (decimalTargetTypes != null)
@@ -7539,25 +8677,23 @@ class JobConfigurationLoad {
       };
 }
 
+/// JobConfigurationQuery configures a BigQuery query job.
 class JobConfigurationQuery {
   /// If true and query uses legacy SQL dialect, allows the query to produce
   /// arbitrarily large result tables at a slight cost in performance.
   ///
-  /// Requires destinationTable to be set. For standard SQL queries, this flag
-  /// is ignored and large results are always allowed. However, you must still
-  /// set destinationTable when result size exceeds the allowed maximum response
+  /// Requires destinationTable to be set. For GoogleSQL queries, this flag is
+  /// ignored and large results are always allowed. However, you must still set
+  /// destinationTable when result size exceeds the allowed maximum response
   /// size.
   ///
   /// Optional.
   core.bool? allowLargeResults;
 
-  /// \[Beta\] Clustering specification for the destination table.
-  ///
-  /// Must be specified with time-based partitioning, data in the table will be
-  /// first partitioned and subsequently clustered.
+  /// Clustering specification for the destination table.
   Clustering? clustering;
 
-  /// Connection properties.
+  /// Connection properties which can modify the query behavior.
   core.List<ConnectionProperty>? connectionProperties;
 
   /// Specifies whether the query should be executed as a continuous query.
@@ -7569,8 +8705,8 @@ class JobConfigurationQuery {
 
   /// Specifies whether the job is allowed to create new tables.
   ///
-  /// The following values are supported: CREATE_IF_NEEDED: If the table does
-  /// not exist, BigQuery creates the table. CREATE_NEVER: The table must
+  /// The following values are supported: * CREATE_IF_NEEDED: If the table does
+  /// not exist, BigQuery creates the table. * CREATE_NEVER: The table must
   /// already exist. If it does not, a 'notFound' error is returned in the job
   /// result. The default value is CREATE_IF_NEEDED. Creation, truncation and
   /// append actions occur as one atomic update upon job completion.
@@ -7578,29 +8714,36 @@ class JobConfigurationQuery {
   /// Optional.
   core.String? createDisposition;
 
-  /// If true, creates a new session, where session id will be a server
-  /// generated random id.
+  /// If this property is true, the job creates a new session using a randomly
+  /// generated session_id.
   ///
-  /// If false, runs query with an existing session_id passed in
-  /// ConnectionProperty, otherwise runs query in non-session mode.
+  /// To continue using a created session with subsequent queries, pass the
+  /// existing session identifier as a `ConnectionProperty` value. The session
+  /// identifier is returned as part of the `SessionInfo` message within the
+  /// query statistics. The new session's location will be set to
+  /// `Job.JobReference.location` if it is present, otherwise it's set to the
+  /// default location based on existing routing logic.
   core.bool? createSession;
 
   /// Specifies the default dataset to use for unqualified table names in the
   /// query.
   ///
-  /// Note that this does not alter behavior of unqualified dataset names.
+  /// This setting does not alter behavior of unqualified dataset names. Setting
+  /// the system variable `@@dataset_id` achieves the same behavior. See
+  /// https://cloud.google.com/bigquery/docs/reference/system-variables for more
+  /// information on system variables.
   ///
   /// Optional.
   DatasetReference? defaultDataset;
 
-  /// Custom encryption configuration (e.g., Cloud KMS keys).
+  /// Custom encryption configuration (e.g., Cloud KMS keys)
   EncryptionConfiguration? destinationEncryptionConfiguration;
 
   /// Describes the table where the query results should be stored.
   ///
-  /// If not present, a new table will be created to store the results. This
-  /// property must be set for large results that exceed the maximum response
-  /// size.
+  /// This property must be set for large results that exceed the maximum
+  /// response size. For queries that produce anonymous (cached) results, this
+  /// field will be populated by BigQuery.
   ///
   /// Optional.
   TableReference? destinationTable;
@@ -7608,19 +8751,24 @@ class JobConfigurationQuery {
   /// If true and query uses legacy SQL dialect, flattens all nested and
   /// repeated fields in the query results.
   ///
-  /// allowLargeResults must be true if this is set to false. For standard SQL
+  /// allowLargeResults must be true if this is set to false. For GoogleSQL
   /// queries, this flag is ignored and results are never flattened.
   ///
   /// Optional.
   core.bool? flattenResults;
 
-  /// Limits the billing tier for this job.
+  /// Maximum billing tier allowed for this query.
   ///
-  /// Queries that have resource usage beyond this tier will fail (without
-  /// incurring a charge). If unspecified, this will be set to your project
-  /// default.
+  /// The billing tier controls the amount of compute resources allotted to the
+  /// query, and multiplies the on-demand cost of the query accordingly. A query
+  /// that runs within its allotted resources will succeed and indicate its
+  /// billing tier in statistics.query.billingTier, but if the query exceeds its
+  /// allotted resources, it will fail with billingTierLimitExceeded. WARNING:
+  /// The billed byte amount can be multiplied by an amount up to this number!
+  /// Most users should not need to alter this setting, and we recommend that
+  /// you avoid introducing new uses of it.
   ///
-  /// Optional.
+  /// Optional. Deprecated.
   core.int? maximumBillingTier;
 
   /// Limits the bytes billed for this job.
@@ -7628,11 +8776,9 @@ class JobConfigurationQuery {
   /// Queries that will have bytes billed beyond this limit will fail (without
   /// incurring a charge). If unspecified, this will be set to your project
   /// default.
-  ///
-  /// Optional.
   core.String? maximumBytesBilled;
 
-  /// Standard SQL only.
+  /// GoogleSQL only.
   ///
   /// Set to POSITIONAL to use positional (?) query parameters or to NAMED to
   /// use named (@myparam) query parameters in this query.
@@ -7654,15 +8800,15 @@ class JobConfigurationQuery {
   /// SQL query text to execute.
   ///
   /// The useLegacySql field can be used to indicate whether the query uses
-  /// legacy SQL or standard SQL.
+  /// legacy SQL or GoogleSQL.
   ///
   /// Required.
   core.String? query;
 
-  /// Query parameters for standard SQL queries.
+  /// Query parameters for GoogleSQL queries.
   core.List<QueryParameter>? queryParameters;
 
-  /// \[TrustedTester\] Range partitioning specification for this table.
+  /// Range partitioning specification for the destination table.
   ///
   /// Only one of timePartitioning and rangePartitioning should be specified.
   RangePartitioning? rangePartitioning;
@@ -7674,16 +8820,29 @@ class JobConfigurationQuery {
   /// WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination
   /// table is a partition of a table, specified by partition decorators. For
   /// normal tables, WRITE_TRUNCATE will always overwrite the schema. One or
-  /// more of the following values are specified: ALLOW_FIELD_ADDITION: allow
-  /// adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow
+  /// more of the following values are specified: * ALLOW_FIELD_ADDITION: allow
+  /// adding a nullable field to the schema. * ALLOW_FIELD_RELAXATION: allow
   /// relaxing a required field in the original schema to nullable.
   core.List<core.String>? schemaUpdateOptions;
 
-  /// If querying an external data source outside of BigQuery, describes the
-  /// data format, location and other properties of the data source.
+  /// Options controlling the execution of scripts.
+  ScriptOptions? scriptOptions;
+
+  /// System variables for GoogleSQL queries.
   ///
-  /// By defining these properties, the data source can then be queried as if it
-  /// were a standard BigQuery table.
+  /// A system variable is output if the variable is settable and its value
+  /// differs from the system default. "@@" prefix is not included in the name
+  /// of the System variables.
+  ///
+  /// Output only.
+  SystemVariables? systemVariables;
+
+  /// You can specify external table definitions, which operate as ephemeral
+  /// tables that can be queried.
+  ///
+  /// These definitions are configured using a JSON map, where the string key
+  /// represents the table identifier, and the value is the corresponding
+  /// external data configuration object.
   ///
   /// Optional.
   core.Map<core.String, ExternalDataConfiguration>? tableDefinitions;
@@ -7696,9 +8855,11 @@ class JobConfigurationQuery {
   /// Specifies whether to use BigQuery's legacy SQL dialect for this query.
   ///
   /// The default value is true. If set to false, the query will use BigQuery's
-  /// standard SQL: https://cloud.google.com/bigquery/sql-reference/ When
+  /// GoogleSQL: https://cloud.google.com/bigquery/sql-reference/ When
   /// useLegacySql is set to false, the value of flattenResults is ignored;
   /// query will be run as if flattenResults is false.
+  ///
+  /// Optional.
   core.bool? useLegacySql;
 
   /// Whether to look for the result in the query cache.
@@ -7716,14 +8877,15 @@ class JobConfigurationQuery {
 
   /// Specifies the action that occurs if the destination table already exists.
   ///
-  /// The following values are supported: WRITE_TRUNCATE: If the table already
-  /// exists, BigQuery overwrites the table data and uses the schema from the
-  /// query result. WRITE_APPEND: If the table already exists, BigQuery appends
-  /// the data to the table. WRITE_EMPTY: If the table already exists and
-  /// contains data, a 'duplicate' error is returned in the job result. The
-  /// default value is WRITE_EMPTY. Each action is atomic and only occurs if
-  /// BigQuery is able to complete the job successfully. Creation, truncation
-  /// and append actions occur as one atomic update upon job completion.
+  /// The following values are supported: * WRITE_TRUNCATE: If the table already
+  /// exists, BigQuery overwrites the data, removes the constraints, and uses
+  /// the schema from the query result. * WRITE_APPEND: If the table already
+  /// exists, BigQuery appends the data to the table. * WRITE_EMPTY: If the
+  /// table already exists and contains data, a 'duplicate' error is returned in
+  /// the job result. The default value is WRITE_EMPTY. Each action is atomic
+  /// and only occurs if BigQuery is able to complete the job successfully.
+  /// Creation, truncation and append actions occur as one atomic update upon
+  /// job completion.
   ///
   /// Optional.
   core.String? writeDisposition;
@@ -7748,6 +8910,8 @@ class JobConfigurationQuery {
     this.queryParameters,
     this.rangePartitioning,
     this.schemaUpdateOptions,
+    this.scriptOptions,
+    this.systemVariables,
     this.tableDefinitions,
     this.timePartitioning,
     this.useLegacySql,
@@ -7829,6 +8993,14 @@ class JobConfigurationQuery {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          scriptOptions: json_.containsKey('scriptOptions')
+              ? ScriptOptions.fromJson(
+                  json_['scriptOptions'] as core.Map<core.String, core.dynamic>)
+              : null,
+          systemVariables: json_.containsKey('systemVariables')
+              ? SystemVariables.fromJson(json_['systemVariables']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           tableDefinitions: json_.containsKey('tableDefinitions')
               ? (json_['tableDefinitions']
                       as core.Map<core.String, core.dynamic>)
@@ -7888,6 +9060,8 @@ class JobConfigurationQuery {
         if (rangePartitioning != null) 'rangePartitioning': rangePartitioning!,
         if (schemaUpdateOptions != null)
           'schemaUpdateOptions': schemaUpdateOptions!,
+        if (scriptOptions != null) 'scriptOptions': scriptOptions!,
+        if (systemVariables != null) 'systemVariables': systemVariables!,
         if (tableDefinitions != null) 'tableDefinitions': tableDefinitions!,
         if (timePartitioning != null) 'timePartitioning': timePartitioning!,
         if (useLegacySql != null) 'useLegacySql': useLegacySql!,
@@ -7898,11 +9072,16 @@ class JobConfigurationQuery {
       };
 }
 
+/// JobConfigurationTableCopy configures a job that copies data from one table
+/// to another.
+///
+/// For more information on copying tables, see
+/// [Copy a table](https://cloud.google.com/bigquery/docs/managing-tables#copy-table).
 class JobConfigurationTableCopy {
   /// Specifies whether the job is allowed to create new tables.
   ///
-  /// The following values are supported: CREATE_IF_NEEDED: If the table does
-  /// not exist, BigQuery creates the table. CREATE_NEVER: The table must
+  /// The following values are supported: * CREATE_IF_NEEDED: If the table does
+  /// not exist, BigQuery creates the table. * CREATE_NEVER: The table must
   /// already exist. If it does not, a 'notFound' error is returned in the job
   /// result. The default value is CREATE_IF_NEEDED. Creation, truncation and
   /// append actions occur as one atomic update upon job completion.
@@ -7918,12 +9097,9 @@ class JobConfigurationTableCopy {
   /// Expired tables will be deleted and their storage reclaimed.
   ///
   /// Optional.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Object? destinationExpirationTime;
+  core.String? destinationExpirationTime;
 
-  /// The destination table
+  /// The destination table.
   ///
   /// Required.
   TableReference? destinationTable;
@@ -7931,6 +9107,15 @@ class JobConfigurationTableCopy {
   /// Supported operation types in table copy job.
   ///
   /// Optional.
+  /// Possible string values are:
+  /// - "OPERATION_TYPE_UNSPECIFIED" : Unspecified operation type.
+  /// - "COPY" : The source and destination table have the same table type.
+  /// - "SNAPSHOT" : The source table type is TABLE and the destination table
+  /// type is SNAPSHOT.
+  /// - "RESTORE" : The source table type is SNAPSHOT and the destination table
+  /// type is TABLE.
+  /// - "CLONE" : The source and destination table have the same table type, but
+  /// only bill for unique data.
   core.String? operationType;
 
   /// \[Pick one\] Source table to copy.
@@ -7941,14 +9126,15 @@ class JobConfigurationTableCopy {
 
   /// Specifies the action that occurs if the destination table already exists.
   ///
-  /// The following values are supported: WRITE_TRUNCATE: If the table already
-  /// exists, BigQuery overwrites the table data. WRITE_APPEND: If the table
-  /// already exists, BigQuery appends the data to the table. WRITE_EMPTY: If
-  /// the table already exists and contains data, a 'duplicate' error is
-  /// returned in the job result. The default value is WRITE_EMPTY. Each action
-  /// is atomic and only occurs if BigQuery is able to complete the job
-  /// successfully. Creation, truncation and append actions occur as one atomic
-  /// update upon job completion.
+  /// The following values are supported: * WRITE_TRUNCATE: If the table already
+  /// exists, BigQuery overwrites the table data and uses the schema and table
+  /// constraints from the source table. * WRITE_APPEND: If the table already
+  /// exists, BigQuery appends the data to the table. * WRITE_EMPTY: If the
+  /// table already exists and contains data, a 'duplicate' error is returned in
+  /// the job result. The default value is WRITE_EMPTY. Each action is atomic
+  /// and only occurs if BigQuery is able to complete the job successfully.
+  /// Creation, truncation and append actions occur as one atomic update upon
+  /// job completion.
   ///
   /// Optional.
   core.String? writeDisposition;
@@ -7977,7 +9163,7 @@ class JobConfigurationTableCopy {
                   : null,
           destinationExpirationTime:
               json_.containsKey('destinationExpirationTime')
-                  ? json_['destinationExpirationTime']
+                  ? json_['destinationExpirationTime'] as core.String
                   : null,
           destinationTable: json_.containsKey('destinationTable')
               ? TableReference.fromJson(json_['destinationTable']
@@ -8016,8 +9202,51 @@ class JobConfigurationTableCopy {
       };
 }
 
+/// Reason about why a Job was created from a
+/// \[`jobs.query`\](https://cloud.google.com/bigquery/docs/reference/rest/v2/jobs/query)
+/// method when used with `JOB_CREATION_OPTIONAL` Job creation mode.
+///
+/// For
+/// \[`jobs.insert`\](https://cloud.google.com/bigquery/docs/reference/rest/v2/jobs/insert)
+/// method calls it will always be `REQUESTED`. This feature is not yet
+/// available. Jobs will always be created.
+class JobCreationReason {
+  /// Specifies the high level reason why a Job was created.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CODE_UNSPECIFIED" : Reason is not specified.
+  /// - "REQUESTED" : Job creation was requested.
+  /// - "LONG_RUNNING" : The query request ran beyond a system defined timeout
+  /// specified by the
+  /// [timeoutMs field in the QueryRequest](https://cloud.google.com/bigquery/docs/reference/rest/v2/jobs/query#queryrequest).
+  /// As a result it was considered a long running operation for which a job was
+  /// created.
+  /// - "LARGE_RESULTS" : The results from the query cannot fit in the response.
+  /// - "OTHER" : BigQuery has determined that the query needs to be executed as
+  /// a Job.
+  core.String? code;
+
+  JobCreationReason({
+    this.code,
+  });
+
+  JobCreationReason.fromJson(core.Map json_)
+      : this(
+          code: json_.containsKey('code') ? json_['code'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (code != null) 'code': code!,
+      };
+}
+
+/// ListFormatJob is a partial projection of job information returned as part of
+/// a jobs.list response.
 class JobListJobs {
-  /// \[Full-projection-only\] Specifies the job configuration.
+  /// Describes the job configuration.
+  ///
+  /// Required.
   JobConfiguration? configuration;
 
   /// A result object that will be present only if the job has failed.
@@ -8026,11 +9255,18 @@ class JobListJobs {
   /// Unique opaque ID of the job.
   core.String? id;
 
-  /// Job reference uniquely identifying the job.
+  /// Unique opaque ID of the job.
   JobReference? jobReference;
 
   /// The resource type.
   core.String? kind;
+
+  /// \[Full-projection-only\] String representation of identity of requesting
+  /// party.
+  ///
+  /// Populated for both first- and third-party identities. Only present for
+  /// APIs that support third-party identities.
+  core.String? principalSubject;
 
   /// Running state of the job.
   ///
@@ -8038,11 +9274,13 @@ class JobListJobs {
   /// the job succeeded or failed.
   core.String? state;
 
-  /// \[Output-only\] Information about the job, including starting time and
-  /// ending time of the job.
+  /// Information about the job, including starting time and ending time of the
+  /// job.
+  ///
+  /// Output only.
   JobStatistics? statistics;
 
-  /// \[Full-projection-only\] Describes the state of the job.
+  /// \[Full-projection-only\] Describes the status of this job.
   JobStatus? status;
 
   /// \[Full-projection-only\] Email address of the user who ran the job.
@@ -8054,6 +9292,7 @@ class JobListJobs {
     this.id,
     this.jobReference,
     this.kind,
+    this.principalSubject,
     this.state,
     this.statistics,
     this.status,
@@ -8076,6 +9315,9 @@ class JobListJobs {
                   json_['jobReference'] as core.Map<core.String, core.dynamic>)
               : null,
           kind: json_.containsKey('kind') ? json_['kind'] as core.String : null,
+          principalSubject: json_.containsKey('principal_subject')
+              ? json_['principal_subject'] as core.String
+              : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
           statistics: json_.containsKey('statistics')
@@ -8097,6 +9339,7 @@ class JobListJobs {
         if (id != null) 'id': id!,
         if (jobReference != null) 'jobReference': jobReference!,
         if (kind != null) 'kind': kind!,
+        if (principalSubject != null) 'principal_subject': principalSubject!,
         if (state != null) 'state': state!,
         if (statistics != null) 'statistics': statistics!,
         if (status != null) 'status': status!,
@@ -8104,6 +9347,7 @@ class JobListJobs {
       };
 }
 
+/// JobList is the response format for a jobs.list call.
 class JobList {
   /// A hash of this page of results.
   core.String? etag;
@@ -8117,11 +9361,18 @@ class JobList {
   /// A token to request the next page of results.
   core.String? nextPageToken;
 
+  /// A list of skipped locations that were unreachable.
+  ///
+  /// For more information about BigQuery locations, see:
+  /// https://cloud.google.com/bigquery/docs/locations. Example: "europe-west5"
+  core.List<core.String>? unreachable;
+
   JobList({
     this.etag,
     this.jobs,
     this.kind,
     this.nextPageToken,
+    this.unreachable,
   });
 
   JobList.fromJson(core.Map json_)
@@ -8137,6 +9388,11 @@ class JobList {
           nextPageToken: json_.containsKey('nextPageToken')
               ? json_['nextPageToken'] as core.String
               : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8144,9 +9400,11 @@ class JobList {
         if (jobs != null) 'jobs': jobs!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
+/// A job reference is a fully qualified identifier for referring to a job.
 class JobReference {
   /// The ID of the job.
   ///
@@ -8158,8 +9416,10 @@ class JobReference {
 
   /// The geographic location of the job.
   ///
-  /// See details at
-  /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.
+  /// The default value is US. For more information about BigQuery locations,
+  /// see: https://cloud.google.com/bigquery/docs/locations
+  ///
+  /// Optional.
   core.String? location;
 
   /// The ID of the project containing this job.
@@ -8192,12 +9452,12 @@ class JobReference {
       };
 }
 
+/// Job resource usage breakdown by reservation.
 class JobStatisticsReservationUsage {
-  /// \[Output-only\] Reservation name or "unreserved" for on-demand resources
-  /// usage.
+  /// Reservation name or "unreserved" for on-demand resources usage.
   core.String? name;
 
-  /// \[Output-only\] Slot-milliseconds the job spent in the given reservation.
+  /// Total slot milliseconds used by the reservation for a particular job.
   core.String? slotMs;
 
   JobStatisticsReservationUsage({
@@ -8219,85 +9479,139 @@ class JobStatisticsReservationUsage {
       };
 }
 
+/// Statistics for a single job execution.
 class JobStatistics {
-  /// \[TrustedTester\] \[Output-only\] Job progress (0.0 -\> 1.0) for LOAD and
-  /// EXTRACT jobs.
+  /// \[TrustedTester\] Job progress (0.0 -\> 1.0) for LOAD and EXTRACT jobs.
+  ///
+  /// Output only.
   core.double? completionRatio;
 
-  /// \[Output-only\] Statistics for a copy job.
+  /// Statistics for a copy job.
+  ///
+  /// Output only.
   JobStatistics5? copy;
 
-  /// \[Output-only\] Creation time of this job, in milliseconds since the
-  /// epoch.
+  /// Creation time of this job, in milliseconds since the epoch.
   ///
   /// This field will be present on all jobs.
+  ///
+  /// Output only.
   core.String? creationTime;
 
-  /// \[Output-only\] Statistics for data masking.
+  /// Statistics for data-masking.
   ///
   /// Present only for query and extract jobs.
+  ///
+  /// Output only.
   DataMaskingStatistics? dataMaskingStatistics;
 
-  /// \[Output-only\] End time of this job, in milliseconds since the epoch.
+  /// End time of this job, in milliseconds since the epoch.
   ///
   /// This field will be present whenever a job is in the DONE state.
+  ///
+  /// Output only.
   core.String? endTime;
 
-  /// \[Output-only\] Statistics for an extract job.
+  /// Statistics for an extract job.
+  ///
+  /// Output only.
   JobStatistics4? extract;
 
-  /// \[Output-only\] Statistics for a load job.
+  /// The duration in milliseconds of the execution of the final attempt of this
+  /// job, as BigQuery may internally re-attempt to execute the job.
+  ///
+  /// Output only.
+  core.String? finalExecutionDurationMs;
+
+  /// Statistics for a load job.
+  ///
+  /// Output only.
   JobStatistics3? load;
 
-  /// \[Output-only\] Number of child jobs executed.
+  /// Number of child jobs executed.
+  ///
+  /// Output only.
   core.String? numChildJobs;
 
-  /// \[Output-only\] If this is a child job, the id of the parent.
+  /// If this is a child job, specifies the job ID of the parent.
+  ///
+  /// Output only.
   core.String? parentJobId;
 
-  /// \[Output-only\] Statistics for a query job.
+  /// Statistics for a query job.
+  ///
+  /// Output only.
   JobStatistics2? query;
 
-  /// \[Output-only\] Quotas which delayed this job's start time.
+  /// Quotas which delayed this job's start time.
+  ///
+  /// Output only.
   core.List<core.String>? quotaDeferments;
 
-  /// \[Output-only\] Job resource usage breakdown by reservation.
+  /// Job resource usage breakdown by reservation.
+  ///
+  /// This field reported misleading information and will no longer be
+  /// populated.
+  ///
+  /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<JobStatisticsReservationUsage>? reservationUsage;
 
-  /// \[Output-only\] Name of the primary reservation assigned to this job.
+  /// Name of the primary reservation assigned to this job.
   ///
   /// Note that this could be different than reservations reported in the
   /// reservation usage field if parent reservations were used to execute this
   /// job.
+  ///
+  /// Output only.
   core.String? reservationId;
 
-  /// \[Output-only\] \[Preview\] Statistics for row-level security.
+  /// Statistics for row-level security.
   ///
   /// Present only for query and extract jobs.
+  ///
+  /// Output only.
   RowLevelSecurityStatistics? rowLevelSecurityStatistics;
 
-  /// \[Output-only\] Statistics for a child job of a script.
+  /// If this a child job of a script, specifies information about the context
+  /// of this job within the script.
+  ///
+  /// Output only.
   ScriptStatistics? scriptStatistics;
 
-  /// \[Output-only\] \[Preview\] Information of the session if this job is part
-  /// of one.
+  /// Information of the session if this job is part of one.
+  ///
+  /// Output only.
   SessionInfo? sessionInfo;
 
-  /// \[Output-only\] Start time of this job, in milliseconds since the epoch.
+  /// Start time of this job, in milliseconds since the epoch.
   ///
   /// This field will be present when the job transitions from the PENDING state
   /// to either RUNNING or DONE.
+  ///
+  /// Output only.
   core.String? startTime;
 
-  /// \[Output-only\] \[Deprecated\] Use the bytes processed in the query
-  /// statistics instead.
+  /// Total bytes processed for the job.
+  ///
+  /// Output only.
   core.String? totalBytesProcessed;
 
-  /// \[Output-only\] Slot-milliseconds for the job.
+  /// Slot-milliseconds for the job.
+  ///
+  /// Output only.
   core.String? totalSlotMs;
 
-  /// \[Output-only\] \[Alpha\] Information of the multi-statement transaction
-  /// if this job is part of one.
+  /// \[Alpha\] Information of the multi-statement transaction if this job is
+  /// part of one.
+  ///
+  /// This property is only expected on a child job or a job that is in a
+  /// session. A script parent job is not part of the transaction started in the
+  /// script.
+  ///
+  /// Output only.
   TransactionInfo? transactionInfo;
 
   JobStatistics({
@@ -8307,6 +9621,7 @@ class JobStatistics {
     this.dataMaskingStatistics,
     this.endTime,
     this.extract,
+    this.finalExecutionDurationMs,
     this.load,
     this.numChildJobs,
     this.parentJobId,
@@ -8346,6 +9661,10 @@ class JobStatistics {
               ? JobStatistics4.fromJson(
                   json_['extract'] as core.Map<core.String, core.dynamic>)
               : null,
+          finalExecutionDurationMs:
+              json_.containsKey('finalExecutionDurationMs')
+                  ? json_['finalExecutionDurationMs'] as core.String
+                  : null,
           load: json_.containsKey('load')
               ? JobStatistics3.fromJson(
                   json_['load'] as core.Map<core.String, core.dynamic>)
@@ -8411,6 +9730,8 @@ class JobStatistics {
           'dataMaskingStatistics': dataMaskingStatistics!,
         if (endTime != null) 'endTime': endTime!,
         if (extract != null) 'extract': extract!,
+        if (finalExecutionDurationMs != null)
+          'finalExecutionDurationMs': finalExecutionDurationMs!,
         if (load != null) 'load': load!,
         if (numChildJobs != null) 'numChildJobs': numChildJobs!,
         if (parentJobId != null) 'parentJobId': parentJobId!,
@@ -8430,15 +9751,12 @@ class JobStatistics {
       };
 }
 
+/// Job resource usage breakdown by reservation.
 class JobStatistics2ReservationUsage {
   /// Reservation name or "unreserved" for on-demand resources usage.
-  ///
-  /// Output only.
   core.String? name;
 
-  /// Slot-milliseconds the job spent in the given reservation.
-  ///
-  /// Output only.
+  /// Total slot milliseconds used by the reservation for a particular job.
   core.String? slotMs;
 
   JobStatistics2ReservationUsage({
@@ -8460,13 +9778,21 @@ class JobStatistics2ReservationUsage {
       };
 }
 
+/// Statistics for a query job.
 class JobStatistics2 {
   /// BI Engine specific Statistics.
   ///
-  /// \[Output only\] BI Engine specific Statistics.
+  /// Output only.
   BiEngineStatistics? biEngineStatistics;
 
   /// Billing tier for the job.
+  ///
+  /// This is a BigQuery-specific concept which is not related to the Google
+  /// Cloud notion of "free tier". The value here is a measure of the query's
+  /// resource consumption relative to the amount of data scanned. For on-demand
+  /// queries, the limit is 100, and all queries within this limit are billed at
+  /// the standard on-demand rates. On-demand queries that exceed this limit
+  /// will fail with a billingTierLimitExceeded error.
   ///
   /// Output only.
   core.int? billingTier;
@@ -8476,17 +9802,31 @@ class JobStatistics2 {
   /// Output only.
   core.bool? cacheHit;
 
-  /// \[Preview\] The number of row access policies affected by a DDL statement.
+  /// Referenced dataset for DCL statement.
+  ///
+  /// Output only.
+  DatasetReference? dclTargetDataset;
+
+  /// Referenced table for DCL statement.
+  ///
+  /// Output only.
+  TableReference? dclTargetTable;
+
+  /// Referenced view for DCL statement.
+  ///
+  /// Output only.
+  TableReference? dclTargetView;
+
+  /// The number of row access policies affected by a DDL statement.
   ///
   /// Present only for DROP ALL ROW ACCESS POLICIES queries.
   ///
   /// Output only.
   core.String? ddlAffectedRowAccessPolicyCount;
 
-  /// The DDL destination table.
+  /// The table after rename.
   ///
-  /// Present only for ALTER TABLE RENAME TO queries. Note that ddl_target_table
-  /// is used just for its type information.
+  /// Present only for ALTER TABLE RENAME TO query.
   ///
   /// Output only.
   TableReference? ddlDestinationTable;
@@ -8494,28 +9834,24 @@ class JobStatistics2 {
   /// The DDL operation performed, possibly dependent on the pre-existence of
   /// the DDL target.
   ///
-  /// Possible values (new values might be added in the future): "CREATE": The
-  /// query created the DDL target. "SKIP": No-op. Example cases: the query is
-  /// CREATE TABLE IF NOT EXISTS while the table already exists, or the query is
-  /// DROP TABLE IF EXISTS while the table does not exist. "REPLACE": The query
-  /// replaced the DDL target. Example case: the query is CREATE OR REPLACE
-  /// TABLE, and the table already exists. "DROP": The query deleted the DDL
-  /// target.
+  /// Output only.
   core.String? ddlOperationPerformed;
 
   /// The DDL target dataset.
   ///
-  /// Present only for CREATE/ALTER/DROP/UNDROP SCHEMA queries.
+  /// Present only for CREATE/ALTER/DROP SCHEMA(dataset) queries.
   ///
   /// Output only.
   DatasetReference? ddlTargetDataset;
 
-  /// The DDL target routine.
+  /// \[Beta\] The DDL target routine.
   ///
   /// Present only for CREATE/DROP FUNCTION/PROCEDURE queries.
+  ///
+  /// Output only.
   RoutineReference? ddlTargetRoutine;
 
-  /// \[Preview\] The DDL target row access policy.
+  /// The DDL target row access policy.
   ///
   /// Present only for CREATE/DROP ROW ACCESS POLICY queries.
   ///
@@ -8530,8 +9866,8 @@ class JobStatistics2 {
   /// Output only.
   TableReference? ddlTargetTable;
 
-  /// Detailed statistics for DML statements Present only for DML statements
-  /// INSERT, UPDATE, DELETE or TRUNCATE.
+  /// Detailed statistics for DML statements INSERT, UPDATE, DELETE, MERGE or
+  /// TRUNCATE.
   ///
   /// Output only.
   DmlStatistics? dmlStats;
@@ -8541,18 +9877,43 @@ class JobStatistics2 {
   /// Output only.
   core.String? estimatedBytesProcessed;
 
+  /// Stats for EXPORT DATA statement.
+  ///
+  /// Output only.
+  ExportDataStatistics? exportDataStatistics;
+
+  /// Job cost breakdown as bigquery internal cost and external service costs.
+  ///
+  /// Output only.
+  core.List<ExternalServiceCost>? externalServiceCosts;
+
+  /// Statistics for a LOAD query.
+  ///
+  /// Output only.
+  LoadQueryStatistics? loadQueryStatistics;
+
+  /// Statistics of materialized views of a query job.
+  ///
+  /// Output only.
+  MaterializedViewStatistics? materializedViewStatistics;
+
+  /// Statistics of metadata cache usage in a query for BigLake tables.
+  ///
+  /// Output only.
+  MetadataCacheStatistics? metadataCacheStatistics;
+
   /// Statistics of a BigQuery ML training job.
   ///
   /// Output only.
   MlStatistics? mlStatistics;
 
-  /// \[Output only, Beta\] Information about create model query job progress.
+  /// Deprecated.
   BigQueryModelTraining? modelTraining;
 
-  /// \[Output only, Beta\] Deprecated; do not use.
+  /// Deprecated.
   core.int? modelTrainingCurrentIteration;
 
-  /// \[Output only, Beta\] Deprecated; do not use.
+  /// Deprecated.
   core.String? modelTrainingExpectedTotalIteration;
 
   /// The number of rows affected by a DML statement.
@@ -8562,13 +9923,22 @@ class JobStatistics2 {
   /// Output only.
   core.String? numDmlAffectedRows;
 
+  /// Performance insights.
+  ///
+  /// Output only.
+  PerformanceInsights? performanceInsights;
+
+  /// Query optimization information for a QUERY job.
+  ///
+  /// Output only.
+  QueryInfo? queryInfo;
+
   /// Describes execution plan for the query.
   ///
   /// Output only.
   core.List<ExplainQueryStage>? queryPlan;
 
-  /// Referenced routines (persistent user-defined functions and stored
-  /// procedures) for the job.
+  /// Referenced routines for the job.
   ///
   /// Output only.
   core.List<RoutineReference>? referencedRoutines;
@@ -8582,7 +9952,13 @@ class JobStatistics2 {
 
   /// Job resource usage breakdown by reservation.
   ///
+  /// This field reported misleading information and will no longer be
+  /// populated.
+  ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<JobStatistics2ReservationUsage>? reservationUsage;
 
   /// The schema of the results.
@@ -8604,32 +9980,104 @@ class JobStatistics2 {
 
   /// The type of query statement, if valid.
   ///
-  /// Possible values (new values might be added in the future): "SELECT":
-  /// SELECT query. "INSERT": INSERT query; see
-  /// https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language.
-  /// "UPDATE": UPDATE query; see
-  /// https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language.
-  /// "DELETE": DELETE query; see
-  /// https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language.
-  /// "MERGE": MERGE query; see
-  /// https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language.
-  /// "ALTER_TABLE": ALTER TABLE query. "ALTER_VIEW": ALTER VIEW query.
-  /// "ASSERT": ASSERT condition AS 'description'. "CREATE_FUNCTION": CREATE
-  /// FUNCTION query. "CREATE_MODEL": CREATE \[OR REPLACE\] MODEL ... AS SELECT
-  /// ... . "CREATE_PROCEDURE": CREATE PROCEDURE query. "CREATE_TABLE": CREATE
-  /// \[OR REPLACE\] TABLE without AS SELECT. "CREATE_TABLE_AS_SELECT": CREATE
-  /// \[OR REPLACE\] TABLE ... AS SELECT ... . "CREATE_VIEW": CREATE \[OR
-  /// REPLACE\] VIEW ... AS SELECT ... . "DROP_FUNCTION" : DROP FUNCTION query.
-  /// "DROP_PROCEDURE": DROP PROCEDURE query. "DROP_TABLE": DROP TABLE query.
-  /// "DROP_VIEW": DROP VIEW query.
+  /// Possible values: * `SELECT`:
+  /// \[`SELECT`\](/bigquery/docs/reference/standard-sql/query-syntax#select_list)
+  /// statement. * `ASSERT`:
+  /// \[`ASSERT`\](/bigquery/docs/reference/standard-sql/debugging-statements#assert)
+  /// statement. * `INSERT`:
+  /// \[`INSERT`\](/bigquery/docs/reference/standard-sql/dml-syntax#insert_statement)
+  /// statement. * `UPDATE`:
+  /// \[`UPDATE`\](/bigquery/docs/reference/standard-sql/query-syntax#update_statement)
+  /// statement. * `DELETE`:
+  /// \[`DELETE`\](/bigquery/docs/reference/standard-sql/data-manipulation-language)
+  /// statement. * `MERGE`:
+  /// \[`MERGE`\](/bigquery/docs/reference/standard-sql/data-manipulation-language)
+  /// statement. * `CREATE_TABLE`: \[`CREATE
+  /// TABLE`\](/bigquery/docs/reference/standard-sql/data-definition-language#create_table_statement)
+  /// statement, without `AS SELECT`. * `CREATE_TABLE_AS_SELECT`: \[`CREATE
+  /// TABLE AS
+  /// SELECT`\](/bigquery/docs/reference/standard-sql/data-definition-language#query_statement)
+  /// statement. * `CREATE_VIEW`: \[`CREATE
+  /// VIEW`\](/bigquery/docs/reference/standard-sql/data-definition-language#create_view_statement)
+  /// statement. * `CREATE_MODEL`: \[`CREATE
+  /// MODEL`\](/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-create#create_model_statement)
+  /// statement. * `CREATE_MATERIALIZED_VIEW`: \[`CREATE MATERIALIZED
+  /// VIEW`\](/bigquery/docs/reference/standard-sql/data-definition-language#create_materialized_view_statement)
+  /// statement. * `CREATE_FUNCTION`: \[`CREATE
+  /// FUNCTION`\](/bigquery/docs/reference/standard-sql/data-definition-language#create_function_statement)
+  /// statement. * `CREATE_TABLE_FUNCTION`: \[`CREATE TABLE
+  /// FUNCTION`\](/bigquery/docs/reference/standard-sql/data-definition-language#create_table_function_statement)
+  /// statement. * `CREATE_PROCEDURE`: \[`CREATE
+  /// PROCEDURE`\](/bigquery/docs/reference/standard-sql/data-definition-language#create_procedure)
+  /// statement. * `CREATE_ROW_ACCESS_POLICY`: \[`CREATE ROW ACCESS
+  /// POLICY`\](/bigquery/docs/reference/standard-sql/data-definition-language#create_row_access_policy_statement)
+  /// statement. * `CREATE_SCHEMA`: \[`CREATE
+  /// SCHEMA`\](/bigquery/docs/reference/standard-sql/data-definition-language#create_schema_statement)
+  /// statement. * `CREATE_SNAPSHOT_TABLE`: \[`CREATE SNAPSHOT
+  /// TABLE`\](/bigquery/docs/reference/standard-sql/data-definition-language#create_snapshot_table_statement)
+  /// statement. * `CREATE_SEARCH_INDEX`: \[`CREATE SEARCH
+  /// INDEX`\](/bigquery/docs/reference/standard-sql/data-definition-language#create_search_index_statement)
+  /// statement. * `DROP_TABLE`: \[`DROP
+  /// TABLE`\](/bigquery/docs/reference/standard-sql/data-definition-language#drop_table_statement)
+  /// statement. * `DROP_EXTERNAL_TABLE`: \[`DROP EXTERNAL
+  /// TABLE`\](/bigquery/docs/reference/standard-sql/data-definition-language#drop_external_table_statement)
+  /// statement. * `DROP_VIEW`: \[`DROP
+  /// VIEW`\](/bigquery/docs/reference/standard-sql/data-definition-language#drop_view_statement)
+  /// statement. * `DROP_MODEL`: \[`DROP
+  /// MODEL`\](/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-drop-model)
+  /// statement. * `DROP_MATERIALIZED_VIEW`: \[`DROP MATERIALIZED
+  /// VIEW`\](/bigquery/docs/reference/standard-sql/data-definition-language#drop_materialized_view_statement)
+  /// statement. * `DROP_FUNCTION` : \[`DROP
+  /// FUNCTION`\](/bigquery/docs/reference/standard-sql/data-definition-language#drop_function_statement)
+  /// statement. * `DROP_TABLE_FUNCTION` : \[`DROP TABLE
+  /// FUNCTION`\](/bigquery/docs/reference/standard-sql/data-definition-language#drop_table_function)
+  /// statement. * `DROP_PROCEDURE`: \[`DROP
+  /// PROCEDURE`\](/bigquery/docs/reference/standard-sql/data-definition-language#drop_procedure_statement)
+  /// statement. * `DROP_SEARCH_INDEX`: \[`DROP SEARCH
+  /// INDEX`\](/bigquery/docs/reference/standard-sql/data-definition-language#drop_search_index)
+  /// statement. * `DROP_SCHEMA`: \[`DROP
+  /// SCHEMA`\](/bigquery/docs/reference/standard-sql/data-definition-language#drop_schema_statement)
+  /// statement. * `DROP_SNAPSHOT_TABLE`: \[`DROP SNAPSHOT
+  /// TABLE`\](/bigquery/docs/reference/standard-sql/data-definition-language#drop_snapshot_table_statement)
+  /// statement. * `DROP_ROW_ACCESS_POLICY`: \[`DROP [ALL] ROW ACCESS
+  /// POLICY|POLICIES`\](/bigquery/docs/reference/standard-sql/data-definition-language#drop_row_access_policy_statement)
+  /// statement. * `ALTER_TABLE`: \[`ALTER
+  /// TABLE`\](/bigquery/docs/reference/standard-sql/data-definition-language#alter_table_set_options_statement)
+  /// statement. * `ALTER_VIEW`: \[`ALTER
+  /// VIEW`\](/bigquery/docs/reference/standard-sql/data-definition-language#alter_view_set_options_statement)
+  /// statement. * `ALTER_MATERIALIZED_VIEW`: \[`ALTER MATERIALIZED
+  /// VIEW`\](/bigquery/docs/reference/standard-sql/data-definition-language#alter_materialized_view_set_options_statement)
+  /// statement. * `ALTER_SCHEMA`: \[`ALTER
+  /// SCHEMA`\](/bigquery/docs/reference/standard-sql/data-definition-language#aalter_schema_set_options_statement)
+  /// statement. * `SCRIPT`:
+  /// \[`SCRIPT`\](/bigquery/docs/reference/standard-sql/procedural-language). *
+  /// `TRUNCATE_TABLE`: \[`TRUNCATE
+  /// TABLE`\](/bigquery/docs/reference/standard-sql/dml-syntax#truncate_table_statement)
+  /// statement. * `CREATE_EXTERNAL_TABLE`: \[`CREATE EXTERNAL
+  /// TABLE`\](/bigquery/docs/reference/standard-sql/data-definition-language#create_external_table_statement)
+  /// statement. * `EXPORT_DATA`: \[`EXPORT
+  /// DATA`\](/bigquery/docs/reference/standard-sql/other-statements#export_data_statement)
+  /// statement. * `EXPORT_MODEL`: \[`EXPORT
+  /// MODEL`\](/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-export-model)
+  /// statement. * `LOAD_DATA`: \[`LOAD
+  /// DATA`\](/bigquery/docs/reference/standard-sql/other-statements#load_data_statement)
+  /// statement. * `CALL`:
+  /// \[`CALL`\](/bigquery/docs/reference/standard-sql/procedural-language#call)
+  /// statement.
+  ///
+  /// Output only.
   core.String? statementType;
 
-  /// \[Beta\] Describes a timeline of job execution.
+  /// Describes a timeline of job execution.
   ///
   /// Output only.
   core.List<QueryTimelineSample>? timeline;
 
-  /// Total bytes billed for the job.
+  /// If the project is configured to use on-demand pricing, then this field
+  /// contains the total bytes billed for the job.
+  ///
+  /// If the project is configured to use flat-rate pricing, then you are not
+  /// billed for bytes and this field is informational only.
   ///
   /// Output only.
   core.String? totalBytesBilled;
@@ -8661,18 +10109,30 @@ class JobStatistics2 {
   /// Output only.
   core.String? totalSlotMs;
 
-  /// \[Output-only\] Total bytes transferred for cross-cloud queries such as
-  /// Cross Cloud Transfer and CREATE TABLE AS SELECT (CTAS).
+  /// Total bytes transferred for cross-cloud queries such as Cross Cloud
+  /// Transfer and CREATE TABLE AS SELECT (CTAS).
+  ///
+  /// Output only.
   core.String? transferredBytes;
 
-  /// Standard SQL only: list of undeclared query parameters detected during a
-  /// dry run validation.
+  /// GoogleSQL only: list of undeclared query parameters detected during a dry
+  /// run validation.
+  ///
+  /// Output only.
   core.List<QueryParameter>? undeclaredQueryParameters;
+
+  /// Vector Search query specific statistics.
+  ///
+  /// Output only.
+  VectorSearchStatistics? vectorSearchStatistics;
 
   JobStatistics2({
     this.biEngineStatistics,
     this.billingTier,
     this.cacheHit,
+    this.dclTargetDataset,
+    this.dclTargetTable,
+    this.dclTargetView,
     this.ddlAffectedRowAccessPolicyCount,
     this.ddlDestinationTable,
     this.ddlOperationPerformed,
@@ -8682,11 +10142,18 @@ class JobStatistics2 {
     this.ddlTargetTable,
     this.dmlStats,
     this.estimatedBytesProcessed,
+    this.exportDataStatistics,
+    this.externalServiceCosts,
+    this.loadQueryStatistics,
+    this.materializedViewStatistics,
+    this.metadataCacheStatistics,
     this.mlStatistics,
     this.modelTraining,
     this.modelTrainingCurrentIteration,
     this.modelTrainingExpectedTotalIteration,
     this.numDmlAffectedRows,
+    this.performanceInsights,
+    this.queryInfo,
     this.queryPlan,
     this.referencedRoutines,
     this.referencedTables,
@@ -8703,6 +10170,7 @@ class JobStatistics2 {
     this.totalSlotMs,
     this.transferredBytes,
     this.undeclaredQueryParameters,
+    this.vectorSearchStatistics,
   });
 
   JobStatistics2.fromJson(core.Map json_)
@@ -8716,6 +10184,18 @@ class JobStatistics2 {
               : null,
           cacheHit: json_.containsKey('cacheHit')
               ? json_['cacheHit'] as core.bool
+              : null,
+          dclTargetDataset: json_.containsKey('dclTargetDataset')
+              ? DatasetReference.fromJson(json_['dclTargetDataset']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          dclTargetTable: json_.containsKey('dclTargetTable')
+              ? TableReference.fromJson(json_['dclTargetTable']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          dclTargetView: json_.containsKey('dclTargetView')
+              ? TableReference.fromJson(
+                  json_['dclTargetView'] as core.Map<core.String, core.dynamic>)
               : null,
           ddlAffectedRowAccessPolicyCount:
               json_.containsKey('ddlAffectedRowAccessPolicyCount')
@@ -8753,6 +10233,31 @@ class JobStatistics2 {
           estimatedBytesProcessed: json_.containsKey('estimatedBytesProcessed')
               ? json_['estimatedBytesProcessed'] as core.String
               : null,
+          exportDataStatistics: json_.containsKey('exportDataStatistics')
+              ? ExportDataStatistics.fromJson(json_['exportDataStatistics']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          externalServiceCosts: json_.containsKey('externalServiceCosts')
+              ? (json_['externalServiceCosts'] as core.List)
+                  .map((value) => ExternalServiceCost.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          loadQueryStatistics: json_.containsKey('loadQueryStatistics')
+              ? LoadQueryStatistics.fromJson(json_['loadQueryStatistics']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          materializedViewStatistics:
+              json_.containsKey('materializedViewStatistics')
+                  ? MaterializedViewStatistics.fromJson(
+                      json_['materializedViewStatistics']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          metadataCacheStatistics: json_.containsKey('metadataCacheStatistics')
+              ? MetadataCacheStatistics.fromJson(
+                  json_['metadataCacheStatistics']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           mlStatistics: json_.containsKey('mlStatistics')
               ? MlStatistics.fromJson(
                   json_['mlStatistics'] as core.Map<core.String, core.dynamic>)
@@ -8771,6 +10276,14 @@ class JobStatistics2 {
                   : null,
           numDmlAffectedRows: json_.containsKey('numDmlAffectedRows')
               ? json_['numDmlAffectedRows'] as core.String
+              : null,
+          performanceInsights: json_.containsKey('performanceInsights')
+              ? PerformanceInsights.fromJson(json_['performanceInsights']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          queryInfo: json_.containsKey('queryInfo')
+              ? QueryInfo.fromJson(
+                  json_['queryInfo'] as core.Map<core.String, core.dynamic>)
               : null,
           queryPlan: json_.containsKey('queryPlan')
               ? (json_['queryPlan'] as core.List)
@@ -8844,6 +10357,10 @@ class JobStatistics2 {
                           value as core.Map<core.String, core.dynamic>))
                       .toList()
                   : null,
+          vectorSearchStatistics: json_.containsKey('vectorSearchStatistics')
+              ? VectorSearchStatistics.fromJson(json_['vectorSearchStatistics']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8851,6 +10368,9 @@ class JobStatistics2 {
           'biEngineStatistics': biEngineStatistics!,
         if (billingTier != null) 'billingTier': billingTier!,
         if (cacheHit != null) 'cacheHit': cacheHit!,
+        if (dclTargetDataset != null) 'dclTargetDataset': dclTargetDataset!,
+        if (dclTargetTable != null) 'dclTargetTable': dclTargetTable!,
+        if (dclTargetView != null) 'dclTargetView': dclTargetView!,
         if (ddlAffectedRowAccessPolicyCount != null)
           'ddlAffectedRowAccessPolicyCount': ddlAffectedRowAccessPolicyCount!,
         if (ddlDestinationTable != null)
@@ -8865,6 +10385,16 @@ class JobStatistics2 {
         if (dmlStats != null) 'dmlStats': dmlStats!,
         if (estimatedBytesProcessed != null)
           'estimatedBytesProcessed': estimatedBytesProcessed!,
+        if (exportDataStatistics != null)
+          'exportDataStatistics': exportDataStatistics!,
+        if (externalServiceCosts != null)
+          'externalServiceCosts': externalServiceCosts!,
+        if (loadQueryStatistics != null)
+          'loadQueryStatistics': loadQueryStatistics!,
+        if (materializedViewStatistics != null)
+          'materializedViewStatistics': materializedViewStatistics!,
+        if (metadataCacheStatistics != null)
+          'metadataCacheStatistics': metadataCacheStatistics!,
         if (mlStatistics != null) 'mlStatistics': mlStatistics!,
         if (modelTraining != null) 'modelTraining': modelTraining!,
         if (modelTrainingCurrentIteration != null)
@@ -8874,6 +10404,9 @@ class JobStatistics2 {
               modelTrainingExpectedTotalIteration!,
         if (numDmlAffectedRows != null)
           'numDmlAffectedRows': numDmlAffectedRows!,
+        if (performanceInsights != null)
+          'performanceInsights': performanceInsights!,
+        if (queryInfo != null) 'queryInfo': queryInfo!,
         if (queryPlan != null) 'queryPlan': queryPlan!,
         if (referencedRoutines != null)
           'referencedRoutines': referencedRoutines!,
@@ -8895,34 +10428,52 @@ class JobStatistics2 {
         if (transferredBytes != null) 'transferredBytes': transferredBytes!,
         if (undeclaredQueryParameters != null)
           'undeclaredQueryParameters': undeclaredQueryParameters!,
+        if (vectorSearchStatistics != null)
+          'vectorSearchStatistics': vectorSearchStatistics!,
       };
 }
 
+/// Statistics for a load job.
 class JobStatistics3 {
-  /// \[Output-only\] The number of bad records encountered.
+  /// The number of bad records encountered.
   ///
   /// Note that if the job has failed because of more bad records encountered
   /// than the maximum allowed in the load job configuration, then this number
   /// can be less than the total number of bad records present in the input
   /// data.
+  ///
+  /// Output only.
   core.String? badRecords;
 
-  /// \[Output-only\] Number of bytes of source data in a load job.
+  /// Number of bytes of source data in a load job.
+  ///
+  /// Output only.
   core.String? inputFileBytes;
 
-  /// \[Output-only\] Number of source files in a load job.
+  /// Number of source files in a load job.
+  ///
+  /// Output only.
   core.String? inputFiles;
 
-  /// \[Output-only\] Size of the loaded data in bytes.
+  /// Size of the loaded data in bytes.
   ///
   /// Note that while a load job is in the running state, this value may change.
+  ///
+  /// Output only.
   core.String? outputBytes;
 
-  /// \[Output-only\] Number of rows imported in a load job.
+  /// Number of rows imported in a load job.
   ///
   /// Note that while an import job is in the running state, this value may
   /// change.
+  ///
+  /// Output only.
   core.String? outputRows;
+
+  /// Describes a timeline of job execution.
+  ///
+  /// Output only.
+  core.List<QueryTimelineSample>? timeline;
 
   JobStatistics3({
     this.badRecords,
@@ -8930,6 +10481,7 @@ class JobStatistics3 {
     this.inputFiles,
     this.outputBytes,
     this.outputRows,
+    this.timeline,
   });
 
   JobStatistics3.fromJson(core.Map json_)
@@ -8949,6 +10501,12 @@ class JobStatistics3 {
           outputRows: json_.containsKey('outputRows')
               ? json_['outputRows'] as core.String
               : null,
+          timeline: json_.containsKey('timeline')
+              ? (json_['timeline'] as core.List)
+                  .map((value) => QueryTimelineSample.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -8957,25 +10515,39 @@ class JobStatistics3 {
         if (inputFiles != null) 'inputFiles': inputFiles!,
         if (outputBytes != null) 'outputBytes': outputBytes!,
         if (outputRows != null) 'outputRows': outputRows!,
+        if (timeline != null) 'timeline': timeline!,
       };
 }
 
+/// Statistics for an extract job.
 class JobStatistics4 {
-  /// \[Output-only\] Number of files per destination URI or URI pattern
-  /// specified in the extract configuration.
+  /// Number of files per destination URI or URI pattern specified in the
+  /// extract configuration.
   ///
   /// These values will be in the same order as the URIs specified in the
   /// 'destinationUris' field.
+  ///
+  /// Output only.
   core.List<core.String>? destinationUriFileCounts;
 
-  /// \[Output-only\] Number of user bytes extracted into the result.
+  /// Number of user bytes extracted into the result.
   ///
-  /// This is the byte count as computed by BigQuery for billing purposes.
+  /// This is the byte count as computed by BigQuery for billing purposes and
+  /// doesn't have any relationship with the number of actual result bytes
+  /// extracted in the desired format.
+  ///
+  /// Output only.
   core.String? inputBytes;
+
+  /// Describes a timeline of job execution.
+  ///
+  /// Output only.
+  core.List<QueryTimelineSample>? timeline;
 
   JobStatistics4({
     this.destinationUriFileCounts,
     this.inputBytes,
+    this.timeline,
   });
 
   JobStatistics4.fromJson(core.Map json_)
@@ -8989,20 +10561,32 @@ class JobStatistics4 {
           inputBytes: json_.containsKey('inputBytes')
               ? json_['inputBytes'] as core.String
               : null,
+          timeline: json_.containsKey('timeline')
+              ? (json_['timeline'] as core.List)
+                  .map((value) => QueryTimelineSample.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (destinationUriFileCounts != null)
           'destinationUriFileCounts': destinationUriFileCounts!,
         if (inputBytes != null) 'inputBytes': inputBytes!,
+        if (timeline != null) 'timeline': timeline!,
       };
 }
 
+/// Statistics for a copy job.
 class JobStatistics5 {
-  /// \[Output-only\] Number of logical bytes copied to the destination table.
+  /// Number of logical bytes copied to the destination table.
+  ///
+  /// Output only.
   core.String? copiedLogicalBytes;
 
-  /// \[Output-only\] Number of rows copied to the destination table.
+  /// Number of rows copied to the destination table.
+  ///
+  /// Output only.
   core.String? copiedRows;
 
   JobStatistics5({
@@ -9028,20 +10612,27 @@ class JobStatistics5 {
 }
 
 class JobStatus {
-  /// \[Output-only\] Final error result of the job.
+  /// Final error result of the job.
   ///
   /// If present, indicates that the job has completed and was unsuccessful.
+  ///
+  /// Output only.
   ErrorProto? errorResult;
 
-  /// \[Output-only\] The first errors encountered during the running of the
-  /// job.
+  /// The first errors encountered during the running of the job.
   ///
   /// The final message includes the number of errors that caused the process to
-  /// stop. Errors here do not necessarily mean that the job has completed or
-  /// was unsuccessful.
+  /// stop. Errors here do not necessarily mean that the job has not completed
+  /// or was unsuccessful.
+  ///
+  /// Output only.
   core.List<ErrorProto>? errors;
 
-  /// \[Output-only\] Running state of the job.
+  /// Running state of the job.
+  ///
+  /// Valid states include 'PENDING', 'RUNNING', and 'DONE'.
+  ///
+  /// Output only.
   core.String? state;
 
   JobStatus({
@@ -9076,6 +10667,7 @@ class JobStatus {
 /// Represents a single JSON object.
 typedef JsonObject = core.Map<core.String, core.Object?>;
 
+/// Json Options for load and make external tables.
 class JsonOptions {
   /// The character encoding of the data.
   ///
@@ -9098,6 +10690,28 @@ class JsonOptions {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (encoding != null) 'encoding': encoding!,
+      };
+}
+
+/// A dataset source type which refers to another BigQuery dataset.
+class LinkedDatasetSource {
+  /// The source dataset reference contains project numbers and not project ids.
+  DatasetReference? sourceDataset;
+
+  LinkedDatasetSource({
+    this.sourceDataset,
+  });
+
+  LinkedDatasetSource.fromJson(core.Map json_)
+      : this(
+          sourceDataset: json_.containsKey('sourceDataset')
+              ? DatasetReference.fromJson(
+                  json_['sourceDataset'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (sourceDataset != null) 'sourceDataset': sourceDataset!,
       };
 }
 
@@ -9204,24 +10818,196 @@ class ListRowAccessPoliciesResponse {
       };
 }
 
-class MaterializedViewDefinition {
-  /// Allow non incremental materialized view definition.
+/// Statistics for a LOAD query.
+class LoadQueryStatistics {
+  /// The number of bad records encountered while processing a LOAD query.
   ///
-  /// The default value is "false".
+  /// Note that if the job has failed because of more bad records encountered
+  /// than the maximum allowed in the load job configuration, then this number
+  /// can be less than the total number of bad records present in the input
+  /// data.
+  ///
+  /// Output only.
+  core.String? badRecords;
+
+  /// This field is deprecated.
+  ///
+  /// The number of bytes of source data copied over the network for a `LOAD`
+  /// query. `transferred_bytes` has the canonical value for physical
+  /// transferred bytes, which is used for BigQuery Omni billing.
+  ///
+  /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.String? bytesTransferred;
+
+  /// Number of bytes of source data in a LOAD query.
+  ///
+  /// Output only.
+  core.String? inputFileBytes;
+
+  /// Number of source files in a LOAD query.
+  ///
+  /// Output only.
+  core.String? inputFiles;
+
+  /// Size of the loaded data in bytes.
+  ///
+  /// Note that while a LOAD query is in the running state, this value may
+  /// change.
+  ///
+  /// Output only.
+  core.String? outputBytes;
+
+  /// Number of rows imported in a LOAD query.
+  ///
+  /// Note that while a LOAD query is in the running state, this value may
+  /// change.
+  ///
+  /// Output only.
+  core.String? outputRows;
+
+  LoadQueryStatistics({
+    this.badRecords,
+    this.bytesTransferred,
+    this.inputFileBytes,
+    this.inputFiles,
+    this.outputBytes,
+    this.outputRows,
+  });
+
+  LoadQueryStatistics.fromJson(core.Map json_)
+      : this(
+          badRecords: json_.containsKey('badRecords')
+              ? json_['badRecords'] as core.String
+              : null,
+          bytesTransferred: json_.containsKey('bytesTransferred')
+              ? json_['bytesTransferred'] as core.String
+              : null,
+          inputFileBytes: json_.containsKey('inputFileBytes')
+              ? json_['inputFileBytes'] as core.String
+              : null,
+          inputFiles: json_.containsKey('inputFiles')
+              ? json_['inputFiles'] as core.String
+              : null,
+          outputBytes: json_.containsKey('outputBytes')
+              ? json_['outputBytes'] as core.String
+              : null,
+          outputRows: json_.containsKey('outputRows')
+              ? json_['outputRows'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (badRecords != null) 'badRecords': badRecords!,
+        if (bytesTransferred != null) 'bytesTransferred': bytesTransferred!,
+        if (inputFileBytes != null) 'inputFileBytes': inputFileBytes!,
+        if (inputFiles != null) 'inputFiles': inputFiles!,
+        if (outputBytes != null) 'outputBytes': outputBytes!,
+        if (outputRows != null) 'outputRows': outputRows!,
+      };
+}
+
+/// A materialized view considered for a query job.
+class MaterializedView {
+  /// Whether the materialized view is chosen for the query.
+  ///
+  /// A materialized view can be chosen to rewrite multiple parts of the same
+  /// query. If a materialized view is chosen to rewrite any part of the query,
+  /// then this field is true, even if the materialized view was not chosen to
+  /// rewrite others parts.
+  core.bool? chosen;
+
+  /// If present, specifies a best-effort estimation of the bytes saved by using
+  /// the materialized view rather than its base tables.
+  core.String? estimatedBytesSaved;
+
+  /// If present, specifies the reason why the materialized view was not chosen
+  /// for the query.
+  /// Possible string values are:
+  /// - "REJECTED_REASON_UNSPECIFIED" : Default unspecified value.
+  /// - "NO_DATA" : View has no cached data because it has not refreshed yet.
+  /// - "COST" : The estimated cost of the view is more expensive than another
+  /// view or the base table. Note: The estimate cost might not match the billed
+  /// cost.
+  /// - "BASE_TABLE_TRUNCATED" : View has no cached data because a base table is
+  /// truncated.
+  /// - "BASE_TABLE_DATA_CHANGE" : View is invalidated because of a data change
+  /// in one or more base tables. It could be any recent change if the
+  /// \[`max_staleness`\](https://cloud.google.com/bigquery/docs/materialized-views-create#max_staleness)
+  /// option is not set for the view, or otherwise any change outside of the
+  /// staleness window.
+  /// - "BASE_TABLE_PARTITION_EXPIRATION_CHANGE" : View is invalidated because a
+  /// base table's partition expiration has changed.
+  /// - "BASE_TABLE_EXPIRED_PARTITION" : View is invalidated because a base
+  /// table's partition has expired.
+  /// - "BASE_TABLE_INCOMPATIBLE_METADATA_CHANGE" : View is invalidated because
+  /// a base table has an incompatible metadata change.
+  /// - "TIME_ZONE" : View is invalidated because it was refreshed with a time
+  /// zone other than that of the current job.
+  /// - "OUT_OF_TIME_TRAVEL_WINDOW" : View is outside the time travel window.
+  /// - "BASE_TABLE_FINE_GRAINED_SECURITY_POLICY" : View is inaccessible to the
+  /// user because of a fine-grained security policy on one of its base tables.
+  /// - "BASE_TABLE_TOO_STALE" : One of the view's base tables is too stale. For
+  /// example, the cached metadata of a biglake table needs to be updated.
+  core.String? rejectedReason;
+
+  /// The candidate materialized view.
+  TableReference? tableReference;
+
+  MaterializedView({
+    this.chosen,
+    this.estimatedBytesSaved,
+    this.rejectedReason,
+    this.tableReference,
+  });
+
+  MaterializedView.fromJson(core.Map json_)
+      : this(
+          chosen:
+              json_.containsKey('chosen') ? json_['chosen'] as core.bool : null,
+          estimatedBytesSaved: json_.containsKey('estimatedBytesSaved')
+              ? json_['estimatedBytesSaved'] as core.String
+              : null,
+          rejectedReason: json_.containsKey('rejectedReason')
+              ? json_['rejectedReason'] as core.String
+              : null,
+          tableReference: json_.containsKey('tableReference')
+              ? TableReference.fromJson(json_['tableReference']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (chosen != null) 'chosen': chosen!,
+        if (estimatedBytesSaved != null)
+          'estimatedBytesSaved': estimatedBytesSaved!,
+        if (rejectedReason != null) 'rejectedReason': rejectedReason!,
+        if (tableReference != null) 'tableReference': tableReference!,
+      };
+}
+
+/// Definition and configuration of a materialized view.
+class MaterializedViewDefinition {
+  /// This option declares authors intention to construct a materialized view
+  /// that will not be refreshed incrementally.
   ///
   /// Optional.
   core.bool? allowNonIncrementalDefinition;
 
-  /// \[TrustedTester\] Enable automatic refresh of the materialized view when
-  /// the base table is updated.
+  /// Enable automatic refresh of the materialized view when the base table is
+  /// updated.
   ///
   /// The default value is "true".
   ///
   /// Optional.
   core.bool? enableRefresh;
 
-  /// \[Output-only\] \[TrustedTester\] The time when this materialized view was
-  /// last modified, in milliseconds since the epoch.
+  /// The time when this materialized view was last refreshed, in milliseconds
+  /// since the epoch.
+  ///
+  /// Output only.
   core.String? lastRefreshTime;
 
   /// Max staleness of data that could be returned when materizlized view is
@@ -9237,13 +11023,12 @@ class MaterializedViewDefinition {
         convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// A query whose result is persisted.
+  /// A query whose results are persisted.
   ///
   /// Required.
   core.String? query;
 
-  /// \[TrustedTester\] The maximum frequency at which this materialized view
-  /// will be refreshed.
+  /// The maximum frequency at which this materialized view will be refreshed.
   ///
   /// The default value is "1800000" (30 minutes).
   ///
@@ -9292,8 +11077,114 @@ class MaterializedViewDefinition {
       };
 }
 
+/// Statistics of materialized views considered in a query job.
+class MaterializedViewStatistics {
+  /// Materialized views considered for the query job.
+  ///
+  /// Only certain materialized views are used. For a detailed list, see the
+  /// child message. If many materialized views are considered, then the list
+  /// might be incomplete.
+  core.List<MaterializedView>? materializedView;
+
+  MaterializedViewStatistics({
+    this.materializedView,
+  });
+
+  MaterializedViewStatistics.fromJson(core.Map json_)
+      : this(
+          materializedView: json_.containsKey('materializedView')
+              ? (json_['materializedView'] as core.List)
+                  .map((value) => MaterializedView.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (materializedView != null) 'materializedView': materializedView!,
+      };
+}
+
+/// Status of a materialized view.
+///
+/// The last refresh timestamp status is omitted here, but is present in the
+/// MaterializedViewDefinition message.
+class MaterializedViewStatus {
+  /// Error result of the last automatic refresh.
+  ///
+  /// If present, indicates that the last automatic refresh was unsuccessful.
+  ///
+  /// Output only.
+  ErrorProto? lastRefreshStatus;
+
+  /// Refresh watermark of materialized view.
+  ///
+  /// The base tables' data were collected into the materialized view cache
+  /// until this time.
+  ///
+  /// Output only.
+  core.String? refreshWatermark;
+
+  MaterializedViewStatus({
+    this.lastRefreshStatus,
+    this.refreshWatermark,
+  });
+
+  MaterializedViewStatus.fromJson(core.Map json_)
+      : this(
+          lastRefreshStatus: json_.containsKey('lastRefreshStatus')
+              ? ErrorProto.fromJson(json_['lastRefreshStatus']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          refreshWatermark: json_.containsKey('refreshWatermark')
+              ? json_['refreshWatermark'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (lastRefreshStatus != null) 'lastRefreshStatus': lastRefreshStatus!,
+        if (refreshWatermark != null) 'refreshWatermark': refreshWatermark!,
+      };
+}
+
+/// Statistics for metadata caching in BigLake tables.
+class MetadataCacheStatistics {
+  /// Set for the Metadata caching eligible tables referenced in the query.
+  core.List<TableMetadataCacheUsage>? tableMetadataCacheUsage;
+
+  MetadataCacheStatistics({
+    this.tableMetadataCacheUsage,
+  });
+
+  MetadataCacheStatistics.fromJson(core.Map json_)
+      : this(
+          tableMetadataCacheUsage: json_.containsKey('tableMetadataCacheUsage')
+              ? (json_['tableMetadataCacheUsage'] as core.List)
+                  .map((value) => TableMetadataCacheUsage.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (tableMetadataCacheUsage != null)
+          'tableMetadataCacheUsage': tableMetadataCacheUsage!,
+      };
+}
+
+/// Job statistics specific to a BigQuery ML training job.
 class MlStatistics {
+  /// Trials of a \[hyperparameter tuning
+  /// job\](/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-hp-tuning-overview)
+  /// sorted by trial_id.
+  ///
+  /// Output only.
+  core.List<HparamTuningTrial>? hparamTrials;
+
   /// Results for all completed iterations.
+  ///
+  /// Empty for \[hyperparameter tuning
+  /// jobs\](/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-hp-tuning-overview).
   core.List<IterationResult>? iterationResults;
 
   /// Maximum number of iterations specified as max_iterations in the 'CREATE
@@ -9301,15 +11192,66 @@ class MlStatistics {
   ///
   /// The actual number of iterations may be less than this number due to early
   /// stop.
+  ///
+  /// Output only.
   core.String? maxIterations;
 
+  /// The type of the model that is being trained.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "MODEL_TYPE_UNSPECIFIED" : Default value.
+  /// - "LINEAR_REGRESSION" : Linear regression model.
+  /// - "LOGISTIC_REGRESSION" : Logistic regression based classification model.
+  /// - "KMEANS" : K-means clustering model.
+  /// - "MATRIX_FACTORIZATION" : Matrix factorization model.
+  /// - "DNN_CLASSIFIER" : DNN classifier model.
+  /// - "TENSORFLOW" : An imported TensorFlow model.
+  /// - "DNN_REGRESSOR" : DNN regressor model.
+  /// - "XGBOOST" : An imported XGBoost model.
+  /// - "BOOSTED_TREE_REGRESSOR" : Boosted tree regressor model.
+  /// - "BOOSTED_TREE_CLASSIFIER" : Boosted tree classifier model.
+  /// - "ARIMA" : ARIMA model.
+  /// - "AUTOML_REGRESSOR" : AutoML Tables regression model.
+  /// - "AUTOML_CLASSIFIER" : AutoML Tables classification model.
+  /// - "PCA" : Prinpical Component Analysis model.
+  /// - "DNN_LINEAR_COMBINED_CLASSIFIER" : Wide-and-deep classifier model.
+  /// - "DNN_LINEAR_COMBINED_REGRESSOR" : Wide-and-deep regressor model.
+  /// - "AUTOENCODER" : Autoencoder model.
+  /// - "ARIMA_PLUS" : New name for the ARIMA model.
+  /// - "ARIMA_PLUS_XREG" : ARIMA with external regressors.
+  /// - "RANDOM_FOREST_REGRESSOR" : Random forest regressor model.
+  /// - "RANDOM_FOREST_CLASSIFIER" : Random forest classifier model.
+  /// - "TENSORFLOW_LITE" : An imported TensorFlow Lite model.
+  /// - "ONNX" : An imported ONNX model.
+  core.String? modelType;
+
+  /// Training type of the job.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "TRAINING_TYPE_UNSPECIFIED" : Unspecified training type.
+  /// - "SINGLE_TRAINING" : Single training with fixed parameter space.
+  /// - "HPARAM_TUNING" : \[Hyperparameter tuning
+  /// training\](/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-hp-tuning-overview).
+  core.String? trainingType;
+
   MlStatistics({
+    this.hparamTrials,
     this.iterationResults,
     this.maxIterations,
+    this.modelType,
+    this.trainingType,
   });
 
   MlStatistics.fromJson(core.Map json_)
       : this(
+          hparamTrials: json_.containsKey('hparamTrials')
+              ? (json_['hparamTrials'] as core.List)
+                  .map((value) => HparamTuningTrial.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           iterationResults: json_.containsKey('iterationResults')
               ? (json_['iterationResults'] as core.List)
                   .map((value) => IterationResult.fromJson(
@@ -9319,11 +11261,20 @@ class MlStatistics {
           maxIterations: json_.containsKey('maxIterations')
               ? json_['maxIterations'] as core.String
               : null,
+          modelType: json_.containsKey('modelType')
+              ? json_['modelType'] as core.String
+              : null,
+          trainingType: json_.containsKey('trainingType')
+              ? json_['trainingType'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (hparamTrials != null) 'hparamTrials': hparamTrials!,
         if (iterationResults != null) 'iterationResults': iterationResults!,
         if (maxIterations != null) 'maxIterations': maxIterations!,
+        if (modelType != null) 'modelType': modelType!,
+        if (trainingType != null) 'trainingType': trainingType!,
       };
 }
 
@@ -9636,10 +11587,7 @@ class Model {
       };
 }
 
-/// \[Output-only, Beta\] Model options used for the first training run.
-///
-/// These options are immutable for subsequent training runs. Default values are
-/// used for any options not specified in the input query.
+/// Deprecated.
 class ModelDefinitionModelOptions {
   core.List<core.String>? labels;
   core.String? lossType;
@@ -9674,16 +11622,10 @@ class ModelDefinitionModelOptions {
 }
 
 class ModelDefinition {
-  /// \[Output-only, Beta\] Model options used for the first training run.
-  ///
-  /// These options are immutable for subsequent training runs. Default values
-  /// are used for any options not specified in the input query.
+  /// Deprecated.
   ModelDefinitionModelOptions? modelOptions;
 
-  /// \[Output-only, Beta\] Information about ml training runs, each training
-  /// run comprises of multiple iterations and there may be multiple training
-  /// runs for the model if warm start is used or if a user decides to continue
-  /// a previously cancelled query.
+  /// Deprecated.
   core.List<BqmlTrainingRun>? trainingRuns;
 
   ModelDefinition({
@@ -9711,6 +11653,34 @@ class ModelDefinition {
       };
 }
 
+/// Options related to model extraction.
+class ModelExtractOptions {
+  /// The 1-based ID of the trial to be exported from a hyperparameter tuning
+  /// model.
+  ///
+  /// If not specified, the trial with id =
+  /// \[Model\](/bigquery/docs/reference/rest/v2/models#resource:-model).defaultTrialId
+  /// is exported. This field is ignored for models not trained with
+  /// hyperparameter tuning.
+  core.String? trialId;
+
+  ModelExtractOptions({
+    this.trialId,
+  });
+
+  ModelExtractOptions.fromJson(core.Map json_)
+      : this(
+          trialId: json_.containsKey('trialId')
+              ? json_['trialId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (trialId != null) 'trialId': trialId!,
+      };
+}
+
+/// Id path of a model.
 class ModelReference {
   /// The ID of the dataset containing this model.
   ///
@@ -9793,6 +11763,7 @@ class MultiClassClassificationMetrics {
       };
 }
 
+/// Parquet Options for load and make external tables.
 class ParquetOptions {
   /// Indicates whether to use schema inference specifically for Parquet LIST
   /// logical type.
@@ -9825,6 +11796,68 @@ class ParquetOptions {
         if (enableListInference != null)
           'enableListInference': enableListInference!,
         if (enumAsString != null) 'enumAsString': enumAsString!,
+      };
+}
+
+/// Performance insights for the job.
+class PerformanceInsights {
+  /// Average execution ms of previous runs.
+  ///
+  /// Indicates the job ran slow compared to previous executions. To find
+  /// previous executions, use INFORMATION_SCHEMA tables and filter jobs with
+  /// same query hash.
+  ///
+  /// Output only.
+  core.String? avgPreviousExecutionMs;
+
+  /// Query stage performance insights compared to previous runs, for diagnosing
+  /// performance regression.
+  ///
+  /// Output only.
+  core.List<StagePerformanceChangeInsight>? stagePerformanceChangeInsights;
+
+  /// Standalone query stage performance insights, for exploring potential
+  /// improvements.
+  ///
+  /// Output only.
+  core.List<StagePerformanceStandaloneInsight>?
+      stagePerformanceStandaloneInsights;
+
+  PerformanceInsights({
+    this.avgPreviousExecutionMs,
+    this.stagePerformanceChangeInsights,
+    this.stagePerformanceStandaloneInsights,
+  });
+
+  PerformanceInsights.fromJson(core.Map json_)
+      : this(
+          avgPreviousExecutionMs: json_.containsKey('avgPreviousExecutionMs')
+              ? json_['avgPreviousExecutionMs'] as core.String
+              : null,
+          stagePerformanceChangeInsights:
+              json_.containsKey('stagePerformanceChangeInsights')
+                  ? (json_['stagePerformanceChangeInsights'] as core.List)
+                      .map((value) => StagePerformanceChangeInsight.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+          stagePerformanceStandaloneInsights: json_
+                  .containsKey('stagePerformanceStandaloneInsights')
+              ? (json_['stagePerformanceStandaloneInsights'] as core.List)
+                  .map((value) => StagePerformanceStandaloneInsight.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (avgPreviousExecutionMs != null)
+          'avgPreviousExecutionMs': avgPreviousExecutionMs!,
+        if (stagePerformanceChangeInsights != null)
+          'stagePerformanceChangeInsights': stagePerformanceChangeInsights!,
+        if (stagePerformanceStandaloneInsights != null)
+          'stagePerformanceStandaloneInsights':
+              stagePerformanceStandaloneInsights!,
       };
 }
 
@@ -9949,8 +11982,97 @@ class Policy {
       };
 }
 
+/// Principal component infos, used only for eigen decomposition based models,
+/// e.g., PCA.
+///
+/// Ordered by explained_variance in the descending order.
+class PrincipalComponentInfo {
+  /// The explained_variance is pre-ordered in the descending order to compute
+  /// the cumulative explained variance ratio.
+  core.double? cumulativeExplainedVarianceRatio;
+
+  /// Explained variance by this principal component, which is simply the
+  /// eigenvalue.
+  core.double? explainedVariance;
+
+  /// Explained_variance over the total explained variance.
+  core.double? explainedVarianceRatio;
+
+  /// Id of the principal component.
+  core.String? principalComponentId;
+
+  PrincipalComponentInfo({
+    this.cumulativeExplainedVarianceRatio,
+    this.explainedVariance,
+    this.explainedVarianceRatio,
+    this.principalComponentId,
+  });
+
+  PrincipalComponentInfo.fromJson(core.Map json_)
+      : this(
+          cumulativeExplainedVarianceRatio:
+              json_.containsKey('cumulativeExplainedVarianceRatio')
+                  ? (json_['cumulativeExplainedVarianceRatio'] as core.num)
+                      .toDouble()
+                  : null,
+          explainedVariance: json_.containsKey('explainedVariance')
+              ? (json_['explainedVariance'] as core.num).toDouble()
+              : null,
+          explainedVarianceRatio: json_.containsKey('explainedVarianceRatio')
+              ? (json_['explainedVarianceRatio'] as core.num).toDouble()
+              : null,
+          principalComponentId: json_.containsKey('principalComponentId')
+              ? json_['principalComponentId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cumulativeExplainedVarianceRatio != null)
+          'cumulativeExplainedVarianceRatio': cumulativeExplainedVarianceRatio!,
+        if (explainedVariance != null) 'explainedVariance': explainedVariance!,
+        if (explainedVarianceRatio != null)
+          'explainedVarianceRatio': explainedVarianceRatio!,
+        if (principalComponentId != null)
+          'principalComponentId': principalComponentId!,
+      };
+}
+
+/// Represents privacy policy that contains the privacy requirements specified
+/// by the data owner.
+///
+/// Currently, this is only supported on views.
+class PrivacyPolicy {
+  /// Policy used for aggregation thresholds.
+  ///
+  /// Optional.
+  AggregationThresholdPolicy? aggregationThresholdPolicy;
+
+  PrivacyPolicy({
+    this.aggregationThresholdPolicy,
+  });
+
+  PrivacyPolicy.fromJson(core.Map json_)
+      : this(
+          aggregationThresholdPolicy:
+              json_.containsKey('aggregationThresholdPolicy')
+                  ? AggregationThresholdPolicy.fromJson(
+                      json_['aggregationThresholdPolicy']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (aggregationThresholdPolicy != null)
+          'aggregationThresholdPolicy': aggregationThresholdPolicy!,
+      };
+}
+
+/// Information about a single project.
 class ProjectListProjects {
   /// A descriptive name for this project.
+  ///
+  /// A wrapper is used here because friendlyName can be set to the empty
+  /// string.
   core.String? friendlyName;
 
   /// An opaque ID of this project.
@@ -9998,20 +12120,24 @@ class ProjectListProjects {
       };
 }
 
+/// Response object of ListProjects
 class ProjectList {
-  /// A hash of the page of results
+  /// A hash of the page of results.
   core.String? etag;
 
-  /// The type of list.
+  /// The resource type of the response.
   core.String? kind;
 
-  /// A token to request the next page of results.
+  /// Use this token to request the next page of results.
   core.String? nextPageToken;
 
-  /// Projects to which you have at least READ access.
+  /// Projects to which the user has at least READ access.
   core.List<ProjectListProjects>? projects;
 
-  /// The total number of projects in the list.
+  /// The total number of projects in the page.
+  ///
+  /// A wrapper is used here because the field should still be in the response
+  /// when the value is 0.
   core.int? totalItems;
 
   ProjectList({
@@ -10049,6 +12175,7 @@ class ProjectList {
       };
 }
 
+/// A unique reference to a project.
 class ProjectReference {
   /// ID of the project.
   ///
@@ -10073,6 +12200,35 @@ class ProjectReference {
       };
 }
 
+/// Query optimization information for a QUERY job.
+class QueryInfo {
+  /// Information about query optimizations.
+  ///
+  /// Output only.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? optimizationDetails;
+
+  QueryInfo({
+    this.optimizationDetails,
+  });
+
+  QueryInfo.fromJson(core.Map json_)
+      : this(
+          optimizationDetails: json_.containsKey('optimizationDetails')
+              ? json_['optimizationDetails']
+                  as core.Map<core.String, core.dynamic>
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (optimizationDetails != null)
+          'optimizationDetails': optimizationDetails!,
+      };
+}
+
+/// A parameter given to a query.
 class QueryParameter {
   /// If unset, this is a positional parameter.
   ///
@@ -10117,6 +12273,7 @@ class QueryParameter {
       };
 }
 
+/// The type of a struct parameter.
 class QueryParameterTypeStructTypes {
   /// Human-oriented description of the field.
   ///
@@ -10158,11 +12315,17 @@ class QueryParameterTypeStructTypes {
       };
 }
 
+/// The type of a query parameter.
 class QueryParameterType {
   /// The type of the array's elements, if this is an array.
   ///
   /// Optional.
   QueryParameterType? arrayType;
+
+  /// The element type of the range, if this is a range.
+  ///
+  /// Optional.
+  QueryParameterType? rangeElementType;
 
   /// The types of the fields of this struct, in order, if this is a struct.
   ///
@@ -10176,6 +12339,7 @@ class QueryParameterType {
 
   QueryParameterType({
     this.arrayType,
+    this.rangeElementType,
     this.structTypes,
     this.type,
   });
@@ -10185,6 +12349,10 @@ class QueryParameterType {
           arrayType: json_.containsKey('arrayType')
               ? QueryParameterType.fromJson(
                   json_['arrayType'] as core.Map<core.String, core.dynamic>)
+              : null,
+          rangeElementType: json_.containsKey('rangeElementType')
+              ? QueryParameterType.fromJson(json_['rangeElementType']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           structTypes: json_.containsKey('structTypes')
               ? (json_['structTypes'] as core.List)
@@ -10197,20 +12365,25 @@ class QueryParameterType {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (arrayType != null) 'arrayType': arrayType!,
+        if (rangeElementType != null) 'rangeElementType': rangeElementType!,
         if (structTypes != null) 'structTypes': structTypes!,
         if (type != null) 'type': type!,
       };
 }
 
+/// The value of a query parameter.
 class QueryParameterValue {
   /// The array values, if this is an array type.
   ///
   /// Optional.
   core.List<QueryParameterValue>? arrayValues;
 
-  /// The struct field values, in order of the struct type's declaration.
+  /// The range value, if this is a range type.
   ///
   /// Optional.
+  RangeValue? rangeValue;
+
+  /// The struct field values.
   core.Map<core.String, QueryParameterValue>? structValues;
 
   /// The value of this value, if a simple scalar type.
@@ -10220,6 +12393,7 @@ class QueryParameterValue {
 
   QueryParameterValue({
     this.arrayValues,
+    this.rangeValue,
     this.structValues,
     this.value,
   });
@@ -10231,6 +12405,10 @@ class QueryParameterValue {
                   .map((value) => QueryParameterValue.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
+              : null,
+          rangeValue: json_.containsKey('rangeValue')
+              ? RangeValue.fromJson(
+                  json_['rangeValue'] as core.Map<core.String, core.dynamic>)
               : null,
           structValues: json_.containsKey('structValues')
               ? (json_['structValues'] as core.Map<core.String, core.dynamic>)
@@ -10248,13 +12426,17 @@ class QueryParameterValue {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (arrayValues != null) 'arrayValues': arrayValues!,
+        if (rangeValue != null) 'rangeValue': rangeValue!,
         if (structValues != null) 'structValues': structValues!,
         if (value != null) 'value': value!,
       };
 }
 
+/// Describes the format of the jobs.query request.
 class QueryRequest {
-  /// Connection properties.
+  /// Connection properties which can modify the query behavior.
+  ///
+  /// Optional.
   core.List<ConnectionProperty>? connectionProperties;
 
   /// Specifies whether the query should be executed as a continuous query.
@@ -10264,11 +12446,14 @@ class QueryRequest {
   /// Optional.
   core.bool? continuous;
 
-  /// If true, creates a new session, where session id will be a server
-  /// generated random id.
+  /// If true, creates a new session using a randomly generated session_id.
   ///
   /// If false, runs query with an existing session_id passed in
-  /// ConnectionProperty, otherwise runs query in non-session mode.
+  /// ConnectionProperty, otherwise runs query in non-session mode. The session
+  /// location will be set to QueryRequest.location if it is present, otherwise
+  /// it's set to the default location based on existing routing logic.
+  ///
+  /// Optional.
   core.bool? createSession;
 
   /// Specifies the default datasetId and projectId to assume for any
@@ -10289,6 +12474,11 @@ class QueryRequest {
   /// Optional.
   core.bool? dryRun;
 
+  /// Output format adjustments.
+  ///
+  /// Optional.
+  DataFormatOptions? formatOptions;
+
   /// If not set, jobs are always required.
   ///
   /// If set, the query request will follow the behavior described
@@ -10296,18 +12486,29 @@ class QueryRequest {
   /// created.
   ///
   /// Optional.
+  /// Possible string values are:
+  /// - "JOB_CREATION_MODE_UNSPECIFIED" : If unspecified JOB_CREATION_REQUIRED
+  /// is the default.
+  /// - "JOB_CREATION_REQUIRED" : Default. Job creation is always required.
+  /// - "JOB_CREATION_OPTIONAL" : Job creation is optional. Returning immediate
+  /// results is prioritized. BigQuery will automatically determine if a Job
+  /// needs to be created. The conditions under which BigQuery can decide to not
+  /// create a Job are subject to change. If Job creation is required,
+  /// JOB_CREATION_REQUIRED mode should be used, which is the default.
   core.String? jobCreationMode;
 
   /// The resource type of the request.
   core.String? kind;
 
-  /// The labels associated with this job.
+  /// The labels associated with this query.
   ///
-  /// You can use these to organize and group your jobs. Label keys and values
+  /// Labels can be used to organize and group query jobs. Label keys and values
   /// can be no longer than 63 characters, can only contain lowercase letters,
   /// numeric characters, underscores and dashes. International characters are
-  /// allowed. Label values are optional. Label keys must start with a letter
-  /// and each label in the list must have a different key.
+  /// allowed. Label keys must start with a letter and each label in the list
+  /// must have a different key.
+  ///
+  /// Optional.
   core.Map<core.String, core.String>? labels;
 
   /// The geographic location where the job should run.
@@ -10326,35 +12527,34 @@ class QueryRequest {
   /// Optional.
   core.int? maxResults;
 
-  /// Limits the bytes billed for this job.
+  /// Limits the bytes billed for this query.
   ///
-  /// Queries that will have bytes billed beyond this limit will fail (without
-  /// incurring a charge). If unspecified, this will be set to your project
-  /// default.
+  /// Queries with bytes billed above this limit will fail (without incurring a
+  /// charge). If unspecified, the project default is used.
   ///
   /// Optional.
   core.String? maximumBytesBilled;
 
-  /// Standard SQL only.
+  /// GoogleSQL only.
   ///
   /// Set to POSITIONAL to use positional (?) query parameters or to NAMED to
   /// use named (@myparam) query parameters in this query.
   core.String? parameterMode;
 
   /// This property is deprecated.
-  ///
-  /// Deprecated.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? preserveNulls;
 
-  /// A query string, following the BigQuery query syntax, of the query to
-  /// execute.
+  /// A query string to execute, using Google Standard SQL or legacy SQL syntax.
   ///
-  /// Example: "SELECT count(f1) FROM \[myProjectId:myDatasetId.myTableId\]".
+  /// Example: "SELECT COUNT(f1) FROM myProjectId.myDatasetId.myTableId".
   ///
   /// Required.
   core.String? query;
 
-  /// Query parameters for Standard SQL queries.
+  /// Query parameters for GoogleSQL queries.
   core.List<QueryParameter>? queryParameters;
 
   /// A unique user provided identifier to ensure idempotent behavior for
@@ -10366,8 +12566,8 @@ class QueryRequest {
   /// they are nullipotent by definition. 3. For the purposes of idempotency
   /// ensured by the request_id, a request is considered duplicate of another
   /// only if they have the same request_id and are actually duplicates. When
-  /// determining whether a request is a duplicate of the previous request, all
-  /// parameters in the request that may affect the behavior are considered. For
+  /// determining whether a request is a duplicate of another request, all
+  /// parameters in the request that may affect the result are considered. For
   /// example, query, connection_properties, query_parameters, use_legacy_sql
   /// are parameters that affect the result and are considered when determining
   /// whether a request is a duplicate, but properties like timeout_ms don't
@@ -10379,16 +12579,22 @@ class QueryRequest {
   /// lifetime is limited to 15 minutes. In other words, if two requests are
   /// sent with the same request_id, but more than 15 minutes apart, idempotency
   /// is not guaranteed.
+  ///
+  /// Optional.
   core.String? requestId;
 
-  /// How long to wait for the query to complete, in milliseconds, before the
-  /// request times out and returns.
+  /// Optional: Specifies the maximum amount of time, in milliseconds, that the
+  /// client is willing to wait for the query to complete.
   ///
-  /// Note that this is only a timeout for the request, not the query. If the
-  /// query takes longer to run than the timeout value, the call returns without
-  /// any results and with the 'jobComplete' flag set to false. You can call
-  /// GetQueryResults() to wait for the query to complete and read the results.
-  /// The default value is 10000 milliseconds (10 seconds).
+  /// By default, this limit is 10 seconds (10,000 milliseconds). If the query
+  /// is complete, the jobComplete field in the response is true. If the query
+  /// has not yet completed, jobComplete is false. You can request a longer
+  /// timeout period in the timeoutMs field. However, the call is not guaranteed
+  /// to wait for the specified timeout; it typically returns after around 200
+  /// seconds (200,000 milliseconds), even if the query is not complete. If
+  /// jobComplete is false, you can continue to wait for the query to complete
+  /// by calling the getQueryResults method until the jobComplete field in the
+  /// getQueryResults response is true.
   ///
   /// Optional.
   core.int? timeoutMs;
@@ -10396,7 +12602,7 @@ class QueryRequest {
   /// Specifies whether to use BigQuery's legacy SQL dialect for this query.
   ///
   /// The default value is true. If set to false, the query will use BigQuery's
-  /// standard SQL: https://cloud.google.com/bigquery/sql-reference/ When
+  /// GoogleSQL: https://cloud.google.com/bigquery/sql-reference/ When
   /// useLegacySql is set to false, the value of flattenResults is ignored;
   /// query will be run as if flattenResults is false.
   core.bool? useLegacySql;
@@ -10415,6 +12621,7 @@ class QueryRequest {
     this.createSession,
     this.defaultDataset,
     this.dryRun,
+    this.formatOptions,
     this.jobCreationMode,
     this.kind,
     this.labels,
@@ -10451,6 +12658,10 @@ class QueryRequest {
               : null,
           dryRun:
               json_.containsKey('dryRun') ? json_['dryRun'] as core.bool : null,
+          formatOptions: json_.containsKey('formatOptions')
+              ? DataFormatOptions.fromJson(
+                  json_['formatOptions'] as core.Map<core.String, core.dynamic>)
+              : null,
           jobCreationMode: json_.containsKey('jobCreationMode')
               ? json_['jobCreationMode'] as core.String
               : null,
@@ -10507,6 +12718,7 @@ class QueryRequest {
         if (createSession != null) 'createSession': createSession!,
         if (defaultDataset != null) 'defaultDataset': defaultDataset!,
         if (dryRun != null) 'dryRun': dryRun!,
+        if (formatOptions != null) 'formatOptions': formatOptions!,
         if (jobCreationMode != null) 'jobCreationMode': jobCreationMode!,
         if (kind != null) 'kind': kind!,
         if (labels != null) 'labels': labels!,
@@ -10529,16 +12741,20 @@ class QueryResponse {
   /// Whether the query result was fetched from the query cache.
   core.bool? cacheHit;
 
-  /// \[Output-only\] Detailed statistics for DML statements Present only for
-  /// DML statements INSERT, UPDATE, DELETE or TRUNCATE.
+  /// Detailed statistics for DML statements INSERT, UPDATE, DELETE, MERGE or
+  /// TRUNCATE.
+  ///
+  /// Output only.
   DmlStatistics? dmlStats;
 
-  /// \[Output-only\] The first errors or warnings encountered during the
-  /// running of the job.
+  /// The first errors or warnings encountered during the running of the job.
   ///
   /// The final message includes the number of errors that caused the process to
   /// stop. Errors here do not necessarily mean that the job has completed or
-  /// was unsuccessful.
+  /// was unsuccessful. For more information about error messages, see
+  /// [Error messages](https://cloud.google.com/bigquery/docs/error-messages).
+  ///
+  /// Output only.
   core.List<ErrorProto>? errors;
 
   /// Whether the query has completed or not.
@@ -10556,10 +12772,7 @@ class QueryResponse {
   /// available. Jobs will always be created.
   ///
   /// Optional.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Object? jobCreationReason;
+  JobCreationReason? jobCreationReason;
 
   /// Reference to the Job that was created to run the query.
   ///
@@ -10572,12 +12785,20 @@ class QueryResponse {
   /// The resource type.
   core.String? kind;
 
-  /// \[Output-only\] The number of rows affected by a DML statement.
+  /// The number of rows affected by a DML statement.
   ///
   /// Present only for DML statements INSERT, UPDATE or DELETE.
+  ///
+  /// Output only.
   core.String? numDmlAffectedRows;
 
   /// A token used for paging results.
+  ///
+  /// A non-empty token indicates that additional results are available. To see
+  /// additional results, query the
+  /// \[`jobs.getQueryResults`\](https://cloud.google.com/bigquery/docs/reference/rest/v2/jobs/getQueryResults)
+  /// method. For more information, see
+  /// [Paging through table data](https://cloud.google.com/bigquery/docs/paging-results).
   core.String? pageToken;
 
   /// Query ID for the completed query.
@@ -10598,8 +12819,9 @@ class QueryResponse {
   /// Present only when the query completes successfully.
   TableSchema? schema;
 
-  /// \[Output-only\] \[Preview\] Information of the session if this job is part
-  /// of one.
+  /// Information of the session if this job is part of one.
+  ///
+  /// Output only.
   SessionInfo? sessionInfo;
 
   /// The total number of bytes processed for this query.
@@ -10649,7 +12871,8 @@ class QueryResponse {
               ? json_['jobComplete'] as core.bool
               : null,
           jobCreationReason: json_.containsKey('jobCreationReason')
-              ? json_['jobCreationReason']
+              ? JobCreationReason.fromJson(json_['jobCreationReason']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           jobReference: json_.containsKey('jobReference')
               ? JobReference.fromJson(
@@ -10708,8 +12931,9 @@ class QueryResponse {
       };
 }
 
+/// Summary of the state of query execution at a given time.
 class QueryTimelineSample {
-  /// Total number of units currently being processed by workers.
+  /// Total number of active workers.
   ///
   /// This does not correspond directly to slot usage. This is the largest value
   /// observed since the last sample.
@@ -10723,8 +12947,8 @@ class QueryTimelineSample {
 
   /// Units of work that can be scheduled immediately.
   ///
-  /// Providing additional slots for these units of work will speed up the
-  /// query, provided no other query in the reservation needs additional slots.
+  /// Providing additional slots for these units of work will accelerate the
+  /// query, if no other query in the reservation needs additional slots.
   core.String? estimatedRunnableUnits;
 
   /// Total units of work remaining for the query.
@@ -10778,15 +13002,15 @@ class QueryTimelineSample {
       };
 }
 
-/// \[TrustedTester\] \[Required\] Defines the ranges for range partitioning.
+/// \[Experimental\] Defines the ranges for range partitioning.
 class RangePartitioningRange {
-  /// \[TrustedTester\] \[Required\] The end of range partitioning, exclusive.
+  /// \[Experimental\] The end of range partitioning, exclusive.
   core.String? end;
 
-  /// \[TrustedTester\] \[Required\] The width of each interval.
+  /// \[Experimental\] The width of each interval.
   core.String? interval;
 
-  /// \[TrustedTester\] \[Required\] The start of range partitioning, inclusive.
+  /// \[Experimental\] The start of range partitioning, inclusive.
   core.String? start;
 
   RangePartitioningRange({
@@ -10813,13 +13037,15 @@ class RangePartitioningRange {
 }
 
 class RangePartitioning {
-  /// \[TrustedTester\] \[Required\] The table is partitioned by this field.
+  /// \[Experimental\] The table is partitioned by this field.
   ///
   /// The field must be a top-level NULLABLE/REQUIRED field. The only supported
   /// type is INTEGER/INT64.
+  ///
+  /// Required.
   core.String? field;
 
-  /// \[TrustedTester\] \[Required\] Defines the ranges for range partitioning.
+  /// \[Experimental\] Defines the ranges for range partitioning.
   RangePartitioningRange? range;
 
   RangePartitioning({
@@ -10840,6 +13066,45 @@ class RangePartitioning {
   core.Map<core.String, core.dynamic> toJson() => {
         if (field != null) 'field': field!,
         if (range != null) 'range': range!,
+      };
+}
+
+/// Represents the value of a range.
+class RangeValue {
+  /// The end value of the range.
+  ///
+  /// A missing value represents an unbounded end.
+  ///
+  /// Optional.
+  QueryParameterValue? end;
+
+  /// The start value of the range.
+  ///
+  /// A missing value represents an unbounded start.
+  ///
+  /// Optional.
+  QueryParameterValue? start;
+
+  RangeValue({
+    this.end,
+    this.start,
+  });
+
+  RangeValue.fromJson(core.Map json_)
+      : this(
+          end: json_.containsKey('end')
+              ? QueryParameterValue.fromJson(
+                  json_['end'] as core.Map<core.String, core.dynamic>)
+              : null,
+          start: json_.containsKey('start')
+              ? QueryParameterValue.fromJson(
+                  json_['start'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (end != null) 'end': end!,
+        if (start != null) 'start': start!,
       };
 }
 
@@ -11065,7 +13330,22 @@ class RemoteModelInfo {
   /// - "CLOUD_AI_NATURAL_LANGUAGE_V1" : V1 Cloud AI Natural Language API. See
   /// more details at \[REST Resource:
   /// documents\](https://cloud.google.com/natural-language/docs/reference/rest/v1/documents).
+  /// - "CLOUD_AI_SPEECH_TO_TEXT_V2" : V2 Speech-to-Text API. See more details
+  /// at \[Google Cloud Speech-to-Text V2
+  /// API\](https://cloud.google.com/speech-to-text/v2/docs)
   core.String? remoteServiceType;
+
+  /// The name of the speech recognizer to use for speech recognition.
+  ///
+  /// The expected format is
+  /// `projects/{project}/locations/{location}/recognizers/{recognizer}`.
+  /// Customers can specify this field at model creation. If not specified, a
+  /// default recognizer `projects/{model
+  /// project}/locations/global/recognizers/_` will be used. See more details at
+  /// [recognizers](https://cloud.google.com/speech-to-text/v2/docs/reference/rest/v2/projects.locations.recognizers)
+  ///
+  /// Output only.
+  core.String? speechRecognizer;
 
   RemoteModelInfo({
     this.connection,
@@ -11073,6 +13353,7 @@ class RemoteModelInfo {
     this.maxBatchingRows,
     this.remoteModelVersion,
     this.remoteServiceType,
+    this.speechRecognizer,
   });
 
   RemoteModelInfo.fromJson(core.Map json_)
@@ -11092,6 +13373,9 @@ class RemoteModelInfo {
           remoteServiceType: json_.containsKey('remoteServiceType')
               ? json_['remoteServiceType'] as core.String
               : null,
+          speechRecognizer: json_.containsKey('speechRecognizer')
+              ? json_['speechRecognizer'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -11101,6 +13385,7 @@ class RemoteModelInfo {
         if (remoteModelVersion != null)
           'remoteModelVersion': remoteModelVersion!,
         if (remoteServiceType != null) 'remoteServiceType': remoteServiceType!,
+        if (speechRecognizer != null) 'speechRecognizer': speechRecognizer!,
       };
 }
 
@@ -11258,12 +13543,17 @@ class Routine {
   /// Optional.
   SparkOptions? sparkOptions;
 
-  /// Can be set for procedures only.
+  /// Use this option to catch many common errors.
   ///
-  /// If true (default), the definition body will be validated in the creation
-  /// and the updates of the procedure. For procedures with an argument of ANY
-  /// TYPE, the definition body validtion is not supported at creation/update
-  /// time, and thus this field must be set to false explicitly.
+  /// Error checking is not exhaustive, and successfully creating a procedure
+  /// doesn't guarantee that the procedure will successfully execute at runtime.
+  /// If `strictMode` is set to `TRUE`, the procedure body is further checked
+  /// for errors such as non-existent tables or columns. The `CREATE PROCEDURE`
+  /// statement fails if the body fails any of these checks. If `strictMode` is
+  /// set to `FALSE`, the procedure body is checked only for syntax. For
+  /// procedures that invoke themselves recursively, specify `strictMode=FALSE`
+  /// to avoid non-existent procedure errors during validation. Default value is
+  /// `TRUE`.
   ///
   /// Optional.
   core.bool? strictMode;
@@ -11379,6 +13669,7 @@ class Routine {
       };
 }
 
+/// Id path of a routine.
 class RoutineReference {
   /// The ID of the dataset containing this routine.
   ///
@@ -11532,6 +13823,7 @@ class RowAccessPolicy {
       };
 }
 
+/// Id path of a row access policy.
 class RowAccessPolicyReference {
   /// The ID of the dataset containing this row access policy.
   ///
@@ -11587,9 +13879,9 @@ class RowAccessPolicyReference {
       };
 }
 
+/// Statistics for row-level security.
 class RowLevelSecurityStatistics {
-  /// \[Output-only\] \[Preview\] Whether any accessed data was protected by row
-  /// access policies.
+  /// Whether any accessed data was protected by row access policies.
   core.bool? rowLevelSecurityApplied;
 
   RowLevelSecurityStatistics({
@@ -11609,24 +13901,98 @@ class RowLevelSecurityStatistics {
       };
 }
 
+/// Options related to script execution.
+class ScriptOptions {
+  /// Determines which statement in the script represents the "key result", used
+  /// to populate the schema and query results of the script job.
+  ///
+  /// Default is LAST.
+  /// Possible string values are:
+  /// - "KEY_RESULT_STATEMENT_KIND_UNSPECIFIED" : Default value.
+  /// - "LAST" : The last result determines the key result.
+  /// - "FIRST_SELECT" : The first SELECT statement determines the key result.
+  core.String? keyResultStatement;
+
+  /// Limit on the number of bytes billed per statement.
+  ///
+  /// Exceeding this budget results in an error.
+  core.String? statementByteBudget;
+
+  /// Timeout period for each statement in a script.
+  core.String? statementTimeoutMs;
+
+  ScriptOptions({
+    this.keyResultStatement,
+    this.statementByteBudget,
+    this.statementTimeoutMs,
+  });
+
+  ScriptOptions.fromJson(core.Map json_)
+      : this(
+          keyResultStatement: json_.containsKey('keyResultStatement')
+              ? json_['keyResultStatement'] as core.String
+              : null,
+          statementByteBudget: json_.containsKey('statementByteBudget')
+              ? json_['statementByteBudget'] as core.String
+              : null,
+          statementTimeoutMs: json_.containsKey('statementTimeoutMs')
+              ? json_['statementTimeoutMs'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (keyResultStatement != null)
+          'keyResultStatement': keyResultStatement!,
+        if (statementByteBudget != null)
+          'statementByteBudget': statementByteBudget!,
+        if (statementTimeoutMs != null)
+          'statementTimeoutMs': statementTimeoutMs!,
+      };
+}
+
+/// Represents the location of the statement/expression being evaluated.
+///
+/// Line and column numbers are defined as follows: - Line and column numbers
+/// start with one. That is, line 1 column 1 denotes the start of the script. -
+/// When inside a stored procedure, all line/column numbers are relative to the
+/// procedure body, not the script in which the procedure was defined. -
+/// Start/end positions exclude leading/trailing comments and whitespace. The
+/// end position always ends with a ";", when present. - Multi-byte Unicode
+/// characters are treated as just one column. - If the original script (or
+/// procedure definition) contains TAB characters, a tab "snaps" the indentation
+/// forward to the nearest multiple of 8 characters, plus 1. For example, a TAB
+/// on column 1, 2, 3, 4, 5, 6 , or 8 will advance the next character to column
+/// 9. A TAB on column 9, 10, 11, 12, 13, 14, 15, or 16 will advance the next
+/// character to column 17.
 class ScriptStackFrame {
-  /// \[Output-only\] One-based end column.
+  /// One-based end column.
+  ///
+  /// Output only.
   core.int? endColumn;
 
-  /// \[Output-only\] One-based end line.
+  /// One-based end line.
+  ///
+  /// Output only.
   core.int? endLine;
 
-  /// \[Output-only\] Name of the active procedure, empty if in a top-level
-  /// script.
+  /// Name of the active procedure, empty if in a top-level script.
+  ///
+  /// Output only.
   core.String? procedureId;
 
-  /// \[Output-only\] One-based start column.
+  /// One-based start column.
+  ///
+  /// Output only.
   core.int? startColumn;
 
-  /// \[Output-only\] One-based start line.
+  /// One-based start line.
+  ///
+  /// Output only.
   core.int? startLine;
 
-  /// \[Output-only\] Text of the current statement/expression.
+  /// Text of the current statement/expression.
+  ///
+  /// Output only.
   core.String? text;
 
   ScriptStackFrame({
@@ -11668,8 +14034,14 @@ class ScriptStackFrame {
       };
 }
 
+/// Job statistics specific to the child job of a script.
 class ScriptStatistics {
-  /// \[Output-only\] Whether this child job was a statement or expression.
+  /// Whether this child job was a statement or expression.
+  /// Possible string values are:
+  /// - "EVALUATION_KIND_UNSPECIFIED" : Default value.
+  /// - "STATEMENT" : The statement appears directly in the script.
+  /// - "EXPRESSION" : The statement evaluates an expression that appears in the
+  /// script.
   core.String? evaluationKind;
 
   /// Stack trace showing the line/column/procedure name of each frame on the
@@ -11702,14 +14074,28 @@ class ScriptStatistics {
       };
 }
 
+/// Statistics for a search query.
+///
+/// Populated as part of JobStatistics2.
 class SearchStatistics {
-  /// When index_usage_mode is UNUSED or PARTIALLY_USED, this field explains why
-  /// index was not used in all or part of the search query.
+  /// When `indexUsageMode` is `UNUSED` or `PARTIALLY_USED`, this field explains
+  /// why indexes were not used in all or part of the search query.
   ///
-  /// If index_usage_mode is FULLLY_USED, this field is not populated.
+  /// If `indexUsageMode` is `FULLY_USED`, this field is not populated.
   core.List<IndexUnusedReason>? indexUnusedReasons;
 
-  /// Specifies index usage mode for the query.
+  /// Specifies the index usage mode for the query.
+  /// Possible string values are:
+  /// - "INDEX_USAGE_MODE_UNSPECIFIED" : Index usage mode not specified.
+  /// - "UNUSED" : No search indexes were used in the search query. See
+  /// \[`indexUnusedReasons`\]
+  /// (/bigquery/docs/reference/rest/v2/Job#IndexUnusedReason) for detailed
+  /// reasons.
+  /// - "PARTIALLY_USED" : Part of the search query used search indexes. See
+  /// \[`indexUnusedReasons`\]
+  /// (/bigquery/docs/reference/rest/v2/Job#IndexUnusedReason) for why other
+  /// parts of the query did not use search indexes.
+  /// - "FULLY_USED" : The entire search query used search indexes.
   core.String? indexUsageMode;
 
   SearchStatistics({
@@ -11737,8 +14123,11 @@ class SearchStatistics {
       };
 }
 
+/// \[Preview\] Information related to sessions.
 class SessionInfo {
-  /// \[Output-only\] // \[Preview\] Id of the session.
+  /// The id of the session.
+  ///
+  /// Output only.
   core.String? sessionId;
 
   SessionInfo({
@@ -11794,6 +14183,7 @@ class SetIamPolicyRequest {
       };
 }
 
+/// Information about base table and snapshot time of the snapshot.
 class SnapshotDefinition {
   /// Reference describing the ID of the table that was snapshot.
   ///
@@ -11831,11 +14221,16 @@ class SnapshotDefinition {
       };
 }
 
+/// Spark job logs can be filtered by these fields in Cloud Logging.
 class SparkLoggingInfo {
-  /// \[Output-only\] Project ID used for logging
+  /// Project ID where the Spark logs were written.
+  ///
+  /// Output only.
   core.String? projectId;
 
-  /// \[Output-only\] Resource type used for logging
+  /// Resource type used for logging.
+  ///
+  /// Output only.
   core.String? resourceType;
 
   SparkLoggingInfo({
@@ -11997,21 +14392,68 @@ class SparkOptions {
       };
 }
 
+/// Statistics for a BigSpark query.
+///
+/// Populated as part of JobStatistics2
 class SparkStatistics {
-  /// \[Output-only\] Endpoints generated for the Spark job.
+  /// Endpoints returned from Dataproc.
+  ///
+  /// Key list: - history_server_endpoint: A link to Spark job UI.
+  ///
+  /// Output only.
   core.Map<core.String, core.String>? endpoints;
 
-  /// \[Output-only\] Logging info is used to generate a link to Cloud Logging.
+  /// The Google Cloud Storage bucket that is used as the default filesystem by
+  /// the Spark application.
+  ///
+  /// This fields is only filled when the Spark procedure uses the INVOKER
+  /// security mode. It is inferred from the system variable
+  /// @@spark_proc_properties.staging_bucket if it is provided. Otherwise,
+  /// BigQuery creates a default staging bucket for the job and returns the
+  /// bucket name in this field. Example: * `gs://[bucket_name]`
+  ///
+  /// Output only.
+  core.String? gcsStagingBucket;
+
+  /// The Cloud KMS encryption key that is used to protect the resources created
+  /// by the Spark job.
+  ///
+  /// If the Spark procedure uses DEFINER security mode, the Cloud KMS key is
+  /// inferred from the Spark connection associated with the procedure if it is
+  /// provided. Otherwise the key is inferred from the default key of the Spark
+  /// connection's project if the CMEK organization policy is enforced. If the
+  /// Spark procedure uses INVOKER security mode, the Cloud KMS encryption key
+  /// is inferred from the system variable @@spark_proc_properties.kms_key_name
+  /// if it is provided. Otherwise, the key is inferred fromt he default key of
+  /// the BigQuery job's project if the CMEK organization policy is enforced.
+  /// Example: *
+  /// `projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]`
+  ///
+  /// Output only.
+  core.String? kmsKeyName;
+
+  /// Logging info is used to generate a link to Cloud Logging.
+  ///
+  /// Output only.
   SparkLoggingInfo? loggingInfo;
 
-  /// \[Output-only\] Spark job id if a Spark job is created successfully.
+  /// Spark job ID if a Spark job is created successfully.
+  ///
+  /// Output only.
   core.String? sparkJobId;
 
-  /// \[Output-only\] Location where the Spark job is executed.
+  /// Location where the Spark job is executed.
+  ///
+  /// A location is selected by BigQueury for jobs configured to run in a
+  /// multi-region.
+  ///
+  /// Output only.
   core.String? sparkJobLocation;
 
   SparkStatistics({
     this.endpoints,
+    this.gcsStagingBucket,
+    this.kmsKeyName,
     this.loggingInfo,
     this.sparkJobId,
     this.sparkJobLocation,
@@ -12027,6 +14469,12 @@ class SparkStatistics {
                   ),
                 )
               : null,
+          gcsStagingBucket: json_.containsKey('gcsStagingBucket')
+              ? json_['gcsStagingBucket'] as core.String
+              : null,
+          kmsKeyName: json_.containsKey('kmsKeyName')
+              ? json_['kmsKeyName'] as core.String
+              : null,
           loggingInfo: json_.containsKey('loggingInfo')
               ? SparkLoggingInfo.fromJson(
                   json_['loggingInfo'] as core.Map<core.String, core.dynamic>)
@@ -12041,9 +14489,119 @@ class SparkStatistics {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (endpoints != null) 'endpoints': endpoints!,
+        if (gcsStagingBucket != null) 'gcsStagingBucket': gcsStagingBucket!,
+        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
         if (loggingInfo != null) 'loggingInfo': loggingInfo!,
         if (sparkJobId != null) 'sparkJobId': sparkJobId!,
         if (sparkJobLocation != null) 'sparkJobLocation': sparkJobLocation!,
+      };
+}
+
+/// Performance insights compared to the previous executions for a specific
+/// stage.
+class StagePerformanceChangeInsight {
+  /// Input data change insight of the query stage.
+  ///
+  /// Output only.
+  InputDataChange? inputDataChange;
+
+  /// The stage id that the insight mapped to.
+  ///
+  /// Output only.
+  core.String? stageId;
+
+  StagePerformanceChangeInsight({
+    this.inputDataChange,
+    this.stageId,
+  });
+
+  StagePerformanceChangeInsight.fromJson(core.Map json_)
+      : this(
+          inputDataChange: json_.containsKey('inputDataChange')
+              ? InputDataChange.fromJson(json_['inputDataChange']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          stageId: json_.containsKey('stageId')
+              ? json_['stageId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (inputDataChange != null) 'inputDataChange': inputDataChange!,
+        if (stageId != null) 'stageId': stageId!,
+      };
+}
+
+/// Standalone performance insights for a specific stage.
+class StagePerformanceStandaloneInsight {
+  /// If present, the stage had the following reasons for being disqualified
+  /// from BI Engine execution.
+  ///
+  /// Output only.
+  core.List<BiEngineReason>? biEngineReasons;
+
+  /// High cardinality joins in the stage.
+  ///
+  /// Output only.
+  core.List<HighCardinalityJoin>? highCardinalityJoins;
+
+  /// True if the stage has insufficient shuffle quota.
+  ///
+  /// Output only.
+  core.bool? insufficientShuffleQuota;
+
+  /// True if the stage has a slot contention issue.
+  ///
+  /// Output only.
+  core.bool? slotContention;
+
+  /// The stage id that the insight mapped to.
+  ///
+  /// Output only.
+  core.String? stageId;
+
+  StagePerformanceStandaloneInsight({
+    this.biEngineReasons,
+    this.highCardinalityJoins,
+    this.insufficientShuffleQuota,
+    this.slotContention,
+    this.stageId,
+  });
+
+  StagePerformanceStandaloneInsight.fromJson(core.Map json_)
+      : this(
+          biEngineReasons: json_.containsKey('biEngineReasons')
+              ? (json_['biEngineReasons'] as core.List)
+                  .map((value) => BiEngineReason.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          highCardinalityJoins: json_.containsKey('highCardinalityJoins')
+              ? (json_['highCardinalityJoins'] as core.List)
+                  .map((value) => HighCardinalityJoin.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          insufficientShuffleQuota:
+              json_.containsKey('insufficientShuffleQuota')
+                  ? json_['insufficientShuffleQuota'] as core.bool
+                  : null,
+          slotContention: json_.containsKey('slotContention')
+              ? json_['slotContention'] as core.bool
+              : null,
+          stageId: json_.containsKey('stageId')
+              ? json_['stageId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (biEngineReasons != null) 'biEngineReasons': biEngineReasons!,
+        if (highCardinalityJoins != null)
+          'highCardinalityJoins': highCardinalityJoins!,
+        if (insufficientShuffleQuota != null)
+          'insufficientShuffleQuota': insufficientShuffleQuota!,
+        if (slotContention != null) 'slotContention': slotContention!,
+        if (stageId != null) 'stageId': stageId!,
       };
 }
 
@@ -12216,17 +14774,22 @@ class StandardSqlTableType {
 }
 
 class Streamingbuffer {
-  /// \[Output-only\] A lower-bound estimate of the number of bytes currently in
-  /// the streaming buffer.
+  /// A lower-bound estimate of the number of bytes currently in the streaming
+  /// buffer.
+  ///
+  /// Output only.
   core.String? estimatedBytes;
 
-  /// \[Output-only\] A lower-bound estimate of the number of rows currently in
-  /// the streaming buffer.
+  /// A lower-bound estimate of the number of rows currently in the streaming
+  /// buffer.
+  ///
+  /// Output only.
   core.String? estimatedRows;
 
-  /// \[Output-only\] Contains the timestamp of the oldest entry in the
-  /// streaming buffer, in milliseconds since the epoch, if the streaming buffer
-  /// is available.
+  /// Contains the timestamp of the oldest entry in the streaming buffer, in
+  /// milliseconds since the epoch, if the streaming buffer is available.
+  ///
+  /// Output only.
   core.String? oldestEntryTime;
 
   Streamingbuffer({
@@ -12278,29 +14841,105 @@ class StringHparamSearchSpace {
       };
 }
 
+/// System variables given to a query.
+class SystemVariables {
+  /// Data type for each system variable.
+  ///
+  /// Output only.
+  core.Map<core.String, StandardSqlDataType>? types;
+
+  /// Value for each system variable.
+  ///
+  /// Output only.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? values;
+
+  SystemVariables({
+    this.types,
+    this.values,
+  });
+
+  SystemVariables.fromJson(core.Map json_)
+      : this(
+          types: json_.containsKey('types')
+              ? (json_['types'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    StandardSqlDataType.fromJson(
+                        value as core.Map<core.String, core.dynamic>),
+                  ),
+                )
+              : null,
+          values: json_.containsKey('values')
+              ? json_['values'] as core.Map<core.String, core.dynamic>
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (types != null) 'types': types!,
+        if (values != null) 'values': values!,
+      };
+}
+
 class Table {
   /// Specifies the configuration of a BigLake managed table.
   ///
   /// Optional.
   BigLakeConfiguration? biglakeConfiguration;
 
-  /// \[Output-only\] Clone definition.
+  /// Contains information about the clone.
+  ///
+  /// This value is set via the clone operation.
+  ///
+  /// Output only.
   CloneDefinition? cloneDefinition;
 
-  /// \[Beta\] Clustering specification for the table.
+  /// Clustering specification for the table.
   ///
-  /// Must be specified with partitioning, data in the table will be first
-  /// partitioned and subsequently clustered.
+  /// Must be specified with time-based partitioning, data in the table will be
+  /// first partitioned and subsequently clustered.
   Clustering? clustering;
 
-  /// \[Output-only\] The time when this table was created, in milliseconds
-  /// since the epoch.
+  /// The time when this table was created, in milliseconds since the epoch.
+  ///
+  /// Output only.
   core.String? creationTime;
 
-  /// \[Output-only\] The default collation of the table.
+  /// Defines the default collation specification of new STRING fields in the
+  /// table.
+  ///
+  /// During table creation or update, if a STRING field is added to this table
+  /// without explicit collation specified, then the table inherits the table
+  /// default collation. A change to this field affects only fields added
+  /// afterwards, and does not alter the existing fields. The following values
+  /// are supported: * 'und:ci': undetermined locale, case insensitive. * '':
+  /// empty string. Default to case-sensitive behavior.
+  ///
+  /// Optional.
   core.String? defaultCollation;
 
-  /// \[Output-only\] The default rounding mode of the table.
+  /// Defines the default rounding mode specification of new decimal fields
+  /// (NUMERIC OR BIGNUMERIC) in the table.
+  ///
+  /// During table creation or update, if a decimal field is added to this table
+  /// without an explicit rounding mode specified, then the field inherits the
+  /// table default rounding mode. Changing this field doesn't affect existing
+  /// fields.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "ROUNDING_MODE_UNSPECIFIED" : Unspecified will default to using
+  /// ROUND_HALF_AWAY_FROM_ZERO.
+  /// - "ROUND_HALF_AWAY_FROM_ZERO" : ROUND_HALF_AWAY_FROM_ZERO rounds half
+  /// values away from zero when applying precision and scale upon writing of
+  /// NUMERIC and BIGNUMERIC values. For Scale: 0 1.1, 1.2, 1.3, 1.4 =\> 1 1.5,
+  /// 1.6, 1.7, 1.8, 1.9 =\> 2
+  /// - "ROUND_HALF_EVEN" : ROUND_HALF_EVEN rounds half values to the nearest
+  /// even value when applying precision and scale upon writing of NUMERIC and
+  /// BIGNUMERIC values. For Scale: 0 1.1, 1.2, 1.3, 1.4 =\> 1 1.5 =\> 2 1.6,
+  /// 1.7, 1.8, 1.9 =\> 2 2.5 =\> 2
   core.String? defaultRoundingMode;
 
   /// A user-friendly description of this table.
@@ -12311,11 +14950,9 @@ class Table {
   /// Custom encryption configuration (e.g., Cloud KMS keys).
   EncryptionConfiguration? encryptionConfiguration;
 
-  /// \[Output-only\] A hash of the table metadata.
+  /// A hash of this resource.
   ///
-  /// Used to ensure there were no concurrent modifications to the resource when
-  /// attempting an update. Not guaranteed to change when the table contents or
-  /// the fields numRows, numBytes, numLongTermBytes or lastModifiedTime change.
+  /// Output only.
   core.String? etag;
 
   /// The time when this table expires, in milliseconds since the epoch.
@@ -12342,10 +14979,12 @@ class Table {
   /// Optional.
   core.String? friendlyName;
 
-  /// \[Output-only\] An opaque ID uniquely identifying the table.
+  /// An opaque ID uniquely identifying the table.
+  ///
+  /// Output only.
   core.String? id;
 
-  /// \[Output-only\] The type of the resource.
+  /// The type of resource ID.
   core.String? kind;
 
   /// The labels associated with this table.
@@ -12357,103 +14996,128 @@ class Table {
   /// and each label in the list must have a different key.
   core.Map<core.String, core.String>? labels;
 
-  /// \[Output-only\] The time when this table was last modified, in
-  /// milliseconds since the epoch.
+  /// The time when this table was last modified, in milliseconds since the
+  /// epoch.
+  ///
+  /// Output only.
   core.String? lastModifiedTime;
 
-  /// \[Output-only\] The geographic location where the table resides.
+  /// The geographic location where the table resides.
   ///
   /// This value is inherited from the dataset.
+  ///
+  /// Output only.
   core.String? location;
 
-  /// Materialized view definition.
+  /// The materialized view definition.
   ///
   /// Optional.
   MaterializedViewDefinition? materializedView;
 
-  /// Max staleness of data that could be returned when table or materialized
-  /// view is queried (formatted as Google SQL Interval type).
+  /// The materialized view status.
+  ///
+  /// Output only.
+  MaterializedViewStatus? materializedViewStatus;
+
+  /// The maximum staleness of data that could be returned when the table (or
+  /// stale MV) is queried.
+  ///
+  /// Staleness encoded as a string encoding of sql IntervalValue type.
   ///
   /// Optional.
   core.String? maxStaleness;
-  core.List<core.int> get maxStalenessAsBytes =>
-      convert.base64.decode(maxStaleness!);
 
-  set maxStalenessAsBytes(core.List<core.int> bytes_) {
-    maxStaleness =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
-  }
-
-  /// \[Output-only, Beta\] Present iff this table represents a ML model.
-  ///
-  /// Describes the training information for the model, and it is required to
-  /// run 'PREDICT' queries.
+  /// Deprecated.
   ModelDefinition? model;
 
-  /// \[Output-only\] Number of logical bytes that are less than 90 days old.
+  /// Number of logical bytes that are less than 90 days old.
+  ///
+  /// Output only.
   core.String? numActiveLogicalBytes;
 
-  /// \[Output-only\] Number of physical bytes less than 90 days old.
+  /// Number of physical bytes less than 90 days old.
   ///
   /// This data is not kept in real time, and might be delayed by a few seconds
   /// to a few minutes.
+  ///
+  /// Output only.
   core.String? numActivePhysicalBytes;
 
-  /// \[Output-only\] The size of this table in bytes, excluding any data in the
+  /// The size of this table in logical bytes, excluding any data in the
   /// streaming buffer.
+  ///
+  /// Output only.
   core.String? numBytes;
 
-  /// \[Output-only\] The number of bytes in the table that are considered
-  /// "long-term storage".
+  /// The number of logical bytes in the table that are considered "long-term
+  /// storage".
+  ///
+  /// Output only.
   core.String? numLongTermBytes;
 
-  /// \[Output-only\] Number of logical bytes that are more than 90 days old.
+  /// Number of logical bytes that are more than 90 days old.
+  ///
+  /// Output only.
   core.String? numLongTermLogicalBytes;
 
-  /// \[Output-only\] Number of physical bytes more than 90 days old.
+  /// Number of physical bytes more than 90 days old.
   ///
   /// This data is not kept in real time, and might be delayed by a few seconds
   /// to a few minutes.
+  ///
+  /// Output only.
   core.String? numLongTermPhysicalBytes;
 
-  /// \[Output-only\] The number of partitions present in the table or
-  /// materialized view.
+  /// The number of partitions present in the table or materialized view.
   ///
   /// This data is not kept in real time, and might be delayed by a few seconds
   /// to a few minutes.
+  ///
+  /// Output only.
   core.String? numPartitions;
 
-  /// \[Output-only\] \[TrustedTester\] The physical size of this table in
-  /// bytes, excluding any data in the streaming buffer.
+  /// The physical size of this table in bytes.
   ///
-  /// This includes compression and storage used for time travel.
+  /// This includes storage used for time travel.
+  ///
+  /// Output only.
   core.String? numPhysicalBytes;
 
-  /// \[Output-only\] The number of rows of data in this table, excluding any
-  /// data in the streaming buffer.
+  /// The number of rows of data in this table, excluding any data in the
+  /// streaming buffer.
+  ///
+  /// Output only.
   core.String? numRows;
 
-  /// \[Output-only\] Number of physical bytes used by time travel storage
-  /// (deleted or changed data).
+  /// Number of physical bytes used by time travel storage (deleted or changed
+  /// data).
   ///
   /// This data is not kept in real time, and might be delayed by a few seconds
   /// to a few minutes.
+  ///
+  /// Output only.
   core.String? numTimeTravelPhysicalBytes;
 
-  /// \[Output-only\] Total number of logical bytes in the table or materialized
-  /// view.
+  /// Total number of logical bytes in the table or materialized view.
+  ///
+  /// Output only.
   core.String? numTotalLogicalBytes;
 
-  /// \[Output-only\] The physical size of this table in bytes.
+  /// The physical size of this table in bytes.
   ///
   /// This also includes storage used for time travel. This data is not kept in
   /// real time, and might be delayed by a few seconds to a few minutes.
+  ///
+  /// Output only.
   core.String? numTotalPhysicalBytes;
 
-  /// \[TrustedTester\] Range partitioning specification for this table.
-  ///
-  /// Only one of timePartitioning and rangePartitioning should be specified.
+  /// If specified, configures range partitioning for this table.
   RangePartitioning? rangePartitioning;
+
+  /// Table references of all replicas currently active on the table.
+  ///
+  /// Optional. Output only.
+  core.List<TableReference>? replicas;
 
   /// If set to true, queries over this table require a partition filter that
   /// can be used for partition elimination to be specified.
@@ -12478,20 +15142,28 @@ class Table {
   /// Optional.
   TableSchema? schema;
 
-  /// \[Output-only\] A URL that can be used to access this resource again.
+  /// A URL that can be used to access this resource again.
+  ///
+  /// Output only.
   core.String? selfLink;
 
-  /// \[Output-only\] Snapshot definition.
+  /// Contains information about the snapshot.
+  ///
+  /// This value is set via snapshot creation.
+  ///
+  /// Output only.
   SnapshotDefinition? snapshotDefinition;
 
-  /// \[Output-only\] Contains information regarding this table's streaming
-  /// buffer, if one is present.
+  /// Contains information regarding this table's streaming buffer, if one is
+  /// present.
   ///
   /// This field will be absent if the table is not being streamed to or if
   /// there is no data in the streaming buffer.
+  ///
+  /// Output only.
   Streamingbuffer? streamingBuffer;
 
-  /// The table constraints on the table.
+  /// Tables Primary Key and Foreign Key information
   ///
   /// Optional.
   TableConstraints? tableConstraints;
@@ -12501,19 +15173,27 @@ class Table {
   /// Required.
   TableReference? tableReference;
 
-  /// Time-based partitioning specification for this table.
+  /// Table replication info for table created `AS REPLICA` DDL like: `CREATE
+  /// MATERIALIZED VIEW mv1 AS REPLICA OF src_mv`
   ///
-  /// Only one of timePartitioning and rangePartitioning should be specified.
+  /// Optional.
+  TableReplicationInfo? tableReplicationInfo;
+
+  /// If specified, configures time-based partitioning for this table.
   TimePartitioning? timePartitioning;
 
-  /// \[Output-only\] Describes the table type.
+  /// Describes the table type.
   ///
-  /// The following values are supported: TABLE: A normal BigQuery table. VIEW:
-  /// A virtual table defined by a SQL query. SNAPSHOT: An immutable, read-only
-  /// table that is a copy of another table. \[TrustedTester\]
-  /// MATERIALIZED_VIEW: SQL query whose result is persisted. EXTERNAL: A table
-  /// that references data stored in an external storage system, such as Google
-  /// Cloud Storage. The default value is TABLE.
+  /// The following values are supported: * `TABLE`: A normal BigQuery table. *
+  /// `VIEW`: A virtual table defined by a SQL query. * `EXTERNAL`: A table that
+  /// references data stored in an external storage system, such as Google Cloud
+  /// Storage. * `MATERIALIZED_VIEW`: A precomputed view defined by a SQL query.
+  /// * `SNAPSHOT`: An immutable BigQuery table that preserves the contents of a
+  /// base table at a particular time. See additional information on \[table
+  /// snapshots\](/bigquery/docs/table-snapshots-intro). The default value is
+  /// `TABLE`.
+  ///
+  /// Output only.
   core.String? type;
 
   /// The view definition.
@@ -12540,6 +15220,7 @@ class Table {
     this.lastModifiedTime,
     this.location,
     this.materializedView,
+    this.materializedViewStatus,
     this.maxStaleness,
     this.model,
     this.numActiveLogicalBytes,
@@ -12555,6 +15236,7 @@ class Table {
     this.numTotalLogicalBytes,
     this.numTotalPhysicalBytes,
     this.rangePartitioning,
+    this.replicas,
     this.requirePartitionFilter,
     this.resourceTags,
     this.schema,
@@ -12563,6 +15245,7 @@ class Table {
     this.streamingBuffer,
     this.tableConstraints,
     this.tableReference,
+    this.tableReplicationInfo,
     this.timePartitioning,
     this.type,
     this.view,
@@ -12632,6 +15315,10 @@ class Table {
               ? MaterializedViewDefinition.fromJson(json_['materializedView']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          materializedViewStatus: json_.containsKey('materializedViewStatus')
+              ? MaterializedViewStatus.fromJson(json_['materializedViewStatus']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           maxStaleness: json_.containsKey('maxStaleness')
               ? json_['maxStaleness'] as core.String
               : null,
@@ -12681,6 +15368,12 @@ class Table {
               ? RangePartitioning.fromJson(json_['rangePartitioning']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          replicas: json_.containsKey('replicas')
+              ? (json_['replicas'] as core.List)
+                  .map((value) => TableReference.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           requirePartitionFilter: json_.containsKey('requirePartitionFilter')
               ? json_['requirePartitionFilter'] as core.bool
               : null,
@@ -12714,6 +15407,10 @@ class Table {
               : null,
           tableReference: json_.containsKey('tableReference')
               ? TableReference.fromJson(json_['tableReference']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          tableReplicationInfo: json_.containsKey('tableReplicationInfo')
+              ? TableReplicationInfo.fromJson(json_['tableReplicationInfo']
                   as core.Map<core.String, core.dynamic>)
               : null,
           timePartitioning: json_.containsKey('timePartitioning')
@@ -12750,6 +15447,8 @@ class Table {
         if (lastModifiedTime != null) 'lastModifiedTime': lastModifiedTime!,
         if (location != null) 'location': location!,
         if (materializedView != null) 'materializedView': materializedView!,
+        if (materializedViewStatus != null)
+          'materializedViewStatus': materializedViewStatus!,
         if (maxStaleness != null) 'maxStaleness': maxStaleness!,
         if (model != null) 'model': model!,
         if (numActiveLogicalBytes != null)
@@ -12772,6 +15471,7 @@ class Table {
         if (numTotalPhysicalBytes != null)
           'numTotalPhysicalBytes': numTotalPhysicalBytes!,
         if (rangePartitioning != null) 'rangePartitioning': rangePartitioning!,
+        if (replicas != null) 'replicas': replicas!,
         if (requirePartitionFilter != null)
           'requirePartitionFilter': requirePartitionFilter!,
         if (resourceTags != null) 'resourceTags': resourceTags!,
@@ -12782,6 +15482,8 @@ class Table {
         if (streamingBuffer != null) 'streamingBuffer': streamingBuffer!,
         if (tableConstraints != null) 'tableConstraints': tableConstraints!,
         if (tableReference != null) 'tableReference': tableReference!,
+        if (tableReplicationInfo != null)
+          'tableReplicationInfo': tableReplicationInfo!,
         if (timePartitioning != null) 'timePartitioning': timePartitioning!,
         if (type != null) 'type': type!,
         if (view != null) 'view': view!,
@@ -12809,8 +15511,17 @@ class TableCell {
       };
 }
 
+/// The pair of the foreign key column and primary key column.
 class TableConstraintsForeignKeysColumnReferences {
+  /// The column in the primary key that are referenced by the
+  /// referencing_column.
+  ///
+  /// Required.
   core.String? referencedColumn;
+
+  /// The column that composes the foreign key.
+  ///
+  /// Required.
   core.String? referencingColumn;
 
   TableConstraintsForeignKeysColumnReferences({
@@ -12865,8 +15576,16 @@ class TableConstraintsForeignKeysReferencedTable {
       };
 }
 
+/// Represents a foreign key constraint on a table's columns.
 class TableConstraintsForeignKeys {
+  /// The columns that compose the foreign key.
+  ///
+  /// Required.
   core.List<TableConstraintsForeignKeysColumnReferences>? columnReferences;
+
+  /// Set only if the foreign key constraint is named.
+  ///
+  /// Optional.
   core.String? name;
   TableConstraintsForeignKeysReferencedTable? referencedTable;
 
@@ -12900,10 +15619,11 @@ class TableConstraintsForeignKeys {
       };
 }
 
-/// The primary key of the table.
-///
-/// Optional.
+/// Represents the primary key constraint on a table's columns.
 class TableConstraintsPrimaryKey {
+  /// The columns that are composed of the primary key constraint.
+  ///
+  /// Required.
   core.List<core.String>? columns;
 
   TableConstraintsPrimaryKey({
@@ -12924,15 +15644,16 @@ class TableConstraintsPrimaryKey {
       };
 }
 
+/// The TableConstraints defines the primary key and foreign key.
 class TableConstraints {
-  /// The foreign keys of the tables.
+  /// Present only if the table has a foreign key.
+  ///
+  /// The foreign key is not enforced.
   ///
   /// Optional.
   core.List<TableConstraintsForeignKeys>? foreignKeys;
 
-  /// The primary key of the table.
-  ///
-  /// Optional.
+  /// Represents the primary key constraint on a table's columns.
   TableConstraintsPrimaryKey? primaryKey;
 
   TableConstraints({
@@ -12960,21 +15681,16 @@ class TableConstraints {
       };
 }
 
+/// Data for a single insertion row.
 class TableDataInsertAllRequestRows {
-  /// A unique ID for each row.
+  /// Insertion ID for best-effort deduplication.
   ///
-  /// BigQuery uses this property to detect duplicate insertion requests on a
-  /// best-effort basis.
-  ///
-  /// Optional.
+  /// This feature is not recommended, and users seeking stronger insertion
+  /// semantics are encouraged to use other mechanisms such as the BigQuery
+  /// Write API.
   core.String? insertId;
 
-  /// A JSON object that contains a row of data.
-  ///
-  /// The object's properties and values must match the destination table's
-  /// schema.
-  ///
-  /// Required.
+  /// Data for a single row.
   JsonObject? json;
 
   TableDataInsertAllRequestRows({
@@ -12998,6 +15714,7 @@ class TableDataInsertAllRequestRows {
       };
 }
 
+/// Request for sending a single streaming insert.
 class TableDataInsertAllRequest {
   /// Accept rows that contain values that do not match the schema.
   ///
@@ -13008,9 +15725,12 @@ class TableDataInsertAllRequest {
   core.bool? ignoreUnknownValues;
 
   /// The resource type of the response.
+  ///
+  /// The value is not checked at the backend. Historically, it has been set to
+  /// "bigquery#tableDataInsertAllRequest" but you are not required to set it.
+  ///
+  /// Optional.
   core.String? kind;
-
-  /// The rows to insert.
   core.List<TableDataInsertAllRequestRows>? rows;
 
   /// Insert all valid rows of a request, even if invalid rows exist.
@@ -13028,7 +15748,17 @@ class TableDataInsertAllRequest {
   /// the base template table. See
   /// https://cloud.google.com/bigquery/streaming-data-into-bigquery#template-tables
   /// for considerations when working with templates tables.
+  ///
+  /// Optional.
   core.String? templateSuffix;
+
+  /// Unique request trace id.
+  ///
+  /// Used for debugging purposes only. It is case-sensitive, limited to up to
+  /// 36 ASCII characters. A UUID is recommended.
+  ///
+  /// Optional.
+  core.String? traceId;
 
   TableDataInsertAllRequest({
     this.ignoreUnknownValues,
@@ -13036,6 +15766,7 @@ class TableDataInsertAllRequest {
     this.rows,
     this.skipInvalidRows,
     this.templateSuffix,
+    this.traceId,
   });
 
   TableDataInsertAllRequest.fromJson(core.Map json_)
@@ -13056,6 +15787,9 @@ class TableDataInsertAllRequest {
           templateSuffix: json_.containsKey('templateSuffix')
               ? json_['templateSuffix'] as core.String
               : null,
+          traceId: json_.containsKey('traceId')
+              ? json_['traceId'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -13065,9 +15799,11 @@ class TableDataInsertAllRequest {
         if (rows != null) 'rows': rows!,
         if (skipInvalidRows != null) 'skipInvalidRows': skipInvalidRows!,
         if (templateSuffix != null) 'templateSuffix': templateSuffix!,
+        if (traceId != null) 'traceId': traceId!,
       };
 }
 
+/// Error details about a single row's insertion.
 class TableDataInsertAllResponseInsertErrors {
   /// Error information for the row indicated by the index property.
   core.List<ErrorProto>? errors;
@@ -13097,11 +15833,12 @@ class TableDataInsertAllResponseInsertErrors {
       };
 }
 
+/// Describes the format of a streaming insert response.
 class TableDataInsertAllResponse {
-  /// An array of errors for rows that were not inserted.
+  /// Describes specific errors encountered while processing the request.
   core.List<TableDataInsertAllResponseInsertErrors>? insertErrors;
 
-  /// The resource type of the response.
+  /// Returns "bigquery#tableDataInsertAllResponse".
   core.String? kind;
 
   TableDataInsertAllResponse({
@@ -13143,7 +15880,9 @@ class TableDataList {
   /// Rows of results.
   core.List<TableRow>? rows;
 
-  /// The total number of rows in the complete table.
+  /// Total rows of the entire table.
+  ///
+  /// In order to show default value 0 we have to present it as string.
   core.String? totalRows;
 
   TableDataList({
@@ -13181,14 +15920,9 @@ class TableDataList {
       };
 }
 
-/// The categories attached to this field, used for field-level access control.
-///
-/// Optional.
+/// Deprecated.
 class TableFieldSchemaCategories {
-  /// A list of category resource names.
-  ///
-  /// For example, "projects/1/taxonomies/2/categories/3". At most 5 categories
-  /// are allowed.
+  /// Deprecated.
   core.List<core.String>? names;
 
   TableFieldSchemaCategories({
@@ -13209,11 +15943,16 @@ class TableFieldSchemaCategories {
       };
 }
 
+/// The policy tags attached to this field, used for field-level access control.
+///
+/// If not set, defaults to empty policy_tags.
+///
+/// Optional.
 class TableFieldSchemaPolicyTags {
-  /// A list of category resource names.
+  /// A list of policy tag resource names.
   ///
-  /// For example, "projects/1/location/eu/taxonomies/2/policyTags/3". At most 1
-  /// policy tag is allowed.
+  /// For example, "projects/1/locations/eu/taxonomies/2/policyTags/3". At most
+  /// 1 policy tag is currently allowed.
   core.List<core.String>? names;
 
   TableFieldSchemaPolicyTags({
@@ -13234,14 +15973,13 @@ class TableFieldSchemaPolicyTags {
       };
 }
 
-/// The subtype of the RANGE, if the type of this field is RANGE.
-///
-/// If the type is RANGE, this field is required. Possible values for the field
-/// element type of a RANGE include: - DATE - DATETIME - TIMESTAMP
-///
-/// Optional.
+/// Represents the type of a field element.
 class TableFieldSchemaRangeElementType {
-  /// The field element type of a RANGE
+  /// The type of a field element.
+  ///
+  /// See TableFieldSchema.type.
+  ///
+  /// Required.
   core.String? type;
 
   TableFieldSchemaRangeElementType({
@@ -13258,29 +15996,22 @@ class TableFieldSchemaRangeElementType {
       };
 }
 
+/// A field in TableSchema
 class TableFieldSchema {
-  /// The categories attached to this field, used for field-level access
-  /// control.
-  ///
-  /// Optional.
+  /// Deprecated.
   TableFieldSchemaCategories? categories;
 
-  /// Collation specification of the field.
+  /// Field collation can be set only when the type of field is STRING.
   ///
-  /// It only can be set on string type field.
+  /// The following values are supported: * 'und:ci': undetermined locale, case
+  /// insensitive. * '': empty string. Default to case-sensitive behavior.
   ///
   /// Optional.
   core.String? collation;
 
-  /// A SQL expression to specify the default value for this field.
-  ///
-  /// It can only be set for top level fields (columns). You can use struct or
-  /// array expression to specify default value for the entire struct or array.
-  /// The valid SQL expressions are: - Literals for all data types, including
-  /// STRUCT and ARRAY. - Following functions: - CURRENT_TIMESTAMP -
-  /// CURRENT_TIME - CURRENT_DATE - CURRENT_DATETIME - GENERATE_UUID - RAND -
-  /// SESSION_USER - ST_GEOGPOINT - Struct or array composed with the above
-  /// allowed functions, for example, \[CURRENT_DATE(), DATE '2020-01-01'\]
+  /// A SQL expression to specify the
+  /// [default value](https://cloud.google.com/bigquery/docs/default-values) for
+  /// this field.
   ///
   /// Optional.
   core.String? defaultValueExpression;
@@ -13324,6 +16055,13 @@ class TableFieldSchema {
   ///
   /// Required.
   core.String? name;
+
+  /// The policy tags attached to this field, used for field-level access
+  /// control.
+  ///
+  /// If not set, defaults to empty policy_tags.
+  ///
+  /// Optional.
   TableFieldSchemaPolicyTags? policyTags;
 
   /// Precision (maximum number of total digits in base 10) and scale (maximum
@@ -13334,33 +16072,38 @@ class TableFieldSchema {
   /// "BIGNUMERIC". If precision and scale are not specified, no value range
   /// constraint is imposed on this field insofar as values are permitted by the
   /// type. Values of this NUMERIC or BIGNUMERIC field must be in this range
-  /// when: - Precision (P) and scale (S) are specified: \[-10P-S + 10-S, 10P-S
-  /// - 10-S\] - Precision (P) is specified but not scale (and thus scale is
+  /// when: * Precision (P) and scale (S) are specified: \[-10P-S + 10-S, 10P-S
+  /// - 10-S\] * Precision (P) is specified but not scale (and thus scale is
   /// interpreted to be equal to zero): \[-10P + 1, 10P - 1\]. Acceptable values
-  /// for precision and scale if both are specified: - If type = "NUMERIC": 1 ≤
-  /// precision - scale ≤ 29 and 0 ≤ scale ≤ 9. - If type = "BIGNUMERIC": 1 ≤
+  /// for precision and scale if both are specified: * If type = "NUMERIC": 1 ≤
+  /// precision - scale ≤ 29 and 0 ≤ scale ≤ 9. * If type = "BIGNUMERIC": 1 ≤
   /// precision - scale ≤ 38 and 0 ≤ scale ≤ 38. Acceptable values for precision
   /// if only precision is specified but not scale (and thus scale is
-  /// interpreted to be equal to zero): - If type = "NUMERIC": 1 ≤ precision ≤
-  /// 29. - If type = "BIGNUMERIC": 1 ≤ precision ≤ 38. If scale is specified
+  /// interpreted to be equal to zero): * If type = "NUMERIC": 1 ≤ precision ≤
+  /// 29. * If type = "BIGNUMERIC": 1 ≤ precision ≤ 38. If scale is specified
   /// but not precision, then it is invalid.
   ///
   /// Optional.
   core.String? precision;
 
-  /// The subtype of the RANGE, if the type of this field is RANGE.
-  ///
-  /// If the type is RANGE, this field is required. Possible values for the
-  /// field element type of a RANGE include: - DATE - DATETIME - TIMESTAMP
-  ///
-  /// Optional.
+  /// Represents the type of a field element.
   TableFieldSchemaRangeElementType? rangeElementType;
 
-  /// Rounding Mode specification of the field.
-  ///
-  /// It only can be set on NUMERIC or BIGNUMERIC type fields.
+  /// Specifies the rounding mode to be used when storing values of NUMERIC and
+  /// BIGNUMERIC type.
   ///
   /// Optional.
+  /// Possible string values are:
+  /// - "ROUNDING_MODE_UNSPECIFIED" : Unspecified will default to using
+  /// ROUND_HALF_AWAY_FROM_ZERO.
+  /// - "ROUND_HALF_AWAY_FROM_ZERO" : ROUND_HALF_AWAY_FROM_ZERO rounds half
+  /// values away from zero when applying precision and scale upon writing of
+  /// NUMERIC and BIGNUMERIC values. For Scale: 0 1.1, 1.2, 1.3, 1.4 =\> 1 1.5,
+  /// 1.6, 1.7, 1.8, 1.9 =\> 2
+  /// - "ROUND_HALF_EVEN" : ROUND_HALF_EVEN rounds half values to the nearest
+  /// even value when applying precision and scale upon writing of NUMERIC and
+  /// BIGNUMERIC values. For Scale: 0 1.1, 1.2, 1.3, 1.4 =\> 1 1.5 =\> 2 1.6,
+  /// 1.7, 1.8, 1.9 =\> 2 2.5 =\> 2
   core.String? roundingMode;
 
   /// See documentation for precision.
@@ -13370,11 +16113,10 @@ class TableFieldSchema {
 
   /// The field data type.
   ///
-  /// Possible values include STRING, BYTES, INTEGER, INT64 (same as INTEGER),
-  /// FLOAT, FLOAT64 (same as FLOAT), NUMERIC, BIGNUMERIC, BOOLEAN, BOOL (same
-  /// as BOOLEAN), TIMESTAMP, DATE, TIME, DATETIME, INTERVAL, RECORD (where
-  /// RECORD indicates that the field contains a nested schema) or STRUCT (same
-  /// as RECORD).
+  /// Possible values include: * STRING * BYTES * INTEGER (or INT64) * FLOAT (or
+  /// FLOAT64) * BOOLEAN (or BOOL) * TIMESTAMP * DATE * TIME * DATETIME *
+  /// GEOGRAPHY * NUMERIC * BIGNUMERIC * JSON * RECORD (or STRUCT) Use of
+  /// RECORD/STRUCT indicates that the field contains a nested schema.
   ///
   /// Required.
   core.String? type;
@@ -13461,46 +16203,55 @@ class TableFieldSchema {
       };
 }
 
-/// Additional details for a view.
+/// Information about a logical view.
 class TableListTablesView {
-  /// True if view is defined in legacy SQL dialect, false if in standard SQL.
+  /// Specifices the privacy policy for the view.
+  PrivacyPolicy? privacyPolicy;
+
+  /// True if view is defined in legacy SQL dialect, false if in GoogleSQL.
   core.bool? useLegacySql;
 
   TableListTablesView({
+    this.privacyPolicy,
     this.useLegacySql,
   });
 
   TableListTablesView.fromJson(core.Map json_)
       : this(
+          privacyPolicy: json_.containsKey('privacyPolicy')
+              ? PrivacyPolicy.fromJson(
+                  json_['privacyPolicy'] as core.Map<core.String, core.dynamic>)
+              : null,
           useLegacySql: json_.containsKey('useLegacySql')
               ? json_['useLegacySql'] as core.bool
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (privacyPolicy != null) 'privacyPolicy': privacyPolicy!,
         if (useLegacySql != null) 'useLegacySql': useLegacySql!,
       };
 }
 
 class TableListTables {
-  /// \[Beta\] Clustering specification for this table, if configured.
+  /// Clustering specification for this table, if configured.
   Clustering? clustering;
 
   /// The time when this table was created, in milliseconds since the epoch.
+  ///
+  /// Output only.
   core.String? creationTime;
 
   /// The time when this table expires, in milliseconds since the epoch.
   ///
   /// If not present, the table will persist indefinitely. Expired tables will
   /// be deleted and their storage reclaimed.
-  ///
-  /// Optional.
   core.String? expirationTime;
 
   /// The user-friendly name for this table.
   core.String? friendlyName;
 
-  /// An opaque ID of the table
+  /// An opaque ID of the table.
   core.String? id;
 
   /// The resource type.
@@ -13511,21 +16262,27 @@ class TableListTables {
   /// You can use these to organize and group your tables.
   core.Map<core.String, core.String>? labels;
 
-  /// The range partitioning specification for this table, if configured.
+  /// The range partitioning for this table.
   RangePartitioning? rangePartitioning;
 
-  /// A reference uniquely identifying the table.
+  /// If set to true, queries including this table must specify a partition
+  /// filter.
+  ///
+  /// This filter is used for partition elimination.
+  ///
+  /// Optional.
+  core.bool? requirePartitionFilter;
+
+  /// A reference uniquely identifying table.
   TableReference? tableReference;
 
-  /// The time-based partitioning specification for this table, if configured.
+  /// The time-based partitioning for this table.
   TimePartitioning? timePartitioning;
 
   /// The type of table.
-  ///
-  /// Possible values are: TABLE, VIEW.
   core.String? type;
 
-  /// Additional details for a view.
+  /// Information about a logical view.
   TableListTablesView? view;
 
   TableListTables({
@@ -13537,6 +16294,7 @@ class TableListTables {
     this.kind,
     this.labels,
     this.rangePartitioning,
+    this.requirePartitionFilter,
     this.tableReference,
     this.timePartitioning,
     this.type,
@@ -13572,6 +16330,9 @@ class TableListTables {
               ? RangePartitioning.fromJson(json_['rangePartitioning']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          requirePartitionFilter: json_.containsKey('requirePartitionFilter')
+              ? json_['requirePartitionFilter'] as core.bool
+              : null,
           tableReference: json_.containsKey('tableReference')
               ? TableReference.fromJson(json_['tableReference']
                   as core.Map<core.String, core.dynamic>)
@@ -13596,6 +16357,8 @@ class TableListTables {
         if (kind != null) 'kind': kind!,
         if (labels != null) 'labels': labels!,
         if (rangePartitioning != null) 'rangePartitioning': rangePartitioning!,
+        if (requirePartitionFilter != null)
+          'requirePartitionFilter': requirePartitionFilter!,
         if (tableReference != null) 'tableReference': tableReference!,
         if (timePartitioning != null) 'timePartitioning': timePartitioning!,
         if (type != null) 'type': type!,
@@ -13603,6 +16366,7 @@ class TableListTables {
       };
 }
 
+/// Partial projection of the metadata for a given table in a list response.
 class TableList {
   /// A hash of this page of results.
   core.String? etag;
@@ -13654,6 +16418,63 @@ class TableList {
       };
 }
 
+/// Table level detail on the usage of metadata caching.
+///
+/// Only set for Metadata caching eligible tables referenced in the query.
+class TableMetadataCacheUsage {
+  /// Free form human-readable reason metadata caching was unused for the job.
+  core.String? explanation;
+
+  /// Metadata caching eligible table referenced in the query.
+  TableReference? tableReference;
+
+  /// \[Table type\](/bigquery/docs/reference/rest/v2/tables#Table.FIELDS.type).
+  core.String? tableType;
+
+  /// Reason for not using metadata caching for the table.
+  /// Possible string values are:
+  /// - "UNUSED_REASON_UNSPECIFIED" : Unused reasons not specified.
+  /// - "EXCEEDED_MAX_STALENESS" : Metadata cache was outside the table's
+  /// maxStaleness.
+  /// - "METADATA_CACHING_NOT_ENABLED" : Metadata caching feature is not
+  /// enabled. \[Update BigLake tables\]
+  /// (/bigquery/docs/create-cloud-storage-table-biglake#update-biglake-tables)
+  /// to enable the metadata caching.
+  /// - "OTHER_REASON" : Other unknown reason.
+  core.String? unusedReason;
+
+  TableMetadataCacheUsage({
+    this.explanation,
+    this.tableReference,
+    this.tableType,
+    this.unusedReason,
+  });
+
+  TableMetadataCacheUsage.fromJson(core.Map json_)
+      : this(
+          explanation: json_.containsKey('explanation')
+              ? json_['explanation'] as core.String
+              : null,
+          tableReference: json_.containsKey('tableReference')
+              ? TableReference.fromJson(json_['tableReference']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          tableType: json_.containsKey('tableType')
+              ? json_['tableType'] as core.String
+              : null,
+          unusedReason: json_.containsKey('unusedReason')
+              ? json_['unusedReason'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (explanation != null) 'explanation': explanation!,
+        if (tableReference != null) 'tableReference': tableReference!,
+        if (tableType != null) 'tableType': tableType!,
+        if (unusedReason != null) 'unusedReason': unusedReason!,
+      };
+}
+
 class TableReference {
   /// The ID of the dataset containing this table.
   ///
@@ -13667,8 +16488,13 @@ class TableReference {
 
   /// The ID of the table.
   ///
-  /// The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores
-  /// (_). The maximum length is 1,024 characters.
+  /// The ID can contain Unicode characters in category L (letter), M (mark), N
+  /// (number), Pc (connector, including underscore), Pd (dash), and Zs (space).
+  /// For more information, see
+  /// [General Category](https://wikipedia.org/wiki/Unicode_character_property#General_Category).
+  /// The maximum length is 1,024 characters. Certain operations allow suffixing
+  /// of the table ID with a partition decorator, such as
+  /// `sample_table$20190123`.
   ///
   /// Required.
   core.String? tableId;
@@ -13699,6 +16525,83 @@ class TableReference {
       };
 }
 
+/// Replication info of a table created using `AS REPLICA` DDL like: `CREATE
+/// MATERIALIZED VIEW mv1 AS REPLICA OF src_mv`
+class TableReplicationInfo {
+  /// If source is a materialized view, this field signifies the last refresh
+  /// time of the source.
+  ///
+  /// Optional. Output only.
+  core.String? replicatedSourceLastRefreshTime;
+
+  /// Replication error that will permanently stopped table replication.
+  ///
+  /// Optional. Output only.
+  ErrorProto? replicationError;
+
+  /// Specifies the interval at which the source table is polled for updates.
+  ///
+  /// Required.
+  core.String? replicationIntervalMs;
+
+  /// Replication status of configured replication.
+  ///
+  /// Optional. Output only.
+  /// Possible string values are:
+  /// - "REPLICATION_STATUS_UNSPECIFIED" : Default value.
+  /// - "ACTIVE" : Replication is Active with no errors.
+  /// - "SOURCE_DELETED" : Source object is deleted.
+  /// - "PERMISSION_DENIED" : Source revoked replication permissions.
+  /// - "UNSUPPORTED_CONFIGURATION" : Source configuration doesn’t allow
+  /// replication.
+  core.String? replicationStatus;
+
+  /// Source table reference that is replicated.
+  ///
+  /// Required.
+  TableReference? sourceTable;
+
+  TableReplicationInfo({
+    this.replicatedSourceLastRefreshTime,
+    this.replicationError,
+    this.replicationIntervalMs,
+    this.replicationStatus,
+    this.sourceTable,
+  });
+
+  TableReplicationInfo.fromJson(core.Map json_)
+      : this(
+          replicatedSourceLastRefreshTime:
+              json_.containsKey('replicatedSourceLastRefreshTime')
+                  ? json_['replicatedSourceLastRefreshTime'] as core.String
+                  : null,
+          replicationError: json_.containsKey('replicationError')
+              ? ErrorProto.fromJson(json_['replicationError']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          replicationIntervalMs: json_.containsKey('replicationIntervalMs')
+              ? json_['replicationIntervalMs'] as core.String
+              : null,
+          replicationStatus: json_.containsKey('replicationStatus')
+              ? json_['replicationStatus'] as core.String
+              : null,
+          sourceTable: json_.containsKey('sourceTable')
+              ? TableReference.fromJson(
+                  json_['sourceTable'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (replicatedSourceLastRefreshTime != null)
+          'replicatedSourceLastRefreshTime': replicatedSourceLastRefreshTime!,
+        if (replicationError != null) 'replicationError': replicationError!,
+        if (replicationIntervalMs != null)
+          'replicationIntervalMs': replicationIntervalMs!,
+        if (replicationStatus != null) 'replicationStatus': replicationStatus!,
+        if (sourceTable != null) 'sourceTable': sourceTable!,
+      };
+}
+
 class TableRow {
   /// Represents a single row in the result set, consisting of one or more
   /// fields.
@@ -13723,6 +16626,7 @@ class TableRow {
       };
 }
 
+/// Schema of a table
 class TableSchema {
   /// Describes the fields in a table.
   core.List<TableFieldSchema>? fields;
@@ -13753,29 +16657,36 @@ typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 typedef TestIamPermissionsResponse = $PermissionsResponse;
 
 class TimePartitioning {
-  /// Number of milliseconds for which to keep the storage for partitions in the
-  /// table.
+  /// Number of milliseconds for which to keep the storage for a partition.
   ///
-  /// The storage in a partition will have an expiration time of its partition
-  /// time plus this value.
+  /// A wrapper is used here because 0 is an invalid value.
   ///
   /// Optional.
   core.String? expirationMs;
 
-  /// \[Beta\] \[Optional\] If not set, the table is partitioned by pseudo
-  /// column, referenced via either '_PARTITIONTIME' as TIMESTAMP type, or
-  /// '_PARTITIONDATE' as DATE type.
+  /// If not set, the table is partitioned by pseudo column '_PARTITIONTIME'; if
+  /// set, the table is partitioned by this field.
   ///
-  /// If field is specified, the table is instead partitioned by this field. The
-  /// field must be a top-level TIMESTAMP or DATE field. Its mode must be
-  /// NULLABLE or REQUIRED.
+  /// The field must be a top-level TIMESTAMP or DATE field. Its mode must be
+  /// NULLABLE or REQUIRED. A wrapper is used here because an empty string is an
+  /// invalid value.
+  ///
+  /// Optional.
   core.String? field;
+
+  /// If set to true, queries over this table require a partition filter that
+  /// can be used for partition elimination to be specified.
+  ///
+  /// This field is deprecated; please set the field with the same name on the
+  /// table itself instead. This field needs a wrapper because we want to output
+  /// the default value, false, if the user explicitly set it.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? requirePartitionFilter;
 
   /// The supported types are DAY, HOUR, MONTH, and YEAR, which will generate
   /// one partition per day, hour, month, and year, respectively.
-  ///
-  /// When the type is not specified, the default behavior is DAY.
   ///
   /// Required.
   core.String? type;
@@ -14947,8 +17858,11 @@ class TrainingRun {
       };
 }
 
+/// \[Alpha\] Information of a multi-statement transaction.
 class TransactionInfo {
-  /// \[Output-only\] // \[Alpha\] Id of the transaction.
+  /// \[Alpha\] Id of the transaction.
+  ///
+  /// Output only.
   core.String? transactionId;
 
   TransactionInfo({
@@ -15009,10 +17923,35 @@ class TransformColumn {
       };
 }
 
+/// Request format for undeleting a dataset.
+class UndeleteDatasetRequest {
+  /// The exact time when the dataset was deleted.
+  ///
+  /// If not specified, it will undelete the most recently deleted version.
+  ///
+  /// Optional.
+  core.String? deletionTime;
+
+  UndeleteDatasetRequest({
+    this.deletionTime,
+  });
+
+  UndeleteDatasetRequest.fromJson(core.Map json_)
+      : this(
+          deletionTime: json_.containsKey('deletionTime')
+              ? json_['deletionTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deletionTime != null) 'deletionTime': deletionTime!,
+      };
+}
+
 /// This is used for defining User Defined Function (UDF) resources only when
 /// using legacy SQL.
 ///
-/// Users of Standard SQL should leverage either DDL (e.g. CREATE \[TEMPORARY\]
+/// Users of GoogleSQL should leverage either DDL (e.g. CREATE \[TEMPORARY\]
 /// FUNCTION ... ) or the Routines API to define UDF resources. For additional
 /// information on migrating, see:
 /// https://cloud.google.com/bigquery/docs/reference/standard-sql/migrating-from-legacy-sql#differences_in_user-defined_javascript_functions
@@ -15049,7 +17988,62 @@ class UserDefinedFunctionResource {
       };
 }
 
+/// Statistics for a vector search query.
+///
+/// Populated as part of JobStatistics2.
+class VectorSearchStatistics {
+  /// When `indexUsageMode` is `UNUSED` or `PARTIALLY_USED`, this field explains
+  /// why indexes were not used in all or part of the vector search query.
+  ///
+  /// If `indexUsageMode` is `FULLY_USED`, this field is not populated.
+  core.List<IndexUnusedReason>? indexUnusedReasons;
+
+  /// Specifies the index usage mode for the query.
+  /// Possible string values are:
+  /// - "INDEX_USAGE_MODE_UNSPECIFIED" : Index usage mode not specified.
+  /// - "UNUSED" : No vector indexes were used in the vector search query. See
+  /// \[`indexUnusedReasons`\]
+  /// (/bigquery/docs/reference/rest/v2/Job#IndexUnusedReason) for detailed
+  /// reasons.
+  /// - "PARTIALLY_USED" : Part of the vector search query used vector indexes.
+  /// See \[`indexUnusedReasons`\]
+  /// (/bigquery/docs/reference/rest/v2/Job#IndexUnusedReason) for why other
+  /// parts of the query did not use vector indexes.
+  /// - "FULLY_USED" : The entire vector search query used vector indexes.
+  core.String? indexUsageMode;
+
+  VectorSearchStatistics({
+    this.indexUnusedReasons,
+    this.indexUsageMode,
+  });
+
+  VectorSearchStatistics.fromJson(core.Map json_)
+      : this(
+          indexUnusedReasons: json_.containsKey('indexUnusedReasons')
+              ? (json_['indexUnusedReasons'] as core.List)
+                  .map((value) => IndexUnusedReason.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          indexUsageMode: json_.containsKey('indexUsageMode')
+              ? json_['indexUsageMode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (indexUnusedReasons != null)
+          'indexUnusedReasons': indexUnusedReasons!,
+        if (indexUsageMode != null) 'indexUsageMode': indexUsageMode!,
+      };
+}
+
+/// Describes the definition of a logical view.
 class ViewDefinition {
+  /// Specifices the privacy policy for the view.
+  ///
+  /// Optional.
+  PrivacyPolicy? privacyPolicy;
+
   /// A query that BigQuery executes when the view is referenced.
   ///
   /// Required.
@@ -15058,21 +18052,22 @@ class ViewDefinition {
   /// True if the column names are explicitly specified.
   ///
   /// For example by using the 'CREATE VIEW v(c1, c2) AS ...' syntax. Can only
-  /// be set using BigQuery's standard SQL:
-  /// https://cloud.google.com/bigquery/sql-reference/
+  /// be set for GoogleSQL views.
   core.bool? useExplicitColumnNames;
 
   /// Specifies whether to use BigQuery's legacy SQL for this view.
   ///
   /// The default value is true. If set to false, the view will use BigQuery's
-  /// standard SQL: https://cloud.google.com/bigquery/sql-reference/ Queries and
-  /// views that reference this view must use the same flag value.
+  /// GoogleSQL: https://cloud.google.com/bigquery/sql-reference/ Queries and
+  /// views that reference this view must use the same flag value. A wrapper is
+  /// used here because the default value is True.
   core.bool? useLegacySql;
 
   /// Describes user-defined function resources used in the query.
   core.List<UserDefinedFunctionResource>? userDefinedFunctionResources;
 
   ViewDefinition({
+    this.privacyPolicy,
     this.query,
     this.useExplicitColumnNames,
     this.useLegacySql,
@@ -15081,6 +18076,10 @@ class ViewDefinition {
 
   ViewDefinition.fromJson(core.Map json_)
       : this(
+          privacyPolicy: json_.containsKey('privacyPolicy')
+              ? PrivacyPolicy.fromJson(
+                  json_['privacyPolicy'] as core.Map<core.String, core.dynamic>)
+              : null,
           query:
               json_.containsKey('query') ? json_['query'] as core.String : null,
           useExplicitColumnNames: json_.containsKey('useExplicitColumnNames')
@@ -15099,6 +18098,7 @@ class ViewDefinition {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (privacyPolicy != null) 'privacyPolicy': privacyPolicy!,
         if (query != null) 'query': query!,
         if (useExplicitColumnNames != null)
           'useExplicitColumnNames': useExplicitColumnNames!,

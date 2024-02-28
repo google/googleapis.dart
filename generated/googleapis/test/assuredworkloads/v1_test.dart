@@ -167,6 +167,27 @@ void checkGoogleCloudAssuredworkloadsV1AssetMoveAnalysis(
   buildCounterGoogleCloudAssuredworkloadsV1AssetMoveAnalysis--;
 }
 
+core.int
+    buildCounterGoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse =
+    0;
+api.GoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse
+    buildGoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse() {
+  final o = api.GoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse();
+  buildCounterGoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse++;
+  if (buildCounterGoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse <
+      3) {}
+  buildCounterGoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse--;
+  return o;
+}
+
+void checkGoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse(
+    api.GoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse o) {
+  buildCounterGoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse++;
+  if (buildCounterGoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse <
+      3) {}
+  buildCounterGoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse--;
+}
+
 core.List<api.GoogleCloudAssuredworkloadsV1Violation> buildUnnamed2() => [
       buildGoogleCloudAssuredworkloadsV1Violation(),
       buildGoogleCloudAssuredworkloadsV1Violation(),
@@ -1545,6 +1566,20 @@ void main() {
   });
 
   unittest.group(
+      'obj-schema-GoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse(od);
+    });
+  });
+
+  unittest.group(
       'obj-schema-GoogleCloudAssuredworkloadsV1ListViolationsResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleCloudAssuredworkloadsV1ListViolationsResponse();
@@ -2187,6 +2222,63 @@ void main() {
       final response =
           await res.delete(arg_name, etag: arg_etag, $fields: arg_$fields);
       checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
+    });
+
+    unittest.test('method--enableResourceMonitoring', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.AssuredworkloadsApi(mock).organizations.locations.workloads;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(
+            buildGoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.enableResourceMonitoring(arg_name, $fields: arg_$fields);
+      checkGoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse(
+          response as api
+              .GoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse);
     });
 
     unittest.test('method--get', () async {

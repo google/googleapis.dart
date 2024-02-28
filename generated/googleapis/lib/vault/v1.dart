@@ -1746,6 +1746,89 @@ class AddMatterPermissionsRequest {
       };
 }
 
+/// The options for Calendar exports.
+typedef CalendarExportOptions = $ExportOptions00;
+
+/// Additional options for Calendar search
+class CalendarOptions {
+  /// Matches only those events whose location contains all of the words in the
+  /// given set.
+  ///
+  /// If the string contains quoted phrases, this method only matches those
+  /// events whose location contain the exact phrase. Entries in the set are
+  /// considered in "and". Word splitting example: \["New Zealand"\] vs
+  /// \["New","Zealand"\] "New Zealand": matched by both "New and better
+  /// Zealand": only matched by the later
+  core.List<core.String>? locationQuery;
+
+  /// Matches only those events that do not contain any of the words in the
+  /// given set in title, description, location, or attendees.
+  ///
+  /// Entries in the set are considered in "or".
+  core.List<core.String>? minusWords;
+
+  /// Matches only those events whose attendees contain all of the words in the
+  /// given set.
+  ///
+  /// Entries in the set are considered in "and".
+  core.List<core.String>? peopleQuery;
+
+  /// Matches only events for which the custodian gave one of these responses.
+  ///
+  /// If the set is empty or contains ATTENDEE_RESPONSE_UNSPECIFIED there will
+  /// be no filtering on responses.
+  core.List<core.String>? responseStatuses;
+
+  /// Search the current version of the Calendar event, but export the contents
+  /// of the last version saved before 12:00 AM UTC on the specified date.
+  ///
+  /// Enter the date in UTC.
+  core.String? versionDate;
+
+  CalendarOptions({
+    this.locationQuery,
+    this.minusWords,
+    this.peopleQuery,
+    this.responseStatuses,
+    this.versionDate,
+  });
+
+  CalendarOptions.fromJson(core.Map json_)
+      : this(
+          locationQuery: json_.containsKey('locationQuery')
+              ? (json_['locationQuery'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          minusWords: json_.containsKey('minusWords')
+              ? (json_['minusWords'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          peopleQuery: json_.containsKey('peopleQuery')
+              ? (json_['peopleQuery'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          responseStatuses: json_.containsKey('responseStatuses')
+              ? (json_['responseStatuses'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          versionDate: json_.containsKey('versionDate')
+              ? json_['versionDate'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (locationQuery != null) 'locationQuery': locationQuery!,
+        if (minusWords != null) 'minusWords': minusWords!,
+        if (peopleQuery != null) 'peopleQuery': peopleQuery!,
+        if (responseStatuses != null) 'responseStatuses': responseStatuses!,
+        if (versionDate != null) 'versionDate': versionDate!,
+      };
+}
+
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
 
@@ -2093,6 +2176,13 @@ class Export {
   /// you from downloading exports.
   core.String? name;
 
+  /// Identifies the parent export that spawned this child export.
+  ///
+  /// This is only set on child exports.
+  ///
+  /// Output only.
+  core.String? parentExportId;
+
   /// The query parameters used to create the export.
   Query? query;
 
@@ -2123,6 +2213,7 @@ class Export {
     this.id,
     this.matterId,
     this.name,
+    this.parentExportId,
     this.query,
     this.requester,
     this.stats,
@@ -2147,6 +2238,9 @@ class Export {
               ? json_['matterId'] as core.String
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          parentExportId: json_.containsKey('parentExportId')
+              ? json_['parentExportId'] as core.String
+              : null,
           query: json_.containsKey('query')
               ? Query.fromJson(
                   json_['query'] as core.Map<core.String, core.dynamic>)
@@ -2171,6 +2265,7 @@ class Export {
         if (id != null) 'id': id!,
         if (matterId != null) 'matterId': matterId!,
         if (name != null) 'name': name!,
+        if (parentExportId != null) 'parentExportId': parentExportId!,
         if (query != null) 'query': query!,
         if (requester != null) 'requester': requester!,
         if (stats != null) 'stats': stats!,
@@ -2180,6 +2275,9 @@ class Export {
 
 /// Additional options for exports
 class ExportOptions {
+  /// Option available for Calendar export.
+  CalendarExportOptions? calendarOptions;
+
   /// Options for Drive exports.
   DriveExportOptions? driveOptions;
 
@@ -2205,6 +2303,7 @@ class ExportOptions {
   VoiceExportOptions? voiceOptions;
 
   ExportOptions({
+    this.calendarOptions,
     this.driveOptions,
     this.groupsOptions,
     this.hangoutsChatOptions,
@@ -2215,6 +2314,10 @@ class ExportOptions {
 
   ExportOptions.fromJson(core.Map json_)
       : this(
+          calendarOptions: json_.containsKey('calendarOptions')
+              ? CalendarExportOptions.fromJson(json_['calendarOptions']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           driveOptions: json_.containsKey('driveOptions')
               ? DriveExportOptions.fromJson(
                   json_['driveOptions'] as core.Map<core.String, core.dynamic>)
@@ -2241,6 +2344,7 @@ class ExportOptions {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (calendarOptions != null) 'calendarOptions': calendarOptions!,
         if (driveOptions != null) 'driveOptions': driveOptions!,
         if (groupsOptions != null) 'groupsOptions': groupsOptions!,
         if (hangoutsChatOptions != null)
@@ -2291,10 +2395,10 @@ class ExportStats {
 }
 
 /// Options for Groups exports.
-typedef GroupsExportOptions = $ExportOptions;
+typedef GroupsExportOptions = $ExportOptions01;
 
 /// Options for Chat exports.
-typedef HangoutsChatExportOptions = $ExportOptions;
+typedef HangoutsChatExportOptions = $ExportOptions01;
 
 /// The Chat spaces to search
 class HangoutsChatInfo {
@@ -2557,6 +2661,7 @@ class Hold {
   /// - "HANGOUTS_CHAT" : For export, Google Chat only. For holds, Google Chat
   /// and classic Hangouts.
   /// - "VOICE" : Google Voice.
+  /// - "CALENDAR" : Calendar.
   core.String? corpus;
 
   /// The unique immutable ID of the hold.
@@ -2827,7 +2932,13 @@ class MailExportOptions {
   /// Voice.
   /// - "PST" : Export as PST. Only available for Gmail, Groups, Hangouts, Voice
   /// and Calendar.
+  /// - "ICS" : Export as ICS. Only available for Calendar.
   core.String? exportFormat;
+
+  /// To enable exporting linked Drive files, set to **true**.
+  ///
+  /// Optional.
+  core.bool? exportLinkedDriveFiles;
 
   /// To export confidential mode content, set to **true**.
   core.bool? showConfidentialModeContent;
@@ -2837,6 +2948,7 @@ class MailExportOptions {
 
   MailExportOptions({
     this.exportFormat,
+    this.exportLinkedDriveFiles,
     this.showConfidentialModeContent,
     this.useNewExport,
   });
@@ -2845,6 +2957,9 @@ class MailExportOptions {
       : this(
           exportFormat: json_.containsKey('exportFormat')
               ? json_['exportFormat'] as core.String
+              : null,
+          exportLinkedDriveFiles: json_.containsKey('exportLinkedDriveFiles')
+              ? json_['exportLinkedDriveFiles'] as core.bool
               : null,
           showConfidentialModeContent:
               json_.containsKey('showConfidentialModeContent')
@@ -2857,6 +2972,8 @@ class MailExportOptions {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (exportFormat != null) 'exportFormat': exportFormat!,
+        if (exportLinkedDriveFiles != null)
+          'exportLinkedDriveFiles': exportLinkedDriveFiles!,
         if (showConfidentialModeContent != null)
           'showConfidentialModeContent': showConfidentialModeContent!,
         if (useNewExport != null) 'useNewExport': useNewExport!,
@@ -3115,6 +3232,9 @@ class Query {
   /// Required when **SearchMethod** is **ACCOUNT**.
   AccountInfo? accountInfo;
 
+  /// Set Calendar search-specific options.
+  CalendarOptions? calendarOptions;
+
   /// The Google Workspace service to search.
   /// Possible string values are:
   /// - "CORPUS_TYPE_UNSPECIFIED" : No service specified.
@@ -3124,6 +3244,7 @@ class Query {
   /// - "HANGOUTS_CHAT" : For export, Google Chat only. For holds, Google Chat
   /// and classic Hangouts.
   /// - "VOICE" : Google Voice.
+  /// - "CALENDAR" : Calendar.
   core.String? corpus;
 
   /// The data source to search.
@@ -3246,6 +3367,7 @@ class Query {
 
   Query({
     this.accountInfo,
+    this.calendarOptions,
     this.corpus,
     this.dataScope,
     this.driveOptions,
@@ -3270,6 +3392,10 @@ class Query {
           accountInfo: json_.containsKey('accountInfo')
               ? AccountInfo.fromJson(
                   json_['accountInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          calendarOptions: json_.containsKey('calendarOptions')
+              ? CalendarOptions.fromJson(json_['calendarOptions']
+                  as core.Map<core.String, core.dynamic>)
               : null,
           corpus: json_.containsKey('corpus')
               ? json_['corpus'] as core.String
@@ -3334,6 +3460,7 @@ class Query {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (accountInfo != null) 'accountInfo': accountInfo!,
+        if (calendarOptions != null) 'calendarOptions': calendarOptions!,
         if (corpus != null) 'corpus': corpus!,
         if (dataScope != null) 'dataScope': dataScope!,
         if (driveOptions != null) 'driveOptions': driveOptions!,
@@ -3632,31 +3759,7 @@ class UserInfo {
 }
 
 /// The options for Voice exports.
-class VoiceExportOptions {
-  /// The file format for exported text messages.
-  /// Possible string values are:
-  /// - "EXPORT_FORMAT_UNSPECIFIED" : No export format specified.
-  /// - "MBOX" : Export as MBOX. Only available for Gmail, Groups, Hangouts and
-  /// Voice.
-  /// - "PST" : Export as PST. Only available for Gmail, Groups, Hangouts, Voice
-  /// and Calendar.
-  core.String? exportFormat;
-
-  VoiceExportOptions({
-    this.exportFormat,
-  });
-
-  VoiceExportOptions.fromJson(core.Map json_)
-      : this(
-          exportFormat: json_.containsKey('exportFormat')
-              ? json_['exportFormat'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (exportFormat != null) 'exportFormat': exportFormat!,
-      };
-}
+typedef VoiceExportOptions = $ExportOptions00;
 
 /// Additional options for Voice search
 class VoiceOptions {

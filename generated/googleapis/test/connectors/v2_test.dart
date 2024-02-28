@@ -24,6 +24,38 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
+core.int buildCounterAccessCredentials = 0;
+api.AccessCredentials buildAccessCredentials() {
+  final o = api.AccessCredentials();
+  buildCounterAccessCredentials++;
+  if (buildCounterAccessCredentials < 3) {
+    o.accessToken = 'foo';
+    o.expiresIn = 'foo';
+    o.refreshToken = 'foo';
+  }
+  buildCounterAccessCredentials--;
+  return o;
+}
+
+void checkAccessCredentials(api.AccessCredentials o) {
+  buildCounterAccessCredentials++;
+  if (buildCounterAccessCredentials < 3) {
+    unittest.expect(
+      o.accessToken!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.expiresIn!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.refreshToken!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterAccessCredentials--;
+}
+
 core.List<api.InputParameter> buildUnnamed0() => [
       buildInputParameter(),
       buildInputParameter(),
@@ -84,6 +116,55 @@ void checkAction(api.Action o) {
     checkUnnamed1(o.resultMetadata!);
   }
   buildCounterAction--;
+}
+
+core.int buildCounterCheckReadinessResponse = 0;
+api.CheckReadinessResponse buildCheckReadinessResponse() {
+  final o = api.CheckReadinessResponse();
+  buildCounterCheckReadinessResponse++;
+  if (buildCounterCheckReadinessResponse < 3) {
+    o.status = 'foo';
+  }
+  buildCounterCheckReadinessResponse--;
+  return o;
+}
+
+void checkCheckReadinessResponse(api.CheckReadinessResponse o) {
+  buildCounterCheckReadinessResponse++;
+  if (buildCounterCheckReadinessResponse < 3) {
+    unittest.expect(
+      o.status!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterCheckReadinessResponse--;
+}
+
+core.int buildCounterCheckStatusResponse = 0;
+api.CheckStatusResponse buildCheckStatusResponse() {
+  final o = api.CheckStatusResponse();
+  buildCounterCheckStatusResponse++;
+  if (buildCounterCheckStatusResponse < 3) {
+    o.description = 'foo';
+    o.state = 'foo';
+  }
+  buildCounterCheckStatusResponse--;
+  return o;
+}
+
+void checkCheckStatusResponse(api.CheckStatusResponse o) {
+  buildCounterCheckStatusResponse++;
+  if (buildCounterCheckStatusResponse < 3) {
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterCheckStatusResponse--;
 }
 
 core.int buildCounterEmpty = 0;
@@ -205,6 +286,40 @@ void checkEntityType(api.EntityType o) {
     );
   }
   buildCounterEntityType--;
+}
+
+core.int buildCounterExchangeAuthCodeRequest = 0;
+api.ExchangeAuthCodeRequest buildExchangeAuthCodeRequest() {
+  final o = api.ExchangeAuthCodeRequest();
+  buildCounterExchangeAuthCodeRequest++;
+  if (buildCounterExchangeAuthCodeRequest < 3) {}
+  buildCounterExchangeAuthCodeRequest--;
+  return o;
+}
+
+void checkExchangeAuthCodeRequest(api.ExchangeAuthCodeRequest o) {
+  buildCounterExchangeAuthCodeRequest++;
+  if (buildCounterExchangeAuthCodeRequest < 3) {}
+  buildCounterExchangeAuthCodeRequest--;
+}
+
+core.int buildCounterExchangeAuthCodeResponse = 0;
+api.ExchangeAuthCodeResponse buildExchangeAuthCodeResponse() {
+  final o = api.ExchangeAuthCodeResponse();
+  buildCounterExchangeAuthCodeResponse++;
+  if (buildCounterExchangeAuthCodeResponse < 3) {
+    o.accessCredentials = buildAccessCredentials();
+  }
+  buildCounterExchangeAuthCodeResponse--;
+  return o;
+}
+
+void checkExchangeAuthCodeResponse(api.ExchangeAuthCodeResponse o) {
+  buildCounterExchangeAuthCodeResponse++;
+  if (buildCounterExchangeAuthCodeResponse < 3) {
+    checkAccessCredentials(o.accessCredentials!);
+  }
+  buildCounterExchangeAuthCodeResponse--;
 }
 
 core.Map<core.String, core.Object?> buildUnnamed4() => {
@@ -1102,6 +1217,40 @@ void checkReference(api.Reference o) {
   buildCounterReference--;
 }
 
+core.int buildCounterRefreshAccessTokenRequest = 0;
+api.RefreshAccessTokenRequest buildRefreshAccessTokenRequest() {
+  final o = api.RefreshAccessTokenRequest();
+  buildCounterRefreshAccessTokenRequest++;
+  if (buildCounterRefreshAccessTokenRequest < 3) {}
+  buildCounterRefreshAccessTokenRequest--;
+  return o;
+}
+
+void checkRefreshAccessTokenRequest(api.RefreshAccessTokenRequest o) {
+  buildCounterRefreshAccessTokenRequest++;
+  if (buildCounterRefreshAccessTokenRequest < 3) {}
+  buildCounterRefreshAccessTokenRequest--;
+}
+
+core.int buildCounterRefreshAccessTokenResponse = 0;
+api.RefreshAccessTokenResponse buildRefreshAccessTokenResponse() {
+  final o = api.RefreshAccessTokenResponse();
+  buildCounterRefreshAccessTokenResponse++;
+  if (buildCounterRefreshAccessTokenResponse < 3) {
+    o.accessCredentials = buildAccessCredentials();
+  }
+  buildCounterRefreshAccessTokenResponse--;
+  return o;
+}
+
+void checkRefreshAccessTokenResponse(api.RefreshAccessTokenResponse o) {
+  buildCounterRefreshAccessTokenResponse++;
+  if (buildCounterRefreshAccessTokenResponse < 3) {
+    checkAccessCredentials(o.accessCredentials!);
+  }
+  buildCounterRefreshAccessTokenResponse--;
+}
+
 core.int buildCounterResultMetadata = 0;
 api.ResultMetadata buildResultMetadata() {
   final o = api.ResultMetadata();
@@ -1220,6 +1369,16 @@ void checkUnnamed23(core.List<core.String> o) {
 }
 
 void main() {
+  unittest.group('obj-schema-AccessCredentials', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAccessCredentials();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AccessCredentials.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAccessCredentials(od);
+    });
+  });
+
   unittest.group('obj-schema-Action', () {
     unittest.test('to-json--from-json', () async {
       final o = buildAction();
@@ -1227,6 +1386,26 @@ void main() {
       final od =
           api.Action.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkAction(od);
+    });
+  });
+
+  unittest.group('obj-schema-CheckReadinessResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCheckReadinessResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CheckReadinessResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkCheckReadinessResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-CheckStatusResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCheckStatusResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CheckStatusResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkCheckStatusResponse(od);
     });
   });
 
@@ -1257,6 +1436,26 @@ void main() {
       final od =
           api.EntityType.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkEntityType(od);
+    });
+  });
+
+  unittest.group('obj-schema-ExchangeAuthCodeRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildExchangeAuthCodeRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ExchangeAuthCodeRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkExchangeAuthCodeRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-ExchangeAuthCodeResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildExchangeAuthCodeResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ExchangeAuthCodeResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkExchangeAuthCodeResponse(od);
     });
   });
 
@@ -1390,6 +1589,26 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-RefreshAccessTokenRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRefreshAccessTokenRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RefreshAccessTokenRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRefreshAccessTokenRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-RefreshAccessTokenResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRefreshAccessTokenResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RefreshAccessTokenResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRefreshAccessTokenResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-ResultMetadata', () {
     unittest.test('to-json--from-json', () async {
       final o = buildResultMetadata();
@@ -1411,6 +1630,168 @@ void main() {
   });
 
   unittest.group('resource-ProjectsLocationsConnectionsResource', () {
+    unittest.test('method--checkReadiness', () async {
+      final mock = HttpServerMock();
+      final res = api.ConnectorsApi(mock).projects.locations.connections;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildCheckReadinessResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.checkReadiness(arg_name, $fields: arg_$fields);
+      checkCheckReadinessResponse(response as api.CheckReadinessResponse);
+    });
+
+    unittest.test('method--checkStatus', () async {
+      final mock = HttpServerMock();
+      final res = api.ConnectorsApi(mock).projects.locations.connections;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildCheckStatusResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.checkStatus(arg_name, $fields: arg_$fields);
+      checkCheckStatusResponse(response as api.CheckStatusResponse);
+    });
+
+    unittest.test('method--exchangeAuthCode', () async {
+      final mock = HttpServerMock();
+      final res = api.ConnectorsApi(mock).projects.locations.connections;
+      final arg_request = buildExchangeAuthCodeRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.ExchangeAuthCodeRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkExchangeAuthCodeRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildExchangeAuthCodeResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.exchangeAuthCode(arg_request, arg_name,
+          $fields: arg_$fields);
+      checkExchangeAuthCodeResponse(response as api.ExchangeAuthCodeResponse);
+    });
+
     unittest.test('method--executeSqlQuery', () async {
       final mock = HttpServerMock();
       final res = api.ConnectorsApi(mock).projects.locations.connections;
@@ -1467,6 +1848,65 @@ void main() {
       final response = await res.executeSqlQuery(arg_request, arg_connection,
           $fields: arg_$fields);
       checkExecuteSqlQueryResponse(response as api.ExecuteSqlQueryResponse);
+    });
+
+    unittest.test('method--refreshAccessToken', () async {
+      final mock = HttpServerMock();
+      final res = api.ConnectorsApi(mock).projects.locations.connections;
+      final arg_request = buildRefreshAccessTokenRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.RefreshAccessTokenRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkRefreshAccessTokenRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildRefreshAccessTokenResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.refreshAccessToken(arg_request, arg_name,
+          $fields: arg_$fields);
+      checkRefreshAccessTokenResponse(
+          response as api.RefreshAccessTokenResponse);
     });
   });
 

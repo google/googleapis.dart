@@ -665,7 +665,6 @@ api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldTypeRequest
     o.dateOptions = buildGoogleAppsDriveLabelsV2FieldDateOptions();
     o.id = 'foo';
     o.integerOptions = buildGoogleAppsDriveLabelsV2FieldIntegerOptions();
-    o.longTextOptions = buildGoogleAppsDriveLabelsV2FieldLongTextOptions();
     o.selectionOptions = buildGoogleAppsDriveLabelsV2FieldSelectionOptions();
     o.textOptions = buildGoogleAppsDriveLabelsV2FieldTextOptions();
     o.updateMask = 'foo';
@@ -687,7 +686,6 @@ void checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldTypeRequest(
       unittest.equals('foo'),
     );
     checkGoogleAppsDriveLabelsV2FieldIntegerOptions(o.integerOptions!);
-    checkGoogleAppsDriveLabelsV2FieldLongTextOptions(o.longTextOptions!);
     checkGoogleAppsDriveLabelsV2FieldSelectionOptions(o.selectionOptions!);
     checkGoogleAppsDriveLabelsV2FieldTextOptions(o.textOptions!);
     unittest.expect(
@@ -1509,35 +1507,6 @@ void checkGoogleAppsDriveLabelsV2FieldListOptions(
     );
   }
   buildCounterGoogleAppsDriveLabelsV2FieldListOptions--;
-}
-
-core.int buildCounterGoogleAppsDriveLabelsV2FieldLongTextOptions = 0;
-api.GoogleAppsDriveLabelsV2FieldLongTextOptions
-    buildGoogleAppsDriveLabelsV2FieldLongTextOptions() {
-  final o = api.GoogleAppsDriveLabelsV2FieldLongTextOptions();
-  buildCounterGoogleAppsDriveLabelsV2FieldLongTextOptions++;
-  if (buildCounterGoogleAppsDriveLabelsV2FieldLongTextOptions < 3) {
-    o.maxLength = 42;
-    o.minLength = 42;
-  }
-  buildCounterGoogleAppsDriveLabelsV2FieldLongTextOptions--;
-  return o;
-}
-
-void checkGoogleAppsDriveLabelsV2FieldLongTextOptions(
-    api.GoogleAppsDriveLabelsV2FieldLongTextOptions o) {
-  buildCounterGoogleAppsDriveLabelsV2FieldLongTextOptions++;
-  if (buildCounterGoogleAppsDriveLabelsV2FieldLongTextOptions < 3) {
-    unittest.expect(
-      o.maxLength!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.minLength!,
-      unittest.equals(42),
-    );
-  }
-  buildCounterGoogleAppsDriveLabelsV2FieldLongTextOptions--;
 }
 
 core.int buildCounterGoogleAppsDriveLabelsV2FieldProperties = 0;
@@ -3492,16 +3461,6 @@ void main() {
       final od = api.GoogleAppsDriveLabelsV2FieldListOptions.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAppsDriveLabelsV2FieldListOptions(od);
-    });
-  });
-
-  unittest.group('obj-schema-GoogleAppsDriveLabelsV2FieldLongTextOptions', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleAppsDriveLabelsV2FieldLongTextOptions();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleAppsDriveLabelsV2FieldLongTextOptions.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsDriveLabelsV2FieldLongTextOptions(od);
     });
   });
 

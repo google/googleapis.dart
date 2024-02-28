@@ -204,7 +204,10 @@ class ProjectsLocationsInstancesResource {
   /// projects/{project}/locations/{location}.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [instanceId] - Required. The name of the instance to create.
+  /// [instanceId] - Required. The name of the instance to create. Instance name
+  /// can only contain lowercase alphanumeric characters and hyphens. It must
+  /// start with a letter and must not end with a hyphen. It can have a maximum
+  /// of 30 characters.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1151,14 +1154,31 @@ class Binding {
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
   /// (primary) that represents all the users of that domain. For example,
-  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a user that has
-  /// been recently deleted. For example,
-  /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
-  /// this value reverts to `user:{emailid}` and the recovered user retains the
-  /// role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a service account
-  /// that has been recently deleted. For example,
+  /// `google.com` or `example.com`. *
+  /// `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workforce identity pool. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`:
+  /// All workforce identities in a group. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All workforce identities with a specific attribute value. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}
+  /// / * `: All identities in a workforce identity pool. *
+  /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workload identity pool. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`:
+  /// A workload identity pool group. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All identities in a workload identity pool with a certain attribute. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}
+  /// / * `: All identities in a workload identity pool. *
+  /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
+  /// identifier) representing a user that has been recently deleted. For
+  /// example, `alice@example.com?uid=123456789012345678901`. If the user is
+  /// recovered, this value reverts to `user:{emailid}` and the recovered user
+  /// retains the role in the binding. *
+  /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus
+  /// unique identifier) representing a service account that has been recently
+  /// deleted. For example,
   /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If
   /// the service account is undeleted, this value reverts to
   /// `serviceAccount:{emailid}` and the undeleted service account retains the
@@ -1167,7 +1187,10 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding.
+  /// the role in the binding. *
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// Deleted single identity in a workforce identity pool. For example,
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
@@ -1388,6 +1411,11 @@ class Instance {
   /// This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
   CryptoKeyConfig? cryptoKeyConfig;
 
+  /// Option to enable the Dataplex Lineage Integration feature.
+  ///
+  /// Optional.
+  core.bool? dataplexDataLineageIntegrationEnabled;
+
   /// User-managed service account to set on Dataproc when Cloud Data Fusion
   /// creates Dataproc to run data processing pipelines.
   ///
@@ -1554,6 +1582,7 @@ class Instance {
     this.availableVersion,
     this.createTime,
     this.cryptoKeyConfig,
+    this.dataplexDataLineageIntegrationEnabled,
     this.dataprocServiceAccount,
     this.description,
     this.disabledReason,
@@ -1608,6 +1637,10 @@ class Instance {
               ? CryptoKeyConfig.fromJson(json_['cryptoKeyConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          dataplexDataLineageIntegrationEnabled:
+              json_.containsKey('dataplexDataLineageIntegrationEnabled')
+                  ? json_['dataplexDataLineageIntegrationEnabled'] as core.bool
+                  : null,
           dataprocServiceAccount: json_.containsKey('dataprocServiceAccount')
               ? json_['dataprocServiceAccount'] as core.String
               : null,
@@ -1710,6 +1743,9 @@ class Instance {
         if (availableVersion != null) 'availableVersion': availableVersion!,
         if (createTime != null) 'createTime': createTime!,
         if (cryptoKeyConfig != null) 'cryptoKeyConfig': cryptoKeyConfig!,
+        if (dataplexDataLineageIntegrationEnabled != null)
+          'dataplexDataLineageIntegrationEnabled':
+              dataplexDataLineageIntegrationEnabled!,
         if (dataprocServiceAccount != null)
           'dataprocServiceAccount': dataprocServiceAccount!,
         if (description != null) 'description': description!,
@@ -1933,39 +1969,85 @@ typedef Location = $Location00;
 /// managed Data Fusion instance nodes, as well as access to the customer
 /// on-prem resources.
 class NetworkConfig {
+  /// Type of connection for establishing private IP connectivity between the
+  /// Data Fusion customer project VPC and the corresponding tenant project from
+  /// a predefined list of available connection modes.
+  ///
+  /// If this field is unspecified for a private instance, VPC peering is used.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "CONNECTION_TYPE_UNSPECIFIED" : No specific connection type was
+  /// requested, the default value of VPC_PEERING is chosen.
+  /// - "VPC_PEERING" : Requests the use of VPC peerings for connecting the
+  /// consumer and tenant projects.
+  /// - "PRIVATE_SERVICE_CONNECT_INTERFACES" : Requests the use of Private
+  /// Service Connect Interfaces for connecting the consumer and tenant
+  /// projects.
+  core.String? connectionType;
+
   /// The IP range in CIDR notation to use for the managed Data Fusion instance
   /// nodes.
   ///
-  /// This range must not overlap with any other ranges used in the customer
-  /// network.
+  /// This range must not overlap with any other ranges used in the Data Fusion
+  /// instance network. This is required only when using connection type
+  /// VPC_PEERING. Format: a.b.c.d/22 Example: 192.168.0.0/22
+  ///
+  /// Optional.
   core.String? ipAllocation;
 
   /// Name of the network in the customer project with which the Tenant Project
   /// will be peered for executing pipelines.
   ///
-  /// In case of shared VPC where the network resides in another host project
-  /// the network should specified in the form of
-  /// projects/{host-project-id}/global/networks/{network}
+  /// This is required only when using connection type VPC peering. In case of
+  /// shared VPC where the network resides in another host project the network
+  /// should specified in the form of
+  /// projects/{host-project-id}/global/networks/{network}. This is only
+  /// required for connectivity type VPC_PEERING.
+  ///
+  /// Optional.
   core.String? network;
 
+  /// Configuration for Private Service Connect.
+  ///
+  /// This is required only when using connection type
+  /// PRIVATE_SERVICE_CONNECT_INTERFACES.
+  ///
+  /// Optional.
+  PrivateServiceConnectConfig? privateServiceConnectConfig;
+
   NetworkConfig({
+    this.connectionType,
     this.ipAllocation,
     this.network,
+    this.privateServiceConnectConfig,
   });
 
   NetworkConfig.fromJson(core.Map json_)
       : this(
+          connectionType: json_.containsKey('connectionType')
+              ? json_['connectionType'] as core.String
+              : null,
           ipAllocation: json_.containsKey('ipAllocation')
               ? json_['ipAllocation'] as core.String
               : null,
           network: json_.containsKey('network')
               ? json_['network'] as core.String
               : null,
+          privateServiceConnectConfig:
+              json_.containsKey('privateServiceConnectConfig')
+                  ? PrivateServiceConnectConfig.fromJson(
+                      json_['privateServiceConnectConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (connectionType != null) 'connectionType': connectionType!,
         if (ipAllocation != null) 'ipAllocation': ipAllocation!,
         if (network != null) 'network': network!,
+        if (privateServiceConnectConfig != null)
+          'privateServiceConnectConfig': privateServiceConnectConfig!,
       };
 }
 
@@ -2163,6 +2245,71 @@ class Policy {
         if (bindings != null) 'bindings': bindings!,
         if (etag != null) 'etag': etag!,
         if (version != null) 'version': version!,
+      };
+}
+
+/// Configuration for using Private Service Connect to establish connectivity
+/// between the Data Fusion consumer project and the corresponding tenant
+/// project.
+class PrivateServiceConnectConfig {
+  /// The CIDR block to which the CDF instance can't route traffic to in the
+  /// consumer project VPC.
+  ///
+  /// The size of this block is /25. The format of this field is governed by RFC
+  /// 4632. Example: 240.0.0.0/25
+  ///
+  /// Output only.
+  core.String? effectiveUnreachableCidrBlock;
+
+  /// The reference to the network attachment used to establish private
+  /// connectivity.
+  ///
+  /// It will be of the form
+  /// projects/{project-id}/regions/{region}/networkAttachments/{network-attachment-id}.
+  ///
+  /// Required.
+  core.String? networkAttachment;
+
+  /// Input only.
+  ///
+  /// The CIDR block to which the CDF instance can't route traffic to in the
+  /// consumer project VPC. The size of this block should be at least /25. This
+  /// range should not overlap with the primary address range of any subnetwork
+  /// used by the network attachment. This range can be used for other purposes
+  /// in the consumer VPC as long as there is no requirement for CDF to reach
+  /// destinations using these addresses. If this value is not provided, the
+  /// server chooses a non RFC 1918 address range. The format of this field is
+  /// governed by RFC 4632. Example: 192.168.0.0/25
+  ///
+  /// Optional.
+  core.String? unreachableCidrBlock;
+
+  PrivateServiceConnectConfig({
+    this.effectiveUnreachableCidrBlock,
+    this.networkAttachment,
+    this.unreachableCidrBlock,
+  });
+
+  PrivateServiceConnectConfig.fromJson(core.Map json_)
+      : this(
+          effectiveUnreachableCidrBlock:
+              json_.containsKey('effectiveUnreachableCidrBlock')
+                  ? json_['effectiveUnreachableCidrBlock'] as core.String
+                  : null,
+          networkAttachment: json_.containsKey('networkAttachment')
+              ? json_['networkAttachment'] as core.String
+              : null,
+          unreachableCidrBlock: json_.containsKey('unreachableCidrBlock')
+              ? json_['unreachableCidrBlock'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (effectiveUnreachableCidrBlock != null)
+          'effectiveUnreachableCidrBlock': effectiveUnreachableCidrBlock!,
+        if (networkAttachment != null) 'networkAttachment': networkAttachment!,
+        if (unreachableCidrBlock != null)
+          'unreachableCidrBlock': unreachableCidrBlock!,
       };
 }
 

@@ -474,6 +474,7 @@ api.DnsAuthorization buildDnsAuthorization() {
     o.domain = 'foo';
     o.labels = buildUnnamed7();
     o.name = 'foo';
+    o.type = 'foo';
     o.updateTime = 'foo';
   }
   buildCounterDnsAuthorization--;
@@ -499,6 +500,10 @@ void checkDnsAuthorization(api.DnsAuthorization o) {
     checkUnnamed7(o.labels!);
     unittest.expect(
       o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.type!,
       unittest.equals('foo'),
     );
     unittest.expect(

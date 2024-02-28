@@ -13260,10 +13260,16 @@ class GoogleCloudDialogflowV2AgentAssistantFeedbackSummarizationFeedback {
   /// Text of actual submitted summary.
   core.String? summaryText;
 
+  /// Actual text sections of submitted summary.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? textSections;
+
   GoogleCloudDialogflowV2AgentAssistantFeedbackSummarizationFeedback({
     this.startTime,
     this.submitTime,
     this.summaryText,
+    this.textSections,
   });
 
   GoogleCloudDialogflowV2AgentAssistantFeedbackSummarizationFeedback.fromJson(
@@ -13278,12 +13284,22 @@ class GoogleCloudDialogflowV2AgentAssistantFeedbackSummarizationFeedback {
           summaryText: json_.containsKey('summaryText')
               ? json_['summaryText'] as core.String
               : null,
+          textSections: json_.containsKey('textSections')
+              ? (json_['textSections'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (startTime != null) 'startTime': startTime!,
         if (submitTime != null) 'submitTime': submitTime!,
         if (summaryText != null) 'summaryText': summaryText!,
+        if (textSections != null) 'textSections': textSections!,
       };
 }
 
@@ -13905,7 +13921,7 @@ class GoogleCloudDialogflowV2AutomatedAgentConfig {
   /// Required.
   core.String? agent;
 
-  /// Sets Dialogflow CX session life time.
+  /// Configure lifetime of the Dialogflow session.
   ///
   /// By default, a Dialogflow CX session remains active and its data is stored
   /// for 30 minutes after the last request is sent for the session. This value
@@ -16936,6 +16952,13 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig {
   /// Optional.
   core.bool? disableAgentQueryLogging;
 
+  /// Enable including conversation context during query answer generation.
+  ///
+  /// Supported features: KNOWLEDGE_SEARCH.
+  ///
+  /// Optional.
+  core.bool? enableConversationAugmentedQuery;
+
   /// Automatically iterates all participants and tries to compile suggestions.
   ///
   /// Supported features: ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST,
@@ -16959,6 +16982,7 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig {
     this.conversationModelConfig,
     this.conversationProcessConfig,
     this.disableAgentQueryLogging,
+    this.enableConversationAugmentedQuery,
     this.enableEventBasedSuggestion,
     this.queryConfig,
     this.suggestionFeature,
@@ -16982,6 +17006,10 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig {
           disableAgentQueryLogging:
               json_.containsKey('disableAgentQueryLogging')
                   ? json_['disableAgentQueryLogging'] as core.bool
+                  : null,
+          enableConversationAugmentedQuery:
+              json_.containsKey('enableConversationAugmentedQuery')
+                  ? json_['enableConversationAugmentedQuery'] as core.bool
                   : null,
           enableEventBasedSuggestion:
               json_.containsKey('enableEventBasedSuggestion')
@@ -17012,6 +17040,8 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig {
           'conversationProcessConfig': conversationProcessConfig!,
         if (disableAgentQueryLogging != null)
           'disableAgentQueryLogging': disableAgentQueryLogging!,
+        if (enableConversationAugmentedQuery != null)
+          'enableConversationAugmentedQuery': enableConversationAugmentedQuery!,
         if (enableEventBasedSuggestion != null)
           'enableEventBasedSuggestion': enableEventBasedSuggestion!,
         if (queryConfig != null) 'queryConfig': queryConfig!,
@@ -17069,6 +17099,13 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig {
   /// Currently, if unset, defaults to 10. And the max number is 20.
   core.int? maxResults;
 
+  /// The customized sections chosen to return when requesting a summary of a
+  /// conversation.
+  ///
+  /// Optional.
+  GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSections?
+      sections;
+
   GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig({
     this.confidenceThreshold,
     this.contextFilterSettings,
@@ -17076,6 +17113,7 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig {
     this.documentQuerySource,
     this.knowledgeBaseQuerySource,
     this.maxResults,
+    this.sections,
   });
 
   GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig.fromJson(
@@ -17108,6 +17146,11 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig {
           maxResults: json_.containsKey('maxResults')
               ? json_['maxResults'] as core.int
               : null,
+          sections: json_.containsKey('sections')
+              ? GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSections
+                  .fromJson(
+                      json_['sections'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -17122,6 +17165,7 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig {
         if (knowledgeBaseQuerySource != null)
           'knowledgeBaseQuerySource': knowledgeBaseQuerySource!,
         if (maxResults != null) 'maxResults': maxResults!,
+        if (sections != null) 'sections': sections!,
       };
 }
 
@@ -17296,6 +17340,38 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowl
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (knowledgeBases != null) 'knowledgeBases': knowledgeBases!,
+      };
+}
+
+/// Custom sections to return when requesting a summary of a conversation.
+///
+/// This is only supported when `baseline_model_version` == '2.0'. Supported
+/// features: CONVERSATION_SUMMARIZATION, CONVERSATION_SUMMARIZATION_VOICE.
+class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSections {
+  /// The selected sections chosen to return when requesting a summary of a
+  /// conversation.
+  ///
+  /// A duplicate selected section will be treated as a single selected section.
+  /// If section types are not provided, the default will be {SITUATION, ACTION,
+  /// RESULT}.
+  core.List<core.String>? sectionTypes;
+
+  GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSections({
+    this.sectionTypes,
+  });
+
+  GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSections.fromJson(
+      core.Map json_)
+      : this(
+          sectionTypes: json_.containsKey('sectionTypes')
+              ? (json_['sectionTypes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (sectionTypes != null) 'sectionTypes': sectionTypes!,
       };
 }
 
@@ -17692,17 +17768,10 @@ class GoogleCloudDialogflowV2InputAudioConfig {
 
   /// Which Speech model to select for the given request.
   ///
-  /// Select the model best suited to your domain to get best results. If a
-  /// model is not explicitly specified, then we auto-select a model based on
-  /// the parameters in the InputAudioConfig. If enhanced speech model is
-  /// enabled for the agent and an enhanced version of the specified model for
-  /// the language does not exist, then the speech is recognized using the
-  /// standard version of the specified model. Refer to
-  /// [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model)
-  /// for more details. If you specify a model, the following models typically
-  /// have the best performance: - phone_call (best for Agent Assist and
-  /// telephony) - latest_short (best for Dialogflow non-telephony) -
-  /// command_and_search (best for very short utterances and commands)
+  /// For more information, see
+  /// [Speech models](https://cloud.google.com/dialogflow/es/docs/speech-models).
+  ///
+  /// Optional.
   core.String? model;
 
   /// Which variant of the Speech model to use.
@@ -17726,6 +17795,13 @@ class GoogleCloudDialogflowV2InputAudioConfig {
   /// [Dialogflow docs](https://cloud.google.com/dialogflow/docs/data-logging)
   /// for how to make your project eligible.
   core.String? modelVariant;
+
+  /// If `true`, the request will opt out for STT conformer model migration.
+  ///
+  /// This field will be deprecated once force migration takes place in June
+  /// 2024. Please refer to
+  /// [Dialogflow ES Speech model migration](https://cloud.google.com/dialogflow/es/docs/speech-model-migration).
+  core.bool? optOutConformerModelMigration;
 
   /// A list of strings containing words and phrases that the speech recognizer
   /// should recognize with higher likelihood.
@@ -17777,6 +17853,7 @@ class GoogleCloudDialogflowV2InputAudioConfig {
     this.languageCode,
     this.model,
     this.modelVariant,
+    this.optOutConformerModelMigration,
     this.phraseHints,
     this.sampleRateHertz,
     this.singleUtterance,
@@ -17807,6 +17884,10 @@ class GoogleCloudDialogflowV2InputAudioConfig {
           modelVariant: json_.containsKey('modelVariant')
               ? json_['modelVariant'] as core.String
               : null,
+          optOutConformerModelMigration:
+              json_.containsKey('optOutConformerModelMigration')
+                  ? json_['optOutConformerModelMigration'] as core.bool
+                  : null,
           phraseHints: json_.containsKey('phraseHints')
               ? (json_['phraseHints'] as core.List)
                   .map((value) => value as core.String)
@@ -17836,6 +17917,8 @@ class GoogleCloudDialogflowV2InputAudioConfig {
         if (languageCode != null) 'languageCode': languageCode!,
         if (model != null) 'model': model!,
         if (modelVariant != null) 'modelVariant': modelVariant!,
+        if (optOutConformerModelMigration != null)
+          'optOutConformerModelMigration': optOutConformerModelMigration!,
         if (phraseHints != null) 'phraseHints': phraseHints!,
         if (sampleRateHertz != null) 'sampleRateHertz': sampleRateHertz!,
         if (singleUtterance != null) 'singleUtterance': singleUtterance!,
@@ -21485,8 +21568,9 @@ class GoogleCloudDialogflowV2SearchKnowledgeAnswer {
   /// The type of the answer.
   /// Possible string values are:
   /// - "ANSWER_TYPE_UNSPECIFIED" : The answer has a unspecified type.
-  /// - "FAQ" : The answer is from FAQ doucments.
+  /// - "FAQ" : The answer is from FAQ documents.
   /// - "GENERATIVE" : The answer is from generative model.
+  /// - "INTENT" : The answer is from intent matching.
   core.String? answerType;
 
   GoogleCloudDialogflowV2SearchKnowledgeAnswer({
@@ -21648,8 +21732,12 @@ class GoogleCloudDialogflowV2SearchKnowledgeResponse {
   /// base, ordered by confidence.
   core.List<GoogleCloudDialogflowV2SearchKnowledgeAnswer>? answers;
 
+  /// The rewritten query used to search knowledge.
+  core.String? rewrittenQuery;
+
   GoogleCloudDialogflowV2SearchKnowledgeResponse({
     this.answers,
+    this.rewrittenQuery,
   });
 
   GoogleCloudDialogflowV2SearchKnowledgeResponse.fromJson(core.Map json_)
@@ -21661,10 +21749,14 @@ class GoogleCloudDialogflowV2SearchKnowledgeResponse {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          rewrittenQuery: json_.containsKey('rewrittenQuery')
+              ? json_['rewrittenQuery'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (answers != null) 'answers': answers!,
+        if (rewrittenQuery != null) 'rewrittenQuery': rewrittenQuery!,
       };
 }
 
@@ -21674,7 +21766,7 @@ class GoogleCloudDialogflowV2SearchKnowledgeResponse {
 /// See:
 /// https://cloud.google.com/natural-language/docs/basics#interpreting_sentiment_analysis_values
 /// for how to interpret the result.
-typedef GoogleCloudDialogflowV2Sentiment = $Shared07;
+typedef GoogleCloudDialogflowV2Sentiment = $Shared08;
 
 /// Configures the types of sentiment analysis to perform.
 class GoogleCloudDialogflowV2SentimentAnalysisRequestConfig {
@@ -22060,9 +22152,18 @@ class GoogleCloudDialogflowV2SpeechToTextConfig {
   /// Which Speech model to select.
   ///
   /// Select the model best suited to your domain to get best results. If a
-  /// model is not explicitly specified, then a default model is used. Refer to
+  /// model is not explicitly specified, then Dialogflow auto-selects a model
+  /// based on other parameters in the SpeechToTextConfig and Agent settings. If
+  /// enhanced speech model is enabled for the agent and an enhanced version of
+  /// the specified model for the language does not exist, then the speech is
+  /// recognized using the standard version of the specified model. Refer to
   /// [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model)
-  /// for more details.
+  /// for more details. If you specify a model, the following models typically
+  /// have the best performance: - phone_call (best for Agent Assist and
+  /// telephony) - latest_short (best for Dialogflow non-telephony) -
+  /// command_and_search Leave this field unspecified to use
+  /// [Agent Speech settings](https://cloud.google.com/dialogflow/cx/docs/concept/agent#settings-speech)
+  /// for model selection.
   core.String? model;
 
   /// The speech model used in speech to text.

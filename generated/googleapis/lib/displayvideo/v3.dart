@@ -52,6 +52,7 @@
 /// - [CustomListsResource]
 /// - [FirstAndThirdPartyAudiencesResource]
 /// - [FloodlightGroupsResource]
+///   - [FloodlightGroupsFloodlightActivitiesResource]
 /// - [GoogleAudiencesResource]
 /// - [GuaranteedOrdersResource]
 /// - [InventorySourceGroupsResource]
@@ -229,8 +230,11 @@ class AdvertisersResource {
 
   /// Creates a new advertiser.
   ///
-  /// Returns the newly created advertiser if successful. This method can take
-  /// up to 180 seconds to complete.
+  /// Returns the newly created advertiser if successful. **This method
+  /// regularly experiences high latency.** We recommend \[increasing your
+  /// default
+  /// timeout\](/display-video/api/guides/best-practices/timeouts#client_library_timeout)
+  /// to avoid errors.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1459,7 +1463,10 @@ class AdvertisersCampaignsResource {
   ///
   /// A deleted campaign cannot be recovered. The campaign should be archived
   /// first, i.e. set entity_status to `ENTITY_STATUS_ARCHIVED`, to be able to
-  /// delete it.
+  /// delete it. **This method regularly experiences high latency.** We
+  /// recommend \[increasing your default
+  /// timeout\](/display-video/api/guides/best-practices/timeouts#client_library_timeout)
+  /// to avoid errors.
   ///
   /// Request parameters:
   ///
@@ -2660,7 +2667,10 @@ class AdvertisersChannelsSitesResource {
   /// Replaces all of the sites under a single channel.
   ///
   /// The operation will replace the sites under a channel with the sites
-  /// provided in ReplaceSitesRequest.new_sites.
+  /// provided in ReplaceSitesRequest.new_sites. **This method regularly
+  /// experiences high latency.** We recommend \[increasing your default
+  /// timeout\](/display-video/api/guides/best-practices/timeouts#client_library_timeout)
+  /// to avoid errors.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2718,7 +2728,9 @@ class AdvertisersCreativesResource {
 
   /// Creates a new creative.
   ///
-  /// Returns the newly created creative if successful.
+  /// Returns the newly created creative if successful. A \["Standard" user
+  /// role\](//support.google.com/displayvideo/answer/2723011) or greater for
+  /// the parent advertiser or partner is required to make this request.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2764,7 +2776,9 @@ class AdvertisersCreativesResource {
   ///
   /// Returns error code `NOT_FOUND` if the creative does not exist. The
   /// creative should be archived first, i.e. set entity_status to
-  /// `ENTITY_STATUS_ARCHIVED`, before it can be deleted.
+  /// `ENTITY_STATUS_ARCHIVED`, before it can be deleted. A \["Standard" user
+  /// role\](//support.google.com/displayvideo/answer/2723011) or greater for
+  /// the parent advertiser or partner is required to make this request.
   ///
   /// Request parameters:
   ///
@@ -2951,7 +2965,9 @@ class AdvertisersCreativesResource {
 
   /// Updates an existing creative.
   ///
-  /// Returns the updated creative if successful.
+  /// Returns the updated creative if successful. A \["Standard" user
+  /// role\](//support.google.com/displayvideo/answer/2723011) or greater for
+  /// the parent advertiser or partner is required to make this request.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4334,7 +4350,8 @@ class AdvertisersLineItemsResource {
   /// BulkEditAssignedTargetingOptionsRequest.create_requests. Requests to this
   /// endpoint cannot be made concurrently with the following requests updating
   /// the same line item: * lineItems.bulkUpdate * lineItems.patch *
-  /// assignedTargetingOptions.create * assignedTargetingOptions.delete
+  /// assignedTargetingOptions.create * assignedTargetingOptions.delete YouTube
+  /// & Partners line items cannot be created or updated using the API.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4470,7 +4487,8 @@ class AdvertisersLineItemsResource {
   /// Requests to this endpoint cannot be made concurrently with the following
   /// requests updating the same line item: * BulkEditAssignedTargetingOptions *
   /// UpdateLineItem * assignedTargetingOptions.create *
-  /// assignedTargetingOptions.delete
+  /// assignedTargetingOptions.delete YouTube & Partners line items cannot be
+  /// created or updated using the API.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4516,7 +4534,8 @@ class AdvertisersLineItemsResource {
 
   /// Creates a new line item.
   ///
-  /// Returns the newly created line item if successful.
+  /// Returns the newly created line item if successful. YouTube & Partners line
+  /// items cannot be created or updated using the API.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4562,7 +4581,8 @@ class AdvertisersLineItemsResource {
   ///
   /// Returns error code `NOT_FOUND` if the line item does not exist. The line
   /// item should be archived first, i.e. set entity_status to
-  /// `ENTITY_STATUS_ARCHIVED`, to be able to delete it.
+  /// `ENTITY_STATUS_ARCHIVED`, to be able to delete it. YouTube & Partners line
+  /// items cannot be created or updated using the API.
   ///
   /// Request parameters:
   ///
@@ -4606,7 +4626,12 @@ class AdvertisersLineItemsResource {
 
   /// Duplicates a line item.
   ///
-  /// Returns the ID of the created line item if successful.
+  /// Returns the ID of the created line item if successful. YouTube & Partners
+  /// line items cannot be created or updated using the API. **This method
+  /// regularly experiences high latency.** We recommend \[increasing your
+  /// default
+  /// timeout\](/display-video/api/guides/best-practices/timeouts#client_library_timeout)
+  /// to avoid errors.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4662,7 +4687,8 @@ class AdvertisersLineItemsResource {
   /// Returns the newly created line item if successful. There are default
   /// values based on the three fields: * The insertion order's
   /// insertion_order_type * The insertion order's automation_type * The given
-  /// line_item_type
+  /// line_item_type YouTube & Partners line items cannot be created or updated
+  /// using the API.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4841,7 +4867,12 @@ class AdvertisersLineItemsResource {
   /// Returns the updated line item if successful. Requests to this endpoint
   /// cannot be made concurrently with the following requests updating the same
   /// line item: * BulkEditAssignedTargetingOptions * BulkUpdateLineItems *
-  /// assignedTargetingOptions.create * assignedTargetingOptions.delete
+  /// assignedTargetingOptions.create * assignedTargetingOptions.delete YouTube
+  /// & Partners line items cannot be created or updated using the API. **This
+  /// method regularly experiences high latency.** We recommend \[increasing
+  /// your default
+  /// timeout\](/display-video/api/guides/best-practices/timeouts#client_library_timeout)
+  /// to avoid errors.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4920,7 +4951,8 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// endpoint cannot be made concurrently with the following requests updating
   /// the same line item: * lineItems.bulkEditAssignedTargetingOptions *
   /// lineItems.bulkUpdate * lineItems.patch *
-  /// DeleteLineItemAssignedTargetingOption
+  /// DeleteLineItemAssignedTargetingOption YouTube & Partners line items cannot
+  /// be created or updated using the API.
   ///
   /// [request] - The metadata request object.
   ///
@@ -5117,7 +5149,8 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// Requests to this endpoint cannot be made concurrently with the following
   /// requests updating the same line item: *
   /// lineItems.bulkEditAssignedTargetingOptions * lineItems.bulkUpdate *
-  /// lineItems.patch * CreateLineItemAssignedTargetingOption
+  /// lineItems.patch * CreateLineItemAssignedTargetingOption YouTube & Partners
+  /// line items cannot be created or updated using the API.
   ///
   /// Request parameters:
   ///
@@ -8699,6 +8732,9 @@ class FirstAndThirdPartyAudiencesResource {
 class FloodlightGroupsResource {
   final commons.ApiRequester _requester;
 
+  FloodlightGroupsFloodlightActivitiesResource get floodlightActivities =>
+      FloodlightGroupsFloodlightActivitiesResource(_requester);
+
   FloodlightGroupsResource(commons.ApiRequester client) : _requester = client;
 
   /// Gets a Floodlight group.
@@ -8793,6 +8829,128 @@ class FloodlightGroupsResource {
       queryParams: queryParams_,
     );
     return FloodlightGroup.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class FloodlightGroupsFloodlightActivitiesResource {
+  final commons.ApiRequester _requester;
+
+  FloodlightGroupsFloodlightActivitiesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets a Floodlight activity.
+  ///
+  /// Request parameters:
+  ///
+  /// [floodlightGroupId] - Required. The ID of the parent Floodlight group to
+  /// which the requested Floodlight activity belongs.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [floodlightActivityId] - Required. The ID of the Floodlight activity to
+  /// fetch.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [partnerId] - Required. The ID of the partner through which the Floodlight
+  /// activity is being accessed.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [FloodlightActivity].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<FloodlightActivity> get(
+    core.String floodlightGroupId,
+    core.String floodlightActivityId, {
+    core.String? partnerId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (partnerId != null) 'partnerId': [partnerId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/floodlightGroups/' +
+        core.Uri.encodeFull('$floodlightGroupId') +
+        '/floodlightActivities/' +
+        core.Uri.encodeFull('$floodlightActivityId');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return FloodlightActivity.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists Floodlight activities in a Floodlight group.
+  ///
+  /// Request parameters:
+  ///
+  /// [floodlightGroupId] - Required. The ID of the parent Floodlight group to
+  /// which the requested Floodlight activities belong.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [orderBy] - Optional. Field by which to sort the list. Acceptable values
+  /// are: * `displayName` (default) * `floodlightActivityId` The default
+  /// sorting order is ascending. To specify descending order for a field, a
+  /// suffix "desc" should be added to the field name. Example: `displayName
+  /// desc`.
+  ///
+  /// [pageSize] - Optional. Requested page size. Must be between `1` and `100`.
+  /// If unspecified will default to `100`. Returns error code
+  /// `INVALID_ARGUMENT` if an invalid value is specified.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results the server
+  /// should return. Typically, this is the value of next_page_token returned
+  /// from the previous call to `ListFloodlightActivities` method. If not
+  /// specified, the first page of results will be returned.
+  ///
+  /// [partnerId] - Required. The ID of the partner through which the Floodlight
+  /// activities are being accessed.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListFloodlightActivitiesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListFloodlightActivitiesResponse> list(
+    core.String floodlightGroupId, {
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? partnerId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (partnerId != null) 'partnerId': [partnerId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/floodlightGroups/' +
+        core.Uri.encodeFull('$floodlightGroupId') +
+        '/floodlightActivities';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListFloodlightActivitiesResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -10806,7 +10964,10 @@ class PartnersChannelsSitesResource {
   /// Replaces all of the sites under a single channel.
   ///
   /// The operation will replace the sites under a channel with the sites
-  /// provided in ReplaceSitesRequest.new_sites.
+  /// provided in ReplaceSitesRequest.new_sites. **This method regularly
+  /// experiences high latency.** We recommend \[increasing your default
+  /// timeout\](/display-video/api/guides/best-practices/timeouts#client_library_timeout)
+  /// to avoid errors.
   ///
   /// [request] - The metadata request object.
   ///
@@ -12881,7 +13042,7 @@ class Advertiser {
 
   /// Billing related settings of the advertiser.
   ///
-  /// Required.
+  /// Optional. Required.
   AdvertiserBillingConfig? billingConfig;
 
   /// Creative related settings of the advertiser.
@@ -16123,7 +16284,10 @@ typedef ContactInfo = $ContactInfo;
 class ContactInfoList {
   /// Input only.
   ///
-  /// User consent status.
+  /// The consent setting for the users in contact_infos. Leaving this field
+  /// unset indicates that consent is not specified. If ad_user_data or
+  /// ad_personalization fields are set to `CONSENT_STATUS_DENIED`, the request
+  /// will return an error.
   Consent? consent;
 
   /// A list of ContactInfo objects defining Customer Match audience members.
@@ -18165,10 +18329,22 @@ class EditCustomerMatchMembersRequest {
   /// Required.
   core.String? advertiserId;
 
+  /// Input only.
+  ///
+  /// A list of contact information to define the members to be removed.
+  ContactInfoList? removedContactInfoList;
+
+  /// Input only.
+  ///
+  /// A list of mobile device IDs to define the members to be removed.
+  MobileDeviceIdList? removedMobileDeviceIdList;
+
   EditCustomerMatchMembersRequest({
     this.addedContactInfoList,
     this.addedMobileDeviceIdList,
     this.advertiserId,
+    this.removedContactInfoList,
+    this.removedMobileDeviceIdList,
   });
 
   EditCustomerMatchMembersRequest.fromJson(core.Map json_)
@@ -18184,6 +18360,15 @@ class EditCustomerMatchMembersRequest {
           advertiserId: json_.containsKey('advertiserId')
               ? json_['advertiserId'] as core.String
               : null,
+          removedContactInfoList: json_.containsKey('removedContactInfoList')
+              ? ContactInfoList.fromJson(json_['removedContactInfoList']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          removedMobileDeviceIdList: json_
+                  .containsKey('removedMobileDeviceIdList')
+              ? MobileDeviceIdList.fromJson(json_['removedMobileDeviceIdList']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -18192,6 +18377,10 @@ class EditCustomerMatchMembersRequest {
         if (addedMobileDeviceIdList != null)
           'addedMobileDeviceIdList': addedMobileDeviceIdList!,
         if (advertiserId != null) 'advertiserId': advertiserId!,
+        if (removedContactInfoList != null)
+          'removedContactInfoList': removedContactInfoList!,
+        if (removedMobileDeviceIdList != null)
+          'removedMobileDeviceIdList': removedMobileDeviceIdList!,
       };
 }
 
@@ -18647,6 +18836,118 @@ typedef FirstAndThirdPartyAudienceTargetingSetting
 /// A strategy that uses a fixed bidding price.
 typedef FixedBidStrategy = $FixedBidStrategy;
 
+/// A single Floodlight activity.
+class FloodlightActivity {
+  /// IDs of the advertisers that have access to the parent Floodlight group.
+  ///
+  /// Only advertisers under the provided partner ID will be listed in this
+  /// field.
+  ///
+  /// Output only.
+  core.List<core.String>? advertiserIds;
+
+  /// The display name of the Floodlight activity.
+  ///
+  /// Required.
+  core.String? displayName;
+
+  /// The unique ID of the Floodlight activity.
+  ///
+  /// Assigned by the system.
+  ///
+  /// Output only.
+  core.String? floodlightActivityId;
+
+  /// The ID of the parent Floodlight group.
+  ///
+  /// Required. Immutable.
+  core.String? floodlightGroupId;
+
+  /// The resource name of the Floodlight activity.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// A list of configuration objects designating whether remarketing for this
+  /// Floodlight Activity is enabled and available for a specifc advertiser.
+  ///
+  /// If enabled, this Floodlight Activity generates a remarketing user list
+  /// that is able to be used in targeting under the advertiser.
+  ///
+  /// Output only.
+  core.List<RemarketingConfig>? remarketingConfigs;
+
+  /// Whether the Floodlight activity is served.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "FLOODLIGHT_ACTIVITY_SERVING_STATUS_UNSPECIFIED" : Type value is not
+  /// specified or is unknown in this version.
+  /// - "FLOODLIGHT_ACTIVITY_SERVING_STATUS_ENABLED" : Enabled.
+  /// - "FLOODLIGHT_ACTIVITY_SERVING_STATUS_DISABLED" : Disabled.
+  core.String? servingStatus;
+
+  /// Whether tags are required to be compliant.
+  ///
+  /// Output only.
+  core.bool? sslRequired;
+
+  FloodlightActivity({
+    this.advertiserIds,
+    this.displayName,
+    this.floodlightActivityId,
+    this.floodlightGroupId,
+    this.name,
+    this.remarketingConfigs,
+    this.servingStatus,
+    this.sslRequired,
+  });
+
+  FloodlightActivity.fromJson(core.Map json_)
+      : this(
+          advertiserIds: json_.containsKey('advertiserIds')
+              ? (json_['advertiserIds'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          floodlightActivityId: json_.containsKey('floodlightActivityId')
+              ? json_['floodlightActivityId'] as core.String
+              : null,
+          floodlightGroupId: json_.containsKey('floodlightGroupId')
+              ? json_['floodlightGroupId'] as core.String
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          remarketingConfigs: json_.containsKey('remarketingConfigs')
+              ? (json_['remarketingConfigs'] as core.List)
+                  .map((value) => RemarketingConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          servingStatus: json_.containsKey('servingStatus')
+              ? json_['servingStatus'] as core.String
+              : null,
+          sslRequired: json_.containsKey('sslRequired')
+              ? json_['sslRequired'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (advertiserIds != null) 'advertiserIds': advertiserIds!,
+        if (displayName != null) 'displayName': displayName!,
+        if (floodlightActivityId != null)
+          'floodlightActivityId': floodlightActivityId!,
+        if (floodlightGroupId != null) 'floodlightGroupId': floodlightGroupId!,
+        if (name != null) 'name': name!,
+        if (remarketingConfigs != null)
+          'remarketingConfigs': remarketingConfigs!,
+        if (servingStatus != null) 'servingStatus': servingStatus!,
+        if (sslRequired != null) 'sslRequired': sslRequired!,
+      };
+}
+
 /// A single Floodlight group.
 class FloodlightGroup {
   /// The Active View video viewability metric configuration for the Floodlight
@@ -19064,6 +19365,12 @@ class GuaranteedOrder {
   /// - "EXCHANGE_CONNATIX" : Connatix.
   /// - "EXCHANGE_RESET_DIGITAL" : Reset Digital.
   /// - "EXCHANGE_HIVESTACK" : Hivestack.
+  /// - "EXCHANGE_APPLOVIN_GBID" : AppLovin MAX.
+  /// - "EXCHANGE_FYBER_GBID" : DT Fairbid.
+  /// - "EXCHANGE_UNITY_GBID" : Unity LevelPlay.
+  /// - "EXCHANGE_CHARTBOOST_GBID" : Chartboost Mediation.
+  /// - "EXCHANGE_ADMOST_GBID" : AdMost.
+  /// - "EXCHANGE_TOPON_GBID" : TopOn.
   core.String? exchange;
 
   /// The unique identifier of the guaranteed order.
@@ -19803,6 +20110,12 @@ class InventorySource {
   /// - "EXCHANGE_CONNATIX" : Connatix.
   /// - "EXCHANGE_RESET_DIGITAL" : Reset Digital.
   /// - "EXCHANGE_HIVESTACK" : Hivestack.
+  /// - "EXCHANGE_APPLOVIN_GBID" : AppLovin MAX.
+  /// - "EXCHANGE_FYBER_GBID" : DT Fairbid.
+  /// - "EXCHANGE_UNITY_GBID" : Unity LevelPlay.
+  /// - "EXCHANGE_CHARTBOOST_GBID" : Chartboost Mediation.
+  /// - "EXCHANGE_ADMOST_GBID" : AdMost.
+  /// - "EXCHANGE_TOPON_GBID" : TopOn.
   core.String? exchange;
 
   /// The ID of the guaranteed order that this inventory source belongs to.
@@ -21587,6 +21900,43 @@ class ListFirstAndThirdPartyAudiencesResponse {
       };
 }
 
+class ListFloodlightActivitiesResponse {
+  /// The list of Floodlight activities.
+  ///
+  /// This list will be absent if empty.
+  core.List<FloodlightActivity>? floodlightActivities;
+
+  /// A token to retrieve the next page of results.
+  ///
+  /// Pass this value in the page_token field in the subsequent call to
+  /// `ListFloodlightActivities` method to retrieve the next page of results.
+  core.String? nextPageToken;
+
+  ListFloodlightActivitiesResponse({
+    this.floodlightActivities,
+    this.nextPageToken,
+  });
+
+  ListFloodlightActivitiesResponse.fromJson(core.Map json_)
+      : this(
+          floodlightActivities: json_.containsKey('floodlightActivities')
+              ? (json_['floodlightActivities'] as core.List)
+                  .map((value) => FloodlightActivity.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (floodlightActivities != null)
+          'floodlightActivities': floodlightActivities!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
 class ListGoogleAudiencesResponse {
   /// The list of Google audiences.
   ///
@@ -22366,7 +22716,10 @@ typedef MobileApp = $MobileApp;
 class MobileDeviceIdList {
   /// Input only.
   ///
-  /// User consent status.
+  /// The consent setting for the users in mobile_device_ids. Leaving this field
+  /// unset indicates that consent is not specified. If ad_user_data or
+  /// ad_personalization fields are set to `CONSENT_STATUS_DENIED`, the request
+  /// will return an error.
   Consent? consent;
 
   /// A list of mobile device IDs defining Customer Match audience members.
@@ -23157,6 +23510,10 @@ class RateDetails {
 /// when targeting_type is `TARGETING_TYPE_REGIONAL_LOCATION_LIST`.
 typedef RegionalLocationListAssignedTargetingOptionDetails
     = $RegionalLocationListAssignedTargetingOptionDetails;
+
+/// Settings that control the whether remarketing is enabled for the given
+/// identified advertiser.
+typedef RemarketingConfig = $RemarketingConfig;
 
 /// Request message for NegativeKeywordService.ReplaceNegativeKeywords.
 class ReplaceNegativeKeywordsRequest {
@@ -24386,6 +24743,11 @@ class User {
   /// Required. Immutable.
   core.String? email;
 
+  /// The timestamp when the user last logged in DV360 UI.
+  ///
+  /// Output only.
+  core.String? lastLoginTime;
+
   /// The resource name of the user.
   ///
   /// Output only.
@@ -24402,6 +24764,7 @@ class User {
     this.assignedUserRoles,
     this.displayName,
     this.email,
+    this.lastLoginTime,
     this.name,
     this.userId,
   });
@@ -24419,6 +24782,9 @@ class User {
               : null,
           email:
               json_.containsKey('email') ? json_['email'] as core.String : null,
+          lastLoginTime: json_.containsKey('lastLoginTime')
+              ? json_['lastLoginTime'] as core.String
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           userId: json_.containsKey('userId')
               ? json_['userId'] as core.String
@@ -24429,6 +24795,7 @@ class User {
         if (assignedUserRoles != null) 'assignedUserRoles': assignedUserRoles!,
         if (displayName != null) 'displayName': displayName!,
         if (email != null) 'email': email!,
+        if (lastLoginTime != null) 'lastLoginTime': lastLoginTime!,
         if (name != null) 'name': name!,
         if (userId != null) 'userId': userId!,
       };
@@ -24717,9 +25084,16 @@ typedef YoutubeAndPartnersBiddingStrategy = $YoutubeAndPartnersBiddingStrategy;
 /// Settings that control what YouTube related inventories the YouTube and
 /// Partners line item will target.
 class YoutubeAndPartnersInventorySourceConfig {
+  /// Whether to target inventory in video apps available with Google TV.
+  ///
+  /// Optional.
+  core.bool? includeGoogleTv;
+
   /// Whether to target inventory on YouTube.
   ///
   /// This includes both search, channels and videos.
+  ///
+  /// Optional.
   core.bool? includeYoutube;
 
   /// Whether to target inventory on a collection of partner sites and apps that
@@ -24727,12 +25101,16 @@ class YoutubeAndPartnersInventorySourceConfig {
   core.bool? includeYoutubeVideoPartners;
 
   YoutubeAndPartnersInventorySourceConfig({
+    this.includeGoogleTv,
     this.includeYoutube,
     this.includeYoutubeVideoPartners,
   });
 
   YoutubeAndPartnersInventorySourceConfig.fromJson(core.Map json_)
       : this(
+          includeGoogleTv: json_.containsKey('includeGoogleTv')
+              ? json_['includeGoogleTv'] as core.bool
+              : null,
           includeYoutube: json_.containsKey('includeYoutube')
               ? json_['includeYoutube'] as core.bool
               : null,
@@ -24743,6 +25121,7 @@ class YoutubeAndPartnersInventorySourceConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (includeGoogleTv != null) 'includeGoogleTv': includeGoogleTv!,
         if (includeYoutube != null) 'includeYoutube': includeYoutube!,
         if (includeYoutubeVideoPartners != null)
           'includeYoutubeVideoPartners': includeYoutubeVideoPartners!,
@@ -24793,17 +25172,25 @@ class YoutubeAndPartnersSettings {
   YoutubeAndPartnersInventorySourceConfig? inventorySourceSettings;
 
   /// The ID of the form to generate leads.
+  ///
+  /// Optional.
   core.String? leadFormId;
 
   /// The ID of the merchant which is linked to the line item for product feed.
+  ///
+  /// Optional.
   core.String? linkedMerchantId;
 
   /// The IDs of the videos appear below the primary video ad when the ad is
   /// playing in the YouTube app on mobile devices.
+  ///
+  /// Optional.
   core.List<core.String>? relatedVideoIds;
 
   /// The average number of times you want ads from this line item to show to
   /// the same person over a certain period of time.
+  ///
+  /// Optional.
   TargetFrequency? targetFrequency;
 
   /// The third-party measurement configs of the line item.
@@ -24812,6 +25199,8 @@ class YoutubeAndPartnersSettings {
   ThirdPartyMeasurementConfigs? thirdPartyMeasurementConfigs;
 
   /// The settings related to VideoAdSequence.
+  ///
+  /// Optional.
   VideoAdSequenceSettings? videoAdSequenceSettings;
 
   /// The view frequency cap settings of the line item.

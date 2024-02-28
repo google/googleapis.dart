@@ -1963,10 +1963,12 @@ class GoogleChromeManagementV1BatteryStatusReport {
   /// Output only.
   /// Possible string values are:
   /// - "BATTERY_HEALTH_UNSPECIFIED" : Health unknown.
-  /// - "BATTERY_HEALTH_NORMAL" : Battery is healthy.
-  /// - "BATTERY_REPLACE_SOON" : Battery is moderately unhealthy and should be
-  /// replaced soon.
-  /// - "BATTERY_REPLACE_NOW" : Battery is unhealthy and should be replaced.
+  /// - "BATTERY_HEALTH_NORMAL" : Battery is healthy, full charge capacity /
+  /// design capacity \> 80%
+  /// - "BATTERY_REPLACE_SOON" : Battery is moderately unhealthy and suggested
+  /// to be replaced soon, full charge capacity / design capacity 75% - 80%
+  /// - "BATTERY_REPLACE_NOW" : Battery is unhealthy and suggested to be
+  /// replaced, full charge capacity / design capacity \< 75%
   core.String? batteryHealth;
 
   /// Cycle count.

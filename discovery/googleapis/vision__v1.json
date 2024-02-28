@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20231110",
+    "revision": "20240223",
     "rootUrl": "https://vision.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Vision API",
@@ -3345,7 +3345,7 @@
                     "type": "string"
                 },
                 "violence": {
-                    "description": "Likelihood that this image contains violent content.",
+                    "description": "Likelihood that this image contains violent content. Violent content may include death, serious harm, or injury to individuals or groups of individuals.",
                     "enum": [
                         "UNKNOWN",
                         "VERY_UNLIKELY",
@@ -4759,7 +4759,7 @@
                     "type": "string"
                 },
                 "violence": {
-                    "description": "Likelihood that this image contains violent content.",
+                    "description": "Likelihood that this image contains violent content. Violent content may include death, serious harm, or injury to individuals or groups of individuals.",
                     "enum": [
                         "UNKNOWN",
                         "VERY_UNLIKELY",
@@ -6251,7 +6251,7 @@
                     "type": "string"
                 },
                 "violence": {
-                    "description": "Likelihood that this image contains violent content.",
+                    "description": "Likelihood that this image contains violent content. Violent content may include death, serious harm, or injury to individuals or groups of individuals.",
                     "enum": [
                         "UNKNOWN",
                         "VERY_UNLIKELY",
@@ -7810,7 +7810,7 @@
                     "type": "string"
                 },
                 "violence": {
-                    "description": "Likelihood that this image contains violent content.",
+                    "description": "Likelihood that this image contains violent content. Violent content may include death, serious harm, or injury to individuals or groups of individuals.",
                     "enum": [
                         "UNKNOWN",
                         "VERY_UNLIKELY",
@@ -9087,7 +9087,7 @@
                     "type": "string"
                 },
                 "violence": {
-                    "description": "Likelihood that this image contains violent content.",
+                    "description": "Likelihood that this image contains violent content. Violent content may include death, serious harm, or injury to individuals or groups of individuals.",
                     "enum": [
                         "UNKNOWN",
                         "VERY_UNLIKELY",
@@ -9285,7 +9285,8 @@
             "id": "WebDetectionParams",
             "properties": {
                 "includeGeoResults": {
-                    "description": "Whether to include results derived from the geo information in the image.",
+                    "deprecated": true,
+                    "description": "This field has no effect on results.",
                     "type": "boolean"
                 }
             },

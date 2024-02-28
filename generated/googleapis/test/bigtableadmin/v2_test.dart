@@ -369,7 +369,6 @@ api.CheckConsistencyRequest buildCheckConsistencyRequest() {
   buildCounterCheckConsistencyRequest++;
   if (buildCounterCheckConsistencyRequest < 3) {
     o.consistencyToken = 'foo';
-    o.standardReadRemoteWrites = buildStandardReadRemoteWrites();
   }
   buildCounterCheckConsistencyRequest--;
   return o;
@@ -382,7 +381,6 @@ void checkCheckConsistencyRequest(api.CheckConsistencyRequest o) {
       o.consistencyToken!,
       unittest.equals('foo'),
     );
-    checkStandardReadRemoteWrites(o.standardReadRemoteWrites!);
   }
   buildCounterCheckConsistencyRequest--;
 }
@@ -1553,6 +1551,7 @@ api.ModifyColumnFamiliesRequest buildModifyColumnFamiliesRequest() {
   final o = api.ModifyColumnFamiliesRequest();
   buildCounterModifyColumnFamiliesRequest++;
   if (buildCounterModifyColumnFamiliesRequest < 3) {
+    o.ignoreWarnings = true;
     o.modifications = buildUnnamed21();
   }
   buildCounterModifyColumnFamiliesRequest--;
@@ -1562,6 +1561,7 @@ api.ModifyColumnFamiliesRequest buildModifyColumnFamiliesRequest() {
 void checkModifyColumnFamiliesRequest(api.ModifyColumnFamiliesRequest o) {
   buildCounterModifyColumnFamiliesRequest++;
   if (buildCounterModifyColumnFamiliesRequest < 3) {
+    unittest.expect(o.ignoreWarnings!, unittest.isTrue);
     checkUnnamed21(o.modifications!);
   }
   buildCounterModifyColumnFamiliesRequest--;
@@ -1917,21 +1917,6 @@ void checkStandardIsolation(api.StandardIsolation o) {
     );
   }
   buildCounterStandardIsolation--;
-}
-
-core.int buildCounterStandardReadRemoteWrites = 0;
-api.StandardReadRemoteWrites buildStandardReadRemoteWrites() {
-  final o = api.StandardReadRemoteWrites();
-  buildCounterStandardReadRemoteWrites++;
-  if (buildCounterStandardReadRemoteWrites < 3) {}
-  buildCounterStandardReadRemoteWrites--;
-  return o;
-}
-
-void checkStandardReadRemoteWrites(api.StandardReadRemoteWrites o) {
-  buildCounterStandardReadRemoteWrites++;
-  if (buildCounterStandardReadRemoteWrites < 3) {}
-  buildCounterStandardReadRemoteWrites--;
 }
 
 core.Map<core.String, core.Object?> buildUnnamed27() => {
@@ -2765,16 +2750,6 @@ void main() {
     });
   });
 
-  unittest.group('obj-schema-StandardReadRemoteWrites', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildStandardReadRemoteWrites();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.StandardReadRemoteWrites.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkStandardReadRemoteWrites(od);
-    });
-  });
-
   unittest.group('obj-schema-Status', () {
     unittest.test('to-json--from-json', () async {
       final o = buildStatus();
@@ -2846,110 +2821,6 @@ void main() {
   });
 
   unittest.group('resource-OperationsResource', () {
-    unittest.test('method--cancel', () async {
-      final mock = HttpServerMock();
-      final res = api.BigtableAdminApi(mock).operations;
-      final arg_name = 'foo';
-      final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v2/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
-
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
-
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
-          }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
-
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildEmpty());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.cancel(arg_name, $fields: arg_$fields);
-      checkEmpty(response as api.Empty);
-    });
-
-    unittest.test('method--delete', () async {
-      final mock = HttpServerMock();
-      final res = api.BigtableAdminApi(mock).operations;
-      final arg_name = 'foo';
-      final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v2/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
-
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
-
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
-          }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
-
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildEmpty());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.delete(arg_name, $fields: arg_$fields);
-      checkEmpty(response as api.Empty);
-    });
-
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
       final res = api.BigtableAdminApi(mock).operations;
@@ -5720,58 +5591,6 @@ void main() {
   });
 
   unittest.group('resource-ProjectsLocationsResource', () {
-    unittest.test('method--get', () async {
-      final mock = HttpServerMock();
-      final res = api.BigtableAdminApi(mock).projects.locations;
-      final arg_name = 'foo';
-      final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v2/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
-
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
-
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
-          }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
-
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildLocation());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.get(arg_name, $fields: arg_$fields);
-      checkLocation(response as api.Location);
-    });
-
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.BigtableAdminApi(mock).projects.locations;

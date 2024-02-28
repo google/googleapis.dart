@@ -418,6 +418,53 @@ class ProjectsLocationsResource {
     return ListLocationsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
+
+  /// Unenroll data sources in a user project.
+  ///
+  /// This allows users to remove transfer configurations for these data
+  /// sources. They will no longer appear in the ListDataSources RPC and will
+  /// also no longer appear in the
+  /// [BigQuery UI](https://console.cloud.google.com/bigquery). Data transfers
+  /// configurations of unenrolled data sources will not be scheduled.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the project resource in the form:
+  /// `projects/{project_id}`
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> unenrollDataSources(
+    UnenrollDataSourcesRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':unenrollDataSources';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsDataSourcesResource {
@@ -2515,14 +2562,14 @@ class ScheduleOptions {
   ///
   /// A transfer run cannot be scheduled at or after the end time. The end time
   /// can be changed at any moment. The time when a data transfer can be
-  /// trigerred manually is not limited by this option.
+  /// triggered manually is not limited by this option.
   core.String? endTime;
 
   /// Specifies time to start scheduling transfer runs.
   ///
   /// The first run will be scheduled at or after the start time according to a
   /// recurrence pattern defined in the schedule string. The start time can be
-  /// changed at any moment. The time when a data transfer can be trigerred
+  /// changed at any moment. The time when a data transfer can be triggered
   /// manually is not limited by this option.
   core.String? startTime;
 
@@ -2757,7 +2804,7 @@ class TransferConfig {
 
   /// Is this config disabled.
   ///
-  /// When set to true, no runs are scheduled for a given transfer.
+  /// When set to true, no runs will be scheduled for this transfer config.
   core.bool? disabled;
 
   /// User specified display name for the data transfer.
@@ -2794,7 +2841,7 @@ class TransferConfig {
   /// associated with this transfer config finish.
   ///
   /// The format for specifying a pubsub topic is:
-  /// `projects/{project}/topics/{topic}`
+  /// `projects/{project_id}/topics/{topic_id}`
   core.String? notificationPubsubTopic;
 
   /// Information about the user whose credentials are used to transfer data.
@@ -3045,7 +3092,7 @@ class TransferRun {
   /// finishes.
   ///
   /// The format for specifying a pubsub topic is:
-  /// `projects/{project}/topics/{topic}`
+  /// `projects/{project_id}/topics/{topic_id}`
   ///
   /// Output only.
   core.String? notificationPubsubTopic;
@@ -3194,6 +3241,32 @@ class TransferRun {
         if (state != null) 'state': state!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (userId != null) 'userId': userId!,
+      };
+}
+
+/// A request to unenroll a set of data sources so they are no longer visible in
+/// the BigQuery UI's `Transfer` tab.
+class UnenrollDataSourcesRequest {
+  /// Data sources that are unenrolled.
+  ///
+  /// It is required to provide at least one data source id.
+  core.List<core.String>? dataSourceIds;
+
+  UnenrollDataSourcesRequest({
+    this.dataSourceIds,
+  });
+
+  UnenrollDataSourcesRequest.fromJson(core.Map json_)
+      : this(
+          dataSourceIds: json_.containsKey('dataSourceIds')
+              ? (json_['dataSourceIds'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dataSourceIds != null) 'dataSourceIds': dataSourceIds!,
       };
 }
 

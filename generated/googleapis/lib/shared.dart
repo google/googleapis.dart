@@ -133,7 +133,6 @@ class $ActionParameter {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : ActiveViewVideoViewabilityMetricConfig
 /// - displayvideo:v2 : ActiveViewVideoViewabilityMetricConfig
 /// - displayvideo:v3 : ActiveViewVideoViewabilityMetricConfig
 class $ActiveViewVideoViewabilityMetricConfig {
@@ -349,7 +348,6 @@ class $AddressPool {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : Adloox
 /// - displayvideo:v2 : Adloox
 /// - displayvideo:v3 : Adloox
 class $Adloox {
@@ -382,6 +380,8 @@ class $Adloox {
 /// - displayvideo:v3 : AdvertiserBillingConfig
 class $AdvertiserBillingConfig {
   /// The ID of a billing profile assigned to the advertiser.
+  ///
+  /// Optional.
   core.String? billingProfileId;
 
   $AdvertiserBillingConfig({
@@ -402,7 +402,6 @@ class $AdvertiserBillingConfig {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : AdvertiserCreativeConfig
 /// - displayvideo:v2 : AdvertiserCreativeConfig
 /// - displayvideo:v3 : AdvertiserCreativeConfig
 class $AdvertiserCreativeConfig {
@@ -416,12 +415,24 @@ class $AdvertiserCreativeConfig {
   /// ID to the creative tag.
   core.String? iasClientId;
 
-  /// Whether or not to use DV360's Online Behavioral Advertising (OBA)
-  /// compliance.
+  /// Whether or not to disable Google's About this Ad feature that adds badging
+  /// (to identify the content as an ad) and transparency information (on
+  /// interaction with About this Ad) to your ads for Online Behavioral
+  /// Advertising (OBA) and regulatory requirements.
   ///
-  /// Warning: Changing OBA settings may cause the audit status of your
-  /// creatives to be reset by some ad exchanges, making them ineligible to
-  /// serve until they are re-approved.
+  /// About this Ad gives users greater control over the ads they see and helps
+  /// you explain why they're seeing your ad. \[Learn
+  /// more\](//support.google.com/displayvideo/answer/14315795). If you choose
+  /// to set this field to `true`, note that ads served through Display & Video
+  /// 360 must comply to the following: * Be Online Behavioral Advertising (OBA)
+  /// compliant, as per your contract with Google Marketing Platform. * In the
+  /// European Economic Area (EEA), include transparency information and a
+  /// mechanism for users to report illegal content in ads. If using an
+  /// alternative ad badging, transparency, and reporting solution, you must
+  /// ensure it includes the required transparency information and illegal
+  /// content flagging mechanism and that you notify Google of any illegal
+  /// content reports using the appropriate
+  /// \[form\](//support.google.com/legal/troubleshooter/1114905?sjid=6787484030557261960-EU#ts=2981967%2C2982031%2C12980091).
   core.bool? obaComplianceDisabled;
 
   /// By setting this field to `true`, you, on behalf of your company, authorize
@@ -471,7 +482,6 @@ class $AdvertiserCreativeConfig {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : AdvertiserGeneralConfig
 /// - displayvideo:v2 : AdvertiserGeneralConfig
 /// - displayvideo:v3 : AdvertiserGeneralConfig
 class $AdvertiserGeneralConfig {
@@ -543,7 +553,6 @@ class $AdvertiserGeneralConfig {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : AdvertiserTargetingConfig
 /// - displayvideo:v2 : AdvertiserTargetingConfig
 /// - displayvideo:v3 : AdvertiserTargetingConfig
 class $AdvertiserTargetingConfig {
@@ -749,7 +758,6 @@ class $AnalysisCompleted {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : AppAssignedTargetingOptionDetails
 /// - displayvideo:v2 : AppAssignedTargetingOptionDetails
 /// - displayvideo:v3 : AppAssignedTargetingOptionDetails
 class $AppAssignedTargetingOptionDetails {
@@ -824,7 +832,6 @@ class $AppAssignedTargetingOptionDetails {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : AppCategoryAssignedTargetingOptionDetails
 /// - displayvideo:v2 : AppCategoryAssignedTargetingOptionDetails
 /// - displayvideo:v3 : AppCategoryAssignedTargetingOptionDetails
 class $AppCategoryAssignedTargetingOptionDetails {
@@ -870,7 +877,6 @@ class $AppCategoryAssignedTargetingOptionDetails {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : AppCategoryTargetingOptionDetails
 /// - displayvideo:v2 : AppCategoryTargetingOptionDetails
 /// - displayvideo:v3 : AppCategoryTargetingOptionDetails
 class $AppCategoryTargetingOptionDetails {
@@ -979,7 +985,6 @@ class $ArtifactsGcsSource {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : Asset
 /// - displayvideo:v2 : Asset
 /// - displayvideo:v3 : Asset
 class $Asset {
@@ -1020,7 +1025,6 @@ class $Asset {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : AssignedInventorySource
 /// - displayvideo:v2 : AssignedInventorySource
 /// - displayvideo:v3 : AssignedInventorySource
 class $AssignedInventorySource {
@@ -1070,7 +1074,6 @@ class $AssignedInventorySource {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : AssignedLocation
 /// - displayvideo:v2 : AssignedLocation
 /// - displayvideo:v3 : AssignedLocation
 class $AssignedLocation {
@@ -1119,7 +1122,6 @@ class $AssignedLocation {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : AssignedUserRole
 /// - displayvideo:v2 : AssignedUserRole
 /// - displayvideo:v3 : AssignedUserRole
 class $AssignedUserRole {
@@ -1274,7 +1276,6 @@ class $AudioContentTypeAssignedTargetingOptionDetails {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : AudioContentTypeTargetingOptionDetails
 /// - displayvideo:v2 : AudioContentTypeTargetingOptionDetails
 /// - displayvideo:v3 : AudioContentTypeTargetingOptionDetails
 class $AudioContentTypeTargetingOptionDetails {
@@ -1309,7 +1310,6 @@ class $AudioContentTypeTargetingOptionDetails {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : AudioVideoOffset
 /// - displayvideo:v2 : AudioVideoOffset
 /// - displayvideo:v3 : AudioVideoOffset
 class $AudioVideoOffset {
@@ -1342,7 +1342,6 @@ class $AudioVideoOffset {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : AuditAdvertiserResponse
 /// - displayvideo:v2 : AuditAdvertiserResponse
 /// - displayvideo:v3 : AuditAdvertiserResponse
 class $AuditAdvertiserResponse {
@@ -1470,9 +1469,11 @@ class $AuditAdvertiserResponse {
 /// - analyticshub:v1 : AuditLogConfig
 /// - apigateway:v1 : ApigatewayAuditLogConfig
 /// - apigee:v1 : GoogleIamV1AuditLogConfig
+/// - apphub:v1 : AuditLogConfig
 /// - backupdr:v1 : AuditLogConfig
 /// - beyondcorp:v1 : GoogleIamV1AuditLogConfig
 /// - bigquery:v2 : AuditLogConfig
+/// - bigqueryconnection:v1 : AuditLogConfig
 /// - bigquerydatapolicy:v1 : AuditLogConfig
 /// - bigtableadmin:v2 : AuditLogConfig
 /// - cloudasset:v1 : AuditLogConfig
@@ -1604,7 +1605,6 @@ class $AuthRequirement {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : AuthorizedSellerStatusAssignedTargetingOptionDetails
 /// - displayvideo:v2 : AuthorizedSellerStatusAssignedTargetingOptionDetails
 /// - displayvideo:v3 : AuthorizedSellerStatusAssignedTargetingOptionDetails
 class $AuthorizedSellerStatusAssignedTargetingOptionDetails {
@@ -1657,7 +1657,6 @@ class $AuthorizedSellerStatusAssignedTargetingOptionDetails {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : AuthorizedSellerStatusTargetingOptionDetails
 /// - displayvideo:v2 : AuthorizedSellerStatusTargetingOptionDetails
 /// - displayvideo:v3 : AuthorizedSellerStatusTargetingOptionDetails
 class $AuthorizedSellerStatusTargetingOptionDetails {
@@ -1724,6 +1723,89 @@ class $AutoRetrievalInfo {
 
 /// Used by:
 ///
+/// - firebaseappdistribution:v1 : GdataBlobstore2Info
+/// - walletobjects:v1 : Blobstore2Info
+class $Blobstore2Info {
+  /// The blob generation id.
+  core.String? blobGeneration;
+
+  /// The blob id, e.g., /blobstore/prod/playground/scotty
+  core.String? blobId;
+
+  /// Read handle passed from Bigstore -\> Scotty for a GCS download.
+  ///
+  /// This is a signed, serialized blobstore2.ReadHandle proto which must never
+  /// be set outside of Bigstore, and is not applicable to non-GCS media
+  /// downloads.
+  core.String? downloadReadHandle;
+  core.List<core.int> get downloadReadHandleAsBytes =>
+      convert.base64.decode(downloadReadHandle!);
+
+  set downloadReadHandleAsBytes(core.List<core.int> bytes_) {
+    downloadReadHandle =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// The blob read token.
+  ///
+  /// Needed to read blobs that have not been replicated. Might not be available
+  /// until the final call.
+  core.String? readToken;
+
+  /// Metadata passed from Blobstore -\> Scotty for a new GCS upload.
+  ///
+  /// This is a signed, serialized blobstore2.BlobMetadataContainer proto which
+  /// must never be consumed outside of Bigstore, and is not applicable to
+  /// non-GCS media uploads.
+  core.String? uploadMetadataContainer;
+  core.List<core.int> get uploadMetadataContainerAsBytes =>
+      convert.base64.decode(uploadMetadataContainer!);
+
+  set uploadMetadataContainerAsBytes(core.List<core.int> bytes_) {
+    uploadMetadataContainer =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  $Blobstore2Info({
+    this.blobGeneration,
+    this.blobId,
+    this.downloadReadHandle,
+    this.readToken,
+    this.uploadMetadataContainer,
+  });
+
+  $Blobstore2Info.fromJson(core.Map json_)
+      : this(
+          blobGeneration: json_.containsKey('blobGeneration')
+              ? json_['blobGeneration'] as core.String
+              : null,
+          blobId: json_.containsKey('blobId')
+              ? json_['blobId'] as core.String
+              : null,
+          downloadReadHandle: json_.containsKey('downloadReadHandle')
+              ? json_['downloadReadHandle'] as core.String
+              : null,
+          readToken: json_.containsKey('readToken')
+              ? json_['readToken'] as core.String
+              : null,
+          uploadMetadataContainer: json_.containsKey('uploadMetadataContainer')
+              ? json_['uploadMetadataContainer'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (blobGeneration != null) 'blobGeneration': blobGeneration!,
+        if (blobId != null) 'blobId': blobId!,
+        if (downloadReadHandle != null)
+          'downloadReadHandle': downloadReadHandle!,
+        if (readToken != null) 'readToken': readToken!,
+        if (uploadMetadataContainer != null)
+          'uploadMetadataContainer': uploadMetadataContainer!,
+      };
+}
+
+/// Used by:
+///
 /// - cloudasset:v1 : GoogleCloudOrgpolicyV1BooleanPolicy
 /// - cloudresourcemanager:v1 : BooleanPolicy
 class $BooleanPolicy {
@@ -1773,7 +1855,6 @@ class $BooleanPolicy {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : BrowserAssignedTargetingOptionDetails
 /// - displayvideo:v2 : BrowserAssignedTargetingOptionDetails
 /// - displayvideo:v3 : BrowserAssignedTargetingOptionDetails
 class $BrowserAssignedTargetingOptionDetails {
@@ -1822,7 +1903,6 @@ class $BrowserAssignedTargetingOptionDetails {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : BrowserTargetingOptionDetails
 /// - displayvideo:v2 : BrowserTargetingOptionDetails
 /// - displayvideo:v3 : BrowserTargetingOptionDetails
 class $BrowserTargetingOptionDetails {
@@ -1884,7 +1964,6 @@ class $BuildMetadata {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : BusinessChainAssignedTargetingOptionDetails
 /// - displayvideo:v2 : BusinessChainAssignedTargetingOptionDetails
 /// - displayvideo:v3 : BusinessChainAssignedTargetingOptionDetails
 class $BusinessChainAssignedTargetingOptionDetails {
@@ -1958,7 +2037,6 @@ class $BusinessChainAssignedTargetingOptionDetails {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : BusinessChainSearchTerms
 /// - displayvideo:v2 : BusinessChainSearchTerms
 /// - displayvideo:v3 : BusinessChainSearchTerms
 class $BusinessChainSearchTerms {
@@ -1996,7 +2074,6 @@ class $BusinessChainSearchTerms {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : BusinessChainTargetingOptionDetails
 /// - displayvideo:v2 : BusinessChainTargetingOptionDetails
 /// - displayvideo:v3 : BusinessChainTargetingOptionDetails
 class $BusinessChainTargetingOptionDetails {
@@ -2244,7 +2321,6 @@ class $CVSS {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : CarrierAndIspAssignedTargetingOptionDetails
 /// - displayvideo:v2 : CarrierAndIspAssignedTargetingOptionDetails
 /// - displayvideo:v3 : CarrierAndIspAssignedTargetingOptionDetails
 class $CarrierAndIspAssignedTargetingOptionDetails {
@@ -2293,7 +2369,6 @@ class $CarrierAndIspAssignedTargetingOptionDetails {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : CarrierAndIspTargetingOptionDetails
 /// - displayvideo:v2 : CarrierAndIspTargetingOptionDetails
 /// - displayvideo:v3 : CarrierAndIspTargetingOptionDetails
 class $CarrierAndIspTargetingOptionDetails {
@@ -2365,7 +2440,6 @@ class $Category {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : CategoryAssignedTargetingOptionDetails
 /// - displayvideo:v2 : CategoryAssignedTargetingOptionDetails
 /// - displayvideo:v3 : CategoryAssignedTargetingOptionDetails
 class $CategoryAssignedTargetingOptionDetails {
@@ -2411,7 +2485,6 @@ class $CategoryAssignedTargetingOptionDetails {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : CategoryTargetingOptionDetails
 /// - displayvideo:v2 : CategoryTargetingOptionDetails
 /// - displayvideo:v3 : CategoryTargetingOptionDetails
 class $CategoryTargetingOptionDetails {
@@ -2573,7 +2646,6 @@ class $CertificateChains {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : Channel
 /// - displayvideo:v2 : Channel
 /// - displayvideo:v3 : Channel
 class $Channel00 {
@@ -2706,6 +2778,8 @@ class $Channel01 {
   core.String? token;
 
   /// The type of delivery mechanism used for this channel.
+  ///
+  /// Valid values are "web_hook" or "webhook".
   core.String? type;
 
   $Channel01({
@@ -2769,7 +2843,6 @@ class $Channel01 {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : ChannelAssignedTargetingOptionDetails
 /// - displayvideo:v2 : ChannelAssignedTargetingOptionDetails
 /// - displayvideo:v3 : ChannelAssignedTargetingOptionDetails
 class $ChannelAssignedTargetingOptionDetails {
@@ -2901,7 +2974,6 @@ class $ClusterOperationsConfig {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : CmHybridConfig
 /// - displayvideo:v2 : CmHybridConfig
 /// - displayvideo:v3 : CmHybridConfig
 class $CmHybridConfig {
@@ -2910,6 +2982,12 @@ class $CmHybridConfig {
   ///
   /// Required. Immutable.
   core.String? cmAccountId;
+
+  /// The set of CM360 Advertiser IDs sharing the CM360 Floodlight
+  /// configuration.
+  ///
+  /// Output only.
+  core.List<core.String>? cmAdvertiserIds;
 
   /// ID of the CM360 Floodlight configuration linked with the DV360 advertiser.
   ///
@@ -2940,6 +3018,7 @@ class $CmHybridConfig {
 
   $CmHybridConfig({
     this.cmAccountId,
+    this.cmAdvertiserIds,
     this.cmFloodlightConfigId,
     this.cmFloodlightLinkingAuthorized,
     this.cmSyncableSiteIds,
@@ -2951,6 +3030,11 @@ class $CmHybridConfig {
       : this(
           cmAccountId: json_.containsKey('cmAccountId')
               ? json_['cmAccountId'] as core.String
+              : null,
+          cmAdvertiserIds: json_.containsKey('cmAdvertiserIds')
+              ? (json_['cmAdvertiserIds'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
               : null,
           cmFloodlightConfigId: json_.containsKey('cmFloodlightConfigId')
               ? json_['cmFloodlightConfigId'] as core.String
@@ -2976,6 +3060,7 @@ class $CmHybridConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cmAccountId != null) 'cmAccountId': cmAccountId!,
+        if (cmAdvertiserIds != null) 'cmAdvertiserIds': cmAdvertiserIds!,
         if (cmFloodlightConfigId != null)
           'cmFloodlightConfigId': cmFloodlightConfigId!,
         if (cmFloodlightLinkingAuthorized != null)
@@ -2990,7 +3075,6 @@ class $CmHybridConfig {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : CmTrackingAd
 /// - displayvideo:v2 : CmTrackingAd
 /// - displayvideo:v3 : CmTrackingAd
 class $CmTrackingAd {
@@ -3093,7 +3177,6 @@ class $Color {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : CombinedAudience
 /// - displayvideo:v2 : CombinedAudience
 /// - displayvideo:v3 : CombinedAudience
 class $CombinedAudience {
@@ -3143,7 +3226,6 @@ class $CombinedAudience {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : CombinedAudienceTargetingSetting
 /// - displayvideo:v2 : CombinedAudienceTargetingSetting
 /// - displayvideo:v3 : CombinedAudienceTargetingSetting
 class $CombinedAudienceTargetingSetting {
@@ -3315,20 +3397,21 @@ class $ConditionExpectation {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : Consent
 /// - displayvideo:v2 : Consent
 /// - displayvideo:v3 : Consent
 class $Consent {
   /// Represents consent for ad personalization.
   /// Possible string values are:
-  /// - "CONSENT_STATUS_UNSPECIFIED" : Consent is not specified.
+  /// - "CONSENT_STATUS_UNSPECIFIED" : Type value is not specified or is unknown
+  /// in this version.
   /// - "CONSENT_STATUS_GRANTED" : Consent is granted.
   /// - "CONSENT_STATUS_DENIED" : Consent is denied.
   core.String? adPersonalization;
 
   /// Represents consent for ad user data.
   /// Possible string values are:
-  /// - "CONSENT_STATUS_UNSPECIFIED" : Consent is not specified.
+  /// - "CONSENT_STATUS_UNSPECIFIED" : Type value is not specified or is unknown
+  /// in this version.
   /// - "CONSENT_STATUS_GRANTED" : Consent is granted.
   /// - "CONSENT_STATUS_DENIED" : Consent is denied.
   core.String? adUserData;
@@ -3356,7 +3439,6 @@ class $Consent {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : ContactInfo
 /// - displayvideo:v2 : ContactInfo
 /// - displayvideo:v3 : ContactInfo
 class $ContactInfo {
@@ -3449,7 +3531,6 @@ class $ContactInfo {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : ContentDurationAssignedTargetingOptionDetails
 /// - displayvideo:v2 : ContentDurationAssignedTargetingOptionDetails
 /// - displayvideo:v3 : ContentDurationAssignedTargetingOptionDetails
 class $ContentDurationAssignedTargetingOptionDetails {
@@ -3498,7 +3579,6 @@ class $ContentDurationAssignedTargetingOptionDetails {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : ContentDurationTargetingOptionDetails
 /// - displayvideo:v2 : ContentDurationTargetingOptionDetails
 /// - displayvideo:v3 : ContentDurationTargetingOptionDetails
 class $ContentDurationTargetingOptionDetails {
@@ -3536,7 +3616,6 @@ class $ContentDurationTargetingOptionDetails {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : ContentGenreAssignedTargetingOptionDetails
 /// - displayvideo:v2 : ContentGenreAssignedTargetingOptionDetails
 /// - displayvideo:v3 : ContentGenreAssignedTargetingOptionDetails
 class $ContentGenreAssignedTargetingOptionDetails {
@@ -3582,7 +3661,6 @@ class $ContentGenreAssignedTargetingOptionDetails {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : ContentGenreTargetingOptionDetails
 /// - displayvideo:v2 : ContentGenreTargetingOptionDetails
 /// - displayvideo:v3 : ContentGenreTargetingOptionDetails
 class $ContentGenreTargetingOptionDetails {
@@ -3673,7 +3751,6 @@ class $ContentInstreamPositionAssignedTargetingOptionDetails {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : ContentInstreamPositionTargetingOptionDetails
 /// - displayvideo:v2 : ContentInstreamPositionTargetingOptionDetails
 /// - displayvideo:v3 : ContentInstreamPositionTargetingOptionDetails
 class $ContentInstreamPositionTargetingOptionDetails {
@@ -3781,7 +3858,6 @@ class $ContentOutstreamPositionAssignedTargetingOptionDetails {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : ContentOutstreamPositionTargetingOptionDetails
 /// - displayvideo:v2 : ContentOutstreamPositionTargetingOptionDetails
 /// - displayvideo:v3 : ContentOutstreamPositionTargetingOptionDetails
 class $ContentOutstreamPositionTargetingOptionDetails {
@@ -3825,7 +3901,6 @@ class $ContentOutstreamPositionTargetingOptionDetails {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : ContentStreamTypeAssignedTargetingOptionDetails
 /// - displayvideo:v2 : ContentStreamTypeAssignedTargetingOptionDetails
 /// - displayvideo:v3 : ContentStreamTypeAssignedTargetingOptionDetails
 class $ContentStreamTypeAssignedTargetingOptionDetails {
@@ -3869,7 +3944,6 @@ class $ContentStreamTypeAssignedTargetingOptionDetails {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : ContentStreamTypeTargetingOptionDetails
 /// - displayvideo:v2 : ContentStreamTypeTargetingOptionDetails
 /// - displayvideo:v3 : ContentStreamTypeTargetingOptionDetails
 class $ContentStreamTypeTargetingOptionDetails {
@@ -3902,6 +3976,69 @@ class $ContentStreamTypeTargetingOptionDetails {
 
 /// Used by:
 ///
+/// - firebaseappdistribution:v1 : GdataContentTypeInfo
+/// - walletobjects:v1 : ContentTypeInfo
+class $ContentTypeInfo {
+  /// Scotty's best guess of what the content type of the file is.
+  core.String? bestGuess;
+
+  /// The content type of the file derived by looking at specific bytes (i.e.
+  /// "magic bytes") of the actual file.
+  core.String? fromBytes;
+
+  /// The content type of the file derived from the file extension of the
+  /// original file name used by the client.
+  core.String? fromFileName;
+
+  /// The content type of the file as specified in the request headers,
+  /// multipart headers, or RUPIO start request.
+  core.String? fromHeader;
+
+  /// The content type of the file derived from the file extension of the URL
+  /// path.
+  ///
+  /// The URL path is assumed to represent a file name (which is typically only
+  /// true for agents that are providing a REST API).
+  core.String? fromUrlPath;
+
+  $ContentTypeInfo({
+    this.bestGuess,
+    this.fromBytes,
+    this.fromFileName,
+    this.fromHeader,
+    this.fromUrlPath,
+  });
+
+  $ContentTypeInfo.fromJson(core.Map json_)
+      : this(
+          bestGuess: json_.containsKey('bestGuess')
+              ? json_['bestGuess'] as core.String
+              : null,
+          fromBytes: json_.containsKey('fromBytes')
+              ? json_['fromBytes'] as core.String
+              : null,
+          fromFileName: json_.containsKey('fromFileName')
+              ? json_['fromFileName'] as core.String
+              : null,
+          fromHeader: json_.containsKey('fromHeader')
+              ? json_['fromHeader'] as core.String
+              : null,
+          fromUrlPath: json_.containsKey('fromUrlPath')
+              ? json_['fromUrlPath'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bestGuess != null) 'bestGuess': bestGuess!,
+        if (fromBytes != null) 'fromBytes': fromBytes!,
+        if (fromFileName != null) 'fromFileName': fromFileName!,
+        if (fromHeader != null) 'fromHeader': fromHeader!,
+        if (fromUrlPath != null) 'fromUrlPath': fromUrlPath!,
+      };
+}
+
+/// Used by:
+///
 /// - aiplatform:v1 : GoogleCloudAiplatformV1AddContextChildrenRequest
 /// - aiplatform:v1 : GoogleCloudAiplatformV1RemoveContextChildrenRequest
 class $ContextChildrenRequest {
@@ -3928,7 +4065,6 @@ class $ContextChildrenRequest {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : CounterEvent
 /// - displayvideo:v2 : CounterEvent
 /// - displayvideo:v3 : CounterEvent
 class $CounterEvent {
@@ -3963,7 +4099,6 @@ class $CounterEvent {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : CreateAssetRequest
 /// - displayvideo:v2 : CreateAssetRequest
 /// - displayvideo:v3 : CreateAssetRequest
 class $CreateAssetRequest {
@@ -4193,7 +4328,6 @@ class $CryptoKeyVersionTemplate {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : CustomBiddingScriptRef
 /// - displayvideo:v2 : CustomBiddingScriptRef
 /// - displayvideo:v3 : CustomBiddingScriptRef
 class $CustomBiddingScriptRef {
@@ -4257,7 +4391,6 @@ class $CustomLabel {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : CustomList
 /// - displayvideo:v2 : CustomList
 /// - displayvideo:v3 : CustomList
 class $CustomList {
@@ -4306,7 +4439,6 @@ class $CustomList {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : CustomListTargetingSetting
 /// - displayvideo:v2 : CustomListTargetingSetting
 /// - displayvideo:v3 : CustomListTargetingSetting
 class $CustomListTargetingSetting {
@@ -4337,6 +4469,7 @@ class $CustomListTargetingSetting {
 ///
 /// - admob:v1 : Date
 /// - adsense:v2 : Date
+/// - aiplatform:v1 : GoogleTypeDate
 /// - androidmanagement:v1 : Date
 /// - appengine:v1 : Date
 /// - billingbudgets:v1 : GoogleTypeDate
@@ -4352,7 +4485,6 @@ class $CustomListTargetingSetting {
 /// - composer:v1 : Date
 /// - content:v2.1 : Date
 /// - contentwarehouse:v1 : GoogleTypeDate
-/// - displayvideo:v1 : Date
 /// - displayvideo:v2 : Date
 /// - displayvideo:v3 : Date
 /// - dlp:v2 : GoogleTypeDate
@@ -4410,7 +4542,6 @@ class $Date {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : DayAndTimeAssignedTargetingOptionDetails
 /// - displayvideo:v2 : DayAndTimeAssignedTargetingOptionDetails
 /// - displayvideo:v3 : DayAndTimeAssignedTargetingOptionDetails
 class $DayAndTimeAssignedTargetingOptionDetails {
@@ -4747,7 +4878,6 @@ class $DeploymentOccurrence {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : DeviceMakeModelAssignedTargetingOptionDetails
 /// - displayvideo:v2 : DeviceMakeModelAssignedTargetingOptionDetails
 /// - displayvideo:v3 : DeviceMakeModelAssignedTargetingOptionDetails
 class $DeviceMakeModelAssignedTargetingOptionDetails {
@@ -4793,7 +4923,6 @@ class $DeviceMakeModelAssignedTargetingOptionDetails {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : DeviceMakeModelTargetingOptionDetails
 /// - displayvideo:v2 : DeviceMakeModelTargetingOptionDetails
 /// - displayvideo:v3 : DeviceMakeModelTargetingOptionDetails
 class $DeviceMakeModelTargetingOptionDetails {
@@ -4874,7 +5003,6 @@ class $DeviceTypeAssignedTargetingOptionDetails {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : DeviceTypeTargetingOptionDetails
 /// - displayvideo:v2 : DeviceTypeTargetingOptionDetails
 /// - displayvideo:v3 : DeviceTypeTargetingOptionDetails
 class $DeviceTypeTargetingOptionDetails {
@@ -4904,6 +5032,38 @@ class $DeviceTypeTargetingOptionDetails {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (deviceType != null) 'deviceType': deviceType!,
+      };
+}
+
+/// Used by:
+///
+/// - firebaseappdistribution:v1 : GdataDiffVersionResponse
+/// - walletobjects:v1 : DiffVersionResponse
+class $DiffVersionResponse {
+  /// The total size of the server object.
+  core.String? objectSizeBytes;
+
+  /// The version of the object stored at the server.
+  core.String? objectVersion;
+
+  $DiffVersionResponse({
+    this.objectSizeBytes,
+    this.objectVersion,
+  });
+
+  $DiffVersionResponse.fromJson(core.Map json_)
+      : this(
+          objectSizeBytes: json_.containsKey('objectSizeBytes')
+              ? json_['objectSizeBytes'] as core.String
+              : null,
+          objectVersion: json_.containsKey('objectVersion')
+              ? json_['objectVersion'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (objectSizeBytes != null) 'objectSizeBytes': objectSizeBytes!,
+        if (objectVersion != null) 'objectVersion': objectVersion!,
       };
 }
 
@@ -5060,7 +5220,6 @@ class $DimensionValue {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : Dimensions
 /// - displayvideo:v2 : Dimensions
 /// - displayvideo:v3 : Dimensions
 class $Dimensions {
@@ -5380,7 +5539,6 @@ class $DoubleRange {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : DoubleVerifyAppStarRating
 /// - displayvideo:v2 : DoubleVerifyAppStarRating
 /// - displayvideo:v3 : DoubleVerifyAppStarRating
 class $DoubleVerifyAppStarRating {
@@ -5425,7 +5583,6 @@ class $DoubleVerifyAppStarRating {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : DoubleVerifyBrandSafetyCategories
 /// - displayvideo:v2 : DoubleVerifyBrandSafetyCategories
 /// - displayvideo:v3 : DoubleVerifyBrandSafetyCategories
 class $DoubleVerifyBrandSafetyCategories {
@@ -5476,7 +5633,6 @@ class $DoubleVerifyBrandSafetyCategories {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : DoubleVerifyDisplayViewability
 /// - displayvideo:v2 : DoubleVerifyDisplayViewability
 /// - displayvideo:v3 : DoubleVerifyDisplayViewability
 class $DoubleVerifyDisplayViewability {
@@ -5537,7 +5693,6 @@ class $DoubleVerifyDisplayViewability {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : DoubleVerifyFraudInvalidTraffic
 /// - displayvideo:v2 : DoubleVerifyFraudInvalidTraffic
 /// - displayvideo:v3 : DoubleVerifyFraudInvalidTraffic
 class $DoubleVerifyFraudInvalidTraffic {
@@ -5583,7 +5738,6 @@ class $DoubleVerifyFraudInvalidTraffic {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : DoubleVerifyVideoViewability
 /// - displayvideo:v2 : DoubleVerifyVideoViewability
 /// - displayvideo:v3 : DoubleVerifyVideoViewability
 class $DoubleVerifyVideoViewability {
@@ -5664,6 +5818,44 @@ class $DoubleVerifyVideoViewability {
           'playerImpressionRate': playerImpressionRate!,
         if (videoIab != null) 'videoIab': videoIab!,
         if (videoViewableRate != null) 'videoViewableRate': videoViewableRate!,
+      };
+}
+
+/// Used by:
+///
+/// - firebaseappdistribution:v1 : GdataDownloadParameters
+/// - walletobjects:v1 : DownloadParameters
+class $DownloadParameters {
+  /// A boolean to be returned in the response to Scotty.
+  ///
+  /// Allows/disallows gzip encoding of the payload content when the server
+  /// thinks it's advantageous (hence, does not guarantee compression) which
+  /// allows Scotty to GZip the response to the client.
+  core.bool? allowGzipCompression;
+
+  /// Determining whether or not Apiary should skip the inclusion of any
+  /// Content-Range header on its response to Scotty.
+  core.bool? ignoreRange;
+
+  $DownloadParameters({
+    this.allowGzipCompression,
+    this.ignoreRange,
+  });
+
+  $DownloadParameters.fromJson(core.Map json_)
+      : this(
+          allowGzipCompression: json_.containsKey('allowGzipCompression')
+              ? json_['allowGzipCompression'] as core.bool
+              : null,
+          ignoreRange: json_.containsKey('ignoreRange')
+              ? json_['ignoreRange'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allowGzipCompression != null)
+          'allowGzipCompression': allowGzipCompression!,
+        if (ignoreRange != null) 'ignoreRange': ignoreRange!,
       };
 }
 
@@ -5823,7 +6015,6 @@ class $DynamicListenerState {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : EditCustomerMatchMembersResponse
 /// - displayvideo:v2 : EditCustomerMatchMembersResponse
 /// - displayvideo:v3 : EditCustomerMatchMembersResponse
 class $EditCustomerMatchMembersResponse {
@@ -5852,7 +6043,6 @@ class $EditCustomerMatchMembersResponse {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : EditGuaranteedOrderReadAccessorsRequest
 /// - displayvideo:v2 : EditGuaranteedOrderReadAccessorsRequest
 /// - displayvideo:v3 : EditGuaranteedOrderReadAccessorsRequest
 class $EditGuaranteedOrderReadAccessorsRequest {
@@ -5912,7 +6102,6 @@ class $EditGuaranteedOrderReadAccessorsRequest {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : EditGuaranteedOrderReadAccessorsResponse
 /// - displayvideo:v2 : EditGuaranteedOrderReadAccessorsResponse
 /// - displayvideo:v3 : EditGuaranteedOrderReadAccessorsResponse
 class $EditGuaranteedOrderReadAccessorsResponse {
@@ -5949,7 +6138,6 @@ class $EditGuaranteedOrderReadAccessorsResponse {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : EditInventorySourceReadWriteAccessorsRequestAdvertisersUpdate
 /// - displayvideo:v2 : EditInventorySourceReadWriteAccessorsRequestAdvertisersUpdate
 /// - displayvideo:v3 : EditInventorySourceReadWriteAccessorsRequestAdvertisersUpdate
 class $EditInventorySourceReadWriteAccessorsRequestAdvertisersUpdate {
@@ -6026,6 +6214,7 @@ class $EgressSource {
 /// - accessapproval:v1 : InvalidateApprovalRequestMessage
 /// - accesscontextmanager:v1 : CancelOperationRequest
 /// - accesscontextmanager:v1 : Empty
+/// - admin:directory_v1 : ChangeChromeOsDeviceStatusSucceeded
 /// - admin:directory_v1 : Empty
 /// - adsense:v2 : Empty
 /// - aiplatform:v1 : GoogleCloudAiplatformV1AddContextArtifactsAndExecutionsResponse
@@ -6048,6 +6237,7 @@ class $EgressSource {
 /// - aiplatform:v1 : GoogleCloudAiplatformV1StartNotebookRuntimeRequest
 /// - aiplatform:v1 : GoogleCloudAiplatformV1StopTrialRequest
 /// - aiplatform:v1 : GoogleCloudAiplatformV1SyncFeatureViewRequest
+/// - aiplatform:v1 : GoogleCloudAiplatformV1UpgradeNotebookRuntimeRequest
 /// - aiplatform:v1 : GoogleCloudAiplatformV1UpsertDatapointsResponse
 /// - aiplatform:v1 : GoogleCloudAiplatformV1WriteFeatureValuesResponse
 /// - aiplatform:v1 : GoogleCloudAiplatformV1WriteTensorboardExperimentDataResponse
@@ -6055,7 +6245,6 @@ class $EgressSource {
 /// - aiplatform:v1 : GoogleProtobufEmpty
 /// - alloydb:v1 : CancelOperationRequest
 /// - alloydb:v1 : Empty
-/// - analyticshub:v1 : DcrExchangeConfig
 /// - analyticshub:v1 : DefaultExchangeConfig
 /// - analyticshub:v1 : Empty
 /// - analyticshub:v1 : RefreshSubscriptionRequest
@@ -6064,16 +6253,19 @@ class $EgressSource {
 /// - androiddeviceprovisioning:v1 : Empty
 /// - androidmanagement:v1 : Empty
 /// - androidmanagement:v1 : StopLostModeParams
-/// - androidpublisher:v3 : ActivateBasePlanRequest
-/// - androidpublisher:v3 : ActivateSubscriptionOfferRequest
-/// - androidpublisher:v3 : ArchiveSubscriptionRequest
-/// - androidpublisher:v3 : DeactivateBasePlanRequest
-/// - androidpublisher:v3 : DeactivateSubscriptionOfferRequest
+/// - androidpublisher:v3 : AddTargetingResponse
+/// - androidpublisher:v3 : CancelAppRecoveryRequest
+/// - androidpublisher:v3 : CancelAppRecoveryResponse
+/// - androidpublisher:v3 : DeployAppRecoveryRequest
+/// - androidpublisher:v3 : DeployAppRecoveryResponse
 /// - androidpublisher:v3 : DeveloperInitiatedCancellation
 /// - androidpublisher:v3 : ExternalTransactionTestPurchase
 /// - androidpublisher:v3 : FullRefund
 /// - androidpublisher:v3 : MigrateBasePlanPricesResponse
 /// - androidpublisher:v3 : ReplacementCancellation
+/// - androidpublisher:v3 : RevocationContextProratedRefund
+/// - androidpublisher:v3 : RevokeSubscriptionPurchaseResponse
+/// - androidpublisher:v3 : SafetyLabelsUpdateResponse
 /// - androidpublisher:v3 : SystemInitiatedCancellation
 /// - androidpublisher:v3 : TestPurchase
 /// - apigateway:v1 : ApigatewayCancelOperationRequest
@@ -6099,12 +6291,17 @@ class $EgressSource {
 /// - apikeys:v2 : V2UndeleteKeyRequest
 /// - appengine:v1 : Empty
 /// - appengine:v1 : RepairApplicationRequest
+/// - apphub:v1 : CancelOperationRequest
+/// - apphub:v1 : DetachServiceProjectAttachmentRequest
+/// - apphub:v1 : DetachServiceProjectAttachmentResponse
+/// - apphub:v1 : Empty
 /// - artifactregistry:v1 : Empty
 /// - artifactregistry:v1 : UploadAptArtifactRequest
 /// - artifactregistry:v1 : UploadGoModuleRequest
 /// - artifactregistry:v1 : UploadGoogetArtifactRequest
 /// - artifactregistry:v1 : UploadYumArtifactRequest
 /// - assuredworkloads:v1 : GoogleCloudAssuredworkloadsV1AcknowledgeViolationResponse
+/// - assuredworkloads:v1 : GoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse
 /// - assuredworkloads:v1 : GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse
 /// - assuredworkloads:v1 : GoogleProtobufEmpty
 /// - authorizedbuyersmarketplace:v1 : ActivateClientRequest
@@ -6129,17 +6326,16 @@ class $EgressSource {
 /// - baremetalsolution:v2 : StartInstanceRequest
 /// - baremetalsolution:v2 : StopInstanceRequest
 /// - batch:v1 : CancelOperationRequest
-/// - batch:v1 : CloudLoggingOption
 /// - batch:v1 : Empty
 /// - beyondcorp:v1 : Empty
 /// - beyondcorp:v1 : GoogleLongrunningCancelOperationRequest
+/// - bigqueryconnection:v1 : Empty
 /// - bigquerydatapolicy:v1 : Empty
 /// - bigquerydatatransfer:v1 : CheckValidCredsRequest
 /// - bigquerydatatransfer:v1 : Empty
 /// - bigqueryreservation:v1 : Empty
 /// - bigtableadmin:v2 : Empty
 /// - bigtableadmin:v2 : GenerateConsistencyTokenRequest
-/// - bigtableadmin:v2 : StandardReadRemoteWrites
 /// - bigtableadmin:v2 : UndeleteTableRequest
 /// - billingbudgets:v1 : GoogleCloudBillingBudgetsV1LastPeriodAmount
 /// - billingbudgets:v1 : GoogleProtobufEmpty
@@ -6149,6 +6345,7 @@ class $EgressSource {
 /// - books:v1 : Empty
 /// - certificatemanager:v1 : CancelOperationRequest
 /// - certificatemanager:v1 : Empty
+/// - chat:v1 : CompleteImportSpaceRequest
 /// - chat:v1 : Empty
 /// - chat:v1 : GoogleAppsCardV1Divider
 /// - chromemanagement:v1 : GoogleChromeManagementV1TelemetryAudioSevereUnderrunEvent
@@ -6190,8 +6387,15 @@ class $EgressSource {
 /// - clouddeploy:v1 : TerminateJobRunRequest
 /// - clouddeploy:v1 : TerminateJobRunResponse
 /// - clouddeploy:v1 : VerifyJob
+/// - cloudfunctions:v1 : AutomaticUpdatePolicy
 /// - cloudfunctions:v1 : Retry
+/// - cloudfunctions:v2 : AbortFunctionUpgradeRequest
+/// - cloudfunctions:v2 : AutomaticUpdatePolicy
+/// - cloudfunctions:v2 : CommitFunctionUpgradeRequest
 /// - cloudfunctions:v2 : GenerateDownloadUrlRequest
+/// - cloudfunctions:v2 : RedirectFunctionUpgradeTrafficRequest
+/// - cloudfunctions:v2 : RollbackFunctionUpgradeTrafficRequest
+/// - cloudfunctions:v2 : SetupFunctionUpgradeConfigRequest
 /// - cloudidentity:v1 : CancelUserInvitationRequest
 /// - cloudidentity:v1 : SendUserInvitationRequest
 /// - cloudkms:v1 : DestroyCryptoKeyVersionRequest
@@ -6226,16 +6430,20 @@ class $EgressSource {
 /// - compute:v1 : ResourcePolicyDiskConsistencyGroupPolicy
 /// - connectors:v1 : CancelOperationRequest
 /// - connectors:v1 : Empty
+/// - connectors:v1 : ListenEventResponse
 /// - connectors:v1 : RefreshConnectionSchemaMetadataRequest
 /// - connectors:v1 : RepairEventingRequest
 /// - connectors:v1 : RetryEventSubscriptionRequest
 /// - connectors:v2 : Empty
+/// - connectors:v2 : ExchangeAuthCodeRequest
+/// - connectors:v2 : RefreshAccessTokenRequest
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1HoldData
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1InterruptionData
 /// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1SilenceData
 /// - contactcenterinsights:v1 : GoogleProtobufEmpty
 /// - container:v1 : CompleteNodePoolUpgradeRequest
 /// - container:v1 : Empty
+/// - containeranalysis:v1 : CloudStorageLocation
 /// - containeranalysis:v1 : Empty
 /// - content:v2.1 : ActivateBuyOnGoogleProgramRequest
 /// - content:v2.1 : CaptureOrderRequest
@@ -6314,9 +6522,6 @@ class $EgressSource {
 /// - dialogflow:v3 : GoogleCloudDialogflowCxV3StopExperimentRequest
 /// - dialogflow:v3 : GoogleCloudDialogflowCxV3TrainFlowRequest
 /// - dialogflow:v3 : GoogleProtobufEmpty
-/// - displayvideo:v1 : ActivateManualTriggerRequest
-/// - displayvideo:v1 : DeactivateManualTriggerRequest
-/// - displayvideo:v1 : Empty
 /// - displayvideo:v2 : ActivateManualTriggerRequest
 /// - displayvideo:v2 : DeactivateManualTriggerRequest
 /// - displayvideo:v2 : Empty
@@ -6551,7 +6756,9 @@ class $EgressSource {
 /// - recaptchaenterprise:v1 : GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentResponse
 /// - recaptchaenterprise:v1 : GoogleCloudRecaptchaenterpriseV1FirewallActionAllowAction
 /// - recaptchaenterprise:v1 : GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction
+/// - recaptchaenterprise:v1 : GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptAction
 /// - recaptchaenterprise:v1 : GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction
+/// - recaptchaenterprise:v1 : GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesResponse
 /// - recaptchaenterprise:v1 : GoogleProtobufEmpty
 /// - redis:v1 : Empty
 /// - retail:v2 : GoogleCloudRetailV2PauseModelRequest
@@ -6559,6 +6766,7 @@ class $EgressSource {
 /// - retail:v2 : GoogleCloudRetailV2TuneModelRequest
 /// - retail:v2 : GoogleProtobufEmpty
 /// - run:v1 : CancelExecutionRequest
+/// - run:v1 : Empty
 /// - run:v2 : GoogleProtobufEmpty
 /// - runtimeconfig:v1 : CancelOperationRequest
 /// - runtimeconfig:v1 : Empty
@@ -6598,18 +6806,34 @@ class $EgressSource {
 /// - tpu:v1 : Empty
 /// - tpu:v1 : StartNodeRequest
 /// - tpu:v1 : StopNodeRequest
+/// - tpu:v2 : AcceptedData
+/// - tpu:v2 : ActiveData
+/// - tpu:v2 : CreatingData
+/// - tpu:v2 : DeletingData
 /// - tpu:v2 : Empty
 /// - tpu:v2 : GenerateServiceIdentityRequest
+/// - tpu:v2 : ProvisioningData
+/// - tpu:v2 : ResetQueuedResourceRequest
+/// - tpu:v2 : Spot
 /// - tpu:v2 : StartNodeRequest
 /// - tpu:v2 : StopNodeRequest
+/// - tpu:v2 : SuspendedData
+/// - tpu:v2 : SuspendingData
 /// - trafficdirector:v2 : NullMatch
 /// - trafficdirector:v3 : NullMatch
 /// - transcoder:v1 : Aes128Encryption
 /// - transcoder:v1 : Clearkey
 /// - transcoder:v1 : Empty
 /// - transcoder:v1 : Fairplay
+/// - transcoder:v1 : H264ColorFormatHLG
+/// - transcoder:v1 : H264ColorFormatSDR
+/// - transcoder:v1 : H265ColorFormatHDR10
+/// - transcoder:v1 : H265ColorFormatHLG
+/// - transcoder:v1 : H265ColorFormatSDR
 /// - transcoder:v1 : Playready
 /// - transcoder:v1 : SampleAesEncryption
+/// - transcoder:v1 : Vp9ColorFormatHLG
+/// - transcoder:v1 : Vp9ColorFormatSDR
 /// - transcoder:v1 : Widevine
 /// - translate:v3 : CancelOperationRequest
 /// - translate:v3 : Empty
@@ -6641,6 +6865,7 @@ class $EgressSource {
 /// - vmmigration:v1 : ShuttingDownSourceVMStep
 /// - vmmigration:v1 : StartMigrationRequest
 /// - vmwareengine:v1 : Empty
+/// - walletobjects:v1 : TransitObjectUploadRotatingBarcodeValuesResponse
 /// - webrisk:v1 : GoogleLongrunningCancelOperationRequest
 /// - webrisk:v1 : GoogleProtobufEmpty
 /// - websecurityscanner:v1 : Empty
@@ -6651,6 +6876,7 @@ class $EgressSource {
 /// - workloadmanager:v1 : CancelOperationRequest
 /// - workloadmanager:v1 : Empty
 /// - workloadmanager:v1 : WriteInsightResponse
+/// - workspaceevents:v1 : ReactivateSubscriptionRequest
 /// - workstations:v1 : CancelOperationRequest
 /// - workstations:v1 : GoogleProtobufEmpty
 /// - youtube:v3 : TestItemTestItemSnippet
@@ -6864,7 +7090,6 @@ class $EnvironmentAssignedTargetingOptionDetails {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : EnvironmentTargetingOptionDetails
 /// - displayvideo:v2 : EnvironmentTargetingOptionDetails
 /// - displayvideo:v3 : EnvironmentTargetingOptionDetails
 class $EnvironmentTargetingOptionDetails {
@@ -7014,6 +7239,12 @@ class $ExchangeAssignedTargetingOptionDetails {
   /// - "EXCHANGE_CONNATIX" : Connatix.
   /// - "EXCHANGE_RESET_DIGITAL" : Reset Digital.
   /// - "EXCHANGE_HIVESTACK" : Hivestack.
+  /// - "EXCHANGE_APPLOVIN_GBID" : AppLovin MAX.
+  /// - "EXCHANGE_FYBER_GBID" : DT Fairbid.
+  /// - "EXCHANGE_UNITY_GBID" : Unity LevelPlay.
+  /// - "EXCHANGE_CHARTBOOST_GBID" : Chartboost Mediation.
+  /// - "EXCHANGE_ADMOST_GBID" : AdMost.
+  /// - "EXCHANGE_TOPON_GBID" : TopOn.
   core.String? exchange;
 
   $ExchangeAssignedTargetingOptionDetails({
@@ -7034,7 +7265,6 @@ class $ExchangeAssignedTargetingOptionDetails {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : ExchangeConfigEnabledExchange
 /// - displayvideo:v2 : ExchangeConfigEnabledExchange
 /// - displayvideo:v3 : ExchangeConfigEnabledExchange
 class $ExchangeConfigEnabledExchange {
@@ -7117,6 +7347,12 @@ class $ExchangeConfigEnabledExchange {
   /// - "EXCHANGE_CONNATIX" : Connatix.
   /// - "EXCHANGE_RESET_DIGITAL" : Reset Digital.
   /// - "EXCHANGE_HIVESTACK" : Hivestack.
+  /// - "EXCHANGE_APPLOVIN_GBID" : AppLovin MAX.
+  /// - "EXCHANGE_FYBER_GBID" : DT Fairbid.
+  /// - "EXCHANGE_UNITY_GBID" : Unity LevelPlay.
+  /// - "EXCHANGE_CHARTBOOST_GBID" : Chartboost Mediation.
+  /// - "EXCHANGE_ADMOST_GBID" : AdMost.
+  /// - "EXCHANGE_TOPON_GBID" : TopOn.
   core.String? exchange;
 
   /// Agency ID of Google Ad Manager.
@@ -7174,7 +7410,6 @@ class $ExchangeConfigEnabledExchange {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : ExchangeReviewStatus
 /// - displayvideo:v2 : ExchangeReviewStatus
 /// - displayvideo:v3 : ExchangeReviewStatus
 class $ExchangeReviewStatus {
@@ -7257,6 +7492,12 @@ class $ExchangeReviewStatus {
   /// - "EXCHANGE_CONNATIX" : Connatix.
   /// - "EXCHANGE_RESET_DIGITAL" : Reset Digital.
   /// - "EXCHANGE_HIVESTACK" : Hivestack.
+  /// - "EXCHANGE_APPLOVIN_GBID" : AppLovin MAX.
+  /// - "EXCHANGE_FYBER_GBID" : DT Fairbid.
+  /// - "EXCHANGE_UNITY_GBID" : Unity LevelPlay.
+  /// - "EXCHANGE_CHARTBOOST_GBID" : Chartboost Mediation.
+  /// - "EXCHANGE_ADMOST_GBID" : AdMost.
+  /// - "EXCHANGE_TOPON_GBID" : TopOn.
   core.String? exchange;
 
   /// Status of the exchange review.
@@ -7291,7 +7532,6 @@ class $ExchangeReviewStatus {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : ExchangeTargetingOptionDetails
 /// - displayvideo:v2 : ExchangeTargetingOptionDetails
 /// - displayvideo:v3 : ExchangeTargetingOptionDetails
 class $ExchangeTargetingOptionDetails {
@@ -7376,6 +7616,12 @@ class $ExchangeTargetingOptionDetails {
   /// - "EXCHANGE_CONNATIX" : Connatix.
   /// - "EXCHANGE_RESET_DIGITAL" : Reset Digital.
   /// - "EXCHANGE_HIVESTACK" : Hivestack.
+  /// - "EXCHANGE_APPLOVIN_GBID" : AppLovin MAX.
+  /// - "EXCHANGE_FYBER_GBID" : DT Fairbid.
+  /// - "EXCHANGE_UNITY_GBID" : Unity LevelPlay.
+  /// - "EXCHANGE_CHARTBOOST_GBID" : Chartboost Mediation.
+  /// - "EXCHANGE_ADMOST_GBID" : AdMost.
+  /// - "EXCHANGE_TOPON_GBID" : TopOn.
   core.String? exchange;
 
   $ExchangeTargetingOptionDetails({
@@ -7428,7 +7674,6 @@ class $ExecAction {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : ExitEvent
 /// - displayvideo:v2 : ExitEvent
 /// - displayvideo:v3 : ExitEvent
 class $ExitEvent {
@@ -7555,9 +7800,40 @@ class $Exponential {
 
 /// Used by:
 ///
+/// - vault:v1 : CalendarExportOptions
+/// - vault:v1 : VoiceExportOptions
+class $ExportOptions00 {
+  /// The file format for exported text messages.
+  /// Possible string values are:
+  /// - "EXPORT_FORMAT_UNSPECIFIED" : No export format specified.
+  /// - "MBOX" : Export as MBOX. Only available for Gmail, Groups, Hangouts and
+  /// Voice.
+  /// - "PST" : Export as PST. Only available for Gmail, Groups, Hangouts, Voice
+  /// and Calendar.
+  /// - "ICS" : Export as ICS. Only available for Calendar.
+  core.String? exportFormat;
+
+  $ExportOptions00({
+    this.exportFormat,
+  });
+
+  $ExportOptions00.fromJson(core.Map json_)
+      : this(
+          exportFormat: json_.containsKey('exportFormat')
+              ? json_['exportFormat'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (exportFormat != null) 'exportFormat': exportFormat!,
+      };
+}
+
+/// Used by:
+///
 /// - vault:v1 : GroupsExportOptions
 /// - vault:v1 : HangoutsChatExportOptions
-class $ExportOptions {
+class $ExportOptions01 {
   /// The file format for exported messages.
   /// Possible string values are:
   /// - "EXPORT_FORMAT_UNSPECIFIED" : No export format specified.
@@ -7565,13 +7841,14 @@ class $ExportOptions {
   /// Voice.
   /// - "PST" : Export as PST. Only available for Gmail, Groups, Hangouts, Voice
   /// and Calendar.
+  /// - "ICS" : Export as ICS. Only available for Calendar.
   core.String? exportFormat;
 
-  $ExportOptions({
+  $ExportOptions01({
     this.exportFormat,
   });
 
-  $ExportOptions.fromJson(core.Map json_)
+  $ExportOptions01.fromJson(core.Map json_)
       : this(
           exportFormat: json_.containsKey('exportFormat')
               ? json_['exportFormat'] as core.String
@@ -7591,10 +7868,12 @@ class $ExportOptions {
 /// - apigateway:v1 : ApigatewayExpr
 /// - apigee:v1 : GoogleTypeExpr
 /// - apigeeregistry:v1 : Expr
+/// - apphub:v1 : Expr
 /// - artifactregistry:v1 : Expr
 /// - backupdr:v1 : Expr
 /// - beyondcorp:v1 : GoogleTypeExpr
 /// - bigquery:v2 : Expr
+/// - bigqueryconnection:v1 : Expr
 /// - bigquerydatapolicy:v1 : Expr
 /// - bigtableadmin:v2 : Expr
 /// - binaryauthorization:v1 : Expr
@@ -7845,6 +8124,70 @@ class $FileLocation {
 
 /// Used by:
 ///
+/// - aiplatform:v1 : GoogleCloudAiplatformV1ExportFilterSplit
+/// - aiplatform:v1 : GoogleCloudAiplatformV1FilterSplit
+class $FilterSplit {
+  /// A filter on DataItems of the Dataset.
+  ///
+  /// DataItems that match this filter are used to test the Model. A filter with
+  /// same syntax as the one used in DatasetService.ListDataItems may be used.
+  /// If a single DataItem is matched by more than one of the FilterSplit
+  /// filters, then it is assigned to the first set that applies to it in the
+  /// training, validation, test order.
+  ///
+  /// Required.
+  core.String? testFilter;
+
+  /// A filter on DataItems of the Dataset.
+  ///
+  /// DataItems that match this filter are used to train the Model. A filter
+  /// with same syntax as the one used in DatasetService.ListDataItems may be
+  /// used. If a single DataItem is matched by more than one of the FilterSplit
+  /// filters, then it is assigned to the first set that applies to it in the
+  /// training, validation, test order.
+  ///
+  /// Required.
+  core.String? trainingFilter;
+
+  /// A filter on DataItems of the Dataset.
+  ///
+  /// DataItems that match this filter are used to validate the Model. A filter
+  /// with same syntax as the one used in DatasetService.ListDataItems may be
+  /// used. If a single DataItem is matched by more than one of the FilterSplit
+  /// filters, then it is assigned to the first set that applies to it in the
+  /// training, validation, test order.
+  ///
+  /// Required.
+  core.String? validationFilter;
+
+  $FilterSplit({
+    this.testFilter,
+    this.trainingFilter,
+    this.validationFilter,
+  });
+
+  $FilterSplit.fromJson(core.Map json_)
+      : this(
+          testFilter: json_.containsKey('testFilter')
+              ? json_['testFilter'] as core.String
+              : null,
+          trainingFilter: json_.containsKey('trainingFilter')
+              ? json_['trainingFilter'] as core.String
+              : null,
+          validationFilter: json_.containsKey('validationFilter')
+              ? json_['validationFilter'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (testFilter != null) 'testFilter': testFilter!,
+        if (trainingFilter != null) 'trainingFilter': trainingFilter!,
+        if (validationFilter != null) 'validationFilter': validationFilter!,
+      };
+}
+
+/// Used by:
+///
 /// - containeranalysis:v1 : Fingerprint
 /// - ondemandscanning:v1 : Fingerprint
 class $Fingerprint {
@@ -7895,7 +8238,6 @@ class $Fingerprint {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : FirstAndThirdPartyAudienceTargetingSetting
 /// - displayvideo:v2 : FirstAndThirdPartyAudienceTargetingSetting
 /// - displayvideo:v3 : FirstAndThirdPartyAudienceTargetingSetting
 class $FirstAndThirdPartyAudienceTargetingSetting {
@@ -7971,7 +8313,6 @@ class $FirstAndThirdPartyAudienceTargetingSetting {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : FixedBidStrategy
 /// - displayvideo:v2 : FixedBidStrategy
 /// - displayvideo:v3 : FixedBidStrategy
 class $FixedBidStrategy {
@@ -8120,6 +8461,8 @@ class $FrequencyCap {
   ///
   /// Must be greater than 0. Only applicable to YouTube and Partners resources.
   /// Required when unlimited is `false` and max_impressions is not set.
+  ///
+  /// Optional.
   core.int? maxViews;
 
   /// The time unit in which the frequency cap will be applied.
@@ -8263,7 +8606,6 @@ class $GenderAssignedTargetingOptionDetails {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : GenderTargetingOptionDetails
 /// - displayvideo:v2 : GenderTargetingOptionDetails
 /// - displayvideo:v3 : GenderTargetingOptionDetails
 class $GenderTargetingOptionDetails {
@@ -8322,7 +8664,6 @@ class $GenerateDownloadUrlResponse {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : GeoRegionAssignedTargetingOptionDetails
 /// - displayvideo:v2 : GeoRegionAssignedTargetingOptionDetails
 /// - displayvideo:v3 : GeoRegionAssignedTargetingOptionDetails
 class $GeoRegionAssignedTargetingOptionDetails {
@@ -8417,7 +8758,6 @@ class $GeoRegionAssignedTargetingOptionDetails {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : GeoRegionSearchTerms
 /// - displayvideo:v2 : GeoRegionSearchTerms
 /// - displayvideo:v3 : GeoRegionSearchTerms
 class $GeoRegionSearchTerms {
@@ -8444,7 +8784,6 @@ class $GeoRegionSearchTerms {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : GeoRegionTargetingOptionDetails
 /// - displayvideo:v2 : GeoRegionTargetingOptionDetails
 /// - displayvideo:v3 : GeoRegionTargetingOptionDetails
 class $GeoRegionTargetingOptionDetails {
@@ -8523,6 +8862,7 @@ class $GeoRegionTargetingOptionDetails {
 /// - accesscontextmanager:v1 : GetPolicyOptions
 /// - analyticshub:v1 : GetPolicyOptions
 /// - bigquery:v2 : GetPolicyOptions
+/// - bigqueryconnection:v1 : GetPolicyOptions
 /// - bigquerydatapolicy:v1 : GetPolicyOptions
 /// - bigtableadmin:v2 : GetPolicyOptions
 /// - cloudresourcemanager:v1 : GetPolicyOptions
@@ -8604,7 +8944,6 @@ class $GitSourceContext {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : GoogleAudience
 /// - displayvideo:v2 : GoogleAudience
 /// - displayvideo:v3 : GoogleAudience
 class $GoogleAudience {
@@ -8678,7 +9017,6 @@ class $GoogleAudience {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : GoogleAudienceTargetingSetting
 /// - displayvideo:v2 : GoogleAudienceTargetingSetting
 /// - displayvideo:v3 : GoogleAudienceTargetingSetting
 class $GoogleAudienceTargetingSetting {
@@ -9290,6 +9628,119 @@ class $GoogleCloudDocumentaiV1Vertex {
 
 /// Used by:
 ///
+/// - orgpolicy:v2 : GoogleCloudOrgpolicyV2CustomConstraint
+/// - policysimulator:v1 : GoogleCloudOrgpolicyV2CustomConstraint
+class $GoogleCloudOrgpolicyV2CustomConstraint {
+  /// Allow or deny type.
+  /// Possible string values are:
+  /// - "ACTION_TYPE_UNSPECIFIED" : Unspecified. Results in an error.
+  /// - "ALLOW" : Allowed action type.
+  /// - "DENY" : Deny action type.
+  core.String? actionType;
+
+  /// Org policy condition/expression.
+  ///
+  /// For example: `resource.instanceName.matches("[production|test]_.*_(\d)+")`
+  /// or, `resource.management.auto_upgrade == true` The max length of the
+  /// condition is 1000 characters.
+  core.String? condition;
+
+  /// Detailed information about this custom policy constraint.
+  ///
+  /// The max length of the description is 2000 characters.
+  core.String? description;
+
+  /// One line display name for the UI.
+  ///
+  /// The max length of the display_name is 200 characters.
+  core.String? displayName;
+
+  /// All the operations being applied for this constraint.
+  core.List<core.String>? methodTypes;
+
+  /// Name of the constraint.
+  ///
+  /// This is unique within the organization. Format of the name should be *
+  /// `organizations/{organization_id}/customConstraints/{custom_constraint_id}`
+  /// Example: `organizations/123/customConstraints/custom.createOnlyE2TypeVms`
+  /// The max length is 70 characters and the minimum length is 1. Note that the
+  /// prefix `organizations/{organization_id}/customConstraints/` is not
+  /// counted.
+  ///
+  /// Immutable.
+  core.String? name;
+
+  /// The resource instance type on which this policy applies.
+  ///
+  /// Format will be of the form : `/` Example: *
+  /// `compute.googleapis.com/Instance`.
+  ///
+  /// Immutable.
+  core.List<core.String>? resourceTypes;
+
+  /// The last time this custom constraint was updated.
+  ///
+  /// This represents the last time that the `CreateCustomConstraint` or
+  /// `UpdateCustomConstraint` RPC was called
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  $GoogleCloudOrgpolicyV2CustomConstraint({
+    this.actionType,
+    this.condition,
+    this.description,
+    this.displayName,
+    this.methodTypes,
+    this.name,
+    this.resourceTypes,
+    this.updateTime,
+  });
+
+  $GoogleCloudOrgpolicyV2CustomConstraint.fromJson(core.Map json_)
+      : this(
+          actionType: json_.containsKey('actionType')
+              ? json_['actionType'] as core.String
+              : null,
+          condition: json_.containsKey('condition')
+              ? json_['condition'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+          methodTypes: json_.containsKey('methodTypes')
+              ? (json_['methodTypes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          resourceTypes: json_.containsKey('resourceTypes')
+              ? (json_['resourceTypes'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (actionType != null) 'actionType': actionType!,
+        if (condition != null) 'condition': condition!,
+        if (description != null) 'description': description!,
+        if (displayName != null) 'displayName': displayName!,
+        if (methodTypes != null) 'methodTypes': methodTypes!,
+        if (name != null) 'name': name!,
+        if (resourceTypes != null) 'resourceTypes': resourceTypes!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// Used by:
+///
 /// - paymentsresellersubscription:v1 : GoogleTypeLocalizedText
 /// - places:v1 : GoogleTypeLocalizedText
 class $GoogleTypeLocalizedText {
@@ -9396,7 +9847,6 @@ class $GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : GuaranteedOrderStatus
 /// - displayvideo:v2 : GuaranteedOrderStatus
 /// - displayvideo:v3 : GuaranteedOrderStatus
 class $GuaranteedOrderStatus {
@@ -9673,7 +10123,6 @@ class $HouseholdIncomeAssignedTargetingOptionDetails {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : HouseholdIncomeTargetingOptionDetails
 /// - displayvideo:v2 : HouseholdIncomeTargetingOptionDetails
 /// - displayvideo:v3 : HouseholdIncomeTargetingOptionDetails
 class $HouseholdIncomeTargetingOptionDetails {
@@ -9779,7 +10228,6 @@ class $HttpBody {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : IdFilter
 /// - displayvideo:v2 : IdFilter
 /// - displayvideo:v3 : IdFilter
 class $IdFilter {
@@ -10112,7 +10560,6 @@ class $InstanceGroupManagersApplyUpdatesRequest {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : IntegralAdScience
 /// - displayvideo:v2 : IntegralAdScience
 /// - displayvideo:v3 : IntegralAdScience
 class $IntegralAdScience {
@@ -10326,7 +10773,6 @@ class $IntegralAdScience {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : IntegrationDetails
 /// - displayvideo:v2 : IntegrationDetails
 /// - displayvideo:v3 : IntegrationDetails
 class $IntegrationDetails {
@@ -10369,6 +10815,7 @@ class $IntegrationDetails {
 /// - apigee:v1 : GoogleTypeInterval
 /// - contentwarehouse:v1 : GoogleTypeInterval
 /// - sheets:v4 : Interval
+/// - tpu:v2 : Interval
 /// - versionhistory:v1 : Interval
 class $Interval {
   /// Exclusive end of the interval.
@@ -10410,7 +10857,6 @@ class $Interval {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : InventorySourceAccessorsAdvertiserAccessors
 /// - displayvideo:v2 : InventorySourceAccessorsAdvertiserAccessors
 /// - displayvideo:v3 : InventorySourceAccessorsAdvertiserAccessors
 class $InventorySourceAccessorsAdvertiserAccessors {
@@ -10437,7 +10883,6 @@ class $InventorySourceAccessorsAdvertiserAccessors {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : InventorySourceAccessorsPartnerAccessor
 /// - displayvideo:v2 : InventorySourceAccessorsPartnerAccessor
 /// - displayvideo:v3 : InventorySourceAccessorsPartnerAccessor
 class $InventorySourceAccessorsPartnerAccessor {
@@ -10462,7 +10907,6 @@ class $InventorySourceAccessorsPartnerAccessor {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : InventorySourceAssignedTargetingOptionDetails
 /// - displayvideo:v2 : InventorySourceAssignedTargetingOptionDetails
 /// - displayvideo:v3 : InventorySourceAssignedTargetingOptionDetails
 class $InventorySourceAssignedTargetingOptionDetails {
@@ -10492,7 +10936,6 @@ class $InventorySourceAssignedTargetingOptionDetails {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : InventorySourceFilter
 /// - displayvideo:v2 : InventorySourceFilter
 /// - displayvideo:v3 : InventorySourceFilter
 class $InventorySourceFilter {
@@ -10524,7 +10967,6 @@ class $InventorySourceFilter {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : InventorySourceGroup
 /// - displayvideo:v2 : InventorySourceGroup
 /// - displayvideo:v3 : InventorySourceGroup
 class $InventorySourceGroup {
@@ -10574,7 +11016,6 @@ class $InventorySourceGroup {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : InventorySourceGroupAssignedTargetingOptionDetails
 /// - displayvideo:v2 : InventorySourceGroupAssignedTargetingOptionDetails
 /// - displayvideo:v3 : InventorySourceGroupAssignedTargetingOptionDetails
 class $InventorySourceGroupAssignedTargetingOptionDetails {
@@ -10605,7 +11046,6 @@ class $InventorySourceGroupAssignedTargetingOptionDetails {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : InventorySourceStatus
 /// - displayvideo:v2 : InventorySourceStatus
 /// - displayvideo:v3 : InventorySourceStatus
 class $InventorySourceStatus {
@@ -10720,7 +11160,6 @@ class $InventorySourceStatus {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : InventorySourceVideoCreativeConfig
 /// - displayvideo:v2 : InventorySourceVideoCreativeConfig
 /// - displayvideo:v3 : InventorySourceVideoCreativeConfig
 class $InventorySourceVideoCreativeConfig {
@@ -10942,7 +11381,33 @@ class $KMSEnvMap {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : KeywordAssignedTargetingOptionDetails
+/// - privateca:v1 : CertificateConfigKeyId
+/// - privateca:v1 : KeyId
+class $KeyId {
+  /// The value of this KeyId encoded in lowercase hexadecimal.
+  ///
+  /// This is most likely the 160 bit SHA-1 hash of the public key.
+  ///
+  /// Optional.
+  core.String? keyId;
+
+  $KeyId({
+    this.keyId,
+  });
+
+  $KeyId.fromJson(core.Map json_)
+      : this(
+          keyId:
+              json_.containsKey('keyId') ? json_['keyId'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (keyId != null) 'keyId': keyId!,
+      };
+}
+
+/// Used by:
+///
 /// - displayvideo:v2 : KeywordAssignedTargetingOptionDetails
 /// - displayvideo:v3 : KeywordAssignedTargetingOptionDetails
 class $KeywordAssignedTargetingOptionDetails {
@@ -11104,7 +11569,6 @@ class $Labels {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : LanguageAssignedTargetingOptionDetails
 /// - displayvideo:v2 : LanguageAssignedTargetingOptionDetails
 /// - displayvideo:v3 : LanguageAssignedTargetingOptionDetails
 class $LanguageAssignedTargetingOptionDetails {
@@ -11153,7 +11617,6 @@ class $LanguageAssignedTargetingOptionDetails {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : LanguageTargetingOptionDetails
 /// - displayvideo:v2 : LanguageTargetingOptionDetails
 /// - displayvideo:v3 : LanguageTargetingOptionDetails
 class $LanguageTargetingOptionDetails {
@@ -11378,7 +11841,6 @@ class $Lien {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : LineItemBudget
 /// - displayvideo:v2 : LineItemBudget
 /// - displayvideo:v3 : LineItemBudget
 class $LineItemBudget {
@@ -11743,6 +12205,7 @@ class $LocalizedMessage {
 /// - alloydb:v1 : GoogleCloudLocationLocation
 /// - apigateway:v1 : ApigatewayLocation
 /// - apigeeregistry:v1 : Location
+/// - apphub:v1 : Location
 /// - artifactregistry:v1 : Location
 /// - backupdr:v1 : Location
 /// - baremetalsolution:v2 : Location
@@ -11943,7 +12406,6 @@ class $Location01 {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : LocationList
 /// - displayvideo:v2 : LocationList
 /// - displayvideo:v3 : LocationList
 class $LocationList {
@@ -12020,7 +12482,6 @@ class $LocationList {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : LookbackWindow
 /// - displayvideo:v2 : LookbackWindow
 /// - displayvideo:v3 : LookbackWindow
 class $LookbackWindow {
@@ -12055,7 +12516,6 @@ class $LookbackWindow {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : LookupInvoiceCurrencyResponse
 /// - displayvideo:v2 : LookupInvoiceCurrencyResponse
 /// - displayvideo:v3 : LookupInvoiceCurrencyResponse
 class $LookupInvoiceCurrencyResponse {
@@ -12162,105 +12622,6 @@ class $ManualLbConfig {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : ManualTrigger
-/// - displayvideo:v2 : ManualTrigger
-class $ManualTrigger {
-  /// The maximum duration of each activation in minutes.
-  ///
-  /// Must be between 1 and 360 inclusive. After this duration, the trigger will
-  /// be automatically deactivated.
-  ///
-  /// Required.
-  core.String? activationDurationMinutes;
-
-  /// The unique ID of the advertiser that the manual trigger belongs to.
-  ///
-  /// Required. Immutable.
-  core.String? advertiserId;
-
-  /// The display name of the manual trigger.
-  ///
-  /// Must be UTF-8 encoded with a maximum size of 240 bytes.
-  ///
-  /// Required.
-  core.String? displayName;
-
-  /// The timestamp of the trigger's latest activation.
-  ///
-  /// Output only.
-  core.String? latestActivationTime;
-
-  /// The resource name of the manual trigger.
-  ///
-  /// Output only.
-  core.String? name;
-
-  /// The state of the manual trigger.
-  ///
-  /// Will be set to the `INACTIVE` state upon creation.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : Default value when state is not specified or is
-  /// unknown in this version.
-  /// - "INACTIVE" : The trigger is currently inactive and ready to be
-  /// activated.
-  /// - "ACTIVE" : The trigger is currently active (activated).
-  core.String? state;
-
-  /// The unique ID of the manual trigger.
-  ///
-  /// Output only.
-  core.String? triggerId;
-
-  $ManualTrigger({
-    this.activationDurationMinutes,
-    this.advertiserId,
-    this.displayName,
-    this.latestActivationTime,
-    this.name,
-    this.state,
-    this.triggerId,
-  });
-
-  $ManualTrigger.fromJson(core.Map json_)
-      : this(
-          activationDurationMinutes:
-              json_.containsKey('activationDurationMinutes')
-                  ? json_['activationDurationMinutes'] as core.String
-                  : null,
-          advertiserId: json_.containsKey('advertiserId')
-              ? json_['advertiserId'] as core.String
-              : null,
-          displayName: json_.containsKey('displayName')
-              ? json_['displayName'] as core.String
-              : null,
-          latestActivationTime: json_.containsKey('latestActivationTime')
-              ? json_['latestActivationTime'] as core.String
-              : null,
-          name: json_.containsKey('name') ? json_['name'] as core.String : null,
-          state:
-              json_.containsKey('state') ? json_['state'] as core.String : null,
-          triggerId: json_.containsKey('triggerId')
-              ? json_['triggerId'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (activationDurationMinutes != null)
-          'activationDurationMinutes': activationDurationMinutes!,
-        if (advertiserId != null) 'advertiserId': advertiserId!,
-        if (displayName != null) 'displayName': displayName!,
-        if (latestActivationTime != null)
-          'latestActivationTime': latestActivationTime!,
-        if (name != null) 'name': name!,
-        if (state != null) 'state': state!,
-        if (triggerId != null) 'triggerId': triggerId!,
-      };
-}
-
-/// Used by:
-///
 /// - containeranalysis:v1 : GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial
 /// - containeranalysis:v1 : Material
 /// - ondemandscanning:v1 : GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial
@@ -12295,7 +12656,6 @@ class $Material {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : MaximizeSpendBidStrategy
 /// - displayvideo:v2 : MaximizeSpendBidStrategy
 /// - displayvideo:v3 : MaximizeSpendBidStrategy
 class $MaximizeSpendBidStrategy {
@@ -12376,7 +12736,6 @@ class $MaximizeSpendBidStrategy {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : MeasurementConfig
 /// - displayvideo:v2 : MeasurementConfig
 /// - displayvideo:v3 : MeasurementConfig
 class $MeasurementConfig {
@@ -12415,7 +12774,6 @@ class $MeasurementConfig {
 ///
 /// - chat:v1 : Media
 /// - cloudsearch:v1 : Media
-/// - displayvideo:v1 : GoogleBytestreamMedia
 /// - displayvideo:v2 : GoogleBytestreamMedia
 /// - displayvideo:v3 : GoogleBytestreamMedia
 class $Media {
@@ -12440,18 +12798,156 @@ class $Media {
 
 /// Used by:
 ///
+/// - dfareporting:v3.5 : MediaRequestInfo
+/// - walletobjects:v1 : MediaRequestInfo
+class $MediaRequestInfo {
+  /// The number of current bytes uploaded or downloaded.
+  core.String? currentBytes;
+
+  /// Data to be copied to backend requests.
+  ///
+  /// Custom data is returned to Scotty in the agent_state field, which Scotty
+  /// will then provide in subsequent upload notifications.
+  core.String? customData;
+
+  /// Set if the http request info is diff encoded.
+  ///
+  /// The value of this field is the version number of the base revision. This
+  /// is corresponding to Apiary's mediaDiffObjectVersion
+  /// (//depot/google3/java/com/google/api/server/media/variable/DiffObjectVersionVariable.java).
+  /// See go/esf-scotty-diff-upload for more information.
+  core.String? diffObjectVersion;
+
+  /// The existence of the final_status field indicates that this is the last
+  /// call to the agent for this request_id.
+  ///
+  /// http://google3/uploader/agent/scotty_agent.proto?l=737&rcl=347601929
+  core.int? finalStatus;
+
+  /// The type of notification received from Scotty.
+  /// Possible string values are:
+  /// - "START" : Such requests signals the start of a request containing media
+  /// upload. Only the media field(s) in the inserted/updated resource are set.
+  /// The response should either return an error or succeed. On success,
+  /// responses don't need to contain anything.
+  /// - "PROGRESS" : Such requests signals that the upload has progressed and
+  /// that the backend might want to access the media file specified in relevant
+  /// fields in the resource. Only the media field(s) in the inserted/updated
+  /// resource are set. The response should either return an error or succeed.
+  /// On success, responses don't need to contain anything.
+  /// - "END" : Such requests signals the end of a request containing media
+  /// upload. END should be handled just like normal Insert/Upload requests,
+  /// that is, they should process the request and return a complete resource in
+  /// the response. Pointers to media data (a GFS path usually) appear in the
+  /// relevant fields in the inserted/updated resource. See gdata.Media in
+  /// data.proto.
+  /// - "RESPONSE_SENT" : Such requests occur after an END and signal that the
+  /// response has been sent back to the client. RESPONSE_SENT is only sent to
+  /// the backend if it is configured to receive them. The response does not
+  /// need to contain anything.
+  /// - "ERROR" : Such requests indicate that an error occurred while processing
+  /// the request. ERROR is only sent to the backend if it is configured to
+  /// receive them. It is not guaranteed that all errors will result in this
+  /// notification to the backend, even if the backend requests them. Since
+  /// these requests are just for informational purposes, the response does not
+  /// need to contain anything.
+  core.String? notificationType;
+
+  /// The Scotty request ID.
+  core.String? requestId;
+
+  /// The partition of the Scotty server handling this request.
+  ///
+  /// type is uploader_service.RequestReceivedParamsServingInfo
+  /// LINT.IfChange(request_received_params_serving_info_annotations)
+  /// LINT.ThenChange()
+  core.String? requestReceivedParamsServingInfo;
+  core.List<core.int> get requestReceivedParamsServingInfoAsBytes =>
+      convert.base64.decode(requestReceivedParamsServingInfo!);
+
+  set requestReceivedParamsServingInfoAsBytes(core.List<core.int> bytes_) {
+    requestReceivedParamsServingInfo =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// The total size of the file.
+  core.String? totalBytes;
+
+  /// Whether the total bytes field contains an estimated data.
+  core.bool? totalBytesIsEstimated;
+
+  $MediaRequestInfo({
+    this.currentBytes,
+    this.customData,
+    this.diffObjectVersion,
+    this.finalStatus,
+    this.notificationType,
+    this.requestId,
+    this.requestReceivedParamsServingInfo,
+    this.totalBytes,
+    this.totalBytesIsEstimated,
+  });
+
+  $MediaRequestInfo.fromJson(core.Map json_)
+      : this(
+          currentBytes: json_.containsKey('currentBytes')
+              ? json_['currentBytes'] as core.String
+              : null,
+          customData: json_.containsKey('customData')
+              ? json_['customData'] as core.String
+              : null,
+          diffObjectVersion: json_.containsKey('diffObjectVersion')
+              ? json_['diffObjectVersion'] as core.String
+              : null,
+          finalStatus: json_.containsKey('finalStatus')
+              ? json_['finalStatus'] as core.int
+              : null,
+          notificationType: json_.containsKey('notificationType')
+              ? json_['notificationType'] as core.String
+              : null,
+          requestId: json_.containsKey('requestId')
+              ? json_['requestId'] as core.String
+              : null,
+          requestReceivedParamsServingInfo:
+              json_.containsKey('requestReceivedParamsServingInfo')
+                  ? json_['requestReceivedParamsServingInfo'] as core.String
+                  : null,
+          totalBytes: json_.containsKey('totalBytes')
+              ? json_['totalBytes'] as core.String
+              : null,
+          totalBytesIsEstimated: json_.containsKey('totalBytesIsEstimated')
+              ? json_['totalBytesIsEstimated'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (currentBytes != null) 'currentBytes': currentBytes!,
+        if (customData != null) 'customData': customData!,
+        if (diffObjectVersion != null) 'diffObjectVersion': diffObjectVersion!,
+        if (finalStatus != null) 'finalStatus': finalStatus!,
+        if (notificationType != null) 'notificationType': notificationType!,
+        if (requestId != null) 'requestId': requestId!,
+        if (requestReceivedParamsServingInfo != null)
+          'requestReceivedParamsServingInfo': requestReceivedParamsServingInfo!,
+        if (totalBytes != null) 'totalBytes': totalBytes!,
+        if (totalBytesIsEstimated != null)
+          'totalBytesIsEstimated': totalBytesIsEstimated!,
+      };
+}
+
+/// Used by:
+///
 /// - accesscontextmanager:v1 : MethodSelector
 /// - cloudasset:v1 : GoogleIdentityAccesscontextmanagerV1MethodSelector
 class $MethodSelector {
-  /// Value for `method` should be a valid method name for the corresponding
-  /// `service_name` in ApiOperation.
+  /// A valid method name for the corresponding `service_name` in ApiOperation.
   ///
-  /// If `*` used as value for `method`, then ALL methods and permissions are
-  /// allowed.
+  /// If `*` is used as the value for the `method`, then ALL methods and
+  /// permissions are allowed.
   core.String? method;
 
-  /// Value for `permission` should be a valid Cloud IAM permission for the
-  /// corresponding `service_name` in ApiOperation.
+  /// A valid Cloud IAM permission for the corresponding `service_name` in
+  /// ApiOperation.
   core.String? permission;
 
   $MethodSelector({
@@ -12634,7 +13130,6 @@ class $Mixin {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : MobileApp
 /// - displayvideo:v2 : MobileApp
 /// - displayvideo:v3 : MobileApp
 class $MobileApp {
@@ -12706,7 +13201,6 @@ class $MobileApp {
 /// - cloudbilling:v1 : Money
 /// - cloudchannel:v1 : GoogleTypeMoney
 /// - contentwarehouse:v1 : GoogleTypeMoney
-/// - displayvideo:v1 : Money
 /// - displayvideo:v2 : Money
 /// - displayvideo:v3 : Money
 /// - documentai:v1 : GoogleTypeMoney
@@ -12893,7 +13387,6 @@ class $NativeContentPositionAssignedTargetingOptionDetails {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : NativeContentPositionTargetingOptionDetails
 /// - displayvideo:v2 : NativeContentPositionTargetingOptionDetails
 /// - displayvideo:v3 : NativeContentPositionTargetingOptionDetails
 class $NativeContentPositionTargetingOptionDetails {
@@ -12937,7 +13430,6 @@ class $NativeContentPositionTargetingOptionDetails {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : NegativeKeyword
 /// - displayvideo:v2 : NegativeKeyword
 /// - displayvideo:v3 : NegativeKeyword
 class $NegativeKeyword {
@@ -12978,7 +13470,6 @@ class $NegativeKeyword {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : NegativeKeywordList
 /// - displayvideo:v2 : NegativeKeywordList
 /// - displayvideo:v3 : NegativeKeywordList
 class $NegativeKeywordList {
@@ -13050,7 +13541,6 @@ class $NegativeKeywordList {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : NegativeKeywordListAssignedTargetingOptionDetails
 /// - displayvideo:v2 : NegativeKeywordListAssignedTargetingOptionDetails
 /// - displayvideo:v3 : NegativeKeywordListAssignedTargetingOptionDetails
 class $NegativeKeywordListAssignedTargetingOptionDetails {
@@ -13147,8 +13637,54 @@ class $OAuthRequirements {
 
 /// Used by:
 ///
+/// - firebaseappdistribution:v1 : GdataObjectId
+/// - walletobjects:v1 : ObjectId
+class $ObjectId {
+  /// The name of the bucket to which this object belongs.
+  core.String? bucketName;
+
+  /// Generation of the object.
+  ///
+  /// Generations are monotonically increasing across writes, allowing them to
+  /// be be compared to determine which generation is newer. If this is omitted
+  /// in a request, then you are requesting the live object. See
+  /// http://go/bigstore-versions
+  core.String? generation;
+
+  /// The name of the object.
+  core.String? objectName;
+
+  $ObjectId({
+    this.bucketName,
+    this.generation,
+    this.objectName,
+  });
+
+  $ObjectId.fromJson(core.Map json_)
+      : this(
+          bucketName: json_.containsKey('bucketName')
+              ? json_['bucketName'] as core.String
+              : null,
+          generation: json_.containsKey('generation')
+              ? json_['generation'] as core.String
+              : null,
+          objectName: json_.containsKey('objectName')
+              ? json_['objectName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bucketName != null) 'bucketName': bucketName!,
+        if (generation != null) 'generation': generation!,
+        if (objectName != null) 'objectName': objectName!,
+      };
+}
+
+/// Used by:
+///
 /// - datastream:v1 : OracleObjectIdentifier
 /// - datastream:v1 : PostgresqlObjectIdentifier
+/// - datastream:v1 : SqlServerObjectIdentifier
 class $ObjectIdentifier {
   /// The schema name.
   ///
@@ -13239,7 +13775,6 @@ class $OmidAssignedTargetingOptionDetails {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : OmidTargetingOptionDetails
 /// - displayvideo:v2 : OmidTargetingOptionDetails
 /// - displayvideo:v3 : OmidTargetingOptionDetails
 class $OmidTargetingOptionDetails {
@@ -13269,7 +13804,33 @@ class $OmidTargetingOptionDetails {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : OnScreenPositionAssignedTargetingOptionDetails
+/// - cloudfunctions:v1 : OnDeployUpdatePolicy
+/// - cloudfunctions:v2 : OnDeployUpdatePolicy
+class $OnDeployUpdatePolicy {
+  /// contains the runtime version which was used during latest function
+  /// deployment.
+  ///
+  /// Output only.
+  core.String? runtimeVersion;
+
+  $OnDeployUpdatePolicy({
+    this.runtimeVersion,
+  });
+
+  $OnDeployUpdatePolicy.fromJson(core.Map json_)
+      : this(
+          runtimeVersion: json_.containsKey('runtimeVersion')
+              ? json_['runtimeVersion'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (runtimeVersion != null) 'runtimeVersion': runtimeVersion!,
+      };
+}
+
+/// Used by:
+///
 /// - displayvideo:v2 : OnScreenPositionAssignedTargetingOptionDetails
 /// - displayvideo:v3 : OnScreenPositionAssignedTargetingOptionDetails
 class $OnScreenPositionAssignedTargetingOptionDetails {
@@ -13339,7 +13900,6 @@ class $OnScreenPositionAssignedTargetingOptionDetails {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : OnScreenPositionTargetingOptionDetails
 /// - displayvideo:v2 : OnScreenPositionTargetingOptionDetails
 /// - displayvideo:v3 : OnScreenPositionTargetingOptionDetails
 class $OnScreenPositionTargetingOptionDetails {
@@ -13373,7 +13933,6 @@ class $OnScreenPositionTargetingOptionDetails {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : OperatingSystemAssignedTargetingOptionDetails
 /// - displayvideo:v2 : OperatingSystemAssignedTargetingOptionDetails
 /// - displayvideo:v3 : OperatingSystemAssignedTargetingOptionDetails
 class $OperatingSystemAssignedTargetingOptionDetails {
@@ -13419,7 +13978,6 @@ class $OperatingSystemAssignedTargetingOptionDetails {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : OperatingSystemTargetingOptionDetails
 /// - displayvideo:v2 : OperatingSystemTargetingOptionDetails
 /// - displayvideo:v3 : OperatingSystemTargetingOptionDetails
 class $OperatingSystemTargetingOptionDetails {
@@ -13727,7 +14285,6 @@ class $OsInfo {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : Pacing
 /// - displayvideo:v2 : Pacing
 /// - displayvideo:v3 : Pacing
 class $Pacing {
@@ -13859,7 +14416,6 @@ class $PageInfo {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : ParentEntityFilter
 /// - displayvideo:v2 : ParentEntityFilter
 /// - displayvideo:v3 : ParentEntityFilter
 class $ParentEntityFilter {
@@ -13970,7 +14526,6 @@ class $ParentalStatusAssignedTargetingOptionDetails {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : ParentalStatusTargetingOptionDetails
 /// - displayvideo:v2 : ParentalStatusTargetingOptionDetails
 /// - displayvideo:v3 : ParentalStatusTargetingOptionDetails
 class $ParentalStatusTargetingOptionDetails {
@@ -14005,7 +14560,6 @@ class $ParentalStatusTargetingOptionDetails {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : PartnerCost
 /// - displayvideo:v2 : PartnerCost
 /// - displayvideo:v3 : PartnerCost
 class $PartnerCost {
@@ -14162,7 +14716,6 @@ class $PartnerCost {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : PartnerGeneralConfig
 /// - displayvideo:v2 : PartnerGeneralConfig
 /// - displayvideo:v3 : PartnerGeneralConfig
 class $PartnerGeneralConfig {
@@ -14202,7 +14755,6 @@ class $PartnerGeneralConfig {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : PartnerRevenueModel
 /// - displayvideo:v2 : PartnerRevenueModel
 /// - displayvideo:v3 : PartnerRevenueModel
 class $PartnerRevenueModel {
@@ -14282,7 +14834,6 @@ class $PathSegment {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : PerformanceGoal
 /// - displayvideo:v2 : PerformanceGoal
 /// - displayvideo:v3 : PerformanceGoal
 class $PerformanceGoal {
@@ -14389,7 +14940,6 @@ class $PerformanceGoal {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : PerformanceGoalBidStrategy
 /// - displayvideo:v2 : PerformanceGoalBidStrategy
 /// - displayvideo:v3 : PerformanceGoalBidStrategy
 class $PerformanceGoalBidStrategy {
@@ -14541,10 +15091,12 @@ class $Permissions {
 /// - apigateway:v1 : ApigatewayTestIamPermissionsResponse
 /// - apigee:v1 : GoogleIamV1TestIamPermissionsResponse
 /// - apigeeregistry:v1 : TestIamPermissionsResponse
+/// - apphub:v1 : TestIamPermissionsResponse
 /// - artifactregistry:v1 : TestIamPermissionsResponse
 /// - backupdr:v1 : TestIamPermissionsResponse
 /// - beyondcorp:v1 : GoogleIamV1TestIamPermissionsResponse
 /// - bigquery:v2 : TestIamPermissionsResponse
+/// - bigqueryconnection:v1 : TestIamPermissionsResponse
 /// - bigquerydatapolicy:v1 : TestIamPermissionsResponse
 /// - bigtableadmin:v2 : TestIamPermissionsResponse
 /// - binaryauthorization:v1 : TestIamPermissionsResponse
@@ -14656,7 +15208,6 @@ class $Pipe {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : PoiAssignedTargetingOptionDetails
 /// - displayvideo:v2 : PoiAssignedTargetingOptionDetails
 /// - displayvideo:v3 : PoiAssignedTargetingOptionDetails
 class $PoiAssignedTargetingOptionDetails {
@@ -14698,13 +15249,15 @@ class $PoiAssignedTargetingOptionDetails {
   /// The targeting_option_id of a TargetingOption of type `TARGETING_TYPE_POI`.
   ///
   /// Accepted POI targeting option IDs can be retrieved using
-  /// SearchTargetingOptions. If targeting a specific latitude/longitude
-  /// coordinate removed from an address or POI name, you can generate the
-  /// necessary targeting option ID by rounding the desired coordinate values to
-  /// the 6th decimal place, removing the decimals, and concatenating the string
-  /// values separated by a semicolon. For example, you can target the
-  /// latitude/longitude pair of 40.7414691, -74.003387 using the targeting
-  /// option ID "40741469;-74003387".
+  /// `targetingTypes.targetingOptions.search`. If targeting a specific
+  /// latitude/longitude coordinate removed from an address or POI name, you can
+  /// generate the necessary targeting option ID by rounding the desired
+  /// coordinate values to the 6th decimal place, removing the decimals, and
+  /// concatenating the string values separated by a semicolon. For example, you
+  /// can target the latitude/longitude pair of 40.7414691, -74.003387 using the
+  /// targeting option ID "40741469;-74003387". **Upon** **creation, this field
+  /// value will be updated to append a semicolon and** **alphanumerical hash
+  /// value if only latitude/longitude coordinates are** **provided.**
   ///
   /// Required.
   core.String? targetingOptionId;
@@ -14754,7 +15307,6 @@ class $PoiAssignedTargetingOptionDetails {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : PoiSearchTerms
 /// - displayvideo:v2 : PoiSearchTerms
 /// - displayvideo:v3 : PoiSearchTerms
 class $PoiSearchTerms {
@@ -14783,7 +15335,6 @@ class $PoiSearchTerms {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : PoiTargetingOptionDetails
 /// - displayvideo:v2 : PoiTargetingOptionDetails
 /// - displayvideo:v3 : PoiTargetingOptionDetails
 class $PoiTargetingOptionDetails {
@@ -15049,7 +15600,6 @@ class $PostalAddress {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : PrismaCpeCode
 /// - displayvideo:v2 : PrismaCpeCode
 /// - displayvideo:v3 : PrismaCpeCode
 class $PrismaCpeCode {
@@ -15239,7 +15789,6 @@ class $ProximityLocationListAssignedTargetingOptionDetails {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : PublisherReviewStatus
 /// - displayvideo:v2 : PublisherReviewStatus
 /// - displayvideo:v3 : PublisherReviewStatus
 class $PublisherReviewStatus {
@@ -15307,8 +15856,6 @@ class $PubsubMessage {
   /// Guaranteed to be unique within the topic. This value may be read by a
   /// subscriber that receives a `PubsubMessage` via a `Pull` call or a push
   /// delivery. It must not be populated by the publisher in a `Publish` call.
-  ///
-  /// Optional.
   core.String? messageId;
 
   /// If non-empty, identifies related messages for which publish order should
@@ -15328,8 +15875,6 @@ class $PubsubMessage {
   /// it receives the `Publish` call.
   ///
   /// It must not be populated by the publisher in a `Publish` call.
-  ///
-  /// Optional.
   core.String? publishTime;
 
   $PubsubMessage({
@@ -15704,7 +16249,6 @@ class $Recipe {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : RegionalLocationListAssignedTargetingOptionDetails
 /// - displayvideo:v2 : RegionalLocationListAssignedTargetingOptionDetails
 /// - displayvideo:v3 : RegionalLocationListAssignedTargetingOptionDetails
 class $RegionalLocationListAssignedTargetingOptionDetails {
@@ -15767,6 +16311,44 @@ class $RelatedUrl {
   core.Map<core.String, core.dynamic> toJson() => {
         if (label != null) 'label': label!,
         if (url != null) 'url': url!,
+      };
+}
+
+/// Used by:
+///
+/// - displayvideo:v2 : RemarketingConfig
+/// - displayvideo:v3 : RemarketingConfig
+class $RemarketingConfig {
+  /// The ID of the advertiser.
+  ///
+  /// Output only.
+  core.String? advertiserId;
+
+  /// Whether the Floodlight activity remarketing user list is available to the
+  /// identified advertiser.
+  ///
+  /// Output only.
+  core.bool? remarketingEnabled;
+
+  $RemarketingConfig({
+    this.advertiserId,
+    this.remarketingEnabled,
+  });
+
+  $RemarketingConfig.fromJson(core.Map json_)
+      : this(
+          advertiserId: json_.containsKey('advertiserId')
+              ? json_['advertiserId'] as core.String
+              : null,
+          remarketingEnabled: json_.containsKey('remarketingEnabled')
+              ? json_['remarketingEnabled'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (advertiserId != null) 'advertiserId': advertiserId!,
+        if (remarketingEnabled != null)
+          'remarketingEnabled': remarketingEnabled!,
       };
 }
 
@@ -16634,38 +17216,6 @@ class $SbomReferenceIntotoPredicate {
 
 /// Used by:
 ///
-/// - tpu:v1 : SchedulingConfig
-/// - tpu:v2 : SchedulingConfig
-class $SchedulingConfig {
-  /// Defines whether the node is preemptible.
-  core.bool? preemptible;
-
-  /// Whether the node is created under a reservation.
-  core.bool? reserved;
-
-  $SchedulingConfig({
-    this.preemptible,
-    this.reserved,
-  });
-
-  $SchedulingConfig.fromJson(core.Map json_)
-      : this(
-          preemptible: json_.containsKey('preemptible')
-              ? json_['preemptible'] as core.bool
-              : null,
-          reserved: json_.containsKey('reserved')
-              ? json_['reserved'] as core.bool
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (preemptible != null) 'preemptible': preemptible!,
-        if (reserved != null) 'reserved': reserved!,
-      };
-}
-
-/// Used by:
-///
 /// - batch:v1 : AgentScript
 /// - batch:v1 : Script
 class $Script {
@@ -16676,7 +17226,7 @@ class $Script {
   /// line of the file.(For example, to execute the script using bash,
   /// `#!/bin/bash` should be the first line of the file. To execute the script
   /// using`Python3`, `#!/usr/bin/env python3` should be the first line of the
-  /// file.) Otherwise, the file will by default be excuted by `/bin/sh`.
+  /// file.) Otherwise, the file will by default be executed by `/bin/sh`.
   core.String? path;
 
   /// Shell script text.
@@ -16685,7 +17235,7 @@ class $Script {
   /// text.(For example, to execute the script using bash, `#!/bin/bash\n`
   /// should be added. To execute the script using`Python3`, `#!/usr/bin/env
   /// python3\n` should be added.) Otherwise, the script will by default be
-  /// excuted by `/bin/sh`.
+  /// executed by `/bin/sh`.
   core.String? text;
 
   $Script({
@@ -16707,7 +17257,6 @@ class $Script {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : ScriptError
 /// - displayvideo:v2 : ScriptError
 /// - displayvideo:v3 : ScriptError
 class $ScriptError {
@@ -16761,7 +17310,6 @@ class $ScriptError {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : SdfConfig
 /// - displayvideo:v2 : SdfConfig
 /// - displayvideo:v3 : SdfConfig
 class $SdfConfig {
@@ -16838,6 +17386,48 @@ class $SecretVersionRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
+      };
+}
+
+/// Used by:
+///
+/// - container:v1 : SecurityPostureConfig
+/// - gkehub:v1 : SecurityPostureConfig
+class $SecurityPostureConfig {
+  /// Sets which mode to use for Security Posture features.
+  /// Possible string values are:
+  /// - "MODE_UNSPECIFIED" : Default value not specified.
+  /// - "DISABLED" : Disables Security Posture features on the cluster.
+  /// - "BASIC" : Applies Security Posture features on the cluster.
+  core.String? mode;
+
+  /// Sets which mode to use for vulnerability scanning.
+  /// Possible string values are:
+  /// - "VULNERABILITY_MODE_UNSPECIFIED" : Default value not specified.
+  /// - "VULNERABILITY_DISABLED" : Disables vulnerability scanning on the
+  /// cluster.
+  /// - "VULNERABILITY_BASIC" : Applies basic vulnerability scanning on the
+  /// cluster.
+  /// - "VULNERABILITY_ENTERPRISE" : Applies the Security Posture's
+  /// vulnerability on cluster Enterprise level features.
+  core.String? vulnerabilityMode;
+
+  $SecurityPostureConfig({
+    this.mode,
+    this.vulnerabilityMode,
+  });
+
+  $SecurityPostureConfig.fromJson(core.Map json_)
+      : this(
+          mode: json_.containsKey('mode') ? json_['mode'] as core.String : null,
+          vulnerabilityMode: json_.containsKey('vulnerabilityMode')
+              ? json_['vulnerabilityMode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (mode != null) 'mode': mode!,
+        if (vulnerabilityMode != null) 'vulnerabilityMode': vulnerabilityMode!,
       };
 }
 
@@ -17221,21 +17811,37 @@ class $Shared00 {
 
 /// Used by:
 ///
+/// - androidpublisher:v3 : ArchiveSubscriptionRequest
+/// - cloudchannel:v1 : GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity
+/// - domains:v1 : ExportRegistrationRequest
+/// - driveactivity:v2 : File
+class $Shared01 {
+  $Shared01();
+
+  $Shared01.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map json_);
+
+  core.Map<core.String, core.dynamic> toJson() => {};
+}
+
+/// Used by:
+///
 /// - osconfig:v1 : OSPolicyResourcePackageResourceAPT
 /// - osconfig:v1 : OSPolicyResourcePackageResourceGooGet
 /// - osconfig:v1 : OSPolicyResourcePackageResourceYUM
 /// - osconfig:v1 : OSPolicyResourcePackageResourceZypper
-class $Shared01 {
+class $Shared02 {
   /// Package name.
   ///
   /// Required.
   core.String? name;
 
-  $Shared01({
+  $Shared02({
     this.name,
   });
 
-  $Shared01.fromJson(core.Map json_)
+  $Shared02.fromJson(core.Map json_)
       : this(
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
         );
@@ -17243,21 +17849,6 @@ class $Shared01 {
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
       };
-}
-
-/// Used by:
-///
-/// - cloudchannel:v1 : GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity
-/// - domains:v1 : ExportRegistrationRequest
-/// - driveactivity:v2 : File
-class $Shared02 {
-  $Shared02();
-
-  $Shared02.fromJson(
-      // ignore: avoid_unused_constructor_parameters
-      core.Map json_);
-
-  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Used by:
@@ -17383,21 +17974,47 @@ class $Shared05 {
 
 /// Used by:
 ///
+/// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination
+/// - contactcenterinsights:v1 : GoogleCloudContactcenterinsightsV1ImportIssueModelRequestGcsSource
+class $Shared06 {
+  /// Format: `gs:///`
+  ///
+  /// Required.
+  core.String? objectUri;
+
+  $Shared06({
+    this.objectUri,
+  });
+
+  $Shared06.fromJson(core.Map json_)
+      : this(
+          objectUri: json_.containsKey('objectUri')
+              ? json_['objectUri'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (objectUri != null) 'objectUri': objectUri!,
+      };
+}
+
+/// Used by:
+///
 /// - content:v2.1 : Price
 /// - content:v2.1 : PriceAmount
-class $Shared06 {
+class $Shared07 {
   /// The currency of the price.
   core.String? currency;
 
   /// The price represented as a number.
   core.String? value;
 
-  $Shared06({
+  $Shared07({
     this.currency,
     this.value,
   });
 
-  $Shared06.fromJson(core.Map json_)
+  $Shared07.fromJson(core.Map json_)
       : this(
           currency: json_.containsKey('currency')
               ? json_['currency'] as core.String
@@ -17416,7 +18033,7 @@ class $Shared06 {
 ///
 /// - dialogflow:v2 : GoogleCloudDialogflowV2Sentiment
 /// - dialogflow:v3 : GoogleCloudDialogflowCxV3SentimentAnalysisResult
-class $Shared07 {
+class $Shared08 {
   /// A non-negative number in the \[0, +inf) range, which represents the
   /// absolute magnitude of sentiment, regardless of score (positive or
   /// negative).
@@ -17426,12 +18043,12 @@ class $Shared07 {
   /// sentiment).
   core.double? score;
 
-  $Shared07({
+  $Shared08({
     this.magnitude,
     this.score,
   });
 
-  $Shared07.fromJson(core.Map json_)
+  $Shared08.fromJson(core.Map json_)
       : this(
           magnitude: json_.containsKey('magnitude')
               ? (json_['magnitude'] as core.num).toDouble()
@@ -17451,17 +18068,17 @@ class $Shared07 {
 ///
 /// - gkehub:v1 : ConfigManagementPolicyControllerMonitoring
 /// - gkehub:v1 : PolicyControllerMonitoringConfig
-class $Shared08 {
+class $Shared09 {
   /// Specifies the list of backends Policy Controller will export to.
   ///
   /// An empty list would effectively disable metrics export.
   core.List<core.String>? backends;
 
-  $Shared08({
+  $Shared09({
     this.backends,
   });
 
-  $Shared08.fromJson(core.Map json_)
+  $Shared09.fromJson(core.Map json_)
       : this(
           backends: json_.containsKey('backends')
               ? (json_['backends'] as core.List)
@@ -17479,7 +18096,7 @@ class $Shared08 {
 ///
 /// - osconfig:v1 : OSPolicyAssignmentInstanceFilterInventory
 /// - osconfig:v1 : OSPolicyInventoryFilter
-class $Shared09 {
+class $Shared10 {
   /// The OS short name
   ///
   /// Required.
@@ -17493,12 +18110,12 @@ class $Shared09 {
   /// versions.
   core.String? osVersion;
 
-  $Shared09({
+  $Shared10({
     this.osShortName,
     this.osVersion,
   });
 
-  $Shared09.fromJson(core.Map json_)
+  $Shared10.fromJson(core.Map json_)
       : this(
           osShortName: json_.containsKey('osShortName')
               ? json_['osShortName'] as core.String
@@ -17518,14 +18135,14 @@ class $Shared09 {
 ///
 /// - youtube:v3 : CommentSnippetAuthorChannelId
 /// - youtube:v3 : LanguageTag
-class $Shared10 {
+class $Shared11 {
   core.String? value;
 
-  $Shared10({
+  $Shared11({
     this.value,
   });
 
-  $Shared10.fromJson(core.Map json_)
+  $Shared11.fromJson(core.Map json_)
       : this(
           value:
               json_.containsKey('value') ? json_['value'] as core.String : null,
@@ -17647,7 +18264,6 @@ class $Signature {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : Site
 /// - displayvideo:v2 : Site
 /// - displayvideo:v3 : Site
 class $Site {
@@ -18019,6 +18635,7 @@ class $StaticRouteConfig {
 /// Used by:
 ///
 /// - accesscontextmanager:v1 : Status
+/// - admin:directory_v1 : Status
 /// - aiplatform:v1 : GoogleRpcStatus
 /// - alloydb:v1 : Status
 /// - analyticshub:v1 : Status
@@ -18029,6 +18646,7 @@ class $StaticRouteConfig {
 /// - apigeeregistry:v1 : Status
 /// - apikeys:v2 : Status
 /// - appengine:v1 : Status
+/// - apphub:v1 : Status
 /// - artifactregistry:v1 : Status
 /// - assuredworkloads:v1 : GoogleRpcStatus
 /// - backupdr:v1 : Status
@@ -18076,7 +18694,6 @@ class $StaticRouteConfig {
 /// - deploymentmanager:v2 : Status
 /// - dialogflow:v2 : GoogleRpcStatus
 /// - dialogflow:v3 : GoogleRpcStatus
-/// - displayvideo:v1 : Status
 /// - displayvideo:v2 : Status
 /// - displayvideo:v3 : Status
 /// - dlp:v2 : GoogleRpcStatus
@@ -18151,6 +18768,7 @@ class $StaticRouteConfig {
 /// - webrisk:v1 : GoogleRpcStatus
 /// - workflows:v1 : Status
 /// - workloadmanager:v1 : Status
+/// - workspaceevents:v1 : Status
 /// - workstations:v1 : Status
 class $Status {
   /// The status code, which should be an enum value of google.rpc.Code.
@@ -18200,6 +18818,7 @@ class $Status {
 ///
 /// - cloudasset:v1 : GoogleCloudAssetV1StringValues
 /// - orgpolicy:v2 : GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues
+/// - policysimulator:v1 : GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues
 class $StringValues {
   /// List of values allowed at this resource.
   core.List<core.String>? allowedValues;
@@ -18234,7 +18853,6 @@ class $StringValues {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : SubExchangeAssignedTargetingOptionDetails
 /// - displayvideo:v2 : SubExchangeAssignedTargetingOptionDetails
 /// - displayvideo:v3 : SubExchangeAssignedTargetingOptionDetails
 class $SubExchangeAssignedTargetingOptionDetails {
@@ -18262,7 +18880,6 @@ class $SubExchangeAssignedTargetingOptionDetails {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : SubExchangeTargetingOptionDetails
 /// - displayvideo:v2 : SubExchangeTargetingOptionDetails
 /// - displayvideo:v3 : SubExchangeTargetingOptionDetails
 class $SubExchangeTargetingOptionDetails {
@@ -18442,72 +19059,6 @@ class $TargetFrequency {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : TargetingExpansionConfig
-/// - displayvideo:v2 : TargetingExpansionConfig
-class $TargetingExpansionConfig {
-  /// Whether to exclude first-party audiences from use in targeting expansion.
-  ///
-  /// This field was deprecated with the launch of \[optimized
-  /// targeting\](//support.google.com/displayvideo/answer/12060859). This field
-  /// will be set to `false`. If this field is set to `true` when deprecated,
-  /// all positive first-party audience targeting assigned to this line item
-  /// will be replaced with negative targeting of the same first-party audiences
-  /// to ensure the continued exclusion of those audiences.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.bool? excludeFirstPartyAudience;
-
-  /// Whether optimized targeting is turned on.
-  ///
-  /// This field supports the following values: * `NO_EXPANSION`: optimized
-  /// targeting is turned off * `LEAST_EXPANSION`: optimized targeting is turned
-  /// on If this field is set to any other value, it will automatically be set
-  /// to `LEAST_EXPANSION`. `NO_EXPANSION` will be the default value for the
-  /// field and will be automatically assigned if you do not set the field.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "TARGETING_EXPANSION_LEVEL_UNSPECIFIED" : The optimized targeting
-  /// setting is not specified or is unknown in this version.
-  /// - "NO_EXPANSION" : Optimized targeting is off.
-  /// - "LEAST_EXPANSION" : Optimized targeting is on.
-  /// - "SOME_EXPANSION" : If used, will automatically be set to
-  /// `LEAST_EXPANSION`.
-  /// - "BALANCED_EXPANSION" : If used, will automatically be set to
-  /// `LEAST_EXPANSION`.
-  /// - "MORE_EXPANSION" : If used, will automatically be set to
-  /// `LEAST_EXPANSION`.
-  /// - "MOST_EXPANSION" : If used, will automatically be set to
-  /// `LEAST_EXPANSION`.
-  core.String? targetingExpansionLevel;
-
-  $TargetingExpansionConfig({
-    this.excludeFirstPartyAudience,
-    this.targetingExpansionLevel,
-  });
-
-  $TargetingExpansionConfig.fromJson(core.Map json_)
-      : this(
-          excludeFirstPartyAudience:
-              json_.containsKey('excludeFirstPartyAudience')
-                  ? json_['excludeFirstPartyAudience'] as core.bool
-                  : null,
-          targetingExpansionLevel: json_.containsKey('targetingExpansionLevel')
-              ? json_['targetingExpansionLevel'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (excludeFirstPartyAudience != null)
-          'excludeFirstPartyAudience': excludeFirstPartyAudience!,
-        if (targetingExpansionLevel != null)
-          'targetingExpansionLevel': targetingExpansionLevel!,
-      };
-}
-
-/// Used by:
-///
 /// - tagmanager:v1 : TeardownTag
 /// - tagmanager:v2 : TeardownTag
 class $TeardownTag {
@@ -18574,10 +19125,12 @@ class $TenantProjectRequest {
 /// - apigateway:v1 : ApigatewayTestIamPermissionsRequest
 /// - apigee:v1 : GoogleIamV1TestIamPermissionsRequest
 /// - apigeeregistry:v1 : TestIamPermissionsRequest
+/// - apphub:v1 : TestIamPermissionsRequest
 /// - artifactregistry:v1 : TestIamPermissionsRequest
 /// - backupdr:v1 : TestIamPermissionsRequest
 /// - beyondcorp:v1 : GoogleIamV1TestIamPermissionsRequest
 /// - bigquery:v2 : TestIamPermissionsRequest
+/// - bigqueryconnection:v1 : TestIamPermissionsRequest
 /// - bigquerydatapolicy:v1 : TestIamPermissionsRequest
 /// - bigtableadmin:v2 : TestIamPermissionsRequest
 /// - binaryauthorization:v1 : TestIamPermissionsRequest
@@ -18741,42 +19294,6 @@ class $TestPermissionsRequest {
 
 /// Used by:
 ///
-/// - drivelabels:v2 : GoogleAppsDriveLabelsV2FieldLongTextOptions
-/// - drivelabels:v2 : GoogleAppsDriveLabelsV2FieldTextOptions
-class $TextOptions {
-  /// The maximum valid length of values for the text field.
-  ///
-  /// Output only.
-  core.int? maxLength;
-
-  /// The minimum valid length of values for the text field.
-  ///
-  /// Output only.
-  core.int? minLength;
-
-  $TextOptions({
-    this.maxLength,
-    this.minLength,
-  });
-
-  $TextOptions.fromJson(core.Map json_)
-      : this(
-          maxLength: json_.containsKey('maxLength')
-              ? json_['maxLength'] as core.int
-              : null,
-          minLength: json_.containsKey('minLength')
-              ? json_['minLength'] as core.int
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (maxLength != null) 'maxLength': maxLength!,
-        if (minLength != null) 'minLength': minLength!,
-      };
-}
-
-/// Used by:
-///
 /// - language:v1 : TextSpan
 /// - language:v2 : TextSpan
 class $TextSpan {
@@ -18810,7 +19327,6 @@ class $TextSpan {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : ThirdPartyOnlyConfig
 /// - displayvideo:v2 : ThirdPartyOnlyConfig
 /// - displayvideo:v3 : ThirdPartyOnlyConfig
 class $ThirdPartyOnlyConfig {
@@ -18839,7 +19355,6 @@ class $ThirdPartyOnlyConfig {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : ThirdPartyUrl
 /// - displayvideo:v2 : ThirdPartyUrl
 /// - displayvideo:v3 : ThirdPartyUrl
 class $ThirdPartyUrl {
@@ -19018,7 +19533,6 @@ class $TimeOfDay {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : TimeRange
 /// - displayvideo:v2 : TimeRange
 /// - displayvideo:v3 : TimeRange
 class $TimeRange {
@@ -19093,7 +19607,6 @@ class $TimeZone {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : TimerEvent
 /// - displayvideo:v2 : TimerEvent
 /// - displayvideo:v3 : TimerEvent
 class $TimerEvent {
@@ -19237,7 +19750,6 @@ class $TraceSamplingConfig {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : TrackingFloodlightActivityConfig
 /// - displayvideo:v2 : TrackingFloodlightActivityConfig
 /// - displayvideo:v3 : TrackingFloodlightActivityConfig
 class $TrackingFloodlightActivityConfig {
@@ -19335,7 +19847,6 @@ class $TruncatableString {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : UniversalAdId
 /// - displayvideo:v2 : UniversalAdId
 /// - displayvideo:v3 : UniversalAdId
 class $UniversalAdId {
@@ -19435,7 +19946,6 @@ class $UpgradeDistribution {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : UrlAssignedTargetingOptionDetails
 /// - displayvideo:v2 : UrlAssignedTargetingOptionDetails
 /// - displayvideo:v3 : UrlAssignedTargetingOptionDetails
 class $UrlAssignedTargetingOptionDetails {
@@ -19522,7 +20032,6 @@ class $UsageRule {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : UserRewardedContentAssignedTargetingOptionDetails
 /// - displayvideo:v2 : UserRewardedContentAssignedTargetingOptionDetails
 /// - displayvideo:v3 : UserRewardedContentAssignedTargetingOptionDetails
 class $UserRewardedContentAssignedTargetingOptionDetails {
@@ -19568,7 +20077,6 @@ class $UserRewardedContentAssignedTargetingOptionDetails {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : UserRewardedContentTargetingOptionDetails
 /// - displayvideo:v2 : UserRewardedContentTargetingOptionDetails
 /// - displayvideo:v3 : UserRewardedContentTargetingOptionDetails
 class $UserRewardedContentTargetingOptionDetails {
@@ -19956,7 +20464,6 @@ class $VideoPlayerSizeAssignedTargetingOptionDetails {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : VideoPlayerSizeTargetingOptionDetails
 /// - displayvideo:v2 : VideoPlayerSizeTargetingOptionDetails
 /// - displayvideo:v3 : VideoPlayerSizeTargetingOptionDetails
 class $VideoPlayerSizeTargetingOptionDetails {
@@ -20044,7 +20551,6 @@ class $ViewabilityAssignedTargetingOptionDetails {
 
 /// Used by:
 ///
-/// - displayvideo:v1 : ViewabilityTargetingOptionDetails
 /// - displayvideo:v2 : ViewabilityTargetingOptionDetails
 /// - displayvideo:v3 : ViewabilityTargetingOptionDetails
 class $ViewabilityTargetingOptionDetails {
@@ -20212,6 +20718,7 @@ class $VpcSubNetwork {
 /// Used by:
 ///
 /// - firebaseappdistribution:v1 : GoogleLongrunningWaitOperationRequest
+/// - run:v1 : GoogleLongrunningWaitOperationRequest
 /// - run:v2 : GoogleLongrunningWaitOperationRequest
 /// - translate:v3 : WaitOperationRequest
 class $WaitOperationRequest {

@@ -10,11 +10,11 @@
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
-/// Cloud Data Loss Prevention (DLP) - v2
+/// Sensitive Data Protection (DLP) - v2
 ///
-/// Provides methods for detection, risk analysis, and de-identification of
-/// privacy-sensitive fragments in text, images, and Google Cloud Platform
-/// storage repositories.
+/// Discover and protect your sensitive data. A fully managed service designed
+/// to help you discover, classify, and protect your valuable data assets with
+/// ease.
 ///
 /// For more information, see <https://cloud.google.com/dlp/docs/>
 ///
@@ -66,9 +66,10 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-/// Provides methods for detection, risk analysis, and de-identification of
-/// privacy-sensitive fragments in text, images, and Google Cloud Platform
-/// storage repositories.
+/// Discover and protect your sensitive data.
+///
+/// A fully managed service designed to help you discover, classify, and protect
+/// your valuable data assets with ease.
 class DLPApi {
   /// See, edit, configure, and delete your Google Cloud data and see the email
   /// address for your Google Account.
@@ -4786,7 +4787,7 @@ class ProjectsLocationsDlpJobsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the DlpJob resource to be cancelled.
+  /// [name] - Required. The name of the DlpJob resource to be finished.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/dlpJobs/\[^/\]+$`.
   ///
@@ -6719,12 +6720,15 @@ class GooglePrivacyDlpV2BigQueryOptions {
   /// The rest are omitted. The number of rows scanned is rounded down. Must be
   /// between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to
   /// 0. Only one of rows_limit and rows_limit_percent can be specified. Cannot
-  /// be used in conjunction with TimespanConfig.
+  /// be used in conjunction with TimespanConfig. Caution: A
+  /// [known issue](https://cloud.google.com/dlp/docs/known-issues#bq-sampling)
+  /// is causing the `rowsLimitPercent` field to behave unexpectedly. We
+  /// recommend using `rowsLimit` instead.
   core.int? rowsLimitPercent;
 
-  ///
+  /// How to sample the data.
   /// Possible string values are:
-  /// - "SAMPLE_METHOD_UNSPECIFIED"
+  /// - "SAMPLE_METHOD_UNSPECIFIED" : No sampling.
   /// - "TOP" : Scan groups of rows in the order BigQuery provides (default).
   /// Multiple groups of rows may be scanned in parallel, so results may not
   /// appear in the same order the rows are read.
@@ -7427,9 +7431,9 @@ class GooglePrivacyDlpV2CloudStorageOptions {
   /// inclusively. Both 0 and 100 means no limit. Defaults to 0.
   core.int? filesLimitPercent;
 
-  ///
+  /// How to sample the data.
   /// Possible string values are:
-  /// - "SAMPLE_METHOD_UNSPECIFIED"
+  /// - "SAMPLE_METHOD_UNSPECIFIED" : No sampling.
   /// - "TOP" : Scan from the top (default).
   /// - "RANDOM_START" : For each file larger than bytes_limit_per_file,
   /// randomly pick the offset to start scanning. The scanned bytes are
@@ -7794,6 +7798,7 @@ class GooglePrivacyDlpV2Container {
       };
 }
 
+/// Type of content to inspect.
 class GooglePrivacyDlpV2ContentItem {
   /// Content data to inspect or redact.
   ///
@@ -11294,6 +11299,7 @@ class GooglePrivacyDlpV2ImageTransformation {
 
 /// A type of transformation that is applied over images.
 class GooglePrivacyDlpV2ImageTransformations {
+  /// List of transforms to make.
   core.List<GooglePrivacyDlpV2ImageTransformation>? transforms;
 
   GooglePrivacyDlpV2ImageTransformations({
@@ -14404,7 +14410,10 @@ class GooglePrivacyDlpV2RecordCondition {
 
 /// Message for a unique key indicating a record that contains a finding.
 class GooglePrivacyDlpV2RecordKey {
+  /// Datastore key
   GooglePrivacyDlpV2BigQueryKey? bigQueryKey;
+
+  /// Bigquery key
   GooglePrivacyDlpV2DatastoreKey? datastoreKey;
 
   /// Values of identifying columns in the given row.
@@ -15298,6 +15307,8 @@ class GooglePrivacyDlpV2StorageConfig {
 
   /// Hybrid inspection options.
   GooglePrivacyDlpV2HybridOptions? hybridOptions;
+
+  /// Configuration of the timespan of the items to include in scanning.
   GooglePrivacyDlpV2TimespanConfig? timespanConfig;
 
   GooglePrivacyDlpV2StorageConfig({
@@ -15348,6 +15359,7 @@ class GooglePrivacyDlpV2StorageConfig {
 
 /// Storage metadata label to indicate which metadata entry contains findings.
 class GooglePrivacyDlpV2StorageMetadataLabel {
+  /// Label name.
   core.String? key;
 
   GooglePrivacyDlpV2StorageMetadataLabel({

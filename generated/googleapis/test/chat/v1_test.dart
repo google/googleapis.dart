@@ -457,6 +457,40 @@ void checkColor(api.Color o) {
   buildCounterColor--;
 }
 
+core.int buildCounterCompleteImportSpaceRequest = 0;
+api.CompleteImportSpaceRequest buildCompleteImportSpaceRequest() {
+  final o = api.CompleteImportSpaceRequest();
+  buildCounterCompleteImportSpaceRequest++;
+  if (buildCounterCompleteImportSpaceRequest < 3) {}
+  buildCounterCompleteImportSpaceRequest--;
+  return o;
+}
+
+void checkCompleteImportSpaceRequest(api.CompleteImportSpaceRequest o) {
+  buildCounterCompleteImportSpaceRequest++;
+  if (buildCounterCompleteImportSpaceRequest < 3) {}
+  buildCounterCompleteImportSpaceRequest--;
+}
+
+core.int buildCounterCompleteImportSpaceResponse = 0;
+api.CompleteImportSpaceResponse buildCompleteImportSpaceResponse() {
+  final o = api.CompleteImportSpaceResponse();
+  buildCounterCompleteImportSpaceResponse++;
+  if (buildCounterCompleteImportSpaceResponse < 3) {
+    o.space = buildSpace();
+  }
+  buildCounterCompleteImportSpaceResponse--;
+  return o;
+}
+
+void checkCompleteImportSpaceResponse(api.CompleteImportSpaceResponse o) {
+  buildCounterCompleteImportSpaceResponse++;
+  if (buildCounterCompleteImportSpaceResponse < 3) {
+    checkSpace(o.space!);
+  }
+  buildCounterCompleteImportSpaceResponse--;
+}
+
 core.int buildCounterCustomEmoji = 0;
 api.CustomEmoji buildCustomEmoji() {
   final o = api.CustomEmoji();
@@ -1830,6 +1864,28 @@ void checkGoogleAppsCardV1Widgets(api.GoogleAppsCardV1Widgets o) {
   buildCounterGoogleAppsCardV1Widgets--;
 }
 
+core.int buildCounterGroup = 0;
+api.Group buildGroup() {
+  final o = api.Group();
+  buildCounterGroup++;
+  if (buildCounterGroup < 3) {
+    o.name = 'foo';
+  }
+  buildCounterGroup--;
+  return o;
+}
+
+void checkGroup(api.Group o) {
+  buildCounterGroup++;
+  if (buildCounterGroup < 3) {
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGroup--;
+}
+
 core.int buildCounterHostAppDataSourceMarkup = 0;
 api.HostAppDataSourceMarkup buildHostAppDataSourceMarkup() {
   final o = api.HostAppDataSourceMarkup();
@@ -2150,6 +2206,8 @@ api.Membership buildMembership() {
   buildCounterMembership++;
   if (buildCounterMembership < 3) {
     o.createTime = 'foo';
+    o.deleteTime = 'foo';
+    o.groupMember = buildGroup();
     o.member = buildUser();
     o.name = 'foo';
     o.role = 'foo';
@@ -2166,6 +2224,11 @@ void checkMembership(api.Membership o) {
       o.createTime!,
       unittest.equals('foo'),
     );
+    unittest.expect(
+      o.deleteTime!,
+      unittest.equals('foo'),
+    );
+    checkGroup(o.groupMember!);
     checkUser(o.member!);
     unittest.expect(
       o.name!,
@@ -2271,6 +2334,7 @@ api.Message buildMessage() {
     o.lastUpdateTime = 'foo';
     o.matchedUrl = buildMatchedUrl();
     o.name = 'foo';
+    o.privateMessageViewer = buildUser();
     o.quotedMessageMetadata = buildQuotedMessageMetadata();
     o.sender = buildUser();
     o.slashCommand = buildSlashCommand();
@@ -2327,6 +2391,7 @@ void checkMessage(api.Message o) {
       o.name!,
       unittest.equals('foo'),
     );
+    checkUser(o.privateMessageViewer!);
     checkQuotedMessageMetadata(o.quotedMessageMetadata!);
     checkUser(o.sender!);
     checkSlashCommand(o.slashCommand!);
@@ -2603,8 +2668,10 @@ api.Space buildSpace() {
   buildCounterSpace++;
   if (buildCounterSpace < 3) {
     o.adminInstalled = true;
+    o.createTime = 'foo';
     o.displayName = 'foo';
     o.externalUserAllowed = true;
+    o.importMode = true;
     o.name = 'foo';
     o.singleUserBotDm = true;
     o.spaceDetails = buildSpaceDetails();
@@ -2623,10 +2690,15 @@ void checkSpace(api.Space o) {
   if (buildCounterSpace < 3) {
     unittest.expect(o.adminInstalled!, unittest.isTrue);
     unittest.expect(
+      o.createTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
       o.displayName!,
       unittest.equals('foo'),
     );
     unittest.expect(o.externalUserAllowed!, unittest.isTrue);
+    unittest.expect(o.importMode!, unittest.isTrue);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -3078,6 +3150,26 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-CompleteImportSpaceRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCompleteImportSpaceRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CompleteImportSpaceRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkCompleteImportSpaceRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-CompleteImportSpaceResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCompleteImportSpaceResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CompleteImportSpaceResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkCompleteImportSpaceResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-CustomEmoji', () {
     unittest.test('to-json--from-json', () async {
       final o = buildCustomEmoji();
@@ -3495,6 +3587,16 @@ void main() {
       final od = api.GoogleAppsCardV1Widgets.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAppsCardV1Widgets(od);
+    });
+  });
+
+  unittest.group('obj-schema-Group', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGroup();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Group.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGroup(od);
     });
   });
 
@@ -3948,6 +4050,65 @@ void main() {
   });
 
   unittest.group('resource-SpacesResource', () {
+    unittest.test('method--completeImport', () async {
+      final mock = HttpServerMock();
+      final res = api.HangoutsChatApi(mock).spaces;
+      final arg_request = buildCompleteImportSpaceRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.CompleteImportSpaceRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCompleteImportSpaceRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildCompleteImportSpaceResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.completeImport(arg_request, arg_name, $fields: arg_$fields);
+      checkCompleteImportSpaceResponse(
+          response as api.CompleteImportSpaceResponse);
+    });
+
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
       final res = api.HangoutsChatApi(mock).spaces;
@@ -4527,6 +4688,7 @@ void main() {
       final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
+      final arg_showGroups = true;
       final arg_showInvited = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4574,6 +4736,10 @@ void main() {
           unittest.equals(arg_pageToken),
         );
         unittest.expect(
+          queryMap['showGroups']!.first,
+          unittest.equals('$arg_showGroups'),
+        );
+        unittest.expect(
           queryMap['showInvited']!.first,
           unittest.equals('$arg_showInvited'),
         );
@@ -4592,6 +4758,7 @@ void main() {
           filter: arg_filter,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,
+          showGroups: arg_showGroups,
           showInvited: arg_showInvited,
           $fields: arg_$fields);
       checkListMembershipsResponse(response as api.ListMembershipsResponse);

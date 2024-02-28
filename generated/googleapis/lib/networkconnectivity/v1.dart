@@ -1100,7 +1100,7 @@ class ProjectsLocationsGlobalHubsRouteTablesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists route tables in a given project.
+  /// Lists route tables in a given hub.
   ///
   /// Request parameters:
   ///
@@ -1197,7 +1197,7 @@ class ProjectsLocationsGlobalHubsRouteTablesRoutesResource {
     return Route.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Lists routes in a given project.
+  /// Lists routes in a given route table.
   ///
   /// Request parameters:
   ///
@@ -4130,14 +4130,31 @@ class Binding {
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
   /// (primary) that represents all the users of that domain. For example,
-  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a user that has
-  /// been recently deleted. For example,
-  /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
-  /// this value reverts to `user:{emailid}` and the recovered user retains the
-  /// role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a service account
-  /// that has been recently deleted. For example,
+  /// `google.com` or `example.com`. *
+  /// `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workforce identity pool. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`:
+  /// All workforce identities in a group. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All workforce identities with a specific attribute value. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}
+  /// / * `: All identities in a workforce identity pool. *
+  /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workload identity pool. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`:
+  /// A workload identity pool group. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All identities in a workload identity pool with a certain attribute. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}
+  /// / * `: All identities in a workload identity pool. *
+  /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
+  /// identifier) representing a user that has been recently deleted. For
+  /// example, `alice@example.com?uid=123456789012345678901`. If the user is
+  /// recovered, this value reverts to `user:{emailid}` and the recovered user
+  /// retains the role in the binding. *
+  /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus
+  /// unique identifier) representing a service account that has been recently
+  /// deleted. For example,
   /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If
   /// the service account is undeleted, this value reverts to
   /// `serviceAccount:{emailid}` and the undeleted service account retains the
@@ -4146,12 +4163,19 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding.
+  /// the role in the binding. *
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// Deleted single identity in a workforce identity pool. For example,
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
   ///
-  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an
+  /// overview of the IAM roles and permissions, see the
+  /// [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For
+  /// a list of the available pre-defined roles, see
+  /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
   Binding({
@@ -4295,6 +4319,12 @@ class ConsumerPscConnection {
   /// attachments in this service connection map.
   core.String? pscConnectionId;
 
+  /// The URI of the selected subnetwork selected to allocate IP address for
+  /// this connection.
+  ///
+  /// Output only.
+  core.String? selectedSubnetwork;
+
   /// The URI of a service attachment which is the target of the PSC connection.
   core.String? serviceAttachmentUri;
 
@@ -4318,6 +4348,7 @@ class ConsumerPscConnection {
     this.network,
     this.project,
     this.pscConnectionId,
+    this.selectedSubnetwork,
     this.serviceAttachmentUri,
     this.state,
   });
@@ -4351,6 +4382,9 @@ class ConsumerPscConnection {
           pscConnectionId: json_.containsKey('pscConnectionId')
               ? json_['pscConnectionId'] as core.String
               : null,
+          selectedSubnetwork: json_.containsKey('selectedSubnetwork')
+              ? json_['selectedSubnetwork'] as core.String
+              : null,
           serviceAttachmentUri: json_.containsKey('serviceAttachmentUri')
               ? json_['serviceAttachmentUri'] as core.String
               : null,
@@ -4368,6 +4402,8 @@ class ConsumerPscConnection {
         if (network != null) 'network': network!,
         if (project != null) 'project': project!,
         if (pscConnectionId != null) 'pscConnectionId': pscConnectionId!,
+        if (selectedSubnetwork != null)
+          'selectedSubnetwork': selectedSubnetwork!,
         if (serviceAttachmentUri != null)
           'serviceAttachmentUri': serviceAttachmentUri!,
         if (state != null) 'state': state!,
@@ -6346,6 +6382,12 @@ class PscConnection {
   /// The PSC connection id of the PSC forwarding rule.
   core.String? pscConnectionId;
 
+  /// The URI of the subnetwork selected to allocate IP address for this
+  /// connection.
+  ///
+  /// Output only.
+  core.String? selectedSubnetwork;
+
   /// State of the PSC Connection
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : An invalid state as the default case.
@@ -6365,6 +6407,7 @@ class PscConnection {
     this.errorType,
     this.gceOperation,
     this.pscConnectionId,
+    this.selectedSubnetwork,
     this.state,
   });
 
@@ -6396,6 +6439,9 @@ class PscConnection {
           pscConnectionId: json_.containsKey('pscConnectionId')
               ? json_['pscConnectionId'] as core.String
               : null,
+          selectedSubnetwork: json_.containsKey('selectedSubnetwork')
+              ? json_['selectedSubnetwork'] as core.String
+              : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
         );
@@ -6411,6 +6457,8 @@ class PscConnection {
         if (errorType != null) 'errorType': errorType!,
         if (gceOperation != null) 'gceOperation': gceOperation!,
         if (pscConnectionId != null) 'pscConnectionId': pscConnectionId!,
+        if (selectedSubnetwork != null)
+          'selectedSubnetwork': selectedSubnetwork!,
         if (state != null) 'state': state!,
       };
 }

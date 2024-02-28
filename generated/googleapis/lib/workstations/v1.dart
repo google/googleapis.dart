@@ -1735,14 +1735,31 @@ class Binding {
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
   /// (primary) that represents all the users of that domain. For example,
-  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a user that has
-  /// been recently deleted. For example,
-  /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
-  /// this value reverts to `user:{emailid}` and the recovered user retains the
-  /// role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a service account
-  /// that has been recently deleted. For example,
+  /// `google.com` or `example.com`. *
+  /// `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workforce identity pool. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`:
+  /// All workforce identities in a group. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All workforce identities with a specific attribute value. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}
+  /// / * `: All identities in a workforce identity pool. *
+  /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workload identity pool. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`:
+  /// A workload identity pool group. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All identities in a workload identity pool with a certain attribute. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}
+  /// / * `: All identities in a workload identity pool. *
+  /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
+  /// identifier) representing a user that has been recently deleted. For
+  /// example, `alice@example.com?uid=123456789012345678901`. If the user is
+  /// recovered, this value reverts to `user:{emailid}` and the recovered user
+  /// retains the role in the binding. *
+  /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus
+  /// unique identifier) representing a service account that has been recently
+  /// deleted. For example,
   /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If
   /// the service account is undeleted, this value reverts to
   /// `serviceAccount:{emailid}` and the undeleted service account retains the
@@ -1751,12 +1768,19 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding.
+  /// the role in the binding. *
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// Deleted single identity in a workforce identity pool. For example,
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
   ///
-  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an
+  /// overview of the IAM roles and permissions, see the
+  /// [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For
+  /// a list of the available pre-defined roles, see
+  /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
   Binding({
@@ -1927,6 +1951,29 @@ class CustomerEncryptionKey {
         if (kmsKey != null) 'kmsKey': kmsKey!,
         if (kmsKeyServiceAccount != null)
           'kmsKeyServiceAccount': kmsKeyServiceAccount!,
+      };
+}
+
+/// Configuration options for a custom domain.
+class DomainConfig {
+  /// Domain used by Workstations for HTTP ingress.
+  ///
+  /// Immutable.
+  core.String? domain;
+
+  DomainConfig({
+    this.domain,
+  });
+
+  DomainConfig.fromJson(core.Map json_)
+      : this(
+          domain: json_.containsKey('domain')
+              ? json_['domain'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (domain != null) 'domain': domain!,
       };
 }
 
@@ -3136,6 +3183,15 @@ class Workstation {
   /// Output only.
   core.String? host;
 
+  /// The name of the Google Cloud KMS encryption key used to encrypt this
+  /// workstation.
+  ///
+  /// The KMS key can only be configured in the WorkstationConfig. The expected
+  /// format is `projects / * /locations / * /keyRings / * /cryptoKeys / * `.
+  ///
+  /// Output only.
+  core.String? kmsKey;
+
   /// [Labels](https://cloud.google.com/workstations/docs/label-resources) that
   /// are applied to the workstation and that are also propagated to the
   /// underlying Compute Engine resources.
@@ -3192,6 +3248,7 @@ class Workstation {
     this.env,
     this.etag,
     this.host,
+    this.kmsKey,
     this.labels,
     this.name,
     this.reconciling,
@@ -3231,6 +3288,9 @@ class Workstation {
               : null,
           etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
           host: json_.containsKey('host') ? json_['host'] as core.String : null,
+          kmsKey: json_.containsKey('kmsKey')
+              ? json_['kmsKey'] as core.String
+              : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
                   (key, value) => core.MapEntry(
@@ -3262,6 +3322,7 @@ class Workstation {
         if (env != null) 'env': env!,
         if (etag != null) 'etag': etag!,
         if (host != null) 'host': host!,
+        if (kmsKey != null) 'kmsKey': kmsKey!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (reconciling != null) 'reconciling': reconciling!,
@@ -3318,6 +3379,11 @@ class WorkstationCluster {
   ///
   /// Optional.
   core.String? displayName;
+
+  /// Configuration options for a custom domain.
+  ///
+  /// Optional.
+  DomainConfig? domainConfig;
 
   /// Checksum computed by the server.
   ///
@@ -3382,6 +3448,7 @@ class WorkstationCluster {
     this.degraded,
     this.deleteTime,
     this.displayName,
+    this.domainConfig,
     this.etag,
     this.labels,
     this.name,
@@ -3425,6 +3492,10 @@ class WorkstationCluster {
           displayName: json_.containsKey('displayName')
               ? json_['displayName'] as core.String
               : null,
+          domainConfig: json_.containsKey('domainConfig')
+              ? DomainConfig.fromJson(
+                  json_['domainConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
           etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
           labels: json_.containsKey('labels')
               ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
@@ -3462,6 +3533,7 @@ class WorkstationCluster {
         if (degraded != null) 'degraded': degraded!,
         if (deleteTime != null) 'deleteTime': deleteTime!,
         if (displayName != null) 'displayName': displayName!,
+        if (domainConfig != null) 'domainConfig': domainConfig!,
         if (etag != null) 'etag': etag!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
@@ -3519,10 +3591,30 @@ class WorkstationConfig {
   /// Output only.
   core.String? deleteTime;
 
+  /// Disables support for plain TCP connections in the workstation.
+  ///
+  /// By default the service supports TCP connections via a websocket relay.
+  /// Setting this option to true disables that relay, which prevents the usage
+  /// of services that require plain tcp connections, such as ssh. When enabled,
+  /// all communication must occur over https or wss.
+  ///
+  /// Optional.
+  core.bool? disableTcpConnections;
+
   /// Human-readable name for this workstation configuration.
   ///
   /// Optional.
   core.String? displayName;
+
+  /// Whether to enable Linux `auditd` logging on the workstation.
+  ///
+  /// When enabled, a service account must also be specified that has
+  /// `logging.buckets.write` permission on the project. Operating system audit
+  /// logging is distinct from
+  /// [Cloud Audit Logs](https://cloud.google.com/workstations/docs/audit-logging).
+  ///
+  /// Optional.
+  core.bool? enableAuditAgent;
 
   /// Encrypts resources of this workstation configuration using a
   /// customer-managed encryption key (CMEK).
@@ -3646,7 +3738,9 @@ class WorkstationConfig {
     this.createTime,
     this.degraded,
     this.deleteTime,
+    this.disableTcpConnections,
     this.displayName,
+    this.enableAuditAgent,
     this.encryptionKey,
     this.etag,
     this.host,
@@ -3692,8 +3786,14 @@ class WorkstationConfig {
           deleteTime: json_.containsKey('deleteTime')
               ? json_['deleteTime'] as core.String
               : null,
+          disableTcpConnections: json_.containsKey('disableTcpConnections')
+              ? json_['disableTcpConnections'] as core.bool
+              : null,
           displayName: json_.containsKey('displayName')
               ? json_['displayName'] as core.String
+              : null,
+          enableAuditAgent: json_.containsKey('enableAuditAgent')
+              ? json_['enableAuditAgent'] as core.bool
               : null,
           encryptionKey: json_.containsKey('encryptionKey')
               ? CustomerEncryptionKey.fromJson(
@@ -3752,7 +3852,10 @@ class WorkstationConfig {
         if (createTime != null) 'createTime': createTime!,
         if (degraded != null) 'degraded': degraded!,
         if (deleteTime != null) 'deleteTime': deleteTime!,
+        if (disableTcpConnections != null)
+          'disableTcpConnections': disableTcpConnections!,
         if (displayName != null) 'displayName': displayName!,
+        if (enableAuditAgent != null) 'enableAuditAgent': enableAuditAgent!,
         if (encryptionKey != null) 'encryptionKey': encryptionKey!,
         if (etag != null) 'etag': etag!,
         if (host != null) 'host': host!,

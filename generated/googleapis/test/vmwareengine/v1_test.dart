@@ -2184,6 +2184,23 @@ void checkUnnamed47(core.List<core.String> o) {
   );
 }
 
+core.List<core.String> buildUnnamed48() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed48(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterNodeType = 0;
 api.NodeType buildNodeType() {
   final o = api.NodeType();
@@ -2193,6 +2210,8 @@ api.NodeType buildNodeType() {
     o.capabilities = buildUnnamed47();
     o.diskSizeGb = 42;
     o.displayName = 'foo';
+    o.families = buildUnnamed48();
+    o.kind = 'foo';
     o.memoryGb = 42;
     o.name = 'foo';
     o.nodeTypeId = 'foo';
@@ -2214,6 +2233,11 @@ void checkNodeType(api.NodeType o) {
     );
     unittest.expect(
       o.displayName!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed48(o.families!);
+    unittest.expect(
+      o.kind!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -2304,7 +2328,7 @@ void checkNsx(api.Nsx o) {
   buildCounterNsx--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed48() => {
+core.Map<core.String, core.Object?> buildUnnamed49() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -2317,7 +2341,7 @@ core.Map<core.String, core.Object?> buildUnnamed48() => {
       },
     };
 
-void checkUnnamed48(core.Map<core.String, core.Object?> o) {
+void checkUnnamed49(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -2349,7 +2373,7 @@ void checkUnnamed48(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.Map<core.String, core.Object?> buildUnnamed49() => {
+core.Map<core.String, core.Object?> buildUnnamed50() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -2362,7 +2386,7 @@ core.Map<core.String, core.Object?> buildUnnamed49() => {
       },
     };
 
-void checkUnnamed49(core.Map<core.String, core.Object?> o) {
+void checkUnnamed50(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -2401,9 +2425,9 @@ api.Operation buildOperation() {
   if (buildCounterOperation < 3) {
     o.done = true;
     o.error = buildStatus();
-    o.metadata = buildUnnamed48();
+    o.metadata = buildUnnamed49();
     o.name = 'foo';
-    o.response = buildUnnamed49();
+    o.response = buildUnnamed50();
   }
   buildCounterOperation--;
   return o;
@@ -2414,12 +2438,12 @@ void checkOperation(api.Operation o) {
   if (buildCounterOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkStatus(o.error!);
-    checkUnnamed48(o.metadata!);
+    checkUnnamed49(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed49(o.response!);
+    checkUnnamed50(o.response!);
   }
   buildCounterOperation--;
 }
@@ -2468,23 +2492,23 @@ void checkPeeringRoute(api.PeeringRoute o) {
   buildCounterPeeringRoute--;
 }
 
-core.List<api.AuditConfig> buildUnnamed50() => [
+core.List<api.AuditConfig> buildUnnamed51() => [
       buildAuditConfig(),
       buildAuditConfig(),
     ];
 
-void checkUnnamed50(core.List<api.AuditConfig> o) {
+void checkUnnamed51(core.List<api.AuditConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAuditConfig(o[0]);
   checkAuditConfig(o[1]);
 }
 
-core.List<api.Binding> buildUnnamed51() => [
+core.List<api.Binding> buildUnnamed52() => [
       buildBinding(),
       buildBinding(),
     ];
 
-void checkUnnamed51(core.List<api.Binding> o) {
+void checkUnnamed52(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBinding(o[0]);
   checkBinding(o[1]);
@@ -2495,8 +2519,8 @@ api.Policy buildPolicy() {
   final o = api.Policy();
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    o.auditConfigs = buildUnnamed50();
-    o.bindings = buildUnnamed51();
+    o.auditConfigs = buildUnnamed51();
+    o.bindings = buildUnnamed52();
     o.etag = 'foo';
     o.version = 42;
   }
@@ -2507,8 +2531,8 @@ api.Policy buildPolicy() {
 void checkPolicy(api.Policy o) {
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    checkUnnamed50(o.auditConfigs!);
-    checkUnnamed51(o.bindings!);
+    checkUnnamed51(o.auditConfigs!);
+    checkUnnamed52(o.bindings!);
     unittest.expect(
       o.etag!,
       unittest.equals('foo'),
@@ -2823,7 +2847,7 @@ void checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed52() => {
+core.Map<core.String, core.Object?> buildUnnamed53() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -2836,7 +2860,7 @@ core.Map<core.String, core.Object?> buildUnnamed52() => {
       },
     };
 
-void checkUnnamed52(core.Map<core.String, core.Object?> o) {
+void checkUnnamed53(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o['x']!) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
@@ -2868,15 +2892,15 @@ void checkUnnamed52(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed53() => [
-      buildUnnamed52(),
-      buildUnnamed52(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed54() => [
+      buildUnnamed53(),
+      buildUnnamed53(),
     ];
 
-void checkUnnamed53(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed54(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed52(o[0]);
-  checkUnnamed52(o[1]);
+  checkUnnamed53(o[0]);
+  checkUnnamed53(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -2885,7 +2909,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed53();
+    o.details = buildUnnamed54();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -2899,7 +2923,7 @@ void checkStatus(api.Status o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed53(o.details!);
+    checkUnnamed54(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -2982,42 +3006,6 @@ void checkSubnet(api.Subnet o) {
   buildCounterSubnet--;
 }
 
-core.List<core.String> buildUnnamed54() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed54(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.int buildCounterTestIamPermissionsRequest = 0;
-api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
-  final o = api.TestIamPermissionsRequest();
-  buildCounterTestIamPermissionsRequest++;
-  if (buildCounterTestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed54();
-  }
-  buildCounterTestIamPermissionsRequest--;
-  return o;
-}
-
-void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
-  buildCounterTestIamPermissionsRequest++;
-  if (buildCounterTestIamPermissionsRequest < 3) {
-    checkUnnamed54(o.permissions!);
-  }
-  buildCounterTestIamPermissionsRequest--;
-}
-
 core.List<core.String> buildUnnamed55() => [
       'foo',
       'foo',
@@ -3035,12 +3023,48 @@ void checkUnnamed55(core.List<core.String> o) {
   );
 }
 
+core.int buildCounterTestIamPermissionsRequest = 0;
+api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
+  final o = api.TestIamPermissionsRequest();
+  buildCounterTestIamPermissionsRequest++;
+  if (buildCounterTestIamPermissionsRequest < 3) {
+    o.permissions = buildUnnamed55();
+  }
+  buildCounterTestIamPermissionsRequest--;
+  return o;
+}
+
+void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
+  buildCounterTestIamPermissionsRequest++;
+  if (buildCounterTestIamPermissionsRequest < 3) {
+    checkUnnamed55(o.permissions!);
+  }
+  buildCounterTestIamPermissionsRequest--;
+}
+
+core.List<core.String> buildUnnamed56() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed56(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterTestIamPermissionsResponse = 0;
 api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
   final o = api.TestIamPermissionsResponse();
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed55();
+    o.permissions = buildUnnamed56();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
@@ -3049,7 +3073,7 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
 void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    checkUnnamed55(o.permissions!);
+    checkUnnamed56(o.permissions!);
   }
   buildCounterTestIamPermissionsResponse--;
 }
@@ -3113,12 +3137,12 @@ void checkVcenter(api.Vcenter o) {
   buildCounterVcenter--;
 }
 
-core.List<api.VpcNetwork> buildUnnamed56() => [
+core.List<api.VpcNetwork> buildUnnamed57() => [
       buildVpcNetwork(),
       buildVpcNetwork(),
     ];
 
-void checkUnnamed56(core.List<api.VpcNetwork> o) {
+void checkUnnamed57(core.List<api.VpcNetwork> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVpcNetwork(o[0]);
   checkVpcNetwork(o[1]);
@@ -3137,7 +3161,7 @@ api.VmwareEngineNetwork buildVmwareEngineNetwork() {
     o.type = 'foo';
     o.uid = 'foo';
     o.updateTime = 'foo';
-    o.vpcNetworks = buildUnnamed56();
+    o.vpcNetworks = buildUnnamed57();
   }
   buildCounterVmwareEngineNetwork--;
   return o;
@@ -3178,7 +3202,7 @@ void checkVmwareEngineNetwork(api.VmwareEngineNetwork o) {
       o.updateTime!,
       unittest.equals('foo'),
     );
-    checkUnnamed56(o.vpcNetworks!);
+    checkUnnamed57(o.vpcNetworks!);
   }
   buildCounterVmwareEngineNetwork--;
 }
@@ -3932,6 +3956,59 @@ void main() {
       checkLocation(response as api.Location);
     });
 
+    unittest.test('method--getDnsBindPermission', () async {
+      final mock = HttpServerMock();
+      final res = api.VMwareEngineApi(mock).projects.locations;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildDnsBindPermission());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.getDnsBindPermission(arg_name, $fields: arg_$fields);
+      checkDnsBindPermission(response as api.DnsBindPermission);
+    });
+
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.VMwareEngineApi(mock).projects.locations;
@@ -4004,67 +4081,11 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsGlobalResource', () {
-    unittest.test('method--getDnsBindPermission', () async {
-      final mock = HttpServerMock();
-      final res = api.VMwareEngineApi(mock).projects.locations.global;
-      final arg_name = 'foo';
-      final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v1/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
-
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
-
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
-          }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
-
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildDnsBindPermission());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.getDnsBindPermission(arg_name, $fields: arg_$fields);
-      checkDnsBindPermission(response as api.DnsBindPermission);
-    });
-  });
-
-  unittest.group('resource-ProjectsLocationsGlobalDnsBindPermissionResource',
-      () {
+  unittest.group('resource-ProjectsLocationsDnsBindPermissionResource', () {
     unittest.test('method--grant', () async {
       final mock = HttpServerMock();
       final res =
-          api.VMwareEngineApi(mock).projects.locations.global.dnsBindPermission;
+          api.VMwareEngineApi(mock).projects.locations.dnsBindPermission;
       final arg_request = buildGrantDnsBindPermissionRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -4123,7 +4144,7 @@ void main() {
     unittest.test('method--revoke', () async {
       final mock = HttpServerMock();
       final res =
-          api.VMwareEngineApi(mock).projects.locations.global.dnsBindPermission;
+          api.VMwareEngineApi(mock).projects.locations.dnsBindPermission;
       final arg_request = buildRevokeDnsBindPermissionRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
@@ -4180,11 +4201,10 @@ void main() {
     });
   });
 
-  unittest.group('resource-ProjectsLocationsGlobalNetworkPeeringsResource', () {
+  unittest.group('resource-ProjectsLocationsNetworkPeeringsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMwareEngineApi(mock).projects.locations.global.networkPeerings;
+      final res = api.VMwareEngineApi(mock).projects.locations.networkPeerings;
       final arg_request = buildNetworkPeering();
       final arg_parent = 'foo';
       final arg_networkPeeringId = 'foo';
@@ -4254,8 +4274,7 @@ void main() {
 
     unittest.test('method--delete', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMwareEngineApi(mock).projects.locations.global.networkPeerings;
+      final res = api.VMwareEngineApi(mock).projects.locations.networkPeerings;
       final arg_name = 'foo';
       final arg_requestId = 'foo';
       final arg_$fields = 'foo';
@@ -4313,8 +4332,7 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMwareEngineApi(mock).projects.locations.global.networkPeerings;
+      final res = api.VMwareEngineApi(mock).projects.locations.networkPeerings;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4366,8 +4384,7 @@ void main() {
 
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMwareEngineApi(mock).projects.locations.global.networkPeerings;
+      final res = api.VMwareEngineApi(mock).projects.locations.networkPeerings;
       final arg_parent = 'foo';
       final arg_filter = 'foo';
       final arg_orderBy = 'foo';
@@ -4445,8 +4462,7 @@ void main() {
 
     unittest.test('method--patch', () async {
       final mock = HttpServerMock();
-      final res =
-          api.VMwareEngineApi(mock).projects.locations.global.networkPeerings;
+      final res = api.VMwareEngineApi(mock).projects.locations.networkPeerings;
       final arg_request = buildNetworkPeering();
       final arg_name = 'foo';
       final arg_requestId = 'foo';
@@ -4516,14 +4532,12 @@ void main() {
   });
 
   unittest.group(
-      'resource-ProjectsLocationsGlobalNetworkPeeringsPeeringRoutesResource',
-      () {
+      'resource-ProjectsLocationsNetworkPeeringsPeeringRoutesResource', () {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.VMwareEngineApi(mock)
           .projects
           .locations
-          .global
           .networkPeerings
           .peeringRoutes;
       final arg_parent = 'foo';

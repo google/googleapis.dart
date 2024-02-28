@@ -10,11 +10,12 @@
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
-/// Retail API - v2
+/// Vertex AI Search for Retail API - v2
 ///
-/// Cloud Retail service enables customers to build end-to-end personalized
-/// recommendation systems without requiring a high level of expertise in
-/// machine learning, recommendation system, or Google Cloud.
+/// Vertex AI Search for Retail API is made up of Retail Search, Browse and
+/// Recommendations. These discovery AI solutions help you implement
+/// personalized search, browse and recommendations, based on machine learning
+/// models, across your websites and mobile applications.
 ///
 /// For more information, see <https://cloud.google.com/recommendations>
 ///
@@ -51,9 +52,12 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-/// Cloud Retail service enables customers to build end-to-end personalized
-/// recommendation systems without requiring a high level of expertise in
-/// machine learning, recommendation system, or Google Cloud.
+/// Vertex AI Search for Retail API is made up of Retail Search, Browse and
+/// Recommendations.
+///
+/// These discovery AI solutions help you implement personalized search, browse
+/// and recommendations, based on machine learning models, across your websites
+/// and mobile applications.
 class CloudRetailApi {
   /// See, edit, configure, and delete your Google Cloud data and see the email
   /// address for your Google Account.
@@ -216,6 +220,53 @@ class ProjectsLocationsCatalogsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRetailV2CompleteQueryResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Exports analytics metrics.
+  ///
+  /// `Operation.response` is of type `ExportAnalyticsMetricsResponse`.
+  /// `Operation.metadata` is of type `ExportMetadata`.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [catalog] - Required. Full resource name of the parent catalog. Expected
+  /// format: `projects / * /locations / * /catalogs / * `
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> exportAnalyticsMetrics(
+    GoogleCloudRetailV2ExportAnalyticsMetricsRequest request,
+    core.String catalog, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v2/' + core.Uri.encodeFull('$catalog') + ':exportAnalyticsMetrics';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 
@@ -3960,6 +4011,10 @@ class GoogleCloudRetailV2CatalogAttributeFacetConfig {
   core.List<GoogleCloudRetailV2CatalogAttributeFacetConfigIgnoredFacetValues>?
       ignoredFacetValues;
 
+  /// Use this field only if you want to merge a facet key into another facet
+  /// key.
+  GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacet? mergedFacet;
+
   /// Each instance replaces a list of facet values by a merged facet value.
   ///
   /// If a facet value is not in any list, then it will stay the same. To avoid
@@ -3971,10 +4026,18 @@ class GoogleCloudRetailV2CatalogAttributeFacetConfig {
   core.List<GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacetValue>?
       mergedFacetValues;
 
+  /// Set this field only if you want to rerank based on facet values engaged by
+  /// the user for the current key.
+  ///
+  /// This option is only possible for custom facetable textual keys.
+  GoogleCloudRetailV2CatalogAttributeFacetConfigRerankConfig? rerankConfig;
+
   GoogleCloudRetailV2CatalogAttributeFacetConfig({
     this.facetIntervals,
     this.ignoredFacetValues,
+    this.mergedFacet,
     this.mergedFacetValues,
+    this.rerankConfig,
   });
 
   GoogleCloudRetailV2CatalogAttributeFacetConfig.fromJson(core.Map json_)
@@ -3993,6 +4056,11 @@ class GoogleCloudRetailV2CatalogAttributeFacetConfig {
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          mergedFacet: json_.containsKey('mergedFacet')
+              ? GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacet
+                  .fromJson(json_['mergedFacet']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           mergedFacetValues: json_.containsKey('mergedFacetValues')
               ? (json_['mergedFacetValues'] as core.List)
                   .map((value) =>
@@ -4001,13 +4069,20 @@ class GoogleCloudRetailV2CatalogAttributeFacetConfig {
                               value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          rerankConfig: json_.containsKey('rerankConfig')
+              ? GoogleCloudRetailV2CatalogAttributeFacetConfigRerankConfig
+                  .fromJson(json_['rerankConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (facetIntervals != null) 'facetIntervals': facetIntervals!,
         if (ignoredFacetValues != null)
           'ignoredFacetValues': ignoredFacetValues!,
+        if (mergedFacet != null) 'mergedFacet': mergedFacet!,
         if (mergedFacetValues != null) 'mergedFacetValues': mergedFacetValues!,
+        if (rerankConfig != null) 'rerankConfig': rerankConfig!,
       };
 }
 
@@ -4063,6 +4138,60 @@ class GoogleCloudRetailV2CatalogAttributeFacetConfigIgnoredFacetValues {
       };
 }
 
+/// The current facet key (i.e. attribute config) maps into the
+/// merged_facet_key.
+///
+/// A facet key can have at most one child. The current facet key and the merged
+/// facet key need both to be textual custom attributes or both numerical custom
+/// attributes (same type).
+class GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacet {
+  /// The merged facet key should be a valid facet key that is different than
+  /// the facet key of the current catalog attribute.
+  ///
+  /// We refer this is merged facet key as the child of the current catalog
+  /// attribute. This merged facet key can't be a parent of another facet key
+  /// (i.e. no directed path of length 2). This merged facet key needs to be
+  /// either a textual custom attribute or a numerical custom attribute.
+  core.String? mergedFacetKey;
+
+  /// Each instance is a list of facet values that map into the same (possibly
+  /// different) merged facet value.
+  ///
+  /// For the current attribute config, each facet value should map to at most
+  /// one merged facet value.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.List<GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacetValue>?
+      mergedFacetValues;
+
+  GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacet({
+    this.mergedFacetKey,
+    this.mergedFacetValues,
+  });
+
+  GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacet.fromJson(
+      core.Map json_)
+      : this(
+          mergedFacetKey: json_.containsKey('mergedFacetKey')
+              ? json_['mergedFacetKey'] as core.String
+              : null,
+          mergedFacetValues: json_.containsKey('mergedFacetValues')
+              ? (json_['mergedFacetValues'] as core.List)
+                  .map((value) =>
+                      GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacetValue
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (mergedFacetKey != null) 'mergedFacetKey': mergedFacetKey!,
+        if (mergedFacetValues != null) 'mergedFacetValues': mergedFacetValues!,
+      };
+}
+
 /// Replaces a set of textual facet values by the same (possibly different)
 /// merged facet value.
 ///
@@ -4102,6 +4231,50 @@ class GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacetValue {
   core.Map<core.String, core.dynamic> toJson() => {
         if (mergedValue != null) 'mergedValue': mergedValue!,
         if (values != null) 'values': values!,
+      };
+}
+
+/// Options to rerank based on facet values engaged by the user for the current
+/// key.
+///
+/// That key needs to be a custom textual key and facetable. To use this
+/// control, you also need to pass all the facet keys engaged by the user in the
+/// request using the field \[SearchRequest.FacetSpec\]. In particular, if you
+/// don't pass the facet keys engaged that you want to rerank on, this control
+/// won't be effective. Moreover, to obtain better results, the facet values
+/// that you want to rerank on should be close to English (ideally made of
+/// words, underscores, and spaces).
+class GoogleCloudRetailV2CatalogAttributeFacetConfigRerankConfig {
+  /// If empty, rerank on all facet values for the current key.
+  ///
+  /// Otherwise, will rerank on the facet values from this list only.
+  core.List<core.String>? facetValues;
+
+  /// If set to true, then we also rerank the dynamic facets based on the facet
+  /// values engaged by the user for the current attribute key during serving.
+  core.bool? rerankFacet;
+
+  GoogleCloudRetailV2CatalogAttributeFacetConfigRerankConfig({
+    this.facetValues,
+    this.rerankFacet,
+  });
+
+  GoogleCloudRetailV2CatalogAttributeFacetConfigRerankConfig.fromJson(
+      core.Map json_)
+      : this(
+          facetValues: json_.containsKey('facetValues')
+              ? (json_['facetValues'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          rerankFacet: json_.containsKey('rerankFacet')
+              ? json_['rerankFacet'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (facetValues != null) 'facetValues': facetValues!,
+        if (rerankFacet != null) 'rerankFacet': rerankFacet!,
       };
 }
 
@@ -4908,6 +5081,48 @@ class GoogleCloudRetailV2ExperimentInfoServingConfigExperiment {
       };
 }
 
+/// Request message for the `ExportAnalyticsMetrics` method.
+class GoogleCloudRetailV2ExportAnalyticsMetricsRequest {
+  /// A filtering expression to specify restrictions on returned metrics.
+  ///
+  /// The expression is a sequence of terms. Each term applies a restriction to
+  /// the returned metrics. Use this expression to restrict results to a
+  /// specific time range. Currently we expect only one types of fields: *
+  /// `timestamp`: This can be specified twice, once with a less than operator
+  /// and once with a greater than operator. The `timestamp` restriction should
+  /// result in one, contiguous, valid, `timestamp` range. Some examples of
+  /// valid filters expressions: * Example 1: `timestamp >
+  /// "2012-04-23T18:25:43.511Z" timestamp < "2012-04-23T18:30:43.511Z"` *
+  /// Example 2: `timestamp > "2012-04-23T18:25:43.511Z"`
+  core.String? filter;
+
+  /// The output location of the data.
+  ///
+  /// Required.
+  GoogleCloudRetailV2OutputConfig? outputConfig;
+
+  GoogleCloudRetailV2ExportAnalyticsMetricsRequest({
+    this.filter,
+    this.outputConfig,
+  });
+
+  GoogleCloudRetailV2ExportAnalyticsMetricsRequest.fromJson(core.Map json_)
+      : this(
+          filter: json_.containsKey('filter')
+              ? json_['filter'] as core.String
+              : null,
+          outputConfig: json_.containsKey('outputConfig')
+              ? GoogleCloudRetailV2OutputConfig.fromJson(
+                  json_['outputConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (filter != null) 'filter': filter!,
+        if (outputConfig != null) 'outputConfig': outputConfig!,
+      };
+}
+
 /// Fulfillment information, such as the store IDs for in-store pickup or region
 /// IDs for different shipping methods.
 class GoogleCloudRetailV2FulfillmentInfo {
@@ -5198,7 +5413,8 @@ class GoogleCloudRetailV2ImportProductsRequest {
 
   /// Indicates which fields in the provided imported `products` to update.
   ///
-  /// If not set, all fields are updated.
+  /// If not set, all fields are updated. If provided, only the existing product
+  /// fields are updated. Missing products will not be created.
   core.String? updateMask;
 
   GoogleCloudRetailV2ImportProductsRequest({
@@ -5924,6 +6140,115 @@ class GoogleCloudRetailV2ModelServingConfigList {
       };
 }
 
+/// The output configuration setting.
+class GoogleCloudRetailV2OutputConfig {
+  /// The BigQuery location where the output is to be written to.
+  GoogleCloudRetailV2OutputConfigBigQueryDestination? bigqueryDestination;
+
+  /// The Google Cloud Storage location where the output is to be written to.
+  GoogleCloudRetailV2OutputConfigGcsDestination? gcsDestination;
+
+  GoogleCloudRetailV2OutputConfig({
+    this.bigqueryDestination,
+    this.gcsDestination,
+  });
+
+  GoogleCloudRetailV2OutputConfig.fromJson(core.Map json_)
+      : this(
+          bigqueryDestination: json_.containsKey('bigqueryDestination')
+              ? GoogleCloudRetailV2OutputConfigBigQueryDestination.fromJson(
+                  json_['bigqueryDestination']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          gcsDestination: json_.containsKey('gcsDestination')
+              ? GoogleCloudRetailV2OutputConfigGcsDestination.fromJson(
+                  json_['gcsDestination']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (bigqueryDestination != null)
+          'bigqueryDestination': bigqueryDestination!,
+        if (gcsDestination != null) 'gcsDestination': gcsDestination!,
+      };
+}
+
+/// The BigQuery output destination configuration.
+class GoogleCloudRetailV2OutputConfigBigQueryDestination {
+  /// The ID of a BigQuery Dataset.
+  ///
+  /// Required.
+  core.String? datasetId;
+
+  /// The prefix of exported BigQuery tables.
+  ///
+  /// Required.
+  core.String? tableIdPrefix;
+
+  /// Describes the table type.
+  ///
+  /// The following values are supported: * `table`: A BigQuery native table. *
+  /// `view`: A virtual table defined by a SQL query.
+  ///
+  /// Required.
+  core.String? tableType;
+
+  GoogleCloudRetailV2OutputConfigBigQueryDestination({
+    this.datasetId,
+    this.tableIdPrefix,
+    this.tableType,
+  });
+
+  GoogleCloudRetailV2OutputConfigBigQueryDestination.fromJson(core.Map json_)
+      : this(
+          datasetId: json_.containsKey('datasetId')
+              ? json_['datasetId'] as core.String
+              : null,
+          tableIdPrefix: json_.containsKey('tableIdPrefix')
+              ? json_['tableIdPrefix'] as core.String
+              : null,
+          tableType: json_.containsKey('tableType')
+              ? json_['tableType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (datasetId != null) 'datasetId': datasetId!,
+        if (tableIdPrefix != null) 'tableIdPrefix': tableIdPrefix!,
+        if (tableType != null) 'tableType': tableType!,
+      };
+}
+
+/// The Google Cloud Storage output destination configuration.
+class GoogleCloudRetailV2OutputConfigGcsDestination {
+  /// The output uri prefix for saving output data to json files.
+  ///
+  /// Some mapping examples are as follows: output_uri_prefix sample
+  /// output(assuming the object is foo.json) ========================
+  /// ============================================= gs://bucket/
+  /// gs://bucket/foo.json gs://bucket/folder/ gs://bucket/folder/foo.json
+  /// gs://bucket/folder/item_ gs://bucket/folder/item_foo.json
+  ///
+  /// Required.
+  core.String? outputUriPrefix;
+
+  GoogleCloudRetailV2OutputConfigGcsDestination({
+    this.outputUriPrefix,
+  });
+
+  GoogleCloudRetailV2OutputConfigGcsDestination.fromJson(core.Map json_)
+      : this(
+          outputUriPrefix: json_.containsKey('outputUriPrefix')
+              ? json_['outputUriPrefix'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (outputUriPrefix != null) 'outputUriPrefix': outputUriPrefix!,
+      };
+}
+
 /// Request for pausing training of a model.
 typedef GoogleCloudRetailV2PauseModelRequest = $Empty;
 
@@ -6396,11 +6721,12 @@ class GoogleCloudRetailV2Product {
   /// represented as: "categories": \[ "Shoes & Accessories \> Shoes", "Sports &
   /// Fitness \> Athletic Clothing \> Shoes" \] Must be set for Type.PRIMARY
   /// Product otherwise an INVALID_ARGUMENT error is returned. At most 250
-  /// values are allowed per Product. Empty values are not allowed. Each value
-  /// must be a UTF-8 encoded string with a length limit of 5,000 characters.
-  /// Otherwise, an INVALID_ARGUMENT error is returned. Corresponding
-  /// properties: Google Merchant Center property google_product_category.
-  /// Schema.org property [Product.category](https://schema.org/category).
+  /// values are allowed per Product unless overridden via pantheon UI. Empty
+  /// values are not allowed. Each value must be a UTF-8 encoded string with a
+  /// length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is
+  /// returned. Corresponding properties: Google Merchant Center property
+  /// google_product_category. Schema.org property
+  /// [Product.category](https://schema.org/category).
   /// \[mc_google_product_category\]:
   /// https://support.google.com/merchants/answer/6324436
   core.List<core.String>? categories;
@@ -6441,18 +6767,17 @@ class GoogleCloudRetailV2Product {
   /// Schema.org property [Product.description](https://schema.org/description).
   core.String? description;
 
-  /// The timestamp when this product becomes unavailable for
-  /// SearchService.Search.
+  /// Note that this field is applied in the following ways: * If the Product is
+  /// already expired when it is uploaded, this product is not indexed for
+  /// search.
   ///
-  /// Note that this is only applicable to Type.PRIMARY and Type.COLLECTION, and
-  /// ignored for Type.VARIANT. In general, we suggest the users to delete the
-  /// stale products explicitly, instead of using this field to determine
-  /// staleness. If it is set, the Product is not available for
-  /// SearchService.Search after expire_time. However, the product can still be
-  /// retrieved by ProductService.GetProduct and ProductService.ListProducts.
-  /// expire_time must be later than available_time and publish_time, otherwise
-  /// an INVALID_ARGUMENT error is thrown. Corresponding properties: Google
-  /// Merchant Center property
+  /// * If the Product is not expired when it is uploaded, only the
+  /// Type.PRIMARY's and Type.COLLECTION's expireTime is respected, and
+  /// Type.VARIANT's expireTime is not used. In general, we suggest the users to
+  /// delete the stale products explicitly, instead of using this field to
+  /// determine staleness. expire_time must be later than available_time and
+  /// publish_time, otherwise an INVALID_ARGUMENT error is thrown. Corresponding
+  /// properties: Google Merchant Center property
   /// [expiration_date](https://support.google.com/merchants/answer/6324499).
   core.String? expireTime;
 

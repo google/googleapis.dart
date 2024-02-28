@@ -89,6 +89,132 @@ class ProjectsLocationsConnectionsResource {
   ProjectsLocationsConnectionsResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Reports readiness status of the connector.
+  ///
+  /// Similar logic to GetStatus but modified for kubernetes health check to
+  /// understand.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - null
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CheckReadinessResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CheckReadinessResponse> checkReadiness(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':checkReadiness';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return CheckReadinessResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Reports the status of the connection.
+  ///
+  /// Note that when the connection is in a state that is not ACTIVE, the
+  /// implementation of this RPC method must return a Status with the
+  /// corresponding State instead of returning a gRPC status code that is not
+  /// "OK", which indicates that ConnectionStatus itself, not the connection,
+  /// failed.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - null
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CheckStatusResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CheckStatusResponse> checkStatus(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':checkStatus';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return CheckStatusResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// ExchangeAuthCode exchanges the OAuth authorization code (and other
+  /// necessary data) for an access token (and associated credentials).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - null
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ExchangeAuthCodeResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ExchangeAuthCodeResponse> exchangeAuthCode(
+    ExchangeAuthCodeRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':exchangeAuthCode';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return ExchangeAuthCodeResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Executes a SQL statement specified in the body of the request.
   ///
   /// An example of this SQL statement in the case of Salesforce connector would
@@ -133,6 +259,49 @@ class ProjectsLocationsConnectionsResource {
       queryParams: queryParams_,
     );
     return ExecuteSqlQueryResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// RefreshAccessToken exchanges the OAuth refresh token (and other necessary
+  /// data) for a new access token (and new associated credentials).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - null
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RefreshAccessTokenResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RefreshAccessTokenResponse> refreshAccessToken(
+    RefreshAccessTokenRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':refreshAccessToken';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return RefreshAccessTokenResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -745,6 +914,44 @@ class ProjectsLocationsConnectionsEntityTypesEntitiesResource {
   }
 }
 
+/// AccessCredentials includes the OAuth access token, and the other fields
+/// returned along with it.
+class AccessCredentials {
+  /// OAuth access token.
+  core.String? accessToken;
+
+  /// Duration till the access token expires.
+  core.String? expiresIn;
+
+  /// OAuth refresh token.
+  core.String? refreshToken;
+
+  AccessCredentials({
+    this.accessToken,
+    this.expiresIn,
+    this.refreshToken,
+  });
+
+  AccessCredentials.fromJson(core.Map json_)
+      : this(
+          accessToken: json_.containsKey('accessToken')
+              ? json_['accessToken'] as core.String
+              : null,
+          expiresIn: json_.containsKey('expiresIn')
+              ? json_['expiresIn'] as core.String
+              : null,
+          refreshToken: json_.containsKey('refreshToken')
+              ? json_['refreshToken'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accessToken != null) 'accessToken': accessToken!,
+        if (expiresIn != null) 'expiresIn': expiresIn!,
+        if (refreshToken != null) 'refreshToken': refreshToken!,
+      };
+}
+
 /// Action message contains metadata information about a single action present
 /// in the external system.
 class Action {
@@ -818,6 +1025,67 @@ class Action {
         if (name != null) 'name': name!,
         if (resultJsonSchema != null) 'resultJsonSchema': resultJsonSchema!,
         if (resultMetadata != null) 'resultMetadata': resultMetadata!,
+      };
+}
+
+/// Response containing status of the connector for readiness prober.
+class CheckReadinessResponse {
+  core.String? status;
+
+  CheckReadinessResponse({
+    this.status,
+  });
+
+  CheckReadinessResponse.fromJson(core.Map json_)
+      : this(
+          status: json_.containsKey('status')
+              ? json_['status'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (status != null) 'status': status!,
+      };
+}
+
+/// The status of the connector.
+class CheckStatusResponse {
+  /// When the connector is not in ACTIVE state, the description must be
+  /// populated to specify the reason why it's not in ACTIVE state.
+  core.String? description;
+
+  /// State of the connector.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : State unspecified.
+  /// - "ACTIVE" : The connector is active and ready to process runtime
+  /// requests. This can also mean that from the connector's perspective, the
+  /// connector is not in an error state and should be able to process runtime
+  /// requests successfully.
+  /// - "ERROR" : The connector is in an error state and cannot process runtime
+  /// requests. An example reason would be that the connection container has
+  /// some network issues that prevent outbound requests from being sent.
+  /// - "AUTH_ERROR" : This is a more specific error state that the developers
+  /// can opt to use when the connector is facing auth-related errors caused by
+  /// auth configuration not present, invalid auth credentials, etc.
+  core.String? state;
+
+  CheckStatusResponse({
+    this.description,
+    this.state,
+  });
+
+  CheckStatusResponse.fromJson(core.Map json_)
+      : this(
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (state != null) 'state': state!,
       };
 }
 
@@ -904,6 +1172,31 @@ class EntityType {
         if (fields != null) 'fields': fields!,
         if (jsonSchema != null) 'jsonSchema': jsonSchema!,
         if (name != null) 'name': name!,
+      };
+}
+
+/// ExchangeAuthCodeRequest currently includes no fields.
+typedef ExchangeAuthCodeRequest = $Empty;
+
+/// ExchangeAuthCodeResponse includes the returned access token and its
+/// associated credentials.
+class ExchangeAuthCodeResponse {
+  AccessCredentials? accessCredentials;
+
+  ExchangeAuthCodeResponse({
+    this.accessCredentials,
+  });
+
+  ExchangeAuthCodeResponse.fromJson(core.Map json_)
+      : this(
+          accessCredentials: json_.containsKey('accessCredentials')
+              ? AccessCredentials.fromJson(json_['accessCredentials']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accessCredentials != null) 'accessCredentials': accessCredentials!,
       };
 }
 
@@ -1726,6 +2019,31 @@ class Reference {
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (type != null) 'type': type!,
+      };
+}
+
+/// RefreshAccessTokenRequest currently includes no fields.
+typedef RefreshAccessTokenRequest = $Empty;
+
+/// RefreshAccessTokenResponse includes the returned access token and its
+/// associated credentials.
+class RefreshAccessTokenResponse {
+  AccessCredentials? accessCredentials;
+
+  RefreshAccessTokenResponse({
+    this.accessCredentials,
+  });
+
+  RefreshAccessTokenResponse.fromJson(core.Map json_)
+      : this(
+          accessCredentials: json_.containsKey('accessCredentials')
+              ? AccessCredentials.fromJson(json_['accessCredentials']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accessCredentials != null) 'accessCredentials': accessCredentials!,
       };
 }
 

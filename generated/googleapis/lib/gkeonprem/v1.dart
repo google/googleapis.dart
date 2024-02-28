@@ -4443,8 +4443,6 @@ class BareMetalAdminApiServerArgument {
 }
 
 /// Resource that represents a bare metal admin cluster.
-///
-/// LINT.IfChange
 class BareMetalAdminCluster {
   /// Annotations on the bare metal admin cluster.
   ///
@@ -5402,8 +5400,6 @@ class BareMetalBgpPeerConfig {
 }
 
 /// Resource that represents a bare metal user cluster.
-///
-/// LINT.IfChange
 class BareMetalCluster {
   /// The admin cluster this bare metal user cluster belongs to.
   ///
@@ -7003,14 +6999,31 @@ class Binding {
   /// `group:{emailid}`: An email address that represents a Google group. For
   /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
   /// (primary) that represents all the users of that domain. For example,
-  /// `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a user that has
-  /// been recently deleted. For example,
-  /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
-  /// this value reverts to `user:{emailid}` and the recovered user retains the
-  /// role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`:
-  /// An email address (plus unique identifier) representing a service account
-  /// that has been recently deleted. For example,
+  /// `google.com` or `example.com`. *
+  /// `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workforce identity pool. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`:
+  /// All workforce identities in a group. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All workforce identities with a specific attribute value. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}
+  /// / * `: All identities in a workforce identity pool. *
+  /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workload identity pool. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`:
+  /// A workload identity pool group. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All identities in a workload identity pool with a certain attribute. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}
+  /// / * `: All identities in a workload identity pool. *
+  /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
+  /// identifier) representing a user that has been recently deleted. For
+  /// example, `alice@example.com?uid=123456789012345678901`. If the user is
+  /// recovered, this value reverts to `user:{emailid}` and the recovered user
+  /// retains the role in the binding. *
+  /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus
+  /// unique identifier) representing a service account that has been recently
+  /// deleted. For example,
   /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If
   /// the service account is undeleted, this value reverts to
   /// `serviceAccount:{emailid}` and the undeleted service account retains the
@@ -7019,12 +7032,19 @@ class Binding {
   /// recently deleted. For example,
   /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
   /// this value reverts to `group:{emailid}` and the recovered group retains
-  /// the role in the binding.
+  /// the role in the binding. *
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// Deleted single identity in a workforce identity pool. For example,
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
   core.List<core.String>? members;
 
   /// Role that is assigned to the list of `members`, or principals.
   ///
-  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an
+  /// overview of the IAM roles and permissions, see the
+  /// [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For
+  /// a list of the available pre-defined roles, see
+  /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
   Binding({
@@ -9168,6 +9188,9 @@ class VmwareAdminVCenterConfig {
   /// The name of the vCenter resource pool for the admin cluster.
   core.String? resourcePool;
 
+  /// The name of the vCenter storage policy for the user cluster.
+  core.String? storagePolicyName;
+
   VmwareAdminVCenterConfig({
     this.address,
     this.caCertData,
@@ -9177,6 +9200,7 @@ class VmwareAdminVCenterConfig {
     this.datastore,
     this.folder,
     this.resourcePool,
+    this.storagePolicyName,
   });
 
   VmwareAdminVCenterConfig.fromJson(core.Map json_)
@@ -9205,6 +9229,9 @@ class VmwareAdminVCenterConfig {
           resourcePool: json_.containsKey('resourcePool')
               ? json_['resourcePool'] as core.String
               : null,
+          storagePolicyName: json_.containsKey('storagePolicyName')
+              ? json_['storagePolicyName'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9216,6 +9243,7 @@ class VmwareAdminVCenterConfig {
         if (datastore != null) 'datastore': datastore!,
         if (folder != null) 'folder': folder!,
         if (resourcePool != null) 'resourcePool': resourcePool!,
+        if (storagePolicyName != null) 'storagePolicyName': storagePolicyName!,
       };
 }
 
@@ -9363,6 +9391,9 @@ class VmwareCluster {
   /// Configuration for auto repairing.
   VmwareAutoRepairConfig? autoRepairConfig;
 
+  /// Binary Authorization related configurations.
+  BinaryAuthorization? binaryAuthorization;
+
   /// VMware user cluster control plane nodes must have either 1 or 3 replicas.
   VmwareControlPlaneNodeConfig? controlPlaneNode;
 
@@ -9503,6 +9534,7 @@ class VmwareCluster {
     this.antiAffinityGroups,
     this.authorization,
     this.autoRepairConfig,
+    this.binaryAuthorization,
     this.controlPlaneNode,
     this.createTime,
     this.dataplaneV2,
@@ -9557,6 +9589,10 @@ class VmwareCluster {
               : null,
           autoRepairConfig: json_.containsKey('autoRepairConfig')
               ? VmwareAutoRepairConfig.fromJson(json_['autoRepairConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          binaryAuthorization: json_.containsKey('binaryAuthorization')
+              ? BinaryAuthorization.fromJson(json_['binaryAuthorization']
                   as core.Map<core.String, core.dynamic>)
               : null,
           controlPlaneNode: json_.containsKey('controlPlaneNode')
@@ -9648,6 +9684,8 @@ class VmwareCluster {
           'antiAffinityGroups': antiAffinityGroups!,
         if (authorization != null) 'authorization': authorization!,
         if (autoRepairConfig != null) 'autoRepairConfig': autoRepairConfig!,
+        if (binaryAuthorization != null)
+          'binaryAuthorization': binaryAuthorization!,
         if (controlPlaneNode != null) 'controlPlaneNode': controlPlaneNode!,
         if (createTime != null) 'createTime': createTime!,
         if (dataplaneV2 != null) 'dataplaneV2': dataplaneV2!,
@@ -9823,12 +9861,16 @@ class VmwareDataplaneV2Config {
   /// Enables Dataplane V2.
   core.bool? dataplaneV2Enabled;
 
+  /// Configure ForwardMode for Dataplane v2.
+  core.String? forwardMode;
+
   /// Enable Dataplane V2 for clusters with Windows nodes.
   core.bool? windowsDataplaneV2Enabled;
 
   VmwareDataplaneV2Config({
     this.advancedNetworking,
     this.dataplaneV2Enabled,
+    this.forwardMode,
     this.windowsDataplaneV2Enabled,
   });
 
@@ -9839,6 +9881,9 @@ class VmwareDataplaneV2Config {
               : null,
           dataplaneV2Enabled: json_.containsKey('dataplaneV2Enabled')
               ? json_['dataplaneV2Enabled'] as core.bool
+              : null,
+          forwardMode: json_.containsKey('forwardMode')
+              ? json_['forwardMode'] as core.String
               : null,
           windowsDataplaneV2Enabled:
               json_.containsKey('windowsDataplaneV2Enabled')
@@ -9851,6 +9896,7 @@ class VmwareDataplaneV2Config {
           'advancedNetworking': advancedNetworking!,
         if (dataplaneV2Enabled != null)
           'dataplaneV2Enabled': dataplaneV2Enabled!,
+        if (forwardMode != null) 'forwardMode': forwardMode!,
         if (windowsDataplaneV2Enabled != null)
           'windowsDataplaneV2Enabled': windowsDataplaneV2Enabled!,
       };
@@ -10188,8 +10234,6 @@ class VmwareNetworkConfig {
   /// vcenter_network specifies vCenter network name.
   ///
   /// Inherited from the admin cluster.
-  ///
-  /// Output only.
   core.String? vcenterNetwork;
 
   VmwareNetworkConfig({
