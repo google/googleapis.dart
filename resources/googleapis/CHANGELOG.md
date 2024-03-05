@@ -1,3 +1,7 @@
+## 14.0.0-wip
+
+ - `logging` - removed `tail()`
+
 ## 13.0.0
 
  - `apphub` - new!

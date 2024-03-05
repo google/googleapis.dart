@@ -2495,45 +2495,6 @@ class EntriesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Streaming read of log entries as they are received.
-  ///
-  /// Until the stream is terminated, it will continue reading logs.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [TailLogEntriesResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<TailLogEntriesResponse> tail(
-    TailLogEntriesRequest request, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    const url_ = 'v2/entries:tail';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return TailLogEntriesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-
   /// Writes log entries to Logging.
   ///
   /// This API method is the only way to send log entries to Logging. This
@@ -15086,6 +15047,16 @@ class SavedQuery {
   /// Output only.
   core.String? updateTime;
 
+  /// The visibility status of this query, which determines its ownership.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "VISIBILITY_UNSPECIFIED" : The saved query visibility is unspecified. A
+  /// CreateSavedQuery request with an unspecified visibility will be rejected.
+  /// - "PRIVATE" : The saved query is only visible to the user that created it.
+  /// - "SHARED" : The saved query is visible to anyone in the project.
+  core.String? visibility;
+
   SavedQuery({
     this.createTime,
     this.description,
@@ -15094,6 +15065,7 @@ class SavedQuery {
     this.name,
     this.opsAnalyticsQuery,
     this.updateTime,
+    this.visibility,
   });
 
   SavedQuery.fromJson(core.Map json_)
@@ -15119,6 +15091,9 @@ class SavedQuery {
           updateTime: json_.containsKey('updateTime')
               ? json_['updateTime'] as core.String
               : null,
+          visibility: json_.containsKey('visibility')
+              ? json_['visibility'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -15129,29 +15104,13 @@ class SavedQuery {
         if (name != null) 'name': name!,
         if (opsAnalyticsQuery != null) 'opsAnalyticsQuery': opsAnalyticsQuery!,
         if (updateTime != null) 'updateTime': updateTime!,
+        if (visibility != null) 'visibility': visibility!,
       };
 }
 
 /// Describes the settings associated with a project, folder, organization, or
 /// billing account.
 class Settings {
-  /// The default analytics mode of an org or folder which is inherited by all
-  /// newly created child project buckets.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "ANALYTICS_MODE_UNSPECIFIED" : No default analytics mode defined at this
-  /// resource level, it will inherit from the closest ancester which has a
-  /// defined analytics mode. If there is no specified analytics mode across the
-  /// resource hierarchy, analytics will be disabled by default.
-  /// - "ANALYTICS_ENABLED" : By default, analytics will be enabled for all new
-  /// project-level buckets unless explicitly specified otherwise at bucket
-  /// creation time.
-  /// - "ANALYTICS_DISABLED" : By default, analytics will be disabled for new
-  /// project-level buckets unless explicitly specified otherwise at bucket
-  /// creation time.
-  core.String? analyticsMode;
-
   /// Overrides the built-in configuration for _Default sink.
   ///
   /// Optional.
@@ -15220,7 +15179,6 @@ class Settings {
   core.String? storageLocation;
 
   Settings({
-    this.analyticsMode,
     this.defaultSinkConfig,
     this.disableDefaultSink,
     this.kmsKeyName,
@@ -15232,9 +15190,6 @@ class Settings {
 
   Settings.fromJson(core.Map json_)
       : this(
-          analyticsMode: json_.containsKey('analyticsMode')
-              ? json_['analyticsMode'] as core.String
-              : null,
           defaultSinkConfig: json_.containsKey('defaultSinkConfig')
               ? DefaultSinkConfig.fromJson(json_['defaultSinkConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -15258,7 +15213,6 @@ class Settings {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (analyticsMode != null) 'analyticsMode': analyticsMode!,
         if (defaultSinkConfig != null) 'defaultSinkConfig': defaultSinkConfig!,
         if (disableDefaultSink != null)
           'disableDefaultSink': disableDefaultSink!,
@@ -15303,148 +15257,6 @@ class SummaryField {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (field != null) 'field': field!,
-      };
-}
-
-/// Information about entries that were omitted from the session.
-class SuppressionInfo {
-  /// The reason that entries were omitted from the session.
-  /// Possible string values are:
-  /// - "REASON_UNSPECIFIED" : Unexpected default.
-  /// - "RATE_LIMIT" : Indicates suppression occurred due to relevant entries
-  /// being received in excess of rate limits. For quotas and limits, see
-  /// Logging API quotas and limits
-  /// (https://cloud.google.com/logging/quotas#api-limits).
-  /// - "NOT_CONSUMED" : Indicates suppression occurred due to the client not
-  /// consuming responses quickly enough.
-  core.String? reason;
-
-  /// A lower bound on the count of entries omitted due to reason.
-  core.int? suppressedCount;
-
-  SuppressionInfo({
-    this.reason,
-    this.suppressedCount,
-  });
-
-  SuppressionInfo.fromJson(core.Map json_)
-      : this(
-          reason: json_.containsKey('reason')
-              ? json_['reason'] as core.String
-              : null,
-          suppressedCount: json_.containsKey('suppressedCount')
-              ? json_['suppressedCount'] as core.int
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (reason != null) 'reason': reason!,
-        if (suppressedCount != null) 'suppressedCount': suppressedCount!,
-      };
-}
-
-/// The parameters to TailLogEntries.
-class TailLogEntriesRequest {
-  /// The amount of time to buffer log entries at the server before being
-  /// returned to prevent out of order results due to late arriving log entries.
-  ///
-  /// Valid values are between 0-60000 milliseconds. Defaults to 2000
-  /// milliseconds.
-  ///
-  /// Optional.
-  core.String? bufferWindow;
-
-  /// Only log entries that match the filter are returned.
-  ///
-  /// An empty filter matches all log entries in the resources listed in
-  /// resource_names. Referencing a parent resource that is not listed in
-  /// resource_names will cause the filter to return no results. The maximum
-  /// length of a filter is 20,000 characters.
-  ///
-  /// Optional.
-  core.String? filter;
-
-  /// Name of a parent resource from which to retrieve log entries:
-  /// projects/\[PROJECT_ID\] organizations/\[ORGANIZATION_ID\]
-  /// billingAccounts/\[BILLING_ACCOUNT_ID\] folders/\[FOLDER_ID\]May
-  /// alternatively be one or more views:
-  /// projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
-  /// organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
-  /// billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
-  /// folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
-  ///
-  /// Required.
-  core.List<core.String>? resourceNames;
-
-  TailLogEntriesRequest({
-    this.bufferWindow,
-    this.filter,
-    this.resourceNames,
-  });
-
-  TailLogEntriesRequest.fromJson(core.Map json_)
-      : this(
-          bufferWindow: json_.containsKey('bufferWindow')
-              ? json_['bufferWindow'] as core.String
-              : null,
-          filter: json_.containsKey('filter')
-              ? json_['filter'] as core.String
-              : null,
-          resourceNames: json_.containsKey('resourceNames')
-              ? (json_['resourceNames'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (bufferWindow != null) 'bufferWindow': bufferWindow!,
-        if (filter != null) 'filter': filter!,
-        if (resourceNames != null) 'resourceNames': resourceNames!,
-      };
-}
-
-/// Result returned from TailLogEntries.
-class TailLogEntriesResponse {
-  /// A list of log entries.
-  ///
-  /// Each response in the stream will order entries with increasing values of
-  /// LogEntry.timestamp. Ordering is not guaranteed between separate responses.
-  core.List<LogEntry>? entries;
-
-  /// If entries that otherwise would have been included in the session were not
-  /// sent back to the client, counts of relevant entries omitted from the
-  /// session with the reason that they were not included.
-  ///
-  /// There will be at most one of each reason per response. The counts
-  /// represent the number of suppressed entries since the last streamed
-  /// response.
-  core.List<SuppressionInfo>? suppressionInfo;
-
-  TailLogEntriesResponse({
-    this.entries,
-    this.suppressionInfo,
-  });
-
-  TailLogEntriesResponse.fromJson(core.Map json_)
-      : this(
-          entries: json_.containsKey('entries')
-              ? (json_['entries'] as core.List)
-                  .map((value) => LogEntry.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-          suppressionInfo: json_.containsKey('suppressionInfo')
-              ? (json_['suppressionInfo'] as core.List)
-                  .map((value) => SuppressionInfo.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (entries != null) 'entries': entries!,
-        if (suppressionInfo != null) 'suppressionInfo': suppressionInfo!,
       };
 }
 
