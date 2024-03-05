@@ -44,7 +44,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240207",
+    "revision": "20240223",
     "rootUrl": "https://logging.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Logging API",
@@ -1629,27 +1629,6 @@
                     },
                     "response": {
                         "$ref": "ListLogEntriesResponse"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform",
-                        "https://www.googleapis.com/auth/cloud-platform.read-only",
-                        "https://www.googleapis.com/auth/logging.admin",
-                        "https://www.googleapis.com/auth/logging.read"
-                    ]
-                },
-                "tail": {
-                    "description": "Streaming read of log entries as they are received. Until the stream is terminated, it will continue reading logs.",
-                    "flatPath": "v2/entries:tail",
-                    "httpMethod": "POST",
-                    "id": "logging.entries.tail",
-                    "parameterOrder": [],
-                    "parameters": {},
-                    "path": "v2/entries:tail",
-                    "request": {
-                        "$ref": "TailLogEntriesRequest"
-                    },
-                    "response": {
-                        "$ref": "TailLogEntriesResponse"
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform",
@@ -7826,7 +7805,8 @@
                 },
                 "request": {
                     "$ref": "CopyLogEntriesRequest",
-                    "description": "CopyLogEntries RPC request."
+                    "deprecated": true,
+                    "description": "CopyLogEntries RPC request. This field is deprecated and not used."
                 },
                 "source": {
                     "description": "Source from which to copy log entries.For example, a log bucket:\"projects/my-project/locations/global/buckets/my-source-bucket\"",
@@ -9688,6 +9668,20 @@
                     "format": "google-datetime",
                     "readOnly": true,
                     "type": "string"
+                },
+                "visibility": {
+                    "description": "Required. The visibility status of this query, which determines its ownership.",
+                    "enum": [
+                        "VISIBILITY_UNSPECIFIED",
+                        "PRIVATE",
+                        "SHARED"
+                    ],
+                    "enumDescriptions": [
+                        "The saved query visibility is unspecified. A CreateSavedQuery request with an unspecified visibility will be rejected.",
+                        "The saved query is only visible to the user that created it.",
+                        "The saved query is visible to anyone in the project."
+                    ],
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -9696,20 +9690,6 @@
             "description": "Describes the settings associated with a project, folder, organization, or billing account.",
             "id": "Settings",
             "properties": {
-                "analyticsMode": {
-                    "description": "Optional. The default analytics mode of an org or folder which is inherited by all newly created child project buckets.",
-                    "enum": [
-                        "ANALYTICS_MODE_UNSPECIFIED",
-                        "ANALYTICS_ENABLED",
-                        "ANALYTICS_DISABLED"
-                    ],
-                    "enumDescriptions": [
-                        "No default analytics mode defined at this resource level, it will inherit from the closest ancester which has a defined analytics mode. If there is no specified analytics mode across the resource hierarchy, analytics will be disabled by default.",
-                        "By default, analytics will be enabled for all new project-level buckets unless explicitly specified otherwise at bucket creation time.",
-                        "By default, analytics will be disabled for new project-level buckets unless explicitly specified otherwise at bucket creation time."
-                    ],
-                    "type": "string"
-                },
                 "defaultSinkConfig": {
                     "$ref": "DefaultSinkConfig",
                     "description": "Optional. Overrides the built-in configuration for _Default sink."
@@ -9839,50 +9819,6 @@
                     "description": "A lower bound on the count of entries omitted due to reason.",
                     "format": "int32",
                     "type": "integer"
-                }
-            },
-            "type": "object"
-        },
-        "TailLogEntriesRequest": {
-            "description": "The parameters to TailLogEntries.",
-            "id": "TailLogEntriesRequest",
-            "properties": {
-                "bufferWindow": {
-                    "description": "Optional. The amount of time to buffer log entries at the server before being returned to prevent out of order results due to late arriving log entries. Valid values are between 0-60000 milliseconds. Defaults to 2000 milliseconds.",
-                    "format": "google-duration",
-                    "type": "string"
-                },
-                "filter": {
-                    "description": "Optional. Only log entries that match the filter are returned. An empty filter matches all log entries in the resources listed in resource_names. Referencing a parent resource that is not listed in resource_names will cause the filter to return no results. The maximum length of a filter is 20,000 characters.",
-                    "type": "string"
-                },
-                "resourceNames": {
-                    "description": "Required. Name of a parent resource from which to retrieve log entries: projects/[PROJECT_ID] organizations/[ORGANIZATION_ID] billingAccounts/[BILLING_ACCOUNT_ID] folders/[FOLDER_ID]May alternatively be one or more views: projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID] organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID] billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID] folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "TailLogEntriesResponse": {
-            "description": "Result returned from TailLogEntries.",
-            "id": "TailLogEntriesResponse",
-            "properties": {
-                "entries": {
-                    "description": "A list of log entries. Each response in the stream will order entries with increasing values of LogEntry.timestamp. Ordering is not guaranteed between separate responses.",
-                    "items": {
-                        "$ref": "LogEntry"
-                    },
-                    "type": "array"
-                },
-                "suppressionInfo": {
-                    "description": "If entries that otherwise would have been included in the session were not sent back to the client, counts of relevant entries omitted from the session with the reason that they were not included. There will be at most one of each reason per response. The counts represent the number of suppressed entries since the last streamed response.",
-                    "items": {
-                        "$ref": "SuppressionInfo"
-                    },
-                    "type": "array"
                 }
             },
             "type": "object"

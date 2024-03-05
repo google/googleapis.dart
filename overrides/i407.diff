@@ -1,0 +1,83 @@
+diff --git a/discovery/googleapis/logging__v2.json b/discovery/googleapis/logging__v2.json
+index 0ae30623b..7447affd0 100644
+--- a/discovery/googleapis/logging__v2.json
++++ b/discovery/googleapis/logging__v2.json
+@@ -1637,27 +1637,6 @@
+                         "https://www.googleapis.com/auth/logging.read"
+                     ]
+                 },
+-                "tail": {
+-                    "description": "Streaming read of log entries as they are received. Until the stream is terminated, it will continue reading logs.",
+-                    "flatPath": "v2/entries:tail",
+-                    "httpMethod": "POST",
+-                    "id": "logging.entries.tail",
+-                    "parameterOrder": [],
+-                    "parameters": {},
+-                    "path": "v2/entries:tail",
+-                    "request": {
+-                        "$ref": "TailLogEntriesRequest"
+-                    },
+-                    "response": {
+-                        "$ref": "TailLogEntriesResponse"
+-                    },
+-                    "scopes": [
+-                        "https://www.googleapis.com/auth/cloud-platform",
+-                        "https://www.googleapis.com/auth/cloud-platform.read-only",
+-                        "https://www.googleapis.com/auth/logging.admin",
+-                        "https://www.googleapis.com/auth/logging.read"
+-                    ]
+-                },
+                 "write": {
+                     "description": "Writes log entries to Logging. This API method is the only way to send log entries to Logging. This method is used, directly or indirectly, by the Logging agent (fluentd) and all logging libraries configured to use Logging. A single request may contain log entries for a maximum of 1000 different resource names (projects, organizations, billing accounts or folders), where the resource name for a log entry is determined from its logName field.",
+                     "flatPath": "v2/entries:write",
+@@ -9843,50 +9822,6 @@
+             },
+             "type": "object"
+         },
+-        "TailLogEntriesRequest": {
+-            "description": "The parameters to TailLogEntries.",
+-            "id": "TailLogEntriesRequest",
+-            "properties": {
+-                "bufferWindow": {
+-                    "description": "Optional. The amount of time to buffer log entries at the server before being returned to prevent out of order results due to late arriving log entries. Valid values are between 0-60000 milliseconds. Defaults to 2000 milliseconds.",
+-                    "format": "google-duration",
+-                    "type": "string"
+-                },
+-                "filter": {
+-                    "description": "Optional. Only log entries that match the filter are returned. An empty filter matches all log entries in the resources listed in resource_names. Referencing a parent resource that is not listed in resource_names will cause the filter to return no results. The maximum length of a filter is 20,000 characters.",
+-                    "type": "string"
+-                },
+-                "resourceNames": {
+-                    "description": "Required. Name of a parent resource from which to retrieve log entries: projects/[PROJECT_ID] organizations/[ORGANIZATION_ID] billingAccounts/[BILLING_ACCOUNT_ID] folders/[FOLDER_ID]May alternatively be one or more views: projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID] organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID] billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID] folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]",
+-                    "items": {
+-                        "type": "string"
+-                    },
+-                    "type": "array"
+-                }
+-            },
+-            "type": "object"
+-        },
+-        "TailLogEntriesResponse": {
+-            "description": "Result returned from TailLogEntries.",
+-            "id": "TailLogEntriesResponse",
+-            "properties": {
+-                "entries": {
+-                    "description": "A list of log entries. Each response in the stream will order entries with increasing values of LogEntry.timestamp. Ordering is not guaranteed between separate responses.",
+-                    "items": {
+-                        "$ref": "LogEntry"
+-                    },
+-                    "type": "array"
+-                },
+-                "suppressionInfo": {
+-                    "description": "If entries that otherwise would have been included in the session were not sent back to the client, counts of relevant entries omitted from the session with the reason that they were not included. There will be at most one of each reason per response. The counts represent the number of suppressed entries since the last streamed response.",
+-                    "items": {
+-                        "$ref": "SuppressionInfo"
+-                    },
+-                    "type": "array"
+-                }
+-            },
+-            "type": "object"
+-        },
+         "UndeleteBucketRequest": {
+             "description": "The parameters to UndeleteBucket.",
+             "id": "UndeleteBucketRequest",

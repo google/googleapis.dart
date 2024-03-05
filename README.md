@@ -531,7 +531,7 @@ or [prediction](https://cloud.google.com/prediction/docs/developer-guide).
 * Update `config.yaml` with a new version number and generate again.
 
   ```console
-  $ dart bin/generate.dart run_config generate
+  $ dart generator/bin/generate.dart run_config generate
   ```
 
 * Run the tests.
