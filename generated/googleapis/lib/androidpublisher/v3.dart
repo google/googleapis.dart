@@ -12079,8 +12079,8 @@ class RecurringExternalTransaction {
   /// program. Not used.
   /// - "USER_CHOICE_BILLING" : User choice billing, where a user may choose
   /// between Google Play Billing developer-managed billing.
-  /// - "ALTERTNATIVE_BILLING_ONLY" : Alternatively billing only, where users
-  /// may only use developer-manager billing.
+  /// - "ALTERNATIVE_BILLING_ONLY" : Alternative billing only, where users may
+  /// only use developer-manager billing.
   core.String? migratedTransactionProgram;
 
   RecurringExternalTransaction({

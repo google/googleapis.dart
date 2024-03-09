@@ -2432,6 +2432,9 @@ class GoogleCloudDocumentaiV1DocumentPageAnchor {
 class GoogleCloudDocumentaiV1DocumentPageAnchorPageRef {
   /// Identifies the bounding polygon of a layout element on the page.
   ///
+  /// If `layout_type` is set, the bounding polygon must be exactly the same to
+  /// the layout element it's referring to.
+  ///
   /// Optional.
   GoogleCloudDocumentaiV1BoundingPoly? boundingPoly;
 
@@ -3666,6 +3669,9 @@ class GoogleCloudDocumentaiV1DocumentSchemaEntityTypeEnumValues {
 
 /// Defines properties that can be part of the entity type.
 class GoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty {
+  /// User defined name for the property.
+  core.String? displayName;
+
   /// The name of the property.
   ///
   /// Follows the same guidelines as the EntityType name.
@@ -3691,6 +3697,7 @@ class GoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty {
   core.String? valueType;
 
   GoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty({
+    this.displayName,
     this.name,
     this.occurrenceType,
     this.valueType,
@@ -3699,6 +3706,9 @@ class GoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty {
   GoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty.fromJson(
       core.Map json_)
       : this(
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           occurrenceType: json_.containsKey('occurrenceType')
               ? json_['occurrenceType'] as core.String
@@ -3709,6 +3719,7 @@ class GoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (displayName != null) 'displayName': displayName!,
         if (name != null) 'name': name!,
         if (occurrenceType != null) 'occurrenceType': occurrenceType!,
         if (valueType != null) 'valueType': valueType!,
@@ -4916,11 +4927,20 @@ class GoogleCloudDocumentaiV1ProcessOptions {
   /// Returns error if set on other processor types.
   GoogleCloudDocumentaiV1OcrConfig? ocrConfig;
 
+  /// Override the schema of the ProcessorVersion.
+  ///
+  /// Will return an Invalid Argument error if this field is set when the
+  /// underlying ProcessorVersion doesn't support schema override.
+  ///
+  /// Optional.
+  GoogleCloudDocumentaiV1DocumentSchema? schemaOverride;
+
   GoogleCloudDocumentaiV1ProcessOptions({
     this.fromEnd,
     this.fromStart,
     this.individualPageSelector,
     this.ocrConfig,
+    this.schemaOverride,
   });
 
   GoogleCloudDocumentaiV1ProcessOptions.fromJson(core.Map json_)
@@ -4940,6 +4960,11 @@ class GoogleCloudDocumentaiV1ProcessOptions {
               ? GoogleCloudDocumentaiV1OcrConfig.fromJson(
                   json_['ocrConfig'] as core.Map<core.String, core.dynamic>)
               : null,
+          schemaOverride: json_.containsKey('schemaOverride')
+              ? GoogleCloudDocumentaiV1DocumentSchema.fromJson(
+                  json_['schemaOverride']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4948,6 +4973,7 @@ class GoogleCloudDocumentaiV1ProcessOptions {
         if (individualPageSelector != null)
           'individualPageSelector': individualPageSelector!,
         if (ocrConfig != null) 'ocrConfig': ocrConfig!,
+        if (schemaOverride != null) 'schemaOverride': schemaOverride!,
       };
 }
 

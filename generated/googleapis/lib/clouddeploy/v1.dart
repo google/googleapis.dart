@@ -3561,6 +3561,11 @@ class AutomationRolloutMetadata {
   /// Output only.
   core.List<core.String>? advanceAutomationRuns;
 
+  /// The current AutomationRun repairing the rollout.
+  ///
+  /// Output only.
+  core.String? currentRepairAutomationRun;
+
   /// The ID of the AutomationRun initiated by a promote release rule.
   ///
   /// Output only.
@@ -3573,6 +3578,7 @@ class AutomationRolloutMetadata {
 
   AutomationRolloutMetadata({
     this.advanceAutomationRuns,
+    this.currentRepairAutomationRun,
     this.promoteAutomationRun,
     this.repairAutomationRuns,
   });
@@ -3584,6 +3590,10 @@ class AutomationRolloutMetadata {
                   .map((value) => value as core.String)
                   .toList()
               : null,
+          currentRepairAutomationRun:
+              json_.containsKey('currentRepairAutomationRun')
+                  ? json_['currentRepairAutomationRun'] as core.String
+                  : null,
           promoteAutomationRun: json_.containsKey('promoteAutomationRun')
               ? json_['promoteAutomationRun'] as core.String
               : null,
@@ -3597,6 +3607,8 @@ class AutomationRolloutMetadata {
   core.Map<core.String, core.dynamic> toJson() => {
         if (advanceAutomationRuns != null)
           'advanceAutomationRuns': advanceAutomationRuns!,
+        if (currentRepairAutomationRun != null)
+          'currentRepairAutomationRun': currentRepairAutomationRun!,
         if (promoteAutomationRun != null)
           'promoteAutomationRun': promoteAutomationRun!,
         if (repairAutomationRuns != null)
@@ -3759,6 +3771,7 @@ class AutomationRun {
   /// - "FAILED" : The `AutomationRun` has failed.
   /// - "IN_PROGRESS" : The `AutomationRun` is in progress.
   /// - "PENDING" : The `AutomationRun` is pending.
+  /// - "ABORTED" : The `AutomationRun` was aborted.
   core.String? state;
 
   /// Explains the current state of the `AutomationRun`.
@@ -7897,6 +7910,7 @@ class RetryAttempt {
   /// - "REPAIR_STATE_IN_PROGRESS" : The `repair` action is in progress.
   /// - "REPAIR_STATE_PENDING" : The `repair` action is pending.
   /// - "REPAIR_STATE_SKIPPED" : The `repair` action was skipped.
+  /// - "REPAIR_STATE_ABORTED" : The `repair` action was aborted.
   core.String? state;
 
   /// Description of the state of the Retry.
@@ -8097,6 +8111,7 @@ class RollbackAttempt {
   /// - "REPAIR_STATE_IN_PROGRESS" : The `repair` action is in progress.
   /// - "REPAIR_STATE_PENDING" : The `repair` action is pending.
   /// - "REPAIR_STATE_SKIPPED" : The `repair` action was skipped.
+  /// - "REPAIR_STATE_ABORTED" : The `repair` action was aborted.
   core.String? state;
 
   /// Description of the state of the Rollback.

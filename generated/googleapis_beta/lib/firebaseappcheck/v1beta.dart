@@ -138,7 +138,15 @@ class OauthClientsResource {
   /// format: ``` projects/{project_number}/apps/{app_id} ``` If necessary, the
   /// `project_number` element can be replaced with the project ID of the
   /// Firebase project. Learn more about using project identifiers in Google's
-  /// [AIP 2510](https://google.aip.dev/cloud/2510) standard.
+  /// [AIP 2510](https://google.aip.dev/cloud/2510) standard. Alternatively, if
+  /// this method is being called for an OAuth client protected by App Check,
+  /// this field can also be in the format: ``` oauthClients/{oauth_client_id}
+  /// ``` You can view the OAuth client ID for your OAuth clients in the Google
+  /// Cloud console. Note that only iOS OAuth clients are supported at this
+  /// time, and they must be linked to corresponding iOS Firebase apps. Please
+  /// see
+  /// [the documentation](https://developers.google.com/identity/sign-in/ios/appcheck/get-started#project-setup)
+  /// for more information.
   /// Value must have pattern `^oauthClients/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -191,7 +199,15 @@ class OauthClientsResource {
   /// format: ``` projects/{project_number}/apps/{app_id} ``` If necessary, the
   /// `project_number` element can be replaced with the project ID of the
   /// Firebase project. Learn more about using project identifiers in Google's
-  /// [AIP 2510](https://google.aip.dev/cloud/2510) standard.
+  /// [AIP 2510](https://google.aip.dev/cloud/2510) standard. Alternatively, if
+  /// this method is being called for an OAuth client protected by App Check,
+  /// this field can also be in the format: ``` oauthClients/{oauth_client_id}
+  /// ``` You can view the OAuth client ID for your OAuth clients in the Google
+  /// Cloud console. Note that only iOS OAuth clients are supported at this
+  /// time, and they must be linked to corresponding iOS Firebase apps. Please
+  /// see
+  /// [the documentation](https://developers.google.com/identity/sign-in/ios/appcheck/get-started#project-setup)
+  /// for more information.
   /// Value must have pattern `^oauthClients/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -245,7 +261,15 @@ class OauthClientsResource {
   /// ``` projects/{project_number}/apps/{app_id} ``` If necessary, the
   /// `project_number` element can be replaced with the project ID of the
   /// Firebase project. Learn more about using project identifiers in Google's
-  /// [AIP 2510](https://google.aip.dev/cloud/2510) standard.
+  /// [AIP 2510](https://google.aip.dev/cloud/2510) standard. Alternatively, if
+  /// this method is being called for an OAuth client protected by App Check,
+  /// this field can also be in the format: ``` oauthClients/{oauth_client_id}
+  /// ``` You can view the OAuth client ID for your OAuth clients in the Google
+  /// Cloud console. Note that only iOS OAuth clients are supported at this
+  /// time, and they must be linked to corresponding iOS Firebase apps. Please
+  /// see
+  /// [the documentation](https://developers.google.com/identity/sign-in/ios/appcheck/get-started#project-setup)
+  /// for more information.
   /// Value must have pattern `^oauthClients/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -295,7 +319,15 @@ class OauthClientsResource {
   /// format: ``` projects/{project_number}/apps/{app_id} ``` If necessary, the
   /// `project_number` element can be replaced with the project ID of the
   /// Firebase project. Learn more about using project identifiers in Google's
-  /// [AIP 2510](https://google.aip.dev/cloud/2510) standard.
+  /// [AIP 2510](https://google.aip.dev/cloud/2510) standard. Alternatively, if
+  /// this method is being called for an OAuth client protected by App Check,
+  /// this field can also be in the format: ``` oauthClients/{oauth_client_id}
+  /// ``` You can view the OAuth client ID for your OAuth clients in the Google
+  /// Cloud console. Note that only iOS OAuth clients are supported at this
+  /// time, and they must be linked to corresponding iOS Firebase apps. Please
+  /// see
+  /// [the documentation](https://developers.google.com/identity/sign-in/ios/appcheck/get-started#project-setup)
+  /// for more information.
   /// Value must have pattern `^oauthClients/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -448,7 +480,15 @@ class ProjectsAppsResource {
   /// format: ``` projects/{project_number}/apps/{app_id} ``` If necessary, the
   /// `project_number` element can be replaced with the project ID of the
   /// Firebase project. Learn more about using project identifiers in Google's
-  /// [AIP 2510](https://google.aip.dev/cloud/2510) standard.
+  /// [AIP 2510](https://google.aip.dev/cloud/2510) standard. Alternatively, if
+  /// this method is being called for an OAuth client protected by App Check,
+  /// this field can also be in the format: ``` oauthClients/{oauth_client_id}
+  /// ``` You can view the OAuth client ID for your OAuth clients in the Google
+  /// Cloud console. Note that only iOS OAuth clients are supported at this
+  /// time, and they must be linked to corresponding iOS Firebase apps. Please
+  /// see
+  /// [the documentation](https://developers.google.com/identity/sign-in/ios/appcheck/get-started#project-setup)
+  /// for more information.
   /// Value must have pattern `^projects/\[^/\]+/apps/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -501,7 +541,15 @@ class ProjectsAppsResource {
   /// format: ``` projects/{project_number}/apps/{app_id} ``` If necessary, the
   /// `project_number` element can be replaced with the project ID of the
   /// Firebase project. Learn more about using project identifiers in Google's
-  /// [AIP 2510](https://google.aip.dev/cloud/2510) standard.
+  /// [AIP 2510](https://google.aip.dev/cloud/2510) standard. Alternatively, if
+  /// this method is being called for an OAuth client protected by App Check,
+  /// this field can also be in the format: ``` oauthClients/{oauth_client_id}
+  /// ``` You can view the OAuth client ID for your OAuth clients in the Google
+  /// Cloud console. Note that only iOS OAuth clients are supported at this
+  /// time, and they must be linked to corresponding iOS Firebase apps. Please
+  /// see
+  /// [the documentation](https://developers.google.com/identity/sign-in/ios/appcheck/get-started#project-setup)
+  /// for more information.
   /// Value must have pattern `^projects/\[^/\]+/apps/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -604,7 +652,15 @@ class ProjectsAppsResource {
   /// ``` projects/{project_number}/apps/{app_id} ``` If necessary, the
   /// `project_number` element can be replaced with the project ID of the
   /// Firebase project. Learn more about using project identifiers in Google's
-  /// [AIP 2510](https://google.aip.dev/cloud/2510) standard.
+  /// [AIP 2510](https://google.aip.dev/cloud/2510) standard. Alternatively, if
+  /// this method is being called for an OAuth client protected by App Check,
+  /// this field can also be in the format: ``` oauthClients/{oauth_client_id}
+  /// ``` You can view the OAuth client ID for your OAuth clients in the Google
+  /// Cloud console. Note that only iOS OAuth clients are supported at this
+  /// time, and they must be linked to corresponding iOS Firebase apps. Please
+  /// see
+  /// [the documentation](https://developers.google.com/identity/sign-in/ios/appcheck/get-started#project-setup)
+  /// for more information.
   /// Value must have pattern `^projects/\[^/\]+/apps/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -962,7 +1018,15 @@ class ProjectsAppsResource {
   /// format: ``` projects/{project_number}/apps/{app_id} ``` If necessary, the
   /// `project_number` element can be replaced with the project ID of the
   /// Firebase project. Learn more about using project identifiers in Google's
-  /// [AIP 2510](https://google.aip.dev/cloud/2510) standard.
+  /// [AIP 2510](https://google.aip.dev/cloud/2510) standard. Alternatively, if
+  /// this method is being called for an OAuth client protected by App Check,
+  /// this field can also be in the format: ``` oauthClients/{oauth_client_id}
+  /// ``` You can view the OAuth client ID for your OAuth clients in the Google
+  /// Cloud console. Note that only iOS OAuth clients are supported at this
+  /// time, and they must be linked to corresponding iOS Firebase apps. Please
+  /// see
+  /// [the documentation](https://developers.google.com/identity/sign-in/ios/appcheck/get-started#project-setup)
+  /// for more information.
   /// Value must have pattern `^projects/\[^/\]+/apps/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3232,7 +3296,7 @@ class GoogleFirebaseAppcheckV1betaBatchUpdateResourcePoliciesRequest {
   /// Required.
   core.List<GoogleFirebaseAppcheckV1betaUpdateResourcePolicyRequest>? requests;
 
-  /// A comma-separated list of names of fields in the ResourceConfigurations to
+  /// A comma-separated list of names of fields in the ResourcePolicy objects to
   /// update.
   ///
   /// Example: `enforcement_mode`. If this field is present, the `update_mask`
@@ -4103,8 +4167,8 @@ class GoogleFirebaseAppcheckV1betaListResourcePoliciesResponse {
   ///
   /// If the string is empty or omitted, then this response is the last page of
   /// results. This token can be used in a subsequent call to
-  /// ListResourcePolicies to find the next group of ResourcePolicys. Page
-  /// tokens are short-lived and should not be persisted.
+  /// ListResourcePolicies to find the next group of ResourcePolicy objects.
+  /// Page tokens are short-lived and should not be persisted.
   core.String? nextPageToken;
 
   /// The ResourcePolicys retrieved.

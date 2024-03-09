@@ -29,6 +29,8 @@ api.AptRepository buildAptRepository() {
   final o = api.AptRepository();
   buildCounterAptRepository++;
   if (buildCounterAptRepository < 3) {
+    o.customRepository =
+        buildGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository();
     o.publicRepository =
         buildGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository();
   }
@@ -39,6 +41,8 @@ api.AptRepository buildAptRepository() {
 void checkAptRepository(api.AptRepository o) {
   buildCounterAptRepository++;
   if (buildCounterAptRepository < 3) {
+    checkGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository(
+        o.customRepository!);
     checkGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository(
         o.publicRepository!);
   }
@@ -364,6 +368,8 @@ api.DockerRepository buildDockerRepository() {
   final o = api.DockerRepository();
   buildCounterDockerRepository++;
   if (buildCounterDockerRepository < 3) {
+    o.customRepository =
+        buildGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository();
     o.publicRepository = 'foo';
   }
   buildCounterDockerRepository--;
@@ -373,6 +379,8 @@ api.DockerRepository buildDockerRepository() {
 void checkDockerRepository(api.DockerRepository o) {
   buildCounterDockerRepository++;
   if (buildCounterDockerRepository < 3) {
+    checkGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository(
+        o.customRepository!);
     unittest.expect(
       o.publicRepository!,
       unittest.equals('foo'),
@@ -398,6 +406,21 @@ void checkDockerRepositoryConfig(api.DockerRepositoryConfig o) {
     unittest.expect(o.immutableTags!, unittest.isTrue);
   }
   buildCounterDockerRepositoryConfig--;
+}
+
+core.int buildCounterDownloadFileResponse = 0;
+api.DownloadFileResponse buildDownloadFileResponse() {
+  final o = api.DownloadFileResponse();
+  buildCounterDownloadFileResponse++;
+  if (buildCounterDownloadFileResponse < 3) {}
+  buildCounterDownloadFileResponse--;
+  return o;
+}
+
+void checkDownloadFileResponse(api.DownloadFileResponse o) {
+  buildCounterDownloadFileResponse++;
+  if (buildCounterDownloadFileResponse < 3) {}
+  buildCounterDownloadFileResponse--;
 }
 
 core.int buildCounterEmpty = 0;
@@ -515,6 +538,36 @@ void checkGoogleDevtoolsArtifactregistryV1File(
 }
 
 core.int
+    buildCounterGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository =
+    0;
+api.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository
+    buildGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository() {
+  final o = api
+      .GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository();
+  buildCounterGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository++;
+  if (buildCounterGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository <
+      3) {
+    o.uri = 'foo';
+  }
+  buildCounterGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository--;
+  return o;
+}
+
+void checkGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository(
+    api.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository
+        o) {
+  buildCounterGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository++;
+  if (buildCounterGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository <
+      3) {
+    unittest.expect(
+      o.uri!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository--;
+}
+
+core.int
     buildCounterGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository =
     0;
 api.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository
@@ -547,6 +600,156 @@ void checkGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPub
     );
   }
   buildCounterGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository--;
+}
+
+core.int
+    buildCounterGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository =
+    0;
+api.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository
+    buildGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository() {
+  final o = api
+      .GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository();
+  buildCounterGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository++;
+  if (buildCounterGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository <
+      3) {
+    o.uri = 'foo';
+  }
+  buildCounterGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository--;
+  return o;
+}
+
+void checkGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository(
+    api.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository
+        o) {
+  buildCounterGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository++;
+  if (buildCounterGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository <
+      3) {
+    unittest.expect(
+      o.uri!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository--;
+}
+
+core.int
+    buildCounterGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository =
+    0;
+api.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository
+    buildGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository() {
+  final o = api
+      .GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository();
+  buildCounterGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository++;
+  if (buildCounterGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository <
+      3) {
+    o.uri = 'foo';
+  }
+  buildCounterGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository--;
+  return o;
+}
+
+void checkGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository(
+    api.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository
+        o) {
+  buildCounterGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository++;
+  if (buildCounterGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository <
+      3) {
+    unittest.expect(
+      o.uri!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository--;
+}
+
+core.int
+    buildCounterGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository =
+    0;
+api.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository
+    buildGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository() {
+  final o = api
+      .GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository();
+  buildCounterGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository++;
+  if (buildCounterGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository <
+      3) {
+    o.uri = 'foo';
+  }
+  buildCounterGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository--;
+  return o;
+}
+
+void checkGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository(
+    api.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository
+        o) {
+  buildCounterGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository++;
+  if (buildCounterGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository <
+      3) {
+    unittest.expect(
+      o.uri!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository--;
+}
+
+core.int
+    buildCounterGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository =
+    0;
+api.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository
+    buildGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository() {
+  final o = api
+      .GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository();
+  buildCounterGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository++;
+  if (buildCounterGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository <
+      3) {
+    o.uri = 'foo';
+  }
+  buildCounterGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository--;
+  return o;
+}
+
+void checkGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository(
+    api.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository
+        o) {
+  buildCounterGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository++;
+  if (buildCounterGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository <
+      3) {
+    unittest.expect(
+      o.uri!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository--;
+}
+
+core.int
+    buildCounterGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository =
+    0;
+api.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository
+    buildGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository() {
+  final o = api
+      .GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository();
+  buildCounterGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository++;
+  if (buildCounterGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository <
+      3) {
+    o.uri = 'foo';
+  }
+  buildCounterGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository--;
+  return o;
+}
+
+void checkGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository(
+    api.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository
+        o) {
+  buildCounterGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository++;
+  if (buildCounterGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository <
+      3) {
+    unittest.expect(
+      o.uri!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository--;
 }
 
 core.int
@@ -1287,6 +1490,8 @@ api.MavenRepository buildMavenRepository() {
   final o = api.MavenRepository();
   buildCounterMavenRepository++;
   if (buildCounterMavenRepository < 3) {
+    o.customRepository =
+        buildGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository();
     o.publicRepository = 'foo';
   }
   buildCounterMavenRepository--;
@@ -1296,6 +1501,8 @@ api.MavenRepository buildMavenRepository() {
 void checkMavenRepository(api.MavenRepository o) {
   buildCounterMavenRepository++;
   if (buildCounterMavenRepository < 3) {
+    checkGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository(
+        o.customRepository!);
     unittest.expect(
       o.publicRepository!,
       unittest.equals('foo'),
@@ -1394,6 +1601,8 @@ api.NpmRepository buildNpmRepository() {
   final o = api.NpmRepository();
   buildCounterNpmRepository++;
   if (buildCounterNpmRepository < 3) {
+    o.customRepository =
+        buildGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository();
     o.publicRepository = 'foo';
   }
   buildCounterNpmRepository--;
@@ -1403,6 +1612,8 @@ api.NpmRepository buildNpmRepository() {
 void checkNpmRepository(api.NpmRepository o) {
   buildCounterNpmRepository++;
   if (buildCounterNpmRepository < 3) {
+    checkGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository(
+        o.customRepository!);
     unittest.expect(
       o.publicRepository!,
       unittest.equals('foo'),
@@ -1531,11 +1742,29 @@ void checkOperation(api.Operation o) {
   buildCounterOperation--;
 }
 
+core.Map<core.String, core.String> buildUnnamed26() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
+
+void checkUnnamed26(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterPackage = 0;
 api.Package buildPackage() {
   final o = api.Package();
   buildCounterPackage++;
   if (buildCounterPackage < 3) {
+    o.annotations = buildUnnamed26();
     o.createTime = 'foo';
     o.displayName = 'foo';
     o.name = 'foo';
@@ -1548,6 +1777,7 @@ api.Package buildPackage() {
 void checkPackage(api.Package o) {
   buildCounterPackage++;
   if (buildCounterPackage < 3) {
+    checkUnnamed26(o.annotations!);
     unittest.expect(
       o.createTime!,
       unittest.equals('foo'),
@@ -1568,12 +1798,12 @@ void checkPackage(api.Package o) {
   buildCounterPackage--;
 }
 
-core.List<api.Binding> buildUnnamed26() => [
+core.List<api.Binding> buildUnnamed27() => [
       buildBinding(),
       buildBinding(),
     ];
 
-void checkUnnamed26(core.List<api.Binding> o) {
+void checkUnnamed27(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBinding(o[0]);
   checkBinding(o[1]);
@@ -1584,7 +1814,7 @@ api.Policy buildPolicy() {
   final o = api.Policy();
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    o.bindings = buildUnnamed26();
+    o.bindings = buildUnnamed27();
     o.etag = 'foo';
     o.version = 42;
   }
@@ -1595,7 +1825,7 @@ api.Policy buildPolicy() {
 void checkPolicy(api.Policy o) {
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    checkUnnamed26(o.bindings!);
+    checkUnnamed27(o.bindings!);
     unittest.expect(
       o.etag!,
       unittest.equals('foo'),
@@ -1687,6 +1917,8 @@ api.PythonRepository buildPythonRepository() {
   final o = api.PythonRepository();
   buildCounterPythonRepository++;
   if (buildCounterPythonRepository < 3) {
+    o.customRepository =
+        buildGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository();
     o.publicRepository = 'foo';
   }
   buildCounterPythonRepository--;
@@ -1696,6 +1928,8 @@ api.PythonRepository buildPythonRepository() {
 void checkPythonRepository(api.PythonRepository o) {
   buildCounterPythonRepository++;
   if (buildCounterPythonRepository < 3) {
+    checkGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository(
+        o.customRepository!);
     unittest.expect(
       o.publicRepository!,
       unittest.equals('foo'),
@@ -1711,6 +1945,7 @@ api.RemoteRepositoryConfig buildRemoteRepositoryConfig() {
   if (buildCounterRemoteRepositoryConfig < 3) {
     o.aptRepository = buildAptRepository();
     o.description = 'foo';
+    o.disableUpstreamValidation = true;
     o.dockerRepository = buildDockerRepository();
     o.mavenRepository = buildMavenRepository();
     o.npmRepository = buildNpmRepository();
@@ -1730,6 +1965,7 @@ void checkRemoteRepositoryConfig(api.RemoteRepositoryConfig o) {
       o.description!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.disableUpstreamValidation!, unittest.isTrue);
     checkDockerRepository(o.dockerRepository!);
     checkMavenRepository(o.mavenRepository!);
     checkNpmRepository(o.npmRepository!);
@@ -1740,23 +1976,23 @@ void checkRemoteRepositoryConfig(api.RemoteRepositoryConfig o) {
   buildCounterRemoteRepositoryConfig--;
 }
 
-core.Map<core.String, api.CleanupPolicy> buildUnnamed27() => {
+core.Map<core.String, api.CleanupPolicy> buildUnnamed28() => {
       'x': buildCleanupPolicy(),
       'y': buildCleanupPolicy(),
     };
 
-void checkUnnamed27(core.Map<core.String, api.CleanupPolicy> o) {
+void checkUnnamed28(core.Map<core.String, api.CleanupPolicy> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCleanupPolicy(o['x']!);
   checkCleanupPolicy(o['y']!);
 }
 
-core.Map<core.String, core.String> buildUnnamed28() => {
+core.Map<core.String, core.String> buildUnnamed29() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed28(core.Map<core.String, core.String> o) {
+void checkUnnamed29(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -1773,7 +2009,7 @@ api.Repository buildRepository() {
   final o = api.Repository();
   buildCounterRepository++;
   if (buildCounterRepository < 3) {
-    o.cleanupPolicies = buildUnnamed27();
+    o.cleanupPolicies = buildUnnamed28();
     o.cleanupPolicyDryRun = true;
     o.createTime = 'foo';
     o.description = 'foo';
@@ -1781,7 +2017,7 @@ api.Repository buildRepository() {
     o.dockerConfig = buildDockerRepositoryConfig();
     o.format = 'foo';
     o.kmsKeyName = 'foo';
-    o.labels = buildUnnamed28();
+    o.labels = buildUnnamed29();
     o.mavenConfig = buildMavenRepositoryConfig();
     o.mode = 'foo';
     o.name = 'foo';
@@ -1798,7 +2034,7 @@ api.Repository buildRepository() {
 void checkRepository(api.Repository o) {
   buildCounterRepository++;
   if (buildCounterRepository < 3) {
-    checkUnnamed27(o.cleanupPolicies!);
+    checkUnnamed28(o.cleanupPolicies!);
     unittest.expect(o.cleanupPolicyDryRun!, unittest.isTrue);
     unittest.expect(
       o.createTime!,
@@ -1818,7 +2054,7 @@ void checkRepository(api.Repository o) {
       o.kmsKeyName!,
       unittest.equals('foo'),
     );
-    checkUnnamed28(o.labels!);
+    checkUnnamed29(o.labels!);
     checkMavenRepositoryConfig(o.mavenConfig!);
     unittest.expect(
       o.mode!,
@@ -1862,7 +2098,7 @@ void checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed29() => {
+core.Map<core.String, core.Object?> buildUnnamed30() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -1875,7 +2111,7 @@ core.Map<core.String, core.Object?> buildUnnamed29() => {
       },
     };
 
-void checkUnnamed29(core.Map<core.String, core.Object?> o) {
+void checkUnnamed30(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o['x']!) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
@@ -1907,15 +2143,15 @@ void checkUnnamed29(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed30() => [
-      buildUnnamed29(),
-      buildUnnamed29(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed31() => [
+      buildUnnamed30(),
+      buildUnnamed30(),
     ];
 
-void checkUnnamed30(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed31(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed29(o[0]);
-  checkUnnamed29(o[1]);
+  checkUnnamed30(o[0]);
+  checkUnnamed30(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -1924,7 +2160,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed30();
+    o.details = buildUnnamed31();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -1938,7 +2174,7 @@ void checkStatus(api.Status o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed30(o.details!);
+    checkUnnamed31(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -1974,42 +2210,6 @@ void checkTag(api.Tag o) {
   buildCounterTag--;
 }
 
-core.List<core.String> buildUnnamed31() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed31(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.int buildCounterTestIamPermissionsRequest = 0;
-api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
-  final o = api.TestIamPermissionsRequest();
-  buildCounterTestIamPermissionsRequest++;
-  if (buildCounterTestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed31();
-  }
-  buildCounterTestIamPermissionsRequest--;
-  return o;
-}
-
-void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
-  buildCounterTestIamPermissionsRequest++;
-  if (buildCounterTestIamPermissionsRequest < 3) {
-    checkUnnamed31(o.permissions!);
-  }
-  buildCounterTestIamPermissionsRequest--;
-}
-
 core.List<core.String> buildUnnamed32() => [
       'foo',
       'foo',
@@ -2027,12 +2227,48 @@ void checkUnnamed32(core.List<core.String> o) {
   );
 }
 
+core.int buildCounterTestIamPermissionsRequest = 0;
+api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
+  final o = api.TestIamPermissionsRequest();
+  buildCounterTestIamPermissionsRequest++;
+  if (buildCounterTestIamPermissionsRequest < 3) {
+    o.permissions = buildUnnamed32();
+  }
+  buildCounterTestIamPermissionsRequest--;
+  return o;
+}
+
+void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
+  buildCounterTestIamPermissionsRequest++;
+  if (buildCounterTestIamPermissionsRequest < 3) {
+    checkUnnamed32(o.permissions!);
+  }
+  buildCounterTestIamPermissionsRequest--;
+}
+
+core.List<core.String> buildUnnamed33() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed33(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterTestIamPermissionsResponse = 0;
 api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
   final o = api.TestIamPermissionsResponse();
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed32();
+    o.permissions = buildUnnamed33();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
@@ -2041,7 +2277,7 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
 void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    checkUnnamed32(o.permissions!);
+    checkUnnamed33(o.permissions!);
   }
   buildCounterTestIamPermissionsResponse--;
 }
@@ -2168,12 +2404,12 @@ void checkUploadKfpArtifactMediaResponse(api.UploadKfpArtifactMediaResponse o) {
   buildCounterUploadKfpArtifactMediaResponse--;
 }
 
-core.List<core.String> buildUnnamed33() => [
+core.List<core.String> buildUnnamed34() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed33(core.List<core.String> o) {
+void checkUnnamed34(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2191,7 +2427,7 @@ api.UploadKfpArtifactRequest buildUploadKfpArtifactRequest() {
   buildCounterUploadKfpArtifactRequest++;
   if (buildCounterUploadKfpArtifactRequest < 3) {
     o.description = 'foo';
-    o.tags = buildUnnamed33();
+    o.tags = buildUnnamed34();
   }
   buildCounterUploadKfpArtifactRequest--;
   return o;
@@ -2204,7 +2440,7 @@ void checkUploadKfpArtifactRequest(api.UploadKfpArtifactRequest o) {
       o.description!,
       unittest.equals('foo'),
     );
-    checkUnnamed33(o.tags!);
+    checkUnnamed34(o.tags!);
   }
   buildCounterUploadKfpArtifactRequest--;
 }
@@ -2348,7 +2584,7 @@ void checkVPCSCConfig(api.VPCSCConfig o) {
   buildCounterVPCSCConfig--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed34() => {
+core.Map<core.String, core.Object?> buildUnnamed35() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -2361,7 +2597,7 @@ core.Map<core.String, core.Object?> buildUnnamed34() => {
       },
     };
 
-void checkUnnamed34(core.Map<core.String, core.Object?> o) {
+void checkUnnamed35(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted9 = (o['x']!) as core.Map;
   unittest.expect(casted9, unittest.hasLength(3));
@@ -2393,12 +2629,12 @@ void checkUnnamed34(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<api.Tag> buildUnnamed35() => [
+core.List<api.Tag> buildUnnamed36() => [
       buildTag(),
       buildTag(),
     ];
 
-void checkUnnamed35(core.List<api.Tag> o) {
+void checkUnnamed36(core.List<api.Tag> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTag(o[0]);
   checkTag(o[1]);
@@ -2411,9 +2647,9 @@ api.Version buildVersion() {
   if (buildCounterVersion < 3) {
     o.createTime = 'foo';
     o.description = 'foo';
-    o.metadata = buildUnnamed34();
+    o.metadata = buildUnnamed35();
     o.name = 'foo';
-    o.relatedTags = buildUnnamed35();
+    o.relatedTags = buildUnnamed36();
     o.updateTime = 'foo';
   }
   buildCounterVersion--;
@@ -2431,12 +2667,12 @@ void checkVersion(api.Version o) {
       o.description!,
       unittest.equals('foo'),
     );
-    checkUnnamed34(o.metadata!);
+    checkUnnamed35(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed35(o.relatedTags!);
+    checkUnnamed36(o.relatedTags!);
     unittest.expect(
       o.updateTime!,
       unittest.equals('foo'),
@@ -2445,12 +2681,12 @@ void checkVersion(api.Version o) {
   buildCounterVersion--;
 }
 
-core.List<api.UpstreamPolicy> buildUnnamed36() => [
+core.List<api.UpstreamPolicy> buildUnnamed37() => [
       buildUpstreamPolicy(),
       buildUpstreamPolicy(),
     ];
 
-void checkUnnamed36(core.List<api.UpstreamPolicy> o) {
+void checkUnnamed37(core.List<api.UpstreamPolicy> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUpstreamPolicy(o[0]);
   checkUpstreamPolicy(o[1]);
@@ -2461,7 +2697,7 @@ api.VirtualRepositoryConfig buildVirtualRepositoryConfig() {
   final o = api.VirtualRepositoryConfig();
   buildCounterVirtualRepositoryConfig++;
   if (buildCounterVirtualRepositoryConfig < 3) {
-    o.upstreamPolicies = buildUnnamed36();
+    o.upstreamPolicies = buildUnnamed37();
   }
   buildCounterVirtualRepositoryConfig--;
   return o;
@@ -2470,7 +2706,7 @@ api.VirtualRepositoryConfig buildVirtualRepositoryConfig() {
 void checkVirtualRepositoryConfig(api.VirtualRepositoryConfig o) {
   buildCounterVirtualRepositoryConfig++;
   if (buildCounterVirtualRepositoryConfig < 3) {
-    checkUnnamed36(o.upstreamPolicies!);
+    checkUnnamed37(o.upstreamPolicies!);
   }
   buildCounterVirtualRepositoryConfig--;
 }
@@ -2480,6 +2716,8 @@ api.YumRepository buildYumRepository() {
   final o = api.YumRepository();
   buildCounterYumRepository++;
   if (buildCounterYumRepository < 3) {
+    o.customRepository =
+        buildGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository();
     o.publicRepository =
         buildGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository();
   }
@@ -2490,6 +2728,8 @@ api.YumRepository buildYumRepository() {
 void checkYumRepository(api.YumRepository o) {
   buildCounterYumRepository++;
   if (buildCounterYumRepository < 3) {
+    checkGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository(
+        o.customRepository!);
     checkGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository(
         o.publicRepository!);
   }
@@ -2587,6 +2827,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-DownloadFileResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDownloadFileResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DownloadFileResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkDownloadFileResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-Empty', () {
     unittest.test('to-json--from-json', () async {
       final o = buildEmpty();
@@ -2618,6 +2868,21 @@ void main() {
   });
 
   unittest.group(
+      'obj-schema-GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository(
+          od);
+    });
+  });
+
+  unittest.group(
       'obj-schema-GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository',
       () {
     unittest.test('to-json--from-json', () async {
@@ -2628,6 +2893,81 @@ void main() {
           api.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository
               .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository(
+          od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository(
+          od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository(
+          od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository(
+          od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository(
+          od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository(
           od);
     });
   });
@@ -3173,6 +3513,63 @@ void main() {
       final od = api.YumRepository.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkYumRepository(od);
+    });
+  });
+
+  unittest.group('resource-MediaResource', () {
+    unittest.test('method--download', () async {
+      // TODO: Implement tests for media upload;
+      // TODO: Implement tests for media download;
+
+      final mock = HttpServerMock();
+      final res = api.ArtifactRegistryApi(mock).media;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildDownloadFileResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.download(arg_name, $fields: arg_$fields);
+      checkDownloadFileResponse(response as api.DownloadFileResponse);
     });
   });
 
@@ -5167,6 +5564,73 @@ void main() {
           pageToken: arg_pageToken,
           $fields: arg_$fields);
       checkListPackagesResponse(response as api.ListPackagesResponse);
+    });
+
+    unittest.test('method--patch', () async {
+      final mock = HttpServerMock();
+      final res = api.ArtifactRegistryApi(mock)
+          .projects
+          .locations
+          .repositories
+          .packages;
+      final arg_request = buildPackage();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj =
+            api.Package.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkPackage(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['updateMask']!.first,
+          unittest.equals(arg_updateMask),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildPackage());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkPackage(response as api.Package);
     });
   });
 

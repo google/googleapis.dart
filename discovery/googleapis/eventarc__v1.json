@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240209",
+    "revision": "20240229",
     "rootUrl": "https://eventarc.googleapis.com/",
     "servicePath": "",
     "title": "Eventarc API",

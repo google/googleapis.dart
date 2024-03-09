@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240222",
+    "revision": "20240303",
     "rootUrl": "https://cloudresourcemanager.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Resource Manager API",
@@ -2075,6 +2075,13 @@
                     "description": "The number uniquely identifying the project. Example: `415104041262` Read-only.",
                     "format": "int64",
                     "type": "string"
+                },
+                "tags": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Optional. Input only. Immutable. Tag keys/values directly bound to this project. Each item in the map must be expressed as \" : \". For example: \"123/environment\" : \"production\", \"123/costCenter\" : \"marketing\"",
+                    "type": "object"
                 }
             },
             "type": "object"

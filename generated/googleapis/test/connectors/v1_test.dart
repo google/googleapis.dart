@@ -364,6 +364,7 @@ api.ConfigVariableTemplate buildConfigVariableTemplate() {
     o.description = 'foo';
     o.displayName = 'foo';
     o.enumOptions = buildUnnamed6();
+    o.enumSource = 'foo';
     o.isAdvanced = true;
     o.key = 'foo';
     o.locationType = 'foo';
@@ -391,6 +392,10 @@ void checkConfigVariableTemplate(api.ConfigVariableTemplate o) {
       unittest.equals('foo'),
     );
     checkUnnamed6(o.enumOptions!);
+    unittest.expect(
+      o.enumSource!,
+      unittest.equals('foo'),
+    );
     unittest.expect(o.isAdvanced!, unittest.isTrue);
     unittest.expect(
       o.key!,
@@ -1587,6 +1592,17 @@ void checkEnumOption(api.EnumOption o) {
   buildCounterEnumOption--;
 }
 
+core.List<api.ConfigVariable> buildUnnamed27() => [
+      buildConfigVariable(),
+      buildConfigVariable(),
+    ];
+
+void checkUnnamed27(core.List<api.ConfigVariable> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkConfigVariable(o[0]);
+  checkConfigVariable(o[1]);
+}
+
 core.int buildCounterEventSubscription = 0;
 api.EventSubscription buildEventSubscription() {
   final o = api.EventSubscription();
@@ -1600,6 +1616,7 @@ api.EventSubscription buildEventSubscription() {
     o.status = buildEventSubscriptionStatus();
     o.subscriber = 'foo';
     o.subscriberLink = 'foo';
+    o.triggerConfigVariables = buildUnnamed27();
     o.updateTime = 'foo';
   }
   buildCounterEventSubscription--;
@@ -1632,6 +1649,7 @@ void checkEventSubscription(api.EventSubscription o) {
       o.subscriberLink!,
       unittest.equals('foo'),
     );
+    checkUnnamed27(o.triggerConfigVariables!);
     unittest.expect(
       o.updateTime!,
       unittest.equals('foo'),
@@ -1753,17 +1771,6 @@ void checkEventType(api.EventType o) {
   buildCounterEventType--;
 }
 
-core.List<api.ConfigVariable> buildUnnamed27() => [
-      buildConfigVariable(),
-      buildConfigVariable(),
-    ];
-
-void checkUnnamed27(core.List<api.ConfigVariable> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkConfigVariable(o[0]);
-  checkConfigVariable(o[1]);
-}
-
 core.List<api.ConfigVariable> buildUnnamed28() => [
       buildConfigVariable(),
       buildConfigVariable(),
@@ -1780,7 +1787,7 @@ api.EventingConfig buildEventingConfig() {
   final o = api.EventingConfig();
   buildCounterEventingConfig++;
   if (buildCounterEventingConfig < 3) {
-    o.additionalVariables = buildUnnamed27();
+    o.additionalVariables = buildUnnamed28();
     o.authConfig = buildAuthConfig();
     o.deadLetterConfig = buildDeadLetterConfig();
     o.enrichmentEnabled = true;
@@ -1789,7 +1796,6 @@ api.EventingConfig buildEventingConfig() {
     o.privateConnectivityEnabled = true;
     o.proxyDestinationConfig = buildDestinationConfig();
     o.registrationDestinationConfig = buildDestinationConfig();
-    o.triggerConfigVariables = buildUnnamed28();
   }
   buildCounterEventingConfig--;
   return o;
@@ -1798,7 +1804,7 @@ api.EventingConfig buildEventingConfig() {
 void checkEventingConfig(api.EventingConfig o) {
   buildCounterEventingConfig++;
   if (buildCounterEventingConfig < 3) {
-    checkUnnamed27(o.additionalVariables!);
+    checkUnnamed28(o.additionalVariables!);
     checkAuthConfig(o.authConfig!);
     checkDeadLetterConfig(o.deadLetterConfig!);
     unittest.expect(o.enrichmentEnabled!, unittest.isTrue);
@@ -1810,7 +1816,6 @@ void checkEventingConfig(api.EventingConfig o) {
     unittest.expect(o.privateConnectivityEnabled!, unittest.isTrue);
     checkDestinationConfig(o.proxyDestinationConfig!);
     checkDestinationConfig(o.registrationDestinationConfig!);
-    checkUnnamed28(o.triggerConfigVariables!);
   }
   buildCounterEventingConfig--;
 }

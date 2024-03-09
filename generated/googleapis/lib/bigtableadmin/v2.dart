@@ -2608,6 +2608,43 @@ class AuditConfig {
 /// exempting jose@example.com from DATA_READ logging.
 typedef AuditLogConfig = $AuditLogConfig;
 
+/// Defines an automated backup policy for a table
+class AutomatedBackupPolicy {
+  /// How frequently automated backups should occur.
+  ///
+  /// The only supported value at this time is 24 hours.
+  ///
+  /// Required.
+  core.String? frequency;
+
+  /// How long the automated backups should be retained.
+  ///
+  /// The only supported value at this time is 3 days.
+  ///
+  /// Required.
+  core.String? retentionPeriod;
+
+  AutomatedBackupPolicy({
+    this.frequency,
+    this.retentionPeriod,
+  });
+
+  AutomatedBackupPolicy.fromJson(core.Map json_)
+      : this(
+          frequency: json_.containsKey('frequency')
+              ? json_['frequency'] as core.String
+              : null,
+          retentionPeriod: json_.containsKey('retentionPeriod')
+              ? json_['retentionPeriod'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (frequency != null) 'frequency': frequency!,
+        if (retentionPeriod != null) 'retentionPeriod': retentionPeriod!,
+      };
+}
+
 /// Limits for the number of nodes a Cluster can autoscale up/down to.
 class AutoscalingLimits {
   /// Maximum number of nodes to scale up to.
@@ -4405,11 +4442,21 @@ class Modification {
   /// column family exists with the given ID.
   ColumnFamily? update;
 
+  /// A mask specifying which fields (e.g. `gc_rule`) in the `update` mod should
+  /// be updated, ignored for other modification types.
+  ///
+  /// If unset or empty, we treat it as updating `gc_rule` to be backward
+  /// compatible.
+  ///
+  /// Optional.
+  core.String? updateMask;
+
   Modification({
     this.create,
     this.drop,
     this.id,
     this.update,
+    this.updateMask,
   });
 
   Modification.fromJson(core.Map json_)
@@ -4424,6 +4471,9 @@ class Modification {
               ? ColumnFamily.fromJson(
                   json_['update'] as core.Map<core.String, core.dynamic>)
               : null,
+          updateMask: json_.containsKey('updateMask')
+              ? json_['updateMask'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4431,6 +4481,7 @@ class Modification {
         if (drop != null) 'drop': drop!,
         if (id != null) 'id': id!,
         if (update != null) 'update': update!,
+        if (updateMask != null) 'updateMask': updateMask!,
       };
 }
 
@@ -4915,6 +4966,11 @@ typedef Status = $Status;
 ///
 /// Each table is served using the resources of its parent cluster.
 class Table {
+  /// If specified, automated backups are enabled for this table.
+  ///
+  /// Otherwise, automated backups are disabled.
+  AutomatedBackupPolicy? automatedBackupPolicy;
+
   /// If specified, enable the change stream on this table.
   ///
   /// Otherwise, the change stream is disabled and the change stream is not
@@ -4982,6 +5038,7 @@ class Table {
   TableStats? stats;
 
   Table({
+    this.automatedBackupPolicy,
     this.changeStreamConfig,
     this.clusterStates,
     this.columnFamilies,
@@ -4994,6 +5051,10 @@ class Table {
 
   Table.fromJson(core.Map json_)
       : this(
+          automatedBackupPolicy: json_.containsKey('automatedBackupPolicy')
+              ? AutomatedBackupPolicy.fromJson(json_['automatedBackupPolicy']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           changeStreamConfig: json_.containsKey('changeStreamConfig')
               ? ChangeStreamConfig.fromJson(json_['changeStreamConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -5036,6 +5097,8 @@ class Table {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (automatedBackupPolicy != null)
+          'automatedBackupPolicy': automatedBackupPolicy!,
         if (changeStreamConfig != null)
           'changeStreamConfig': changeStreamConfig!,
         if (clusterStates != null) 'clusterStates': clusterStates!,

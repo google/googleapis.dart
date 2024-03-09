@@ -27,6 +27,8 @@
 ///
 /// - [FoldersResource]
 ///   - [FoldersLocationsResource]
+///     - [FoldersLocationsOrgPolicyViolationsPreviewsResource]
+///       - [FoldersLocationsOrgPolicyViolationsPreviewsOperationsResource]
 ///     - [FoldersLocationsReplaysResource]
 ///       - [FoldersLocationsReplaysOperationsResource]
 ///       - [FoldersLocationsReplaysResultsResource]
@@ -34,6 +36,7 @@
 /// - [OrganizationsResource]
 ///   - [OrganizationsLocationsResource]
 ///     - [OrganizationsLocationsOrgPolicyViolationsPreviewsResource]
+/// - [OrganizationsLocationsOrgPolicyViolationsPreviewsOperationsResource]
 /// -
 /// [OrganizationsLocationsOrgPolicyViolationsPreviewsOrgPolicyViolationsResource]
 ///     - [OrganizationsLocationsReplaysResource]
@@ -41,6 +44,8 @@
 ///       - [OrganizationsLocationsReplaysResultsResource]
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsOrgPolicyViolationsPreviewsResource]
+///       - [ProjectsLocationsOrgPolicyViolationsPreviewsOperationsResource]
 ///     - [ProjectsLocationsReplaysResource]
 ///       - [ProjectsLocationsReplaysOperationsResource]
 ///       - [ProjectsLocationsReplaysResultsResource]
@@ -100,10 +105,74 @@ class FoldersResource {
 class FoldersLocationsResource {
   final commons.ApiRequester _requester;
 
+  FoldersLocationsOrgPolicyViolationsPreviewsResource
+      get orgPolicyViolationsPreviews =>
+          FoldersLocationsOrgPolicyViolationsPreviewsResource(_requester);
   FoldersLocationsReplaysResource get replays =>
       FoldersLocationsReplaysResource(_requester);
 
   FoldersLocationsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class FoldersLocationsOrgPolicyViolationsPreviewsResource {
+  final commons.ApiRequester _requester;
+
+  FoldersLocationsOrgPolicyViolationsPreviewsOperationsResource
+      get operations =>
+          FoldersLocationsOrgPolicyViolationsPreviewsOperationsResource(
+              _requester);
+
+  FoldersLocationsOrgPolicyViolationsPreviewsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+}
+
+class FoldersLocationsOrgPolicyViolationsPreviewsOperationsResource {
+  final commons.ApiRequester _requester;
+
+  FoldersLocationsOrgPolicyViolationsPreviewsOperationsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern
+  /// `^folders/\[^/\]+/locations/\[^/\]+/orgPolicyViolationsPreviews/\[^/\]+/operations/.*$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class FoldersLocationsReplaysResource {
@@ -485,6 +554,10 @@ class OrganizationsLocationsResource {
 class OrganizationsLocationsOrgPolicyViolationsPreviewsResource {
   final commons.ApiRequester _requester;
 
+  OrganizationsLocationsOrgPolicyViolationsPreviewsOperationsResource
+      get operations =>
+          OrganizationsLocationsOrgPolicyViolationsPreviewsOperationsResource(
+              _requester);
   OrganizationsLocationsOrgPolicyViolationsPreviewsOrgPolicyViolationsResource
       get orgPolicyViolations =>
           OrganizationsLocationsOrgPolicyViolationsPreviewsOrgPolicyViolationsResource(
@@ -644,6 +717,54 @@ class OrganizationsLocationsOrgPolicyViolationsPreviewsResource {
     );
     return GoogleCloudPolicysimulatorV1ListOrgPolicyViolationsPreviewsResponse
         .fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class OrganizationsLocationsOrgPolicyViolationsPreviewsOperationsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsOrgPolicyViolationsPreviewsOperationsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/orgPolicyViolationsPreviews/\[^/\]+/operations/.*$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -982,10 +1103,74 @@ class ProjectsResource {
 class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsOrgPolicyViolationsPreviewsResource
+      get orgPolicyViolationsPreviews =>
+          ProjectsLocationsOrgPolicyViolationsPreviewsResource(_requester);
   ProjectsLocationsReplaysResource get replays =>
       ProjectsLocationsReplaysResource(_requester);
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsLocationsOrgPolicyViolationsPreviewsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsOrgPolicyViolationsPreviewsOperationsResource
+      get operations =>
+          ProjectsLocationsOrgPolicyViolationsPreviewsOperationsResource(
+              _requester);
+
+  ProjectsLocationsOrgPolicyViolationsPreviewsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+}
+
+class ProjectsLocationsOrgPolicyViolationsPreviewsOperationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsOrgPolicyViolationsPreviewsOperationsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/orgPolicyViolationsPreviews/\[^/\]+/operations/.*$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsReplaysResource {

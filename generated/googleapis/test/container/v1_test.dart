@@ -1192,6 +1192,7 @@ api.ClusterUpdate buildClusterUpdate() {
     o.desiredDatapathProvider = 'foo';
     o.desiredDefaultSnatStatus = buildDefaultSnatStatus();
     o.desiredDnsConfig = buildDNSConfig();
+    o.desiredEnableCiliumClusterwideNetworkPolicy = true;
     o.desiredEnableFqdnNetworkPolicy = true;
     o.desiredEnablePrivateEndpoint = true;
     o.desiredFleet = buildFleet();
@@ -1256,6 +1257,8 @@ void checkClusterUpdate(api.ClusterUpdate o) {
     );
     checkDefaultSnatStatus(o.desiredDefaultSnatStatus!);
     checkDNSConfig(o.desiredDnsConfig!);
+    unittest.expect(
+        o.desiredEnableCiliumClusterwideNetworkPolicy!, unittest.isTrue);
     unittest.expect(o.desiredEnableFqdnNetworkPolicy!, unittest.isTrue);
     unittest.expect(o.desiredEnablePrivateEndpoint!, unittest.isTrue);
     checkFleet(o.desiredFleet!);
@@ -3115,6 +3118,7 @@ api.NetworkConfig buildNetworkConfig() {
     o.datapathProvider = 'foo';
     o.defaultSnatStatus = buildDefaultSnatStatus();
     o.dnsConfig = buildDNSConfig();
+    o.enableCiliumClusterwideNetworkPolicy = true;
     o.enableFqdnNetworkPolicy = true;
     o.enableIntraNodeVisibility = true;
     o.enableL4ilbSubsetting = true;
@@ -3140,6 +3144,7 @@ void checkNetworkConfig(api.NetworkConfig o) {
     );
     checkDefaultSnatStatus(o.defaultSnatStatus!);
     checkDNSConfig(o.dnsConfig!);
+    unittest.expect(o.enableCiliumClusterwideNetworkPolicy!, unittest.isTrue);
     unittest.expect(o.enableFqdnNetworkPolicy!, unittest.isTrue);
     unittest.expect(o.enableIntraNodeVisibility!, unittest.isTrue);
     unittest.expect(o.enableL4ilbSubsetting!, unittest.isTrue);

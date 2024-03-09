@@ -1124,6 +1124,8 @@ class ManagementServer {
   /// Output only.
   ManagementURI? managementUri;
 
+  /// Identifier.
+  ///
   /// The resource name.
   ///
   /// Output only.

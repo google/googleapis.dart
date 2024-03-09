@@ -3490,6 +3490,12 @@ class PlaylistImagesResource {
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
+  /// [uploadMedia] - The media to upload.
+  ///
+  /// [uploadOptions] - Options for the media upload. Streaming Media without
+  /// the length being known ahead of time is only supported via resumable
+  /// uploads.
+  ///
   /// Completes with a [PlaylistImage].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3502,6 +3508,8 @@ class PlaylistImagesResource {
     core.String? onBehalfOfContentOwner,
     core.List<core.String>? part,
     core.String? $fields,
+    commons.UploadOptions uploadOptions = commons.UploadOptions.defaultOptions,
+    commons.Media? uploadMedia,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -3511,13 +3519,22 @@ class PlaylistImagesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    const url_ = 'youtube/v3/playlistImages';
+    core.String url_;
+    if (uploadMedia == null) {
+      url_ = 'youtube/v3/playlistImages';
+    } else if (uploadOptions is commons.ResumableUploadOptions) {
+      url_ = '/resumable/upload/youtube/v3/playlistImages';
+    } else {
+      url_ = '/upload/youtube/v3/playlistImages';
+    }
 
     final response_ = await _requester.request(
       url_,
       'PUT',
       body: body_,
       queryParams: queryParams_,
+      uploadMedia: uploadMedia,
+      uploadOptions: uploadOptions,
     );
     return PlaylistImage.fromJson(
         response_ as core.Map<core.String, core.dynamic>);

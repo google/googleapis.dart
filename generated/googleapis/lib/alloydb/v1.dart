@@ -2735,7 +2735,7 @@ class Cluster {
   /// created and from which they are accessible via Private IP.
   ///
   /// The network must belong to the same project as the cluster. It is
-  /// specified in the form: "projects/{project}/global/networks/{network_id}".
+  /// specified in the form: `projects/{project}/global/networks/{network_id}`.
   /// This is required to create a cluster. Deprecated, use
   /// network_config.network instead.
   ///
@@ -4144,7 +4144,7 @@ class NetworkConfig {
   ///
   /// The network must belong to the same project as the cluster. It is
   /// specified in the form:
-  /// "projects/{project_number}/global/networks/{network_id}". This is required
+  /// `projects/{project_number}/global/networks/{network_id}`. This is required
   /// to create a cluster.
   ///
   /// Optional.

@@ -431,6 +431,13 @@ class ProjectsLocationsFunctionsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/functions/\[^/\]+$`.
   ///
+  /// [revision] - Optional. The optional version of the 1st gen function whose
+  /// details should be obtained. The version of a 1st gen function is an
+  /// integer that starts from 1 and gets incremented on redeployments. GCF may
+  /// keep historical configs for old versions of 1st gen function. This field
+  /// can be specified to fetch the historical configs. This field is valid only
+  /// for GCF 1st gen function.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -443,9 +450,11 @@ class ProjectsLocationsFunctionsResource {
   /// this method will complete with the same error.
   async.Future<Function_> get(
     core.String name, {
+    core.String? revision,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (revision != null) 'revision': [revision],
       if ($fields != null) 'fields': [$fields],
     };
 

@@ -2651,6 +2651,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.CloudFunctionsApi(mock).projects.locations.functions;
       final arg_name = 'foo';
+      final arg_revision = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -2685,6 +2686,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['revision']!.first,
+          unittest.equals(arg_revision),
+        );
+        unittest.expect(
           queryMap['fields']!.first,
           unittest.equals(arg_$fields),
         );
@@ -2695,7 +2700,8 @@ void main() {
         final resp = convert.json.encode(buildFunction_());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      final response = await res.get(arg_name, $fields: arg_$fields);
+      final response =
+          await res.get(arg_name, revision: arg_revision, $fields: arg_$fields);
       checkFunction_(response as api.Function_);
     });
 

@@ -2002,6 +2002,7 @@ api.GoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty
   final o = api.GoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty();
   buildCounterGoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty++;
   if (buildCounterGoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty < 3) {
+    o.displayName = 'foo';
     o.name = 'foo';
     o.occurrenceType = 'foo';
     o.valueType = 'foo';
@@ -2014,6 +2015,10 @@ void checkGoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty(
     api.GoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty o) {
   buildCounterGoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty++;
   if (buildCounterGoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty < 3) {
+    unittest.expect(
+      o.displayName!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -3077,6 +3082,7 @@ api.GoogleCloudDocumentaiV1ProcessOptions
     o.individualPageSelector =
         buildGoogleCloudDocumentaiV1ProcessOptionsIndividualPageSelector();
     o.ocrConfig = buildGoogleCloudDocumentaiV1OcrConfig();
+    o.schemaOverride = buildGoogleCloudDocumentaiV1DocumentSchema();
   }
   buildCounterGoogleCloudDocumentaiV1ProcessOptions--;
   return o;
@@ -3097,6 +3103,7 @@ void checkGoogleCloudDocumentaiV1ProcessOptions(
     checkGoogleCloudDocumentaiV1ProcessOptionsIndividualPageSelector(
         o.individualPageSelector!);
     checkGoogleCloudDocumentaiV1OcrConfig(o.ocrConfig!);
+    checkGoogleCloudDocumentaiV1DocumentSchema(o.schemaOverride!);
   }
   buildCounterGoogleCloudDocumentaiV1ProcessOptions--;
 }

@@ -282,7 +282,7 @@ api.AnnotateTextRequest buildAnnotateTextRequest() {
   if (buildCounterAnnotateTextRequest < 3) {
     o.document = buildDocument();
     o.encodingType = 'foo';
-    o.features = buildFeatures();
+    o.features = buildAnnotateTextRequestFeatures();
   }
   buildCounterAnnotateTextRequest--;
   return o;
@@ -296,9 +296,40 @@ void checkAnnotateTextRequest(api.AnnotateTextRequest o) {
       o.encodingType!,
       unittest.equals('foo'),
     );
-    checkFeatures(o.features!);
+    checkAnnotateTextRequestFeatures(o.features!);
   }
   buildCounterAnnotateTextRequest--;
+}
+
+core.int buildCounterAnnotateTextRequestFeatures = 0;
+api.AnnotateTextRequestFeatures buildAnnotateTextRequestFeatures() {
+  final o = api.AnnotateTextRequestFeatures();
+  buildCounterAnnotateTextRequestFeatures++;
+  if (buildCounterAnnotateTextRequestFeatures < 3) {
+    o.classificationModelOptions = buildClassificationModelOptions();
+    o.classifyText = true;
+    o.extractDocumentSentiment = true;
+    o.extractEntities = true;
+    o.extractEntitySentiment = true;
+    o.extractSyntax = true;
+    o.moderateText = true;
+  }
+  buildCounterAnnotateTextRequestFeatures--;
+  return o;
+}
+
+void checkAnnotateTextRequestFeatures(api.AnnotateTextRequestFeatures o) {
+  buildCounterAnnotateTextRequestFeatures++;
+  if (buildCounterAnnotateTextRequestFeatures < 3) {
+    checkClassificationModelOptions(o.classificationModelOptions!);
+    unittest.expect(o.classifyText!, unittest.isTrue);
+    unittest.expect(o.extractDocumentSentiment!, unittest.isTrue);
+    unittest.expect(o.extractEntities!, unittest.isTrue);
+    unittest.expect(o.extractEntitySentiment!, unittest.isTrue);
+    unittest.expect(o.extractSyntax!, unittest.isTrue);
+    unittest.expect(o.moderateText!, unittest.isTrue);
+  }
+  buildCounterAnnotateTextRequestFeatures--;
 }
 
 core.List<api.ClassificationCategory> buildUnnamed5() => [
@@ -422,8 +453,8 @@ api.ClassificationModelOptions buildClassificationModelOptions() {
   final o = api.ClassificationModelOptions();
   buildCounterClassificationModelOptions++;
   if (buildCounterClassificationModelOptions < 3) {
-    o.v1Model = buildV1Model();
-    o.v2Model = buildV2Model();
+    o.v1Model = buildClassificationModelOptionsV1Model();
+    o.v2Model = buildClassificationModelOptionsV2Model();
   }
   buildCounterClassificationModelOptions--;
   return o;
@@ -432,10 +463,49 @@ api.ClassificationModelOptions buildClassificationModelOptions() {
 void checkClassificationModelOptions(api.ClassificationModelOptions o) {
   buildCounterClassificationModelOptions++;
   if (buildCounterClassificationModelOptions < 3) {
-    checkV1Model(o.v1Model!);
-    checkV2Model(o.v2Model!);
+    checkClassificationModelOptionsV1Model(o.v1Model!);
+    checkClassificationModelOptionsV2Model(o.v2Model!);
   }
   buildCounterClassificationModelOptions--;
+}
+
+core.int buildCounterClassificationModelOptionsV1Model = 0;
+api.ClassificationModelOptionsV1Model buildClassificationModelOptionsV1Model() {
+  final o = api.ClassificationModelOptionsV1Model();
+  buildCounterClassificationModelOptionsV1Model++;
+  if (buildCounterClassificationModelOptionsV1Model < 3) {}
+  buildCounterClassificationModelOptionsV1Model--;
+  return o;
+}
+
+void checkClassificationModelOptionsV1Model(
+    api.ClassificationModelOptionsV1Model o) {
+  buildCounterClassificationModelOptionsV1Model++;
+  if (buildCounterClassificationModelOptionsV1Model < 3) {}
+  buildCounterClassificationModelOptionsV1Model--;
+}
+
+core.int buildCounterClassificationModelOptionsV2Model = 0;
+api.ClassificationModelOptionsV2Model buildClassificationModelOptionsV2Model() {
+  final o = api.ClassificationModelOptionsV2Model();
+  buildCounterClassificationModelOptionsV2Model++;
+  if (buildCounterClassificationModelOptionsV2Model < 3) {
+    o.contentCategoriesVersion = 'foo';
+  }
+  buildCounterClassificationModelOptionsV2Model--;
+  return o;
+}
+
+void checkClassificationModelOptionsV2Model(
+    api.ClassificationModelOptionsV2Model o) {
+  buildCounterClassificationModelOptionsV2Model++;
+  if (buildCounterClassificationModelOptionsV2Model < 3) {
+    unittest.expect(
+      o.contentCategoriesVersion!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterClassificationModelOptionsV2Model--;
 }
 
 core.int buildCounterClassifyTextRequest = 0;
@@ -643,37 +713,6 @@ void checkEntityMention(api.EntityMention o) {
     );
   }
   buildCounterEntityMention--;
-}
-
-core.int buildCounterFeatures = 0;
-api.Features buildFeatures() {
-  final o = api.Features();
-  buildCounterFeatures++;
-  if (buildCounterFeatures < 3) {
-    o.classificationModelOptions = buildClassificationModelOptions();
-    o.classifyText = true;
-    o.extractDocumentSentiment = true;
-    o.extractEntities = true;
-    o.extractEntitySentiment = true;
-    o.extractSyntax = true;
-    o.moderateText = true;
-  }
-  buildCounterFeatures--;
-  return o;
-}
-
-void checkFeatures(api.Features o) {
-  buildCounterFeatures++;
-  if (buildCounterFeatures < 3) {
-    checkClassificationModelOptions(o.classificationModelOptions!);
-    unittest.expect(o.classifyText!, unittest.isTrue);
-    unittest.expect(o.extractDocumentSentiment!, unittest.isTrue);
-    unittest.expect(o.extractEntities!, unittest.isTrue);
-    unittest.expect(o.extractEntitySentiment!, unittest.isTrue);
-    unittest.expect(o.extractSyntax!, unittest.isTrue);
-    unittest.expect(o.moderateText!, unittest.isTrue);
-  }
-  buildCounterFeatures--;
 }
 
 core.int buildCounterModerateTextRequest = 0;
@@ -905,43 +944,6 @@ void checkToken(api.Token o) {
   buildCounterToken--;
 }
 
-core.int buildCounterV1Model = 0;
-api.V1Model buildV1Model() {
-  final o = api.V1Model();
-  buildCounterV1Model++;
-  if (buildCounterV1Model < 3) {}
-  buildCounterV1Model--;
-  return o;
-}
-
-void checkV1Model(api.V1Model o) {
-  buildCounterV1Model++;
-  if (buildCounterV1Model < 3) {}
-  buildCounterV1Model--;
-}
-
-core.int buildCounterV2Model = 0;
-api.V2Model buildV2Model() {
-  final o = api.V2Model();
-  buildCounterV2Model++;
-  if (buildCounterV2Model < 3) {
-    o.contentCategoriesVersion = 'foo';
-  }
-  buildCounterV2Model--;
-  return o;
-}
-
-void checkV2Model(api.V2Model o) {
-  buildCounterV2Model++;
-  if (buildCounterV2Model < 3) {
-    unittest.expect(
-      o.contentCategoriesVersion!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterV2Model--;
-}
-
 void main() {
   unittest.group('obj-schema-AnalyzeEntitiesRequest', () {
     unittest.test('to-json--from-json', () async {
@@ -1033,6 +1035,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-AnnotateTextRequestFeatures', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAnnotateTextRequestFeatures();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AnnotateTextRequestFeatures.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAnnotateTextRequestFeatures(od);
+    });
+  });
+
   unittest.group('obj-schema-AnnotateTextResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildAnnotateTextResponse();
@@ -1060,6 +1072,26 @@ void main() {
       final od = api.ClassificationModelOptions.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkClassificationModelOptions(od);
+    });
+  });
+
+  unittest.group('obj-schema-ClassificationModelOptionsV1Model', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildClassificationModelOptionsV1Model();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ClassificationModelOptionsV1Model.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkClassificationModelOptionsV1Model(od);
+    });
+  });
+
+  unittest.group('obj-schema-ClassificationModelOptionsV2Model', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildClassificationModelOptionsV2Model();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ClassificationModelOptionsV2Model.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkClassificationModelOptionsV2Model(od);
     });
   });
 
@@ -1120,16 +1152,6 @@ void main() {
       final od = api.EntityMention.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkEntityMention(od);
-    });
-  });
-
-  unittest.group('obj-schema-Features', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildFeatures();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Features.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkFeatures(od);
     });
   });
 
@@ -1200,26 +1222,6 @@ void main() {
       final od =
           api.Token.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkToken(od);
-    });
-  });
-
-  unittest.group('obj-schema-V1Model', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildV1Model();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.V1Model.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkV1Model(od);
-    });
-  });
-
-  unittest.group('obj-schema-V2Model', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildV2Model();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.V2Model.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkV2Model(od);
     });
   });
 

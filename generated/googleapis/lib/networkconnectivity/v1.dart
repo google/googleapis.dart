@@ -6540,7 +6540,7 @@ class Route {
   /// [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
   core.Map<core.String, core.String>? labels;
 
-  /// The location of the route.
+  /// The origin location of the route.
   ///
   /// Uses the following form: "projects/{project}/locations/{location}"
   /// Example: projects/1234/locations/us-central1

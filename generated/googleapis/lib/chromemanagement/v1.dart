@@ -981,6 +981,15 @@ class CustomersTelemetryDevicesResource {
   /// Value must have pattern `^customers/\[^/\]+/telemetry/devices/\[^/\]+$`.
   ///
   /// [readMask] - Required. Read mask to specify which fields to return.
+  /// Supported read_mask paths are: - name - org_unit_id - device_id -
+  /// serial_number - cpu_info - cpu_status_report - memory_info -
+  /// memory_status_report - network_info - network_diagnostics_report -
+  /// network_status_report - os_update_status - graphics_info -
+  /// graphics_status_report - battery_info - battery_status_report -
+  /// storage_info - storage_status_report - thunderbolt_info -
+  /// audio_status_report - boot_performance_report - heartbeat_status_report -
+  /// network_bandwidth_report - peripherals_report - kiosk_app_status_report -
+  /// app_report - runtime_counters_report
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1035,6 +1044,15 @@ class CustomersTelemetryDevicesResource {
   /// [pageToken] - Token to specify next page in the list.
   ///
   /// [readMask] - Required. Read mask to specify which fields to return.
+  /// Supported read_mask paths are: - name - org_unit_id - device_id -
+  /// serial_number - cpu_info - cpu_status_report - memory_info -
+  /// memory_status_report - network_info - network_diagnostics_report -
+  /// network_status_report - os_update_status - graphics_info -
+  /// graphics_status_report - battery_info - battery_status_report -
+  /// storage_info - storage_status_report - thunderbolt_info -
+  /// audio_status_report - boot_performance_report - heartbeat_status_report -
+  /// network_bandwidth_report - peripherals_report - kiosk_app_status_report -
+  /// app_report - runtime_counters_report
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1105,7 +1123,12 @@ class CustomersTelemetryEventsResource {
   ///
   /// [readMask] - Required. Read mask to specify which fields to return.
   /// Although currently required, this field will become optional, while the
-  /// filter parameter with an event type will be come required.
+  /// filter parameter with an event type will be come required. Supported
+  /// read_mask paths are: - device - user - audio_severe_underrun_event -
+  /// usb_peripherals_event - https_latency_change_event -
+  /// network_state_change_event - wifi_signal_strength_event -
+  /// vpn_connection_state_change_event - app_install_event -
+  /// app_uninstall_event - app_launch_event
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1302,7 +1325,11 @@ class CustomersTelemetryUsersResource {
   /// [name] - Required. Name of the `TelemetryUser` to return.
   /// Value must have pattern `^customers/\[^/\]+/telemetry/users/\[^/\]+$`.
   ///
-  /// [readMask] - Read mask to specify which fields to return.
+  /// [readMask] - Read mask to specify which fields to return. Supported
+  /// read_mask paths are: - name - org_unit_id - user_id - user_email -
+  /// user_device.device_id - user_device.audio_status_report -
+  /// user_device.device_activity_report - user_device.network_bandwidth_report
+  /// - user_device.peripherals_report
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1351,7 +1378,11 @@ class CustomersTelemetryUsersResource {
   ///
   /// [pageToken] - Token to specify next page in the list.
   ///
-  /// [readMask] - Read mask to specify which fields to return.
+  /// [readMask] - Read mask to specify which fields to return. Supported
+  /// read_mask paths are: - name - org_unit_id - user_id - user_email -
+  /// user_device.device_id - user_device.audio_status_report -
+  /// user_device.device_activity_report - user_device.network_bandwidth_report
+  /// - user_device.peripherals_report
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5087,6 +5118,73 @@ class GoogleChromeManagementV1PrinterReport {
       };
 }
 
+/// Runtime counters retrieved from CPU.
+///
+/// Currently the runtime counters telemetry is only supported by Intel vPro PSR
+/// on Gen 14+.
+class GoogleChromeManagementV1RuntimeCountersReport {
+  /// Number of times that the device has entered into the hibernation state.
+  ///
+  /// Currently obtained via the PSR, count from S0-\>S4.
+  core.String? enterHibernationCount;
+
+  /// Number of times that the device has entered into the power-off state.
+  ///
+  /// Currently obtained via the PSR, count from S0-\>S5.
+  core.String? enterPoweroffCount;
+
+  /// Number of times that the device has entered into the sleep state.
+  ///
+  /// Currently obtained via the PSR, count from S0-\>S3.
+  core.String? enterSleepCount;
+
+  /// Timestamp when the report was collected.
+  core.String? reportTime;
+
+  /// Total lifetime runtime.
+  ///
+  /// Currently always S0 runtime from Intel vPro PSR.
+  core.String? uptimeRuntimeDuration;
+
+  GoogleChromeManagementV1RuntimeCountersReport({
+    this.enterHibernationCount,
+    this.enterPoweroffCount,
+    this.enterSleepCount,
+    this.reportTime,
+    this.uptimeRuntimeDuration,
+  });
+
+  GoogleChromeManagementV1RuntimeCountersReport.fromJson(core.Map json_)
+      : this(
+          enterHibernationCount: json_.containsKey('enterHibernationCount')
+              ? json_['enterHibernationCount'] as core.String
+              : null,
+          enterPoweroffCount: json_.containsKey('enterPoweroffCount')
+              ? json_['enterPoweroffCount'] as core.String
+              : null,
+          enterSleepCount: json_.containsKey('enterSleepCount')
+              ? json_['enterSleepCount'] as core.String
+              : null,
+          reportTime: json_.containsKey('reportTime')
+              ? json_['reportTime'] as core.String
+              : null,
+          uptimeRuntimeDuration: json_.containsKey('uptimeRuntimeDuration')
+              ? json_['uptimeRuntimeDuration'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enterHibernationCount != null)
+          'enterHibernationCount': enterHibernationCount!,
+        if (enterPoweroffCount != null)
+          'enterPoweroffCount': enterPoweroffCount!,
+        if (enterSleepCount != null) 'enterSleepCount': enterSleepCount!,
+        if (reportTime != null) 'reportTime': reportTime!,
+        if (uptimeRuntimeDuration != null)
+          'uptimeRuntimeDuration': uptimeRuntimeDuration!,
+      };
+}
+
 /// Status data for storage.
 ///
 /// * This field is telemetry information and this will change over time as the
@@ -5353,6 +5451,14 @@ class GoogleChromeManagementV1TelemetryDevice {
   /// Output only.
   core.List<GoogleChromeManagementV1PeripheralsReport>? peripheralsReport;
 
+  /// Runtime counters reports collected device lifetime runtime, as well as the
+  /// counts of S0-\>S3, S0-\>S4, and S0-\>S5 transitions, meaning entering into
+  /// sleep, hibernation, and power-off states
+  ///
+  /// Output only.
+  core.List<GoogleChromeManagementV1RuntimeCountersReport>?
+      runtimeCountersReport;
+
   /// Device serial number.
   ///
   /// This value is the same as the Admin Console's Serial Number in the
@@ -5399,6 +5505,7 @@ class GoogleChromeManagementV1TelemetryDevice {
     this.orgUnitId,
     this.osUpdateStatus,
     this.peripheralsReport,
+    this.runtimeCountersReport,
     this.serialNumber,
     this.storageInfo,
     this.storageStatusReport,
@@ -5533,6 +5640,13 @@ class GoogleChromeManagementV1TelemetryDevice {
                           value as core.Map<core.String, core.dynamic>))
                   .toList()
               : null,
+          runtimeCountersReport: json_.containsKey('runtimeCountersReport')
+              ? (json_['runtimeCountersReport'] as core.List)
+                  .map((value) =>
+                      GoogleChromeManagementV1RuntimeCountersReport.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           serialNumber: json_.containsKey('serialNumber')
               ? json_['serialNumber'] as core.String
               : null,
@@ -5588,6 +5702,8 @@ class GoogleChromeManagementV1TelemetryDevice {
         if (orgUnitId != null) 'orgUnitId': orgUnitId!,
         if (osUpdateStatus != null) 'osUpdateStatus': osUpdateStatus!,
         if (peripheralsReport != null) 'peripheralsReport': peripheralsReport!,
+        if (runtimeCountersReport != null)
+          'runtimeCountersReport': runtimeCountersReport!,
         if (serialNumber != null) 'serialNumber': serialNumber!,
         if (storageInfo != null) 'storageInfo': storageInfo!,
         if (storageStatusReport != null)

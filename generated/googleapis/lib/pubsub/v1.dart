@@ -4564,7 +4564,7 @@ typedef TextConfig = $Empty;
 
 /// A topic resource.
 class Topic {
-  /// Settings for managed ingestion from a data source into this topic.
+  /// Settings for ingestion from a data source into this topic.
   ///
   /// Optional.
   IngestionDataSourceSettings? ingestionDataSourceSettings;

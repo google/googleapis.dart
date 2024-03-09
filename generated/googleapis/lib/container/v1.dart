@@ -5674,6 +5674,9 @@ class ClusterUpdate {
   /// DNSConfig contains clusterDNS config for this cluster.
   DNSConfig? desiredDnsConfig;
 
+  /// Enable/Disable Cilium Clusterwide Network Policy for the cluster.
+  core.bool? desiredEnableCiliumClusterwideNetworkPolicy;
+
   /// Enable/Disable FQDN Network Policy for the cluster.
   core.bool? desiredEnableFqdnNetworkPolicy;
 
@@ -5889,6 +5892,7 @@ class ClusterUpdate {
     this.desiredDatapathProvider,
     this.desiredDefaultSnatStatus,
     this.desiredDnsConfig,
+    this.desiredEnableCiliumClusterwideNetworkPolicy,
     this.desiredEnableFqdnNetworkPolicy,
     this.desiredEnablePrivateEndpoint,
     this.desiredFleet,
@@ -5989,6 +5993,11 @@ class ClusterUpdate {
               ? DNSConfig.fromJson(json_['desiredDnsConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          desiredEnableCiliumClusterwideNetworkPolicy:
+              json_.containsKey('desiredEnableCiliumClusterwideNetworkPolicy')
+                  ? json_['desiredEnableCiliumClusterwideNetworkPolicy']
+                      as core.bool
+                  : null,
           desiredEnableFqdnNetworkPolicy:
               json_.containsKey('desiredEnableFqdnNetworkPolicy')
                   ? json_['desiredEnableFqdnNetworkPolicy'] as core.bool
@@ -6203,6 +6212,9 @@ class ClusterUpdate {
         if (desiredDefaultSnatStatus != null)
           'desiredDefaultSnatStatus': desiredDefaultSnatStatus!,
         if (desiredDnsConfig != null) 'desiredDnsConfig': desiredDnsConfig!,
+        if (desiredEnableCiliumClusterwideNetworkPolicy != null)
+          'desiredEnableCiliumClusterwideNetworkPolicy':
+              desiredEnableCiliumClusterwideNetworkPolicy!,
         if (desiredEnableFqdnNetworkPolicy != null)
           'desiredEnableFqdnNetworkPolicy': desiredEnableFqdnNetworkPolicy!,
         if (desiredEnablePrivateEndpoint != null)
@@ -8597,6 +8609,9 @@ class NetworkConfig {
   /// DNSConfig contains clusterDNS config for this cluster.
   DNSConfig? dnsConfig;
 
+  /// Whether CiliumClusterwideNetworkPolicy is enabled on this cluster.
+  core.bool? enableCiliumClusterwideNetworkPolicy;
+
   /// Whether FQDN Network Policy is enabled on this cluster.
   core.bool? enableFqdnNetworkPolicy;
 
@@ -8668,6 +8683,7 @@ class NetworkConfig {
     this.datapathProvider,
     this.defaultSnatStatus,
     this.dnsConfig,
+    this.enableCiliumClusterwideNetworkPolicy,
     this.enableFqdnNetworkPolicy,
     this.enableIntraNodeVisibility,
     this.enableL4ilbSubsetting,
@@ -8694,6 +8710,10 @@ class NetworkConfig {
               ? DNSConfig.fromJson(
                   json_['dnsConfig'] as core.Map<core.String, core.dynamic>)
               : null,
+          enableCiliumClusterwideNetworkPolicy:
+              json_.containsKey('enableCiliumClusterwideNetworkPolicy')
+                  ? json_['enableCiliumClusterwideNetworkPolicy'] as core.bool
+                  : null,
           enableFqdnNetworkPolicy: json_.containsKey('enableFqdnNetworkPolicy')
               ? json_['enableFqdnNetworkPolicy'] as core.bool
               : null,
@@ -8742,6 +8762,9 @@ class NetworkConfig {
         if (datapathProvider != null) 'datapathProvider': datapathProvider!,
         if (defaultSnatStatus != null) 'defaultSnatStatus': defaultSnatStatus!,
         if (dnsConfig != null) 'dnsConfig': dnsConfig!,
+        if (enableCiliumClusterwideNetworkPolicy != null)
+          'enableCiliumClusterwideNetworkPolicy':
+              enableCiliumClusterwideNetworkPolicy!,
         if (enableFqdnNetworkPolicy != null)
           'enableFqdnNetworkPolicy': enableFqdnNetworkPolicy!,
         if (enableIntraNodeVisibility != null)

@@ -2675,6 +2675,11 @@ class RunEvaluationRequest {
 
 /// The component of sap workload
 class SapComponent {
+  /// A list of host URIs that are part of the HA configuration if present.
+  ///
+  /// An empty list indicates the component is not configured for HA.
+  core.List<core.String>? haHosts;
+
   /// resources in the component
   ///
   /// Output only.
@@ -2685,13 +2690,27 @@ class SapComponent {
   /// Output only.
   core.String? sid;
 
+  /// The detected topology of the component.
+  /// Possible string values are:
+  /// - "TOPOLOGY_TYPE_UNSPECIFIED" : Unspecified topology.
+  /// - "TOPOLOGY_SCALE_UP" : A scale-up single node system.
+  /// - "TOPOLOGY_SCALE_OUT" : A scale-out multi-node system.
+  core.String? topologyType;
+
   SapComponent({
+    this.haHosts,
     this.resources,
     this.sid,
+    this.topologyType,
   });
 
   SapComponent.fromJson(core.Map json_)
       : this(
+          haHosts: json_.containsKey('haHosts')
+              ? (json_['haHosts'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           resources: json_.containsKey('resources')
               ? (json_['resources'] as core.List)
                   .map((value) => CloudResource.fromJson(
@@ -2699,11 +2718,16 @@ class SapComponent {
                   .toList()
               : null,
           sid: json_.containsKey('sid') ? json_['sid'] as core.String : null,
+          topologyType: json_.containsKey('topologyType')
+              ? json_['topologyType'] as core.String
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (haHosts != null) 'haHosts': haHosts!,
         if (resources != null) 'resources': resources!,
         if (sid != null) 'sid': sid!,
+        if (topologyType != null) 'topologyType': topologyType!,
       };
 }
 

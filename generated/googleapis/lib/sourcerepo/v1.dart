@@ -275,7 +275,7 @@ class ProjectsReposResource {
     return Repo.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets the access control policy for a resource.
+  /// Gets the IAM policy policy for a resource.
   ///
   /// Returns an empty policy if the resource exists and does not have a policy
   /// set.
@@ -423,7 +423,7 @@ class ProjectsReposResource {
     return Repo.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Sets the access control policy on the specified resource.
+  /// Sets the IAM policy on the specified resource.
   ///
   /// Replaces any existing policy.
   ///

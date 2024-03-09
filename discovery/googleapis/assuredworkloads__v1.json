@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240222",
+    "revision": "20240229",
     "rootUrl": "https://assuredworkloads.googleapis.com/",
     "servicePath": "",
     "title": "Assured Workloads API",

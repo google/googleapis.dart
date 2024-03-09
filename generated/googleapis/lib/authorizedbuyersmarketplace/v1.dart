@@ -99,7 +99,7 @@ class BiddersFinalizedDealsResource {
   /// [Cloud API list filtering syntax](https://developers.google.com/authorized-buyers/apis/guides/list-filters)
   /// Supported columns for filtering are: * deal.displayName * deal.dealType *
   /// deal.createTime * deal.updateTime * deal.flightStartTime *
-  /// deal.flightEndTime * dealServingStatus
+  /// deal.flightEndTime * deal.eligibleSeatIds * dealServingStatus
   ///
   /// [orderBy] - An optional query string to sort finalized deals using the
   /// [Cloud API sorting syntax](https://cloud.google.com/apis/design/design_patterns#sorting_order).
@@ -1109,7 +1109,7 @@ class BuyersFinalizedDealsResource {
   /// [Cloud API list filtering syntax](https://developers.google.com/authorized-buyers/apis/guides/list-filters)
   /// Supported columns for filtering are: * deal.displayName * deal.dealType *
   /// deal.createTime * deal.updateTime * deal.flightStartTime *
-  /// deal.flightEndTime * dealServingStatus
+  /// deal.flightEndTime * deal.eligibleSeatIds * dealServingStatus
   ///
   /// [orderBy] - An optional query string to sort finalized deals using the
   /// [Cloud API sorting syntax](https://cloud.google.com/apis/design/design_patterns#sorting_order).
@@ -2699,14 +2699,15 @@ class Deal {
   /// When the client field is populated, this field refers to the buyer who
   /// creates and manages the client buyer and gets billed on behalf of the
   /// client buyer; when the buyer field is populated, this field is the same
-  /// value as buyer.
+  /// value as buyer; when the deal belongs to a media planner account, this
+  /// field will be empty.
   ///
   /// Format : `buyers/{buyerAccountId}`
   ///
   /// Output only.
   core.String? billedBuyer;
 
-  /// Refers to a buyer in The Realtime-bidding API.
+  /// Refers to a buyer in Real-time Bidding API's Buyer resource.
   ///
   /// Format: `buyers/{buyerAccountId}`
   ///
@@ -2759,6 +2760,14 @@ class Deal {
   /// Output only.
   core.String? displayName;
 
+  /// If set, this field contains the list of DSP specific seat ids set by media
+  /// planners that are eligible to transact on this deal.
+  ///
+  /// The seat ID is in the calling DSP's namespace.
+  ///
+  /// Output only.
+  core.List<core.String>? eligibleSeatIds;
+
   /// Specified by buyers in request for proposal (RFP) to notify publisher the
   /// total estimated spend for the proposal.
   ///
@@ -2779,6 +2788,14 @@ class Deal {
   /// granularity (for example, in milliseconds) will be truncated towards the
   /// start of time in seconds.
   core.String? flightStartTime;
+
+  /// Refers to a buyer in Real-time Bidding API's Buyer resource.
+  ///
+  /// This field represents a media planner (For example, agency or big
+  /// advertiser).
+  ///
+  /// Output only.
+  MediaPlanner? mediaPlanner;
 
   /// The unique identifier of the deal.
   ///
@@ -2842,9 +2859,11 @@ class Deal {
     this.deliveryControl,
     this.description,
     this.displayName,
+    this.eligibleSeatIds,
     this.estimatedGrossSpend,
     this.flightEndTime,
     this.flightStartTime,
+    this.mediaPlanner,
     this.name,
     this.preferredDealTerms,
     this.privateAuctionTerms,
@@ -2886,6 +2905,11 @@ class Deal {
           displayName: json_.containsKey('displayName')
               ? json_['displayName'] as core.String
               : null,
+          eligibleSeatIds: json_.containsKey('eligibleSeatIds')
+              ? (json_['eligibleSeatIds'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
           estimatedGrossSpend: json_.containsKey('estimatedGrossSpend')
               ? Money.fromJson(json_['estimatedGrossSpend']
                   as core.Map<core.String, core.dynamic>)
@@ -2895,6 +2919,10 @@ class Deal {
               : null,
           flightStartTime: json_.containsKey('flightStartTime')
               ? json_['flightStartTime'] as core.String
+              : null,
+          mediaPlanner: json_.containsKey('mediaPlanner')
+              ? MediaPlanner.fromJson(
+                  json_['mediaPlanner'] as core.Map<core.String, core.dynamic>)
               : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
           preferredDealTerms: json_.containsKey('preferredDealTerms')
@@ -2941,10 +2969,12 @@ class Deal {
         if (deliveryControl != null) 'deliveryControl': deliveryControl!,
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
+        if (eligibleSeatIds != null) 'eligibleSeatIds': eligibleSeatIds!,
         if (estimatedGrossSpend != null)
           'estimatedGrossSpend': estimatedGrossSpend!,
         if (flightEndTime != null) 'flightEndTime': flightEndTime!,
         if (flightStartTime != null) 'flightStartTime': flightStartTime!,
+        if (mediaPlanner != null) 'mediaPlanner': mediaPlanner!,
         if (name != null) 'name': name!,
         if (preferredDealTerms != null)
           'preferredDealTerms': preferredDealTerms!,
@@ -3699,6 +3729,29 @@ class MarketplaceTargeting {
           'technologyTargeting': technologyTargeting!,
         if (userListTargeting != null) 'userListTargeting': userListTargeting!,
         if (videoTargeting != null) 'videoTargeting': videoTargeting!,
+      };
+}
+
+/// Describes a single Media Planner account.
+class MediaPlanner {
+  /// Account ID of the media planner.
+  ///
+  /// Output only.
+  core.String? accountId;
+
+  MediaPlanner({
+    this.accountId,
+  });
+
+  MediaPlanner.fromJson(core.Map json_)
+      : this(
+          accountId: json_.containsKey('accountId')
+              ? json_['accountId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accountId != null) 'accountId': accountId!,
       };
 }
 

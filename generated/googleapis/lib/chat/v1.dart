@@ -535,8 +535,8 @@ class SpacesResource {
   ///
   /// [pageSize] - Optional. The maximum number of spaces to return. The service
   /// might return fewer than this value. If unspecified, at most 100 spaces are
-  /// returned. The maximum value is 1,000. If you use a value more than 1,000,
-  /// it's automatically changed to 1,000. Negative values return an
+  /// returned. The maximum value is 1000. If you use a value more than 1000,
+  /// it's automatically changed to 1000. Negative values return an
   /// `INVALID_ARGUMENT` error.
   ///
   /// [pageToken] - Optional. A page token, received from a previous list spaces
@@ -929,9 +929,9 @@ class SpacesMembersResource {
   ///
   /// [pageSize] - Optional. The maximum number of memberships to return. The
   /// service might return fewer than this value. If unspecified, at most 100
-  /// memberships are returned. The maximum value is 1,000. If you use a value
-  /// more than 1,000, it's automatically changed to 1,000. Negative values
-  /// return an `INVALID_ARGUMENT` error.
+  /// memberships are returned. The maximum value is 1000. If you use a value
+  /// more than 1000, it's automatically changed to 1000. Negative values return
+  /// an `INVALID_ARGUMENT` error.
   ///
   /// [pageToken] - Optional. A page token, received from a previous call to
   /// list memberships. Provide this parameter to retrieve the subsequent page.
@@ -1241,8 +1241,8 @@ class SpacesMessagesResource {
   ///
   /// [pageSize] - The maximum number of messages returned. The service might
   /// return fewer messages than this value. If unspecified, at most 25 are
-  /// returned. The maximum value is 1,000. If you use a value more than 1,000,
-  /// it's automatically changed to 1,000. Negative values return an
+  /// returned. The maximum value is 1000. If you use a value more than 1000,
+  /// it's automatically changed to 1000. Negative values return an
   /// `INVALID_ARGUMENT` error.
   ///
   /// [pageToken] - Optional, if resuming from a previous query. A page token
@@ -2314,7 +2314,7 @@ class CardWithId {
 ///
 /// The data source populates selection items for the multiselect menu. For
 /// example, a user can select Google Chat spaces that they're a member of.
-/// [Google Chat apps](https://developers.google.com/chat):
+/// [Google Chat apps](https://developers.google.com/workspace/chat):
 class ChatClientDataSourceMarkup {
   /// Google Chat spaces that the user is a member of.
   SpaceDataSource? spaceDataSource;
@@ -2686,7 +2686,7 @@ class GoogleAppsCardV1Action {
   /// open a [dialog](https://developers.google.com/chat/how-tos/dialogs). When
   /// specified, a loading indicator isn't shown. If specified for an add-on,
   /// the entire card is stripped and nothing is shown in the client.
-  /// [Google Chat apps](https://developers.google.com/chat):
+  /// [Google Chat apps](https://developers.google.com/workspace/chat):
   ///
   /// Optional.
   /// Possible string values are:
@@ -2697,7 +2697,8 @@ class GoogleAppsCardV1Action {
   /// card-based interface that Chat apps use to interact with users. Only
   /// supported by Chat apps in response to button-clicks on card messages. If
   /// specified for an add-on, the entire card is stripped and nothing is shown
-  /// in the client. [Google Chat apps](https://developers.google.com/chat):
+  /// in the client.
+  /// [Google Chat apps](https://developers.google.com/workspace/chat):
   core.String? interaction;
 
   /// Specifies the loading indicator that the action displays while making the
@@ -2963,17 +2964,16 @@ class GoogleAppsCardV1ButtonList {
 /// ``` { "cardsV2": [ { "cardId": "unique-card-id", "card": { "header": {
 /// "title": "Sasha", "subtitle": "Software Engineer", "imageUrl":
 /// "https://developers.google.com/chat/images/quickstart-app-avatar.png",
-/// "imageType": "CIRCLE", "imageAltText": "Avatar for Sasha", }, "sections": [
-/// { "header": "Contact Info", "collapsible": true,
-/// "uncollapsibleWidgetsCount": 1, "widgets": [ { "decoratedText": {
-/// "startIcon": { "knownIcon": "EMAIL", }, "text": "sasha@example.com", } }, {
-/// "decoratedText": { "startIcon": { "knownIcon": "PERSON", }, "text":
-/// "Online", }, }, { "decoratedText": { "startIcon": { "knownIcon": "PHONE", },
-/// "text": "+1 (555) 555-1234", } }, { "buttonList": { "buttons": [ { "text":
-/// "Share", "onClick": { "openLink": { "url": "https://example.com/share", } }
-/// }, { "text": "Edit", "onClick": { "action": { "function": "goToView",
-/// "parameters": [ { "key": "viewType", "value": "EDIT", } ], } } }, ], } }, ],
-/// }, ], }, } ], } ```
+/// "imageType": "CIRCLE", "imageAltText": "Avatar for Sasha" }, "sections": [ {
+/// "header": "Contact Info", "collapsible": true, "uncollapsibleWidgetsCount":
+/// 1, "widgets": [ { "decoratedText": { "startIcon": { "knownIcon": "EMAIL" },
+/// "text": "sasha@example.com" } }, { "decoratedText": { "startIcon": {
+/// "knownIcon": "PERSON" }, "text": "Online" } }, { "decoratedText": {
+/// "startIcon": { "knownIcon": "PHONE" }, "text": "+1 (555) 555-1234" } }, {
+/// "buttonList": { "buttons": [ { "text": "Share", "onClick": { "openLink": {
+/// "url": "https://example.com/share" } } }, { "text": "Edit", "onClick": {
+/// "action": { "function": "goToView", "parameters": [ { "key": "viewType",
+/// "value": "EDIT" } ] } } } ] } } ] } ] } } ] } ```
 class GoogleAppsCardV1Card {
   /// The card's actions.
   ///
@@ -3262,7 +3262,9 @@ class GoogleAppsCardV1CardHeader {
 
 /// A column.
 ///
-/// [Google Chat apps](https://developers.google.com/chat):
+/// \[Google Workspace Add-ons and Chat
+/// apps\](https://developers.google.com/workspace/extend): Columns for Google
+/// Workspace Add-ons are in Developer Preview.
 class GoogleAppsCardV1Column {
   /// Specifies whether widgets align to the left, right, or center of a column.
   /// Possible string values are:
@@ -3277,8 +3279,6 @@ class GoogleAppsCardV1Column {
   core.String? horizontalAlignment;
 
   /// Specifies how a column fills the width of the card.
-  ///
-  /// [Google Chat apps](https://developers.google.com/chat):
   /// Possible string values are:
   /// - "HORIZONTAL_SIZE_STYLE_UNSPECIFIED" : Don't use. Unspecified.
   /// - "FILL_AVAILABLE_SPACE" : Default value. Column fills the available
@@ -3289,8 +3289,6 @@ class GoogleAppsCardV1Column {
   core.String? horizontalSizeStyle;
 
   /// Specifies whether widgets align to the top, bottom, or center of a column.
-  ///
-  /// [Google Chat apps](https://developers.google.com/chat):
   /// Possible string values are:
   /// - "VERTICAL_ALIGNMENT_UNSPECIFIED" : Don't use. Unspecified.
   /// - "CENTER" : Default value. Aligns widgets to the center of a column.
@@ -3357,8 +3355,7 @@ class GoogleAppsCardV1Column {
 /// or equal to 320 dp. To include more than 2 columns, or to use rows, use the
 /// `Grid` widget. \[Google Workspace Add-ons and Chat
 /// apps\](https://developers.google.com/workspace/extend): Columns for Google
-/// Workspace Add-ons are in
-/// [Developer Preview](https://developers.google.com/workspace/preview).
+/// Workspace Add-ons are in Developer Preview.
 class GoogleAppsCardV1Columns {
   /// An array of columns.
   ///
@@ -4092,7 +4089,7 @@ class GoogleAppsCardV1OpenLink {
 /// from Google Workspace.
 ///
 /// Used to populate items in a multiselect menu.
-/// [Google Chat apps](https://developers.google.com/chat):
+/// [Google Chat apps](https://developers.google.com/workspace/chat):
 class GoogleAppsCardV1PlatformDataSource {
   /// A data source shared by all Google Workspace applications, such as users
   /// in a Google Workspace organization.
@@ -4287,9 +4284,8 @@ class GoogleAppsCardV1SelectionInput {
   /// multiselect menus, see the \[`SelectionInput` widget
   /// page\](https://developers.google.com/chat/ui/widgets/selection-input#multiselect-menu).
   /// \[Google Workspace Add-ons and Chat
-  /// apps\](https://developers.google.com/workspace/extend): multiselect for
-  /// Google Workspace Add-ons are in
-  /// [Developer Preview](https://developers.google.com/workspace/preview).
+  /// apps\](https://developers.google.com/workspace/extend): Multiselect for
+  /// Google Workspace Add-ons are in Developer Preview.
   core.String? type;
 
   GoogleAppsCardV1SelectionInput({
@@ -4625,7 +4621,7 @@ class GoogleAppsCardV1TextInput {
   ///
   /// Use this text to prompt users to enter a value. For example, `Enter a
   /// number from 0 to 100`.
-  /// [Google Chat apps](https://developers.google.com/chat):
+  /// [Google Chat apps](https://developers.google.com/workspace/chat):
   core.String? placeholderText;
 
   /// How a text input field appears in the user interface.
@@ -4925,7 +4921,9 @@ class GoogleAppsCardV1Widget {
 
 /// The supported widgets that you can include in a column.
 ///
-/// [Google Chat apps](https://developers.google.com/chat):
+/// \[Google Workspace Add-ons and Chat
+/// apps\](https://developers.google.com/workspace/extend): Columns for Google
+/// Workspace Add-ons are in Developer Preview.
 class GoogleAppsCardV1Widgets {
   /// ButtonList widget.
   GoogleAppsCardV1ButtonList? buttonList;
@@ -5028,7 +5026,7 @@ class Group {
 /// from a Google Workspace application.
 ///
 /// The data source populates selection items for the multiselect menu.
-/// [Google Chat apps](https://developers.google.com/chat):
+/// [Google Chat apps](https://developers.google.com/workspace/chat):
 class HostAppDataSourceMarkup {
   /// A data source from Google Chat.
   ChatClientDataSourceMarkup? chatDataSource;
@@ -5673,7 +5671,8 @@ class Message {
   /// This field might not capture all formatting visible in the UI, but
   /// includes the following: *
   /// [Markup syntax](https://developers.google.com/chat/format-messages) for
-  /// bold, italic, strikethrough, monospace, and monospace block. *
+  /// bold, italic, strikethrough, monospace, monospace block, and bulleted
+  /// list. *
   /// [User mentions](https://developers.google.com/chat/format-messages#messages-@mention)
   /// using the format ``. * Custom hyperlinks using the format
   /// `<{url}|{rendered_text}>` where the first string is the URL and the second
@@ -6514,7 +6513,7 @@ class Space {
 /// multiselect menu.
 ///
 /// Only populates spaces that the user is a member of.
-/// [Google Chat apps](https://developers.google.com/chat):
+/// [Google Chat apps](https://developers.google.com/workspace/chat):
 class SpaceDataSource {
   /// If set to `true`, the multiselect menu selects the current Google Chat
   /// space as an item by default.

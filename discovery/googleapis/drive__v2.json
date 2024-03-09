@@ -48,7 +48,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240220",
+    "revision": "20240303",
     "rootUrl": "https://www.googleapis.com/",
     "servicePath": "drive/v2/",
     "title": "Google Drive API",

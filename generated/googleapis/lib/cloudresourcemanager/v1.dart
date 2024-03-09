@@ -2981,6 +2981,15 @@ class Project {
   /// Example: `415104041262` Read-only.
   core.String? projectNumber;
 
+  /// Input only.
+  ///
+  /// Immutable. Tag keys/values directly bound to this project. Each item in
+  /// the map must be expressed as " : ". For example: "123/environment" :
+  /// "production", "123/costCenter" : "marketing"
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? tags;
+
   Project({
     this.createTime,
     this.labels,
@@ -2989,6 +2998,7 @@ class Project {
     this.parent,
     this.projectId,
     this.projectNumber,
+    this.tags,
   });
 
   Project.fromJson(core.Map json_)
@@ -3018,6 +3028,14 @@ class Project {
           projectNumber: json_.containsKey('projectNumber')
               ? json_['projectNumber'] as core.String
               : null,
+          tags: json_.containsKey('tags')
+              ? (json_['tags'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3028,6 +3046,7 @@ class Project {
         if (parent != null) 'parent': parent!,
         if (projectId != null) 'projectId': projectId!,
         if (projectNumber != null) 'projectNumber': projectNumber!,
+        if (tags != null) 'tags': tags!,
       };
 }
 

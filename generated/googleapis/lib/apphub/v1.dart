@@ -1342,6 +1342,49 @@ class ProjectsLocationsDiscoveredServicesResource {
     return ListDiscoveredServicesResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
+
+  /// Looks up a discovered service in a host project and location and with a
+  /// given resource URI.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Value for parent.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [uri] - Required. Resource URI to find service for. Accepts both project
+  /// number and project id and does translation when needed.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LookupDiscoveredServiceResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LookupDiscoveredServiceResponse> lookup(
+    core.String parent, {
+    core.String? uri,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (uri != null) 'uri': [uri],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/discoveredServices:lookup';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return LookupDiscoveredServiceResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsDiscoveredWorkloadsResource {
@@ -1440,6 +1483,49 @@ class ProjectsLocationsDiscoveredWorkloadsResource {
       queryParams: queryParams_,
     );
     return ListDiscoveredWorkloadsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Looks up a discovered Workload in a host project and location and with a
+  /// given resource URI.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Value for parent.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [uri] - Required. Resource URI to find workload for. Accepts both project
+  /// number and project id and does translation when needed.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LookupDiscoveredWorkloadResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LookupDiscoveredWorkloadResponse> lookup(
+    core.String parent, {
+    core.String? uri,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (uri != null) 'uri': [uri],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/discoveredWorkloads:lookup';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return LookupDiscoveredWorkloadResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -2751,6 +2837,51 @@ class ListWorkloadsResponse {
 
 /// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
+
+/// Response for LookupDiscoveredService.
+class LookupDiscoveredServiceResponse {
+  /// Discovered service if exists, empty otherwise.
+  DiscoveredService? discoveredService;
+
+  LookupDiscoveredServiceResponse({
+    this.discoveredService,
+  });
+
+  LookupDiscoveredServiceResponse.fromJson(core.Map json_)
+      : this(
+          discoveredService: json_.containsKey('discoveredService')
+              ? DiscoveredService.fromJson(json_['discoveredService']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (discoveredService != null) 'discoveredService': discoveredService!,
+      };
+}
+
+/// Response for LookupDiscoveredWorkload.
+class LookupDiscoveredWorkloadResponse {
+  /// Discovered workload if exists, empty otherwise.
+  DiscoveredWorkload? discoveredWorkload;
+
+  LookupDiscoveredWorkloadResponse({
+    this.discoveredWorkload,
+  });
+
+  LookupDiscoveredWorkloadResponse.fromJson(core.Map json_)
+      : this(
+          discoveredWorkload: json_.containsKey('discoveredWorkload')
+              ? DiscoveredWorkload.fromJson(json_['discoveredWorkload']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (discoveredWorkload != null)
+          'discoveredWorkload': discoveredWorkload!,
+      };
+}
 
 /// Response for LookupServiceProjectAttachment.
 class LookupServiceProjectAttachmentResponse {

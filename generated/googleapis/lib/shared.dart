@@ -6295,6 +6295,7 @@ class $EgressSource {
 /// - apphub:v1 : DetachServiceProjectAttachmentRequest
 /// - apphub:v1 : DetachServiceProjectAttachmentResponse
 /// - apphub:v1 : Empty
+/// - artifactregistry:v1 : DownloadFileResponse
 /// - artifactregistry:v1 : Empty
 /// - artifactregistry:v1 : UploadAptArtifactRequest
 /// - artifactregistry:v1 : UploadGoModuleRequest
@@ -6493,6 +6494,9 @@ class $EgressSource {
 /// - dataplex:v1 : GoogleCloudDataplexV1RunDataScanRequest
 /// - dataplex:v1 : GoogleCloudDataplexV1TriggerOnDemand
 /// - dataplex:v1 : GoogleLongrunningCancelOperationRequest
+/// - dataportability:v1 : Empty
+/// - dataportability:v1 : ResetAuthorizationRequest
+/// - dataportability:v1 : RetryPortabilityArchiveRequest
 /// - dataproc:v1 : CancelJobRequest
 /// - dataproc:v1 : Empty
 /// - datastore:v1 : Empty
@@ -6650,7 +6654,7 @@ class $EgressSource {
 /// - jobs:v4 : Empty
 /// - keep:v1 : Empty
 /// - keep:v1 : Family
-/// - language:v1 : V1Model
+/// - language:v1 : ClassificationModelOptionsV1Model
 /// - licensing:v1 : Empty
 /// - logging:v2 : CancelOperationRequest
 /// - logging:v2 : Empty
@@ -6851,13 +6855,18 @@ class $EgressSource {
 /// - vmmigration:v1 : AdaptingOSStep
 /// - vmmigration:v1 : CancelCloneJobRequest
 /// - vmmigration:v1 : CancelCutoverJobRequest
+/// - vmmigration:v1 : CancelImageImportJobRequest
 /// - vmmigration:v1 : CancelOperationRequest
+/// - vmmigration:v1 : CreatingImageStep
+/// - vmmigration:v1 : DataDiskImageImport
 /// - vmmigration:v1 : DisksMigrationDisksTargetDefaults
 /// - vmmigration:v1 : DisksMigrationDisksTargetDetails
 /// - vmmigration:v1 : Empty
 /// - vmmigration:v1 : FinalizeMigrationRequest
+/// - vmmigration:v1 : InitializingImageImportStep
 /// - vmmigration:v1 : InitializingReplicationStep
 /// - vmmigration:v1 : InstantiatingMigratedVMStep
+/// - vmmigration:v1 : LoadingImageSourceFilesStep
 /// - vmmigration:v1 : PauseMigrationRequest
 /// - vmmigration:v1 : PostProcessingStep
 /// - vmmigration:v1 : PreparingVMDisksStep
@@ -12406,6 +12415,38 @@ class $Location01 {
 
 /// Used by:
 ///
+/// - dlp:v2 : GooglePrivacyDlpV2DataProfileLocation
+/// - dlp:v2 : GooglePrivacyDlpV2DiscoveryStartingLocation
+class $Location02 {
+  /// The ID of the Folder within an organization to scan.
+  core.String? folderId;
+
+  /// The ID of an organization to scan.
+  core.String? organizationId;
+
+  $Location02({
+    this.folderId,
+    this.organizationId,
+  });
+
+  $Location02.fromJson(core.Map json_)
+      : this(
+          folderId: json_.containsKey('folderId')
+              ? json_['folderId'] as core.String
+              : null,
+          organizationId: json_.containsKey('organizationId')
+              ? json_['organizationId'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (folderId != null) 'folderId': folderId!,
+        if (organizationId != null) 'organizationId': organizationId!,
+      };
+}
+
+/// Used by:
+///
 /// - displayvideo:v2 : LocationList
 /// - displayvideo:v3 : LocationList
 class $LocationList {
@@ -17336,8 +17377,7 @@ class $SdfConfig {
   /// - "SDF_VERSION_6" : SDF version 6
   /// - "SDF_VERSION_7" : SDF version 7. Read the \[v7 migration
   /// guide\](/display-video/api/structured-data-file/v7-migration-guide) before
-  /// migrating to this version. Currently in beta. Only available for use by a
-  /// subset of users.
+  /// migrating to this version.
   core.String? version;
 
   $SdfConfig({
@@ -20947,6 +20987,7 @@ class $YoutubeAndPartnersBiddingStrategy {
   /// `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MANUAL_CPV` *
   /// `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_CPA` *
   /// `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_CPM` *
+  /// `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_RESERVE_CPM` *
   /// `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_ROAS` If not using an
   /// applicable strategy, the value of this field will be 0.
   core.String? value;

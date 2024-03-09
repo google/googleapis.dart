@@ -43,7 +43,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240226",
+    "revision": "20240307",
     "rootUrl": "https://youtube.googleapis.com/",
     "servicePath": "",
     "title": "YouTube Data API v3",
@@ -2316,6 +2316,24 @@
                     "flatPath": "youtube/v3/playlistImages",
                     "httpMethod": "PUT",
                     "id": "youtube.playlistImages.update",
+                    "mediaUpload": {
+                        "accept": [
+                            "image/jpeg",
+                            "image/png",
+                            "application/octet-stream"
+                        ],
+                        "maxSize": "2097152",
+                        "protocols": {
+                            "resumable": {
+                                "multipart": true,
+                                "path": "/resumable/upload/youtube/v3/playlistImages"
+                            },
+                            "simple": {
+                                "multipart": true,
+                                "path": "/upload/youtube/v3/playlistImages"
+                            }
+                        }
+                    },
                     "parameterOrder": [],
                     "parameters": {
                         "onBehalfOfContentOwner": {
@@ -2341,7 +2359,8 @@
                         "https://www.googleapis.com/auth/youtube",
                         "https://www.googleapis.com/auth/youtube.force-ssl",
                         "https://www.googleapis.com/auth/youtubepartner"
-                    ]
+                    ],
+                    "supportsMediaUpload": true
                 }
             }
         },

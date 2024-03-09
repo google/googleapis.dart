@@ -3274,6 +3274,15 @@ class Folder {
   /// user.
   core.String? state;
 
+  /// Input only.
+  ///
+  /// Immutable. Tag keys/values directly bound to this folder. Each item in the
+  /// map must be expressed as " : ". For example: "123/environment" :
+  /// "production", "123/costCenter" : "marketing"
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? tags;
+
   /// Timestamp when the folder was last modified.
   ///
   /// Output only.
@@ -3287,6 +3296,7 @@ class Folder {
     this.name,
     this.parent,
     this.state,
+    this.tags,
     this.updateTime,
   });
 
@@ -3308,6 +3318,14 @@ class Folder {
               : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
+          tags: json_.containsKey('tags')
+              ? (json_['tags'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
           updateTime: json_.containsKey('updateTime')
               ? json_['updateTime'] as core.String
               : null,
@@ -3321,6 +3339,7 @@ class Folder {
         if (name != null) 'name': name!,
         if (parent != null) 'parent': parent!,
         if (state != null) 'state': state!,
+        if (tags != null) 'tags': tags!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }
@@ -4092,6 +4111,15 @@ class Project {
   /// This can generally be reversed by invoking UndeleteProject.
   core.String? state;
 
+  /// Input only.
+  ///
+  /// Immutable. Tag keys/values directly bound to this project. Each item in
+  /// the map must be expressed as " : ". For example: "123/environment" :
+  /// "production", "123/costCenter" : "marketing"
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? tags;
+
   /// The most recent time this resource was modified.
   ///
   /// Output only.
@@ -4107,6 +4135,7 @@ class Project {
     this.parent,
     this.projectId,
     this.state,
+    this.tags,
     this.updateTime,
   });
 
@@ -4139,6 +4168,14 @@ class Project {
               : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
+          tags: json_.containsKey('tags')
+              ? (json_['tags'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
           updateTime: json_.containsKey('updateTime')
               ? json_['updateTime'] as core.String
               : null,
@@ -4154,6 +4191,7 @@ class Project {
         if (parent != null) 'parent': parent!,
         if (projectId != null) 'projectId': projectId!,
         if (state != null) 'state': state!,
+        if (tags != null) 'tags': tags!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }

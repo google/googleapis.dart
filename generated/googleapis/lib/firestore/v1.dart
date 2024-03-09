@@ -3560,57 +3560,6 @@ class GoogleFirestoreAdminV1BackupSchedule {
       };
 }
 
-/// The CMEK (Customer Managed Encryption Key) configuration for a Firestore
-/// database.
-///
-/// If not present, the database is secured by the default Google encryption
-/// key.
-class GoogleFirestoreAdminV1CmekConfig {
-  /// Currently in-use
-  /// [KMS key versions](https://cloud.google.com/kms/docs/resource-hierarchy#key_versions).
-  ///
-  /// During [key rotation](https://cloud.google.com/kms/docs/key-rotation),
-  /// there can be multiple in-use key versions. The expected format is
-  /// `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{key_version}`.
-  ///
-  /// Output only.
-  core.List<core.String>? activeKeyVersion;
-
-  /// Only keys in the same location as this database are allowed to be used for
-  /// encryption.
-  ///
-  /// For Firestore's nam5 multi-region, this corresponds to Cloud KMS
-  /// multi-region us. For Firestore's eur3 multi-region, this corresponds to
-  /// Cloud KMS multi-region europe. See
-  /// https://cloud.google.com/kms/docs/locations. The expected format is
-  /// `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
-  ///
-  /// Required.
-  core.String? kmsKeyName;
-
-  GoogleFirestoreAdminV1CmekConfig({
-    this.activeKeyVersion,
-    this.kmsKeyName,
-  });
-
-  GoogleFirestoreAdminV1CmekConfig.fromJson(core.Map json_)
-      : this(
-          activeKeyVersion: json_.containsKey('activeKeyVersion')
-              ? (json_['activeKeyVersion'] as core.List)
-                  .map((value) => value as core.String)
-                  .toList()
-              : null,
-          kmsKeyName: json_.containsKey('kmsKeyName')
-              ? json_['kmsKeyName'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (activeKeyVersion != null) 'activeKeyVersion': activeKeyVersion!,
-        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
-      };
-}
-
 /// Represent a recurring schedule that runs at a specific time every day.
 ///
 /// The time zone is UTC.
@@ -3629,11 +3578,6 @@ class GoogleFirestoreAdminV1Database {
   /// serve requests. This is the default setting for databases created with the
   /// Firestore API.
   core.String? appEngineIntegrationMode;
-
-  /// Presence indicates CMEK is enabled for this database.
-  ///
-  /// Optional.
-  GoogleFirestoreAdminV1CmekConfig? cmekConfig;
 
   /// The concurrency control mode to use for this database.
   /// Possible string values are:
@@ -3752,7 +3696,6 @@ class GoogleFirestoreAdminV1Database {
 
   GoogleFirestoreAdminV1Database({
     this.appEngineIntegrationMode,
-    this.cmekConfig,
     this.concurrencyMode,
     this.createTime,
     this.deleteProtectionState,
@@ -3774,10 +3717,6 @@ class GoogleFirestoreAdminV1Database {
               json_.containsKey('appEngineIntegrationMode')
                   ? json_['appEngineIntegrationMode'] as core.String
                   : null,
-          cmekConfig: json_.containsKey('cmekConfig')
-              ? GoogleFirestoreAdminV1CmekConfig.fromJson(
-                  json_['cmekConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
           concurrencyMode: json_.containsKey('concurrencyMode')
               ? json_['concurrencyMode'] as core.String
               : null,
@@ -3815,7 +3754,6 @@ class GoogleFirestoreAdminV1Database {
   core.Map<core.String, core.dynamic> toJson() => {
         if (appEngineIntegrationMode != null)
           'appEngineIntegrationMode': appEngineIntegrationMode!,
-        if (cmekConfig != null) 'cmekConfig': cmekConfig!,
         if (concurrencyMode != null) 'concurrencyMode': concurrencyMode!,
         if (createTime != null) 'createTime': createTime!,
         if (deleteProtectionState != null)

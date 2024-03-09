@@ -19,6 +19,7 @@
 ///
 /// Create an instance of [ArtifactRegistryApi] to access these resources:
 ///
+/// - [MediaResource]
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsOperationsResource]
@@ -74,6 +75,7 @@ class ArtifactRegistryApi {
 
   final commons.ApiRequester _requester;
 
+  MediaResource get media => MediaResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
 
   ArtifactRegistryApi(http.Client client,
@@ -81,6 +83,63 @@ class ArtifactRegistryApi {
       core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+}
+
+class MediaResource {
+  final commons.ApiRequester _requester;
+
+  MediaResource(commons.ApiRequester client) : _requester = client;
+
+  /// Download a file.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the file to download.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+/files/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// [downloadOptions] - Options for downloading. A download can be either a
+  /// Metadata (default) or Media download. Partial Media downloads are possible
+  /// as well.
+  ///
+  /// Completes with a
+  ///
+  /// - [DownloadFileResponse] for Metadata downloads (see [downloadOptions]).
+  ///
+  /// - [commons.Media] for Media downloads (see [downloadOptions]).
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<core.Object> download(
+    core.String name, {
+    core.String? $fields,
+    commons.DownloadOptions downloadOptions = commons.DownloadOptions.metadata,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':download';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+      downloadOptions: downloadOptions,
+    );
+    if (downloadOptions.isMetadataDownload) {
+      return DownloadFileResponse.fromJson(
+          response_ as core.Map<core.String, core.dynamic>);
+    } else {
+      return response_ as commons.Media;
+    }
+  }
 }
 
 class ProjectsResource {
@@ -1677,6 +1736,55 @@ class ProjectsLocationsRepositoriesPackagesResource {
     return ListPackagesResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
+
+  /// Updates a package.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the package, for example:
+  /// `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1`. If
+  /// the package ID part contains slashes, the slashes are escaped.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+/packages/\[^/\]+$`.
+  ///
+  /// [updateMask] - The update mask applies to the resource. For the
+  /// `FieldMask` definition, see
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Package].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Package> patch(
+    Package request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Package.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsRepositoriesPackagesTagsResource {
@@ -2322,17 +2430,27 @@ class ProjectsLocationsRepositoriesYumArtifactsResource {
 
 /// Configuration for an Apt remote repository.
 class AptRepository {
+  /// Customer-specified remote repository.
+  GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository?
+      customRepository;
+
   /// One of the publicly available Apt repositories supported by Artifact
   /// Registry.
   GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository?
       publicRepository;
 
   AptRepository({
+    this.customRepository,
     this.publicRepository,
   });
 
   AptRepository.fromJson(core.Map json_)
       : this(
+          customRepository: json_.containsKey('customRepository')
+              ? GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository
+                  .fromJson(json_['customRepository']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           publicRepository: json_.containsKey('publicRepository')
               ? GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository
                   .fromJson(json_['publicRepository']
@@ -2341,6 +2459,7 @@ class AptRepository {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (customRepository != null) 'customRepository': customRepository!,
         if (publicRepository != null) 'publicRepository': publicRepository!,
       };
 }
@@ -2767,6 +2886,10 @@ class DockerImage {
 
 /// Configuration for a Docker remote repository.
 class DockerRepository {
+  /// Customer-specified remote repository.
+  GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository?
+      customRepository;
+
   /// One of the publicly available Docker repositories supported by Artifact
   /// Registry.
   /// Possible string values are:
@@ -2775,17 +2898,24 @@ class DockerRepository {
   core.String? publicRepository;
 
   DockerRepository({
+    this.customRepository,
     this.publicRepository,
   });
 
   DockerRepository.fromJson(core.Map json_)
       : this(
+          customRepository: json_.containsKey('customRepository')
+              ? GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository
+                  .fromJson(json_['customRepository']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           publicRepository: json_.containsKey('publicRepository')
               ? json_['publicRepository'] as core.String
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (customRepository != null) 'customRepository': customRepository!,
         if (publicRepository != null) 'publicRepository': publicRepository!,
       };
 }
@@ -2816,6 +2946,9 @@ class DockerRepositoryConfig {
         if (immutableTags != null) 'immutableTags': immutableTags!,
       };
 }
+
+/// The response to download a file.
+typedef DownloadFileResponse = $Empty;
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
@@ -2926,6 +3059,27 @@ class GoogleDevtoolsArtifactregistryV1File {
       };
 }
 
+/// Customer-specified publicly available remote repository.
+class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository {
+  /// An http/https uri reference to the upstream remote repository, for ex:
+  /// "https://my.apt.registry/".
+  core.String? uri;
+
+  GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository({
+    this.uri,
+  });
+
+  GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository.fromJson(
+      core.Map json_)
+      : this(
+          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (uri != null) 'uri': uri!,
+      };
+}
+
 /// Publicly available Apt repositories constructed from a common repository
 /// base and a custom repository path.
 class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository {
@@ -2959,6 +3113,111 @@ class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicR
   core.Map<core.String, core.dynamic> toJson() => {
         if (repositoryBase != null) 'repositoryBase': repositoryBase!,
         if (repositoryPath != null) 'repositoryPath': repositoryPath!,
+      };
+}
+
+/// Customer-specified publicly available remote repository.
+class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository {
+  /// An http/https uri reference to the custom remote repository, for ex:
+  /// "https://registry-1.docker.io".
+  core.String? uri;
+
+  GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository({
+    this.uri,
+  });
+
+  GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository.fromJson(
+      core.Map json_)
+      : this(
+          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (uri != null) 'uri': uri!,
+      };
+}
+
+/// Customer-specified publicly available remote repository.
+class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository {
+  /// An http/https uri reference to the upstream remote repository, for ex:
+  /// "https://my.maven.registry/".
+  core.String? uri;
+
+  GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository({
+    this.uri,
+  });
+
+  GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository.fromJson(
+      core.Map json_)
+      : this(
+          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (uri != null) 'uri': uri!,
+      };
+}
+
+/// Customer-specified publicly available remote repository.
+class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository {
+  /// An http/https uri reference to the upstream remote repository, for ex:
+  /// "https://my.npm.registry/".
+  core.String? uri;
+
+  GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository({
+    this.uri,
+  });
+
+  GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository.fromJson(
+      core.Map json_)
+      : this(
+          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (uri != null) 'uri': uri!,
+      };
+}
+
+/// Customer-specified publicly available remote repository.
+class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository {
+  /// An http/https uri reference to the upstream remote repository, for ex:
+  /// "https://my.python.registry/".
+  core.String? uri;
+
+  GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository({
+    this.uri,
+  });
+
+  GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository.fromJson(
+      core.Map json_)
+      : this(
+          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (uri != null) 'uri': uri!,
+      };
+}
+
+/// Customer-specified publicly available remote repository.
+class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository {
+  /// An http/https uri reference to the upstream remote repository, for ex:
+  /// "https://my.yum.registry/".
+  core.String? uri;
+
+  GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository({
+    this.uri,
+  });
+
+  GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository.fromJson(
+      core.Map json_)
+      : this(
+          uri: json_.containsKey('uri') ? json_['uri'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (uri != null) 'uri': uri!,
       };
 }
 
@@ -3560,6 +3819,10 @@ class MavenArtifact {
 
 /// Configuration for a Maven remote repository.
 class MavenRepository {
+  /// Customer-specified remote repository.
+  GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository?
+      customRepository;
+
   /// One of the publicly available Maven repositories supported by Artifact
   /// Registry.
   /// Possible string values are:
@@ -3568,17 +3831,24 @@ class MavenRepository {
   core.String? publicRepository;
 
   MavenRepository({
+    this.customRepository,
     this.publicRepository,
   });
 
   MavenRepository.fromJson(core.Map json_)
       : this(
+          customRepository: json_.containsKey('customRepository')
+              ? GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository
+                  .fromJson(json_['customRepository']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           publicRepository: json_.containsKey('publicRepository')
               ? json_['publicRepository'] as core.String
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (customRepository != null) 'customRepository': customRepository!,
         if (publicRepository != null) 'publicRepository': publicRepository!,
       };
 }
@@ -3697,6 +3967,10 @@ class NpmPackage {
 
 /// Configuration for a Npm remote repository.
 class NpmRepository {
+  /// Customer-specified remote repository.
+  GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository?
+      customRepository;
+
   /// One of the publicly available Npm repositories supported by Artifact
   /// Registry.
   /// Possible string values are:
@@ -3705,17 +3979,24 @@ class NpmRepository {
   core.String? publicRepository;
 
   NpmRepository({
+    this.customRepository,
     this.publicRepository,
   });
 
   NpmRepository.fromJson(core.Map json_)
       : this(
+          customRepository: json_.containsKey('customRepository')
+              ? GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository
+                  .fromJson(json_['customRepository']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           publicRepository: json_.containsKey('publicRepository')
               ? json_['publicRepository'] as core.String
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (customRepository != null) 'customRepository': customRepository!,
         if (publicRepository != null) 'publicRepository': publicRepository!,
       };
 }
@@ -3798,6 +4079,11 @@ class Operation {
 
 /// Packages are named collections of versions.
 class Package {
+  /// Client specified annotations.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? annotations;
+
   /// The time when the package was created.
   core.String? createTime;
 
@@ -3816,6 +4102,7 @@ class Package {
   core.String? updateTime;
 
   Package({
+    this.annotations,
     this.createTime,
     this.displayName,
     this.name,
@@ -3824,6 +4111,15 @@ class Package {
 
   Package.fromJson(core.Map json_)
       : this(
+          annotations: json_.containsKey('annotations')
+              ? (json_['annotations'] as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
           createTime: json_.containsKey('createTime')
               ? json_['createTime'] as core.String
               : null,
@@ -3837,6 +4133,7 @@ class Package {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (annotations != null) 'annotations': annotations!,
         if (createTime != null) 'createTime': createTime!,
         if (displayName != null) 'displayName': displayName!,
         if (name != null) 'name': name!,
@@ -3963,6 +4260,8 @@ class ProjectSettings {
   /// - "REDIRECTION_FROM_GCR_IO_ENABLED" : Redirection is enabled.
   /// - "REDIRECTION_FROM_GCR_IO_FINALIZED" : Redirection is enabled, and has
   /// been finalized so cannot be reverted.
+  /// - "REDIRECTION_FROM_GCR_IO_ENABLED_AND_COPYING" : Redirection is enabled
+  /// and missing images are copied from GCR
   core.String? legacyRedirectionState;
 
   /// The name of the project's settings.
@@ -4068,6 +4367,10 @@ class PythonPackage {
 
 /// Configuration for a Python remote repository.
 class PythonRepository {
+  /// Customer-specified remote repository.
+  GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository?
+      customRepository;
+
   /// One of the publicly available Python repositories supported by Artifact
   /// Registry.
   /// Possible string values are:
@@ -4076,17 +4379,24 @@ class PythonRepository {
   core.String? publicRepository;
 
   PythonRepository({
+    this.customRepository,
     this.publicRepository,
   });
 
   PythonRepository.fromJson(core.Map json_)
       : this(
+          customRepository: json_.containsKey('customRepository')
+              ? GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository
+                  .fromJson(json_['customRepository']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           publicRepository: json_.containsKey('publicRepository')
               ? json_['publicRepository'] as core.String
               : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (customRepository != null) 'customRepository': customRepository!,
         if (publicRepository != null) 'publicRepository': publicRepository!,
       };
 }
@@ -4098,6 +4408,12 @@ class RemoteRepositoryConfig {
 
   /// The description of the remote source.
   core.String? description;
+
+  /// Input only.
+  ///
+  /// A create/update remote repo option to avoid making a HEAD/GET request to
+  /// validate a remote repo and any supplied upstream credentials.
+  core.bool? disableUpstreamValidation;
 
   /// Specific settings for a Docker remote repository.
   DockerRepository? dockerRepository;
@@ -4122,6 +4438,7 @@ class RemoteRepositoryConfig {
   RemoteRepositoryConfig({
     this.aptRepository,
     this.description,
+    this.disableUpstreamValidation,
     this.dockerRepository,
     this.mavenRepository,
     this.npmRepository,
@@ -4139,6 +4456,10 @@ class RemoteRepositoryConfig {
           description: json_.containsKey('description')
               ? json_['description'] as core.String
               : null,
+          disableUpstreamValidation:
+              json_.containsKey('disableUpstreamValidation')
+                  ? json_['disableUpstreamValidation'] as core.bool
+                  : null,
           dockerRepository: json_.containsKey('dockerRepository')
               ? DockerRepository.fromJson(json_['dockerRepository']
                   as core.Map<core.String, core.dynamic>)
@@ -4168,6 +4489,8 @@ class RemoteRepositoryConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (aptRepository != null) 'aptRepository': aptRepository!,
         if (description != null) 'description': description!,
+        if (disableUpstreamValidation != null)
+          'disableUpstreamValidation': disableUpstreamValidation!,
         if (dockerRepository != null) 'dockerRepository': dockerRepository!,
         if (mavenRepository != null) 'mavenRepository': mavenRepository!,
         if (npmRepository != null) 'npmRepository': npmRepository!,
@@ -4883,17 +5206,27 @@ class VirtualRepositoryConfig {
 
 /// Configuration for a Yum remote repository.
 class YumRepository {
+  /// Customer-specified remote repository.
+  GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository?
+      customRepository;
+
   /// One of the publicly available Yum repositories supported by Artifact
   /// Registry.
   GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository?
       publicRepository;
 
   YumRepository({
+    this.customRepository,
     this.publicRepository,
   });
 
   YumRepository.fromJson(core.Map json_)
       : this(
+          customRepository: json_.containsKey('customRepository')
+              ? GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository
+                  .fromJson(json_['customRepository']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           publicRepository: json_.containsKey('publicRepository')
               ? GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository
                   .fromJson(json_['publicRepository']
@@ -4902,6 +5235,7 @@ class YumRepository {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (customRepository != null) 'customRepository': customRepository!,
         if (publicRepository != null) 'publicRepository': publicRepository!,
       };
 }

@@ -318,6 +318,7 @@ api.BatchWriteRequest buildBatchWriteRequest() {
   final o = api.BatchWriteRequest();
   buildCounterBatchWriteRequest++;
   if (buildCounterBatchWriteRequest < 3) {
+    o.excludeTxnFromChangeStreams = true;
     o.mutationGroups = buildUnnamed3();
     o.requestOptions = buildRequestOptions();
   }
@@ -328,6 +329,7 @@ api.BatchWriteRequest buildBatchWriteRequest() {
 void checkBatchWriteRequest(api.BatchWriteRequest o) {
   buildCounterBatchWriteRequest++;
   if (buildCounterBatchWriteRequest < 3) {
+    unittest.expect(o.excludeTxnFromChangeStreams!, unittest.isTrue);
     checkUnnamed3(o.mutationGroups!);
     checkRequestOptions(o.requestOptions!);
   }
@@ -4205,6 +4207,7 @@ api.Session buildSession() {
     o.createTime = 'foo';
     o.creatorRole = 'foo';
     o.labels = buildUnnamed70();
+    o.multiplexed = true;
     o.name = 'foo';
   }
   buildCounterSession--;
@@ -4227,6 +4230,7 @@ void checkSession(api.Session o) {
       unittest.equals('foo'),
     );
     checkUnnamed70(o.labels!);
+    unittest.expect(o.multiplexed!, unittest.isTrue);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -4596,6 +4600,7 @@ api.TransactionOptions buildTransactionOptions() {
   final o = api.TransactionOptions();
   buildCounterTransactionOptions++;
   if (buildCounterTransactionOptions < 3) {
+    o.excludeTxnFromChangeStreams = true;
     o.partitionedDml = buildPartitionedDml();
     o.readOnly = buildReadOnly();
     o.readWrite = buildReadWrite();
@@ -4607,6 +4612,7 @@ api.TransactionOptions buildTransactionOptions() {
 void checkTransactionOptions(api.TransactionOptions o) {
   buildCounterTransactionOptions++;
   if (buildCounterTransactionOptions < 3) {
+    unittest.expect(o.excludeTxnFromChangeStreams!, unittest.isTrue);
     checkPartitionedDml(o.partitionedDml!);
     checkReadOnly(o.readOnly!);
     checkReadWrite(o.readWrite!);

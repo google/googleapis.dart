@@ -893,12 +893,22 @@ class Folder {
   /// Required.
   core.String? parent;
 
+  /// Input only.
+  ///
+  /// Immutable. Tag keys/values directly bound to this folder. Each item in the
+  /// map must be expressed as " : ". For example: "123/environment" :
+  /// "production", "123/costCenter" : "marketing"
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? tags;
+
   Folder({
     this.createTime,
     this.displayName,
     this.lifecycleState,
     this.name,
     this.parent,
+    this.tags,
   });
 
   Folder.fromJson(core.Map json_)
@@ -916,6 +926,14 @@ class Folder {
           parent: json_.containsKey('parent')
               ? json_['parent'] as core.String
               : null,
+          tags: json_.containsKey('tags')
+              ? (json_['tags'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -924,6 +942,7 @@ class Folder {
         if (lifecycleState != null) 'lifecycleState': lifecycleState!,
         if (name != null) 'name': name!,
         if (parent != null) 'parent': parent!,
+        if (tags != null) 'tags': tags!,
       };
 }
 

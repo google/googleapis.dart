@@ -37,7 +37,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240220",
+    "revision": "20240227",
     "rootUrl": "https://sheets.googleapis.com/",
     "servicePath": "",
     "title": "Google Sheets API",

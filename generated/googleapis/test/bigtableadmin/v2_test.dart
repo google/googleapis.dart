@@ -143,6 +143,33 @@ void checkAuditLogConfig(api.AuditLogConfig o) {
   buildCounterAuditLogConfig--;
 }
 
+core.int buildCounterAutomatedBackupPolicy = 0;
+api.AutomatedBackupPolicy buildAutomatedBackupPolicy() {
+  final o = api.AutomatedBackupPolicy();
+  buildCounterAutomatedBackupPolicy++;
+  if (buildCounterAutomatedBackupPolicy < 3) {
+    o.frequency = 'foo';
+    o.retentionPeriod = 'foo';
+  }
+  buildCounterAutomatedBackupPolicy--;
+  return o;
+}
+
+void checkAutomatedBackupPolicy(api.AutomatedBackupPolicy o) {
+  buildCounterAutomatedBackupPolicy++;
+  if (buildCounterAutomatedBackupPolicy < 3) {
+    unittest.expect(
+      o.frequency!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.retentionPeriod!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterAutomatedBackupPolicy--;
+}
+
 core.int buildCounterAutoscalingLimits = 0;
 api.AutoscalingLimits buildAutoscalingLimits() {
   final o = api.AutoscalingLimits();
@@ -1516,6 +1543,7 @@ api.Modification buildModification() {
     o.drop = true;
     o.id = 'foo';
     o.update = buildColumnFamily();
+    o.updateMask = 'foo';
   }
   buildCounterModification--;
   return o;
@@ -1531,6 +1559,10 @@ void checkModification(api.Modification o) {
       unittest.equals('foo'),
     );
     checkColumnFamily(o.update!);
+    unittest.expect(
+      o.updateMask!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterModification--;
 }
@@ -2031,6 +2063,7 @@ api.Table buildTable() {
   final o = api.Table();
   buildCounterTable++;
   if (buildCounterTable < 3) {
+    o.automatedBackupPolicy = buildAutomatedBackupPolicy();
     o.changeStreamConfig = buildChangeStreamConfig();
     o.clusterStates = buildUnnamed29();
     o.columnFamilies = buildUnnamed30();
@@ -2047,6 +2080,7 @@ api.Table buildTable() {
 void checkTable(api.Table o) {
   buildCounterTable++;
   if (buildCounterTable < 3) {
+    checkAutomatedBackupPolicy(o.automatedBackupPolicy!);
     checkChangeStreamConfig(o.changeStreamConfig!);
     checkUnnamed29(o.clusterStates!);
     checkUnnamed30(o.columnFamilies!);
@@ -2247,6 +2281,16 @@ void main() {
       final od = api.AuditLogConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkAuditLogConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-AutomatedBackupPolicy', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAutomatedBackupPolicy();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AutomatedBackupPolicy.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAutomatedBackupPolicy(od);
     });
   });
 

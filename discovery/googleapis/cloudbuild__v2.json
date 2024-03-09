@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240207",
+    "revision": "20240305",
     "rootUrl": "https://cloudbuild.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Build API",
@@ -1887,6 +1887,45 @@
             },
             "type": "object"
         },
+        "PipelineResult": {
+            "description": "A value produced by a Pipeline.",
+            "id": "PipelineResult",
+            "properties": {
+                "description": {
+                    "description": "Output only. Description of the result.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Output only. Name of the result.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "type": {
+                    "description": "Output only. The type of data that the result holds.",
+                    "enum": [
+                        "TYPE_UNSPECIFIED",
+                        "STRING",
+                        "ARRAY",
+                        "OBJECT"
+                    ],
+                    "enumDescriptions": [
+                        "Default enum type; should not be used.",
+                        "Default",
+                        "Array type",
+                        "Object type"
+                    ],
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "value": {
+                    "$ref": "ResultValue",
+                    "description": "Output only. Value of the result.",
+                    "readOnly": true
+                }
+            },
+            "type": "object"
+        },
         "PipelineRun": {
             "description": "Message describing PipelineRun object",
             "id": "PipelineRun",
@@ -1990,6 +2029,14 @@
                     "description": "Output only. The exact PipelineSpec used to instantiate the run.",
                     "readOnly": true
                 },
+                "results": {
+                    "description": "Optional. Output only. List of results written out by the pipeline's containers",
+                    "items": {
+                        "$ref": "PipelineRunResult"
+                    },
+                    "readOnly": true,
+                    "type": "array"
+                },
                 "security": {
                     "$ref": "Security",
                     "description": "Optional. Security configuration."
@@ -2051,6 +2098,23 @@
             },
             "type": "object"
         },
+        "PipelineRunResult": {
+            "description": "PipelineRunResult used to describe the results of a pipeline",
+            "id": "PipelineRunResult",
+            "properties": {
+                "name": {
+                    "description": "Output only. Name of the TaskRun",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "value": {
+                    "$ref": "ResultValue",
+                    "description": "Output only. Value of the result.",
+                    "readOnly": true
+                }
+            },
+            "type": "object"
+        },
         "PipelineSpec": {
             "description": "PipelineSpec defines the desired state of Pipeline.",
             "id": "PipelineSpec",
@@ -2072,6 +2136,14 @@
                     "items": {
                         "$ref": "ParamSpec"
                     },
+                    "type": "array"
+                },
+                "results": {
+                    "description": "Optional. Output only. List of results written out by the pipeline's containers",
+                    "items": {
+                        "$ref": "PipelineResult"
+                    },
+                    "readOnly": true,
                     "type": "array"
                 },
                 "tasks": {
@@ -2321,6 +2393,48 @@
                 },
                 "webhookId": {
                     "description": "Output only. External ID of the webhook created for the repository.",
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ResultValue": {
+            "description": "ResultValue holds different types of data for a single result.",
+            "id": "ResultValue",
+            "properties": {
+                "arrayVal": {
+                    "description": "Value of the result if type is array.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "objectVal": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Value of the result if type is object.",
+                    "type": "object"
+                },
+                "stringVal": {
+                    "description": "Value of the result if type is string.",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "Output only. The type of data that the result holds.",
+                    "enum": [
+                        "TYPE_UNSPECIFIED",
+                        "STRING",
+                        "ARRAY",
+                        "OBJECT"
+                    ],
+                    "enumDescriptions": [
+                        "Default enum type; should not be used.",
+                        "Default",
+                        "Array type",
+                        "Object type"
+                    ],
                     "readOnly": true,
                     "type": "string"
                 }
@@ -2862,17 +2976,6 @@
             },
             "type": "object"
         },
-        "VolumeClaim": {
-            "description": "VolumeClaim is a user's request for a volume.",
-            "id": "VolumeClaim",
-            "properties": {
-                "storage": {
-                    "description": "Volume size, e.g. 1gb.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
         "VolumeMount": {
             "description": "Pod volumes to mount into the container's filesystem.",
             "id": "VolumeMount",
@@ -2973,10 +3076,6 @@
                 "subPath": {
                     "description": "Optional. SubPath is optionally a directory on the volume which should be used for this binding (i.e. the volume will be mounted at this sub directory). +optional",
                     "type": "string"
-                },
-                "volumeClaim": {
-                    "$ref": "VolumeClaim",
-                    "description": "Volume claim that will be created in the same namespace."
                 }
             },
             "type": "object"

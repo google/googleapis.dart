@@ -1,6 +1,6 @@
-## 14.0.0
+## 13.1.0
 
- - `logging` - removed `tail()`
+ - `logging` - removed (*BROKEN*) `tail()` function call.
 
 ## 13.0.0
 

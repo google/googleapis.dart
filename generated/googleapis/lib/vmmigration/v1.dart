@@ -23,6 +23,8 @@
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsGroupsResource]
+///     - [ProjectsLocationsImageImportsResource]
+///       - [ProjectsLocationsImageImportsImageImportJobsResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsSourcesResource]
 ///       - [ProjectsLocationsSourcesDatacenterConnectorsResource]
@@ -80,6 +82,8 @@ class ProjectsLocationsResource {
 
   ProjectsLocationsGroupsResource get groups =>
       ProjectsLocationsGroupsResource(_requester);
+  ProjectsLocationsImageImportsResource get imageImports =>
+      ProjectsLocationsImageImportsResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
       ProjectsLocationsOperationsResource(_requester);
   ProjectsLocationsSourcesResource get sources =>
@@ -529,6 +533,372 @@ class ProjectsLocationsGroupsResource {
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsImageImportsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsImageImportsImageImportJobsResource get imageImportJobs =>
+      ProjectsLocationsImageImportsImageImportJobsResource(_requester);
+
+  ProjectsLocationsImageImportsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new ImageImport in a given project.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The ImageImport's parent.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [imageImportId] - Required. The image import identifier. This value
+  /// maximum length is 63 characters, and valid characters are /a-z-/. It must
+  /// start with an english letter and must not end with a hyphen.
+  ///
+  /// [requestId] - Optional. A request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed. The server
+  /// will guarantee that for at least 60 minutes since the first request. For
+  /// example, consider a situation where you make an initial request and the
+  /// request times out. If you make the request again with the same request ID,
+  /// the server can check if original operation with the same request ID was
+  /// received, and if so, will ignore the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    ImageImport request,
+    core.String parent, {
+    core.String? imageImportId,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (imageImportId != null) 'imageImportId': [imageImportId],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/imageImports';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single ImageImport.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The ImageImport name.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/imageImports/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. A request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed. The server
+  /// will guarantee that for at least 60 minutes after the first request. For
+  /// example, consider a situation where you make an initial request and t he
+  /// request times out. If you make the request again with the same request ID,
+  /// the server can check if original operation with the same request ID was
+  /// received, and if so, will ignore the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single ImageImport.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The ImageImport name.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/imageImports/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ImageImport].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ImageImport> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ImageImport.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists ImageImports in a given project.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent, which owns this collection of targets.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. The filter request (according to
+  /// https://google.aip.dev/160).
+  ///
+  /// [orderBy] - Optional. The order by fields for the result (according to
+  /// https://google.aip.dev/132#ordering). Currently ordering is only possible
+  /// by "name" field.
+  ///
+  /// [pageSize] - Optional. The maximum number of targets to return. The
+  /// service may return fewer than this value. If unspecified, at most 500
+  /// targets will be returned. The maximum value is 1000; values above 1000
+  /// will be coerced to 1000.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListImageImports` call. Provide this to retrieve the subsequent page.
+  /// When paginating, all other parameters provided to `ListImageImports` must
+  /// match the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListImageImportsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListImageImportsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/imageImports';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListImageImportsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsImageImportsImageImportJobsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsImageImportsImageImportJobsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Initiates the cancellation of a running clone job.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The image import job id.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/imageImports/\[^/\]+/imageImportJobs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> cancel(
+    CancelImageImportJobRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single ImageImportJob.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The ImageImportJob name.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/imageImports/\[^/\]+/imageImportJobs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ImageImportJob].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ImageImportJob> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ImageImportJob.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists ImageImportJobs in a given project.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent, which owns this collection of targets.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/imageImports/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. The filter request (according to
+  /// https://google.aip.dev/160).
+  ///
+  /// [orderBy] - Optional. The order by fields for the result (according to
+  /// https://google.aip.dev/132#ordering). Currently ordering is only possible
+  /// by "name" field.
+  ///
+  /// [pageSize] - Optional. The maximum number of targets to return. The
+  /// service may return fewer than this value. If unspecified, at most 500
+  /// targets will be returned. The maximum value is 1000; values above 1000
+  /// will be coerced to 1000.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListImageImportJobs` call. Provide this to retrieve the subsequent page.
+  /// When paginating, all other parameters provided to `ListImageImportJobs`
+  /// must match the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListImageImportJobsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListImageImportJobsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/imageImportJobs';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListImageImportJobsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3918,6 +4288,9 @@ typedef CancelCloneJobRequest = $Empty;
 /// Request message for 'CancelCutoverJob' request.
 typedef CancelCutoverJobRequest = $Empty;
 
+/// Request message for 'CancelImageImportJob' request.
+typedef CancelImageImportJobRequest = $Empty;
+
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
 
@@ -4749,6 +5122,9 @@ class ComputeScheduling {
       };
 }
 
+/// CreatingImageStep contains specific step details.
+typedef CreatingImageStep = $Empty;
+
 /// CutoverForecast holds information about future CutoverJobs of a MigratingVm.
 class CutoverForecast {
   /// Estimation of the CutoverJob duration.
@@ -5058,6 +5434,9 @@ class CycleStep {
       };
 }
 
+/// Mentions that the image import is not using OS adaptation process.
+typedef DataDiskImageImport = $Empty;
+
 /// DatacenterConnector message describes a connector between the Source and
 /// Google Cloud, which is installed on a vmware datacenter (an OVA vm installed
 /// by the user) to connect the Datacenter to Google Cloud and support vm
@@ -5293,6 +5672,139 @@ class DiskImageDefaults {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (sourceImage != null) 'sourceImage': sourceImage!,
+      };
+}
+
+/// The target details of the image resource that will be created by the import
+/// job.
+class DiskImageTargetDetails {
+  /// Additional licenses to assign to the image.
+  ///
+  /// Optional.
+  core.List<core.String>? additionalLicenses;
+
+  /// Use to skip OS adaptation process.
+  ///
+  /// Optional.
+  DataDiskImageImport? dataDiskImageImport;
+
+  /// An optional description of the image.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// The encryption to apply to the image.
+  ///
+  /// Optional. Immutable.
+  Encryption? encryption;
+
+  /// The name of the image family to which the new image belongs.
+  ///
+  /// Optional.
+  core.String? familyName;
+
+  /// The name of the image to be created.
+  ///
+  /// Required.
+  core.String? imageName;
+
+  /// A map of labels to associate with the image.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Use to set the parameters relevant for the OS adaptation process.
+  ///
+  /// Optional.
+  ImageImportOsAdaptationParameters? osAdaptationParameters;
+
+  /// Set to true to set the image storageLocations to the single region of the
+  /// import job.
+  ///
+  /// When false, the closest multi-region is selected.
+  ///
+  /// Optional.
+  core.bool? singleRegionStorage;
+
+  /// Reference to the TargetProject resource that represents the target project
+  /// in which the imported image will be created.
+  ///
+  /// Required.
+  core.String? targetProject;
+
+  DiskImageTargetDetails({
+    this.additionalLicenses,
+    this.dataDiskImageImport,
+    this.description,
+    this.encryption,
+    this.familyName,
+    this.imageName,
+    this.labels,
+    this.osAdaptationParameters,
+    this.singleRegionStorage,
+    this.targetProject,
+  });
+
+  DiskImageTargetDetails.fromJson(core.Map json_)
+      : this(
+          additionalLicenses: json_.containsKey('additionalLicenses')
+              ? (json_['additionalLicenses'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          dataDiskImageImport: json_.containsKey('dataDiskImageImport')
+              ? DataDiskImageImport.fromJson(json_['dataDiskImageImport']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          encryption: json_.containsKey('encryption')
+              ? Encryption.fromJson(
+                  json_['encryption'] as core.Map<core.String, core.dynamic>)
+              : null,
+          familyName: json_.containsKey('familyName')
+              ? json_['familyName'] as core.String
+              : null,
+          imageName: json_.containsKey('imageName')
+              ? json_['imageName'] as core.String
+              : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          osAdaptationParameters: json_.containsKey('osAdaptationParameters')
+              ? ImageImportOsAdaptationParameters.fromJson(
+                  json_['osAdaptationParameters']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          singleRegionStorage: json_.containsKey('singleRegionStorage')
+              ? json_['singleRegionStorage'] as core.bool
+              : null,
+          targetProject: json_.containsKey('targetProject')
+              ? json_['targetProject'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (additionalLicenses != null)
+          'additionalLicenses': additionalLicenses!,
+        if (dataDiskImageImport != null)
+          'dataDiskImageImport': dataDiskImageImport!,
+        if (description != null) 'description': description!,
+        if (encryption != null) 'encryption': encryption!,
+        if (familyName != null) 'familyName': familyName!,
+        if (imageName != null) 'imageName': imageName!,
+        if (labels != null) 'labels': labels!,
+        if (osAdaptationParameters != null)
+          'osAdaptationParameters': osAdaptationParameters!,
+        if (singleRegionStorage != null)
+          'singleRegionStorage': singleRegionStorage!,
+        if (targetProject != null) 'targetProject': targetProject!,
       };
 }
 
@@ -5676,6 +6188,340 @@ class Group {
       };
 }
 
+/// ImageImport describes the configuration of the image import to run.
+class ImageImport {
+  /// The path to the Cloud Storage file from which the image should be
+  /// imported.
+  ///
+  /// Immutable.
+  core.String? cloudStorageUri;
+
+  /// The time the image import was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Target details for importing a disk image, will be used by ImageImportJob.
+  ///
+  /// Immutable.
+  DiskImageTargetDetails? diskImageTargetDefaults;
+
+  /// The encryption details used by the image import process during the image
+  /// adaptation for Compute Engine.
+  ///
+  /// Immutable.
+  Encryption? encryption;
+
+  /// The resource path of the ImageImport.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The result of the most recent runs for this ImageImport.
+  ///
+  /// All jobs for this ImageImport can be listed via ListImageImportJobs.
+  ///
+  /// Output only.
+  core.List<ImageImportJob>? recentImageImportJobs;
+
+  ImageImport({
+    this.cloudStorageUri,
+    this.createTime,
+    this.diskImageTargetDefaults,
+    this.encryption,
+    this.name,
+    this.recentImageImportJobs,
+  });
+
+  ImageImport.fromJson(core.Map json_)
+      : this(
+          cloudStorageUri: json_.containsKey('cloudStorageUri')
+              ? json_['cloudStorageUri'] as core.String
+              : null,
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          diskImageTargetDefaults: json_.containsKey('diskImageTargetDefaults')
+              ? DiskImageTargetDetails.fromJson(json_['diskImageTargetDefaults']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          encryption: json_.containsKey('encryption')
+              ? Encryption.fromJson(
+                  json_['encryption'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          recentImageImportJobs: json_.containsKey('recentImageImportJobs')
+              ? (json_['recentImageImportJobs'] as core.List)
+                  .map((value) => ImageImportJob.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cloudStorageUri != null) 'cloudStorageUri': cloudStorageUri!,
+        if (createTime != null) 'createTime': createTime!,
+        if (diskImageTargetDefaults != null)
+          'diskImageTargetDefaults': diskImageTargetDefaults!,
+        if (encryption != null) 'encryption': encryption!,
+        if (name != null) 'name': name!,
+        if (recentImageImportJobs != null)
+          'recentImageImportJobs': recentImageImportJobs!,
+      };
+}
+
+/// ImageImportJob describes the progress and result of an image import.
+class ImageImportJob {
+  /// The path to the Cloud Storage file from which the image should be
+  /// imported.
+  ///
+  /// Output only.
+  core.String? cloudStorageUri;
+
+  /// The time the image import was created (as an API call, not when it was
+  /// actually created in the target).
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The resource paths of the resources created by the image import job.
+  ///
+  /// Output only.
+  core.List<core.String>? createdResources;
+
+  /// Target details used to import a disk image.
+  ///
+  /// Output only.
+  DiskImageTargetDetails? diskImageTargetDetails;
+
+  /// The time the image import was ended.
+  ///
+  /// Output only.
+  core.String? endTime;
+
+  /// Provides details on the error that led to the image import state in case
+  /// of an error.
+  ///
+  /// Output only.
+  core.List<Status>? errors;
+
+  /// The resource path of the ImageImportJob.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The state of the image import.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The state is unknown.
+  /// - "PENDING" : The image import has not yet started.
+  /// - "RUNNING" : The image import is active and running.
+  /// - "SUCCEEDED" : The image import has finished successfully.
+  /// - "FAILED" : The image import has finished with errors.
+  /// - "CANCELLING" : The image import is being cancelled.
+  /// - "CANCELLED" : The image import was cancelled.
+  core.String? state;
+
+  /// The image import steps list representing its progress.
+  ///
+  /// Output only.
+  core.List<ImageImportStep>? steps;
+
+  /// Warnings that occurred during the image import.
+  ///
+  /// Output only.
+  core.List<MigrationWarning>? warnings;
+
+  ImageImportJob({
+    this.cloudStorageUri,
+    this.createTime,
+    this.createdResources,
+    this.diskImageTargetDetails,
+    this.endTime,
+    this.errors,
+    this.name,
+    this.state,
+    this.steps,
+    this.warnings,
+  });
+
+  ImageImportJob.fromJson(core.Map json_)
+      : this(
+          cloudStorageUri: json_.containsKey('cloudStorageUri')
+              ? json_['cloudStorageUri'] as core.String
+              : null,
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          createdResources: json_.containsKey('createdResources')
+              ? (json_['createdResources'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          diskImageTargetDetails: json_.containsKey('diskImageTargetDetails')
+              ? DiskImageTargetDetails.fromJson(json_['diskImageTargetDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          endTime: json_.containsKey('endTime')
+              ? json_['endTime'] as core.String
+              : null,
+          errors: json_.containsKey('errors')
+              ? (json_['errors'] as core.List)
+                  .map((value) => Status.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          steps: json_.containsKey('steps')
+              ? (json_['steps'] as core.List)
+                  .map((value) => ImageImportStep.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          warnings: json_.containsKey('warnings')
+              ? (json_['warnings'] as core.List)
+                  .map((value) => MigrationWarning.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cloudStorageUri != null) 'cloudStorageUri': cloudStorageUri!,
+        if (createTime != null) 'createTime': createTime!,
+        if (createdResources != null) 'createdResources': createdResources!,
+        if (diskImageTargetDetails != null)
+          'diskImageTargetDetails': diskImageTargetDetails!,
+        if (endTime != null) 'endTime': endTime!,
+        if (errors != null) 'errors': errors!,
+        if (name != null) 'name': name!,
+        if (state != null) 'state': state!,
+        if (steps != null) 'steps': steps!,
+        if (warnings != null) 'warnings': warnings!,
+      };
+}
+
+/// Parameters affecting the OS adaptation process.
+class ImageImportOsAdaptationParameters {
+  /// Set to true in order to generalize the imported image.
+  ///
+  /// The generalization process enables co-existence of multiple VMs created
+  /// from the same image. For Windows, generalizing the image removes
+  /// computer-specific information such as installed drivers and the computer
+  /// security identifier (SID).
+  ///
+  /// Optional.
+  core.bool? generalize;
+
+  /// Choose which type of license to apply to the imported image.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "COMPUTE_ENGINE_LICENSE_TYPE_DEFAULT" : The license type is the default
+  /// for the OS.
+  /// - "COMPUTE_ENGINE_LICENSE_TYPE_PAYG" : The license type is Pay As You Go
+  /// license type.
+  /// - "COMPUTE_ENGINE_LICENSE_TYPE_BYOL" : The license type is Bring Your Own
+  /// License type.
+  core.String? licenseType;
+
+  ImageImportOsAdaptationParameters({
+    this.generalize,
+    this.licenseType,
+  });
+
+  ImageImportOsAdaptationParameters.fromJson(core.Map json_)
+      : this(
+          generalize: json_.containsKey('generalize')
+              ? json_['generalize'] as core.bool
+              : null,
+          licenseType: json_.containsKey('licenseType')
+              ? json_['licenseType'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (generalize != null) 'generalize': generalize!,
+        if (licenseType != null) 'licenseType': licenseType!,
+      };
+}
+
+/// ImageImportStep holds information about the image import step progress.
+class ImageImportStep {
+  /// Adapting OS step.
+  AdaptingOSStep? adaptingOs;
+
+  /// Creating image step.
+  CreatingImageStep? creatingImage;
+
+  /// The time the step has ended.
+  ///
+  /// Output only.
+  core.String? endTime;
+
+  /// Initializing step.
+  InitializingImageImportStep? initializing;
+
+  /// Loading source files step.
+  LoadingImageSourceFilesStep? loadingSourceFiles;
+
+  /// The time the step has started.
+  ///
+  /// Output only.
+  core.String? startTime;
+
+  ImageImportStep({
+    this.adaptingOs,
+    this.creatingImage,
+    this.endTime,
+    this.initializing,
+    this.loadingSourceFiles,
+    this.startTime,
+  });
+
+  ImageImportStep.fromJson(core.Map json_)
+      : this(
+          adaptingOs: json_.containsKey('adaptingOs')
+              ? AdaptingOSStep.fromJson(
+                  json_['adaptingOs'] as core.Map<core.String, core.dynamic>)
+              : null,
+          creatingImage: json_.containsKey('creatingImage')
+              ? CreatingImageStep.fromJson(
+                  json_['creatingImage'] as core.Map<core.String, core.dynamic>)
+              : null,
+          endTime: json_.containsKey('endTime')
+              ? json_['endTime'] as core.String
+              : null,
+          initializing: json_.containsKey('initializing')
+              ? InitializingImageImportStep.fromJson(
+                  json_['initializing'] as core.Map<core.String, core.dynamic>)
+              : null,
+          loadingSourceFiles: json_.containsKey('loadingSourceFiles')
+              ? LoadingImageSourceFilesStep.fromJson(json_['loadingSourceFiles']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          startTime: json_.containsKey('startTime')
+              ? json_['startTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (adaptingOs != null) 'adaptingOs': adaptingOs!,
+        if (creatingImage != null) 'creatingImage': creatingImage!,
+        if (endTime != null) 'endTime': endTime!,
+        if (initializing != null) 'initializing': initializing!,
+        if (loadingSourceFiles != null)
+          'loadingSourceFiles': loadingSourceFiles!,
+        if (startTime != null) 'startTime': startTime!,
+      };
+}
+
+/// InitializingImageImportStep contains specific step details.
+typedef InitializingImageImportStep = $Empty;
+
 /// InitializingReplicationStep contains specific step details.
 typedef InitializingReplicationStep = $Empty;
 
@@ -5881,6 +6727,106 @@ class ListGroupsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (groups != null) 'groups': groups!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
+/// Response message for 'ListImageImportJobs' call.
+class ListImageImportJobsResponse {
+  /// The list of target response.
+  ///
+  /// Output only.
+  core.List<ImageImportJob>? imageImportJobs;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  ///
+  /// Output only.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  ///
+  /// Output only.
+  core.List<core.String>? unreachable;
+
+  ListImageImportJobsResponse({
+    this.imageImportJobs,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListImageImportJobsResponse.fromJson(core.Map json_)
+      : this(
+          imageImportJobs: json_.containsKey('imageImportJobs')
+              ? (json_['imageImportJobs'] as core.List)
+                  .map((value) => ImageImportJob.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (imageImportJobs != null) 'imageImportJobs': imageImportJobs!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
+/// Response message for 'ListImageImports' call.
+class ListImageImportsResponse {
+  /// The list of target response.
+  ///
+  /// Output only.
+  core.List<ImageImport>? imageImports;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  ///
+  /// Output only.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  ///
+  /// Output only.
+  core.List<core.String>? unreachable;
+
+  ListImageImportsResponse({
+    this.imageImports,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListImageImportsResponse.fromJson(core.Map json_)
+      : this(
+          imageImports: json_.containsKey('imageImports')
+              ? (json_['imageImports'] as core.List)
+                  .map((value) => ImageImport.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (imageImports != null) 'imageImports': imageImports!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (unreachable != null) 'unreachable': unreachable!,
       };
@@ -6200,6 +7146,9 @@ class ListUtilizationReportsResponse {
           'utilizationReports': utilizationReports!,
       };
 }
+
+/// LoadingImageSourceFilesStep contains specific step details.
+typedef LoadingImageSourceFilesStep = $Empty;
 
 /// Provides a localized error message that is safe to return to the user which
 /// can be attached to an RPC error.

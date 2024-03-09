@@ -3114,6 +3114,65 @@ class KerberosConfig {
       };
 }
 
+/// The details of the latest scheduled backup.
+class LatestBackup {
+  /// The ID of an in-progress scheduled backup.
+  ///
+  /// Empty if no backup is in progress.
+  ///
+  /// Output only.
+  core.String? backupId;
+
+  /// The duration of the backup completion.
+  ///
+  /// Output only.
+  core.String? duration;
+
+  /// The time when the backup was started.
+  ///
+  /// Output only.
+  core.String? startTime;
+
+  /// The current state of the backup.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The state of the backup is unknown.
+  /// - "IN_PROGRESS" : The backup is in progress.
+  /// - "SUCCEEDED" : The backup completed.
+  /// - "FAILED" : The backup failed.
+  core.String? state;
+
+  LatestBackup({
+    this.backupId,
+    this.duration,
+    this.startTime,
+    this.state,
+  });
+
+  LatestBackup.fromJson(core.Map json_)
+      : this(
+          backupId: json_.containsKey('backupId')
+              ? json_['backupId'] as core.String
+              : null,
+          duration: json_.containsKey('duration')
+              ? json_['duration'] as core.String
+              : null,
+          startTime: json_.containsKey('startTime')
+              ? json_['startTime'] as core.String
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (backupId != null) 'backupId': backupId!,
+        if (duration != null) 'duration': duration!,
+        if (startTime != null) 'startTime': startTime!,
+        if (state != null) 'state': state!,
+      };
+}
+
 /// Response message for DataprocMetastore.ListBackups.
 class ListBackupsResponse {
   /// The backups of the specified service.
@@ -3920,6 +3979,12 @@ class Restore {
   /// Output only.
   core.String? backup;
 
+  /// A Cloud Storage URI specifying where the backup artifacts are stored, in
+  /// the format gs:///.
+  ///
+  /// Optional.
+  core.String? backupLocation;
+
   /// The restore details containing the revision of the service to be restored
   /// to, in format of JSON.
   ///
@@ -3958,6 +4023,7 @@ class Restore {
 
   Restore({
     this.backup,
+    this.backupLocation,
     this.details,
     this.endTime,
     this.startTime,
@@ -3969,6 +4035,9 @@ class Restore {
       : this(
           backup: json_.containsKey('backup')
               ? json_['backup'] as core.String
+              : null,
+          backupLocation: json_.containsKey('backupLocation')
+              ? json_['backupLocation'] as core.String
               : null,
           details: json_.containsKey('details')
               ? json_['details'] as core.String
@@ -3986,6 +4055,7 @@ class Restore {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (backup != null) 'backup': backup!,
+        if (backupLocation != null) 'backupLocation': backupLocation!,
         if (details != null) 'details': details!,
         if (endTime != null) 'endTime': endTime!,
         if (startTime != null) 'startTime': startTime!,
@@ -4005,6 +4075,15 @@ class RestoreServiceRequest {
   ///
   /// Optional.
   core.String? backup;
+
+  /// A Cloud Storage URI specifying the location of the backup artifacts,
+  /// namely - backup avro files under "avro/", backup_metastore.json and
+  /// service.json, in the following form:gs://.
+  ///
+  /// Mutually exclusive with backup, and exactly one of the two must be set.
+  ///
+  /// Optional.
+  core.String? backupLocation;
 
   /// A request ID.
   ///
@@ -4033,6 +4112,7 @@ class RestoreServiceRequest {
 
   RestoreServiceRequest({
     this.backup,
+    this.backupLocation,
     this.requestId,
     this.restoreType,
   });
@@ -4041,6 +4121,9 @@ class RestoreServiceRequest {
       : this(
           backup: json_.containsKey('backup')
               ? json_['backup'] as core.String
+              : null,
+          backupLocation: json_.containsKey('backupLocation')
+              ? json_['backupLocation'] as core.String
               : null,
           requestId: json_.containsKey('requestId')
               ? json_['requestId'] as core.String
@@ -4052,6 +4135,7 @@ class RestoreServiceRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (backup != null) 'backup': backup!,
+        if (backupLocation != null) 'backupLocation': backupLocation!,
         if (requestId != null) 'requestId': requestId!,
         if (restoreType != null) 'restoreType': restoreType!,
       };
@@ -4094,6 +4178,93 @@ class ScalingConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (instanceSize != null) 'instanceSize': instanceSize!,
         if (scalingFactor != null) 'scalingFactor': scalingFactor!,
+      };
+}
+
+/// This specifies the configuration of scheduled backup.
+class ScheduledBackup {
+  /// A Cloud Storage URI of a folder, in the format gs:///.
+  ///
+  /// A sub-folder containing backup files will be stored below it.
+  ///
+  /// Optional.
+  core.String? backupLocation;
+
+  /// The scheduled interval in Cron format, see
+  /// https://en.wikipedia.org/wiki/Cron The default is empty: scheduled backup
+  /// is not enabled.
+  ///
+  /// Must be specified to enable scheduled backups.
+  ///
+  /// Optional.
+  core.String? cronSchedule;
+
+  /// Defines whether the scheduled backup is enabled.
+  ///
+  /// The default value is false.
+  ///
+  /// Optional.
+  core.bool? enabled;
+
+  /// The details of the latest scheduled backup.
+  ///
+  /// Output only.
+  LatestBackup? latestBackup;
+
+  /// The time when the next backups execution is scheduled to start.
+  ///
+  /// Output only.
+  core.String? nextScheduledTime;
+
+  /// Specifies the time zone to be used when interpreting cron_schedule.
+  ///
+  /// Must be a time zone name from the time zone database
+  /// (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones), e.g.
+  /// America/Los_Angeles or Africa/Abidjan. If left unspecified, the default is
+  /// UTC.
+  ///
+  /// Optional.
+  core.String? timeZone;
+
+  ScheduledBackup({
+    this.backupLocation,
+    this.cronSchedule,
+    this.enabled,
+    this.latestBackup,
+    this.nextScheduledTime,
+    this.timeZone,
+  });
+
+  ScheduledBackup.fromJson(core.Map json_)
+      : this(
+          backupLocation: json_.containsKey('backupLocation')
+              ? json_['backupLocation'] as core.String
+              : null,
+          cronSchedule: json_.containsKey('cronSchedule')
+              ? json_['cronSchedule'] as core.String
+              : null,
+          enabled: json_.containsKey('enabled')
+              ? json_['enabled'] as core.bool
+              : null,
+          latestBackup: json_.containsKey('latestBackup')
+              ? LatestBackup.fromJson(
+                  json_['latestBackup'] as core.Map<core.String, core.dynamic>)
+              : null,
+          nextScheduledTime: json_.containsKey('nextScheduledTime')
+              ? json_['nextScheduledTime'] as core.String
+              : null,
+          timeZone: json_.containsKey('timeZone')
+              ? json_['timeZone'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (backupLocation != null) 'backupLocation': backupLocation!,
+        if (cronSchedule != null) 'cronSchedule': cronSchedule!,
+        if (enabled != null) 'enabled': enabled!,
+        if (latestBackup != null) 'latestBackup': latestBackup!,
+        if (nextScheduledTime != null) 'nextScheduledTime': nextScheduledTime!,
+        if (timeZone != null) 'timeZone': timeZone!,
       };
 }
 
@@ -4222,6 +4393,11 @@ class Service {
   /// Scaling configuration of the metastore service.
   ScalingConfig? scalingConfig;
 
+  /// The configuration of scheduled backup for the metastore service.
+  ///
+  /// Optional.
+  ScheduledBackup? scheduledBackup;
+
   /// The current state of the metastore service.
   ///
   /// Output only.
@@ -4290,6 +4466,7 @@ class Service {
     this.port,
     this.releaseChannel,
     this.scalingConfig,
+    this.scheduledBackup,
     this.state,
     this.stateMessage,
     this.telemetryConfig,
@@ -4358,6 +4535,10 @@ class Service {
               ? ScalingConfig.fromJson(
                   json_['scalingConfig'] as core.Map<core.String, core.dynamic>)
               : null,
+          scheduledBackup: json_.containsKey('scheduledBackup')
+              ? ScheduledBackup.fromJson(json_['scheduledBackup']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           state:
               json_.containsKey('state') ? json_['state'] as core.String : null,
           stateMessage: json_.containsKey('stateMessage')
@@ -4394,6 +4575,7 @@ class Service {
         if (port != null) 'port': port!,
         if (releaseChannel != null) 'releaseChannel': releaseChannel!,
         if (scalingConfig != null) 'scalingConfig': scalingConfig!,
+        if (scheduledBackup != null) 'scheduledBackup': scheduledBackup!,
         if (state != null) 'state': state!,
         if (stateMessage != null) 'stateMessage': stateMessage!,
         if (telemetryConfig != null) 'telemetryConfig': telemetryConfig!,

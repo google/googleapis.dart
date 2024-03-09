@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20231229",
+    "revision": "20240227",
     "rootUrl": "https://runtimeconfig.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Runtime Configuration API",

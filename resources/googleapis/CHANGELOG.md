@@ -1,6 +1,7 @@
-## 14.0.0-wip
+## 13.1.0
 
- - `logging` - removed `tail()`
+ - `logging` - removed (*BROKEN*) `tail()` function call.
+ - `dataportability` - new!
 
 ## 13.0.0
 

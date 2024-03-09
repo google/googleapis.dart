@@ -6797,10 +6797,17 @@ class GoogleCloudDialogflowCxV3AdvancedSettings {
   /// logs, and speech logging. Exposed at the following levels: - Agent level.
   GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings? loggingSettings;
 
+  /// Settings for speech to text detection.
+  ///
+  /// Exposed at the following levels: - Agent level - Flow level - Page level -
+  /// Parameter level
+  GoogleCloudDialogflowCxV3AdvancedSettingsSpeechSettings? speechSettings;
+
   GoogleCloudDialogflowCxV3AdvancedSettings({
     this.audioExportGcsDestination,
     this.dtmfSettings,
     this.loggingSettings,
+    this.speechSettings,
   });
 
   GoogleCloudDialogflowCxV3AdvancedSettings.fromJson(core.Map json_)
@@ -6820,6 +6827,11 @@ class GoogleCloudDialogflowCxV3AdvancedSettings {
                   .fromJson(json_['loggingSettings']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          speechSettings: json_.containsKey('speechSettings')
+              ? GoogleCloudDialogflowCxV3AdvancedSettingsSpeechSettings
+                  .fromJson(json_['speechSettings']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6827,6 +6839,7 @@ class GoogleCloudDialogflowCxV3AdvancedSettings {
           'audioExportGcsDestination': audioExportGcsDestination!,
         if (dtmfSettings != null) 'dtmfSettings': dtmfSettings!,
         if (loggingSettings != null) 'loggingSettings': loggingSettings!,
+        if (speechSettings != null) 'speechSettings': speechSettings!,
       };
 }
 
@@ -6907,6 +6920,67 @@ class GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings {
       };
 }
 
+/// Define behaviors of speech to text detection.
+class GoogleCloudDialogflowCxV3AdvancedSettingsSpeechSettings {
+  /// Sensitivity of the speech model that detects the end of speech.
+  ///
+  /// Scale from 0 to 100.
+  core.int? endpointerSensitivity;
+
+  /// Mapping from language to Speech-to-Text model.
+  ///
+  /// The mapped Speech-to-Text model will be selected for requests from its
+  /// corresponding language. For more information, see
+  /// [Speech models](https://cloud.google.com/dialogflow/cx/docs/concept/speech-models).
+  core.Map<core.String, core.String>? models;
+
+  /// Timeout before detecting no speech.
+  core.String? noSpeechTimeout;
+
+  /// Use timeout based endpointing, interpreting endpointer sensitivy as
+  /// seconds of timeout value.
+  core.bool? useTimeoutBasedEndpointing;
+
+  GoogleCloudDialogflowCxV3AdvancedSettingsSpeechSettings({
+    this.endpointerSensitivity,
+    this.models,
+    this.noSpeechTimeout,
+    this.useTimeoutBasedEndpointing,
+  });
+
+  GoogleCloudDialogflowCxV3AdvancedSettingsSpeechSettings.fromJson(
+      core.Map json_)
+      : this(
+          endpointerSensitivity: json_.containsKey('endpointerSensitivity')
+              ? json_['endpointerSensitivity'] as core.int
+              : null,
+          models: json_.containsKey('models')
+              ? (json_['models'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          noSpeechTimeout: json_.containsKey('noSpeechTimeout')
+              ? json_['noSpeechTimeout'] as core.String
+              : null,
+          useTimeoutBasedEndpointing:
+              json_.containsKey('useTimeoutBasedEndpointing')
+                  ? json_['useTimeoutBasedEndpointing'] as core.bool
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endpointerSensitivity != null)
+          'endpointerSensitivity': endpointerSensitivity!,
+        if (models != null) 'models': models!,
+        if (noSpeechTimeout != null) 'noSpeechTimeout': noSpeechTimeout!,
+        if (useTimeoutBasedEndpointing != null)
+          'useTimeoutBasedEndpointing': useTimeoutBasedEndpointing!,
+      };
+}
+
 /// Agents are best described as Natural Language Understanding (NLU) modules
 /// that transform user requests into actionable data.
 ///
@@ -6984,6 +7058,12 @@ class GoogleCloudDialogflowCxV3Agent {
   /// the name automatically. Format: `projects//locations//agents/`.
   core.String? name;
 
+  /// Settings for end user personalization.
+  ///
+  /// Optional.
+  GoogleCloudDialogflowCxV3AgentPersonalizationSettings?
+      personalizationSettings;
+
   /// Name of the SecuritySettings reference for the agent.
   ///
   /// Format: `projects//locations//securitySettings/`.
@@ -7029,6 +7109,7 @@ class GoogleCloudDialogflowCxV3Agent {
     this.gitIntegrationSettings,
     this.locked,
     this.name,
+    this.personalizationSettings,
     this.securitySettings,
     this.speechToTextSettings,
     this.startFlow,
@@ -7081,6 +7162,11 @@ class GoogleCloudDialogflowCxV3Agent {
           locked:
               json_.containsKey('locked') ? json_['locked'] as core.bool : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          personalizationSettings: json_.containsKey('personalizationSettings')
+              ? GoogleCloudDialogflowCxV3AgentPersonalizationSettings.fromJson(
+                  json_['personalizationSettings']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           securitySettings: json_.containsKey('securitySettings')
               ? json_['securitySettings'] as core.String
               : null,
@@ -7126,6 +7212,8 @@ class GoogleCloudDialogflowCxV3Agent {
           'gitIntegrationSettings': gitIntegrationSettings!,
         if (locked != null) 'locked': locked!,
         if (name != null) 'name': name!,
+        if (personalizationSettings != null)
+          'personalizationSettings': personalizationSettings!,
         if (securitySettings != null) 'securitySettings': securitySettings!,
         if (speechToTextSettings != null)
           'speechToTextSettings': speechToTextSettings!,
@@ -7270,6 +7358,39 @@ class GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings {
         if (displayName != null) 'displayName': displayName!,
         if (repositoryUri != null) 'repositoryUri': repositoryUri!,
         if (trackingBranch != null) 'trackingBranch': trackingBranch!,
+      };
+}
+
+/// Settings for end user personalization.
+class GoogleCloudDialogflowCxV3AgentPersonalizationSettings {
+  /// Default end user metadata, used when processing DetectIntent requests.
+  ///
+  /// Recommended to be filled as a template instead of hard-coded value, for
+  /// example { "age": "$session.params.age" }. The data will be merged with the
+  /// QueryParameters.end_user_metadata in DetectIntentRequest.query_params
+  /// during query processing.
+  ///
+  /// Optional.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? defaultEndUserMetadata;
+
+  GoogleCloudDialogflowCxV3AgentPersonalizationSettings({
+    this.defaultEndUserMetadata,
+  });
+
+  GoogleCloudDialogflowCxV3AgentPersonalizationSettings.fromJson(core.Map json_)
+      : this(
+          defaultEndUserMetadata: json_.containsKey('defaultEndUserMetadata')
+              ? json_['defaultEndUserMetadata']
+                  as core.Map<core.String, core.dynamic>
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (defaultEndUserMetadata != null)
+          'defaultEndUserMetadata': defaultEndUserMetadata!,
       };
 }
 
@@ -14581,7 +14702,9 @@ class GoogleCloudDialogflowCxV3SecuritySettings {
   /// User must set a value lower than Dialogflow's default 365d TTL (30 days
   /// for Agent Assist traffic), higher value will be ignored and use default.
   /// Setting a value higher than that has no effect. A missing value or setting
-  /// to 0 also means we use default TTL.
+  /// to 0 also means we use default TTL. When data retention configuration is
+  /// changed, it only applies to the data created after the change; the TTL of
+  /// existing data created before the change stays intact.
   core.int? retentionWindowDays;
 
   GoogleCloudDialogflowCxV3SecuritySettings({
@@ -14674,6 +14797,9 @@ class GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings {
   core.String? audioFormat;
 
   /// Enable audio redaction if it is true.
+  ///
+  /// Note that this only redacts end-user audio data; Synthesised audio from
+  /// the virtual agent is not redacted.
   core.bool? enableAudioRedaction;
 
   /// Cloud Storage bucket to export audio record to.

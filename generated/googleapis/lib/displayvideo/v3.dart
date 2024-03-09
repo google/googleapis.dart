@@ -16666,8 +16666,7 @@ class CreateSdfDownloadTaskRequest {
   /// - "SDF_VERSION_6" : SDF version 6
   /// - "SDF_VERSION_7" : SDF version 7. Read the \[v7 migration
   /// guide\](/display-video/api/structured-data-file/v7-migration-guide) before
-  /// migrating to this version. Currently in beta. Only available for use by a
-  /// subset of users.
+  /// migrating to this version.
   core.String? version;
 
   CreateSdfDownloadTaskRequest({

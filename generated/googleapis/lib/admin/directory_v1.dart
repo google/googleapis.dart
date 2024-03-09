@@ -6661,6 +6661,49 @@ class AuxiliaryMessage {
       };
 }
 
+/// Information about the device's backlights.
+class BacklightInfo {
+  /// Current brightness of the backlight, between 0 and max_brightness.
+  ///
+  /// Output only.
+  core.int? brightness;
+
+  /// Maximum brightness for the backlight.
+  ///
+  /// Output only.
+  core.int? maxBrightness;
+
+  /// Path to this backlight on the system.
+  ///
+  /// Useful if the caller needs to correlate with other information.
+  ///
+  /// Output only.
+  core.String? path;
+
+  BacklightInfo({
+    this.brightness,
+    this.maxBrightness,
+    this.path,
+  });
+
+  BacklightInfo.fromJson(core.Map json_)
+      : this(
+          brightness: json_.containsKey('brightness')
+              ? json_['brightness'] as core.int
+              : null,
+          maxBrightness: json_.containsKey('maxBrightness')
+              ? json_['maxBrightness'] as core.int
+              : null,
+          path: json_.containsKey('path') ? json_['path'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (brightness != null) 'brightness': brightness!,
+        if (maxBrightness != null) 'maxBrightness': maxBrightness!,
+        if (path != null) 'path': path!,
+      };
+}
+
 /// A request for changing the status of a batch of ChromeOS devices.
 class BatchChangeChromeOsDeviceStatusRequest {
   /// The action to take on the ChromeOS device in order to change its status.
@@ -8192,6 +8235,11 @@ class ChromeOsDevice {
   /// Chrome updates or support
   core.String? autoUpdateExpiration;
 
+  /// Contains backlight information for the device.
+  ///
+  /// Output only.
+  core.List<BacklightInfo>? backlightInfo;
+
   /// The boot mode for the device.
   ///
   /// The possible values are: * `Verified`: The device is running a valid
@@ -8418,6 +8466,7 @@ class ChromeOsDevice {
     this.annotatedLocation,
     this.annotatedUser,
     this.autoUpdateExpiration,
+    this.backlightInfo,
     this.bootMode,
     this.cpuInfo,
     this.cpuStatusReports,
@@ -8478,6 +8527,12 @@ class ChromeOsDevice {
               : null,
           autoUpdateExpiration: json_.containsKey('autoUpdateExpiration')
               ? json_['autoUpdateExpiration'] as core.String
+              : null,
+          backlightInfo: json_.containsKey('backlightInfo')
+              ? (json_['backlightInfo'] as core.List)
+                  .map((value) => BacklightInfo.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
               : null,
           bootMode: json_.containsKey('bootMode')
               ? json_['bootMode'] as core.String
@@ -8624,6 +8679,7 @@ class ChromeOsDevice {
         if (annotatedUser != null) 'annotatedUser': annotatedUser!,
         if (autoUpdateExpiration != null)
           'autoUpdateExpiration': autoUpdateExpiration!,
+        if (backlightInfo != null) 'backlightInfo': backlightInfo!,
         if (bootMode != null) 'bootMode': bootMode!,
         if (cpuInfo != null) 'cpuInfo': cpuInfo!,
         if (cpuStatusReports != null) 'cpuStatusReports': cpuStatusReports!,
@@ -9106,6 +9162,11 @@ class DirectoryChromeosdevicesCommand {
   /// - "CAPTURE_LOGS" : Capture the system logs of a kiosk device. The logs can
   /// be downloaded from the downloadUrl link present in `deviceFiles` field of
   /// [chromeosdevices](https://developers.google.com/admin-sdk/directory/reference/rest/v1/chromeosdevices)
+  /// - "FETCH_SUPPORT_PACKET" : Fetch support packet from a device remotely.
+  /// Support packet is a zip archive that contains various system logs and
+  /// debug data from a ChromeOS device. The support packet can be downloaded
+  /// from the downloadURL link present in the `deviceFiles` field of
+  /// \[`chromeosdevices`\](https://developers.google.com/admin-sdk/directory/reference/rest/v1/chromeosdevices)
   core.String? type;
 
   DirectoryChromeosdevicesCommand({
@@ -9234,6 +9295,11 @@ class DirectoryChromeosdevicesIssueCommandRequest {
   /// - "CAPTURE_LOGS" : Capture the system logs of a kiosk device. The logs can
   /// be downloaded from the downloadUrl link present in `deviceFiles` field of
   /// [chromeosdevices](https://developers.google.com/admin-sdk/directory/reference/rest/v1/chromeosdevices)
+  /// - "FETCH_SUPPORT_PACKET" : Fetch support packet from a device remotely.
+  /// Support packet is a zip archive that contains various system logs and
+  /// debug data from a ChromeOS device. The support packet can be downloaded
+  /// from the downloadURL link present in the `deviceFiles` field of
+  /// \[`chromeosdevices`\](https://developers.google.com/admin-sdk/directory/reference/rest/v1/chromeosdevices)
   core.String? commandType;
 
   /// The payload for the command, provide it only if command supports it.
@@ -9247,7 +9313,21 @@ class DirectoryChromeosdevicesIssueCommandRequest {
   /// session for an active device, set `ackedUserPresence` to `true`. *
   /// `REBOOT`: Payload is a stringified JSON object in the form: {
   /// "user_session_delay_seconds": 300 }. The delay has to be in the range \[0,
-  /// 300\].
+  /// 300\]. * `FETCH_SUPPORT_PACKET`: Payload is optionally a stringified JSON
+  /// object in the form: {"supportPacketDetails":{ "issueCaseId":
+  /// optional_support_case_id_string, "issueDescription":
+  /// optional_issue_description_string, "requestedDataCollectors": \[\]}} The
+  /// list of available `data_collector_enums` are as following: Chrome System
+  /// Information (1), Crash IDs (2), Memory Details (3), UI Hierarchy (4),
+  /// Additional ChromeOS Platform Logs (5), Device Event (6), Intel WiFi NICs
+  /// Debug Dump (7), Touch Events (8), Lacros (9), Lacros System Information
+  /// (10), ChromeOS Flex Logs (11), DBus Details (12), ChromeOS Network Routes
+  /// (13), ChromeOS Shill (Connection Manager) Logs (14), Policies (15),
+  /// ChromeOS System State and Logs (16), ChromeOS System Logs (17), ChromeOS
+  /// Chrome User Logs (18), ChromeOS Bluetooth (19), ChromeOS Connected Input
+  /// Devices (20), ChromeOS Traffic Counters (21), ChromeOS Virtual Keyboard
+  /// (22), ChromeOS Network Health (23). See more details in
+  /// [help article](https://support.google.com/chrome/a?p=remote-log).
   core.String? payload;
 
   DirectoryChromeosdevicesIssueCommandRequest({

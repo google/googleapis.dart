@@ -1411,6 +1411,33 @@ void checkCreateGitLabConnectedRepositoryRequest(
   buildCounterCreateGitLabConnectedRepositoryRequest--;
 }
 
+core.int buildCounterDefaultServiceAccount = 0;
+api.DefaultServiceAccount buildDefaultServiceAccount() {
+  final o = api.DefaultServiceAccount();
+  buildCounterDefaultServiceAccount++;
+  if (buildCounterDefaultServiceAccount < 3) {
+    o.name = 'foo';
+    o.serviceAccountEmail = 'foo';
+  }
+  buildCounterDefaultServiceAccount--;
+  return o;
+}
+
+void checkDefaultServiceAccount(api.DefaultServiceAccount o) {
+  buildCounterDefaultServiceAccount++;
+  if (buildCounterDefaultServiceAccount < 3) {
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.serviceAccountEmail!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterDefaultServiceAccount--;
+}
+
 core.int buildCounterEmpty = 0;
 api.Empty buildEmpty() {
   final o = api.Empty();
@@ -4076,6 +4103,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-DefaultServiceAccount', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDefaultServiceAccount();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DefaultServiceAccount.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkDefaultServiceAccount(od);
+    });
+  });
+
   unittest.group('obj-schema-Empty', () {
     unittest.test('to-json--from-json', () async {
       final o = buildEmpty();
@@ -5745,6 +5782,61 @@ void main() {
       final response = await res.patch(arg_request, arg_name,
           updateMask: arg_updateMask, $fields: arg_$fields);
       checkOperation(response as api.Operation);
+    });
+  });
+
+  unittest.group('resource-ProjectsLocationsResource', () {
+    unittest.test('method--getDefaultServiceAccount', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudBuildApi(mock).projects.locations;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildDefaultServiceAccount());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.getDefaultServiceAccount(arg_name, $fields: arg_$fields);
+      checkDefaultServiceAccount(response as api.DefaultServiceAccount);
     });
   });
 

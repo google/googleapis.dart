@@ -4721,6 +4721,22 @@ class BatchCreateSessionsResponse {
 
 /// The request for BatchWrite.
 class BatchWriteRequest {
+  /// When `exclude_txn_from_change_streams` is set to `true`: * Mutations from
+  /// all transactions in this batch write operation will not be recorded in
+  /// change streams with DDL option `allow_txn_exclusion=true` that are
+  /// tracking columns modified by these transactions.
+  ///
+  /// * Mutations from all transactions in this batch write operation will be
+  /// recorded in change streams with DDL option `allow_txn_exclusion=false or
+  /// not set` that are tracking columns modified by these transactions. When
+  /// `exclude_txn_from_change_streams` is set to `false` or not set, mutations
+  /// from all transactions in this batch write operation will be recorded in
+  /// all change streams that are tracking columns modified by these
+  /// transactions.
+  ///
+  /// Optional.
+  core.bool? excludeTxnFromChangeStreams;
+
   /// The groups of mutations to be applied.
   ///
   /// Required.
@@ -4730,12 +4746,17 @@ class BatchWriteRequest {
   RequestOptions? requestOptions;
 
   BatchWriteRequest({
+    this.excludeTxnFromChangeStreams,
     this.mutationGroups,
     this.requestOptions,
   });
 
   BatchWriteRequest.fromJson(core.Map json_)
       : this(
+          excludeTxnFromChangeStreams:
+              json_.containsKey('excludeTxnFromChangeStreams')
+                  ? json_['excludeTxnFromChangeStreams'] as core.bool
+                  : null,
           mutationGroups: json_.containsKey('mutationGroups')
               ? (json_['mutationGroups'] as core.List)
                   .map((value) => MutationGroup.fromJson(
@@ -4749,6 +4770,8 @@ class BatchWriteRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (excludeTxnFromChangeStreams != null)
+          'excludeTxnFromChangeStreams': excludeTxnFromChangeStreams!,
         if (mutationGroups != null) 'mutationGroups': mutationGroups!,
         if (requestOptions != null) 'requestOptions': requestOptions!,
       };
@@ -9891,6 +9914,17 @@ class Session {
   /// for more information on and examples of labels.
   core.Map<core.String, core.String>? labels;
 
+  /// If true, specifies a multiplexed session.
+  ///
+  /// A multiplexed session may be used for multiple, concurrent read-only
+  /// operations but can not be used for read-write transactions, partitioned
+  /// reads, or partitioned queries. Multiplexed sessions can be created via
+  /// CreateSession but not via BatchCreateSessions. Multiplexed sessions may
+  /// not be deleted nor listed.
+  ///
+  /// Optional.
+  core.bool? multiplexed;
+
   /// The name of the session.
   ///
   /// This is always system-assigned.
@@ -9903,6 +9937,7 @@ class Session {
     this.createTime,
     this.creatorRole,
     this.labels,
+    this.multiplexed,
     this.name,
   });
 
@@ -9925,6 +9960,9 @@ class Session {
                   ),
                 )
               : null,
+          multiplexed: json_.containsKey('multiplexed')
+              ? json_['multiplexed'] as core.bool
+              : null,
           name: json_.containsKey('name') ? json_['name'] as core.String : null,
         );
 
@@ -9934,6 +9972,7 @@ class Session {
         if (createTime != null) 'createTime': createTime!,
         if (creatorRole != null) 'creatorRole': creatorRole!,
         if (labels != null) 'labels': labels!,
+        if (multiplexed != null) 'multiplexed': multiplexed!,
         if (name != null) 'name': name!,
       };
 }
@@ -10373,6 +10412,22 @@ class Transaction {
 /// good fit for large, database-wide, operations that are idempotent, such as
 /// deleting old rows from a very large table.
 class TransactionOptions {
+  /// When `exclude_txn_from_change_streams` is set to `true`: * Mutations from
+  /// this transaction will not be recorded in change streams with DDL option
+  /// `allow_txn_exclusion=true` that are tracking columns modified by these
+  /// transactions.
+  ///
+  /// * Mutations from this transaction will be recorded in change streams with
+  /// DDL option `allow_txn_exclusion=false or not set` that are tracking
+  /// columns modified by these transactions. When
+  /// `exclude_txn_from_change_streams` is set to `false` or not set, mutations
+  /// from this transaction will be recorded in all change streams that are
+  /// tracking columns modified by these transactions.
+  /// `exclude_txn_from_change_streams` may only be specified for read-write or
+  /// partitioned-dml transactions, otherwise the API will return an
+  /// `INVALID_ARGUMENT` error.
+  core.bool? excludeTxnFromChangeStreams;
+
   /// Partitioned DML transaction.
   ///
   /// Authorization to begin a Partitioned DML transaction requires
@@ -10395,6 +10450,7 @@ class TransactionOptions {
   ReadWrite? readWrite;
 
   TransactionOptions({
+    this.excludeTxnFromChangeStreams,
     this.partitionedDml,
     this.readOnly,
     this.readWrite,
@@ -10402,6 +10458,10 @@ class TransactionOptions {
 
   TransactionOptions.fromJson(core.Map json_)
       : this(
+          excludeTxnFromChangeStreams:
+              json_.containsKey('excludeTxnFromChangeStreams')
+                  ? json_['excludeTxnFromChangeStreams'] as core.bool
+                  : null,
           partitionedDml: json_.containsKey('partitionedDml')
               ? PartitionedDml.fromJson(json_['partitionedDml']
                   as core.Map<core.String, core.dynamic>)
@@ -10417,6 +10477,8 @@ class TransactionOptions {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (excludeTxnFromChangeStreams != null)
+          'excludeTxnFromChangeStreams': excludeTxnFromChangeStreams!,
         if (partitionedDml != null) 'partitionedDml': partitionedDml!,
         if (readOnly != null) 'readOnly': readOnly!,
         if (readWrite != null) 'readWrite': readWrite!,

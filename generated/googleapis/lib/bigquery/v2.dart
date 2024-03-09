@@ -4845,6 +4845,13 @@ class Dataset {
   /// Output only.
   core.String? lastModifiedTime;
 
+  /// Metadata about the LinkedDataset.
+  ///
+  /// Filled out when the dataset type is LINKED.
+  ///
+  /// Output only.
+  LinkedDatasetMetadata? linkedDatasetMetadata;
+
   /// The source dataset reference when the dataset is of type LINKED.
   ///
   /// For all other dataset types it is not set. This field cannot be updated
@@ -4928,6 +4935,7 @@ class Dataset {
     this.kind,
     this.labels,
     this.lastModifiedTime,
+    this.linkedDatasetMetadata,
     this.linkedDatasetSource,
     this.location,
     this.maxTimeTravelHours,
@@ -5003,6 +5011,10 @@ class Dataset {
           lastModifiedTime: json_.containsKey('lastModifiedTime')
               ? json_['lastModifiedTime'] as core.String
               : null,
+          linkedDatasetMetadata: json_.containsKey('linkedDatasetMetadata')
+              ? LinkedDatasetMetadata.fromJson(json_['linkedDatasetMetadata']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           linkedDatasetSource: json_.containsKey('linkedDatasetSource')
               ? LinkedDatasetSource.fromJson(json_['linkedDatasetSource']
                   as core.Map<core.String, core.dynamic>)
@@ -5057,6 +5069,8 @@ class Dataset {
         if (kind != null) 'kind': kind!,
         if (labels != null) 'labels': labels!,
         if (lastModifiedTime != null) 'lastModifiedTime': lastModifiedTime!,
+        if (linkedDatasetMetadata != null)
+          'linkedDatasetMetadata': linkedDatasetMetadata!,
         if (linkedDatasetSource != null)
           'linkedDatasetSource': linkedDatasetSource!,
         if (location != null) 'location': location!,
@@ -10693,6 +10707,36 @@ class JsonOptions {
       };
 }
 
+/// Metadata about the Linked Dataset.
+class LinkedDatasetMetadata {
+  /// Specifies whether Linked Dataset is currently in a linked state or not.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "LINK_STATE_UNSPECIFIED" : The default value. Default to the LINKED
+  /// state.
+  /// - "LINKED" : Normal Linked Dataset state. Data is queryable via the Linked
+  /// Dataset.
+  /// - "UNLINKED" : Data publisher or owner has unlinked this Linked Dataset.
+  /// It means you can no longer query or see the data in the Linked Dataset.
+  core.String? linkState;
+
+  LinkedDatasetMetadata({
+    this.linkState,
+  });
+
+  LinkedDatasetMetadata.fromJson(core.Map json_)
+      : this(
+          linkState: json_.containsKey('linkState')
+              ? json_['linkState'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (linkState != null) 'linkState': linkState!,
+      };
+}
+
 /// A dataset source type which refers to another BigQuery dataset.
 class LinkedDatasetSource {
   /// The source dataset reference contains project numbers and not project ids.
@@ -11796,6 +11840,58 @@ class ParquetOptions {
         if (enableListInference != null)
           'enableListInference': enableListInference!,
         if (enumAsString != null) 'enumAsString': enumAsString!,
+      };
+}
+
+/// The partitioning column information.
+class PartitionedColumn {
+  /// The name of the partition column.
+  ///
+  /// Output only.
+  core.String? field;
+
+  PartitionedColumn({
+    this.field,
+  });
+
+  PartitionedColumn.fromJson(core.Map json_)
+      : this(
+          field:
+              json_.containsKey('field') ? json_['field'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (field != null) 'field': field!,
+      };
+}
+
+/// The partitioning information, which includes managed table and external
+/// table partition information.
+class PartitioningDefinition {
+  /// Details about each partitioning column.
+  ///
+  /// BigQuery native tables only support 1 partitioning column. Other table
+  /// types may support 0, 1 or more partitioning columns.
+  ///
+  /// Output only.
+  core.List<PartitionedColumn>? partitionedColumn;
+
+  PartitioningDefinition({
+    this.partitionedColumn,
+  });
+
+  PartitioningDefinition.fromJson(core.Map json_)
+      : this(
+          partitionedColumn: json_.containsKey('partitionedColumn')
+              ? (json_['partitionedColumn'] as core.List)
+                  .map((value) => PartitionedColumn.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (partitionedColumn != null) 'partitionedColumn': partitionedColumn!,
       };
 }
 
@@ -14403,14 +14499,15 @@ class SparkStatistics {
   /// Output only.
   core.Map<core.String, core.String>? endpoints;
 
-  /// The Google Cloud Storage bucket that is used as the default filesystem by
+  /// The Google Cloud Storage bucket that is used as the default file system by
   /// the Spark application.
   ///
-  /// This fields is only filled when the Spark procedure uses the INVOKER
-  /// security mode. It is inferred from the system variable
-  /// @@spark_proc_properties.staging_bucket if it is provided. Otherwise,
-  /// BigQuery creates a default staging bucket for the job and returns the
-  /// bucket name in this field. Example: * `gs://[bucket_name]`
+  /// This field is only filled when the Spark procedure uses the invoker
+  /// security mode. The `gcsStagingBucket` bucket is inferred from the
+  /// `@@spark_proc_properties.staging_bucket` system variable (if it is
+  /// provided). Otherwise, BigQuery creates a default staging bucket for the
+  /// job and returns the bucket name in this field. Example: *
+  /// `gs://[bucket_name]`
   ///
   /// Output only.
   core.String? gcsStagingBucket;
@@ -14418,14 +14515,13 @@ class SparkStatistics {
   /// The Cloud KMS encryption key that is used to protect the resources created
   /// by the Spark job.
   ///
-  /// If the Spark procedure uses DEFINER security mode, the Cloud KMS key is
-  /// inferred from the Spark connection associated with the procedure if it is
-  /// provided. Otherwise the key is inferred from the default key of the Spark
-  /// connection's project if the CMEK organization policy is enforced. If the
-  /// Spark procedure uses INVOKER security mode, the Cloud KMS encryption key
-  /// is inferred from the system variable @@spark_proc_properties.kms_key_name
-  /// if it is provided. Otherwise, the key is inferred fromt he default key of
-  /// the BigQuery job's project if the CMEK organization policy is enforced.
+  /// If the Spark procedure uses the invoker security mode, the Cloud KMS
+  /// encryption key is either inferred from the provided system variable,
+  /// `@@spark_proc_properties.kms_key_name`, or the default key of the BigQuery
+  /// job's project (if the CMEK organization policy is enforced). Otherwise,
+  /// the Cloud KMS key is either inferred from the Spark connection associated
+  /// with the procedure (if it is provided), or from the default key of the
+  /// Spark connection's project if the CMEK organization policy is enforced.
   /// Example: *
   /// `projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]`
   ///
@@ -15111,6 +15207,13 @@ class Table {
   /// Output only.
   core.String? numTotalPhysicalBytes;
 
+  /// The partition information for all table formats, including managed
+  /// partitioned tables, hive partitioned tables, and iceberg partitioned
+  /// tables.
+  ///
+  /// Output only.
+  PartitioningDefinition? partitionDefinition;
+
   /// If specified, configures range partitioning for this table.
   RangePartitioning? rangePartitioning;
 
@@ -15235,6 +15338,7 @@ class Table {
     this.numTimeTravelPhysicalBytes,
     this.numTotalLogicalBytes,
     this.numTotalPhysicalBytes,
+    this.partitionDefinition,
     this.rangePartitioning,
     this.replicas,
     this.requirePartitionFilter,
@@ -15364,6 +15468,10 @@ class Table {
           numTotalPhysicalBytes: json_.containsKey('numTotalPhysicalBytes')
               ? json_['numTotalPhysicalBytes'] as core.String
               : null,
+          partitionDefinition: json_.containsKey('partitionDefinition')
+              ? PartitioningDefinition.fromJson(json_['partitionDefinition']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           rangePartitioning: json_.containsKey('rangePartitioning')
               ? RangePartitioning.fromJson(json_['rangePartitioning']
                   as core.Map<core.String, core.dynamic>)
@@ -15470,6 +15578,8 @@ class Table {
           'numTotalLogicalBytes': numTotalLogicalBytes!,
         if (numTotalPhysicalBytes != null)
           'numTotalPhysicalBytes': numTotalPhysicalBytes!,
+        if (partitionDefinition != null)
+          'partitionDefinition': partitionDefinition!,
         if (rangePartitioning != null) 'rangePartitioning': rangePartitioning!,
         if (replicas != null) 'replicas': replicas!,
         if (requirePartitionFilter != null)
@@ -15977,7 +16087,7 @@ class TableFieldSchemaPolicyTags {
 class TableFieldSchemaRangeElementType {
   /// The type of a field element.
   ///
-  /// See TableFieldSchema.type.
+  /// For more information, see TableFieldSchema.type.
   ///
   /// Required.
   core.String? type;
@@ -16115,8 +16225,9 @@ class TableFieldSchema {
   ///
   /// Possible values include: * STRING * BYTES * INTEGER (or INT64) * FLOAT (or
   /// FLOAT64) * BOOLEAN (or BOOL) * TIMESTAMP * DATE * TIME * DATETIME *
-  /// GEOGRAPHY * NUMERIC * BIGNUMERIC * JSON * RECORD (or STRUCT) Use of
-  /// RECORD/STRUCT indicates that the field contains a nested schema.
+  /// GEOGRAPHY * NUMERIC * BIGNUMERIC * JSON * RECORD (or STRUCT) * RANGE
+  /// (\[Preview\](/products/#product-launch-stages)) Use of RECORD/STRUCT
+  /// indicates that the field contains a nested schema.
   ///
   /// Required.
   core.String? type;

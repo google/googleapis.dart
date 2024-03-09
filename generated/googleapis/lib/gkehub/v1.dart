@@ -5992,12 +5992,16 @@ class IdentityServiceAuthMethod {
   /// Proxy server address to use for auth method.
   core.String? proxy;
 
+  /// SAML specific configuration.
+  IdentityServiceSamlConfig? samlConfig;
+
   IdentityServiceAuthMethod({
     this.azureadConfig,
     this.googleConfig,
     this.name,
     this.oidcConfig,
     this.proxy,
+    this.samlConfig,
   });
 
   IdentityServiceAuthMethod.fromJson(core.Map json_)
@@ -6017,6 +6021,10 @@ class IdentityServiceAuthMethod {
               : null,
           proxy:
               json_.containsKey('proxy') ? json_['proxy'] as core.String : null,
+          samlConfig: json_.containsKey('samlConfig')
+              ? IdentityServiceSamlConfig.fromJson(
+                  json_['samlConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6025,6 +6033,7 @@ class IdentityServiceAuthMethod {
         if (name != null) 'name': name!,
         if (oidcConfig != null) 'oidcConfig': oidcConfig!,
         if (proxy != null) 'proxy': proxy!,
+        if (samlConfig != null) 'samlConfig': samlConfig!,
       };
 }
 
@@ -6051,6 +6060,11 @@ class IdentityServiceAzureADConfig {
         convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
+  /// Format of the AzureAD groups that the client wants for auth.
+  ///
+  /// Optional.
+  core.String? groupFormat;
+
   /// The redirect URL that kubectl uses for authorization.
   core.String? kubectlRedirectUri;
 
@@ -6059,12 +6073,19 @@ class IdentityServiceAzureADConfig {
   /// Supported values are or for accounts belonging to a specific tenant.
   core.String? tenant;
 
+  /// Claim in the AzureAD ID Token that holds the user details.
+  ///
+  /// Optional.
+  core.String? userClaim;
+
   IdentityServiceAzureADConfig({
     this.clientId,
     this.clientSecret,
     this.encryptedClientSecret,
+    this.groupFormat,
     this.kubectlRedirectUri,
     this.tenant,
+    this.userClaim,
   });
 
   IdentityServiceAzureADConfig.fromJson(core.Map json_)
@@ -6078,11 +6099,17 @@ class IdentityServiceAzureADConfig {
           encryptedClientSecret: json_.containsKey('encryptedClientSecret')
               ? json_['encryptedClientSecret'] as core.String
               : null,
+          groupFormat: json_.containsKey('groupFormat')
+              ? json_['groupFormat'] as core.String
+              : null,
           kubectlRedirectUri: json_.containsKey('kubectlRedirectUri')
               ? json_['kubectlRedirectUri'] as core.String
               : null,
           tenant: json_.containsKey('tenant')
               ? json_['tenant'] as core.String
+              : null,
+          userClaim: json_.containsKey('userClaim')
+              ? json_['userClaim'] as core.String
               : null,
         );
 
@@ -6091,9 +6118,11 @@ class IdentityServiceAzureADConfig {
         if (clientSecret != null) 'clientSecret': clientSecret!,
         if (encryptedClientSecret != null)
           'encryptedClientSecret': encryptedClientSecret!,
+        if (groupFormat != null) 'groupFormat': groupFormat!,
         if (kubectlRedirectUri != null)
           'kubectlRedirectUri': kubectlRedirectUri!,
         if (tenant != null) 'tenant': tenant!,
+        if (userClaim != null) 'userClaim': userClaim!,
       };
 }
 
@@ -6337,6 +6366,126 @@ class IdentityServiceOidcConfig {
           'kubectlRedirectUri': kubectlRedirectUri!,
         if (scopes != null) 'scopes': scopes!,
         if (userClaim != null) 'userClaim': userClaim!,
+        if (userPrefix != null) 'userPrefix': userPrefix!,
+      };
+}
+
+/// Configuration for the SAML Auth flow.
+class IdentityServiceSamlConfig {
+  /// The mapping of additional user attributes like nickname, birthday and
+  /// address etc..
+  ///
+  /// `key` is the name of this additional attribute. `value` is a string
+  /// presenting as CEL(common expression language, go/cel) used for getting the
+  /// value from the resources. Take nickname as an example, in this case, `key`
+  /// is "attribute.nickname" and `value` is "assertion.nickname".
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? attributeMapping;
+
+  /// Prefix to prepend to group name.
+  ///
+  /// Optional.
+  core.String? groupPrefix;
+
+  /// The SAML attribute to read groups from.
+  ///
+  /// This value is expected to be a string and will be passed along as-is (with
+  /// the option of being prefixed by the `group_prefix`).
+  ///
+  /// Optional.
+  core.String? groupsAttribute;
+
+  /// The list of IdP certificates to validate the SAML response against.
+  ///
+  /// Required.
+  core.List<core.String>? identityProviderCertificates;
+
+  /// The entity ID of the SAML IdP.
+  ///
+  /// Required.
+  core.String? identityProviderId;
+
+  /// The URI where the SAML IdP exposes the SSO service.
+  ///
+  /// Required.
+  core.String? identityProviderSsoUri;
+
+  /// The SAML attribute to read username from.
+  ///
+  /// If unspecified, the username will be read from the NameID element of the
+  /// assertion in SAML response. This value is expected to be a string and will
+  /// be passed along as-is (with the option of being prefixed by the
+  /// `user_prefix`).
+  ///
+  /// Optional.
+  core.String? userAttribute;
+
+  /// Prefix to prepend to user name.
+  ///
+  /// Optional.
+  core.String? userPrefix;
+
+  IdentityServiceSamlConfig({
+    this.attributeMapping,
+    this.groupPrefix,
+    this.groupsAttribute,
+    this.identityProviderCertificates,
+    this.identityProviderId,
+    this.identityProviderSsoUri,
+    this.userAttribute,
+    this.userPrefix,
+  });
+
+  IdentityServiceSamlConfig.fromJson(core.Map json_)
+      : this(
+          attributeMapping: json_.containsKey('attributeMapping')
+              ? (json_['attributeMapping']
+                      as core.Map<core.String, core.dynamic>)
+                  .map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          groupPrefix: json_.containsKey('groupPrefix')
+              ? json_['groupPrefix'] as core.String
+              : null,
+          groupsAttribute: json_.containsKey('groupsAttribute')
+              ? json_['groupsAttribute'] as core.String
+              : null,
+          identityProviderCertificates:
+              json_.containsKey('identityProviderCertificates')
+                  ? (json_['identityProviderCertificates'] as core.List)
+                      .map((value) => value as core.String)
+                      .toList()
+                  : null,
+          identityProviderId: json_.containsKey('identityProviderId')
+              ? json_['identityProviderId'] as core.String
+              : null,
+          identityProviderSsoUri: json_.containsKey('identityProviderSsoUri')
+              ? json_['identityProviderSsoUri'] as core.String
+              : null,
+          userAttribute: json_.containsKey('userAttribute')
+              ? json_['userAttribute'] as core.String
+              : null,
+          userPrefix: json_.containsKey('userPrefix')
+              ? json_['userPrefix'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attributeMapping != null) 'attributeMapping': attributeMapping!,
+        if (groupPrefix != null) 'groupPrefix': groupPrefix!,
+        if (groupsAttribute != null) 'groupsAttribute': groupsAttribute!,
+        if (identityProviderCertificates != null)
+          'identityProviderCertificates': identityProviderCertificates!,
+        if (identityProviderId != null)
+          'identityProviderId': identityProviderId!,
+        if (identityProviderSsoUri != null)
+          'identityProviderSsoUri': identityProviderSsoUri!,
+        if (userAttribute != null) 'userAttribute': userAttribute!,
         if (userPrefix != null) 'userPrefix': userPrefix!,
       };
 }

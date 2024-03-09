@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240227",
+    "revision": "20240307",
     "rootUrl": "https://blogger.googleapis.com/",
     "servicePath": "",
     "title": "Blogger API",

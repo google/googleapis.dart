@@ -18025,6 +18025,101 @@ class ProjectsLocationsPipelineJobsResource {
   ProjectsLocationsPipelineJobsResource(commons.ApiRequester client)
       : _requester = client;
 
+  /// Batch cancel PipelineJobs.
+  ///
+  /// Firstly the server will check if all the jobs are in non-terminal states,
+  /// and skip the jobs that are already terminated. If the operation failed,
+  /// none of the pipeline jobs are cancelled. The server will poll the states
+  /// of all the pipeline jobs periodically to check the cancellation status.
+  /// This operation will return an LRO.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the PipelineJobs' parent resource.
+  /// Format: `projects/{project}/locations/{location}`
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> batchCancel(
+    GoogleCloudAiplatformV1BatchCancelPipelineJobsRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/pipelineJobs:batchCancel';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Batch deletes PipelineJobs The Operation is atomic.
+  ///
+  /// If it fails, none of the PipelineJobs are deleted. If it succeeds, all of
+  /// the PipelineJobs are deleted.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the PipelineJobs' parent resource.
+  /// Format: `projects/{project}/locations/{location}`
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> batchDelete(
+    GoogleCloudAiplatformV1BatchDeletePipelineJobsRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/pipelineJobs:batchDelete';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Cancels a PipelineJob.
   ///
   /// Starts asynchronous cancellation on the PipelineJob. The server makes a
@@ -24971,6 +25066,34 @@ class GoogleCloudAiplatformV1AvroSource {
       };
 }
 
+/// Request message for PipelineService.BatchCancelPipelineJobs.
+class GoogleCloudAiplatformV1BatchCancelPipelineJobsRequest {
+  /// The names of the PipelineJobs to cancel.
+  ///
+  /// A maximum of 32 PipelineJobs can be cancelled in a batch. Format:
+  /// `projects/{project}/locations/{location}/pipelineJobs/{pipelineJob}`
+  ///
+  /// Required.
+  core.List<core.String>? names;
+
+  GoogleCloudAiplatformV1BatchCancelPipelineJobsRequest({
+    this.names,
+  });
+
+  GoogleCloudAiplatformV1BatchCancelPipelineJobsRequest.fromJson(core.Map json_)
+      : this(
+          names: json_.containsKey('names')
+              ? (json_['names'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (names != null) 'names': names!,
+      };
+}
+
 /// Request message for FeaturestoreService.BatchCreateFeatures.
 class GoogleCloudAiplatformV1BatchCreateFeaturesRequest {
   /// The request message specifying the Features to create.
@@ -25169,6 +25292,34 @@ class GoogleCloudAiplatformV1BatchDedicatedResources {
         if (maxReplicaCount != null) 'maxReplicaCount': maxReplicaCount!,
         if (startingReplicaCount != null)
           'startingReplicaCount': startingReplicaCount!,
+      };
+}
+
+/// Request message for PipelineService.BatchDeletePipelineJobs.
+class GoogleCloudAiplatformV1BatchDeletePipelineJobsRequest {
+  /// The names of the PipelineJobs to delete.
+  ///
+  /// A maximum of 32 PipelineJobs can be deleted in a batch. Format:
+  /// `projects/{project}/locations/{location}/pipelineJobs/{pipelineJob}`
+  ///
+  /// Required.
+  core.List<core.String>? names;
+
+  GoogleCloudAiplatformV1BatchDeletePipelineJobsRequest({
+    this.names,
+  });
+
+  GoogleCloudAiplatformV1BatchDeletePipelineJobsRequest.fromJson(core.Map json_)
+      : this(
+          names: json_.containsKey('names')
+              ? (json_['names'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (names != null) 'names': names!,
       };
 }
 
@@ -28437,7 +28588,7 @@ class GoogleCloudAiplatformV1DatasetVersion {
 
   /// Additional information about the DatasetVersion.
   ///
-  /// Required.
+  /// Required. Output only.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -34872,6 +35023,30 @@ class GoogleCloudAiplatformV1GenerationConfig {
       };
 }
 
+/// Contains information about the source of the models generated from
+/// Generative AI Studio.
+class GoogleCloudAiplatformV1GenieSource {
+  /// The public base model URI.
+  ///
+  /// Required.
+  core.String? baseModelUri;
+
+  GoogleCloudAiplatformV1GenieSource({
+    this.baseModelUri,
+  });
+
+  GoogleCloudAiplatformV1GenieSource.fromJson(core.Map json_)
+      : this(
+          baseModelUri: json_.containsKey('baseModelUri')
+              ? json_['baseModelUri'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (baseModelUri != null) 'baseModelUri': baseModelUri!,
+      };
+}
+
 /// Grounding attribution.
 class GoogleCloudAiplatformV1GroundingAttribution {
   /// Confidence score of the attribution.
@@ -39188,6 +39363,14 @@ class GoogleCloudAiplatformV1Model {
   /// Immutable.
   core.String? artifactUri;
 
+  /// User input field to specify the base model source.
+  ///
+  /// Currently it only supports specifing the Model Garden models and Genie
+  /// models.
+  ///
+  /// Optional.
+  GoogleCloudAiplatformV1ModelBaseModelSource? baseModelSource;
+
   /// Input only.
   ///
   /// The specification of the container that is to be used when deploying this
@@ -39428,6 +39611,7 @@ class GoogleCloudAiplatformV1Model {
 
   GoogleCloudAiplatformV1Model({
     this.artifactUri,
+    this.baseModelSource,
     this.containerSpec,
     this.createTime,
     this.dataStats,
@@ -39463,6 +39647,11 @@ class GoogleCloudAiplatformV1Model {
       : this(
           artifactUri: json_.containsKey('artifactUri')
               ? json_['artifactUri'] as core.String
+              : null,
+          baseModelSource: json_.containsKey('baseModelSource')
+              ? GoogleCloudAiplatformV1ModelBaseModelSource.fromJson(
+                  json_['baseModelSource']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           containerSpec: json_.containsKey('containerSpec')
               ? GoogleCloudAiplatformV1ModelContainerSpec.fromJson(
@@ -39585,6 +39774,7 @@ class GoogleCloudAiplatformV1Model {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (artifactUri != null) 'artifactUri': artifactUri!,
+        if (baseModelSource != null) 'baseModelSource': baseModelSource!,
         if (containerSpec != null) 'containerSpec': containerSpec!,
         if (createTime != null) 'createTime': createTime!,
         if (dataStats != null) 'dataStats': dataStats!,
@@ -39620,6 +39810,41 @@ class GoogleCloudAiplatformV1Model {
           'versionDescription': versionDescription!,
         if (versionId != null) 'versionId': versionId!,
         if (versionUpdateTime != null) 'versionUpdateTime': versionUpdateTime!,
+      };
+}
+
+/// User input field to specify the base model source.
+///
+/// Currently it only supports specifing the Model Garden models and Genie
+/// models.
+class GoogleCloudAiplatformV1ModelBaseModelSource {
+  /// Information about the base model of Genie models.
+  GoogleCloudAiplatformV1GenieSource? genieSource;
+
+  /// Source information of Model Garden models.
+  GoogleCloudAiplatformV1ModelGardenSource? modelGardenSource;
+
+  GoogleCloudAiplatformV1ModelBaseModelSource({
+    this.genieSource,
+    this.modelGardenSource,
+  });
+
+  GoogleCloudAiplatformV1ModelBaseModelSource.fromJson(core.Map json_)
+      : this(
+          genieSource: json_.containsKey('genieSource')
+              ? GoogleCloudAiplatformV1GenieSource.fromJson(
+                  json_['genieSource'] as core.Map<core.String, core.dynamic>)
+              : null,
+          modelGardenSource: json_.containsKey('modelGardenSource')
+              ? GoogleCloudAiplatformV1ModelGardenSource.fromJson(
+                  json_['modelGardenSource']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (genieSource != null) 'genieSource': genieSource!,
+        if (modelGardenSource != null) 'modelGardenSource': modelGardenSource!,
       };
 }
 
@@ -41098,6 +41323,30 @@ class GoogleCloudAiplatformV1ModelExportFormat {
         if (exportableContents != null)
           'exportableContents': exportableContents!,
         if (id != null) 'id': id!,
+      };
+}
+
+/// Contains information about the source of the models generated from Model
+/// Garden.
+class GoogleCloudAiplatformV1ModelGardenSource {
+  /// The model garden source model resource name.
+  ///
+  /// Required.
+  core.String? publicModelName;
+
+  GoogleCloudAiplatformV1ModelGardenSource({
+    this.publicModelName,
+  });
+
+  GoogleCloudAiplatformV1ModelGardenSource.fromJson(core.Map json_)
+      : this(
+          publicModelName: json_.containsKey('publicModelName')
+              ? json_['publicModelName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (publicModelName != null) 'publicModelName': publicModelName!,
       };
 }
 

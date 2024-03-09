@@ -3743,6 +3743,14 @@ class ConfigVariableTemplate {
   /// To be populated if `ValueType` is `ENUM`
   core.List<EnumOption>? enumOptions;
 
+  /// enum source denotes the source of api to fill the enum options
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "ENUM_SOURCE_UNSPECIFIED" : Api type unspecified.
+  /// - "EVENT_TYPES_API" : list event types.
+  core.String? enumSource;
+
   /// Indicates if current template is part of advanced settings
   core.bool? isAdvanced;
 
@@ -3802,6 +3810,7 @@ class ConfigVariableTemplate {
     this.description,
     this.displayName,
     this.enumOptions,
+    this.enumSource,
     this.isAdvanced,
     this.key,
     this.locationType,
@@ -3830,6 +3839,9 @@ class ConfigVariableTemplate {
                   .map((value) => EnumOption.fromJson(
                       value as core.Map<core.String, core.dynamic>))
                   .toList()
+              : null,
+          enumSource: json_.containsKey('enumSource')
+              ? json_['enumSource'] as core.String
               : null,
           isAdvanced: json_.containsKey('isAdvanced')
               ? json_['isAdvanced'] as core.bool
@@ -3865,6 +3877,7 @@ class ConfigVariableTemplate {
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
         if (enumOptions != null) 'enumOptions': enumOptions!,
+        if (enumSource != null) 'enumSource': enumSource!,
         if (isAdvanced != null) 'isAdvanced': isAdvanced!,
         if (key != null) 'key': key!,
         if (locationType != null) 'locationType': locationType!,
@@ -5750,6 +5763,11 @@ class EventSubscription {
   /// Optional.
   core.String? subscriberLink;
 
+  /// Configuration for configuring the trigger
+  ///
+  /// Optional.
+  core.List<ConfigVariable>? triggerConfigVariables;
+
   /// Updated time.
   ///
   /// Output only.
@@ -5764,6 +5782,7 @@ class EventSubscription {
     this.status,
     this.subscriber,
     this.subscriberLink,
+    this.triggerConfigVariables,
     this.updateTime,
   });
 
@@ -5794,6 +5813,12 @@ class EventSubscription {
           subscriberLink: json_.containsKey('subscriberLink')
               ? json_['subscriberLink'] as core.String
               : null,
+          triggerConfigVariables: json_.containsKey('triggerConfigVariables')
+              ? (json_['triggerConfigVariables'] as core.List)
+                  .map((value) => ConfigVariable.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
           updateTime: json_.containsKey('updateTime')
               ? json_['updateTime'] as core.String
               : null,
@@ -5808,6 +5833,8 @@ class EventSubscription {
         if (status != null) 'status': status!,
         if (subscriber != null) 'subscriber': subscriber!,
         if (subscriberLink != null) 'subscriberLink': subscriberLink!,
+        if (triggerConfigVariables != null)
+          'triggerConfigVariables': triggerConfigVariables!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
 }
@@ -6038,11 +6065,6 @@ class EventingConfig {
   /// Registration endpoint for auto registration.
   DestinationConfig? registrationDestinationConfig;
 
-  /// Additional eventing related field values
-  ///
-  /// Optional.
-  core.List<ConfigVariable>? triggerConfigVariables;
-
   EventingConfig({
     this.additionalVariables,
     this.authConfig,
@@ -6053,7 +6075,6 @@ class EventingConfig {
     this.privateConnectivityEnabled,
     this.proxyDestinationConfig,
     this.registrationDestinationConfig,
-    this.triggerConfigVariables,
   });
 
   EventingConfig.fromJson(core.Map json_)
@@ -6097,12 +6118,6 @@ class EventingConfig {
                       json_['registrationDestinationConfig']
                           as core.Map<core.String, core.dynamic>)
                   : null,
-          triggerConfigVariables: json_.containsKey('triggerConfigVariables')
-              ? (json_['triggerConfigVariables'] as core.List)
-                  .map((value) => ConfigVariable.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList()
-              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6121,8 +6136,6 @@ class EventingConfig {
           'proxyDestinationConfig': proxyDestinationConfig!,
         if (registrationDestinationConfig != null)
           'registrationDestinationConfig': registrationDestinationConfig!,
-        if (triggerConfigVariables != null)
-          'triggerConfigVariables': triggerConfigVariables!,
       };
 }
 

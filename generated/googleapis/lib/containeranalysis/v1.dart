@@ -24,6 +24,11 @@
 /// Create an instance of [ContainerAnalysisApi] to access these resources:
 ///
 /// - [ProjectsResource]
+///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsNotesResource]
+///       - [ProjectsLocationsNotesOccurrencesResource]
+///     - [ProjectsLocationsOccurrencesResource]
+///     - [ProjectsLocationsResourcesResource]
 ///   - [ProjectsNotesResource]
 ///     - [ProjectsNotesOccurrencesResource]
 ///   - [ProjectsOccurrencesResource]
@@ -70,6 +75,8 @@ class ContainerAnalysisApi {
 class ProjectsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsResource get locations =>
+      ProjectsLocationsResource(_requester);
   ProjectsNotesResource get notes => ProjectsNotesResource(_requester);
   ProjectsOccurrencesResource get occurrences =>
       ProjectsOccurrencesResource(_requester);
@@ -77,6 +84,405 @@ class ProjectsResource {
       ProjectsResourcesResource(_requester);
 
   ProjectsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsLocationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsNotesResource get notes =>
+      ProjectsLocationsNotesResource(_requester);
+  ProjectsLocationsOccurrencesResource get occurrences =>
+      ProjectsLocationsOccurrencesResource(_requester);
+  ProjectsLocationsResourcesResource get resources =>
+      ProjectsLocationsResourcesResource(_requester);
+
+  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsLocationsNotesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsNotesOccurrencesResource get occurrences =>
+      ProjectsLocationsNotesOccurrencesResource(_requester);
+
+  ProjectsLocationsNotesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the specified note.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the note in the form of
+  /// `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/notes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Note].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Note> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Note.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists notes for the specified project.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the project to list notes for in the form
+  /// of `projects/[PROJECT_ID]`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - The filter expression.
+  ///
+  /// [pageSize] - Number of notes to return in the list. Must be positive. Max
+  /// allowed page size is 1000. If not specified, page size defaults to 20.
+  ///
+  /// [pageToken] - Token to provide to skip to a particular spot in the list.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListNotesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListNotesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/notes';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListNotesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsNotesOccurrencesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsNotesOccurrencesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists occurrences referencing the specified note.
+  ///
+  /// Provider projects can use this method to get all occurrences across
+  /// consumer projects referencing the specified note.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the note to list occurrences for in the
+  /// form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/notes/\[^/\]+$`.
+  ///
+  /// [filter] - The filter expression.
+  ///
+  /// [pageSize] - Number of occurrences to return in the list.
+  ///
+  /// [pageToken] - Token to provide to skip to a particular spot in the list.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListNoteOccurrencesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListNoteOccurrencesResponse> list(
+    core.String name, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/occurrences';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListNoteOccurrencesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsOccurrencesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsOccurrencesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the specified occurrence.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the occurrence in the form of
+  /// `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/occurrences/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Occurrence].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Occurrence> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Occurrence.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the note attached to the specified occurrence.
+  ///
+  /// Consumer projects can use this method to get a note that belongs to a
+  /// provider project.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the occurrence in the form of
+  /// `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/occurrences/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Note].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Note> getNotes(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/notes';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Note.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a summary of the number and severity of occurrences.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the project to get a vulnerability
+  /// summary for in the form of `projects/[PROJECT_ID]`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - The filter expression.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [VulnerabilityOccurrencesSummary].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<VulnerabilityOccurrencesSummary> getVulnerabilitySummary(
+    core.String parent, {
+    core.String? filter,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/occurrences:vulnerabilitySummary';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return VulnerabilityOccurrencesSummary.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists occurrences for the specified project.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the project to list occurrences for in
+  /// the form of `projects/[PROJECT_ID]`.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - The filter expression.
+  ///
+  /// [pageSize] - Number of occurrences to return in the list. Must be
+  /// positive. Max allowed page size is 1000. If not specified, page size
+  /// defaults to 20.
+  ///
+  /// [pageToken] - Token to provide to skip to a particular spot in the list.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListOccurrencesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListOccurrencesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/occurrences';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListOccurrencesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsResourcesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsResourcesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Generates an SBOM for the given resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the resource in the form of
+  /// `projects/[PROJECT_ID]/resources/[RESOURCE_URL]`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/resources/.*$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ExportSBOMResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ExportSBOMResponse> exportSBOM(
+    ExportSBOMRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':exportSBOM';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return ExportSBOMResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsNotesResource {
@@ -2079,6 +2485,7 @@ class ComplianceNote {
 
   /// A description about this compliance check.
   core.String? description;
+  core.String? impact;
 
   /// A rationale for the existence of this compliance check.
   core.String? rationale;
@@ -2105,6 +2512,7 @@ class ComplianceNote {
   ComplianceNote({
     this.cisBenchmark,
     this.description,
+    this.impact,
     this.rationale,
     this.remediation,
     this.scanInstructions,
@@ -2120,6 +2528,9 @@ class ComplianceNote {
               : null,
           description: json_.containsKey('description')
               ? json_['description'] as core.String
+              : null,
+          impact: json_.containsKey('impact')
+              ? json_['impact'] as core.String
               : null,
           rationale: json_.containsKey('rationale')
               ? json_['rationale'] as core.String
@@ -2143,6 +2554,7 @@ class ComplianceNote {
   core.Map<core.String, core.dynamic> toJson() => {
         if (cisBenchmark != null) 'cisBenchmark': cisBenchmark!,
         if (description != null) 'description': description!,
+        if (impact != null) 'impact': impact!,
         if (rationale != null) 'rationale': rationale!,
         if (remediation != null) 'remediation': remediation!,
         if (scanInstructions != null) 'scanInstructions': scanInstructions!,

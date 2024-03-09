@@ -869,6 +869,44 @@ class ProjectsLocationsResource {
       ProjectsLocationsWorkerPoolsResource(_requester);
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Returns the `DefaultServiceAccount` used by the project.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the `DefaultServiceAccount` to retrieve.
+  /// Format: `projects/{project}/locations/{location}/defaultServiceAccount`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/defaultServiceAccount$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DefaultServiceAccount].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DefaultServiceAccount> getDefaultServiceAccount(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return DefaultServiceAccount.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsBitbucketServerConfigsResource {
@@ -5542,6 +5580,46 @@ class CreateGitLabConnectedRepositoryRequest {
         if (gitlabConnectedRepository != null)
           'gitlabConnectedRepository': gitlabConnectedRepository!,
         if (parent != null) 'parent': parent!,
+      };
+}
+
+/// The default service account used for `Builds`.
+class DefaultServiceAccount {
+  /// Identifier.
+  ///
+  /// Format: \`projects/{project}/locations/{location}/defaultServiceAccount
+  core.String? name;
+
+  /// The email address of the service account identity that will be used for a
+  /// build by default.
+  ///
+  /// This is returned in the format
+  /// `projects/{project}/serviceAccounts/{service_account}` where
+  /// `{service_account}` could be the legacy Cloud Build SA, in the format
+  /// \[PROJECT_NUMBER\]@cloudbuild.gserviceaccount.com or the Compute SA, in
+  /// the format \[PROJECT_NUMBER\]-compute@developer.gserviceaccount.com. If no
+  /// service account will be used by default, this will be empty.
+  ///
+  /// Output only.
+  core.String? serviceAccountEmail;
+
+  DefaultServiceAccount({
+    this.name,
+    this.serviceAccountEmail,
+  });
+
+  DefaultServiceAccount.fromJson(core.Map json_)
+      : this(
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          serviceAccountEmail: json_.containsKey('serviceAccountEmail')
+              ? json_['serviceAccountEmail'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (serviceAccountEmail != null)
+          'serviceAccountEmail': serviceAccountEmail!,
       };
 }
 

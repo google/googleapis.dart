@@ -47,6 +47,7 @@ api.AbortInfo buildAbortInfo() {
   buildCounterAbortInfo++;
   if (buildCounterAbortInfo < 3) {
     o.cause = 'foo';
+    o.ipAddress = 'foo';
     o.projectsMissingPermission = buildUnnamed0();
     o.resourceUri = 'foo';
   }
@@ -59,6 +60,10 @@ void checkAbortInfo(api.AbortInfo o) {
   if (buildCounterAbortInfo < 3) {
     unittest.expect(
       o.cause!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.ipAddress!,
       unittest.equals('foo'),
     );
     checkUnnamed0(o.projectsMissingPermission!);
@@ -526,6 +531,7 @@ api.DeliverInfo buildDeliverInfo() {
   final o = api.DeliverInfo();
   buildCounterDeliverInfo++;
   if (buildCounterDeliverInfo < 3) {
+    o.ipAddress = 'foo';
     o.resourceUri = 'foo';
     o.target = 'foo';
   }
@@ -536,6 +542,10 @@ api.DeliverInfo buildDeliverInfo() {
 void checkDeliverInfo(api.DeliverInfo o) {
   buildCounterDeliverInfo++;
   if (buildCounterDeliverInfo < 3) {
+    unittest.expect(
+      o.ipAddress!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.resourceUri!,
       unittest.equals('foo'),
@@ -904,6 +914,7 @@ api.ForwardInfo buildForwardInfo() {
   final o = api.ForwardInfo();
   buildCounterForwardInfo++;
   if (buildCounterForwardInfo < 3) {
+    o.ipAddress = 'foo';
     o.resourceUri = 'foo';
     o.target = 'foo';
   }
@@ -914,6 +925,10 @@ api.ForwardInfo buildForwardInfo() {
 void checkForwardInfo(api.ForwardInfo o) {
   buildCounterForwardInfo++;
   if (buildCounterForwardInfo < 3) {
+    unittest.expect(
+      o.ipAddress!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.resourceUri!,
       unittest.equals('foo'),

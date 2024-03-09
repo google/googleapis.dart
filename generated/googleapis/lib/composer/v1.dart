@@ -1422,6 +1422,44 @@ class ProjectsLocationsOperationsResource {
   }
 }
 
+/// The policy for airflow metadata database retention.
+class AirflowMetadataRetentionPolicyConfig {
+  /// How many days data should be retained for.
+  ///
+  /// Optional.
+  core.int? retentionDays;
+
+  /// Retention can be either enabled or disabled.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "RETENTION_MODE_UNSPECIFIED" : Default mode doesn't change environment
+  /// parameters.
+  /// - "RETENTION_MODE_ENABLED" : Retention policy is enabled.
+  /// - "RETENTION_MODE_DISABLED" : Retention policy is disabled.
+  core.String? retentionMode;
+
+  AirflowMetadataRetentionPolicyConfig({
+    this.retentionDays,
+    this.retentionMode,
+  });
+
+  AirflowMetadataRetentionPolicyConfig.fromJson(core.Map json_)
+      : this(
+          retentionDays: json_.containsKey('retentionDays')
+              ? json_['retentionDays'] as core.int
+              : null,
+          retentionMode: json_.containsKey('retentionMode')
+              ? json_['retentionMode'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (retentionDays != null) 'retentionDays': retentionDays!,
+        if (retentionMode != null) 'retentionMode': retentionMode!,
+      };
+}
+
 /// Allowed IP range with user-provided description.
 class AllowedIpRange {
   /// User-provided description.
@@ -1669,17 +1707,31 @@ class DagProcessorResource {
 
 /// The configuration setting for Airflow database data retention mechanism.
 class DataRetentionConfig {
+  /// The retention policy for airflow metadata database.
+  ///
+  /// Details: go/composer-database-retention-2
+  ///
+  /// Optional.
+  AirflowMetadataRetentionPolicyConfig? airflowMetadataRetentionConfig;
+
   /// The configuration settings for task logs retention
   ///
   /// Optional.
   TaskLogsRetentionConfig? taskLogsRetentionConfig;
 
   DataRetentionConfig({
+    this.airflowMetadataRetentionConfig,
     this.taskLogsRetentionConfig,
   });
 
   DataRetentionConfig.fromJson(core.Map json_)
       : this(
+          airflowMetadataRetentionConfig:
+              json_.containsKey('airflowMetadataRetentionConfig')
+                  ? AirflowMetadataRetentionPolicyConfig.fromJson(
+                      json_['airflowMetadataRetentionConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           taskLogsRetentionConfig: json_.containsKey('taskLogsRetentionConfig')
               ? TaskLogsRetentionConfig.fromJson(
                   json_['taskLogsRetentionConfig']
@@ -1688,6 +1740,8 @@ class DataRetentionConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (airflowMetadataRetentionConfig != null)
+          'airflowMetadataRetentionConfig': airflowMetadataRetentionConfig!,
         if (taskLogsRetentionConfig != null)
           'taskLogsRetentionConfig': taskLogsRetentionConfig!,
       };

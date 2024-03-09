@@ -19,12 +19,16 @@
 /// - [OrganizationsResource]
 ///   - [OrganizationsLocationsResource]
 ///     - [OrganizationsLocationsAddressGroupsResource]
+///     - [OrganizationsLocationsFirewallEndpointsResource]
 ///     - [OrganizationsLocationsOperationsResource]
+///     - [OrganizationsLocationsSecurityProfileGroupsResource]
+///     - [OrganizationsLocationsSecurityProfilesResource]
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsAddressGroupsResource]
 ///     - [ProjectsLocationsAuthorizationPoliciesResource]
 ///     - [ProjectsLocationsClientTlsPoliciesResource]
+///     - [ProjectsLocationsFirewallEndpointAssociationsResource]
 ///     - [ProjectsLocationsGatewaySecurityPoliciesResource]
 ///       - [ProjectsLocationsGatewaySecurityPoliciesRulesResource]
 ///     - [ProjectsLocationsOperationsResource]
@@ -78,8 +82,15 @@ class OrganizationsLocationsResource {
 
   OrganizationsLocationsAddressGroupsResource get addressGroups =>
       OrganizationsLocationsAddressGroupsResource(_requester);
+  OrganizationsLocationsFirewallEndpointsResource get firewallEndpoints =>
+      OrganizationsLocationsFirewallEndpointsResource(_requester);
   OrganizationsLocationsOperationsResource get operations =>
       OrganizationsLocationsOperationsResource(_requester);
+  OrganizationsLocationsSecurityProfileGroupsResource
+      get securityProfileGroups =>
+          OrganizationsLocationsSecurityProfileGroupsResource(_requester);
+  OrganizationsLocationsSecurityProfilesResource get securityProfiles =>
+      OrganizationsLocationsSecurityProfilesResource(_requester);
 
   OrganizationsLocationsResource(commons.ApiRequester client)
       : _requester = client;
@@ -536,6 +547,278 @@ class OrganizationsLocationsAddressGroupsResource {
   }
 }
 
+class OrganizationsLocationsFirewallEndpointsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsFirewallEndpointsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new FirewallEndpoint in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Value for parent.
+  /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [firewallEndpointId] - Required. Id of the requesting object. If
+  /// auto-generating Id server-side, remove this field and firewall_endpoint_id
+  /// from the method_signature of Create RPC.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes since the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    FirewallEndpoint request,
+    core.String parent, {
+    core.String? firewallEndpointId,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (firewallEndpointId != null)
+        'firewallEndpointId': [firewallEndpointId],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/firewallEndpoints';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single Endpoint.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the resource
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/firewallEndpoints/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes after the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single Endpoint.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the resource
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/firewallEndpoints/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [FirewallEndpoint].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<FirewallEndpoint> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return FirewallEndpoint.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists FirewallEndpoints in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent value for ListEndpointsRequest
+  /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filtering results
+  ///
+  /// [orderBy] - Hint for how to order the results
+  ///
+  /// [pageSize] - Optional. Requested page size. Server may return fewer items
+  /// than requested. If unspecified, server will pick an appropriate default.
+  ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListFirewallEndpointsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListFirewallEndpointsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/firewallEndpoints';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListFirewallEndpointsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Update a single Endpoint.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Immutable. Identifier. name of resource
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/firewallEndpoints/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes since the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - Required. Field mask is used to specify the fields to be
+  /// overwritten in the Endpoint resource by the update. The fields specified
+  /// in the update_mask are relative to the resource, not the full request. A
+  /// field will be overwritten if it is in the mask. If the user does not
+  /// provide a mask then all fields will be overwritten.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    FirewallEndpoint request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class OrganizationsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
@@ -722,6 +1005,483 @@ class OrganizationsLocationsOperationsResource {
   }
 }
 
+class OrganizationsLocationsSecurityProfileGroupsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsSecurityProfileGroupsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new SecurityProfileGroup in a given organization and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource of the SecurityProfileGroup. Must
+  /// be in the format `projects|organizations / * /locations/{location}`.
+  /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [securityProfileGroupId] - Required. Short name of the
+  /// SecurityProfileGroup resource to be created. This value should be 1-63
+  /// characters long, containing only letters, numbers, hyphens, and
+  /// underscores, and should not start with a number. E.g.
+  /// "security_profile_group1".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    SecurityProfileGroup request,
+    core.String parent, {
+    core.String? securityProfileGroupId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (securityProfileGroupId != null)
+        'securityProfileGroupId': [securityProfileGroupId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/securityProfileGroups';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single SecurityProfileGroup.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. A name of the SecurityProfileGroup to delete. Must be
+  /// in the format `projects|organizations / *
+  /// /locations/{location}/securityProfileGroups/{security_profile_group}`.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/securityProfileGroups/\[^/\]+$`.
+  ///
+  /// [etag] - Optional. If client provided etag is out of date, delete will
+  /// return FAILED_PRECONDITION error.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? etag,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (etag != null) 'etag': [etag],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single SecurityProfileGroup.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. A name of the SecurityProfileGroup to get. Must be in
+  /// the format `projects|organizations / *
+  /// /locations/{location}/securityProfileGroups/{security_profile_group}`.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/securityProfileGroups/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SecurityProfileGroup].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SecurityProfileGroup> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SecurityProfileGroup.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists SecurityProfileGroups in a given organization and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project or organization and location from which
+  /// the SecurityProfileGroups should be listed, specified in the format
+  /// `projects|organizations / * /locations/{location}`.
+  /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Maximum number of SecurityProfileGroups to return per call.
+  ///
+  /// [pageToken] - The value returned by the last
+  /// `ListSecurityProfileGroupsResponse` Indicates that this is a continuation
+  /// of a prior `ListSecurityProfileGroups` call, and that the system should
+  /// return the next page of data.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListSecurityProfileGroupsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListSecurityProfileGroupsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/securityProfileGroups';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListSecurityProfileGroupsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the parameters of a single SecurityProfileGroup.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Immutable. Identifier. Name of the SecurityProfileGroup resource.
+  /// It matches pattern `projects|organizations / *
+  /// /locations/{location}/securityProfileGroups/{security_profile_group}`.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/securityProfileGroups/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. Field mask is used to specify the fields to be
+  /// overwritten in the SecurityProfileGroup resource by the update. The fields
+  /// specified in the update_mask are relative to the resource, not the full
+  /// request. A field will be overwritten if it is in the mask.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    SecurityProfileGroup request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class OrganizationsLocationsSecurityProfilesResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsSecurityProfilesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new SecurityProfile in a given organization and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource of the SecurityProfile. Must be
+  /// in the format `projects|organizations / * /locations/{location}`.
+  /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [securityProfileId] - Required. Short name of the SecurityProfile resource
+  /// to be created. This value should be 1-63 characters long, containing only
+  /// letters, numbers, hyphens, and underscores, and should not start with a
+  /// number. E.g. "security_profile1".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    SecurityProfile request,
+    core.String parent, {
+    core.String? securityProfileId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (securityProfileId != null) 'securityProfileId': [securityProfileId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/securityProfiles';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single SecurityProfile.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. A name of the SecurityProfile to delete. Must be in the
+  /// format `projects|organizations / *
+  /// /locations/{location}/securityProfiles/{security_profile_id}`.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/securityProfiles/\[^/\]+$`.
+  ///
+  /// [etag] - Optional. If client provided etag is out of date, delete will
+  /// return FAILED_PRECONDITION error.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? etag,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (etag != null) 'etag': [etag],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single SecurityProfile.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. A name of the SecurityProfile to get. Must be in the
+  /// format `projects|organizations / *
+  /// /locations/{location}/securityProfiles/{security_profile_id}`.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/securityProfiles/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SecurityProfile].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SecurityProfile> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return SecurityProfile.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists SecurityProfiles in a given organization and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project or organization and location from which
+  /// the SecurityProfiles should be listed, specified in the format
+  /// `projects|organizations / * /locations/{location}`.
+  /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Maximum number of SecurityProfiles to return per call.
+  ///
+  /// [pageToken] - The value returned by the last
+  /// `ListSecurityProfilesResponse` Indicates that this is a continuation of a
+  /// prior `ListSecurityProfiles` call, and that the system should return the
+  /// next page of data.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListSecurityProfilesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListSecurityProfilesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/securityProfiles';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListSecurityProfilesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the parameters of a single SecurityProfile.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Immutable. Identifier. Name of the SecurityProfile resource. It
+  /// matches pattern `projects|organizations / *
+  /// /locations/{location}/securityProfiles/{security_profile}`.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/securityProfiles/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. Field mask is used to specify the fields to be
+  /// overwritten in the SecurityProfile resource by the update. The fields
+  /// specified in the update_mask are relative to the resource, not the full
+  /// request. A field will be overwritten if it is in the mask.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    SecurityProfile request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsResource {
   final commons.ApiRequester _requester;
 
@@ -740,6 +1500,9 @@ class ProjectsLocationsResource {
       ProjectsLocationsAuthorizationPoliciesResource(_requester);
   ProjectsLocationsClientTlsPoliciesResource get clientTlsPolicies =>
       ProjectsLocationsClientTlsPoliciesResource(_requester);
+  ProjectsLocationsFirewallEndpointAssociationsResource
+      get firewallEndpointAssociations =>
+          ProjectsLocationsFirewallEndpointAssociationsResource(_requester);
   ProjectsLocationsGatewaySecurityPoliciesResource
       get gatewaySecurityPolicies =>
           ProjectsLocationsGatewaySecurityPoliciesResource(_requester);
@@ -2225,6 +2988,283 @@ class ProjectsLocationsClientTlsPoliciesResource {
     );
     return GoogleIamV1TestIamPermissionsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsFirewallEndpointAssociationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsFirewallEndpointAssociationsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new FirewallEndpointAssociation in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Value for parent.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [firewallEndpointAssociationId] - Optional. Id of the requesting object.
+  /// If auto-generating Id server-side, remove this field and
+  /// firewall_endpoint_association_id from the method_signature of Create RPC.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes since the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    FirewallEndpointAssociation request,
+    core.String parent, {
+    core.String? firewallEndpointAssociationId,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (firewallEndpointAssociationId != null)
+        'firewallEndpointAssociationId': [firewallEndpointAssociationId],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/firewallEndpointAssociations';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single FirewallEndpointAssociation.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the resource
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/firewallEndpointAssociations/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes after the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single FirewallEndpointAssociation.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the resource
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/firewallEndpointAssociations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [FirewallEndpointAssociation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<FirewallEndpointAssociation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return FirewallEndpointAssociation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists Associations in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent value for ListAssociationsRequest
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filtering results
+  ///
+  /// [orderBy] - Hint for how to order the results
+  ///
+  /// [pageSize] - Optional. Requested page size. Server may return fewer items
+  /// than requested. If unspecified, server will pick an appropriate default.
+  ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListFirewallEndpointAssociationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListFirewallEndpointAssociationsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/firewallEndpointAssociations';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListFirewallEndpointAssociationsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Update a single FirewallEndpointAssociation.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Immutable. Identifier. name of resource
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/firewallEndpointAssociations/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes since the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - Required. Field mask is used to specify the fields to be
+  /// overwritten in the Association resource by the update. The fields
+  /// specified in the update_mask are relative to the resource, not the full
+  /// request. A field will be overwritten if it is in the mask. If the user
+  /// does not provide a mask then all fields will be overwritten.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    FirewallEndpointAssociation request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4318,6 +5358,312 @@ typedef Empty = $Empty;
 /// information.
 typedef Expr = $Expr;
 
+/// Message describing Endpoint object
+class FirewallEndpoint {
+  /// List of networks that are associated with this endpoint in the local zone.
+  ///
+  /// This is a projection of the FirewallEndpointAssociations pointing at this
+  /// endpoint. A network will only appear in this list after traffic routing is
+  /// fully configured. Format: projects/{project}/global/networks/{name}.
+  ///
+  /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.List<core.String>? associatedNetworks;
+
+  /// List of FirewallEndpointAssociations that are associated to this endpoint.
+  ///
+  /// An association will only appear in this list after traffic routing is
+  /// fully configured.
+  ///
+  /// Output only.
+  core.List<FirewallEndpointAssociationReference>? associations;
+
+  /// Project to bill on endpoint uptime usage.
+  ///
+  /// Required.
+  core.String? billingProjectId;
+
+  /// Create time stamp
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Description of the firewall endpoint.
+  ///
+  /// Max length 2048 characters.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// Labels as key value pairs
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Identifier.
+  ///
+  /// name of resource
+  ///
+  /// Immutable.
+  core.String? name;
+
+  /// Whether reconciling is in progress, recommended per
+  /// https://google.aip.dev/128.
+  ///
+  /// Output only.
+  core.bool? reconciling;
+
+  /// Current state of the endpoint.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Not set.
+  /// - "CREATING" : Being created.
+  /// - "ACTIVE" : Processing configuration updates.
+  /// - "DELETING" : Being deleted.
+  /// - "INACTIVE" : Down or in an error state.
+  core.String? state;
+
+  /// Update time stamp
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  FirewallEndpoint({
+    this.associatedNetworks,
+    this.associations,
+    this.billingProjectId,
+    this.createTime,
+    this.description,
+    this.labels,
+    this.name,
+    this.reconciling,
+    this.state,
+    this.updateTime,
+  });
+
+  FirewallEndpoint.fromJson(core.Map json_)
+      : this(
+          associatedNetworks: json_.containsKey('associatedNetworks')
+              ? (json_['associatedNetworks'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          associations: json_.containsKey('associations')
+              ? (json_['associations'] as core.List)
+                  .map((value) => FirewallEndpointAssociationReference.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          billingProjectId: json_.containsKey('billingProjectId')
+              ? json_['billingProjectId'] as core.String
+              : null,
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          reconciling: json_.containsKey('reconciling')
+              ? json_['reconciling'] as core.bool
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (associatedNetworks != null)
+          'associatedNetworks': associatedNetworks!,
+        if (associations != null) 'associations': associations!,
+        if (billingProjectId != null) 'billingProjectId': billingProjectId!,
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (reconciling != null) 'reconciling': reconciling!,
+        if (state != null) 'state': state!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// Message describing Association object
+class FirewallEndpointAssociation {
+  /// Create time stamp
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Whether the association is disabled.
+  ///
+  /// True indicates that traffic won't be intercepted
+  ///
+  /// Optional.
+  core.bool? disabled;
+
+  /// The URL of the FirewallEndpoint that is being associated.
+  ///
+  /// Required.
+  core.String? firewallEndpoint;
+
+  /// Labels as key value pairs
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Identifier.
+  ///
+  /// name of resource
+  ///
+  /// Immutable.
+  core.String? name;
+
+  /// The URL of the network that is being associated.
+  ///
+  /// Required.
+  core.String? network;
+
+  /// Whether reconciling is in progress, recommended per
+  /// https://google.aip.dev/128.
+  ///
+  /// Output only.
+  core.bool? reconciling;
+
+  /// Current state of the association.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Not set.
+  /// - "CREATING" : Being created.
+  /// - "ACTIVE" : Active and ready for traffic.
+  /// - "DELETING" : Being deleted.
+  /// - "INACTIVE" : Down or in an error state.
+  core.String? state;
+
+  /// The URL of the TlsInspectionPolicy that is being associated.
+  ///
+  /// Optional.
+  core.String? tlsInspectionPolicy;
+
+  /// Update time stamp
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  FirewallEndpointAssociation({
+    this.createTime,
+    this.disabled,
+    this.firewallEndpoint,
+    this.labels,
+    this.name,
+    this.network,
+    this.reconciling,
+    this.state,
+    this.tlsInspectionPolicy,
+    this.updateTime,
+  });
+
+  FirewallEndpointAssociation.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          disabled: json_.containsKey('disabled')
+              ? json_['disabled'] as core.bool
+              : null,
+          firewallEndpoint: json_.containsKey('firewallEndpoint')
+              ? json_['firewallEndpoint'] as core.String
+              : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          network: json_.containsKey('network')
+              ? json_['network'] as core.String
+              : null,
+          reconciling: json_.containsKey('reconciling')
+              ? json_['reconciling'] as core.bool
+              : null,
+          state:
+              json_.containsKey('state') ? json_['state'] as core.String : null,
+          tlsInspectionPolicy: json_.containsKey('tlsInspectionPolicy')
+              ? json_['tlsInspectionPolicy'] as core.String
+              : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (disabled != null) 'disabled': disabled!,
+        if (firewallEndpoint != null) 'firewallEndpoint': firewallEndpoint!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (network != null) 'network': network!,
+        if (reconciling != null) 'reconciling': reconciling!,
+        if (state != null) 'state': state!,
+        if (tlsInspectionPolicy != null)
+          'tlsInspectionPolicy': tlsInspectionPolicy!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// This is a subset of the FirewallEndpointAssociation message, containing
+/// fields to be used by the consumer.
+class FirewallEndpointAssociationReference {
+  /// The resource name of the FirewallEndpointAssociation.
+  ///
+  /// Format:
+  /// projects/{project}/locations/{location}/firewallEndpointAssociations/{id}
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The VPC network associated.
+  ///
+  /// Format: projects/{project}/global/networks/{name}.
+  ///
+  /// Output only.
+  core.String? network;
+
+  FirewallEndpointAssociationReference({
+    this.name,
+    this.network,
+  });
+
+  FirewallEndpointAssociationReference.fromJson(core.Map json_)
+      : this(
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          network: json_.containsKey('network')
+              ? json_['network'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (network != null) 'network': network!,
+      };
+}
+
 /// The GatewaySecurityPolicy resource contains a collection of
 /// GatewaySecurityPolicyRules and associated metadata.
 class GatewaySecurityPolicy {
@@ -5139,6 +6485,92 @@ class ListClientTlsPoliciesResponse {
       };
 }
 
+/// Message for response to listing Associations
+class ListFirewallEndpointAssociationsResponse {
+  /// The list of Association
+  core.List<FirewallEndpointAssociation>? firewallEndpointAssociations;
+
+  /// A token identifying a page of results the server should return.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListFirewallEndpointAssociationsResponse({
+    this.firewallEndpointAssociations,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListFirewallEndpointAssociationsResponse.fromJson(core.Map json_)
+      : this(
+          firewallEndpointAssociations:
+              json_.containsKey('firewallEndpointAssociations')
+                  ? (json_['firewallEndpointAssociations'] as core.List)
+                      .map((value) => FirewallEndpointAssociation.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                      .toList()
+                  : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (firewallEndpointAssociations != null)
+          'firewallEndpointAssociations': firewallEndpointAssociations!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
+/// Message for response to listing Endpoints
+class ListFirewallEndpointsResponse {
+  /// The list of Endpoint
+  core.List<FirewallEndpoint>? firewallEndpoints;
+
+  /// A token identifying a page of results the server should return.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListFirewallEndpointsResponse({
+    this.firewallEndpoints,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListFirewallEndpointsResponse.fromJson(core.Map json_)
+      : this(
+          firewallEndpoints: json_.containsKey('firewallEndpoints')
+              ? (json_['firewallEndpoints'] as core.List)
+                  .map((value) => FirewallEndpoint.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          unreachable: json_.containsKey('unreachable')
+              ? (json_['unreachable'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (firewallEndpoints != null) 'firewallEndpoints': firewallEndpoints!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
 /// Response returned by the ListGatewaySecurityPolicies method.
 class ListGatewaySecurityPoliciesResponse {
   /// List of GatewaySecurityPolicies resources.
@@ -5295,6 +6727,79 @@ class ListOperationsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null) 'operations': operations!,
+      };
+}
+
+/// Response returned by the ListSecurityProfileGroups method.
+class ListSecurityProfileGroupsResponse {
+  /// If there might be more results than those appearing in this response, then
+  /// `next_page_token` is included.
+  ///
+  /// To get the next set of results, call this method again using the value of
+  /// `next_page_token` as `page_token`.
+  core.String? nextPageToken;
+
+  /// List of SecurityProfileGroups resources.
+  core.List<SecurityProfileGroup>? securityProfileGroups;
+
+  ListSecurityProfileGroupsResponse({
+    this.nextPageToken,
+    this.securityProfileGroups,
+  });
+
+  ListSecurityProfileGroupsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          securityProfileGroups: json_.containsKey('securityProfileGroups')
+              ? (json_['securityProfileGroups'] as core.List)
+                  .map((value) => SecurityProfileGroup.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (securityProfileGroups != null)
+          'securityProfileGroups': securityProfileGroups!,
+      };
+}
+
+/// Response returned by the ListSecurityProfiles method.
+class ListSecurityProfilesResponse {
+  /// If there might be more results than those appearing in this response, then
+  /// `next_page_token` is included.
+  ///
+  /// To get the next set of results, call this method again using the value of
+  /// `next_page_token` as `page_token`.
+  core.String? nextPageToken;
+
+  /// List of SecurityProfile resources.
+  core.List<SecurityProfile>? securityProfiles;
+
+  ListSecurityProfilesResponse({
+    this.nextPageToken,
+    this.securityProfiles,
+  });
+
+  ListSecurityProfilesResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          securityProfiles: json_.containsKey('securityProfiles')
+              ? (json_['securityProfiles'] as core.List)
+                  .map((value) => SecurityProfile.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (securityProfiles != null) 'securityProfiles': securityProfiles!,
       };
 }
 
@@ -5671,6 +7176,210 @@ class Rule {
       };
 }
 
+/// SecurityProfile is a resource that defines the behavior for one of many
+/// ProfileTypes.
+///
+/// Next ID: 9
+class SecurityProfile {
+  /// Resource creation timestamp.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// An optional description of the profile.
+  ///
+  /// Max length 512 characters.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// This checksum is computed by the server based on the value of other
+  /// fields, and may be sent on update and delete requests to ensure the client
+  /// has an up-to-date value before proceeding.
+  ///
+  /// Output only.
+  core.String? etag;
+
+  /// Labels as key value pairs.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Identifier.
+  ///
+  /// Name of the SecurityProfile resource. It matches pattern
+  /// `projects|organizations / *
+  /// /locations/{location}/securityProfiles/{security_profile}`.
+  ///
+  /// Immutable.
+  core.String? name;
+
+  /// The threat prevention configuration for the SecurityProfile.
+  ThreatPreventionProfile? threatPreventionProfile;
+
+  /// The single ProfileType that the SecurityProfile resource configures.
+  ///
+  /// Immutable.
+  /// Possible string values are:
+  /// - "PROFILE_TYPE_UNSPECIFIED" : Profile type not specified.
+  /// - "THREAT_PREVENTION" : Profile type for threat prevention.
+  core.String? type;
+
+  /// Last resource update timestamp.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  SecurityProfile({
+    this.createTime,
+    this.description,
+    this.etag,
+    this.labels,
+    this.name,
+    this.threatPreventionProfile,
+    this.type,
+    this.updateTime,
+  });
+
+  SecurityProfile.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          threatPreventionProfile: json_.containsKey('threatPreventionProfile')
+              ? ThreatPreventionProfile.fromJson(
+                  json_['threatPreventionProfile']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (etag != null) 'etag': etag!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (threatPreventionProfile != null)
+          'threatPreventionProfile': threatPreventionProfile!,
+        if (type != null) 'type': type!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// SecurityProfileGroup is a resource that defines the behavior for various
+/// ProfileTypes.
+///
+/// Next ID: 8
+class SecurityProfileGroup {
+  /// Resource creation timestamp.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// An optional description of the profile group.
+  ///
+  /// Max length 2048 characters.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// This checksum is computed by the server based on the value of other
+  /// fields, and may be sent on update and delete requests to ensure the client
+  /// has an up-to-date value before proceeding.
+  ///
+  /// Output only.
+  core.String? etag;
+
+  /// Labels as key value pairs.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Identifier.
+  ///
+  /// Name of the SecurityProfileGroup resource. It matches pattern
+  /// `projects|organizations / *
+  /// /locations/{location}/securityProfileGroups/{security_profile_group}`.
+  ///
+  /// Immutable.
+  core.String? name;
+
+  /// Reference to a SecurityProfile with the threat prevention configuration
+  /// for the SecurityProfileGroup.
+  ///
+  /// Optional.
+  core.String? threatPreventionProfile;
+
+  /// Last resource update timestamp.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  SecurityProfileGroup({
+    this.createTime,
+    this.description,
+    this.etag,
+    this.labels,
+    this.name,
+    this.threatPreventionProfile,
+    this.updateTime,
+  });
+
+  SecurityProfileGroup.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? json_['createTime'] as core.String
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          etag: json_.containsKey('etag') ? json_['etag'] as core.String : null,
+          labels: json_.containsKey('labels')
+              ? (json_['labels'] as core.Map<core.String, core.dynamic>).map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    value as core.String,
+                  ),
+                )
+              : null,
+          name: json_.containsKey('name') ? json_['name'] as core.String : null,
+          threatPreventionProfile: json_.containsKey('threatPreventionProfile')
+              ? json_['threatPreventionProfile'] as core.String
+              : null,
+          updateTime: json_.containsKey('updateTime')
+              ? json_['updateTime'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (etag != null) 'etag': etag!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (threatPreventionProfile != null)
+          'threatPreventionProfile': threatPreventionProfile!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
 /// ServerTlsPolicy is a resource that specifies how a server should
 /// authenticate incoming requests.
 ///
@@ -5795,6 +7504,70 @@ class ServerTlsPolicy {
       };
 }
 
+/// Defines what action to take for a specific severity match.
+class SeverityOverride {
+  /// Threat action override.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "THREAT_ACTION_UNSPECIFIED" : Threat action not specified.
+  /// - "DEFAULT_ACTION" : The default action (as specified by the vendor) is
+  /// taken.
+  /// - "ALLOW" : The packet matching this rule will be allowed to transmit.
+  /// - "ALERT" : The packet matching this rule will be allowed to transmit, but
+  /// a threat_log entry will be sent to the consumer project.
+  /// - "DENY" : The packet matching this rule will be dropped, and a threat_log
+  /// entry will be sent to the consumer project.
+  core.String? action;
+
+  /// Severity level to match.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "SEVERITY_UNSPECIFIED" : Severity level not specified.
+  /// - "INFORMATIONAL" : Suspicious events that do not pose an immediate
+  /// threat, but that are reported to call attention to deeper problems that
+  /// could possibly exist.
+  /// - "LOW" : Warning-level threats that have very little impact on an
+  /// organization's infrastructure. They usually require local or physical
+  /// system access and may often result in victim privacy issues and
+  /// information leakage.
+  /// - "MEDIUM" : Minor threats in which impact is minimized, that do not
+  /// compromise the target or exploits that require an attacker to reside on
+  /// the same local network as the victim, affect only non-standard
+  /// configurations or obscure applications, or provide very limited access.
+  /// - "HIGH" : Threats that have the ability to become critical but have
+  /// mitigating factors; for example, they may be difficult to exploit, do not
+  /// result in elevated privileges, or do not have a large victim pool.
+  /// - "CRITICAL" : Serious threats, such as those that affect default
+  /// installations of widely deployed software, result in root compromise of
+  /// servers, and the exploit code is widely available to attackers. The
+  /// attacker usually does not need any special authentication credentials or
+  /// knowledge about the individual victims and the target does not need to be
+  /// manipulated into performing any special functions.
+  core.String? severity;
+
+  SeverityOverride({
+    this.action,
+    this.severity,
+  });
+
+  SeverityOverride.fromJson(core.Map json_)
+      : this(
+          action: json_.containsKey('action')
+              ? json_['action'] as core.String
+              : null,
+          severity: json_.containsKey('severity')
+              ? json_['severity'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (action != null) 'action': action!,
+        if (severity != null) 'severity': severity!,
+      };
+}
+
 /// Specification of traffic source attributes.
 class Source {
   /// List of CIDR ranges to match based on source IP address.
@@ -5851,6 +7624,115 @@ class Source {
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef Status = $Status;
+
+/// Defines what action to take for a specific threat_id match.
+class ThreatOverride {
+  /// Threat action override.
+  ///
+  /// For some threat types, only a subset of actions applies.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "THREAT_ACTION_UNSPECIFIED" : Threat action not specified.
+  /// - "DEFAULT_ACTION" : The default action (as specified by the vendor) is
+  /// taken.
+  /// - "ALLOW" : The packet matching this rule will be allowed to transmit.
+  /// - "ALERT" : The packet matching this rule will be allowed to transmit, but
+  /// a threat_log entry will be sent to the consumer project.
+  /// - "DENY" : The packet matching this rule will be dropped, and a threat_log
+  /// entry will be sent to the consumer project.
+  core.String? action;
+
+  /// Vendor-specific ID of a threat to override.
+  ///
+  /// Required.
+  core.String? threatId;
+
+  /// Type of the threat (read only).
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "THREAT_TYPE_UNSPECIFIED" : Type of threat not specified.
+  /// - "UNKNOWN" : Type of threat is not derivable from threat ID. An override
+  /// will be created for all types. Firewall will ignore overridden signature
+  /// ID's that don't exist in the specific type.
+  /// - "VULNERABILITY" : Threats related to system flaws that an attacker might
+  /// otherwise attempt to exploit.
+  /// - "ANTIVIRUS" : Threats related to viruses and malware found in
+  /// executables and file types.
+  /// - "SPYWARE" : Threats related to command-and-control (C2) activity, where
+  /// spyware on an infected client is collecting data without the user's
+  /// consent and/or communicating with a remote attacker.
+  /// - "DNS" : Threats related to DNS.
+  core.String? type;
+
+  ThreatOverride({
+    this.action,
+    this.threatId,
+    this.type,
+  });
+
+  ThreatOverride.fromJson(core.Map json_)
+      : this(
+          action: json_.containsKey('action')
+              ? json_['action'] as core.String
+              : null,
+          threatId: json_.containsKey('threatId')
+              ? json_['threatId'] as core.String
+              : null,
+          type: json_.containsKey('type') ? json_['type'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (action != null) 'action': action!,
+        if (threatId != null) 'threatId': threatId!,
+        if (type != null) 'type': type!,
+      };
+}
+
+/// ThreatPreventionProfile defines an action for specific threat signatures or
+/// severity levels.
+class ThreatPreventionProfile {
+  /// Configuration for overriding threats actions by severity match.
+  ///
+  /// Optional.
+  core.List<SeverityOverride>? severityOverrides;
+
+  /// Configuration for overriding threats actions by threat_id match.
+  ///
+  /// If a threat is matched both by configuration provided in
+  /// severity_overrides and threat_overrides, the threat_overrides action is
+  /// applied.
+  ///
+  /// Optional.
+  core.List<ThreatOverride>? threatOverrides;
+
+  ThreatPreventionProfile({
+    this.severityOverrides,
+    this.threatOverrides,
+  });
+
+  ThreatPreventionProfile.fromJson(core.Map json_)
+      : this(
+          severityOverrides: json_.containsKey('severityOverrides')
+              ? (json_['severityOverrides'] as core.List)
+                  .map((value) => SeverityOverride.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          threatOverrides: json_.containsKey('threatOverrides')
+              ? (json_['threatOverrides'] as core.List)
+                  .map((value) => ThreatOverride.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (severityOverrides != null) 'severityOverrides': severityOverrides!,
+        if (threatOverrides != null) 'threatOverrides': threatOverrides!,
+      };
+}
 
 /// The TlsInspectionPolicy resource contains references to CA pools in
 /// Certificate Authority Service and associated metadata.

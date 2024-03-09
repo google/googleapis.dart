@@ -4728,6 +4728,8 @@ class ExtensionChainExtension {
   /// The `:authority` header in the gRPC request sent from Envoy to the
   /// extension service.
   ///
+  /// Required for Callout extensions.
+  ///
   /// Optional.
   core.String? authority;
 
@@ -4736,11 +4738,12 @@ class ExtensionChainExtension {
   ///
   /// When set to `TRUE`, request or response processing continues without
   /// error. Any subsequent extensions in the extension chain are also executed.
-  /// When set to `FALSE`: * If response headers have not been delivered to the
+  /// When set to `FALSE` or the default setting of `FALSE` is used, one of the
+  /// following happens: * If response headers have not been delivered to the
   /// downstream client, a generic 500 error is returned to the client. The
   /// error response can be tailored by configuring a custom error response in
   /// the load balancer. * If response headers have been delivered, then the
-  /// HTTP stream to the downstream client is reset. Default is `FALSE`.
+  /// HTTP stream to the downstream client is reset.
   ///
   /// Optional.
   core.bool? failOpen;
@@ -4766,8 +4769,8 @@ class ExtensionChainExtension {
 
   /// The reference to the service that runs the extension.
   ///
-  /// Currently only Callout extensions are supported here. To configure a
-  /// Callout extension, `service` must be a fully-qualified reference to a
+  /// Currently only callout extensions are supported here. To configure a
+  /// callout extension, `service` must be a fully-qualified reference to a
   /// [backend service](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices)
   /// in the format:
   /// `https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/backendServices/{backendService}`
@@ -4788,9 +4791,10 @@ class ExtensionChainExtension {
 
   /// Specifies the timeout for each individual message on the stream.
   ///
-  /// The timeout must be between 10-1000 milliseconds.
+  /// The timeout must be between 10-1000 milliseconds. Required for Callout
+  /// extensions.
   ///
-  /// Required.
+  /// Optional.
   core.String? timeout;
 
   ExtensionChainExtension({
@@ -4846,8 +4850,8 @@ class ExtensionChainMatchCondition {
   /// A Common Expression Language (CEL) expression that is used to match
   /// requests for which the extension chain is executed.
   ///
-  /// For more information, see
-  /// [CEL matcher language reference](https://cloud.google.com/service-extensions/docs/cel-matcher-language-reference).
+  /// For more information, see \[CEL matcher language
+  /// reference\](/service-extensions/docs/cel-matcher-language-reference).
   ///
   /// Required.
   core.String? celExpression;
@@ -6961,8 +6965,9 @@ class LbRouteExtension {
 
   /// Set of labels associated with the `LbRouteExtension` resource.
   ///
-  /// The format must comply with \[the following
-  /// requirements\](/compute/docs/labeling-resources#requirements).
+  /// The format must comply with \[the requirements for
+  /// labels\](/compute/docs/labeling-resources#requirements) for Google Cloud
+  /// resources.
   ///
   /// Optional.
   core.Map<core.String, core.String>? labels;
@@ -7093,8 +7098,9 @@ class LbTrafficExtension {
 
   /// Set of labels associated with the `LbTrafficExtension` resource.
   ///
-  /// The format must comply with \[the following
-  /// requirements\](/compute/docs/labeling-resources#requirements).
+  /// The format must comply with \[the requirements for
+  /// labels\](/compute/docs/labeling-resources#requirements) for Google Cloud
+  /// resources.
   ///
   /// Optional.
   core.Map<core.String, core.String>? labels;

@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240226",
+    "revision": "20240307",
     "rootUrl": "https://firebaseremoteconfig.googleapis.com/",
     "servicePath": "",
     "title": "Firebase Remote Config API",
@@ -208,28 +208,6 @@
                             },
                             "response": {
                                 "$ref": "FetchRemoteConfigResponse"
-                            }
-                        },
-                        "getServerRemoteConfig": {
-                            "description": "Get a project's server-side Remote Config template. Note that this request proto is structured differently from other request messages in this proto, however this is consistent and compliant with the new API guidance (https://google.aip.dev/122#fields-representing-resource-names) and the standard going forward.",
-                            "flatPath": "v1/projects/{projectsId}/namespaces/{namespacesId}/serverRemoteConfig",
-                            "httpMethod": "GET",
-                            "id": "firebaseremoteconfig.projects.namespaces.getServerRemoteConfig",
-                            "parameterOrder": [
-                                "name"
-                            ],
-                            "parameters": {
-                                "name": {
-                                    "description": "Required. The name of the template to get. Format: projects/{project}/namespaces/{namespace}/serverRemoteConfig Project is a Firebase project ID or project number. Namespace is the namespace ID (e.g.: firebase-server)",
-                                    "location": "path",
-                                    "pattern": "^projects/[^/]+/namespaces/[^/]+/serverRemoteConfig$",
-                                    "required": true,
-                                    "type": "string"
-                                }
-                            },
-                            "path": "v1/{+name}",
-                            "response": {
-                                "$ref": "ServerRemoteConfig"
                             }
                         }
                     }
@@ -772,101 +750,6 @@
                 "versionNumber": {
                     "description": "Required. The version number of the RemoteConfig to roll back to. The specified version number must be less than the current version number, and not have been deleted due to staleness.",
                     "format": "int64",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "ServerRemoteConfig": {
-            "description": "A ServerRemoteConfig represents the raw data-plane version of a control plane Remote Config template. This raw template will be evaluated by the Admin SDK (RC Server SDK) to form the config.",
-            "id": "ServerRemoteConfig",
-            "properties": {
-                "conditions": {
-                    "description": "A list of conditions in descending order by priority.",
-                    "items": {
-                        "$ref": "ServerRemoteConfigCondition"
-                    },
-                    "type": "array"
-                },
-                "parameters": {
-                    "additionalProperties": {
-                        "$ref": "ServerRemoteConfigParameter"
-                    },
-                    "description": "Map of parameter keys to their optional default values and optional conditional values.",
-                    "type": "object"
-                },
-                "version": {
-                    "$ref": "Version",
-                    "description": "Contains all metadata about a particular version of the server Remote Config template. Note that we are reusing the control plane version proto here."
-                }
-            },
-            "type": "object"
-        },
-        "ServerRemoteConfigCondition": {
-            "description": "A condition targeting a specific group of users and servers. Same as the condition in the control plane.",
-            "id": "ServerRemoteConfigCondition",
-            "properties": {
-                "expression": {
-                    "description": "Required. The logic of this condition. See the documentation regarding [Condition Expressions](/docs/remote-config/condition-reference) for the expected syntax of this field.",
-                    "type": "string"
-                },
-                "name": {
-                    "description": "Required. A non-empty and unique name of this condition.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "ServerRemoteConfigParameter": {
-            "description": "A parameter value associated with a parameter key in [google.firebase.remoteconfig.v1.ServerRemoteConfig.parameters]. At minimum, a `default_value` or a `conditional_values` entry should be present for the parameter to have any effect.",
-            "id": "ServerRemoteConfigParameter",
-            "properties": {
-                "conditionalValues": {
-                    "additionalProperties": {
-                        "$ref": "ServerRemoteConfigParameterValue"
-                    },
-                    "description": "Optional - a (condition name, value) map. The condition_name of the highest priority (the one listed first in the RemoteConfig's conditions list) determines the value of this parameter.",
-                    "type": "object"
-                },
-                "defaultValue": {
-                    "$ref": "ServerRemoteConfigParameterValue",
-                    "description": "Optional - value to set the parameter to, when none of the named conditions evaluate to true."
-                },
-                "description": {
-                    "description": "Optional. A description for this Parameter. Its length must be less than or equal to 256 characters. A description may contain any Unicode characters.",
-                    "type": "string"
-                },
-                "valueType": {
-                    "description": "The data type for all values of this parameter in the current version of the template. Defaults to `ParameterValueType.STRING` if unspecified.",
-                    "enum": [
-                        "PARAMETER_VALUE_TYPE_UNSPECIFIED",
-                        "STRING",
-                        "BOOLEAN",
-                        "NUMBER",
-                        "JSON"
-                    ],
-                    "enumDescriptions": [
-                        "Catch-all for unrecognized enum values.",
-                        "Represents String values.",
-                        "Represents Boolean values (\"true\" or \"false\").",
-                        "Represents both positive and negative integer and float values.",
-                        "Represents JSON values."
-                    ],
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "ServerRemoteConfigParameterValue": {
-            "description": "A ServerRemoteConfigParameterValue resource contains the value that a parameter may have. Currently, there is no support for managed values like ABT or P13n.",
-            "id": "ServerRemoteConfigParameterValue",
-            "properties": {
-                "useInAppDefault": {
-                    "description": "If true, the parameter is omitted from the parameter values returned to the server.",
-                    "type": "boolean"
-                },
-                "value": {
-                    "description": "The string value that the parameter is set to.",
                     "type": "string"
                 }
             },

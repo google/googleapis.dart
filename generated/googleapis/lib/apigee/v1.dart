@@ -109,6 +109,7 @@
 ///       - [OrganizationsSharedflowsRevisionsDeploymentsResource]
 ///   - [OrganizationsSitesResource]
 ///     - [OrganizationsSitesApicategoriesResource]
+///     - [OrganizationsSitesApidocsResource]
 /// - [ProjectsResource]
 library;
 
@@ -15252,6 +15253,8 @@ class OrganizationsSitesResource {
 
   OrganizationsSitesApicategoriesResource get apicategories =>
       OrganizationsSitesApicategoriesResource(_requester);
+  OrganizationsSitesApidocsResource get apidocs =>
+      OrganizationsSitesApidocsResource(_requester);
 
   OrganizationsSitesResource(commons.ApiRequester client) : _requester = client;
 }
@@ -15460,6 +15463,310 @@ class OrganizationsSitesApicategoriesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApigeeV1ApiCategoryResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class OrganizationsSitesApidocsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsSitesApidocsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new catalog item.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the portal. Use the following structure in
+  /// your request: `organizations/{org}/sites/{site}`
+  /// Value must have pattern `^organizations/\[^/\]+/sites/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1ApiDocResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1ApiDocResponse> create(
+    GoogleCloudApigeeV1ApiDoc request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/apidocs';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1ApiDocResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a catalog item.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the catalog item. Use the following structure
+  /// in your request: `organizations/{org}/sites/{site}/apidocs/{apidoc}`
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/sites/\[^/\]+/apidocs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1DeleteResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1DeleteResponse> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1DeleteResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a catalog item.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the catalog item. Use the following structure
+  /// in your request: `organizations/{org}/sites/{site}/apidocs/{apidoc}`
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/sites/\[^/\]+/apidocs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1ApiDocResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1ApiDocResponse> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1ApiDocResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the documentation for the specified catalog item.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the catalog item documentation. Use
+  /// the following structure in your request:
+  /// `organizations/{org}/sites/{site}/apidocs/{apidoc}/documentation`
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/sites/\[^/\]+/apidocs/\[^/\]+/documentation$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1ApiDocDocumentationResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1ApiDocDocumentationResponse> getDocumentation(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1ApiDocDocumentationResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the catalog items associated with a portal.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the portal. Use the following structure in
+  /// your request: `organizations/{org}/sites/{site}`
+  /// Value must have pattern `^organizations/\[^/\]+/sites/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of items to return. The service
+  /// may return fewer than this value. If unspecified, at most 25 books will be
+  /// returned. The maximum value is 100; values above 100 will be coerced to
+  /// 100.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListApiDocs` call. Provide this to retrieve the subsequent page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1ListApiDocsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1ListApiDocsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/apidocs';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1ListApiDocsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a catalog item.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the catalog item. Use the following structure
+  /// in your request: `organizations/{org}/sites/{site}/apidocs/{apidoc}`
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/sites/\[^/\]+/apidocs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1ApiDocResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1ApiDocResponse> update(
+    GoogleCloudApigeeV1ApiDoc request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PUT',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1ApiDocResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the documentation for the specified catalog item.
+  ///
+  /// Note that the documentation file contents will not be populated in the
+  /// return message.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the catalog item documentation. Use
+  /// the following structure in your request:
+  /// `organizations/{org}/sites/{site}/apidocs/{apidoc}/documentation`
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/sites/\[^/\]+/apidocs/\[^/\]+/documentation$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1ApiDocDocumentationResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1ApiDocDocumentationResponse>
+      updateDocumentation(
+    GoogleCloudApigeeV1ApiDocDocumentation request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1ApiDocDocumentationResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -16030,6 +16337,404 @@ class GoogleCloudApigeeV1ApiCategoryResponse {
       : this(
           data: json_.containsKey('data')
               ? GoogleCloudApigeeV1ApiCategory.fromJson(
+                  json_['data'] as core.Map<core.String, core.dynamic>)
+              : null,
+          errorCode: json_.containsKey('errorCode')
+              ? json_['errorCode'] as core.String
+              : null,
+          message: json_.containsKey('message')
+              ? json_['message'] as core.String
+              : null,
+          requestId: json_.containsKey('requestId')
+              ? json_['requestId'] as core.String
+              : null,
+          status: json_.containsKey('status')
+              ? json_['status'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (data != null) 'data': data!,
+        if (errorCode != null) 'errorCode': errorCode!,
+        if (message != null) 'message': message!,
+        if (requestId != null) 'requestId': requestId!,
+        if (status != null) 'status': status!,
+      };
+}
+
+/// `ApiDoc` represents an API catalog item.
+///
+/// Catalog items are used in two ways in a portal: - Users can browse and
+/// interact with a visual representation of the API documentation - The
+/// `api_product_name` field provides a link to a backing \[API product\]
+/// (/apigee/docs/reference/apis/apigee/rest/v1/organizations.apiproducts).
+/// Through this link, portal users can create and manage developer apps linked
+/// to one or more API products.
+class GoogleCloudApigeeV1ApiDoc {
+  /// Boolean flag that manages user access to the catalog item.
+  ///
+  /// When true, the catalog item can be viewed anonymously; otherwise, only
+  /// registered users may view it. Note: when the parent portal is enrolled in
+  /// the
+  /// [audience management feature](https://cloud.google.com/apigee/docs/api-platform/publish/portal/portal-audience#enrolling_in_the_beta_release_of_the_audience_management_feature),
+  /// this flag is ignored; instead visibility must be further managed in the
+  /// management UI (see
+  /// [Manage the visibility of an API in your portal](https://cloud.google.com/apigee/docs/api-platform/publish/portal/publish-apis#visibility)).
+  ///
+  /// Optional.
+  core.bool? anonAllowed;
+
+  /// The `name` field of the associated \[API
+  /// product\](/apigee/docs/reference/apis/apigee/rest/v1/organizations.apiproducts).
+  ///
+  /// A portal may have only one catalog item associated with a given API
+  /// product.
+  ///
+  /// Required. Immutable.
+  core.String? apiProductName;
+
+  /// The IDs of the API categories to which this catalog item belongs.
+  ///
+  /// Optional.
+  core.List<core.String>? categoryIds;
+
+  /// Description of the catalog item.
+  ///
+  /// Max length is 10,000 characters.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// DEPRECATED: use the `apiProductName` field instead
+  ///
+  /// Optional. Immutable.
+  core.String? edgeAPIProductName;
+
+  /// DEPRECATED: manage documentation through the `getDocumentation` and
+  /// `updateDocumentation` methods
+  ///
+  /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.String? graphqlEndpointUrl;
+
+  /// DEPRECATED: manage documentation through the `getDocumentation` and
+  /// `updateDocumentation` methods
+  ///
+  /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.String? graphqlSchema;
+
+  /// DEPRECATED: manage documentation through the `getDocumentation` and
+  /// `updateDocumentation` methods
+  ///
+  /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.String? graphqlSchemaDisplayName;
+
+  /// The ID of the catalog item.
+  ///
+  /// Output only.
+  core.String? id;
+
+  /// Location of the image used for the catalog item in the catalog.
+  ///
+  /// For portal files, this can have the format `/files/{filename}`. Max length
+  /// is 2,083 characters.
+  ///
+  /// Optional.
+  core.String? imageUrl;
+
+  /// Time the catalog item was last modified in milliseconds since epoch.
+  ///
+  /// Output only.
+  core.String? modified;
+
+  /// Denotes whether the catalog item is published to the portal or is in a
+  /// draft state.
+  ///
+  /// When the parent portal is enrolled in the
+  /// [audience management feature](https://cloud.google.com/apigee/docs/api-platform/publish/portal/portal-audience#enrolling_in_the_beta_release_of_the_audience_management_feature),
+  /// the visibility must be further managed in the management UI (see
+  /// [Manage the visibility of an API in your portal](https://cloud.google.com/apigee/docs/api-platform/publish/portal/publish-apis#visibility))
+  /// before it can be visible to any users. If not enrolled in the audience
+  /// management feature, the visibility is further managed by the `anonAllowed`
+  /// flag.
+  ///
+  /// Optional.
+  core.bool? published;
+
+  /// Whether a callback URL is required when this catalog item's API product is
+  /// enabled in a developer app.
+  ///
+  /// When true, a portal user will be required to input a URL when managing the
+  /// app (this is typically used for the app's OAuth flow).
+  ///
+  /// Optional.
+  core.bool? requireCallbackUrl;
+
+  /// The ID of the parent portal.
+  ///
+  /// Output only.
+  core.String? siteId;
+
+  /// DEPRECATED: DO NOT USE
+  ///
+  /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.String? specId;
+
+  /// The user-facing name of the catalog item.
+  ///
+  /// `title` must be a non-empty string with a max length of 255 characters.
+  ///
+  /// Required.
+  core.String? title;
+
+  /// DEPRECATED: use the `published` field instead
+  ///
+  /// Optional.
+  core.bool? visibility;
+
+  GoogleCloudApigeeV1ApiDoc({
+    this.anonAllowed,
+    this.apiProductName,
+    this.categoryIds,
+    this.description,
+    this.edgeAPIProductName,
+    this.graphqlEndpointUrl,
+    this.graphqlSchema,
+    this.graphqlSchemaDisplayName,
+    this.id,
+    this.imageUrl,
+    this.modified,
+    this.published,
+    this.requireCallbackUrl,
+    this.siteId,
+    this.specId,
+    this.title,
+    this.visibility,
+  });
+
+  GoogleCloudApigeeV1ApiDoc.fromJson(core.Map json_)
+      : this(
+          anonAllowed: json_.containsKey('anonAllowed')
+              ? json_['anonAllowed'] as core.bool
+              : null,
+          apiProductName: json_.containsKey('apiProductName')
+              ? json_['apiProductName'] as core.String
+              : null,
+          categoryIds: json_.containsKey('categoryIds')
+              ? (json_['categoryIds'] as core.List)
+                  .map((value) => value as core.String)
+                  .toList()
+              : null,
+          description: json_.containsKey('description')
+              ? json_['description'] as core.String
+              : null,
+          edgeAPIProductName: json_.containsKey('edgeAPIProductName')
+              ? json_['edgeAPIProductName'] as core.String
+              : null,
+          graphqlEndpointUrl: json_.containsKey('graphqlEndpointUrl')
+              ? json_['graphqlEndpointUrl'] as core.String
+              : null,
+          graphqlSchema: json_.containsKey('graphqlSchema')
+              ? json_['graphqlSchema'] as core.String
+              : null,
+          graphqlSchemaDisplayName:
+              json_.containsKey('graphqlSchemaDisplayName')
+                  ? json_['graphqlSchemaDisplayName'] as core.String
+                  : null,
+          id: json_.containsKey('id') ? json_['id'] as core.String : null,
+          imageUrl: json_.containsKey('imageUrl')
+              ? json_['imageUrl'] as core.String
+              : null,
+          modified: json_.containsKey('modified')
+              ? json_['modified'] as core.String
+              : null,
+          published: json_.containsKey('published')
+              ? json_['published'] as core.bool
+              : null,
+          requireCallbackUrl: json_.containsKey('requireCallbackUrl')
+              ? json_['requireCallbackUrl'] as core.bool
+              : null,
+          siteId: json_.containsKey('siteId')
+              ? json_['siteId'] as core.String
+              : null,
+          specId: json_.containsKey('specId')
+              ? json_['specId'] as core.String
+              : null,
+          title:
+              json_.containsKey('title') ? json_['title'] as core.String : null,
+          visibility: json_.containsKey('visibility')
+              ? json_['visibility'] as core.bool
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (anonAllowed != null) 'anonAllowed': anonAllowed!,
+        if (apiProductName != null) 'apiProductName': apiProductName!,
+        if (categoryIds != null) 'categoryIds': categoryIds!,
+        if (description != null) 'description': description!,
+        if (edgeAPIProductName != null)
+          'edgeAPIProductName': edgeAPIProductName!,
+        if (graphqlEndpointUrl != null)
+          'graphqlEndpointUrl': graphqlEndpointUrl!,
+        if (graphqlSchema != null) 'graphqlSchema': graphqlSchema!,
+        if (graphqlSchemaDisplayName != null)
+          'graphqlSchemaDisplayName': graphqlSchemaDisplayName!,
+        if (id != null) 'id': id!,
+        if (imageUrl != null) 'imageUrl': imageUrl!,
+        if (modified != null) 'modified': modified!,
+        if (published != null) 'published': published!,
+        if (requireCallbackUrl != null)
+          'requireCallbackUrl': requireCallbackUrl!,
+        if (siteId != null) 'siteId': siteId!,
+        if (specId != null) 'specId': specId!,
+        if (title != null) 'title': title!,
+        if (visibility != null) 'visibility': visibility!,
+      };
+}
+
+/// The documentation for a catalog item.
+class GoogleCloudApigeeV1ApiDocDocumentation {
+  /// GraphQL documentation.
+  ///
+  /// Optional.
+  GoogleCloudApigeeV1GraphqlDocumentation? graphqlDocumentation;
+
+  /// OpenAPI Specification documentation.
+  ///
+  /// Optional.
+  GoogleCloudApigeeV1OASDocumentation? oasDocumentation;
+
+  GoogleCloudApigeeV1ApiDocDocumentation({
+    this.graphqlDocumentation,
+    this.oasDocumentation,
+  });
+
+  GoogleCloudApigeeV1ApiDocDocumentation.fromJson(core.Map json_)
+      : this(
+          graphqlDocumentation: json_.containsKey('graphqlDocumentation')
+              ? GoogleCloudApigeeV1GraphqlDocumentation.fromJson(
+                  json_['graphqlDocumentation']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          oasDocumentation: json_.containsKey('oasDocumentation')
+              ? GoogleCloudApigeeV1OASDocumentation.fromJson(
+                  json_['oasDocumentation']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (graphqlDocumentation != null)
+          'graphqlDocumentation': graphqlDocumentation!,
+        if (oasDocumentation != null) 'oasDocumentation': oasDocumentation!,
+      };
+}
+
+/// The catalog item documentation wrapped with response status, error_code,
+/// etc.
+class GoogleCloudApigeeV1ApiDocDocumentationResponse {
+  /// The documentation resource.
+  ///
+  /// Output only.
+  GoogleCloudApigeeV1ApiDocDocumentation? data;
+
+  /// Unique error code for the request, if any.
+  ///
+  /// Output only.
+  core.String? errorCode;
+
+  /// Description of the operation.
+  ///
+  /// Output only.
+  core.String? message;
+
+  /// Unique ID of the request.
+  ///
+  /// Output only.
+  core.String? requestId;
+
+  /// Status of the operation.
+  ///
+  /// Output only.
+  core.String? status;
+
+  GoogleCloudApigeeV1ApiDocDocumentationResponse({
+    this.data,
+    this.errorCode,
+    this.message,
+    this.requestId,
+    this.status,
+  });
+
+  GoogleCloudApigeeV1ApiDocDocumentationResponse.fromJson(core.Map json_)
+      : this(
+          data: json_.containsKey('data')
+              ? GoogleCloudApigeeV1ApiDocDocumentation.fromJson(
+                  json_['data'] as core.Map<core.String, core.dynamic>)
+              : null,
+          errorCode: json_.containsKey('errorCode')
+              ? json_['errorCode'] as core.String
+              : null,
+          message: json_.containsKey('message')
+              ? json_['message'] as core.String
+              : null,
+          requestId: json_.containsKey('requestId')
+              ? json_['requestId'] as core.String
+              : null,
+          status: json_.containsKey('status')
+              ? json_['status'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (data != null) 'data': data!,
+        if (errorCode != null) 'errorCode': errorCode!,
+        if (message != null) 'message': message!,
+        if (requestId != null) 'requestId': requestId!,
+        if (status != null) 'status': status!,
+      };
+}
+
+/// The catalog item resource wrapped with response status, error_code, etc.
+class GoogleCloudApigeeV1ApiDocResponse {
+  /// The catalog item resource.
+  GoogleCloudApigeeV1ApiDoc? data;
+
+  /// Unique error code for the request, if any.
+  core.String? errorCode;
+
+  /// Description of the operation.
+  core.String? message;
+
+  /// Unique ID of the request.
+  core.String? requestId;
+
+  /// Status of the operation.
+  core.String? status;
+
+  GoogleCloudApigeeV1ApiDocResponse({
+    this.data,
+    this.errorCode,
+    this.message,
+    this.requestId,
+    this.status,
+  });
+
+  GoogleCloudApigeeV1ApiDocResponse.fromJson(core.Map json_)
+      : this(
+          data: json_.containsKey('data')
+              ? GoogleCloudApigeeV1ApiDoc.fromJson(
                   json_['data'] as core.Map<core.String, core.dynamic>)
               : null,
           errorCode: json_.containsKey('errorCode')
@@ -20394,6 +21099,49 @@ class GoogleCloudApigeeV1DimensionMetric {
 /// Message to disable an enabled SecurityAction.
 typedef GoogleCloudApigeeV1DisableSecurityActionRequest = $Empty;
 
+/// Documentation file contents for a catalog item.
+class GoogleCloudApigeeV1DocumentationFile {
+  /// The file contents.
+  ///
+  /// The max size is 4 MB.
+  ///
+  /// Required.
+  core.String? contents;
+  core.List<core.int> get contentsAsBytes => convert.base64.decode(contents!);
+
+  set contentsAsBytes(core.List<core.int> bytes_) {
+    contents =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// A display name for the file, shown in the management UI.
+  ///
+  /// Max length is 255 characters.
+  ///
+  /// Required.
+  core.String? displayName;
+
+  GoogleCloudApigeeV1DocumentationFile({
+    this.contents,
+    this.displayName,
+  });
+
+  GoogleCloudApigeeV1DocumentationFile.fromJson(core.Map json_)
+      : this(
+          contents: json_.containsKey('contents')
+              ? json_['contents'] as core.String
+              : null,
+          displayName: json_.containsKey('displayName')
+              ? json_['displayName'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (contents != null) 'contents': contents!,
+        if (displayName != null) 'displayName': displayName!,
+      };
+}
+
 /// Message to enable a disabled SecurityAction.
 typedef GoogleCloudApigeeV1EnableSecurityActionRequest = $Empty;
 
@@ -21785,6 +22533,42 @@ class GoogleCloudApigeeV1GraphQLOperationGroup {
       };
 }
 
+/// GraphQL documentation for a catalog item.
+class GoogleCloudApigeeV1GraphqlDocumentation {
+  /// The GraphQL endpoint URI to be queried by API consumers.
+  ///
+  /// Max length is 2,083 characters.
+  ///
+  /// Required.
+  core.String? endpointUri;
+
+  /// The documentation file contents for the GraphQL schema.
+  ///
+  /// Required.
+  GoogleCloudApigeeV1DocumentationFile? schema;
+
+  GoogleCloudApigeeV1GraphqlDocumentation({
+    this.endpointUri,
+    this.schema,
+  });
+
+  GoogleCloudApigeeV1GraphqlDocumentation.fromJson(core.Map json_)
+      : this(
+          endpointUri: json_.containsKey('endpointUri')
+              ? json_['endpointUri'] as core.String
+              : null,
+          schema: json_.containsKey('schema')
+              ? GoogleCloudApigeeV1DocumentationFile.fromJson(
+                  json_['schema'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endpointUri != null) 'endpointUri': endpointUri!,
+        if (schema != null) 'schema': schema!,
+      };
+}
+
 /// Binds the resources in a proxy or remote service with the gRPC operation and
 /// its associated quota enforcement.
 class GoogleCloudApigeeV1GrpcOperationConfig {
@@ -22563,6 +23347,71 @@ class GoogleCloudApigeeV1ListApiCategoriesResponse {
         if (data != null) 'data': data!,
         if (errorCode != null) 'errorCode': errorCode!,
         if (message != null) 'message': message!,
+        if (requestId != null) 'requestId': requestId!,
+        if (status != null) 'status': status!,
+      };
+}
+
+class GoogleCloudApigeeV1ListApiDocsResponse {
+  /// The catalog item resources.
+  core.List<GoogleCloudApigeeV1ApiDoc>? data;
+
+  /// Unique error code for the request, if any.
+  core.String? errorCode;
+
+  /// Description of the operation.
+  core.String? message;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// Unique ID of the request.
+  core.String? requestId;
+
+  /// Status of the operation.
+  core.String? status;
+
+  GoogleCloudApigeeV1ListApiDocsResponse({
+    this.data,
+    this.errorCode,
+    this.message,
+    this.nextPageToken,
+    this.requestId,
+    this.status,
+  });
+
+  GoogleCloudApigeeV1ListApiDocsResponse.fromJson(core.Map json_)
+      : this(
+          data: json_.containsKey('data')
+              ? (json_['data'] as core.List)
+                  .map((value) => GoogleCloudApigeeV1ApiDoc.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList()
+              : null,
+          errorCode: json_.containsKey('errorCode')
+              ? json_['errorCode'] as core.String
+              : null,
+          message: json_.containsKey('message')
+              ? json_['message'] as core.String
+              : null,
+          nextPageToken: json_.containsKey('nextPageToken')
+              ? json_['nextPageToken'] as core.String
+              : null,
+          requestId: json_.containsKey('requestId')
+              ? json_['requestId'] as core.String
+              : null,
+          status: json_.containsKey('status')
+              ? json_['status'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (data != null) 'data': data!,
+        if (errorCode != null) 'errorCode': errorCode!,
+        if (message != null) 'message': message!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (requestId != null) 'requestId': requestId!,
         if (status != null) 'status': status!,
       };
@@ -23882,6 +24731,46 @@ class GoogleCloudApigeeV1NodeConfig {
           'currentAggregateNodeCount': currentAggregateNodeCount!,
         if (maxNodeCount != null) 'maxNodeCount': maxNodeCount!,
         if (minNodeCount != null) 'minNodeCount': minNodeCount!,
+      };
+}
+
+/// OpenAPI Specification documentation for a catalog item.
+class GoogleCloudApigeeV1OASDocumentation {
+  /// The format of the input specification file contents.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "FORMAT_UNSPECIFIED" : The format is not available.
+  /// - "YAML" : YAML format.
+  /// - "JSON" : JSON format.
+  core.String? format;
+
+  /// The documentation file contents for the OpenAPI Specification.
+  ///
+  /// JSON and YAML file formats are supported.
+  ///
+  /// Required.
+  GoogleCloudApigeeV1DocumentationFile? spec;
+
+  GoogleCloudApigeeV1OASDocumentation({
+    this.format,
+    this.spec,
+  });
+
+  GoogleCloudApigeeV1OASDocumentation.fromJson(core.Map json_)
+      : this(
+          format: json_.containsKey('format')
+              ? json_['format'] as core.String
+              : null,
+          spec: json_.containsKey('spec')
+              ? GoogleCloudApigeeV1DocumentationFile.fromJson(
+                  json_['spec'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (format != null) 'format': format!,
+        if (spec != null) 'spec': spec!,
       };
 }
 

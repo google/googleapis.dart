@@ -739,6 +739,43 @@ void checkKerberosConfig(api.KerberosConfig o) {
   buildCounterKerberosConfig--;
 }
 
+core.int buildCounterLatestBackup = 0;
+api.LatestBackup buildLatestBackup() {
+  final o = api.LatestBackup();
+  buildCounterLatestBackup++;
+  if (buildCounterLatestBackup < 3) {
+    o.backupId = 'foo';
+    o.duration = 'foo';
+    o.startTime = 'foo';
+    o.state = 'foo';
+  }
+  buildCounterLatestBackup--;
+  return o;
+}
+
+void checkLatestBackup(api.LatestBackup o) {
+  buildCounterLatestBackup++;
+  if (buildCounterLatestBackup < 3) {
+    unittest.expect(
+      o.backupId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.duration!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.startTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterLatestBackup--;
+}
+
 core.List<api.Backup> buildUnnamed10() => [
       buildBackup(),
       buildBackup(),
@@ -1566,6 +1603,7 @@ api.Restore buildRestore() {
   buildCounterRestore++;
   if (buildCounterRestore < 3) {
     o.backup = 'foo';
+    o.backupLocation = 'foo';
     o.details = 'foo';
     o.endTime = 'foo';
     o.startTime = 'foo';
@@ -1581,6 +1619,10 @@ void checkRestore(api.Restore o) {
   if (buildCounterRestore < 3) {
     unittest.expect(
       o.backup!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.backupLocation!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -1613,6 +1655,7 @@ api.RestoreServiceRequest buildRestoreServiceRequest() {
   buildCounterRestoreServiceRequest++;
   if (buildCounterRestoreServiceRequest < 3) {
     o.backup = 'foo';
+    o.backupLocation = 'foo';
     o.requestId = 'foo';
     o.restoreType = 'foo';
   }
@@ -1625,6 +1668,10 @@ void checkRestoreServiceRequest(api.RestoreServiceRequest o) {
   if (buildCounterRestoreServiceRequest < 3) {
     unittest.expect(
       o.backup!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.backupLocation!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -1664,6 +1711,47 @@ void checkScalingConfig(api.ScalingConfig o) {
     );
   }
   buildCounterScalingConfig--;
+}
+
+core.int buildCounterScheduledBackup = 0;
+api.ScheduledBackup buildScheduledBackup() {
+  final o = api.ScheduledBackup();
+  buildCounterScheduledBackup++;
+  if (buildCounterScheduledBackup < 3) {
+    o.backupLocation = 'foo';
+    o.cronSchedule = 'foo';
+    o.enabled = true;
+    o.latestBackup = buildLatestBackup();
+    o.nextScheduledTime = 'foo';
+    o.timeZone = 'foo';
+  }
+  buildCounterScheduledBackup--;
+  return o;
+}
+
+void checkScheduledBackup(api.ScheduledBackup o) {
+  buildCounterScheduledBackup++;
+  if (buildCounterScheduledBackup < 3) {
+    unittest.expect(
+      o.backupLocation!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.cronSchedule!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.enabled!, unittest.isTrue);
+    checkLatestBackup(o.latestBackup!);
+    unittest.expect(
+      o.nextScheduledTime!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.timeZone!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterScheduledBackup--;
 }
 
 core.int buildCounterSecret = 0;
@@ -1726,6 +1814,7 @@ api.Service buildService() {
     o.port = 42;
     o.releaseChannel = 'foo';
     o.scalingConfig = buildScalingConfig();
+    o.scheduledBackup = buildScheduledBackup();
     o.state = 'foo';
     o.stateMessage = 'foo';
     o.telemetryConfig = buildTelemetryConfig();
@@ -1780,6 +1869,7 @@ void checkService(api.Service o) {
       unittest.equals('foo'),
     );
     checkScalingConfig(o.scalingConfig!);
+    checkScheduledBackup(o.scheduledBackup!);
     unittest.expect(
       o.state!,
       unittest.equals('foo'),
@@ -2199,6 +2289,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-LatestBackup', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildLatestBackup();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LatestBackup.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkLatestBackup(od);
+    });
+  });
+
   unittest.group('obj-schema-ListBackupsResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildListBackupsResponse();
@@ -2396,6 +2496,16 @@ void main() {
       final od = api.ScalingConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkScalingConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-ScheduledBackup', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildScheduledBackup();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ScheduledBackup.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkScheduledBackup(od);
     });
   });
 

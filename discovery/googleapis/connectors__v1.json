@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20240221",
+    "revision": "20240226",
     "rootUrl": "https://connectors.googleapis.com/",
     "servicePath": "",
     "title": "Connectors API",
@@ -2624,6 +2624,18 @@
                     },
                     "type": "array"
                 },
+                "enumSource": {
+                    "description": "Optional. enum source denotes the source of api to fill the enum options",
+                    "enum": [
+                        "ENUM_SOURCE_UNSPECIFIED",
+                        "EVENT_TYPES_API"
+                    ],
+                    "enumDescriptions": [
+                        "Api type unspecified.",
+                        "list event types."
+                    ],
+                    "type": "string"
+                },
                 "isAdvanced": {
                     "description": "Indicates if current template is part of advanced settings",
                     "type": "boolean"
@@ -3828,6 +3840,13 @@
                     "description": "Optional. Link for Subscriber of the current EventSubscription.",
                     "type": "string"
                 },
+                "triggerConfigVariables": {
+                    "description": "Optional. Configuration for configuring the trigger",
+                    "items": {
+                        "$ref": "ConfigVariable"
+                    },
+                    "type": "array"
+                },
                 "updateTime": {
                     "description": "Output only. Updated time.",
                     "format": "google-datetime",
@@ -3988,13 +4007,6 @@
                 "registrationDestinationConfig": {
                     "$ref": "DestinationConfig",
                     "description": "Registration endpoint for auto registration."
-                },
-                "triggerConfigVariables": {
-                    "description": "Optional. Additional eventing related field values",
-                    "items": {
-                        "$ref": "ConfigVariable"
-                    },
-                    "type": "array"
                 }
             },
             "type": "object"

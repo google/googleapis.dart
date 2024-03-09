@@ -75,6 +75,15 @@ class WorkspaceEventsApi {
   static const chatSpacesReadonlyScope =
       'https://www.googleapis.com/auth/chat.spaces.readonly';
 
+  /// Create, edit, and see information about your Google Meet conferences
+  /// created by the app.
+  static const meetingsSpaceCreatedScope =
+      'https://www.googleapis.com/auth/meetings.space.created';
+
+  /// Read information about any of your Google Meet conferences
+  static const meetingsSpaceReadonlyScope =
+      'https://www.googleapis.com/auth/meetings.space.readonly';
+
   final commons.ApiRequester _requester;
 
   OperationsResource get operations => OperationsResource(_requester);

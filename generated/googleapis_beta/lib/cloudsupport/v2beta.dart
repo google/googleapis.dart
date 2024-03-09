@@ -420,7 +420,8 @@ class CasesResource {
   /// [pageToken] - A token identifying the page of results to return. If
   /// unspecified, the first page is retrieved.
   ///
-  /// [productLine] - The product line to request cases for.
+  /// [productLine] - The product line for which to request cases for. If
+  /// unspecified, only Google Cloud cases will be returned.
   /// Possible string values are:
   /// - "PRODUCT_LINE_UNSPECIFIED" : Unknown product type.
   /// - "GOOGLE_CLOUD" : Google Cloud
@@ -1159,7 +1160,7 @@ class Blobstore2Info {
 /// and a number, and they look like this: ``` projects/abc/cases/456 ``` ```
 /// projects/123/cases/456 ``` You can use either of them when calling the API.
 /// To learn more about project identifiers, see
-/// \[AIP-2510\](https://google.aip.dev/cloud/2510). Next ID: 38
+/// \[AIP-2510\](https://google.aip.dev/cloud/2510).
 class Case {
   /// The issue classification applicable to this case.
   CaseClassification? classification;

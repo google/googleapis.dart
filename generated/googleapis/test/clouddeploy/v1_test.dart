@@ -527,6 +527,7 @@ api.AutomationRolloutMetadata buildAutomationRolloutMetadata() {
   buildCounterAutomationRolloutMetadata++;
   if (buildCounterAutomationRolloutMetadata < 3) {
     o.advanceAutomationRuns = buildUnnamed7();
+    o.currentRepairAutomationRun = 'foo';
     o.promoteAutomationRun = 'foo';
     o.repairAutomationRuns = buildUnnamed8();
   }
@@ -538,6 +539,10 @@ void checkAutomationRolloutMetadata(api.AutomationRolloutMetadata o) {
   buildCounterAutomationRolloutMetadata++;
   if (buildCounterAutomationRolloutMetadata < 3) {
     checkUnnamed7(o.advanceAutomationRuns!);
+    unittest.expect(
+      o.currentRepairAutomationRun!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.promoteAutomationRun!,
       unittest.equals('foo'),

@@ -30,6 +30,10 @@
 ///   - [AppsServicesResource]
 ///     - [AppsServicesVersionsResource]
 ///       - [AppsServicesVersionsInstancesResource]
+/// - [ProjectsResource]
+///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsApplicationsResource]
+///       - [ProjectsLocationsApplicationsAuthorizedDomainsResource]
 library;
 
 import 'dart:async' as async;
@@ -64,6 +68,7 @@ class AppengineApi {
   final commons.ApiRequester _requester;
 
   AppsResource get apps => AppsResource(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   AppengineApi(http.Client client,
       {core.String rootUrl = 'https://appengine.googleapis.com/',
@@ -2129,6 +2134,99 @@ class AppsServicesVersionsInstancesResource {
       queryParams: queryParams_,
     );
     return ListInstancesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsResource get locations =>
+      ProjectsLocationsResource(_requester);
+
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsLocationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsApplicationsResource get applications =>
+      ProjectsLocationsApplicationsResource(_requester);
+
+  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsLocationsApplicationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsApplicationsAuthorizedDomainsResource
+      get authorizedDomains =>
+          ProjectsLocationsApplicationsAuthorizedDomainsResource(_requester);
+
+  ProjectsLocationsApplicationsResource(commons.ApiRequester client)
+      : _requester = client;
+}
+
+class ProjectsLocationsApplicationsAuthorizedDomainsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsApplicationsAuthorizedDomainsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists all domains the user is authorized to administer.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectsId] - Part of `parent`. Name of the parent Application resource.
+  /// Example: apps/myapp.
+  ///
+  /// [locationsId] - Part of `parent`. See documentation of `projectsId`.
+  ///
+  /// [applicationsId] - Part of `parent`. See documentation of `projectsId`.
+  ///
+  /// [pageSize] - Maximum results to return per page.
+  ///
+  /// [pageToken] - Continuation token for fetching the next page of results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAuthorizedDomainsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAuthorizedDomainsResponse> list(
+    core.String projectsId,
+    core.String locationsId,
+    core.String applicationsId, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/projects/' +
+        commons.escapeVariable('$projectsId') +
+        '/locations/' +
+        commons.escapeVariable('$locationsId') +
+        '/applications/' +
+        commons.escapeVariable('$applicationsId') +
+        '/authorizedDomains';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListAuthorizedDomainsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }

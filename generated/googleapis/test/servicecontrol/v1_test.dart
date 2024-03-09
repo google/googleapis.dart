@@ -256,6 +256,7 @@ api.CheckInfo buildCheckInfo() {
   final o = api.CheckInfo();
   buildCounterCheckInfo++;
   if (buildCounterCheckInfo < 3) {
+    o.apiKeyUid = 'foo';
     o.consumerInfo = buildConsumerInfo();
     o.unusedArguments = buildUnnamed4();
   }
@@ -266,6 +267,10 @@ api.CheckInfo buildCheckInfo() {
 void checkCheckInfo(api.CheckInfo o) {
   buildCounterCheckInfo++;
   if (buildCounterCheckInfo < 3) {
+    unittest.expect(
+      o.apiKeyUid!,
+      unittest.equals('foo'),
+    );
     checkConsumerInfo(o.consumerInfo!);
     checkUnnamed4(o.unusedArguments!);
   }

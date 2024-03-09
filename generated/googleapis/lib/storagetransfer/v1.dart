@@ -736,12 +736,18 @@ class TransferOperationsResource {
   ///
   /// [filter] - Required. A list of query parameters specified as JSON text in
   /// the form of: `{"projectId":"my_project_id",
-  /// "jobNames":["jobid1","jobid2",...],
-  /// "operationNames":["opid1","opid2",...],
+  /// "jobNames":["jobid1","jobid2",...], "jobNamePattern": "job_name_pattern",
+  /// "operationNames":["opid1","opid2",...], "operationNamePattern":
+  /// "operation_name_pattern", "minCreationTime": "min_creation_time",
+  /// "maxCreationTime": "max_creation_time",
   /// "transferStatuses":["status1","status2",...]}` Since `jobNames`,
   /// `operationNames`, and `transferStatuses` support multiple values, they
-  /// must be specified with array notation. `projectId` is required.
-  /// `jobNames`, `operationNames`, and `transferStatuses` are optional. The
+  /// must be specified with array notation. `projectId` is the only argument
+  /// that is required. If specified, `jobNamePattern` and
+  /// `operationNamePattern` must match the full job or operation name
+  /// respectively. '*' is a wildcard matching 0 or more characters.
+  /// `minCreationTime` and `maxCreationTime` should be timestamps encoded as a
+  /// string in the [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format. The
   /// valid values for `transferStatuses` are case-insensitive: IN_PROGRESS,
   /// PAUSED, SUCCESS, FAILED, and ABORTED.
   ///
@@ -1046,11 +1052,13 @@ class AwsS3Data {
   /// Required.
   core.String? bucketName;
 
-  /// Cloudfront domain name pointing to this bucket (as origin), to use when
-  /// fetching.
+  /// The CloudFront distribution domain name pointing to this bucket, to use
+  /// when fetching.
   ///
-  /// Format: `https://{id}.cloudfront.net` or any valid custom domain
-  /// `https://...`
+  /// See
+  /// [Transfer from S3 via CloudFront](https://cloud.google.com/storage-transfer/docs/s3-cloudfront)
+  /// for more information. Format: `https://{id}.cloudfront.net` or any valid
+  /// custom domain. Must begin with `https://`.
   ///
   /// Optional.
   core.String? cloudfrontDomain;
@@ -1064,8 +1072,7 @@ class AwsS3Data {
   /// access to a source: Amazon
   /// S3\](https://cloud.google.com/storage-transfer/docs/source-amazon-s3#secret_manager)
   /// for more information. If `credentials_secret` is specified, do not specify
-  /// role_arn or aws_access_key. This feature is in
-  /// [preview](https://cloud.google.com/terms/service-terms#1). Format:
+  /// role_arn or aws_access_key. Format:
   /// `projects/{project_number}/secrets/{secret_name}`
   ///
   /// Optional.
@@ -1158,8 +1165,7 @@ class AzureBlobStorageData {
   /// access to a source: Microsoft Azure Blob
   /// Storage\](https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager)
   /// for more information. If `credentials_secret` is specified, do not specify
-  /// azure_credentials. This feature is in
-  /// [preview](https://cloud.google.com/terms/service-terms#1). Format:
+  /// azure_credentials. Format:
   /// `projects/{project_number}/secrets/{secret_name}`
   ///
   /// Optional.
@@ -1350,12 +1356,14 @@ class GcsData {
   /// Required.
   core.String? bucketName;
 
-  /// Transfer managed folders is in public preview.
+  /// Preview.
   ///
-  /// This option is only applicable to the Cloud Storage source bucket. If set
-  /// to true: - The source managed folder will be transferred to the
-  /// destination bucket - The destination managed folder will always be
-  /// overwritten, other OVERWRITE options will not be supported
+  /// Enables the transfer of managed folders between Cloud Storage buckets. Set
+  /// this option on the gcs_data_source. If set to true: - Managed folders in
+  /// the source bucket are transferred to the destination bucket. - Managed
+  /// folders in the destination bucket are overwritten. Other OVERWRITE options
+  /// are not supported. See \[Transfer Cloud Storage managed
+  /// folders\](/storage-transfer/docs/managed-folders).
   core.bool? managedFolderTransferEnabled;
 
   /// Root path to transfer objects.

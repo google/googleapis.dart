@@ -24,6 +24,35 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
+core.int buildCounterAirflowMetadataRetentionPolicyConfig = 0;
+api.AirflowMetadataRetentionPolicyConfig
+    buildAirflowMetadataRetentionPolicyConfig() {
+  final o = api.AirflowMetadataRetentionPolicyConfig();
+  buildCounterAirflowMetadataRetentionPolicyConfig++;
+  if (buildCounterAirflowMetadataRetentionPolicyConfig < 3) {
+    o.retentionDays = 42;
+    o.retentionMode = 'foo';
+  }
+  buildCounterAirflowMetadataRetentionPolicyConfig--;
+  return o;
+}
+
+void checkAirflowMetadataRetentionPolicyConfig(
+    api.AirflowMetadataRetentionPolicyConfig o) {
+  buildCounterAirflowMetadataRetentionPolicyConfig++;
+  if (buildCounterAirflowMetadataRetentionPolicyConfig < 3) {
+    unittest.expect(
+      o.retentionDays!,
+      unittest.equals(42),
+    );
+    unittest.expect(
+      o.retentionMode!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterAirflowMetadataRetentionPolicyConfig--;
+}
+
 core.int buildCounterAllowedIpRange = 0;
 api.AllowedIpRange buildAllowedIpRange() {
   final o = api.AllowedIpRange();
@@ -200,6 +229,8 @@ api.DataRetentionConfig buildDataRetentionConfig() {
   final o = api.DataRetentionConfig();
   buildCounterDataRetentionConfig++;
   if (buildCounterDataRetentionConfig < 3) {
+    o.airflowMetadataRetentionConfig =
+        buildAirflowMetadataRetentionPolicyConfig();
     o.taskLogsRetentionConfig = buildTaskLogsRetentionConfig();
   }
   buildCounterDataRetentionConfig--;
@@ -209,6 +240,8 @@ api.DataRetentionConfig buildDataRetentionConfig() {
 void checkDataRetentionConfig(api.DataRetentionConfig o) {
   buildCounterDataRetentionConfig++;
   if (buildCounterDataRetentionConfig < 3) {
+    checkAirflowMetadataRetentionPolicyConfig(
+        o.airflowMetadataRetentionConfig!);
     checkTaskLogsRetentionConfig(o.taskLogsRetentionConfig!);
   }
   buildCounterDataRetentionConfig--;
@@ -2105,6 +2138,16 @@ void checkWorkloadsConfig(api.WorkloadsConfig o) {
 }
 
 void main() {
+  unittest.group('obj-schema-AirflowMetadataRetentionPolicyConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAirflowMetadataRetentionPolicyConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AirflowMetadataRetentionPolicyConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAirflowMetadataRetentionPolicyConfig(od);
+    });
+  });
+
   unittest.group('obj-schema-AllowedIpRange', () {
     unittest.test('to-json--from-json', () async {
       final o = buildAllowedIpRange();

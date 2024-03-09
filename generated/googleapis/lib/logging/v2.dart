@@ -623,7 +623,8 @@ class BillingAccountsLocationsBucketsResource {
   ///
   /// [bucketId] - Required. A client-assigned identifier such as "my-bucket".
   /// Identifiers are limited to 100 characters and can include only letters,
-  /// digits, underscores, hyphens, and periods.
+  /// digits, underscores, hyphens, and periods. Bucket identifiers must start
+  /// with an alphanumeric character.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -673,7 +674,8 @@ class BillingAccountsLocationsBucketsResource {
   ///
   /// [bucketId] - Required. A client-assigned identifier such as "my-bucket".
   /// Identifiers are limited to 100 characters and can include only letters,
-  /// digits, underscores, hyphens, and periods.
+  /// digits, underscores, hyphens, and periods. Bucket identifiers must start
+  /// with an alphanumeric character.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3322,7 +3324,8 @@ class FoldersLocationsBucketsResource {
   ///
   /// [bucketId] - Required. A client-assigned identifier such as "my-bucket".
   /// Identifiers are limited to 100 characters and can include only letters,
-  /// digits, underscores, hyphens, and periods.
+  /// digits, underscores, hyphens, and periods. Bucket identifiers must start
+  /// with an alphanumeric character.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3372,7 +3375,8 @@ class FoldersLocationsBucketsResource {
   ///
   /// [bucketId] - Required. A client-assigned identifier such as "my-bucket".
   /// Identifiers are limited to 100 characters and can include only letters,
-  /// digits, underscores, hyphens, and periods.
+  /// digits, underscores, hyphens, and periods. Bucket identifiers must start
+  /// with an alphanumeric character.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5231,7 +5235,8 @@ class LocationsBucketsResource {
   ///
   /// [bucketId] - Required. A client-assigned identifier such as "my-bucket".
   /// Identifiers are limited to 100 characters and can include only letters,
-  /// digits, underscores, hyphens, and periods.
+  /// digits, underscores, hyphens, and periods. Bucket identifiers must start
+  /// with an alphanumeric character.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5281,7 +5286,8 @@ class LocationsBucketsResource {
   ///
   /// [bucketId] - Required. A client-assigned identifier such as "my-bucket".
   /// Identifiers are limited to 100 characters and can include only letters,
-  /// digits, underscores, hyphens, and periods.
+  /// digits, underscores, hyphens, and periods. Bucket identifiers must start
+  /// with an alphanumeric character.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6993,7 +6999,8 @@ class OrganizationsLocationsBucketsResource {
   ///
   /// [bucketId] - Required. A client-assigned identifier such as "my-bucket".
   /// Identifiers are limited to 100 characters and can include only letters,
-  /// digits, underscores, hyphens, and periods.
+  /// digits, underscores, hyphens, and periods. Bucket identifiers must start
+  /// with an alphanumeric character.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7043,7 +7050,8 @@ class OrganizationsLocationsBucketsResource {
   ///
   /// [bucketId] - Required. A client-assigned identifier such as "my-bucket".
   /// Identifiers are limited to 100 characters and can include only letters,
-  /// digits, underscores, hyphens, and periods.
+  /// digits, underscores, hyphens, and periods. Bucket identifiers must start
+  /// with an alphanumeric character.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9260,7 +9268,8 @@ class ProjectsLocationsBucketsResource {
   ///
   /// [bucketId] - Required. A client-assigned identifier such as "my-bucket".
   /// Identifiers are limited to 100 characters and can include only letters,
-  /// digits, underscores, hyphens, and periods.
+  /// digits, underscores, hyphens, and periods. Bucket identifiers must start
+  /// with an alphanumeric character.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9310,7 +9319,8 @@ class ProjectsLocationsBucketsResource {
   ///
   /// [bucketId] - Required. A client-assigned identifier such as "my-bucket".
   /// Identifiers are limited to 100 characters and can include only letters,
-  /// digits, underscores, hyphens, and periods.
+  /// digits, underscores, hyphens, and periods. Bucket identifiers must start
+  /// with an alphanumeric character.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -13108,8 +13118,6 @@ typedef Location = $Location01;
 class LogBucket {
   /// Whether log analytics is enabled for this bucket.Once enabled, log
   /// analytics features cannot be disabled.
-  ///
-  /// Optional.
   core.bool? analyticsEnabled;
 
   /// The CMEK settings of the log bucket.
@@ -15023,7 +15031,7 @@ class SavedQuery {
 
   /// The user specified title for the SavedQuery.
   ///
-  /// Optional.
+  /// Required.
   core.String? displayName;
 
   /// Logging query that can be executed in Logs Explorer or via Logging API.
