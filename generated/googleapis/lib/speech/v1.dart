@@ -761,24 +761,7 @@ class ABNFGrammar {
 }
 
 /// An item of the class.
-class ClassItem {
-  /// The class item's value.
-  core.String? value;
-
-  ClassItem({
-    this.value,
-  });
-
-  ClassItem.fromJson(core.Map json_)
-      : this(
-          value:
-              json_.containsKey('value') ? json_['value'] as core.String : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (value != null) 'value': value!,
-      };
-}
+typedef ClassItem = $ClassItem;
 
 /// Message sent by the client for the `CreateCustomClass` method.
 class CreateCustomClassRequest {
@@ -1047,45 +1030,7 @@ class CustomClass {
 typedef Empty = $Empty;
 
 /// A single replacement configuration.
-class Entry {
-  /// Whether the search is case sensitive.
-  core.bool? caseSensitive;
-
-  /// What to replace with.
-  ///
-  /// Max length is 100 characters.
-  core.String? replace;
-
-  /// What to replace.
-  ///
-  /// Max length is 100 characters.
-  core.String? search;
-
-  Entry({
-    this.caseSensitive,
-    this.replace,
-    this.search,
-  });
-
-  Entry.fromJson(core.Map json_)
-      : this(
-          caseSensitive: json_.containsKey('caseSensitive')
-              ? json_['caseSensitive'] as core.bool
-              : null,
-          replace: json_.containsKey('replace')
-              ? json_['replace'] as core.String
-              : null,
-          search: json_.containsKey('search')
-              ? json_['search'] as core.String
-              : null,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (caseSensitive != null) 'caseSensitive': caseSensitive!,
-        if (replace != null) 'replace': replace!,
-        if (search != null) 'search': search!,
-      };
-}
+typedef Entry = $Entry;
 
 /// Message returned to the client by the `ListCustomClasses` method.
 class ListCustomClassesResponse {

@@ -1600,6 +1600,13 @@ Converts audio to text by applying powerful neural network models.
 - [Original documentation](https://cloud.google.com/speech-to-text/docs/quickstart-protocol)
 - [Dart package details](https://pub.dev/documentation/googleapis/13.1.0/speech/v1/speech/v1-library.html)
 
+#### Cloud Speech-to-Text API - `speech/v2`
+
+Converts audio to text by applying powerful neural network models.
+
+- [Original documentation](https://cloud.google.com/speech-to-text/docs/quickstart-protocol)
+- [Dart package details](https://pub.dev/documentation/googleapis/13.1.0/speech/v2/speech/v2-library.html)
+
 #### ![Logo](https://www.google.com/images/icons/product/cloud_storage-16.png) Cloud Storage JSON API - `storage/v1`
 
 Stores and retrieves potentially large, immutable data objects.

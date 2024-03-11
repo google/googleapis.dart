@@ -4044,7 +4044,7 @@ class ServicesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Resource name for this Service. The format is:
+  /// [name] - Identifier. Resource name for this Service. The format is:
   /// projects/\[PROJECT_ID_OR_NUMBER\]/services/\[SERVICE_ID\]
   /// Value must have pattern `^\[^/\]+/\[^/\]+/services/\[^/\]+$`.
   ///
@@ -4312,7 +4312,8 @@ class ServicesServiceLevelObjectivesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Resource name for this ServiceLevelObjective. The format is:
+  /// [name] - Identifier. Resource name for this ServiceLevelObjective. The
+  /// format is:
   /// projects/\[PROJECT_ID_OR_NUMBER\]/services/\[SERVICE_ID\]/serviceLevelObjectives/\[SLO_NAME\]
   /// Value must have pattern
   /// `^\[^/\]+/\[^/\]+/services/\[^/\]+/serviceLevelObjectives/\[^/\]+$`.
@@ -9647,9 +9648,10 @@ class Service {
   /// Type used for Istio services scoped to an Istio mesh.
   MeshIstio? meshIstio;
 
-  /// Resource name for this Service.
+  /// Identifier.
   ///
-  /// The format is: projects/\[PROJECT_ID_OR_NUMBER\]/services/\[SERVICE_ID\]
+  /// Resource name for this Service. The format is:
+  /// projects/\[PROJECT_ID_OR_NUMBER\]/services/\[SERVICE_ID\]
   core.String? name;
 
   /// Configuration for how to query telemetry on a Service.
@@ -9856,9 +9858,9 @@ class ServiceLevelObjective {
   /// 0 \< goal \<= 0.999.
   core.double? goal;
 
-  /// Resource name for this ServiceLevelObjective.
+  /// Identifier.
   ///
-  /// The format is:
+  /// Resource name for this ServiceLevelObjective. The format is:
   /// projects/\[PROJECT_ID_OR_NUMBER\]/services/\[SERVICE_ID\]/serviceLevelObjectives/\[SLO_NAME\]
   core.String? name;
 
