@@ -1,6 +1,8 @@
 ## 13.1.0
 
  - `logging` - removed (*BROKEN*) `tail()` function call.
+ - `dataportability` - new!
+ - `speech` - added `v2`
 
 ## 13.0.0
 

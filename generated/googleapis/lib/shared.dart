@@ -2915,6 +2915,29 @@ class $Checksum {
 
 /// Used by:
 ///
+/// - speech:v1 : ClassItem
+/// - speech:v2 : ClassItem
+class $ClassItem {
+  /// The class item's value.
+  core.String? value;
+
+  $ClassItem({
+    this.value,
+  });
+
+  $ClassItem.fromJson(core.Map json_)
+      : this(
+          value:
+              json_.containsKey('value') ? json_['value'] as core.String : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (value != null) 'value': value!,
+      };
+}
+
+/// Used by:
+///
 /// - language:v1 : ClassificationCategory
 /// - language:v2 : ClassificationCategory
 class $ClassificationCategory {
@@ -6795,6 +6818,11 @@ class $EgressSource {
 /// - spanner:v1 : Empty
 /// - spanner:v1 : PartitionedDml
 /// - speech:v1 : Empty
+/// - speech:v2 : AutoDetectDecodingConfig
+/// - speech:v2 : InlineOutputConfig
+/// - speech:v2 : NativeOutputFileFormatConfig
+/// - speech:v2 : SrtOutputFileFormatConfig
+/// - speech:v2 : VttOutputFileFormatConfig
 /// - storagetransfer:v1 : CancelOperationRequest
 /// - storagetransfer:v1 : Empty
 /// - storagetransfer:v1 : PauseTransferOperationRequest
@@ -7021,6 +7049,50 @@ class $Entity {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (customFeatures != null) 'customFeatures': customFeatures!,
+      };
+}
+
+/// Used by:
+///
+/// - speech:v1 : Entry
+/// - speech:v2 : Entry
+class $Entry {
+  /// Whether the search is case sensitive.
+  core.bool? caseSensitive;
+
+  /// What to replace with.
+  ///
+  /// Max length is 100 characters.
+  core.String? replace;
+
+  /// What to replace.
+  ///
+  /// Max length is 100 characters.
+  core.String? search;
+
+  $Entry({
+    this.caseSensitive,
+    this.replace,
+    this.search,
+  });
+
+  $Entry.fromJson(core.Map json_)
+      : this(
+          caseSensitive: json_.containsKey('caseSensitive')
+              ? json_['caseSensitive'] as core.bool
+              : null,
+          replace: json_.containsKey('replace')
+              ? json_['replace'] as core.String
+              : null,
+          search: json_.containsKey('search')
+              ? json_['search'] as core.String
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (caseSensitive != null) 'caseSensitive': caseSensitive!,
+        if (replace != null) 'replace': replace!,
+        if (search != null) 'search': search!,
       };
 }
 
@@ -12262,6 +12334,7 @@ class $LocalizedMessage {
 /// - run:v1 : Location
 /// - secretmanager:v1 : Location
 /// - servicedirectory:v1 : Location
+/// - speech:v2 : Location
 /// - tpu:v1 : Location
 /// - tpu:v2 : Location
 /// - translate:v3 : Location
@@ -18792,6 +18865,7 @@ class $StaticRouteConfig {
 /// - sourcerepo:v1 : Status
 /// - spanner:v1 : Status
 /// - speech:v1 : Status
+/// - speech:v2 : Status
 /// - storagetransfer:v1 : Status
 /// - streetviewpublish:v1 : Status
 /// - texttospeech:v1 : Status
