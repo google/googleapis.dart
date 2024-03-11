@@ -284,9 +284,11 @@ package.
       }
 
       if (packageVersion != null) {
+        final libraryPathSection = libraryName.replaceAll('/', '_');
         final basePubUri =
             'https://pub.dev/documentation/$packageName/$packageVersion/';
-        final pubUri = '$basePubUri$libraryName/$libraryName-library.html';
+        final pubUri =
+            '$basePubUri$libraryPathSection/$libraryPathSection-library.html';
         sb.writeln('- [Dart package details]($pubUri)');
       }
       sb.writeln();
