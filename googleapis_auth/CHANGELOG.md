@@ -1,3 +1,7 @@
+## 1.5.1
+
+- `auth_browser.dart`: handle pop-up closed errors correctly. 
+
 ## 1.5.0
 
 - Add support for non-Google OAuth 2.0 providers.
