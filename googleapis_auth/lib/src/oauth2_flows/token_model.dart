@@ -65,11 +65,25 @@ Future<AccessCredentials> requestAccessCredentials({
     completer.complete(creds);
   }
 
+  void errorCallback(gis.GoogleIdentityServicesError? error) {
+    if (error != null) {
+      completer.completeError(
+        AuthenticationException(
+          error.type.toString(),
+          errorDescription: error.message,
+          errorUri:
+              'https://developers.google.com/identity/oauth2/web/reference/js-reference#TokenClientConfig',
+        ),
+      );
+    }
+  }
+
   final config = gis.TokenClientConfig(
     callback: allowInterop(callback),
     client_id: clientId,
     scope: scopes.toList(),
     prompt: prompt,
+    error_callback: allowInterop(errorCallback),
   );
 
   final client = gis.oauth2.initTokenClient(config);
@@ -125,6 +139,19 @@ Future<CodeResponse> requestAuthorizationCode({
     ));
   }
 
+  void errorCallback(gis.GoogleIdentityServicesError? error) {
+    if (error != null) {
+      completer.completeError(
+        AuthenticationException(
+          error.type.toString(),
+          errorDescription: error.message,
+          errorUri:
+              'https://developers.google.com/identity/oauth2/web/reference/js-reference#TokenClientConfig',
+        ),
+      );
+    }
+  }
+
   final config = gis.CodeClientConfig(
     callback: allowInterop(callback),
     client_id: clientId,
@@ -132,6 +159,7 @@ Future<CodeResponse> requestAuthorizationCode({
     state: state,
     login_hint: hint,
     hd: hostedDomain,
+    error_callback: allowInterop(errorCallback),
   );
 
   final client = gis.oauth2.initCodeClient(config);
