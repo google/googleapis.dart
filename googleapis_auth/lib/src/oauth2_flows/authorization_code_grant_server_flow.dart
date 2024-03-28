@@ -25,6 +25,7 @@ class AuthorizationCodeGrantServerFlow
     extends AuthorizationCodeGrantAbstractFlow {
   final PromptUserForConsent userPrompt;
   final int listenPort;
+  final String? customPostAuthPage;
 
   AuthorizationCodeGrantServerFlow(
     super.authEndpoints,
@@ -34,6 +35,7 @@ class AuthorizationCodeGrantServerFlow
     this.userPrompt, {
     super.hostedDomain,
     this.listenPort = 0,
+    this.customPostAuthPage,
   });
 
   @override
@@ -94,12 +96,12 @@ class AuthorizationCodeGrantServerFlow
           codeVerifier: codeVerifier,
         );
 
-        // TODO: We could introduce a user-defined redirect page.
         request.response
           ..statusCode = 200
           ..headers.set('content-type', 'text/html; charset=UTF-8')
           ..write(
-            '''
+            customPostAuthPage ??
+                '''
 <!DOCTYPE html>
 
 <html>
